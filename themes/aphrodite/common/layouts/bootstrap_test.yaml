@@ -1,0 +1,38 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: bootstrap_test
+  timestamp: 1783756800
+layout:
+  navigation: {  }
+  /mainbar/:
+    -
+      - bootstrapsuite-9001
+  footer: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include: [attributes, children]
+  mainbar:
+    type: section
+    subtype: main
+    attributes:
+      boxed: '2'
+      class: g-flushed
+  footer:
+    inherit:
+      outline: default
+      include: [attributes, children]
+  offcanvas:
+    inherit:
+      outline: default
+      include: [attributes, children]
+content:
+  bootstrapsuite-9001:
+    title: 'Bootstrap Test Suite'
+    attributes:
+      title: 'Bootstrap 5 Test Suite'
+      intro: "Use this page to verify Aphrodite's Bootstrap components, JavaScript, spacing, colors, and responsive behavior."

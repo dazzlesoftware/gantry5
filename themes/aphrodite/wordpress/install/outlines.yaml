@@ -5,3 +5,7 @@ default:
 home_-_particles:
   title: 'Home - Particles'
   preset: home_-_particles
+
+bootstrap_test:
+  title: 'Bootstrap Test Suite'
+  preset: bootstrap_test

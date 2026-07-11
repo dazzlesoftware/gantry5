@@ -98,6 +98,77 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
 #g-footer a { color: #ddd; }
 #g-footer a:hover { color: #fff; }
 
+// Gantry mobile menu presented as an Aphrodite off-canvas overlay.
+.g-offcanvas-toggle {
+    display: none;
+    position: absolute;
+    top: 1.45rem;
+    right: 1.25rem;
+    left: auto;
+    width: 34px;
+    height: 30px;
+    z-index: 100003;
+    color: #252525;
+    font-size: 1.55rem;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#g-offcanvas {
+    width: 300px;
+    z-index: 100002;
+    padding: 4.5rem 0 1.5rem;
+    background: #111;
+    color: #aaa;
+    box-shadow: 8px 0 35px rgba(0, 0, 0, .35);
+
+    #g-mobilemenu-container { margin: 0; }
+    #g-mobilemenu-container ul { margin: 0; padding: 0; background: #111; }
+    #g-mobilemenu-container li { border-bottom: 1px solid #242424; }
+    #g-mobilemenu-container .g-menu-item-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .95rem 1.25rem;
+        color: #aaa;
+        font-size: .78rem;
+        line-height: 1.35;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+    #g-mobilemenu-container li:hover > .g-menu-item-container,
+    #g-mobilemenu-container li.active > .g-menu-item-container {
+        background: #181818;
+        color: #ff406c;
+    }
+    #g-mobilemenu-container .g-menu-parent-indicator {
+        display: inline-grid;
+        width: 2rem;
+        height: 2rem;
+        place-items: center;
+        margin: -.45rem -.5rem -.45rem .75rem;
+        border-left: 1px solid #303030;
+    }
+    #g-mobilemenu-container .g-dropdown-column { width: 300px; }
+}
+
+.g-nav-overlay {
+    position: fixed !important;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, .62);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.g-offcanvas-open {
+    .g-nav-overlay { z-index: 100001; opacity: 1; }
+    .g-offcanvas-toggle { position: fixed; top: 1.4rem; right: auto; left: 252px; color: #fff; }
+    body.admin-bar .g-offcanvas-toggle { top: calc(46px + 1.4rem); }
+}
+
 // Native Bootstrap-based Aphrodite hero.
 .aphrodite-hero {
     position: relative;
@@ -130,9 +201,32 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
 }
 
 .platform-content .entry-title { font-weight: 700; letter-spacing: -.02em; }
-.platform-content .entry-meta { color: var(--aphrodite-muted); font-size: .875rem; }
-.platform-content .entry-meta > div { display: inline-block; margin-right: 1rem; }
+.platform-content article {
+    margin-bottom: 4.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--aphrodite-border);
+}
+.platform-content article:last-child { margin-bottom: 0; }
+.platform-content .entry-header { margin-bottom: 1.75rem; }
+.platform-content .entry-title { margin: 0 0 1.15rem; font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.15; }
+.platform-content .entry-meta { display: flex; flex-wrap: wrap; gap: .65rem 1.1rem; margin-bottom: 0; color: var(--aphrodite-muted); font-size: .875rem; line-height: 1.45; }
+.platform-content .entry-meta > div { display: inline-flex; align-items: center; gap: .35rem; margin: 0; }
+.platform-content .entry-meta > div::after { display: none !important; }
+.platform-content .entry-content { font-size: 1.05rem; line-height: 1.75; }
+.platform-content .entry-content p { margin: 0 0 1.5rem; }
+.platform-content .post-thumbnail { display: block; margin-bottom: 1.75rem; }
+.platform-content .post-thumbnail img { display: block; width: 100%; }
 .platform-content img { max-width: 100%; height: auto; }
+
+.bootstrap-test-suite {
+    max-width: 1140px;
+
+    section { scroll-margin-top: 1rem; }
+    .card, .accordion-item, .list-group-item, .form-control, .form-select, .table {
+        font-family: inherit;
+    }
+    .modal { color: var(--aphrodite-ink); }
+}
 
 .btn-primary, .button, button, input[type="submit"] {
     border-color: var(--aphrodite-primary);
@@ -144,7 +238,17 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
 @include breakpoint(mobile-only) {
     .g-container { width: 100%; }
     #g-navigation { min-height: 64px; .g-container > .g-grid:last-child { min-height: 62px; } }
+    .g-offcanvas-toggle { display: block; }
+    #g-navigation .g-logo { width: min(260px, calc(100vw - 6rem)); }
+    #g-navigation .g-logo img { width: min(260px, calc(100vw - 6rem)); }
     .aphrodite-hero { min-height: 500px; &::before { right: -240px; opacity: .35; } &::after { right: -80px; opacity: .3; } }
     .aphrodite-hero__actions { align-items: stretch; flex-direction: column; }
     .aphrodite-hero__actions .btn { width: 100%; }
+    #g-mainbar { padding-top: 2rem; padding-bottom: 2rem; }
+    #g-mainbar .g-content { padding: 1.5rem; }
+    .platform-content article { margin-bottom: 3.5rem; padding-bottom: 2.5rem; }
+    .platform-content .entry-header { margin-bottom: 1.5rem; }
+    .platform-content .entry-title { font-size: 2.15rem; }
+    .platform-content .entry-meta { gap: .6rem 1rem; font-size: .8rem; }
+    .platform-content .entry-content { font-size: 1rem; line-height: 1.7; }
 }
