@@ -1,0 +1,8 @@
+// Cross-theme fallbacks for WordPress partials. Existing theme values win.
+$base-border-color: rgba(0, 0, 0, 0.1) !default;
+$border-radius: 3px !default;
+$font-family-default: Arial, Helvetica, sans-serif !default;
+$font-family-title: $font-family-default !default;
+
+// Comments
+@import "comments";

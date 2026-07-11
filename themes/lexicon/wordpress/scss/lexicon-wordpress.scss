@@ -1,0 +1,47 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+//FIXME Remove deprecated bourbon mixins
+$output-bourbon-deprecation-warnings: false;
+@import "vendor/bourbon/bourbon";
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Optional Nucleus Assets
+@import "nucleus/theme/alerts";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "wordpress/theme/base";
+
+// Load Theme Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// Platform Specific Configuration
+@import "configuration-wordpress/base";
+
+// WORDPRESS THEME SPECIFIC
+
+// Core
+@import "lexicon-wordpress/core";
+
+// Pagination
+@import "lexicon-wordpress/pagination";
+
+// Meta
+@import "lexicon-wordpress/meta";
+
+// Comments
+@import "lexicon-wordpress/comments";
+
+// Particles
+@import "lexicon-wordpress/particles";
+
+// Widgets
+@import "lexicon-wordpress/widgets";
