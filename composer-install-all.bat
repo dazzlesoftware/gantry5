@@ -47,7 +47,7 @@ pushd "%project%" || (
     echo ERROR: Could not open %project%.
     exit /b 1
 )
-composer install
+call composer install
 set "result=%errorlevel%"
 popd
 if not "%result%"=="0" (

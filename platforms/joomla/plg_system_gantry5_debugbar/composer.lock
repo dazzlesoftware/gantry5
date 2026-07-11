@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43395678bd845d9355bdc8afa3d1344b",
+    "content-hash": "6cdcaf85948fb4b2fdb5b2a409f7c5f9",
     "packages": [
         {
             "name": "maximebf/debugbar",
@@ -371,11 +371,11 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.20"
+        "php": ">=8.3.0"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "5.6.20"
+        "php": "8.3.0"
     },
     "plugin-api-version": "2.3.0"
 }
