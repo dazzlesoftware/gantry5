@@ -1,0 +1,29 @@
+#g-slideshow {
+    background: $slideshow-background;
+    color: $slideshow-text-color;
+
+    .button {
+        border-color: $white;
+        color: $white !important;
+        box-shadow: none;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    .owl-nav {
+        div, button {
+            &:hover {
+                color: transparentize($white, 0.50);
+            }
+        }
+    }
+}
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

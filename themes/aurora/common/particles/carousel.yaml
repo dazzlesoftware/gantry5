@@ -1,0 +1,429 @@
+name: Carousel
+description: Display images in a carousel form.
+type: particle
+icon: fa-window-close
+
+configuration:
+  caching:
+    type: config_matches
+    values:
+      source: 'particle'
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the Joomla articles or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+            class:
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            description:
+              type: textarea.textarea
+              label: Description
+              description: Customize the description text.
+
+            animateOut:
+              type: select.select
+              label: Out Animation
+              description: Customize the Out Animation from animate css class.
+              default: fadeOut
+              options:
+                default: default
+                bounce: bounce
+                flash: flash
+                pulse: pulse
+                rubberBand: rubberBand
+                shake: shake
+                swing: swing
+                tada: tada
+                wobble: wobble
+                jello: jello
+                bounceIn: bounceIn
+                bounceInDown: bounceInDown
+                bounceInLeft: bounceInLeft
+                bounceInRight: bounceInRight
+                bounceInUp: bounceInUp
+                bounceOut: bounceOut
+                bounceOutDown: bounceOutDown
+                bounceOutLeft: bounceOutLeft
+                bounceOutRight: bounceOutRight
+                bounceOutUp: bounceOutUp
+                fadeIn: fadeIn
+                fadeInDown: fadeInDown
+                fadeInDownBig: fadeInDownBig
+                fadeInLeft: fadeInLeft
+                fadeInLeftBig: fadeInLeftBig
+                fadeInRight: fadeInRight
+                fadeInRightBig: fadeInRightBig
+                fadeInUp: fadeInUp
+                fadeInUpBig: fadeInUpBig
+                fadeOut: fadeOut
+                fadeOutDown: fadeOutDown
+                fadeOutDownBig: fadeOutDownBig
+                fadeOutLeft: fadeOutLeft
+                fadeOutLeftBig: fadeOutLeftBig
+                fadeOutRight: fadeOutRight
+                fadeOutRightBig: fadeOutRightBig
+                fadeOutUp: fadeOutUp
+                fadeOutUpBig: fadeOutUpBig
+                flip: flip
+                flipInX: flipInX
+                flipInY: flipInY
+                flipOutX: flipOutX
+                flipOutY: flipOutY
+                lightSpeedIn: lightSpeedIn
+                lightSpeedOut: lightSpeedOut
+                rotateIn: rotateIn
+                rotateInDownLeft: rotateInDownLeft
+                rotateInDownRight: rotateInDownRight
+                rotateInUpLeft: rotateInUpLeft
+                rotateInUpRight: rotateInUpRight
+                rotateOut: rotateOut
+                rotateOutDownLeft: rotateOutDownLeft
+                rotateOutDownRight: rotateOutDownRight
+                rotateOutUpLeft: rotateOutUpLeft
+                rotateOutUpRight: rotateOutUpRight
+                slideInUp: slideInUp
+                slideInDown: slideInDown
+                slideInLeft: slideInLeft
+                slideInRight: slideInRight
+                slideOutUp: slideOutUp
+                slideOutDown: slideOutDown
+                slideOutLeft: slideOutLeft
+                slideOutRight: slideOutRight
+                zoomIn: zoomIn
+                zoomInDown: zoomInDown
+                zoomInLeft: zoomInLeft
+                zoomInRight: zoomInRight
+                zoomInUp: zoomInUp
+                zoomOut: zoomOut
+                zoomOutDown: zoomOutDown
+                zoomOutLeft: zoomOutLeft
+                zoomOutRight: zoomOutRight
+                zoomOutUp: zoomOutUp
+                hinge: hinge
+                rollIn: rollIn
+                rollOut: rollOut
+
+            animateIn:
+              type: select.select
+              label: In Animation
+              description: Customize the In Animation from animate css class.
+              default: fadeIn
+              options:
+                default: default
+                bounce: bounce
+                flash: flash
+                pulse: pulse
+                rubberBand: rubberBand
+                shake: shake
+                swing: swing
+                tada: tada
+                wobble: wobble
+                jello: jello
+                bounceIn: bounceIn
+                bounceInDown: bounceInDown
+                bounceInLeft: bounceInLeft
+                bounceInRight: bounceInRight
+                bounceInUp: bounceInUp
+                bounceOut: bounceOut
+                bounceOutDown: bounceOutDown
+                bounceOutLeft: bounceOutLeft
+                bounceOutRight: bounceOutRight
+                bounceOutUp: bounceOutUp
+                fadeIn: fadeIn
+                fadeInDown: fadeInDown
+                fadeInDownBig: fadeInDownBig
+                fadeInLeft: fadeInLeft
+                fadeInLeftBig: fadeInLeftBig
+                fadeInRight: fadeInRight
+                fadeInRightBig: fadeInRightBig
+                fadeInUp: fadeInUp
+                fadeInUpBig: fadeInUpBig
+                fadeOut: fadeOut
+                fadeOutDown: fadeOutDown
+                fadeOutDownBig: fadeOutDownBig
+                fadeOutLeft: fadeOutLeft
+                fadeOutLeftBig: fadeOutLeftBig
+                fadeOutRight: fadeOutRight
+                fadeOutRightBig: fadeOutRightBig
+                fadeOutUp: fadeOutUp
+                fadeOutUpBig: fadeOutUpBig
+                flip: flip
+                flipInX: flipInX
+                flipInY: flipInY
+                flipOutX: flipOutX
+                flipOutY: flipOutY
+                lightSpeedIn: lightSpeedIn
+                lightSpeedOut: lightSpeedOut
+                rotateIn: rotateIn
+                rotateInDownLeft: rotateInDownLeft
+                rotateInDownRight: rotateInDownRight
+                rotateInUpLeft: rotateInUpLeft
+                rotateInUpRight: rotateInUpRight
+                rotateOut: rotateOut
+                rotateOutDownLeft: rotateOutDownLeft
+                rotateOutDownRight: rotateOutDownRight
+                rotateOutUpLeft: rotateOutUpLeft
+                rotateOutUpRight: rotateOutUpRight
+                slideInUp: slideInUp
+                slideInDown: slideInDown
+                slideInLeft: slideInLeft
+                slideInRight: slideInRight
+                slideOutUp: slideOutUp
+                slideOutDown: slideOutDown
+                slideOutLeft: slideOutLeft
+                slideOutRight: slideOutRight
+                zoomIn: zoomIn
+                zoomInDown: zoomInDown
+                zoomInLeft: zoomInLeft
+                zoomInRight: zoomInRight
+                zoomInUp: zoomInUp
+                zoomOut: zoomOut
+                zoomOutDown: zoomOutDown
+                zoomOutLeft: zoomOutLeft
+                zoomOutRight: zoomOutRight
+                zoomOutUp: zoomOutUp
+                hinge: hinge
+                rollIn: rollIn
+                rollOut: rollOut
+
+            nav:
+              type: select.select
+              label: Prev / Next
+              description: Enable or disable the Prev / Next navigation.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            loop:
+              type: select.select
+              label: Loop
+              description: Enable or disable the Inifnity loop. Duplicate last and first items to get loop illusion. This option <strong>won't work</strong> in Showcase mode.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay:
+              type: select.select
+              label: Autoplay
+              description: Enable or disable the Autoplay.
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplaySpeed:
+              type: input.text
+              label: Autoplay Speed
+              description: Set the speed of the Autoplay, in milliseconds.
+              placeholder: 5000
+
+            pauseOnHover:
+              type: select.select
+              label: Pause on Hover
+              description: Pause the slideshow when hovering over slider, then resume when no longer hovering.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            displayitems:
+              type: input.number
+              label: Display Items
+              description: Amount of items to display.
+              default: 5
+              min: 1
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            items:
+              type: collection.list
+              array: true
+              label: Items
+              description: Carousel items.
+              value: name
+              ajax: true
+
+              fields:
+                .icon:
+                  type: input.icon
+                  label: Icon
+                  description: Select the icon.
+                  default: 'fa fa-search'
+                .title:
+                  type: input.text
+                  label: Title
+                  placeholder: Enter title
+                .description:
+                  type: textarea.textarea
+                  label: Caption
+                  description: Customize the image caption.
+                  placeholder: Enter caption
+                .readmore:
+                  type: input.text
+                  label: Read More
+                  description: Enable or disable read more text.
+                  placeholder: Enter text
+                .link:
+                  type: input.text
+                  label: Link
+                .linktarget:
+                  type: select.selectize
+                  label: Target
+                  description: Target browser window when item is clicked.
+                  placeholder: 'Select...'
+                  default: _self
+                  options:
+                      _self: Self
+                      _blank: New Window
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          fields:
+            article.display.text.type:
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              default: intro
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              default: ''
+              pattern: '\d+'
+
+            article.display.text.formatting:
+              type: select.select
+              label: Text Formatting
+              description: Select the formatting you want to use to display the article text.
+              default: text
+              options:
+                text: Plain Text
+                html: HTML
+
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              default: show
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.readmore:
+              type: input.text
+              label: Read More
+              description: Enable or disable read more text.
+              placeholder: Enter text

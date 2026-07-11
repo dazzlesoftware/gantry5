@@ -1,0 +1,34 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background: $slideshow-background;
+    @extend .section-paddings;
+
+    .g-simplecontent .g-simplecontent-item-content-title {
+        text-align: center;
+        color: $black;
+    }
+    .g-blockcontent-subcontent-block {
+        color: $white;
+    }
+
+    .g-simplecontent-item-leading-content {
+        text-align: center;
+    }
+
+    .g-home-particles & {
+        padding-bottom: $content-padding * 3;
+        @include breakpoint(mobile-only) {
+          padding-bottom: $content-padding;
+        }
+        @include breakpoint(tablet-range) {
+          padding-bottom: $content-padding;
+        }
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

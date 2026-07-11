@@ -1,0 +1,41 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+    &:after {
+    	background: $rule-color;
+    	position: absolute;
+    	left: 50%;
+    	width: 100px;
+    	margin-left: -50px;
+    	content: "";
+    	height: 5px;   	
+    }
+
+	// Home
+	.g-home &, .g-homepositions & {
+		text-align: center;
+        // Grid Statistic
+        .g-gridstatistic {
+            width: 80%;
+            margin: auto;
+            @include breakpoint(tablet-range) {
+                width: 100%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }                        
+        }
+	}	 
+
+    // Odometer
+    .odometer-inside {
+        color: darken($showcase-text-color, 35%);
+    }   
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

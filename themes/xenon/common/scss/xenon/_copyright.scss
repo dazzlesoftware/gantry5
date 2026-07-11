@@ -1,0 +1,39 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;
+	font-size: $core-font-size - 0.1;
+	border-top: 1px solid fade-out($copyright-text-color, 0.75);
+
+	@include breakpoint(mobile-only) {
+		border-top: 0;
+	}
+
+	// Container
+	.g-content {
+		padding-bottom: $content-padding/2;
+		@include breakpoint(mobile-only) {
+			padding: $content-padding/2 $content-padding 0 $content-padding;
+		}
+	}
+
+	// Branding
+	.g-branding {
+		@include breakpoint(mobile-only) {
+			text-align: center;
+		}
+	}
+
+	// To Top
+	.g-totop {
+		@include breakpoint(mobile-only) {
+			text-align: center !important;
+		}
+	}
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

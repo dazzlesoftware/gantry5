@@ -1,0 +1,21 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+  {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+  <ul class="g-pricingtable">
+	{% if particle.icon %} <li class="g-pricingtable-icon"><i class="{{ particle.icon|e }}"></i></li> {% endif %}
+	{% if particle.columntitle %} <li class="g-pricingtable-title">{{ particle.columntitle|raw }}</li> {% endif %}
+	{% if particle.columnsubtitle %} <li class="g-pricingtable-subtitle">{{ particle.columnsubtitle|raw }}</li> {% endif %}
+	{% if particle.price %} <li class="g-pricingtable-price">{{ particle.price|raw }}</li> {% endif %}
+	{% if particle.desc %} <li class="g-pricingtable-desc">{{ particle.desc|raw }}</li> {% endif %}
+
+    {% for item in particle.items %}
+		<li class="g-pricingtable-item">{{ item.text|raw }}</li>
+    {% endfor %}
+
+    {% if particle.buttontext %} <li class="g-pricingtable-cta"><a target="{{ particle.buttontarget|default('_self')|e }}" href="{{ particle.buttonlink|e }}" title="{{ particle.buttontext|e }}" class="button {{ particle.buttonclass|e }}">{{ particle.buttontext|e }}</a></li> {% endif %}
+
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	{% set url = url(particle.url)|default(gantry.siteUrl()) %}
+	{% if (url == gantry.siteUrl()) %}
+		{% set rel='rel="home"' %}
+	{% endif %}
+	{% set image = url(particle.image) %}
+	{% if particle.link %}
+		<a href="{{ url }}" class="{{ particle.class|e }}" target="{{ particle.target|default('_self') }}" title="{{ particle.title }}" {{ rel|default('')|raw }}>
+		{% endif %}
+
+		{% if particle.svg is not empty %}
+			{{ particle.svg|raw }}
+		{% elseif image %}
+			<img src="{{ url(particle.image) }}" alt="{{ particle.alt }}"/>
+		{% endif %}
+
+		{% if particle.link %}
+		</a>
+		{% else %}
+	{% endif %}
+{% endblock %}
+

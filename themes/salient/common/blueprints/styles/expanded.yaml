@@ -1,0 +1,19 @@
+name: Expanded Styles
+description: Expanded styles for the Salient theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ec4345"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"       
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://demo/home/expanded/img-01.png"

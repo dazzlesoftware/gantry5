@@ -1,0 +1,68 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} bb-main-wrapper" {% if particle.height %} style="height: {{ particle.height|e }}px;" {% endif %}>
+        <div id="{{ id }}" data-bookblock-id="{{ id }}" data-bookblock-direction="{{ gantry.page.direction }}" data-bookblock-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" class="bb-bookblock">
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for item in particle.items %}
+                    <div class="bb-item">
+                        {% if item.subject %}
+                            <h2 class="g-title">{{ item.subject|raw }}</h2>
+                        {% endif %}
+
+                        <div class="bb-custom-firstpage" style="height: {{ particle.height|e }}px;">
+                            {% if item.category %}
+                                <span class="bb-item-category">{{ item.category }}</span>
+                            {% endif %}
+
+                            {% if item.title %}
+                                <h3 class="bb-item-title">{{ item.title }}</h3>
+                            {% endif %}
+
+                            {% if item.intro %}
+                                <p class="bb-item-intro">{{ item.intro|raw }}</p>
+                            {% endif %}
+
+                            {% if item.content %}
+                                <p class="bb-item-content">{{ item.content|raw }}</p>
+                            {% endif %}
+
+                            {% if item.readmore %}
+                                <div class="bb-link-wrapper">
+                                    <a target="{{ item.readmoretarget|default('_self')|e }}" href="{{ item.readmorelink|e }}" class="bb-link {{ item.readmoreclass|e }}"><span>{{ item.readmore|raw }}</span></a>
+                                </div>
+                            {% endif %}
+
+                            <nav>
+                                <div class="bb-nav-prev bb-custom-icon">
+                                    <i class="fa fa-chevron-circle-left"></i>
+                                </div>
+                                <div class="bb-nav-next bb-custom-icon ">
+                                    <i class="fa fa-chevron-circle-right"></i>
+                                </div>
+                            </nav>
+                        </div>
+
+                        <div class="bb-custom-side" style="height: {{ particle.height|e }}px;">
+                            <div class="bb-sideimage">
+                                {% if item.image %}
+                                    <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}"/>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% include '@particles/bookblock-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/modernizr.custom.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/jquerypp.custom.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/jquery.bookblock.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/jquery.bookblock.init.js') }}"></script>
+{% endblock %}

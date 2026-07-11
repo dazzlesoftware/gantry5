@@ -1,0 +1,115 @@
+#g-container-navigation {
+    position: relative;
+    z-index: 2;
+    padding-top: $content-padding - 1;
+    background: $navigation-background;
+    color: $navigation-text-color;
+
+    .align-right {
+        .g-toplevel {
+            justify-content: flex-end;
+        }
+    }
+
+    .g-main-nav {
+        .g-toplevel {
+            display: flex;
+            > li {
+                > .g-menu-item-container {
+                    font-weight: $font-weight-regular;
+                    font-size: $core-font-size + 0.125;
+                    padding: $content-margin $content-margin + 0.6;
+                    border-radius: $border-radius;
+
+                    @include breakpoint(tablet-range) {
+                        font-size: $core-font-size;
+                    }
+
+                    > .g-menu-item-content {
+                        color: $navigation-text-color;
+                    }
+
+                    .g-menu-parent-indicator {
+                        &:after {
+                            content: "\f107";
+                        }
+                    }
+                }
+                &.g-parent {
+                    > .g-menu-item-container {
+                        border-radius: $border-radius $border-radius 0 0;
+                    }
+                }
+                &:hover, &.active {
+                    > .g-menu-item-container {
+                        color: $navigation-text-color;
+                        background: $base-background;
+                        border-radius: $border-radius;
+                    }
+                }
+                &.g-parent {
+                    &:hover {
+                        > .g-menu-item-container {
+                            border-radius: $border-radius $border-radius 0 0;
+                        }
+                    }
+                }
+            }
+        }
+        .g-dropdown {
+            margin-top: 0;
+            background: $base-background;
+            border-radius: 0 $border-radius $border-radius $border-radius;
+        }
+        .g-sublevel {
+            .g-dropdown {
+                border-radius: $border-radius;
+            }
+
+            > li {
+                padding: 0;
+                margin: 0 $content-margin;
+
+                > .g-menu-item-container {
+                    font-weight: $font-weight-regular;
+                    font-size: $core-font-size;
+                    padding: 0;
+                    color: $navigation-text-color;
+
+                    > .g-menu-item-content {
+                        margin: 0;
+                        padding: $content-margin/1.5 $content-margin;
+                        .dir-rtl & {
+                            padding-left: $content-margin + 0.2;
+                            padding-right: 0;
+                        }
+                    }
+
+                    &:hover {
+                        color: $accent-color-1;
+                    }
+                }
+                &:hover {
+                    > .g-menu-item-container {
+                        border-radius: $border-radius;
+                        background: transparentize($black, 0.95);
+                    }
+                }
+                &:nth-child(2) {
+                    margin-top: $content-margin;
+                }
+                &:last-child {
+                    margin-bottom: $content-margin;
+                }
+            }
+        }
+    }
+
+}
+
+@media print {
+    #g-navigation, #g-container-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

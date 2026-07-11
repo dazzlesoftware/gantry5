@@ -1,0 +1,282 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1472048538
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - simplecontent-5143
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - pricingtable-8459
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/: {  }
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - block
+        - attributes
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+  aside:
+    inherit:
+      outline: default
+      include:
+        - block
+        - children
+        - attributes
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  footer:
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+content:
+  simplecontent-5143:
+    title: 'Header - Pricing'
+    attributes:
+      class: center
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Pricing Overview'
+          author: ''
+          leading_content: 'We create music, mix tracks, and add effects as needed. See all of our plans below and choose what is best for you.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Pricing Overview'
+  pricingtable-8459:
+    title: 'Pricing - Pricing Table'
+    attributes:
+      class: ''
+      title: ''
+      headertext: ''
+      footertext: ''
+      columns: g-pricingtable-3-col
+      tables:
+        -
+          accent: accent1
+          customcolor: ''
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: $75
+          period: ''
+          desc: ''
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'High Fidelity Audio'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: 'Publish To SoundCloud'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Unlimited Tracks'
+              class: g-linethrough
+              title: 'Item 3'
+            -
+              text: 'No Editing Limitations'
+              class: g-linethrough
+              title: 'Item 4'
+            -
+              text: 'No Watermarks'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Download Your Audio'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Bronze
+        -
+          accent: accent2
+          customcolor: ''
+          class: ''
+          ribbon: Popular
+          icon: ''
+          price: $125
+          period: ''
+          desc: ''
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'High Fidelity Audio'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: 'Publish To SoundCloud'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Unlimited Tracks'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'No Editing Limitations'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'No Watermarks'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Download Your Audio'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Silver
+        -
+          accent: accent1
+          customcolor: ''
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: $200
+          period: ''
+          desc: ''
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'High Fidelity Audio'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: 'Publish To SoundCloud'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Unlimited Tracks'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'No Editing Limitations'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'No Watermarks'
+              class: g-bold
+              title: 'Item 5'
+            -
+              text: 'Download Your Audio'
+              class: g-bold
+              title: 'Item 6'
+          plan: Gold

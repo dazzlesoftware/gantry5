@@ -1,0 +1,133 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+    <div class="g-productlist" id="{{ id }}" data-productlist-id="{{ id }}" {% if particle.presets == 'enabled' %}data-productlist-demosync="{{ gantry.theme.preset|replace({'preset':''}) }}"{% endif %}>
+        <div class="g-productlist-controls">
+            <div class="g-productlist-layouts">
+                <ul>
+                    <li data-layout="sameWidth" class="active"><i class="fa fa-th" aria-hidden="true"></i></li>
+                    <li data-layout="vertical"><i class="fa fa-th-list" aria-hidden="true"></i></li>
+                </ul>
+            </div>
+            <div class="g-productlist-categories">
+                <ul class='visible-links'>
+                    {% for category in particle.categories %}
+                    <li {% if loop.first %}class="active"{% endif %} data-filter="{{ loop.index }}">{{ category.name }}</li>
+                    {% endfor %}
+                    <li data-filter="all">{{ particle.allitems }}</li>
+                </ul>
+                <ul class='hidden-links hidden'></ul>
+                <div class="g-productlist-categories-toggle">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+
+            </div>
+        </div>
+        <div class="g-productlist-container g-productlist-layout-samewidth">
+            {% for category in particle.categories %}
+            {% set category_id = loop.index %}
+            {% for product in category.products %}
+            <div class="filtr-item" data-category="{{ category_id }}" data-sort="value">
+                <div class="g-product-container">
+                    <div class="g-product-details">
+                        {% if product.image %}
+                            <img src="{{ url(product.image)|e }}" alt="{{ product.name|e }}" />
+                        {% endif %}
+                        <div class="g-product-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="g-product-brand">
+                            {{ product.brand }}
+                        </div>
+                        <div class="g-product-price">
+                            {{ particle.currency }} {% if product.price %}{{ product.price }}{% else %}0.00{% endif %}
+                        </div>
+                        <div class="g-product-actions">
+                            <div class="g-product-addtocart">
+                                <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ gantry.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="g-product-more">
+                                <a href="#modal{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}" id="modallink-{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}" data-modal-id="modal{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}"  title="{{ particle.morebtn|e }}" class="button button-4"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-productlist-description">
+                        <div class="g-product-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="g-product-brand">
+                            {{ product.brand }}
+                        </div>
+                        <div class="g-product-description">
+                            {{ product.description }}
+                        </div>
+                        <div class="g-product-price">
+                            {{ particle.currency }} {% if product.price %}{{ product.price }}{% else %}0.00{% endif %}
+                        </div>
+                        <div class="g-product-actions">
+                            <div class="g-product-addtocart">
+                                <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ gantry.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ particle.cartbtn }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="g-productlist-animated-modal" id="modal{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}">
+                <div class="close-modal{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }} g-product-modal-close">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                </div>
+                <div class="modal-content">
+                    <div class="g-product-modal-img">
+                        {% if product.image %}
+                            <img src="{{ url(product.image)|e }}" alt="{{ product.name|e }}" />
+                        {% endif %}
+                    </div>
+                    <div class="g-product-modal-desc">
+                        <div class="g-product-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="g-product-brand">
+                            {{ product.brand }}
+                        </div>
+                        <div class="g-product-description">
+                            {{ product.description }}
+                        </div>
+                        <div class="g-product-price">
+                            {{ particle.currency }} {% if product.price %}{{ product.price }}{% else %}0.00{% endif %}
+                        </div>
+                        <div class="g-product-addtocart">
+                            <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ gantry.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ particle.cartbtn }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascript_footer %}
+{% do gantry.document.addScript(url('gantry-theme://js/imagesloaded.pkgd.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/jquery.filterizr.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/jquery.filterizr.init.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/animatedModal.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/animatedModal.init.js'), 10, 'footer') %}
+{% endblock %}
+
+{% block javascript %}
+    {% if particle.apikey %}
+        <script type="text/javascript">
+            if (!jQuery('#snipcart').length) {
+                jQuery('head:first').append("<script type='text/javascript' src='https://cdn.snipcart.com/scripts/2.0/snipcart.js' data-api-key='{{ particle.apikey }}' id='snipcart'><\/script>");
+            }
+        </script>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    {% if particle.apikey %}
+        <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css"/>
+    {% endif %}
+{% endblock %}

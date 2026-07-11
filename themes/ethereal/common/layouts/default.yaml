@@ -1,0 +1,269 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-5116
+    -
+      - 'position-7461 33'
+      - 'position-5604 34'
+      - 'position-2762 33'
+  /header/:
+    -
+      - 'logo-9829 30'
+      - 'menu-5768 70'
+    -
+      - 'position-6810 33'
+      - 'position-6073 34'
+      - 'position-7316 33'
+  /slideshow/:
+    -
+      - position-9041
+  /showcase/:
+    -
+      - 'position-5866 33'
+      - 'position-4847 34'
+      - 'position-3533 33'
+  /feature/:
+    -
+      - 'position-1767 33'
+      - 'position-7187 34'
+      - 'position-8774 33'
+  /main/:
+    -
+      - 'position-5459 33'
+      - 'position-6217 34'
+      - 'position-2732 33'
+  /container-2762/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-6022
+      -
+        'mainbar 60':
+          -
+            - system-content-9470
+      -
+        'aside 20':
+          -
+            - position-8451
+  /extension/:
+    -
+      - 'position-6410 33'
+      - 'position-2764 34'
+      - 'position-9649 33'
+  /bottom/:
+    -
+      - 'position-1420 33'
+      - 'position-3110 34'
+      - 'position-9016 33'
+  /footer/:
+    -
+      - 'position-3892 33'
+      - 'position-1407 34'
+      - 'position-8015 33'
+  /copyright/:
+    -
+      - 'logo-5214 33'
+      - 'custom-4582 67'
+    -
+      - 'copyright-5453 33'
+      - 'custom-3006 57'
+      - 'totop-4060 10'
+  offcanvas:
+    -
+      - mobile-menu-7892
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-2762:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  position-7461:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-5604:
+    title: 'Top B'
+    attributes:
+      key: top-b
+  position-2762:
+    title: 'Top C'
+    attributes:
+      key: top-c
+  logo-9829:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-5768:
+    block:
+      class: g-menu-block
+  position-6810:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-6073:
+    title: 'Header B'
+    attributes:
+      key: header-b
+  position-7316:
+    title: 'Header C'
+    attributes:
+      key: header-c
+  position-9041:
+    title: Slideshow
+    attributes:
+      key: slideshow
+    block:
+      class: flush
+  position-5866:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-4847:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-3533:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-1767:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-7187:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-8774:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  position-5459:
+    title: 'Main A'
+    attributes:
+      key: main-a
+  position-6217:
+    title: 'Main B'
+    attributes:
+      key: main-b
+  position-2732:
+    title: 'Main C'
+    attributes:
+      key: main-c
+  position-6022:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-8451:
+    title: Aside
+    attributes:
+      key: aside
+  position-6410:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-2764:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-9649:
+    title: 'Extension C'
+    attributes:
+      key: extension-c
+  position-1420:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-3110:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-9016:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  position-3892:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-1407:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-8015:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-5214:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-4582:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-5453:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-3006:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
+  totop-4060:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-7892:
+    title: 'Mobile Menu'

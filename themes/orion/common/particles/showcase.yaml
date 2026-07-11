@@ -1,0 +1,249 @@
+name: Showcase
+description: Background showcase with small picture
+type: particle
+icon: fa-camera-retro
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+                
+            nav:
+              type: select.select
+              label: Prev / Next
+              description: Enable or disable the Prev / Next navigation. Arrows will not appear unless they are actually required (i.e. more items than currently visible).
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            dots:
+              type: select.select
+              label: Dots
+              description: Enable or disable the dots navigation. 
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay:
+              type: select.select
+              label: Autoplay
+              description: Decide if you want your showcase to autoplay or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplayTimeout:
+              type: input.number
+              label: Autoplay Timeout
+              description: The time between each auto transition
+              default: 8000
+
+            loop:
+              type: select.select
+              label: Loop
+              description: Decide if you want your showcase to loop or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            speed:
+              type: input.number
+              label: Speed
+              description: Transition speed
+              default: 800
+
+            touchmove:
+              type: select.select
+              label: Touch Move
+              description: Decide if you want to be able to move slides using touch.
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            effect:
+              type: select.select
+              label: Effect
+              description: Pick showcase effect.
+              default: slide
+              options:
+                slide: Slide
+                fade: Fade
+                coverflow: Cover Flow
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            items:
+              type: collection.list
+              array: true
+              label: Slides
+              description: Create showcase items.
+              value: title
+              ajax: true
+              fields:
+                .title:
+                  type: input.text
+                  label: Title
+                  description: Enter slide title
+
+                .image:
+                  type: input.imagepicker
+                  label: Image
+                  description: Select image for showcase
+                  placeholder: Pick an image
+
+                .main_title:
+                  type: type.text
+                  label: Main Title
+                  description: Enter Slide Main Title
+
+                .description:
+                  type: textarea.textarea
+                  label: Additional Description
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.image.enabled:
+              type: select.select
+              label: Image
+              description: Select if and what image of the article should be shown.
+              options:
+                intro: Intro
+                full: Full
+                '': None
+
+            article.display.category.enabled:
+              type: select.select
+              label: Category
+              description: Select if category should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.text.type:
+              overridable: false
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              overridable: false
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              pattern: '\d+'

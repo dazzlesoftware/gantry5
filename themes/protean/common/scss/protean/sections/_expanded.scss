@@ -1,0 +1,34 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+    @extend .section-paddings;
+
+    @if $expanded-background-image {
+        background: url($expanded-background-image) no-repeat center center;
+        background-size: cover;
+    }
+    .g-infolist-item-title {
+        a {
+            color: $expanded-text-color;
+            &:hover {
+                color: $accent-color-2;
+            }
+        }
+    }
+    .g-infolist-link {
+        font-size: $core-font-size - 0.1;
+        a {
+            color: transparentize($expanded-text-color, 0.50);
+            &:hover {
+                color: $accent-color-2;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

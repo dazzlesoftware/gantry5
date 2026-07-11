@@ -1,0 +1,88 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<style>
+{% if particle.display == 'slideshow-hide' %}
+{{ particle.section|default('#g-navigation') }} {
+    opacity: 0;
+    visibility: hidden;
+}
+{% else %}
+.headroom-bg-section + section, .headroom-bg-section + header {
+    padding-top: {{ particle.padding|default('80') }}px !important;
+}
+
+@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('48rem') }}) {
+    .headroom-bg-section + section, .headroom-bg-section + header {
+        padding-top: {{ particle.mobilepadding|default('80') }}px !important;
+    }
+}                
+{% endif %}      
+
+{% if particle.pinnedbg == 'custom' %}
+{{ particle.section|default('#g-navigation') }} {
+    background-color: {{ particle.custombg }} !important;
+}
+{% endif %}
+</style>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
+    <script>
+        // User Section
+        var myElement = document.querySelector("{{ particle.section|default('#g-navigation') }}");
+        var headroom  = new Headroom(myElement, {
+            "offset": {{ particle.offset|default(0) }},
+            "tolerance": {{ particle.tolerance|default(0) }},
+            // Custom CSS Classes
+            classes : {
+                // when element is initialised
+                initial : "headroom-bg-section",
+                // when scrolling up
+                pinned : {% if particle.autohide == 'enabled' and particle.display != 'slideshow-hide' %}"headroom--pinned"{% else %}"headroom--pinned-up"{% endif %},
+                // when scrolling down
+                unpinned : {% if particle.autohide == 'enabled' and particle.display != 'slideshow-hide' %}"headroom--unpinned"{% else %}"headroom--pinned-down"{% endif %},
+                // when above offset
+                top : "headroom--top",
+                // when below offset
+                notTop : "headroom--not-top",
+                // when at bottom of scoll area
+                bottom : "headroom--bottom",
+                // when not at bottom of scroll area
+                notBottom : "headroom--not-bottom"
+            }
+        });
+
+        {% if particle.display == 'enable-mobile' %}
+            {% if particle.autohide == 'enabled' %}
+            jQuery(document).ready(function () {
+                jQuery('.g-offcanvas-toggle').prependTo('{{ particle.section|default("#g-navigation") }}');
+             });   
+            {% else %}
+                document.body.classList.add("toggle-fixed");
+            {% endif %} 
+        {% elseif particle.display == 'disable-mobile' %}
+            document.body.classList.add("disable-mobile");
+        {% endif %}
+
+        {% if particle.display == 'slideshow-hide' %}
+            jQuery(document).ready(function () {
+                jQuery(window).scroll(function() { 
+                    var body = jQuery('body');
+                    var scroll = jQuery(window).scrollTop();
+                    var height = jQuery(window).height();
+
+                    if (scroll > (height - 250)) {
+                        body.addClass('scrolling-enable');
+                    } else if (scroll < (height - 250) && body.hasClass('scrolling-enable')) {
+                        body.removeClass('scrolling-enable');
+                    }
+                });
+            });
+        {% endif %}    
+
+        headroom.init();
+    </script>
+{% endblock %}

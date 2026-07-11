@@ -1,0 +1,93 @@
+.ui-tabs {
+    position: relative;
+
+    .ui-tabs-nav {
+        margin: 0;
+        display: flex;
+
+        li {
+            list-style: none;
+            float: left;
+            border-bottom-width: 0;
+            padding: 0;
+            outline: none;
+
+            @include breakpoint(mobile-only) {
+                float: none;
+                text-align: center;
+                font-size: 0.85em;
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            &.ui-state-disabled .ui-tabs-anchor {
+                cursor: text;
+            }
+
+            &.ui-tabs-loading .ui-tabs-anchor {
+                cursor: text;
+            }  
+        }
+
+        .ui-tabs-anchor {
+            text-decoration: none;            
+        }
+    }
+}
+
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+    cursor: pointer;
+}
+
+.g-contenttabs {
+    .g-contenttabs-tab-wrapper-container {
+        list-style: none;
+        margin-left: 15px;
+    }
+
+    .g-contenttabs-tab {
+        outline: none;
+        color: inherit !important;
+    }
+
+    .g-contenttabs-tab-wrapper-head {
+        margin-right: 5px;
+
+
+
+        .g-contenttabs-tab-title {
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 3px 3px 0 0;
+            opacity: 1;
+            color: #808080;
+            @include breakpoint(mobile-only) {
+                padding: 8px;
+            }    
+            &:hover {
+                background: #E8EBED;
+            }
+        }
+    }
+
+    .g-contenttabs-content-wrapper-container {
+        list-style: none;
+        margin: 0;
+        background: $white;
+        padding: 15px;
+        @include breakpoint(mobile-only) {
+            padding: 15px 25px;
+        }    
+    }
+}
+
+.ui-tabs-active {
+    .g-contenttabs-tab-wrapper-head {
+        .g-contenttabs-tab-title {
+            background: #ffffff;
+            &:hover {
+                background: #ffffff;
+            }
+        }
+    }
+}

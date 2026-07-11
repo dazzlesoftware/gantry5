@@ -1,0 +1,451 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1483618411
+layout:
+  /container-overlay/:
+    -
+      -
+        'sideoverlay 40': {  }
+      -
+        'mainoverlay 60': {  }
+  top: {  }
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - 'custom-9594 60'
+      - 'blockcontent-6851 40'
+  /header/:
+    -
+      - simplecontent-1261
+    -
+      - 'headertabs-5341 50'
+      - 'accordionslider-2330 50'
+  /utility/:
+    -
+      - simplecontent-6615
+    -
+      - newsletter-8763
+  /feature/:
+    -
+      - simplecontent-9825
+    -
+      - contenttabs-6373
+  /expanded/:
+    -
+      - simplecontent-8234
+    -
+      - 'accordion-5298 50'
+      - 'accordion-4924 50'
+    -
+      - custom-8122
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'logo-6801 33.3'
+      - 'custom-5910 33.3'
+      - 'custom-8794 33.3'
+    -
+      - 'custom-3546 33.3'
+      - 'custom-5083 33.3'
+      - 'custom-3183 33.3'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  sideoverlay:
+    type: section
+    subtype: aside
+    title: 'Overlay Sidebar'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainoverlay:
+    type: section
+    subtype: main
+    title: 'Overlay Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-overlay:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-navigation
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-slideshow
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-utility
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-expanded-homeparticles
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-bottom
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-9594:
+    title: Intro
+    attributes:
+      html: '<strong>Gemini</strong> is the integration of <strong>modern design</strong> and   a <strong>next-generation framework</strong> in one seamless experience.'
+    block:
+      class: g-gemini-intro
+  blockcontent-6851:
+    title: 'Content Blocks'
+    attributes:
+      class: ''
+      title: ''
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          accent: accent3
+          icon: 'fa fa-twitter'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Build a beautiful website in minutes with Gemini.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 2+
+        -
+          accent: accent1
+          icon: 'fa fa-facebook-official'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Quickly customize with Gantry 5.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 40+
+  simplecontent-1261:
+    title: 'Bringing Innovation Forward'
+    attributes:
+      class: ''
+      title: 'Bringing Innovation Forward'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: 'RocketTheme has built a professional theme that is perfect for a wide range of websites including: design firms, architects, data science, finance, & more.'
+          main_content: ''
+          readmore_label: 'Read more &rarr;'
+          readmore_link: '#'
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+    block:
+      class: title-small
+      variations: center
+  headertabs-5341:
+    title: 'Header Tabs'
+    attributes:
+      items:
+        -
+          tab_image: 'gantry-media://home/header/img-01.jpg'
+          tab_desc: "Create a dynamic user experience"
+          tab_name: Experience
+        -
+          tab_image: 'gantry-media://home/header/img-01.jpg'
+          tab_desc: 'Building immersive experiences'
+          tab_name: Professionalism
+  accordionslider-2330:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      displayitems: '3'
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      accordionTitle: Features
+      accordionSubtitle: 'Available Now'
+      items:
+        -
+          image: ''
+          title: 'Font Picker'
+          desc: 'Quickly Find & Select Fonts &rarr;'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 1'
+        -
+          image: ''
+          title: 'Menu Editor'
+          desc: 'Enhance Your Website''s Menus &rarr;'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 2'
+        -
+          image: ''
+          title: 'Color Picker'
+          desc: 'Choose the Right Color for Your Site &rarr;'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 3'
+        -
+          image: ''
+          title: 'Layout Manager'
+          desc: 'Easily Configure Your Site''s Layout &rarr;'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 4'
+        -
+          image: ''
+          title: 'Icon Picker'
+          desc: 'Choose from Hundreds of Icons &rarr;'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 5'
+        -
+          image: ''
+          title: 'File Picker'
+          desc: 'Upload, Browse, and Select Files &rarr;'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 6'
+  simplecontent-6615:
+    title: 'Collaborating with teams'
+    attributes:
+      class: ''
+      title: 'Working with Gantry 5'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: '<strong>Digital Age.</strong> New Age.'
+          author: ''
+          leading_content: 'Gantry 5 is a next-generation framework built with the latest in web technologies. Equipped with human-readable Twig and YAML files, and workable with a drag-and-drop interface, it truly is a next-generation framework.'
+          main_content: ''
+          readmore_label: 'Get In Touch'
+          readmore_link: '#'
+          readmore_class: button
+          readmore_target: _self
+          title: 'Item 1'
+    block:
+      class: title-small
+      variations: center
+  newsletter-8763:
+    attributes:
+      headtext: '<i class="fa fa-envelope-open-o" aria-hidden="true"></i>'
+      sidetext: 'Subscribe to our newsletter<span class="hidden-phone"> to get the latest news on our work</span>.'
+      inputboxtext: 'Enter email here..'
+    block:
+      class: g-utility-newsletter
+      variations: 'box3 center'
+  simplecontent-9825:
+    title: 'Innovation. Is Key.'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: '<strong>Innovation.</strong> Is Key.'
+          author: ''
+          leading_content: 'Gemini highlights your content by eliminating distracting elements and focusing on what matters most.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Innovation. Is Key.'
+    block:
+      variations: center
+  contenttabs-6373:
+    title: 'Content Tabs'
+    attributes:
+      items:
+        -
+          description: 'Gemini is packed with features enabling you to get more done on the teme level. This ensures a consistent and reliable user experience.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          content: '<blockquote>Design is not just what it looks like and feels like. Design is how it works.<cite>Steve Jobs</cite></blockquote>'
+          title: Consistency
+        -
+          description: 'Gemini is built with a wide range of website types in mind. This, in addition to the flexible Gantry 5 framework, makes it exceedingly versatile.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          content: "<blockquote>Stay committed to your decisions, but stay flexible in your approach.<cite>Tony Robbins</cite></blockquote>\n\n\n"
+          title: Versatility
+        -
+          description: 'Both the Gantry 5 framework and the Gemini theme are created to ensure that your website is perfectly optimized for performance and ease of use.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          content: '<blockquote>"There''s a way to do it better—find it."<cite>Thomas Edison</cite></blockquote>'
+          title: Optimization
+  simplecontent-8234:
+    title: 'Blog. What’s happening.'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: '<strong>RocketLauncher.</strong> Get going, quickly.'
+          author: ''
+          leading_content: 'The Gemini RocketLauncher makes it easy to get started with your next website.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Blog. What’s happening.'
+    block:
+      class: title-small
+      variations: center
+  accordion-5298:
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          desc: 'January 1st, 2017'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Perfect for A Variety of Users'
+    block:
+      class: 'nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  accordion-4924:
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          desc: 'January 1st, 2017'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Pre-designed Pages and Styles'
+    block:
+      class: 'nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  custom-8122:
+    title: 'Custom HTML'
+    attributes:
+      html: '<a target="_self" href="#" class="button">Read More</a>'
+    block:
+      variations: center
+  logo-6801:
+    title: 'Logo / Image'
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  custom-5910:
+    title: 'Find Us'
+    attributes:
+      html: '<h2 class="g-title">Find Us</h2>'
+    block:
+      class: 'nomarginbottom nopaddingbottom hidden-phone'
+  custom-8794:
+    title: Contact
+    attributes:
+      html: '<h2 class="g-title">Contact</h2>'
+    block:
+      class: 'nomarginbottom nopaddingbottom hidden-phone'
+  custom-3546:
+    title: 'Custom HTML'
+    attributes:
+      html: 'All demo content is for sample purposes only, intended to represent a live site. Please use the RocketLauncher to install an equivalent of the demo, all images will be replaced with sample images.'
+    block:
+      class: 'nopaddingtop nomargintop'
+  custom-5083:
+    title: 'Custom HTML'
+    attributes:
+      html: "1234 Gemini Street <br />\nRocketTheme<br />\n<strong>Club</strong> <br />\n56789 <br />"
+    block:
+      class: 'nomargintop nopaddingtop'
+  custom-3183:
+    title: 'Custom HTML'
+    attributes:
+      html: "<strong>Email</strong><br />\nmail@gemini-theme.com <br />\n<br />\n<strong>Phone</strong><br />\n+001 0231 123 32 <br />\n"
+    block:
+      class: 'nomargintop nopaddingtop'

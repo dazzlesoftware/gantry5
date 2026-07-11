@@ -1,0 +1,79 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#E10339'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#030303'
+      text-active-color: '#E10339'
+    accent:
+      color-1: '#E10339'
+    button:
+      text-color: '#030303'
+      background-color: '#E10339'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#FFFFFF'
+      text-color-active: '#FFFFFF'
+      sublevel-text-color: '#000000'
+      sublevel-text-color-active: '#000000'
+      sublevel-background: '#FFFFFF'
+      sublevel-background-active: 'rgba(225, 3, 57, 0.5)'
+    font:
+      family-title: 'asap, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'ptserif, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: '#000000'
+      text-color: '#FFFFFF;'
+    navigation:
+      background: '#000000'
+      text-color: '#FFFFFF;'
+    slideshow:
+      background: '#000000'
+      text-color: '#FFFFFF;'
+    header:
+      background: '#FFFFFF'
+      text-color: '#000000'
+    above:
+      background: '#000000'
+      text-color: '#FFFFFF;'
+    feature:
+      background: '#FFFFFF'
+      background-image: 'gantry-media://backgrounds/feature/bg-01.jpg'
+      text-color: '#000000'
+    showcase:
+      background: '#FFFFFF'
+      text-color: '#000000'
+    utility:
+      background: '#FFFFFF'
+      text-color: '#000000'
+    main:
+      background: '#FFFFFF'
+      text-color: '#000000'
+    expanded:
+      background: '#FFFFFF'
+      text-color: '#000000'
+    extension:
+      background: '#FFFFFF'
+      text-color: '#000000'
+    bottom:
+      background: '#000000'
+      text-color: '#FFFFFF;'
+    footer:
+      background: '#000000'
+      text-color: '#666666'
+    copyright:
+      background: '#000000'
+      text-color: '#666666'
+    offcanvas:
+      background: '#E10339'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

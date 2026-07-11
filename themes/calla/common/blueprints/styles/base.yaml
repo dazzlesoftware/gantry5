@@ -1,0 +1,19 @@
+name: Base Styles
+description: Base styles for the Calla theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#4e4e4e"
+    text-active-color:
+      type: input.colorpicker
+      label: Base Text Active Color
+      default: "#f1e5f8"

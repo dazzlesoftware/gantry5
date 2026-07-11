@@ -1,0 +1,21 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/jquery.singlePageNav.min.js')) %}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('{{ particle.section|default("#g-navigation") }}').singlePageNav({
+		{% if particle.offset == "enabled" %}
+		offset: jQuery('#g-navigation').outerHeight(),
+		{% endif %}
+		filter: ':not({{ particle.class }})',
+		{% if particle.updateHash == "enabled" %}
+		updateHash: true,
+		{% endif %}
+		speed: {{ particle.speed|default(400) }},
+		currentClass: '{{ particle.currentClass|default("current") }}'
+	});
+});
+</script>
+{% endblock %}

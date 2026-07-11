@@ -1,0 +1,9 @@
+gemini-theme:
+  title: 'Gemini Theme'
+  description: 'Sample menu for Gemini theme.'
+
+  items:
+    gemini:
+      title: 'Home'
+      outline: home
+      home: 1

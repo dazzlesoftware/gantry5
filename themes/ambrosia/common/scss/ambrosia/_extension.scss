@@ -1,0 +1,20 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;     
+	// Title and Heading
+	.g-title, .g-headline,
+	h1, h2, h3, h4, h5, h6 {
+		color: darken($extension-text-color, 25%);
+	}
+	.g-tag {
+		opacity: 0.5;
+		font-weight: normal;
+	}
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

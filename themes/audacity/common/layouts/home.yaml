@@ -1,0 +1,830 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: home
+  timestamp: 1556907571
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - slider-9711
+  /utility/:
+    -
+      - horizontalmenu-6073
+  /feature/:
+    -
+      - 'featuretabs-1613 75'
+      - 'custom-7718 25'
+  /maintop/:
+    -
+      -
+        'maintop-a 75':
+          -
+            - showcase-7978
+          -
+            - blockcontent-5937
+      -
+        'maintop-b 25':
+          -
+            - contenttabs-6240
+  /container-main/:
+    -
+      -
+        'sidebar 33': {  }
+      -
+        'main 34': {  }
+      -
+        'aside 33': {  }
+  mainbottom: {  }
+  /extension/:
+    -
+      - stripsslider-7996
+  /bottom/:
+    -
+      - 'lists-7854 33.3'
+      - 'imageslider-9775 33.3'
+      - 'imagegrid-9587 33.3'
+  /footer/:
+    -
+      -
+        'footer-a 82':
+          -
+            - 'custom-4270 20'
+            - 'custom-7107 20'
+            - 'custom-6368 20'
+            - 'custom-3398 20'
+            - 'custom-4215 20'
+      -
+        'footer-b 18':
+          -
+            - social-1149
+          -
+            - mailchimp-1563
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-showcase
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-utility
+      variations: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  maintop-a:
+    type: section
+    attributes:
+      class: ''
+      variations: ''
+  maintop-b:
+    type: section
+  maintop:
+    type: container
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  main:
+    type: section
+  aside:
+    type: section
+  container-main:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-extension
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer-a:
+    title: 'Footer A'
+  footer-b:
+    title: 'Footer B'
+  footer:
+    type: container
+    attributes:
+      boxed: ''
+      class: fp-footer
+      extra: {  }
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  slider-9711:
+    attributes:
+      class: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: disabled
+      dots: thumbs
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          title: 'A New Form for the Latest News'
+          desc: '<p class="rt-title-tag">Content Focused</p><p><span class="rt-displayinline">Audacity is perfect for any news or magazine site<span class="visible-desktop">, that display vast amounts of content, in an elegant manner</span>.</span></p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          title: 'An Easy to Use Content System'
+          desc: '<p class="rt-title-tag">Layout Manager</p><p><span class="rt-displayinline">The Layout Manager is a versatile, content system<span class="visible-desktop"> that has multiple particles, options, and a rich user interface</span>.</span></p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 2'
+        -
+          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          title: 'A Versatile Foundation'
+          desc: '<p class="rt-title-tag">Gantry Framework</p><p><span class="rt-displayinline">Gantry is a powerful cross-platform framework<span class="visible-desktop"> that sits at the heart of the template, powering various features</span>.</span></p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 3'
+        -
+          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          title: 'Highly Flexible Menu System'
+          desc: '<p class="rt-title-tag">Multiple Menu Options</p><p><span class="rt-displayinline">Dropdown Menu is a CSS based system, with advanced features<span class="visible-desktop"> such as multiple columns and inline modules</span>.</span></p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 4'
+    block:
+      variations: 'nomarginall nopaddingall'
+  horizontalmenu-6073:
+    title: 'Horizontal Menu'
+    attributes:
+      target: _parent
+      items:
+        -
+          text: World
+          link: '#'
+          name: 'Item 1'
+        -
+          text: Politics
+          link: '#'
+          name: 'Item 2'
+        -
+          text: Business
+          link: '#'
+          name: 'Item 3'
+        -
+          text: Jobs
+          link: '#'
+          name: 'Item 4'
+        -
+          text: Science
+          link: '#'
+          class: ''
+          name: 'Item 5'
+        -
+          text: Health
+          link: '#'
+          class: ''
+          name: 'Item 6'
+        -
+          text: Music
+          link: '#'
+          class: ''
+          name: 'Item 7'
+        -
+          text: Movies
+          link: '#'
+          class: ''
+          name: 'Item 8'
+        -
+          text: Arts
+          link: '#'
+          class: hidden-phone
+          name: 'Item 9'
+        -
+          text: Food
+          link: '#'
+          class: visible-desktop
+          name: 'Item 10'
+        -
+          text: Travel
+          link: '#'
+          class: visible-desktop
+          name: 'Item 11'
+        -
+          text: Blogs
+          link: '#'
+          class: visible-desktop
+          name: 'Item 12'
+        -
+          text: Opinion
+          link: '#'
+          class: visible-large
+          name: 'Item 13'
+        -
+          text: Technology
+          link: '#'
+          class: visible-large
+          name: 'Item 14'
+        -
+          text: Classifieds
+          link: '#'
+          class: visible-large
+          name: 'Item 15'
+  featuretabs-1613:
+    title: 'Feature Tabs'
+    attributes:
+      items:
+        -
+          title: '<span>A responsive layout that auto-adapts to <span class="hidden-tablet">multiple </span><span class="visible-tablet">most </span>devices</span>'
+          titletag: 'Flexible Structure'
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'Responsive Layout'
+          content: '<p>A responsive structure adapts automatically to the viewing device, whether desktop, tablet or mobile, and adjusts accordingly for a seamless and uniform experience.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 1'
+        -
+          title: 'Powered by the free & popular Gantry Framework'
+          titletag: 'Free/GPL Framework'
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'Gantry Framework'
+          content: '<p>Gantry is the cross-platform framework that sits at the center of the theme, providing a rich library of standardized features, packaged with an intuitive control panel.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 2'
+        -
+          title: 'Configurable CSS dropdown navigation system'
+          titletag: 'CSS Based'
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'CSS Navigation'
+          content: '<p>The dropdown menu benefits from inline icons, subtext, modules and positions, alongside multiple columns, all configurable on a per-menu-item basis.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 3'
+        -
+          title: 'An array of six customizable preset variations'
+          titletag: 'Multiple Presets'
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'Multiple Presets'
+          content: '<p>Choose from a selection of six preset style variations, each that can be extensively customized to create a unique appearance, with great ease and swiftness.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 4'
+        -
+          class: bottom-tablet
+          title: '<span>Personalize modular content with <span class="hidden-tablet">stylistic </span><span class="visible-tablet">class </span>suffixes</span>'
+          titletag: Individualize
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'Module Suffixes'
+          content: '<p>Select from an assortment of stylistic and structural module class suffixes, that can be compounded, to add individual character and control to any module.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 5'
+        -
+          class: 'hidden-tablet bottom-phone'
+          title: 'Basic structural support for Right-To-Left languages'
+          titletag: Compatibility
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'RTL Support'
+          content: '<p>Enabling an RTL language and the RTL setting in the template''s Advanced settings, will activate the RTL compatibility styling, to provide better structural support.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 6'
+        -
+          class: 'hidden-tablet hidden-phone'
+          title: 'Exquisite graphs with HTML5 Canvas and Chart.js'
+          titletag: 'Data Display'
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'Data Display'
+          content: '<p>Chart.js provides a mechanism for dynamically generating graphs via HTML5, which can be used for basis data presentation or for more creative constructions.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 7'
+        -
+          class: 'hidden-tablet hidden-phone'
+          title: 'Diverse content typography & FontAwesome icons'
+          titletag: 'Content Enhancement'
+          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          alt: 'Content Enhancement'
+          content: '<p>A rich portfolio of template typography, to enhance the various elements of the page, alongside the vast library of FontAwesome icons, to add depth and character to content.</p>'
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 8'
+    block:
+      class: fp-feature-a
+  custom-7718:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div>\n\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\n\t<h2 class=\"title\"><span><span class=\"hidden-tablet\">An e</span><span class=\"visible-tablet\">E</span>xtensive<span class=\"hidden-tablet\"> array of</span> Color Chooser controls</span></h2>\n\t<p class=\"rt-title-tag\">Customization</p>\n\t<p class=\"nomarginbottom\"><span>Configure text and background colors<span class=\"hidden-tablet\"> for the various sections</span>.</span></p>\n\t<a href=\"#\" class=\"readon3\">Read More</a>\n</div>\n\n<hr />\n\n<div>\n\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\n\t<h2 class=\"title\"><span>Fresh Content <span class=\"hidden-tablet\">Display </span>Layouts &amp; Particles</span></h2>\n\t<p class=\"rt-title-tag\">Layout</p>\n\t<p class=\"nomarginbottom\"><span>New particles for Audacity include<span class=\"hidden-tablet\">: Slider and Feature Tabs</span>.</span></p>\n\t<a href=\"#\" class=\"readon3\">Read More</a>\n</div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: fp-feature-b
+  showcase-7978:
+    attributes:
+      class: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
+          title: '<span class="rt-displayinline"><span class="visible-desktop">The </span>Gantry<span class="visible-desktop"> Framework provides</span><span class="hidden-desktop">,</span> a powerful foundation</span>'
+          desc: '<p><span class="rt-displayinline">Gantry is a cross-platform framework with a vast library of standardized features and functions<span class="visible-desktop">, to make powerful, flexible themes</span>.</span></p><p class="visible-large">Templates are easy to manage with Gantry, with its a rich and intuitive user interface, allowing for swift but extensive customization.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
+          title: '<span class="rt-displayinline">Choose from <span class="visible-desktop">Multiple</span> Menu<span class="visible-desktop"> Options</span><span class="visible-desktop"> with Smartphone Support</span></span>'
+          desc: '<p><span class="rt-displayinline">Dropdown Menu is a CSS based navigation system with powerful features such as multiple columns<span class="visible-desktop"> and inline modules</span>.</span></p><p class="visible-large">Vertical menu particles are also available to display in a sidebar and other positions or in a separate module (usually sidebar) to accommodate the parent items.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 2'
+        -
+          image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
+          title: '<span class="rt-displayinline">An <span class="visible-desktop">Assortment</span><span class="hidden-desktop">Array</span> of Examples Pages<span class="visible-desktop"> to Exhibit Layout Flexibility</span></span>'
+          desc: '<p><span class="rt-displayinline">The frontpage offers only one view of how Audacity can appear, therefore, <span class="visible-desktop">to show its full flexibility, </span>we provide sample pages.</span></p><p class="visible-large">Also demonstrated are the core Joomla components such as Contact and Blog, alongside different module layouts, and Chart.js graphs.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 3'
+    block:
+      class: fp-showcase-maintop
+      variations: box1
+  blockcontent-5937:
+    title: 'Block Content'
+    attributes:
+      class: ''
+      title: ''
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          title: ''
+          accent: none
+          icon: 'fa fa-camera'
+          img: 'gantry-media://home/fp-maintop/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'A versatile, content switchblade extension with a rich UI <span><a class="learnmore" href="#">Learn More</a></span>'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Item 1'
+        -
+          title: ''
+          accent: none
+          icon: 'fa fa-database'
+          img: 'gantry-media://home/fp-maintop/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'A powerful cross-platform framework with various features <span><a class="learnmore" href="#">Learn More</a></span>'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Item 2'
+        -
+          title: ''
+          accent: none
+          icon: 'fa fa-car'
+          img: 'gantry-media://home/fp-maintop/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Menus with advanced features such as inline modules <span><a class="learnmore" href="#">Learn More</a></span>'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Item 3'
+    block:
+      class: fp-maintop
+  contenttabs-6240:
+    title: 'Content Tabs'
+    attributes:
+      items:
+        -
+          content: "<div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Uniquely Design your Particle Content</span><span class=\"visible-tablet\">Particle Design</span></span>\t</h2>\t<p class=\"rt-title-tag\">\t\tStyle\t</p>\t<p>\t\t<span>A series of classes to individualize <span class=\"hidden-tablet\">title and background</span> style.</span>\t</p></div><hr /><div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Individualize your</span> Position Structure</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tLayout\t</p>\t<p>\t\t<span>Individually adjust margins and padding <span class=\"hidden-tablet\">for particles.</span></span>\t</p></div>"
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon
+          title: Top
+        -
+          content: "<div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Maximum Performance with</span> RokBooster</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tSpeed\t</p>\t<p>\t\t<span>Combine and consolidate CSS, J<span class=\"hidden-tablet\">ava</span>S<span class=\"hidden-tablet\">cript</span>, Fonts and Images.</span>\t</p></div><hr/><div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span>R<span class=\"hidden-tablet\">ight-</span>T<span class=\"hidden-tablet\">o-</span>L<span class=\"hidden-tablet\">eft Gantry &amp; Template</span> Support</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tMulti-Language\t</p>\t<p>\t\t<span>Audacity has basic <span class=\"hidden-tablet\">structural</span> support for Right-To-Left <span class=\"visible-large\">languages.</span></span>\t</p></div>"
+          linklabel: 'Read More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon
+          title: Hot
+    block:
+      class: fp-tabs-maintop
+  stripsslider-7996:
+    title: 'Strips Slider'
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      displayitems: '3'
+      mobiledisplayitems: '1'
+      nav: enabled
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          title: 'A Particle for Showcasing Feature Content'
+          titletag: Slider
+          desc: 'A slideshow layout, with configurable options'
+          link: '#'
+          linklabel: 'Read More'
+          target: _self
+          buttonclass: readon3
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          title: 'A Content Grid Particle that Splits itself into Rows'
+          titletag: Strips
+          desc: 'A horizontal content block layout, split into defined rows'
+          link: '#'
+          linklabel: 'Read More'
+          target: _self
+          buttonclass: readon3
+          name: 'Item 2'
+        -
+          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          title: 'Content Tabs with Multiple Options'
+          titletag: Tabs
+          desc: 'A tabbed layout with support for multiple animation options'
+          link: '#'
+          linklabel: 'Read More'
+          target: _self
+          buttonclass: readon3
+          name: 'Item 3'
+        -
+          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          title: 'A Tabular Data Presenter Particle'
+          titletag: Tables
+          desc: 'A tabular layout with image support, plus rows for text'
+          link: '#'
+          linklabel: 'Read More'
+          target: _self
+          buttonclass: readon3
+          name: 'Item 4'
+        -
+          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          title: 'A Text Snippet or Newsticker Content Layout'
+          titletag: Headlines
+          desc: 'A content snippet or newsticker layout with label support'
+          link: '#'
+          linklabel: 'Read More'
+          target: _self
+          buttonclass: readon3
+          name: 'Item 5'
+        -
+          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          title: 'A Content Particle Well Suited for Testimonials'
+          titletag: Testimonials
+          desc: 'A content particle, designed for quotes and testimonials'
+          link: '#'
+          linklabel: 'Read More'
+          target: _self
+          buttonclass: readon3
+          name: 'Item 6'
+  lists-7854:
+    attributes:
+      class: ''
+      title: 'Breaking News'
+      description: ''
+      displayitems: '5'
+      accordion: enabled
+      nav: enabled
+      dots: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          title: '<span>The RocketLauncher <span class="hidden-tablet">package </span>installs a demo <span class="hidden-large">copy</span><span class="visible-large">equivalent</span> onto your site</span>'
+          desc: '<span>A default package with custom sample data and images from the demo.<span class="visible-large"> Content images are replaced with sample tiled substitutes due to copyright.</span></span>'
+          name: 'Item 1'
+        -
+          title: '<span>An incredible display and experience<span class="hidden-tablet">  for your visitors.</span></span>'
+          desc: '<span>Audacity is powered by the Gantry 5 framework, a brilliant combination of power and simplicity <span class="visible-large">that makes creating a unique website easy.</span></span>'
+          name: 'Item 2'
+        -
+          title: '<span>Custom notice pages with integrated template styling<span class="visible-large"> for offline and error displays</span></span>'
+          desc: '<span>Audacity has a custom offline page with an optional countdown feature<span class="visible-large"> to inform visitors of when your site will launch</span>.</span>'
+          name: 'Item 3'
+        -
+          title: '<span>Comprehensive catalog of online guides<span class="visible-desktop"> for our themes &amp; extensions</span></span>'
+          desc: '<span>RocketTheme provides free online documentation for our products<span class="visible-large">, including Gantry, our templates and extensions</span>.</span>'
+          name: 'Item 4'
+        -
+          title: '<span>Choose the Right Font in Seconds<span class="visible-desktop">  with Gantry’s Font Picker</span></span>'
+          desc: '<span>Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts<span class="visible-large"> with over 850 font families to choose from. Features live preview and search.</span></span>'
+          name: 'Item 5'
+        -
+          title: '<span>RokBooster improves site performance and page load speed</span>'
+          desc: '<span>RokBooster compresses and consolidates CSS, JavaScript, Fonts, inline and background images, to improve site speed.</span>'
+          name: 'Item 6'
+    block:
+      class: fp-bottom-a
+  imageslider-9775:
+    title: 'Image Slider'
+    attributes:
+      class: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/fp-showcase-bottom/img-01.jpg'
+          title: '<span class="rt-displayinline">Audacity features a diverse collection of <span class="visible-large">different</span><span class="hidden-large">distinct</span> particles and options</span>'
+          desc: '<p class="rt-title-tag">Powerful Particles</p><p>Particles operate as customizable blocks that form the flesh of the frontend, from placeholders to self contained content and functions.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/fp-showcase-bottom/img-01.jpg'
+          title: '<span class="rt-displayinline">A responsive layout dynamically adjusts to the viewing device, such as tablet</span>'
+          desc: '<p class="rt-title-tag">Layout Controls</p><p><span class="rt-displayinline">A responsive structure allows for a seamless experience across your entire site, automatically adjusting to different screen resolutions<span class="visible-tablet"> and devices</span>.</span></p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 2'
+        -
+          image: 'gantry-media://home/fp-showcase-bottom/img-01.jpg'
+          title: 'The Color Chooser provides an intuitive and extensive UI for swift customization'
+          desc: '<p class="rt-title-tag">Custom Style</p><p>Each of Audacity''s module rows have administrator configurable settings for background and text color, allowing for swift changes without the need to code.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon3
+          name: 'Item 3'
+    block:
+      class: fp-bottom-b
+      variations: box1
+  imagegrid-9587:
+    title: 'Image Grid'
+    attributes:
+      desc: '<p class="hidden-large">All demo content is for sample purposes only. All content images are freely available from tookapic.com.<span class="visible-tablet"> Use the <a href="#">RocketLauncher</a> to install a demo equivalent onto your site.</span></p>'
+      album: Grid
+      sqinfo: ''
+      imagegriditems:
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Arifin Finly - Developer'
+          title: 'Item 1'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Kevin DuCommun - Lead Developer'
+          title: 'Item 2'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'James Spencer - Developer / Support'
+          title: 'Item 3'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Karol Orzel - Developer'
+          title: 'Item 4'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Djamil Legato - Lead Developer'
+          title: 'Item 5'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Jakub Baran - Developer'
+          title: 'Item 6'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Sam Mahoney - Developer'
+          title: 'Item 7'
+        -
+          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          caption: 'Ryan Pierson - WordSmith'
+          title: 'Item 8'
+    block:
+      class: fp-bottom-c
+  custom-4270:
+    title: Website
+    attributes:
+      title: Website
+      titletag: ''
+      html: "<ul>\n\t<li><a href=\"#\">News</a></li>\n\t<li><a href=\"#\">Blog</a></li>\n\t<li><a href=\"#\">Directory</a></li>\n\t<li><a href=\"#\">E-Commerce</a></li>\n\t<li><a href=\"#\">Corporate</a></li>\n\t<li><a href=\"#\">Dating</a></li>\n\t<li><a href=\"#\">Community</a></li>\n\t<li><a href=\"#\">Religious</a></li>\n</ul>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  custom-7107:
+    title: Theme
+    attributes:
+      title: Theme
+      titletag: ''
+      html: "<ul>\n\t<li><a href=\"#\">Template</a></li>\n\t<li><a href=\"#\">Design</a></li>\n\t<li><a href=\"#\">Pattern</a></li>\n\t<li><a href=\"#\">Overlay</a></li>\n\t<li><a href=\"#\">Style</a></li>\n\t<li><a href=\"#\">Layout</a></li>\n\t<li><a href=\"#\">Framework</a></li>\n\t<li><a href=\"#\">Skin</a></li>\n</ul>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  custom-6368:
+    title: Content
+    attributes:
+      title: Content
+      titletag: ''
+      html: "<ul>\n\t<li><a href=\"#\">Fonts</a></li>\n\t<li><a href=\"#\">Typography</a></li>\n\t<li><a href=\"#\">Menus</a></li>\n\t<li><a href=\"#\">Blog Posts</a></li>\n\t<li><a href=\"#\">Videos</a></li>\n\t<li><a href=\"#\">Icons & Images</a></li>\n\t<li><a href=\"#\">Documentation</a></li>\n\t<li><a href=\"#\">Testimonials</a></li>\n</ul>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  custom-3398:
+    title: Extension
+    attributes:
+      title: Extension
+      titletag: ''
+      html: "<ul>\n\t<li><a href=\"#\">Plugins</a></li>\n\t<li><a href=\"#\">Component</a></li>\n\t<li><a href=\"#\">Modules</a></li>\n\t<li><a href=\"#\">Widgets</a></li>\n\t<li><a href=\"#\">Gizmos</a></li>\n\t<li><a href=\"#\">Add-on</a></li>\n\t<li><a href=\"#\">Particle</a></li>\n\t<li><a href=\"#\">Application</a></li>\n</ul>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  custom-4215:
+    title: More
+    attributes:
+      title: More
+      titletag: ''
+      html: "<ul>\n\t<li><a href=\"#\">SEO</a></li>\n\t<li><a href=\"#\">Hosting</a></li>\n\t<li><a href=\"#\">Page Speed</a></li>\n\t<li><a href=\"#\">Responsive</a></li>\n\t<li><a href=\"#\">HTML/CSS</a></li>\n\t<li><a href=\"#\">JavaScript</a></li>\n\t<li><a href=\"#\">Social Media</a></li>\n\t<li><a href=\"#\">CMS</a></li>\n</ul>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  social-1149:
+    attributes:
+      title: Connect
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'http://facebook.com/rockettheme'
+          name: Facebook
+        -
+          icon: 'fa fa-google fa-fw'
+          text: ''
+          link: '#'
+          class: ''
+          name: Google
+        -
+          icon: 'fa fa-pinterest fa-fw'
+          text: ''
+          link: '#'
+          class: ''
+          name: Pinterest
+        -
+          icon: 'fa fa-linkedin fa-fw'
+          text: ''
+          link: '#'
+          class: ''
+          name: LinkedIn
+        -
+          icon: 'fa fa-tumblr fa-fw'
+          text: ''
+          link: '#'
+          class: ''
+          name: Tumblr
+        -
+          icon: 'fa fa-instagram fa-fw'
+          text: ''
+          link: '#'
+          class: ''
+          name: Instagram
+        -
+          icon: 'fa fa-flickr fa-fw'
+          text: ''
+          link: '#'
+          class: ''
+          name: Flickr
+  mailchimp-1563:
+    title: MailChimp
+    attributes:
+      layout: g-newsletter-stack-fullwidth
+      style: g-newsletter-rounded
+      title: Newsletter
+      headtext: ''
+      inputboxtext: Email
+      buttontext: Join
+      buttonclass: ''
+    block:
+      class: fp-newsletter

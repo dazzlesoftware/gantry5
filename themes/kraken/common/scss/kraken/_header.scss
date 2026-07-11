@@ -1,0 +1,66 @@
+#g-header {
+	background: $header-background;
+	color: $header-text-color;
+	position: relative;
+	z-index: 100;
+	@if $header-background-image {
+    	background: $header-background url($header-background-image) top center no-repeat;
+    	background-size: cover;   	
+	} 
+
+	// Swiper
+	.swiper-container {
+	    .swiper-pagination-bullet {
+	        border: 2px solid $white;
+	        &.swiper-pagination-bullet-active {
+	            background: $header-text-color;
+	            border: 2px solid $header-text-color;
+	        }
+	    }		
+	}
+
+	.g-vertical-slides {
+		.swiper-slide-content {
+			border: 5px solid $header-text-color;
+			padding: 1rem 3rem;
+			@include breakpoint(small-mobile-range) {
+				padding: 1rem 1.5rem;
+			}			
+		}
+		.g-swiper-slide-content-title {
+		    font-size: $core-font-size + 2.5;  
+		    text-transform: uppercase;
+		    letter-spacing: 3rem;
+		    margin-right: -3rem;	
+			@include breakpoint(mobile-only) {
+				font-size: $core-font-size + 1;
+				letter-spacing: 0.25rem;
+				margin: 0;
+			}	
+			@include breakpoint(small-mobile-range) {
+				font-size: $core-font-size;
+				letter-spacing: 2px;
+				margin: 0;
+			}								    
+		}				
+	}
+
+	.g-carousel {
+		.swiper-slide-content {
+			border: 3px solid $accent-color-1;
+			margin: 2rem 0;
+			padding: 3rem;
+		}	
+		.swiper-button-next, .swiper-button-prev {
+			color: $header-text-color;
+		}		
+	}	
+	
+}
+
+@media print {
+	#g-header {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

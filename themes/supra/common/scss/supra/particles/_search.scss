@@ -1,0 +1,20 @@
+// Search Plugin
+.g-search {
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+
+    // Hide Search Field
+    .g-search-lightcase {
+        display: none;
+    }
+}
+
+#lightcase-content {
+    .search-input {
+        color: #3c3b3a;
+        &::-webkit-input-placeholder {
+            color: #82817c;
+        }
+    }
+}

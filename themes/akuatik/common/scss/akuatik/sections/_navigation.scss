@@ -1,0 +1,29 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+
+    a:not(.button) {
+        color: $navigation-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+
+    .active {
+        a:hover {
+            color: $navigation-text-color;
+        }
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

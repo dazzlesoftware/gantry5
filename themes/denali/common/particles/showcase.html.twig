@@ -1,0 +1,94 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% if particle.demo == "enabled" %}
+        {% if gantry.theme.preset %}
+            {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+        {% else %}
+            {% set preset = 1 %}
+        {% endif %}
+    {% endif %}
+
+    <div id="{{ id }}" class="g-showcase {{ particle.class|e }}" data-showcase-id="{{ id }}" data-showcase-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-showcase-items="{{ particle.items_amount }}" data-showcase-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-showcase-mobile="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-showcase-tablet="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-showcase-desktop="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-showcase-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-showcase-slides desktop">
+                {% for row in particle.sets %}
+                    {% if loop.first %}{% set set_id = 'finished' %}
+                    {% else %}{% set set_id = '' %}
+                    {% endif %}
+
+                    <div class="g-showcase-slides-set {% if particle.demo == "enabled" %}{% if loop.index == preset %}active{% endif %}{% else %}{% if loop.first %}active{% endif %}{% endif %}">
+                        {% for item in row.items %}
+                            <div class="g-showcase-slides-slide item-{{ loop.index }} {{ set_id }}">
+                                {% if item.image %}
+                                    <img src="{{ url(item.image)|e }}" alt="{{ item.title }}">
+                                {% endif %}
+                                {% if item.heading or item.description %}
+                                    <div class="g-showcase-slides-slide-content">
+                                        {% if item.heading %}
+                                            <h3>{{ item.heading }}</h3>
+                                        {% endif %}
+                                        {% if item.description %}
+                                            {{ item.description }}
+                                        {% endif %}
+                                        {% if item.buttontext %}
+                                            <div class="g-showcase-slides-slide-button">
+                                                <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <div class="owl-nav">
+                    <div class="owl-prev">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </div>
+                    <div class="owl-next">
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-showcase-slides mobile g-owlcarousel owl-carousel" data-showcase-slides-id="{{ id }}">
+                {% for row in particle.sets %}
+                    {% for item in row.items %}
+                        <div class="g-showcase-slides-slide item-{{ loop.index }}">
+                            {% if item.image %}
+                                <img src="{{ url(item.image)|e }}" alt="{{ item.title }}">
+                            {% endif %}
+                            <div class="g-showcase-slides-slide-content">
+                                {% if item.heading %}
+                                    <h3>{{ item.heading }}</h3>
+                                {% endif %}
+                                {% if item.description %}
+                                    {{ item.description }}
+                                {% endif %}
+                                {% if item.buttontext %}
+                                    <div class="g-showcase-slides-slide-button">
+                                        <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% else %}
+            {% include '@particles/showcase-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do 
+        gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+    <script src="{{ url('gantry-theme://js/showcase.init.js') }}"></script>
+{% endblock %}

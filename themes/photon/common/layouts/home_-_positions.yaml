@@ -1,0 +1,200 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_positions
+  timestamp: 1455821268
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-2781 60'
+      - 'social-1573 20'
+  /slideshow/:
+    -
+      - position-position-6133
+  /header/:
+    -
+      - 'position-position-3396 68'
+      - 'position-position-8088 32'
+  /above/: {  }
+  /showcase/:
+    -
+      - 'position-position-2384 68'
+      - 'position-position-3584 32'
+  /utility/: {  }
+  /feature/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - 'position-position-6479 68'
+      - 'position-position-5488 32'
+  /extension/:
+    -
+      - position-position-7609
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-8929 60'
+      - 'newsletter-8013 40'
+    -
+      - 'copyright-5748 48'
+      - 'position-position-9426 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: g-offset-padding
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: g-compact
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: nomarginbottom
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: nomargintop
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+    title: 'Logo / Image'
+  social-1573:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  position-position-6133:
+    title: 'FP Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-3396:
+    title: 'Module Position'
+    attributes:
+      key: header-a
+  position-position-8088:
+    title: 'Module Position'
+    attributes:
+      key: header-b
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-position-2384:
+    title: 'Module Position'
+    attributes:
+      key: showcase-a
+  position-position-3584:
+    title: 'Module Position'
+    attributes:
+      key: showcase-b
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-position-6479:
+    title: 'Module Position'
+    attributes:
+      key: expanded-a
+  position-position-5488:
+    title: 'Module Position'
+    attributes:
+      key: expanded-b
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-position-7609:
+    title: 'Module Position'
+    attributes:
+      key: extension-a
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-8929:
+    title: 'Logo / Image'
+    attributes:
+      class: g-footer-logo
+  newsletter-8013:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  copyright-5748:
+    block:
+      class: g-copyright
+  position-position-9426:
+    title: 'Module Position'
+    attributes:
+      key: copyright-a
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

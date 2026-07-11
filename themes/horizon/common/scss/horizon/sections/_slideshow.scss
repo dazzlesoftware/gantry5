@@ -1,0 +1,18 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background-color: $slideshow-background;
+
+    @if $slideshow-background-image {
+        background-image: url($slideshow-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

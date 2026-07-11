@@ -1,0 +1,57 @@
+name: Single Page Nav
+description: Add single page navigation scrolling animation.
+type: atom
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true     
+
+    section:
+      type: input.text
+      label: Section
+      description: Define the ID or class of the section where you want to target the single page nav.
+      default: '#g-navigation'
+
+    offset:
+      type: select.select
+      label: Offset
+      description: Enable or disable offset (best used for fixed header nav).
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    currentClass:
+      type: input.text
+      label: Current Class
+      description: The class to apply to the link in the nav bar corresponding to the active section on the page.
+      default: 'current'
+
+    updateHash:
+      type: select.select
+      label: Update Hash
+      description: Update URL with Hash in address bar when item is selected.
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    speed:
+      type: input.number
+      label: Speed
+      description: Speed of the scroll on click (ms).
+      default: 400
+
+    class:
+      type: input.text
+      label: Filter Class(es)
+      description: Name of selector in section that should NOT use SPN atom (separate multiple selectors by commas).
+      default: '.g-social a'

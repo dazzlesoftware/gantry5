@@ -1,0 +1,9 @@
+vermilion-theme:
+  title: 'Vermilion Theme'
+  description: 'Sample menu for Vermilion theme.'
+
+  items:
+    vermilion:
+      title: 'Home'
+      layout: home
+      home: 1

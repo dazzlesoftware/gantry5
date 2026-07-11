@@ -1,0 +1,111 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+
+    .fp-feature-02 {
+		border-radius: 0;
+		padding: 10px 15px;
+	}
+}
+
+#feature-block {
+	.rt-icon-badge {
+		margin-top: 35px;
+	}
+	.fp-feature-block {
+		position: relative;
+		padding-bottom: 25px;
+		transition: background 0.2s ease-in;
+		&:hover {
+			background: darken($feature-background, 3%);
+		}
+	}
+	.fp-feature-image-block {
+		position: relative;
+		overflow: hidden;
+		img {
+			transform: scale(1.0);
+			transition: all 0.3s ease-in-out;
+		}
+		&:hover {
+			.rt-desc-overlay {
+				opacity: 1;
+				visibility: visible;
+				h3, p {
+					transform: translateX(0);
+					transform: translateY(0);
+				}
+			}
+			img {
+				transform: scale(1.2);
+			}
+		}
+	}
+	.rt-desc-overlay {
+		color: $white;
+		background: fade-out($accent-color-3, 0.20);
+		font-family: get-font-family($font-family-alt);
+	    font-size: 1.45em;
+	    width: 100%;
+	    padding: 50px 25px;
+	    position: absolute;
+	    text-align: left;
+	    top: 0;
+	    bottom: 0;
+	    opacity: 0;
+	    visibility: hidden;
+	    box-sizing: border-box;
+	    transition: all 0.2s ease-in;
+		@include breakpoint(tablet-range) {
+			padding: 25px;
+		}
+	    h3 {
+		    font-weight: normal;
+		    line-height: 1.3em;
+		    transition: all 0.3s ease-in;
+	    }
+	    p {
+	    	transition: all 0.3s ease-in;
+	    }
+	    &.fp-feature-animate-1 {
+			h3 {
+		    	transform: translateX(-100%);
+			}
+			p {
+				transform: translateX(100%);
+			}
+	    }
+	    &.fp-feature-animate-2 {
+			h3 {
+		    	transform: translateY(-100%);
+			}
+			p {
+				transform: translateY(100%);
+			}
+	    }
+	    &.fp-feature-animate-3 {
+			h3 {
+		    	transform: translateX(-100%);
+			}
+			p {
+				transform: translateY(100%);
+			}
+	    }
+	    &.fp-feature-animate-4 {
+			h3 {
+		    	transform: translateY(-100%);
+			}
+			p {
+				transform: translateX(100%);
+			}
+	    }
+	}
+}
+
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,17 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-promo">
+        {% if particle.title %}
+            <h2>{{ particle.title|raw }}</h2>
+        {% endif %}
+        {% if particle.bgtitle %}
+            <div class="g-promo-bgtitle">{{ particle.bgtitle }}</div>
+        {% endif %}
+        {% if particle.buttontext %}
+            <div class="g-promo-buttontext">
+                <a href="{{ particle.buttonlink }}">{{ particle.buttontext }}</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

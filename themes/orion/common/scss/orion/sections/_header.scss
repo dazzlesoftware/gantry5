@@ -1,0 +1,21 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+    
+    .g-infolist-particle .g-infolist .g-infolist-item-title {
+        @if (lightness($base-background) > 50) {
+            color: darken($header-text-color, 40%);
+          } @else {
+            color: #ffffff; 
+          }
+    }
+
+
+}
+
+@media print {
+    #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

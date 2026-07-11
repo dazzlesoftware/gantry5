@@ -1,0 +1,28 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+
+    a:not(.readon) {
+    	color: lighten($showcase-background, 35%);
+    	&:hover {
+    		color: inherit;
+    	}
+    }
+
+    .readon {
+        color: $white;
+        border: 1px solid darken($accent-color-1, 12%);
+        background: darken($accent-color-1, 5%);
+        &:hover {
+            color: $white;
+            background: lighten($accent-color-1, 10%);
+        }
+    }    
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

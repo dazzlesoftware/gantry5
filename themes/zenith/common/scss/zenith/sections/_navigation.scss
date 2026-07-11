@@ -1,0 +1,11 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

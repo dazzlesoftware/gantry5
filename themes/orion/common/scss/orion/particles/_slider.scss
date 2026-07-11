@@ -1,0 +1,97 @@
+.g-slider {
+    position: relative;
+    z-index: 20;
+    overflow: visible;
+
+    .swiper-slide {
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        text-align: center;
+    }
+
+    .navigation {
+
+        .slider-button-next,
+        .slider-button-prev {
+            position: absolute;
+            font-size: 4rem;
+            color: $white;
+            outline: none;
+            opacity: 0.5;
+            z-index: 20;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            transition: opacity, 0.25s;
+
+            @include breakpoint(mobile-only) {
+                font-size: 3rem;
+            }
+
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+        }
+
+        .slider-button-next {
+            right: 1rem;
+            top: 50%;
+            margin: 0;
+            padding: 0;
+            transform: translateY(-50%);
+        }
+
+        .slider-button-prev {
+            left: 1rem;
+            top: 50%;
+            margin: 0;
+            padding: 0;
+            transform: translateY(-50%);
+        }
+
+        &.rtl {
+            .slider-button-prev {
+                right: 1rem;
+                left: auto;
+            }
+
+            .slider-button-next {
+                right: auto;
+                left: 1rem;
+            }
+        }
+    }
+
+}
+
+// Thumbs
+.g-thumbs {
+    width: max-content;
+
+    .swiper-wrapper {
+        width: auto !important;
+
+        .swiper-slide {
+            width: auto !important;
+            span {
+                padding: 0.2rem 1rem;
+                border-radius: 1.3rem;
+                cursor: pointer;
+            }
+            &.swiper-slide-thumb-active {
+                span {
+                    background: $white;
+                    color: $black;
+                }
+            }
+        }
+
+        width: auto;
+        background: $black;
+        padding: 0.5rem 0.3rem;
+        border-radius: 1.3rem;
+        font-weight: $font-weight-medium;
+        font-size: $core-font-size;
+    }
+}

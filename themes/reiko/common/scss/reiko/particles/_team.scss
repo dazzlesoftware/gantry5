@@ -1,0 +1,406 @@
+.g-team {
+    position: relative;
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
+
+    // Header
+    .g-team-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: $content-padding;
+
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            display: block;
+        }
+
+        // Title
+        .g-team-title {
+            display: block;
+            @include responsive-font($responsive-font-size + 1, $core-font-size, false, false);
+            font-weight: $font-weight-bold;
+            color: $black;
+            padding-right: $content-padding;
+
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .dir-rtl & {
+                padding-left: $content-padding;
+                padding-right: 0;
+            }
+
+            // Upper Title
+            .g-team-uppertitle {
+                display: block;
+                padding-right: $content-padding;
+                color: transparentize($base-text-color, 0.65);
+                @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+                font-weight: $font-weight-semibold;
+                line-height: 1.5;
+                letter-spacing: 5px;
+                text-transform: uppercase;
+
+                @include breakpoint(mobile-only) {
+                    text-align: center;
+                    padding-right: 0;
+                }
+
+                .dir-rtl & {
+                    padding-left: $content-padding;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        // Navigation
+        .g-team-nav {
+            position: relative;
+            flex: 1 0 auto;
+            align-self: center;
+
+            i {
+                display: none;
+                position: absolute;
+                top: .8rem;
+                left: $content-margin;
+
+                @include breakpoint(mobile-only) {
+                    display: block;
+                }
+            }
+
+            // Mobile menu
+            @include breakpoint(mobile-only) {
+                min-height: 6rem;
+                width: 100%;
+            }
+
+            .g-team-nav-container {
+                display: flex;
+                justify-content: flex-start; // Mobile menu
+                @include breakpoint(mobile-only) {
+                    flex-direction: column;
+                    width: 75%;
+                    padding: 0 0;
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    border: solid 2px $black;
+                    border-radius: 5px;
+                    background: $white;
+                    z-index: 15;
+                    margin-top: 1rem;
+                }
+            }
+
+            // Item
+            .g-team-nav-item {
+                cursor: pointer;
+                padding: $content-margin - .5 $content-padding - .6;
+                @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                font-weight: $font-weight-regular;
+                color: darken($base-text-color, 10%);
+                position: relative;
+                border-radius: 5px;
+                border: 2px solid transparent;
+                transition: border 150ms;
+
+                &.selected {
+                    background: transparent;
+                    font-weight: $font-weight-semibold;
+                    border-color: black;
+
+                    @include breakpoint(mobile-only) {
+                        background: none;
+                        color: $black;
+                        border-color: transparent;
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                @include breakpoint(mobile-only) {
+                    display: none;
+                    padding: $content-margin - 0.2 $content-padding + 0.5;
+                }
+
+                &.selected {
+                    @include breakpoint(mobile-only) {
+                        display: block;
+                    }
+                }
+
+                &.clicked {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // Grid Settings
+    .g-team-grid {
+        position: relative;
+        margin: 0 -($content-padding);
+        overflow: visible !important;
+
+        @include breakpoint(mobile-only) {
+            margin: 0 -$content-padding;
+        }
+
+        // Item & Item content
+        .g-team-grid-item {
+            will-change: auto !important;
+
+            a.g-team-link-overlay {
+                position: absolute;
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                cursor: pointer;
+            }
+
+            .g-team-grid-item-wrapper {
+                position: relative;
+                margin: $content-padding / 2;
+                transition: all 0.25s;
+
+                &:hover {
+                    transform: translateY(-1rem);
+                }
+
+                @include breakpoint(mobile-only) {
+                    margin: $content-padding;
+                }
+
+                .g-team-grid-item-image {
+                    position: relative;
+
+                    img {
+                        width: 100%;
+                        min-height: 1px;
+                        transition: all 0.25s;
+                        border-radius: 50%;
+                        border: 2px solid $black;
+                    }
+                }
+
+                .g-team-grid-item-icon {
+                    background: $accent-color-2;
+                    @include display (flex);
+                    position: absolute;
+                    padding: .5rem;
+                    border-radius: 50%;
+                    bottom: -.5rem;
+                    right: -.5rem;
+                    border: 2px solid $black;
+
+                    i {
+                        color: $white;
+                        font-size: $core-font-size - .4;
+
+                    }
+
+                    @include breakpoint (desktop-range) {
+                        right: .3rem;
+                        bottom: .3rem;
+                    }
+
+                    @include breakpoint (tablet-range) {
+                        right: .4rem;
+                        bottom: .4rem;
+                    }
+
+                    @include breakpoint (mobile-only) {
+                        right: -.1rem;
+                        bottom: -.1rem;
+                        i {
+                            font-size: $core-font-size - .2;
+                        }
+                    }
+
+                    @include breakpoint (small-mobile-range) {
+                        right: -.3rem;
+                        bottom: -.3rem;
+                        padding: .3rem;
+
+                        i {
+                            font-size: $core-font-size - .4;
+
+                        }
+                    }
+
+                }
+
+                // Accent Colors
+                &.g-team-accent-color-1 {
+                    .g-team-grid-item-case {
+                        background-color: $accent-color-1;
+                    }
+                }
+
+                &.g-team-accent-color-2 {
+                    .g-team-grid-item-case {
+                        background-color: $accent-color-2;
+                    }
+                }
+            }
+
+            .g-team-grid-item-content {
+                width: 100%;
+                left: 0;
+                text-align: left;
+                z-index: 3;
+                @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                transition: color 0.5s;
+
+                .dir-rtl & {
+                    text-align: right;
+                }
+
+                .g-team-grid-item-title {
+                    color: $black;
+                    font-weight: $font-weight-bold;
+                    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                    line-height: $core-line-height - 0.4;
+                }
+
+                .g-team-grid-item-subtitle {
+                    color: $black;
+                    opacity: 0.3;
+                    font-weight: $font-weight-regular;
+                    margin-top: $content-margin;
+                    @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
+                }
+
+                .g-team-grid-item-case {
+                    color: $black;
+                    @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
+                    font-weight: $font-weight-semibold;
+                    background: transparent;
+                    display: inline-block;
+                    letter-spacing: 3px;
+                    clear: both;
+                    margin-bottom: $content-margin * 2;
+                    padding: ($content-margin / 2) $content-margin;
+                }
+
+                .g-team-grid-item-description {
+                    color: $white;
+                    margin-top: ($content-margin + 0.5);
+                    @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+                }
+
+                .g-team-grid-item-button {
+                    display: block;
+                    margin-top: 5px;
+                    color: darken($base-text-color, 40%);
+                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
+                }
+            }
+
+            &:hover {
+                .g-team-grid-item-wrapper {
+                    .g-team-grid-item-button {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        // Column layout
+        // 2 Columns
+        &.cols-2 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 50%;
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 3 Columns
+        &.cols-3 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 33.3%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 4 Columns
+        &.cols-4 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 25%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 5 Columns
+        &.cols-5 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 20%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 12 Columns
+        &.cols-12 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 8.33%;
+
+                @include breakpoint (desktop-range) {
+                    width: 16.66%;
+                }
+
+                @include breakpoint(tablet-range) {
+                    width: 16.66%;
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 25%;
+                }
+
+                @include breakpoint(small-mobile-range) {
+                    width: 33%;
+                }
+            }
+        }
+    }
+}

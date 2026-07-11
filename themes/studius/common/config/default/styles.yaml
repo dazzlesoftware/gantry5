@@ -1,0 +1,83 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#193564'
+    - '#2ec5ce'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#193564'
+    accent:
+      color-1: '#193564'
+      color-2: '#2ec5ce'
+      color-3: '#324f81'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#193564'
+      text-color-active: '#193564'
+      sublevel-text-color: '#193564'
+      sublevel-text-color-active: '#193564'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'poppins, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'poppins, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#193564'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#193564'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-01.jpg'
+      text-color: '#ffffff'
+    header:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      text-color: '#193564'
+    above:
+      background: '#193564'
+      background-image: 'gantry-media://backgrounds/above/bg-01.jpg'
+      text-color: #ffffff'
+    feature:
+      background: '#f6faff'
+      text-color: '#193564'
+    showcase:
+      background: '#f6faff'
+      background-image: 'gantry-media://backgrounds/showcase/bg-01.png'
+      text-color: '#193564'
+    utility:
+      background: '#f2f9fb'
+      background-image: 'gantry-media://backgrounds/utility/bg-01.png'
+      text-color: '#193564'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#193564'
+    expanded:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/expanded/bg-01.svg'
+      text-color: '#193564'
+    extension:
+      background: '#193564'
+      text-color: '#FFFFFF'
+    bottom:
+      background: '#091831'
+      text-color: '#ffffff'
+    footer:
+      background: '#091831'
+      text-color: '#ffffff'
+    copyright:
+      background: '#091831'
+      text-color: '#ffffff'
+    offcanvas:
+      background: '#193564'
+      text-color: '#ffffff'
+      toggle-color: '#193564'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

@@ -1,0 +1,21 @@
+#g-page-surround {
+    @if $base-background-image {
+		overflow: hidden;
+		background-color: $base-background;
+		background-image: url($base-background-image);
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: 100% 1600px;
+		background-attachment: fixed;
+		min-height: 1000px;
+    } @else {
+    	background: $base-background;
+    }
+}
+
+@media print {
+	#g-page-surround {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

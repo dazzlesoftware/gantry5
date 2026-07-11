@@ -1,0 +1,38 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+   
+    &.fp-utility {
+		padding: 75px 0 40px 0;
+	}
+}
+
+.title6.module-title .title {
+	font-size: 1.8em;
+    line-height: 1.3em;
+    letter-spacing: 2px;
+    margin: 0 -2px 15px 0;
+    padding: 10px;
+    position: relative;
+    font-family: get-font-family($font-family-alt);
+    text-transform: uppercase;
+    &:after {
+	    background: #686868;
+	    content: "";
+	    position: absolute;
+	    left: 50%;
+	    bottom: 0;
+	    height: 4px;
+	    margin-left: -42px;
+	    width: 80px;
+    }
+}
+
+
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

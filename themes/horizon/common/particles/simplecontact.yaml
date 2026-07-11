@@ -1,0 +1,55 @@
+name: Simple Contact
+description: Display simple contact items.
+type: particle
+icon: fa-phone
+
+configuration:
+  caching:
+    type: static
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+    
+    items:
+      type: collection.list
+      array: true
+      label: Contact Items
+      description: Create each menu item to display.
+      value: title
+      ajax: true
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          skip: true
+        .icon:
+          type: input.icon
+          label: Icon
+          description: Select the icon.
+        .link:
+          type: input.text
+          label: Link
+        .target:
+          type: select.select
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _blank
+          options:
+              _self: Self
+              _blank: New Window

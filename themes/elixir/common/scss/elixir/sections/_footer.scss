@@ -1,0 +1,22 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    .g-simplemenu-particle .g-simplemenu-container .g-simplemenu li a, .g-newsletter-particle .g-newsletter .g-newsletter-headtext {
+        color: $base-text-color;
+        opacity: 1;
+    }
+
+    .g-simplemenu-particle .g-simplemenu-container .g-simplemenu li a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media print {
+    #g-container-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

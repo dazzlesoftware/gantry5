@@ -1,0 +1,12 @@
+#g-container-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+}
+
+
+@media print {
+    #g-container-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

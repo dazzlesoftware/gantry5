@@ -1,0 +1,66 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#3e9dd3'
+    - '#78bf57'
+    - '#888888'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#3e9dd3'
+      color-2: '#78bf57'
+      color-3: '#888888'
+    font:
+      family-regular: 'cabin-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'cabin-semibold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:      
+      background: '#ffffff'
+      text-color: '#2f2f2f'  
+    showcase:      
+      background: '#41a4dd'
+      text-color: '#ffffff'
+      link-color: '#07659e' 
+      background-image: 'gantry-media://backgrounds/showcase/preset1/bg.png'      
+    top:
+      background: '#f5f6f8'
+      text-color: '#8b8b8b'      
+    utility:      
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    feature:      
+      background: '#f5f6f8'
+      text-color: '#8b8b8b'
+      background-image: 'gantry-media://backgrounds/feature/preset1/bg.png'
+    maintop:      
+      background: '#f5f6f8'
+      text-color: '#8b8b8b'
+    expandedtop:      
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    expandedbottom:      
+      background: '#f5f6f8'
+      text-color: '#8b8b8b'
+    mainbottom:      
+      background: '#ffffff'
+      text-color: '#6e6e6e'      
+    extension:      
+      background: '#41a4dd'
+      text-color: '#2a6a8f'
+      link-color: '#07659e' 
+      background-image: 'gantry-media://backgrounds/extension/preset1/bg.png'     
+    bottom:      
+      background: '#2a6a8f'
+      text-color: '#41a4dd'
+    footer:      
+      background: '#35363a'
+      text-color: '#8f8f8f'
+    copyright:      
+      background: '#2d2d2d'
+      text-color: '#5f5f5f'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#3e9dd3'
+      toggle-color: '#efefef'

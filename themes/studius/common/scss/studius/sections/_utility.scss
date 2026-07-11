@@ -1,0 +1,31 @@
+#g-utility {
+    color: $utility-text-color;
+    background: $utility-background;
+
+    @if $utility-background-image {
+        background-image: url($utility-background-image);
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: right;
+
+        .dir-rtl & {
+            background-position: left;
+        }
+
+        @include breakpoint(mobile-only) {
+            background-size: auto 90%;
+            background-position: right bottom;
+
+            .dir-rtl & {
+                background-position: left bottom;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

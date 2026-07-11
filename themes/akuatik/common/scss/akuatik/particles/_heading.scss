@@ -1,0 +1,25 @@
+.g-heading {
+    position: relative;
+
+    h2 {
+        font-weight: $font-weight-semibold;
+        @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+    }
+
+    p {
+        margin: 0;
+        top: -2rem;
+        left: -2rem;
+        opacity: 0.05;
+        padding: 0;
+        position: absolute;
+        font-weight: $font-weight-semibold;
+        @include responsive-font($responsive-font-size + 12, $core-font-size + 4, false, false);
+        line-height: 0;
+
+        .dir-rtl & {
+            left: auto;
+            right: -2rem;
+        }
+    }
+}

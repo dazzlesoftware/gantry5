@@ -1,0 +1,42 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;
+  margin-top: -6rem;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+
+  .g-bottom-menu {
+    font-weight: $font-weight-bold;
+    color: transparentize($copyright-text-color, 0.60);
+    a {
+      color: transparentize($copyright-text-color, 0.60);
+    }
+    li {
+      display: inline-block;
+
+      .fa {
+        font-size: $core-font-size - 0.9;
+        vertical-align: middle;
+        margin: 0 $content-margin - 0.2;
+        @include breakpoint(tablet-range) {
+          margin: 0 $content-margin - 0.255;
+        }
+      }
+    }
+  }
+  .g-footer-logo {
+    font-size: 1.5rem;
+    color: transparentize($copyright-text-color, 0.60);
+    text-transform: uppercase;
+  }
+  .g-copyright {
+    color: transparentize($copyright-text-color, 0.60);
+  }
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

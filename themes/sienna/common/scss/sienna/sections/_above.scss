@@ -1,0 +1,13 @@
+#g-container-above {
+    color: $above-text-color;
+    #g-abovemain {
+        background: $above-background;
+    }
+}
+
+@media print {
+    #g-container-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

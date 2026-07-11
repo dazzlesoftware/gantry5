@@ -1,0 +1,123 @@
+.g-contentshowcase {
+    .g-contentshowcase-container {
+        position: relative;
+
+        @include breakpoint(desktop-range) {
+            padding-left: ($content-padding * 0.25);
+        }
+
+        @include breakpoint(tablet-range) {
+            padding-left: 0;
+        }
+
+        @include breakpoint(small-mobile-range) {
+            padding-left: 0;
+        }
+
+        // First Item
+        .g-contentshowcase-first-item-wrapper {
+            .g-contentshowcase-item-image {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                max-width: 34%;
+
+                .dir-rtl & {
+                    left: 0;
+                    right: auto;
+                }
+            }
+
+            .g-contentshowcase-item-content {
+                width: 60%;
+
+                .g-contentshowcase-item-author {
+                    color: transparentize($base-text-color, 0.35);
+                    @include responsive-font($responsive-font-size + 0.1, $core-font-size + 0.1, false, false);
+                }
+
+                .g-contentshowcase-item-title {
+                    .g-item-title {
+                        margin-top: 0.5rem;
+                        font-weight: $font-weight-bold;
+                        line-height: 1.2;
+                        color: $black;
+                        @include responsive-font($responsive-font-size + 1.5, $core-font-size + 1.5, false, false);
+
+                        a {
+                            color: $black;
+
+                            &:hover {
+                                color: $base-text-color;
+                            }
+                        }
+                    }
+                }
+
+                .g-contentshowcase-item-text {
+                    color: transparentize($base-text-color, 0.35);
+                    @include responsive-font($responsive-font-size + 0.1, $core-font-size + 0.1, false, false);
+                }
+
+                .g-contentshowcase-item-link {
+                    padding: $content-padding 0 0;
+                    font-weight: $font-weight-medium;
+                    @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.15, false, false);
+                }
+            }
+        }
+
+        // Snippets
+        .g-contentshowcase-snippets-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+
+            .g-contentshowcase-snippet {
+                flex: 0 auto;
+                width: 30%;
+                margin-top: $content-margin;
+                padding-top: $content-padding;
+
+                &:nth-child(odd) {
+                    padding-right: (($content-padding + $content-margin) / 2);
+                    .dir-rtl & {
+                      padding-right: 0;
+                      padding-left: (($content-padding + $content-margin) / 2);
+                    }
+                }
+
+                &:nth-child(even) {
+                    padding-left: (($content-padding + $content-margin) / 2);
+                    .dir-rtl & {
+                      padding-left: 0;
+                      padding-right: (($content-padding + $content-margin) / 2);
+                    }
+                }
+
+                .g-contentshowcase-item-title {
+                    .g-item-title {
+                        line-height: 1.3;
+                        @include responsive-font($responsive-font-size - 0.2, $core-font-size - 0.1, false, false);
+
+                        a {
+                            color: $black;
+
+                            &:hover {
+                                color: $accent-color-1;
+                            }
+                        }
+                    }
+                }
+
+                .g-contentshowcase-item-details {
+                    padding: 0 0 $content-margin;
+                    color: transparentize($base-text-color, 0.50);
+                }
+            }
+        }
+    }
+
+    .g-contentshowcase-pagination {
+        width: 60%;
+    }
+}

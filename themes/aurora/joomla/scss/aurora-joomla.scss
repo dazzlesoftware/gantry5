@@ -1,0 +1,47 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+@import "dependencies";
+
+// Load Third Party Libraries
+@import "vendor/bourbon/bourbon";
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "aurora-joomla/core";
+@import "aurora-joomla/typography";
+@import "aurora-joomla/forms";
+@import "aurora-joomla/tabs";
+@import "aurora-joomla/utilities";
+@import "aurora-joomla/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Showcase
+@import "aurora-joomla/sections/showcase";
+// Main
+@import "aurora-joomla/sections/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "aurora-joomla/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

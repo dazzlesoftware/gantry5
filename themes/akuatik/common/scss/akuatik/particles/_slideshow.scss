@@ -1,0 +1,265 @@
+// ============= Slideshow Styling ============================
+
+.g-slideshow {
+
+    .tilt & {
+        transform: rotate(-1deg);
+    }
+
+    .dir-rtl.tilt & {
+        transform: rotate(1deg);
+    }
+
+    .g-slideshow-slider {
+
+        &.swiper-wrapper {
+            border-radius: 0.5rem;
+        }
+
+        .swiper-slide {
+            position: relative;
+            background-color: transparent;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 0.5rem;
+
+            .slide {
+                position: relative;
+                z-index: 3;
+                width: 100%;
+                height: 100%;
+                border-radius: 0.5rem;
+
+                background-repeat: no-repeat;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+
+                .fp-slideshow & {
+                  @include breakpoint(tablet-range) {
+                      background: none !important;
+                  }
+
+                  @include breakpoint(mobile-only) {
+                      background: none !important;
+                  }
+                }
+
+                .slide-content {
+                    width: 50%;
+                    margin-left: 5%;
+                    @include breakpoint(tablet-range) {
+                        width: 100%;
+                        text-align: center;
+                        margin: 0 15%;
+                    }
+                    @include breakpoint(mobile-only) {
+                        width: 100%;
+                        text-align: center;
+                        margin: 0 15%;
+                    }
+
+                    .dir-rtl & {
+                        margin-left: 0;
+                        margin-right: 5%;
+
+                        @include breakpoint(tablet-range) {
+                            margin: 0 15%;
+                        }
+                        @include breakpoint(mobile-only) {
+                            margin: 0 15%;
+                        }
+                    }
+                }
+
+
+                .g-slideshow-top-title {
+                    @include responsive-font($responsive-font-size + 0.5, $core-font-size, false, false);
+                    font-weight: $font-weight-regular;
+                    line-height: 1.2;
+
+                    @include breakpoint(mobile-only) {
+                        font-size: $core-font-size + 0.5;
+                    }
+                }
+
+                .g-slideshow-main-title {
+                    @include responsive-font($responsive-font-size + 2, $core-font-size + 1, false, false);
+                    font-weight: $font-weight-bold;
+                    font-family: get-font-family($font-family-title);
+                    line-height: 1.2;
+                    margin-bottom: 3rem;
+
+                    @include breakpoint(mobile-only) {
+                        font-size: $core-font-size + 1.25;
+                    }
+                }
+
+                .g-slideshow-avatar {
+                    margin-right: $content-margin;
+
+                    img {
+                        max-width: 40px;
+                        border-radius: 100%;
+                    }
+                }
+
+                .g-slideshow-author {
+                    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                    font-weight: $font-weight-bold;
+                    border-bottom: 4px solid #000000;
+                    padding-bottom: 0.2rem;
+                    @include breakpoint(small-mobile-range) {
+                        font-size: 0.85rem;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .g-slideshow-thumbs {
+        margin: 0 5vw;
+        height: 160px;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        font-weight: $font-weight-bold;
+        font-family: get-font-family($font-family-title);
+
+        &.gallery-thumbs {
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        &.gallery-thumbs .swiper-slide {
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 6px;
+            position: relative;
+            pointer-events: auto;
+
+            .g-slideshow-thumbs-title {
+                display: flex;
+                align-items: flex-end;
+                height: 100%;
+
+                span {
+                    padding: $content-padding;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    z-index: 2;
+                }
+            }
+
+            &:before {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                content: '';
+                background: $accent-color-1;
+                border-radius: 6px;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            }
+        }
+
+        &.gallery-thumbs .swiper-slide-thumb-active {
+            &:before {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .swiper-pagination-progressbar {
+        background: transparentize($accent-color-2, 0.8);
+        position: static;
+        height: 0.5rem !important;
+        border-radius: 1rem;
+        bottom: 0;
+        margin-top: 0.8rem;
+    }
+
+    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+        background: $black;
+        border-radius: 1rem;
+    }
+
+    .swiper-scrollbar {
+      background: $accent-color-1;
+    }
+
+    .navigation {
+        position: absolute;
+        z-index: 10;
+        top: 35%;
+        display: flex;
+        width: 100%;
+
+        .sswiper-button-prev {
+            position: relative;
+            top: 30%;
+            width: 10px;
+            height: 44px;
+            z-index: 10;
+            cursor: pointer;
+            margin-bottom: 2rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .sswiper-button-next {
+            position: relative;
+            bottom: 30%;
+            width: 10px;
+            height: 44px;
+            z-index: 10;
+            cursor: pointer;
+            margin-top: 2rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .sswiper-button-next, .sswiper-button-prev {
+            position: absolute;
+            font-size: 4rem;
+            color: $accent-color-2;
+            opacity: 0.5;
+            &:hover {
+                opacity: 1;
+            }
+
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        .sswiper-button-next {
+            right: 1rem;
+            top: 0;
+            margin:0;
+            padding:0;
+            bottom: 0;
+            width: auto;
+        }
+        .sswiper-button-prev {
+            left: 1rem;
+            top: 0;
+            margin:0;
+            padding:0;
+            bottom: 0;
+            height: auto;
+        }
+
+        &.rtl {
+            .sswiper-button-prev {
+                right: 1rem;
+                left: auto;
+            }
+            .sswiper-button-next {
+                right: auto;
+                left: 1rem;
+            }
+        }
+    }
+}

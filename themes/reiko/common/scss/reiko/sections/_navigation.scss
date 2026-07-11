@@ -1,0 +1,32 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+
+    .g-grid {
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    a {
+        color: $navigation-text-color;
+    }
+
+    // Social
+    .g-social {
+        a {
+            transition: all 0.25s;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

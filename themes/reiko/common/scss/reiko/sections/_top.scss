@@ -1,0 +1,16 @@
+#g-top {
+    color: $top-text-color;
+    background: $top-background;
+    
+    .g-grid {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media print {
+    #g-top {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

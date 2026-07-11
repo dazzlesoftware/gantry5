@@ -1,0 +1,111 @@
+.fp-utility {
+    .g-simplecontent {
+        color: $white;
+        position: relative;
+        z-index: 10;
+        .g-simplecontent-item-content-title {
+            font-size: $h1-font-size;
+        }
+        br {
+            display: none;
+        }
+        .g-simplecontent-item-leading-content{
+            color: $base-subtitle-color;
+            font-size: $h5-font-size;
+            font-weight: $font-weight-light;
+        }
+    }
+    .g-video-container {
+        .g-video {
+            min-height: 500px;
+            padding-bottom: 0;
+            @include breakpoint (tablet-range){
+                min-height: 400px;
+            }
+            @include breakpoint (mobile-only){
+                min-height: 250px;
+            }
+            @include breakpoint (small-mobile-range){
+                min-height: 45vw;
+            }
+        }
+    }
+}
+.fp-header {
+    @include breakpoint (tablet-range){
+        padding-top: 2rem;
+    }
+    @include breakpoint (mobile-only) {
+        padding: 4rem 2rem 0;
+    }
+}
+.fp-above {
+    .g-grid {
+        position: relative;
+        z-index: 50;
+        align-items: center;
+        .g-above-content {
+            .g-simplecontent {
+                @include breakpoint (mobile-only){
+                    padding: 3%;
+                }
+                h2.g-title {
+                    color: $white;
+                    padding: 0 0 $content-padding 0;
+                }
+            }
+            .g-simplecontent-item-content-title{
+                color: $white;
+                font-size: $h1-font-size;
+                span {
+                    font-family: $font-family-playfair;
+                }
+            }
+            .g-simplecontent-item-leading-content {
+                line-height: $core-line-height * 1.2;
+                color: transparentize($white, 0.4);
+                padding-bottom: $content-padding * 2;
+                display: block;
+            }
+        }
+        .g-above-content-padding {
+            padding-left: 25%;
+            @include breakpoint (tablet-range) {
+                padding-left: 10%;
+            }
+            @include breakpoint (mobile-only) {
+                padding: 0;
+            }
+
+        }
+        .g-above-column {
+            column-count: 2;
+            @include breakpoint (small-mobile-range) {
+                column-count: 1;
+            }
+        }
+    }
+}
+
+#g-slideshow.fp-slideshow {
+    background-image: none;
+}
+
+.g-swiper {
+    &.multislides {
+        @include breakpoint (mobile-only) {
+            .g-swiper-title, .g-swiper-text {
+                font-size: $core-font-size !important;
+            }
+            .button {
+                font-size: $core-font-size - 0.3 !important;
+                padding: 0.4rem 0.75rem !important;
+            }
+            .swiper-navigation {
+                > div {
+                    font-size: 2rem !important;
+                }
+            }
+        }
+    }
+}

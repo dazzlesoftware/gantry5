@@ -1,0 +1,27 @@
+#g-feature {
+    color: $feature-text-color;
+    background: $feature-background;
+    
+    .g-grid {
+        position: relative;
+    }
+
+    .g-simplecontent .g-simplecontent-layout-header .g-simplecontent-item-content-title {
+        @include responsive-font($responsive-font-size + 2.5, $core-font-size + 0.5, false, false);
+        color: $black;
+    }
+    .g-simplecontent .g-simplecontent-item-leading-content {
+        @include responsive-font($responsive-font-size + 0.7, $core-font-size, false, false);
+        color: $black;
+    }
+    .g-simplecontent-item-main-content {
+        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+    }
+}
+
+@media print {
+    #g-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

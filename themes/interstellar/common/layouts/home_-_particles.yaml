@@ -1,0 +1,509 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1459770626
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 17'
+      - 'social-7220 13'
+      - 'menu-4196 70'
+  /header/:
+    -
+      - 'custom-1413 70'
+      - 'custom-2069 30'
+  /slideshow/:
+    -
+      - owlcarousel-7547
+  /above/:
+    -
+      - 'spacer-spacer-5973 40'
+      - 'simplecontent-6554 30'
+      - 'simplecontent-7857 30'
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/:
+    -
+      - owlcarousel-3975
+  /expanded/:
+    -
+      - 'simplecontent-5168 30'
+      - 'imagegrid-5156 70'
+  /extension/:
+    -
+      - simplecontent-4035
+    -
+      - blockcontent-9605
+  /bottom/:
+    -
+      - pricingtable-5357
+  /footer/:
+    -
+      - 'custom-3240 60'
+      - 'newsletter-1075 40'
+  /copyright/:
+    -
+      - copyright-5748
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nomargintop
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+  social-7220:
+    attributes:
+      css:
+        class: ''
+    block:
+      class: null
+      variations: align-left
+  menu-4196:
+    block:
+      variations: align-right
+  custom-1413:
+    title: 'FP Promo Title'
+    attributes:
+      html: '<h2 class="g-title">Interstellar is a modern mobile-friendly responsive design.</h2>'
+    block:
+      class: g-promocontent
+  custom-2069:
+    title: 'FP Promo Desc'
+    attributes:
+      html: "<p>Not only that, but thanks to the powerful Gantry 5 framework, you can easily assign individual elements to specific screen types.</p>\n<a href=\"http://www.gantry.org\" class=\"button\">Learn More</a>"
+  owlcarousel-7547:
+    title: 'FP Slideshow Services'
+    attributes:
+      title: Services
+      layout: showcase
+      animateOut: default
+      animateIn: default
+      nav: disabled
+      autoplay: enabled
+      items:
+        -
+          image: ''
+          icon: 'fa fa-mobile'
+          icon2: 'fa fa-tablet'
+          title: 'Icon Picker'
+          subtitle: 'Integrate Font Awesome icons into your site’s content.'
+          desc: 'The Icon Picker makes it easier than ever to add modern icons from the Font Awesome Library.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Icon Picker'
+        -
+          image: ''
+          icon: 'fa fa-adjust'
+          icon2: 'fa fa-ambulance'
+          title: 'Color Picker'
+          subtitle: 'Quickly and easily select the perfect color(s) for your website.'
+          desc: 'Quickly define colors for virtually any aspect of your sites’ design with Gantry 5’s Color Picker.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Color Picker'
+        -
+          image: ''
+          icon: 'fa fa-angle-up'
+          icon2: 'fa fa-cc'
+          title: 'File Picker'
+          subtitle: 'Integrate images, videos, and other files directly into your site.'
+          desc: 'With a click, you can apply images, videos, or other file types directly to your particles and design.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'File Picker'
+        -
+          image: ''
+          icon: 'fa fa-tablet'
+          icon2: 'fa fa-lastfm'
+          title: 'Font Picker'
+          subtitle: 'Find and select the perfect font for your website’s elements.'
+          desc: 'Powered by the extensive Google Font Library, the Font Picker makes it easy to select the perfect font.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Font Picker'
+    block:
+      variations: 'nomarginall nopaddingall'
+  simplecontent-6554:
+    title: 'FP Above Our Office'
+    attributes:
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Our Office'
+          author: ''
+          leading_content: 'Interstellar was handcrafted by the talented RocketTheme team on the incredible Gantry 5 framework. It was designed to be a perfect match for a wide variety of websites.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Our Office'
+  simplecontent-7857:
+    title: 'FP Above Contact Info'
+    attributes:
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: "<br /><br />\n<div class=\"info2\"><strong><i class=\"fa fa-map-marker\"></i> Interstellar  LTD.</strong> <br />\nul. Szarych Szeregów 10/28 <br />\n15-666 Białystok <br />\nPoland <br />\n<i class=\"fa fa-phone\"></i> 555 555 555 <br />\n<i class=\"fa fa-envelope-o\"></i> office@interstellar.co <br />\n</div>"
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Contact Info'
+  owlcarousel-3975:
+    title: 'FP Feature Testimonials'
+    attributes:
+      title: Testimonials
+      layout: testimonial
+      animateOut: default
+      animateIn: default
+      nav: disabled
+      dots: enabled
+      autoplay: enabled
+      items:
+        -
+          image: 'gantry-media://demo/home/extension/avatar-01.jpg'
+          icon: ''
+          icon2: ''
+          title: 'Harper Collins'
+          subtitle: ''
+          desc: 'The template styling is built with SCSS, a programmable stylesheet language for CSS, making the CSS more dynamic and adaptable. You can easily enable and disable automatic recompilation of SCSS files.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Template Styling'
+        -
+          image: 'gantry-media://demo/home/extension/avatar-02.jpg'
+          icon: ''
+          icon2: ''
+          title: 'Jim Conroy'
+          subtitle: ''
+          desc: 'Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Layout Manager'
+        -
+          image: 'gantry-media://demo/home/extension/avatar-03.jpg'
+          icon: ''
+          icon2: ''
+          title: 'Pat Harrison'
+          subtitle: ''
+          desc: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Gantry 5 Configuration'
+  simplecontent-5168:
+    title: 'FP Expanded Portfolio'
+    attributes:
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: Portfolio
+          author: ''
+          leading_content: "All demo content is for sample purposes only, to represent a live site.\n<br />\nNote: Interstellar is built on the latest version of the Gantry 5 Framework."
+          main_content: ''
+          readmore_label: 'View more'
+          readmore_link: ''
+          readmore_class: button
+          readmore_target: _self
+          title: Portfolio
+  imagegrid-5156:
+    title: 'FP Expanded Imagegrid'
+    attributes:
+      cols: g-imagegrid-3cols
+      imagegriditems:
+        -
+          image: 'gantry-media://demo/home/expanded/img-01.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/expanded/img-02.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/expanded/img-03.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/expanded/img-04.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/expanded/img-05.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/expanded/img-06.jpg'
+          caption: ''
+          title: 'New item'
+  simplecontent-4035:
+    title: 'FP Extension Article'
+    attributes:
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Dream team'
+          author: ''
+          leading_content: "All demo content is for sample purposes only, to represent a live site.<br />\nUse the RocketLauncher package to create a copy of our demo."
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Dream Team'
+    block:
+      variations: center
+
+  blockcontent-9605:
+    title: 'FP Extension Team'
+    attributes:
+      subcontents:
+        -
+          name: 'Jack Red'
+          icon: ''
+          img: 'gantry-media://demo/home/extension/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: CEO
+          description: "Interstellar brings out the best in our business through its modern design, incredible feature set, and infinite versatility.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Pawel Kadysz'
+        -
+          name: 'Taylor Jackson'
+          icon: ''
+          img: 'gantry-media://demo/home/extension/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: HR
+          description: "The design of Interstellar is extraordinary in that it walks that fine line between simplicity and elegance.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Taylor Jackson'
+        -
+          name: 'Jack Lee'
+          icon: ''
+          img: 'gantry-media://demo/home/extension/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Designer
+          description: "Interstellar has saved us countless hours in development thanks to the powerful next-generation Gantry 5 framework.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Jack Lee'
+        -
+          name: 'Your Name'
+          icon: ''
+          img: 'gantry-media://demo/home/extension/img-04.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Here
+          description: 'I can’t wait to get started with Interstellar. I’m amazed at its unique design, powerful original particles.'
+          class: ''
+          button: 'Apply now'
+          buttonlink: '#'
+          buttonclass: button
+          buttontarget: _self
+          title: 'Your Name'
+  pricingtable-5357:
+    title: 'FP Bottom Pricing Table'
+    attributes:
+      columns: g-pricingtable-3-col
+      tables:
+        -
+          accent: accent4
+          customcolor: ''
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: $499
+          period: 'Per month*'
+          desc: '* Just kidding. No hidden fees.'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items: {  }
+          plan: 'Part 1'
+        -
+          accent: accent4
+          customcolor: ''
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: ''
+          period: ''
+          desc: ''
+          buttontext: 'Buy now'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button
+          items:
+            -
+              text: 'Group Support'
+              class: ''
+              title: 'Item 1'
+            -
+              text: '3 hours daily'
+              class: ''
+              title: 'Item 2'
+            -
+              text: 'Equipment excl.'
+              class: ''
+              title: 'Item 3'
+            -
+              text: 'Upgrade anytime'
+              class: ''
+              title: 'Item 4'
+            -
+              text: 'Scalable & Flexible'
+              class: ''
+              title: 'Item 5'
+          plan: 'Part 2'
+        -
+          accent: accent4
+          customcolor: ''
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: ''
+          period: ''
+          desc: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'Personal Support'
+              class: ''
+              title: 'Item 1'
+            -
+              text: '3 hours daily'
+              class: ''
+              title: 'Item 2'
+            -
+              text: 'Equipment incl.'
+              class: ''
+              title: 'Item 3'
+            -
+              text: 'Unlimited seats'
+              class: ''
+              title: 'Item 4'
+            -
+              text: '10,000 happy users'
+              class: ''
+              title: 'Item 5'
+          plan: 'Part 3'
+  custom-3240:
+    title: 'Quick Menu'
+    attributes:
+      html: "<div class=\"g-grid g-sample-sitemap\">\n<div class=\"g-block\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">About</a></li>\n<li><a href=\"#\">Our Blog</a></li>\n<li><a href=\"#\">Our Team</li>\n<li><a href=\"#\">We're hiring!</a></li>\n</ul>\n</div>\n<div class=\"g-block\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">FAQ</a></li>\n<li><a href=\"#\">Support</a></li>\n<li><a href=\"#\">Showcase</li>\n<li><a href=\"#\">Contact Us</a></li>\n</ul>\n</div>\n<div class=\"g-block\">\n<ul class=\"nomarginall noliststyle\">\n<li><a href=\"#\">Tumblr</a></li>\n<li><a href=\"#\">Facebook</a></li>\n<li><a href=\"#\">Twitter</li>\n<li><a href=\"#\">Pinterest</a></li>\n</ul>\n</div>\n</div>"
+  newsletter-1075:
+    attributes:
+      width: g-newsletter-fullwidth
+      layout: g-newsletter-stack-compact
+      style: g-newsletter-square
+      headtext: 'Let''s stay in touch. Subscribe to out newsletter to get the weekly updates.'
+      inputboxtext: 'Your email address'
+      buttonicon: 'fa fa-chevron-circle-right'
+  copyright-5748:
+    block:
+      class: g-copyright
+  mobile-menu-7951:
+    title: 'Mobile Menu'

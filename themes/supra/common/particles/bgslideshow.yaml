@@ -1,0 +1,221 @@
+name: Slideshow
+description: Add beautiful backgrounds and slideshows to your website.
+type: particle
+icon: fa-camera
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    displayitems:
+      type: input.number
+      label: Thumbs Amount
+      description: Number of thumbs to display at once.
+      min: 1
+      default: 5
+
+    displayitems_tablet:
+      type: input.number
+      label: Thumbs Amount (Tablet)
+      description: Number of thumbs to display at once on tablet view.
+      min: 1
+      default: 4
+
+    displayitems_mobile:
+      type: input.number
+      label: Thumbs Amount (Mobile)
+      description: Number of thumbs to display at once on a mobile view.
+      min: 1
+      default: 2
+
+    displayitems_smallmobile:
+      type: input.number
+      label: Thumbs Amount (Small Mobile)
+      description: Number of thumbs to display at once on a small mobile view.
+      min: 1
+      default: 1
+
+    preload:
+      type: select.select
+      label: Preload
+      description: Preload images  at start.
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    overlay:
+      type: input.imagepicker
+      label: Overlay
+      description: Overlay image pattern.
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      description: Start the Slideshow automatically.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    loop:
+      type: select.select
+      label: Loop
+      description: Loop the Slideshow.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    delay:
+      type: input.number
+      label: Delay
+      description: Delay beetween slides in milliseconds.
+      default: 15000
+
+    cover:
+      type: select.select
+      label: Cover
+      description: The slide image is scaled to fit the container.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+        repeat: Repeat
+
+    align:
+      type: select.select
+      label: Horizontal align
+      description: Horizontal alignment of the image in the slide.
+      default: center
+      options:
+        center: Center
+        top: Top
+        right: Right
+        bottom: Bottom
+        left: Left
+
+    valign:
+      type: select.select
+      label: Vertical align
+      description: Vertical alignment of the image in the slide.
+      default: center
+      options:
+        center: Center
+        top: Top
+        right: Right
+        bottom: Bottom
+        left: Left
+
+    transition:
+      type: select.select
+      label: Transition
+      description: Set the transition between slides. Could be a transition name or random.
+      default: fade
+      options:
+        random: random
+        fade : fade
+        fade2 : fade2
+        slideLeft : slideLeft
+        slideLeft2 : slideLeft2
+        slideRight : slideRight
+        slideRight2 : slideRight2
+        slideUp : slideUp
+        slideUp2 : slideUp2
+        slideDown : slideDown
+        slideDown2 : slideDown2
+        zoomIn : zoomIn
+        zoomIn2 : zoomIn2
+        zoomOut : zoomOut
+        zoomOut2 : zoomOut2
+        swirlLeft : swirlLeft
+        swirlLeft2 : swirlLeft2
+        swirlRight : swirlRight
+        swirlRight2 : swirlRight2
+        burn : burn
+        burn2 : burn2
+        blur : blur
+        blur2 : blur2
+        flash : flash
+        flash2 : flash2
+
+    transitionDuration:
+      type: input.number
+      label: Transition Duration
+      description: Set the transition duration in milliseconds.
+      default: 5000
+
+    animation:
+      type: select.select
+      label: Animation
+      description: Set the animation of the slides. Could be an animation name or random.
+      default: random
+      options:
+        random : random
+        kenburns : kenburns
+        kenburnsUp : kenburnsUp
+        kenburnsDown : kenburnsDown
+        kenburnsRight : kenburnsRight
+        kenburnsLeft : kenburnsLeft
+        kenburnsUpLeft : kenburnsUpLeft
+        kenburnsUpRight : kenburnsUpRight
+        kenburnsDownLeft : kenburnsDownLeft
+        kenburnsDownRight : kenburnsDownRight
+        none: none
+
+    animationDuration:
+      type: input.text
+      label: Animation duration
+      description: Set the animation duration in milliseconds. Could be auto so the animation duration will be equal to the slide delay .
+      default: auto
+
+    element:
+      type: input.selectize
+      label: Elements
+      description: Apply slideshow to body or any other element.
+      default: 'body'
+
+    paddingtop:
+      type: input.text
+      label: Padding Top
+      description: Set the padding top of Slideshow title (include unit of measurement).
+      default: 10vh
+
+    items:
+      type: collection.list
+      array: true
+      label: Images
+      description: Create slideshow items.
+      value: title
+      ajax: true
+      fields:
+        .description:
+          type: input.text
+          label: Description
+          description: Slide description.
+        .link:
+          type: input.text
+          label: Link
+          description: Input the item link.
+        .linktext:
+          type: input.text
+          label: Link Text
+          description: Input the text for the item link.
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select image for slideshow
+          placeholder: Pick an image
+        .alt:
+          type: input.text
+          label: Alt Attribute
+          description: Alt attribute specifies an alternate text for an image, if the image cannot be displayed.
+          placeholder: Enter title

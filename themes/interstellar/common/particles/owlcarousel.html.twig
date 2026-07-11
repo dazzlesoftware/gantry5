@@ -1,0 +1,201 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    {% if particle.layout == "showcase" %}
+        <div class="g-container-wrapper-panel">
+            <div class="g-container carousel">
+
+                {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+                <div class="g-owlcarousel-panel-container" id="g-owlcarousel-panel-{{ id }}">
+
+                    {% for item in particle.items %}
+                        <div class="g-owlcarousel-panel {% if loop.first %}selected{% endif %}" id="g-owlcarousel-panel-{{ loop.index }}">
+                                {% if item.title %}<span class="g-owlcarousel-panel-title">{{ item.title|raw }}</span>{% endif %}
+                                {% if item.subtitle %}<span class="g-owlcarousel-panel-subtitle">{{ item.subtitle|raw }}</span>{% endif %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="g-container-wrapper">
+        <div class="g-container carousel">
+            <div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }}">
+
+                <div id="g-owlcarousel-panel-indicator-{{ id }}" class="g-owlcarousel-panel-indicator">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95.13px" height="45.44px" viewBox="0 0 95.13 45.44" enable-background="new 0 0 95.13 45.44" xml:space="preserve">
+                        <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M0,14.75c28.5-1.13,22.56,30.69,48.25,30.69c20.44,0.03,24.25-32.69,46.88-30.69V0H0V14.75z"/>
+                    </svg>
+                </div>
+
+                <div id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+
+                    {% for item in particle.items %}
+                        <div class="item">
+                            <div class="g-owlcarousel-content-left">
+                                <div class="g-owlcarousel-content-padding">
+                                    {% if item.title %}<div class="g-owlcarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                                    {% if item.desc %}<div class="g-owlcarousel-item-desc">{{ item.desc|raw }}</div>{% endif %}
+                                    {% if item.link %}
+                                        <div class="g-owlcarousel-item-link">
+                                            <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button button {{ item.buttonclass|e }}" href="{{ item.link|e }}">
+                                                {{ item.linktext|raw }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="g-owlcarousel-content-right">
+                                <div class="g-owlcarousel-content-padding">
+                                {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                                {% if item.icon2 %}<i class="{{ item.icon2 }}"></i>{% endif %}
+                                {% if item.image %}
+                                    <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+    {% elseif particle.layout == "standard" %}
+
+        <div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }}">
+
+            {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+            <div id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+
+                {% for item in particle.items %}
+                    <div>
+                        {% if item.image %}
+                            <div class="image">
+                                <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+                            </div>
+                        {% endif %}
+                        {% if item.title %}<div class="g-owlcarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                        {% if item.desc %}<div class="g-owlcarousel-item-desc">{{ item.desc|raw }}</div>{% endif %}
+                        {% if item.link %}
+                            <div class="g-owlcarousel-item-link">
+                                <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button button {{ item.buttonclass|e }}" href="{{ item.link|e }}">
+                                    {{ item.linktext|raw }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    {% elseif particle.layout == "testimonial" %}
+
+        <div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }}">
+
+            {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+            <div id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+
+                {% for item in particle.items %}
+                    {% if item.desc %}
+                        <div class="g-owlcarousel-item-desc">
+                            {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+
+                            {{ item.desc|raw }}
+
+                            {% if item.title %}
+                                <div class="g-owlcarousel-item-title">{{ item.title|raw }}</div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %} 
+    <script src="{{ url('gantry-theme://js/owlcarousel.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-{{ id }}');
+            owl{{ id|replace({'-':'_'}) }}.owlCarousel({
+                items: 1,
+                rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
+                {% if particle.animateOut and particle.animateOut != 'default' %}
+                animateOut: '{{ particle.animateOut|default('fadeOut')|e }}',
+                {% endif %}
+                {% if particle.animateIn and particle.animateIn != 'default' %}
+                animateIn: '{{ particle.animateIn|default('fadeIn')|e }}',
+                {% endif %}
+                {% if particle.nav == 'enabled' %}
+                nav: true,
+                navText: ['{{ particle.prevText|default('<i class="fa fa-chevron-circle-left"></i>')|e('js') }}', '{{ particle.nextText|default('<i class="fa fa-chevron-circle-right"></i>')|e('js') }}'],
+                {% else %}
+                nav: false,
+                {% endif %}
+                {% if particle.dots == 'enabled' %}
+                dots: true,
+                {% else %}
+                dots: false,
+                {% endif %}
+                {% if particle.loop == 'enabled' and particle.layout != "showcase" %}
+                loop: true,
+                {% else %}
+                loop: false,
+                {% endif %}
+                {% if particle.autoplay == 'enabled' %}
+                autoplay: true,
+                autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
+                {% if particle.pauseOnHover == 'enabled' %}
+                autoplayHoverPause: true,
+                {% else %}
+                autoplayHoverPause: false,
+                {% endif %}
+                {% else %}
+                autoplay: false,
+                {% endif %}
+            })
+
+            {% if particle.layout == "showcase" %}
+            owl{{ id|replace({'-':'_'}) }}.on('changed.owl.carousel', function(event) {
+                var currentItem_{{ id|replace({'-':'_'}) }} = "#g-owlcarousel-panel-{{ id }} #g-owlcarousel-panel-" + (event.item.index + 1);
+                jQuery(currentItem_{{ id|replace({'-':'_'}) }}).trigger("click");
+            })
+            {% endif %}
+        });
+    </script>
+
+    {% if particle.layout == "showcase" %}
+    {{ parent() }}
+    <script type="text/javascript">
+     indicator_{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-panel-indicator-{{ id }}');
+    var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-panel-{{ id }} .g-owlcarousel-panel');
+    {% for item in particle.items %}
+    jQuery("#g-owlcarousel-panel-{{ id }} #g-owlcarousel-panel-{{ loop.index }}").click(function(event) {
+        var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-{{ id }}');
+        owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
+        var toIndex = {{ loop.index }} - 1;
+        owl{{ id|replace({'-':'_'}) }}.trigger('to.owl.carousel', [toIndex, 500, true]);
+        jQuery(this).addClass('selected');
+        indicator_{{ id|replace({'-':'_'}) }}.css({
+            left: jQuery(this).position().left{% if gantry.page.direction == 'rtl' %} + 200{% endif %} + 'px',
+        });
+    });
+    {% endfor %}
+    </script>
+    {% endif %}
+
+{% endblock %}

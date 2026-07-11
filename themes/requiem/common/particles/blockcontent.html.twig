@@ -1,0 +1,31 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+  <div class="g-blockcontent {{ particle.class|e }}">
+    {% if particle.image or particle.headline or particle.description or particle.linktext %}
+    <div class="g-grid">
+      <div class="g-block">
+        <div class="g-content">
+          {% if particle.image %}<img src="{{ url(particle.image) }}" class="logo-large" alt="{{ particle.headline|e }}" />{% endif %}
+          {% if particle.headline %}<h2 class="g-blockcontent-headline">{{ particle.headline|raw }}</h2>{% endif %}
+          {% if particle.description %}<div class="g-blockcontent-description">{{ particle.description|raw }}</div>{% endif %}
+          {% if particle.linktext %}<p><a href="{{ particle.link|e }}" class="button">{{ particle.linktext|e }}</a></p>{% endif %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="g-grid">
+      {% for subcontent in particle.subcontents %}
+        <div class="g-block {{ subcontent.class }}">
+          <div class="g-content">
+            {% if subcontent.img %}<img src="{{ url(subcontent.img) }}" class="g-blockcontent-subcontent-img" alt="{{ subcontent.subtitle|e }}" />{% endif %}
+            {% if subcontent.subtitle %} <div class="g-subtitle">{{ subcontent.subtitle|raw }}</div> {% endif %}
+            {% if subcontent.name %}<h4 class="g-title">{% if subcontent.icon %}<i class="{{ subcontent.icon }} g-blockcontent-icons"></i> {% endif %}{{ subcontent.name|raw }}</h4>{% endif %}
+            {% if subcontent.description %}{{ subcontent.description|raw }}{% endif %}
+            {% if subcontent.button %}<p><a href="{{ subcontent.buttonlink|e }}" class="button {{ subcontent.buttonclass|e }}">{{ subcontent.button|e }}</a></p>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+name: Feature Styles
+description: Feature styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#f6faff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#193564"

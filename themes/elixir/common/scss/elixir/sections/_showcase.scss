@@ -1,0 +1,15 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background;
+
+    .g-latestnews .g-latestnews-title .g-latestnews-uppertitle {
+        color: $showcase-text-color;
+    }
+}
+
+@media print {
+    #g-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

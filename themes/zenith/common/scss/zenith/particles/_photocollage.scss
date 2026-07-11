@@ -1,0 +1,236 @@
+$base-column-width: 16.66666%;
+$base-item-height: 190px;
+
+.g-photocollage {
+    position: relative;
+
+    .g-photocollage-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: $content-padding;
+
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            display: block;
+        }
+    }
+
+    h3.g-photocollage-title {
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size;
+        padding-left: $content-padding;
+        margin-left: $content-margin;
+
+        .dir-rtl & {
+            padding-left: 0;
+            padding-right: $content-padding;
+        }
+    }
+
+    //Button Wrapper
+    .button-wrapper {
+        margin-top: $content-margin * 5;
+        position: relative;
+        z-index: 20;
+    }
+
+    // Grid Settings
+    .grid {
+        max-width: 100%;
+        position: relative;
+        z-index: 30;
+
+        /* clearfix */
+        .grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        /* ---- g-photocollage-grid-item ---- */
+        .grid-sizer,
+        .g-photocollage-grid-item {
+            width: $base-column-width;
+
+            @include breakpoint(desktop-range) {
+                width: $base-column-width * 2;
+            }
+
+            @include breakpoint(tablet-range) {
+                width: $base-column-width * 3;
+            }
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 3;
+                width: $base-column-width * 6;
+            }
+        }
+
+        .g-photocollage-grid-item {
+            float: left;
+            height: $base-item-height * 1.1;
+            transition: transform 400ms;
+            overflow: hidden;
+
+            .image-wrapper {
+                position: relative;
+                z-index: 0;
+                display: flex;
+                width: 100%;
+
+                a {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 110;
+                }
+
+                .zoom {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    color: transparent;
+                    font-size: $core-font-size *2;
+                    transition: all 350ms;
+                }
+
+                &::after {
+                    transition: all 300ms;
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background: rgba(255, 255, 255, 0)
+                }
+
+                img {
+                    display: block;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            &:hover {
+                z-index: 10;
+
+                .image-wrapper {
+
+                    .zoom {
+                        color: $white;
+                        z-index: 102;
+
+                    }
+
+                    &::after {
+                        z-index: 10;
+                        background: transparentize($black, 0.3);
+                    }
+                }
+            }
+
+            display: flex;
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 2;
+                width: $base-column-width * 6;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                height: $base-item-height;
+                width: $base-column-width * 6;
+            }
+        }
+
+        .width-2 {
+            width: $base-column-width * 2;
+
+            @include breakpoint(desktop-range) {
+                width: $base-column-width * 2;
+            }
+
+            @include breakpoint(tablet-range) {
+                width: $base-column-width * 3;
+            }
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 2;
+                width: $base-column-width * 6;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                height: $base-item-height;
+                width: $base-column-width * 6;
+            }
+        }
+
+        .width-3 {
+            width: $base-column-width * 3;
+
+            @include breakpoint(desktop-range) {
+                width: $base-column-width * 2;
+            }
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 2;
+                width: $base-column-width * 6;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                height: $base-item-height;
+                width: $base-column-width * 6;
+            }
+        }
+
+        .height-2 {
+            height: $base-item-height * 2.1;
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 2;
+                width: $base-column-width * 6;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                height: $base-item-height;
+                width: $base-column-width * 6;
+            }
+        }
+
+        .height-3 {
+            height: $base-item-height * 3.1;
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 2;
+                width: $base-column-width * 6;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                height: $base-item-height;
+                width: $base-column-width * 6;
+            }
+        }
+
+        .height-4 {
+            height: $base-item-height * 3;
+
+            @include breakpoint(mobile-only) {
+                height: $base-item-height * 2;
+                width: $base-column-width * 6;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                height: $base-item-height;
+                width: $base-column-width * 6;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+#g-extension {
+    color: $extension-text-color; 
+	background: $extension-background;
+}
+
+.fp-extension {
+	.g-content {
+		margin: 20px;
+
+		.g-owlcarousel-strips-slider {
+			margin: -15px;
+		}
+	}
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

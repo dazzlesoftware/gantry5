@@ -1,0 +1,19 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+}
+
+.fp-utility {
+	.g-content {
+		text-align: center;
+		padding: 10px 15px;
+	}
+}
+
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

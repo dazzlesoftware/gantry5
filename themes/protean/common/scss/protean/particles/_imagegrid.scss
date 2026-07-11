@@ -1,0 +1,158 @@
+.g-imagegrid {
+    *, *:before, *:after {
+        box-sizing: border-box !important;
+    }
+    .g-imagegrid-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        flex-wrap: wrap;
+    }
+    .g-imagegrid-item {
+        flex: 0 0 auto;
+        width: 100%;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+
+        img {
+            transition: all 0.35s;
+            width: 100%;
+            height: 100%;
+        }
+        .g-imagegrid-caption {
+            display: flex;
+            justify-content: flex-start;
+            margin-left: $content-padding + $content-margin;
+            margin-top: $content-padding + $content-margin;
+            color: $white;
+            font-weight: $font-weight-regular;
+            text-transform: uppercase;
+            z-index: 1;
+            .dir-rtl & {
+                margin-right: $content-padding + $content-margin;
+                margin-left: auto;
+            }
+        }
+        .indicator {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            color: transparentize($white, 0.50);
+            font-style: normal;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            div {
+                font-size: $core-font-size;
+                flex: none;
+                -webkit-flex: none;
+                opacity: 0;
+                transform: scale(0);
+                transition: all 0.35s;
+
+                .fa {
+                    font-size: $core-font-size + 3;
+                }
+            }
+            .g-imagegrid-plus {
+                position: absolute;
+                height: 100%;
+                opacity: 0;
+                left: 0;
+                right: 0;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                align-self: center;
+                transform: scale(0);
+                transition: all 0.35s;
+                justify-content: center;
+                align-items: center;
+                font-size: $core-font-size + 6;
+                font-weight: $font-weight-light;
+            }
+        }
+        &:hover {
+            z-index: 10;
+            .g-imagegrid-link:before {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .indicator div, .g-imagegrid-plus {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
+    .g-imagegrid-desc {
+        margin: 1.5rem 0;
+    }
+    .g-imagegrid-link {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: all 0.35s;
+        &:before {
+            color: $white;
+            background: transparentize($accent-color-1, 0.80);
+            content: "";
+            position: absolute;
+            z-index: 1;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform: scale(0);
+            transition: all 0.35s;
+        }
+    }
+
+    .g-imagegrid-2cols {
+        .g-imagegrid-item {
+            width: 50%;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+    .g-imagegrid-3cols {
+        .g-imagegrid-item {
+            width: 33.33333%;
+
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                width: 100%;
+            }
+        }
+    }
+    .g-imagegrid-4cols {
+        .g-imagegrid-item {
+            width: 25%;
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+    .g-imagegrid-5cols {
+        .g-imagegrid-item {
+            width: 20%;
+            @include breakpoint(tablet-range) {
+                width: 33.33333%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 50%;
+            }
+        }
+    }
+}

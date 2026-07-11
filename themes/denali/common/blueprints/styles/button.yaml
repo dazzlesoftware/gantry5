@@ -1,0 +1,15 @@
+name: Button Colors
+description: Button colors for the Denali theme
+type: core
+
+form:
+  fields:
+
+    text-color:
+      type: input.colorpicker
+      label: Button Text
+      default: "#5a3b00"
+    background-color:
+      type: input.colorpicker
+      label: Button Background
+      default: "#ffb120"      

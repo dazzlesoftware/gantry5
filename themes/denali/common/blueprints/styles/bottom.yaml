@@ -1,0 +1,18 @@
+name: Bottom Styles
+description: Bottom styles for the Denali theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#0f0f0f"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/bottom/img-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

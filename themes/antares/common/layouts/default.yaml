@@ -1,0 +1,330 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1450704152
+layout:
+  /overlay/:
+    -
+      - position-position-1846
+  /fixedside/:
+    -
+      - position-position-8680
+    -
+      - social-6924
+  /top/:
+    -
+      - system-messages-8159
+  /navigation/:
+    -
+      - 'logo-8361 25'
+      - 'menu-3995 75'
+  /slideshow/:
+    -
+      - position-position-5636
+  /header/:
+    -
+      - 'position-header-a 50'
+      - 'position-header-b 50'
+  /above/:
+    -
+      - 'position-above-a 50'
+      - 'position-above-b 50'
+  /showcase/:
+    -
+      - 'position-showcase-a 50'
+      - 'position-showcase-b 50'
+  /utility/:
+    -
+      - 'position-utility-a 50'
+      - 'position-utility-b 50'
+  /feature/:
+    -
+      - 'position-feature-a 33.3'
+      - 'position-feature-b 33.3'
+      - 'position-feature-c 33.3'
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-sidebar
+      -
+        'mainbar 60':
+          -
+            - 'position-mainbar-a 33.3'
+            - 'position-mainbar-b 33.3'
+            - 'position-mainbar-c 33.3'
+          -
+            - system-content-5020
+      -
+        'aside 20':
+          -
+            - position-aside
+  /expanded/:
+    -
+      - 'position-expanded-a 33.3'
+      - 'position-expanded-b 33.3'
+      - 'position-expanded-c 33.3'
+  /extension/:
+    -
+      - 'position-extension-a 50'
+      - 'position-extension-b 50'
+  /bottom/:
+    -
+      - 'position-bottom-a 33.3'
+      - 'position-bottom-b 33.3'
+      - 'position-bottom-c 33.3'
+  /footer/:
+    -
+      - 'logo-1332 30'
+      - 'horizontalmenu-6826 40'
+      - 'social-5302 30'
+  /copyright/:
+    -
+      - 'copyright-5323 50'
+      - 'horizontalmenu-1896 50'
+    -
+      - totop-8334
+  /offcanvas/:
+    -
+      - mobile-menu-8402
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  position-position-1846:
+    title: 'Overlay A'
+    attributes:
+      key: overlay-a
+    block:
+      class: fp-overlay-top
+  position-position-8680:
+    title: 'FixedSide A'
+    attributes:
+      key: fixedside-a
+  social-6924:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  system-messages-8159:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-8361:
+    title: 'Logo / Image'
+  position-position-5636:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-header-a:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-header-b:
+    title: 'Header B'
+    attributes:
+      key: header-b
+  position-above-a:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-above-b:
+    title: 'Above B'
+    attributes:
+      key: above-b
+  position-showcase-a:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-showcase-b:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-utility-a:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-utility-b:
+    title: 'Utility B'
+    attributes:
+      key: utility-b
+  position-feature-a:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-feature-b:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-feature-c:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  position-sidebar:
+    attributes:
+      key: sidebar
+  position-mainbar-a:
+    title: 'Mainbar A'
+    attributes:
+      key: mainbar-a
+  position-mainbar-b:
+    title: 'Mainbar B'
+    attributes:
+      key: mainbar-b
+  position-mainbar-c:
+    title: 'Mainbar C'
+    attributes:
+      key: mainbar-c
+  position-aside:
+    attributes:
+      key: aside
+  position-expanded-a:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-expanded-b:
+    title: 'Expanded B'
+    attributes:
+      key: expanded-b
+  position-expanded-c:
+    title: 'Expanded C'
+    attributes:
+      key: expanded-c
+  position-extension-a:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-extension-b:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-bottom-a:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-bottom-b:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-bottom-c:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  logo-1332:
+    title: 'Footer Logo'
+  horizontalmenu-6826:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          name: Support
+        -
+          text: Download
+          link: 'https://www.rockettheme.com/joomla/templates/antares'
+          name: Download
+  social-5302:
+    title: 'Footer Social Icons'
+  horizontalmenu-1896:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://www.rockettheme.com/docs/joomla/templates/antares'
+          name: Docs
+        -
+          text: Guides
+          link: 'http://docs.gantry.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://www.rockettheme.com/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          name: Forum
+  totop-8334:
+    title: 'To Top'
+  mobile-menu-8402:
+    title: 'Mobile Menu'

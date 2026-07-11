@@ -1,0 +1,11 @@
+#g-header {
+    background: $header-background;
+    color: $header-text-color; 
+}    
+
+@media print {
+	#g-header {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

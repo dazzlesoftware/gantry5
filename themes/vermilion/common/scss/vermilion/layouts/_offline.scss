@@ -1,0 +1,42 @@
+.g-offline {
+
+    #g-header {
+        padding: 100px 0;
+
+        .title {
+            margin: 30px 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+    }
+
+    .g-logo {
+        margin: 0 auto;
+        position: relative;
+    }
+    #g-subscription-form {
+        color: $white;
+        background: darken($accent-color-1, 25%);
+        padding: 80px 0;
+
+        .g-newsletter-particle {
+            .title {
+                font-size: 160%;
+                margin-bottom: 25px;
+                text-align: center;
+            }
+        }       
+    }
+
+    .rt-authorized-form-title {
+        .title {
+            margin-bottom: 25px;
+        }
+    }
+
+    #g-authorized-form {
+        color: $footer-text-color;
+        background: darken($footer-background, 15%);
+        padding: 50px 0;
+    }
+}

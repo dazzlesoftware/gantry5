@@ -1,0 +1,617 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: home
+  timestamp: 1556042795
+layout:
+  /navigation/:
+    -
+      - 'logo-5679 25'
+      - 'menu-2875 75'
+  top: {  }
+  utility: {  }
+  /showcase/:
+    -
+      - showcasetabs-1309
+  /breadcrumb/: {  }
+  feature: {  }
+  maintop: {  }
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'sidebar 25':
+          -
+            - verticalmenu-1180
+          -
+            - custom-6269
+      -
+        'mainbody 50':
+          -
+            - iconlist-7265
+          -
+            - blockcontent-6987
+          -
+            - contenttabs-6139
+          -
+            - headlines-6560
+          -
+            - custom-8991
+      -
+        'aside 25': {  }
+  /expandedbottom/:
+    -
+      - verticalmenu-1181
+    -
+      - custom-6249
+  mainbottom: {  }
+  extension: {  }
+  bottom: {  }
+  /footer/:
+    -
+      -
+        'footer-a 68':
+          -
+            - 'custom-7983 49'
+            - 'custom-7304 51'
+      -
+        'footer-b 32':
+          -
+            - custom-6738
+          -
+            - mailchimp-5059
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-showcase
+      variations: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  maintop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  sidebar:
+    type: section
+    attributes:
+      class: hidden-phone
+      variations: ''
+    block:
+      fixed: '1'
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    attributes:
+      class: ''
+      variations: ''
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+    subtype: main
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: visible-phone
+      variations: ''
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  bottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  footer-a:
+    title: 'Footer A'
+  footer-b:
+    title: 'Footer B'
+  footer:
+    type: container
+    attributes:
+      boxed: ''
+    subtype: footer
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  logo-5679:
+    attributes:
+      image: 'gantry-media://logo/preset1/logo.png'
+      link: '1'
+      class: g-logo
+    block:
+      variations: nomarginall
+  menu-2875:
+    block:
+      class: g-lexicon-menu
+      variations: 'center nomarginall nopaddingall'
+  showcasetabs-1309:
+    title: 'Showcase Tabs'
+    attributes:
+      layout: layout-left
+      items:
+        -
+          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          content: '<span class="rt-text-large">Join the Adventure</span><span class="rt-title-tag">Buy Lexicon for You and Your Clients</span>'
+          linklabel: 'Purchase Now'
+          link: 'https://rockettheme.com/joomla/templates/lexicon'
+          buttontarget: _blank
+          buttonclass: readon
+          title: Contemporary
+        -
+          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          content: '<span class="rt-text-large">New and Powerful</span><span class="rt-title-tag">Advanced Multi-Platform Framework</span>'
+          linklabel: 'Download Now'
+          link: 'http://gantry.org/downloads'
+          buttontarget: _blank
+          buttonclass: readon
+          title: Gantry
+        -
+          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          content: '<span class="rt-text-large">Rich Content Display</span><span class="rt-title-tag">Dynamic & Versatile Content Blocks</span>'
+          linklabel: 'Learn More'
+          link: 'http://docs.gantry.org/gantry5/particles'
+          buttontarget: _blank
+          buttonclass: readon
+          title: Particles
+        -
+          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          content: '<span class="rt-text-large">Mobile Responsive</span><span class="rt-title-tag">Adapts to your Viewing Device</span>'
+          linklabel: 'View Details'
+          link: 'https://rockettheme.com/joomla/templates/lexicon'
+          buttontarget: _blank
+          buttonclass: readon
+          title: Responsive
+    block:
+      variations: 'nomarginall nopaddingall'
+  verticalmenu-1180:
+    title: 'Vertical Menu'
+    attributes:
+      class: ''
+      title: 'Inside Lexicon'
+      items:
+        -
+          title: 'Gantry<span class="hidden-tablet"> Framework'
+          type: link
+          link: 'http://gantry.org/'
+          target: _blank
+          class: ''
+          name: 'Gantry Framework'
+        -
+          title: 'Dropdown<span class="hidden-tablet"> Menu</span>'
+          type: link
+          link: '#'
+          target: _self
+          class: ''
+          name: 'Dropdown Menu'
+        -
+          title: '<span class="hidden-tablet">Block </span>Variations'
+          type: link
+          link: features/block-variations
+          target: _self
+          class: ''
+          name: 'Block Variations'
+        -
+          title: '<span class="hidden-tablet">Module </span>Positions'
+          type: link
+          link: '#'
+          target: _self
+          class: ''
+          name: 'Module Positions'
+        -
+          title: '<span class="hidden-tablet">Custom </span>Typography</a>'
+          type: link
+          link: features/typography
+          target: _self
+          class: ''
+          name: 'Custom Typography'
+    block:
+      class: fp-sidebar-01
+      variations: 'box1 title1'
+  custom-6269:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Browser Survey'
+      titletag: ''
+      html: "<span>Google Chrome</span>\n<span class=\"rt-text-small\"><em>Blink-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span>\n\n<hr />\n\n<span>Apple Safari</span>\n<span class=\"rt-text-small\"><em>Webkit-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-half-empty\"></span> <span class=\"fa fa-star-o\"></span>\n\n<hr />\n\n<span>Mozilla Firefox</span>\n<span class=\"rt-text-small\"><em>Gecko-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-o\"></span>\n\n<hr />\n\n<span>Microsoft Edge</span>\n<span class=\"rt-text-small\"><em>Blink-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-o\"></span> <span class=\"fa fa-star-o\"></span>\n\n<hr />\n\n<span>Opera</span>\n<span class=\"rt-text-small\"><em>Blink-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-o\"></span>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: fp-sidebar-02
+      variations: 'box2 title2 nomarginall'
+  iconlist-7265:
+    title: 'Icon List'
+    attributes:
+      title: 'Navigation Options'
+      titletag: 'Menu Systems for All Devices'
+      cols: '33'
+      iconlists:
+        -
+          icon: 'fa fa-calendar'
+          circlenumber: '1'
+          title: 'Dropdown Menu'
+          desc: 'An advanced CSS based multi-level dropdown system.'
+          name: 'Item 1'
+        -
+          icon: 'fa fa-briefcase'
+          circlenumber: '2'
+          title: 'Vertical Menu'
+          desc: 'A static menu with menu items you can place in the sidebar.'
+          name: 'Item 2'
+        -
+          icon: 'fa fa-plane'
+          circlenumber: '3'
+          title: 'Mobile Menus'
+          desc: 'Options for a selectbox or side tree panel menu<span class="hidden-tablet"> for mobile</span>.'
+          name: 'Item 3'
+    block:
+      class: 'rt-title-large fp-main'
+      variations: 'center largepaddingbottom'
+  blockcontent-6987:
+    title: 'Block Content'
+    attributes:
+      class: ''
+      title: ''
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          name: ''
+          accent: none
+          icon: ''
+          img: 'gantry-media://home/fp-content-top/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: "<h4 class=\"medpaddingtop\">Preset Styles</h4>\n<p>An assortment of six default but editable preset style variations.</p>\n<p><a href=\"#\">Learn More</a></p>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Item 1'
+        -
+          name: ''
+          accent: none
+          icon: ''
+          img: 'gantry-media://home/fp-content-top/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: "<h4 class=\"medpaddingtop\">Block Classes</h4>\n<p>Individualize block content from the eight stylistic suffixes.</p>\n<p><a href=\"#\">Learn More</a></p>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Item 2'
+        -
+          name: ''
+          accent: none
+          icon: ''
+          img: 'gantry-media://home/fp-content-top/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: "<h4 class=\"medpaddingtop\">Typography</h4>\n<p>Extensive typographical options to diversify your content.</p>\n<p><a href=\"#\">Learn More</a></p>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Item 3'
+    block:
+      class: fp-content-top
+  contenttabs-6139:
+    title: 'Content Tabs'
+    attributes:
+      animation: right
+      items:
+        -
+          title: Display
+          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading: 'Tabbed Content Display'
+          content: '<p>A particle to display tabbed content, with  configurable tab positions<span class="hidden-tablet"> to the top, bottom, left or right</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
+          rheading: 'Content Tabs'
+          smalltext: Particle
+          linklabel: '<span class="hidden-tablet">Learn</span> More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon
+          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading2: 'Ticker Styled Content'
+          content2: '<p>The Headlines particle displays content in a news ticket type format<span class="hidden-tablet">, rotating through content snippets</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p> '
+          rheading2: Headlines
+          smalltext2: Particle
+          linklabel2: '<span class="hidden-tablet">Learn</span> More'
+          link2: '#'
+          buttontarget2: _self
+          buttonclass2: readon
+          name: 'Item 1'
+        -
+          title: Present
+          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading: 'Accordion Option'
+          content: '<p>The Lists particle displays content in a vertical format<span class="hidden-tablet">, either statically or dynamically through an accordion effect</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
+          rheading: Lists
+          smalltext: Particle
+          linklabel: '<span class="hidden-tablet">Learn</span> More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon
+          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading2: 'Mosaic Structure'
+          content2: '<p>The Mosaic particle displays content in dynamic blocks that adapt<span class="hidden-tablet"> to their content size and by frontend filters</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
+          rheading2: Mosaic
+          smalltext2: Particle
+          linklabel2: '<span class="hidden-tablet">Learn</span> More'
+          link2: '#'
+          buttontarget2: _self
+          buttonclass2: readon
+          name: 'Item 2'
+        -
+          title: Showcase
+          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading: 'Horizontal Content Blocks'
+          content: '<p>The Strips particle displays content in horizontal rows<span class="hidden-tablet"> of image and/or text blocks, which are rotatable</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
+          rheading: 'Strips Slider'
+          smalltext: Particle
+          linklabel: '<span class="hidden-tablet">Learn</span> More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon
+          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading2: 'Showcase Mode'
+          content2: '<p>The Slider is<span class="hidden-tablet"> perfect as a focal point for either</span> a slideshow or a more robust showcase display.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
+          rheading2: Slider
+          smalltext2: Particle
+          linklabel2: '<span class="hidden-tablet">Learn</span> More'
+          link2: '#'
+          buttontarget2: _self
+          buttonclass2: readon
+          name: 'Item 3'
+        -
+          title: Explore
+          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading: 'Site Search'
+          content: '<p>RokAjaxSearch is an ajax powered search system<span class="hidden-tablet"> for Joomla site and Google based searches</span>.<br /><span class="rt-red-text"><strong>Joomla Only</strong></span></p>'
+          rheading: RokAjaxSearch
+          smalltext: 'Joomla Module'
+          linklabel: '<span class="hidden-tablet">Learn</span> More'
+          link: '#'
+          buttontarget: _self
+          buttonclass: readon
+          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          heading2: Performance
+          content2: '<p>Improvide site speed through compressing CSS and JS<span class="hidden-tablet">, as well as images and fonts</span>.<br /><span class="rt-red-text"><strong>Joomla Only</strong></span></p>'
+          rheading2: RokBooster
+          smalltext2: 'Joomla Plugin'
+          linklabel2: '<span class="hidden-tablet">Learn</span> More'
+          link2: '#'
+          buttontarget2: _self
+          buttonclass2: readon
+          name: 'Item 4'
+    block:
+      class: fp-content-tabs
+      variations: box3
+  headlines-6560:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      nav: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      label: ''
+      items:
+        -
+          image: ''
+          desc: '<span>Use the template manager to customize the various design elements.</span>'
+          link: ''
+          name: 'Item 1'
+        -
+          image: ''
+          desc: '<span>Configure per menu item settings for maximum page control.</span>'
+          link: ''
+          name: 'Item 2'
+        -
+          image: ''
+          desc: '<span>Use Particles to diversify your content display and interaction.</span>'
+          link: ''
+          name: 'Item 3'
+    block:
+      class: fp-headlines
+      variations: 'box4 nopaddingall'
+  custom-8991:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<p class=\"rt-text-medium\"><em>Lexicon is centered around a flat design approach, spruced by professional and engaging color schemes to create presence for site content without distracting from it. <span class=\"hidden-tablet\">Ideal for showcasing product details in a vibrant but elegant fashion.</span></em></p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-10 hidden-tablet\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img class=\"rt-rounded\" src=\"gantry-media://home/fp-content-bottom/img-01.jpg\" alt=\"image\" />\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<h4 class=\"smallmarginbottom\">Responsive Layout</h4>\n\t\t\t<p><em>Automatic adaptation<span class=\"hidden-tablet\">  to varying devices</span></em></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer gantry-right\">\n\t\t\t<p class=\"medmargintop\"><a class=\"readon\" href=\"https://rockettheme.com/joomla/templates/lexicon\">Download<span class=\"hidden-tablet\"> Lexicon</span></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: fp-content-bottom
+  verticalmenu-1181:
+    title: 'Vertical Menu'
+    attributes:
+      class: ''
+      title: 'Inside Lexicon'
+      items:
+        -
+          title: 'Gantry<span class="hidden-tablet"> Framework'
+          type: link
+          link: 'http://gantry.org/'
+          target: _blank
+          class: ''
+          name: 'Gantry Framework'
+        -
+          title: 'Dropdown<span class="hidden-tablet"> Menu</span>'
+          type: link
+          link: '#'
+          target: _self
+          class: ''
+          name: 'Dropdown Menu'
+        -
+          title: '<span class="hidden-tablet">Block </span>Variations'
+          type: link
+          link: features/block-variations
+          target: _self
+          class: ''
+          name: 'Block Variations'
+        -
+          title: '<span class="hidden-tablet">Module </span>Positions'
+          type: link
+          link: '#'
+          target: _self
+          class: ''
+          name: 'Module Positions'
+        -
+          title: '<span class="hidden-tablet">Custom </span>Typography</a>'
+          type: link
+          link: features/typography
+          target: _self
+          class: ''
+          name: 'Custom Typography'
+    block:
+      class: fp-sidebar-01
+      variations: 'box1 title1'
+  custom-6249:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Browser Survey'
+      titletag: ''
+      html: "<span>Google Chrome</span>\n<span class=\"rt-text-small\"><em>Webkit-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span>\n\n<hr />\n\n<span>Apple Safari</span>\n<span class=\"rt-text-small\"><em>Webkit-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-half-empty\"></span> <span class=\"fa fa-star-o\"></span>\n\n<hr />\n\n<span>Mozilla Firefox</span>\n<span class=\"rt-text-small\"><em>Gecko-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-o\"></span>\n\n<hr />\n\n<span>Microsoft Internet Explorer</span>\n<span class=\"rt-text-small\"><em>Trident-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-o\"></span> <span class=\"fa fa-star-o\"></span>\n\n<hr />\n\n<span>Opera</span>\n<span class=\"rt-text-small\"><em>Presto-based</em></span>\n<span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star\"></span> <span class=\"fa fa-star-o\"></span>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: fp-sidebar-02
+      variations: 'box2 title2 nomarginall'
+  custom-7983:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Demo Info'
+      titletag: ''
+      html: "<p><em>All demo content is for sample purpose only. All content images are freely available from <a href=\"http://unsplash.com/\">Unsplash</a>.</em></p>\n<p><span class=\"hidden-tablet\"> Use the <a href=\"https://rockettheme.com/joomla/templates/lexicon\">RocketLauncher</a> to install a demo equivalent onto your site.</span></p>"
+      twig: '0'
+      filter: '0'
+  custom-7304:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Support and Help'
+      titletag: ''
+      html: "<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/forum/joomla-template-lexicon\">Post in Forum Community</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/docs/joomla/templates/lexicon\">Read Full Documentation</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/forum/joomla-template-lexicon\">Send Support Email</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/docs/joomla/templates/lexicon\">Create Premier Ticket</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  custom-6738:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Stay in Touch'
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://www.facebook.com/RocketTheme\"><span class=\"fa fa-facebook\"></span> <span>Facebook</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://twitter.com/rockettheme\"><span class=\"fa fa-twitter\"></span> <span>Twitter</span></a>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear medmarginbottom\"></div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.linkedin.com/in/rockettheme\"><span class=\"fa fa-linkedin\"></span> <span>LinkedIn</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.pinterest.com/rockettheme/\"><span class=\"fa fa-pinterest\"></span> <span>Pinterest</span></a>\n\t\t</div>\n\t</div>\n</div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: hidden-phone
+  mailchimp-5059:
+    title: MailChimp
+    attributes:
+      layout: g-newsletter-aside
+      inputboxtext: 'Your Email'
+      error: '#262a2f'
+      buttontext: Join
+      buttonclass: ''
+    block:
+      class: 'fp-footer hidden-phone'
+      variations: 'nopaddingleft nopaddingright'

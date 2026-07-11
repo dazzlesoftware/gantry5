@@ -1,0 +1,27 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;  
+    position: relative;
+    z-index: 1000;
+
+	.fp-feature-a {
+		> .g-content {
+			margin: 0;
+			padding: 0;
+		}
+	}  
+
+	.button {
+		background: lighten($accent-color-1, 10%);
+		&:hover, &:active, &:focus {
+			background: darken($accent-color-1, 10%);
+		}		
+	}
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

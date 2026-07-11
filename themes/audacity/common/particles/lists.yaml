@@ -1,0 +1,111 @@
+name: Lists
+description: Display Lists.
+type: particle
+icon: fa-list
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    description:
+      type: textarea.textarea
+      label: Description
+      description: Customize the description.
+      placeholder: Enter short description
+
+    displayitems:
+      type: input.number
+      label: Display at Once
+      description: Number of items to display at once.
+      min: 1
+      default: 2
+
+    accordion:
+      type: select.select
+      label: Collapsible Preview
+      description: Enable or disable the Accordion view.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    nav:
+      type: select.select
+      label: Prev / Next
+      description: Enable or disable the Prev / Next navigation.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    dots:
+      type: select.select
+      label: Dots
+      description: Enable or disable the Dots navigation.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      description: Enable or disable the Autoplay.
+      default: disabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    autoplaySpeed:
+      type: input.text
+      label: Autoplay Speed
+      description: Set the speed of the Autoplay, in milliseconds.
+      placeholder: 5000
+
+    pauseOnHover:
+      type: select.select
+      label: Pause on Hover
+      description: Pause the slideshow when hovering over slider, then resume when no longer hovering.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    items:
+      type: collection.list
+      array: true
+      label: List Items
+      description: Create each slider item to display.
+      value: name
+      ajax: true
+
+      fields:
+        .title:
+          type: textarea.textarea
+          label: Title
+          description: Enter the title
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the description.
+          placeholder: Enter short description

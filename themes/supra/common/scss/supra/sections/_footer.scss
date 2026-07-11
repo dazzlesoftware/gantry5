@@ -1,0 +1,38 @@
+#g-footer {
+    color: $footer-text-color;
+    background: $footer-background;
+
+    // Titles
+    .g-title {
+        margin: 0 0 $content-margin;
+        padding-bottom: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
+        font-weight: $font-weight-black;
+        color: $white;
+    }
+
+    // Simple Menu Particle
+    .g-simplemenu-particle {
+        h6 {
+            color: $white;
+        }
+
+        a {
+            color: $footer-text-color;
+
+            &:hover {
+                transition: all 0.25s;
+                box-shadow: 0 2px 0 $footer-text-color;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

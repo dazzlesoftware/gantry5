@@ -1,0 +1,31 @@
+.g-simplemenu-particle {
+    h6 {
+        text-transform: uppercase;
+        font-size: $core-font-size - 0.1;
+        margin-bottom: $content-margin;
+        opacity: 0.5;
+    }
+    .g-simplemenu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex: 0 0 auto;
+        vertical-align: top;
+        li {
+            font-weight: bold;
+            font-size: $core-font-size;
+            line-height: $core-line-height + 0.1;
+        }
+
+        &.g-simplemenu-0cols {
+            width: 100%;
+            li {
+                width: auto;
+
+                @include breakpoint(mobile-only) {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

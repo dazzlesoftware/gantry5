@@ -1,0 +1,142 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+{# Desktop #}
+<div class="g-showcase-slides desktop">
+    {% for row in articles | batch(4) %}
+        {% if loop.first %}{% set set_id = 'finished' %}
+        {% else %}{% set set_id = '' %}
+        {% endif %}
+
+        <div class="g-showcase-slides-set {% if particle.demo == " enabled" %}{% if loop.index == preset %}active{% endif %}{% else %}{% if loop.first %}active{% endif %}{% endif %}">
+
+            {% for article in row %}
+                {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                    {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                        {% set article_image = article.images.image_intro %}
+                    {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                        {% set article_image = article.images.image_fulltext %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="g-showcase-slides-slide item-{{ loop.index }} {{ set_id }}">
+                    <img src="{{ url(article_image)|e }}" alt="{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}">
+                    {% if loop.last %}
+                        <div class="g-showcase-slides-slide-content">
+
+                            {% if display.title.enabled and article.title %}
+                                <h3>{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}</h3>
+                            {% endif %}
+
+                            {% if display.text.type %}
+                                {% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+
+                                {% if display.text.formatting == 'text' %}
+                                    {{ article_text|truncate_text(display.text.limit)|raw }}
+                                {% else %}
+                                    {{ article_text|truncate_html(display.text.limit)|raw }}
+                                {% endif %}
+
+                            {% endif %}
+
+                            {% if display.read_more.enabled %}
+                                <div class="g-showcase-slides-slide-button">
+                                    <a href="{{ article.route|e }}" target="{{ article.buttontarget|default('_self')|e }}" title="{{ article.title|e }}" class="button {{ display.read_more.css }}">{{ display.read_more.label|default('Read More...') }}</a>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <div class="owl-nav">
+        <div class="owl-prev">
+            <i class="fa fa-angle-up" aria-hidden="true"></i>
+        </div>
+        <div class="owl-next">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+
+{# Mobile #}
+<div class="g-showcase-slides mobile g-owlcarousel owl-carousel" data-showcase-slides-id="{{ id }}">
+    {% for row in articles | batch(4) %}
+        {% if loop.first %}{% set set_id = 'finished' %}
+        {% else %}{% set set_id = '' %}
+        {% endif %}
+        {% for article in row %}
+            {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                    {% set article_image = article.images.image_intro %}
+                {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                    {% set article_image = article.images.image_fulltext %}
+                {% endif %}
+            {% endif %}
+            <div class="g-showcase-slides-slide item-{{ loop.index }}">
+                <img src="{{ url(article_image)|e }}" alt="{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}">
+
+                {% if loop.last %}
+                    <div class="g-showcase-slides-slide-content">
+                        {% if display.title.enabled and article.title %}
+                            <h3>{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}</h3>
+                        {% endif %}
+
+                        {% if display.text.type %}
+                            {% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+
+                            {% if display.text.formatting == 'text' %}
+                                {{ article_text|truncate_text(display.text.limit)|raw }}
+                            {% else %}
+                                {{ article_text|truncate_html(display.text.limit)|raw }}
+                            {% endif %}
+
+                        {% endif %}
+
+                        {% if display.read_more.enabled %}
+                            <div class="g-showcase-slides-slide-button">
+                                <a href="{{ article.route|e }}" target="{{ article.buttontarget|default('_self')|e }}" title="{{ article.title|e }}" class="button {{ display.read_more.css }}">{{ display.read_more.label|default('Read More...') }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

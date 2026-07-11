@@ -1,0 +1,52 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% if particle.demo == "enabled" %}
+        {% if gantry.theme.preset %}
+            {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+        {% else %}
+            {% set preset = 1 %}
+        {% endif %}
+    {% endif %}
+
+    <div id="{{ id }}" class="g-slider {{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.timeout }}" data-slider-dots="{% if particle.dots == "enabled" %}true{% else %}false{% endif %}" data-slider-items="{{ particle.amount }}" data-slider-itemstablet="{{ particle.tablet_amount }}" data-slider-itemsmobile="{{ particle.mobile_amount }}" data-slider-itemssmallmobile="{{ particle.smallmobile_amount }}" data-slider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-slider-mobile="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-slider-tablet="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-slider-desktop="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-slider-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
+
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-slider-slides g-owlcarousel owl-carousel" data-slider-slides-id="{{ id }}">
+                {% for item in particle.items %}
+                    <div class="g-slider-slides-slide">
+                        <div class="g-slider-slides-content">
+                            <h1>{{ item.title }}</h1>
+                            <p>{{ item.description|raw }}</p>
+                            {% if item.buttontext %}
+                                <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+                            {% endif %}
+                        </div>
+                        <div class="g-slider-slides-image" style="background-image: url({{ url(item.image)|e }});"></div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            {% if particle.thumbs == "enabled" %}
+                <div class="g-slider-carousel g-owlcarousel owl-carousel" data-slider-carousel-id="{{ id }}" data-slider-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}">
+                    {% for item in particle.items %}
+                        <div>
+                            <div class="g-slider-carousel-image-container" style="background-image: url({{ url(item.image)|e }});"></div>
+                            <div class="g-slider-carousel-title">{{ item.title }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% else %}
+            {% include '@particles/slider-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do 
+        gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+    <script src="{{ url('gantry-theme://js/slider.init.js') }}"></script>
+{% endblock %}

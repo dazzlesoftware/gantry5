@@ -1,0 +1,178 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1455273018
+layout:
+  /offsidebar/:
+    -
+      - menu-1078
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - 'offsidebartoggle-2680 20'
+      - 'logo-7061 60'
+      - 'social-5519 20'
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-3465
+  /above/: {  }
+  /showcase/:
+    -
+      - 'system-content-6444 50'
+      - 'position-position-9401 50'
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-8819 25'
+      - 'copyright-3234 50'
+      - 'totop-8262 25'
+  /offcanvas/:
+    -
+      - mobile-menu-6235
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-navigation-light
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+      class: 'nopaddingbottom g-compact'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  offsidebartoggle-2680:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+      type: pushpage
+  logo-7061:
+    block:
+      class: center
+  social-5519:
+    attributes:
+      css:
+        class: align-right
+  infolist-3465:
+    title: 'We are sorry!'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          icon: ''
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'We tried really hard, but could not find what you were looking for!'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'We are sorry!'
+    block:
+      variations: center
+  system-content-6444:
+    block:
+      class: g-error
+      variations: center
+  position-position-9401:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+    block:
+      class: 'nomarginbottom nopaddingbottom g-compact'
+  copyright-3234:
+    block:
+      class: center
+  totop-8262:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-6235:
+    title: 'Mobile Menu'

@@ -1,0 +1,15 @@
+#g-extension {
+    color: $extension-text-color; 
+	background: $extension-background;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: darken($extension-text-color, 15%);
+	}
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

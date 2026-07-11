@@ -1,0 +1,19 @@
+name: Extension Styles
+description: Extension styles for the Antares theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#121212"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#888888"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/extension/img-01.jpg"   

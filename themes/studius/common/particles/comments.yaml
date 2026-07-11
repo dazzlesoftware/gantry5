@@ -1,0 +1,207 @@
+name: Comments Slider
+description: Comments slideshow with small pictures
+type: particle
+icon: fa-comment
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            nav:
+              type: select.select
+              label: Prev / Next
+              description: Enable or disable the Prev / Next navigation. Arrows will not appear unless they are actually required (i.e. more items than currently visible).
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay:
+              type: select.select
+              label: Autoplay
+              description: Decide if you want your slideshow to autoplay or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplayTimeout:
+              type: input.number
+              label: Autoplay Timeout
+              description: The time between each auto transition
+              default: 8000
+
+            loop:
+              type: select.select
+              label: Loop
+              description: Decide if you want your slideshow to loop or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            speed:
+              type: input.number
+              label: Speed
+              description: Transition speed
+              default: 800
+
+            centered:
+              type: select.select
+              label: Centered
+              description: Enable or disable centered slide.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            thumbs:
+              type: select.select
+              label: Item Thumbs
+              description: Enable or disable the item name thumbnails. 
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            touchmove:
+              type: select.select
+              label: Touch Move
+              description: Decide if you want to be able to move slides using touch.
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            items:
+              type: collection.list
+              array: true
+              label: Items
+              description: Create comments items.
+              value: name
+              ajax: true
+              fields:
+                .content:
+                    type: textarea.textarea
+                    label: Story Content
+                    description: Add testimonial content
+                .avatar:
+                    type: input.imagepicker
+                    label: Avatar
+                    description: Pick desired photo.
+                .name:
+                    type: input.text
+                    label: Name
+                    description: Name
+                .position:
+                    type: input.text
+                    label: Position
+                    description: Position
+
+        _tab_slides:
+          label: Slides
+          overridable: false
+          fields:
+            largedesktopinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Large Desktop'
+            largedesktopslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 4
+              min: 1
+            largedesktopgroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            largedesktopspace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+            desktopinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Desktop' 
+            desktopslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 4
+              min: 1
+            desktopgroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            desktopspace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+            tabletinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Tablet'
+            tabletslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 2
+              min: 1
+            tabletgroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            tabletspace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+            mobileinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Mobile'
+            mobileslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 1
+              min: 1
+            mobilegroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            mobilespace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0

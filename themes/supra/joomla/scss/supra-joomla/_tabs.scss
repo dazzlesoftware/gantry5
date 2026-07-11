@@ -1,0 +1,19 @@
+.nav-tabs.nav-dark {
+    border-bottom: 1px solid $border-color-light;
+}
+
+.nav-tabs.nav-dark > li > a {
+    color: $rule-color;
+}
+
+.nav-tabs.nav-dark > li > a:hover {
+    border-color: $border-color-light $border-color-light darken($border-color-light, 20%);
+    background-color: darken($white, 50%);
+}
+
+.nav-tabs.nav-dark > .active > a,
+.nav-tabs.nav-dark > .active > a:hover {
+    color: $white;
+    background-color: darken($white, 50%);
+    border: 1px solid $border-color-light;
+}

@@ -1,0 +1,64 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+  <script src="{{ url('gantry-theme://js/jquery-ui-tabs-combined.js') }}"></script>
+{% endblock %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+	{% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+	<div class="g-contenttabs">
+		<div id="g-contenttabs-{{ id }}" class="g-contenttabs-container">
+			<ul class="g-contenttabs-tab-wrapper-container">
+				{% for item in particle.items %}
+				<li class="g-contenttabs-tab-wrapper">
+					<span class="g-contenttabs-tab-wrapper-head">
+						<a class="g-contenttabs-tab" href="#{{ item.tabname|e|replace({' ': ''}) }}">
+							<span class="g-contenttabs-tab-subtitle">{{ item.subtitle|raw }}</span>
+							<span class="g-contenttabs-tab-title">{{ item.title|raw }}</span>
+						</a>
+					</span>
+				</li>
+				{% endfor %}
+			</ul>
+
+			<ul class="g-contenttabs-tab-wrapper-container">
+				{% for item in particle.items %}
+				<li class="g-contenttabs-tab-wrapper">
+					<span class="g-contenttabs-tab-wrapper-body">
+						<div id="{{ item.tabname|e|replace({' ': ''}) }}" class="g-contenttabs-content">
+							<span class="g-contenttabs-content-text">
+								{{ item.desc|raw }}
+							</span>
+							<span class="g-contenttabs-content-tag">
+								<span>{{ item.tag|raw }}</span>
+							</span>
+						</span>
+					</span>
+				</li>
+				{% endfor %}
+			</ul>
+
+			<div class="clearfix"></div>
+
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script type="text/javascript">
+	jQuery(document).ready(function (){
+		jQuery('#g-contenttabs-{{ id }}').tabs({
+		    show: {
+		        effect: "{{ particle.animation|default('slide') }}",
+		        duration: 500
+		    }
+		});
+	});
+</script>
+{% endblock %}

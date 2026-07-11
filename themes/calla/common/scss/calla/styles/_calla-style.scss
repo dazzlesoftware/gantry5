@@ -1,0 +1,77 @@
+// Vertical Navigation
+.g-vnavigation-container {
+    position: relative;
+
+    .g-content.g-particle {
+        height: 100%;
+        @include breakpoint(mobile-only) {
+            height: 0;
+        }
+    }
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border: 4px solid $black;
+        top: -1rem;
+        right: -1rem;
+        position: absolute;
+        z-index: 10;
+        pointer-events: none;
+
+        .dir-rtl & {
+            right: auto;
+            left: -1rem;
+        }
+    }
+}
+
+// Slideshow
+#g-slideshow.fp-slideshow {
+    @include breakpoint(mobile-only) {
+        .g-owlcarousel-carousel {
+            .owl-item {
+                .g-carousel-image-wrapper {
+                    background-position-x: 50%;
+                }
+            }
+        }
+    }
+    background-image: none !important;
+}
+
+// Above
+#g-above.fp-above {
+    .g-content {
+        height: 100%;
+    }
+
+    // Logo/Image Particle
+    .g-logo {
+        display: block;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+// Extension
+#g-extension.fp-extension {
+    .g-logo {
+        display: block;
+
+        @include breakpoint(no-mobile) {
+            position: absolute;
+            bottom: 0;
+
+            img {
+                max-width: none;
+            }
+        }
+    }
+}

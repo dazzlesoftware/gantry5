@@ -1,0 +1,416 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1455119312
+layout:
+  /offsidebar/:
+    -
+      - menu-4196
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'offsidebartoggle-2745 20'
+      - 'logo-5992 60'
+      - 'social-7220 20'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - 'position-position-7051 50'
+      - 'position-position-2504 50'
+  /above/:
+    -
+      - position-position-3264
+  /showcase/:
+    -
+      - position-position-9435
+    -
+      - position-position-8620
+    -
+      - position-position-3083
+  /utility/:
+    -
+      - position-position-5239
+  /feature/:
+    -
+      - position-position-7980
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - 'position-position-8124 50'
+      - 'position-position-8346 50'
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - 'infolist-6113 33.3'
+      - 'infolist-4978 33.3'
+      - 'custom-3225 33.3'
+  /footer/:
+    -
+      - position-position-5600
+  /copyright/:
+    -
+      - 'branding-5976 25'
+      - 'copyright-5748 50'
+      - 'totop-6544 25'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  offsidebartoggle-2745:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+      type: pushpage
+  logo-5992:
+    block:
+      class: center
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-2504:
+    title: 'Module Position'
+    attributes:
+      key: header-b
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+    block:
+      variations: center
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-8620:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-position-3083:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-8538:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-8346:
+    title: 'Module Position'
+    attributes:
+      key: expanded-b
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  infolist-6113:
+    title: 'Useful Links'
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/joomla/templates/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/docs/joomla/templates/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://docs.gantry.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Gantry
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://demo.rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: Demo
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/forum/joomla-template-galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+  infolist-4978:
+    title: Elsewhere
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.facebook.com/RocketTheme/'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://rockettheme.com/'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.youtube.com/user/OfficialRocketTheme'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://github.com/gantry/gantry5'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://bitbucket.org/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Bitbucket
+  custom-3225:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+  position-position-5600:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  copyright-5748:
+    block:
+      class: center
+  totop-6544:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-7951:
+    title: 'Mobile Menu'

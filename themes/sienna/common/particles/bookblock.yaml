@@ -1,0 +1,165 @@
+name: BookBlock
+description: Display items in BookBlock layout.
+type: particle
+icon: fa-book
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    source:
+      type: select.select
+      label: Content Source
+      description: Choose if the content should be loaded from the Joomla articles or particle itself.
+      default: particle
+      options:
+        joomla: Joomla
+        particle: Particle
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    items:
+      type: collection.list
+      array: true
+      label: Blocks
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+      fields:
+        .category:
+          type: input.text
+          label: Category
+          description: Customize the Category.
+          placeholder: Enter the item Category
+        .title:
+          type: input.text
+          label: Title
+          description: Customize the Title.
+          placeholder: Enter the item Title
+        .intro:
+          type: textarea.textarea
+          label: Intro
+          description: Customize the intro.
+          placeholder: Enter short intro
+        .content:
+          type: textarea.textarea
+          label: Content
+          description: Customize the content.
+          placeholder: Enter content here
+        .readmore:
+          type: input.text
+          label: Read More Label
+          description: Specify the Read More label.
+        .readmorelink:
+          type: input.text
+          label: Read More Link
+          description: Specify the Read More link.
+        .readmoretarget:
+          type: select.select
+          label: Read More Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _self
+          options:
+            _self: Self
+            _blank: New Window
+        .readmoreclass:
+          type: input.selectize
+          label: Read More Classes
+          description: CSS class names for the Read More button.
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select desired image.
+        .imagetitle:
+          type: input.text
+          label: Image Title
+          description: Customize the Image Title.
+          placeholder: Enter the Image Title
+        .imagedesc:
+          type: textarea.textarea
+          label: Image Description
+          description: Customize the image description.
+          placeholder: Enter image description
+
+    _joomla:
+      type: separator.note
+      class: 'settings-param'
+      content: '<h4>Joomla Content Display Settings</h4>'
+
+    jcategories:
+      type: joomla.categories
+      label: Joomla Categories
+      description: Select the categories the articles should be taken from.
+
+    jarticles:
+      type: input.number
+      label: Articles to Fetch
+      description: Number of Joomla articles to fetch from category.
+      min: 1
+      default: 1
+
+    jintroimage:
+      type: select.select
+      label: Intro Image
+      description: Enable or disable the Intro Image.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    jcategoriesnames:
+      type: select.select
+      label: Categories Names
+      description: Enable or disable displaying of categories names.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    jtitle:
+      type: select.select
+      label: Article Title
+      description: Enable or disable displaying of article title.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    jintrotext:
+      type: select.select
+      label: Intro Text
+      description: Enable or disable displaying of article intro text.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    jlink:
+      type: select.select
+      label: Link
+      description: Enable or disable displaying of link to article.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    jlinktext:
+      type: input.text
+      label: Link Text
+      description: Input the text for the article link.
+      default: 'Read More'

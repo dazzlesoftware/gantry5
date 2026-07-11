@@ -1,0 +1,18 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    position: relative;
+    
+    // Grid
+    .g-grid {
+        position: relative;
+        z-index: 3;
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

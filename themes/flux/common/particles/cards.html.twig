@@ -1,0 +1,38 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% if particle.subcontents is not empty %}
+<div class="g-cards {{ particle.class|e }} g-cards-columns-{{ particle.columns }}">
+    {% for subcontent in particle.subcontents %}
+    <div class="g-cards-subcontent-block {% if subcontent.accent %}g-cards-subcontent-block-{{ subcontent.accent }}{% endif %}">
+        {% if subcontent.headline1 or subcontent.headline2 %}
+        <div class="g-cards-subcontent-headline">
+            <div class="g-cards-subcontent-headline1">
+                {{ subcontent.headline1|raw }}
+            </div>
+            <div class="g-cards-subcontent-headline2">
+                {{ subcontent.headline2|raw }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if subcontent.title %}
+        <h4 class="g-cards-subcontent-title">
+            {{ subcontent.title|raw }}
+        </h4>
+        {% endif %}
+
+        {% if subcontent.img or subcontent.tag or subcontent.fullname %}
+        <div class="g-cards-subcontent-footer">
+            {% if subcontent.img %}<img src="{{ url(subcontent.img) }}" class="g-cards-subcontent-img" alt="{{ subcontent.title|e }}" />{% endif %}
+            <div class="g-cards-subcontent-footer-id">
+                {% if subcontent.tag %}<div class="g-cards-subcontent-footer-tag">{{ subcontent.tag }}</div>{% endif %}
+                {% if subcontent.fullname %}<div class="g-cards-subcontent-footer-fullname">{{ subcontent.fullname }}</div>{% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

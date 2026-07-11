@@ -1,0 +1,24 @@
+.g-logo {
+	.g-logo-text {
+		font-family: get-font-family($font-family-title);
+		font-weight: $font-weight-bold;
+		font-size: $core-font-size + 0.5;
+		vertical-align: middle;
+		padding: 0 $content-padding/2;
+	}
+	.g-logo-tagline {
+		font-family: get-font-family($font-family-default);
+		font-weight: $font-weight-regular;
+		font-size: $core-font-size - 0.2;
+		position: relative;
+		top: 0.3rem;
+		@include breakpoint(mobile-only) {
+			display: none;
+		}
+	}
+	@include breakpoint(mobile-only) {
+		display: block;
+		text-align: center;
+		margin: -0.85rem 0;
+	}
+}

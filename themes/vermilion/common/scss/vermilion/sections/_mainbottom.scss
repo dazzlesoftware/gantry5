@@ -1,0 +1,105 @@
+#g-mainbottom {
+    color: $mainbottom-text-color; 
+
+    > .g-grid {
+        background-color: fade-out($mainbottom-background, 0.30);
+    }
+}    
+
+.fp-mainbottom {
+	.g-owlcarousel-slider .g-owlcarousel {
+		.owl-image-overlay {
+			background: fade-out($mainbottom-background, 0.30);
+		    bottom: 0;
+		    content: "";
+		    display: block;
+		    height: 100%;
+		    left: 0;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: 100%;
+		}
+		.g-owlcarousel-content {
+		    .g-owlcarousel-item-title {
+		    	font-size: 5em;
+		    	margin-bottom: 45px;
+
+		    	@include breakpoint(tablet-range) {
+    				margin-bottom: 25px;
+    			}
+
+				@include breakpoint(large-mobile-range) {
+		    		margin-top: 12%;
+    				margin-bottom: -10%;
+    			}
+    			@include breakpoint(small-mobile-range) {
+		    		display: none;
+    			}
+		    }
+		    .g-owlcarousel-item-desc {
+    			font-family: get-font-family($font-family-promo);
+		        font-size: 1.3em;
+
+    			@include breakpoint(mobile-only) {
+    				font-size: 1em;
+				    line-height: 25px;
+				    margin-top: -8%;
+				    padding: 15% 15px;
+				    width: 75%;
+				    margin-left: auto;
+				    margin-right: auto;
+    			}
+    		}	
+		} 
+		.button {
+			@include breakpoint(mobile-only) {
+				display: none;
+			}	
+		}
+		.owl-dots {
+			margin-left: 0;
+			bottom: inherit;
+		    left: 50%;
+		    opacity: 0;
+		    visibility: hidden;
+		    transform: translate(-50%, -80px);
+		    transition: all 0.2s ease-in;
+
+			@include breakpoint(tablet-range) {
+				transform: translate(-50%, -65px) scale(0.8);
+			}
+			@include breakpoint(large-mobile-range) {
+				transform: translate(-50%, -65px) scale(0.8);
+			}
+			@include breakpoint(small-mobile-range) {
+				transform: translate(-50%, -50px) scale(0.6);
+			}
+
+			.owl-dot {
+				border-radius: 100%;
+				background: none;
+				border: 2px solid $mainbottom-text-color;
+				width: 25px;
+				height: 25px;
+				&.active {
+					color: $mainbottom-text-color;
+					background: $mainbottom-text-color;
+				}
+			}
+		}
+		&:hover {
+			.owl-dots {
+				opacity: 1;
+				visibility: visible;
+			}
+		}   
+	}    
+}
+
+@media print {
+	#g-mainbottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,38 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+@import "vendor/bourbon/bourbon";
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "photon-joomla/core";
+@import "photon-joomla/typography";
+@import "photon-joomla/forms";
+@import "photon-joomla/tabs";
+@import "photon-joomla/utilities";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "photon-joomla/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

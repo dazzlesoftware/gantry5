@@ -1,0 +1,11 @@
+#g-container-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+}
+
+@media print {
+    #g-container-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

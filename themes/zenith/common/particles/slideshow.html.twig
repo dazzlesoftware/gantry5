@@ -1,0 +1,59 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+    <div id="{{ id }}" class="g-slideshow swiper-container {{ particle.class|e }}" data-slideshow-id="{{ id }}"  data-slideshow-effect="{{ particle.effect }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}"
+    data-slideshow-direction="{% if particle.direction == "horizontal" %}horizontal{% else %}vertical{% endif %}" {% if gantry.page.direction == 'rtl' %}dir="rtl"{% endif %}>
+        <div class="g-slideshow-slider swiper-wrapper" style="height: {{ particle.height|default('60vh') }};">
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for item in particle.items %}
+                    <div class="swiper-slide {% if particle.overlay == 'enabled' %}overlay{% endif %} {{ item.class|e }}" style="background-image: url({{ url(item.image)|e }}); background-position: {{ item.bg_horizontal|default('center') }} {{ item.bg_vertical|default('center') }}">
+                        <div class="slide">
+                            {% if item.top_title %}
+                                <h3 class="g-slideshow-top-title ">
+                                    {{ item.top_title|raw }}
+                                </h3>
+                            {% endif %}
+                            {% if item.main_title %}
+                                <h1 class="g-slideshow-main-title">
+                                    {{ item.main_title|raw }}
+                                </h1>
+                            {% endif %}
+                            {% if item.button_text %}
+                                <a href="{{item.button_link}}" target="{{ item.linktarget|default('_self') }}" class="button">
+                                    {{item.button_text}}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% include '@particles/slideshow-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </div>
+        <!-- pagination -->
+        <!-- navigation buttons -->
+        <div class="navigation {% if particle.direction == 'horizontal' %}horizontal{% endif %}" >
+            {% if particle.nav == 'enabled' %}
+                <div class="swiper-button-prev">
+                    <i class="fa {% if particle.direction == 'horizontal' %}{% if gantry.page.direction == 'rtl' %}fa-angle-right{% else %}fa-angle-left{% endif %}{% else %}fa-angle-up{% endif %}"></i>
+                </div>
+            {% endif %}
+            {% if particle.dots == 'enabled' %}
+                <div class="swiper-pagination"></div>
+            {% endif %}
+            {% if particle.nav == 'enabled' %}
+                <div class="swiper-button-next">
+                    <i class="fa {% if particle.direction == 'horizontal' %}{% if gantry.page.direction == 'rtl' %}fa-angle-left{% else %}fa-angle-right{% endif %}{% else %}fa-angle-down{% endif %}"></i>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css" />
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
+{% endblock %}

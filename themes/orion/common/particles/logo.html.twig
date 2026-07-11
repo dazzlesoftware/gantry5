@@ -1,0 +1,45 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	{% set url = url(particle.url)|default(gantry.siteUrl()) %}
+	{% if (url == gantry.siteUrl()) %}
+		{% set rel='rel="home"' %}
+	{% endif %}
+	{% set image = url(particle.image) %}
+
+	{% if particle.link %}
+		<a href="{{ url }}" class="{{ particle.class|e }}" target="{{ particle.target|default('_self') }}" title="{{ particle.title }}" {{ rel|default('')|raw }}>
+		{% else %}
+			<div class="{{ particle.class|e }}">
+			{% endif %}
+
+			{% if particle.svg is not empty %}
+				{{ particle.svg|raw }}
+
+				{% if particle.text %}
+					<span>{{ particle.text|default('Logo')|raw }}</span>
+				{% endif %}
+			{% elseif image or particle.text %}
+				{% if image %}
+					<img src="{{ url(particle.image) }}" alt="{{ particle.text }}"/>
+				{% endif %}
+				{% if particle.text %}
+					<span>{{ particle.text|default('Logo')|raw }}</span>
+				{% endif %}
+			{% endif %}
+
+			{% if particle.readmore_label %}
+				<div class="g-logo-readmore-container">
+					<a target="{{ particle.readmore_target|default('_self')|e }}" href="{{ particle.readmore_link|e }}" class="g-logo-readmore {{ particle.readmore_class|e }}">
+						{{ particle.readmore_label|raw }}
+					</a>
+				</div>
+			{% endif %}
+
+			{% if particle.link %}
+			</a>
+	{% else %}
+		</div>
+	{% endif %}
+{% endblock %}
+

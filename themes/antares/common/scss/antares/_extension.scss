@@ -1,0 +1,36 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;
+
+    @if $extension-background-image {
+        background: $extension-background url($extension-background-image) top center no-repeat;
+        background-size: cover;
+    }
+
+    // Container
+    padding: 4rem 0 3rem 0;
+
+    // FP Extension A
+    .fp-extension-a {
+    	.g-blockcontent-headline {
+    		color: lighten($extension-text-color, 25%);
+    	}
+    	.g-blockcontent-description {
+    		font-size: $core-font-size + 0.25;
+    		margin: 3rem 0;
+    	}
+        .g-blockcontent-alttext {
+            color: lighten($extension-text-color, 25%);
+        }
+        .g-blockcontent-subcontent-desc {
+            opacity: 0.8;
+        }
+    }
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

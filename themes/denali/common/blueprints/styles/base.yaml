@@ -1,0 +1,19 @@
+name: Base Styles
+description: Base styles for the Denali theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#999999"
+    text-active-color:
+      type: input.colorpicker
+      label: Base Text Active Color
+      default: "#ffb120"

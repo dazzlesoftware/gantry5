@@ -1,0 +1,309 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1471451812
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 15'
+      - 'menu-4196 85'
+  /header/: {  }
+  /slideshow/:
+    -
+      - simplecontent-7561
+  /above/:
+    -
+      - system-content-3192
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'simplemenu-6826 16.7'
+      - 'simplemenu-7048 16.7'
+      - 'simplemenu-8674 16.7'
+      - 'simplemenu-4936 16.7'
+      - 'simplemenu-7442 16.7'
+      - 'simplemenu-8181 16.7'
+    -
+      - 'branding-9192 80'
+      - 'social-4772 20'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '3'
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-copyright
+content:
+  logo-5992:
+    block:
+      class: g-default-navigation-logo
+  menu-4196:
+    block:
+      variations: align-right
+  simplecontent-7561:
+    title: 'We are sorry!'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'We are sorry!'
+          author: ''
+          leading_content: 'Gantry 5 provides a custom error page for you to configure with either positions, particles or a combination of both, as well as styling.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'We are sorry!'
+    block:
+      variations: center
+  system-content-3192:
+    block:
+      class: g-error
+      variations: 'center box1'
+  simplemenu-6826:
+    title: 'Useful Links'
+    attributes:
+      title: 'Useful links'
+      items:
+        -
+          icon: ''
+          text: 'Concerts & Events'
+          link: '#'
+          target: _blank
+          name: 'Concerts & Events'
+        -
+          icon: ''
+          text: 'Support Auditions'
+          link: '#'
+          target: _blank
+          name: 'Support Auditions'
+        -
+          icon: ''
+          text: '2016 Tour Calendar'
+          link: '#'
+          target: _blank
+          name: '2016 Tour Calendar'
+    block:
+      class: fp-copyright-menu
+  simplemenu-7048:
+    title: Downloads
+    attributes:
+      title: Downloads
+      items:
+        -
+          icon: ''
+          text: 'Mobile Wallpapers'
+          link: '#'
+          target: _blank
+          name: 'Mobile Wallpapers'
+        -
+          icon: ''
+          text: 'Concert Photos'
+          link: '#'
+          target: _blank
+          name: 'Concert Photos'
+        -
+          icon: ''
+          text: 'Music Videos'
+          link: '#'
+          target: _blank
+          name: 'Music Videos'
+    block:
+      class: fp-copyright-menu
+  simplemenu-8674:
+    title: 'The Band'
+    attributes:
+      title: 'The Band'
+      items:
+        -
+          icon: ''
+          text: 'Band Members'
+          link: '#'
+          target: _blank
+          name: 'Band Members'
+        -
+          icon: ''
+          text: 'Band History'
+          link: '#'
+          target: _blank
+          name: 'Band History'
+        -
+          icon: ''
+          text: 'The Manifesto'
+          link: '#'
+          target: _blank
+          name: 'The Manifesto'
+    block:
+      class: fp-copyright-menu
+  simplemenu-4936:
+    title: Tickets
+    attributes:
+      title: Tickets
+      items:
+        -
+          icon: ''
+          text: 'Buy Tickets Online'
+          link: '#'
+          target: _blank
+          name: 'Buy Tickets Online'
+        -
+          icon: ''
+          text: 'Look for a Reseller'
+          link: '#'
+          target: _blank
+          name: 'Look for a Reseller'
+        -
+          icon: ''
+          text: 'Sell our Tickets'
+          link: '#'
+          target: _blank
+          name: 'Sell our Tickets'
+    block:
+      class: fp-copyright-menu
+  simplemenu-7442:
+    title: Press
+    attributes:
+      title: Press
+      items:
+        -
+          icon: ''
+          text: 'Media Kit'
+          link: '#'
+          target: _blank
+          name: 'Media Kit'
+        -
+          icon: ''
+          text: 'Book an Interview'
+          link: '#'
+          target: _blank
+          name: 'Book an Interview'
+        -
+          icon: ''
+          text: 'Press Inquiries'
+          link: '#'
+          target: _blank
+          name: 'Press Inquiries'
+    block:
+      class: fp-copyright-menu
+  simplemenu-8181:
+    title: Terms
+    attributes:
+      title: Terms
+      items:
+        -
+          icon: ''
+          text: 'Terms of Use'
+          link: '#'
+          target: _blank
+          name: 'Terms of Use'
+        -
+          icon: ''
+          text: 'Privacy Policy'
+          link: '#'
+          target: _blank
+          name: 'Privacy Policy'
+        -
+          icon: ''
+          text: 'Cookies Policy'
+          link: '#'
+          target: _blank
+          name: 'Cookies Policy'
+    block:
+      class: fp-copyright-menu
+  mobile-menu-7951:
+    title: 'Mobile Menu'

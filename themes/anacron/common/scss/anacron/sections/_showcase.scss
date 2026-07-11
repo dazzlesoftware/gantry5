@@ -1,0 +1,92 @@
+#g-showcase {
+    @if $showcase-background-image {
+        background: $showcase-background url($showcase-background-image) repeat;
+    } @else { 
+        background: $showcase-background;
+    }
+    color: $showcase-text-color;
+
+    &.rt-overlay-light {
+        h2.title {
+            color: $showcase-text-color;
+        }
+    }
+    &.rt-overlay-dark {
+        h2.title {
+            color: $white;
+        }
+    }
+
+    a {
+        color: $showcase-link-color;
+        &:hover {
+            color: darken($showcase-link-color, 15%);
+        }
+    }
+    .readon {
+        color: $white;
+        background: darken($accent-color-1, 10%);
+        border-bottom: 2px solid darken($accent-color-1, 20%);
+        &:hover {
+            background: $accent-color-2;
+            border-bottom: 2px solid darken($accent-color-2, 15%);
+        }
+    }
+    .readon2 {
+        color: $white;
+        background: $accent-color-2;
+        border-bottom: 2px solid darken($accent-color-2, 15%);
+        &:hover {
+            background: darken($accent-color-1, 8%);
+            border-bottom: 2px solid darken($accent-color-1, 20%);
+        }
+    }
+    .fp-showcase {
+        .g-content {
+            margin: 0;
+            padding: 100px 0;
+            @media only screen and (max-width: 480px) {
+                padding: 25px 0;
+            }
+        }
+    }
+
+    &.top-to-bottom,
+    &.left-to-right {
+        transition: all 0.5s ease-in-out;
+
+        &.showcase-panel-2 {
+            background-color: darken($accent-color-2, 10%);
+        }
+        &.showcase-panel-3 {
+            background-color: darken($accent-color-3, 10%) !important;
+        }
+    }
+    &.top-to-bottom {
+        background-position: 0 10%;
+
+        &.showcase-panel-2 {
+            background-position: 0 20%;
+        }
+        &.showcase-panel-3 {
+            background-position: 0 30% !important;
+        }
+    }
+    &.left-to-right {
+        background-position: 10% 0;
+
+        &.showcase-panel-2 {
+            background-position: 20% 0;
+        }
+        &.showcase-panel-3 {
+            background-position: 30% 0 !important;
+        }
+    }
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

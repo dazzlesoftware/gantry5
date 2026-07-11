@@ -1,0 +1,60 @@
+name: Location Pins
+description: Display pins with your restaurant/cafe locations and short info.
+type: particle
+icon: fa-map-marker
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    pins:
+      type: collection.list
+      array: true
+      label: Pins
+      description: Create location pins.
+      value: name
+      ajax: true
+
+      fields:
+        .name:
+          type: input.text
+          label: Name
+          skip: true
+        .phone:
+          type: input.text
+          label: Phone
+        .icon:
+          type: input.icon
+          label: Icon
+          description: Select the icon.
+        .link:
+          type: input.text
+          label: Link
+        .target:
+          type: select.select
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _blank
+          options:
+              _self: Self
+              _blank: New Window

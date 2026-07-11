@@ -1,0 +1,31 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+    <div class="g-accordionmenu">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+            <nav class="nav" role="navigation">
+                <ul data-accordionmenu-id="{{ id }}">
+                    {% for group in particle.group %}
+                    <li class="g-accordionmenu-group">
+                        <a href="#" class="g-accordionmenu-group-title">{{ group.title }}</a>
+                        <span class="indicator"></span>
+                        {% if group.items %}
+                        <ul class="g-accordionmenu-group-list">
+                            {% for item in group.items %}
+                            <li><a target="{{ item.target|default('_blank') }}" href="{{ item.link }}">{{ item.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/accordionmenu.init.js') }}"></script>
+{% endblock %}

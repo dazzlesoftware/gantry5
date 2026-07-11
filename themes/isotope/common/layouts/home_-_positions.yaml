@@ -1,0 +1,187 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_positions
+  timestamp: 1446457941
+layout:
+  /overlay/:
+    -
+      - menu-6682
+    -
+      - position-overlay-a
+    -
+      - position-overlay-b
+  /navigation/:
+    -
+      - 'logo-8536 80'
+      - 'overlaytoggle-4486 20'
+  /top/:
+    -
+      - system-messages-2702
+  /header/: {  }
+  /slideshow/:
+    -
+      - position-slideshow
+  /showcase/:
+    -
+      - position-showcase-a
+  /above/:
+    -
+      - position-above-a
+  /utility/:
+    -
+      - position-utility-a
+  /feature/:
+    -
+      - position-feature-a
+  /container-4448/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-2228
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - position-expanded-a
+  /extension/:
+    -
+      - position-extension-a
+  /bottom/:
+    -
+      - position-bottom-a
+  /footer/:
+    -
+      - 'position-footer-a 25'
+      - 'position-footer-b 25'
+      - 'position-footer-c 25'
+      - 'position-footer-d 25'
+  /copyright/:
+    -
+      - 'branding-1875 33.3'
+      - 'copyright-4835 33.3'
+      - 'totop-2327 33.3'
+  offcanvas:
+    -
+      - mobile-menu-7990
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-4448:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+      extra:
+        -
+          data-enllax-ratio: '0.3'
+        -
+          data-enllax-type: background
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: 0
+content:
+  position-overlay-a:
+    title: 'Module Position'
+  position-overlay-b:
+    title: 'Module Position'
+  system-messages-2702:
+    block:
+      variations: 'nomarginall nopaddingall'
+  overlaytoggle-4486:
+    title: 'Overlay Toggle'
+    attributes:
+      menutext: Menu
+  position-showcase-a:
+    title: 'Showcase A'
+  position-above-a:
+    title: 'Above A'
+    block:
+      class: fp-above
+  position-utility-a:
+    title: 'Utility A'
+    block:
+      class: fp-utility
+  position-feature-a:
+    title: 'Feature A'
+  position-expanded-a:
+    title: 'Expanded A'
+  position-extension-a:
+    title: 'Extension A'
+  position-bottom-a:
+    title: 'Bottom A'
+  position-footer-a:
+    title: 'Footer A'
+  position-footer-b:
+    title: 'Footer B'
+  position-footer-c:
+    title: 'Footer C'
+  position-footer-d:
+    title: 'Footer D'
+  branding-1875:
+    attributes:
+      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+  totop-2327:
+    title: 'To Top'
+    attributes:
+      icon: 'fa fa-arrow-circle-o-up fa-2x'
+      content: ''
+  mobile-menu-7990:
+    title: 'Mobile Menu'

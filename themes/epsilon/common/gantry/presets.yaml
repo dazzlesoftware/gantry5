@@ -1,0 +1,371 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#fb6058'
+    - '#fab561'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#fb6058'
+      color-2: '#fab561'
+    font:
+      family-light: 'sourcesanspro-light, Verdana, Helvetica, Arial, sans-serif'
+      family-regular: 'sourcesanspro-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-semibold: 'sourcesanspro-semibold, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'sourcesanspro-bold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#eae6e5'
+      text-color: '#898788'
+    showcase:
+      background: '#eae6e5'
+      text-color: '#898788' 
+    top:
+      background: '#fb6058'
+      text-color: '#efefef' 
+      background-image: 'gantry-media://patterns/poly.png' 
+    utility:
+      background: '#eae6e5'
+      text-color: '#898788'      
+    feature:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    maintop:
+      background: '#fb6058'
+      text-color: '#efefef'
+      background-image: 'gantry-media://patterns/poly.png'
+    expandedtop:
+      background: '#edeced'
+      text-color: '#818181' 
+    expandedbottom:
+      background: '#edeced'
+      text-color: '#818181'
+    extension:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    bottom:
+      background: '#eae6e5'
+      text-color: '#898788'
+    footer:
+      background: '#323337'
+      text-color: '#9f9fa1'
+      background-image: 'gantry-media://patterns/poly.png'
+    copyright:
+      background: '#323337'
+      text-color: '#9f9fa1'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#fb6058'
+      toggle-color: '#fb6058'
+
+preset2:
+  image: 'gantry-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#3570c1'
+    - '#44c2cd'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#3570c1'
+      color-2: '#44c2cd'
+    font:
+      family-light: 'sourcesanspro-light, Verdana, Helvetica, Arial, sans-serif'
+      family-regular: 'sourcesanspro-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-semibold: 'sourcesanspro-semibold, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'sourcesanspro-bold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#eae6e5'
+      text-color: '#898788'
+    showcase:
+      background: '#eae6e5'
+      text-color: '#898788' 
+    top:
+      background: '#3570c1'
+      text-color: '#efefef' 
+      background-image: 'gantry-media://patterns/poly.png'
+    utility:
+      background: '#eae6e5'
+      text-color: '#898788'      
+    feature:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    maintop:
+      background: '#3570c1'
+      text-color: '#efefef'
+      background-image: 'gantry-media://patterns/poly.png'
+    expandedtop:
+      background: '#edeced'
+      text-color: '#818181' 
+    expandedbottom:
+      background: '#edeced'
+      text-color: '#818181'
+    extension:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    bottom:
+      background: '#eae6e5'
+      text-color: '#898788'
+    footer:
+      background: '#323337'
+      text-color: '#9f9fa1'
+      background-image: 'gantry-media://patterns/poly.png'
+    copyright:
+      background: '#323337'
+      text-color: '#9f9fa1'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#3570c1'
+      toggle-color: '#3570c1'
+
+preset3:
+  image: 'gantry-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#d52d26'
+    - '#edaa2b'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#d52d26'
+      color-2: '#edaa2b'
+    font:
+      family-light: 'sourcesanspro-light, Verdana, Helvetica, Arial, sans-serif'
+      family-regular: 'sourcesanspro-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-semibold: 'sourcesanspro-semibold, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'sourcesanspro-bold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#eae6e5'
+      text-color: '#898788'
+    showcase:
+      background: '#eae6e5'
+      text-color: '#898788' 
+    top:
+      background: '#d52d26'
+      text-color: '#efefef' 
+      background-image: 'gantry-media://patterns/poly.png'
+    utility:
+      background: '#eae6e5'
+      text-color: '#898788'      
+    feature:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    maintop:
+      background: '#d52d26'
+      text-color: '#efefef'
+      background-image: 'gantry-media://patterns/poly.png'
+    expandedtop:
+      background: '#edeced'
+      text-color: '#818181' 
+    expandedbottom:
+      background: '#edeced'
+      text-color: '#818181'
+    extension:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    bottom:
+      background: '#eae6e5'
+      text-color: '#898788'
+    footer:
+      background: '#323337'
+      text-color: '#9f9fa1'
+      background-image: 'gantry-media://patterns/poly.png'
+    copyright:
+      background: '#323337'
+      text-color: '#9f9fa1'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#d52d26'
+      toggle-color: '#d52d26'
+      
+preset4:
+  image: 'gantry-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#70b620'
+    - '#fac843'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#70b620'
+      color-2: '#fac843'
+    font:
+      family-light: 'sourcesanspro-light, Verdana, Helvetica, Arial, sans-serif'
+      family-regular: 'sourcesanspro-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-semibold: 'sourcesanspro-semibold, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'sourcesanspro-bold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#eae6e5'
+      text-color: '#898788'
+    showcase:
+      background: '#eae6e5'
+      text-color: '#898788' 
+    top:
+      background: '#70b620'
+      text-color: '#efefef' 
+      background-image: 'gantry-media://patterns/poly.png'
+    utility:
+      background: '#eae6e5'
+      text-color: '#898788'      
+    feature:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    maintop:
+      background: '#70b620'
+      text-color: '#efefef'
+      background-image: 'gantry-media://patterns/poly.png'
+    expandedtop:
+      background: '#edeced'
+      text-color: '#818181' 
+    expandedbottom:
+      background: '#edeced'
+      text-color: '#818181'
+    extension:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    bottom:
+      background: '#eae6e5'
+      text-color: '#898788'
+    footer:
+      background: '#323337'
+      text-color: '#9f9fa1'
+      background-image: 'gantry-media://patterns/poly.png'
+    copyright:
+      background: '#323337'
+      text-color: '#9f9fa1'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#70b620'
+      toggle-color: '#70b620'
+      
+preset5:
+  image: 'gantry-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#735988'
+    - '#f29b96'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#735988'
+      color-2: '#f29b96'
+    font:
+      family-light: 'sourcesanspro-light, Verdana, Helvetica, Arial, sans-serif'
+      family-regular: 'sourcesanspro-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-semibold: 'sourcesanspro-semibold, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'sourcesanspro-bold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#eae6e5'
+      text-color: '#898788'
+    showcase:
+      background: '#eae6e5'
+      text-color: '#898788' 
+    top:
+      background: '#735988'
+      text-color: '#efefef' 
+      background-image: 'gantry-media://patterns/poly.png'
+    utility:
+      background: '#eae6e5'
+      text-color: '#898788'      
+    feature:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    maintop:
+      background: '#735988'
+      text-color: '#efefef'
+      background-image: 'gantry-media://patterns/poly.png'
+    expandedtop:
+      background: '#edeced'
+      text-color: '#818181' 
+    expandedbottom:
+      background: '#edeced'
+      text-color: '#818181'
+    extension:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    bottom:
+      background: '#eae6e5'
+      text-color: '#898788'
+    footer:
+      background: '#323337'
+      text-color: '#9f9fa1'
+      background-image: 'gantry-media://patterns/poly.png'
+    copyright:
+      background: '#323337'
+      text-color: '#9f9fa1'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#735988'
+      toggle-color: '#735988'
+
+preset6:
+  image: 'gantry-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#f6b103'
+    - '#f66320'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#6e6e6e'
+    accent:
+      color-1: '#f6b103'
+      color-2: '#f66320'
+    font:
+      family-light: 'sourcesanspro-light, Verdana, Helvetica, Arial, sans-serif'
+      family-regular: 'sourcesanspro-regular, Verdana, Helvetica, Arial, sans-serif'
+      family-semibold: 'sourcesanspro-semibold, Verdana, Helvetica, Arial, sans-serif'
+      family-bold: 'sourcesanspro-bold, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#eae6e5'
+      text-color: '#898788'
+    showcase:
+      background: '#eae6e5'
+      text-color: '#898788' 
+    top:
+      background: '#f6b103'
+      text-color: '#efefef' 
+      background-image: 'gantry-media://patterns/poly.png'
+    utility:
+      background: '#eae6e5'
+      text-color: '#898788'      
+    feature:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    maintop:
+      background: '#f6b103'
+      text-color: '#efefef'
+      background-image: 'gantry-media://patterns/poly.png'
+    expandedtop:
+      background: '#edeced'
+      text-color: '#818181' 
+    expandedbottom:
+      background: '#edeced'
+      text-color: '#818181'
+    extension:
+      background: '#ffffff'
+      text-color: '#aaa8a9'
+    bottom:
+      background: '#eae6e5'
+      text-color: '#898788'
+    footer:
+      background: '#323337'
+      text-color: '#9f9fa1'
+      background-image: 'gantry-media://patterns/poly.png'
+    copyright:
+      background: '#323337'
+      text-color: '#9f9fa1'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#f6b103'
+      toggle-color: '#f6b103'

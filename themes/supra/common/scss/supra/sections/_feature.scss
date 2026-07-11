@@ -1,0 +1,38 @@
+#g-feature {
+    position: relative;
+    color: $feature-text-color;
+    background: $feature-background;
+
+    // Simple Content Particle
+    .g-simplecontent {
+        padding-right: 6vw;
+
+        .dir-rtl & {
+            padding-left: 6vw;
+            padding-right: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+          padding-right: 0;
+        }
+
+        @include breakpoint(tablet-range) {
+          padding-right: 0;
+        }
+
+        .g-simplecontent-item-content-title {
+            color: $white;
+        }
+
+        .g-simplecontent-item-leading-content {
+            color: transparentize($white, 0.20);
+        }
+    }
+}
+
+@media print {
+    #g-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

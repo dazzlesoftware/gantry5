@@ -1,0 +1,220 @@
+name: Slideshow
+description: Background slideshow with small picture
+type: particle
+icon: fa-camera-retro
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+            demo:
+              type: select.select
+              label: Demo Mode
+              description: Enable or disable demo mode. Specifically used for presets on demo.rockettheme.com.
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+            autoplay:
+              type: select.select
+              label: Autoplay
+              description: Decide if you want your slideshow to autoplay or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+            autoplayTimeout:
+              type: input.number
+              label: Autoplay Timeout
+              description: The time between each auto transition
+              default: 5000
+            speed:
+              type: input.number
+              label: Speed
+              description: Transition speed
+              default: 250
+            dots:
+              type: select.select
+              label: Dots
+              description: Decide if you want your slideshow to display dots or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+            thumbs:
+              type: select.select
+              label: Small image
+              description: Decide if you want your small image to display or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            items:
+              type: collection.list
+              array: true
+              label: Images
+              description: Create slideshow items.
+              value: title
+              ajax: true
+              fields:
+                .image:
+                  type: input.imagepicker
+                  label: Image
+                  description: Select image for slideshow
+                  placeholder: Pick an image
+                .image_small:
+                  type: input.imagepicker
+                  label: Small Image
+                  description: Select small image for slideshow
+                  placeholder: Pick an image
+                .title_small:
+                  type: input.text
+                  label: Small Title
+                  description: Small title for your thumb.
+                  placeholder: Enter title
+                .alt:
+                  type: input.text
+                  label: Alt Attribute
+                  description: Alt attribute specifies an alternate text for an image, if the image cannot be displayed.
+                  placeholder: Enter title
+                .link:
+                  type: input.text
+                  label: Link
+                  description: Specify where the title should link to.
+                .linktarget:
+                  type: select.selectize
+                  label: Link Target
+                  description: Target browser window when the title is clicked.
+                  placeholder: 'Select...'
+                  default: _self
+                  options:
+                      _self: Self
+                      _blank: New Window
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.link.enabled:
+              type: select.select
+              label: Title Link
+              description: Select if the article title should link to article.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.link.target:
+              type: select.selectize
+              label: Title Target
+              description: Target browser window when the title is clicked.
+              placeholder: 'Select...'
+              default: _self
+              options:
+                  _self: Self
+                  _blank: New Window

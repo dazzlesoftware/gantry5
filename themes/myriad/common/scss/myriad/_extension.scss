@@ -1,0 +1,120 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;
+
+    @if $extension-background-image {
+        background: $extension-background url($extension-background-image) no-repeat;
+        background-size: cover;
+        background-position: top center;
+    }
+
+    &.fp-extension {
+    	padding: 100px 5%;
+
+    	.readon {
+    		font-size: 15px;
+    	}
+    }
+    .login, #login-form, .g-loginform, #form-login {
+        margin: auto;
+        text-align: center;
+        width: 80%;
+        .form-field, .form-actions {
+            display: inline-block;
+            @include breakpoint(mobile-only) {
+                display: block;
+            }
+        }
+        #login-username, #login-password {
+            display: inline-block;
+            label {
+                display: none;
+            }
+        }
+        input#username, input#password, input#modlgn-username, input#modlgn-passwd, input#passwd {
+            display: inline-block;
+            color: $grey;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 0 15px;
+            height: 45px;
+            border: 1px solid transparent;
+            background-color: rgba(240,240,240,0.7);
+            background-image: linear-gradient(to right,rgba(240,240,240,0.7),rgba(240,240,240,0.7));
+            background-repeat: repeat-x;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 3px;
+            width: 200px;
+            &.rt-secretkey-input {
+                width: 100px;
+            }
+            @include breakpoint(mobile-only) {
+                margin: 5px auto;
+                height: 60px;
+                display: block;
+                box-sizing: border-box;
+            }
+        }
+        .rememberme {
+            margin-top: 5px;
+        }
+        .form-label {
+            label {
+                display: none;
+            }
+        }   
+
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #999;
+        }  
+
+        .add-on {
+            display: none;
+        }          
+
+        #form-login-username, #form-login-password, #form-login-submit {
+            display: inline-block;
+            @include breakpoint(mobile-only) {
+                display: block;
+            }
+        } 
+
+        #form-login-remember {
+            display: none;
+        }
+    }
+}
+
+.superhero {
+	font-family: get-font-family($font-family-alt2);
+    position: relative;
+    letter-spacing: 20px;
+    margin: 0 -20px 75px 0;
+    font-size: 5em;
+    line-height: 1;
+    text-transform: uppercase;
+    
+    @media (max-width: 480px)   {
+        font-size: 3em;
+        letter-spacing: 5px;
+        margin-right: -5px;
+    }
+
+    &:after {
+        background: #090D0F;
+	    content: "";
+	    position: absolute;
+	    left: 50%;
+	    bottom: -35px;
+	    height: 4px;
+	    margin-left: -50px;
+	    width: 80px;
+    }
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

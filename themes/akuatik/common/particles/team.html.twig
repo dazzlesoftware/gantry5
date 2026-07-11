@@ -1,0 +1,74 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-team" data-team-id="{{ id }}" data-initial-group="{{ particle.initial }}">
+        <div class="g-team-header">
+            {% if particle.title %}
+                <div class="g-team-title">
+                    {% if particle.uppertitle %}
+                        <span class="g-team-uppertitle">{{ particle.uppertitle|raw }}</span>
+                    {% endif %}
+
+                    {{ particle.title|raw }}
+                </div>
+            {% endif %}
+
+            <div class="g-team-nav">
+                <div class="g-team-nav-container">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+
+                    {% if particle.allitems %}
+                    <div class="g-team-nav-item selected" data-group="all">
+                        {{ particle.allitems|default('All')|e }}
+                    </div>
+                    {% endif %}
+
+                    {% for item in particle.category %}
+                        <div class="g-team-nav-item" data-group="{{ loop.index }}">
+                            {{ item.title }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="g-team-grid {{ particle.cols }} {% if particle.animate|default('enabled') == 'enabled' %}animate{% endif %}">
+            <div class="g-team-grid-sizer"></div>
+
+            {% for case in particle.category %}
+                {% set case_index = loop.index %}
+                {% for item in case.member %}
+                    <div class="g-team-grid-item" data-groups='["{{ case_index }}"]'>
+                        <div class="g-team-grid-item-wrapper">
+                            {% if item.image %}
+                               <div class="g-team-grid-item-image">
+                                   <div class="g-team-grid-item-blob" style="background-image: url({{ url(item.image)|e }}); height: {{ item.image_height|default('240px') }};"></div>
+                                </div>
+                            {% endif %}
+
+                            <div class="g-content-wrap">
+                                {% if item.title %}
+                                    <h4>{{item.title}}</h4>
+                                {% endif %}
+
+                                {% if item.position %}
+                                    <p>{{item.position}}</p>
+                                {% endif %}
+                            </div>
+
+                            {% if item.url %}<a href="{{ item.url }}" target="{{ item.target|default('_blank') }}" class="g-team-link-overlay"></a>{% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/team.init.js') }}"></script>
+{% endblock %}

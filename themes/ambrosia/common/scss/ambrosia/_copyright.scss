@@ -1,0 +1,50 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;	
+	// g-container
+	.g-container {
+		border-top: 1px solid $rule-color;
+		@include breakpoint(small-mobile-range) {
+			text-align: center;
+		}		
+	}
+	// Accent Color
+	a {
+		color: $white;
+		&:hover {
+			color: inherit;
+		}
+	}
+	// Copyright Content
+	.g-copyright > .g-content {
+		font-size: $core-font-size - 0.2;
+		line-height: 1.8;	
+		@include breakpoint(small-mobile-range) {
+			padding: 0;
+		}			
+	}
+	// Logo 
+	.g-logo {
+		font-family: get-font-family($font-family-promo);
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	// Horizontal Menu
+	.g-horizontalmenu li {
+		@include breakpoint(tablet-range) {
+			font-size: 0.75rem;
+			margin: 0 0.15rem;
+		}	
+		@include breakpoint(large-mobile-range) {
+			font-size: 0.8rem;
+			margin: 0 0.25rem;
+		}				
+	}
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

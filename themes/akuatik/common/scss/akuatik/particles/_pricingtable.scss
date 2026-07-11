@@ -1,0 +1,829 @@
+// Styling
+.g-pricingtable-particle {
+    .g-pricingtable-top {
+        display: flex;
+        flex-direction: row;
+
+        @include breakpoint(mobile-only) {
+            flex-direction: column;
+        }
+
+        .g-title-wrapper {
+            width: 75%;
+            padding-right: 10%;
+            padding-left: 4rem;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                padding: 0;
+            }
+
+            .dir-rtl & {
+                padding-right: 4rem;
+                padding-left: 10%;
+            }
+
+            h2.g-title {
+                padding-bottom: 0;
+                margin-bottom: 0;
+                line-height: $core-line-height*.8;
+                @include responsive-font($responsive-font-size + 1.8, $core-font-size + .8, false, false);
+            }
+        }
+    }
+}
+
+.g-pricingtable-headertext {
+    padding-left: 10%;
+    text-align: right;
+    color: $accent-color-2;
+    font-weight: $font-weight-medium;
+    margin-bottom: ($content-margin + $content-padding) * 2;
+    @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+
+    .dir-rtl & {
+        padding-left: 0;
+        padding-right: 10%;
+        text-align: left;
+    }
+
+    span {
+        color: darken($accent-color-2, 30%);
+    }
+
+    @include breakpoint(large-desktop-range) {
+        margin-bottom: ($content-margin + $content-padding) * 3.5;
+    }
+
+    @include breakpoint(mobile-only) {
+        margin: ($content-margin + $content-padding) 0;
+        padding: 0;
+        text-align: left;
+    }
+}
+
+.g-pricingtable-footertext {
+    margin-top: ($content-margin + $content-padding) * 2;
+    padding: 0 20%;
+    font-size: $core-font-size + 0.25;
+
+    @include breakpoint(large-desktop-range) {
+        margin-top: ($content-margin + $content-padding) * 3.5;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding: 0 5%;
+    }
+}
+
+.g-pricingtable-container {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.g-pricingtable-col-item {
+    display: flex;
+    z-index: 1;
+    border-radius: 10px;
+    position: relative;
+
+    &.accent1 {
+        background: lighten($accent-color-2, 20%);
+
+        .g-pricingtable-item {
+            color: fade-out($accent-color-3, 0.5);
+            top: 3rem;
+        }
+
+        .button {
+            &::before {
+                background: $accent-color-3;
+            }
+
+            &:hover {
+                color: $accent-color-2 !important;
+
+                &::before {
+                    background: $accent-color-2;
+                }
+            }
+        }
+    }
+
+    &.accent2 {
+        background: lighten($accent-color-1, 0);
+        color: transparentize($white, 0.20);
+
+        .g-pricingtable-price {
+            color: $white;
+        }
+
+        .g-pricingtable-plan {
+            a {
+                color: $white !important;
+            }
+        }
+
+        .g-pricingtable-cta {
+            .button {
+                color: $white !important;
+
+                &:before {
+                    background: $white;
+                }
+
+                &:hover {
+                    color: $accent-color-3 !important;
+
+                    &:before {
+                        background: $accent-color-3;
+                    }
+                }
+            }
+        }
+    }
+
+    &.accent3 {
+        background: $accent-color-3;
+        color: $white;
+
+        .g-pricingtable-item {
+            color: $accent-color-2;
+        }
+
+        .button {
+            &::before {
+                background: $white;
+            }
+
+            &:hover {
+                color: $accent-color-2 !important;
+
+                &::before {
+                    background: $accent-color-2;
+                }
+            }
+        }
+    }
+
+    // Pricing Table Columns
+    .g-pricingtable-1-col & {
+        flex: auto 1 100%;
+        width: 100%;
+
+        // Rotation
+        &:nth-child(odd) {
+        	.tilt & {
+        	    transform: rotate(1deg);
+        	}
+        }
+
+        &:nth-child(even) {
+        	.tilt & {
+        	    transform: rotate(-1deg);
+        	}
+        }
+    }
+
+    .g-pricingtable-2-col & {
+        flex: auto 1 50%;
+        width: 50%;
+
+        // Rotation
+        &:nth-child(odd) {
+
+        	.tilt & {
+        	    transform: rotate(-3deg);
+        	}
+
+            @include breakpoint(mobile-only) {
+                top: 0;
+                margin: 0;
+            }
+
+            .dir-rtl.tilt & {
+                transform: rotate(3deg);
+            }
+
+            .dir-rtl & {
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+        }
+
+        &:nth-child(even) {
+            top: 2rem;
+            margin-left: -3rem;
+            margin-right: 3rem;
+
+        	.tilt & {
+        	    transform: rotate(3deg);
+        	}
+
+            @include breakpoint(mobile-only) {
+                top: 0;
+                margin: 0;
+            }
+
+            .dir-rtl.tilt & {
+	            transform: rotate(-3deg);
+            }
+
+            .dir-rtl & {
+                margin-right: -3rem;
+                margin-left: 3rem;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .g-pricingtable-3-col & {
+        flex: auto 1 33.33333%;
+        width: 33.33333%;
+
+        // Rotation
+        &:nth-child(3n+1) {
+            top: 4rem;
+            margin-right: -3rem;
+            margin-left: 3rem;
+            z-index: 1;
+
+        	.tilt & {
+        	    transform: rotate(-5deg);
+        	}
+
+            @include breakpoint(mobile-only) {
+                top: 0;
+                margin: 0;
+            }
+
+            .dir-rtl.tilt & {
+	           transform: rotate(5deg);
+	        }
+
+            .dir-rtl & {
+                margin-right: 3rem;
+                margin-left: -3rem;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+        }
+
+        &:nth-child(3n+2) {
+            z-index: 2;
+        }
+
+        &:nth-child(3n+3) {
+            top: 2rem;
+            margin-left: -3rem;
+            margin-right: 3rem;
+            z-index: 3;
+
+        	.tilt & {
+        	    transform: rotate(3deg);
+        	}
+
+            @include breakpoint(mobile-only) {
+                top: 0;
+                margin: 0;
+            }
+
+            .dir-rtl.tilt & {
+                transform: rotate(-3deg);
+            }
+
+            .dir-rtl & {
+                margin-left: 3rem;
+                margin-right: -3rem;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .g-pricingtable-4-col & {
+        flex: auto 1 25%;
+        width: 25%;
+
+        // Rotation
+        @include breakpoint(large-desktop-range) {
+            &:nth-child(4n+1) {
+                top: 4rem;
+                margin-right: -1rem;
+                margin-left: 3rem;
+                z-index: 1;
+
+            	.tilt & {
+            	    transform: rotate(-5deg);
+            	}
+
+                .dir-rtl & {
+                    margin-right: 1rem;
+                    margin-left: -3rem;
+                }
+
+	            .dir-rtl.tilt & {
+	               transform: rotate(5deg);
+                }
+            }
+
+            &:nth-child(4n+2) {
+                top: 1rem;
+                z-index: 2;
+
+            	.tilt & {
+            	    transform: rotate(-2deg);
+            	}
+
+                .dir-rtl.tilt & {
+	               transform: rotate(2deg);
+	            }
+            }
+
+            &:nth-child(4n+3) {
+                margin-left: -2rem;
+                z-index: 3;
+
+                .dir-rtl & {
+                    margin-left: 0;
+                    margin-right: -2rem;
+                }
+            }
+
+            &:nth-child(4n+4) {
+                top: 2.5rem;
+                margin-left: -2rem;
+                margin-right: 0;
+                z-index: 4;
+
+            	.tilt & {
+            	    transform: rotate(4deg);
+            	}
+
+                .dir-rtl & {
+                    margin-left: 0;
+                    margin-right: -2rem;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(-4deg);
+            	}
+            }
+        }
+    }
+
+    .g-pricingtable-5-col & {
+        flex: auto 1 20%;
+        width: 20%;
+
+        // Rotation
+        @include breakpoint(large-desktop-range) {
+            &:nth-child(5n+1) {
+                top: 4rem;
+                margin-right: -1rem;
+                margin-left: 3rem;
+                z-index: 1;
+
+            	.tilt & {
+            	    transform: rotate(-5deg);
+            	}
+
+                .dir-rtl & {
+                    margin-right: 1rem;
+                    margin-left: -3rem;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(5deg);
+            	}
+            }
+
+            &:nth-child(5n+2) {
+                top: 1rem;
+                z-index: 2;
+
+            	.tilt & {
+            	    transform: rotate(-2deg);
+            	}
+
+                .dir-rtl.tilt & {
+	               transform: rotate(2deg);
+	            }
+            }
+
+            &:nth-child(5n+3) {
+                margin-left: -2rem;
+                z-index: 3;
+
+                .dir-rtl & {
+                    margin-right: -2rem;
+                    margin-left: 0;
+                }
+            }
+
+            &:nth-child(5n+4) {
+                top: 1.5rem;
+                margin-left: -1rem;
+                margin-right: 0;
+                z-index: 4;
+
+            	.tilt & {
+            	    transform: rotate(2deg);
+            	}
+
+                .dir-rtl & {
+                    margin-right: -1rem;
+                    margin-left: 0;
+                }
+
+                .dir-rtl.tilt & {
+                    transform: rotate(-2deg);
+                }
+            }
+
+            &:nth-child(5n+5) {
+                top: 4rem;
+                margin-left: -1rem;
+                margin-right: 0;
+                z-index: 5;
+
+            	.tilt & {
+            	    transform: rotate(4deg);
+            	}
+
+                .dir-rtl & {
+                    margin-right: -1rem;
+                    margin-left: 0;
+                }
+
+	            .dir-rtl.tilt & {
+	               transform: rotate(-4deg);
+	            }
+            }
+        }
+    }
+
+    .g-pricingtable-6-col & {
+        flex: auto 1 16.66667%;
+        width: 16.66667%;
+
+        // Rotation
+        @include breakpoint(large-desktop-range) {
+            &:nth-child(6n+1) {
+                top: 5rem;
+                margin-right: -1.5rem;
+                margin-left: 4rem;
+                z-index: 1;
+
+            	.tilt & {
+            	    transform: rotate(-5deg);
+            	}
+
+                .dir-rtl & {
+                    margin-right: 4rem;
+                    margin-left: -1.5rem;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(5deg);
+            	}
+            }
+
+            &:nth-child(6n+2) {
+                top: 1.5rem;
+                z-index: 2;
+
+            	.tilt & {
+            	    transform: rotate(-2deg);
+            	}
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(2deg);
+            	}
+            }
+
+            &:nth-child(6n+3) {
+                margin-left: -2rem;
+                z-index: 3;
+
+                .dir-rtl & {
+                    margin-left: 0;
+                    margin-right: -2rem;
+                }
+            }
+
+            &:nth-child(6n+4) {
+                top: -1rem;
+                margin-left: -1rem;
+                margin-right: 0;
+                z-index: 4;
+
+            	.tilt & {
+            	    transform: rotate(2deg);
+            	}
+
+                .dir-rtl & {
+                    margin-left: 0;
+                    margin-right: -1rem;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(-2deg);
+            	}
+            }
+
+            &:nth-child(6n+5) {
+                top: 1.5rem;
+                margin-left: -1rem;
+                margin-right: 0;
+                z-index: 5;
+
+            	.tilt & {
+            	    transform: rotate(3deg);
+            	}
+
+                .dir-rtl & {
+                    margin-left: -1rem;
+                    margin-right: 0;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(-3deg);
+            	}
+            }
+
+            &:nth-child(6n+6) {
+                top: 5rem;
+                margin-left: -1.5rem;
+                margin-right: 0;
+                z-index: 6;
+
+            	.tilt & {
+            	    transform: rotate(5deg);
+            	}
+
+                .dir-rtl & {
+                    margin-left: 0;
+                    margin-right: -1.5rem;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(-5deg);
+            	}
+            }
+        }
+    }
+
+    .g-pricingtable-4-col &,
+    .g-pricingtable-5-col &,
+    .g-pricingtable-6-col & {
+        @include breakpoint(desktop-range) {
+            flex: auto 1 50%;
+            width: 50%;
+
+            &:nth-child(odd) {
+
+            	.tilt & {
+                    transform: rotate(-3deg);
+            	}
+
+                .dir-rtl.tilt & {
+	               transform: rotate(3deg);
+	            }
+            }
+
+            &:nth-child(even) {
+                top: 2rem;
+                margin-left: -3rem;
+                margin-right: 3rem;
+
+            	.tilt & {
+            	    transform: rotate(3deg);
+            	}
+
+                .dir-rtl & {
+                    margin-left: 3rem;
+                    margin-right: -3rem;
+                }
+
+	            .dir-rtl.tilt & {
+	               transform: rotate(-3deg);
+	            }
+            }
+        }
+
+        @include breakpoint(tablet-range) {
+            flex: auto 1 50%;
+            width: 50%;
+
+            &:nth-child(odd) {
+
+            	.tilt & {
+            	    transform: rotate(-3deg);
+            	}
+
+	            .dir-rtl.tilt & {
+	               transform: rotate(3deg);
+	            }
+            }
+
+            &:nth-child(even) {
+                top: 2rem;
+                margin-left: -3rem;
+                margin-right: 3rem;
+
+            	.tilt & {
+            	    transform: rotate(3deg);
+            	}
+
+                .dir-rtl & {
+                    margin-left: 3rem;
+                    margin-right: -3rem;
+                }
+
+            	.dir-rtl.tilt & {
+            	    transform: rotate(-3deg);
+            	}
+            }
+        }
+    }
+
+    @include breakpoint(mobile-only) {
+        flex: auto 1 100% !important;
+        width: 100% !important;
+
+        &:nth-child(odd) {
+            .tilt & {
+                transform: rotate(1deg) !important;
+            }
+        }
+
+        &:nth-child(even) {
+            .tilt & {
+                transform: rotate(-1deg) !important;
+            }
+        }
+    }
+
+    .g-pricingtable {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: $content-padding * 2;
+        color: inherit;
+
+
+        .button {
+            @extend %g-button;
+            margin: $content-padding 0;
+            padding-left: 0;
+            padding-right: 0;
+            @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+        }
+
+        .g-pricingtable-ribbon {
+            z-index: 2;
+            position: absolute;
+            line-height: $core-line-height + 0.85;
+            font-size: $core-font-size - 0.35;
+            font-weight: $font-weight-bold;
+            background: #DC0D20;
+            width: 135px;
+            top: 20px;
+            left: -33px;
+            text-align: center;
+            letter-spacing: 1px;
+            transform: rotate(-45deg);
+            color: #ffffff;
+
+            .dir-rtl & {
+                right: -33px;
+                left: auto;
+                transform: rotate(45deg);
+            }
+        }
+
+        .g-pricingtable-icon {
+            font-size: $core-font-size + 1.5;
+        }
+
+        .g-pricingtable-plan {
+            padding: $content-padding 0 0;
+            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+            font-weight: $font-weight-regular;
+
+            a {
+                color: inherit;
+                font-weight: $font-weight-regular;
+
+                &:hover {
+                    color: $accent-color-1;
+                }
+            }
+        }
+
+        .g-pricingtable-subtitle {
+            padding-top: 0;
+            margin-top: -1rem;
+            font-size: $core-font-size - 0.1;
+        }
+
+        .g-pricingtable-price {
+            padding: 0 0 $content-padding;
+            font-weight: $font-weight-bold;
+            @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.5, false, false);
+        }
+
+        .g-pricingtable-period {
+            font-size: $core-font-size;
+            font-weight: $font-weight-light;
+            line-height: $core-line-height - 1;
+        }
+
+        .g-pricingtable-desc {
+            font-size: $core-font-size;
+            padding: $content-padding 0;
+        }
+
+        .g-pricingtable-item {
+            @include responsive-font($responsive-font-size - 0.15, $core-font-size, false, false);
+            font-weight: $font-weight-regular;
+            padding-bottom: $content-margin;
+
+            // Rotation
+            @include breakpoint(mobile-only) {
+                &:nth-child(even) {
+                	.tilt & {
+                	    transform: rotate(-1deg);
+                	}
+                }
+
+                &:nth-child(odd) {
+               	    .tilt & {
+                	    transform: rotate(1deg);
+                	}
+                }
+            }
+
+            .fa {
+                margin-right: 1rem;
+
+                .dir-rtl & {
+                    margin-right: 0;
+                    margin-left: 1rem;
+                }
+            }
+
+            &.disabled {
+                text-decoration: line-through;
+            }
+        }
+
+        .g-pricingtable-cta {
+            .button {
+                background: transparent;
+                color: inherit;
+                padding-left: 0;
+                position: relative;
+                transition: .3s ease;
+                z-index: 3;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    height: 4px;
+                    width: 100%;
+                    left: 0;
+                    bottom: -5px;
+                    transition: .3s ease;
+                    z-index: 0;
+                }
+
+                &:hover {
+                    border-color: transparent;
+                }
+            }
+
+        }
+    }
+
+    // Highlighted Table
+    &.g-pricingtable-col-item-highlight {
+        z-index: 5;
+
+        @include breakpoint(no-mobile) {
+            transform: scale(1.2);
+        }
+    }
+}

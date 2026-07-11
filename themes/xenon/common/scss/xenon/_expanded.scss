@@ -1,0 +1,25 @@
+#g-expanded {
+    background: $expanded-background;
+    color: $expanded-text-color;
+
+	.fp-expanded-a {
+		overflow: hidden;
+		> .g-content {
+			margin: 0;
+			padding: 0;
+		}
+		.g-newsslider-headlines {
+			background: fade-out($expanded-text-color, 0.95);
+		}
+		.g-newsslider-content {
+			padding: $content-padding + $content-margin;
+		}
+	}	
+}
+
+@media print {
+	#g-expanded {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

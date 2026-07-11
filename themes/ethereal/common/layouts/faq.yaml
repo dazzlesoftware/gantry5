@@ -1,0 +1,177 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: faq
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-6424
+  /header/:
+    -
+      - 'logo-6228 50'
+      - 'menu-6564 50'
+  /slideshow/: {  }
+  /showcase/:
+    -
+      - custom-9995
+  /feature/:
+    -
+      - custom-4199
+  /main/: {  }
+  /container-4287/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-3976
+      -
+        'mainbar 60':
+          -
+            - system-content-2315
+      -
+        'aside 20':
+          -
+            - position-7555
+  /extension/:
+    -
+      - custom-8909
+  /bottom/:
+    -
+      - custom-5333
+  /footer/:
+    -
+      - 'position-1562 33.3'
+      - 'position-4625 33.3'
+      - 'position-9516 33.3'
+  /copyright/:
+    -
+      - 'logo-3328 33'
+      - 'custom-5654 67'
+    -
+      - 'copyright-1967 33'
+      - 'custom-9255 57'
+      - 'totop-6527 10'
+  offcanvas:
+    -
+      - mobile-menu-4082
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-4287:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-6228:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-6564:
+    block:
+      class: g-menu-block
+  custom-9995:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Frequently Asked Questions</h2>\n\t<div class=\"g-layercontent-subtitle\">Common Queries and Questions</div>\n</div>"
+    block:
+      class: 'flush center'
+  custom-4199:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box-blue center  size-33-3\">\n    <div class=\"g-content \">\n      <span class=\"fa fa-envelope fa-3x\"></span>\n      <h2 class=\"g-title\">Email</h2>\n      <p>Collaboratively administrate empowered markets via available great networks.</p>\n      <a class=\"button button-3\" href=\"\">Send Email</a>\n    </div>\n  </div>\n  <div class=\"g-block box-orange center  size-33-3\">\n    <div class=\"g-content \">\n      <span class=\"fa fa-phone fa-3x\"></span>\n      <h2 class=\"g-title\">Phone</h2>\n      <p>Collaboratively administrate empowered markets via available great networks.</p>\n      <a class=\"button button-3\" href=\"\">Talk Now</a>\n    </div>\n  </div>\n  <div class=\"g-block box-grey center  size-33-3\">\n    <div class=\"g-content \">\n      <span class=\"fa fa-comments fa-3x\"></span>\n      <h2 class=\"g-title\">Chat</h2>\n      <p>Collaboratively administrate empowered markets via available great networks.</p>\n      <a class=\"button button-3\" href=\"\">Ask Us</a>\n    </div>\n  </div>\n</div>"
+  position-3976:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-7555:
+    title: Aside
+    attributes:
+      key: aside
+  custom-8909:
+    title: 'Custom HTML'
+    attributes:
+      html: "<section id=\"g-mainbar\">\n  <div class=\"g-grid\">\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Installation</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Basic Usage</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Customization</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Development</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-grid\">\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Accounts</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Subscription</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Security</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Organization</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-grid\">\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Partnership</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Live Widget</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Web API</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"g-block size-25\">\n      <div class=\"g-content \">\n        <h2 class=\"g-title\">Legal Stuff</h2>\n        <ul>\n          <li><a href=\"\">Lorem Ipsum</a></li>\n          <li><a href=\"\">Dolor Amat</a></li>\n          <li><a href=\"\">Figus Terido</a></li>\n          <li><a href=\"\">Savios Menor</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</section>"
+  custom-5333:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">FAQ Didn't Solve Your Problem?</h2>\n\t<div class=\"g-layercontent-subtitle\">Get Direct Access to the Team Via Phone, Email or Live Chat.</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\" class=\"button button-2\">Contact Us</a>\n</div>"
+    block:
+      class: 'flush center'
+  position-1562:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-4625:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-9516:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-3328:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-5654:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-1967:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-9255:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+  totop-6527:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-4082:
+    title: 'Mobile Menu'

@@ -1,0 +1,85 @@
+.g-pricingtable-col-item {
+    float: left;
+
+    .g-pricingtable-1-col & {
+        width: 100%;
+    }
+
+    .g-pricingtable-2-col & {
+        width: 50%;
+    }
+
+    .g-pricingtable-3-col & {
+        width: 33.33333%;
+    }
+
+    .g-pricingtable-4-col & {
+        width: 25%;
+
+        @include breakpoint(tablet-range) {
+            width: 50%;
+        }
+    }
+
+    .g-pricingtable-5-col & {
+        width: 20%;
+    }
+
+    .g-pricingtable-6-col & {
+        width: 16.66667%;
+    }
+
+    @include breakpoint(mobile-only) {
+        width: 100% !important;
+    }
+}
+
+.g-pricingtable-footertext {
+    margin-bottom: $content-margin + $content-padding;
+}
+
+.g-pricingtable {
+    clear: both;
+    border-width: 1px 1px 1px 0;
+    border-style: solid;
+    border-color: #d5d5d5;
+    margin: 35px 0;
+    list-style: none;
+
+    &.rt-table-last-col {
+        border-right: 0;
+    }
+
+    li {
+        padding: 15px 25px;
+        position: relative;
+    }
+
+    .g-pricingtable-plan {
+        font-size: 1.5em;
+        color: $light-grey;
+        background: $dark-grey;
+        text-align: center;
+    }
+
+    .g-pricingtable-price {
+        font-size: 2em;
+        color: $dark-grey;
+        background: $light-grey;
+        padding: 25px !important;
+        text-align: center;
+    }
+
+    .g-pricingtable-period {
+        font-size: 50%;
+    }
+
+    .button, .button2 {
+        width: 100%;
+    }
+
+    .g-pricingtable-subtitle {
+        padding-top: 0;
+        margin-top: -1rem;
+    }
+}

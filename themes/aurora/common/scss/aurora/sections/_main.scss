@@ -1,0 +1,12 @@
+#g-container-main {
+    background: $main-background;
+    color: $main-text-color;
+    position: relative;
+}
+
+@media print {
+    #g-mainbar {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,191 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: about_us
+  timestamp: 1523567954
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-8634
+  /utility/: {  }
+  /feature/:
+    -
+      - custom-5548
+  /maintop/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 33': {  }
+      -
+        'main 34':
+          -
+            - custom-5023
+      -
+        'aside 33': {  }
+  /mainbottom/:
+    -
+      - custom-8524
+  /extension/:
+    -
+      - custom-9178
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'custom-5072 50'
+      - 'custom-3219 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: hidden-phone
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  main:
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    type: section
+  container-main:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-3952:
+    title: Heading
+    attributes:
+      title: 'About Us'
+      titletag: 'Welcome to Audacity'
+      html: ''
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'rt-title-large module-title'
+      variations: 'center nomarginall'
+  position-position-8634:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  custom-5548:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-01.jpg\" alt=\"image\" /></span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Introduction</h3>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change.</p>\n\t\t\t\t<div class=\"hidden-tablet\">\n\t\t\t\t\t<h3>More About Us</h3>\n\t\t\t\t\t<p>Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing.</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+      twig: '0'
+      filter: '0'
+    block:
+      variations: 'box2 nomarginall'
+  custom-5023:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<h3>Audacity, the Powerful Template</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n\n<p><a href=\"#\" class=\"readon\">Learn More</a></p>"
+      twig: '0'
+      filter: '0'
+  custom-8524:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-02.jpg\" alt=\"image\" /></span>\n\t\t\t\t<h4>Our Mission</h4>\n\t\t\t\t<p>Objectively innovate empowered manufactured products whereas parallel platforms. Holistically predominate extensible testing procedures for reliable supply chains.</p>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-02.jpg\" alt=\"image\" /></span>\n\t\t\t\t<h4>Our Values</h4>\n\t\t\t\t<p>Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration.</p>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-02.jpg\" alt=\"image\" /></span>\n\t\t\t\t<h4>Our Solution</h4>\n\t\t\t\t<p>Engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric outside the box thinking.</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      variations: 'box3 nomarginall rt-phone-center'
+  custom-9178:
+    title: 'Custom HTML'
+    attributes:
+      title: 'We Always Try to Create a Difference'
+      titletag: ''
+      html: "<p>Utilized with Versatile and Flexible Features Powered by the Gantry Framework.</p>\n\n<p><a href=\"#\" class=\"readon largemargintop\">Download Audacity</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: module-title
+      variations: center
+  custom-5072:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Audacity Demo'
+      titletag: ''
+      html: "<p class=\"hidden-phone\">These examples are intended to show how Audacity can be constructed on your site, above and beyond the frontpage demonstration. These include Joomla content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Audacity RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'
+  custom-3219:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Sample Contact Info'
+      titletag: ''
+      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'

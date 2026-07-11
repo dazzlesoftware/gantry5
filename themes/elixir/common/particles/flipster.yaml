@@ -1,0 +1,336 @@
+name: Flipster Cover Flow
+description: Display content in the familiar 'cover flow' effect.
+type: particle
+icon: fa-picture-o
+
+configuration:
+  caching:
+    type: config_matches
+    values:
+      source: 'particle'
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable icon menu particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+            class:
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            start:
+              type: input.text
+              label: Start
+              description: Zero based index of the starting item, or use 'center' to start in the middle.
+              default: center
+
+            fadein:
+              type: input.number
+              label: FadeIn
+              description: Speed of the fade in animation after items have been setup (milliseconds).
+              default: 400
+
+            loop:
+              type: select.select
+              label: Loop
+              description: Loop around when the start or end is reached
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay:
+              type: input.number
+              label: Autoplay
+              description: If a positive number, Flipster will automatically advance to next item after that number of milliseconds. Use 0 for disabled.
+              default: false
+
+            pauseonhover:
+              type: select.select
+              label: Pause On Hover
+              description: If true, autoplay advancement will pause when Flipster is hovered.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            style:
+              type: select.select
+              label: Style
+              description: Switch between display styles.
+              default: coverflow
+              options:
+                coverflow: Cover Flow
+                carousel: Carousel
+                flat: Flat
+                wheel: Wheel
+
+            spacing:
+              type: input.text
+              label: Spacing
+              description:  Space between items relative to each item's width. 0 for no spacing, negative values to overlap.
+              default: -0.6
+
+            click:
+              type: select.select
+              label: Click
+              description: Clicking an item switches to that item.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            keyboard:
+              type: select.select
+              label: Keyboard
+              description: Enable left/right arrow navigation.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            scrollwheel:
+              type: select.select
+              label: Scroll Wheel
+              description: Enable mousewheel/trackpad navigation; up/left = previous, down/right = next
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            touch:
+              type: select.select
+              label: Touch
+              description: Enable swipe navigation for touch devices
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            items:
+              type: collection.list
+              array: true
+              label: Cards
+              description: Create cover flow cards.
+              value: name
+              ajax: true
+              fields:
+                .width:
+                  type: input.text
+                  label: Custom Width
+                  description: Specify custom width instead auto adjusting.
+                .accent:
+                  type: select.selectize
+                  label: Accent
+                  description: Specify accent color for blocks
+                  placeholder: 'Select...'
+                  default: white
+                  options:
+                      white: White
+                      black: Black
+                      accent1: Accent Color 1
+                      accent2: Accent Color 2
+                      accent3: Accent Color 3
+                      accent4: Accent Color 4
+                .desc:
+                  type: textarea.textarea
+                  label: Description
+                  description: Customize the description.
+                  placeholder: Enter short description
+
+                .title:
+                  type: input.text
+                  label: Title
+                  description: Enter the card title.
+
+                .image:
+                  type: input.imagepicker
+                  label: Image
+                  description: Select image instead of text.
+
+                .buttontext:
+                  type: input.text
+                  label: Button Label
+                  description: Specify the button label.
+
+                .buttonlink:
+                  type: input.text
+                  label: Button Link
+                  description: Specify the button link.
+
+                .buttontarget:
+                  type: select.selectize
+                  label: Target
+                  description: Target browser window when item is clicked.
+                  placeholder: 'Select...'
+                  default: _self
+                  options:
+                      _self: Self
+                      _blank: New Window
+
+                .buttonclass:
+                  type: input.selectize
+                  label: Button Classes
+                  description: CSS class names for the button.
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.image.enabled:
+              type: select.select
+              label: Image
+              description: Select if and what image of the article should be shown.
+              options:
+                intro: Intro
+                full: Full
+                '': None
+
+            article.display.text.type:
+              overridable: false
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              overridable: false
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              pattern: '\d+'
+
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.link.enabled:
+              type: select.select
+              label: Link
+              description: Enable or disable link.
+              options:
+                enabled: Enabled
+                disabled: Disabled
+
+            article.display.link.target:
+              type: select.selectize
+              label: Link Target
+              description: Target browser window when the button is clicked.
+              placeholder: 'Select...'
+              default: _self
+              options:
+                  _self: Self
+                  _blank: New Window

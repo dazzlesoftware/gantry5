@@ -1,0 +1,633 @@
+.flush {
+	> .g-content {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+
+.nopaddingall {
+	> .g-content {
+		padding: 0 !important;
+	}	
+}
+
+.nomarginall {
+	> .g-content {
+		margin: 0 !important;
+	}	
+}
+
+.title-center {
+	.g-title {
+		text-align: center;
+		margin: 0 0 2rem 0;
+	}
+}
+
+.title-underline {
+	.g-title {
+		position: relative;
+		&:after {
+		    background: $accent-color-1;
+		    bottom: -10px;
+		    content: '';
+		    height: 2px;
+		    position: absolute;
+		    width: 50px;			
+		    left: 50%;
+		    margin-left: -25px;
+		}
+	}	
+}
+
+.title1, .title2, .title3, .title-grey, .title-pink, .title-red, .title-purple, .title-orange, .title-blue, .title-darkgrey {
+	.g-title {
+		padding-left: 1.5rem;
+		padding-bottom: 1rem;
+		margin: 0.75rem 0 1.5rem 0;
+		width: 100%;
+		border-bottom: 1px solid $rule-color;	
+		.dir-rtl & {
+			padding-left: inherit;
+			padding-right: 1.5rem;
+		}		
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 12px;
+			width: 1rem; 
+			height: 1.15rem;
+			transform: skew(30deg);
+		    .dir-rtl & {
+		    	left: inherit;
+		    	right: 0;
+		    	transform: skew(-30deg);
+		    }			
+		}
+	}
+}
+
+
+.moduletable, .widget {
+    &[class*="box"] {
+      padding: $content-padding;
+      margin: $content-margin;
+    }
+    &[class*="title"] {
+        .g-title {
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+        }
+    }
+}
+
+
+
+.title1 {
+	.g-title {
+		&:before {
+			background: #212121;
+		}		
+	}
+}
+
+.title2 {
+	.g-title {
+		&:before {
+			background: $accent-color-1;
+		}		
+	}
+}
+
+.title3 {
+	.g-title {
+		&:before {
+			background: $accent-color-3;
+		}		
+	}
+}
+
+.box1, .box2, .box3, .box4 {
+  &.moduletable, &.widget,
+	&.g-outer-box {
+		background-image: url("gantry-theme://images/variations/box-bg.png") !important;
+		background-repeat: no-repeat !important;
+		background-position: center center !important;	
+	}
+  &.moduletable, &.widget,
+	 > .g-content {
+		background-image: url("gantry-theme://images/variations/box-bg.png");
+		background-repeat: no-repeat;
+		background-position: center center;			
+	}	
+}	
+
+.box1 {
+	&.g-outer-box {
+		background-color: darken($box1-background, 8%) !important;
+	}
+  &.moduletable, &.widget,
+	 > .g-content {
+		background-color: darken($box1-background, 8%);
+		color: $white;
+	}	
+	.button {
+		background: darken($box1-background, 15%);
+		&:hover, &:active, &:focus {
+			background: lighten($box1-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box1-background, 15%) !important;
+			border-color: darken($box1-background, 15%);
+			&:hover, &:active, &:focus {
+				color: $white !important;
+				border-color: $white;
+			}
+		}
+	}
+	a {
+		color: $white;
+		&:hover {
+			color: inherit;
+		}
+	}	
+}
+
+.box2 {
+	&.g-outer-box {
+		background-color: $box2-background !important;
+	}
+  &.moduletable, &.widget,
+	 > .g-content {
+		background-color: $box2-background;
+		color: $white;
+	}
+	.button {
+		background: darken($box2-background, 15%);
+		&:hover, &:active, &:focus {
+			background: lighten($box2-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box2-background, 15%) !important;
+			border-color: darken($box2-background, 15%);
+			&:hover, &:active, &:focus {
+				color: $white !important;
+				border-color: $white;
+			}
+		}
+	}
+	a {
+		color: darken($box2-background, 30%);
+		&:hover {
+			color: inherit;
+		}
+	}	
+}
+
+.box3 {
+	&.g-outer-box {
+		background-color: $box3-background !important;
+	}
+  &.moduletable, &.widget,
+	 > .g-content {
+		background-color: $box3-background;
+		color: $white;
+	}
+	.button {
+		background: darken($box3-background, 15%);
+		&:hover, &:active, &:focus {
+			background: lighten($box3-background, 5%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box3-background, 15%) !important;
+			border-color: darken($box3-background, 15%);
+			&:hover, &:active, &:focus {
+				color: $white !important;
+				border-color: $white;
+			}
+		}
+	}
+	a {
+		color: $accent-color-1;
+		&:hover {
+			color: inherit;
+		}
+	}	
+}
+
+.box4 {
+	&.g-outer-box {
+		background-color: $box4-background !important;
+	}
+  &.moduletable, &.widget,
+	 > .g-content {
+		background-color: $box4-background;
+		color: $base-text-color;
+	}
+	.button {
+		background: darken($box4-background, 15%);
+		&:hover, &:active, &:focus {
+			background: darken($box4-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box4-background, 15%) !important;
+			border-color: darken($box4-background, 15%);
+			&:hover, &:active, &:focus {
+				color: $white !important;
+				border-color: $white;
+			}
+		}
+	}
+	a {
+		color: $accent-color-1;
+		&:hover {
+			color: inherit;
+		}
+	}	
+}
+
+.box-white {
+	color: lighten($black, 10%);
+}
+.box-grey, .box-pink, .box-red, .box-purple, .box-blue, .box-orange, .box-darkgrey {
+	color: $white;
+	a:hover {
+		color: inherit;
+	}
+}
+
+.title-white {
+  .g-title, .button {
+    background: $box-white-background;
+  }
+}
+.box-white {
+  &.moduletable, &.widget,
+  &.g-outer-box,
+  > .g-content {
+    background: $box-white-background;
+  }
+  .button {
+    background: darken($box-white-background, 25%);
+   }
+   a {
+     color: darken($box-white-background, 25%);
+   }
+ } 
+.box-white, .title-white {
+  .button {
+    &:hover, &:active, &:focus {
+      background: darken($box-white-background, 10%);
+    }
+    &.button-3, &.button-2 {
+      color: darken($box-white-background, 25%);
+      border-color: darken($box-white-background, 25%);
+      &:hover, &:active, &:focus {
+        color: $black;
+        border-color: $black;
+      }
+    }
+  }
+}
+
+.title-grey {
+	.g-title:before, .button {
+		background: $box-grey-background;
+	}
+}
+.box-grey {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-grey-background;
+	}
+	.button {
+		background: darken($box-grey-background, 10%);
+  }
+	a {
+		color: lighten($box-grey-background, 25%);
+    &:hover {
+      color: darken($box-grey-background, 15%);
+    }
+	}
+} 
+.box-grey, .title-grey {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-grey-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-grey-background, 25%);
+			border-color: darken($box-grey-background, 10%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+
+.box-darkgrey {
+	&.g-outer-box {
+		background: $box-darkgrey-background !important;
+	}
+	 > .g-content {
+		background: $box-darkgrey-background;
+	}
+	.button {
+		background: lighten($box-darkgrey-background, 15%);
+		&:hover, &:active, &:focus {
+			background: lighten($box-darkgrey-background, 25%);
+		}
+		&.button-3, &.button-4 {
+			color: lighten($box-darkgrey-background, 25%) !important;
+			border-color: lighten($box-darkgrey-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white !important;
+				border-color: $white;
+			}
+		}
+	}
+	a {
+		color: lighten($box-darkgrey-background, 25%);
+	}
+}
+
+.title-darkgrey {
+	.g-title:before, .button {
+		background: $box-darkgrey-background;
+	}
+}
+.box-darkgrey {
+	&.g-outer-box,
+   > .g-content {
+		background: $box-darkgrey-background;
+	}
+	.button {
+		background: lighten($box-darkgrey-background, 15%);
+  }
+	a {
+		color: lighten($box-darkgrey-background, 25%);
+    &:hover {
+      color: darken($box-darkgrey-background, 15%);
+    }
+	}
+} 
+.box-darkgrey, .title-darkgrey {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-darkgrey-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-darkgrey-background, 25%);
+			border-color: darken($box-darkgrey-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-pink {
+	.g-title:before, .button {
+		background: $box-pink-background;
+	}
+}
+.box-pink {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-pink-background;
+	}
+	.button {
+		background: darken($box-pink-background, 10%);
+  }
+	a {
+		color: lighten($box-pink-background, 25%);
+    &:hover {
+      color: darken($box-pink-background, 15%);
+    }
+	}
+} 
+.box-pink, .title-pink {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-pink-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-pink-background, 25%);
+			border-color: darken($box-pink-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-red {
+	.g-title:before, .button {
+		background: $box-red-background;
+	}
+}
+.box-red {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-red-background;
+	}
+	.button {
+		background: darken($box-red-background, 10%);
+  }
+	a {
+		color: lighten($box-red-background, 25%);
+    &:hover {
+      color: darken($box-red-background, 15%);
+    }
+	}
+} 
+.box-red, .title-red {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-red-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-red-background, 25%);
+			border-color: darken($box-red-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-purple {
+	.g-title:before, .button {
+		background: $box-purple-background;
+	}
+}
+.box-purple {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-purple-background;
+	}
+	.button {
+		background: darken($box-purple-background, 10%);
+  }
+	a {
+		color: lighten($box-purple-background, 25%);
+    &:hover {
+      color: darken($box-purple-background, 15%);
+    }
+	}
+} 
+.box-purple, .title-purple {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-purple-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-purple-background, 25%);
+			border-color: darken($box-purple-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-blue {
+	.g-title:before, .button {
+		background: $box-blue-background;
+	}
+}
+.box-blue {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-blue-background;
+	}
+	.button {
+		background: darken($box-blue-background, 10%);
+  }
+	a {
+		color: lighten($box-blue-background, 25%);
+    &:hover {
+      color: darken($box-blue-background, 15%);
+    }
+	}
+} 
+.box-blue, .title-blue {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-blue-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-blue-background, 25%);
+			border-color: darken($box-blue-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-orange {
+	.g-title:before, .button {
+		background: $box-orange-background;
+	}
+}
+.box-orange {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-orange-background;
+	}
+	.button {
+		background: darken($box-orange-background, 10%);
+  }
+	a {
+		color: lighten($box-orange-background, 25%);
+    &:hover {
+      color: darken($box-orange-background, 15%);
+    }
+	}
+} 
+.box-orange, .title-orange {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-orange-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-orange-background, 25%);
+			border-color: darken($box-orange-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.spaced {
+	.g-content {
+		margin: 1px;
+	}		
+}
+
+.bordered {
+	.g-content {
+		border: 1px solid $rule-color;
+		margin: 1px;
+	}	
+}
+
+.shadow {
+	.g-content {
+		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	}
+}
+
+.shadow2 {
+	.g-content {
+		box-shadow: 0 0 4px rgba(0,0,0,0.15);
+	}
+}
+
+.disabled {
+	.g-content {
+		opacity: 0.4;
+	}
+}
+
+.square {
+	.g-content {
+		border-radius: none;
+	}
+}
+
+.rounded {
+	.g-content {
+		border-radius: $core-border-radius;
+		overflow: hidden;
+	}
+}
+
+.no-bg-image {
+	background-image: none !important;
+}
+
+.equal-height { 
+	.g-content { 
+		flex-basis: 100%; 
+		width: auto; 
+	}
+}

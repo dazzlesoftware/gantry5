@@ -1,0 +1,11 @@
+name: Font Families
+description: Font families for the Flux theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'catamaran, Helvetica, Tahoma, Geneva, Arial, sans-serif'

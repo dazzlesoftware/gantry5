@@ -1,0 +1,20 @@
+#g-header {
+	background: $header-background;
+	color: $header-text-color;
+
+  // Container
+  .g-container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;   
+    @include breakpoint(small-mobile-range) {
+    	padding-top: 0;
+    }
+  }
+}
+
+@media print {
+	#g-header {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

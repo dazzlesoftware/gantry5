@@ -1,0 +1,18 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    @extend .section-paddings;
+
+    .g-infolist .g-infolist-item-title {
+        a {
+            color: $extension-text-color;
+        }
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

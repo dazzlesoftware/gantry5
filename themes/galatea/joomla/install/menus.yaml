@@ -1,0 +1,9 @@
+galatea-theme:
+  title: 'Galatea Theme'
+  description: 'Sample menu for Galatea theme.'
+
+  items:
+    galatea:
+      title: 'Home'
+      outline: home
+      home: 1

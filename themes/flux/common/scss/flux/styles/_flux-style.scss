@@ -1,0 +1,130 @@
+// Navigation
+#g-navigation.g-fluid-navigation {
+    @include breakpoint(desktop-range) {
+        .g-block {
+            flex: auto;
+            width: auto;
+        }
+        .fp-search {
+            flex: 160;
+        }
+    }
+
+    @include breakpoint(large-desktop-range) {
+        .g-block {
+            flex: auto;
+            width: auto;
+        }
+        .fp-search {
+            flex: 160;
+        }
+    }
+
+    @include breakpoint(tablet-range) {
+        .g-block {
+            flex: auto;
+            width: auto;
+        }
+        .fp-search {
+            flex: 160;
+        }
+    }
+}
+
+#g-navigation.g-absolute-navigation {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+
+#g-navigation.fp-navigation {
+    .g-main-nav .g-toplevel > li > .g-menu-item-container {
+        color: $menustyle-text-color-alt;
+    }
+    .g-main-nav .g-toplevel > li:hover > .g-menu-item-container, .g-main-nav .g-toplevel > li.active > .g-menu-item-container {
+        color: $black;
+    }
+    input[type="text"],
+    input[type="search"] {
+        border-color: $border-color-light;
+        color: $menustyle-text-color-alt;
+    }
+    .g-search form:before {
+        color: $menustyle-text-color-alt;
+    }
+     .g-logo {
+         color: $menustyle-text-color-alt;
+     }
+
+}
+
+// Border
+.g-border-right {
+    position: relative;
+    &:after {
+        content: '';
+        top: 25%;
+        opacity: 0.6;
+        right: 4rem;
+        width: 1px;
+        height: 60%;
+        position: absolute;
+        background: $border-color-light;
+        @include breakpoint(mobile-only) {
+          display: none;
+        }
+    }
+
+}
+
+// Feature
+#g-feature.fp-feature {
+    .dir-ltr & {
+        padding-right: 0;
+    }
+
+    .dir-rtl & {
+        padding-left: 0;
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+
+    .fp-cards {
+        .g-content {
+            @include breakpoint(mobile-only) {
+              margin: 0;
+              padding: 0;
+            }
+        }
+
+        &.nomarginright {
+            .g-content {
+                .dir-rtl & {
+                    margin-right: $content-margin !important;
+                    margin-left: 0;
+                }
+            }
+        }
+
+        &.nopaddingright {
+            .g-content {
+                .dir-rtl & {
+                    padding-right: $content-padding !important;
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
+
+// Slideshow
+.fp-slideshow {
+    background-image: none !important;
+}
+
+// Bottom Padding Adjustments
+.fp-bottom.section-vertical-paddings {
+    padding-top: 0;
+}

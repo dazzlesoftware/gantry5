@@ -1,0 +1,177 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: our_team
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-2595
+  /header/:
+    -
+      - 'logo-3280 50'
+      - 'menu-2815 50'
+  /slideshow/: {  }
+  /showcase/:
+    -
+      - custom-6370
+  /feature/:
+    -
+      - custom-1584
+  /main/: {  }
+  /container-5750/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-2409
+      -
+        'mainbar 60':
+          -
+            - system-content-2623
+      -
+        'aside 20':
+          -
+            - position-4380
+  /extension/:
+    -
+      - custom-8511
+  /bottom/:
+    -
+      - custom-1106
+  /footer/:
+    -
+      - 'position-3387 33.3'
+      - 'position-5360 33.3'
+      - 'position-2402 33.3'
+  /copyright/:
+    -
+      - 'logo-1264 33'
+      - 'custom-5483 67'
+    -
+      - 'copyright-6948 33'
+      - 'custom-6578 57'
+      - 'totop-2755 10'
+  offcanvas:
+    -
+      - mobile-menu-6135
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-5750:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-3280:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-2815:
+    block:
+      class: g-menu-block
+  custom-6370:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Our Team</h2>\n\t<div class=\"g-layercontent-subtitle\">Meet the People Behind Ethereal</div>\n</div>"
+    block:
+      class: 'flush center'
+  custom-1584:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box4 size-50\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-01.jpg\">\n      <h2>\n        Joe Jensen\n      </h2>\n      <p>\n        Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.\n      </p>\n      <p>\n        Image attribution: <a href=\"http://www.flickr.com/photos/astragony/8260117875/sizes/l/\">AMaze by Daniele Zedda</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box4 size-50\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-02.jpg\">\n      <h2>\n        Paul Lee\n      </h2>\n      <p>\n        Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.\n      </p>\n      <p>\n        Image attribution: <a href=\"http://www.flickr.com/photos/astragony/4728211246/sizes/l/\">Stare by JohnONolan</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n</div>"
+  position-2409:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-4380:
+    title: Aside
+    attributes:
+      key: aside
+  custom-8511:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-03.jpg\">\n      <h2 class=\"g-title\">\n        Louis Wells\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"https://www.flickr.com/photos/johnonolan/5378754404/sizes/l/\">JohnONolan</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-04.jpg\">\n      <h2 class=\"g-title\">\n        Sara Valdez\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/thomasleuthard/5807793226/sizes/l/\">Thomas Leuthard</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-05.jpg\">\n      <h2 class=\"g-title\">\n        Joseph Hart\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/astragony/5959165576/sizes/l/\">Daniele Zedda</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"g-grid\">\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-06.jpg\">\n      <h2 class=\"g-title\">\n        Amy Guzman\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/mr-h/4217144639/sizes/l/\">AllansBrain</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-07.jpg\">\n      <h2 class=\"g-title\">\n        Randy Hicks\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/carianoff/5327733275/sizes/l/\">carianoff</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-08.jpg\">\n      <h2 class=\"g-title\">\n        Grace Patel\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/carianoff/4070347417/sizes/l/\">carianoff</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"g-grid\">\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-09.jpg\">\n      <h2 class=\"g-title\">\n        Roy Fisher\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/carianoff/5328421868/sizes/l/\">carianoff</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-10.jpg\">\n      <h2 class=\"g-title\">\n        Pamela Little\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/carianoff/5328368478/sizes/l/\">carianoff</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content\">\n      <img alt=\"image\" src=\"gantry-media://demo/our-team/img-11.jpg\">\n      <h2 class=\"g-title\">\n        Scott Bell\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n      <p>\n        Image by <a href=\"http://www.flickr.com/photos/carianoff/5327739397/sizes/l/\">carianoff</a>.\n      </p>\n      <div class=\"g-social\">\n        <a href=\"#\">\n            <span class=\"fa fa-twitter fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-facebook fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-google fa-fw\"></span>\n        </a>\n        <a href=\"#\">\n            <span class=\"fa fa-linkedin fa-fw\"></span>\n        </a>  \n      </div>\n    </div>\n  </div>\n</div>"
+  custom-1106:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">We Are Hiring</h2>\n\t<div class=\"g-layercontent-subtitle\">Join Our Awesome Team with a Great Work Environment</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\" class=\"button button-2\">Join Ethereal</a>\n</div>"
+    block:
+      class: 'flush center'
+  position-3387:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-5360:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-2402:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-1264:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-5483:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-6948:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-6578:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+  totop-2755:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-6135:
+    title: 'Mobile Menu'

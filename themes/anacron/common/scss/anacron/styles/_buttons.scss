@@ -1,0 +1,68 @@
+// Buttons
+.button, .button2, .readon, .readon2, readon3, a.readmore, button.validate, p.readmore a, #member-profile a, #member-registration a, .formelm-buttons button, .controls .btn, .logout-button .btn, .sprocket-readmore, &.roksearch_results a.clr, input.g-newsletter-button-submit {
+	display: inline-block;
+	padding: 12px 20px;
+	line-height: normal;
+	font-size: $base-font-size - 2;
+	text-transform: uppercase;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	color: $white;
+	background: $accent-color-1;
+	border-radius: 3px;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	border-bottom: 2px solid darken($accent-color-1, 15%);
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+	background-image: none;
+	text-shadow: none;
+	transition: all 0.2s ease-in;
+	&:hover {
+		color: $white;
+		background: $accent-color-2;
+		border-bottom: 2px solid darken($accent-color-2, 15%);
+		background-position: inherit;
+		background-image: none;
+		text-shadow: none;
+	}
+}
+.readon {
+	font-family: get-font-family($font-family-bold);
+	&:after {
+		content: "+";
+		font-family: arial;
+		padding-left: 5px;
+	}
+}
+.button {
+	font-family: get-font-family($font-family-bold);
+}
+.readon2, .button2 {
+	color: $white;
+	background: $accent-color-2;
+	border-bottom: 2px solid darken($accent-color-2, 15%);
+	&:hover {
+		color: $white;
+		background: $accent-color-1;
+		border-bottom: 2px solid darken($accent-color-1, 15%);
+	}
+	&:after {
+		display: none;
+	}
+}
+.readon3 {
+	color: $dark-grey;
+	background: transparent;
+	border-radius: 4px;
+	border: 2px solid $dark-grey;
+	&:hover {
+		color: $white;
+		background: $accent-color-1;
+		border: 2px solid $dark-grey;
+	}
+	&:after {
+		display: none;
+	}
+}

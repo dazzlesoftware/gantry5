@@ -1,0 +1,155 @@
+.btn-primary {
+    @extend .button;
+    background: transparent;
+    border-radius: 2rem;
+    color: $accent-color-1 !important;
+    border: 2px solid $accent-color-1;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 24px;
+    text-shadow: none;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem 0;
+    padding: 0.5rem 1.5rem;
+    &:hover, &:active, &:focus {
+        background: transparent;
+        border: 2px solid darken($accent-color-1, 15%);
+        color: darken($accent-color-1, 15%) !important;
+    }
+}
+
+.btn-group > .btn + .dropdown-toggle {
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.btn-group.open .btn-primary.dropdown-toggle {
+	background: darken($accent-color-1, 5%);
+	color: $white;
+	box-shadow: inset -1px -1px 1px rgba(0,0,0,0.15);
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a {
+	background-image: none;
+	background-color: $accent-color-1;
+}
+
+.btn-link {
+	color: $accent-color-1;
+}
+
+.view-articles, .view-images, .view-imagesList {
+    background: none;
+    height: auto;
+
+    #g-page-surround {
+        background: none;
+        overflow: visible;
+        min-height: auto;
+        position: static;
+    }
+    .g-menu-overlay {
+        display: none;
+    }
+}
+
+// Table
+table.table-bordered {
+	border-collapse: separate;
+	*border-collapse: collapse;
+	th {
+		background-color: darken($pagesurround-background, 5%);
+	}
+}
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {
+	background: darken($pagesurround-background, 10%);
+}
+.table-hover tbody tr:hover {
+	> td, > th {
+		background: darken($pagesurround-background, 25%);
+	}
+}
+.table, .table-bordered {
+	border-color: $rule-color $rule-color $rule-color transparent;
+	th, td {
+		border: 1px solid $rule-color;
+	}
+}
+.well {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+.com-content-blog__links {
+	margin-left: 0;
+	margin-bottom: 20px;
+	list-style: none;
+	padding: 0;
+	li {
+		list-style-type: none;
+	}
+}
+.com-content-blog__links > li > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
+	padding-right: 12px;
+    padding-left: 12px;
+	display: block;
+	border: 1px solid #ddd;
+}
+
+.nav-tabs.nav-stacked > li > a, .com-content-blog__links > li > a{
+	background-color: darken($pagesurround-background, 10%);
+	&:hover {
+		background-color: darken($pagesurround-background, 15%);
+	}
+}
+.list-striped li:nth-child(odd),
+.list-striped dd:nth-child(odd),
+.row-striped .row:nth-child(odd),
+.row-striped .row-fluid:nth-child(odd),
+.cat-list-row0 {
+	background-color: darken($pagesurround-background, 10%);
+}
+.list-striped li:hover,
+.list-striped dd:hover,
+.row-striped .row:hover,
+.row-striped .row-fluid:hover,
+.cat-list-row0:hover, .cat-list-row1:hover {
+	background-color: darken($pagesurround-background, 15%);
+}
+
+.pager li > a, .pager li > span {
+	display: inline-block;
+	font-family: get-font-family($font-family-default);
+	font-weight: $font-weight-bold;
+	background: $accent-color-1;
+	color: $white !important;
+	font-size: $core-font-size;
+	border: 2px solid transparent;
+	border-radius: 0;
+	margin: 0;
+	padding: 0.5rem 1.25rem;
+	vertical-align: middle;
+	text-shadow: none;
+	transition: all 0.2s;
+	&:hover, &:active, &:focus {
+		background: darken($accent-color-1, 15%);
+		color: $white !important;
+	}
+}
+
+#g-page-surround .pagination >li {
+	>span {
+		color: $base-text-color;
+	}
+    >a,
+    >span {
+        background: darken($pagesurround-background, 15%);
+        border: 1px solid darken($pagesurround-background, 25%);
+
+        &:hover {
+            background: darken($pagesurround-background, 5%);
+        }
+    }
+}

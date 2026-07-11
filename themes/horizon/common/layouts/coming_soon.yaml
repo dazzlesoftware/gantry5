@@ -1,0 +1,204 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: coming_soon
+  timestamp: 1582664767
+layout:
+  top: {  }
+  /navigation/: { }
+  /slideshow/:
+    -
+      - simplecontent-8300
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - simplecounter-4200
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - blockcontent-6645
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        /copyright/: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  container-top:
+    attributes:
+      boxed: ''
+      class: 'no-background-image'
+      extra: {  }
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: center
+      variations: ''
+    inherit:
+      outline: default
+      include:
+        - children
+  container-footer:
+    attributes:
+      boxed: ''
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-8300:
+    title: 'Coming Soon'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Coming Soon'
+          author: ''
+          leading_content: 'Website under construction.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Coming Soon'
+    block:
+      variations: center
+  simplecounter-4200:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: 'We are working on a new and exciting template that we think you will really like.'
+      date: '31'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      variations: center
+  blockcontent-6645:
+    title: 'Block Content'
+    attributes:
+      class: ''
+      title: ''
+      icon: ''
+      image: ''
+      headline: 'Have Something to Tell Us?'
+      description: 'Ideas, Suggestions or Review'
+      linktext: 'Contact Us'
+      link: '#'
+      linkclass: button-2
+      linktarget: _self
+      subcontents: {  }
+    block:
+      class: nomarginbottom
+      variations: center

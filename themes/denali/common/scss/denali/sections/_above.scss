@@ -1,0 +1,12 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+    position: relative;
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

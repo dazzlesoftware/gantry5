@@ -1,0 +1,108 @@
+name: Team
+description: Display team list.
+type: particle
+icon: fa-futbol-o
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            allitems:
+              overridable: false
+              type: input.text
+              label: '"All items" Label'
+              description: Enter all items button label.
+              placeholder: 'All'
+
+            cols:
+              overridable: false
+              type: select.select
+              label: Grid Column
+              description: Select the grid column amount
+              placeholder: 'Select...'
+              default: cols-12
+              options:
+                cols-12: 12 Columns
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            cases:
+              type: collection.list
+              array: true
+              label: Team Members
+              description: Create case studies.
+              value: title
+              ajax: true
+              overridable: false
+
+              fields:
+                .title:
+                  type: input.text
+                  label: Title
+                  description: Enter case title
+                .items:
+                  type: collection.list
+                  array: true
+                  label: Members
+                  description: Create case studies items.
+                  value: title
+                  ajax: true
+
+                  fields:
+                    .image:
+                      type: input.imagepicker
+                      label: Image
+                      description: Select desired image.
+
+                    .icon:
+                      type: input.icon
+                      label: Icon
+                      description: Select desired icon.
+
+                    .title:
+                      type: input.text
+                      label: Title
+                      description: Enter case title
+
+                    .url:
+                      type: input.text
+                      label: Url
+                      description: Customize url.
+
+                    .target:
+                      type: select.selectize
+                      label: Target
+                      description: Target browser window when item is clicked.
+                      placeholder: 'Select...'
+                      default: _self
+                      options:
+                          _self: Self
+                          _blank: New Window

@@ -1,0 +1,63 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="title">{{ particle.title }}</h2>{% endif %}
+
+        <div class="g-linktabs {{ particle.layout }}">
+            <div id="g-linktabs-{{ id }}" class="g-linktabs-container">
+                <ul class="g-linktabs-tab-wrapper-container">
+
+                    {% for item in particle.items %}
+                        <li class="g-linktabs-tab-wrapper">
+                            <span class="g-linktabs-tab-wrapper-head">
+                                <a class="g-linktabs-tab" href="#g-linktabs-item-{{ loop.index }}">
+                                    <span class="g-linktabs-tab-title">{{ item.title|html|raw }}</span>
+                                </a>
+                            </span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+                <ul class="g-linktabs-content-wrapper-container">
+
+                    {% for item in particle.items %}
+                        <li class="g-linktabs-tab-wrapper">
+                            <div class="g-linktabs-tab-wrapper-body">
+                                <div id="g-linktabs-item-{{ loop.index }}">
+                                    <span class="g-linktabs-content">
+                                        <span class="g-linktabs-desc">
+                                            {{ item.content|html|raw }} 
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
+{% endblock %}
+
+{% block javascript_footer %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#g-linktabs-{{ id }}').tabs({
+                show: {
+                    effect: 'fade',
+                    duration: 350
+                }
+            });
+        });
+    </script>
+{% endblock %}

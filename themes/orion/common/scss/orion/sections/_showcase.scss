@@ -1,0 +1,16 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background;
+
+    @if $showcase-background-image {
+        background-image: url($showcase-background-image);
+        background-size: cover;
+    }
+}
+
+@media print {
+    #g-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

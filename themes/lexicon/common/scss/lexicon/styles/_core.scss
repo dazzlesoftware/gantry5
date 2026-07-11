@@ -1,0 +1,34 @@
+body {
+	color: $base-text-color;
+	background: $white;
+	line-height: $base-line-height;
+	font-size: $base-font-size;
+
+	p {
+		margin: 0 0 15px 0;
+	}
+
+	.g-content {
+		margin: 0;
+		padding: 25px;
+		@include breakpoint(mobile-only) {
+			padding: 15px 25px;
+		}
+		> .title {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+a {
+	color: $accent-color-2;
+	transition: all 0.2s ease-out;
+	&:hover {
+		color: inherit;
+	}
+}
+
+em {
+	font-family: get-font-family($font-family-italic);
+	font-style: normal;
+}

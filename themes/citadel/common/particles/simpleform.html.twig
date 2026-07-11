@@ -1,0 +1,51 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+    {% if particle.title %}<h2 class="g-title g-simpleform-title">{{ particle.title|raw }}</h2>{% endif %}
+    {% if particle.description %}<p class="g-simpleform-description">{{ particle.description|raw }}</p>{% endif %}
+    <form id="g-simpleform-{{ id }}" data-simpleform-id="g-simpleform-{{ id }}" data-simpleform-token="{{ particle.token }}" data-simpleform-requiredmessage="{{ particle.required }}" class="g-simpleform" action="#" method="post">
+        <div class="g-simpleform-fields">
+            {% for item in particle.items %}
+            <div class="g-simpleform-item {% if item.type == 'spinner' %}g-simpleform-spinner{% endif %} {% if item.type == 'datepicker' %}g-simpleform-calendar{% endif %}" {% if item.type == 'spinner' %}data-trigger="spinner" class="g-simpleform-spinner"{% endif %}>
+                {% if item.label %}
+                <label for="g-simpleform-item-id-{{ loop.index }}">{{ item.label }}{% if item.required == 'enabled' %}<sup>*</sup>{% endif %}</label>
+                {% endif %}
+                {% if item.type == 'textarea' %}
+                <textarea type="text" class="{% if item.required == 'enabled' %} g-simpleform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-simpleform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}"></textarea>
+                {% endif %}
+                {% if item.type == 'text' or item.type == 'datepicker' or item.type == 'spinner' %}
+                <input type="text" class="{% if item.type == 'datepicker' %}g-simpleform-datepicker{% endif %}{% if item.required == 'enabled' %} g-simpleform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-simpleform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}data-min="{{ item.min }}" data-max="{{ item.max }}"{% endif %}>
+                {% endif %}
+                {% if item.type == 'datepicker' %}
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                {% endif %}
+                {% if item.type == 'spinner' %}
+                <div class="g-simpleform-spinners">
+                    <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                    <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <div class="g-simpleform-button">
+                <label for="button">&nbsp;</label>
+                <a href="javascript:;" class="button">{{ particle.button|default('Submit')|raw }}</a>
+            </div>
+        </div>
+        <div class="g-simpleform-thankyou">
+            <p class="alert alert-success"><i class="fa fa-check-circle" aria-hidden="true"></i>  {{ particle.thankyou }}</p>
+        </div>
+        <div class="g-simpleform-error">
+            <p class="alert alert-error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  {{ particle.error }}</p>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
+<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
+<script src="{{ url('gantry-theme://js/simpleform.js') }}"></script>
+{% endblock %}

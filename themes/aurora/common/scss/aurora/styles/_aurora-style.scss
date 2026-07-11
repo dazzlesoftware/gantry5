@@ -1,0 +1,50 @@
+// Promos
+.g-promo-1, .g-promo-2 {
+    @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
+
+    a {
+        text-decoration: underline;
+    }
+}
+.g-promo-3 {
+    @include responsive-font($responsive-font-size + 4, $core-font-size, false, false);
+    line-height: $core-line-height - 0.4;
+    color: $black;
+}
+
+// Showcase
+.fp-showcase {
+    margin-top: $content-padding * 5;
+    @include breakpoint(mobile-only) {
+      margin-top: $content-padding;
+    }
+}
+
+// Slideshow
+.fp-slideshow {
+    background-image: none !important;
+}
+
+// Feature
+.particles-feature-demo#g-feature {
+    .g-simplecontent-item-content-title {
+        @include responsive-font($responsive-font-size + 1.8, $core-font-size, false, false);
+        color: $black;
+        line-height: $core-line-height - 0.3;
+        padding-bottom: 0;
+    }
+
+    .g-simplecontent-item-leading-content {
+        color: #666;
+    }
+}
+
+// Bottom
+.fp-bottom {
+    margin-top: 15vw;
+}
+
+// Copyright
+.fp-footer {
+    padding-top: 15vw;
+}

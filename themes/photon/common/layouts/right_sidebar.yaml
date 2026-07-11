@@ -1,0 +1,197 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: right_sidebar
+  timestamp: 1456866936
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/: {  }
+  /header/:
+    -
+      - simplecontent-1852
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 50':
+          -
+            - custom-3363
+      -
+        'aside 30':
+          -
+            - custom-1197
+          -
+            - custom-9280
+  /expanded/: {  }
+  /extension/:
+    -
+      - custom-7768
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 48'
+      - 'position-position-1858 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+    attributes:
+      image: 'gantry-media://logo/logo.svg'
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  simplecontent-1852:
+    title: 'Right Sidebar Example'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Right Sidebar Example'
+          author: ''
+          leading_content: 'Cuaqum ante augue, iaculis eget fringilla vel, gravida non nibh. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu, eu fermentum elit metus vel mauris.'
+          main_content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at sem ut ipsum vestibulum euismod. Mauris et massa porta leo facilisis feugiat. Suspendisse id neque a sem facilisis blandit. Aliquam sem leo, commodo ut, rutrum auctor, iaculis nec, eros. Aenean massa. Mauris tincidunt. Vivamus consectetur, tortor sit amet dictum sagittis, urna lectus dapibus metus, ut congue ligula odio sed nunc. Suspendisse potenti.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Right Sidebar Example'
+  custom-3363:
+    title: Mainbody
+    attributes:
+      html: "<h2>H2 Heading</h2>\n<p>Nullam eget neque. Nullam <a href=\"#\">imperdiet venenatis</a> ligula. Integer a leo. Nunc consectetur. Maecenas sem. Proin vulputate, massa vel volutpat laoreet, purus erat pretium ligula, eget varius arcu nibh sed libero. Fusce ante. Nullam interdum aliquet metus. </p>\n\n<h3>H3 Heading</h3>\n\n<p>In erat. Pellentesque erat. <strong>Mauris vehicula vestibulum justo.</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pulvinar est. Integer urna. Pellentesque pulvinar dui a magna. Nulla facilisi.</p>\n\n<h4>H4 Heading</h4>\n\n<p>Mauris lobortis. Aliquam lacinia purus. <strong>Pellentesque magna</strong>. Mauris euismod metus nec tortor. Phasellus elementum, quam a euismod imperdiet, ligula felis faucibus enim, eu malesuada nunc felis sed turpis. <a href=\"#\">Morbi convallis luctus tortor</a>.</p>"
+  custom-1197:
+    title: 'Right Sidebar'
+    attributes:
+      html: "<h3 class=\"g-title\">Right Sidebar</h3>\n<p class=\"nomarginbottom\"> A right column layout example. The sidebar is independent from the Mainbody so can have multiple rows and columns, separate from the Mainbody area.</p>"
+    block:
+      class: 'padding2x nomarginbottom'
+      variations: 'box1 title1'
+  custom-9280:
+    title: 'Flexible Layouts'
+    attributes:
+      html: "<h3 class=\"g-title\">Flexible Layouts</h3>\n<p>Gantry 5 benefits from a flexible and intuitive, drag & drop layout manager. You can add as many rows and blocks to each section as you desire, and configure their distance to intervals of 1%.</p>\n\n<p>Each block has individual controls, such as an autocomplete select box for box variations, as well as individual CSS fields.</p>"
+    block:
+      class: 'padding2x nomargintop'
+      variations: 'box1 title1'
+  custom-7768:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h5>H5 Heading</h5>\n\n<p>Vestibulum mollis, est id rhoncus volutpat, dolor velit tincidunt neque, vitae pellentesque ante sem eu nisl. <em>Donec facilisis</em>, magna eget elementum pellentesque.</p>"
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  position-position-1858:
+    title: 'Module Position'
+    attributes:
+      key: copyright-a
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

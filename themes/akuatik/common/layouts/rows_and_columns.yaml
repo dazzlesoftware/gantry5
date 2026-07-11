@@ -1,0 +1,357 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: rows_and_columns
+  timestamp: 1568059496
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - 'simplecontent-7052 80'
+      - 'social-8668 20'
+  header: {  }
+  above: {  }
+  feature: {  }
+  showcase: {  }
+  utility:
+    -
+      - custom-2875
+    -
+      - custom-4860
+    -
+      - 'custom-9868 50'
+      - 'custom-4807 50'
+    -
+      - 'custom-3780 33.3'
+      - 'custom-7528 33.3'
+      - 'custom-3751 33.3'
+    -
+      - 'custom-6453 25'
+      - 'custom-6496 25'
+      - 'custom-3872 25'
+      - 'custom-9371 25'
+    -
+      - custom-9988
+    -
+      - 'custom-4289 25'
+      - 'custom-1256 50'
+      - 'custom-2720 25'
+    -
+      - 'custom-5527 26'
+      - 'custom-1752 31'
+      - 'custom-4132 43'
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  expanded: {  }
+  extension: {  }
+  bottom: {  }
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigation:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  header:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  above:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  logo-9841:
+    title: 'Logo / Image'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: logo-2704
+  menu-7574:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: menu-2872
+  simplecontent-7052:
+    title: 'Rows & Columns Example'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Rows & Columns Example'
+          author: ''
+          leading_content: 'Example Rows & Columns layout.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Rows & Columns Example'
+    block:
+      class: blobs
+  social-8668:
+    attributes:
+      display: icons_only
+      items:
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'https://www.facebook.com/RocketTheme'
+          name: Facebook
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://www.twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-github fa-fw'
+          text: ''
+          link: '#'
+          name: GitHub
+  custom-2875:
+    title: 'Equal Width Examples'
+    attributes:
+      html: "<h1 class=\"g-title\">Equal Width Examples</h1>\n<p>The examples below demonstrate up to four blocks in a row, of equal widths. Each block has the Box 1, 3, 4 or 5 block variation applied to show separation between the blocks.</p>"
+    block:
+      variations: 'title3 box5'
+  custom-4860:
+    title: 'Single Block per Row'
+    attributes:
+      html: '<h5>Single Block per Row</h5>'
+    block:
+      variations: box3
+  custom-9868:
+    title: 'Two Blocks per Row'
+    attributes:
+      html: '<h5>Two Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-4807:
+    title: 'Two Blocks per Row'
+    attributes:
+      html: '<h5>Two Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-3780:
+    title: 'Three Blocks per Row'
+    attributes:
+      html: '<h5>Three Blocks per Row</h5>'
+    block:
+      variations: box3
+  custom-7528:
+    title: 'Three Blocks per Row'
+    attributes:
+      html: '<h5>Three Blocks per Row</h5>'
+    block:
+      variations: box3
+  custom-3751:
+    title: 'Three Blocks per Row'
+    attributes:
+      html: '<h5>Three Blocks per Row</h5>'
+    block:
+      variations: box3
+  custom-6453:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-6496:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-3872:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-9371:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-9988:
+    title: 'Different Width Examples'
+    attributes:
+      html: "<h1 class=\"g-title\">Different Width Examples</h1>\n<p>The examples below demonstrate up to four blocks in a row, of differing widths. Each block has the Box 1, 3 or 4 block variation applied to show separation between the blocks.</p>"
+    block:
+      class: ''
+      variations: 'title3 box5'
+  custom-4289:
+    title: '25% Width Block'
+    attributes:
+      html: '<h5>25% Width Block</h5>'
+    block:
+      variations: box4
+  custom-1256:
+    title: '75% Width Block'
+    attributes:
+      html: '<h5>75% Width Block</h5>'
+    block:
+      variations: box4
+  custom-2720:
+    title: '25% Width Block'
+    attributes:
+      html: '<h5>25% Width Block</h5>'
+    block:
+      variations: box4
+  custom-5527:
+    title: '26% Width Block'
+    attributes:
+      html: '<h5>26% Width Block</h5>'
+    block:
+      variations: box3
+  custom-1752:
+    title: '31% Width Block'
+    attributes:
+      html: '<h5>31% Width Block</h5>'
+    block:
+      variations: box3
+  custom-4132:
+    title: '43% Width Block'
+    attributes:
+      html: '<h5>43% Width Block</h5>'
+    block:
+      variations: box3

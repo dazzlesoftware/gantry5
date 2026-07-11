@@ -1,0 +1,118 @@
+// Basics
+$white:							#ffffff;
+$black:							#000000;
+$off-white:						#f7f7f7;
+
+// Base
+$base-background:				#ffffff !default;
+$base-background-image:			false !default;
+$base-text-color:				#686868 !default;
+$base-border-color:				#888888 !default;
+
+// Accents
+$accent-color-1:				#01a3d1 !default;
+$accent-color-2:				#ff2300 !default;
+$accent-color-3:				#ffb300 !default;
+
+// Page Surround
+$pagesurround-background: 		$base-background !default;
+
+// Overlay
+$overlay-background:			#01a3d1 !default;
+$overlay-background-image:		false !default;
+$overlay-text-color:			#ffffff !default;
+
+// Top
+$top-background:				rgba(0, 0, 0, 0) !default;
+$top-text-color:				#888888 !default;
+
+// Navigation
+$navigation-background:			rgba(0, 0, 0, 0) !default;
+$navigation-text-color:			#ffffff !default;
+
+// Header
+$header-background:				#017494 !default;
+$header-text-color:				#ffffff !default;
+
+// Showcase
+$showcase-background:			#f7f7f7 !default;
+$showcase-text-color:			#888888 !default;
+
+// Above
+$above-background:				#ffffff !default;
+$above-text-color:				#888888 !default;
+
+// Utility
+$utility-background:			#010101 !default;
+$utility-text-color:			#ffffff !default;
+
+// Feature
+$feature-background:			#01a3d1 !default;
+$feature-text-color:			#ffffff !default;
+
+// Main
+$main-background:				#ffffff !default;
+$main-text-color:				#686868 !default;
+
+// Expanded
+$expanded-background:			#ffffff !default;
+$expanded-text-color:			#121212 !default;
+
+// Extension
+$extension-background:			#01a3d1 !default;
+$extension-text-color:			#ffffff !default;
+
+// Bottom
+$bottom-background:				#121212 !default;
+$bottom-text-color:				#ffffff !default;
+
+// Footer
+$footer-background:				rgba(0, 0, 0, 0) !default;
+$footer-text-color:				#686868 !default;
+
+// Copyright
+$copyright-background:			rgba(0, 0, 0, 0) !default;
+$copyright-text-color:			#686868 !default;
+
+// Off Canvas
+$offcanvas-background:			#017494 !default;
+$offcanvas-text-color:			#ffffff !default;
+$offcanvas-toggle-color:		#01a3d1 !default;
+
+// Block Variations
+$box1-background:				$accent-color-1 !default;
+$box2-background:				$accent-color-2 !default;
+$box3-background:				$accent-color-3 !default;
+$box4-background:				darken($base-background, 5%) !default;
+$box-white-background: 			#ffffff !default;
+$box-grey-background: 			#95a5a6 !default;
+$box-darkgrey-background: 		#282828 !default;
+$box-pink-background: 			#d13b7b !default;
+$box-red-background: 			#ef4a44 !default;
+$box-purple-background: 		#874f9a !default;
+$box-blue-background: 			#279fba !default;
+$box-orange-background: 		#ee7933 !default;
+
+// Mobile Menu Sidepanel
+$mobilemenu-background:			#354d59 !default;
+
+// System Messsages and Alerts
+$warning-color:					#c09853;
+$error-color:					#b94a48;
+$info-color:					#3a87ad;
+$success-color:					#468847;
+
+// Typography
+$rule-color:					fade-out($base-text-color, 0.5);
+$code-text:						#c7254e;
+$code-bg:						#f9f2f4;
+$pre-text:						#237794;
+$pre-bg:						#f6f6f6;
+
+// Borders
+$border-color-hover:			$accent-color-1;
+$border-color-focus:			$accent-color-1;
+$border-color-light:            rgba(0, 0, 0, 0.1);
+
+// Shadows
+$base-box-shadow: 				inset 0 1px 3px hsla(0, 0%, 0%, 0.06);

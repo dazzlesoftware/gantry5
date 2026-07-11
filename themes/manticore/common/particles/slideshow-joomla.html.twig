@@ -1,0 +1,110 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+<div class="g-slideshow-slider swiper-wrapper" style="height: {{ particle.height|default('60vh') }};">
+    {% for article in articles %}
+        {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+            {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                {% set article_image = article.images.image_intro %}
+            {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                {% set article_image = article.images.image_fulltext %}
+            {% endif %}
+        {% endif %}
+        {% if display.author_image.enabled and article.images.image_intro or article.images.image_fulltext %}
+            {% if article.images.image_intro and display.author_image.enabled == 'intro' %}
+                {% set article_author_image = article.images.image_intro %}
+            {% elseif article.images.image_fulltext and display.author_image.enabled == 'full' %}
+                {% set article_author_image = article.images.image_fulltext %}
+            {% endif %}
+        {% endif %}
+        <div class="swiper-slide {% if particle.overlay == 'enabled' %}overlay{% endif %}" style="background-image: url({{ url(article_image)|e }}); background-position: center center;">
+            <div class="slide">
+                <h3 class="g-slideshow-top-title ">
+                    {% set cat = article.categories|last %}
+                    {{ cat.title }}
+                </h3>
+                {% if display.title.enabled and article.title %}
+                    <h1 class="g-slideshow-main-title">
+                        {% if display.link.enabled == "enabled" %}
+                        <a href="{{ url(article.route)|e }}" target="{{ display.link.target|default('_self') }}">
+                            {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                        </a>
+                        {% else %}
+                            {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                        {% endif %}        
+                    </h1>
+                {% endif %}
+                {% if display.author_image.enabled %}
+                    <span class="g-slideshow-avatar">
+                        <img src="{{ url(article_author_image)|e }}" alt="{{article.created_by_alias}}" title="{{article.created_by_alias}}">
+                    </span>
+                {% endif %}
+          
+                {% if article.created_by_alias %}
+                    <span class="g-slideshow-author">
+                        {{article.created_by_alias}}
+                    </span>
+                {% endif %}
+            </div>
+             
+        </div>
+        
+    {% endfor %}
+</div>
+{# thumbs #}
+{% if particle.thumbs == 'enabled' %}
+    <div class="g-slideshow-thumbs swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+            {% for article in articles %}
+                {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                    {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                        {% set article_image = article.images.image_intro %}
+                    {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                        {% set article_image = article.images.image_fulltext %}
+                    {% endif %}
+                {% endif %}
+                <div class="swiper-slide" style="background-image: url({{ url(article_image)|e }});">
+                    <div class="g-slideshow-thumbs-title">
+                        <span>
+                            {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+

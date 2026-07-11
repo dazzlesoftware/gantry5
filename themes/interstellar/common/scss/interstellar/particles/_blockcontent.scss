@@ -1,0 +1,50 @@
+.g-blockcontent {
+    font-family: get-font-family($font-family-promo);
+    .g-title {
+        font-size: $core-font-size + 0.75;
+        font-weight: $font-weight-regular;
+    }
+}
+
+.g-blockcontent-subcontent-title {
+    margin: 0;
+    padding: 0;
+}
+
+.g-blockcontent-subcontent-title-icon {
+    margin-bottom: $content-margin;
+}
+
+.g-blockcontent-subcontent-title-text {
+    font-family: get-font-family($font-family-promo);
+    font-weight: $font-weight-bold;
+    font-size: $core-font-size + 0.1;
+    color: $black;
+}
+
+.g-blockcontent-subcontent {
+    margin-left: -($content-margin + $content-padding);
+    margin-right: -($content-margin + $content-padding);
+    .g-blockcontent-spacing & {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.g-blockcontent-subcontent-subtitle {
+    font-family: get-font-family($font-family-promo);
+    font-weight: $font-weight-bold;
+    font-size: $core-font-size - 0.3;
+    color: $black;
+    vertical-align: super;
+}
+
+.g-blockcontent-subcontent-desc {
+    font-size: $core-font-size;
+    position: relative;
+    line-height: $core-line-height - 0.1;
+}
+
+.g-blockcontent-buttons {
+    margin-top: $content-padding;
+}

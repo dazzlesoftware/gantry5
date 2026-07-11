@@ -1,0 +1,9 @@
+flux-theme:
+  title: 'Flux Theme'
+  description: 'Sample menu for Flux theme.'
+
+  items:
+    flux:
+      title: 'Home'
+      outline: home
+      home: 1

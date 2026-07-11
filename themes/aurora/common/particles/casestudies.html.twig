@@ -1,0 +1,50 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }} g-casestudies" data-casestudies-id="{{ id }}">
+    <div class="g-casestudies-header">
+        <div class="g-casestudies-title">
+            {{ particle.title }}
+        </div>
+        <div class="g-casestudies-nav">
+            <div class="g-casestudies-nav-container">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                {% for item in particle.cases %}
+                <div class="g-casestudies-nav-item {% if loop.first %}selected{% endif %}" data-group="{{ loop.index }}">
+                    {{ item.title }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="g-casestudies-grid {{ particle.cols }}">
+        <div class="g-casestudies-grid-sizer"></div>
+        {% for case in particle.cases %}
+        {% set case_index = loop.index %}
+        {% for item in case.items %}
+        <div class="g-casestudies-grid-item" data-groups='["{{ case_index }}"]'>
+            <div class="g-casestudies-grid-item-content">
+                <div class="g-casestudies-grid-item-title">
+                    {{ item.title }}
+                </div>
+                <div class="g-casestudies-grid-item-subtitle">
+                    {{ item.subtitle }}
+                </div>
+            </div>
+            <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}"><img src="{{ url(item.image)|e }}" alt="{{ item.title }}" /></a>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+<script src="{{ url('gantry-theme://js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+<script src="{{ url('gantry-theme://js/masonry.pkgd.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/casestudies.init.js') }}"></script>
+{% endblock %}

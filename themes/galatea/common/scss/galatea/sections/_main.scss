@@ -1,0 +1,15 @@
+#g-mainbar {
+    background: $main-background;
+    color: $main-text-color;
+}
+.g-wrapper {
+  .g-container {
+    padding: 4rem 0;
+  }
+}
+@media print {
+	#g-main {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

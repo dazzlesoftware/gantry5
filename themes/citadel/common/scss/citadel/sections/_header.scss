@@ -1,0 +1,14 @@
+#g-container-header {
+    color: $header-text-color;
+    
+    #g-headermain {
+        background: $header-background;
+    }
+}
+
+@media print {
+    #g-header, #g-container-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

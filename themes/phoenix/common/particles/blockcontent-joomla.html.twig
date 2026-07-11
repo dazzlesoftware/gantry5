@@ -1,0 +1,91 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+{% for article in articles %}
+    {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+        {% if article.images.image_intro and display.image.enabled == 'intro' %}
+            {% set article_image = article.images.image_intro %}
+            {% set article_image_alt = article.images.image_intro_alt %}
+        {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+            {% set article_image = article.images.image_fulltext %}
+            {% set article_image_alt = article.images.image_fulltext_alt %}
+        {% endif %}
+    {% endif %}
+
+    <div class="g-block g-blockcontent-subcontent-block {{ subcontent.class }} g-blockcontent-subcontent-block">
+        <div class="g-content g-blockcontent-subcontent-block-content">
+            {% if article_image %}
+                <a data-rel="lightcase" title="{{ article.title|e }}" href="{{ article_image }}">
+                    <img src="{{ url(article_image) }}" class="g-blockcontent-subcontent-img" alt="{{ article.title|e }}" />
+                </a>
+            {% endif %}
+            {% for item in categories %}
+                <h5 class="g-blockcontent-subcontent-subtitle">
+                    {{ item.title }}
+                </h5>
+            {% endfor %}
+            {% if display.title.enabled and article.title %}
+                <h4 class="g-blockcontent-subcontent-title">
+                    <span class="g-blockcontent-subcontent-title-text">
+                        {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                    </span>
+                </h4>
+            {% endif %}
+
+            {% if not display.text.type == '' %}
+                <div class="g-blockcontent-subcontent-desc">
+                    {% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+                    <p class="g-slider-carousel-description">
+                        {% if display.text.formatting == 'text' %}
+                            {{ article_text|truncate_text(display.text.limit)|raw }}
+                        {% else %}
+                            {{ article_text|truncate_html(display.text.limit)|raw }}
+                        {% endif %}
+                    </p>
+                </div>
+            {% endif %}
+
+            {% if display.link.enabled %}
+                <p class="g-blockcontent-buttons">
+                    <a href="{{ url(article.route)|e }}" target="{{ display.link.target|default('_self') }}" class="button">
+                        {{ display.link.label|default('Explore Now') }}
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

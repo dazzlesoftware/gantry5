@@ -1,0 +1,22 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+    font-weight: $font-weight-bold;
+
+    div[id^="copyright-"][id$="-particle"] {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+
+        span {
+            color: lighten($copyright-text-color, 10%);
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

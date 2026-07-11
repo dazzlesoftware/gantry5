@@ -1,0 +1,10 @@
+.g-heading {
+    position: relative;
+
+    h2 {
+        font-weight: $font-weight-extrabold;
+        font-family: get-font-family($font-family-title);
+        @include responsive-font($responsive-font-size + 1, $core-font-size + 0.2, false, false);
+    }
+
+}

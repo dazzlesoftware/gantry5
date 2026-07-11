@@ -1,0 +1,238 @@
+.g-newsslider {
+  margin: 0 auto;
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+.g-newsslider-headlines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  li {
+    padding: 1rem 1.5rem;
+    position: relative;
+    z-index: 20;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.nh-anim {
+  min-height: 107px;
+  transition: all 0.75s ease-out;
+  transform: translateZ(0);
+}
+
+.g-newsslider-headlines {
+  border-left: 1px solid $rule-color;
+  overflow: hidden;
+  li {
+    box-shadow: 0px 1px 0 $rule-color;
+    &:nth-last-child(2) {
+      border-bottom: 0;
+    }
+  }
+  .highlight {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    &:before {
+      display: none;
+    }
+  }
+  float: left;
+}
+
+.g-newsslider-preview {
+  float: left;
+  width: 60%;
+  position: relative;
+  z-index: 5;
+  position: relative;
+  min-height: 300px;
+  height: auto !important;
+  @include breakpoint(mobile-only) {
+    width: 50%;
+  }   
+  .dir-rtl & {
+    float: right;
+  }  
+}
+
+.g-newsslider-content {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.top-content {
+  opacity: 1;
+  z-index: 50;
+}
+
+.g-newsslider-preview-title, 
+.g-newsslider-preview-headerdesc {
+  line-height: $core-line-height - 0.25;
+  font-family: get-font-family($font-family-default);
+  font-weight: $font-weight-bold;
+  margin: 1rem 0;
+  font-size: $core-font-size + 1;
+  @include breakpoint(tablet-range) {
+    font-size: $core-font-size + 0.5;
+  } 
+  @include breakpoint(mobile-only) {
+    font-size: $core-font-size + 0.25;
+  }   
+}
+
+.g-newsslider-preview-headerdesc {
+  font-size: $core-font-size + 0.35;
+  font-weight: $font-weight-regular;
+  line-height: $core-line-height;
+  @include breakpoint(tablet-range) {
+    font-size: $core-font-size + 0.15;
+  }
+  @include breakpoint(mobile-only) {
+    font-size: $core-font-size + 0.1;
+  }   
+  @include breakpoint(small-mobile-range) {
+    display: none;
+  } 
+}
+
+.g-newsslider-preview-desc {
+  @include breakpoint(mobile-only) {
+    display: none;
+  }    
+}
+
+.g-newsslider-headlines-subtitle {
+  font-size: $core-font-size - 0.2;
+  opacity: 0.7;
+  display: block;
+  margin-top: 0.5rem;
+  @include breakpoint(mobile-only) {
+    display: none;
+  }    
+}
+
+.g-newsslider-button {
+  display: inline-block;
+  margin: 1rem 0;
+  .button {
+    @include breakpoint(small-mobile-range) {
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+    }  
+  } 
+}
+
+.g-newsslider-preview-subtitle {
+  display: inline-block;
+  font-size: $core-font-size - 0.2;
+  opacity: 0.7;
+  margin: 0 1rem;  
+  @include breakpoint(mobile-only) {
+    display: none;
+  }   
+}
+
+.g-newsslider-headlines-title {
+  @include breakpoint(mobile-only) {
+    font-size: $core-font-size - 0.2;
+  } 
+}
+
+/* Tiny Scrollbar */
+.g-newsslider-scrollbar {
+  width: 40%;
+  position: relative;
+  float: left;
+  @include breakpoint(mobile-only) {
+    width: 50%;
+  }
+  &:hover {
+    .scrollbar {
+      opacity: 1;
+      width: 18px;
+    }
+  }
+  .viewport {
+    overflow: hidden;
+    position: relative;
+  }
+  .overview {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    .dir-rtl & {
+      left: inherit;
+      right: 0;
+    }
+  }
+  .scrollbar {
+    background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    background-position: 0 0;
+    width: 0;
+    opacity: 0;
+    right: 0;
+    z-index: 100;
+    transition: all 0.35s;
+    .dir-rtl & {
+      right: inherit;
+      left: 0;
+    }    
+  }
+  .track {
+    background: rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 18px;
+    position: relative;
+    padding: 0 1px;
+  }
+  .thumb {
+    background: fade-out($accent-color-1, 0.50);
+    height: 20px;
+    width: 9px;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    border-radius: $border-radius;
+    .dir-rtl & {
+      right: 5px;
+      left: inherit;
+    }    
+  }
+  .disable {
+    display: none;
+  }
+}
+
+.noSelect {
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}

@@ -1,0 +1,20 @@
+#g-slideshow {
+    position: relative;
+    color: $slideshow-text-color;
+    background: $slideshow-background;
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-item-content-title,
+        .g-simplecontent-item-leading-content {
+            color: $black;
+        }
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

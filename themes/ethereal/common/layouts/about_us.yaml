@@ -1,0 +1,177 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: about_us
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-7196
+  /header/:
+    -
+      - 'logo-8141 50'
+      - 'menu-7067 50'
+  /slideshow/: {  }
+  /showcase/:
+    -
+      - custom-6384
+  /feature/:
+    -
+      - custom-6484
+  /main/: {  }
+  /container-9314/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-4567
+      -
+        'mainbar 60':
+          -
+            - system-content-8636
+      -
+        'aside 20':
+          -
+            - position-7019
+  /extension/:
+    -
+      - custom-4854
+  /bottom/:
+    -
+      - custom-2050
+  /footer/:
+    -
+      - 'position-9192 33.3'
+      - 'position-2963 33.3'
+      - 'position-4200 33.3'
+  /copyright/:
+    -
+      - 'logo-8090 33'
+      - 'custom-6857 67'
+    -
+      - 'copyright-3287 33'
+      - 'custom-8057 57'
+      - 'totop-1553 10'
+  offcanvas:
+    -
+      - mobile-menu-7572
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-9314:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-8141:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-7067:
+    block:
+      class: g-menu-block
+  custom-6384:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">About Us</h2>\n\t<div class=\"g-layercontent-subtitle\">Who We Are</div>\n</div>"
+    block:
+      class: 'flush center'
+  custom-6484:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box-blue center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">Our Mission</h2>\n\n      <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holistically predominate extensible testing procedures for reliable supply chains.</p>\n    </div>\n  </div>\n\n  <div class=\"g-block box1 center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">Our Values</h2>\n\n      <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holistically predominate extensible testing procedures for reliable supply chains.</p>\n    </div>\n  </div>\n\n  <div class=\"g-block box-orange center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">Our Solution</h2>\n\n      <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holistically predominate extensible testing procedures for reliable supply chains.</p>\n    </div>\n  </div>\n</div>"
+  position-4567:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-7019:
+    title: Aside
+    attributes:
+      key: aside
+  custom-4854:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\"><span class=\"fa fa-dashboard fa-fw fa-2x\"></span> Sophisticated</h2>\n      <p>Dynamically procrastinate B2C users after installed base benefits.</p>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\"><span class=\"fa fa-arrows-alt fa-fw fa-2x\"></span> Responsive</h2>\n      <p>Dynamically procrastinate B2C users after installed base benefits.</p>\n    </div>\n  </div>\n  <div class=\"g-block box-grey size-33-3\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\"><span class=\"fa fa-sliders fa-fw fa-2x\"></span> Powerful</h2>\n      <p>Dynamically procrastinate B2C users after installed base benefits.</p>\n    </div>\n  </div>\n</div>"
+  custom-2050:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent\">\n\t<h2 class=\"g-layercontent-title\">We Always Try to Create a Difference</h2>\n\t<div class=\"g-layercontent-subtitle\">Versatile and Flexible Features Powered by the Gantry Framework.</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\" class=\"button button-2\">Download Ethereal</a>\n</div>"
+    block:
+      class: 'flush center'
+  position-9192:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-2963:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-4200:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-8090:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-6857:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-3287:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-8057:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+  totop-1553:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-7572:
+    title: 'Mobile Menu'

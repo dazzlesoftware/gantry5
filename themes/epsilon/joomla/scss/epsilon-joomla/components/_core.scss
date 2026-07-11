@@ -1,0 +1,77 @@
+.breadcrumb {
+  	> li {
+   		text-shadow: none;
+  	}
+}
+
+.rt-nomodulecontent {
+	div, p {
+		display: none;
+	}
+}
+
+#login-form {
+	.btn {
+		box-shadow: none;
+	}
+}
+
+.g-search {
+	input {
+		width: 100%;
+	}
+}
+
+.g-offline {
+	#rt-authorized-form {
+		#form-login {
+			#form-login-username {
+				margin-bottom: 0;
+			}
+			#form-login-password, #form-login-username {
+				label {
+					display: block;
+				}
+			}	
+		} 
+	}
+	#frame {
+		padding: 0;
+		background: none;
+
+		form {
+			text-align: center;
+		}
+	}
+}
+
+#rt-authorized-form {
+	.btn {
+		padding: 15px 20px;
+	}
+}
+
+#login-form {
+	.icon-arrow-right {
+		font-size: 12px;
+	}
+}
+
+.rt-title-center {
+	.title {
+		text-align: center;
+	}
+}
+
+body {
+	#{$all-text-inputs} {
+	    color: $base-text-color;
+	    border-radius: 3px;
+	    padding: 12px 15px;
+	    margin: 0;
+
+	    &:focus {
+	        border-color: $accent-color-1;
+	    }
+	}
+}

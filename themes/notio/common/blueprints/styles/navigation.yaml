@@ -1,0 +1,14 @@
+name: Navigation Styles
+description: Navigation styles for the Notio theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#1a1c23"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

@@ -1,0 +1,84 @@
+#g-showcase {
+    color: $showcase-text-color;
+    position: relative;
+
+    @if $showcase-background-image {
+        background-image: url($showcase-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+        .g-grid {
+            background-color: fade-out($showcase-background, 0.50);
+        }
+    } @else {
+        background-color: $showcase-background;
+    }   
+
+    .fp-showcase {
+        .g-content {
+            margin: 0;
+            padding: 0;
+            height: 350px;
+            @include breakpoint(mobile-only) {
+                height: 300px;
+            }
+        }
+        .readon, .readon2 {
+            width: 200px;
+            @include breakpoint(mobile-only) {
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        .fp-showcase-content {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &.fp-showcase-animate {
+            .fp-showcase-title {
+                margin-top: 35px;
+                transform: translateY(100%);
+                transition: all 0.3s ease-in-out;
+                @media only screen and (max-width: 959px) {
+                    margin-top: 0;
+                    transform: translateY(0);
+                }
+            }
+            .fp-showcase-info {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(100%);
+                transition: all 0.3s ease-in-out;
+                backface-visibility: hidden;
+                @media only screen and (max-width: 959px) {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+        }
+        &:hover {
+            &.fp-showcase-animate {
+                .fp-showcase-title {
+                    margin-top: 0;
+                    transform: translateY(0);
+                }
+                .fp-showcase-info {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }  
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

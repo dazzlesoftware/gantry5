@@ -1,0 +1,27 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    position: relative;
+
+    @if $extension-background-image {
+        background-image: url($extension-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    @if $extension-section-clipping {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+
+        @include breakpoint(mobile-only) {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 97%);
+        }
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

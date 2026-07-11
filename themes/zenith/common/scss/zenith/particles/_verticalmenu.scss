@@ -1,0 +1,476 @@
+.g-vnavigation-container {
+    position: relative;
+
+    .g-content.g-particle {
+        height: 100%;
+
+        @include breakpoint(desktop-range) {
+            padding-left: ($content-padding / 2);
+            padding-right: ($content-padding / 2);
+        }
+
+        @include breakpoint(tablet-range) {
+            padding: 0;
+        }
+    }
+}
+span.icon-vertical-menu {
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    speak: none;
+
+    &, &:before {
+        font-family: get-font-family($font-family-feather);
+    }
+}
+
+.icon--arrow-left:before {
+    content: '\e901';
+}
+
+.icon--menu {
+    color: $offcanvas-toggle-color;
+    transition: color 0.25s;
+
+    &:hover {
+        color: transparentize($offcanvas-toggle-color, 0.3);
+    }
+}
+
+.icon--menu:before {
+    content: "\e903";
+}
+
+.icon--cross:before {
+    content: '\e117';
+}
+
+/* Menu styles */
+
+.menu {
+    position: relative;
+    padding: $content-padding 0;
+    width: 100%;
+    height: 100%;
+    @include responsive-font($responsive-font-size - 0.2, $core-font-size - 0.1, false, false);
+    font-weight: $font-weight-bold;
+
+    @include breakpoint(mobile-only) {
+        background: $black;
+        position: fixed;
+    }
+}
+
+.menu__wrap {
+    //position: absolute;
+    //top: 3.5em;
+    //bottom: 0;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.menu__level {
+    position: absolute;
+    top: 1rem;
+    @include breakpoint(tablet-range) {
+        top: 0;
+    }
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu__level:focus {
+    outline: none;
+}
+.menu__level--current {
+    visibility: visible;
+}
+
+.menu__item {
+    display: block;
+
+    @include breakpoint(tablet-range) {
+        text-align: left;
+
+        .dir-rtl & {
+            text-align: right;
+        }
+    }
+}
+.g-preset-thumbnails a {
+    position: relative;
+    display: block;
+    -webkit-transition: color 0.1s;
+    transition: color 0.1s;
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.menu__link  {
+    position: relative;
+    text-transform: uppercase;
+    display: block;
+    padding: 0.8rem 0 0.8rem 0;
+    color: $white;
+    -webkit-transition: color 0.1s;
+    transition: color 0.1s;
+
+    @include breakpoint(desktop-range) {
+        padding: 0.8rem 0.5em;
+    }
+
+    @include breakpoint(tablet-range) {
+        padding: 0.8rem 0.5em;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding: 0.8rem 2rem;
+        text-align: left;
+    }
+
+    .dir-rtl & {
+        @include breakpoint(desktop-range) {
+            padding: 0.8rem 0.5em 0.8rem 1.5em;
+        }
+
+        @include breakpoint(mobile-only) {
+            text-align: right;
+        }
+    }
+}
+
+.menu__link[data-submenu]::after {
+    content: '\f054';
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: 0 0.75em;
+    transform: translateY(-50%);
+
+    @include breakpoint(mobile-only) {
+        right: 1rem;
+    }
+
+    .dir-rtl & {
+        content: '\f053';
+        right: auto;
+        left: 0;
+
+        @include breakpoint(mobile-only) {
+            left: 1rem;
+        }
+    }
+}
+
+.menu__link:hover,
+.menu__link:focus,
+.menu__link[data-submenu]:hover::after,
+.menu__link[data-submenu]:focus::after {
+    color: $accent-color-1;
+}
+
+.menu__link span {
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    pointer-events: none;
+}
+.menu__link--current span {
+    border-bottom: 2px solid #ffffff;
+ }
+
+[class^='animate-'],
+[class*=' animate-'] {
+    visibility: visible;
+}
+
+.animate-outToRight .menu__item {
+    -webkit-animation: outToRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    animation: outToRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+
+    .dir-rtl & {
+        -webkit-animation: outToLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+        animation: outToLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    }
+}
+
+@-webkit-keyframes outToRight {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes outToRight {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+.animate-outToLeft .menu__item {
+    -webkit-animation: outToLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    animation: outToLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+
+    .dir-rtl & {
+        -webkit-animation: outToRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+        animation: outToRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    }
+}
+
+@-webkit-keyframes outToLeft {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes outToLeft {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.animate-inFromLeft .menu__item {
+    -webkit-animation: inFromLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    animation: inFromLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+
+    .dir-rtl & {
+        -webkit-animation: inFromRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+        animation: inFromRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    }
+}
+
+@-webkit-keyframes inFromLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes inFromLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animate-inFromRight .menu__item {
+    -webkit-animation: inFromRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    animation: inFromRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+
+    .dir-rtl & {
+        -webkit-animation: inFromLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+        animation: inFromLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+    }
+}
+
+@-webkit-keyframes inFromRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes inFromRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.menu__breadcrumbs {
+    font-size: 0.65em;
+    line-height: 1.5;
+    position: relative;
+    padding: 0 2.5em 0.5em;
+
+    @include breakpoint(desktop-range) {
+        padding: 0 1.5em 0.5em;
+    }
+
+    @include breakpoint(tablet-range) {
+        padding: 0 1.5em 0.5em;
+    }
+}
+
+.menu__breadcrumbs a {
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $accent-color-1;
+}
+
+.menu__breadcrumbs a:last-child {
+    pointer-events: none;
+}
+
+.menu__breadcrumbs a:hover,
+.menu__breadcrumbs a:focus {
+    color: transparentize($accent-color-1, 0.2);
+}
+
+.menu__breadcrumbs a:not(:last-child)::after {
+    content: '\e902';
+    font-family: 'feather';
+    display: inline-block;
+    padding: 0 0.5em;
+    color: transparentize($white, 0.50);
+    line-height: 1;
+
+    .dir-rtl & {
+        content: '\e901';
+    }
+}
+
+.menu__breadcrumbs a:not(:last-child):hover::after,
+.menu__breadcrumbs a:not(:last-child):focus::after {
+    color: transparentize($white, 0.60);
+}
+
+.menu__back {
+    font-size: 1.05em;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 2.25em;
+    margin: 0;
+    padding: 1.365em 0.65em 0 0;
+    cursor: pointer;
+    color: #2a2b30;
+    border: none;
+    background: none;
+
+    .dir-rtl & {
+        right: auto;
+        left: 2.25em;
+    }
+}
+
+.menu__back--hidden {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.menu__back:hover,
+.menu__back:focus {
+    color: #fff;
+    outline: none;
+}
+
+
+/* Open and close buttons */
+
+.action {
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.action:focus {
+    outline: none;
+}
+
+.action--open {
+    font-size: 1.5em;
+    top: 1em;
+    display: none;
+    color: $white;
+    position: relative;
+    z-index: 1000;
+
+    .dir-rtl & {
+        left: auto;
+    }
+}
+
+.action--close {
+    font-size: 1.1em;
+    top: 1.25em;
+    right: 1em;
+    display: none;
+    color: #565761;
+
+    .dir-rtl & {
+        right: auto;
+        left: 1em;
+    }
+}
+
+@include breakpoint(mobile-only) {
+    .action--open,
+    .action--close {
+        display: block;
+    }
+    .action--open {
+        margin: 0 auto;
+        left: auto;
+    }
+    .menu {
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+    }
+    .menu--open {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}

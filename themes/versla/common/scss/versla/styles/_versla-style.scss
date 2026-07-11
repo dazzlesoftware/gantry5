@@ -1,0 +1,70 @@
+// Large Padding
+.largepadding {
+    .g-content {
+        padding: 8vw;
+    }
+}
+
+// ImageGrid portfolio
+.g-portfoliogrid {
+    > .g-particle {
+        margin-bottom: ($content-margin * 2) !important;
+        padding-bottom: ($content-padding * 2) !important;
+    }
+}
+
+// Content Array Articles List Mod
+.g-articleslist {
+    align-self: center;
+
+    .g-content-array {
+        .g-array-item {
+            display: flex;
+            align-items: center;
+
+            .g-item-title {
+                margin-right: $content-margin;
+                font-weight: $font-weight-semibold;
+                font-size: $core-font-size + 0.8;
+
+                a {
+                    color: $black;
+                }
+
+                @include breakpoint(mobile-only) {
+                    font-size: $core-font-size + 0.2;
+                }
+
+                @include breakpoint(tablet-range) {
+                    font-size: $core-font-size + 0.2;
+                }
+
+                .dir-rtl & {
+                    margin-right: 0;
+                    margin-left: $content-margin;
+                }
+            }
+
+            .g-array-item-date {
+                flex-grow: 1;
+                opacity: 0.5;
+                font-weight: $font-weight-regular;
+                white-space: nowrap;
+                text-align: right;
+
+                .dir-rtl & {
+                    text-align: left;
+                }
+            }
+        }
+
+        .g-content {
+            padding: 0;
+        }
+
+        .g-grid {
+            border: 0 none !important;
+            margin-bottom: $content-margin + 0.2;
+        }
+    }
+}

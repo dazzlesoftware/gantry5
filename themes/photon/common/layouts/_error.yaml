@@ -1,0 +1,181 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1456863155
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/: {  }
+  /header/:
+    -
+      - simplecontent-7604
+  /above/: {  }
+  /showcase/:
+    -
+      - system-content-6444
+  /utility/: {  }
+  /feature/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - position-position-9401
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 60'
+      - 'position-position-1858 40'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  simplecontent-7604:
+    title: 'We are sorry!'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'We are sorry!'
+          author: ''
+          leading_content: 'Gantry 5 provides a custom error page for you to configure with either positions, particles or a combination of both, as well as styling.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'We are sorry!'
+    block:
+      variations: center
+  system-content-6444:
+    block:
+      class: g-error
+      variations: center
+  position-position-9401:
+    title: 'Module Position'
+    attributes:
+      key: extension-a
+    block:
+      class: g-compact
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  position-position-1858:
+    title: 'Module Position'
+    attributes:
+      key: copyright-a
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

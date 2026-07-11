@@ -1,0 +1,81 @@
+name: Calendar
+description: Calendar particles for displaying dates.
+type: particle
+icon: fa-calendar
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    events:
+      type: collection.list
+      array: true
+      label: Events
+      description: Create calendar events with date, time and description.
+      value: title
+      ajax: true
+      fields:
+
+        .title:
+          type: input.text
+          label: Event Title
+          description: Event Title.
+
+        .begin:
+          type: input.date
+          label: Begin Date
+          description: Event start day.
+
+        .end:
+          type: input.date
+          label: End Date
+          description: Event end day.
+
+        .stime:
+          type: input.text
+          label: Start Time
+          description: Event starting time.
+
+        .etime:
+          type: input.text
+          label: End Time
+          description: Event ending time.
+
+        .description:
+          type: textarea.textarea
+          label: Event Location
+          description: Location of the event.
+
+        .link:
+          type: input.text
+          label: Event Link
+          description: Event link placed in event's title.
+
+        .target:
+          type: select.select
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _blank
+          options:
+              _self: Self
+              _blank: New Window

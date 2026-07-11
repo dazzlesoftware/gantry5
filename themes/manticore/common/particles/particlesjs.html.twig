@@ -1,0 +1,17 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% if gantry.theme.preset %}
+        {% set accent = gantry.theme.presets[gantry.theme.preset].styles.accent['color-1'] %}
+    {% else %}
+        {% set accent = gantry.config.get('styles.accent.color-1') %}
+    {% endif %}
+
+    <div id="{{ id }}" class="g-particlesjs" data-particlejs-id="{{ id }}" data-particlejs-shape="{{ particle.shape|default('square') }}" data-particlejs-count="{{ particle.count }}" data-particlejs-size="{{ particle.shape_size }}" data-particlejs-color="{% if particle.colorsrc == 'accent' %}{{ accent }}{% else %}{{ particle.color|default('#5a63ff') }}{% endif %}"></div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/particlejs.init.js') }}"></script>
+{% endblock %}
+

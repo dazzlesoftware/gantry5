@@ -1,0 +1,23 @@
+name: Above Styles
+description: Above styles for the Koleti theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "rgba(255, 255, 255, 0)"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/above/background-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"
+    transparent-background:
+      type: input.colorpicker
+      label: Transparent Background
+      default: "rgba(0, 0, 0, 0.85)"

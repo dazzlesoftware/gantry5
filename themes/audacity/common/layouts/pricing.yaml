@@ -1,0 +1,286 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: pricing
+  timestamp: 1523567954
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-8634
+  /utility/:
+    -
+      - position-position-5798
+  /feature/:
+    -
+      - pricingtable-2273
+  /maintop/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 33': {  }
+      -
+        'main 34':
+          -
+            - custom-9604
+      -
+        'aside 33': {  }
+  /mainbottom/: {  }
+  /extension/:
+    -
+      - custom-9433
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'custom-5072 50'
+      - 'custom-3219 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: hidden-phone
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  main:
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    type: section
+  container-main:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-3952:
+    title: Pricing
+    attributes:
+      title: Pricing
+      titletag: 'Pick a Plan that Fits You'
+      html: ''
+      twig: '0'
+      filter: '0'
+    block:
+      class: rt-big-title
+      variations: center
+  position-position-8634:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  pricingtable-2273:
+    title: 'Pricing Table'
+    attributes:
+      class: ''
+      title: 'Try it Out for 10 Days Free'
+      headertext: 'All plans come with awesome support by email and phone. There is no hidden fee!'
+      footertext: 'Free 10 days trial on all plans. No credit card needed! Need a bigger plan? <a href="#">View Professional Plan</a>.'
+      columns: g-pricingtable-4-col
+      tables:
+        -
+          class: ''
+          plan: Basic
+          price: $28
+          decimal: ''
+          period: ''
+          desc: ''
+          items:
+            -
+              text: 'Globally incubate standards compliant channels'
+              title: 'Item 1'
+            -
+              text: '5GB Storage'
+              title: 'Item 2'
+            -
+              text: '10 Users'
+              title: 'Item 3'
+            -
+              text: '20 Emails'
+              title: 'Item 4'
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 1'
+        -
+          class: rt-table-highlight
+          plan: Standard
+          price: $58
+          decimal: ''
+          period: ''
+          desc: ''
+          items:
+            -
+              text: 'Globally incubate standards compliant channels'
+              title: 'Item 1'
+            -
+              text: '25GB Storage'
+              title: 'Item 2'
+            -
+              text: '20 Users'
+              title: 'Item 3'
+            -
+              text: '30 Emails'
+              title: 'Item 4'
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 2'
+        -
+          class: ''
+          plan: Titanium
+          price: $88
+          decimal: ''
+          period: ''
+          desc: ''
+          items:
+            -
+              text: 'Globally incubate standards compliant channels'
+              title: 'Item 1'
+            -
+              text: '50GB Storage'
+              title: 'Item 2'
+            -
+              text: '30 Users'
+              title: 'Item 3'
+            -
+              text: '40 Emails'
+              title: 'Item 4'
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 3'
+        -
+          class: last-child
+          plan: Platinum
+          price: $288
+          decimal: ''
+          period: ''
+          desc: ''
+          items:
+            -
+              text: 'Globally incubate standards compliant channels'
+              title: 'Item 1'
+            -
+              text: '500GB Storage'
+              title: 'Item 2'
+            -
+              text: '100 Users'
+              title: 'Item 3'
+            -
+              text: '200 Emails'
+              title: 'Item 4'
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 4'
+    block:
+      class: center
+  custom-9604:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Simple Plans and Pricing</h3>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications.</p>\n\t\t\t\t<p class=\"hidden-tablet\">Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>\n\t\t\t\t<p><a href=\"https://rockettheme.com/grav/themes/audacity\" class=\"readon\">Sign Up</a></p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Top Audacity Features</h3>\n\t\t\t\t<ul>\n\t\t\t\t\t<li>Powered by Gantry Framework</li>\n\t\t\t\t\t<li>CSS Dropdown Menu and Vertical Menu</li>\n\t\t\t\t\t<li>6 Styled Presets & Custom Particles</li>\n\t\t\t\t</ul>\n\t\t\t\t<p class=\"success\">Want to use Audacity for your clients? <a href=\"https://rockettheme.com/grav/themes/audacity\">Purchase Single Package Now</a>.</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+  custom-9433:
+    title: 'Custom HTML'
+    attributes:
+      title: 'No Hidden Fee'
+      titletag: ''
+      html: "<p>No Credit Card Required and No Long-Term Contracts</p>\n\n<p><a href=\"https://rockettheme.com/grav/themes/audacity\" class=\"readon largemargintop\">Sign Up</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: module-title
+      variations: center
+  custom-5072:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Audacity Demo'
+      titletag: ''
+      html: "<p class=\"hidden-phone\">These examples are intended to show how Audacity can be constructed on your site, above and beyond the frontpage demonstration. These include Joomla content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Audacity RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'
+  custom-3219:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Sample Contact Info'
+      titletag: ''
+      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'

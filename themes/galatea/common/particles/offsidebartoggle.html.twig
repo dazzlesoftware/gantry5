@@ -1,0 +1,48 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+
+  <div class="g-offsidebar-toggle">
+    <i class="g-offsidebar-toggle-icon {{ particle.icon|e }}"></i>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+<script type="text/javascript">
+{% if particle.type == "slidedown" %}
+jQuery(document).ready(function (){
+  jQuery('body').addClass('g-offsidebar-open-slidedown');
+});
+{% elseif particle.type == "pushpage" %}
+jQuery(document).ready(function (){
+  var offSidebar = jQuery('#g-offsidebar');
+  offSidebar.parent().after(offSidebar);
+  jQuery('body').addClass('g-offsidebar-open-pushpage');
+  jQuery('.g-offsidebar-toggle-icon').click(function() {
+    jQuery('.g-offsidebar-open-pushpage').toggleClass('g-body-pushed');
+  });
+  jQuery('#g-offsidebar-overlay').click(function() {
+    jQuery(this).css({'opacity': '0', 'z-index': '-1'});
+    jQuery('.g-offsidebar-open-pushpage').toggleClass('g-body-pushed');
+  });  
+});
+{% endif %}
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function (){
+  jQuery('.g-offsidebar-toggle-icon').click(function() {
+    jQuery('#g-offsidebar').toggleClass('g-offsidebar-open');
+    jQuery('#g-offsidebar-overlay').css({'opacity': '1', 'z-index': '10002'});
+  });
+  jQuery('#g-offsidebar-overlay').click(function() {
+    jQuery(this).css({'opacity': '0', 'z-index': '-1'});
+    jQuery('#g-offsidebar').toggleClass('g-offsidebar-open');
+  });
+});
+</script>
+
+{% endblock %}

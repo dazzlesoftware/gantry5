@@ -1,0 +1,26 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+    .g-simplecontent .g-simplecontent-item-content-title {
+        color: $white;
+    }
+    .g-simplecontent .g-simplecontent-layout-header {
+        padding-top: 0;
+    }
+    .g-simplecontent-item-readmore-container {
+        a {
+            color: transparentize($header-text-color, 0.50);
+            text-decoration: underline;
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

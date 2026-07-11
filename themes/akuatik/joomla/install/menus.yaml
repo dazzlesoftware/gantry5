@@ -1,0 +1,9 @@
+akuatik-theme:
+  title: 'Akuatik Theme'
+  description: 'Sample menu for Akuatik theme.'
+
+  items:
+    akuatik:
+      title: 'Home'
+      outline: home
+      home: 1

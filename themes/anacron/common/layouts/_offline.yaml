@@ -1,0 +1,201 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _offline
+  timestamp: 1543891210
+layout:
+  /navigation/: {  }
+  /showcase/:
+    -
+      - custom-3803
+    -
+      - custom-5382
+  top: {  }
+  utility: {  }
+  feature: {  }
+  maintop: {  }
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 60': {  }
+      -
+        'sidebar 40': {  }
+  expandedbottom: {  }
+  mainbottom: {  }
+  extension: {  }
+  /footer-surround/:
+    -
+      -
+        /bottom/:
+          -
+            - newsletter-4787
+        /footer/:
+          -
+            - custom-4776
+          -
+            - system-content-5351
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  maintop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+  footer-surround:
+    type: container
+    title: Surround
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-3803:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: '<a id="rt-logo" href="#"></a>'
+    block:
+      class: nomarginbottom
+      variations: center
+  custom-5382:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: "<h2 class=\"title\">Our Website is Temporarily Offline</h2>\n\nThis site is down for maintenance. <br>\nPlease check back again soon."
+    block:
+      class: nomargintop
+      variations: center
+  newsletter-4787:
+    attributes:
+      width: g-newsletter-compact
+      layout: g-newsletter-aside-wrap
+      style: g-newsletter-rounded
+      title: 'Get Notified When We Release'
+      inputboxtext: 'Email Address'
+      buttonclass: button-xlarge
+    block:
+      id: rt-subscription-form
+  custom-4776:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: "<h2 class=\"rt-authorized-form-title\">Authorized Login</h2>\n\n<p class=\"rt-authorized-login-message\">\nThis feature sets your website offline. You can still access the frontend of the site by logging in below. You can customize this message in the Layout Manager.\t\t\t\t\t\t\t</p>"
+    block:
+      class: 'nomarginbottom nopaddingbottom nomargintop nopaddingtop'
+      variations: center
+  system-content-5351:
+    block:
+      id: rt-authorized-form

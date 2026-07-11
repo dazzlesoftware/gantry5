@@ -1,0 +1,50 @@
+.g-simplemenu-particle {
+    display: flex;
+    justify-content: flex-start;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    @include breakpoint(tablet-range) {
+        justify-content: space-around;
+    }
+
+    h6 {
+        margin: 0 0 $content-margin;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: $core-font-size - 0.125;
+        font-weight: $font-weight-medium;
+    }
+
+    .g-simplemenu-container {
+        &:not(:first-child) {
+            padding-left: $content-padding * 2;
+
+            .dir-rtl & {
+                padding-right: $content-padding * 2;
+                padding-left: 0;
+            }
+
+            @include breakpoint(mobile-only) {
+                padding-left: 0;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            padding: 0 0 ($content-padding * 2);
+            text-align: center;
+        }
+
+        .g-simplemenu {
+            list-style: none;
+            margin: 0;
+
+            li {
+                line-height: 2rem;
+            }
+        }
+    }
+}

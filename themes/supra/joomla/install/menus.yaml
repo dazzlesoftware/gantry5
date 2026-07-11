@@ -1,0 +1,9 @@
+supra-theme:
+  title: 'Supra Theme'
+  description: 'Sample menu for Supra theme.'
+
+  items:
+    supra:
+      title: 'Home'
+      outline: home
+      home: 1

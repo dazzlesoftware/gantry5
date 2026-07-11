@@ -1,0 +1,646 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1528468091
+layout:
+  top:
+    -
+      - system-messages-1675
+  /slideshow/:
+    -
+      - 'verticalmenu-8085 20'
+      - 'carousel-2510 80'
+  /header/:
+    -
+      - heading-2069
+    -
+      - slider-5924
+  /above/:
+    -
+      - 'promo-5881 25'
+      - 'logo-1795 15'
+      - 'contentarray-2083 60'
+  /feature/:
+    -
+      - slideshow-2132
+  /showcase/:
+    -
+      - casestudies-7116
+  /utility/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - 'springboard-6855 70'
+      - 'logo-1131 30'
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-slideshow
+  header:
+    attributes:
+      boxed: '3'
+      class: 'section-vertical-paddings fp-header'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-above
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-feature
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-vertical-paddings section-horizontal-paddings fp-showcase'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings fp-extension'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings section-vertical-paddings g-default-footer'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  system-messages-1675:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: system-messages-9828
+  verticalmenu-8085:
+    title: 'Vertical Menu'
+    attributes:
+      class: ''
+      title: ''
+    block:
+      class: 'box-black g-vnavigation-container'
+      variations: 'nomarginall nopaddingall'
+  carousel-2510:
+    attributes:
+      source: particle
+      demo: disabled
+      class: ''
+      height: 40vw
+      tablet_height: 65vw
+      desktop_height: 54vw
+      nav: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: Calla
+          caption: 'Calla is a bright, colorful design highlighting modern style and a refreshing new look for your website.'
+          link: '#'
+          link_text: 'Read More'
+          name: 'Calla 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: Calla
+          caption: 'Calla is a fresh take on the classic concept of putting content first with a timeless style and feel for all users.'
+          link: '#'
+          link_text: 'Read More'
+          name: 'Calla 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: Calla
+          caption: 'Calla is powered by our modern Gantry 5 framework, packed with features, and ready to take your site to new heights!'
+          link: '#'
+          link_text: 'Read More'
+          name: 'Calla 3'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          title:
+            enabled: show
+            limit: ''
+          read_more:
+            enabled: show
+            label: ''
+            target: _self
+            css: ''
+    block:
+      variations: 'nomarginall nopaddingall'
+  heading-2069:
+    attributes:
+      class: ''
+      title: 'recent additions'
+      subtitle: particles
+  slider-5924:
+    attributes:
+      source: particle
+      demo: disabled
+      nav: enabled
+      autoplay: enabled
+      dots: enabled
+      thumbs: enabled
+      amount: '7'
+      tablet_amount: '4'
+      mobile_amount: '2'
+      smallmobile_amount: '1'
+      items:
+        -
+          image: 'gantry-media://home/header/img-01.jpeg'
+          alt: ''
+          description: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Block Content'
+        -
+          image: 'gantry-media://home/header/img-01.jpeg'
+          alt: ''
+          description: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: Carousel
+        -
+          image: 'gantry-media://home/header/img-01.jpeg'
+          alt: ''
+          description: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Case Studies'
+        -
+          image: 'gantry-media://home/header/img-01.jpeg'
+          alt: ''
+          description: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Event List'
+        -
+          image: 'gantry-media://home/header/img-01.jpeg'
+          alt: ''
+          description: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Grid Statistic'
+        -
+          image: 'gantry-media://home/header/img-01.jpeg'
+          alt: ''
+          description: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: Heading
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          title:
+            enabled: show
+            limit: ''
+          read_more:
+            enabled: show
+            label: ''
+            target: _self
+            css: ''
+    block:
+      variations: 'nomarginall nopaddingall'
+  promo-5881:
+    attributes:
+      title: "the <br />\nultimate <br />\ndesign   <br />\nfor your <br />\nnext <br />\nwebsite <br />"
+      bgtitle: guide
+      buttontext: 'Read More'
+      buttonlink: '#'
+    block:
+      class: 'wiggle wiggle-static'
+      variations: 'box1 align-right nomarginall'
+  logo-1795:
+    title: 'Logo / Image'
+    attributes:
+      image: 'gantry-media://backgrounds/above/img-01.jpg'
+      text: ''
+    block:
+      class: flush
+  contentarray-2083:
+    title: 'Platform Content'
+    attributes:
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '6'
+          columns: '2'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: ''
+          text:
+            type: ''
+          date:
+            format: 'F d'
+          read_more:
+            enabled: ''
+          author:
+            enabled: ''
+          category:
+            enabled: ''
+          hits:
+            enabled: ''
+      post:
+        filter:
+          categories: ''
+          posts: ''
+          sticky: ''
+        limit:
+          total: '6'
+          columns: '2'
+          start: '0'
+        display:
+          pagination_buttons: ''
+          date:
+            format: 'F d'
+          read_more:
+            enabled: ''
+          author:
+            enabled: ''
+          category:
+            enabled: ''
+          comments:
+            enabled: ''
+          text:
+            type: ''
+        sort:
+          orderby: date
+          ordering: DESC
+    block:
+      class: 'wiggle wiggle-static'
+      variations: 'box2 nomarginall'
+  slideshow-2132:
+    attributes:
+      source: particle
+      demo: disabled
+      autoplay: disabled
+      autoplayTimeout: '5000'
+      speed: '250'
+      dots: enabled
+      thumbs: enabled
+      items:
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          image_small: 'gantry-media://home/feature/img-01-thumb.jpg'
+          title_small: 'Available at a Great Price. Get up to 30% off!'
+          alt: 'Some Alt Attr'
+          title: 'goodbye bland, hello bold!'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          image_small: 'gantry-media://home/feature/img-01-thumb.jpg'
+          title_small: 'Built on the powerful Gantry 5 framework.'
+          alt: 'Some Alt Attr'
+          title: 'goodbye drab, hello delightful!'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          image_small: 'gantry-media://home/feature/img-01-thumb.jpg'
+          title_small: 'Multiple preset color schemes available.'
+          alt: 'Some Alt Attr'
+          title: 'goodbye normal, hello extraordinary!'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            target: _self
+    block:
+      variations: 'nomarginall nopaddingall'
+  casestudies-7116:
+    title: 'Case Studies'
+    attributes:
+      source: particle
+      demo: disabled
+      class: ''
+      title: 'from the blog'
+      uppertitle: ''
+      allitems: ''
+      cols: cols-3
+      cases:
+        -
+          items:
+            -
+              layout: default-top
+              accent: accent-color-2
+              image: ''
+              subtitle: '3 days ago'
+              description: ''
+              url: ''
+              title: 'A gorgeous website without the high costs'
+            -
+              layout: alt-bottom
+              accent: accent-color-2
+              image: ''
+              subtitle: '3 days ago'
+              description: "The Case Studies particle makes displaying your website's content easier than ever.\nUsing simple form fields, you can create custom content or instruct the particle to pull images and text directly from your CMS."
+              url: ''
+              title: 'This is an example of a blog post title without any cover photo'
+          title: roundup
+        -
+          items:
+            -
+              layout: alt-top
+              accent: accent-color-1
+              image: 'gantry-media://home/showcase/img-01.jpg'
+              subtitle: '3 days ago'
+              description: ''
+              url: ''
+              title: 'Make a Beautifully Stylish Website'
+            -
+              layout: default-bottom
+              accent: accent-color-1
+              image: ''
+              subtitle: '3 days ago'
+              description: ''
+              url: ''
+              title: 'Perfect for Stylish Brands, Designers, and More!'              
+          title: news
+        -
+          items:
+            -
+              layout: alt-bottom
+              accent: accent-color-1
+              image: ''
+              subtitle: '3 days ago'
+              description: 'The powerful Gantry 5 framework includes a stunning Layout Manager. Customize a page''s layout with drag-and-drop simplicity. Add particles and positions in seconds, and apply CSS classes through simple forms.'
+              url: ''
+              title: 'Modify Your Website''s Layout in a Snap with the Layout Manager'
+            -
+              layout: alt-top
+              accent: accent-color-2
+              image: 'gantry-media://home/showcase/img-02.jpg'
+              subtitle: '3 days ago'
+              description: ''
+              url: ''
+              title: 'A Bold New Design for 2018 and Beyond'
+            -
+              layout: alt-bottom
+              accent: accent-color-1
+              image: ''
+              subtitle: '3 days ago'
+              description: 'The powerful Menu Editor included with Gantry 5-powered themes like Calla makes it easier than ever to rearrange, redesign, and inject new elements into your website''s menus.'
+              url: ''
+              title: 'Create More Complete Menus with the Menu Editor'
+          title: guide
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          title:
+            enabled: show
+            limit: ''
+          date:
+            enabled: created
+            format: 'l, F d, Y'
+          read_more:
+            enabled: show
+            label: ''
+            target: _self
+            css: ''
+  springboard-6855:
+    attributes:
+      title: 'our particles'
+      description: 'Calla includes over a dozen professionally-designed particles to make your website''s content shine.'
+      items:
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Jakub Baran'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Karol Orzeł'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'John Davis'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Kirk Douglas'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Ryan Pierson'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Katrin Lange'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Andy Miller'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Djamil Legato'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Reggie Simmons'
+          name: Avatar
+        -
+          image: 'gantry-media://springboard/blank.svg'
+          tooltipstyle: dori
+          tooltip: ''
+          name: Avatar
+        -
+          image: 'gantry-media://springboard/blank.svg'
+          tooltipstyle: dori
+          tooltip: ''
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Matias Griese'
+          name: Avatar
+        -
+          image: 'gantry-media://springboard/blank.svg'
+          tooltipstyle: dori
+          tooltip: ''
+          name: Avatar
+        -
+          image: 'gantry-media://springboard/blank.svg'
+          tooltipstyle: dori
+          tooltip: ''
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Mark Taylor'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Damir Pecnik'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'John Newman'
+          name: Avatar
+        -
+          image: 'gantry-media://home/extension/avatar-01.png'
+          tooltipstyle: dori
+          tooltip: 'Patrick Swayze'
+          name: Avatar
+    block:
+      class: flush
+  logo-1131:
+    title: 'Logo / Image'
+    attributes:
+      image: 'gantry-media://home/extension/girl.jpg'
+      text: ''
+    block:
+      class: flush

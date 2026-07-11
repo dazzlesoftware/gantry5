@@ -1,0 +1,25 @@
+#g-expanded {
+    background: $expanded-background;
+    color: $expanded-text-color;
+    padding: 5rem 0;
+
+    .g-imagegrid .g-imagegrid-wrapper {
+        padding-left: 100px;
+
+        .dir-rtl & {
+            padding-right: 100px;
+            padding-left: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            padding-left: 0;
+        }
+    }
+}
+
+@media print {
+    #g-expanded {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

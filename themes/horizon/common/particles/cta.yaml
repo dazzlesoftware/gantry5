@@ -1,0 +1,50 @@
+name: Simple CTA
+description: Display simple call to action.
+type: particle
+icon: fa-battery-4
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+    title:
+      type: input.text
+      label: Title
+    description:
+      type: textarea.textarea
+      label: Description
+    label:
+      type: input.text
+      label: Label
+    link:
+      type: input.text
+      label: Link
+    target:
+      type: select.selectize
+      label: Target
+      description: Target browser window when item is clicked.
+      placeholder: 'Select...'
+      options:
+          _self: Self
+          _blank: New Window
+          lightcase: Lightcase
+    contact:
+      type: textarea.textarea
+      label: Contact Informations
+      default: Contact information
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+    patterns:
+      type: select.select
+      label: Hexagon Patterns
+      description: Decide if you want hexagon patterns to be enabled or disabled. 
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable

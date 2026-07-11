@@ -1,0 +1,72 @@
+.g-cta {
+    background-color: set-color($base-background);
+    padding: $content-padding;
+    color: set-color($base-text-color);
+    display: flex;
+
+    @include breakpoint(small-mobile-range) {
+        flex-direction: column;
+    }
+
+    align-items: center;
+    position: relative;
+
+    .g-cta-left {
+        width: 70%;
+        position: relative;
+        z-index: 2;
+
+        @include breakpoint(small-mobile-range) {
+            width: 100%;
+        }
+    }
+
+    .g-cta-right {
+        position: relative;
+        z-index: 2;
+
+        @include breakpoint(small-mobile-range) {
+            width: 100%;
+        }
+    }
+
+    h2 {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .g-cta-patterns-left {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: -7rem;
+
+        .dir-rtl & {
+            left: auto;
+            right: -92%;
+        }
+
+        svg {
+            width: 100%;
+        }
+    }
+
+    .g-cta-patterns-right {
+        position: absolute;
+        z-index: 1;
+        top: -2rem;
+        width: 100%;
+        height: 100%;
+        right: 0;
+
+        .dir-rtl & {
+            right: auto;
+            left: -58%;
+    top: -3rem;
+        }
+
+        svg {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+
+    @if $expanded-background-image {
+        background-image: url($expanded-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .g-simplecontent-item-leading-content {
+        column-count: 2;
+    }
+    .g-heading {
+        color: set-color($base-background);
+    }
+    
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

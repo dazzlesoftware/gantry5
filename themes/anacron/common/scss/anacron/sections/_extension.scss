@@ -1,0 +1,96 @@
+#g-extension {
+    @if $extension-background-image {
+        background: $extension-background url($extension-background-image) repeat;
+    } @else { 
+        background: $extension-background;
+    }
+    color: $extension-text-color;
+
+    a {
+        color: $extension-link-color;
+        &:hover {
+            color: darken($extension-link-color, 15%);
+        }
+    }
+    &.rt-overlay-light {
+        h2.title {
+            color: $extension-text-color;
+        }
+    }
+    &.rt-overlay-dark {
+        h2.title {
+            color: $white;
+        }
+    }
+    .readon {
+        color: $white;
+        background: darken($extension-background, 8%);
+        border-bottom: 2px solid darken($extension-background, 20%);
+        &:hover {
+            background: $accent-color-2;
+            border-bottom: 2px solid darken($accent-color-2, 15%);
+        }        
+    }
+    .readon2 {
+        color: $white;
+        background: $accent-color-2;
+        border-bottom: 2px solid darken($accent-color-2, 15%);
+        &:hover {
+            background: darken($extension-background, 8%);
+            border-bottom: 2px solid darken($extension-background, 20%);
+        }       
+    }    
+    .fp-extension {
+        img {
+            opacity: 0.5;
+            backface-visibility: hidden;
+            transition: opacity 0.2s ease-in;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.fp-testimonials {
+    .g-owlcarousel-testimonials {
+        .g-owlcarousel-header {
+            h2.title {
+                text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.2);
+            }
+        }
+        .g-owlcarousel {
+            color: $extension-text-color;
+
+            .g-owlcarousel-content {
+                font-family: serif;
+                font-style: italic;
+                font-size: 1.6em;
+                line-height: 1.3em;
+            }
+            .g-owlcarousel-item-desc {
+                .rt-overlay-dark & {
+                    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1);
+                }
+                &:before, &:after {
+                    font-family: FontAwesome;
+                }
+                &:before {
+                    content: "\f10d";
+                    margin-right: 10px;
+                }
+                &:after {
+                    content: "\f10e";
+                    margin-left: 10px;
+                }
+            }
+        }    
+    }
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

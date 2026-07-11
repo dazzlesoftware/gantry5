@@ -1,0 +1,25 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    position: relative;
+    z-index: 100;
+
+    a {
+        color: $navigation-text-color;
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-logo svg {
+        fill: $navigation-text-color;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

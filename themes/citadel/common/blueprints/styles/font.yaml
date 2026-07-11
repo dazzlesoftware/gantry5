@@ -1,0 +1,31 @@
+name: Font Families
+description: Font families for the Citadel theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'sintony, sans-serif, Tahoma, Geneva, Arial'
+    family-title:
+      type: input.fonts
+      label: Title Font
+      default: 'cabin, sans-serif, Tahoma, Geneva, Arial'
+    family-promo:
+      type: input.fonts
+      label: Promo Font
+      default: 'raleway, sans-serif, Tahoma, Geneva, Arial'
+    family-subpromo:
+      type: input.fonts
+      label: SubPromo Font
+      default: 'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+    family-logo:
+      type: input.fonts
+      label: Logo Font
+      default: 'blanch, sans-serif, Tahoma, Geneva, Arial'
+    family-weather:
+      type: input.fonts
+      label: Weather Font
+      default: 'weather'

@@ -1,0 +1,190 @@
+name: Testimonials
+description: Display testimonials.
+type: particle
+icon: fa-users
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              overridable: false
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            cols:
+              overridable: false
+              type: select.select
+              label: Grid Column
+              description: Select the grid column amount
+              placeholder: 'Select...'
+              default: cols-4
+              options:
+                cols-2: 2 Columns
+                cols-3: 3 Columns
+                cols-4: 4 Columns
+                cols-5: 5 Columns
+
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            testimonial:
+              type: collection.list
+              array: true
+              label: Testimonial
+              description: Create testimonial.
+              value: name
+              ajax: true
+              fields:
+                .content:
+                    type: textarea.textarea
+                    label: Testimonial Content
+                    description: Add testimonial content
+                .photo:
+                    type: input.imagepicker
+                    label: Logo
+                    description: Pick desired photo.
+                .alttext:
+                    type: input.text
+                    label: Alt Tag
+                    description: Add Alt text
+                    default: "Testimonial"
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.text.type:
+              overridable: false
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              overridable: false
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              pattern: '\d+'
+
+            article.display.text.formatting:
+              overridable: false
+              type: select.select
+              label: Text Formatting
+              description: Select the formatting you want to use to display the article text.
+              options:
+                text: Plain Text
+                html: HTML
+
+            article.display.author.enabled:
+              type: select.select
+              label: Author
+              description: Select if author should be shown.
+              options:
+                show: Show
+                '': Hide

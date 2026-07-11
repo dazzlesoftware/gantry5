@@ -1,0 +1,17 @@
+#g-top {
+    background: $top-background;
+    color: $top-text-color; 
+
+    .nomodulecontent {
+		.g-content {
+			padding: 5px 25px 50px 25px;
+		}
+	}
+}
+
+@media print {
+	#g-top {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

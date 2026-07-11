@@ -1,0 +1,79 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#58bd91'
+    - '#14151e'
+    - '#17a387'
+  styles:
+    base:
+      background: '#14151e'
+      background-image: 'gantry-media://backgrounds/base/img-01.jpg'
+      text-color: '#4f5056'
+    accent:
+      color-1: '#58bd91'
+      color-2: '#14151e'
+      color-3: '#17a387'
+    menustyle:
+      text-color: '#ffffff'
+      text-color-active: '#ffffff'
+      active-background: '#14151e'
+      sublevel-text-color: 'rgba(255, 255, 255, 0.5)'
+      sublevel-text-color-active: '#ffffff'
+      sublevel-background: '#14151e'
+    font:
+      family-default: 'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#ffffff'
+    slideshow:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#ffffff'
+    header:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    above:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    showcase:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    utility:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    feature:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    main:
+      background: '#ffffff'
+      text-color: '#888888'
+    expanded:
+      background: '#ffffff'
+      text-color: '#888888'
+    extension:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    bottom:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    footer:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#4f5056'
+    copyright:
+      background: '#000000'
+      text-color: '#87888e'
+    offcanvas:
+      background: '#000000'
+      text-color: '#87888e'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 75rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem

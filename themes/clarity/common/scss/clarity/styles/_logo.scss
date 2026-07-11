@@ -1,0 +1,15 @@
+.g-logo {
+    display: block;
+    justify-content: center;
+    position: relative;
+    font-weight: $font-weight-extrabold;
+    @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
+    box-shadow: none !important;
+}
+
+.avatar-logo {
+    img {
+        width: 80px;
+        border-radius: 100%;
+    }
+}

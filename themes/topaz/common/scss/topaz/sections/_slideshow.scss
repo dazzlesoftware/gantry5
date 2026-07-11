@@ -1,0 +1,21 @@
+#g-container-slideshow {
+    background: $slideshow-background;
+    color: $slideshow-text-color;
+
+    #g-slideshowmain {
+        > .g-grid {
+            padding: 0 0 $section-padding 0;
+        }
+    }
+
+    .g-content {
+        padding: 0.2rem;
+    }
+}
+
+@media print {
+    #g-container-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

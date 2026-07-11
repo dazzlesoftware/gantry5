@@ -1,0 +1,9 @@
+doctype: html
+attribs:
+  id: ''
+  class: 'gantry tilt'
+  extra: {  }
+layout:
+  sections: '3'
+body_top: ''
+body_bottom: ''

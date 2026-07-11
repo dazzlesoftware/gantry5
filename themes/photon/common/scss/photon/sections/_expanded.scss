@@ -1,0 +1,51 @@
+#g-expanded, #g-container-expanded {
+  background: $expanded-background;
+  color: $expanded-text-color;
+  margin: 2rem ($content-margin + $content-padding);
+  box-shadow: $base-content-shadow;
+  position: relative;
+
+  .g-owlcarousel-item-img {
+    background: $expanded-background;
+  }
+  .g-offset-padding {
+    padding: $content-padding + $content-margin + 1;
+    padding-top: ($content-margin * 5.5) + $content-padding + 1 !important;
+    z-index: 1;
+  }
+  .box-white .button {
+    background: $accent-color-1;
+  }
+  .g-simplecontent .g-simplecontent-item-leading-content, .g-simplecontent .g-simplecontent-item-created-date {
+    color: $base-text-color;
+  }
+  .g-contenttabs {
+    margin-right: 45px;
+    .dir-rtl & {
+      margin-right: 0;
+      margin-left: 45px;
+    }
+    @include breakpoint(mobile-only) {
+        margin-right: 0;
+    }
+    .g-contenttabs-tab-title, .g-contenttabs-content-tag-text, .g-contenttabs-content-text {
+      color: transparentize($expanded-text-color, 0.60);
+      transition: color 0.35s;
+    }
+    .g-contenttabs-content-text:hover {
+      color: $expanded-text-color;
+    }
+    .ui-state-active {
+      .g-contenttabs-tab-title {
+        color: $expanded-text-color;
+      }
+    }
+  }
+}
+
+@media print {
+  #g-expanded, #g-container-expanded {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}

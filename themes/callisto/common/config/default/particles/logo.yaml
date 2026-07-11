@@ -1,0 +1,5 @@
+enabled: '1'
+url: ''
+image: 'gantry-theme://images/logo/callisto.png'
+text: Callisto
+class: g-logo

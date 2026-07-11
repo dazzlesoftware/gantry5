@@ -1,0 +1,18 @@
+.g-error {
+	> .g-content {
+		padding: ($content-padding * 6) 0;
+	}
+	h1 {
+		font-size: $core-font-size + 3;
+		line-height: $core-line-height - 0.4;
+		font-family: get-font-family($font-family-promo);
+		font-weight: $font-weight-bold;
+		letter-spacing: -2px;
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.g-layercontent {
+		padding: 5rem;
+	}
+}

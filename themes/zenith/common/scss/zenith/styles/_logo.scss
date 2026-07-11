@@ -1,0 +1,32 @@
+.g-logo {
+    font-weight: $font-weight-medium;
+    @include responsive-font($responsive-font-size + 0.3, $core-font-size + 0.2, false, false);
+    box-shadow: none !important;
+    text-transform: lowercase;
+    @include breakpoint (tablet-range){
+        padding-left: $content-margin * 2;
+    }
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+
+    img {
+        .dir-rtl & {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+    }
+}
+
+.avatar-logo {
+    img {
+        width: 80px;
+        border-radius: 100%;
+    }
+    
+}

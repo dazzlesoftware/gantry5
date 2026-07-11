@@ -1,0 +1,27 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-upcgames-particle {{ particle.class|e }}">
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+
+        <ul class="g-upcgames">
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for game in particle.games %}
+                    <li>
+                        <span class="g-upcgames-number">{{ loop.index }}</span>
+                        <a target="{{ game.target|default('_blank') }}" href="{{ game.link|e }}" title="{{ game.title }}">{{ game.title|raw }}
+                            <span>
+                                {{ game.date|raw }}
+                            </span>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                {% include '@particles/upcgames-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+

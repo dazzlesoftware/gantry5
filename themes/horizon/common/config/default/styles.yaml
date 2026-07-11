@@ -1,0 +1,82 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#5fdede'
+    - '#ffedab'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#444444'
+    accent:
+      color-1: '#5fdede'
+      color-2: '#ffedab'
+      color-3: '#dcf9f9'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      background-active: '#5fdede'
+      text-color: '#000000'
+      text-color-active: '#000000'
+      sublevel-text-color: '#000000'
+      sublevel-text-color-active: '#000000'
+      sublevel-background: '#5fdede'
+      sublevel-background-active: '#ffffff'
+    font:
+      family-title: 'inter, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'inter, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: '#000000'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-01.jpg'
+      text-color: '#000000'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    footer:
+      background: '#000000'
+      background-image: 'gantry-media://backgrounds/footer/bg-01.svg'
+      text-color: '#cccccc'
+      link-color: '#ffedab'
+      link-hover-color: '#5fdede'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#5fdede'
+      text-color: '#ffffff'
+      toggle-color: '#5fdede'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

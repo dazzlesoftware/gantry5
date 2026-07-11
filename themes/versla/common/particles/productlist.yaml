@@ -1,0 +1,138 @@
+name: Product List
+description: Particle for displaying various products on customizable grid.
+type: particle
+icon: fa-shopping-bag
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    presets:
+      type: select.select
+      label: Demo Sync
+      description: Enable or disable sync with demo presets.
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    _currencyinfo:
+      type: separator.note
+      class: alert alert-info
+      content: Remember to set proper currency in in Snipcart "Regional settings".
+
+    currency:
+      type: input.text
+      label: Currency Symbol
+      description: Customize the currency symbol. Remember to set proper currency in snipcart regional settings.
+      placeholder: Enter currency symbol
+      default: $
+
+    cartbtn:
+      type: input.text
+      label: Add To Cart Label
+      description: Customize the add to cart button label.
+      placeholder: Add To Cart
+      default: Add To Cart
+
+    allitems:
+      type: input.text
+      label: All Items Label
+      description: Customize the All Items Filter Label.
+      placeholder: All Items
+      default: All Items 
+
+    categories:
+      type: collection.list
+      array: true
+      label: Categories
+      description: Create each category item to display.
+      value: name
+      ajax: true
+      fields:
+        .name:
+          type: input.text
+          label: Name
+          description: Enter the product name.
+        .products:
+          type: collection.list
+          array: true
+          label: Products
+          description: Create each item to display.
+          value: name
+          ajax: true
+          fields:
+            .name:
+              type: input.text
+              label: Name
+              description: Enter the product name.
+            .customid:
+              type: input.text
+              label: Custom ID
+              description: Enter custom id. By default product id is generated from name,category and particle id. You can provide custom product id but it MUST be unique for all products.
+            .brand:
+              type: input.text
+              label: Brand
+              description: Enter the product brand.
+            .price:
+              type: input.text
+              label: Price
+              description: Specify product price. You must provide us a decimal number. Use a simple decimal with a dot (.) as a separator.
+              placeholder: 0.00
+              default: 0.00
+            .image:
+              type: input.imagepicker
+              label: Product Image
+              description: Select desired product image.
+            .description:
+              type: textarea.textarea
+              label: Description
+              description: Customize the description.
+              placeholder: Enter short description
+            .attributes:
+              type: collection.list
+              array: true
+              label: Product Attributes
+              description: Create custom fields or product attributes.
+              value: name
+              ajax: true
+              fields:
+                _attrinfo:
+                  type: separator.note
+                  class: alert alert-info
+                  content: For more information on adding product attributes such as options for sizes and colors, please <a href="https://www.rockettheme.com/docs/joomla/templates/versla/particle_productlist.md#product-attributes-options" target="_blank">click here</a>.
+                .name:
+                  type: input.text
+                  label: Attribute Name
+                  description: Attribute name which will be added to "data-" prefix.
+                .value:
+                  type: input.text
+                  label: Attribute Value
+                  description: Attribute value.
+
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: The public API key is the key you need to add on your website when using Snipcart Shopping Cart. This key can be shared without security issues because it only allows a specific subset of API operations. To register, go to https://app.snipcart.com/account/register.
+
+    apikey:
+      type: input.text
+      label: Api Key
+      description: The public API key is the key you need to add on your website when using Snipcart Shopping Cart.
+      placeholder: Enter api key

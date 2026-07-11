@@ -1,0 +1,22 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+<div class="g-icon-list">
+	{% if particle.title %}<h2 class="title">{{ particle.title|html|raw }}{% if particle.titletag %}<span class="rt-title-tag">{{ particle.titletag|html|raw }}</span>{% endif %}</h2>{% endif %}
+
+	<div class="gantry-row">
+		{% for item in particle.iconlists %}
+			<div class="gantry-width-{{ particle.cols }}">
+				<div class="gantry-width-spacer">
+					<p class="nomarginbottom"><span class="{{ item.icon }} rt-icon-large"></span></p>
+					<span class="rt-circle-number">{{ item.circlenumber|html|raw }}</span>
+					<h4>{{ item.title|html|raw }}</h4>
+					<p>{{ item.desc|html|raw }}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

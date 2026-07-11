@@ -1,0 +1,84 @@
+.g-superpromo,
+.g-promo {
+    font-size: 6rem;
+    font-style: italic;
+    letter-spacing: 0.25rem;
+}
+
+.g-superpromo {
+    font-family: get-font-family($font-family-promo);
+    font-weight: $font-weight-ultrabold;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    @include breakpoint(tablet-range) {
+        font-size: $core-font-size + 3;
+    }
+    @include breakpoint(mobile-only) {
+        font-size: $core-font-size + 1.5;
+    }   
+}
+.g-promo {
+    font-family: get-font-family($font-family-promo);
+    font-weight: $font-weight-regular;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    @include breakpoint(tablet-range) {
+        font-size: $core-font-size + 3;
+    }
+    @include breakpoint(mobile-only) {
+        font-size: $core-font-size + 1.5;
+    }   
+}
+.g-subpromo {
+    font-size: $core-font-size + 0.5;
+    line-height: $core-line-height - 0.3;
+    font-family: get-font-family($font-family-subpromo);
+    font-weight: $font-weight-regular;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    @include breakpoint(tablet-range) {
+        font-size: $core-font-size + 0.25;
+        line-height: $core-line-height - 0.35;
+    }
+}
+.g-block-action-button,
+.g-promocontent-altlink {
+    margin-top: 2rem;
+}
+.g-textpromo {
+    font-size: $core-font-size + 0.25;
+    line-height: $core-line-height;
+    opacity: 0.75;
+    @include breakpoint(tablet-range) {
+        font-size: $core-font-size + 0.25;
+    }
+    @include breakpoint(mobile-only) {
+        font-size: $core-font-size;
+    }   
+}
+
+.g-promocontent-box {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+    border-top: 3px solid $accent-color-1;
+    padding: 1rem 2rem;
+    .g-title {
+        color: $accent-color-1;
+        span {
+            font-weight: $font-weight-bold;
+        }
+    }
+    .g-tags {
+        list-style: none;
+        font-family: get-font-family($font-family-default);
+        font-weight: $font-weight-regular; 
+        font-size: $core-font-size + 0.15;    
+        margin: 0;
+        text-transform: none;
+        li {
+            display: block;
+            color: inherit;
+            background: transparent;
+            margin-bottom: 0.75rem;
+        }
+    }    
+}

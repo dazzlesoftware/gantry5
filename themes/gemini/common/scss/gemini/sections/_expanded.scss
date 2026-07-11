@@ -1,0 +1,17 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+    @extend .section-paddings;
+
+    // Simple Content Particle
+    .g-simplecontent-item-content-title {
+        color: $black;
+    }
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

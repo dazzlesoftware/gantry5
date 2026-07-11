@@ -1,0 +1,144 @@
+name: Team
+description: Display team list.
+type: particle
+icon: fa-futbol-o
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            allitems:
+              overridable: false
+              type: input.text
+              label: '"All items" Label'
+              description: Enter all items button label.
+              placeholder: 'All'
+
+            initial:
+              overridable: false
+              type: select.select
+              label: Initial item
+              description: Enter group number to change initial filter group
+              default: '2'
+              options:
+                all: All
+                1: 1st Item
+                2: 2nd Item
+                3: 3rd Item
+                4: 4th Item
+                5: 5th Item
+
+            cols:
+              overridable: false
+              type: select.select
+              label: Grid Column
+              description: Select the grid column amount
+              placeholder: 'Select...'
+              default: cols-5
+              options:
+                cols-2: 2 Columns
+                cols-3: 3 Columns
+                cols-4: 4 Columns
+                cols-5: 5 Columns
+
+            image_height:
+              type: input.text
+              label: Image Height Size
+              description: Define initial size for each shape
+              default: 240px
+              pattern: '\d+(\.\d+){0,1}(rem|em|ex|ch|vw|vh|vmin|vmax|%|px|cm|mm|in|pt|pc)'
+
+            animate:
+              overridable: false
+              type: select.select
+              label: Blob Animation
+              description: Should the blobs with images be animated.
+              placeholder: 'Select...'
+              default: enabled
+              options:
+                enabled: Enabled
+                disabled: Disabled
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            category:
+              type: collection.list
+              array: true
+              label: Team Members
+              description: Create case studies.
+              value: title
+              ajax: true
+              overridable: false
+
+              fields:
+                .title:
+                  type: input.text
+                  label: Title
+                  description: Enter case title
+
+                .member:
+                  type: collection.list
+                  array: true
+                  label: Members
+                  description: Create case studies items.
+                  value: title
+                  ajax: true
+
+                  fields:
+                    .image:
+                      type: input.imagepicker
+                      label: Image
+                      description: Select desired image.
+
+                    .title:
+                      type: input.text
+                      label: Title
+                      description: Enter case title
+
+                    .position:
+                      type: input.text
+                      label: Position
+                      description: Enter position
+
+                    .url:
+                      type: input.text
+                      label: Url
+                      description: Customize url.
+
+                    .target:
+                      type: select.selectize
+                      label: Target
+                      description: Target browser window when item is clicked.
+                      placeholder: 'Select...'
+                      default: _self
+                      options:
+                          _self: Self
+                          _blank: New Window

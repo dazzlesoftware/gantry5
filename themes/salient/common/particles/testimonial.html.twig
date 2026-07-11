@@ -1,0 +1,38 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div class="g-testimonials {{ particle.cols|e }} {{ particle.class|e }}">
+		{% if particle.title %}
+		<h3 class="g-title">{{ particle.title|raw }}</h3>
+		{% endif %}
+		
+		{% if particle.intro %}
+		<p>{{ particle.intro|raw }}</p>
+		{% endif %}
+		
+		{% for testimonial in particle.testimonials %}
+		<div class="g-testimonial-item">
+			{% if testimonial.img %}
+			<div class="g-testimonial-author-img">
+				<img src="{{ url(testimonial.img|e) }}" alt="{{ testimonial.author|e }}">
+			</div>
+			{% endif %}
+			{% if testimonial.content %}
+			<div class="g-testimonial-content">
+				<p>{{ testimonial.content|raw }}</p>
+				{% if testimonial.author %}
+				<div class="g-testimonial-author-name">
+					<span>-</span><span>{{ testimonial.author|e }}</span>
+				</div>
+				{% endif %}
+				{% if testimonial.company %}
+				<div class="g-testimonial-author-company">
+					<span><a href="{{ testimonial.companyurl|e }}">{{ testimonial.company|e }}</a></span>
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

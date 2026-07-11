@@ -1,0 +1,11 @@
+#g-feature {
+    color: $feature-text-color;
+    background: $feature-background;
+}
+
+@media print {
+    #g-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,311 @@
+// Styling
+.g-pricingtable-particle {
+    h2.g-title {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
+        line-height: normal;
+        margin-bottom: 3rem;
+        margin: 0 auto;
+        margin-bottom: $content-padding;
+        font-weight: $font-weight-semibold;
+        text-align: center;
+    }
+}
+
+.nocheck {
+    .fa.fa-check {
+        display: none;
+    }
+}
+
+// Switcher
+.g-pricingtable-switcher {
+    width: auto;
+    background: $black;
+    padding: 0.3rem;
+    border-radius: 1.3rem;
+    font-weight: $font-weight-medium;
+    font-size: $core-font-size;
+    display: table;
+    margin: 0 auto;
+    margin-bottom: $content-padding * 2;
+
+    div {
+        padding: 0.2rem 1rem;
+        border-radius: 1.3rem;
+        display: inline-block;
+        cursor: pointer;
+        color: $white;
+
+        &.active {
+            background: $white;
+            color: $black;
+        }
+    }
+}
+
+.g-pricingtable-headertext {
+    font-weight: $font-weight-regular;
+    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+    text-align: center;
+    margin-bottom: $content-padding;
+}
+
+.g-pricingtable-footertext {
+    margin: $content-padding;
+    font-size: $core-font-size + 0.25;
+    text-align: center;
+}
+
+.g-pricingtable-container {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.g-pricingtable-col-item {
+    display: flex;
+    padding: $content-margin;
+    z-index: 1;
+
+    .g-pricingtable-1-col & {
+        flex: auto 1 100%;
+        width: 100%;
+    }
+
+    .g-pricingtable-2-col & {
+        flex: auto 1 50%;
+        width: 50%;
+    }
+
+    .g-pricingtable-3-col & {
+        flex: auto 1 33.33333%;
+        width: 33.33333%;
+    }
+
+    .g-pricingtable-4-col & {
+        flex: auto 1 25%;
+        width: 25%;
+
+        @include breakpoint(desktop-range) {
+            flex: auto 1 50%;
+            width: 50%;
+        }
+
+        @include breakpoint(tablet-range) {
+            flex: auto 1 50%;
+            width: 50%;
+        }
+    }
+
+    .g-pricingtable-5-col & {
+        flex: auto 1 20%;
+        width: 20%;
+    }
+
+    .g-pricingtable-6-col & {
+        flex: auto 1 16.66667%;
+        width: 16.66667%;
+    }
+
+    @include breakpoint(mobile-only) {
+        flex: auto 1 100% !important;
+        width: 100% !important;
+    }
+
+    .g-pricingtable {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: $content-padding;
+        color: set-color($base-background);
+        background-repeat: no-repeat;
+
+        .button {
+            @extend %g-button;
+            margin: $content-padding 0;
+            width: 100%;
+            font-weight: $font-weight-bold;
+            margin-bottom: 0;
+            @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
+        }
+
+        .g-pricingtable-ribbon {
+            z-index: 2;
+            position: absolute;
+            line-height: $core-line-height + 0.85;
+            font-size: $core-font-size - 0.35;
+            font-weight: $font-weight-semibold;
+            background: $accent-color-1;
+            width: 135px;
+            top: 20px;
+            left: -33px;
+            text-align: center;
+            letter-spacing: 1px;
+            transform: rotate(-45deg);
+            color: $base-text-color;
+
+            .dir-rtl & {
+                right: -33px;
+                left: auto;
+                transform: rotate(45deg);
+            }
+        }
+
+        .g-pricingtable-icon {
+            font-size: $core-font-size + 1.5;
+        }
+
+        .g-pricingtable-plan {
+            @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.1, false, false);
+            font-weight: $font-weight-regular;
+            color: set-color($base-background);
+
+            a {
+                color: set-color($base-background);
+
+                &:hover {
+                    color: $accent-color-1;
+                }
+            }
+        }
+
+        .g-pricingtable-subtitle {
+            padding-top: 0;
+            margin-top: -1rem;
+            font-size: $core-font-size - 0.1;
+        }
+
+        .g-pricingtable-price {
+            font-weight: $font-weight-semibold;
+            @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
+        }
+
+        .g-pricingtable-period {
+            font-size: $core-font-size;
+            font-weight: $font-weight-light;
+            line-height: $core-line-height - 1;
+        }
+
+        .g-pricingtable-desc {
+            font-size: $core-font-size;
+            padding: $content-padding 0;
+        }
+
+        .g-pricingtable-item {
+            @include responsive-font($responsive-font-size - 0.35, $core-font-size, false, false);
+            font-weight: $font-weight-regular;
+            padding-bottom: $content-margin;
+            color: set-color($base-background);
+
+            &.g-pricingtable-item-0 {
+                position: relative;
+            }
+
+            &.disabled {
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    // Highlighted Table
+    &.g-pricingtable-col-item-highlight {
+        z-index: 5;
+
+        @include breakpoint(no-mobile) {
+            transform: scale(1.2);
+        }
+    }
+}
+
+// Accents
+.accent1 {
+    .g-pricingtable {
+        background-color: $accent-color-1;
+        color: set-color($accent-color-1);
+
+        .g-pricingtable-item,
+        .g-pricingtable-plan a {
+            color: set-color($accent-color-1);
+
+            &:hover {
+                color: set-color($accent-color-1);
+            }
+        }
+
+        .button {
+            background-color: $black;
+
+            &:hover {
+                color: $black;
+                border-color: $black;
+            }
+        }
+    }
+
+
+}
+
+.accent2 {
+    .g-pricingtable {
+        background-color: $accent-color-2;
+        color: set-color($accent-color-2);
+
+        .g-pricingtable-item,
+        .g-pricingtable-plan a {
+            color: set-color($accent-color-2);
+        }
+
+        .button {
+            background-color: $black;
+
+            &:hover {
+                color: $black;
+                border-color: $black;
+            }
+        }
+    }
+}
+
+.white {
+    .g-pricingtable {
+        background-color: $white;
+        color: $black;
+
+        .g-pricingtable-item, .g-pricingtable-plan a {
+            color: $black;
+        }
+
+        .button {
+            background-color: $black;
+
+            &:hover {
+                color: $black;
+                border-color: $black;
+            }
+        }
+    }
+}
+
+.accent3 {
+    .g-pricingtable {
+        background-color: $accent-color-3;
+        color: $black;
+
+        .g-pricingtable-item, .g-pricingtable-plan a {
+            color: $black;
+        }
+
+        .button {
+            background-color: $black;
+
+            &:hover {
+                color: $black;
+                border-color: $black;
+            }
+        }
+    }
+}

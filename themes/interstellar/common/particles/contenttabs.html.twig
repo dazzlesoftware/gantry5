@@ -1,0 +1,77 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+    <script src="{{ url('gantry-theme://js/juitabs.js') }}"></script>
+{% endblock %}
+
+{% block particle %}
+
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div class="g-contenttabs">
+            <div id="g-contenttabs-{{ id }}" class="g-contenttabs-container">
+                <ul class="g-contenttabs-tab-wrapper-container">
+                    {% for item in particle.items %}
+                        <li class="g-contenttabs-tab-wrapper">
+                            <span class="g-contenttabs-tab-wrapper-head">
+                                <a class="g-contenttabs-tab" href="#{{ item.tabname|e|replace({' ': ''}) }}">
+                                    <span class="g-contenttabs-tab-title">{{ item.title|raw }}</span>
+                                    <span class="g-contenttabs-tab-subtitle">{{ item.subtitle|raw }}</span>
+                                </a>
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="clearfix"></div>
+
+                <ul class="g-contenttabs-content-wrapper-container">
+                    {% for item in particle.items %}
+                        <li class="g-contenttabs-tab-wrapper">
+                            <div class="g-contenttabs-tab-wrapper-body">
+                                <div id="{{ item.tabname|e|replace({' ': ''}) }}" class="g-contenttabs-content">
+                                    {% if item.desc %}
+                                        {{ item.desc|raw }}
+                                    {% endif %}
+                                    {% for tag in item.tags %}
+                                        <div class="g-contenttabs-tag">
+                                            <div class="g-contenttabs-content-tag">
+                                                <span class="g-contenttabs-content-tag-text">{{ tag.tag|raw }}</span>
+                                                <span class="g-contenttabs-content-subtag-dot g-contenttabs-content-subtag-dot-{{ tag.subtagdotaccent|default('accent1') }}" {% if tag.subtagdotcustom %}style="background-color: {{ tag.subtagdotcustom|raw }}"{% endif %}></span>
+                                                <span class="g-contenttabs-content-subtag-text">{{ tag.subtagtext|raw }}</span>
+                                            </div>
+                                            <div class="g-contenttabs-content-text">
+                                                <span>{{ tag.subtagdesc|raw }}</span>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#g-contenttabs-{{ id }}').tabs({
+                show: {
+                    {% if particle.animation == 'up' or particle.animation == 'down' or particle.animation == 'left' or particle.animation == 'right' %}
+                    effect: 'slide',
+                    direction: '{{ particle.animation }}',
+                    {% else %}
+                    effect: '{{ particle.animation|default('slide') }}',
+                    {% endif %}
+                    duration: {{ particle.duration|default('500') }}
+                }
+            });
+        });
+    </script>
+{% endblock %}

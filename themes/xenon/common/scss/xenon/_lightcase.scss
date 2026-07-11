@@ -1,0 +1,12 @@
+#lightcase-case {
+	z-index: 10005;
+	font-family: inherit !important;
+}
+
+#lightcase-overlay {
+	z-index: 10004;
+}
+
+#lightcase-nav a[class*=lightcase-icon-] {
+	z-index: 10004;
+}

@@ -1,0 +1,18 @@
+.g-social {
+	a {
+		color: $base-text-color;
+		background: $base-background;
+		display: inline-block;
+		font-size: $core-font-size - 0.2;
+		text-align: center;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		margin: 0 2px;
+		border-radius: 2px;
+		&:hover {
+			color: $white;
+			background: $accent-color-1;
+		}
+	}
+}

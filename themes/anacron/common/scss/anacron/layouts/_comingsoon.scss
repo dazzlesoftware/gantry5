@@ -1,0 +1,18 @@
+.g-comingsoon {
+
+    &.scrollheader {
+        padding-top: 0 !important;
+    }	
+    
+	#rt-logo {
+	    background-image: url(gantry-media://logo/white/logo.png);
+	    width: 165px;
+	    height: 60px;
+	    margin: 0 auto;
+	    display: block;
+	}
+
+	#g-showcase {
+	    padding: 150px 0;
+	}
+}

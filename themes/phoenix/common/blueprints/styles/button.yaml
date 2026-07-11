@@ -1,0 +1,15 @@
+name: Button Colors
+description: Button colors for the theme
+type: core
+
+form:
+  fields:
+
+    text-color:
+      type: input.colorpicker
+      label: Button Text
+      default: "#888888"
+    background-color:
+      type: input.colorpicker
+      label: Button Background
+      default: "#f6c167"

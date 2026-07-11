@@ -1,0 +1,19 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-logos">
+        {% for item in particle.logos %}
+            <div class="g-logo-wrapper">
+                {% if item.url %}
+                    <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}">
+                {% endif %}
+
+                <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+
+                {% if item.url %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

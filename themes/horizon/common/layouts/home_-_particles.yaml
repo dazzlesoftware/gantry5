@@ -1,0 +1,610 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1614347604
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - slider-5618
+  /header/:
+    -
+      - testimonials-8325
+  /above/:
+    -
+      - 'teamhighlight-3310 50'
+      - 'simplecontent-3175 50'
+  /feature/:
+    -
+      - featureslider-6401
+  /showcase/:
+    -
+      - infolist-3792
+  /utility/:
+    -
+      - cta-9392
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-1120
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - team-4014
+  /extension/:
+    -
+      - 'promo-9419 50'
+      - 'contentarray-2765 50'
+    -
+      - 'spacer-9471 20'
+      - 'logos-2310 60'
+      - 'spacer-4573 20'
+  /bottom/:
+    -
+      - video-2872
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: no-background-image
+      variations: ''
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-vertical-paddings
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings-large'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-bottom'
+      variations: ''
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  slider-5618:
+    attributes:
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      patterns: enabled
+      loop: enabled
+      speed: '800'
+      centered: enabled
+      thumbs: disabled
+      touchmove: enabled
+      items:
+        -
+          description: 'Horizon provides exceptional design elements that bring new life to business websites.'
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          link: '#'
+          link_text: 'Learn More ->'
+          title: 'Breathtaking designs for a new generation.'
+        -
+          description: 'Bring attention to the most important details of your company with the slider particle.'
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          link: '#'
+          link_text: 'Learn More ->'
+          title: 'A big, bold slider for your homepage.'
+        -
+          description: 'Build gorgeous websites in a fraction of the time with Gantry 5.'
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          link: '#'
+          link_text: 'Learn More ->'
+          title: 'Leave yesterday''s internet behind.'
+      largedesktopslides: '1'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '1'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '1'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+    block:
+      variations: 'nomarginall nopaddingall'
+  testimonials-8325:
+    attributes:
+      source: particle
+      class: ''
+      title: ''
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      centered: enabled
+      thumbs: disabled
+      touchmove: disabled
+      patterns: enabled
+      testimonial:
+        -
+          content: 'Horizon changed the way my company does business online. Instead of the same social media pages every other company is using, our website gives our brand a unique storytelling medium.'
+          photo: 'gantry-media://home/header/img-01.png'
+          position: 'Company CEO'
+          name: 'Marcus Smith'
+        -
+          content: 'Your company deserves to have its story told on a website that reflects the quality of your products and services. Never settle for less. Make Horizon part of your company''s image.'
+          photo: 'gantry-media://home/header/img-01.png'
+          position: 'CEO Boss'
+          name: 'Dan Jacobs'
+        -
+          content: 'RocketTheme has been creating cutting-edge templates and themes for over 15 years. Horizon brings the latest in web technologies and website composition to your site.'
+          photo: 'gantry-media://home/header/img-01.png'
+          position: 'Company Marketer'
+          name: 'Sharon Winn'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+    block:
+      variations: 'nomarginall nopaddingall'
+  teamhighlight-3310:
+    title: 'Team Highlight'
+    attributes:
+      image: 'gantry-media://home/above/img-01.jpg'
+      name: 'Leon Grahma'
+      position: 'Horizon CEO'
+  simplecontent-3175:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: 'The manifesto'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: 'Horizon features some of the greatest particles ever made for the Gantry 5 framework. Gorgeous sliders, statistic meters, icon grids, comparison tables, and more. Built on a responsive framework that makes it easier than ever to create a unique user experience for your customers.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Item 1'
+  featureslider-6401:
+    title: 'Feature Slider'
+    attributes:
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      centered: enabled
+      thumbs: disabled
+      touchmove: disabled
+      patterns: enabled
+      items:
+        -
+          description: 'Horizon is innovation personified. It is built from the ground up to fit the needs of brands large and small, on the powerful and versatile Gantry 5 framework.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Innovation
+        -
+          description: 'The RocketTheme team has over a decade of experience building templates and themes for hundreds of thousands of customers.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Collaboration
+        -
+          description: 'Make your website as unique as your brand. Versatility is core to Horizon.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Creativity
+        -
+          description: 'Every RocketTheme template is professionally designed, produced, and supported by our industry-leading team.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Expertise
+        -
+          description: 'Horizon is available on several leading CMS solutions, enabling you to fit the right theme with the right CMS for your business.'
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Delivery
+      largedesktopslides: '1'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '1'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '1'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+    block:
+      variations: 'nomarginall nopaddingall'
+  infolist-3792:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: RocketTheme
+      intro: 'Here’s what you can accomplish when you <span>choose RocketTheme.</span>'
+      cols: g-3cols
+      patterns: enabled
+      infolists:
+        -
+          icon: 'fa fa-rocket'
+          iconloc: center
+          iconacc: noaccent
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'RocketLaunchers make it easier than ever to create a new website.'
+          tag: ''
+          subtag: ''
+          label: 'Learn more ->'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Start quickly'
+        -
+          icon: 'fa fa-save'
+          iconloc: center
+          iconacc: noaccent
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Buy one theme or subscribe to one of our convenient membership plans. You can save, either way!'
+          tag: ''
+          subtag: ''
+          label: 'Learn more ->'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Save Money'
+        -
+          icon: 'fa fa-money'
+          iconloc: center
+          iconacc: noaccent
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Our support forums are manned by a team of experienced Rocketeers to help you whenever you need it.'
+          tag: ''
+          subtag: ''
+          label: 'Learn more ->'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Get Support'
+    block:
+      variations: center
+  cta-9392:
+    title: 'Simple CTA'
+    attributes:
+      title: 'Not sure how to get started?'
+      description: 'RocketTheme provides detailed documentation to help you get acquainted with every aspect of your purchase.'
+      label: 'Contact our consultant'
+      link: '#'
+      target: _self
+      contact: 'or simply call us at <br /> +1 2345678 901'
+      class: button-2
+      patterns: enabled
+  team-4014:
+    attributes:
+      class: ''
+      title: 'Team particle'
+      subtitle: 'The team particle makes <span>showcasing your team easy</span>.'
+      patterns: enabled
+      members:
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: 'Horizon CEO'
+          link: '#'
+          target: _self
+          name: 'Leon Graham'
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: 'Horizon CEO'
+          link: '#'
+          target: _self
+          name: 'Karol Orzel'
+        -
+          empty: empty
+          nameonly: nameonlyno
+          image: ''
+          role: ''
+          link: ''
+          target: _self
+          name: Empty
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: 'Horizon Boss'
+          link: '#'
+          target: _self
+          name: 'Andy Miller'
+        -
+          empty: empty
+          nameonly: nameonlyno
+          image: ''
+          role: ''
+          link: ''
+          target: _self
+          name: Empty
+        -
+          empty: empty
+          nameonly: nameonlyno
+          image: ''
+          role: ''
+          link: ''
+          target: _self
+          name: Empty
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: 'Horizon CEO'
+          link: '#'
+          target: _self
+          name: 'Reggie Simmons'
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: 'CEO Depart'
+          link: '#'
+          target: _self
+          name: 'Eric Cartman'
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: Manager
+          link: '#'
+          target: _self
+          name: 'Stan Marsh'
+        -
+          empty: empty
+          nameonly: nameonlyno
+          image: ''
+          role: ''
+          link: ''
+          target: _self
+          name: Empty
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: Lawyer
+          link: '#'
+          target: _self
+          name: 'Kyle Broflowski'
+        -
+          empty: notempty
+          nameonly: nameonlyno
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          role: Janitor
+          link: '#'
+          target: _self
+          name: 'Kenny McCormick'
+        -
+          empty: notempty
+          nameonly: nameonlyyes
+          image: ''
+          role: ''
+          link: ''
+          target: _self
+          name: 'We''re Hiring!'
+    block:
+      variations: center
+  promo-9419:
+    attributes:
+      headline: 'Promo particle'
+      title: 'Promote your brand<br />your way.'
+      image: 'gantry-media://home/extension/img-01.jpg'
+      patterns: enabled
+  contentarray-2765:
+    title: 'Joomla Articles'
+    attributes:
+      title: 'The Blog'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          columns: '1'
+          start: '0'
+        display:
+          pagination_buttons: ''
+          image:
+            enabled: ''
+          text:
+            type: ''
+          read_more:
+            enabled: ''
+          author:
+            enabled: ''
+          category:
+            enabled: ''
+          hits:
+            enabled: ''
+        sort:
+          orderby: publish_up
+          ordering: ASC
+  logos-2310:
+    attributes:
+      title: 'They Trusted Us'
+      logos:
+        -
+          image: 'gantry-media://home/extension/logo-01.png'
+          url: '#'
+          target: _self
+          title: 'Item 1'
+        -
+          image: 'gantry-media://home/extension/logo-02.png'
+          url: '#'
+          target: _self
+          title: 'Item 2'
+        -
+          image: 'gantry-media://home/extension/logo-03.png'
+          url: '#'
+          target: _self
+          title: 'Item 3'
+        -
+          image: 'gantry-media://home/extension/logo-04.png'
+          url: '#'
+          target: _self
+          title: 'Item 4'
+        -
+          image: 'gantry-media://home/extension/logo-05.png'
+          url: '#'
+          target: _self
+          title: 'Item 5'
+        -
+          image: 'gantry-media://home/extension/logo-06.png'
+          url: '#'
+          target: _self
+          title: 'Item 6'
+    block:
+      variations: center
+  video-2872:
+    attributes:
+      class: ''
+      headertext: ''
+      title: ''
+      description: ''
+      columns: '1'
+      items:
+        -
+          caption: 'Watch the video'
+          caption2: 'How we work'
+          source: local
+          video: ''
+          local:
+            -
+              file: 'gantry-media://home/bottom/video.mp4'
+              title: 'Item 1'
+          posterimage: 'gantry-media://home/bottom/poster-01.jpg'
+          loop: enabled
+          autoplay: disabled
+          controls: disabled
+          info: disabled
+          related: disabled
+          muted: enabled
+          start: ''
+          title: 'Item 1'
+    block:
+      variations: 'nomarginall nopaddingall'

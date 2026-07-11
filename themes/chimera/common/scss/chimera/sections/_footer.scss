@@ -1,0 +1,26 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;
+
+	.title {
+		color: $white;
+	}
+
+	.readon, .button, .login-button {
+		color: $white;
+		border: 1px solid darken($footer-background, 12%);
+		background: darken($footer-background, 5%);
+		box-shadow: none;
+		&:hover {
+			color: $white;
+			background: lighten($footer-background, 10%);
+		}
+	}
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

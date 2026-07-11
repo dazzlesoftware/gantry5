@@ -1,0 +1,28 @@
+#g-header {
+    position: relative;
+    color: $header-text-color;
+    background: $header-background;
+
+    // Grid Vertical Alignment
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-simplecontent {
+        .g-simplecontent-item-leading-content, .g-simplecontent-item-main-content {
+            margin: 0;
+            color: $white;
+        }
+        .g-simplecontent-item-main-content {
+            color: transparentize($white, 0.50);
+        }
+
+    }
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

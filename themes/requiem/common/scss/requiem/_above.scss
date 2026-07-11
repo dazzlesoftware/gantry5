@@ -1,0 +1,40 @@
+#g-above {
+    background: $above-background;
+    color: $above-text-color;
+    &:after {
+    	background: $rule-color;
+    	position: absolute;
+    	left: 50%;
+    	width: 100px;
+    	margin-left: -50px;
+    	content: "";
+    	height: 5px;   	
+    }    
+
+	// Accent
+	a {
+		color: darken($above-text-color, 25%);
+		font-weight: bold;
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+
+	// Home
+	.g-home &, .g-homepositions & {
+		text-align: center;
+
+		// Promo Content
+		.g-promocontent {
+			width: 75%;
+			margin: 0 auto;
+		}
+	}    
+}
+
+@media print {
+	#g-above {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

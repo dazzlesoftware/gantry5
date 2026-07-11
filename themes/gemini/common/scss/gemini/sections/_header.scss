@@ -1,0 +1,25 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+    @extend .section-paddings;
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-layout-standard {
+            .g-simplecontent-item-readmore-container {
+                padding-top: 1rem;
+                font-weight: $font-weight-bold;
+            }
+        }
+        .g-simplecontent-item-content-title {
+            color: $black;
+        }
+    }
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

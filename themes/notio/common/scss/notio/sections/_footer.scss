@@ -1,0 +1,24 @@
+#g-footer {
+    color: $footer-text-color;
+    background: $footer-background;
+    padding-top: $content-padding;
+    border-top: 1px solid transparentize($base-text-color, 0.70);
+
+    // Branding Particle
+    .g-branding {
+        color: darken($base-text-color, 20%);
+
+        h2.g-title {
+            font-weight: $font-weight-medium;
+            padding-bottom: 0;
+            @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.5, false, false);
+        }
+    }
+}
+
+@media print {
+    #g-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

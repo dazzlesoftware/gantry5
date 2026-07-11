@@ -1,0 +1,9 @@
+isotope-theme:
+  title: 'Isotope Theme'
+  description: 'Sample menu for Isotope theme.'
+
+  items:
+    isotope:
+      title: 'Home'
+      outline: home
+      home: 1

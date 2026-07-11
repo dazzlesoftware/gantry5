@@ -1,0 +1,198 @@
+#lists {
+	&.g-owlcarousel-lists {
+		position: relative;
+
+		.g-owlcarousel {
+		    overflow: hidden;
+        	padding: 0;
+
+        	.owl-item {
+
+	            .item {
+	                p {
+	                    margin: 0;
+	                }
+	            }
+            }    
+
+			.g-owlcarousel-item {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				padding: 5px 0;
+    			margin-bottom: 2px;
+
+				.g-owlcarousel-item-title {
+					font-family: get-font-family($font-family-default);
+			    	position: relative;
+                    font-size: $core-font-size + 0.2 !important;
+                    line-height: 1.2em !important;
+                    background: $white;
+			    	border: 0;
+			    	padding: 5px 0;
+                    margin: -1px -1px 2px -1px !important;
+                    cursor: pointer;
+
+					&.padding {
+						padding: 10px 0 10px 0;
+					}
+
+					&:focus {
+                        outline: none;
+                    }
+
+					.indicator {
+						position: absolute;
+					    width: 30px;
+					    height: 30px;
+					    line-height: 30px;
+					    top: 50%;
+					    margin-top: -17px;
+					    right: 5px;
+					    cursor: pointer;
+						opacity: 0.25;
+						color: #888888;
+                        background: rgba(255, 255, 255, 0.5);
+                        border-radius: 3px;
+                        display: block;
+                        cursor: pointer;
+                        text-align: center;
+
+						span {
+							display: none;
+						}
+
+						&:before {
+						    vertical-align: middle;
+						    text-align: center;
+						    cursor: pointer;
+						    border: 1px solid transparent;
+						    border-radius: 2px;
+						    color: #ffffff;
+						    background-color: $accent-color-1;
+						    content: "+";
+						    text-shadow: none;
+						    font-size: 1em;
+						    display: block;
+						}
+
+						&:hover {
+							opacity: 1;
+						}
+					}
+					&.ui-accordion-header-active {
+					    background: $white;
+                        margin: 0;
+
+                        .ui-accordion-header-icon {
+                            display: none;
+                        }                        
+
+						.indicator {
+							opacity: 1;
+							&:before {
+								content: "×";
+							}
+						}
+					} 
+				}
+				.owl-readon {
+					font-family: get-font-family($font-family-alt);
+				    text-transform: uppercase;
+				    font-weight: bold;
+				    letter-spacing: 1px;
+				    font-size: 12px;
+				    background: 0;
+				    padding: 0;
+				    margin: 10px 0;
+				    &:hover {
+				    	color: lighten($accent-color-1, 15%);
+				    }
+				}
+				.g-owlcarousel-content {
+					border-bottom: 0;
+					padding-right: 50px;
+					font-size: 15px;
+                    margin-bottom: 3px;
+
+					.g-owlcarousel-item-desc {
+						margin-bottom: 5px;
+						border: 0;
+					}
+				}	
+			}
+			.owl-nav {
+				margin-top: 40px;
+				> div, > button {
+					color: #ffffff;
+    				background: $accent-color-1;
+    				border-radius: 2px;
+    				position: absolute;
+				    font-size: 1.25em;
+				    display: block;
+				    width: 30px;
+				    height: 30px;
+				    opacity: 0.25;
+				    cursor: pointer;
+				    text-align: center;
+				    transform: none;
+				    margin-left: 5px;
+				    margin-top: 35px;
+				    text-shadow: none;
+				    top: auto;
+				    bottom: 0;
+				    right: 0;
+				    left: auto;
+
+				    &:hover {
+							opacity: 1;
+					}
+
+				    &.owl-next {
+				    	&:before {
+					    	content: '\f105';
+						    font-family: FontAwesome;
+						    position: absolute;
+						    top: 2px;
+						    left: 11px;
+					    } 
+				    }
+				    &.owl-prev {
+				    	margin-right: 2.2rem;
+				    	&:before {
+					    	content: '\f104';
+						    font-family: FontAwesome;
+						    position: absolute;
+						    top: 2px;
+						    left: 11px;
+					    } 
+				    }
+				    span {
+				    	display: none;
+				    }
+				}
+			}
+			.owl-dots {
+				position: absolute;
+   			 	right: 90px;
+   			 	bottom: 2%;
+   			 	width: auto;
+
+   			 	.owl-dot {
+	                border: 2px solid $accent-color-1;
+	                opacity: 1;  
+	                margin: 0 2px; 			 	
+   			 		padding: 0;
+   			 		border-radius: 100%;
+   			 		&.active {
+   			 			background: $accent-color-1;
+   			 		}
+
+                	&:not(.active) {
+                    	background: transparent;
+                    	opacity: 0.3;
+                	}   			 		
+   			 	}
+			}
+		}
+	}		
+}
+

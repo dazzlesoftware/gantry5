@@ -1,0 +1,25 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-logo {
+        color: $navigation-text-color;
+    }
+
+    input[type="text"],
+    input[type="search"] {
+        border-color: transparentize($navigation-text-color, 0.70);
+        color: $navigation-text-color;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

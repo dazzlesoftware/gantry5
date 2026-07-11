@@ -1,0 +1,23 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+}
+
+.promo1 {
+	font-size: 42px;
+    line-height: 72px;
+}
+
+.promo2 {
+	font-size: 21px;
+    line-height: 36px;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-style: italic;
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

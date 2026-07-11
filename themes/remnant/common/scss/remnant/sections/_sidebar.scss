@@ -1,0 +1,12 @@
+#g-sidebar {
+    background: $main-background;
+    color: $main-text-color;
+    border-radius: $border-radius;
+}
+
+@media print {
+    #g-sidebar{
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

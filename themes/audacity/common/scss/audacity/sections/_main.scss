@@ -1,0 +1,28 @@
+#g-main {
+	background: $white;
+    color: $base-text-color; 
+}
+
+.g-block.main {
+	background: $white;
+}
+
+.g-block.sidebar {
+	background: darken($white, 6%);
+}
+
+#g-sidebar {
+	background: darken($white, 6%);
+	padding-top: 15px;
+
+	> .g-grid {
+		padding: 0 15px;
+	}
+}
+
+@media print {
+	#g-main {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

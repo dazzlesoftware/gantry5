@@ -1,0 +1,45 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-team">
+        {% if particle.title or particle.subtitle %}
+            <div class="g-team-header">
+                {% if particle.title %}
+                    <div class="g-team-title">
+                        {{ particle.title|raw }}
+                    </div>
+                {% endif %}
+
+                {% if particle.subtitle %}
+                    <span class="g-team-subtitle">{{ particle.subtitle|raw }}</span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="g-team-grid">
+            <ul class="team-members">
+
+                {% for member in particle.members %}
+                    {% set image = member.image ?: 'gantry-media://team/avatar-placeholder.png' %}
+
+                    <li class="hex">
+                    {% if member.link %}
+                        <a class="hexIn" href="{{ member.link }}" target="{{ member.target|default('_blank') }}">
+                        {% else %}
+                            <div class="hexIn">
+                        {% endif %}
+                            <img src="{{ image }}" alt="{{ member.name }}" />
+                            <h1>{{ member.name|raw }}</h1>
+                            <p>{{ member.role|raw }}</p>
+                      {% if member.link %}
+                        </a>
+                        {% else %}
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}

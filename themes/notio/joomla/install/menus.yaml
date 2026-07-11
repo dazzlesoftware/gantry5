@@ -1,0 +1,9 @@
+notio-theme:
+  title: 'Notio Theme'
+  description: 'Sample menu for Notio theme.'
+
+  items:
+    notio:
+      title: 'Home'
+      outline: home
+      home: 1

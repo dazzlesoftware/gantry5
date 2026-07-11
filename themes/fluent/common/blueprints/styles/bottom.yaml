@@ -1,0 +1,14 @@
+name: Bottom Styles
+description: Bottom styles for the Fluent theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#1f2126"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

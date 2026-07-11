@@ -1,0 +1,50 @@
+#g-top {
+    color: $top-text-color;
+    background: $top-background;
+}
+
+#g-container-top {
+    > .g-grid, .g-container > .g-grid {
+        > .g-block {
+            &:first-child:not(.size-100) {
+                > section:first-child {
+                    border-radius: 0.3rem 0 0 0;
+                    @include breakpoint(mobile-only) {
+                        border-radius: 0.3rem 0.3rem 0 0;
+                    }
+                    .dir-rtl & {
+                        border-radius: 0 0.3rem 0 0;
+                    }
+                }
+
+            }
+
+
+            &:last-child:not(.size-100) {
+                > section:first-child {
+                    border-radius: 0 0.3rem 0 0;
+                    .dir-rtl & {
+                        border-radius: 0.3rem 0 0 0;
+                    }
+                }
+            }
+
+            &.size-100 {
+                > section {
+                    border-radius: 0.3rem 0.3rem 0 0;
+                }
+            }
+        }
+    }
+
+    .equal-height {
+        flex-direction: column;
+    }
+}
+
+@media print {
+    #g-top {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

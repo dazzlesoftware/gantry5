@@ -1,0 +1,83 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div class="{{ particle.class|e }} g-testimonials">
+	{% if not particle.patterns or particle.patterns == 'enabled' %}
+            <div class="g-testimonials-pattern">
+                <svg viewbox="0 0 1280 542" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M890 0L1124.69 135.5V406.5L890 542L655.307 406.5V135.5L890 0Z" class="base-pattern-2"/>
+                    <path d="M1229 260L1313.87 309V407L1229 456L1144.13 407V309L1229 260Z" class="base-pattern-3"/>
+                    <path d="M240 180L324.87 229V327L240 376L155.13 327V229L240 180Z" class="base-pattern-3"/>
+                    <path d="M4 306L34.3109 323.5V358.5L4 376L-26.3109 358.5V323.5L4 306Z" class="base-pattern-3"/>
+                    <path d="M363 274L393.311 291.5V326.5L363 344L332.689 326.5V291.5L363 274Z" class="base-pattern-2"/>
+                </svg>
+            </div>
+			{% endif %}
+
+		{% if particle.title %}
+			<div class="g-testimonials-header">
+				{% if particle.title %}
+					<div class="g-testimonials-title g-title">
+						{{ particle.title|raw }}
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+		<div id="{{ id }}" data-testimonials-id="{{ id }}">
+			<div class="g-testimonials swiper-container area {{ particle.class|e }}" data-testimonials-effect="slide" data-testimonials-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-testimonials-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-testimonials-timeout="{{ particle.autoplayTimeout }}" data-testimonials-speed="{{ particle.speed }}" data-testimonials-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %} {{ swiper_slides }} {{ swiper_breakpoints }}>
+				<div class="g-testimonials-wrapper swiper-wrapper">
+					{% if not particle.source or particle.source == 'particle' %}
+						{% for testimonial in particle.testimonial %}
+							<div class="swiper-slide">
+								<div class="slide">
+									<div class="g-testimonials-element-wrapper">
+										{% if testimonial.content %}
+											<h5 class="g-testimonials-content">
+												{{ testimonial.content|raw }}
+											</h5>
+										{% endif %}
+
+                                <div class="g-testimonials-separator">
+                                    <svg width="570" height="36" viewbox="0 0 570 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 2H270V32L300 2H570" stroke="{{ gantry.config.get('styles.base.text-color') }}" stroke-width="3" class="base-text-color" />
+                                    </svg>
+                                </div>
+
+					
+											<div class="g-testimonials-author-wrap">
+												<img class="g-testimonials-image" src="{{ url(testimonial.photo) }}" alt="{{ testimonial.name }}"/>
+												<div class="g-testimonials-author-data">
+													<span class="g-testimonials-author-name"><strong>{{ testimonial.name }}</strong></span>
+													<span class="g-testimonials-author-position">{{ testimonial.position }}</span>
+												</div>
+											</div>
+
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						{% include '@particles/testimonials-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+					{% endif %}
+
+				</div>
+		{% if not particle.nav or particle.nav == 'enabled' %}
+	        <div class="swiper-button-next"> 
+	            <i class="fa fa-angle-{% if gantry.page.direction == 'rtl' %}left{% else %}right{% endif %}"></i>
+	        </div>
+	        <div class="swiper-button-prev">
+	            <i class="fa fa-angle-{% if gantry.page.direction == 'rtl' %}right{% else %}left{% endif %}"></i>
+	        </div>
+				</div>
+			</div>
+		{% endif %}
+		</div>
+	{% endblock %}
+
+	{% block javascript_footer %}
+		{% do gantry.load('jquery') %}
+        {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+        {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+        {% do gantry.document.addScript(url('gantry-theme://js/testimonials.init.js'), 10, 'footer') %}
+	{% endblock %}
+

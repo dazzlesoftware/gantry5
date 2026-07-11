@@ -1,0 +1,78 @@
+name: Activities
+description: Display various activities as a image grid.
+type: particle
+icon: fa-file-image-o
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    desc:
+      type: textarea.textarea
+      label: Description
+      description: Customize the description.
+      placeholder: Enter short description
+
+    pattern:
+      type: select.select
+      label: Pattern
+      description: Enable or disable pattern.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    cols:
+      type: select.select
+      label: Grid Column
+      description: Select the grid column amount
+      placeholder: 'Select...'
+      options:
+        g-activities-2cols: 2 Columns
+        g-activities-3cols: 3 Columns
+        g-activities-4cols: 4 Columns
+        g-activities-5cols: 5 Columns
+
+    activitiesitems:
+      type: collection.list
+      array: true
+      label: Images
+      description: Create each item to appear in the content row.
+      value: caption
+      ajax: true
+
+      fields:
+        .image:
+          type: input.imagepicker
+          label: Promo Image
+          description: Select desired promo image.
+        .caption:
+          type: input.text
+          label: Caption
+          description: Customize the image caption.
+          placeholder: Enter caption
+        .url:
+          type: input.text
+          label: Link
+          description: Customize the link.
+          placeholder: Enter link

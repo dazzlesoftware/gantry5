@@ -1,0 +1,45 @@
+name: Team Highlight
+description: Display team member highlight.
+type: particle
+icon: fa-user
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable image particle.
+      default: true
+
+    image:
+      type: input.imagepicker
+      label: Image
+      description: Select desired image.
+
+    name:
+      type: input.text
+      label: Name
+      description: Enter team member name.
+
+    position:
+      type: input.text
+      label: Position
+      description: Enter team member position.
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: Set a specific CSS class for custom styling.
+
+    patterns:
+      type: select.select
+      label: Hexagon Patterns
+      description: Decide if you want hexagon patterns to be enabled or disabled. 
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable

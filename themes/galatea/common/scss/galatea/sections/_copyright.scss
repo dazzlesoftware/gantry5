@@ -1,0 +1,25 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;
+
+	// Container
+	.g-container {
+		font-size: $core-font-size - 0.15;
+	}
+
+	// Hyperlinks
+	a {
+		color: lighten($copyright-text-color, 35%);
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

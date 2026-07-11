@@ -1,0 +1,308 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: about_us
+  timestamp: 1513731033
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - simplecontent-5768
+  header: {  }
+  above: {  }
+  showcase: {  }
+  utility: {  }
+  feature: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - blockcontent-2890
+      -
+        'aside 20': {  }
+  expanded: {  }
+  extension: {  }
+  /bottom/:
+    -
+      - blockcontent-7115
+  /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'g-default-slideshow section-horizontal-paddings'
+  header:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  above:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: section-horizontal-paddings
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: ''
+      class: g-default-main
+      extra: {  }
+  expanded:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'g-default-bottom section-horizontal-paddings section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'g-default-footer section-horizontal-paddings section-vertical-paddings nopaddingbottom'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  logo-5992:
+    block:
+      class: 'nopaddingtop nopaddingbottom nomarginleft'
+  menu-2350:
+    block:
+      class: 'nopaddingtop nopaddingbottom'
+      variations: align-left
+  search-8428:
+    attributes:
+      title: ''
+      placeholder: ''
+    block:
+      class: 'fp-search hidden-phone hidden-tablet'
+  simplecontent-5768:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: '<strong>About</strong> Us'
+          author: ''
+          leading_content: 'Use beautiful Google Web Fonts to individualize your site and add character to your content. There are hundreds to choose from, in various styles and weights.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'About Us'
+  blockcontent-2890:
+    title: 'Block Content'
+    attributes:
+      class: center
+      title: 'This is who we are'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          accent: none
+          icon: ''
+          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: CEO
+          description: 'Denali''s RocketLauncher comes complete with several preset pages that enable you to hit the ground running with a complete, feature-rich website.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Rick Grimes'
+        -
+          accent: none
+          icon: ''
+          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: HR
+          description: 'Denali features a number of uniquely-designed particles that make adding content to your website easy.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Maggie Greene'
+        -
+          accent: none
+          icon: ''
+          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Designer
+          description: 'The Gantry 5 framework is packed with features that empower you to create a website that perfectly matches your vision and branding.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: 'Daryl Dixon'
+  blockcontent-7115:
+    title: 'Block Content'
+    attributes:
+      class: 'center g-blockcontent-spacing'
+      title: 'This is what we do'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          accent: none
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          name: Introduction
+        -
+          name: Mission
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Sell Goods'
+        -
+          name: Business
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Make Profit'

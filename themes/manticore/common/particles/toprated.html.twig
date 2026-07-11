@@ -1,0 +1,93 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div id="{{ id }}" class="g-toprated {{ particle.class|e }}" data-toprated-id="{{ id }}" data-toprated-slides="{{ particle.slides|default(6) }}" data-toprated-slides-scroll="{{ particle.slides_scroll|default(1) }}" data-toprated-nav="{% if particle.nav == 'enabled' %}true{% else %}false{% endif %}" data-toprated-autoplay="{% if particle.autoplay == 'enabled' %}true{% else %}false{% endif %}" data-toprated-autoplay-timeout="{{ particle.autoplayTimeout|default(8000) }}" data-toprated-loop="{% if particle.loop == 'enabled' %}true{% else %}false{% endif %}" data-toprated-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-toprated-header">
+                {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+                {% if particle.filtering == "enabled" %}
+                    <div class="g-toprated-filtering">
+                        <span class="g-toprated-group active" data-toprated-group="all">{{ particle.filtering_all|e }}</span>
+
+                        {% for group in particle.groups %}
+                            <span class="g-toprated-group" data-toprated-group="{{ group.title|e|lower|replace({' ':'_'}) }}">{{ group.title|e }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if particle.nav == 'enabled' %}
+                    <div class="g-toprated-nav"></div>
+                {% endif %}
+            </div>
+
+            <div class="g-toprated-slider">
+                {% for group in particle.groups %}
+                    {% for item in group.items %}
+                        <div class="{{ item.class|e }}" data-toprated-group="{{ group.title|e|lower|replace({' ':'_'}) }}">
+                            <div class="slide-content-wrapper">
+                                {% if item.image %}
+                                    <div class="g-toprated-image">
+                                        {% if item.link %}
+                                            <a href="{{ item.link|e }}" target="{{ item.target|default('_self') }}">
+                                        {% endif %}
+
+                                            <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+
+                                        {% if item.link %}
+                                            </a>
+                                        {% endif %}
+
+                                        {% if item.score %}
+                                            <span class="g-toprated-score">{{ item.score|e }}</span>
+                                        {% endif %}
+
+                                        {% if item.ribbon %}
+                                            <span class="g-toprated-ribbon">{{ item.ribbon|e }}</span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {% if item.title %}
+                                    <div class="g-toprated-title">
+                                        {% if item.link %}
+                                            <a href="{{ item.link|e }}" target="{{ item.target|default('_self') }}">
+                                        {% endif %}
+
+                                        <h3>
+                                            {{ item.title|raw }}
+                                        </h3>
+
+                                        {% if item.link %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {% if item.subtitle %}
+                                    <div class="g-toprated-subtitle">
+                                        {{ item.subtitle|raw }}
+                                    </div>
+                                {% endif %}
+
+                                {% if item.description %}
+                                    <div class="g-toprated-description">
+                                        {{ item.description|raw }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% else %}
+            {% include '@particles/toprated-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/slick.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/toprated.init.js'), 10, 'footer') %}
+{% endblock %}

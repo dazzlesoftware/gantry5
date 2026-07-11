@@ -1,0 +1,732 @@
+
+// RokSprocket Arrows Inheritance
+%sprocket-arrow {
+    color: $white;
+    background: $accent-color-1;
+    box-shadow: none;
+    width: 30px;
+    height: 30px;
+    font-size: 2rem;
+    font-weight: normal;
+    line-height: 23px;
+    opacity: 1;
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+// RokSprocket Pagination Inheritance
+%sprocket-pagination {
+    background: transparent;
+    color: darken($accent-color-1, 25%);
+    border: 2px solid $accent-color-1;
+    border-radius: 100%;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    box-shadow: none;
+    &.active {
+        background: $accent-color-1;
+    }
+}
+
+// RokSprocket General
+[class*="sprocket-"] {
+    *,  *:before,  *:after {
+        box-sizing: border-box !important;
+    }
+    .platform-content & {
+        *,  *:before,  *:after {
+            box-sizing: border-box !important;
+        }
+    }
+}
+
+// RokSprocket Features - Slideshow
+.sprocket-features {
+    &.layout-slideshow {
+        .sprocket-features-img-container {
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            img {
+                visibility: hidden;
+            }
+            &:before {
+                //background: rgba(0, 0, 0, 0.5);
+                background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35));
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        }
+        .sprocket-features-index-1 {
+            .sprocket-features-img-container,
+            .sprocket-features-content {
+                opacity: 1;
+                z-index: 1;
+            }
+            .sprocket-features-img-container {
+                position: relative;
+            }
+        }
+        .sprocket-features-img-container,
+        .sprocket-features-content {
+            opacity: 0;
+            position: absolute;
+            z-index: 1;
+        }
+        .sprocket-features-content {
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .sprocket-features-title,
+        .sprocket-features-desc {
+            background: transparent;
+            color: inherit;
+        }
+        .sprocket-features-title {
+            padding-left: 0;
+            padding-right: 0;
+            margin: auto;
+            width: 75%;
+            font-family: get-font-family($font-family-promo);
+            font-weight: $font-weight-bold;
+            font-size: 2.25rem;
+            line-height: $core-line-height - 0.5;
+        }
+        .sprocket-features-desc {
+            width: 70%;
+            position: relative;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            font-size: $core-font-size + 0.05rem;
+            line-height: $core-line-height - 0.2;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+            @include breakpoint(tablet-range) {
+                display: none;
+            }
+            @include breakpoint(mobile-only) {
+                display: none;
+            }
+        }
+        .sprocket-features-arrows {
+            .arrow {
+                margin-top: 0;
+                border-radius: 0;
+                opacity: 1;
+                box-shadow: none;
+                span {
+                    display: none;
+                }
+                &:before {
+                    position: absolute;
+                    font-family: FontAwesome;
+                }
+                &.next {
+                    right: 10%;
+                    &:before {
+                        content: "\f105";
+                    }
+                    @include breakpoint(tablet-range) {
+                        right: 5%;
+                    }
+                    @include breakpoint(mobile-only) {
+                        right: 5%;
+                    }
+                }
+                &.prev {
+                    left: 10%;
+                    &:before {
+                        content: "\f104";
+                    }
+                    @include breakpoint(tablet-range) {
+                        left: 5%;
+                    }
+                    @include breakpoint(mobile-only) {
+                        left: 5%;
+                    }
+                }
+            }
+        }
+        .sprocket-features-pagination {
+            left: 1rem;
+            right: inherit;
+            @include breakpoint(mobile-only) {
+                left: 1rem;
+                text-align: center;
+                bottom: 0;
+            }
+            li {
+                @extend %sprocket-pagination;
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                margin-bottom: 0.25rem;
+                color: $white;
+                @include breakpoint(mobile-only) {
+                    width: 15px;
+                    height: 15px;
+                    display: inline-block;
+                    vertical-align: bottom;
+                    span {
+                        display: none;
+                        visibility: hidden;
+                    }
+                }
+                span {
+                    display: block;
+                    line-height: 28px;
+                    text-align: center;
+                    font-size: 1rem;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+// RokSprocket Tabs
+.g-roksprocket-tabs-style-1 {
+    margin-bottom: -1rem;
+    .sprocket-tabs {
+        .sprocket-tabs-nav {
+            @include breakpoint(mobile-only) {
+                float: none;
+                width: 100%;
+                text-align: center;
+                margin: 1rem auto 0 auto;
+            }
+            background: transparent;
+            border: 0;
+            width: 25%;
+            margin: 1.25rem 1rem;
+            .sprocket-tabs-inner {
+                color: $black;
+                background: transparent;
+                border: 0 !important;
+                border-radius: 0;
+                display: inline-block;
+                padding: 2px 8px;
+                line-height: 1;
+                vertical-align: middle;
+                font-family: get-font-family($font-family-promo);
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 1.75rem;
+                @include breakpoint(mobile-only) {
+                    font-size: 1.5rem;
+                }
+            }
+            li.active {
+                .sprocket-tabs-inner {
+                    color: $white !important;
+                    background: $accent-color-1 !important;
+                }
+            }
+        }
+        &.layout-top {
+            .sprocket-tabs-nav {
+                width: 100%;
+                margin: 1rem 1.25rem 0 1.25rem;
+                > li {
+                    margin-right: 1rem;
+                }
+            }
+        }
+        &.layout-bottom {
+            .sprocket-tabs-nav {
+                width: 100%;
+                margin: 0 1.25rem 1rem 1.25rem;
+                > li {
+                    margin-right: 1rem;
+                }
+            }
+        }
+        .g-title-regular {
+            font-size: 1.05rem;
+        }
+    }
+}
+.g-roksprocket-tabs-style-2 {
+    border: 1px solid $rule-color;
+    .sprocket-tabs {
+        &.layout-top .sprocket-tabs-nav {
+            padding: 1rem !important;
+        }
+        .sprocket-tabs-nav {
+            text-align: right;
+            .dir-rtl & {
+                text-align: left;
+            }
+            .g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
+                @include breakpoint(small-mobile-range) {
+                    text-align: center;
+                }
+            }
+            > li {
+                margin-bottom: 0;
+                float: none;
+                display: inline-block;
+                > .sprocket-tabs-inner {
+                    border: none;
+                    padding: 0 0.5rem;
+                    font-family: get-font-family($font-family-title);
+                    font-weight: $font-weight-bold;
+                    font-size: $core-font-size - 0.15;
+                    line-height: $core-line-height;
+                    text-transform: uppercase;
+                    @include breakpoint(small-mobile-range) {
+                        padding: 0 0.25rem;
+                        font-size: $core-font-size - 0.2;
+                    }
+                }
+                &.active > .sprocket-tabs-inner {
+                    background: transparent;
+                    border: none;
+                    color: $black;
+                }
+            }
+        }
+        .sprocket-tabs-panels {
+            margin: 0;
+        }
+    }
+}
+.g-roksprocket-tabs-style-3 {
+    .sprocket-tabs {
+        &.layout-top .sprocket-tabs-nav {
+            padding: 0 !important;
+            background: transparent;
+            border: none;
+        }
+        .sprocket-tabs-panels {
+            @include breakpoint(tablet-range) {
+                width: 95%;
+            }
+        }
+        .sprocket-tabs-nav {
+            margin: 0;
+            > li {
+                margin-bottom: 0;
+                float: none;
+                display: inline-block;
+                > .sprocket-tabs-inner {
+                    background: lighten($base-text-color, 40%);
+                    border: none;
+                    border-radius: $border-radius;
+                    padding: 0.25rem 0.5rem;
+                    font-family: get-font-family($font-family-title);
+                    font-weight: $font-weight-bold;
+                    font-size: $core-font-size - 0.25;
+                    line-height: $core-line-height;
+                    text-transform: uppercase;
+                    .g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
+                        @include breakpoint(tablet-range) {
+                            font-size: $core-font-size - 0.35;
+                        }
+                        @include breakpoint(small-mobile-range) {
+                            font-size: $core-font-size - 0.35;
+                        }
+                    }
+                }
+                &.active > .sprocket-tabs-inner {
+                    background: $accent-color-1;
+                    border: none;
+                    color: $white;
+                }
+            }
+        }
+        .sprocket-tabs-panels {
+            margin: ($content-margin) 0;
+        }
+    }
+}
+
+// RokSprocket Headlines
+.g-roksprocket-headlines-style-1 {
+    .sprocket-headlines-text {
+        font-family: get-font-family($font-family-promo);
+        font-weight: $font-weight-bold;
+        font-size: 1.5rem;
+        line-height: $core-line-height - 0.5;
+        @include breakpoint(tablet-range) {
+            font-size: 1.15rem;
+            line-height: $core-line-height - 0.35;
+        }
+        @include breakpoint(mobile-only) {
+            font-size: 1.25rem;
+            line-height: $core-line-height - 0.25;
+        }
+        .g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
+            font-size: 1.35rem;
+            @include breakpoint(tablet-range) {
+                font-size: 1rem;
+            }
+            @include breakpoint(mobile-only) {
+                font-size: 1.15rem;
+            }
+        }
+    }
+    .sprocket-headlines {
+        background: transparent;
+        border: none;
+        margin: -0.5rem 0;
+        overflow: visible;
+    }
+    .sprocket-headlines-badge span {
+        font-family: get-font-family($font-family-title);
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.15;
+        line-height: $core-line-height;
+        text-transform: uppercase;
+        display: inline-block;
+        border-bottom: 2px solid;
+        margin: 0.6rem;
+        padding: 0 !important;
+    }
+    .sprocket-headlines-navigation {
+        width: auto;
+        .arrow {
+            position: absolute;
+            right: -20px;
+            border-radius: 0;
+            color: $white;
+            background: $black;
+            opacity: 1;
+            box-shadow: none;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 1.75rem;transition: background 0.25s ease;
+            span {
+                display: none;
+            }
+            &:before {
+                font-family: FontAwesome;
+            }
+            &.next {
+                top: -7px;
+                &:before {
+                    content: "\f106";
+                }
+            }
+            &.prev {
+                bottom: -7px;
+                &:before {
+                    content: "\f107";
+                }
+                @include breakpoint(mobile-only) {
+                    bottom: inherit;
+                    top: 23px;
+                }
+            }
+            &:hover {
+                background: lighten($black, 25%);
+            }
+        }
+    }
+}
+.g-roksprocket-headlines-style-2 {
+    .sprocket-headlines-text {
+        font-size: 0.875rem;
+    }
+    .sprocket-headlines {
+        background: transparent;
+        border: none;
+        margin: -0.5rem 0;
+        overflow: visible;
+    }
+    .sprocket-headlines-badge span {
+        font-family: get-font-family($font-family-title);
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.15;
+        line-height: $core-line-height;
+        text-transform: uppercase;
+        display: inline-block;
+        border-bottom: 2px solid;
+        margin: 0.6rem;
+        padding: 0 !important;
+    }
+    .sprocket-headlines-navigation {
+        width: auto;
+        .arrow {
+            position: absolute;
+            right: -5px;
+            border-radius: 0;
+            color: $white;
+            background: $accent-color-1;
+            opacity: 1;
+            box-shadow: none;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 1.75rem;
+            transition: background 0.25s ease;
+            span {
+                display: none;
+            }
+            &:before {
+                font-family: FontAwesome;
+            }
+            &.next {
+                top: 0;
+                &:before {
+                    content: "\f106";
+                }
+            }
+            &.prev {
+                top: 30px;
+                &:before {
+                    content: "\f107";
+                }
+            }
+            &:hover {
+                background: lighten($accent-color-1, 15%);
+            }
+        }
+    }
+}
+
+// RokSprocket Lists
+.sprocket-lists {
+    .sprocket-lists-title {
+        font-family: get-font-family($font-family-title);
+        font-weight: $font-weight-regular;
+        font-size: $core-font-size;
+        line-height: $core-line-height;
+        background: $white;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid $rule-color;
+    }
+    .active .sprocket-lists-item {
+        font-size: 0.875rem;
+        background: $white;
+        margin-bottom: 3px;
+        .sprocket-padding {
+            border-bottom: 1px solid $rule-color !important;
+            padding-bottom: 9px;
+        }
+    }
+    .indicator {
+        background: transparent;
+        margin-top: -12px;
+        .dir-rtl & {
+            right: auto;
+            left: 10px;
+        }
+    }
+}
+
+// RokSprocket Strips
+.sprocket-strips-s {
+    .sprocket-strips-s-overlay {
+        margin-top: -40px;
+    }
+    .sprocket-strips-s-block {
+        display: block;
+        float: left;
+        margin: 1% 0;
+    }
+}
+.fp-roksprocket-strips-style-1 {
+    border-bottom: 1px solid $rule-color;
+    border-top: 1px solid $rule-color;
+    margin-bottom: 1.5rem;
+    margin-top: -1rem;
+    @include breakpoint(desktop-range) {
+        margin-top: 1rem;
+    }
+    @include breakpoint(tablet-range) {
+        margin-top: 1rem;
+    }
+    .sprocket-strips-s-item {
+        position: relative;
+    }
+    .sprocket-strips-s-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        right: 0;
+        top: 0;
+        .readon {
+            &:before, &:after {
+                position: absolute;
+                opacity: 0;
+                transform: scale(0);
+                transition: all 0.25s ease;
+            }
+            &:before {
+                background: fade-out($accent-color-1, 0.25);
+                content: "";
+                height: 100%;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            &:after {
+                color: $white;
+                content: "\f002";
+                font-family: FontAwesome;
+                font-size: 2.5rem;
+                left: 50%;
+                margin-left: -1rem;
+                margin-top: -1.5rem;
+                top: 50%;
+            }
+            span {
+                display: none;
+            }
+        }
+        &:hover {
+            .readon {
+                &:before, &:after {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    .sprocket-strips-s-nav {
+        padding: 0;
+    }
+    .sprocket-strips-s-arrows {
+        margin-top: -10px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        .arrow {
+            position: absolute;
+            background: transparent;
+            margin: 0;
+            &:before {
+                position: relative;
+                font-family: FontAwesome;
+                margin: 0;
+                border: none;
+                top: -10px;
+                @include breakpoint(small-mobile-range) {
+                    top: -16px;
+                }
+            }
+            &.prev {
+                left: -35px;
+                &:before {
+                    content: "\f104";
+                }
+            }
+            &.next {
+                right: -35px;
+                &:before {
+                    content: "\f105";
+                }
+            }
+        }
+    }
+    .sprocket-strips-s-overlay .css-loader-wrapper {
+        width: 82px;
+        height: 82px;
+    }
+}
+
+// Default RokSprocket Media
+
+// Grids
+@include breakpoint(tablet-range) {
+.sprocket-grids-b-columns-3 > li, .sprocket-grids-b-columns-4 > li, .sprocket-grids-b-columns-5 > li, .sprocket-grids-b-columns-6 > li, .sprocket-grids-b-columns-7 > li, .sprocket-grids-b-columns-8 > li, .sprocket-grids-b-columns-9 > li, .sprocket-grids-b-columns-10 > li {width: 33.34%;}
+}
+
+@include breakpoint(large-mobile-range) {
+.sprocket-grids-b-columns-1 > li, .sprocket-grids-b-columns-2 > li, .sprocket-grids-b-columns-3 > li, .sprocket-grids-b-columns-4 > li, .sprocket-grids-b-columns-5 > li, .sprocket-grids-b-columns-6 > li, .sprocket-grids-b-columns-7 > li, .sprocket-grids-b-columns-8 > li, .sprocket-grids-b-columns-9 > li, .sprocket-grids-b-columns-10 > li {width: 100%;}
+    .sprocket-grids-b-info {display: none;}
+}
+
+@include breakpoint(small-mobile-range) {
+    .sprocket-grids-b-columns-1 > li, .sprocket-grids-b-columns-2 > li, .sprocket-grids-b-columns-3 > li, .sprocket-grids-b-columns-4 > li, .sprocket-grids-b-columns-5 > li, .sprocket-grids-b-columns-6 > li, .sprocket-grids-b-columns-7 > li, .sprocket-grids-b-columns-8 > li, .sprocket-grids-b-columns-9 > li, .sprocket-grids-b-columns-10 > li {width: 100%;}
+    .sprocket-grids-b-content {text-align: center;}
+    .sprocket-grids-b-info, .sprocket-grids-b-text {display: none;}
+}
+
+// Mosaic
+@include breakpoint(tablet-range) {
+.sprocket-mosaic-columns-3 li, .sprocket-mosaic-columns-4 li, .sprocket-mosaic-columns-5 li, .sprocket-mosaic-columns-6 li, .sprocket-mosaic-g-columns-1 > li, .sprocket-mosaic-g-columns-2 > li, .sprocket-mosaic-g-columns-3 > li, .sprocket-mosaic-g-columns-4 > li, .sprocket-mosaic-g-columns-5 > li, .sprocket-mosaic-g-columns-6 > li {width: 33.34%;}
+}
+
+@include breakpoint(large-mobile-range) {
+.sprocket-mosaic-columns-1 li, .sprocket-mosaic-columns-2 li, .sprocket-mosaic-columns-3 li, .sprocket-mosaic-columns-4 li, .sprocket-mosaic-columns-5 li, .sprocket-mosaic-columns-6 li, .sprocket-mosaic-g-columns-1 > li, .sprocket-mosaic-g-columns-2 > li, .sprocket-mosaic-g-columns-3 > li, .sprocket-mosaic-g-columns-4 > li, .sprocket-mosaic-g-columns-5 > li, .sprocket-mosaic-g-columns-6 > li {width: 100%;}
+    .sprocket-mosaic-g-info {display: none;}
+}
+
+@include breakpoint(small-mobile-range) {
+    .sprocket-mosaic-columns-1 li, .sprocket-mosaic-columns-2 li, .sprocket-mosaic-columns-3 li, .sprocket-mosaic-columns-4 li, .sprocket-mosaic-columns-5 li, .sprocket-mosaic-columns-6 li, .sprocket-mosaic-g-columns-1 > li, .sprocket-mosaic-g-columns-2 > li, .sprocket-mosaic-g-columns-3 > li, .sprocket-mosaic-g-columns-4 > li, .sprocket-mosaic-g-columns-5 > li, .sprocket-mosaic-g-columns-6 > li {width: 100%;}
+    .sprocket-mosaic-g-content {text-align: center;}
+    .sprocket-mosaic-g-info, .sprocket-mosaic-g-tags, .sprocket-mosaic-g-text {display: none;}
+}
+
+// Quotes
+@include breakpoint(mobile-only) {
+    .sprocket-quotes .cols-1 > li, .sprocket-quotes .cols-2 > li, .sprocket-quotes .cols-3 > li, .sprocket-quotes .cols-4 > li {width: 100%;float: none;}
+}
+
+// Strips
+@include breakpoint(mobile-only) {
+    .sprocket-strips .cols-1 > li, .sprocket-strips .cols-2 > li, .sprocket-strips .cols-3 > li, .sprocket-strips .cols-4 > li, .sprocket-strips .cols-5 > li, .sprocket-strips .cols-6 > li, .sprocket-strips .cols-7 > li, .sprocket-strips .cols-8 > li, .sprocket-strips .cols-9 > li, .sprocket-strips .cols-10 > li, .sprocket-strips .cols-11 > li, .sprocket-strips .cols-12 > li {width: 98%;float: none;}
+}
+
+@include breakpoint(large-mobile-range) {
+    .sprocket-strips-c-container .sprocket-strips-c-block, .sprocket-strips-p-container .sprocket-strips-p-block, .sprocket-strips-s-container .sprocket-strips-s-block {width: 50%;}
+}
+
+@include breakpoint(small-mobile-range) {
+    .sprocket-strips-c-container .sprocket-strips-c-block, .sprocket-strips-p-container .sprocket-strips-p-block, .sprocket-strips-s-container .sprocket-strips-s-block {width: 100%;float: none;}
+    .sprocket-strips-s-item img {width: auto;float: none;margin: 0;}
+}
+// RokSprocket Strips Arrow
+@media
+only screen and (min-width: 1195px) and (max-width: 1275px),
+only screen and (min-width: 960px) and (max-width: 1070px),
+only screen and (min-width: 768px) and (max-width: 880px),
+only screen and (min-width: 482px) and (max-width: 600px),
+only screen and (max-width: 480px) {
+    .sprocket-strips-s {
+        .sprocket-strips-s-arrows .arrow {
+            z-index: 100;
+            color: $accent-color-1;
+            &.prev {
+                left: -10px;
+                &:before {
+                    left: 10px;
+                }
+            }
+            &.next {
+                right: -10px;
+                &:before {
+                    right: 16px;
+                }
+            }
+            &:before {
+                padding: 0 8px;
+                color: $white;
+                background: $accent-color-1;
+            }
+        }
+    }
+}
+
+// Tables
+@include breakpoint(large-mobile-range) {
+    .sprocket-tables-container .sprocket-tables-block {width: 50%;}
+}
+
+@include breakpoint(small-mobile-range) {
+    .sprocket-tables-container .sprocket-tables-block {width: 100%;float: none;margin-bottom: 15px;}
+}

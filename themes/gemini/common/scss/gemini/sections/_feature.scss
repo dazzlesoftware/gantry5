@@ -1,0 +1,32 @@
+#g-feature {
+    position: relative;
+    color: $feature-text-color;
+    background: $feature-background;
+    @extend .section-paddings;
+
+    // Simple Content Particle
+    .g-simplecontent-item-content-title {
+        color: $black
+    }
+
+    &:before {
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 50rem 65rem 0 0;
+        border-color: transparentize($black, 0.97) transparent transparent transparent;
+        content: '';
+        z-index: 20;
+        pointer-events: none;
+    }
+}
+
+@media print {
+    #g-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

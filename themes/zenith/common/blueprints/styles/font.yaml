@@ -1,0 +1,11 @@
+name: Font Families
+description: Font families for the theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'nunito, Helvetica, Tahoma, Geneva, Arial, sans-serif'

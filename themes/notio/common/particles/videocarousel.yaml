@@ -1,0 +1,299 @@
+name: Video Carousel
+description: Display videos in a carousel form.
+type: particle
+icon: fa-tv
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    description:
+      type: textarea.textarea
+      label: Description
+      description: Customize the description text.
+
+    animateOut:
+      type: select.select
+      label: Out Animation
+      description: Customize the Out Animation from animate css class.
+      default: fadeOut
+      options:
+        default: default
+        bounce: bounce
+        flash: flash
+        pulse: pulse
+        rubberBand: rubberBand
+        shake: shake
+        swing: swing
+        tada: tada
+        wobble: wobble
+        jello: jello
+        bounceIn: bounceIn
+        bounceInDown: bounceInDown
+        bounceInLeft: bounceInLeft
+        bounceInRight: bounceInRight
+        bounceInUp: bounceInUp
+        bounceOut: bounceOut
+        bounceOutDown: bounceOutDown
+        bounceOutLeft: bounceOutLeft
+        bounceOutRight: bounceOutRight
+        bounceOutUp: bounceOutUp
+        fadeIn: fadeIn
+        fadeInDown: fadeInDown
+        fadeInDownBig: fadeInDownBig
+        fadeInLeft: fadeInLeft
+        fadeInLeftBig: fadeInLeftBig
+        fadeInRight: fadeInRight
+        fadeInRightBig: fadeInRightBig
+        fadeInUp: fadeInUp
+        fadeInUpBig: fadeInUpBig
+        fadeOut: fadeOut
+        fadeOutDown: fadeOutDown
+        fadeOutDownBig: fadeOutDownBig
+        fadeOutLeft: fadeOutLeft
+        fadeOutLeftBig: fadeOutLeftBig
+        fadeOutRight: fadeOutRight
+        fadeOutRightBig: fadeOutRightBig
+        fadeOutUp: fadeOutUp
+        fadeOutUpBig: fadeOutUpBig
+        flip: flip
+        flipInX: flipInX
+        flipInY: flipInY
+        flipOutX: flipOutX
+        flipOutY: flipOutY
+        lightSpeedIn: lightSpeedIn
+        lightSpeedOut: lightSpeedOut
+        rotateIn: rotateIn
+        rotateInDownLeft: rotateInDownLeft
+        rotateInDownRight: rotateInDownRight
+        rotateInUpLeft: rotateInUpLeft
+        rotateInUpRight: rotateInUpRight
+        rotateOut: rotateOut
+        rotateOutDownLeft: rotateOutDownLeft
+        rotateOutDownRight: rotateOutDownRight
+        rotateOutUpLeft: rotateOutUpLeft
+        rotateOutUpRight: rotateOutUpRight
+        slideInUp: slideInUp
+        slideInDown: slideInDown
+        slideInLeft: slideInLeft
+        slideInRight: slideInRight
+        slideOutUp: slideOutUp
+        slideOutDown: slideOutDown
+        slideOutLeft: slideOutLeft
+        slideOutRight: slideOutRight
+        zoomIn: zoomIn
+        zoomInDown: zoomInDown
+        zoomInLeft: zoomInLeft
+        zoomInRight: zoomInRight
+        zoomInUp: zoomInUp
+        zoomOut: zoomOut
+        zoomOutDown: zoomOutDown
+        zoomOutLeft: zoomOutLeft
+        zoomOutRight: zoomOutRight
+        zoomOutUp: zoomOutUp
+        hinge: hinge
+        rollIn: rollIn
+        rollOut: rollOut
+
+    animateIn:
+      type: select.select
+      label: In Animation
+      description: Customize the In Animation from animate css class.
+      default: fadeIn
+      options:
+        default: default
+        bounce: bounce
+        flash: flash
+        pulse: pulse
+        rubberBand: rubberBand
+        shake: shake
+        swing: swing
+        tada: tada
+        wobble: wobble
+        jello: jello
+        bounceIn: bounceIn
+        bounceInDown: bounceInDown
+        bounceInLeft: bounceInLeft
+        bounceInRight: bounceInRight
+        bounceInUp: bounceInUp
+        bounceOut: bounceOut
+        bounceOutDown: bounceOutDown
+        bounceOutLeft: bounceOutLeft
+        bounceOutRight: bounceOutRight
+        bounceOutUp: bounceOutUp
+        fadeIn: fadeIn
+        fadeInDown: fadeInDown
+        fadeInDownBig: fadeInDownBig
+        fadeInLeft: fadeInLeft
+        fadeInLeftBig: fadeInLeftBig
+        fadeInRight: fadeInRight
+        fadeInRightBig: fadeInRightBig
+        fadeInUp: fadeInUp
+        fadeInUpBig: fadeInUpBig
+        fadeOut: fadeOut
+        fadeOutDown: fadeOutDown
+        fadeOutDownBig: fadeOutDownBig
+        fadeOutLeft: fadeOutLeft
+        fadeOutLeftBig: fadeOutLeftBig
+        fadeOutRight: fadeOutRight
+        fadeOutRightBig: fadeOutRightBig
+        fadeOutUp: fadeOutUp
+        fadeOutUpBig: fadeOutUpBig
+        flip: flip
+        flipInX: flipInX
+        flipInY: flipInY
+        flipOutX: flipOutX
+        flipOutY: flipOutY
+        lightSpeedIn: lightSpeedIn
+        lightSpeedOut: lightSpeedOut
+        rotateIn: rotateIn
+        rotateInDownLeft: rotateInDownLeft
+        rotateInDownRight: rotateInDownRight
+        rotateInUpLeft: rotateInUpLeft
+        rotateInUpRight: rotateInUpRight
+        rotateOut: rotateOut
+        rotateOutDownLeft: rotateOutDownLeft
+        rotateOutDownRight: rotateOutDownRight
+        rotateOutUpLeft: rotateOutUpLeft
+        rotateOutUpRight: rotateOutUpRight
+        slideInUp: slideInUp
+        slideInDown: slideInDown
+        slideInLeft: slideInLeft
+        slideInRight: slideInRight
+        slideOutUp: slideOutUp
+        slideOutDown: slideOutDown
+        slideOutLeft: slideOutLeft
+        slideOutRight: slideOutRight
+        zoomIn: zoomIn
+        zoomInDown: zoomInDown
+        zoomInLeft: zoomInLeft
+        zoomInRight: zoomInRight
+        zoomInUp: zoomInUp
+        zoomOut: zoomOut
+        zoomOutDown: zoomOutDown
+        zoomOutLeft: zoomOutLeft
+        zoomOutRight: zoomOutRight
+        zoomOutUp: zoomOutUp
+        hinge: hinge
+        rollIn: rollIn
+        rollOut: rollOut
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      description: Enable or disable the Autoplay.
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    autoplaySpeed:
+      type: input.text
+      label: Autoplay Speed
+      description: Set the speed of the Autoplay, in milliseconds.
+      placeholder: 5000
+
+    pauseOnHover:
+      type: select.select
+      label: Pause on Hover
+      description: Pause the slideshow when hovering over slider, then resume when no longer hovering.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    items:
+      type: collection.list
+      array: true
+      label: Videos
+      description: Carousel items.
+      value: title
+      ajax: true
+
+      fields:
+        .caption:
+          type: input.text
+          label: Caption
+          description: Video caption
+        .source:
+          type: select.selectize
+          label: Source
+          description: Video Source
+          placeholder: 'Select...'
+          default: local
+          options:
+            vimeo: Vimeo Url
+            youtube: YouTube Url
+            local: Local Video
+            external: External Url
+        .video:
+          type: input.text
+          label: Url
+          description: URL from YouTube, Vimeo, or External
+        .local:
+          type: collection.list
+          array: true
+          label: Local Video Sources
+          description: Serve your video in multiple formats.
+          value: title
+          ajax: true
+          fields:
+            .file:
+              type: input.videopicker
+              label: Local Video
+              description: Select desired video.
+        .posterimage:
+          type: input.imagepicker
+          label: Poster Image
+          description: Select the poster image for Local or External Video.
+        .loop:
+          type: select.select
+          label: Loop
+          description: Enable or disable video looping.
+          default: enabled
+          options:
+            enabled: Enable
+            disabled: Disable
+        .controls:
+          type: select.select
+          label: Show Controls (YouTube, Local and External)
+          description: Enable or disable play bar (applies to YouTube, Local, and External videos).
+          default: disabled
+          options:
+            enabled: Enable
+            disabled: Disable
+        .info:
+          type: select.select
+          label: Show Info (YouTube)
+          description: Enable or disable top info bar (applies to YouTube only).
+          default: disabled
+          options:
+            enabled: Enable
+            disabled: Disable
+        .related:
+          type: select.select
+          label: Related Videos (YouTube)
+          description: Enable or disable displaying related videos when Youtube video is paused or has ended.
+          default: disabled
+          options:
+            enabled: Enable
+            disabled: Disable

@@ -1,0 +1,47 @@
+.g-horizmenu-particle {
+ 
+    .g-horizmenu-container {
+        &:not(:first-child) {
+            padding-left: $content-padding * 2;
+
+            .dir-rtl & {
+                padding-right: $content-padding * 2;
+                padding-left: 0;
+            }
+
+            @include breakpoint(mobile-only) {
+                padding-left: 0;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            padding: 0 0 ($content-padding * 2);
+            text-align: center;
+        }
+
+        .g-horizmenu {
+            list-style: none;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+
+            @include breakpoint(mobile-only) {
+                flex-direction: column;
+            }
+
+            .center & {
+                text-align: center;
+            }
+            li {
+                margin-right: $content-padding;
+                &:last-child {
+                    margin-right: 0;
+
+                    .dir-rtl & {
+                        margin-right: $content-padding;
+                    }
+                }
+            }
+        }
+    }
+}

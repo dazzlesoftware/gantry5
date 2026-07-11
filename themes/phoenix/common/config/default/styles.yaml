@@ -1,0 +1,93 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#000000'
+    - '#f6c167'
+    - '#ec5a1c'
+  styles:
+    base:
+      background: '#000000'
+      text-color: '#888888'
+      text-active-color: '#f6c167'
+      pattern-1: '#f6c167'
+      pattern-2: '#ec5a1c'
+      pattern-3: '#ffffff'
+      pattern-4: '#000000'
+    accent:
+      color-1: '#f6c167'
+      color-2: '#ec5a1c'
+    button:
+      text-color: '#888888'
+      background-color: '#f6c167'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+      text-color-active: '#f6c167'
+      sublevel-text-color: '#000000'
+      sublevel-text-color-active: '#ffffff'
+      sublevel-background: '#f6c167'
+      sublevel-background-active: '#000000'
+    font:
+      family-title: 'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-01.jpg'
+      text-color: '#ffffff'
+      section-clipping: 1
+    header:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      text-color: '#ffffff'
+    above:
+      background: '#000000'
+      text-color: '#888888'
+      section-clipping: 1
+    feature:
+      background: '#000000'
+      text-color: '#888888'
+    showcase:
+      background: '#000000'
+      text-color: '#888888'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      text-color: '#888888'
+    extension:
+      background: '#000000'
+      background-image: 'gantry-media://backgrounds/extension/bg-01.jpg'
+      text-color: '#ffffff'
+      section-clipping: 1
+    bottom:
+      background: '#000000'
+      text-color: '#888888'
+    footer:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      text-color: '#ffffff'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#f6c167'
+      text-color: '#ffffff'
+      toggle-color: '#f6c167'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

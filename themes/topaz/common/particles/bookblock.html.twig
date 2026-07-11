@@ -1,0 +1,114 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% if particle.source and particle.source == 'joomla' %}
+        {# Load Content From Joomla #}
+        {% set category_options = particle.jcategories ? {id: [particle.jcategories|split(','), 0]} : {} %}
+        {% set categories_finder = joomla.finder('category', category_options).published(1).language().find() %}
+        {% set article_finder = joomla.finder('content').category(categories_finder).published(1).language() %}
+        {% set items = article_finder.order('publish_up', 'ASC').limit(particle.jarticles|default('1')).start(0).find() %}
+
+        {# Categories Names #}
+        {% set categories_names %}
+            {%- for category in categories_finder -%}
+                {{- category.title -}}
+                {% if not loop.last %}{{ ', ' }}{% endif %}
+            {%- endfor -%}
+        {% endset %}
+    {% else %}
+        {# Load Content From Particle #}
+        {% set items = particle.items %}
+    {% endif %}
+
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        <div id="{{ id }}" data-bookblock-id="{{ id }}" data-bookblock-direction="{{ gantry.page.direction }}" class="bb-bookblock">
+
+            {% for item in items %}
+            <div class="bb-item">
+                {% if particle.source and particle.source == 'joomla' %}
+                    <div class="bb-custom-firstpage">
+                        {% if particle.jcategoriesnames == 'enabled' and categories_names %}
+                            <span class="bb-item-category">{{ categories_names }}</span>
+                        {% endif %}
+                        <nav>
+                            <div class="bb-nav-prev bb-custom-icon"><i class="fa fa-chevron-circle-left"></i></div>
+                            <div class="bb-nav-next bb-custom-icon "><i class="fa fa-chevron-circle-right"></i></div>
+                        </nav>
+                        {% if particle.jtitle == 'enabled' and item.title %}
+                            <h3 class="bb-item-title">{{ item.title }}</h3>
+                        {% endif %}
+                        {% if particle.jintrotext == 'enabled' and item.introtext %}
+                            <p class="bb-item-intro">{{ item.introtext|raw }}</p>
+                        {% endif %}
+                        {% if particle.jlink == 'enabled' and item.route %}
+                            <a href="{{ item.route|e }}" class="button">{{ particle.jlinktext|raw }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="bb-custom-side">
+                        <div class="bb-sideimage">
+                            {% if particle.jintroimage == 'enabled' and item.images.image_intro %}
+                                <img src="{{ url(item.images.image_intro)|e }}" alt="{{ item.title|e }}" />
+                            {% endif %}
+                        </div>
+                        <div class="bb-sidetext">
+                            {% if particle.jintroimage == 'enabled' and item.images.image_intro_alt %}
+                                <h3 class="g-title">{{ item.images.image_intro_alt }}</h3>
+                            {% endif %}
+                            {% if particle.jintroimage == 'enabled' and item.images.image_intro_caption %}
+                                <p class="bb-image-desc">{{ item.images.image_intro_caption }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="bb-custom-firstpage">
+                        {% if item.category %}
+                            <span class="bb-item-category">{{ item.category }}</span>
+                        {% endif %}
+                        <nav>
+                            <div class="bb-nav-prev bb-custom-icon"><i class="fa fa-chevron-circle-left"></i></div>
+                            <div class="bb-nav-next bb-custom-icon "><i class="fa fa-chevron-circle-right"></i></div>
+                        </nav>
+                        {% if item.title %}
+                            <h3 class="bb-item-title">{{ item.title }}</h3>
+                        {% endif %}
+                        {% if item.intro %}
+                            <p class="bb-item-intro">{{ item.intro|raw }}</p>
+                        {% endif %}
+                        {% if item.content %}
+                            <p class="bb-item-content">{{ item.content|raw }}</p>
+                        {% endif %}
+                        {% if item.readmore %}
+                            <a target="{{ item.readmoretarget|default('_self')|e }}" href="{{ item.readmorelink|e }}" class="button {{ item.readmoreclass|e }}">{{ item.readmore|raw }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="bb-custom-side">
+                        <div class="bb-sideimage">
+                            {% if item.image %}
+                                <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+                            {% endif %}
+                        </div>
+                        <div class="bb-sidetext">
+                            {% if item.imagetitle %}
+                                <h3 class="g-title">{{ item.imagetitle }}</h3>
+                            {% endif %}
+                            {% if item.imagedesc %}
+                                <p class="bb-image-desc">{{ item.imagedesc }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/modernizr.custom.js') }}"></script>
+<script src="{{ url('gantry-theme://js/jquerypp.custom.js') }}"></script>
+<script src="{{ url('gantry-theme://js/jquery.bookblock.js') }}"></script>
+<script src="{{ url('gantry-theme://js/jquery.bookblock.init.js') }}"></script>
+{% endblock %}

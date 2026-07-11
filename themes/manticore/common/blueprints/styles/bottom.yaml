@@ -1,0 +1,14 @@
+name: Bottom Styles
+description: Bottom styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#030303"

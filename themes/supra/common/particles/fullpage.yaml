@@ -1,0 +1,36 @@
+name: Full Page Scrolling
+description: Create Fullscreen Scrolling sections.
+type: atom
+icon: fa-columns
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+    sectionSelector:
+      type: input.text
+      label: Custom Section Selector Class
+      description: Defines the selector used for the atom sections.
+      default: '.section'
+    slideSelector:
+      type: input.text
+      label: Custom Slide Selector Class
+      description: Defines the selector used for the atom slides.
+      default: '.slide'
+    responsiveWidth:
+      type: input.number
+      label: Responsive Width
+      description: (default 0) A normal scroll will be used under the defined width in pixels. A class fp-responsive is added to the body tag in case the user wants to use it for his own responsive CSS. For example, if set to 900, whenever the browser's width is less than 900 the atom will scroll like a normal site.
+      default: 1300
+    responsiveHeight:
+      type: input.number
+      label: Responsive Height
+      description: (default 0) A normal scroll will be used under the defined height in pixels. A class fp-responsive is added to the body tag in case the user wants to use it for his own responsive CSS. For example, if set to 900, whenever the browser's height is less than 900 the atom will scroll like a normal site.
+      default: 0

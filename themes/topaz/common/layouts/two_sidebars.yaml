@@ -1,0 +1,631 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1462890421
+layout:
+
+  /container-top/:
+    -
+      -
+        'topleft 15': {  }
+      -
+        'topmain 70':
+          -
+            - system-messages-9828
+      -
+        'topright 15': {  }
+  /container-header/:
+    -
+      -
+        'navigationleft 15':
+          -
+            - social-7220
+      -
+        'navigationmain 70':
+          -
+            - 'logo-5992 30'
+            - 'menu-7876 70'
+      -
+        'navigationright 15':
+          -
+            - position-position-9578
+    -
+      -
+        'headerleft 15': {  }
+      -
+        'headermain 70': {  }
+      -
+        'headerright 15': {  }
+  /container-above/:
+    -
+      -
+        'aboveleft 15': {  }
+      -
+        'abovemain 70':
+          -
+            - simplecontent-2969
+      -
+        'aboveright 15': {  }
+  /container-main/:
+    -
+      -
+        'sidebar 27':
+          -
+            - custom-2933
+      -
+        'mainbar 46':
+          -
+            - custom-2178
+      -
+        'aside 27':
+          -
+            - custom-8065
+  /container-showcase/:
+    -
+      -
+        'showcaseleft 15': {  }
+      -
+        'showcasemain 70': {  }
+      -
+        'showcaseright 15': {  }
+  /container-slideshow/:
+    -
+      -
+        'slideshowleft 15': {  }
+      -
+        'slideshowmain 70': {  }
+      -
+        'slideshowright 15': {  }
+  /container-utility/:
+    -
+      -
+        'utilityleft 15': {  }
+      -
+        'utilitymain 70': {  }
+      -
+        'utilityright 15': {  }
+  /container-feature/:
+    -
+      -
+        'featureleft 15': {  }
+      -
+        'featuremain 70': {  }
+      -
+        'featureright 15': {  }
+  /container-expanded/:
+    -
+      -
+        'expandedleft 15': {  }
+      -
+        'expandedmain 70': {  }
+      -
+        'expandedright 15': {  }
+  /container-extension/:
+    -
+      -
+        'extensionleft 15': {  }
+      -
+        'extensionmain 70': {  }
+      -
+        'extensionright 15': {  }
+  /container-bottom/:
+    -
+      -
+        'bottomleft 15': {  }
+      -
+        'bottommain 70': {  }
+      -
+        'bottomright 15': {  }
+  /container-footer/:
+    -
+      -
+        'footerleft 15': {  }
+      -
+        'footermain 70':
+          -
+            - 'position-position-5108 60'
+            - 'social-2831 40'
+      -
+        'footerright 15': {  }
+  /container-copyright/:
+    -
+      -
+        'copyrightleft 15': {  }
+      -
+        'copyrightmain 70':
+          -
+            - 'logo-4776 15'
+            - 'position-position-6721 85'
+          -
+            - 'spacer-9415 15'
+            - 'copyright-5748 85'
+      -
+        'copyrightright 15': {  }
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  topleft:
+    type: section
+    subtype: aside
+    title: 'Top Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  topmain:
+    type: section
+    title: 'Top Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  topright:
+    type: section
+    subtype: aside
+    title: 'Top Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-top:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  navigationleft:
+    type: section
+    subtype: aside
+    title: 'Navigation Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      variations: equal-height
+      fixed: '1'
+  navigationmain:
+    type: section
+    subtype: header
+    title: 'Navigation Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      variations: equal-height
+      fixed: '1'
+  navigationright:
+    type: section
+    subtype: aside
+    title: 'Navigation Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      variations: equal-height
+      fixed: '1'
+  headerleft:
+    type: section
+    subtype: aside
+    title: 'Header Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  headermain:
+    type: section
+    subtype: header
+    title: 'Header Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  headerright:
+    type: section
+    subtype: aside
+    title: 'Header Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-header:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  aboveleft:
+    type: section
+    subtype: aside
+    title: 'Above Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  abovemain:
+    type: section
+    title: 'Above Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  aboveright:
+    type: section
+    subtype: aside
+    title: 'Above Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-above:
+    attributes:
+      boxed: '3'
+      class: g-main-offset
+      extra: {  }
+  sidebar:
+    type: section
+    subtype: aside
+    block:
+      class: g-side-column
+      fixed: '1'
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    block:
+      class: g-middle-column
+      fixed: '1'
+  aside:
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-main:
+    attributes:
+      boxed: '3'
+  showcaseleft:
+    type: section
+    subtype: aside
+    title: 'Showcase Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  showcasemain:
+    type: section
+    title: 'Showcase Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  showcaseright:
+    type: section
+    subtype: aside
+    title: 'Showcase Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-showcase:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  slideshowleft:
+    type: section
+    subtype: aside
+    title: 'Slideshow Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  slideshowmain:
+    type: section
+    title: 'Slideshow Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  slideshowright:
+    type: section
+    subtype: aside
+    title: 'Slideshow Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-slideshow:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  utilityleft:
+    type: section
+    subtype: aside
+    title: 'Utility Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  utilitymain:
+    type: section
+    title: 'Utility Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  utilityright:
+    type: section
+    subtype: aside
+    title: 'Utility Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-utility:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  featureleft:
+    type: section
+    subtype: aside
+    title: 'Feature Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  featuremain:
+    type: section
+    title: 'Feature Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  featureright:
+    type: section
+    subtype: aside
+    title: 'Feature Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-feature:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expandedleft:
+    type: section
+    subtype: aside
+    title: 'Expanded Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  expandedmain:
+    type: section
+    title: 'Expanded Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  expandedright:
+    type: section
+    subtype: aside
+    title: 'Expanded Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-expanded:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  extensionleft:
+    type: section
+    subtype: aside
+    title: 'Extension Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  extensionmain:
+    type: section
+    title: 'Extension Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  extensionright:
+    type: section
+    subtype: aside
+    title: 'Extension Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-extension:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  bottomleft:
+    type: section
+    subtype: aside
+    title: 'Bottom Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  bottommain:
+    type: section
+    title: 'Bottom Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  bottomright:
+    type: section
+    subtype: aside
+    title: 'Bottom Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-bottom:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  footerleft:
+    type: section
+    subtype: aside
+    title: 'Footer Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  footermain:
+    type: section
+    subtype: footer
+    title: 'Footer Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  footerright:
+    type: section
+    subtype: aside
+    title: 'Footer Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-footer:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  copyrightleft:
+    type: section
+    subtype: aside
+    title: 'Copyright Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  copyrightmain:
+    type: section
+    title: 'Copyright Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  copyrightright:
+    type: section
+    subtype: aside
+    title: 'Copyright Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-copyright:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+content:
+  menu-7876:
+    block:
+      variations: align-right
+  position-position-9578:
+    title: Navigation
+    attributes:
+      key: navigation
+    block:
+      variations: box5
+  simplecontent-2969:
+    title: 'Two Sidebars Example'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Two Sidebars Example'
+          author: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Two Sidebars Example'
+  custom-2933:
+    title: 'Left Sidebar'
+    attributes:
+      html: "<h3 class=\"g-title\">Left Sidebar</h3>\n<p> A left column layout example. The sidebar is independent from the Mainbody so can have multiple rows and columns, separate from the Mainbody area.</p>\n\n<p>Mauris lobortis. Aliquam lacinia purus. <strong>Pellentesque magna</strong>. Mauris euismod metus nec.<a href=\"#\">Morbi convallis luctus tortor</a>.</p>"
+  custom-2178:
+    title: 'H2 Heading'
+    attributes:
+      html: "<h2>H2 Heading</h2>\n<p>Nullam eget neque. Nullam <a href=\"#\">imperdiet venenatis</a> ligula. Integer a leo. Nunc consectetur. Maecenas sem. Proin vulputate, massa vel volutpat laoreet, purus erat pretium ligula, eget varius arcu nibh sed libero.</p>\n\n<h3>H3 Heading</h3>\n<p>In erat. Pellentesque erat. <strong>Mauris vehicula vestibulum justo.</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla pulvinar est. <strong>Integer urna</strong>. Pellentesque pulvinar dui a magna. Nulla facilisi.<a href=\"#\">Sed ac arcu</a>.</p>"
+  custom-8065:
+    title: 'Right Sidebar'
+    attributes:
+      html: "<h3 class=\"g-title\">Right Sidebar</h3>\n<p>Gantry 5 benefits from a flexible and intuitive, drag &amp; drop layout manager. You can add as many rows and blocks to each section as you desire, and configure their distance to intervals of 1%.</p>\n\n<p>Each block has individual controls, such as an autocomplete select box for box variations, as well as individual CSS fields.</p>"
+  position-position-5108:
+    title: Footer
+    attributes:
+      key: footer
+    block:
+      class: nopaddingleft
+  social-2831:
+    block:
+      class: nopaddingright
+      variations: align-right
+  logo-4776:
+    title: 'Logo / Image'
+    block:
+      class: nopaddingleft
+  position-position-6721:
+    title: Copyright
+    attributes:
+      key: copyright
+    block:
+      class: nopaddingright
+  copyright-5748:
+    block:
+      class: 'nopaddingright g-copyright nopaddingtop nomargintop'

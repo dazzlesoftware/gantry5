@@ -1,0 +1,23 @@
+name: Extension Styles
+description: Extension styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/extension/bg-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"
+    section-clipping:
+      type: enable.enable
+      label: Section Clipping
+      default: 1
+

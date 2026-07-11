@@ -1,0 +1,31 @@
+atoms:
+  -
+    id: assets-3609
+    type: assets
+    title: 'Custom CSS / JS'
+    inherit:
+      outline: default
+      atom: assets-3609
+      include:
+        - attributes
+  -
+    type: frameworks
+    title: 'JavaScript Frameworks'
+    id: frameworks-1582
+    inherit:
+      outline: default
+      atom: frameworks-1582
+      include:
+        - attributes
+  -
+    title: 'Full Page Scrolling'
+    type: fullpage
+    attributes:
+      caching:
+        type: static
+      enabled: true
+      sectionSelector: .section
+      slideSelector: .slide
+      responsiveWidth: 1300
+      responsiveHeight: 0
+    id: fullpage-7986

@@ -1,0 +1,63 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    width: 100%;
+
+    .g-logo {
+        @include breakpoint(mobile-only) {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        img {
+            @include breakpoint(no-mobile) {
+                width: 150px;
+            }
+
+            @include breakpoint(tablet-range) {
+                min-width: 150px;
+            }
+
+            .dir-rtl & {
+                padding-right: 0;
+                padding-left: 1rem;
+            }
+        }
+    }
+
+    &.menu-absolute {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background: transparent;
+    }
+
+    a:not(.button) {
+        color: $navigation-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+
+    .active {
+        a:hover {
+            color: $navigation-text-color;
+        }
+    }
+
+    .g-grid {
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

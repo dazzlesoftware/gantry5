@@ -1,0 +1,40 @@
+#g-header {
+    position: relative;
+    color: $header-text-color;
+    background: $header-background;
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-simplecontent-item-content-title {
+        color: $black;
+    }
+
+    .g-simplecontent-item-main-content {
+        @include breakpoint(mobile-only) {
+          margin: 0;
+          padding: 0;
+        }
+    }
+
+    .button {
+        @include responsive-font($responsive-font-size + 0.3, $core-font-size - 0.1, false, false);
+    }
+
+    .g-video-caption {
+        color: $header-text-color;
+    }
+
+    // Background
+    @if $header-background-image {
+        background: $header-background url($header-background-image) no-repeat center center;
+        background-size: cover;
+    }
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

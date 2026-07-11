@@ -1,0 +1,26 @@
+enabled: '1'
+css:
+  class: ''
+title: ''
+target: _blank
+items:
+  -
+    icon: 'fa fa-twitter fa-fw'
+    text: ''
+    link: 'http://www.twitter.com/rockettheme'
+    name: Twitter
+  -
+    icon: 'fa fa-youtube-play fa-fw'
+    text: ''
+    link: 'http://www.youtube.com/rockettheme'
+    name: YouTube
+  -
+    icon: 'fa fa-instagram fa-fw'
+    text: ''
+    link: '#'
+    name: Instagram
+  -
+    icon: 'fa fa-pinterest fa-fw'
+    text: ''
+    link: '#'
+    name: Pinterest

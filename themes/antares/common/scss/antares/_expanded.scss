@@ -1,0 +1,53 @@
+#g-expanded {
+    background: $expanded-background;
+    color: $expanded-text-color;
+
+    // Link Color
+    a {
+        color: darken($expanded-background, 35%);
+        &:hover {
+            color: inherit;
+        }
+    }
+
+    // Button Color
+    .button {
+        background: darken($accent-color-1, 10%);
+        &:hover, &:active, &:focus {
+            background: darken($accent-color-1, 20%);
+        }      
+        &.button-special {
+            &:before {
+                .dir-ltr & {
+                    border-left: 1px solid darken($accent-color-1, 10%);
+                    border-bottom: 1px solid darken($accent-color-1, 10%);               
+                }
+            }   
+            &:after {
+                .dir-rtl & {
+                    border-right: 1px solid darken($accent-color-1, 20%);
+                    border-bottom: 1px solid darken($accent-color-1, 20%);               
+                }           
+            }   
+        }          
+    }
+
+    // FP Expanded A
+    .fp-expanded-a {
+    	text-align: center;
+    	margin-bottom: 2rem;
+    	.g-blockcontent-subcontent {
+    		text-align: left;
+    		.dir-rtl & {
+    			text-align: right;
+    		}
+    	}
+    }
+}
+
+@media print {
+	#g-expanded {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

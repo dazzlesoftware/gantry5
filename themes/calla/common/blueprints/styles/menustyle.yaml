@@ -1,0 +1,55 @@
+name: Menu Styles
+description: Set menu style options.
+type: core
+
+form:
+  fields:
+    info:
+      type: separator.note
+      class: alert
+      content: 'Does not apply to Vertical menu particle.'
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_toplevel:
+          label: Top Level
+          fields:
+            background:
+              type: input.colorpicker
+              label: Background
+              default: "#ffffff"
+            text-color:
+              type: input.colorpicker
+              label: Text
+              default: "#888888"
+            text-color-alt:
+              type: input.colorpicker
+              label: Text Alt
+              default: "#888888"
+            text-color-active:
+              type: input.colorpicker
+              label: Hover & Active Text
+              default: "#f1e5f8"
+            background-active:
+              type: input.colorpicker
+              label: Active Background
+              default: "rgba(255,255,255, 0)"
+        _tab_sublevel:
+          label: Sub Level
+          fields:
+            sublevel-text-color:
+              type: input.colorpicker
+              label: Text
+              default: "#121212"
+            sublevel-text-color-active:
+              type: input.colorpicker
+              label: Hover & Active Text
+              default: "#121212"
+            sublevel-background:
+              type: input.colorpicker
+              label: Background
+              default: "#ffffff"
+            sublevel-background-active:
+              type: input.colorpicker
+              label: Hover & Active Bg
+              default: "#f1e5f8"

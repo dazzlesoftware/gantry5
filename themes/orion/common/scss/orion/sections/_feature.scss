@@ -1,0 +1,17 @@
+#g-feature {
+    color: $feature-text-color;
+    background: $feature-background;
+
+    @if $feature-background-image {
+        background-image: url($feature-background-image);
+        background-repeat: no-repeat;
+        background-position: center 10%;
+    }
+}
+
+@media print {
+    #g-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,104 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% if particle.demo == "enabled" %}
+        {% if gantry.theme.preset %}
+            {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+        {% else %}
+            {% set preset = '1' %}
+        {% endif %}
+    {% else %}
+         {% set preset = 'all' %}
+    {% endif %}
+    <div class="{{ particle.class|e }} g-casestudies" data-casestudies-id="{{ id }}" data-casestudies-preset="{% if particle.demo == "enabled" %}{{ preset }}{% elseif particle.source == gantry.platform.name %}all{% else %}false{% endif %}">
+        
+        {% if not particle.source or particle.source == 'particle' %}
+        <div class="g-casestudies-header">
+            {% if particle.title %}
+                <div class="g-casestudies-title">
+                    {% if particle.uppertitle %}<span class="g-casestudies-uppertitle">{{ particle.uppertitle|raw }}</span>{% endif %}
+                    {{ particle.title }}
+                </div>
+            {% endif %}
+
+            <div class="g-casestudies-nav">
+                <div class="g-casestudies-nav-container">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+
+                    {% if particle.allposition == 'left' %}
+                        <div class="g-casestudies-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                                {{ particle.allitems|default('All')|e }}
+                        </div>
+                    {% endif %}
+                        {% for item in particle.cases %}
+                            <div class="g-casestudies-nav-item {% if particle.selected == 'first' %}{% if loop.first %}selected{% endif %}{% elseif particle.selected == 'last' %}{% if loop.last %}selected{% endif %}{% endif %}" data-group="{{ loop.index }}">
+                                {{ item.title }}
+                            </div>
+                        {% endfor %}
+                    {% if particle.allposition == 'right' %}
+                        <div class="g-casestudies-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                                {{ particle.allitems|default('All')|e }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="g-casestudies-grid {{ particle.cols }}">
+            <div class="g-casestudies-grid-sizer"></div>
+            {% for case in particle.cases %}
+                {% set case_index = loop.index %}
+                {% for item in case.items %}
+                    <div class="g-casestudies-grid-item" data-groups='["{{ case_index }}"]'>
+                        <div class="g-casestudies-grid-item-wrapper g-casestudies-layout-{{ item.layout }}">
+                            <div class="g-casestudies-grid-item-content">
+                                {% if item.subtitle %}
+                                    <div class="g-casestudies-grid-item-subtitle">
+                                        {{ item.subtitle }}
+                                    </div>
+                                {% endif %}
+
+                                {% if item.title %}
+                                    <div class="g-casestudies-grid-item-title">
+                                        {{ item.title }}
+                                    </div>
+                                {% endif %}
+
+                                {% if item.layout == 'alt-top' or item.layout == 'alt-bottom' %}
+                                    {% if item.description %}
+                                        <div class="g-casestudies-grid-item-description">
+                                            {{ item.description|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.buttontext and item.url %}
+                                        <span class="g-casestudies-grid-item-button {{ item.buttonclass }}">{{ item.buttontext }}</span>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+
+                            <div class="g-casestudies-grid-item-image">
+                                <img src="{{ url(item.image)|e }}" alt="{{ item.title }}" />
+                            </div>
+
+                            <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}" class="g-casestudies-link-overlay"></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        
+        {% else %}
+            {% include '@particles/casestudies-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/casestudies.init.js') }}"></script>
+{% endblock %}

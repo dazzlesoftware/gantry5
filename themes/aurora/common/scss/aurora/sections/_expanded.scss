@@ -1,0 +1,15 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+
+    .g-testimonial-author {
+        color: $black;
+    }
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

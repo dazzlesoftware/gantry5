@@ -1,0 +1,18 @@
+.social-button {
+    color: $white;
+    background: $accent-color-1;
+    margin: 2px;
+    border-radius: 3px;
+    float: left;
+    font-size: 1em;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+
+    @include breakpoint(mobile-only) {
+        float: none;
+        display: inline-block;
+    }
+}
+

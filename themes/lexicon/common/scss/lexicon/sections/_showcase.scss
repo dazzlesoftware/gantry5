@@ -1,0 +1,50 @@
+#g-showcase {
+    color: $showcase-text-color;
+    position: relative;
+    background: $showcase-background; 
+
+    .nomodulecontent {
+        .g-content {
+            padding: 50px 25px;
+        }
+    } 
+
+    .readon, button {
+        background: darken($accent-color-1, 15%);
+    }
+
+    &.fp-showcase {
+        background: $white;
+
+        .rt-title-tag {
+            opacity: 1;
+        }
+
+        .readon {
+            margin-top: 25px;
+            font-size: 1.5em;
+            padding: 15px 35px;
+            background: $accent-color-1;
+        }
+
+        @include breakpoint(mobile-only) {
+            .rt-text-large {
+                font-size: $base-font-size + 6;
+            }
+            .rt-title-tag {
+                font-size: $base-font-size - 1;
+            }
+            .readon {
+                font-size: $base-font-size - 2;
+                padding: 10px 15px;
+            }
+        }
+    }
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

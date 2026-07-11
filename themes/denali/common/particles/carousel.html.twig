@@ -1,0 +1,85 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% do gantry.load('lightcase.init') %}
+{% block particle %}
+    <div class="{{ particle.class|e }} g-owlcarousel-carousel">
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+        <div id="g-carousel-{{ id }}" class="g-carousel owl-carousel">
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for item in particle.items %}
+                    <div class="g-carousel-item">
+                        {% if item.image %}
+                            <div class="g-carousel-image-wrapper">
+                                <a {% if item.linkto == 'image' %} href="{{ url(item.image)|e }}" data-rel="lightcase" data-lc-options='{"maxWidth": "100%", "maxHeight": "100%"}' title="{{ item.caption|e }}" {% elseif item.linkto == 'link' %}href="{{ url(item.link)|e }}" {% endif %} class="g-carousel-image-link">
+                                    <img src="{{ url(item.image)|e }}" alt="{{ item.alt|e }}"/>
+
+                                    {% if item.title %}
+                                        <span class="g-carousel-title">{{ item.title|raw }}</span>
+                                    {% endif %}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% include '@particles/carousel-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% if particle.demo == "enabled" %}
+        {% if gantry.theme.preset %}
+            {% set preset = gantry.theme.preset | replace({'preset': ''}) - 1 %}
+        {% else %}
+            {% set preset = 0 %}
+        {% endif %}
+    {% endif %}
+    <script src="{{ url('gantry-theme://js/owlcarousel.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-carousel-{{ id }}');
+            owl{{ id|replace({'-':'_'}) }}.owlCarousel({
+                margin: 100,
+                center: {% if particle.center == 'enabled' %}true{% else %}false{% endif %},
+                rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
+                {% if particle.nav == 'enabled' %}
+                nav: true,
+                navText: ['{{ particle.prevText|default('<i class="fa fa-arrow-left fa-fw"></i>')|e('js') }}', '{{ particle.nextText|default('<i class="fa fa-arrow-right fa-fw"></i>')|e('js') }}'],
+                {% else %}
+                nav: false,
+                {% endif %}
+                dots: false,
+                loop: {% if particle.loop == 'enabled' %}true{% else %}false{% endif %},
+                {% if particle.autoplay == 'enabled' %}
+                autoplay: true,
+                autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
+                {% if particle.pauseOnHover == 'enabled' %}
+                autoplayHoverPause: true,
+                {% else %}
+                autoplayHoverPause: false,
+                {% endif %}
+                {% else %}
+                autoplay: false,
+                {% endif %}
+                items: 4,
+                responsive:{
+                    0: {
+                        autoWidth: false,
+                        items: 1,
+                    },
+                    650: {
+                        autoWidth: false,
+                        items: 2,
+                    },
+                    1200: {
+                        autoWidth: true,
+                    }
+                },
+                startPosition: {% if particle.demo == "enabled" %}{{ preset }}{% else %}0{% endif %},
+            })
+        });
+    </script>
+{% endblock %}

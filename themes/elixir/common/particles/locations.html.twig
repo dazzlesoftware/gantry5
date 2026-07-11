@@ -1,0 +1,22 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div class="g-locations-particle {{ particle.class|e }}">
+		{% if particle.title %}
+			<h2 class="g-title">{{ particle.title|raw }}</h2>
+		{% endif %}
+		{% for pin in particle.pins %}
+			<div class="g-location-container">
+				{% if pin.icon %}
+					<i class="{{ pin.icon }}"></i>
+				{% endif %}
+				<h2>
+					<a target="{{ pin.target|default('_blank') }}" href="{{ pin.link|e }}" title="{{ pin.name }}">
+						{{ pin.name|raw }}</a>
+				</h2>
+				<span>{{ pin.phone }}</span>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
+

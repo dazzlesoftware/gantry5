@@ -1,0 +1,18 @@
+name: Above Styles
+description: Above styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#888888"
+    section-clipping:
+      type: enable.enable
+      label: Section Clipping
+      default: 1

@@ -1,0 +1,69 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    a {
+        color: $footer-text-color;
+
+        &:hover {
+            color:  $accent-color-1;
+        }
+    }
+
+    h6 {
+        color:  transparentize($footer-text-color, 0.60);
+    }
+
+    // Simple Menu
+    .g-simplemenu-particle {
+        justify-content: flex-start;
+
+        .g-simplemenu-container {
+            margin-right: 5vw;
+
+            .dir-rtl & {
+                margin-right: 0;
+                margin-left: 5vw;
+            }
+        }
+
+        @include breakpoint(tablet-range) {
+            li {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    // Newsletter particle
+    .g-newsletter-particle {
+        @include breakpoint(tablet-range) {
+            h2.g-title {
+                font-size: 1.35rem;
+            }
+
+            .g-newsletter-inputbox {
+                input {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    // Branding
+    .g-branding {
+        color: transparentize($footer-text-color, 0.75);
+        font-weight: $font-weight-medium;
+        @include responsive-font($responsive-font-size - 0.15, $core-font-size, false, false);
+
+        .dir-rtl & {
+            text-align: left;
+        }
+    }
+}
+
+@media print {
+    #g-container-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

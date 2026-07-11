@@ -1,0 +1,20 @@
+.fp-slideshow {
+    opacity: 0.99;
+
+    .has-slideshow {
+        position: relative;
+        z-index: -1;
+
+        > .g-block {
+            margin-top: -7.35rem !important;
+
+            @include breakpoint(tablet-range) {
+                margin-top: -9.25rem !important;
+            }
+
+            @include breakpoint(mobile-only) {
+                margin-top: -12rem !important;
+            }
+        }
+    }
+}

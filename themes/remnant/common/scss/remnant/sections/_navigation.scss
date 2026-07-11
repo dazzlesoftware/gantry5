@@ -1,0 +1,19 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    padding-top: $content-padding * 2;
+    @include breakpoint(tablet-range) {
+        padding-top: 0;
+    }
+    @include breakpoint(mobile-only) {
+        padding-top: 0;
+    }
+    @extend .section-paddings;
+}
+
+@media print {
+    #g-navigation, #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

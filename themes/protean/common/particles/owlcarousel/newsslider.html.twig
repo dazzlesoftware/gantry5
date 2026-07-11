@@ -1,0 +1,60 @@
+{% extends '@particles/owlcarousel.html.twig' %}
+
+{# NewsSlider Layout #}
+{% block layout %}
+    {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+    <div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }} g-owlcarousel-{{ particle.displayitems }}-items">
+        <div class="g-owlcarousel-panel-container" id="g-owlcarousel-panel-{{ id }}">
+
+            {% for item in particle.items %}
+                <div class="g-owlcarousel-panel {% if loop.first %}selected{% endif %}" id="g-owlcarousel-panel-{{ loop.index }}">
+                    <div class="g-owlcarousel-panel-link">
+                        {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                        {% if item.title %}<span class="g-owlcarousel-panel-title">{{ item.title|raw }}</span>{% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+
+            {% for item in particle.items %}
+                <div class="item">
+                    {% if item.subtitle %}<h3 class="g-title">{{ item.subtitle|raw }}</h3>{% endif %}
+                    {% if item.title %}<h3 class="g-item-title">{{ item.title|raw }}</h3>{% endif %}
+                    {% if item.author %}
+                        <div class="g-owlcarousel-author">
+                            {% if item.authorimage %}
+                                <span class="author-image">
+                                <img src="{{ url(item.authorimage)|e }}" alt="{{ item.author|e }}" />
+                            </span>
+                            {% endif %}
+                            {% if item.author %}<span class="author-name">{{ item.author|e }}</span>{% endif %}
+                        </div>
+                    {% endif %}
+                    <div class="g-owlcarousel-content">
+                        {% if item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />{% endif %}
+                        {% if item.desc %}{{ item.desc|e }}{% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script type="text/javascript">
+    var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-panel-{{ id }} .g-owlcarousel-panel');
+    {% for item in particle.items %}
+    jQuery("#g-owlcarousel-panel-{{ id }} #g-owlcarousel-panel-{{ loop.index }}").click(function(event) {
+        var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-{{ id }}');
+        owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
+        var toIndex = {{ loop.index }} - 1;
+        owl{{ id|replace({'-':'_'}) }}.trigger('to.owl.carousel', [toIndex, {{ loop.index }} - 1, true]);
+        jQuery(this).addClass('selected');
+    });
+    {% endfor %}
+    </script>
+{% endblock %}

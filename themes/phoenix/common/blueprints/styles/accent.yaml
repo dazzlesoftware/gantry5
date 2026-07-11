@@ -1,0 +1,14 @@
+name: Accent Colors
+description: Accent colors for the theme
+type: core
+
+form:
+  fields:
+    color-1:
+      type: input.colorpicker
+      label: Accent Color 1
+      default: "#f6c167"
+    color-2:
+      type: input.colorpicker
+      label: Accent Color 2
+      default: "#ec5a1c"

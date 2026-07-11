@@ -1,0 +1,31 @@
+#g-feature {
+    @if $feature-background-image {
+        background: $feature-background url($feature-background-image) repeat;
+    } @else { 
+        background: $feature-background;
+    }
+    color: $feature-text-color;
+    border-top: 1px solid darken($feature-background, 8%);
+	border-bottom: 1px solid darken($feature-background, 8%);
+
+    &.rt-overlay-light {
+        h2.title {
+            color: darken($feature-text-color, 15%);
+        }
+    }
+    &.rt-overlay-dark {
+        h2.title {
+            color: lighten($feature-text-color, 35%);
+        }
+    }
+    .fp-feature {
+        margin: 25px auto;
+    }
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

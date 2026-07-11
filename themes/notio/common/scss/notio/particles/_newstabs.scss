@@ -1,0 +1,193 @@
+// News Tabs
+.g-newstabs {
+    position: relative;
+
+    // Hanburger Menu
+    .g-newstabs-hamburger {
+        position: absolute;
+        display: block;
+        right: 0;
+        .dir-rtl & {
+          right: auto;
+          left: 0;
+        }
+        top: 0;
+        color: $white;
+        @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.5, false, false);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    // Navigation Panel
+    .g-newstabs-tab-panel {
+        position: absolute;
+        z-index: 10;
+        top: 3.5rem;
+        right: -18rem;
+        margin: 0;
+        padding: $content-padding;
+        background: $white;
+        box-shadow: 0 1px 10px fade-out($black, 0.8);
+        width: 20rem;
+        border-radius: 0.3rem;
+        font-weight: $font-weight-medium;
+        font-size: $core-font-size + 0.2;
+
+        .dir-rtl & {
+            left: -15rem;
+            right: auto;
+        }
+
+        @include breakpoint(mobile-only) {
+            right: 0;
+
+            &.dir-rtl {
+                left: 0;
+            }
+        }
+
+        .r-tabs-nav {
+            display: flex;
+            flex-flow: row wrap;
+            margin: 0;
+
+            .r-tabs-tab {
+                flex: 1 auto;
+                padding: ($content-margin / 2);
+                cursor: pointer;
+                list-style: none;
+                width: 50%;
+                color: $black;
+
+                a {
+                    color: $black;
+
+                    &:hover {
+                        box-shadow: 0 2px 0 $black;
+                    }
+                }
+
+                &.r-tabs-state-active {
+                    &:after {
+                        display: inline-block;
+                        margin-left: 10px;
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        background: $accent-color-1;
+                        border-radius: 50%;
+
+                        .dir-rtl & {
+                            left: 1rem;
+                            right: auto;
+                            margin-left: 0;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Tabs Define
+    .r-tabs-panel {
+        display: none;
+        transition: all 0.35s;
+
+        &.r-tabs-state-active {
+            display: block;
+        }
+
+        &.r-tabs-state-default {
+            opacity: 0;
+        }
+
+        &.r-tabs-state-active {
+            opacity: 1;
+        }
+
+        // Big Tab Title
+        .g-newstabs-tab-title {
+            color: $white;
+            @include responsive-font($responsive-font-size + 0.75, $core-font-size + 0.75, false, false);
+            font-weight: $font-weight-medium;
+            padding-bottom: ($content-padding / 2);
+        }
+
+        // Content
+        .g-newstabs-item {
+            padding: 0 0 $content-padding;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid transparentize($base-text-color, 0.50);
+            }
+
+            // Image
+            .g-newstabs-item-imagecontainer {
+                margin-top: $content-padding;
+
+                .g-newstabs-item-image {
+                    img {
+                        border-radius: 0.3rem;
+                    }
+                }
+            }
+
+            // Not First Item Title
+            .g-newstabs-item-title {
+                .g-item-title {
+                    font-weight: $font-weight-regular;
+                    @include responsive-font($responsive-font-size - 0.15, $core-font-size, false, false);
+
+                    a {
+                        color: inherit;
+                        opacity: 0.6;
+
+                        &:hover {
+                            opacity: 0.8;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            // Item Title
+            &:nth-child(2) {
+                .g-newstabs-item-title {
+                    .g-item-title {
+                        font-weight: $font-weight-medium;
+                        @include responsive-font($responsive-font-size + 0.25, $core-font-size + 0.25, false, false);
+
+                        a {
+                            color: $white;
+                            opacity: 1;
+
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Item Details
+            .g-newstabs-item-details {
+                margin: 0 0 $content-padding;
+                font-size: $core-font-size;
+                opacity: 0.65;
+            }
+        }
+    }
+
+    // Hide Accordion
+    .r-tabs-accordion-title {
+        display: none;
+    }
+
+    // Pagination Buttons
+    .g-newstabs-pagination {
+        margin-top: $content-margin;
+    }
+}

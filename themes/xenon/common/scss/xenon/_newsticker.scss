@@ -1,0 +1,95 @@
+.g-newsticker {
+    .g-newsticker-label {
+        float: left;
+        margin-right: 0.5rem;
+        font-family: get-font-family($font-family-title);
+        font-weight: $font-weight-bold; 
+        line-height: 30px;
+        .dir-rtl & {
+            float: right;
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        @include breakpoint(mobile-only) {
+            display: none;
+        }
+    }
+    .g-newsticker-innerwrap {
+        width: 80%;
+        @include breakpoint(small-mobile-range) {
+            width: 75%;
+        }
+    }
+    .g-newsticker-content {
+        min-height: 30px;
+        line-height: 30px;
+        .dir-rtl & {
+            direction: rtl;
+        }
+        span {
+            .dir-rtl & {
+                display: inline-block;
+                @include breakpoint(mobile-only) {
+                    display: inline;
+                }
+            }            
+        }
+    }
+    .g-newsticker-controller {
+        position: absolute;
+        right: 0;
+        .dir-rtl & {
+            right: inherit;
+            left: 0;
+        }
+    }
+    .g-next, .g-prev {
+        position: absolute;
+        span {
+            cursor: pointer;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: $border-radius;
+            text-align: center;
+            color: $white;
+            background: rgba(0, 0, 0, 0.75);       
+            opacity: 0.7;     
+            transition: opacity 0.35s;
+            &:before {
+                font-family: FontAwesome;
+                font-size: 1.5rem;
+            }
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    .g-next {
+        right: 0;
+        .g-next-icon:before {
+            content: '\f105';
+            .dir-rtl & {
+                content: '\f104';
+            }
+        }
+        .dir-rtl & {
+            right: inherit;
+            left: 0;
+        }
+    }
+    .g-prev {
+        right: 35px;
+        .g-prev-icon:before {
+            content: '\f104';
+            .dir-rtl & {
+                content: '\f105';
+            }            
+        }
+        .dir-rtl & {
+            right: inherit;
+            left: 35px;
+        }        
+    }
+}

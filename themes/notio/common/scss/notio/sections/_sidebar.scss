@@ -1,0 +1,66 @@
+#g-sidebar {
+    background: $sidebar-background;
+    color: $sidebar-text-color;
+    height: 100%;
+    z-index: 5;
+
+    h2.g-title {
+        color: $sidebar-text-color;
+    }
+
+    // Expand Sidebar BG
+    &.expand-sidebar-bg {
+        &:before {
+            background: $sidebar-background;
+        }
+
+        .g-grid {
+            .g-block {
+                &:before {
+                    background: $sidebar-background;
+                }
+            }
+
+            &:not(:last-child) {
+                .g-block {
+                    &:after {
+                        position: absolute;
+                        z-index: 1;
+                        content: '';
+                        background: linear-gradient(to right, transparentize($base-text-color, 1) 50%, transparentize($base-text-color, 0.20) 80%);
+                        bottom: 0;
+                        height: 1px;
+                        width: 200%;
+                        left: -100%;
+
+                        .dir-rtl & {
+                            left: 0;
+                            right: -100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Video Carousel
+    .g-owlcarousel-video-carousel {
+        @include breakpoint(no-mobile) {
+            .owl-stage-outer {
+                margin-right: -(($content-margin + $content-padding) - calc(2px));
+
+                .dir-rtl & {
+                    margin-right: auto;
+                    margin-left: -(($content-margin + $content-padding) - calc(2px))
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-sidebar {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

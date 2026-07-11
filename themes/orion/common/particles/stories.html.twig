@@ -1,0 +1,71 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
+{% endblock %}
+
+{% block particle %}
+	{% set stories_slides %}
+	data-stories-mobileslides="{{ particle.mobileslides|default('2') }}" data-stories-mobilegroup="{{ particle.mobilegroup|default('1') }}" data-stories-mobilespace="{{ particle.mobilespace|default('35') }}" data-stories-tabletslides="{{ particle.tabletslides|default('3') }}" data-stories-tabletgroup="{{ particle.tabletgroup|default('1') }}" data-stories-tabletspace="{{ particle.tabletspace|default('35') }}" data-stories-desktopslides="{{ particle.desktopslides|default('4') }}" data-stories-desktopgroup="{{ particle.desktopgroup|default('1') }}" data-stories-desktopspace="{{ particle.desktopspace|default('35') }}" data-stories-largedesktopslides="{{ particle.largedesktopslides|default('4') }}" data-stories-largedesktopgroup="{{ particle.largedesktopgroup|default('1') }}" data-stories-largedesktopspace="{{ particle.largedesktopspace|default('35') }}"
+	{% endset %}
+
+	{% set stories_breakpoints %}
+	data-stories-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-stories-tablet-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-stories-desktop-breakpoint="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-stories-largedesktop-breakpoint="{{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88rem') }}"
+	{% endset %}
+
+	{% if particle.title %}
+		<div class="g-stories-header">
+			{% if particle.title %}
+				<div class="g-stories-title g-title">
+					{{ particle.title|raw }}
+					<span class="stories-button-prev"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></span>
+					<span class="stories-button-next"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span>
+			
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+
+	<div id="{{ id }}" data-stories-id="{{ id }}">
+		<div class="g-stories swiper-container area {{ particle.class|e }}" data-stories-effect="{{ particle.effect }}" data-stories-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-stories-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-stories-timeout="{{ particle.autoplayTimeout }}" data-stories-speed="{{ particle.speed }}" data-stories-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %} {{ stories_slides }} {{ stories_breakpoints }}> 
+			<div class="g-stories-wrapper swiper-wrapper">
+				{% if not particle.source or particle.source == 'particle' %}
+					{% for story in particle.story %}
+						<div class="g-stories-element swiper-slide">
+							<div class="g-stories-wrapper">
+								{% if story.content %}
+									<h5 class="g-stories-content">
+										{{ story.content|raw }}
+									</h5>
+								{% endif %}
+
+								{% if story.name %}
+									<div class="g-stories-author-wrap">
+										<img class="g-stories-image" src="{{ url(story.avatar) }}" alt="{{ story.alttext }}"/>
+
+										<p class="g-stories-author">{{ story.name|raw }}
+											{% if story.position %}
+												<span>{{ story.position|raw }}</span>
+											{% endif %}
+										</p>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+				{% else %}
+					{% include '@particles/stories-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/stories.init.js'), 10, 'footer') %}
+{% endblock %}
+

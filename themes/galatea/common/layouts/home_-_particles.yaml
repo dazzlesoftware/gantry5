@@ -1,0 +1,720 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1455306122
+layout:
+  /offsidebar/:
+    -
+      - menu-2781
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'offsidebartoggle-2745 20'
+      - 'logo-5992 60'
+      - 'social-1573 20'
+  /slideshow/:
+    -
+      - owlcarousel-1698
+  /header/:
+    -
+      - mosaicgrid-9520
+  /above/: {  }
+  /showcase/:
+    -
+      - 'custom-6584 50'
+      - 'logo-4844 50'
+  /utility/:
+    -
+      - blockcontent-2887
+  /feature/:
+    -
+      - pricingtable-5736
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - 'infolist-6113 33.3'
+      - 'infolist-4978 33.3'
+      - 'custom-3225 33.3'
+  /footer/:
+    -
+      - newsletter-7556
+  /copyright/:
+    -
+      - 'branding-5976 25'
+      - 'copyright-5748 50'
+      - 'totop-6544 25'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-compact
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  offsidebartoggle-2745:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+    block:
+      class: hidden-phone
+  logo-5992:
+    title: 'Logo / Image'
+    block:
+      class: center
+  social-1573:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  owlcarousel-1698:
+    title: 'Owl Carousel'
+    attributes:
+      class: center-block
+      width: g-owlcarousel-compact
+      animateOut: fadeOut
+      animateIn: fadeIn
+      prevText: '&larr;'
+      nextText: '&rarr;'
+      autoplaySpeed: '5000'
+      items:
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          title: 'Owl Carousel Slideshow'
+          desc: 'Galatea is a beautiful, clean design that blends background elements in a modern way.'
+          link: '#'
+          linktext: 'Get Started'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Slide 1'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          title: 'Gantry 5 Framework'
+          desc: 'The next generation in user friendly theme configuration and development.'
+          link: '#'
+          linktext: 'Get Started'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Slide 2'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          title: 'Menu Editor'
+          desc: 'The Menu Editor provides a drag and drop interface for managing powerful menus.'
+          link: '#'
+          linktext: 'Get Started'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Slide 3'
+  mosaicgrid-9520:
+    title: 'Mosaic Grid'
+    attributes:
+      columns: g-mosaicgrid-3-col
+      items:
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://demo/home/header/img-01.jpg'
+          titleText: Portfolio
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A beautiful single-page design showcasing your work and professional background.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Layout
+          tagicons:
+            -
+              iconitem: 'fa fa-heart-o fa-fw'
+              icontext: Stylish
+              title: 'Tag 1'
+          title: 'Item 1'
+        -
+          style: g-mosaicgrid-style2
+          img: 'gantry-media://demo/home/header/img-02.jpg'
+          titleText: 'About Us'
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A unique layout perfect for showcasing your brand<span class="hidden-phone">, giving visitors insight into who your company is and what it is about</span>.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Page
+          tagicons:
+            -
+              iconitem: 'fa fa-key fa-fw'
+              icontext: Unique
+              title: 'Tag 1'
+          title: 'Item 2'
+        -
+          style: g-mosaicgrid-style2
+          img: 'gantry-media://demo/home/header/img-03.jpg'
+          titleText: Pricing
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'This beautiful page enables you to <span class="hidden-phone">quickly and easily </span>display your tiered pricing information<span class="hidden-phone"> in a modern, clear format</span>.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: Table
+          tag: Table
+          tagicons:
+            -
+              iconitem: 'fa fa-tv fa-fw'
+              icontext: Clean
+              title: 'Tag 1'
+          title: 'Item 3'
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://demo/home/header/img-04.jpg'
+          titleText: Blog
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'A clean, modern blog formatted page that displays your ordered blog posts alongside a simple, yet useful sidebar.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Content
+          tagicons:
+            -
+              iconitem: 'fa fa-leaf fa-fw'
+              icontext: Simple
+              title: 'Tag 1'
+          title: 'Item 4'
+        -
+          style: g-mosaicgrid-style2
+          img: 'gantry-media://demo/home/header/img-05.jpg'
+          titleText: Contact
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'This sample page gives you a quick and easy template for you contact page. <span class="hidden-phone">It hosts the contact form, as well as other information for visitors.</span>'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Feature
+          tagicons:
+            -
+              iconitem: 'fa fa-gear fa-fw'
+              icontext: Gantry
+              title: 'Tag 1'
+          title: 'Item 5'
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://demo/home/header/img-06.jpg'
+          titleText: Features
+          titleURL: '#'
+          titleTarget: _self
+          desc: 'Gantry 5 offers an advanced and user friendly Menu Editor and Layout Manager and many more powerful features to help build your site.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: Config
+          tagicons:
+            -
+              iconitem: 'fa fa-list fa-fw'
+              icontext: Admin
+              title: 'Tag 1'
+          title: 'Item 6'
+  custom-6584:
+    title: 'FP Showcase A'
+    attributes:
+      html: "<h2 class=\"g-title\">Gantry is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"http://www.gantry.org\" class=\"readon\">Read more about Gantry</a></p>"
+    block:
+      class: 'g-title-large g-title-300 g-center-vertical'
+  logo-4844:
+    title: 'FP Showcase B'
+    attributes:
+      image: 'gantry-media://demo/home/showcase/img-1.png'
+      text: ''
+      class: ''
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  blockcontent-2887:
+    title: 'FP Utility A'
+    attributes:
+      class: center
+      subcontents:
+        -
+          name: 'Gantry 5'
+          icon: 'fa fa-heartbeat fa-fw fa-3x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Gantry 5 is an advanced, versatile and multi-platform template framework, perfectly designed for the modern web. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Gantry 5'
+        -
+          name: YAML-Driven
+          icon: 'fa fa-calendar-check-o fa-fw fa-3x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'YAML is a human-readable data serialization, making it easy to create and configure blueprints. '
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: YAML-Driven
+        -
+          name: Twig-Templating
+          icon: 'fa fa-balance-scale fa-fw fa-3x'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Twig - a flexible, fast, and secure template engine for PHP - to make creating powerful, dynamic themes quick and easy.'
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Twig-Templating
+  pricingtable-5736:
+    title: 'FP Feature A'
+    attributes:
+      class: 'center g-title-large'
+      title: 'Our Pricing'
+      headertext: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec leo dolor. Proin laoreet neque et nisi mollis consequat. '
+      footertext: 'Any questions about our pricing? <strong>Call us at +1-888-1234-5678</strong>'
+      columns: g-pricingtable-4-col
+      tables:
+        -
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: Free
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '5 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '5 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-linethrough
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-linethrough
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Bronze
+        -
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: $29
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '15 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '15 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-linethrough
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: SIlver
+        -
+          class: ''
+          ribbon: Popular
+          icon: ''
+          price: $59
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '25 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '25 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-bold
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Gold
+        -
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: $79
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '50 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '50 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-bold
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-bold
+              title: 'Item 6'
+          plan: Platinum
+  infolist-6113:
+    title: 'Useful Links'
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/joomla/templates/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/docs/joomla/templates/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://docs.gantry.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Gantry
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://demo.rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: Demo
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/forum/joomla-template-galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+  infolist-4978:
+    title: Elsewhere
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.facebook.com/RocketTheme/'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://rockettheme.com/'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.youtube.com/user/OfficialRocketTheme'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://github.com/gantry/gantry5'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://bitbucket.org/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Bitbucket
+  custom-3225:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+  newsletter-7556:
+    attributes:
+      class: 'center-block g-title-large'
+      width: g-newsletter-compact
+      layout: g-newsletter-aside-wrap
+      style: g-newsletter-rounded
+      title: 'Stay Connected'
+      headtext: 'Subscribe to our weekly newsletter below.'
+      inputboxtext: 'Email Address'
+      buttontext: Subscribe
+      uri: '#'
+  copyright-5748:
+    block:
+      class: center
+  totop-6544:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-7951:
+    title: 'Mobile Menu'

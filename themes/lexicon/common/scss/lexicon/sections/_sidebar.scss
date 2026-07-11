@@ -1,0 +1,43 @@
+#g-sidebar {
+    color: $sidebar-text-color;
+    background: $sidebar-background;  
+}
+
+.nosuffix {
+	a:not(.readon) {
+		color: darken($accent-color-1, 25%);
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+
+.fp-sidebar-01 {
+	.menu {
+		a {
+			&:hover {
+				color: darken($accent-color-1, 10%);
+				background: $white;
+			}
+		}
+
+		@include breakpoint(mobile-only) {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.fp-sidebar-02 {
+	hr {
+	    border-bottom: 0;
+	    margin: 20px -25px;
+	    opacity: 0.15;
+	}
+}
+
+@media print {
+	#g-sidebar {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

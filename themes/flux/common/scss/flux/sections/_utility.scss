@@ -1,0 +1,25 @@
+#g-utility {
+    color: $utility-text-color;
+    background: $utility-background;
+
+    // Simple Content
+    .g-simplecontent {
+        .g-simplecontent-item-content-title, .g-simplecontent-item-leading-content {
+            color: $black;
+        }
+
+        .g-simplecontent-item-content-title {
+            padding-bottom: $content-padding * 2;
+            @include breakpoint(mobile-only) {
+              padding: 0;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

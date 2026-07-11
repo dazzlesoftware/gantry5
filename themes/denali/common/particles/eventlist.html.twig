@@ -1,0 +1,82 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }}">
+        {% if particle.demo == "enabled" %}
+            {% if gantry.theme.preset %}
+                {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+            {% else %}
+                {% set preset = 1 %}
+            {% endif %}
+        {% endif %}
+        <div class="g-eventlist-container" data-eventlist-id="{{ id }}" data-eventlist-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-eventlist-mobile="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-eventlist-tablet="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-eventlist-desktop="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-eventlist-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
+
+            <div class="g-eventlist-carousel owl-carousel">
+                {% for item in particle.items %}
+                    <div class="g-eventlist-item-image">
+                        <img src="{{  url(item.image) }}" alt="{{ item.location1 }}">
+                        <div class="g-eventlist-item-image-content">
+                            <div class="g-eventlist-item-image-location">
+                                {{ item.location1 }}</div>
+                            <div class="g-eventlist-item-image-date">
+                                {{ item.date1 }},
+                                {{ item.date2 }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="g-eventlist-items">
+
+                {% if particle.title %}
+                    <h2 class="g-eventlist-title">
+                        <span>{{ particle.subtitle|raw }}</span>
+                        {{ particle.title|raw }}</h2>
+                {% endif %}
+
+                {% for item in particle.items %}
+                    <div class="g-eventlist-item {% if particle.demo == "enabled" %}{% if loop.index == preset %}selected{% endif %}{% else %}{% if loop.first %}selected{% endif %}{% endif %}">
+                        <div class="g-eventlist-date">
+                            <div class="g-eventlist-date-line1">
+                                {{ item.date1 }}
+                            </div>
+                            <div class="g-eventlist-date-line2">
+                                {{ item.date2 }}
+                            </div>
+                        </div>
+                        <div class="g-eventlist-location">
+                            <div class="g-eventlist-location-icon">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </div>
+                            <div class="g-eventlist-location-content">
+                                <div class="g-eventlist-location-line1">
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" href="https://www.google.com/maps/search/{{ item.location1 }}">
+                                        {{ item.location1 }}
+                                    </a>
+                                </div>
+                                <div class="g-eventlist-location-line2">
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" href="https://www.google.com/maps/search/{{ item.location2 }}">
+                                        {{ item.location2 }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g-eventlist-buttons">
+                            <div class="g-eventlist-location-button">
+                                <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do 
+        gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/eventlist.init.js'), 10, 'footer') %}
+{% endblock %}

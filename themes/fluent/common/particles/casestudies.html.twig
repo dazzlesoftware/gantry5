@@ -1,0 +1,77 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }} g-casestudies" data-casestudies-id="{{ id }}">
+
+    <div class="g-casestudies-pattern">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2342 747">
+            <path class="g-casestudies-pattern-1"
+        d="M2340.958,746.540 C1857.879,551.886 1202.654,19.186 582.000,174.000 C292.145,246.300 112.194,287.488 1.367,310.951 C1.020,262.721 1.000,184.000 1.000,184.000 L1.000,147.000 C1.000,147.000 1.298,142.792 1.370,129.039 C357.239,43.910 886.935,-63.401 1819.000,168.000 C2048.362,224.943 2216.933,243.942 2340.642,239.771 "/>
+            <path class="g-casestudies-pattern-2"
+        d="M2341.350,540.886 C2078.714,411.412 1055.330,-44.714 1.215,136.052 C0.431,64.942 -0.000,72.000 -0.000,72.000 L1.000,58.000 C1.000,58.000 1.206,70.193 1.000,16.000 C1144.992,-102.939 1911.000,496.936 2319.000,202.000 C2326.255,196.756 2333.279,191.815 2340.079,187.170 "/>
+        </svg>
+    </div>
+
+    <div class="g-casestudies-header">
+        {% if particle.title %}
+            <div class="g-casestudies-title">
+                {{ particle.title }}
+            </div>
+        {% endif %}
+        <div class="g-casestudies-nav">
+            <div class="g-casestudies-nav-container">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            {% if particle.allposition == 'left' %}
+                <div class="g-casestudies-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                        {{ particle.allitems|default('All')|e }}
+                </div>
+            {% endif %}
+                {% for item in particle.cases %}
+                    <div class="g-casestudies-nav-item {% if particle.selected == 'first' %}{% if loop.first %}selected{% endif %}{% elseif particle.selected == 'last' %}{% if loop.last %}selected{% endif %}{% endif %}" data-group="{{ loop.index }}">
+                        {{ item.title }}
+                    </div>
+                {% endfor %}
+            {% if particle.allposition == 'right' %}
+                <div class="g-casestudies-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                        {{ particle.allitems|default('All')|e }}
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="g-casestudies-grid {{ particle.cols }}">
+        <div class="g-casestudies-grid-sizer"></div>
+        {% for case in particle.cases %}
+            {% set case_index = loop.index %}
+                {% for item in case.items %}
+                    <div class="g-casestudies-grid-item" data-groups='["{{ case_index }}"]'>
+                        <div class="g-casestudies-grid-item-wrapper g-casestudies-variation-{{ item.variation }} g-casestudies-layout-{{ item.layout }}">
+                            <div class="g-casestudies-grid-item-content">
+                                <div class="g-casestudies-grid-item-subtitle">
+                                    {{ item.subtitle }}
+                                </div>
+                                <div class="g-casestudies-grid-item-title">
+                                    {{ item.title }}
+                                </div>
+                            </div>
+                            <img src="{{ url(item.image)|e }}" alt="{{ item.title }}" />
+                            <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}"></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+<script src="{{ url('gantry-theme://js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+<script src="{{ url('gantry-theme://js/masonry.pkgd.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/casestudies.init.js') }}"></script>
+{% endblock %}

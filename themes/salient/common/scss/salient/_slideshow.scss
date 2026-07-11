@@ -1,0 +1,36 @@
+#g-slideshow {
+    background: $slideshow-background;
+    color: $slideshow-text-color; 
+  @if $slideshow-background-image {
+      background: $slideshow-background url($slideshow-background-image) center no-repeat;
+      background-size: cover;
+  }      
+  // Container
+  .g-container {
+    background: $slideshow-background;
+  }
+  &.fp-slideshow {
+    .g-container {
+      background: transparent;
+    }   
+  }
+  &.fp-slideshow-blocks {
+    padding-top: $content-margin / 2;
+    > .g-container {
+      margin-top: -($content-margin);
+      }
+    .g-content {
+      margin: $content-margin / 2;
+      @include breakpoint(mobile-only) {
+        margin: ($content-margin / 2) ($content-margin * 2);
+      }      
+    }
+  } 
+}
+
+@media print {
+  #g-slideshow {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}

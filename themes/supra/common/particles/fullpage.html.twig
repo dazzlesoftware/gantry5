@@ -1,0 +1,14 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url('gantry-theme://css/jquery.fullpage.css') }}">
+{% endblock %}
+
+{% block javascript %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/scrolloverflow.min.js')) %}
+{% do gantry.document.addScript(url('gantry-theme://js/jquery.fullpage.js')) %}
+<script type="text/javascript">
+jQuery(document).ready(function() {var scrolloverflowed; if (jQuery('#g-page-surround').width() < {{ particle.responsiveWidth }}) {scrolloverflowed = false;} else {scrolloverflowed = true;}jQuery('#g-page-surround').fullpage({sectionSelector: '{{ particle.sectionSelector }}',slideSelector: '{{ particle.slideSelector }}',responsiveWidth: '{{ particle.responsiveWidth }}',responsiveHeight: '{{ particle.responsiveHeight }}', bigSectionsDestination: 'top', scrollOverflow: scrolloverflowed, scrollBar: true});});
+</script>
+{% endblock %}

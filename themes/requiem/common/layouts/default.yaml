@@ -1,0 +1,390 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1506985282
+layout:
+  /top/:
+    -
+      - system-messages-8893
+    -
+      - 'position-7864 33'
+      - 'position-9186 34'
+      - 'position-5378 33'
+  /navigation/:
+    -
+      - 'position-8956 10'
+      - 'menu-2897 80'
+      - 'position-8101 10'
+    -
+      - 'position-9957 33'
+      - 'position-5494 34'
+      - 'position-4409 33'
+  /header/:
+    -
+      - 'position-2759 33'
+      - 'position-4793 34'
+      - 'position-6401 33'
+  /showcase/:
+    -
+      - 'position-5294 33'
+      - 'position-3044 34'
+      - 'position-9680 33'
+  /above/:
+    -
+      - 'position-5059 33'
+      - 'position-5623 34'
+      - 'position-2733 33'
+  /utility/:
+    -
+      - 'position-9834 33'
+      - 'position-9647 34'
+      - 'position-5474 33'
+  /feature/:
+    -
+      - 'position-8884 33'
+      - 'position-8579 34'
+      - 'position-7021 33'
+  /container-8135/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-3423
+      -
+        'mainbar 60':
+          -
+            - 'position-7272 33'
+            - 'position-9877 34'
+            - 'position-6512 33'
+          -
+            - system-content-6773
+      -
+        'aside 20':
+          -
+            - position-3340
+  /expanded/:
+    -
+      - 'position-8433 33'
+      - 'position-2341 34'
+      - 'position-6086 33'
+  /extension/:
+    -
+      - 'position-3108 33'
+      - 'position-1938 34'
+      - 'position-1100 33'
+  /bottom/:
+    -
+      - 'position-7372 33'
+      - 'position-3126 34'
+      - 'position-4971 33'
+  /footer/:
+    -
+      - 'position-1744 33'
+      - 'position-9363 34'
+      - 'position-1482 33'
+  /copyright/:
+    -
+      - 'branding-4440 33'
+      - 'copyright-5729 34'
+      - 'totop-1913 33'
+  /fixedside/:
+    -
+      - logo-7000
+    -
+      - social-9109
+  offcanvas:
+    -
+      - mobile-menu-4640
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  header:
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'box-darkgrey g-outer-box'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-8135:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+  fixedside:
+    type: section
+    title: FixedSide
+    attributes:
+      boxed: ''
+content:
+  system-messages-8893:
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-7864:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-9186:
+    title: 'Top B'
+    attributes:
+      key: top-b
+  position-5378:
+    title: 'Top C'
+    attributes:
+      key: top-c
+  position-8956:
+    title: 'MainNav Left'
+    attributes:
+      key: mainnav-left
+    block:
+      class: mainnav-left
+  menu-2897:
+    block:
+      class: mainnav-center
+  position-8101:
+    title: 'MainNav Right'
+    attributes:
+      key: mainnav-right
+    block:
+      class: mainnav-right
+  position-9957:
+    title: 'Navigation A'
+    attributes:
+      key: navigation-a
+  position-5494:
+    title: 'Navigation B'
+    attributes:
+      key: navigation-b
+  position-4409:
+    title: 'Navigation C'
+    attributes:
+      key: navigation-c
+  position-2759:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-4793:
+    title: 'Header B'
+    attributes:
+      key: header-b
+  position-6401:
+    title: 'Header C'
+    attributes:
+      key: header-c
+  position-5294:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-3044:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-9680:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-5059:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-5623:
+    title: 'Above B'
+    attributes:
+      key: above-b
+  position-2733:
+    title: 'Above C'
+    attributes:
+      key: above-c
+  position-9834:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-9647:
+    title: 'Utility B'
+    attributes:
+      key: utility-b
+  position-5474:
+    title: 'Utility C'
+    attributes:
+      key: utility-c
+  position-8884:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-8579:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-7021:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  position-3423:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-7272:
+    title: 'Mainbar A'
+    attributes:
+      key: mainbar-a
+  position-9877:
+    title: 'Mainbar B'
+    attributes:
+      key: mainbar-b
+  position-6512:
+    title: 'Mainbar C'
+    attributes:
+      key: mainbar-c
+  position-3340:
+    title: Aside
+    attributes:
+      key: aside
+  position-8433:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-2341:
+    title: 'Expanded B'
+    attributes:
+      key: expanded-b
+  position-6086:
+    title: 'Expanded C'
+    attributes:
+      key: expanded-c
+  position-3108:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-1938:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-1100:
+    title: 'Extension C'
+    attributes:
+      key: extension-c
+  position-7372:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-3126:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-4971:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  position-1744:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-9363:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-1482:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  branding-4440:
+    attributes:
+      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry Framework</a>'
+  totop-1913:
+    title: 'To Top'
+    attributes:
+      icon: 'fa fa-arrow-circle-o-up fa-2x'
+      content: ''
+  logo-7000:
+    attributes:
+      image: ''
+      text: R
+      class: g-fixedside-logo
+  social-9109:
+    attributes:
+      css:
+        class: social
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: '#'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: '#'
+          name: Facebook
+        -
+          icon: 'fa fa-google-plus fa-fw'
+          text: ''
+          link: '#'
+          name: 'Google +'
+        -
+          icon: 'fa fa-pinterest-p fa-fw'
+          text: ''
+          link: '#'
+          name: Pinterest
+        -
+          icon: 'fa fa-youtube-play fa-fw'
+          text: ''
+          link: '#'
+          name: YouTube
+        -
+          icon: 'fa fa-instagram fa-fw'
+          text: ''
+          link: '#'
+          name: Instagram
+        -
+          icon: 'fa fa-flickr fa-fw'
+          text: ''
+          link: '#'
+          name: Flickr
+        -
+          icon: 'fa fa-vimeo fa-fw'
+          text: ''
+          link: '#'
+          name: Vimeo
+  mobile-menu-4640:
+    title: 'Mobile Menu'

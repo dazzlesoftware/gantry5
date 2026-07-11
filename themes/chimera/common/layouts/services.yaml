@@ -1,0 +1,247 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: services
+  timestamp: 1527098404
+layout:
+  navigation: {  }
+  /header/:
+    -
+      - position-position-6831
+  /slideshow/:
+    -
+      - position-position-6234
+  /drawer/:
+    -
+      - position-position-5551
+  /top/:
+    -
+      - position-position-9101
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-3611
+  /feature/:
+    -
+      - position-position-8324
+  /utility/:
+    -
+      - position-position-5798
+  /maintop/:
+    -
+      - custom-5548
+    -
+      - custom-6983
+  /expandedtop/: {  }
+  /main/:
+    -
+      -
+        'mainbody 60':
+          -
+            - custom-6686
+      -
+        'sidebar 40':
+          -
+            - position-position-7684
+  /expandedbottom/:
+    -
+      - position-position-1527
+  /mainbottom/:
+    -
+      - custom-8113
+  /extension/:
+    -
+      - custom-2633
+  /bottom/: {  }
+  footer:
+    -
+      - 'custom-7934 50'
+      - 'custom-1158 50'    
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  drawer:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  main:
+    type: container
+    attributes:
+      boxed: ''
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    type: section
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  position-position-6831:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-6234:
+    title: Slideshow
+    attributes:
+      key: slideshow
+  position-position-5551:
+    title: Drawer
+    attributes:
+      key: drawer
+  position-position-9101:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  custom-3952:
+    title: 'Custom HTML'
+    attributes:
+      title: Services
+      titletag: 'What We Can Do'
+    block:
+      class: 'nomarginall rt-title-large'
+      variations: 'center nomodulecontent'
+  position-position-3611:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb      
+  position-position-8324:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  custom-5548:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<p>The two charts shown below are the sample chart canvas based on Chart.js. Chart.js is an easy, object oriented client side graphs for designers and developers. For more information how to create great looking charts using Chart.js, please visit <a href=\"http://www.chartjs.org/\">Chart.js</a> homepage or download the script <a href=\"https://github.com/nnnick/Chart.js\">here</a>.</p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<canvas id=\"myChart-a\" width=\"600\" height=\"320\"></canvas>\n\n\t\t\t\t<script type=\"text/javascript\">\n\t\t\t\t\tvar lineChartData = {\n\t\t\t\t\t\tlabels : [\"Joomla\",\"Wordpress\",\"Magento\",\"phpBB\",\"Kunena\",\"Email\",\"Forum\"],\n\t\t\t\t\t\tdatasets : [\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tfillColor : \"transparent\",\n\t\t\t\t\t\t\t\tstrokeColor : \"#97DBF2\",\n\t\t\t\t\t\t\t\tpointColor : \"#97DBF2\",\n\t\t\t\t\t\t\t\tpointStrokeColor : \"#97DBF2\",\n\t\t\t\t\t\t\t\tdata : [600,500,900,800,500,400,700]\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tfillColor : \"transparent\",\n\t\t\t\t\t\t\t\tstrokeColor : \"#DE4E33\",\n\t\t\t\t\t\t\t\tpointColor : \"#DE4E33\",\n\t\t\t\t\t\t\t\tpointStrokeColor : \"#DE4E33\",\n\t\t\t\t\t\t\t\tdata : [200,400,600,300,900,200,500]\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t]\n\t\t\t\t\t},\n\t\t\t\t\toptions = {\n\t\t\t\t\t\t//Boolean - If we want to override with a hard coded scale\n\t\t\t\t\t\tscaleOverride : true,\n\n\t\t\t\t\t\t//** Required if scaleOverride is true **\n\t\t\t\t\t\t//Number - The number of steps in a hard coded scale\n\t\t\t\t\t\tscaleSteps : 9,\n\t\t\t\t\t\t//Number - The value jump in the hard coded scale\n\t\t\t\t\t\tscaleStepWidth : 100,\n\t\t\t\t\t\t//Number - The scale starting value\n\t\t\t\t\t\tscaleStartValue : 100,\n\n\t\t\t\t\t\t//String - Scale label font colour\n\t\t\t\t\t\tscaleFontColor : \"#383838\",\n\n\t\t\t\t\t\t//String - Colour of the scale line\n\t\t\t\t\t\tscaleLineColor : \"#383838\",\n\n\t\t\t\t\t\t//String - Colour of the grid lines\n\t\t\t\t\t\tscaleGridLineColor : \"#383838\",\n\n\t\t\t\t\t\t//Boolean - Whether the line is curved between points\n\t\t\t\t\t\tbezierCurve : false,\n\n\t\t\t\t\t\t//Number - Radius of each point dot in pixels\n\t\t\t\t\t\tpointDotRadius : 8,\n\n\t\t\t\t\t\t//Number - Pixel width of point dot stroke\n\t\t\t\t\t\tpointDotStrokeWidth : 5,\n\n\t\t\t\t\t\t//Number - Pixel width of dataset stroke\n\t\t\t\t\t\tdatasetStrokeWidth : 6,\n\n\t\t\t\t\t\t//Boolean - Whether to fill the dataset with a colour\n\t\t\t\t\t\tdatasetFill : true,\n\n\t\t\t\t\t}\n\n\t\t\t\t\t//Get the context of the canvas element we want to select\n\t\t\t\t\tvar ctx = document.getElementById(\"myChart-a\").getContext(\"2d\");\n\t\t\t\t\tvar newChartA = new Chart(ctx).Line(lineChartData, options);\n\n\t\t\t\t</script>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<canvas id=\"myChart-b\" width=\"600\" height=\"320\"></canvas>\n\n\t\t\t\t<script type=\"text/javascript\">\n\t\t\t\t\tvar barChartData = {\n\t\t\t\t\t\tlabels : [\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\"],\n\t\t\t\t\t\tdatasets : [\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tfillColor : \"#D95240\",\n\t\t\t\t\t\t\t\tstrokeColor : \"#D95240\",\n\t\t\t\t\t\t\t\tdata : [600,500,900,800,500,600,900]\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tfillColor : \"#6FC6A0\",\n\t\t\t\t\t\t\t\tstrokeColor : \"#6FC6A0\",\n\t\t\t\t\t\t\t\tdata : [700,300,800,700,600,500,800]\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]\n\t\t\t\t\t},\n\t\t\t\t\toptions = {\n\t\t\t\t\t\t//Boolean - If we want to override with a hard coded scale\n\t\t\t\t\t\tscaleOverride : true,\n\t\t\t\t\t\n\t\t\t\t\t\t//** Required if scaleOverride is true **\n\t\t\t\t\t\t//Number - The number of steps in a hard coded scale\n\t\t\t\t\t\tscaleSteps : 9,\n\t\t\t\t\t\t//Number - The value jump in the hard coded scale\n\t\t\t\t\t\tscaleStepWidth : 100,\n\t\t\t\t\t\t//Number - The scale starting value\n\t\t\t\t\t\tscaleStartValue : 100,\n\n\t\t\t\t\t\t//String - Scale label font colour\n\t\t\t\t\t\tscaleFontColor : \"#383838\",\n\n\t\t\t\t\t\t//String - Colour of the scale line\n\t\t\t\t\t\tscaleLineColor : \"#383838\",\n\n\t\t\t\t\t\t//String - Colour of the grid lines\n\t\t\t\t\t\tscaleGridLineColor : \"#383838\"\n\t\t\t\t\t}\n\n\t\t\t\t\t//Get the context of the canvas element we want to select\n\t\t\t\t\tvar ctx = document.getElementById(\"myChart-b\").getContext(\"2d\");\n\t\t\t\t\tvar newChartB = new Chart(ctx).Bar(barChartData, options);\n\n\t\t\t\t</script>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br />\n\n<p class=\"success\">NOTE: The canvas only works on modern browsers (Firefox, Opera, Chrome, Safari, and Internet Explorer 9+) that support the HTML5 canvas element. <a target=\"_blank\" href=\"http://www.w3schools.com/html/html5_canvas.asp\">Internet Explorer 8 and earlier versions, do not support the canvas element.</a></p>"
+    block:
+      class: 'nomarginall rt-square'
+      variations: box4
+  custom-6983:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Our Core Service</h3>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications.</p>\n\t\t\t\t<div class=\"hidden-tablet\">\n\t\t\t\t\t<h3>We Do Our Best</h3>\n\t\t\t\t\t<p>Proactively envisioned multimedia based expertise and cross-media growth strategies.</p>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li>HTML5 &amp; CSS3</li>\n\t\t\t\t\t\t<li>Gantry Framework</li>\n\t\t\t\t\t\t<li>Chimera Theme</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/services/img-01.jpg\" alt=\"image\" /></span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+    block:
+      class: 'nomarginall rt-square'
+  custom-6686:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h3>Why Should You Choose Us?</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n\n<p><a href=\"#\" class=\"readon\">Learn More</a></p>"
+  position-position-7684:
+    title: Sidebar
+    attributes:
+      key: sidebar-a
+  position-position-1527:
+    title: 'Expanded Bottom A'
+    attributes:
+      key: expandedbottom-a
+  position-position-2329:
+    title: MainBottom
+    attributes:
+      key: mainbottom-a
+  custom-8113:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-25\">\n\t\t<img src=\"gantry-media://pages/services/img-02.jpg\" alt=\"image\" />\n\t\t<div class=\"gantry-width-spacer\">\t\n\t\t\t<h4>Grid System</h4>\n\t\t\t<p>Objectively innovate empowered manufactured products with parallel platforms.</p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-25\">\n\t\t\t<img src=\"gantry-media://pages/services/img-02.jpg\" alt=\"image\" />\n\t\t<div class=\"gantry-width-spacer\">\t\n\t\t\t<h4>Custom Interface</h4>\n\t\t\t<p>Proactively envisioned multimedia based expertise and effective cross-media strategies.</p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-25\">\n\t\t<img src=\"gantry-media://pages/services/img-02.jpg\" alt=\"image\" />\n\t\t<div class=\"gantry-width-spacer\">\t\n\t\t\t<h4>Flexible Layouts</h4>\n\t\t\t<p>Interactively coordinate proactive e-commerce via process-centric outside the box.</p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-25\">\n\t\t<img src=\"gantry-media://pages/services/img-02.jpg\" alt=\"image\" />\n\t\t<div class=\"gantry-width-spacer\">\t\n\t\t\t<h4>Ultimate Control</h4>\n\t\t\t<p>Holistically pontificate installed base portals after maintainable affordable products.</p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+    block:
+      variations: nopaddingbottom
+  custom-2633:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title module-title\"><span>Save Yourself Time and Effort</span></h2>\n\n<p>We Always Create the Real Value and Work with All Passion</p>\n\n<p><a href=\"#\" class=\"readon largemargintop\">Purchase Chimera</a></p>"
+    block:
+      variations: center
+  custom-7934:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Chimera Demo</span></h2>\n\n<p class=\"hidden-phone\">These examples are intended to show how Chimera can be constructed on your site, above and beyond the frontpage demonstration. These include content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Chimera RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+    block:
+      class: rt-phone-center
+  custom-1158:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Chimera Theme, LLC</span><br />\n\t\t\t<span>123 CMS Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+    block:
+      class: rt-phone-center      

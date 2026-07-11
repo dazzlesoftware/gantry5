@@ -1,0 +1,90 @@
+name: Cards
+description: Displays customizable cards
+type: particle
+icon: fa-id-card-o
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    columns:
+      type: select.selectize
+      label: Columns
+      description: Select columns amount.
+      default: 2
+      options:
+          1: 1 column
+          2: 2 columns
+          3: 3 columns
+          4: 4 columns
+
+    subcontents:
+      type: collection.list
+      array: true
+      label: Cards
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Enter title.
+
+        .accent:
+          type: select.selectize
+          label: Accent
+          description: Select preferred block accent color.
+          placeholder: 'Select...'
+          default: none
+          options:
+              none: None
+              accent1: Accent Color 1
+              accent2: Accent Color 2
+              accent2_light: Accent Color 2 (Light)
+
+        .headline1:
+          type: input.text
+          label: Headline 1
+          description: Enter headline 1 text.
+
+        .headline2:
+          type: input.text
+          label: Headline 2
+          description: Enter headline 2 text.
+
+        .img:
+          type: input.imagepicker
+          label: Image
+          description: Select the image.
+
+        .tag:
+          type: input.text
+          label: Tag
+          description: Enter tag text.
+
+        .fullname:
+          type: input.text
+          label: Full Name
+          description: Enter tag text.

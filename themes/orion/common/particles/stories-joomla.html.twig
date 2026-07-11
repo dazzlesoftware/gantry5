@@ -1,0 +1,87 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+	{% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+	{% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+	{% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+	{% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+	{% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+{% for article in articles %}
+
+	{% if display.author_image.enabled and article.images.image_intro or article.images.image_fulltext %}
+		{% if article.images.image_intro and display.author_image.enabled == 'intro' %}
+			{% set article_author_image = article.images.image_intro %}
+		{% elseif article.images.image_fulltext and display.author_image.enabled == 'full' %}
+			{% set article_author_image = article.images.image_fulltext %}
+		{% endif %}
+	{% endif %}
+
+	<div class="g-stories-element swiper-slide">
+		<div class="g-stories-wrapper">
+			{% if display.text.type != '' %}
+				{% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+				<h5 class="g-stories-content">
+					{% if display.text.formatting == 'text' %}
+						{{ article_text|truncate_text(display.text.limit)|raw }}
+					{% else %}
+						{{ article_text|truncate_html(display.text.limit)|raw }}
+					{% endif %}
+				</h5>
+			{% endif %}
+
+			{% if display.author_image.enabled or (display.author.enabled and article.created_by_alias) %}
+				<div class="g-stories-author-wrap">
+					{% if display.author_image.enabled %}
+						<img class="g-stories-image" src="{{ url(article_author_image)|e }}" alt="{{ article.created_by_alias }}" title="{{ article.created_by_alias }}"/>
+					{% endif %}
+
+					{% if display.author.enabled and article.created_by_alias %}
+						<p class="g-stories-author">
+							{{ article.created_by_alias }}
+
+						{% if display.category.enabled %}
+							<span>
+								{% for item in categories %}
+									{{ item.title }}
+									{% if not loop.last %},
+									{% endif %}
+								{% endfor %}
+							</span>
+						{% endif %}
+						</p>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endfor %}
+

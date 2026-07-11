@@ -1,0 +1,40 @@
+#g-footer {
+    color: $footer-text-color;
+    background: $footer-background;
+    @extend .section-paddings;
+
+    > .g-grid {
+        border-bottom: 1px solid $base-border-color;
+    }
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-layout-header {
+            .g-simplecontent-item-content-title {
+                font-size: $h4-font-size;
+
+                @include breakpoint(tablet-range) {
+                    font-size: $h4-font-size - 0.1;
+                }
+
+                @include breakpoint(mobile-only) {
+                    font-size: $h4-font-size - 0.3;
+                }
+            }
+        }
+    }
+
+    // Newsletter Particle
+    .g-newsletter {
+        .g-newsletter-form-wrapper {
+            padding: $content-padding 0;
+        }
+    }
+}
+
+@media print {
+    #g-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

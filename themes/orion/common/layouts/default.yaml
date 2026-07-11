@@ -1,0 +1,366 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1600788209
+layout:
+  /container-top/:
+    -
+      -
+        /top/:
+          -
+            - system-messages-9828
+    -
+      -
+        /navigation/:
+          -
+            - 'logo-3453 20'
+            - 'menu-2872 60'
+            - 'social-7974 20'
+    -
+      -
+        /slideshow/:
+          -
+            - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /feature/:
+    -
+      - position-position-7980
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-9414
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /container-footer/:
+    -
+      -
+        /footer/:
+          -
+            - 'simplecontent-4419 25'
+            - 'simplemenu-2324 75'
+          -
+            - newsletter-5881
+        /copyright/:
+          -
+            - copyright-6444
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      variations: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  container-top:
+    attributes:
+      boxed: ''
+      class: 'no-background-image'
+      extra: {  }
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings-large
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings-large'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  logo-3453:
+    title: 'Logo / Image'
+    attributes:
+      image: ''
+      link: '1'
+      svg: "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 63 63\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" xmlns:serif=\"http://www.serif.com/\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;\">\n    <g transform=\"matrix(0.149281,0,0,0.149281,-43.1425,-28.4818)\">\n        <path d=\"M428.05,250.095C417.294,271.418 410.204,294.864 407.578,319.577C403,319.815 398.574,319.965 394.329,320.045C400.519,294.227 412.176,270.461 428.05,250.095ZM493.892,245.283C483.132,264.909 476,286.808 473.405,310.077C469.1,311.15 464.811,312.116 460.553,312.985C466.163,287.624 477.801,264.529 493.892,245.283ZM499.445,585.764C486.541,585.764 473.948,584.43 461.793,581.904C452.713,580.016 443.879,577.458 435.343,574.287C365.282,548.257 315.36,480.801 315.36,401.679C315.36,300.012 397.778,217.594 499.445,217.594C506.689,217.594 513.831,218.027 520.857,218.841C519.234,218.796 517.606,218.77 515.971,218.77C443.495,218.77 381.299,262.771 354.63,325.515C387.722,328.286 478.221,330.825 546.89,285.579C546.89,285.579 520.629,310.951 472.316,330.27C472.362,347.535 474.895,364.215 479.572,379.973C473.403,381.813 467.261,383.462 461.182,384.936C458.311,372.958 456.78,360.459 456.78,347.6C456.78,343.637 456.944,339.714 457.229,335.824C442.092,340.941 425.171,345.298 406.558,348.151L406.558,348.17C407.095,363.843 409.409,379.034 413.281,393.569C405.929,394.47 398.875,395.152 392.206,395.662C390.662,387.062 389.701,378.252 389.393,369.264C389.173,362.855 389.292,356.513 389.721,350.253C375.939,351.592 361.339,352.078 345.951,351.452C342.552,365.076 340.738,379.327 340.738,394.004C340.738,397.289 340.831,400.553 341.009,403.794C373.333,405.117 486.321,404.914 567.274,344.372C567.274,344.372 539.61,374.476 486.854,399.936C492.36,412.596 499.31,424.482 507.496,435.388C501.408,438.498 495.305,441.388 489.231,444.074C480.894,433.1 473.947,421.014 468.646,408.078C455.01,413.706 440.009,418.865 423.683,423.12C429.56,436.411 436.819,448.935 445.271,460.521C437.059,463.087 429.156,465.297 421.699,467.199C413.4,455.173 406.495,442.095 401.219,428.194C383.903,431.521 365.305,433.766 345.445,434.49C349.608,452.088 356.419,468.662 365.444,483.762C381.472,482.142 508.949,466.907 585.598,385.978C585.598,385.978 564.942,418.024 520.586,450.879C532.007,462.93 545.109,473.371 559.523,481.817C555.67,484.977 551.46,488.184 547.033,491.383C531.408,483.829 517.202,473.805 504.919,461.816C493.14,469.56 480.008,477.154 465.484,484.182C478.078,496.829 492.317,507.815 507.843,516.792C501.542,520.545 495.551,523.995 490.219,527.001C473.11,518.342 457.515,507.081 443.97,493.716C426.419,500.804 407.134,506.953 386.063,511.601C402.911,530.199 423.696,545.164 447.104,555.179C458.711,550.438 476.896,542.336 497.755,530.612C503.25,527.523 508.932,524.18 514.728,520.583C527.099,512.906 539.989,504.059 552.709,493.999C556.58,490.938 560.435,487.768 564.254,484.48C587.41,464.548 609.262,440.435 625.451,411.841C625.451,411.841 613.003,448.214 577.526,491.005C596.53,499.372 617.29,504.487 639.107,505.618C631.691,506.675 624.111,507.223 616.403,507.223C600.112,507.223 584.397,504.771 569.593,500.234C560.506,510.432 550.109,520.862 538.277,531.144C559.262,538.981 581.853,543.441 605.371,543.853C596.882,545.361 588.184,546.291 579.317,546.595C561.114,547.22 543.445,545.158 526.676,540.793C515.26,549.881 502.666,558.755 488.774,567.134C497.638,568.515 506.72,569.238 515.971,569.238C571.446,569.238 620.892,543.453 653,503.222C620.043,552.959 563.579,585.764 499.445,585.764ZM500,190.793C383.469,190.793 289.002,285.26 289.002,401.791C289.002,518.323 383.469,612.789 500,612.789C616.531,612.789 710.998,518.323 710.998,401.791C710.998,285.26 616.531,190.793 500,190.793Z\"/>\n    </g>\n</svg>\n"
+      title: orion
+  menu-2872:
+    block:
+      variations: center
+  social-7974:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'https://www.facebook.com/RocketTheme'
+          name: Facebook
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://www.twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-linkedin fa-fw'
+          text: ''
+          link: '#'
+          name: LinkedIn
+    block:
+      class: hidden-phone
+      variations: align-right
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: ''
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  simplecontent-4419:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: Orion
+          author: ''
+          leading_content: "5555 Catrock Rd <br />\n\LMO 40108 Silver, USA <br /> <br />\nhello@orion.design <br />\n\L+1-202-555-0149 <br />"
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+  simplemenu-2324:
+    title: 'Simple Menu'
+    attributes:
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: ''
+              target: _blank
+              title: 'About Rational'
+            -
+              icon: ''
+              link: ''
+              target: _blank
+              title: 'Our Projects'
+            -
+              title: 'The Team'
+            -
+              title: Jobs
+            -
+              title: Blog
+            -
+              title: Press
+          title: About
+        -
+          items:
+            -
+              title: 'Our Blog'
+            -
+              title: 'Case Studies'
+            -
+              title: 'Newsletter'
+            -
+              title: 'Web Guides'
+          title: Resources
+        -
+          items:
+            -
+              title: Contact
+            -
+              title: Helpcentre
+            -
+              title: 'Our Offices'
+            -
+              title: Facebook
+            -
+              title: Twitter
+            -
+              title: Instagram
+          title: Contact
+        -
+          items:
+            -
+              title: 'Live Chat'
+            -
+              title: '(401) 123-4578'
+            -
+              title: 'Send us an email'
+            -
+              title: FAQ
+          title: Online
+  newsletter-5881:
+    attributes:
+      layout: g-newsletter-aside
+      title: ''
+      headtext: ''
+      inputboxtext: 'Your Email'
+      buttontext: Subscribe
+      buttonclass: button-3
+  copyright-6444:
+    attributes:
+      date:
+        start: ''
+        end: ''
+      owner: 'All rights reserved. Designed & Developed by <a href="" target="_blank">RocketTheme</a>.'
+    block:
+      variations: center
+  mobile-menu-2576:
+    title: 'Mobile Menu'

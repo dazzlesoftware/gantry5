@@ -1,0 +1,23 @@
+.g-logo {
+    color: $base-text-color;
+    font-weight: $font-weight-regular;
+    font-size: $core-font-size + 1.15;
+
+    @include breakpoint(small-mobile-range) {
+        font-weight: $font-weight-bold;
+    }
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    img {
+        .dir-rtl & {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    position: relative;
+    overflow: hidden;
+    
+    .g-title{
+        position: relative;
+        z-index: 1;
+    }
+    
+    .g-content {
+        height: 100%;
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

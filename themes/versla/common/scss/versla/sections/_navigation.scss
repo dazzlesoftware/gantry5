@@ -1,0 +1,16 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    @extend .section-paddings;
+
+    .g-grid {
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

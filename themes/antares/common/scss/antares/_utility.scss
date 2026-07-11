@@ -1,0 +1,34 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+
+	// Container
+	.g-container {
+		padding-top: 1rem;
+	}
+
+    // FP Utility A
+    .fp-utility-a {
+    	text-align: center;
+    }
+
+    // FP Utility B
+    .fp-utility-b {
+    	text-align: center;
+    	padding: 2rem 0;
+    }
+
+    // FP Utility C
+    .fp-utility-c {
+    	.g-animatedblock-item {
+    		margin: 0;
+    	}
+    }
+}
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

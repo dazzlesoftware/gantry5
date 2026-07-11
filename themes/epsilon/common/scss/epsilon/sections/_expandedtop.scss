@@ -1,0 +1,15 @@
+#g-expandedtop {
+    color: $expandedtop-text-color; 
+	background: $expandedtop-background;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: darken($expandedtop-text-color, 15%);
+	}
+}
+
+@media print {
+	#g-expandedtop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

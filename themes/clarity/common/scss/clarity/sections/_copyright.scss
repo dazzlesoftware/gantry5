@@ -1,0 +1,21 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+    text-transform: uppercase;
+    font-family: get-font-family($font-family-title);
+
+    a {
+        color: $copyright-text-color;
+
+        &:hover {
+            color: lighten($copyright-text-color, 10%);
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

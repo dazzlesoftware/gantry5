@@ -1,0 +1,15 @@
+name: Navigation Styles
+description: Navigation styles for the Sienna theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "rgba(0,0,0, 0)"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#666666"

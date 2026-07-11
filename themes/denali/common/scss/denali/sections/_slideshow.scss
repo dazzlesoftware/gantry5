@@ -1,0 +1,22 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background: $slideshow-background;
+    position: relative;
+
+    .g-simplecontent, h1, .g-slider-carousel-title {
+        color: $white;
+    }
+
+    .g-slider .g-slider-slides .g-slider-slides-slide .g-slider-slides-content p {
+        @include breakpoint(mobile-only) {
+            color: $white;
+        }
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,68 @@
+name: Icon List
+description: Display iconlist.
+type: particle
+icon: fa-info-circle
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title 
+
+    titletag:
+      type: input.text
+      label: Title Tagline
+      description: Customize the title tagline text.
+      placeholder: Enter title tagline    
+
+    cols:
+      type: select.select
+      label: Grid Column
+      description: Select the grid column amount
+      placeholder: 'Select...'
+      default: 33
+      options:
+        50: 2 Columns
+        33: 3 Columns
+        25: 4 Columns
+
+    iconlists:
+      type: collection.list
+      array: true
+      label: Icon Lists
+      description: Create each item to appear in the content row.
+      value: name
+      ajax: true
+
+      fields:
+        .icon:
+          type: input.icon
+          label: Icon
+          description: Select the icon. 
+        .circlenumber:
+          type: input.number
+          label: Circle Number
+          description: Number for circle.     
+        .title:
+          type: input.text
+          label: Item Title
+          description: Customize the item title text.
+          placeholder: Enter item title
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the description.
+          placeholder: Enter short description

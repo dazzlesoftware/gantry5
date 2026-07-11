@@ -1,0 +1,227 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: about_us
+  timestamp: 1527098404
+layout:
+  navigation: {  }
+  /header/:
+    -
+      - position-position-6831
+  /slideshow/:
+    -
+      - position-position-6234
+  /drawer/:
+    -
+      - position-position-5551
+  /top/:
+    -
+      - position-position-9101
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-3611
+  /feature/:
+    -
+      - position-position-8324
+  /utility/:
+    -
+      - position-position-5798
+  /maintop/:
+    -
+      - custom-5548
+  /expandedtop/:
+    -
+      - position-position-8368
+  /main/:
+    -
+      -
+        'mainbody 60':
+          -
+            - custom-1940
+      -
+        'sidebar 40':
+          -
+            - position-position-7684
+  /expandedbottom/: {  }
+  /mainbottom/:
+    -
+      - custom-9150
+  /extension/:
+    -
+      - custom-2633
+  /bottom/: {  }
+  footer:
+    -
+      - 'custom-7934 50'
+      - 'custom-1158 50'    
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  drawer:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  main:
+    type: container
+    attributes:
+      boxed: ''
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+  footer:
+    type: section
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  position-position-6831:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-6234:
+    title: Slideshow
+    attributes:
+      key: slideshow
+  position-position-5551:
+    title: Drawer
+    attributes:
+      key: drawer
+  position-position-9101:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  custom-3952:
+    title: Heading
+    attributes:
+      title: 'About Us'
+      titletag: 'Welcome to Chimera'
+      html: ''
+    block:
+      class: rt-title-large
+      variations: 'center nomodulecontent nomarginall'
+  position-position-3611:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb      
+  position-position-8324:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  custom-5548:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-01.jpg\" alt=\"image\" /></span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Introduction</h3>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change.</p>\n\t\t\t\t<div class=\"hidden-tablet\">\n\t\t\t\t\t<h3>More About Us</h3>\n\t\t\t\t\t<p>Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing.</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  position-position-8368:
+    title: ExpandedTop
+    attributes:
+      key: expandedtop-a
+  custom-1940:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h3>Chimera, the Powerful Template</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n\n<p><a href=\"#\" class=\"readon\">Learn More</a></p>"
+  position-position-7684:
+    title: Sidebar
+    attributes:
+      key: sidebar-a
+  custom-9150:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-02.jpg\" alt=\"image\" /></span>\n\t\t\t\t<h4>Our Mission</h4>\n\t\t\t\t<p>Objectively innovate empowered manufactured products whereas parallel platforms. Holistically predominate extensible testing procedures for reliable supply chains.</p>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-02.jpg\" alt=\"image\" /></span>\n\t\t\t\t<h4>Our Values</h4>\n\t\t\t\t<p>Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration.</p>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/about-us/img-02.jpg\" alt=\"image\" /></span>\n\t\t\t\t<h4>Our Solution</h4>\n\t\t\t\t<p>Engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric outside the box thinking.</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  position-position-2329:
+    title: MainBottom
+    attributes:
+      key: mainbottom-a
+  custom-2633:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title module-title\"><span>We Always Try to Create a Difference</span></h2>\n\n<p>Utilized with Versatile and Flexible Features Powered by the Gantry Framework.</p>\n\n<p><a href=\"#\" class=\"readon largemargintop\">Download Chimera</a></p>"
+    block:
+      variations: center
+  custom-7934:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Chimera Demo</span></h2>\n\n<p class=\"hidden-phone\">These examples are intended to show how Chimera can be constructed on your site, above and beyond the frontpage demonstration. These include content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Chimera RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+    block:
+      class: rt-phone-center
+  custom-1158:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Chimera Theme, LLC</span><br />\n\t\t\t<span>123 CMS Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+    block:
+      class: rt-phone-center      

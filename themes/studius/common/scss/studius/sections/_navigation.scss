@@ -1,0 +1,29 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    position: relative;
+    z-index: 100;
+
+    a {
+        color: $navigation-text-color;
+
+        &:hover {
+            color: transparentize($navigation-text-color, 0.5);
+        }
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-logo svg path {
+        fill: $navigation-text-color;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

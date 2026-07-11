@@ -1,0 +1,64 @@
+name: Authors List
+description: Create list of your site authors with links to their profiles.
+type: particle
+icon: fa-address-card
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      default: 'Our writers'
+
+    pretext:
+      type: textarea.textarea
+      label: Pre List Text
+      description: Text that will appear before the list of authors.
+
+    posttext:
+      type: textarea.textarea
+      label: Post List Text
+      description: Text that will appear after the list of authors.
+
+    items:
+      type: collection.list
+      array: true
+      label: Authors
+      description: Create each author to appear in the content row.
+      value: name
+      ajax: true
+      fields:
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select desired image.
+
+        .specialty:
+          type: input.text
+          label: Specialty
+          description: Customize the author specialty.
+          placeholder: Science
+
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the author description.
+          placeholder: Enter short description
+
+        .link:
+          type: input.text
+          label: Author Link
+          description: Specify the author link.

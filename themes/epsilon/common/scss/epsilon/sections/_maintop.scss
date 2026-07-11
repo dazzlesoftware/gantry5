@@ -1,0 +1,97 @@
+#g-maintop {
+    color: $maintop-text-color;
+
+    @if $maintop-background-image {
+        background: $maintop-background url($maintop-background-image) 50% 50%;
+    } @else { 
+        background-color: $maintop-background;
+    }
+
+    a {
+        color: $accent-color-2;
+        &:hover {
+            color: darken($maintop-text-color, 5%);
+        }
+    }
+
+    .readon {
+        color: $accent-color-1;
+        background: $white;
+        border: 1px solid darken($white, 15%);
+        box-shadow: 0 4px 0 fade-out($white, 0.50);
+        &:hover {
+            color: $white;
+            background: darken($accent-color-2, 5%);
+            border: 1px solid darken($accent-color-2, 15%);
+            box-shadow: 0 4px 0 fade-out($accent-color-2, 0.50);
+        }
+    }
+
+    &.fp-maintop {
+        .g-content {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .owl-item {
+            .g-owl-container {
+                margin: 0 80px;
+
+                @include breakpoint(small-mobile-range) {
+                    margin: 0;
+                }
+            }
+            .g-owlcarousel-text {
+                width: 60%;
+                padding: 0 15px;
+
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                    padding: 0;
+                }
+            }
+            .g-owlcarousel-image-container {
+                width: 40%;
+
+                @include breakpoint(large-desktop-range) {
+                    padding: 0 15px;
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+            .g-owlcarousel-item-title {
+                font-size: 160%;
+                line-height: 160%;
+                margin-bottom: 25px;
+                text-transform: capitalize;
+                font-family: get-font-family($font-family-regular);
+                letter-spacing: 1px;
+            }
+        }
+        .readon {
+            color: $accent-color-1;
+            background: darken($white, 5%);
+            border: 1px solid $white;
+            box-shadow: 0 4px 0 fade-out($white, 0.50);
+            &:hover {
+                color: $white;
+                background: $accent-color-2;
+                border: 1px solid darken($accent-color-2, 10%);
+                box-shadow: 0 4px 0 fade-out($accent-color-2, 0.50);
+            }
+        }
+        h5, .readon {
+            font-family: get-font-family($font-family-regular);
+        }
+    }
+}
+
+
+
+@media print {
+	#g-maintop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

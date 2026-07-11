@@ -1,0 +1,12 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+    position: relative;
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

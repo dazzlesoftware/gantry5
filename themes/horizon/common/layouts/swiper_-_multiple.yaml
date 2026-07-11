@@ -1,0 +1,509 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: swiper
+  timestamp: 1580382706
+layout:
+  top: {  }
+  /navigation/: { }
+  /slideshow/:
+    -
+      - simplecontent-1768
+  /header/: {  }
+  /above/: {  }
+  /feature/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /container-main/:
+    /mainbar/:
+      -
+        - custom-1958
+      -
+        - swiper-6977
+      -
+        - custom-2312
+      -
+        - swiper-6979
+      -
+        - custom-2320
+      -
+        - swiper-6920
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/: {  }
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  container-top:
+    attributes:
+      boxed: ''
+      class: 'no-background-image'
+      extra: {  }
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  mainbar:
+    type: section
+    attributes:
+      boxed: ''
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-1768:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: Swiper
+          author: ''
+          leading_content: 'Swiper, the modern touch slider, is now available for Horizon! Incredibly versatile, with options for Thumbnails, Multiple Slides, stunning Effects, and more.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Header
+  custom-1958:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Multiple Slides Per View</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6977:
+    title: 'Swiper - Multiple Slides View'
+    attributes:
+      class: multislides
+      source: particle
+      height: 70vh
+      heightMobile: 400px
+      nav: enabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(0, 0, 0, 0.4)'
+      direction: horizontal
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Exclusive Design'
+          text: 'Splendid choice for restaurants'
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Premium Features'
+          text: 'Over 30 Particles Available'
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Mobile Responsive'
+          text: 'Slide and Thumb Breakpoints'
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '1'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '1'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '1'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '1'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  custom-2312:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Multiple Slides Per Group</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6979:
+    title: 'Swiper - Multiple Slides Per Group'
+    attributes:
+      class: multislides
+      source: particle
+      height: 70vh
+      heightMobile: 400px
+      nav: enabled
+      pagination: ''
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(0, 0, 0, 0.4)'
+      direction: horizontal
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Exclusive Design'
+          text: 'Splendid choice for restaurants'
+          thumbClass: ''
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Premium Features'
+          text: 'Over 30 Particles Available'
+          thumbClass: ''
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Mobile Responsive'
+          text: 'Slide and Thumb Breakpoints'
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '3'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '3'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '3'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  custom-2320:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Cover Flow</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6920:
+    title: 'Swiper - Cover Flow'
+    attributes:
+      class: multislides
+      source: particle
+      height: 70vh
+      heightMobile: 400px
+      nav: disabled
+      pagination: ''
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(0, 0, 0, 0.4)'
+      direction: horizontal
+      effect: coverflow
+      items:
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Exclusive Design'
+          text: 'Splendid choice for restaurants'
+          thumbClass: ''
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Premium Features'
+          text: 'Over 30 Particles Available'
+          thumbClass: ''
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://swiper/img-01.jpg'
+          imageMobile: ''
+          bgcolor: ''
+          kb: ''
+          duration: '7000'
+          video: ''
+          title: 'Mobile Responsive'
+          text: 'Slide and Thumb Breakpoints'
+          thumb_title: ''
+          imageThumb: ''
+          button_text: 'Read More'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '3'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '3'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '3'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self

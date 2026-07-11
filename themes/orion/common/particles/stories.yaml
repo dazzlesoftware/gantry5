@@ -1,0 +1,342 @@
+name: User Stories
+description: Display user stories.
+type: particle
+icon: fa-users
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              overridable: false
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            nav:
+              type: select.select
+              label: Prev / Next
+              description: Enable or disable the Prev / Next navigation. Arrows will not appear unless they are actually required (i.e. more items than currently visible).
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay:
+              type: select.select
+              label: Autoplay
+              description: Decide if you want your slideshow to autoplay or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplayTimeout:
+              type: input.number
+              label: Autoplay Timeout
+              description: The time between each auto transition
+              default: 8000
+
+            loop:
+              type: select.select
+              label: Loop
+              description: Decide if you want your slideshow to loop or not.
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            speed:
+              type: input.number
+              label: Speed
+              description: Transition speed
+              default: 800
+
+            touchmove:
+              type: select.select
+              label: Touch Move
+              description: Decide if you want to be able to move slides using touch.
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+        _tab_slides:
+          label: Slides
+          overridable: false
+          fields:
+            largedesktopinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Large Desktop'
+            largedesktopslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 1
+              min: 1
+            largedesktopgroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            largedesktopspace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+            desktopinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Desktop' 
+            desktopslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 1
+              min: 1
+            desktopgroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            desktopspace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+            tabletinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Tablet'
+            tabletslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 1
+              min: 1
+            tabletgroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            tabletspace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+            mobileinfo:
+              type: separator.note
+              class: alert alert-info
+              content: 'Mobile'
+            mobileslides:
+              type: input.number
+              label: Slides Per View
+              description: Number of slides per view
+              default: 1
+              min: 1
+            mobilegroup:
+              type: input.number
+              label: Slides Per Group
+              description: Number of slides per transition
+              default: 1
+              min: 1
+            mobilespace:
+              type: input.number
+              label: Space Between
+              description: Amount of space between each thumb (px)
+              default: 35
+              min: 0
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            story:
+              type: collection.list
+              array: true
+              label: Story
+              description: Create stories.
+              value: name
+              ajax: true
+              fields:
+                .content:
+                    type: textarea.textarea
+                    label: Story Content
+                    description: Add testimonial content
+                .avatar:
+                    type: input.imagepicker
+                    label: Avatar
+                    description: Pick desired photo.
+                .name:
+                    type: input.text
+                    label: Name
+                    description: Name
+                .position:
+                    type: input.text
+                    label: Position
+                    description: Position
+                .alttext:
+                    type: input.text
+                    label: Alt Tag
+                    description: Add Alt text
+                    default: "Testimonial"
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.text.type:
+              overridable: false
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              overridable: false
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              pattern: '\d+'
+
+            article.display.text.formatting:
+              overridable: false
+              type: select.select
+              label: Text Formatting
+              description: Select the formatting you want to use to display the article text.
+              options:
+                text: Plain Text
+                html: HTML
+
+            article.display.author.enabled:
+              type: select.select
+              label: Author
+              description: Select if author should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.author_image.enabled:
+              type: select.select
+              label: Author Image
+              description: Select if and what image of the article should be shown.
+              options:
+                intro: Intro
+                full: Full
+                '': None
+
+            article.display.category.enabled:
+              type: select.select
+              label: Category
+              description: Select if category should be shown.
+              options:
+                show: Show
+                '': Hide

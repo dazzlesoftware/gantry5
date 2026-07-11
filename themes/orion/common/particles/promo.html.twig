@@ -1,0 +1,16 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div id="{{ particle.id }}" class="g-promo" style="background-image: url({{ url(particle.image)|e }});">
+		{% if particle.headline %}
+			<span>{{ particle.headline|raw }}</span>
+		{% endif %}
+		{% if particle.title %}
+			<h1>{{ particle.title|raw }}</h1>
+		{% endif %}
+		{% if particle.text %}
+			<p>{{ particle.text|raw }}</p>
+		{% endif %}
+	</div>
+{% endblock %}
+

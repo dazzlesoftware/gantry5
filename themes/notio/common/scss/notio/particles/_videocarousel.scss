@@ -1,0 +1,180 @@
+.g-owlcarousel-video-carousel {
+    position: relative;
+    padding-bottom: $content-padding;
+
+    .g-owlcarousel-video-carousel-header {
+        display: flex;
+        flex-flow: wrap;
+
+        .g-title {
+            flex: 1 auto;
+            padding: 0;
+            @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+            color: $white;
+        }
+
+        // Dots
+        .g-video-carousel-dots {
+            flex: 0 auto;
+            margin: 0 0 $content-margin;
+
+            .owl-dot {
+                background: transparent;
+                border: 2px solid transparentize($white, 0.50);
+                margin: 0 0.3rem;
+                width: 12px;
+                height: 12px;
+
+                &.active {
+                    background: $white;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .g-video-carousel-description {
+        display: block;
+        margin-bottom: $content-padding + $content-margin;
+        @include responsive-font($responsive-font-size - 0.25, $core-font-size - 0.1, false, false);
+    }
+
+    .g-video-carousel {
+        .owl-stage-outer {
+            .g-video-carousel-inner {
+                margin: 0 10px;
+                border-radius: 5px;
+                overflow: hidden;
+
+                .g-video-carousel-video {
+                    iframe {
+                        display: block;
+                        height: 100%;
+                    }
+
+                    // YouTube Loader
+                    .g-video-carousel-youtube {
+                        position: relative;
+                        cursor: pointer;
+                        background: #ccc no-repeat center center / cover;
+                        padding-bottom: 76.25%; /* 16:9 */
+                        height: 0px;
+                        clear:both;
+                        border-radius: 5px;
+
+                        &::before {
+                            content: '';
+                            background: transparentize($accent-color-1, 0.20);
+                            height: 50px;
+                            width: 50px;
+                            display:block;
+                            margin: -25px 0 0 -25px;
+                            border-radius: 100px;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transition: all .1s ease;
+                            z-index:1;
+                        }
+                        &::after {
+                            content: '';
+                            width: 0;
+                            height: 0;
+                            line-height:0px;
+                            display:block;
+                            border-style: solid;
+                            border-width: 10px 0 10px 15px;
+                            margin: -10px 0 0 -5px;
+                            border-color: transparent transparent transparent $white;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            height: 0;
+                            width: 0;
+                            z-index:2;
+                        }
+
+                        :hover::before {
+                            background: $accent-color-1;
+                        }
+
+                        iframe{
+                            width:100%;
+                            height:100%;
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            z-index:3;
+                        }
+                    }
+                }
+
+                .g-video-carousel-caption {
+                    margin-top: 5px;
+                    font-weight: $font-weight-medium;
+                }
+            }
+        }
+
+        // Prev & Next Controls
+        .owl-nav {
+            margin-bottom: $content-margin;
+
+            > div, > button {
+                position: absolute;
+                margin: auto;
+                text-align: center;
+                top: -20%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                opacity: 1;
+
+                .fa {
+                    @include responsive-font($responsive-font-size + 1.25, $core-font-size + 1, false, false);
+                    font-weight: $font-weight-regular;
+                }
+
+                &:hover {
+                    color: fade-out($white, 0.4);
+                }
+            }
+
+            .owl-prev {
+                left: 0;
+                right: auto;
+
+                .dir-rtl & {
+                    right: 0;
+                    left: auto;
+
+                    .fa-chevron-left {
+                        &:before {
+                            content: "\f054";
+                        }
+                    }
+                }
+            }
+
+            .owl-next {
+                left: auto;
+                right: 1vw;
+
+                .dir-rtl & {
+                    left: 1vw;
+                    right: auto;
+
+                    .fa-chevron-right {
+                        &:before {
+                            content: "\f053";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,177 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/error.png'
+  name: _error
+  timestamp: 1446457836
+layout:
+  /top/:
+    -
+      - system-messages-6543
+    -
+      - logo-7061
+  /navigation/:
+    -
+      - menu-2019
+  /header/:
+    -
+      - infolist-3465
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-5921/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-6444
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - infolist-8094
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-8113 33.3'
+      - 'copyright-3234 33.3'
+      - 'totop-8262 33.3'
+  offcanvas:
+    -
+      - mobile-menu-6235
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-5921:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  footer:
+    attributes:
+      boxed: '1'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+content:
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-7061:
+    block:
+      class: center
+  menu-2019:
+    block:
+      class: center
+  infolist-3465:
+    title: 'Whooops! Error!'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Looks like something went wrong. Sorry!'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: 'Whooops! Error!'
+    block:
+      variations: center
+  system-content-6444:
+    block:
+      class: g-error
+      variations: center
+  infolist-8094:
+    title: 'Nothing to See Here'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Please use the navigation above or contact us to find what you are looking for.'
+          tag: ''
+          subtag: ''
+          label: 'Contact Us'
+          link: '#'
+          icon: ''
+          readmoreclass: button-2
+          title: 'Nothing to See Here'
+    block:
+      variations: center
+  branding-8113:
+    attributes:
+      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+  totop-8262:
+    title: 'To Top'
+    attributes:
+      icon: 'fa fa-arrow-circle-o-up fa-2x'
+      content: ''
+  mobile-menu-6235:
+    title: 'Mobile Menu'

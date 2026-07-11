@@ -1,0 +1,69 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div class="{{ particle.class|e }}">
+
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div class="g-newsslider" id="{{ id }}" data-newsslider-id="{{ id }}" data-newsslider-autoplay="{% if particle.autoplay == 'enabled' %}true{% else %}false{% endif %}" data-newsslider-delay="{{ particle.delay|default('5000') }}">
+            <div class="g-newsslider-preview news-preview">
+
+                {% for item in particle.items %}
+                    <div class="g-newsslider-content news-content" style="{% if item.image %}background-image: url('{{ url(item.image)|e }}');{% endif %}">
+                        <div class="g-newsslider-overlay">
+                            {% if item.title %}
+                                <div class="g-newsslider-preview-title">{{ item.title|raw }}</div>
+                            {% endif %}
+                            {% if item.desc %}
+                                <div class="g-newsslider-preview-desc">{{ item.desc|raw }}</div>
+                            {% endif %}
+                            {% if item.buttontext %}
+                                <span class="g-newsslider-button">
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">
+                                        {{ item.buttontext|e }}
+                                    </a>
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <ul class="g-newsslider-pagination">
+                    {% for item in particle.items %}
+                        <li>
+                            {{ loop.index|raw }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="g-newsslider-scrollbar-{{ id }}" class="g-newsslider-scrollbar">
+                <ul class="g-newsslider-headlines news-headlines">
+
+                    {% for item in particle.items %}
+                        <li>
+                            <div class="arrow-container">
+                                <i class="fa fa-chevron-right"></i>
+                            </div>
+
+                            <span class="g-newsslider-headlines-title">{{ item.title|raw }}</span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+                <div class="g-newsslider-navigation clearfix">
+                    <div class="prev"><i class="fa fa-arrow-up"></i></div>
+                    <div class="next"><i class="fa fa-arrow-down"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/newsslider.init.js') }}"></script>
+{% endblock %}

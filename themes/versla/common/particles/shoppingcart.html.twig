@@ -1,0 +1,50 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+        <div class="g-shoppingcart">
+            <div class="snipcart-summary">
+                {% if particle.totalitems == "enabled" %}
+                    <a href="#" class="snipcart-checkout">
+                        {% if particle.itemsicon %}
+                            <i class="{{ particle.itemsicon }}" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if particle.itemslabel %}
+                            <span class="g-snipcart-label">{{ particle.itemslabel }}</span>
+                        {% endif %}
+                        <span class="snipcart-total-items"></span>
+                    </a>
+                {% endif %}
+                {% if particle.price == "enabled" %}
+                    <a href="#" class="snipcart-checkout">
+                        {% if particle.priceicon %}
+                            <i class="{{ particle.priceicon }}" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if particle.pricelabel %}
+                            <span class="g-snipcart-label">{{ particle.pricelabel }}</span>
+                        {% endif %}
+                        <span class="snipcart-total-price"></span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {% if particle.apikey %}
+        <script type="text/javascript">
+            if (!jQuery('#snipcart').length) {
+                jQuery('head:first').append("<script type='text/javascript' src='https://cdn.snipcart.com/scripts/2.0/snipcart.js' data-api-key='{{ particle.apikey }}' id='snipcart'><\/script>");
+            }
+        </script>
+    {% endif %}
+{% endblock %}
+{% block stylesheets %}
+    {% if particle.apikey %}
+        <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css"/>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+#g-page-surround {
+	background: $pagesurround-background;
+    overflow: hidden;
+
+	@if $base-background-image {
+    	background-image: url($base-background-image);
+    	background-repeat: no-repeat;
+    	background-size: cover;
+	}     
+
+    .g-bodyonly & {
+		color: $base-text-color;
+		background: $base-background;   	
+    }	
+}
+
+@media print {
+	#g-page-surround {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,46 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+@import "vendor/bourbon/bourbon";
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "remnant-joomla/core";
+@import "remnant-joomla/typography";
+@import "remnant-joomla/forms";
+@import "remnant-joomla/tabs";
+@import "remnant-joomla/utilities";
+@import "remnant-joomla/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Showcase
+@import "remnant-joomla/sections/showcase";
+// Main
+@import "remnant-joomla/sections/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "remnant-joomla/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

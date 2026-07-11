@@ -1,0 +1,18 @@
+#g-bottom {
+    background: $bottom-background;
+    color: $bottom-text-color;
+
+    .g-latestnews-grid-item-title, .g-heading h2 {
+        color: set-color($base-background);
+    }
+    .g-latestnews .g-latestnews-grid .g-latestnews-grid-item .g-latestnews-grid-item-content .g-latestnews-grid-item-description, .g-latestnews .g-latestnews-grid .g-latestnews-grid-item .g-latestnews-grid-item-content .g-latestnews-grid-item-date {
+        color: set-color($base-background);
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,54 @@
+name: Icon List
+description: Display iconlist.
+type: particle
+icon: fa-info-circle
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    iconlists:
+      type: collection.list
+      array: true
+      label: Icon Lists
+      description: Create each item to appear in the content row.
+      value: name
+      ajax: true
+
+      fields:
+        .icon:
+          type: input.icon
+          label: Icon
+          description: Select the icon.         
+        .title:
+          type: input.text
+          label: Item Title
+          description: Customize the item title text.
+          placeholder: Enter item title
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the description.
+          placeholder: Enter short description
+        .aos:
+          type: input.text
+          label: AOS Class
+          description: Enter AOS class.
+        .delay:
+          type: input.text
+          label: AOS Delay
+          description: Values from 0 to 3000, with step 50ms
+          default: '0'       
+        .link:
+          type: input.text
+          label: Link
+          description: Specify the link address.

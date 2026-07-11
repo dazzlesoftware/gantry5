@@ -1,0 +1,314 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+{% set display_first = article_settings.display_first %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {id: [filter.categories|split(','), 0]} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {id: [filter.articles|replace(' ', '')|split(',')]} : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured|default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% set start = limit.start + max(0, ajax.start|int) %}
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+{% block particle %}
+    <div class="g-contentshowcase {{ particle.class|e }}">
+        <div class="g-contentshowcase-container">
+
+            {% if particle.source == 'joomla' %}
+
+                {% for article in articles %}
+                    {% if loop.first %}
+
+                        <div class="g-contentshowcase-first-item-wrapper">
+                            {% if display_first.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                                {% if article.images.image_intro and display_first.image.enabled == 'intro' or display_first.image.enabled == 'show' %}
+                                    <div class="g-contentshowcase-item-image">
+                                        <a href="{{ article.route }}">
+                                            <img src="{{ url(article.images.image_intro) }}" {{ article.images.image_intro|imagesize|raw }} />
+                                        </a>
+                                    </div>
+                                {% elseif article.images.image_fulltext and display_first.image.enabled == 'full' %}
+                                    <div class="g-contentshowcase-item-image">
+                                        <a href="{{ article.route }}">
+                                            <img src="{{ url(article.images.image_fulltext) }}" {{ article.images.image_fulltext|imagesize|raw }} />
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
+                            <div class="g-contentshowcase-item-content">
+                                {% if display_first.author.enabled  %}
+                                    <div class="g-contentshowcase-item-details">
+                                        {% if display_first.author.enabled %}
+                                            <span class="g-contentshowcase-item-author">
+                                                {{ article.author.name }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {% if display_first.title.enabled %}
+                                    <div class="g-contentshowcase-item-title">
+                                        <h3 class="g-item-title">
+                                            {{ display_first.title.limit ? article.title|truncate_text(display_first.title.limit) : article.title }}
+                                        </h3>
+                                    </div>
+                                {% endif %}
+
+                                {% if display_first.text.type %}
+                                    {% set article_text = display_first.text.type == 'intro' ? article.introtext : article.text %}
+                                    <div class="g-contentshowcase-item-text">
+                                        {% if display_first.text.formatting == 'text' %}
+                                            {{ article_text|truncate_text(display_first.text.limit)|raw }}
+                                        {% else %}
+                                            {{ article_text|truncate_html(display_first.text.limit)|raw }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                <div class="g-contentshowcase-item-link">
+                                    <a href="{{ article.route }}">
+                                        {{ display_first.link.label|default('Read more &rarr;')|raw }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+
+                <div class="g-contentshowcase-snippets-wrapper">
+
+                    {% for article in articles %}
+                        {% if not loop.first %}
+
+                            <div class="g-contentshowcase-snippet g-contentshowcase-snippet-{{ loop.index - 1 }}">
+                                <div class="g-contentshowcase-item-imagecontainer">
+                                    {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                                        {% if article.images.image_intro and display.image.enabled == 'intro' or display.image.enabled == 'show' %}
+                                            <div class="g-contentshowcase-item-image">
+                                                <a href="{{ article.route }}">
+                                                    <img src="{{ url(article.images.image_intro) }}" {{ article.images.image_intro|imagesize|raw }} />
+                                                </a>
+                                            </div>
+                                        {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                                            <div class="g-contentshowcase-item-image">
+                                                <a href="{{ article.route }}">
+                                                    <img src="{{ url(article.images.image_fulltext) }}" {{ article.images.image_fulltext|imagesize|raw }} />
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="g-contentshowcase-item-content">
+                                    {% if display.title.enabled %}
+                                        <div class="g-contentshowcase-item-title">
+                                            <h3 class="g-item-title">
+                                                <a href="{{ article.route }}">
+                                                    {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if display.author.enabled %}
+                                        <div class="g-contentshowcase-item-details">
+                                            {% if display.author.enabled %}
+                                                <span class="g-contentshowcase-item-author">
+                                                    {{ article.author.name }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if display.text.type %}
+                                        {% set article_text = display.text.type == 'intro' ? article.introtext : article.text %}
+                                        <div class="g-contentshowcase-item-text">
+                                            {% if display.text.formatting == 'text' %}
+                                                {{ article_text|truncate_text(display.text.limit)|raw }}
+                                            {% else %}
+                                                {{ article_text|truncate_html(display.text.limit)|raw }}
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+                {% if total > limit.total and limit.pagination_buttons %}
+                    <div class="g-contentshowcase-pagination">
+                        <button class="button float-left contentshowcase-button contentshowcase-pagination-button pagination-button-prev" data-id="{{ id }}" data-start="{{ max(0, start - limit.total) }}"{{ start - limit.total < 0 ? ' disabled' }}>Prev</button>
+                        <button class="button float-right contentshowcase-button contentshowcase-pagination-button pagination-button-next" data-id="{{ id }}" data-start="{{ start + limit.total }}"{{ start + limit.total >= total ? ' disabled' }}>Next</button>
+                        <div class="clearfix"></div>
+                    </div>
+                {% endif %}
+
+            {% else %}
+
+                {% for item in particle.items %}
+                    {% if loop.first %}
+
+                        <div class="g-contentshowcase-first-item-wrapper">
+                            {% if item.image %}
+                                <div class="g-contentshowcase-item-image">
+                                    <a href="{{ item.link|default('#') }}">
+                                        <img src="{{ url(item.image) }}" {{ item.image|imagesize|raw }} />
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            <div class="g-contentshowcase-item-content">
+                                {% if item.author  %}
+                                    <div class="g-contentshowcase-item-details">
+                                        <span class="g-contentshowcase-item-author">
+                                            {{ item.author }}
+                                        </span>
+                                    </div>
+                                {% endif %}
+
+                                {% if item.title %}
+                                    <div class="g-contentshowcase-item-title">
+                                        <h3 class="g-item-title">
+                                            {{ item.title|raw }}
+                                        </h3>
+                                    </div>
+                                {% endif %}
+
+                                {% if item.content %}
+                                    <div class="g-contentshowcase-item-text">
+                                        {{ item.content|raw }}
+                                    </div>
+                                {% endif %}
+
+                                <div class="g-contentshowcase-item-link">
+                                    <a href="{{ item.link }}">
+                                        {{ item.linklabel|default('Read more &rarr;')|raw }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+
+                <div class="g-contentshowcase-snippets-wrapper">
+
+                    {% for item in particle.items %}
+                        {% if not loop.first %}
+
+                            <div class="g-contentshowcase-snippet g-contentshowcase-snippet-{{ loop.index - 1 }}">
+                                {% if item.image %}
+                                <div class="g-contentshowcase-item-imagecontainer">
+                                    <div class="g-contentshowcase-item-image">
+                                        <a href="{{ item.link|default('#') }}">
+                                            <img src="{{ url(item.image) }}" {{ item.image|imagesize|raw }} />
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+
+                                <div class="g-contentshowcase-item-content">
+                                    {% if item.title %}
+                                        <div class="g-contentshowcase-item-title">
+                                            <h3 class="g-item-title">
+                                                <a href="{{ item.link|default('#') }}">
+                                                    {{ item.title|raw }}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.author %}
+                                        <div class="g-contentshowcase-item-details">
+                                            <span class="g-contentshowcase-item-author">
+                                                {{ item.author }}
+                                            </span>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.content %}
+                                        <div class="g-contentshowcase-item-text">
+                                            {{ item.content|raw }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% if total > limit.total and limit.pagination_buttons %}
+        {% do gantry.load('jquery') %}
+        <script>
+            (function ($) {
+                $(document).on('click', 'button.contentshowcase-pagination-button', function () {
+                    var id = $(this).attr('data-id'),
+                        start = $(this).attr('data-start'),
+                        request = {
+                            'option' : 'com_ajax',
+                            'plugin' : 'particle',
+                            'Itemid' : {{ gantry.page.itemid|int }},
+                            'id'     : id,
+                            'start'  : start,
+                            'format' : 'json'
+                        };
+                    $.ajax({
+                        type       : 'GET',
+                        data       : request,
+                        indexValue : id + '-particle',
+                        success: function (response) {
+                            if(response.data){
+                                $('#' + this.indexValue).html(response.data[0].html);
+                            } else {
+                                // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
+                                $('#' + this.indexValue).html(response.message);
+                            }
+                        },
+                        error: function(response) {
+                            // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
+                            $('#' + this.indexValue).html('AJAX FAILED ON ERROR');
+                        }
+                    });
+                    return false;
+                });
+            })(jQuery);
+        </script>
+    {% endif %}
+{% endblock %}

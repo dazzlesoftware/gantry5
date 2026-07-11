@@ -1,0 +1,39 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+    
+    @if $above-background-image {
+        background-image: url($above-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .g-showcase.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+        background: $above-text-color;
+    }
+
+    .g-showcase.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet-active {
+        border-color: $above-text-color;
+        background: transparent;
+    }
+
+    &.fp-above {
+        @include breakpoint(mobile-only) {
+            .g-showcase-content, .g-showcase-image {
+                padding-right: $content-padding + $content-margin;
+            }            
+        }
+        @include breakpoint(tablet-range) {
+            .g-showcase-image {
+                padding-right: $content-padding + $content-margin;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

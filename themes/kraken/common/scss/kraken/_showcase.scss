@@ -1,0 +1,36 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+    
+	// Home
+	.g-home &, .g-homepositions & {
+		text-align: center;
+        // Grid Statistic
+        .g-gridstatistic {
+            width: 80%;
+            margin: auto;
+            @include breakpoint(tablet-range) {
+                width: 100%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }    
+            .g-gridstatistic-item-icon {
+                &:after {
+                    background: $showcase-text-color;
+                }
+            }    
+            .g-gridstatistic-item-text2 {
+                color: fade-out($showcase-text-color, 0.50);
+            }                
+        }
+	}	 
+
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

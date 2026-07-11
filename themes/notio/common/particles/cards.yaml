@@ -1,0 +1,83 @@
+name: Cards
+description: Displays customizable cards
+type: particle
+icon: fa-id-card-o
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    columns:
+      type: select.selectize
+      label: Columns
+      description: Select columns amount.
+      default: 2
+      options:
+          1: 1 column
+          2: 2 columns
+          3: 3 columns
+          4: 4 columns
+
+    subcontents:
+      type: collection.list
+      array: true
+      label: Cards
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Enter title.
+
+        .headline:
+          type: input.text
+          label: Headline
+          description: Enter headline 1 text.
+
+        .description:
+          type: textarea.textarea
+          label: Description
+          description: Enter description.
+
+        .img:
+          type: input.imagepicker
+          label: Image
+          description: Select the image.
+
+        .signature:
+          type: input.imagepicker
+          label: Signature
+          description: Select signature.
+
+        .fullname:
+          type: input.text
+          label: Full Name
+          description: Enter tag text.
+
+        .tag:
+          type: input.text
+          label: Tag
+          description: Enter tag text.

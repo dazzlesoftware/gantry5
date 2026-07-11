@@ -1,0 +1,35 @@
+#g-footer {
+	color: $footer-text-color;	
+
+	@if $footer-background-image {
+        background: $footer-background url($footer-background-image) 50% 50%;
+    } @else { 
+        background-color: $footer-background;
+    }
+}
+
+.fp-newsletter {
+	.button {
+		box-shadow: none;
+		border: none !important;
+
+		&:hover {
+			box-shadow: none;
+		}
+	}
+	.g-newsletter-particle {
+		.g-newsletter {
+			.g-newsletter-headtext {
+				font-size: 0.8em;
+		    	line-height: 1.5em;
+			}	
+		}
+	} 
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

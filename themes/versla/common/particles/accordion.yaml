@@ -1,0 +1,110 @@
+name: Accordion
+description: Display items in Accordion layout.
+type: particle
+icon: fa-list
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    source:
+      type: select.select
+      label: Content Source
+      description: Choose if the content should be loaded from the Joomla articles or particle itself.
+      default: particle
+      options:
+        joomla: Joomla
+        particle: Particle
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    items:
+      type: collection.list
+      array: true
+      label: Blocks
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Customize the Title.
+          placeholder: Enter the item Title
+
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the description.
+          placeholder: Enter short description
+
+        .buttontext:
+          type: input.text
+          label: Button Label
+          description: Specify the button label.
+
+        .buttonlink:
+          type: input.text
+          label: Button Link
+          description: Specify the button link.
+
+        .buttontarget:
+          type: select.selectize
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _self
+          options:
+              _self: Self
+              _blank: New Window
+
+        .buttonclass:
+          type: input.selectize
+          label: Button Classes
+          description: CSS class names for the button.
+
+    _joomla:
+      type: separator.note
+      class: 'settings-param'
+      content: '<h4>Joomla Content Display Settings</h4>'
+
+    jcategories:
+      type: joomla.categories
+      label: Joomla Categories
+      description: Select the categories the articles should be taken from.
+
+    jarticles:
+      type: input.number
+      label: Articles to Fetch
+      description: Number of Joomla articles to fetch from category.
+      min: 1
+      default: 1
+
+    jlink:
+      type: select.select
+      label: Link
+      description: Enable or disable displaying of link to article.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    jlinktext:
+      type: input.text
+      label: Link Text
+      description: Input the text for the article link.
+      default: 'Read More'

@@ -1,0 +1,40 @@
+.g-blockcontent {
+  .g-title {
+    font-family: get-font-family($font-family-title);
+    font-size: $core-font-size + 0.75;
+    font-weight: $font-weight-regular;
+  }
+}
+.g-blockcontent-subcontent-title {
+  margin: 0;
+  padding: 0;
+}
+.g-blockcontent-subcontent-title-icon {
+  color: $accent-color-1;
+  margin-bottom: $content-margin;
+}
+.g-blockcontent-subcontent-title-text {
+  font-family: get-font-family($font-family-title);
+  font-size: $core-font-size + 0.5;
+  font-weight: $font-weight-regular;
+}
+.g-blockcontent-subcontent {
+  margin-left: -($content-margin + $content-padding);
+  margin-right: -($content-margin + $content-padding);
+  .g-blockcontent-spacing & {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.g-blockcontent-subcontent-subtitle {
+  font-family: get-font-family($font-family-default);
+  font-weight: $font-weight-regular;
+  font-size: $core-font-size + 0.25;
+}
+.g-blockcontent-subcontent-desc {
+  font-size: $core-font-size;
+  position: relative;
+}
+.g-blockcontent-buttons {
+  margin-top: $content-padding;
+}

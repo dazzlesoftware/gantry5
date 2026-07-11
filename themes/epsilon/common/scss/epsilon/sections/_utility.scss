@@ -1,0 +1,32 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+
+    h1, h2, h3, h4, h5, h6 {
+		color: darken($utility-text-color, 15%);
+	}
+}
+
+.fp-utility {
+	.g-content {
+		margin-top: -48px;
+		padding-top: 0;
+	}
+	.rt-hexagon {
+		@include hexagon(200px, 130px, $white);
+		font-size: 3em;
+
+		@include breakpoint(tablet-range) {
+			@include hexagon(152px, 100px, $white);
+			font-size: 2.5em;
+		}
+	}
+}
+
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

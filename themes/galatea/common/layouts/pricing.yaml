@@ -1,0 +1,581 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1456244407
+layout:
+  /offsidebar/:
+    -
+      - menu-4196
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'offsidebartoggle-2745 20'
+      - 'logo-5992 60'
+      - 'social-7220 20'
+  /slideshow/: {  }
+  /header/: {  }
+  /above/:
+    -
+      - custom-9139
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/:
+    -
+      - pricingtable-5589
+    -
+      - pricingtable-2309
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - 'infolist-6113 33.3'
+      - 'infolist-4978 33.3'
+      - 'custom-3225 33.3'
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-5976 25'
+      - 'copyright-5748 50'
+      - 'totop-6544 25'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-navigation-light
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  offsidebartoggle-2745:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+      type: pushpage
+  logo-5992:
+    block:
+      class: center
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  custom-9139:
+    title: 'Pricing Table - Above'
+    attributes:
+      html: "<h2 class=\"g-title\">Gantry is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"http://www.gantry.org\" class=\"readon\">Read more about Gantry</a></p>"
+    block:
+      class: 'g-title-large g-title-300 size-80 center-block'
+  pricingtable-5589:
+    title: 'Pricing - 1 - Feature'
+    attributes:
+      class: 'center g-title-large'
+      title: 'Server Range Pricing'
+      headertext: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec leo dolor. Proin laoreet neque et nisi mollis consequat. '
+      footertext: '<br /><br />'
+      tables:
+        -
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: Free
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '5 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '5 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-linethrough
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-linethrough
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Bronze
+        -
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: $29
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '15 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '15 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-linethrough
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Silver
+        -
+          class: ''
+          ribbon: Popular
+          icon: ''
+          price: $59
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '25 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '25 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-bold
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Gold
+  pricingtable-2309:
+    title: 'Pricing - 2 - Feature'
+    attributes:
+      class: 'center g-title-large'
+      title: 'Premium Services'
+      headertext: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec leo dolor. Proin laoreet neque et nisi mollis consequat. '
+      footertext: 'Any questions about our pricing? <strong>Call us at +1-888-1234-5678</strong>'
+      tables:
+        -
+          class: 'box3 g-outer-box'
+          ribbon: ''
+          icon: ''
+          price: $129
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '15 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '15 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-linethrough
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-linethrough
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Silver
+        -
+          class: 'box3 g-outer-box'
+          ribbon: Popular
+          icon: ''
+          price: $159
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '25 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '25 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-bold
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-linethrough
+              title: 'Item 6'
+          plan: Gold
+        -
+          class: 'box3 g-outer-box'
+          ribbon: ''
+          icon: ''
+          price: $179
+          period: monthly
+          desc: 'Some short description to explain this awesome plan'
+          buttontext: Choose
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: 'button-2 button-grey'
+          items:
+            -
+              text: '50 web pages'
+              class: g-bold
+              title: 'Item 1'
+            -
+              text: '50 mb upload'
+              class: g-bold
+              title: 'Item 2'
+            -
+              text: 'Blog Plugin'
+              class: g-bold
+              title: 'Item 3'
+            -
+              text: 'Shop Plugin'
+              class: g-bold
+              title: 'Item 4'
+            -
+              text: 'Premium Themes'
+              class: g-bold
+              title: 'Item 5'
+            -
+              text: 'Phone Support'
+              class: g-bold
+              title: 'Item 6'
+          plan: Platinium
+  position-position-8538:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-position-8807:
+    title: Aside
+    attributes:
+      key: aside
+  infolist-6113:
+    title: 'Useful Links'
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/wordpress/themes/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/docs/wordpress/themes/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://docs.gantry.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Gantry
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://demo.rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: Demo
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/forum/wordpress-theme-galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+  infolist-4978:
+    title: Elsewhere
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.facebook.com/RocketTheme/'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.youtube.com/user/OfficialRocketTheme'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://github.com/gantry/gantry5'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://bitbucket.org/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Bitbucket
+  custom-3225:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+  copyright-5748:
+    block:
+      class: center
+  totop-6544:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-7951:
+    title: 'Mobile Menu'

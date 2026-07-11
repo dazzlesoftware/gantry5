@@ -1,0 +1,258 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1478643075
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - simplecontent-2958
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - blockcontent-4951
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/:
+    -
+      - blockcontent-7411
+  /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  sidebar:
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-2958:
+    title: 'Header - About Us'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'About Us'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'About Us'
+  blockcontent-4951:
+    title: 'About Us - Who we are'
+    attributes:
+      class: center
+      title: 'This is who we are'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          name: 'Rick Grimes'
+          icon: ''
+          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Owner
+          description: "Versla's RocketLauncher comes complete with several preset pages that enable you to hit the ground running with a complete, feature-rich website in a fraction of the time.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Rick Grimes'
+        -
+          name: 'Maggie Greene'
+          icon: ''
+          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Manager
+          description: "Versla features a number of uniquely-designed particles that make adding content to your website easy. These particles are a great way to display your content.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Maggie Greene'
+        -
+          name: 'Daryl Dixon'
+          icon: ''
+          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: Cashier
+          description: "The Gantry 5 framework is packed with features that empower you to create a website that perfectly matches your vision and branding - no scripting experience necessary.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Daryl Dixon'
+  blockcontent-7411:
+    title: 'About Us - What we do'
+    attributes:
+      class: 'center g-blockcontent-spacing'
+      title: 'This is what we do'
+      icon: ''
+      image: ''
+      headline: ''
+      description: ''
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          name: 'Purchase Goods'
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Purchase Goods'
+        -
+          name: 'Sell Goods'
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Sell Goods'
+        -
+          name: 'Make Profit'
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: 'Make Profit'

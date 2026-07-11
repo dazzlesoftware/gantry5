@@ -1,0 +1,202 @@
+// Styling
+.g-pricingtable-particle {
+    h2.g-title {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
+.g-pricingtable-headertext {
+    margin-bottom: ($content-margin + $content-padding) * 2;
+    padding: 0 25%;
+    color: fade-out($white, 0.25);
+    @include responsive-font($responsive-font-size + 0.6, $core-font-size + 0.3, false, false);
+
+    @include breakpoint(large-desktop-range) {
+        margin-bottom: ($content-margin + $content-padding) * 3.5;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding: 0 5%;
+    }
+}
+
+.g-pricingtable-footertext {
+    margin-top: ($content-margin + $content-padding) * 2;
+    padding: 0 20%;
+    color: fade-out($white, 0.5);
+    font-size: $core-font-size + 0.25;
+
+    @include breakpoint(large-desktop-range) {
+        margin-top: ($content-margin + $content-padding) * 3.5;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding: 0 5%;
+    }
+}
+
+.g-pricingtable-container {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.g-pricingtable-col-item {
+    display: flex;
+    padding: $content-margin;
+    z-index: 1;
+
+    .g-pricingtable-1-col & {
+        flex: auto 1 100%;
+        width: 100%;
+    }
+
+    .g-pricingtable-2-col & {
+        flex: auto 1 50%;
+        width: 50%;
+    }
+
+    .g-pricingtable-3-col & {
+        flex: auto 1 33.33333%;
+        width: 33.33333%;
+    }
+
+    .g-pricingtable-4-col & {
+        flex: auto 1 25%;
+        width: 25%;
+
+        @include breakpoint(desktop-range) {
+            flex: auto 1 50%;
+            width: 50%;
+        }
+
+        @include breakpoint(tablet-range) {
+            flex: auto 1 50%;
+            width: 50%;
+        }
+    }
+
+    .g-pricingtable-5-col & {
+        flex: auto 1 20%;
+        width: 20%;
+    }
+
+    .g-pricingtable-6-col & {
+        flex: auto 1 16.66667%;
+        width: 16.66667%;
+    }
+
+    @include breakpoint(mobile-only) {
+        flex: auto 1 100% !important;
+        width: 100% !important;
+    }
+
+    .g-pricingtable {
+        width: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: $content-padding;
+        color: $black;
+        background: $white;
+        border: 1px solid fade-out($black, 0.85);;
+        text-align: center;
+
+        .button {
+            @extend %g-button;
+            margin: $content-padding 0;
+            @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
+        }
+
+        .g-pricingtable-ribbon {
+            z-index: 2;
+            position: absolute;
+            line-height: $core-line-height + 0.85;
+            font-size: $core-font-size - 0.35;
+            font-weight: $font-weight-semibold;
+            background: $accent-color-1;
+            width: 135px;
+            top: 20px;
+            left: -33px;
+            text-align: center;
+            letter-spacing: 1px;
+            transform: rotate(-45deg);
+            color: $base-text-color;
+
+            .dir-rtl & {
+                right: -33px;
+                left: auto;
+                transform: rotate(45deg);
+            }
+        }
+
+        .g-pricingtable-icon {
+            font-size: $core-font-size + 1.5;
+        }
+
+        .g-pricingtable-plan {
+            padding: $content-padding 0 0;
+            @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.1, false, false);
+            font-weight: $font-weight-regular;
+            color: $black;
+
+            a {
+                color: $black;
+
+                &:hover {
+                    color: $accent-color-1;
+                }
+            }
+        }
+
+        .g-pricingtable-subtitle {
+            padding-top: 0;
+            margin-top: -1rem;
+            font-size: $core-font-size - 0.1;
+        }
+
+        .g-pricingtable-price {
+            padding: 0 0 $content-padding;
+            font-weight: $font-weight-bold;
+            @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.5, false, false);
+        }
+
+        .g-pricingtable-period {
+            font-size: $core-font-size;
+            font-weight: $font-weight-light;
+            line-height: $core-line-height - 1;
+        }
+
+        .g-pricingtable-desc {
+            font-size: $core-font-size;
+            padding: $content-padding 0;
+        }
+
+        .g-pricingtable-item {
+            @include responsive-font($responsive-font-size - 0.35, $core-font-size, false, false);
+            font-weight: $font-weight-regular;
+            padding-bottom: $content-margin;
+            color: fade-out($black, 0.65);
+
+            &.g-pricingtable-item-0 {
+                position: relative;
+                padding-top: $content-padding;
+            }
+
+            &.disabled {
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    // Highlighted Table
+    &.g-pricingtable-col-item-highlight {
+        z-index: 5;
+
+        @include breakpoint(no-mobile) {
+            transform: scale(1.2);
+        }
+    }
+}

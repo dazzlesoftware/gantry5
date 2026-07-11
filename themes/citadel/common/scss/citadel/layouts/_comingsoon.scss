@@ -1,0 +1,20 @@
+.g-comingsoon {
+    #g-container-slideshow {
+        .g-default-slideshow {
+            .g-simplecontent-layout-header {
+                padding-bottom: 0;
+            }
+
+            .g-simplecounter {
+                .g-simplecounter-block {
+                    padding-bottom: 7.5rem;
+
+                    .counter_container {
+                        padding: 1rem;
+                        background: linear-gradient(90deg, rgba($white, 0) 0%, rgba($white, 0.10) 50%, rgba($white, 0) 100%)
+                    }
+                }
+            }
+        }
+    }
+}

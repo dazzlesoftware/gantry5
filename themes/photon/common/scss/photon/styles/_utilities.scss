@@ -1,0 +1,210 @@
+.flush,
+.g-flushed {
+	> .g-container,
+	> .g-content {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+.g-container-flushed {
+	margin: -4rem 0;
+}
+.g-wrapper {
+      margin: $content-margin + $content-padding;
+      margin-top: $content-margin + $content-padding + 0.5rem;
+}
+
+// no(margin/padding)(left/right/top/bottom)
+// (margin/padding)(2x/3x)
+$css_properties: "margin", "padding";
+$css_directions: "left", "right", "top", "bottom", "all";
+$css_multipliers: 2, 3;
+$css_size: "small", "med", "large";
+@each $prop in $css_properties {
+    @each $dir in $css_directions {
+        .no#{$prop}#{$dir} {
+            &, > .g-content {
+                @if ($dir != "all") {
+                    #{$prop}-#{$dir}: 0;
+                } @else {
+                    #{$prop}: 0;
+                }
+            }
+        }
+
+        @each $size in $css_size {
+            .#{$size}#{$prop}#{$dir} {
+                &:not(.g-block), > .g-content {   
+                    @if ($size == "small") {
+                        @if ($dir != "all") {
+                            #{$prop}-#{$dir}: 0.25rem;
+                        } @else {
+                            #{$prop}: 0.25rem;
+                        }
+                    } @else if ($size == "med") {
+                        @if ($dir != "all") {
+                            #{$prop}-#{$dir}: 1rem;
+                        } @else {
+                            #{$prop}: 1rem;
+                        }
+                    } @else if ($size == "large") {
+                        @if ($dir != "all") {
+                            #{$prop}-#{$dir}: 3rem;
+                        } @else {
+                            #{$prop}: 3rem;
+                        }
+                    }
+                }    
+            }
+        }
+    }
+
+    @each $multi in $css_multipliers {
+        .#{$prop}#{$multi}x {
+            > .g-content {
+                @if ($prop == "padding") {
+                    #{$prop}: $content-padding * $multi;
+                } @else if ($prop == "margin") {
+                    #{$prop}: $content-margin * $multi;
+                }
+            }
+        }
+    }
+}
+
+// Section Horizontal Paddings
+.section-horizontal-paddings {
+    padding-left: 10%;
+    padding-right: 10%;
+
+    @include breakpoint(tablet-range) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Section Horizontal Paddings Small
+.section-horizontal-paddings-small {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    @include breakpoint(tablet-range) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Section Horizontal Paddings Large
+.section-horizontal-paddings-large {
+    padding-left: 15%;
+    padding-right: 15%;
+
+    @include breakpoint(tablet-range) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Section Vertical Paddings
+.section-vertical-paddings {
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+// Section Vertical Paddings Small
+.section-vertical-paddings-small {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+// Section Vertical Paddings Large
+.section-vertical-paddings-large {
+    padding-top: 6vw;
+    padding-bottom: 6vw;
+}
+
+.center-block {
+	text-align: center;
+	margin: auto;
+}
+.g-center-vertical {
+	display: flex;
+	align-items: center;
+}
+.g-linethrough {
+	text-decoration: line-through;
+	opacity: 0.55;
+}
+.noliststyle {
+	list-style: none;
+}
+.g-bold {
+	font-weight: $font-weight-bold;
+}
+.g-uppercase {
+	text-transform: uppercase;
+}
+.g-compact {
+	.g-container {
+		padding: 0 !important;
+	}
+}
+.g-sidebar-offset {
+	margin-top: -4rem;
+}
+.g-bottom-offset {
+	margin-bottom: -45px !important;
+  position: relative;
+}
+.g-offset-padding {
+	padding-top: 45px !important;
+
+  @include breakpoint(mobile-only) {
+    padding-top: 75px !important;
+  }
+}
+.g-nobackgroundtitle {
+  background: none !important;
+  box-shadow: none !important;
+  .g-content {
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
+    font-family: get-font-family($font-family-title);
+		font-size: $core-font-size + 0.8;
+		font-weight: $font-weight-light;
+		line-height: $core-line-height - 0.35;
+    color: lighten($base-text-color, 20%);
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.g-mobile-center-compact {
+	@include breakpoint(mobile-only) {
+		.g-container {
+			padding: $content-padding 0;
+		}
+		.g-content {
+			padding: 0 $content-padding;
+			margin: $content-margin/2 $content-margin;
+			text-align: center !important;
+		}
+	}
+}

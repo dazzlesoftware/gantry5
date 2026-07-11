@@ -1,0 +1,43 @@
+.g-simplemenu-particle {
+    display: flex;
+    justify-content: flex-end;
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    @include breakpoint(tablet-range) {
+        justify-content: space-around;
+    }
+    h6 {
+        text-transform: uppercase;
+        font-size: $core-font-size - 0.1;
+        font-weight: $font-weight-medium;
+        margin-bottom: $content-margin;
+
+    }
+    .g-simplemenu-container {
+        padding-left: $content-padding * 2 + $content-margin;
+
+        .dir-rtl & {
+            padding-right: $content-padding * 2 + $content-margin;
+
+            @include breakpoint(tablet-range) {
+                padding-left: 0;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            padding: 0 0 $content-padding * 2;
+            text-align: center;
+        }
+        .g-simplemenu {
+            list-style: none;
+            margin: 0;
+            li {
+                font-size: $core-font-size - 0.1;
+                line-height: $core-line-height + 0.2;
+                opacity: 0.8;
+            }
+        }
+    }
+}

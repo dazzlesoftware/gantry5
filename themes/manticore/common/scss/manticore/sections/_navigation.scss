@@ -1,0 +1,39 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+
+    @if $navigation-background-image {
+        background-image: url($navigation-background-image);
+        background-size: cover;
+        background-position: center;
+    }
+
+    &.fp-slideshow {
+        background-image: none;
+    }
+
+    a {
+        color: $navigation-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+
+    .active {
+        a:hover {
+            color: $navigation-text-color;
+        }
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

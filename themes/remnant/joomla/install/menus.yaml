@@ -1,0 +1,9 @@
+remnant-theme:
+  title: 'Remnant Theme'
+  description: 'Sample menu for Remnant theme.'
+
+  items:
+    remnant:
+      title: 'Home'
+      outline: home
+      home: 1

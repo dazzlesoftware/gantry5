@@ -1,0 +1,27 @@
+#g-extension {
+	padding-bottom: 4rem;
+	.g-container {
+	    background: $extension-background;
+	    color: $extension-text-color;  
+	    border-radius: $border-radius;
+	    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+	} 
+	@if $extension-background-image {
+    	background: $extension-background url($extension-background-image) center no-repeat;
+    	background-size: cover;
+	}    
+	&.fp-extension {
+		.g-container {
+			position: relative;
+			top: -8rem;
+			margin-bottom: 5rem;
+		}
+	}
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

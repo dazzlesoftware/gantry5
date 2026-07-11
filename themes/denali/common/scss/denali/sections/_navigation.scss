@@ -1,0 +1,32 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+
+    .g-grid {
+        align-items: center;
+    }
+
+    // Logo
+    .g-logo {
+        color: $navigation-text-color;
+    }
+
+    // Social
+    .g-social {
+        @include breakpoint(tablet-range) {
+            margin: $content-margin;
+        }
+
+        @include breakpoint(mobile-only) {
+            margin-bottom: $content-margin;
+            padding-bottom: $content-padding;
+        }
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

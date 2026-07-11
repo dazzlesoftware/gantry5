@@ -1,0 +1,15 @@
+name: Navigation Styles
+description: Navigation styles for the Galatea theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "rgba(255, 255, 255, 0.8)"

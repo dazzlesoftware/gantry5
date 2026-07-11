@@ -1,0 +1,401 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#01a3d1'
+    - '#121212'
+    - '#f0f0f0'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+      background-image: 'gantry-media://backgrounds/base/bg-01.jpg'
+    accent:
+      color-1: '#01a3d1'
+      color-2: '#ff2300'
+      color-3: '#ffb300'
+    font:
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    overlay:
+      background: '#01a3d1'
+      text-color: '#ffffff'
+    top:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#ffffff'
+    header:
+      background: '#017494'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      text-color: '#888888'
+    showcase:
+      background: '#f7f7f7'
+      text-color: '#888888'
+    utility:
+      background: '#010101'
+      text-color: '#ffffff'
+    feature:
+      background: '#01a3d1'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#ffffff'
+      text-color: '#121212'
+    extension:
+      background: '#01a3d1'
+      text-color: '#ffffff'
+    bottom:
+      background: '#121212'
+      text-color: '#ffffff'
+    footer:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    copyright:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    offcanvas:
+      background: '#017494'
+      text-color: '#ffffff'
+      toggle-color: '#01a3d1'
+
+preset2:
+  image: 'gantry-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#c00000'
+    - '#121212'
+    - '#f0f0f0'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+      background-image: 'gantry-media://backgrounds/base/bg-02.jpg'
+    accent:
+      color-1: '#c00000'
+      color-2: '#007373'
+      color-3: '#77b300'
+    font:
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    overlay:
+      background: '#c00000'
+      text-color: '#ffffff'
+    top:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#ffffff'
+    header:
+      background: '#9d0000'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      text-color: '#888888'
+    showcase:
+      background: '#f7f7f7'
+      text-color: '#888888'
+    utility:
+      background: '#010101'
+      text-color: '#ffffff'
+    feature:
+      background: '#c00000'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#ffffff'
+      text-color: '#121212'
+    extension:
+      background: '#c00000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#121212'
+      text-color: '#ffffff'
+    footer:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    copyright:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    offcanvas:
+      background: '#9d0000'
+      text-color: '#ffffff'
+      toggle-color: '#c00000'
+
+preset3:
+  image: 'gantry-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#00ac00'
+    - '#121212'
+    - '#f0f0f0'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+      background-image: 'gantry-media://backgrounds/base/bg-03.jpg'
+    accent:
+      color-1: '#00ac00'
+      color-2: '#d76100'
+      color-3: '#ac0062'
+    font:
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    overlay:
+      background: '#00ac00'
+      text-color: '#ffffff'
+    top:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#ffffff'
+    header:
+      background: '#008c00'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      text-color: '#888888'
+    showcase:
+      background: '#f7f7f7'
+      text-color: '#888888'
+    utility:
+      background: '#010101'
+      text-color: '#ffffff'
+    feature:
+      background: '#00ac00'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#ffffff'
+      text-color: '#121212'
+    extension:
+      background: '#00ac00'
+      text-color: '#ffffff'
+    bottom:
+      background: '#121212'
+      text-color: '#ffffff'
+    footer:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    copyright:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    offcanvas:
+      background: '#008c00'
+      text-color: '#ffffff'
+      toggle-color: '#00ac00'
+
+preset4:
+  image: 'gantry-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#ff9000'
+    - '#121212'
+    - '#f0f0f0'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+      background-image: 'gantry-media://backgrounds/base/bg-04.jpg'
+    accent:
+      color-1: '#ff9000'
+      color-2: '#1a1eb2'
+      color-3: '#00b060'
+    font:
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    overlay:
+      background: '#ff9000'
+      text-color: '#ffffff'
+    top:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#ffffff'
+    header:
+      background: '#c67000'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      text-color: '#888888'
+    showcase:
+      background: '#f7f7f7'
+      text-color: '#888888'
+    utility:
+      background: '#010101'
+      text-color: '#ffffff'
+    feature:
+      background: '#ff9000'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#ffffff'
+      text-color: '#121212'
+    extension:
+      background: '#ff9000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#121212'
+      text-color: '#ffffff'
+    footer:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    copyright:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    offcanvas:
+      background: '#c67000'
+      text-color: '#ffffff'
+      toggle-color: '#ff9000'
+
+preset5:
+  image: 'gantry-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#c50067'
+    - '#121212'
+    - '#f0f0f0'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+      background-image: 'gantry-media://backgrounds/base/bg-05.jpg'
+    accent:
+      color-1: '#c50067'
+      color-2: '#017b9e'
+      color-3: '#966908'
+    font:
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    overlay:
+      background: '#c50067'
+      text-color: '#ffffff'
+    top:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#ffffff'
+    header:
+      background: '#9c0052'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      text-color: '#888888'
+    showcase:
+      background: '#f7f7f7'
+      text-color: '#888888'
+    utility:
+      background: '#010101'
+      text-color: '#ffffff'
+    feature:
+      background: '#c50067'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#ffffff'
+      text-color: '#121212'
+    extension:
+      background: '#c50067'
+      text-color: '#ffffff'
+    bottom:
+      background: '#121212'
+      text-color: '#ffffff'
+    footer:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    copyright:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    offcanvas:
+      background: '#9c0052'
+      text-color: '#ffffff'
+      toggle-color: '#c50067'
+
+preset6:
+  image: 'gantry-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#383838'
+    - '#121212'
+    - '#f0f0f0'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+      background-image: 'gantry-media://backgrounds/base/bg-06.jpg'
+    accent:
+      color-1: '#383838'
+      color-2: '#6e6e6e'
+      color-3: '#959695'
+    font:
+      family-default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'montserrat, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    overlay:
+      background: '#383838'
+      text-color: '#ffffff'
+    top:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#888888'
+    navigation:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#ffffff'
+    header:
+      background: '#1f1f1f'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      text-color: '#888888'
+    showcase:
+      background: '#f7f7f7'
+      text-color: '#888888'
+    utility:
+      background: '#010101'
+      text-color: '#ffffff'
+    feature:
+      background: '#383838'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#ffffff'
+      text-color: '#121212'
+    extension:
+      background: '#383838'
+      text-color: '#ffffff'
+    bottom:
+      background: '#121212'
+      text-color: '#ffffff'
+    footer:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    copyright:
+      background: 'rgba(0, 0, 0, 0)'
+      text-color: '#686868'
+    offcanvas:
+      background: '#1f1f1f'
+      text-color: '#ffffff'
+      toggle-color: '#383838'

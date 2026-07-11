@@ -1,0 +1,40 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+    @extend .section-paddings;
+
+    // Simple Menu Particle
+    .g-simplemenu-particle {
+        h6 {
+            color: $base-text-active-color;
+        }
+
+        .g-simplemenu-container {
+            .g-simplemenu {
+                li {
+                    a {
+                        color: $copyright-text-color;
+
+                        &:hover {
+                            color: $accent-color-1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Branding Particle
+    .g-branding {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

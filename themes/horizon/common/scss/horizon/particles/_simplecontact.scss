@@ -1,0 +1,26 @@
+.g-simplecontact-particle {
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+    li {
+        white-space: nowrap;
+        margin-right: $content-margin;
+    }
+
+    .fa {
+        color: $accent-color-1;
+        margin-right: $content-margin;
+    }
+
+    .g-simplecontact {
+        margin: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        @include breakpoint(mobile-only) {
+            flex-direction: column;
+        }
+    }
+}

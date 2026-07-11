@@ -1,0 +1,33 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+    @extend .section-paddings;
+
+    .g-simplecontent-layout-header {
+        .g-simplecontent-item-content-title {
+            font-size: $h4-font-size;
+            color: lighten($above-text-color, 50%);
+            font-weight: $font-weight-light;
+
+            @include breakpoint(tablet-range) {
+                font-size: $h4-font-size - 0.1;
+            }
+
+            @include breakpoint(mobile-only) {
+                font-size: $h4-font-size - 0.3;
+            }
+            strong {
+                color: $above-text-color;
+                font-weight: $font-weight-light;
+                border-bottom: 2px solid $accent-color-2;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

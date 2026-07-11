@@ -1,0 +1,229 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: overview
+  timestamp: 1527098404
+layout:
+  navigation: {  }
+  /header/:
+    -
+      - position-position-6831
+  /slideshow/:
+    -
+      - position-position-6234
+  /drawer/:
+    -
+      - position-position-5551
+  /top/:
+    -
+      - position-position-9101
+  /showcase/:
+    -
+      - custom-4093
+  /breadcrumb/:
+    -
+      - position-position-3611
+  /feature/:
+    -
+      - position-position-8324
+  /utility/:
+    -
+      - position-position-5798
+  /maintop/:
+    -
+      - position-position-3278
+  /expandedtop/:
+    -
+      - position-position-8368
+  /main/:
+    -
+      -
+        'mainbody 60':
+          -
+            - custom-6054
+      -
+        'sidebar 40':
+          -
+            - position-position-7684
+  /expandedbottom/:
+    -
+      - position-position-1604
+  /mainbottom/:
+    -
+      - position-position-2329
+  /extension/:
+    -
+      - position-position-6823
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'custom-7934 50'
+      - 'custom-1158 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  drawer:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  main:
+    type: container
+    attributes:
+      boxed: ''
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  position-position-6831:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-6234:
+    title: Slideshow
+    attributes:
+      key: slideshow
+  position-position-5551:
+    title: Drawer
+    attributes:
+      key: drawer
+  position-position-9101:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  custom-4093:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Various Pages'
+      titletag: 'Flexible and adaptable sample pages'
+      html: '<p class="promo2">See a range of example page layouts possible with Chimera template, through its responsive layout and the Gantry Framework grid system</p>'
+    block:
+      class: 'rt-title-large nomarginall'
+      variations: center
+  position-position-3611:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  position-position-8324:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-3278:
+    title: MainTop
+    attributes:
+      key: maintop-a
+  position-position-8368:
+    title: ExpandedTop
+    attributes:
+      key: expandedtop-a
+  custom-6054:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"rt-center\">\n\t<p class=\"promo1\"><strong>Chimera</strong> Sample Pages</p>\n\t<div class=\"gantry-row\">\n\t\t<div class=\"gantry-width-container\">\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"overview\">Pages Overview</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"about-us\">About Us</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"our-team\">Our Team</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-row\">\n\t\t<div class=\"gantry-width-container\">\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"services\">Services</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"pricing\">Pricing</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"portfolio\">Portfolio</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-row\">\n\t\t<div class=\"gantry-width-container\">\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"blog\">Blog</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"faq\">FAQ</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"contact\">Contact Us</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-row\">\n\t\t<div class=\"gantry-width-container\">\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"offline\">Offline Page</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"coming-soon\">Coming Soon</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"gantry-width-33\">\n\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/overview/page-01.jpg\" alt=\"image\" /></span>\n\t\t\t\t\t<h3><a href=\"error\">404 Error</a></h3>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t<div class=\"clear\"></div><br />\n</div>"
+  position-position-7684:
+    title: Sidebar
+    attributes:
+      key: sidebar-a
+  position-position-1604:
+    title: ExpandedBottom
+    attributes:
+      key: expandedbottom-a
+  position-position-2329:
+    title: MainBottom
+    attributes:
+      key: mainbottom-a
+  position-position-6823:
+    title: Extension
+    attributes:
+      key: extension-a
+  custom-7934:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Chimera Demo</span></h2>\n\n<p class=\"hidden-phone\">These examples are intended to show how Chimera can be constructed on your site, above and beyond the frontpage demonstration. These include content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Chimera RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+    block:
+      class: rt-phone-center
+  custom-1158:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Chimera Theme, LLC</span><br />\n\t\t\t<span>123 CMS Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+    block:
+      class: rt-phone-center

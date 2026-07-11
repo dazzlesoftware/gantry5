@@ -1,0 +1,59 @@
+name: Slider
+description: Background slider with thumbs
+type: particle
+icon: fa-camera-retro
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    nav:
+      type: select.select
+      label: Prev / Next
+      description: Enable or disable the Prev / Next navigation.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    loop:
+      type: select.select
+      label: Loop
+      description: Decide if you want your slider looping or not.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    items_amount:
+      type: input.number
+      label: Items
+      description: Amount of items
+      default: 5
+
+    items:
+      type: collection.list
+      array: true
+      label: Images
+      description: Create slideshow items.
+      value: title
+      ajax: true
+      fields:
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select image for slideshow
+          placeholder: Pick an image
+        .alt:
+          type: input.text
+          label: Alt Attribute
+          description: Alt attribute specifies an alternate text for an image, if the image cannot be displayed.
+          placeholder: Enter title

@@ -1,0 +1,25 @@
+body {
+	color: $base-text-color;
+	background: $base-background;
+	line-height: $base-line-height;
+	font-size: $base-font-size;
+
+	p {
+		margin: 0 0 15px 0;
+	}
+
+	.g-content {
+		padding: 60px 15px;
+		@include breakpoint(mobile-only) {
+			padding: 30px 15px;
+		}
+	}
+}
+
+a {
+	color: $accent-color-1;
+	transition: all 0.2s;
+	&:hover {
+		color: inherit;
+	}
+}

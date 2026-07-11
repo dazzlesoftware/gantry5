@@ -1,0 +1,9 @@
+versla-theme:
+  title: 'Versla Theme'
+  description: 'Sample menu for Versla theme.'
+
+  items:
+    versla:
+      title: 'Home'
+      outline: home
+      home: 1

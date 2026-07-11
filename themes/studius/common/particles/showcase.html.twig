@@ -1,0 +1,80 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
+{% endblock %}
+
+{% block particle %}
+<div id="{{ id }}" class="g-showcase swiper-container {{ particle.class|e }}" data-showcase-id="{{ id }}" data-showcase-effect="{{ particle.effect }}" data-showcase-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-showcase-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-showcase-timeout="{{ particle.autoplayTimeout }}" data-showcase-speed="{{ particle.speed }}" data-showcase-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-showcase-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %}>
+	<div class="g-showcase-slider swiper-wrapper">
+		{% if not particle.source or particle.source == 'particle' %}
+			{% for item in particle.items %}
+				<div class="swiper-slide {{ item.class|e }}">
+					<div class="slide">
+						<div class="g-showcase-content">
+							{% if item.title %}
+								<span class="g-showcase-title">
+									{{ item.title|raw }}
+								</span>
+							{% endif %}
+							{% if item.main_title %}
+								<h1 class="g-showcase-main-title">
+									{{ item.main_title|raw }}
+								</h1>
+							{% endif %}
+							{% if item.description %}
+								<p class="g-showcase-description">
+									{{ item.description|raw }}
+								</p>
+							{% endif %}
+						</div>
+						{% if item.image %}
+						<div class="g-showcase-image">
+							<img src="{{ url(item.image)|e }}" alt="{{ item.main_title }}">
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			{% include '@particles/showcase-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+		{% endif %}
+	</div>
+
+	{#  navigation #}
+	{% if particle.nav == 'enabled' %}
+		{% if gantry.page.direction == 'rtl' %}
+			<div class="navigation rtl">
+				<div class="swiper-button-next">
+					<i class="fa fa-angle-left"></i>
+				</div>
+				<div class="swiper-button-prev">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</div>
+		{% else %}
+			<div class="navigation">
+				<div class="swiper-button-next">
+					<i class="fa fa-angle-right"></i>
+				</div>
+				<div class="swiper-button-prev">
+					<i class="fa fa-angle-left"></i>
+				</div>
+			</div>
+		{% endif %}
+	{% endif %}
+
+	{#  pagination #}
+	{% if particle.dots|default('enabled') == 'enabled' %}
+		<div class="swiper-pagination"></div>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/showcase.init.js'), 10, 'footer') %}
+{% endblock %}
+

@@ -1,0 +1,200 @@
+.g-activities {
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box !important;
+    }
+
+    .g-activities-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        flex-wrap: wrap;
+    }
+
+    .g-activities-item {
+        flex: 0 0 auto;
+        width: 100%;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-right: 2rem;
+        overflow: hidden;
+
+        @include breakpoint(mobile-only) {
+            padding: 0;
+        }
+
+        cursor: pointer;
+
+        // Overlay
+        .g-activities-overlay {
+            background: transparentize($base-background, 0.50);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 6;
+            height: 100%;
+            transition: opacity 300ms ease-in-out
+        }
+
+        // Link Overlay
+        .g-activities-link-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 8;
+            height: 100%;
+        }
+
+        // Pattern
+        .g-activities-pattern {
+            width: 100%;
+            height: 100%;
+            margin-top: 20%;
+            left: -5.5rem;
+            bottom: 0;
+            content: '';
+            z-index: 7;
+            position: absolute;
+            opacity: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        img {
+            transition: all 0.35s;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%);
+        }
+
+        a {
+            display: block;
+            position: relative;
+            z-index: 7;
+        }
+
+        &:hover {
+            .g-activities-pattern {
+                animation: MoveUpDown 3s ease-in-out infinite;
+                opacity: 1;
+            }
+            .g-activities-overlay {
+                opacity: 0;
+            }
+
+            img {
+                filter: grayscale(0);
+            }
+
+            .g-activities-link {
+                background-color: $accent-color-2;
+                color: $white;
+            }
+        }
+
+        .g-activities-link {
+            color: set-color($base-background);
+            padding: 0 1rem;
+            margin-bottom: $content-padding;
+        }
+
+        .g-activities-caption {
+            display: flex;
+            @include responsive-font($responsive-font-size + 0.8, $core-font-size + 0.3, false, false);
+            align-items: flex-end;
+            justify-content: center;
+            font-weight: $font-weight-extrabold;
+            font-family: get-font-family($font-family-title);
+            color: set-color($base-background);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    }
+
+    .g-activities-desc {
+        margin: 1.5rem 0;
+    }
+
+    .g-activities-2cols {
+        .g-activities-item {
+            width: 50%;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+
+    .g-activities-3cols {
+        .g-activities-item {
+            width: 33.33333%;
+
+            &:first-child {
+                padding-right: $content-padding;
+
+                .dir-rtl & {
+                    padding-left: $content-padding;
+                    padding-right: 0;
+                }
+
+                @include breakpoint(mobile-only) {
+                    padding: 0;
+                }
+            }
+
+            &:last-child {
+                padding-left: $content-padding;
+
+                .dir-rtl & {
+                    padding-right: $content-padding;
+                    padding-left: 0;
+                }
+
+                @include breakpoint(mobile-only) {
+                    padding: 0;
+                }
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-padding;
+            }
+        }
+    }
+
+    .g-activities-4cols {
+        .g-activities-item {
+            width: 25%;
+
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+
+    .g-activities-5cols {
+        .g-activities-item {
+            width: 20%;
+
+            @include breakpoint(tablet-range) {
+                width: 33.33333%;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 50%;
+            }
+        }
+    }
+}

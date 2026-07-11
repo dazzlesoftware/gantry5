@@ -1,0 +1,11 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div class="g-quote {{ particle.class|e }}">
+		<blockquote>
+			{{ particle.quote|raw }}
+			<cite>{{ particle.author|raw }}</cite>
+		</blockquote>
+	</div>
+{% endblock %}
+

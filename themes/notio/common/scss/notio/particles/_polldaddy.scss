@@ -1,0 +1,157 @@
+.g-polldaddy {
+    .PDS_Poll {
+        .pds-box {
+            font-family: get-font-family($font-family-default);
+            font-weight: $font-weight-regular;
+            border: none;
+            background: none;
+
+            .pds-question-top {
+                padding: 0 0 $content-margin;
+                @include responsive-font($responsive-font-size - 0.25, $core-font-size, false, false);
+            }
+
+            .pds-answer {
+                // Questions
+                .pds-answer-group {
+                    display: flex;
+                    padding: ($content-margin + 0.5) 0;
+                    @include responsive-font($responsive-font-size - 0.25, $core-font-size, false, false);
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid transparentize($black, 0.90);
+                    }
+
+                    .pds-answer-input {
+                        display: block;
+                        float: left;
+                        width: 30px;
+
+                        .dir-rtl & {
+                          float: right;
+                        }
+
+                        @include breakpoint(desktop-range) {
+                            width: auto;
+                        }
+
+                        @include breakpoint(tablet-range) {
+                            width: auto;
+                        }
+                    }
+
+                    .pds-input-label {
+                        display: block;
+                        margin-bottom: 0;
+                        float: left;
+                        .dir-rtl & {
+                          float: right;
+                        }
+                        width: 80%;
+                        line-height: 1.7;
+                        cursor: pointer;
+                    }
+
+                    .pds-clear {
+                        display: block;
+                        clear: both;
+
+                        & ~ br {
+                            display: none;
+                        }
+                    }
+                }
+
+                // Results
+                .pds-feedback-group {
+                    display: block;
+                    padding: ($content-margin + 0.5) 0;
+                    @include responsive-font($responsive-font-size - 0.25, $core-font-size, false, false);
+
+                    .pds-feedback-label {
+                        .pds-answer-text {
+                            float: left;
+                        }
+
+                        .pds-feedback-result {
+                            float: right;
+
+                            .pds-feedback-per {
+                                font-weight: $font-weight-medium;
+                            }
+                        }
+                    }
+
+                    .pds-clear {
+                        display: block;
+                        clear: both;
+                        height: 1px;
+                        line-height: 1px;
+                    }
+                }
+
+                .pds-answer-feedback {
+                    position: relative;
+                    border: 1px solid transparentize($base-text-color, 0.50);
+
+                    .pds-answer-feedback-bar {
+                        font-size: 2px;
+                        background: $accent-color-1;
+                        height: 1rem;
+                    }
+                }
+            }
+
+            .pds-vote {
+                margin-top: $content-margin;
+
+                .pds-vote-button,
+                .pds-vote-button-load,
+                .pds-return-poll,
+                .pds-return-poll-load {
+                    @extend %g-button;
+                }
+
+                .pds-pd-link {
+                    display: none;
+                }
+
+                .pds-comments {
+                    display: block;
+                    margin: ($content-margin + 0.5) 0 0;
+                }
+            }
+
+            .pds-links {
+                margin-top: $content-padding;
+
+                .pds-view-results {
+                    margin-left: 1rem;
+
+                    .dir-rtl & {
+                      margin-left: 0;
+                      margin-right: 1rem;
+                    }
+
+                    color: transparentize($base-text-color, 0.50);
+
+                    &:hover {
+                        color: transparentize($base-text-color, 0.30);
+                        cursor: pointer;
+                    }
+                }
+
+                .pds-pd-link {
+                    display: block;
+                    margin-top: 0.2rem;
+                    font-size: 0.75rem;
+                    color: transparentize($base-text-color, 0.50);
+
+                    &:hover {
+                        color: transparentize($base-text-color, 0.30);
+                    }
+                }
+            }
+        }
+    }
+}

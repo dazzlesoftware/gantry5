@@ -1,0 +1,283 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1477206149
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'shoppingcart-5200 20'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /feature/:
+    -
+      - position-position-7980
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/:
+    -
+      - position-position-6548
+  /copyright/:
+    -
+      - 'simplemenu-6826 65'
+      - 'branding-9192 35'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  shoppingcart-5200:
+    title: 'Shopping Cart'
+    attributes:
+      class: ''
+      title: ''
+      totalitems: disabled
+      itemslabel: ''
+      itemsicon: ''
+      price: enabled
+      pricelabel: ''
+      priceicon: 'fa fa-shopping-bag'
+      apikey: ZmE1MDYwMTgtZTE1OC00ZTZmLWEzNWYtZjUwMmEwZTdlYTNhNjM2MTQzMzI4MjUxMzY1MDUw
+    block:
+      variations: align-right
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-8538:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-position-6548:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  simplemenu-6826:
+    title: 'Bottom Menu'
+    attributes:
+      title: ''
+      menus:
+        -
+          items:
+            -
+              title: Woman
+            -
+              title: Men
+            -
+              title: Unisex
+            -
+              title: Kids
+          title: Gender
+        -
+          items:
+            -
+              title: Popular
+            -
+              title: New
+            -
+              title: Sales
+            -
+              title: Gifts
+          title: Clothes
+        -
+          items:
+            -
+              title: Stores
+            -
+              title: 'Size Guide'
+            -
+              title: Support
+            -
+              title: FAQ
+          title: Help
+        -
+          items:
+            -
+              title: Facebook
+            -
+              title: Twitter
+            -
+              title: Instagram
+            -
+              title: Pinterest
+          title: Social
+        -
+          items:
+            -
+              title: Jobs
+            -
+              title: 'Our Story'
+            -
+              title: Press
+          title: About
+  branding-9192:
+    attributes:
+      content: '&copy; 2019 by <a href="https://www.rockettheme.com/" title="RocketTheme" class="g-powered-by">RocketTheme</a>.'
+    block:
+      class: 'nopaddingleft nomarginleft'

@@ -1,0 +1,121 @@
+.pagination {
+  .counter {
+    float: none;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  ul {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    li {
+      display: inline-block;
+      text-align: center;
+      margin: 0 5px;
+
+      span, a {
+        float: none;
+        margin: 0 5px;
+        padding: 0;
+        background: none;
+        border: none;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+.items-more {
+  margin: 12px 0;
+  padding-top: 10px;
+  
+  &:before {
+    content: "More Articles ...";
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    line-height: 28.8px;
+  }
+
+  ol {
+    line-height: 1.3em;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0 10px 2px;
+
+    li {
+      margin-bottom: 5px;
+      line-height: 24px;
+
+      a {
+        display: inline;
+        font-weight: normal;
+        padding: 0;
+        border: 0 !important;
+
+        &:before {
+          font-family: FontAwesome;
+          content: "\f055";
+          margin: 0 5px;
+        }
+      } 
+    }   
+  }  
+}
+
+.platform-content {
+  input {
+    box-sizing: inherit;
+    margin-bottom: 0;
+  }
+}
+
+.article-info-term {
+  display: none;
+} 
+
+// Joomla4
+.com-content-blog__links {
+	margin-left: 0;
+	margin-bottom: 20px;
+	list-style: none;
+	padding: 0;
+	li {
+		list-style-type: none;
+	}
+}
+.com-content-blog__links > li > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
+	padding-right: 12px;
+    padding-left: 12px;
+	display: block;
+	border: 1px solid #ddd;
+}
+.mod-list {
+	margin-left: 0;
+	display: block;
+	li {
+		list-style-type: none;
+		padding: 0;
+	}
+	li .mod-menu__sub {
+		padding: 0;
+	}
+}
+
+.mod-login__options.list-unstyled {
+	margin-left: 0;
+    padding: 0;
+    list-style-type: none;
+}

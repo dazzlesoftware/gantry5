@@ -1,0 +1,26 @@
+body {
+	color: $base-text-color;
+	background: $base-background;
+	line-height: $base-line-height;
+	font-size: $base-font-size;
+
+	p {
+		margin: 0 0 15px 0;
+	}
+
+	.g-content {
+		margin: 25px 15px;
+	}
+}
+
+a {
+	color: $accent-color-1;
+	transition: all 0.2s;
+	&:hover {
+		color: $accent-color-2;
+	}
+}
+
+html body * span.clear, html body * div.clear, html body * li.clear, html body * dd.clear {
+    clear: both;
+}

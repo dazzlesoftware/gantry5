@@ -1,0 +1,327 @@
+name: Block Content
+description: Displays Block Content
+type: particle
+icon: fa-th-large
+
+configuration:
+  caching:
+    type: config_matches
+    values:
+      source: 'particle'
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              overridable: false
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+            class:
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            icon:
+              type: input.icon
+              label: Icon
+              description: Select the icon.
+
+            image:
+              type: input.imagepicker
+              label: Image
+              description: Select the main image.
+
+            headline:
+              type: input.text
+              label: Headline
+              description: Customize the headline text.
+              placeholder: Enter headline
+
+            description:
+              type: textarea.textarea
+              label: Description
+              description: Customize the description.
+              placeholder: Enter short description
+
+            linktext:
+              type: input.text
+              label: Button Label
+              description: Customize the button label.
+
+            link:
+              type: input.text
+              label: Button Link
+              description: Specify the button link address.
+
+            linkclass:
+              type: input.selectize
+              label: Button Classes
+              description: CSS class names for the button.
+
+            linktarget:
+              type: select.selectize
+              label: Target
+              description: Target browser window when item is clicked.
+              placeholder: 'Select...'
+              options:
+                  _self: Self
+                  _blank: New Window
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            subcontents:
+              type: collection.list
+              array: true
+              label: Content Items
+              description: Create each item to appear in the content row.
+              value: name
+              ajax: true
+
+              fields:
+                .name:
+                  type: input.text
+                  label: Title
+                  description: Enter title.  
+
+                .accent:
+                  type: select.select
+                  label: Accent
+                  description: Select preferred block accent color.
+                  placeholder: 'Select...'
+                  default: none
+                  options:
+                      none: None
+                      accent1: Accent Color 1
+
+                .icon:
+                  type: input.icon
+                  label: Icon
+                  description: Select the icon.
+
+                .img:
+                  type: input.imagepicker
+                  label: Image
+                  description: Select the image.
+
+                .rokboximage:
+                  type: input.imagepicker
+                  label: Lightcase Image
+                  description: Select the Lightcase image.
+
+                .rokboxcaption:
+                  type: input.text
+                  label: Caption
+                  description: Customize the Lightcase caption.
+                  placeholder: Enter caption
+
+                .subtitle:
+                  type: input.text
+                  label: Subtitle
+                  description: Enter subtitle.
+
+                .description:
+                  type: textarea.textarea
+                  label: Description
+                  description: Enter the descriptiopn.
+
+                .class:
+                  type: input.selectize
+                  label: CSS Classes
+                  description: CSS class name for the particle.
+
+                .button:
+                  type: input.text
+                  label: Button Label
+                  description: Specify the button label.
+
+                .buttonlink:
+                  type: input.text
+                  label: Button Link
+                  description: Specify the button link.
+
+                .buttonclass:
+                  type: input.selectize
+                  label: Button Classes
+                  description: CSS class names for the button.
+
+                .buttontarget:
+                  type: select.selectize
+                  label: Target
+                  description: Target browser window when item is clicked.
+                  placeholder: 'Select...'
+                  default: _self
+                  options:
+                      _self: Self
+                      _blank: New Window 
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 5
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.image.enabled:
+              overridable: false
+              type: select.select
+              label: Image
+              description: Select if and what image of the article should be shown.
+              options:
+                intro: Intro
+                full: Full
+                '': None
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.text.type:
+              overridable: false
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              overridable: false
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              pattern: '\d+'
+
+            article.display.text.formatting:
+              overridable: false
+              type: select.select
+              label: Text Formatting
+              description: Select the formatting you want to use to display the article text.
+              options:
+                text: Plain Text
+                html: HTML
+
+            article.display.link.enabled:
+              type: select.select
+              label: Button Link
+              description: Select if the Link button should show.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.link.label:
+              type: input.text
+              label: Button Label
+              description: Type in the label for the button.
+              placeholder: 'Explore Now'
+
+            article.display.link.target:
+              type: select.selectize
+              label: Link Target
+              description: Target browser window when the button is clicked.
+              placeholder: 'Select...'
+              default: _self
+              options:
+                  _self: Self
+                  _blank: New Window

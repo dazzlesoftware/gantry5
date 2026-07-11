@@ -1,0 +1,12 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;
+  position: relative;
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

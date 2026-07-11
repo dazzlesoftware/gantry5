@@ -1,0 +1,14 @@
+name: Bottom Styles
+description: Bottom styles for the Koleti theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#999999"

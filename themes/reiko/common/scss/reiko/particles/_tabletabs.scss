@@ -1,0 +1,151 @@
+.g-table-tabs {
+    background: $black;
+    color: $white;
+    padding: $content-padding /2 $content-padding *1.5 $content-padding *1.5;
+    border-radius: 5px;
+
+    @include breakpoint (mobile-only) {
+        padding: $content-padding /2 $content-padding *.5 $content-padding *1.5;
+    }
+
+    .g-table-tabs-top-table-content {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        margin: 0 0 $content-margin * 2;
+
+        .g-table-tabs-table-title {
+            font-size: $core-font-size *2;
+            margin: 0 0 $content-margin * 2;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .g-table-tabs-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            @include breakpoint(small-mobile-range) {
+                align-items: normal;
+                flex-direction: column;
+            }
+
+            .g-table-tabs-league-title {
+                border: 2px solid transparent;
+                border-radius: 5px;
+                padding: $content-padding * .2;
+                text-align: center;
+
+                .g-table-tabs-league-text {
+                    font-weight: $font-weight-regular;
+                    color: $grey;
+                }
+            }
+
+            .selected {
+                border: 2px solid $white;
+                border-radius: 5px;
+                padding: $content-padding * .2;
+
+                span {
+                    color: $white;
+                    font-weight: $font-weight-medium;
+                }
+            }
+        }
+    }
+
+    .g-table-tabs-wrapper {
+        display: none;
+
+        &.selected {
+            display: block;
+        }
+
+        span {
+            line-height: $core-line-height + .5;
+        }
+
+        .g-table-tabs-team-rank {
+            flex: 1;
+            color: $grey;
+            font-size: $core-font-size - .1;
+            text-align: center;
+            margin-right: $content-margin - .2;
+        }
+
+        .g-table-tabs-team-name {
+            flex: 5;
+        }
+
+        .g-table-tabs-team-played {
+            flex: 2;
+            color: $grey;
+        }
+
+        .g-table-tabs-team-points {
+            flex: 2;
+        }
+
+        .g-table-tabs-team-icon {
+            flex: 1;
+
+            &.green {
+                color: $accent-color-2;
+            }
+
+            &.red {
+                color: $accent-color-1;
+            }
+
+            &.gray {
+                color: $grey;
+            }
+        }
+
+        .g-table-tabs-table-description {
+            display: flex;
+            font-size: $core-font-size - .1;
+            color: $grey;
+
+            .team-points {
+                flex: 3;
+            }
+        }
+
+        .g-table-tabs-team-content {
+            display: flex;
+        }
+    }
+}
+
+.g-table-tabs-button-wrapper {
+    margin-top: $content-margin * 2;
+    font-weight: $font-weight-medium;
+    text-decoration: underline;
+    text-decoration-color: $accent-color-1;
+
+    &:hover {
+        text-decoration-color: $black;
+    }
+}
+
+.g-table-tabs-wrapper {
+    @include breakpoint(desktop-range) {
+        width: 100%;
+        flex: 0 100%;
+    }
+
+    @include breakpoint(tablet-range) {
+        width: 100%;
+        flex: 0 100%;
+    }
+
+    @include breakpoint(mobile-only) {
+        width: 100%;
+        flex: 0 100%;
+    }
+}

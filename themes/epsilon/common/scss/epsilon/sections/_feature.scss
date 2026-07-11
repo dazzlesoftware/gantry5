@@ -1,0 +1,15 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+
+     h1, h2, h3, h4, h5, h6 {
+		color: darken($feature-text-color, 15%);
+	}
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,19 @@
+name: Expanded Styles
+description: Expanded styles for the Protean theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#f9632d"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/expanded/img-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

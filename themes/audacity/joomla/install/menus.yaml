@@ -1,0 +1,9 @@
+audacity-theme:
+  title: 'Audacity Theme'
+  description: 'Sample menu for Audacity theme.'
+
+  items:
+    audacity:
+      title: 'Home'
+      layout: home
+      home: 1

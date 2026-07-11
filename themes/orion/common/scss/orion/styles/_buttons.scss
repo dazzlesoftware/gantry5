@@ -1,0 +1,386 @@
+%g-button {
+    display: inline-block;
+    font-family: get-font-family($font-family-title);
+    font-weight: $font-weight-bold;
+    color: $white;
+    @include responsive-font($responsive-font-size, $core-font-size, false, false);
+    background: $accent-color-1;
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+    padding: 0.4rem 1.5rem;
+    padding-bottom: 0.45rem;
+    border: 2px solid transparent;
+    border-radius: 0.4rem;
+    vertical-align: middle;
+    text-shadow: none;
+    transition: all 0.2s;
+
+    &:hover, &:active, &:focus {
+        background: $white;
+        color: $accent-color-1;
+        border-color: $accent-color-1;
+        cursor: pointer;
+    }
+}
+
+.button {
+    @extend %g-button;
+
+    .fa {
+        font-size: $core-font-size + 0.4;
+    }
+
+    &.button-square {
+        border-radius: 0;
+
+        &[class*="button"] {
+            border-radius: 0;
+        }
+    }
+
+    &.link {
+        background: transparent;
+        font-weight: $font-weight-medium;
+        font-size: $core-font-size;
+        border-radius: 0;
+        color: $accent-color-1;
+        padding: 0;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &.button-block {
+        display: block;
+        text-align: center;
+    }
+
+    &.button-xlarge {
+        @include responsive-font($responsive-font-size + 0.2, $core-font-size + 1, false, false);
+    }
+
+    &.button-large {
+        @include responsive-font($responsive-font-size + 0.075, $core-font-size + 0.5, false, false);
+    }
+
+    &.button-medium {
+        font-size: $core-font-size;
+    }
+
+    &.button-small {
+        font-size: $core-font-size - 0.2;
+    }
+
+    &.button-xsmall {
+        font-size: $core-font-size - 0.4;
+    }
+
+    &.button-2 {
+        background: $accent-color-2;
+        color: $white;
+
+        &:hover, &:active, &:focus {
+            background: transparent;
+            border-color: $accent-color-2;
+        }
+    }
+
+    &.button-3,
+    &.button-grey,
+    &.button-pink,
+    &.button-red,
+    &.button-purple,
+    &.button-orange,
+    &.button-blue {
+        color: $white !important;
+
+        &.button-3 {
+            background: transparent;
+
+            &:hover, &:active, &:focus {
+                background: transparent;
+            }
+        }
+    }
+
+    &.button-3 {
+        border-color: $accent-color-1;
+        color: $accent-color-1 !important;
+
+
+        &:hover, &:active, &:focus {
+            background: $accent-color-1 !important;
+            border-color: $accent-color-1 !important;
+            color: $white !important;
+        }
+        &.white {
+            border-color: $white;
+            color: $white !important;
+            &:hover, &:active, &:focus {
+                color: $accent-color-1 !important;
+                border-color: $accent-color-1 !important;
+                background: transparent!important;
+            }
+        }
+        &.black {
+            border-color: $black;
+            color: $black !important;
+            &:hover, &:active, &:focus {
+                color: $accent-color-1 !important;
+                border-color: $accent-color-1 !important;
+                background: transparent!important;
+            }
+        }
+    }
+
+    &.button-grey {
+        background: $box-grey-background;
+        border-color: $box-grey-background;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $box-grey-background !important;
+            border: 2px solid $box-grey-background;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($box-grey-background, 15%) !important;
+                color: darken($box-grey-background, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($box-grey-background, 15%);
+            border-color: darken($box-grey-background, 15%);
+        }
+    }
+
+    &.button-pink {
+        background: $box-pink-background;
+        border-color: $box-pink-background;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $box-pink-background !important;
+            border: 2px solid $box-pink-background;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($box-pink-background, 15%) !important;
+                color: darken($box-pink-background, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($box-pink-background, 15%);
+            border-color: darken($box-pink-background, 15%);
+        }
+    }
+
+    &.button-red {
+        background: $box-red-background;
+        border-color: $box-red-background;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $box-red-background !important;
+            border: 2px solid $box-red-background;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($box-red-background, 15%) !important;
+                color: darken($box-red-background, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($box-red-background, 15%);
+            border-color: darken($box-red-background, 15%);
+        }
+    }
+
+    &.button-purple {
+        background: $box-purple-background;
+        border-color: $box-purple-background;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $box-purple-background !important;
+            border: 2px solid $box-purple-background;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($box-purple-background, 15%) !important;
+                color: darken($box-purple-background, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($box-purple-background, 15%);
+            border-color: darken($box-purple-background, 15%);
+        }
+    }
+
+    &.button-orange {
+        background: $box-orange-background;
+        border-color: $box-orange-background;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $box-orange-background !important;
+            border: 2px solid $box-orange-background;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($box-orange-background, 15%) !important;
+                color: darken($box-orange-background, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($box-orange-background, 15%);
+            border-color: darken($box-orange-background, 15%);
+        }
+    }
+
+    &.button-blue {
+        background: $box-blue-background;
+        border-color: $box-blue-background;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $box-blue-background !important;
+            border: 2px solid $box-blue-background;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($box-blue-background, 15%) !important;
+                color: darken($box-blue-background, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($box-blue-background, 15%);
+            border-color: darken($box-blue-background, 15%);
+        }
+    }
+
+    &.button-white {
+        background: $white;
+        border-color: $white;
+
+        &.button-3, &.button-4 {
+            background: transparent !important;
+            color: $white !important;
+            border: 2px solid $white;
+
+            &:hover, &:active, &:focus {
+                border-color: darken($white, 15%) !important;
+                color: darken($white, 15%) !important;
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($white, 15%);
+            border-color: darken($white, 15%);
+        }
+    }
+
+    &.button-arrow {
+        position: relative;
+
+        &:before, &:after {
+            font-family: FontAwesome;
+        }
+
+        &:after {
+            .dir-ltr & {
+                content: "\f061";
+                margin-left: 0.5rem;
+            }
+        }
+
+        &:before {
+            .dir-rtl & {
+                content: "\f060";
+                margin-left: 0;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    &.button-special {
+        position: relative;
+
+        &:before {
+            .dir-ltr & {
+                position: absolute;
+                content: "";
+                top: 8px;
+                bottom: -8px;
+                left: -8px;
+                right: 8px;
+                border-left: 1px solid darken($accent-color-1, 8%);
+                border-bottom: 1px solid darken($accent-color-1, 8%);
+            }
+        }
+
+        &:after {
+            .dir-rtl & {
+                position: absolute;
+                content: "";
+                top: 8px;
+                bottom: -8px;
+                right: -8px;
+                left: 8px;
+                border-right: 1px solid darken($accent-color-1, 8%);
+                border-bottom: 1px solid darken($accent-color-1, 8%);
+            }
+        }
+    }
+
+    &.button-outline {
+        color: $black !important;
+        background: transparent;
+        border: 2px solid $black;
+
+        &:before {
+            .dir-ltr & {
+                border-left: 2px solid $black;
+                border-bottom: 2px solid $black;
+            }
+        }
+
+        &:after {
+            .dir-rtl & {
+                border-right: 2px solid $black;
+                border-bottom: 2px solid $black;
+            }
+        }
+
+        &:hover {
+            border-color: $accent-color-1;
+            color: $accent-color-1 !important;
+
+            &:before {
+                .dir-ltr & {
+                    border-left: 2px solid $accent-color-1;
+                    border-bottom: 2px solid $accent-color-1;
+                }
+            }
+
+            &:after {
+                .dir-rtl & {
+                    border-right: 2px solid $accent-color-1;
+                    border-bottom: 2px solid $accent-color-1;
+                }
+            }
+        }
+    }
+
+    &.button-text-only {
+        padding: 0 !important;
+        background: transparent !important;
+        color: $accent-color-1 !important;
+
+        &:hover {
+            color: darken($accent-color-1, 15%);
+        }
+    }
+}

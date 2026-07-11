@@ -1,0 +1,123 @@
+.g-testimonials {
+	display: flex;
+	flex-flow: row wrap;
+	.g-testimonial-item {
+		margin-bottom: 2rem;
+		display: flex;
+		flex: 0 0 auto;
+		align-items: flex-start;
+		@include breakpoint(mobile-only) {
+			flex-flow: row wrap;
+		}
+	}
+	.g-testimonial-author-img {
+	    border-radius: 100%;
+	    margin: 0.5rem 1rem;
+	    overflow: hidden;
+	    -webkit-flex: 0 15%;
+		@include breakpoint(mobile-only) {
+			margin: 0 0 1rem 0;
+		}		    
+	}
+	.g-testimonial-content {
+		p {
+			margin: 0 0 1rem 0;
+			font-size: $core-font-size + 0.75;
+			line-height: $core-line-height - 0.2;
+			font-family: get-font-family($font-family-subpromo);
+			font-weight: $font-weight-regular;
+			letter-spacing: -1px;		
+			@include breakpoint(tablet-range) {
+				font-size: $core-font-size + 0.5;
+			}
+			@include breakpoint(mobile-only) {
+				font-size: $core-font-size + 0.25;
+			}
+		}
+	}
+	.g-testimonial-author-name, .g-testimonial-author-company {
+		display: inline-block;
+		font-family: get-font-family($font-family-default);
+		font-weight: $font-weight-bold;	
+	}
+	.g-testimonial-author-name {
+		font-size: $core-font-size + 0.25;
+		&:after {
+			content: "/";
+			margin: 0 0.5rem;
+		}		
+	}
+	.g-testimonial-author-company {
+		text-transform: uppercase;
+		font-size: $core-font-size;
+	}
+	&.g-1cols {
+		.g-testimonial-item {
+			width: 100%;
+			&:last-child {
+				padding-bottom: 0;
+				margin-bottom: 0;
+				border-bottom: none;
+			}
+		}
+	}
+	&.g-2cols {
+		.g-testimonial-item {
+			width: 47%;
+			&:nth-child(odd) {
+				margin-right: 1%;
+			}
+			&:nth-child(even) {
+				margin-left: 1%;
+			}
+		}
+	}	
+	&.g-3cols {
+		.g-testimonial-item {
+			width: 30.66667%;
+			&:nth-child(3n-1) {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}	
+	}
+	&.g-4cols {
+		.g-testimonial-item {
+			width: 22.5%;
+			&:nth-child(4n-2) {
+				margin-left: 0;
+				margin-right: 1%;
+			}
+			&:nth-child(4n-1) {
+				margin-left: 1%;
+				margin-right: 0;
+			}
+		}
+	}
+	&.g-5cols {
+		.g-testimonial-item {
+			width: 17.6%;
+			&:nth-child(5n-3) {
+				margin-left: 0;
+				margin-right: 1%;
+			}
+			&:nth-child(5n-2) {
+				margin-left: 1%;
+				margin-right: 1%;
+			}
+			&:nth-child(5n-1) {
+				margin-left: 1%;
+				margin-right: 0;
+			}
+		}	
+	}
+	@include breakpoint(mobile-only) {
+		&[class*="cols"] {
+			.g-testimonial-item {
+				width: 96%;
+				margin-left: 2% !important;
+				margin-right: 2% !important;
+			}
+		}
+	}
+}

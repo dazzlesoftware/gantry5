@@ -1,0 +1,14 @@
+#g-container-utility {
+    color: $utility-text-color;
+
+    #g-utilitymain {
+        background: $utility-background;
+    }
+}
+
+@media print {
+    #g-container-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

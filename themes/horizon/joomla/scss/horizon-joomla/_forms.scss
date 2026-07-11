@@ -1,0 +1,260 @@
+legend {
+    line-height: $core-line-height;
+    margin: 1rem 0;
+}
+
+.input-prepend .chzn-container-single .chzn-single,
+.input-append .chzn-container-single .chzn-single {
+    border-color: $border-color-light;
+}
+
+.input-prepend .chzn-container-single .chzn-drop,
+.input-append .chzn-container-single .chzn-drop {
+    border-color: $border-color-light;
+}
+
+.form-actions {
+    background: none;
+    border: 0;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    color: $base-text-color;
+    background-color: $white;
+    border: 2px solid $border-color-light;
+    box-shadow: none;
+    box-sizing: border-box !important;
+    transition: border 0.2s linear, box-shadow 0.2s linear;
+    .input-prepend &,
+    .input-append & {
+        padding: 0.35rem;
+        max-width: 95%;
+        .dir-rtl & {
+            border-radius: 6px 0 0 6px;
+        }
+    }
+}
+
+.input-prepend>.add-on,
+.input-append>.add-on {
+    background: $white;
+    border: 2px solid $border-color-light;
+    padding: 0.275rem;
+    -webkit-padding-before: 7px;
+    -webkit-padding-after: 7px;
+    margin-right: -2px;
+    .dir-rtl & {
+        margin-right: auto;
+        margin-left: -2px;
+        .btn {
+            margin-right: auto;
+            margin-left: -2px;
+        }
+        &:first-child {
+            border-radius: 0 6px 6px 0;
+        }
+    }
+}
+
+textarea {
+    width: 100%;
+}
+
+.dir-rtl {
+    .form-horizontal {
+        .control-label {
+            float: right;
+            text-align: left;
+        }
+    }
+}
+
+select {
+    color: $base-text-color;
+    background: $white;
+    border: 1px solid $border-color-light;
+}
+
+// Module Editing
+.controls {
+    input[type="radio"] {
+        margin-right: 5px;
+    }
+}
+
+.layout-edit {
+    #sbox-content.sbox-content-iframe {
+        overflow: hidden;
+    }
+}
+
+// Login Module
+#login-form {
+    .input-prepend,
+    .input-append {
+        width: 100%;
+        .add-on,
+        .input-small {
+            height: 50px;
+        }
+        .btn {
+            height: 35px;
+        }
+        .input-small {
+            width: 80%;
+        }
+    }
+    #modlgn-secretkey {
+        width: 65%;
+    }
+}
+
+// Search
+#searchForm,
+#finder-search {
+    .btn {
+        @extend %g-button;
+        display: inline-block;
+        font-family: get-font-family($font-family-default);
+        font-weight: $font-weight-bold;
+        background: $accent-color-1;
+        color: $white !important;
+        font-size: $core-font-size;
+        border: 1px solid transparent;
+        border-radius: $border-radius;
+        margin: 0;
+        padding: 0.5rem 1.25rem;
+        vertical-align: middle;
+        text-shadow: none;
+        transition: all 0.2s;
+        &:hover,
+        &:active,
+        &:focus {
+            background: darken($accent-color-1, 15%);
+            color: $white !important;
+        }
+    }
+}
+
+#searchForm {
+    .btn {
+        padding: 0.35rem 1.25rem;
+        border-radius: $border-radius;
+    }
+    fieldset {
+        margin-bottom: $content-padding;
+    }
+    legend {
+        margin-bottom: 0;
+    }
+}
+
+#finder-search {
+    .inputbox {
+        margin: 1rem 0 0.5rem 0;
+    }
+}
+
+// Contact Form
+#contact-form {
+    margin: 0;
+    padding: 0;
+
+    .control-group {
+        margin-bottom: 12px;
+    }
+
+    legend,
+    legend+.control-group {
+        margin: 0;
+    }
+
+    #jform_contact_email_copy-lbl {
+        min-width: 200px;
+        margin-bottom: 0;
+
+        .dir-rtl & { 
+            min-width: 0;
+        }    
+    }
+
+
+    #jform_contact_email_copy {
+        margin-left: 1.3rem;
+        min-height: 0;
+
+        .dir-rtl & {
+            margin-top: -5px;
+
+             @include breakpoint(mobile-only) {
+                margin-top: 4px;
+            }
+        }
+    }
+
+    .controls {
+        margin-left: 0;
+
+        .dir-rtl & {
+            margin-right: 0;
+        }
+
+        input,
+        textarea {
+            color: $base-text-color;
+            background: $off-white;
+            border-radius: 3px;
+            border-width: 2px;
+            min-height: 3.5rem;
+            border-color: lighten($light-grey, 5);
+            &:active,
+            &:focus {
+                background: $white;
+                border-color: $darkgrey;
+                box-shadow: none;
+            }
+        }
+
+        textarea {
+            resize: none
+        }
+
+        .validate {
+            margin-top: .4rem;
+        }
+    }
+
+    .control-label {
+        text-align: left;
+        margin-bottom: 0;
+    }
+}
+
+// Button
+.btn {
+    box-shadow: none;
+    @extend %g-button;
+    span {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.btn-mini {
+    margin: 0.5rem 0;
+}

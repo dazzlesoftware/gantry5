@@ -1,0 +1,31 @@
+.g-iconpromo {
+    h1 {
+        @include responsive-font($responsive-font-size + 2.5, $core-font-size + 1, false, false);
+        font-weight: $font-weight-extrabold;
+    }
+
+    span {
+        display: block;
+        margin-top: $content-padding;
+        @include responsive-font($responsive-font-size + 0.4, $core-font-size, false, false);
+        font-weight: $font-weight-regular;
+     }
+
+    .g-iconpromo-icon {
+        .fa {
+            padding: 2rem;
+            border-radius: 100%;
+            background: $accent-color-2;
+            color: $white;
+            display: block;
+            font-size: 4rem;
+        }
+    }
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: $content-padding * 2;
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+#g-mainbar {
+    background: $main-background;
+    color: $main-text-color;  
+
+    .g-typography & {
+    	> .g-grid {
+    		&:nth-child(even) {
+    			background: darken($main-background, 3%);
+    		}
+	    	&:nth-child(odd) {
+	    		background: darken($main-background, 10%);
+	    	}     		
+    	}   	
+    }
+}
+
+@media print {
+	#g-main {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,33 @@
+#g-bottom {
+    color: $bottom-text-color;
+    background: $bottom-background;
+    @extend .section-paddings;
+
+    .g-infolist-item-title {
+        font-size: $core-font-size - 0.1;
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+        a {
+            color: $accent-color-2;
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+    .g-infolist-link {
+        font-size: $core-font-size - 0.1;
+        a {
+            color: transparentize($bottom-text-color, 0.70);
+            &:hover {
+                color: $accent-color-2;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,20 @@
+#g-header {
+  background: $header-background;
+  color: $header-text-color;
+  margin: ($content-margin * 3.2) ($content-margin + $content-padding);
+  box-shadow: $base-content-shadow;
+
+  &.g-offset-padding {
+    margin: 0 ($content-margin + $content-padding);
+  }
+  .g-title {
+    color: lighten($header-text-color, 35%);
+  }
+}
+
+@media print {
+  #g-header {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}

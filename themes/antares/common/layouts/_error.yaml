@@ -1,0 +1,227 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1451990383
+layout:
+  /overlay/: {  }
+  /fixedside/:
+    -
+      - social-9802
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - 'logo-7061 25'
+      - 'menu-2019 75'
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-3465
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-6444
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - infolist-8094
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'logo-5065 30'
+      - 'horizontalmenu-1887 40'
+      - 'social-1554 30'
+  /copyright/:
+    -
+      - 'copyright-3234 50'
+      - 'horizontalmenu-4429 50'
+    -
+      - totop-8262
+  /offcanvas/:
+    -
+      - mobile-menu-6235
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  social-9802:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  infolist-3465:
+    title: 'Whooops! Error!'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Looks like something went wrong. Sorry!'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: 'Whooops! Error!'
+    block:
+      variations: center
+  system-content-6444:
+    block:
+      class: g-error
+      variations: center
+  infolist-8094:
+    title: 'Nothing to See Here'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Please use the navigation above or contact us to find what you are looking for.'
+          tag: ''
+          subtag: ''
+          label: 'Contact Us'
+          link: '#'
+          icon: ''
+          readmoreclass: button-special
+          title: 'Nothing to See Here'
+    block:
+      variations: center
+  logo-5065:
+    title: 'Footer Logo'
+  horizontalmenu-1887:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          name: Support
+        -
+          text: Download
+          link: 'https://www.rockettheme.com/joomla/templates/antares'
+          name: Download
+  social-1554:
+    title: 'Footer Social Icons'
+  horizontalmenu-4429:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://www.rockettheme.com/docs/joomla/templates/antares'
+          name: Docs
+        -
+          text: Guides
+          link: 'http://docs.gantry.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://www.rockettheme.com/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          name: Forum
+  totop-8262:
+    title: 'To Top'
+  mobile-menu-6235:
+    title: 'Mobile Menu'

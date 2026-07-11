@@ -1,0 +1,35 @@
+.g-simplemenu-particle {
+    display: flex;
+    justify-content: space-around;
+
+    .g-simplemenu-container {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+
+        h6 {
+            margin: 0 0 $content-margin;
+            @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
+            font-weight: $font-weight-black;
+
+            @include breakpoint(mobile-only) {
+                margin: 0 0 ($content-margin * 2);
+            }
+        }
+
+        .g-simplemenu {
+            list-style: none;
+            margin: 0;
+            font-weight: $font-weight-regular;
+            @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
+
+            @include breakpoint(mobile-only) {
+                margin: 0 0 ($content-margin * 2);
+            }
+
+            li {
+                padding: $content-margin - 0.4 0;
+            }
+        }
+    }
+}

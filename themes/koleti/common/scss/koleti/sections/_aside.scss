@@ -1,0 +1,11 @@
+#g-aside {
+    color: $main-text-color;
+    background: $main-background;
+}
+
+@media print {
+    #g-aside {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

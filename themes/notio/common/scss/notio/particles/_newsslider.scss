@@ -1,0 +1,318 @@
+// Carousel Styling
+.g-newsslider {
+    display: flex;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+    }
+
+    .g-newsslider-carousel {
+        width: 28.6%;
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+            display: none;
+        }
+
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        // Thumb Container
+        .g-newsslider-carousel-item-container {
+            position: relative;
+            cursor: pointer;
+
+            &::before {
+                content: '';
+                background-color: transparentize($black, 0.50);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                transition: background-color 0.2s ease-in-out;
+            }
+
+            &:hover,
+            &.current {
+                &::before {
+                    background-color: transparentize($accent-color-1, 0.20);
+                }
+            }
+
+            .g-newsslider-carousel-item-content {
+                position: absolute;
+                z-index: 1;
+                bottom: $content-padding + $content-margin;
+                margin: 0 ($content-padding + $content-margin);
+
+                @include breakpoint(desktop-range) {
+                    bottom: $content-margin;
+                    margin: 0 $content-margin;
+                }
+
+                @include breakpoint(tablet-range) {
+                    bottom: $content-margin;
+                    margin: 0 $content-margin;
+                }
+
+                .g-newsslider-carousel-item-title {
+                    @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+                    font-weight: $font-weight-medium;
+                    line-height: normal;
+                    color: $white;
+                }
+
+                .g-newsslider-carousel-item-meta {
+                    color: transparentize($white, 0.50);
+                    @include responsive-font($responsive-font-size - 0.3, $core-font-size - 0.2, false, false);
+
+                    div {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+
+    // Slide styling
+    .g-newsslider-slides {
+        width: 71.4%;
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+            height: 500px;
+        }
+
+        // Same Height
+        .owl-stage-outer,
+        .owl-stage,
+        .owl-item,
+        .g-newsslider-slides-item-image {
+            height: 100%;
+        }
+
+        // Item
+        .owl-item {
+
+            // Category
+            .g-newsslider-slides-item-category {
+                position: absolute;
+                top: 0;
+                display: block;
+                background: $accent-color-1;
+                border-radius: 0.3rem;
+                padding: $content-margin - 0.2 $content-margin;
+                font-weight: $font-weight-medium;
+                margin: $content-padding + $content-margin;
+                color: $white;
+
+                a {
+                    color: $white;
+                }
+            }
+
+            // Image
+            .g-newsslider-slides-item-image {
+                background-size: cover;
+                background-repeat: no-repeat;
+
+                &:before {
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 200px 0 0 200px;
+                    border-color: transparent transparent transparent $black;
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+
+                    .dir-rtl & {
+                        transform: scaleX(-1);
+                    }
+                }
+            }
+
+            // Content
+            .g-newsslider-slides-item-content {
+                position: absolute;
+                bottom: $content-padding + $content-margin;
+                margin: 0 $content-padding + $content-margin;
+
+                .g-newsslider-slides-item-title {
+                    @include responsive-font($responsive-font-size + 1, $core-font-size + 0.3, false, false);
+                    font-weight: $font-weight-medium;
+                    line-height: normal;
+
+                    a {
+                        color: $white;
+                    }
+                }
+
+                .g-newsslider-slides-item-meta {
+                    color: $white;
+                    display: flex;
+                }
+            }
+        }
+
+        // Prev & Next Controls
+        .owl-nav {
+            position: absolute;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 5rem;
+
+            @include breakpoint(mobile-only) {
+                &.disabled {
+                    display: block;
+                }
+            }
+
+            >div, >button{
+                position: absolute;
+                margin: auto;
+                text-align: center;
+                bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                opacity: 1;
+
+                @include breakpoint(mobile-only) {
+                    color: $accent-color-1;
+                }
+
+                .fa {
+                    font-size: $core-font-size + 1;
+                    font-weight: $font-weight-regular;
+                    vertical-align: super;
+                }
+
+                &:hover {
+                    color: fade-out($white, 0.4);
+                }
+            }
+
+            .owl-prev {
+                margin-left: 10px;
+                left: 1rem;
+                right: auto;
+
+                .dir-rtl & {
+                    margin-right: 10px;
+                    right: 0;
+                    left: auto;
+
+                    .fa-chevron-left {
+                        &:before {
+                            content: "\f054";
+                        }
+                    }
+                }
+            }
+
+            .owl-next {
+                margin-right: 10px;
+                left: auto;
+                right: 1rem;
+
+                @include breakpoint(mobile-only) {
+                    right: 1rem;
+                }
+
+                .dir-rtl & {
+                    margin-left: 10px;
+                    left: 0;
+                    right: auto;
+
+                    .fa-chevron-right {
+                        &:before {
+                            content: "\f053";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Carousel Scroller Core Code
+.mThumbnailScroller {
+    -ms-touch-action: none;
+    touch-action: none
+}
+
+.mThumbnailScroller.mTS_no_scroll,
+.mThumbnailScroller.mTS_touch_action {
+    -ms-touch-action: auto;
+    touch-action: auto
+}
+
+.mTSWrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr
+}
+
+.mTSContainer {
+    margin: 0;
+    padding: 0;
+    overflow: hidden
+}
+
+ol.mTSContainer,
+ul.mTSContainer {
+    list-style: none
+}
+
+.mTSThumb,
+ul.mTSContainer>li img {
+    vertical-align: bottom
+}
+
+.mTS_vertical .mTSContainer {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important
+}
+
+.mTS_horizontal .mTSContainer {
+    margin-left: 0 !important;
+    margin-right: 0 !important
+}
+
+.mTS-hover-full {
+    padding: 8px;
+    background: rgba(0, 0, 0, .2)
+}
+
+.mTS-hover-full .mTS_vertical .mTSThumbContainer {
+    margin: 8px 0
+}
+
+.mTS-hover-full .mTS_vertical .mTSThumbContainer:first-child {
+    margin-top: 40px
+}
+
+.mTS-hover-full .mTS_vertical .mTSThumbContainer:last-child {
+    margin-bottom: 40px
+}
+
+.mTS-hover-full .mTS_horizontal .mTSThumbContainer {
+    margin: 0 4px
+}
+
+.mTS-hover-full .mTS_horizontal .mTSThumbContainer:first-child {
+    margin-left: 40px
+}
+
+.mTS-hover-full .mTS_horizontal .mTSThumbContainer:last-child {
+    margin-right: 40px
+}

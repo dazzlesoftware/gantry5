@@ -1,0 +1,35 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-charts {{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        <div id="{{ id }}"></div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/raphael-2.0.2.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/morris.js') }}"></script>
+<script type="text/javascript">
+new Morris.Line({
+    element: '{{ id }}',
+    data: [
+        {% for item in particle.items %}
+            { a: '{{ item.xkey }}', b: "{% if ',' in item.ykey %}{{ item.ykey|replace({',':'.'}) }}{% else %}{{ item.ykey }}{% endif %}" },
+        {% endfor %}
+    ],
+    axes: {% if particle.axes == 'enabled' %}true{% else %}false{% endif %},
+    resize: {% if particle.resize == 'enabled' %}true{% else %}false{% endif %},
+    grid: {% if particle.grid == 'enabled' %}true{% else %}false{% endif %},
+    lineColors: ['{{ particle.lineColor }}'],
+    // The name of the data record attribute that contains x-values.
+    xkey: 'a',
+    // A list of names of data record attributes that contain y-values.
+    ykeys: ['b'],
+    // Labels for the ykeys -- will be displayed when you hover over the
+    // chart.
+    labels: ['{{ particle.label }}']
+});
+</script>
+{% endblock %}

@@ -1,0 +1,131 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+	{% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+	{% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+	{% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+	{% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+	{% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+<div class="g-latestnews-header">
+    {% if particle.title %}
+        <div class="g-latestnews-title">
+            {% if particle.uppertitle %}
+                <span class="g-latestnews-uppertitle">{{ particle.uppertitle|raw }}</span>
+            {% endif %}
+            {{ particle.title }}
+        </div>
+    {% endif %}
+
+    {% if categories|length > 1 %}
+        <div class="g-latestnews-nav">
+            <div class="g-latestnews-nav-container">
+                <i aria-hidden="true" class="fa fa-bars"></i>
+                {% if particle.allitems %}
+                    <div class="g-latestnews-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                        {{ particle.allitems|default('all')|e }}
+                    </div>
+                {% endif %}
+                {% for item in categories %}
+                    <div class="g-latestnews-nav-item {% if particle.selected == 'first' %}{% if loop.first %}selected{% endif %}{% endif %}" data-group="{{ item.id }}">
+                        {{ item.title }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="g-latestnews-grid {{ particle.cols }}">
+	<div class="g-latestnews-grid-sizer"></div>
+	{% for article in articles %}
+		{% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+			{% if article.images.image_intro and display.image.enabled == 'intro' %}
+				{% set article_image = article.images.image_intro %}
+				{% set article_image_alt = article.images.image_intro_alt %}
+			{% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+				{% set article_image = article.images.image_fulltext %}
+				{% set article_image_alt = article.images.image_fulltext_alt %}
+			{% endif %}
+		{% endif %}
+		{% set cat = article.categories|last %}
+		<div class="g-latestnews-grid-item" data-groups='["{{ cat.id }}"]'>
+			<div class="g-latestnews-grid-item-wrapper">
+				{% if display.image.enabled %}
+					<div class="g-latestnews-grid-item-image">
+						<img src="{{ url(article_image)|e }}" alt="{{ article.title }}"/>
+					</div>
+				{% endif %}
+
+				<div class="g-latestnews-grid-item-content">
+					{% if display.title.enabled and article.title %}
+						<div class="g-latestnews-grid-item-title">
+							<span>{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}</span>
+						</div>
+					{% endif %}
+					{% if display.text.type %}
+						{% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+						<div class="g-latestnews-grid-item-description">
+							{% if display.text.formatting == 'text' %}
+								{{ article_text|truncate_text(display.text.limit)|raw }}
+							{% else %}
+								{{ article_text|truncate_html(display.text.limit)|raw }}
+							{% endif %}
+						</div>
+					{% endif %}
+
+					{% if display.date.enabled %}
+						<div class="g-latestnews-grid-item-date">
+							<span class="g-array-item-date">
+								{% if display.date.enabled == 'published' %}
+									<i class="fa fa-clock-o" aria-hidden="true"></i>
+									{{ article.publish_up|date(particle.date_formats) }}
+								{% elseif display.date.enabled == 'modified' %}
+									<i class="fa fa-clock-o" aria-hidden="true"></i>
+									{{ article.modified|date(display.date.format) }}
+								{% else %}
+									<i class="fa fa-clock-o" aria-hidden="true"></i>
+									{{ article.created|date(display.date.format) }}
+								{% endif %}
+							</span>
+						</div>
+					{% endif %}
+				</div>
+
+				{% if display.read_more.enabled %}
+					<a href="{{ article.route|e }}" target="{{ display.read_more.target|default('_self')|e }}" class="g-latestnews-link-overlay"></a>
+				{% endif %}
+
+			</div>
+		</div>
+	{% endfor %}
+</div>
+

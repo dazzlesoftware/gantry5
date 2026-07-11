@@ -1,0 +1,172 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+
+    // Logo/Image
+    [id^="logo-"][id$="-particle"] {
+        height: 100%;
+    }
+
+    .g-logo {
+        padding-top: $content-padding * 3;
+        padding-left: $content-padding * 3;
+        text-align: left;
+        height: 100%;
+
+        .dir-rtl & {
+            padding-left: 0;
+            padding-right: $content-padding * 3;
+            text-align: right;
+        }
+
+        @include breakpoint(tablet-range) {
+            padding-top: $content-padding * 2;
+            padding-left: $content-padding * 2;
+
+            .dir-rtl & {
+                padding-left: 0;
+                padding-right: $content-padding * 2;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            padding-top: $content-padding * 2;
+            padding-left: $content-padding * 2;
+
+            .dir-rtl & {
+                padding-left: 0;
+                padding-right: $content-padding * 2;
+            }
+        }
+
+        &::after {
+            background: $accent-color-1;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 85%;
+            height: 100%;
+            z-index: 1;
+            position: absolute;
+
+            .dir-rtl & {
+                left: auto;
+                right: 0;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+
+        img {
+            padding: 0;
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // Simple Content
+    .g-simplecontent {
+        padding-top: $content-padding * 3;
+        padding-left: $content-padding * 5;
+        padding-right: $content-padding;
+        display: flex;
+        flex-direction: column;
+        max-width: 80%;
+
+        @include breakpoint(tablet-range) {
+            padding-left: $content-padding * 2;
+        }
+
+        @include breakpoint(mobile-only) {
+            padding-left: $content-padding;
+            padding-right: $content-padding;
+            max-width: 100%;
+        }
+
+        .dir-rtl & {
+            padding-left: $content-padding;
+            padding-right: $content-padding * 5;
+
+            @include breakpoint(tablet-range) {
+                padding-left: $content-padding;
+                padding-right: $content-padding * 2;
+            }
+
+            @include breakpoint(mobile-only) {
+                padding-left: $content-padding;
+                padding-right: $content-padding;
+            }
+        }
+
+        h2.g-title {
+            text-align: left;
+            text-transform: none;
+            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+            line-height: $core-line-height*.9;
+            font-weight: $font-weight-medium;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            letter-spacing: .2em;
+            padding: 0;
+            color: $grey;
+
+            .dir-rtl & {
+                text-align: right;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            padding-top: $content-padding * 2;
+            max-width: 100%;
+            padding-bottom: $content-padding * 2;
+        }
+
+        .g-simplecontent-item-content-title {
+            @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
+            font-weight: $font-weight-medium;
+            line-height: 1.5;
+            max-width: 800px;
+            font-family: get-font-family($font-family-title);
+        }
+
+        .g-simplecontent-item-main-content {
+            @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.2, false, false);
+            color: $grey;
+            font-family: get-font-family($font-family-default);
+        }
+
+        .g-simplecontent-item-readmore-container {
+            @include breakpoint(mobile-only) {
+                text-align: center;
+            }
+
+            a {
+                background: transparent;
+                color: $accent-color-1;
+                padding-left: 0;
+                padding-bottom: 0.2rem;
+                position: relative;
+                transition: .3s ease;
+                font-size: $core-font-size + .3;
+                z-index: 3;
+                box-shadow: 0 3px 0 $accent-color-1;
+
+                &:hover {
+                    color: $accent-color-1;
+                    box-shadow: 0 3px 0 $accent-color-1;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

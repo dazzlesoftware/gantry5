@@ -1,0 +1,24 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    // Copyright Particle
+    div[id^="copyright-"][id$="-particle"] {
+        color: transparentize($copyright-text-color, 0.5);
+
+        a {
+            color: $copyright-text-color;
+
+            &:hover {
+                color: lighten($copyright-text-color, 10%);
+            }
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

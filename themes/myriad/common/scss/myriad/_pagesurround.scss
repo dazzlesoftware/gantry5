@@ -1,0 +1,12 @@
+#g-page-surround {
+	background: $pagesurround-background;
+    overflow: hidden;
+    color: $pagesurround-color;
+}
+
+@media print {
+	#g-page-surround {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,40 @@
+// Body Sidebar
+#g-bodysidebar {
+    @include breakpoint(no-mobile) {
+        .social-sidebar {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}
+
+// Slideshow
+#g-slideshow.fp-slideshow {
+    background-image: none;
+
+    &::before {
+        content: none !important;
+    }
+}
+
+// Header
+#g-header.fp-header {
+    .g-blockcontent-subcontent-block {
+        padding: ($content-padding + 0.5) ($content-padding * 3);
+        margin-right: 0;
+
+        @include breakpoint(desktop-range){
+            padding: $content-padding ($content-padding * 2);
+            justify-content: center;
+        }
+
+        @include breakpoint(no-desktop){
+            padding: $content-padding ($content-padding * 2);
+            justify-content: center;
+        }
+    }
+    .g-blockcontent-subcontent-title {
+        margin: $content-margin 0;
+        max-width: 80%;
+    }
+}

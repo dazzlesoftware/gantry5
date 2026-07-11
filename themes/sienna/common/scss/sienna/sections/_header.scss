@@ -1,0 +1,12 @@
+#g-container-header {
+    background: $header-background;
+    color: $header-text-color;
+    position: relative;
+}
+
+@media print {
+    #g-header, #g-container-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

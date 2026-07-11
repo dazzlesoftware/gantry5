@@ -1,0 +1,355 @@
+.g-team {
+    position: relative;
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
+
+    // Header
+    .g-team-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: $content-padding;
+
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            display: block;
+        }
+
+        // Title
+        .g-team-title {
+            display: block;
+            @include responsive-font($responsive-font-size + 1, $core-font-size, false, false);
+            font-weight: $font-weight-bold;
+            color: $black;
+            padding-right: $content-padding;
+
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .dir-rtl & {
+                padding-left: $content-padding;
+                padding-right: 0;
+            }
+
+            // Upper Title
+            .g-team-uppertitle {
+                display: block;
+                padding-right: $content-padding;
+                color: transparentize($base-text-color, 0.65);
+                @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+                font-weight: $font-weight-semibold;
+                line-height: 1.5;
+                letter-spacing: 5px;
+                text-transform: uppercase;
+
+                @include breakpoint(mobile-only) {
+                    text-align: center;
+                    padding-right: 0;
+                }
+
+                .dir-rtl & {
+                    padding-left: $content-padding;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        // Navigation
+        .g-team-nav {
+            position: relative;
+            flex: 1 0 auto;
+            align-self: center;
+
+            i {
+                display: none;
+                position: absolute;
+                top: .8rem;
+                left: $content-margin;
+
+                @include breakpoint(mobile-only) {
+                    display: block;
+                }
+            }
+
+            // Mobile menu
+            @include breakpoint(mobile-only) {
+                min-height: 6rem;
+                width: 100%;
+            }
+
+            .g-team-nav-container {
+                display: flex;
+                justify-content: center;
+                align-items: center; // Mobile menu
+                @include breakpoint(mobile-only) {
+
+                    flex-direction: column;
+                    width: 75%;
+                    padding: 0 0;
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    border: solid 2px $black;
+                    border-radius: 5px;
+                    background: $white;
+                    z-index: 15;
+                    margin-top: 1rem;
+                }
+            }
+
+            // Item
+            .g-team-nav-item {
+                cursor: pointer;
+                padding: $content-margin - .5 $content-padding - .6;
+                @include responsive-font($responsive-font-size *1.2, $core-font-size, false, false);
+                font-weight: $font-weight-medium;
+                color: $accent-color-2;
+                position: relative;
+                border-radius: 5px;
+                border: 2px solid transparent;
+                transition: .3s ease;
+                transition: border 150ms;
+
+                &.selected {
+                    background: transparent;
+                    @include responsive-font($responsive-font-size * 2.2, $core-font-size, false, false);
+                    font-weight: $font-weight-semibold;
+                    color: $black;
+
+                    @include breakpoint(mobile-only) {
+                        background: none;
+                        color: $black;
+                        border-color: transparent;
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                @include breakpoint(mobile-only) {
+                    display: none;
+                    padding: $content-margin - 0.2 $content-padding + 0.5;
+                }
+
+                &.selected {
+                    @include breakpoint(mobile-only) {
+                        display: block;
+                    }
+                }
+
+                &.clicked {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // Grid Settings
+    .g-team-grid {
+        position: relative;
+        margin: 0 -($content-padding);
+        overflow: visible !important;
+
+        @include breakpoint(mobile-only) {
+            margin: 0 -$content-padding;
+        }
+
+        &.animate {
+            .g-team-grid-item-blob {
+                animation: transform-blob ease-in-out infinite both alternate;
+                will-change: auto;
+            }
+        }
+
+        // Item & Item content
+        .g-team-grid-item {
+            will-change: auto !important;
+            transition: 0.25s ease;
+
+            &:nth-child(2n) {
+                margin-top: 2rem !important;
+                @include breakpoint(mobile-only) {
+                    margin-top: 1rem !important;
+                }
+
+                &:hover {
+                    .g-team-grid-item-wrapper {
+                        transform: translateY(-.5rem) rotate(-3deg);
+
+                        h4 {
+                            color: $black;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(2n+1) {
+                margin-top: 4rem !important;
+                @include breakpoint(mobile-only) {
+                    margin-top: 1rem !important;
+                }
+
+                &:hover {
+                    .g-team-grid-item-wrapper {
+                        transform: translateY(-.5rem) rotate(3deg);
+
+                        h4 {
+                            color: $black;
+                        }
+                    }
+                }
+            }
+
+            a.g-team-link-overlay {
+                position: absolute;
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                cursor: pointer;
+            }
+
+            .g-team-grid-item-wrapper {
+                position: relative;
+                margin: $content-padding / 2;
+                transition: all 0.25s;
+
+                @include breakpoint(mobile-only) {
+                    margin: $content-padding;
+                }
+
+                .g-team-grid-item-image {
+                    position: relative;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: center;
+                    width: 75%;
+
+                    .g-team-grid-item-blob {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        background-size: cover;
+                        transform-origin: center center;
+                    }
+                }
+
+                .g-content-wrap {
+                    text-align: center;
+                    color: $accent-color-2;
+
+                    h4 {
+                        margin-bottom: 0;
+                        @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                    }
+
+                    p {
+                        @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+                    }
+                }
+            }
+        }
+
+        // Column layout
+        // 2 Columns
+        &.cols-2 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 50%;
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 3 Columns
+        &.cols-3 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 33.3%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 4 Columns
+        &.cols-4 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 25%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+
+        // 5 Columns
+        &.cols-5 {
+            .g-team-grid-item,
+            .g-team-grid-sizer {
+                width: 20%;
+                @include breakpoint(desktop-range) {
+                    width: 25%;
+                }
+                @include breakpoint(tablet-range) {
+                    width: 33%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 50%;
+                }
+                @include breakpoint(small-mobile-range) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    @keyframes transform-blob {
+        0%,
+        100% {
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+        }
+        14% {
+            border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+        }
+        28% {
+            border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+        }
+        42% {
+            border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+        }
+        56% {
+            border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+        }
+        70% {
+            border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+        }
+        84% {
+            border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+        }
+        100% {
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+        }
+    }
+}

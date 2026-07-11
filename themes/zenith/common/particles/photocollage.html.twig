@@ -1,0 +1,46 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% do gantry.load('lightcase.init') %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-photocollage">
+
+        {% if not particle.source or particle.source == 'particle' %}
+            {% if particle.title %}
+                <div class="g-photocollage-header">
+                    <h3 class="g-photocollage-title">{{ particle.title }}</h3>
+                </div>
+            {% endif %}
+
+            <div class="g-photocollage-grid grid" data-masonry='{"itemSelector": ".g-photocollage-grid-item","columnWidth": ".grid-sizer"}'>
+                <div class="grid-sizer"></div>
+
+                {% for item in particle.cases %}
+                    {% set case_index = loop.index %}
+
+                    <div class="g-photocollage-grid-item {{ item.width|default('') }} {{ item.height|default('') }}" data-groups='["{{ case_index }}"]' style="padding: {{ particle.spacing|default('0.8%') }};">
+                        {% if item.image %}
+                            <div class="image-wrapper">
+                                <a href="{{ url(item.image)|e }}" data-rel="lightcase:myCollection" title="{{ item.title }}"></a>
+                                <img src="{{ url(item.image)|e }}" alt="{{ item.title }}" />
+
+                                <div class="zoom">
+                                    <i class="{{ item.icon }}" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+            {% include '@particles/photocollage-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('//unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js') }}"></script>
+{% endblock %}

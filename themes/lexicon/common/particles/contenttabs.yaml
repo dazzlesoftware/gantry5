@@ -1,0 +1,146 @@
+name: Content Tabs
+description: Displays Content Tabs.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the particle title text.
+      placeholder: Enter title
+
+    animation:
+      type: select.select
+      label: Animation Type
+      description: Set the animation type.
+      default: right
+      options:
+        right: Slide Left
+        left: Slide Right
+        down: Slide Up
+        up: Slide Down
+        fade: Fade
+        toggle: Toggle
+
+    items:
+      type: collection.list
+      array: true
+      label: Content Tabs Items
+      description: Content Tabs item to display.
+      value: name
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Tab Title
+          description: Enter the title
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select desired image.
+        .heading:
+          type: input.text
+          label: Heading
+          description: Enter the heading
+        .content:
+          type: textarea.textarea
+          label: Content
+          description: Customize the tab content.
+          placeholder: Enter your custom content here. 
+        .rheading:
+          type: input.text
+          label: Right Heading
+          description: Enter the right heading
+        .smalltext:
+          type: input.text
+          label: Small Text
+          description: Small text under right heading
+        .linklabel:
+          type: input.text
+          label: Read More Text
+          description: Specify the read more text.
+          placeholder: 'Read More'
+        .link:
+          type: input.text
+          label: Read More Link
+          description: Specify the Read More link address. 
+        .buttontarget:
+          type: select.selectize
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _self
+          options:
+              _self: Self
+              _blank: New Window
+        .buttonclass:
+          type: input.text
+          label: Button Class
+          description: Input the button class.
+          default: 'readon'  
+        info:
+          type: separator.note
+          class: alert alert-info
+          content: 'Enter heading or content below to add a second row.'
+        .image2:
+          type: input.imagepicker
+          label: Image
+          description: Select desired image.
+        .heading2:
+          type: input.text
+          label: Heading
+          description: Enter the heading
+        .content2:
+          type: textarea.textarea
+          label: Content
+          description: Customize the tab content.
+          placeholder: Enter your custom content here. 
+        .rheading2:
+          type: input.text
+          label: Right Heading
+          description: Enter the right heading
+        .smalltext2:
+          type: input.text
+          label: Small Text
+          description: Small text under right heading
+        .linklabel2:
+          type: input.text
+          label: Read More Text
+          description: Specify the read more text.
+          placeholder: 'Read More'
+        .link2:
+          type: input.text
+          label: Read More Link
+          description: Specify the Read More link address. 
+        .buttontarget2:
+          type: select.selectize
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _self
+          options:
+              _self: Self
+              _blank: New Window
+        .buttonclass2:
+          type: input.text
+          label: Button Class
+          description: Input the button class.
+          default: 'readon'    

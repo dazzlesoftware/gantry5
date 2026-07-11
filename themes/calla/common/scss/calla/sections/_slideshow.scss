@@ -1,0 +1,20 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background: darken($slideshow-background, 5%);
+    position: relative;
+    overflow: hidden;
+
+    @if $slideshow-background-image {
+        background-image: url($slideshow-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 30%;
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

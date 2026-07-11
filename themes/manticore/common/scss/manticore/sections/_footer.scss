@@ -1,0 +1,118 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    position: relative;
+
+    .g-grid {
+        position: relative;
+        z-index: 1;
+    }
+    // Logo Particle
+    a.g-logo {
+        color: $white;
+
+        &:hover {
+            color: fade-out($white, 0.5);
+        }
+    }
+
+    // Newsletter Particle
+    .g-newsletter-particle {
+        .title {
+            color: $white;
+        }
+
+        .g-newsletter-form-wrapper {
+            margin: 0 auto;
+            padding-bottom: 10px;
+            border-bottom: 2px solid fade-out($grey, 0.5);
+            width: 40%;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                flex-direction: row;
+            }
+
+            .g-newsletter-inputbox {
+                width: auto;
+                flex: 1;
+
+                input {
+                    padding: 0.725rem 0;
+                    background: transparent;
+                    border-radius: 0;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .g-newsletter-button {
+                flex: 0 1 auto;
+
+                .button {
+                    padding: 0.2rem 0.75rem;
+                    font-size: $core-font-size - 0.1;
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
+
+    // Social Particle
+    .g-social {
+        a {
+            position: relative;
+            padding: 0 0.4rem;
+            color: fade-out($footer-text-color, 0.50);
+
+            @include breakpoint(small-mobile-range) {
+                padding: 0 0.2rem;
+            }
+
+            .g-social-text {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                font-size: 0.8rem;
+                font-weight: $font-weight-medium;
+                transform: translateX(-50%) translateY(0);
+                opacity: 0;
+                transition: transform 0.35s;
+            }
+
+            &:hover {
+                color: $white;
+
+                .g-social-text {
+                    transform: translateX(-50%) translateY(-1.25rem);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    // Simple Menu Particle
+    .g-simplemenu-particle {
+        margin-top: 1rem;
+
+        .g-simplemenu {
+            a {
+                color: fade-out($footer-text-color, 0.30);
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-container-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

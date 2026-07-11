@@ -1,0 +1,356 @@
+/* Slick Core */
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.dragging {
+        cursor: pointer;
+        cursor: hand;
+    }
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+}
+
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+
+    [dir="rtl"] & {
+        float: right;
+    }
+
+    img {
+        display: block;
+    }
+
+    &.slick-loading img {
+        display: none;
+    }
+
+    display: none;
+
+    &.dragging img {
+        pointer-events: none;
+    }
+
+    .slick-initialized & {
+        display: block;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+
+    .slick-vertical & {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+}
+
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+/* Slider */
+.slick-list {
+    .slick-loading & {
+        background: #fff url("gantry-media://slick/ajax-loader.gif") center center no-repeat;
+    }
+}
+
+// Top Rated Particle
+.g-toprated {
+    position: relative;
+
+    .g-toprated-header {
+        display: flex;
+        flex-flow: row wrap;
+
+        .g-title {
+            flex: 0 1 auto;
+            margin-right: 1rem;
+            padding-bottom: 1rem;
+
+            .dir-rtl & {
+                margin-left: 1rem;
+                margin-right: 0;
+            }
+
+            @include breakpoint(mobile-only) {
+                margin-right: 0;
+            }
+        }
+
+        .g-toprated-filtering {
+            flex: 0 1 auto;
+            display: flex;
+            margin: 0.85rem 0 2rem;
+
+            @include breakpoint(tablet-range) {
+                display: block;
+                width: 100%;
+            }
+
+            @include breakpoint(mobile-only) {
+                display: block;
+                width: 100%;
+            }
+
+            .g-toprated-group {
+                position: relative;
+                margin: 0 5px;
+                padding: $content-margin - 0.5 $content-padding - 0.6;
+                @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
+                font-weight: $font-weight-medium;
+                border-radius: 12px;
+                cursor: pointer;
+                transition: all 0.25s;
+
+                @include breakpoint(mobile-only) {
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+
+                &:hover {
+                    background: $accent-color-1;
+                    cursor: pointer;
+                }
+
+                &.active {
+                    background: $accent-color-1;
+                }
+            }
+        }
+    }
+
+    .g-toprated-slider {
+        .slick-list {
+            padding-top: 0.5rem;
+        }
+
+        .slide-content-wrapper {
+            margin: 0.75rem;
+            padding: 0.85rem;
+
+            .g-toprated-image {
+                position: relative;
+
+                a {
+                    display: block;
+                }
+
+                img {
+                    width: 100%;
+                    border-radius: 5px;
+                }
+
+                .g-toprated-score {
+                    position: absolute;
+                    display: block;
+                    top: -22px;
+                    right: -22px;
+                    width: 48px;
+                    height: 48px;
+                    background: $accent-color-1;
+                    color: $white;
+                    font-family: get-font-family($font-family-title);
+                    font-weight: $font-weight-semibold;
+                    font-size: 1.25rem;
+                    text-align: center;
+                    line-height: 45px;
+                    border-radius: 50%;
+                    z-index: 2;
+
+                    .dir-rtl & {
+                        right: auto;
+                        left: -22px;
+                    }
+                }
+
+                .g-toprated-ribbon {
+                    position: absolute;
+                    padding: 3px 8px;
+                    display: block;
+                    top: 0;
+                    left: 0;
+                    background: $accent-color-1;
+                    color: $white;
+                    font-family: get-font-family($font-family-title);
+                    font-weight: $font-weight-semibold;
+                    font-size: 0.9rem;
+                    z-index: 2;
+                    border-top-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+
+                    .dir-rtl & {
+                        left: auto;
+                        right: 0;
+                        border-top-left-radius: 0;
+                        border-bottom-right-radius: 0;
+                        border-top-right-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                    }
+                }
+            }
+
+            .g-toprated-title {
+                a {
+                    color: $white;
+
+                    &:hover {
+                        color: $white;
+                        text-decoration: underline;
+                    }
+                }
+
+                h3 {
+                    @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.1, false, false);
+                    margin-bottom: 0;
+                }
+            }
+
+            .g-toprated-subtitle {
+                color: fade-out($white, 0.5);
+                @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+            }
+
+            .g-toprated-description {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    /* Arrows */
+    .g-toprated-nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 0.85rem;
+
+        @include breakpoint(small-mobile-range) {
+            top: 35px;
+        }
+
+        .dir-rtl & {
+            right: auto;
+            left: 0;
+        }
+
+        .slick-prev,
+        .slick-next {
+            display: inline-block;
+            margin: 0 0.4rem;
+            height: 24px;
+            width: 24px;
+            line-height: 0px;
+            font-size: 0px;
+            cursor: pointer;
+            background: transparent;
+            color: transparent;
+            padding: 0;
+            border: none;
+            outline: none;
+            transition: all 0.25s;
+
+            &:hover, &:focus {
+                outline: none;
+                background: transparent;
+                color: transparent;
+
+                &:before {
+                    opacity: 1;
+                }
+            }
+
+            &.slick-disabled:before {
+                opacity: 0.25;
+            }
+
+            &:before {
+                font-family: 'FontAwesome';
+                font-size: 24px;
+                line-height: 1;
+                color: $white;
+                opacity: 0.75;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        .slick-prev {
+            &:before {
+                content: "\f137";
+
+                [dir="rtl"] & {
+                    content: "\f138";
+                }
+            }
+        }
+
+        .slick-next {
+            &:before {
+                content: "\f138";
+
+                [dir="rtl"] & {
+                    content: "\f137";
+                }
+            }
+        }
+    }
+}

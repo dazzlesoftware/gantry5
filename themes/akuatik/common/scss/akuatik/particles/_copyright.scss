@@ -1,0 +1,3 @@
+[id^=copyright-][id$=-particle] {
+    @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.1, false, false);
+}

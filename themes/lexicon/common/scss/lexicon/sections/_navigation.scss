@@ -1,0 +1,233 @@
+#g-navigation {
+    background: $navigation-background;
+    color: $navigation-text-color;
+    position: relative;
+    z-index: 100;
+}
+
+// Main Navigation
+
+#g-navigation {
+
+	.g-lexicon-menu {
+		border-bottom: 1px solid darken($navigation-background, 15%);
+	}
+
+	// g-container
+	> .g-container {
+		position: relative;
+	}
+
+	// Social Icons
+	.g-social {
+		text-align: right;
+		@include breakpoint(mobile-only) {
+			text-align: center;
+		}		
+	}
+
+	// Menu Styling
+	.g-main-nav {
+		.g-toplevel {
+
+			i {
+				opacity: 1;
+				margin-right: 3px;
+				margin-top: -2px;
+			}
+
+			> li {
+				border-right: 1px solid darken($navigation-background, 10%);
+
+				&:last-child {
+					border-right: none;
+				}
+
+				> .g-menu-item-container {
+					overflow: hidden;
+					color: $navigation-text-color;
+					font-family: get-font-family($font-family-default);
+					padding: 0 15px;
+					height: 65px;
+					display: table-cell;
+					vertical-align: middle;	
+
+					@include breakpoint(tablet-range) {
+			    		padding: 0 10px;
+			    	}				
+				}
+				&:hover, &:focus {
+					> .g-menu-item-container {
+						.g-menu-item-content {
+							background: darken($navigation-background, 5%);		
+						}				
+					}
+				}
+				&.active {
+					> .g-menu-item-container {
+						color: $white;
+						.g-menu-item-content {
+							background: darken($navigation-background, 40%);
+						}					
+					}
+				}
+
+				&.g-parent {
+					> .g-menu-item-container {
+						position: relative;
+						.g-menu-item-content {
+							padding: 10px 35px 10px 15px;
+
+					    @include breakpoint(tablet-range) {
+					    	padding: 5px 15px;
+					    }
+
+						}	
+					}
+				}
+
+				&.g-parent .g-menu-parent-indicator {
+					width: 100%;
+    				display: inline;
+    				z-index: 100;
+					&:after {
+						position: absolute;
+					    right: 30px;
+					    top: 50%;
+					    margin-top: -9px;
+					    font-family: FontAwesome;
+					    content: "\f107";
+					    font-size: 18px;
+					    opacity: 0.8;
+
+					    @include breakpoint(tablet-range) {
+					    	content: none;
+					    }
+					}
+				}
+			}
+		}
+
+		.g-dropdown {
+			background: $white;
+			border-radius: 3px;
+			border: 1px solid darken($navigation-background, 15%);
+			margin-top: -3px;
+			padding: 10px 0;
+
+			> .g-dropdown-column {
+				border: 1px solid transparent;
+			}
+		}
+
+		.g-sublevel {
+
+			.g-dropdown {
+				margin-top: 0;
+			}
+
+			.g-go-back {
+				.g-menu-item-container {
+					font-size: 14px;
+					padding: 0;
+					margin: 0;
+				}
+				+ li {
+					.g-dropdown {
+						margin-top: -3px;
+					}
+				}
+			}
+
+
+			> li {
+				padding: 3px 10px;
+
+				> .g-menu-item-container {
+					color: $navigation-text-color;
+					border-radius: 3px;	
+					border: 1px solid transparent;		
+				}
+
+				&.g-parent {
+					.g-menu-parent-indicator {
+						width: auto;
+
+						&:after {
+							display: block;
+							content: "\f054";
+	    					text-align: center;
+	    					margin-top: 4px;
+	    					font-size: 12px;
+						}
+					}	
+					.g-menu-item-content {
+						margin-right: 0;
+					}	
+				}
+
+				&:hover, &:focus {
+					> .g-menu-item-container {
+						background: darken($navigation-background, 5%);		
+					}
+				}
+				&.active {
+					> .g-menu-item-container {
+						color: $white;
+						background: darken($navigation-background, 40%);		
+					}
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+					border-bottom: none;
+				}
+
+				&.g-menu-item-type-particle {
+					&:before {
+						content: none;
+					}
+
+					> .g-menu-item-container {
+						padding: 0;
+					}	
+
+					&:hover {
+						> .g-menu-item-container {
+							background: inherit;
+						}	
+					}
+				}
+			}
+		}
+		.g-fullwidth {
+			.g-sublevel {
+				> li {
+					position: relative;
+				}
+				.g-dropdown {
+					border: none;
+				}
+			} 
+		} 
+	}	
+	.g-menu-block {
+		@include breakpoint(mobile-only) {
+			display: none;
+		}		
+	}	
+	.g-menu-item-subtitle {
+		text-transform: lowercase;
+		font-size: 0.85rem;
+		font-weight: bold;
+		opacity: 0.8;
+		padding-top: 2px;
+	}
+}
+
+@media print {
+	#g-navigation {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

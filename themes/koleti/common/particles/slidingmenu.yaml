@@ -1,0 +1,77 @@
+name: Sliding Menu
+description: Display sliding menu.
+type: particle
+icon: fa-bars
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    info:
+      type: separator.note
+      class: alert
+      content: 'Please use one instance of Sliding Menu particle per outline.'
+
+    menu:
+      type: menu.list
+      label: Menu
+      description: Select menu to be used with the particle.
+      default: ''
+      selectize:
+          allowEmptyOption: true
+      options:
+        '': Use Default Menu
+        '-active-': Use Active Menu
+
+    base:
+      type: menu.item
+      label: Base Item
+      description: "Select a menu item to always be used as the base for the menu display."
+      default: '/'
+      options:
+        '/': Active
+
+    animation:
+      type: select.select
+      label: Animation
+      description: Choose how the menu should appear.
+      default: sideslide
+      options:
+        sideslide: Side Slide
+        sideslide-animated: Animated Side Slide
+        elastic: Elastic
+        bubble: Bubble
+
+    startLevel:
+      type: input.text
+      label: Start Level
+      description: Set the start level of the menu.
+      default: 1
+
+    maxLevels:
+      type: input.text
+      label: Max Levels
+      description: Set the maximum number of menu levels to display.
+      default: 0
+
+    renderTitles:
+      type: input.checkbox
+      label: Render Titles
+      description: Renders the titles/tooltips of the Menu Items for accessibility.
+      default: 0
+
+    hoverExpand:
+      type: input.checkbox
+      label: Expand on Hover
+      description: Allows to enable / disable the ability to expand menu items by hover or click only
+      default: 1
+
+    forceTarget:
+      type: input.checkbox
+      label: Force Target Attribute
+      description: "Adds 'target=&quot;_self&quot;' attribute to all menu links instead of omitting the default value. Fixes an issue with pinned tabs in Firefox where external links always open in a new tab."
+      default: 0

@@ -1,0 +1,34 @@
+// Font Family
+$font-family-title:             "inter", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif !default;
+$font-family-default:           "inter", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif !default;
+$font-family-mono: 				"Menlo", "Monaco", monospace;
+
+// Font Weights
+$font-weight-thin:				100;
+$font-weight-extralight:		200;
+$font-weight-light:		        300;
+$font-weight-regular:			400;
+$font-weight-medium:			500;
+$font-weight-semibold:			600;
+$font-weight-bold:				700;
+$font-weight-extrabold:			900;
+
+// Fluid font adaptation
+$min_width: 400;
+$max_width: 1200;
+$min_font: 18;
+$max_font: 24;
+
+
+// Base Sizes
+$core-font-size:				1rem !default;
+$responsive-font-size:			1vw !default;
+$core-line-height:				1.5 !default;
+
+// Heading Sizes
+$h1-font-size:					$core-font-size + 1.2 !default;
+$h2-font-size:					$core-font-size + 1 !default;
+$h3-font-size:					$core-font-size + 0.7 !default;
+$h4-font-size:					$core-font-size + 0.25 !default;
+$h5-font-size:					$core-font-size + 0.2 !default;
+$h6-font-size:					$core-font-size !default;

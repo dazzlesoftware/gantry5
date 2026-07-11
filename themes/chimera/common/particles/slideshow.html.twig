@@ -1,0 +1,146 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set ie11 %}
+@media all and (-ms-high-contrast:none) {
+    body .rt-tobottom:hover:before {font-size: 70px !important;}
+} 
+{% endset %}
+
+{% do gantry.document.addInlineStyle(ie11) %}
+
+{% block javascript %}
+    <script src="{{ url('gantry-theme://js/smooth-scroll.min.js') }}"></script>
+{% endblock %}  
+
+{% block particle %}
+    {% block layout %}
+
+        <div class="{{ particle.class|e }} g-owlcarousel-slideshow">
+            {% if particle.title or particle.description %}
+                <div class="g-grid">
+                    <div class="g-block">
+                        <div class="g-content g-owlcarousel-header">
+                            {% if particle.title %}<h2 class="g-title">{{ particle.title }}</h2>{% endif %}
+                            {% if particle.description %}<div class="g-owlcarousel-description">{{ particle.description|html|raw }}</div>{% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div id="g-owlcarousel-{{ id }}" data-owlcarousel-id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel">     
+
+                {% for item in particle.items %}
+                <div class="g-owlcarousel-item-{{ loop.index }} {{ item.class|e }}">
+                            <div class="g-owlcarousel-item-image" style="background-image: url({{ url(item.image) }}); ">
+                            </div>
+
+                        {% if item.title or item.desc or item.link %}
+                            <div class="g-owlcarousel-content">
+                                <div class="g-owlcarousel-padding">
+                                    {% if item.title %}<h2 class="g-owlcarousel-item-title">{{ item.title|html|raw }}</h2>{% endif %}
+
+                                    {% if item.desc or item.link %}
+                                        <div class="g-owlcarousel-item-desc">
+                                            {% if item.desc %}<div>{{ item.desc|html|raw }}</div>{% endif %}
+
+                                            {% if item.link %}
+                                                <div class="g-owlcarousel-item-link" {% if item.aos %}data-aos="{{ item.aos }}" data-aos-delay="{{ item.delay }}" data-aos-anchor="#g-slideshow"{% endif %}>
+                                                    <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button {{ item.buttonclass|e }}" href="{{ item.link|e }}">
+                                                        {{ item.linktext|html|raw|default('Read More') }}
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </div>    
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if particle.tobottom == 'enabled' %}
+            <div class="clear"></div>
+            <a href="#rt-head-anchor" data-scroll data-options='{"updateURL": false}'><span class="rt-tobottom"></span></a>
+            <div id="rt-head-anchor"></div>
+            {% endif %}
+        </div>    
+
+    {% endblock %}
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#g-owlcarousel-{{ id }}').owlCarousel({
+            items: 1,
+            rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
+            {% if particle.animateOut and particle.animateOut != 'default' %}
+            animateOut: '{{ particle.animateOut|default('fadeOut')|e }}',
+            {% endif %}
+            {% if particle.animateIn and particle.animateIn != 'default' %}
+            animateIn: '{{ particle.animateIn|default('fadeIn')|e }}',
+            {% endif %}
+            {% if particle.nav == 'enabled' %}
+            nav: true,
+            {% else %}
+            nav: false,
+            {% endif %}
+            {% if particle.dots == 'enabled' %}
+            dots: true,
+            {% else %}
+            dots: false,
+            {% endif %}
+            {% if particle.loop == 'enabled' %}
+            loop: true,
+            {% else %}
+            loop: false,
+            {% endif %}
+            {% if particle.autoplay == 'enabled' %}
+            autoplay: true,
+            autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
+            {% if particle.pauseOnHover == 'enabled' %}
+            autoplayHoverPause: true,
+            {% else %}
+            autoplayHoverPause: false,
+            {% endif %}
+            {% else %}
+            autoplay: false,
+            {% endif %}
+        })
+    }); 
+
+        (function(){
+            var width, height = true;
+
+            function initHeader() {
+                if (document.addEventListener) {
+                  document.addEventListener("DOMContentLoaded", displayWindowSize, false);
+                } else {
+                    window.onload = displayWindowSize;
+                }
+            }
+
+            function displayWindowSize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+
+                largeHeader = document.getElementById('g-slideshow');
+                largeHeader.style.height = height + 'px';
+
+                imgClass = document.getElementsByClassName('g-owlcarousel-item-image').length;
+                for (var i = 0; i < imgClass; i++) { 
+                    document.getElementsByClassName('g-owlcarousel-item-image')[i].style.height = height + 'px';
+                }
+            }
+
+            // Main
+            initHeader();  
+        })();
+    
+    smoothScroll.init();
+    
+    </script>
+{% endblock %}

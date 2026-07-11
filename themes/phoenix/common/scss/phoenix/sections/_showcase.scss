@@ -1,0 +1,14 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background;
+    .g-heading h2, .g-simplecontent .g-simplecontent-item-content-title {
+        color: set-color($base-background);
+    }
+}
+
+@media print {
+    #g-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

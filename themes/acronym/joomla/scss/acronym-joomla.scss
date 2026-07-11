@@ -1,0 +1,46 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Third Party Libraries
+@import "vendor/bourbon/bourbon";
+
+// Load Nucleus Configuration
+@import "configuration/nucleus/base";
+
+// Load Nucleus Mixins and Functions
+@import "nucleus/functions/base";
+@import "nucleus/mixins/base";
+
+// Load Theme Variable Driven Nucleus Elements
+@import "joomla/theme/base";
+
+// Load Template Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// JOOMLA TEMPLATE SPECIFIC
+@import "acronym-joomla/core";
+@import "acronym-joomla/typography";
+@import "acronym-joomla/forms";
+@import "acronym-joomla/tabs";
+@import "acronym-joomla/utilities";
+@import "acronym-joomla/popupmodule";
+
+// JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
+
+// Showcase
+@import "acronym-joomla/sections/showcase";
+// Main
+@import "acronym-joomla/sections/main";
+
+//-------------------------------------------
+
+// ROCKETTHEME EXTENSIONS
+@import "acronym-joomla/rokajaxsearch";
+
+//-------------------------------------------
+
+// BREAKPOINTS
+@import "joomla/theme/breakpoints/base";
+
+//-------------------------------------------

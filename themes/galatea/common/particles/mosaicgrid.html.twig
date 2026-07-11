@@ -1,0 +1,95 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+<div class="{{ particle.class|e }}">
+  {% if particle.title %}<h2 class="g-title g-mosaicgrid-title">{{ particle.title|raw }}</h2>{% endif %}
+
+  <div id="g-mosaicgrid-{{ id }}" class="g-mosaicgrid {{ particle.columns|default('g-mosaicgrid-3-col')|e }}">
+  <div class="g-mosaicgrid-sizer"></div>
+
+  {% for item in particle.items %}
+
+    {% set itemTags %}
+      {% if item.tag or item.tagicons %}
+        <div class="g-mosaicgrid-item-tag-wrapper">
+        {% if item.tag %}
+          <div class="g-mosaicgrid-item-tag">{{ item.tag|raw }}</div>
+        {% endif %}
+        {% if item.tagicons %}
+          <div class="g-mosaicgrid-item-tagicons-container">
+          {% for tagicon in item.tagicons %}
+            <div class="g-mosaicgrid-item-tagicons">
+            {% if tagicon.iconitem %}<i class="g-mosaicgrid-item-tagicons-iconitem {{ tagicon.iconitem|e }}"></i>{% endif %}
+            {% if tagicon.icontext %}<span class="g-mosaicgrid-item-tagicons-icontext">{{ tagicon.icontext|raw }}</span>{% endif %}
+            </div>
+          {% endfor %}
+          </div>
+        {% endif %}
+        <div class="clearfix"></div>
+        </div>
+      {% endif %}
+    {% endset %}
+
+    <div class="g-mosaicgrid-item-container {{ item.style|default('g-mosaicgrid-style1')|e }} {{ item.animations|default('g-mosaicgrid-zoom')|e }}">
+      <div class="g-mosaicgrid-item">
+        <div class="g-mosaicgrid-image">
+          <img src="{{ url(item.img)}}" {{ item.img|imagesize|raw }} alt="{{ item.title|e }}">
+        </div>
+        <div class="g-mosaicgrid-content">
+
+          {% if item.titleText %}
+          <div class="g-mosaicgrid-item-title">
+            {% if item.titleURL %}<a target="{{ item.titleTarget|default('_self')|e }}" href="{{ item.titleURL|e }}">{% endif %}
+            {{ item.titleText|raw }}
+            {% if item.titleURL %}</a>{% endif %}
+          </div>
+          {% endif %}
+
+          {% if item.desc %}<div class="g-mosaicgrid-item-desc">{{ item.desc|raw }}</div>{% endif %}
+
+          {% if item.buttontext %}
+          <div class="g-mosaicgrid-item-button">
+            <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+          </div>
+          {% endif %}
+
+          {% if item.style == 'g-mosaicgrid-style1' %}
+            {{ itemTags }}
+          {% endif %}
+
+        </div>
+
+        {% if item.style == 'g-mosaicgrid-style2' %}
+          {{ itemTags }}
+        {% endif %}
+
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+<script src="{{ url('gantry-theme://js/mosaicgrid.js') }}"></script>
+<script type="text/javascript">
+// init Isotope
+var grid{{ id|replace({'-':'_'}) }} = document.querySelector('#g-mosaicgrid-{{ id }}');
+
+var msnry{{ id|replace({'-':'_'}) }} = new Masonry(grid{{ id|replace({'-':'_'}) }}, {
+    itemSelector: '.g-mosaicgrid-item-container',
+    columnWidth: '.g-mosaicgrid-sizer',
+    percentPosition: true
+});
+
+jQuery(grid{{ id|replace({'-':'_'}) }}).imagesLoaded()
+.always( function( instance ) {
+    msnry{{ id|replace({'-':'_'}) }}.layout();
+})
+</script>
+{% endblock %}

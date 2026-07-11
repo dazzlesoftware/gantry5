@@ -1,0 +1,23 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+    @extend .section-paddings;
+
+    a {
+        color: $copyright-text-color;
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+
+    @include breakpoint(mobile-only) {
+      text-align: center;
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,35 @@
+div[id*="shoppingcart"] {
+    @include breakpoint(mobile-only) {
+        position: absolute;
+        top: 0.5rem;
+        right: 0;
+        z-index: 10;
+        padding-right: 0;
+    }    
+
+    .g-shoppingcart {
+        @include breakpoint(tablet-range) {
+          white-space: nowrap;
+        }
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+        a {
+            color: $base-text-color;
+            padding-right: $content-margin;
+            i {
+                padding-right: $content-margin;
+            }
+        }
+        .snipcart-total-price, .snipcart-total-items {
+            opacity: 0.5;
+        }
+    }
+}
+
+.snip-layout.snip-active .snip-layout__close {
+    font-size: 30px;
+    @include breakpoint(mobile-only) {
+        top: .2em;
+    }
+}

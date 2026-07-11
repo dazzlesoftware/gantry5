@@ -1,0 +1,18 @@
+name: Top Styles
+description: Top styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    link-color:
+      type: input.colorpicker
+      label: Text
+      default: "#5fdede"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

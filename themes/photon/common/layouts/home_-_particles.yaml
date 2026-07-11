@@ -1,0 +1,666 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1457098912
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/:
+    -
+      - newsslider-4592
+  /header/:
+    -
+      - 'imagegrid-3167 68'
+      - 'pricingtable-9025 32'
+  /aboveBanner/: {  }
+  /above/: {  }
+  /showcaseBanner/: {  }
+  /container-showcase/:
+    -
+      -
+        'showcaseleft 68':
+          -
+            - accordion-6710
+      -
+        'showcaseright 32':
+          -
+            - custom-7554
+          -
+            - gridcontent-6371
+  /container-expanded/:
+    -
+      -
+        'expandedleft 68':
+          -
+            - contenttabs-3142
+      -
+        'expandedright 32':
+          -
+            - owlcarousel-6713
+          -
+            - simplecontent-4269
+  /utilityBanner/: {  }
+  /utility/: {  }
+  /featureBanner/: {  }
+  /feature/: {  }
+  /mainBanner/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expandedBanner/: {  }
+  /expanded/: {  }
+  /extensionBanner/: {  }
+  /extension/:
+    -
+      - owlcarousel-4704
+  /bottomBanner/:
+    -
+      - position-position-4953
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 48'
+      - 'custom-5195 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: g-offset-padding
+  aboveBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcaseBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcaseleft:
+    type: section
+  showcaseright:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: 'nomarginall nopaddingall'
+  container-showcase:
+    attributes:
+      boxed: '1'
+      class: g-compact
+      extra: {  }
+  expandedleft:
+    type: section
+    attributes:
+      class: nomarginbottom
+  expandedright:
+    type: section
+    attributes:
+      class: nomarginbottom
+    block:
+      class: 'nomarginall nopaddingall'
+      variations: 'nomarginall nopaddingall'
+  container-expanded:
+    attributes:
+      boxed: '1'
+      class: nomarginbottom
+      extra: {  }
+  utilityBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  featureBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  mainBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expandedBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extensionBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: nomargintop
+  bottomBanner:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  newsslider-4592:
+    title: 'News Slider'
+    attributes:
+      class: g-bottom-offset
+      items:
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          desc: ''
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Corporate & Business Oriented Template'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-02.jpg'
+          desc: ''
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Six Presets With Individual Settings'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-03.jpg'
+          desc: ''
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Offset Restrictions With Unlimited Positions'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          desc: ''
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Intuitive Drag And Drop Layout Possibilities'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-05.jpg'
+          desc: ''
+          buttontext: 'Read More'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Rich Collection Of Gantry 5 Particles'
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  imagegrid-3167:
+    title: 'Image Grid'
+    attributes:
+      title: 'Photo Gallery'
+      desc: 'Using the power of Gantry 5 Particles to create a customizable image grid.'
+      cols: g-imagegrid-5cols
+      imagegriditems:
+        -
+          image: 'gantry-media://demo/home/header/img-01.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/header/img-02.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/header/img-03.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/header/img-04.jpg'
+          caption: ''
+          title: 'New item'
+        -
+          image: 'gantry-media://demo/home/header/img-05.jpg'
+          caption: ''
+          title: 'New item'
+  pricingtable-9025:
+    title: 'Pricing Table'
+    attributes:
+      columns: g-pricingtable-1-col
+      tables:
+        -
+          accent: accent1
+          customcolor: ''
+          class: ''
+          ribbon: ''
+          icon: ''
+          price: '0.00 €'
+          period: /mo
+          desc: ''
+          buttontext: 'Get For Free'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'News Slider Particle'
+              class: ''
+              title: 'News Slider Particle'
+            -
+              text: 'Six Preset Styles'
+              class: ''
+              title: 'Six Preset Styles'
+          plan: Free
+    block:
+      variations: 'nomarginall nopaddingall'
+  accordion-6710:
+    attributes:
+      items:
+        -
+          desc: 'Twig is a templating engine for PHP, that provides a sub-platform, making the code easier to manage and customize, and powers the Gantry 5 Particles.'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Twig Templating Engine'
+        -
+          desc: 'A responsive layout adapts to the viewing device, whether a smartphone, tablet, laptop or desktop computer, allowing for a seamless experience.'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Responsive Layout Support'
+        -
+          desc: 'The Menu Editor in Gantry 5 allows you to change the menu item order, set multiple columns and place inline particles or positions inside a dropdown.'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Advanced Menu Editor'
+        -
+          desc: 'Choose from an array of preset style variations, each with extensive customization options to match whatever color scheme you need for your site.'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Selection of Presets'
+        -
+          desc: "Offcanvas Area for Mobile Blocks\nThe Offcanvas section is intended to enable you to place modules and positions in a special hidden-until-opened sidebar."
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Offcanvas Area'
+        -
+          desc: 'Blocks are self contained structural elements that can be particles, positions or spacers. They have several controls, such as sizing, a list of variations, as well as your own CSS classes.'
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          title: 'Structural Elements'
+  custom-7554:
+    title: 'Custom HTML'
+    attributes:
+      html: "<h4>London Office, UK\_</h4>\n<p class=\"desc\">+ 44 1632 960956</p>\n<p><a href=\"mailto:london@photon.com\" class=\"email\">london@photon.com</a></p>"
+    block:
+      class: 'moduletable box3 nomarginall contactinfo'
+  gridcontent-6371:
+    title: 'Grid Content'
+    attributes:
+      gridcontentitems:
+        -
+          icon: 'fa fa-cog'
+          iconcolor: accent1
+          desc: ''
+          link: ''
+          title: 'Gantry 5 Framework'
+        -
+          icon: 'fa fa-cubes'
+          iconcolor: accent1
+          desc: ''
+          link: ''
+          title: 'Particles System'
+        -
+          icon: 'fa fa-columns'
+          iconcolor: accent1
+          desc: ''
+          link: ''
+          title: 'Layout Manager'
+        -
+          icon: 'fa fa-copy'
+          iconcolor: accent1
+          desc: ''
+          link: ''
+          title: 'Menu Editor'
+    block:
+      class: 'moduletable nomarginall nopaddingall'
+  contenttabs-3142:
+    title: 'Content Tabs'
+    attributes:
+      items:
+        -
+          tabname: Particles
+          title: Particles
+          subtitle: ''
+          desc: ''
+          tags:
+            -
+              tag: 'News Slider'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '1'
+              subtagdesc: 'Highlight top headlines without taking up a lot of vertical space. This particle is perfect for breaking news and important information.'
+              name: 'New item'
+            -
+              tag: 'Content Tabs'
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '2'
+              subtagdesc: 'Give your content a clean, organized look by splitting it into elegant, easy-to-navigate tabs.'
+              name: 'New item'
+            -
+              tag: 'Owl Carousel'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '3'
+              subtagdesc: 'Showcase images and headline your biggest features with this gorgeous, simple particle.'
+              name: 'New item'
+            -
+              tag: 'Pricing Table'
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '4'
+              subtagdesc: 'Create clean, modern pricing tables that enable you to compare features and offerings from different pricing categories. Perfect for e-commerce.'
+              name: 'New item'
+            -
+              tag: Accordion
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '5'
+              subtagdesc: 'Create lists with expanding and contracting line items with ease. The Accordion particle makes it easy to maximize your available space.'
+              name: 'New item'
+            -
+              tag: 'Image Grid'
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '6'
+              subtagdesc: 'Showcase your images in a modern, dynamic way with this particle.'
+              name: 'New item'
+          name: Particles
+        -
+          tabname: Menus
+          title: Menus
+          subtitle: ''
+          desc: ''
+          tags:
+            -
+              tag: 'Multi Column'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '1'
+              subtagdesc: 'Split your submenus into multiple columns for a clean, easy-to-navigate look.'
+              name: 'New item'
+            -
+              tag: 'Icon Picker'
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '2'
+              subtagdesc: 'Add personality to your menu with icons using Gantry 5’s Icon Picker.'
+              name: 'New item'
+            -
+              tag: 'Custom Width'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '3'
+              subtagdesc: 'Want to set a custom width for your menu? No problem!'
+              name: 'New item'
+            -
+              tag: Dropdown
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '4'
+              subtagdesc: 'Control virtually every aspect of your menu, including the direction submenus drop to from the Menu Editor.'
+              name: 'New item'
+            -
+              tag: 'Module Picker'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '5'
+              subtagdesc: 'Inject modules directly into your menu quickly and easily using the Module Picker.'
+              name: 'New item'
+            -
+              tag: 'Insert Particles'
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '6'
+              subtagdesc: 'Particles can be injected directly into your menu in seconds!'
+              name: 'New item'
+          name: Menus
+        -
+          tabname: Layout
+          title: Layout
+          subtitle: ''
+          desc: ''
+          tags:
+            -
+              tag: 'Drag and Drop'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '1'
+              subtagdesc: 'The Layout Manager features an infinitely simple drag-and-drop interface, enabling you to edit your layout from your desktop, laptop, or tablet.'
+              name: 'New item'
+            -
+              tag: 'Particle Picker'
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '2'
+              subtagdesc: 'Add particles directly to your layout with drag-and-drop simplicity.'
+              name: 'New item'
+            -
+              tag: 'Section Classes'
+              subtagdotaccent: accent1
+              subtagdotcustom: ''
+              subtagtext: '3'
+              subtagdesc: 'Give each section of your page a unique look by applying classes directly using the Layout Manager. '
+              name: 'New item'
+            -
+              tag: Positions
+              subtagdotaccent: accent2
+              subtagdotcustom: ''
+              subtagtext: '4'
+              subtagdesc: 'Give a section one, two, or twenty rows! Fill them with particles and module positions to your heart’s desire. There is really no limit to what you can do with Gantry 5’s Layout Manager!'
+              name: 'New item'
+          name: Layouts
+  owlcarousel-6713:
+    title: 'Owl Carousel'
+    attributes:
+      dots: '0'
+      items:
+        -
+          image: 'gantry-media://demo/home/expanded/img-01.jpg'
+          icon: ''
+          title: Business
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Business
+        -
+          image: 'gantry-media://demo/home/expanded/img-02.jpg'
+          icon: ''
+          title: Corporate
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: Corporate
+    block:
+      class: owlcarousel-offset
+      fixed: '1'
+  simplecontent-4269:
+    title: 'Simple Content'
+    attributes:
+      items:
+        -
+          layout: standard
+          created_date: 'MAR 03, 2016'
+          content_title: 'About Photon'
+          author: ''
+          leading_content: "All demo content is for sample purposes only, to represent a live site.\n<br>\nNote: Photon is built on the latest version of the Gantry 5 Framework."
+          main_content: ''
+          readmore_label: 'Read More'
+          readmore_link: ''
+          readmore_class: button
+          readmore_target: _self
+          title: 'Simple Content'
+    block:
+      class: 'moduletable nomarginall box-white g-offset-padding g-bottom-offset'
+  owlcarousel-4704:
+    title: 'Owl Carousel'
+    attributes:
+      layout: testimonial
+      nav: '0'
+      dots: '1'
+      items:
+        -
+          image: 'gantry-media://demo/home/extension/avatar-01.jpg'
+          icon: 'fa fa-twitter'
+          title: ''
+          desc: 'The template styling is built with SCSS, a programmable stylesheet language for CSS, making the CSS more dynamic and adaptable. You can easily enable and disable automatic recompilation of SCSS files.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Template Styling'
+        -
+          image: 'gantry-media://demo/home/extension/avatar-02.jpg'
+          icon: 'fa fa-facebook-square'
+          title: ''
+          desc: 'Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Layout Manager'
+        -
+          image: 'gantry-media://demo/home/extension/avatar-03.jpg'
+          icon: 'fa fa-google-plus'
+          title: ''
+          desc: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Gantry 5 Configuration'
+  position-position-4953:
+    title: 'Bottom Banner A'
+    attributes:
+      key: bottom-banner-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  copyright-5748:
+    block:
+      class: g-copyright
+  custom-5195:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid g-sample-sitemap\">\n<div class=\"g-block\">\n<ul class=\"nomarginall g-bottom-menu align-right\">\n<li><a href=\"index.php\">Home</a> </li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> About</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Terms</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Legal</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Disclaimer</a></li>\n</ul>\n</div>\n</div>"
+  mobile-menu-7951:
+    title: 'Mobile Menu'

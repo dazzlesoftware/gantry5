@@ -1,0 +1,275 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: faq
+  timestamp: 1523567954
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-8634
+  /utility/: {  }
+  /feature/:
+    -
+      - custom-8861
+    -
+      - lists-9361
+  /maintop/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 25': {  }
+      -
+        'main 50':
+          -
+            - custom-1696
+      -
+        'aside 25': {  }
+  /mainbottom/: {  }
+  /extension/:
+    -
+      - custom-9433
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'custom-5072 50'
+      - 'custom-3219 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: hidden-phone
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  sidebar:
+    type: section
+    attributes:
+      class: ''
+      variations: ''
+  main:
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    attributes:
+      class: ''
+      variations: ''
+  container-main:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-3952:
+    title: Heading
+    attributes:
+      title: FAQ
+      titletag: 'Questions and Answers'
+      html: ''
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'rt-title-large module-title'
+      variations: 'center nomarginall'
+  position-position-8634:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  custom-8861:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer largemargintop largemarginbottom\">\n\t\t\t<img src=\"gantry-media://pages/faq/img-01.jpg\" alt=\"image\" />\n\t\t\t<h4 class=\"medpaddingtop\">Forum Support</h4>\n\t\t\t<p>Objectively innovate empowered manufactured products with parallel platforms.</p>\n\t\t\t<p><a href=\"#\">Ask Community</a></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer largemargintop largemarginbottom\">\n\t\t\t<img src=\"gantry-media://pages/faq/img-01.jpg\" alt=\"image\" />\n\t\t\t<h4 class=\"medpaddingtop\">Ticket &amp; Email</h4>\n\t\t\t<p>Proactively envisioned multimedia based expertise and effective cross-media strategies.</p>\n\t\t\t<p><a href=\"#\">Send Email</a></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer largemargintop largemarginbottom\">\n\t\t\t<img src=\"gantry-media://pages/faq/img-01.jpg\" alt=\"image\" />\n\t\t\t<h4 class=\"medpaddingtop\">Live Chat</h4>\n\t\t\t<p>Interactively coordinate proactive e-commerce via process-centric outside the box.</p>\n\t\t\t<p><a href=\"#\">Contact Us</a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      variations: 'box2 nomarginall center'
+  lists-9361:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      displayitems: '3'
+      accordion: enabled
+      nav: enabled
+      dots: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: ''
+          title: 'What prices are our services?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 1'
+        -
+          image: ''
+          title: 'What is our refund policy?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 2'
+        -
+          image: ''
+          title: 'What payments methods do we accept?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 3'
+        -
+          image: ''
+          title: 'What delivery options do we offer?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 4'
+        -
+          image: ''
+          title: 'What support options are available?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 5'
+        -
+          image: ''
+          title: 'What additional services are available?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 6'
+        -
+          image: ''
+          title: 'Who are our partners?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 7'
+        -
+          image: ''
+          title: 'What languages do we offer support in?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 8'
+        -
+          image: ''
+          title: 'What job opportunities are available?'
+          desc: 'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Item 9'
+    block:
+      variations: 'nomarginall box3'
+  custom-1696:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<h3>Common Queries and Questions</h3>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n<ul>\n\t<li>Versatile, Flexible Features Powered by the Gantry Framework.</li>\n\t<li>Gantry is a free framework for both Joomla and WordPress.</li>\n\t<li>A selection of configurable preset style variations are available.</li>\n</ul>\n\n<p><a href=\"#\" class=\"readon\">Help &amp; Knowledge</a></p>"
+      twig: '0'
+      filter: '0'
+  custom-9433:
+    title: 'Custom HTML'
+    attributes:
+      title: 'FAQ Didn''t Solve Your Problem?'
+      titletag: ''
+      html: "<p>Get Direct Access to the Team Via Phone, Email or Live Chat.</p>\n\n<p><a href=\"https://rockettheme.com/forum/grav-theme-audacity\" class=\"readon largemargintop\">Contact Us</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: module-title
+      variations: center
+  custom-5072:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Audacity Demo'
+      titletag: ''
+      html: "<p class=\"hidden-phone\">These examples are intended to show how Audacity can be constructed on your site, above and beyond the frontpage demonstration. These include Joomla content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Audacity RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'
+  custom-3219:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Sample Contact Info'
+      titletag: ''
+      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'

@@ -1,0 +1,37 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div id="{{ id }}" class="g-slider {{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-slider-dots="{% if particle.dots == "enabled" %}true{% else %}false{% endif %}" data-slider-items="{{ particle.amount }}" data-slider-itemstablet="{{ particle.tablet_amount }}" data-slider-itemsmobile="{{ particle.mobile_amount }}" data-slider-itemssmallmobile="{{ particle.smallmobile_amount }}" data-slider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-slider-mobile="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-slider-tablet="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-slider-desktop="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}">
+
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-slider-carousel g-owlcarousel owl-carousel" data-slider-carousel-id="{{ id }}">
+                {% for item in particle.items %}
+                    <div>
+                        <div class="g-slider-carousel-image-container">
+                            <img src="{{ url(item.image)|e }}" alt="{{ item.alt }}">
+
+                            <div class="g-slider-carousel-title">
+                                {{ item.title|raw }}
+
+                                {% if item.buttonlink %}
+                                    <div class="g-slider-carousel-button">
+                                        <a href="{{ item.buttonlink|e }}" class="{{ item.buttonclass|e }}" target="{{ item.buttontarget }}">{{ item.buttontext|e }}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            {% include '@particles/slider-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
+{% endblock %}

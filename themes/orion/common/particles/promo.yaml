@@ -1,0 +1,25 @@
+name: Promo
+description: Display promo image with text.
+type: particle
+icon: fa-file
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+    headline:
+      type: input.text
+      label: Headline
+      description: Customize the headline text.
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+    text:
+      type: textarea.textarea
+      label: Text
+      description: Customize the promo text.

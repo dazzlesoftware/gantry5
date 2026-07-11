@@ -1,0 +1,288 @@
+.g-mosaic {
+    position: relative;
+
+    // Header
+    .g-mosaic-header {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        @include breakpoint(mobile-only) {
+            display: block;
+        }
+
+        // Title
+        .g-mosaic-title {
+            @include responsive-font($responsive-font-size + 1.7, $core-font-size, false, false);
+            font-weight: $font-weight-bold;
+            color: $base-text-color;
+            padding-right: $content-padding;
+
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding-right: 0;
+            }
+        }
+
+        // Navigation
+        .g-mosaic-nav {
+            position: relative;
+
+            i {
+                display: none;
+                position: absolute;
+                top: 1rem;
+                left: $content-margin;
+
+                @include breakpoint(mobile-only) {
+                    display: block;
+                    top: 0.75rem;
+                }
+            }
+
+            // Mobile menu
+            @include breakpoint(mobile-only) {
+                min-height: 6rem;
+                width: 100%;
+            }
+
+            .g-mosaic-nav-container {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
+
+                // Mobile menu
+                @include breakpoint(mobile-only) {
+                    flex-direction: column;
+                    width: 50%;
+                    padding: 5px 0;
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    border: solid 1px #aaa;
+                    background: $white;
+                    z-index: 15;
+                    margin-top: 1rem;
+                }
+            }
+
+            // Item
+            .g-mosaic-nav-item {
+                cursor: pointer;
+                color: $dark-grey;
+                background: $light-grey;
+                position: relative;
+                margin-right: 5px;
+                padding: 5px 20px;
+                border-radius: 3px;
+                @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
+                opacity: 0.7;
+
+                &.selected, &:hover {
+                    color: $white;
+                    background: darken($light-grey, 25%);
+
+                    @include breakpoint(mobile-only) {
+                        background: none;
+                        color: $black;
+                    }
+                }
+
+                &.clicked {
+                    @include breakpoint(mobile-only) {
+                        background: none;
+                        color: $black;
+                    }
+                }
+
+                @include breakpoint(mobile-only) {
+                    display: none;
+                    padding: $content-margin - 0.425 $content-padding + 1;
+                }
+                &.selected {
+                    opacity: 1;
+                    @include breakpoint(mobile-only) {
+                        display: block;
+                    }
+                }
+                &.clicked {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // Grid Settings
+    .g-mosaic-grid {
+        margin: 0 -($content-padding - 0.5);
+        overflow: visible !important;
+
+        // Item & Item content
+        .g-mosaic-grid-item {
+            will-change: auto !important;
+
+            .g-mosaic-grid-item-wrapper {
+                margin: $content-padding - 0.5;
+                padding: 15px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                position: relative;
+                display: flex;
+                flex-direction: column;
+
+                &:before {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: transparent;
+                    content: '';
+                    top: 0;
+                    transition: background-color 0.5s;
+                    border-radius: 0.4rem;
+                }
+
+                .g-mosaic-image-container {
+                    margin-bottom: 15px;
+                    position: relative;
+
+                    img {
+                        min-height: 1px;
+                        border-radius: $border-radius;
+                    }
+
+                    .g-mosaic-hover {
+                        background: rgba(0, 0, 0, 0.5);
+                        bottom: 0;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                    }
+
+                    .g-mosaic-hovercontent {
+                        text-align: center;
+                        top: 50%;
+                        width: 100%;
+                        display: block;
+                        color: #ffffff;         
+                    }
+
+                    .g-mosaic-hovercontent, .g-mosaic-hover {
+                        position: absolute;
+                        transition: opacity 0.1s ease-in;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+
+                    &:hover {
+                        .g-mosaic-hover, .g-mosaic-hovercontent {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+                }
+
+                // Layouts and variations
+                &.g-mosaic-variation-light {
+                    color: $white;
+                }
+                &.g-mosaic-layout-default-bottom {
+                    .g-mosaic-grid-item-content {
+                        bottom: 0;
+                    }
+                }
+                &.g-mosaic-layout-alt-top, &.g-mosaic-layout-alt-bottom {
+                    .g-mosaic-grid-item-content {
+                        position: relative;
+                    }
+                }
+                &.g-mosaic-layout-alt-bottom {
+                    flex-direction: column-reverse;
+                }
+            }
+
+            .g-mosaic-grid-item-content {
+                position: absolute;
+                left: 0;
+                text-align: left;
+                z-index: 2;
+                transition: color 0.5s;
+
+                .g-mosaic-grid-item-title {
+                    font-size: 1.2em;
+                    line-height: $core-line-height - 0.4;
+                }
+                .g-mosaic-grid-item-subtitle {
+                    margin: 15px 0;
+                }
+                .readon {
+                    display: table;
+                    margin: 15px 0;
+                    text-transform: uppercase;
+                    font-size: $base-font-size - 4;
+                    padding: 5px 10px;
+                }
+                .g-mosaic-tag {
+                    display: inline-block;
+                    margin-right: 1px;
+                    padding: 2px 8px;
+                    font-size: 0.8em;
+                    color: $white;
+                    background: rgba(0, 0, 0, 0.5);
+                    border-radius: 3px;
+                }
+            }
+        }
+
+        // Column layout
+        // 2 Columns
+        &.cols-2 {
+            .g-mosaic-grid-item, .g-mosaic-grid-sizer, {
+                width: 50%;
+
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+        // 3 Columns
+        &.cols-3 {
+            .g-mosaic-grid-item, .g-mosaic-grid-sizer, {
+                width: 33.3%;
+
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+        // 4 Columns
+        &.cols-4 {
+            .g-mosaic-grid-item, .g-mosaic-grid-sizer, {
+                width: 25%;
+
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+        // 4 Columns
+        &.cols-5 {
+            .g-mosaic-grid-item, .g-mosaic-grid-sizer, {
+                width: 20%;
+
+                @include breakpoint(tablet-range) {
+                    width: 55%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+

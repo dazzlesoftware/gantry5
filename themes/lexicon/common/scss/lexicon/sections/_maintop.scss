@@ -1,0 +1,11 @@
+#g-maintop {
+    color: $maintop-text-color; 
+    background: $maintop-background;
+}
+
+@media print {
+	#g-maintop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

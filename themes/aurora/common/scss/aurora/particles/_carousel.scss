@@ -1,0 +1,262 @@
+.g-owlcarousel-carousel {
+    // Owl Core
+    .owl-stage {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 0 $content-padding;
+
+        .owl-item {
+            display: flex;
+            height: auto;
+        }
+    }
+
+    // Header
+    .g-owlcarousel-carousel-header {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        @include breakpoint(mobile-only) {
+            display: block;
+        }
+
+        // Title
+        .g-owlcarousel-carousel-title-container {
+            flex: 1;
+            text-align: center;
+            @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
+            font-weight: $font-weight-bold;
+            color: $black;
+
+            @include breakpoint(mobile-only) {
+                flex: 0;
+            }
+
+            .g-owlcarousel-carousel-title {
+                display: inline-block;
+            }
+
+            .g-owlcarousel-carousel-controls {
+                display: inline-block;
+                margin-left: 2rem;
+                font-weight: $font-weight-regular;
+
+                .dir-rtl & {
+                    margin-right: 2rem;
+                    margin-left: 0;
+
+                    .owl-prev {
+                        .fa-chevron-left {
+                            &:before {
+                                content: "\f054";
+                            }
+                        }
+                    }
+
+                    .owl-next {
+                        .fa-chevron-right {
+                            &:before {
+                                content: "\f053";
+                            }
+                        }
+                    }
+                }
+
+                > div, > button {
+                    display: inline-block;
+                    background: none;
+                    margin: 0 0.75rem;
+                    outline: none;
+                    padding: 0;
+
+                    .fa {
+                        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Description
+        .g-owlcarousel-carousel-description {
+            flex: 1;
+            @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
+            padding-top: $content-margin;
+            text-align: center;
+
+            b {
+                color: $black;
+            }
+
+            @include breakpoint(mobile-only) {
+                flex: 0;
+            }
+        }
+    }
+
+    .g-carousel {
+        margin: ($content-margin * 1.5) 0;
+        padding: ($content-padding * 0.5) 0;
+
+        .owl-item {
+            // Colored Items
+            &:nth-child(8n + 1) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), -50deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), -50deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 2) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), -25deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), -25deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 3) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), -100deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), -100deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 4) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), -75deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), -75deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 5) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), -50deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), -50deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 6) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), -25deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), -25deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 7) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), 15deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), 15deg);
+                    }
+                }
+            }
+            &:nth-child(8n + 8) {
+                .g-carousel-item {
+                    background: adjust_hue(transparentize($accent-color-2, 0.80), 25deg);
+
+                    &, a, .g-carousel-image-icon {
+                        color: adjust_hue(transparentize($accent-color-2, 0.50), 25deg);
+                    }
+                }
+            }
+
+            .g-carousel-item {
+                position: relative;
+                margin: ($content-padding / 2);
+                padding: $content-padding * 2;
+                border-radius: 0.5rem;
+                transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
+                transform-origin: center bottom;
+                transform: translateY(0);
+
+                &:hover {
+                    transform: translateY(5%);
+                }
+
+                // Link
+                .g-carousel-link {
+                    position: absolute;
+                    display: block;
+                    content: '';
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                // Icon
+                .g-carousel-image-icon {
+                    display: block;
+                    padding-bottom: $content-padding;
+                    text-align: left;
+
+                    .dir-rtl & {
+                        text-align: right;
+                    }
+
+                    .fa {
+                        @include responsive-font($responsive-font-size + 0.5, $core-font-size + 1, false, false);
+                    }
+                }
+
+                // Title
+                .g-carousel-title {
+                    display: block;
+                    padding: ($content-padding + 1) 0 $content-padding;
+                    @include responsive-font($responsive-font-size, $core-font-size + 0.2, false, false);
+                    font-weight: $font-weight-bold;
+                    line-height: $core-line-height + 0.2;
+                    text-align: left;
+
+                    .dir-rtl & {
+                        text-align: right;
+                    }
+
+                    @include breakpoint(mobile-only) {
+                        text-align: center;
+                    }
+                }
+
+                // Description
+                .g-carousel-description {
+                    display: block;
+                    @include responsive-font($responsive-font-size - 0.15, $core-font-size + 0.1, false, false);
+                    text-align: left;
+
+                    .dir-rtl & {
+                        text-align: right;
+                    }
+
+                    @include breakpoint(mobile-only) {
+                        text-align: center;
+                    }
+                }
+                .g-carousel-readmore {
+                    display: block;
+                    text-align: center;
+                    padding-top: $content-margin;
+                    font-weight: $font-weight-bold;
+                }
+            }
+        }
+    }
+}

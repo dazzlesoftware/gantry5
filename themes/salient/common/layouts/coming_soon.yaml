@@ -1,0 +1,198 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: coming_soon
+  timestamp: 1505834698
+layout:
+  /top/:
+    -
+      - system-messages-1990
+  /navigation/:
+    -
+      - logo-5745
+  /header/: {  }
+  /slideshow/: {  }
+  /showcase/: {  }
+  /above/: {  }
+  /utility/: {  }
+  /feature/:
+    -
+      - 'spacer-2422 50'
+      - 'custom-4602 50'
+  /container-6675/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - simplecounter-3311
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - custom-4573
+  /bottom/: {  }
+  /container-1710/:
+    -
+      -
+        'footer 75':
+          -
+            - 'custom-4302 50'
+            - 'newsletter-1199 50'
+      -
+        'footside 25': {  }
+  /copyright/:
+    -
+      - 'logo-7720 33.3'
+      - 'totop-9655 33.3'
+      - 'social-2489 33.3'
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-6675:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footside:
+    type: section
+  container-1710:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  system-messages-1990:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-5745:
+    block:
+      variations: center
+  custom-4602:
+    title: 'Coming Soon'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Salient is Coming Soon</h2>\n\t<div class=\"g-layercontent-subtitle\">Good News! Something Awesome is in the Works</div>\n</div>"
+    block:
+      class: g-overlay
+      variations: 'nomarginall center'
+  simplecounter-3311:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: 'We are working on a new and exciting template that we think you will really like.'
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      variations: center
+  custom-4573:
+    title: 'Have Something to Tell Us?'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Have Something to Tell Us?</h2>\n\t<div class=\"g-layercontent-subtitle\">Ideas, Suggestion, or Review</div>\n\t<a href=\"https://www.rockettheme.com/joomla/templates/salient\" class=\"button\">Contact Us</a>\n</div>"
+    block:
+      variations: 'center nomarginall nopaddingall'
+  custom-4302:
+    title: 'About Salient'
+    attributes:
+      html: "<h3 class=\"g-title\">About Salient</h3>\n<p>Salient is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template, addons and sources.</p>"
+  newsletter-1199:
+    attributes:
+      title: Newsletter
+      headtext: 'Subscribe to our newsletter and stay updated on the latest developments and special offers!'
+      inputboxtext: 'Email Address'
+      buttontext: Join
+      uri: rocketthemeblog
+      buttonclass: 'button button-4'
+  logo-7720:
+    attributes:
+      image: 'gantry-media://logo/logo-footer.png'
+      alt: Salient
+      class: g-footer-logo
+  totop-9655:
+    title: 'To Top'
+    attributes:
+      css:
+        class: totop
+      content: '<span class="fa fa-2x fa-angle-up"></span>'
+  social-2489:
+    attributes:
+      css:
+        class: social
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'http://facebook.com/rockettheme'
+          name: Facebook
+        -
+          icon: 'fa fa-google fa-fw'
+          text: ''
+          link: 'https://rockettheme.com'
+          name: Google
+        -
+          icon: 'fa fa-rss fa-fw'
+          text: ''
+          link: 'https://www.rockettheme.com/product-updates?rss'
+          name: RSS

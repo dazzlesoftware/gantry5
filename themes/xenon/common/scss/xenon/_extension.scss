@@ -1,0 +1,93 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;
+
+	.button {
+		background: lighten($accent-color-1, 10%);
+		&:hover, &:active, &:focus {
+			background: darken($accent-color-1, 10%);
+		}		
+	}
+
+	.ct-grid {
+	  stroke: rgba(255, 255, 255, 0.35);
+	}
+
+	.ct-label {
+	  fill: rgba(255, 255, 255, 0.75);
+	  color: rgba(255, 255, 255, 0.75);
+	}    
+
+	.ct-series-a {
+	  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+	    stroke: darken($accent-color-1, 10%);
+	  }
+	  .ct-area, .ct-slice-pie {
+	    fill: darken($accent-color-1, 10%);
+	  }
+	}
+
+	.ct-series-b {
+	  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+	    stroke: lighten($accent-color-2, 15%);
+	    .g-style-preset2 &,
+	    .g-style-preset3 & {
+			stroke: $accent-color-2;
+	    }
+	    .g-style-preset4 & {
+			stroke: lighten($accent-color-2, 35%);
+	    }	
+	    .g-style-preset5 & {
+			stroke: darken($accent-color-2, 3%);
+	    }	        
+	  }
+	  .ct-area, .ct-slice-pie {
+	    fill: lighten($accent-color-2, 15%);
+	    .g-style-preset2 &,
+	    .g-style-preset3 & {
+			fill: $accent-color-2;
+	    }	   
+	    .g-style-preset4 & {
+			fill: lighten($accent-color-2, 35%);
+	    }	
+	    .g-style-preset5 & {
+			fill: darken($accent-color-2, 3%);
+	    }	         
+	  }
+	}
+
+	.ct-series-c {
+	  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+	    stroke: $accent-color-3;
+	    .g-style-preset2 & {
+			stroke: darken($accent-color-3, 15%);
+	    }
+	    .g-style-preset3 & {
+			stroke: lighten($accent-color-3, 5%);
+	    }	  
+	    .g-style-preset4 & {
+			stroke: darken($accent-color-3, 3%);
+	    }	      	    
+	  }
+	  .ct-area, .ct-slice-pie {
+	    fill: $accent-color-3;
+	    .g-style-preset2 & {
+			fill: darken($accent-color-3, 15%);
+	    }	  
+	    .g-style-preset3 & {
+			fill: lighten($accent-color-3, 5%);
+	    }	
+	    .g-style-preset4 & {
+			fill: darken($accent-color-3, 3%);
+	    }	          
+	  }
+	}
+
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

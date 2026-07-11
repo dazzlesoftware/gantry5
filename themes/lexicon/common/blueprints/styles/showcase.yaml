@@ -1,0 +1,15 @@
+name: Showcase Colors
+description: Showcase colors for the Lexicon theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#f6d653"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#7d6a1e"   

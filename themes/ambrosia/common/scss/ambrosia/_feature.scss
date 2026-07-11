@@ -1,0 +1,165 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}
+
+#feature-tabs {
+    margin-bottom: -2rem;
+    .g-contenttabs-content-wrapper-container {
+         .g-title-regular {
+            font-size: 1.05rem;
+            padding: 0;
+        }    
+    }
+    ul.g-contenttabs-tab-wrapper-container {
+        float: right;
+        width: 25%;
+        margin: 1.25rem 1rem;
+        padding: 5px 5px 5px 0 !important;
+        @include breakpoint(mobile-only) {
+            float: none;
+            width: 100%;
+            text-align: center;
+            margin: 1rem auto 0 auto;
+        }
+        > li {
+            float: none;
+            margin-bottom: -1px;  
+        }
+        .g-contenttabs-tab-title {
+            color: $black;
+            background: transparent;
+            border: 0 !important;
+            border-radius: 0;
+            display: inline-block;
+            padding: 2px 8px;
+            line-height: 1;
+            vertical-align: middle;
+            font-family: get-font-family($font-family-promo);
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.75rem;
+            margin-left: -1px;
+            @include breakpoint(mobile-only) {
+                font-size: 1.5rem;
+            }    
+            &:hover {
+                background: transparent;
+            }
+        }
+        .ui-tabs-active.ui-state-active {
+            .g-contenttabs-tab-title {
+                color: $white !important;
+                background: $accent-color-1 !important;
+            }
+        }    
+    }
+    .ui-tabs {
+        .ui-tabs-nav {
+            display: block;
+            li.ui-tabs-active {
+                .ui-tabs-anchor {
+                   cursor: pointer; 
+                }
+            }
+        } 
+    }
+}
+
+#feature-headlines {
+    .g-owlcarousel-headlines {
+        margin: -0.5rem 0;
+        .headlines-container {
+            .headlines-badge {
+                span {
+                    border-bottom: 2px solid;
+                    display: inline-block;
+                    line-height: 1.5;
+                    font-size: 0.85rem;
+                    padding: 0 !important;
+                    margin: 0.6rem;
+                }
+            }
+            .g-owlcarousel {
+                .g-headlines-desc {
+                    font-family: get-font-family($font-family-promo);
+                    font-weight: $font-weight-bold;
+                    font-size: 1.5rem;
+                    line-height: $core-line-height - 0.5;
+                    @include breakpoint(tablet-range) {
+                        font-size: 1.15rem;
+                        line-height: $core-line-height - 0.35;
+                    }
+                    @include breakpoint(mobile-only) {
+                        font-size: 1.25rem;
+                        line-height: $core-line-height - 0.25;
+                    }
+                    .g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
+                        font-size: 1.35rem;
+                        @include breakpoint(tablet-range) {
+                            font-size: 1rem;
+                        }
+                        @include breakpoint(mobile-only) {
+                            font-size: 1.15rem;
+                        } 
+                    }                       
+                }
+                .owl-nav {
+                    div, button {
+                        top: auto;
+                        display: block;
+                        float: right;
+                        font-weight: bold;
+                        position: absolute;
+                        right: -20px;
+                        border-radius: 0;
+                        color: #fff;
+                        background: #000;
+                        opacity: 1;
+                        box-shadow: none;
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        font-size: 1.75rem;
+                        -webkit-transition: background 0.25s ease;
+                        -moz-transition: background 0.25s ease;
+                        transition: background 0.25s ease;
+                        &:before {
+                            font-family: FontAwesome;
+                        } 
+                        &:hover {
+                            background: #404040;
+                        }
+                        &.owl-next {
+                            top: -7px;
+                            &:before {
+                                content: "\f106";
+                            }
+                        }
+                        &.owl-prev {
+                            bottom: -7px;
+                            margin-right: 0;
+                            &:before {
+                                content: "\f107";
+                            }
+                            @include breakpoint(mobile-only) {
+                                bottom: inherit;
+                                top: 23px;
+                            }                              
+                        }
+                        span {
+                            display: none;
+                        }
+                    }
+                } 
+            } 
+        }
+    }
+}

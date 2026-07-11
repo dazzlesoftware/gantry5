@@ -1,0 +1,19 @@
+name: Slideshow Styles
+description: Slideshow styles for the Salient theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#212121"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://demo/home/slideshow/bg.jpg"      

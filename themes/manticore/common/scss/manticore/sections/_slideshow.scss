@@ -1,0 +1,19 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background-color: $slideshow-background;
+
+    a {
+        color: $slideshow-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

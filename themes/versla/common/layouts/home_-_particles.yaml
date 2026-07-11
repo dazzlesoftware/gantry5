@@ -1,0 +1,685 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1478601557
+layout:
+  top: {  }
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - simplecontent-7077
+    -
+      - owlshowcase-7890
+  /header/:
+    -
+      - productlist-8300
+  /above/:
+    -
+      - infolist-3806
+  /feature/:
+    -
+      - owlpreview-1055
+  /expanded/:
+    -
+      - 'simplecontent-6429 50'
+      - 'custom-5911 50'
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'simplecontent-9567 65'
+      - 'newsletter-3789 35'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-navigation
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: no-section-paddings
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: no-section-paddings
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-expanded-homeparticles
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-bottom
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-7077:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Take your online store to the next level'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Quote
+  owlshowcase-7890:
+    title: 'Owl Showcase'
+    attributes:
+      class: ''
+      presets: disabled
+      displayitems: '3'
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Lookbook
+          desc: 'Take a Look'
+          link: ''
+          name: 'Clothes 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Shoes
+          desc: 'Take the First Step'
+          link: ''
+          name: 'Clothes 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: T-Shirts
+          desc: 'Dress Up'
+          link: ''
+          name: 'Clothes 3'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Armchairs
+          desc: 'Relax and Enjoy'
+          link: ''
+          name: 'Furniture 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Beds
+          desc: 'Sweet Dreams'
+          link: ''
+          name: 'Furniture 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Lighting
+          desc: 'Brighten Your Day'
+          link: ''
+          name: 'Furniture 3'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Running
+          desc: 'Pick Up the Pace'
+          link: ''
+          name: 'Sports 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Skating
+          desc: 'Have Fun'
+          link: ''
+          name: 'Sports 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Surfing
+          desc: 'Hang 10'
+          link: ''
+          name: 'Sports 3'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Guitars
+          desc: 'Play with Greatness'
+          link: ''
+          name: 'Music 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Pianos
+          desc: 'Make Beautiful Music'
+          link: ''
+          name: 'Music 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Violins
+          desc: 'Classic Elegance'
+          link: ''
+          name: 'Music 3'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Thrilling
+          desc: 'Have Fun'
+          link: ''
+          name: 'Books 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: 'Bed Time'
+          desc: 'Wind Down'
+          link: ''
+          name: 'Books 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Shorts
+          desc: Escape
+          link: ''
+          name: 'Books 3'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Shop
+          desc: 'Build Something'
+          link: ''
+          name: 'Tools 1'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Tools
+          desc: 'Get it Done'
+          link: ''
+          name: 'Tools 2'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          icon: ''
+          title: Storage
+          desc: Organize
+          link: ''
+          name: 'Tools 3'
+    block:
+      class: flush
+  productlist-8300:
+    title: 'Product List'
+    attributes:
+      class: ''
+      title: ''
+      presets: enabled
+      currency: $
+      cartbtn: 'Add To Cart'
+      morebtn: 'Read More'
+      categories:
+        -
+          products:
+            -
+              brand: 'from Adidas'
+              price: '229.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'These casual gray shoes are the perfect pair to wear at home, work, or while strolling down main street. Made from quality materials, and built to last, these shoes are simply incredible.'
+              name: 'Casual Gray Shoes'
+            -
+              brand: 'from Nike'
+              price: '124.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'These beautiful light brown shoes are a great choice for everyday wear. They go with just about everything, and come with an industry-leading lifetime guarantee against wear and tear.'
+              name: 'Light Brown Shoes'
+            -
+              brand: 'from Chanel'
+              price: '1799.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'This black leather bag is simply the best. It can hold five full-size candy bars, three romance novels, fifteen regulation decks of playing cards, and a six-pack of your favorite soda. This bag will hold everything you need to get through the day.'
+              name: 'Black Leather Bag'
+            -
+              brand: 'from Reebok'
+              price: '219.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'These beautiful semi-casual sneakers from Reebok are perfect for the gym or the boardroom. If you leave the house with a pair of these on, you will never be caught with the wrong type of shoes.'
+              name: 'Semi Casual Sneakers'
+            -
+              brand: 'from Calvin Klein'
+              price: '99.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Keep your pants off the ground with this gravity-defying belt from Calvin Klein. Made from genuine imitation leather, this belt is second to none. You will never be caught with your pants down with this belt on your waist.'
+              name: 'Leather Belt'
+            -
+              brand: 'from Frye'
+              price: '19.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'These boots are handcrafted from the finest materials on earth. Made from a blend of synthetic cloth and genuine unicorn fur, these boots are ready to hit the runway, Broadway, and all points inbetween.'
+              name: 'Women''s Boots'
+          name: Clothes
+        -
+          products:
+            -
+              brand: 'from Merax'
+              price: '229.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Spend your day relaxing instead of working. This chair feels like a cloud under you. Spend an hour, or twelve, resting comfortably as you get more done throughout the day.'
+              name: 'Computer Chair'
+            -
+              brand: 'from Daylight'
+              price: '124.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Brighten your world with this beautiful table lamp from Daylight. This lamp is simply gorgeous, giving you just the right amount of light for any purpose. You can even turn it on and off by clapping your hands. Incredible!'
+              name: 'Table Lamp'
+            -
+              brand: 'from Ascend'
+              price: '1799.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Is your desk in need of light? This beautiful desk lamp from Ascend is exactly what you need to turn your dark workspace into a bright area of productivity! Never go in the dark again.'
+              name: 'Desk Lamp'
+            -
+              brand: 'from Cooper'
+              price: '219.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'This genuine imitation leather futon is the greatest piece of img ever made. It''s simply fantastic. Handmade by dedicated Swedish artisan carpenters, this futon will change your life.'
+              name: Futon
+            -
+              brand: 'from Irving'
+              price: '99.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Every home needs a good chair. This chair is that chair! It is beautiful, stylish, and designed to fit a wide variety of decorating schemes from contemporary to post-modern. Comfort, class, and quality.'
+              name: 'Leather Chair'
+            -
+              brand: 'from Vitra'
+              price: '19.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Live you life like a king on this beautiful ball chair from Vitra. This chair is surprisingly comfortable, and designed to make any home feel like the bridge of a Galaxy-class spaceship out of science fiction.'
+              name: 'Ball Chair'
+          name: Furniture
+        -
+          products:
+            -
+              brand: 'from Element'
+              price: '229.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Skateboards are a lot of fun, and you can take to the half-pipe on this brand new skateboard. Whether you''re a casual skater or an aspiring future Tony Hawk, you will love this skateboard.'
+              name: Skateboard
+            -
+              brand: 'from Tecnica'
+              price: '124.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Skiing Boots are essential if you plan on conquering the slalom. Tear through fresh powder wearing the coolest skiing boots on the mountain.'
+              name: 'Skiing Boots'
+            -
+              brand: 'from Outdoor'
+              price: '1799.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Feeling outdoorsy? Hike through hills and forests wearing these fashionable hiking shoes. These shoes are extra padded for long-term comfort and built to last.'
+              name: 'Hiking Shoes'
+            -
+              brand: 'from Punchy'
+              price: '219.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'It takes a lot of training and the right gear to become a champion. These boxing gloves are perfect for training and active competition. Go 12 rounds in style.'
+              name: 'Boxing Gloves'
+            -
+              brand: 'from Oakley'
+              price: '99.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'A good pair of ski goggles will change the way you see the world. These goggles are built to last a lifetime.'
+              name: 'Ski Goggles'
+            -
+              brand: 'from Body Solid'
+              price: '19.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Bulk up and get buff with these weights. Featuring adjustable weights and a sturdy 5 lb. bar, these weights are perfect for a wide range of training needs.'
+              name: Weights
+          name: Sports
+        -
+          products:
+            -
+              brand: 'from Sony'
+              price: '229.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Two turntables and a microphone are all you need to put together an incredible set. Mix your own music live or play the classics on this gorgeous turntable by Sony.'
+              name: Turntable
+            -
+              brand: 'from Califone'
+              price: '124.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Audiophiles agree, a good pair of headphones makes all the difference in the world. These headphones feature quality sound that fits perfectly with every kind of music from jazz to heavy metal.'
+              name: Headphones
+            -
+              brand: 'from Gibson'
+              price: '1799.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Rock on with this Les Paul style guitar from Gibson. A custom bridge and pearl inlays accent this classic style.'
+              name: Guitar
+            -
+              brand: 'from Pyle'
+              price: '219.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Capture that classic sound with this retro-style microphone from Pyle. This microphone picks up vocals with a rich density that became the signature of music from the ''60s and ''70s.'
+              name: 'Retro Microphone'
+            -
+              brand: 'from Dayton'
+              price: '99.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'These speakers offer a big, bold sound that will rattle the walls of even the largest auditorium. '
+              name: Speakers
+            -
+              brand: 'from SuperSonic'
+              price: '19.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Walk down the street with this sweet boombox on your shoulder and fill your neighborhood with the best of the ''80s and ''90s rap groups that defined a generation.'
+              name: 'Vintage Boombox'
+          name: Music
+        -
+          products:
+            -
+              brand: 'from Mark Lindquist'
+              price: '229.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Detective Wyatt James is a veteran police officer with the Meth Lab team in Pierce County, Washington -- an epicenter of methamphetamine production. At the core of the local meth problem is the elusive, self-proclaimed "King of Meth-lehem." The king moves from one shelter to another, relying on the kindness and desperation of a variety of women.'
+              name: 'King of Methlehem'
+            -
+              brand: 'from Susan Briscoe'
+              price: '124.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Following the story of a marriage come undone, this moving book-length sequence is broken down into four seasons, distilling the details of the failed relationship through physical processes of nature, such as the buzzing life of wildflowers and birds that the speaker—a wife and mother—studies daily for clues on happiness.'
+              name: 'The Crow''s Vow'
+            -
+              brand: 'from Dave Cullen'
+              price: '1799.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'So begins a new epilogue, illustrating how Columbine became the template for nearly two decades of "spectacle murders." It is a false script, seized upon by a generation of new killers. In the wake of Newtown, Aurora, and Virginia Tech, the imperative to understand the crime that sparked this plague grows more urgent every year.'
+              name: Columbine
+            -
+              brand: 'from Dean Olsher'
+              price: '219.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'From Square One is Dean Olsher''s captivating and in-depth exploration of the cultural history, psychology, and even metaphysics of crosswords - their promise of a world without chaos and uncertainty. It is often repeated that more than 50 million Americans do crossword puzzles on a regular basis.'
+              name: 'From Square One'
+            -
+              brand: 'from Jean Hartic'
+              price: '99.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'These poems are distressing but bright; readers are not sure of finding their way to a focus point; they are toyed with. This book of poetry shows the writer''s love and interest in religion, the sea, and the craft of sewing. She seems to card the wool of her past adventures. '
+              name: 'Ave, Materia'
+            -
+              brand: 'from Chuck Klosterman'
+              price: '19.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'New York Times bestselling author of Sex, Drugs, and Cocoa Puffs and Downtown Owl, "the Ethicist" of the New York Times Magazine, Chuck Klosterman returns to fiction with his second novel—an imaginative page-turner about a therapist and her unusual patient, a man who can render himself invisible.'
+              name: 'The Visible Man'
+          name: Books
+        -
+          products:
+            -
+              brand: 'from Dewalt'
+              price: '229.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Drill baby, drill! This new cordless drill will change the way you put holes in your walls. It features a world-class titanium bit set including Philips and flat-head screw adapters, a hole boar, and a dozen high-quality standard and metric bits. This is one drill you won''t want to leave out of your toolbox.'
+              name: 'Cordless Drill'
+            -
+              brand: 'from Qualtech'
+              price: '124.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'A good drill bit set will change your life. Well, it will at least make creating the perfect-sized holes for your screws, bolts, and other accessories easy. This drill bit set is diamond tipped for maximum durability and penetration. Whether you''re drilling into sheetrock or concrete, this bit set has you covered.'
+              name: 'Drill Bits'
+            -
+              brand: 'from Uline'
+              price: '1799.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Black tape is the handyman''s secret weapon. Don''t get caught working on a project without it. A role of this tape will change the way you fix things for the rest of your life. In fact, tape is like the force. There is a light side and a dark side, and it holds the world together.'
+              name: 'Black Tape'
+            -
+              brand: 'from Stanley'
+              price: '219.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Need to tighten a screw? This screwdriver is as must-have tool for the job. It is so versatile, you can use it with Philips or flat-head screws in tight spaces you can''t reach with normal screwdrivers. Interchangeable bits make it easy to find the perfect size for your needs. It''s magnetic, too!'
+              name: Screwdriver
+            -
+              brand: 'from Craftsman'
+              price: '99.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'Assembling Ikea furniture will never be the same! This Allen wrench set has every standard size you need to get the job done. Assembling that bookcase using the included directions is hard enough. Your Allen wrench set shouldn''t add to your list of problems. Try this set today and never again be left with spare parts.'
+              name: 'Allen Wrench'
+            -
+              brand: 'from Komelon'
+              price: '19.00'
+              image: 'gantry-media://home/header/img-01.jpg'
+              description: 'How does your measuring tape measure up? Does it go limp after a couple feet or run out of length before you''ve reached the end of what you''re trying to measure? Never worry about these problems ever again with this brand new roll of measuring tape! Tackle objects as small as a single millimeter or as long as a flatbed truck with ease.'
+              name: 'Measuring Tape'
+          name: Tools
+      apikey: ''
+  infolist-3806:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: 'fa fa-inbox'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Need it soon? Items delivered to your door the next day guaranteed.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Next day delivery'
+        -
+          icon: 'fa fa-dollar'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Do you like free? Orders of $100 or more gives you free shipping.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Free shipping'
+        -
+          icon: 'fa fa-refresh'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Where are you? Have tracking info. sent to your mobile phone.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Track it down'
+  owlpreview-1055:
+    title: 'Owl Preview'
+    attributes:
+      class: ''
+      presets: disabled
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      dots: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Designer
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Curtains
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 2'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Workout
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 3'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Acoustic
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 4'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Bestsellers
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 5'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: Machines
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 6'
+    block:
+      class: flush
+  simplecontent-6429:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'What our customers think'
+          author: ''
+          leading_content: 'Exceptionally good customer service. Probably the best online store I have ever shopped at.'
+          main_content: 'Tyler Jackson <span>Bought Adidas Shoes</span>'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'What our customers think'
+    block:
+      class: 'largepadding nomarginall'
+      variations: 'box6 equal-height'
+  custom-5911:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-content-array\">\n        <div class=\"g-grid\">\n            <div class=\"g-block\">\n                <div class=\"g-content\">\n                    <div class=\"g-array-item\">\n                        <div class=\"g-array-item-title\">\n                            <h3 class=\"g-item-title\"><a href=\n                            \"#\">\n                            Promote Your Online Store</a></h3>\n                        </div>\n                        <div class=\"g-array-item-details\">\n                            <span class=\"g-array-item-date\"><i class=\n                            \"fa fa-clock-o\"></i>24 Oct</span>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"g-grid\">\n            <div class=\"g-block\">\n                <div class=\"g-content\">\n                    <div class=\"g-array-item\">\n                        <div class=\"g-array-item-title\">\n                            <h3 class=\"g-item-title\"><a href=\n                            \"#\">\n                            15 Books for Entrepreneurs</a></h3>\n                        </div>\n                        <div class=\"g-array-item-details\">\n                            <span class=\"g-array-item-date\"><i class=\n                            \"fa fa-clock-o\"></i>25 Oct</span>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"g-grid\">\n            <div class=\"g-block\">\n                <div class=\"g-content\">\n                    <div class=\"g-array-item\">\n                        <div class=\"g-array-item-title\">\n                            <h3 class=\"g-item-title\"><a href=\n                            \"#\">\n                            Preparing for the Holidays</a></h3>\n                        </div>\n                        <div class=\"g-array-item-details\">\n                            <span class=\"g-array-item-date\"><i class=\n                            \"fa fa-clock-o\"></i>26 Oct</span>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"g-grid\">\n            <div class=\"g-block\">\n                <div class=\"g-content\">\n                    <div class=\"g-array-item\">\n                        <div class=\"g-array-item-title\">\n                            <h3 class=\"g-item-title\"><a href=\n                            \"#\">\n                            Credit Card Processing Tips</a></h3>\n                        </div>\n                        <div class=\"g-array-item-details\">\n                            <span class=\"g-array-item-date\"><i class=\n                            \"fa fa-clock-o\"></i>27 Oct</span>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>"
+    block:
+      class: 'largepadding nomargintop g-articleslist'
+  simplecontent-9567:
+    title: 'Get the latest product updates in your inbox!'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Subscribe to our newsletter and we’ll send you <span>special offers</span>'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Get the latest product updates in your inbox!'
+    block:
+      variations: center
+  newsletter-3789:
+    attributes:
+      layout: g-newsletter-aside-compact
+      style: g-newsletter-square
+      inputboxtext: 'Your email address'
+      buttonicon: 'fa fa-envelope-o'
+    block:
+      variations: center

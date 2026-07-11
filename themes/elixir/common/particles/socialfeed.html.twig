@@ -1,0 +1,46 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-socialfeed" data-socialfeed-id="{{ id }}" data-socialfeed-accesstoken="{{ particle.accesstoken }}" data-socialfeed-userid="{{ particle.user_id }}" data-socialfeed-source="{% if not particle.source or particle.source == 'particle' %}particle{% else %}{{ particle.source }}{% endif %}">
+
+
+        {% if particle.title %}
+            <div class="g-socialfeed-grid-item g-socialfeed-title">
+                {% if particle.uppertitle %}
+                    <span class="g-socialfeed-uppertitle">{{ particle.uppertitle|raw }}</span>
+                {% endif %}
+                {{ particle.title }}
+            </div>
+        {% endif %}
+
+        <div class="g-socialfeed-grid {{ particle.cols }}">
+            <div class="g-socialfeed-grid-sizer"></div>
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for item in particle.feed %}
+                    <div class="g-socialfeed-grid-item">
+                        <div class="g-socialfeed-grid-item-wrapper">
+                            {% if item.image %}
+                                <div class="g-socialfeed-grid-item-image">
+                                    <a data-rel="lightcase:gallery-{{ id }}" href="{{ url(item.image) }}" title="{{ item.title }}">
+                                        <img src="{{ url(item.image)|e }}" alt=""/>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.load('lightcase.init') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/socialfeed.init.js') }}"></script>
+{% endblock %}
+

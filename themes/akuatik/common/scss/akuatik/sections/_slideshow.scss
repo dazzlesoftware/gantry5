@@ -1,0 +1,101 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background-color: $slideshow-background;
+
+    .g-simplecontent-item-content-title {
+        font-weight: $font-weight-bold;
+    }
+
+    .g-simplecontent-item-leading-content {
+        color: $white;
+        margin-top: 0;
+        opacity: 0.5;
+    }
+
+    .g-slideshow-main-title {
+        a {
+            color: $slideshow-text-color; 
+            &:hover {
+                color: lighten($slideshow-text-color, 30%)
+            }
+        }
+    }
+
+    .g-social {
+        .g-social-items {
+            display: flex;
+            flex-direction: column;
+
+            @include breakpoint(mobile-only) {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+            }
+
+            a {
+                padding: 1rem;
+                border: 2px solid $slideshow-text-color;
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                width: 80px;
+                margin-bottom: 2rem;
+
+                @include breakpoint(mobile-only) {
+                    margin: 1rem;
+                }
+
+                &:nth-child(2) {
+                    border-radius: 156% 65% 150% 78% / 180% 112% 129% 49%;
+                }
+
+                &:nth-child(3) {
+                    border-radius: 50% 90% 90% 50% / 50% 50% 90% 90%;
+                }
+
+                &:hover {
+                    background: $slideshow-text-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+
+    .blobs {
+        .g-content {
+            @if $slideshow-background-image {
+                background-image: url($slideshow-background-image);
+                background-size: cover;
+                background-position: center;
+            }
+
+            border-radius: 1rem;
+            -webkit-backface-visibility:hidden;
+            backface-visibility:hidden;
+            
+        	.tilt & {
+        	    transform: rotate(-1deg);
+        	}
+
+            .dir-rtl.tilt & {
+                transform: rotate(1deg);
+            }
+        }
+
+        padding: $content-padding;
+    }
+
+    a {
+        color: $slideshow-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,214 @@
+// Header
+.g-casestudies-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    @include breakpoint(mobile-only) {
+        display: block;
+    }
+
+    // Title
+    .g-casestudies-title {
+        flex: 1;
+        @include breakpoint(mobile-only) {
+            flex: 0;
+        }
+        text-align: center;
+        @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
+        font-weight: $font-weight-bold;
+        color: $accent-color-3;
+    }
+
+    // Navigation
+    .g-casestudies-nav {
+        flex: 1;
+        @include breakpoint(mobile-only) {
+            flex: 0;
+        }
+        position: relative;
+
+        i {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            left: $content-margin;
+
+            @include breakpoint(mobile-only) {
+                display: block;
+            }
+        }
+
+        // Mobile menu
+        @include breakpoint(mobile-only) {
+            min-height: 6rem;
+            width: 100%;
+        }
+
+
+        .g-casestudies-nav-container {
+            display: flex;
+            justify-content: center;
+
+            // Mobile menu
+            @include breakpoint(mobile-only) {
+                flex-direction: column;
+                width: 50%;
+                padding: 5px 0;
+                position: absolute;
+                right: 0;
+                left: 0;
+                margin: 0 auto;
+                border: solid 1px #aaa;
+                background: $white;
+                z-index: 1;
+                margin-top: 1rem;
+            }
+        }
+
+        // Item
+        .g-casestudies-nav-item {
+            cursor: pointer;
+            padding: $content-margin $content-padding;
+            padding-bottom: $content-padding * 2;
+            font-weight: $font-weight-bold;
+            color: $accent-color-3;
+            position: relative;
+            &.selected, &:hover {
+                color: $base-text-color;
+
+                &:after {
+                    background: $base-text-color;
+                }
+            }
+            &:after {
+                position: absolute;
+                content: '';
+                width: 8px;
+                height: 8px;
+                background: transparent;
+                border-radius: 100%;
+                left: 45%;
+                bottom: 2rem;
+
+                @include breakpoint(mobile-only) {
+                    display: none;
+                }
+            }
+
+            @include breakpoint(mobile-only) {
+                display: none;
+                padding: $content-margin - 0.2 $content-padding + 0.5;
+            }
+            &.selected {
+                @include breakpoint(mobile-only) {
+                    display: block;
+                }
+            }
+        }
+
+        &:hover {
+            .g-casestudies-nav-item {
+                display: block;
+            }
+        }
+    }
+}
+
+// Grid Settings
+.g-casestudies-grid {
+
+    // Item & Item content
+    .g-casestudies-grid-item {
+        cursor: pointer;
+
+        a {
+            position: relative;
+            z-index: 10;
+        }
+
+        .g-casestudies-grid-item-content {
+            position: absolute;
+            margin: 0 auto;
+            top: $content-padding;
+            right: $content-padding;
+            text-align: right;
+            z-index: 20;
+            @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+            transition: color 0.5s;
+
+            .g-casestudies-grid-item-title {
+                font-weight: $font-weight-bold;
+            }
+        }
+        &:before {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            content: '';
+            z-index: 2;
+            transition: background-color 0.5s;
+        }
+        &:hover {
+            &:before {
+                background-color: transparentize($accent-color-2, 0.50);
+            }
+            .g-casestudies-grid-item-content {
+                color: $white;
+            }
+        }
+    }
+
+    // Column layout
+    // 2 Columns
+    &.cols-2 {
+        .g-casestudies-grid-item, .g-casestudies-grid-sizer, {
+            width: 50%;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+    // 3 Columns
+    &.cols-3 {
+        .g-casestudies-grid-item, .g-casestudies-grid-sizer, {
+            width: 33.3%;
+
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+    // 4 Columns
+    &.cols-4 {
+        .g-casestudies-grid-item, .g-casestudies-grid-sizer, {
+            width: 25%;
+
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+    // 4 Columns
+    &.cols-5 {
+        .g-casestudies-grid-item, .g-casestudies-grid-sizer, {
+            width: 20%;
+
+            @include breakpoint(tablet-range) {
+                width: 55%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 50%;
+            }
+
+        }
+    }
+}

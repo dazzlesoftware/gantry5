@@ -1,0 +1,27 @@
+name: Footer Styles
+description: Footer styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/footer/bg-01.svg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#cccccc"
+    link-color:
+      type: input.colorpicker
+      label: Link Color
+      default: "#ffedab"
+    link-hover-color:
+      type: input.colorpicker
+      label: Link Hover Color
+      default: "#5fdede"
+

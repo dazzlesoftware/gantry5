@@ -1,0 +1,94 @@
+name: Social Feed
+description: Display instagram feed.
+type: particle
+icon: fa-th
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            source:
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform, instagram or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                instagram: Instagram
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            user_id:
+              overridable: false
+              type: input.text
+              label: Instagram User ID
+              description: Provide Instagram User ID
+              placeholder: Paste user ID here
+
+            accesstoken:
+              overridable: false
+              type: input.text
+              label: Instagram User Access Token
+              description: Provide Instagram User Access Token.
+              placeholder: Paste access token here
+
+            cols:
+              overridable: false
+              type: select.select
+              label: Grid Column
+              description: Select the grid column amount
+              placeholder: 'Select...'
+              default: cols-4
+              options:
+                cols-4: 4 Columns
+                cols-8: 8 Columns
+                cols-10: 10 Columns
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+
+          fields:
+            .feed:
+                type: collection.list
+                array: true
+                label: Feed
+                description: Add feed content.
+                value: feed
+                ajax: true
+
+                fields:
+                    .image:
+                        type: input.imagepicker
+                        label: Image
+                        description: Select desired image.
+
+                    .title:
+                        type: input.text
+                        label: Title
+                        description: Enter case title
+

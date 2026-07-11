@@ -1,0 +1,12 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-iconmenu {{ particle.class|e }}">
+        {% for item in particle.items %}
+            <a target="{{ particle.target }}" href="{{ item.link|e }}" title="{{ item.text }}" class="g-iconmenu-item">
+               {% if item.icon %}<span class="g-iconmenu-icon {{ item.icon }}"></span>{% endif %}
+               {% if item.text %}<span class="g-iconmenu-text">{{ item.text }}</span>{% endif %}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

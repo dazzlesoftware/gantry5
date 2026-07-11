@@ -1,0 +1,39 @@
+#g-expandedtop {
+    background: $expandedtop-background;
+    color: $expandedtop-text-color; 
+	&.rt-overlay-light {
+		h2.title {
+			color: darken($expandedtop-text-color, 15%);
+		}
+	}
+	&.rt-overlay-dark {
+		h2.title {
+			color: lighten($expandedtop-text-color, 35%);
+		}
+	}    
+}    
+
+// Pricing Page
+.fp-pricing-table {
+	width: 85%;
+	margin: 0 auto;
+
+	@include breakpoint(tablet-range) {
+		width: 100%;
+	}
+
+    .g-pricingtable-4-col {
+    	.g-pricingtable-col-item {
+	    	@include breakpoint(desktop-range) {
+	        	width: 50%;
+	    	}
+	    }	
+    }	
+}
+
+@media print {
+	#g-expandedtop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

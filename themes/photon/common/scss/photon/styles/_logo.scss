@@ -1,0 +1,25 @@
+.g-logo {
+  background: $accent-color-1;
+  position: absolute;
+  padding: 3rem;
+  @include breakpoint(mobile-only) {
+    padding: 2rem;
+  }
+  top: 0;
+  @include breakpoint(mobile-only) {
+    top: -0.5rem;
+  }
+  box-shadow: 0px 0px 20px rgba(0,0,0, 0.6);
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: $font-weight-regular;
+  text-transform: uppercase;
+  vertical-align: middle;
+  letter-spacing: 0.1rem;
+  margin-right: -0.25rem;
+  z-index: 10;
+  @include breakpoint(small-mobile-range) {
+    font-weight: $font-weight-bold;
+  }
+}

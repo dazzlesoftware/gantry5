@@ -1,0 +1,35 @@
+#g-utility {
+    color: $utility-text-color;
+    background: $utility-background;
+
+    // Grid Vertical Alignment
+    .g-grid {
+        align-items: center;
+    }
+
+    a {
+        color: $extension-text-color;
+    }
+
+    .g-simplecontent-item-main-content {
+        color: transparentize($slideshow-text-color, 0.20);
+    }
+    .g-simplecontent-layout-header {
+        .g-simplecontent-item-content-title {
+            color: $white;
+            @include responsive-font($responsive-font-size + 1.2, $core-font-size + 0.8, false, false);
+            line-height: $core-line-height - 0.2;
+            font-weight: $font-weight-semibold;
+        }
+    }
+    .g-infolist .g-infolist-item-icon {
+        font-size: $core-font-size + 1;
+    }
+}
+
+@media print {
+    #g-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,125 @@
+name: Booking Form
+description: Create simple booking forms.
+type: particle
+icon: fa-suitcase
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: Please note that you need <a href="https://getsimpleform.com/" target="_blank">Simple Form</a> token for Booking Form to work. Obtaining token is easy and free. After registration, enter your token in field below.
+
+    token:
+      type: input.text
+      label: Simple Form token
+      description: Please put your Simple Form token here.
+      placeholder: Simple Form token
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+
+    button1:
+      type: input.text
+      label: Submit Button 1 Text
+      description: Label for Submit Button 1.
+      default: Submit
+
+    button2:
+      type: input.text
+      label: Submit Button 2 Text
+      description: Label for Submit Button 2.
+      default: Submit
+
+    name:
+      type: input.text
+      label: Name Label
+      description: Label for Name form field.
+      default: Name
+
+    name_placeholder:
+      type: input.text
+      label: Name Placeholder
+      description: Placeholder for Name form field.
+      default: Please enter your name
+
+    email:
+      type: input.text
+      label: Email Label
+      description: Label for Email form field.
+      default: Email
+
+    email_placeholder:
+      type: input.text
+      label: Email Placeholder
+      description: Placeholder for Email form field.
+      default: Please enter your email
+
+    thankyou:
+      type: textarea.textarea
+      label: Thank You Message
+      description: Customize your Thank You message.
+      default: Thank you for making your reservation. We will be contacting you soon about the details.
+
+    error:
+      type: textarea.textarea
+      label: Error Message
+      description: Customize your Error message.
+      default: Failed to send your reservation. Please try later or contact administrator.
+
+    items:
+      type: collection.list
+      array: true
+      label: Booking Form Items
+      description: Add Booking Form items.
+      value: name
+      ajax: true
+
+      fields:
+        .type:
+          type: select.select
+          label: Type
+          description: Select field type.
+          options:
+            text: Text
+            spinner: Number input with spinners
+            datepicker: Date Picker
+        .label:
+          type: input.text
+          label: Label
+          description: Select field label.
+        .placeholder:
+          type: input.text
+          label: Placeholder
+          description: Select field placeholder (if applicable).
+        .required:
+          type: select.select
+          label: Required
+          description: Make field required to fill.
+          default: enabled
+          options:
+            enabled: Yes
+            disabled: No
+        .min:
+          type: input.number
+          label: Minimum Value (Spinner only)
+          description: Minimum value.
+          default: 1
+
+        .max:
+          type: input.number
+          label: Maximum Value (Spinner only)
+          description: Maximum value.
+          default: 9

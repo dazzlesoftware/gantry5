@@ -1,0 +1,101 @@
+{% extends '@particles/owlcarousel.html.twig' %}
+
+{# Standard Layout #}
+{% block layout %}
+    <div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }} g-owlcarousel-{{ particle.displayitems }}-items">
+        {% if particle.title or particle.description %}
+        <div class="g-grid">
+            <div class="g-block">
+                <div class="g-content g-owlcarousel-header">
+                    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+                    {% if particle.description %}<div class="g-owlcarousel-description">{{ particle.description|raw }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div id="g-owlcarousel-{{ id }}" data-owlcarousel-id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+
+            {% for item in particle.items %}
+                <div class="item">
+                    {% if item.image %}
+                        <div class="image">
+                            <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+                        </div>
+                    {% endif %}
+
+                    {% if item.video and item.videosource == 'external' %}
+                    <div class="video" id="video-item-{{ loop.index }}">
+                        <a class="owl-video" href="{{ url(item.video)|e }}"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if item.videolocal and item.videosource == 'local' %}
+                    <div class="video" id="video-item-{{ loop.index }}">
+                        <video {% if item.videothumb %}poster="{{ url(item.videothumb)|e }}"{% endif %}  {% if particle.videoloop == 'enabled' %}loop{% endif %}>
+                            <source src="{{ url(item.videolocal)|e }}" type="video/mp4">
+                        </video>
+                        <div class="owl-videolocal-play-icon"></div>
+                    </div>
+                    {% endif %}
+
+                    {% if item.subtitle or item.title or item.desc or item.link or item.author %}
+                        <div class="g-owlcarousel-content">
+                            {% if item.subtitle %}<span class="g-owlcarousel-item-subtitle">{{ item.subtitle|raw }}</span>{% endif %}
+                            {% if item.title %}<div class="g-owlcarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                            {% if item.desc %}<div class="g-owlcarousel-item-desc">{{ item.desc|raw }}</div>{% endif %}
+
+                            {% if item.link %}
+                                <div class="g-owlcarousel-item-link">
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button button {{ item.buttonclass|e }}" href="{{ item.link|e }}">
+                                        {{ item.linktext|raw }}
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            {% if item.author %}
+                                <div class="g-owlcarousel-author">
+                                    {% if item.authorimage %}
+                                        <span class="author-image">
+                                    <img src="{{ url(item.authorimage)|e }}" alt="{{ item.author|e }}" />
+                                </span>
+                                    {% endif %}
+                                    {% if item.author %}<span class="author-name">{{ item.author|e }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-{{ id }}');
+            owl{{ id|replace({'-':'_'}) }}.on('changed.owl.carousel', function(event) {
+                var currentItem = "#g-owlcarousel-panel-{{ id }} #g-owlcarousel-panel-" + (event.item.index + 1);
+                jQuery(currentItem).trigger("click");
+            })
+            {% if particle.nav == 'enabled' %}
+            jQuery('#g-owlcarousel-{{ id }}-controls .owl-next').click(function() {
+                owl{{ id|replace({'-':'_'}) }}.trigger('next.owl.carousel');
+            })
+            jQuery('#g-owlcarousel-{{ id }}-controls .owl-prev').click(function() {
+                owl{{ id|replace({'-':'_'}) }}.trigger('prev.owl.carousel');
+            })
+            {% endif %}
+        });
+
+        var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-owlcarousel-panel-{{ id }} .g-owlcarousel-panel');
+        {% for item in particle.items %}
+        jQuery("#g-owlcarousel-panel-{{ id }} #g-owlcarousel-panel-{{ loop.index }}").click(function(event) {
+            owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
+            jQuery(this).addClass('selected');
+        });
+        {% endfor %}
+    </script>
+{% endblock %}

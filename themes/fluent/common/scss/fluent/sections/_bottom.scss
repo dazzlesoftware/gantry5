@@ -1,0 +1,24 @@
+#g-bottom {
+    background: $bottom-background;
+    color: $bottom-text-color;
+
+    // Title
+    .g-title {
+        @include responsive-font($responsive-font-size + 0.5, $core-font-size + 1, false, false);
+    }
+
+    // Pricing Table particle
+    .g-pricingtable-particle {
+        .g-pricingtable-headertext {
+            @include responsive-font($responsive-font-size - 0.2, $core-font-size + 0.2, false, false);
+            text-align: center;
+        }
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

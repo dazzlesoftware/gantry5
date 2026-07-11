@@ -1,0 +1,23 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+
+    &.fp-above {
+        padding-top: 0 !important;
+    }
+
+    @if $above-section-clipping {
+        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+
+        @include breakpoint(mobile-only) {
+            clip-path: polygon(0 3%, 100% 0, 100% 100%, 0% 100%);
+        }
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

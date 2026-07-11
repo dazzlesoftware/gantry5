@@ -1,0 +1,19 @@
+name: Navigation Styles
+description: Navigation styles for the theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/navigation/background-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

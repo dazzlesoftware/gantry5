@@ -1,0 +1,22 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background; 
+
+    h1, h2, h3, h4, h5, h6 {
+		color: darken($showcase-text-color, 25%);
+	}
+}
+
+.fp-showcase {
+	.readon {
+		text-transform: uppercase;
+        font-size: 1em;
+	}
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

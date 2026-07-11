@@ -1,0 +1,58 @@
+// Styling
+.g-comparisontable-particle {
+    h2.g-title {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
+        line-height: normal;
+        margin-bottom: 3rem;
+        margin: 0 auto;
+        margin-bottom: $content-padding;
+        font-weight: $font-weight-extrabold;
+        text-align: center;
+    }
+}
+.g-comparisontable-headertext {
+    font-weight: $font-weight-regular;
+    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+    text-align: center;
+    margin-bottom: $content-padding;
+}
+
+.g-comparisontable {
+    display: flex;
+    flex-direction: column;
+
+    .g-comparisontable-row {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        padding: $content-margin 0;
+
+        .g-comparisontable-column {
+            flex: 1;
+            text-align: center;
+            @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+
+            .fa {
+                font-size: 1.5rem;
+            }
+            
+            &.col-1 {
+                text-align: left;;
+            }
+
+            &.accent-color-1 {
+                color: $accent-color-1;
+            }
+            &.accent-color-2 {
+                color: $accent-color-2;
+            }
+            &.bold{
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+}
+
+

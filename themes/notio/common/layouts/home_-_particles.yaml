@@ -1,0 +1,1313 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1503487537
+layout:
+  top:
+    -
+      - system-messages-1675
+  navigation: {  }
+  /container-header/:
+    -
+      -
+        'sidebar-top 30':
+          -
+            - cards-8168
+      -
+        '/slideshow/ 70':
+          -
+            - newsslider-7768
+  /container-main/:
+    -
+      -
+        'sidebar 30':
+          -
+            - newsletter-4299
+          -
+            - videocarousel-8838
+          -
+            - newstabs-8499
+      -
+        '/header/ 50':
+          -
+            - articletabs-6480
+        /above/: {  }
+        /feature/: {  }
+        /showcase/:
+          -
+            - contentshowcase-6978
+        /expanded/: {  }
+        /extension/: {  }
+        /utility/: {  }
+        /bottom/:
+          -
+            - imagegrid-2121
+      -
+        'aside 20':
+          -
+            - authorslist-1084
+          -
+            - polldaddy-1639
+          -
+            - logo-4894
+  /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  sidebar-top:
+    type: section
+    title: 'Sidebar Top'
+    attributes:
+      class: expand-sidebar-bg
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-slideshow
+  container-header:
+    attributes:
+      boxed: '3'
+      class: section-horizontal-paddings
+      extra: {  }
+  sidebar:
+    type: section
+    attributes:
+      class: expand-sidebar-bg
+  header:
+    attributes:
+      boxed: '3'
+      class: fp-header
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-above
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-feature
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-showcase
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-expanded
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-extension
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-utility
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-bottom
+  aside:
+    attributes:
+      class: fp-aside
+    block:
+      fixed: '1'
+  container-main:
+    attributes:
+      boxed: '3'
+      class: section-horizontal-paddings
+      extra: {  }
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings fp-footer'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  cards-8168:
+    attributes:
+      class: ''
+      title: ''
+      columns: '1'
+      subcontents:
+        -
+          headline: 'A New News Template from RocketTheme'
+          description: 'Notio is a beautifully-designed magazine and news template built on the powerful Gantry 5 framework. Feature packed and ready to deploy!'
+          img: 'gantry-media://home/sidebar-top/img-01.jpg'
+          signature: 'gantry-media://home/sidebar-top/signature-01.png'
+          fullname: 'Jane Doe'
+          tag: 'Editor in Chief'
+          title: Welcome!
+    block:
+      variations: 'box2 nomarginall'
+  newsslider-7768:
+    title: 'News Slider'
+    attributes:
+      fixedheight: '200'
+      items:
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          author: 'Taylor Jackson'
+          date: '2017-08-06'
+          link: ''
+          categoryname: Blog
+          categorylink: ''
+          title: 'Display Your Best Content with Gantry 5'
+        -
+          image: 'gantry-media://home/slideshow/img-02.jpg'
+          author: 'Katie Rogers'
+          date: '2017-08-05'
+          link: ''
+          categoryname: Blog
+          categorylink: ''
+          title: 'Generate Subscribers with the Newsletter'
+        -
+          image: 'gantry-media://home/slideshow/img-03.jpg'
+          author: 'Mike Ross'
+          date: '2017-08-04'
+          link: ''
+          categoryname: Blog
+          categorylink: ''
+          title: 'Showcase Video Content in a Video Carousel'
+        -
+          image: 'gantry-media://home/slideshow/img-04.jpg'
+          author: 'Taylor Jackson'
+          date: '2017-08-03'
+          link: ''
+          categoryname: Blog
+          categorylink: ''
+          title: 'Article Tabs Drives Traffic to Your Latest Content'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          author: 'Katie Rogers'
+          date: '2017-08-02'
+          link: ''
+          categoryname: Blog
+          categorylink: ''
+          title: 'Highlight Quotes and Information with Cards'
+        -
+          image: 'gantry-media://home/slideshow/img-02.jpg'
+          author: 'Mike Ross'
+          date: '2017-08-01'
+          link: ''
+          categoryname: Blog
+          categorylink: ''
+          title: 'News Tabs Make Finding New Articles a Breeze'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '6'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          title:
+            limit: '50'
+          date:
+            enabled: published
+            format: 'd M'
+          category:
+            enabled: link
+    block:
+      variations: 'nopaddingall nomarginall'
+  newsletter-4299:
+    attributes:
+      title: Newsletter
+      headtext: 'Enter your email below and never miss another news from Headline. No spam! Unsubscribe anytime!'
+      inputboxtext: 'Your email...'
+      buttontext: ''
+      buttonclass: ''
+    block:
+      variations: box5
+  videocarousel-8838:
+    title: 'Video Carousel'
+    attributes:
+      title: 'Video Carousel'
+      description: 'Create a simple and easy way for visitors to find your video content. Supports YouTube, Local files, and external URLs.'
+      items:
+        -
+          caption: 'Evolution of Dance'
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=dMH0bHeiRNg'
+          posterimage: ''
+          loop: enabled
+          controls: enabled
+          info: disabled
+          related: disabled
+          title: 'Video 1'
+        -
+          caption: 'David After the Dentist'
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=txqiwrbYGrs'
+          posterimage: ''
+          loop: enabled
+          controls: enabled
+          info: disabled
+          related: disabled
+          title: 'Video 2'
+        -
+          caption: Friday
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=kfVsfOSbJY0'
+          posterimage: ''
+          loop: enabled
+          controls: enabled
+          info: disabled
+          related: disabled
+          title: 'Video 3'
+        -
+          caption: 'Gangnam Style'
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=9bZkp7q19f0'
+          posterimage: ''
+          loop: enabled
+          controls: enabled
+          info: disabled
+          related: disabled
+          title: 'Video 4'
+        -
+          caption: 'Styles Tab'
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=I0f4bXxZkVQ'
+          posterimage: ''
+          loop: enabled
+          controls: enabled
+          info: disabled
+          related: disabled
+          title: 'Video 5'
+        -
+          caption: 'Foo Fighters'
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=EqWRaAF6_WY'
+          posterimage: ''
+          loop: enabled
+          controls: enabled
+          info: disabled
+          related: disabled
+          title: 'Video 6'
+  newstabs-8499:
+    title: 'News Tabs'
+    attributes:
+      tabs:
+        -
+          items:
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Taylor Jackson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Add Images, Author, Date, Content, and Links'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Generate Items Dynamically from the CMS or Manually Create Them'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: 'News Tabs'
+        -
+          items:
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Generate Items Dynamically from the CMS or Manually Create Them'
+            -
+              image: ''
+              author: 'Tim Arango'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Make it Easier than Ever for Visitors to Find Interesting Content'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Separate Content into Multiple Easy-to-Navigate Categories'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Europe
+        -
+          items:
+            -
+              image: ''
+              author: 'Tim Arango'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Make it Easier than Ever for Visitors to Find Interesting Content'
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Separate Content into Multiple Easy-to-Navigate Categories'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Politics
+        -
+          items:
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Separate Content into Multiple Easy-to-Navigate Categories'
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Taylor Jackson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Add Images, Author, Date, Content, and Links'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Business
+        -
+          items:
+            -
+              image: ''
+              author: 'Taylor Jackson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Add Images, Author, Date, Content, and Links'
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Generate Items Dynamically from the CMS or Manually Create Them'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Tech
+        -
+          items:
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Generate Items Dynamically from the CMS or Manually Create Them'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Separate Content into Multiple Easy-to-Navigate Categories'
+            -
+              image: ''
+              author: 'Tim Arango'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Make it Easier than Ever for Visitors to Find Interesting Content'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Science
+        -
+          items:
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Separate Content into Multiple Easy-to-Navigate Categories'
+            -
+              image: ''
+              author: 'Tim Arango'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Make it Easier than Ever for Visitors to Find Interesting Content'
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Sports
+        -
+          items:
+            -
+              image: ''
+              author: 'Taylor Jackson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Add Images, Author, Date, Content, and Links'
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Generate Items Dynamically from the CMS or Manually Create Them'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Health
+        -
+          items:
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Tim Arango'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Make it Easier than Ever for Visitors to Find Interesting Content'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Separate Content into Multiple Easy-to-Navigate Categories'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Style
+        -
+          items:
+            -
+              image: ''
+              author: 'Taylor Jackson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Add Images, Author, Date, Content, and Links'
+            -
+              image: ''
+              author: 'Ben Stinson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Easily Creating Tabbed News Headlines in Seconds'
+            -
+              image: ''
+              author: 'Robert Pear'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Generate Items Dynamically from the CMS or Manually Create Them'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: ''
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: Travel
+  articletabs-6480:
+    title: 'Article Tabs'
+    attributes:
+      tabs:
+        -
+          items:
+            -
+              image: 'gantry-media://home/header/img-01.jpg'
+              author: 'Tim Arango'
+              date: '2017-08-08'
+              content: 'Content Tabs packs a ton of content into a small space. Create custom content items or generate directly from the CMS.'
+              link: ''
+              title: 'Beautifully Display Content on Your Site with Content Tabs'
+            -
+              image: 'gantry-media://home/header/img-02.jpg'
+              author: 'Katie Rogers'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Create Content with Images and Text with Simple Form Fields'
+            -
+              image: 'gantry-media://home/header/img-03.jpg'
+              author: 'Taylor Jackson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Dynamically Generate Content Directly from Your CMS Articles'
+            -
+              image: 'gantry-media://home/header/img-04.jpg'
+              author: 'Pawel Kadysz'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Display Items in Tabbed Categories for Easy Navigation'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display_first:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: 'Article Tabs'
+        -
+          items:
+            -
+              image: 'gantry-media://home/header/img-01.jpg'
+              author: 'Tim Arango'
+              date: '2017-08-08'
+              content: 'Find the perfect font using Gantry 5''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
+              link: ''
+              title: 'Search From Hundreds of Fonts with Real-time Preview'
+            -
+              image: 'gantry-media://home/header/img-02.jpg'
+              author: 'Jane Doe'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Switch Between Fonts in Seconds'
+            -
+              image: 'gantry-media://home/header/img-03.jpg'
+              author: 'Johnny Example'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Preview Multiple Fonts in Real Time'
+            -
+              image: 'gantry-media://home/header/img-04.jpg'
+              author: 'Janet Doe'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Apply Fonts Globally or to Specific Outlines'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display_first:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: 'Font Picker'
+        -
+          items:
+            -
+              image: 'gantry-media://home/header/img-01.jpg'
+              author: 'John Doe'
+              date: '2016-12-01'
+              content: 'Gantry 5''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
+              link: ''
+              title: 'Browse Over 670 Font Awesome Icons'
+            -
+              image: 'gantry-media://home/header/img-02.jpg'
+              author: 'Johnny Example'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Search for Icons in Real Time'
+            -
+              image: 'gantry-media://home/header/img-03.jpg'
+              author: 'Jane Doe'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Give Your Content a Modern Touch in Seconds'
+            -
+              image: 'gantry-media://home/header/img-04.jpg'
+              author: 'Jack Johnson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Improve Site Navigation with Easily Recognized Icons'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display_first:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: 'Icon Picker'
+        -
+          items:
+            -
+              image: 'gantry-media://home/header/img-01.jpg'
+              author: 'John Doe'
+              date: '2016-12-01'
+              content: 'Whether you''re selecting background colors for your website or adjusting the hue of a font in a single particle, the Color Picker makes it easy.'
+              link: ''
+              title: 'Customize Your Website with Gantry''s Color Picker'
+            -
+              image: 'gantry-media://home/header/img-02.jpg'
+              author: 'Johnny Example'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Find the Right Color in Seconds'
+            -
+              image: 'gantry-media://home/header/img-03.jpg'
+              author: 'Jane Doe'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Over 16 Million Colors to Choose From'
+            -
+              image: 'gantry-media://home/header/img-04.jpg'
+              author: 'Jack Nicholson'
+              date: ''
+              content: ''
+              link: ''
+              title: 'Adjust Hue, Saturation, and Opacity with Ease'
+          article:
+            filter:
+              categories: ''
+              articles: ''
+              featured: include
+            limit:
+              total: '2'
+              start: '0'
+            sort:
+              orderby: publish_up
+              ordering: ASC
+            display_first:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+            display:
+              image:
+                enabled: intro
+              text:
+                type: intro
+                limit: ''
+                formatting: text
+              title:
+                enabled: show
+                limit: ''
+              date:
+                enabled: published
+                format: 'l, F d, Y'
+              author:
+                enabled: show
+          title: 'Color Picker'
+  contentshowcase-6978:
+    title: 'Content Showcase'
+    attributes:
+      source: particle
+      items:
+        -
+          image: 'gantry-media://home/showcase/img-01.jpg'
+          author: 'Super User'
+          content: 'Notio from RocketTheme brings a modern, content-focused design and advanced CMS integration to Gantry 5.'
+          link: ''
+          linklabel: ''
+          title: 'Notio is Perfect for News and Magazine-style Websites'
+        -
+          image: ''
+          author: 'Super User'
+          content: ''
+          link: ''
+          linklabel: ''
+          title: 'Get More Done with Notio''s Premium Content Particles'
+        -
+          image: ''
+          author: 'Super User'
+          content: ''
+          link: ''
+          linklabel: ''
+          title: 'Create a Visually Stunning Website in No Time'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '3'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+  imagegrid-2121:
+    title: 'Image Grid'
+    attributes:
+      class: ''
+      title: ''
+      desc: ''
+      cols: g-imagegrid-6cols
+      layout: g-imagegrid-standard
+      album: ''
+      imagegridsets:
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-01.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 1'
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-02.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Column 1'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-03.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 1'
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-04.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Column 2'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-05.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 1'
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-06.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Column 3'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-07.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 1'
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-08.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Column 4'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-09.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 1'
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-10.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Column 5'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-11.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 1'
+            -
+              subtitle: ''
+              image: 'gantry-media://home/bottom/img-12.jpg'
+              icon: 'fa fa-search'
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Column 6'
+    block:
+      class: flush
+  authorslist-1084:
+    title: 'Authors List'
+    attributes:
+      class: ''
+      title: 'Our writers'
+      pretext: 'Our writers have over ten years of experience in writing, blogging, and broadcasting.'
+      posttext: 'We’re hiring! Want to work with us? Write a short email and <a href="#">send it here.</a>'
+      items:
+        -
+          image: 'gantry-media://home/aside/img-02.jpg'
+          specialty: 'Tech News'
+          desc: ''
+          link: '#'
+          name: 'Charles Owens'
+        -
+          image: 'gantry-media://home/aside/img-04.jpg'
+          specialty: 'World & Politics'
+          desc: ''
+          link: '#'
+          name: 'Edward Schultz'
+    block:
+      class: horizontal-line
+  polldaddy-1639:
+    title: 'Polldaddy Voting'
+    attributes:
+      class: ''
+      title: 'Your opinion'
+      pollid: '9808305'
+    block:
+      class: horizontal-line
+  logo-4894:
+    title: Ad
+    attributes:
+      image: 'gantry-media://home/aside/ad.png'
+      class: ''

@@ -1,0 +1,36 @@
+.g-charts {
+    text {
+        font-family: get-font-family($font-family-default) !important;
+        font-weight: $font-weight-medium !important;
+        font-size: $core-font-size !important;
+    }
+}
+
+// Charts Core
+.morris-hover {
+    position: absolute;
+    z-index: 1000;
+
+    &.morris-default-style {
+        border-radius: $border-radius;
+        padding: 6px;
+        color: $white;
+        background: $base-text-color;
+
+        font-family: get-font-family($font-family-default) !important;
+        font-size: 12px;
+        text-align: center;
+
+        .morris-hover-row-label {
+            font-weight: $font-weight-bold;
+            margin: 0.25em 0;
+        }
+
+        .morris-hover-point {
+            white-space: nowrap;
+            margin: 0.1em 0;
+            color: $white !important;
+        }
+    }
+
+}

@@ -1,0 +1,76 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#f04353'
+    - '#f95620'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#666666'
+      text-active-color: '#232529'
+    accent:
+      color-1: '#f04353'
+      color-2: '#f95620'
+    menustyle:
+      text-color: '#666666'
+      text-color-active: '#232529'
+      sublevel-text-color: 'rgba(255, 255, 255, 0.8)'
+      sublevel-text-color-active: '#ffffff'
+      sublevel-background: '#232529'
+    font:
+      family-default:   'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:     'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:     'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: '#ffffff'
+      text-color: '#666666'
+    navigation:
+      background: '#ffffff'
+      text-color: '#666666'
+    slideshow:
+      background: '#f5f5f5'
+      text-color: '#666666'
+    header:
+      background: '#f5f5f5'
+      text-color: '#666666'
+    above:
+      background: '#ffffff'
+      text-color: '#666666'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#f5f5f5'
+      text-color: '#666666'
+    feature:
+      background: '#f5f5f5'
+      text-color: '#666666'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#ffffff'
+      text-color: '#666666'
+    extension:
+      background: '#f5f5f5'
+      text-color: '#666666'
+    bottom:
+      background: '#ffffff'
+      text-color: '#666666'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#f5f5f5'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#000000'
+      text-color: '#87888e'
+      toggle-color: '#666666'
+    breakpoints:
+      large-desktop-container: 75rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem

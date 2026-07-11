@@ -1,0 +1,14 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+    margin: 2rem ($content-margin + $content-padding);
+    box-shadow: $base-content-shadow;
+    position: relative;
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

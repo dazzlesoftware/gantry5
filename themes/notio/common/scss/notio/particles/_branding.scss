@@ -1,0 +1,19 @@
+.g-branding {
+    @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+
+    @include breakpoint(mobile-only) {
+      text-align: center;
+    }
+
+    .dir-rtl & {
+        direction: ltr;
+    }
+
+    a {
+        color: $base-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+}

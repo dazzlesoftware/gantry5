@@ -1,0 +1,95 @@
+name: Content Tabs
+description: Displays Content Tabs.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the particle title text.
+      placeholder: Enter title
+
+    animation:
+      type: select.select
+      label: Animation Type
+      description: Set the animation type.
+      default: right
+      options:
+        left: Slide Left
+        right: Slide Right
+        up: Slide Up
+        down: Slide Down
+        fade: Fade
+        toggle: Toggle
+
+    items:
+      type: collection.list
+      array: true
+      label: Content Tabs Items
+      description: Content Tabs item to display.
+      value: name
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Enter the title
+        .linklabel:
+          type: input.text
+          label: Read More Text
+          description: Specify the read more text.
+          placeholder: 'Read More'
+        .link:
+          type: input.text
+          label: Read More Link
+          description: Specify the Read More link address.
+        .content:
+          type: textarea.textarea
+          label: Tab Content
+          description: Customize the tab content.
+          placeholder: Enter your custom content here.
+
+        icons:
+          type: collection.list
+          array: true
+          label: Icons
+          description: Create each item to appear in the content row.
+          value: name
+          ajax: true
+
+          fields:
+            .icon:
+              type: input.icon
+              label: Icon
+              description: Select the icon.
+            .subtext:
+              type: input.text
+              label: Subtext
+              description: Enter the subtext.  
+            .aos:
+              type: input.text
+              label: AOS Class
+              description: Enter AOS class.
+            .delay:
+              type: input.text
+              label: AOS Delay
+              description: Values from 0 to 3000, with step 50ms
+              default: '0'              

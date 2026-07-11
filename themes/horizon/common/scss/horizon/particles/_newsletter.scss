@@ -1,0 +1,176 @@
+.g-newsletter-particle {
+
+    // General
+    @include breakpoint(mobile-only) {
+        text-align: center;
+
+        .title {
+            text-align: center;
+        }
+    }
+    .g-newsletter {
+        .g-newsletter-headtext {
+            margin-bottom: $content-margin * 3;
+            font-family: get-font-family($font-family-title);
+            @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.2, false, false);
+            font-weight: $font-weight-semibold;
+            padding-bottom: $content-padding;
+            span {
+                background-color: $accent-color-1;
+            }
+
+            .box1 & {
+                color: $white;
+            }
+
+            .box2 & {
+                color: $white;
+            }
+
+            .fa {
+                font-size: $core-font-size + 2;
+            }
+        }
+
+        .g-newsletter-inputbox {
+            position: relative;
+            border: none;
+
+            input {
+                text-align: left;
+                padding: ($content-margin + 0.1);
+                font-weight: $font-weight-regular;
+                border: 0 none;
+                background: $white;
+                margin-bottom: 0;
+                line-height: normal;
+                font-size: $core-font-size;
+                color: $base-text-color;
+                border: 0 none;
+                border-radius: 0;
+
+                &:hover {
+                    border: 0 none;
+                }
+
+
+                @include breakpoint(mobile-only) {
+                    margin-bottom: 5px;
+                }
+
+                .dir-rtl & {
+                    text-align: right;
+                }
+            }
+        }
+
+        .g-newsletter-button {
+            .g-newsletter-button-submit {
+                line-height: normal;
+                font-size: $core-font-size;
+                padding: ($content-margin + 0.1);
+                border: 0 none;
+                .dir-rtl & {
+                    .fa {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                @include breakpoint(desktop-range) {
+                    text-align: center;
+                }
+
+                @include breakpoint(tablet-range) {
+                    text-align: center;
+                }
+            }
+
+            .g-newsletter-button-text {
+                vertical-align: middle;
+            }
+        }
+
+        &.g-newsletter-stack {
+            .g-newsletter-form-wrapper {
+                text-align: center;
+
+                .g-newsletter-inputbox {
+                    width: 50%;
+                    margin-bottom: 10px;
+                    margin-right: 0;
+                    padding: 0;
+                }
+
+                .g-newsletter-button {
+                    width: 100%;
+
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        &.g-newsletter-aside {
+            .g-newsletter-form-wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                .g-newsletter-inputbox,
+                .g-newsletter-button {
+                    flex: 0 1 auto;
+                    min-width: 0;
+                    min-height: 0;
+                    margin: 0;
+
+                    @include breakpoint(mobile-only) {
+                        margin: 1rem 0 0;
+                    }
+
+                    input,
+                    .g-newsletter-button-submit {
+                        margin: 0;
+                    }
+                }
+
+                .g-newsletter-button {
+                    width: auto;
+                }
+
+                .g-newsletter-inputbox {
+                    width: 50%;
+                }
+
+                @include breakpoint(mobile-only) {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
+
+#mc_embed_signup {
+    &.g-newsletter-aside {
+        div {
+            &.mce_inline_error {
+                position: absolute;
+                top: 4.5rem;
+                padding-left: 0 !important;
+            }
+        }
+    }
+
+    div {
+        &.mce_inline_error {
+            background: none !important;
+            font-size: 0.75rem;
+            color: inherit !important;
+        }
+
+        &#mce-responses {
+            margin-top: 10px;
+        }
+    }
+}

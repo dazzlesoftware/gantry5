@@ -1,0 +1,48 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+
+    .g-simplecontent {
+        .g-simplecontent-item-content-title {
+            text-transform: uppercase;
+            font-size: $core-font-size + 0.2;
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size;
+            }
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size;
+            }
+            opacity: 0.5;
+        }
+        .g-simplecontent-item-leading-content {
+            font-size: $core-font-size + 1.8;
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size + 1;
+            }
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size + 1;
+            }
+            font-style: italic;
+            font-weight: $font-weight-light;
+        }
+        .g-simplecontent-item-main-content {
+            font-size: $core-font-size + 0.2;
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size;
+            }
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size;
+            }
+            span {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

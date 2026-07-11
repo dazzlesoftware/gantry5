@@ -1,0 +1,31 @@
+meta: {  }
+head_bottom: ''
+atoms:
+  -
+    title: 'Animate On Scroll'
+    type: aos
+    attributes:
+      caching:
+        type: static
+      enabled: true
+      duration: '1000'
+      once: 1
+      delay: '0'
+      easing: ease
+      offset: '120'
+    id: aos-6672
+  -
+    type: frameworks
+    title: 'JavaScript Frameworks'
+    attributes:
+      enabled: '1'
+      jquery:
+        enabled: '1'
+        ui_core: '1'
+        ui_sortable: '0'
+      bootstrap:
+        enabled: '0'
+      mootools:
+        enabled: '0'
+        more: '0'
+    id: frameworks-1582

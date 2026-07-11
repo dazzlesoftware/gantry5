@@ -1,0 +1,14 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+    margin: 2rem ($content-margin + $content-padding);
+    box-shadow: $base-content-shadow;
+    position: relative;
+}
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

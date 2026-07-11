@@ -1,0 +1,213 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: our_team
+  timestamp: 1523567954
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-8634
+  /utility/:
+    -
+      - position-position-2729
+  /feature/:
+    -
+      - custom-6577
+  /maintop/:
+    -
+      - custom-4083
+  /container-main/:
+    -
+      -
+        'sidebar 33': {  }
+      -
+        'main 34':
+          -
+            - custom-9256
+      -
+        'aside 33': {  }
+  /mainbottom/:
+    -
+      - custom-2635
+  /extension/:
+    -
+      - custom-4711
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'custom-5072 50'
+      - 'custom-3219 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: hidden-phone
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  main:
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    type: section
+  container-main:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-3952:
+    title: 'Custom HTML'
+    attributes:
+      title: 'The Team'
+      titletag: 'Meet the People Behind Audacity'
+      html: ''
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'rt-title-large module-title'
+      variations: 'center nomarginall'
+  position-position-8634:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  position-position-2729:
+    title: Utility
+    attributes:
+      key: utility-a
+  custom-6577:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Core Developers'
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-25\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/johnonolan/5378754404/sizes/l/\">by JohnONolan</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Enrik Prifti</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Programmer</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-25\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/thomasleuthard/5807793226/sizes/l/\">by Thomas Leuthard</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Laura Richards</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Designer</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-25\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/astragony/5959165576/sizes/l/\">by Daniele Zedda</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Alex Ward</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Technical Lead</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-25\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/mr-h/4217144639/sizes/l/\">by AllansBrain</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Nora Mirone</h3>\n\t\t\t\t<h6 class=\"nomargintop\">QA Lead</h6>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      variations: 'box2 center nomarginall'
+  custom-4083:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Management Team'
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/the-team/img-01.jpg\" alt=\"image\" /></span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-66\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3 class=\"nomarginbottom\">Robert Smith</h3>\n\t\t\t\t<h6 class=\"nomargintop\">CEO of Audacity</h6>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. <span class=\"hidden-tablet\">Quickly drive clicks-and-mortar catalysts for change before vertical architectures.</span></p>\n\t\t\t\t<p class=\"success hidden-tablet\">Image attribution: <a href=\"http://www.flickr.com/photos/astragony/8260117875/sizes/l/\">AMaze by Daniele Zedda.</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/the-team/img-01.jpg\" alt=\"image\" /></span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-66\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3 class=\"nomarginbottom\">Paul Valdez</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Accountant</h6>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. <span class=\"hidden-tablet\">Quickly drive clicks-and-mortar catalysts for change before vertical architectures.</span></p>\n\t\t\t\t<p class=\"success hidden-tablet\">Image attribution: <a href=\"http://www.flickr.com/photos/astragony/4728211246/sizes/l/\">Stare by JohnONolan.</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-33\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\"><img src=\"gantry-media://pages/the-team/img-01.jpg\" alt=\"image\" /></span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-66\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3 class=\"nomarginbottom\">Tayla Parker</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Administrator</h6>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. <span class=\"hidden-tablet\">Quickly drive clicks-and-mortar catalysts for change before vertical architectures.</span></p>\n\t\t\t\t<p class=\"success hidden-tablet\">Image attribution: <a href=\"http://www.flickr.com/photos/johnonolan/5729506059/sizes/l/\">Bamboo by Daniele Zedda.</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'rt-phone-center rt-title-center module-title'
+      variations: 'nomarginall box1'
+  custom-9256:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<h3>Our Passion for Design</h3>\n\n<p>Interactively procrastinate high-payoff content without backward-compatible data. Quickly cultivate optimal processes and tactical architectures. Completely iterate covalent strategic theme areas via accurate e-markets.</p>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n\n<p><a href=\"#\" class=\"readon\">Learn More</a></p>"
+      twig: '0'
+      filter: '0'
+  custom-2635:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Support Assistants'
+      titletag: ''
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/carianoff/5327733275/sizes/l/\">by carianoff</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Joe Jensen</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Email</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/carianoff/4070347417/sizes/l/\">by carianoff</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Tessa Page</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Ticket</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/carianoff/5328421868/sizes/l/\">by carianoff</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Eric Timofti</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Chat</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/carianoff/5328368478/sizes/l/\">by carianoff</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Lydia Back</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Facebook</h6>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image with-attribution\">\n\t\t\t\t\t<img src=\"gantry-media://pages/the-team/img-04.jpg\" alt=\"image\" />\n\t\t\t\t\t<span class=\"rt-image rt-attribution\"><a href=\"http://www.flickr.com/photos/carianoff/5327739397/sizes/l/\">by carianoff</a></span>\n\t\t\t\t</span>\n\t\t\t\t<h3 class=\"nomarginbottom\">Luca Coyle</h3>\n\t\t\t\t<h6 class=\"nomargintop\">Twitter</h6>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: module-title
+      variations: 'center nomarginall box3'
+  custom-4711:
+    title: 'Custom HTML'
+    attributes:
+      title: 'We are Hiring'
+      titletag: ''
+      html: "<p>Join Our Awesome Team with a Great Work Environment</p>\n\n<p><a href=\"#\" class=\"readon largemargintop\">Join Audacity</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: module-title
+      variations: center
+  custom-5072:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Audacity Demo'
+      titletag: ''
+      html: "<p class=\"hidden-phone\">These examples are intended to show how Audacity can be constructed on your site, above and beyond the frontpage demonstration. These include Joomla content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Audacity RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'
+  custom-3219:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Sample Contact Info'
+      titletag: ''
+      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'

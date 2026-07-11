@@ -1,0 +1,23 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div class="g-simplecontact-particle {{ particle.class|e }}">
+		<ul class="g-simplecontact">
+			{% for item in particle.items %}
+				<li>
+					{% if item.icon %}
+						<i class="{{ item.icon }}"></i>
+					{% endif %}
+					{% if item.link %}
+						<a target="{{ item.target|default('_blank') }}" href="{{ item.link|e }}" title="{{ item.title }}">
+					{% endif %}
+                    {{ item.title|raw }}
+                    {% if item.link %}
+						</a>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+

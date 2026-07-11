@@ -1,0 +1,116 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title }}</h2>{% endif %}
+
+        <div class="g-contenttabs">
+            <div id="g-contenttabs-{{ id }}" class="g-contenttabs-container">
+                <ul class="g-contenttabs-tab-wrapper-container">
+
+                    {% for item in particle.items %}
+                        <li class="g-contenttabs-tab-wrapper">
+                            <span class="g-contenttabs-tab-wrapper-head">
+                                <a class="g-contenttabs-tab" href="#g-contenttabs-item-{{ loop.index }}">
+                                    <span class="g-contenttabs-tab-title">{{ item.title|html|raw }}</span>
+                                </a>
+                            </span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+                <ul class="g-contenttabs-content-wrapper-container">
+
+                    {% for item in particle.items %}
+                        <li class="g-contenttabs-tab-wrapper">
+                            <div class="g-contenttabs-tab-wrapper-body">
+                                <div id="g-contenttabs-item-{{ loop.index }}" class="g-contenttabs-content">
+
+                                    <div class="gantry-row">
+                                        {% if item.image %}
+                                        <div class="gantry-width-25">
+                                            <div class="gantry-width-spacer"><img alt="image" src="{{ url(item.image)|e }}"></div>
+                                        </div>
+                                        {% endif %}
+                                        <div class="gantry-width-{% if item.image and item.rheading %}50{% elseif item.image or item.rheading %}75{% else %}100{% endif %}">
+                                            <div class="gantry-width-spacer">
+                                                <h4>{{ item.heading|html|raw }}</h4>
+                                                {{ item.content|html|raw }}
+                                            </div>
+                                        </div>
+                                        {% if item.rheading %}
+                                        <div class="gantry-width-25">
+                                            <div class="gantry-width-spacer gantry-right gantry-text-right">
+                                                <h4 class="nomarginbottom">{{ item.rheading|html|raw }}</h4>
+                                                {% if item.smalltext %}<p class="rt-text-small"><em>{{ item.smalltext|html|raw }}</em></p>{% endif %}
+                                                {% if item.link %}<p><a class="{{ item.buttonclass|e }}" href="{{ item.link|e }}" target="{{ item.buttontarget|default('_self')|e }}">{{ item.linklabel|html|raw }}</a></p>{% endif %}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="clear"></div>
+
+                                    {% if item.content2 or item.heading2 %}
+                                    <hr>
+                                    <div class="gantry-row">
+                                        {% if item.image2 %}
+                                        <div class="gantry-width-25">
+                                            <div class="gantry-width-spacer"><img alt="image" src="{{ url(item.image2)|e }}"></div>
+                                        </div>
+                                        {% endif %}
+                                        <div class="gantry-width-{% if item.image2 and item.rheading2 %}50{% elseif item.image2 or item.rheading2 %}75{% else %}100{% endif %}">
+                                            <div class="gantry-width-spacer">
+                                                <h4>{{ item.heading2|html|raw }}</h4>
+                                                {{ item.content2|html|raw }}
+                                            </div>
+                                        </div>
+                                        {% if item.rheading2 %}
+                                        <div class="gantry-width-25">
+                                            <div class="gantry-width-spacer gantry-right gantry-text-right">
+                                                <h4 class="nomarginbottom">{{ item.rheading2|html|raw }}</h4>
+                                                {% if item.smalltext2 %}<p class="rt-text-small"><em>{{ item.smalltext2|html|raw }}</em></p>{% endif %}
+                                                {% if item.link2 %}<p><a class="{{ item.buttonclass2|e }}" href="{{ item.link2|e }}" target="{{ item.buttontarget2|default('_self')|e }}">{{ item.linklabel2|html|raw }}</a></p>{% endif %}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="clear"></div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
+{% endblock %}
+
+{% block javascript_footer %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#g-contenttabs-{{ id }}').tabs({
+                show: {
+                    {% if particle.animation == 'up' or particle.animation == 'down' or particle.animation == 'left' or particle.animation == 'right' %}
+                    effect: 'slide',
+                    direction: '{{ particle.animation }}',
+                    {% else %}
+                    effect: '{{ particle.animation|default('slide') }}',
+                    {% endif %}
+                    duration: 350
+                }
+            });
+        });
+    </script>
+{% endblock %}

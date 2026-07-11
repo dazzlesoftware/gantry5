@@ -1,0 +1,16 @@
+body {
+	color: $base-text-color;
+	background: $base-background;
+}
+
+a {
+	color: $accent-color-1;
+	transition: all 0.2s;
+	&:hover {
+		color: $accent-color-2;
+	}
+}
+
+body p {
+	margin: 1rem 0;
+}

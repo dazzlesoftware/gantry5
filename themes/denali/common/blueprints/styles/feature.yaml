@@ -1,0 +1,15 @@
+name: Feature Styles
+description: Feature styles for the Denali theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "rgba(255,177,32,0.07)"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#999999"

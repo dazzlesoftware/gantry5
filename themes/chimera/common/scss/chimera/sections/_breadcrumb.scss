@@ -1,0 +1,64 @@
+#g-breadcrumb {
+	color: $white;
+	background: darken($accent-color-1, 15%);
+
+	.g-content {
+		margin: 0;
+    	padding: 0;
+	}
+	#breadcrumbs {
+		span {
+			padding: 0 5px;
+			
+			&:first-child {
+				color: $accent-color-1 !important;
+				padding-left: 0;
+			}
+
+			&:last-child {
+				color: #999;
+			}
+		}
+		i {
+
+			&.fa-map-marker {
+				color: #ccc;
+			}
+		}
+	}
+}
+
+.breadcrumb {
+	background: none !important;
+	margin: 0 !important;
+
+ 	li:not(:first-child):after {
+	    font-family: FontAwesome;
+	    content: "\f101";
+	    margin: 0 10px;
+	}
+
+	li:last-child:after {
+		display: none;
+	}
+
+	li:first-child {
+		&:before {
+			font-family: FontAwesome;
+			content: "\f041";
+			color: #ccc;
+			margin-right: 5px;
+		}
+	}
+	
+	.divider {
+		display: none;		
+	}    
+}
+
+@media print {
+	#g-breadcrumb {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

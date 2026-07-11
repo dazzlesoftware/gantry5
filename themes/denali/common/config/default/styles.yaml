@@ -1,0 +1,80 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#ffb120'
+    - '#0f0f0f'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#999999'
+      text-active-color: '#ffb120'
+    accent:
+      color-1: '#ffb120'
+    button:
+      text-color: '#5a3b00' 
+      background-color: '#ffb120'     
+    menustyle:
+      text-color: '#0f0f0f'
+      text-color-alt: '#0f0f0f'
+      text-color-active: '#0f0f0f'
+      background-active: 'rgba(255,255,255, 0)'
+      sublevel-text-color: 'rgba(255,255,255,0.8)'
+      sublevel-text-color-active: '#0f0f0f'
+      sublevel-background: '#0f0f0f'
+      sublevel-background-active: '#ffb120'
+    font:
+      family-default: 'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: '#ffffff'
+      text-color: '#999999'
+    navigation:
+      background: '#ffffff'
+      text-color: '#0f0f0f'
+    slideshow:
+      background: '#0f0f0f'
+      text-color: '#999999'
+    header:
+      background: '#0f0f0f'
+      text-color: '#999999'
+    above:
+      background: '#ffffff'
+      text-color: '#999999'
+    feature:
+      background: 'rgba(255,177,32,0.07)'
+      text-color: '#999999'
+    showcase:
+      background: '#ffffff'
+      text-color: '#999999'
+    utility:
+      background: '#ffffff'
+      text-color: '#999999'
+    main:
+      background: '#ffffff'
+      text-color: '#999999'
+    expanded:
+      background: '#ffffff'
+      text-color: '#999999'
+    extension:
+      background: '#ffffff'
+      text-color: '#999999'
+    bottom:
+      background: '#0f0f0f'
+      background-image: 'gantry-media://backgrounds/bottom/img-01.jpg'
+      text-color: '#ffffff'
+    footer:
+      background: '#0f0f0f'
+      text-color: '#999999'
+    copyright:
+      background: '#0f0f0f'
+      text-color: 'rgba(153, 153, 153, 0.4)'
+    offcanvas:
+      background: '#ffb120'
+      text-color: '#ffffff'
+      toggle-color: '#ffb120'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

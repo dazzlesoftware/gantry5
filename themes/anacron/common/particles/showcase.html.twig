@@ -1,0 +1,115 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% block layout %}
+
+        <div class="{{ particle.class|e }} g-owlcarousel-showcase">
+            {% if particle.title or particle.description %}
+                <div class="g-grid">
+                    <div class="g-block">
+                        <div class="g-owlcarousel-header">
+                            {% if particle.title %}<h2 class="g-title">{{ particle.title }}</h2>{% endif %}
+                            {% if particle.description %}<div class="g-owlcarousel-description">{{ particle.description|html|raw }}</div>{% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div id="g-owlcarousel-{{ id }}" data-owlcarousel-id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel">     
+
+                {% for item in particle.items %}
+                    <div class="g-owlcarousel-item {{ item.class|e }}">
+                        {% if item.image %}
+                            <div class="g-owlcarousel-item-image" style="background-image: url({{ url(item.image) }}); ">
+                        {% endif %}                       
+
+                            {% if item.title or item.desc or item.link %}
+                                    <div class="g-owlcarousel-content">
+
+                                        {% if item.title %}<h2 class="g-owlcarousel-item-title">{{ item.title|html|raw }}</h2>{% endif %}
+
+                                        {% if item.desc %}<div class="g-owlcarousel-item-desc">{{ item.desc|html|raw }}</div>{% endif %} 
+
+                                        {% if item.link1 or item.link2 %}<span class="rt-button-group">{% if item.link1 %}<a target="{{ item.buttontarget1|default('_self')|e }}" href="{{ item.link1|e }}" class="{{ item.buttonclass1|e }}">{{ item.linktext1|html|raw|default('Read More') }}</a>{% endif %}{% if item.link2 %}<a target="{{ item.buttontarget2|default('_self')|e }}" href="{{ item.link2|e }}" class="{{ item.buttonclass2|e }}">{{ item.linktext2|html|raw|default('Download') }}</a>{% endif %}</span>
+                                        {% endif %}
+
+                                    </div>
+                            {% endif %}
+                                    
+                        {% if item.image %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>    
+    {% endblock %}
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function () {
+            jQuery('#g-owlcarousel-{{ id }}').owlCarousel({
+            items: 1,
+            rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
+            {% if particle.animateOut != 'default' %}
+            animateOut: '{{ particle.animateOut|default('fadeOut')|e }}',
+            {% endif %}
+            {% if particle.animateIn != 'default' %}
+            animateIn: '{{ particle.animateIn|default('fadeIn')|e }}',
+            {% endif %}
+            {% if particle.nav == 'enabled' %}
+            nav: true,
+            {% else %}
+            nav: false,
+            {% endif %}
+            {% if particle.dots == 'enabled' %}
+            dots: true,
+            {% else %}
+            dots: false,
+            {% endif %}
+            {% if particle.loop == 'enabled' %}
+            loop: true,
+            {% else %}
+            loop: false,
+            {% endif %}
+            {% if particle.autoplay == 'enabled' %}
+            autoplay: true,
+            autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
+            {% if particle.pauseOnHover == 'enabled' %}
+            autoplayHoverPause: true,
+            {% else %}
+            autoplayHoverPause: false,
+            {% endif %}
+            {% else %}
+            autoplay: false,
+            {% endif %}
+        })
+
+        var i = 1;
+        var index = jQuery('#g-owlcarousel-{{ id }}').closest('section');
+
+        if (index.hasClass('left-to-right') || index.hasClass('top-to-bottom')) {
+            jQuery('#g-owlcarousel-{{ id }} .owl-next, #g-owlcarousel-{{ id }} .owl-prev, #g-owlcarousel-{{ id }} .owl-dot').click(function() {
+                if (i < 3) {
+                    i++;
+                    index.addClass('showcase-panel-' + i);
+                } else {
+                    i = 1;
+                    index.removeClass('showcase-panel-2');
+                    index.removeClass('showcase-panel-3');
+                }    
+            });
+        }
+
+        {% for item in particle.items %}   
+            {% if item.image %}
+                jQuery('.g-owlcarousel-showcase .owl-dots').addClass('img'); 
+            {% endif %}
+        {% endfor %} 
+
+    }); 
+    </script>
+{% endblock %}

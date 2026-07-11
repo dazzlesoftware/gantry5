@@ -1,0 +1,24 @@
+body {
+	color: $base-text-color;
+	background: $white;
+	line-height: $base-line-height;
+	font-size: $base-font-size;
+
+	p {
+		margin: 0 0 15px 0;
+	}
+
+	.g-container {
+		@include breakpoint(large-mobile-range) {
+			width: $breakpoints-mobile-container;
+		}	
+	}
+}
+
+a {
+	color: $accent-color-1;
+	transition: all 0.2s;
+	&:hover {
+		color: inherit;
+	}
+}

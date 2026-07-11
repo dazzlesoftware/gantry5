@@ -1,0 +1,27 @@
+.g-social {
+    white-space: nowrap;
+    a {
+        color: $accent-color-2 !important;
+        padding: 0.1rem 0.2rem;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        font-size: $core-font-size + 0.7;
+        border-radius: 2px;
+
+        .fa:before {
+            vertical-align: middle;
+        }
+
+        &:hover {
+            color: #ffffff !important;
+        }
+    }
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+    @include breakpoint(tablet-range) {
+        text-align: center;
+    }
+}

@@ -1,0 +1,174 @@
+.g-testimonials-items {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  .g-testimonial-item {
+    margin: 2% 2% 2% 2%;
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    flex-grow: 0;
+    @include breakpoint(mobile-only) {
+      flex-flow: row wrap;
+      flex-wrap: wrap;
+    }
+  }
+  &.g-2cols,
+  &.g-3cols,
+  &.g-4cols,
+  &.g-5cols {
+    margin-left: -2%;
+    margin-right: -2%;
+  }
+  &.g-1cols {
+    .g-testimonial-item {
+      width: 100%;
+      flex-basis: 100%;
+      margin: 0;
+      &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 1rem;
+        border-bottom: none;
+      }
+    }
+  }
+  &.g-2cols {
+    .g-testimonial-item {
+      width: 47%;
+      flex-basis: 47%;
+      &:nth-child(odd) {
+        margin-right: 1%;
+      }
+      &:nth-child(even) {
+        margin-left: 1%;
+      }
+    }
+  } 
+  &.g-3cols {
+    .g-testimonial-item {
+      width: 30.66667%;
+      flex-basis: 30.66667%;
+      &:nth-child(3n-1) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    } 
+  }
+  &.g-4cols {
+    .g-testimonial-item {
+      width: 22.5%;
+      flex-basis: 22.5%;
+      &:nth-child(4n-2) {
+        margin-left: 0;
+        margin-right: 1%;
+      }
+      &:nth-child(4n-1) {
+        margin-left: 1%;
+        margin-right: 0;
+      }
+    }
+  }
+  &.g-5cols {
+    .g-testimonial-item {
+      width: 17.6%;
+      flex-basis: 17.6%;
+      &:nth-child(5n-3) {
+        margin-left: 0;
+        margin-right: 1%;
+      }
+      &:nth-child(5n-2) {
+        margin-left: 1%;
+        margin-right: 1%;
+      }
+      &:nth-child(5n-1) {
+        margin-left: 1%;
+        margin-right: 0;
+      }
+    } 
+  }
+  @include breakpoint(mobile-only) {
+    &[class*="cols"] {
+      .g-testimonial-item {
+        width: 96%;
+        flex-basis: 96%;
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+      }
+    }
+  }
+}
+.g-testimonial-content {
+  padding: 1rem;
+  flex: 1;
+  .g-testimonial-alt & {
+    padding: 2rem 2.5rem;
+  }
+}
+.g-testimonial-text {
+  font-size: $core-font-size - 0.1;
+  margin: 1rem auto;
+  opacity: 0.75;
+  .g-testimonial-standard & {
+    strong {
+      font-family: get-font-family($font-family-title);
+      font-weight: $font-weight-bold; 
+      font-size: $core-font-size + 1;
+      margin: 0;
+    }
+  }
+  .g-testimonial-alt & {
+    font-size: $core-font-size + 0.25;
+    font-family: Georgia;
+    font-style: italic;
+  }
+}
+.g-testimonial-alt .g-testimonial-content {
+  padding: 2rem 2.5rem;
+}
+.g-testimonial-author-container {
+  display: flex;
+}
+.g-testimonial-author-img {
+    border-radius: 100%;
+    margin: 0.5rem 1rem 0.5rem 0;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    .dir-rtl & {
+      margin: 0.5rem 0 0.5rem 1rem;
+    }
+  @include breakpoint(mobile-only) {
+    width: 50px;
+    height: 50px;
+  }
+}
+.g-testimonial-author-text {
+  flex: 1 1 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.g-testimonial-author-name, .g-testimonial-author-company {
+  display: block;
+  font-family: get-font-family($font-family-default);
+  font-weight: $font-weight-regular;
+  font-size: $core-font-size - 0.1;
+  width: 100%;
+}
+.g-testimonial-author-name {
+  font-size: $core-font-size + 0.25;
+  line-height: $core-line-height - 0.25;
+  align-self: flex-end;
+}
+.g-testimonial-author-company {
+  font-size: $core-font-size - 0.1;
+  align-self: flex-start;
+  a {
+    opacity: 0.75;
+    color: inherit;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

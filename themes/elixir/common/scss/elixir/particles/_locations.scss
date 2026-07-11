@@ -1,0 +1,34 @@
+.g-locations-particle {
+    display: flex;
+    justify-content: space-evenly;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+    }
+
+    .g-location-container {
+        padding: $content-padding;
+        text-align: center;
+
+        i {
+            font-size: $core-font-size + 0.9;
+            color: $base-text-color;
+        }
+
+        span {
+            color: $accent-color-1;
+            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+        }
+
+        h2 {
+            @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
+            font-weight: $font-weight-regular;
+
+            a {
+                color: $accent-color-3;
+            }
+
+        }
+    }
+
+}

@@ -1,0 +1,167 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% macro displayParticle(item, gantry) %}
+    {% if item.particle.enabled is null or item.particle.enabled %}
+        {% set classes = item.options.block.class %}
+        <div class="menu-item-particle{{ classes ? ' ' ~ classes }}">
+            {% include[
+                'particles/' ~ item.particle ~ '.html.twig',
+                '@particles/' ~ item.particle ~ '.html.twig'
+            ]
+            ignore missing with {
+                gantry: gantry,
+                particle: item.options.particle
+            }
+            only %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro displayTitle(item, gantry) %}
+    {% if item.icon_only %}
+        <i class="{{ item.icon|e }}"></i>
+    {% else %}
+        {% if item.image %}
+            <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}"/>
+        {% elseif item.icon %}
+            <i class="{{ item.icon|e }}"></i>
+        {% endif %}
+        {{ item.title|e }}
+        {% if item.subtitle %}
+            <div class="g-menu-item-subtitle">{{ item.subtitle|e }}</div>
+        {% endif %}
+    {% endif %}    
+{% endmacro %}
+
+{% macro displayItem(item, menu, gantry, id) %}
+    {% if item.visible and item.enabled %}
+        {% set title = item.icon_only ? ' title="' ~ item.title | e ~ '"' %}
+        {% set active = menu.isActive(item) ? 'menu__link--current' %}
+        {% set dropdown = item.level == 1 ? ' g-' ~ item.dropdown|e %}
+        {% set parent = item.children ? ' g-parent' %}
+        {% set target = item.target != '_self' ? ' target="' ~ item.target | e ~ '"' %}
+        {% if item.url %}
+            <li class="menu__item {{ item.class|default('') }}">
+                <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="{{ item.url }}" {{ target|raw }}>
+                    <span>
+                    {{ _self.displayTitle(item, gantry) }}
+                    </span>
+                </a>
+            </li>
+        {% else %}
+            {% if item.type == 'particle' %}
+                {{ _self.displayParticle(item, gantry) }}
+            {% elseif item.type == 'heading' or item.type == 'separator' %}
+                <li class="menu__item {{ item.class|default('') }}">
+                    <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="javascript:void(0)">
+                      <span>
+                        {{ _self.displayTitle(item, gantry) }}
+                          </span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="menu__item {{ item.class|default('') }}">
+                    <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="{{ item.url }}" {{ target|raw }}>
+                     <span>
+                        {{ _self.displayTitle(item) }}
+                         </span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% macro displaySubItem(item, menu, gantry, id) %}
+    {% if item.visible and item.enabled %}
+        <li class="menu__item {{ item.class|default('') }}">
+            {% set title = item.icon_only ? ' title="' ~ item.title | e ~ '"' %}
+            {% set active = menu.isActive(item) ? 'menu__link--current' %}
+            {% set dropdown = item.level == 1 ? ' g-' ~ item.dropdown|e %}
+            {% set parent = item.children ? ' g-parent' %}
+            {% set target = item.target != '_self' ? ' target="' ~ item.target | e ~ '"' %}
+            {% if item.url %}
+                <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="{{ item.url }}" {{ target|raw }}>
+                <span>
+                    {{ _self.displayTitle(item, gantry) }}
+                     </span>
+                </a>
+            {% else %}
+                {% if item.type == 'particle' %}
+                    {{ _self.displayParticle(item, gantry) }}
+                {% elseif item.type == 'heading' or item.type == 'separator' %}
+                    <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="javascript:void(0)">
+                        <span>
+                            {{ _self.displayTitle(item, gantry) }}
+                        </span>
+                    </a>
+                {% else %}
+                    <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="{{ item.url }}" {{ target|raw }}>
+                        <span>
+                            {{ _self.displayTitle(item) }}
+                        </span>
+                    </a>
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endif %}
+{% endmacro %}
+
+{% macro displaySubmenu(items, menu, gantry) %}
+    {% for item in items if item.id != 'root' %}
+        {% if item.children %}
+            {% set some_children_visible = false %}
+            {% for item in item.children if item.visible %}
+                {% set some_children_visible = true %}
+            {% endfor %}
+
+            {% if some_children_visible %}
+            {% if item.id %}
+                <ul data-menu="submenu-{{ item.id }}" class="menu__level">
+                    {% for item in item.children %}
+                        {{ _self.displaySubItem(item, menu, gantry, item.id) }}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% block particle %}
+    {% try %}
+        {% set menu = gantry.menu.instance(particle) %}
+    {% catch %}
+        <div class="alert alert-error">{{ e.getMessage }}</div>
+    {% endtry %}
+
+    <!-- Menu toggle for mobile version -->
+    <button class="action action--open" aria-label="Open Menu">
+        <span class="icon icon--menu icon-vertical-menu"></span>
+    </button>
+
+    <!-- Menu -->
+    <nav id="ml-menu" class="menu" data-all-text="{{ particle.alltext|default('ALL')|e }}">
+        <!-- Close button for mobile version -->
+        <button class="action action--close" aria-label="Close Menu">
+            <span class="icon icon--cross icon-vertical-menu"></span>
+        </button>
+        <div class="menu__wrap">
+            <ul data-menu="main" class="menu__level">
+                {% for item in menu.root %}
+                    {{ _self.displayItem(item, menu, gantry, item.id) }}
+                {% endfor %}
+            </ul>
+
+            {{ _self.displaySubmenu(menu, menu, gantry) }}
+        </div>
+    </nav>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/modernizr-vmenu.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/classie.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/verticalmenu.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/verticalmenu.init.js'), 10, 'footer') %}
+{% endblock %}

@@ -1,0 +1,16 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+    overflow: hidden;
+
+    .g-grid {
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

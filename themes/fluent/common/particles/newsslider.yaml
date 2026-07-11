@@ -1,0 +1,299 @@
+name: News Slider
+description: Background slider with thumbs
+type: particle
+icon: fa-newspaper-o
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            class:
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            extra:
+              type: collection.keyvalue
+              label: Tag Attributes
+              description: Extra Tag attributes.
+              key_placeholder: Key (data-*, style, ...)
+              value_placeholder: Value
+              exclude: ['id', 'class']
+
+            loop:
+              type: select.select
+              label: Loop
+              description: Enable or disable newsslider looping (only available with Autoplay). 
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay:
+              type: select.select
+              label: Autoplay
+              description: Enable or disable newsslider autoplay.
+              default: disabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+            autoplay_interval:
+              type: input.number
+              label: Autoplay Interval
+              description: Autoplay interval timeout.
+              default: 5000
+              overridable: false
+
+            fixedheight:
+              type: input.number
+              label: Fixed Height
+              description: Enter custom height in pixels for slider (enables scrolling)
+              overridable: false
+
+            source:
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the Joomla articles or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            items:
+              type: collection.list
+              array: true
+              label: Particle Items
+              description: Create each item to appear in the content row.
+              value: title
+              ajax: true
+              fields:
+                .avatar:
+                  type: input.imagepicker
+                  label: Avatar
+                  description: Select desired avatar.
+
+                .image:
+                  type: input.imagepicker
+                  label: Image
+                  description: Select desired image.
+
+                .author:
+                  type: input.text
+                  label: Author
+                  description: Customize the Author.
+
+                .date:
+                  type: input.date
+                  label: Date
+                  description: Customize the date.
+
+                .date_format:
+                  type: select.date
+                  label: Date Format
+                  description: Select preferred date format.
+                  default: l, F d, Y
+                  placeholder: 'Select...'
+                  selectize:
+                    allowEmptyOption: true
+                  options:
+                    '': None
+                    'l, F d, Y': Date1
+                    'F d': Date2
+                    'd M': Date3
+                    'D, M d, Y': Date4
+                    'D, M d, y': Date5
+                    'l': Date6
+                    'l j F Y': Date7
+
+                .link:
+                  type: input.text
+                  label: Link
+                  description: Input the item link.
+
+                .categoryname:
+                  type: input.text
+                  label: Category Name
+                  description: Input the item category name.
+
+                .categorylink:
+                  type: input.text
+                  label: Category Link
+                  description: Input the item category link.
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+
+            article.filter.categories:
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+              overridable: false
+
+            article.filter.articles:
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+              overridable: false
+
+            article.filter.featured:
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+              overridable: false
+
+            article.limit.total:
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 2
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.limit.start:
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+              overridable: false
+
+            article.sort.orderby:
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+              overridable: false
+
+            article.sort.ordering:
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+              overridable: false
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.image.enabled:
+              type: select.select
+              label: Image
+              description: Select if and what image of the article should be shown.
+              options:
+                intro: Intro
+                full: Full
+                '': None
+
+            article.display.title.enabled:
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.date.enabled:
+              type: select.select
+              label: Date
+              description: Select if the article date should be shown.
+              options:
+                created: Show Created Date
+                published: Show Published Date
+                modified: Show Modified Date
+                '': Hide
+
+            article.display.date.format:
+              type: select.date
+              label: Date Format
+              description: Select preferred date format. Leave empty not to display a date.
+              selectize:
+                  allowEmptyOption: true
+              options:
+                  'l, F d, Y': Date1
+                  'l, d F': Date2
+                  'D, d F': Date3
+                  'F d': Date4
+                  'd F': Date5
+                  'd M': Date6
+                  'D, M d, Y': Date7
+                  'D, M d, y': Date8
+                  'l': Date9
+                  'l j F Y': Date10
+                  'j F Y': Date11
+                  'F d, Y': Date12
+
+            article.display.author.enabled:
+              type: select.select
+              label: Author
+              description: Select if the article author should be shown.
+              options:
+                show: Show
+                '': Hide
+            article.display.category.enabled:
+              type: select.select
+              label: Category
+              description: Select if and how the article category should be shown.
+              options:
+                show: Show
+                link: Show with Link
+                '': Hide
+
+            article.display.read_more.enabled:
+              type: select.select
+              label: Read More
+              description: Select if the article 'Read More' button should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.read_more.label:
+              type: input.text
+              label: Read More Label
+              description: Type in the label for the 'Read More' button.
+              placeholder: 'Read More...'
+
+            article.display.read_more.css:
+              type: input.selectize
+              label: Button CSS Classes
+              description: CSS class name for the 'Read More' button.

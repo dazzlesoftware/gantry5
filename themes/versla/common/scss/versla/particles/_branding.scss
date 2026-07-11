@@ -1,0 +1,8 @@
+.g-branding {
+    font-size: $core-font-size + 0.175;
+    text-align: right;
+
+    .dir-rtl & {
+        text-align: left;
+    }
+}

@@ -1,0 +1,1403 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1544802425
+layout:
+  top:
+    -
+      - system-messages-1675
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - slideshow-9447
+  /header/:
+    -
+      - latestnews-9988
+  /above/:
+    -
+      - 'simplecontent-5158 50'
+      - 'logo-3537 50'
+  /feature/:
+    -
+      - slider-7743
+  /showcase/:
+    -
+      - calendar-6526
+  /utility/:
+    -
+      - simplecontent-3152
+    -
+      - video-4670
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - team-1864
+  /extension/: {  }
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-navigation section-horizontal-paddings'
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-slideshow nomarginall nopaddingall'
+      variations: section-vertical-paddings
+  header:
+    attributes:
+      boxed: '3'
+      class: 'fp-header latest-news-background'
+      variations: section-horizontal-paddings
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-above
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-feature profile nopaddingall nomarginall'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-showcase
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-utility
+      variations: section-horizontal-paddings
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: fp-main
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-expanded
+      variations: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-extension
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings fp-bottom'
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'section-horizontal-paddings fp-footer'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-copyright section-horizontal-paddings'
+    inherit:
+      outline: default
+      include:
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  system-messages-1675:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: system-messages-9828
+  slideshow-9447:
+    attributes:
+      source: particle
+      height: ''
+      nav: enabled
+      autoplay: disabled
+      autoplayTimeout: '5000'
+      speed: '250'
+      items:
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          small_title: 'Designed for Modern Education'
+          button_text: 'Explore Now'
+          button_link: '#'
+          link: ''
+          linktarget: _self
+          title: 'A Perfect Theme for Your Campus'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          small_title: 'Packed with Premium Features'
+          button_text: 'Explore Now'
+          button_link: '#'
+          link: ''
+          linktarget: _self
+          title: 'Over 30 Particles to Choose From'
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          small_title: 'Multimedia Ready'
+          button_text: 'Explore Now'
+          button_link: '#'
+          link: ''
+          linktarget: _self
+          title: 'Support for Audio and Video Content'
+      article:
+        filter:
+          categories: '10'
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            target: _self
+  latestnews-9988:
+    title: 'Latest News'
+    attributes:
+      source: particle
+      margin_top: '-7rem'
+      class: ''
+      cols: cols-4
+      cases:
+        -
+          layout: text
+          image: 'gantry-media://home/header/img-01.jpg'
+          description: 'Vanderbilt’s first African American vice chancellor will return to teaching after a distinguished 27-year career in higher education'
+          url: '#'
+          title: 'David Williams stepping down as vice chancellor, athletics director'
+        -
+          layout: photo
+          image: 'gantry-media://home/header/img-02.jpg'
+          description: ''
+          url: ''
+          title: 'One of our students gets some prestigious art award and we want to brag.'
+        -
+          layout: text
+          image: 'gantry-media://home/header/img-01.jpg'
+          description: 'Our students engage with the arts as both creators and viewers. We are painters and sculptors, actors and songwriters...'
+          url: '#'
+          title: 'The visual arts are fundamentally important to the life and culture of our College'
+        -
+          layout: quote
+          image: ''
+          description: '- Pablo Picasso'
+          url: ''
+          title: 'Every child is an artist. The problem is how to remain an artist once we grow up.'
+        -
+          layout: photo
+          image: 'gantry-media://home/header/img-02.jpg'
+          description: ''
+          url: ''
+          title: 'Last chance to visit our 2018 Graduates'' Exhibition'
+        -
+          layout: text
+          image: 'gantry-media://home/header/img-01.jpg'
+          description: 'In a colorful musical celebration of autumn, the Vermont Symphony Orchestra (VSO) returns to Evergreen College on Saturday...'
+          url: '#'
+          title: 'Vermont Symphony Orchestra Returns to Evergreen College with Music and More Made in Vermont'
+        -
+          layout: text
+          image: 'gantry-media://home/header/img-01.jpg'
+          description: 'Evergreen College’s Kevin P. Mahaney ’84 Center for the Arts is proud to announce the 2018–2019 season lineup, with beautiful performances...'
+          url: '#'
+          title: 'Mahaney Center for the Arts Announces New Season'
+        -
+          layout: photo
+          image: 'gantry-media://home/header/img-02.jpg'
+          description: ''
+          url: ''
+          title: 'Al the Details about our Fifth Annual Speed Painting Competition'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          category:
+            enabled: show
+          title:
+            enabled: show
+            limit: ''
+          date:
+            enabled: created
+            format: 'l, F d, Y'
+          read_more:
+            enabled: show
+            target: _self
+  simplecontent-5158:
+    title: 'Simple Content'
+    attributes:
+      class: 'section-horizontal-paddings g-above-content g-above-content-padding'
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Apply <span>for</span> Admission'
+          author: ''
+          leading_content: 'Want to change the world? At Evergreen we’re doing just that. When you join the Green Pear community, you’re part of an institution that shifts the global conversation every single day.'
+          main_content: ''
+          readmore_label: 'Apply Now'
+          readmore_link: '#'
+          readmore_class: 'button'
+          readmore_target: _self
+          title: 'First item'
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: "<div class=\"g-above-column\">\n<a href=\"#\" class=\"g-simplecontent-link\" target=\"_blank\">Overview</a>\n<a href=\"#\" class=\"g-simplecontent-link\" target=\"_blank\">Undergraduate</a>\n</div>\n<div class=\"g-above-column\">\n<a href=\"#\" class=\"g-simplecontent-link\" target=\"_blank\">Graduate</a>\n<a href=\"#\" class=\"g-simplecontent-link\" target=\"_blank\">Summer Sessions</a>\n</div>\n<div class=\"g-above-column\">\n<a href=\"#\" class=\"g-simplecontent-link\" target=\"_blank\">Study abroad</a><a href=\"#\" class=\"g-simplecontent-link\" target=\"_blank\">Tuition</a>\n</div>"
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Links
+  logo-3537:
+    title: 'Logo / Image'
+    attributes:
+      image: 'gantry-media://home/above/img-01.jpg'
+      class: g-above-image
+    block:
+      variations: 'nomarginall nopaddingall'
+  slider-7743:
+    attributes:
+      source: particle
+      title: 'Choose your Major'
+      description: 'What would you like to learn? Increase your expertise in Arts, Design, Education and Personal Development.'
+      height: '500'
+      autoplay: enabled
+      autoplayTimeout: '5000'
+      speed: '250'
+      items:
+        -
+          description: "- Art Cirriculum Writer<br>\n- Art Administrator<br>\n- Arts and Cultural Planner<br>\n- Website Owner & Blogger<br>\n- Graphic Novel Author<br>"
+          icon: 'fa fa-i-cursor'
+          image: 'gantry-media://home/feature/image-01.jpg'
+          link: ''
+          linktarget: modal
+          title: Writing
+        -
+          description: "- Graphic Designer<br>\n- Design Director<br>\n- Interactive Designer<br>\n- Advertising Designer<br>\n- Package Designer"
+          icon: 'fa fa-crop'
+          image: 'gantry-media://home/feature/image-01.jpg'
+          link: ''
+          linktarget: modal
+          title: 'Graphic Design'
+        -
+          description: "- Advertising Director<br>\n- Logo & Branding Designer<br>\n- Advertisement Designer<br>\n- Magazine Layout Designer<br>\n- Typographer"
+          icon: 'fa fa-scissors'
+          image: 'gantry-media://home/feature/image-01.jpg'
+          link: ''
+          linktarget: modal
+          title: 'Fashion Design'
+        -
+          description: "- Digital photography<br>\n- Digital video production<br>\n- Computer animation<br>\n- Graphic design<br>\n- Digital audio production"
+          icon: 'fa fa-desktop'
+          image: 'gantry-media://home/feature/image-01.jpg'
+          link: ''
+          linktarget: modal
+          title: 'Digital Media'
+        -
+          description: "- Architect<br>\n- Landscape architect<br>\n- Interior designer<br>\n- Environmental artist<br>\n- Exhibition designer"
+          icon: 'fa fa-soccer-ball-o'
+          image: 'gantry-media://home/feature/image-01.jpg'
+          link: ''
+          linktarget: modal
+          title: 'Spatial Design'
+      article:
+        filter:
+          categories: '10'
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: '300'
+            formatting: text
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            target: _self
+  calendar-6526:
+    attributes:
+      title: 'Upcoming Events'
+      events:
+        -
+          begin: '2019-02-16'
+          end: '2019-02-16'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Peabody Museum'
+          link: '#'
+          target: _self
+          title: 'Musical Scavenger Hunt'
+        -
+          begin: '2019-02-16'
+          end: '2019-02-16'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Building'
+          link: '#'
+          target: _self
+          title: 'Painting the Ocean'
+        -
+          begin: '2019-02-16'
+          end: '2019-02-16'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Warren Theatre'
+          link: '#'
+          target: _self
+          title: 'Christmas Frolicing'
+        -
+          begin: '2019-02-17'
+          end: '2019-02-17'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Writer''s Workshop'
+        -
+          begin: '2019-02-17'
+          end: '2019-02-17'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Count Chocula''s House'
+          link: '#'
+          target: _self
+          title: 'Hot Chocolate'
+        -
+          begin: '2019-02-17'
+          end: '2019-02-17'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Fat Lorenzo Pub'
+          link: '#'
+          target: _self
+          title: 'Jazz Night'
+        -
+          begin: '2019-02-18'
+          end: '2019-02-18'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Maple Room, Union Hall'
+          link: '#'
+          target: _self
+          title: 'Deutscher Tisch'
+        -
+          begin: '2019-02-18'
+          end: '2019-02-18'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Student Center'
+          link: '#'
+          target: _self
+          title: 'Celebrating Women'
+        -
+          begin: '2019-02-18'
+          end: '2019-02-18'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Woodward Hall'
+          link: '#'
+          target: _self
+          title: 'Cooking Class'
+        -
+          begin: '2019-02-19'
+          end: '2019-02-19'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-02-19'
+          end: '2019-02-19'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-02-19'
+          end: '2019-02-19'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-02-20'
+          end: '2019-02-20'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-02-20'
+          end: '2019-02-20'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-02-20'
+          end: '2019-02-20'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-02-21'
+          end: '2019-02-21'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-02-21'
+          end: '2019-02-21'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-02-21'
+          end: '2019-02-21'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-02-22'
+          end: '2019-02-22'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-02-22'
+          end: '2019-02-22'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-02-22'
+          end: '2019-02-22'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-02-23'
+          end: '2019-02-23'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-02-23'
+          end: '2019-02-23'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-02-23'
+          end: '2019-02-23'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-02-24'
+          end: '2019-02-24'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-02-24'
+          end: '2019-02-24'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-02-24'
+          end: '2019-02-24'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-02-25'
+          end: '2019-02-25'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-02-25'
+          end: '2019-02-25'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-02-25'
+          end: '2019-02-25'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-02-26'
+          end: '2019-02-26'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-02-26'
+          end: '2019-02-26'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-02-26'
+          end: '2019-02-26'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-02-27'
+          end: '2019-02-27'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-02-27'
+          end: '2019-02-27'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-02-27'
+          end: '2019-02-27'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-02-28'
+          end: '2019-02-28'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-02-28'
+          end: '2019-02-28'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-02-28'
+          end: '2019-02-28'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-03-01'
+          end: '2019-03-01'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-03-01'
+          end: '2019-03-01'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-03-01'
+          end: '2019-03-01'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-03-02'
+          end: '2019-03-02'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-03-02'
+          end: '2019-03-02'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-03-02'
+          end: '2019-03-02'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-03-03'
+          end: '2019-03-03'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-03-03'
+          end: '2019-03-03'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-03-03'
+          end: '2019-03-03'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-03-04'
+          end: '2019-03-04'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-03-04'
+          end: '2019-03-04'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-03-04'
+          end: '2019-03-04'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-03-05'
+          end: '2019-03-05'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-03-05'
+          end: '2019-03-05'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-03-05'
+          end: '2019-03-05'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-03-06'
+          end: '2019-03-06'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-03-06'
+          end: '2019-03-06'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-03-06'
+          end: '2019-03-06'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-03-07'
+          end: '2019-03-07'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-03-07'
+          end: '2019-03-07'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-03-07'
+          end: '2019-03-07'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-03-08'
+          end: '2019-03-08'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-03-08'
+          end: '2019-03-08'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-03-08'
+          end: '2019-03-08'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-03-09'
+          end: '2019-03-09'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-03-09'
+          end: '2019-03-09'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-03-09'
+          end: '2019-03-09'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-03-10'
+          end: '2019-03-10'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-03-10'
+          end: '2019-03-10'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-03-10'
+          end: '2019-03-10'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-03-11'
+          end: '2019-03-11'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-03-11'
+          end: '2019-03-11'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-03-11'
+          end: '2019-03-11'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-03-12'
+          end: '2019-03-12'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-03-12'
+          end: '2019-03-12'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-03-12'
+          end: '2019-03-12'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-03-13'
+          end: '2019-03-13'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-03-13'
+          end: '2019-03-13'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-03-13'
+          end: '2019-03-13'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-03-14'
+          end: '2019-03-14'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-03-14'
+          end: '2019-03-14'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-03-14'
+          end: '2019-03-14'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-03-15'
+          end: '2019-03-15'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-03-15'
+          end: '2019-03-15'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-03-15'
+          end: '2019-03-15'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-03-16'
+          end: '2019-03-16'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-03-16'
+          end: '2019-03-16'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-03-16'
+          end: '2019-03-16'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+        -
+          begin: '2019-03-17'
+          end: '2019-03-17'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Rhuk Hall'
+          link: '#'
+          target: _self
+          title: 'Gravity of Grav'
+        -
+          begin: '2019-03-17'
+          end: '2019-03-17'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Dance Hall'
+          link: '#'
+          target: _self
+          title: 'Essence of Web Design'
+        -
+          begin: '2019-03-17'
+          end: '2019-03-17'
+          stime: '6:30PM'
+          etime: '7:30PM'
+          description: 'The Forest'
+          link: '#'
+          target: _self
+          title: 'Bigfoot Hunter Club Meeting'
+        -
+          begin: '2019-03-18'
+          end: '2019-03-18'
+          stime: '2:30PM'
+          etime: '3:30PM'
+          description: 'Wombat Exhibit at the Zoo'
+          link: '#'
+          target: _blank
+          title: 'Wombat Spotters Club Meeting'
+        -
+          begin: '2019-03-18'
+          end: '2019-03-18'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Snow Drift'
+          link: '#'
+          target: _blank
+          title: 'Snowman Building 101'
+        -
+          begin: '2019-03-18'
+          end: '2019-03-18'
+          stime: '4:30PM'
+          etime: '5:30PM'
+          description: 'Swimming Pool'
+          link: '#'
+          target: _blank
+          title: 'Swim Team Practice'
+        -
+          begin: '2019-03-19'
+          end: '2019-03-19'
+          stime: '2:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Smartphone film festival'
+        -
+          begin: '2019-03-19'
+          end: '2019-03-19'
+          stime: '3:30PM'
+          etime: '4:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Picasso at the Lapin Agile'
+        -
+          begin: '2019-03-19'
+          end: '2019-03-19'
+          stime: '5:30PM'
+          etime: '6:30PM'
+          description: 'Evergreen Kimmel Center'
+          link: '#'
+          target: _self
+          title: 'Career Fair'
+        -
+          begin: '2019-03-20'
+          end: '2019-03-20'
+          stime: '7:30PM'
+          etime: ''
+          description: 'Hagen Theater'
+          link: '#'
+          target: _self
+          title: '24 Hour Theater'
+        -
+          begin: '2019-03-20'
+          end: '2019-03-20'
+          stime: '8:30PM'
+          etime: '9:30PM'
+          description: 'Tribute Hall'
+          link: '#'
+          target: _self
+          title: 'Joomla for Joomla Fans'
+        -
+          begin: '2019-03-20'
+          end: '2019-03-20'
+          stime: '9:30PM'
+          etime: '10:30PM'
+          description: 'By the Bowling Alley'
+          link: '#'
+          target: _self
+          title: 'Bowling for WordPress'
+  simplecontent-3152:
+    title: 'Simple Content'
+    attributes:
+      class: 'section-horizontal-paddings nopaddingall'
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Watch the video tour'
+          author: ''
+          leading_content: 'Explore Evergreen School of Arts in 3:40'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+    block:
+      variations: center
+  video-4670:
+    attributes:
+      class: ''
+      items:
+        -
+          caption: ''
+          source: local
+          video: '#'
+          local:
+            -
+              file: 'gantry-media://home/utility/video-01.mp4'
+              title: 'New item'
+          posterimage: 'gantry-media://home/utility/img-01.jpg'
+          loop: enabled
+          autoplay: disabled
+          controls: disabled
+          info: disabled
+          related: disabled
+          muted: enabled
+          start: ''
+          title: Video
+  team-1864:
+    attributes:
+      class: ''
+      title: '31 World-Class Professors'
+      subtitle: 'Browse our amazing staff.'
+      members:
+        -
+          image: ''
+          role: 'Art Education'
+          link: ''
+          target: _self
+          name: 'Robert Bates'
+        -
+          image: ''
+          role: 'Music Education'
+          link: ''
+          target: _self
+          name: 'Michael Palmore'
+        -
+          image: ''
+          role: 'Art History'
+          link: ''
+          target: _self
+          name: 'Lawrence Williams'
+        -
+          image: ''
+          role: Conducting
+          link: ''
+          target: _self
+          name: 'John Sherman'
+        -
+          image: ''
+          role: Theater
+          link: ''
+          target: _self
+          name: 'Jason Burdine'
+        -
+          image: ''
+          role: 'Painting & Drawing'
+          link: ''
+          target: _self
+          name: 'Andria Farr'
+        -
+          image: ''
+          role: Photography
+          link: ''
+          target: _self
+          name: 'Ann Ocasio'
+        -
+          image: ''
+          role: Printmaking
+          link: ''
+          target: _self
+          name: 'Cassie Nichols'
+        -
+          image: ''
+          role: Sculpture
+          link: ''
+          target: _self
+          name: 'Carolyn McBride'

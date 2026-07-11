@@ -1,0 +1,339 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1458046943
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/: {  }
+  /header/:
+    -
+      - simplecontent-3042
+  /aboveBanner/: {  }
+  /above/: {  }
+  /showcaseBanner/: {  }
+  /showcase/: {  }
+  /utilityBanner/: {  }
+  /utility/: {  }
+  /featureBanner/:
+    -
+      - custom-1063
+  /feature/:
+    -
+      - pricingtable-8512
+  /mainBanner/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expandedBanner/: {  }
+  /expanded/: {  }
+  /extensionBanner/: {  }
+  /extension/: {  }
+  /bottomBanner/: {  }
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 48'
+      - 'position-position-1858 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  aboveBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcaseBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utilityBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  featureBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  mainBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expandedBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extensionBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottomBanner:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+    attributes:
+      image: 'gantry-media://logo/logo.svg'
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  simplecontent-3042:
+    title: 'Header - Pricing'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Pricing Overview'
+          author: ''
+          leading_content: 'Gantry is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Pricing Overview'
+    block:
+      class: center
+  custom-1063:
+    title: 'Pricing - Feature Banner A'
+    attributes:
+      html: '<h3 class="g-title nomarginbottom nopaddingbottom">Our Basic Packages Pricing</h3>'
+    block:
+      class: 'title-center nomarginbottom nopaddingbottom nomargintop'
+  pricingtable-8512:
+    title: 'Pricing Table - Feature A'
+    attributes:
+      columns: g-pricingtable-3-col
+      tables:
+      - accent: accent1
+        customcolor: ""
+        class: ""
+        ribbon: ""
+        icon: ""
+        price: Free
+        period: monthly
+        desc: ""
+        buttontext: Choose
+        buttonlink: '#'
+        buttontarget: _self
+        buttonclass: ""
+        items:
+        - text: 5 web pages
+          class: g-bold
+          title: Item 1
+        - text: 5 mb upload
+          class: g-bold
+          title: Item 2
+        - text: Blog Plugin
+          class: g-linethrough
+          title: Item 3
+        - text: Shop Plugin
+          class: g-linethrough
+          title: Item 4
+        - text: Premium Themes
+          class: g-linethrough
+          title: Item 5
+        - text: Phone Support
+          class: g-linethrough
+          title: Item 6
+        plan: Bronze
+      - accent: accent2
+        customcolor: ""
+        class: ""
+        ribbon: ""
+        icon: ""
+        price: $29
+        period: monthly
+        desc: ""
+        buttontext: Choose
+        buttonlink: '#'
+        buttontarget: _self
+        buttonclass: ""
+        items:
+        - text: 15 web pages
+          class: g-bold
+          title: Item 1
+        - text: 15 mb upload
+          class: g-bold
+          title: Item 2
+        - text: Blog Plugin
+          class: g-bold
+          title: Item 3
+        - text: Shop Plugin
+          class: g-linethrough
+          title: Item 4
+        - text: Premium Themes
+          class: g-linethrough
+          title: Item 5
+        - text: Phone Support
+          class: g-linethrough
+          title: Item 6
+        plan: Silver
+      - accent: accent4
+        customcolor: ""
+        class: ""
+        ribbon: Popular
+        icon: ""
+        price: $59
+        period: monthly
+        desc: ""
+        buttontext: Choose
+        buttonlink: '#'
+        buttontarget: _self
+        buttonclass: ""
+        items:
+        - text: 25 web pages
+          class: g-bold
+          title: Item 1
+        - text: 25 mb upload
+          class: g-bold
+          title: Item 2
+        - text: Blog Plugin
+          class: g-bold
+          title: Item 3
+        - text: Shop Plugin
+          class: g-bold
+          title: Item 4
+        - text: Premium Themes
+          class: g-bold
+          title: Item 5
+        - text: Phone Support
+          class: g-linethrough
+          title: Item 6
+        plan: Gold
+  position-position-8538:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-position-8807:
+    title: Aside
+    attributes:
+      key: aside
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  position-position-1858:
+    title: Copyright
+    attributes:
+      key: copyright
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

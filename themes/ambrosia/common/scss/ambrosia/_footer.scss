@@ -1,0 +1,45 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;	
+	// Accent Color
+	a {
+		color: $white;
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+	// FP Demo Info
+	.fp-demo-info {
+		.g-content > p {
+			margin-top: 0;
+		}
+		font-size: 0.875rem;
+	}
+	// Social
+	.g-social a {
+		background: $footer-text-color;
+		color: $footer-background;
+		width: 30px;
+		height: 30px;
+		margin-bottom: 4px;
+		&:hover {
+			background: $white;
+		}
+	}
+	// Sample Sitemap
+	.g-sample-sitemap {
+		@include breakpoint(mobile-only) {
+			.g-block {
+				flex: 0 0 auto;
+				width: 50% !important;
+			}
+		}	
+	}	
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

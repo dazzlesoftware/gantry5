@@ -1,0 +1,255 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: coming_soon
+  timestamp: 1451991634
+layout:
+  /overlay/: {  }
+  /fixedside/:
+    -
+      - social-9117
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - logo-7061
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-8012
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - simplecounter-1803
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - infolist-3744
+  /bottom/:
+    -
+      - 'custom-2368 50'
+      - 'newsletter-4577 50'
+  /footer/:
+    -
+      - 'logo-7511 30'
+      - 'horizontalmenu-7327 40'
+      - 'social-1770 30'
+  /copyright/:
+    -
+      - 'copyright-3234 50'
+      - 'horizontalmenu-2263 50'
+    -
+      - totop-8262
+  /offcanvas/: {  }
+structure:
+  overlay:
+    type: section
+    attributes:
+      boxed: '0'
+  fixedside:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  social-9117:
+    title: 'FixedSide Social Icons'
+    block:
+      class: g-fixedside-social
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-7061:
+    block:
+      variations: center
+  infolist-8012:
+    title: 'Antares is Coming Soon'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Good News! Something Awesome is in the Works'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: 'Antares is Coming Soon'
+    block:
+      variations: center
+  simplecounter-1803:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: 'We are working on a new and exciting template that we think you will really like.'
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      variations: center
+  infolist-3744:
+    title: 'Have Something to Tell Us?'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Ideas, Suggestion, or Review'
+          tag: ''
+          subtag: ''
+          label: 'Contact Us'
+          link: '#'
+          icon: ''
+          readmoreclass: button-special
+          title: 'Have Something to Tell Us?'
+    block:
+      variations: center
+  custom-2368:
+    title: 'About Antares'
+    attributes:
+      html: "<h3 class=\"g-title\">About Antares</h3>\nAntares is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template and addons.."
+  newsletter-4577:
+    title: 'Subscribe Here'
+    attributes:
+      title: 'Subscribe Here'
+      headtext: 'Subscribe to our newsletter and stay updated on the latest developments and special offers!'
+      inputboxtext: 'Email Address'
+      buttontext: Join
+      uri: rocketthemeblog
+      buttonclass: 'button-alt button-special'
+  logo-7511:
+    title: 'Footer Logo'
+  horizontalmenu-7327:
+    title: 'Footer Menu'
+    attributes:
+      class: demo-footer-menu
+      items:
+        -
+          text: Features
+          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          name: Features
+        -
+          text: Support
+          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          name: Support
+        -
+          text: Download
+          link: 'https://www.rockettheme.com/joomla/templates/antares'
+          name: Download
+  social-1770:
+    title: 'Footer Social Icons'
+  horizontalmenu-2263:
+    title: 'Copyright Menu'
+    attributes:
+      items:
+        -
+          text: Docs
+          link: 'https://www.rockettheme.com/docs/joomla/templates/antares'
+          name: Docs
+        -
+          text: Guides
+          link: 'http://docs.gantry.org/'
+          name: Guides
+        -
+          text: Questions
+          link: 'https://www.rockettheme.com/contact-us'
+          name: Questions
+        -
+          text: Forum
+          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          name: Forum
+  totop-8262:
+    title: 'To Top'

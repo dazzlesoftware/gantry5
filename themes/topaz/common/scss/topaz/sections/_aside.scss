@@ -1,0 +1,14 @@
+#g-aside {
+    background: $main-background;
+    color: $main-text-color;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 0.625rem;
+}
+
+@media print {
+    #g-aside {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,28 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+
+    // Home
+    .g-home &, .g-homepositions & {
+		.g-animatedblock {
+		    margin: 2rem 8px 0 8px;
+		}
+		.g-animatedblock-items[class*="cols"] .g-animatedblock-item {
+			@include breakpoint(mobile-only) {
+				margin: 0.5rem 0;
+			}
+		}
+		.g-animatedblock-desc {
+			@include breakpoint(small-mobile-range) {
+				font-size: $core-font-size - 0.2;
+			}
+		}
+    }
+}
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

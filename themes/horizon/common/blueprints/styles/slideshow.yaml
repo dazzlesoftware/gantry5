@@ -1,0 +1,18 @@
+name: Slideshow Styles
+description: Slideshow styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "rgba(255,255,255,0)"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/slideshow/bg-01.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#000000"

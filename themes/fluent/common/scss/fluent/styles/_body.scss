@@ -1,0 +1,69 @@
+html {
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        // IE 11 HACK
+        overflow: hidden;
+        height: 100%;
+    }
+
+    body {
+        color: $base-text-color;
+        background: $base-background;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+            // IE 11 HACK
+            overflow: auto;
+            height: 100%;
+        }
+
+        // Background
+        @if $base-background-image {
+            background-color: transparent;
+            background-attachment: fixed;
+            background-image: url($base-background-image);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #g-page-surround {
+            padding-top: 5vw;
+            padding-bottom: 5vw;
+
+            @include breakpoint(mobile-only) {
+                padding: 0;
+            }
+
+            .g-bodyonly & {
+                color: $base-text-color;
+                background: $base-background;
+            }
+        }
+
+        p {
+            margin: 0 0 1.3rem 0;
+        }
+
+        span.para {
+            display: block;
+            margin: 1rem 0;
+        }
+
+        &.dir-rtl {
+            .align-left {
+                text-align: right !important;
+            }
+
+            .align-right {
+                text-align: left !important;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-page-surround {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

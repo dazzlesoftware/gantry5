@@ -1,0 +1,9 @@
+xenon-theme:
+  title: 'Xenon Theme'
+  description: 'Sample menu for Xenon theme.'
+
+  items:
+    xenon:
+      title: 'Home'
+      outline: home
+      home: 1

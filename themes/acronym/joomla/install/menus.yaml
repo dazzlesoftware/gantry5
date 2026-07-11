@@ -1,0 +1,9 @@
+acronym-theme:
+  title: 'Acronym Theme'
+  description: 'Sample menu for Acronym theme.'
+
+  items:
+    acronym:
+      title: 'Home'
+      outline: home
+      home: 1

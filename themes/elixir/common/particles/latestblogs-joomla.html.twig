@@ -1,0 +1,83 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+
+<div class="g-latestblogs-grid {{ particle.cols }}">
+    <div class="g-latestblogs-grid-sizer"></div>
+    {% for article in articles %}
+        {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+            {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                {% set article_image = article.images.image_intro %}
+                {% set article_image_alt = article.images.image_intro_alt %}
+            {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                {% set article_image = article.images.image_fulltext %}
+                {% set article_image_alt = article.images.image_fulltext_alt %}
+            {% endif %}
+        {% endif %}
+        {% set cat = article.categories|last %}
+        <div class="g-latestblogs-grid-item g-latestblogs-platform-content" data-groups='["{{ cat.id }}"]'>
+            <div class="g-latestblogs-grid-item-wrapper g-latestblogs-layout-text">
+
+                {% if display.image.enabled %}
+                    <div class="g-latestblogs-grid-item-image">
+                        <img src="{{ url(article_image)|e }}" alt="{{ item.title }}" />
+                    </div>
+                {% endif %}
+
+                <div class="g-latestblogs-grid-item-content">
+
+                    {% if display.title.enabled and article.title %}
+                        <div class="g-latestblogs-grid-item-title">{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}</div>
+                    {% endif %}
+
+                    {% if display.text.type %}
+                        {% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+                        <div class="g-latestblogs-grid-item-description">
+                            {% if display.text.formatting == 'text' %}
+                                {{ article_text|truncate_text(display.text.limit)|raw }}
+                            {% else %}
+                                {{ article_text|truncate_html(display.text.limit)|raw }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                </div>
+                    <a href="{{ url(article.route)|e }}" target="{{ display.link.target|default('_self') }}" class="g-latestblogs-link-overlay"></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>

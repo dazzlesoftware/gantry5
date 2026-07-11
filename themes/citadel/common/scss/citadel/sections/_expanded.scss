@@ -1,0 +1,18 @@
+#g-container-expanded {
+    color: $expanded-text-color;
+
+    #g-expandedmain {
+        background: $expanded-background;
+
+        a {
+            color: $expanded-text-color;
+        }
+    }
+}
+
+@media print {
+    #g-container-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

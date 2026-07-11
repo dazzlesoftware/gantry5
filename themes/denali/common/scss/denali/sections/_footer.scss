@@ -1,0 +1,23 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    a {
+        color: $footer-text-color;
+
+        &:hover {
+            color:  $accent-color-1;
+        }
+    }
+
+    h6 {
+        color:  transparentize($footer-text-color, 0.60);
+    }
+}
+
+@media print {
+    #g-container-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

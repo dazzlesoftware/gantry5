@@ -1,0 +1,57 @@
+.g-simplecounter-content {
+	.title {
+		margin: 30px 0;
+    	letter-spacing: 3px;
+    	text-transform: uppercase;
+    	font-family: get-font-family($font-family-alt);
+	}
+}
+
+.g-simplecounter-block {
+	display: block;
+	margin: 2rem auto 0.5rem auto;
+}
+.g-simplecounter-calendar {
+	text-align: center;
+	.counter-block {
+		display: inline-block;
+		margin: 0 0.5rem;
+		padding: 0;
+	}
+	.number, .word {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+	.number {
+		width: 100px;
+		height: 80px;
+		line-height: 80px;
+		font-size: 2rem;
+		font-weight: normal;
+		border-radius: $border-radius;
+		margin-bottom: 0.5rem;
+		color: $white;
+		background: $dark-grey;
+		background: -moz-linear-gradient(to top, darken($dark-grey, 5%) 0%, darken($dark-grey, 5%) 50%, $dark-grey 50%, $dark-grey 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,darken($dark-grey, 5%)), color-stop(50%,darken($dark-grey, 5%)), color-stop(50%,$dark-grey), color-stop(100%,$dark-grey));
+		background: -webkit-linear-gradient(to top, darken($dark-grey, 5%) 0%,darken($dark-grey, 5%) 50%,$dark-grey 50%,$dark-grey 100%);
+		background: -o-linear-gradient(to top, darken($dark-grey, 5%) 0%,darken($dark-grey, 5%) 50%,$dark-grey 50%,$dark-grey 100%);
+		background: -ms-linear-gradient(to top, darken($dark-grey, 5%) 0%,darken($dark-grey, 5%) 50%,$dark-grey 50%,$dark-grey 100%);
+		background: linear-gradient(to bottom, darken($dark-grey, 5%) 0%,darken($dark-grey, 5%) 50%,$dark-grey 50%,$dark-grey 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='darken($dark-grey, 5%)', endColorstr='$dark-grey',GradientType=0 );
+		
+		@include breakpoint(mobile-only) {
+			font-size: 1.5rem;
+			width: 85px;
+			height: 50px;
+			line-height: 50px;
+		}
+	}
+	.word {
+		text-transform: uppercase;
+		@include breakpoint(mobile-only) {
+			font-size: 75%;
+		}
+	}
+}

@@ -1,0 +1,56 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;  
+    position: relative;
+	@if $utility-background-image {
+    	background: $utility-background url($utility-background-image) center no-repeat;
+    	background-size: cover;
+    	@include breakpoint(tablet-range) {
+			background-position: 30% center;
+			color: lighten($utility-text-color, 25%);
+    	}	    	
+    	@include breakpoint(mobile-only) {
+			background-position: 20% center;
+			color: lighten($utility-text-color, 25%);
+    	}	
+	}    
+	a {
+		color: $white;
+		&:hover {
+			color: $accent-color-1;
+		}
+	}	
+
+	// Overlay Content
+	.g-overlay {
+		padding: 3rem;
+		background: linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba($utility-background, 1)) repeat;
+		@include breakpoint(mobile-only) {
+			background: transparent;
+		}		
+	}
+
+	@include breakpoint(mobile-only) {
+		opacity: 0.9;
+	}
+	&:before {
+		@include breakpoint(mobile-only) {
+			position: absolute;
+			content: "";
+			background: fade-out(darken($utility-background, 25%), 0.30);
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+		}
+	}
+	
+}
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

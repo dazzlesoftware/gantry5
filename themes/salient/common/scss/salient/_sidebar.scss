@@ -1,0 +1,41 @@
+#g-sidebar {
+	.fp-promoimage {
+		.g-promoimage-caption {
+			height: 5rem;
+			text-align: left;
+			@include breakpoint(tablet-range) {
+				height: 6rem;
+			}
+		}
+		.g-promoimage-iconbutton {
+			top: inherit;
+			left: 1rem;
+			bottom: 1rem;
+			margin: 0;
+	        border: none;
+	        background: $white;
+	        color: $black;
+	        border-radius: $border-radius;	
+	        height: 35px;
+	        line-height: 35px;
+	        font-size: 1.25rem;		
+		}
+	}
+	.fp-roksprocket-lists {
+		.sprocket-lists-nav {
+			display: none;
+		}
+	}
+	.g-promoimage .g-promoimage-title {
+		.g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
+			letter-spacing: -1px;
+		}	
+	}
+}
+
+@media print {
+	#g-sidebar {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

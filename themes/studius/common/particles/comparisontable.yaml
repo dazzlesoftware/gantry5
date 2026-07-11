@@ -1,0 +1,68 @@
+name: Comparison Table
+description: Display comparison table items.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    headertext:
+      type: textarea.textarea
+      label: Header Text
+      description: Customize the header text.
+      placeholder: Enter short header text
+
+    rows:
+      type: collection.list
+      array: true
+      label: Rows
+      description: Create rows.
+      value: title
+      ajax: true
+
+      fields:
+        .class:
+          type: input.selectize
+          label: CSS Classes
+          description: CSS class name for the particle.
+        .columns:
+          type: collection.list
+          array: true
+          label: Columns
+          description: Create columns.
+          value: title
+          ajax: true
+          fields:
+            .text:
+              type: input.text
+              label: Text
+              description: Create the items for your table.
+            .class:
+              type: input.selectize
+              label: Item Classes
+              description: Enter the CSS class.
+            .icon:
+              type: input.icon
+              label: Icon
+              description: Input the icon.

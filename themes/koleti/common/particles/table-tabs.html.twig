@@ -1,0 +1,53 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-table-tabs">
+        {% if particle.leagues %}
+            <div class="g-table-tabs-top-table-content">
+                <h3 class="g-table-tabs-table-title">{{ particle.title }}</h3>
+
+                <div class="g-table-tabs-container">
+                    {% for league in particle.leagues %}
+                        <a class="g-table-tabs-league-title tab-link {% if loop.index == '1' %}selected{% endif %}" data-tab="tab-{{ loop.index }}">
+                            <span class="g-table-tabs-league-text">{{ league.title }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% for league in particle.leagues %}
+                <div id="tab-{{ loop.index }}" class="g-table-tabs-wrapper {% if loop.index == '1' %}selected{% endif %}">
+                    <div class="g-table-tabs-table-description">
+                        <span class="g-table-tabs-team-rank">{{ particle.order }}</span>
+                        <span class="g-table-tabs-team-name">{{ particle.team_name }}</span>
+                        <span class="g-table-tabs-team-played">{{ particle.team_played_matches }}</span>
+                        <span class="g-table-tabs-team-points">{{ particle.team_points }}</span>
+                        <span class="g-table-tabs-team-icon"></span>
+                    </div>
+
+                    {% for team in league.items %}
+                        <div class="g-table-tabs-team-content">
+                            <span class="g-table-tabs-team-rank">{{ loop.index }}</span>
+                            <span class="g-table-tabs-team-name">{{ team.title }}</span>
+                            <span class="g-table-tabs-team-played">{{ team.played_matches }}</span>
+                            <span class="g-table-tabs-team-points">{{ team.points }}</span>
+                            <span class="g-table-tabs-team-icon {% if 'fa fa-chevron-up' in team.icon %}green{% elseif 'fa fa-chevron-down' in team.icon %}red{% else %}gray{% endif %}">
+                                <i class="{{ team.icon }}" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+        {% endif %}
+    </div>
+    <div class="g-table-tabs-button-wrapper">
+        <a target="{{ particle.linktarget|default('_self')|e }}" href="{{ particle.button_link|e }}">{{ particle.button_text|e }}</a>
+    </div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/table-tabs.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;  
+
+    // FP Feature A
+    .fp-feature-a {
+    	text-align: center;
+    }
+
+    // FP Feature B
+    .fp-feature-b {
+    	margin: 1rem 0 3rem 0;
+		.button {
+			padding: 0.5rem 0.75rem;
+		}    	
+    }
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

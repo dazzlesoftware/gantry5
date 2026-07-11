@@ -1,0 +1,51 @@
+#g-maintop {
+    background: $maintop-background;
+    color: $maintop-text-color; 
+}    
+
+.fp-maintop {
+	.g-content {
+		@include breakpoint(large-desktop-range){
+			width: 60%;
+		}	
+		@include breakpoint(desktop-range){
+			width: 60%;
+		}	
+		margin: 35px auto 0;
+	}
+	.title {
+		font-size: 300%;
+    	line-height: 160%;
+    	margin-bottom: 0;
+
+		@include breakpoint(desktop-range) {
+			font-size: 250%;
+		}
+		@include breakpoint(tablet-range) {
+			font-size: 200%;
+		}
+		@include breakpoint(mobile-only) {
+			font-size: 160%;
+		}
+
+		color: lighten($accent-color-1, 5%);
+		span {
+			color: darken($accent-color-1, 10%);
+		}
+		&:after {
+			background: $accent-color-1;
+			content: "";
+		    display: block;
+		    width: 25%;
+		    height: 1px;
+		    margin: auto;
+		}
+	}
+}
+
+@media print {
+	#g-maintop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

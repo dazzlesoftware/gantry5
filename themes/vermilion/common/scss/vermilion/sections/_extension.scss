@@ -1,0 +1,66 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;
+}
+
+// FP Extension
+.fp-extension-a, .fp-extension-b {
+	.g-content {
+		padding: 50px 25px;
+	}
+
+	a:not(.readon3) {
+		color: $accent-color-2;
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+.fp-extension-a {
+	.rt-icon-badge.rt-badge-left {
+		padding-bottom: 75px;
+	}
+	.title {
+		margin-top: 0;
+	}
+}
+.fp-extension-b {
+	.title {
+		color: $white;
+	}
+	#lists {
+		&.g-owlcarousel-lists {
+			.g-owlcarousel {
+				border: 2px solid;
+    			border-radius: 3px;
+    		}
+			.ui-state-active {
+				&.g-owlcarousel-item-title {
+					color: $accent-color-2;
+				}
+				.indicator {
+					&:before {
+						background: $accent-color-2;
+					}
+				}
+			}
+			.g-owlcarousel-item-title {
+				.indicator {
+					background: $extension-text-color;
+				}
+			}
+			.g-owlcarousel-item {
+				&:last-child {
+					margin-bottom: 50px;
+				}
+			}
+		}
+	}	
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

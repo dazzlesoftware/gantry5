@@ -1,0 +1,205 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: team
+  timestamp: 1443176112
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-9895
+  top: {  }
+  /utility/:
+    -
+      - custom-2890
+  feature: {  }
+  maintop: {  }
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 60':
+          -
+            - custom-5215
+      -
+        'sidebar 40': {  }
+  expandedbottom: {  }
+  mainbottom: {  }
+  extension: {  }
+  /footer-surround/:
+    -
+      -
+        /bottom/:
+          -
+            - custom-4488
+        /footer/:
+          -
+            - 'custom-5551 50'
+            - 'custom-2913 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  maintop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer:
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-9895:
+    title: 'Our Team'
+    attributes:
+      title: 'Our Team <span class="rt-title-tag">Meet the People Behind Anacron</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-2890:
+    title: 'Greetings from Our CEO'
+    attributes:
+      title: ''
+      html: "<p class=\"promo2\"><span class=\"fa fa-quote-left\"></span> Anacron is a template designed and inspired by recent visual trends, blending subtle backgrounds and overlays, with text set by custom fonts, to create an alluring experience for your visitors, whilst maintaining a professional and functional look <span class=\"fa fa-quote-right\"></span> </p>\n\n<p>- <em><a href=\"#\">Greetings from Our CEO, Robert Smith</a></em> -</p>"
+    block:
+      variations: center
+  custom-5215:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Management Team <span class="rt-title-tag">The People Who Manage Anacron</span>'
+      html: "<div class=\"rt-center rt-about-top\">\n\t<div class=\"gantry-width-block gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-team-img\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img2.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<div class=\"rt-staff-details\">\n\t\t\t\t<h2 class=\"rt-uppercase nomarginbottom\">Robert Smith</h2>\n\t\t\t\t<h5 class=\"nomargintop\">Chief Executive Officer</h5>\t\t\t\t\n\t\t\t</div>\t\t\t\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-block gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-team-img\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img2.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<div class=\"rt-staff-details\">\n\t\t\t\t<h2 class=\"rt-uppercase nomarginbottom\">Amelia Brown</h2>\n\t\t\t\t<h5 class=\"nomargintop\">Accountant</h5>\t\t\t\t\n\t\t\t</div>\t\t\t\t\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\t\n\t\t</div>\n\t</div>\t\n\n\t<div class=\"gantry-width-block gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-team-img\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img2.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<div class=\"rt-staff-details\">\n\t\t\t\t<h2 class=\"rt-uppercase nomarginbottom\">Mellisa Jean</h2>\n\t\t\t\t<h5 class=\"nomargintop\">Secretary</h5>\t\t\t\t\n\t\t\t</div>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\t\n\t\t</div>\n\t</div>\t\t\n</div>\n\n<div class=\"clear\"></div>\t\t\n<br class=\" largemarginall largepaddingall\" />\n\n<div class=\"rt-big-title rt-center\">\n\t<div class=\"module-title\">\n\t\t<h2 class=\"title\">Core Developers <span class=\"rt-title-tag\">Our Awesome Web Developers</span></h2>\n\t</div>\t\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Julia Smith</h3>\n\t\t\t<h5 class=\"nomargintop\">Co-Founder</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Joe Williams</h3>\n\t\t\t<h5 class=\"nomargintop\">Lead Developer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Anna Cruise</h3>\n\t\t\t<h5 class=\"nomargintop\">UX &amp; UI Designer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Thomas Davis</h3>\n\t\t\t<h5 class=\"nomargintop\">Graphic Designer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>\t\t\n<br class=\" largemarginall largepaddingall\" />\n\n<div class=\"rt-big-title rt-center\">\n\t<div class=\"module-title\">\n\t\t<h2 class=\"title\">Designers <span class=\"rt-title-tag\">Our Great Designers</span></h2>\n\t</div>\t\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">John Noah</h3>\n\t\t\t<h5 class=\"nomargintop\">Developer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Willy Goh</h3>\n\t\t\t<h5 class=\"nomargintop\">Developer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Julian Mia</h3>\n\t\t\t<h5 class=\"nomargintop\">Developer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-25\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-center\">\n\t\t\t<span class=\"rt-team-img2\">\n\t\t\t\t<img src=\"gantry-media://pages/team/img1.jpg\" alt=\"image\" />\n\t\t\t</span>\t\n\t\t\t<h3 class=\"rt-uppercase nomarginbottom\">Drew Ava</h3>\n\t\t\t<h5 class=\"nomargintop\">Developer</h5>\n\t\t\t<div class=\"rt-staff-social\">\n\t\t\t\t<a href=\"#\"><span class=\"rt-facebook\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-twitter\"></span></a>\n\t\t\t\t<a href=\"#\"><span class=\"rt-gplus\"></span></a>\n\t\t\t</div>\t\t\t\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+    block:
+      class: rt-big-title
+      variations: center
+  custom-4488:
+    title: 'More Details'
+    attributes:
+      title: 'More Details <span class="rt-title-tag">Help guides are available to assist</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-5551:
+    title: 'Pages Demo Footer'
+    attributes:
+      title: ''
+      html: "<p>All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Anacron RocketLauncher</a> to install an equivalent of the demo onto your site.</p>\n<p>Anacron is only available as part of the Club Subscription.</p>\n\n<div class=\"gantry-width-block gantry-width-50\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-footer-logo\"></div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-50\">\n\t<div class=\"gantry-width-spacer nomarginleft\">\n\t\t<span>+1-(678)-123-6789</span><br />\n\t\t<span>Anacron Center, LLC</span><br />\n\t\t<span>123 Boulevard</span><br />\n\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t<span><a href=\"#\">hello@anacron.com</a></span>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  custom-2913:
+    title: 'Pages Footer Form'
+    attributes:
+      title: ''
+      html: "<div class=\"rt-email-form\">\n\t<form action=\"#\">\n\t\t<input type=\"text\" placeholder=\"Full Name\" size=\"18\" alt=\"fullname\" class=\"inputbox\" name=\"fullname\">\n\t\t<input type=\"text\" placeholder=\"Your Email\" size=\"28\" alt=\"email\" class=\"inputbox\" name=\"email\">\n\t\t<textarea placeholder=\"Your Message\" name=\"message\" cols=\"30\" rows=\"5\"></textarea>\n\t\t<input type=\"submit\" value=\"Send Message\" class=\"button\" name=\"send\">\n\t</form>\t\n</div>"

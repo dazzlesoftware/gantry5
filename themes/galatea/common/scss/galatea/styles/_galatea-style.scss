@@ -1,0 +1,158 @@
+.g-home-positions,
+.g-home-particles,
+.g-features-particles {
+    &.g-galatea-style {
+        #g-navigation {
+            color: fade-out($black, 0.5);
+            background: transparent;
+            position: relative;
+            z-index: 12;
+            .g-container {
+                .g-block {
+                    > .g-content {
+                        margin: 0;
+                        padding: 1rem ($content-margin + $content-padding);
+                        border-bottom: 1px solid fade-out($black, 0.95);
+                        @include breakpoint(mobile-only) {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+            .g-offsidebar-toggle {
+                color: fade-out($black, 0.5);
+            }
+            .g-social a {
+                width: 1.6rem;
+                height: 1.6rem;
+                line-height: 1.8rem;
+                font-size: 1.1rem;
+                color: $white;
+                background: fade-out($black, 0.9);
+                &:hover {
+                    background: $accent-color-1;
+                }
+            }
+            @include breakpoint(small-mobile-range) {
+                background: $navigation-background;
+                color: $navigation-text-color;
+            }
+        }
+        #g-slideshow {
+            color: $black;
+            margin-top: -5em;
+            position: relative;
+            z-index: 10;
+            @include breakpoint(mobile-only) {
+                margin-top: -6rem;
+            }
+            @include breakpoint(small-mobile-range) {
+                margin-top: 0;
+            }
+            .g-owlcarousel-item-content-wrapper {
+                @include breakpoint(large-desktop-range) {
+                    margin-top: -4%;
+                }
+                @include breakpoint(desktop-range) {
+                    margin-top: 0;
+                }
+                @include breakpoint(tablet-range) {
+                    margin-top: 4%;
+                }
+                @include breakpoint(large-mobile-range) {
+                    margin-top: 10%;
+                }
+                @include breakpoint(small-mobile-range) {
+                    margin-top: 5%;
+                }
+            }
+            .g-owlcarousel-item-title {
+                color: fade-out($black, 0.25);
+            }
+            .g-owlcarousel-item-desc {
+                opacity: 0.5;
+            }
+            .owl-nav div, .owl-nav button {
+                margin-top: -5%;
+            }
+            .owl-dots {
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                @include breakpoint(large-desktop-range) {
+                  bottom: 28%;
+                }
+                @include breakpoint(desktop-range) {
+                  bottom: 10%;
+                }
+                @include breakpoint(tablet-range) {
+                  bottom: 22%;
+                }
+            }
+        }
+        #g-header {
+            position: relative;
+            z-index: 11;
+
+            .g-mosaicgrid-title {
+                position: relative;
+                top: -14rem;
+                margin-bottom: 0;
+            }
+            .g-mosaicgrid {
+                @include breakpoint(large-desktop-range) {
+                  margin-top: -14rem;
+                }
+                @include breakpoint(desktop-range) {
+                  margin-top: -5rem;
+                }
+                @include breakpoint(tablet-range) {
+                  margin-top: -2rem;
+                }
+                @include breakpoint(mobile-only) {
+                  margin-top: 0;
+                }
+            }
+        }
+
+        .g-offcanvas-toggle {
+            @include breakpoint(large-mobile-range) {
+                color: fade-out($black, 0.5);
+            }
+        }
+
+        &.g-style-preset4 {
+            #g-navigation,
+            #g-navigation .g-offsidebar-toggle {
+                color: fade-out($white, 0.35);
+            }
+            #g-slideshow {
+                .g-owlcarousel {
+                    .owl-item:nth-child(3),
+                    .owl-item:nth-child(6) {
+                        .g-owlcarousel-item-title {
+                            color: $white;
+                        }
+                        .g-owlcarousel-item-desc {
+                            color: $white;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.g-galatea-style {
+    &.g-style-preset6 {
+        #g-above {
+            a {
+                color: fade-out($above-text-color, 0.35);
+                &:hover {
+                    color: inherit;
+                }
+            }
+        }
+    }
+}

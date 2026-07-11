@@ -1,0 +1,26 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+    padding-top: $content-padding * 2;
+    padding-bottom: $content-padding * 2;
+    @include breakpoint(mobile-only) {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+    @extend .section-paddings;
+
+    .g-infolist-item-title  {
+        color: $white;
+    }
+    .g-infolist .g-infolist-item-desc {
+        color: transparentize($white, 0.50)
+    }
+
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,35 @@
+.g-logo {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-weight: $font-weight-extrabold;
+    @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.3, false, false);
+    box-shadow: none !important;
+    line-height: normal;
+    max-width: 110px;
+
+    span {
+        padding-left: $content-margin;
+        .dir-rtl & {
+            padding-right: $content-margin;
+            padding-left: 0;
+        }
+       
+        padding-top: 0.3rem;
+
+        @include breakpoint(mobile-only) {
+            padding-top: 0.5rem;
+        }
+    }
+    @include breakpoint(mobile-only) {
+        margin-left: 2rem;
+    }
+    white-space: nowrap;
+}
+
+.avatar-logo {
+    img {
+        width: 80px;
+        border-radius: 100%;
+    }
+}

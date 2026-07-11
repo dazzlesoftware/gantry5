@@ -1,0 +1,168 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _offline
+  timestamp: 1602799194
+layout:
+  top: {  }
+  /navigation/: { }
+  /slideshow/:
+    -
+      - simplecontent-7589
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-7661
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  extension: {  }
+  bottom: {  }
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+      variations: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+      variations: ''
+  container-top:
+    attributes:
+      boxed: ''
+      class: no-background-image
+      extra: {  }
+  header:
+    attributes:
+      boxed: '1'
+      class: g-default-header
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: g-default-above
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: g-default-showcase
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: g-default-utility
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: g-default-feature
+  sidebar:
+    type: section
+    attributes:
+      class: ''
+    block:
+      fixed: '1'
+  mainbar:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: equal-height
+      variations: center
+  aside:
+    attributes:
+      class: ''
+    block:
+      fixed: '1'
+  container-main:
+    attributes:
+      boxed: ''
+      class: g-default-main
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: g-default-expanded
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  bottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-footer:
+    attributes:
+      boxed: ''
+content:
+  logo-3453:
+    title: 'Logo / Image'
+    attributes:
+      image: ''
+      link: '1'
+      svg: ''
+      text: Horizon
+      title: Horizon
+    block:
+      variations: 'align-left nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  simplecontent-7589:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Maintenance Mode'
+          author: ''
+          leading_content: 'Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Item 1'
+  system-content-7661:
+    block:
+      variations: title6

@@ -1,0 +1,22 @@
+.g-social {
+    a {
+        color: $base-background;
+        padding: 0.1rem 0.2rem;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        font-size: $core-font-size + 0.55;
+        border-radius: 2px;
+
+        &:hover {
+            color: $accent-color-1 !important;
+        }
+    }
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+    @include breakpoint(tablet-range) {
+        text-align: center;
+    }
+}

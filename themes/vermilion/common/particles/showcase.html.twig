@@ -1,0 +1,18 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+<div class="fp-showcase-content">
+	<div class="fp-showcase-title">
+	<p class="promo1">{{ particle.promo|html|raw }} <strong>{{ particle.promobold|html|raw }}</strong></p>
+	</div>
+	<div class="fp-showcase-info">
+
+	{% if particle.desc %}{{ particle.desc|html|raw }}{% endif %}
+
+	{% if particle.link1 or particle.link2 %}<span class="readon-row">{% if particle.link1 %}<a target="{{ particle.buttontarget1|default('_self')|e }}" href="{{ particle.link1|e }}" class="{{ particle.buttonclass1|e }}">{{ particle.linktext1|html|raw|default('Read More') }}</a>{% endif %}{% if particle.link2 %}<a target="{{ particle.buttontarget2|default('_self')|e }}" href="{{ particle.link2|e }}" class="{{ particle.buttonclass2|e }}">{{ particle.linktext2|html|raw|default('Download') }}</a>{% endif %}</span>
+	{% endif %}
+	</div>
+</div>
+
+{% endblock %}

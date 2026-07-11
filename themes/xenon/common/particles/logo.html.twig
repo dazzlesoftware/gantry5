@@ -1,0 +1,14 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% set url = url(particle.url)|default(gantry.siteUrl()) %}
+    {% if (url == gantry.siteUrl()) %}{% set rel='rel="home"' %}{% endif %}
+    {% set class=(particle.class ? 'class="'~ particle.class ~'"') %}
+
+<a href="{{ url }}" title="{{ particle.text|e }}" {{ rel|default('')|raw }} {{ class|default('')|raw }}>
+    {% set image = url(particle.image) %}
+    {% if image %}<img src="{{ url(particle.image) }}" alt="{{ particle.text }}" />{% endif %}
+    {% if particle.text %}<span class="g-logo-text">{{ particle.text|e }}</span>{% endif %}
+    {% if particle.tagline %}<span class="g-logo-tagline">{{ particle.tagline|e }}</span>{% endif %}
+</a>
+{% endblock %}

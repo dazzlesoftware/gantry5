@@ -1,0 +1,82 @@
+name: Showcase
+description: Display showcase.
+type: particle
+icon: fa-television
+
+form:
+  overrideable: false  
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    promo:
+      type: input.text
+      label: Promo
+      description: Customize the text.
+
+    promobold:
+      type: input.text
+      label: Promo Bold
+      description: Customize the bold text.        
+
+    desc:
+      type: textarea.textarea
+      label: Description
+      description: Enter description here.
+
+    link1:
+      type: input.text
+      label: Link
+      description: Input the item link.
+
+    linktext1:
+      type: input.text
+      label: Link Text
+      description: Input the text for the item link.
+      placeholder: 'Read More' 
+
+    .buttontarget1:
+      type: select.selectize
+      label: Target
+      description: Target browser window when item is clicked.
+      placeholder: 'Select...'
+      default: _self
+      options:
+          _self: Self
+          _blank: New Window
+
+    .buttonclass1:
+      type: input.text
+      label: Button Class
+      description: Input the button class.
+      default: 'readon'
+
+    .link2:
+      type: input.text
+      label: Link 
+      description: Input the item link.
+
+    .linktext2:
+      type: input.text
+      label: Link Text
+      description: Input the text for the item link.
+      placeholder: 'Read More'     
+
+    .buttontarget2:
+      type: select.selectize
+      label: Target
+      description: Target browser window when item is clicked.
+      placeholder: 'Select...'
+      default: _self
+      options:
+          _self: Self
+          _blank: New Window
+
+    .buttonclass2:
+      type: input.text
+      label: Button Class
+      description: Input the button class.
+      default: 'readon2'

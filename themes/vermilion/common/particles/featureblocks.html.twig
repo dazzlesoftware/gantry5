@@ -1,0 +1,29 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+<div id="feature-block">
+{% for item in particle.items %}
+	<div class="gantry-width-{{ particle.cols }} fp-feature-block">
+		{% if item.image %}
+		<div class="fp-feature-image-block">
+			<img src="{{ item.image }}" alt="{{ item.imagealt|default('image') }}" />
+			<div class="rt-desc-overlay fp-feature-animate-{{ item.animation }}">
+				{% if item.overlaytitle %}<h3>{{ item.overlaytitle|raw }}</h3>{% endif %}
+				{% if item.overlaydesc %}<p class="rt-text-small">{{ item.overlaydesc|raw }}</p>{% endif %}
+			</div>
+		</div>
+		{% endif %}
+		{% if item.title or item.desc %}
+		<div class="gantry-width-spacer">
+			<div class="rt-icon-badge">{% if item.link %}<a href="{{ item.link }}">{% endif %}<span class="{{ item.icon }}"></span>{% if item.link %}</a>{% endif %}</div>
+			{% if item.title %}<h5 class="medpaddingtop">{{ item.title|raw }}</h5>{% endif %}
+			{% if item.desc %}<p>{{ item.desc|raw }}</p>{% endif %}
+		</div>
+		{% endif %}
+	</div>
+{% endfor %}
+</div>
+
+<div class="clear"></div>
+{% endblock %}

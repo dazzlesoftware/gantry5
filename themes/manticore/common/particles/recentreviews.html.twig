@@ -1,0 +1,96 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-recentreviews" data-recentreviews-id="{{ id }}" data-recentreviews-accesstoken="{{ particle.accesstoken }}">
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-recentreviews-header">
+                {% if particle.title %}
+                    <div class="g-recentreviews-title">
+                        {{ particle.title }}
+                    </div>
+                {% endif %}
+
+                <div class="g-recentreviews-nav">
+                    <div class="g-recentreviews-nav-container">
+                        <i aria-hidden="true" class="fa fa-bars"></i>
+                        {% if particle.allitems %}
+                            <div class="g-recentreviews-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                                {{ particle.allitems|default('all')|e }}
+                            </div>
+                        {% endif %}
+                        {% for item in particle.cases %}
+                            <div class="g-recentreviews-nav-item {% if particle.selected == 'first' %}{% if loop.first %}selected{% endif %}{% endif %}" data-group="{{ loop.index }}">
+                                {{ item.title }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="g-recentreviews-grid">
+                <div class="g-recentreviews-grid-sizer"></div>
+                {% for case in particle.cases %}
+                    {% set case_index = loop.index %}
+                    {% for item in case.items %}
+                        <div class="g-recentreviews-grid-item" data-groups='["{{ case_index }}"]'>
+                            <div class="g-recentreviews-grid-item-wrapper">
+                                {% if item.image %}
+                                    <div class="g-recentreviews-grid-item-image">
+                                        <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}">
+                                            <img src="{{ url(item.image)|e }}" alt="{{ item.title }}"/>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                <div class="g-recentreviews-grid-item-content">
+                                    <div class="g-recentreviews-grid-item-header">
+                                        <div class="g-recentreviews-grid-item-category">
+                                            <span>{{ case.title }}</span>
+                                        </div>
+                                        <div class="g-recentreviews-grid-item-date">
+                                            <span>{{ item.date|date(particle.date_format) }}</span>
+                                        </div>
+                                    </div>
+
+                                    {% if item.title %}
+                                        <div class="g-recentreviews-grid-item-title">
+                                            <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}">
+                                                <span>
+                                                    {{ item.title }}
+                                                </span>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.description %}
+                                        <div class="g-recentreviews-grid-item-description">
+                                            {{ item.description|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.author %}
+                                        <div class="g-recentreviews-grid-item-author">
+                                            {% if item.avatar %}
+                                            <img src="{{ url(item.avatar)|e }}" alt="{{ item.title }}"/>
+                                            {% endif %}
+
+                                            {{ item.author|raw }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% else %}
+        {% include '@particles/recentreviews-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+    {% endif %}
+</div>{% endblock %}{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+<script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+<script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+<script src="{{ url('gantry-theme://js/recentreviews.init.js') }}"></script>{% endblock %}
+

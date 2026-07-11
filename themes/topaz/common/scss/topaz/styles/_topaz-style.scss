@@ -1,0 +1,148 @@
+// Showcase Specific Styling
+.fp-showcase {
+    margin: $content-margin;
+    .fp-showcase-left {
+        .fp-showcase-statistics {
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+            background: $base-background;
+            border-radius: $border-radius 0 0 $border-radius;
+            padding: $content-padding + $content-margin;
+
+            .dir-rtl & {
+                border-radius: 0 $border-radius $border-radius 0;
+            }
+
+            @include breakpoint(mobile-only) {
+                border-radius: $border-radius;
+            }
+        }
+        .fp-showcase-tags {
+            padding: $content-margin;
+        }
+        .g-content {
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .fp-showcase-right {
+        box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+        background: $base-background;
+        border-radius: 0 $border-radius $border-radius $border-radius;
+
+        .dir-rtl & {
+            border-radius: $border-radius 0 $border-radius $border-radius;
+        }
+
+        .g-content {
+            margin-left: 0;
+            @include breakpoint(mobile-only) {
+                margin-left: $content-margin;
+            }
+        }
+        @include breakpoint(mobile-only) {
+            border-radius: $border-radius;
+        }
+    }
+    .fp-showcase-tags {
+        ul {
+            li{
+                display: inline-block;
+                list-style-type: none;
+                background: lighten(adjust-hue($accent-color-2, 6%), 10%);
+                padding: 0.4rem 0.8rem;
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 30px;
+                font-size: $core-font-size - 0.05;
+                font-family:  get-font-family($font-family-promo);
+                font-weight: $font-weight-bold;
+                color: $base-background;
+                margin-bottom: $content-margin - 0.2;
+                margin-right: $content-margin - 0.2;
+                transition: background 0.25s;
+                a {
+                    color: $base-background;
+                }
+                &:hover {
+                    background: lighten(adjust-hue($accent-color-2, 6%), 7%);
+                }
+            }
+        }
+        .g-content {
+            margin: 0;
+            padding: 0;
+            padding-right: $content-padding;
+        }
+    }
+}
+
+// Blog Above Tags
+.blog-above-tags {
+    ul {
+        margin: 0;
+        li {
+            display: inline-block;
+            list-style-type: none;
+            background: transparentize($base-background, 0.50);
+            padding: 0.4rem 0.8rem;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            font-size: $core-font-size - 0.05;
+            font-family:  get-font-family($font-family-promo);
+            font-weight: $font-weight-bold;
+            color: $base-background;
+            margin-bottom: $content-margin - 0.2;
+            margin-right: $content-margin - 0.2;
+            transition: background 0.25s;
+            a {
+                color: $base-background;
+            }
+            &:hover {
+                background: transparentize($accent-color-4, 0.30);
+            }
+        }
+    }
+}
+
+// Bottom Aligned owlCarousel
+.g-bottom-aligned {
+    position: relative;
+    z-index: 2;
+    margin-top: -2rem;
+    .g-content {
+        background: $white;
+        box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 $border-radius  $border-radius;
+        margin-left: 0.25rem;
+        .dir-rtl & {
+            margin-left: 0.57rem;
+            margin-right: 0.25rem;
+        }
+    }
+}
+
+// Particles - Standard OwlCarousel Bottom Margin Reset
+#g-container-bottom {
+    .g-bottom-owlcarousel {
+        .g-owlcarousel-layout-standard {
+            margin: 0;
+        }
+    }
+}
+
+// Logo Centering
+@include breakpoint(tablet-range) {
+    #g-navigationmain .size-30 {
+        flex: 0 100%;
+        width: 100%;
+    }
+}
+
+// Header Background Overlap
+#g-container-header {
+    padding-bottom: 25rem;
+    margin-bottom: -25rem;
+    .g-home-positions &, .g-home-particles & , .g-error &, .g-comingsoon &, .g-offline & {
+        padding: 0;
+        margin: 0;
+    }
+}

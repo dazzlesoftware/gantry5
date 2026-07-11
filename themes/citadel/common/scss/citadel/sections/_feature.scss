@@ -1,0 +1,14 @@
+#g-container-feature {
+    color: $feature-text-color;
+
+    #g-featuremain {
+        background: $feature-background;
+    }
+}
+
+@media print {
+    #g-container-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

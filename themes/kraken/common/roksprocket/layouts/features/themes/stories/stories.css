@@ -1,0 +1,50 @@
+/**
+* @version   $Id: stories.css 27021 2015-02-25 16:52:57Z arifin $
+* @author    RocketTheme http://www.rockettheme.com
+* @copyright Copyright (C) 2007 - ${copyright_year} RocketTheme, LLC
+* @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+
+/* Features - Layout Slideshow - Core */
+.layout-stories {position: relative;-webkit-transform: translateZ(0);}
+.layout-stories:after {display: table;content: "";*zoom: 1;clear: both;}
+.layout-stories ul {list-style: none !important;margin: 0;padding: 0;}
+
+/* Features - Layout Slideshow - Content */
+.layout-stories .sprocket-features-img-list {position: relative;overflow: hidden;}
+.layout-stories .sprocket-features-img-container {position: absolute;top: 0;}
+.layout-stories .sprocket-features-img-container img {position: relative;width: 100%;}
+.layout-stories .sprocket-features-content {position: absolute;width: 100%;top: 0;right: 0;bottom: 0;left: 0;box-sizing: border-box;}
+.sprocket-features-content-wrapper {bottom: 25px;left: 25px;position: absolute;width: 50%;}
+.layout-stories .sprocket-features-title {font-size: 2.5em;margin: 0;padding: 0;line-height: 50px;border-radius: 5px;}
+.layout-stories .sprocket-features-desc {margin-top: 10px;font-size: 1.5em;line-height: 35px;}
+.layout-stories .readon {margin: 15px 0 0 0;display: table;font-size: 1rem;}
+
+/* Features - Layout Slideshow - Enable First Item */
+.layout-stories .sprocket-features-index-1 .sprocket-features-img-container {position: relative;}
+.layout-stories .sprocket-features-index-1 .sprocket-features-img-container, .layout-stories .sprocket-features-index-1 .sprocket-features-content {z-index: 2;}
+
+/* Features - Layout Slideshow - Navigation */
+.layout-stories .sprocket-features-arrows .arrow {position: absolute;display: block;width: 40px;height: 40px;top: 50%;margin-top: -12px;opacity: 0.7;cursor: pointer;z-index: 100;text-align: center;font-size: 24px;line-height: 38px;-webkit-transform: translateZ(0);-webkit-backface-visibility: hidden;}
+.layout-stories .sprocket-features-arrows .arrow span {display: none;}
+.layout-stories .sprocket-features-arrows .prev {left: 15px;}
+.layout-stories .sprocket-features-arrows .next {right: 15px;}
+.layout-stories .sprocket-features-arrows .arrow:hover {opacity: 1;}
+.layout-stories .sprocket-features-arrows .arrow.next:before {content: '\f105';font-family: FontAwesome;}
+.layout-stories .sprocket-features-arrows .arrow.prev:before {content: '\f104';font-family: FontAwesome;}
+.arrows-onhover .sprocket-features-arrows .arrow {opacity: 0;}
+.sprocket-features.arrows-onhover .sprocket-features-arrows .arrow {opacity: 0;}
+.sprocket-features.arrows-onhover:hover .sprocket-features-arrows .arrow {opacity: 1;}
+.layout-stories .sprocket-features-pagination {position: absolute;right: 25px;bottom: 25px;z-index: 10;}
+.layout-stories .sprocket-features-pagination li {display: inline-block;margin: 0;padding: 0;opacity: 0.5;cursor: pointer;width: 100px;transform: translateZ(0px);-webkit-transform: translateZ(0);backface-visibility:hidden;}
+.layout-stories .sprocket-features-pagination li.active {opacity: 1;}
+.layout-stories .sprocket-features-pagination-hidden {display: none;}
+
+/* Features - Layout Slideshow - Transitions */
+.layout-stories .sprocket-features-pagination li, .layout-stories .sprocket-features-arrows .arrow {-webkit-transition: opacity 0.2s ease-in;-moz-transition: opacity 0.2s ease-in;-o-transition: opacity 0.2s ease-in;transition: opacity 0.2s ease-in;}
+
+/* Custom */
+.layout-stories .sprocket-features-content {color: #ffffff;background: rgba(0, 0, 0, 0.5);padding: 15px;}
+.layout-stories .sprocket-features-arrows .arrow {color: #ffffff;background: rgba(0, 0, 0, 0.5);}
+.layout-stories .sprocket-features-pagination li {background: rgba(0, 0, 0, 0.7);}
+.layout-stories .sprocket-features-pagination li.active {background: #000000;}

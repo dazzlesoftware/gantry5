@@ -1,0 +1,52 @@
+name: Parallax
+description: Add fixed header to your site.
+type: atom
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    items:
+      type: collection.list
+      array: true
+      label: Parallax Items
+      description: Create each slideshow item to display.
+      value: name
+      ajax: true
+
+      fields:
+        .section:
+          type: input.text
+          label: Section
+          description: Define the section that you want to display parallax.
+          placeholder: page-surround
+        .type:
+          type: select.selectize
+          label: Type
+          description: Choose if Background or Foreground
+          default: background
+          options:
+            background: Background
+            foreground: Foreground
+        .ratio:
+          type: input.text
+          label: Ratio
+          description: Select the movement speed of the parallax effect
+          placeholder: 0.5 
+        .direction:
+          type: select.selectize
+          label: Direction
+          description: Choose if direction of parallax will be Vertical or Horizontal
+          default: vertical
+          options:
+            vertical: Vertical
+            horizontal: Horizontal 
+

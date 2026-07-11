@@ -1,0 +1,49 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-testimonials">
+        {% if particle.title %}
+            <div class="g-testimonials-header">
+                {% if particle.title %}
+                    <div class="g-testimonials-title g-title">
+                        {{ particle.title|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <!-- testimonials -->
+        <div class="g-testimonials-wrapper {{ particle.cols }}">
+            {% if not particle.source or particle.source == 'particle' %}
+
+                {% for testimonial in particle.testimonial %}
+                    <div class="g-testimonials-element">
+                        <div class="g-testimonials-element-wrapper">
+                            {% if testimonial.content %}
+                                <h5 class="g-testimonials-content">
+                                    {{ testimonial.content|raw }}
+                                </h5>
+                            {% endif %}
+
+                            {% if testimonial.photo %}
+                                <div class="g-testimonials-author-wrap">
+                                    <img class="g-testimonials-image" src="{{ url(testimonial.photo) }}" alt="{{ testimonial.alttext|default(testimonial.content|truncate_text(40)) }}" />
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                {% include '@particles/testimonials-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/testimonials.init.js'), 10, 'footer') %}
+{% endblock %}
+

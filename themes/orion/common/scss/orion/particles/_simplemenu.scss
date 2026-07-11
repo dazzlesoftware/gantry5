@@ -1,0 +1,49 @@
+.g-simplemenu-particle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+    }
+
+    .g-simplemenu-container {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+
+            &:not(:first-child) {
+                h6 {
+                    margin-top: ($content-margin * 2);
+                }
+            }
+        }
+
+        h6 {
+            margin: 0 0 $content-padding 0;
+            font-weight: $font-weight-medium;
+            font-family: get-font-family($font-family-title);
+            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+
+            @include breakpoint(mobile-only) {
+                margin: 0 0 ($content-margin * 2);
+            }
+        }
+
+        .g-simplemenu {
+            list-style: none;
+            margin: 0;
+            
+            @include breakpoint(mobile-only) {
+                margin: 0 0 ($content-margin * 2);
+            }
+
+            li {
+                padding: ($content-margin - 0.35) 0;
+
+                a {
+                    transition: all 250ms;
+                }
+            }
+        }
+    }
+}

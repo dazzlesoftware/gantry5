@@ -1,0 +1,39 @@
+name: Menu Styles
+description: Set menu style options.
+type: core
+
+form:
+  fields:
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_toplevel:
+          label: Top Level
+          fields:
+            text-color:
+              type: input.colorpicker
+              label: Text
+              default: "#c2c3c6"
+            text-color-active:
+              type: input.colorpicker
+              label: Hover & Active Text
+              default: "#ffffff"
+        _tab_sublevel:
+          label: Sub Level
+          fields:
+            sublevel-text-color:
+              type: input.colorpicker
+              label: Text
+              default: "#ffffff"
+            sublevel-text-color-active:
+              type: input.colorpicker
+              label: Hover & Active Text
+              default: "#ffffff"
+            sublevel-background:
+              type: input.colorpicker
+              label: Background
+              default: "#000000"
+            sublevel-background-active:
+              type: input.colorpicker
+              label: Hover & Active Bg
+              default: "rgba(255,255,255,0.15)"

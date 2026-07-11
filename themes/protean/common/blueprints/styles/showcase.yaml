@@ -1,0 +1,15 @@
+name: Showcase Styles
+description: Showcase styles for the Protean theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#f9632d"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

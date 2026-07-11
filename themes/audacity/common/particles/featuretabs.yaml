@@ -1,0 +1,87 @@
+name: Feature Tabs
+description: Displays Feature Tabs.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the particle title text.
+      placeholder: Enter title
+
+    items:
+      type: collection.list
+      array: true
+      label: Feature Tabs Items
+      description: Feature Tabs item to display.
+      value: name
+      ajax: true
+
+      fields:
+        .class:
+          type: input.selectize
+          label: Class
+          description: CSS class name for the item.
+        .title:
+          type: input.text
+          label: Title
+          description: Customize the item title text.
+          placeholder: Enter title
+        .titletag:
+          type: input.text
+          label: Title Tag
+          description: Customize the item title tag text.
+          placeholder: Enter title tag
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select desired image.
+        .alt:
+          type: input.text
+          label: Image Alt
+          description: Enter image alt.   
+        .content:
+          type: textarea.textarea
+          label: Tab Content
+          description: Customize the tab content.
+          placeholder: Enter your custom content here.  
+        .linklabel:
+          type: input.text
+          label: Read More Text
+          description: Specify the read more text.
+          placeholder: 'Read More'
+        .link:
+          type: input.text
+          label: Read More Link
+          description: Specify the Read More link address. 
+        .buttontarget:
+          type: select.selectize
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _self
+          options:
+              _self: Self
+              _blank: New Window
+        .buttonclass:
+          type: input.selectize
+          label: Button Class
+          description: Input the button class.
+          default: 'readon'          

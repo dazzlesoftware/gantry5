@@ -1,0 +1,18 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+
+    @if $expanded-background-image {
+        background-image: url($expanded-background-image);
+        background-repeat: no-repeat;
+        background-size: 100% 200%;
+        background-position: center;
+    }
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

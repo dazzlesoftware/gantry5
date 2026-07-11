@@ -1,0 +1,872 @@
+.title-center {
+    .g-title {
+        text-align: center;
+    }
+}
+
+.title-rounded {
+    .g-title {
+        border-radius: 2rem;
+    }
+}
+
+.title-underline {
+    .g-title {
+        padding: 0.5rem 0;
+        &:after {
+            border-bottom: 2px solid $rule-color;
+            position: absolute;
+            content: "";
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            .dir-rtl & {
+                left: inherit;
+                right: 0;
+            }
+        }
+    }
+}
+
+.title-inline {
+    .g-title {
+        display: inline-block;
+        margin-bottom: $content-margin !important;
+    }
+}
+
+.title1, .title2, .title3, .title4, .title5, .title-white, .title-grey, .title-pink, .title-red, .title-purple, .title-orange, .title-blue {
+    .g-title {
+        font-size: $core-font-size + 1;
+        font-weight: $font-weight-ultrabold;
+        margin: ($content-margin + 0.15) 0;
+        text-transform: none;
+    }
+}
+
+.platform-content, .moduletable, .widget {
+    margin: ($content-margin) 0;
+    padding: ($content-padding) 0;
+    .moduletable, .widget {
+        margin: 0;
+        padding: 0
+    }
+    &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+.moduletable, .widget {
+    &[class*="box"] {
+        padding: $content-padding;
+        margin: $content-margin;
+    }
+    &[class*="title"] {
+        .g-title {
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+        }
+    }
+}
+
+.title1 {
+    .g-title {
+        color: $accent-color-1;
+        border: 0 none;
+    }
+}
+
+.box1 {
+    position: relative;
+    z-index: 18;
+    &.moduletable,
+    &.widget,
+    &.g-outer-box,
+    > .g-content {
+        position: relative;
+        color: $white;
+        background: $box1-background;
+        p {
+            color: transparentize($white, 0.20);
+        }
+        &:before {
+            position: absolute;
+            top: -9px;
+            width: 40px;
+            height: 25px;
+            background-image: url('data:image/svg+xml;utf-8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95.13px" height="45.44px" viewBox="0 0 95.13 45.44" enable-background="new 0 0 95.13 45.44" xml:space="preserve"><path fill-rule="evenodd" fill="#{rgba($base-background, 1)}" clip-rule="evenodd" d="M0,14.75c28.5-1.13,22.56,30.69,48.25,30.69 c20.44,0.03,24.25-32.69,46.88-30.69V0H0V14.75z"/></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            content: '';
+            z-index: 100;
+            text-align: left;
+        }
+    }
+    a {
+        color: inherit;
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+        &:hover {
+            box-shadow: 0 1px 0 0 $white;
+        }
+    }
+    .g-title {
+        margin-top: $content-margin + 1;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+}
+
+.box1, .title1 {
+    .button {
+        &:hover, &:active, &:focus {
+            box-shadow: none;
+        }
+        &.button-3, &.button-4 {
+            color: $white !important;
+            border-color: $white;
+            &:hover, &:active, &:focus {
+                color: lighten($box1-background, 15%) !important;
+                border-color: lighten($box1-background, 15%);
+            }
+        }
+    }
+}
+
+.title2 {
+    .g-title {
+        color: $accent-color-2;
+        border: 0 none;
+    }
+}
+
+.box2 {
+    &.moduletable,
+    &.widget,
+    &.g-outer-box,
+    > .g-content {
+        color: $white;
+        background: $box2-background;
+        p {
+            color: transparentize($white, 0.20);
+        }
+    }
+    a {
+        color: inherit;
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+        &:hover {
+            box-shadow: 0 1px 0 0 $white;
+        }
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+}
+
+.title3 {
+    .g-title {
+        color: $black;
+    }
+}
+
+.box3 {
+    &.moduletable,
+    &.widget,
+    &.g-outer-box,
+    > .g-content {
+        color: $white;
+        background: $black;
+        p {
+            color: transparentize($white, 0.20);
+        }
+    }
+    a {
+        color: inherit;
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+        &:hover {
+            box-shadow: 0 1px 0 0 $white;
+        }
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        margin-bottom: 0;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+}
+
+.title4 {
+    .g-title {
+        color: $accent-color-1;
+        border: 2px solid $accent-color-1;
+        font-size: $core-font-size + 0.5;
+        border-radius: 6px;
+        padding: $content-padding + 0.3 $content-padding $content-padding $content-padding;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $accent-color-1;
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            color: $accent-color-2 !important;
+            border-color: transparentize($accent-color-1, 0.50);
+        }
+    }
+}
+
+.box4 {
+    &.moduletable,
+    &.widget,
+    &.g-outer-box,
+    > .g-content {
+        color: $accent-color-1;
+        border: 2px solid $accent-color-1;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $accent-color-2;
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            color: $accent-color-1 !important;
+            border-color: transparentize($accent-color-1, 0.50);
+        }
+    }
+}
+
+.title5 {
+    .g-title {
+        color: $accent-color-2;
+        border: 2px solid $accent-color-2;
+        border-radius: 6px;
+        font-size: $core-font-size + 0.5;
+        padding: $content-padding + 0.3 $content-padding $content-padding $content-padding;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $accent-color-2 !important;
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            color: $accent-color-1 !important;
+            border-color: transparentize($accent-color-1, 0.50);
+        }
+    }
+}
+
+.box5 {
+    &.moduletable,
+    &.widget,
+    &.g-outer-box,
+    > .g-content {
+        color: $base-text-color;
+        background: $white;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $accent-color-1;
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            color: $accent-color-2 !important;
+            border-color: transparentize($accent-color-1, 0.50);
+        }
+    }
+}
+
+.title6 {
+    .g-title {
+        border-bottom: 2px solid $border-color-light;
+    }
+}
+
+.box6 {
+    &.moduletable,
+    &.widget,
+    &.g-outer-box,
+    > .g-content {
+        color: $base-text-color;
+        background: darken($base-background, 5%);
+    }
+    a {
+        color: inherit;
+        box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.25);
+        &:hover {
+            box-shadow: 0 1px 0 0 $border-color-light;
+        }
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        margin-bottom: 0;
+        border-radius: 0;
+        color: $black !important;
+        box-shadow: none;
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            color: $black !important;
+            border-color: $border-color-light;
+        }
+    }
+}
+
+.box-white {
+    color: lighten($black, 10%);
+}
+
+.title-white .g-title {
+    color: lighten($black, 10%);
+}
+
+.box-grey, .box-pink, .box-red, .box-purple, .box-blue, .box-orange {
+    color: $white;
+}
+
+.title-white {
+    .g-title, .button {
+        background: $box-white-background;
+    }
+}
+
+.box-white {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-white-background;
+    }
+    .button {
+        background: darken($box-white-background, 25%);
+    }
+    a {
+        color: darken($box-white-background, 25%);
+    }
+}
+
+.box-white, .title-white {
+    .button {
+        &:hover, &:active, &:focus {
+            background: darken($box-white-background, 10%);
+        }
+        &.button-3, &.button-2 {
+            color: darken($box-white-background, 25%);
+            border-color: darken($box-white-background, 25%);
+            &:hover, &:active, &:focus {
+                color: $black;
+                border-color: $black;
+            }
+        }
+    }
+}
+
+.title-grey {
+    .g-title {
+        color: $box-grey-background;
+        border: 0 none;
+    }
+    .button {
+        border-color: $box-grey-background;
+        color: $box-grey-background !important;
+    }
+}
+
+.box-grey {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-grey-background;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    a {
+        color: lighten($box-grey-background, 25%);
+        &:hover {
+            color: darken($box-grey-background, 15%);
+        }
+    }
+}
+
+.box-grey, .title-grey {
+    .button {
+        &:hover, &:active, &:focus {
+            background: lighten($box-grey-background, 10%);
+        }
+        &.button-3, &.button-4 {
+            color: darken($box-grey-background, 25%);
+            border-color: darken($box-grey-background, 10%);
+            &:hover, &:active, &:focus {
+                color: $white;
+                border-color: $white;
+            }
+        }
+    }
+}
+
+.title-pink {
+    .g-title {
+        color: $box-pink-background;
+        border: 0 none;
+    }
+    .button {
+        border-color: $box-pink-background;
+        color: $box-pink-background !important;
+    }
+}
+
+.box-pink {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-pink-background;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    a {
+        color: lighten($box-pink-background, 25%);
+        &:hover {
+            color: darken($box-pink-background, 15%);
+        }
+    }
+}
+
+.box-pink, .title-pink {
+    .button {
+        &:hover, &:active, &:focus {
+            background: lighten($box-pink-background, 10%);
+        }
+        &.button-3, &.button-4 {
+            color: darken($box-pink-background, 25%);
+            border-color: darken($box-pink-background, 25%);
+            &:hover, &:active, &:focus {
+                color: $white;
+                border-color: $white;
+            }
+        }
+    }
+}
+
+.title-red {
+    .g-title {
+        color: $box-red-background;
+        border: 0 none;
+    }
+    .button {
+        border-color: $box-red-background;
+        color: $box-red-background !important;
+    }
+}
+
+.box-red {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-red-background;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    a {
+        color: lighten($box-red-background, 25%);
+        &:hover {
+            color: darken($box-red-background, 15%);
+        }
+    }
+}
+
+.box-red, .title-red {
+    .button {
+        &:hover, &:active, &:focus {
+            background: lighten($box-red-background, 10%);
+        }
+        &.button-3, &.button-4 {
+            color: darken($box-red-background, 25%);
+            border-color: darken($box-red-background, 25%);
+            &:hover, &:active, &:focus {
+                color: $white;
+                border-color: $white;
+            }
+        }
+    }
+}
+
+.title-purple {
+    .g-title {
+        color: $box-purple-background;
+        border: 0 none;
+    }
+    .button {
+        border-color: $box-purple-background;
+        color: $box-purple-background !important;
+    }
+}
+
+.box-purple {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-purple-background;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    a {
+        color: lighten($box-purple-background, 25%);
+        &:hover {
+            color: darken($box-purple-background, 15%);
+        }
+    }
+}
+
+.box-purple, .title-purple {
+    .button {
+        &:hover, &:active, &:focus {
+            background: lighten($box-purple-background, 10%);
+        }
+        &.button-3, &.button-4 {
+            color: darken($box-purple-background, 25%);
+            border-color: darken($box-purple-background, 25%);
+            &:hover, &:active, &:focus {
+                color: $white;
+                border-color: $white;
+            }
+        }
+    }
+}
+
+.title-blue {
+    .g-title {
+        color: $box-blue-background;
+        border: 0 none;
+    }
+    .button {
+        border-color: $box-blue-background;
+        color: $box-blue-background !important;
+    }
+}
+
+.box-blue {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-blue-background;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    a {
+        color: lighten($box-blue-background, 25%);
+        &:hover {
+            color: darken($box-blue-background, 15%);
+        }
+    }
+}
+
+.box-blue, .title-blue {
+    .button {
+        &:hover, &:active, &:focus {
+            background: lighten($box-blue-background, 10%);
+        }
+        &.button-3, &.button-4 {
+            color: darken($box-blue-background, 25%);
+            border-color: darken($box-blue-background, 25%);
+            &:hover, &:active, &:focus {
+                color: $white;
+                border-color: $white;
+            }
+        }
+    }
+}
+
+.title-orange {
+    .g-title {
+        color: $box-orange-background;
+        border: 0 none;
+    }
+    .button {
+        border-color: $box-orange-background;
+        color: $box-orange-background !important;
+    }
+}
+
+.box-orange {
+    &.moduletable, &.widget,
+    &.g-outer-box,
+    > .g-content {
+        background: $box-orange-background;
+    }
+    .button {
+        border: 0 none;
+        border-bottom: 2px solid transparent;
+        line-height: $core-line-height + 1;
+        border-radius: 0;
+        color: $white !important;
+        box-shadow: none;
+        padding: 0;
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        font-size: $core-font-size - 0.2;
+        cursor: pointer;
+        &:hover, &:active, &:focus {
+            background: none;
+            box-shadow: none;
+            border-color: transparentize($white, 0.50);
+        }
+    }
+    a {
+        color: lighten($box-orange-background, 25%);
+        &:hover {
+            color: darken($box-orange-background, 15%);
+        }
+    }
+}
+
+.box-orange, .title-orange {
+    .button {
+        &:hover, &:active, &:focus {
+            background: lighten($box-orange-background, 10%);
+        }
+        &.button-3, &.button-4 {
+            color: darken($box-orange-background, 25%);
+            border-color: darken($box-orange-background, 25%);
+            &:hover, &:active, &:focus {
+                color: $white;
+                border-color: $white;
+            }
+        }
+    }
+}
+
+.spaced {
+    .g-content {
+        margin: 1px;
+    }
+}
+
+.bordered {
+    .g-content {
+        border: 1px solid $rule-color;
+        margin: 1px;
+    }
+}
+
+.shadow {
+    .g-content {
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.shadow2 {
+    .g-content {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.disabled {
+    .g-content {
+        opacity: 0.4;
+    }
+}
+
+.square {
+    .g-content {
+        border-radius: none;
+    }
+}
+
+.rounded {
+    .g-content {
+        border-radius: $core-border-radius;
+        overflow: hidden;
+    }
+}
+
+.no-bg-image {
+    background-image: none !important;
+}
+
+.g-block-divider {
+    background: $rule-color;
+    height: 5px;
+    margin-top: $content-padding * 4;
+    margin-bottom: $content-padding * 4;
+}
+
+.equal-height {
+    #g-aside,
+    #g-mainbar,
+    #g-sidebar {
+        width: 100%;
+    }
+    .g-content {
+        flex-basis: 100%;
+        width: auto; 
+    }
+}

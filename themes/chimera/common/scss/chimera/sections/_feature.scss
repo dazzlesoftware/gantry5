@@ -1,0 +1,56 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+}
+
+.fp-feature {
+	.g-content {
+		margin: 35px auto 0;
+		@include breakpoint(mobile-only) {
+			margin-top: 65px;
+		}
+
+	@include breakpoint(large-desktop-range) {
+		width: 60%;
+	}	
+	@include breakpoint(desktop-range) {
+		width: 60%;
+	}	
+
+	}
+	.title {
+		font-size: 300%;
+    	line-height: 160%;
+    	margin-bottom: 0;
+
+		@include breakpoint(desktop-range) {
+			font-size: 250%;
+		}
+		@include breakpoint(tablet-range) {
+			font-size: 200%;
+		}
+		@include breakpoint(mobile-only) {
+			font-size: 160%;
+		}    	
+
+		color: lighten($accent-color-2, 5%);
+		span {
+			color: darken($accent-color-2, 10%);
+		}
+		&:after {
+			background: $accent-color-2;
+			content: "";
+		    display: block;
+		    width: 25%;
+		    height: 1px;
+		    margin: auto;
+		}
+	}
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

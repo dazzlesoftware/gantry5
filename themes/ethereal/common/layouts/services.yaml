@@ -1,0 +1,177 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: services
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-1677
+  /header/:
+    -
+      - 'logo-9290 50'
+      - 'menu-8171 50'
+  /slideshow/: {  }
+  /showcase/:
+    -
+      - custom-7363
+  /feature/:
+    -
+      - custom-8534
+  /main/: {  }
+  /container-9033/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-3100
+      -
+        'mainbar 60':
+          -
+            - system-content-6497
+      -
+        'aside 20':
+          -
+            - position-2223
+  /extension/:
+    -
+      - custom-8334
+  /bottom/:
+    -
+      - custom-9011
+  /footer/:
+    -
+      - 'position-8302 33.3'
+      - 'position-6593 33.3'
+      - 'position-9018 33.3'
+  /copyright/:
+    -
+      - 'logo-2605 33'
+      - 'custom-3186 67'
+    -
+      - 'copyright-6320 33'
+      - 'custom-3549 57'
+      - 'totop-2471 10'
+  offcanvas:
+    -
+      - mobile-menu-3694
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-9033:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-9290:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-8171:
+    block:
+      class: g-menu-block
+  custom-7363:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">What We Do</h2>\n\t<div class=\"g-layercontent-subtitle\">Learn More About Our Great Services</div>\n</div>"
+    block:
+      class: 'flush center'
+  custom-8534:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box-blue center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">\n        Desktop Apps\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n    </div>\n  </div>\n  <div class=\"g-block box-grey center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">\n        Mobile Apps\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n    </div>\n  </div>\n  <div class=\"g-block box-orange center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">\n        Cloud Servers\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n    </div>\n  </div>\n</div>\n<div class=\"g-grid\">\n  <div class=\"g-block box-pink center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">\n        Databases\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n    </div>\n  </div>\n  <div class=\"g-block box-purple center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">\n        Graphics\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n    </div>\n  </div>\n  <div class=\"g-block box-red center size-33-3\">\n    <div class=\"g-content\">\n      <h2 class=\"g-title\">\n        Analyst\n      </h2>\n      <p>\n        Collaboratively administrate empowered markets via available great networks.\n      </p>\n    </div>\n  </div>\n</div>"
+  position-3100:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-2223:
+    title: Aside
+    attributes:
+      key: aside
+  custom-8334:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box3 size-33-3\">\n    <div class=\"g-content\">\n      <div class=\"g-infolist\">\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Graphic Design</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Domain</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">HelpDesk</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box3 size-33-3\">\n    <div class=\"g-content\">\n      <div class=\"g-infolist\">\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Programming</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Security</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Template</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-block box3 size-33-3\">\n    <div class=\"g-content\">\n      <div class=\"g-infolist\">\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Hosting</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">Server</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\">\n              <a href=\"#\">MarketPlace</a>\n            </div>\n            <div class=\"g-infolist-item-desc\">\n              Dynamically procrastinate B2C users after installed base benefits.\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+  custom-9011:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Save Time and Effort</h2>\n\t<div class=\"g-layercontent-subtitle\">We Always Create the Real Value and Work with All Passion</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\" class=\"button button-2\">Purchase Ethereal</a>\n</div>"
+    block:
+      class: 'flush center'
+  position-8302:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-6593:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-9018:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-2605:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-3186:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-6320:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-3549:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+  totop-2471:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-3694:
+    title: 'Mobile Menu'

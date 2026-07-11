@@ -1,0 +1,28 @@
+.g-quote {
+    blockquote {
+        @include responsive-font($responsive-font-size + 1, $core-font-size + 0.2, false, false);
+        font-weight: $font-weight-extrabold;
+        font-family: get-font-family($font-family-title);
+        margin: 0 auto;
+        width: 60%;
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+        }
+        span {
+            background: $accent-color-2;
+            padding: 0 10px;
+        }
+        cite {
+            margin-top: $content-padding;
+            font-family: get-font-family($font-family-title);
+            font-weight: $font-weight-regular;
+            font-style: normal;
+            opacity: 0.5;
+            text-align: center;
+            &:before {
+                display: none;
+            }
+        }
+    }
+}

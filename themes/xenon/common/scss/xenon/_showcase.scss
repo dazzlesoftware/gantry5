@@ -1,0 +1,24 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+    position: relative;
+    z-index: 10003;
+
+	.fp-showcase-a {
+		> .g-content {
+			padding: 0;
+		}
+		.g-popupgrid, .g-popupgrid-item {
+		  @include breakpoint(mobile-only) {
+		    width: 100% !important;
+		  }
+		}		
+	}    
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

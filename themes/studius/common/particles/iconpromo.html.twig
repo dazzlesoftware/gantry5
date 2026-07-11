@@ -1,0 +1,18 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div id="{{ particle.id }}" class="g-iconpromo">
+		{% if particle.icon %}
+			<div class="g-iconpromo-icon">
+				<i class="{{ particle.icon }}"></i>
+			</div>
+		{% endif %}
+		{% if particle.headline %}
+			<span>{{ particle.headline|raw }}</span>
+		{% endif %}
+		{% if particle.title %}
+			<h1>{{ particle.title|raw }}</h1>
+		{% endif %}
+	</div>
+{% endblock %}
+

@@ -1,0 +1,9 @@
+lexicon-theme:
+  title: 'Lexicon Theme'
+  description: 'Sample menu for Lexicon theme.'
+
+  items:
+    lexicon:
+      title: 'Home'
+      layout: home
+      home: 1

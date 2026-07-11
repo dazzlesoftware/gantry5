@@ -1,0 +1,31 @@
+name: Polldaddy Voting
+description: Display Polldaddy voting poll.
+type: particle
+icon: fa-dot-circle-o
+
+form:
+  overrideable: false
+  fields:
+    info:
+      type: separator.note
+      class: alert alert-info
+      content: This particle requires a poll created on external site. Please create a poll on https://polldaddy.com and copy the poll ID to the field below.
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      default: 'Your opinion'
+    pollid:
+      type: input.text
+      label: Poll ID
+      description: Input your Polldaddy poll ID
+      placeholder: 'Your poll ID'

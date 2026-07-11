@@ -1,0 +1,74 @@
+.g-content.g-blockcontent-header {
+    text-align: center;
+    margin-bottom: $content-padding * 2;
+
+    @include breakpoint(mobile-only) {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.g-blockcontent-subcontent-title-icon {
+    margin-bottom: $content-margin;
+    font-size: $core-font-size + .8;
+}
+
+.g-blockcontent-subcontent-title-text {
+    font-weight: $font-weight-bold;
+    font-size: $core-font-size + 0.5;
+    margin-top: 0;
+    margin-bottom: $content-padding - 0.5;
+    line-height: $core-line-height - .2;
+}
+
+.g-blockcontent-subcontent-title {
+    margin-bottom: 0;
+}
+
+.g-blockcontent-subcontent-block {
+    &.g-blockcontent-subcontent-block-accent1 {
+        background: $accent-color-1;
+    }
+
+    .g-blockcontent-buttons {
+        text-align: left;
+    }  
+}
+
+.g-blockcontent-subcontent-subtitle {
+    font-family: get-font-family($font-family-default);
+    font-weight: $font-weight-semibold;
+    font-size: $core-font-size - .1;
+    vertical-align: super;
+    margin-bottom: $content-margin + 1;
+}
+
+.g-blockcontent-subcontent-desc {
+    font-family: get-font-family($font-family-default);
+    font-weight: $font-weight-light;
+    font-size: $core-font-size + 0.2;
+    color: $base-text-color;
+    position: relative;
+    margin-bottom: $content-margin;
+    line-height: $core-line-height - 0.1;
+
+    i {
+        margin-top: $content-margin;
+    }
+}
+
+.g-blockcontent-description {
+    @include responsive-font($responsive-font-size, $core-font-size, false, false);
+    color: $base-text-color;
+    font-weight: $font-weight-light;
+}
+
+.g-blockcontent-buttons {
+    margin-top: $content-padding - 1;
+    margin-bottom: $content-padding;
+    text-align: center;
+    text-decoration: underline;
+    @include responsive-font($responsive-font-size + 0.4, $core-font-size, false, false);
+}

@@ -1,0 +1,653 @@
+.title-center {
+	.g-title {
+		text-align: center;
+	}
+}
+
+.title-rounded {
+  .g-title {
+    border-radius: 2rem;
+  }
+}
+
+.title-underline {
+  .g-title {
+    padding: 0.5rem 0;
+    &:after {
+		border-bottom: 2px solid $rule-color;
+		position: absolute;
+		content: "";
+		left: 0;
+		width: 100%;
+	  	bottom: 0;
+		.dir-rtl & {
+			left: inherit;
+			right: 0;
+		}
+    }
+  }
+}
+
+.title-inline {
+	.g-title {
+	    display: inline-block;
+	    margin-bottom: $content-margin !important;
+	}
+}
+
+.title1, .title2, .title3, .title4, .title5, .title6, .title-white, .title-grey, .title-pink, .title-red, .title-purple, .title-orange, .title-blue {
+	.g-title {
+		margin: -($content-padding) -($content-padding) 1.5rem -($content-padding);
+    	padding: $content-margin 1rem;
+	}
+}
+.platform-content, .moduletable, .widget {
+  margin: ($content-margin) 0;
+  padding: ($content-padding) 0;
+  .moduletable, .widget {
+    margin: 0;
+    padding: 0
+  }
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+.moduletable, .widget {
+  &[class*="box"] {
+    padding: $content-padding;
+    margin: $content-margin;
+  }
+  &[class*="title"] {
+    .g-title {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.title1 {
+	.g-title, 
+	.button {
+		background: darken($box1-background, 8%);
+		color: $white;
+	}
+}
+.box1 {
+	&.moduletable, 
+	&.widget,
+	&.g-outer-box,
+  	> .g-content  {
+  		color: $white;
+		background: $box1-background;
+	}
+	a {
+		color: inherit;
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+        &:hover {
+            box-shadow: 0 1px 0 0 $white;
+        }
+	}
+	.button {
+		background: lighten($box1-background, 15%);
+		box-shadow: none;
+  	}	
+}
+.box1, .title1 {
+	.button {
+		&:hover, &:active, &:focus {
+			background: darken($box1-background, 15%);
+			box-shadow: none;
+		}
+		&.button-3, &.button-4 {
+			color: $white !important;
+			border-color: $white;
+			&:hover, &:active, &:focus {
+				color: lighten($box1-background, 15%) !important;
+				border-color: lighten($box1-background, 15%);				
+			}
+		}
+  }
+}
+
+.title2 {
+	.g-title {
+		position: relative;
+		text-indent: 1.5rem;
+		border: 2px solid $rule-color;
+		&:before {
+			position: absolute;
+			left: -0.75rem;
+			color: $accent-color-1;
+			font-family: FontAwesome;
+			content: "\f00c";
+			margin-right: 0.5rem;
+		}		
+	}
+}
+.box2 {
+	&.moduletable, 
+	&.widget,
+	&.g-outer-box,
+  	> .g-content  {
+  		border: 2px solid $rule-color;
+	}	
+	.g-title {
+		position: relative;
+		text-indent: 1.5rem;
+		&:before {
+			position: absolute;
+			left: -1.5rem;
+			color: $accent-color-1;
+			font-family: FontAwesome;
+			content: "\f178";
+			margin-right: 0.5rem;
+		}
+		&:after {
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			content: "";
+			width: 100%;
+			height: 2px;
+			background: $rule-color;
+		}
+	}
+}
+
+.title3 {
+	.g-title {
+		color: $white;
+		background: $black;
+		font-family: get-font-family($font-family-special);
+		font-style: italic;
+		font-weight: $font-weight-bold;
+		font-size: $core-font-size + 0.75;
+		line-height: $core-line-height - 0.25;
+	}
+}
+.box3 {
+	&.moduletable, 
+	&.widget,
+	&.g-outer-box,
+  	> .g-content  {
+		color: $white;
+		background: $black;
+		font-family: get-font-family($font-family-special);
+		font-style: italic;
+		font-weight: $font-weight-bold;
+		font-size: $core-font-size + 0.75;
+		line-height: $core-line-height - 0.25;		
+	}
+	.g-title {
+		font-family: get-font-family($font-family-special);
+		font-style: italic;
+		font-weight: $font-weight-bold;
+		font-size: $core-font-size + 0.75;
+		line-height: $core-line-height - 0.25;			
+	}
+	.button {
+		font-family: get-font-family($font-family-default);
+		font-style: normal;
+		font-size: $core-font-size;
+	}
+}
+
+.title4 {
+	.g-title {
+		color: $base-text-color;
+		background: $base-background;
+		box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	}
+}
+.box4 {
+	&.moduletable, 
+	&.widget,
+	&.g-outer-box,
+  	> .g-content  {
+		color: $base-text-color;
+		background: $base-background;
+		box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	}
+}
+
+.title5 {
+	.g-title, 
+	.button {
+		color: $feature-text-color; 
+	    @if $feature-background-direction == 1 {
+	    	background-image: linear-gradient(to right, $feature-background-1, $feature-background-2);
+	    } @else if $feature-background-direction == 2 {
+	    	background-image: linear-gradient(to bottom, $feature-background-1, $feature-background-2);
+	    } @else if $feature-background-direction == 3 {
+	    	background-image: linear-gradient(to bottom left, $feature-background-1, $feature-background-2);
+	    } @else if $feature-background-direction == 4 {
+	    	background-image: linear-gradient(to bottom right, $feature-background-1, $feature-background-2);
+	    }
+	}
+}
+.box5 {
+	&.moduletable, 
+	&.widget,
+	&.g-outer-box,
+  	> .g-content  {
+  		color: $feature-text-color; 
+	    @if $feature-background-direction == 1 {
+	    	background-image: linear-gradient(to right, $feature-background-1, $feature-background-2);
+	    } @else if $feature-background-direction == 2 {
+	    	background-image: linear-gradient(to bottom, $feature-background-1, $feature-background-2);
+	    } @else if $feature-background-direction == 3 {
+	    	background-image: linear-gradient(to bottom left, $feature-background-1, $feature-background-2);
+	    } @else if $feature-background-direction == 4 {
+	    	background-image: linear-gradient(to bottom right, $feature-background-1, $feature-background-2);
+	    }
+	}
+	a {
+		color: inherit;
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+        &:hover {
+            box-shadow: 0 1px 0 0 $white;
+        }
+	}
+	.button {
+		background: lighten($box1-background, 15%);
+		box-shadow: none;
+  	}	
+}
+.box5, .title5 {
+	.button {
+		&:hover, &:active, &:focus {
+			background: darken($box1-background, 15%);
+			box-shadow: none;
+		}
+		&.button-3, &.button-4 {
+			color: $white !important;
+			border-color: $white;
+			&:hover, &:active, &:focus {
+				color: lighten($box1-background, 15%) !important;
+				border-color: lighten($box1-background, 15%);				
+			}
+		}
+  }
+}
+
+.title6 {
+	.g-title {
+		color: $base-text-color;
+		background: darken($base-background, 5%);
+		font-family: get-font-family($font-family-default);
+		font-weight: $font-weight-light;	
+		font-size: $core-font-size + 0.25;		
+		text-transform: uppercase;
+	}
+}
+.box6 {
+	&.moduletable, 
+	&.widget,
+	&.g-outer-box,
+  	> .g-content  {
+		color: $base-text-color;
+		background: darken($base-background, 5%);
+		font-family: get-font-family($font-family-default);
+		font-weight: $font-weight-light;	
+		font-size: $core-font-size + 0.25;	
+	}
+	.g-title {
+		font-family: get-font-family($font-family-default);
+		font-weight: $font-weight-light;	
+		font-size: $core-font-size + 0.25;	
+		text-transform: uppercase;
+	}	
+	.button {
+		font-family: get-font-family($font-family-default);
+		font-style: normal;
+		font-size: $core-font-size;
+	}	
+}
+
+
+
+
+
+.box-white {
+	color: lighten($black, 10%);
+}
+.title-white .g-title {
+	color: lighten($black, 10%);
+}
+.box-grey, .box-pink, .box-red, .box-purple, .box-blue, .box-orange {
+	color: $white;
+}
+.title-grey, .title-pink, .title-red, .title-purple, .title-orange, .title-blue {
+ .g-title {
+   color: $white;
+ }
+}
+
+.title-white {
+.g-title, .button {
+	background: $box-white-background;
+}
+}
+.box-white {
+  &.moduletable, &.widget,
+&.g-outer-box,
+  > .g-content {
+	background: $box-white-background;
+}
+.button {
+	background: darken($box-white-background, 25%);
+ }
+a {
+	color: darken($box-white-background, 25%);
+}
+} 
+.box-white, .title-white {
+.button {
+	&:hover, &:active, &:focus {
+		background: darken($box-white-background, 10%);
+	}
+	&.button-3, &.button-2 {
+		color: darken($box-white-background, 25%);
+		border-color: darken($box-white-background, 25%);
+		&:hover, &:active, &:focus {
+			color: $black;
+			border-color: $black;
+		}
+	}
+ }
+}
+
+.title-grey {
+	.g-title, .button {
+		background: $box-grey-background;
+	}
+}
+.box-grey {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-grey-background;
+	}
+	.button {
+		background: darken($box-grey-background, 10%);
+  }
+	a {
+		color: lighten($box-grey-background, 25%);
+    &:hover {
+      color: darken($box-grey-background, 15%);
+    }
+	}
+} 
+.box-grey, .title-grey {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-grey-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-grey-background, 25%);
+			border-color: darken($box-grey-background, 10%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-pink {
+	.g-title, .button {
+		background: $box-pink-background;
+	}
+}
+.box-pink {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-pink-background;
+	}
+	.button {
+		background: darken($box-pink-background, 10%);
+  }
+	a {
+		color: lighten($box-pink-background, 25%);
+    &:hover {
+      color: darken($box-pink-background, 15%);
+    }
+	}
+} 
+.box-pink, .title-pink {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-pink-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-pink-background, 25%);
+			border-color: darken($box-pink-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-red {
+	.g-title, .button {
+		background: $box-red-background;
+	}
+}
+.box-red {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-red-background;
+	}
+	.button {
+		background: darken($box-red-background, 10%);
+  }
+	a {
+		color: lighten($box-red-background, 25%);
+    &:hover {
+      color: darken($box-red-background, 15%);
+    }
+	}
+} 
+.box-red, .title-red {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-red-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-red-background, 25%);
+			border-color: darken($box-red-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-purple {
+	.g-title, .button {
+		background: $box-purple-background;
+	}
+}
+.box-purple {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-purple-background;
+	}
+	.button {
+		background: darken($box-purple-background, 10%);
+  }
+	a {
+		color: lighten($box-purple-background, 25%);
+    &:hover {
+      color: darken($box-purple-background, 15%);
+    }
+	}
+} 
+.box-purple, .title-purple {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-purple-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-purple-background, 25%);
+			border-color: darken($box-purple-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-blue {
+	.g-title, .button {
+		background: $box-blue-background;
+	}
+}
+.box-blue {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-blue-background;
+	}
+	.button {
+		background: darken($box-blue-background, 10%);
+  }
+	a {
+		color: lighten($box-blue-background, 25%);
+    &:hover {
+      color: darken($box-blue-background, 15%);
+    }
+	}
+} 
+.box-blue, .title-blue {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-blue-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-blue-background, 25%);
+			border-color: darken($box-blue-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.title-orange {
+	.g-title, .button {
+		background: $box-orange-background;
+	}
+}
+.box-orange {
+  &.moduletable, &.widget,
+	&.g-outer-box,
+   > .g-content {
+		background: $box-orange-background;
+	}
+	.button {
+		background: darken($box-orange-background, 10%);
+  }
+	a {
+		color: lighten($box-orange-background, 25%);
+    &:hover {
+      color: darken($box-orange-background, 15%);
+    }
+	}
+} 
+.box-orange, .title-orange {
+	.button {
+		&:hover, &:active, &:focus {
+			background: lighten($box-orange-background, 10%);
+		}
+		&.button-3, &.button-4 {
+			color: darken($box-orange-background, 25%);
+			border-color: darken($box-orange-background, 25%);
+			&:hover, &:active, &:focus {
+				color: $white;
+				border-color: $white;
+			}
+		}
+  }
+}
+
+.spaced {
+	.g-content {
+		margin: 1px;
+	}		
+}
+
+.bordered {
+	.g-content {
+		border: 1px solid $rule-color;
+		margin: 1px;
+	}	
+}
+
+.shadow {
+	.g-content {
+		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	}
+}
+
+.shadow2 {
+	.g-content {
+		box-shadow: 0 0 4px rgba(0,0,0,0.15);
+	}
+}
+
+.disabled {
+	.g-content {
+		opacity: 0.4;
+	}
+}
+
+.square {
+	.g-content {
+		border-radius: none;
+	}
+}
+
+.rounded {
+	.g-content {
+		border-radius: $core-border-radius;
+		overflow: hidden;
+	}
+}
+
+.no-bg-image {
+	background-image: none !important;
+}
+
+.g-block-divider {
+  background: $rule-color;
+  height: 5px;
+  margin-top: $content-padding * 4;
+  margin-bottom: $content-padding * 4;
+}
+
+.equal-height {
+	#g-aside,
+	#g-mainbar,
+	#g-sidebar {
+		width: 100%;
+	}
+	.g-content {
+        flex-basis: 100%;
+        width: auto; 
+    }
+}

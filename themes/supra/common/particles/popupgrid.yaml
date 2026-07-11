@@ -1,0 +1,153 @@
+name: Popup Grid
+description: Display Popup Grid content.
+type: particle
+icon: fa-arrows-alt
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    animation:
+      type: select.select
+      label: Opening Animation
+      description: Enables opening animation.
+      default: enabled
+      options:
+        enabled: Enabled
+        disabled: Disabled
+
+    animationfx:
+      type: select.select
+      label: Animation Type
+      description: Choose the Animation type that you want to use.
+      default: Anim15
+      options:
+        Anim1: Animation 1
+        Anim2: Animation 2
+        Anim3: Animation 3
+        Anim4: Animation 4
+        Anim5: Animation 5
+        Anim6: Animation 6
+        Anim7: Animation 7
+        Anim8: Animation 8
+        Anim9: Animation 9
+        Anim10: Animation 10
+        Anim11: Animation 11
+        Anim12: Animation 12
+        Anim13: Animation 13
+        Anim14: Animation 14
+        Anim15: Animation 15
+
+    items:
+      type: collection.list
+      array: true
+      label: Blocks
+      description: Create each item to appear in the content row.
+      value: name
+      ajax: true
+
+      fields:
+        .img:
+          type: input.imagepicker
+          label: Image
+          description: Select desired image.
+
+        .datasize:
+          type: input.text
+          label: Image Size
+          description: Input the real image size (in pixel).
+          placeholder: 435x653
+
+        .overlay:
+          type: select.select
+          label: Image Overlay
+          description: Enable or disable the Overlay when hovering the item.
+          placeholder: 'Select...'
+          default: g-overlay-enable
+          options:
+              g-overlay-enable: Enabled
+              g-overlay-disable: Disabled
+
+        .overlaytext:
+          type: input.text
+          label: Overlay Text
+          description: Customize the Overlay Text.
+          placeholder: Enter short overlay text
+
+        .overlayicon:
+          type: input.icon
+          label: Overlay Icon
+          description: Choose the Overlay Icon.
+
+        .title:
+          type: input.text
+          label: Title
+          description: Customize the Title.
+          placeholder: Enter Title
+
+        .tag:
+          type: input.text
+          label: Tag
+          description: Customize the Tag.
+          placeholder: Enter Tag
+
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the description.
+          placeholder: Enter short description
+
+        .animations:
+          type: input.selectize
+          label: Animations
+          description: Choose the Animation(s) when hovering the item, such as g-zoom, g-blur, g-rotate, g-grayscale.
+          default: g-zoom
+          options:
+              g-zoom: Zoom
+              g-blur: Blur
+              g-rotate: Rotate
+              g-grayscale: Grayscale
+
+        .buttontext:
+          type: input.text
+          label: Button Label
+          description: Specify the button label.
+
+        .buttonlink:
+          type: input.text
+          label: Button Link
+          description: Specify the button link.
+
+        .buttontarget:
+          type: select.selectize
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _self
+          options:
+              _self: Self
+              _blank: New Window
+
+        .buttonclass:
+          type: input.selectize
+          label: Button Classes
+          description: CSS class names for the button.

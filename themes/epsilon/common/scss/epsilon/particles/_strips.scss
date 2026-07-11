@@ -1,0 +1,100 @@
+.g-owlcarousel-strips-slider {
+  .g-owlcarousel {
+
+    .owl-item {
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .strips-image-container {
+        position: relative;
+        border: 2px solid transparent;
+      }
+
+      .g-owlcarousel-content {
+        text-align: center;
+      }
+
+      .g-owlcarousel-item-title {
+        margin-top: 15px;
+      }
+
+      .g-owlcarousel-item-desc {
+        padding: 0 15px 15px;
+      }
+    }
+
+    .owl-dots {
+      position: relative;
+      margin-top: 35px;
+
+      button {
+        opacity: 1;
+        padding: 0;
+        transition: opacity 0.2s ease-in;
+
+        .hexagon & {
+          border-radius: 0;
+          @include hexagon(16px, 10px, $dark-grey);
+
+          &.active {
+            @include hexagon(16px, 10px, $accent-color-1);
+          }
+
+          &.owl-dot {
+            margin: 0 2px;
+          }
+        }
+
+        background-color: $dark-grey;
+
+        &.active {
+          background-color: $accent-color-1;
+
+          &:hover {
+            background-color: $accent-color-1;
+          } 
+        }
+
+        &:hover {
+          background-color: $dark-grey;
+        }
+      }  
+    }
+
+    .owl-nav {
+      button.owl-prev, button.owl-next {
+            line-height: $base-line-height + 1 !important;
+            font-size: 28px;
+            margin-top: -12px !important;
+            opacity: 0.8;
+            position: absolute !important;
+            border: 0;
+          transition: all 0.2s ease-in-out;
+
+        .hexagon & {
+          border-radius: 0;
+          @include hexagon(48px, 30px, $dark-grey);
+          color: $accent-color-1;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &:focus {
+          outline: none;
+        }
+        span {
+          font-size: 2.5rem;
+        }
+      }
+      .owl-next {
+        right: -60px;
+      }
+
+      .owl-prev {
+        left: -60px;
+      }
+    }
+  }
+}

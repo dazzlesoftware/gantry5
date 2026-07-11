@@ -1,0 +1,825 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1602516936
+layout:
+  /container-top/:
+    -
+      -
+        top: {  }
+    -
+      -
+        navigation: {  }
+    -
+      -
+        /slideshow/:
+          -
+            - slider-2706
+  /header/:
+    -
+      - heading-5337
+    -
+      - infolist-4612
+  /above/:
+    -
+      - heading-6540
+    -
+      - 'image-9951 50'
+      - 'gridstatistic-8481 50'
+  /feature/:
+    -
+      - heading-3553
+    -
+      - latestnews-4336
+  /showcase/:
+    -
+      - heading-8077
+    -
+      - 'stories-4677 50'
+      - 'image-2414 50'
+  /utility/:
+    -
+      - heading-5392
+    -
+      - 'comments-6008 70'
+      - 'spacer-4353 30'
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - heading-6312
+    -
+      - news-2221
+  /extension/:
+    -
+      - infolist-7391
+  /bottom/: {  }
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        copyright: {  }
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - block
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-slideshow no-background-image'
+      variations: ''
+  container-top:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  header:
+    attributes:
+      boxed: ''
+      class: fp-header
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-above
+      variations: 'section-vertical-paddings-large section-horizontal-paddings'
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings nopaddingright'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    inherit:
+      outline: default
+      include:
+        - block
+        - children
+        - attributes
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    attributes:
+      class: overlay-light
+      extra: {  }
+      swipe: '0'
+content:
+  slider-2706:
+    attributes:
+      nav: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      centered: enabled
+      thumbs: enabled
+      touchmove: enabled
+      height: 850px
+      heightMobile: 400px
+      items:
+        -
+          headline: 'A Perfect Theme for Your School or University'
+          icon: 'fa fa-graduation-cap'
+          image: 'gantry-media://rocketlauncher/home/slideshow/img-01.jpg'
+          link: '#'
+          linklabel: 'Explore now'
+          linktarget: _blank
+          title: 'Designed for Modern Education'
+        -
+          headline: 'Packed with Premium Features'
+          icon: 'fa fa-plug'
+          image: 'gantry-media://rocketlauncher/home/slideshow/img-02.jpg'
+          link: '#'
+          linklabel: 'Explore now'
+          linktarget: _blank
+          title: 'Over 30 Particles to Choose From'
+        -
+          headline: 'Build a beautiful website in minutes.'
+          icon: 'fa fa-rocket'
+          image: 'gantry-media://rocketlauncher/home/slideshow/img-03.jpg'
+          link: '#'
+          linklabel: 'Explore now'
+          linktarget: _blank
+          title: 'Core Gantry Framework'
+      largedesktopslides: '1'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '1'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '1'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+    block:
+      variations: 'nomarginall nopaddingall'
+  heading-5337:
+    attributes:
+      class: ''
+      title: 'Our programs'
+      subtitle: 'What would you like to learn? Increase your expertise in Arts, Design, Education and Personal Development.'
+    block:
+      variations: center
+  infolist-4612:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: 'fa fa-align-right'
+          iconloc: center
+          iconacc: accent-color-2
+          background: none
+          image: ''
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Explore and understand the effects of disruptive technology on your marketing strategy.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Digital media'
+        -
+          icon: 'fa fa-align-right'
+          iconloc: center
+          iconacc: accent-color-2
+          background: none
+          image: ''
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Learn Fashion Design online at your own pace. Start today and improve your skills. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Fashion design'
+        -
+          icon: 'fa fa-align-right'
+          iconloc: center
+          iconacc: accent-color-2
+          background: none
+          image: ''
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: 'These course will provide you with the fundamental business skills necessary for success in your career.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Business Essentials'
+        -
+          icon: 'fa fa-align-right'
+          iconloc: center
+          iconacc: accent-color-2
+          background: none
+          image: ''
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: 'This course will help you understand the importance of thinking critically about how we know and experience the world.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'History & Philosophy'
+        -
+          icon: 'fa fa-align-right'
+          iconloc: center
+          iconacc: accent-color-2
+          background: none
+          image: ''
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Develop in-demand digital skills with our computer science and programming courses.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Computer science'
+        -
+          icon: 'fa fa-align-right'
+          iconloc: center
+          iconacc: accent-color-2
+          background: none
+          image: ''
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Take software development courses. Learn software development skills online to advance your computer programming career.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Software development'
+  heading-6540:
+    attributes:
+      class: ''
+      title: Admissions
+      subtitle: 'Want to change the world? At our university we’re doing just that. When you join our community, you’re part of an institution that shifts the global conversation every single day.'
+    block:
+      variations: center
+  image-9951:
+    attributes:
+      image: 'gantry-media://rocketlauncher/home/above/img-01.jpg'
+    block:
+      class: white-overlay
+  gridstatistic-8481:
+    title: 'Grid Statistic'
+    attributes:
+      class: ''
+      title: ''
+      desc: ''
+      numberformat: d
+      readmore: ''
+      readmorelink: ''
+      readmoreclass: button-2
+      footerdesc: ''
+      cols: g-gridstatistic-2cols
+      gridstatisticitems:
+        -
+          text1: '1231'
+          icon: ''
+          text2: 'Students in 2022'
+        -
+          text1: '534'
+          icon: ''
+          text2: 'Experienced Teachers'
+        -
+          text1: '1905'
+          icon: ''
+          text2: 'Countries Represented'
+        -
+          text1: '5523'
+          icon: ''
+          text2: 'Already Graduated'
+  heading-3553:
+    attributes:
+      class: ''
+      title: 'University history'
+      subtitle: 'We are one of the largest, most diverse universities in the country with over 20,000 students in USA, and a further 30,000 studying across 180 countries.'
+    block:
+      variations: center
+  latestnews-4336:
+    title: 'Latest News'
+    attributes:
+      source: particle
+      class: ''
+      title: ''
+      uppertitle: ''
+      allitems: ''
+      selected: all
+      date_formats: 'l, F d, Y'
+      cols: cols-4
+      cases:
+        -
+          items:
+            -
+              class: ''
+              textonly: enabled
+              image: ''
+              description: 'We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career.'
+              url: ''
+              target: _self
+              title: 'Text only'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-02.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-01.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: enabled
+              image: ''
+              description: 'We have been operating with our university success since 1988, with 30 years of experience.'
+              url: ''
+              target: _self
+              title: 'Text only'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-03.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-04.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-05.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-07.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-05.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+            -
+              class: ''
+              textonly: disabled
+              image: 'gantry-media://rocketlauncher/home/feature/img-06.jpg'
+              description: ''
+              date: ''
+              url: ''
+              target: _self
+              title: 'New item'
+          title: 'Research and Collections'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '3'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: '30'
+            formatting: text
+          date:
+            enabled: published
+          title:
+            enabled: show
+            limit: ''
+          read_more:
+            enabled: show
+            target: _self
+  heading-8077:
+    attributes:
+      class: ''
+      title: 'Students about'
+      subtitle: 'Read what current students and alumni have to say about their university experience.'
+  stories-4677:
+    title: 'User Stories'
+    attributes:
+      source: particle
+      class: ''
+      nav: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      title: ''
+      largedesktopslides: '1'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '1'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '1'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+      story:
+        -
+          content: "It’s a multicultural university in a diverse, friendly and vibrant city that suits everyone.\n\nThe course was really interesting with the option to choose between exciting marketing modules and marketing was something I’ve always wanted to do and learn. "
+          avatar: ''
+          position: Marketing
+          alttext: Student
+          name: 'Ann Ocasio'
+        -
+          content: "University gave me the option to research many studies pertaining to various aspects of art history. \nThe reputation of the University was also good among all career advisors, hence my choice was very easy.\n\n"
+          avatar: ''
+          position: 'Art History'
+          alttext: Student
+          name: 'Lawrence Williams'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+          author_image:
+            enabled: intro
+          category:
+            enabled: show
+    block:
+      class: section-overflow
+  image-2414:
+    attributes:
+      image: 'gantry-media://rocketlauncher/home/showcase/img-01.png'
+    block:
+      variations: 'nomarginright nopaddingright nomarginleft nopaddingleft'
+  heading-5392:
+    attributes:
+      class: ''
+      title: Testimonials
+      subtitle: ''
+  comments-6008:
+    title: 'Comments Slider'
+    attributes:
+      nav: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      centered: enabled
+      thumbs: enabled
+      touchmove: enabled
+      items:
+        -
+          content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
+          avatar: 'gantry-media://rocketlauncher/home/utility/img-04.jpeg'
+          position: 'Art Education'
+          name: 'Robert Bates'
+        -
+          content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
+          avatar: 'gantry-media://rocketlauncher/home/utility/img-03.jpeg'
+          position: 'Music Education'
+          name: 'Andria Farr'
+        -
+          content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
+          avatar: 'gantry-media://rocketlauncher/home/utility/img-01.jpeg'
+          position: Marketing
+          name: 'Ann Ocasio'
+        -
+          content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
+          avatar: 'gantry-media://rocketlauncher/home/utility/img-02.jpeg'
+          position: 'Computer Science'
+          name: 'Cassie Nichols'
+        -
+          content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
+          avatar: 'gantry-media://rocketlauncher/home/utility/img-05.jpeg'
+          position: 'Software development'
+          name: 'Carolyn McBride'
+      largedesktopslides: '1'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '1'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '1'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+  heading-6312:
+    attributes:
+      class: ''
+      title: News
+      subtitle: 'News from our university, student''s life. '
+    block:
+      variations: center
+  news-2221:
+    attributes:
+      source: particle
+      class: ''
+      nav: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      title: ''
+      largedesktopslides: '4'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '4'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '2'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '2'
+      mobilegroup: '1'
+      mobilespace: '35'
+      news:
+        -
+          image: 'gantry-media://rocketlauncher/home/expanded/img-01.jpg'
+          link: ''
+          target: _self
+          content: 'Details about our Fifth Annual Speed Painting Competition'
+        -
+          image: 'gantry-media://rocketlauncher/home/expanded/img-02.jpg'
+          link: ''
+          target: _self
+          content: 'Vermont Symphony Orchestra Returns to Evergreen College'
+        -
+          image: 'gantry-media://rocketlauncher/home/expanded/img-03.jpg'
+          link: ''
+          target: _self
+          content: 'The Computer Science is fundamentally important'
+        -
+          image: 'gantry-media://rocketlauncher/home/expanded/img-04.jpg'
+          link: ''
+          target: _self
+          content: 'Upcoming events on our university'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+          author_image:
+            enabled: intro
+          category:
+            enabled: show
+  infolist-7391:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-4cols
+      infolists:
+        -
+          icon: ''
+          iconloc: left
+          iconacc: accent-color-1
+          background: accent-color-1
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'David Williams stepping down as vice chancellor, athletics director'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Stepping Down'
+        -
+          icon: ''
+          iconloc: left
+          iconacc: accent-color-2
+          background: accent-color-3
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Mahaney Center for the Computer Science Announces New Season'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'New Season'
+        -
+          icon: ''
+          iconloc: left
+          iconacc: accent-color-1
+          background: accent-color-1
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'One of our students gets some prestigious art award and we want to brag.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'New Award'
+        -
+          icon: ''
+          iconloc: left
+          iconacc: accent-color-2
+          background: accent-color-3
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Last chance to visit our 2018 Graduates'' Exhibition'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Visit Exhibition'
+    block:
+      variations: 'nomarginall nopaddingall'
+  mobile-menu-2576:
+    title: 'Mobile Menu'

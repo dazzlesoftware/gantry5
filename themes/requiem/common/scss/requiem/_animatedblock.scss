@@ -1,0 +1,225 @@
+.g-animatedblock-item {
+  position: relative;
+  border-radius: 0;
+  border: none;
+  overflow: hidden;
+  &:hover {
+    .g-animatedblock-head {
+      transform: translateY(-100%);
+    }
+    .g-animatedblock-body {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+  }
+}
+.g-animatedblock-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.g-animatedblock-head {
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+.g-animatedblock-title {
+  color: $white;
+  margin: 0 0 1rem 0;
+  padding: 0 1rem;
+  font-size: $core-font-size + 3.5;
+  line-height: $core-line-height - 0.6;
+  font-family: get-font-family($font-family-promo);
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  @include breakpoint(desktop-range) {
+    font-size: $core-font-size + 2;
+    line-height: $core-line-height - 0.65;
+  }
+  @include breakpoint(tablet-range) {
+    font-size: $core-font-size + 0.5;
+    line-height: $core-line-height - 0.45;
+  }
+  @include breakpoint(large-mobile-range) {
+    font-size: $core-font-size + 3.5;
+    line-height: $core-line-height - 0.6;
+  }
+  @include breakpoint(small-mobile-range) {
+    font-size: $core-font-size + 1;
+    line-height: $core-line-height - 0.35;
+  }
+  a {
+    color: $white;
+    line-height: $core-line-height - 0.6;
+  }
+}
+.g-animatedblock-body {
+  padding: 0.5rem 1rem 0.75rem 1rem;
+  @include breakpoint(tablet-range) {
+    padding: 0.25rem 1rem 0.5rem 1rem;
+  }
+}
+.g-animatedblock-body {
+  background: $accent-color-1;
+  color: $white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(0);
+  transition: all 0.3s;
+  a {
+    font-weight: bold;
+    color: $white;
+    @include breakpoint(desktop-range) {
+      font-size: $core-font-size - 0.1;
+    }
+    @include breakpoint(tablet-range) {
+      font-size: $core-font-size - 0.2;
+    }
+    &:hover {
+      color: darken($accent-color-1, 25%);
+    }
+  }
+}
+.g-animatedblock-desc {
+  opacity: 0.75;
+  margin: 0.6rem 0;
+  @include breakpoint(desktop-range) {
+    font-size: $core-font-size - 0.1;
+  }
+  @include breakpoint(tablet-range) {
+    font-size: $core-font-size - 0.2;
+  }
+}
+.g-animatedblock-tag {
+  background: transparent;
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+  span {
+    color: $white;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 4px;
+    margin: 0;
+    padding: 0 5px;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+.g-animatedblock-button-container {
+  text-align: center;
+  margin: 3rem auto 1.5rem auto;
+}
+.g-animatedblock-button {
+  border: 3px solid darken($base-text-color, 25%);
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 30px;
+  margin: 1rem auto;
+  padding: 0.5rem 2rem;
+  font-size: $core-font-size - 0.1;
+  color: inherit;
+  &:hover {
+    opacity: 0.75;
+  }
+}
+.g-animatedblock-items {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+  .g-animatedblock-item {
+    flex: 0;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .g-animatedblock-item-wrapper {
+    margin-top: 6.52%;
+    margin-bottom: 6.52%;
+    position: relative;
+    overflow: hidden;
+  }
+  &.g-2cols,
+  &.g-3cols,
+  &.g-4cols,
+  &.g-5cols {
+    margin-left: -2%;
+    margin-right: -2%;
+  }
+  &.g-1cols {
+    .g-animatedblock-item {
+      width: 100%;
+      flex-basis: 100%;
+      &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+  &.g-2cols {
+    .g-animatedblock-item {
+      width: 47%;
+      flex-basis: 47%;
+      &:nth-child(odd) {
+        margin-right: 1%;
+      }
+      &:nth-child(even) {
+        margin-left: 1%;
+      }
+    }
+  }
+  &.g-3cols {
+    .g-animatedblock-item {
+      width: 30.66667%;
+      flex-basis: 30.66667%;
+      &:nth-child(3n-1) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+  &.g-4cols {
+    .g-animatedblock-item {
+      width: 22.5%;
+      flex-basis: 22.5%;
+      &:nth-child(4n-2) {
+        margin-left: 0;
+        margin-right: 1%;
+      }
+      &:nth-child(4n-1) {
+        margin-left: 1%;
+        margin-right: 0;
+      }
+    }
+  }
+  &.g-5cols {
+    .g-animatedblock-item {
+      width: 17.6%;
+      flex-basis: 17.6%;
+      &:nth-child(5n-3) {
+        margin-left: 0;
+        margin-right: 1%;
+      }
+      &:nth-child(5n-2) {
+        margin-left: 1%;
+        margin-right: 1%;
+      }
+      &:nth-child(5n-1) {
+        margin-left: 1%;
+        margin-right: 0;
+      }
+    }
+  }
+  @include breakpoint(mobile-only) {
+    &[class*="cols"] {
+      .g-animatedblock-item {
+        width: 96%;
+        flex-basis: 96%;
+        margin-left: 2% !important;
+        margin-right: 2% !important;
+      }
+    }
+  }
+}

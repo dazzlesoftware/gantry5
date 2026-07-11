@@ -1,0 +1,315 @@
+name: Latest News
+description: Display latest news.
+type: particle
+icon: fa-newspaper-o
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              overridable: false
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            uppertitle:
+              overridable: false
+              type: input.text
+              label: Upper Title
+              description: Customize the upper title text that will appear above regular title text.
+              placeholder: Enter title
+
+            allitems:
+              overridable: false
+              type: input.text
+              label: '"All items" Label'
+              description: Enter all items button label (leave blank to hide).
+              placeholder: 'All items'
+
+            selected:
+              type: select.select
+              label: Selected
+              description: Choose Selected Nav Item
+              default: all
+              options:
+                all: All
+                first: First Item
+
+            date_formats:
+              type: select.date
+              label: Date Format
+              description: Select preferred date format.
+              default: l, F d, Y
+              placeholder: 'Select...'
+              selectize:
+                allowEmptyOption: true
+              options:
+                '': None
+                'l, F d, Y': Date1
+                'F d': Date2
+                'd M': Date3
+                'D, M d, Y': Date4
+                'D, M d, y': Date5
+                'l': Date6
+                'l j F Y': Date7
+
+            cols:
+              overridable: false
+              type: select.select
+              label: Grid Column
+              description: Select the grid column amount
+              placeholder: 'Select...'
+              default: cols-3
+              options:
+                cols-2: 2 Columns
+                cols-3: 3 Columns
+                cols-4: 4 Columns
+                cols-5: 5 Columns
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            cases:
+              type: collection.list
+              array: true
+              label: Categories
+              description: Create case studies.
+              value: title
+              ajax: true
+              overridable: false
+
+              fields:
+                .title:
+                  type: input.text
+                  label: Title
+                  description: Enter case title
+                .items:
+                  type: collection.list
+                  array: true
+                  label: Items
+                  description: Create case studies items.
+                  value: title
+                  ajax: true
+
+                  fields:
+                    .class:
+                      type: input.selectize
+                      label: CSS Classes
+                      description: CSS class name for the item.
+                    .image:
+                      type: input.imagepicker
+                      label: Image
+                      description: Select desired image.
+                    .title:
+                      type: input.text
+                      label: Title
+                      description: Enter case title
+                    .description:
+                      type: textarea.textarea
+                      label: Description
+                      description: Enter case description. Only for Alternative layouts.
+                    .date:
+                      type: input.date
+                      label: Date
+                      description: Enter date
+                    .url:
+                      type: input.text
+                      label: Url
+                      description: Customize case url.
+                    .target:
+                      type: select.selectize
+                      label: Target
+                      description: Target browser window when item is clicked.
+                      placeholder: 'Select...'
+                      default: _self
+                      options:
+                          _self: Self
+                          _blank: New
+
+        _tab_articles:
+          label: Articles
+          overridable: false
+          fields:
+            article.filter.categories:
+              overridable: false
+              type: joomla.categories
+              label: Categories
+              description: Select the categories the articles should be taken from.
+
+            article.filter.articles:
+              overridable: false
+              type: input.text
+              label: Articles
+              description: Enter the Joomla articles that should be shown. It should be a list of article IDs separated with a comma (i.e. 1,2,3,4,5).
+
+            article.filter.featured:
+              overridable: false
+              type: select.select
+              label: Featured Articles
+              description: Select how Featured articles should be filtered.
+              default: ''
+              options:
+                include: Include Featured
+                exclude: Exclude Featured
+                only: Only Featured
+
+            article.limit.total:
+              overridable: false
+              type: input.text
+              label: Number of Articles
+              description: Enter the maximum number of articles to display.
+              default: 3
+              pattern: '\d{1,2}'
+
+            article.limit.start:
+              overridable: false
+              type: input.text
+              label: Start From
+              description: Enter offset specifying the first article to return. The default is '0' (the first article).
+              default: 0
+              pattern: '\d{1,2}'
+
+            article.sort.orderby:
+              overridable: false
+              type: select.select
+              label: Order By
+              description: Select how the articles should be ordered by.
+              default: publish_up
+              options:
+                publish_up: Published Date
+                created: Created Date
+                modified: Last Modified Date
+                title: Title
+                ordering: Ordering
+                hits: Hits
+                id: ID
+                alias: Alias
+
+            article.sort.ordering:
+              overridable: false
+              type: select.select
+              label: Ordering Direction
+              description: Select the direction the articles should be ordered by.
+              default: ASC
+              options:
+                ASC: Ascending
+                DESC: Descending
+
+        _tab_display:
+          label: Articles Display
+          overridable: false
+          fields:
+            article.display.image.enabled:
+              overridable: false
+              type: select.select
+              label: Image
+              description: Select if and what image of the article should be shown.
+              options:
+                intro: Intro
+                full: Full
+                '': None
+
+            article.display.text.type:
+              overridable: false
+              type: select.select
+              label: Article Text
+              description: Select if and how the article text should be shown.
+              options:
+                intro: Introduction
+                full: Full Article
+                '': Hide
+
+            article.display.text.limit:
+              overridable: false
+              type: input.text
+              label: Text Limit
+              description: Type in the number of characters the article text should be limited to.
+              pattern: '\d+'
+              default: 30
+
+            article.display.text.formatting:
+              overridable: false
+              type: select.select
+              label: Text Formatting
+              description: Select the formatting you want to use to display the article text.
+              options:
+                text: Plain Text
+                html: HTML
+
+            article.display.date.enabled:
+              type: select.select
+              label: Date
+              description: Select if the article date should be shown.
+              default: published
+              options:
+                created: Show Created Date
+                published: Show Published Date
+                modified: Show Modified Date
+                '': Hide
+
+            article.display.title.enabled:
+              overridable: false
+              type: select.select
+              label: Title
+              description: Select if the article title should be shown.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.title.limit:
+              overridable: false
+              type: input.text
+              label: Title Limit
+              description: Enter the maximum number of characters the article title should be limited to.
+              pattern: '\d+(\.\d+){0,1}'
+
+            article.display.read_more.enabled:
+              overridable: false
+              type: select.select
+              label: Link
+              description: Select if Link should be enabled.
+              options:
+                show: Show
+                '': Hide
+
+            article.display.read_more.target:
+              overridable: false
+              type: select.selectize
+              label: Target
+              description: Target browser window when item is clicked.
+              placeholder: 'Select...'
+              default: _self
+              options:
+                  _self: Self
+                  _blank: New Window

@@ -1,0 +1,1141 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: swiper
+  timestamp: 1580382706
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - custom-7615
+    -
+      - swiper-6723
+    -
+      - swiper-6518
+    -
+      - custom-1958
+    -
+      - swiper-6977
+    -
+      - swiper-6978
+    -
+      - custom-2312
+    -
+      - swiper-6979
+    -
+      - swiper-6999
+    -
+      - custom-2320
+    -
+      - swiper-6920
+    -
+      - swiper-6921
+  /header/: {  }
+  /above/: {  }
+  /feature/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/: {  }
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-slideshow
+      variations: ''
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-7615:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Showcase</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6723:
+    title: 'Swiper - Showcase'
+    attributes:
+      class: ''
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: disabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: horizontal
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: ''
+          text: ''
+          thumb_title: ''
+          button_text: ''
+          button_link: ''
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: ''
+          bgcolor: '#424242'
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: ''
+          text: ''
+          thumb_title: ''
+          button_text: ''
+          button_link: ''
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: ''
+          bgcolor: '#424242'
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: ''
+          text: ''
+          thumb_title: ''
+          button_text: ''
+          button_link: ''
+          linktarget: _self
+          name: 'Item 3'
+        -
+          class: ''
+          image: ''
+          bgcolor: '#424242'
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '2'
+      largedesktopgroup: '2'
+      largedesktopspace: '0'
+      desktopslides: '2'
+      desktopgroup: '2'
+      desktopspace: '0'
+      tabletslides: '2'
+      tabletgroup: '2'
+      tabletspace: '0'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '0'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  swiper-6518:
+    title: 'Swiper - Showcase (Vertical)'
+    attributes:
+      class: ''
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: disabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: vertical
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: ''
+          text: ''
+          thumb_title: ''
+          button_text: ''
+          button_link: ''
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: ''
+          bgcolor: '#424242'
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: ''
+          text: ''
+          thumb_title: ''
+          button_text: ''
+          button_link: ''
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: ''
+          bgcolor: '#424242'
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: ''
+          text: ''
+          thumb_title: ''
+          button_text: ''
+          button_link: ''
+          linktarget: _self
+          name: 'Item 3'
+        -
+          class: ''
+          image: ''
+          bgcolor: '#424242'
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '2'
+      largedesktopgroup: '2'
+      largedesktopspace: ''
+      desktopslides: '2'
+      desktopgroup: '2'
+      desktopspace: ''
+      tabletslides: '2'
+      tabletgroup: '2'
+      tabletspace: ''
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '0'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  custom-1958:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Multiple Slides Per View</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6977:
+    title: 'Swiper - Multiple Slides View'
+    attributes:
+      class: multislides
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: enabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: horizontal
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '1'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '1'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '1'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '1'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  swiper-6978:
+    title: 'Swiper - Multiple Slides Per View (Vertical)'
+    attributes:
+      class: ''
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: disabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: vertical
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '1'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '1'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '1'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '1'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  custom-2312:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Multiple Slides Per Group</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6979:
+    title: 'Swiper - Multiple Slides Per Group'
+    attributes:
+      class: multislides
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: enabled
+      pagination: ''
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: horizontal
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '3'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '3'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '3'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  swiper-6999:
+    title: 'Swiper - Multiple Slides Per Group (Vertical)'
+    attributes:
+      class: ''
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: disabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: vertical
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Designed for Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Packed with Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '3'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '3'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '3'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  custom-2320:
+    title: 'Custom HTML'
+    attributes:
+      html: '<h1>Cover Flow</h1>'
+    block:
+      variations: nopaddingbottom
+  swiper-6920:
+    title: 'Swiper - Cover Flow'
+    attributes:
+      class: multislides
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: enabled
+      pagination: ''
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: horizontal
+      effect: coverflow
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '3'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '3'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '3'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  swiper-6921:
+    title: 'Swiper - Cover Flow (Vertical)'
+    attributes:
+      class: ''
+      source: particle
+      height: 70vh
+      heightMobile: 500px
+      nav: disabled
+      pagination: bullets
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      overlaycolor: 'rgba(9, 13, 15, 0.5)'
+      direction: vertical
+      effect: coverflow
+      items:
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Modern Education'
+          text: 'A Perfect Theme for Your Campus'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: 'Premium Features'
+          text: 'Over 30 Particles to Choose From'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          bgcolor: ''
+          title: 'Multimedia Ready'
+          text: 'Support for Audio and Video Content'
+          thumb_title: ''
+          button_text: 'Explore Now'
+          button_link: '#'
+          linktarget: _self
+          name: 'Item 3'
+      largedesktopslides: '3'
+      largedesktopgroup: '3'
+      largedesktopspace: '30'
+      desktopslides: '3'
+      desktopgroup: '3'
+      desktopspace: '30'
+      tabletslides: '3'
+      tabletgroup: '3'
+      tabletspace: '30'
+      mobileslides: '2'
+      mobilegroup: '2'
+      mobilespace: '20'
+      thumbs: disabled
+      thumbsnav: disabled
+      thumbslayout: bottom
+      largedesktopthumbs: '5'
+      largedesktopthumbspace: '50'
+      desktopthumbs: '4'
+      desktopthumbspace: '40'
+      tabletthumbs: '3'
+      tabletthumbspace: '30'
+      mobilethumbs: '2'
+      mobilethumbspace: '20'
+      article:
+        filter:
+          categories: Blog
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: default
+          ordering: asc
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self

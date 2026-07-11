@@ -1,0 +1,47 @@
+// Logo
+.denali-logo {
+    @include breakpoint(mobile-only) {
+        .g-content {
+            padding: 0;
+        }
+    }
+}
+
+// Header Tweaks
+.fp-header {
+    padding-bottom: $content-padding * 11;
+
+    @include breakpoint(mobile-only) {
+        padding-bottom: 0;
+    }
+}
+
+// Above Tweaks
+.fp-above {
+    .g-grid {
+        margin-top: -20rem;
+        @include breakpoint(tablet-range) {
+            margin-top: -15rem;
+        }
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
+    }
+    .g-showcase.desktop .owl-nav {
+        top: 16rem;
+    }
+}
+
+// Feature Tweaks
+.fp-feature {
+    .g-simplecontent-item-main-content {
+        column-count: 2;
+    }
+}
+
+// Bottom Tweaks
+.fp-bottom {
+    &.section-vertical-paddings {
+        padding-bottom: 0;
+    }
+}

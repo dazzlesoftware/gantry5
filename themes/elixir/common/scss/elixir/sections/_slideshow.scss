@@ -1,0 +1,37 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background-color: $slideshow-background;
+
+    @include breakpoint(mobile-only) {
+        &.fp-slideshow {
+            [data-aos] {
+                transition-duration: 0s !important;
+            }
+        }
+    }
+
+    .swiper-container-horizontal {
+         > .swiper-pagination-bullets {
+            .swiper-pagination-bullet-active, .swiper-pagination-bullet {
+                @include breakpoint(mobile-only) {
+                    background: $slideshow-text-color;
+                }
+            }
+        }
+        .navigation {
+            .swiper-button-next,
+            .swiper-button-prev {
+                @include breakpoint(no-mobile) {
+                    color: $slideshow-text-color;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

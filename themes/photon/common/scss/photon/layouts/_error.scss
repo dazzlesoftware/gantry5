@@ -1,0 +1,57 @@
+.g-error {
+	#g-header {
+		.g-infolist-textstyle-header {
+			.g-infolist-item-title {
+				font-weight: $font-weight-regular;
+				text-transform: none;
+				font-size: 3.5rem;
+				line-height: 5rem;
+				@include breakpoint(small-mobile-range) {
+					font-size: 2rem;
+					line-height: 3rem;
+				}				
+			}
+			.g-infolist-item-desc {
+				font-weight: $font-weight-regular;
+				@include breakpoint(small-mobile-range) {
+					font-size: 1rem;
+					line-height: 1.5rem;
+				}				
+			}
+		}	
+	}
+	#g-showcase {
+		h1 {
+			font-weight: $font-weight-regular;
+			text-transform: none;
+			font-size: 3.5rem;
+			line-height: 4rem;
+			margin: 9rem 0;
+			@include breakpoint(large-mobile-range) {
+				margin: 3rem 0;
+			}	
+			@include breakpoint(small-mobile-range) {
+				font-size: 2rem;
+				line-height: 3rem;
+				margin: 3rem 0;
+			}
+		}
+		.g-compact {
+			position: relative;
+			img {
+				@include breakpoint(no-mobile) {
+					position: absolute;
+					bottom: 0;
+				}				
+			}
+		}
+	}
+	#g-copyright {
+		@include breakpoint(mobile-only) {
+			.g-content {
+				text-align: center;
+				padding-bottom: 0;
+			}
+		}		
+	}
+}

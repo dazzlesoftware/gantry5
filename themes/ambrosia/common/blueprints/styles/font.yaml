@@ -1,0 +1,19 @@
+name: Font Families
+description: Font families for the Ambrosia theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'roboto, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    family-title:
+      type: input.fonts
+      label: Title Font
+      default: 'robotocondensed, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    family-promo:
+      type: input.fonts
+      label: Promo Font
+      default: 'robotocondensed, Helvetica, Tahoma, Geneva, Arial, sans-serif'

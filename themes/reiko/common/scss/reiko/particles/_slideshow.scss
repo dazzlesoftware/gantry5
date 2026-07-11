@@ -1,0 +1,240 @@
+// Slideshow Styling
+.owl-stage-outer {
+    overflow: visible;
+    @include breakpoint (mobile-only) {
+        padding: 0 0;
+    }
+}
+
+.g-slideshow {
+    position: relative;
+    z-index: 20;
+
+    @include breakpoint (mobile-only) {
+        margin-bottom: 2rem;
+    }
+
+    .g-slideshow-carousel {
+        position: relative;
+
+        .owl-stage {
+            display: flex;
+
+            .owl-item {
+                padding: 4rem 0; // Active slide custom styling
+                padding-bottom: 0;
+
+                &.active {
+                    padding: 4rem 0;
+                    @media only screen and (max-width: 500px) {
+                        margin-right: -10px;
+                    }
+
+                    .g-slideshow-carousel-image-container {
+                        transform: scale(1);
+                    }
+                }
+            }
+
+            .g-slideshow-carousel-image-container {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-bottom: $content-padding;
+                border: 2px solid $black;
+                border-radius: 5px;
+                transition: all 850ms cubic-bezier(.51, .4, .35, .9) 70ms;
+                transform: scale(0.8);
+                box-shadow: 0 0px 38px 0px transparentize($black, 0.70);
+                display: flex;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+
+                a {
+                    position: absolute;
+                    width: 100%;
+                    top: -4rem;
+                    height: calc(100% + 4rem);
+                    display: block;
+                    z-index: 2;
+
+                    &:hover {
+                        ~ .g-slideshow-carousel-title {
+                            color: $accent-color-1;
+                        }
+                    }
+                }
+
+                .g-slideshow-carousel-image-small {
+                    position: absolute;
+                    width: 15%;
+                    right: 20%;
+                    bottom: 0;
+                    z-index: 1;
+
+                    .dir-rtl & {
+                        right: auto;
+                        left: 20%;
+                    }
+
+                    @include breakpoint(mobile-only) {
+                        display: none;
+                    }
+
+                    &:before {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        border: 3px solid $accent-color-2;
+                        top: -0.5rem;
+                        left: -0.5rem;
+                        position: absolute;
+                        z-index: 10;
+                        pointer-events: none;
+
+                        .dir-rtl & {
+                            left: auto;
+                            right: -0.5rem;
+                        }
+                    }
+
+                    .g-slideshow-carousel-title-small {
+                        position: absolute;
+                        z-index: 2;
+                        font-weight: $font-weight-semibold;
+                        color: $white;
+                        text-shadow: 0 1px 2px fade-out($black, 0.2);
+                        bottom: 0;
+                        padding: $content-padding;
+                    }
+                }
+            }
+
+            .g-slideshow-carousel-title {
+                position: absolute;
+                font-weight: $font-weight-medium;
+                @include responsive-font($responsive-font-size + 1.5, $core-font-size + 1, false, false);
+                line-height: $core-line-height - 0.2;
+                padding: 0 .5rem;
+                margin: 0 2rem;
+                color: $white;
+                text-shadow: 0 0 8px fade-out($black, 0.95);
+                top: -3rem;
+                left: 0;
+                max-width: 90%;
+                transition: all 0.25s;
+
+                .dir-rtl & {
+                    left: auto;
+                    right: 0;
+                }
+
+                @include breakpoint(mobile-only) {
+                    font-size: $core-font-size + 0.5;
+                    line-height: $core-line-height;
+                }
+
+                span {
+                    background: $black;
+                    padding: .5rem 1rem;
+                    box-decoration-break: clone;
+                    -webkit-box-decoration-break: clone;
+                    border-radius: 7px;
+                }
+            }
+        }
+
+        // Nav
+        .owl-nav {
+            button.owl-prev,
+            button.owl-next {
+                position: absolute;
+                top: 50%;
+                width: 40px;
+                height: 40px;
+                opacity: 0.7;
+                background: rgba(0, 0, 0, 0.5);
+                transform: translateY(-50%);
+                color: $white;
+                text-align: center;
+                @include responsive-font($responsive-font-size, $core-font-size + 0.5, false, false);
+                transition: all 0.3s;
+
+                .fa {
+                    position: relative;
+                }
+
+                &:hover {
+                    color: $white;
+                }
+            }
+
+            .owl-prev {
+                left: 15%;
+
+                @include breakpoint(large-desktop-range) {
+                    left: 20%;
+                }
+
+                @include breakpoint(large-mobile-range) {
+                    left: 20%;
+                }
+
+                .fa {
+                    left: -1px;
+                    top: 1px;
+                }
+            }
+
+            .owl-next {
+                right: 15%;
+
+                @include breakpoint(large-desktop-range) {
+                    right: 20%;
+                }
+
+                @include breakpoint(large-mobile-range) {
+                    right: 20%;
+                }
+
+                .fa {
+                    left: 1px;
+                    top: 1px;
+                }
+            }
+        }
+
+        // Dots
+        .owl-dots {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: $content-padding * 2;
+            right: $content-padding;
+            z-index: 2;
+
+            @include breakpoint(mobile-only) {
+                bottom: $content-padding;
+            }
+
+            .dir-rtl & {
+                right: auto;
+                left: $content-padding;
+            }
+
+            .owl-dot {
+                width: 12px;
+                height: 12px;
+                margin-bottom: 0.3rem;
+                border: 2px solid $black;
+                border-radius: 100%;
+
+                &.active {
+                    background: $black;
+                }
+            }
+        }
+    }
+}

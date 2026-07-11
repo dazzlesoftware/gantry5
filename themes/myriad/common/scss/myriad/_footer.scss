@@ -1,0 +1,40 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;	
+	font-size: 14px;
+	a {
+		color: #686868;
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+	.g-container {
+		border-top: 1px solid $rule-color;
+		@include breakpoint(small-mobile-range) {
+			text-align: center;
+		}		
+	}
+}
+
+.g-horizontalmenu {
+	list-style: none;
+	li {
+		display: inline-block;
+		a:before, .item:before, .separator:before {
+			display: none;
+		}
+		a {
+		    display: block;
+			text-decoration: none;
+			padding: 5px 15px;
+			border-radius: 3px;
+		}
+	}
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

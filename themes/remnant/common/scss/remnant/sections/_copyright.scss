@@ -1,0 +1,51 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    @extend .section-paddings;
+
+    .g-grid {
+        &:not(:last-child) {
+            border-bottom: 2px solid transparentize($copyright-text-color, 0.75);
+        }
+    }
+
+    a {
+        &:hover {
+            color: $white;
+        }
+    }
+
+    // Social Particle
+    .g-social {
+        text-align: right;
+        .dir-rtl & {
+            text-align: left;
+        }
+        white-space: nowrap;
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+
+    }
+
+    // Simple Menu
+    .g-simplemenu-particle {
+        .g-simplemenu {
+            a {
+                color: $copyright-text-color;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

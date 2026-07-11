@@ -1,0 +1,14 @@
+.g-social {
+	a {
+		display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.1rem 0.25rem;
+        span {
+            vertical-align: middle;
+        }
+        @include breakpoint(tablet-range) {
+			padding: 0.1rem 0;
+        }	
+	}
+}

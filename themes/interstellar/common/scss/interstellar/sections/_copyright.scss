@@ -1,0 +1,46 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    &:before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 1200px 0 0 1000px;
+        border-color: transparent transparent transparent transparentize($black, 0.95);
+        content: '';
+        pointer-events: none;
+    }
+    &:after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 1200px 1000px;
+        border-color: transparent transparent transparentize($black, 0.95) transparent;
+        content: '';
+        pointer-events: none;
+    }
+
+    .g-container {
+        &:before {
+            border-top: 1px solid $border-color-light;
+            content: "";
+            display: block;
+            margin: 0 $content-margin + $content-padding;
+        }
+    }
+
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

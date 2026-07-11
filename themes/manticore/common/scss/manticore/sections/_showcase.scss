@@ -1,0 +1,27 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background;
+
+    position: relative;
+
+    .g-grid {
+        position: relative;
+    }
+
+    @if $showcase-background-image {
+        background-image: url($showcase-background-image);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .g-featuredvideos-item-author-text {
+        color: $white;
+    }
+}
+
+@media print {
+    #g-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

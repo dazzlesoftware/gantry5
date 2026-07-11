@@ -1,0 +1,315 @@
+.flush,
+.g-flushed {
+    margin: 0 !important;
+    > .g-container,
+    > .g-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+@include breakpoint(mobile-only) {
+    .flush-mobile {
+        margin: 0 !important;
+        > .g-container,
+        > .g-content {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+}
+
+.g-container-flushed {
+    margin: -4rem 0;
+}
+
+.g-nobackground {
+    background: none !important;
+}
+
+.g-absolute {
+    position: absolute;
+    width: 100%;
+}
+
+// no(margin/padding)(left/right/top/bottom)
+// (margin/padding)(2x/3x)
+$css_properties: "margin", "padding";
+$css_directions: "left", "right", "top", "bottom", "all";
+$css_multipliers: 2, 3;
+$css_size: "small", "med", "large", "xlarge";
+@each $prop in $css_properties {
+    @each $dir in $css_directions {
+        .no#{$prop}#{$dir} {
+            &, > .g-content {
+                @if ($dir != "all") {
+                    #{$prop}-#{$dir}: 0;
+                } @else {
+                    #{$prop}: 0;
+                }
+            }
+        }
+
+        @each $size in $css_size {
+            .#{$size}#{$prop}#{$dir} {
+                &:not(.g-block), > .g-content {   
+                    @if ($size == "small") {
+                        @if ($dir != "all") {
+                            #{$prop}-#{$dir}: 0.25rem;
+                        } @else {
+                            #{$prop}: 0.25rem;
+                        }
+                    } @else if ($size == "med") {
+                        @if ($dir != "all") {
+                            #{$prop}-#{$dir}: 1rem;
+                        } @else {
+                            #{$prop}: 1rem;
+                        }
+                    } @else if ($size == "large") {
+                        @if ($dir != "all") {
+                            #{$prop}-#{$dir}: 3rem;
+                        } @else {
+                            #{$prop}: 3rem;
+                        }
+                    }
+                }    
+            }
+        }
+    }
+
+    @each $multi in $css_multipliers {
+        .#{$prop}#{$multi}x {
+            > .g-content {
+                @if ($prop == "padding") {
+                    #{$prop}: $content-padding * $multi;
+                } @else if ($prop == "margin") {
+                    #{$prop}: $content-margin * $multi;
+                }
+            }
+        }
+    }
+}
+
+// Section Horizontal Paddings
+.section-horizontal-paddings {
+    padding-left: 10%;
+    padding-right: 10%;
+
+    @include breakpoint(tablet-range) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Section Horizontal Paddings Small
+.section-horizontal-paddings-small {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    @include breakpoint(tablet-range) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Section Horizontal Paddings Large
+.section-horizontal-paddings-large {
+    padding-left: 15%;
+    padding-right: 15%;
+
+    @include breakpoint(tablet-range) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include breakpoint(mobile-only) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Section Vertical Paddings
+.section-vertical-paddings {
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+// Section Vertical Paddings Small
+.section-vertical-paddings-small {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+// Section Vertical Paddings Large
+.section-vertical-paddings-large {
+    padding-top: 6vw;
+    padding-bottom: 6vw;
+}
+
+// Disable Section Paddings
+.section-no-paddings {
+    padding: 0 !important;
+}
+
+// Disable Vertical Padding Top
+.section-vertical-padding-top {
+    padding-top: 0 !important;
+}
+
+// Disable Vertical Padding Bottom
+.section-vertical-padding-bottom {
+    padding-bottom: 0 !important;
+}
+
+.center-block {
+    text-align: center;
+    margin: auto;
+}
+
+.g-center-vertical {
+    display: flex;
+    align-items: center;
+}
+
+.g-linethrough {
+    text-decoration: line-through;
+    opacity: 0.55;
+}
+
+.g-menuspacer {
+    padding-top: $content-padding * 3;
+    @include breakpoint(mobile-only) {
+        padding: 0;
+    }
+}
+
+.noliststyle {
+    list-style: none;
+}
+
+.g-bold {
+    font-weight: $font-weight-bold;
+}
+
+.g-uppercase {
+    text-transform: uppercase;
+}
+
+.g-compact {
+    .g-container {
+        padding: 0 !important;
+    }
+}
+
+.g-sidebar-offset {
+    margin-top: -4rem;
+}
+
+.g-sample-sitemap {
+    line-height: $core-line-height + 0.2;
+    font-size: $core-font-size + 0.1;
+}
+
+.g-mobile-center-compact {
+    @include breakpoint(mobile-only) {
+        .g-container {
+            padding: $content-padding 0;
+        }
+
+        .g-content {
+            padding: 0 $content-padding;
+            margin: $content-margin/2 $content-margin;
+            text-align: center !important;
+        }
+    }
+}
+
+// Text color (light/dark) depending on BG
+@function set-color($color) {
+    @if (lightness($color) > 50) {
+      @return #000000; // Lighter backgorund, return dark color
+    } @else {
+      @return #ffffff; // Darker background, return light color
+    }
+  }
+
+// Lightcase
+@include breakpoint(mobile-only) {
+    .lightcase-fullScreenMode {
+        #lightcase-info {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    }
+}
+
+html[data-lc-type=inline] #lightcase-case, html[data-lc-type=ajax] #lightcase-case {
+    @include breakpoint(mobile-only) {
+      top: 40% !important;
+      padding: 0 $content-padding !important;
+    }
+}
+
+// No background
+#g-page-surround .no-background-image {
+    background-image: none;
+
+    &::before{
+        display: none;
+    }
+}
+
+// Overlay dark
+.overlay-light {
+    color: $white;
+
+    #g-slideshow, #g-navigation, #g-top {
+        color: $white;
+    }
+
+    + #g-page-surround > .g-offcanvas-toggle {
+        color: $white;
+    }
+
+    a, .g-main-nav .g-toplevel > li:hover > .g-menu-item-container, #g-navigation .g-main-nav .g-toplevel > li.active > .g-menu-item-container {
+        color: $white !important;
+    }
+
+    .g-main-nav .g-toplevel > li > .g-menu-item-container {
+        color: $white !important;
+    }
+
+    .g-logo svg {
+        fill: $white !important;
+    }
+
+}
+
+// Strikethrough
+.strikethrough {
+    text-decoration: line-through;
+}
+
+// Patterns 
+.base-pattern-1 {
+    fill: $accent-color-1;
+}
+.base-pattern-2 {
+    fill: $accent-color-2;
+}
+.base-pattern-3 {
+    fill: $accent-color-3;
+}
+.base-text-color {
+    stroke: $base-text-color;
+}

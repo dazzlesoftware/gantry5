@@ -1,0 +1,61 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color; 
+    position: relative;
+    z-index: 100;
+	@if $extension-background-image {
+    	background: $extension-background url($extension-background-image) top center no-repeat;
+    	background-size: cover;
+	}
+	&:before {
+	   	background: linear-gradient(rgba($extension-background, 0.35), rgba($extension-background, 0.5));
+	   	position: absolute;
+	   	content: "";
+	   	top: 0;
+	   	right: 0;
+	   	bottom: 0;
+	   	left: 0;
+	    z-index: -1;		
+	}	   
+
+	// Accent
+	a {
+		color: lighten($extension-text-color, 25%);
+		font-weight: bold;
+		&:hover {
+			color: inherit;
+		}
+	}
+
+	// Home
+	.g-home &, .g-homepositions & {
+		padding: 8rem 0 3rem 0;
+
+		// Promo Content
+		.g-superpromo {
+			color: lighten($extension-text-color, 25%);
+			@include breakpoint(desktop-range) {
+				font-size: $core-font-size + 3;
+			}   
+			@include breakpoint(tablet-range) {
+				font-size: $core-font-size + 2;
+			}
+			@include breakpoint(large-mobile-range) {
+				font-size: $core-font-size + 1;
+			} 
+			@include breakpoint(small-mobile-range) {
+				font-size: $core-font-size + 0.5;
+			} 			 			
+		}
+		.g-textpromo {
+			width: 75%;
+		}
+	} 	  
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

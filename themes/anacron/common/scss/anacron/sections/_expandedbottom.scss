@@ -1,0 +1,42 @@
+#g-expandedbottom {
+    background: $expandedbottom-background;
+    color: $expandedbottom-text-color; 
+    border-top: 1px solid darken($top-background, 8%);
+	box-shadow: 0px 1px 0 darken($top-background, 8%);
+	position: relative;
+
+	.fp-expandedbottom {
+		.g-content {
+			margin: 15px auto;
+			width: 80%;
+		}
+	}
+	&:after {
+		color: $top-background;
+		text-shadow: 0px 2px 0 darken($top-background, 8%);
+	    content: "\f0d7";
+	    font-family: FontAwesome;
+	    font-size: 3em;
+	    position: absolute;
+	    bottom: -17px;
+	    left: 50%;
+	    margin-left: -15px;
+	}
+	&.rt-overlay-light {
+		h2.title {
+			color: darken($expandedbottom-text-color, 15%);
+		}
+	}
+	&.rt-overlay-dark {
+		h2.title {
+			color: lighten($expandedbottom-text-color, 35%);
+		}
+	}	
+}    
+
+@media print {
+	#g-expandedbottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

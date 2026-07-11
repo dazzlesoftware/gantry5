@@ -1,0 +1,16 @@
+#g-bottom {
+    color: $bottom-text-color;
+    background: $bottom-background;
+    @extend .section-paddings;
+
+    h2.g-title {
+        color: $black;
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

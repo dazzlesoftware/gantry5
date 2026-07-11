@@ -1,0 +1,42 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div id="{{ id }}" data-flipster-id="{{ id }}" data-flipster-start="{{ particle.start }}" data-flipster-fadein="{{ particle.fadein }}" data-flipster-loop="{% if particle.loop == 'enabled' %}true{% else %}false{% endif %}" data-flipster-autoplay="{% if particle.autoplay > 0 %}{{ particle.autoplay }}{% else %}false{% endif %}" data-flipster-pauseonhover="{% if particle.pauseonhover == 'enabled' %}true{% else %}false{% endif %}" data-flipster-style="{{ particle.style }}" data-flipster-spacing="-0.2" data-flipster-click="{% if particle.click == 'enabled' %}true{% else %}false{% endif %}" data-flipster-keyboard="{% if particle.keyboard == 'enabled' %}true{% else %}false{% endif %}" data-flipster-scrollwheel="{% if particle.scrollwheel == 'enabled' %}true{% else %}false{% endif %}"  data-flipster-touch="{% if particle.touch == 'enabled' %}true{% else %}false{% endif %}" class="g-flipster">
+            <div class="g-flipster-cards">
+                {% if not particle.source or particle.source == 'particle' %}
+                    {% for card in particle.items %}
+                        <div class="g-flipster-card g-flipster-card-accent-{{ card.accent }}" {% if card.width %}style="width: {{ card.width }}px;"{% endif %}>
+                            <div class="g-flipster-card-container {% if card.image %}g-flipster-card-image{% endif %}">
+                                {% if not card.image %}
+                                    <div class="g-flipster-description">
+                                        {{ card.desc|raw }}
+                                    </div>
+                                    <div class="g-flipster-title">
+                                        {{ card.title }}
+                                    </div>
+                                    {% if card.buttontext %}
+                                        <div class="g-flipster-button">
+                                            <a target="{{ card.buttontarget|default('_self')|e }}" href="{{ card.buttonlink|e }}" title="{{ card.buttontext|e }}" class="button {{ card.buttonclass|e }}">{{ card.buttontext|e }}</a>
+                                        </div>
+                                    {% endif %}
+                                {% else %}
+                                    <img src="{{ url(card.image)|e }}" alt="{{ card.title|e|default(card.image) }}" />
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% include '@particles/flipster-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+<script src="{{ url('gantry-theme://js/jquery.flipster.js') }}"></script>
+<script src="{{ url('gantry-theme://js/jquery.flipster.init.js') }}"></script>
+{% endblock %}

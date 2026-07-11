@@ -1,0 +1,69 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% do gantry.load('lightcase.init') %}
+
+{% set breakpoints %}
+.g-carousel-image-wrapper {
+    min-height: {{ particle.height }};
+}
+@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}) and (min-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
+    .g-carousel-image-wrapper {
+    min-height: {{ particle.tablet_height }};
+    }
+}
+@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88') }}) and (min-width: {{ gantry.config.get('styles.breakpoints.tablet-desktop')|default('76rem') }}) {
+    .g-carousel-image-wrapper {
+    min-height: {{ particle.desktop_height }};
+    }
+}
+{% endset %}
+
+{% do gantry.document.addInlineStyle(breakpoints) %}
+
+{% block particle %}
+    {% if particle.demo == "enabled" %}
+        {% if gantry.theme.preset %}
+            {% set preset = gantry.theme.preset | replace({'preset': ''}) - 1 %}
+        {% else %}
+            {% set preset = '0' %}
+        {% endif %}
+    {% else %}
+        {% set preset = '0' %}
+    {% endif %}
+    <div class="{{ particle.class|e }} g-owlcarousel-carousel">
+        <div id="g-carousel-{{ id }}" class="g-carousel owl-carousel" data-carousel-autoplaytimeout="{{ particle.autoplaySpeed|default('5000') }}" data-carousel-pausehover="{% if particle.pauseOnHover == "enabled" %}true{% else %}false{% endif %}" data-carousel-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-carousel-id="{{ id }}" data-carousel-preset="{{ preset }}" data-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-carousel-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for item in particle.items %}
+                    <div class="g-carousel-image-wrapper" style="background-image: url({{ url(item.image) }});">
+                        {% if item.title %}
+                           {% if item.link %}
+                                <a href="{{ item.link }}">
+                                    <span class="g-carousel-title">{{ item.title|raw }}</span>
+                                </a>
+                            {% else %}
+                                 <span class="g-carousel-title">{{ item.title|raw }}</span>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if item.caption %}
+                            <p class="g-carousel-description">{{ item.caption|raw }}</p>
+                        {% endif %}
+
+                        {% if item.link_text and item.link %}
+                            <a class="g-carousel-link" href="{{ item.link }}">{{ item.link_text }}</a>
+                        {% else %}   
+                            <br /> 
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% include '@particles/carousel-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    <script src="{{ url('gantry-theme://js/owlcarousel.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/carousel.init.js') }}"></script>
+{% endblock %}

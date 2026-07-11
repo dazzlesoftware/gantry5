@@ -1,0 +1,35 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div id="{{ id }}" data-comparisontable-id="{{ id }}" class="g-comparisontable-particle {{ particle.class|e }}">
+
+		<div class="g-comparisontable-top">
+			{% if particle.headertext %}
+				<div class="g-comparisontable-headertext">{{ particle.headertext|raw }}</div>
+			{% endif %}
+
+			<div class="g-title-wrapper">
+				{% if particle.title %}
+					<h2 class="g-title">{{ particle.title|raw }}</h2>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="g-comparisontable">
+			{% for row in particle.rows %}
+				<div class="g-comparisontable-row {{ row.class }}">
+					{% for column in row.columns %}
+						<div class="g-comparisontable-column col-{{ loop.index }} {{ column.class }}">
+							{% if column.text %}
+								{{ column.text }}
+							{% endif %}
+							{% if column.icon %}
+								<i class="{{ column.icon }}"></i>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

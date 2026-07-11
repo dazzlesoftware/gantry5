@@ -1,0 +1,70 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% if not particle.patterns or particle.patterns == 'enabled' %}
+<div class="g-team-pattern">
+	<svg viewbox="0 0 1280 461" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M634 106L664.311 123.5V158.5L634 176L603.689 158.5V123.5L634 106Z" class="base-pattern-1"/>
+		<path d="M513 322L543.311 339.5V374.5L513 392L482.689 374.5V339.5L513 322Z" class="base-pattern-3"/>
+		<path d="M308 201L338.311 218.5V253.5L308 271L277.689 253.5V218.5L308 201Z" class="base-pattern-2"/>
+		<path d="M0 101L73.6122 143.5V228.5L0 271L-73.6122 228.5V143.5L0 101Z" class="base-pattern-3"/>
+		<path d="M750.5 135L765.655 143.75V161.25L750.5 170L735.345 161.25V143.75L750.5 135Z" class="base-pattern-3"/>
+		<path d="M956.5 135L971.655 143.75V161.25L956.5 170L941.345 161.25V143.75L956.5 135Z" class="base-pattern-2"/>
+		<path d="M684 226L714.311 243.5V278.5L684 296L653.689 278.5V243.5L684 226Z" class="base-pattern-2"/>
+		<path d="M853 276L883.311 293.5V328.5L853 346L822.689 328.5V293.5L853 276Z" class="base-pattern-1"/>
+		<path d="M428 135L458.311 152.5V187.5L428 205L397.689 187.5V152.5L428 135Z" class="base-pattern-3"/>
+		<path d="M1198 0L1314.91 67.5V202.5L1198 270L1081.09 202.5V67.5L1198 0Z" class="base-pattern-3"/>
+		<path d="M237 361L280.301 386V436L237 461L193.699 436V386L237 361Z" class="base-pattern-3"/>
+	</svg>
+</div>
+{% endif %}
+	<div id="{{ id }}" data-team-id="{{ id }}" class="{{ particle.class|e }} g-team">
+		{% if particle.title or particle.subtitle %}
+			{% if particle.title %}
+				<h2 class="g-title">
+					{{ particle.title|raw }}
+				</h2>
+			{% endif %}
+
+			{% if particle.subtitle %}
+				<p class="g-desc">{{ particle.subtitle|raw }}</p>
+			{% endif %}
+		{% endif %}
+
+		<div class="g-team-grid">
+			<ul class="team-members">
+
+				{% for member in particle.members %}
+					<li class="hex {{ member.empty }} {{ member.nameonly }}">
+						{% if member.empty == "notempty" %}
+							{% if member.link %}
+								<a class="hexIn" href="{{ member.link }}" target="{{ member.target|default('_self') }}">
+								{% else %}
+									<div class="hexIn">
+									{% endif %}
+									{% if member.nameonly == 'nameonlyno' %}
+									<img src="{{ member.image }}" alt="{{ member.name }}"/>
+									{% endif %}
+									<h1><span>{{ member.name|raw }}</span></h1>
+									{% if member.nameonly == 'nameonlyno' %}
+									<p><span>{{ member.role|raw }}</span></p>
+									{% endif %}
+									{% if member.link %}
+									</a>
+								{% else %}
+									</div>
+								{% endif %}
+						{% endif %}
+					</li>
+				{% endfor %}
+
+			</ul>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% do gantry.load('jquery') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/team.init.js'), 10, 'footer') %}
+{% endblock %}
+

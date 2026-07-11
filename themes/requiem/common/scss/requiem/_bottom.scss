@@ -1,0 +1,66 @@
+#g-bottom {
+	background: $bottom-background;
+	color: $bottom-text-color;
+
+	// Home
+	.g-home &, .g-homepositions & {
+		// Grid Content
+		.g-gridcontent {
+			margin-top: 2rem;
+			.g-title {
+				color: darken($bottom-text-color, 50%);
+				@include breakpoint(small-mobile-range) {
+					font-size: $core-font-size + 1;
+					margin-bottom: 1rem;
+				}				
+			}
+			.button-3 {
+				color: darken($bottom-text-color, 50%) !important;
+				border: 3px solid darken($bottom-text-color, 50%) !important;	
+			    letter-spacing: 1px;
+			    text-transform: none;
+			    &:hover {
+					color: $accent-color-1 !important;
+					border: 3px solid $accent-color-1 !important;		    	
+			    }	
+			}	
+			.g-gridcontent-6cols .g-gridcontent-item {
+				@include breakpoint(tablet-range) {
+					width: 33.33333%;
+				}				
+			}		
+		}
+		.g-gridcontent-wrapper {
+			text-align: center;
+			a {
+				color: darken($bottom-text-color, 50%);
+				&:hover {
+					color: $accent-color-1;
+				}
+			}
+		}
+		.g-gridcontent-item-wrapper {
+			border: 3px solid lighten($bottom-text-color, 35%);
+			transition: all 0.3s;
+			&:hover {
+				background: $accent-color-1;
+				border: 3px solid $accent-color-1;
+				a {
+					color: $white;
+				}
+			}
+		}
+		.g-gridcontent-title-desc {
+			@include breakpoint(mobile-only) {
+				text-align: center;
+			}			
+		}		
+	}
+}
+
+@media print {
+	#g-bottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

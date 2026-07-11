@@ -1,0 +1,19 @@
+.g-social {
+	a {
+		display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        padding: 0;
+        margin: 0 0.1rem;
+        width: 38px;
+        height: 32px;
+        line-height: 26px;
+        background: url("gantry-theme://images/backgrounds/social/hexborder.png") no-repeat;
+        span {
+            vertical-align: middle;
+        }
+        @include breakpoint(tablet-range) {
+			padding: 0.1rem 0;
+        }	
+	}
+}

@@ -1,0 +1,127 @@
+.g-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .g-cards-subcontent-headline {
+        display: flex;
+        padding: $content-padding;
+        font-weight: $font-weight-medium;
+        @include responsive-font($responsive-font-size + 0.2, $core-font-size - 0.2, false, false);
+        @include breakpoint(tablet-range) {
+            flex-direction: column;
+        }
+        .g-cards-subcontent-headline1 {
+            flex-grow: 1;
+        }
+        .g-cards-subcontent-headline1 {
+            flex-grow: 2;
+        }
+    }
+
+    .g-cards-subcontent-title {
+        margin: $content-padding  $content-padding * 2;
+        @include breakpoint(tablet-range) {
+            margin: $content-padding;
+        }
+        margin-top: $content-padding + 3;
+        font-weight: $font-weight-bold;
+        @include responsive-font($responsive-font-size + 1, $core-font-size + 0.3, false, false);
+        line-height: $core-line-height - 0.4;
+    }
+
+    .g-cards-subcontent-block {
+        flex-grow: 1;
+        &.g-cards-subcontent-block-accent1 {
+            background: $accent-color-1;
+            color: $white;
+        }
+        &.g-cards-subcontent-block-accent2 {
+            background: $accent-color-2;
+            .g-cards-subcontent-headline, .g-cards-subcontent-footer-fullname {
+                color: transparentize(darken($accent-color-2, 50%), 0.5);
+            }
+            .g-cards-subcontent-title, .g-cards-subcontent-footer-tag {
+                color: transparentize(darken($accent-color-2, 70%), 0.2);
+            }
+        }
+        &.g-cards-subcontent-block-accent2_light {
+            background: lighten($accent-color-2, 5%);
+            .g-cards-subcontent-headline, .g-cards-subcontent-footer-fullname {
+                color: transparentize(darken($accent-color-2, 50%), 0.5);
+            }
+            .g-cards-subcontent-title, .g-cards-subcontent-footer-tag {
+                color: transparentize(darken($accent-color-2, 70%), 0.2);
+            }
+        }
+        .g-cards-subcontent-footer {
+            font-weight: $font-weight-medium;
+            margin: $content-padding $content-padding * 2;
+            @include breakpoint(tablet-range) {
+                margin: $content-padding;
+            }
+            padding-bottom: $content-padding + 3;
+            display: flex;
+            align-items: center;
+            .g-cards-subcontent-footer-id {
+                margin-left: $content-padding;
+                .dir-rtl & {
+                    margin-left: 0;
+                    margin-right: $content-padding;
+                }
+                .g-cards-subcontent-footer-fullname {
+                    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                }
+            }
+            .g-cards-subcontent-img {
+                border-radius: 100%;
+                max-width: 60px;
+            }
+        }
+    }
+
+    // Columns
+
+    // 1 Column
+    &.g-cards-columns-1 {
+        .g-cards-subcontent-block {
+            width: 100%;
+        }
+    }
+    // 2 Columns
+    &.g-cards-columns-2 {
+        .g-cards-subcontent-block {
+            width: 50%;
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-margin;
+            }
+        }
+    }
+    // 3 Columns
+    &.g-cards-columns-3 {
+        .g-cards-subcontent-block {
+            width: 33.3%;
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-margin;
+            }
+        }
+    }
+    // 4 Columns
+    &.g-cards-columns-4 {
+        .g-cards-subcontent-block {
+            width: 25%;
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-margin;
+            }
+        }
+    }
+}

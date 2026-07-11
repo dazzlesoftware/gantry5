@@ -1,0 +1,67 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<style>
+.headroom-bg-section + section, .headroom-bg-section + header {
+    padding-top: {{ particle.padding|default('50') }}px !important;
+}
+
+{% if particle.mobile == "enabled" %}
+@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('48rem') }}) {
+    .headroom-bg-section + section, .headroom-bg-section + header {
+        padding-top: {{ particle.mobilepadding|default('50') }}px !important;
+    }
+}    
+{% endif %} 
+
+{% if particle.pinnedbg == 'custom' %}
+{{ particle.section|default('#g-navigation') }} {
+    background-color: {{ particle.custombg }} !important;
+}
+{% endif %} 
+</style>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
+    <script>
+        // User Section
+        var myElement = document.querySelector("{{ particle.section|default('#g-navigation') }}");
+        var headroom  = new Headroom(myElement, {
+            "offset": {{ particle.offset|default(0) }},
+            "tolerance": {{ particle.tolerance|default(0) }},
+            // Custom CSS Classes
+            classes : {
+                // when element is initialised
+                initial : "headroom-bg-section",
+                // when scrolling up
+                pinned : {% if particle.autohide == 'enabled' %}"headroom--pinned"{% else %}"headroom--pinned-up"{% endif %},
+                // when scrolling down
+                unpinned : {% if particle.autohide == 'enabled' %}"headroom--unpinned"{% else %}"headroom--pinned-down"{% endif %},
+                // when above offset
+                top : "headroom--top",
+                // when below offset
+                notTop : "headroom--not-top",
+                // when at bottom of scoll area
+                bottom : "headroom--bottom",
+                // when not at bottom of scroll area
+                notBottom : "headroom--not-bottom"
+            }
+        });
+
+        {% if particle.mobile == "enabled" %}
+            {% if particle.autohide == 'enabled' %}
+            jQuery(document).ready(function () {
+                jQuery('.g-offcanvas-toggle').prependTo('{{ particle.section|default("#g-navigation") }}');
+             });   
+            {% else %}
+                document.body.classList.add("toggle-fixed");
+            {% endif %}    
+        {% else %}
+        document.body.classList.add("disable-mobile");
+        {% endif %}
+
+        headroom.init();
+    </script>
+{% endblock %}

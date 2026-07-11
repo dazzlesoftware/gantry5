@@ -1,0 +1,21 @@
+#g-header {
+    position: relative;
+    color: $header-text-color;
+    background: $header-background;
+    overflow: hidden;
+    .g-grid {
+        align-items: center;
+    }
+    .g-simplecontent-item-content-title {
+        @include responsive-font($responsive-font-size + 1.8, $core-font-size, false, false);
+        color: $black;
+        line-height: $core-line-height - 0.3;
+    }
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,100 @@
+#g-expanded {
+    background: $expanded-background;
+    color: $expanded-text-color;   
+
+	// Accent
+	a {
+		color: lighten($expanded-text-color, 50%);
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+
+	// Title
+	.g-title {
+		color: lighten($expanded-text-color, 50%);
+	}
+	// Home
+	.g-home &, .g-homepositions & {
+		position: relative;
+		z-index: 101;
+	}
+
+	// Info List - Latest Blog
+	.g-infolist {
+		&.g-latest-blog {
+			margin-top: 1rem;
+			.g-infolist-item {
+				margin: 0 0 0.75rem 0 !important;
+				padding: 0 0 $content-padding/2 0;
+        &:last-child {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+			}
+			.g-infolist-item-title {
+				font-family: get-font-family($font-family-default);
+				font-size: $core-font-size - 0.05;
+				@include breakpoint(desktop-range) {
+					font-size: $core-font-size - 0.1;
+				}
+				@include breakpoint(tablet-range) {
+					font-size: $core-font-size - 0.2;
+				}		
+				@include breakpoint(mobile-only) {
+					font-size: $core-font-size - 0.1;
+				}	
+				a {
+					font-weight: normal;
+				}				
+			}
+			.g-infolist-item-text {
+				padding: 0;
+			}
+			.g-infolist-item-desc {
+				padding-top: 0;
+				font-size: $core-font-size - 0.25;
+				a {
+					opacity: 0.75;
+				}
+			}
+			&.g-2cols {
+				.g-infolist-item {
+					@include breakpoint(mobile-only) {
+						width: 47% !important;
+					}						
+				}
+			}
+		}
+	}  
+
+	// Grid Promo Gallery
+	.g-gridpromogallery {
+		margin-top: -($content-padding + $content-margin);
+		margin-bottom: -6rem;
+		.g-gridpromogallery-item-text {
+			@include breakpoint(tablet-range) {
+				padding: 3rem 2rem;
+			}				
+		}
+		.g-gridpromogallery-item-title {
+			@include breakpoint(tablet-range) {
+				font-size: 1rem;
+			}			
+		}
+	}  
+
+	// Expanded
+	.g-style-preset6 & {
+		.g-gridpromogallery .g-gridpromogallery-item-img {
+			filter: grayscale(100%);
+		}
+	}
+}
+
+@media print {
+	#g-expanded {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

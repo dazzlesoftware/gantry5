@@ -1,0 +1,9 @@
+orion-theme:
+  title: 'Orion Theme'
+  description: 'Sample menu for Orion theme.'
+
+  items:
+    orion:
+      title: 'Home'
+      outline: home
+      home: 1

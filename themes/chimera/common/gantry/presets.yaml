@@ -1,0 +1,431 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#b17e15'
+    - '#b2301a'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#a8a8a8'
+    accent:
+      color-1: '#b17e15'
+      color-2: '#b2301a'
+    font:
+      family-default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'Walkway, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#3b3b3b'
+      text-color: '#ffffff'  
+    slideshow:
+      background: '#975820'
+      text-color: '#ffffff'
+    topfullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'    
+    top:
+      background: '#ffffff'
+      text-color: '#a8a8a8'       
+    showcase:
+      background: '#b17e15'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#444444'
+    utility:
+      background: '#ffffff'
+      text-color: '#444444'
+    expandedtop:
+      background: '#d14c3b'
+      text-color: '#ffffff'
+    maintop:
+      background: '#ffffff'
+      text-color: '#444444'
+    main:
+      background: '#ffffff'
+      text-color: '#a8a8a8'      
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#444444' 
+    expandedbottom:
+      background: '#d14c3b'
+      text-color: '#ffffff'  
+    fullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'               
+    extension:
+      background: '#f7f7f7'
+      text-color: '#444444'
+    bottom:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    footer:
+      background: '#333333'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#b17e15'
+      toggle-color: '#b17e15'
+
+preset2:
+  image: 'gantry-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#667794'
+    - '#558584'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#a8a8a8'
+    accent:
+      color-1: '#667794'
+      color-2: '#558584'
+    font:
+      family-default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'Walkway, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#3b3b3b'
+      text-color: '#ffffff'  
+    slideshow:
+      background: '#1c5857'
+      text-color: '#ffffff'
+    topfullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'    
+    top:
+      background: '#ffffff'
+      text-color: '#a8a8a8'       
+    showcase:
+      background: '#667794'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#444444'
+    utility:
+      background: '#ffffff'
+      text-color: '#444444'
+    expandedtop:
+      background: '#7d9e9e'
+      text-color: '#ffffff'
+    maintop:
+      background: '#ffffff'
+      text-color: '#444444'
+    main:
+      background: '#ffffff'
+      text-color: '#a8a8a8'      
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#444444' 
+    expandedbottom:
+      background: '#7d9e9e'
+      text-color: '#ffffff'  
+    fullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'               
+    extension:
+      background: '#f7f7f7'
+      text-color: '#444444'
+    bottom:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    footer:
+      background: '#333333'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#667794'
+      toggle-color: '#667794'
+
+preset3:
+  image: 'gantry-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#0098ca'
+    - '#90ac27'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#a8a8a8'
+    accent:
+      color-1: '#0098ca'
+      color-2: '#90ac27'
+    font:
+      family-default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'Walkway, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#3b3b3b'
+      text-color: '#ffffff'  
+    slideshow:
+      background: '#888b09'
+      text-color: '#ffffff'
+    topfullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'    
+    top:
+      background: '#ffffff'
+      text-color: '#a8a8a8'       
+    showcase:
+      background: '#0098ca'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#444444'
+    utility:
+      background: '#ffffff'
+      text-color: '#444444'
+    expandedtop:
+      background: '#7c9421'
+      text-color: '#ffffff'
+    maintop:
+      background: '#ffffff'
+      text-color: '#444444'
+    main:
+      background: '#ffffff'
+      text-color: '#a8a8a8'      
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#444444' 
+    expandedbottom:
+      background: '#7c9421'
+      text-color: '#ffffff'  
+    fullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'               
+    extension:
+      background: '#f7f7f7'
+      text-color: '#444444'
+    bottom:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    footer:
+      background: '#333333'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#0098ca'
+      toggle-color: '#0098ca'
+
+preset4:
+  image: 'gantry-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#9a7233'
+    - '#234264'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#a8a8a8'
+    accent:
+      color-1: '#9a7233'
+      color-2: '#234264'
+    font:
+      family-default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'Walkway, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#3b3b3b'
+      text-color: '#ffffff'  
+    slideshow:
+      background: '#021a33'
+      text-color: '#ffffff'
+    topfullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'    
+    top:
+      background: '#ffffff'
+      text-color: '#a8a8a8'       
+    showcase:
+      background: '#9a7233'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#444444'
+    utility:
+      background: '#ffffff'
+      text-color: '#444444'
+    expandedtop:
+      background: '#2a4163'
+      text-color: '#ffffff'
+    maintop:
+      background: '#ffffff'
+      text-color: '#444444'
+    main:
+      background: '#ffffff'
+      text-color: '#a8a8a8'      
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#444444' 
+    expandedbottom:
+      background: '#2a4163'
+      text-color: '#ffffff'  
+    fullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'               
+    extension:
+      background: '#f7f7f7'
+      text-color: '#444444'
+    bottom:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    footer:
+      background: '#333333'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#9a7233'
+      toggle-color: '#9a7233'
+
+preset5:
+  image: 'gantry-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#666666'
+    - '#d43b3b'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#a8a8a8'
+    accent:
+      color-1: '#666666'
+      color-2: '#d43b3b'
+    font:
+      family-default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'Walkway, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#3b3b3b'
+      text-color: '#ffffff'  
+    slideshow:
+      background: '#333333'
+      text-color: '#ffffff'
+    topfullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'    
+    top:
+      background: '#ffffff'
+      text-color: '#a8a8a8'       
+    showcase:
+      background: '#666666'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#444444'
+    utility:
+      background: '#ffffff'
+      text-color: '#444444'
+    expandedtop:
+      background: '#d43b3b'
+      text-color: '#ffffff'
+    maintop:
+      background: '#ffffff'
+      text-color: '#444444'
+    main:
+      background: '#ffffff'
+      text-color: '#a8a8a8'      
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#444444' 
+    expandedbottom:
+      background: '#d43b3b'
+      text-color: '#ffffff'  
+    fullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'               
+    extension:
+      background: '#f7f7f7'
+      text-color: '#444444'
+    bottom:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    footer:
+      background: '#333333'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#666666'
+      toggle-color: '#666666'
+
+preset6:
+  image: 'gantry-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#ff9f98'
+    - '#c9c7a8'
+  styles:    
+    base:
+      background: '#ffffff'
+      text-color: '#a8a8a8'
+    accent:
+      color-1: '#ff9f98'
+      color-2: '#c9c7a8'
+    font:
+      family-default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'Walkway, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#3b3b3b'
+      text-color: '#ffffff'  
+    slideshow:
+      background: '#ff9f98'
+      text-color: '#ffffff'
+    topfullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'    
+    top:
+      background: '#ffffff'
+      text-color: '#a8a8a8'       
+    showcase:
+      background: '#ff9f98'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#444444'
+    utility:
+      background: '#ffffff'
+      text-color: '#444444'
+    expandedtop:
+      background: '#aaa47d'
+      text-color: '#ffffff'
+    maintop:
+      background: '#ffffff'
+      text-color: '#444444'
+    main:
+      background: '#ffffff'
+      text-color: '#a8a8a8'      
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#444444' 
+    expandedbottom:
+      background: '#aaa47d'
+      text-color: '#ffffff'  
+    fullwidth:
+      background: '#ffffff'
+      text-color: '#a8a8a8'               
+    extension:
+      background: '#f7f7f7'
+      text-color: '#444444'
+    bottom:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    footer:
+      background: '#333333'
+      text-color: '#aaaaaa'
+    copyright:
+      background: '#3b3b3b'
+      text-color: '#aaaaaa'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#ff9f98'
+      toggle-color: '#ff9f98'                                          

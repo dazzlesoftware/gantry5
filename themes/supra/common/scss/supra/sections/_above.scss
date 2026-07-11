@@ -1,0 +1,23 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+
+    // Grid Vertical Alignment
+    .g-grid {
+        align-items: center;
+    }
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-item-leading-content {
+            color: $base-text-color;
+        }
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

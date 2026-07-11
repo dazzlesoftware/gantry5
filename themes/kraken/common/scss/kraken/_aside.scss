@@ -1,0 +1,63 @@
+#g-aside {
+    background: $main-background;
+    color: $main-text-color;
+
+    // Home
+    .g-home &, .g-homepositions & {
+        // Grid Content
+    	.g-gridcontent .g-gridcontent-wrapper {
+    		margin-top: 0;
+    	}
+        .g-gridcontent-item-text2 {
+            color: $main-text-color;
+        }
+
+        // Icon Menu
+        .g-iconmenu {
+            .g-iconmenu-item {
+                border: 0;
+                color: $main-text-color;
+                &:hover {
+                    color: $accent-color-1;
+                    .g-iconmenu-icon {
+                        color: $accent-color-1;
+                    }
+                }
+                @include breakpoint(small-mobile-range) {
+                    flex: 1 1 auto;
+                    width: 50%;
+                }
+            }
+            .g-iconmenu-icon {
+                color: $main-text-color;
+            }
+        }
+
+        // Block Content
+        .g-blockcontent-subcontent {
+            margin: 0 -1rem;
+            .g-content {
+                margin: 0 1rem;
+                padding: 0;
+            }
+        }
+        .g-blockcontent-subcontent-title {
+            color: $main-text-color;
+        }
+
+        // Swiper
+        .g-swiper-stories {
+            .swiper-slide-content-text {
+                background: $main-background;
+                color: $main-text-color
+            }
+        }
+    }
+}
+
+@media print {
+	#g-aside {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

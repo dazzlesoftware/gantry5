@@ -1,0 +1,15 @@
+#g-bottom {
+    background: $bottom-background;
+    color: $bottom-text-color;
+
+    &.fp-bottom {
+    	color: $white;
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

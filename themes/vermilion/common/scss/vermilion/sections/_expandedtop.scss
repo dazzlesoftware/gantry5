@@ -1,0 +1,20 @@
+#g-expandedtop {
+    background: $expandedtop-background;
+    color: $expandedtop-text-color;   
+}
+
+.fp-expandedtop {
+	.g-content {
+    	padding-bottom: 45px;
+    }
+    .rt-icon-badge {
+    	margin-top: 20px;
+    }
+}
+
+@media print {
+	#g-expandedtop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,136 @@
+// Basics
+$white:							#ffffff;
+$black:							#000000;
+$off-white:						#f7f7f7;
+$light-grey:					#E8EBED;
+$dark-grey:						#2F3237;
+$grey: 							#808080;
+$red:							#E74C3C;
+$green:							#1ABC9C;
+
+
+// Base
+$base-background:				#cbd2d7 !default;
+$base-background-image:    		false !default;
+$base-text-color:				#333333 !default;
+
+// Accents
+$accent-color-1:				#f6d653 !default;
+$accent-color-2:				#262a2f !default;
+
+// Logo
+$logo-background:				#1a1c1e !default;
+
+// Header
+$header-background:	 			#ffffff	!default;
+$header-text-color:				#808080 !default;
+
+// Navigation
+$navigation-background:			#ffffff !default;
+$navigation-text-color:			#808080 !default;
+
+// Top
+$top-background:				#ffffff !default;
+$top-text-color:				#333333 !default;
+
+// Utility
+$utility-background:			#ffffff !default;
+$utility-text-color:			#333333 !default;
+
+// Showcase
+$showcase-background:			#f6d653 !default;
+$showcase-text-color:			#7d6a1e !default;
+
+// Feature
+$feature-background:			#ffffff !default;
+$feature-text-color:			#333333 !default;
+
+// MainTop
+$maintop-background:			#ffffff !default;
+$maintop-text-color:			#333333 !default;
+
+// ExpandedTop
+$expandedtop-background:		#ffffff !default;
+$expandedtop-text-color:		#333333 !default;
+
+// Main
+$main-background:				#262a2f !default;
+$main-text-color:				#ffffff !default;
+
+// Mainbody
+$mainbody-background:			#ffffff !default;
+$mainbody-text-color:			#6e6e6e !default;
+
+// Sidebar
+$sidebar-background:			#262a2f !default;
+$sidebar-text-color:			#ffffff !default;
+
+// Aside
+$aside-background:				#262a2f !default;
+$aside-text-color:				#ffffff !default;
+
+// ExpandedBottom
+$expandedbottom-background:		#ffffff !default;
+$expandedbottom-text-color:		#333333 !default;
+
+// MainBottom
+$mainbottom-background:			#ffffff !default;
+$mainbottom-text-color:			#333333 !default;
+
+// Extension
+$extension-background:			#ffffff !default;
+$extension-text-color:			#333333 !default;
+
+// Bottom
+$bottom-background:				rgba(255, 255, 255, 0) !default;
+$bottom-text-color:				#808080 !default;
+
+// Footer
+$footer-background:				rgba(255, 255, 255, 0) !default;
+$footer-text-color:				#808080 !default;
+
+// Copyright
+$copyright-background:			rgba(255, 255, 255, 0) !default;
+$copyright-text-color:			#808080 !default;
+
+// Off Canvas
+$offcanvas-background:			#efefef !default;
+$offcanvas-text-color:			#f6d653 !default;
+$offcanvas-toggle-color:		#f6d653 !default;
+
+// Block Variations
+$box1-background:				$accent-color-1 !default;
+$box2-background:				$accent-color-2 !default;
+$box3-background:				#f0f0f0 !default;
+$box4-background:				#000000 !default;
+$box-white-background: 			#ffffff !default;
+$box-grey-background: 			#95a5a6 !default;
+$box-pink-background: 			#d13b7b !default;
+$box-red-background: 			#ef4a44 !default;
+$box-purple-background: 		#874f9a !default;
+$box-blue-background: 			#279fba !default;
+$box-orange-background: 		#ee7933 !default;
+
+// Mobile Menu Sidepanel
+$mobilemenu-background:			#354d59 !default;
+
+// System Messsages and Alerts
+$warning-color:					#c09853;
+$error-color:					#b94a48;
+$info-color:					#3a87ad;
+$success-color:					#468847;
+
+// Typography
+$rule-color:					fade-out($base-text-color, 0.75);
+$code-text:						#d14;
+$code-bg:						#f9f2f4;
+$pre-text:						#237794;
+$pre-bg:						#f6f6f6;
+
+// Borders
+$border-color-hover:			$accent-color-1;
+$border-color-focus:			$accent-color-1;
+$border-color-light:            rgba(0, 0, 0, 0.1);
+
+// Shadows
+$base-box-shadow: 				inset 0 1px 3px hsla(0, 0%, 0%, 0.06);

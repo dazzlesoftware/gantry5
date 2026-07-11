@@ -1,0 +1,30 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <h2 class="g-title">{{ particle.title }}</h2>
+    <div class="g-logos">
+        {% for item in particle.logos %}
+            <div class="g-logo-wrapper">
+                {% if item.url %}
+                    <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}">
+                {% endif %}
+
+                <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+
+                {% if item.url %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% if not particle.patterns or particle.patterns == 'enabled' %}
+    <div class="g-logos-pattern">
+    <svg viewBox="0 0 1155 542" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1112 186L1185.61 228.5V313.5L1112 356L1038.39 313.5V228.5L1112 186Z" class="base-pattern-3"/>
+<path d="M619 0L853.693 135.5V406.5L619 542L384.307 406.5V135.5L619 0Z" class="base-pattern-3"/>
+<path d="M50 229L93.3013 254V304L50 329L6.69873 304V254L50 229Z" class="base-pattern-3"/>
+<path d="M1034 113L1077.3 138V188L1034 213L990.699 188V138L1034 113Z" class="base-pattern-2"/>
+</svg>
+</div>
+{% endif %}
+{% endblock %}

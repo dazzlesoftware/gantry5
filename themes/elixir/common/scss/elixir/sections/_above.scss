@@ -1,0 +1,25 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+
+    @if $above-background-image {
+        background-image: url($above-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .g-locations-particle .g-location-container h2 a {
+        color: $above-text-color;
+    }
+    .g-locations-particle .g-location-container span {
+        color: $above-text-color;
+        opacity: 0.5;
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

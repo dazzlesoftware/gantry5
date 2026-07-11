@@ -1,0 +1,113 @@
+name: Team
+description: Display team members.
+type: particle
+icon: fa-user
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+
+            class:
+              overridable: false
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class name for the particle.
+
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+
+            subtitle:
+              overridable: false
+              type: textarea.textarea
+              label: Subtitle
+              description: Customize the subtitle text.
+              placeholder: Enter subtitle
+
+            patterns:
+              type: select.select
+              label: Hexagon Patterns
+              description: Decide if you want hexagon patterns to be enabled or disabled. 
+              default: enabled
+              options:
+                enabled: Enable
+                disabled: Disable
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            members:
+              type: collection.list
+              array: true
+              label: Team Members
+              description: Create team members.
+              value: name
+              ajax: true
+
+              fields:
+                .name:
+                  type: input.text
+                  label: Full Name
+                  description: Enter team member name
+
+                .empty:
+                  type: select.selectize
+                  label: Empty?
+                  description: Select if you want to spice up the layout and add some empty cells. 
+                  placeholder: 'Select...'
+                  default: notempty
+                  options:
+                      notempty: No
+                      empty: Yes
+
+                .nameonly:
+                  type: select.selectize
+                  label: Name only?
+                  description: Select if you want to display name only. 
+                  placeholder: 'Select...'
+                  default: nameonlyno
+                  options:
+                      nameonlyno: No
+                      nameonlyyes: Yes
+
+                .image:
+                  type: input.imagepicker
+                  label: Image
+                  description: Select desired image.
+
+                .role:
+                  type: input.text
+                  label: Role
+                  description: Enter team member role
+
+                .link:
+                  type: input.text
+                  label: Link
+                  description: Customize link.
+
+                .target:
+                  type: select.selectize
+                  label: Target
+                  description: Target browser window when item is clicked.
+                  placeholder: 'Select...'
+                  default: _self
+                  options:
+                      _self: Self
+                      _blank: New Window

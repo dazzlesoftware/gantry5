@@ -1,0 +1,11 @@
+#g-container-top {
+    background: $top-background;
+    color: $top-text-color;
+}
+
+@media print {
+    #g-container-top {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

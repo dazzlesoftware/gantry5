@@ -1,0 +1,48 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+
+    &.fp-header {
+        @include breakpoint(mobile-only) {
+            background: transparent;
+        }
+    }   
+
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-quickmenu-particle {
+        .g-quickmenu-container-cards h6 {
+            color: $header-text-color;
+            opacity: 0.4;
+        }
+
+        .swiper-slide-thumb-active h6 {
+            opacity: 1;
+        }
+
+         // Bullets
+         .swiper-pagination-bullet {
+            background: $base-text-color;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: $header-text-color;
+        }
+    }
+
+    .g-quickmenu-item {
+        a {
+            color: $header-text-color;
+        }
+    }
+}
+
+@media print {
+    #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

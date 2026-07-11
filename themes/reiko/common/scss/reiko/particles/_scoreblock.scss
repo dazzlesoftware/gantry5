@@ -1,0 +1,83 @@
+.g-scoreblock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    min-height: 0;
+
+    .g-scoreblock-match-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 18%;
+        margin: 0 1% 2rem;
+        padding: 0 .5rem;
+        background: $black;
+        color: $white;
+        border-radius: 5px;
+        max-width: 170px;
+        min-height: 130px;
+        min-width: 170px;
+        border: 2px solid $black;
+        top: 0;
+        transition: top 0.2s ease-in-out;
+
+        &:hover,
+        &:focus {
+            position: relative;
+            top: -1rem;
+            background: $white;
+            color: $black;
+            cursor: pointer;
+        }
+
+        &.highlighted {
+            position: relative;
+            top: -1rem;
+            background: $white;
+            color: $black;
+
+            @include breakpoint(mobile-only) {
+                top: 0;
+            }
+        }
+
+        .g-scoreblock-time-wrapper {
+            width: 100%;
+            padding: 0 .2rem;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: $core-font-size - 0.2;
+        }
+
+        .g-scoreblock-spacer {
+            font-size: $h1-font-size;
+        }
+
+        .g-scoreblock-score-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .g-scoreblock-team-name {
+                font-size: $h5-font-size;
+            }
+
+            .g-scoreblock-team-score {
+                font-size: $h1-font-size;
+                font-weight: $font-weight-semibold;
+                line-height: $core-line-height - .4;
+            }
+        }
+
+        .g-scoreblock-first-team-wrapper,
+        .g-scoreblock-second-team-wrapper {
+            text-align: center;
+        }
+    }
+}

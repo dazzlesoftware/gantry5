@@ -1,0 +1,47 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+    border-top: 1px solid transparentize($white, 0.8);
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+
+    // Social
+    .g-social {
+        a {
+            padding: 0 10px;
+            font-size: 1rem;
+            color: $copyright-text-color;
+
+            &:first-child {
+                padding-left: 0;
+
+                .dir-rtl & {
+                    padding-left: 10px;
+                    padding-right: 0;
+                }
+            }
+
+            &:last-child {
+                padding-right: 0;
+
+                .dir-rtl & {
+                    padding-right: 10px;
+                    padding-left: 0;
+                }
+            }
+
+            &:hover {
+                color: darken($copyright-text-color, 10%);
+            }
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

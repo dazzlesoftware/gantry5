@@ -1,0 +1,40 @@
+#g-bottom {
+    background: $bottom-background;
+    color: $bottom-text-color;
+
+    .g-blockcontent-header {
+        width: 40%;
+        margin: 0 auto;
+
+        @include breakpoint(desktop-range) {
+            width: 70%;
+        }
+
+        @include breakpoint(tablet-range) {
+            width: 80%;
+        }
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+        }
+
+        .g-title {
+            font-weight: $font-weight-bold;
+            @include responsive-font($responsive-font-size + 1.2, $core-font-size + 0.8, false, false);
+        }
+    }
+
+    .g-blockcontent-description {
+        @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+        font-weight: $font-weight-medium;
+        color: darken($accent-color-2, 20);
+        margin-bottom: $content-margin * 4;
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

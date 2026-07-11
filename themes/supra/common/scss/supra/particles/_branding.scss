@@ -1,0 +1,14 @@
+.g-branding {
+
+    .dir-rtl & {
+        direction: ltr;
+    }
+
+    a {
+        color: $base-text-color;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+}

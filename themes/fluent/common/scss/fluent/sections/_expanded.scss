@@ -1,0 +1,51 @@
+#g-expanded {
+    color: $expanded-text-color;
+    background: $expanded-background;
+    overflow: hidden;
+    position: relative;
+
+    &:before {
+        content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2728 900"><path fill-rule="evenodd" fill="#{transparentize($accent-color-1, 0.8)}" d="M176.000,144.000 C476.852,698.475 1295.262,839.024 1917.576,669.098 C2539.889,499.173 2750.542,527.339 2750.542,527.339 L2594.000,1500.000 L146.000,1500.000 C146.000,1500.000 -201.558,-551.845 176.000,144.000 Z"/><path fill-rule="evenodd" opacity="0.251" fill="#{transparentize($accent-color-2, 0.3)}" d="M88.000,12.000 C290.086,156.625 713.421,579.403 1418.596,360.263 C2123.771,141.124 2286.945,-165.584 2813.540,117.404 C3155.728,301.293 2605.000,1116.000 2605.000,1116.000 L96.000,1116.000 C96.000,1116.000 -114.086,-132.625 88.000,12.000 Z"/><path fill-rule="evenodd" opacity="0.102" fill="#{transparentize($accent-color-1, 0.3)}" d="M99.000,42.000 C346.902,193.824 1071.289,418.566 2310.000,42.000 C3082.764,-192.918 2546.549,644.654 2546.549,644.654 L2534.000,865.000 L147.000,865.000 C147.000,865.000 -148.902,-109.824 99.000,42.000 Z"/></svg>');
+        width: 130%;
+        height: auto;
+        position: absolute;
+        left: -10rem;
+        bottom: -2rem;
+        pointer-events: none;
+
+        @include breakpoint(mobile-only) {
+            left: -5rem;
+        }
+    }
+
+    .g-block {
+        position: relative;
+
+        &:not(:first-child) {
+            &:before {
+                content: "";
+                position: absolute;
+                z-index: 0;
+                top: 0;
+                right: 0;
+                opacity: 0.6;
+                width: 100%;
+                height: 100%;
+                background: $white;
+                border-left: 2px solid transparentize($base-text-color, 0.85);
+
+                .dir-rtl & {
+                    border-left: none;
+                    border-right: 2px solid transparentize($base-text-color, 0.85);
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-expanded  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

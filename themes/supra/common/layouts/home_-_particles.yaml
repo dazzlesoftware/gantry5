@@ -1,0 +1,713 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1494574524
+layout:
+  top:
+    -
+      - system-messages-1675
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - bgslideshow-1616
+  /header/:
+    -
+      - 'custom-9972 50'
+      - 'simplecontent-6252 50'
+  /above/:
+    -
+      - simplecontent-8157
+    -
+      - imagegrid-2739
+  /feature/:
+    -
+      - 'simplecontent-8406 50'
+      - 'slider-1957 50'
+  /showcase/:
+    -
+      - 'simplecontent-1318 40'
+      - 'popupgrid-8230 60'
+  expanded:
+    -
+      - panelslider-8275
+  /extension/:
+    -
+      - 'simplecontent-1975 40'
+      - 'infolist-7817 60'
+  /utility/:
+    -
+      - 'custom-1287 60'
+      - 'simplecontent-6576 40'
+  /bottom/:
+    -
+      - pricingtable-3947
+  /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-navigation
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-slideshow section section-horizontal-paddings fp-noscroll'
+  header:
+    attributes:
+      boxed: '3'
+      class: 'section section-horizontal-paddings section-vertical-paddings fp-noscroll'
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section section-vertical-paddings'
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-feature section section-horizontal-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section section-horizontal-paddings section-vertical-paddings fp-showcase'
+  expanded:
+    type: section
+    attributes:
+      class: 'section fp-noscroll'
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'fp-extension section section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section section-horizontal-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'section section-horizontal-paddings section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'section section-horizontal-paddings section-vertical-paddings fp-noscroll'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  system-messages-1675:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: system-messages-9828
+  bgslideshow-1616:
+    title: 'BG Slideshow'
+    attributes:
+      overlay: 'gantry-media://overlays/02.png'
+      cover: enabled
+      align: top
+      valign: top
+      animationDuration: auto
+      paddingtop: 25vh
+      items:
+        -
+          description: 'Supra is a modern Gantry 5 template.'
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: Hello.
+        -
+          description: 'A content-rich design for a modern web.'
+          image: 'gantry-media://home/slideshow/img-02.jpg'
+          title: Greetings.
+        -
+          description: 'Rich design and beautiful content aesthetics.'
+          image: 'gantry-media://home/slideshow/img-03.jpg'
+          title: Howdy.
+        -
+          description: 'A compellingly inviting image showcase.'
+          image: 'gantry-media://home/slideshow/img-04.jpg'
+          title: Welcome.
+        -
+          description: 'Elegant design made for versatility.'
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          title: Bonjour.
+        -
+          description: 'Content-rich design perfect for business and news.'
+          image: 'gantry-media://home/slideshow/img-02.jpg'
+          title: Shalom.
+        -
+          description: 'Let’s make something awesome.'
+          image: 'gantry-media://home/slideshow/img-03.jpg'
+          title: 'Good Day.'
+        -
+          description: 'Built on modern technologies for tomorrow.'
+          image: 'gantry-media://home/slideshow/img-04.jpg'
+          title: 'Buenos Dias.'
+  custom-9972:
+    title: 'Custom HTML'
+    attributes:
+      html: '<img src="gantry-media://home/header/img-01.jpg" />'
+  simplecontent-6252:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: "Supra is a minimal, versatile Joomla template. Perfect for business and personal sites. It is built from the ground up for speed and ease of use on the powerful Gantry 5 framework. <br /><br />\n"
+          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. '
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Promo 1'
+  simplecontent-8157:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Gantry 5'
+          author: ''
+          leading_content: 'A modern framework built from the ground up for a modern web.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Promo 1'
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+      variations: center
+  imagegrid-2739:
+    title: 'Image Grid'
+    attributes:
+      class: ''
+      title: ''
+      desc: ''
+      cols: g-imagegrid-3cols
+      layout: g-imagegrid-customcols
+      album: recent-works
+      imagegridsets:
+        -
+          colwidth: 25%
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/above/img-01.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: Modern
+          title: 'Set 1'
+        -
+          colwidth: 25%
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/above/img-02.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: Bold
+            -
+              subtitle: ''
+              image: 'gantry-media://home/above/img-03.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: Clean
+          title: 'Set 2'
+        -
+          colwidth: 50%
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://home/above/img-04.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: Elegant
+          title: 'Set 3'
+  simplecontent-8406:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Website Design'
+          author: ''
+          leading_content: 'Supra is a minimal, versatile Joomla template. Perfect for business and personal sites. It is built from the ground up for speed and ease of use on the powerful Gantry 5 framework.'
+          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. Simple, intuitive forms and drag-and-drop functionality are hallmarks of any Gantry 5-powered template from RocketTheme. With Supra, you can create a gorgeous content-rich website in no time.'
+          readmore_label: 'Get Started'
+          readmore_link: '#'
+          readmore_class: 'button button-xlarge'
+          readmore_target: _self
+          title: 'Item 1'
+  slider-1957:
+    attributes:
+      items:
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: 'Item 1'
+        -
+          image: 'gantry-media://home/feature/img-02.jpg'
+          title: 'Item 2'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: 'Item 3'
+        -
+          image: 'gantry-media://home/feature/img-02.jpg'
+          title: 'Item 4'
+        -
+          image: 'gantry-media://home/feature/img-01.jpg'
+          title: 'Item 5'
+        -
+          image: 'gantry-media://home/feature/img-02.jpg'
+          title: 'Item 6'
+    block:
+      class: 'fp-feature-slider flush'
+  simplecontent-1318:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Powerful Tools'
+          author: ''
+          leading_content: 'The Gantry 5 Framework features a powerful set of tools to help you get more done, faster.'
+          main_content: 'Choose the right colors with the Color Picker. Add icons with the Icon Picker. Select files easily with the File Picker. Utilize the perfect font with the Font Picker.'
+          readmore_label: 'Get Started'
+          readmore_link: '#'
+          readmore_class: 'button button-outline button-xlarge'
+          readmore_target: _self
+          title: 'Item 1'
+  popupgrid-8230:
+    title: 'Popup Grid'
+    attributes:
+      items:
+        -
+          img: 'gantry-media://home/showcase/img-04.jpg'
+          datasize: ''
+          overlay: g-overlay-enable
+          overlaytext: 'Menu Editor'
+          overlayicon: ''
+          title: 'Create a gorgeous menu experience with the Menu Editor.'
+          tag: ''
+          desc: ''
+          animations: ''
+          buttontext: Button
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 1'
+        -
+          img: 'gantry-media://home/showcase/img-03.jpg'
+          datasize: ''
+          overlay: g-overlay-enable
+          overlaytext: 'Styles Panel'
+          overlayicon: ''
+          title: 'Switch between color presets and style options in seconds.'
+          tag: ''
+          desc: ''
+          animations: ''
+          buttontext: Button
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 2'
+        -
+          img: 'gantry-media://home/showcase/img-05.jpg'
+          datasize: ''
+          overlay: g-overlay-enable
+          overlaytext: 'Layout Manager'
+          overlayicon: ''
+          title: 'Quickly customize your website’s layout with the Layout Manager.'
+          tag: ''
+          desc: ''
+          animations: ''
+          buttontext: Button
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 3'
+        -
+          img: 'gantry-media://home/showcase/img-02.jpg'
+          datasize: ''
+          overlay: g-overlay-enable
+          overlaytext: 'Icon / Font Picker'
+          overlayicon: ''
+          title: 'Gantry 5’s Pickers save you development time and energy.'
+          tag: ''
+          desc: ''
+          animations: ''
+          buttontext: Button
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          name: 'Item 4'
+    block:
+      class: flush
+  panelslider-8275:
+    title: 'Panel Slider'
+    attributes:
+      items:
+        -
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          icon: 'fa fa-handshake-o'
+          description: 'Supra is a perfect fit for bloggers with its abundance of content-rich features and premium particles.'
+          signature1: 'Lois Lane'
+          signature2: 'Blogger at Example Corp.'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: Blog
+        -
+          image: 'gantry-media://home/expanded/img-02.jpg'
+          icon: 'fa fa-ticket'
+          description: 'Supra offers a unique advantage for news sites by combining beautiful typography and vibrant imagery.'
+          signature1: 'Piper Wright'
+          signature2: 'Journalist at Diamond City'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: News
+        -
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          icon: 'fa fa-laptop'
+          description: 'Supra''s modern design and versatile layout makes it an excellent choice for corporate websites.'
+          signature1: 'Lex Luthor'
+          signature2: 'CEO at LexCorp'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: Corporate
+        -
+          image: 'gantry-media://home/expanded/img-02.jpg'
+          icon: 'fa fa-comments-o'
+          description: 'Artists and photographers will love Supra''s incredible set of premium particles.'
+          signature1: 'Jane Doe'
+          signature2: 'Artist at Stark Enterprises'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: Portfolio
+        -
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          icon: 'fa fa-credit-card'
+          description: 'Creating a new website for your startup shouldn''t be rocket science. Supra makes it easier than ever.'
+          signature1: 'Mark Zuccini'
+          signature2: 'Founder of Example Inc.'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: Startup
+        -
+          image: 'gantry-media://home/expanded/img-02.jpg'
+          icon: 'fa fa-paper-plane-o'
+          description: 'With easy-to-manage pricing tables and other features, Supra is an excellent choice for service-based businesses.'
+          signature1: 'Clark Kent'
+          signature2: 'CEO at Example LLC.'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: Service
+        -
+          image: 'gantry-media://home/expanded/img-01.jpg'
+          icon: 'fa fa-shopping-basket'
+          description: 'Small businesses and organizations will love Supra''s clean, professional look and easy set up.'
+          signature1: 'Ellen Taylor'
+          signature2: 'Founder of Example Inc.'
+          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          title: Organization
+    block:
+      variations: 'nomarginall nopaddingall'
+  simplecontent-1975:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: Supra.
+          author: ''
+          leading_content: 'Supra is a beautifully-designed modern template built from the ground up for versatility and ease of use. It is powered by the popular Gantry 5 framework.'
+          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. Simple, intuitive forms and drag-and-drop functionality are hallmarks of any Gantry 5-powered template from RocketTheme. With Supra, you can create a gorgeous content-rich website in no time.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Promo
+  infolist-7817:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-2cols
+      infolists:
+        -
+          icon: 'fa fa-map-o'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Gantry 5''s powerful Font Picker enables you to browse hundreds of fonts, see real-time previews of your text, and use them in your site.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Font Picker'
+        -
+          icon: 'fa fa-eye'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Gantry 5''s powerful Color Picker makes choosing colors for your website a breeze. Enjoy full control over your site''s color scheme.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Color Picker'
+        -
+          icon: 'fa fa-tablet'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Powered by the popular Font Awesome icon library, Gantry 5''s Icon Picker makes browsing and using icons to enhance your site''s visual experience easy.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Icon Picker'
+        -
+          icon: 'fa fa-refresh'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Browse, upload, and select images, video, and other files with ease from Gantry 5''s modern File Picker tool. Adding images to your site has never been easier.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'File Picker'
+  custom-1287:
+    title: 'Custom HTML'
+    attributes:
+      html: '<a href="//www.youtube.com/embed/O66Wc2GmFXY?autoplay=1" data-rel="lightcase"><img src="gantry-media://home/utility/img-01.jpg" /></a>'
+  simplecontent-6576:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Supra is the perfect fit for a wide variety of websites.'
+          author: ''
+          leading_content: ''
+          main_content: 'The Supra template from RocketTheme is packed with features that empower developers to create beautiful websites that match their needs perfectly. Bloggers, news organizations, freelancers, small businesses, and corporations alike can utilize Supra’s feature set.'
+          readmore_label: 'Watch more'
+          readmore_link: ''
+          readmore_class: button
+          readmore_target: _self
+          title: 'Promo 2'
+  pricingtable-3947:
+    title: 'Pricing Table'
+    attributes:
+      class: ''
+      title: 'Simple Setup'
+      headertext: 'With the RocketLauncher, you can set up and deploy a beautiful website in minutes.'
+      footertext: 'The Price Table particle is just one of many particles you can use to give your website a rich, full-featured look without having to edit a single line of code.'
+      columns: g-pricingtable-4-col
+      tables:
+        -
+          class: ''
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: Free
+          period: ''
+          desc: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '1 project'
+            -
+              class: ''
+              text: '1 team member'
+            -
+              class: ''
+              text: '1GB for files'
+            -
+              class: disabled
+              text: 'SSL Certificate'
+            -
+              class: disabled
+              text: 'Unlimited history'
+            -
+              class: disabled
+              text: 'Escrow payments'
+            -
+              class: disabled
+              text: 'Priority support'
+          plan: Personal
+        -
+          class: ''
+          highlight: disabled
+          ribbon: Popular
+          icon: ''
+          price: $29/mo
+          period: ''
+          desc: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '5 projects'
+            -
+              class: ''
+              text: '3 team members'
+            -
+              class: ''
+              text: '5GB for files'
+            -
+              class: disabled
+              text: 'SSL Certificate'
+            -
+              class: disabled
+              text: 'Unlimited history'
+            -
+              class: disabled
+              text: 'Escrow payments'
+            -
+              class: disabled
+              text: 'Priority support'
+          plan: Professional
+        -
+          class: ''
+          highlight: enabled
+          ribbon: ''
+          icon: ''
+          price: $69/mo
+          period: ''
+          desc: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '25 projects'
+            -
+              class: ''
+              text: '10 team members'
+            -
+              class: ''
+              text: '25GB for files'
+            -
+              class: ''
+              text: 'SSL Certificate'
+            -
+              class: ''
+              text: 'Unlimited history'
+            -
+              class: disabled
+              text: 'Escrow payments'
+            -
+              class: disabled
+              text: 'Priority support'
+          plan: Business
+        -
+          class: ''
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: $199/mo
+          period: ''
+          desc: ''
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'Unlimited projects'
+            -
+              text: 'Unlimited members'
+            -
+              text: '99GB for files'
+            -
+              text: 'SSL Certificate'
+            -
+              text: 'Unlimited history'
+            -
+              text: 'Escrow payments'
+            -
+              text: 'Priority support'
+          plan: Enterprise
+    block:
+      variations: center

@@ -1,0 +1,38 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;
+}
+
+.fp-extension-b {
+	.rt-icon-left {
+		&.rt-hero-icon {
+		    font-size: 8em;
+		    padding: 10px 15px 45px 0;
+		    opacity: 0.2;
+		}
+	}	    
+}
+
+.fp-extension-a {
+	.g-content {
+		margin: 25px 10px;
+	}
+	@include breakpoint(tablet-range) {
+		.g-pricingtable-period {
+			display: none;
+		}
+
+	}
+}
+
+.rt-white-box {
+    background: $white;
+    padding: 15px;
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

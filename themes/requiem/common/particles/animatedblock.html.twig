@@ -1,0 +1,63 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+  {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+  <div class="g-animatedblock {{ particle.class|e }}">
+
+    <div class="g-animatedblock-items {{ particle.cols|e }}">
+      {% for block in particle.blocks %}
+      <div class="g-animatedblock-item {{ block.class|e }}">
+        <div class="g-animatedblock-item-wrapper">
+        {% if block.image %}
+        <div class="g-animatedblock-image">
+          <img src="{{ url(block.image)|e }}" alt="{% if block.headline %}{{ block.headline|e }}{% endif %}" />
+        </div>
+        {% endif %}
+
+        {% if block.tag or block.headline or block.desc or block.readmore %}
+        <div class="g-animatedblock-content">
+          {% if block.tag or block.headline %}
+          <div class="g-animatedblock-head">
+            {% if block.tag %}
+            <div class="g-animatedblock-tag"><span>{{ block.tag|e }}</span></div>
+            {% endif %}
+
+            {% if block.headline %}
+            <h2 class="g-animatedblock-title">
+              {% if block.link %}<a href="{{ block.link|e }}">{% endif %}
+              {{ block.headline|raw }}
+              {% if block.link %}</a>{% endif %}
+            </h2>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          {% if block.desc or block.readmore %}
+          <div class="g-animatedblock-body">
+            {% if block.desc %}
+            <div class="g-animatedblock-desc">
+              {{ block.desc|raw }}
+            </div>
+            {% endif %}
+
+            {% if block.readmore %}
+            <a href="{{ block.link|e }}"><span class="g-animatedblock-readmore">{{ block.readmore|raw }}</span></a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if particle.button %}
+    <div class="g-animatedblock-button-container">
+      <a href="{{ particle.link|e }}" class="g-animatedblock-button">{{ particle.button|e }}</a>
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}

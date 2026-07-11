@@ -1,0 +1,723 @@
+.flush {
+	> .g-content {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+
+.nopaddingall {
+	> .g-content {
+		padding: 0 !important;
+	}	
+}
+
+.nomarginall {
+	> .g-content {
+		margin: 0 !important;
+	}	
+}
+
+.rt-title-center {
+	.title {
+		text-align: center;
+	}
+}
+
+.title-rounded {
+  .g-title {
+    border-radius: 2rem;
+    padding: $content-margin 1.5rem;
+  }
+}
+
+.title-underline {
+  .g-title {
+    padding: 0.5rem 0;
+    &:after {
+    	border: 1px solid $rule-color;
+    	position: absolute;
+    	content: "";
+    	left: 0;
+    	width: 100%;
+    	height: 4px;
+      bottom: 0;
+      .dir-rtl & {
+        left: inherit;
+        right: 0;
+      }
+    }
+  }
+}
+
+.title-inline {
+	.g-title {
+    display: inline-block;
+    margin-bottom: $content-margin !important;
+  }
+}
+
+[class^="title"], [class*=" title"] {
+	.title, .g-title {
+		padding: 8px 15px;
+		margin: 0 0 15px;
+		box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.08);
+	}
+}	
+
+[class^="box"], [class*=" box"] {
+	&.moduletable, .g-content {
+		box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.08);
+		margin-bottom: 15px;
+
+		a:not(.readon) {
+			color: darken($accent-color-1, 18%);
+			&:hover {
+				color: inherit;
+			}
+		}
+	}
+}	
+
+.moduletable, .widget {
+    &[class*="box"] {
+      padding: $content-padding;
+      margin: $content-margin;
+    }
+}
+
+.box1 {
+	&.moduletable, .g-content {
+		color: $white;
+		background: $accent-color-1;
+		a:not(.readon) {
+			color: darken($accent-color-1, 30%);
+			&:hover {
+				color: $white;
+			}
+		}
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: darken($accent-color-1, 15%);
+			&:hover {
+				color: $white;
+				background: darken($accent-color-1, 10%);
+			}
+		}
+	}
+	ul.menu li {
+		a, .item, .separator {
+			color: $white !important;
+			&:hover {
+				color: darken($accent-color-1, 30%) !important;
+			}
+		}
+		&.current, &#current, &:hover > {
+			a, .item, .separator {
+				color: darken($accent-color-1, 30%) !important;
+			}
+		}
+	}	
+
+	&.title1 {
+		.title {
+			background: darken($accent-color-1, 5%);
+		}
+	}
+}
+.box2 {
+	&.moduletable, .g-content {
+		color: $white;
+		background: $accent-color-2;
+		a:not(.readon) {
+			color: darken($accent-color-2, 30%);
+			&:hover {
+				color: $white;
+			}
+		}
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: darken($accent-color-2, 15%);
+			&:hover {
+				color: $white;
+				background: darken($accent-color-2, 10%);
+			}
+		}
+		ul.menu li {
+			a, .item, .separator {
+				color: $white !important;
+				&:hover {
+					color: darken($accent-color-2, 30%) !important;
+				}
+			}
+			&.current, &#current, &:hover > {
+				a, .item, .separator {
+					color: darken($accent-color-2, 30%) !important;
+				}
+			}
+		}
+	}
+	&.title2 {
+		.title {
+			background: darken($accent-color-2, 5%);
+		}
+	}
+}
+.box3 {
+	&.moduletable, .g-content {
+		color: $dark-grey;
+		background: $light-grey;
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: darken($light-grey, 15%);
+			&:hover {
+				color: $white;
+				background: darken($light-grey, 10%);
+			}
+		}
+		ul.menu li {
+			a, .item, .separator {
+				color: $dark-grey !important;
+				&:hover {
+					color: lighten($light-grey, 30%) !important;
+				}
+			}
+			&.current, &#current, &:hover > {
+				a, .item, .separator {
+					color: lighten($light-grey, 30%) !important;
+				}
+			}
+		}
+	}
+	&.title3 {
+		.title {
+			background: darken($light-grey, 5%);
+		}
+	}
+}
+.box4 {
+	&.moduletable, .g-content {
+		color: lighten($dark-grey, 35%);
+		background: $dark-grey;
+
+		a:not(.readon) {
+			color: lighten($accent-color-1, 20%);
+		}
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: lighten($dark-grey, 12%);
+			&:hover {
+				color: $white;
+				background: lighten($dark-grey, 18%);
+			}
+		}
+		ul.menu li {
+			a, .item, .separator {
+				color: $white !important;
+				&:hover {
+					color: darken($dark-grey, 30%) !important;
+				}
+			}
+			&.current, &#current, &:hover > {
+				a, .item, .separator {
+					color: darken($dark-grey, 30%) !important;
+				}
+			}
+		}
+	}
+	&.title4 {
+		.title {
+			color: $white;
+			background: darken($dark-grey, 5%);
+		}
+	}
+}
+.box5 {
+	&.moduletable, .g-content {
+		color: $white;
+		background-image: linear-gradient(lighten($accent-color-1, 20%), lighten($accent-color-1, 10%), 50%, $accent-color-1);
+		a:not(.readon) {
+			color: darken($accent-color-1, 30%);
+			&:hover {
+				color: $white;
+			}
+		}
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: darken($accent-color-1, 15%);
+			&:hover {
+				color: $white;
+				background: darken($accent-color-1, 10%);
+			}
+		}
+		ul.menu li {
+			a, .item, .separator {
+				color: $white !important;
+				&:hover {
+					color: darken($accent-color-1, 30%) !important;
+				}
+			}
+			&.current, &#current, &:hover > {
+				a, .item, .separator {
+					color: darken($accent-color-1, 30%) !important;
+				}
+			}
+		}		
+	}
+	&.title1 {
+		.title {
+			background: darken($accent-color-1, 5%);
+		}
+	}
+}
+.box6 {
+	&.moduletable, .g-content {
+		color: $white;
+		background-image: linear-gradient(lighten($accent-color-2, 20%), lighten($accent-color-2, 10%), 50%, $accent-color-2);
+		a:not(.readon) {
+			color: darken($accent-color-2, 30%);
+			&:hover {
+				color: $white;
+			}
+		}
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: darken($accent-color-2, 15%);
+			&:hover {
+				color: $white;
+				background: darken($accent-color-2, 10%);
+			}
+		}
+		ul.menu li {
+			a, .item, .separator {
+				color: $white !important;
+				&:hover {
+					color: darken($accent-color-2, 30%) !important;
+				}
+			}
+			&.current, &#current, &:hover > {
+				a, .item, .separator {
+					color: darken($accent-color-2, 30%) !important;
+				}
+			}
+		}		
+	}
+	&.title1 {
+		.title {
+			background: darken($accent-color-2, 5%);
+		}
+	}
+}
+.box7 {
+	&.moduletable, .g-content {
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: $accent-color-1;
+			&:hover {
+				color: $white;
+				background: lighten($accent-color-1, 10%);
+			}
+		}
+	}
+}
+.box8 {
+	&.moduletable, .g-content {
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset, 0 0 0 3px rgba(255, 255, 255, 0.08);
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: $accent-color-1;
+			&:hover {
+				color: $white;
+				background: lighten($accent-color-1, 10%);
+			}
+		}
+	}
+}
+.box9 {
+	&.moduletable, .g-content {
+		box-shadow: 0 -10px 0 $accent-color-1;
+		border: 1px solid $accent-color-1;
+		margin-top: 35px;
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: $accent-color-1;
+			&:hover {
+				color: $white;
+				background: lighten($accent-color-1, 10%);
+			}
+		}
+	}
+}
+.box10 {
+	&.moduletable, .g-content {
+		box-shadow: 0 -10px 0 $accent-color-1;
+		border: 1px solid $accent-color-1;
+		margin-top: 64px;
+		position: relative;
+		.title {
+			position: absolute;
+			top: -50px;
+			left: -1px;
+			color: $white;
+			background: $accent-color-1;
+			font-family: get-font-family($font-family-alt2);
+			font-size: $base-font-size + 2;
+			font-weight: normal;
+			padding: 8px 15px;
+			line-height: 1;
+			border-radius: 0;
+			display: inline-block;			
+		}
+		.readon {
+			color: $white;
+			border: 1px solid transparent;
+			background: $accent-color-1;
+			&:hover {
+				color: $white;
+				background: lighten($accent-color-1, 10%);
+			}
+		}
+	}
+}
+
+.title1 {
+	.g-title, .title, .module-title .title {
+		background: $accent-color-1;
+		color: $white;
+	}
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-1;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-1, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-1;
+	}
+}
+
+.title2 {
+	.g-title, .title, .module-title .title {
+		background: $accent-color-2;
+		color: $white;
+	}	
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-2;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-2, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-2;
+	}
+}
+
+.title3 {
+	.g-title, .title, .module-title .title {
+		background: $light-grey;
+		color: $dark-grey;
+	}		
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $light-grey;
+		&:hover {
+			color: $white;
+			background: lighten($light-grey, 10%);
+		}
+	}
+}
+
+.title4 {
+	.g-title, .title, .module-title .title {
+		color: lighten($dark-grey, 35%);
+		background: $dark-grey;
+	}	
+	.readon {
+		color: $white;
+		border: 1px solid darken($dark-grey, 8%);
+		background: darken($dark-grey, 8%);
+		&:hover {
+			color: $white;
+			background: lighten($dark-grey, 10%);
+		}
+	}
+}
+.title5 {
+	.g-title, .title, .module-title .title {
+			color: $white;
+			background-image: linear-gradient(lighten($accent-color-1, 20%), lighten($accent-color-1, 10%), 50%, $accent-color-1);
+			border-radius: 30px;
+			border: 1px solid darken($accent-color-1, 10%);
+			font-family: get-font-family($font-family-alt2);
+			font-size: $base-font-size + 2;		
+			padding: 5px 15px;	
+			font-weight: normal;
+	}
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-1;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-1, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-1;
+	}
+}
+
+.title6 {
+	.g-title, .title, .module-title .title {
+		color: $white;
+		background-image: linear-gradient(lighten($accent-color-2, 20%), lighten($accent-color-2, 10%), 50%, $accent-color-2);
+		border-radius: 30px;
+		border: 1px solid darken($accent-color-2, 10%);
+		font-family: get-font-family($font-family-alt2);
+		font-size: $base-font-size + 2;		
+		padding: 5px 15px;	
+		font-weight: normal;
+	}	
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-2;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-2, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-2;
+	}
+}
+
+.title7 {
+	.g-title, .title, .module-title .title {
+		color: $white;
+		background: darken($accent-color-1, 10%);
+		font-family: get-font-family($font-family-alt2);
+		font-size: $base-font-size;
+		font-weight: normal;
+		text-transform: uppercase;
+		padding: 5px 10px;
+		line-height: 1;
+		border-radius: 3px;
+		display: inline-block;
+	}		
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-1;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-1, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-1;
+	}
+}
+
+.title8 {
+	.g-title, .title, .module-title .title {
+		color: $white;
+		background: darken($accent-color-2, 10%);
+		font-family: get-font-family($font-family-alt2);
+		font-size: $base-font-size;
+		font-weight: normal;
+		text-transform: uppercase;
+		padding: 5px 10px;
+		line-height: 1;
+		border-radius: 3px;
+		display: inline-block;
+	}	
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-2;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-2, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-2;
+	}
+}
+.title9 {
+	.g-title, .title, .module-title .title {
+		color: $white;
+		background: darken($accent-color-1, 10%);
+		font-family: get-font-family($font-family-alt2);
+		font-size: $base-font-size + 10;
+		font-weight: normal;
+		text-align: center;	
+	}
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-1;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-1, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-1;
+	}
+}
+
+.title10 {
+	margin: 5px 0 15px 0;
+	
+	.g-title, .title, .module-title .title {
+		padding: 5px 0;
+		color: darken($accent-color-1, 10%);
+		background: transparent;
+		font-family: get-font-family($font-family-alt2);
+		font-size: $base-font-size + 10;
+		font-weight: normal;			
+		text-align: center;
+		box-shadow: 0 -5px 0 darken($accent-color-1, 10%), 0 1px 0 lighten($base-text-color, 15%);
+	}	
+	.readon {
+		color: $white;
+		border: 1px solid transparent;
+		background: $accent-color-1;
+		&:hover {
+			color: $white;
+			background: lighten($accent-color-1, 10%);
+		}
+	}
+	a:not(.readon) {
+		color: $accent-color-1;
+	}
+}
+
+
+.spaced {
+	.g-content {
+		margin: 1px;
+	}		
+}
+
+.bordered {
+	.g-content {
+		border: 1px solid $rule-color;
+		margin: 1px;
+	}	
+}
+
+.shadow {
+	.g-content {
+		box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	}
+}
+
+.shadow2 {
+	.g-content {
+		box-shadow: 0 0 4px rgba(0,0,0,0.15);
+	}
+}
+
+.disabled {
+	.g-content {
+		opacity: 0.4;
+	}
+}
+
+.square {
+	.g-content {
+		border-radius: none;
+	}
+}
+
+.no-bg-image {
+	background-image: none !important;
+}
+
+.g-block-divider {
+  border-bottom: 5px solid $rule-color;
+  margin-top: $content-padding * 2;
+  margin-bottom: $content-padding * 2;
+  padding-top: $content-padding * 2;
+  padding-bottom: $content-padding * 2;
+}
+
+.equal-height {
+	#g-aside,
+	#g-mainbar,
+	#g-sidebar {
+		width: 100%;
+	}
+	.g-content {
+        flex-basis: 100%;
+        width: auto; 
+    }
+}
+
+.noliststyle {
+	list-style: none;
+}
+.g-uppercase {
+	text-transform: uppercase;
+}
+.g-notexttransform {
+	text-transform: none;
+}
+.g-positive-margin-top {
+	margin-top: 23rem;
+}
+.g-negative-margin-bottom {
+	margin-bottom: -25rem;
+}
+
+.faq-showcase {
+	opacity: 0.75;
+}
+
+.faq-page {
+	#g-showcase {
+		opacity: 0.75;
+	}
+}
+
+.rt-contact-icon {
+	clear: both;
+    float: left;
+    span {
+    	color: lighten($grey, 25%);
+	    display: block;
+	    font-size: 3em;
+	    width: 80px;
+	    height: 60px;
+	    line-height: 40px;
+	    text-align: center;
+    }
+}
+
+.contact-main {
+	background: #f2f2f2;
+	button {
+		font-size: 1.2em;
+    	padding: 15px 25px;
+	}
+}

@@ -1,0 +1,18 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+
+    padding-top: $content-padding * 2;
+    padding-bottom: $content-padding * 4;
+    @include breakpoint(mobile-only) {
+      padding-bottom: 0;
+    }
+    @extend .section-paddings;
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,9 @@
+reiko-theme:
+  title: 'Reiko Theme'
+  description: 'Sample menu for Reiko theme.'
+
+  items:
+    reiko:
+      title: 'Home'
+      outline: home
+      home: 1

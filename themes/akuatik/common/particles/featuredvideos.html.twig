@@ -1,0 +1,93 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% do gantry.load('lightcase.init') %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-featuredvideos" data-featuredvideos-id="{{ id }}" data-featuredvideos-accesstoken="{{ particle.token }}">
+        <div class="g-featuredvideos-header">
+            {% if particle.title %}
+                <h2 class="g-title">{{ particle.title }}</h2>
+            {% endif %}
+
+            {% if particle.description %}
+                <p class="g-featuredvideos-description">{{ particle.description|raw }}</p>
+            {% endif %}
+        </div>
+
+        <div class="g-grid">
+            <div class="g-block size-50">
+                {% for video in particle.videos %}
+                    {% if loop.first %}
+                        <div class="g-featuredvideos-item first">
+                            <div class="g-featuredvideos-item-image">
+                                <a href="{{ video.url }}" title="{{ particle.title }}" class="g-featuredvideos-item-yt" data-rel="lightcase:{{ id }}">
+                                    <img src="{{ url(video.thumbnail)|e }}" alt="{{ video.title }}{% if video.author %} - {{ video.author }}{% endif %}"/>
+                                    <i aria-hidden="true" class="fa fa-play"></i>
+                                </a>
+                            </div>
+
+                            <h3>{{ video.title }}
+                                {% if particle.counts == 'show' %}
+                                    <span class="g-featuredvideos-item-count">
+                                        <i aria-hidden="true" class="fa fa-heart-o"></i>
+                                        <span>0</span>
+                                    </span>
+                                {% endif %}
+                            </h3>
+
+                            <div class="g-featuredvideos-item-author">
+                                {% if video.avatar and video.author %}
+                                    <a class="g-featuredvideos-item-avatar" href="{{video.author_link}}" target="{{ video.linktarget|default('_self') }}">
+                                        <img src="{{ url(video.avatar)|e }}" alt="{{video.author}}" title="{{video.author}}">
+                                    </a>
+                                {% endif %}
+
+                                {% if video.author %}
+                                    <a class="g-featuredvideos-item-author-text" href="{{video.author_link}}" target="{{ video.linktarget|default('_self') }}">
+                                        {{video.author}}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="g-block size-50">
+                <div class="g-grid">
+                    {% for video in particle.videos %}
+                        {% if not loop.first %}
+                            <div class="g-block size-50">
+                                <div class="g-featuredvideos-item">
+                                    <div class="g-featuredvideos-item-image">
+                                        <a href="{{ video.url }}" class="g-featuredvideos-item-yt" title="{{ particle.title }}" data-rel="lightcase:{{ id }}">
+                                            <img src="{{ url(video.thumbnail)|e }}" alt="{{ video.title }}{% if video.author %} - {{ video.author }}{% endif %}"/>
+                                            <i aria-hidden="true" class="fa fa-play"></i>
+                                        </a>
+                                    </div>
+
+                                    <h3>
+                                        {{ video.title }}
+                                        {% if particle.counts == 'show' %}
+                                            <span class="g-featuredvideos-item-count">
+                                                <i aria-hidden="true" class="fa fa-heart-o"></i>
+                                                <span>0</span>
+                                            </span>
+                                        {% endif %}
+                                    </h3>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="{{ url('gantry-theme://js/featuredvideos.init.js') }}"></script>
+{% endblock %}
+

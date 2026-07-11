@@ -1,0 +1,303 @@
+#g-secondfullwidth {
+    background: $secondfullwidth-background;
+    color: $secondfullwidth-text-color;
+
+    @if $secondfullwidth-background-image {
+	    background: $secondfullwidth-background url($secondfullwidth-background-image) no-repeat;
+	    background-size: cover;
+	    background-position: top center;
+    }
+
+}
+
+#strips-scroll {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+	padding: 0 0 75px 0;
+	@include breakpoint(mobile-only) {
+		padding: 0 0 45px 0;
+	}
+
+	.owl-nav {
+		display: none;
+	}
+
+	&.g-owlcarousel-strips-slider {	
+
+		&.g-owlcarousel-strips-8-items {
+		    .viewport {
+		      .overview {
+			        width: 5520px;
+			        @include breakpoint(mobile-only) {
+			          width: 3920px;
+			        }
+			        @media (max-width: 480px) {
+			          width: 2640px;
+			        }       
+		        } 
+		    }
+	    } 	
+
+		&.g-owlcarousel-strips-7-items {
+		    .viewport {
+		      .overview {
+			        width: 4830px;
+			        @include breakpoint(mobile-only) {
+			          width: 3430px;
+			        }
+			        @media (max-width: 480px) {
+			          width: 2310px;
+			        }       
+		        } 
+		    }
+	    } 	
+
+		&.g-owlcarousel-strips-6-items {
+		    .viewport {
+		      .overview {
+			        width: 4140px;
+			        @include breakpoint(mobile-only) {
+			          width: 2940px;
+			        }
+			        @media (max-width: 480px) {
+			          width: 1980px;
+			        }       
+		        } 
+		    }
+	    } 
+
+		&.g-owlcarousel-strips-5-items {
+		    .viewport {
+		      .overview {
+			        width: 3450px;
+			        @include breakpoint(mobile-only) {
+			          width: 2450px;
+			        }
+			        @media (max-width: 480px) {
+			          width: 1650px;
+			        }       
+		        } 
+		    }
+	    } 
+
+		&.g-owlcarousel-strips-4-items {
+		    .viewport {
+		      .overview {
+			        width: 2760px;
+			        @include breakpoint(mobile-only) {
+			          width: 1960px;
+			        }
+			        @media (max-width: 480px) {
+			          width: 1320px;
+			        }       
+		        } 
+		    }
+	    } 
+
+		&.g-owlcarousel-strips-3-items {
+		    .viewport {
+		      .overview {
+			        width: 2020px;
+			        @include breakpoint(mobile-only) {
+			          width: 1470px;
+			        }
+			        @media (max-width: 480px) {
+			          width: 990px;
+			        }       
+		        } 
+		    }
+	    } 	
+
+		.viewport {
+		height: 430px;
+	    overflow: hidden;
+	    width: 100%;
+	    position: relative;
+	    @include breakpoint(mobile-only) {
+	    	height: 330px;
+    	}
+    	@media (max-width: 480px) { 
+			height: 230px;
+		}
+
+			.overview {
+			    left: 0;
+			    list-style: outside none none;
+			    margin: 0;
+			    padding: 0;
+			    position: absolute;
+			    top: 0; 
+
+				.owl-item {
+						width: 680px !important;
+					    margin: 0 5px !important;
+					    float: none;
+					    display: inline-block;
+					    box-sizing: border-box;
+					    position: relative;
+					    @include breakpoint(mobile-only) {
+					    	width: 480px !important;
+					    }
+					    @media (max-width: 480px) { 
+					    	width: 320px !important;
+					    }
+				 	.item {
+				 		@include breakpoint(mobile-only) {
+				 			border-radius: 0;
+				 		}	
+
+			 			.g-owlcarousel-item-title {
+		 				    font-family: get-font-family($font-family-alt);
+						    text-transform: uppercase;
+						    font-size: 21px;
+						    @media (max-width: 480px) {
+						    	font-size: 100%;
+						    }
+						    font-weight: normal;
+						    letter-spacing: 1px;
+						    text-align: center;
+						    color: $white;
+						    a {
+						    	color: $white;
+						    }
+			 			}
+
+			 			.g-owl-image-container {
+			 				background: $accent-color-1;			
+				 			position: relative;
+						    overflow: hidden;
+						    border-radius: 5px;
+						    @include breakpoint(mobile-only) {
+						    	border-radius: 0px;
+						    }	
+
+						    img {
+						    	border-radius: 5px;
+						    	@include breakpoint(mobile-only) {
+						    		border-radius: 0px;
+						    	}
+						    	transform: translateZ(0) scale3d(1,1,1);
+			                    transition: all 0.2s ease;
+					    	}
+
+					    	.g-owlcarousel-item-desc {
+							    display: block;
+							    white-space: normal;
+							    border: 4px solid;
+							    padding: 1em;   
+							    width: 75%;
+							    left: 50%;
+							    top: 50%;
+							    margin: 0;
+							    font-size: 14px;
+							    position: absolute;
+							    text-align: center;
+							    color: #fff;
+							    background: rgba(0,0,0,0.5);
+							    transform: translate(-50%,-25%);
+							    opacity: 0;
+							    transition: all 0.25s ease;
+
+							    @media (max-width: 480px) {	
+								    font-size: 13px;
+								    width: 90%;
+								} 
+
+							    .owl-readon {
+							    	font-family: get-font-family($font-family-alt);
+    								text-transform: uppercase;
+    								font-weight: bold;
+    								letter-spacing: 1px;
+    								margin-top: 5px;
+    								font-size: 13px;
+    								display: block;
+    								&:hover {
+    									color: $accent-color-2;
+    								}
+							    }
+							}
+
+							&:hover {
+								.g-owlcarousel-item-desc {
+									transform: translate(-50%,-50%);
+								    opacity: 1;
+								} 
+								img {
+									opacity: 0.85;
+									transform: translateZ(0) scale3d(1.05,1.05,1);
+					    		}   
+							}
+			 			}
+					}
+				}
+			}
+		}	
+	}		
+}
+				
+#strips-scroll .scrollbar {
+	opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+    background: rgba(0,0,0,0.5);
+    clear: both;
+    height: 17px;
+    margin-top: 32px;
+    @include breakpoint(mobile-only) {
+    	margin-top: 10px;
+    }
+    position: absolute;
+    .track {
+    	height: 17px;
+    	position: relative;
+
+    	.thumb {
+		    cursor: pointer;
+		    height: 13px;
+		    left: 0;
+		    overflow: hidden;
+		    position: absolute;
+		    top: 2px;
+		    border-radius: 13px;
+		    background: $accent-color-1;
+
+		    .end {
+		    	overflow: hidden;
+		    }
+    	}
+    }	 
+}       
+
+
+#strips-scroll:hover .scrollbar {
+    opacity: 1;
+    visibility: visible;
+}
+
+#strips-scroll .owl-stage {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    transition: unset !important;
+    transform: none !important;
+    width: auto !important;
+
+    &:before {
+	    content: "";
+	    display: table;
+	    line-height: 0;
+    }
+}
+
+@media print {
+	#g-secondfullwidth {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

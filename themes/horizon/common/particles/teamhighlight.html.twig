@@ -1,0 +1,26 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% if not particle.patterns or particle.patterns == 'enabled' %}
+	<div class="g-teamhighlight-pattern">
+		<svg viewbox="0 0 1258 621" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M1083 363L1167.87 412V510L1083 559L998.13 510V412L1083 363Z" class="base-pattern-3"/>
+			<path d="M98 425L182.87 474V572L98 621L13.1295 572V474L98 425Z" class="base-pattern-2"/>
+			<path d="M98 0L128.311 17.5V52.5L98 70L67.6891 52.5V17.5L98 0Z" class="base-pattern-1"/>
+			<path d="M1223 253L1253.31 270.5V305.5L1223 323L1192.69 305.5V270.5L1223 253Z" class="base-pattern-1"/>
+		</svg>
+	</div>
+	{% endif %}
+	<div class="g-teamhighlight {{ particle.class|e }}">
+		<img src="{{ url(particle.image) }}" alt="{{ particle.name }}"/>
+		<div class="g-teamhighlight-details">
+			<div class="g-teamhighlight-details-name">
+				{{ particle.name|raw }}
+			</div>
+			<div class="g-teamhighlight-details-position">
+				{{ particle.position|raw }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

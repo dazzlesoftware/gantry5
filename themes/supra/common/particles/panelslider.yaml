@@ -1,0 +1,63 @@
+name: Panel Slider
+description: Content slider with images and icons.
+type: particle
+icon: fa-columns
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    items_amount:
+      type: input.number
+      label: Items
+      description: Amount of items
+      default: 7
+
+    items:
+      type: collection.list
+      array: true
+      label: Images
+      description: Create slideshow items.
+      value: title
+      ajax: true
+      fields:
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select image for slideshow
+          placeholder: Pick an image
+        .alt:
+          type: input.text
+          label: Alt Attribute
+          description: Alt attribute specifies an alternate text for an image, if the image cannot be displayed.
+          placeholder: Enter title
+        .icon:
+          type: input.icon
+          label: Icon
+          description: Select icon
+          placeholder: Pick an icon
+        .description:
+          type: textarea.textarea
+          label: Description
+          description: Provide template description
+        .signature1:
+          type: input.text
+          label: Signature Line 1
+          description: Additional line of text.
+        .signature2:
+          type: input.text
+          label: Signature Line 2
+          description: Additional line of text.
+        .avatar:
+          type: input.imagepicker
+          label: Avatar
+          description: Select avatar image
+          placeholder: Pick avatar

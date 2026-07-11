@@ -1,0 +1,18 @@
+#g-secondfullwidth {
+    background: $secondfullwidth-background;
+    color: $secondfullwidth-text-color;
+
+    @if $secondfullwidth-background-image {
+	    background: $secondfullwidth-background url($secondfullwidth-background-image) no-repeat;
+	    background-size: cover;
+	    background-position: top center;
+    }
+
+}
+
+@media print {
+	#g-secondfullwidth {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

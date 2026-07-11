@@ -1,0 +1,935 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1601762106
+layout:
+  /container-top/:
+    -
+      -
+        top: {  }
+    -
+      -
+        navigation: {  }
+    -
+      -
+        /slideshow/:
+          -
+            - promo-6483
+          -
+            - slider-8051
+  /header/:
+    -
+      - logos-1631
+    -
+      - infolist-7988
+  /above/:
+    -
+      - showcase-4509
+  /feature/:
+    -
+      - iconpromo-7044
+    -
+      - testimonials-7527
+  /showcase/:
+    -
+      - pricingtable-1875
+  /utility/:
+    -
+      - comparisontable-2623
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - video-8023
+    -
+      - simplecontent-6925
+    -
+      - 'button-9920 50'
+      - 'button-5829 50'
+  /extension/:
+    -
+      - stories-4803
+  /bottom/:
+    -
+      - gridstatistic-9706
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        copyright: {  }
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - block
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-slideshow no-background-image'
+      variations: ''
+  container-top:
+    attributes:
+      boxed: ''
+      class: 'overlay-light'
+  header:
+    attributes:
+      boxed: ''
+      class: fp-header
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-above
+      variations: section-vertical-paddings-large
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    inherit:
+      outline: default
+      include:
+        - block
+        - children
+        - attributes
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    attributes:
+      class: overlay-light
+      extra: {  }
+      swipe: '0'
+content:
+  promo-6483:
+    attributes:
+      headline: 'Available Today'
+      title: 'Make an Incredible Product Website'
+      text: 'Orion is a fast, friendly design for any project.'
+  slider-8051:
+    attributes:
+      source: particle
+      height: 60vh
+      heightMobile: 500px
+      nav: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      centered: enabled
+      thumbs: disabled
+      touchmove: enabled
+      items:
+        -
+          description: ''
+          image: 'gantry-media://home/slideshow/img-01.png'
+          link: ''
+          linktarget: modal
+          title: Item 1
+        -
+          description: ''
+          image: 'gantry-media://home/slideshow/img-01.png'
+          link: ''
+          linktarget: modal
+          title: Item 2
+        -
+          description: ''
+          image: 'gantry-media://home/slideshow/img-01.png'
+          link: ''
+          linktarget: modal
+          title: Item 3
+      largedesktopslides: '1'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '1'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '1'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            target: _self
+  logos-1631:
+    attributes:
+      logos:
+        -
+          image: 'gantry-media://home/header/img-01.png'
+          url: '#'
+          target: _self
+          title: 'Item 1'
+        -
+          image: 'gantry-media://home/header/img-01.png'
+          url: '#'
+          target: _self
+          title: 'Item 2'
+        -
+          image: 'gantry-media://home/header/img-01.png'
+          url: '#'
+          target: _self
+          title: 'Item 3'
+        -
+          image: 'gantry-media://home/header/img-01.png'
+          url: '#'
+          target: _self
+          title: 'Item 4'
+  infolist-7988:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: 'fa fa-picture-o'
+          iconloc: left
+          iconacc: accent-color-1
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Experience the joy of creating a website on the powerful Gantry 5 Framework.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Design tools'
+        -
+          icon: 'fa fa-road'
+          iconloc: left
+          iconacc: accent-color-2
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Drag and drop elements into your layouts with ease. Create gorgeous layouts in seconds.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Layout Manager'
+        -
+          icon: 'fa fa-users'
+          iconloc: left
+          iconacc: accent-color-1
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Extend your navigation menus to include custom content, ordering, icons, and more.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Menu Editor'
+        -
+          icon: 'fa fa-window-maximize'
+          iconloc: left
+          iconacc: accent-color-2
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Give your site’s pages a look of their own using Gantry 5’s Outlines tool.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: Outlines
+        -
+          icon: 'fa fa-star-o'
+          iconloc: left
+          iconacc: accent-color-1
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Don’t have time to create your own custom layout? Orion includes a bundle of preset layouts to choose from.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Preset Layouts'
+        -
+          icon: 'fa fa-usd'
+          iconloc: left
+          iconacc: accent-color-2
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Choose from several gorgeous color schemes made for Orion, or craft your own!'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Style Presets'
+  showcase-4509:
+    attributes:
+      source: particle
+      nav: disabled
+      dots: enabled
+      autoplay: enabled
+      autoplayTimeout: '18000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      effect: slide
+      items:
+        -
+          image: 'gantry-media://home/above/img-01.png'
+          main_title: 'Showcase Particle'
+          description: 'The Showcase particle creates an intuitive and modern tool for highlighting the most important features of your product. Add an image, title, and description to each item that draws the attention of your visitors and provides important details about your featured products or services.'
+          title: 'Feature Your Product'
+        -
+          image: 'gantry-media://home/above/img-01.png'
+          main_title: "Invite your company team \Lto join Orion"
+          description: 'Want to spread the word about partner companies you work with, publications that gave your products or services a positive review, or highlight the technologies you use to bring your product to life? The Logos particle is what you need!'
+          title: 'Showcase Your Partners'
+        -
+          image: 'gantry-media://home/above/img-01.png'
+          main_title: 'Grid Statistic Particle'
+          description: 'When making the decision to buy a product or subscribe to a service, visitors are often looking for hard numbers they can use to gauge whether the purchase is worth it to them. The Grid Statistic particle gives you the ability to showcase your best stats with animated numbers that draw the attention of your customers.'
+          title: 'Present Incredible Stats'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: show
+            label: ''
+            target: _self
+    block:
+      variations: 'nomarginright nopaddingright'
+  iconpromo-7044:
+    title: 'Icon Promo'
+    attributes:
+      headline: 'Icon Promo Particle'
+      title: '“Share quotes that define your brand.”'
+      icon: 'fa fa-commenting-o'
+    block:
+      variations: center
+  testimonials-7527:
+    attributes:
+      source: particle
+      class: ''
+      title: ''
+      cols: cols-3
+      testimonial:
+        -
+          content: '“Orion makes it easier than ever to create a great product website.”'
+          photo: 'gantry-media://home/feature/logo.png'
+          alttext: Testimonial
+          name: 'Item 1'
+        -
+          content: '“I never thought it’s possible, but Orion is actually better than cookies and milk, combined.”'
+          photo: 'gantry-media://home/feature/logo.png'
+          alttext: Testimonial
+          name: 'Item 2'
+        -
+          content: '“Orion is a brilliant design, and the Gantry 5 framework makes it even better!”'
+          photo: 'gantry-media://home/feature/logo.png'
+          alttext: Testimonial
+          name: 'Item 3'
+        -
+          content: '"The Gantry 5 Framework makes setting up and using Orion practically effortless."'
+          photo: 'gantry-media://home/feature/logo.png'
+          alttext: Testimonial
+          name: 'Item 4'
+        -
+          content: '“Orion''s particles are the perfect match for my website''s vision.”'
+          photo: 'gantry-media://home/feature/logo.png'
+          alttext: Testimonial
+          name: 'Item 5'
+        -
+          content: '"The Menu Editor makes it easy to create a better navigation experience."'
+          photo: 'gantry-media://home/feature/logo.png'
+          alttext: Testimonial
+          name: 'Item 6'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+          author_image:
+            enabled: intro
+  pricingtable-1875:
+    title: 'Pricing Table'
+    attributes:
+      class: nocheck
+      title: 'Pricing Table Particle'
+      headertext: 'Contemporary Pricing Displays'
+      footertext: 'Build out a complete pricing page in no time!'
+      switcher: enabled
+      monthly: Monthly
+      yearly: Yearly
+      columns: g-pricingtable-4-col
+      tables:
+        -
+          class: ''
+          color: white
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: Free
+          price_yearly: Free
+          period: ''
+          desc: ''
+          buttontext: 'Get started'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '1 Creator'
+            -
+              text: '3 Collaborators'
+            -
+              text: 'Unlimited viewers'
+            -
+              class: strikethrough
+              text: 'Advanced privacy settings'
+          plan: Freelancer
+        -
+          class: ''
+          color: accent1
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: $4.99
+          price_yearly: $2.16
+          period: 'per user'
+          desc: ''
+          buttontext: 'Start free trial'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '1 Creator'
+            -
+              text: '3 Collaborators'
+            -
+              text: 'Unlimited viewers'
+            -
+              text: 'Advanced privacy settings'
+          plan: Team
+        -
+          class: ''
+          color: white
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: Free
+          price_yearly: Free
+          period: ''
+          desc: ''
+          buttontext: 'Get started'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '1 Creator'
+            -
+              text: '3 Collaborators'
+            -
+              text: 'Unlimited viewers'
+            -
+              class: strikethrough
+              text: 'Advanced privacy settings'
+          plan: Freelancer
+        -
+          class: ''
+          color: accent1
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: $5.99
+          price_yearly: $4.25
+          period: 'per user'
+          desc: ''
+          buttontext: 'Start free trial'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: '1 Creator'
+            -
+              text: '3 Collaborators'
+            -
+              text: 'Unlimited viewers'
+            -
+              text: 'Advanced privacy settings'
+          plan: Super
+  comparisontable-2623:
+    title: 'Comparison Table'
+    attributes:
+      class: ''
+      title: '“What is the difference?”'
+      headertext: 'Comparison Table Particle'
+      rows:
+        -
+          class: ''
+          columns:
+            -
+              text: ''
+              class: ''
+              icon: ''
+              title: 'Empty'
+            -
+              text: Sketch
+              class: ''
+              icon: ''
+              title: 'Header 1'
+            -
+              text: Figma
+              class: ''
+              icon: ''
+              title: 'Header 2'
+            -
+              text: Orion
+              class: ''
+              icon: ''
+              title: 'Header 3'
+          title: Headers
+        -
+          class: ''
+          columns:
+            -
+              text: 'State of the art design tools'
+              class: ''
+              icon: ''
+              title: Title
+            -
+              text: ''
+              class: ''
+              icon: 'fa fa-times'
+              title: Icon
+            -
+              text: ''
+              class: accent-color-2
+              icon: 'fa fa-check-circle'
+              title: Icon
+            -
+              text: ''
+              class: accent-color-2
+              icon: 'fa fa-check-circle'
+              title: Icon
+          title: 'State of the art design tools'
+        -
+          class: ''
+          columns:
+            -
+              text: 'Largest community'
+              class: ''
+              icon: ''
+              title: Title
+            -
+              text: ''
+              class: ''
+              icon: 'fa fa-times'
+              title: Icon
+            -
+              text: ''
+              class: ''
+              icon: 'fa fa-times'
+              title: Icon
+            -
+              text: ''
+              class: accent-color-2
+              icon: 'fa fa-check-circle'
+              title: Icon
+          title: 'Largest community'
+        -
+          class: ''
+          columns:
+            -
+              text: 'Weekly updates'
+              class: ''
+              icon: ''
+              title: Title
+            -
+              text: ''
+              class: ''
+              icon: 'fa fa-times'
+              title: Icon
+            -
+              text: ''
+              class: ''
+              icon: 'fa fa-times'
+              title: Icon
+            -
+              text: ''
+              class: accent-color-2
+              icon: 'fa fa-check-circle'
+              title: Icon
+          title: 'Regular updates'
+        -
+          class: ''
+          columns:
+            -
+              text: Collaborators
+              class: ''
+              icon: ''
+              title: Title
+            -
+              text: Limited
+              class: ''
+              icon: ''
+              title: Text
+            -
+              text: Limited
+              class: ''
+              icon: ''
+              title: Text
+            -
+              text: Unlimited
+              class: bold
+              icon: ''
+              title: Text
+          title: 'Rows of content'
+        -
+          class: ''
+          columns:
+            -
+              text: Pricing
+              class: ''
+              icon: ''
+              title: Title
+            -
+              text: $99
+              class: ''
+              icon: ''
+              title: Text
+            -
+              text: 15/mo
+              class: ''
+              icon: ''
+              title: Text
+            -
+              text: Free
+              class: bold
+              icon: ''
+              title: Text
+          title: Pricing
+  video-8023:
+    attributes:
+      class: ''
+      headertext: 'You need a better website design.'
+      title: 'Quick to learn, easy to master.'
+      description: 'Orion features many particles that make creating a beautiful website easier than ever. Orion’s design is flexible enough to fit virtually any brand’s needs. Your new website will soar with Orion.'
+      columns: '1'
+      items:
+        -
+          caption: ''
+          source: youtube
+          video: 'https://www.youtube.com/watch?v=lEeyQB-wEfU'
+          local: {  }
+          posterimage: ''
+          loop: enabled
+          autoplay: enabled
+          controls: disabled
+          info: disabled
+          related: disabled
+          muted: enabled
+          start: ''
+          title: 'Item 1'
+  simplecontent-6925:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: ''
+          main_content: 'Download Orion and create a new website, today.'
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Item 1'
+    block:
+      variations: 'center nomarginall nopaddingall'
+  button-9920:
+    attributes:
+      label: Mac
+      link: ''
+      target: _self
+      class: ''
+    block:
+      variations: 'align-right nomargintop nomarginbottom nopaddingall'
+  button-5829:
+    attributes:
+      label: Windows
+      link: ''
+      target: _self
+      class: button-2
+    block:
+      variations: 'align-left nomargintop nomarginbottom nopaddingall'
+  stories-4803:
+    title: 'User Stories'
+    attributes:
+      source: particle
+      class: ''
+      nav: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: enabled
+      title: 'User Stories'
+      largedesktopslides: '3'
+      largedesktopgroup: '1'
+      largedesktopspace: '35'
+      desktopslides: '3'
+      desktopgroup: '1'
+      desktopspace: '35'
+      tabletslides: '2'
+      tabletgroup: '1'
+      tabletspace: '35'
+      mobileslides: '1'
+      mobilegroup: '1'
+      mobilespace: '35'
+      story:
+        -
+          content: '“Orion takes full advantage of the many tools made possible by the Gantry 5 framework. The Layout Manager makes it possible to perfect your site''s layout.”'
+          avatar: 'gantry-media://home/extension/img-01.jpg'
+          position: 'UI/UX Expert'
+          alttext: 'John Doe'
+          name: 'John Doe'
+        -
+          content: '“Increased conversions are easy with Orion. It was built from the ground up to draw the visitor''s attention to your product''s main selling points.”'
+          avatar: 'gantry-media://home/extension/img-01.jpg'
+          position: 'Business Expert'
+          alttext: 'Jared Doe'
+          name: 'Jared Doe'
+        -
+          content: '"Having the right tool for the job is essential. Orion comes with every tool a web designer could possibly need to create the perfect user experience."'
+          avatar: 'gantry-media://home/extension/img-01.jpg'
+          position: 'UI/UX Expert'
+          alttext: 'Jack Doe'
+          name: 'Jack Doe'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+          author_image:
+            enabled: intro
+  gridstatistic-9706:
+    title: 'Grid Statistic'
+    attributes:
+      class: ''
+      title: ''
+      desc: ''
+      numberformat: '(,ddd).dd'
+      readmore: ''
+      readmorelink: ''
+      readmoreclass: button-2
+      footerdesc: ''
+      cols: g-gridstatistic-5cols
+      gridstatisticitems:
+        -
+          text1: '1,5'
+          icon: ''
+          text2: 'Users worldwide'
+        -
+          text1: '350'
+          icon: ''
+          text2: 'Joined this month'
+        -
+          text1: '9,274'
+          icon: ''
+          text2: 'Using Orion Now'
+        -
+          text1: '62351'
+          icon: ''
+          text2: 'Design delivered'
+        -
+          text1: '36'
+          icon: ''
+          text2: 'Updates this week'
+  mobile-menu-2576:
+    title: 'Mobile Menu'

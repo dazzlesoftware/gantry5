@@ -1,0 +1,25 @@
+#g-footer {
+    color: $footer-text-color;
+    background: $footer-background;
+
+    .g-simplecontent-layout-header {
+        padding-bottom: 0;
+        .g-simplecontent-item-content-title {
+            font-size: $h4-font-size;
+            @include breakpoint(tablet-range) {
+                font-size: $h4-font-size - 0.1;
+            }
+
+            @include breakpoint(mobile-only) {
+                font-size: $h4-font-size - 0.3;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

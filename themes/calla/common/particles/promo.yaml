@@ -1,0 +1,40 @@
+name: Promo
+description: Display newsletter form.
+type: particle
+icon: fa-header
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    title:
+      type: textarea.textarea
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    bgtitle:
+      type: input.text
+      label: Background Title
+      description: Customize the background title text.
+      placeholder: Enter background title
+
+    buttontext:
+      type: input.text
+      label: Button Text
+      description: Customize the Button text.
+      placeholder: Text goes here
+
+    buttonlink:
+      type: input.text
+      label: Button Link
+      description: Customize the Button link.
+      placeholder: Text goes here

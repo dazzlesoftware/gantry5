@@ -1,0 +1,15 @@
+#g-above {
+    background: $above-background;
+    color: $above-text-color;
+
+    .g-newsticker-label {
+        color: darken($above-text-color, 25%);
+    }
+}
+
+@media print {
+	#g-above {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

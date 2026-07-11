@@ -1,0 +1,4 @@
+enabled: '1'
+css:
+  class: totop
+content: '<span class="fa fa-2x fa-angle-up"></span>'

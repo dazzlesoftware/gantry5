@@ -1,0 +1,78 @@
+preset:
+  image: gantry-admin://images/layouts/3-col-left.png
+  name: 3_column_-_left
+
+layout:
+  top:
+    container:
+      - system-messages
+      - [position-top-a 33.3,position-top-b 33.3,position-top-c 33.3]
+
+  navigation:
+    container:
+      - [position-navigation-a 25, position-navigation-b 55, position-navigation-c 20]
+
+  header:
+    container:
+      - [position-header-a 33.3,position-header-b 33.3,position-header-c 33.3]
+
+  showcase:
+    container:
+      - [position-showcase-a 33.3,position-showcase-b 33.3,position-showcase-c 33.3]
+
+  above:
+    container:
+      - [position-above-a 33.3,position-above-b 33.3,position-above-c 33.3]
+
+  utility:
+    container:
+      - [position-utility-a 33.3,position-utility-b 33.3,position-utility-c 33.3]
+
+  feature:
+    container:
+      - [position-feature-a 33.3,position-feature-b 33.3,position-feature-c 33.3]
+
+  container:
+    1:
+      - mainbody 60:
+        - [position-mainbar-a 33.3,position-mainbar-b 33.3,position-mainbar-c 33.3]
+        - pagecontent
+      - sidebar 20:
+        - position-sidebar
+      - aside 20:
+        - position-aside
+
+  expanded:
+    container:
+      - [position-expanded-a 33.3,position-expanded-b 33.3,position-expanded-c 33.3]
+
+  extension:
+    container:
+      - [position-extension-a 33.3,position-extension-b 33.3,position-extension-c 33.3]
+
+  bottom:
+    container:
+      - [position-bottom-a 33.3,position-bottom-b 33.3,position-bottom-c 33.3]
+
+  footer:
+    container:
+      - [position-footer-a 33.3,position-footer-b 33.3,position-footer-c 33.3]
+      - [particle-logo 20,particle-horizontalmenu 60,particle-social 20]
+
+  copyright:
+    container:
+      - [particle-branding 25,particle-copyright 50,particle-totop 25]
+      - [position-copyright-a 33.3,position-copyright-b 33.3,position-copyright-c 33.3]
+
+  fixedside:
+    - particle-logo
+    - particle-social
+    - position-fixedside
+
+  offcanvas:
+    - particle-logo
+    - particle-social
+    - particle-mobile-menu
+    - position-offcanvas
+
+  atoms:

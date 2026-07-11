@@ -1,0 +1,43 @@
+.g-listgrid {
+	display: flex;
+	flex-flow: row wrap;
+	.g-listgrid-item {
+	    flex: 0 0 auto;
+	    width: 100%;
+	    float: left;
+	}
+	&.g-listgrid-2cols {
+		.g-listgrid-item {
+			width: 50%;
+		}	
+	}	
+	&.g-listgrid-3cols {
+		.g-listgrid-item {
+			width: 33.33333%;
+		}	
+	}
+	&.g-listgrid-4cols {
+		.g-listgrid-item {
+			width: 25%;
+		}
+	}			
+	&.g-listgrid-5cols {
+		.g-listgrid-item {
+			width: 20%;
+		}	
+	}
+	@include breakpoint(large-mobile-range) {
+		&[class$="cols"] {
+			.g-listgrid-item {
+				width: 100%;
+			}
+		}
+	}
+	@include breakpoint(small-mobile-range) {
+		&[class$="cols"] {
+			.g-listgrid-item {
+				width: 100%;
+			}
+		}
+	}
+}

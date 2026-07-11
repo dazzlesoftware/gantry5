@@ -1,0 +1,84 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+	{% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+	{% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+	{% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+	{% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+	{% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+{% for article in articles %}
+	{% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+		{% if article.images.image_intro and display.image.enabled == 'intro' %}
+			{% set article_image = article.images.image_intro %}
+		{% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+			{% set article_image = article.images.image_fulltext %}
+		{% endif %}
+	{% endif %}
+
+	<div class="swiper-slide" style="background-image: url({{ url(article_image)|e }});">
+	<div class="g-slider-overlay"></div>
+						{% if particle.pattern == 'enabled' %}
+							<div class="g-slider-pattern">
+								<svg width="449" height="203" viewbox="0 0 449 203" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M279 29L849 0V24L279 53V29Z" class="base-pattern-2"/>
+									<path d="M0 134L270 120V136L0 150V134Z" class="base-pattern-1"/>
+									<path d="M379 194.5L549 186V194L379 202.5V194.5Z" class="base-pattern-3"/>
+								</svg>
+							</div>
+						{% endif %}
+		<div class="slide">
+			<div class="g-slider-carousel-content-wrapper">
+				{% if display.title.enabled and article.title %}
+					<h3 class="g-slider-carousel-title">
+						{% if display.link.enabled %}
+                        	<a href="{{ url(article.route)|e }}" target="{{ display.link.target|default('_self') }}">
+                        	{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                        	</a>
+                        {% else %}
+                        	{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                        {% endif %}
+					</h3>
+				{% endif %}
+					<p class="g-slider-carousel-description">
+						{% if display.text.type %}
+							{% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+	                        	{% if display.text.formatting == 'text' %}
+									{{ article_text|truncate_text(display.text.limit)|raw }}
+								{% else %}
+									{{ article_text|truncate_html(display.text.limit)|raw }}
+								{% endif %}
+						{% endif %}
+					</p>
+			</div>
+		</div>
+	</div>
+{% endfor %}

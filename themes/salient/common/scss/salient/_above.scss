@@ -1,0 +1,16 @@
+#g-above {
+    background: $above-background;
+    color: $above-text-color;   
+    border-top: 5px solid $accent-color-1;
+	@if $above-background-image {
+    	background: $above-background url($above-background-image) center no-repeat;
+    	background-size: cover;
+	}
+}
+
+@media print {
+	#g-above {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

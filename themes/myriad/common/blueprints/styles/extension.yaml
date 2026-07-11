@@ -1,0 +1,19 @@
+name: Extension Colors
+description: Extension colors for the Myriad theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/extension/preset1/bg.jpg"          
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#090d0f"

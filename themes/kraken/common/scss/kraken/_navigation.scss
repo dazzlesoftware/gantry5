@@ -1,0 +1,225 @@
+#g-navigation {
+    background: $navigation-background;
+    color: $navigation-text-color;    
+    position: relative;
+    z-index: 101;
+
+	// g-content
+	.g-content {
+		padding: 0;
+		@include breakpoint(mobile-only) {
+			margin: 0;
+		}			
+	}
+
+	// Logo
+	.g-logo {
+		color: $navigation-text-color;
+		font-family: get-font-family($font-family-title);
+		font-weight: $font-weight-bold;		
+		font-size: $core-font-size + 0.5;
+		transition: none;
+		@include breakpoint(tablet-range) {
+			letter-spacing: 0;
+		}	
+		span {
+			text-transform: uppercase;
+			display: inline-block;
+			vertical-align: middle;
+		}
+    &.g-logo-alt {
+  		.g-style-preset7 &, .g-style-preset8 & {
+  			img {
+  				display: none;
+  			}
+  			span {
+  				&:before {
+  					content: "";
+  					display: inline-block;
+  					width: 48px;
+  					height: 48px;
+  					vertical-align: -0.85rem;
+  					background: url("gantry-theme://images/logo/logo.png") no-repeat;
+  				}
+  			}
+      }
+		}	
+	}	
+
+    // Social Item
+    .g-social {
+    	margin-top: 1rem;
+    	text-align: right;
+    	a {
+    		color: $navigation-text-color;
+    		&:hover {
+    			color: $accent-color-1;
+    		}
+    	}
+    }
+}
+
+// Main Navigation
+
+%link-parent-indicator {
+	border: 1px solid lighten($navigation-background, 6%);
+	background: darken($navigation-background, 4%);
+	&:hover {
+		background: darken($navigation-background, 8%);
+	}
+}
+
+#g-navigation {
+	// Menu Styling
+	.g-main-nav {
+		margin: 1.2rem 0 0 0;
+		text-align: right;
+    	.dir-rtl & {
+    		text-align: left;
+    	}		
+		.g-toplevel {
+
+			> li {
+				margin: 0 0.5rem;
+				> .g-menu-item-container {
+					text-transform: uppercase;
+					color: $navigation-text-color;
+					padding: $content-padding/4 0;
+					.g-menu-parent-indicator {					
+						&:after {
+							content: "\f107";
+							opacity: 0.75;
+						}
+					}
+				}
+				&:hover, &.active {
+					> .g-menu-item-container {
+						color: $accent-color-1;			
+						> .g-selected {
+							color: $accent-color-1;
+						}
+					}
+				}
+			}
+		}
+
+		.g-dropdown {
+			background: $accent-color-1;
+			border: 1px solid darken($accent-color-1, 15%);
+			border-radius: 0;
+			> .g-dropdown-column {
+				border: 1px solid transparent;
+			}
+			a {
+				color: $white;
+				&:hover {
+					color: darken($accent-color-1, 25%);
+				}
+			}
+		}
+
+		.g-sublevel {
+			> li {
+				> .g-menu-item-container {
+					color: $white;
+					font-weight: bold;
+					border: 1px solid transparent;
+					> .g-selected {
+						color: $white;
+						font-weight: bold;
+						border: 1px solid transparent;						
+					}					
+				}
+
+				&:hover, &.active {
+					> .g-menu-item-container {
+						background: darken($accent-color-1, 10%);
+						color: $white;
+						border: 1px solid darken($accent-color-1, 12%);
+						border-radius: 2px;
+						> .g-selected {
+							background: darken($accent-color-1, 10%);
+							color: $white;
+							border: 1px solid darken($accent-color-1, 12%);
+							border-radius: 2px;
+						}
+					}
+				}
+				&.g-menu-item-type-particle {
+					&:hover, &.active {
+						> .g-menu-item-container {		
+							border: 1px solid transparent;	
+						}
+					}				
+				}
+
+				&:last-child {
+					border-bottom: none;					
+				}
+
+				&.g-menu-item-type-particle {
+					&:hover {
+						> .g-menu-item-container {
+							background: inherit;
+						}	
+					}
+				}
+			}
+		}
+	}	
+	.g-menu-block {
+		@include breakpoint(mobile-only) {
+			display: none;
+		}		
+	}	
+	.g-menu-item-subtitle {
+		text-transform: lowercase;
+		font-size: 0.85rem;
+		font-weight: bold;
+		opacity: 0.8;
+		padding-top: 0;
+	}
+}
+
+.g-menu-hastouch {
+	.g-standard, .g-fullwidth {
+		.g-toplevel {
+			> li {
+				&.g-menu-item-link-parent {
+					> .g-menu-item-container {
+						> .g-menu-parent-indicator {
+							@extend %link-parent-indicator;
+						}
+					}
+				}
+			}
+		}		
+		.g-sublevel {
+			> li {
+				&.g-menu-item-link-parent {
+					> .g-menu-item-container {
+						> .g-menu-parent-indicator {
+							@extend %link-parent-indicator;
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
+.menu-item-particle {
+	a {
+		color: $accent-color-1;
+		&:hover {
+			color: $navigation-text-color;
+		}
+	}
+}
+
+@media print {
+	#g-navigation {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

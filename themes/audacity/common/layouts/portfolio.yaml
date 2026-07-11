@@ -1,0 +1,383 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1523567954
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-3952
+  /breadcrumb/:
+    -
+      - position-position-8634
+  /utility/: {  }
+  /feature/:
+    -
+      - mosaic-6251
+  /maintop/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 33': {  }
+      -
+        'main 34':
+          -
+            - custom-4580
+      -
+        'aside 33': {  }
+  /mainbottom/:
+    -
+      - testimonials-9738
+  /extension/:
+    -
+      - custom-9178
+  /bottom/: {  }
+  /footer/:
+    -
+      - 'custom-5072 50'
+      - 'custom-3219 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+      class: hidden-phone
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  sidebar:
+    type: section
+  main:
+    attributes:
+      class: ''
+      variations: ''
+  aside:
+    type: section
+  container-main:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  custom-3952:
+    title: Heading
+    attributes:
+      title: Portfolio
+      titletag: 'What We Have Already Done'
+      html: ''
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'rt-title-large module-title'
+      variations: 'center nomarginall'
+  position-position-8634:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  mosaic-6251:
+    attributes:
+      allitems: ''
+      allposition: left
+      selected: all
+      cols: cols-4
+      overlay: enabled
+      tag: enabled
+      cases:
+        -
+          items:
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Spectral
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Spectral
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Acacia
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Acacia
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Corvus
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Corvus
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Praxis
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Praxis
+          title: App
+        -
+          items:
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Stratos
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Stratos
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Oculus
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Oculus
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Hexeris
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Hexeris
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Alerion
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Alerion
+          title: Logo
+        -
+          items:
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Afterburner
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Afterburner
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Chapelco
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Chapelco
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Lumiere
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Lumiere
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Leviathan
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Leviathan
+          title: Web
+        -
+          items:
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Cerulean
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Cerulean
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Metropolis
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Metropolis
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Graffito
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Graffito
+            -
+              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              title: Fracture
+              subtitle: 'Objectively innovate empowered manufactured products'
+              linklabel: 'Read More'
+              url: '#'
+              target: _self
+              buttonclass: readon
+              name: Fracture
+          title: Pixel
+    block:
+      variations: 'box3 nomarginall'
+  custom-4580:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<h3>Our Awesome Project</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\">\n\t\t\t\t\t<img src=\"gantry-media://pages/portfolio/img-17.jpg\" alt=\"image\" />\n\t\t\t\t</span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Project Description</h3>\n\t\t\t\t<p>Efficiently unleash cross-media information without cross-media value.<span class=\"hidden-tablet\"> Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</span></p>\n\t\t\t\t<h3>Project Details</h3>\n\t\t\t\t<div class=\"gantry-row\">\n\t\t\t\t\t<div class=\"gantry-width-30\">\n\t\t\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Customer:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Live Demo:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Published<span class=\"hidden-tablet\"> Date</span>:</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"gantry-width-70\">\n\t\t\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">RocketTheme</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">http://www.rockettheme.com</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">08 March, 2014</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"clear\"></div>\n\t\t\t\t<p class=\"largemargintop\"><a href=\"#\" class=\"readon\">Learn More</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+  testimonials-9738:
+    attributes:
+      class: ''
+      title: 'What Our Clients Say'
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: disabled
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          title: ''
+          desc: '<p class="promo2">Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds.</p>'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button
+          name: 'Item 1'
+        -
+          image: ''
+          title: ''
+          desc: '<p class="promo2">The template styling is built with SCSS, a programmable stylesheet language for CSS, making the CSS more dynamic and adaptable. You can easily enable and disable automatic recompilation of SCSS files.</p>'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button
+          name: 'Item 2'
+        -
+          image: ''
+          title: ''
+          desc: '<p class="promo2">Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.</p>'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button
+          name: 'Item 3'
+    block:
+      variations: 'center box3 nomarginall'
+  custom-9178:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Our Satisfied Clients'
+      titletag: ''
+      html: "<p>Will You be the Next to Join Our Happy Clients?</p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-18.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-19.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-20.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-21.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-22.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br /><br />\n\n<p><a href=\"#\" class=\"readon\">Join Now</a></p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: module-title
+      variations: center
+  custom-5072:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Audacity Demo'
+      titletag: ''
+      html: "<p class=\"hidden-phone\">These examples are intended to show how Audacity can be constructed on your site, above and beyond the frontpage demonstration. These include Joomla content and component pages, with varying modular content, mainbody widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Audacity RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'
+  custom-3219:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Sample Contact Info'
+      titletag: ''
+      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      class: 'module-title rt-phone-center'

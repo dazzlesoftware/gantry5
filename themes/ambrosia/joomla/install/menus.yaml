@@ -1,0 +1,9 @@
+ambrosia-theme:
+  title: 'Ambrosia Theme'
+  description: 'Sample menu for Ambrosia theme.'
+
+  items:
+    ambrosia:
+      title: 'Home'
+      layout: home
+      home: 1

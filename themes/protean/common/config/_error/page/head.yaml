@@ -1,0 +1,10 @@
+atoms:
+  -
+    id: assets-4920
+    type: assets
+    title: 'Custom CSS / JS'
+    attributes:
+      enabled: '1'
+      css:
+        - { location: 'gantry-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
+      javascript: {  }

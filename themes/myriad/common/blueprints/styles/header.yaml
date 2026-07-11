@@ -1,0 +1,15 @@
+name: Header Colors
+description: Header colors for the Myriad theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text Color
+      default: "#686868"

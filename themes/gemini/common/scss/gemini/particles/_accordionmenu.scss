@@ -1,0 +1,61 @@
+.g-accordionmenu {
+    ol, ul {
+        list-style: none;
+        margin: 0;
+    }
+
+    // Styling top level items
+    .nav {
+        line-height: $core-line-height - 0.3;
+        a, label {
+            display: inline-block;
+            transition: all .25s ease-in;
+            margin: 0;
+        }
+        a:focus, a:hover, label:focus, label:hover {}
+
+        .g-accordionmenu-group-title, .indicator {
+            cursor: pointer;
+            font-size: $core-font-size + 2;
+            font-weight: $font-weight-light;
+            border-bottom: 2px solid transparent;
+        }
+    }
+
+    .g-accordionmenu-group.open {
+        .g-accordionmenu-group-title {
+            color: $accent-color-2 !important;
+            border-bottom: 2px solid $accent-color-2;
+        }
+        a, .indicator {
+            color: $accent-color-2 !important;
+        }
+    }
+
+    // Styling first level lists items
+    .g-accordionmenu-group-list {
+        margin-top: $content-margin;
+        height: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s ease-in-out;
+        a {
+            margin: $content-margin - 0.5 0;
+            font-size: $core-font-size + 0.3;
+            font-weight: normal;
+        }
+    }
+
+    .g-accordionmenu-group.open .g-accordionmenu-group-list {
+        max-height: 1000px;
+    }
+
+    .g-accordionmenu-group .indicator:before {
+        content: "+";
+        padding-left: $content-padding;
+    }
+
+    .g-accordionmenu-group.open span:before {
+        content: "-";
+    }
+}

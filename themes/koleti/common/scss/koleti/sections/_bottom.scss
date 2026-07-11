@@ -1,0 +1,11 @@
+#g-bottom {
+    background: $bottom-background;
+    color: $bottom-text-color;
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

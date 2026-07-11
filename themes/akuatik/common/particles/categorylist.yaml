@@ -1,0 +1,115 @@
+name: Category List
+description: Simple category listing
+type: particle
+icon: fa-folder
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    _tabs:
+      type: container.tabs
+      fields:
+        _tab_settings:
+          label: Settings
+          overridable: false
+          fields:
+            source:
+              overridable: false
+              type: select.select
+              label: Content Source
+              description: Choose if the content should be loaded from the platform or particle itself.
+              default: particle
+              options:
+                particle: Particle
+                joomla: Joomla
+            title:
+              overridable: false
+              type: input.text
+              label: Title
+              description: Customize the title text.
+              placeholder: Enter title
+            readmorelabel:
+              type: input.text
+              label: Read More Label
+              description: Customize the read more label
+              placeholder: Enter read more label
+            readmorelink:
+              type: input.text
+              label: Read More Link
+              description: Specify the link address.
+            readmoretarget:
+              type: select.selectize
+              label: Read More Target
+              description: Target browser window when item is clicked.
+              placeholder: 'Select...'
+              default: _self
+              options:
+                  _self: Self
+                  _blank: New Window
+
+        _tab_collection:
+          label: Particle Items
+          overridable: false
+          fields:
+            categories:
+              type: collection.list
+              array: true
+              label: Categories
+              description: Create case studies.
+              value: title
+              ajax: true
+              overridable: false
+              fields:
+                .title:
+                  type: input.date
+                  label: Date
+                  description: Enter date
+                .featured:
+                  type: select.select
+                  label: Featured
+                  description: Decide if you want following item to be featured or not
+                  default: disabled
+                  options:
+                    enabled: 'Yes'
+                    disabled: 'No'
+                .url:
+                  type: input.text
+                  label: Url
+                  description: Customize case url.
+                .target:
+                  type: select.selectize
+                  label: Target
+                  description: Target browser window when item is clicked.
+                  placeholder: 'Select...'
+                  default: _self
+                  options:
+                    _self: Self
+                    _blank: New
+
+
+        _tab_articles:
+          label: Categories
+          overridable: false
+          fields:
+            article.filter.categories:
+              overridable: false
+              type: joomla.categories
+              label: Categories
+              description: Select the categories to list.
+
+            article.display.category.target:
+              overridable: false
+              type: select.selectize
+              label: Target
+              description: Target browser window when item is clicked.
+              placeholder: 'Select...'
+              default: _self
+              options:
+                _self: Self
+                _blank: New Window

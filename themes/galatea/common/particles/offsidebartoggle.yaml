@@ -1,0 +1,35 @@
+name: OffSidebar Toggle
+description: Display Pricing Table items.
+type: particle
+icon: fa-bars
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    icon:
+      type: input.icon
+      label: Toggle Icon
+      description: Input the toggle icon.
+
+    type:
+      type: select.select
+      label: Type
+      description: Choose the type.
+      default: slidedown
+      options:
+        slidedown: Slide Down
+        pushpage: Push Page

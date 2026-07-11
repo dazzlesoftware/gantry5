@@ -1,0 +1,31 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    // Simple Menu Particle
+    .g-simplemenu-particle {
+        @include breakpoint(no-mobile) {
+            margin-top: $content-margin;
+            padding-top: $content-padding;
+        }
+
+        .g-simplemenu {
+            li {
+                a {
+                    color: $footer-text-color;
+
+                    &:hover {
+                        color: $base-text-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-container-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

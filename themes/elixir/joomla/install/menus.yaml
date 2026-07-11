@@ -1,0 +1,9 @@
+elixir-theme:
+  title: 'Elixir Theme'
+  description: 'Sample menu for Elixir theme.'
+
+  items:
+    elixir:
+      title: 'Home'
+      outline: home
+      home: 1

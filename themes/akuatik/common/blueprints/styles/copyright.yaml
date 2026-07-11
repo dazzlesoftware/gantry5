@@ -1,0 +1,15 @@
+name: Copyright Styles
+description: Copyright styles for the theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#07102A"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#b0b8d0"
+

@@ -1,0 +1,33 @@
+@import "dependencies";
+
+@include breakpoint(mobile-only) {
+    .headroom-bg-section {
+        .disable-mobile & {
+            transform: none !important;
+            position: relative !important;
+
+            + section, + header { 
+                padding-top: 0 !important;
+            }
+        }
+    }
+}
+
+.headroom-bg-section {
+    position: fixed !important;
+    width: 100%;
+    z-index: 1001 !important;
+    right: 0;
+    left: 0;
+    top: 0;    
+    transition: all 0.3s;
+    backface-visibility: hidden;
+
+    &.headroom--pinned {
+        transform: translateY(0%);
+    }
+
+    &.headroom--unpinned {
+        transform: translateY(-100%);
+    }
+}

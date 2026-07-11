@@ -1,0 +1,398 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+    {% if ajax is defined %}
+        {{ block('ajax') }}
+    {% else %}
+        {{ block('nonajax') }}
+    {% endif %}
+{% endblock %}
+
+{% block ajax %}
+    {% set tab_index = ajax.tab %}
+    {% set tab = particle.tabs[tab_index] %}
+    {{ block('platform_content') }}
+{% endblock %}
+
+{% block nonajax %}
+    <div class="g-articletabs {{ particle.class|e }}">
+
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div id="{{ id }}" data-articletabs-id="{{ id }}">
+            <ul>
+                {% for tab_index, tab in particle.tabs %}
+                    <li><a href="#tab-{{ id }}-{{ tab_index }}">{{ tab.title }}</a></li>
+                {% endfor %}
+            </ul>
+
+            {% for tab_index, tab in particle.tabs %}
+                <div id="tab-{{ id }}-{{ tab_index }}">
+                    {% if particle.source == 'joomla' %}
+                        {{ block('platform_content') }}
+                    {% else %}
+                        {{ block('particle_content') }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block platform_content %}
+    {% set article_settings = tab.article %}
+    {% set filter = article_settings.filter %}
+    {% set sort = article_settings.sort %}
+    {% set limit = article_settings.limit %}
+    {% set display = article_settings.display %}
+    {% set display_first = article_settings.display_first %}
+
+    {# Category Finder #}
+    {% set category_options = filter.categories ? {id: [filter.categories|split(','), 0]} : {} %}
+    {% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+    {# Content Finder #}
+    {% if filter.articles %}
+        {% set article_options = filter.articles ? {id: [filter.articles|replace(' ', '')|split(',')]} : {} %}
+        {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+    {% else %}
+        {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+    {% endif %}
+
+    {% set featured = filter.featured|default('include') %}
+    {% if featured == 'exclude' %}
+        {% do article_finder.featured(false) %}
+    {% elseif featured == 'only' %}
+        {% do article_finder.featured(true) %}
+    {% endif %}
+
+    {% set start = limit.start + max(0, ajax.start|int) %}
+    {% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(start) %}
+    {% set total = article_finder.count() %}
+    {% set articles = article_finder.find() %}
+
+    <div class="g-articletabs-columns">
+
+        {% for article in articles %}
+            {% if loop.first %}
+                <div class="g-articletabs-column-first">
+                    <div class="g-articletabs-item">
+                        {% if display_first.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                            {% if article.images.image_intro and display_first.image.enabled == 'intro' or display_first.image.enabled == 'show' %}
+                                <div class="g-articletabs-item-image">
+                                    <a href="{{ article.route }}">
+                                        <img src="{{ url(article.images.image_intro) }}" {{ article.images.image_intro|imagesize|raw }} />
+                                    </a>
+                                </div>
+                            {% elseif article.images.image_fulltext and display_first.image.enabled == 'full' %}
+                                <div class="g-articletabs-item-image">
+                                    <a href="{{ article.route }}">
+                                        <img src="{{ url(article.images.image_fulltext) }}" {{ article.images.image_fulltext|imagesize|raw }} />
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if display_first.date.enabled or display_first.author.enabled %}
+                            <div class="g-articletabs-item-details">
+                                {% if display_first.date.enabled %}
+                                    <span class="g-articletabs-item-date">
+                                        {% if display_first.date.enabled == 'published' %}
+                                            {{ article.publish_up|date(display_first.date.format) }}
+                                        {% elseif display_first.date.enabled == 'modified' %}
+                                            {{ article.modified|date(display_first.date.format) }}
+                                        {% else %}
+                                            {{ article.created|date(display_first.date.format) }}
+                                        {% endif %}
+
+                                        {%- if display_first.author.enabled %},  {% endif %}
+                                    </span>
+                                {% endif %}
+
+                                {% if display_first.author.enabled %}
+                                    <span class="g-articletabs-item-author">
+                                        {{ article.author.name }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if display_first.title.enabled %}
+                            <div class="g-articletabs-item-title">
+                                <h3 class="g-item-title">
+                                    <a href="{{ article.route }}">
+                                        {{ display_first.title.limit ? article.title|truncate_text(display_first.title.limit) : article.title }}
+                                    </a>
+                                </h3>
+                            </div>
+                        {% endif %}
+
+                        {% if display_first.text.type %}
+                            {% set article_text = display_first.text.type == 'intro' ? article.introtext : article.text %}
+                            <div class="g-articletabs-item-text">
+                                {% if display_first.text.formatting == 'text' %}
+                                    {{ article_text|truncate_text(display_first.text.limit)|raw }}
+                                {% else %}
+                                    {{ article_text|truncate_html(display_first.text.limit)|raw }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="g-articletabs-column-second">
+
+            {% for article in articles %}
+                {% if not loop.first %}
+                    <div class="g-articletabs-item">
+
+                        <div class="g-articletabs-item-imagecontainer">
+                            {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                                {% if article.images.image_intro and display.image.enabled == 'intro' or display.image.enabled == 'show' %}
+                                    <div class="g-articletabs-item-image">
+                                        <a href="{{ article.route }}">
+                                            <img src="{{ url(article.images.image_intro) }}" {{ article.images.image_intro|imagesize|raw }} />
+                                        </a>
+                                    </div>
+                                {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                                    <div class="g-articletabs-item-image">
+                                        <a href="{{ article.route }}">
+                                            <img src="{{ url(article.images.image_fulltext) }}" {{ article.images.image_fulltext|imagesize|raw }} />
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                        <div class="g-articletabs-item-content">
+                            {% if display.title.enabled %}
+                                <div class="g-articletabs-item-title">
+                                    <h3 class="g-item-title">
+                                        <a href="{{ article.route }}">
+                                            {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                                        </a>
+                                    </h3>
+                                </div>
+                            {% endif %}
+
+                            {% if display.date.enabled or display.author.enabled %}
+                                <div class="g-articletabs-item-details">
+                                    {% if display.date.enabled %}
+                                        <span class="g-articletabs-item-date">
+                                            {% if display.date.enabled == 'published' %}
+                                                {{ article.publish_up|date(display.date.format) }}
+                                            {% elseif display.date.enabled == 'modified' %}
+                                                {{ article.modified|date(display.date.format) }}
+                                            {% else %}
+                                                {{ article.created|date(display.date.format) }}
+                                            {% endif %}
+
+                                            {%- if display.author.enabled %},  {% endif %}
+                                        </span>
+                                    {% endif %}
+
+                                    {% if display.author.enabled %}
+                                        <span class="g-articletabs-item-author">
+                                            {{ article.author.name }}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% if display.text.type %}
+                                {% set article_text = display.text.type == 'intro' ? article.introtext : article.text %}
+                                <div class="g-articletabs-item-text">
+                                    {% if display.text.formatting == 'text' %}
+                                        {{ article_text|truncate_text(display.text.limit)|raw }}
+                                    {% else %}
+                                        {{ article_text|truncate_html(display.text.limit)|raw }}
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    {% if total > limit.total and limit.pagination_buttons %}
+        <div class="g-articletabs-pagination">
+            <button class="button float-left pagination-button articletabs-pagination-button pagination-button-prev" data-id="{{ id }}" data-tab="{{ tab_index }}" data-start="{{ max(0, start - limit.total) }}"{{ start - limit.total < 0 ? ' disabled' }}>Prev</button>
+            <button class="button float-right pagination-button articletabs-pagination-button pagination-button-next" data-id="{{ id }}" data-tab="{{ tab_index }}" data-start="{{ start + limit.total }}"{{ start + limit.total >= total ? ' disabled' }}>Next</button>
+            <div class="clearfix"></div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block particle_content %}
+    <div class="g-articletabs-columns">
+
+        {% for item in tab.items %}
+            {% if loop.first %}
+                <div class="g-articletabs-column-first">
+                    <div class="g-articletabs-item">
+                        {% if item.image %}
+                            <div class="g-articletabs-item-image">
+                                <a href="{{ item.link|default('#') }}">
+                                    <img src="{{ url(item.image) }}" {{ item.image|imagesize|raw }} />
+                                </a>
+                            </div>
+                        {% endif %}
+
+                        {% if item.date or item.author %}
+                            <div class="g-articletabs-item-details">
+                                {% if item.date %}
+                                    <span class="g-articletabs-item-date">
+                                        {{ item.date }}
+
+                                        {%- if item.author %},  {% endif %}
+                                    </span>
+                                {% endif %}
+
+                                {% if item.author %}
+                                    <span class="g-articletabs-item-author">
+                                        {{ item.author }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if item.title %}
+                            <div class="g-articletabs-item-title">
+                                <h3 class="g-item-title">
+                                    <a href="{{ item.link|default('#') }}">
+                                        {{ item.title|raw }}
+                                    </a>
+                                </h3>
+                            </div>
+                        {% endif %}
+
+                        {% if item.content %}
+                            <div class="g-articletabs-item-text">
+                                {{ item.content|raw }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="g-articletabs-column-second">
+
+            {% for item in tab.items %}
+                {% if not loop.first %}
+                    <div class="g-articletabs-item">
+
+                        <div class="g-articletabs-item-imagecontainer">
+                            {% if item.image %}
+                                <div class="g-articletabs-item-image">
+                                    <a href="{{ item.link|default('#') }}">
+                                        <img src="{{ url(item.image) }}" {{ item.image|imagesize|raw }} />
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="g-articletabs-item-content">
+                            {% if item.title %}
+                                <div class="g-articletabs-item-title">
+                                    <h3 class="g-item-title">
+                                        <a href="{{ item.link|default('#') }}">
+                                            {{ item.title|raw }}
+                                        </a>
+                                    </h3>
+                                </div>
+                            {% endif %}
+
+                            {% if item.date or item.author %}
+                                <div class="g-articletabs-item-details">
+                                    {% if item.date %}
+                                        <span class="g-articletabs-item-date">
+                                            {{ item.date }}
+
+                                            {%- if item.author %},  {% endif %}
+                                        </span>
+                                    {% endif %}
+
+                                    {% if item.author %}
+                                        <span class="g-articletabs-item-author">
+                                            {{ item.author }}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% if item.content %}
+                                <div class="g-articletabs-item-text">
+                                    {{ item.content|raw }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/jquery.responsiveTabs.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/articletabs.init.js') }}"></script>
+
+    {% set ajax_is_used = false %}
+    {% for tab in particle.tabs %}
+        {% if tab.article.limit.pagination_buttons %}
+            {% set ajax_is_used = true %}
+        {% endif %}
+    {% endfor %}
+
+    {% if ajax_is_used %}
+        <script>
+            (function ($) {
+                $(document).on('click', 'button.articletabs-pagination-button', function () {
+                    var id = $(this).attr('data-id'),
+                        tab = $(this).attr('data-tab'),
+                        start = $(this).attr('data-start'),
+                        request = {
+                            'option' : 'com_ajax',
+                            'plugin' : 'particle',
+                            'Itemid' : {{ gantry.page.itemid|int }},
+                            'id'     : id,
+                            'tab'    : tab,
+                            'start'  : start,
+                            'format' : 'json'
+                        };
+                    $.ajax({
+                        type       : 'GET',
+                        data       : request,
+                        indexValue : 'tab-' + id + '-' + tab,
+                        success: function (response) {
+                            if(response.data){
+                                $('#' + this.indexValue).html(response.data[0].html);
+                            } else {
+                                // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
+                                $('#' + this.indexValue).html(response.message);
+                            }
+                        },
+                        error: function(response) {
+                            // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
+                            $('#' + this.indexValue).html('AJAX FAILED ON ERROR');
+                        }
+                    });
+                    return false;
+                });
+            })(jQuery);
+        </script>
+    {% endif %}
+{% endblock %}

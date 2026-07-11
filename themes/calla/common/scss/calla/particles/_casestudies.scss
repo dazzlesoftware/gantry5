@@ -1,0 +1,363 @@
+.g-casestudies {
+    position: relative;
+    opacity: 0;
+    &.visible {
+        opacity: 1;
+    } // Header
+    .g-casestudies-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: $content-padding;
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
+        @include breakpoint(mobile-only) {
+            display: block;
+        } // Title
+        .g-casestudies-title {
+            display: block;
+            @include responsive-font($responsive-font-size + 1, $core-font-size, false, false);
+            font-weight: $font-weight-bold;
+            color: $black;
+            padding-right: $content-padding;
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding-right: 0;
+            }
+            .dir-rtl & {
+                padding-left: $content-padding;
+                padding-right: 0;
+            } // Upper Title
+            .g-casestudies-uppertitle {
+                display: block;
+                padding-right: $content-padding;
+                color: transparentize($base-text-color, 0.65);
+                @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+                font-weight: $font-weight-semibold;
+                line-height: 1.5;
+                letter-spacing: 5px;
+                text-transform: uppercase;
+                @include breakpoint(mobile-only) {
+                    text-align: center;
+                    padding-right: 0;
+                }
+                .dir-rtl & {
+                    padding-left: $content-padding;
+                    padding-right: 0;
+                }
+            }
+        } // Navigation
+        .g-casestudies-nav {
+            position: relative;
+            flex: 1 0 auto;
+            align-self: center;
+            i {
+                display: none;
+                position: absolute;
+                top: 1rem;
+                left: $content-margin;
+                @include breakpoint(mobile-only) {
+                    display: block;
+                }
+            } // Mobile menu
+            @include breakpoint(mobile-only) {
+                min-height: 6rem;
+                width: 100%;
+            }
+            .g-casestudies-nav-container {
+                display: flex;
+                justify-content: flex-end; // Mobile menu
+                @include breakpoint(mobile-only) {
+                    flex-direction: column;
+                    width: 75%;
+                    padding: 5px 0;
+                    position: absolute;
+                    right: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    border: solid 1px #aaa;
+                    background: $white;
+                    z-index: 15;
+                    margin-top: 1rem;
+                }
+            } // Item
+            .g-casestudies-nav-item {
+                cursor: pointer;
+                padding: $content-margin $content-padding;
+                margin-right: $content-margin;
+                @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                font-weight: $font-weight-semibold;
+                color: darken($base-text-color, 10%);
+                position: relative;
+                border-radius: 24px;
+                &.selected,
+                &:hover {
+                    color: $button-text-color;
+                    background: $button-background-color;
+                    @include breakpoint(mobile-only) {
+                        background: none;
+                        color: $black;
+                    }
+                }
+                @include breakpoint(mobile-only) {
+                    display: none;
+                    padding: $content-margin - 0.2 $content-padding + 0.5;
+                }
+                &.selected {
+                    @include breakpoint(mobile-only) {
+                        display: block;
+                    }
+                }
+                &.clicked {
+                    display: block;
+                }
+            }
+        }
+    } // Grid Settings
+    .g-casestudies-grid {
+        position: relative;
+        margin: 0 -($content-padding * 3);
+        @include breakpoint(mobile-only) {
+            margin: 0 -$content-padding;
+        }
+        overflow: visible !important; // Item & Item content
+        .g-casestudies-grid-item {
+            cursor: pointer;
+            will-change: auto !important;
+            a.g-casestudies-link-overlay {
+                position: absolute;
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                top: 0;
+            }
+            .g-casestudies-grid-item-wrapper {
+                margin: $content-padding * 3;
+                @include breakpoint(mobile-only) {
+                    margin: $content-padding;
+                }
+                position: relative;
+                transition: all 0.25s;
+                .g-casestudies-grid-item-image {
+                    position: relative;
+                    img {
+                        width: 100%;
+                        min-height: 1px;
+                        transition: all 0.25s;
+                    }
+                } // Accent Colors
+                &.g-casestudies-accent-color-1 {
+                    .g-casestudies-grid-item-case {
+                        background-color: $accent-color-1;
+                    }
+                }
+                &.g-casestudies-accent-color-2 {
+                    .g-casestudies-grid-item-case {
+                        background-color: $accent-color-2;
+                    }
+                } // Layouts
+                &.g-casestudies-layout-default-bottom,
+                &.g-casestudies-layout-default-top {
+                    &.g-casestudies-accent-color-1 {
+                        .g-casestudies-grid-item-content {
+                            background: $accent-color-1;
+                            &:before {
+                                border-color: darken($accent-color-1, 10%);
+                                left: auto;
+                                right: -1rem;
+                            }
+                        }
+                        .g-casestudies-grid-item-case {
+                            background-color: darken($accent-color-1, 10%);
+                        }
+                    }
+                    &.g-casestudies-accent-color-2 {
+                        .g-casestudies-grid-item-content {
+                            background: $accent-color-2;
+                            &:before {
+                                border-color: darken($accent-color-2, 10%);
+                            }
+                        }
+                        .g-casestudies-grid-item-case {
+                            background-color: $accent-color-1;
+                        }
+                    }
+                    .g-casestudies-grid-item-content {
+                        padding: $content-padding * 2;
+                        bottom: 0;
+                        &:before {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            bottom: -1rem;
+                            left: -1rem;
+                            border: 4px solid rgba(0, 0, 0, 0);
+                            content: "";
+                        }
+                    }
+                }
+                &.g-casestudies-layout-alt-top,
+                &.g-casestudies-layout-alt-bottom {
+                    .g-casestudies-grid-item-content {
+                        position: static;
+                        width: 100%;
+                        margin-left: 0;
+                        margin-right: 0;
+                        .g-casestudies-grid-item-title {
+                            color: $black;
+                        }
+                        .g-casestudies-grid-item-subtitle {
+                            color: $base-text-color;
+                            font-weight: $font-weight-regular;
+                        }
+                        .g-casestudies-grid-item-description {
+                            color: darken($base-text-color, 20%);
+                        }
+                    }
+                    .g-casestudies-grid-item-image {
+                        margin-bottom: $content-padding;
+                        &:before {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: -1rem;
+                            left: -1rem;
+                            border: 4px solid rgba(0, 0, 0, 1);
+                            content: "";
+                        }
+                    }
+
+                    &.g-casestudies-accent-color-1 {
+                        .g-casestudies-grid-item-image {
+                            &:before {
+                                border-color: $accent-color-1;
+                            }
+                        }
+                    }
+                    &.g-casestudies-accent-color-2 {
+                        .g-casestudies-grid-item-image {
+                            &:before {
+                                border-color: $accent-color-2;
+                            }
+                        }
+                    }
+                }
+                &.g-casestudies-layout-alt-top {
+                    .g-casestudies-grid-item-content {
+                        margin-top: 0;
+                        .g-casestudies-grid-item-subtitle {
+                            position: relative;
+                            top: 0;
+                            margin: 0;
+                            margin-bottom: 5px;
+                            color: $base-text-color;
+                        }
+                    }
+                }
+                &.g-casestudies-layout-alt-bottom {
+                    flex-direction: column-reverse;
+                }
+            }
+            .g-casestudies-grid-item-content {
+                width: 100%;
+                left: 0;
+                text-align: left;
+                z-index: 3;
+                @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                transition: color 0.5s;
+                .dir-rtl & {
+                    text-align: right;
+                }
+                .g-casestudies-grid-item-title {
+                    color: $black;
+                    font-weight: $font-weight-bold;
+                    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                    line-height: $core-line-height - 0.4;
+                }
+                .g-casestudies-grid-item-subtitle {
+                    color: $black;
+                    opacity: 0.3;
+                    font-weight: $font-weight-regular;
+                    margin-top: $content-margin;
+                    @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
+                }
+                .g-casestudies-grid-item-case {
+                    color: $black;
+                    @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
+                    font-weight: $font-weight-semibold;
+                    background: transparent;
+                    display: inline-block;
+                    letter-spacing: 3px;
+                    clear: both;
+                    margin-bottom: $content-margin * 2;
+                    padding: ($content-margin / 2) $content-margin;
+                }
+                .g-casestudies-grid-item-description {
+                    color: $white;
+                    margin-top: ($content-margin + 0.5);
+                    @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
+                }
+                .g-casestudies-grid-item-button {
+                    display: block;
+                    margin-top: 5px;
+                    color: darken($base-text-color, 40%);
+                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
+                }
+            }
+            &:hover {
+                .g-casestudies-grid-item-wrapper {
+                    .g-casestudies-grid-item-button {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        } // Column layout
+        // 2 Columns
+        &.cols-2 {
+            .g-casestudies-grid-item,
+            .g-casestudies-grid-sizer {
+                width: 50%;
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        } // 3 Columns
+        &.cols-3 {
+            .g-casestudies-grid-item,
+            .g-casestudies-grid-sizer {
+                width: 33.3%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        } // 4 Columns
+        &.cols-4 {
+            .g-casestudies-grid-item,
+            .g-casestudies-grid-sizer {
+                width: 25%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        } // 5 Columns
+        &.cols-5 {
+            .g-casestudies-grid-item,
+            .g-casestudies-grid-sizer {
+                width: 20%;
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+{% for item in particle.iconlists %}
+<div {% if item.aos %}data-aos="{{ item.aos }}" data-aos-delay="{{ item.delay }}"{% endif %} class="rt-icon-left rt-hero-icon">
+  <i class="{{ item.icon }}"></i>
+</div>
+<h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+<p>{{ item.desc }}</p>
+
+<br />
+{% endfor %}
+
+{% endblock %}

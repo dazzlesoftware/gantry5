@@ -1,0 +1,33 @@
+name: Button
+description: Display simple button
+type: particle
+icon: fa-battery-4
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+    label:
+      type: input.text
+      label: Label
+      default: Button label
+    link:
+      type: input.text
+      label: Link
+    target:
+      type: select.selectize
+      label: Target
+      description: Target browser window when item is clicked.
+      placeholder: 'Select...'
+      options:
+          _self: Self
+          _blank: New Window
+          lightcase: Lightcase
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.

@@ -1,0 +1,9 @@
+.g-branding {
+    @include breakpoint(mobile-only) {
+      text-align: center;
+    }
+
+    .dir-rtl & {
+        direction: ltr;
+    }
+}

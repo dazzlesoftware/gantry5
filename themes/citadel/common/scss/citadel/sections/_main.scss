@@ -1,0 +1,10 @@
+#g-mainbar {
+    background: $main-background;
+    color: $main-text-color;
+}
+@media print {
+    #g-mainbar {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

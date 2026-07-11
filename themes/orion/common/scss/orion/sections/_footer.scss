@@ -1,0 +1,48 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    .g-simplemenu-particle .g-simplemenu-container h6,
+    .g-simplemenu-particle .g-simplemenu-container .g-simplemenu li a:hover,
+    .g-simplecontent .g-simplecontent-layout-standard .g-simplecontent-item-content-title {
+        color: set-color($footer-background);
+    }
+
+    .g-simplecontent-item-leading-content {
+        font-size: $core-font-size;
+    }
+
+    .g-simplemenu-particle .g-simplemenu-container .g-simplemenu li a,
+    .g-simplecontent-item-leading-content {
+        color: $footer-text-color;
+    }
+
+    .g-simplecontent .g-simplecontent-layout-standard .g-simplecontent-item-content-title {
+        font-weight: $font-weight-medium;
+        font-family: get-font-family($font-family-title);
+        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+    }
+
+    .g-newsletter-particle .g-newsletter .g-newsletter-inputbox input {
+        background: lighten($footer-background, 8%);
+        border: 2px solid lighten($footer-background, 16%);
+        border-radius: 8px;
+        padding: 0.725rem;
+    }
+
+    .g-simplecontent {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+    }
+
+ 
+
+}
+
+@media print {
+    #g-container-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

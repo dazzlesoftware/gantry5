@@ -1,0 +1,859 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1568059496
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - slideshow-2052
+  /header/:
+    -
+      - 'simplecontent-4643 30'
+      - 'infolist-7933 70'
+  /above/:
+    -
+      - testimonials-8981
+  /feature/:
+    -
+      - 'categorylist-3880 30'
+      - 'topiclist-3937 70'
+  /showcase/:
+    -
+      - pricingtable-2666
+  /utility/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-1120
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - team-3195
+  /extension/:
+    -
+      - latestnews-4049
+  /bottom/:
+    -
+      - blockcontent-4770
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+    inherit:
+      outline: default
+      include:
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-slideshow'
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings-large
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings-large'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+  container-footer:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  slideshow-2052:
+    attributes:
+      source: particle
+      height: 600px
+      progressbar: enabled
+      arrows: enabled
+      autoplay: enabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      touchmove: disabled
+      effect: slide
+      items:
+        -
+          class: ''
+          image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
+          image2: 'gantry-media://home/slideshow/img-01.png'
+          bg_horizontal: center
+          bg_vertical: center
+          bg_horizontal2: right
+          bg_vertical2: bottom
+          main_title: 'Build Brand Awareness'
+          top_title: 'Eye-catching visuals and subtle <br/> animations draw visitors’ attention <br/> to what’s important to your brand.'
+          link: '#'
+          linktarget: _self
+          author_image: ''
+          author_text: 'Learn more'
+          author_link: '#'
+          author_linktarget: _self
+          title: 'Item 1'
+        -
+          class: ''
+          image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
+          image2: 'gantry-media://home/slideshow/img-01.png'
+          bg_horizontal: center
+          bg_vertical: center
+          bg_horizontal2: right
+          bg_vertical2: center
+          main_title: 'A Fresh, New Design'
+          top_title: 'Boring websites are no fun. <br/> Give your visitors a unique user <br/> experience on your website.'
+          link: '#'
+          linktarget: _self
+          author_image: ''
+          author_text: 'Learn more'
+          author_link: '#'
+          author_linktarget: _self
+          title: 'Item 2'
+        -
+          class: ''
+          image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
+          image2: 'gantry-media://home/slideshow/img-01.png'
+          bg_horizontal: center
+          bg_vertical: center
+          bg_horizontal2: right
+          bg_vertical2: center
+          main_title: 'A Different Approach'
+          top_title: 'Akuatik approaches web design <br/> from a different angle, putting <br/> you ahead of the competition.'
+          link: '#'
+          linktarget: _self
+          author_image: ''
+          author_text: 'Learn more'
+          author_link: '#'
+          author_linktarget: _self
+          title: 'Item 3'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          author:
+            enabled: show
+          author_image:
+            enabled: intro
+          text:
+            type: intro
+            limit: ''
+          category:
+            enabled: show
+          title:
+            enabled: show
+            limit: ''
+          link:
+            enabled: enabled
+            target: _self
+  simplecontent-4643:
+    title: 'Simple Content'
+    attributes:
+      class: text-left
+      title: 'A bold design built on the powerful Gantry framework.'
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: 'Try it!'
+          readmore_link: '#'
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+  infolist-7933:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-2cols
+      infolists:
+        -
+          icon: 'fa fa-heartbeat'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: large
+          imagestyle: compact
+          desc: 'Create custom layouts with drag-and-drop simplicity.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'LAYOUT MANAGER'
+        -
+          icon: 'fa fa-microchip'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Customize your menus with injected particles and more.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'MENU EDITOR'
+        -
+          icon: 'fa  fa-apple'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Add functionality to your site in seconds.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: ATOMS
+        -
+          icon: 'fa fa-dollar'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Create dynamic content blocks that match your vision.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: PARTICLES
+    block:
+      variations: 'nopaddingtop nopaddingbottom'
+  testimonials-8981:
+    attributes:
+      source: particle
+      class: ''
+      title: ''
+      subtitle: ''
+      autoplay: disabled
+      autoplayTimeout: '8000'
+      loop: enabled
+      speed: '800'
+      height: 700px
+      nav: enabled
+      dots: enabled
+      testimonial:
+        -
+          content: '“Akuatik is an exceptional theme for my company’s website. Its askew Slideshow and Testimonial particles are wonderful.”'
+          author: 'Dread Pirate Roberts'
+          position: 'CEO of The Company Inc'
+          photo: 'gantry-media://home/above/above-1.jpg'
+          alttext: 'Testimonial'
+          name: 'testimonial 1'
+        -
+          content: '“Akuatik is unlike any theme we’ve ever used before. The animated Team particle really draws our visitors’ eyes.”'
+          author: 'Princess Buttercup'
+          position: 'CEO of The Company Inc'
+          photo: 'gantry-media://home/above/above-1.jpg'
+          alttext: 'Testimonial'
+          name: 'testimonial 2'
+        -
+          content: '“Akuatik is perfect for small businesses and even large corporations. It is a brilliantly modern, yet professional design!”'
+          author: 'Valerie Doe'
+          position: 'CEO of The Company Inc'
+          photo: 'gantry-media://home/above/above-1.jpg'
+          alttext: 'Testimonial'
+          name: 'testimonial 3'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          title:
+            enabled: show
+            limit: ''
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          author:
+            enabled: show
+          link:
+            enabled: show
+            label: ''
+            target: _self
+  categorylist-3880:
+    title: 'Category List'
+    attributes:
+      source: particle
+      title: 'FEATURED PARTICLES'
+      readmorelabel: 'Read the blog'
+      readmorelink: '#'
+      readmoretarget: _blank
+      categories:
+        -
+          featured: 'no'
+          url: ''
+          target: _self
+          title: 'Block Content'
+        -
+          featured: 'no'
+          url: ''
+          target: _self
+          title: Slideshow
+        -
+          featured: 'yes'
+          url: ''
+          target: _self
+          title: Team
+        -
+          featured: 'no'
+          url: ''
+          target: _self
+          title: 'Pricing Table'
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+    block:
+      variations: 'nopaddingleft nopaddingright nomarginleft nomarginright'
+  topiclist-3937:
+    title: 'Topic List'
+    attributes:
+      source: particle
+      title: FEATURED
+      date_format: 'F d, Y'
+      topics:
+        -
+          featured: 'yes'
+          image: 'gantry-media://home/feature/img-01.png'
+          date: '2019-07-24'
+          url: '#'
+          target: _blank
+          title: 'Particles.js powered animations bring your site to life!'
+        -
+          featured: 'no'
+          date: '2019-07-25'
+          url: '#'
+          target: _self
+          title: 'Start a New Site in Seconds with RocketLauncher.'
+        -
+          featured: 'no'
+          date: '2019-06-18'
+          url: '#'
+          target: _blank
+          title: 'Professional color presets available with a click!'
+        -
+          featured: 'no'
+          date: '2019-05-04'
+          url: '#'
+          target: _blank
+          title: 'Update fonts, colors, and background images in seconds.'
+        -
+          featured: 'no'
+          date: '2019-06-18'
+          url: '#'
+          target: _self
+          title: 'Layout presets make creating a new page layouts easy.'
+      article:
+        filter:
+          categories: '10'
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          title:
+            enabled: show
+            limit: ''
+          date:
+            enabled: created
+  pricingtable-2666:
+    title: 'Pricing Table'
+    attributes:
+      class: ''
+      title: 'A Stylish Pricing Table Design'
+      headertext: 'All templates and themes from RocketTheme are backed by our incredible team of developers and moderators. <span>If you have any questions about your purchase, our support forum is here to help.</span>'
+      footertext: ''
+      columns: g-pricingtable-3-col
+      tables:
+        -
+          class: ''
+          color: accent1
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: '$2,999'
+          period: ''
+          desc: ''
+          buttontext: 'Choose Basic Tier'
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: 'One project'
+            -
+              text: 'Three revisions'
+            -
+              class: ''
+              text: 'One designer'
+            -
+              text: 'Sketch files'
+            -
+              text: 'Custom fonts'
+            -
+              text: 'Custom icons'
+          plan: Basic
+        -
+          class: ''
+          color: accent2
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: '$5,999'
+          period: ''
+          desc: ''
+          buttontext: 'Choose Pro Tier'
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              class: ''
+              text: 'Two projects'
+            -
+              text: 'FIve revisions'
+            -
+              text: 'Three designers'
+            -
+              text: 'Sketch files'
+            -
+              text: Photoshoot
+            -
+              text: Front-end
+          plan: Pro
+        -
+          class: ''
+          color: accent3
+          highlight: disabled
+          ribbon: ''
+          icon: ''
+          price: '$9,999'
+          period: ''
+          desc: ''
+          buttontext: 'Choose Executive Tier'
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          items:
+            -
+              text: 'Three projects'
+            -
+              text: 'Unlimited revisions'
+            -
+              text: 'Whole team engaged'
+            -
+              text: 'Design + development'
+            -
+              text: 'SEO included'
+            -
+              text: 'Marketing plan'
+          plan: Executive
+  team-3195:
+    attributes:
+      class: ''
+      title: ''
+      allitems: All
+      initial: '2'
+      cols: cols-5
+      image_height: 240px
+      animate: enabled
+      category:
+        -
+          member:
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Senior Manager'
+              url: '#'
+              target: _self
+              title: 'Alex Sarc'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: Manager
+              url: '#'
+              target: _self
+              title: 'Barlow Ergson'
+          title: Managers
+        -
+          member:
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Creative Director'
+              url: '#'
+              target: _self
+              title: 'John Doe'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Lead Designer'
+              url: '#'
+              target: _self
+              title: 'Michael Smith'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: Illustrator
+              url: '#'
+              target: _self
+              title: 'Janice Cold'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Web designer'
+              url: '#'
+              target: _self
+              title: 'Miriam Vicci'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'UI/UX Expert'
+              url: '#'
+              target: _self
+              title: 'Daniel Schmidt'
+          title: Designers
+        -
+          member:
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Front End Developer'
+              url: '#'
+              target: _self
+              title: 'Sonia Elvic'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Full Stack Developer'
+              url: ''
+              target: _self
+              title: 'John Lee'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Back End Developer'
+              url: '#'
+              target: _self
+              title: 'Jason Bourne'
+          title: Developers
+        -
+          member:
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Content Manager'
+              url: '#'
+              target: _self
+              title: 'Arthur Corry'
+            -
+              image: 'gantry-media://home/expanded/img-01.jpg'
+              position: 'Senior Editor'
+              url: '#'
+              target: _self
+              title: 'Karen Page'
+          title: Writers
+  latestnews-4049:
+    title: 'Latest News'
+    attributes:
+      source: particle
+      class: ''
+      title: 'Join us on Twitter and Instagram'
+      uppertitle: ''
+      allitems: ''
+      selected: all
+      cols: cols-5
+      date_format: 'F d, Y'
+      items:
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-1.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News1
+            -
+              layout: text
+              variant: dark
+              date: '2019-08-23'
+              image: ''
+              description: 'Show off important numbers and statistics with the Grid Statistic particle.'
+              url: ''
+              target: _self
+              title: News2
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-2.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News3
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-1.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News4
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-2.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News5
+            -
+              layout: text
+              variant: light
+              date: '2019-08-23'
+              image: ''
+              description: 'Display content directly from your CMS using the Block Content particle.'
+              url: ''
+              target: _self
+              title: News6
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-2.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News7
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-2.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News8
+            -
+              layout: text
+              variant: medium
+              date: '2019-08-19'
+              image: ''
+              description: 'The Particles particle is a simple way to add animations to your site.'
+              url: ''
+              target: _self
+              title: News9
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-2.jpg'
+              description: ''
+              url: ''
+              target: _self
+              title: News10
+            -
+              layout: text
+              variant: light
+              date: '2019-08-14'
+              image: ''
+              description: 'Want to increase signups to your newsletter? The Newsletter particle is a great way!'
+              url: ''
+              target: _self
+              title: News11
+            -
+              layout: photo
+              variant: light
+              date: ''
+              image: 'gantry-media://home/extension/news-2.jpg'
+              description: 'Embed video content in seconds with the Video particle.'
+              url: ''
+              target: _self
+              title: News12
+  blockcontent-4770:
+    title: 'Block Content'
+    attributes:
+      source: particle
+      class: center
+      title: ''
+      icon: ''
+      image: ''
+      headline: 'Akuatik takes your website to new heights...'
+      description: 'With over two dozen powerful particles and limitless customization options, your brand will soar!'
+      linktext: 'Get a Quote'
+      link: '#'
+      linkclass: button-large
+      linktarget: _self
+      subcontents: {  }
+      article:
+        filter:
+          categories: ''
+          articles: ''
+          featured: include
+        limit:
+          total: '5'
+          start: '0'
+        sort:
+          orderby: publish_up
+          ordering: ASC
+        display:
+          image:
+            enabled: intro
+          title:
+            enabled: show
+            limit: ''
+          text:
+            type: intro
+            limit: ''
+            formatting: text
+          link:
+            enabled: show
+            label: ''
+            target: _self

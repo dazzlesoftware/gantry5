@@ -1,0 +1,19 @@
+name: Extension Styles
+description: Extension styles for the Requiem theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#3a7ad9"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#efefef"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/extension/img-01.jpg"

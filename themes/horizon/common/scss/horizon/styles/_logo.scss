@@ -1,0 +1,22 @@
+.g-logo {
+    display: flex;
+    position: relative;
+    font-weight: $font-weight-extrabold;
+    @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.1, false, false);
+    box-shadow: none !important;
+    line-height: normal;
+    white-space: nowrap;
+    @include breakpoint(mobile-only) {
+        padding: $content-padding;
+    }
+    span {
+        margin: 0 auto;
+    }
+}
+
+.avatar-logo {
+    img {
+        width: 80px;
+        border-radius: 100%;
+    }
+}

@@ -1,0 +1,137 @@
+.g-owlcarousel-slider {
+	.g-owlcarousel {
+		position: relative;
+
+
+		.g-owlcarousel-image-container {
+    		img {
+    			width: auto;
+    			display: inline-block;
+    		}
+    	}		
+	
+ 		.g-owlcarousel-text {    
+
+ 			@include breakpoint(mobile-only) {
+ 				margin-bottom: 25px;
+ 			}  
+
+		    .g-owlcarousel-item-title {
+				font-family: get-font-family($font-family-bold);
+				text-transform: uppercase;
+				font-size: 2.8em;
+				letter-spacing: -1px;
+				line-height: 1.1em;
+			    margin-bottom: 25px;	    
+		    }
+
+		    .g-owlcarousel-item-desc {
+		    	font-size: 1em;
+    			margin-top: 20px;
+    			line-height: 22px;
+		    }
+
+		    .g-owlcarousel-item-button {
+		    	margin: 15px 0;
+		    }
+		}
+
+		.owl-dots {
+			bottom: 15px;
+			left: 50%;
+			text-align: left;
+			margin-left: -22px;
+
+			button {
+				opacity: 1;
+				padding: 0;
+				transition: opacity 0.2s ease-in;
+
+				.hexagon & {
+					border-radius: 0;
+					@include hexagon(16px, 10px, $dark-grey);
+
+					&.active {
+						@include hexagon(16px, 10px, $accent-color-1);
+					}
+
+					&.owl-dot {
+						margin: 0 6px;
+					}
+				}
+
+				background-color: $dark-grey;
+
+				&.active {
+					background-color: $accent-color-1;
+
+					&:hover {
+						background-color: $accent-color-1;
+					}	
+				}
+
+				&:hover {
+					background-color: $dark-grey;
+				}
+			}
+		}
+
+	    .owl-nav {
+	      button.owl-prev, button.owl-next {
+	      	background: $dark-grey;
+	      	line-height: 38px;
+			color: $accent-color-1;
+			margin-top: -12px !important;
+			opacity: 0.5;
+			position: absolute !important;
+			border: 0;
+			transition: all 0.2s ease-in-out;
+
+			.hexagon & {
+				border-radius: 0;
+				@include hexagon(48px, 30px, $dark-grey);
+
+				line-height: $base-line-height + 1 !important;
+			}
+
+			@include breakpoint(small-mobile-range) {
+				display: none;
+			}
+
+			&:hover {	
+				opacity: 1;	
+			}
+
+	        &:focus {
+	          outline: none;
+	        }
+
+	        span {
+	        	font-size: 2.5rem;
+	        }
+	      }
+
+	      .owl-next {
+	      	@include breakpoint(large-desktop-range) {
+		    	right: 2rem;
+		    }
+		    right: 0rem;
+	      }
+
+	      .owl-prev {
+	        left: 0rem;
+	        }
+	    }       
+	}
+}
+
+.g-owlcarousel-slider {
+	.g-owlcarousel-text, .g-owlcarousel-image-container {
+		float: left;
+
+		@include breakpoint(mobile-only) {
+			float: none;
+			text-align: center;
+		}
+	}
+}

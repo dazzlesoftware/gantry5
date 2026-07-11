@@ -1,0 +1,294 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: pricing
+  timestamp: 1533887868
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-8468
+  top: {  }
+  utility: {  }
+  feature: {  }
+  /maintop/:
+    -
+      - custom-1995
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 60':
+          -
+            - pricingtable-7524
+      -
+        'sidebar 40': {  }
+  expandedbottom: {  }
+  /mainbottom/:
+    -
+      - custom-9572
+  /extension/:
+    -
+      - 'custom-2978 50'
+      - 'custom-5247 50'
+  /footer-surround/:
+    -
+      -
+        /bottom/:
+          -
+            - custom-4488
+        /footer/:
+          -
+            - 'custom-5551 50'
+            - 'custom-2913 50'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-light
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer:
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-8468:
+    title: Pricing
+    attributes:
+      title: 'Pricing<span class="rt-title-tag">More Value For Money</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-1995:
+    title: 'Try it Out for 10 Days Free'
+    attributes:
+      title: 'Try it Out for 10 Days Free<span class="rt-title-tag">Pick a Plan that Fits You and Try Us Out</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  pricingtable-7524:
+    title: 'Pricing Table'
+    attributes:
+      class: 'fp-pricing-table'
+      title: ''
+      headertext: 'All plans come with awesome support by email and phone. There is no hidden fee!'
+      footertext: 'Free <strong>30 days trial</strong> on all plans. No credit card needed! Need a bigger plan? <a href="#">View Professional Plan</a>.'
+      columns: g-pricingtable-4-col
+      tables:
+        -
+          class: ''
+          plan: Basic
+          price: $28
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '5GB Storage'
+              title: Storage
+            -
+              text: '10 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 1'
+        -
+          class: ''
+          plan: Standard
+          price: $58
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '25GB Storage'
+              title: Storage
+            -
+              text: '20 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 2'
+        -
+          class: ''
+          plan: Ultimate
+          price: $88
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '50GB Storage'
+              title: Storage
+            -
+              text: '30 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 3'
+        -
+          class: ''
+          plan: Professional
+          price: $288
+          desc: 'Globally incubate standards compliant channels'
+          items:
+            -
+              text: '500GB Storage'
+              title: Storage
+            -
+              text: '100 Users'
+              title: Users
+          buttontext: 'Sign Up'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button2
+          name: 'Item 4'
+    block:
+      variations: center
+  custom-9572:
+    title: 'Frequently Asked Questions'
+    attributes:
+      title: 'Frequently Asked Questions'
+      html: ''
+    block:
+      class: 'rt-big-title nomargintop nomarginbottom'
+      variations: center
+  custom-2978:
+    title: 'Pricing FAQ 1'
+    attributes:
+      title: ''
+      html: "<h3>What prices are our services?</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, suscipit, tempora tenetur nisi quo dignissimos et quidem quam blanditiis hic exercitationem explicabo a beatae. Dicta, quia cupiditate incidunt reiciendis eveniet.</p>\n\n<br />\n\n<h3>What is our refund policy?</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, suscipit, tempora tenetur nisi quo dignissimos et quidem quam blanditiis hic exercitationem explicabo a beatae. Dicta, quia cupiditate incidunt reiciendis eveniet.</p>\n\n<br />\n\n<h3>What payments methods do we accept?</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, suscipit, tempora tenetur nisi quo dignissimos et quidem quam blanditiis hic exercitationem explicabo a beatae. Dicta, quia cupiditate incidunt reiciendis eveniet.</p>"
+  custom-5247:
+    title: "Pricing FAQ\_2"
+    attributes:
+      title: ''
+      html: "<h3>What delivery options do we offer?</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, suscipit, tempora tenetur nisi quo dignissimos et quidem quam blanditiis hic exercitationem explicabo a beatae. Dicta, quia cupiditate incidunt reiciendis eveniet.</p>\n\n<br />\n\n<h3>What support options are available?</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, suscipit, tempora tenetur nisi quo dignissimos et quidem quam blanditiis hic exercitationem explicabo a beatae. Dicta, quia cupiditate incidunt reiciendis eveniet.</p>\n\n<br />\n\n<h3>What additional services are available?</h3>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, suscipit, tempora tenetur nisi quo dignissimos et quidem quam blanditiis hic exercitationem explicabo a beatae. Dicta, quia cupiditate incidunt reiciendis eveniet.</p>"
+  custom-4488:
+    title: 'More Details'
+    attributes:
+      title: 'More Details <span class="rt-title-tag">Help guides are available to assist</span>'
+      html: ''
+    block:
+      class: rt-big-title
+      variations: center
+  custom-5551:
+    title: 'Pages Demo Footer'
+    attributes:
+      title: ''
+      html: "<p>All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Anacron RocketLauncher</a> to install an equivalent of the demo onto your site.</p>\n<p>Anacron is only available as part of the Club Subscription.</p>\n\n<div class=\"gantry-width-block gantry-width-50\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-footer-logo\"></div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-50\">\n\t<div class=\"gantry-width-spacer nomarginleft\">\n\t\t<span>+1-(678)-123-6789</span><br />\n\t\t<span>Anacron Center, LLC</span><br />\n\t\t<span>123 Boulevard</span><br />\n\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t<span><a href=\"#\">hello@anacron.com</a></span>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+  custom-2913:
+    title: 'Pages Footer Form'
+    attributes:
+      title: ''
+      html: "<div class=\"rt-email-form\">\n\t<form action=\"#\">\n\t\t<input type=\"text\" placeholder=\"Full Name\" size=\"18\" alt=\"fullname\" class=\"inputbox\" name=\"fullname\">\n\t\t<input type=\"text\" placeholder=\"Your Email\" size=\"28\" alt=\"email\" class=\"inputbox\" name=\"email\">\n\t\t<textarea placeholder=\"Your Message\" name=\"message\" cols=\"30\" rows=\"5\"></textarea>\n\t\t<input type=\"submit\" value=\"Send Message\" class=\"button\" name=\"send\">\n\t</form>\t\n</div>"

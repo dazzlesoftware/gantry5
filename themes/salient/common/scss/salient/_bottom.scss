@@ -1,0 +1,14 @@
+#g-bottom {
+	background: $bottom-background;
+	color: $bottom-text-color;	
+	.g-testimonials {
+		margin-bottom: 2rem;
+	}
+}
+
+@media print {
+	#g-bottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

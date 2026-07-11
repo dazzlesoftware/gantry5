@@ -1,0 +1,127 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
+
+<style>
+    @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
+        #{{ id }} .g-slideshow-slider {
+            height: {{ particle.heightMobile|default('500px') }} !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block particle %}
+	<div class="g-slideshow-mask">
+		<div id="{{ id }}" class="g-slideshow swiper-container {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-effect="{{ particle.effect }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}"  data-slideshow-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %}>
+			<div class="g-slideshow-slider swiper-wrapper" style="height: {{ particle.height|default('60vh') }};">
+				{% if not particle.source or particle.source == 'particle' %}
+					{% for item in particle.items %}
+						<div class="swiper-slide {{ item.class|e }}" style="background-image: url({{ url(item.image)|e }}); background-position: {{ item.bg_horizontal|default('center') }} {{ item.bg_vertical|default('center') }}">
+
+						<div class="g-slideshow-overlay"></div>
+
+						{% if particle.pattern == "enabled" %}
+								<div data-aos="zoom-in-right" class="slideshow-pattern-left">
+									<svg width="387" height="456" viewbox="0 0 387 456" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M15 303L285 289V305L15 319V303Z" class="base-pattern-2"/>
+										<path d="M0 447.5L170 439V447L0 455.5V447.5Z" class="base-pattern-1"/>
+										<path d="M217 8.5L387 0V8L217 16.5V8.5Z" class="base-pattern-3"/>
+										<defs>
+											<filter x="11" y="289" width="278" height="38" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+												<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+												<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+												<feOffset dy="4"/>
+												<feGaussianBlur stddeviation="2"/>
+												<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+												<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+												<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+											</filter>
+										</defs>
+									</svg>
+								</div>
+								<div data-aos="zoom-in-left" class="slideshow-pattern-right">
+									<svg width="270" height="454" viewbox="0 0 270 454" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 14L270 0V16L0 30V14Z" class="base-pattern-4"/>
+											<path d="M83 437.5L253 429V437L83 445.5V437.5Z" class="base-pattern-1"/>
+											<path d="M82 38.5L252 30V38L82 46.5V38.5Z" class="base-pattern-2"/>
+										<defs>
+											<filter x="79" y="429" width="178" height="24.5" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+												<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+												<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+												<feOffset dy="4"/>
+												<feGaussianBlur stddeviation="2"/>
+												<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+												<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+												<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+											</filter>
+											<filter x="78" y="30" width="178" height="24.5" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+												<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+												<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+												<feOffset dy="4"/>
+												<feGaussianBlur stddeviation="2"/>
+												<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+												<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+												<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+											</filter>
+										</defs>
+									</svg>
+								</div>
+						{% endif %}
+
+							<div class="slide">
+								{% if item.main_title %}
+									<h1 class="g-slideshow-main-title">
+										{{ item.main_title|raw }}
+									</h1>
+								{% endif %}
+								{% if item.button_text %}
+									<a href="{{item.button_link}}" target="{{ item.linktarget|default('_self') }}" class="button {{ item.button_classes }}">
+										{{item.button_text}}</a>
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+				{% else %}
+					{% include '@particles/slideshow-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+				{% endif %}
+			</div>
+			<!-- navigation -->
+            {% if particle.nav == 'enabled' %}
+                {% if gantry.page.direction == 'rtl' %}
+                    <div class="navigation rtl">
+                        <div class="swiper-button-next">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="swiper-button-prev">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="navigation">
+                        <div class="swiper-button-next">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                        <div class="swiper-button-prev">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            {#  pagination #}
+            {% if particle.dots|default('enabled') == 'enabled' %}
+                <div class="swiper-pagination"></div>
+            {% endif %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
+{% endblock %}
+

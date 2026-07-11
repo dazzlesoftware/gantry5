@@ -1,0 +1,291 @@
+.g-springboard {
+    position: relative;
+    display: flex;
+    user-select: none;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+    }
+
+    .g-springboard-meta-wrapper {
+        flex: 0 auto;
+        width: 25%;
+
+        @include breakpoint(tablet-range) {
+            width: 35%;
+        }
+
+        @include breakpoint(no-mobile) {
+            padding-top: 5rem;
+            padding-left: $content-padding;
+        }
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+            padding: 0 $content-padding * 2;
+        }
+
+        .g-title {
+            color: $black;
+        }
+
+        .g-springboard-description {
+            @include responsive-font($responsive-font-size - 0.1, $core-font-size + 0.2, false, false);
+        }
+    }
+
+    .g-springboard-wrapper {
+        flex: 0 auto;
+        width: 75%;
+        margin: auto;
+        @include breakpoint(tablet-range) {
+            width: 65%;
+        }
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+        }
+
+        .g-springboard-container {
+            width: 100%;
+            height: 600px;
+            color: white;
+            margin: auto;
+            overflow: hidden;
+
+            .home-view {
+                transform-origin: center;
+                padding: 3rem 0;
+                height: 100%;
+                width: 100%;
+                opacity: 0;
+                overflow: hidden;
+
+                .g-springboard-icon {
+                    width: 70px;
+                    height: 70px;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    transform-origin: center;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    color: black;
+                    text-align: center;
+                    line-height: 16px;
+                    box-sizing: border-box;
+                    background-size: 100%;
+
+                    &:after {
+                        position: absolute;
+                        display: block;
+                        width: 70px;
+                        height: 70px;
+                        content: '';
+                        border: 4px solid;
+                        border-radius: 50%;
+                        z-index:  -1;
+                    }
+
+                    &:hover {
+                        z-index:  10;
+                    }
+
+                    $colors: $accent-color-1, $accent-color-2;
+
+                    @for $i from 1 through 100 {
+                        &:nth-child(#{$i}) {
+                            $selected: nth($colors, random(length($colors)));
+                            background-color: $selected;
+
+                            &:after {
+                                border-color: darken($selected, 20%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Tooltips
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip__trigger {
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+    }
+
+    .tooltip__trigger-text {
+        display: block;
+        padding: 0.85em;
+        pointer-events: none;
+    }
+
+    .tooltip__base {
+        position: absolute;
+        bottom: 3em;
+        left: 50%;
+        margin-left: -150px;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .tooltip__content {
+        color: $base-text-color;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 65%;
+        padding: 0 1em;
+        opacity: 0;
+        font-size: 1rem;
+    }
+
+    .tooltip__shape,
+    .tooltip__deco {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .tooltip__shape {
+        fill: $accent-color-1;
+        stroke: darken($accent-color-1, 20%);
+        stroke-width: 4px;
+    }
+
+    /* Indivudual styles */
+
+    /* Cora */
+    .tooltip--cora .tooltip__base{
+        transform-origin: 50% 100%;
+    }
+
+    .tooltip--cora .tooltip__content {
+        margin-bottom: 1em;
+    }
+
+    /* Smaug */
+    .tooltip--smaug .tooltip__base {
+        bottom: -0.5em;
+        transform-origin: 50% 100%;
+    }
+
+    .tooltip--smaug .tooltip__content {
+        padding: 0;
+    }
+
+    /* Dori */
+    .tooltip--dori .tooltip__base {
+        bottom: -0.5em;
+    }
+
+    .tooltip--dori .tooltip__content {
+        margin: 0 0 1em;
+    }
+
+    /* Walda */
+    .tooltip--walda .tooltip__base {
+        left: 0;
+        bottom: 0.75em;
+        position: absolute;
+        margin-left: 0;
+        width: 250px;
+        height: 100px;
+        padding: 0 0 0 0.25em;
+    }
+
+    .tooltip--walda .tooltip__trigger-text {
+        padding: 1em;
+    }
+
+    .tooltip--walda .tooltip__content {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        align-items: flex-start;
+        text-align: left;
+        font-size: 0.85em;
+        line-height: 2;
+        opacity: 1;
+        justify-content: flex-start;
+    }
+
+    .tooltip--walda .tooltip__letters span {
+        display: inline-block;
+        white-space: pre;
+        opacity: 0;
+    }
+
+    .tooltip--walda .tooltip__deco {
+        width: 4px;
+        height: 100%;
+        background: $accent-color-1;
+        transform-origin: 50% 100%;
+    }
+
+    /* Gram */
+    .tooltip--gram .tooltip__base {
+        bottom: -0.5em;
+    }
+
+    /* Hador */
+    .tooltip--hador .tooltip__base {
+        margin-left: -115px;
+    }
+
+    .path-hador-1 {
+        transform-origin: 148px 284px;
+    }
+
+    .path-hador-2 {
+        transform-origin: 160px 268px;
+    }
+
+    .path-hador-3 {
+        transform-origin: 171px 246px;
+    }
+
+    .path-hador-4 {
+        transform-origin: 200px 120px;
+    }
+
+    .tooltip--hador .tooltip__content {
+        width: 50%;
+        margin: 0 0 2.5em;
+    }
+
+    /* Malva */
+    .tooltip--malva .tooltip__content {
+        width: 50%;
+    }
+
+    /* Sadoc */
+    .tooltip--sadoc .tooltip__base {
+        bottom: 2.5em;
+    }
+
+    .tooltip--sadoc .tooltip__shape path {
+        fill: $accent-color-1;
+        stroke: darken($accent-color-1, 20%);
+        stroke-width: 3px;
+    }
+}

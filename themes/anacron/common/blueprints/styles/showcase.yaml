@@ -1,0 +1,23 @@
+name: Showcase Colors
+description: Showcase colors for the Anacron theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#41a4dd"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"  
+    link-color:
+      type: input.colorpicker
+      label: Link
+      default: "#07659e"    
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/showcase/preset1/bg.png"           

@@ -1,0 +1,51 @@
+name: Link Tabs
+description: Displays Link Tabs.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the particle title text.
+      placeholder: Enter title
+
+    layout:
+      type: select.select
+      label: Layout
+      description: Customize the particle layout
+      default: layout-left
+      options:
+        layout-left: Left
+        layout-right: Right
+
+    items:
+      type: collection.list
+      array: true
+      label: Content Tabs Items
+      description: Content Tabs item to display.
+      value: title
+      ajax: true
+
+      fields:  
+        .content:
+          type: textarea.textarea
+          label: Tab Content
+          description: Customize the tab content.
+          placeholder: Enter your custom content here.         

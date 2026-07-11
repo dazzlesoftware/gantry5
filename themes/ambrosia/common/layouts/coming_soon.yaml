@@ -1,0 +1,121 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/offline.png'
+  name: coming_soon
+  timestamp: 1516112276
+layout:
+  /header/:
+    -
+      - system-messages-6690
+    -
+      - logo-1722
+  /navigation/: {  }
+  /showcase/:
+    -
+      - custom-1359
+  /container-2683/:
+    -
+      -
+        'mainbar 67':
+          -
+            - simplecounter-7630
+      -
+        'sidebar 33': {  }
+  /extension/:
+    -
+      - custom-5545
+  /footer/:
+    -
+      - 'custom-5147 50'
+      - 'newsletter-1178 50'
+  /copyright/:
+    -
+      - copyright-3074
+  offcanvas: {  }
+structure:
+  header:
+    attributes:
+      boxed: ''
+      class: g-comingsoon-header
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  mainbar:
+    type: section
+  sidebar:
+    type: section
+  container-2683:
+    title: Main
+    attributes:
+      id: g-main
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  system-messages-6690:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-1722:
+    block:
+      class: 'g-logo-block center'
+  custom-1359:
+    title: 'Coming Soon'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Ambrosia is Coming Soon</h2>\n\t<div class=\"g-layercontent-subtitle\">Good News! Something Awesome is in the Works</div>\n</div>"
+    block:
+      class: 'flush center'
+  simplecounter-7630:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: 'We are working on a new and exciting template that we think you will really like.'
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      class: center
+  custom-5545:
+    title: 'Have Something to Tell Us'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Have Something to Tell Us?</h2>\n\t<div class=\"g-layercontent-subtitle\">Ideas, Suggestion, or Review</div>\n\t<a href=\"https://www.rockettheme.com/joomla/templates/ambrosia\" class=\"button\">Contact Us</a>\n</div>"
+    block:
+      class: 'flush center'
+  custom-5147:
+    title: 'About Ambrosia'
+    attributes:
+      html: "<h2 class=\"g-title\">About Ambrosia</h2>\n<br />\n<span>Ambrosia is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template, addons and sources.</span>"
+  newsletter-1178:
+    attributes:
+      title: Newsletter
+      headtext: 'Subscribe to our newsletter and stay updated on the latest developments and special offers!'
+      uri: rocketthemeblog
+      buttonclass: button-4
+  copyright-3074:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: center

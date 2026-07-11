@@ -1,0 +1,19 @@
+name: Showcase Colors
+description: Showcase colors for the Vermilion theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#2d3945"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/showcase/background.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"   

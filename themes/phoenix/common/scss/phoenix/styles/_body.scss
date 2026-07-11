@@ -1,0 +1,50 @@
+html {
+    body {
+        position: relative;
+        color: $base-text-color;
+        background: $base-background;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        #g-page-surround {
+            background-color: $pagesurround-background;
+            margin: 3rem;
+
+            @include breakpoint(mobile-only) {
+                padding: 0;
+                margin: 0.5rem;
+            }
+
+            .base-pattern-1 {fill: $base-pattern-1;}
+            .base-pattern-2 {fill: $base-pattern-2;}
+            .base-pattern-3 {fill: $base-pattern-3;}
+            .base-pattern-4 {fill: $base-pattern-4;}
+        }
+
+        p {
+            margin: 0 0 1.3rem 0;
+        }
+
+        span.para {
+            display: block;
+            margin: 1rem 0;
+        }
+
+        &.dir-rtl {
+            .align-left {
+                text-align: right !important;
+            }
+
+            .align-right {
+                text-align: left !important;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-page-surround {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

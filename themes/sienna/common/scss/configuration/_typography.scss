@@ -1,0 +1,29 @@
+// Font Family
+$font-family-default:           "muli", sans-serif, "Tahoma", "Geneva", "Arial" !default;
+$font-family-title:           	"muli", sans-serif, "Tahoma", "Geneva", "Arial" !default;
+$font-family-promo:           	"playfairdisplay" !default;
+$font-family-subpromo:          "playfairdisplay italic" !default;
+$font-family-weather:          "weather" !default;
+
+$font-family-mono: 				"Menlo", "Monaco", monospace;
+$font-family-serif:				"droidserif", "Times", "Times New Roman", serif;
+
+// Font Weights
+$font-weight-thin:				100;
+$font-weight-light:				300;
+$font-weight-regular:			400;
+$font-weight-medium:			500;
+$font-weight-bold:				700;
+$font-weight-ultrabold:		  	900;
+
+// Base Sizes
+$core-font-size:				1rem !default;
+$core-line-height:				1.5 !default;
+
+// Heading Sizes
+$h1-font-size:					$core-font-size + 1.5 !default;
+$h2-font-size:					$core-font-size + 1.25 !default;
+$h3-font-size:					$core-font-size + 1 !default;
+$h4-font-size:					$core-font-size + 0.75 !default;
+$h5-font-size:					$core-font-size + 0.5 !default;
+$h6-font-size:					$core-font-size + 0.25 !default;

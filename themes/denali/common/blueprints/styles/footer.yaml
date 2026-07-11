@@ -1,0 +1,14 @@
+name: Footer Styles
+description: Footer styles for the Denali theme
+type: section
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#0f0f0f"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#999999"

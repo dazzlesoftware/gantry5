@@ -1,0 +1,627 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: home
+  timestamp: 1556907571
+layout:
+  /navigation/: {  }
+  /showcase/:
+    -
+      - slideshow-8821
+  /top/:
+    -
+      - custom-8262
+  /utility/:
+    -
+      - contenttabs-4244
+  /feature/:
+    -
+      - mosaic-5883
+  /maintop/:
+    -
+      - slider-6054
+  /expandedtop/:
+    -
+      - custom-6511
+  /container-main/:
+    -
+      -
+        'sidebar 33': {  }
+      -
+        'main 34': {  }
+      -
+        'aside 33': {  }
+  /expandedbottom/:
+    -
+      - stripsslider-9082
+  mainbottom: {  }
+  /extension/:
+    -
+      - custom-4212
+  bottom: {  }
+  /footer/:
+    -
+      - 'mailchimp-1563 33.3'
+      - 'custom-3577 33.3'
+      - 'linktabs-1687 33.3'
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-navigation accent-mobile'
+      variations: ''
+    inherit:
+      outline: default
+      include:
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-showcase
+      variations: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-utility
+      variations: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-maintop
+      variations: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: ''
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  bottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  slideshow-8821:
+    attributes:
+      class: hexagon
+      animateIn: fadeIn
+      animateOut: fadeOut
+      contentanimation: flipInX
+      nav: disabled
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          bgimage: 'gantry-media://home/showcase/bg1.png'
+          image: 'gantry-media://home/showcase/img1.png'
+          contentanimation: flipInX
+          imageclass: ''
+          position: right
+          textalign: left
+          title: 'A Modern Approach to Design.'
+          desc: 'Epsilon is a modern, sectioned based design, with a diverse infusion of background textures and patterns. These enrich and differentiate your site whilst maintaining an overall conservative approach, for flexible site application.'
+          linktitle: disabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 1'
+        -
+          bgimage: 'gantry-media://home/showcase/bg2.png'
+          image: 'gantry-media://home/showcase/img2.png'
+          imageclass: ''
+          position: left
+          textalign: right
+          title: 'Background Slideshow'
+          desc: 'Epsilon provides for full width, custom, transitional background images, in the slideshow position, a full width container, specifically designed for the Slideshow particle. It also has separate options for per panel background and content images.'
+          linktitle: disabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 2'
+        -
+          bgimage: 'gantry-media://home/showcase/bg3.png'
+          image: 'gantry-media://home/showcase/img3.png'
+          imageclass: center
+          position: bottom
+          textalign: center
+          title: 'Custom Animation'
+          desc: 'Animation provides an extended layout of visual flair as well as smooth interaction for your visitors, to facilitate the seamless experience of using your site. Our Slideshow particle benefits from a custom array of up to 16 animation types.'
+          linktitle: disabled
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 3'
+    block:
+      variations: 'nomarginall nopaddingall'
+  custom-8262:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      titletag: ''
+      html: "<div class=\"fp-content-tabs-header\">\_</div>"
+      twig: '0'
+      filter: '0'
+  contenttabs-4244:
+    title: 'Content Tabs'
+    attributes:
+      minheight: 600px
+      animation: right
+      items:
+        -
+          content: "<div class=\"rt-center\">\t\n<div class=\"rt-width-80\">\t\t<h2>Particles Integration</h2>\t\t<p>Particles are powerful content block that provide for flexible content display through its assortment of pre-built layout types, which are easy to modify, as well as a custom, intuitive administrative console.</p>\t</div></div>"
+          cols: '25'
+          icons:
+            -
+              icon: 'fa fa-th-large'
+              link: '#'
+              linktarget: _self
+              title: Slideshow
+              subtext: 'A showcase or slideshow layout mode for displaying image and/or text based content.'
+              name: 'Item 1'
+            -
+              icon: 'fa fa-globe'
+              link: '#'
+              linktarget: _self
+              title: 'Strips Slider'
+              subtext: 'A horizontal centric grid based content rotator, for the display of multiple image/text content blocks.'
+              name: 'Item 2'
+            -
+              icon: 'fa fa-briefcase'
+              link: '#'
+              linktarget: _self
+              title: 'Content Tabs'
+              subtext: 'Custom content items in a tabbed format, whether top, bottom, left or right, for flexible content display.'
+              name: 'Item 3'
+            -
+              icon: 'fa fa-crop'
+              link: '#'
+              linktarget: _self
+              title: Mosaic
+              subtext: 'A dynamic content grid layout type, to display sortable and animated image and/or text content blocks.'
+              name: 'Item 4'
+          title: 'Particles <span class="hidden-tablet"> Integration</span>'
+        -
+          content: "<div class=\"rt-center\">\t\n<div class=\"rt-width-80\">\t\t\n<h2>Multiple Menu Options</h2>\t\t\n<p>Navigation is a fundamental pillar of any website as well as the template, and Epsilon offers several configurable options to best suit your navigational preferences, for both desktop and mobile device types.</p>\t\n</div></div>"
+          cols: '25'
+          icons:
+            -
+              icon: 'fa fa-sitemap'
+              link: '#'
+              linktarget: _self
+              title: Dropdown
+              subtext: 'CSS based menu system with multiple columns and other advanced per menu items options.'
+              name: 'Item 1'
+            -
+              icon: 'fa fa-level-down'
+              link: '#'
+              linktarget: _self
+              title: SplitMenu
+              subtext: 'A static menu that displays parent items in the header and child items in the sidebar, as configurable.'
+              name: 'Item 2'
+            -
+              icon: 'fa fa-th-list'
+              link: '#'
+              linktarget: _self
+              title: Panel
+              subtext: 'A mobile responsive menu that displays all items in a column structure, slidable from the side via a toggle.'
+              name: 'Item 3'
+            -
+              icon: 'fa fa-mobile-phone'
+              link: '#'
+              linktarget: _self
+              title: Extended
+              subtext: 'Extended menu provides options for menu items columns along and additional child elements.'
+              name: 'Item 4'
+          title: '<span class="hidden-tablet">Multiple </span>Menu Systems'
+        -
+          content: "<div class=\"rt-center\">\t\n<div class=\"rt-width-80\">\t\t<h2>Free GPL Template Framework</h2>\t\t\n<p>Gantry is a powerful core framework, that sits at the heart of Epsilon, providing the foundation for the major, standarized features and functions, such as the rich and intuitive, custom template manager interface.</p>\t\n</div></div>"
+          cols: '25'
+          icons:
+            -
+              icon: 'fa fa-th'
+              link: '#'
+              linktarget: _self
+              title: Grids
+              subtext: 'Gantry allows for module positions to be split into configuration grids on a per menu item basis.'
+              name: 'Item 1'
+            -
+              icon: 'fa fa-cut'
+              link: '#'
+              linktarget: _self
+              title: 'SCSS CSS'
+              subtext: 'The SCSS compiler is built into Gantry, an extended CSS language that allows for easier development.'
+              name: 'Item 2'
+            -
+              icon: 'fa fa-link'
+              link: '#'
+              linktarget: _self
+              title: Outlines
+              subtext: 'Custom module layouts and positions, as well as per-page template outlines are available.'
+              name: 'Item 3'
+            -
+              icon: 'fa fa-save'
+              link: '#'
+              linktarget: _self
+              title: Options
+              subtext: 'A custom administrative interface in the template manager allows for swift configuration.'
+              name: 'Item 4'
+          title: 'Gantry Framework'
+        -
+          content: "<div class=\"rt-center\">\t\n<div class=\"rt-width-80\">\t\t<h2>Diverse Element Styling</h2>\t\t<p>The template has a rich assortment of styled elements, ranging from custom typography to configurable preset style variations, and a flexible selection of stylistic and structural module class suffixes.</p>\t</div></div>"
+          cols: '25'
+          icons:
+            -
+              icon: 'fa fa-tasks'
+              link: '#'
+              linktarget: _self
+              title: Presets
+              subtext: 'A selection of six, diverse preset style variations, with numerous available customization options.'
+              name: 'Item 1'
+            -
+              icon: 'fa fa-cogs'
+              link: '#'
+              linktarget: _self
+              title: 'Module Style'
+              subtext: 'Choose from eight compoundable module class suffixes to adjust title and/or full module styling.'
+              name: 'Item 2'
+            -
+              icon: 'fa fa-edit'
+              link: '#'
+              linktarget: _self
+              title: 'Module Layout'
+              subtext: 'An array of structural suffixes are available to individually adjust padding, margins and font formats.'
+              name: 'Item 3'
+            -
+              icon: 'fa fa-font'
+              link: '#'
+              linktarget: _self
+              title: Typography
+              subtext: 'A diverse inventory of typography from Bootstrap as well as FontAwesome, to enrich content.'
+              name: 'Item 4'
+          title: '<span class="hidden-tablet">Styling and </span>Typography'
+  mosaic-5883:
+    attributes:
+      class: center
+      title: '<div class="rt-center">Portfolio</div>'
+      allitems: All
+      allposition: left
+      cols: cols-3
+      overlay: disabled
+      tag: disabled
+      cases:
+        -
+          items:
+            -
+              image: 'gantry-media://home/feature/img1.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 1'
+            -
+              image: 'gantry-media://home/feature/img2.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 2'
+            -
+              image: 'gantry-media://home/feature/img3.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 3'
+          title: Coding
+        -
+          items:
+            -
+              image: 'gantry-media://home/feature/img4.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 1'
+            -
+              image: 'gantry-media://home/feature/img5.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 2'
+            -
+              image: 'gantry-media://home/feature/img6.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 3'
+          title: Design
+        -
+          items:
+            -
+              image: 'gantry-media://home/feature/img7.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 1'
+            -
+              image: 'gantry-media://home/feature/img8.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 2'
+            -
+              image: 'gantry-media://home/feature/img9.jpg'
+              title: ''
+              subtitle: ''
+              linklabel: ''
+              url: ''
+              target: _blank
+              buttonclass: readon
+              name: 'Item 3'
+          title: Marketing
+  slider-6054:
+    attributes:
+      class: hexagon
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://home/maintop/img1.png'
+          title: 'Custom Shapes'
+          desc: '<h5 class="rt-uppercase">Quick, Easy &amp; Visually Effective</h5><p class="rt-small-text hidden-tablet">Epsilon uses a combination of custom template images, overlays and SVG masks to proliferate hexagons throughout the template.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: ''
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/maintop/img2.png'
+          title: FontAwesome
+          desc: '<h5 class="rt-uppercase">Content Enhancement</h5><p class="rt-small-text hidden-tablet">Over 300 icons are available with FontAwesome, which allows for the easy implementation of icons into your content, to spruce up the feel.</p>'
+          linktitle: enabled
+          link: '#'
+          linktext: ''
+          buttontarget: _self
+          buttonclass: readon
+          name: 'Item 2'
+  custom-6511:
+    title: 'What People Are Saying About Us'
+    attributes:
+      title: 'What People Are Saying About Us'
+      titletag: ''
+      html: '<div class="rt-width-80">A diverse array of features to enrich your side, provide great flexibility as well as ease of use and swift customization.</div>'
+      twig: '0'
+      filter: '0'
+    block:
+      variations: center
+  stripsslider-9082:
+    title: 'Strips Slider'
+    attributes:
+      class: hexagon
+      title: ''
+      description: ''
+      displayitems: '3'
+      mobiledisplayitems: '1'
+      nav: disabled
+      dots: enabled
+      loop: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: ''
+          title: ''
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  A beautiful and rich selection of typography, based on Bootstrap, to emphasise <span class=\"hidden-tablet\">and embellish </span>content. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-1\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-1)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Leo Parry</span><span class=\"rt-testimonial-position\">CEO of Hexeris</span>"
+          link: ''
+          linklabel: ''
+          target: _self
+          buttonclass: readon
+          name: 'Item 1'
+        -
+          image: ''
+          title: ''
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span> A custom Joomla installation package that installs a near equivalent of the demo onto your server. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-2\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-2)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Daniel Lee</span><span class=\"rt-testimonial-position\">CEO of Praxis</span>"
+          link: ''
+          linklabel: ''
+          target: _self
+          buttonclass: readon
+          name: 'Item 2'
+        -
+          image: ''
+          title: ''
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>   Choose from six preset<span class=\"hidden-tablet\"> style variation</span>s, with configurable options for text, link, accent, and background<span class=\"hidden-tablet\"> color</span>s. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-3\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-3)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Troy Michie</span><span class=\"rt-testimonial-position\">CEO of Stratos</span>"
+          link: ''
+          linklabel: ''
+          target: _self
+          buttonclass: readon
+          name: 'Item 3'
+        -
+          image: ''
+          title: ''
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  There are eight stylistic suffixes, to provide individual<span class=\"hidden-tablet\"> module</span> styling, as well as <span class=\"hidden-tablet\">several </span>structural suffixes. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-4\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-4)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Levi Durey</span><span class=\"rt-testimonial-position\">CEO of Hadron</span>"
+          link: ''
+          linklabel: ''
+          target: _self
+          buttonclass: readon
+          name: 'Item 4'
+        -
+          image: ''
+          title: ''
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  There are over 90 module positions, most split into rows of 6, each with adjustable widths<span class=\"hidden-tablet\">, globally or per menu item</span>. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-5\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-5)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Natalie Cox</span><span class=\"rt-testimonial-position\">CEO of Oculus</span>"
+          link: ''
+          linklabel: ''
+          target: _self
+          buttonclass: readon
+          name: 'Item 5'
+        -
+          image: ''
+          title: ''
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span> SplitMenu is a static menu option that displays parents in the header and children in the sidebar<span class=\"hidden-tablet\">, as configurable</span>. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-6\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-6)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Billy Riley</span><span class=\"rt-testimonial-position\">CEO of Alerion</span>"
+          link: ''
+          linklabel: ''
+          target: _self
+          buttonclass: readon
+          name: 'Item 6'
+  custom-4212:
+    title: 'New Products'
+    attributes:
+      title: 'New Products'
+      titletag: ''
+      html: "<div class=\"rt-width-80\">An overview of the latest Joomla template offerings from RocketTheme, available for individual purchase or part of a club subscription.</div>\n\n<div class=\"gantry-width-25 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-7\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-7)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Anacron</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Responsive</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Anacron is a vibrant, highly adaptable and engaging template, ideal for many sites, from community to business.</p>\n\t</div>\n</div>\n\n<div class=\"gantry-width-25 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-8\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-8)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Hadron</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Color Chooser</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Hadron is a contemporary, conservative and flat design direction with new and rich animations.</p>\n\t</div>\n</div>\n\n<div class=\"gantry-width-25 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-9\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-9)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Paradigm</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Icon Driven</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Paradigm is a rich infusion of elegant transparency with a modern frame, to create an invigorating site.</p>\n\t</div>\n</div>\n\n<div class=\"gantry-width-25 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-10\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-10)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\t\t\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Spectral</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Header Images</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Spectral echoes modern approaches to create an elegant frame, focusing on content and excellence.</p>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      twig: '0'
+      filter: '0'
+    block:
+      variations: center
+  mailchimp-1563:
+    title: MailChimp
+    attributes:
+      layout: g-newsletter-aside
+      style: g-newsletter-square
+      title: 'Join Our Newsletter'
+      headtext: 'Sign up to receive information about updates, upcoming themes, and great deals!'
+      inputboxtext: your@email.com
+      buttontext: Join
+      buttonclass: ''
+    block:
+      class: fp-newsletter
+  custom-3577:
+    title: 'Custom HTML'
+    attributes:
+      title: 'Contact Us'
+      titletag: ''
+      html: "<p class=\"rt-small-text\">We are always open for a quick chat! Give us a call or email us any time and we will respond shortly.</p>\n<p>\n\t<span><span class=\"fa fa-phone\"></span>&nbsp;&nbsp;(123)456-789</span><br />\n\t<span><span class=\"fa fa-envelope\"></span>&nbsp;&nbsp;noreply@epsilon-theme.com</span>\n</p>"
+      twig: '0'
+      filter: '0'
+  linktabs-1687:
+    title: 'Link Tabs'
+    attributes:
+      title: Links
+      layout: layout-left
+      items:
+        -
+          content: "<ul>\t<li><a href=\"#\">About<span class=\"hidden-tablet\"> Us</span></a></li>\t<li><a href=\"#\">Team</a></li>\t<li><a href=\"#\">Services</a></li></ul>"
+          title: Info
+        -
+          content: "<ul>\t<li><a href=\"#\">Pricing</a></li>\t<li><a href=\"#\">Portfolio</a></li>\t<li><a href=\"#\">Blog</a></li></ul>"
+          title: Work
+        -
+          content: "<ul>\t<li><a href=\"#\">FAQ</a></li>\t<li><a href=\"#\">Offline</a></li>\t<li><a href=\"#\">Coming<span class=\"hidden-tablet\"> Soon</span></a></li></ul>"
+          title: Help

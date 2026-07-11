@@ -1,0 +1,23 @@
+#g-expandedbottom {
+    background: $expandedbottom-background;
+    color: $expandedbottom-text-color; 	
+}  
+
+.fp-expandedbottom {
+	.owl-carousel .owl-item {
+		img {
+			border-radius: 3px;
+			width: 100px;
+		}
+		.g-owlcarousel-item-desc {
+			font-family: get-font-family($font-family-promo);
+		}
+	} 
+}  
+
+@media print {
+	#g-expandedbottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

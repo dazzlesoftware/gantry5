@@ -1,0 +1,61 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+{% for article in articles %}
+
+
+    <li>
+        <span class="g-upcgames-number">{{ loop.index }}</span>
+        {% if display.title.enabled and article.title %}
+            <a target="_blank" href="{{ article.route|e }}" title="{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}">
+            {% endif %}
+            {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+
+            {% if display.date.enabled %}
+                <span>
+                    {% if display.date.enabled == 'published' %}
+                        {{ article.publish_up|date(display.date.format) }}
+                    {% elseif display.date.enabled == 'modified' %}
+                        {{ article.modified|date(display.date.format) }}
+                    {% else %}
+                        {{ article.created|date(display.date.format) }}
+                    {% endif %}
+                </span>
+            {% endif %}
+        </a>
+    </li>
+{% endfor %}
+

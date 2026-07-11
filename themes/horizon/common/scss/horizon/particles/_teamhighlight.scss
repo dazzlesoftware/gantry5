@@ -1,0 +1,50 @@
+.g-teamhighlight-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0%;
+}
+
+.g-teamhighlight {
+    position: relative;
+
+    .g-teamhighlight-details {
+        position: absolute;
+        bottom: 3rem;
+        right: -3rem;
+        .dir-rtl & {
+            right: auto;
+            left: -3rem;
+        }
+
+        @include breakpoint(mobile-only) {
+            right: 0;
+
+            .dir-rtl & {
+                right: auto;
+                left: 0;
+            }
+        }
+
+        .g-teamhighlight-details-name {
+            background: set-color($base-background);
+            color: set-color($base-text-color);
+            padding: $content-margin;
+            font-weight: $font-weight-bold;
+            font-size: $core-font-size + 0.2;
+            display: block;
+            margin-bottom: $content-margin;
+            clear: both;
+        }
+
+        .g-teamhighlight-details-position {
+            background: $accent-color-2;
+            padding: $content-margin;
+            font-weight: $font-weight-medium;
+            font-size: $core-font-size - 0.2;
+            display: inline-block;
+            clear: both;
+        }
+    }
+}

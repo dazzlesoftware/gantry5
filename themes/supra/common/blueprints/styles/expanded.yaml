@@ -1,0 +1,15 @@
+name: Expanded Styles
+description: Expanded styles for the Supra theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#2276e3"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

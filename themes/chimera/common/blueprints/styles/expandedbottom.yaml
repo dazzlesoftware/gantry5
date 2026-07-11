@@ -1,0 +1,15 @@
+name: ExpandedBottom Colors
+description: ExpandedBottom colors for the Chimera theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#d14c3b"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

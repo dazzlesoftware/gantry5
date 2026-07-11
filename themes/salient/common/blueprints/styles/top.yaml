@@ -1,0 +1,15 @@
+name: Top Styles
+description: Top styles for the Salient theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#a8a8a8"

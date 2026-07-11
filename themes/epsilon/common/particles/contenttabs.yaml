@@ -1,0 +1,109 @@
+name: Content Tabs
+description: Displays Content Tabs.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the particle title text.
+      placeholder: Enter title
+
+    minheight: 
+      type: input.text
+      label: Minimum Height
+      description: Customize the particle height.
+      default: 600px
+
+    animation:
+      type: select.select
+      label: Animation Type
+      description: Set the animation type.
+      default: right
+      options:
+        left: Slide Left
+        right: Slide Right
+        up: Slide Up
+        down: Slide Down
+        fade: Fade
+        toggle: Toggle
+
+    items:
+      type: collection.list
+      array: true
+      label: Content Tabs Items
+      description: Content Tabs item to display.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Enter the title
+        .content:
+          type: textarea.textarea
+          label: Tab Content
+          description: Customize the tab content.
+          placeholder: Enter your custom content here.
+        .cols:
+          type: select.select
+          label: Icon Columns
+          description: Select the column amount
+          default: 25
+          options:
+            50: 2 Columns
+            33: 3 Columns
+            25: 4 Columns
+
+        icons:
+          type: collection.list
+          array: true
+          label: Icons
+          description: Create each item to appear in the content row.
+          value: name
+          ajax: true
+
+          fields:
+            .icon:
+              type: input.icon
+              label: Icon
+              description: Select the icon.
+            .link:
+              type: input.text
+              label: Icon Link
+              description: Specify the Icon link address.
+              default: '#'
+            .linktarget:
+              type: select.selectize
+              label: Link Target
+              description: Target browser window when item is clicked.
+              default: _self
+              options:
+                  _self: Self
+                  _blank: New Window
+            .title:
+              type: input.text
+              label: Title
+              description: Enter the title. 
+            .subtext:
+              type: textarea.textarea
+              label: Subtext
+              description: Enter the subtext. 

@@ -1,0 +1,508 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1458046943
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/: {  }
+  /header/:
+    -
+      - simplecontent-9483
+  /aboveBanner/: {  }
+  /above/: {  }
+  /showcaseBanner/:
+    -
+      - custom-6483
+  /showcase/:
+    -
+      - mosaicgrid-6000
+  /utilityBanner/:
+    -
+      - custom-8197
+  /utility/:
+    -
+      - gridstatistic-3082
+  /featureBanner/:
+    -
+      - custom-1092
+  /feature/:
+    -
+      - imagegrid-4703
+  /mainBanner/:
+    -
+      - custom-7502
+  /container-4448/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60':
+          -
+            - blockcontent-9267
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expandedBanner/: {  }
+  /expanded/: {  }
+  /extensionBanner/: {  }
+  /extension/:
+    -
+      - blockcontent-6363
+  /bottomBanner/: {  }
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 48'
+      - 'position-position-1858 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  aboveBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcaseBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utilityBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  featureBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  mainBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expandedBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extensionBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottomBanner:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+    attributes:
+      image: 'gantry-media://logo/logo.svg'
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  simplecontent-9483:
+    title: 'About Us - Header'
+    attributes:
+      class: center
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'About Us'
+          author: ''
+          leading_content: 'Use beautiful Google Web Fonts to individualize your site and add character to your content. There are hundreds to choose from, in various styles and weights.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'About Us'
+  custom-6483:
+    title: 'About Us - Showcase Banner A'
+    attributes:
+      html: '<h3 class="g-title nomarginbottom nopaddingbottom">Our Team</h3>'
+    block:
+      class: 'title-center nomarginbottom nopaddingbottom nomargintop'
+  mosaicgrid-6000:
+    title: 'Our Team'
+    attributes:
+      columns: g-mosaicgrid-4-col
+      items:
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          titleText: Sam
+          titleURL: ''
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: ''
+          tagicons: {  }
+          title: Sam
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          titleText: Alex
+          titleURL: ''
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: ''
+          tagicons: {  }
+          title: Alex
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          titleText: Joe
+          titleURL: ''
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: ''
+          tagicons: {  }
+          title: Joe
+        -
+          style: g-mosaicgrid-style1
+          img: 'gantry-media://pages/about-us/showcase/img-04.jpg'
+          titleText: Kim
+          titleURL: ''
+          titleTarget: _self
+          desc: 'A great valuable team member who is very creative, successful and loved by our clients.'
+          animations: g-mosaicgrid-zoom
+          buttontext: ''
+          buttonlink: ''
+          buttontarget: _self
+          buttonclass: ''
+          tag: ''
+          tagicons: {  }
+          title: Kim
+  custom-8197:
+    title: 'About Us - Utility Banner A'
+    attributes:
+      html: '<h3 class="g-title nomarginbottom nopaddingbottom">Our Experience</h3>'
+    block:
+      class: 'title-center nomarginbottom nopaddingbottom nomargintop'
+  gridstatistic-3082:
+    title: 'Our Experience'
+    attributes:
+      class: center
+      readmoreclass: button-3
+      footerdesc: 'Aliquam ante augue, iaculis eget fringilla vel, gravida non nibh. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu, eu fermentum elit metus vel mauris. In sed nunc tincidunt, faucibus quam vel, finibus arcu. Proin nec euismod nisi, id tristique augue. Nam in erat est.'
+      cols: g-gridstatistic-4cols
+      gridstatisticitems:
+        -
+          text1: '25'
+          text2: 'Years Experience'
+          title: 'Item 1'
+        -
+          text1: '50123'
+          text2: 'Happy Clients'
+          title: 'Item 2'
+        -
+          text1: '1234'
+          text2: 'New Innovations'
+          title: 'Item 3'
+        -
+          text1: '817'
+          text2: Locations
+          title: 'Item 4'
+  custom-1092:
+    title: 'About Us - Feature Banner A'
+    attributes:
+      html: '<h3 class="g-title nomarginbottom nopaddingbottom">Our Previous Work</h3>'
+    block:
+      class: 'title-center nomarginbottom nopaddingbottom nomargintop'
+  imagegrid-4703:
+    title: 'About Us - Image Grid'
+    attributes:
+      cols: g-imagegrid-4cols
+      album: clients
+      imagegriditems:
+        -
+          image: 'gantry-media://pages/about-us/feature/img-01.jpg'
+          caption: 'Image 1'
+          title: 'Image 1'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-02.jpg'
+          caption: 'Image 2'
+          title: 'Image 2'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-03.jpg'
+          caption: 'Image 3'
+          title: 'Image 3'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-04.jpg'
+          caption: 'Image 4'
+          title: 'Image 4'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-05.jpg'
+          caption: 'Image 5'
+          title: 'Image 5'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-06.jpg'
+          caption: 'Image 6'
+          title: 'Image 6'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-07.jpg'
+          caption: 'Image 7'
+          title: 'Image 7'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-08.jpg'
+          caption: 'Image 8'
+          title: 'Image 8'
+  custom-7502:
+    title: 'About Us - Main Banner A'
+    attributes:
+      html: '<h3 class="g-title nomarginbottom nopaddingbottom">Why You Should Join Us</h3>'
+    block:
+      class: 'title-center nomarginbottom nopaddingbottom nomargintop'
+  position-position-8538:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  blockcontent-9267:
+    title: 'About Us - Introduction - Mission - Business'
+    attributes:
+      class: 'center g-blockcontent-spacing'
+      description: 'Choose the theme that suits your needs. 100% satisfaction guaranteed.'
+      linktarget: _self
+      subcontents:
+        -
+          name: Introduction
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Introduction
+        -
+          name: Mission
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Mission
+        -
+          name: Business
+          icon: ''
+          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: nopaddingall
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Business
+  position-position-8807:
+    title: Aside
+    attributes:
+      key: aside
+  blockcontent-6363:
+    title: 'About Us - Block Content'
+    attributes:
+      class: 'title-center g-blockcontent-spacing'
+      title: 'We are a very creative team'
+      description: '<div class="center">We love what we do and you will love it too, that''s a promise.</div>'
+      subcontents:
+        -
+          name: Sophisticated
+          icon: 'fa fa-align-right'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: box3
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Sophisticated
+        -
+          name: Powerful
+          icon: 'fa fa-sliders'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: box3
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Powerful
+        -
+          name: Reliable
+          icon: 'fa fa-bar-chart-o'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: box3
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Reliable
+        -
+          name: Social
+          icon: 'fa fa-calendar'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Dynamically procrastinate B2C users after installed base benefits.'
+          class: box3
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Social
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  position-position-1858:
+    title: Copyright
+    attributes:
+      key: copyright
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

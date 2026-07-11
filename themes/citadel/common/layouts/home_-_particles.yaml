@@ -1,0 +1,1259 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1468933785
+layout:
+  /container-top/:
+    -
+      -
+        'topleft 10': {  }
+      -
+        'topmain 80': {  }
+      -
+        'topright 10': {  }
+  /container-navigation/:
+    -
+      -
+        'navigationleft 10': {  }
+      -
+        'navigationmain 80': {  }
+      -
+        'navigationright 10': {  }
+  /container-slideshow/:
+    -
+      -
+        'slideshowleft 10': {  }
+      -
+        'slideshowmain 80':
+          -
+            - simplecontent-8476
+          -
+            - video-4748
+      -
+        'slideshowright 10': {  }
+  /container-header/:
+    -
+      -
+        'headerleft 10': {  }
+      -
+        'headermain 80':
+          -
+            - simplecontent-6615
+          -
+            - infolist-2638
+      -
+        'headerright 10': {  }
+  /container-above/:
+    -
+      -
+        'aboveleft 10': {  }
+      -
+        'abovemain 80':
+          -
+            - 'owlcarousel-4990 70'
+            - 'owlcarousel-1431 30'
+      -
+        'aboveright 10': {  }
+  /container-main/:
+    -
+      -
+        'sidebar 10': {  }
+      -
+        'mainbar 80': {  }
+      -
+        'aside 10': {  }
+  /container-showcase/:
+    -
+      -
+        'showcaseleft 10': {  }
+      -
+        'showcasemain 80':
+          -
+            - simplecontent-8236
+          -
+            - 'video-7364 30'
+            - 'custom-9512 70'
+      -
+        'showcaseright 10': {  }
+  /container-utility/:
+    -
+      -
+        'utilityleft 10': {  }
+      -
+        'utilitymain 80': {  }
+      -
+        'utilityright 10': {  }
+  /container-feature/:
+    -
+      -
+        'featureleft 10': {  }
+      -
+        'featuremain 80':
+          -
+            - 'owlcarousel-6260 50'
+            - 'blockcontent-4424 50'
+      -
+        'featureright 10': {  }
+  /container-expanded/:
+    -
+      -
+        'expandedleft 10': {  }
+      -
+        'expandedmain 80':
+          -
+            - infolist-9493
+      -
+        'expandedright 10': {  }
+  /container-extension/:
+    -
+      -
+        'extensionleft 10': {  }
+      -
+        'extensionmain 80':
+          -
+            - infolist-5404
+      -
+        'extensionright 10': {  }
+  /container-bottom/:
+    -
+      -
+        'bottomleft 10': {  }
+      -
+        'bottommain 80': {  }
+      -
+        'bottomright 10': {  }
+  /container-footer/:
+    -
+      -
+        'footerleft 10': {  }
+      -
+        'footermain 80':
+          -
+            - 'custom-3218 50'
+            - 'simpleform-1006 50'
+      -
+        'footerright 10': {  }
+  /container-copyright/:
+    -
+      -
+        'copyrightleft 10': {  }
+      -
+        'copyrightmain 80': {  }
+      -
+        'copyrightright 10': {  }
+  offcanvas: {  }
+structure:
+  topleft:
+    type: section
+    subtype: aside
+    title: 'Top Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  topmain:
+    type: section
+    title: 'Top Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  topright:
+    type: section
+    subtype: aside
+    title: 'Top Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-top:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  navigationleft:
+    type: section
+    title: 'Navigation Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigationmain:
+    type: section
+    title: 'Navigation Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  navigationright:
+    type: section
+    title: 'Navigation Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-navigation:
+    attributes:
+      boxed: '3'
+      class: g-default-navigation
+      extra: {  }
+  slideshowleft:
+    type: section
+    subtype: aside
+    title: 'Slideshow Left'
+    attributes:
+      class: ''
+    block:
+      id: block-1008
+      class: g-side-column
+      fixed: '1'
+  slideshowmain:
+    type: section
+    title: 'Slideshow Main'
+    attributes:
+      class: fp-slideshow
+    block:
+      id: block-9370
+      class: g-middle-column
+      fixed: '1'
+  slideshowright:
+    type: section
+    subtype: aside
+    title: 'Slideshow Right'
+    attributes:
+      class: ''
+    block:
+      id: block-6923
+      class: g-side-column
+      fixed: '1'
+  container-slideshow:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  headerleft:
+    type: section
+    subtype: aside
+    title: 'Header Left'
+    attributes:
+      class: ''
+    block:
+      id: block-7097
+      class: g-side-column
+      fixed: '1'
+  headermain:
+    type: section
+    subtype: header
+    title: 'Header Main'
+    attributes:
+      class: ''
+    block:
+      id: block-7969
+      class: g-middle-column
+      variations: center
+      fixed: '1'
+  headerright:
+    type: section
+    subtype: aside
+    title: 'Header Right'
+    attributes:
+      class: ''
+    block:
+      id: block-6810
+      class: g-side-column
+      fixed: '1'
+  container-header:
+    attributes:
+      boxed: '3'
+      class: fp-header
+      extra: {  }
+  aboveleft:
+    type: section
+    subtype: aside
+    title: 'Above Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-4825
+  abovemain:
+    type: section
+    title: 'Above Main'
+    attributes:
+      class: fp-above
+    block:
+      id: block-9566
+      class: g-middle-column
+      fixed: '1'
+  aboveright:
+    type: section
+    subtype: aside
+    title: 'Above Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-4556
+  container-above:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  sidebar:
+    type: section
+    subtype: aside
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-5434
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    block:
+      class: g-middle-column
+      fixed: '1'
+      id: block-4003
+  aside:
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-8399
+  container-main:
+    attributes:
+      boxed: '3'
+  showcaseleft:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  showcasemain:
+    type: section
+    title: 'Showcase Main'
+    attributes:
+      class: fp-showcase
+      _inherit: ''
+    block:
+      id: block-4266
+      class: g-middle-column
+      fixed: '1'
+  showcaseright:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-showcase:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  utilityleft:
+    type: section
+    subtype: aside
+    title: 'Utility Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-7776
+  utilitymain:
+    type: section
+    title: 'Utility Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+      id: block-9059
+  utilityright:
+    type: section
+    subtype: aside
+    title: 'Utility Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-6130
+  container-utility:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  featureleft:
+    type: section
+    subtype: aside
+    title: 'Feature Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-2584
+  featuremain:
+    type: section
+    title: 'Feature Main'
+    attributes:
+      class: fp-feature
+    block:
+      id: block-3909
+      class: g-middle-column
+      fixed: '1'
+  featureright:
+    type: section
+    subtype: aside
+    title: 'Feature Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-9736
+  container-feature:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expandedleft:
+    type: section
+    subtype: aside
+    title: 'Expanded Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-7616
+  expandedmain:
+    type: section
+    title: 'Expanded Main'
+    attributes:
+      class: fp-expanded
+    block:
+      id: block-8216
+      class: g-middle-column
+      fixed: '1'
+  expandedright:
+    type: section
+    subtype: aside
+    title: 'Expanded Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-3910
+  container-expanded:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  extensionleft:
+    type: section
+    subtype: aside
+    title: 'Extension Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-9445
+  extensionmain:
+    type: section
+    title: 'Extension Main'
+    attributes:
+      class: fp-extension
+    block:
+      id: block-3477
+      class: g-middle-column
+      fixed: '1'
+  extensionright:
+    type: section
+    subtype: aside
+    title: 'Extension Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-2456
+  container-extension:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  bottomleft:
+    type: section
+    subtype: aside
+    title: 'Bottom Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-1253
+  bottommain:
+    type: section
+    title: 'Bottom Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+      id: block-1516
+  bottomright:
+    type: section
+    subtype: aside
+    title: 'Bottom Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-9649
+  container-bottom:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  footerleft:
+    type: section
+    subtype: aside
+    title: 'Footer Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-3558
+  footermain:
+    type: section
+    subtype: footer
+    title: 'Footer Main'
+    attributes:
+      class: fp-footer
+    block:
+      id: block-2385
+      class: g-middle-column
+      fixed: '1'
+  footerright:
+    type: section
+    subtype: aside
+    title: 'Footer Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-7344
+  container-footer:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  copyrightleft:
+    type: section
+    subtype: aside
+    title: 'Copyright Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  copyrightmain:
+    type: section
+    title: 'Copyright Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  copyrightright:
+    type: section
+    subtype: aside
+    title: 'Copyright Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-copyright:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-8476:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: 'WE ARE CITADEL'
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'VIDEO SUPPORTED THEME'
+          author: ''
+          leading_content: 'Build a unique cinematic experience.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'New item'
+    block:
+      class: fp-slideshow-simplecontent
+  video-4748:
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          caption: ''
+          source: local
+          video: ''
+          local:
+            -
+              file: 'gantry-media://videos/slideshow/sample.webm'
+              title: 'Sample webm'
+            -
+              file: 'gantry-media://videos/slideshow/sample.mp4'
+              title: 'Sample mp4'
+          loop: enabled
+          autoplay: enabled
+          controls: disabled
+          muted: enabled
+          title: 'Slideshow Video'
+    block:
+      class: fp-slideshow-video
+  simplecontent-6615:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: 'Citadel brings your site to life with integrated support for video backgrounds, and a clean design that puts your content at center stage.'
+          main_content: ''
+          readmore_label: 'Know More   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>'
+          readmore_link: '#'
+          readmore_class: button
+          readmore_target: _self
+          title: 'New item'
+    block:
+      class: fp-header-simplecontent
+  infolist-2638:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://demo/home/header/icon1.svg'
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: Animated
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: AA
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://demo/home/header/icon2.svg'
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: Stylistic
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: SS
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://demo/home/header/icon3.svg'
+          imageloc: center
+          textstyle: compact
+          imagestyle: compact
+          desc: Versatile
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: VV
+    block:
+      class: fp-header-infolist
+  owlcarousel-4990:
+    title: 'Travel Quotes'
+    attributes:
+      class: ''
+      source: particle
+      presets: disabled
+      displayitems: '1'
+      title: ''
+      description: ''
+      layout: testimonial
+      width: g-owlcarousel-fullwidth
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: disabled
+      prevText: ''
+      nextText: ''
+      dots: enabled
+      loop: enabled
+      videoloop: enabled
+      videoautoplay: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: ''
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: 'Ivan Chavez'
+          authorimage: ''
+          desc: 'Citadel delivers with Video Support and the new Inheritance System from Gantry 5.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'Ivan Chavez'
+        -
+          image: ''
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: 'Andre Gilseth'
+          authorimage: ''
+          desc: 'The Layout manager is amazing! Move, resize, and configure content in seconds.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'Andre Gilseth'
+        -
+          image: ''
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: 'Lauren Block'
+          authorimage: ''
+          desc: 'The Menu Editor enhances the core menu with a rich, drag and drop interface.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'Lauren Block'
+      jcategories: ''
+      jarticles: '1'
+      jintroimage: enabled
+      jcategoriesnames: enabled
+      jtitle: enabled
+      jintrotext: enabled
+      jauthor: enabled
+      jlink: enabled
+      jlinktext: 'Read More'
+  owlcarousel-1431:
+    title: 'Owl Photos'
+    attributes:
+      class: ''
+      source: particle
+      presets: disabled
+      displayitems: '1'
+      title: ''
+      description: '<i class="fa fa-instagram"></i> @citadel'
+      layout: showcase
+      width: g-owlcarousel-fullwidth
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      videoloop: enabled
+      videoautoplay: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://demo/home/above/img-01.jpg'
+          showcaseimages:
+            -
+              image: 'gantry-media://demo/home/above/img-01.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card1
+              name: 'Image 1'
+            -
+              image: 'gantry-media://demo/home/above/img-02.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card1
+              name: 'Image 2'
+            -
+              image: 'gantry-media://demo/home/above/img-03.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card1
+              name: 'Image 3'
+            -
+              image: 'gantry-media://demo/home/above/img-04.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card1
+              name: 'Image 4'
+          icon: 'fa fa-arrows-alt'
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'Card 1'
+        -
+          image: ''
+          showcaseimages:
+            -
+              image: 'gantry-media://demo/home/above/img-02.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card2
+              name: 'Image 1'
+            -
+              image: 'gantry-media://demo/home/above/img-04.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card2
+              name: 'Image 2'
+            -
+              image: 'gantry-media://demo/home/above/img-03.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card2
+              name: 'Image 3'
+            -
+              image: 'gantry-media://demo/home/above/img-01.jpg'
+              icon: 'fa fa-arrows-alt'
+              album: card2
+              name: 'Image 4'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'Card 2'
+      jcategories: ''
+      jarticles: '1'
+      jintroimage: enabled
+      jcategoriesnames: enabled
+      jtitle: enabled
+      jintrotext: enabled
+      jauthor: enabled
+      jlink: enabled
+      jlinktext: 'Read More'
+    block:
+      class: 'fp-above-owlcarousel nopaddingbottom'
+      variations: nomarginall
+  simplecontent-8236:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: 'From Our Blog'
+      items: {  }
+    block:
+      variations: 'title1 center'
+  video-7364:
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          caption: 'Sample Video'
+          source: local
+          video: ''
+          local:
+            -
+              file: 'gantry-media://videos/slideshow/sample.webm'
+              title: 'Sample webm'
+            -
+              file: 'gantry-media://videos/slideshow/sample.mp4'
+              title: 'Sample mp4'
+          loop: enabled
+          autoplay: disabled
+          controls: disabled
+          muted: enabled
+          title: 'New item'
+  custom-9512:
+    title: 'Custom HTML'
+    attributes:
+      html: "    <div class=\"fp-showcase-contentarray\">\n        <div class=\"g-particle\">\n            <div class=\"g-content-array\">\n                <div class=\"g-grid\">\n                    <div class=\"g-block\">\n                        <div class=\"g-content\">\n                            <div class=\"g-array-item\">\n                                <div class=\"g-array-item-title\">\n                                    <h3 class=\"g-item-title\"><a href=\"#\">\n                                    Video particle provides Youtube, Vimeo, and\n                                    Local video support along with\n                                    looping.</a></h3>\n                                </div>\n                                <div class=\"g-array-item-details\">\n                                    <span class=\"g-array-item-date\"><i class=\n                                    \"fa fa-clock-o\"></i>Tuesday, July 12,\n                                    2016</span>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"g-grid\">\n                    <div class=\"g-block\">\n                        <div class=\"g-content\">\n                            <div class=\"g-array-item\">\n                                <div class=\"g-array-item-title\">\n                                    <h3 class=\"g-item-title\"><a href=\"#\">\n                                    Inheritance system allows for one outline\n                                    to inherit settings and particles from\n                                    another.</a></h3>\n                                </div>\n                                <div class=\"g-array-item-details\">\n                                    <span class=\"g-array-item-date\"><i class=\n                                    \"fa fa-clock-o\"></i>Tuesday, July 12,\n                                    2016</span>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"g-grid\">\n                    <div class=\"g-block\">\n                        <div class=\"g-content\">\n                            <div class=\"g-array-item\">\n                                <div class=\"g-array-item-title\">\n                                    <h3 class=\"g-item-title\"><a href=\"#\">\n                                    Citadel theme sports a responsive layout so\n                                    as to adapt to multiple viewing\n                                    devices.</a></h3>\n                                </div>\n                                <div class=\"g-array-item-details\">\n                                    <span class=\"g-array-item-date\"><i class=\n                                    \"fa fa-clock-o\"></i>Tuesday, July 12,\n                                    2016</span>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>"
+  owlcarousel-6260:
+    title: 'Owl Carousel'
+    attributes:
+      class: ''
+      source: particle
+      presets: disabled
+      displayitems: '1'
+      title: ''
+      description: ''
+      layout: standard
+      width: g-owlcarousel-fullwidth
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: disabled
+      prevText: ''
+      nextText: ''
+      dots: enabled
+      loop: enabled
+      videoloop: enabled
+      videoautoplay: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      items:
+        -
+          image: 'gantry-media://demo/home/feature/img-01.png'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'New item'
+        -
+          image: 'gantry-media://demo/home/feature/img-02.png'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'New item'
+        -
+          image: 'gantry-media://demo/home/feature/img-03.png'
+          icon: ''
+          title: ''
+          subtitle: ''
+          author: ''
+          authorimage: ''
+          desc: ''
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: ''
+          videosource: external
+          video: ''
+          videolocal: ''
+          videothumb: ''
+          name: 'New item'
+      jcategories: ''
+      jarticles: '1'
+      jintroimage: enabled
+      jcategoriesnames: enabled
+      jtitle: enabled
+      jintrotext: enabled
+      jauthor: enabled
+      jlink: enabled
+      jlinktext: 'Read More'
+  blockcontent-4424:
+    title: 'Block Content'
+    attributes:
+      class: ''
+      title: Inheritance
+      icon: ''
+      image: ''
+      headline: ''
+      description: 'You can now inherit particles, attributes, sections, and even entire layouts from one outline to another.'
+      linktext: ''
+      link: ''
+      linkclass: ''
+      linktarget: _self
+      subcontents:
+        -
+          name: 'Layout / Section Inheritance'
+          icon: 'fa fa-comment-o'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Inherit or clone entire layouts, as well as individual sections, to quickly configure the perfect website. Layout management has never been this easy.'
+          class: ''
+          button: 'Read More <i class="fa fa-caret-right" aria-hidden="true"></i>'
+          buttonlink: '#'
+          buttonclass: ''
+          buttontarget: _self
+          title: 'New item'
+        -
+          name: 'Particle / Atom Inheritance'
+          icon: 'fa fa-wifi'
+          img: ''
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: 'Particles and atoms can now be synced together enabling you to quickly and easily configure and manage content throughout your website.'
+          class: ''
+          button: 'Read More <i class="fa fa-caret-right" aria-hidden="true"></i>'
+          buttonlink: '#'
+          buttonclass: ''
+          buttontarget: _self
+          title: 'New item'
+    block:
+      class: fp-feature-blockcontent
+  infolist-9493:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: 'Frequently Asked Questions'
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: 'fa fa-tasks'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Particles are customizable blocks that form the front-end, from placeholders to self contained content and functions.'
+          tag: ''
+          subtag: ''
+          label: More
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'What about Particles?'
+        -
+          icon: 'fa fa-bar-chart-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'The Styles settings allows for customizing the stylistic elements of the template, such as links, font or background colors.'
+          tag: ''
+          subtag: ''
+          label: More
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'How about Styling?'
+        -
+          icon: 'fa fa-desktop'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'The Layout manager provides drag-and-drop functionality with power to move, resize, and configure content in seconds.'
+          tag: ''
+          subtag: ''
+          label: More
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'What about Layouts?'
+    block:
+      class: fp-expanded-infolist
+      variations: 'title2 center'
+  infolist-5404:
+    title: 'Info List'
+    attributes:
+      class: ''
+      title: 'What others are saying'
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: ''
+          iconloc: center
+          image: 'gantry-media://demo/home/extension/lukeskywalker.png'
+          imageloc: center
+          textstyle: compact
+          imagestyle: avatar
+          desc: "It's really wonderful. Citadel has surpassed our expectations. Needless to say it is very awesome!\n<span class=\"author\"> - John Hubner</span>"
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          buttonicon: 'fa fa-twitter'
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'New item'
+        -
+          icon: ''
+          iconloc: center
+          image: 'gantry-media://demo/home/extension/spock.png'
+          imageloc: center
+          textstyle: compact
+          imagestyle: avatar
+          desc: "I love Citadel. Keep up the excellent work. Very easy to use. Citadel is a Gantry 5 dream template!\n<span class=\"author\"> - Shawn Avery</span>"
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          buttonicon: 'fa fa-twitter'
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'New item'
+        -
+          icon: ''
+          iconloc: center
+          image: 'gantry-media://demo/home/extension/leia.png'
+          imageloc: center
+          textstyle: compact
+          imagestyle: avatar
+          desc: "Can't imagine life without it! Citadel has really helped our business. I am so pleased with this theme.\n<span class=\"author\"> - Lacy South</span>"
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          buttonicon: 'fa fa-twitter'
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'New item'
+    block:
+      class: fp-extension-infolist
+      variations: 'center title1'
+  custom-3218:
+    title: 'Custom HTML'
+    attributes:
+      html: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"380.5\" height=\"247.47\" viewBox=\"0 0 380.5 247.47\">\n  <path id=\"map_pin\" data-name=\"map pin\" class=\"g-svg-map\" d=\"M477.5,5439.6c0,6.54,7.575,11.79,9.857,13.22a1.308,1.308,0,0,0,1.285-.01c2.279-1.45,9.858-6.76,9.858-13.21A10.5,10.5,0,1,0,477.5,5439.6Zm10.5,2.27a2.27,2.27,0,1,1,2.25-2.27A2.262,2.262,0,0,1,488,5441.87ZM661.5,5216.1c0,6.54,7.575,11.79,9.857,13.22a1.308,1.308,0,0,0,1.285-.01c2.279-1.45,9.858-6.76,9.858-13.21A10.5,10.5,0,1,0,661.5,5216.1Zm10.5,2.27a2.27,2.27,0,1,1,2.25-2.27A2.262,2.262,0,0,1,672,5218.37Zm30.5,74.73c0,6.54,7.575,11.79,9.857,13.22a1.308,1.308,0,0,0,1.285-.01c2.279-1.45,9.858-6.76,9.858-13.21A10.5,10.5,0,1,0,702.5,5293.1Zm10.5,2.27a2.27,2.27,0,1,1,2.25-2.27A2.262,2.262,0,0,1,713,5295.37Zm89,138.23c0,6.54,7.575,11.79,9.857,13.22a1.308,1.308,0,0,0,1.285-.01c2.279-1.45,9.858-6.76,9.858-13.21A10.5,10.5,0,1,0,802,5433.6Zm10.5,2.27a2.27,2.27,0,1,1,2.25-2.27A2.262,2.262,0,0,1,812.5,5435.87ZM837,5263.6c0,6.54,7.575,11.79,9.857,13.22a1.308,1.308,0,0,0,1.285-.01c2.279-1.45,9.858-6.76,9.858-13.21A10.5,10.5,0,1,0,837,5263.6Zm10.5,2.27a2.27,2.27,0,1,1,2.25-2.27A2.262,2.262,0,0,1,847.5,5265.87Z\" transform=\"translate(-477.5 -5205.53)\"/>\n</svg>\n<div class=\"fp-footer-demolocations\">\n  <div class=\"demolocation1\">\n    <span class=\"demolocation-title\">London</span>\n    <p>\n      16 Traill Street Offices\n      LN10 0XA\n    </p>\n  </div>\n  <div class=\"demolocation2\">\n    <span class=\"demolocation-title\">Lisbon</span>\n    <p>\n      Avenida da Liberdade 16\n      2560-290\n    </p>\n  </div>\n</div>\n  <a href=\"#\" class=\"button fp-footer-demolocations-button\">More</a>"
+  simpleform-1006:
+    title: 'Simple Form'
+    attributes:
+      button: 'Send Message <i class="fa fa-long-arrow-right" aria-hidden="true"></i>'
+      items:
+        -
+          type: text
+          label: Name
+          placeholder: 'Your Name'
+          required: enabled
+          min: ''
+          max: ''
+          name: 'New item'
+        -
+          type: text
+          label: Email
+          placeholder: example@gmail.com
+          required: enabled
+          min: ''
+          max: ''
+          name: 'New item'
+        -
+          type: text
+          label: Message
+          placeholder: Subject
+          required: enabled
+          min: ''
+          max: ''
+          name: 'New item'
+    block:
+      class: fp-footer-simpleform

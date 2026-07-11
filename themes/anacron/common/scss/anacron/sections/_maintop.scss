@@ -1,0 +1,21 @@
+#g-maintop {
+    background: $maintop-background;
+    color: $maintop-text-color; 
+	&.rt-overlay-light {
+		h2.title {
+			color: darken($maintop-text-color, 15%);
+		}
+	}
+	&.rt-overlay-dark {
+		h2.title {
+			color: lighten($expandedtop-text-color, 35%);
+		}
+	}	
+}    
+
+@media print {
+	#g-maintop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

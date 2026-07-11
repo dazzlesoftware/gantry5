@@ -1,0 +1,23 @@
+name: Header Styles
+description: Header styles for the Topaz theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#152248"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/header/img-01.png"
+    background-image2:
+      type: input.imagepicker
+      label: Background Image 2
+      default: "gantry-media://backgrounds/header/img-02.jpg"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

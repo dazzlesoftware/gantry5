@@ -1,0 +1,131 @@
+.g-imagegrid {
+    *,  *:before,  *:after {
+        box-sizing: border-box !important;
+    }
+    .g-imagegrid-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        flex-wrap: wrap;
+        margin-left:  -($content-padding + $content-margin) / 2;
+        margin-right:  -($content-padding + $content-margin) / 2;
+    }
+    .g-imagegrid-item {
+        flex: 0 0 auto;
+        width: 100%;
+        padding-left: ($content-padding + $content-margin) / 2;
+        padding-right: ($content-padding + $content-margin) / 2;
+        padding-bottom: $content-padding + $content-margin;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        img {
+            transition: all 0.35s;
+        }
+        .indicator {
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          color: $white;
+          font-weight: $font-weight-light;
+          font-style: normal;
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          div {
+            flex: none;
+             -webkit-flex: none;
+            max-width: 50%;
+            padding-bottom: 5px;
+            font-size: 110px;
+            @include breakpoint(desktop-range) {
+              font-size: 70px;
+            }
+            @include breakpoint(tablet-range) {
+              font-size: 80px;
+            }
+            @include breakpoint(mobile-only) {
+              font-size: 70px;
+            }
+            @include breakpoint(large-mobile-range) {
+              font-size: 80px;
+            }
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.35s;
+          }
+        }
+        &:hover {
+            z-index: 10;
+            .g-imagegrid-link:before {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .indicator div {
+              opacity: 1;
+              transform: scale(1);
+            }
+        }
+    }
+    .g-imagegrid-desc {
+        margin: 1.5rem 0;
+    }
+    .g-imagegrid-link {
+        display: block;
+        position: relative;
+        background: $accent-color-1;
+        width: 100%;
+        height: 100%;
+        transition: all 0.35s;
+        &:before {
+            color: $white;
+            background: $accent-color-1;
+            content: "";
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform: scale(0);
+            transition: all 0.35s;
+        }
+    }
+    .g-imagegrid-2cols {
+        .g-imagegrid-item {
+            width: 50%;
+        }
+    }
+    .g-imagegrid-3cols {
+        .g-imagegrid-item {
+            width: 33.33333%;
+        }
+    }
+    .g-imagegrid-4cols {
+        .g-imagegrid-item {
+            width: 25%;
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+    .g-imagegrid-5cols {
+        .g-imagegrid-item {
+            width: 20%;
+            @include breakpoint(tablet-range) {
+                width: 33.33333%;
+            }
+            @include breakpoint(mobile-only) {
+                width: 50%;
+            }
+        }
+    }
+}

@@ -1,0 +1,354 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1456863155
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - 'position-position-7051 50'
+      - 'position-position-2504 50'
+  /aboveBanner/:
+    -
+      - position-position-5465
+  /above/:
+    -
+      - position-position-3264
+  /showcaseBanner/:
+    -
+      - position-position-6545
+  /showcase/:
+    -
+      - position-position-9435
+    -
+      - position-position-8620
+    -
+      - position-position-3083
+  /utilityBanner/:
+    -
+      - position-position-4172
+  /utility/:
+    -
+      - position-position-5239
+  /featureBanner/:
+    -
+      - position-position-1371
+  /feature/:
+    -
+      - position-position-7980
+  /mainBanner/:
+    -
+      - position-position-4812
+  /container-4448/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expandedBanner/:
+    -
+      - position-position-5550
+  /expanded/:
+    -
+      - 'position-position-8124 50'
+      - 'position-position-8346 50'
+  /extensionBanner/:
+    -
+      - position-position-5642
+  /extension/:
+    -
+      - position-position-4800
+  /bottomBanner/:
+    -
+      - position-position-4953
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 48'
+      - 'position-position-1858 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  aboveBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcaseBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utilityBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  featureBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  mainBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expandedBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extensionBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottomBanner:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-2504:
+    title: 'Module Position'
+    attributes:
+      key: header-b
+  position-position-5465:
+    title: 'Above Banner A'
+    attributes:
+      key: above-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+    block:
+      variations: center
+  position-position-6545:
+    title: 'Showcase Banner A'
+    attributes:
+      key: showcase-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-8620:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-position-3083:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-position-4172:
+    title: 'Utility Banner A'
+    attributes:
+      key: utility-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-1371:
+    title: 'Feature Banner A'
+    attributes:
+      key: feature-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-4812:
+    title: 'Main Banner A'
+    attributes:
+      key: main-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-8538:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-5550:
+    title: 'Expanded Banner A'
+    attributes:
+      key: expanded-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-8346:
+    title: 'Module Position'
+    attributes:
+      key: expanded-b
+  position-position-5642:
+    title: 'Extension Banner A'
+    attributes:
+      key: extension-banner-a
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-4953:
+    title: 'Bottom Banner A'
+    attributes:
+      key: bottom-banner-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  position-position-1858:
+    title: 'Module Position'
+    attributes:
+      key: copyright-a
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

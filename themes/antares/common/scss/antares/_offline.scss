@@ -1,0 +1,27 @@
+.g-offline {
+	.g-layercontent {
+		padding: 5rem;
+        @include breakpoint(mobile-only) {
+        padding: 0;
+        }
+	}
+    #grav-login {
+        max-width: 36rem;
+        color: #a9a9a9;  
+        .form-actions {
+            margin-top: $content-margin;
+            @include breakpoint(mobile-only) {
+                text-align: center;
+            }
+        }
+        .button {
+            text-transform: capitalize;
+        }
+        .rememberme { 
+            @include breakpoint(mobile-only) {
+                float: none;
+                display: block;
+            }
+        }
+    }		
+}

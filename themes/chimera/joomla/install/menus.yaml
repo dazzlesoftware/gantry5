@@ -1,0 +1,9 @@
+chimera-theme:
+  title: 'Chimera Theme'
+  description: 'Sample menu for Chimera theme.'
+
+  items:
+    chimera:
+      title: 'Home'
+      layout: home
+      home: 1

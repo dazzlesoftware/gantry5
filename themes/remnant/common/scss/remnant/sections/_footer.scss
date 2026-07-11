@@ -1,0 +1,41 @@
+#g-footer {
+    color: $footer-text-color;
+    background: $footer-background;
+
+    @extend .section-paddings;
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-layout-header {
+            margin: 0 auto;
+            width: 50%;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+
+            .g-simplecontent-item-content-title {
+                color: $white;
+                font-size: $core-font-size + 2;
+                @include breakpoint(mobile-only) {
+                  font-size: $core-font-size + 1;
+                }
+            }
+
+            .g-simplecontent-item-leading-content {
+                color: $footer-text-color;
+                font-size: $core-font-size + 0.4;
+                @include breakpoint(mobile-only) {
+                  font-size: $core-font-size + 0.2;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

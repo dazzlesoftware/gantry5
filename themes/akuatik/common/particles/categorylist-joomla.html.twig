@@ -1,0 +1,24 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{% for cat in categories %}
+    {% if cat.parent_id <= 1 %}
+        <a href="{{ cat.route|e }}" target="{{ display.category.target|default('_self')|e }}">
+            {{ cat.title|e }}
+        </a>
+    {% endif %}
+{% endfor %}
+

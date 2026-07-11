@@ -1,0 +1,713 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_positions
+  timestamp: 1468236179
+layout:
+  /container-top/:
+    -
+      -
+        'topleft 10': {  }
+      -
+        'topmain 80': {  }
+      -
+        'topright 10': {  }
+  /container-navigation/:
+    -
+      -
+        'navigationleft 10': {  }
+      -
+        'navigationmain 80': {  }
+      -
+        'navigationright 10': {  }
+  /container-slideshow/:
+    -
+      -
+        'slideshowleft 10': {  }
+      -
+        'slideshowmain 80':
+          -
+            - position-position-5474
+          -
+            - position-position-3557
+      -
+        'slideshowright 10': {  }
+  /container-header/:
+    -
+      -
+        'headerleft 10': {  }
+      -
+        'headermain 80':
+          -
+            - position-position-9548
+          -
+            - position-position-3543
+      -
+        'headerright 10': {  }
+  /container-above/:
+    -
+      -
+        'aboveleft 10': {  }
+      -
+        'abovemain 80':
+          -
+            - 'position-position-4372 70'
+            - 'position-position-6579 30'
+      -
+        'aboveright 10': {  }
+  /container-main/:
+    -
+      -
+        'sidebar 10': {  }
+      -
+        'mainbar 80': {  }
+      -
+        'aside 10': {  }
+  /container-showcase/:
+    -
+      -
+        'showcaseleft 10': {  }
+      -
+        'showcasemain 80':
+          -
+            - position-position-8553
+          -
+            - 'position-position-2596 30'
+            - 'position-position-1313 70'
+      -
+        'showcaseright 10': {  }
+  /container-utility/:
+    -
+      -
+        'utilityleft 10': {  }
+      -
+        'utilitymain 80': {  }
+      -
+        'utilityright 10': {  }
+  /container-feature/:
+    -
+      -
+        'featureleft 10': {  }
+      -
+        'featuremain 80':
+          -
+            - 'position-position-7939 50'
+            - 'position-position-5844 50'
+      -
+        'featureright 10': {  }
+  /container-expanded/:
+    -
+      -
+        'expandedleft 10': {  }
+      -
+        'expandedmain 80':
+          -
+            - position-position-6028
+      -
+        'expandedright 10': {  }
+  /container-extension/:
+    -
+      -
+        'extensionleft 10': {  }
+      -
+        'extensionmain 80':
+          -
+            - position-position-6710
+      -
+        'extensionright 10': {  }
+  /container-bottom/:
+    -
+      -
+        'bottomleft 10': {  }
+      -
+        'bottommain 80': {  }
+      -
+        'bottomright 10': {  }
+  /container-footer/:
+    -
+      -
+        'footerleft 10': {  }
+      -
+        'footermain 80':
+          -
+            - 'position-position-5559 50'
+            - 'position-position-1713 50'
+      -
+        'footerright 10': {  }
+  /container-copyright/:
+    -
+      -
+        'copyrightleft 10': {  }
+      -
+        'copyrightmain 80': {  }
+      -
+        'copyrightright 10': {  }
+  offcanvas: {  }
+structure:
+  topleft:
+    type: section
+    subtype: aside
+    title: 'Top Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  topmain:
+    type: section
+    title: 'Top Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  topright:
+    type: section
+    subtype: aside
+    title: 'Top Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-top:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  navigationleft:
+    type: section
+    title: 'Navigation Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigationmain:
+    type: section
+    title: 'Navigation Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  navigationright:
+    type: section
+    title: 'Navigation Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-navigation:
+    attributes:
+      boxed: '3'
+      class: g-default-navigation
+      extra: {  }
+  slideshowleft:
+    type: section
+    subtype: aside
+    title: 'Slideshow Left'
+    attributes:
+      class: ''
+    block:
+      id: block-1008
+      class: g-side-column
+      fixed: '1'
+  slideshowmain:
+    type: section
+    title: 'Slideshow Main'
+    attributes:
+      class: fp-slideshow
+    block:
+      id: block-9370
+      class: g-middle-column
+      fixed: '1'
+  slideshowright:
+    type: section
+    subtype: aside
+    title: 'Slideshow Right'
+    attributes:
+      class: ''
+    block:
+      id: block-6923
+      class: g-side-column
+      fixed: '1'
+  container-slideshow:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  headerleft:
+    type: section
+    subtype: aside
+    title: 'Header Left'
+    attributes:
+      class: ''
+    block:
+      id: block-7097
+      class: g-side-column
+      fixed: '1'
+  headermain:
+    type: section
+    subtype: header
+    title: 'Header Main'
+    attributes:
+      class: ''
+    block:
+      id: block-7969
+      class: g-middle-column
+      variations: center
+      fixed: '1'
+  headerright:
+    type: section
+    subtype: aside
+    title: 'Header Right'
+    attributes:
+      class: ''
+    block:
+      id: block-6810
+      class: g-side-column
+      fixed: '1'
+  container-header:
+    attributes:
+      boxed: '3'
+      class: fp-header
+      extra: {  }
+  aboveleft:
+    type: section
+    subtype: aside
+    title: 'Above Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-4825
+  abovemain:
+    type: section
+    title: 'Above Main'
+    attributes:
+      class: fp-above
+    block:
+      id: block-9566
+      class: g-middle-column
+      fixed: '1'
+  aboveright:
+    type: section
+    subtype: aside
+    title: 'Above Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-4556
+  container-above:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  sidebar:
+    type: section
+    subtype: aside
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-5434
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    block:
+      class: g-middle-column
+      fixed: '1'
+      id: block-4003
+  aside:
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-8399
+  container-main:
+    attributes:
+      boxed: '3'
+  showcaseleft:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  showcasemain:
+    type: section
+    title: 'Showcase Main'
+    attributes:
+      class: fp-showcase
+      _inherit: ''
+    block:
+      id: block-4266
+      class: g-middle-column
+      fixed: '1'
+  showcaseright:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-showcase:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  utilityleft:
+    type: section
+    subtype: aside
+    title: 'Utility Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-7776
+  utilitymain:
+    type: section
+    title: 'Utility Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+      id: block-9059
+  utilityright:
+    type: section
+    subtype: aside
+    title: 'Utility Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-6130
+  container-utility:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  featureleft:
+    type: section
+    subtype: aside
+    title: 'Feature Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-2584
+  featuremain:
+    type: section
+    title: 'Feature Main'
+    attributes:
+      class: fp-feature
+    block:
+      id: block-3909
+      class: g-middle-column
+      fixed: '1'
+  featureright:
+    type: section
+    subtype: aside
+    title: 'Feature Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-9736
+  container-feature:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expandedleft:
+    type: section
+    subtype: aside
+    title: 'Expanded Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-7616
+  expandedmain:
+    type: section
+    title: 'Expanded Main'
+    attributes:
+      class: fp-expanded
+    block:
+      id: block-8216
+      class: g-middle-column
+      fixed: '1'
+  expandedright:
+    type: section
+    subtype: aside
+    title: 'Expanded Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-3910
+  container-expanded:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  extensionleft:
+    type: section
+    subtype: aside
+    title: 'Extension Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-9445
+  extensionmain:
+    type: section
+    title: 'Extension Main'
+    attributes:
+      class: fp-extension
+    block:
+      id: block-3477
+      class: g-middle-column
+      fixed: '1'
+  extensionright:
+    type: section
+    subtype: aside
+    title: 'Extension Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-2456
+  container-extension:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  bottomleft:
+    type: section
+    subtype: aside
+    title: 'Bottom Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-1253
+  bottommain:
+    type: section
+    title: 'Bottom Main'
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+      id: block-1516
+  bottomright:
+    type: section
+    subtype: aside
+    title: 'Bottom Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-9649
+  container-bottom:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  footerleft:
+    type: section
+    subtype: aside
+    title: 'Footer Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-3558
+  footermain:
+    type: section
+    subtype: footer
+    title: 'Footer Main'
+    attributes:
+      class: fp-footer
+    block:
+      id: block-2385
+      class: g-middle-column
+      fixed: '1'
+  footerright:
+    type: section
+    subtype: aside
+    title: 'Footer Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+      id: block-7344
+  container-footer:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  copyrightleft:
+    type: section
+    subtype: aside
+    title: 'Copyright Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  copyrightmain:
+    type: section
+    title: 'Copyright Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  copyrightright:
+    type: section
+    subtype: aside
+    title: 'Copyright Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-copyright:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  position-position-5474:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: fp-slideshow-simplecontent
+  position-position-3557:
+    title: 'Slideshow B'
+    attributes:
+      key: slideshow-b
+    block:
+      class: fp-slideshow-video
+  position-position-9548:
+    title: 'Header A'
+    attributes:
+      key: header-a
+    block:
+      class: fp-header-simplecontent
+  position-position-3543:
+    title: 'Header B'
+    attributes:
+      key: header-b
+    block:
+      class: fp-header-infolist
+  position-position-4372:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-6579:
+    title: 'Above B'
+    attributes:
+      key: above-b
+    block:
+      class: 'fp-above-owlcarousel nopaddingbottom'
+      variations: nomarginall
+  position-position-8553:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+    block:
+      variations: 'title1 center'
+  position-position-2596:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-position-1313:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+    block:
+      class: fp-showcase-newsletter
+  position-position-7939:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-5844:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+    block:
+      class: fp-feature-blockcontent
+  position-position-6028:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+    block:
+      class: fp-expanded-infolist
+      variations: 'title2 center'
+  position-position-6710:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+    block:
+      class: fp-extension-infolist
+      variations: 'center title1'
+  position-position-5559:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-position-1713:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+    block:
+      class: fp-footer-simpleform

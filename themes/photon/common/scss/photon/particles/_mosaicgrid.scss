@@ -1,0 +1,188 @@
+.g-mosaicgrid {
+  margin: -$content-padding;
+}
+.g-mosaicgrid-sizer,
+.g-mosaicgrid-item-container {
+  padding: $content-padding / 1.5;
+
+  .g-mosaicgrid-item {
+    position: relative;
+    border-radius: $border-radius;
+    overflow: hidden;
+  }
+
+  .g-mosaicgrid-1-col & {
+    width: 100%;
+  }
+  .g-mosaicgrid-2-col & {
+    width: 50%;
+    @include breakpoint(small-mobile-range) {
+      width: 100%;
+    }
+  }
+  .g-mosaicgrid-3-col & {
+    width: 33.33333%;
+    @include breakpoint(large-mobile-range) {
+      width: 50%;
+    }
+    @include breakpoint(small-mobile-range) {
+      width: 100%;
+    }
+  }
+  .g-mosaicgrid-4-col & {
+    width: 25%;
+    @include breakpoint(large-mobile-range) {
+      width: 50%;
+    }
+    @include breakpoint(small-mobile-range) {
+      width: 100%;
+    }
+  }
+  .g-mosaicgrid-5-col & {
+    width: 20%;
+    @include breakpoint(tablet-range) {
+      width: 33.33333%;
+    }
+    @include breakpoint(large-mobile-range) {
+      width: 50%;
+    }
+    @include breakpoint(small-mobile-range) {
+      width: 100%;
+    }
+  }
+  .g-mosaicgrid-6-col & {
+    width: 16.66667%;
+    @include breakpoint(tablet-range) {
+      width: 33.33333%;
+    }
+    @include breakpoint(large-mobile-range) {
+      width: 50%;
+    }
+    @include breakpoint(small-mobile-range) {
+      width: 100%;
+    }
+  }
+}
+
+.g-mosaicgrid-item {
+  &:hover,
+  &:focus {
+    img {
+      opacity: 0.15;
+      .g-mosaicgrid-zoom & {
+        transform: scale(1.25);
+      }
+      .g-mosaicgrid-rotate & {
+        transform: rotate(5deg) scale(1.25);
+      }
+      .g-mosaicgrid-blur & {
+        filter: blur(3px);
+      }
+      .g-mosaicgrid-grayscale & {
+        opacity: 1;
+        filter: grayscale(100%);
+      }
+      .g-mosaicgrid-blur.g-mosaicgrid-grayscale & {
+        filter: blur(3px) grayscale(100%);
+      }
+    }
+    .g-mosaicgrid-item-desc {
+      .g-mosaicgrid-style2 & {
+        opacity: 1;
+        font-size: 14px;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.g-mosaicgrid-image {
+  background: darken($accent-color-1, 10%);
+  overflow: hidden;
+  img {
+    transition: all 0.25s;
+    min-width: 100%;
+  }
+}
+.g-mosaicgrid-content {
+  padding: ($content-padding * 1.75) ($content-padding * 2) ($content-padding * 1.5) ($content-padding * 2);
+  .g-mosaicgrid-style1 & {
+    background: $base-background;
+    color: $base-text-color;
+  }
+  .g-mosaicgrid-style2 & {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.g-mosaicgrid-item-title {
+    font-family: get-font-family($font-family-title);
+    font-size: $core-font-size + 0.25;
+    line-height: $core-line-height - 0.25;
+    a {
+      .g-mosaicgrid-style1 & {
+        color: darken($base-text-color, 25%);
+        &:hover {
+          color: $accent-color-1;
+        }
+      }
+      .g-mosaicgrid-style2 & {
+        color: inherit;
+        font-size: $core-font-size + 0.5;
+        &:hover {
+          color: lighten($accent-color-1, 25%);
+        }
+      }
+    }
+}
+.g-mosaicgrid-item-desc {
+  padding-top: $content-padding / 3;
+  font-size: $core-font-size - 0.125;
+  color: lighten($base-text-color, 20%);
+  .g-mosaicgrid-style2 & {
+    color: lighten($base-text-color, 30%);
+    opacity: 0;
+    font-size: 0;
+    transform: scale(0);
+    transition: all 0.25s;
+  }
+}
+
+.g-mosaicgrid-item-tag-wrapper {
+  margin: $content-margin 0;
+  font-size: $core-font-size - 0.1;
+  .g-mosaicgrid-style1 & {
+    opacity: 0.5;
+    margin-top: $content-margin * 2;
+    padding-top: $content-padding;
+    margin-bottom: 0;
+    border-top: 1px solid $rule-color;
+  }
+  .g-mosaicgrid-style2 & {
+    position: absolute;
+    top: $content-padding;
+    left: $content-padding;
+    right: $content-padding;
+  }
+}
+.g-mosaicgrid-item-tag {
+  float: left;
+  .g-mosaicgrid-style2 & {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.25rem 0.5rem;
+    border-radius: $border-radius;
+  }
+}
+.g-mosaicgrid-item-tagicons-container {
+  float: right;
+  white-space: nowrap;
+}
+.g-mosaicgrid-item-tagicons {
+  display: inline-block;
+  margin: 0 2%;
+  .g-mosaicgrid-style2 & {
+    padding: 0.25rem 0;
+  }
+}

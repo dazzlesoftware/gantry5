@@ -1,0 +1,48 @@
+.g-simplemenu-particle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+    }
+
+    .g-simplemenu-container {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+
+            &:not(:first-child) {
+                h6 {
+                    margin-top: ($content-margin * 2);
+                }
+            }
+        }
+
+        h6 {
+            margin: 0 0 ($content-margin + 0.25);
+            color: $base-text-color;
+            font-size: $core-font-size - 0.1;
+            font-weight: $font-weight-medium;
+
+            @include breakpoint(mobile-only) {
+                margin: 0 0 ($content-margin * 2);
+            }
+        }
+
+        .g-simplemenu {
+            list-style: none;
+            margin: 0;
+            font-weight: $font-weight-medium;
+            font-size: $core-font-size;
+
+            @include breakpoint(mobile-only) {
+                margin: 0 0 ($content-margin * 2);
+            }
+
+            li {
+                padding: $content-margin - 0.4 0;
+                font-size: $core-font-size;
+            }
+        }
+    }
+}

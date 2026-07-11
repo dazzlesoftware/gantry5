@@ -1,0 +1,127 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% do gantry.load('lightcase.init') %}
+
+{% block particle %}
+
+    <div class="{{ particle.class|e }} g-owlcarousel-video-carousel">
+
+        <div class="g-owlcarousel-video-carousel-header">
+            {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+            <ul class="g-video-carousel-dots owl-dots"></ul>
+        </div>
+
+        {% if particle.description %}<div class="g-video-carousel-description">{{ particle.description|raw }}</div>{% endif %}
+
+        <div id="g-video-carousel-{{ id }}" class="g-video-carousel owl-carousel">
+
+            {% for item in particle.items %}
+                <div class="g-video-carousel-inner">
+                    <div id="g-{{ id }}-{{ loop.index }}" data-g-video-carousel-id="g-{{ id }}-{{ loop.index }}" class="g-video-carousel-video">
+
+                        {# Begin Vimeo #}
+                        {% if item.source == 'vimeo' %}
+                            <iframe width="100%" height="auto" src="https://player.vimeo.com/video/{{ item.video|replace({'https://vimeo.com/': '', 'https://vimeo.com/ondemand/': ''}) }}?autoplay={% if item.autoplay == 'enabled' %}1{% else %}0{% endif %}&amp;loop={% if item.loop == 'enabled' %}1{% else %}0{% endif %}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        {% endif %}
+                        {# End Vimeo #}
+
+                        {# Begin YouTube #}
+                        {% if item.source == 'youtube' %}
+
+                            <!-- START Fast & Agile YouTube Embed by Schoberg.net -->
+                            <div class="g-video-carousel-youtube" id="{{ item.video|replace({'https://www.youtube.com/watch?v=': '', 'http://www.youtube.com/watch?v=' : '', 'https://youtu.be/': '', 'http://youtu.be/': ''}) }}" data-params="showinfo={% if item.info == 'enabled' %}1{% else %}0{% endif %}&amp;autoplay={% if item.autoplay == 'enabled' %}1{% else %}0{% endif %}&amp;controls={% if item.controls == 'enabled' %}1{% else %}0{% endif %}{% if item.loop == 'enabled' %}&amp;loop=1&amp;playlist={{ item.video|replace({'https://www.youtube.com/watch?v=': '', 'http://www.youtube.com/watch?v=' : '', 'https://youtu.be/': '', 'http://youtu.be/': ''}) }}{% endif %}&amp;rel={% if item.related == 'enabled' %}1{% else %}0{% endif %}"></div>
+                            <!-- END Fast & Agile YouTube Embed by Schoberg.net -->
+
+                        {% endif %}
+                        {# End YouTube #}
+
+                        {# Begin Local #}
+                        {% if item.source == 'local' %}
+                            <video width="100%" height="auto" onclick="this.paused?this.play():this.pause();" {% if item.autoplay == 'enabled' %}autoplay{% endif %} poster="{{ url(item.posterimage)|e }}" {% if item.loop == 'enabled' %}loop{% endif %} {% if item.controls == "enabled" %}controls{% else %}class="g-video-nocontrols"{% endif %} {% if item.muted == 'enabled' %}muted{% endif %} playsinline>
+                                {% for source in item.local %}
+                                    <source src="{{ url(source.file)|e }}" type="video/{{ source.file|slice(-4)|replace({'.': ''}) }}">
+                                {% endfor %}
+                            </video>
+                            {% if item.controls == "disabled" %}
+                                <div class="g-video-carousel-local-play {% if item.autoplay == 'enabled' %}pause{% endif %}"></div>
+                            {% endif %}
+                        {% endif %}
+                        {# End Local #}
+
+                        {# Begin External #}
+                        {% if item.source == 'external' %}
+                            <video width="100%" height="auto" onclick="this.paused?this.play():this.pause();" {% if item.autoplay == 'enabled' %}autoplay{% endif %} poster="{{ url(item.posterimage)|e }}" {% if item.loop == 'enabled' %}loop{% endif %} {% if item.controls == "enabled" %}controls{% else %}class="g-video-nocontrols"{% endif %} {% if item.muted == 'enabled' %}muted{% endif %} playsinline>
+                                <source src="{{ item.video }}" type="video/{{ item.video|slice(-4)|replace({'.': ''}) }}">
+                            </video>
+                            {% if item.controls == "disabled" %}
+                                <div  class="g-video-carousel-local-play {% if item.autoplay == 'enabled' %}pause{% endif %}"></div>
+                            {% endif %}
+                        {% endif %}
+                        {# End External #}
+
+                    </div>
+                    {# Begin Caption #}
+                    {% if item.caption %}
+                        <div class="g-video-carousel-caption">{{ item.caption|raw }}</div>
+                    {% endif %}
+                    {# End Caption #}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+    <script src="{{ url('gantry-theme://js/owlcarousel.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/videocarousel.init.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-video-carousel-{{ id }}');
+            owl{{ id|replace({'-':'_'}) }}.owlCarousel({
+                center: false,
+                rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
+                {% if particle.animateOut and particle.animateOut != 'default' %}
+                animateOut: '{{ particle.animateOut|default('fadeOut')|e }}',
+                {% endif %}
+                {% if particle.animateIn and particle.animateIn != 'default' %}
+                animateIn: '{{ particle.animateIn|default('fadeIn')|e }}',
+                {% endif %}
+                {% if particle.nav == 'enabled' %}
+                nav: true,
+                navText: ['{{ particle.prevText|default('<i class="fa fa-chevron-circle-left"></i>')|e('js') }}', '{{ particle.nextText|default('<i class="fa fa-chevron-circle-right"></i>')|e('js') }}'],
+                {% else %}
+                nav: false,
+                {% endif %}
+                dots: true,
+                dotsContainer: '.g-video-carousel-dots',
+                loop: {% if particle.loop == 'enabled' %}true{% else %}false{% endif %},
+                {% if particle.autoplay == 'enabled' %}
+                autoplay: true,
+                autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
+                {% if particle.pauseOnHover == 'enabled' %}
+                autoplayHoverPause: true,
+                {% else %}
+                autoplayHoverPause: false,
+                {% endif %}
+                {% else %}
+                autoplay: false,
+                {% endif %}
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    1500: {
+                        items: 2,
+                    },
+                },
+            });
+
+            jQuery('.g-video-carousel-dots .owl-dot').click(function() {
+                owl{{ id|replace({'-':'_'}) }}.trigger('to.owl.carousel', [jQuery(this).index(), 300]);
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+	{% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+	<div class="g-animatedblock {{ particle.class|e }}">
+		<div class="g-animatedblock-animated {{ particle.bgclass|e }} {{ particle.animationclass|e }}">
+			{% if particle.image %}
+			<img src="{{ url(particle.image)|e }}" alt="{{ particle.headline }}" />
+			{% endif %}
+			{% if particle.headline %}
+			<div class="g-animatedblock-title">
+				<span>{{ particle.headline|e }}</span>
+			</div>
+			{% endif %}
+			{% if particle.desc or particle.readmore %}
+			<div class="g-animatedblock-desc">
+				<span>{{ particle.desc|e }}</span>
+				{% if particle.readmore %}
+				<a href="{{ particle.link|e }}"><span class="g-animatedblock-readmore">{{ particle.readmore|raw }}</span></a>
+				{% endif %}
+			</div>
+			{% endif %}
+			{% if particle.button %}
+			<div class="g-animatedblock-button">
+				<a href="{{ particle.link|e }}" class="button {{ particle.buttonclass|e }}">{{ particle.button|e }}</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

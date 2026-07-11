@@ -1,0 +1,22 @@
+name: Base Styles
+description: Base styles for the theme
+type: core
+
+form:
+  fields:
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#ffffff"
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://backgrounds/base/bg-01.svg"
+    background-clipping:
+      type: enable.enable
+      label: Background Clipping
+      default: 1
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#888888"

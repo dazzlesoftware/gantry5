@@ -1,0 +1,55 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-mediaquotes">
+        <div class="g-mediaquotes-header">
+            {% if particle.title %}
+
+                <h3 class="g-mediaquotes-title">{{ particle.title }}</h3>
+
+            {% endif %}
+        </div>
+        <div class="g-mediaquotes-grid {{ particle.cols }}">
+            {% for item in particle.cases %}
+                {% set case_index = loop.index %}
+
+                <div class="g-mediaquotes-grid-item {{ item.layout }} {{ item.quotesize }} {{ item.class }}" data-groups='["{{ case_index }}"]'>
+                    <div class="g-mediaquotes-grid-item-wrapper g-mediaquotes-layout-{{ item.layout }} g-mediaquotes-{{ item.accent }}">
+
+                        <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}" class="g-mediaquotes-link-overlay"></a>
+
+                        <div class="g-mediaquotes-grid-item-content">
+                            {% if item.quote %}
+                                <div class="g-mediaquotes-grid-item-description">
+                                    {{ item.quote|raw }}
+                                </div>
+                            {% endif %}
+                            <div class="g-mediaquotes-grid-item-bottom-wrapper">
+                                {% if item.image %}
+                                    <div class="g-mediaquotes-grid-item-image">
+                                        <img src="{{ url(item.image)|e }}" alt="{{ item.title }}"/>
+                                    </div>
+                                {% endif %}
+
+                                {% if item.date or item.time %}
+                                    <div class="g-mediaquotes-grid-item-time">
+                                        <span>{{ item.date|date(item.dateformat) }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do 
+        gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+{% endblock %}

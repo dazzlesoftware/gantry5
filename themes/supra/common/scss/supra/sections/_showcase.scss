@@ -1,0 +1,18 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background;
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-item-main-content {
+            color: $base-text-color;
+        }
+    }
+}
+
+@media print {
+    #g-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

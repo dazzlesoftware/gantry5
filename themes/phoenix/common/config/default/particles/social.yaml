@@ -1,0 +1,31 @@
+enabled: '1'
+css:
+  class: ''
+title: ''
+target: _blank
+items:
+  -
+    icon: 'fa fa-facebook fa-fw'
+    text: ''
+    link: 'https://www.facebook.com/RocketTheme'
+    name: Facebook
+  -
+    icon: 'fa fa-twitter fa-fw'
+    text: ''
+    link: 'http://www.twitter.com/rockettheme'
+    name: Twitter
+  -
+    icon: 'fa fa-github fa-fw'
+    text: ''
+    link: '#'
+    name: GitHub
+  -
+    icon: 'fa fa-instagram fa-fw'
+    text: ''
+    link: '#'
+    name: Instagram
+  -
+    icon: 'fa fa-linkedin fa-fw'
+    text: ''
+    link: '#'
+    name: LinkedIn

@@ -1,0 +1,177 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: portfolio
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-2949
+  /header/:
+    -
+      - 'logo-4531 50'
+      - 'menu-1040 50'
+  /slideshow/: {  }
+  /showcase/:
+    -
+      - custom-3220
+  /feature/:
+    -
+      - custom-4504
+  /main/: {  }
+  /container-9668/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-6398
+      -
+        'mainbar 60':
+          -
+            - system-content-2609
+      -
+        'aside 20':
+          -
+            - position-5403
+  /extension/:
+    -
+      - custom-3982
+  /bottom/:
+    -
+      - custom-5931
+  /footer/:
+    -
+      - 'position-9463 33.3'
+      - 'position-4479 33.3'
+      - 'position-3801 33.3'
+  /copyright/:
+    -
+      - 'logo-6029 33'
+      - 'custom-4159 67'
+    -
+      - 'copyright-1999 33'
+      - 'custom-4990 57'
+      - 'totop-8684 10'
+  offcanvas:
+    -
+      - mobile-menu-4088
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-9668:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  logo-4531:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-1040:
+    block:
+      class: g-menu-block
+  custom-3220:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Portfolio</h2>\n\t<div class=\"g-layercontent-subtitle\">What We Have Already Done</div>\n</div>"
+    block:
+      class: 'flush center'
+  custom-4504:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block box4 rounded nopaddingall size-67\">\n    <div class=\"g-content \">\n      <div class=\"g-contentlist \">\n        <div class=\"g-grid\">\n          <div style=\"background-image: url(gantry-media://demo/portfolio/img-01.jpg)\" class=\"g-block size-33 g-contentlist-img\">\n            <div class=\"g-contentlist-img-tag\">On Going</div>\n          </div>\n          <div class=\"g-block size-67 g-contentlist-text\">\n            <div class=\"g-content\">\n              <h3 class=\"g-contentlist-headline\">Ethereal Premium Project</h3>\n              <h5 class=\"g-contentlist-subtitle\">Website Redesign and Publishing</h5>\n              <div class=\"g-contentlist-desc\">Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</div>\n              <a class=\"button button-2\" href=\"#\">Check Project</a>             \n            </div>\n          </div>\n        </div>\n        <div class=\"g-grid g-contentlist-list\">\n          <div class=\"g-block\">\n            <div class=\"g-content\">\n              <div class=\"g-listgrid g-listgrid-2cols\">\n                <div class=\"g-listgrid-item\">\n                  <a href=\"#\">\n                  <span class=\"fa fa-user fa-fw\"></span>\n                  <span>Mr. Great Client</span>\n                  </a>\n                </div>\n                <div class=\"g-listgrid-item\">\n                  <a href=\"#\">\n                  <span class=\"fa fa-check-square-o fa-fw\"></span>\n                  <span>Graphic</span>\n                  </a>\n                </div>\n                <div class=\"g-listgrid-item\">\n                  <a href=\"#\">\n                  <span class=\"fa fa-calendar fa-fw\"></span>\n                  <span>01/01/2086</span>\n                  </a>\n                </div>\n                <div class=\"g-listgrid-item\">\n                  <a href=\"#\">\n                  <span class=\"fa fa-check-square-o fa-fw\"></span>\n                  <span>HTML/CSS</span>\n                  </a>\n                </div>\n                <div class=\"g-listgrid-item\">\n                  <a href=\"#\">\n                  <span class=\"fa fa-tags fa-fw\"></span>\n                  <span>design, cover, logo</span>\n                  </a>\n                </div>\n                <div class=\"g-listgrid-item\">\n                  <a href=\"#\">\n                  <span class=\"fa fa-check-square-o fa-fw\"></span>\n                  <span>Gantry</span>\n                  </a>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-block size-33\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\">Responsive Layout</h2>\n      <p><img alt=\"image\" src=\"gantry-media://demo/portfolio/img-02.jpg\"></p>\n      <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.</p>\n    </div>\n  </div>\n</div>"
+  position-6398:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-5403:
+    title: Aside
+    attributes:
+      key: aside
+  custom-3982:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-grid\">\n  <div class=\"g-block  size-33-3\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\">Upcoming Projects</h2>\n      <div class=\"g-infolist \">\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">404 Pages</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Badges</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Stickers</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-block  size-33-3\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\"><span class=\"hidden-phone\">&nbsp;</span><span class=\"visible-phone\">More Upcoming Projects</span></h2>\n      <div class=\"g-infolist \">\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Banners</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Sliders</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"Tables\">New item</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"g-block  size-33-3\">\n    <div class=\"g-content \">\n      <h2 class=\"g-title\"><span class=\"hidden-phone\">&nbsp;</span><span class=\"visible-phone\">More Upcoming Projects</span></h2>\n      <div class=\"g-infolist \">\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Forms</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Newsletter</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n        <div class=\"g-infolist-item\">\n          <div class=\"g-infolist-item-text\">\n            <div class=\"g-infolist-item-title\"><a href=\"#\">Interfaces</a></div>\n            <div class=\"g-infolist-item-desc\">Collaboratively administrate empowered markets via plug-and-play networks</div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+  custom-5931:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">100% Satisfaction Guaranteed</h2>\n\t<div class=\"g-layercontent-subtitle\">Will You be the Next to Join Our Happy Clients?</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\" class=\"button button-2\">Join Now</a>\n</div>"
+    block:
+      class: 'flush center'
+  position-9463:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-4479:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-3801:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-6029:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-4159:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-1999:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-4990:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+  totop-8684:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-4088:
+    title: 'Mobile Menu'

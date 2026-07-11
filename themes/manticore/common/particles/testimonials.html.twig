@@ -1,0 +1,74 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+    <div class="{{ particle.class|e }} g-testimonials" data-testimonials-id="{{ id }}" data-testimonials-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-testimonials-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-testimonials-timeout="{{ particle.autoplayTimeout }}" data-testimonials-speed="{{ particle.speed }}">
+        {% if particle.title %}
+            <div class="g-testimonials-header">
+                {% if particle.title %}
+                    <div class="g-testimonials-title">
+                        {{ particle.title|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+        <!-- Swiper -->
+        <div class="g-testimonials-container" {% if gantry.page.direction == 'rtl' %}dir="rtl"{% endif %}>
+            {% if not particle.source or particle.source == 'particle' %}
+                <div class="swiper-wrapper testimony-wrapper">
+                    {% for testimony in particle.testimony %}
+                        <div class="swiper-slide">
+                            {% if testimony.content %}
+                                <h2 class="g-testimonials-content">
+                                    {{ testimony.content|raw }}
+                                </h2>
+                            {% endif %}
+                            {% if testimony.author %}
+                                <p class="g-testimonials-author">
+                                    {{ testimony.author|raw }}
+                                </p>
+                            {% endif %}
+                            {% if testimony.position %}
+                                <span class="g-testimonials-position">
+                                    {{ testimony.position|raw }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="g-testimonials-pagination">
+                    <div class="swiper-wrapper">
+                        {% for testimony in particle.testimony %}
+                            <div class="swiper-slide g-testimonials-image-nav" style="background-image:url('{{url(testimony.photo)}}')">
+                                <span>
+                                    {{testimony.author}}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+                <!-- If we need navigation buttons -->
+                <div class="mobile-nav-wrapper">
+                    <div class="swiper-button-prev">
+                        <i class="fa fa-angle-left"></i>
+                    </div>
+                    <div class="swiper-button-next">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            {% else %}
+                {% include '@particles/testimonials-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css" />
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do
+        gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/testimonials.init.js'), 10, 'footer') %}
+{% endblock %}

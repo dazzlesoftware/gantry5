@@ -1,0 +1,253 @@
+#g-navigation {
+    background: $navigation-background;
+    color: $navigation-text-color;
+
+    .social {
+    	.g-content {
+    		margin: 21px 0;
+    		padding: 0;
+
+			@include breakpoint(tablet-range) {
+				margin: 21px 0 21px 35px;
+			}
+			
+			@include breakpoint(mobile-only) {
+				margin: 0 0 15px 0;
+				text-align: center;
+			}
+
+    		.social-button {
+    			color: $navigation-background;
+				background: lighten($navigation-background, 50%);
+				font-size: 0.85em;
+			    width: 20px;
+			    height: 20px;
+			    line-height: 20px;
+			    margin: 0 3px;
+    		}
+    	}
+    }
+
+    .search {
+    	.g-content {
+    		margin: 15px 25px 0 0;
+    		padding: 0;
+
+    		.g-search {
+		    	form {
+		    		margin-bottom: 0;
+		    		input {
+		    			margin-bottom: 0;
+		    			font-size: 0.85em;
+		    			height: 30px;
+		    			font-family: get-font-family($font-family-alt2);
+		    		}
+		    	}
+		    }
+    	}
+    }
+
+}
+
+// Main Navigation
+
+#g-navigation {
+
+	// g-container
+	> .g-container {
+		position: relative;
+	}
+
+	// Menu Styling
+	.g-main-nav {
+		font-family: get-font-family($font-family-alt2);
+		margin-right: 15px;
+
+		@include breakpoint(tablet-range) {
+			margin-right: 10px;
+		}
+
+		.g-toplevel {
+
+			> li {
+
+				> .g-menu-item-container {
+					font-size: 14px;
+					height: 60px;
+					line-height: 24px;
+					color: darken($navigation-text-color, 45%);
+					padding: 0;
+					display: table-cell;
+					vertical-align: middle;	
+
+					.g-menu-item-content {
+						margin: 0 10px;
+						display: block;
+
+						@include breakpoint(tablet-range) {
+							margin: 0 8px;
+						}
+					}
+
+					> i {
+						opacity: 1;
+						margin-top: -4px;
+					}
+				}
+
+				&.active, &:hover {
+					> .g-menu-item-container {
+						color: $white;
+					}
+				}
+
+
+				&.g-parent {
+					> .g-menu-item-container {
+						position: relative;
+
+						.g-menu-item-content {
+							margin: 0 15px 0 10px;
+							padding: 2px;
+						}
+					}
+				}
+
+				&.g-parent .g-menu-parent-indicator {
+					width: 100%;
+    				display: inline;
+    				z-index: 100;
+					&:after {
+						position: absolute;
+					    top: 50%;
+					    margin-top: -7px;
+					    font-family: FontAwesome;
+					    content: "\f107";
+					    opacity: 1;
+					    right: 4px;
+					}
+				}
+			}
+		}
+
+		.g-dropdown {
+			background: lighten($navigation-background, 18%);
+			border-radius: 3px;
+			border: 1px solid transparent;
+			padding: 0 5px;
+			margin-top: -10px;
+			z-index: 100;
+		}
+
+		.g-sublevel {
+
+			.g-dropdown {
+				margin-top: 0;
+			}
+
+			.g-go-back {
+				.g-menu-item-container {
+					&:before {
+						content: "\f053";
+						padding-right: 0;
+					}
+				}
+				+ li {
+					.g-dropdown {
+						margin-top: -3px;
+					}
+				}
+			}
+
+
+			> li {
+				margin: 5px 0;
+				padding: 0 5px;
+
+				&.active, &:hover {
+					> .g-menu-item-container {
+						color: $white;
+					}
+				}
+
+				> .g-menu-item-container {
+					color: darken($navigation-text-color, 45%);
+					padding: 0;
+
+					> i {
+						opacity: 1;
+						margin-left: 8px;
+						margin-top: -3px;
+
+						+ .g-menu-item-content {
+							padding-left: 0;
+						}
+					}
+				}
+
+				&.g-parent {
+					.g-menu-parent-indicator {
+						width: auto;
+
+						&:after {
+							display: block;
+							content: "\f054";
+	    					text-align: center;
+	    					margin-top: 4px;
+	    					font-size: 12px;
+						}
+					}	
+					.g-menu-item-content {
+						margin-right: 0;
+					}	
+				}
+
+				&.g-menu-item-type-particle {
+					padding-top: 10px;
+
+					> .g-menu-item-container {
+						padding: 0;
+						&:before {
+							content: none;
+						}
+					}	
+
+					&:hover {
+						> .g-menu-item-container {
+							background: inherit;
+						}	
+					}
+				}
+			}
+		}
+		.g-fullwidth {
+			.g-sublevel {
+				> li {
+					position: relative;
+				}
+				.g-dropdown {
+					border: none;
+				}
+			} 
+		} 
+	}	
+	.g-menu-block {
+		@include breakpoint(mobile-only) {
+			display: none;
+		}		
+	}	
+	.g-menu-item-subtitle {
+		text-transform: lowercase;
+		font-size: 0.85rem;
+		font-weight: bold;
+		opacity: 0.8;
+		padding-top: 2px;
+	}
+}
+
+@media print {
+	#g-navigation {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

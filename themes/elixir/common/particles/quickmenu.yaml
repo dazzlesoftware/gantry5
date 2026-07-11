@@ -1,0 +1,70 @@
+name: Quick Menu
+description: Display quick menu for your coffe/restaurant visitors.
+type: particle
+icon: fa-cutlery
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    cards:
+      type: collection.list
+      array: true
+      label: Cards
+      description: Create cards.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          skip: true
+        .items:
+          type: collection.list
+          array: true
+          label: Card Items
+          description: Create each menu item to display.
+          value: title
+          ajax: true
+          fields:
+            .title:
+              type: input.text
+              label: Title
+            .description:
+              type: textarea.textarea
+              label: Description
+            .price:
+              type: input.text
+              label: Price
+            .link:
+              type: input.text
+              label: Link
+            .target:
+              type: select.select
+              label: Target
+              description: Target browser window when item is clicked.
+              placeholder: 'Select...'
+              default: _blank
+              options:
+                  _self: Self
+                  _blank: New Window

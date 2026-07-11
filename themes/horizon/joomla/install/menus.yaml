@@ -1,0 +1,9 @@
+horizon-theme:
+  title: 'Horizon Theme'
+  description: 'Sample menu for Horizon theme.'
+
+  items:
+    horizon:
+      title: 'Home'
+      outline: home
+      home: 1

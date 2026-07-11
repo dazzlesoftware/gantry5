@@ -1,0 +1,51 @@
+.g-simplemenu-particle {
+    .g-simplemenu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex: 0 0 auto;
+        width: 25%;
+        display: inline-block;
+        vertical-align: top;
+        li {
+            font-weight: bold;
+            font-size: $core-font-size;
+            text-transform: uppercase;
+            font-family:  get-font-family($font-family-promo);
+            font-weight: $font-weight-bold;
+            line-height: $core-line-height + 1.5;
+            a {
+                opacity: 0.3;
+                position: relative;
+                &:hover {
+                    opacity: 1;
+                    &:before {
+                        left: 0;
+                        position: absolute;
+                        font: normal normal normal $core-font-size + 0.3/1 FontAwesome;
+                        content: "\f178";
+                        top: 0;
+                        left: -35px;
+                        .dir-rtl & {
+                            content: "\f177";
+                        }
+                    }
+                }
+
+            }
+        }
+
+        &.g-simplemenu-0cols {
+            width: 100%;
+            li {
+
+                width: auto;
+                padding-right: $content-padding;
+
+                @include breakpoint(mobile-only) {
+                    width: auto;
+                }
+            }
+        }
+    }
+}

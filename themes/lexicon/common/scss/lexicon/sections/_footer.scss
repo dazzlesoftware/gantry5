@@ -1,0 +1,18 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;	
+}
+
+.fp-footer {
+	.button {
+		height: 50px;
+		width: 75px;
+	}
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,15 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+    position: relative;
+    .g-grid {
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

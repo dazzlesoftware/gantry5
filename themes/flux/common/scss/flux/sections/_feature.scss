@@ -1,0 +1,23 @@
+#g-feature {
+    position: relative;
+    color: $feature-text-color;
+    background: $feature-background;
+
+    // Simple Content
+    .g-simplecontent {
+        .g-simplecontent-item-content-title, .g-simplecontent-item-leading-content {
+            color: $black;
+        }
+
+        .g-simplecontent-item-content-title {
+            padding-bottom: $content-padding * 2;
+        }
+    }
+}
+
+@media print {
+    #g-feature {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,104 @@
+.g-main-nav {
+        .g-standard {
+            .g-dropdown {
+                transition: none;
+            }
+
+            .g-fade.g-dropdown {
+                transition: opacity .3s ease-out, transform .3s ease-out;
+
+                .g-sublevel {
+                    > li {
+                        &.active {
+                            > .g-menu-item-container {
+                                transition: opacity .3s ease-out, transform .3s ease-out;
+                            }
+                        }    
+                    }
+                }
+            }
+
+            .g-zoom.g-active {
+                animation-duration: .3s;
+                animation-name: g-dropdown-zoom;
+            }
+
+            .g-fade-in-up.g-active {
+                animation-duration: .3s;
+                animation-name: g-dropdown-fade-in-up;
+            }
+        }
+
+        .g-fullwidth > {
+            .g-dropdown {
+                transition: none;
+            }
+
+            .g-fade.g-dropdown {
+                transition: opacity .3s ease-out, transform .3s ease-out;
+            }
+
+            .g-zoom.g-active {
+                animation-duration: .3s;
+                animation-name: g-dropdown-zoom;
+            }
+
+            .g-fade-in-up.g-active {
+                animation-duration: .3s;
+                animation-name: g-dropdown-fade-in-up;
+            }
+        }
+
+    // Menu Animation
+    .slot-animation & {
+        .g-toplevel {
+            > li {
+                > .g-menu-item-container {
+                    .g-menu-item-title {
+                        display: inline-block;
+                        position: relative;
+                        transition: all 0.2s ease-in;
+                        &:before {
+                            content: attr(data-hover);
+                            position: absolute;
+                            top: -60px;
+                            transform: translate3d(0, 0, 0);
+                        }
+                    }
+                    &:hover {
+                        .g-menu-item-title {
+                            transform: translateY(60px);
+                        }
+                    }
+                }
+                &:hover, &:focus, &.active:hover {
+                    > .g-menu-item-container {
+                        .g-menu-item-title {
+                            transform: translateY(60px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}    
+
+@keyframes g-dropdown-zoom {
+    0% {
+        opacity: 0;
+        transform: scale3d(.8, .8, .8);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes g-dropdown-fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
+    }
+    100% {
+        opacity: 1;
+    }
+}

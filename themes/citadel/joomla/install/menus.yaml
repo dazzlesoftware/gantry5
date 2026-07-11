@@ -1,0 +1,9 @@
+citadel-theme:
+  title: 'Citadel Theme'
+  description: 'Sample menu for Citadel theme.'
+
+  items:
+    citadel:
+      title: 'Home'
+      outline: home
+      home: 1

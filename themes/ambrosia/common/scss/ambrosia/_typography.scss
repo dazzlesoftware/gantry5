@@ -1,0 +1,157 @@
+// Font Import
+@include import-font($font-family-default);
+@include import-font($font-family-title);
+@include import-font($font-family-promo);
+
+body {
+	font-family: get-font-family($font-family-default);
+	font-weight: $font-weight-regular;
+}
+
+// Headings
+h1, h2, h3, h4, h5 {
+	font-family: get-font-family($font-family-default);
+	font-weight: $font-weight-bold;
+}
+h4 {
+	font-size: $h4-font-size;
+}
+.g-title {
+	font-family: get-font-family($font-family-title);
+	font-weight: $font-weight-bold;	
+	font-size: $core-font-size - 0.15;
+	line-height: $core-line-height;	
+	text-transform: uppercase;
+	display: inline-block;
+	position: relative;
+	&:after {
+		content: "";
+		position: absolute;
+		height: 2px;
+		background: $rule-color;
+		width: 100%;
+		bottom: -1px;
+		left: 0;
+	}
+}
+.g-promo {
+	font-size: $core-font-size + 2;
+	line-height: $core-line-height - 0.3;
+	font-family: get-font-family($font-family-promo);
+	font-weight: $font-weight-ultrabold;
+}
+.g-headline {
+	font-family: get-font-family($font-family-default);
+	font-weight: normal;	
+	font-size: $core-font-size + 0.25;
+}
+.g-quote {
+	font-family: get-font-family($font-family-default);
+	font-weight: normal;	
+	font-size: $core-font-size + 0.25;
+	font-style: italic;
+}
+.g-tag {
+	font-family: get-font-family($font-family-promo);
+	font-weight: $font-weight-regular;	
+	font-size: $core-font-size;
+	line-height: $core-line-height - 0.25;	
+}
+.g-large {
+	font-size: $core-font-size + 0.2;
+	line-height: $core-line-height - 0.15;	
+}
+.g-small {
+	font-size: $core-font-size - 0.15;
+	opacity: 0.8;
+}
+
+.g-title-hero {
+	font-family: get-font-family($font-family-promo);
+	font-weight: $font-weight-bold;	
+	font-size: $core-font-size + 1.25;
+	line-height: $core-line-height - 0.3;
+}
+.g-title-subhero {
+	font-family: get-font-family($font-family-title);
+	font-weight: $font-weight-bold;	
+	font-size: $core-font-size + 0.85;
+	line-height: $core-line-height - 0.3;	
+}
+.g-title-regular {
+	font-family: get-font-family($font-family-title);
+	font-weight: $font-weight-regular;	
+	font-size: $core-font-size + 0.1;
+	line-height: $core-line-height - 0.25;	
+}
+.g-title-bold {
+	font-family: get-font-family($font-family-promo);
+	font-weight: $font-weight-bold;	
+	font-size: $core-font-size + 0.1;
+	line-height: $core-line-height - 0.25;
+}
+
+.g-bold {
+	font-weight: bold !important;
+}
+
+.g-italic {
+	font-style: italic !important;
+}
+
+// Blockquote
+blockquote {
+	border-left: 10px solid $rule-color;
+	p {
+		font-size: $core-font-size + 0.1;
+		color: lighten($base-text-color, 20%);
+	}
+	cite {
+		display: block;
+		text-align: right;
+		color: $base-text-color;
+		font-size: $core-font-size + 0.2;
+	}
+}
+
+// Inline and Code
+code,
+kbd,
+pre,
+samp {
+	font-family: $font-family-mono;
+}
+
+code {
+	background: $code-bg;
+	color: darken($code-text,10%);
+}
+
+pre {
+	padding: 1rem;
+	margin: 2rem 0;
+	background: $pre-bg;
+	border: 1px solid $base-border-color;
+	border-radius: $core-border-radius;
+	line-height: 1.15;
+	font-size: $core-font-size - 0.1;
+
+	code {
+		color: $pre-text;
+		background: inherit;
+		font-size: $core-font-size - 0.1;
+	}
+	&.prettyprint {
+		padding: 1rem !important;
+		border-color: $border-color-light !important;
+	}
+}
+
+// Additional
+hr {
+	margin: 1.5rem 0;
+	border-bottom: 1px solid $rule-color;
+}
+.g-para {
+	margin: 0.3rem 0 1rem;
+}

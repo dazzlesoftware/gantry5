@@ -1,0 +1,23 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+    position: relative;
+
+    .g-grid {
+        position: relative;
+    }
+
+    .g-recentreviews-grid-item-title a {
+        color: $above-text-color;
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

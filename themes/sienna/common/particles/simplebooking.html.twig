@@ -1,0 +1,134 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% do gantry.load('lightcase.init') %}
+
+{% block particle %}
+<div id="g-{{ id }}" data-simplebooking-id="g-{{ id }}"  class="{{ particle.class|e }}">
+    <form id="g-{{ id }}-form" data-simplebooking-id="g-{{ id }}-form" data-simplebooking-requiredmessage="{{ particle.required }}" class="g-simplebooking-form g-simplebooking-mainform" action="#" method="post">
+        <div class="g-simplebooking-visible">
+            <div class="g-simplebooking-item  g-simplebooking-calendar">
+                <label>{{ particle.checkin }}<sup>*</sup></label>
+                <input type="text" class="g-simplebooking-datepicker g-simplebooking-item-required g-simplebooking-item-id-1" name="{{ particle.checkin|title|replace({' ': ''}) }}" placeholder="{{ particle.checkin_placeholder }}">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+            <div class="g-simplebooking-item  g-simplebooking-calendar">
+                <label>{{ particle.checkout }}<sup>*</sup></label>
+                <input type="text" class="g-simplebooking-datepicker g-simplebooking-item-required g-simplebooking-item-id-2" name="{{ particle.checkout|title|replace({' ': ''}) }}" placeholder="{{ particle.checkout_placeholder }}">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+            <div class="g-simplebooking-item g-simplebooking-spinner " data-trigger="spinner">
+                <label>{{ particle.adults }}<sup>*</sup></label>
+                <input type="text" class="g-simplebooking-item-required g-simplebooking-item-id-3" data-min="{{ particle.adults_min }}" data-max="{{ particle.adults_max }}" name="{{ particle.adults|title|replace({' ': ''}) }}" placeholder="">
+                <div class="g-simplebooking-spinners">
+                    <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                    <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="g-simplebooking-item g-simplebooking-spinner " data-trigger="spinner">
+                <label>{{ particle.children }}</label>
+                <input type="text" class="g-simplebooking-item-id-4" data-min="{{ particle.children_min }}" data-max="{{ particle.children_max }}" name="{{ particle.children|title|replace({' ': ''}) }}" placeholder="">
+                <div class="g-simplebooking-spinners">
+                    <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                    <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="g-simplebooking-button">
+                <label for="g-simplebooking-button">&nbsp;</label>
+                <i class="fa fa-refresh" id="g-simplebooking-button-{{ id }}" aria-hidden="true"></i>
+            </div>
+        </div>
+    </form>
+
+    <div class="g-simplebooking-items">
+        {% for item in particle.items %}
+        <div id="g-{{ id }}-{{ loop.index }}" data-id="g-{{ id }}-{{ loop.index }}" data-adults="{{ item.adults }}" data-children="{{ item.children }}" data-start="{{ item.start }}" data-end="{{ item.end }}" class="g-simplebooking-item">
+            <div class="g-simplebooking-item-container g-simplebooking-list">
+                {% if item.image %}
+                <div class="g-simplebooking-item-image">
+                    <a class="g-simplebooking-item-link" href="{{ url(item.image)|e }}" data-rel="lightcase">
+                        <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+                        <div class="indicator">
+                            <div>
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                <div class="g-simplebooking-item-content">
+                    <div class="g-simplebooking-item-title">
+                        <span class="g-simplebooking-item-maintitle">{{ item.title }}</span>
+                        <span class="g-simplebooking-item-subtitle">{{ item.subtitle }}</span>
+                    </div>
+                    <p class="g-simplebooking-item-description">{{ item.description }}</p>
+                </div>
+                <div class="g-simplebooking-item-pricing">
+                    <div class="g-simplebooking-item-price">
+                        {{ item.price }}<sup>{{ item.subprice }}</sup>
+                    </div>
+                    <div class="g-simplebooking-item-price-description">
+                        {{ item.pricedesc }}
+                    </div>
+                </div>
+                <div class="g-simplebooking-item-button">
+                    <a href="javascript:;" class="button">{{ item.button|raw }}</a>
+                </div>
+            </div>
+
+            <div class="g-simplebooking-item-container g-simplebooking-form">
+                <form id="g-simplebooking-submit-{{ id }}" data-simplebooking-token="{{ particle.token }}" action="#" method="post">
+                    <div class="g-simplebooking-hidden">
+                        <div class="g-simplebooking-buttonback">
+                            <label for="g-simplebooking-back-{{ loop.index }}">&nbsp;</label>
+                            <a href="javascript:;" class="button" id="g-simplebooking-back-{{ loop.index }}-{{ id }}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="g-simplebooking-item">
+                            <label for="g-simplebooking-item-name-{{ loop.index }}">{{ particle.name }}</label>
+                            <input type="text" name="{{ particle.name }}" id="g-simplebooking-item-name-{{ loop.index }}-{{ id }}" class="g-simplebooking-item-required" placeholder="{{ particle.name_placeholder }}">
+                        </div>
+                        <div class="g-simplebooking-item">
+                            <label for="g-simplebooking-item-email-{{ loop.index }}">{{ particle.email }}</label>
+                            <input type="text" name="{{ particle.email }}" id="g-simplebooking-item-email-{{ loop.index }}-{{ id }}" class="g-simplebooking-item-required" placeholder="{{ particle.email_placeholder }}">
+                        </div>
+                        <div class="g-simplebooking-button2">
+                            <label for="g-simplebooking-button-{{ loop.index }}">&nbsp;</label>
+                            <a href="javascript:;" class="button" id="g-simplebooking-button-{{ loop.index }}-{{ id }}">{{ particle.button }}</a>
+                        </div>
+                    </div>
+                    <div class="g-simplebooking-thankyou">
+                        <p class="alert alert-success"><i class="fa fa-check-circle" aria-hidden="true"></i>  {{ particle.thankyou }}</p>
+                    </div>
+                    <div class="g-simplebooking-error">
+                        <p class="alert alert-error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  {{ particle.error }}</p>
+                    </div>
+                    <input type="hidden" name="Title" value="{{ item.title }}">
+                    <input type="hidden" name="SubTitle" value="{{ item.subtitle }}">
+                    <input type="hidden" name="Description" value="{{ item.description }}">
+                    <input type="hidden" name="Price" value="{{ item.price }}{{ item.subprice }}">
+                    <input class="g-simplebooking-hiddenfields-checkin" type="hidden" name="CheckInDate" value="">
+                    <input class="g-simplebooking-hiddenfields-checkout" type="hidden" name="CheckOutDate" value="">
+                    <input class="g-simplebooking-hiddenfields-adults" type="hidden" name="Adults" value="">
+                    <input class="g-simplebooking-hiddenfields-children" type="hidden" name="Children" value="">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
+<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
+<script src="{{ url('gantry-theme://js/simplebooking.js') }}"></script>
+
+<script type="text/javascript">
+window.getSize = function() {
+    return {
+        x: window.innerWidth,
+        y: window.innerHeight
+    }
+};
+</script>
+{% endblock %}

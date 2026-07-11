@@ -1,0 +1,43 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% if particle.subcontents is not empty %}
+<div class="g-cards {{ particle.class|e }} g-cards-columns-{{ particle.columns }}">
+
+    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+    {% for subcontent in particle.subcontents %}
+    <div class="g-cards-subcontent-block">
+        {% if subcontent.title %}
+        <div class="g-cards-subcontent-title">
+            {{ subcontent.title }}
+        </div>
+        {% endif %}
+
+        {% if subcontent.headline %}
+        <div class="g-cards-subcontent-headline">
+            {{ subcontent.headline|raw }}
+        </div>
+        {% endif %}
+
+        {% if subcontent.description %}
+        <div class="g-cards-subcontent-description">
+            {{ subcontent.description|raw }}
+        </div>
+        {% endif %}
+
+        {% if subcontent.img or subcontent.tag or subcontent.fullname %}
+        <div class="g-cards-subcontent-footer">
+            {% if subcontent.img %}<img src="{{ url(subcontent.img) }}" class="g-cards-subcontent-img" alt="{{ subcontent.title|e }}" />{% endif %}
+            <div class="g-cards-subcontent-footer-id">
+                {% if subcontent.fullname %}<div class="g-cards-subcontent-footer-fullname">{{ subcontent.fullname }}</div>{% endif %}
+                {% if subcontent.tag %}<div class="g-cards-subcontent-footer-tag">{{ subcontent.tag }}</div>{% endif %}
+            </div>
+            {% if subcontent.signature %}<img src="{{ url(subcontent.signature) }}" class="g-cards-subcontent-signature" alt="{{ subcontent.title|e }}" />{% endif %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

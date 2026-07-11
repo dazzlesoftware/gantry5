@@ -1,0 +1,15 @@
+name: Extension Styles
+description: Extension styles for the Photon theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#0193da"   
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

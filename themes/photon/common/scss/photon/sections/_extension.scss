@@ -1,0 +1,21 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color;
+    margin: 2rem ($content-margin + $content-padding);
+    box-shadow: $base-content-shadow;
+    position: relative;
+
+    .button {
+      background-color: $accent-color-3;
+      &:hover {
+        background-color: lighten($accent-color-3, 20%);
+      }
+    }
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,52 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-quickmenu-particle {{ particle.class|e }}" data-quickmenu-id="{{ id }}">
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+
+        <div class="g-quickmenu-container-cards swiper-container thumbs">
+            <div class="swiper-wrapper">
+                {% for menu in particle.cards %}
+                    <div class="swiper-slide">
+                        <h6>{{ menu.title }}</h6>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="g-quickmenu-container-items swiper-container items">
+            <div class="swiper-wrapper">
+                {% for menu in particle.cards %}
+                    <div class="swiper-slide">
+                        {% for item in menu.items %}
+                            <div class="g-quickmenu-wrapper">
+                                <div class="g-quickmenu-item">
+                                    <a target="{{ item.target|default('_blank') }}" href="{{ item.link|e }}" title="{{ item.title }}">{{ item.title|raw }}</a>
+                                    <p>{{ item.description }}</p>
+                                </div>
+
+                                <div class="g-quickmenu-price">
+                                    <span>{{ item.price }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.css"/>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/quickmenu.init.js'), 10, 'footer') %}
+{% endblock %}
+

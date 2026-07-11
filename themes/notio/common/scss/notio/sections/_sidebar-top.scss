@@ -1,0 +1,35 @@
+#g-sidebar-top {
+    // Expand Sidebar BG
+    &.expand-sidebar-bg {
+        &:before {
+            background: transparentize($base-text-color, 0.70);
+        }
+
+        .g-grid {
+            .g-block {
+                &:after {
+                    position: absolute;
+                    z-index: 1;
+                    content: '';
+                    background: transparentize($base-text-color, 0.70);
+                    bottom: 0;
+                    height: 1px;
+                    width: 200%;
+                    left: -100%;
+
+                    .dir-rtl & {
+                        left: 0;
+                        right: -100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-sidebar-top {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

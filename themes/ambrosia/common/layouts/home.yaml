@@ -1,0 +1,572 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: demo
+  timestamp: 1443176112
+layout:
+  /header/:
+    -
+      - system-messages-6948
+    -
+      - 'logo-8575 25'
+      - 'horizontalmenu-6051 75'
+  /navigation/:
+    -
+      - menu-1228
+  /slideshow/:
+    -
+      - featuresslider-5358
+  /showcase/: {  }
+  /feature/:
+    -
+      - contenttabs-6819
+    -
+      - headlines-8875
+  /container-3489/:
+    -
+      -
+        'mainbar 67':
+          -
+            - contenttabs-4945
+          -
+            - 'headlines-6037 40'
+            - 'contenttabs-3161 60'
+      -
+        'sidebar 33':
+          -
+            - promoimage-7909
+          -
+            - lists-4540
+          -
+            - newsletter-6914
+  /extension/: {  }
+  /bottom/:
+    -
+      - stripsslider-3087
+  /footer/:
+    -
+      - 'infolist-7644 40'
+      - 'custom-3631 40'
+      - 'social-5385 20'
+  /copyright/:
+    -
+      - copyright-6130
+  offcanvas:
+    -
+      - mobile-menu-8876
+structure:
+  header:
+    attributes:
+      boxed: ''
+      class: g-home
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-home
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  mainbar:
+    type: section
+  sidebar:
+    type: section
+  container-3489:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  system-messages-6948:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-8575:
+    block:
+      class: g-logo-block
+  horizontalmenu-6051:
+    title: 'Top Menu'
+    attributes:
+      target: _blank
+      text:
+        -
+          text: Features
+          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          name: Features
+        -
+          text: 'Gantry 5'
+          link: 'http://www.gantry.org/'
+          name: 'Gantry 5'
+        -
+          text: Particles
+          link: 'http://docs.gantry.org/gantry5/particles'
+          name: Particles
+        -
+          text: Download
+          link: 'https://www.rockettheme.com/joomla/templates/ambrosia'
+          name: Download
+        -
+          text: Support
+          link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+          name: Support
+  menu-1228:
+    block:
+      class: g-ambrosia-menu
+  featuresslider-5358:
+    title: 'Features Slider'
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          title: 'A fully flexible template experience via Gantry 5'
+          desc: 'A powerful and versatile modern template framework'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'New item'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          title: 'Built-in dropdown menu system with mobile support'
+          desc: 'Options include multiple columns and inline particles/positions'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'New item'
+        -
+          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          title: 'Layout manager simplifies complex content setup'
+          desc: 'Easy to use interface with many prebuilt layouts'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          buttonclass: button-3
+          name: 'New item'
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  contenttabs-6819:
+    title: 'Content Tabs'
+    attributes:
+      animation: fade
+      items:
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t\t<div class=\"g-grid\">\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Layout - Drag &amp; Drop\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tUnlimited layout possibilities powered by a drag &amp; drop interface\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Drag &amp; Drop</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Layout - Particles\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tCreate and control complex content constructions with Particles\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Particles</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Layout - Positions\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tInsert module positions within the layout manager and menu editor\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Positions</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
+          title: News
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t\t<div class=\"g-grid\">\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Style - Six Variations\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tChoose from the selection of highly configurable preset style variations\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Six Variations</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Style - Block Variations\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\t<span><span class=\"hidden-tablet\">An array of c</span><span class=\"visible-tablet\">C</span>ompoundable stylistic and structural block variations</span>\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Block Variants</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Style - Typography\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tContemporary content typography with Font Awesome support\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
+          title: Games
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Menu - Menu Editor\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tVisual Menu Editor to augment the core Joomla menu manager\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Menu Editor</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Menu - Columns\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tCreate multiple columns with auto or individual custom widths\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Columns</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Menu - Inline Blocks\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tInsert inline positions and particles directly into the menu\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Inline Blocks</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Reviews
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Gantry - Particles\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tGantry 5's Particles system makes it easy to configure content blocks.\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Gantry</span></a> <span class=\"g-small\">Particles</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Gantry - Layout\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tLayout manager has drag and drop functionality for easy modifications\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Gantry</span></a> <span class=\"g-small\">Layout</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Gantry - Menu\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tA built-in and versatile dropdown menu system with extensive controls\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Gantry</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Releases
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Code - SCSS CSS\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t<span>Built with the <span class=\"hidden-tablet\">advanced</span> dynamic stylesheet language SCSS (CSS)</span>\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">SCSS CSS</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Code - Twig Engine\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tUtilizing Twig a highly flexible and secure templating engine for PHP\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">Twig Engine</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Code - YAML Config\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tTemplate setup is powered by the human readable language YAML\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">YAML Config</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Articles
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Mobile - Responsive\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tResponsive layout with support for mobile devices and computers\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Mobile</span></a> <span class=\"g-small\">Responsives</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Mobile - Sidemenu\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tDedicated menu optimized for mobile devices to aid site navigation\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Mobile</span></a> <span class=\"g-small\">Sidemenu</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Mobile - Offcanvas\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tOffcanvas position designed for blocks specifically for mobile\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Mobile</span></a> <span class=\"g-small\">Offcanvas</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Photos
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Core - RokBooster\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tOptimize speed with compressor and consolidator RokBooster\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Core</span></a> <span class=\"g-small\">RokBooster</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Core - Gantry Cache\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tRecoded with performance in mind with efficient caching solutions\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Core</span></a> <span class=\"g-small\">Gantry Cache</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Core - Support\" src=\"gantry-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tExtensive set of Gantry 5 documentation and community help\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Core</span></a> <span class=\"g-small\">Support</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Videos
+    block:
+      id: feature-tabs
+      class: flush
+  headlines-8875:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      nav: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      label: Newsflash
+      items:
+        -
+          image: ''
+          desc: 'Gantry 5''s new layout manager features drag-and-drop functionality.'
+          link: '#'
+          name: 'New item'
+        -
+          image: ''
+          desc: 'The Particles system makes it easy to create and configure content blocks.'
+          link: '#'
+          name: 'New item'
+        -
+          image: ''
+          desc: 'Menu Editor allows for inserting Modules and adding icons in seconds.'
+          link: '#'
+          name: 'New item'
+    block:
+      id: feature-headlines
+      variations: box1
+  contenttabs-4945:
+    title: 'Content Tabs'
+    attributes:
+      title: 'Todays Highlights'
+      items:
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"gantry-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"><img alt=\"Unique content with block variations\" src=\"gantry-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Color Picker with Hue &amp; Saturation options</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Chooser</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Offset restrictions with unlimited positions</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Positions</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">A range of Web Fonts with Live Preview</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Fonts</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Diversify content with unique typography</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: News
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"gantry-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"><img alt=\"Insert inline blocks within the menu\" src=\"gantry-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Utilize icons easily with Font Awesome</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Visual Menu Editor to improve control</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Editor</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Multiple menu columns &amp; custom widths</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Options</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Intuitive interface for Gantry framework</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Gantry 5</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Games
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"gantry-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"><img alt=\"Multiple content providers\" src=\"gantry-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Programmable stylesheets with SCSS</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">SCSS CSS</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Built with the PHP templating engine Twig</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">Twig</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Human readable configuration files</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">YAML Config</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Responsive layout with mobile support</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Responsive</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Articles
+    block:
+      id: mainbar-tabs
+      class: nopaddingall
+  headlines-6037:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      nav: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      label: 'Side Notes'
+      items:
+        -
+          image: ''
+          desc: "<div class=\"g-infolist g-1cols\">\n\t<p><span>Gantry benefits from an extensive, and ever expanding, catalog of online and free documentation<span class=\"hidden-tablet\"> covering basic to more advanced topics</span>.</span></p>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone left\"><img alt=\"Gantry 5 is packed full of rich features\" src=\"gantry-media://demo/home/mainleft/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Gantry 5 is packed full of rich features</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone left\"><img alt=\"Learn how to setup and use Gantry 5\" src=\"gantry-media://demo/home/mainleft/img-02.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Learn how to setup and use Gantry 5</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone left\"><img alt=\"Gantry 5 help guides for various topics\" src=\"gantry-media://demo/home/mainleft/img-03.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Gantry 5 help guides for various topics</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          link: ''
+          name: 'Item 1'
+        -
+          image: ''
+          desc: "<div class=\"g-infolist g-1cols\">\n\t<p><span>Gantry is built with several modern web technologies, such as the twig PHP templating engine and YAML<span class=\"hidden-tablet\"> for human readable configuration files</span>.</span></p>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone left\"><img alt=\"Dynamic CSS with integrated SCSS\" src=\"gantry-media://demo/home/mainleft/img-02.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Dynamic CSS with integrated SCSS</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone left\"><img alt=\"Twig templating engine for PHP\" src=\"gantry-media://demo/home/mainleft/img-03.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Twig templating engine for PHP</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone left\"><img alt=\"YAML files for theme configuration\" src=\"gantry-media://demo/home/mainleft/img-01.jpg\"></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">YAML files for theme configuration</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          link: ''
+          name: 'Item 2'
+    block:
+      id: mainleft-headlines
+      variations: 'box3 nopaddingall'
+  contenttabs-3161:
+    title: 'Content Tabs'
+    attributes:
+      animation: fade
+      items:
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-infolist g-1cols\">\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<div class=\"g-title-hero\">\n\t\t\t\t\t<a href=\"#\">The new and powerful Gantry 5 Framework</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<span class=\"g-small\">Drag and Drop Functionality</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t<div class=\"g-large\">\n\t\t\t\t\tGantry 5 is an advanced, versatile and multi-platform template framework, perfectly designed for the modern web.\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Flexible and Easy Layout Manager</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Menu Editor with Icon Options</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: 'Promoted News'
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-infolist g-1cols\">\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<div class=\"g-title-hero\">\n\t\t\t\t\t<a href=\"#\">A built-in and versatile dropdown menu system</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<span class=\"g-small\">Drag and Drop Functionality</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t<div class=\"g-large\">\n\t\t\t\t\tGantry 5 benefits from an integrated menu system, with intuitive mobile support, and extensive controls.\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Column Number and Width Controls</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Alignment and Ordering Functionality</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: 'Other News'
+        -
+          linklabel: ''
+          link: ''
+          content: "<div class=\"g-infolist g-1cols\">\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<div class=\"g-title-hero\">\n\t\t\t\t\t<a href=\"#\">The powerhouse behind content creation</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<span class=\"g-small\">Template Specific Styling</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t<div class=\"g-large\">\n\t\t\t\t\tGantry 5 is a powerful content application, with multiple options and an intuitive administrative interface.\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Content Particles and Menu Editor</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Multiple Layouts and Associated Themes</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+          title: Rumors
+    block:
+      id: mainright-tabs
+      variations: nopaddingall
+  promoimage-7909:
+    title: 'Sidebar Image'
+    attributes:
+      image: 'gantry-media://demo/home/sidebar/img-01.jpg'
+      promoimagetitle: '<span>Gantry 5 particles intuitively faciliate content creation </span> <span><a href="#">Read More</a></span>'
+      iconbutton: 'fa fa-heart'
+    block:
+      class: fp-promoimage
+      variations: nopaddingall
+  lists-4540:
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      displayitems: '3'
+      accordion: enabled
+      nav: disabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: disabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+        -
+          image: ''
+          title: 'YAML-Driven Configuration '
+          desc: 'YAML is a human-readable data serialization, making it easy to create and configure blueprints for back-end configuration options.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'YAML-Driven Configuration'
+        -
+          image: ''
+          title: 'Twig Templating'
+          desc: 'Gantry 5 utilizes Twig - a flexible, fast, and secure template engine for PHP - to make creating powerful, dynamic themes quick and easy.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Twig Templating'
+        -
+          image: ''
+          title: 'Particles System'
+          desc: 'Gantry 5''s Particles system makes it easy to create, configure, and manage content blocks on multiple levels.'
+          link: ''
+          linktext: ''
+          buttontarget: _self
+          name: 'Particles System'
+    block:
+      variations: box4
+  newsletter-6914:
+    attributes:
+      title: Newsletter
+      uri: rocketthemeblog
+    block:
+      variations: nopaddingall
+  stripsslider-3087:
+    title: 'Strips Slider'
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      displayitems: '6'
+      nav: enabled
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+        -
+          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          title: ''
+          desc: ''
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 1'
+        -
+          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          title: ''
+          desc: ''
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 2'
+        -
+          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          title: ''
+          desc: ''
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 3'
+        -
+          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          title: ''
+          desc: ''
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 4'
+        -
+          image: 'gantry-media://demo/home/bottom/img-05.jpg'
+          title: ''
+          desc: ''
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 5'
+        -
+          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          title: ''
+          desc: ''
+          link: '#'
+          linktext: 'Read More'
+          buttontarget: _self
+          name: 'Item 6'
+    block:
+      id: bottom-slider
+      variations: nopaddingall
+  infolist-7644:
+    title: 'Useful Links'
+    attributes:
+      title: 'Useful Links'
+      infolists:
+        -
+          image: ''
+          link: 'https://www.rockettheme.com/docs/joomla/templates/ambrosia'
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          title: 'Online Guides for the Ambrosia Template'
+        -
+          image: ''
+          link: 'http://docs.gantry.org/'
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          title: 'Documentation for the Gantry 5 Framework'
+        -
+          image: ''
+          link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          title: 'Community forum for theme discussion'
+  custom-3631:
+    title: 'About Ambrosia'
+    attributes:
+      html: "<h2 class=\"g-title\">About Ambrosia</h2>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from <a href=\"http://tookapic.com\">tookapic.com</a>.</p>\n\n<p>Note: Ambrosia is built on the latest version of Gantry Framework, version 5.</p>"
+    block:
+      class: fp-demo-info
+  social-5385:
+    attributes:
+      title: 'Connect<span class="hidden-tablet"> With Us</span>'
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'http://facebook.com/rockettheme'
+          name: Facebook
+        -
+          icon: 'fa fa-google fa-fw'
+          text: ''
+          link: 'http://plus.google.com/+rockettheme'
+          name: Google
+        -
+          icon: 'fa fa-rss fa-fw'
+          text: ''
+          link: 'https://www.rockettheme.com/product-updates?rss'
+          name: RSS
+        -
+          icon: 'fa fa-youtube'
+          text: ''
+          link: '#'
+          name: Youtube
+        -
+          icon: 'fa fa-instagram'
+          text: ''
+          link: '#'
+          name: Instagram
+        -
+          icon: 'fa fa-pinterest-p'
+          text: ''
+          link: '#'
+          name: Pinterest
+        -
+          icon: 'fa fa-vimeo-square'
+          text: ''
+          link: '#'
+          name: Vimeo
+        -
+          icon: 'fa fa-flickr'
+          text: ''
+          link: '#'
+          name: Flickr
+        -
+          icon: 'fa fa-github-alt'
+          text: ''
+          link: '#'
+          name: Git
+        -
+          icon: 'fa fa-rebel'
+          text: ''
+          link: '#'
+          name: Rebel
+        -
+          icon: 'fa fa-medium'
+          text: ''
+          link: '#'
+          name: Medium
+        -
+          icon: 'fa fa-yelp'
+          text: ''
+          link: '#'
+          name: Yelp
+        -
+          icon: 'fa fa-whatsapp'
+          text: ''
+          link: '#'
+          name: Whatsapp
+        -
+          icon: 'fa fa-dropbox'
+          text: ''
+          link: '#'
+          name: Dropbox
+  copyright-6130:
+    attributes:
+      date:
+        start: '2007'
+    block:
+      class: 'g-copyright center'
+  mobile-menu-8876:
+    title: 'Mobile Menu'

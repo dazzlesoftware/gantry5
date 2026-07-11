@@ -1,0 +1,38 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+	<div class="g-cta">
+	{% if not particle.patterns or particle.patterns == 'enabled' %}
+		<div class="g-cta-patterns-left">
+			<svg viewbox="0 0 1199 241" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M116 141L159.301 166V216L116 241L72.6987 216V166L116 141Z" class="base-pattern-1"/>
+				<path d="M69.5 125L84.6554 133.75V151.25L69.5 160L54.3446 151.25V133.75L69.5 125Z" class="base-pattern-2"/>
+				<path d="M35 149L65.3109 166.5V201.5L35 219L4.68911 201.5V166.5L35 149Z" class="base-pattern-3"/>
+			</svg>
+		</div>
+		<div class="g-cta-patterns-right">
+			<svg viewbox="0 0 1199 241" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M1083 0L1126.3 25V75L1083 100L1039.7 75V25L1083 0Z" class="base-pattern-3"/>
+				<path d="M808 8L838.311 25.5V60.5L808 78L777.689 60.5V25.5L808 8Z" class="base-pattern-1"/>
+				<path d="M707 138L737.311 155.5V190.5L707 208L676.689 190.5V155.5L707 138Z" class="base-pattern-2"/>
+				<path d="M1164 8L1194.31 25.5V60.5L1164 78L1133.69 60.5V25.5L1164 8Z" class="base-pattern-2"/>
+				<path d="M1181.5 75L1196.66 83.75V101.25L1181.5 110L1166.34 101.25V83.75L1181.5 75Z" class="base-pattern-3"/>
+			</svg>
+		</div>
+		{% endif %}
+		<div class="g-cta-left">
+			<h2>{{ particle.title|raw }}</h2>
+			<p>{{ particle.description|raw }}</p>
+		</div>
+		<div class="g-cta-right">
+			<div class="g-cta-button">
+				<a href="{{ particle.link }}" target="{{ particle.target|default('_self')|e }}" {% if particle.target == "lightcase" %} data-rel="lightcase" {% endif %} class="button {{ particle.class }}" title="{{ particle.label }}">
+					{{ particle.label }}
+				</a>
+				<p>{{ particle.contact|raw }}</p>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+.g-error {
+	.rt-error-body {
+	    margin: 50px auto;
+		padding-bottom: 25px;
+    	width: 80%;
+	}
+	.g-copyright {
+	    margin-top: 25px;
+	}
+	.rt-error-code {
+		font-size: 8em;
+	    line-height: 1.5em;
+	    display: block;
+	}
+	.rt-error-code-desc {
+    	text-transform: uppercase;
+	}
+	.rt-error-content {
+    	text-align: center;
+		padding: 25px 0 100px 0;
+    	display: block;
+	}
+	.rt-error-title {
+    	font-size: 2em;
+    	line-height: 1.5em;
+    	text-transform: uppercase;
+	}
+	.rt-error-message {
+    	font-size: 1em;
+    	margin: 15px 0;
+	}
+	.rt-error-button {
+    	margin: 25px 0;
+	}
+}

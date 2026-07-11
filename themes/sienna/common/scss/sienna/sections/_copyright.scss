@@ -1,0 +1,22 @@
+#g-container-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    .g-bordered-spacer {
+        border: 1px solid transparentize($copyright-text-color, 85%);
+        margin: 0 $content-padding + $content-margin;
+    }
+}
+
+@media print {
+    #g-container-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}
+
+@media only all and (max-width: 47.938rem) {
+
+#g-copyrightmain .g-content {text-align: center;}
+
+}

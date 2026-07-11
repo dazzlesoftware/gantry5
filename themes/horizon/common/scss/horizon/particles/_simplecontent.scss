@@ -1,0 +1,140 @@
+.g-simplecontent {
+    .g-simplecontent-item-created-date {
+        font-size: $core-font-size - 0.2;
+        text-transform: uppercase;
+    }
+    .g-simplecontent-layout-standard {
+        .g-simplecontent-item-content-title {
+        @include responsive-font($responsive-font-size + 0.5, $core-font-size, false, false);
+        font-weight: $font-weight-extrabold;
+        font-family: get-font-family($font-family-title);
+        }
+    }
+
+    .g-simplecontent-layout-header {
+        padding-bottom: 0;
+
+        .g-simplecontent-item-content-title {
+            @include responsive-font($responsive-font-size + 2.5, $core-font-size + 1.3, false, false);
+            display: inline-block;
+            padding: $content-margin;
+            font-family: get-font-family($font-family-title);
+            font-weight: $font-weight-semibold;
+            margin: 0;
+            border-radius: 5px;
+        }
+
+        .g-simplecontent-item-leading-content {
+            padding: $content-margin - 0.1;
+            line-height: $core-line-height + 0.2;
+            border-radius: 5px;
+            font-weight: $font-weight-regular;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+
+        @include breakpoint(tablet-range) {
+            padding: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            padding: 0;
+            text-align: center;
+        }
+    }
+
+    .g-simplecontent-item-content-title {
+        margin: ($content-margin - 0.1) 0;
+        font-weight: $font-weight-extrabold;
+        line-height: $core-line-height - 0.5;
+
+        .g-simplecontent-layout-header & {
+            font-size: $h1-font-size;
+            font-weight: $font-weight-light;
+            line-height: $core-line-height;
+
+            @include breakpoint(desktop-range) {
+                font-size: $core-font-size + 1.75;
+            }
+
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size + 1.5;
+            }
+
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size + 1;
+            }
+        }
+    }
+
+    .g-simplecontent-item-author {
+        font-size: $core-font-size - 0.1;
+        font-weight: $font-weight-bold;
+        margin-bottom: $content-margin;
+    }
+
+    .g-simplecontent-item-leading-content {
+        @extend .g-lead;
+        margin-bottom: $content-margin;
+        font-weight: $font-weight-semibold;
+        @include responsive-font($responsive-font-size + 0.5, $core-font-size, false, false);
+
+        span {
+            background-color: $accent-color-2;
+        }
+
+        .g-simplecontent-layout-header & {
+            font-size: $core-font-size + 0.9;
+        }
+
+        .g-simplecontent-link {
+            display: block;
+            color: set-color($base-background);
+
+            &:hover {
+                text-decoration: underline;
+                opacity: .7;
+            }
+        }
+    }
+
+    .g-simplecontent-item-main-content {
+        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+        margin: ($content-margin + $content-padding) 0;
+        font-family: get-font-family($font-family-default);
+
+        .g-simplecontent-layout-header & {
+            font-size: $core-font-size;
+            margin-bottom: $content-margin * 2;
+        }
+    }
+
+    .g-simplecontent-item-readmore-container {
+        font-weight: $font-weight-extrabold;
+
+        .g-simplecontent-layout-header & {
+            font-size: $core-font-size;
+        }
+    }
+
+    .g-simplecontent-item-author,
+    .g-simplecontent-item-created-date {
+        .g-simplecontent-layout-header & {
+            display: inline-block;
+            margin: 0;
+            padding-right: $content-padding;
+            font-family: get-font-family($font-family-default);
+            font-weight: $font-weight-extrabold;
+            font-size: $core-font-size + 0.15;
+            line-height: $core-line-height + 0.5;
+            text-transform: none;
+        }
+    }
+}
+
+.middle {
+    margin-top: auto;
+    margin-bottom: auto;
+}

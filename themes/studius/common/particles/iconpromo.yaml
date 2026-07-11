@@ -1,0 +1,25 @@
+name: Icon Promo
+description: Display icon promo with text.
+type: particle
+icon: fa-file
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+    headline:
+      type: input.text
+      label: Headline
+      description: Customize the headline text.
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+    icon:
+      type: input.icon
+      label: Icon
+      description: Select the icon.

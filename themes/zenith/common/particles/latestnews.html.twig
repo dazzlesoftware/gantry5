@@ -1,0 +1,70 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+    <div class="{{ particle.class|e }} g-latestnews" data-latestnews-id="{{ id }}">
+        <div class="g-latestnews-header">
+            {% if particle.title %}
+                <div class="g-latestnews-title">
+                    {{ particle.title|raw }}
+                </div>
+            {% endif %}
+        </div>
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-latestnews-grid {{ particle.cols }}">
+                <div class="g-latestnews-grid-sizer"></div>
+                {% for item in particle.cases %}
+                    {% set case_index = loop.index %}
+                    <div class="g-latestnews-grid-item {{ item.layout }}" data-groups='["{{ case_index }}"]'>
+                        <div class="g-latestnews-grid-item-wrapper g-latestnews-layout-{{ item.layout }}">
+                            {% if item.image %}
+                                <div class="g-latestnews-grid-item-image">
+                                    <div class="g-latestnews-grid-item-overlay"></div>
+                                    {% if item.date %}
+                                        <span class="g-latestnews-grid-item-description date">
+                                            {{ item.date|date("F jS, Y") }}
+                                        </span>
+                                    {% endif %}
+                                    <img src="{{ url(item.image)|e }}" alt="{{ item.title }}"/>
+                                </div>
+                            {% endif %}
+                            <div class="g-latestnews-grid-item-content">
+                                {% if item.title %}
+                                    <div class="g-latestnews-grid-item-title">
+                                        <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}">
+                                            {{ item.title }}
+                                            {% if item.layout == 'quote' and item.description %}
+                                                <span class="g-latestnews-grid-item-description quote-author">
+                                                    {{ item.description|raw }}
+                                                </span>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                {% if item.layout == 'text' %}
+                                    {% if item.description %}
+                                        <div class="g-latestnews-grid-item-description">
+                                            {{ item.description|raw }}
+                                        </div>
+                                    {% endif %}
+                                    {% if item.date %}
+                                        <span class="g-latestnews-grid-item-description date">
+                                            {{ item.date|date("F jS, Y") }}
+                                        </span>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            {% include '@particles/latestnews-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/latestnews.init.js') }}"></script>
+{% endblock %}

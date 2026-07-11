@@ -1,0 +1,21 @@
+#g-container-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    .g-content {
+        opacity: 0.3;
+    }
+    .g-copyright {
+        font-family:  get-font-family($font-family-promo);
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        font-size: $core-font-size - 0.2;
+    }
+}
+
+@media print {
+    #g-container-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

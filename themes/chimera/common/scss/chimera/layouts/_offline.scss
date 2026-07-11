@@ -1,0 +1,29 @@
+.g-offline {	
+
+    #rt-logo, .rt-logo {
+        background-image: url(gantry-media://logo/logo.png);
+        width: 189px;
+        height: 53px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .title {
+        margin: 30px 0;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: get-font-family($font-family-alt);
+    }
+
+    #g-showcase {
+        padding: 150px 0;
+    }
+
+    #g-extension.rt-authorized-form {
+        padding: 50px 0;
+    }
+
+    .g-copyright {
+        margin-top: 25px;
+    }  
+}

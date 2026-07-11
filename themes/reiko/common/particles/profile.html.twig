@@ -1,0 +1,33 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-profile">
+        <div class="g-profile-photo-wrapper">
+            <img src="{{ url(particle.image) }}" alt="{{ particle.title|e }}" style="max-height: {{ particle.max_height }};" />
+        </div>
+
+        <div class="g-profile-content-wrapper">
+            {% if particle.upper_title %}<span class="g-profile-upper-title">{{ particle.upper_title|raw }}</span>{% endif %}
+            {% if particle.title %}<h2 class="g-profile-section-title">{{ particle.title|raw }}</h2>{% endif %}
+
+            <div class="g-profile-bottom-wrapper">
+                {% if particle.social %}
+                    <div class="g-profile-social">
+                        {% for icon in particle.social %}
+                            <a href="{{ icon.url }}" target="{{ icon.target|default('_blank') }}">
+                                <i class="{{ icon.icon }}" {{ icon.color ? ('style="color: ' ~ icon.color ~ ';"')|raw : '' }} aria-hidden="true"></i>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if particle.subtitle or particle.description %}
+                    <div class="g-profile-description">
+                        <h4 class="g-profile-subtitle">{{ particle.subtitle|raw }}</h4>
+                        <p class="g-profile-description" >{{ particle.description|raw }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

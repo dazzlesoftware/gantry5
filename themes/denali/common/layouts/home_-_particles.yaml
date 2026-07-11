@@ -1,0 +1,1052 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1519679458
+layout:
+  top:
+    -
+      - system-messages-1675
+  navigation: {  }
+  /slideshow/:
+    -
+      - slider-7244
+  /header/:
+    -
+      - simplecontent-1913
+    -
+      - 'simplecontent-8186 33.3'
+      - 'simplecontent-3665 33.3'
+      - 'simplecontent-1800 33.3'
+  /above/:
+    -
+      - showcase-8833
+  /feature/:
+    -
+      - 'simplecontent-3527 40'
+      - 'simplecontent-9699 60'
+  /showcase/:
+    -
+      - eventlist-3132
+  /extension/:
+    -
+      - casestudies-9807
+  /bottom/:
+    -
+      - carousel-5826
+  /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: fp-slideshow
+  header:
+    attributes:
+      boxed: ''
+      class: 'fp-header section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-above section-vertical-paddings section-horizontal-paddings nopaddingbottom'
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-feature section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-vertical-paddings fp-showcase nopaddingleft nopaddingright nomarginleft nomarginright'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings fp-extension'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'fp-bottom section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: '3'
+      class: 'g-default-footer section-horizontal-paddings section-vertical-paddings nopaddingbottom'
+    inherit:
+      outline: default
+      include:
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  system-messages-1675:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+      particle: system-messages-9828
+  slider-7244:
+    attributes:
+      demo: disabled
+      nav: enabled
+      autoplay: enabled
+      dots: enabled
+      thumbs: enabled
+      items:
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Beautiful photography-based design for travelers, artists, and photographers.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: hello.
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Build a rich website with elegantly-designed sliders, event list, image galleries, and more.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: bonjour.
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Denali is built from the ground up for versatility, enabling you to create a site that meets your needs.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: ciao.
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Create a gorgeous website without having to open a single code editor with Denali.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: hola.
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Denali''s intuitive drag-and-drop layout manager makes setting up your website a breeze.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: namaste.
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Denali''s elegant design is backed by Gantry 5''s power and flexibility.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: salaam.
+        -
+          image: 'gantry-media://home/slideshow/img-01.jpg'
+          alt: 'Example image'
+          description: 'Build the perfect website for your business or personal blog with ease.'
+          buttontext: 'Read more'
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: ''
+          title: 'ni hau.'
+    block:
+      variations: 'nomarginall nopaddingall'
+  simplecontent-1913:
+    title: 'Designed for Tomorrow'
+    attributes:
+      class: ''
+      title: Featured
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Designed for Tomorrow'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Designed for Tomorrow'
+    block:
+      variations: center
+  simplecontent-8186:
+    title: 'Brilliant Sliders'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Brilliant Sliders'
+          author: ''
+          leading_content: 'Denali features beautifully-crafted image galleries and sliders that put your images on center stage.'
+          main_content: ''
+          readmore_label: 'Read more...'
+          readmore_link: '#'
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Brilliant Sliders'
+  simplecontent-3665:
+    title: 'Premium Particles'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Premium Particles'
+          author: ''
+          leading_content: 'Denali features RocketTheme''s premium particles that make creating clean, modern content areas a snap.'
+          main_content: ''
+          readmore_label: 'Read more..'
+          readmore_link: '#'
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Premium Particles'
+  simplecontent-1800:
+    title: 'Perfect Presets'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: 'Perfect Presets'
+          author: ''
+          leading_content: 'Preset layouts and color schemes make it easier than ever to hit the ground running.'
+          main_content: ''
+          readmore_label: 'Read more..'
+          readmore_link: '#'
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Perfect Presets'
+  showcase-8833:
+    title: 'Showcase Slider'
+    attributes:
+      demo: disabled
+      sets:
+        -
+          items:
+            -
+              image: 'gantry-media://home/above/img-01.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 1'
+            -
+              image: 'gantry-media://home/above/img-02.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 2'
+            -
+              image: 'gantry-media://home/above/img-03.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 3'
+            -
+              image: 'gantry-media://home/above/img-04.jpg'
+              alt: ''
+              heading: 'Showcase Slider'
+              description: 'Create bold image showcases that impress, complete with headings, descriptive text, buttons, and more using the Showcase Slider particle.'
+              buttontext: 'View Label'
+              buttonlink: '#'
+              buttontarget: _self
+              buttonclass: ''
+              title: Content
+          title: 'Set 1'
+        -
+          items:
+            -
+              image: 'gantry-media://home/above/img-01.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 1'
+            -
+              image: 'gantry-media://home/above/img-02.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 2'
+            -
+              image: 'gantry-media://home/above/img-03.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 3'
+            -
+              image: 'gantry-media://home/above/img-04.jpg'
+              alt: ''
+              heading: 'Block Content'
+              description: 'Build organized content blocks with images, headings, and text that showcase everything your business has to offer.'
+              buttontext: 'View Label'
+              buttonlink: '#'
+              buttontarget: _self
+              buttonclass: ''
+              title: Content
+          title: 'Set 2'
+        -
+          items:
+            -
+              image: 'gantry-media://home/above/img-01.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 1'
+            -
+              image: 'gantry-media://home/above/img-02.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 2'
+            -
+              image: 'gantry-media://home/above/img-03.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 3'
+            -
+              image: 'gantry-media://home/above/img-04.jpg'
+              alt: ''
+              heading: 'Image Grid'
+              description: 'Organize images into a clean, modern grid with ease using the Image Grid particle. Perfect for product shots, photographers, and more.'
+              buttontext: 'View Label'
+              buttonlink: '#'
+              buttontarget: _self
+              buttonclass: ''
+              title: Content
+          title: 'Set 3'
+        -
+          items:
+            -
+              image: 'gantry-media://home/above/img-01.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 1'
+            -
+              image: 'gantry-media://home/above/img-02.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 2'
+            -
+              image: 'gantry-media://home/above/img-03.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 3'
+            -
+              image: 'gantry-media://home/above/img-04.jpg'
+              alt: ''
+              heading: 'Simple Counter'
+              description: 'Set up a quick and easy countdown timer on your site to let users know when they can expect something new.'
+              buttontext: 'View Label'
+              buttonlink: '#'
+              buttontarget: _self
+              buttonclass: ''
+              title: Content
+          title: 'Set 4'
+        -
+          items:
+            -
+              image: 'gantry-media://home/above/img-01.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 1'
+            -
+              image: 'gantry-media://home/above/img-02.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 2'
+            -
+              image: 'gantry-media://home/above/img-03.jpg'
+              alt: ''
+              heading: ''
+              description: ''
+              buttontext: ''
+              buttonlink: ''
+              buttontarget: _self
+              buttonclass: ''
+              title: 'Image 3'
+            -
+              image: 'gantry-media://home/above/img-04.jpg'
+              alt: ''
+              heading: 'Grid Statistic'
+              description: 'Give your website an extra numerical boost with the Grid Statistic particle. Displaying animated numbers for your visitors is a snap.'
+              buttontext: 'View Label'
+              buttonlink: '#'
+              buttontarget: _self
+              buttonclass: ''
+              title: Content
+          title: 'Set 5'
+  simplecontent-3527:
+    title: 'An Incredible Experience'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'An incredible experience for your visitors.'
+          author: ''
+          leading_content: ''
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Incredible Experience'
+    block:
+      variations: align-right
+  simplecontent-9699:
+    title: 'Denali is Powered By'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: ''
+          author: ''
+          leading_content: 'Denali is powered by the Gantry 5 framework, a brilliant combination of power and simplicity that makes creating a unique website easy.'
+          main_content: "Gantry was born when the RocketTheme development team wanted to consolidate our extensive set of custom Grav, Joomla and WordPress theme functionality into a simple, easy to use framework. The result, a dynamic, easy-to-use framework that requires no coding experience to use. The only thing Gantry 5 doesn't do is compromise.\n"
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Gantry Text'
+  eventlist-3132:
+    title: 'Upcoming Exhibitions'
+    attributes:
+      demo: disabled
+      class: ''
+      subtitle: Events
+      title: 'Upcoming exhibitions'
+      items:
+        -
+          location2: 'PGE Nardowy'
+          image: 'gantry-media://home/showcase/img-01.jpg'
+          date1: AUG
+          date2: '19'
+          buttontext: Details
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-4
+          location1: 'Warsaw, PL'
+        -
+          location2: 'London Stadium'
+          image: 'gantry-media://home/showcase/img-01.jpg'
+          date1: NOV
+          date2: '12'
+          buttontext: Details
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-4
+          location1: 'London, UK'
+        -
+          location2: 'Allians Arena'
+          image: 'gantry-media://home/showcase/img-01.jpg'
+          date1: SEP
+          date2: '24'
+          buttontext: Details
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-4
+          location1: 'Munich, DE'
+        -
+          location2: 'Juventus Stadium'
+          image: 'gantry-media://home/showcase/img-01.jpg'
+          date1: JUN
+          date2: '14'
+          buttontext: Details
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-4
+          location1: 'Turin, IT'
+        -
+          location2: 'Cairo Stadium'
+          image: 'gantry-media://home/showcase/img-01.jpg'
+          date1: JUL
+          date2: '17'
+          buttontext: Details
+          buttonlink: '#'
+          buttontarget: _self
+          buttonclass: button-4
+          location1: 'Cairo, EG'
+  casestudies-9807:
+    title: 'Our Blog'
+    attributes:
+      demo: disabled
+      title: 'Recent articles'
+      uppertitle: 'Our Blog'
+      cols: cols-4
+      cases:
+        -
+          items:
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-01.jpg'
+              subtitle: 'Feb 1'
+              description: 'The Color Picker enables you to pick the perfect color for your theme, section, particle, or other element. Set the hue, saturation, opaqueness, and more.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Color Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-02.jpg'
+              subtitle: 'Jul 17'
+              description: 'Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Font Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-03.jpg'
+              subtitle: 'Oct 12'
+              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Gantry''s Icon Picker. Features quick search and style settings.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Icon Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-04.jpg'
+              subtitle: 'Dec 25'
+              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Gantry 5 has you covered.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'File Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-05.jpg'
+              subtitle: 'Dec 24'
+              description: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Super Simple'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-06.jpg'
+              subtitle: 'Sep 12'
+              description: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Flexible Layout'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-07.jpg'
+              subtitle: 'Dec 24'
+              description: 'Denali''s responsive design looks as good on a mobile phone as it does on a large desktop. Every element is built to look great on any screen.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Responsive
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-08.jpg'
+              subtitle: 'Sep 12'
+              description: 'Create a gorgeous website for your startup, a personal blog, or your dream portfolio with one template. Denali is perfect for many types of sites.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Versatile
+          title: 'Preset 1'
+        -
+          items:
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-01.jpg'
+              subtitle: 'May 5'
+              description: 'Customize your menus with the powerful Menu Editor. Add styling elements, re-arrange items, and inject particles and other elements with ease.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Menu Editor'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-02.jpg'
+              subtitle: 'Jul 19'
+              description: 'Need something that goes beyond the traditional main menu? Denali includes Simple and Mobile Menu particles for maximum versatility.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Menu Particles'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-03.jpg'
+              subtitle: 'May 5'
+              description: 'Particle injection is possible in the Gantry Menu Editor, enabling you to drag-and-drop Particles to your menu with the same simplicity you can experience from the Layout Manager.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Drag-And-Drop
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-04.jpg'
+              subtitle: 'Jul 19'
+              description: 'The Menu Editor panel in the Gantry Admin is where you can configure menu columns and dropdown levels.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Columns / Levels'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-05.jpg'
+              subtitle: 'Mar 7'
+              description: 'Customize your website''s page layouts in seconds with drag-and-drop simplicity. Simply drag a particle into place, set its width, and enjoy.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Layout Manager'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-06.jpg'
+              subtitle: 'Jul 2'
+              description: 'Save time with easy-to-use layout presets.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Presets
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-07.jpg'
+              subtitle: 'Mar 7'
+              description: 'Inherit or clone entire layouts, as well as individual sections, to quickly configure the perfect website. Layout management has never been this easy.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Inheritance
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-08.jpg'
+              subtitle: 'Jul 2'
+              description: 'Unlimited layout possibilities powered by a drag & drop interface.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Unlimited Positions'
+          title: 'Preset 2'
+        -
+          items:
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-01.jpg'
+              subtitle: 'Feb 6'
+              description: 'The Color Picker enables you to pick the perfect color for your theme, section, particle, or other element. Set the hue, saturation, opaqueness, and more.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Color Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-02.jpg'
+              subtitle: 'Jun 4'
+              description: 'Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Font Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-03.jpg'
+              subtitle: 'Aug 16'
+              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Gantry''s Icon Picker. Features quick search and style settings.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Icon Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-04.jpg'
+              subtitle: 'Dec 7'
+              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Gantry 5 has you covered.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'File Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-05.jpg'
+              subtitle: 'May 5'
+              description: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Super Simple'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-06.jpg'
+              subtitle: 'Oct 12'
+              description: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Flexible Layout'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-07.jpg'
+              subtitle: 'Mar 7'
+              description: 'Denali''s responsive design looks as good on a mobile phone as it does on a large desktop. Every element is built to look great on any screen.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Responsive
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-08.jpg'
+              subtitle: 'Jul 2'
+              description: 'Create a gorgeous website for your startup, a personal blog, or your dream portfolio with one template. Denali is perfect for many types of sites.'
+              url: ''
+              buttontext: ''
+              buttonclass: ''
+              target: _blank
+              title: Versatile
+          title: 'Preset 3'
+        -
+          items:
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-01.jpg'
+              subtitle: 'May 5'
+              description: 'Customize your menus with the powerful Menu Editor. Add styling elements, re-arrange items, and inject particles and other elements with ease.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Menu Editor'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-02.jpg'
+              subtitle: 'Jul 19'
+              description: 'Need something that goes beyond the traditional main menu? Denali includes Simple and Mobile Menu particles for maximum versatility.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Menu Particles'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-03.jpg'
+              subtitle: 'May 5'
+              description: 'Particle injection is possible in the Gantry Menu Editor, enabling you to drag-and-drop Particles to your menu with the same simplicity you can experience from the Layout Manager.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Drag-And-Drop
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-04.jpg'
+              subtitle: 'Jul 19'
+              description: 'The Menu Editor panel in the Gantry Admin is where you can configure menu columns and dropdown levels.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Columns / Levels'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-05.jpg'
+              subtitle: 'Mar 7'
+              description: 'Customize your website''s page layouts in seconds with drag-and-drop simplicity. Simply drag a particle into place, set its width, and enjoy.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Layout Manager'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-06.jpg'
+              subtitle: 'Jul 2'
+              description: 'Save time with easy-to-use layout presets.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Presets
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-07.jpg'
+              subtitle: 'Mar 7'
+              description: 'Inherit or clone entire layouts, as well as individual sections, to quickly configure the perfect website. Layout management has never been this easy.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Inheritance
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-08.jpg'
+              subtitle: 'Jul 2'
+              description: 'Unlimited layout possibilities powered by a drag & drop interface.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Unlimited Positions'
+          title: 'Preset 4'
+        -
+          items:
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-01.jpg'
+              subtitle: 'May 4'
+              description: 'The Color Picker enables you to pick the perfect color for your theme, section, particle, or other element. Set the hue, saturation, opaqueness, and more.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Color Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-02.jpg'
+              subtitle: 'Apr 9'
+              description: 'Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Font Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-03.jpg'
+              subtitle: 'Nov 12'
+              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Gantry''s Icon Picker. Features quick search and style settings.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Icon Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-04.jpg'
+              subtitle: 'Jun 23'
+              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Gantry 5 has you covered.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'File Picker'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-05.jpg'
+              subtitle: 'Dec 24'
+              description: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Super Simple'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-06.jpg'
+              subtitle: 'Sep 12'
+              description: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: 'Flexible Layout'
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-07.jpg'
+              subtitle: 'Dec 24'
+              description: 'Denali''s responsive design looks as good on a mobile phone as it does on a large desktop. Every element is built to look great on any screen.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Responsive
+            -
+              layout: alt-bottom
+              image: 'gantry-media://home/extension/img-08.jpg'
+              subtitle: 'Sep 12'
+              description: 'Create a gorgeous website for your startup, a personal blog, or your dream portfolio with one template. Denali is perfect for many types of sites.'
+              url: '#'
+              buttontext: 'Read more'
+              buttonclass: ''
+              target: _blank
+              title: Versatile
+          title: 'Preset 5'
+  carousel-5826:
+    title: 'Carousel - Image Gallery'
+    attributes:
+      demo: disabled
+      nav: enabled
+      loop: enabled
+      displayitems: '2'
+      items:
+        -
+          image: 'gantry-media://home/bottom/img-01.jpg'
+          alt: ''
+          title: 'Carousel - Create Beautiful Image Galleries'
+          caption: 'The Carousel particle enables you to create a brilliant image gallery, complete with lightcase popups, links, and captions.'
+          linkto: image
+          link: ''
+          name: 'Item 1'
+        -
+          image: 'gantry-media://home/bottom/img-01.jpg'
+          alt: ''
+          title: 'Newsletter - Make Newsletter Sign-ups Easy'
+          caption: 'Take advantage of the simplicity of Carousel''s options to make a gallery that shines. Set up takes seconds.'
+          linkto: image
+          link: ''
+          name: 'Item 2'
+        -
+          image: 'gantry-media://home/bottom/img-01.jpg'
+          alt: ''
+          title: 'Pricing Table - Make Your Products Shine'
+          caption: 'Carousel takes full advantage of Gantry 5''s Image Picker to make selecting the right images ease. Real-time preview, direct upload, and more.'
+          linkto: image
+          link: ''
+          name: 'Item 3'
+        -
+          image: 'gantry-media://home/bottom/img-01.jpg'
+          alt: ''
+          title: 'Video - Embed Videos Easily'
+          caption: 'Lightcase popups make the Carousel particle even better. Select an image to see a larger popup, complete with a caption for your visitors.'
+          linkto: image
+          link: ''
+          name: 'Item 4'
+        -
+          image: 'gantry-media://home/bottom/img-01.jpg'
+          alt: ''
+          title: 'Social - Drive Traffic to Your Social Media'
+          caption: 'Want to add links to your gallery? Just enter a URL in the Link field for each image in Carousel''s intuitive configuration form.'
+          linkto: image
+          link: ''
+          name: 'Item 5'
+    block:
+      class: flush

@@ -1,0 +1,33 @@
+#g-showcase, #g-container-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;
+    margin: 2rem ($content-margin + $content-padding);
+    box-shadow: $base-content-shadow;
+    position: relative;
+
+    .contactinfo {
+      padding-left: ($content-margin + $content-padding);
+      padding-right: ($content-margin + $content-padding);
+      h4 {
+        color: fade-out($white, 0.55);
+        font-size: $core-font-size - 0.2;
+        text-transform: uppercase;
+        font-weight: $font-weight-bold;
+      }
+      .desc {
+        font-size: $core-font-size + 0.5;
+      }
+      .email, a {
+        color: fade-out($white, 0.55);
+        font-size: $core-font-size - 0.2;
+        font-weight: $font-weight-bold;
+      }
+    }
+}
+
+@media print {
+    #g-showcase, #g-container-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

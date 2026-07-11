@@ -1,0 +1,30 @@
+#g-slideshow {
+    color: $slideshow-text-color;
+    background-color: $slideshow-background;
+
+    @if $slideshow-background-image {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url($slideshow-background-image);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: 100% 80%;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .g-grid {
+        position: relative;
+    }
+}
+
+@media print {
+    #g-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

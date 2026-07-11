@@ -1,0 +1,11 @@
+#g-topfullwidth {
+    background: $topfullwidth-background;
+    color: $topfullwidth-text-color; 
+}
+
+@media print {
+	#g-topfullwidth {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

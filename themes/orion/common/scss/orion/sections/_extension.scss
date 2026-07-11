@@ -1,0 +1,19 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    position: relative;
+
+    @if $extension-background-image {
+        background-image: url($extension-background-image);
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: right bottom;
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

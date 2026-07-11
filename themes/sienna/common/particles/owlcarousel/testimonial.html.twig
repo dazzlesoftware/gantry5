@@ -1,0 +1,32 @@
+{% extends '@particles/owlcarousel.html.twig' %}
+
+{# Testimonial Layout #}
+{% block layout %}
+<div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }} g-owlcarousel-{{ particle.displayitems }}-items">
+    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+    <div id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+        {% for item in particle.items %}
+        <div class="item">
+            {% if item.desc %}
+            <div class="g-owlcarousel-item-desc">
+                {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                {{ item.desc|raw }}
+                {% if item.title %}<div class="g-owlcarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+            </div>
+            {% endif %}
+
+            {% if item.author %}
+            <div class="g-owlcarousel-author">
+                {% if item.authorimage %}
+                <span class="author-image">
+                    <img src="{{ url(item.authorimage)|e }}" alt="{{ item.author|e }}" />
+                </span>
+                {% endif %}
+                {% if item.author %}<span class="author-name">{{ item.author|raw }}</span>{% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

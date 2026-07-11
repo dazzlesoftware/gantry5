@@ -1,0 +1,48 @@
+// Swiper / Features
+@mixin g-swiper-title($font-size: $core-font-size + 1.25, $line-height: 2.75rem, $m-font-size: $core-font-size + 0.5, $m-line-height: 1.75rem) {
+	font-size: $font-size;
+	line-height: $line-height;
+	@include breakpoint(mobile-only) {
+		font-size: $m-font-size;
+		line-height: $m-line-height;
+	}
+}
+
+// Numberheadlines / Mosaic
+@mixin g-numberheadline-headline($font-size: $core-font-size + 0.7, $line-height: $core-font-size + 1.2, $d-font-size: $core-font-size + 0.4, $d-line-height: $core-font-size + 0.9, $t-font-size: $core-font-size + 0.1, $t-line-height: $core-font-size + 0.6) {
+	font-size: $font-size;
+	line-height: $line-height;
+	position: relative;
+	top: -0.3rem;
+	@include breakpoint(desktop-range) {
+		font-size: $d-font-size;
+		line-height: $d-line-height;
+	}
+	@include breakpoint(tablet-range) {
+		font-size: $t-font-size;
+		line-height: $t-line-height;
+	}
+}
+
+// Imageblock / Grids
+@mixin g-imageblock-bottom-title($font-size: $core-font-size + 0.3) {
+	text-transform: uppercase;
+	font-style: italic;
+	font-size: $font-size;
+	line-height: 1.75rem;
+}
+
+// Horizontalmenu
+@mixin g-horizontalmenu-item($font-size: $core-font-size - 0.1) {
+	display: inline-block;
+	margin: 0 0.5rem;
+	font-weight: bold;
+	font-size: $font-size;
+	text-transform: uppercase;
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}	
+}

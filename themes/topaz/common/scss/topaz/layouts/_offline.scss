@@ -1,0 +1,58 @@
+.g-offline {
+    #g-container-header {
+        .g-content {
+            padding: 1.5rem $content-padding;
+
+            @include breakpoint(large-mobile-range) {
+                padding: 1.5rem $content-padding;
+            }
+
+            @include breakpoint(small-mobile-range) {
+                padding: 1rem $content-padding;
+            }
+        }
+    }
+    #g-container-copyright {
+        @include breakpoint(mobile-only) {
+            .g-content {
+                text-align: center;
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    #form-login {
+        #submit-buton {
+            label {
+                display: none;
+            }
+        }
+        .button {
+            background-color: $accent-color-2;
+            color: $base-background;
+            border-radius: $border-radius;
+        }
+    }
+    #grav-login {
+        max-width: 36rem;
+        color: #a9a9a9;
+        padding: 1rem 2rem 3rem 3rem;  
+        .form-actions {
+            margin-top: $content-margin;
+            @include breakpoint(mobile-only) {
+                text-align: center;
+            }
+        }
+        .button {
+            text-transform: capitalize;
+            background: $accent-color-1;
+            color: $white;
+        }
+        .rememberme { 
+            @include breakpoint(mobile-only) {
+                float: none;
+                display: block;
+            }
+        }
+    }    
+}

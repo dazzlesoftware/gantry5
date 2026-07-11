@@ -1,0 +1,11 @@
+name: Accent Colors
+description: Accent colors for the Koleti theme
+type: core
+
+form:
+  fields:
+
+    color-1:
+      type: input.colorpicker
+      label: Accent Color 1
+      default: "#5c5acf"

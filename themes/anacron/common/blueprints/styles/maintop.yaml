@@ -1,0 +1,15 @@
+name: MainTop Colors
+description: MainTop colors for the Anacron theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#f5f6f8"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#8b8b8b"

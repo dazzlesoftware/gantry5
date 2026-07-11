@@ -1,0 +1,31 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+  {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+  <div class="g-gridpromogallery {{ particle.class|e }}">
+    {% if particle.desc %}<div class="g-gridpromogallery-desc">{{ particle.desc|raw }}</div>{% endif %}     
+    {% if particle.readmore %}<a href="{{ particle.readmorelink|e }}" class="button {{ particle.readmoreclass|e }}">{{ particle.readmore|raw }}</a>{% endif %}
+    
+    <div class="g-gridpromogallery-wrapper {{ particle.cols|e }}">
+      {% for gridpromogalleryitem in particle.gridpromogalleryitems %}
+          <div class="g-gridpromogallery-item">
+            <div class="g-gridpromogallery-item-wrapper {{ gridpromogalleryitem.textstyle|e }}">
+               {% if gridpromogalleryitem.link %}<a class="g-gridpromogallery-link" href="{{ gridpromogalleryitem.link|e }}">{% endif %}
+                <span class="g-gridpromogallery-item-img"{% if gridpromogalleryitem.img %} style="background-image: url({{ url(gridpromogalleryitem.img)|e }});"{% endif %}>
+                  <span class="g-gridpromogallery-item-text">
+                    {% if gridpromogalleryitem.tag %}<span class="g-gridpromogallery-item-tag">{{ gridpromogalleryitem.tag|e }}</span>{% endif %}
+                    {% if gridpromogalleryitem.headtext %}<span class="g-gridpromogallery-item-title">{{ gridpromogalleryitem.headtext|e }}</span>{% endif %}
+                    {% if gridpromogalleryitem.desc %}<span class="g-gridpromogallery-item-desc">{{ gridpromogalleryitem.desc|e }}</span>{% endif %}
+                  </span>
+                </span>
+               {% if gridpromogalleryitem.link %}</a>{% endif %}
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+{% endblock %}

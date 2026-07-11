@@ -1,0 +1,96 @@
+.g-authorslist {
+    .g-authorslist-pretext {
+        margin-bottom: $content-padding;
+        @include responsive-font($responsive-font-size - 0.25, $core-font-size, false, false);
+    }
+
+    .g-authorslist-posttext {
+        margin-top: $content-padding;
+        @include responsive-font($responsive-font-size - 0.25, $core-font-size, false, false);
+    }
+
+    .g-authorslist-authors-wrapper {
+        .g-authorslist-author {
+            display: flex;
+            flex-direction: row wrap;
+            padding: ($content-padding * 0.75) 0;
+
+            @include breakpoint(desktop-range) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            @include breakpoint(tablet-range) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .g-authorslist-author-image {
+                flex: 0 0 55px;
+                margin-right: 1rem;
+
+                .dir-rtl & {
+                  margin-right: 0;
+                  margin-left: 1rem;
+                }
+
+                @include breakpoint(desktop-range) {
+                    margin-bottom: 1rem;
+                    margin-right: 0;
+                }
+
+                @include breakpoint(tablet-range) {
+                    margin-bottom: 1rem;
+                    margin-right: 0;
+                }
+
+                img {
+                    border-radius: 50%;
+                }
+            }
+
+            .g-authorslist-author-wrapper {
+                display: flex;
+                flex-direction: column;
+
+                @include breakpoint(desktop-range) {
+                    text-align: center;
+                }
+
+                @include breakpoint(tablet-range) {
+                    text-align: center;
+                }
+
+                .g-authorslist-author-name {
+                    font-weight: $font-weight-medium;
+                    color: $black;
+                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
+                }
+
+                .g-authorslist-author-link {
+                    color: $black;
+
+                    &:hover {
+                        span {
+                            color: $accent-color-1;
+                        }
+                    }
+                }
+
+                .g-authorslist-author-description {
+                    margin-top: $content-margin;
+
+                    a {
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid transparentize($black, 0.90);
+            }
+        }
+    }
+}

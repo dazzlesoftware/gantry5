@@ -1,0 +1,75 @@
+preset: preset1
+base:
+  background: '#ffffff'
+  text-color: '#656a7b'
+  favicon: ''
+  overlay-left: '#8bc8c3'
+  overlay-right: '#e2fccb'
+  overlay-size: '50%'
+accent:
+  color-1: '#152248'
+  color-2: '#7ecaba'
+  color-3: '#e2fccb'
+  color-4: '#566388'
+font:
+  family-default: 'domine, sans-serif, Tahoma, Geneva, Arial'
+  family-title: 'quando, sans-serif, Tahoma, Geneva, Arial'
+  family-promo: 'nexa'
+top:
+  background: '#152248'
+  text-color: '#ffffff'
+slideshow:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+header:
+  background: '#152248'
+  background-image: 'gantry-media://backgrounds/header/img-01.png'
+  background-image2: 'gantry-media://backgrounds/header/img-02.jpg'
+  text-color: '#ffffff'
+above:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+showcase:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+utility:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+feature:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+expanded:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+extension:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+bottom:
+  background: 'rgba(0, 0, 0, 0)'
+  text-color: '#656a7b'
+footer:
+  background: '#152248'
+  text-color: '#ffffff'
+copyright:
+  background: '#152248'
+  text-color: '#ffffff'
+offcanvas:
+  background: '#152248'
+  text-color: '#ffffff'
+  toggle-color: '#7ecaba'
+  width: 10rem
+  toggle-visibility: '1'
+main:
+  background: '#ffffff'
+  text-color: '#656a7b'
+breakpoints:
+  large-desktop-container: 75rem
+  desktop-container: 70rem
+  tablet-container: 48rem
+  large-mobile-container: 30rem
+  mobile-menu-breakpoint: 70rem
+menu:
+  col-width: 180px
+  animation: g-fade
+sidecolumn:
+  min-width: 150px

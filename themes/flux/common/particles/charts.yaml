@@ -1,0 +1,90 @@
+name: Simple Charts
+description: Display good-looking charts.
+type: particle
+icon: fa-line-chart
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    label:
+      type: input.text
+      label: Label
+      description: Customize the title text.
+      default: Your label
+
+    lineColor:
+      type: input.colorpicker
+      label: Line Color
+      description: Customize the line color.
+      default: "#ffffff"
+
+    axes:
+      type: select.select
+      label: Axes
+      description: Set to disabled to disable drawing the x and y axes.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    grid:
+      type: select.select
+      label: Grid
+      description: Set to disabled to  drawing the horizontal grid lines..
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    resize:
+      type: select.select
+      label: Resize
+      description: Set to enabled to enable automatic resizing when the containing element resizes. This has a significant performance impact, so is disabled by default.
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    items:
+      type: collection.list
+      array: true
+      label: Data Points
+      description: Create chart keys.
+      value: title
+      ajax: true
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Element title.
+          placeholder: Enter title
+        .xkey:
+          type: input.text
+          label: X-Axis value
+          description: Customize the x axis value.
+          placeholder: Enter number.
+        .ykey:
+          type: input.text
+          label: Y-Axis
+          description: Customize the y axis value.
+          placeholder: Enter number.

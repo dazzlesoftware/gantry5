@@ -1,0 +1,61 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div id="{{ id }}" class="g-panelslider {{ particle.class|e }}" data-panelslider-id="{{ id }}" data-panelslider-items="{{ particle.items_amount }}" data-panelslider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+    <div class="g-panelslider-carousel g-owlcarousel owl-carousel" data-panelslider-carousel-id="{{ id }}">
+        {% for panel in particle.items %}
+        <div class="tab">
+            {% if panel.icon %}
+            <i class="{{ panel.icon|e }}"></i>
+            {% endif %}
+            {% if panel.title %}
+            <div class="g-panelslider-carousel-title">
+                {{ panel.title }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="g-panelslider-slides g-owlcarousel owl-carousel" data-panelslider-slides-id="{{ id }}">
+        {% for item in particle.items %}
+        <div class="panel">
+            <img src="{{ url(item.image)|e }}" alt="{{ item.alt }}">
+
+            <div class="g-panelslider-slides-description">
+                <div class="g-panelslider-slides-description-content">
+                    {{ item.description }}
+                </div>
+                {% if item.signature1 or item.signature2 or item.avatar %}
+                <div class="g-panelslider-slides-description-footer">
+                    {% if item.avatar %}<img src="{{ url(item.avatar)|e }}" alt="{{ item.signature1 }}">{% endif %}
+                    <div class="g-panelslider-slides-description-signature">
+                        {% if item.signature1 %}
+                            <div class="g-panelslider-slides-description-line1">
+                                {{ item.signature1 }}
+                            </div>
+                        {% endif %}
+                        {% if item.signature2 %}
+                            <div class="g-panelslider-slides-description-line2">
+                                {{ item.signature2 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+<script src="{{ url('gantry-theme://js/panelslider.init.js') }}"></script>
+{% endblock %}

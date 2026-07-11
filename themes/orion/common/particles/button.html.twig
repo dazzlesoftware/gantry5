@@ -1,0 +1,11 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% if particle.target == "lightcase" %}
+{% do gantry.load('lightcase.init') %}
+{% endif %}
+{% block particle %}
+<div class="g-button">
+<a href="{{ particle.link }}" target="{{ particle.target|default('_self')|e }}" {% if particle.target == "lightcase" %}data-rel="lightcase"{% endif %} class="button {{ particle.class }}" title="{{ particle.label }}">
+{{ particle.label }}
+</a>
+</div>
+{% endblock %}

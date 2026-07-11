@@ -1,0 +1,9 @@
+hadron-theme:
+  title: 'Hadron Theme'
+  description: 'Sample menu for Hadron theme.'
+
+  items:
+    hadron:
+      title: 'Home'
+      layout: home
+      home: 1

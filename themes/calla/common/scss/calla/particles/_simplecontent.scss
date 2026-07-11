@@ -1,0 +1,119 @@
+.g-simplecontent {
+    h2.g-title {
+        padding: 0 0.6rem;
+        margin: 0;
+        display: inline-block;
+        color: $base-text-color;
+        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+        font-weight: $font-weight-semibold;
+        letter-spacing: 5px;
+        border-radius: $border-radius;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .g-simplecontent-item-created-date {
+        font-size: $core-font-size - 0.2;
+        text-transform: uppercase;
+    }
+    .g-simplecontent-item-content-title-bg {
+        @include responsive-font($responsive-font-size + 13, $core-font-size + 3, false, false);
+        font-weight: $font-weight-bold;
+        text-transform: lowercase;
+        position: absolute;
+        bottom: -6.5rem;
+        color: transparentize(saturate($accent-color-1, 10%), 0.50);
+        white-space: nowrap;
+        @include breakpoint(mobile-only) {
+            display: none;
+        }
+        @include breakpoint(tablet-range) {
+            display: none;
+        }
+    }
+    .g-simplecontent-layout-header {
+        padding: $content-padding * 3 0;
+        min-height: 40vw;
+
+        .g-simplecontent-item-content-title {
+            @include responsive-font($responsive-font-size + 2.5, $core-font-size + 1.3, false, false);
+            font-weight: $font-weight-bold;
+            color: $white;
+        }
+        .g-simplecontent-item-leading-content {
+            width: 30%;
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+        @include breakpoint(tablet-range) {
+            padding: 0;
+            min-height: 54vw;
+        }
+        @include breakpoint(mobile-only) {
+            padding: 0;
+            text-align: center;
+            min-height: initial;
+        }        
+    }
+    .g-simplecontent-item-content-title {
+        @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.2, false, false);
+        margin: ($content-margin - 0.1) 0;
+        font-weight: $font-weight-semibold;
+        line-height: $core-line-height - 0.5;
+        .g-simplecontent-layout-header & {
+            font-size: $h1-font-size;
+            font-weight: $font-weight-light;
+            line-height: $core-line-height;
+            @include breakpoint(desktop-range) {
+                font-size: $core-font-size + 1.75;
+            }
+            @include breakpoint(tablet-range) {
+                font-size: $core-font-size + 1.5;
+            }
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size + 1;
+            }
+        }
+    }
+    .g-simplecontent-item-author {
+        font-size: $core-font-size - 0.1;
+        font-weight: $font-weight-bold;
+        margin-bottom: $content-margin;
+    }
+    .g-simplecontent-item-leading-content {
+        @extend .g-lead;
+        margin-bottom: $content-margin;
+        font-weight: $font-weight-regular;
+        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+        .g-simplecontent-layout-header & {
+            font-size: $core-font-size + 0.9;
+        }
+    }
+    .g-simplecontent-item-main-content {
+        @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
+        margin: ($content-margin + $content-padding) 0;
+        .g-simplecontent-layout-header & {
+            font-size: $core-font-size;
+            margin-bottom: $content-margin * 2;
+        }
+    }
+    .g-simplecontent-item-readmore-container {
+        font-weight: $font-weight-semibold;
+        .g-simplecontent-layout-header & {
+            font-size: $core-font-size;
+        }
+    }
+    .g-simplecontent-item-author,
+    .g-simplecontent-item-created-date {
+        .g-simplecontent-layout-header & {
+            display: inline-block;
+            margin: 0;
+            padding-right: $content-padding;
+            font-family: get-font-family($font-family-default);
+            font-weight: $font-weight-light;
+            font-size: $core-font-size + 0.15;
+            line-height: $core-line-height + 0.5;
+            text-transform: none;
+        }
+    }
+}

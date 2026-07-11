@@ -1,0 +1,75 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
+{% endblock %}
+
+{% do gantry.load('lightcase.init') %}
+{% block particle %}
+
+<div id="{{ id }}" data-slider-id="{{ id }}">
+	<div class="g-slider swiper-container area {{ particle.class|e }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.autoplayTimeout }}" data-slider-speed="{{ particle.speed }}" data-slider-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %}>
+
+{% if not particle.patterns or particle.patterns == 'enabled' %}
+<div class="g-slider-patterns-left">
+	<svg viewbox="0 0 349 477" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M0 24L73.6122 66.5V151.5L0 194L-73.6122 151.5V66.5L0 24Z" class="base-pattern-3"/>
+		<path d="M110 99L140.311 116.5V151.5L110 169L79.6891 151.5V116.5L110 99Z" class="base-pattern-3"/>
+		<path d="M76 158L106.311 175.5V210.5L76 228L45.6891 210.5V175.5L76 158Z" class="base-pattern-2"/>
+		<path d="M187 133L260.612 175.5V260.5L187 303L113.388 260.5V175.5L187 133Z" class="base-pattern-1"/>
+		<path d="M55 407L85.3109 424.5V459.5L55 477L24.6891 459.5V424.5L55 407Z" class="base-pattern-1"/>
+		<path d="M264 0L337.612 42.5V127.5L264 170L190.388 127.5V42.5L264 0Z" class="base-pattern-2"/>
+		<path d="M298 158L328.311 175.5V210.5L298 228L267.689 210.5V175.5L298 158Z" class="base-pattern-3"/>
+	</svg>
+</div>
+<div class="g-slider-patterns-right">
+	<svg viewbox="0 0 673 403" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M671 213L744.612 255.5V340.5L671 383L597.388 340.5V255.5L671 213Z" class="base-pattern-2"/>
+		<path d="M594 80L667.612 122.5V207.5L594 250L520.388 207.5V122.5L594 80Z" class="base-pattern-1"/>
+		<path d="M561 239L591.311 256.5V291.5L561 309L530.689 291.5V256.5L561 239Z" class="base-pattern-3"/>
+		<path d="M626 22L656.311 39.5V74.5L626 92L595.689 74.5V39.5L626 22Z" class="base-pattern-3"/>
+		<path d="M593.5 0L608.655 8.75V26.25L593.5 35L578.345 26.25V8.75L593.5 0Z" class="base-pattern-2"/>
+	</svg>
+</div>
+{% endif %}
+
+		<div class="g-slider-carousel swiper-wrapper">
+		{% if not particle.source or particle.source == 'particle' %}
+			{% for item in particle.items %}
+				<div class="swiper-slide">
+					<div class="slide">
+						<div class="g-slider-carousel-content-wrapper">
+							{% if item.image %}
+								<img src="{{ url(item.image) }}" alt="{{ item.title }}" />
+							{% endif %}
+							<div class="g-slider-carousel-content">
+								<div class="g-slider-carousel-content-wrapper">
+									<h1>{{ item.title|raw }}</h1>
+									<p>{{ item.description|raw }}</p>
+									<a href="{{ item.link }}" target="{{ item.linktarget|default('_self') }}">
+										{{ item.link_text }}
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+            {% include '@particles/slider-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+		</div>
+        {% if not particle.pagination or particle.pagination == "enabled" %}
+			<div class="swiper-pagination"></div>
+        {% endif %}
+	</div>
+</div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+	{% do gantry.load('jquery') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do gantry.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
+{% endblock %}
+

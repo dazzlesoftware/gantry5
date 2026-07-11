@@ -1,0 +1,45 @@
+.g-promo {
+    position: relative;
+
+    h2,div {
+        position: relative;
+        z-index: 1;
+        color: $black;
+    }
+
+    h2 {
+        @include responsive-font($responsive-font-size + 1, $core-font-size + 0.1, false, false);
+    }
+
+    .g-promo-bgtitle {
+        position: absolute;
+        width: 112%;
+        top: -8rem;
+        z-index: 0;
+        height: 110%;
+        overflow: hidden;
+        left: 0;
+        opacity: 0.5;
+        padding: 0;
+        position: absolute;
+        font-weight: $font-weight-bold;
+        @include responsive-font($responsive-font-size + 10, $core-font-size + 4, false, false);
+        color: darken($accent-color-1, 10%);
+
+        .dir-rtl & {
+            left: auto;
+            right: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            top: -5rem;
+        }
+    }
+    a {
+        font-weight: $font-weight-bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

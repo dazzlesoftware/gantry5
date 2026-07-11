@@ -1,0 +1,19 @@
+.g-branding {
+    text-align: left;
+    white-space: nowrap;
+
+    .dir-rtl & {
+        text-align: right;
+    }
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+
+    a {
+        color: $base-text-color;
+        &:hover {
+            color: $accent-color-1;
+        }
+    }
+}

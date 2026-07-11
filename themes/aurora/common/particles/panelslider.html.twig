@@ -1,0 +1,175 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div id="{{ id }}" class="g-panelslider {{ particle.class|e }}" data-panelslider-id="{{ id }}" data-panelslider-items="{{ particle.displayitems }}" data-panelslider-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-panelslider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div class="g-panelslider-slides g-owlcarousel owl-carousel" data-panelslider-slides-id="{{ id }}">
+            {% if particle.source == 'joomla' %}
+
+                {# Load Content From Joomla #}
+                {% set article_settings = particle.article %}
+                {% set filter = article_settings.filter %}
+                {% set sort = article_settings.sort %}
+                {% set limit = article_settings.limit %}
+                {% set display = article_settings.display %}
+
+                {# Category Finder #}
+                {% set category_options = filter.categories ? {id: [filter.categories|split(','), 0]} : {} %}
+                {% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+                {# Content Finder #}
+                {% if filter.articles %}
+                    {% set article_options = filter.articles ? {id: [filter.articles|replace(' ', '')|split(',')]} : {} %}
+                    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+                {% else %}
+                    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+                {% endif %}
+
+                {% set featured = filter.featured|default('include') %}
+                {% if featured == 'exclude' %}
+                    {% do article_finder.featured(false) %}
+                {% elseif featured == 'only' %}
+                    {% do article_finder.featured(true) %}
+                {% endif %}
+
+                {% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+                {% set total = article_finder.count() %}
+                {% set articles = article_finder.find() %}
+
+                {% for article in articles %}
+                    <div class="panel">
+                        <div class="g-panelslider-slides-content-wrapper">
+                            {% if display.date.enabled or display.title.enabled %}
+                                <div class="g-panelslider-slides-title-wrapper">
+                                    {% if display.date.enabled  %}
+                                        <div class="g-panelslider-slides-title-topline">
+                                            {% if display.date.enabled == 'published' %}
+                                                {{ article.publish_up|date(display.date.format) }}
+                                            {% elseif display.date.enabled == 'modified' %}
+                                                {{ article.modified|date(display.date.format) }}
+                                            {% else %}
+                                                {{ article.created|date(display.date.format) }}
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if display.title.enabled and article.title %}
+                                        <div class="g-panelslider-slides-title">
+                                            {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
+                            {% if display.text.type %}
+                                {% set article_text = display.text.type == 'intro' ? article.introtext : article.text %}
+                                <div class="g-panelslider-slides-description">
+                                    <div class="g-panelslider-slides-description-content">
+                                        {% if display.text.formatting == 'text' %}
+                                            {{ article_text|truncate_text(display.text.limit)|raw }}
+                                        {% else %}
+                                            {{ article_text|truncate_html(display.text.limit)|raw }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if display.read_more.enabled %}
+                            <div class="g-panelslider-panel-link">
+                                <a class="button button-3 button-white {{ display.read_more.css }}" href="{{ article.route|e }}">{{ display.read_more.label|default('Read More...') }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            {% else %}
+
+                {% for item in particle.items %}
+                    <div class="panel">
+                        <div class="g-panelslider-slides-content-wrapper">
+                            {% if item.topline or item.title %}
+                            <div class="g-panelslider-slides-title-wrapper">
+                                {% if item.topline %}
+                                    <div class="g-panelslider-slides-title-topline">
+                                        {{ item.topline|raw }}
+                                    </div>
+                                {% endif %}
+
+                                {% if item.title %}
+                                    <div class="g-panelslider-slides-title">
+                                        {{ item.title|raw }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+
+                            <div class="g-panelslider-slides-description">
+                                <div class="g-panelslider-slides-description-content">
+                                    {{ item.description|raw }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if item.link is not empty %}
+                            <div class="g-panelslider-panel-link">
+                                <a class="button button-3 button-white" href="{{ url(item.link)|e }}" target="{{ item.linktarget|default('_self')|e }}">{{ item.linklabel|default('Read more')|e }}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+        </div>
+
+        <div class="g-panelslider-carousel g-owlcarousel owl-carousel" data-panelslider-carousel-id="{{ id }}">
+            {% if particle.source == 'joomla' %}
+
+                {% for article in articles %}
+                    <div class="tab">
+                        {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                            {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                                {% set article_image = article.images.image_intro %}
+                            {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                                {% set article_image = article.images.image_fulltext %}
+                            {% endif %}
+
+                            <img src="{{ url(article_image|e) }}" alt="{{ article.title|e }}">
+                        {% endif %}
+
+                        {% if display.title.enabled and article.title %}
+                            <div class="g-panelslider-carousel-title">
+                                {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            {% else %}
+
+                {% for panel in particle.items %}
+                    <div class="tab">
+                        {% if panel.image %}
+                            <img src="{{ url(panel.image)|e }}" alt="{{ panel.title|e }}">
+                        {% endif %}
+
+                        {% if panel.title %}
+                            <div class="g-panelslider-carousel-title">
+                                {{ panel.title|raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+<script src="{{ url('gantry-theme://js/panelslider.init.js') }}"></script>
+{% endblock %}

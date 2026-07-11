@@ -1,0 +1,127 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+	{% if particle.title %}
+	<h2 class="g-title">{{ particle.title|e }}</h2>
+	{% endif %}
+
+	<div class="g-promocontent {{ particle.class|e }}">
+		{% set readmoreInline %}
+			{% if particle.link and particle.linkstyle == 'inline' %}
+			<a href="{{ particle.link|e }}" class="button {{ particle.readmoreclass|e }}">{{ particle.readmore|raw }}</a>
+			{% endif %}
+		{% endset %}
+		{% if particle.link and particle.linkstyle == 'aside' %}
+		<div class="g-inline-action-content"><div class="g-inline-action-text">
+		{% endif %}
+
+		{% if particle.tags %}
+		<ul class="g-tags">
+		{% for tag in particle.tags %}
+			<li>
+				{% if tag.link %}
+				<a href="{{ tag.link|e }}">
+				{% endif %}
+					{% if tag.icon %}
+					<i class="{{ tag.icon|e }}"></i>
+					{% endif %}
+					{{ tag.text|e }}
+				{% if tag.link %}
+				</a>
+				{% endif %}
+			</li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+
+		{% if particle.promostyle == 'standard' and particle.title %}
+		<h2 class="g-title">{{ particle.promo|raw }}</h2>
+		{{ readmoreInline }}
+		{% endif %}
+
+		{% if particle.promostyle == 'promo' %}
+		<div class="g-promo">{{ particle.promo|raw }}</div>
+		{{ readmoreInline }}
+		{% endif %}
+
+		{% if particle.promostyle == 'superpromo' %}
+		<h2 class="g-superpromo">
+			{% if particle.link %}
+			<a href="{{ particle.link|e }}">
+			{% endif %}
+				{{ particle.promo|raw }}
+			{% if particle.link %}
+			</a>
+			{% endif %}
+		</h2>
+		{{ readmoreInline }}
+		{% endif %}
+
+		{% if particle.promostyle == 'subpromo' %}
+		<div class="g-subpromo">
+			<span>{{ particle.promo|raw }}</span>
+			{{ readmoreInline }}
+		</div>
+		{% endif %}
+
+		{% if particle.desc or particle.desc2 or particle.regularlinktext %}
+		<div class="g-promocontent-desc-wrapper">
+			{% if particle.desc or particle.desc2 %}
+				{% if particle.descanimation == 'typewriter' %}
+					<span id="{{ particle.animationElementID|e }}-strings" style="display: none;">
+						{% if particle.desc %}<span>{{ particle.desc|raw }}</span>{% endif %}
+						{% if particle.desc2 %}<span>{{ particle.desc2|raw }}</span>{% endif %}
+					</span>
+					<span id="{{ particle.animationElementID|e }}" class="g-textpromo g-textpromo-typed"></span>
+				{% else %}
+					<span class="g-textpromo">
+						{% if particle.desc %}{{ particle.desc|raw }}{% endif %}
+						{% if particle.desc2 %}{{ particle.desc2|raw }}{% endif %}
+					</span>
+				{% endif %}
+			{% endif %}
+		</div>
+		<div>
+			{% if particle.regularlinktext %}
+			<a class="g-readon" href="{{ particle.regularlinkurl|e }}">{{ particle.regularlinktext|raw }}</a>
+			{% endif %}
+		</div>
+		{% endif %}
+
+		{% if particle.link and particle.linkstyle == 'aside' %}
+		</div>
+		<div class="g-inline-action-button">
+		{% endif %}
+
+		{% if particle.link and (particle.linkstyle == 'block' or particle.linkstyle == 'aside') %}
+		<a href="{{ particle.link|e }}" class="button {{ particle.readmoreclass|e }}">{{ particle.readmore|raw }}</a>
+		{% endif %}
+
+		{% if particle.link and particle.linkstyle == 'aside' %}
+		</div></div>
+		{% endif %}
+	</div>
+
+  {% if particle.descanimation == 'typewriter' %}
+  	<script>
+  	    jQuery(function(){
+  	        var typed = new Typed('#{{ particle.animationElementID|e }}', {
+  	            stringsElement: '#{{ particle.animationElementID|e }}-strings',
+  	            typeSpeed: {{ particle.typespeed|default('20') }},
+  	            backSpeed: {{ particle.backspeed|default('20') }},
+  	            startDelay: {{ particle.startdelay|default('500') }},
+  	            backDelay: {{ particle.backdelay|default('700') }},
+  	        });
+  	    });
+  	</script>
+  {% endif %}
+
+{% endblock %}
+
+{% block javascript_footer %}
+  {% if particle.descanimation == 'typewriter' %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/typed.min.js') }}"></script>
+  {% endif %}
+{% endblock %}

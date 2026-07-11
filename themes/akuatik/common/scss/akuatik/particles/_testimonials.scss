@@ -1,0 +1,379 @@
+.g-testimonials {
+    position: relative;
+    border-radius: 10px;
+
+    &::before {
+        position: absolute;
+        content: '';
+        background: $accent-color-3;
+        height: 65%;
+        top: 50%;
+        width: 100%;
+        left: 0;
+        transform: translateY(-50%);
+        border-radius: 10px;
+
+        .tilt & {
+            transform: rotate(-1deg) translateY(-50%);
+        }
+
+        .dir-rtl.tilt & {
+            transform: rotate(1deg) translateY(-50%);
+        }
+
+        @include breakpoint(large-desktop-range) {
+            height: 75%;
+        }
+    }
+
+    .g-testimonials-header {
+        padding-left: $content-padding * 2;
+
+        .dir-rtl & {
+            padding-right: $content-padding * 2;
+            padding-left: 0;
+        }
+
+        .g-testimonials-title {
+            font-weight: $font-weight-bold;
+            font-size: $core-font-size;
+        }
+    }
+
+    .g-testimonials-container {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+        @include display (flex);
+    }
+
+    .swiper-slide {
+        font-size: 18px;
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .g-testimonials-image {
+        width: 40%;
+        height: 85%;
+        display: block;
+        position: absolute;
+        left: 4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 10px;
+        overflow: hidden;
+
+        .tilt & {
+            transform: rotate(1deg) translateY(-50%);
+        }
+
+        .dir-rtl & {
+            left: auto;
+            right: 4rem;
+        }
+
+        .dir-rtl.tilt & {
+            transform: rotate(-1deg) translateY(-50%);
+        }
+
+        @include breakpoint(desktop-range) {
+            width: 50%;
+            height: 82%;
+        }
+
+        @include breakpoint(mobile-only) {
+            width: 50%;
+            height: 72%;
+            left: 8%;
+
+            .dir-rtl & {
+                left: auto;
+                right: 8%;
+            }
+        }
+
+        @include breakpoint(small-mobile-range) {
+            width: 80%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .g-testimonials-wrapper {
+        right: 5%;
+        width: 60%;
+        position: absolute;
+        z-index: 10;
+
+        .tilt & {
+            transform: rotate(-.5deg);
+        }
+
+        .dir-rtl & {
+            left: 5%;
+            right: auto;
+        }
+
+        .dir-rtl.tilt & {
+            transform: rotate(.5deg);
+        }
+
+        @include breakpoint(tablet-range) {
+            right: 0;
+
+            h2 {
+                margin-bottom: 1rem;
+            }
+
+            .dir-rtl & {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            width: 70%;
+            right: 15%;
+
+            .dir-rtl & {
+                left: 8%;
+                right: auto;
+            }
+        }
+    }
+
+    .g-testimonials-content {
+        color: $white;
+        line-height: $core-line-height *.9;
+        font-style: italic;
+        font-weight: $font-weight-medium;
+        width: 80%;
+        margin-bottom: 2rem;
+        @include responsive-font($responsive-font-size + 1, $core-font-size + 0.2, false, false);
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+        }
+    }
+
+    .g-testimonials-author {
+        position: absolute;
+        right: 25%;
+        left: auto;
+        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+        margin: 0;
+        color: $accent-color-2;
+        text-shadow: 0 0 3px $black;
+
+        .dir-rtl & {
+            left: 25%;
+            right: auto;
+        }
+
+        @include breakpoint(mobile-only) {
+            right: 10%;
+
+            .dir-rtl & {
+                left: 10%;
+                right: auto;
+            }
+        }
+    }
+
+    .g-testimonials-pagination {
+        display: flex;
+        flex-direction: column;
+        margin-left: $content-padding;
+        position: absolute;
+        height: 60%;
+        z-index: 10;
+        margin-top: -0.5rem;
+        align-self: center;
+
+        @include breakpoint(large-desktop-range) {
+            margin-top: 1.25rem;
+            height: 70%;
+        }
+
+        .swiper-pagination {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .swiper-pagination-bullets {
+            margin-left: 7px;
+
+            .dir-rtl & {
+                margin-right: 7px;
+                margin-left: 0;
+            }
+
+            .swiper-pagination-bullet {
+                border-color: lighten($accent-color-2, 10%);
+                width: 10px;
+                height: 10px;
+                background: transparent;
+                opacity: 1;
+                border: 1px solid $white;
+                margin-bottom: 1.5rem;
+            }
+
+            .swiper-pagination-bullet-active {
+                background: lighten($accent-color-2, 10%);
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            display: none;
+        }
+
+        .dir-rtl & {
+            margin-right: $content-padding;
+            margin-left: 0;
+        }
+
+        .swiper-button-prev {
+            margin-top: 0;
+            position: relative;
+            width: 10px;
+            height: 44px;
+            z-index: 10;
+            cursor: pointer;
+            margin-bottom: 2rem;
+            top: 0;
+            color: lighten($accent-color-2, 10%);
+            flex: 0 auto;
+            font-size: 2rem;
+            left: auto;
+            display: block;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:after {
+                content: none;
+            }
+
+            .dir-rtl & {
+                right: auto;
+            }
+        }
+
+        .swiper-pagination {
+            flex: 1 0 auto;
+            justify-content: center;
+        }
+
+        .swiper-button-next {
+            position: relative;
+            width: 10px;
+            height: 44px;
+            z-index: 10;
+            cursor: pointer;
+            margin-top: 2rem;
+            bottom: 0;
+            color: lighten($accent-color-2, 10%);
+            flex: 0 auto;
+            font-size: 2rem;
+            top: auto;
+            right: auto;
+            display: block;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:after {
+                content: none;
+            }
+
+            .dir-rtl & {
+                left: auto;
+            }
+        }
+    }
+
+    .mobile-nav-wrapper {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: none;
+        color: lighten($accent-color-2, 10%);
+        align-items: center;
+
+        @include breakpoint(mobile-only) {
+            display: flex;
+        }
+
+        .swiper-button-next {
+            position: absolute;
+            top: 50%;
+            right: 4%;
+            margin: 0 0;
+            color: $white;
+            width: auto;
+            height: auto;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:after {
+                content: none !important;
+            }
+
+            .dir-rtl & {
+                left: auto;
+            }
+
+            .fa {
+                font-size: $core-font-size + 1;
+            }
+        }
+
+        .swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            left: 4%;
+            margin: 0 0;
+            color: $white;
+            width: auto;
+            height: auto;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:after {
+                content: none !important;
+            }
+
+            .dir-rtl & {
+                right: auto;
+            }
+
+            .fa {
+                font-size: $core-font-size + 1;
+            }
+        }
+    }
+
+    .swiper-wrapper {
+        padding-bottom: $content-padding;
+    }
+}

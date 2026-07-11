@@ -1,0 +1,46 @@
+#g-bottom {
+    color: $bottom-text-color;
+    background: $bottom-background;
+    @extend .section-paddings;
+
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-layout-header {
+            margin: 0 auto;
+            width: 50%;
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+
+            .g-simplecontent-item-content-title {
+                color: $white;
+                font-size: $core-font-size + 2;
+                @include breakpoint(mobile-only) {
+                 font-size: $core-font-size + 1;
+                }
+            }
+
+            .g-simplecontent-item-leading-content {
+                color: $bottom-text-color;
+                font-size: $core-font-size + 0.4;
+                @include breakpoint(mobile-only) {
+                  font-size: $core-font-size + 0.2;
+                }
+            }
+        }
+    }
+    .g-infolist-item-desc {
+        color: lighten($bottom-text-color, 40%);
+    }
+    .g-infolist-item-title {
+        color: lighten($bottom-text-color, 80%);
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

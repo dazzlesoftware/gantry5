@@ -1,0 +1,13 @@
+.g-promo {
+   display: flex;
+   justify-content: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   align-items: center;
+   height: 100%;
+   padding: $content-padding * 2;
+   color: set-color($base-background);
+   @include responsive-font($responsive-font-size + 1.5, $core-font-size + 1, false, false);
+   font-weight: $font-weight-bold;
+   text-align: center;
+}

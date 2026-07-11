@@ -1,0 +1,15 @@
+name: Aside Colors
+description: Aside colors for the Lexicon theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#262a2f"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

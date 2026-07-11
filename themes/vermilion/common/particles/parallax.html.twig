@@ -1,0 +1,17 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/enllax.js')) %}
+
+    <script>
+        function setAttributes(el, attrs) {
+          for(var key in attrs) {
+            el.setAttribute(key, attrs[key]);
+          }
+        }
+        {% for item in particle.items %}
+        setAttributes(document.getElementById("g-{{ item.section|lower|default('page-surround')|replace({'g-': '', '#': ''}) }}"), {"data-enllax-type": "{{ item.type|default('background') }}", "data-enllax-ratio": "{{ item.ratio|default('0.5') }}", "data-enllax-direction": "{{ item.direction|default('vertical') }}"});
+        {% endfor %}
+    </script>
+{% endblock %}

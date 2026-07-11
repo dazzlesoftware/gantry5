@@ -1,0 +1,68 @@
+#g-bottom {
+	background: $bottom-background;
+	color: $bottom-text-color;
+
+	// Container
+	.g-container {
+		padding: ($content-margin + $content-padding)*2 0;
+        @include breakpoint(mobile-only) {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        } 		
+	}
+
+	// Block
+	.g-block {
+		> .g-content {
+			margin: 0 $content-margin;
+			padding: 0 $content-padding;
+            font-size: $core-font-size - 0.125;
+			line-height: $core-line-height - 0.125;
+			p {
+				margin-bottom: 0.5rem;
+			}
+		}
+		.dir-ltr & {
+			border-right: 1px solid lighten($bottom-background, 5%);
+			&:last-child {
+				border-right: 0;
+			}
+			@include breakpoint(mobile-only) {
+				border: 0;
+			}
+		}
+		.dir-rtl & {
+			border-left: 1px solid lighten($bottom-background, 5%);
+			&:first-child {
+				border-left: 0;
+			}
+			@include breakpoint(mobile-only) {
+				border: 0;
+			}
+		}
+	}
+
+	// Hyperlinks
+	a {
+		color: lighten($bottom-text-color, 35%);
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+
+	// Title
+    .g-title {
+    	color: lighten($bottom-text-color, 50%);
+        @include breakpoint(mobile-only) {
+          margin-top: 1rem;
+          margin-bottom: 0;
+        }
+    }	
+}
+
+@media print {
+	#g-bottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

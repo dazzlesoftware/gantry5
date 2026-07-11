@@ -1,0 +1,87 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-latestnews" data-latestnews-id="{{ id }}">
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-latestnews-header">
+                {% if particle.title %}
+                    <div class="g-latestnews-title">
+                        {% if particle.uppertitle %}
+                            <span class="g-latestnews-uppertitle">{{ particle.uppertitle|raw }}</span>
+                        {% endif %}
+                        {{ particle.title }}
+                    </div>
+                {% endif %}
+
+                {% if particle.cases|length > 1 %}
+                    <div class="g-latestnews-nav">
+                        <div class="g-latestnews-nav-container">
+                            <i aria-hidden="true" class="fa fa-bars"></i>
+                            {% if particle.allitems %}
+                                <div class="g-latestnews-nav-item {% if particle.selected == 'all' %}selected{% endif %}" data-group="all">
+                                    {{ particle.allitems|default('all')|e }}
+                                </div>
+                            {% endif %}
+                            {% for item in particle.cases %}
+                                <div class="g-latestnews-nav-item {% if particle.selected == 'first' %}{% if loop.first %}selected{% endif %}{% endif %}" data-group="{{ loop.index }}">
+                                    {{ item.title }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+
+            <div class="g-latestnews-grid {{ particle.cols }}">
+                <div class="g-latestnews-grid-sizer"></div>
+                {% for case in particle.cases %}
+                    {% set case_index = loop.index %}
+                    {% for item in case.items %}
+                        <div class="g-latestnews-grid-item {{ item.class }}" data-groups='["{{ case_index }}"]'>
+                            <div class="g-latestnews-grid-item-wrapper">
+                                {% if item.image %}
+                                    <div class="g-latestnews-grid-item-image">
+                                        <img src="{{ url(item.image)|e }}" alt="{{ item.title }}"/>
+                                    </div>
+                                {% endif %}
+
+                                <div class="g-latestnews-grid-item-content">
+                                    {% if item.title %}
+                                        <div class="g-latestnews-grid-item-title">
+                                            <span>{{ item.title }}</span>
+                                        </div>
+                                    {% endif %}
+                                    {% if item.description %}
+                                        <div class="g-latestnews-grid-item-description">
+                                            {{ item.description|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.date is not iterable %}
+                                        <div class="g-latestnews-grid-item-date">
+                                            <span>{{ item.date|date(particle.date_formats) }}</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                {% if item.url %}
+                                    <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}" class="g-latestnews-link-overlay"></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% else %}
+            {% include '@particles/latestnews-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+    </div>
+{% endblock %}
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/latestnews.init.js') }}"></script>
+{% endblock %}
+

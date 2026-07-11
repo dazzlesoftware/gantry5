@@ -1,0 +1,32 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+
+    // Grid Vertical Alignment
+    .g-grid {
+        align-items: center;
+    }
+
+    a {
+        color: $extension-text-color;
+    }
+
+    .g-simplecontent-item-main-content {
+        color: transparentize($slideshow-text-color, 0.30);
+    }
+
+    .g-simplecontent-item-leading-content {
+        color: transparentize($white, 0.20);
+    }
+
+    .g-infolist .g-infolist-item-icon {
+        @include responsive-font($responsive-font-size + 1, $core-font-size + 0.8, false, false);
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

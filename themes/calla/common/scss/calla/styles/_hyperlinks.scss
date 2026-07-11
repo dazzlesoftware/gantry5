@@ -1,0 +1,13 @@
+a {
+    @if (lightness($accent-color-1) > 90%) {
+        color: darken($accent-color-1, 30%);
+    } @else {
+        color: $accent-color-1;
+    }
+
+    transition: all 0.2s;
+
+    &:hover {
+        color: inherit;
+    }
+}

@@ -1,0 +1,9 @@
+clarity-theme:
+  title: 'Clarity Theme'
+  description: 'Sample menu for Clarity theme.'
+
+  items:
+    clarity:
+      title: 'Home'
+      outline: home
+      home: 1

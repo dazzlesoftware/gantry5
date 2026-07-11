@@ -1,0 +1,181 @@
+name: Ethereal Block
+description: Display content in the Ethereal Block.
+type: particle
+icon: fa-indent
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particles.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    left:
+      type: input.text
+      label: Left Size
+      description: Left block size in percentages (5-100).
+      placeholder: Enter percentages (5-100)
+      append:
+        type: "text"
+        text: "%"
+
+    right:
+      type: input.text
+      label: Right Size
+      description: Right block size in percentages (5-100).
+      placeholder: Enter percentages (5-100)
+      append:
+        type: "text"
+        text: "%"
+
+
+    image1:
+      type: input.imagepicker
+      label: Image 1
+      description: Select desired image.
+
+    title1:
+      type: input.text
+      label: Title 1
+      description: Customize the title text.
+      placeholder: Enter title
+
+    desc1:
+      type: textarea.textarea
+      label: Description 1
+      description: Customize the description.
+      placeholder: Enter short description
+
+    link1:
+      type: input.text
+      label: Link 1
+      description: Specify the link address.
+
+    listgriditems1:
+      type: collection.list
+      array: true
+      label: Icon Lists 1
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          skip: true
+        .icon:
+          type: input.icon
+          label: Icon
+        .text:
+          type: input.text
+          label: Text
+
+    image2:
+      type: input.imagepicker
+      label: Image 2
+      description: Select desired image.
+
+    title2:
+      type: input.text
+      label: Title 2
+      description: Customize the title text.
+      placeholder: Enter title
+
+    desc2:
+      type: textarea.textarea
+      label: Description 2
+      description: Customize the description.
+      placeholder: Enter short description
+
+    link2:
+      type: input.text
+      label: Link 2
+      description: Specify the link address.
+
+    readmore2:
+      type: input.text
+      label: Readmore Text
+      description: Specify the readmore text.
+
+    icon2:
+      type: input.icon
+      label: Readmore Icon
+      description: Specify the readmore icon.
+
+    desc3:
+      type: textarea.textarea
+      label: Description 3
+      description: Customize the description.
+      placeholder: Enter short description
+
+    link3:
+      type: input.text
+      label: Link 3
+      description: Specify the link address.
+
+    listgriditems3:
+      type: collection.list
+      array: true
+      label: Icon Lists 3
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          skip: true
+        .icon:
+          type: input.icon
+          label: Icon
+        .text:
+          type: input.text
+          label: Text
+
+    image4:
+      type: input.imagepicker
+      label: Image 4
+      description: Select desired image.
+
+    link4:
+      type: input.text
+      label: Link 4
+      description: Specify the link address.
+
+    listgriditems4:
+      type: collection.list
+      array: true
+      label: Icon Lists 4
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          skip: true
+        .icon:
+          type: input.icon
+          label: Icon
+        .text:
+          type: input.text
+          label: Text

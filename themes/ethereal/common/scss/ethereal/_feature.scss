@@ -1,0 +1,94 @@
+%g-swiper-flex {
+    display: -webkit-flex;
+    min-width: 0;
+
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        /* webkit specific CSS */
+        height: auto !important;
+    }
+}
+
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+    position: relative;
+    z-index: 14;
+	.g-triangle {
+		margin-top: -100px;
+	}
+    // Swiper
+    .g-feature-swiper-content,
+	.g-triangle-block {
+        margin-top: -28vh;
+		@include breakpoint(mobile-only) {
+			margin-top: 0;
+		}
+        .g-content, .g-swiper {
+            height: 100%;
+        }
+    }
+    .gallery-top .swiper-slide {
+        &:before {
+            background: fade-out(shade($feature-background, 35%), 0.15);
+            .g-style-preset7 &, .g-style-preset8 &, .g-style-preset9 &, .g-style-preset10 & {
+                background: rgba(0, 0, 0, 0.85);
+            }
+        }
+    }
+    .swiper-slide-content-list {
+    	.g-tag {
+    		opacity: 0.5;
+			font-weight: normal;
+    	}
+    	.g-headline a {
+    		color: darken($feature-text-color, 85%);
+    		&:hover {
+    			color: $accent-color-1;
+    		}
+    	}
+		p {
+			margin: 0.3rem 0 1rem;
+			color: darken($feature-text-color, 50%);
+		}
+    }
+    .swiper-slide-content {
+        margin-top: 10rem;
+    }
+    // Flex
+    .g-feature-swiper-content {
+        @extend %g-swiper-flex;
+        > .g-content {
+            -webkit-flex-wrap: wrap;
+            display: flex;
+        }
+        .g-block {
+            display: -webkit-flex;
+            &.g-triangle-block {
+                .g-content {
+                    margin: 0 auto !important;
+                }
+            }
+        }
+        .g-content,
+        .g-swiper {
+            @extend %g-swiper-flex;
+        }
+        .swiper-container.gallery-top {
+            @extend %g-swiper-flex;
+            .swiper-wrapper,
+            .swiper-slide {
+                @extend %g-swiper-flex;
+            }
+        }
+        .swiper-container.gallery-thumbs {
+            left: 0;
+        }
+    }
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

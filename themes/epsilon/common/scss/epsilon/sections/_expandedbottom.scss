@@ -1,0 +1,91 @@
+#g-expandedbottom {
+    color: $expandedbottom-text-color; 
+	background: $expandedbottom-background;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: darken($expandedbottom-text-color, 15%);
+	}
+}
+
+[class^="rt-arrow-"]:before {
+    font-family: FontAwesome;
+    font-size: 6em;
+    font-style: normal;
+    color: $white;
+    position: absolute;
+    visibility: hidden;
+}
+.rt-arrow-right:before {
+    content: "\f0da";
+    right: -8px;
+    top: 50%;
+    margin-top: -10px;
+}
+.rt-arrow-left:before {
+    content: "\f0d9";
+    left: -8px;
+    top: 50%;
+    margin-top: -10px;
+}
+.rt-arrow-bottom:before {
+    content: "\f0d7";
+    bottom: -23px;
+    left: 50%;
+    margin-left: -25px;
+}
+
+.icon-quote-left:before {
+    content: "\f10d";
+}
+
+.icon-quote-right:before {
+    content: "\f10e";
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: FontAwesome, sans-serif;
+}
+
+.rt-testimonial-item {
+	color: $grey;
+	background: darken($white, 1%);
+	border: 1px solid darken($white, 10%);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+	position: relative;
+	z-index: 10;
+    padding: 25px;
+	font-size: 14px;
+	font-style: italic;
+    [class^="rt-arrow-"]:before {
+		visibility: visible;
+		color: darken($white, 1%);
+		text-shadow: 0 3px 3px darken($white, 10%);
+    }
+    [class^="icon-quote-"]:before {
+		color: lighten($grey, 35%);
+    }
+}
+[class^="rt-testimonial-"] {
+	display: block;
+}
+.rt-testimonial {
+	&-img {
+		margin: 50px 0 15px 0;
+	}
+	&-author {
+        font-family: get-font-family($font-family-light);
+	    font-size: 1.5em;
+	    line-height: 1em;
+	}
+	&-position {
+		color: lighten($grey, 15%);
+		font-size: 0.8em;
+	}
+}
+
+@media print {
+	#g-expandedbottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

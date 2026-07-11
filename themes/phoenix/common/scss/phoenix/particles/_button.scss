@@ -1,0 +1,12 @@
+.g-button {
+    white-space: nowrap;
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+    @include breakpoint(tablet-range) {
+        margin-left: -4rem;
+    }
+    a {
+        margin: 0;
+    }
+}

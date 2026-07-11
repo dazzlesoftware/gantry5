@@ -1,0 +1,157 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _offline
+  timestamp: 1455299525
+layout:
+  /offsidebar/: {  }
+  /top/:
+    -
+      - system-messages-6543
+  /navigation/:
+    -
+      - logo-7061
+  /slideshow/: {  }
+  /header/:
+    -
+      - infolist-8012
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-5841
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - blockcontent-9848
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-7159 25'
+      - 'copyright-3234 50'
+      - 'totop-8262 25'
+  /offcanvas/: {  }
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-navigation-light
+  slideshow:
+    type: section
+    attributes:
+      boxed: '0'
+  header:
+    attributes:
+      boxed: '0'
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-7061:
+    block:
+      class: center
+  infolist-8012:
+    title: Offline
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Sorry, We are Down for Maintenance'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: Offline
+    block:
+      variations: center
+  blockcontent-9848:
+    title: 'Maintenance Mode'
+    attributes:
+      class: center
+      headline: 'Maintenance Mode'
+      description: 'Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.'
+      linkclass: button-2
+  copyright-3234:
+    block:
+      class: center
+  totop-8262:
+    title: 'To Top'
+    block:
+      class: align-right

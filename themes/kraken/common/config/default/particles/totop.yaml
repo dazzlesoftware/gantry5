@@ -1,0 +1,5 @@
+enabled: '1'
+css:
+class: totop
+icon: 'fa fa-arrow-circle-o-up fa-2x'
+content: ''

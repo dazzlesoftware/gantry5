@@ -1,0 +1,85 @@
+.g-topiclist {
+    .g-topiclist-topics {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 -($content-margin);
+
+        @include breakpoint(small-mobile-range) {
+            flex-direction: column;
+        }
+
+        .g-topiclist-topic {
+            padding: $content-padding $content-margin;
+            flex: 50%;
+
+            @include breakpoint(small-mobile-range) {
+                flex: 100%;
+            }
+
+            a {
+                color: $black;
+                @include responsive-font($responsive-font-size + 0.8, $core-font-size + 0.5, false, false);
+            }
+
+            span {
+                color: $accent-color-2;
+                display: block;
+                font-weight: $font-weight-bold;
+            }
+        }
+    }
+
+    .g-topiclist-featured {
+        display: flex;
+        @include breakpoint(mobile-only) {
+            flex-direction: column;
+        }
+
+        margin-bottom: $content-padding * 2;
+
+        h3 {
+            color: $accent-color-1;
+            font-weight: $font-weight-regular;
+            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+            letter-spacing: 3px;
+        }
+
+        a {
+            color: $black;
+            @include responsive-font($responsive-font-size + 0.8, $core-font-size + 0.5, false, false);
+        }
+
+        img {
+            max-width: 20%;
+            @include breakpoint(mobile-only) {
+                max-width: 100%;
+                height: auto;
+            }
+    
+        }
+
+        span {
+            color: $accent-color-2;
+            display: block;
+            font-weight: $font-weight-bold;
+        }
+
+        .g-topiclist-featured-content {
+            padding-left: $content-padding * 2;
+
+            .dir-rtl & {
+                padding-left: 0;
+                padding-right: $content-padding * 2;
+
+                @include breakpoint(mobile-only) {
+                    padding-right: 0;
+                }
+            }
+
+            @include breakpoint(mobile-only) {
+                padding-left: 0;
+            }
+        }
+    }
+}

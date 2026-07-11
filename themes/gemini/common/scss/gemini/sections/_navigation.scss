@@ -1,0 +1,31 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    @extend .section-paddings;
+
+    // Simple Menu Particle
+    .g-navigation-simplemenu {
+        a {
+            color: $navigation-text-color;
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+
+    @if $navigation-background-image {
+        background: url($navigation-background-image) no-repeat center center;
+        background-size: cover;
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

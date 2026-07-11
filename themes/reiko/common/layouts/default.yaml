@@ -1,0 +1,279 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.jpg'
+  name: default
+  timestamp: 1533902282
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-2704 20'
+      - 'menu-2872 60'
+      - 'social-3096 20'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /feature/:
+    -
+      - position-position-7980
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-9414
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/:
+    -
+      - simplemenu-2324
+  /copyright/:
+    -
+      - copyright-6444
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      variations: section-horizontal-paddings
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      variations: section-horizontal-paddings
+  header:
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      variations: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      variations: section-horizontal-paddings
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  logo-2704:
+    title: 'Logo / Image'
+    attributes:
+      image: 'gantry-media://logo/logo.svg'
+      link: '1'
+      text: Reiko
+      title: ''
+      class: 'g-logo g-logo-reiko'
+  menu-2872:
+    block:
+      variations: center
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  simplemenu-2324:
+    title: 'Simple Menu'
+    attributes:
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Privacy Policy'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: 'Terms & Conditions'
+            -
+              icon: ''
+              link: '#'
+              target: _blank
+              title: Cookies
+          title: Terms
+        -
+          items:
+            -
+              title: Cookies
+            -
+              title: 'Browser Support'
+            -
+              title: Help
+          title: Technical
+        -
+          items:
+            -
+              title: 'RSS Updates'
+            -
+              title: 'Email Newsletter'
+          title: Updates
+        -
+          items:
+            -
+              title: Facebook
+            -
+              title: Twitter
+            -
+              title: Instagram
+            -
+              title: Youtube
+          title: Social
+        -
+          items:
+            -
+              title: Anti-Slavery
+            -
+              title: Accessibility
+            -
+              title: 'Contact us'
+          title: Other
+  copyright-6444:
+    attributes:
+      date:
+        start: ''
+        end: ''
+      owner: 'Copyright 2019 by RocketTheme. All rights reserved. <br />Content images may be available for download at Unsplash.com. Use the Reiko RocketLauncher to install a demo equivalent onto your site.'
+    block:
+      variations: center
+  mobile-menu-2576:
+    title: 'Mobile Menu'

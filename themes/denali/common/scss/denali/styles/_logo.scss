@@ -1,0 +1,24 @@
+.g-logo {
+    font-weight: $font-weight-black;
+    @include responsive-font($responsive-font-size + 1, $core-font-size + 1.5, false, false);
+    line-height: $core-line-height;
+    box-shadow: none !important;
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    span {
+        color: $accent-color-1;
+    }
+
+    img {
+        .dir-rtl & {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+    }
+}

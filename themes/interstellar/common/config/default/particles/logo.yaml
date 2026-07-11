@@ -1,0 +1,5 @@
+enabled: '1'
+url: ''
+image: 'gantry-media://logo/logo.svg'
+text: ''
+class: g-logo

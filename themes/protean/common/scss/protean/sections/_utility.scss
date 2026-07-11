@@ -1,0 +1,12 @@
+#g-utility {
+    color: $utility-text-color;
+    background: $utility-background;
+    @extend .section-paddings;
+}
+
+@media print {
+    #g-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

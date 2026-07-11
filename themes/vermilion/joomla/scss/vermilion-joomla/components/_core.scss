@@ -1,0 +1,55 @@
+.breadcrumb {
+  	> li {
+   		text-shadow: none;
+  	}
+}
+
+.rt-nomodulecontent {
+	div, p {
+		display: none;
+	}
+}
+
+#login-form {
+	.btn {
+		box-shadow: none;
+	}
+}
+
+.g-search {
+	input {
+		width: 100%;
+	}
+}
+
+.g-offline {
+	#rt-authorized-form {
+		#form-login {
+			#form-login-username {
+				margin-bottom: 0;
+			}
+			#form-login-password, #form-login-username {
+				label {
+					display: block;
+				}
+			}	
+		} 
+	}
+	#frame {
+		padding: 0;
+	}
+	#submit-buton {
+		input.button {
+			background-color: $accent-color-1;
+			&:hover {
+				background-color: $accent-color-1;
+			}
+		}
+	}
+}
+
+#g-top {
+	.rt-nomodulecontent {
+		padding: 5px 25px 25px;
+	}
+}

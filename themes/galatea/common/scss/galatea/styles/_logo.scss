@@ -1,0 +1,13 @@
+.g-logo {
+	color: inherit;
+	font-size: 1.5rem;
+    line-height: 2rem;
+	font-weight: $font-weight-regular;
+	text-transform: uppercase;
+	vertical-align: middle;
+	letter-spacing: 0.1rem;
+	margin-right: -0.25rem;
+    @include breakpoint(small-mobile-range) {
+        font-weight: $font-weight-bold;
+    }
+}

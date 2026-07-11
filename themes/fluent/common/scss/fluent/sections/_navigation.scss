@@ -1,0 +1,39 @@
+.g-container { 
+    > #g-navigation {
+        border-radius: 0.3rem 0.3rem 0 0;
+    }    
+}
+
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    position: relative;
+    z-index: 5;
+
+    .g-grid {
+        align-items: center;
+
+        // Main Navigation
+        .g-main-nav {
+            .g-toplevel {
+                > li {
+                    @include breakpoint(desktop-only) {
+                        line-height: 3.7;
+                    }
+                }
+            }
+        }
+    }
+
+    // Logo
+    .g-logo {
+      color: $navigation-text-color;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

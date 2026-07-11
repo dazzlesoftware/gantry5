@@ -1,0 +1,41 @@
+#g-utility {
+    position: relative;
+    padding: $content-padding * 2;
+    color: $utility-text-color;
+    background: $utility-background;
+    background-size: cover;
+    @if $utility-background-image {
+        background-image: url($utility-background-image);
+    }
+    background-repeat: no-repeat;
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: $utility-transparent-background;
+    }
+    .g-grid {
+        position: relative;
+    }
+    @include breakpoint (tablet-range){
+        padding: $content-padding * 1.5;
+    }
+    @include breakpoint (mobile-only){
+        padding: $content-padding;
+    }
+    @include breakpoint (small-mobile-range){
+        padding: 0;
+    }
+}
+
+
+@media print {
+    #g-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

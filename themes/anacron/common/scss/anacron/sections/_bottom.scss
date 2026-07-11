@@ -1,0 +1,53 @@
+#g-bottom {
+	background: $bottom-background;
+	color: $bottom-text-color;	
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	&.rt-overlay-light {
+		h2.title {
+			color: darken($bottom-text-color, 15%);
+		}
+	}
+	&.rt-overlay-dark {
+		text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+		h2.title {
+			color: lighten($bottom-text-color, 35%);
+			text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.2);
+		}
+	}	
+	.g-content {
+		margin: 25px 10px;
+		position: relative;
+	}
+	.readon {
+		color: $white;
+	    background: darken($accent-color-1, 10%);
+        border-bottom: 2px solid darken($accent-color-1, 20%);
+        &:hover {
+            background: $accent-color-2;
+            border-bottom: 2px solid darken($accent-color-2, 15%);
+        }        
+	}
+	.readon2 {
+		color: $white;
+		background: darken($accent-color-2, 5%);
+		border-bottom: 2px solid darken($accent-color-2, 8%);
+        &:hover {
+            background: darken($accent-color-1, 8%);
+            border-bottom: 2px solid darken($accent-color-1, 20%);
+        }		
+	}	
+}
+
+.rt-big-button {
+    font-size: 1.2em !important;
+    margin-top: 15px;
+    padding: 15px 25px !important;
+}
+
+@media print {
+	#g-bottom {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

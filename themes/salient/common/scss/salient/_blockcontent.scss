@@ -1,0 +1,37 @@
+.g-block-content {
+	h1 {
+		font-weight: 300;
+		font-size: $core-font-size + 2;
+		letter-spacing: -2px;
+		opacity: 0.5;
+		line-height: 3.75rem;
+	}
+	h4 {
+		font-size: $core-font-size + 1.5;
+		line-height: $core-line-height - 0.3;
+		font-family: get-font-family($font-family-subpromo);
+		font-weight: $font-weight-regular;
+		letter-spacing: -1px;
+		margin-top: 0;
+		margin-left: -1px;
+		margin-right: -1px;
+	}
+	.g-block-subcontent-img {
+	    margin-bottom: 1.5rem;
+	}	
+	.g-subtitle {
+		font-family: get-font-family($font-family-default);
+		font-weight: $font-weight-bold;	
+		font-size: $core-font-size + 0.25;
+		line-height: $core-line-height - 0.25;		
+		text-transform: uppercase;
+	}
+	.g-block-icons {
+		font-size: $core-font-size + 4;
+		color: $accent-color-1;
+		opacity: 0.6;
+	}
+	.g-block-description {
+		font-size: $core-font-size + 0.2;
+	}
+}

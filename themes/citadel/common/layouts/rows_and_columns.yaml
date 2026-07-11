@@ -1,0 +1,900 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1466005216
+layout:
+  /container-top/:
+    -
+      -
+        'topleft 10': {  }
+      -
+        'topmain 80': {  }
+      -
+        'topright 10': {  }
+  /container-navigation/:
+    -
+      -
+        'navigationleft 10': {  }
+      -
+        'navigationmain 80': {  }
+      -
+        'navigationright 10': {  }
+  /container-slideshow/:
+    -
+      -
+        'slideshowleft 10': {  }
+      -
+        'slideshowmain 80':
+          -
+            - simplecontent-6049
+      -
+        'slideshowright 10': {  }
+  /container-header/:
+    -
+      -
+        'headerleft 10': {  }
+      -
+        'headermain 80': {  }
+      -
+        'headerright 10': {  }
+  /container-above/:
+    -
+      -
+        'aboveleft 10': {  }
+      -
+        'abovemain 80': {  }
+      -
+        'aboveright 10': {  }
+  /container-showcase/:
+    -
+      -
+        'showcaseleft 10': {  }
+      -
+        'showcasemain 80':
+          -
+            - custom-9485
+          -
+            - custom-6522
+          -
+            - 'custom-3772 50'
+            - 'custom-2813 50'
+          -
+            - 'custom-2874 33.3'
+            - 'custom-5117 33.3'
+            - 'custom-1891 33.3'
+          -
+            - 'custom-1030 25'
+            - 'custom-9108 25'
+            - 'custom-4617 25'
+            - 'custom-7536 25'
+          -
+            - custom-9267
+          -
+            - 'custom-8260 25'
+            - 'custom-4188 50'
+            - 'custom-6944 25'
+          -
+            - 'custom-8585 26'
+            - 'custom-8036 31'
+            - 'custom-2331 43'
+          -
+            - custom-7023
+      -
+        'showcaseright 10': {  }
+  /container-main/:
+    -
+      -
+        'aside1 10': {  }
+      -
+        'sidebar1 20':
+          -
+            - 'custom-3625 50'
+            - 'custom-3910 50'
+          -
+            - custom-7016
+          -
+            - 'custom-9308 50'
+            - 'custom-2626 50'
+      -
+        'mainbar 40':
+          -
+            - custom-7015
+          -
+            - 'custom-8876 50'
+            - 'custom-3811 50'
+      -
+        'sidebar2 20':
+          -
+            - 'custom-2024 50'
+            - 'position-position-9810 50'
+      -
+        'aside2 10': {  }
+  /container-utility/:
+    -
+      -
+        'utilityleft 10': {  }
+      -
+        'utilitymain 80': {  }
+      -
+        'utilityright 10': {  }
+  /container-feature/:
+    -
+      -
+        'featureleft 10': {  }
+      -
+        'featuremain 80': {  }
+      -
+        'featureright 10': {  }
+  /container-expanded/:
+    -
+      -
+        'expandedleft 10': {  }
+      -
+        'expandedmain 80': {  }
+      -
+        'expandedright 10': {  }
+  /container-extension/:
+    -
+      -
+        'extensionleft 10': {  }
+      -
+        'extensionmain 80': {  }
+      -
+        'extensionright 10': {  }
+  /container-bottom/:
+    -
+      -
+        'bottomleft 10': {  }
+      -
+        'bottommain 80': {  }
+      -
+        'bottomright 10': {  }
+  /container-footer/:
+    -
+      -
+        'footerleft 10': {  }
+      -
+        'footermain 80': {  }
+      -
+        'footerright 10': {  }
+  /container-copyright/:
+    -
+      -
+        'copyrightleft 10': {  }
+      -
+        'copyrightmain 80': {  }
+      -
+        'copyrightright 10': {  }
+  offcanvas: {  }
+structure:
+  topleft:
+    type: section
+    subtype: aside
+    title: 'Top Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  topmain:
+    type: section
+    title: 'Top Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  topright:
+    type: section
+    subtype: aside
+    title: 'Top Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-top:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  navigationleft:
+    type: section
+    title: 'Navigation Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigationmain:
+    type: section
+    title: 'Navigation Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigationright:
+    type: section
+    title: 'Navigation Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-navigation:
+    attributes:
+      boxed: '3'
+      class: g-default-navigation
+      extra: {  }
+  slideshowleft:
+    type: section
+    subtype: aside
+    title: 'Slideshow Left'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  slideshowmain:
+    type: section
+    title: 'Slideshow Main'
+    attributes:
+      class: g-default-slideshow
+    block:
+      class: g-middle-column
+      fixed: '1'
+  slideshowright:
+    type: section
+    subtype: aside
+    title: 'Slideshow Right'
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-slideshow:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  headerleft:
+    type: section
+    subtype: aside
+    title: 'Header Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  headermain:
+    type: section
+    subtype: header
+    title: 'Header Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  headerright:
+    type: section
+    subtype: aside
+    title: 'Header Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-header:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  aboveleft:
+    type: section
+    subtype: aside
+    title: 'Above Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  abovemain:
+    type: section
+    title: 'Above Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  aboveright:
+    type: section
+    subtype: aside
+    title: 'Above Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-above:
+    attributes:
+      boxed: '3'
+      class: g-main-offset
+      extra: {  }
+  showcaseleft:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  showcasemain:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      fixed: '1'
+  showcaseright:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-showcase:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  aside1:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  sidebar1:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+    block:
+      class: g-middle-column
+      variations: equal-height
+      fixed: '1'
+  sidebar2:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  aside2:
+    type: section
+    attributes:
+      class: ''
+    block:
+      class: g-side-column
+      fixed: '1'
+  container-main:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  utilityleft:
+    type: section
+    subtype: aside
+    title: 'Utility Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+    block:
+      fixed: '1'
+  utilitymain:
+    type: section
+    title: 'Utility Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  utilityright:
+    type: section
+    subtype: aside
+    title: 'Utility Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-utility:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  featureleft:
+    type: section
+    subtype: aside
+    title: 'Feature Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  featuremain:
+    type: section
+    title: 'Feature Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  featureright:
+    type: section
+    subtype: aside
+    title: 'Feature Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+    block:
+      fixed: '1'
+  container-feature:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  expandedleft:
+    type: section
+    subtype: aside
+    title: 'Expanded Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  expandedmain:
+    type: section
+    title: 'Expanded Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  expandedright:
+    type: section
+    subtype: aside
+    title: 'Expanded Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-expanded:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  extensionleft:
+    type: section
+    subtype: aside
+    title: 'Extension Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  extensionmain:
+    type: section
+    title: 'Extension Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+    block:
+      fixed: '1'
+  extensionright:
+    type: section
+    subtype: aside
+    title: 'Extension Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-extension:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  bottomleft:
+    type: section
+    subtype: aside
+    title: 'Bottom Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  bottommain:
+    type: section
+    title: 'Bottom Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  bottomright:
+    type: section
+    subtype: aside
+    title: 'Bottom Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+        - block
+    block:
+      fixed: '1'
+  container-bottom:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  footerleft:
+    type: section
+    subtype: aside
+    title: 'Footer Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  footermain:
+    type: section
+    subtype: footer
+    title: 'Footer Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  footerright:
+    type: section
+    subtype: aside
+    title: 'Footer Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-footer:
+    attributes:
+      boxed: '3'
+      class: ''
+      extra: {  }
+  copyrightleft:
+    type: section
+    subtype: aside
+    title: 'Copyright Left'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  copyrightmain:
+    type: section
+    title: 'Copyright Main'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  copyrightright:
+    type: section
+    subtype: aside
+    title: 'Copyright Right'
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+    block:
+      fixed: '1'
+  container-copyright:
+    attributes:
+      boxed: '3'
+      class: fp-copyright
+      extra: {  }
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-6049:
+    title: 'Rows & Columns Example'
+    attributes:
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: 'Rows & Columns Example'
+          author: ''
+          leading_content: 'Gantry provides an intuitive, drag and drop interface for constructing layouts. Each section benefits from unlimited rows and up to 20 columns, although a maximum of 4-6 is recommended.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Rows & Columns Example'
+    block:
+      variations: center
+  custom-9485:
+    title: 'Equal Width Examples'
+    attributes:
+      html: "<h1 class=\"g-title center\">Equal Width Examples</h1>\n<p>The examples below demonstrate up to four blocks in a row, of equal widths. Each block has the Box 1, 3 or 4 block variation applied to show separation between the blocks.</p>"
+    block:
+      class: 'nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+      variations: title2
+  custom-6522:
+    title: 'Single Block per Row'
+    attributes:
+      html: '<h5>Single Block per Row</h5>'
+    block:
+      variations: box1
+  custom-3772:
+    title: 'Two Blocks per Row'
+    attributes:
+      html: '<h5>Two Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-2813:
+    title: 'Two Blocks per Row'
+    attributes:
+      html: '<h5>Two Blocks per Row</h5>'
+    block:
+      variations: box1
+  custom-2874:
+    title: 'Three Blocks per Row'
+    attributes:
+      html: '<h5>Three Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-5117:
+    title: 'Three Blocks per Row'
+    attributes:
+      html: '<h5>Three Blocks per Row</h5>'
+    block:
+      variations: box3
+  custom-1891:
+    title: 'Three Blocks per Row'
+    attributes:
+      html: '<h5>Three Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-1030:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box3
+  custom-9108:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-4617:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box1
+  custom-7536:
+    title: 'Four Blocks per Row'
+    attributes:
+      html: '<h5>Four Blocks per Row</h5>'
+    block:
+      variations: box4
+  custom-9267:
+    title: 'Different Width Examples'
+    attributes:
+      html: "<h1 class=\"g-title center\">Different Width Examples</h1>\n<p>The examples below demonstrate up to four blocks in a row, of differing widths. Each block has the Box 1, 3 or 4 block variation applied to show separation between the blocks.</p>"
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+      variations: title2
+  custom-8260:
+    title: '25% Width Block'
+    attributes:
+      html: '<h5>25% Width Block</h5>'
+    block:
+      variations: box1
+  custom-4188:
+    title: '50% Width Block'
+    attributes:
+      html: '<h5>50% Width Block</h5>'
+  custom-6944:
+    title: '25% Width Block'
+    attributes:
+      html: '<h5>25% Width Block</h5>'
+    block:
+      variations: box4
+  custom-8585:
+    title: '26% Width Block'
+    attributes:
+      html: '<h5>26% Width Block</h5>'
+    block:
+      variations: box4
+  custom-8036:
+    title: '31% Width Block'
+    attributes:
+      html: '<h5>31% Width Block</h5>'
+    block:
+      variations: box4
+  custom-2331:
+    title: '43% Width Block'
+    attributes:
+      html: '<h5>43% Width Block</h5>'
+    block:
+      variations: box3
+  custom-7023:
+    title: 'Mainbody Examples'
+    attributes:
+      html: "<h1 class=\"g-title center\">Mainbody Examples</h1>\n<p>The mainbody is a unique section in Gantry 5 that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
+    block:
+      class: 'nomarginbottom nopaddingbottom'
+      variations: title2
+  custom-3625:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Lorem ipsum dolor sit amet adiping elit.'
+    block:
+      variations: box3
+  custom-3910:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Donec sit amet nibh. Vivamus non arcu.'
+    block:
+      variations: box4
+  custom-7016:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh.'
+    block:
+      variations: box6
+  custom-9308:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Integer fermen tum elit in sem magnus tellus.'
+    block:
+      variations: box4
+  custom-2626:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Sed ac arcu. Sed tincidunt libero eu dolor.'
+    block:
+      variations: box2
+  custom-7015:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque id tortor. In vitae sapien. Nunc quis tellus.'
+    block:
+      variations: box4
+  custom-8876:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Praesent sed nisl tempor est pulvinar tristique. Maecenas non lorem quis mi laoreet adipiscing. Sed ac arcu. Sed tincidunt libero eu dolor. Cras pharetra posuere eros. Donec ac eros tincidunt.'
+    block:
+      variations: box4
+  custom-3811:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean et libero. Nam aliquam. Quisque vitae tortor id neque dignissim laoreet. Duis eu ante.'
+    block:
+      variations: box4
+  custom-2024:
+    title: 'Custom HTML'
+    attributes:
+      html: 'Nullam eget neque. Nullam imperdiet venenatis ligula. Integer a leo. Nunc consectetur. Maecenas sem. Proin vulputate, massa vel volutpat laoreet, purus erat pretium ligula, eget varius arcu nibh sed libero. Fusce ante. Nullam interdum aliquet metus. Ut ultrices vestibulum tellus. Praesent quis erat. Nam id turpis sit amet neque cursus luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque id tortor. In vitae sapien. Nunc quis tellus. '
+    block:
+      variations: box2
+  position-position-9810:
+    title: 'Feature A'
+    attributes:
+      key: feature-a

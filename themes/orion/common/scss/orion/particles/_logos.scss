@@ -1,0 +1,15 @@
+.g-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .g-logo-wrapper {
+        margin: $content-padding;
+        width: 200px;
+        text-align: center;
+        
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

@@ -1,0 +1,747 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home
+  timestamp: 1506985282
+layout:
+  /top/:
+    -
+      - system-messages-9183
+  /navigation/:
+    -
+      - 'iconmenu-4703 10'
+      - 'menu-2134 80'
+      - 'iconmenu-6943 10'
+  /header/:
+    -
+      - promocontent-8571
+  /showcase/:
+    -
+      - gridstatistic-4395
+  /above/:
+    -
+      - promocontent-3886
+  /utility/:
+    -
+      - animatedblock-3167
+  /feature/:
+    -
+      - testimonial-7779
+  /container-9177/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-1776
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - 'infolist-5532 40'
+      - 'gridpromogallery-3340 60'
+  /extension/:
+    -
+      - promocontent-9284
+  /bottom/:
+    -
+      - gridcontent-7855
+  /footer/:
+    -
+      - 'infolist-2251 25'
+      - 'infolist-9103 25'
+      - 'custom-5842 25'
+      - 'contact-7305 25'
+  /copyright/:
+    -
+      - 'branding-5085 33'
+      - 'copyright-1381 34'
+      - 'totop-7373 33'
+  /fixedside/:
+    -
+      - logo-5625
+    -
+      - social-4803
+  offcanvas:
+    -
+      - mobile-menu-7144
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-9177:
+    attributes:
+      boxed: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+  fixedside:
+    type: section
+    title: FixedSide
+    attributes:
+      boxed: ''
+content:
+  system-messages-9183:
+    block:
+      variations: 'nomarginall nopaddingall'
+  iconmenu-4703:
+    title: Home
+    attributes:
+      class: ''
+      target: _parent
+      items:
+        -
+          icon: 'fa fa-home fa-fw'
+          text: ''
+          link: '#'
+          name: Home
+    block:
+      class: mainnav-left
+  menu-2134:
+    block:
+      class: mainnav-center
+  iconmenu-6943:
+    title: Demo
+    attributes:
+      class: ''
+      items:
+        -
+          icon: 'fa fa-rocket fa-fw'
+          text: ''
+          link: '#'
+          name: Demo
+    block:
+      class: mainnav-right
+  promocontent-8571:
+    title: 'Promo Content'
+    attributes:
+      promostyle: promo
+      promo: Requiem
+      desc: 'Exquisitely designed template for Gantry 5 framework.'
+      desc2: 'A rich, highly flexible and visually diverse template.'
+      descanimation: typewriter
+      animationElementID: typewriter-1
+      regularlinktext: 'Learn More'
+      regularlinkurl: '#'
+      readmore: 'Start Exploring'
+      readmoreclass: button-3
+      link: '#'
+      linkstyle: block
+  gridstatistic-4395:
+    title: 'Grid Statistic'
+    attributes:
+      cols: g-gridstatistic-4cols
+      gridstatisticitems:
+        -
+          text1: '9576'
+          text2: 'Miles travelled'
+          title: 'Item 1'
+        -
+          text1: '28967'
+          text2: 'Photos taken'
+          title: 'Item 2'
+        -
+          text1: '1308'
+          text2: 'People met'
+          title: 'Item 3'
+        -
+          text1: '5692'
+          text2: 'US Dollars saved'
+          title: 'Item 4'
+  promocontent-3886:
+    title: 'Promo Content'
+    attributes:
+      promostyle: standard
+      desc: '<span class="para"><a href="#">Requiem</a> is an exquisitely designed template for the <a href="#">Gantry 5</a> template framework. Easy to style, configure and customize through an advanced, user friendly and <a href="#">modern</a> interface.</span>'
+  animatedblock-3167:
+    title: 'Animated Block'
+    attributes:
+      cols: g-3cols
+      button: 'View More Features'
+      blocks:
+        -
+          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          headline: 'Anim<br />ated'
+          tag: Effects
+          desc: 'Rich CSS animations to enhance appeal<span class="hidden-tablet"> without detracting from content</span>'
+          readmore: 'Read More'
+          link: '#'
+          title: Animated
+        -
+          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          headline: 'Vers<br />atile'
+          tag: Gantry
+          desc: 'Gantry 5  provides a <span class="hidden-tablet">flexible </span>foundation for <span class="hidden-tablet">intuitive </span>usability and control'
+          readmore: 'Read More'
+          link: '#'
+          title: Versatile
+        -
+          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          headline: 'Styl<br />istic'
+          tag: Diverse
+          desc: 'An array of configurable presets and block variations<span class="hidden-tablet"> to individualize content</span>'
+          readmore: 'Read More'
+          link: '#'
+          title: Stylistic
+  testimonial-7779:
+    title: 'What are people saying?'
+    attributes:
+      class: fp-testimonial
+      title: 'What are people saying?'
+      cols: g-3cols
+      testimonials:
+        -
+          style: g-testimonial-standard
+          img: ''
+          content: '<strong>99.7%</strong> of customers is fully satisfied with our products.'
+          author: ''
+          company: ''
+          companyurl: ''
+          title: 'Item 1'
+        -
+          style: g-testimonial-alt
+          img: 'gantry-media://demo/home/feature/img-01.jpg'
+          content: 'I like Requiem more and more each day because it makes my life a lot easier. I am amazed!'
+          author: 'Taylor Jackson'
+          company: 'CEO of Requiem Tpl'
+          companyurl: '#'
+          title: 'Item 2'
+        -
+          style: g-testimonial-standard
+          img: ''
+          content: '<strong>95.2%</strong> of our customers would recommend Requiem footwear to their friends and family.'
+          author: ''
+          company: ''
+          companyurl: ''
+          title: 'Item 3'
+  infolist-5532:
+    title: 'Latest Blog Posts'
+    attributes:
+      class: g-latest-blog
+      title: 'Latest Blog Posts'
+      cols: g-1cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Requiem <a href="#">Responsive</a>'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: 'Responsive layout allows site to automatically adapt to the viewing device'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Requiem <a href="#">Layout</a>'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: 'Layout manager gives power to move, resize, and configure content quickly'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Requiem <a href="#">Menu</a>'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: 'Menu Editor augments the core menu with a rich, drag and drop interface'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Requiem <a href="#">Particles</a>'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: 'Particles system makes it easy to customize and manage content blocks'
+  gridpromogallery-3340:
+    title: 'Grid Promo Gallery'
+    attributes:
+      readmoreclass: button-3
+      cols: g-gridpromogallery-2cols
+      gridpromogalleryitems:
+        -
+          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          tag: FixedSide
+          headtext: 'Unique position for social items'
+          desc: '32 Photos'
+          link: '#'
+          title: 'Item 1'
+        -
+          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          tag: Offcanvas
+          headtext: 'Position designed for mobile'
+          desc: '15K Words'
+          link: '#'
+          title: 'Item 2'
+        -
+          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          tag: Color
+          headtext: 'Color Picker with Saturation options'
+          desc: '3 Answers'
+          link: '#'
+          title: 'Item 3'
+        -
+          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          tag: Fonts
+          headtext: 'A range of Web Fonts with Live Preview'
+          desc: '98 Videos'
+          link: '#'
+          title: 'Item 4'
+  promocontent-9284:
+    title: 'The Framework'
+    attributes:
+      promostyle: superpromo
+      promo: 'The Framework'
+      desc: 'The Gantry 5 Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
+      tags:
+        -
+          icon: 'fa fa-bullhorn fa-fw'
+          text: 'Featured Story'
+          link: '#'
+          title: 'Featured Story'
+  gridcontent-7855:
+    title: 'Why Requiem?'
+    attributes:
+      title: 'Why Requiem?'
+      desc: 'Here''s why Requiem is the best template for your site!'
+      readmore: 'Download Now'
+      readmorelink: 'https://www.rockettheme.com/joomla/templates/requiem'
+      readmoreclass: button-3
+      cols: g-gridcontent-6cols
+      gridcontentitems:
+        -
+          icon: 'fa fa-rocket fa-fw fa-3x'
+          textstyle: g-gridcontent-title-style-2
+          text1: Blazingly
+          text2: Fast
+          desc: ''
+          link: '#'
+          title: 'Blazingly Fast'
+        -
+          icon: 'fa fa-tablet fa-fw fa-3x'
+          textstyle: g-gridcontent-title-style-1
+          text1: Fully
+          text2: Responsive
+          desc: ''
+          link: '#'
+          title: 'Fully Responsive'
+        -
+          icon: 'fa fa-paper-plane-o fa-fw fa-3x'
+          textstyle: g-gridcontent-title-style-2
+          text1: Extremely
+          text2: Light
+          desc: ''
+          link: '#'
+          title: 'Extremely Light'
+        -
+          icon: 'fa fa-paint-brush fa-fw fa-3x'
+          textstyle: g-gridcontent-title-style-1
+          text1: Highly
+          text2: Customizable
+          desc: ''
+          link: '#'
+          title: 'Highly Customizable'
+        -
+          icon: 'fa fa-code fa-fw fa-3x'
+          textstyle: g-gridcontent-title-style-2
+          text1: Well
+          text2: Coded
+          desc: ''
+          link: '#'
+          title: 'Well Coded'
+        -
+          icon: 'fa fa-star-o fa-fw fa-3x'
+          textstyle: g-gridcontent-title-style-1
+          text1: Simply
+          text2: Beautiful
+          desc: ''
+          link: '#'
+          title: 'Simply Beautiful'
+  infolist-2251:
+    title: 'Useful Links'
+    attributes:
+      class: g-gridmenu
+      title: 'Useful Links'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/joomla/templates/requiem'
+          icon: ''
+          readmoreclass: ''
+          title: 'About Requiem'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/joomla/templates/requiem'
+          icon: ''
+          readmoreclass: ''
+          title: 'Style Guide'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: index.php/pages/about-us
+          icon: ''
+          readmoreclass: ''
+          title: Pages
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://docs.gantry.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Guides
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/forum/joomla-template-requiem'
+          icon: ''
+          readmoreclass: ''
+          title: 'Help & Support'
+    block:
+      class: g-title-bordered
+  infolist-9103:
+    title: Elsewhere
+    attributes:
+      class: g-gridmenu
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Pinterest
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: YouTube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Delicious
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Instagram
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Snapchat
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Periscope
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Tookapic
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: Flickr
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: '#'
+          icon: ''
+          readmoreclass: ''
+          title: 500px
+    block:
+      class: g-title-bordered
+  custom-5842:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, intended to represent a live site.</p>\n<p class=\"hidden-tablet\">Note: Requiem is built on the latest version of the Gantry 5 Framework.</p>"
+    block:
+      class: 'g-about g-title-bordered'
+  contact-7305:
+    attributes:
+      class: g-office-hours
+      title: 'Office Hours'
+      contactitems:
+        -
+          icon: 'fa fa-sun-o fa-fw'
+          text: '08:00 - 18:00'
+          label: 'Mon - Fri'
+        -
+          icon: 'fa fa-moon-o fa-fw'
+          text: '18:00 - 22:00'
+          label: 'Sat - Sun'
+    block:
+      class: g-title-bordered
+  branding-5085:
+    attributes:
+      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry Framework</a>'
+  totop-7373:
+    title: 'To Top'
+  social-4803:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: '#'
+          name: Twitter
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'fa fa-twitter fa-fw'
+          name: Facebook
+        -
+          icon: 'fa fa-google-plus fa-fw'
+          text: ''
+          link: 'fa fa-twitter fa-fw#'
+          name: Google+
+        -
+          icon: 'fa fa-pinterest fa-fw'
+          text: ''
+          link: '#'
+          name: Pinterest
+        -
+          icon: 'fa fa-youtube fa-fw'
+          text: ''
+          link: '#'
+          name: YouTube
+        -
+          icon: 'fa fa-instagram fa-fw'
+          text: ''
+          link: '#'
+          name: Instagram
+        -
+          icon: 'fa fa-flickr fa-fw'
+          text: ''
+          link: '#'
+          name: Flickr
+        -
+          icon: 'fa fa-vimeo fa-fw'
+          text: ''
+          link: '#'
+          name: Vimeo
+  mobile-menu-7144:
+    title: 'Mobile Menu'

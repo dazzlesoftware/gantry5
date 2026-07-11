@@ -1,0 +1,54 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+<script src="{{ url('gantry-theme://js/newsticker.js') }}"></script>
+{% endblock %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+  	{% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+	<div class="g-newsticker">
+		{% if particle.label %} <div class="g-newsticker-label">{{ particle.label|raw }}</div> {% endif %}
+
+		<div class="g-newsticker-container g-newsticker-{{ id }}">
+			<div class="g-newsticker-innerwrap">
+		    {% for item in particle.items %}
+				<div class="g-newsticker-content">
+					<span class="g-newsticker-content-text">{{ item.content|raw }}</span>
+
+					{% if item.readmoretext %}
+						<span class="g-newsticker-elipsis">...</span>
+						<span class="g-newsticker-readmore"> <a target="{{ item.readmoretarget|default('_self')|e }}" href="{{ item.readmorelink|e }}" title="{{ item.readmoretext|e }}">{{ item.readmoretext|e }}</a> </span>
+					{% endif %}
+				</div>
+		    {% endfor %}
+		    </div>
+			<div class="g-newsticker-controller">
+				<div class="g-next"><span class="g-next-icon"></span></div>
+				<div class="g-prev"><span class="g-prev-icon"></span></div>
+			</div>	    
+	    </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{% do gantry.load('jquery') %}
+	<script type="text/javascript">
+	jQuery(document).ready(function(){	
+		jQuery('.g-newsticker-{{ id }}').easyTicker({
+			direction: 'up',
+			speed: 'fast',
+			interval: 2000,
+			height: 'auto',
+			visible: 1,
+			mousePause: 1,
+			controls: {
+				up: '.g-next',
+				down: '.g-prev'
+			}
+		});	
+	});
+	</script>
+{% endblock %}

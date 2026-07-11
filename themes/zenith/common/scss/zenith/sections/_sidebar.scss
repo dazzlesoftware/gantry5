@@ -1,0 +1,54 @@
+#g-sidebar {
+    background: $main-background;
+    color: $main-text-color;
+}
+
+#g-bodysidebar {
+    background: $sidebar-background;
+    color: $sidebar-color;
+    height: 100%;
+
+    @include breakpoint(no-mobile) {
+        @if $sidebar-position == fixed {
+            position: fixed;
+            width: inherit;
+        } @else {
+            position: relative;
+            width: 100%;
+        }
+    }
+
+    // Simple Content
+    .g-simplecontent-item-leading-content {
+        padding: 0;
+        margin: 0;
+        color: transparentize($sidebar-color, 0.5);
+        font-size: $core-font-size;
+    }
+
+    // Social
+    .g-social {
+        .g-social-items {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+
+            a {
+                flex: 0 1 auto;
+                margin: 0.5rem 0.15rem;
+                color: transparentize($sidebar-color, 0.5);
+
+                &:hover {
+                    color: $sidebar-color;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-sidebar {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

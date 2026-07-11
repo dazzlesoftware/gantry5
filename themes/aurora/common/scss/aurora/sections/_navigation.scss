@@ -1,0 +1,46 @@
+#g-navigation {
+    color: $navigation-text-color;
+    background: $navigation-background;
+    position: relative;
+    z-index: 30;
+    @include breakpoint(mobile-only) {
+        z-index: auto;
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+
+    .g-logo {
+        color: $navigation-text-color;
+    }
+    .g-social {
+        white-space: nowrap;
+        @include breakpoint(mobile-only) {
+            text-align: center;
+            position: absolute;
+            top: 2.8rem;
+            right: 1rem;
+            z-index: 10;
+        }
+        a {
+            color: $navigation-text-color;
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+
+    input[type="text"],
+    input[type="search"] {
+        border-color: transparentize($navigation-text-color, 0.70);
+        color: $navigation-text-color;
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,4 @@
+preset: preset1
+offcanvas:
+  text-color: '#ffffff'
+  toggle-color: '#8e9dab'

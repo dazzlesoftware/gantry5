@@ -1,0 +1,200 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css" />
+
+<style>
+    #{{ id }} .slide, #{{ id }}-thumbs .swiper-slide:before {
+        background-color: {{ particle.overlaycolor|default('transparent') }} !important;
+    }
+
+    #{{ id }}-thumbs {
+        height: {{ particle.thumbsHeight|default('15vh') }};
+    }
+
+    @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
+        #{{ id }} .g-swiper-slider {
+            height: {{ particle.heightMobile|default('400px') }} !important;
+        }
+
+        #{{ id }}-thumbs {
+            height: {{ particle.thumbsMobileHeight|default('150px') }};
+        }
+    }
+    {% if not particle.source or particle.source == 'particle' %}
+        {% for item in particle.items %}
+            {% if item.imageMobile %}
+            @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
+                #{{ id }} .swiper-slide[data-swiper-slide-index="{{ loop.index0 }}"] .swiper-bg {
+                    background-image: url({{ url(item.imageMobile)|e }}) !important;
+                }
+            }
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</style>
+{% endblock %}
+
+{% block particle %}
+
+{% set swiper_settings %}
+data-swiper-thumbnails="{% if particle.thumbs == 'enabled' %}true{% else %}false{% endif %}" data-swiper-effect="{{ particle.effect }}" data-swiper-autoplay="{% if particle.autoplay == 'enabled' %}true{% else %}false{% endif %}" data-swiper-loop="{% if particle.loop == 'enabled' %}true{% else %}false{% endif %}" data-swiper-pagination="{% if particle.pagination %}{{ particle.pagination }}{% else %}false{% endif %}" data-swiper-timeout="{{ particle.autoplayTimeout }}" data-swiper-speed="{{ particle.speed }}" data-swiper-touchmove="{% if particle.touchmove == 'enabled' %}true{% else %}false{% endif %}" data-swiper-mobiletouchmove="{% if particle.touchmove == 'enabled' or particle.touchmove == 'mobile' %}true{% else %}false{% endif %}" data-swiper-direction="{% if particle.direction == 'horizontal' %}horizontal{% else %}vertical{% endif %}" data-swiper-nextnav=".swiper-button-next-{{ id|replace({'swiper-': ''}) }}" data-swiper-prevnav=".swiper-button-prev-{{ id|replace({'swiper-': ''}) }}" data-swiper-elpa=".swiper-pagination-parent-{{ id|replace({'swiper-': ''}) }}" data-swiper-elthumb="#{{ id }}-thumbs"
+{% endset %}
+
+{% if particle.effect == "slide" or particle.effect == "coverflow" %}
+{% set swiper_slides %}
+data-swiper-mobileslides="{{ particle.mobileslides|default('1') }}" data-swiper-mobilegroup="{{ particle.mobilegroup|default('1') }}" data-swiper-mobilespace="{{ particle.mobilespace|default('0') }}" data-swiper-tabletslides="{{ particle.tabletslides|default('1') }}" data-swiper-tabletgroup="{{ particle.tabletgroup|default('1') }}" data-swiper-tabletspace="{{ particle.tabletspace|default('0') }}" data-swiper-desktopslides="{{ particle.desktopslides|default('1') }}" data-swiper-desktopgroup="{{ particle.desktopgroup|default('1') }}" data-swiper-desktopspace="{{ particle.desktopspace|default('0') }}" data-swiper-largedesktopslides="{{ particle.largedesktopslides|default('1') }}" data-swiper-largedesktopgroup="{{ particle.largedesktopgroup|default('1') }}" data-swiper-largedesktopspace="{{ particle.largedesktopspace|default('0') }}"
+{% endset %}
+{% else %}
+{% set swiper_slides %}
+data-swiper-mobileslides="1" data-swiper-mobilegroup="1" data-swiper-mobilespace="0" data-swiper-tabletslides="1" data-swiper-tabletgroup="1" data-swiper-tabletspace="0" data-swiper-desktopslides="1" data-swiper-desktopgroup="1" data-swiper-desktopspace="0" data-swiper-largedesktopslides="1" data-swiper-largedesktopgroup="1" data-swiper-largedesktopspace="0"
+{% endset %}
+{% endif %}
+
+{% set swiper_thumbs %}
+data-swiper-mobilethumbs="{{ particle.mobilethumbs|default('2') }}" data-swiper-mobilethumbspace="{{ particle.mobilethumbspace|default('20') }}" data-swiper-tabletthumbs="{{ particle.tabletthumbs|default('3') }}" data-swiper-tabletthumbspace="{{ particle.tabletthumbspace|default('30') }}" data-swiper-desktopthumbs="{{ particle.desktopthumbs|default('4') }}" data-swiper-desktopthumbspace="{{ particle.desktopthumbspace|default('40') }}" data-swiper-largedesktopthumbs="{{ particle.largedesktopthumbs|default('5') }}" data-swiper-largedesktopthumbspace="{{ particle.largedesktopthumbspace|default('50') }}"
+{% endset %}
+
+{% set swiper_breakpoints %}
+data-swiper-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-swiper-tablet-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-swiper-desktop-breakpoint="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-swiper-largedesktop-breakpoint="{{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88rem') }}"
+{% endset %}
+
+    {% if not particle.source or particle.source == 'particle' %}
+        <div id="{{ id }}" class="g-swiper swiper-container {{ particle.class|e }}" data-swiper-id="{{ id }}" {{ swiper_settings }} {{ swiper_slides }} {{ swiper_thumbs }} {{ swiper_breakpoints }} {% if gantry.page.direction == 'rtl' %}dir="rtl"{% endif %}>
+
+            <div class="g-swiper-slider swiper-wrapper" style="height: {{ particle.height|default('80vh') }};">
+                {% for item in particle.items %}
+                    <div class="swiper-slide {{ item.class|e }}"{% if item.bgcolor %} style="background-color: {{ item.bgcolor|default('transparent') }};"{% endif %}>
+                        {% if particle.slides_linkable == "enabled" %}
+                            {% if item.video %}
+                                <a href="{{ item.button_link }}" target="{{ item.linktarget|default('_self') }}">
+                                    <video src="{{ url(item.video)|e }}" autoplay muted loop playsinline></video>
+                                </a>
+                            {% else %}
+                                <a href="{{ item.button_link }}" target="{{ item.linktarget|default('_self') }}" class="swiper-link-overlay"></a>
+                            {% endif %}
+                        {% else %}
+                            {% if item.video %}
+                                <video src="{{ url(item.video)|e }}" autoplay muted loop playsinline></video>
+                            {% endif %}
+                        {% endif %}
+                        {% if item.image %}
+                            {% if particle.image == "img" %}
+                                {% if item.imageMobile %}
+                                    <img src="{{ url(item.image)|e }}" class="hidden-phone" />
+                                    <img src="{{ url(item.imageMobile)|e }}" class="visible-phone" />
+                                {% else %}
+                                    <img src="{{ url(item.image)|e }}" />
+                                {% endif %}
+                            {% else %}    
+                                <div class="swiper-bg{% if item.kb %} {{ item.kb }}{% endif %}" style="background-image: url({{ url(item.image)|e }});{% if item.kb %}animation-duration: {{ item.duration|default('7000') }}ms;{% endif %}"></div>
+                            {% endif %}
+                        {% endif %}
+                        <div class="slide">
+                            <div class="slide-content-wrapper">
+                                <div class="slide-content">
+                                    {% if item.title %}
+                                        <div class="g-swiper-title ">
+                                            {{ item.title|raw }}
+                                        </div>
+                                    {% endif %}
+                                    {% if item.text %}
+                                        <div class="g-swiper-text">
+                                            {{ item.text|raw }}
+                                        </div>
+                                    {% endif %}
+                                    {% if item.button_text %}
+                                        <a href="{{item.button_link}}" target="{{ item.linktarget|default('_self') }}" class="button {{ item.button_class }}">
+                                            {{item.button_text}}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- navigation buttons -->
+            {% if particle.nav == 'enabled' %}
+                {% if gantry.page.direction == 'rtl' %}
+                    <div class="swiper-navigation rtl">
+                        <div class="swiper-button-next-{{ id|replace({'swiper-': ''}) }}">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="swiper-button-prev-{{ id|replace({'swiper-': ''}) }}">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="swiper-navigation">
+                        <div class="swiper-button-next-{{ id|replace({'swiper-': ''}) }}">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                        <div class="swiper-button-prev-{{ id|replace({'swiper-': ''}) }}">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if particle.pagination %}
+                <!-- pagination -->
+                <div class="swiper-pagination-parent-{{ id|replace({'swiper-': ''}) }}"></div>
+            {% endif %}
+        </div>
+
+        {% if particle.thumbs == 'enabled' %}
+        <div id="{{ id }}-thumbs" class="g-swiper-thumbs swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                {% for item in particle.items %}
+                    <div class="swiper-slide {{ item.thumbClass }}" style="{% if item.imageThumb %}background-image: url({{ url(item.imageThumb)|e }});{% elseif item.image %}background-image: url({{ url(item.image)|e }});{% endif %} background-color: {{ item.bgcolor|default('transparent') }};">
+                        {% if item.thumb_title %}
+                            <div class="g-swiper-thumbs-title">
+                                <span>{{ item.thumb_title|raw }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+                          
+            {% if particle.thumbsnav == 'enabled' %}                 
+                {% if gantry.page.direction == 'rtl' %}
+                    <div class="swiper-navigation rtl">
+                        <div class="swiper-thumbs-button-next">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="swiper-thumbs-button-prev">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="swiper-navigation">
+                        <div class="swiper-thumbs-button-next">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                        <div class="swiper-thumbs-button-prev">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endif %}
+
+    {% else %}
+        {% include '@particles/swiper-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+    {% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+    {% if particle.thumbs == 'enabled' and particle.thumbslayout == 'top' %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#{{ id }}-thumbs').insertBefore('#{{ id }}');
+        });
+    </script>
+    {% endif %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.init.js'), 10, 'footer') %}
+{% endblock %}

@@ -1,0 +1,952 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1456244407
+layout:
+  /offsidebar/:
+    -
+      - menu-4196
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'offsidebartoggle-2745 20'
+      - 'logo-5992 60'
+      - 'social-7220 20'
+  /slideshow/:
+    -
+      - flexslider-8611
+  /header/: {  }
+  /above/: {  }
+  /showcase/:
+    -
+      - infolist-1986
+    -
+      - imagegrid-3714
+    -
+      - blockcontent-3235
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/: {  }
+  /extension/:
+    -
+      - infolist-8589
+  /bottom/:
+    -
+      - 'infolist-6113 33.3'
+      - 'infolist-4978 33.3'
+      - 'custom-3225 33.3'
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-5976 25'
+      - 'copyright-5748 50'
+      - 'totop-6544 25'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  offsidebar:
+    type: section
+    attributes:
+      boxed: '0'
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-navigation-light
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-main:
+    attributes:
+      boxed: '0'
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+  footer:
+    attributes:
+      boxed: '0'
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  offsidebartoggle-2745:
+    title: 'OffSidebar Toggle'
+    attributes:
+      icon: 'fa fa-bars fa-fw'
+      type: pushpage
+  logo-5992:
+    block:
+      class: center
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  flexslider-8611:
+    title: FlexSlider
+    attributes:
+      layout: showcase
+      showcaseThumbWidth: '200'
+      autoplay: '0'
+      pauseOnHover: '0'
+      items:
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 1'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 2'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 3'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 4'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 5'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 6'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-07.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 7'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-08.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 8'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 9'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 10'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 11'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 12'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 13'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 14'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-07.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 15'
+        -
+          image: 'gantry-media://pages/portfolio/slideshow/img-08.jpg'
+          overlayImage: ''
+          overlayParallax: '0'
+          overlayParallaxRatio: ''
+          subtitle: ''
+          title: Portfolio
+          desc: "Some description goes here.\nWe have done awesome stuff."
+          testimonialImage: ''
+          testimonialName: ''
+          testimonialPosition: ''
+          link: '#'
+          linktext: 'See Project'
+          buttontarget: _self
+          buttonclass: button-2
+          name: 'Item 16'
+  infolist-1986:
+    title: 'Portfolio Info List'
+    attributes:
+      class: 'noborder spaced'
+      cols: g-2cols
+      infolists:
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button-2
+          readmoretarget: _self
+          title: 'Project 1'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button-2
+          readmoretarget: _self
+          title: 'Project 2'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button-2
+          readmoretarget: _self
+          title: 'Project 3'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button-2
+          readmoretarget: _self
+          title: 'Project 4'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button-2
+          readmoretarget: _self
+          title: 'Project 5'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button-2
+          readmoretarget: _self
+          title: 'Project 6'
+  imagegrid-3714:
+    title: 'Image Grid'
+    attributes:
+      cols: g-imagegrid-4cols
+      album: clients
+      imagegriditems:
+        -
+          image: 'gantry-media://pages/about-us/feature/img-01.jpg'
+          caption: 'Image 1'
+          title: 'Image 1'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-02.jpg'
+          caption: 'Image 2'
+          title: 'Image 2'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-03.jpg'
+          caption: 'Image 3'
+          title: 'Image 3'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-04.jpg'
+          caption: 'Image 4'
+          title: 'Image 4'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-05.jpg'
+          caption: 'Image 5'
+          title: 'Image 5'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-06.jpg'
+          caption: 'Image 6'
+          title: 'Image 6'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-07.jpg'
+          caption: 'Image 7'
+          title: 'Image 7'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-08.jpg'
+          caption: 'Image 8'
+          title: 'Image 8'
+  blockcontent-3235:
+    title: 'Portfolio Block Content'
+    attributes:
+      subcontents:
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-01.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Milka
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-02.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Lego
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-03.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Adobe
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-04.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Dell
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-05.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Puma
+  position-position-8538:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-position-8807:
+    title: Aside
+    attributes:
+      key: aside
+  infolist-8589:
+    title: 'Portfolio Info List'
+    attributes:
+      cols: g-4cols
+      infolists:
+        -
+          icon: 'fa fa-align-justify'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Social Media'
+        -
+          icon: 'fa fa-bar-chart-o'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Web Development'
+        -
+          icon: 'fa fa-building-o'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Graphic Design'
+        -
+          icon: 'fa fa-codepen'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Customer Relations'
+        -
+          icon: 'fa fa-file-movie-o'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Reliable Resources'
+        -
+          icon: 'fa fa-industry'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Music Composition'
+        -
+          icon: 'fa fa-comments'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Video Framing'
+        -
+          icon: 'fa fa-empire'
+          iconloc: left
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'SEO Services'
+  infolist-6113:
+    title: 'Useful Links'
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: 'Useful Links'
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/wordpress/themes/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: About
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/docs/wordpress/themes/galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Guide
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'http://docs.gantry.org/'
+          icon: ''
+          readmoreclass: ''
+          title: Gantry
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://demo.rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: Demo
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/contact-us'
+          icon: ''
+          readmoreclass: ''
+          title: Questions
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.rockettheme.com/forum/wordpress-theme-galatea'
+          icon: ''
+          readmoreclass: ''
+          title: Support
+  infolist-4978:
+    title: Elsewhere
+    attributes:
+      class: 'g-mobile-keep-grid g-compact'
+      title: Elsewhere
+      cols: g-2cols
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.facebook.com/RocketTheme/'
+          icon: ''
+          readmoreclass: ''
+          title: Facebook
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://twitter.com/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Twitter
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://rockettheme.com'
+          icon: ''
+          readmoreclass: ''
+          title: 'Google +'
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://www.youtube.com/user/OfficialRocketTheme'
+          icon: ''
+          readmoreclass: ''
+          title: Youtube
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://github.com/gantry/gantry5'
+          icon: ''
+          readmoreclass: ''
+          title: Github
+        -
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: ''
+          tag: ''
+          subtag: ''
+          label: ''
+          link: 'https://bitbucket.org/rockettheme'
+          icon: ''
+          readmoreclass: ''
+          title: Bitbucket
+  custom-3225:
+    title: About
+    attributes:
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+  copyright-5748:
+    block:
+      class: center
+  totop-6544:
+    title: 'To Top'
+    block:
+      class: align-right
+  mobile-menu-7951:
+    title: 'Mobile Menu'

@@ -1,0 +1,83 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#ef0015'
+    - '#fff4cc'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+      text-active-color: '#232529'
+    accent:
+      color-1: '#ef0015'
+      color-2: '#fff4cc'
+    menustyle:
+      text-color: '#ffffff'
+      text-color-alt: '#000000'
+      text-color-active: 'rgba(255,255,255, 0.7)'
+      background-active: 'rgba(255,255,255, 0)'
+      sublevel-text-color: '#000000'
+      sublevel-text-color-active: '#000000'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#ffffff'
+    font:
+      family-default: 'rubik, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    navigation:
+      background: '#1a1c23'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    header:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    above:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    feature:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    showcase:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    utility:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    main:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    sidebar:
+      background: '#1a1c23'
+      text-color: '#bdbdbe'
+    aside:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    expanded:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    extension:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    bottom:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    footer:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    copyright:
+      background: '#ffffff'
+      text-color: '#4f4e53'
+    offcanvas:
+      background: '#ef0015'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 75rem
+      desktop-container: 60rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

@@ -1,0 +1,87 @@
+.ui-tabs {
+    position: relative;
+
+    .ui-tabs-nav {
+        margin: 0;
+        display: flex;
+
+        li {
+            list-style: none;
+            float: left;
+            border-bottom-width: 0;
+            padding: 0;
+            outline: none;
+
+            @include breakpoint(mobile-only) {
+                float: none;
+                text-align: center;
+                margin-bottom: 15px;
+                margin-right: 0;
+                margin-left: 0;
+            }
+
+            &.ui-state-disabled .ui-tabs-anchor {
+                cursor: text;
+            }
+
+            &.ui-tabs-loading .ui-tabs-anchor {
+                cursor: text;
+            }  
+        }
+
+        .ui-tabs-anchor {
+            text-decoration: none;            
+        }
+    }
+}
+
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+    cursor: pointer;
+}
+
+.g-contenttabs {
+    .g-contenttabs-tab-wrapper-container {
+        list-style: none;
+
+        .g-contenttabs-tab-wrapper {
+            margin-right: 5px;
+        }
+    }
+
+    .g-contenttabs-tab {
+        outline: none;
+        color: inherit !important;
+    }
+
+    .g-contenttabs-tab-wrapper-head {
+
+        .g-contenttabs-tab-title {
+            display: inline-block;
+            color: inherit;
+            background: none;
+            padding: 10px 15px;
+            border: 2px solid;
+            border-radius: 3px;
+            opacity: 0.5;
+            text-transform: uppercase;
+            font-size: $base-font-size - 2;
+        }
+    }
+
+    .g-contenttabs-content-wrapper-container {
+        list-style: none;
+        margin: 25px 0 0;
+
+        .g-contenttabs-tab-wrapper-body {
+            padding: 0;
+        }
+    }
+}
+
+.ui-tabs-active {
+    .g-contenttabs-tab-wrapper-head {
+        .g-contenttabs-tab-title {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+zenith-theme:
+  title: 'Zenith Theme'
+  description: 'Sample menu for Zenith theme.'
+
+  items:
+    zenith:
+      title: 'Home'
+      outline: home
+      home: 1

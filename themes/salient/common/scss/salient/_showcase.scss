@@ -1,0 +1,52 @@
+#g-showcase {
+    background: $showcase-background;
+    color: $showcase-text-color;  
+
+	.g-inline-action-content {
+		display: flex;	
+		align-items: center;	
+		@include breakpoint(mobile-only) {
+			display: block;
+		}	
+	}
+	.g-inline-action-text {
+		margin: 1rem 1rem 1rem 0;
+		width: 85%;
+	}
+    .g-inline-action-button {
+		white-space: nowrap;
+		@include breakpoint(tablet-range) {
+			margin: 0 0.75rem;
+		}		
+		.button {
+			border: 2px solid lighten($showcase-text-color, 25%);
+			color: darken($showcase-text-color, 15%) !important;
+			&:hover {
+				border: 2px solid $accent-color-1;
+				color: darken($accent-color-1, 15%) !important;
+			}
+		}
+    }
+
+    .fp-showcase-b {
+    	.g-grid {
+    		@include breakpoint(mobile-only) {
+    			flex-flow: row nowrap;
+    			margin: 0 1rem;
+    		}
+    	}
+    	.g-content {
+    		@include breakpoint(mobile-only) {
+	    		margin: 0;
+	    		padding: 0;
+    		}    		
+    	}
+    }
+}
+
+@media print {
+	#g-showcase {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

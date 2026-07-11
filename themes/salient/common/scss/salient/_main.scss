@@ -1,0 +1,18 @@
+#g-mainbar {
+	.g-container {
+	    background: $main-background;
+	    color: $main-text-color;  
+	}
+	&.fp-mainbar {
+		h1, h2, h3, h4, h5, h6 {
+			color: darken($main-text-color, 35%);
+		}
+	}
+}
+
+@media print {
+	#g-main {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

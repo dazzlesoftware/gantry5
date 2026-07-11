@@ -1,0 +1,74 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+    {% if particle.token %}
+    <form id="g-bookingform-{{ id }}" data-bookingform-id="g-bookingform-{{ id }}" data-bookingform-token="{{ particle.token }}" data-bookingform-requiredmessage="{{ particle.required }}" class="g-bookingform" action="#" method="post">
+        <fieldset>
+
+            <div class="g-bookingform-visible">
+                {% for item in particle.items %}
+                <div class="g-bookingform-item {% if item.type == 'spinner' %}g-bookingform-spinner{% endif %} {% if item.type == 'datepicker' %}g-bookingform-calendar{% endif %}" {% if item.type == 'spinner' %}data-trigger="spinner"{% endif %}>
+                    {% if item.label %}
+                    <label for="g-bookingform-item-id-{{ loop.index }}">{{ item.label }}{% if item.required == 'enabled' %}<sup>*</sup>{% endif %}</label>
+                    {% endif %}
+                    <input type="text" class="{% if item.type == 'datepicker' %}g-bookingform-datepicker{% endif %}{% if item.required == 'enabled' %} g-bookingform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-bookingform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}data-min="{{ item.min }}" data-max="{{ item.max }}"{% endif %}>
+                    {% if item.type == 'datepicker' %}
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if item.type == 'spinner' %}
+                    <div class="g-bookingform-spinners">
+                        <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                        <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <div class="g-bookingform-button1">
+                    <label for="g-bookingform-submit-top">&nbsp;</label>
+                    <a href="javascript:;" class="button" id="g-bookingform-submit-top">{{ particle.button1|default('Submit')|raw }}</a>
+                </div>
+            </div>
+
+            <div class="g-bookingform-hidden">
+                <div class="g-bookingform-buttonback">
+                    <label for="g-bookingform-back">&nbsp;</label>
+                    <a href="javascript:;" class="button" id="g-bookingform-back"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                </div>
+                {% if particle.name %}
+                <div class="g-bookingform-item">
+                    <label for="g-bookingform-item-name">{{ particle.name }}<sup>*</sup></label>
+                    <input type="text" name="Name" id="g-bookingform-item-name" class="g-bookingform-item-required" placeholder="{{ particle.name_placeholder }}">
+                </div>
+                {% endif %}
+                {% if particle.email %}
+                <div class="g-bookingform-item">
+                    <label for="g-bookingform-item-email">{{ particle.email }}<sup>*</sup></label>
+                    <input type="text" name="Email" id="g-bookingform-item-email" class="g-bookingform-item-required" placeholder="{{ particle.email_placeholder }}">
+                </div>
+                {% endif %}
+                <div class="g-bookingform-button2">
+                    <label for="g-bookingform-submit-bottom">&nbsp;</label>
+                    <a href="javascript:;" class="button" id="g-bookingform-submit-bottom">{{ particle.button2|default('Submit')|raw }}</a>
+                </div>
+            </div>
+            <div class="g-bookingform-thankyou">
+                <p class="alert alert-success"><i class="fa fa-check-circle" aria-hidden="true"></i>  {{ particle.thankyou }}</p>
+            </div>
+            <div class="g-bookingform-error">
+                <p class="alert alert-error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  {{ particle.error }}</p>
+            </div>
+
+        </fieldset>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
+<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
+<script src="{{ url('gantry-theme://js/bookingform.js') }}"></script>
+{% endblock %}

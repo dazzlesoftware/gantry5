@@ -1,0 +1,396 @@
+.g-socialfeed {
+    position: relative;
+
+    // Header
+    .g-socialfeed-header {
+        position: relative;
+        align-items: center;
+        margin-bottom: $content-padding;
+
+        @include breakpoint(mobile-only) {
+            margin: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            display: block;
+        }
+    }
+
+    // Title
+    .g-socialfeed-title {
+        display: block;
+        @include responsive-font($responsive-font-size + 1.2, $core-font-size + 1, false, false);
+        font-weight: $font-weight-bold;
+        padding: $content-padding ($content-padding * 2);
+
+        @include breakpoint(mobile-only) {
+            text-align: center;
+            padding-right: 0;
+        }
+
+        // Upper Title
+        .g-socialfeed-uppertitle {
+            display: block;
+            padding-right: $content-padding;
+            color: transparentize($base-text-color, 0.65);
+            @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+            font-weight: $font-weight-semibold;
+            line-height: 1.5;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .dir-rtl & {
+                padding-left: $content-padding;
+                padding-right: 0;
+            }
+        }
+    }
+
+    // Navigation
+    .g-socialfeed-nav {
+        position: relative;
+        flex: 1 0 auto;
+        align-self: center;
+
+        i {
+            display: none;
+            position: absolute;
+            top: .8rem;
+            left: $content-margin;
+
+            @include breakpoint(mobile-only) {
+                display: block;
+            }
+        }
+
+        // Mobile menu
+        @include breakpoint(mobile-only) {
+            min-height: 6rem;
+            width: 100%;
+        }
+
+        .g-socialfeed-nav-container {
+            display: flex;
+            justify-content: flex-start; // Mobile menu
+
+            @include breakpoint(mobile-only) {
+                flex-direction: column;
+                width: 75%;
+                padding: 0 0;
+                position: absolute;
+                right: 0;
+                left: 0;
+                margin: 0 auto;
+                border: solid 2px $black;
+                border-radius: 5px;
+                background: transparentize($black, 0.5);
+                z-index: 15;
+                margin-top: 1rem;
+            }
+        }
+
+        // Item
+        .g-socialfeed-nav-item {
+            cursor: pointer;
+            padding: $content-margin - .5 $content-padding - .6;
+            @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
+            font-weight: $font-weight-regular;
+            position: relative;
+            border-radius: 12px;
+            text-transform: capitalize;
+            border: 2px solid transparent;
+
+            &.selected {
+                background: $accent-color-1;
+                font-weight: $font-weight-semibold;
+
+                @include breakpoint(mobile-only) {
+                    background: none;
+                    border-color: transparent;
+                    display: block;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:first {
+                padding-left: 0;
+            }
+
+            @include breakpoint(mobile-only) {
+                display: none;
+                padding: $content-margin - 0.2 $content-padding + 0.5;
+            }
+
+            &.clicked {
+                display: block;
+            }
+        }
+    }
+
+    //Button Wrapper
+    .button-wrapper {
+        margin-top: $content-margin *3;
+    }
+
+    // Grid Settings
+    .g-socialfeed-grid {
+        position: relative;
+        margin-bottom: -1px;
+
+        // Item & Item content
+        .g-socialfeed-grid-item {
+            a.g-socialfeed-link-overlay {
+                position: absolute;
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                top: 0;
+            }
+
+            .g-socialfeed-grid-item-wrapper {
+                position: relative;
+                background: $black;
+                transition: all 0.25s;
+
+                .g-socialfeed-grid-item-image {
+                    position: relative;
+                    transition: .4s ease;
+
+                    img {
+                        width: 100%;
+                        min-height: 1px;
+                        transition: all 0.25s;
+                    }
+
+                    &:hover {
+                        transform: scale(.85, .85);
+                        cursor: pointer;
+                    }
+                }
+
+                &.g-socialfeed-layout-photo,
+                &.g-socialfeed-layout-photo-large {
+                    .g-socialfeed-grid-item-content {
+                        position: static;
+                        width: 100%;
+                        margin-left: 0;
+                        margin-right: 0;
+
+                        .g-socialfeed-grid-item-title {
+                            font-size: $core-font-size + .4;
+                            line-height: $core-line-height - .06;
+
+                            @include breakpoint(desktop-range) {
+                                font-size: $core-font-size + .2;
+                            }
+
+                            @include breakpoint(tablet-range) {
+                                font-size: $core-font-size + .2;
+                            }
+
+                            @include breakpoint(small-mobile-range) {
+                                line-height: $core-line-height - .02;
+                            }
+
+                            span {
+                                color: set-color($base-background);
+                            }
+                        }
+
+                        .g-socialfeed-grid-item-case {
+                            position: absolute;
+                            top: 1rem;
+                            color: white;
+                            left: 1rem;
+                        }
+                    }
+
+                    .g-socialfeed-grid-item-image {
+                        margin-bottom: $content-padding;
+
+                        img {
+                            border-radius: 5px;
+                        }
+
+                        .g-socialfeed-grid-item-icons {
+                            font-weight: $font-weight-regular;
+                            font-size: $core-font-size - 0.1;
+                            position: absolute;
+                            bottom: 0;
+                            padding-left: 1rem;
+                            padding-bottom: 1rem;
+
+                            .g-socialfeed-grid-item-icon {
+                                margin-right: $content-margin;
+                            }
+                        }
+                    }
+                }
+
+                &.g-socialfeed-layout-text {
+                    .g-socialfeed-grid-item-content {
+                        margin-top: 0;
+                    }
+
+                    cursor: pointer;
+                    will-change: auto !important;
+                    border-radius: 10px;
+
+                    font-weight: $font-weight-semibold;
+                    padding: $content-padding;
+
+                    &.medium {
+                        background: $accent-color-1;
+                        color: set-color($base-background);
+
+                        .g-socialfeed-grid-item-date {
+                            color: $accent-color-1;
+                        }
+                    }
+
+                    &.dark {
+                        background: $accent-color-1;
+                        color: set-color($base-background);
+                    }
+                }
+            }
+
+            .g-socialfeed-grid-item-content {
+                width: 100%;
+                left: 0;
+                text-align: left;
+                z-index: 3;
+                @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                transition: color 0.5s;
+
+                .dir-rtl & {
+                    text-align: right;
+                }
+
+                .g-socialfeed-grid-item-title {
+                    font-weight: $font-weight-medium;
+                    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+                    margin-top: $content-margin - 0.3;
+                    line-height: $core-line-height - 0.4;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                // Date
+                .g-socialfeed-grid-item-date {
+                    margin-top: $content-margin * 1.5;
+                    font-weight: $font-weight-regular;
+                    font-size: $core-font-size + 0.1;
+                    color: $light-grey;
+                }
+
+                .g-socialfeed-grid-item-subtitle {
+                    color: $black;
+                    opacity: 0.3;
+                    font-weight: $font-weight-regular;
+                    margin-top: $content-margin;
+                    @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
+                }
+
+                .g-socialfeed-grid-item-case {
+                    color: $black;
+                    @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
+                    font-weight: $font-weight-regular;
+                    background: transparent;
+                    display: inline-block;
+                    letter-spacing: 3px;
+                    clear: both;
+                    margin-bottom: $content-margin - 0.3;
+                    text-transform: uppercase;
+                }
+            }
+
+            &:hover {
+                .g-socialfeed-grid-item-wrapper {
+                    .g-socialfeed-grid-item-title {
+                        text-decoration: underline;
+                        text-decoration-color: inherit;
+                    }
+
+                    .g-socialfeed-grid-item-button {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        // 4 Columns
+        &.cols-4 {
+            .g-socialfeed-grid-item,
+            .g-socialfeed-grid-sizer {
+                width: 25%;
+
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+
+                &.photo-large {
+                    width: 50%;
+
+                    @include breakpoint(tablet-range) {
+                        width: 50%;
+                    }
+
+                    @include breakpoint(mobile-only) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        // 8 Columns
+        &.cols-8 {
+            .g-socialfeed-grid-item,
+            .g-socialfeed-grid-sizer {
+                width: 12.5%;
+
+                @include breakpoint(tablet-range) {
+                    width: 25%;
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 50%;
+                }
+            }
+        }
+
+        // 10 Columns
+        &.cols-10 {
+            .g-socialfeed-grid-item,
+            .g-socialfeed-grid-sizer {
+                width: 10%;
+
+                @include breakpoint(tablet-range) {
+                    width: 50%;
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

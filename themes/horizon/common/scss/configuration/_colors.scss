@@ -1,0 +1,139 @@
+// Basics
+$white:							#ffffff;
+$black:							#000000;
+$off-white:						#f3f5f7;
+$grey: 							#888888;
+$darkgrey: 						#282828;
+$pink: 							#d13b7b;
+$red: 							#ef4a44;
+$purple: 						#5c5acf;
+$blue: 							#279fba;
+$orange: 						#ee7933;
+$light-grey:                    #aaaaaa;
+
+// Base
+$base-background:				#ffffff !default;
+$base-text-color:				#444444 !default;
+$base-border-color:				#e7e8ea !default;
+
+// Accents
+$accent-color-1:				#5fdede !default;
+$accent-color-2:				#ffedab !default;
+$accent-color-3:				#dcf9f9 !default;
+
+// Menu Style
+$menustyle-background:                  rgba(255,255,255,0) !default;
+$menustyle-background-active:           #5fdede !default;
+$menustyle-text-color:                  #ffffff !default;
+$menustyle-text-color-active:           #ffffff !default;
+$menustyle-sublevel-text-color:         #000000 !default;
+$menustyle-sublevel-text-color-active:  #000000 !default;
+$menustyle-sublevel-background:         #ffffff !default;
+$menustyle-sublevel-background-active:  #ffffff !default;
+
+// Page Surround
+$pagesurround-background:		$base-background !default;
+
+// Top
+$top-background:				#000000 !default;
+$top-link-color:				#5fdede !default;
+$top-text-color:				#ffffff !default;
+
+// Navigation
+$navigation-background:			rgba(255, 255, 255, 0) !default;
+$navigation-text-color:			#ffffff !default;
+
+// Slideshow
+$slideshow-background:			rgba(255, 255, 255, 0) !default;
+$slideshow-background-image:	false !default;
+$slideshow-text-color:			#ffffff !default;
+
+
+// Header
+$header-background:			   rgba(255, 255, 255, 0) !default;
+$header-text-color:				#888888 !default;
+
+// Above
+$above-background:				rgba(255, 255, 255, 0)!default;
+$above-text-color:				#000000 !default;
+$above-background-image:			false !default;
+
+// Showcase
+$showcase-background:		   rgba(255,255,255,0) !default;
+$showcase-text-color:			#000000 !default;
+
+// Feature
+$feature-background:	    	rgba(255, 255, 255, 0) !default;
+$feature-text-color:			#000000 !default;
+
+// Main
+$main-background:				rgba(255, 255, 255, 0) !default;
+$main-text-color:				#888888 !default;
+
+// Expanded
+$expanded-background:		   	#000000 !default;
+$expanded-text-color:			#888888 !default;
+
+// Extension
+$extension-background:	    	rgba(255,255,255,0) !default;
+$extension-text-color:			#000000 !default;
+
+// Bottom
+$bottom-background:				rgba(255, 255, 255, 0) !default;
+$bottom-text-color:				#000000 !default;
+
+// Utility
+$utility-background:			rgba(255, 255, 255, 0) !default;
+$utility-text-color:			#000000 !default;
+
+// Footer
+$footer-background:				#000000 !default;
+$footer-background-image:		false !default;
+$footer-text-color:				#cccccc !default;
+$footer-link-color:				#ffedab !default;
+$footer-link-hover-color:		#5fdede !default;
+
+// Copyright
+$copyright-background:			#000000 !default;
+$copyright-text-color:			#888888 !default;
+
+// Off Canvas
+$offcanvas-background:			#5fdede !default;
+$offcanvas-text-color:			#ffffff !default;
+$offcanvas-toggle-color:		#5fdede !default;
+
+// Block Variations
+$box1-background:				$accent-color-1 !default;
+$box2-background:				$accent-color-1 !default;
+$box3-background:				$black !default;
+$box4-background:				darken($base-background, 5%) !default;
+$box-white-background: 			$white !default;
+$box-grey-background: 			$grey !default;
+$box-darkgrey-background: 		$darkgrey !default;
+$box-pink-background: 			$pink !default;
+$box-red-background: 			$red !default;
+$box-purple-background:			$purple !default;
+$box-blue-background:			$blue !default;
+$box-orange-background: 		$orange !default;
+
+// System Messsages and Alerts
+$warning-color:					#c09853;
+$error-color:					#b94a48;
+$info-color:					#3a87ad;
+$success-color:					#468847;
+
+// Typography
+$rule-color:					fade-out($base-border-color, 0.75);
+$code-text:						#c7254e;
+$code-bg:						#f9f2f4;
+$pre-text:						#237794;
+$pre-bg:						#f6f6f6;
+
+// Borders
+$border-color-hover:			$accent-color-1;
+$border-color-focus:			$accent-color-1;
+$border-color-light:			rgba(0, 0, 0, 0.1);
+
+// Shadows
+$base-box-shadow: 				inset 0 1px 3px hsla(0, 0%, 0%, 0.06);
+$base-content-shadow:			2px 1px 15px rgba(0, 0, 0, 0.05);

@@ -1,0 +1,185 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_positions
+  timestamp: 1457353897
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 17'
+      - 'social-7220 13'
+      - 'menu-4196 70'
+  /header/:
+    -
+      - 'position-position-5757 70'
+      - 'position-position-2741 30'
+  /slideshow/:
+    -
+      - position-position-7513
+  /above/:
+    -
+      - 'spacer-5632 40'
+      - 'position-position-1219 30'
+      - 'position-position-8299 30'
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/:
+    -
+      - position-position-9511
+  /expanded/:
+    -
+      - 'position-position-4925 30'
+      - 'position-position-3146 70'
+  /extension/:
+    -
+      - position-position-4367
+    -
+      - position-position-4727
+  /bottom/:
+    -
+      - position-position-2483
+  /footer/:
+    -
+      - 'position-position-6548 60'
+      - 'position-position-2750 40'
+  /copyright/:
+    -
+      - copyright-5748
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  header:
+    attributes:
+      boxed: '0'
+      class: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nomargintop
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+  social-7220:
+    block:
+      variations: align-left
+  menu-4196:
+    block:
+      variations: align-right
+  position-position-5757:
+    title: 'Module Position'
+    attributes:
+      key: header-a
+  position-position-2741:
+    title: 'Module Position'
+    attributes:
+      key: header-b
+  position-position-7513:
+    title: 'Module Position'
+    attributes:
+      key: slideshow-a
+    block:
+      variations: 'nomarginall nopaddingall'
+  position-position-1219:
+    title: 'Module Position'
+    attributes:
+      key: above-b
+  position-position-8299:
+    title: 'Module Position'
+    attributes:
+      key: above-c
+  position-position-9511:
+    title: 'Module Position'
+    attributes:
+      key: feature-a
+  position-position-4925:
+    title: 'Module Position'
+    attributes:
+      key: expanded-a
+  position-position-3146:
+    title: 'Module Position'
+    attributes:
+      key: expanded-b
+  position-position-4367:
+    title: 'Module Position'
+    attributes:
+      key: extension-a
+    block:
+      variations: center
+  position-position-4727:
+    title: 'Module Position'
+    attributes:
+      key: extension-b
+  position-position-2483:
+    title: 'Module Position'
+    attributes:
+      key: bottom-a
+  position-position-6548:
+    title: 'Module Position'
+    attributes:
+      key: footer-a
+  position-position-2750:
+    title: 'Module Position'
+    attributes:
+      key: footer-b
+  copyright-5748:
+    block:
+      class: g-copyright
+  mobile-menu-7951:
+    title: 'Mobile Menu'

@@ -1,0 +1,25 @@
+#g-container-main {
+    background: $main-background;
+    color: $main-text-color;
+
+    margin-left: 10%;
+    margin-right: 10%;
+    @media only all and (max-width: 74.938rem) and (min-width: $breakpoints-tablet-container) {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    @include breakpoint(tablet-range) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    @include breakpoint(mobile-only) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@media print {
+    #g-mainbar {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

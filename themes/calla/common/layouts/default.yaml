@@ -1,0 +1,307 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1528777392
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /slideshow/:
+    -
+      - 'verticalmenu-8085 20'
+      - 'position-position-6661 80'
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /feature/:
+    -
+      - position-position-7980
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-9414
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/:
+    -
+      - 'simplemenu-6826 50'
+      - 'newsletter-1493 50'
+    -
+      - branding-2782
+  /copyright/: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  header:
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  footer:
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: 'section-horizontal-paddings section-vertical-paddings'
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  verticalmenu-8085:
+    title: 'Vertical Menu'
+    attributes:
+      class: ''
+      title: ''
+    block:
+      class: 'box-black g-vnavigation-container'
+      variations: 'nomarginall nopaddingall'
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  simplemenu-6826:
+    title: 'Bottom Menu'
+    attributes:
+      title: ''
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Overview
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Particles
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Typography
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Block Variations'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Documentation
+          title: Features
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'About Us'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Pricing
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Blog
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Portfolio
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Contact
+          title: Pages
+        -
+          items:
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: Fullwidth
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Left Sidebar'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Right Sidebar'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Two Sidebars'
+            -
+              icon: ''
+              link: '#'
+              target: _self
+              title: 'Rows & Columns'
+          title: Layouts
+    block:
+      class: g-bottom-simplemenu
+  newsletter-1493:
+    attributes:
+      action: 'https://rockettheme.us7.list-manage.com/subscribe/post?u=15e44abe1131903bf897546b4&amp;id=77eb86ad37'
+      layout: g-newsletter-stack-fullwidth
+      style: g-newsletter-square
+      title: Newsletter
+      headtext: 'Stay up to date. Sign up today.'
+      inputboxtext: 'Your email...'
+      buttontext: ''
+    block:
+      class: 'wiggle wiggle-static'
+      variations: box6
+  branding-2782:
+    attributes:
+      content: '&copy; 2019 by <a href="https://www.rockettheme.com/" title="RocketTheme" class="g-powered-by">RocketTheme</a>. All rights reserved.'
+    block:
+      variations: center

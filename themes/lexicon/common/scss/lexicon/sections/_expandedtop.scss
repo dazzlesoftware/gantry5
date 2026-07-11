@@ -1,0 +1,11 @@
+#g-expandedtop {
+    background: $expandedtop-background;
+    color: $expandedtop-text-color;   
+}
+
+@media print {
+	#g-expandedtop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

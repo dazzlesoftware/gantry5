@@ -1,0 +1,403 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/3-col-right.png'
+  name: 3_column_-_right
+  timestamp: 1505817160
+layout:
+  /top/:
+    -
+      - system-messages-9501
+    -
+      - 'position-8586 33.3'
+      - 'position-1364 33.3'
+      - 'position-8059 33.3'
+  /navigation/:
+    -
+      - 'position-9832 20'
+      - 'position-4507 60'
+      - 'position-8268 5'
+      - 'position-3648 15'
+  /header/:
+    -
+      - 'position-7300 33.3'
+      - 'position-4990 33.3'
+      - 'position-7929 33.3'
+  /container-6235/:
+    -
+      -
+        'slideleft 25':
+          -
+            - position-7912
+      -
+        'slidecenter 50':
+          -
+            - position-8668
+      -
+        'slideright 25':
+          -
+            - position-7171
+  /showcase/:
+    -
+      - 'position-5537 33.3'
+      - 'position-2104 33.3'
+      - 'position-6095 33.3'
+  /above/:
+    -
+      - 'position-1321 33.3'
+      - 'position-8233 33.3'
+      - 'position-5783 33.3'
+  /utility/:
+    -
+      - 'position-2459 33.3'
+      - 'position-2903 33.3'
+      - 'position-5997 33.3'
+  /feature/:
+    -
+      - 'position-7820 33.3'
+      - 'position-8800 33.3'
+      - 'position-9268 33.3'
+  /container-8740/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-5858
+      -
+        'aside 20':
+          -
+            - position-6450
+      -
+        'mainbody 60':
+          -
+            - 'position-3386 33.3'
+            - 'position-1768 33.3'
+            - 'position-5386 33.3'
+          -
+            - system-content-7329
+  /expanded/:
+    -
+      - 'position-5785 33.3'
+      - 'position-4100 33.3'
+      - 'position-1158 33.3'
+  /extension/:
+    -
+      - 'position-7325 33.3'
+      - 'position-9711 33.3'
+      - 'position-1480 33.3'
+  /bottom/:
+    -
+      - 'position-5011 33.3'
+      - 'position-2301 33.3'
+      - 'position-6327 33.3'
+  /container-2794/:
+    -
+      -
+        'footer 75':
+          -
+            - 'position-6072 33.3'
+            - 'position-7885 33.3'
+            - 'position-3306 33.3'
+      -
+        'footside 25':
+          -
+            - position-1687
+  /copyright/:
+    -
+      - 'position-5691 33.3'
+      - 'position-6662 33.3'
+      - 'position-1917 33.3'
+  offcanvas:
+    -
+      - mobile-menu-8046
+    -
+      - position-3228
+structure:
+  top:
+    type: section
+    attributes:
+      id: g-top
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      id: g-navigation
+      boxed: ''
+  header:
+    attributes:
+      id: g-header
+      boxed: ''
+  slideleft:
+    type: section
+    attributes:
+      id: g-slideleft
+  slidecenter:
+    type: section
+    attributes:
+      id: g-slidecenter
+  slideright:
+    type: section
+    attributes:
+      id: g-slideright
+  container-6235:
+    attributes:
+      id: lideshow
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      id: g-showcase
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      id: g-above
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      id: g-utility
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      id: g-feature
+      boxed: ''
+  sidebar:
+    type: section
+    attributes:
+      id: g-sidebar
+  aside:
+    attributes:
+      id: g-aside
+  mainbody:
+    type: section
+    attributes:
+      id: g-mainbody
+  container-8740:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      id: g-expanded
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      id: g-extension
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      id: g-bottom
+      boxed: ''
+  footer:
+    attributes:
+      id: g-footer
+  footside:
+    type: section
+    attributes:
+      id: g-footside
+  container-2794:
+    attributes:
+      id: ooter
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      id: g-copyright
+      boxed: ''
+  offcanvas:
+    attributes:
+      id: g-offcanvas
+content:
+  system-messages-9501:
+    title: Messages
+  position-8586:
+    title: Top-a
+    attributes:
+      key: top-a
+  position-1364:
+    title: Top-b
+    attributes:
+      key: top-b
+  position-8059:
+    title: Top-c
+    attributes:
+      key: top-c
+  position-9832:
+    title: Navigation-a
+    attributes:
+      key: navigation-a
+  position-4507:
+    title: Navigation-b
+    attributes:
+      key: navigation-b
+  position-8268:
+    title: Navigation-c
+    attributes:
+      key: navigation-c
+  position-3648:
+    title: Navigation-d
+    attributes:
+      key: navigation-d
+  position-7300:
+    title: Header-a
+    attributes:
+      key: header-a
+  position-4990:
+    title: Header-b
+    attributes:
+      key: header-b
+  position-7929:
+    title: Header-c
+    attributes:
+      key: header-c
+  position-7912:
+    title: Slideshow-a
+    attributes:
+      key: slideshow-a
+  position-8668:
+    title: Slideshow-b
+    attributes:
+      key: slideshow-b
+  position-7171:
+    title: Slideshow-c
+    attributes:
+      key: slideshow-c
+  position-5537:
+    title: Showcase-a
+    attributes:
+      key: showcase-a
+  position-2104:
+    title: Showcase-b
+    attributes:
+      key: showcase-b
+  position-6095:
+    title: Showcase-c
+    attributes:
+      key: showcase-c
+  position-1321:
+    title: Above-a
+    attributes:
+      key: above-a
+  position-8233:
+    title: Above-b
+    attributes:
+      key: above-b
+  position-5783:
+    title: Above-c
+    attributes:
+      key: above-c
+  position-2459:
+    title: Utility-a
+    attributes:
+      key: utility-a
+  position-2903:
+    title: Utility-b
+    attributes:
+      key: utility-b
+  position-5997:
+    title: Utility-c
+    attributes:
+      key: utility-c
+  position-7820:
+    title: Feature-a
+    attributes:
+      key: feature-a
+  position-8800:
+    title: Feature-b
+    attributes:
+      key: feature-b
+  position-9268:
+    title: Feature-c
+    attributes:
+      key: feature-c
+  position-5858:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-6450:
+    title: Aside
+    attributes:
+      key: aside
+  position-3386:
+    title: Mainbar-a
+    attributes:
+      key: mainbar-a
+  position-1768:
+    title: Mainbar-b
+    attributes:
+      key: mainbar-b
+  position-5386:
+    title: Mainbar-c
+    attributes:
+      key: mainbar-c
+  position-5785:
+    title: Expanded-a
+    attributes:
+      key: expanded-a
+  position-4100:
+    title: Expanded-b
+    attributes:
+      key: expanded-b
+  position-1158:
+    title: Expanded-c
+    attributes:
+      key: expanded-c
+  position-7325:
+    title: Extension-a
+    attributes:
+      key: extension-a
+  position-9711:
+    title: Extension-b
+    attributes:
+      key: extension-b
+  position-1480:
+    title: Extension-c
+    attributes:
+      key: extension-c
+  position-5011:
+    title: Bottom-a
+    attributes:
+      key: bottom-a
+  position-2301:
+    title: Bottom-b
+    attributes:
+      key: bottom-b
+  position-6327:
+    title: Bottom-c
+    attributes:
+      key: bottom-c
+  position-6072:
+    title: Footer-a
+    attributes:
+      key: footer-a
+  position-7885:
+    title: Footer-b
+    attributes:
+      key: footer-b
+  position-3306:
+    title: Footer-c
+    attributes:
+      key: footer-c
+  position-1687:
+    title: Footside-a
+    attributes:
+      key: footside-a
+  position-5691:
+    title: Copyright-a
+    attributes:
+      key: copyright-a
+  position-6662:
+    title: Copyright-b
+    attributes:
+      key: copyright-b
+  position-1917:
+    title: Copyright-c
+    attributes:
+      key: copyright-c
+  position-3228:
+    title: Offcanvas
+    attributes:
+      key: offcanvas

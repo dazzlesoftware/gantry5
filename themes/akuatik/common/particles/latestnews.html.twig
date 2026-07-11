@@ -1,0 +1,55 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-latestnews" data-latestnews-id="{{ id }}" data-latestnews-accesstoken="{{ particle.accesstoken }}">
+        <div class="g-latestnews-grid {{ particle.cols }}">
+            <div class="g-latestnews-grid-sizer"></div>
+            {% if particle.title %}
+                <div class="g-latestnews-grid-item g-latestnews-title">
+                    {% if particle.uppertitle %}
+                        <span class="g-latestnews-uppertitle">{{ particle.uppertitle|raw }}</span>
+                    {% endif %}
+                    {{ particle.title }}
+                </div>
+            {% endif %}
+
+            {% for item in particle.items %}
+                <div class="g-latestnews-grid-item">
+                    <div class="g-latestnews-grid-item-wrapper g-latestnews-layout-{{ item.layout }} {{item.variant}}">
+                        {% if item.image %}
+                            <div class="g-latestnews-grid-item-image">
+                                <img src="{{ url(item.image)|e }}" alt="{{ item.title }}"/>
+                            </div>
+                        {% endif %}
+
+                        <div class="g-latestnews-grid-item-content">
+                            {% if item.layout == 'text' %}
+                                {% if item.description %}
+                                    <div class="g-latestnews-grid-item-description">
+                                        {{ item.description|raw }}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if item.date %}
+                                <div class="g-latestnews-grid-item-date">
+                                    <span>{{ item.date|date(particle.date_format) }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <a href="{{ item.url }}" target="{{ item.target|default('_blank') }}" class="g-latestnews-link-overlay"></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
+    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/latestnews.init.js') }}"></script>
+{% endblock %}
+

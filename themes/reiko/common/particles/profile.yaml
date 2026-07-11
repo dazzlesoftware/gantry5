@@ -1,0 +1,79 @@
+name: Profile
+description: Display profile.
+type: particle
+icon: fa fa-user
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    image:
+      type: input.imagepicker
+      label: Image
+      description: Select main profile image.
+
+    max_height:
+      type: input.number
+      label: Photo maximum height
+      description: Please specify max photo height.
+
+    upper_title:
+      type: input.text
+      label: Upper Title
+      description: Small text above main title.
+      placeholder: From the coach
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    subtitle:
+      type: textarea.textarea
+      label: Subtitle
+      description: Bolder text below main header
+
+    description:
+      type: textarea.textarea
+      label: Profile description
+      description: Main profile text
+
+    social:
+      type: collection.list
+      array: true
+      label: Social icons
+      description: Collection of social icons.
+      value: name
+      ajax: true
+
+      fields:
+        .icon:
+          type: input.icon
+          label: Social icon
+          description: Select desired icon.
+
+        .color:
+          type: input.colorpicker
+          label: Icon Color
+
+        .url:
+          type: input.text
+          label: Url
+          description: Customize icon url.
+
+        .target:
+          type: select.selectize
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _blank
+          options:
+              _self: Self
+              _blank: New Window
+

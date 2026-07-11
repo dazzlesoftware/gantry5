@@ -1,0 +1,174 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1601997578
+layout:
+  /top/: {  }
+  /navigation/: {  }
+  /slideshow/:
+    -
+      - simplecontent-7992
+  /header/: {  }
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-1560
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/: {  }
+  /bottom/: {  }
+  /container-footer/:
+    -
+      -
+        footer: {  }
+        /copyright/: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  container-top:
+    attributes:
+      boxed: ''
+      class: 'no-background-image'
+      extra: {  }
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: ''
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+    inherit:
+      outline: default
+      include:
+        - children
+  container-footer:
+    attributes:
+      boxed: ''
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  simplecontent-7992:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: '<strong>We</strong> are sorry!'
+          author: ''
+          leading_content: 'Gantry 5 provides a custom error page for you to configure with either positions, particles or a combination of both, as well as styling.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'We are sorry!'
+    block:
+      class: ''

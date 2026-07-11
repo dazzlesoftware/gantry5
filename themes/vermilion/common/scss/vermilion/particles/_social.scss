@@ -1,0 +1,35 @@
+.rt-social-buttons {
+    .fp-social & {
+        float: right;
+        margin-top: 25px;
+
+        @include breakpoint(mobile-only) {
+            float: none;
+            text-align: center;
+            margin: 0 0 25px 0;
+        }
+    }
+    .social-button {
+        color: $white;
+        border-radius: 3px; 
+        margin: 0 5px;   
+        height: 40px;
+        width: 40px;
+        font-size: 1.2em; 
+        line-height: 40px;
+        display: inline-block;
+        text-align: center;
+    }
+    .social-button.facebook {
+        background: #45619D;
+    }
+    .social-button.twitter {
+        background: #55ACEE;
+    }
+    .social-button.google {
+        background: #D5402B;
+    }
+    .social-button.rss {
+        background: #FF6600;
+    }
+}

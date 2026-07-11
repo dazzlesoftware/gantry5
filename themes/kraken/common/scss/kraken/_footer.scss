@@ -1,0 +1,188 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;
+
+	border-top: 5px solid $rule-color;
+	border-bottom: 1px solid $rule-color;
+
+	// Container
+	.g-container {
+		@include breakpoint(mobile-only) {
+			text-align: center;
+			border: 0;
+		}		
+	}
+	.g-content {
+		padding: 0 $content-padding;
+		@include breakpoint(mobile-only) {
+			padding: $content-padding/2 $content-padding 0 $content-padding;
+		}		
+	}
+
+	// Accent
+	a {
+		color: darken($footer-text-color, 15%);
+		font-weight: bold;
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+
+	// Title
+	.g-title {
+		color: darken($footer-text-color, 35%);
+	}
+
+	// Logo
+	.g-logo {
+		font-family: get-font-family($font-family-title);
+		font-weight: $font-weight-bold;		
+		font-size: $core-font-size + 0.5;
+		transition: none;
+		@include breakpoint(tablet-range) {
+			letter-spacing: 0;
+		}	
+		span {
+			text-transform: uppercase;
+			display: inline-block;
+			vertical-align: middle;
+		}
+    &.g-logo-alt {
+  		.g-style-preset7 &, .g-style-preset8 & {
+  			img {
+  				display: none;
+  			}
+  			span {
+  				&:before {
+  					content: "";
+  					display: inline-block;
+  					width: 48px;
+  					height: 48px;
+  					vertical-align: -0.85rem;
+  					background: url("gantry-theme://images/logo/logo.png") no-repeat;
+  				}
+        }
+			}
+		}	
+	}
+	// Horizontal Menu
+	.g-horizontalmenu-block {
+		border-left: 1px solid $rule-color;
+		border-right: 1px solid $rule-color;
+		margin: 0 -1px;
+		.g-content {
+			padding-top: 0.7rem;
+		}
+		@include breakpoint(mobile-only) {
+			border: 0;
+		}		
+	}
+	.g-horizontalmenu li {
+		vertical-align: bottom;
+		@include breakpoint(small-mobile-range) {
+			font-size: $core-font-size - 0.2;
+			margin: 0 3px;
+		}		
+	}
+
+	// Social Items
+	.g-social {
+		padding-top: 0.5rem;
+		text-align: right;
+    	.dir-rtl & {
+    		text-align: left;
+    	}		
+		a {
+			margin: 0;
+		}
+		@include breakpoint(mobile-only) {
+			text-align: center;
+			margin-bottom: 1.5rem;
+		}			
+	}
+
+	// Info List - Grid Menu
+	.g-infolist {
+		&.g-gridmenu {
+			margin-top: 1rem;
+			.g-infolist-item {
+				border-bottom: none;
+				margin: 0 !important;
+				padding: 0 0 $content-padding/2 0;
+			}
+			.g-infolist-item-title {
+				font-size: $core-font-size - 0.1;
+				text-transform: uppercase;
+				@include breakpoint(desktop-range) {
+					font-size: $core-font-size - 0.2;
+				}
+				@include breakpoint(tablet-range) {
+					font-size: $core-font-size - 0.45;
+				}		
+				@include breakpoint(mobile-only) {
+					font-size: $core-font-size - 0.2;
+				}					
+				a {
+					font-weight: normal;
+				}					
+			}
+			.g-infolist-item-text {
+				padding: 0;
+			}
+			&.g-2cols {
+				.g-infolist-item {
+					@include breakpoint(mobile-only) {
+						width: 47% !important;
+					}						
+				}
+			}
+		}
+	}
+
+	// About
+	.g-about {
+		p {
+			margin-top: 0.85rem;
+			font-size: $core-font-size - 0.1;
+		}		
+	}
+
+	// Contact
+	.g-contact {
+		&.g-office-hours {
+			.g-contact-item {
+				@include breakpoint(tablet-range) {
+					padding-left: 0;
+					padding-right: 0;
+				}				
+			}
+			.g-contact-icon {
+				@include breakpoint(tablet-range) {
+					display: none;
+				}				
+			}
+		}
+	}
+
+	// Sample Sitemap
+	.g-sample-sitemap {
+		@include breakpoint(mobile-only) {
+			.g-block {
+				flex: 0 0 auto;
+				width: 50% !important;
+			}
+		}
+		li a {
+			@include breakpoint(tablet-range) {
+				font-size: $core-font-size - 0.2;
+			}
+		}			
+	}
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

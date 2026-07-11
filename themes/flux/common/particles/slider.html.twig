@@ -1,0 +1,44 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div id="{{ id }}" class="g-slider {{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-items="{{ particle.items_amount }}" data-slider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div class="g-slider-slides g-owlcarousel owl-carousel" data-slider-slides-id="{{ id }}">
+            {% for item in particle.items %}
+            <div>
+                <div class="g-slider-slides-item-title">
+                    {{ item.title }}
+                </div>
+                {% if item.link %}
+                <div class="g-slider-slides-item-link">
+                    <a href="{{ item.link }}" class="button button-xlarge">{{ item.linktext }}</a>
+                </div>
+                {% endif %}
+
+                <img src="{{ url(item.image)|e }}" alt="{{ item.imagealt }}">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="g-slider-carousel g-owlcarousel owl-carousel" data-slider-carousel-id="{{ id }}" data-slider-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}">
+            {% for item in particle.items %}
+            <div>
+                <div class="g-slider-carousel-image-container">
+                    <img src="{{ url(item.image)|e }}" alt="{{ item.imagealt }}">
+
+                    <div class="g-slider-carousel-image-hover">
+                        <i class="{{ item.icon }}" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+<script src="{{ url('gantry-theme://js/slider.init.js') }}"></script>
+{% endblock %}

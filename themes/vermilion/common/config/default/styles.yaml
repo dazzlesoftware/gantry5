@@ -1,0 +1,70 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#df392e'
+    - '#feb948'
+    - '#3ca5da'
+  styles:    
+    base:
+      background: '#e8ecee'
+      background-image: 'gantry-media://backgrounds/pagesurround/preset1/background.jpg'
+      text-color: '#333333'
+    accent:
+      color-1: '#df392e'
+      color-2: '#feb948'
+      color-3: '#3ca5da'
+    font:
+      family-default: 'lato, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'lato-light, Verdana, Helvetica, Arial, sans-serif'
+      family-promo: 'lato-italic, Verdana, Helvetica, Arial, sans-serif'
+      family-promo-alt: 'lato-light-italic, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#2d3945'
+      text-color: '#6f849b'
+    top:
+      background: 'rgba(255, 255, 255, 0)'
+      text-color: '#ffffff' 
+    utility:
+      background: '#ffffff'
+      text-color: '#6f849b'      
+    showcase:
+      background: '#2d3945'
+      background-image: 'gantry-media://backgrounds/showcase/background.jpg'
+      text-color: '#ffffff'
+    feature:
+      background: '#ffffff'
+      text-color: '#6f849b'
+    maintop:
+      background: '#df392e'
+      background-image: 'gantry-media://backgrounds/maintop/background.jpg'
+      text-color: '#ffffff'
+    expandedtop:
+      background: '#2d3945'
+      text-color: '#6f849b'
+    main:
+      background: '#f8f8f8'
+      text-color: '#6e6e6e'   
+    expandedbottom:
+      background: '#ffffff'
+      text-color: '#6f849b'    
+    mainbottom:
+      background: '#3ca5da'
+      text-color: '#ffffff'
+    extension:
+      background: '#2d3945'
+      text-color: '#6f849b'
+    bottom:
+      background: '#ffffff'
+      text-color: '#6f849b'
+    footer:
+      background: '#ffffff'
+      text-color: '#6f849b'
+    copyright:
+      background: '#ffffff'
+      text-color: '#6f849b'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#df392e'
+      toggle-color: '#df392e'
+      

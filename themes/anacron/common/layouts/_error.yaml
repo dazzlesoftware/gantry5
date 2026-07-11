@@ -1,0 +1,168 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1534552098
+layout:
+  navigation: {  }
+  /showcase/:
+    -
+      - custom-9328
+  top: {  }
+  utility: {  }
+  feature: {  }
+  maintop: {  }
+  expandedtop: {  }
+  /main/:
+    -
+      -
+        'mainbody 60': {  }
+      -
+        'sidebar 40': {  }
+  expandedbottom: {  }
+  mainbottom: {  }
+  extension: {  }
+  /footer-surround/:
+    -
+      -
+        bottom: {  }
+        /footer/: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  maintop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  expandedtop:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbody:
+    type: section
+    attributes:
+      class: ''
+  sidebar:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  main:
+    type: container
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expandedbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  footer:
+    attributes:
+      boxed: ''
+      class: rt-overlay-dark
+  footer-surround:
+    type: container
+    title: 'Footer Surround'
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  custom-9328:
+    title: 'Custom HTML'
+    attributes:
+      title: ''
+      html: "<div class=\"rt-error-body\">\n\t\t\t\t\t\t\t<div class=\"rt-error-header\">\n\t\t\t\t\t\t\t\t<div class=\"rt-error-code\">404</div>\n\t\t\t\t\t\t\t\t<div class=\"rt-error-code-desc\">Component not found.</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"rt-error-content\">\n\t\t\t\t\t\t\t\t<div class=\"rt-error-title\">Oh My Gosh! You Found It!!!</div>\n\t\t\t\t\t\t\t\t<div class=\"rt-error-message\">Looks like the page you're trying to visit doesn't exist.<br>Please check the URL and try your luck again.</div>\n\t\t\t\t\t\t\t\t<div class=\"rt-error-button\"><a href=\"#\" class=\"readon\"><span>Take Me Home</span></a></div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"clear\"></div>\n\t\t\t\t\t\t</div>"
+    block:
+      variations: center

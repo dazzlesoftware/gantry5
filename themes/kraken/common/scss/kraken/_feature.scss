@@ -1,0 +1,56 @@
+#g-feature {
+    background: $feature-background;
+    color: $feature-text-color;
+
+  // Home
+  .g-home &, .g-homepositions & {
+    // Module Title
+    .g-title {
+      text-align: center;
+      text-transform: none;
+      font-family: get-font-family($font-family-default);
+      font-weight: $font-weight-regular;
+      font-size: $core-font-size + 0.2;
+      width: 100%;
+      margin: 1rem 0 0.5rem 0;
+    }
+    // Testimonials
+    .g-testimonial-item {
+      margin-bottom: 2rem;
+    }
+    .fp-testimonial {
+      .g-3cols {
+        .g-testimonial-item:nth-child(3n),
+        .g-testimonial-item:nth-child(3n-2) {
+          flex-basis: 21%;
+          width: 21%;
+        }
+        .g-testimonial-item:nth-child(3n-1) {
+          flex-basis: 48%;
+          width: 48%;
+        }
+        .g-testimonial-item {
+          @include breakpoint(mobile-only) {
+            flex-basis: 100% !important;
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  } 
+
+  // RokSprocket Strips
+  .strips-quote {
+    font-size: $core-font-size + 0.25;
+    font-family: Georgia;
+    font-style: italic;
+    padding: 1rem 1.5rem;
+  }    
+}
+
+@media print {
+  #g-feature {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}

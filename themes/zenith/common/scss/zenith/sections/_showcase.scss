@@ -1,0 +1,55 @@
+#g-showcase {
+    color: $showcase-text-color;
+    background: $showcase-background;
+    position: relative;
+
+    @include breakpoint (mobile-only){
+        overflow: hidden;
+    }
+
+    .g-logo {
+        @include breakpoint (mobile-only){
+        height: 300px;
+        overflow: hidden;
+        }
+    }
+
+    &.fp-showcase {
+        .g-title {
+            display: block;
+            font-weight: $font-weight-bold;
+            font-size: $core-font-size;
+            padding: $content-padding;
+            margin: $content-margin;
+            position: absolute;
+
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .dir-rtl & {
+                padding-right: $content-padding;
+                padding-left: 0;
+            } // Upper Title
+        }
+    }
+
+    .bb-item {
+        .g-simplecontent-item-leading-content {
+            text-shadow: 0 none;
+            color: transparentize($white, 0.4);
+        }
+
+        .g-simplecontent-item-readmore-container {
+            padding-top: $content-padding;
+        }
+    }
+}
+
+@media print {
+    #g-showcase {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,226 @@
+.g-eventlist-container {
+    display: flex;
+    margin-right: -10vw;
+    margin-left: 10vw;
+    margin-top: 10vw;
+    .dir-rtl & {
+        margin-right: 10vw;
+        margin-left: -10vw;
+    }
+    @include breakpoint(mobile-only) {
+        margin: 0 $content-padding;
+        flex-flow: column;
+    }
+    h2 {
+        font-weight: $font-weight-bold;
+        color: $white;
+        @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
+        span {
+            display: block;
+            font-weight: $font-weight-semibold;
+            color: $base-text-color;
+            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+            text-transform: uppercase;
+        }
+    }
+    .g-eventlist-carousel {
+        width: 40%;
+        margin-right: -10vw;
+        margin-top: -10vw;
+        .dir-rtl & {
+            margin-right: 0;
+            margin-left: -10vw;
+        }
+        @include breakpoint(mobile-only) {
+            margin: 0;
+            width: 100%;
+        }
+        .g-eventlist-item-image {
+            position: relative;
+            .g-eventlist-item-image-content {
+                color: $white;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2vw;
+                .g-eventlist-item-image-location {
+                    font-weight: $font-weight-semibold;
+                    @include responsive-font($responsive-font-size + 1.1, $core-font-size + 0.5, false, false);
+                }
+                div {
+                    position: relative;
+                    z-index: 1;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 15vw;
+                    @include breakpoint(mobile-only) {
+                        height: 100%;
+                    }
+                    background: linear-gradient(to top, $slideshow-background 0%, rgba(15, 15, 15, 0) 50%);
+                    @include breakpoint(mobile-only) {
+                        background-color: transparent !important;
+                        background: linear-gradient(to top, $slideshow-background 0%, rgba(15, 15, 15, 0) 130%);
+                    }
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    .g-eventlist-items {
+        width: 60%;
+        background: $black;
+        padding: 10vw;
+        padding-left: 20vw;
+        .dir-rtl & {
+            padding-left: 10vw;
+            padding-right: 20vw;
+        }
+        @include breakpoint(mobile-only) {
+            padding-left: 10vw;
+            width: 100%;
+
+            .dir-rtl & {
+                padding-right: 10vw;
+            }
+        }
+        .button-4 {
+            color: $white !important;
+            border-color: $white;
+            &:hover {
+                border-color: $accent-color-1;
+            }
+        }
+        a {
+            color: $white;
+        }
+        .g-eventlist-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+            @include breakpoint(tablet-range) {
+                flex-direction: column;
+            }
+            @include breakpoint(small-mobile-range) {
+                flex-direction: column;
+            }
+            border-bottom: 2px solid transparentize($white, 0.90);
+            padding-top: $content-margin + 0.1  0;
+            cursor : pointer;
+            &:before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                background-color: transparent;
+                position: absolute;
+                left: -2rem;
+                top: 2.5rem;
+                .dir-rtl & {
+                    left: auto;
+                    right: -1rem;
+                }
+                @include breakpoint(tablet-range) {
+                    margin: 0 auto;
+                    position: static;
+                }
+                @include breakpoint(mobile-only) {
+                    content: none;
+                }
+            }
+            &.selected {
+                &:before {
+                    background-color: $accent-color-1;
+                }
+            }
+        }
+        &:last-child {
+            border: 0 none;
+        }
+        .g-eventlist-date {
+            text-align: center;
+            line-height: $core-line-height - 0.4;
+            padding-right: $content-margin + $content-padding;
+            padding-left: $content-margin;
+            .dir-rtl & {
+                padding-left: $content-margin + $content-padding;
+                padding-right: $content-margin;
+            }
+            padding-top: $content-margin;
+            padding-bottom: $content-margin;
+            @include breakpoint(tablet-range) {
+                padding: $content-margin 0;
+            }
+            @include breakpoint(small-mobile-range) {
+                padding: $content-margin 0;
+            }
+            .g-eventlist-date-line1 {
+                font-weight: $font-weight-semibold;
+                font-size: $core-font-size + 0.1;
+                color: transparentize($white, 0.50);
+            }
+            .g-eventlist-date-line2 {
+                font-size: $core-font-size + 1.1;
+                font-weight: $font-weight-bold;
+                color: $white;
+            }
+        }
+        .g-eventlist-location {
+            flex-grow: 1;
+            display: flex;
+            @include breakpoint(tablet-range) {
+                justify-content: center;
+            }
+            @include breakpoint(small-mobile-range) {
+                justify-content: center;
+            }
+            line-height: $core-line-height;
+            padding-top: $content-margin + 0.1;
+            padding-bottom: $content-margin + 0.1;
+            .g-eventlist-location-line1 {
+                font-size: $core-font-size + 0.4;
+                font-weight: $font-weight-semibold;
+            }
+            .g-eventlist-location-line2 {
+                font-size: $core-font-size + 0.3;
+                opacity: 0.5;
+            }
+            .g-eventlist-location-icon {
+                font-size: $core-font-size + 1.4;
+                padding-right: $content-margin + 0.3;
+                .dir-rtl & {
+                    padding: 0;
+                    padding-left: $content-margin + 0.3;
+                }
+                opacity: 1;
+                color: $white;
+            }
+        }
+        .g-eventlist-buttons {
+            .button {
+                margin: 0;
+            }
+            padding-top: $content-margin + 0.1;
+            padding-bottom: $content-margin + 0.1;
+            @include breakpoint(tablet-range) {
+                text-align: center;
+            }
+            @include breakpoint(small-mobile-range) {
+                text-align: center;
+            }
+        }
+    }
+}

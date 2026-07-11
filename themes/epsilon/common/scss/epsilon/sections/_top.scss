@@ -1,0 +1,21 @@
+#g-top {
+	color: $top-text-color;	
+
+	@if $top-background-image {
+        background: $top-background url($top-background-image) 50% 50%;
+    } @else { 
+        background-color: $top-background;
+    }
+}
+
+.fp-content-tabs-header {
+    height: 30px;
+    display: block;
+}
+
+@media print {
+	#g-top {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

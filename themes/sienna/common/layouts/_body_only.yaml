@@ -1,0 +1,10 @@
+version: 2
+
+preset:
+  image: 'gantry-admin://images/layouts/body-only.png'
+
+layout:
+  /body/:
+    - system-messages
+    - system-content
+

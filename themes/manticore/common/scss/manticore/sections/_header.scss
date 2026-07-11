@@ -1,0 +1,18 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+
+    position: relative;
+
+    .g-grid {
+        position: relative;
+    }
+
+}
+
+@media print {
+    #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

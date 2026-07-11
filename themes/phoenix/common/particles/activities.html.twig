@@ -1,0 +1,46 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% do gantry.load('lightcase.init') %}
+
+{% block particle %}
+	{% if particle.title %}
+		<h2 class="g-title">{{ particle.title|raw }}</h2>
+	{% endif %}
+
+	<div class="g-activities-mask">
+		<div class="g-activities {{ particle.class|e }}">
+
+			{% if particle.desc %}
+				<div class="g-activities-desc">{{ particle.desc|raw }}</div>
+			{% endif %}
+
+			<div class="g-activities-wrapper {{ particle.cols|e }}">
+
+				{% for activitiesitem in particle.activitiesitems %}
+					<div class="g-activities-item">
+						<div class="g-activities-overlay"></div>
+						<a class="g-activities-link-overlay" href="{{ activitiesitem.url }}"></a>
+
+						{% if particle.pattern == 'enabled' %}
+							<div class="g-activities-pattern">
+								<svg width="373" height="301" viewbox="0 0 373 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 153L270 139V155L0 169V153Z" class="base-pattern-2"/>
+									<path d="M88 292.5L258 284V292L88 300.5V292.5Z" class="base-pattern-1"/>
+									<path d="M303 8.5L473 0V8L303 16.5V8.5Z" class="base-pattern-3"/>
+								</svg>
+							</div>
+						{% endif %}
+
+						<img src="{{ url(activitiesitem.image)|e }}" alt="{{ activitiesitem.caption|e }}"/>
+						<div class="g-activities-caption">
+							<a class="g-activities-link" href="{{ activitiesitem.url }}">
+								{{ activitiesitem.caption }}
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,40 @@
+.fp-header {
+    margin-top: -5rem;
+}
+
+section[id*="g-"]:not(#g-navigation), header[id*="g-"] {
+    position: relative;
+    z-index: 0;
+}
+
+#g-slideshow.fp-slideshow {
+    margin-bottom: 0;
+
+    &:after {
+        background-image: none !important;
+    }
+}
+
+#g-navigation {
+    .g-logo-reiko {
+        img {
+            max-width: 190px;
+        }
+    }
+
+    &.fp-navigation {
+        // Social
+        @include breakpoint(mobile-only) {
+            div[id^="social-"][id$="-particle"] {
+                margin: 0;
+                padding: 0;
+
+                > .g-container,
+                > .g-content {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

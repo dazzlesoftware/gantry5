@@ -1,0 +1,84 @@
+preset: preset1
+base:
+  background: '#ffffff'
+  text-color: '#686868'
+  favicon: ''
+accent:
+  color-1: '#59ca88'
+  color-2: '#5180e8'
+  color-3: '#faa94f'
+font:
+  family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+  family-title: 'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+  family-promo: 'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+top:
+  background: '#4c4f56'
+  text-color: '#ffffff'
+navigation:
+  background: '#000000'
+  text-color: 'rgba(255, 255, 255, 0.8)'
+slideshow:
+  background: '#20232a'
+  text-color: '#ffffff'
+header:
+  background: '#20232a'
+  text-color: '#ffffff'
+above:
+  background: '#181818'
+  text-color: '#ffffff'
+  background-image: 'gantry-media://backgrounds/above/above-bg.jpg'
+showcase:
+  background: '#f1f2f6'
+  text-color: '#787878'
+utility:
+  background: '#ffffff'
+  text-color: '#787878'
+feature:
+  background-1: '#59ca88'
+  background-2: '#5180e8'
+  background-direction: '3'
+  text-color: '#ffffff'
+expanded:
+  background: '#121212'
+  text-color: '#787878'
+extension:
+  background-1: '#59ca88'
+  background-2: '#5180e8'
+  background-direction: '4'
+  text-color: '#ffffff'
+bottom:
+  background: '#20232a'
+  text-color: '#686868'
+footer:
+  background: '#1b1e23'
+  text-color: '#ffffff'
+copyright:
+  background: '#17181d'
+  text-color: '#686868'
+offcanvas:
+  background: '#ffffff'
+  text-color: '#686868'
+  toggle-color: '#ffffff'
+  width: 12rem
+aside:
+  background: '#ffffff'
+  text-color: '#686868'
+main:
+  background: '#ffffff'
+  text-color: '#686868'
+offsidebar:
+  background-1: '#ffffff'
+  background-2: 'rgba(0, 0, 0, 0.00)'
+  text-color: '#686868'
+  large-desktop-width: 15rem
+  desktop-width: 12rem
+  tablet-width: 10rem
+breakpoints:
+  large-desktop-container: 75rem
+  desktop-container: 60rem
+  tablet-container: 48rem
+  large-mobile-container: 30rem
+  mobile-menu-breakpoint: 48rem
+menu:
+  col-width: 180px
+  animation: g-fade-in-up

@@ -1,0 +1,15 @@
+name: Font Families
+description: Font families for the Chimera theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Default Font
+      default: 'Roboto, Verdana, Helvetica, Arial, sans-serif'
+    family-alt:
+      type: input.fonts
+      label: Alternative Font
+      default: 'Walkway, Verdana, Helvetica, Arial, sans-serif'

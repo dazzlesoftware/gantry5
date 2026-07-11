@@ -1,0 +1,9 @@
+kraken-theme:
+  title: 'Kraken Theme'
+  description: 'Sample menu for Kraken theme.'
+
+  items:
+    kraken:
+      title: 'Home'
+      layout: home
+      home: 1

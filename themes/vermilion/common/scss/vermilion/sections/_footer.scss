@@ -1,0 +1,43 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;
+
+	.fp-footer-a .rt-icon-badge {
+		padding-bottom: 100px;
+		@include breakpoint(small-mobile-range) {
+			padding-bottom: 125px;
+		}
+	}
+	.fp-footer-b {
+		.rt-icon-badge {
+			padding-bottom: 25px;
+		}
+	}	
+}
+
+
+
+.fp-footer-b {
+	.readon {
+		width: 100px;
+	}
+}
+
+
+.rt-icon-badge.rt-badge-left {
+    float: left;
+    padding: 0 25px 0 0;
+}
+.rt-icon-badge {
+    display: block;
+    font-size: 5em;
+    height: auto;
+    line-height: normal;
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

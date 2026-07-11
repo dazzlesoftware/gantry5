@@ -1,0 +1,20 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+    border-radius: 0 0 0.3rem 0.3rem;
+
+    a {
+        color: $copyright-text-color;
+        &:hover {
+            color: $accent-color-1;
+            text-decoration: underline;
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

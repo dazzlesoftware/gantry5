@@ -1,0 +1,82 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#f1e5f8'
+    - '#d1f9e9'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+      text-active-color: '#f1e5f8'
+    accent:
+      color-1: '#f1e5f8'
+      color-2: '#d1f9e9'
+    button:
+      text-color: '#5a3b00'
+      background-color: '#f1e5f8'
+    menustyle:
+      background: '#ffffff'
+      text-color: '#888888'
+      text-color-alt: '#888888'
+      text-color-active: '#f1e5f8'
+      background-active: 'rgba(255,255,255, 0)'
+      sublevel-text-color: '#121212'
+      sublevel-text-color-active: '#121212'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#f1e5f8'
+    font:
+      family-default: 'IBMPlexSans, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    navigation:
+      background: '#121212'
+      text-color: '#888888'
+    slideshow:
+      background: '#f1e5f8'
+      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      text-color: '#121212'
+    header:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    above:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    feature:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    showcase:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    utility:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    main:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    expanded:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    extension:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    bottom:
+      background: '#ffffff'
+      text-color: '#4e4e4e'
+    footer:
+      background: '#121212'
+      text-color: '#ffffff'
+    copyright:
+      background: '#0f0f0f'
+      text-color: 'rgba(153, 153, 153, 0.4)'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#121212'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem 

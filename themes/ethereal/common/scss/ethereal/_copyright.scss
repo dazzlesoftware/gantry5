@@ -1,0 +1,57 @@
+@function set-text-color($bg-color) {
+  @if (lightness($bg-color) > 50) {
+    @return #282828;
+  } @else {
+    @return #ffffff;
+  }
+}
+
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;
+	// g-container
+	> .g-container {
+		padding: 2rem 0;
+	}	
+	// Accent Color
+	a {
+		color: $accent-color-2;
+		&:hover {
+			color: inherit;
+		}
+	}
+	// Copyright Content
+	.g-copyright > .g-content {
+		font-size: $core-font-size - 0.2;
+		line-height: 1.8;
+	}
+	// Horizontal Menu 
+	.g-horizontalmenu a {
+		color: set-text-color($main-background);
+		&:hover {
+			color: inherit;
+		}
+		@include breakpoint(tablet-range) {
+			font-size: $core-font-size - 0.2;
+		}
+	}
+	.bordered-bottom {
+		position: relative;
+		.g-content:after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			display: block;
+			height: 1px;
+			width: 100%;
+			background: lighten($copyright-background, 10%);
+		}
+	}
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

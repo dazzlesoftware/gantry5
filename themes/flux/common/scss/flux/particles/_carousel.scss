@@ -1,0 +1,132 @@
+.g-carousel {
+    .g-carousel-item {
+        margin: 1rem;
+        padding: 3rem 0;
+
+        .g-carousel-image-wrapper {
+            transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
+            transform-origin: center bottom;
+            transform: scale(1);
+            box-shadow: 0 0 2rem rgba(0, 0, 0, 0.18);
+
+            img {
+                width: auto;
+                height: auto;
+            }
+
+            &:hover {
+                transform: scale(1.15);
+                box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.18);
+
+                .g-carousel-link {
+                    opacity: 1;
+                }
+            }
+        }
+
+        // Link
+        .g-carousel-link {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            bottom: 1rem;
+            left: 1rem;
+            opacity: 0;
+
+            @include breakpoint(tablet-range) {
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+
+            .dir-rtl & {
+                left: auto;
+                right: 1rem;
+            }
+
+            // Icon
+            .g-carousel-image-icon {
+                display: block;
+                text-align: center;
+                background: $accent-color-1;
+                padding: $content-padding;
+                border-radius: 50%;
+                color: $white;
+                line-height: 1;
+
+                .fa {
+                    @include responsive-font($responsive-font-size, $core-font-size + 0.5, false, false);
+                }
+            }
+        }
+
+        // Caption
+        .g-carousel-caption {
+            padding: $content-padding 0;
+            @include responsive-font($responsive-font-size - 0.15, $core-font-size + 0.1, false, false);
+            text-align: left;
+            @include breakpoint(mobile-only) {
+              text-align: center;
+            }
+        }
+    }
+
+    // Prev & Next Controls
+    .owl-nav {
+        margin-bottom: $content-margin;
+
+        > div {
+            position: absolute;
+            margin: auto;
+            text-align: center;
+            top: -20%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 1;
+
+            .fa {
+                @include responsive-font($responsive-font-size + 1.25, $core-font-size + 1, false, false);
+                font-weight: $font-weight-regular;
+            }
+
+            &:hover {
+                color: fade-out($white, 0.4);
+            }
+        }
+
+        .owl-prev {
+            left: 2vw;
+            right: auto;
+
+            .dir-rtl & {
+                right: 2vw;
+                left: auto;
+
+                .fa-chevron-left {
+                    &:before {
+                        content: "\f054";
+                    }
+                }
+            }
+        }
+
+        .owl-next {
+            left: auto;
+            right: 2vw;
+
+            .dir-rtl & {
+                left: 2vw;
+                right: auto;
+
+                .fa-chevron-right {
+                    &:before {
+                        content: "\f053";
+                    }
+                }
+            }
+        }
+    }
+}

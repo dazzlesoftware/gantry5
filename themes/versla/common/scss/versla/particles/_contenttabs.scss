@@ -1,0 +1,220 @@
+.ui-tabs {
+    position: relative;
+    .ui-tabs-nav {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        @include breakpoint(mobile-only) {
+          flex-direction: column;
+        }
+        li {
+            list-style: none;
+            border-bottom-width: 0;
+            padding: 0;
+            outline: none;
+            &.ui-tabs-active {
+                .ui-tabs-anchor {
+                    cursor: text;
+                }
+            }
+            &.ui-state-disabled .ui-tabs-anchor {
+                cursor: text;
+            }
+            &.ui-tabs-loading .ui-tabs-anchor {
+                cursor: text;
+            }
+        }
+        .ui-tabs-anchor {
+            text-decoration: none;
+        }
+    }
+}
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+    cursor: pointer;
+}
+
+.g-contenttabs {
+    .g-contenttabs-tab {
+        outline: none;
+    }
+    .g-contenttabs-navigation {
+        display: table-footer-group;
+    }
+    .g-contenttabs-tabs {
+        display: table-header-group;
+    }
+    .g-contenttabs-blocks {
+        display: flex;
+        @include breakpoint(mobile-only) {
+          flex-direction: column;
+        }
+        .g-contenttabs-block {
+            border-radius: 1rem;
+            padding: $content-padding + $content-margin;
+            @include breakpoint(tablet-range) {
+              padding: $content-padding;
+            }
+            margin-right: $content-margin - 0.3;
+            @include breakpoint(mobile-only) {
+              margin: 0;
+              margin-bottom: $content-margin - 0.3;
+            }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            @include breakpoint(mobile-only) {
+              display: block;
+            }
+            -ms-flex-direction: column;
+            .g-contenttabs-block-title {
+                padding-bottom: $content-padding + $content-margin;
+            }
+            
+            .dir-rtl & {
+                margin-right: 0;
+                margin-left: $content-margin - 0.3;
+            }
+        }
+
+        .g-contenttabs-block-default {
+            border: 1px solid $accent-color-1;
+
+            .g-contenttabs-block-title {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size + 1;
+                color: lighten($base-text-color, 30%);
+            }
+            .g-contenttabs-block-description {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size;
+                color: lighten($base-text-color, 50%);
+            }
+        }
+        .g-contenttabs-block-accent1 {
+            background: $accent-color-1;
+            color: $white;
+
+            .g-contenttabs-block-title {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size + 2.5;
+                @include breakpoint(tablet-range) {
+                  font-size: $core-font-size + 1.5;
+                }
+            }
+            .g-contenttabs-block-description {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size;
+            }
+        }
+        .g-contenttabs-block-accent2 {
+            background: $accent-color-2;
+            color: $white;
+
+            .g-contenttabs-block-title {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size + 2.5;
+                @include breakpoint(tablet-range) {
+                  font-size: $core-font-size + 1.5;
+                }
+            }
+            .g-contenttabs-block-description {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size;
+            }
+        }
+    }
+    .g-contenttabs-tab-wrapper-container {
+        list-style: none;
+        margin: 0 0 1rem 0;
+    }
+    .g-contenttabs-content-wrapper-container {
+        list-style: none;
+        margin: 0;
+    }
+    .g-contenttabs-tab-wrapper-head {
+        display: block;
+        cursor: pointer;
+        span {
+            cursor: pointer;
+            margin: ($content-padding / 3) $content-padding;
+            margin-top: $content-padding * 3;
+            padding-top: 3rem;
+            -webkit-transform: translate3d(0px, 0px, 0px);
+            @include breakpoint(mobile-only) {
+                margin: 0rem;
+                margin-top: 1.5rem;
+                padding-top: 0.5rem;
+            }
+            border-top: 2px solid transparent;
+            transition: all 0.25s;
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: 0;
+                right: 0;
+                margin-left: auto;
+                margin-right: auto;
+                width: 0;
+                height: 0;
+                transition: all 0.25s;
+                -webkit-transform: translate3d(0px, 0px, 0px);
+                border-style: solid;
+                border-width: 0 10px 10px 10px;
+                border-color: transparent transparent transparent transparent;
+            }
+        }
+
+    }
+    .g-contenttabs-tab-subtitle,
+    .g-contenttabs-tab-title {
+        display: block;
+        outline: none;
+    }
+    .g-contenttabs-tab-title {
+        font-size: $core-font-size - 0.2;
+        text-transform: uppercase;
+        font-weight: $font-weight-regular;
+        color: lighten($base-text-color, 50%);
+    }
+    .g-contenttabs-tab-subtitle {
+        font-size: $core-font-size - 0.25;
+    }
+    .g-contenttabs-content {
+        display: flex;
+        flex-flow: row wrap;
+        flex-wrap: wrap;
+    }
+    .g-contenttabs-content-text {
+        flex: 0 1 80%;
+        width: 80%;
+        @include breakpoint(tablet-range) {
+            flex: 0 1 100%;
+            width: 100%;
+        }
+        @include breakpoint(mobile-only) {
+            flex: 0 1 100%;
+            width: 100%;
+        }
+    }
+    .g-contenttabs-tab-wrapper-body {
+        padding: 0;
+    }
+}
+
+.ui-tabs-active {
+    .g-contenttabs-tab-wrapper-head {
+        span {
+            border-color: $accent-color-1;
+            &:before {
+                border-color: transparent transparent $accent-color-1 transparent;
+            }
+        }
+    }
+    .g-contenttabs-tab-subtitle,
+    .g-contenttabs-tab-title {
+        color: $base-text-color;
+    }
+}

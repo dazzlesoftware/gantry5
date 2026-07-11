@@ -1,0 +1,22 @@
+#g-footer {
+	background: $footer-background;
+	color: $footer-text-color;
+	// g-container
+	> .g-container {
+		padding: 2rem 0;
+	}	
+	// Accent Color
+	a {
+		color: $accent-color-2;
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

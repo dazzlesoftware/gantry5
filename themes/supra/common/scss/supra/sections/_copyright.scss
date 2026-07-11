@@ -1,0 +1,40 @@
+.fullpage-wrapper {
+    #g-copyright {
+        position: relative;
+        bottom: 10rem;
+    }
+}
+
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+
+    a {
+        color: $copyright-text-color;
+    }
+
+    // Branding Particle
+    .g-branding {
+        color: fade-out($copyright-text-color, 0.25);
+        font-weight: $font-weight-semibold;
+
+        a {
+            color: fade-out($copyright-text-color, 0.25);
+
+            &:hover {
+                color: $copyright-text-color;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

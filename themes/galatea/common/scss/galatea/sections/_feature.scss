@@ -1,0 +1,49 @@
+#g-feature {
+    color: $feature-text-color;  
+
+    // Linear Gradient Background
+    @if $feature-background-direction == 1 {
+    	background-image: linear-gradient(to right, $feature-background-1, $feature-background-2);
+    } @else if $feature-background-direction == 2 {
+    	background-image: linear-gradient(to bottom, $feature-background-1, $feature-background-2);
+    } @else if $feature-background-direction == 3 {
+    	background-image: linear-gradient(to bottom left, $feature-background-1, $feature-background-2);
+    } @else if $feature-background-direction == 4 {
+    	background-image: linear-gradient(to bottom right, $feature-background-1, $feature-background-2);
+    }
+
+    a {
+        color: $feature-text-color; 
+        box-shadow: 0 1px 0 0 fade-out($feature-text-color, 0.50);
+        &:hover {
+            box-shadow: 0 1px 0 0 $feature-text-color;
+        }
+    }
+
+    // Container
+    .g-container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        @include breakpoint(mobile-only) {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        }         
+    }
+
+    // Pricing Table
+    .g-pricingtable-plan {
+        a {
+            color: $accent-color-1;
+            &:hover {
+                color: inherit;
+            }
+        }        
+    }
+}
+
+@media print {
+	#g-feature {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

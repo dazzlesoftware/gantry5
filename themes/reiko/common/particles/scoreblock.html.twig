@@ -1,0 +1,31 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-scoreblock">
+        {% if particle.items %}
+            {% for item in particle.items %}
+                <div class="g-scoreblock-match-wrapper {% if item.highlighted == '1' %}highlighted{% endif %}">
+                    <div class="g-scoreblock-time-wrapper">
+                        <div class="g-scoreblock-match-date">
+                            {{ item.date|date(item.dateformat) }}
+                        </div>
+                    </div>
+
+                    <div class="g-scoreblock-score-wrapper">
+                        <div class="g-scoreblock-first-team-wrapper">
+                            <div class="g-scoreblock-team-name">{{ item.firstTeamName }}</div>
+                            <div class="g-scoreblock-team-score">{{ item.firstTeamScore }}</div>
+                        </div>
+
+                        <div class="g-scoreblock-spacer">:</div>
+
+                        <div class="second-team-wrapper">
+                            <div class="g-scoreblock-team-name">{{ item.secondTeamName }}</div>
+                            <div class="g-scoreblock-team-score">{{ item.secondTeamScore }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

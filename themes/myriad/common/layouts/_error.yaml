@@ -1,0 +1,272 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: _error
+  timestamp: 1524685834
+layout:
+  navigation: {  }
+  /header/:
+    -
+      - position-position-6831
+  /slideshow/:
+    -
+      - position-position-6234
+  /drawer/:
+    -
+      - position-position-5551
+  /top/:
+    -
+      - position-position-9101
+  /showcase/:
+    -
+      - position-position-2755
+  /fullstrip/:
+    -
+      - position-position-6568
+  /firstfullwidth/:
+    -
+      - position-position-3648
+  /breadcrumb/:
+    -
+      - position-position-3611
+  /feature/:
+    -
+      - custom-7198
+  /utility/:
+    -
+      - position-position-5798
+  /secondfullwidth/:
+    -
+      - position-position-4392
+  /maintop/:
+    -
+      - position-position-3278
+  /expandedtop/:
+    -
+      - position-position-8368
+  /container-8478/:
+    -
+      -
+        'mainbody 60': {  }
+      -
+        'sidebar 40':
+          -
+            - position-position-7684
+  /expandedbottom/:
+    -
+      - position-position-1604
+  /mainbottom/:
+    -
+      - position-position-2329
+  /thirdfullwidth/:
+    -
+      - position-position-7936
+  /extension/:
+    -
+      - position-position-6823
+  /bottom/:
+    -
+      - position-position-4905
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-7005 33.3'
+      - 'copyright-9042 33.3'
+      - 'totop-9181 33.3'
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  drawer:
+    type: section
+    attributes:
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  fullstrip:
+    type: section
+    attributes:
+      boxed: ''
+  firstfullwidth:
+    type: section
+    attributes:
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+  secondfullwidth:
+    type: section
+    attributes:
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      boxed: ''
+  expandedtop:
+    type: section
+    attributes:
+      boxed: ''
+  mainbody:
+    type: section
+  sidebar:
+    type: section
+  container-8478:
+    attributes:
+      boxed: ''
+  expandedbottom:
+    type: section
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      boxed: ''
+  thirdfullwidth:
+    type: section
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  position-position-6831:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-6234:
+    title: Slideshow
+    attributes:
+      key: slideshow
+  position-position-5551:
+    title: Drawer
+    attributes:
+      key: drawer
+  position-position-9101:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-position-2755:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-6568:
+    title: FullStrip
+    attributes:
+      key: fullstrip
+  position-position-3648:
+    title: FirstFullWidth
+    attributes:
+      key: firstfullwidth
+  position-position-3611:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+  custom-7198:
+    title: 'Custom HTML'
+    attributes:
+      html: "<div class=\"rt-error-body\">\n\t\t\t\t\t\t\t<div class=\"rt-error-header\">\n\t\t\t\t\t\t\t\t<div class=\"rt-error-code\">404</div>\n\t\t\t\t\t\t\t\t<div class=\"rt-error-code-desc\">Component not found.</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"rt-error-content\">\n\t\t\t\t\t\t\t\t<div class=\"rt-error-title\">Oh My Gosh! You Found It!!!</div>\n\t\t\t\t\t\t\t\t<div class=\"rt-error-message\">Looks like the page you're trying to visit doesn't exist.<br>Please check the URL and try your luck again.</div>\n\t\t\t\t\t\t\t\t<div class=\"rt-error-button\"><a href=\"#\" class=\"readon\"><span>Take Me Home</span></a></div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"clear\"></div>\n\t\t\t\t\t\t</div>"
+    block:
+      variations: center
+  position-position-5798:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-4392:
+    title: SecondFullWidth
+    attributes:
+      key: secondfullwidth
+  position-position-3278:
+    title: MainTop
+    attributes:
+      key: maintop-a
+  position-position-8368:
+    title: ExpandedTop
+    attributes:
+      key: expandedtop-a
+  position-position-7684:
+    title: Sidebar
+    attributes:
+      key: sidebar-a
+  position-position-1604:
+    title: ExpandedBottom
+    attributes:
+      key: expandedbottom-a
+  position-position-2329:
+    title: MainBottom
+    attributes:
+      key: mainbottom-a
+  position-position-7936:
+    title: ThirdFullWidth
+    attributes:
+      key: thirdfullwidth
+  position-position-6823:
+    title: Extension
+    attributes:
+      key: extension-a
+  position-position-4905:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  branding-7005:
+    attributes:
+      content: '<a href="https://www.rockettheme.com/" title="RocketTheme" class="rt-powered-by"></a>'
+    block:
+      class: 'nomarginleft nopaddingleft rt-branding'
+  copyright-9042:
+    attributes:
+      date:
+        start: '2007'
+    block:
+      class: 'g-copyright center nopaddingtop'
+  totop-9181:
+    title: 'To Top'
+    attributes:
+      css:
+        class: 'gantry-totop'

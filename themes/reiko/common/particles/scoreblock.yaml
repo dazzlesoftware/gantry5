@@ -1,0 +1,89 @@
+name: Score Block
+description: Display scores table.
+type: particle
+icon: fa-table
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    items:
+      type: collection.list
+      array: true
+      label: Scores
+      description: Create each item to appear in the content row.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.textarea
+          label: Title
+          description: Customize the title text.
+          placeholder: Enter title
+
+        .highlighted:
+          type: input.checkbox
+          label: Highlighted
+          description: Highlight nearest match.
+          default: false
+
+        .date:
+          type: input.date
+          label: Date
+          description: Pick date of event.
+          placeholder: 'Pick date'
+
+        .dateformat:
+          type: select.date
+          label: Date Format
+          description: Select preferred date format.
+          default: 'm-d-Y'
+          options:
+              'l, F d, Y': Date1
+              'l, d F': Date2
+              'D, d F': Date3
+              'F d': Date4
+              'd F': Date5
+              'd M': Date6
+              'D, M d, Y': Date7
+              'D, M d, y': Date8
+              'l': Date9
+              'l j F Y': Date10
+              'j F Y': Date11
+              'F d, Y': Date12
+              'Y-m-d': Date13
+              'm-d-Y': Date14
+
+        .firstTeamName:
+          type: input.text
+          label: First Team Text
+          description: Enter first team name.
+          placeholder: EVG
+
+        .firstTeamScore:
+          type: input.text
+          label: First Team score
+          description: Enter first team score.
+          placeholder: 2
+
+        .secondTeamName:
+          type: input.text
+          label: Second Team Text
+          description: Enter second team name.
+          placeholder: EVG
+
+        .secondTeamScore:
+          type: input.text
+          label: Second Team score
+          description: Enter second team score.
+          placeholder: 2

@@ -1,0 +1,77 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#f9b234'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#f9b234'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#f9b234'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      video: 'gantry-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#f9b234'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#f9b234'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'gantry-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem

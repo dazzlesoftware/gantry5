@@ -1,0 +1,18 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    // Simple Menu
+    .g-simplemenu-particle {
+        @include breakpoint (mobile-only) {
+            justify-content: center;
+        }
+    }
+}
+
+@media print {
+    #g-container-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

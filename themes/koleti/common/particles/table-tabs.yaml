@@ -1,0 +1,94 @@
+name: Table tabs
+description: Display profile.
+type: particle
+icon: fa fa-table
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    title:
+      type: input.text
+      label: Particle Title
+      description: Add custom particle title.
+
+    button_text:
+      type: input.text
+      label: Button Text
+      description: Customize the button text.
+      placeholder: Enter short text
+
+    button_link:
+      type: input.text
+      label: Button Link
+      description: Customize the button link.
+      placeholder: https://www.yourlink.com
+
+    order:
+      type: input.text
+      label: Order Label
+      description: Order column label.
+
+    team_name:
+      type: input.text
+      label: Team Name Field
+      description: Team name description placemant
+
+    team_played_matches:
+      type: input.text
+      label: Team Played Matches
+      description: Team played matches placement
+
+    team_points:
+      type: input.text
+      label: Team Points
+      description: Team points placement
+
+    leagues:
+        type: collection.list
+        array: true
+        label: League
+        description: Create leagues.
+        value: title
+        ajax: true
+        overridable: false
+
+        fields:
+          .title:
+            type: input.text
+            label: Title
+            description: Enter case title
+
+          .items:
+            type: collection.list
+            array: true
+            label: Teams
+            description: Create team score list.
+            value: title
+            ajax: true
+            fields:
+
+              .title:
+                type: input.text
+                label: Title
+                description: Enter case title
+
+              .played_matches:
+                type: input.number
+                label: Played Matches
+                description: Input number of played mathes.
+
+              .points:
+                type: input.number
+                label: Played Matches
+                description: Input number of played mathes.
+
+              .icon:
+                type: input.icon
+                label: Icon
+                description: Select desired icon.

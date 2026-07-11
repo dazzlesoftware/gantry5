@@ -1,0 +1,140 @@
+// Basics
+$white:							#ffffff;
+$black:							#000000;
+$off-white:						#f7f7f7;
+$grey: 							#95a5a6;
+$darkgrey: 						#282828;
+$pink: 							#d13b7b;
+$red: 							#ef4a44;
+$purple: 						#874f9a;
+$blue: 							#279fba;
+$orange: 						#ee7933;
+
+// Base
+$base-background:				#ffffff !default;
+$base-text-color:				#4e4e4e !default;
+$base-text-active-color:		#f1e5f8 !default;
+$base-border-color:				#e7e8ea !default;
+
+// Accents
+$accent-color-1:				#f1e5f8 !default;
+$accent-color-2:				#d1f9e9 !default;
+
+// Button
+$button-text-color:				#5a3b00 !default;
+$button-background-color:		#f1e5f8 !default;
+
+// Menu Style
+$menustyle-background:                  #ffffff !default;
+$menustyle-text-color:                  #888888 !default;
+$menustyle-text-color-alt:              #888888 !default;
+$menustyle-text-color-active:           #f1e5f8 !default;
+$menustyle-background-active:           rgba(255,255,255, 0) !default;
+$menustyle-sublevel-text-color:         #121212 !default;
+$menustyle-sublevel-text-color-active:  #121212 !default;
+$menustyle-sublevel-background:         #ffffff !default;
+$menustyle-sublevel-background-active:  #f1e5f8 !default;
+
+// Page Surround
+$pagesurround-background: 		$base-background !default;
+
+// Top
+$top-background:				#ffffff !default;
+$top-text-color:				#4e4e4e !default;
+
+// Navigation
+$navigation-background:			#121212 !default;
+$navigation-text-color:			#888888 !default;
+
+// Slideshow
+$slideshow-background:			#f1e5f8 !default;
+$slideshow-background-image:    false !default;
+$slideshow-text-color:			#121212 !default;
+
+// Header
+$header-background:				#0f0f0f !default;
+$header-text-color:				#4e4e4e !default;
+
+// Above
+$above-background:				#ffffff !default;
+$above-text-color:				#4e4e4e !default;
+
+// Showcase
+$showcase-background:			#ffffff !default;
+$showcase-text-color:			#4e4e4e !default;
+
+// Utility
+$utility-background:			#ffffff !default;
+$utility-text-color:			#4e4e4e !default;
+
+// Feature
+$feature-background:		    #ffffff !default;
+$feature-text-color:			#4e4e4e !default;
+
+// Main
+$main-background:				#ffffff !default;
+$main-text-color:				#4e4e4e !default;
+
+// Expanded
+$expanded-background:			#ffffff !default;
+$expanded-text-color:			#4e4e4e !default;
+
+// Extension
+$extension-background:			#ffffff !default;
+$extension-background-image:    false !default;
+$extension-text-color:			#4e4e4e !default;
+
+// Bottom
+$bottom-background:			    #ffffff !default;
+$bottom-background-image:       false !default;
+$bottom-text-color:				#4e4e4e !default;
+
+// Footer
+$footer-background:				#121212 !default;
+$footer-background-image:       false !default;
+$footer-text-color:				#ffffff !default;
+
+// Copyright
+$copyright-background:			#0f0f0f !default;
+$copyright-text-color:			rgba(153, 153, 153, 0.4) !default;
+
+// Off Canvas
+$offcanvas-background:			#121212 !default;
+$offcanvas-text-color:			#ffffff !default;
+$offcanvas-toggle-color:		#121212 !default;
+
+// Block Variations
+$box1-background:				$accent-color-1 !default;
+$box2-background:				$accent-color-2 !default;
+$box3-background:				$black !default;
+$box4-background:				darken($base-background, 5%) !default;
+$box-white-background: 			$white !default;
+$box-grey-background: 			$grey !default;
+$box-darkgrey-background: 		$darkgrey !default;
+$box-pink-background: 			$pink !default;
+$box-red-background: 			$red !default;
+$box-purple-background: 		$purple !default;
+$box-blue-background: 			$blue !default;
+$box-orange-background: 		$orange !default;
+
+// System Messsages and Alerts
+$warning-color:					#c09853;
+$error-color:					#b94a48;
+$info-color:					#3a87ad;
+$success-color:					#468847;
+
+// Typography
+$rule-color:					fade-out($base-border-color, 0.75);
+$code-text:						#c7254e;
+$code-bg:						#f9f2f4;
+$pre-text:						#237794;
+$pre-bg:						#f6f6f6;
+
+// Borders
+$border-color-hover:			$accent-color-1;
+$border-color-focus:			$accent-color-1;
+$border-color-light:            rgba(0, 0, 0, 0.1);
+
+// Shadows
+$base-box-shadow: 				inset 0 1px 3px hsla(0, 0%, 0%, 0.06);
+$base-content-shadow:			2px 1px 15px rgba(0, 0, 0, 0.05);

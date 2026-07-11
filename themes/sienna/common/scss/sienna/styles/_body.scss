@@ -1,0 +1,72 @@
+body {
+    color: $base-text-color;
+    background: $base-background;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    p {
+        margin: 0 0 1.3rem 0;
+    }
+
+    span.para {
+        display: block;
+        margin: 1rem 0;
+    }
+
+    .g-side-column {
+        min-width: $sidecolumn-min-width;
+
+        @include breakpoint(desktop-range) {
+            min-width: inherit;
+        }
+        @include breakpoint(tablet-range) {
+            min-width: auto;
+            min-height: auto;
+            flex: 0 100%;
+            [class*="size-"] {
+                min-width: auto;
+                min-height: auto;
+                flex: 0 100%;
+            }
+        }
+    }
+
+    .g-middle-column {
+        flex: 1;
+        @include breakpoint(tablet-range) {
+            flex: 0 100%;
+        }
+    }
+
+}
+
+#g-page-surround {
+    background: $pagesurround-background;
+    overflow: hidden;
+    @if $base-background-image {
+        background: url($base-background-image) no-repeat;
+        background-size: contain auto;
+    }
+    &:before {
+        position: absolute;
+        width: 1200px;
+        height: 800px;
+        right: 0;
+        background: linear-gradient(135deg, rgba(0,0,0,0.0) 48%, transparentize($accent-color-2, 0.80) 35%, rgba(0,0,0,0.0) 75%);
+        z-index: 0;
+        pointer-events: none;
+        content: '';
+    }
+
+    .g-bodyonly & {
+        color: $base-text-color;
+        background: $base-background;
+    }
+}
+
+@media print {
+    #g-page-surround {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

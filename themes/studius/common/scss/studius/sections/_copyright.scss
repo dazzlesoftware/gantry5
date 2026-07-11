@@ -1,0 +1,21 @@
+#g-copyright {
+    background: $copyright-background;
+    color: $copyright-text-color;
+
+    a {
+        color: set-color($copyright-background);
+    }
+
+    .border-top {
+        .g-particle {
+            border-top: 1px solid transparentize(set-color($copyright-background), 0.8);
+        }
+    }
+}
+
+@media print {
+    #g-copyright {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

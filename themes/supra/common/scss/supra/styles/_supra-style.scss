@@ -1,0 +1,127 @@
+// Navigation
+.fp-navigation {
+    // Logo
+    .g-logo {
+        color: $white;
+    }
+
+    // Search Particle
+    .g-search {
+        .fa {
+            color: $white;
+
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+
+    // Navigation
+    .g-main-nav .g-toplevel > li:hover > .g-menu-item-container, .g-main-nav .g-toplevel > li.active > .g-menu-item-container {
+        background: linear-gradient(lighten($accent-color-2, 5%), $accent-color-1);
+        box-shadow: 0 0.3rem 2rem 0.3rem transparentize($accent-color-1, 0.2);
+    }
+}
+
+// Feature
+.fp-feature {
+    padding-right: 0 !important;
+
+    .dir-rtl & {
+        padding-left: 0 !important;
+        padding-right: 10% !important;
+
+        @media only all and (max-width: 74.938rem) and (min-width: $breakpoints-tablet-container) {
+            padding-left: 0 !important;
+            padding-right: 4% !important;
+        }
+
+        @include breakpoint(tablet-range) {
+            padding-right: 0 !important;
+        }
+
+        @include breakpoint(mobile-only) {
+            padding-right: 0 !important;
+        }
+    }
+
+    .g-grid {
+        align-items: center;
+    }
+}
+
+.fp-feature-slider .g-content {
+    @include breakpoint(mobile-only) {
+      padding: 0;
+      margin: 0;
+    }
+}
+
+// Showcase
+.fp-showcase {
+    @include breakpoint(desktop-range) {
+        .g-block {
+            flex: 100%;
+            width: 100%;
+        }
+    }
+
+    @include breakpoint(tablet-range) {
+        .g-block {
+            flex: 100%;
+            width: 100%;
+        }
+    }
+}
+
+// Extension
+.fp-extension {
+    // Simple Content Particle
+    .g-simplecontent {
+        .g-simplecontent-layout-standard {
+            .g-simplecontent-item-content-title {
+                font-weight: $font-weight-black;
+                @include responsive-font($responsive-font-size + 4, $core-font-size + 2, false, false);
+            }
+        }
+    }
+
+    // Info List Particle
+
+}
+
+// Slideshow Home
+#g-slideshow.fp-slideshow {
+    background: none;
+
+    .fp-tableCell {
+        display: block;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, transparentize($black, 1) 60%, $black 100%);
+        z-index: 0;
+    }
+}
+
+// Default Layout Paddings
+#g-slideshow.g-default-slideshow {
+    padding-top: $content-padding * 7;
+    padding-bottom: $content-padding * 2;
+}
+
+// Responsive Fullpage.js fixes
+.fp-responsive {
+    .fp-section.fp-table, .fp-slide.fp-table, .fp-tableCell, .fp-scrollable {
+        height: 100% !important;
+    }
+    .fp-scroller {
+        overflow: visible !important;
+    }
+}

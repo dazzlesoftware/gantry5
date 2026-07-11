@@ -1,0 +1,162 @@
+#g-navigation.g-fluid-navigation {
+    @include breakpoint(desktop-range) {
+        .g-block {
+            flex: auto;
+            width: auto;
+        }
+        .fp-search {
+            flex: 160;
+        }
+    }
+
+    @include breakpoint(large-desktop-range) {
+        .g-block {
+            flex: auto;
+            width: auto;
+        }
+        .fp-search {
+            flex: 160;
+        }
+    }
+
+    @include breakpoint(tablet-range) {
+        .g-block {
+            flex: auto;
+            width: auto;
+        }
+        .fp-search {
+            flex: 160;
+        }
+    }
+}
+
+// Slideshow
+.fp-slideshow {
+    height: 100%;
+
+    > .g-grid {
+        height: 100%;
+
+        .g-content {
+            height: 100%;
+        }
+
+        .g-particle,
+        .moduletable {
+            height: 100%;
+
+            > .g-newsslider {
+                height: 100%;
+
+                > .g-newsslider-carousel {
+                    min-height: 100%;
+                }
+            }
+        }
+    }
+
+    .g-newsslider-slides {
+        > .owl-stage-outer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
+
+// Black Section Variation
+#g-page-surround .black {
+    background: $black;
+
+    .g-social a {
+        color: $white;
+
+        &:hover {
+            @if ($accent-color-1 == $accent-color-2) {
+                color: lighten($accent-color-2, 30%);
+            } @else {
+                color: $accent-color-2;
+            }
+        }
+    }
+}
+
+// Slideshow
+#g-page-surround .fp-slideshow {
+    padding-top: 0;
+    height: auto;
+}
+
+// Sidebar Top Section
+.fp-sidebartop {
+    height: 100%;
+
+    > .g-grid {
+        height: 100%;
+
+        .g-content {
+            @include breakpoint(tablet-range) {
+                margin: $content-margin 0;
+                padding: $content-padding 0;
+            }
+        }
+    }
+}
+
+// Home Bottom Section
+.fp-bottom {
+    @include breakpoint(no-mobile) {
+        margin-bottom: -6rem;
+        padding-bottom: 0;
+    }
+}
+
+// Home Footer Section
+.fp-footer {
+    &.section-vertical-paddings {
+        @include breakpoint(no-mobile) {
+            padding-top: 10rem;
+            padding-bottom: 0;
+        }
+    }
+}
+
+// Blurred stuff
+&.blurred {
+    position: relative;
+    overflow: hidden;
+    background: none;
+
+    .g-grid {
+        z-index: 1;
+        position: relative;
+    }
+
+    &:before {
+        filter: blur(10px);
+        content: "";
+        position: absolute;
+        z-index: 0;
+        width: 100% !important;
+        height: 100% !important;
+
+        @if $base-background-image {
+            background-image: url($base-background-image) !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+        background: $white;
+    }
+}

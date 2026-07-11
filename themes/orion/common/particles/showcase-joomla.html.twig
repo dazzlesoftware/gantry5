@@ -1,0 +1,77 @@
+{# Load Content From Joomla #}
+{% set article_settings = particle.article %}
+{% set filter = article_settings.filter %}
+{% set sort = article_settings.sort %}
+{% set limit = article_settings.limit %}
+{% set display = article_settings.display %}
+
+{# Category Finder #}
+{% set category_options = filter.categories ? {
+    id: [
+        filter.categories | split(','),
+        0
+    ]
+} : {} %}
+{% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+{# Content Finder #}
+{% if filter.articles %}
+    {% set article_options = filter.articles ? {
+        id: [filter.articles | replace(' ', '') | split(',')]
+    } : {} %}
+    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+{% else %}
+    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+{% endif %}
+
+{% set featured = filter.featured | default('include') %}
+{% if featured == 'exclude' %}
+    {% do article_finder.featured(false) %}
+{% elseif featured == 'only' %}
+    {% do article_finder.featured(true) %}
+{% endif %}
+
+{% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+{% set total = article_finder.count() %}
+{% set articles = article_finder.find() %}
+
+{% for article in articles %}
+    {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+        {% if article.images.image_intro and display.image.enabled == 'intro' %}
+            {% set article_image = article.images.image_intro %}
+        {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+            {% set article_image = article.images.image_fulltext %}
+        {% endif %}
+    {% endif %}
+        <div class="swiper-slide">
+            <div class="slide">
+                <div class="g-showcase-content">
+                    {% if display.category.enabled %}
+                        <span class="g-showcase-title">
+                        {% for item in categories %}
+                            {{ item.title }}
+                            {% if not loop.last %},
+                            {% endif %}
+                        {% endfor %}
+                        </span>
+                    {% endif %}
+                    {% if display.title.enabled and article.title %}
+                        <h1 class="g-showcase-main-title">
+                             {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
+                        </h1>
+                    {% endif %}
+                    {% if display.text.type != '' %}
+                        <p class="g-showcase-description">
+                            {% set article_text = display.text.type == 'intro' ? article.introtext: article.text %}
+                            {{ article_text|truncate_text(display.text.limit)|raw }}
+                        </p>
+                    {% endif %}
+                </div>
+                {% if display.image.enabled and article_image %}
+                    <div class="g-showcase-image">
+                        <img src="{{ url(article_image)|e }}" alt="{{ article.title }}">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+{% endfor %}

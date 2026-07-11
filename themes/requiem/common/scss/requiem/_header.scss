@@ -1,0 +1,92 @@
+#g-header {
+	background: $header-background;
+	color: $header-text-color;
+	position: relative;
+	z-index: 100;
+	@if $header-background-image {
+    	background: $header-background url($header-background-image) center top no-repeat;
+    	background-size: cover;
+    	.g-home &, .g-homepositions & {
+            background-position: center 45px;
+	    	margin-top: -140px;
+	    	padding-top: 140px;
+    	}
+		@include breakpoint(mobile-only) {
+			.g-home &, .g-homepositions & {
+                background-position: center top;
+				margin-top: 0;
+				padding-top: 10rem;
+			}
+			padding-top: 5rem;
+		}
+	}
+	&:before {
+	   	background: linear-gradient(rgba($header-background, 0.25), rgba($header-background, 1));
+	   	position: absolute;
+	   	content: "";
+	   	top: 0;
+	   	right: 0;
+	   	bottom: 0;
+	   	left: 0;
+	    z-index: -1;
+	}
+
+	// Home
+	.g-home &, .g-homepositions & {
+		color: $white;
+		text-align: center;
+		&:before {
+			background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.4));
+		}
+
+		.g-promocontent {
+			padding: 5rem 0 2rem 0;
+			@include breakpoint(mobile-only) {
+				padding: 0 0 2rem 0;
+			}
+		}
+	}
+
+	// Promo Content
+	.g-promo {
+		letter-spacing: 12px;
+	}
+	.g-promocontent-desc-wrapper {
+		text-align: center;
+		height: 3rem;
+		line-height: 1;
+	}
+	.g-textpromo {
+		opacity: 0.85;
+	}
+	.g-readon {
+	    color: $white;
+	    display: block;
+	    font-size: $core-font-size - 0.1;
+	    font-weight: bold;
+	    margin: 1rem 0;
+	    text-transform: uppercase;
+	    letter-spacing: 1px;
+	}
+	.button {
+		color: $white !important;
+		border: 3px solid $white;
+	    letter-spacing: 1px;
+	    text-transform: none;
+	    margin-top: 5rem;
+		@include breakpoint(mobile-only) {
+			margin-top: 2rem;
+		}
+	    &:hover {
+			color: lighten($accent-color-1, 15%) !important;
+			border: 3px solid lighten($accent-color-1, 15%);
+	    }
+	}
+}
+
+@media print {
+	#g-header {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

@@ -1,0 +1,180 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/offline.png'
+  name: _offline
+  timestamp: 1448456690
+layout:
+  /top/:
+    -
+      - system-messages-6543
+    -
+      - logo-7061
+  /navigation/: {  }
+  /header/:
+    -
+      - infolist-8012
+  /above/: {  }
+  /showcase/: {  }
+  /utility/: {  }
+  /feature/: {  }
+  /container-9224/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60':
+          -
+            - system-content-5841
+      -
+        'aside 20': {  }
+  /expanded/: {  }
+  /extension/:
+    -
+      - infolist-3744
+  /bottom/:
+    -
+      - 'custom-2368 50'
+      - 'newsletter-4577 50'
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'branding-8113 33.3'
+      - 'copyright-3234 33.3'
+      - 'totop-8262 33.3'
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-headroom
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-9224:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  footer:
+    attributes:
+      boxed: '1'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+content:
+  system-messages-6543:
+    block:
+      variations: 'nomarginall nopaddingall'
+  logo-7061:
+    block:
+      class: center
+  infolist-8012:
+    title: Offline
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Sorry, We are Down for Maintenance'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          icon: ''
+          readmoreclass: ''
+          title: Offline
+    block:
+      variations: center
+  infolist-3744:
+    title: 'Maintenance Mode'
+    attributes:
+      class: 'g-layercontent noborder'
+      infolists:
+        -
+          image: ''
+          imageloc: left
+          textstyle: header
+          imagestyle: compact
+          desc: 'Sorry, our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.'
+          tag: ''
+          subtag: ''
+          label: 'Contact Us'
+          link: '#'
+          icon: ''
+          readmoreclass: button-grey
+          title: 'Maintenance Mode'
+    block:
+      variations: center
+  custom-2368:
+    title: 'About Xenon'
+    attributes:
+      html: "<h3 class=\"g-title\">About Xenon</h3>\nXenon is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template and addons.."
+  newsletter-4577:
+    title: 'Subscribe Here'
+    attributes:
+      title: 'Subscribe Here'
+      headtext: 'Subscribe to our newsletter and stay updated on the latest developments and special offers!'
+      inputboxtext: 'Email Address'
+      buttontext: Join
+      uri: rocketthemeblog
+      buttonclass: button-4
+  branding-8113:
+    attributes:
+      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+  totop-8262:
+    title: 'To Top'
+    attributes:
+      icon: 'fa fa-arrow-circle-o-up fa-2x'
+      content: ''

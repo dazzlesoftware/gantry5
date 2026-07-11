@@ -1,0 +1,36 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div id="{{ id }}" class="g-slideshow {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+
+        <div class="g-slideshow-carousel g-owlcarousel owl-carousel" data-slideshow-carousel-id="{{ id }}">
+            {% if not particle.source or particle.source == 'particle' %}
+                {% for item in particle.items %}
+                    <div>
+                        <div class="g-slideshow-carousel-image-container" style="background-image: url({{ url(item.image)|e }}); min-height:{{ particle.height|default('55vh') }};">
+                            {% if item.link %}
+                                <a href="{{ url(item.link)|e }}" target="{{ item.linktarget|default('_self') }}"></a>
+                            {% endif %}
+
+                            {% if item.title %}
+                                <h3 class="g-slideshow-carousel-title">
+                                    <span>{{ item.title|raw }}</span>
+                                </h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% include '@particles/slideshow-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
+{% endblock %}

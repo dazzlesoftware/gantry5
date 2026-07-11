@@ -1,0 +1,41 @@
+{% extends '@particles/owlcarousel.html.twig' %}
+
+{# Load Content From Joomla #}
+{% set category_options = particle.jcategories ? {id: [particle.jcategories|split(','), 0]} : {} %}
+{% set categories_finder = joomla.finder('category', category_options).published(1).language().find() %}
+{% set article_finder = joomla.finder('content').category(categories_finder).published(1).featured(false).language() %}
+{% set items = article_finder.order('publish_up', 'ASC').limit(particle.jarticles|default('1')).start(0).find() %}
+
+{# Categories Names #}
+{% set categories_names %}
+    {%- for category in categories_finder -%}
+        {{- category.title -}}
+        {% if not loop.last %}{{ ', ' }}{% endif %}
+    {%- endfor -%}
+{% endset %}
+
+{# Testimonial Layout #}
+{% block layout %}
+    <div class="{{ particle.class|e }} g-owlcarousel-layout-{{ particle.layout|e }} g-owlcarousel-{{ particle.displayitems }}-items">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        <div id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel {{ particle.width|e }}">
+
+            {% for item in items %}
+            <div class="item">
+                {% if particle.jintrotext == 'enabled' and item.introtext %}
+                    <div class="g-owlcarousel-item-desc">
+                        {{ item.introtext|raw }}
+                        {% if particle.jtitle == 'enabled' and item.title %}<div class="g-owlcarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                    </div>
+                {% endif %}
+                {% if particle.jauthor == 'enabled' and item.author.name %}
+                    <div class="g-owlcarousel-author">
+                        <span class="author-name">{{ item.author.name|raw }}</span>
+                    </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

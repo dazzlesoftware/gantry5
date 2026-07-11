@@ -1,0 +1,512 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#0069e3'
+    - '#00c8ad'
+  styles:
+    base:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/base/bg-01.svg'
+      background-clipping: 1
+      text-color: '#888888'
+    accent:
+      color-1: '#0069e3'
+      color-2: '#00c8ad'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+      text-color-active: '#000000'
+      sublevel-text-color: '#0069e3'
+      sublevel-text-color-active: '#0069e3'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
+      text-color: '#000000'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/above/bg-01.svg'
+      text-color: '#000000'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/feature/bg-01.svg'
+      text-color: '#000000'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/showcase/bg-01.svg'
+      text-color: '#000000'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/utility/bg-01.svg'
+      text-color: '#000000'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/expanded/bg-01.svg'
+      text-color: '#000000'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/extension/bg-01.svg'
+      text-color: '#000000'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    footer:
+      background: '#000000'
+      text-color: '#cccccc'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#0069e3'
+      text-color: '#ffffff'
+      toggle-color: '#000000'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem
+preset2:
+  image: 'gantry-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#DB0027'
+    - '#4643E9'
+  styles:
+    base:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/base/bg-02.svg'
+      background-clipping: 1
+      text-color: '#888888'
+    accent:
+      color-1: '#DB0027'
+      color-2: '#4643E9'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+      text-color-active: '#000000'
+      sublevel-text-color: '#DB0027'
+      sublevel-text-color-active: '#DB0027'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-02.svg'
+      text-color: '#000000'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/above/bg-02.svg'
+      text-color: '#000000'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/feature/bg-02.svg'
+      text-color: '#000000'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/showcase/bg-02.svg'
+      text-color: '#000000'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/utility/bg-02.svg'
+      text-color: '#000000'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/expanded/bg-02.svg'
+      text-color: '#000000'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/extension/bg-02.svg'
+      text-color: '#000000'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    footer:
+      background: '#000000'
+      text-color: '#cccccc'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#DB0027'
+      text-color: '#ffffff'
+      toggle-color: '#000000'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem
+preset3:
+  image: 'gantry-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#FFC960'
+    - '#006F5F'
+  styles:
+    base:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/base/bg-03.svg'
+      background-clipping: 1
+      text-color: '#888888'
+    accent:
+      color-1: '#FFC960'
+      color-2: '#006F5F'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+      text-color-active: '#000000'
+      sublevel-text-color: '#006F5F'
+      sublevel-text-color-active: '#006F5F'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-03.svg'
+      text-color: '#000000'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/above/bg-03.svg'
+      text-color: '#000000'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/feature/bg-03.svg'
+      text-color: '#000000'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/showcase/bg-03.svg'
+      text-color: '#000000'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/utility/bg-03.svg'
+      text-color: '#000000'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/expanded/bg-03.svg'
+      text-color: '#000000'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/extension/bg-03.svg'
+      text-color: '#000000'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    footer:
+      background: '#000000'
+      text-color: '#cccccc'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#FFC960'
+      text-color: '#ffffff'
+      toggle-color: '#000000'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem
+preset4:
+  image: 'gantry-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#E81A89'
+    - '#8A4EAE'
+  styles:
+    base:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/base/bg-04.svg'
+      background-clipping: 1
+      text-color: '#888888'
+    accent:
+      color-1: '#E81A89'
+      color-2: '#8A4EAE'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+      text-color-active: '#000000'
+      sublevel-text-color: '#E81A89'
+      sublevel-text-color-active: '#E81A89'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-04.svg'
+      text-color: '#000000'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/above/bg-04.svg'
+      text-color: '#000000'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/feature/bg-04.svg'
+      text-color: '#000000'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/showcase/bg-04.svg'
+      text-color: '#000000'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/utility/bg-04.svg'
+      text-color: '#000000'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/expanded/bg-04.svg'
+      text-color: '#000000'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/extension/bg-04.svg'
+      text-color: '#000000'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#000000'
+    footer:
+      background: '#000000'
+      text-color: '#cccccc'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#E81A89'
+      text-color: '#ffffff'
+      toggle-color: '#000000'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem
+preset5:
+  image: 'gantry-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#000000'
+    - '#0069e3'
+    - '#00c8ad'
+  styles:
+    base:
+      background: '#000000'
+      background-image: 'gantry-media://backgrounds/base/bg-05.svg'
+      background-clipping: 1
+      text-color: '#888888'
+    accent:
+      color-1: '#0069e3'
+      color-2: '#00c8ad'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+      text-color-active: '#ffffff'
+      sublevel-text-color: '#0069e3'
+      sublevel-text-color-active: '#0069e3'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-05.svg'
+      text-color: '#ffffff'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/above/bg-05.svg'
+      text-color: '#ffffff'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/feature/bg-05.svg'
+      text-color: '#ffffff'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/showcase/bg-05.svg'
+      text-color: '#ffffff'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/utility/bg-05.svg'
+      text-color: '#ffffff'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/expanded/bg-05.svg'
+      text-color: '#ffffff'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/extension/bg-05.svg'
+      text-color: '#ffffff'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    footer:
+      background: '#000000'
+      text-color: '#cccccc'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#0069e3'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem
+preset6:
+  image: 'gantry-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#000000'
+    - '#FFC960'
+    - '#DB0027'
+  styles:
+    base:
+      background: '#000000'
+      background-image: 'gantry-media://backgrounds/base/bg-06.svg'
+      background-clipping: 1
+      text-color: '#888888'
+    accent:
+      color-1: '#FFC960'
+      color-2: '#DB0027'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+      text-color-active: '#ffffff'
+      sublevel-text-color: '#DB0027'
+      sublevel-text-color-active: '#DB0027'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d9e9fb'
+    font:
+      family-title: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'heebo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/slideshow/bg-06.svg'
+      text-color: '#ffffff'
+    header:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#888888'
+    above:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/above/bg-06.svg'
+      text-color: '#ffffff'
+    feature:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/feature/bg-06.svg'
+      text-color: '#ffffff'
+    showcase:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/showcase/bg-06.svg'
+      text-color: '#ffffff'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/utility/bg-06.svg'
+      text-color: '#ffffff'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    expanded:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/expanded/bg-06.svg'
+      text-color: '#ffffff'
+    extension:
+      background: 'rgba(255,255,255,0)'
+      background-image: 'gantry-media://backgrounds/extension/bg-06.svg'
+      text-color: '#ffffff'
+    bottom:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    footer:
+      background: '#000000'
+      text-color: '#cccccc'
+    copyright:
+      background: '#000000'
+      text-color: '#888888'
+    offcanvas:
+      background: '#FFC960'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

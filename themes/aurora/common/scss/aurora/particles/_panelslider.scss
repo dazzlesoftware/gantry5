@@ -1,0 +1,178 @@
+// Panel Slider
+.g-panelslider {
+    position: relative;
+
+    // Stage
+    .owl-stage {
+      display: flex;
+    }
+
+    // Carousel Items
+    .g-panelslider-carousel {
+        width: auto;
+        z-index: 2;
+
+        // Item
+        .owl-item {
+            z-index: 1;
+            position: relative;
+
+            .tab {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                padding: ($content-padding / 2);
+
+                &:hover {
+                    .g-panelslider-carousel-title {
+                        text-decoration: underline;
+                    }
+                }
+
+                img {
+                    border-radius: 0.5rem;
+                }
+
+                .g-panelslider-carousel-title {
+                    @include responsive-font($responsive-font-size - 0.2, $core-font-size - 0.1, false, false);
+                    margin-top: ($content-margin * 2);
+                    position: relative;
+                    z-index: 1;
+                }
+            }
+
+            &.owl-current {
+                z-index: 2;
+
+                .tab {
+                    &:after {
+                        position: absolute;
+                        content: '';
+                        width: 8px;
+                        height: 8px;
+                        background: $accent-color-1;
+                        border-radius: 100%;
+                        left: 49%;
+                        bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // Slides
+    .g-panelslider-slides {
+        z-index: 1;
+
+        .panel {
+            padding: $content-padding ($content-padding * 4) ($content-padding * 2);
+
+            @include breakpoint(mobile-only) {
+                padding: 0;
+            }
+
+            .g-panelslider-slides-content-wrapper {
+                display: flex;
+                flex-direction: row;
+
+                @include breakpoint(mobile-only) {
+                    flex-direction: column;
+                }
+
+                // Title Column
+                .g-panelslider-slides-title-wrapper {
+                    flex: 1;
+                    padding: 0 ($content-padding * 2);
+
+                    .g-panelslider-slides-title-topline {
+                        @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                        color: $base-text-color;
+                    }
+
+                    .g-panelslider-slides-title {
+                        @include responsive-font($responsive-font-size + 2, $core-font-size + 0.6, false, false);
+                        font-weight: $font-weight-semibold;
+                    }
+                }
+
+                // Description Column
+                .g-panelslider-slides-description {
+                    flex: 1;
+                    padding: ($content-padding * 2) ($content-padding * 2) 0;
+
+                    .g-panelslider-slides-description-content {
+                        color: $base-text-color;
+                        font-weight: $font-weight-semibold;
+                        @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
+
+                        b {
+                            @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.2, false, false);
+                            color: $white;
+                        }
+                    }
+                }
+            }
+
+            .g-panelslider-panel-link {
+                padding: ($content-padding * 4) 0 0;
+                text-align: center;
+            }
+        }
+    }
+
+    // Prev & Next Controls
+    .owl-nav {
+        > div, > button {
+            position: absolute;
+            margin: auto;
+            text-align: center;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 1;
+
+            .fa {
+                @include responsive-font($responsive-font-size + 1.25, $core-font-size + 1.5, false, false);
+                font-weight: $font-weight-regular;
+            }
+
+            &:hover {
+                color: fade-out($white, 0.4);
+            }
+        }
+
+        .owl-prev {
+            left: 4vw;
+            right: auto;
+
+            .dir-rtl & {
+                right: 4vw;
+                left: auto;
+
+                .fa-chevron-left {
+                    &:before {
+                        content: "\f054";
+                    }
+                }
+            }
+        }
+
+        .owl-next {
+            left: auto;
+            right: 4vw;
+
+            .dir-rtl & {
+                left: 4vw;
+                right: auto;
+
+                .fa-chevron-right {
+                    &:before {
+                        content: "\f053";
+                    }
+                }
+            }
+        }
+    }
+}

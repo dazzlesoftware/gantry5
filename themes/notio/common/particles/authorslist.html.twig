@@ -1,0 +1,53 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div id="g-{{ id }}" class="g-authorslist {{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <div class="g-authorslist-pretext">
+            {{ particle.pretext|raw }}
+        </div>
+
+        <div class="g-authorslist-authors-wrapper">
+            {% for item in particle.items %}
+                <div class="g-authorslist-author g-authorslist-author-{{ loop.index }}">
+                    {% if item.image %}
+                        <div class="g-authorslist-author-image">
+                            <img src="{{ item.image|e }}" alt="{{ item.name }}" />
+                        </div>
+                    {% endif %}
+
+                    {% if item.name or item.desc %}
+                        <div class="g-authorslist-author-wrapper">
+                            {% if item.link %}
+                                <a href="{{ item.link }}" class="g-authorslist-author-link" title="{{ item.name }}">
+                            {% endif %}
+
+                            <span class="g-authorslist-author-name">{{ item.name|raw }}</span>
+
+                            {% if item.link %}
+                                </a>
+                            {% endif %}
+
+                            {% if item.specialty %}
+                                <span class="g-authorslist-author-specialty">{{ item.specialty|raw }}</span>
+                            {% endif %}
+
+                            {% if item.desc %}
+                                <div class="g-authorslist-author-description">
+                                    {{ item.desc|raw }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="g-authorslist-posttext">
+            {{ particle.posttext|raw }}
+        </div>
+    </div>
+
+{% endblock %}

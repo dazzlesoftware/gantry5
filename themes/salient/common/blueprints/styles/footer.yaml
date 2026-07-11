@@ -1,0 +1,15 @@
+name: Footer Styles
+description: Footer styles for the Salient theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#383838"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"

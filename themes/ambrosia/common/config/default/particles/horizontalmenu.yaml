@@ -1,0 +1,24 @@
+enabled: '1'
+class: ''
+target: _parent
+items:
+  -
+    text: Features
+    link: 'http://docs.gantry.org/gantry5/basics/key-features'
+    name: Features
+  -
+    text: 'Gantry 5'
+    link: 'http://www.gantry.org/'
+    name: 'Gantry 5'
+  -
+    text: Particles
+    link: 'http://docs.gantry.org/gantry5/particles'
+    name: Particles
+  -
+    text: Download
+    link: 'https://www.rockettheme.com/joomla/templates/ambrosia'
+    name: Download
+  -
+    text: Support
+    link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+    name: Support

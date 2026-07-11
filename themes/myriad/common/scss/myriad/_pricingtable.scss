@@ -1,0 +1,36 @@
+.rt-table {
+	clear: both;
+	border-width: 1px 0 1px 1px;
+	border-style: solid;
+	border-color: darken($accent-color-1, 10%);
+    margin: 35px 0;
+    list-style: none;
+    &.rt-table-last-col {
+    	border-right: 1px solid darken($accent-color-1, 10%);
+    }
+    li {
+    	padding: 15px 25px;
+    }
+    @include breakpoint(mobile-only) {
+		border-width: 1px;
+	}
+}
+.rt-table-title {
+	font-size: 1.5em;
+	line-height: 2em;
+	color: $white;
+	background: darken($accent-color-1, 5%);
+	text-align: center;
+	text-transform: uppercase;
+	font-family: get-font-family($font-family-alt);
+	font-weight: bold;
+}
+.rt-table-price {
+	font-size: 2em;
+	color: $white;
+	background: lighten($accent-color-1, 5%);
+	border-top: 1px solid darken($accent-color-1, 10%);
+	border-bottom: 1px solid darken($accent-color-1, 10%);
+	padding: 25px !important;
+	text-align: center;
+}

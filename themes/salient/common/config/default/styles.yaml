@@ -1,0 +1,12 @@
+slideshow:
+  background-image: 'gantry-media://demo/home/slideshow/bg.jpg'
+above:
+  background-image: 'gantry-media://demo/home/above/img-01.png'
+feature:
+  background-image: 'gantry-media://demo/home/feature/img-01.jpg'
+extension:
+  background-image: 'gantry-media://demo/home/extension/img-01.jpg'
+expanded:
+  background-image: 'gantry-media://demo/home/expanded/img-01.png'
+utility:
+  background-image: 'gantry-media://demo/home/utility/img-01.jpg'

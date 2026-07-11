@@ -1,0 +1,21 @@
+#g-container-footer {
+    color: $footer-text-color;
+
+    #g-footermain {
+        background: $footer-background;
+
+        @if $footer-background-image {
+            background-image: url($footer-background-image);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0;
+        }
+    }
+}
+
+@media print {
+    #g-container-footer  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

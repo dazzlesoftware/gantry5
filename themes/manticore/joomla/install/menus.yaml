@@ -1,0 +1,9 @@
+manticore-theme:
+  title: 'Manticore Theme'
+  description: 'Sample menu for Manticore theme.'
+
+  items:
+    manticore:
+      title: 'Home'
+      outline: home
+      home: 1

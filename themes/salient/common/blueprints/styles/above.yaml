@@ -1,0 +1,19 @@
+name: Above Styles
+description: Above styles for the Salient theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#080808"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#efefef"       
+    background-image:
+      type: input.imagepicker
+      label: Background Image
+      default: "gantry-media://demo/home/above/img-01.png"

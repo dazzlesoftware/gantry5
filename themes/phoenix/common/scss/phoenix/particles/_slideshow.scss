@@ -1,0 +1,182 @@
+.g-slideshow-mask {
+    #linecanvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        canvas {
+            z-index: 100 !important;
+        }
+    }
+}
+
+.g-slideshow {
+    .g-slideshow-slider {
+        .g-slideshow-overlay {
+            background: transparentize($base-background, 0.75);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            filter: grayscale(100%);
+            background-repeat: no-repeat;
+
+            &.swiper-slide-active,
+            &:hover {
+                filter: grayscale(0);
+            }
+
+            clip-path: polygon(0% 0, 98% 0, 100% 100%, 2% 100%);
+            @include breakpoint(mobile-only) {
+                clip-path: none;
+            }
+            .slide {
+                position: relative;
+                z-index: 3;
+                width: 100%;
+
+                .g-slideshow-main-title {
+                    @include responsive-font($responsive-font-size + 2, $core-font-size + 1, false, false);
+                    line-height: normal;
+                    margin-bottom: 3rem;
+                    width: 60%;
+                    margin: 0 auto;
+                    margin-bottom: $content-padding;
+                    font-weight: $font-weight-extrabold;
+
+                    @include breakpoint(mobile-only) {
+                        font-size: $core-font-size + 1.25;
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+
+    &.swiper-container-horizontal>.swiper-pagination-bullets {
+        display: flex;
+        bottom: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+
+        @include breakpoint(mobile-only) {
+            bottom: 10%;
+        }
+
+        .swiper-pagination-bullet {
+            margin: 2rem 1rem;
+            background: transparent;
+            border: 2px solid $white;
+            opacity: 1;
+            height: 22px;
+            width: 22px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: 0;
+
+            @include breakpoint(mobile-only) {
+                width: 16px;
+                height: 16px;
+            }
+
+            &.focus,
+            &.active {
+                outline: 0;
+                -moz-outline-style: none;
+            }
+
+            &::after {
+                content: '';
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: $white;
+                position: absolute;
+
+                @include breakpoint(mobile-only) {
+                    width: 4px;
+                    height: 4px;
+                }
+            }
+
+            &-active {
+                background: $white;
+                opacity: 1;
+                border-color: $white;
+
+                &::after {
+                    width: 8px;
+                    height: 8px;
+                    background: $black;
+
+                    @include breakpoint(mobile-only) {
+                        width: 6px;
+                        height: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+    .navigation {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: absolute;
+            font-size: 4rem;
+            color: $white;
+            outline: none;
+            opacity: 0.5;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            transition: opacity, 0.25s;
+
+            &:after {
+                content: none !important;
+            }
+
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+        }
+
+        .swiper-button-next {
+            right: 1rem;
+            top: 50%;
+            margin: 0;
+            padding: 0;
+            transform: translateY(-50%);
+        }
+
+        .swiper-button-prev {
+            left: 1rem;
+            top: 50%;
+            margin: 0;
+            padding: 0;
+            transform: translateY(-50%);
+        }
+
+        &.rtl {
+            .swiper-button-prev {
+                right: 1rem;
+                left: auto;
+            }
+
+            .swiper-button-next {
+                right: auto;
+                left: 1rem;
+            }
+        }
+    }
+}

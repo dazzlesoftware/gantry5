@@ -1,0 +1,102 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div id="{{ id }}" class="g-verticalslider {{ particle.class|e }}" data-verticalslider-id="{{ id }}" {% if particle.presets == 'enabled' %}data-verticalslider-presets="{{ gantry.theme.preset|default('preset1')|replace({'preset':''}) - 1 }}"{% endif %}  data-verticalslider-height="{{ particle.height }}" data-verticalslider-mobileheight="{{ particle.mobileheight }}" data-verticalslider-speed="{{ particle.speed }}" data-verticalslider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-verticalslider-auto="{% if particle.auto == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-pause="{{ particle.pause|default('2000') }}" data-verticalslider-loop="{% if particle.loop == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-controls="{% if particle.controls == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-pager="{% if particle.pager == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-mobile="{{ gantry.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('51rem') }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        <ul>
+            {% if particle.source == 'joomla' %}
+
+                {# Load Content From Joomla #}
+                {% set article_settings = particle.article %}
+                {% set filter = article_settings.filter %}
+                {% set sort = article_settings.sort %}
+                {% set limit = article_settings.limit %}
+                {% set display = article_settings.display %}
+
+                {# Category Finder #}
+                {% set category_options = filter.categories ? {id: [filter.categories|split(','), 0]} : {} %}
+                {% set categories = joomla.finder('category', category_options).published(1).language().limit(0).find() %}
+
+                {# Content Finder #}
+                {% if filter.articles %}
+                    {% set article_options = filter.articles ? {id: [filter.articles|replace(' ', '')|split(',')]} : {} %}
+                    {% set article_finder = joomla.finder('content', article_options).published(1).language() %}
+                {% else %}
+                    {% set article_finder = joomla.finder('content').category(categories).published(1).language() %}
+                {% endif %}
+
+                {% set featured = filter.featured|default('include') %}
+                {% if featured == 'exclude' %}
+                    {% do article_finder.featured(false) %}
+                {% elseif featured == 'only' %}
+                    {% do article_finder.featured(true) %}
+                {% endif %}
+
+                {% do article_finder.order(sort.orderby, sort.ordering).limit(limit.total).start(limit.start) %}
+                {% set total = article_finder.count() %}
+                {% set articles = article_finder.find() %}
+
+                {% for article in articles %}
+                    {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
+                        {% if article.images.image_intro and display.image.enabled == 'intro' %}
+                            {% set article_image = article.images.image_intro %}
+                        {% elseif article.images.image_fulltext and display.image.enabled == 'full' %}
+                            {% set article_image = article.images.image_fulltext %}
+                        {% endif %}
+                    {% endif %}
+
+                    <li class="g-verticalslider-item" style="background-image: url({{ url(article_image)|e }});">
+                        <div class="g-verticalslider-content-wrapper">
+                            <div class="g-verticalslider-content-before" style="background-image: url({{ url(article_image)|e }});"></div>
+                            <div class="g-verticalslider-content">
+                                {% if display.title.enabled and article.title %}<span class="g-verticalslider-small-title">{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}</span>{% endif %}
+                                {% if display.text.type %}
+                                    {% set article_text = display.text.type == 'intro' ? article.introtext : article.text %}
+                                    <p class="g-verticalslider-description">
+                                        {% if display.text.formatting == 'text' %}
+                                            {{ article_text|truncate_text(display.text.limit)|raw }}
+                                        {% else %}
+                                            {{ article_text|truncate_html(display.text.limit)|raw }}
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
+                                {% if display.read_more.enabled %}
+                                    <a href="{{ article.route|e }}" title="{{ article.title|e }}" class="button {{ display.read_more.css }}">{{ display.read_more.label|default('Read More...') }}</a>
+                                {% endif %}
+                            </div>
+                            <div class="g-verticalslider-content-after"></div>
+                        </div>
+                    </li>
+                {% endfor %}
+
+            {% else %}
+
+                {# Particle Content #}
+                {% for item in particle.items %}
+                    <li class="g-verticalslider-item" style="background-image: url({{ url(item.image)|e }});">
+                        <div class="g-verticalslider-content-wrapper">
+                            <div class="g-verticalslider-content-before" style="background-image: url({{ url(item.image)|e }});"></div>
+                            <div class="g-verticalslider-content">
+                                {% if item.small_title %}<span class="g-verticalslider-small-title">{{ item.small_title|raw }}</span>{% endif %}
+                                {% if item.desc %}<p class="g-verticalslider-description">{{ item.desc|raw }}</p>{% endif %}
+                                {% if item.buttontext %}
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+                                {% endif %}
+                            </div>
+                            <div class="g-verticalslider-content-after"></div>
+                        </div>
+                    </li>
+                {% endfor %}
+
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/lightslider.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/verticalslider.init.js'), 9, 'footer') %}
+{% endblock %}

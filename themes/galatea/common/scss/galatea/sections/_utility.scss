@@ -1,0 +1,27 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+
+    // Container
+    .g-container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    // Grid Statistic
+    .g-gridstatistic-item-text2 {
+        color: darken($utility-text-color, 35%);
+    }
+
+    // Block Content
+    .g-blockcontent-subcontent-title-text {
+        color: darken($utility-text-color, 35%);
+    }
+}
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

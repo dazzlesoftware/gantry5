@@ -1,0 +1,102 @@
+name: Simple Form
+description: Create simple forms.
+type: particle
+icon: fa-wpforms
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: Please note that you need <a href="https://getsimpleform.com/" target="_blank">Simple Form</a> token for Simple Form particle to work. Obtaining token is easy and free. After registration, enter your token details in field below.
+
+    token:
+      type: input.text
+      label: Simple Form token
+      description: Please put your Simple Form token here.
+      placeholder: Simple Form token
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize your title.
+      default: Contact Us
+
+    description:
+      type: textarea.textarea
+      label: Description
+      description: Customize your description.
+      default: Use this contact form to get in touch with us. Work inquiries, or just to say hello. We’ll happily reply within 24 hours.
+
+    button:
+      type: input.text
+      label: Submit Button Label
+      description: Label for Submit Button.
+      default: Submit
+
+    thankyou:
+      type: textarea.textarea
+      label: Thank You Message
+      description: Customize your Thank You message.
+      default: Thank you for filling out the form. We will be contacting you soon.
+
+    error:
+      type: textarea.textarea
+      label: Error Message
+      description: Customize your Error message.
+      default: Failed to send your form. Please try later or contact administrator.
+
+    items:
+      type: collection.list
+      array: true
+      label: Simple Form Items
+      description: Add Simple Form items.
+      value: name
+      ajax: true
+
+      fields:
+        .type:
+          type: select.select
+          label: Type
+          description: Select field type.
+          options:
+            text: Text
+            textarea: TextArea
+            spinner: Number input with spinners
+            datepicker: Date Picker
+        .label:
+          type: input.text
+          label: Label
+          description: Select field label.
+        .placeholder:
+          type: input.text
+          label: Placeholder
+          description: Select field placeholder (if applicable).
+        .required:
+          type: select.select
+          label: Required
+          description: Make field required to fill.
+          default: enabled
+          options:
+            enabled: Yes
+            disabled: No
+        .min:
+          type: input.number
+          label: Minimum Value (Spinner only)
+          description: Minimum value.
+          default: 1
+
+        .max:
+          type: input.number
+          label: Maximum Value (Spinner only)
+          description: Maximum value.
+          default: 9

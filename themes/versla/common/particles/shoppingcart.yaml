@@ -1,0 +1,79 @@
+name: Shopping Cart
+description: Display snipcart shopping cart.
+type: particle
+icon: fa-shopping-cart
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    totalitems:
+      type: select.selectize
+      label: Total Items
+      description: Show or hide total items count.
+      placeholder: 'Select...'
+      default: disabled
+      options:
+          enabled: Show
+          disabled: Hide
+
+    itemslabel:
+      type: input.text
+      label: Total Items Label
+      description: Customize the total items label.
+      placeholder: Total Items:
+
+    itemsicon:
+      type: input.icon
+      label: Total Items Icon
+
+    price:
+      type: select.selectize
+      label: Total Price
+      description: Show or hide total price count.
+      placeholder: 'Select...'
+      default: enabled
+      options:
+          enabled: Show
+          disabled: Hide
+
+    pricelabel:
+      type: input.text
+      label: Total Price Label
+      description: Customize the price label.
+      placeholder: Total Price:
+
+    priceicon:
+      type: input.icon
+      label: Total Price Icon
+
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: The public API key is the key you need to add on your website when using Snipcart Shopping Cart. This key can be shared without security issues because it only allows a specific subset of API operations. To register, go to https://app.snipcart.com/account/register.
+
+    apikey:
+      type: input.text
+      label: Api Key
+      description: The public API key is the key you need to add on your website when using Snipcart Shopping Cart.
+      placeholder: Enter api key

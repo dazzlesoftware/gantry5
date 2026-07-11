@@ -1,0 +1,19 @@
+name: Base Styles
+description: Base styles for the Flux theme
+type: core
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Base Background
+      default: "#7b00f7"
+    text-color:
+      type: input.colorpicker
+      label: Base Text Color
+      default: "#605c72"
+    text-active-color:
+      type: input.colorpicker
+      label: Base Text Active Color
+      default: "#232529"

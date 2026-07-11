@@ -1,0 +1,9 @@
+aurora-theme:
+  title: 'Aurora Theme'
+  description: 'Sample menu for Aurora theme.'
+
+  items:
+    aurora:
+      title: 'Home'
+      outline: home
+      home: 1

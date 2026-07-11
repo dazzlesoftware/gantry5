@@ -1,0 +1,9 @@
+callisto-theme:
+  title: 'Callisto Theme'
+  description: 'Sample menu for Callisto theme.'
+
+  items:
+    callisto:
+      title: 'Home'
+      outline: home
+      home: 1

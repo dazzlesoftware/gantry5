@@ -1,0 +1,131 @@
+// Basics
+$white:							#ffffff;
+$black:							#000000;
+$off-white:						#f7f7f7;
+
+// Base
+$base-background:				#ffffff !default;
+$base-text-color:				#686868 !default;
+$base-border-color:				#888888 !default;
+
+// Accents
+$accent-color-1:				#cca80a !default;
+$accent-color-2:				#e52783 !default;
+$accent-color-3:				#02daae !default;
+
+// Page Surround
+$pagesurround-background: 		$base-background !default;
+
+// Overlay
+$overlay-background:			#212121 !default;
+$overlay-background-image:		false !default;
+$overlay-text-color:			#ffffff !default;
+
+// FixedSide
+$fixedside-background:			#0d0d0d !default;
+$fixedside-text-color:			#ffffff !default;
+$fixedside-width: 				4rem !default;
+$fixedside-position: 			"g-fixedside-right" !default;
+
+// Top
+$top-background:				#121212 !default;
+$top-text-color:				#ffffff !default;
+
+// Navigation
+$navigation-background:			#121212 !default;
+$navigation-text-color:			#ffffff !default;
+
+// Slideshow
+$slideshow-background:			#121212 !default;
+$slideshow-text-color:			#ffffff !default;
+
+// Header
+$header-background:				#282828 !default;
+$header-text-color:				#ffffff !default;
+$header-background-text:		"Gantry 5" !default;
+$header-background-image:		false !default;
+
+// Above
+$above-background:				#ffffff !default;
+$above-text-color:				#686868 !default;
+
+// Showcase
+$showcase-background:			#121212 !default;
+$showcase-text-color:			#888888 !default;
+$showcase-background-image:		false !default;
+
+// Utility
+$utility-background:			#ffffff !default;
+$utility-text-color:			#686868 !default;
+
+// Feature
+$feature-background:			#ffffff !default;
+$feature-text-color:			#686868 !default;
+
+// Main
+$main-background:				#ffffff !default;
+$main-text-color:				#686868 !default;
+
+// Expanded
+$expanded-background:			#ffda2a !default;
+$expanded-text-color:			#7e7000 !default;
+
+// Extension
+$extension-background:			#121212 !default;
+$extension-text-color:			#888888 !default;
+$extension-background-image:	false !default;
+
+// Bottom
+$bottom-background:				#ffffff !default;
+$bottom-text-color:				#686868 !default;
+
+// Footer
+$footer-background:				#121212 !default;
+$footer-text-color:				#888888 !default;
+
+// Copyright
+$copyright-background:			#121212 !default;
+$copyright-text-color:			#888888 !default;
+
+// Off Canvas
+$offcanvas-background:			#7e7000 !default;
+$offcanvas-text-color:			#ffffff !default;
+$offcanvas-toggle-color:		#ffda2a !default;
+
+// Block Variations
+$box1-background:				$accent-color-1 !default;
+$box2-background:				$accent-color-2 !default;
+$box3-background:				$accent-color-3 !default;
+$box4-background:				darken($base-background, 5%) !default;
+$box-white-background: 			#ffffff !default;
+$box-grey-background: 			#95a5a6 !default;
+$box-darkgrey-background: 		#282828 !default;
+$box-pink-background: 			#d13b7b !default;
+$box-red-background: 			#ef4a44 !default;
+$box-purple-background: 		#874f9a !default;
+$box-blue-background: 			#279fba !default;
+$box-orange-background: 		#ee7933 !default;
+
+// Mobile Menu Sidepanel
+$mobilemenu-background:			#354d59 !default;
+
+// System Messsages and Alerts
+$warning-color:					#c09853;
+$error-color:					#b94a48;
+$info-color:					#3a87ad;
+$success-color:					#468847;
+
+// Typography
+$rule-color:					fade-out($base-text-color, 0.5);
+$code-text:						#c7254e;
+$code-bg:						#f9f2f4;
+$pre-text:						#237794;
+$pre-bg:						#f6f6f6;
+
+// Borders
+$border-color-hover:			$accent-color-1;
+$border-color-focus:			$accent-color-1;
+$border-color-light:            rgba(0, 0, 0, 0.1);
+
+// Shadows
+$base-box-shadow: 				inset 0 1px 3px hsla(0, 0%, 0%, 0.06);

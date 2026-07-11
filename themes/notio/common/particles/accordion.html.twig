@@ -1,0 +1,61 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        <ul class="accordion" id="{{ id }}" data-accordion-id="{{ id }}">
+
+            {% if particle.source == 'joomla' %}
+
+                {# Load Content From Joomla #}
+                {% set category_options = particle.joomla.categories ? {id: [particle.joomla.categories|split(','), 0]} : {} %}
+                {% set categories_finder = joomla.finder('category', category_options).published(1).language().find() %}
+                {% set article_finder = joomla.finder('content').category(categories_finder).published(1).featured(false).language() %}
+                {% set items = article_finder.order('publish_up', 'ASC').limit(particle.joomla.articles|default('1')).start(0).find() %}
+
+                {% for item in items %}
+                    <li id="accordion-id{{ loop.index }}" >
+                        <div class="accordion-item-title">{% if item.title %}{{ item.title|e }}{% endif %}
+                            <span class="indicator"><span>+</span></span>
+                        </div>
+                        <div class="accordion-item-content">
+                            {% if particle.joomla.introtext == 'enabled' and item.introtext %}{{ item.introtext|raw }}{% endif %}
+                            {% if particle.joomla.link == 'enabled' and item.route %}
+                                <br /><br />
+                                <span class="accor-button">
+                                    <a target="{{ particle.joomla.linktarget|default('_self')|e }}" href="{{ item.route|e }}" title="{{ item.title|e }}" class="button">{{ particle.joomla.linktext|default('Read more')|raw }}</a>
+                                </span>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+
+            {% else %}
+
+                {# Particle Content #}
+                {% for item in particle.items %}
+                    <li id="accordion-id{{ loop.index }}" >
+                        <div class="accordion-item-title">{{ item.title }}
+                            <span class="indicator"><span>+</span></span>
+                        </div>
+                        <div class="accordion-item-content">
+                            {{ item.desc|raw }}
+                            {% if item.buttontext %}
+                                <br /><br />
+                                <span class="accor-button">
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a>
+                                </span>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/accordion.init.js') }}"></script>
+{% endblock %}

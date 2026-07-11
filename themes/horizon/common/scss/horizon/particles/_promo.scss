@@ -1,0 +1,53 @@
+// Pattern 
+.g-promo-pattern {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   pointer-events: none;
+   z-index: 0;
+
+   svg {
+      width: 100%;
+   }
+}
+
+.g-promo {
+   position: relative;
+   z-index: 1;
+   height: 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+
+   @include breakpoint(mobile-only) {
+      min-height: 500px;
+   }
+   span.g-promo-headline {
+      @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
+      background: set-color($base-text-color);
+      padding: 0.4rem 1rem;
+      font-weight: $font-weight-medium;
+   }
+
+   h1 {
+      margin: 0;
+      padding: 0.4rem 0.8rem;
+      background: set-color($base-background);
+      color: set-color($base-text-color);
+      span.g-promo-details {
+         @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
+         font-weight: $font-weight-semibold;
+      }
+   }
+
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: $content-padding * 2;
+
+   @include breakpoint(small-mobile-range) {
+      padding: $content-padding; 
+   }
+}

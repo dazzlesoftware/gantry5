@@ -1,0 +1,25 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    .g-logos {
+        justify-content: space-evenly;
+        align-items: center;
+        .logo-wrapper {
+            padding: 1.5rem;
+            max-width: 165px;
+            display: flex;
+            flex: 1;
+        }
+    img {
+        opacity: .3;
+    }
+}
+
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

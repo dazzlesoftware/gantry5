@@ -1,0 +1,76 @@
+preset:
+  image: 'gantry-admin://images/layouts/body-only.png'
+  name: _body_only
+children:
+  -
+    id: 81a96e81-cffa-efe4-2f6a-da5917b2a82c
+    type: section
+    subtype: false
+    title: Body
+    attributes:
+      boxed: 1
+    children:
+      -
+        id: a9ee6f4e-4177-4053-b3a6-76dec07ddc92
+        type: grid
+        subtype: false
+        title: Untitled
+        attributes: {  }
+        children:
+          -
+            id: 3f3d2b48-e03c-4584-9b96-b4a36e55a1f3
+            type: block
+            subtype: false
+            title: Untitled
+            attributes:
+              variations: 'nomarginall nopaddingall'
+              extra: {  }
+              size: 100
+            children:
+              -
+                id: c390c61a-9b59-426b-90bd-9f155949a3ff
+                type: pagecontent
+                subtype: system-messages
+                title: 'System Messages'
+                attributes:
+                  enabled: 1
+                children: {  }
+      -
+        id: b38eb9fa-1115-bf89-e6e1-ed8364e3dd1b
+        type: grid
+        subtype: false
+        title: Untitled
+        attributes: {  }
+        children:
+          -
+            id: 2ea78a4f-8b70-0e1a-a381-66597aa25b53
+            type: block
+            subtype: false
+            title: Untitled
+            attributes:
+              size: 100
+            children:
+              -
+                id: 0fa4279f-dbbd-8340-12fa-d9e10322e434
+                type: pagecontent
+                subtype: false
+                title: Pagecontent
+                attributes:
+                  enabled: 1
+                children: {  }
+  -
+    id: f17d4d6e-e8ff-3dee-d4bf-8fe70d450158
+    type: atoms
+    subtype: false
+    title: Atoms
+    attributes:
+      name: 'Atoms Section'
+      boxed: 0
+    children:
+      -
+        id: b708118c-36f9-4093-a09e-28d29b83624e
+        type: grid
+        subtype: false
+        title: Untitled
+        attributes: {  }
+        children: {  }

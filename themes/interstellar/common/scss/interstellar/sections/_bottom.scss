@@ -1,0 +1,58 @@
+#g-bottom {
+    background: $bottom-background;
+    color: $bottom-text-color;
+    padding: 6.3rem 0;
+    position: relative;
+
+    .g-pricingtable {
+        border: 0 none;
+        color: $bottom-text-color;
+        background: none;
+        .g-pricingtable-price, .g-pricingtable-item .fa {
+            color: $bottom-text-color;
+        }
+        .g-pricingtable-price {
+            font-size: $core-font-size + 5.8;
+            @include breakpoint(tablet-range) {
+            font-size: $core-font-size + 4.3;
+            }
+            line-height: $core-line-height - 0.2;
+            &:first-letter {
+                font-weight: $font-weight-light;
+                font-size: $core-font-size + 2.8;
+                vertical-align: super;
+            }
+        }
+        .button {
+            margin-top: 3.5rem;
+            font-size: $core-font-size + 1;
+            padding: 0.4rem 1.5rem;
+            background-color: transparent;
+            border-color: $bottom-text-color;
+            border-width: 5px;
+            border-radius: 10px;
+            color: $bottom-text-color !important;
+            white-space: nowrap;
+            &:hover {
+                background-color: $accent-color-2;
+            }
+        }
+        .g-pricingtable-item.g-pricingtable-item-0 {
+            padding-top: $content-padding + 0.8;
+            margin-top: 0;
+        }
+        .g-pricingtable-plan {
+            display: none;
+        }
+        .g-pricingtable-period, .g-pricingtable-desc {
+            opacity: 0.7;
+        }
+    }
+}
+
+@media print {
+    #g-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

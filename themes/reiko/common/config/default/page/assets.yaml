@@ -1,0 +1,18 @@
+favicon: ''
+touchicon: ''
+css: {  }
+javascript:
+  -
+    location: 'gantry-assets://js/block_variations.js'
+    inline: ''
+    in_footer: '1'
+    extra: {  }
+    priority: '0'
+    name: 'Block Variations'
+  -
+    location: 'gantry-assets://js/jquery.lettering.min.js'
+    inline: "jQuery(document).ready(function() {\n  jQuery(\".g-profile-section-title\").lettering('words');\n});"
+    in_footer: '1'
+    extra: {  }
+    priority: '0'
+    name: 'Lettering JS'

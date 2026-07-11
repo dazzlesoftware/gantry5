@@ -1,0 +1,17 @@
+#g-header {
+	background: $header-background;
+	color: $header-text-color;
+	.button.button-arrow {
+		color: fade-out($header-text-color, 0.75) !important;
+		&:hover {
+			color: $accent-color-1 !important;
+		}
+	}
+}
+
+@media print {
+	#g-header {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

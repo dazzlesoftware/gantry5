@@ -1,0 +1,585 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1458046943
+layout:
+  /top/:
+    -
+      - system-messages-9828
+  /navigation/:
+    -
+      - 'logo-5992 20'
+      - 'menu-4196 60'
+      - 'social-7220 20'
+  /slideshow/: {  }
+  /header/:
+    -
+      - simplecontent-1569
+  /aboveBanner/: {  }
+  /above/: {  }
+  /showcaseBanner/: {  }
+  /showcase/:
+    -
+      - infolist-1327
+    -
+      - imagegrid-7324
+    -
+      - blockcontent-5669
+  /utilityBanner/: {  }
+  /utility/: {  }
+  /featureBanner/: {  }
+  /feature/: {  }
+  /mainBanner/: {  }
+  /container-4448/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-8538
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expandedBanner/: {  }
+  /expanded/: {  }
+  /extensionBanner/: {  }
+  /extension/:
+    -
+      - infolist-5969
+  /bottomBanner/: {  }
+  /bottom/: {  }
+  /footer/: {  }
+  /copyright/:
+    -
+      - 'logo-3639 60'
+      - 'newsletter-9635 40'
+    -
+      - 'copyright-5748 48'
+      - 'position-position-1858 52'
+  offcanvas:
+    -
+      - mobile-menu-7951
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: '0'
+  navigation:
+    type: section
+    attributes:
+      boxed: '0'
+      class: nav-large-offset
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+  header:
+    attributes:
+      boxed: '1'
+      class: ''
+  aboveBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcaseBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utilityBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  featureBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  mainBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  sidebar:
+    type: section
+    block:
+      class: equal-height
+  mainbar:
+    type: section
+    block:
+      class: equal-height
+  aside:
+    block:
+      class: equal-height
+  container-4448:
+    attributes:
+      boxed: '1'
+      class: ''
+      extra: {  }
+  expandedBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extensionBanner:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '1'
+      class: ''
+  bottomBanner:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '0'
+      class: ''
+  footer:
+    attributes:
+      boxed: '0'
+      class: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: '0'
+      class: g-mobile-center-compact
+content:
+  logo-5992:
+    attributes:
+      image: 'gantry-media://logo/logo.svg'
+  social-7220:
+    attributes:
+      css:
+        class: align-right
+    block:
+      class: hidden-phone
+  simplecontent-1569:
+    title: 'Portfolio - Header'
+    attributes:
+      class: center
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: Portfolio
+          author: ''
+          leading_content: 'The Menu Editor in Gantry 5 grants you drag and drop controls, for creating columns, adding particles and blocks inline, and reordering.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Portfolio
+  infolist-1327:
+    title: 'Portfolio Info List 2'
+    attributes:
+      class: 'noborder spaced'
+      title: ''
+      intro: ''
+      cols: g-2cols
+      infolists:
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'Project 1'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'Project 2'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'Project 3'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'Project 4'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'Project 5'
+        -
+          icon: ''
+          iconloc: left
+          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          imageloc: left
+          textstyle: compact
+          imagestyle: large
+          desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+          tag: ''
+          subtag: ''
+          label: 'Learn More'
+          link: '#'
+          buttonicon: ''
+          readmoreclass: button
+          readmoretarget: _self
+          title: 'Project 6'
+  imagegrid-7324:
+    title: 'Portfolio Image Grid'
+    attributes:
+      cols: g-imagegrid-4cols
+      album: clients
+      imagegriditems:
+        -
+          image: 'gantry-media://pages/about-us/feature/img-01.jpg'
+          caption: 'Image 1'
+          title: 'Image 1'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-02.jpg'
+          caption: 'Image 2'
+          title: 'Image 2'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-03.jpg'
+          caption: 'Image 3'
+          title: 'Image 3'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-04.jpg'
+          caption: 'Image 4'
+          title: 'Image 4'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-05.jpg'
+          caption: 'Image 5'
+          title: 'Image 5'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-06.jpg'
+          caption: 'Image 6'
+          title: 'Image 6'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-07.jpg'
+          caption: 'Image 7'
+          title: 'Image 7'
+        -
+          image: 'gantry-media://pages/about-us/feature/img-08.jpg'
+          caption: 'Image 8'
+          title: 'Image 8'
+  blockcontent-5669:
+    title: 'Portfolio Block Content'
+    attributes:
+      linktarget: _self
+      subcontents:
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-01.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Milka
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-02.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Lego
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-03.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Adobe
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-04.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Dell
+        -
+          name: ''
+          icon: ''
+          img: 'gantry-media://pages/portfolio/showcase/img-05.png'
+          rokboximage: ''
+          rokboxcaption: ''
+          subtitle: ''
+          description: ''
+          class: ''
+          button: ''
+          buttonlink: ''
+          buttonclass: ''
+          buttontarget: _self
+          title: Puma
+  position-position-8538:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  position-position-8807:
+    title: Aside
+    attributes:
+      key: aside
+  infolist-5969:
+    title: 'Portfolio Info List'
+    attributes:
+      cols: g-4cols
+      infolists:
+        -
+          icon: 'fa fa-align-justify'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Social Media'
+        -
+          icon: 'fa fa-bar-chart-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Web Development'
+        -
+          icon: 'fa fa-building-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Graphic Design'
+        -
+          icon: 'fa fa-codepen'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Customer Relations'
+        -
+          icon: 'fa fa-file-movie-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Reliable Resources'
+        -
+          icon: 'fa fa-industry'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Music Composition'
+        -
+          icon: 'fa fa-comments'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Video Framing'
+        -
+          icon: 'fa fa-empire'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet nibh. Vivamus non arcu. '
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'SEO Services'
+  logo-3639:
+    title: 'Logo / Image'
+    attributes:
+      text: Photon
+      class: g-footer-logo
+  newsletter-9635:
+    attributes:
+      layout: g-newsletter-aside-compact
+      sidetext: Newsletter
+      buttonicon: 'fa fa-send'
+  position-position-1858:
+    title: Copyright
+    attributes:
+      key: copyright
+    block:
+      class: 'nomarginleft nopaddingleft'
+  mobile-menu-7951:
+    title: 'Mobile Menu'

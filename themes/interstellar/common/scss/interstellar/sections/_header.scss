@@ -1,0 +1,27 @@
+#g-header {
+    background: $header-background;
+    color: $header-text-color;
+    padding: 4rem 0 1rem 0;
+    @include breakpoint(mobile-only) {
+        padding: 2rem 0 1rem 0;
+    }
+    .g-promocontent {
+        h2.g-title {
+            font-size: 3.5rem;
+            text-transform: none;
+            font-weight: $font-weight-ultrabold;
+            line-height: $core-line-height - 0.3;
+            color: $black;
+            @include breakpoint(mobile-only) {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,21 @@
+#g-container-slideshow {
+    color: $slideshow-text-color;
+
+    #g-slideshowmain {
+        background: $slideshow-background;
+
+        @if $slideshow-background-image {
+            background-image: url($slideshow-background-image);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0;
+        }
+    }
+}
+
+@media print {
+    #g-container-slideshow {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

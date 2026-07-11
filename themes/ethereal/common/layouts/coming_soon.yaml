@@ -1,0 +1,289 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/offline.png'
+  name: coming_soon
+  timestamp: 1516143068
+layout:
+  /top/:
+    -
+      - system-messages-8602
+    -
+      - 'position-6283 33'
+      - 'position-1936 34'
+      - 'position-6947 33'
+  /header/:
+    -
+      - 'logo-6669 30'
+      - 'menu-3039 70'
+    -
+      - 'position-1519 33'
+      - 'position-4805 34'
+      - 'position-1737 33'
+  /slideshow/:
+    -
+      - position-6936
+  /showcase/:
+    -
+      - 'position-7529 33'
+      - 'position-8897 34'
+      - 'position-9587 33'
+  /feature/:
+    -
+      - 'position-2114 33'
+      - 'position-6228 34'
+      - 'position-6956 33'
+  /main/:
+    -
+      - 'position-7155 33'
+      - 'position-6044 34'
+      - 'position-6821 33'
+  /container-1354/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-5790
+      -
+        'mainbar 60':
+          -
+            - simplecounter-7980
+          -
+            - system-content-5510
+      -
+        'aside 20':
+          -
+            - position-4339
+  /extension/:
+    -
+      - 'position-8848 33'
+      - 'position-7310 34'
+      - 'position-2116 33'
+  /bottom/:
+    -
+      - 'position-8257 33'
+      - 'position-2573 34'
+      - 'position-8927 33'
+  /footer/:
+    -
+      - 'position-1686 33'
+      - 'position-6718 34'
+      - 'position-6078 33'
+  /copyright/:
+    -
+      - 'logo-2871 33'
+      - 'custom-4959 67'
+    -
+      - 'copyright-5603 33'
+      - 'custom-7122 57'
+      - 'totop-2594 10'
+  offcanvas:
+    -
+      - mobile-menu-1205
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+  header:
+    attributes:
+      boxed: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+  main:
+    attributes:
+      boxed: ''
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-1354:
+    attributes:
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+  footer:
+    attributes:
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+content:
+  position-6283:
+    title: 'Top A'
+    attributes:
+      key: top-a
+  position-1936:
+    title: 'Top B'
+    attributes:
+      key: top-b
+  position-6947:
+    title: 'Top C'
+    attributes:
+      key: top-c
+  logo-6669:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-header.png'
+    block:
+      class: g-logo-block
+  menu-3039:
+    block:
+      class: g-menu-block
+  position-1519:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-4805:
+    title: 'Header B'
+    attributes:
+      key: header-b
+  position-1737:
+    title: 'Header C'
+    attributes:
+      key: header-c
+  position-6936:
+    title: Slideshow
+    attributes:
+      key: slideshow
+    block:
+      class: flush
+  position-7529:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-8897:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+  position-9587:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+  position-2114:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-6228:
+    title: 'Feature B'
+    attributes:
+      key: feature-b
+  position-6956:
+    title: 'Feature C'
+    attributes:
+      key: feature-c
+  position-7155:
+    title: 'Main A'
+    attributes:
+      key: main-a
+  position-6044:
+    title: 'Main B'
+    attributes:
+      key: main-b
+  position-6821:
+    title: 'Main C'
+    attributes:
+      key: main-c
+  position-5790:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  simplecounter-7980:
+    title: 'Simple Counter'
+    attributes:
+      title: 'Stay Tuned'
+      desc: 'We are working on a new and exciting template that we think you will really like.'
+      date: '1'
+      month: '1'
+      year: '2025'
+      daytext: Day
+      daystext: Days
+      hourtext: Hour
+      hourstext: Hours
+      minutetext: Minute
+      minutestext: Minutes
+      secondtext: Second
+      secondstext: Seconds
+    block:
+      variations: center
+  position-4339:
+    title: Aside
+    attributes:
+      key: aside
+  position-8848:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-7310:
+    title: 'Extension B'
+    attributes:
+      key: extension-b
+  position-2116:
+    title: 'Extension C'
+    attributes:
+      key: extension-c
+  position-8257:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  position-2573:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+  position-8927:
+    title: 'Bottom C'
+    attributes:
+      key: bottom-c
+  position-1686:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+  position-6718:
+    title: 'Footer B'
+    attributes:
+      key: footer-b
+  position-6078:
+    title: 'Footer C'
+    attributes:
+      key: footer-c
+  logo-2871:
+    attributes:
+      image: 'gantry-theme://images/logo/logo-footer.png'
+  custom-4959:
+    title: 'Demo Information'
+    attributes:
+      html: "<div class=\"g-tag\"><a href=\"#\">Demo Information</a></div>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from their respective sources for exclusive use on this demo only.</p>"
+    block:
+      class: bordered-bottom
+  copyright-5603:
+    attributes:
+      date:
+        start: '2007'
+      owner: 'RocketTheme, LLC'
+    block:
+      class: g-copyright
+  custom-7122:
+    title: 'Horizontal Menu'
+    attributes:
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
+  totop-2594:
+    title: 'To Top'
+    attributes:
+      content: '<i class="fa fa-fw fa-2x fa-arrow-circle-o-up"></i>'
+  mobile-menu-1205:
+    title: 'Mobile Menu'

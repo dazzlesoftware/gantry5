@@ -1,0 +1,13 @@
+preset: preset1
+menustyle:
+  text-color: '#ffffff'
+  text-color-active: '#ffffff'
+  background-active: 'rgba(255, 255, 255, 0)'
+  sublevel-text-color: '#000000'
+  sublevel-background: '#ffffff'
+  sublevel-background-active: '#2276e3'
+navigation:
+  background: 'rgba(255, 255, 255, 0)'
+  text-color: '#ffffff'
+offcanvas:
+  toggle-color: '#ffffff'

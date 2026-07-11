@@ -1,0 +1,383 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1614031945
+layout:
+  /top/:
+    -
+      - system-messages-9828
+    -
+      - 'simplecontact-5085 80'
+      - 'social-7974 20'
+  /navigation/:
+    -
+      - 'logo-3453 10'
+      - 'menu-2872 70'
+      - 'button-9453 20'
+  /slideshow/:
+    -
+      - position-position-6661
+  /header/:
+    -
+      - position-position-7051
+  /above/:
+    -
+      - position-position-3264
+  /feature/:
+    -
+      - position-position-7980
+  /showcase/:
+    -
+      - position-position-9435
+  /utility/:
+    -
+      - position-position-5239
+  /container-main/:
+    -
+      -
+        'sidebar 20':
+          -
+            - position-position-9414
+      -
+        'mainbar 60':
+          -
+            - position-position-8547
+          -
+            - system-content-1120
+      -
+        'aside 20':
+          -
+            - position-position-8807
+  /expanded/:
+    -
+      - position-position-8124
+  /extension/:
+    -
+      - position-position-4800
+  /bottom/:
+    -
+      - position-position-3343
+  /footer/:
+    -
+      - newsletter-5881
+    -
+      - 'simplecontent-4419 25'
+      - 'simplemenu-2324 75'
+    -
+      - copyright-6444
+  /copyright/: {  }
+  offcanvas:
+    -
+      - mobile-menu-2576
+structure:
+  top:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  navigation:
+    type: section
+    attributes:
+      boxed: '3'
+      variations: ''
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings-large
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    attributes:
+      class: ''
+      variations: section-horizontal-paddings
+  aside:
+    attributes:
+      class: ''
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings-large'
+  extension:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-horizontal-paddings section-vertical-paddings'
+  bottom:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: section-horizontal-paddings
+  footer:
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'section-vertical-paddings section-horizontal-paddings'
+  copyright:
+    type: section
+    attributes:
+      boxed: ''
+      class: section-horizontal-paddings
+  offcanvas:
+    attributes:
+      swipe: '0'
+content:
+  simplecontact-5085:
+    title: 'Simple Contact'
+    attributes:
+      items:
+        -
+          icon: 'fa fa-envelope-o'
+          link: 'mailto:someuser@someuser.com'
+          target: _blank
+          title: contact@horizon.com
+        -
+          icon: 'fa fa-phone'
+          link: 'tel:+12345678901'
+          target: _blank
+          title: '+1 2345678 901'
+        -
+          icon: 'fa fa-map-marker'
+          link: ''
+          target: _blank
+          title: 'PO 19950, Greenwood,DE 511245'
+    block:
+      variations: align-left
+  social-7974:
+    attributes:
+      items:
+        -
+          icon: 'fa fa-facebook fa-fw'
+          text: ''
+          link: 'https://www.facebook.com/RocketTheme'
+          name: Facebook
+        -
+          icon: 'fa fa-twitter fa-fw'
+          text: ''
+          link: 'http://www.twitter.com/rockettheme'
+          name: Twitter
+        -
+          icon: 'fa fa-linkedin fa-fw'
+          text: ''
+          link: '#'
+          name: LinkedIn
+    block:
+      class: hidden-phone
+      variations: 'align-right nopaddingtop nopaddingbottom'
+  logo-3453:
+    title: 'Logo / Image'
+    attributes:
+      image: ''
+      link: '1'
+      svg: ''
+      text: Horizon
+      title: Horizon
+    block:
+      variations: 'align-left nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  menu-2872:
+    block:
+      variations: 'align-left nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  button-9453:
+    attributes:
+      label: 'Hire Us'
+      link: ''
+      target: _self
+      class: button-2
+    block:
+      variations: 'nomargintop nopaddingtop nomarginbottom nopaddingbottom'
+  position-position-6661:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: ''
+  position-position-7051:
+    title: 'Header A'
+    attributes:
+      key: header-a
+  position-position-3264:
+    title: 'Above A'
+    attributes:
+      key: above-a
+  position-position-7980:
+    title: 'Feature A'
+    attributes:
+      key: feature-a
+  position-position-9435:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+  position-position-5239:
+    title: 'Utility A'
+    attributes:
+      key: utility-a
+  position-position-9414:
+    title: 'Sidebar A'
+    attributes:
+      key: sidebar-a
+  position-position-8547:
+    title: 'MainBar A'
+    attributes:
+      key: mainbar-a
+  position-position-8807:
+    title: 'Aside A'
+    attributes:
+      key: aside-a
+  position-position-8124:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-4800:
+    title: 'Extension A'
+    attributes:
+      key: extension-a
+  position-position-3343:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+  newsletter-5881:
+    attributes:
+      layout: g-newsletter-aside
+      title: 'Join the newsletter'
+      headtext: "Get productivity tips directly in your <span>&nbsp;inbox.</span>"
+      inputboxtext: 'Your Email'
+      buttontext: Subscribe
+      buttonclass: button-2
+    block:
+      variations: center
+  simplecontent-4419:
+    title: 'Simple Content'
+    attributes:
+      class: ''
+      title: ''
+      items:
+        -
+          layout: standard
+          created_date: ''
+          content_title: Horizon
+          author: ''
+          leading_content: ''
+          main_content: "Horizon is built on a responsive framework that makes it easier than ever to create a unique user experience for your customers."
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: 'Item 1'
+  simplemenu-2324:
+    title: 'Simple Menu'
+    attributes:
+      menus:
+        -
+          items:
+            -
+              icon: ''
+              link: ''
+              target: _blank
+              title: 'About Rational'
+            -
+              icon: ''
+              link: ''
+              target: _blank
+              title: 'Our Projects'
+            -
+              title: 'The Team'
+            -
+              title: Jobs
+            -
+              title: Blog
+            -
+              title: Press
+          title: About
+        -
+          items:
+            -
+              title: 'Our Blog'
+            -
+              title: 'Case Studies'
+            -
+              title: Newsletter
+            -
+              title: 'Web Guides'
+          title: Resources
+        -
+          items:
+            -
+              title: Contact
+            -
+              title: Helpcentre
+            -
+              title: 'Our Offices'
+            -
+              title: Facebook
+            -
+              title: Twitter
+            -
+              title: Instagram
+          title: Contact
+        -
+          items:
+            -
+              title: 'Live Chat'
+            -
+              title: '(401) 123-4578'
+            -
+              title: 'Send us an email'
+            -
+              title: FAQ
+          title: Online
+  copyright-6444:
+    attributes:
+      date:
+        start: ''
+        end: ''
+      owner: 'All rights reserved. Designed & Developed by <a href="" target="_blank">RocketTheme</a>.'
+    block:
+      variations: center
+  mobile-menu-2576:
+    title: 'Mobile Menu'

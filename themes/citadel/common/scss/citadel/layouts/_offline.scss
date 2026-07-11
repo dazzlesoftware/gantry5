@@ -1,0 +1,48 @@
+.g-offline {
+    .g-default-slideshow {
+        color: $white;
+
+        .g-simplecontent-layout-header {
+            padding-bottom: 0;
+        }
+
+        .g-loginform {
+            padding: 2rem 0;
+            background: linear-gradient(90deg, rgba($white, 0) 0%, rgba($white, 0.10) 50%, rgba($white, 0) 100%);
+
+            #g-loginform {
+                margin: 0 auto;
+                width: 30%;
+            }
+        }
+    }
+
+    #frame {
+        padding: 1rem 0 2rem;
+        background: linear-gradient(90deg, rgba($white, 0) 0%, rgba($white, 0.10) 50%, rgba($white, 0) 100%);
+
+        #form-login {
+            margin: 0 auto;
+            width: 30%;
+        }
+    }
+    #grav-login {
+        max-width: 32rem;
+        color: #a9a9a9;  
+        .form-actions {
+            margin-top: $content-margin;
+            @include breakpoint(mobile-only) {
+                text-align: center;
+            }
+        }
+        .button {
+            text-transform: capitalize;
+        }
+        .rememberme { 
+            @include breakpoint(mobile-only) {
+                float: none;
+                display: block;
+            }
+        }
+    }    
+}

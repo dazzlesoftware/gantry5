@@ -1,0 +1,47 @@
+// Search Plugin
+.g-search {
+    @include breakpoint(mobile-only) {
+        text-align: center;
+    }
+
+    input[type="text"],
+    input[type="search"] {
+        border-top: 0 none;
+        border-left: 0 none;
+        border-right: 0 none;
+        border-width: 0;
+        border-radius: 0.3rem;
+        padding-left: 2.5rem;
+        background: transparentize($base-text-color, 0.96);
+        margin-bottom: 0;
+    }
+    input::-webkit-input-placeholder {
+        color: #b5bdc5;
+    }
+
+    form {
+        position: relative;
+        margin: 0;
+
+        &:before {
+            content: "\f002";
+            position: absolute;
+            left: $content-margin;
+            width: 20px;
+            height: 20px;
+            top: 30%;
+            color: transparentize($base-text-color, 0.76);
+            font: normal normal normal 16px/1 "Font Awesome 5 Pro", "Font Awesome 5 Free", FontAwesome;
+
+            .dir-rtl & {
+                left: auto;
+                right: $content-margin;
+            }
+        }
+    }
+
+    // Hide Search Field
+    .g-search-lightcase {
+        display: none;
+    }
+}

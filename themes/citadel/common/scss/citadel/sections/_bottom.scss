@@ -1,0 +1,18 @@
+#g-container-bottom {
+    color: $bottom-text-color;
+
+    #g-bottommain {
+        background: $bottom-background;
+
+        a {
+            color: $bottom-text-color;
+        }
+    }
+}
+
+@media print {
+    #g-container-bottom {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

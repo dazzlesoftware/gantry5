@@ -1,0 +1,240 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set language = gantry.page.language %}
+
+{% block particle %}
+    <div class="g-calendar-particle {{ particle.class|e }}">
+        <div class="g-calendar-title-wrapper">
+            {% if particle.title %}
+                <h2 class="g-title nomarginall g-calendar-title">{{ particle.title|raw }}</h2>
+            {% endif %}
+            <div class="g-calendar-datepicker-wrapper" data-toggle="datepicker">
+                <div class="g-calendar-datepicker form-control docs-date"></div>
+                <span class="g-calendar-datepicker-icon">
+                    <i class="fa fa-fw fa-angle-down"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="prev-push">
+                <i class="fa fa-fw fa-angle-left"></i>
+            </div>
+            <div class="next-push">
+                <i class="fa fa-fw fa-angle-right"></i>
+            </div>
+        </div>
+        <div id="g-{{ id }}" class="g-calendar">
+            <script id="g-{{ id }}-flux-clndr-template" type="text/template">
+                <div class="days-container">
+                    <div class="days">
+                        <% _.each(days, function(day) { %><div class="<%= day.classes %>" id="<%= day.id %>"><span class="day-name"><%= day.date.format('dd') %></span><br /><%= day.day %><span class="event-counter"><%= day.events.length %></span></div><% }); %>
+                    </div>
+                    <div class="events">
+                        <div class="headers">
+                            <div class="x-button"><i class="fa fa-fw fa-close"></i></div>
+                            <div class="event-header">{{ particle.eventsheader|default('Events') }}</div>
+                        </div>
+                        <div class="events-list">
+                            <% _.each(eventsThisMonth, function(event) { %>
+                            <div id="<%= event.id %>" class="event hidden">
+                                <%
+                                    var day_format = 'MMM';
+                                    var date_format = 'D';
+                                    var event_day = moment(event.startDate).format(day_format);
+                                    var event_dates = moment(event.startDate).format(date_format);
+                                    if (event.endDate !== '' && event.endDate !== event.startDate) {
+                                        event_dates += ' - ' + moment(event.endDate).format(date_format);
+                                    }
+                                %>
+
+                               <span class="event-date"><span class="day-name"><%= event_day %></span><span class="day-number"><%= event_dates %></span><span class="time"><%= event.stime%></span><% if (event.etime !== '') { %>-<span class="time"><%= event.etime %></span><% } %></span>
+
+                                 <div class="event-info">
+                                     <% if (event.url !== '') { %><a target="<%= event.target %>" class="event-link" href=<%= event.url %>><% } %><span class="event-title"><%= event.title %></span><% if (event.url !== '') { %></a><% } %>
+                                    <% if (event.desc !== '') { %><span class="event-desc"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.desc %></span><% } %>
+                                </div>
+                            </div>
+                            <% }); %>
+                             <% _.each(eventsNextMonth, function(event) { %>
+                            <div id="<%= event.id %>" class="event hidden">
+                                <%
+                                    var day_format = 'MMM';
+                                    var date_format = 'D';
+                                    var event_day = moment(event.startDate).format(day_format);
+                                    var event_dates = moment(event.startDate).format(date_format);
+                                    if (event.endDate !== '' && event.endDate !== event.startDate) {
+                                        event_dates += ' - ' + moment(event.endDate).format(date_format);
+                                    }
+                                %>
+
+                               <span class="event-date"><span class="day-name"><%= event_day %></span><span class="day-number"><%= event_dates %></span><span class="time"><%= event.stime%></span><% if (event.etime !== '') { %>-<span class="time"><%= event.etime %></span><% } %></span>
+
+                                 <div class="event-info">
+                                     <% if (event.url !== '') { %><a target="<%= event.target %>" class="event-link" href=<%= event.url %>><% } %><span class="event-title"><%= event.title %></span><% if (event.url !== '') { %></a><% } %>
+                                    <% if (event.desc !== '') { %><span class="event-desc"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.desc %></span><% } %>
+                                </div>
+                            </div>
+                            <% }); %>
+                             <% _.each(eventsLastMonth, function(event) { %>
+                            <div id="<%= event.id %>" class="event hidden">
+                                <%
+                                    var day_format = 'MMM';
+                                    var date_format = 'D';
+                                    var event_day = moment(event.startDate).format(day_format);
+                                    var event_dates = moment(event.startDate).format(date_format);
+                                    if (event.endDate !== '' && event.endDate !== event.startDate) {
+                                        event_dates += ' - ' + moment(event.endDate).format(date_format);
+                                    }
+                                %>
+
+                               <span class="event-date"><span class="day-name"><%= event_day %></span><span class="day-number"><%= event_dates %></span><span class="time"><%= event.stime%></span><% if (event.etime !== '') { %>-<span class="time"><%= event.etime %></span><% } %></span>
+
+                                 <div class="event-info">
+                                     <% if (event.url !== '') { %><a target="<%= event.target %>" class="event-link" href=<%= event.url %>><% } %><span class="event-title"><%= event.title %></span><% if (event.url !== '') { %></a><% } %>
+                                    <% if (event.desc !== '') { %><span class="event-desc"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.desc %></span><% } %>
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+
+            </script>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/moment-with-locales.min.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/datepicker-i18n/datepicker.' ~ language ~ '.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/clndr.js') }}"></script>
+    <script>
+    jQuery(document).ready(function () {
+        moment.locale('{{ language }}');
+        var weekdayNames = Array.apply(null, Array(7)).map(
+            function (_, i) {
+                return moment(i, 'e').format('ddd');
+            });
+
+        var events = [
+            {% for event in particle.events %}
+                { id: 'g-{{ id }}-event-{{ loop.index }}', startDate: '{{ event.begin }}', endDate: '{{ event.end }}', stime: '{{ event.stime }}', etime: '{{event.etime}}', title: '{{ event.title|e('js') }}', url: '{{ event.link|e }}', target: '{{ event.target|default('_blank') }}', desc: '{{ event.description|e('js') }}' },
+            {% endfor %}
+        ];
+
+        var calendar = jQuery("#g-{{ id }}").clndr({
+            template: jQuery('#g-{{ id }}-flux-clndr-template').html(),
+            moment: moment,
+            daysOfTheWeek: weekdayNames,
+            adjacentDaysChangeMonth: false,
+            showAdjacentMonths: true,
+            forceSixRows: false,
+            events: events,
+            adjacentMonth: false,
+
+            multiDayEvents: {
+                endDate: 'endDate',
+                startDate: 'startDate',
+                singleDay: 'startDate'
+            },
+            todayEvents: {
+                load: function(target){
+                    if(target.events.length) {
+                    var todayEvent = jQuery("#g-{{ id }}").find('.today, .event');
+                    var eventContainer;
+                    {% if todayEvent %}
+                        eventContainer = jQuery("#g-{{ id }}").find('#' + event.id);
+                        //events.removeClass('event', false);
+                        eventContainer.removeClass('hidden', false);
+                    {% endif %}
+                    }
+                }
+            },
+            clickEvents: {
+                click: function(target) {
+                    if(target.events.length) {
+                        var eventContainer;
+                        var daysContainer = jQuery("#g-{{ id }}").find('.days-container');
+                        var eventsContainer = jQuery("#g-{{ id }} .events-list").find('.event');
+                        eventsContainer.toggleClass('hidden', true);
+
+                        target.events.forEach(function(event) {
+                            eventContainer = jQuery("#g-{{ id }}").find('#' + event.id);
+                            eventContainer.toggleClass('hidden', false);
+                            eventContainer.addClass('show', false);
+                        });
+
+                        var todayEvents = jQuery("#g-{{ id }}").find('.days-container');
+                        daysContainer.toggleClass('show-events', true);
+                    }
+                },
+            },
+        });
+       
+        var picker = jQuery('[data-toggle="datepicker"]').datepicker({
+            language: '{{ language }}',
+            format: 'mm/yyyy',
+            autoHide: 'true',
+        });
+            jQuery('[data-toggle="datepicker"]').datepicker('getMonthName', 'mm');
+            picker.on('pick.datepicker', function (e) {
+            e.preventDefault();
+            var month = picker.datepicker('getDate', false).getMonth();
+            var year = picker.datepicker('getDate', false).getFullYear();
+                jQuery('.g-calendar-datepicker').text(picker.datepicker('getMonthName', month) + ' ' + year);
+                calendar.setMonth(month);
+                calendar.setYear(year);
+            });
+
+            picker.datepicker('setDate', calendar.month._d);
+
+                if (jQuery('body').hasClass('dir-rtl')) {
+        var next = jQuery('.prev-push');
+        var prev = jQuery('.next-push');
+
+    } else {
+        var next = jQuery('.next-push');
+        var prev = jQuery('.prev-push');
+    }
+
+    next.on('click', (function (e) {
+        e.preventDefault(); // now it'll work
+        jQuery(".days").stop().animate({
+            scrollLeft: '+=150'
+        }, '0');
+
+               var $elem= jQuery(".days");
+    var newScrollLeft = $elem.scrollLeft(),
+        width=$elem.outerWidth(),
+        scrollWidth=$elem.get(0).scrollWidth;
+    if (scrollWidth-newScrollLeft==width) {
+        calendar.forward();
+        picker.datepicker('setDate', calendar.month._d);
+    }
+        return false;
+
+
+    }));
+    prev.on('click', (function (e) {
+        e.preventDefault(); // now it'll work
+        jQuery(".days").stop().animate({
+            scrollLeft: '-=150'
+        }, '0');
+               var $elem= jQuery(".days");
+    var newScrollLeft = $elem.scrollLeft(),
+        width=$elem.outerWidth(),
+        scrollWidth=$elem.get(0).scrollWidth;
+    if (newScrollLeft === 0) {
+        calendar.back();
+        picker.datepicker('setDate', calendar.month._d);
+    }
+        return false;
+    }));
+    jQuery(".today").trigger('click');
+    });
+     
+</script>
+{% endblock %}

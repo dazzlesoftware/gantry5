@@ -1,0 +1,46 @@
+#g-footer {
+	color: $footer-text-color;	
+    background-color: $footer-background;
+
+    &.fp-footer {
+        font-family: get-font-family($font-family-alt2);
+
+        .title {
+        	text-transform: uppercase;
+        	font-size: 1em;
+        	line-height: 1em;
+        }
+
+        .social-button {
+            color: $white;
+            background: lighten($footer-text-color, 25%);
+            &:hover {
+                color: $white;
+                background: $accent-color-1;
+            }
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            line-height: $base-line-height + 4;
+            border-bottom: 1px solid darken($footer-background, 10%);
+        }
+        a {
+            color: $footer-text-color;
+            &:hover {
+                color: $accent-color-1;
+            }
+        }
+    }
+}
+
+@media print {
+	#g-footer {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

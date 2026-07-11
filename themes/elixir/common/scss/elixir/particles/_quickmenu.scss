@@ -1,0 +1,105 @@
+.g-quickmenu-particle {
+    margin: 0 auto;
+    padding: $content-padding * 2;
+
+    @include breakpoint(tablet) {
+        width: 100%;
+    }
+
+    @include breakpoint(mobile-only) {
+        width: 100%;
+    }
+
+    // Cards
+    .g-quickmenu-container-cards {
+        .swiper-slide {
+            padding: 0 $content-margin;
+
+            @include breakpoint(tablet-range) {
+                padding: 0 ($content-margin + 0.2);
+            }
+
+            @include breakpoint(mobile-only) {
+                padding: 0 ($content-margin * 1.5);
+            }
+
+            &:first-child {
+                padding-left: 0;
+
+                .dir-rtl & {
+                    padding-right: 0;
+                    padding-left: $content-margin;
+
+                    @include breakpoint(mobile-only) {
+                        padding-left: $content-margin * 1.5;
+                    }
+                }
+            }
+
+            h6 {
+                @include responsive-font($responsive-font-size + 1.1, $core-font-size, false, false);
+                cursor: pointer;
+                color: $accent-color-2;
+            }
+        }
+    }
+
+    //Items
+    .g-quickmenu-container-items {
+        margin-top: ($content-margin * 2);
+
+        .swiper-wrapper {
+            margin-bottom: $content-margin * 2;
+        }
+
+        .g-quickmenu-wrapper {
+            display: flex;
+            margin-bottom: $content-margin;
+            align-items: center;
+
+            .g-quickmenu-item {
+                flex-grow: 1;
+
+                a {
+                    @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.1, false, false);
+                }
+
+                p {
+                    color: $base-text-color;
+                    font-weight: $font-weight-light;
+                    @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                }
+            }
+
+            .g-quickmenu-price {
+                span {
+                    color: $accent-color-1;
+                    border: 1px solid $accent-color-1;
+                    border-radius: 10px;
+                    display: block;
+                    padding: 0.2rem 0.6rem;
+                    font-weight: $font-weight-bold;
+                    @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                }
+
+            }
+
+        }
+
+        // Bullets
+        .swiper-pagination {
+            bottom: 0;
+
+            .swiper-pagination-bullet {
+                background: $base-text-color;
+                opacity: 1;
+                width: 10px;
+                height: 10px;
+            }
+
+            .swiper-pagination-bullet-active {
+                background: $white;
+            }
+        }
+    }
+}

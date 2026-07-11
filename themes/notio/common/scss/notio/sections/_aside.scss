@@ -1,0 +1,13 @@
+#g-aside {
+    background: $aside-background;
+    color: $aside-text-color;
+    height: 100%;
+    border-left: 1px solid transparentize($base-text-color, 0.70);
+}
+
+@media print {
+    #g-aside {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

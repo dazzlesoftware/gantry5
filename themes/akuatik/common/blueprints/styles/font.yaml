@@ -1,0 +1,16 @@
+name: Font Families
+description: Font families for the theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'chivo, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+
+    family-title:
+      type: input.fonts
+      label: Title Font
+      default: 'chivo, Helvetica, Tahoma, Geneva, Arial, sans-serif'

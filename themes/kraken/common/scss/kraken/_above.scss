@@ -1,0 +1,33 @@
+#g-above {
+    background: $above-background;
+    color: $above-text-color;
+
+	// Home
+	.g-home &, .g-homepositions & {
+		text-align: center;
+	}
+
+	// Grid Content
+	.g-gridcontent {
+		.g-gridcontent-item-text2 {
+		    margin: 2rem auto;
+		    width: 60%;		
+			@include breakpoint(desktop-range) {
+				width: 70%;
+			}
+			@include breakpoint(tablet-range) {
+				width: 80%;
+			}	
+			@include breakpoint(mobile-only) {
+				width: 90%;
+			}							    	
+		}
+	}       
+}
+
+@media print {
+	#g-above {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

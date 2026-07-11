@@ -1,0 +1,26 @@
+#g-above {
+    color: $above-text-color;
+    background: $above-background;
+    position: relative;
+    z-index: 2;
+
+    .box2 {
+        .g-item-title {
+            a {
+                color: $black;
+                box-shadow: none;
+                font-weight: $font-weight-bold;
+            }
+        }
+        .g-content-array .g-grid {
+            border: 0 none;
+        }
+    }
+}
+
+@media print {
+    #g-above {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

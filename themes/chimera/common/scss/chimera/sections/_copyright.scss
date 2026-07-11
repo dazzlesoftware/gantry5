@@ -1,0 +1,38 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;	
+
+	.title {
+		color: $white;
+	}
+}
+
+// Social Buttons
+.rt-social-buttons {
+	text-align: right;
+	.social-button {
+		color: $copyright-text-color;
+		margin: 0 1px;
+		background: rgba(0, 0, 0, 0.1);
+	    border-radius: 100%;
+	    display: inline-block;
+	    font-size: 1.2em;
+	    height: 40px;
+	    line-height: 40px;
+	    text-align: center;
+	    width: 40px;
+		&:hover {
+			color: $accent-color-1;
+		}
+	}
+	@include breakpoint(mobile-only) {
+			text-align: center;
+	}
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

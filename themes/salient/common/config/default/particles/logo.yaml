@@ -1,0 +1,6 @@
+enabled: '1'
+url: ''
+image: 'gantry-media://logo/logo-header.png'
+alt: ''
+text: ''
+class: g-logo

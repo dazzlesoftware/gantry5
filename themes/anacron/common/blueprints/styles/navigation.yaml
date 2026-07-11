@@ -1,0 +1,15 @@
+name: Navigation Colors
+description: Navigation colors for the Anacron theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#ffffff"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#2f2f2f"

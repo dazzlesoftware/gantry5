@@ -1,0 +1,22 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+    padding: 5rem 0 2rem 0;
+
+    .g-sample-sitemap a {
+        line-height: $core-line-height + 0.3;
+        color: $black;
+        font-family: get-font-family($font-family-promo);
+        &:hover {
+            color: $black;
+            text-decoration: underline;
+        }
+    }
+}
+
+@media print {
+    #g-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

@@ -1,0 +1,18 @@
+#g- {
+  &showcase, &utility, &above, &feature, &main, &expanded, &extension {
+    &Banner {
+      margin: 0 ($content-margin + $content-padding);
+    }
+  }
+}
+
+@media print {
+  #g-{
+    &showcase, &utility, &above, &feature, &main, &expanded, &extension {
+      &Banner {
+        background: #fff !important;
+        color: #000 !important;
+      }
+    }
+  }
+}

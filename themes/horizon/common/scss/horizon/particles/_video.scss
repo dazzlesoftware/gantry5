@@ -1,0 +1,211 @@
+.g-video-container {
+    h2.g-title {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
+        line-height: normal;
+        margin-bottom: 3rem;
+        margin: 0 auto;
+        margin-bottom: $content-padding;
+        font-weight: $font-weight-extrabold;
+        text-align: center;
+    }
+
+    .g-headertext {
+        font-weight: $font-weight-medium;
+        @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+        text-align: center;
+        margin-bottom: $content-padding;
+    }
+
+    .g-description {
+        margin-bottom: $content-padding;
+    }
+
+    .g-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        height: auto;
+        background: $black;
+
+        iframe,
+        object,
+        embed,
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &:hover {
+            .g-videolocal-play.pause {
+                opacity: 1;
+            }
+        }
+
+        .g-videolocal-play {
+            position: absolute;
+            height: 6.5vw;
+            width: 6.5vw;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            bottom: 50%;
+            margin-bottom: -40px;
+            background: url('gantry-media://owlcarousel/play.svg') no-repeat;
+            background-size: contain;
+            cursor: pointer;
+            opacity: 1;
+
+            @include breakpoint(small-mobile-range) {
+                height: 12vw;
+                width: 12vw;
+                margin-bottom: -20px;
+            }
+
+            @include breakpoint(mobile-only) {
+                height: 12vw;
+                width: 12vw;
+            }
+
+            @include breakpoint(tablet-range) {
+                height: 6vw;
+                width: 6vw;
+            }
+
+            &.pause {
+                background: url('gantry-media://owlcarousel/paused.svg');
+                background-size: contain;
+                opacity: 0;
+            }
+        }
+
+        .g-video-nocontrols::-webkit-media-controls {
+            display: none !important;
+        }
+    }
+
+    // Columns
+    .g-video-inner {
+        position: relative;
+    }
+
+    // 1 Column
+    &.g-video-container-columns-1 {
+        .g-video-inner {
+            width: 100%;
+        }
+    }
+
+    // 2 Columns
+    &.g-video-container-columns-2 {
+        display: flex;
+        flex-wrap: wrap;
+
+        .g-video-inner {
+            width: 50%;
+
+            .g-video {
+                margin-right: $content-padding;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-margin;
+            }
+        }
+    }
+
+    // 3 Columns
+    &.g-video-container-columns-3 {
+        display: flex;
+        flex-wrap: wrap;
+
+        .g-video-inner {
+            width: 33.3%;
+
+            .g-video {
+                margin-right: $content-padding;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-margin;
+            }
+        }
+    }
+
+    // 4 Columns
+    &.g-video-container-columns-4 {
+        display: flex;
+        flex-wrap: wrap;
+
+        .g-video-inner {
+            width: 25%;
+
+            .g-video {
+                margin-right: $content-padding;
+
+                @include breakpoint(mobile-only) {
+                    margin: 0;
+                }
+            }
+
+            @include breakpoint(tablet-range) {
+                width: 50%;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+                margin-bottom: $content-margin;
+            }
+        }
+    }
+}
+
+// Caption
+.g-video-captions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 6rem;
+    @include breakpoint(large-mobile-range) {
+        bottom: 3rem;
+    }
+    @include breakpoint(small-mobile-range) {
+        bottom: 1rem;
+    }
+    width: 100%;
+
+    .g-video-caption {
+        @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+        font-weight: $font-weight-medium;
+    }
+    .g-video-caption2 {
+        @include responsive-font($responsive-font-size + 2, $core-font-size + 0.3, false, false);
+        font-weight: $font-weight-semibold;
+
+    }
+}

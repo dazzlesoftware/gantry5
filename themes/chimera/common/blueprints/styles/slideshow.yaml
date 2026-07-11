@@ -1,0 +1,15 @@
+name: Slideshow Colors
+description: Slideshow colors for the Chimera theme
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#975820"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"     

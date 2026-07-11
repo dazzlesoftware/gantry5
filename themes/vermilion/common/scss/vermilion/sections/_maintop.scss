@@ -1,0 +1,32 @@
+#g-maintop {
+    color: $maintop-text-color; 
+
+    @if $maintop-background-image {
+        background-image: url($maintop-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    > .g-grid {
+        background-color: fade-out($maintop-background, 0.30);
+    }
+
+    .fp-maintop {
+        .g-content {
+            padding: 100px;
+            @include breakpoint(mobile-only) {
+                    padding: 25px;
+            }
+        }
+        .fa-volume-up {
+            margin-bottom: 25px;
+        }
+    }
+}
+
+@media print {
+	#g-maintop {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

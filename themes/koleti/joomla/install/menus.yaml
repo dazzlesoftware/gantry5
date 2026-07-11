@@ -1,0 +1,9 @@
+koleti-theme:
+  title: 'Koleti Theme'
+  description: 'Sample menu for Koleti theme.'
+
+  items:
+    koleti:
+      title: 'Home'
+      outline: home
+      home: 1

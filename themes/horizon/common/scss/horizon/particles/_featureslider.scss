@@ -1,0 +1,270 @@
+.g-featureslider-patterns-left {
+    position: absolute;
+    width: 80%;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+
+    .dir-rtl & {
+        left: auto;
+        right: 0;
+    }
+
+    svg {
+        width: 45%;
+    }
+}
+
+.g-featureslider-patterns-right {
+    position: absolute;
+    pointer-events: none;
+    right: -1rem;
+    z-index: 4;
+    bottom: 5rem;
+    width: 50%;
+    text-align: right;
+
+    .dir-rtl & {
+        right: auto;
+        left: -17rem;
+        text-align: left;
+    }
+
+    svg {
+        width: 70%;
+    }
+}
+
+.g-featureslider-wrapper {
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+
+    .g-featureslider {
+        width: 71%;
+        margin-left: auto;
+        margin-right: initial;
+
+        .dir-rtl & {
+            margin-right: auto;
+            margin-left: initial;
+        }
+
+        @include breakpoint(small-mobile-range) {
+            width: 100%;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .g-featureslider-carousel-content {
+            background: $accent-color-3;
+            padding: $content-padding * 2 + $content-margin;
+            position: absolute;
+            bottom: 0;
+            left: 3%;
+            width: 30%;
+
+            .dir-rtl & {
+                left: auto;
+                right: 3%;
+            }
+
+            a {
+                color: darken($accent-color-1, 20%);
+                font-weight: $font-weight-bold;
+            }
+
+            h1 {
+                @include responsive-font($responsive-font-size + 2, $core-font-size + 1.2, false, false);
+                font-weight: $font-weight-semibold;
+                line-height: normal;
+            }
+        }
+
+        .navigation {
+
+            .featureslider-button-next,
+            .featureslider-button-prev {
+                position: absolute;
+                font-size: 4rem;
+                color: $white;
+                outline: none;
+                opacity: 0.5;
+                z-index: 20;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                transition: opacity, 0.25s;
+
+                @include breakpoint(tablet-range) {
+                    font-size: 3rem;
+                }
+
+                @include breakpoint(mobile-only) {
+                    font-size: 3rem;
+                }
+
+                &:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+            }
+
+            .featureslider-button-next {
+                right: 1rem;
+                top: 50%;
+                margin: 0;
+                padding: 0;
+                transform: translateY(-50%);
+            }
+
+            .featureslider-button-prev {
+                left: 1rem;
+                top: 50%;
+                margin: 0;
+                padding: 0;
+                transform: translateY(-50%);
+            }
+
+            &.rtl {
+                .featureslider-button-prev {
+                    right: 1rem;
+                    left: auto;
+                }
+
+                .featureslider-button-next {
+                    right: auto;
+                    left: 1rem;
+                }
+            }
+        }
+
+    }
+
+    // Thumbs
+    .g-featureslider-thumbs {
+        position: absolute;
+        top: $content-padding * 2;
+        z-index: 1;
+        width: 20%;
+        left: 12%;
+
+        .dir-rtl & {
+            left: auto;
+            right: 12%;
+        }
+
+        @include breakpoint(tablet-range) {
+            top: 0rem;
+            width: 50%;
+            left: 0;
+
+            .dir-rtl & {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @include breakpoint(mobile-only) {
+            top: 0rem;
+            width: 50%;
+            left: 0;
+
+            .dir-rtl & {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @include breakpoint(small-mobile-range) {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            .dir-rtl & {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        .swiper-wrapper {
+            align-items: center;
+        }
+
+        .swiper-slide {
+            cursor: pointer;
+            height: 100% !important;
+            background-color: transparentize($accent-color-2, 1);
+            transition: all, 0.25s;
+
+            .g-featureslider-thumbs-content-description {
+                transition: all, 0.55s;
+                overflow: hidden;
+                display: none;
+            }
+
+            &.swiper-slide-thumb-active {
+                background-color: $accent-color-2;
+
+                .g-featureslider-thumbs-content-description {
+                    display: block;
+
+                    @include breakpoint(mobile-only) {
+                        font-size: $core-font-size - 0.2;
+                    }
+
+                    margin: 0;
+                }
+            }
+        }
+
+        .g-featureslider-thumbs-content {
+            padding: $content-padding;
+
+            @include breakpoint(mobile-only) {
+                padding: $content-padding - 0.5;
+            }
+
+
+            &:hover {
+                .g-featureslider-thumbs-content-title {
+                    padding-left: 2rem;
+                    .dir-rtl & {
+                        padding-left: 0;
+                        padding-right: 2rem;
+                    }
+
+                    span {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .g-featureslider-thumbs-content-title {
+            @include responsive-font($responsive-font-size + 1, $core-font-size + 0.2, false, false);
+            font-weight: $font-weight-semibold;
+            line-height: normal;
+            transition: padding, 0.55s;
+            padding-left: 0;
+            position: relative;
+
+            span {
+                position: absolute;
+                left: 0;
+                .dir-rtl & {
+                    left: auto;
+                    right: 0;
+                }
+                bottom: 0.1rem;
+                margin-bottom: 0;
+                opacity: 0;
+                transition: opacity, 0.55s;
+            }
+        }
+    }
+}

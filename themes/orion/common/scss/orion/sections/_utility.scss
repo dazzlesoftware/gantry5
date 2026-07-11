@@ -1,0 +1,22 @@
+#g-utility {
+    color: $utility-text-color;
+    background: $utility-background;
+
+    @if $utility-background-image {
+        background-image: url($utility-background-image);
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    .g-comparisontable .g-comparisontable-row .g-comparisontable-column.col-1 {
+        color: lighten($utility-text-color, 40%);
+    }
+}
+
+@media print {
+    #g-utility {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

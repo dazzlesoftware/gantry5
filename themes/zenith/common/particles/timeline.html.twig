@@ -1,0 +1,79 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="{{ particle.class|e }} g-timeline">
+        {% if particle.title %}
+            <h3 class="g-timeline-title">{{ particle.title|raw }}</h3>
+        {% endif %}
+
+        <div class="swiper-container-timeline" data-timeline-id="{{ id }}">
+            <div class="g-timeline-wrapper swiper-wrapper timeline">
+                {% for timeline in particle.timeline %}
+                    {% if loop.index is odd %}
+                        <div class="swiper-slide odd {{ timeline.class }}">
+                            <div class="g-status">
+                                {% if timeline.title %}
+                                    <p class="g-item-title">
+                                        {% if timeline.link %}<a href="{{ timeline.link|e }}" target="{{ timeline.target|default('_blank') }}"></a>{% endif %}
+                                        {{ timeline.title|e }}
+                                        {% if timeline.subtitle %}
+                                            <span class="g-item-position">{{ timeline.subtitle|e }}</span>
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            <div class="g-timestamp">
+                                {% if timeline.startyear %}
+                                    <span>{{ timeline.startyear }}</span>
+                                {% endif %}
+
+                                {% if timeline.endyear %}
+                                    <span class="spacer">-</span>
+                                    <span>{{ timeline.endyear }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="swiper-slide even {{ timeline.class }}">
+                            <div class="g-timestamp">
+                                {% if timeline.startyear %}
+                                    <span>
+                                        {{ timeline.startyear }}
+                                    </span>
+                                {% endif %}
+
+                                {% if timeline.endyear %}
+                                    <span class="spacer">-</span>
+                                    <span>{{ timeline.endyear }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="g-status">
+                                {% if timeline.title %}
+                                    <p class="g-item-title">
+                                        {% if timeline.link %}<a href="{{ timeline.link|e }}" target="{{ timeline.target|default('_blank') }}"></a>{% endif %}
+                                        {{ timeline.title|e }}
+                                        {% if timeline.subtitle %}
+                                            <span class="g-item-position">{{ timeline.subtitle|e }}</span>
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css" />
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/timeline.js'), 10, 'footer') %}
+{% endblock %}

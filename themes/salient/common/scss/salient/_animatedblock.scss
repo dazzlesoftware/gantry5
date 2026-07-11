@@ -1,0 +1,183 @@
+.g-animatedblock {
+	color: $white;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-radius: 3px;
+	overflow: hidden;
+	a {
+		color: $white;
+		&:hover {
+			color: darken($accent-color-1, 25%);
+		}
+	}
+	.g-animatedblock-title {
+		position: absolute;
+		top: 0.75rem;
+		left: 1rem;
+		font-size: 5rem;
+		line-height: 1;
+		@include breakpoint(desktop-range) {
+			font-size: 3.5rem;
+		}
+		@include breakpoint(tablet-range) {
+			font-size: 2.5rem;
+		}
+	}
+	.g-animatedblock-desc {
+		position: absolute;
+		top: inherit;
+		bottom: 0.75rem;
+		left: 1rem;
+		width: 100%;
+		font-weight: bold;
+		text-transform: uppercase;
+		.dir-rtl & {
+			left: inherit;
+			right: 1rem;
+		}
+	}
+	.g-animatedblock-readmore {
+		position: absolute;
+		right: 2rem;
+		bottom: -0.65rem;
+		font-size: 3rem;
+		line-height: 1;
+		.dir-rtl & {
+			right: inherit;
+			left: 2rem;
+		}	
+		@include breakpoint(tablet-range) {
+			font-size: 2rem;
+			bottom: -0.25rem;
+		}			
+	}
+
+	.g-animatedblock-animated {
+		position: relative;
+		&.g-bg-1 {
+			background: $accent-color-1;
+		}
+		&.g-bg-2 {
+			background: $accent-color-2;
+		}	
+		&.g-bg-3 {
+			background: $accent-color-3;
+		}
+		&.g-bg-4 {
+			position: relative;
+			background: linear-gradient(to right, rgba(saturate($accent-color-1, 30%), 1), rgba($accent-color-1, 1)) repeat;
+			&:hover {
+				background: linear-gradient(to right, rgba($accent-color-1, 1), rgba(saturate($accent-color-1, 50%), 1)) repeat;
+			}
+		}
+		&.g-bg-5 {
+			position: relative;
+			background: linear-gradient(to right, rgba($accent-color-2, 1), rgba(saturate($accent-color-2, 20%), 1)) repeat;
+			&:hover {
+				background: linear-gradient(to right, rgba($accent-color-2, 1), rgba(saturate($accent-color-2, 40%), 1)) repeat;
+			}
+		}
+		img {
+			transition: opacity 0.2s;
+		}
+		&.g-animatedblock-animation-1 {
+			.g-animatedblock-title {
+				opacity: 0;
+				transform: translateY(-100%);
+				transition: all 0.3s;
+			}
+			.g-animatedblock-desc {
+				opacity: 0;
+				transform: scale(0);
+				transition: all 0.3s;
+			}			
+			&:hover {
+				img {
+					opacity: 0.25;
+				}
+				.g-animatedblock-title {
+					opacity: 1;
+					transform: translateY(0);
+				}		
+				.g-animatedblock-desc {
+					opacity: 1;
+					transform: scale(1);
+				}	
+				a {
+					color: $white;
+				}	
+			}
+		}
+	}
+	.g-animatedblock-animation-2, .g-animatedblock-animation-3 {
+		.g-animatedblock-title {
+			transition: transform 0.3s;
+			transform: scale(1);
+		}		
+		.g-animatedblock-desc {
+			@include breakpoint(tablet-range) {
+				font-size: 0.85rem;
+			}	
+		}		
+		.g-animatedblock-button {
+			position: absolute;
+			right: 1rem;
+			bottom: 0.5rem;
+			opacity: 0;
+			transform: scale(0);
+			transition: all 0.3s;			
+			.button-4 {
+				color: $white !important;
+				border: 2px solid $white;
+				&:hover, &:active, &:focus {
+					border: 2px solid darken($white, 15%);
+					color: darken($white, 15%) !important;
+				}
+				@include breakpoint(tablet-range) {
+					padding: 0.5rem 1rem;
+				}				
+			}		
+			.dir-rtl & {
+				right: inherit;
+				left: 1rem;
+			}				
+		}
+		.g-animatedblock-readmore {
+			opacity: 1;
+			transform: scale(1);							
+		}
+		&:hover {
+			.g-animatedblock-title {
+				transform: scale(0.75);
+			}	
+			.g-animatedblock-readmore {
+				opacity: 0;
+				transform: scale(0);			
+			}			
+			.g-animatedblock-button {
+				opacity: 1;
+				transform: scale(1);				
+			}		
+		}
+	}
+	.g-animatedblock-animation-3 {
+		.g-animatedblock-desc {
+			transition: all 0.3s;	
+		}	
+		&:hover {
+			.g-animatedblock-title {
+				transform: scale(0);
+			}
+			.g-animatedblock-desc {
+				transform: translateY(-330%);
+
+				@include breakpoint(desktop-range) {
+					transform: translateY(-250%);
+				}
+				@include breakpoint(tablet-range) {
+					transform: scale(0);
+				}				
+			}			
+		}		
+	}
+}

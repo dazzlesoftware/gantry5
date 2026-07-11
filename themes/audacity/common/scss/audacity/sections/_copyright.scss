@@ -1,0 +1,15 @@
+#g-copyright {
+	background: $copyright-background;
+	color: $copyright-text-color;
+
+	.g-content {
+		margin: 0;
+	}
+}
+
+@media print {
+	#g-copyright {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

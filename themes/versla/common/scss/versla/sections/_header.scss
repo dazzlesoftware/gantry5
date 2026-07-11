@@ -1,0 +1,12 @@
+#g-header {
+    color: $header-text-color;
+    background: $header-background;
+    @extend .section-paddings;
+}
+
+@media print {
+    #g-header, #g-header {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

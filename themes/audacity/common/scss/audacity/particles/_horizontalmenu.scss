@@ -1,0 +1,44 @@
+.g-horizontalmenu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	.fp-utility & {
+		font-family: get-font-family($font-family-alt2);
+		margin: 0 -15px;
+
+		@include breakpoint(mobile-only) {
+			margin: 0;
+		}
+	}
+
+	li {
+		display: inline-block;
+		font-size: $base-font-size;
+
+		.fp-utility & {
+			@include breakpoint(large-desktop-range) {
+				&.visible-large, &.visible-desktop {
+					display: inline-block !important;
+				}
+			}
+			@include breakpoint(desktop-range) {
+				&.visible-desktop {
+					display: inline-block !important;
+				}
+			}
+		}
+	}
+	a {
+		display: block;
+		padding: 5px 15px;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		.fp-utility & {
+			color: $white;
+		}
+	}
+}

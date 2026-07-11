@@ -1,0 +1,9 @@
+sienna-theme:
+  title: 'Sienna Theme'
+  description: 'Sample menu for Sienna theme.'
+
+  items:
+    sienna:
+      title: 'Home'
+      outline: home
+      home: 1

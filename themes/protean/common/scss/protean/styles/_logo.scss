@@ -1,0 +1,26 @@
+.g-logo {
+    color: $base-text-color;
+    font-weight: $font-weight-regular;
+    font-size: $core-font-size + 2.15;
+    line-height: $core-line-height + 1rem;
+    box-shadow: none !important;
+
+    @include breakpoint(mobile-only) {
+        text-align: center;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    img {
+        .dir-rtl & {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+    }
+}

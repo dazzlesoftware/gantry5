@@ -1,0 +1,111 @@
+.g-comingsoon {
+	#g-header {
+		.g-content {
+			padding: 3.5rem $content-padding;
+			@include breakpoint(large-mobile-range) {
+				padding: 1.5rem $content-padding;
+			}				
+			@include breakpoint(small-mobile-range) {
+				padding: 1rem $content-padding;
+			}			
+		}
+		.g-infolist-textstyle-header {
+			.g-infolist-item-title {
+				font-weight: $font-weight-regular;
+				text-transform: none;
+				font-size: 3.5rem;
+				line-height: 5rem;
+				@include breakpoint(large-mobile-range) {
+					line-height: 4rem;
+				}				
+				@include breakpoint(small-mobile-range) {
+					font-size: 2rem;
+					line-height: 3rem;
+				}				
+			}
+			.g-infolist-item-desc {
+				font-weight: $font-weight-regular;
+				@include breakpoint(small-mobile-range) {
+					font-size: 1rem;
+					line-height: 1.5rem;
+				}				
+			}
+		}	
+	}
+	#g-extension {
+		.g-blockcontent-headline {
+	        margin: 0;
+	        padding: 0;
+	        font-family: get-font-family($font-family-title);
+			font-weight: $font-weight-regular;
+			text-transform: none;
+			font-size: 3.5rem;
+			line-height: 5rem;
+			@include breakpoint(large-mobile-range) {
+				line-height: 4rem;
+			}			
+			@include breakpoint(small-mobile-range) {
+				font-size: 2rem;
+				line-height: 3rem;
+			}			
+		}
+		.g-blockcontent-description {
+	        font-size: $h5-font-size;
+	        line-height: 2rem;
+	        opacity: 0.8;
+	        padding: 0;
+	        text-rendering: optimizeLegibility;
+	        font-family: get-font-family($font-family-default);
+	        font-weight: $font-weight-regular;
+	        margin: 0;    
+			@include breakpoint(small-mobile-range) {
+				font-size: 1rem;
+				line-height: 1.5rem;
+			}				
+		}
+		.button {
+			margin-top: 1rem;
+		}
+	}
+	#g-copyright {
+		@include breakpoint(mobile-only) {
+			.g-content {
+				text-align: center;
+				padding-bottom: 0;
+			}
+		}		
+	}
+	
+	.g-simplecounter {
+		.g-title {
+	        margin: 0;
+	        padding: 0;
+	        font-family: get-font-family($font-family-title);
+			font-weight: $font-weight-regular;
+			text-transform: none;
+			font-size: 3.5rem;
+			line-height: 5rem;
+			@include breakpoint(large-mobile-range) {
+				line-height: 4rem;
+			}			
+			@include breakpoint(small-mobile-range) {
+				font-size: 2rem;
+				line-height: 3rem;
+			}	
+		}
+		.g-simplecounter-content {
+	        font-size: $h5-font-size;
+	        line-height: 2rem;
+	        opacity: 0.8;
+	        padding: 0;
+	        text-rendering: optimizeLegibility;
+	        font-family: get-font-family($font-family-default);
+	        font-weight: $font-weight-regular;
+	        margin: 0;    
+			@include breakpoint(small-mobile-range) {
+				font-size: 1rem;
+				line-height: 1.5rem;
+			}	            		
+		}		
+	}
+}

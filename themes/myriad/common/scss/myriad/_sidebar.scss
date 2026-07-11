@@ -1,0 +1,24 @@
+#g-sidebar {
+	margin-top: 25px;
+
+	&.fp-sidebar {
+		margin-top: 0;
+	}
+}
+
+.g-search {
+	form {
+		margin: 0;
+	}
+	input {
+		width: 100%;
+		font-weight: bold;
+	}	
+}
+
+@media print {
+	#g-sidebar {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

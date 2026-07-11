@@ -1,0 +1,126 @@
+.g-owlcarousel-slideshow {
+	.g-owlcarousel {
+		.g-owlcarousel-item-image {
+			background-position: bottom center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	
+ 		.g-owlcarousel-content {
+ 			bottom: 0;
+ 			left: auto;
+ 			position: absolute;
+ 			width: 100%;
+ 			top:0;
+ 			z-index: 2;
+ 			text-align: center;
+ 			background-color: fade-out($slideshow-background, 0.50);
+
+ 			.g-owlcarousel-padding {
+ 				padding: 0;
+ 				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50.1%,-50%);
+ 			}
+		    .g-owlcarousel-item-title {
+		    	color: fade-out($slideshow-text-color, 0.50);
+		    	font-size: 400%;
+	            font-family: get-font-family($font-family-alt);
+	            padding: 0;
+	            width: 100%;
+	            margin: 10px 0;
+	            line-height: 1.3em;
+
+	            .hl {
+					color: $slideshow-text-color;
+				}
+		    }
+
+		    .g-owlcarousel-item-desc {
+    			margin: 25px auto 0 auto;
+			    font-size: 120%;
+			    padding: 0;
+			    width: 60%;
+				@include breakpoint(mobile-only) {
+					display: none;
+				}
+		    }
+
+		    .readon {
+			    margin: 45px 0 0 0;
+	    		border: 1px solid #FFFFFF;
+	    		background: rgba(255,255,255,0.15);
+	    		color: #FFFFFF;
+    		}
+		}  
+
+		
+		.owl-dots {
+			bottom: 3%;
+			left: 45%;
+			@include breakpoint(mobile-only) {
+				left: 35%;
+			}
+		}
+
+	    .owl-nav {
+	        button.owl-prev,
+        	button.owl-next {
+	        	border: 2px solid $white !important;
+	    		border-radius: 100%;
+	    		padding: 40px;
+	            opacity: 0.5;
+	            display: block;
+	            color: #fff;
+	            width: 0;
+	            height: 0;
+	            box-sizing: content-box;
+	            font-size: 2.2em;
+	            transition: opacity 0.2s ease-in;
+
+	            @include breakpoint(mobile-only) {
+	            	padding: 20px;
+	            }
+
+	            &:hover {
+	            	opacity: 1;
+	            }
+
+	            span {
+	                display: none;
+	            }
+	        }    
+
+            button.owl-prev {
+                left: 12%; 
+                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center fade-out($white, 0.75); 
+                @include breakpoint(mobile-only) {
+	            	left: 2%;
+					background-size: 10px;
+	            }           
+            }
+
+            button.owl-next {
+                right: 12%;  
+                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center fade-out($white, 0.75); 
+                @include breakpoint(mobile-only) {
+	            	right: 2%;
+					background-size: 10px;
+	            }                              
+            }
+	    }       
+	}
+}
+
+.rt-tobottom {
+	background: url(gantry-theme://images/utilities/bottom-arrow.png) no-repeat;
+    display: block;
+    height: 20px;
+    margin-top: -80px;
+    position: absolute;
+    width: 54px;
+    z-index: 1000;
+    left: 50%;
+    margin-left: -27px;
+}

@@ -1,0 +1,835 @@
+.ct-double-octave:after, .ct-major-eleventh:after, .ct-major-second:after, .ct-major-seventh:after, .ct-major-sixth:after, .ct-major-tenth:after, .ct-major-third:after, .ct-major-twelfth:after, .ct-minor-second:after, .ct-minor-seventh:after, .ct-minor-sixth:after, .ct-minor-third:after, .ct-octave:after, .ct-perfect-fifth:after, .ct-perfect-fourth:after, .ct-square:after {
+  content: "";
+  clear: both;
+}
+
+.ct-double-octave {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-golden-section:after {
+  content: "";
+}
+
+.ct-major-eleventh {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-major-second {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-major-seventh {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-major-sixth {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-major-tenth {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-major-third {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-major-twelfth {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-minor-second {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-minor-seventh {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-minor-sixth {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-minor-third {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-octave {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-perfect-fifth {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-perfect-fourth {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-square {
+  &:after, &:before {
+    content: "";
+  }
+}
+
+.ct-label {
+  fill: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.4);
+  font-size: .75rem;
+  line-height: 1;
+}
+
+.ct-chart-bar .ct-label, .ct-chart-line .ct-label {
+  display: block;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.ct-label {
+  &.ct-horizontal {
+    &.ct-start {
+      -webkit-box-align: flex-end;
+      -webkit-align-items: flex-end;
+      -ms-flex-align: flex-end;
+      align-items: flex-end;
+      -webkit-box-pack: flex-start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      text-anchor: start;
+    }
+    &.ct-end {
+      -webkit-box-align: flex-start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: flex-start;
+      align-items: flex-start;
+      -webkit-box-pack: flex-start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      text-anchor: start;
+    }
+  }
+  &.ct-vertical {
+    &.ct-start {
+      -webkit-box-align: flex-end;
+      -webkit-align-items: flex-end;
+      -ms-flex-align: flex-end;
+      align-items: flex-end;
+      -webkit-box-pack: flex-end;
+      -webkit-justify-content: flex-end;
+      -ms-flex-pack: flex-end;
+      justify-content: flex-end;
+      text-align: right;
+      text-anchor: end;
+    }
+    &.ct-end {
+      -webkit-box-align: flex-end;
+      -webkit-align-items: flex-end;
+      -ms-flex-align: flex-end;
+      align-items: flex-end;
+      -webkit-box-pack: flex-start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      text-anchor: start;
+    }
+  }
+}
+
+.ct-chart-bar {
+  .ct-label.ct-horizontal {
+    &.ct-start {
+      -webkit-box-align: flex-end;
+      -webkit-align-items: flex-end;
+      -ms-flex-align: flex-end;
+      align-items: flex-end;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      text-align: center;
+      text-anchor: start;
+    }
+    &.ct-end {
+      -webkit-box-align: flex-start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: flex-start;
+      align-items: flex-start;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      text-align: center;
+      text-anchor: start;
+    }
+  }
+  &.ct-horizontal-bars .ct-label {
+    &.ct-horizontal {
+      &.ct-start {
+        -webkit-box-align: flex-end;
+        -webkit-align-items: flex-end;
+        -ms-flex-align: flex-end;
+        align-items: flex-end;
+        -webkit-box-pack: flex-start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        text-anchor: start;
+      }
+      &.ct-end {
+        -webkit-box-align: flex-start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: flex-start;
+        align-items: flex-start;
+        -webkit-box-pack: flex-start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        text-anchor: start;
+      }
+    }
+    &.ct-vertical {
+      &.ct-start {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: flex-end;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: flex-end;
+        justify-content: flex-end;
+        text-align: right;
+        text-anchor: end;
+      }
+      &.ct-end {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: flex-start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        text-anchor: end;
+      }
+    }
+  }
+}
+
+.ct-grid {
+  stroke: rgba(0, 0, 0, 0.2);
+  stroke-width: 1px;
+  stroke-dasharray: 2px;
+}
+
+.ct-point {
+  stroke-width: 5px;
+  stroke-linecap: round;
+}
+
+.ct-line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.ct-area {
+  stroke: none;
+  fill-opacity: .1;
+}
+
+.ct-bar {
+  fill: none;
+  stroke-width: 10px;
+}
+
+.ct-slice-donut {
+  fill: none;
+  stroke-width: 60px;
+}
+
+.ct-series-a {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #d70206;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #d70206;
+  }
+}
+
+.ct-series-b {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #f05b4f;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #f05b4f;
+  }
+}
+
+.ct-series-c {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #f4c63d;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #f4c63d;
+  }
+}
+
+.ct-series-d {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #d17905;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #d17905;
+  }
+}
+
+.ct-series-e {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #7e7678;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #7e7678;
+  }
+}
+
+.ct-series-f {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #59922b;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #59922b;
+  }
+}
+
+.ct-series-g {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #0544d3;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #0544d3;
+  }
+}
+
+.ct-series-h {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #6b0392;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #6b0392;
+  }
+}
+
+.ct-series-i {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #f05b4f;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #f05b4f;
+  }
+}
+
+.ct-series-j {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #dda458;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #dda458;
+  }
+}
+
+.ct-series-k {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #eacf7d;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #eacf7d;
+  }
+}
+
+.ct-series-l {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #86797d;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #86797d;
+  }
+}
+
+.ct-series-m {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #b2c326;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #b2c326;
+  }
+}
+
+.ct-series-n {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #6188e2;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #6188e2;
+  }
+}
+
+.ct-series-o {
+  .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+    stroke: #a748ca;
+  }
+  .ct-area, .ct-slice-pie {
+    fill: #a748ca;
+  }
+}
+
+.ct-square {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 100%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-minor-second {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 93.75%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-second {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 88.8888888889%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-minor-third {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 83.3333333333%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-third {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 80%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-perfect-fourth {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 75%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-perfect-fifth {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 66.6666666667%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-minor-sixth {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 62.5%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-golden-section {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    content: "";
+    width: 0;
+    height: 0;
+    padding-bottom: 61.804697157%;
+  }
+  &:after {
+    display: table;
+    clear: both;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-sixth {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 60%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-minor-seventh {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-seventh {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 53.3333333333%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-octave {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 50%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-tenth {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 40%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-eleventh {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 37.5%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-major-twelfth {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 33.3333333333%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.ct-double-octave {
+  display: block;
+  position: relative;
+  width: 100%;
+  &:before {
+    display: block;
+    float: left;
+    width: 0;
+    height: 0;
+    padding-bottom: 25%;
+  }
+  &:after {
+    display: table;
+  }
+  > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.animated-slice {
+    animation: dash 0.5s linear forwards;
+}
+
+.ct-chart-line .ct-series .ct-line {
+  stroke: #C7F464;
+  stroke-width: 2px;
+  stroke-dasharray: 5px 2px;
+  animation: dashoffset-seven 200ms infinite linear;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dashoffset-seven {
+  0% {
+    stroke-dashoffset: 7px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+
+//Preset6 Styling
+.g-style-preset6 {
+  .ct-series-d {
+    .ct-bar, .ct-line, .ct-point, .ct-slice-donut {
+      stroke: #a0a0a0;
+    }
+  }    
+}

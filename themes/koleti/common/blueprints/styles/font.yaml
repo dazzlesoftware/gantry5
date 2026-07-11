@@ -1,0 +1,16 @@
+name: Font Families
+description: Font families for the Koleti theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'NotoSans, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+
+    family-serif:
+      type: input.fonts
+      label: Title Font
+      default: 'NotoSerif, Helvetica, Times New Roman, serif'

@@ -1,0 +1,218 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_positions
+  timestamp: 1470995105
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - position-position-1211
+  /header/:
+    -
+      - 'position-position-9391 50'
+      - 'position-position-4687 50'
+    -
+      - 'position-position-8119 50'
+      - 'position-position-2837 50'
+  /above/:
+    -
+      - position-position-4576
+    -
+      - position-position-3199
+  /showcase/:
+    -
+      - position-position-8360
+    -
+      - 'position-position-9493 50'
+      - 'position-position-8325 50'
+  /utility/: {  }
+  /feature/: {  }
+  /expanded/:
+    -
+      - 'system-content-6651 60'
+      - 'position-position-8030 40'
+  /extension/: {  }
+  /bottom/:
+    -
+      - position-position-8833
+    -
+      - position-position-2338
+  /footer/:
+    -
+      - position-position-4896
+    -
+      - position-position-6201
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  header:
+    attributes:
+      boxed: '3'
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  utility:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  feature:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  extension:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: fp-bottom
+  footer:
+    attributes:
+      boxed: '3'
+      class: ''
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  position-position-1211:
+    title: 'Slideshow A'
+    attributes:
+      key: slideshow-a
+    block:
+      class: fp-slideshow-contentarray
+  position-position-9391:
+    title: 'Header A'
+    attributes:
+      key: header-a
+    block:
+      class: title-section
+  position-position-4687:
+    title: 'Header C'
+    attributes:
+      key: header-c
+    block:
+      class: title-section
+  position-position-8119:
+    title: 'Header B'
+    attributes:
+      key: header-b
+    block:
+      class: fp-header-audioplayer
+      variations: 'box6 equal-height'
+  position-position-2837:
+    title: 'Header D'
+    attributes:
+      key: header-d
+    block:
+      class: 'fp-header-eventlist nopaddingtop nopaddingbottom'
+      variations: 'box5 equal-height'
+  position-position-4576:
+    title: 'Above A'
+    attributes:
+      key: above-a
+      chrome: ''
+    block:
+      class: title-section
+  position-position-3199:
+    title: 'Above B'
+    attributes:
+      key: above-b
+    block:
+      class: fp-above-videogrid
+  position-position-8360:
+    title: 'Showcase A'
+    attributes:
+      key: showcase-a
+    block:
+      class: fp-showcase-simplecontent
+      variations: center
+  position-position-9493:
+    title: 'Showcase B'
+    attributes:
+      key: showcase-b
+    block:
+      class: fp-showcase-imagegrid-firstlarge
+      variations: 'nomarginall nopaddingall'
+  position-position-8325:
+    title: 'Showcase C'
+    attributes:
+      key: showcase-c
+    block:
+      class: fp-showcase-imagegrid-lastlarge
+      variations: 'nomarginall nopaddingall'
+  position-position-8030:
+    title: 'Expanded A'
+    attributes:
+      key: expanded-a
+  position-position-8833:
+    title: 'Bottom A'
+    attributes:
+      key: bottom-a
+    block:
+      class: fp-bottom-simplecontent
+      variations: center
+  position-position-2338:
+    title: 'Bottom B'
+    attributes:
+      key: bottom-b
+    block:
+      class: fp-bottom-miniplayer
+  position-position-4896:
+    title: 'Footer A'
+    attributes:
+      key: footer-a
+    block:
+      variations: center
+  position-position-6201:
+    title: 'Footer B'
+    attributes:
+      key: footer-b

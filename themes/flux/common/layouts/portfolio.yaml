@@ -1,0 +1,462 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1494581488
+layout:
+  top: {  }
+  navigation: {  }
+  /slideshow/:
+    -
+      - simplecontent-9656
+  header: {  }
+  /above/:
+    -
+      - infolist-1436
+  showcase: {  }
+  utility: {  }
+  feature: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'mainbar 60': {  }
+      -
+        'aside 20': {  }
+  /expanded/:
+    -
+      - infolist-8967
+  extension: {  }
+  /bottom/:
+    -
+      - imagegrid-3677
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-slideshow section-horizontal-paddings'
+  header:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  above:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-above section-horizontal-paddings section-vertical-paddings'
+  showcase:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  utility:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  feature:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  sidebar:
+    type: section
+    subtype: aside
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  mainbar:
+    type: section
+    subtype: main
+    title: Main
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  aside:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  container-main:
+    attributes:
+      boxed: '3'
+      class: g-default-main
+      extra: {  }
+  expanded:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-expanded section-horizontal-paddings section-vertical-paddings'
+  extension:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  bottom:
+    type: section
+    attributes:
+      boxed: '3'
+      class: 'g-default-bottom section-horizontal-paddings section-vertical-paddings'
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - block
+        - children
+content:
+  simplecontent-9656:
+    title: 'Header - Portfolio'
+    attributes:
+      enabled: '1'
+      class: ''
+      title: ''
+      items:
+        -
+          layout: header
+          created_date: ''
+          content_title: Portfolio
+          author: ''
+          leading_content: 'The Menu Editor in Gantry 5 grants you drag and drop controls, for creating columns, adding particles and blocks inline, and reordering.'
+          main_content: ''
+          readmore_label: ''
+          readmore_link: ''
+          readmore_class: ''
+          readmore_target: _self
+          title: Portfolio    
+  infolist-1436:
+    title: 'Portfolio Info List'
+    attributes:
+      enabled: '1'
+      class: ''
+      title: ''
+      intro: ''
+      cols: g-3cols
+      infolists:
+        -
+          icon: 'fa fa-align-justify'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Change the color scheme of your website in seconds with Gantry 5''s original new Color Picker.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Social Media'
+        -
+          icon: 'fa fa-bar-chart-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Create beautiful content areas on your site without ever touching a text editor.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Web Development'
+        -
+          icon: 'fa fa-building-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Find the perfect font with Gantry 5''s powerful Font Picker. Powered by the Google Font Index.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Graphic Design'
+        -
+          icon: 'fa fa-codepen'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Customize menus with ease using Gantry 5''s Menu Editor. It is simple and powerful.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Customer Relations'
+        -
+          icon: 'fa fa-file-movie-o'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Customize your site''s layout with Gantry 5''s powerful drag-and-drop enabled Layout Manager.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Reliable Resources'
+        -
+          icon: 'fa fa-industry'
+          iconloc: center
+          image: ''
+          imageloc: left
+          textstyle: compact
+          imagestyle: compact
+          desc: 'Bring your site to life with the Video Grid particle. Embedded videos have never looked this good.'
+          tag: ''
+          subtag: ''
+          label: ''
+          link: ''
+          buttonicon: ''
+          readmoreclass: ''
+          readmoretarget: _self
+          title: 'Music Composition'    
+  infolist-8967:
+    title: 'Portfolio Info List 2'
+    attributes:
+        enabled: '1'
+        class: 'noborder spaced'
+        title: ''
+        intro: ''
+        cols: g-2cols
+        infolists:
+          -
+            icon: ''
+            iconloc: left
+            image: 'gantry-media://pages/portfolio/expanded/img-01.jpg'
+            imageloc: left
+            textstyle: compact
+            imagestyle: large
+            desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+            tag: ''
+            subtag: ''
+            label: 'Learn More'
+            link: '#'
+            buttonicon: ''
+            readmoreclass: ''
+            readmoretarget: _self
+            title: 'Project 1'
+          -
+            icon: ''
+            iconloc: left
+            image: 'gantry-media://pages/portfolio/expanded/img-02.jpg'
+            imageloc: left
+            textstyle: compact
+            imagestyle: large
+            desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+            tag: ''
+            subtag: ''
+            label: 'Learn More'
+            link: '#'
+            buttonicon: ''
+            readmoreclass: ''
+            readmoretarget: _self
+            title: 'Project 2'
+          -
+            icon: ''
+            iconloc: left
+            image: 'gantry-media://pages/portfolio/expanded/img-03.jpg'
+            imageloc: left
+            textstyle: compact
+            imagestyle: large
+            desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+            tag: ''
+            subtag: ''
+            label: 'Learn More'
+            link: '#'
+            buttonicon: ''
+            readmoreclass: ''
+            readmoretarget: _self
+            title: 'Project 3'
+          -
+            icon: ''
+            iconloc: left
+            image: 'gantry-media://pages/portfolio/expanded/img-04.jpg'
+            imageloc: left
+            textstyle: compact
+            imagestyle: large
+            desc: 'Cuaqum ante augue. Nullam dignissim, felis eu imperdiet feugiat, libero ipsum gravida arcu.'
+            tag: ''
+            subtag: ''
+            label: 'Learn More'
+            link: '#'
+            buttonicon: ''
+            readmoreclass: ''
+            readmoretarget: _self
+            title: 'Project 4'    
+  imagegrid-3677:
+    title: 'Portfolio Image Grid'
+    attributes:
+      enabled: '1'
+      class: ''
+      title: ''
+      desc: ''
+      cols: g-imagegrid-4cols
+      layout: g-imagegrid-standard
+      album: clients
+      imagegridsets:
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-01.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 1'
+          title: 'Image 1'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-02.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 2'
+          title: 'Image 2'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-03.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 3'
+          title: 'Image 3'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-04.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 4'
+          title: 'Image 4'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-05.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 5'
+          title: 'Image 5'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-06.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 6'
+          title: 'Image 6'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-07.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 7'
+          title: 'Image 7'
+        -
+          colwidth: ''
+          imagegriditems:
+            -
+              subtitle: ''
+              image: 'gantry-media://pages/portfolio/footer/img-08.jpg'
+              caption: ''
+              linkto: image
+              link: ''
+              title: 'Image 8'
+          title: 'Image 8'    

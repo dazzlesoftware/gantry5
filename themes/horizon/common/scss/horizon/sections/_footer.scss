@@ -1,0 +1,43 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+
+    @if $footer-background-image {
+        background-image: url($footer-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .g-newsletter-headtext {
+        color: $white;
+    }
+
+    .g-simplecontent-item {
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+    }
+
+    .g-newsletter-particle .g-newsletter .g-newsletter-button .g-newsletter-button-submit.button.button-2 {
+        &:hover {
+            border-color: $accent-color-2;
+            color: $accent-color-2;
+            background: transparentize($accent-color-2, 0.8);
+        }
+    }
+
+
+    a {
+        color: $footer-link-color;
+        &:hover {
+            color: $footer-link-hover-color;
+        }
+    }
+}
+
+@media print {
+    #g-container-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

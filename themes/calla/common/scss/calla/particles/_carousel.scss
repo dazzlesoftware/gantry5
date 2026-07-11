@@ -1,0 +1,104 @@
+.g-carousel {
+    .owl-item {
+        position: relative;
+
+        .g-carousel-image-wrapper {
+            width: 100%;
+            background-size: cover;
+            position: relative;
+            display: block;
+            color: $white;
+            padding-top: 4vw;
+            padding-left: 4vw;
+
+            .dir-rtl & {
+                padding-left: 0;
+                padding-right: 4vw;
+            }
+
+            @include breakpoint(mobile-only) {
+                text-align: center;
+                padding: 4rem 2rem;
+            }
+
+            &:hover {
+                color: transparentize($white, 0.20);
+            }
+
+            // Title
+            .g-carousel-title {
+                width: 100%;
+                margin: auto;
+                transform: translateY(-50%);
+                font-weight: $font-weight-semibold;
+                @include responsive-font($responsive-font-size + 12, $core-font-size + 2, false, false);
+                line-height: $core-line-height - 0.5;
+                color: $white;
+            }
+        }
+
+        .g-carousel-description {
+            @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.1, false, false);
+            color: $black;
+            text-shadow: 0 0 5px fade-out($white, 0.2);
+            font-weight: $font-weight-regular;
+            width: 30%;
+
+            @include breakpoint(tablet-range) {
+                margin-top: 1rem;
+                width: 60%;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+
+        .g-carousel-link {
+            @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
+            color: $black;
+            font-weight: $font-weight-semibold;
+            color: $black;
+            text-decoration: underline;
+        }
+    }
+
+    // Nav
+    .owl-nav {
+        button.owl-prev,
+        button.owl-next {
+            position: absolute;
+            bottom: 5%;
+            color: $black;
+            text-align: center;
+            @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
+            transition: all 0.3s;
+
+            .fa {
+                position: relative;
+            }
+
+            &:hover {
+                color: $button-text-color;
+            }
+        }
+
+        .owl-prev {
+            left: 5%;
+
+            .fa {
+                left: -1px;
+                top: 1px;
+            }
+        }
+
+        .owl-next {
+            right: 5%;
+
+            .fa {
+                left: 1px;
+                top: 1px;
+            }
+        }
+    }
+}

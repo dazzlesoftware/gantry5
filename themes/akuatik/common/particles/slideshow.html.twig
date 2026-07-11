@@ -1,0 +1,81 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+    <div id="{{ id }}" class="g-slideshow swiper-container {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-effect="{{ particle.effect }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}"{% if gantry.page.direction == 'rtl' %} dir="rtl"{% endif %}>
+        {% if not particle.source or particle.source == 'particle' %}
+            <div class="g-slideshow-slider swiper-wrapper" style="height: {{ particle.height|default('600px') }};">
+                {% for item in particle.items %}
+                    <div class="swiper-slide {{ item.class|e }}" style="background-image: url({{ url(item.image)|e }}); background-position: {{ item.bg_horizontal|default('center') }} {{ item.bg_vertical|default('center') }}">
+                        <div class="slide" style="background-image: url({{ url(item.image2)|e }}); background-position: {{ item.bg_horizontal2|default('center') }} {{ item.bg_vertical2|default('center') }}">
+                            <div class="slide-content">
+                                {% if item.main_title %}
+                                    <h1 class="g-slideshow-main-title">
+                                        {% if item.link %}
+                                            <a href="{{ item.link }}" target="{{ item.linktarget|default('_self') }}">{{ item.main_title|raw }}</a>
+                                        {% else %}
+                                            {{ item.main_title|raw }}
+                                        {% endif %}
+                                    </h1>
+                                {% endif %}
+                                {% if item.top_title %}
+                                    <h3 class="g-slideshow-top-title ">
+                                        {{ item.top_title|raw }}
+                                    </h3>
+                                {% endif %}
+                                {% if item.author_image and item.author_link %}
+                                    <a class="g-slideshow-avatar" href="{{item.author_link}}" target="{{ item.author_linktarget|default('_self') }}">
+                                        <img src="{{ url(item.author_image)|e }}" alt="{{item.author_text}}" title="{{item.author_text}}">
+                                    </a>
+                                {% endif %}
+                                {% if item.author_text %}
+                                    <a class="g-slideshow-author" href="{{item.author_link}}" target="{{ item.author_linktarget|default('_self') }}">
+                                        {{item.author_text}}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% else %}
+            {% include '@particles/slideshow-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% endif %}
+        {#  pagination #}
+
+        {% if particle.progressbar == 'enabled' %}
+            <div class="swiper-pagination"></div>
+        {% endif %}
+        {% if particle.arrows == 'enabled' %}
+            {% if gantry.page.direction == 'rtl' %}
+                <div class="navigation rtl">
+                    <div class="sswiper-button-next">
+                    <i class="fa fa-angle-left"></i>
+                    </div>
+                    <div class="sswiper-button-prev">
+                    <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            {% else %}
+                <div class="navigation">
+                    <div class="sswiper-button-next">
+                    <i class="fa fa-angle-right"></i>
+                    </div>
+                    <div class="sswiper-button-prev">
+                    <i class="fa fa-angle-left"></i>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css" />
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.load('jquery') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
+{% endblock %}
+

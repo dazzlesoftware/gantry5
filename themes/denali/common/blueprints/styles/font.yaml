@@ -1,0 +1,11 @@
+name: Font Families
+description: Font families for the Denali theme
+type: core
+
+form:
+  fields:
+
+    family-default:
+      type: input.fonts
+      label: Body Font
+      default: 'sourcesanspro, Helvetica, Tahoma, Geneva, Arial, sans-serif'

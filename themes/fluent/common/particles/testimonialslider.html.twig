@@ -1,0 +1,66 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set attr_extra = '' %}
+{% if particle.extra %}
+    {% for attributes in particle.extra %}
+        {% for key, value in attributes %}
+            {% set attr_extra = attr_extra ~ ' ' ~ key|e ~ '="' ~ value|e('html_attr') ~ '"' %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+{% block particle %}
+
+    <div id="{{ id }}" class="g-testimonialslider {{ particle.class|e }}" data-testimonialslider-id="{{ id }}" data-testimonialslider-speed="{{ particle.speed|default('10') }}" data-testimonialslider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-testimonialslider-matchheight="{{ particle.matchheight|default('enabled') }}" data-testimonialslider-mobile="{{ gantry.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('51rem') }}" {{ attr_extra }}>
+        <div class="g-testimonialslider-carousel" data-testimonialslider-carousel-id="{{ id }}" {% if particle.matchheight == 'enabled' %}style="height: 50px;"{% elseif particle.matchheight == 'disabled' and particle.fixedheight %}style="height: {{ particle.fixedheight }}px;"{% endif %}>
+
+            {% for item in particle.items %}
+                <div class="g-testimonialslider-carousel-item-container">
+                    <div class="g-testimonialslider-carousel-item-content">
+                    {% if item.description %}
+                        <div class="g-testimonialslider-carousel-item-description">
+                            {{ item.description|raw }}
+                        </div>
+                    {% endif %}
+
+                    {% if item.avatar or item.author or item.authortitle %}
+                        <div class="g-testimonialslider-carousel-item-author-details">
+                            {% if item.avatar %}
+                                <div class="g-testimonialslider-carousel-item-avatar">
+                                    <img src="{{ item.avatar|e }}" alt="{{ item.author|e }}" />
+                                </div>
+                            {% endif %}
+
+                            {% if item.author or item.authortitle %}
+                                <div class="g-testimonialslider-carousel-item-author-name-title">
+                                    {% if item.author %}
+                                        <div class="g-testimonialslider-carousel-item-author">
+                                            {{ item.author|e }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if item.authortitle %}
+                                        <div class="g-testimonialslider-carousel-item-author-title">
+                                            {{ item.authortitle|e }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+{% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/jquery.matchHeight-min.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/jquery.mThumbnailScroller.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-theme://js/testimonialslider.init.js'), 10, 'footer') %}
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div class="{{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title }}</h2>{% endif %}
+
+        <div class="g-featuretabs">
+            <div id="g-featuretabs-{{ id }}" class="g-featuretabs-container">
+                <ul class="g-featuretabs-tab-wrapper-container">
+
+                    {% for item in particle.items %}
+                        <li class="g-featuretabs-tab-wrapper {{ item.class }}">
+                            <span class="g-featuretabs-tab-wrapper-head">
+                                <a class="g-featuretabs-tab" href="#g-featuretabs-item-{{ loop.index }}">
+                                    <span class="g-featuretabs-tab-title">{{ item.title|html|raw }}</span>
+                                </a>
+                            </span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+                <ul class="g-featuretabs-content-wrapper-container">
+
+                    {% for item in particle.items %}
+                        <li class="g-featuretabs-tab-wrapper {{ item.class }}">
+                            <div class="g-featuretabs-tab-wrapper-body">
+                                <div id="g-featuretabs-item-{{ loop.index }}">
+
+                                    <div class="g-featuretabs-img-container">
+                                        <img src="{{ url(item.image)|e }}" class="g-featuretabs-image" {% if item.alt %}alt="{{ item.alt }}"{% endif %} />
+                                    </div>
+
+                                    <div class="g-featuretabs-content">
+                                        <h2 class="g-featuretabs-title">
+                                            {% if item.link %}
+                                            <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.link|e }}">{{ item.title|html|raw }}</a>
+                                            {% else %}
+                                            {{ item.title|html|raw }}
+                                            {% endif %}
+                                        </h2>
+                                        {% if item.titletag %}
+                                        <p class="rt-title-tag">{{ item.titletag|html|raw }}</p>
+                                        {% endif %}
+                                        <div class="g-featuretabs-desc">
+
+                                            {{ item.content|html|raw }} 
+                                            {% if item.link %}
+                                                <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.link|e }}" class="{{ item.buttonclass|e }}"><span>{{ item.linklabel|default('Read More') }}</span></a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
+{% endblock %}
+
+{% block javascript_footer %}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('#g-featuretabs-{{ id }}').tabs({
+                show: {
+                    effect: 'fade',
+                    duration: 350
+                }
+            }); 
+        });
+    </script>
+{% endblock %}

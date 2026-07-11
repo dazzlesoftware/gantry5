@@ -1,0 +1,87 @@
+preset1:
+  image: 'gantry-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#d6b67f'
+    - '#474441'
+    - '#151413'
+    - '#989089'
+  styles:
+    base:
+      background: '#2d271d'
+      surround-image: 'gantry-media://backgrounds/body/bg-01.svg'
+      text-color: '#736f6c'
+      text-active-color: '#d6b67f'
+    accent:
+      color-1: '#d6b67f'
+      color-2: '#474441'
+      color-3: '#151413'
+      color-4: '#989089'
+    button:
+      text-color: '#736f6c'
+      background-color: '#d6b67f'
+    menustyle:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+      text-color-active: '#d6b67f'
+      sublevel-text-color: '#000000'
+      sublevel-text-color-active: '#000000'
+      sublevel-background: '#ffffff'
+      sublevel-background-active: '#d6b67f'
+    font:
+      family-title: 'averia, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-default: 'averia, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    top:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    slideshow:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    header:
+      background: '#000000'
+      text-color: '#ffffff'
+    above:
+      background: '#ffffff'
+      background-image: 'gantry-media://backgrounds/above/bg-01.svg'
+      text-color: '#000000'
+    feature:
+      background: '#000000'
+      background-image: 'gantry-media://backgrounds/feature/bg-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#000000'
+      text-color: '#ffffff'
+    utility:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    main:
+      background: 'rgba(255,255,255,0)'
+      text-color: '#ffffff'
+    expanded:
+      background: '#000000'
+      text-color: '#ffffff'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#000000'
+      text-color: '#ffffff'
+    footer:
+      background: '#000000'
+      text-color: '#ffffff'
+    copyright:
+      background: '#000000'
+      text-color: '#666666'
+    offcanvas:
+      background: '#d6b67f'
+      text-color: '#ffffff'
+      toggle-color: '#d6b67f'
+    breakpoints:
+      large-desktop-container: 88rem
+      desktop-container: 76rem
+      tablet-container: 51rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 51rem

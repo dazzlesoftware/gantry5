@@ -1,0 +1,26 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div id="g-{{ id }}" class="g-polldaddy {{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+        {% if particle.pollid %}
+            <script type="text/javascript" charset="utf-8" src="//static.polldaddy.com/p/{{ particle.pollid|e }}.js"></script>
+            <noscript><a href="//polldaddy.com/poll/{{ particle.pollid|e }}/">Your browser does not support JavaScript. Please click here to vote on Polldaddy website.</a></noscript>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+{% do gantry.load('jquery') %}
+    <script type="text/javascript">
+        var pd_callback_{{ particle.pollid|e }} = function(json){
+            var obj = jQuery.parseJSON( json );
+            if(obj.result == 'load') {
+                jQuery('style').remove('#poll_style{{ particle.pollid|e }}');
+            }
+        };
+    </script>
+{% endblock %}

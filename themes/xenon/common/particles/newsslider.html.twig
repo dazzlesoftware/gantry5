@@ -1,0 +1,88 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+  	{% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+
+	<div class="g-newsslider">
+
+		<div class="g-newsslider-preview news-preview">
+
+		    {% for item in particle.items %}
+				<div class="g-newsslider-content news-content">
+					<div class="g-newsslider-preview-title">{{ item.title|raw }}</div>
+					<div class="g-newsslider-preview-headerdesc">{{ item.headerdesc|raw }}</div>
+					<div class="g-newsslider-preview-desc">{{ item.desc|raw }}</div>
+					{% if item.buttontext %}
+						<span class="g-newsslider-button"> <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.buttonlink|e }}" title="{{ item.buttontext|e }}" class="button {{ item.buttonclass|e }}">{{ item.buttontext|e }}</a> </span>
+					{% endif %}
+					<div class="g-newsslider-preview-subtitle">{{ item.subtitle|raw }}</div>
+				</div>
+		    {% endfor %}
+
+		</div>
+
+
+        <div id="g-newsslider-scrollbar-{{ id }}" class="g-newsslider-scrollbar" style="height: {{ particle.height|default('500px') }} !important;">
+            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+            <div class="viewport" style="height: {{ particle.height|default('500px') }};">
+                 <div class="overview">
+					<ul class="g-newsslider-headlines news-headlines">
+					    {% for item in particle.items %}
+							<li>
+								<span class="g-newsslider-headlines-title">{{ item.title|raw }}</span>
+								<span class="g-newsslider-headlines-subtitle">{{ item.subtitle|raw }}</span>
+							</li>
+					    {% endfor %}
+					</ul>
+                </div>
+            </div>
+        </div>
+
+	</div>
+
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/newsslider.js') }}"></script>
+<script src="{{ url('gantry-theme://js/tinyscrollbar.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function (){
+        jQuery('.news-content:first-child()').addClass('top-content');
+        jQuery('.nh-anim:first-child()').addClass('selected');
+
+        var gscrollbar = document.getElementById("g-newsslider-scrollbar-{{ id }}")
+        ,   scrollbar  = tinyscrollbar(gscrollbar)
+        ;
+
+        // Lock page scrolling on touch devices
+        function isTouchDevice(){
+            try{
+                document.createEvent("TouchEvent");
+                return true;
+            }catch(e){
+                return false;
+            }
+        }
+        function touchScroll(id){
+            if(isTouchDevice()){ //if touch events exist...
+                var el=document.getElementById(id);
+                var scrollStartPos=0;
+
+                document.getElementById(id).addEventListener("touchstart", function(event) {
+                    scrollStartPos=this.scrollTop+event.touches[0].pageY;
+                    event.preventDefault();
+                },false);
+
+                document.getElementById(id).addEventListener("touchmove", function(event) {
+                    this.scrollTop=scrollStartPos-event.touches[0].pageY;
+                    event.preventDefault();
+                },false);
+            }
+        }
+        touchScroll("g-newsslider-scrollbar-{{ id }}");
+    });
+</script>
+{% endblock %}

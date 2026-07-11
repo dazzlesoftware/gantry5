@@ -1,0 +1,117 @@
+name: Image Grid
+description: Display image grid.
+type: particle
+icon: fa-picture-o
+
+configuration:
+  caching:
+    type: static
+
+form:
+  overrideable: false
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    desc:
+      type: textarea.textarea
+      label: Description
+      description: Customize the description.
+      placeholder: Enter short description
+
+    cols:
+      type: select.select
+      label: Grid Column
+      description: Select the grid column amount
+      placeholder: 'Select...'
+      default: g-imagegrid-2cols
+      options:
+        g-imagegrid-2cols: 2 Columns
+        g-imagegrid-3cols: 3 Columns
+        g-imagegrid-4cols: 4 Columns
+        g-imagegrid-5cols: 5 Columns
+        g-imagegrid-6cols: 6 Columns
+
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: When using Custom Columns layout, the Grid Column settings are ignored as Custom Columns layout allows you to configure custom values for width of columns.
+
+    layout:
+      type: select.select
+      label: Layout
+      description: Select preferred layout
+      placeholder: 'Select...'
+      default: g-imagegrid-standard
+      options:
+        g-imagegrid-standard: Standard
+        g-imagegrid-customcols: Custom Columns
+
+    album:
+      type: input.text
+      label: Album Name
+      description: Customize the album name.
+      placeholder: Enter album name
+
+    imagegridsets:
+      type: collection.list
+      array: true
+      label: Image Sets
+      description: Create each set of images to appear in column.
+      value: title
+      ajax: true
+      fields:
+        .colwidth:
+          type: input.text
+          label: Column Width
+          description: Custom column width for the Custom Columns layout.
+          pattern: '\d+(\.\d+){0,1}(rem|em|ex|ch|vw|vh|vmin|vmax|%|px|cm|mm|in|pt|pc)'
+
+        .imagegriditems:
+          type: collection.list
+          array: true
+          label: Images
+          description: Create each item to appear in the content row.
+          value: title
+          ajax: true
+          fields:
+            .title:
+              type: input.text
+              label: Title
+            .subtitle:
+              type: input.text
+              label: Sub Title
+            .image:
+              type: input.imagepicker
+              label: Promo Image
+              description: Select desired promo image.
+            .icon:
+              type: input.icon
+              label: Icon
+              description: Customize the icon.
+              default: 'fa fa-search'
+            .linkto:
+              type: select.select
+              label: Link To
+              description: Choose to display image or open a custom link.
+              default: image
+              options:
+                image: Lightcase Image
+                link: Link
+            .link:
+              type: input.text
+              label: Link

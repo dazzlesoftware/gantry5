@@ -1,0 +1,30 @@
+#g-utility {
+    background: $utility-background;
+    color: $utility-text-color;
+
+	.fp-utility-a {
+		> .g-content {
+			margin: 0;
+			padding: 6rem;
+		    @include breakpoint(mobile-only) {
+		      padding: 3rem ($content-padding + $content-margin);
+		    } 			
+		}
+		.flex-direction-nav a {
+			bottom: -1.5rem;
+			background: rgba(255, 255, 255, 0.25);
+		}
+		.flex-control-nav {
+			left: -6px;
+			right: inherit;
+			bottom: -2rem;
+		}
+	}
+}
+
+@media print {
+	#g-utility {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

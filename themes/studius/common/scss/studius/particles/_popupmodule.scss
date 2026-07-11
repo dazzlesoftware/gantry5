@@ -1,0 +1,14 @@
+.g-popupmodule-module-wrapper {
+    display: none;
+}
+// Joomla4 Fix
+.lightcase-open {
+    .g-popupmodule-module-wrapper {
+        display: block;
+    }
+    .g-popupmodule-button {
+        .g-popupmodule-module-wrapper {
+            display: none;
+        }
+    }
+}

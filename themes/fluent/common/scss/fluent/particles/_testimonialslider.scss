@@ -1,0 +1,262 @@
+// Carousel Styling
+.g-testimonialslider {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+
+    @include breakpoint(mobile-only) {
+        flex-direction: column;
+    }
+
+    .g-testimonialslider-carousel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 450px;
+
+        @include breakpoint(mobile-only) {
+            height: 450px !important;
+        }
+
+        &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            background: linear-gradient(0deg, $white 5%, transparentize($white, 0.2) 10%, rgba(255,255,255,0) 15%, rgba(255,255,255,0) 85%, transparentize($white, 0.2) 90%, $white 95%);
+            pointer-events: none;
+        }
+
+        // Thumb Container
+        .g-testimonialslider-carousel-item-container {
+            position: relative;
+            cursor: pointer;
+
+            &:first-child {
+                margin-top: 8rem;
+
+                @include breakpoint(mobile-only) {
+                    margin-top: 4rem;
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 8rem;
+
+                @include breakpoint(mobile-only) {
+                    margin-bottom: 4rem;
+                }
+            }
+
+            .g-testimonialslider-carousel-item-content {
+                margin: $content-padding ($content-padding * 3.5);
+                padding: $content-padding;
+                border-radius: 0.3rem;
+                background: $white;
+                box-shadow: 0 20px 50px fade-out($accent-color-1, 0.80);
+                transition: all 0.2s ease-in-out;
+
+                .dir-rtl & {
+                    direction: rtl;
+                }
+
+                @include breakpoint(desktop-range) {
+                    margin: $content-padding ($content-margin * 2);
+                }
+
+                @include breakpoint(tablet-range) {
+                    margin: $content-padding ($content-margin * 2);
+                }
+
+                @include breakpoint(mobile-only) {
+                    margin: $content-padding ($content-margin * 2);
+                }
+
+                .g-testimonialslider-carousel-item-description {
+                    @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                }
+
+                .g-testimonialslider-carousel-item-author-details {
+                    display: flex;
+                    margin-top: $content-margin + 0.5;
+
+                    .g-testimonialslider-carousel-item-avatar {
+                        flex: 0 0 auto;
+                        margin-right: $content-padding;
+
+                        img {
+                            border-radius: 50%;
+                            width: 45px;
+                            height: 45px;
+                        }
+
+                        .dir-rtl & {
+                            margin-left: $content-padding;
+                            margin-right: 0;
+                        }
+                    }
+
+                    .g-testimonialslider-carousel-item-author-name-title {
+                        flex: 1 1 100%;
+
+                        .g-testimonialslider-carousel-item-author {
+                            @include responsive-font($responsive-font-size, $core-font-size, false, false);
+                            font-weight: $font-weight-medium;
+                        }
+
+                        .g-testimonialslider-carousel-item-author-title {
+                            @include responsive-font($responsive-font-size - 0.15, $core-font-size - 0.15, false, false);
+                            color: lighten($base-text-color, 60%);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .g-testimonialslider-carousel-item-content {
+                    box-shadow: 0 20px 50px fade-out($accent-color-2, 0.60);
+                }
+            }
+        }
+    }
+}
+
+// Carousel Scroller Core Code
+.mThumbnailScroller {
+    -ms-touch-action: none;
+    touch-action: none
+}
+.mThumbnailScroller.mTS_no_scroll,
+.mThumbnailScroller.mTS_touch_action {
+    -ms-touch-action: auto;
+    touch-action: auto
+}
+.mTSWrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr
+}
+.mTSContainer {
+    margin: 0;
+    padding: 0;
+    overflow: hidden
+}
+ol.mTSContainer,
+ul.mTSContainer {
+    list-style: none
+}
+.mTSThumb,
+ul.mTSContainer>li img {
+    vertical-align: bottom
+}
+.mTS_vertical .mTSContainer {
+    margin-top: 0!important;
+    margin-bottom: 0!important
+}
+.mTS_horizontal .mTSContainer {
+    margin-left: 0!important;
+    margin-right: 0!important
+}
+.mTS-hover-full {
+    padding: 8px;
+    background: rgba(0, 0, 0, .2)
+}
+.mTS-hover-full .mTS_vertical .mTSThumbContainer {
+    margin: 8px 0
+}
+.mTS-hover-full .mTS_vertical .mTSThumbContainer:first-child {
+    margin-top: 40px
+}
+.mTS-hover-full .mTS_vertical .mTSThumbContainer:last-child {
+    margin-bottom: 40px
+}
+.mTS-hover-full .mTS_horizontal .mTSThumbContainer {
+    margin: 0 4px
+}
+.mTS-hover-full .mTS_horizontal .mTSThumbContainer:first-child {
+    margin-left: 40px
+}
+.mTS-hover-full .mTS_horizontal .mTSThumbContainer:last-child {
+    margin-right: 40px
+}
+.mTSButton{
+    /* button size (if changed, also change the buttons top and left margins below) */
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    /* ---------- */
+    overflow: hidden;
+    text-align: center;
+    background-color: transparent; /* button background */
+    color: $accent-color-1; /* non-svg button icon color */
+    display: inline-block;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    /* show button effect (fades-in button from zero size) */
+    opacity: 1;
+    -webkit-transition: height 0s ease-out 0s, width 0s ease-out 0s, padding 0s ease-out 0s, opacity .2s ease-out 0s;
+    -moz-transition: height 0s ease-out 0s, width 0s ease-out 0s, padding 0s ease-out 0s, opacity .2s ease-out 0s;
+    -o-transition: height 0s ease-out 0s, width 0s ease-out 0s, padding 0s ease-out 0s, opacity .2s ease-out 0s;
+    -ms-transition: height 0s ease-out 0s, width 0s ease-out 0s, padding 0s ease-out 0s, opacity .2s ease-out 0s;
+    transition: height 0s ease-out 0s, width 0s ease-out 0s, padding 0s ease-out 0s, opacity .2s ease-out 0s;
+    /* ---------- */
+}
+
+/* buttons positioning */
+
+.mTSButtonDown{
+    top: auto;
+    bottom: 0;
+}
+.mTSButtonRight{
+    left: auto;
+    right: 0;
+}
+.mTSButtonUp,
+.mTSButtonDown{ /* margin is half the button size */
+    left: 50%;
+    margin-left: -28px;
+}
+.mTSButtonLeft,
+.mTSButtonRight{ /* margin is half the button size */
+    top: 50%;
+    margin-top: -28px;
+}
+.mTSButtonIconContainer{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+.mTSButtonIcon{ /* SVG icon */
+    display: inline-block;
+    fill: $accent-color-1; /* button icon color */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.mTSButton.mTS-hidden,
+.mThumbnailScroller.mTS_no_scroll .mTSButton{
+    /* hide button effect (fades-out button to zero size) */
+    opacity: 0;
+    height: 0;
+    width: 0;
+    padding: 0;
+    -webkit-transition: height 0s ease-out .2s, width 0s ease-out .2s, padding 0s ease-out .2s, opacity .2s ease-out;
+    -moz-transition: height 0s ease-out .2s, width 0s ease-out .2s, padding 0s ease-out .2s, opacity .2s ease-out;
+    -o-transition: height 0s ease-out .2s, width 0s ease-out .2s, padding 0s ease-out .2s, opacity .2s ease-out;
+    -ms-transition: height 0s ease-out .2s, width 0s ease-out .2s, padding 0s ease-out .2s, opacity .2s ease-out;
+    transition: height 0s ease-out .2s, width 0s ease-out .2s, padding 0s ease-out .2s, opacity .2s ease-out;
+    /* ---------- */
+}

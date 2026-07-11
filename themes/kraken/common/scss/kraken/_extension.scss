@@ -1,0 +1,28 @@
+#g-extension {
+    background: $extension-background;
+    color: $extension-text-color; 	  
+
+    // Swiper
+    .g-swiper-testimonial {
+    	margin-top: -3rem;
+    }
+    .g-swiper-slide-content-title  {
+    	color: $extension-text-color;
+    }
+	.swiper-container {
+	    .swiper-pagination-bullet {
+	        border: 2px solid lighten($extension-text-color, 25%);
+	        &.swiper-pagination-bullet-active {
+	            background: $extension-text-color;
+	            border: 2px solid $extension-text-color;
+	        }
+	    }		
+	}    
+}
+
+@media print {
+	#g-extension {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}
