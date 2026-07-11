@@ -22,6 +22,10 @@ if errorlevel 1 (
     exit /b 1
 )
 
+call :link-source "platforms\grav\gantry5" || exit /b 1
+call :link-source "platforms\joomla\lib_gantry5" || exit /b 1
+call :link-source "platforms\wordpress\gantry5" || exit /b 1
+
 call :install "." || exit /b 1
 call :install "bin\builder" || exit /b 1
 call :install "platforms\grav\gantry5" || exit /b 1
@@ -35,6 +39,20 @@ call :install "platforms\wordpress\gantry5_debugbar" || exit /b 1
 
 echo.
 echo All Composer installs completed successfully.
+exit /b 0
+
+:link-source
+set "project=%~1"
+set "sourceLink=%~dp0%~1\src"
+
+if exist "%sourceLink%\" exit /b 0
+
+echo Creating source link for %project% ...
+mklink /J "%sourceLink%" "%~dp0src" >nul
+if errorlevel 1 (
+    echo ERROR: Could not create the src junction for %project%.
+    exit /b 1
+)
 exit /b 0
 
 :install
