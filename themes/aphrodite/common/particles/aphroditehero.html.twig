@@ -1,0 +1,14 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+<section class="aphrodite-hero">
+    <div class="container px-4">
+        {% if particle.eyebrow %}<div class="aphrodite-hero__eyebrow">{{ particle.eyebrow|e }}</div>{% endif %}
+        <h1 class="aphrodite-hero__title">{{ particle.title|e }}</h1>
+        {% if particle.text %}<p class="aphrodite-hero__text">{{ particle.text|e }}</p>{% endif %}
+        <div class="aphrodite-hero__actions">
+            {% if particle.primary_label %}<a class="btn btn-primary btn-lg px-4" href="{{ particle.primary_link|e }}">{{ particle.primary_label|e }}</a>{% endif %}
+            {% if particle.secondary_label %}<a class="btn btn-outline-dark btn-lg px-4" href="{{ particle.secondary_link|e }}">{{ particle.secondary_label|e }}</a>{% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

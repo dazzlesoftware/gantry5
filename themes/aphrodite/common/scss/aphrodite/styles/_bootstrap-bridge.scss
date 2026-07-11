@@ -1,0 +1,150 @@
+// Aphrodite's original palette and Helix-to-Gantry presentation mapping.
+:root {
+    --aphrodite-primary: #0345bf;
+    --aphrodite-primary-hover: #044cd0;
+    --aphrodite-ink: #252525;
+    --aphrodite-muted: #6c757d;
+    --aphrodite-border: #ededed;
+    --aphrodite-surface: #ffffff;
+    --aphrodite-topbar: #333333;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body, #g-page-surround {
+    background: var(--aphrodite-surface);
+    color: var(--aphrodite-ink);
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+a { color: var(--aphrodite-primary); }
+a:hover, a:focus { color: var(--aphrodite-primary-hover); }
+
+.g-container { width: 100%; max-width: 1140px; margin-inline: auto; }
+.g-content { margin: 0; padding: 1rem; }
+
+// Helix top bar equivalent.
+#g-top {
+    background: var(--aphrodite-topbar);
+    color: #aaa;
+    font-size: .75rem;
+
+    a { color: #aaa; }
+    .g-content { padding-top: .45rem; padding-bottom: .45rem; }
+}
+
+// Helix #sp-header equivalent.
+#g-navigation {
+    position: relative;
+    z-index: 1000;
+    min-height: 74px;
+    background: #fff;
+    color: var(--aphrodite-ink);
+    border-top: 2px solid #202020;
+    box-shadow: none;
+
+    > .g-container { max-width: 1040px; }
+    .g-container > .g-grid { align-items: center; }
+    .g-container > .g-grid:last-child { min-height: 72px; }
+    .g-content { padding-top: 0; padding-bottom: 0; }
+    .g-logo { display: inline-flex; align-items: center; width: 260px; max-width: 100%; }
+    .g-logo img { display: block; width: 260px; max-width: 100%; height: auto; }
+    .g-main-nav { margin-left: auto; }
+    .g-main-nav .g-toplevel { display: flex; justify-content: flex-end; align-items: center; }
+    .g-main-nav .g-toplevel > li > .g-menu-item-container {
+        padding: 1.8rem .78rem;
+        color: var(--aphrodite-ink);
+        font-size: .7rem;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: .01em;
+        text-transform: uppercase;
+    }
+    .g-main-nav .g-toplevel > li:hover > .g-menu-item-container,
+    .g-main-nav .g-toplevel > li.active > .g-menu-item-container { color: #ff406c; }
+    .g-main-nav .g-menu-parent-indicator { display: none; }
+    .g-main-nav .g-dropdown {
+        width: 195px;
+        background: #111;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .g-main-nav .g-sublevel > li {
+        border-bottom: 1px solid #242424;
+    }
+    .g-main-nav .g-sublevel > li:last-child { border-bottom: 0; }
+    .g-main-nav .g-sublevel > li > .g-menu-item-container {
+        padding: .82rem 1.1rem;
+        background: #111;
+        color: #777;
+        font-size: .72rem;
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: .01em;
+        text-transform: uppercase;
+    }
+    .g-main-nav .g-sublevel > li:hover > .g-menu-item-container,
+    .g-main-nav .g-sublevel > li.active > .g-menu-item-container {
+        background: #171717;
+        color: #fff;
+    }
+}
+
+#g-header { background: #f4f6ff; color: var(--aphrodite-ink); }
+#g-mainbar { background: #fff; color: var(--aphrodite-ink); padding-block: 3rem; }
+#g-sidebar, #g-aside { background: #fff; color: var(--aphrodite-ink); }
+#g-footer { background: #1f1f1f; color: #aaa; padding-block: 2.5rem; }
+#g-footer a { color: #ddd; }
+#g-footer a:hover { color: #fff; }
+
+// Native Bootstrap-based Aphrodite hero.
+.aphrodite-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, #edf1ff 0%, #f8f3ef 60%, #fff 100%);
+
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: saturate(120%);
+    }
+    &::before { width: 420px; height: 420px; right: -80px; top: -120px; background: linear-gradient(135deg, #0345bf, #00d4ff); opacity: .92; }
+    &::after { width: 280px; height: 280px; right: 230px; bottom: -120px; background: linear-gradient(135deg, #ff43c6, #ffb36b); opacity: .85; }
+    .container { position: relative; z-index: 2; }
+    &__eyebrow { color: var(--aphrodite-primary); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    &__title { max-width: 680px; margin: .75rem 0 1rem; font-size: clamp(3rem, 7vw, 5.75rem); line-height: .96; font-weight: 800; letter-spacing: -.045em; }
+    &__text { max-width: 580px; color: #5d6472; font-size: 1.1rem; line-height: 1.8; }
+    &__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+}
+
+.aphrodite-features {
+    padding-block: 5rem;
+    .aphrodite-feature { height: 100%; padding: 1.75rem; border: 1px solid var(--aphrodite-border); border-radius: .5rem; background: #fff; transition: transform .2s ease, box-shadow .2s ease; }
+    .aphrodite-feature:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.08); }
+    .aphrodite-feature__icon { display: inline-grid; width: 3rem; height: 3rem; place-items: center; margin-bottom: 1.25rem; border-radius: .5rem; background: rgba(3,69,191,.1); color: var(--aphrodite-primary); font-size: 1.3rem; }
+}
+
+.platform-content .entry-title { font-weight: 700; letter-spacing: -.02em; }
+.platform-content .entry-meta { color: var(--aphrodite-muted); font-size: .875rem; }
+.platform-content .entry-meta > div { display: inline-block; margin-right: 1rem; }
+.platform-content img { max-width: 100%; height: auto; }
+
+.btn-primary, .button, button, input[type="submit"] {
+    border-color: var(--aphrodite-primary);
+    background: var(--aphrodite-primary);
+    color: #fff;
+}
+.btn-primary:hover, .button:hover, button:hover, input[type="submit"]:hover { border-color: var(--aphrodite-primary-hover); background: var(--aphrodite-primary-hover); color: #fff; }
+
+@include breakpoint(mobile-only) {
+    .g-container { width: 100%; }
+    #g-navigation { min-height: 64px; .g-container > .g-grid:last-child { min-height: 62px; } }
+    .aphrodite-hero { min-height: 500px; &::before { right: -240px; opacity: .35; } &::after { right: -80px; opacity: .3; } }
+    .aphrodite-hero__actions { align-items: stretch; flex-direction: column; }
+    .aphrodite-hero__actions .btn { width: 100%; }
+}

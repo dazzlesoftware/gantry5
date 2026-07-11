@@ -1,0 +1,33 @@
+name: Aphrodite Features
+description: Responsive Bootstrap feature cards.
+type: particle
+icon: fas fa-th-large
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+    title:
+      type: input.text
+      label: Heading
+      default: Designed for modern publishing
+    intro:
+      type: textarea.textarea
+      label: Introduction
+    items:
+      type: collection.list
+      array: true
+      label: Features
+      value: title
+      fields:
+        .icon:
+          type: input.icon
+          label: Icon
+        .title:
+          type: input.text
+          label: Title
+        .text:
+          type: textarea.textarea
+          label: Text

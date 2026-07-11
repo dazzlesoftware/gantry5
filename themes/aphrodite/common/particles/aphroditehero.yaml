@@ -1,0 +1,39 @@
+name: Aphrodite Hero
+description: Bootstrap-based Aphrodite hero section.
+type: particle
+icon: far fa-image
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+    eyebrow:
+      type: input.text
+      label: Eyebrow
+      default: Creative framework
+    title:
+      type: input.text
+      label: Title
+      default: Build something remarkable
+    text:
+      type: textarea.textarea
+      label: Text
+      default: A flexible Bootstrap 5 experience powered by Gantry.
+    primary_label:
+      type: input.text
+      label: Primary Label
+      default: Get Started
+    primary_link:
+      type: input.text
+      label: Primary Link
+      default: '#'
+    secondary_label:
+      type: input.text
+      label: Secondary Label
+      default: Learn More
+    secondary_link:
+      type: input.text
+      label: Secondary Link
+      default: '#'

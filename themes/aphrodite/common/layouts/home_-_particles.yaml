@@ -1,0 +1,87 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: home_-_particles
+  timestamp: 1783756800
+layout:
+  navigation: {  }
+  /header/:
+    -
+      - aphroditehero-1001
+  /features/:
+    -
+      - aphroditefeatures-1002
+  /container-main/:
+    -
+      -
+        'mainbar 100':
+          -
+            - system-content-1003
+  footer: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  header:
+    type: section
+    subtype: header
+    attributes:
+      boxed: ''
+      class: g-flushed
+  features:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-flushed
+  mainbar:
+    type: section
+    subtype: main
+  container-main:
+    attributes:
+      boxed: '2'
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+content:
+  aphroditehero-1001:
+    title: 'Aphrodite Hero'
+    attributes:
+      eyebrow: 'Bootstrap 5 + Gantry 5'
+      title: 'Create without limits'
+      text: 'Aphrodite combines a modern Bootstrap frontend with Gantry’s flexible layout and content tools.'
+      primary_label: 'Discover Aphrodite'
+      primary_link: '#g-features'
+      secondary_label: 'View Content'
+      secondary_link: '#g-mainbar'
+  aphroditefeatures-1002:
+    title: 'Aphrodite Features'
+    attributes:
+      title: 'A modern foundation for every platform'
+      intro: 'Purpose-built components with responsive Bootstrap behavior and Gantry configuration.'
+      items:
+        -
+          icon: 'fab fa-bootstrap'
+          title: 'Bootstrap Native'
+          text: 'Utilities, components, responsive columns and the Bootstrap JavaScript bundle are available throughout the theme.'
+        -
+          icon: 'fas fa-layer-group'
+          title: 'Gantry Flexible'
+          text: 'Build outlines and arrange particles visually while Aphrodite controls the frontend presentation.'
+        -
+          icon: 'fas fa-mobile-alt'
+          title: 'Responsive First'
+          text: 'Navigation, hero content, cards and publishing views adapt cleanly from phones to large displays.'

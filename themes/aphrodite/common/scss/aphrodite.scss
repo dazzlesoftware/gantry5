@@ -1,0 +1,6 @@
+// Aphrodite for Gantry 5
+// Keep Nucleus as the Gantry layout contract; Bootstrap drives presentation.
+@import "dependencies";
+@import "nucleus/theme/base";
+@import "aphrodite/styles/bootstrap-bridge";
+@import "nucleus/theme/breakpoints/base";
