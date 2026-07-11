@@ -1,10 +1,10 @@
 {
     "name": "gantry/joomla-compat",
-    "description": "Gantry Framework Library (PHP 7.2+ compat)",
+    "description": "Gantry Framework Library (PHP 8.3+ compat)",
     "license": "GPLv2",
 
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=8.3.0",
         "pimple/pimple": "~3.5",
         "twig/twig": "~1.44",
         "scssphp/scssphp": "~1.10"
@@ -14,7 +14,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.2.5"
+            "php": "8.3.0"
         }
     }
 }
