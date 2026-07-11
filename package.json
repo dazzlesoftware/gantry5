@@ -2,32 +2,28 @@
   "name": "gantry5",
   "version": "5.4.0",
   "description": "Gantry 5 / JS and CSS bundler",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "npm": "^7.20.5"
+  "engines": {
+    "node": ">=20.19.0"
   },
+  "main": "gulpfile.js",
   "devDependencies": {
     "browserify": "^17.0.1",
     "gulp": "^4.0.2",
     "gulp-if": "^3.0.0",
     "gulp-jsonminify": "1.1.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.1.1",
+    "gulp-sass": "^6.0.1",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
     "merge-stream": "^2.0.0",
-    "npm": "^7.24.2",
+    "sass": "1.101.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^4.0.0",
     "yargs": "^16.2.0"
   },
-  "resolutions": {
-    "graceful-fs": "^4.2.4"
-  },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "list-paths": "echo './' && echo 'assets/common' && echo 'platforms/common' && echo 'engines/common/nucleus'",
     "build-assets": "rm -rf node_modules && rm -rf assets/common/node_modules && rm -rf platforms/common/node_modules && rm -rf engines/common/nucleus/node_modules && yarn install && cd assets/common && yarn install && cd ../../ && cd platforms/common && yarn install && cd ../../ && cd engines/common/nucleus && yarn install && cd ../../../",
     "ncu": "ncu && cd assets/common && ncu && cd ../../ && cd platforms/common && ncu && cd ../../ && cd engines/common/nucleus && ncu && cd ../../../",

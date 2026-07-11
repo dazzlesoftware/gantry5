@@ -13,7 +13,7 @@ var argv            = require('yargs').argv,
     sourcemaps      = require('gulp-sourcemaps'),
     browserify      = require('browserify'),
     watchifyModule  = require('watchify'),
-    sass            = require('gulp-sass'),
+    sass            = require('gulp-sass')(require('sass')),
 
     prod            = !!(argv.p || argv.prod || argv.production),
     watch           = false;
@@ -41,12 +41,12 @@ var compileCSS = function(app) {
     gutil.log(gutil.colors.blue('*'), 'Compiling', _in);
 
     var options = {
-        sourceMap: !prod,
-        includePaths: _load,
-        outputStyle: prod ? 'compact' : 'expanded'
+        loadPaths: _load ? [_load] : [],
+        style: prod ? 'compressed' : 'expanded',
+        silenceDeprecations: ['import', 'slash-div', 'global-builtin', 'color-functions', 'if-function', 'abs-percent', 'function-units']
     };
 
-    return gulp.src(_in)
+    return gulp.src(_in, { sourcemaps: !prod })
         .pipe(sass(options).on('error', sass.logError))
         .on('end', function() {
             gutil.log(gutil.colors.green('√'), 'Saved ' + _in);

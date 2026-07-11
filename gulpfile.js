@@ -57,7 +57,7 @@ var argv            = require('yargs').argv,
     browserify      = require('browserify'),
     watchifyModule  = require('watchify'),
     jsonminify      = require('gulp-jsonminify'),
-    sass            = require('gulp-sass'),
+    sass            = require('gulp-sass')(require('sass')),
 
     prod            = !!(argv.p || argv.prod || argv.production),
     watchType       = (argv.css && argv.js) ? 'all' : (argv.css ? 'css' : (argv.js ? 'js' : 'all')),
@@ -136,16 +136,22 @@ var compileCSS = function(app, done) {
     gutil.log(gutil.colors.blue('*'), 'Compiling', _in);
 
     var options = {
-        sourceMap: !prod,
-        includePaths: _load,
-        outputStyle: prod ? 'compact' : 'expanded'
+        loadPaths: _load ? [_load] : [],
+        style: prod ? 'compressed' : 'expanded',
+        // Runtime theme SCSS must remain compatible with scssphp 1.x in packaged CMS installs.
+        silenceDeprecations: ['import', 'slash-div', 'global-builtin', 'color-functions', 'if-function', 'abs-percent', 'function-units']
     };
 
-    var stream = gulp.src(_in, { sourcemaps: !prod })
-        .pipe(sass(options).on('error', function(err) {
+    var compiler = sass(options);
+    if (done) {
+        compiler.on('error', function(err) {
             sass.logError.call(this, err);
-            if (done) done(err);
-        }))
+            done(err);
+        });
+    }
+
+    var stream = gulp.src(_in, { sourcemaps: !prod })
+        .pipe(compiler)
         .on('end', function() {
             gutil.log(gutil.colors.green('√'), 'Saved ' + _in);
             if (done) done();
