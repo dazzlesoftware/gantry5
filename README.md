@@ -4,7 +4,7 @@ We've been heads-down on development since taking over stewardship, with lighter
 
 **Gantry 5.6.0** was released on **February 24, 2026** (just released!):
 - Full native compatibility with **Joomla 5** (dropped Joomla 4 support)
-- PHP restricted to **8.1.0 – 8.3.x** (PHP 8.4+ not supported yet)
+- PHP **8.3.0 or newer** is required
 - Platform-specific improvements and fixes across Joomla, WordPress, and Grav
 - Updated compatibility matrix and admin notices for smoother upgrades
 - Recent commits include Joomla 5 native changes, WordPress page assignment fixes, code cleanups, and version bumps
@@ -15,7 +15,7 @@ Check the full [CHANGELOG.md](https://github.com/gantry/gantry5/blob/develop/CHA
 Gantry is actively developed and maintained by the Dazzle Software team. It's **not** in maintenance-only mode or abandoned—we're committed long-term.
 
 **What's Ahead in 2026**
-- Gantry remains **free and open-source** forever (MIT/GPL).
+- Genesis remains **free and open-source** under GPL-3.0-or-later.
 - Focus areas: **Developer tools** + **AI-assisted features** (smarter particle/outline workflows, AI integration points).
 - Optional premium **add-on packages** to expand core capabilities without gating anything.
 - Actively working on a **theme migration addon** to help convert legacy Dazzle Software Gantry themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to current Gantry using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.  
@@ -132,75 +132,109 @@ Contributing to the Gantry 5 framework, or to its associated documentation is ea
 
 We recommend chatting with the team via [Gitter](https://gitter.im/gantry/gantry5) prior to submitting the pull request to avoid doubling up on a fix that is already pending or likely to be overwritten by an upcoming change.
 
-## Using git version of Gantry
+## Developing from Source on Windows
 
-To use git version of Gantry, you first need to install composer dependencies. To do this, run:
+The repository includes Windows batch scripts for installing dependencies, compiling assets, running the PHP compatibility suite, creating distributable packages, and resetting the development environment. Run them from a Command Prompt or PowerShell window opened at the repository root.
 
+### Requirements
+
+- PHP **8.3.0 or newer** available as `php` in `PATH`.
+- [Composer](https://getcomposer.org/) available as `composer` in `PATH`.
+- Node.js **20.19.0 or newer**, including `npm.cmd`, in `PATH`.
+- Windows PowerShell for the repository-wide Node cleanup script.
+
+The scripts use the repository-local Gulp installation, so installing Gulp globally is not required.
+
+### Recommended First-Time Build Order
+
+From the repository root, run:
+
+```bat
+composer-install-all.bat
+assets-install.bat
+assets-build.bat all
+php83-tests.bat
+package-build.bat dev
 ```
-bin/composer-install
+
+This order ensures that PHP and package-builder dependencies exist before testing or packaging, and that all JavaScript and SCSS assets have been compiled before packages are created.
+
+For a production package build, use `assets-build.bat all --prod` followed by `package-build.bat prod`.
+
+### Batch Script Reference
+
+| Script | Purpose | When to run it |
+|:--|:--|:--|
+| `composer-install-all.bat` | Verifies PHP 8.3+, creates missing platform `src` junctions, and runs `composer install` in the root, builder, platform, compatibility, and debug-bar projects. | First setup, after a `composer.lock` change, or after Composer cleanup. |
+| `assets-install.bat` | Verifies Node.js 20.19.0+ and runs `npm install` in the root and all asset subprojects. | First setup, after a `package.json` or lock-file change, or after Node cleanup. |
+| `assets-build.bat` | Runs the local Gulp compiler. It accepts `all`, `css`, or `js`, plus an optional `--prod`. | After asset installation and whenever JS or SCSS needs compiling. |
+| `assets-watch.bat` | Runs Gulp in watch mode for `all`, `css`, or `js`. Press `Ctrl+C` to stop it. | During active frontend development. |
+| `php83-tests.bat` | Verifies PHP 8.3+ and runs the PHPUnit compatibility suite with TestDox output. Extra PHPUnit arguments are forwarded. | After Composer installation and before packaging or committing PHP changes. |
+| `package-build.bat` | Runs the Phing package builder through `bin\build` and writes packages to `dist`. | After dependencies, assets, and tests are ready. |
+| `assets-reset.bat` | Runs targeted asset cleanup and then reinstalls the four known asset projects. | When the normal Node installation is stale or damaged. |
+| `assets-cleanup.bat` | Removes `node_modules` from the root and the three known asset subprojects. | Before a targeted clean reinstall. Usually use `assets-reset.bat` instead. |
+| `node-modules-cleanup-all.bat` | Recursively removes every outermost `node_modules` directory under the repository, including the root. | For a complete Node reset. Use `--dry-run` or `-n` to preview. |
+| `composer-cleanup-all.bat` | Removes all known Composer `vendor` directories without changing lock files. | For a complete PHP reset; follow it with `composer-install-all.bat`. |
+
+### Asset Commands
+
+```bat
+rem Compile all development assets
+assets-build.bat
+assets-build.bat all
+
+rem Compile only CSS or JavaScript
+assets-build.bat css
+assets-build.bat js
+
+rem Compile minified production assets without source maps
+assets-build.bat all --prod
+
+rem Watch all files, SCSS only, or JavaScript only
+assets-watch.bat
+assets-watch.bat css
+assets-watch.bat js
 ```
 
-After that, you need to properly symlink Gantry into your CMS installation.
+### Package Build Targets
 
-## Testing PHP 8.3 Compatibility
+`package-build.bat` defaults to `dev` and accepts these targets:
 
-The framework includes a PHPUnit test suite specifically for validating PHP 8.3 compatibility. To run these tests:
+| Target | Output |
+|:--|:--|
+| `dev` | Development packages for Joomla, WordPress, and Grav. |
+| `prod` | Production packages for Joomla, WordPress, and Grav. |
+| `joomla-dev` / `joomla-prod` | Joomla packages only. |
+| `wordpress-dev` / `wordpress-prod` | WordPress packages only. |
+| `grav-dev` / `grav-prod` | Grav packages only. |
 
-```bash
-# Install composer dependencies if not already done
-bin/composer-install
+Additional Phing properties can be passed after the target, for example:
 
-# Run the PHP 8.3 compatibility tests
-vendor/bin/phpunit
+```bat
+package-build.bat wordpress-prod -Dversion=6.0.0
 ```
 
-This will execute tests that verify key components work correctly with PHP 8.3 including:
-- Type system compatibility (nullable and union types)
-- Trait implementation compatibility
-- Core framework functionality
-- Platform-specific features
-- Twig integration
+Existing files in `dist` may be replaced during a package build.
 
-## Bundling JS and Compiling SCSS
+### Complete Clean Rebuild
 
-In our development environment, we use **Gulp** to bundle **JavaScript** and compile **SCSS** with the capability of `watch` so that any change on target files will automatically trigger the recompilation.
+Use this sequence when both PHP and Node dependencies need to be rebuilt from scratch:
 
-If you would like to set this up in your own development environment, you can do so following these simple instructions.
+```bat
+composer-cleanup-all.bat
+node-modules-cleanup-all.bat
+composer-install-all.bat
+assets-install.bat
+assets-build.bat all
+php83-tests.bat
+package-build.bat dev
+```
 
-> Note that for this to work, you need to have **Gantry 5** source and not a package. You can either **clone** it or **download** the source from GitHub.
-
-The first thing you need is `Node / NPM`. If you don’t have them already, you can grab the installer for your OS from [https://nodejs.org/download/](https://nodejs.org/download/).
-
-The next step is to install all of the JS module dependencies. To do so, make sure you are at the root of the Gantry 5 project, and run the command `npm install`.
-
-Once that’s done, you can install **Gulp**. We recommend installing Gulp globally so you can use the command from any folder. Here is the command to do so: `sudo npm install gulp --global`
-
-Gantry has different sets of JS and CSS files that can be recompiled from the root. The first time you get started with Gantry, or if you ever need to reset and reinstall all the modules, you can run the command `npm run build-assets`. This operation will remove all the `node_modules` folders and re-run `npm install` in all the project folders. It will take a while.
-
-An alternative method which won't remove all the `node_modules` folders is via `gulp -up`.
-
-> Along with the `-up` command, you can alternatively use `-update`, `--update`, `-up`, `--up`, `-install`,
-> `--install`, `-inst`, `--inst`, `-go`, `--go`, `-deps`, `--deps`.
-> Whichever is easier for you to remember. The code will understand on its own if it needs to install for the first time or just update the node modules.
->
-> Note that this might take a few moments.
-
-At this point you have everything you need to run Gulp. Just type the command `gulp` and you should see the CSS and JS getting compiled.
-
-We provide a few handy tasks as well:
-
-  1. `$ gulp` / `$ gulp all`: Compiles all of the CSS and JS in the project.
-  2. `$ gulp watch`: Starts the compilers in `watch` mode. Any change applied to targeted **JS** or **SCSS** files will trigger an automatic recompilation.
-  3. `$ gulp watch --css` / `$ gulp watch --js`: Starts the compilers in `watch` mode and listens to only **SCSS** or **JS** changes. Useful if you are only focusing on one and not the other.
-  4. `$ gulp css` / `$ gulp js`: Compiles all of either CSS or JS files, in case you are only working on one and not the other.
-  5. `$ gulp —prod`: Compiles every CSS and JS in production mode. The compiled files won’t have source maps and will be compressed (this usually takes slightly longer than normal mode).
-
+Cleanup scripts remove generated dependency directories only. They do not remove Composer or npm lock files.
 ## Updating Google Fonts
 
 The Google Fonts JSON file can be generated by following guide at `https://developers.google.com/fonts/docs/developer_api` or simply using the `https://www.googleapis.com/webfonts/v1/webfonts?key=YOUR-API-KEY` url. You need to enable usage of Google Fonts API and provide your API key in the place of `YOUR-API-KEY`.
 
 ## License
-Gantry Framework v5 or later is licensed under a dual license system ([MIT](http://www.opensource.org/licenses/mit-license.php) or [GPL version 2 or later](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html). This means you are free to choose which license (MIT or GPL version 2 or later) is appropriate for your needs.
 
-| [More Details](http://docs.gantry.org/gantry5/basics/license-and-usage) |
-|:-----------------------------------------------------------------------:|
+Genesis is licensed under the **GNU General Public License version 3 or later (GPL-3.0-or-later)**.
