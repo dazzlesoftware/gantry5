@@ -1,75 +1,83 @@
-"use strict";
-var ready         = require('elements/domready'),
-    $             = require('elements'),
+'use strict';
 
-    modal         = require('./modal'),
-    toastr        = require('./toastr'),
-    request       = require('../utils/request'),
+const modal = require('./modal');
+const toastr = require('./toastr');
+const request = require('../utils/request');
+const getAjaxSuffix = require('../utils/get-ajax-suffix');
+const parseAjaxURI = require('../utils/get-ajax-url').parse;
+const getAjaxURL = require('../utils/get-ajax-url').global;
+const { ready, delegate } = require('../utils/dom');
 
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global;
-
-var hiddens,
-    toggles = function(event, element) {
-        if (event.type.match(/^touch/) || event.type == 'click') { event.preventDefault(); }
-        if (event.type == 'click') { return false; }
-        element = $(element);
-        hiddens = element.find('~~ [type=hidden]');
-
-        if (!hiddens) return true;
-        hiddens.value(hiddens.value() == '0' ? '1' : '0');
-        element.parent('.enabler').attribute('aria-checked', hiddens.value() == '1' ? 'true' : 'false');
-
-        hiddens.emit('change');
-        $('body').emit('change', { target: hiddens });
-
-        return false;
-    };
-
-ready(function() {
-    var body = $('body');
-    body.delegate('keydown', '.enabler', function(event, element){
-        element = $(element);
-        if (element.disabled() || element.find('[disabled]')) {
-            return;
+const setIndicator = (element, active) => {
+    let icon = element.querySelector(':scope > i');
+    if (active) {
+        if (!icon) {
+            icon = document.createElement('i');
+            element.prepend(icon);
+            icon.dataset.gCreatedIndicator = 'true';
         }
+        if (!icon.dataset.gOriginalClass) icon.dataset.gOriginalClass = icon.className;
+        icon.className = 'fa fa-fw fa-spin-fast fa-spinner';
+        return;
+    }
+    if (!icon) return;
+    if (icon.dataset.gCreatedIndicator === 'true') icon.remove();
+    else icon.className = icon.dataset.gOriginalClass || '';
+};
 
-        var key = (event.which ? event.which : event.keyCode);
-        if (key == 32 || key == 13) { // ARIA support: Space / Enter toggle
-            event.preventDefault();
-            toggles(event, element.find('.toggle'));
-        }
+const toggle = (control) => {
+    const enabler = control.closest('.enabler');
+    if (!enabler || enabler.hasAttribute('disabled') || enabler.querySelector('[disabled]')) return;
+    const hidden = enabler.querySelector('input[type="hidden"]');
+    if (!hidden) return;
+
+    hidden.value = hidden.value === '0' ? '1' : '0';
+    enabler.setAttribute('aria-checked', hidden.value === '1' ? 'true' : 'false');
+    hidden.dispatchEvent(new Event('change', { bubbles: true }));
+};
+
+ready(() => {
+    delegate(document.body, 'keydown', '.enabler', (event, enabler) => {
+        if (event.key !== ' ' && event.key !== 'Enter') return;
+        event.preventDefault();
+        const control = enabler.querySelector('.toggle');
+        if (control) toggle(control);
     });
 
-    ['touchend', 'mouseup', 'click'].forEach(function(event) {
-        body.delegate(event, '.enabler .toggle', toggles);
+    // Toggle before surrounding popovers process their click event. The legacy
+    // implementation used mouseup/touchend for the same reason; pointerup
+    // provides one modern event for mouse, touch, and pen input.
+    delegate(document.body, 'pointerup', '.enabler .toggle', (event, control) => {
+        event.preventDefault();
+        toggle(control);
     });
 
-    var URI = parseAjaxURI(getAjaxURL('devprod') + getAjaxSuffix());
-    body.delegate('change', '[data-g-devprod] input[type="hidden"]', function(event, element) {
-        var value = element.value(),
-            parent = element.parent('[data-g-devprod]'),
-            labels = JSON.parse(parent.data('g-devprod'));
+    delegate(document.body, 'click', '.enabler .toggle', (event) => {
+        event.preventDefault();
+    });
 
-        parent.showIndicator();
+    const uri = parseAjaxURI(`${getAjaxURL('devprod')}${getAjaxSuffix()}`);
+    delegate(document.body, 'change', '[data-g-devprod] input[type="hidden"]', (event, input) => {
+        const parent = input.closest('[data-g-devprod]');
+        const labels = JSON.parse(parent.dataset.gDevprod || '{}');
+        setIndicator(parent, true);
 
-        request('post', URI, { mode: value }, function(error, response) {
-            if (!response.body.success) {
+        request('post', uri, { mode: input.value }, (error, response) => {
+            if (error || !response || !response.body.success) {
+                const body = response ? response.body : { message: error ? error.message : 'Request failed' };
                 modal.open({
-                    content: response.body.html || response.body.message || response.body,
-                    afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                    content: body.html || body.message || body,
+                    afterOpen(container) {
+                        if (!body.html && !body.message) container.style({ width: '90%' });
                     }
                 });
-
-                element.value(!value);
+                input.value = input.value === '1' ? '0' : '1';
             } else {
-                parent.find('.devprod-mode').text(labels[response.body.mode] || 'Unknown');
+                const label = parent.querySelector('.devprod-mode');
+                if (label) label.textContent = labels[response.body.mode] || 'Unknown';
                 toastr.success(response.body.html, response.body.title);
             }
-
-            parent.hideIndicator();
+            setIndicator(parent, false);
         });
     });
 });

@@ -1,171 +1,85 @@
-"use strict";
-var ready  = require('elements/domready'),
-    trim   = require('mout/string/trim'),
-    forOwn = require('mout/object/forOwn'),
-    $      = require('elements'),
-    Cookie = require('../utils/cookie');
+'use strict';
 
+const Cookie = require('../utils/cookie');
+const { ready, delegate } = require('../utils/dom');
 
-var loadFromStorage = function() {
-    var storage    = Cookie.read('g5-collapsed') || {},
-        collapsers = $('[data-g-collapse]');
-    if (!collapsers) { return false; }
+const config = (element) => JSON.parse(element.getAttribute('data-g-collapse') || '{}');
+const panelFor = (element, data) => data.target ? element.querySelector(data.target) : element;
+const cardFor = (panel) => panel.closest('.card') || panel;
+const handleFor = (element, data) => data.handle ? element.querySelector(data.handle) : element.querySelector('.g-collapse');
 
-    var item, data, handle, panel, card;
-    forOwn(storage, function(value, key) {
-        item = $('[data-g-collapse-id="' + key + '"]');
-        if (!item) { return; }
+const setTooltip = (handle, text) => {
+    if (!handle) return;
+    handle.dataset.title = text || '';
+    handle.dataset.tip = text || '';
+};
 
-        data = JSON.parse(item.data('g-collapse'));
-        handle = data.handle ? item.find(data.handle) : item.find('.g-collapse');
-        panel = data.target ? item.find(data.target) : item;
-        card = item.parent('.card') || panel;
-        handle
-            .data('title', value ? data.expand : data.collapse)
-            .data('tip', value ? data.expand : data.collapse);
+const applyState = (element, data, collapsed) => {
+    const panel = panelFor(element, data);
+    const card = cardFor(panel);
+    panel.removeAttribute('style');
+    card.classList.toggle('g-collapsed', collapsed);
+    panel.classList.toggle('g-collapsed', collapsed);
+    element.classList.toggle('g-collapsed-main', collapsed);
+    data.collapsed = collapsed;
+    element.setAttribute('data-g-collapse', JSON.stringify(data));
+    setTooltip(handleFor(element, data), collapsed ? data.expand : data.collapse);
+};
 
-        panel.attribute('style', null);
-        card[!value ? 'removeClass' : 'addClass']('g-collapsed');
-        item[!value ? 'removeClass' : 'addClass']('g-collapsed-main');
+const loadFromStorage = () => {
+    const storage = Cookie.read('g5-collapsed') || {};
+    Object.entries(storage).forEach(([id, collapsed]) => {
+        const element = document.querySelector(`[data-g-collapse-id="${CSS.escape(id)}"]`);
+        if (element) applyState(element, config(element), Boolean(collapsed));
     });
 };
 
-ready(function() {
-    var body = $('body'), data, target, storage;
+ready(() => {
+    delegate(document.body, 'click', '[data-g-collapse]', (event, element) => {
+        const data = config(element);
+        const handle = handleFor(element, data);
+        if (handle && !event.target.closest(data.handle || '.g-collapse')) return;
+        event.preventDefault();
 
-    // single collapser
-    body.delegate('click', '[data-g-collapse]', function(event, element) {
-        element = event.element || element;
-
-        data = JSON.parse(element.data('g-collapse'));
-        target = $(event.target);
-        storage = ((data.store !== false) ? Cookie.read('g5-collapsed') : storage) || {};
-        if (!data.handle) { data.handle = element.find('.g-collapse'); }
-
-        if (!target.matches(data.handle) && !target.parent(data.handle)) { return false; }
-
-        if (storage[data.id] === undefined) {
-            storage[data.id] = data.collapsed;
-
-            if (data.store !== false) { Cookie.write('g5-collapsed', storage); }
+        const storage = data.store === false ? {} : (Cookie.read('g5-collapsed') || {});
+        const collapsed = storage[data.id] === undefined ? Boolean(data.collapsed) : Boolean(storage[data.id]);
+        const next = !collapsed;
+        applyState(element, data, next);
+        if (data.store !== false) {
+            storage[data.id] = next;
+            Cookie.write('g5-collapsed', storage);
         }
-
-        var collapsed = storage[data.id],
-            panel     = data.target ? element.find(data.target) : element,
-            card      = panel.parent('.card') || panel;
-
-        if (card && card.hasClass('g-collapsed')) {
-            card.removeClass('g-collapsed');
-            element.removeClass('g-collapsed-main');
-            /* for animations
-             panel.style({
-             overflow: 'hidden',
-             height: 0
-             });*/
-        }
-
-        var slide = function(override) {
-            collapsed = typeof override !== 'number' ? override : collapsed;
-            if (!collapsed) {
-                card.addClass('g-collapsed');
-                element.addClass('g-collapsed-main');
-                element.attribute('style', null);
-            }
-
-            data.handle
-                .data('title', !collapsed ? data.expand : data.collapse)
-                .data('tip', !collapsed ? data.expand : data.collapse);
-            storage[data.id] = !collapsed;
-            data.collapsed = !collapsed;
-
-            var refreshData = JSON.parse(element.data('g-collapse'));
-            refreshData.collapsed = !collapsed;
-            element.data('g-collapse', JSON.stringify(refreshData));
-
-            if (data.store !== false) {
-                Cookie.write('g5-collapsed', storage);
-            }
-        };
-
-        if (element.gFastCollapse) {
-            panel[collapsed ? 'removeClass' : 'addClass']('g-collapsed');
-            element[collapsed ? 'removeClass' : 'addClass']('g-collapsed-main');
-            slide(collapsed);
-        } else {
-            element.removeClass('g-collapsed-main');
-            // for animations
-            // panel.removeClass('g-collapsed')[collapsed ? 'slideDown' : 'slideUp'](slide);
-            panel.removeClass('g-collapsed')[collapsed ? 'removeClass' : 'addClass']('g-collapsed');
-            slide(collapsed);
-        }
-
-        element.gFastCollapse = false;
     });
 
-    // global collapse togglers
-    body.delegate('click', '[data-g-collapse-all]', function(event, element) {
-        var mode          = element.data('g-collapse-all') === 'true',
-            parent        = element.parent('.g-filter-actions'),
-            container     = parent.nextSibling(),
-            collapsers    = container.search('[data-g-collapse]'),
-            CookieStorage = Cookie.read('g5-collapsed') || {},
-            panel, data, handle, card, inner;
+    delegate(document.body, 'click', '[data-g-collapse-all]', (event, toggle) => {
+        event.preventDefault();
+        const collapsed = toggle.dataset.gCollapseAll === 'true';
+        const actions = toggle.closest('.g-filter-actions');
+        const container = actions && actions.nextElementSibling;
+        if (!container) return;
+        const storage = Cookie.read('g5-collapsed') || {};
 
-        if (!collapsers) { return; }
+        container.querySelectorAll('[data-g-collapse]').forEach((element) => {
+            const data = config(element);
+            applyState(element, data, collapsed);
+            if (data.store !== false) storage[data.id] = collapsed;
+        });
+        Cookie.write('g5-collapsed', storage);
+    });
 
-        collapsers.forEach(function(collapser) {
-            collapser = $(collapser);
-            card = collapser.parent('.card');
-            inner = card.find('> .g-collapsed');
-            data = JSON.parse(collapser.data('g-collapse'));
-            handle = data.handle ? collapser.find(data.handle) : collapser.find('.g-collapse');
-            panel = data.target ? collapser.find(data.target) : collapser;
+    delegate(document.body, 'input', '[data-g-collapse-filter]', (event, input) => {
+        const filter = JSON.parse(input.dataset.gCollapseFilter || '{}');
+        const actions = input.closest('.g-filter-actions');
+        const container = actions && actions.nextElementSibling;
+        if (!container) return;
+        const value = input.value.trim().toLowerCase();
 
-            handle
-                .data('title', mode ? data.expand : data.collapse)
-                .data('tip', mode ? data.expand : data.collapse);
-
-            storage = ((data.store !== false) ? CookieStorage : storage) || {};
-
-            storage[data.id] = mode;
-            if (data.store !== false) {
-                Cookie.write('g5-collapsed', storage);
-            }
-
-            panel.attribute('style', null);
-            collapser[!mode ? 'removeClass' : 'addClass']('g-collapsed-main');
-            card[!mode ? 'removeClass' : 'addClass']('g-collapsed');
-
-            if (inner) {
-                inner[!mode ? 'removeClass' : 'addClass']('g-collapsed');
-            }
+        container.querySelectorAll(filter.element || '.card').forEach((card) => {
+            const title = card.querySelector(filter.title || 'h4 .g-title');
+            const text = title ? title.textContent.trim().toLowerCase() : '';
+            card.style.display = !value || text.startsWith(value) || text.includes(` ${value}`) ? '' : 'none';
         });
     });
-
-    // filter by card title
-    body.delegate('input', '[data-g-collapse-filter]', function(event, element) {
-        var filter    = JSON.parse(element.data('g-collapse-filter') || '{}'),
-            parent    = element.parent('.g-filter-actions'),
-            container = parent.nextSibling(),
-            cards     = container.search(filter.element || '.card'),
-            value     = element.value();
-
-        if (!cards) { return; }
-
-        if (!value) { cards.attribute('style', null); }
-        cards.forEach(function(element, index) {
-            element = $(element);
-            var title   = trim(element.find(filter.title || 'h4 .g-title').text()),
-                matches = title.match(new RegExp("^" + value + '|\\s' + value, 'gi'));
-
-            if (matches) { element.attribute('style', null); }
-            else { element.style('display', 'none'); }
-        });
-    });
-
-    // this is now handled from the twig files
-    // no need to run on domready
-    //loadFromStorage();
 });
 
 module.exports = loadFromStorage;
