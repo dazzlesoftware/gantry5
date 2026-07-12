@@ -114,6 +114,10 @@
         <echo message="Making directory structure..." />
 
         <mkdir dir="${tmp_dir}" />
+        <mkdir dir="${tmp_dir}/packages" />
+        <mkdir dir="${tmp_dir}/templates" />
+        <mkdir dir="${tmp_dir}/themes" />
+        <mkdir dir="${tmp_dir}/wordpress" />
         <mkdir dir="${build_dir}" />
         <mkdir dir="${build_dir}/distribution" />
         <mkdir dir="${build_dir}/distribution/packages" />

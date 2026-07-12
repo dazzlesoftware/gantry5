@@ -5,10 +5,11 @@
         "ext-xml": "*",
         "ext-simplexml": "*",
         "ext-mbstring": "*",
-        "phing/phing": "^3.0.0",
+        "phing/phing": "3.1.2",
         "guzzlehttp/guzzle": "^7.7"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "classmap": ["classes/"]
     },

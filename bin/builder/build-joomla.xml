@@ -28,6 +28,11 @@
     <target name="build-joomla-component" depends="build-joomla-installer">
         <echo message="Building Component..." />
 
+        <!-- Phing's copy task does not reliably create a missing multi-level
+             destination path on Windows. Create the parents explicitly. -->
+        <mkdir dir="${tmp_dir}/packages/com_gantry5/site" />
+        <mkdir dir="${tmp_dir}/packages/com_gantry5/admin" />
+
         <copy todir="${tmp_dir}/packages/com_gantry5/site" overwrite="true">
             <fileset dir="${path.platforms}/joomla/com_gantry5/site"/>
         </copy>
