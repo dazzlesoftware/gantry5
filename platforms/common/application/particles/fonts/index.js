@@ -37,10 +37,9 @@ var prime         = require('prime'),
     translate     = require('../../utils/translate'),
 
     request       = require('../../utils/request'),
+    inViewport    = require('../../utils/elements.viewport'),
 
     wf            = require('webfontloader');
-
-require('../../utils/elements.viewport');
 
 var isIE = function() {
     var ua = window.navigator.userAgent;
@@ -123,7 +122,8 @@ var Fonts = new prime({
             }
 
             // 550 = container height, 5 = pages
-            var elements = (container.find('ul.g-fonts-list') || container).inviewport(' > li:not(.g-font-hide)', (550 * (isIE() ? 2 : 7))),
+            var viewport = container.find('ul.g-fonts-list') || container,
+                elements = inViewport(viewport, '> li:not(.g-font-hide)', (550 * (isIE() ? 2 : 7))),
                 list     = [];
 
             if (!elements) { return; }

@@ -1,58 +1,58 @@
-"use strict";
-var prime     = require('prime'),
-    $         = require('../utils/elements.utils'),
-    Emitter   = require('prime/emitter'),
-    Bound     = require('prime-util/prime/bound'),
-    Options   = require('prime-util/prime/options');
+'use strict';
 
+const $ = require('../utils/elements.utils');
 
-var Eraser = new prime({
-    mixin: [Options, Bound],
-
-    inherits: Emitter,
-
-    constructor: function(element, options){
-        this.setOptions(options);
-
+class Eraser {
+    constructor(element, options = {}) {
+        this.options = { ...options };
         this.element = $(element);
+        if (this.element) this.hide(true);
+    }
 
-        if (!this.element) { return; }
+    setTop() {
+        if (this.top !== undefined || !this.element) return;
+        this.top = Number.parseInt(this.element.compute('top'), 10);
+        const container = document.querySelector('#g5-container');
+        this.left = container ? container.getBoundingClientRect().left : 0;
+        if (window.GANTRY_PLATFORM === 'grav') this.left = 0;
+    }
 
-        this.hide(true);
-    },
-
-    setTop: function() {
-        if (typeof this.top !== 'undefined') { return; }
-        this.top = parseInt(this.element.compute('top'), 10);
-        this.left = $('#g5-container')[0].getBoundingClientRect().left;
-        if (GANTRY_PLATFORM == 'grav') {
-            this.left = 0;
-        }
-    },
-
-    show: function(fast){
-        if (!this.element) { return; }
+    show(fast) {
+        if (!this.element) return;
         this.setTop();
         this.out();
-        this.element[fast ? 'style' : 'animate']({top: this.top, left: this.left}, {duration: '150ms'});
-    },
+        this.element[fast ? 'style' : 'animate'](
+            { top: this.top, left: this.left },
+            { duration: '150ms' }
+        );
+    }
 
-    hide: function(fast){
-        if (!this.element) { return; }
+    hide(fast) {
+        if (!this.element) return;
         this.setTop();
         this.element.style('display', 'block');
-        var top = {top: -(this.element[0].offsetHeight)};
         this.out();
-        this.element[fast ? 'style' : 'animate'](top, {duration: '150ms'});
-    },
-
-    over: function(){
-        this.element.find('.trash-zone').animate({transform: 'scale(1.2)'}, {duration: '150ms', equation: 'cubic-bezier(0.5,0,0.5,1)'});
-    },
-
-    out: function(){
-        this.element.find('.trash-zone').animate({transform: 'scale(1)'}, {duration: '150ms', equation: 'cubic-bezier(0.5,0,0.5,1)'});
+        this.element[fast ? 'style' : 'animate'](
+            { top: -this.element[0].offsetHeight },
+            { duration: '150ms' }
+        );
     }
-});
+
+    over() {
+        const zone = this.element && this.element.find('.trash-zone');
+        if (zone) zone.animate(
+            { transform: 'scale(1.2)' },
+            { duration: '150ms', equation: 'cubic-bezier(0.5,0,0.5,1)' }
+        );
+    }
+
+    out() {
+        const zone = this.element && this.element.find('.trash-zone');
+        if (zone) zone.animate(
+            { transform: 'scale(1)' },
+            { duration: '150ms', equation: 'cubic-bezier(0.5,0,0.5,1)' }
+        );
+    }
+}
 
 module.exports = Eraser;
