@@ -1,28 +1,26 @@
 'use strict';
 
-var keys     = require('mout/object/keys'),
-    contains = require('mout/array/contains'),
-    rand     = require('mout/random/randInt');
-
-var ID = function(options) {
-    var map     = options.builder ? keys(options.builder.map) : {},
-        type    = options.type,
-        subtype = options.subtype,
-
-        result  = [], key, id;
-
-    if (type != 'particle') result.push(type);
-    if (subtype)  result.push(subtype);
-
-    key = result.join('-');
-
-    while (id = rand(1000, 9999)) {
-        if (!contains(map, key + '-' + id)) {
-            break;
-        }
+const randomId = () => {
+    if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+        const value = new Uint32Array(1);
+        window.crypto.getRandomValues(value);
+        return 1000 + (value[0] % 9000);
     }
-
-    return key + '-' + id;
+    return Math.floor(Math.random() * 9000) + 1000;
 };
 
-module.exports = ID;
+module.exports = (options) => {
+    const existing = new Set(options.builder ? Object.keys(options.builder.map || {}) : []);
+    const parts = [];
+
+    if (options.type !== 'particle') parts.push(options.type);
+    if (options.subtype) parts.push(options.subtype);
+
+    const key = parts.join('-');
+    let id;
+    do {
+        id = randomId();
+    } while (existing.has(`${key}-${id}`));
+
+    return `${key}-${id}`;
+};

@@ -1,22 +1,23 @@
-var $ = require('elements');
+'use strict';
 
-module.exports = function(field) {
-    if (!field) { return false; }
+module.exports = (field) => {
+    const input = field && field[0] ? field[0] : field;
+    if (!(input instanceof Element)) return false;
+    if (!document.body.classList.contains('wp-customizer') &&
+        !document.body.classList.contains('widgets-php')) return false;
 
-    if (($('body').hasClass('wp-customizer') || $('body').hasClass('widgets-php')) && jQuery) {
-        var widgetContainer = field.parent('.widget-content'),
-            title = field.siblings('.g-instancepicker-title');
+    // A native bubbling event reaches WordPress's delegated widget listeners,
+    // including listeners registered through jQuery, without depending on it.
+    input.dispatchEvent(new Event('change', { bubbles: true }));
 
-        if (widgetContainer) {
-            var jQueryEvent = jQuery.Event('change');
-            jQueryEvent.target = field[0];
-            jQuery(widgetContainer[0]).trigger(jQueryEvent);
-        }
-
-        if (title) {
-            setTimeout(function(){
-                title.hideIndicator();
-            }, 5);
-        }
+    const parent = input.parentElement;
+    const title = parent ? parent.querySelector('.g-instancepicker-title') : null;
+    if (title) {
+        setTimeout(() => {
+            const indicator = title.querySelector('.fa-spinner');
+            if (indicator) indicator.remove();
+        }, 5);
     }
+
+    return true;
 };
