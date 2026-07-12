@@ -7,7 +7,7 @@
     <authorEmail>support@dazzlesoftware.org</authorEmail>
     <authorUrl>https://dazzlesoftware.org</authorUrl>
     <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
-    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2</license>
+    <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
     <description>TPL_G5_EPSILON_DESC</description>
 
     <scriptfile>install.php</scriptfile>

@@ -1,7 +1,7 @@
 {
     "name": "gantry/grav-compat",
     "description": "Gantry Framework Library (compat)",
-    "license": "GPLv2",
+    "license": "GPL-3.0-or-later",
 
     "require": {
         "php": ">=8.3.0",

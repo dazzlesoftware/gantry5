@@ -56,7 +56,7 @@ form:
     license:
       type: input.text
       label: License
-      default: 'MIT / GPLv2'
+      default: 'GNU/GPLv3 and later'
 
     description:
       type: input.text

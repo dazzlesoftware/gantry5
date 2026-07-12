@@ -19,7 +19,7 @@ details:
     server: 'https://updates.gantry.org/5.0/joomla/tpl_g5_hydrogen.xml'
 
   copyright: Copyright (C) 2026 Dazzle Software, LLC
-  license: GPLv2
+  license: GPLv3 and later
   description: Hydrogen Theme
   images:
     thumbnail: admin/images/preset1.png

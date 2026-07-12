@@ -110,7 +110,7 @@ class Debugger
             self::$renderer = self::$debugbar->getJavascriptRenderer();
             self::$renderer->setIncludeVendors(false);
 
-            self::$renderer->setBaseUrl(Uri::root(true) . '/plugins/system/gantry5_debugbar/vendor/maximebf/debugbar/src/DebugBar/Resources');
+            self::$renderer->setBaseUrl(Uri::root(true) . '/plugins/system/gantry5_debugbar/vendor/php-debugbar/php-debugbar/resources');
             list($css_files, $js_files) = self::$renderer->getAssets(null, JavascriptRenderer::RELATIVE_URL);
 
             /** @var Document $document */
@@ -409,4 +409,3 @@ class Debugger
         return $trace['function'] . '(' . implode(', ', $trace['args']) . ')';
     }
 }
-

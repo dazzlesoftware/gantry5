@@ -231,9 +231,10 @@
     </target>
 
     <target name="checksum">
-        <manifest file="${source}/MD5SUMS" checksum="md5">
-            <fileset dir="${source}" />
-        </manifest>
+        <exec executable="php" checkreturn="true">
+            <arg value="${phing.dir}/generate-checksums.php" />
+            <arg value="${source}" />
+        </exec>
     </target>
 
 

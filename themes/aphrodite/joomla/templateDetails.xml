@@ -7,7 +7,7 @@
     <authorEmail>support@dazzlesoftware.org</authorEmail>
     <authorUrl>https://www.dazzlesoftware.org</authorUrl>
     <copyright>Copyright (C) 2026 Dazzle Software, LLC. All rights reserved.</copyright>
-    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2</license>
+    <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
     <description>Aphrodite Bootstrap 5 theme for Gantry 5.</description>
     <scriptfile>install.php</scriptfile>
     <files>

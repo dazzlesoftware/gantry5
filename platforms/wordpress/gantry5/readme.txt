@@ -6,8 +6,8 @@ Requires at least: 5.2
 Tested up to: 7.0
 Requires PHP: 8.1.0
 Stable tag: @version@
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Gantry is a comprehensive set of building blocks to enable the rapid development and realization of a design into a flexible and powerful web platform
 

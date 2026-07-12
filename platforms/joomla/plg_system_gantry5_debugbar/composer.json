@@ -1,13 +1,13 @@
 {
     "name": "gantry/joomla-debugbar",
     "description": "Gantry 5 DebugBar for Joomla",
-    "license": "GPLv2",
+    "license": "GPL-3.0-or-later",
 
     "require": {
         "php": ">=8.3.0",
-        "maximebf/debugbar": "~1.10",
+        "php-debugbar/php-debugbar": "^3.8",
         "symfony/polyfill-iconv": "~1.0",
-        "symfony/var-dumper": "~3.4"
+        "symfony/var-dumper": "^7.3"
     },
     "config": {
         "platform": {

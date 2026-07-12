@@ -2,6 +2,8 @@
 
 const gulp = require('gulp');
 const fs = require('fs');
+const log = require('fancy-log');
+const colors = require('ansi-colors');
 
 let paths;
 const convertBytes = function(bytes) {
@@ -46,7 +48,6 @@ if (process.argv.slice(2).join(',').match(/(-{1,2}update|-{1,2}up|-{1,2}install|
 }
 
 var argv            = require('yargs').argv,
-    gutil           = require('gulp-util'),
     gulpif          = require('gulp-if'),
     uglify          = require('gulp-uglify'),
     rename          = require('gulp-rename'),
@@ -133,7 +134,7 @@ var compileCSS = function(app, done) {
         _out  = app.out.split(/[\\/]/).pop(),
         _maps = '../' + app.in.substring(0, app.in.lastIndexOf('/')).split(/[\\/]/).pop();
 
-    gutil.log(gutil.colors.blue('*'), 'Compiling', _in);
+    log(colors.blue('*'), 'Compiling', _in);
 
     var options = {
         loadPaths: _load ? [_load] : [],
@@ -153,7 +154,7 @@ var compileCSS = function(app, done) {
     var stream = gulp.src(_in, { sourcemaps: !prod })
         .pipe(compiler)
         .on('end', function() {
-            gutil.log(gutil.colors.green('√'), 'Saved ' + _in);
+            log(colors.green('√'), 'Saved ' + _in);
             if (done) done();
         })
         .pipe(gulpif(!prod, sourcemaps.write('.', { sourceRoot: _maps, sourceMappingURL: function() { return _out + '.map'; }})))
@@ -171,7 +172,7 @@ var compileJS = function(app, watching) {
         _maps = './' + app.in.substring(0, app.in.lastIndexOf('/')).split(/[\\/]/).pop();
 
     if (!watching) {
-        gutil.log(gutil.colors.blue('*'), 'Compiling', _in);
+        log(colors.blue('*'), 'Compiling', _in);
     }
 
     var bundle = browserify({
@@ -196,10 +197,10 @@ var compileJS = function(app, watching) {
         bundle.on('log', function(msg) {
             var bytes = msg.match(/^(\d{1,})\s/)[1];
             msg = msg.replace(/^\d{1,}\sbytes/, convertBytes(bytes));
-            gutil.log(gutil.colors.green('√'), 'Done, ', msg, '...');
+            log(colors.green('√'), 'Done, ', msg, '...');
         });
         bundle.on('update', function(files) {
-            gutil.log(gutil.colors.red('>'), 'Change detected in', files.join(', '), '...');
+            log(colors.red('>'), 'Change detected in', files.join(', '), '...');
             return bundleShare(bundle, _in, _out, _maps, _dest);
         });
     }
@@ -210,10 +211,10 @@ var compileJS = function(app, watching) {
 var bundleShare = function(bundle, _in, _out, _maps, _dest) {
     return bundle.bundle()
         .on('error', function(error) {
-            gutil.log('Browserify', '' + error);
+            log('Browserify', '' + error);
         })
         .on('end', function() {
-            gutil.log(gutil.colors.green('√'), 'Saved ' + _in);
+            log(colors.green('√'), 'Saved ' + _in);
         })
         .pipe(source(_out))
         .pipe(buffer())
@@ -232,13 +233,13 @@ var minifyJS = function() {
             _dest = app.out.substring(0, app.out.lastIndexOf('/')),
             _ext  = _file.split('.').pop();
 
-        gutil.log(gutil.colors.blue('*'), 'Minifying', app.in);
+        log(colors.blue('*'), 'Minifying', app.in);
 
         streams.push(gulp.src(app.in)
             .on('end', function() {
-                gutil.log(gutil.colors.green('√'), 'Saved ' + app.in);
+                log(colors.green('√'), 'Saved ' + app.in);
             })
-            .on('error', gutil.log)
+            .on('error', log)
             .pipe(gulpif(_ext == 'json', jsonminify(), uglify()))
             .pipe(gulp.dest(_dest)));
     });
@@ -332,29 +333,29 @@ exports.watch = gulp.series(watchify, function(done) {
         
         // Create a watch function for this app
         function watchAndCompile(cb) {
-            gutil.log(gutil.colors.blue('*'), 'Compiling CSS for', app.out);
+            log(colors.blue('*'), 'Compiling CSS for', app.out);
             return compileCSS(app, cb);
         }
         
         // Initial message
-        gutil.log(gutil.colors.blue('*'), 'Watching', watchPaths.join(', '));
+        log(colors.blue('*'), 'Watching', watchPaths.join(', '));
         
         // Create watch tasks for each path
         const watcher = gulp.watch(watchPaths);
         
         // Add event handlers
         watcher.on('change', function(path) {
-            gutil.log(gutil.colors.red('>'), 'File', path, 'was changed');
+            log(colors.red('>'), 'File', path, 'was changed');
             watchAndCompile();
         });
         
         watcher.on('add', function(path) {
-            gutil.log(gutil.colors.green('+'), 'File', path, 'was added');
+            log(colors.green('+'), 'File', path, 'was added');
             watchAndCompile();
         });
         
         watcher.on('unlink', function(path) {
-            gutil.log(gutil.colors.yellow('-'), 'File', path, 'was removed');
+            log(colors.yellow('-'), 'File', path, 'was removed');
             watchAndCompile();
         });
         
@@ -363,7 +364,7 @@ exports.watch = gulp.series(watchify, function(done) {
     
     // Compile all CSS files initially
     css(function() {
-        gutil.log(gutil.colors.green('√'), 'Initial CSS compilation complete');
+        log(colors.green('√'), 'Initial CSS compilation complete');
     });
     
     // This is an ongoing task that doesn't complete

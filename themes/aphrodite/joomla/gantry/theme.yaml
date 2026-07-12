@@ -15,7 +15,7 @@ details:
     link: 'https://gitter.im/gantry/gantry5'
 
   copyright: 'Copyright (C) 2026 Dazzle Software, LLC. All rights reserved.'
-  license: GPLv2
+  license: GPLv3 and later
   description: 'Aphrodite Bootstrap 5 Theme for Gantry 5'
   images:
     thumbnail: 'admin/images/preset1.png'
