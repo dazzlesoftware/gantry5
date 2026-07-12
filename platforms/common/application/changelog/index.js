@@ -1,74 +1,58 @@
-"use strict";
-var $             = require('elements'),
-    zen           = require('elements/zen'),
-    ready         = require('elements/domready'),
-    ui            = require('../ui'),
-    interpolate   = require('mout/string/interpolate'),
-    modal         = ui.modal,
-    trim          = require('mout/string/trim'),
+'use strict';
 
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
-    getAjaxSuffix = require('../utils/get-ajax-suffix');
+const modal = require('../ui').modal;
+const parseAjaxURI = require('../utils/get-ajax-url').parse;
+const getAjaxURL = require('../utils/get-ajax-url').global;
+const getAjaxSuffix = require('../utils/get-ajax-suffix');
+const { ready, delegate } = require('../utils/dom');
 
-ready(function() {
-    // Changelog links
-    $('body').delegate('click', '[data-changelog]', function(event, element) {
+const setCollapsed = (section, collapsed) => {
+    const icon = section.querySelector('.g-changelog-toggle');
+    const details = section.nextElementSibling;
+    if (icon) {
+        icon.classList.toggle('fa-chevron-down', collapsed);
+        icon.classList.toggle('fa-chevron-up', !collapsed);
+    }
+    if (details) {
+        details.hidden = collapsed;
+        details.style.overflow = collapsed ? 'hidden' : '';
+        details.style.height = collapsed ? '0' : '';
+    }
+};
+
+ready(() => {
+    delegate(document.body, 'click', '[data-changelog]', (event, link) => {
         event.preventDefault();
 
         modal.open({
             content: 'Loading',
             method: 'post',
             className: 'g5-dialog-theme-default g5-modal-changelog',
-            data: { version: element.data('changelog') },
-            remote: parseAjaxURI(getAjaxURL('changelog') + getAjaxSuffix()),
-            remoteLoaded: function(response, content) {
-                if (!response.body.success) { return; }
+            data: { version: link.dataset.changelog },
+            remote: parseAjaxURI(`${getAjaxURL('changelog')}${getAjaxSuffix()}`),
+            remoteLoaded(response, content) {
+                if (!response.body.success) return;
 
-                var wrapper  = content.elements.content,
-                    sections = wrapper.search('#g-changelog > ol > li > a');
+                const wrapper = content.elements.content[0] || content.elements.content;
+                wrapper.querySelectorAll('#g-changelog > ol > li > a').forEach((section) => {
+                    if (!section.textContent.trim()) return;
 
-                sections.forEach(function(section, i) {
-                    section = $(section);
-                    var href      = section.href(),
-                        re        = new RegExp('#(common|' + GANTRY_PLATFORM + ')$', "gi"),
-                        collapsed = !href.match(re),
-                        status    = 'chevron-' + (!collapsed ? 'up' : 'down');
+                    const current = new RegExp(`#(common|${window.GANTRY_PLATFORM})$`, 'i').test(section.href);
+                    const icon = document.createElement('i');
+                    icon.className = `fa g-changelog-toggle fa-fw fa-chevron-${current ? 'up' : 'down'}`;
+                    icon.setAttribute('aria-hidden', 'true');
+                    section.append(icon);
+                    setCollapsed(section, !current);
 
-                    if (!trim(section.text())) {
-                        // no platforms
-                        return;
-                    }
-
-                    // if it's not common but the current platform, move it after common
-                    if (i && !collapsed) {
-                        section.parent('li').after(section.parent('ol').find('> li'));
-                    }
-
-                    zen('i[class="fa g-changelog-toggle fa-fw fa-' + status + '"][aria-hidden="true"]').bottom(section);
-
-                    if (collapsed) {
-                        section.nextSibling().style({
-                            overflow: 'hidden',
-                            height: 0
-                        });
-                    }
-
-                    section.on('click', function(e) {
-                        e.preventDefault();
-                        var icon      = section.find('i[class*="fa-chevron-"]'),
-                            collapsed = icon.hasClass('fa-chevron-down');
-
-                        if (collapsed) {
-                            icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-                            section.nextSibling().slideDown();
-                        } else {
-                            icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
-                            section.nextSibling().slideUp();
-                        }
+                    section.addEventListener('click', (clickEvent) => {
+                        clickEvent.preventDefault();
+                        const details = section.nextElementSibling;
+                        if (details) setCollapsed(section, !details.hidden);
                     });
                 });
             }
         });
     });
 });
+
+module.exports = {};
