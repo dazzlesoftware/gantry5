@@ -1,42 +1,38 @@
-"use strict";
-var $        = require('elements/attributes'),
-    ready    = require('elements/domready'),
-    remove   = require('mout/array/remove'),
-    insert   = require('mout/array/insert'),
-    contains = require('mout/array/contains');
+'use strict';
 
+const { ready, delegate } = require('../utils/dom');
 
-ready(function() {
-    var body = $('body');
+const parseValues = (value) => new Set(String(value || '').split(',').filter(Boolean));
+const serializeValues = (values) => [...values].join(',');
+const escapeSelector = (value) => window.CSS && CSS.escape
+    ? CSS.escape(value)
+    : String(value).replace(/["\\]/g, '\\$&');
 
-    body.delegate('change', '.input-multicheckbox .input-group input[name][type="hidden"]', function(event, element) {
-        var name = element.attribute('name'),
-            values = element.value().split(','),
-            fields = $('[data-multicheckbox-field="' + name +'"]');
+ready(() => {
+    delegate(document.body, 'change', '.input-multicheckbox .input-group input[name][type="hidden"]', (event, input) => {
+        const values = parseValues(input.value);
+        const name = escapeSelector(input.name);
 
-        if (fields) {
-            fields.forEach(function(field) {
-                field = $(field);
-                if (field.checked()) { insert(values, field.value()); }
-                if (!field.checked()) { remove(values, field.value()); }
-            });
-        }
+        document.querySelectorAll(`[data-multicheckbox-field="${name}"]`).forEach((field) => {
+            if (field.checked) values.add(field.value);
+            else values.delete(field.value);
+        });
 
-        element.value(values.filter(String).join(','));
+        input.value = serializeValues(values);
     });
 
-    body.delegate('change', '.input-multicheckbox .input-group input[data-multicheckbox-field][type="checkbox"]', function(event, element) {
-        var field     = $('[name="' + element.data('multicheckbox-field') + '"]'),
-            value     = element.value(),
-            values    = field.value().split(','),
-            isChecked = element.checked();
+    delegate(document.body, 'change', '.input-multicheckbox .input-group input[data-multicheckbox-field][type="checkbox"]', (event, checkbox) => {
+        const fieldName = checkbox.dataset.multicheckboxField;
+        const hidden = document.querySelector(`[name="${escapeSelector(fieldName)}"]`);
+        if (!hidden) return;
 
-        if (isChecked) { insert(values, value); }
-        if (!isChecked) { remove(values, value); }
+        const values = parseValues(hidden.value);
+        if (checkbox.checked) values.add(checkbox.value);
+        else values.delete(checkbox.value);
 
-        field.value(values.filter(String).join(','));
-
-        body.emit('change', {target: field});
+        hidden.value = serializeValues(values);
+        hidden.dispatchEvent(new Event('change', { bubbles: true }));
     });
 });
 
+module.exports = {};

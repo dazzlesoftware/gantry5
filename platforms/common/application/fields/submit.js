@@ -1,78 +1,69 @@
 'use strict';
 
-var $             = require('elements'),
-    isArray       = require('mout/lang/isArray'),
-    contains      = require('mout/array/contains'),
-    trim          = require('mout/string/trim'),
-    validateField = require('../utils/field-validation');
+const validateField = require('../utils/field-validation');
 
-var submit = function(elements, container, options) {
-    var valid   = [],
-        invalid = [];
+const unwrap = (value) => value && value[0] instanceof Element ? value[0] : value;
+const asArray = (value) => {
+    if (!value) return [];
+    if (value instanceof Element) return [value];
+    return Array.from(value).map(unwrap).filter(Boolean);
+};
+const escapeSelector = (value) => window.CSS && CSS.escape
+    ? CSS.escape(value)
+    : String(value).replace(/["\\]/g, '\\$&');
+const query = (container, selector) => {
+    try { return container.querySelector(selector); }
+    catch (error) { return null; }
+};
 
-    elements = $(elements);
-    container = $(container);
-    options = options || {};
+module.exports = (elements, container, options = {}) => {
+    const valid = [];
+    const invalid = [];
+    const root = unwrap(container);
+    if (!root) return { valid, invalid };
 
-    $(elements).forEach(function(input) {
-        input = $(input);
-        var name = input.attribute('name'),
-            type = input.attribute('type');
-        if (!name || input.disabled() || (type == 'radio' && !input.checked())) { return; }
+    asArray(elements).forEach((original) => {
+        const name = original.name;
+        const type = original.type;
+        if (!name || original.disabled || (type === 'radio' && !original.checked)) return;
 
-        input = container.find('[name="' + name + '"]' + (type == 'radio' ? ':checked' : ''));
+        const escapedName = escapeSelector(name);
+        let input = query(root, `[name="${escapedName}"]${type === 'radio' ? ':checked' : ''}`);
 
-        // workaround for checkboxes trick that has both a hidden and checkbox field
-        if (type === 'checkbox' && container.find('[type="hidden"][name="' + name + '"]')) {
-            input = container.find('[name="' + name + '"][type="checkbox"]');
+        // Gantry checkbox fields contain both a hidden fallback and checkbox.
+        if (type === 'checkbox' && query(root, `input[type="hidden"][name="${escapedName}"]`)) {
+            input = query(root, `[name="${escapedName}"][type="checkbox"]`);
+        }
+        if (!input) return;
+
+        let value = input.type === 'checkbox' ? Number(input.checked) : input.value;
+        const parent = input.closest('.settings-param');
+        let override = parent ? query(parent, ':scope > input[type="checkbox"]') : null;
+        if (!override && input.dataset.overrideTarget) {
+            override = query(document, input.dataset.overrideTarget);
         }
 
-        if (input) {
-            var value    = input.type() == 'checkbox' ? Number(input.checked()) : input.value(),
-                parent   = input.parent('.settings-param'),
-                override = parent ? parent.find('> input[type="checkbox"]') : null;
+        if (input.multiple && (input.type === 'select-one' || input.type === 'select-multiple')) {
+            value = [...input.selectedOptions].map((option) => option.value);
+        }
+        if (override && !override.checked) return;
 
-            override = override || $(input.data('override-target'));
+        // Empty layout block sizes are allowed and still included in submission.
+        const skipValidation = name.includes('block-size') && value === '';
+        if (!skipValidation && !validateField(input)) invalid.push(input);
 
-            if (contains(['select', 'select-multiple'], input.type()) && input.attribute('multiple')) {
-                value = (input.search('option[selected]') || []).map(function(selection) {
-                    return $(selection).value();
-                });
-            }
-
-            if (override && !override.checked()) { return; }
-            
-            // Fix for large collections (issue #3243): ensure Block Size field is properly handled
-            // Skip validation for empty block size field but still include it in the form submission
-            var skipValidation = name && name.indexOf('block-size') !== -1 && (!value || value === '');
-            if (!skipValidation && !validateField(input)) { 
-                invalid.push(input); 
-            }
-
-            if (isArray(value)) {
-                value.forEach(function(selection) {
-                    valid.push(name + '[]=' + encodeURIComponent(selection));
-                });
-            } else {
-                if (!options.submitUnchecked || (input.type() != 'checkbox' || (input.type() == 'checkbox' && !!value))) {
-                    valid.push(name + '=' + encodeURIComponent(value));
-                }
-            }
+        if (Array.isArray(value)) {
+            value.forEach((selection) => valid.push(`${name}[]=${encodeURIComponent(selection)}`));
+        } else if (!options.submitUnchecked || input.type !== 'checkbox' || Boolean(value)) {
+            valid.push(`${name}=${encodeURIComponent(value)}`);
         }
     });
 
-    var titles = container.search('h4 [data-title-editable]'), key;
-    if (titles) {
-        titles.forEach(function(title) {
-            title = $(title);
-            if (title.parent('[data-collection-template]')) { return; }
+    root.querySelectorAll('h4 [data-title-editable]').forEach((title) => {
+        if (title.closest('[data-collection-template]')) return;
+        const key = title.dataset.collectionKey || (options.isRoot ? 'settings[title]' : 'title');
+        valid.push(`${key}=${encodeURIComponent(String(title.dataset.titleEditable || '').trim())}`);
+    });
 
-            key = title.data('collection-key') || (options.isRoot ? 'settings[title]' : 'title');
-            valid.push(key + '=' + encodeURIComponent(trim(title.data('title-editable'))));
-        });
-    }
-
-    return { valid: valid, invalid: invalid };
+    return { valid, invalid };
 };
-
-module.exports = submit;
