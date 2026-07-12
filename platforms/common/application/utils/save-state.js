@@ -1,49 +1,24 @@
-var prime      = require('prime'),
-    deepClone  = require('mout/lang/deepClone');
+'use strict';
 
-//var objectDiff = require('objectdiff');
+const clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
 
-var SaveState = new prime({
-
-    constructor: function(session) {
-        session = deepClone(session);
-        this.setSession(session);
-    },
-
-    setSession: function(session) {
-        session = !session ? {}
-            : {
-            time: +(new Date()),
-            data: deepClone(session)
-        };
-
-        this.session = session;
-        return this.session;
-    },
-
-    getTime: function() {
-        return this.session.time;
-    },
-
-    getData: function() {
-        return this.session.data;
-    },
-
-    getSession: function() {
-        return this.session;
-    },
-
-    getDiff: function(data) {
-        // Unsupported at this state
-        return data;
-        /*
-        var diff = objectDiff.diff(this.getData(), data);
-        return {
-            diff: diff,
-            xml: objectDiff.convertToXMLString(diff)
-        };
-        */
+class SaveState {
+    constructor(session) {
+        this.setSession(clone(session));
     }
-});
+
+    setSession(session) {
+        this.session = session ? { time: Date.now(), data: clone(session) } : {};
+        return this.session;
+    }
+
+    getTime() { return this.session.time; }
+    getData() { return this.session.data; }
+    getSession() { return this.session; }
+
+    getDiff(data) {
+        return data;
+    }
+}
 
 module.exports = SaveState;

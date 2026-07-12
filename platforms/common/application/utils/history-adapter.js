@@ -1,63 +1,41 @@
-"use strict";
+'use strict';
 
-var $        = require('elements'),
-    domready = require('elements/domready');
+const resolveElement = (element) => typeof element === 'string'
+    ? document.querySelector(element)
+    : element;
 
-// Localise Globals
-var History = {};
+const History = {
+    Adapter: {
+        bind(element, event, callback) {
+            const target = resolveElement(element);
+            if (target) target.addEventListener(event, callback);
+        },
 
-// Check Existence
-if (typeof History.Adapter !== 'undefined') {
-    throw new Error('History.js Adapter has already been loaded...');
-}
+        trigger(element, event, extra) {
+            const target = resolveElement(element);
+            if (!target) return;
+            target.dispatchEvent(new CustomEvent(event, {
+                bubbles: false,
+                cancelable: true,
+                detail: extra
+            }));
+        },
 
-// Add the Adapter
-History.Adapter = {
-    /**
-     * History.Adapter.bind(el,event,callback)
-     * @param {Element|string} el
-     * @param {string} event - custom and standard events
-     * @param {function} callback
-     * @return {void}
-     */
-    bind: function(el, event, callback) {
-        $(el).on(event, callback);
-    },
+        extractEventData(key, event, extra) {
+            if (extra && Object.prototype.hasOwnProperty.call(extra, key)) return extra[key];
+            if (event && event.detail && Object.prototype.hasOwnProperty.call(event.detail, key)) return event.detail[key];
+            if (event && Object.prototype.hasOwnProperty.call(event, key)) return event[key];
+            return undefined;
+        },
 
-    /**
-     * History.Adapter.trigger(el,event)
-     * @param {Element|string} el
-     * @param {string} event - custom and standard events
-     * @param {Object=} extra - a object of extra event data (optional)
-     * @return void
-     */
-    trigger: function(el, event, extra) {
-        $(el).emit(event, extra);
-    },
-
-    /**
-     * History.Adapter.extractEventData(key,event,extra)
-     * @param {string} key - key for the event data to extract
-     * @param {string} event - custom and standard events
-     */
-    extractEventData: function(key, event) {
-        // MooTools Native then MooTools Custom
-        return (event && event.event && event.event[key]) || (event && event[key]) || undefined;
-    },
-
-    /**
-     * History.Adapter.onDomLoad(callback)
-     * @param {function} callback
-     * @return {void}
-     */
-    onDomLoad: function(callback) {
-        domready(callback);
+        onDomLoad(callback) {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', callback, { once: true });
+            } else {
+                callback();
+            }
+        }
     }
 };
-
-// Try and Initialise History
-if (typeof History.init !== 'undefined') {
-    History.init();
-}
 
 module.exports = History;

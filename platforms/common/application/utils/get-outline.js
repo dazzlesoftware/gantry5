@@ -1,14 +1,20 @@
-"use strict";
-var $    = require('elements'),
-    trim = require('mout/string/trim');
+'use strict';
 
-var getOutlineNameById = function(outline) {
-    if (outline == null) { return ''; }
-    return trim($('#configuration-selector').selectizeInstance.Options[outline].text);
+const selectize = () => {
+    const selector = document.querySelector('#configuration-selector');
+    return selector ? selector.selectizeInstance : null;
 };
 
-var getCurrentOutline = function() {
-    return trim($('#configuration-selector').selectizeInstance.getValue());
+const getOutlineNameById = (outline) => {
+    if (outline == null) return '';
+    const instance = selectize();
+    const option = instance && instance.Options ? instance.Options[outline] : null;
+    return option && option.text ? String(option.text).trim() : '';
 };
 
-module.exports = { getOutlineNameById: getOutlineNameById, getCurrentOutline: getCurrentOutline };
+const getCurrentOutline = () => {
+    const instance = selectize();
+    return instance ? String(instance.getValue()).trim() : '';
+};
+
+module.exports = { getOutlineNameById, getCurrentOutline };

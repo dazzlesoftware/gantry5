@@ -1,25 +1,21 @@
-"use strict";
+'use strict';
 
-var zen = require('elements/zen');
+let cached = null;
 
-var cached            = null,
-    getScrollbarWidth = function() {
-        if (cached !== null) { return cached; }
+module.exports = () => {
+    if (cached !== null) return cached;
 
-        var size, dummy = zen('div').bottom('#g5-container');
-        dummy.style({
-            width: 100,
-            height: 100,
-            overflow: 'scroll',
-            position: 'absolute',
-            zIndex: -9999
-        });
-
-        size = dummy[0].offsetWidth - dummy[0].clientWidth;
-        dummy.remove();
-
-        cached = size;
-        return size;
-    };
-
-module.exports = getScrollbarWidth;
+    const container = document.querySelector('#g5-container') || document.body;
+    const dummy = document.createElement('div');
+    Object.assign(dummy.style, {
+        width: '100px',
+        height: '100px',
+        overflow: 'scroll',
+        position: 'absolute',
+        zIndex: '-9999'
+    });
+    container.appendChild(dummy);
+    cached = dummy.offsetWidth - dummy.clientWidth;
+    dummy.remove();
+    return cached;
+};

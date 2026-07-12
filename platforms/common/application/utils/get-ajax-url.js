@@ -1,55 +1,39 @@
-"use strict";
-var unescapeHtml  = require('mout/string/unescapeHtml'),
-    getAjaxSuffix = require('./get-ajax-suffix'),
-    endsWith      = require('mout/string/endsWith'),
-    getQuery      = require('mout/queryString/getQuery'),
-    getParam      = require('mout/queryString/getParam'),
-    setParam      = require('mout/queryString/setParam');
+'use strict';
 
-var getAjaxURL = function(view, search) {
-    var GANTRY_AJAX_URL = window.GANTRY_AJAX_URL || '';
-    if (!search) { search = '%ajax%'; }
-    var re  = new RegExp(search, 'g'),
-        url = typeof GANTRY_AJAX_URL == 'undefined' ? '' : GANTRY_AJAX_URL;
+const getAjaxSuffix = require('./get-ajax-suffix');
 
-    return unescapeHtml(url.replace(re, view));
+const decodeHtml = (value) => {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = value;
+    return textarea.value;
 };
 
-var getConfAjaxURL = function(view, search) {
-    var GANTRY_AJAX_CONF_URL = window.GANTRY_AJAX_CONF_URL || '';
-    if (!search) { search = '%ajax%'; }
-    var re  = new RegExp(search, 'g'),
-        url = typeof GANTRY_AJAX_CONF_URL == 'undefined' ? '' : GANTRY_AJAX_CONF_URL;
+const replaceView = (template, view, search = '%ajax%') =>
+    decodeHtml(String(template || '').split(search).join(view));
 
-    return unescapeHtml(url.replace(re, view));
-};
+const getAjaxURL = (view, search) => replaceView(window.GANTRY_AJAX_URL, view, search);
+const getConfAjaxURL = (view, search) => replaceView(window.GANTRY_AJAX_CONF_URL, view, search);
 
-var parseAjaxURI = function(uri) {
-    var GANTRY_PLATFORM = window.GANTRY_PLATFORM || '',
-        platform        = typeof GANTRY_PLATFORM == 'undefined' ? '' : GANTRY_PLATFORM;
+const parseAjaxURI = (uri) => {
+    let result = String(uri || '');
 
-    switch (platform) {
-        case 'wordpress':
-            uri = uri.replace(/themes\.php/ig, 'admin-ajax.php');
-            break;
-        case 'grav':
-            // converts foo/bar?nonce=1234.json to foo/bar.json?nonce=1234
-            var suffix = getAjaxSuffix();
-            if (endsWith(uri, suffix)) {
-                var query  = '' + getQuery(uri),
-                    nonce  = '' + getParam(uri, 'nonce');
-
-                uri = uri.replace(query, suffix) + query.replace(nonce, (nonce.replace(suffix, '')));
-            }
-            break;
-        default:
+    if (window.GANTRY_PLATFORM === 'wordpress') {
+        return result.replace(/themes\.php/ig, 'admin-ajax.php');
     }
 
-    return uri;
+    if (window.GANTRY_PLATFORM === 'grav') {
+        const suffix = getAjaxSuffix();
+        const queryIndex = result.indexOf('?');
+        if (suffix && queryIndex !== -1 && result.endsWith(suffix)) {
+            const path = result.slice(0, queryIndex);
+            const params = new URLSearchParams(result.slice(queryIndex + 1));
+            const nonce = params.get('nonce');
+            if (nonce && nonce.endsWith(suffix)) params.set('nonce', nonce.slice(0, -suffix.length));
+            result = `${path}${suffix}?${params.toString()}`;
+        }
+    }
+
+    return result;
 };
 
-module.exports = {
-    global: getAjaxURL,
-    config: getConfAjaxURL,
-    parse: parseAjaxURI
-};
+module.exports = { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };
