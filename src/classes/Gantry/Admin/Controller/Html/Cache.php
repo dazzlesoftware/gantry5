@@ -12,7 +12,7 @@ namespace Gantry\Admin\Controller\Html;
 use Gantry\Component\Admin\HtmlController;
 use Gantry\Component\Response\JsonResponse;
 use Gantry\Component\Filesystem\Folder;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Cache

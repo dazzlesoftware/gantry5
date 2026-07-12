@@ -18,7 +18,7 @@ use Gantry\Framework\Gantry;
 use Joomla\CMS\Version;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class ConfigServiceProvider

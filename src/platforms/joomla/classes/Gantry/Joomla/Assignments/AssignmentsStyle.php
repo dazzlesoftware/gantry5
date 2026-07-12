@@ -14,7 +14,7 @@ use Gantry\Debugger;
 use Gantry\Framework\Gantry;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class AssignmentsStyle

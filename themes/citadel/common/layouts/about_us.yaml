@@ -731,31 +731,31 @@ content:
         -
           icon: ''
           text: 'About Us'
-          link: 'https://www.rockettheme.com/wordpress/themes/citadel'
+          link: 'https://dazzlesoftware.org/wordpress/themes/citadel'
           target: _blank
           name: 'About Us'
         -
           icon: ''
           text: 'Contact Us'
-          link: 'https://www.rockettheme.com/contact-us'
+          link: 'https://dazzlesoftware.org/contact-us'
           target: _blank
           name: 'Contact Us'
         -
           icon: ''
           text: Guides
-          link: 'https://www.rockettheme.com/docs/wordpress/themes/citadel'
+          link: 'https://dazzlesoftware.org/docs/wordpress/themes/citadel'
           target: _blank
           name: Guides
         -
           icon: ''
           text: Support
-          link: 'https://www.rockettheme.com/forum/wordpress-theme-citadel'
+          link: 'https://dazzlesoftware.org/forum/wordpress-theme-citadel'
           target: _blank
           name: Support
         -
           icon: ''
           text: Facebook
-          link: 'https://www.facebook.com/RocketTheme'
+          link: 'https://www.facebook.com/Dazzle Software'
           target: _blank
           name: Facebook
         -

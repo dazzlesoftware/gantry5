@@ -618,7 +618,7 @@ content:
           name: 'Item 3'
         -
           title: '<span>Comprehensive catalog of online guides<span class="visible-desktop"> for our themes &amp; extensions</span></span>'
-          desc: '<span>RocketTheme provides free online documentation for our products<span class="visible-large">, including Gantry, our templates and extensions</span>.</span>'
+          desc: '<span>Dazzle Software provides free online documentation for our products<span class="visible-large">, including Gantry, our templates and extensions</span>.</span>'
           name: 'Item 4'
         -
           title: '<span>Choose the Right Font in Seconds<span class="visible-desktop">  with Gantry’s Font Picker</span></span>'

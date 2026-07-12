@@ -333,7 +333,7 @@ children:
                 title: 'About Kraken'
                 attributes:
                   enabled: 1
-                  html: "<h3 class=\"g-title\">About Kraken</h3>\nKraken is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template, addons and sources."
+                  html: "<h3 class=\"g-title\">About Kraken</h3>\nKraken is available for purchase or part of a club membership from Dazzle Software, inclusive of the RocketLauncher, template, addons and sources."
                 children: {  }
           -
             id: 08a90009-cf65-4500-beeb-33e5165afba0

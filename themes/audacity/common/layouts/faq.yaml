@@ -247,7 +247,7 @@ content:
     attributes:
       title: 'FAQ Didn''t Solve Your Problem?'
       titletag: ''
-      html: "<p>Get Direct Access to the Team Via Phone, Email or Live Chat.</p>\n\n<p><a href=\"https://rockettheme.com/forum/grav-theme-audacity\" class=\"readon largemargintop\">Contact Us</a></p>"
+      html: "<p>Get Direct Access to the Team Via Phone, Email or Live Chat.</p>\n\n<p><a href=\"https://dazzlesoftware.org/forum/grav-theme-audacity\" class=\"readon largemargintop\">Contact Us</a></p>"
       twig: '0'
       filter: '0'
     block:

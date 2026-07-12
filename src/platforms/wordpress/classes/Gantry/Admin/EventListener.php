@@ -14,8 +14,8 @@ use Gantry\Admin\Events\MenuEvent;
 use Gantry\Component\Config\Config;
 use Gantry\Component\Menu\Item;
 use Gantry\Framework\Menu;
-use RocketTheme\Toolbox\Event\Event;
-use RocketTheme\Toolbox\Event\EventSubscriberInterface;
+use Dazzle Software\Toolbox\Event\Event;
+use Dazzle Software\Toolbox\Event\EventSubscriberInterface;
 
 /**
  * Class EventListener

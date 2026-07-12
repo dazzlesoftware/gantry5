@@ -640,7 +640,7 @@ content:
     attributes:
       title: 'Demo Info'
       titletag: ''
-      html: "<p>All demo content is for sample purpose only. All content images are freely available from <a href=\"http://unsplash.com\">Unsplash</a>.</p>\n\n<p>Please use the Chimera <a href=\"https://rockettheme.com/joomla/templates/chimera\">RocketLauncher</a> to install a demo equivalent onto your site.</p>"
+      html: "<p>All demo content is for sample purpose only. All content images are freely available from <a href=\"http://unsplash.com\">Unsplash</a>.</p>\n\n<p>Please use the Chimera <a href=\"https://dazzlesoftware.org/joomla/templates/chimera\">RocketLauncher</a> to install a demo equivalent onto your site.</p>"
     block:
       extra:
         -
@@ -661,7 +661,7 @@ content:
     attributes:
       title: 'About Us'
       titletag: ''
-      html: "<p>\n\t<span><a href=\"#\">Team</a></span><br />\n\t<span><a href=\"#\">Services</a></span><br />\n\t<span><a href=\"#\">Pricing Table</a></span><br />\n\t<span><a href=\"#\">Portfolio</a></span><br />\n\t<span><a href=\"#\">Blog</a></span><br />\n\t<span><a href=\"#\">FAQ</a></span><br />\n\t<span><a href=\"https://rockettheme.com/docs/joomla/templates/chimera\">Tutorial</a></span>\n</p>"
+      html: "<p>\n\t<span><a href=\"#\">Team</a></span><br />\n\t<span><a href=\"#\">Services</a></span><br />\n\t<span><a href=\"#\">Pricing Table</a></span><br />\n\t<span><a href=\"#\">Portfolio</a></span><br />\n\t<span><a href=\"#\">Blog</a></span><br />\n\t<span><a href=\"#\">FAQ</a></span><br />\n\t<span><a href=\"https://dazzlesoftware.org/docs/joomla/templates/chimera\">Tutorial</a></span>\n</p>"
     block:
       class: hidden-phone
       extra:

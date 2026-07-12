@@ -273,7 +273,7 @@ content:
           items:
             -
               icon: ''
-              link: 'https://www.facebook.com/RocketTheme/'
+              link: 'https://www.facebook.com/Dazzle Software/'
               target: _blank
               title: Facebook
             -
@@ -283,12 +283,12 @@ content:
               title: Twitter
             -
               icon: ''
-              link: 'https://www.youtube.com/user/OfficialRocketTheme'
+              link: 'https://www.youtube.com/user/OfficialDazzle Software'
               target: _blank
               title: YouTube
             -
               icon: ''
-              link: 'https://rockettheme.com/'
+              link: 'https://dazzlesoftware.org/'
               target: _blank
               title: Google+
           title: Connect

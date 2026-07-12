@@ -371,7 +371,7 @@ content:
       title: 'Why Requiem?'
       desc: 'Here''s why Requiem is the best template for your site!'
       readmore: 'Download Now'
-      readmorelink: 'https://www.rockettheme.com/joomla/templates/requiem'
+      readmorelink: 'https://dazzlesoftware.org/joomla/templates/requiem'
       readmoreclass: button-3
       cols: g-gridcontent-6cols
       gridcontentitems:
@@ -438,7 +438,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/joomla/templates/requiem'
+          link: 'https://dazzlesoftware.org/joomla/templates/requiem'
           icon: ''
           readmoreclass: ''
           title: 'About Requiem'
@@ -451,7 +451,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/joomla/templates/requiem'
+          link: 'https://dazzlesoftware.org/joomla/templates/requiem'
           icon: ''
           readmoreclass: ''
           title: 'Style Guide'
@@ -490,7 +490,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/contact-us'
+          link: 'https://dazzlesoftware.org/contact-us'
           icon: ''
           readmoreclass: ''
           title: Questions
@@ -503,7 +503,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/forum/joomla-template-requiem'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-requiem'
           icon: ''
           readmoreclass: ''
           title: 'Help & Support'

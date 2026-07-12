@@ -377,16 +377,16 @@ content:
         -
           icon: 'fa fa-google fa-fw'
           text: ''
-          link: 'https://rockettheme.com'
+          link: 'https://dazzlesoftware.org'
           name: Google
         -
           icon: 'fa fa-rss fa-fw'
           text: ''
-          link: 'https://www.rockettheme.com/product-updates?rss'
+          link: 'https://dazzlesoftware.org/product-updates?rss'
           name: RSS
   mobile-menu-1318:
     title: 'Mobile Menu'
   custom-3998:
     title: Offcanvas
     attributes:
-      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Salient</h2>\n\n<p>Salient is an excellent design with a fresh approach for the ever-changing Web. Integrated with Gantry 5, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://www.rockettheme.com/joomla/templates/salient\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Salient</h2>\n\n<p>Salient is an excellent design with a fresh approach for the ever-changing Web. Integrated with Gantry 5, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/salient\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"

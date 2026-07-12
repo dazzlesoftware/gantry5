@@ -165,7 +165,7 @@ content:
       columns: '1'
       subcontents:
         -
-          headline: 'A New News Template from RocketTheme'
+          headline: 'A New News Template from Dazzle Software'
           description: 'Notio is a beautifully-designed magazine and news template built on the powerful Gantry 5 framework. Feature packed and ready to deploy!'
           img: 'gantry-media://home/sidebar-top/img-01.jpg'
           signature: 'gantry-media://home/sidebar-top/signature-01.png'
@@ -1127,7 +1127,7 @@ content:
         -
           image: 'gantry-media://home/showcase/img-01.jpg'
           author: 'Super User'
-          content: 'Notio from RocketTheme brings a modern, content-focused design and advanced CMS integration to Gantry 5.'
+          content: 'Notio from Dazzle Software brings a modern, content-focused design and advanced CMS integration to Gantry 5.'
           link: ''
           linklabel: ''
           title: 'Notio is Perfect for News and Magazine-style Websites'

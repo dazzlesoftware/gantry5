@@ -169,7 +169,7 @@ content:
           linktext1: 'Read More'
           buttontarget1: _self
           buttonclass1: readon
-          link2: 'https://rockettheme.com/joomla/templates/anacron'
+          link2: 'https://dazzlesoftware.org/joomla/templates/anacron'
           linktext2: Download
           buttontarget2: _self
           buttonclass2: readon2
@@ -182,7 +182,7 @@ content:
           linktext1: 'Read More'
           buttontarget1: _self
           buttonclass1: readon
-          link2: 'https://rockettheme.com/joomla/templates/anacron'
+          link2: 'https://dazzlesoftware.org/joomla/templates/anacron'
           linktext2: Download
           buttontarget2: _self
           buttonclass2: readon2
@@ -195,7 +195,7 @@ content:
           linktext1: 'Read More'
           buttontarget1: _self
           buttonclass1: readon
-          link2: 'https://rockettheme.com/joomla/templates/anacron'
+          link2: 'https://dazzlesoftware.org/joomla/templates/anacron'
           linktext2: Download
           buttontarget2: _self
           buttonclass2: readon2
@@ -307,7 +307,7 @@ content:
     title: 'Custom HTML'
     attributes:
       title: ''
-      html: "<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n      <h2><span class=\"title-icon fa fa-th\"></span><span>Responsive</span></h2>\n      <p>A responsive layout adapts to the viewing device, whether mobile, tablet or a small or larger desktop, to ensure your site is accessible on all devices.</p>\n    </div>\n</div>\n<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n    <h2><span class=\"title-icon fa fa-signal\"></span><span>Site Performance</span></h2>\n      <p>RocketTheme creates sleek, dynamic themes that take full advantage of the latest Web technologies to deliver your content quickly and efficiently.</p>\n    </div>\n</div>\n\n<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n    <h2><span class=\"title-icon fa fa-thumbs-up\"></span><span>Great Support</span></h2> \n    <p>Receive exclusive access to the Anacron communty forum board for additional assistance, alongside the free and online documentation.</p>\n  </div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n      <h2><span class=\"title-icon fa fa-th\"></span><span>Responsive</span></h2>\n      <p>A responsive layout adapts to the viewing device, whether mobile, tablet or a small or larger desktop, to ensure your site is accessible on all devices.</p>\n    </div>\n</div>\n<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n    <h2><span class=\"title-icon fa fa-signal\"></span><span>Site Performance</span></h2>\n      <p>Dazzle Software creates sleek, dynamic themes that take full advantage of the latest Web technologies to deliver your content quickly and efficiently.</p>\n    </div>\n</div>\n\n<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n    <h2><span class=\"title-icon fa fa-thumbs-up\"></span><span>Great Support</span></h2> \n    <p>Receive exclusive access to the Anacron communty forum board for additional assistance, alongside the free and online documentation.</p>\n  </div>\n</div>\n\n<div class=\"clear\"></div>"
     block:
       class: 'nomargintop nopaddingtop'
   pricingtable-7110:
@@ -494,7 +494,7 @@ content:
   custom-5902:
     title: 'Custom HTML'
     attributes:
-      html: "<h2 class=\"title\">Versatile, Flexible Features Powered by the Gantry Framework.</h2>\n\n<p>Gantry is a free framework for both Joomla, WordPress, and Grav.</p>\n<a href=\"https://rockettheme.com/joomla/templates/anacron\" class=\"readon2 rt-big-button\">Join Anacron Now</a>"
+      html: "<h2 class=\"title\">Versatile, Flexible Features Powered by the Gantry Framework.</h2>\n\n<p>Gantry is a free framework for both Joomla, WordPress, and Grav.</p>\n<a href=\"https://dazzlesoftware.org/joomla/templates/anacron\" class=\"readon2 rt-big-button\">Join Anacron Now</a>"
     block:
       class: fp-bottom
       variations: center

@@ -213,7 +213,7 @@ content:
           image: 'gantry-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">Join the Adventure</span><span class="rt-title-tag">Buy Lexicon for You and Your Clients</span>'
           linklabel: 'Purchase Now'
-          link: 'https://rockettheme.com/joomla/templates/lexicon'
+          link: 'https://dazzlesoftware.org/joomla/templates/lexicon'
           buttontarget: _blank
           buttonclass: readon
           title: Contemporary
@@ -240,7 +240,7 @@ content:
           image: 'gantry-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">Mobile Responsive</span><span class="rt-title-tag">Adapts to your Viewing Device</span>'
           linklabel: 'View Details'
-          link: 'https://rockettheme.com/joomla/templates/lexicon'
+          link: 'https://dazzlesoftware.org/joomla/templates/lexicon'
           buttontarget: _blank
           buttonclass: readon
           title: Responsive
@@ -516,7 +516,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<p class=\"rt-text-medium\"><em>Lexicon is centered around a flat design approach, spruced by professional and engaging color schemes to create presence for site content without distracting from it. <span class=\"hidden-tablet\">Ideal for showcasing product details in a vibrant but elegant fashion.</span></em></p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-10 hidden-tablet\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img class=\"rt-rounded\" src=\"gantry-media://home/fp-content-bottom/img-01.jpg\" alt=\"image\" />\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<h4 class=\"smallmarginbottom\">Responsive Layout</h4>\n\t\t\t<p><em>Automatic adaptation<span class=\"hidden-tablet\">  to varying devices</span></em></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer gantry-right\">\n\t\t\t<p class=\"medmargintop\"><a class=\"readon\" href=\"https://rockettheme.com/joomla/templates/lexicon\">Download<span class=\"hidden-tablet\"> Lexicon</span></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<p class=\"rt-text-medium\"><em>Lexicon is centered around a flat design approach, spruced by professional and engaging color schemes to create presence for site content without distracting from it. <span class=\"hidden-tablet\">Ideal for showcasing product details in a vibrant but elegant fashion.</span></em></p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-10 hidden-tablet\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img class=\"rt-rounded\" src=\"gantry-media://home/fp-content-bottom/img-01.jpg\" alt=\"image\" />\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<h4 class=\"smallmarginbottom\">Responsive Layout</h4>\n\t\t\t<p><em>Automatic adaptation<span class=\"hidden-tablet\">  to varying devices</span></em></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer gantry-right\">\n\t\t\t<p class=\"medmargintop\"><a class=\"readon\" href=\"https://dazzlesoftware.org/joomla/templates/lexicon\">Download<span class=\"hidden-tablet\"> Lexicon</span></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
     block:
@@ -581,7 +581,7 @@ content:
     attributes:
       title: 'Demo Info'
       titletag: ''
-      html: "<p><em>All demo content is for sample purpose only. All content images are freely available from <a href=\"http://unsplash.com/\">Unsplash</a>.</em></p>\n<p><span class=\"hidden-tablet\"> Use the <a href=\"https://rockettheme.com/joomla/templates/lexicon\">RocketLauncher</a> to install a demo equivalent onto your site.</span></p>"
+      html: "<p><em>All demo content is for sample purpose only. All content images are freely available from <a href=\"http://unsplash.com/\">Unsplash</a>.</em></p>\n<p><span class=\"hidden-tablet\"> Use the <a href=\"https://dazzlesoftware.org/joomla/templates/lexicon\">RocketLauncher</a> to install a demo equivalent onto your site.</span></p>"
       twig: '0'
       filter: '0'
   custom-7304:
@@ -589,7 +589,7 @@ content:
     attributes:
       title: 'Support and Help'
       titletag: ''
-      html: "<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/forum/joomla-template-lexicon\">Post in Forum Community</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/docs/joomla/templates/lexicon\">Read Full Documentation</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/forum/joomla-template-lexicon\">Send Support Email</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://rockettheme.com/docs/joomla/templates/lexicon\">Create Premier Ticket</a></p>"
+      html: "<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/forum/joomla-template-lexicon\">Post in Forum Community</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/docs/joomla/templates/lexicon\">Read Full Documentation</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/forum/joomla-template-lexicon\">Send Support Email</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/docs/joomla/templates/lexicon\">Create Premier Ticket</a></p>"
       twig: '0'
       filter: '0'
     block:
@@ -599,7 +599,7 @@ content:
     attributes:
       title: 'Stay in Touch'
       titletag: ''
-      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://www.facebook.com/RocketTheme\"><span class=\"fa fa-facebook\"></span> <span>Facebook</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://twitter.com/rockettheme\"><span class=\"fa fa-twitter\"></span> <span>Twitter</span></a>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear medmarginbottom\"></div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.linkedin.com/in/rockettheme\"><span class=\"fa fa-linkedin\"></span> <span>LinkedIn</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.pinterest.com/rockettheme/\"><span class=\"fa fa-pinterest\"></span> <span>Pinterest</span></a>\n\t\t</div>\n\t</div>\n</div>"
+      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://www.facebook.com/Dazzle Software\"><span class=\"fa fa-facebook\"></span> <span>Facebook</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://twitter.com/rockettheme\"><span class=\"fa fa-twitter\"></span> <span>Twitter</span></a>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear medmarginbottom\"></div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.linkedin.com/in/rockettheme\"><span class=\"fa fa-linkedin\"></span> <span>LinkedIn</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.pinterest.com/rockettheme/\"><span class=\"fa fa-pinterest\"></span> <span>Pinterest</span></a>\n\t\t</div>\n\t</div>\n</div>"
       twig: '0'
       filter: '0'
     block:

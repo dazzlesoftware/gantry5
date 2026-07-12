@@ -228,7 +228,7 @@ content:
     attributes:
       title: 'We are Hiring'
       titletag: ''
-      html: "<p>Join Our Awesome Team with a Great Work Environment</p>\n\n<p><a href=\"https://www.rockettheme.com/grav/themes/chimera\" class=\"readon largemargintop\">Download Chimera</a></p>"
+      html: "<p>Join Our Awesome Team with a Great Work Environment</p>\n\n<p><a href=\"https://dazzlesoftware.org/grav/themes/chimera\" class=\"readon largemargintop\">Download Chimera</a></p>"
     block:
       variations: center
   custom-7934:

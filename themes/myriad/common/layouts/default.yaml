@@ -430,15 +430,15 @@ content:
       items:
         -
           text: 'About Myriad Theme'
-          link: 'https://www.rockettheme.com/joomla/templates/myriad'
+          link: 'https://dazzlesoftware.org/joomla/templates/myriad'
           name: 'About Myriad Theme'
         -
           text: 'Guide and Documentation'
-          link: 'https://www.rockettheme.com/docs/joomla/templates/myriad'
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/myriad'
           name: 'Guide and Documentation'
         -
           text: 'Forum Support and Community'
-          link: 'https://www.rockettheme.com/forum/joomla-template-myriad'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-myriad'
           name: 'Forum Support and Community'
     block:
       class: 'rt-horizmenu nomargintop nopaddingtop nopaddingbottom nomarginbottom hidden-phone'
@@ -452,7 +452,7 @@ content:
           data-aos-anchor-placement: bottom-bottom          
   branding-7005:
     attributes:
-      content: '<a href="https://www.rockettheme.com/" title="RocketTheme" class="rt-powered-by"></a>'
+      content: '<a href="https://dazzlesoftware.org/" title="Dazzle Software" class="rt-powered-by"></a>'
     block:
       class: 'nomargintop nopaddingtop nomarginleft nopaddingleft rt-branding'
       extra:

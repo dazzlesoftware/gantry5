@@ -9,7 +9,7 @@ use Gantry\Component\Config\Config;
 use Gantry\Framework\Document;
 use Gantry\Framework\Gantry;
 use Joomla\CMS\Uri\Uri;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * @package   Genesis

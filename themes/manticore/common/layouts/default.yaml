@@ -242,7 +242,7 @@ content:
   newsletter-4035:
     attributes:
       layout: g-newsletter-aside
-      headtext: 'Want RocketTheme email newsletter?'
+      headtext: 'Want Dazzle Software email newsletter?'
       inputboxtext: 'What''s your email address?'
       buttonclass: ''
     block:
@@ -258,7 +258,7 @@ content:
         -
           icon: 'fa fa-facebook'
           text: Facebook
-          link: 'https://www.facebook.com/RocketTheme'
+          link: 'https://www.facebook.com/Dazzle Software'
           name: Facebook
         -
           icon: 'fa fa-twitter'

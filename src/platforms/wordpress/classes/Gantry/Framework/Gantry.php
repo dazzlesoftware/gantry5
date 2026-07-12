@@ -12,7 +12,7 @@ namespace Gantry\Framework;
 
 use Gantry\Debugger;
 use Pimple\ServiceProviderInterface;
-use RocketTheme\Toolbox\Event\EventSubscriberInterface;
+use Dazzle Software\Toolbox\Event\EventSubscriberInterface;
 use Timber\Timber;
 
 /**

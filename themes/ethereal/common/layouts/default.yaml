@@ -260,7 +260,7 @@ content:
   custom-3006:
     title: 'Horizontal Menu'
     attributes:
-      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
   totop-4060:
     title: 'To Top'
     attributes:

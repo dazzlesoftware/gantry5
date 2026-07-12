@@ -463,7 +463,7 @@ content:
   custom-6918:
     title: 'Custom HTML'
     attributes:
-      html: "<h2>Blast Off with RocketLauncher!</h2>\n\n<p>We have Myriad RocketLauncher packages which are provided as an additional option with the purchase of the template or membership.</p>\n\n<p>RocketLauncher will install both Joomla and all of the sample content seen here on our Myriad demo site.</p>\n\n<p>This provides you with a way to get started quicker with Myriad, as our demos feature a lot of custom content examples and configuration that can help to give you ideas for using the template to its maximum effectiveness.\n</p>\n\n<a class=\"readon3\" href=\"https://www.rockettheme.com/docs/joomla/platform/rocketlauncher_3x.md\">Read the Whole Story</a>"
+      html: "<h2>Blast Off with RocketLauncher!</h2>\n\n<p>We have Myriad RocketLauncher packages which are provided as an additional option with the purchase of the template or membership.</p>\n\n<p>RocketLauncher will install both Joomla and all of the sample content seen here on our Myriad demo site.</p>\n\n<p>This provides you with a way to get started quicker with Myriad, as our demos feature a lot of custom content examples and configuration that can help to give you ideas for using the template to its maximum effectiveness.\n</p>\n\n<a class=\"readon3\" href=\"https://dazzlesoftware.org/docs/joomla/platform/rocketlauncher_3x.md\">Read the Whole Story</a>"
   lists-8642:
     attributes:
       class: ''
@@ -545,23 +545,23 @@ content:
   custom-2298:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"superhero\" data-aos=\"fade-down\">\n\t<span>Myriad</span>\n</div>\n\n<a href=\"http://rockettheme.com/joomla/templates/myriad\" class=\"readon\" data-aos=\"zoom-in-up\" data-aos-delay=\"750\" data-aos-duration=\"300\">Get it for $49</a>"
+      html: "<div class=\"superhero\" data-aos=\"fade-down\">\n\t<span>Myriad</span>\n</div>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/myriad\" class=\"readon\" data-aos=\"zoom-in-up\" data-aos-delay=\"750\" data-aos-duration=\"300\">Get it for $49</a>"
     block:
       class: 'nomarginall nopaddingall'
       variations: center
   custom-8323:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"module-title\">\n\t\t\t\t\t<h2 class=\"title\"><span>Demo Info</span></h2>\t\t\t</div>\n<p>All demo content is for sample purposes only. All content images are freely available from <a href=\"http://unsplash.com/\">Unsplash</a>.</p>\n<p><span class=\"hidden-tablet\"> Use the <a href=\"https://www.rockettheme.com/joomla/templates/myriad\">RocketLauncher</a> to install a demo equivalent onto your site.</span></p>"
+      html: "<div class=\"module-title\">\n\t\t\t\t\t<h2 class=\"title\"><span>Demo Info</span></h2>\t\t\t</div>\n<p>All demo content is for sample purposes only. All content images are freely available from <a href=\"http://unsplash.com/\">Unsplash</a>.</p>\n<p><span class=\"hidden-tablet\"> Use the <a href=\"https://dazzlesoftware.org/joomla/templates/myriad\">RocketLauncher</a> to install a demo equivalent onto your site.</span></p>"
     block:
       class: 'fp-bottom'
       extra:
         -
           data-aos: fade-down      
   custom-3631:
-    title: 'About RocketTheme'
+    title: 'About Dazzle Software'
     attributes:
-      html: "<div class=\"module-title\">\n\t\t\t\t\t<h2 class=\"title\"><span>About RocketTheme</span></h2>\t\t\t</div>\n\n<p class=\"smallmarginbottom\"><a href=\"https://www.rockettheme.com/blog\">Read the Latest Blog Post</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://www.rockettheme.com/the-team\">View our Global Team</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://www.rockettheme.com/promotions\">Enjoy a Promotion</a></p>\n<p class=\"smallmarginbottom\"><a href=\"http://www.shareasale.com/shareasale.cfm?merchantID=30300\">Become an Affiliate</a></p>"
+      html: "<div class=\"module-title\">\n\t\t\t\t\t<h2 class=\"title\"><span>About Dazzle Software</span></h2>\t\t\t</div>\n\n<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/blog\">Read the Latest Blog Post</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/the-team\">View our Global Team</a></p>\n<p class=\"smallmarginbottom\"><a href=\"https://dazzlesoftware.org/promotions\">Enjoy a Promotion</a></p>\n<p class=\"smallmarginbottom\"><a href=\"http://www.shareasale.com/shareasale.cfm?merchantID=30300\">Become an Affiliate</a></p>"
     block:
       class: 'fp-demo-info hidden-phone fp-bottom'
       extra:
@@ -570,7 +570,7 @@ content:
   custom-4910:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"module-title\">\n\t\t\t\t\t<h2 class=\"title\"><span>Stay Connected</span></h2>\t\t\t</div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://www.facebook.com/RocketTheme\"><i class=\"fa fa-facebook fa-fw\"></i> <span>Facebook</span></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://twitter.com/rockettheme\"><i class=\"fa fa-twitter fa-fw\"></i> <span>Twitter</span></a>\n\t\t\t</div>\n\t\t</div>\t\t\n\t</div>\n</div>\n\n<div class=\"clear\"></div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://rockettheme.com/\"><i class=\"fa fa-google-plus fa-fw\"></i> <span>Google+</span></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://www.rockettheme.com/product-updates?rss\"><i class=\"fa fa-rss fa-fw\"></i> <span>RSS</span></a>\n\t\t\t</div>\n\t\t</div>\t\t\n\t</div>\n</div>\n\n<div class=\"clear\"></div>\n\n<form class=\"fp-bottom-form\" onsubmit=\"window.open('http://feedburner.google.com/fb/a/mailverify?uri=rocketthemeblog', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true\" target=\"popupwindow\" method=\"post\" action=\"http://feedburner.google.com/fb/a/mailverify\">\n\t<input type=\"text\" name=\"email\" class=\"inputbox\" placeholder=\"Your Email\" />\n\t<input type=\"hidden\" name=\"uri\" value=\"rocketthemeblog\" />\n\t<input type=\"hidden\" value=\"en_US\" name=\"loc\" />\n\t<input type=\"submit\" value=\"Join\" class=\"readon\" name=\"Submit\" />\n</form>"
+      html: "<div class=\"module-title\">\n\t\t\t\t\t<h2 class=\"title\"><span>Stay Connected</span></h2>\t\t\t</div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://www.facebook.com/Dazzle Software\"><i class=\"fa fa-facebook fa-fw\"></i> <span>Facebook</span></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://twitter.com/rockettheme\"><i class=\"fa fa-twitter fa-fw\"></i> <span>Twitter</span></a>\n\t\t\t</div>\n\t\t</div>\t\t\n\t</div>\n</div>\n\n<div class=\"clear\"></div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://dazzlesoftware.org/\"><i class=\"fa fa-google-plus fa-fw\"></i> <span>Google+</span></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"https://dazzlesoftware.org/product-updates?rss\"><i class=\"fa fa-rss fa-fw\"></i> <span>RSS</span></a>\n\t\t\t</div>\n\t\t</div>\t\t\n\t</div>\n</div>\n\n<div class=\"clear\"></div>\n\n<form class=\"fp-bottom-form\" onsubmit=\"window.open('http://feedburner.google.com/fb/a/mailverify?uri=rocketthemeblog', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true\" target=\"popupwindow\" method=\"post\" action=\"http://feedburner.google.com/fb/a/mailverify\">\n\t<input type=\"text\" name=\"email\" class=\"inputbox\" placeholder=\"Your Email\" />\n\t<input type=\"hidden\" name=\"uri\" value=\"rocketthemeblog\" />\n\t<input type=\"hidden\" value=\"en_US\" name=\"loc\" />\n\t<input type=\"submit\" value=\"Join\" class=\"readon\" name=\"Submit\" />\n</form>"
     block:
       class: 'hidden-phone fp-bottom'
       extra:

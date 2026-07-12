@@ -20,7 +20,7 @@ use Gantry\Component\Response\JsonResponse;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Services\ErrorServiceProvider;
 use Psr\Http\Message\ResponseInterface;
-use RocketTheme\Toolbox\Event\EventDispatcher;
+use Dazzle Software\Toolbox\Event\EventDispatcher;
 use Whoops\Exception\ErrorException;
 
 /**

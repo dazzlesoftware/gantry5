@@ -194,7 +194,7 @@ content:
   custom-7934:
     title: 'Custom HTML'
     attributes:
-      html: "<h2 class=\"title\"><span>Vermilion Demo</span></h2>\n\n<p class=\"hidden-phone\">These examples are intended to show how Vermilion can be constructed on your site, above and beyond the frontpage demonstration. These include Grav content and component pages, with varying modular content, main widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"https://rockettheme.com/grav/themes/vermilion\">Vermilion RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
+      html: "<h2 class=\"title\"><span>Vermilion Demo</span></h2>\n\n<p class=\"hidden-phone\">These examples are intended to show how Vermilion can be constructed on your site, above and beyond the frontpage demonstration. These include Grav content and component pages, with varying modular content, main widths and page lengths.</p>\n\n<p class=\"nomarginbottom\">All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"https://dazzlesoftware.org/grav/themes/vermilion\">Vermilion RocketLauncher</a> to install an equivalent of the demo onto your site.</p>"
     block:
       class: rt-phone-center
   custom-1158:

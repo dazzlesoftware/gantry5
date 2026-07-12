@@ -11,7 +11,7 @@
 namespace Gantry\Component\Config;
 
 use Gantry\Framework\Gantry;
-use RocketTheme\Toolbox\Blueprints\BlueprintSchema as BlueprintSchemaBase;
+use Dazzle Software\Toolbox\Blueprints\BlueprintSchema as BlueprintSchemaBase;
 
 /**
  * Blueprint schema handles the internal logic of blueprints.

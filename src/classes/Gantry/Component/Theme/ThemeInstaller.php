@@ -19,8 +19,8 @@ use Gantry\Component\Translator\Translator;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Platform;
 use Gantry\Framework\Services\ErrorServiceProvider;
-use RocketTheme\Toolbox\File\YamlFile;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\File\YamlFile;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 

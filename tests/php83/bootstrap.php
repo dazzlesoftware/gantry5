@@ -16,10 +16,10 @@ require_once GANTRY5_TESTS . '/MockableTest.php';
 // Initialize a list of classes we want to mock completely
 $mockedClasses = [
     'Gantry\\Component\\Layout\\Layout',
-    'RocketTheme\\Toolbox\\ArrayTraits\\ArrayAccess',
-    'RocketTheme\\Toolbox\\ArrayTraits\\Iterator',
-    'RocketTheme\\Toolbox\\ArrayTraits\\Export',
-    'RocketTheme\\Toolbox\\ArrayTraits\\ExportInterface',
+    'Dazzle Software\\Toolbox\\ArrayTraits\\ArrayAccess',
+    'Dazzle Software\\Toolbox\\ArrayTraits\\Iterator',
+    'Dazzle Software\\Toolbox\\ArrayTraits\\Export',
+    'Dazzle Software\\Toolbox\\ArrayTraits\\ExportInterface',
     'Gantry\\Component\\Stylesheet\\CssCompiler',
     'Gantry\\Component\\Theme\\ThemeTrait',
     'Gantry\\Component\\Twig\\TwigExtension',

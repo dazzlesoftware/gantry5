@@ -131,13 +131,13 @@ content:
   custom-5444:
     title: 'Have Something to Tell Us?'
     attributes:
-      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Maintenance Mode</h2>\n\t<div class=\"g-layercontent-subtitle\">Sorry, Our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.</div>\n\t<a href=\"https://www.rockettheme.com/joomla/templates/salient\" class=\"button\">Contact Us</a>\n</div>"
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Maintenance Mode</h2>\n\t<div class=\"g-layercontent-subtitle\">Sorry, Our Website is Temporarily Down for Maintenance. Please Check Back Again Soon.</div>\n\t<a href=\"https://dazzlesoftware.org/joomla/templates/salient\" class=\"button\">Contact Us</a>\n</div>"
     block:
       variations: 'center nomarginall nopaddingall'
   custom-6720:
     title: 'About Salient'
     attributes:
-      html: "<h3 class=\"g-title\">About Salient</h3>\n<p>Salient is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template, addons and sources.</p>"
+      html: "<h3 class=\"g-title\">About Salient</h3>\n<p>Salient is available for purchase or part of a club membership from Dazzle Software, inclusive of the RocketLauncher, template, addons and sources.</p>"
   newsletter-1276:
     attributes:
       title: Newsletter
@@ -175,5 +175,5 @@ content:
         -
           icon: 'fa fa-rss fa-fw'
           text: ''
-          link: 'https://www.rockettheme.com/product-updates?rss'
+          link: 'https://dazzlesoftware.org/product-updates?rss'
           name: RSS

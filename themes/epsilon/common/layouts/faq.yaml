@@ -283,13 +283,13 @@ content:
               name: Typography
             -
               title: Documentation
-              link: 'https://rockettheme.com/docs/grav/themes/epsilon'
+              link: 'https://dazzlesoftware.org/docs/grav/themes/epsilon'
               target: _blank
               class: ''
               name: Documentation
             -
               title: 'Forum Support'
-              link: 'https://rockettheme.com/forum/grav-theme-epsilon'
+              link: 'https://dazzlesoftware.org/forum/grav-theme-epsilon'
               target: _blank
               class: ''
               name: 'Forum Support'
@@ -384,14 +384,14 @@ content:
         -
           title: Download
           type: link
-          link: 'https://rockettheme.com/grav/themes/epsilon'
+          link: 'https://dazzlesoftware.org/grav/themes/epsilon'
           target: _blank
           class: ''
           name: Download
         -
           title: Support
           type: link
-          link: 'https://rockettheme.com/forum/grav-theme-epsilon'
+          link: 'https://dazzlesoftware.org/forum/grav-theme-epsilon'
           target: _blank
           class: ''
           name: Support

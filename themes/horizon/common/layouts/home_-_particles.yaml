@@ -228,7 +228,7 @@ content:
           position: 'CEO Boss'
           name: 'Dan Jacobs'
         -
-          content: 'RocketTheme has been creating cutting-edge templates and themes for over 15 years. Horizon brings the latest in web technologies and website composition to your site.'
+          content: 'Dazzle Software has been creating cutting-edge templates and themes for over 15 years. Horizon brings the latest in web technologies and website composition to your site.'
           photo: 'gantry-media://home/header/img-01.png'
           position: 'Company Marketer'
           name: 'Sharon Winn'
@@ -293,7 +293,7 @@ content:
           image: 'gantry-media://home/feature/img-01.jpg'
           title: Innovation
         -
-          description: 'The RocketTheme team has over a decade of experience building templates and themes for hundreds of thousands of customers.'
+          description: 'The Dazzle Software team has over a decade of experience building templates and themes for hundreds of thousands of customers.'
           image: 'gantry-media://home/feature/img-01.jpg'
           title: Collaboration
         -
@@ -301,7 +301,7 @@ content:
           image: 'gantry-media://home/feature/img-01.jpg'
           title: Creativity
         -
-          description: 'Every RocketTheme template is professionally designed, produced, and supported by our industry-leading team.'
+          description: 'Every Dazzle Software template is professionally designed, produced, and supported by our industry-leading team.'
           image: 'gantry-media://home/feature/img-01.jpg'
           title: Expertise
         -
@@ -326,8 +326,8 @@ content:
     title: 'Info List'
     attributes:
       class: ''
-      title: RocketTheme
-      intro: 'Here’s what you can accomplish when you <span>choose RocketTheme.</span>'
+      title: Dazzle Software
+      intro: 'Here’s what you can accomplish when you <span>choose Dazzle Software.</span>'
       cols: g-3cols
       patterns: enabled
       infolists:
@@ -388,7 +388,7 @@ content:
     title: 'Simple CTA'
     attributes:
       title: 'Not sure how to get started?'
-      description: 'RocketTheme provides detailed documentation to help you get acquainted with every aspect of your purchase.'
+      description: 'Dazzle Software provides detailed documentation to help you get acquainted with every aspect of your purchase.'
       label: 'Contact our consultant'
       link: '#'
       target: _self

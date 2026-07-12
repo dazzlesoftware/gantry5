@@ -12,7 +12,7 @@ namespace Grav\Theme;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as GantryTheme;
 use Grav\Common\Theme;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class G5_Helium

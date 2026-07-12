@@ -242,7 +242,7 @@ content:
   custom-7809:
     title: 'FAQ Didn''t Solve Your Problem?'
     attributes:
-      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">FAQ Didn't Solve Your Problem?</h2>\n\t<div class=\"g-layercontent-subtitle\">Get Direct Access to the Team Via Phone, Email or Live Chat.</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/callisto\" class=\"button button-2\">Contact Us</a>\n</div>"
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">FAQ Didn't Solve Your Problem?</h2>\n\t<div class=\"g-layercontent-subtitle\">Get Direct Access to the Team Via Phone, Email or Live Chat.</div>\n\t<a href=\"https://dazzlesoftware.org/wordpress/themes/callisto\" class=\"button button-2\">Contact Us</a>\n</div>"
     block:
       class: 'flush center'
       variations: box1

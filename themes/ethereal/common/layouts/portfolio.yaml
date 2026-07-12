@@ -134,7 +134,7 @@ content:
   custom-5931:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">100% Satisfaction Guaranteed</h2>\n\t<div class=\"g-layercontent-subtitle\">Will You be the Next to Join Our Happy Clients?</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\" class=\"button button-2\">Join Now</a>\n</div>"
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">100% Satisfaction Guaranteed</h2>\n\t<div class=\"g-layercontent-subtitle\">Will You be the Next to Join Our Happy Clients?</div>\n\t<a href=\"https://dazzlesoftware.org/wordpress/themes/ethereal\" class=\"button button-2\">Join Now</a>\n</div>"
     block:
       class: 'flush center'
   position-9463:
@@ -168,7 +168,7 @@ content:
   custom-4990:
     title: 'Horizontal Menu'
     attributes:
-      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://www.rockettheme.com/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://www.rockettheme.com/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Gantry 5</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/wordpress/themes/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/wordpress-theme-ethereal\">Support</a></li>\n</ul>"
   totop-8684:
     title: 'To Top'
     attributes:

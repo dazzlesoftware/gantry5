@@ -116,7 +116,7 @@ form:
                 _attrinfo:
                   type: separator.note
                   class: alert alert-info
-                  content: For more information on adding product attributes such as options for sizes and colors, please <a href="https://www.rockettheme.com/docs/joomla/templates/versla/particle_productlist.md#product-attributes-options" target="_blank">click here</a>.
+                  content: For more information on adding product attributes such as options for sizes and colors, please <a href="https://dazzlesoftware.org/docs/joomla/templates/versla/particle_productlist.md#product-attributes-options" target="_blank">click here</a>.
                 .name:
                   type: input.text
                   label: Attribute Name

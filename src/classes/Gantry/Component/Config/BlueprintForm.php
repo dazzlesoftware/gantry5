@@ -11,8 +11,8 @@ namespace Gantry\Component\Config;
 
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Framework\Gantry;
-use RocketTheme\Toolbox\Blueprints\BlueprintForm as BaseBlueprintForm;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\Blueprints\BlueprintForm as BaseBlueprintForm;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * The Config class contains configuration information.

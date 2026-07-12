@@ -296,11 +296,11 @@ content:
           name: Features
         -
           text: Support
-          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-antares'
           name: Support
         -
           text: Download
-          link: 'https://www.rockettheme.com/joomla/templates/antares'
+          link: 'https://dazzlesoftware.org/joomla/templates/antares'
           name: Download
   social-5302:
     title: 'Footer Social Icons'
@@ -310,7 +310,7 @@ content:
       items:
         -
           text: Docs
-          link: 'https://www.rockettheme.com/docs/joomla/templates/antares'
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/antares'
           name: Docs
         -
           text: Guides
@@ -318,11 +318,11 @@ content:
           name: Guides
         -
           text: Questions
-          link: 'https://www.rockettheme.com/contact-us'
+          link: 'https://dazzlesoftware.org/contact-us'
           name: Questions
         -
           text: Forum
-          link: 'https://www.rockettheme.com/forum/joomla-template-antares'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-antares'
           name: Forum
   totop-8334:
     title: 'To Top'

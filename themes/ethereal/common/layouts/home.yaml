@@ -129,7 +129,7 @@ content:
   custom-4208:
     title: Triangle
     attributes:
-      html: "<div class=\"g-triangle\">\n\t<div class=\"g-triangle-content\"><a href=\"https://www.rockettheme.com/joomla/templates/ethereal\"><i class=\"fa fa-fw fa-3x fa-cloud-download\"></i></a></div>\n</div>"
+      html: "<div class=\"g-triangle\">\n\t<div class=\"g-triangle-content\"><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\"><i class=\"fa fa-fw fa-3x fa-cloud-download\"></i></a></div>\n</div>"
     block:
       class: 'flush g-triangle-block'
       variations: center
@@ -506,11 +506,11 @@ content:
           name: Particles
         -
           text: Download
-          link: 'https://www.rockettheme.com/joomla/templates/ethereal'
+          link: 'https://dazzlesoftware.org/joomla/templates/ethereal'
           name: Download
         -
           text: Support
-          link: 'https://www.rockettheme.com/forum/joomla-template-ethereal'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-ethereal'
           name: Support
   totop-9103:
     title: 'To Top'

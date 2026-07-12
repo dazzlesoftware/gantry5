@@ -270,7 +270,7 @@ content:
   custom-2253:
     title: '100% Satisfaction Guaranteed'
     attributes:
-      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">100% Satisfaction Guaranteed</h2>\n\t<div class=\"g-layercontent-subtitle\">Will You be the Next to Join Our Happy Clients?</div>\n\t<a href=\"https://www.rockettheme.com/wordpress/themes/callisto\" class=\"button button-2\">Join Now</a>\n</div>"
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">100% Satisfaction Guaranteed</h2>\n\t<div class=\"g-layercontent-subtitle\">Will You be the Next to Join Our Happy Clients?</div>\n\t<a href=\"https://dazzlesoftware.org/wordpress/themes/callisto\" class=\"button button-2\">Join Now</a>\n</div>"
     block:
       class: 'flush center'
       variations: box1

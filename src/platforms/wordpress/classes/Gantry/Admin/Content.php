@@ -15,7 +15,7 @@ use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as SiteTheme;
 use Grav\Common\Grav;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Content

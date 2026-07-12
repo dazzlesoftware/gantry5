@@ -531,7 +531,7 @@ content:
           name: Particles
         -
           text: Join
-          link: 'https://www.rockettheme.com/join'
+          link: 'https://dazzlesoftware.org/join'
           name: Join
     block:
       class: g-horizontalmenu-block

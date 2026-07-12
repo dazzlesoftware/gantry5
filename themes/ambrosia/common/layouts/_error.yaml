@@ -148,11 +148,11 @@ content:
           name: Addons
         -
           text: Download
-          link: 'https://www.rockettheme.com/joomla/templates/ambrosia'
+          link: 'https://dazzlesoftware.org/joomla/templates/ambrosia'
           name: Download
         -
           text: Support
-          link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-ambrosia'
           name: Support
     block:
       class: g-menu-block
@@ -195,7 +195,7 @@ content:
   custom-8283:
     title: 'About Ambrosia'
     attributes:
-      html: "<h2 class=\"g-title\">About Ambrosia</h2>\n<br />\n<span>Ambrosia is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template, addons and sources.</span>"
+      html: "<h2 class=\"g-title\">About Ambrosia</h2>\n<br />\n<span>Ambrosia is available for purchase or part of a club membership from Dazzle Software, inclusive of the RocketLauncher, template, addons and sources.</span>"
   newsletter-1877:
     attributes:
       title: Newsletter
@@ -205,7 +205,7 @@ content:
   custom-8473:
     title: 'Sample Sitemap'
     attributes:
-      html: "<h2 class=\"g-title\">Sample Sitemap</h2>\n\n<div class=\"g-grid\">\n\t<div class=\"g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"index.php\">Home</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=1&Itemid=105\">Features</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=2&Itemid=106\">Typography</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=2&Itemid=106\">Particles</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=3&Itemid=107\">Variations</a></li>\n\t\t</ul>\n\t</div>\n\t<div class=\"g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=2&Itemid=106\">Buttons</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=4&Itemid=111\">Pages</a></li>\n\t\t\t<li><a href=\"https://www.rockettheme.com/docs/joomla/templates/ambrosia\">Guide</a></li>\n\t\t\t<li><a href=\"https://www.rockettheme.com/forum/joomla-template-ambrosia\">Support</a></li>\n\t\t\t<li><a href=\"https://www.rockettheme.com/joomla/templates/ambrosia\">Download</a></li>\n\t\t</ul>\t\t\n\t</div>\t\n</div>"
+      html: "<h2 class=\"g-title\">Sample Sitemap</h2>\n\n<div class=\"g-grid\">\n\t<div class=\"g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"index.php\">Home</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=1&Itemid=105\">Features</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=2&Itemid=106\">Typography</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=2&Itemid=106\">Particles</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=3&Itemid=107\">Variations</a></li>\n\t\t</ul>\n\t</div>\n\t<div class=\"g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=2&Itemid=106\">Buttons</a></li>\n\t\t\t<li><a href=\"index.php?option=com_content&view=article&id=4&Itemid=111\">Pages</a></li>\n\t\t\t<li><a href=\"https://dazzlesoftware.org/docs/joomla/templates/ambrosia\">Guide</a></li>\n\t\t\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ambrosia\">Support</a></li>\n\t\t\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ambrosia\">Download</a></li>\n\t\t</ul>\t\t\n\t</div>\t\n</div>"
   logo-3520:
     attributes:
       image: ''
@@ -237,11 +237,11 @@ content:
           name: Particles
         -
           text: Download
-          link: 'https://www.rockettheme.com/joomla/templates/ambrosia'
+          link: 'https://dazzlesoftware.org/joomla/templates/ambrosia'
           name: Download
         -
           text: Support
-          link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-ambrosia'
           name: Support
   totop-3405:
     title: 'To Top'

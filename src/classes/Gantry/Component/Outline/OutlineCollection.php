@@ -16,9 +16,9 @@ use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Component\Layout\Layout;
 use Gantry\Framework\Atoms;
-use RocketTheme\Toolbox\DI\Container;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceIterator;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\DI\Container;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceIterator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class OutlineCollection

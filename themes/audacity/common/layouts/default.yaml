@@ -326,7 +326,7 @@ content:
       key: footer-d
   branding-4486:
     attributes:
-      content: '<a href="http://www.rockettheme.com/" title="RocketTheme" class="rt-powered-by"></a>'
+      content: '<a href="https://dazzlesoftware.org/" title="Dazzle Software" class="rt-powered-by"></a>'
       css:
         class: ''
     block:
@@ -336,7 +336,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: 'Developed by <a href="http://www.rockettheme.com">RocketTheme</a>. Photos by <a href="https://tookapic.com/">tookapic</a>.'
+      html: 'Developed by <a href="https://dazzlesoftware.org">Dazzle Software</a>. Photos by <a href="https://tookapic.com/">tookapic</a>.'
       twig: '0'
       filter: '0'
     block:

@@ -124,11 +124,11 @@ content:
           name: Particles
         -
           text: Download
-          link: 'https://www.rockettheme.com/joomla/templates/ambrosia'
+          link: 'https://dazzlesoftware.org/joomla/templates/ambrosia'
           name: Download
         -
           text: Support
-          link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-ambrosia'
           name: Support
   menu-1228:
     block:
@@ -452,7 +452,7 @@ content:
       infolists:
         -
           image: ''
-          link: 'https://www.rockettheme.com/docs/joomla/templates/ambrosia'
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/ambrosia'
           textstyle: compact
           imagestyle: compact
           desc: ''
@@ -470,7 +470,7 @@ content:
           title: 'Documentation for the Gantry 5 Framework'
         -
           image: ''
-          link: 'https://www.rockettheme.com/forum/joomla-template-ambrosia'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-ambrosia'
           textstyle: compact
           imagestyle: compact
           desc: ''
@@ -505,7 +505,7 @@ content:
         -
           icon: 'fa fa-rss fa-fw'
           text: ''
-          link: 'https://www.rockettheme.com/product-updates?rss'
+          link: 'https://dazzlesoftware.org/product-updates?rss'
           name: RSS
         -
           icon: 'fa fa-youtube'

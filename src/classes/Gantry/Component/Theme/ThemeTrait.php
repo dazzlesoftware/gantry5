@@ -24,8 +24,8 @@ use Gantry\Debugger;
 use Gantry\Framework\Document;
 use Gantry\Framework\Menu;
 use Gantry\Framework\Services\ConfigServiceProvider;
-use RocketTheme\Toolbox\File\PhpFile;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\File\PhpFile;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class ThemeTrait

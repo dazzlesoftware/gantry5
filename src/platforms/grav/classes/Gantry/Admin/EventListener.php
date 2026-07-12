@@ -19,10 +19,10 @@ use Grav\Common\Flex\Types\Pages\PageObject;
 use Grav\Common\Grav;
 use Grav\Common\Uri;
 use Grav\Framework\Flex\Flex;
-use RocketTheme\Toolbox\Event\Event;
-use RocketTheme\Toolbox\Event\EventSubscriberInterface;
-use RocketTheme\Toolbox\File\YamlFile;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\Event\Event;
+use Dazzle Software\Toolbox\Event\EventSubscriberInterface;
+use Dazzle Software\Toolbox\File\YamlFile;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class EventListener

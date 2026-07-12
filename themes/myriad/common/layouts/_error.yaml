@@ -256,7 +256,7 @@ content:
       key: bottom-a
   branding-7005:
     attributes:
-      content: '<a href="https://www.rockettheme.com/" title="RocketTheme" class="rt-powered-by"></a>'
+      content: '<a href="https://dazzlesoftware.org/" title="Dazzle Software" class="rt-powered-by"></a>'
     block:
       class: 'nomarginleft nopaddingleft rt-branding'
   copyright-9042:

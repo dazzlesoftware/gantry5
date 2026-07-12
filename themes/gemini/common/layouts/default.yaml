@@ -393,17 +393,17 @@ content:
               title: Demo
             -
               icon: ''
-              link: 'https://www.rockettheme.com/joomla/templates/gemini'
+              link: 'https://dazzlesoftware.org/joomla/templates/gemini'
               target: _self
               title: Details
             -
               icon: ''
-              link: 'https://www.rockettheme.com/forum/joomla-template-gemini'
+              link: 'https://dazzlesoftware.org/forum/joomla-template-gemini'
               target: _self
               title: Support
             -
               icon: ''
-              link: 'https://www.rockettheme.com/docs/joomla/templates/gemini'
+              link: 'https://dazzlesoftware.org/docs/joomla/templates/gemini'
               target: _self
               title: Guides
           title: 'Bottom Menu'

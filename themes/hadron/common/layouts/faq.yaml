@@ -290,13 +290,13 @@ content:
               name: Typography
             -
               title: Documentation
-              link: 'https://rockettheme.com/docs/grav/themes/hadron'
+              link: 'https://dazzlesoftware.org/docs/grav/themes/hadron'
               target: _blank
               class: ''
               name: Documentation
             -
               title: 'Forum Support'
-              link: 'https://rockettheme.com/forum/grav-theme-hadron'
+              link: 'https://dazzlesoftware.org/forum/grav-theme-hadron'
               target: _blank
               class: ''
               name: 'Forum Support'
@@ -391,14 +391,14 @@ content:
         -
           title: Download
           type: link
-          link: 'https://rockettheme.com/grav/themes/hadron'
+          link: 'https://dazzlesoftware.org/grav/themes/hadron'
           target: _blank
           class: ''
           name: Download
         -
           title: Support
           type: link
-          link: 'https://rockettheme.com/forum/grav-theme-hadron'
+          link: 'https://dazzlesoftware.org/forum/grav-theme-hadron'
           target: _blank
           class: ''
           name: Support

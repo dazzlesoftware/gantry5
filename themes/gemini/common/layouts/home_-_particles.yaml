@@ -206,7 +206,7 @@ content:
           created_date: ''
           content_title: ''
           author: ''
-          leading_content: 'RocketTheme has built a professional theme that is perfect for a wide range of websites including: design firms, architects, data science, finance, & more.'
+          leading_content: 'Dazzle Software has built a professional theme that is perfect for a wide range of websites including: design firms, architects, data science, finance, & more.'
           main_content: ''
           readmore_label: 'Read more &rarr;'
           readmore_link: '#'
@@ -440,7 +440,7 @@ content:
   custom-5083:
     title: 'Custom HTML'
     attributes:
-      html: "1234 Gemini Street <br />\nRocketTheme<br />\n<strong>Club</strong> <br />\n56789 <br />"
+      html: "1234 Gemini Street <br />\nDazzle Software<br />\n<strong>Club</strong> <br />\n56789 <br />"
     block:
       class: 'nomargintop nopaddingtop'
   custom-3183:

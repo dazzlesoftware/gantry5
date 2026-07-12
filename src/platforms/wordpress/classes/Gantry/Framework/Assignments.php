@@ -10,7 +10,7 @@
 namespace Gantry\Framework;
 
 use Gantry\Component\Assignments\AbstractAssignments;
-use RocketTheme\Toolbox\Event\Event;
+use Dazzle Software\Toolbox\Event\Event;
 
 /**
  * Class Assignments

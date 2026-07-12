@@ -99,13 +99,13 @@ content:
   custom-5545:
     title: 'Have Something to Tell Us'
     attributes:
-      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Have Something to Tell Us?</h2>\n\t<div class=\"g-layercontent-subtitle\">Ideas, Suggestion, or Review</div>\n\t<a href=\"https://www.rockettheme.com/joomla/templates/ambrosia\" class=\"button\">Contact Us</a>\n</div>"
+      html: "<div class=\"g-layercontent g-layercontent-small\">\n\t<h2 class=\"g-layercontent-title\">Have Something to Tell Us?</h2>\n\t<div class=\"g-layercontent-subtitle\">Ideas, Suggestion, or Review</div>\n\t<a href=\"https://dazzlesoftware.org/joomla/templates/ambrosia\" class=\"button\">Contact Us</a>\n</div>"
     block:
       class: 'flush center'
   custom-5147:
     title: 'About Ambrosia'
     attributes:
-      html: "<h2 class=\"g-title\">About Ambrosia</h2>\n<br />\n<span>Ambrosia is available for purchase or part of a club membership from RocketTheme, inclusive of the RocketLauncher, template, addons and sources.</span>"
+      html: "<h2 class=\"g-title\">About Ambrosia</h2>\n<br />\n<span>Ambrosia is available for purchase or part of a club membership from Dazzle Software, inclusive of the RocketLauncher, template, addons and sources.</span>"
   newsletter-1178:
     attributes:
       title: Newsletter

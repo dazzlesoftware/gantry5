@@ -10,9 +10,9 @@
 
 namespace Gantry\Component\Filesystem;
 
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
-use RocketTheme\Toolbox\StreamWrapper\ReadOnlyStream;
-use RocketTheme\Toolbox\StreamWrapper\Stream;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\StreamWrapper\ReadOnlyStream;
+use Dazzle Software\Toolbox\StreamWrapper\Stream;
 
 /**
  * Class Streams

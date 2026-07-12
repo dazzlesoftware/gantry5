@@ -12,14 +12,14 @@ We've been heads-down on development since taking over stewardship, with lighter
 Check the full [CHANGELOG.md](https://github.com/gantry/gantry5/blob/develop/CHANGELOG.md) for details.
 
 **Project Status**  
-Gantry is actively developed and maintained by the Tiger12 team. It's **not** in maintenance-only mode or abandoned—we're committed long-term.
+Gantry is actively developed and maintained by the Dazzle Software team. It's **not** in maintenance-only mode or abandoned—we're committed long-term.
 
 **What's Ahead in 2026**
 - Gantry remains **free and open-source** forever (MIT/GPL).
 - Focus areas: **Developer tools** + **AI-assisted features** (smarter particle/outline workflows, AI integration points).
 - Optional premium **add-on packages** to expand core capabilities without gating anything.
-- Actively working on a **theme migration addon** to help convert legacy RocketTheme Gantry themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to current Gantry using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.  
-  This includes tools to adapt/replace bundled legacy RocketTheme addons/plugins like **RokSprocket**, **RokGallery**, **RokNavMenu**, **RokCandy**, **RokQuickCart**, **RokFeatureTable**, and others that were common in RT themes.  
+- Actively working on a **theme migration addon** to help convert legacy Dazzle Software Gantry themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to current Gantry using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.  
+  This includes tools to adapt/replace bundled legacy Dazzle Software addons/plugins like **RokSprocket**, **RokGallery**, **RokNavMenu**, **RokCandy**, **RokQuickCart**, **RokFeatureTable**, and others that were common in RT themes.  
   *No firm promises on 100% perfect 1:1 fidelity* (legacy extensions + platform changes can be complex), but we believe we can cover most common scenarios and make upgrades far easier for sites still on older RT setups.
 
 - **Gantry 6.0** (next major version) is in planning/active development, with deeper modern integrations (including MCP support). A detailed feature list and roadmap will be shared soon via GitHub discussions and gantry.org.
@@ -29,16 +29,16 @@ We'll improve regular updates here on GitHub (discussions/announcements), gantry
 
 Thanks for sticking with Gantry. Your feedback and support mean a lot—let's keep building!
 
-— Gene Teigland, Tiger12
+— Gene Teigland, Dazzle Software
 
 
 
 > [!IMPORTANT]
-> **A NEW CHAPTER FOR GANTRY** - [Read about it here](https://tiger12.com/gantry/)
+> **A NEW CHAPTER FOR GANTRY** - [Read about it here](https://dazzlesoftware.org/gantry/)
 >
-Tiger12 is now the official steward of Gantry and gantry.org, the powerful theming framework that has shaped websites across WordPress, Joomla, and Grav for over a decade. Gantry has long been trusted by developers and organizations for its flexibility, speed, and clean design principles. We’ve crafted with it. We’ve relied on it. And now—we’re building its future.
+Dazzle Software is now the official steward of Gantry and gantry.org, the powerful theming framework that has shaped websites across WordPress, Joomla, and Grav for over a decade. Gantry has long been trusted by developers and organizations for its flexibility, speed, and clean design principles. We’ve crafted with it. We’ve relied on it. And now—we’re building its future.
 
-Gantry’s success is built on the vision and dedication of Andy Miller and the team at RocketTheme. Their innovative work laid the foundation for a framework trusted by thousands. We are honored that they have officially chosen us to carry this legacy forward and continue the development of Gantry into the future.
+Gantry’s success is built on the vision and dedication of Andy Miller and the team at Dazzle Software. Their innovative work laid the foundation for a framework trusted by thousands. We are honored that they have officially chosen us to carry this legacy forward and continue the development of Gantry into the future.
 
 ================
 

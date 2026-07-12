@@ -646,7 +646,7 @@ content:
         -
           style: g-testimonial-standard
           img: 'gantry-media://demo/home/bottom/img-01.jpg'
-          content: 'Gantry 5 is a free template framework from RocketTheme, that is made available with the templates, as well as from GitHub.'
+          content: 'Gantry 5 is a free template framework from Dazzle Software, that is made available with the templates, as well as from GitHub.'
           author: 'Emily Hudson'
           company: 'Community Manager'
           companyurl: ''
@@ -772,7 +772,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://www.facebook.com/RocketTheme'
+          link: 'http://www.facebook.com/Dazzle Software'
           icon: ''
           readmoreclass: ''
           title: Facebook
@@ -785,7 +785,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://www.youtube.com/user/RocketTheme'
+          link: 'http://www.youtube.com/user/Dazzle Software'
           icon: ''
           readmoreclass: ''
           title: Youtube
@@ -798,7 +798,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://rockettheme.com/'
+          link: 'https://dazzlesoftware.org/'
           icon: ''
           readmoreclass: ''
           title: 'Google +'

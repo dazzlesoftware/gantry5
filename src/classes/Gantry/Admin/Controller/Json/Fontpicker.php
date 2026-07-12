@@ -11,7 +11,7 @@ namespace Gantry\Admin\Controller\Json;
 
 use Gantry\Component\Admin\JsonController;
 use Gantry\Component\Response\JsonResponse;
-use RocketTheme\Toolbox\File\JsonFile;
+use Dazzle Software\Toolbox\File\JsonFile;
 
 /**
  * Class Fontpicker

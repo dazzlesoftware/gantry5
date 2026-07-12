@@ -17,7 +17,7 @@ use Gantry\Framework\Base\Platform as BasePlatform;
 use Gantry\WordPress\PostQuery;
 use Gantry\WordPress\Utilities;
 use Gantry\WordPress\Widgets;
-use RocketTheme\Toolbox\DI\Container;
+use Dazzle Software\Toolbox\DI\Container;
 
 /**
  * The Platform Configuration class contains configuration information.

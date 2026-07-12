@@ -14,8 +14,8 @@ use Gantry\Debugger;
 use Gantry\Framework\Base\Platform;
 use Gantry\Framework\Gantry;
 use Pimple\Container;
-use RocketTheme\Toolbox\DI\ServiceProviderInterface;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\DI\ServiceProviderInterface;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class StreamsServiceProvider

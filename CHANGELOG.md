@@ -299,7 +299,7 @@
 1. [Common](#common)
     1. [](#new)
         - Updated SCSS compiler to v1.11
-        - Updated: RocketTheme Toolbox to v1.6.4
+        - Updated: Dazzle Software Toolbox to v1.6.4
         - Updated: Flip Whoops to 2.15.1
         - Updated: Symfony Yaml to 4.0.0
         - Updated: Twig to 2.5.15
@@ -2315,7 +2315,7 @@
 1. [Common](#common)
     1. [](#bugfix)
         - Fix regression in all collections (Social, Custom JS / CSS, etc) (#761, #762, #764, #767, #768)
-        - Fix Argument 1 passed to `RocketTheme\Toolbox\Blueprints\Blueprints::mergeArrays()` must be of the type array
+        - Fix Argument 1 passed to `Dazzle Software\Toolbox\Blueprints\Blueprints::mergeArrays()` must be of the type array
         - Re-index collection lists to avoid gaps in the indexing (also fixes broken lists that were saved)
         - Fixed issue in Layout Manager where top level section settings would show the Block tab (#766)
 1. [WordPress](#wordpress)

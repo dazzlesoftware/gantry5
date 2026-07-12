@@ -509,7 +509,7 @@ content:
       cols: cols-4
       testimonial:
         -
-          content: 'RocketTheme has been producing exceptional templates and themes for over a decade, and Clarity is the best yet.'
+          content: 'Dazzle Software has been producing exceptional templates and themes for over a decade, and Clarity is the best yet.'
           author: 'Willie Ryan'
           position: 'CEO of Company Inc.'
           photo: 'gantry-media://home/utility/img-01.jpg'
@@ -537,14 +537,14 @@ content:
           alttext: Testimonial
           name: Forth
         -
-          content: 'RocketTheme’s support forums are second to none. The Rockettheme team is ready to answer your most challenging questions. '
+          content: 'Dazzle Software’s support forums are second to none. The Rockettheme team is ready to answer your most challenging questions. '
           author: 'Beverly Foster'
           position: 'CEO of Company Inc.'
           photo: 'gantry-media://home/utility/img-01.jpg'
           alttext: Testimonial
           name: Fifth
         -
-          content: "Have multiple website builds in mind? RocketTheme makes site licensing easy with Club membership plans to meet your needs.\n"
+          content: "Have multiple website builds in mind? Dazzle Software makes site licensing easy with Club membership plans to meet your needs.\n"
           author: 'Dorothy Ferguson'
           position: 'CEO of Company Inc.'
           photo: 'gantry-media://home/utility/img-01.jpg'
@@ -558,7 +558,7 @@ content:
           alttext: Testimonial
           name: Seventh
         -
-          content: 'Every RocketTheme product is made to last. Your website will look and work years from now as well as it does on day one.'
+          content: 'Every Dazzle Software product is made to last. Your website will look and work years from now as well as it does on day one.'
           author: 'Beverly Foster'
           position: 'CEO of Company Inc.'
           photo: 'gantry-media://home/utility/img-01.jpg'

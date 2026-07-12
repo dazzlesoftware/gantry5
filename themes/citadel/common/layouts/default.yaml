@@ -682,31 +682,31 @@ content:
         -
           icon: ''
           text: 'About Us'
-          link: 'https://www.rockettheme.com/joomla/templates/citadel'
+          link: 'https://dazzlesoftware.org/joomla/templates/citadel'
           target: _blank
           name: 'About Us'
         -
           icon: ''
           text: 'Contact Us'
-          link: 'https://www.rockettheme.com/contact-us'
+          link: 'https://dazzlesoftware.org/contact-us'
           target: _blank
           name: 'Contact Us'
         -
           icon: ''
           text: Guides
-          link: 'https://www.rockettheme.com/docs/joomla/templates/citadel'
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/citadel'
           target: _blank
           name: Guides
         -
           icon: ''
           text: Support
-          link: 'https://www.rockettheme.com/forum/joomla-template-citadel'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-citadel'
           target: _blank
           name: Support
         -
           icon: ''
           text: Facebook
-          link: 'https://www.facebook.com/RocketTheme'
+          link: 'https://www.facebook.com/Dazzle Software'
           target: _blank
           name: Facebook
         -

@@ -13,7 +13,7 @@ use Composer\Autoload\ClassLoader;
 
 /**
  * Class Loader
- * @package Gantry5
+ * @package Genesis
  */
 abstract class Loader
 {

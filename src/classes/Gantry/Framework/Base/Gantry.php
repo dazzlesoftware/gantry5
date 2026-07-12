@@ -30,9 +30,9 @@ use Gantry\Framework\Services\StreamsServiceProvider;
 use Gantry\Framework\Site;
 use Gantry\Framework\Translator;
 use Gantry5\Loader;
-use RocketTheme\Toolbox\DI\Container;
-use RocketTheme\Toolbox\Event\Event;
-use RocketTheme\Toolbox\Event\EventDispatcher;
+use Dazzle Software\Toolbox\DI\Container;
+use Dazzle Software\Toolbox\Event\Event;
+use Dazzle Software\Toolbox\Event\EventDispatcher;
 
 /**
  * Class Gantry

@@ -267,19 +267,19 @@ content:
       activitiesitems:
         -
           image: 'gantry-media://home/above/img-01.jpg'
-          url: 'https://rockettheme.com'
+          url: 'https://dazzlesoftware.org'
           caption: Weight
         -
           image: 'gantry-media://home/above/img-01.jpg'
-          url: 'https://rockettheme.com'
+          url: 'https://dazzlesoftware.org'
           caption: Fitness
         -
           image: 'gantry-media://home/above/img-01.jpg'
-          url: 'https://rockettheme.com'
+          url: 'https://dazzlesoftware.org'
           caption: Yoga
         -
           image: 'gantry-media://home/above/img-01.jpg'
-          url: 'https://rockettheme.com'
+          url: 'https://dazzlesoftware.org'
           caption: Boxing
     block:
       class: 'hidden-phone hidden-tablet'

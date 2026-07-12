@@ -205,7 +205,7 @@ content:
         -
           icon: 'fa fa-rss fa-fw'
           text: ''
-          link: 'https://rockettheme.com/product-updates?rss'
+          link: 'https://dazzlesoftware.org/product-updates?rss'
           class: rss
           name: RSS
     block:
@@ -215,11 +215,11 @@ content:
       promo: About
       promobold: Vermilion
       desc: '<p class="hidden-phone">Vermilion adopts a business or commercial centric visual model, with corporate background shades interwoven with configurable, vibrant or brand colors, allowing for an equilibrium between professionalism and artistic allure.</p>'
-      link1: 'https://rockettheme.com/joomla/themes/vermilion'
+      link1: 'https://dazzlesoftware.org/joomla/themes/vermilion'
       linktext1: 'Purchase Vermilion'
       buttontarget1: _blank
       buttonclass1: readon
-      link2: 'https://rockettheme.com/docs/joomla/themes/vermilion'
+      link2: 'https://dazzlesoftware.org/docs/joomla/themes/vermilion'
       linktext2: 'View Documentation'
       buttontarget2: _blank
       buttonclass2: readon2
@@ -452,13 +452,13 @@ content:
           title: Setup
           linklabel: ''
           link: ''
-          content: "<div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-cogs\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">RocketLauncher</a></h2><p>\tA RocketLauncher is a custom, full Joomla package that installs a near equivalent of the demo onto your server.</p><p class=\"hidden-tablet hidden-phone\">\tThis option allows you to check exactly how the demo is constructed.</p><div class=\"clear\"></div><div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-cloud-upload\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">Documentation</a></h2><p>\tIn addition, Vermilion has free online guides to assist in setting up the template on your site.</p><p>\t<a href=\"https://rockettheme.com/docs/joomla/templates/vermilion\" class=\"readon3\">Read More</a></p><div class=\"clear\"></div>"
+          content: "<div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-cogs\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">RocketLauncher</a></h2><p>\tA RocketLauncher is a custom, full Joomla package that installs a near equivalent of the demo onto your server.</p><p class=\"hidden-tablet hidden-phone\">\tThis option allows you to check exactly how the demo is constructed.</p><div class=\"clear\"></div><div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-cloud-upload\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">Documentation</a></h2><p>\tIn addition, Vermilion has free online guides to assist in setting up the template on your site.</p><p>\t<a href=\"https://dazzlesoftware.org/docs/joomla/templates/vermilion\" class=\"readon3\">Read More</a></p><div class=\"clear\"></div>"
           name: Setup
         -
           title: Addons
           linklabel: ''
           link: ''
-          content: "<div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-paste\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">Image Sources</a></h2><p>\tVermilion is bundled with Adobe&reg; Fireworks PNG Sources, which are layered and edible, for customizing.</p><p class=\"hidden-tablet hidden-phone\">\tThe sources are available to all active club members or Vermilion purchasers.</p><div class=\"clear\"></div><div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-dashboard\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">Extensions</a></h2><p>\tAll RocketTheme Extensions for Vermilion are free and can be downloaded separately.</p><p>\t<a href=\"#\" class=\"readon3\">Read More</a></p><div class=\"clear\"></div>"
+          content: "<div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-paste\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">Image Sources</a></h2><p>\tVermilion is bundled with Adobe&reg; Fireworks PNG Sources, which are layered and edible, for customizing.</p><p class=\"hidden-tablet hidden-phone\">\tThe sources are available to all active club members or Vermilion purchasers.</p><div class=\"clear\"></div><div class=\"rt-icon-badge rt-badge-left\">\t<a href=\"#\"><span class=\"fa fa-dashboard\"></span></a></div><h2 class=\"title\">\t<a href=\"#\">Extensions</a></h2><p>\tAll Dazzle Software Extensions for Vermilion are free and can be downloaded separately.</p><p>\t<a href=\"#\" class=\"readon3\">Read More</a></p><div class=\"clear\"></div>"
           name: Addons
         -
           title: Extras
@@ -519,7 +519,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<div class=\"rt-icon-badge rt-badge-left\">\_</div>\n<h2 class=\"title\"><a href=\"#\">Demo Info</a></h2>\n<p>All demo content is for sample purpose only. All content images have been sourced from <a href=\"http://unsplash.com/\">Unsplash</a> or <a href=\"http://flickr.com\">Flickr</a>. <a href=\"https://rockettheme.com/joomla/themes/vermilion\">Click for Attribution</a>.</p>\n<p>Please use the <a href=\"https://rockettheme.com/joomla/themes/vermilion\">Vermilion RocketLauncher</a> to install an equivalent of the demo.</p>"
+      html: "<div class=\"rt-icon-badge rt-badge-left\">\_</div>\n<h2 class=\"title\"><a href=\"#\">Demo Info</a></h2>\n<p>All demo content is for sample purpose only. All content images have been sourced from <a href=\"http://unsplash.com/\">Unsplash</a> or <a href=\"http://flickr.com\">Flickr</a>. <a href=\"https://dazzlesoftware.org/joomla/themes/vermilion\">Click for Attribution</a>.</p>\n<p>Please use the <a href=\"https://dazzlesoftware.org/joomla/themes/vermilion\">Vermilion RocketLauncher</a> to install an equivalent of the demo.</p>"
       twig: '0'
       filter: '0'
     block:

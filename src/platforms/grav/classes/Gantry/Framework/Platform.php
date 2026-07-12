@@ -18,8 +18,8 @@ use Grav\Common\Grav;
 use Grav\Common\Plugins;
 use Grav\Common\User\Interfaces\UserInterface;
 use Grav\Common\Utils;
-use RocketTheme\Toolbox\DI\Container;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\DI\Container;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * The Platform Configuration class contains configuration information.

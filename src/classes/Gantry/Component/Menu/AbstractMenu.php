@@ -13,11 +13,11 @@ use Gantry\Component\Config\Config;
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Component\Gantry\GantryTrait;
 use Gantry\Framework\Gantry;
-use RocketTheme\Toolbox\ArrayTraits\ArrayAccessWithGetters;
-use RocketTheme\Toolbox\ArrayTraits\Countable;
-use RocketTheme\Toolbox\ArrayTraits\Export;
-use RocketTheme\Toolbox\ArrayTraits\Iterator;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ArrayTraits\ArrayAccessWithGetters;
+use Dazzle Software\Toolbox\ArrayTraits\Countable;
+use Dazzle Software\Toolbox\ArrayTraits\Export;
+use Dazzle Software\Toolbox\ArrayTraits\Iterator;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class AbstractMenu

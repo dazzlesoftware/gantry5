@@ -9,10 +9,10 @@
 
 namespace Gantry\Component\Request;
 
-use RocketTheme\Toolbox\ArrayTraits\Export;
-use RocketTheme\Toolbox\ArrayTraits\ExportInterface;
-use RocketTheme\Toolbox\ArrayTraits\Iterator;
-use RocketTheme\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
+use Dazzle Software\Toolbox\ArrayTraits\Export;
+use Dazzle Software\Toolbox\ArrayTraits\ExportInterface;
+use Dazzle Software\Toolbox\ArrayTraits\Iterator;
+use Dazzle Software\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
 
 /**
  * Class Input

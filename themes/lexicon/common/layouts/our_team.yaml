@@ -211,7 +211,7 @@ content:
     attributes:
       title: 'We are Hiring'
       titletag: ''
-      html: "<p>Join Our Awesome Team with a Great Work Environment</p>\n\n<p><a href=\"https://rockettheme.com/grav/themes/lexicon\" class=\"readon\">Join Lexicon</a></p>"
+      html: "<p>Join Our Awesome Team with a Great Work Environment</p>\n\n<p><a href=\"https://dazzlesoftware.org/grav/themes/lexicon\" class=\"readon\">Join Lexicon</a></p>"
       twig: '0'
       filter: '0'
     block:

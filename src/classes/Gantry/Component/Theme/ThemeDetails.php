@@ -12,9 +12,9 @@ namespace Gantry\Component\Theme;
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Component\Filesystem\Streams;
 use Gantry\Framework\Gantry;
-use RocketTheme\Toolbox\ArrayTraits\Export;
-use RocketTheme\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+use Dazzle Software\Toolbox\ArrayTraits\Export;
+use Dazzle Software\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
+use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class ThemeDetails

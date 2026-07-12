@@ -60,9 +60,9 @@ class MockableTest extends TestCase
         }
         
         // Create ArrayTraits first
-        if (!trait_exists('\RocketTheme\Toolbox\ArrayTraits\ArrayAccess')) {
+        if (!trait_exists('\Dazzle Software\Toolbox\ArrayTraits\ArrayAccess')) {
             eval('
-                namespace RocketTheme\Toolbox\ArrayTraits;
+                namespace Dazzle Software\Toolbox\ArrayTraits;
                 
                 trait ArrayAccess {
                     protected $items = [];
@@ -90,7 +90,7 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace RocketTheme\Toolbox\ArrayTraits;
+                namespace Dazzle Software\Toolbox\ArrayTraits;
                 
                 trait Iterator {
                     protected $position = 0;
@@ -126,7 +126,7 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace RocketTheme\Toolbox\ArrayTraits;
+                namespace Dazzle Software\Toolbox\ArrayTraits;
                 
                 interface ExportInterface {
                     public function toArray();
@@ -134,7 +134,7 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace RocketTheme\Toolbox\ArrayTraits;
+                namespace Dazzle Software\Toolbox\ArrayTraits;
                 
                 trait Export {
                     public function toArray() {
@@ -149,11 +149,11 @@ class MockableTest extends TestCase
             eval('
                 namespace Gantry\Component\Layout;
                 
-                class Layout implements \ArrayAccess, \Iterator, \RocketTheme\Toolbox\ArrayTraits\ExportInterface
+                class Layout implements \ArrayAccess, \Iterator, \Dazzle Software\Toolbox\ArrayTraits\ExportInterface
                 {
-                    use \RocketTheme\Toolbox\ArrayTraits\ArrayAccess;
-                    use \RocketTheme\Toolbox\ArrayTraits\Iterator;
-                    use \RocketTheme\Toolbox\ArrayTraits\Export;
+                    use \Dazzle Software\Toolbox\ArrayTraits\ArrayAccess;
+                    use \Dazzle Software\Toolbox\ArrayTraits\Iterator;
+                    use \Dazzle Software\Toolbox\ArrayTraits\Export;
                     
                     const VERSION = 7;
                     

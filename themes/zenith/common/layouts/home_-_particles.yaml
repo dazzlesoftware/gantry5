@@ -341,7 +341,7 @@ content:
       speed: '800'
       testimony:
         -
-          content: 'Zenith is a revolutionary new design from RocketTheme featuring dozens of powerful particles and typography options.'
+          content: 'Zenith is a revolutionary new design from Dazzle Software featuring dozens of powerful particles and typography options.'
           author: 'Penelope Gardner'
           position: 'CEO at New Yorker'
           photo: 'gantry-media://home/above/img-1.png'
@@ -455,7 +455,7 @@ content:
         -
           layout: text
           image: ''
-          description: 'With RocketTheme’s versatile designs, every template or theme can be utilized for a wide range of website types.'
+          description: 'With Dazzle Software’s versatile designs, every template or theme can be utilized for a wide range of website types.'
           date: '2019-03-19'
           target: _self
           title: 'Get more value out of your purchase.'
@@ -497,7 +497,7 @@ content:
           subtitle: 'Template Designer'
           startyear: '2008'
           endyear: '2009'
-          title: RocketTheme
+          title: Dazzle Software
         -
           subtitle: 'Senior Designer'
           startyear: '2009'
@@ -546,7 +546,7 @@ content:
           category: ''
           subject: 'Featured Article'
           intro: ''
-          content: "Zenith is all about color, and the RocketTheme team has put together an array of modern color presets to make it easier than ever to build a bold new website. Switch between presets with a click, or customize your own website experience down to the smallest detail.\n"
+          content: "Zenith is all about color, and the Dazzle Software team has put together an array of modern color presets to make it easier than ever to build a bold new website. Switch between presets with a click, or customize your own website experience down to the smallest detail.\n"
           readmore: 'Learn More'
           readmorelink: '#'
           readmoretarget: _self

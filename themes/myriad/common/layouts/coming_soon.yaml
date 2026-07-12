@@ -220,7 +220,7 @@ content:
     title: 'Simple Counter'
     attributes:
       title: ''
-      desc: "<h2 class=\"title\">Our Website is Coming Soon</h2>\n\nMyriad supports a simple coming soon or offline style page with a time counter. It has been specifically styled to match the template. This feature can be enabled and the page customized in the Layout manager.  Please visit <a href=\"https://www.rockettheme.com/docs/joomla/templates/myriad/comingsoon.md\">this tutorial</a> for more information."
+      desc: "<h2 class=\"title\">Our Website is Coming Soon</h2>\n\nMyriad supports a simple coming soon or offline style page with a time counter. It has been specifically styled to match the template. This feature can be enabled and the page customized in the Layout manager.  Please visit <a href=\"https://dazzlesoftware.org/docs/joomla/templates/myriad/comingsoon.md\">this tutorial</a> for more information."
       date: '1'
       month: '1'
       year: '2025'
@@ -302,7 +302,7 @@ content:
       key: bottom-a
   branding-7005:
     attributes:
-      content: '<a href="https://www.rockettheme.com/" title="RocketTheme" class="rt-powered-by"></a>'
+      content: '<a href="https://dazzlesoftware.org/" title="Dazzle Software" class="rt-powered-by"></a>'
     block:
       class: 'nomarginleft nopaddingleft rt-branding'
   copyright-9042:

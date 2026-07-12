@@ -28,7 +28,7 @@ use Joomla\CMS\Table\Table;
 use Joomla\CMS\Version;
 use Joomla\Component\Menus\Administrator\Table\MenuTypeTable; // Joomla 4
 use Joomla\Component\Templates\Administrator\Table\StyleTable; // Joomla 4
-use RocketTheme\Toolbox\File\YamlFile;
+use Dazzle Software\Toolbox\File\YamlFile;
 
 /**
  * Class ThemeInstaller

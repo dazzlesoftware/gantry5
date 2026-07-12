@@ -21,5 +21,5 @@ items:
   -
     icon: 'fa fa-rss fa-fw'
     text: ''
-    link: 'http://www.rockettheme.com/product-updates?rss'
+    link: 'https://dazzlesoftware.org/product-updates?rss'
     name: RSS

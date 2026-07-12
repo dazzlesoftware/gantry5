@@ -812,7 +812,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/joomla/templates/isotope'
+          link: 'https://dazzlesoftware.org/joomla/templates/isotope'
           icon: ''
           readmoreclass: ''
           title: 'About Isotope'
@@ -825,7 +825,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/docs/joomla/templates/isotope'
+          link: 'https://dazzlesoftware.org/docs/joomla/templates/isotope'
           icon: ''
           readmoreclass: ''
           title: 'Style Guide'
@@ -864,7 +864,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/contact-us'
+          link: 'https://dazzlesoftware.org/contact-us'
           icon: ''
           readmoreclass: ''
           title: Questions
@@ -877,7 +877,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.rockettheme.com/forum/joomla-template-isotope'
+          link: 'https://dazzlesoftware.org/forum/joomla-template-isotope'
           icon: ''
           readmoreclass: ''
           title: 'Help & Support'
@@ -897,7 +897,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.facebook.com/RocketTheme/'
+          link: 'https://www.facebook.com/Dazzle Software/'
           icon: ''
           readmoreclass: ''
           title: Facebook
@@ -936,7 +936,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://www.youtube.com/user/OfficialRocketTheme'
+          link: 'https://www.youtube.com/user/OfficialDazzle Software'
           icon: ''
           readmoreclass: ''
           title: YouTube
@@ -1051,7 +1051,7 @@ content:
   custom-3300:
     title: Availability
     attributes:
-      html: "<h3 class=\"g-title\">Availability</h3>\n<p><a href=\"https://www.rockettheme.com/joomla/templates/isotope\">Isotope</a> can be <span class=\"hidden-tablet\">individually </span>purchased with lifetime download / forum access.</p>\n<p>Alternatively, Isotope is available as part of a subscription.</p>"
+      html: "<h3 class=\"g-title\">Availability</h3>\n<p><a href=\"https://dazzlesoftware.org/joomla/templates/isotope\">Isotope</a> can be <span class=\"hidden-tablet\">individually </span>purchased with lifetime download / forum access.</p>\n<p>Alternatively, Isotope is available as part of a subscription.</p>"
   branding-1875:
     attributes:
       content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'

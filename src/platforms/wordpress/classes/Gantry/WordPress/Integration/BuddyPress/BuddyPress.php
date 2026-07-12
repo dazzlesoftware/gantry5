@@ -14,8 +14,8 @@ defined('ABSPATH') || exit;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use RocketTheme\Toolbox\Event\Event;
-use RocketTheme\Toolbox\Event\EventSubscriberInterface;
+use Dazzle Software\Toolbox\Event\Event;
+use Dazzle Software\Toolbox\Event\EventSubscriberInterface;
 
 /**
  * Class BuddyPress
