@@ -1,69 +1,73 @@
 'use strict';
 
-const validateField = require('../utils/field-validation');
+var $             = require('elements'),
+    isArray       = require('mout/lang/isArray'),
+    contains      = require('mout/array/contains'),
+    trim          = require('mout/string/trim'),
+    validateField = require('../utils/field-validation');
 
-const unwrap = (value) => value && value[0] instanceof Element ? value[0] : value;
-const asArray = (value) => {
-    if (!value) return [];
-    if (value instanceof Element) return [value];
-    return Array.from(value).map(unwrap).filter(Boolean);
-};
-const escapeSelector = (value) => window.CSS && CSS.escape
-    ? CSS.escape(value)
-    : String(value).replace(/["\\]/g, '\\$&');
-const query = (container, selector) => {
-    try { return container.querySelector(selector); }
-    catch (error) { return null; }
-};
+var submit = function(elements, container, options) {
+    var valid   = [],
+        invalid = [];
 
-module.exports = (elements, container, options = {}) => {
-    const valid = [];
-    const invalid = [];
-    const root = unwrap(container);
-    if (!root) return { valid, invalid };
+    elements = $(elements);
+    container = $(container);
+    options = options || {};
 
-    asArray(elements).forEach((original) => {
-        const name = original.name;
-        const type = original.type;
-        if (!name || original.disabled || (type === 'radio' && !original.checked)) return;
+    $(elements).forEach(function(input) {
+        input = $(input);
+        var name = input.attribute('name'),
+            type = input.attribute('type');
+        if (!name || input.disabled() || (type == 'radio' && !input.checked())) { return; }
 
-        const escapedName = escapeSelector(name);
-        let input = query(root, `[name="${escapedName}"]${type === 'radio' ? ':checked' : ''}`);
+        input = container.find('[name="' + name + '"]' + (type == 'radio' ? ':checked' : ''));
 
-        // Gantry checkbox fields contain both a hidden fallback and checkbox.
-        if (type === 'checkbox' && query(root, `input[type="hidden"][name="${escapedName}"]`)) {
-            input = query(root, `[name="${escapedName}"][type="checkbox"]`);
-        }
-        if (!input) return;
-
-        let value = input.type === 'checkbox' ? Number(input.checked) : input.value;
-        const parent = input.closest('.settings-param');
-        let override = parent ? query(parent, ':scope > input[type="checkbox"]') : null;
-        if (!override && input.dataset.overrideTarget) {
-            override = query(document, input.dataset.overrideTarget);
+        if (type === 'checkbox' && container.find('[type="hidden"][name="' + name + '"]')) {
+            input = container.find('[name="' + name + '"][type="checkbox"]');
         }
 
-        if (input.multiple && (input.type === 'select-one' || input.type === 'select-multiple')) {
-            value = [...input.selectedOptions].map((option) => option.value);
-        }
-        if (override && !override.checked) return;
+        if (input) {
+            var value    = input.type() == 'checkbox' ? Number(input.checked()) : input.value(),
+                parent   = input.parent('.settings-param'),
+                override = parent ? parent.find('> input[type="checkbox"]') : null;
 
-        // Empty layout block sizes are allowed and still included in submission.
-        const skipValidation = name.includes('block-size') && value === '';
-        if (!skipValidation && !validateField(input)) invalid.push(input);
+            override = override || $(input.data('override-target'));
 
-        if (Array.isArray(value)) {
-            value.forEach((selection) => valid.push(`${name}[]=${encodeURIComponent(selection)}`));
-        } else if (!options.submitUnchecked || input.type !== 'checkbox' || Boolean(value)) {
-            valid.push(`${name}=${encodeURIComponent(value)}`);
+            if (contains(['select', 'select-multiple'], input.type()) && input.attribute('multiple')) {
+                value = (input.search('option[selected]') || []).map(function(selection) {
+                    return $(selection).value();
+                });
+            }
+
+            if (override && !override.checked()) { return; }
+
+            var skipValidation = name && name.indexOf('block-size') !== -1 && (!value || value === '');
+            if (!skipValidation && !validateField(input)) {
+                invalid.push(input);
+            }
+
+            if (isArray(value)) {
+                value.forEach(function(selection) {
+                    valid.push(name + '[]=' + encodeURIComponent(selection));
+                });
+            } else if (!options.submitUnchecked || (input.type() != 'checkbox' || (input.type() == 'checkbox' && !!value))) {
+                valid.push(name + '=' + encodeURIComponent(value));
+            }
         }
     });
 
-    root.querySelectorAll('h4 [data-title-editable]').forEach((title) => {
-        if (title.closest('[data-collection-template]')) return;
-        const key = title.dataset.collectionKey || (options.isRoot ? 'settings[title]' : 'title');
-        valid.push(`${key}=${encodeURIComponent(String(title.dataset.titleEditable || '').trim())}`);
-    });
+    var titles = container.search('h4 [data-title-editable]'), key;
+    if (titles) {
+        titles.forEach(function(title) {
+            title = $(title);
+            if (title.parent('[data-collection-template]')) { return; }
 
-    return { valid, invalid };
+            key = title.data('collection-key') || (options.isRoot ? 'settings[title]' : 'title');
+            valid.push(key + '=' + encodeURIComponent(trim(title.data('title-editable'))));
+        });
+    }
+
+    return { valid: valid, invalid: invalid };
 };
+
+module.exports = submit;
