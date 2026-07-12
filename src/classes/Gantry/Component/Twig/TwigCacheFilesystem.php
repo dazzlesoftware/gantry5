@@ -31,7 +31,7 @@ class TwigCacheFilesystem implements CacheInterface
      * @param string $directory The root cache directory
      * @param int    $options   A set of options
      */
-    public function __construct($directory, $options = 0)
+    public function __construct(string $directory, int $options = 0)
     {
         $this->directory = rtrim($directory, '\/').'/';
         $this->options = $options;
@@ -39,7 +39,7 @@ class TwigCacheFilesystem implements CacheInterface
     /**
      * {@inheritdoc}
      */
-    public function generateKey($name, $className)
+    public function generateKey(string $name, string $className): string
     {
         $hash = hash('sha256', $className . '-' . PHP_VERSION);
 
@@ -48,7 +48,7 @@ class TwigCacheFilesystem implements CacheInterface
     /**
      * {@inheritdoc}
      */
-    public function load($key)
+    public function load(string $key): void
     {
         if (file_exists($key)) {
             @include_once $key;
@@ -57,7 +57,7 @@ class TwigCacheFilesystem implements CacheInterface
     /**
      * {@inheritdoc}
      */
-    public function write($key, $content)
+    public function write(string $key, string $content): void
     {
         $dir = \dirname($key);
         if (!is_dir($dir)) {
@@ -92,7 +92,7 @@ class TwigCacheFilesystem implements CacheInterface
     /**
      * {@inheritdoc}
      */
-    public function getTimestamp($key)
+    public function getTimestamp(string $key): int
     {
         if (!file_exists($key)) {
             return 0;

@@ -78,7 +78,7 @@ class Streams
             }
             $type = !empty($config['type']) ? $config['type'] : 'ReadOnlyStream';
             if ($type[0] !== '\\') {
-                $type = '\\Rockettheme\\Toolbox\\StreamWrapper\\' . $type;
+                $type = '\\DazzleSoftware\\Toolbox\\StreamWrapper\\' . $type;
             }
             $this->schemes[$scheme] = $type;
 

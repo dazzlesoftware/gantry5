@@ -59,7 +59,7 @@ class Theme extends AbstractTheme
         $context['textdomain'] = $this->details()->get('configuration.theme.textdomain');
 
         if (!$this->user) {
-            $this->user = new User;
+            $this->user = Timber::get_user();
         }
 
         $context['current_user'] = $this->user;
@@ -145,7 +145,7 @@ class Theme extends AbstractTheme
         static $timberContext;
 
         if (!isset($timberContext)) {
-            $timberContext = Timber::get_context();
+            $timberContext = Timber::context();
         }
 
         // Include Gantry specific things to the context.

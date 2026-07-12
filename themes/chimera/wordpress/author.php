@@ -26,13 +26,13 @@ $gantry = Gantry::instance();
 $theme  = $gantry['theme'];
 
 // We need to render contents of <head> before plugin content gets added.
-$context              = Timber::get_context();
+$context              = Timber::context();
 $context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
 
 $context['posts'] = Timber::get_posts();
 
 if (isset($authordata)) {
-    $author            = new User($authordata->ID);
+    $author            = Timber::get_user($authordata->ID);
     $context['author'] = $author;
     $context['title']  = __('Author:', $context['textdomain']) . ' ' . $author->name();
 }

@@ -17,10 +17,13 @@ class Site extends \Timber\Site
 {
     /**
      * @param string $widget_id
-     * @return \TimberFunctionWrapper
+     * @return string
      */
     public function sidebar( $widget_id = '' )
     {
-        return \TimberHelper::function_wrapper('dynamic_sidebar', [$widget_id], true);
+        ob_start();
+        \dynamic_sidebar($widget_id);
+
+        return (string) ob_get_clean();
     }
 }

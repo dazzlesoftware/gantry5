@@ -11,7 +11,6 @@ defined('ABSPATH') or die;
 
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme;
-use Timber\Helper;
 use Timber\Timber;
 
 /*
@@ -24,10 +23,10 @@ $gantry = Gantry::instance();
 $theme  = $gantry['theme'];
 
 // We need to render contents of <head> before plugin content gets added.
-$context              = Timber::get_context();
+$context              = Timber::context();
 $context['page_head'] = $theme->render('partials/page_head.html.twig', $context);
 
-$context['posts']   = Timber::query_post();
-$context['content'] = Helper::ob_function('the_content');
+$context['posts']   = Timber::get_post();
+$context['content'] = (static function (): string { ob_start(); the_content(); return (string) ob_get_clean(); })();
 
 Timber::render('bbpress.html.twig', $context);

@@ -18,6 +18,18 @@ use Timber\Pagination;
 class PostQuery extends \Timber\PostQuery
 {
     /**
+     * @param \WP_Query|array<string, mixed>|null $query
+     */
+    public function __construct($query = null)
+    {
+        if (!$query instanceof \WP_Query) {
+            $query = new \WP_Query((array) $query);
+        }
+
+        parent::__construct($query);
+    }
+
+    /**
      * For backwards compatibility.
      *
      * @return mixed

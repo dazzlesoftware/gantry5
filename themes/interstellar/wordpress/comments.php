@@ -16,7 +16,7 @@ use Timber\Timber;
  * The template for displaying comments
  */
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $post            = new Post();
 $context['post'] = $post;

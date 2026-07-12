@@ -118,7 +118,6 @@ abstract class RealLoader
         // On legacy platforms, map Pimple/Twig to compat vendor.
         if ($useCompatLibraries) {
             $loader->setPsr4('Twig\\', "{$lib}/compat/vendor/twig/twig/src");
-            $loader->set('Twig_', "{$lib}/compat/vendor/twig/twig/lib");
             $loader->set('Pimple', "{$lib}/compat/vendor/pimple/pimple/src");
         }
 

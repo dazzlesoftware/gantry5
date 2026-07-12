@@ -2315,7 +2315,7 @@
 1. [Common](#common)
     1. [](#bugfix)
         - Fix regression in all collections (Social, Custom JS / CSS, etc) (#761, #762, #764, #767, #768)
-        - Fix Argument 1 passed to `Dazzle Software\Toolbox\Blueprints\Blueprints::mergeArrays()` must be of the type array
+        - Fix Argument 1 passed to `DazzleSoftware\Toolbox\Blueprints\Blueprints::mergeArrays()` must be of the type array
         - Re-index collection lists to avoid gaps in the indexing (also fixes broken lists that were saved)
         - Fixed issue in Layout Manager where top level section settings would show the Block tab (#766)
 1. [WordPress](#wordpress)

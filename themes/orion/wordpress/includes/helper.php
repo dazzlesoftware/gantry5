@@ -41,7 +41,7 @@ class G5ThemeHelper
     public static function add_to_context(array $context)
     {
         $context['is_user_logged_in'] = is_user_logged_in();
-        $context['pagination']        = Timber::get_pagination();
+        $context['pagination']        = \Timber\Pagination::get_pagination();
 
         return $context;
     }

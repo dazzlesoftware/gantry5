@@ -57,27 +57,11 @@ class Gantry extends Base\Gantry
      */
     protected static function init()
     {
-        // Make sure that Timber plugin is new enough or not installed.
-        if (class_exists('Timber', false) && empty(\Timber::$version)) {
-            $action = 'deactivate';
-            $slug = 'timber-library/timber.php';
-            $url = \esc_url(\wp_nonce_url(\add_query_arg(['action' => $action, 'plugin' => $slug], \admin_url('plugins.php')), 'deactivate-plugin_' . $slug));
-            throw new \LogicException('<strong>Timber Plugin</strong> is too old for <strong>Gantry 5</strong> and it is no longer needed. Click <a href="' . $url . '"><strong>here</strong></a> to deactivate it.');
-        }
-
         $container = parent::init();
 
-        if (class_exists('TimberHelper')) {
-            // Using Timber plugin.
-            if (\GANTRY_DEBUGGER) {
-                Debugger::addMessage('Using Timber Plugin v' . Timber::$version);
-            }
-        } else {
-            // Using composer version of Timber; Initialize it.
-            new Timber;
-            if (\GANTRY_DEBUGGER) {
-                Debugger::addMessage('Using Timber Library v' . Timber::$version);
-            }
+        Timber::init();
+        if (\GANTRY_DEBUGGER) {
+            Debugger::addMessage('Using Timber Library v' . Timber::VERSION);
         }
 
         $lookup = $container['loader']->getPrefixesPsr4()['Gantry\\'];
