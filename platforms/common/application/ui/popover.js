@@ -16,7 +16,7 @@ var prime    = require('prime'),
     merge    = require('mout/object/merge'),
     isFunct  = require('mout/lang/isFunction'),
 
-    request  = require('agent');
+    request  = require('../utils/request');
 
 var Popover = new prime({
     mixin: [Bound, Options],

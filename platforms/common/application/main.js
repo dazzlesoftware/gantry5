@@ -2,7 +2,7 @@
 var $              = require('elements'),
     zen            = require('elements/zen'),
     ready          = require('elements/domready'),
-    request        = require('agent'),
+    request        = require('./utils/request'),
     ui             = require('./ui'),
     interpolate    = require('mout/string/interpolate'),
     trim           = require('mout/string/trim'),
@@ -374,7 +374,7 @@ var modules = {
      "$"     : elements,
      zen     : zen,
      domready: domready,
-     agent   : require('agent'),*/
+     agent   : require('./utils/request'),*/
     lm: lm,
     mm: mm,
     assingments: require('./assignments'),

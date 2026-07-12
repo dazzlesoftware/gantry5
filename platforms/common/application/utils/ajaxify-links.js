@@ -18,7 +18,7 @@ var prime         = require('prime'),
     getParam      = require('mout/queryString/getParam'),
     setParam      = require('mout/queryString/setParam'),
 
-    request       = require('agent')(),
+    request       = require('./request')(),
     History       = require('./history'),
     flags         = require('./flags-state'),
     parseAjaxURI  = require('./get-ajax-url').parse,

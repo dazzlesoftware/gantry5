@@ -36,7 +36,7 @@ var prime         = require('prime'),
     asyncForEach  = require('../../utils/async-foreach'),
     translate     = require('../../utils/translate'),
 
-    request       = require('agent'),
+    request       = require('../../utils/request'),
 
     wf            = require('webfontloader');
 

@@ -17,7 +17,7 @@ var prime    = require('prime'),
     merge    = require('mout/object/merge'),
     trim     = require('mout/string/trim'),
 
-    request  = require('agent');
+    request  = require('../utils/request');
 
 var animationEndSupport = false;
 

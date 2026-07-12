@@ -2,7 +2,7 @@
 
 var $             = require('../../utils/elements.utils'),
     prime         = require('prime'),
-    request       = require('agent'),
+    request       = require('../../utils/request'),
     zen           = require('elements/zen'),
     domready      = require('elements/domready'),
     bind          = require('mout/function/bind'),

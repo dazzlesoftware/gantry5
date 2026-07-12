@@ -4,7 +4,7 @@ var ready         = require('elements/domready'),
 
     modal         = require('./modal'),
     toastr        = require('./toastr'),
-    request       = require('agent'),
+    request       = require('../utils/request'),
 
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,

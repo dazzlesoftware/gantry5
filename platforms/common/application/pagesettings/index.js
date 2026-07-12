@@ -6,7 +6,7 @@ var $                  = require('elements'),
     modal              = require('../ui').modal,
     toastr             = require('../ui').toastr,
     Eraser             = require('../ui/eraser'),
-    request            = require('agent'),
+    request            = require('../utils/request'),
     indexOf            = require('mout/array/indexOf'),
     simpleSort         = require('sortablejs'),
 
