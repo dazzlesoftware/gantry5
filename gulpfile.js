@@ -49,7 +49,7 @@ if (process.argv.slice(2).join(',').match(/(-{1,2}update|-{1,2}up|-{1,2}install|
 
 var argv            = require('yargs').argv,
     gulpif          = require('gulp-if'),
-    uglify          = require('gulp-uglify'),
+    terser          = require('gulp-terser'),
     rename          = require('gulp-rename'),
     buffer          = require('vinyl-buffer'),
     source          = require('vinyl-source-stream'),
@@ -220,7 +220,7 @@ var bundleShare = function(bundle, _in, _out, _maps, _dest) {
         .pipe(buffer())
         // sourcemaps start
         .pipe(gulpif(!prod, sourcemaps.init({ loadMaps: true })))
-        .pipe(gulpif(prod, uglify()))
+        .pipe(gulpif(prod, terser()))
         .pipe(gulpif(!prod, sourcemaps.write('.')))
         // sourcemaps end
         .pipe(gulp.dest(_dest));
@@ -240,7 +240,7 @@ var minifyJS = function() {
                 log(colors.green('√'), 'Saved ' + app.in);
             })
             .on('error', log)
-            .pipe(gulpif(_ext == 'json', jsonminify(), uglify()))
+            .pipe(gulpif(_ext == 'json', jsonminify(), terser()))
             .pipe(gulp.dest(_dest)));
     });
 

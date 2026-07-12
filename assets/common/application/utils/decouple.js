@@ -1,37 +1,22 @@
 'use strict';
 
-var rAF = (function() {
-    return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        function(callback) { window.setTimeout(callback, 1000 / 60); };
-}());
+module.exports = (element, type, callback, options = { passive: true }) => {
+    const target = element && element[0] ? element[0] : element;
+    let latestEvent;
+    let frameId = null;
 
-var decouple = function(element, event, callback) {
-    var evt, tracking = false;
-    element = element[0] || element;
-
-    var capture = function(e) {
-        evt = e;
-        track();
-    };
-
-    var track = function() {
-        if (!tracking) {
-            rAF(update);
-            tracking = true;
+    const capture = (event) => {
+        latestEvent = event;
+        if (frameId !== null) {
+            return;
         }
+
+        frameId = requestAnimationFrame(() => {
+            frameId = null;
+            callback.call(target, latestEvent);
+        });
     };
 
-    var update = function() {
-        callback.call(element, evt);
-        tracking = false;
-    };
-
-    try {
-        element.addEventListener(event, capture, false);
-    } catch (e) {}
-
+    target.addEventListener(type, capture, options);
     return capture;
 };
-
-module.exports = decouple;

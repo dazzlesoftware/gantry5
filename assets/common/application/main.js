@@ -1,22 +1,25 @@
-"use strict";
+'use strict';
 
-var ready     = require('domready'),
-    menu      = require('./menu'),
-    offcanvas = require('./offcanvas'),
-    totop     = require('./totop'),
-    $         = require('./utils/dollar-extras'),
+const Menu = require('./menu');
+const Offcanvas = require('./offcanvas');
+require('./totop');
 
-    instances = {};
+const { ready, query, queryAll, delegate } = require('./utils/dom');
+const instances = { ready, query, queryAll, delegate };
 
-ready(function() {
-    instances = {
-        offcanvas: new offcanvas(),
-        menu: new menu(),
-        $: $,
-        ready: ready
-    };
+window.G5 = instances;
+module.exports = instances;
 
-    module.exports = window.G5 = instances;
+ready(() => {
+    try {
+        instances.offcanvas = new Offcanvas();
+    } catch (error) {
+        console.error('Gantry off-canvas initialization failed:', error);
+    }
+
+    try {
+        instances.menu = new Menu();
+    } catch (error) {
+        console.error('Gantry menu initialization failed:', error);
+    }
 });
-
-module.exports = window.G5 = instances;

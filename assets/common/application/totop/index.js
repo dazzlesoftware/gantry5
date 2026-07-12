@@ -1,25 +1,16 @@
-"use strict";
+'use strict';
 
-var ready = require('domready'),
-    $     = require('../utils/dollar-extras');
+const { ready, query } = require('../utils/dom');
 
-var timeOut,
-    scrollToTop = function() {
-        if (document.body.scrollTop != 0 || document.documentElement.scrollTop != 0) {
-            window.scrollBy(0, -50);
-            timeOut = setTimeout(scrollToTop, 10);
-        } else {
-            clearTimeout(timeOut);
-        }
-    };
+ready(() => {
+    const toTop = query('#g-totop');
+    if (!toTop) {
+        return;
+    }
 
-ready(function() {
-    var totop = $('#g-totop');
-    if (!totop) { return; }
-
-    totop.on('click', function(e) {
-        e.preventDefault();
-        scrollToTop();
+    toTop.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
 

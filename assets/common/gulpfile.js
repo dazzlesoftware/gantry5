@@ -6,7 +6,7 @@ const colors = require('ansi-colors');
 
 var argv            = require('yargs').argv,
     gulpif          = require('gulp-if'),
-    uglify          = require('gulp-uglify'),
+    terser          = require('gulp-terser'),
     rename          = require('gulp-rename'),
     buffer          = require('vinyl-buffer'),
     source          = require('vinyl-source-stream'),
@@ -105,7 +105,7 @@ var bundleShare = function(bundle, _in, _out, _maps, _dest) {
         .pipe(buffer())
         // sourcemaps start
         .pipe(gulpif(!prod, sourcemaps.init({ loadMaps: true })))
-        .pipe(gulpif(prod, uglify()))
+        .pipe(gulpif(prod, terser()))
         .pipe(gulpif(!prod, sourcemaps.write('.')))
         // sourcemaps end
         .pipe(gulp.dest(_dest));
