@@ -1,11 +1,22 @@
 "use strict";
 var $          = require('elements'),
-    moofx      = require('moofx'),
     map        = require('mout/array/map'),
     series     = require('mout/function/series'),
     slick      = require('slick'),
     zen        = require('elements/zen'),
     progresser = require('../ui/progresser');
+
+var unitless = ['opacity', 'zIndex', 'fontWeight', 'lineHeight', 'zoom', 'order', 'flexGrow', 'flexShrink'];
+
+var durationMs = function(value) {
+    if (typeof value === 'number') { return value; }
+    value = String(value || '250ms').trim();
+    return value.endsWith('ms') ? parseFloat(value) : parseFloat(value) * 1000;
+};
+
+var styleValue = function(property, value) {
+    return typeof value === 'number' && unitless.indexOf(property) === -1 ? value + 'px' : String(value);
+};
 
 var walk = function(combinator, method) {
 
@@ -24,14 +35,47 @@ var walk = function(combinator, method) {
 
 $.implement({
     style: function() {
-        var moo = moofx(this);
-        moo.style.apply(moo, arguments);
+        var property = arguments[0], value = arguments[1];
+        this.forEach(function(element) {
+            if (typeof property === 'string') {
+                element.style[property] = styleValue(property, value);
+                return;
+            }
+            Object.keys(property || {}).forEach(function(key) {
+                element.style[key] = styleValue(key, property[key]);
+            });
+        });
         return this;
     },
 
-    animate: function() {
-        var moo = moofx(this);
-        moo.animate.apply(moo, arguments);
+    animate: function(properties, options) {
+        options = typeof options === 'string' ? { duration: options } : (options || {});
+        var duration = durationMs(options.duration),
+            easing = options.equation || options.easing || 'ease',
+            callback = options.callback || function() {},
+            remaining = this.length;
+
+        if (!remaining) { callback.call(this); return this; }
+        this.forEach(function(element) {
+            var from = {}, to = {};
+            Object.keys(properties).forEach(function(property) {
+                from[property] = getComputedStyle(element)[property];
+                to[property] = styleValue(property, properties[property]);
+            });
+
+            if (!element.animate || duration <= 0) {
+                Object.assign(element.style, to);
+                if (!--remaining) { callback.call(this); }
+                return;
+            }
+
+            var animation = element.animate([from, to], { duration: duration, easing: easing, fill: 'forwards' });
+            animation.addEventListener('finish', function() {
+                Object.assign(element.style, to);
+                animation.cancel();
+                if (!--remaining) { callback.call(this); }
+            }.bind(this), { once: true });
+        }, this);
         return this;
     },
 
@@ -58,8 +102,9 @@ $.implement({
     },
 
     compute: function() {
-        var moo = moofx(this);
-        return moo.compute.apply(moo, arguments);
+        if (!this[0]) { return null; }
+        var computed = getComputedStyle(this[0]), property = arguments[0];
+        return property ? computed[property] || computed.getPropertyValue(property) : computed;
     },
 
     showIndicator: function(klass, keepIcon) {

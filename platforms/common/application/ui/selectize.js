@@ -12,7 +12,6 @@ var prime      = require('prime'),
     Options    = require('prime-util/prime/options'),
 
     $          = require('../utils/elements.utils'),
-    moofx      = require('moofx'),
 
     bind       = require('mout/function/bind'),
     forEach    = require('mout/collection/forEach'),
@@ -1115,20 +1114,8 @@ var Selectize = new prime({
 
             if (y + height_item > height_menu + scroll) {
                 this.$dropdown_content[0].scrollTop = scroll_bottom;
-                /*moofx(bind(function(value){
-                 this.$dropdown_content[0].scrollTop = value;
-                 }, this), {
-                 duration: animate ? this.options.scrollDuration : 0,
-                 equation: 'linear'
-                 }).start(scroll, scroll_bottom);*/
             } else if (y < scroll) {
                 this.$dropdown_content[0].scrollTop = scroll_top;
-                /*moofx(bind(function(value){
-                 this.$dropdown_content[0].scrollTop = value;
-                 }, this), {
-                 duration: animate ? this.options.scrollDuration : 0,
-                 equation: 'linear'
-                 }).start(scroll, scroll_top);*/
             }
 
         }

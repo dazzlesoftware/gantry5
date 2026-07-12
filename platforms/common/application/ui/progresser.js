@@ -6,7 +6,6 @@ var $        = require('elements'),
     Bound    = require('prime-util/prime/bound'),
     Options  = require('prime-util/prime/options'),
     zen      = require('elements/zen'),
-    moofx    = require('moofx'),
 
     bind     = require('mout/function/bind'),
     isArray  = require('mout/lang/isArray'),
@@ -159,19 +158,24 @@ var Progresser = new prime({
 
     drawAnimated: function(v) {
         this.element.emit('progress-animation-start');
+        var start = performance.now(),
+            duration = parseFloat(this.options.animation.duration) || 1200,
+            initial = this.options.animationStartValue,
+            frame = bind(function(timestamp) {
+                var progress = Math.min(1, (timestamp - start) / duration),
+                    stepValue = initial * (1 - progress) + v * progress;
+                this.drawFrame(stepValue);
+                this.element.emit('progress-animation-change', progress, stepValue);
 
-        moofx(bind(function(now) {
-            var stepValue = this.options.animationStartValue * (1 - now) + v * now;
-            this.drawFrame(stepValue);
-            this.element.emit('progress-animation-change', now, stepValue);
-        }, this), {
-            duration: this.options.animation.duration || '1200',
-            equation: this.options.animation.equation || 'linear',
-            callback: bind(function() {
+                if (progress < 1) {
+                    requestAnimationFrame(frame);
+                    return;
+                }
                 if (this.options.animation.callback) { this.options.animation.callback(); }
                 this.element.emit('progress-animation-end');
-            }, this)
-        }).start(0, 1);
+            }, this);
+
+        requestAnimationFrame(frame);
     },
 
     getThickness: function() {

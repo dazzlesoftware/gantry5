@@ -772,11 +772,6 @@ csv-parse@^4.6.5:
   resolved "https://registry.npmjs.org/csv-parse/-/csv-parse-4.15.4.tgz"
   integrity sha512-OdBbFc0yZhOm17lSxqkirrHlFFVpKRT0wp4DAGoJelsP3LbGzV9LNr7XmM/lrr0uGkCtaqac9UhP8PDHXOAbMg==
 
-cubic-bezier@0.1:
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/cubic-bezier/-/cubic-bezier-0.1.2.tgz"
-  integrity sha512-kIojIIJQ9QZ5kYaeEeFG+a9oCgPtw1CHqF8Y52enHzu2Cz3NjwfbDdbO7MOxXvVjEZ4tSU3sCGykpZrnoHYtQA==
-
 d@^1.0.1, d@1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/d/-/d-1.0.1.tgz"
@@ -929,14 +924,6 @@ each-props@^3.0.0:
   dependencies:
     is-plain-object "^5.0.0"
     object.defaults "^1.1.0"
-
-elements@0.2:
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/elements/-/elements-0.2.4.tgz"
-  integrity sha512-82RWYQtdwfmjOW4LHfPv25X2i/sw6crdWID5g6vRIDcib7JeSEn7QDUpdETHft9DaU1ZeVi7Nn0khNSmw37iZg==
-  dependencies:
-    prime "0.3"
-    slick "1.10"
 
 elements@w00fz/elements:
   version "0.6.0"
@@ -1900,15 +1887,6 @@ module-deps@^6.2.3:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
-moofx@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/moofx/-/moofx-3.2.0.tgz"
-  integrity sha512-+XFjxMbG3+PU3eggGJecWJsAjPZ51qXh/5K5AJqB9pF86/L+321V75FOwPVDBUhoYKMf6sXZr180TdKNo0856A==
-  dependencies:
-    cubic-bezier "0.1"
-    elements "0.2"
-    prime "0.3"
-
 mout@1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/mout/-/mout-1.2.4.tgz"
@@ -2156,11 +2134,6 @@ prime@~0.4.0:
   integrity sha512-ZDyOa1CW9XZuyx9cGTxKPLZJTFVfhPCM0ILklZqcAJOLkeiW0jDuoeMztEWMH+IONu2SKCFHATQjOm48zrJA1A==
   dependencies:
     mout "~0.9"
-
-prime@0.3:
-  version "0.3.2"
-  resolved "https://registry.npmjs.org/prime/-/prime-0.3.2.tgz"
-  integrity sha512-RFv52XdJoijxmS0+rUPrPuw6F+AIT/vxbnCftGSUIQZ1JIHcnf0gtBw/jmBA9FjmQ36WecOL/nuAzWmQ3031LQ==
 
 process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -2468,11 +2441,6 @@ slick@^1.12.2:
   version "1.12.2"
   resolved "https://registry.npmjs.org/slick/-/slick-1.12.2.tgz"
   integrity sha512-4qdtOGcBjral6YIBCWJ0ljFSKNLz9KkhbWtuGvUyRowl1kxfuE1x/Z/aJcaiilpb3do9bl5K7/1h9XC5wWpY/A==
-
-slick@1.10:
-  version "1.10.4"
-  resolved "https://registry.npmjs.org/slick/-/slick-1.10.4.tgz"
-  integrity sha512-2hc2qvnCFfnuB/51QeOKZBK4kQIIPgZ9QufpH6bxi14DdOsD/9bZCXmcWy0bvt5J9pdkElqIFv19wvCZlQ/hZA==
 
 sortablejs@gantry/Sortable#master:
   version "1.4.2"
