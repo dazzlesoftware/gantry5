@@ -60,9 +60,9 @@ class MockableTest extends TestCase
         }
         
         // Create ArrayTraits first
-        if (!trait_exists('\Dazzle Software\Toolbox\ArrayTraits\ArrayAccess')) {
+        if (!trait_exists('\DazzleSoftware\Toolbox\ArrayTraits\ArrayAccess')) {
             eval('
-                namespace Dazzle Software\Toolbox\ArrayTraits;
+                namespace DazzleSoftware\Toolbox\ArrayTraits;
                 
                 trait ArrayAccess {
                     protected $items = [];
@@ -90,7 +90,7 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace Dazzle Software\Toolbox\ArrayTraits;
+                namespace DazzleSoftware\Toolbox\ArrayTraits;
                 
                 trait Iterator {
                     protected $position = 0;
@@ -126,7 +126,7 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace Dazzle Software\Toolbox\ArrayTraits;
+                namespace DazzleSoftware\Toolbox\ArrayTraits;
                 
                 interface ExportInterface {
                     public function toArray();
@@ -134,7 +134,7 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace Dazzle Software\Toolbox\ArrayTraits;
+                namespace DazzleSoftware\Toolbox\ArrayTraits;
                 
                 trait Export {
                     public function toArray() {
@@ -149,11 +149,11 @@ class MockableTest extends TestCase
             eval('
                 namespace Gantry\Component\Layout;
                 
-                class Layout implements \ArrayAccess, \Iterator, \Dazzle Software\Toolbox\ArrayTraits\ExportInterface
+                class Layout implements \ArrayAccess, \Iterator, \DazzleSoftware\Toolbox\ArrayTraits\ExportInterface
                 {
-                    use \Dazzle Software\Toolbox\ArrayTraits\ArrayAccess;
-                    use \Dazzle Software\Toolbox\ArrayTraits\Iterator;
-                    use \Dazzle Software\Toolbox\ArrayTraits\Export;
+                    use \DazzleSoftware\Toolbox\ArrayTraits\ArrayAccess;
+                    use \DazzleSoftware\Toolbox\ArrayTraits\Iterator;
+                    use \DazzleSoftware\Toolbox\ArrayTraits\Export;
                     
                     const VERSION = 7;
                     

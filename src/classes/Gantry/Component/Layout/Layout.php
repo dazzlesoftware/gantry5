@@ -15,13 +15,13 @@ use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Debugger;
 use Gantry\Framework\Outlines;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\ArrayTraits\ArrayAccess;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
-use Dazzle Software\Toolbox\ArrayTraits\ExportInterface;
-use Dazzle Software\Toolbox\ArrayTraits\Iterator;
-use Dazzle Software\Toolbox\File\YamlFile;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceIterator;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ArrayTraits\ArrayAccess;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\ExportInterface;
+use DazzleSoftware\Toolbox\ArrayTraits\Iterator;
+use DazzleSoftware\Toolbox\File\YamlFile;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceIterator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Layout

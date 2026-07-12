@@ -13,8 +13,8 @@ namespace Gantry\Component\Assignments;
 use Gantry\Component\Config\CompiledConfig;
 use Gantry\Component\Config\ConfigFileFinder;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\File\YamlFile;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\File\YamlFile;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class AbstractAssignments

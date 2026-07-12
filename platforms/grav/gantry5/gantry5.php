@@ -34,9 +34,9 @@ use Grav\Common\Utils;
 use Grav\Events\PermissionsRegisterEvent;
 use Grav\Framework\Acl\PermissionsReader;
 use Grav\Plugin\Admin\Admin;
-use Dazzle Software\Toolbox\Event\Event;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
-use Dazzle Software\Toolbox\Session\Message;
+use Gantry\Component\Event\Event;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\Session\Message;
 
 /**
  * Class Gantry5Plugin

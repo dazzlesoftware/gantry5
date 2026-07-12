@@ -11,9 +11,9 @@ namespace Gantry\Framework\Base;
 
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Framework\Document;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
-use Dazzle Software\Toolbox\ArrayTraits\NestedArrayAccess;
-use Dazzle Software\Toolbox\DI\Container;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\NestedArrayAccess;
+use DazzleSoftware\Toolbox\DI\Container;
 
 /**
  * The Platform Configuration class contains configuration information.

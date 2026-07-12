@@ -8,7 +8,7 @@ use DebugBar\StandardDebugBar;
 use Gantry\Component\Config\Config;
 use Gantry\Framework\Document;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * @package   Genesis

@@ -15,7 +15,7 @@ use Gantry\Framework\Gantry;
 use Leafo\ScssPhp\Compiler\Environment;
 use Leafo\ScssPhp\Formatter\OutputBlock;
 use Leafo\ScssPhp\Parser;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class LegacyCompiler extends \Leafo\ScssPhp\Compiler
 {

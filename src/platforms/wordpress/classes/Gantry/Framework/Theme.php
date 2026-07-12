@@ -18,7 +18,7 @@ use Gantry\Component\Theme\ThemeTrait;
 use Gantry\Debugger;
 use Gantry\WordPress\Widget\Particle;
 use Gantry\WordPress\Widgets;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Timber\Timber;
 use Timber\User;
 use Twig\Environment;

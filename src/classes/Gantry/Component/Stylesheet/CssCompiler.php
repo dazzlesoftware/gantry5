@@ -14,8 +14,8 @@ use Gantry\Component\Config\Config;
 use Gantry\Component\Gantry\GantryTrait;
 use Gantry\Framework\Gantry;
 use ScssPhp\ScssPhp\Colors;
-use Dazzle Software\Toolbox\File\PhpFile;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\File\PhpFile;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class CssCompiler

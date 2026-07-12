@@ -19,7 +19,7 @@ use Grav\Common\Grav;
 use Grav\Common\Page\Interfaces\PageInterface;
 use Grav\Common\Page\Pages;
 use Grav\Common\Twig\Twig;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Extension\EscaperExtension;

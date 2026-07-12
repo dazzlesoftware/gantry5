@@ -14,7 +14,7 @@ use DebugBar\DataCollector\DataCollectorInterface;
 use DebugBar\DebugBarException;
 use Gantry\Component\Config\Config;
 use Grav\Common\Grav;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Debugger

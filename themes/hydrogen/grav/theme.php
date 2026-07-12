@@ -12,8 +12,8 @@ namespace Grav\Theme;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as GantryTheme;
 use Grav\Common\Theme;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
-use Dazzle Software\Toolbox\Session\Message;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\Session\Message;
 
 /**
  * Class G5_Hydrogen

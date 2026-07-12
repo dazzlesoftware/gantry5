@@ -13,7 +13,7 @@ use Gantry\Component\Config\Config;
 use Gantry\Component\Controller\RestfulControllerInterface;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme;
-use Dazzle Software\Toolbox\Event\Event;
+use Gantry\Component\Event\Event;
 
 /**
  * Class MenuEvent

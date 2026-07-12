@@ -17,8 +17,8 @@ use Gantry\Component\Layout\Layout;
 use Gantry\Component\Response\JsonResponse;
 use Gantry\Framework\Atoms;
 use Gantry\Framework\Services\ConfigServiceProvider;
-use Dazzle Software\Toolbox\File\YamlFile;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\File\YamlFile;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Page

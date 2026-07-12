@@ -14,7 +14,7 @@ use Gantry\Component\Config\ConfigFileFinder;
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as SiteTheme;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Page

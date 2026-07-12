@@ -14,9 +14,9 @@ use Gantry\Component\Admin\JsonController;
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Component\Response\JsonResponse;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\File\File;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceIterator;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\File\File;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceIterator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Filepicker

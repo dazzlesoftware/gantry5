@@ -11,7 +11,7 @@ namespace Gantry\Component\Translator;
 
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Translator

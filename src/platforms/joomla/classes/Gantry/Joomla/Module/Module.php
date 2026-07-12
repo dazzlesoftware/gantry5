@@ -14,8 +14,8 @@ use Gantry\Framework\Theme;
 use Gantry\Joomla\Object\AbstractObject;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Table\Table;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
-use Dazzle Software\Toolbox\ArrayTraits\ExportInterface;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\ExportInterface;
 
 Table::addIncludePath(JPATH_LIBRARIES . '/legacy/table/');
 

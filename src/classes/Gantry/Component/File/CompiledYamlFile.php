@@ -9,7 +9,7 @@
 
 namespace Gantry\Component\File;
 
-use Dazzle Software\Toolbox\File\YamlFile;
+use DazzleSoftware\Toolbox\File\YamlFile;
 
 /**
  * Class CompiledYamlFile

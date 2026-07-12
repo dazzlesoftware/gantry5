@@ -10,8 +10,8 @@
 namespace Gantry\Component\Menu;
 
 use Gantry\Component\Serializable\Serializable;
-use Dazzle Software\Toolbox\ArrayTraits\ArrayAccessWithGetters;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\ArrayAccessWithGetters;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
 
 /**
  * @property string|int $id

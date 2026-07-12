@@ -27,7 +27,7 @@ use Gantry\Framework\Markdown\Parsedown;
 use Gantry\Framework\Markdown\ParsedownExtra;
 use Gantry\Framework\Platform;
 use Gantry\Framework\Request;
-use Dazzle Software\Toolbox\ArrayTraits\NestedArrayAccess;
+use DazzleSoftware\Toolbox\ArrayTraits\NestedArrayAccess;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFilter;

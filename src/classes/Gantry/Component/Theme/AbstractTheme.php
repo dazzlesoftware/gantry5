@@ -18,7 +18,7 @@ use Gantry\Component\Twig\TwigExtension;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Platform;
 use Gantry\Framework\Services\ErrorServiceProvider;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Cache\FilesystemCache;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;

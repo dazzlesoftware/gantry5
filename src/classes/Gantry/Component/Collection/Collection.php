@@ -9,9 +9,9 @@
 
 namespace Gantry\Component\Collection;
 
-use Dazzle Software\Toolbox\ArrayTraits\ArrayAccess;
-use Dazzle Software\Toolbox\ArrayTraits\Countable;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\ArrayAccess;
+use DazzleSoftware\Toolbox\ArrayTraits\Countable;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
 
 /**
  * Class Collection

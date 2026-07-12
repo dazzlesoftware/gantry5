@@ -16,7 +16,7 @@ use Gantry\Framework\Platform;
 use Gantry\Framework\ThemeInstaller;
 use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * @package Gantry\Admin

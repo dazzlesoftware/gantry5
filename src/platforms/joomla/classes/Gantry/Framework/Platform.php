@@ -27,7 +27,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Version;
-use Dazzle Software\Toolbox\DI\Container;
+use DazzleSoftware\Toolbox\DI\Container;
 
 /**
  * The Platform Configuration class contains configuration information.

@@ -16,7 +16,7 @@ use Gantry\Debugger;
 use Gantry\Joomla\StyleHelper;
 use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Factory;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Outlines

@@ -14,8 +14,8 @@ defined('ABSPATH') || exit;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Dazzle Software\Toolbox\Event\Event;
-use Dazzle Software\Toolbox\Event\EventSubscriberInterface;
+use Gantry\Component\Event\Event;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class BuddyPress

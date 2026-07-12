@@ -12,7 +12,7 @@ namespace Gantry\Admin;
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Component\Theme\ThemeDetails;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class ThemeList

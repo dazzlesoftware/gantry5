@@ -10,10 +10,10 @@
 
 namespace Gantry\Component\Config;
 
-use Dazzle Software\Toolbox\ArrayTraits\Export;
-use Dazzle Software\Toolbox\ArrayTraits\ExportInterface;
-use Dazzle Software\Toolbox\ArrayTraits\Iterator;
-use Dazzle Software\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\ExportInterface;
+use DazzleSoftware\Toolbox\ArrayTraits\Iterator;
+use DazzleSoftware\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
 
 /**
  * The Config class contains configuration information.

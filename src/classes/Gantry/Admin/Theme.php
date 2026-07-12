@@ -15,7 +15,7 @@ use Gantry\Component\Config\ConfigFileFinder;
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Component\Theme\AbstractTheme;
 use Gantry\Framework\Platform;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
 

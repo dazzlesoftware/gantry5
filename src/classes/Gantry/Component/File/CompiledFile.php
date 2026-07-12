@@ -11,7 +11,7 @@
 namespace Gantry\Component\File;
 
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\File\PhpFile;
+use DazzleSoftware\Toolbox\File\PhpFile;
 
 /**
  * Class CompiledFile

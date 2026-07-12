@@ -13,9 +13,9 @@ namespace Gantry\Component\Position;
 use Gantry\Component\Collection\Collection;
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Framework\Outlines;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceIterator;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
-use Dazzle Software\Toolbox\DI\Container;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceIterator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\DI\Container;
 
 /**
  * Class Positions

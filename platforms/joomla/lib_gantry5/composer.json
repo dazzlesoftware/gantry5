@@ -10,7 +10,7 @@
         "ext-dom": "*",
         "ext-xml": "*",
         "ext-simplexml": "*",
-        "symfony/event-dispatcher": "^3.4|^4.0|^5.4",
+        "symfony/event-dispatcher": "^4.4",
         "symfony/yaml": "^5.4",
         "pimple/pimple": "^3.5",
         "filp/whoops": "^2.15.2",

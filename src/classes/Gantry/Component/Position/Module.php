@@ -11,9 +11,9 @@ namespace Gantry\Component\Position;
 
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
-use Dazzle Software\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Module

@@ -22,7 +22,7 @@ use Grav\Common\Uri;
 use Grav\Common\Utils;
 use Grav\Plugin\Admin\Admin;
 use Psr\Http\Message\ResponseInterface;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Router

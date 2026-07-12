@@ -21,8 +21,8 @@ use Gantry\Component\Response\HtmlResponse;
 use Gantry\Component\Response\JsonResponse;
 use Gantry\Component\Response\Response;
 use Gantry\Framework\Menu as MenuObject;
-use Dazzle Software\Toolbox\File\YamlFile;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\File\YamlFile;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Menu

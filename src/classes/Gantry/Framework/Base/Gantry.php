@@ -16,6 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 use Gantry\Component\Config\Config;
+use Gantry\Component\Event\Event;
 use Gantry\Component\System\Messages;
 use Gantry\Debugger;
 use Gantry\Framework\Document;
@@ -30,9 +31,8 @@ use Gantry\Framework\Services\StreamsServiceProvider;
 use Gantry\Framework\Site;
 use Gantry\Framework\Translator;
 use Gantry5\Loader;
-use Dazzle Software\Toolbox\DI\Container;
-use Dazzle Software\Toolbox\Event\Event;
-use Dazzle Software\Toolbox\Event\EventDispatcher;
+use DazzleSoftware\Toolbox\DI\Container;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
  * Class Gantry
@@ -182,7 +182,7 @@ abstract class Gantry extends Container
         $events = $this['events'];
 
         /** @var Event $event */
-        $event = $events->dispatch($eventName, $event);
+        $event = $events->dispatch($event ?? new Event(), $eventName);
 
         return $event;
     }

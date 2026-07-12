@@ -14,8 +14,8 @@ use Gantry\Debugger;
 use Gantry\Framework\Base\Platform;
 use Gantry\Framework\Gantry;
 use Pimple\Container;
-use Dazzle Software\Toolbox\DI\ServiceProviderInterface;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\DI\ServiceProviderInterface;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class StreamsServiceProvider

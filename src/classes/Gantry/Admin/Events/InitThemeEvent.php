@@ -11,7 +11,7 @@ namespace Gantry\Admin\Events;
 
 use Gantry\Admin\Theme;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\Event\Event;
+use Gantry\Component\Event\Event;
 
 /**
  * Class AssigmentsEvent

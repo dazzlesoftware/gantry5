@@ -13,7 +13,7 @@ namespace Gantry\Admin\Controller\Html;
 use Gantry\Component\Admin\HtmlController;
 use Gantry\Framework\Exporter;
 use Joomla\CMS\Version;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Symfony\Component\Yaml\Yaml;
 
 /**

@@ -19,7 +19,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
 use Joomla\Component\Templates\Administrator\Model\StyleModel; // Joomla 4
 use Joomla\Component\Templates\Administrator\Table\StyleTable; // Joomla 4
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Joomla style helper.

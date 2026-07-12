@@ -9,6 +9,7 @@
 
 namespace Gantry\Admin\Events;
 
+use Gantry\Component\Event\Event as BaseEvent;
 use Gantry\Component\Controller\RestfulControllerInterface;
 use Gantry\Framework\Gantry;
 
@@ -16,7 +17,7 @@ use Gantry\Framework\Gantry;
  * Class AssigmentsEvent
  * @package Gantry\Admin\Events
  */
-class Event extends \Dazzle Software\Toolbox\Event\Event
+class Event extends BaseEvent
 {
  /**
      * Permanent fix for PHP 8.2 dynamic property warning:

@@ -12,9 +12,9 @@ namespace Gantry\Framework;
 use Gantry\Component\Config\Config;
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Component\Url\Url;
-use Dazzle Software\Toolbox\File\MarkdownFile;
-use Dazzle Software\Toolbox\File\YamlFile;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\File\MarkdownFile;
+use DazzleSoftware\Toolbox\File\YamlFile;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Importer

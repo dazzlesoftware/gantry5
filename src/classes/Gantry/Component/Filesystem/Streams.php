@@ -10,9 +10,9 @@
 
 namespace Gantry\Component\Filesystem;
 
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
-use Dazzle Software\Toolbox\StreamWrapper\ReadOnlyStream;
-use Dazzle Software\Toolbox\StreamWrapper\Stream;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\StreamWrapper\ReadOnlyStream;
+use DazzleSoftware\Toolbox\StreamWrapper\Stream;
 
 /**
  * Class Streams

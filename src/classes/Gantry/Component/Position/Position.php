@@ -14,7 +14,7 @@ use Gantry\Component\Collection\Collection;
 use Gantry\Component\File\CompiledYamlFile;
 use Gantry\Component\Filesystem\Folder;
 use Gantry\Framework\Gantry;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Symfony\Component\Yaml\Yaml;
 
 /**

@@ -13,7 +13,7 @@ use Gantry\Component\Controller\RestfulControllerInterface;
 use Gantry\Component\Layout\Layout;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme;
-use Dazzle Software\Toolbox\Event\Event;
+use Gantry\Component\Event\Event;
 
 /**
  * Class LayoutEvent

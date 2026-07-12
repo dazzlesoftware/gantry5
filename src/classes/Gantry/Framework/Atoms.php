@@ -13,11 +13,11 @@ namespace Gantry\Framework;
 use Gantry\Component\Config\BlueprintForm;
 use Gantry\Component\Config\Config;
 use Gantry\Component\File\CompiledYamlFile;
-use Dazzle Software\Toolbox\ArrayTraits\ArrayAccess;
-use Dazzle Software\Toolbox\ArrayTraits\Export;
-use Dazzle Software\Toolbox\ArrayTraits\ExportInterface;
-use Dazzle Software\Toolbox\ArrayTraits\Iterator;
-use Dazzle Software\Toolbox\ResourceLocator\UniformResourceLocator;
+use DazzleSoftware\Toolbox\ArrayTraits\ArrayAccess;
+use DazzleSoftware\Toolbox\ArrayTraits\Export;
+use DazzleSoftware\Toolbox\ArrayTraits\ExportInterface;
+use DazzleSoftware\Toolbox\ArrayTraits\Iterator;
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
  * Class Atoms
