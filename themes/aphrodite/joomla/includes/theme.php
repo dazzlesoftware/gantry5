@@ -1,20 +1,15 @@
 <?php
 
 /**
- * @package   Gantry5
- * @author    Tiger12 http://tiger12.com
- * @originalCreator  RocketTheme (Gantry Framework) 
- * @currentDeveloper  Tiger12, LLC 
- * @copyright Copyright (C) 2007 - 2022 Tiger12, LLC
- * @license   GNU/GPLv2 and later
- *
- * http://www.gnu.org/licenses/gpl-2.0.html
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
  */
 
 class_exists('\\Gantry\\Framework\\Gantry') or die;
 
 use Gantry\Framework\Theme;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
 
 /**
@@ -22,16 +17,20 @@ use Joomla\CMS\Uri\Uri;
  */
 class GantryTheme extends Theme {}
 
-// Load Aphrodite's original Bootstrap frontend without Helix Ultimate.
-$application = Factory::getApplication();
-if (!$application->isClient('administrator')) {
-    $document = $application->getDocument();
+/**
+ * Load Aphrodite's original Bootstrap frontend after Joomla has created the
+ * active document. During early Gantry bootstrap getDocument() may be null.
+ */
+function g5_aphrodite_add_joomla_assets($document)
+{
+    if ($document) {
     $assetBase = Uri::root(true) . '/templates/g5_aphrodite';
     $document->addStyleSheet($assetBase . '/css/aphrodite/bootstrap.min.css', ['version' => '5.1.3']);
     $document->addStyleSheet($assetBase . '/css/aphrodite/template.css', ['version' => 'auto']);
     $document->addStyleSheet($assetBase . '/css/aphrodite/custom.css', ['version' => 'auto']);
     $document->addScript($assetBase . '/js/aphrodite/bootstrap.bundle.min.js', ['version' => '5.1.3'], ['defer' => true]);
     $document->addScript($assetBase . '/js/aphrodite/main.js', ['version' => 'auto'], ['defer' => true]);
+    }
 }
 
 // Initialize theme stream.

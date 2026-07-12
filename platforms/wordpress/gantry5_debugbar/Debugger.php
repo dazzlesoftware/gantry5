@@ -11,8 +11,10 @@ use Gantry\Framework\Gantry;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
- * Class Debugger
- * @package Gantry\Component\Debug
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
  */
 class Debugger
 {

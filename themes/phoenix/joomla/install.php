@@ -1,12 +1,10 @@
 <?php
 
 /**
- * @package   Gantry 5 Theme
- * @author    RocketTheme http://www.rockettheme.com
- * @copyright Copyright (C) 2007 - 2021 RocketTheme, LLC
- * @license   GNU/GPLv2 and later
- *
- * http://www.gnu.org/licenses/gpl-2.0.html
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
  */
 
 defined('_JEXEC') or die;

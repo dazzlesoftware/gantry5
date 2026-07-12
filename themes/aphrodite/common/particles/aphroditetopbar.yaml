@@ -1,0 +1,45 @@
+name: Aphrodite Top Bar
+description: Compact customer-care and social-links bar above navigation.
+type: particle
+icon: fas fa-address-bar
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+    label:
+      type: input.text
+      label: Contact Label
+      default: Customer Care
+    phone:
+      type: input.text
+      label: Phone Number
+      default: '+1 (780) 830-8814'
+    phone_link:
+      type: input.text
+      label: Phone Link
+      default: 'tel:+17808308814'
+    social:
+      type: collection.list
+      array: true
+      label: Social Links
+      value: name
+      fields:
+        .name:
+          type: input.text
+          label: Name
+        .icon:
+          type: input.icon
+          label: Icon
+        .link:
+          type: input.text
+          label: Link
+        .target:
+          type: select.select
+          label: Target
+          default: _blank
+          options:
+            _self: Same Window
+            _blank: New Window

@@ -377,7 +377,7 @@ content:
   custom-1079:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"rt-copyright-content rt-block\">\n\t\tDesigned by RocketTheme\t</div>"
+        html: "<div class=\"rt-copyright-content rt-block\">\n\t\tDesigned by Dazzle Software\t</div>"
     block:
       class: 'nomarginbottom nomargintop'
   totop-7311:

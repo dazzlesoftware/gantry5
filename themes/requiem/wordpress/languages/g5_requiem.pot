@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Tiger12, LLC
+# Copyright (C) 2026 Dazzle Software, LLC
 # This file is distributed under the same license as the Requiem package.
 msgid ""
 msgstr ""

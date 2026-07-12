@@ -1,9 +1,9 @@
 <?php
 /**
- * @package   Gantry 5 Theme
- * @author    RocketTheme http://www.rockettheme.com
- * @copyright Copyright (C) 2007 - 2020 RocketTheme, LLC
- * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
  */
 
 /**

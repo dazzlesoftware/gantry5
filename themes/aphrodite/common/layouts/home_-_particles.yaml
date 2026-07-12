@@ -4,6 +4,7 @@ preset:
   name: home_-_particles
   timestamp: 1783756800
 layout:
+  top: {  }
   navigation: {  }
   /header/:
     -
@@ -20,6 +21,13 @@ layout:
   footer: {  }
   offcanvas: {  }
 structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
   navigation:
     type: section
     inherit:

@@ -1,0 +1,18 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+<div class="aphrodite-topbar">
+    <div class="container aphrodite-topbar__inner">
+        <div class="aphrodite-topbar__contact">
+            {% if particle.label %}<span>{{ particle.label|e }}</span>{% endif %}
+            {% if particle.phone %}<a href="{{ particle.phone_link|e }}">{{ particle.phone|e }}</a>{% endif %}
+        </div>
+        {% if particle.social %}
+            <nav class="aphrodite-topbar__social" aria-label="Social media">
+                {% for item in particle.social %}
+                    <a href="{{ item.link|e }}" target="{{ item.target|default('_blank')|e }}"{% if item.target|default('_blank') == '_blank' %} rel="noopener noreferrer"{% endif %} aria-label="{{ item.name|e }}"><i class="{{ item.icon|e }}" aria-hidden="true"></i></a>
+                {% endfor %}
+            </nav>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

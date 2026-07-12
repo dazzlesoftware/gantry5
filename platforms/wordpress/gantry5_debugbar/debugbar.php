@@ -1,18 +1,9 @@
 <?php
 /**
- * Plugin Name: Gantry 5 Debug Bar
- * Plugin URI: http://gantry.org/
- * Description: Debug Bar for Gantry 5
- * Version: @version@
- * Author: Tiger12, LLC
- * Author URI: http://tiger12.com/
- * License: GNU General Public License v2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: gantry5_debugbar
- * Domain Path: /admin/languages
- * 
- * originalCreator: RocketTheme (Gantry Framework)
- * currentDeveloper: Tiger12, LLC
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
  */
 
 defined('ABSPATH') or die;

@@ -1,7 +1,8 @@
 // Aphrodite's original palette and Helix-to-Gantry presentation mapping.
 :root {
-    --aphrodite-primary: #0345bf;
-    --aphrodite-primary-hover: #044cd0;
+    --aphrodite-primary: #{$accent-color-1};
+    --aphrodite-primary-hover: #{darken($accent-color-1, 6%)};
+    --aphrodite-secondary: #{$accent-color-2};
     --aphrodite-ink: #252525;
     --aphrodite-muted: #6c757d;
     --aphrodite-border: #ededed;
@@ -25,13 +26,30 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
 
 // Helix top bar equivalent.
 #g-top {
-    background: var(--aphrodite-topbar);
-    color: #aaa;
-    font-size: .75rem;
+    min-height: 44px;
+    background: $topbar-background;
+    color: $topbar-text-color;
+    font-size: .7rem;
 
-    a { color: #aaa; }
-    .g-content { padding-top: .45rem; padding-bottom: .45rem; }
+    a { color: $topbar-text-color; text-decoration: none; }
+    a:hover, a:focus { color: $topbar-hover-color; }
+    .g-container { max-width: 1040px; }
+    .g-content { margin: 0; padding: 0; }
 }
+
+.aphrodite-topbar { width: 100%; }
+.aphrodite-topbar__inner {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-inline: 1rem;
+}
+.aphrodite-topbar__contact,
+.aphrodite-topbar__social { display: flex; align-items: center; gap: 1.25rem; }
+.aphrodite-topbar__social { gap: 1rem; }
+.aphrodite-topbar__social a { display: inline-grid; width: 1.25rem; height: 1.25rem; place-items: center; }
 
 // Helix #sp-header equivalent.
 #g-navigation {
@@ -41,7 +59,19 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
     background: #fff;
     color: var(--aphrodite-ink);
     border-top: 2px solid #202020;
+    border-bottom: 1px solid #e8e8e8;
     box-shadow: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: $navigation-separator-height;
+        z-index: 1;
+        background: linear-gradient(90deg, $navigation-separator-color-1 0%, $navigation-separator-color-1 $navigation-separator-split, $navigation-separator-color-2 $navigation-separator-split, $navigation-separator-color-2 100%);
+    }
 
     > .g-container { max-width: 1040px; }
     .g-container > .g-grid { align-items: center; }
@@ -61,13 +91,14 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
         text-transform: uppercase;
     }
     .g-main-nav .g-toplevel > li:hover > .g-menu-item-container,
-    .g-main-nav .g-toplevel > li.active > .g-menu-item-container { color: #ff406c; }
+    .g-main-nav .g-toplevel > li.active > .g-menu-item-container { color: $accent-color-2; }
     .g-main-nav .g-menu-parent-indicator { display: none; }
     .g-main-nav .g-dropdown {
         width: 195px;
         background: #111;
         border: 0;
         border-radius: 0;
+        z-index: 2;
         box-shadow: none;
     }
     .g-main-nav .g-sublevel > li {
@@ -140,7 +171,7 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
     #g-mobilemenu-container li:hover > .g-menu-item-container,
     #g-mobilemenu-container li.active > .g-menu-item-container {
         background: #181818;
-        color: #ff406c;
+        color: $accent-color-2;
     }
     #g-mobilemenu-container .g-menu-parent-indicator {
         display: inline-grid;
@@ -184,8 +215,8 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
         border-radius: 50%;
         filter: saturate(120%);
     }
-    &::before { width: 420px; height: 420px; right: -80px; top: -120px; background: linear-gradient(135deg, #0345bf, #00d4ff); opacity: .92; }
-    &::after { width: 280px; height: 280px; right: 230px; bottom: -120px; background: linear-gradient(135deg, #ff43c6, #ffb36b); opacity: .85; }
+    &::before { width: 420px; height: 420px; right: -80px; top: -120px; background: linear-gradient(135deg, $accent-color-1, lighten($accent-color-1, 35%)); opacity: .92; }
+    &::after { width: 280px; height: 280px; right: 230px; bottom: -120px; background: linear-gradient(135deg, $accent-color-2, lighten($accent-color-2, 25%)); opacity: .85; }
     .container { position: relative; z-index: 2; }
     &__eyebrow { color: var(--aphrodite-primary); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
     &__title { max-width: 680px; margin: .75rem 0 1rem; font-size: clamp(3rem, 7vw, 5.75rem); line-height: .96; font-weight: 800; letter-spacing: -.045em; }
@@ -238,7 +269,11 @@ a:hover, a:focus { color: var(--aphrodite-primary-hover); }
 @include breakpoint(mobile-only) {
     .g-container { width: 100%; }
     #g-navigation { min-height: 64px; .g-container > .g-grid:last-child { min-height: 62px; } }
-    .g-offcanvas-toggle { display: block; }
+    #g-top, .aphrodite-topbar__inner { min-height: 36px; }
+    .aphrodite-topbar__inner { justify-content: center; padding-inline: .75rem; }
+    .aphrodite-topbar__contact { gap: .75rem; }
+    .aphrodite-topbar__social { display: none; }
+    .g-offcanvas-toggle { display: block; top: calc(36px + 1rem); }
     #g-navigation .g-logo { width: min(260px, calc(100vw - 6rem)); }
     #g-navigation .g-logo img { width: min(260px, calc(100vw - 6rem)); }
     .aphrodite-hero { min-height: 500px; &::before { right: -240px; opacity: .35; } &::after { right: -80px; opacity: .3; } }

@@ -10,7 +10,7 @@ $base-border-color:             #ededed !default;
 
 // Accents
 $accent-color-1:                #0345bf !default;
-$accent-color-2:                #044cd0 !default;
+$accent-color-2:                #ff406c !default;
 
 // Links
 $link-regular:                  #0345bf !default;
@@ -22,6 +22,15 @@ $pagesurround-background:       $base-background !default;
 // Navigation
 $navigation-background:         #ffffff !default;
 $navigation-text-color:         #252525 !default;
+$navigation-separator-color-1:  #0345bf !default;
+$navigation-separator-color-2:  #ff406c !default;
+$navigation-separator-height:   3px !default;
+$navigation-separator-split:    72% !default;
+
+// Top Bar
+$topbar-background:             #111111 !default;
+$topbar-text-color:             #666666 !default;
+$topbar-hover-color:            #ff406c !default;
 
 // Header
 $header-background:             #ffffff !default;

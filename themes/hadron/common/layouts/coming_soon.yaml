@@ -117,7 +117,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: '<div class="rt-small-text">© Copyright 2019. Powered by <a href="https://rockettheme.com">RocketTheme</a>.</div>'
+      html: '<div class="rt-small-text">© Copyright 2026. Powered by <a href="https://dazzlesoftware.org">Dazzle Software</a>.</div>'
       twig: '0'
       filter: '0'
     block:

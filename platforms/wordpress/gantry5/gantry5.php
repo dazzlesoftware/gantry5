@@ -1,19 +1,10 @@
 <?php
 // phpcs:disable PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 /**
- * Plugin Name: Gantry 5 Framework
- * Plugin URI: http://gantry.org/
- * Description: Framework for Gantry 5 based themes.
- * Version: @version@
- * Author: Tiger12, LLC
- * Author URI: http://tiger12.com/
- * License: GNU General Public License v2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: gantry5
- * Domain Path: /admin/languages
- *
- * originalCreator: RocketTheme (Gantry Framework)
- * currentDeveloper: Tiger12, LLC
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
  */
 
 defined('ABSPATH') or die;

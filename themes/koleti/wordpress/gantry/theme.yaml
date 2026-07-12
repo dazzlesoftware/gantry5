@@ -4,9 +4,9 @@ details:
   icon: paper-plane
   date: 'October 29, 2021'
   author:
-    name: RocketTheme, LLC
-    email: support@rockettheme.com
-    link: http://www.rockettheme.com
+    name: Dazzle Software, LLC
+    email: support@dazzlesoftware.org
+    link: https://dazzlesoftware.org
 
   documentation:
     link: http://docs.gantry.org/gantry5
@@ -20,7 +20,7 @@ details:
   news:
     link: http://news.rockettheme.com/prime/themes.yaml
 
-  copyright: (C) 2007 - 2019 RocketTheme, LLC. All rights reserved.
+  copyright: Copyright (C) 2026 Dazzle Software, LLC
   license: GPLv2
   description: Koleti Theme
   images:

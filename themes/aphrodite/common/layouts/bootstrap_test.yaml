@@ -4,6 +4,7 @@ preset:
   name: bootstrap_test
   timestamp: 1783756800
 layout:
+  top: {  }
   navigation: {  }
   /mainbar/:
     -
@@ -11,6 +12,11 @@ layout:
   footer: {  }
   offcanvas: {  }
 structure:
+  top:
+    type: section
+    inherit:
+      outline: default
+      include: [attributes, children]
   navigation:
     type: section
     inherit:
