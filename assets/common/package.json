@@ -25,9 +25,9 @@
     "domready": "^1.0.8",
     "elements": "github:w00fz/elements",
     "mout": "^1.2.4",
-    "prime": "^0.5.0",
-    "prime-util": "^0.5.0",
-    "slick": "^1.12.2"
+    "prime": "github:kamicane/prime#v0.5.0",
+    "prime-util": "github:arian/prime-util#v0.5.0",
+    "slick": "github:kamicane/slick#v1.12.2"
   },
   "overrides": {
     "mout": "$mout"

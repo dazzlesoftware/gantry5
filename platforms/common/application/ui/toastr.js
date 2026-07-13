@@ -5,11 +5,25 @@ var prime   = require('prime'),
     Bound   = require('prime-util/prime/bound'),
     Options = require('prime-util/prime/options'),
     zen     = require('elements/zen'),
-    $       = require('../utils/elements.utils.js'),
-    storage = require('prime/map')(),
+    $       = require('../utils/elements.utils.js');
 
-    bind    = require('mout/function/bind'),
-    merge   = require('mout/object/merge');
+var merge = function(target) {
+    target = target || {};
+    Array.prototype.slice.call(arguments, 1).forEach(function(source) {
+        Object.keys(source || {}).forEach(function(key) {
+            var value = source[key];
+            if (value && typeof value === 'object' && !Array.isArray(value)) {
+                target[key] = merge(
+                    target[key] && typeof target[key] === 'object' ? target[key] : {},
+                    value
+                );
+            } else {
+                target[key] = value;
+            }
+        });
+    });
+    return target;
+};
 
 var Toaster = new prime({
     mixin: [Bound, Options],
@@ -63,7 +77,7 @@ var Toaster = new prime({
 
         this.id = 0;
         this.previousNotice = null;
-        this.map = storage;
+        this.map = new Map();
     },
 
     mergeOptions: function(options) {
@@ -183,44 +197,44 @@ var Toaster = new prime({
 
         if (options.timeOut > 0) {
             var map = this.map.get(element);
-            map.interval = setTimeout(bind(function() {
+            map.interval = setTimeout(function() {
                 this.hide(element);
-            }, this), options.timeOut);
+            }.bind(this), options.timeOut);
             map.progressBar.maxHideTime = parseFloat(options.timeOut);
             map.progressBar.hideETA = new Date().getTime() + map.progressBar.maxHideTime;
 
             if (options.progressBar) {
-                map.progressBar.interval = setInterval(bind(function() {
+                map.progressBar.interval = setInterval(function() {
                     this.updateProgress(element, progress);
-                }, this), 10);
+                }.bind(this), 10);
             }
 
             this.map.set(element, map);
         }
 
-        var stick = bind(function() { this.stickAround(element); }, this),
-            delay = bind(function() { this.delayedHide(element); }, this);
+        var stick = function() { this.stickAround(element); }.bind(this),
+            delay = function() { this.delayedHide(element); }.bind(this);
         element.on('mouseover', stick);
         element.on('mouseout', delay);
 
         if (!options.onClick && options.tapToDismiss) {
-            element.on('click', bind(function(){
+            element.on('click', function(){
                 element.off('mouseover', stick);
                 element.off('mouseout', delay);
 
                 this.hide(element);
-            }, this));
+            }.bind(this));
         }
 
         if (options.closeButton && close) {
-            close.on('click', bind(function(event){
+            close.on('click', function(event){
                 event.stopPropagation();
                 event.preventDefault();
 
                 element.off('mouseover', stick);
                 element.off('mouseout', delay);
                 this.hide(element, true);
-            }, this));
+            }.bind(this));
         }
 
     },
@@ -250,14 +264,14 @@ var Toaster = new prime({
         return element.animate({ opacity: 0 }, {
             duration: map.options.hideDuration,
             equation: map.options.hideEquation,
-            callback: bind(function() {
+            callback: function() {
                 this.remove(element);
                 if (map.options.onHidden && map.response.state !== 'hidden') { map.options.onHidden(); }
                 map.response.state = 'hidden';
                 map.response.endTime = new Date();
 
                 this.map.set(element, map);
-            }, this)
+            }.bind(this)
         });
     },
 
@@ -265,9 +279,9 @@ var Toaster = new prime({
         var map = this.map.get(element);
 
         if (map.options.timeOut > 0 || map.options.extendedTimeout > 0) {
-            map.interval = setTimeout(bind(function() {
+            map.interval = setTimeout(function() {
                 this.hide(element);
-            }, this), map.options.extendedTimeout);
+            }.bind(this), map.options.extendedTimeout);
             map.progressBar.maxHideTime = parseFloat(map.options.extendedTimeout);
             map.progressBar.hideETA = new Date().getTime() + map.progressBar.maxHideTime;
         }

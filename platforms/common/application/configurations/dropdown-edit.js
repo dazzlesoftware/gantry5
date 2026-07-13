@@ -5,16 +5,19 @@ var $             = require('elements'),
     request       = require('../utils/request'),
 
     modal         = require('../ui').modal,
-    guid          = require('mout/random/guid'),
-    trim          = require('mout/string/trim'),
 
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
     getAjaxURL    = require('../utils/get-ajax-url').global,
 
-    History       = require('../utils/history'),
-    getParam      = require('mout/queryString/getParam'),
-    setParam      = require('mout/queryString/setParam');
+    History       = require('../utils/history');
+
+var guid = function() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+    }
+    return Date.now().toString(36) + Math.random().toString(36).slice(2);
+};
 
 
 var refreshWordpressLinks = function (title, value) {
@@ -23,7 +26,8 @@ var refreshWordpressLinks = function (title, value) {
         var replace = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
             find = $('[href*="/' + value + '/"]'),
             currentURI = History.getPageUrl(),
-            currentView = getParam(currentURI, 'view');
+            parsedURI = new URL(currentURI, window.location.href),
+            currentView = parsedURI.searchParams.get('view') || '';
 
         if (find) {
             find.forEach(function(lnk){
@@ -34,7 +38,8 @@ var refreshWordpressLinks = function (title, value) {
         }
 
         currentView = currentView.replace('/' + value + '/', '/' + replace + '/');
-        currentURI = setParam(currentURI, 'view', currentView);
+        parsedURI.searchParams.set('view', currentView);
+        currentURI = parsedURI.toString();
         History.replaceState({ uuid: guid(), doNothing: true }, window.document.title, currentURI);
     }
 };
@@ -59,7 +64,7 @@ ready(function() {
         if (!editable.gConfEditAttached) {
             editable.gConfEditAttached = true;
             editable.on('title-edit-end', function(title, original, canceled) {
-                title = trim(title);
+                title = String(title || '').trim();
                 if (canceled || title == original) {
                     selectized.style('display', 'inline-block');
                     editable.style('display', 'none').attribute('contenteditable', null);

@@ -2113,18 +2113,16 @@ possible-typed-array-names@^1.0.0:
   resolved "https://registry.npmjs.org/possible-typed-array-names/-/possible-typed-array-names-1.1.0.tgz"
   integrity sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==
 
-prime-util@^0.5.0:
+"prime-util@github:arian/prime-util#v0.5.0":
   version "0.5.0"
-  resolved "https://registry.npmjs.org/prime-util/-/prime-util-0.5.0.tgz"
-  integrity sha512-r0/vqi3/MSDD6LOYdpysSnTYJKn7pTUV+y3gEllbwzr30b0oCXgKm8XhLwJ/PVP4yPIz6F/4Kd0RJzBSd1wZBg==
+  resolved "git+ssh://git@github.com/arian/prime-util.git#e45d5bd46ce214e3790b3bcbd62c823e54ca3492"
   dependencies:
     mout "^0.10.0"
     prime "~0.4.0"
 
-prime@^0.5.0:
+prime@^0.5.0, "prime@github:kamicane/prime#v0.5.0":
   version "0.5.0"
-  resolved "https://registry.npmjs.org/prime/-/prime-0.5.0.tgz"
-  integrity sha512-Ic75Ki5IFgotMS4QFgalL/xw/s1Zg3Flp4IzOjaq3ZldB2x/Lc5HvbAOkMb4GA8T1iIhtWBTbxAWpZxu9UJQeA==
+  resolved "git+ssh://git@github.com/kamicane/prime.git#c7ae0ca634eab87546abbdac3cc48beb987eec41"
   dependencies:
     mout "^0.11.0"
 
@@ -2437,10 +2435,9 @@ simple-concat@^1.0.0:
   resolved "https://registry.npmjs.org/simple-concat/-/simple-concat-1.0.1.tgz"
   integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
 
-slick@^1.12.2:
+slick@^1.12.2, "slick@github:kamicane/slick#v1.12.2":
   version "1.12.2"
-  resolved "https://registry.npmjs.org/slick/-/slick-1.12.2.tgz"
-  integrity sha512-4qdtOGcBjral6YIBCWJ0ljFSKNLz9KkhbWtuGvUyRowl1kxfuE1x/Z/aJcaiilpb3do9bl5K7/1h9XC5wWpY/A==
+  resolved "git+ssh://git@github.com/kamicane/slick.git#6eb8da55711e3b0ca81777b96cf45da868af382f"
 
 sortablejs@gantry/Sortable#master:
   version "1.4.2"

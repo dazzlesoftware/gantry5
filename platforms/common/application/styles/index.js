@@ -1,60 +1,58 @@
-"use strict";
-var ready = require('elements/domready'),
-    $ = require('elements/attributes'),
-    modal = require('../ui').modal,
-    contains = require('mout/array/contains'),
-    forEach = require('mout/collection/forEach');
+'use strict';
+
+const modal = require('../ui').modal;
+const { ready, delegate } = require('../utils/dom');
 
 require('../ui/popover');
 
-var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1,
-    FOCUSIN   = isFirefox ? 'focus' : 'focusin';
+const escapeSelector = (value) => window.CSS && CSS.escape
+    ? CSS.escape(value)
+    : String(value).replace(/["\\]/g, '\\$&');
 
-ready(function() {
+const emitFieldEvent = (input, type) => {
+    const event = new Event(type, { bubbles: true });
+    event.forceOverride = true;
+    input.dispatchEvent(event);
+};
 
-    var body = $('body');
+ready(() => {
+    delegate(document.body, 'click', '[data-g-styles]', (event, presetElement) => {
+        event.preventDefault();
+        if (event.target.closest('.swatch-preview')) return;
 
-    body.delegate('click', '[data-g-styles]', function(event, element) {
-        var target = $(event.target);
-        if (event && event.preventDefault) { event.preventDefault(); }
-        if (target.hasClass('swatch-preview') || target.parent('.swatch-preview')) { return true; }
+        const data = JSON.parse(presetElement.dataset.gStyles || '{}');
+        Object.entries(data).forEach(([name, preset]) => {
+            const input = document.querySelector(`[name="${escapeSelector(name)}"]`);
+            if (!input || input.value === String(preset)) return;
 
-        var data = JSON.parse(element.data('g-styles')), input, value, type, evt;
-        forEach(data, function(preset, name) {
-            input = $('[name="' + name + '"]');
-            value = input ? input.value() : false;
+            if (input.selectizeInstance) input.selectizeInstance.setValue(preset);
+            else input.value = preset;
 
-            if (!input || value === preset) { return; }
-
-            evt = {
-                target: input,
-                forceOverride: true
-            };
-
-            type = (input.tag() == 'select' || contains(['hidden', 'checkbox'], input.type())) ? 'change' : 'input';
-
-            input.value(preset);
-            body.emit(type, evt);
-            body.emit('keyup', evt);
+            const type = input.tagName === 'SELECT' || ['hidden', 'checkbox'].includes(input.type)
+                ? 'change'
+                : 'input';
+            emitFieldEvent(input, type);
+            emitFieldEvent(input, 'keyup');
         });
     });
 
-    body.delegate('click', '[data-g-styles] .swatch-preview', function(event, element) {
-        var image = element.parent('[data-g-styles]').find('img');
-        if (!image) { return false; }
+    delegate(document.body, 'click', '[data-g-styles] .swatch-preview', (event, swatch) => {
+        event.preventDefault();
+        const preset = swatch.closest('[data-g-styles]');
+        const image = preset ? preset.querySelector('img') : null;
+        if (!image) return;
 
         modal.open({
-            content: image[0].outerHTML,
-            afterOpen: function(container) {
-                var padding = parseInt(container.compute('padding-left'), 10) + parseInt(container.compute('padding-right'), 10);
-                container.style({
-                    maxWidth: '80%',
-                    width: padding + (image[0].naturalWidth || image[0].width)
-                });
+            content: image.outerHTML,
+            afterOpen(container) {
+                const element = container && container[0] ? container[0] : container;
+                const styles = getComputedStyle(element);
+                const padding = Number.parseFloat(styles.paddingLeft) + Number.parseFloat(styles.paddingRight);
+                element.style.maxWidth = '80%';
+                element.style.width = `${padding + (image.naturalWidth || image.width)}px`;
             }
         });
     });
-
 });
 
 module.exports = {};
