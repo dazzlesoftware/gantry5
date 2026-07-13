@@ -1,21 +1,31 @@
 "use strict";
 
-var $        = require('elements'),
-    prime    = require('prime'),
-    Emitter  = require('prime/emitter'),
-    Bound    = require('prime-util/prime/bound'),
-    Options  = require('prime-util/prime/options'),
-    zen      = require('elements/zen'),
+var $   = require('elements'),
+    zen = require('elements/zen');
 
-    bind     = require('mout/function/bind'),
-    isArray  = require('mout/lang/isArray'),
-    isNumber = require('mout/lang/isNumber');
+var createClass = function(definition) {
+    var defaults = definition.options || {};
 
-var Progresser = new prime({
+    var Klass = function(element, options) {
+        this.options = Object.assign({}, defaults);
+        definition.constructor.call(this, element, options);
+    };
 
-    mixin: [Bound, Options],
+    Klass.prototype.setOptions = function(options) {
+        this.options = Object.assign({}, defaults, options || {});
+        return this;
+    };
 
-    inherits: Emitter,
+    Object.keys(definition).forEach(function(key) {
+        if (key !== 'constructor' && key !== 'options') {
+            Klass.prototype[key] = definition[key];
+        }
+    });
+
+    return Klass;
+};
+
+var Progresser = createClass({
 
     options: {
         value: 0.0,
@@ -83,7 +93,7 @@ var Progresser = new prime({
                     var color = gr[i],
                         pos   = i / (gr.length - 1);
 
-                    if (isArray(color)) {
+                    if (Array.isArray(color)) {
                         pos = color[1];
                         color = color[0];
                     }
@@ -161,7 +171,7 @@ var Progresser = new prime({
         var start = performance.now(),
             duration = parseFloat(this.options.animation.duration) || 1200,
             initial = this.options.animationStartValue,
-            frame = bind(function(timestamp) {
+            frame = function(timestamp) {
                 var progress = Math.min(1, (timestamp - start) / duration),
                     stepValue = initial * (1 - progress) + v * progress;
                 this.drawFrame(stepValue);
@@ -173,13 +183,13 @@ var Progresser = new prime({
                 }
                 if (this.options.animation.callback) { this.options.animation.callback(); }
                 this.element.emit('progress-animation-end');
-            }, this);
+            }.bind(this);
 
         requestAnimationFrame(frame);
     },
 
     getThickness: function() {
-        return isNumber(this.options.thickness) ? this.options.thickness : this.options.size / 14;
+        return typeof this.options.thickness === 'number' ? this.options.thickness : this.options.size / 14;
     }
 });
 

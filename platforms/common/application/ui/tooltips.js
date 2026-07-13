@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-var ready    = require('elements/domready'),
+var ready    = require('../utils/dom').ready,
     tooltips = require('ext/tooltips');
 
 tooltips.defaults = {
