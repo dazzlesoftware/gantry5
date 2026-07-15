@@ -1,36 +1,31 @@
 "use strict";
 // Based on Vex (https://github.com/hubspot/vex)
 
-var prime    = require('prime'),
-    $        = require('../utils/elements.utils'),
+var $        = require('../utils/elements.utils'),
     zen      = require('elements/zen'),
-    storage  = require('prime/map')(),
-    Emitter  = require('prime/emitter'),
-    Bound    = require('prime-util/prime/bound'),
-    Options  = require('prime-util/prime/options'),
-    domready = require('elements/domready'),
-
-    bind     = require('mout/function/bind'),
-    map      = require('mout/array/map'),
-    forEach  = require('mout/array/forEach'),
-    last     = require('mout/array/last'),
-    merge    = require('mout/object/merge'),
-    trim     = require('mout/string/trim'),
+    domready = require('../utils/dom').ready,
 
     request  = require('../utils/request');
 
-var animationEndSupport = false;
+var stored = new WeakMap(),
+    storage = {
+        get: function(key) { return stored.get(key && key[0] ? key[0] : key); },
+        set: function(key, value) { stored.set(key && key[0] ? key[0] : key, value); return this; },
+        delete: function(key) { return stored.delete(key && key[0] ? key[0] : key); }
+    },
+    animationEndEvents = ['animationend', 'webkitAnimationEnd', 'mozAnimationEnd', 'MSAnimationEnd', 'oanimationend'],
+    animationEndSupport = (function() {
+        var style = document.documentElement.style,
+            names = ['animation', 'WebkitAnimation', 'MozAnimation', 'MsAnimation', 'OAnimation'];
 
-var Modal = new prime({
-    mixin: [Bound, Options],
-
-    inherits: Emitter,
-
-    animationEndEvent: ['animationend', 'webkitAnimationEnd', 'mozAnimationEnd', 'MSAnimationEnd', 'oanimationend'],
-
-    globalID: 1,
-
-    options: {
+        for (var index = 0; index < names.length; index++) {
+            if (style[names[index]] !== undefined) {
+                return animationEndEvents[index];
+            }
+        }
+        return false;
+    }()),
+    defaults = {
         baseClassNames: {
             container: 'g5-dialog',
             content: 'g5-content',
@@ -57,11 +52,16 @@ var Modal = new prime({
 
         afterOpen: null,
         afterClose: null
-    },
+    };
 
-    constructor: function(options) {
-        this.setOptions(options);
+class Modal {
+    constructor(options) {
+        this.options = Object.assign({}, defaults, options || {});
         this.defaults = this.options;
+        this.globalID = 1;
+        this.animationEndEvent = animationEndSupport;
+        this._bound = Object.create(null);
+        this._events = new Map();
 
         var self = this;
         domready(function() {
@@ -70,8 +70,6 @@ var Modal = new prime({
                     return self.closeByEscape();
                 }
             });
-
-            self.animationEndEvent = animationEndSupport;
         });
 
         this
@@ -79,21 +77,42 @@ var Modal = new prime({
                 $('body').addClass(options.baseClassNames.open);
                 $('html').addClass(options.baseClassNames.open);
             })
-            .on('dialogAfterClose', bind(function(options) {
+            .on('dialogAfterClose', function(options) {
                 var all = this.getAll();
                 if (!all || !all.length) {
                     $('body').removeClass(options.baseClassNames.open);
                     $('html').removeClass(options.baseClassNames.open);
                 }
-            }, this));
-    },
+            }.bind(this));
+    }
 
-    storage: function() {
+    bound(method) {
+        if (!this._bound[method]) {
+            this._bound[method] = this[method].bind(this);
+        }
+        return this._bound[method];
+    }
+
+    on(name, callback) {
+        var listeners = this._events.get(name) || [];
+        listeners.push(callback);
+        this._events.set(name, listeners);
+        return this;
+    }
+
+    emit(name, value) {
+        (this._events.get(name) || []).slice().forEach(function(callback) {
+            callback.call(this, value);
+        }, this);
+        return this;
+    }
+
+    storage() {
         return storage;
-    },
+    }
 
-    open: function(options) {
-        options = merge(this.options, options);
+    open(options) {
+        options = Object.assign({}, this.options, options || {});
         options.id = this.globalID++;
 
         var elements = {};
@@ -120,8 +139,8 @@ var Modal = new prime({
         storage.set(elements.overlay, { dialog: options });
 
         if (options.overlayClickToClose) {
-            elements.container.on('click', bind(this._overlayClick, this, elements.container[0]));
-            elements.overlay.on('click', bind(this._overlayClick, this, elements.overlay[0]));
+            elements.container.on('click', this._overlayClick.bind(this, elements.container[0]));
+            elements.overlay.on('click', this._overlayClick.bind(this, elements.overlay[0]));
         }
 
         elements.container.appendChild(elements.overlay);
@@ -154,7 +173,7 @@ var Modal = new prime({
             agent.url(options.remote);
             if (options.data) { agent.data(options.data); }
 
-            agent.send(bind(function(error, response) {
+            agent.send(function(error, response) {
                 if (elements.container.hasClass(options.baseClassNames.closing)) {
                     this.hideLoading();
                     return;
@@ -176,7 +195,7 @@ var Modal = new prime({
 
                 var selects = $('[data-selectize]');
                 if (selects) { selects.selectize(); }
-            }, this));
+            }.bind(this));
         } else {
             elements.container.attribute('aria-hidden', 'false');
             setTimeout(function(){ elements.content[0].focus(); }, 0);
@@ -195,10 +214,10 @@ var Modal = new prime({
         }
 
         // delegate container to pick g5-close clicks
-        elements.container.delegate('click', '.g5-dialog-close', bind(function(event){
+        elements.container.delegate('click', '.g5-dialog-close', function(event){
             event.preventDefault();
             this._closeButtonClick(elements.container);
-        }, this));
+        }.bind(this));
 
         // inject the dialog in the DOM
         var container = $(options.appendNode);
@@ -227,19 +246,19 @@ var Modal = new prime({
             options.afterOpen(elements.content, options);
         }
 
-        setTimeout(bind(function() {
+        setTimeout(function() {
             return this.emit('dialogOpen', options);
-        }, this), 0);
+        }.bind(this), 0);
 
         return elements.content;
-    },
+    }
 
-    getAll: function() {
+    getAll() {
         var options = this.options;
         return $("." + options.baseClassNames.container + ":not(." + options.baseClassNames.closing + ") ." + options.baseClassNames.content);
-    },
+    }
 
-    getByID: function(id) {
+    getByID(id) {
         var all = this.getAll();
         if (!all) { return []; }
 
@@ -247,12 +266,12 @@ var Modal = new prime({
             element = $(element);
             return storage.get(element).dialog.id === id;
         }));
-    },
+    }
 
-    getLast: function() {
+    getLast() {
         var ids, id;
 
-        ids = map(this.getAll(), function(element) {
+        ids = Array.prototype.map.call(this.getAll() || [], function(element) {
             element = $(element);
 
             return storage.get(element).dialog.id;
@@ -263,25 +282,27 @@ var Modal = new prime({
         }
 
         return Math.max.apply(Math, ids);
-    },
+    }
 
-    close: function(id) {
+    close(id) {
         if (!id) {
-            var element = $(last(this.getAll()));
-            if (!element) {
+            var all = this.getAll(),
+                element;
+            if (!all || !all.length) {
                 return false;
             }
+            element = $(all[all.length - 1]);
 
             id = storage.get(element).dialog.id;
         }
 
         return this.closeByID(id);
-    },
+    }
 
-    closeAll: function() {
+    closeAll() {
         var ids;
 
-        ids = map(this.getAll(), function(element) {
+        ids = Array.prototype.map.call(this.getAll() || [], function(element) {
             element = $(element);
 
             return storage.get(element).dialog.id;
@@ -291,14 +312,14 @@ var Modal = new prime({
             return false;
         }
 
-        forEach(ids.reverse(), function(id) {
+        ids.reverse().forEach(function(id) {
             return this.closeByID(id);
         }, this);
 
         return true;
-    },
+    }
 
-    closeByID: function(id) {
+    closeByID(id) {
         var content = this.getByID(id);
         if (!content || !content.length) {
             return false;
@@ -307,14 +328,14 @@ var Modal = new prime({
         var container, options;
 
         container = storage.get(content).dialog.elements.container;
-        options = merge({}, storage.get(content).dialog);
+        options = Object.assign({}, storage.get(content).dialog);
 
         var beforeClose = function() {
                 if (options.beforeClose) {
                     return options.beforeClose(content, options);
                 }
             },
-            close = bind(function() {
+            close = function() {
                 if (options.remoteLoaded) { options.remoteLoaded = function(){}; }
                 content.emit('dialogClose', options);
                 container.remove();
@@ -323,7 +344,7 @@ var Modal = new prime({
                     return options.afterClose(content, options);
                 }
 
-            }, this);
+            }.bind(this);
 
         if (animationEndSupport) {
             beforeClose();
@@ -336,9 +357,9 @@ var Modal = new prime({
         }
 
         return true;
-    },
+    }
 
-    closeByEscape: function() {
+    closeByEscape() {
         var id = this.getLast();
 
         if (id === false) {
@@ -353,9 +374,9 @@ var Modal = new prime({
 
         return this.closeByID(id);
 
-    },
+    }
 
-    enableCloseByOverlay: function() {
+    enableCloseByOverlay() {
         var id = this.getLast();
 
         if (id === false) {
@@ -364,48 +385,37 @@ var Modal = new prime({
 
         var elements = storage.get(this.getByID(id)).dialog.elements;
 
-        elements.container.on('click', bind(this._overlayClick, this, elements.container[0]));
-        elements.overlay.on('click', bind(this._overlayClick, this, elements.overlay[0]));
+        elements.container.on('click', this._overlayClick.bind(this, elements.container[0]));
+        elements.overlay.on('click', this._overlayClick.bind(this, elements.overlay[0]));
 
         elements.content.on('click', function(/*e*/){
             return true;
         });
-    },
+    }
 
-    showLoading: function() {
+    showLoading() {
         this.hideLoading();
         return $('#g5-container').appendChild(zen('div.g5-dialog-loading-spinner.' + this.options.className));
-    },
+    }
 
-    hideLoading: function() {
+    hideLoading() {
         var spinner = $('.g5-dialog-loading-spinner');
         return spinner ? spinner.remove() : false;
-    },
+    }
 
     // private
-    _overlayClick: function(element, event) {
+    _overlayClick(element, event) {
         if (event.target !== element) {
             return;
         }
 
         return this.close(storage.get($(element)).dialog.id);
-    },
+    }
 
-    _closeButtonClick: function(element) {
+    _closeButtonClick(element) {
         return this.close(storage.get($(element)).dialog.id);
     }
-});
-
-domready(function() {
-    var style = (document.body || document.documentElement).style;
-
-    forEach(['animation', 'WebkitAnimation', 'MozAnimation', 'MsAnimation', 'OAnimation'], function(animation, index) {
-        if (animationEndSupport) {
-            return;
-        }
-        animationEndSupport = style[animation] !== undefined ? Modal.prototype.animationEndEvent[index] : false;
-    });
-});
+}
 
 var modal = new Modal();
 

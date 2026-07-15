@@ -1,29 +1,12 @@
 "use strict";
 
-var prime    = require('prime'),
-    $        = require('../utils/elements.utils'),
+var $        = require('../utils/elements.utils'),
     zen      = require('elements/zen'),
-    storage  = require('prime/map')(),
-    Emitter  = require('prime/emitter'),
-    Bound    = require('prime-util/prime/bound'),
-    Options  = require('prime-util/prime/options'),
-    domready = require('elements/domready'),
-
-    bind     = require('mout/function/bind'),
-    map      = require('mout/array/map'),
-    forEach  = require('mout/array/forEach'),
-    last     = require('mout/array/last'),
-    merge    = require('mout/object/merge'),
-    isFunct  = require('mout/lang/isFunction'),
+    storage  = new WeakMap(),
 
     request  = require('../utils/request');
 
-var Popover = new prime({
-    mixin: [Bound, Options],
-
-    inherits: Emitter,
-
-    options: {
+var defaults = {
         mainClass: 'g5-popover',
         placement: 'auto',
         width: 'auto',
@@ -51,10 +34,12 @@ var Popover = new prime({
         '<div class="g5-popover-content"><i class="icon-refresh"></i> <p>&nbsp;</p></div>' +
         '</div>' +
         '</div>'
-    },
+    };
 
-    constructor: function(element, options) {
-        this.setOptions(options);
+class Popover {
+    constructor(element, options) {
+        this.options = Object.assign({}, defaults, options || {});
+        this._bound = Object.create(null);
         this.element = $(element);
 
         if (this.options.trigger === 'click') {
@@ -67,19 +52,26 @@ var Popover = new prime({
 
         this._poped = false;
         //this._inited = true;
-    },
+    }
 
-    destroy: function() {
+    bound(method) {
+        if (!this._bound[method]) {
+            this._bound[method] = this[method].bind(this);
+        }
+        return this._bound[method];
+    }
+
+    destroy() {
         this.hide();
-        storage.set(this.element[0], null);
+        storage.delete(this.element[0]);
         this.element.off('click', this.bound('toggle')).off('mouseenter', this.bound('mouseenterHandler')).off('mouseleave', this.bound('mouseleaveHandler'));
 
         if (this.$target) {
             this.$target.remove();
         }
-    },
+    }
 
-    hide: function(event) {
+    hide(event) {
         if (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -97,17 +89,17 @@ var Popover = new prime({
             this._focusAttached = false;
             this.restoreFocus();
         }
-    },
+    }
 
-    toggle: function(e) {
+    toggle(e) {
         if (e) {
             e.preventDefault();
             e.stopPropagation();
         }
         this[this.getTarget().hasClass('in') ? 'hide' : 'show']();
-    },
+    }
 
-    focus: function(e) {
+    focus(e) {
         if (!this.getTarget().hasClass('in')) { return; }
         var self = this,
             target = $(e.target || e);
@@ -119,9 +111,9 @@ var Popover = new prime({
 
         this.hide();
         if (this._focusAttached) this.restoreFocus();
-    },
+    }
 
-    restoreFocus: function(element) {
+    restoreFocus(element) {
         element = $(element || this.element);
         var tag = element.tag();
 
@@ -133,9 +125,9 @@ var Popover = new prime({
                 element[0].focus();
             }
         }, 0);
-    },
+    }
 
-    hideAll: function(force) {
+    hideAll(force) {
         var css = '';
         if (force) { css = 'div.' + this.options.mainClass; }
         else { css = 'div.' + this.options.mainClass + ':not(.' + this.options.mainClass + '-fixed)'; }
@@ -150,9 +142,9 @@ var Popover = new prime({
             this._focusAttached = false;
         }
         return this;
-    },
+    }
 
-    show: function() {
+    show() {
         var target = this.getTarget().attribute('class', null).addClass(this.options.mainClass).attribute('tabindex', '0');
 
         if (!this.options.multi) {
@@ -190,9 +182,9 @@ var Popover = new prime({
             $('body').on('focus', this.bound('focus'), true);
             this._focusAttached = true;
         }
-    },
+    }
 
-    displayContent: function() {
+    displayContent() {
         var elementPos = this.element.position(),
             target = this.getTarget().attribute('class', null).addClass(this.options.mainClass),
             targetContent = this.getContentElement(),
@@ -281,30 +273,30 @@ var Popover = new prime({
         this.element[0].focus();
         this.element.emit('shown.popover', this);
 
-    },
+    }
 
 
     /*getter setters */
-    getTarget: function() {
+    getTarget() {
         if (!this.$target) {
             this.$target = $(zen('div').html(this.options.template).children()[0]);
         }
         return this.$target;
-    },
+    }
 
-    getTitleElement: function() {
+    getTitleElement() {
         return this.getTarget().find('.' + this.options.mainClass + '-title');
-    },
+    }
 
-    getContentElement: function() {
+    getContentElement() {
         return this.getTarget().find('.' + this.options.mainClass + '-content');
-    },
+    }
 
-    getTitle: function() {
+    getTitle() {
         return this.options.title || this.element.data('g5-popover-title') || this.element.attribute('title');
-    },
+    }
 
-    setTitle: function(title) {
+    setTitle(title) {
         var element = this.getTitleElement();
         if (title) {
             element.html(title);
@@ -312,20 +304,20 @@ var Popover = new prime({
         else {
             element.remove();
         }
-    },
+    }
 
-    hasContent: function() {
+    hasContent() {
         return this.getContent();
-    },
+    }
 
-    getContent: function() {
+    getContent() {
         if (this.options.url) {
             if (this.options.type === 'iframe') {
                 this.content = $('<iframe frameborder="0"></iframe>').attribute('src', this.options.url);
             }
         } else if (!this.content) {
             var content = '';
-            if (isFunct(this.options.content)) {
+            if (typeof this.options.content === 'function') {
                 content = this.options.content.apply(this.element[0], arguments);
             } else {
                 content = this.options.content;
@@ -333,21 +325,21 @@ var Popover = new prime({
             this.content = this.element.data('g5-popover-content') || content;
         }
         return this.content;
-    },
+    }
 
-    setContent: function(content) {
+    setContent(content) {
         var target = this.getTarget();
         this.getContentElement().html(content);
         this.$target = target;
-    },
+    }
 
-    isAsync: function() {
+    isAsync() {
         return this.options.type === 'async';
-    },
+    }
 
-    setContentASync: function(content) {
-        request('get', this.options.url, bind(function(error, response) {
-            if (content && isFunct(content)) {
+    setContentASync(content) {
+        request('get', this.options.url, function(error, response) {
+            if (content && typeof content === 'function') {
                 this.content = content.apply(this.element[0], [response]);
             } else {
                 this.content = response.body.html;
@@ -358,58 +350,58 @@ var Popover = new prime({
             var target = this.getContentElement();
             target.attribute('style', null);
 
-            setTimeout(bind(function(){
+            setTimeout(function(){
                 target.parent('.' + this.options.mainClass)[0].focus();
-            }, this), 0);
+            }.bind(this), 0);
 
             this.displayContent();
             this.bindBodyEvents();
 
             var selects = $('[data-selectize]');
             if (selects) { selects.selectize(); }
-        }, this));
-    },
+        }.bind(this));
+    }
 
-    bindBodyEvents: function() {
+    bindBodyEvents() {
         var body = $('body');
         body.off('keyup', this.bound('escapeHandler')).on('keyup', this.bound('escapeHandler'));
         body.off('click', this.bound('bodyClickHandler')).on('click', this.bound('bodyClickHandler'));
-    },
+    }
 
 
     /* event handlers */
-    mouseenterHandler: function() {
+    mouseenterHandler() {
         if (this._timeout) {
             clearTimeout(this._timeout);
         }
         if (!(this.getTarget()[0].offsetWidth > 0 || this.getTarget()[0].offsetHeight > 0)) {
             this.show();
         }
-    },
-    mouseleaveHandler: function() {
+    }
+    mouseleaveHandler() {
         // key point, set the _timeout  then use clearTimeout when mouse leave
-        this._timeout = setTimeout(bind(function() {
+        this._timeout = setTimeout(function() {
             this.hide();
-        }, this), this.options.delay);
-    },
+        }.bind(this), this.options.delay);
+    }
 
-    escapeHandler: function(e) {
+    escapeHandler(e) {
         if (e.keyCode === 27) {
             this.hideAll();
         }
-    },
+    }
 
-    bodyClickHandler: function() {
+    bodyClickHandler() {
         this.hideAll();
-    },
+    }
 
-    targetClickHandler: function(e) {
+    targetClickHandler(e) {
         var target = $(e.target);
         if (target.matches(this.options.allowElementsClick)) { e.preventDefault(); }
         if (!target.parent('[data-g-popover-follow]') && target.data('g-popover-follow') === null) { e.stopPropagation(); }
-    },
+    }
 
-    initTargetEvents: function() {
+    initTargetEvents() {
         if (this.options.trigger !== 'click') {
             this.$target
                 .off('mouseenter', this.bound('mouseenter'))
@@ -424,10 +416,10 @@ var Popover = new prime({
         }
 
         this.$target.off('click', this.bound('targetClickHandler')).on('click', this.bound('targetClickHandler'));
-    },
+    }
 
     /* utils methods */
-    getPlacement: function(pos, targetHeight) {
+    getPlacement(pos, targetHeight) {
         var
             placement,
             de = document.documentElement,
@@ -477,9 +469,9 @@ var Popover = new prime({
             }
         }
         return placement;
-    },
+    }
 
-    getTargetPosition: function(elementPos, placement, targetWidth, targetHeight) {
+    getTargetPosition(elementPos, placement, targetWidth, targetHeight) {
         var pos = elementPos,
             elementW = this.element[0].offsetWidth,
             elementH = this.element[0].offsetHeight,
@@ -579,17 +571,19 @@ var Popover = new prime({
         };
     }
 
-});
+}
 
 $.implement({
     getPopover: function(options) {
-        var popover = storage.get(this);
+        var element = this[0],
+            popover = storage.get(element);
 
         if (!popover && options !== 'destroy') {
             options = options || {};
-            popover = new Popover(this, options);
-            storage.set(this, popover);
+            popover = new Popover(element, options);
+            storage.set(element, popover);
             this.PopoverDefined = true;
+            element.PopoverDefined = true;
         }
 
         return popover;
