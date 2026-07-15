@@ -1,15 +1,15 @@
 "use strict";
 
-var ready        = require('elements/domready'),
-    map          = require('prime/map')(),
-    merge        = require('mout/object/merge'),
-    forEach      = require('mout/array/forEach'),
-    trim         = require('mout/string/trim'),
+var ready        = require('../utils/dom').ready,
     $            = require('../utils/elements.utils'),
     decouple     = require('../utils/decouple'),
     asyncForEach = require('../utils/async-foreach');
 
-var Map         = map,
+var cache       = new WeakMap(),
+    Map         = {
+        get: function(key) { return cache.get(key && key[0] ? key[0] : key); },
+        set: function(key, value) { cache.set(key && key[0] ? key[0] : key, value); return this; }
+    },
     Assignments = {
         toggleSection: function(e, element, index, array) {
             if (e.type.match(/^touch/)) { e.preventDefault(); }
@@ -25,7 +25,7 @@ var Map         = map,
                 var inputs = card.search('.enabler input[type=hidden]');
 
                 if (!toggles) { toggles = Map.set(card, { inputs: inputs }).get(card); }
-                if (!toggles.inputs) { toggles = Map.set(card, merge(Map.get(card), { inputs: inputs })).get(card); }
+                if (!toggles.inputs) { toggles = Map.set(card, Object.assign({}, Map.get(card), { inputs: inputs })).get(card); }
             }
 
             // if necessary we should move to asyncForEach for an asynchronous loop, else forEach
@@ -56,7 +56,7 @@ var Map         = map,
                 var labels = card.search('label .settings-param-title');
 
                 if (!items) { items = Map.set(card, { labels: labels }).get(card); }
-                if (!items.labels) { items = Map.set(card, merge(Map.get(card), { labels: labels })).get(card); }
+                if (!items.labels) { items = Map.set(card, Object.assign({}, Map.get(card), { labels: labels })).get(card); }
             }
 
             items = $(items.labels);
@@ -66,7 +66,8 @@ var Map         = map,
                 return items ? items.search('!> label').style('display', 'block') : items;
             }
 
-            var count = 0, off = 0, on = 0, text, match;
+            var count = 0, off = 0, on = 0, text, match,
+                needle = String(value || '').trim().toLowerCase();
 
             if (!items) {
                 element.parent('.card').style('display', onlyEnabled.checked() || value ? 'none' : 'inline-block');
@@ -74,8 +75,8 @@ var Map         = map,
 
             asyncForEach(items, function(item, i) {
                 item = $(item);
-                text = trim(item.text());
-                match = text.match(new RegExp("^" + value + '|\\s' + value, 'gi'));
+                text = item.text().trim().toLowerCase();
+                match = !needle || text.startsWith(needle) || text.includes(' ' + needle);
 
                 if (onlyEnabled.checked()) {
                     match = Number(!!match) & Number(item.parent('label, h4').find('.enabler input[type="hidden"]').value());

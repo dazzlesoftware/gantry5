@@ -27,7 +27,7 @@ const setIndicator = (element, active) => {
 
 const toggle = (control) => {
     const enabler = control.closest('.enabler');
-    if (!enabler || enabler.hasAttribute('disabled') || enabler.querySelector('[disabled]')) return;
+    if (!enabler || enabler.hasAttribute('disabled')) return;
     const hidden = enabler.querySelector('input[type="hidden"]');
     if (!hidden) return;
 

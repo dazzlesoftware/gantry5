@@ -1,22 +1,25 @@
 "use strict";
-var ready         = require('elements/domready'),
+var ready         = require('../utils/dom').ready,
     $             = require('elements/attributes'),
-    storage       = require('prime/map'),
-    deepEquals    = require('mout/lang/deepEquals'),
-    is            = require('mout/lang/is'),
-    isString      = require('mout/lang/isString'),
-    hasOwn        = require('mout/object/has'),
-    forEach       = require('mout/collection/forEach'),
-    invoke        = require('mout/array/invoke'),
     History       = require('../utils/history'),
     flags         = require('../utils/flags-state'),
     submit        = require('./submit');
 
 require('./multicheckbox');
 
+var mapsEqual = function(first, second, comparator) {
+    if (!(first instanceof Map) || !(second instanceof Map) || first.size !== second.size) { return false; }
+
+    for (var entry of first) {
+        var key = entry[0], value = entry[1];
+        if (!second.has(key) || !comparator(value, second.get(key))) { return false; }
+    }
+    return true;
+};
+
 var originals,
     collectFieldsValues = function(keys) {
-        var map      = new storage(),
+        var map      = new Map(),
             defaults = $('[data-g-styles-defaults]'),
             overridables = $('input[type="checkbox"].settings-param-toggle');
 
@@ -53,7 +56,7 @@ var originals,
         fields.forEach(function(field) {
             field = $(field);
             var key     = field.attribute('name'),
-                isInput = !hasOwn(defaults, key);
+                isInput = !Object.prototype.hasOwnProperty.call(defaults, key);
 
             if (field.type() == 'checkbox' && !field.value().length) { field.value('0'); }
             map.set(key, isInput ? field.value() : defaults[key]);
@@ -62,9 +65,10 @@ var originals,
         return map;
     },
     createMapFrom       = function(data) {
-        var map = new storage();
+        var map = new Map();
 
-        forEach(data, function(value, key) {
+        Object.keys(data).forEach(function(key) {
+            var value = data[key];
             map.set(key, value);
         });
 
@@ -121,11 +125,11 @@ ready(function() {
 
     compare.whole = function(force) {
         if (!originals) { return; }
-        var equals = deepEquals(originals, collectFieldsValues(force ? originals.keys() : null), function(a, b) {
-                if (isString(a) && isString(b) && a.substr(0, 1) == '#' && b.substr(0, 1) == '#') {
+        var equals = mapsEqual(originals, collectFieldsValues(force ? Array.from(originals.keys()) : null), function(a, b) {
+                if (typeof a === 'string' && typeof b === 'string' && a.substr(0, 1) == '#' && b.substr(0, 1) == '#') {
                     return a.toLowerCase() == b.toLowerCase();
                 } else {
-                    return is(a, b);
+                    return Object.is(a, b);
                 }
             }),
             save   = $('[data-save]');
@@ -152,25 +156,25 @@ ready(function() {
         if (!presets) { return; }
 
         if (!presetsCache) {
-            presetsCache = new storage();
-            forEach(presets, function(preset, index) {
+            presetsCache = new Map();
+            presets.forEach(function(preset, index) {
                 preset = $(preset);
                 store = {
                     index: index,
                     map: createMapFrom(JSON.parse(preset.data('g-styles')))
                 };
-                presetsCache.set(preset, store);
+                presetsCache.set(preset[0], store);
             });
         }
 
         var fields, equals;
         presetsCache.forEach(function(data, element) {
-            fields = collectFieldsValues(data.map.keys());
+            fields = collectFieldsValues(Array.from(data.map.keys()));
 
             // Do not consider __js__overrides when comparing for equality
-            fields.unset('__js__overrides');
+            fields.delete('__js__overrides');
 
-            equals = deepEquals(fields, data.map, function(a, b) { return a == b; });
+            equals = mapsEqual(fields, data.map, function(a, b) { return a == b; });
             $($('[data-g-styles]')[data.index]).parent()[equals ? 'addClass' : 'removeClass']('g-preset-match');
         });
     };
