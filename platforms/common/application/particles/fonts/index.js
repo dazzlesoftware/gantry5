@@ -1,33 +1,12 @@
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
-var prime         = require('prime'),
-    $             = require('../../utils/elements.utils'),
+var $             = require('../../utils/elements.utils'),
     zen           = require('elements/zen'),
-    storage       = require('prime/map')(),
-    Emitter       = require('prime/emitter'),
-    Bound         = require('prime-util/prime/bound'),
-    Options       = require('prime-util/prime/options'),
-    domready      = require('elements/domready'),
+    storage       = new WeakMap(),
+    ready         = require('../../utils/dom').ready,
 
     decouple      = require('../../utils/decouple'),
 
-    bind          = require('mout/function/bind'),
-    map           = require('mout/array/map'),
-    forEach       = require('mout/array/forEach'),
-    contains      = require('mout/array/contains'),
-    last          = require('mout/array/last'),
-    split         = require('mout/array/split'),
-    removeAll     = require('mout/array/removeAll'),
-    insert        = require('mout/array/insert'),
-    append        = require('mout/array/append'),
-    find          = require('mout/array/find'),
-    combine       = require('mout/array/combine'),
-    intersection  = require('mout/array/intersection'),
-    merge         = require('mout/object/merge'),
-
-    unhyphenate   = require('mout/string/unhyphenate'),
-    properCase    = require('mout/string/properCase'),
-    trim          = require('mout/string/trim'),
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
     getAjaxURL    = require('../../utils/get-ajax-url').global,
@@ -41,18 +20,33 @@ var prime         = require('prime'),
 
     wf            = require('webfontloader');
 
+var removeValue = function(array, value) {
+    var index;
+    while ((index = array.indexOf(value)) !== -1) {
+        array.splice(index, 1);
+    }
+    return array;
+};
+
+var insertUnique = function(array, value) {
+    if (!array.includes(value)) { array.push(value); }
+    return array;
+};
+
+var labelize = function(value) {
+    return String(value).replace(/-/g, ' ').replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+    });
+};
+
 var isIE = function() {
     var ua = window.navigator.userAgent;
     return ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0 || ua.indexOf('Edge/') > 0 || false;
 };
 
-var Fonts = new prime({
-
-    mixin: Bound,
-
-    inherits: Emitter,
-
-    previewSentence: {
+class Fonts {
+    constructor() {
+        this.previewSentence = {
         'latin': 'Wizard boy Jack loves the grumpy Queen\'s fox.',
         'latin-ext': 'Wizard boy Jack loves the grumpy Queen\'s fox.',
         'arabic': 'نص حكيم له سر قاطع وذو شأن عظيم مكتوب على ثوب أخضر ومغلف بجلد أزرق',
@@ -65,9 +59,7 @@ var Fonts = new prime({
         'khmer': 'ខ្ញុំអាចញ៉ាំកញ្ចក់បាន ដោយគ្មានបញ្ហា',
         'telugu': 'దేశ భాషలందు తెలుగు లెస్స',
         'vietnamese': 'Tôi có thể ăn thủy tinh mà không hại gì.'
-    },
-
-    constructor: function() {
+        };
         this.wf = wf;
         this.field = null;
         this.element = null;
@@ -79,9 +71,9 @@ var Fonts = new prime({
             script: 'latin',
             categories: []
         };
-    },
+    }
 
-    open: function(event, element) {
+    open(event, element) {
         var data = element.data('g5-fontpicker');
         if (!data) {
             throw new Error('No fontpicker data found');
@@ -94,7 +86,7 @@ var Fonts = new prime({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             className: 'g5-dialog-theme-default g5-modal-fonts',
             remote: parseAjaxURI(getAjaxURL('fontpicker') + getAjaxSuffix()),
-            remoteLoaded: bind(function(response, content) {
+            remoteLoaded: function(response, content) {
                 var container = content.elements.content;
 
                 this.attachEvents(container);
@@ -109,13 +101,13 @@ var Fonts = new prime({
                 setTimeout(function() {
                     container.find('.particle-search-wrapper input')[0].focus();
                 }, 5);
-            }, this)
+            }.bind(this)
         });
-    },
+    }
 
-    scroll: function(container) {
+    scroll(container) {
         clearTimeout(this.throttle);
-        this.throttle = setTimeout(bind(function() {
+        this.throttle = setTimeout(function() {
             if (!container) {
                 clearTimeout(this.throttle);
                 return;
@@ -133,7 +125,7 @@ var Fonts = new prime({
                 var dataFont = element.data('font'),
                     variant  = element.data('variant');
 
-                if (!contains(this.loadedFonts, dataFont) && variant) {
+                if (!this.loadedFonts.includes(dataFont) && variant) {
                     list.push(dataFont + (variant != 'regular' ? ':' + variant : ''));
                 }
                 else {
@@ -153,18 +145,18 @@ var Fonts = new prime({
                 google: {
                     families: list
                 },
-                fontactive: bind(function(family, fvd) {
+                fontactive: function(family, fvd) {
                     container.find('li[data-font="' + family + '"]:not(.g-variant-hide) > .preview').style({
                         fontFamily: family,
                         fontWeight: fvd
                     });
                     this.loadedFonts.push(family);
-                }, this)
+                }.bind(this)
             });
-        }, this), 100);
-    },
+        }.bind(this), 100);
+    }
 
-    unselect: function(selected) {
+    unselect(selected) {
         selected = selected || this.selected;
         if (!selected) { return false; }
 
@@ -175,16 +167,18 @@ var Fonts = new prime({
         selected.element.find('[data-variant="' + baseVariant + '"]').removeClass('g-variant-hide');
         selected.variants = [selected.baseVariant];
         selected.selected = [];
-    },
+    }
 
-    selectFromValue: function() {
+    selectFromValue() {
         var value = this.field.value(), name, variants, subset, isLocal = false;
 
         if (!value.match('family=')) {
             var locals = $('[data-category="local-fonts"][data-font]') || [], intersect;
             locals = locals.map(function(l) { return $(l).data('font'); });
             value = value.replace(/(\s{1,})?,(\s{1,})?/gi, ',').split(',');
-            intersect = intersection(locals, value);
+            intersect = locals.filter(function(font, index) {
+                return value.includes(font) && locals.indexOf(font) === index;
+            });
             if (!intersect.length) { return false; }
 
             isLocal = true;
@@ -203,14 +197,14 @@ var Fonts = new prime({
             element = $('ul.g-fonts-list > [data-font="' + name + '"]' + noConflict);
         variants = variants || element.data('variants').split(',') || ['regular'];
 
-        if (contains(variants, '400')) {
-            removeAll(variants, '400');
-            insert(variants, 'regular');
+        if (variants.includes('400')) {
+            removeValue(variants, '400');
+            insertUnique(variants, 'regular');
         }
 
-        if (contains(variants, '400italic')) {
-            removeAll(variants, '400italic');
-            insert(variants, 'italic');
+        if (variants.includes('400italic')) {
+            removeValue(variants, '400italic');
+            insertUnique(variants, 'italic');
         }
 
         this.selected = {
@@ -241,11 +235,11 @@ var Fonts = new prime({
         if (!isLocal) { $('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }
 
         this.toggleExpansion();
-        setTimeout(bind(function() { this.toggleExpansion(); }, this), 50);
-        if (!isLocal) { setTimeout(bind(function() { $('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }, this, 250)); }
-    },
+        setTimeout(function() { this.toggleExpansion(); }.bind(this), 50);
+        if (!isLocal) { setTimeout(function() { $('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }.bind(this), 250); }
+    }
 
-    select: function(element, variant/*, target*/) {
+    select(element, variant/*, target*/) {
         var baseVariant = element.data('variant'),
             isLocal     = !baseVariant;
 
@@ -289,18 +283,18 @@ var Fonts = new prime({
             }
 
             if (!checked) {
-                insert(this.selected.variants, variant);
-                insert(this.selected.selected, variant);
+                insertUnique(this.selected.variants, variant);
+                insertUnique(this.selected.selected, variant);
             } else {
-                if (variant != this.selected.baseVariant) { removeAll(this.selected.variants, variant); }
-                removeAll(this.selected.selected, variant);
+                if (variant != this.selected.baseVariant) { removeValue(this.selected.variants, variant); }
+                removeValue(this.selected.selected, variant);
             }
 
             this.updateSelection();
         }
-    },
+    }
 
-    toggleExpansion: function() {
+    toggleExpansion() {
         if (this.selected.availableVariants.length <= 1) { return; }
         if (this.selected.local) {
             this.selected.expanded = true;
@@ -319,7 +313,7 @@ var Fonts = new prime({
                         google: {
                             families: [this.selected.font.replace(/\s/g, '+') + ':' + variants]
                         },
-                        fontactive: bind(function(family, fvd) {
+                        fontactive: function(family, fvd) {
                             var style  = this.fvdToStyle(family, fvd),
                                 search = style.fontWeight;
 
@@ -331,7 +325,7 @@ var Fonts = new prime({
 
                             this.selected.element.find('li[data-variant="' + search + '"] .preview').style(style);
                             this.selected.loaded = true;
-                        }, this)
+                        }.bind(this)
                     });
                 }
             }
@@ -342,9 +336,9 @@ var Fonts = new prime({
         }
 
         this.selected.expanded = !this.selected.expanded;
-    },
+    }
 
-    manipulateLink: function(family) {
+    manipulateLink(family) {
         family = family.replace(/\s/g, '+');
         var link = $('head link[href*="' + family + '"]');
         if (!link) { return; }
@@ -352,12 +346,12 @@ var Fonts = new prime({
         var parts = decodeURIComponent(link.href()).split('|');
         if (!parts || parts.length <= 1) { return; }
 
-        removeAll(parts, family);
+        removeValue(parts, family);
 
         link.attribute('href', encodeURI(parts.join('|')));
-    },
+    }
 
-    toggle: function(event, element) {
+    toggle(event, element) {
         element = $(element);
         var target = $(event.target);
 
@@ -368,9 +362,9 @@ var Fonts = new prime({
         this.select(element.parent('[data-font]') || element, element.parent('[data-font]') ? element.data('variant') : false, element);
 
         return false;
-    },
+    }
 
-    updateSelection: function() {
+    updateSelection() {
         var preview = $('.g-particles-footer .font-selected'), selected, variants;
         if (!preview) { return; }
 
@@ -384,41 +378,41 @@ var Fonts = new prime({
         variants = this.selected.local ? '(<small>local</small>)' : '(<small>' + selected.join(', ').replace('regular', 'normal') + '</small>)';
         this.selected.element.addClass('font-selected');
         preview.html('<strong>' + this.selected.font + '</strong> ' + variants);
-    },
+    }
 
-    updateTotal: function() {
+    updateTotal() {
         var totals = $('.g-particles-header .particle-search-total'),
             count  = $('.g-fonts-list > [data-font]:not(.g-font-hide)');
 
         totals.text(count ? count.length : 0);
-    },
+    }
 
-    updateCategories: function(container) {
+    updateCategories(container) {
         var categories = container.find('[data-font-categories]');
         if (!categories) { return; }
 
         this.filters.categories = categories.data('font-categories').split(',');
-    },
+    }
 
-    attachEvents: function(container) {
+    attachEvents(container) {
         var header  = container.find('.g-particles-header'),
             list    = container.find('.g-fonts-list'),
             search  = header.find('input.font-search'),
             preview = header.find('input.font-preview');
 
-        decouple(list, 'scroll', bind(this.scroll, this, list));
-        container.delegate('click', '.g-fonts-list li[data-font]', bind(this.toggle, this));
+        decouple(list, 'scroll', this.scroll.bind(this, list));
+        container.delegate('click', '.g-fonts-list li[data-font]', this.toggle.bind(this));
 
-        if (search) { search.on('keyup', bind(this.search, this, search)); }
-        if (preview) { preview.on('keyup', bind(this.updatePreview, this, preview)); }
+        if (search) { search.on('keyup', this.search.bind(this, search)); }
+        if (preview) { preview.on('keyup', this.updatePreview.bind(this, preview)); }
 
         this.attachCharsets(container);
         this.attachLocalVariants(container);
         this.attachFooter(container);
-    },
+    }
 
-    attachCharsets: function(container) {
-        container.delegate('mouseover', '.font-charsets-selected', bind(function(event, element) {
+    attachCharsets(container) {
+        container.delegate('mouseover', '.font-charsets-selected', function(event, element) {
             if (!element.PopoverDefined) {
                 var popover = element.getPopover({
                     placement: 'auto',
@@ -427,7 +421,7 @@ var Fonts = new prime({
                     style: 'font-categories, above-modal'
                 });
 
-                element.on('beforeshow.popover', bind(function(popover) {
+                element.on('beforeshow.popover', function(popover) {
                     var subsets = element.parent('[data-subsets]').data('subsets').split(','),
                         content = popover.$target.find('.g5-popover-content'),
                         checked;
@@ -436,28 +430,28 @@ var Fonts = new prime({
 
                     var div, current;
                     subsets.forEach(function(cs) {
-                        current = contains(this.selected.charsets, cs) ? (cs == 'latin' ? 'checked disabled' : 'checked') : '';
-                        zen('div').html('<label><input type="checkbox" ' + current + ' value="' + cs + '"/> ' + properCase(unhyphenate(cs.replace('ext', 'extended'))) + '</label>').bottom(content);
+                        current = this.selected.charsets.includes(cs) ? (cs == 'latin' ? 'checked disabled' : 'checked') : '';
+                        zen('div').html('<label><input type="checkbox" ' + current + ' value="' + cs + '"/> ' + labelize(cs.replace('ext', 'extended')) + '</label>').bottom(content);
                     }, this);
 
-                    content.delegate('click', 'input[type="checkbox"]', bind(function(event, input) {
+                    content.delegate('click', 'input[type="checkbox"]', function(event, input) {
                         input = $(input);
                         checked = content.search('input[type="checkbox"]:checked');
                         this.selected.charsets = checked ? checked.map('value') : [];
 
                         element.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">' + this.selected.charsets.length + ' of ' + subsets.length + '</span> selected)');
-                    }, this));
+                    }.bind(this));
 
                     popover.displayContent();
-                }, this));
+                }.bind(this));
 
                 element.getPopover().show();
             }
-        }, this));
-    },
+        }.bind(this));
+    }
 
-    attachLocalVariants: function(container) {
-        container.delegate('mouseover', '.g-font-variants-list', bind(function(event, element) {
+    attachLocalVariants(container) {
+        container.delegate('mouseover', '.g-font-variants-list', function(event, element) {
             if (!element.PopoverDefined) {
                 var popover = element.getPopover({
                     placement: 'auto',
@@ -466,31 +460,31 @@ var Fonts = new prime({
                     style: 'font-categories, above-modal'
                 });
 
-                element.on('beforeshow.popover', bind(function(popover) {
+                element.on('beforeshow.popover', function(popover) {
                     var content  = popover.$target.find('.g5-popover-content'),
                         variants = element.parent('[data-variants]').data('variants').split(',');
 
                     content.empty();
 
-                    asyncForEach(variants, bind(function(variant) {
+                    asyncForEach(variants, function(variant) {
                         variant = variant == '400' ? 'regular' : (variant == '400italic' ? 'italic' : variant + '');
                         zen('div').text(this.mapVariant(variant)).bottom(content);
-                    }, this));
+                    }.bind(this));
 
                     popover.displayContent();
-                }, this));
+                }.bind(this));
             }
-        }, this));
-    },
+        }.bind(this));
+    }
 
-    attachFooter: function(container) {
+    attachFooter(container) {
         var footer     = container.find('.g-particles-footer'),
             select     = footer.find('button.button-primary'),
             categories = footer.find('.font-category'),
             subsets    = footer.find('.font-subsets'),
             current;
 
-        select.on('click', bind(function() {
+        select.on('click', function() {
             if (!$('ul.g-fonts-list > [data-font] input[type="checkbox"]:checked')) {
                 this.field.value('');
                 modal.close();
@@ -504,13 +498,13 @@ var Fonts = new prime({
             if (variation && variation.length == 1 && variation[0] == 'regular') { variation = []; }
             if (charset && charset.length == 1 && charset[0] == 'latin') { charset = []; }
 
-            if (contains(variation, 'regular')) {
-                removeAll(variation, 'regular');
-                insert(variation, '400');
+            if (variation.includes('regular')) {
+                removeValue(variation, 'regular');
+                insertUnique(variation, '400');
             }
-            if (contains(variation, 'italic')) {
-                removeAll(variation, 'italic');
-                insert(variation, '400italic');
+            if (variation.includes('italic')) {
+                removeValue(variation, 'italic');
+                insertUnique(variation, '400italic');
             }
 
             if (!this.selected.local) {
@@ -523,14 +517,14 @@ var Fonts = new prime({
             $('body').emit('input', { target: this.field });
 
             modal.close();
-        }, this));
+        }.bind(this));
 
         categories.popover({
             placement: 'top',
             width: '200',
             trigger: 'mouse',
             style: 'font-categories, above-modal'
-        }).on('beforeshow.popover', bind(function(popover) {
+        }).on('beforeshow.popover', function(popover) {
             var cats    = categories.data('font-categories').split(','),
                 content = popover.$target.find('.g5-popover-content'),
                 checked;
@@ -539,27 +533,27 @@ var Fonts = new prime({
 
             cats.forEach(function(category) {
                 if (category == 'local-fonts') { return; }
-                current = contains(this.filters.categories, category) ? 'checked' : '';
-                zen('div').html('<label><input type="checkbox" ' + current + ' value="' + category + '"/> ' + properCase(unhyphenate(category)) + '</label>').bottom(content);
+                current = this.filters.categories.includes(category) ? 'checked' : '';
+                zen('div').html('<label><input type="checkbox" ' + current + ' value="' + category + '"/> ' + labelize(category) + '</label>').bottom(content);
             }, this);
 
-            content.delegate('click', 'input[type="checkbox"]', bind(function(event, input) {
+            content.delegate('click', 'input[type="checkbox"]', function(event, input) {
                 input = $(input);
                 checked = content.search('input[type="checkbox"]:checked');
                 this.filters.categories = checked ? checked.map('value') : [];
                 categories.find('small').text(this.filters.categories.length);
                 this.search();
-            }, this));
+            }.bind(this));
 
             popover.displayContent();
-        }, this));
+        }.bind(this));
 
         subsets.popover({
             placement: 'top',
             width: '200',
             trigger: 'mouse',
             style: 'font-subsets, above-modal'
-        }).on('beforeshow.popover', bind(function(popover) {
+        }).on('beforeshow.popover', function(popover) {
             var subs    = subsets.data('font-subsets').split(','),
                 content = popover.$target.find('.g5-popover-content');
 
@@ -568,25 +562,25 @@ var Fonts = new prime({
             var div;
             subs.forEach(function(sub) {
                 current = sub == this.filters.script ? 'checked' : '';
-                zen('div').html('<label><input name="font-subset[]" type="radio" ' + current + ' value="' + sub + '"/> ' + properCase(unhyphenate(sub.replace('ext', 'extended'))) + '</label>').bottom(content);
+                zen('div').html('<label><input name="font-subset[]" type="radio" ' + current + ' value="' + sub + '"/> ' + labelize(sub.replace('ext', 'extended')) + '</label>').bottom(content);
             }, this);
 
-            content.delegate('change', 'input[type="radio"]', bind(function(event, input) {
+            content.delegate('change', 'input[type="radio"]', function(event, input) {
                 input = $(input);
                 this.filters.script = input.value();
                 $('.g-particles-header input.font-preview').value(this.previewSentence[this.filters.script]);
-                subsets.find('small').text(properCase(unhyphenate(input.value().replace('ext', 'extended'))));
+                subsets.find('small').text(labelize(input.value().replace('ext', 'extended')));
                 this.search();
                 this.updatePreview();
-            }, this));
+            }.bind(this));
 
             popover.displayContent();
-        }, this));
+        }.bind(this));
 
         return container;
-    },
+    }
 
-    search: function(input) {
+    search(input) {
         input = input || $('.g-particles-header input.font-search');
         var list  = $('.g-fonts-list'),
             value = input.value(),
@@ -603,13 +597,13 @@ var Fonts = new prime({
             if (this.selected && this.selected.font == name && this.selected.selected.length) { return; }
 
             // Filter by Subset
-            if (!contains(subsets, this.filters.script)) {
+            if (!subsets.includes(this.filters.script)) {
                 font.addClass('g-font-hide');
                 return;
             }
 
             // Filter by Category
-            if (!contains(this.filters.categories, category)) {
+            if (!this.filters.categories.includes(category)) {
                 font.addClass('g-font-hide');
                 return;
             }
@@ -626,14 +620,14 @@ var Fonts = new prime({
 
         clearTimeout(input.refreshTimer);
 
-        input.refreshTimer = setTimeout(bind(function() {
+        input.refreshTimer = setTimeout(function() {
             this.scroll($('ul.g-fonts-list'));
-        }, this), 400);
+        }.bind(this), 400);
 
         input.previousValue = value;
-    },
+    }
 
-    updatePreview: function(input) {
+    updatePreview(input) {
         input = input || $('.g-particles-header input.font-preview');
 
         clearTimeout(input.refreshTimer);
@@ -641,16 +635,16 @@ var Fonts = new prime({
         var value = input.value(),
             list  = $('.g-fonts-list');
 
-        value = trim(value) ? trim(value) : this.previewSentence[this.filters.script];
+        value = String(value || '').trim() || this.previewSentence[this.filters.script];
 
         if (input.previousValue == value) { return true; }
 
         list.search('[data-font] .preview').text(value);
 
         input.previousValue = value;
-    },
+    }
 
-    fvdToStyle: function(family, fvd) {
+    fvdToStyle(family, fvd) {
         var match = fvd.match(/([a-z])([0-9])/);
         if (!match) return '';
 
@@ -664,9 +658,9 @@ var Fonts = new prime({
             fontStyle: styleMap[match[1]],
             fontWeight: (match[2] * 100).toString()
         }
-    },
+    }
 
-    mapVariant: function(variant) {
+    mapVariant(variant) {
         switch (variant) {
             case '100':
                 return 'Thin 100';
@@ -728,16 +722,17 @@ var Fonts = new prime({
                 return 'Unknown Variant';
         }
     }
-});
+}
 
-domready(function() {
+ready(function() {
     var body = $('body');
     body.delegate('click', '[data-g5-fontpicker]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
-        var FontPicker = storage.get(element);
+        var node = element[0],
+            FontPicker = storage.get(node);
         if (!FontPicker) {
             FontPicker = new Fonts();
-            storage.set(element, FontPicker);
+            storage.set(node, FontPicker);
         }
 
         FontPicker.open(event, element);

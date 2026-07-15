@@ -404,8 +404,8 @@ class Popover {
     initTargetEvents() {
         if (this.options.trigger !== 'click') {
             this.$target
-                .off('mouseenter', this.bound('mouseenter'))
-                .off('mouseleave', this.bound('mouseleave'))
+                .off('mouseenter', this.bound('mouseenterHandler'))
+                .off('mouseleave', this.bound('mouseleaveHandler'))
                 .on('mouseenter', this.bound('mouseenterHandler'))
                 .on('mouseleave', this.bound('mouseleaveHandler'));
         }
