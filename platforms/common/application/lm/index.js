@@ -368,7 +368,7 @@ ready(function() {
                             e.preventDefault();
                             if (this.attribute('disabled')) { return false; }
 
-                            flags.get('lm:switcher:' + window.btoa(uri), true);
+                            flags.set('lm:switcher:' + window.btoa(uri), true);
                             $([confirm, cancel]).attribute('disabled');
                             body.emit('mousedown', { target: element });
 
@@ -380,7 +380,7 @@ ready(function() {
                             if (this.attribute('disabled')) { return false; }
 
                             $([confirm, cancel]).attribute('disabled');
-                            flags.get('lm:switcher:' + window.btoa(uri), false);
+                            flags.set('lm:switcher:' + window.btoa(uri), false);
 
                             modal.close();
                             if (SWITCHER_HIT) {

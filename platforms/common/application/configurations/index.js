@@ -1,10 +1,7 @@
 "use strict";
 
 var $             = require('elements'),
-    zen           = require('elements/zen'),
     ready         = require('elements/domready'),
-    trim          = require('mout/string/trim'),
-    keys          = require('mout/object/keys'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
     request       = require('../utils/request'),
@@ -77,7 +74,7 @@ ready(function() {
                             });
                         } else {
                             var base    = $('#configurations').find('ul').find('li'),
-                                outline = zen('li').attribute('class', base.attribute('class'));
+                                outline = $(document.createElement('li')).attribute('class', base.attribute('class'));
 
                             outline.after(base).html(response.body.outline);
 
@@ -137,7 +134,7 @@ ready(function() {
                         e.preventDefault();
                         if (this.attribute('disabled')) { return false; }
 
-                        flags.get('free:to:delete:' + encode, true);
+                        flags.set('free:to:delete:' + encode, true);
                         $([confirm, cancel]).attribute('disabled');
                         body.emit('click', { target: element });
 
@@ -149,7 +146,7 @@ ready(function() {
                         if (this.attribute('disabled')) { return false; }
 
                         $([confirm, cancel]).attribute('disabled');
-                        flags.get('free:to:delete:' + encode, false);
+                        flags.set('free:to:delete:' + encode, false);
 
                         modal.close();
                     });
@@ -179,7 +176,7 @@ ready(function() {
                 // if the current outline is the one that's been deleted,
                 // fallback to default
                 if (outlineDeleted && currentOutline == outlineDeleted) {
-                    var ids = keys(confSelector.selectizeInstance.Options);
+                    var ids = Object.keys(confSelector.selectizeInstance.Options);
                     if (ids.length) {
                         reload.href(reload.href().replace('style=' + outlineDeleted, 'style=' + ids.shift()));
                     }
@@ -213,7 +210,7 @@ ready(function() {
             parent.showIndicator();
             parent.find('[data-title-edit]').addClass('disabled');
 
-            request(method, parseAjaxURI(href + getAjaxSuffix()), { title: trim(title) }, function(error, response) {
+            request(method, parseAjaxURI(href + getAjaxSuffix()), { title: String(title).trim() }, function(error, response) {
                 if (!response.body.success) {
                     modal.open({
                         content: response.body.html || response.body.message || response.body,
@@ -227,7 +224,7 @@ ready(function() {
                     element.data('title', title).data('tip', title);
 
                     // refresh ID label and actions buttons
-                    var dummy   = zen('div').html(response.body.outline),
+                    var dummy   = $(document.createElement('div')).html(response.body.outline),
                         id      = dummy.find('h4 span:last-child'),
                         actions = dummy.find('.outline-actions');
 

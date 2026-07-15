@@ -47,7 +47,7 @@ ready(function() {
                         e.preventDefault();
                         if (this.attribute('disabled')) { return false; }
 
-                        flags.get('free:to:delete:' + encode, true);
+                        flags.set('free:to:delete:' + encode, true);
                         $([confirm, cancel]).attribute('disabled');
                         body.emit('click', { target: element });
 
@@ -59,7 +59,7 @@ ready(function() {
                         if (this.attribute('disabled')) { return false; }
 
                         $([confirm, cancel]).attribute('disabled');
-                        flags.get('free:to:delete:' + encode, false);
+                        flags.set('free:to:delete:' + encode, false);
 
                         modal.close();
                     });
