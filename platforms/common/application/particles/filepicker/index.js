@@ -1,14 +1,9 @@
 "use strict";
 
 var $             = require('../../utils/elements.utils'),
-    prime         = require('prime'),
     request       = require('../../utils/request'),
     zen           = require('elements/zen'),
-    domready      = require('elements/domready'),
-    bind          = require('mout/function/bind'),
-    rtrim         = require('mout/string/rtrim'),
-    deepClone     = require('mout/lang/deepClone'),
-    deepFillIn    = require('mout/object/deepFillIn'),
+    ready         = require('../../utils/dom').ready,
     modal         = require('../../ui').modal,
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
@@ -17,8 +12,12 @@ var $             = require('../../utils/elements.utils'),
     Cookie        = require('../../utils/cookie'),
     dropzone      = require('dropzone').default;
 
-var FilePicker = new prime({
-    constructor: function(element) {
+var clone = function(value) {
+    return JSON.parse(JSON.stringify(value));
+};
+
+class FilePicker {
+    constructor(element) {
         var data = element.data('g5-filepicker'), value;
         this.data = data ? JSON.parse(data) : false;
 
@@ -34,9 +33,9 @@ var FilePicker = new prime({
         };
 
         //console.log(this.data);
-    },
+    }
 
-    open: function() {
+    open() {
         if (this.data) {
             this.data.value = $(this.data.field).value();
         }
@@ -47,23 +46,23 @@ var FilePicker = new prime({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             className: 'g5-dialog-theme-default g5-modal-filepicker',
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
-            remoteLoaded: bind(this.loaded, this),
-            afterClose: bind(function() {
+            remoteLoaded: this.loaded.bind(this),
+            afterClose: function() {
                 if (this.dropzone) { this.dropzone.destroy(); }
-            }, this)
+            }.bind(this)
         });
-    },
+    }
 
-    getPath: function() {
+    getPath() {
         var actives = this.content.search('.g-folders .active'), active, path;
         if (!actives) { return null; }
 
         active = $(actives[actives.length - 1]);
         path = JSON.parse(active.data('folder')).pathname;
         return path.replace(/\/$/, '') + '/';
-    },
+    }
 
-    getPreviewTemplate: function() {
+    getPreviewTemplate() {
         var li    = zen('li[data-file]'),
             del   = zen('span.g-file-delete[data-g-file-delete][data-dz-remove]').html('<i class="fa fa-fw fa-trash-o fa-trash-alt" aria-hidden="true"></i>').bottom(li),
             thumb = zen('div.g-thumb[data-dz-thumbnail]').bottom(li),
@@ -79,13 +78,13 @@ var FilePicker = new prime({
         li.remove();
 
         return html;
-    },
+    }
 
-    loaded: function(response, modalInstance) {
+    loaded(response, modalInstance) {
         var content   = modalInstance.elements.content,
             bookmarks = content.search('.g-bookmark'),
             files     = content.find('.g-files'),
-            fieldData = deepClone(this.data),
+            fieldData = clone(this.data),
             colors    = this.colors,
             self      = this;
 
@@ -99,16 +98,16 @@ var FilePicker = new prime({
                 thumbnailHeight: 100,
                 clickable: '[data-upload]',
                 acceptedFiles: this.acceptedFiles(this.data.filter) || '',
-                accept: bind(function(file, done) {
+                accept: function(file, done) {
                     if (!this.data.filter) { done(); }
                     else {
                         if (file.name.toLowerCase().match(this.data.filter)) { done(); }
                         else { done('<code>' + file.name + '</code> ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': <br />  <code>' + this.data.filter + '</code>'); }
                     }
-                }, this),
-                url: bind(function(file) {
+                }.bind(this),
+                url: function(file) {
                     return parseAjaxURI(getAjaxURL('filepicker/upload/' + global.btoa(encodeURIComponent(this.getPath() + file[0].name))) + getAjaxSuffix());
-                }, this)
+                }.bind(this)
             });
 
             // dropzone events
@@ -137,7 +136,7 @@ var FilePicker = new prime({
                     element.find('.g-thumb').addClass('g-image g-image-' + ext.toLowerCase());
                 }
 
-                progressConf = deepFillIn((isList ? {
+                progressConf = Object.assign({}, progressConf, (isList ? {
                     size: 20,
                     thickness: 10,
                     fill: {
@@ -151,7 +150,7 @@ var FilePicker = new prime({
                         gradient: colors.gradient,
                         color: false
                     }
-                }), progressConf);
+                }));
 
                 element.addClass('g-file-uploading');
                 uploader.progresser(progressConf);
@@ -220,7 +219,7 @@ var FilePicker = new prime({
 
                 text.html('<i class="fa fa-check" aria-hidden="true"></i>');
 
-                setTimeout(bind(function() {
+                setTimeout(function() {
                     uploader.animate({ opacity: 0 }, { duration: 500 });
                     thumb.animate({ opacity: 1 }, {
                         duration: 500,
@@ -231,7 +230,7 @@ var FilePicker = new prime({
                             mtime.text(translate('GANTRY5_PLATFORM_JUST_NOW'));
                         }
                     });
-                }, this), 500);
+                }.bind(this), 500);
             });
         }
 
@@ -247,7 +246,7 @@ var FilePicker = new prime({
             });
         });
 
-        content.delegate('click', '[data-folder]', bind(function(event, element) {
+        content.delegate('click', '[data-folder]', function(event, element) {
             if (event && event.preventDefault) { event.preventDefault(); }
             var data     = JSON.parse(element.data('folder')),
                 selected = $('[data-file].selected');
@@ -257,7 +256,7 @@ var FilePicker = new prime({
             fieldData.subfolder = true;
 
             element.showIndicator('fa fa-li fa-fw fa-spin-fast fa-spinner');
-            request(parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()), fieldData).send(bind(function(error, response) {
+            request(parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()), fieldData).send(function(error, response) {
                 element.hideIndicator();
                 this.addActiveState(element);
 
@@ -288,10 +287,10 @@ var FilePicker = new prime({
 
                     this.dropzone.previewsContainer = files.find('ul:not(.g-list-labels)')[0];
                 }
-            }, this));
-        }, this));
+            }.bind(this));
+        }.bind(this));
 
-        content.delegate('click', '[data-g-file-preview]', bind(function(event, element) {
+        content.delegate('click', '[data-g-file-preview]', function(event, element) {
             event.preventDefault();
             event.stopPropagation();
             var parent    = element.parent('[data-file]'),
@@ -304,9 +303,9 @@ var FilePicker = new prime({
                     content: '<img src="' + thumb[0].style.backgroundImage.slice(4, -1).replace(/"/g, '') + '" />'
                 });
             }
-        }, this));
+        }.bind(this));
 
-        content.delegate('click', '[data-g-file-delete]', bind(function(event, element) {
+        content.delegate('click', '[data-g-file-delete]', function(event, element) {
             event.preventDefault();
             var parent    = element.parent('[data-file]'),
                 data      = JSON.parse(parent.data('file')),
@@ -331,9 +330,9 @@ var FilePicker = new prime({
                     }, 210);
                 }
             });
-        }, this));
+        }.bind(this));
 
-        content.delegate('click', '[data-file]', bind(function(event, element) {
+        content.delegate('click', '[data-file]', function(event, element) {
             if (event && event.preventDefault) { event.preventDefault(); }
             var target = $(event.target),
                 remove = target.data('g-file-delete') !== null || target.parent('[data-g-file-delete]'),
@@ -344,9 +343,9 @@ var FilePicker = new prime({
 
             files.search('[data-file]').removeClass('selected');
             element.addClass('selected');
-        }, this));
+        }.bind(this));
 
-        content.delegate('click', '[data-select]', bind(function(event, element) {
+        content.delegate('click', '[data-select]', function(event, element) {
             if (event && event.preventDefault) { event.preventDefault(); }
             var selected = files.find('[data-file].selected'),
                 value    = selected ? selected.data('file-url') : '';
@@ -354,9 +353,9 @@ var FilePicker = new prime({
             $(this.data.field).value(value);
             $('body').emit('input', { target: this.data.field });
             modal.close();
-        }, this));
+        }.bind(this));
 
-        content.delegate('click', '[data-files-mode]', bind(function(event, element) {
+        content.delegate('click', '[data-files-mode]', function(event, element) {
             if (event && event.preventDefault) { event.preventDefault(); }
             if (element.hasClass('active')) { return; }
 
@@ -391,7 +390,7 @@ var FilePicker = new prime({
                     if (uploadProgress) {
                         uploadProgress.forEach(function(element) {
                             element = $(element);
-                            var config = deepClone(progressConf);
+                            var config = clone(progressConf);
 
                             if (element.parent('.g-file-error')) {
                                 config.fill = { color: colors.error };
@@ -406,10 +405,10 @@ var FilePicker = new prime({
                 }
             });
 
-        }, this));
-    },
+        }.bind(this));
+    }
 
-    addActiveState: function(element) {
+    addActiveState(element) {
         var opened = this.content.search('[data-folder].active, .g-folders > .active'), parent = element.parent();
         if (opened) { opened.removeClass('active'); }
 
@@ -419,9 +418,9 @@ var FilePicker = new prime({
             parent.previousSibling().addClass('active');
             parent = parent.parent();
         }
-    },
+    }
 
-    acceptedFiles: function(filter) {
+    acceptedFiles(filter) {
         var attr = '';
         switch (filter) {
             case '.(jpe?g|gif|png|svg)$':
@@ -433,27 +432,28 @@ var FilePicker = new prime({
         }
 
         return attr;
-    },
+    }
 
-    refreshFiles: function(content) {
+    refreshFiles(content) {
         var active = $('[data-folder].active'),
             folder = active[active.length - 1];
         if (folder) {
             content.emit('click', { target: $(folder) });
         }
     }
-});
+}
 
-domready(function() {
+ready(function() {
     var body = $('body');
     body.delegate('click', '[data-g5-filepicker]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
         element = $(element);
-        if (!element.GantryFilePicker) {
-            element.GantryFilePicker = new FilePicker(element);
+        var node = element[0];
+        if (!node.GantryFilePicker) {
+            node.GantryFilePicker = new FilePicker(element);
         }
 
-        element.GantryFilePicker.open();
+        node.GantryFilePicker.open();
     });
 });
 
