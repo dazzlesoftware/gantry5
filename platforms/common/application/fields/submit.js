@@ -1,9 +1,6 @@
 'use strict';
 
 var $             = require('elements'),
-    isArray       = require('mout/lang/isArray'),
-    contains      = require('mout/array/contains'),
-    trim          = require('mout/string/trim'),
     validateField = require('../utils/field-validation');
 
 var submit = function(elements, container, options) {
@@ -33,7 +30,7 @@ var submit = function(elements, container, options) {
 
             override = override || $(input.data('override-target'));
 
-            if (contains(['select', 'select-multiple'], input.type()) && input.attribute('multiple')) {
+            if (['select', 'select-multiple'].includes(input.type()) && input.attribute('multiple')) {
                 value = (input.search('option[selected]') || []).map(function(selection) {
                     return $(selection).value();
                 });
@@ -46,7 +43,7 @@ var submit = function(elements, container, options) {
                 invalid.push(input);
             }
 
-            if (isArray(value)) {
+            if (Array.isArray(value)) {
                 value.forEach(function(selection) {
                     valid.push(name + '[]=' + encodeURIComponent(selection));
                 });
@@ -63,7 +60,8 @@ var submit = function(elements, container, options) {
             if (title.parent('[data-collection-template]')) { return; }
 
             key = title.data('collection-key') || (options.isRoot ? 'settings[title]' : 'title');
-            valid.push(key + '=' + encodeURIComponent(trim(title.data('title-editable'))));
+            var editableTitle = title.data('title-editable');
+            valid.push(key + '=' + encodeURIComponent(editableTitle == null ? '' : String(editableTitle).trim()));
         });
     }
 
