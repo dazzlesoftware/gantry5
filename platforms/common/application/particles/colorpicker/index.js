@@ -1,18 +1,14 @@
 "use strict";
 
-var prime      = require('prime'),
-    Emitter    = require('prime/emitter'),
-    Bound      = require('prime-util/prime/bound'),
-    Options    = require('prime-util/prime/options'),
-    $          = require('elements'),
-    ready      = require('elements/domready'),
+var $          = require('elements'),
+    ready      = require('../../utils/dom').ready,
     zen        = require('elements/zen'),
 
-    DragEvents = require('../../ui/drag.events'),
+    DragEvents = require('../../ui/drag.events');
 
-    forEach    = require('mout/collection/forEach'),
-    bind       = require('mout/function/bind'),
-    clamp      = require('mout/math/clamp');
+var clamp = function(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+};
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
@@ -21,27 +17,48 @@ var MOUSEDOWN = DragEvents.EVENTS.START,
     MOUSEUP   = DragEvents.EVENTS.STOP,
     FOCUSIN   = isFirefox ? 'focus' : 'focusin';
 
-var ColorPicker = new prime({
-    mixin: [Options, Bound],
-    inherits: Emitter,
-    options: {},
-    constructor: function(options) {
-        this.setOptions(options);
+class ColorPicker {
+    constructor(options) {
+        this.options = Object.assign({}, options || {});
+        this._bound = Object.create(null);
+        this._events = new Map();
         this.built = false;
         this.attach();
-    },
+    }
 
-    attach: function() {
+    bound(method) {
+        if (!this._bound[method]) {
+            this._bound[method] = this[method].bind(this);
+        }
+        return this._bound[method];
+    }
+
+    on(name, callback) {
+        var listeners = this._events.get(name) || [];
+        listeners.push(callback);
+        this._events.set(name, listeners);
+        return this;
+    }
+
+    emit(name) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        (this._events.get(name) || []).slice().forEach(function(callback) {
+            callback.apply(this, args);
+        }, this);
+        return this;
+    }
+
+    attach() {
         var body = $('body');
 
-        MOUSEDOWN.forEach(bind(function(mousedown) {
+        MOUSEDOWN.forEach(function(mousedown) {
             body.delegate(mousedown, '#g5-container .g-colorpicker i', this.bound('iconClick'));
-        }, this));
+        }, this);
 
         body.delegate(FOCUSIN, '#g5-container .g-colorpicker input', this.bound('show'), true);
 
 
-        body.delegate('keydown', '#g5-container .g-colorpicker input', bind(function(event, element) {
+        body.delegate('keydown', '#g5-container .g-colorpicker input', function(event, element) {
             switch (event.keyCode) {
                 case 9: // tab
                     this.hide();
@@ -53,23 +70,23 @@ var ColorPicker = new prime({
                     break;
             }
             return true;
-        }, this));
+        }.bind(this));
 
         // Update on keyup
-        body.delegate('keyup', '#g5-container .g-colorpicker input', bind(function(event, element) {
+        body.delegate('keyup', '#g5-container .g-colorpicker input', function(event, element) {
             this.updateFromInput(true, element);
             return true;
-        }, this));
+        }.bind(this));
 
         // Update on paste
-        body.delegate('paste', '#g5-container .g-colorpicker input', bind(function(event, element) {
-            setTimeout(bind(function() {
+        body.delegate('paste', '#g5-container .g-colorpicker input', function(event, element) {
+            setTimeout(function() {
                 this.updateFromInput(true, element);
-            }, this), 1);
-        }, this));
-    },
+            }.bind(this), 1);
+        }.bind(this));
+    }
 
-    show: function(event, element) {
+    show(event, element) {
         var body = $('body');
 
         if (!this.built) {
@@ -81,76 +98,76 @@ var ColorPicker = new prime({
         this.wrapper.addClass('cp-visible');
         this.updateFromInput();
 
-        MOUSEMOVE.forEach(bind(function(mousemove) {
+        MOUSEMOVE.forEach(function(mousemove) {
             body.on(mousemove, this.bound('bodyMove'));
-        }, this));
+        }, this);
 
-        MOUSEDOWN.forEach(bind(function(mousedown) {
+        MOUSEDOWN.forEach(function(mousedown) {
             this.wrapper.delegate(mousedown, '.cp-grid, .cp-slider, .cp-opacity-slider', this.bound('bodyDown'));
             body.on(mousedown, this.bound('bodyClick'));
-        }, this));
+        }, this);
 
-        MOUSEUP.forEach(bind(function(mouseup) {
+        MOUSEUP.forEach(function(mouseup) {
             body.on(mouseup, this.bound('targetReset'));
-        }, this));
-    },
+        }, this);
+    }
 
-    hide: function() {
+    hide() {
         var body = $('body');
 
         if (!this.built) { return; }
         this.wrapper.removeClass('cp-visible');
 
-        MOUSEMOVE.forEach(bind(function(mousemove) {
+        MOUSEMOVE.forEach(function(mousemove) {
             body.off(mousemove, this.bound('bodyMove'));
-        }, this));
+        }, this);
 
-        MOUSEDOWN.forEach(bind(function(mousedown) {
+        MOUSEDOWN.forEach(function(mousedown) {
             this.wrapper.undelegate(mousedown, '.cp-grid, .cp-slider, .cp-opacity-slider', this.bound('bodyDown'));
             body.off(mousedown, this.bound('bodyClick'));
-        }, this));
+        }, this);
 
-        MOUSEUP.forEach(bind(function(mouseup) {
+        MOUSEUP.forEach(function(mouseup) {
             body.off(mouseup, this.bound('targetReset'));
-        }, this));
-    },
+        }, this);
+    }
 
-    iconClick: function(event, element) {
+    iconClick(event, element) {
         event.preventDefault();
 
         var input = $(element).sibling('input');
         input[0].focus();
 
         this.show(event, input);
-    },
+    }
 
-    bodyMove: function(event) {
+    bodyMove(event) {
         event.preventDefault();
 
         if (this.target) { this.move(this.target, event); }
-    },
+    }
 
-    bodyClick: function(event) {
+    bodyClick(event) {
         var target = $(event.target);
         if (!target.parent('.cp-wrapper') && !target.parent('.g-colorpicker')) {
             this.hide();
         }
-    },
+    }
 
-    bodyDown: function(event, element) {
+    bodyDown(event, element) {
         event.preventDefault();
 
         this.target = element;
         this.move(this.target, event, true);
-    },
+    }
 
-    targetReset: function(event) {
+    targetReset(event) {
         event.preventDefault();
 
         this.target = null;
-    },
+    }
 
-    move: function(target, event) {
+    move(target, event) {
         var input = this.element,
             picker = target.find('.cp-picker'),
             clientRect = target[0].getBoundingClientRect(),
@@ -207,9 +224,9 @@ var ColorPicker = new prime({
             });
             this.updateFromPicker(input, target);
         }
-    },
+    }
 
-    build: function() {
+    build() {
         this.wrapper = zen('div.cp-wrapper.cp-with-opacity.cp-mode-hue');
         this.slider = zen('div.cp-slider.cp-sprite').bottom(this.wrapper).appendChild(zen('div.cp-picker'));
         this.opacitySlider = zen('div.cp-opacity-slider.cp-sprite').bottom(this.wrapper).appendChild(zen('div.cp-picker'));
@@ -227,8 +244,8 @@ var ColorPicker = new prime({
             transparent: zen('div.cp-tab-transp').text('TRANSPARENT').bottom(tabs)
         };
 
-        MOUSEDOWN.forEach(bind(function(mousedown) {
-            tabs.delegate(mousedown, '> div', bind(function(event, element) {
+        MOUSEDOWN.forEach(function(mousedown) {
+            tabs.delegate(mousedown, '> div', function(event, element) {
                 if (element == this.tabs.transparent) {
                     this.opacity = 0;
                     var sliderHeight = this.opacitySlider.position().height;
@@ -247,16 +264,16 @@ var ColorPicker = new prime({
 
                 this.mode = newMode;
                 this.updateFromInput();
-            }, this));
-        }, this));
+            }.bind(this));
+        }, this);
 
         this.wrapper.bottom('#g5-container');
 
         this.built = true;
         this.mode = 'hue';
-    },
+    }
 
-    updateFromInput: function(dontFireEvent, element) {
+    updateFromInput(dontFireEvent, element) {
         element = $(element) || this.element;
         var value = element.value(),
             opacity = value.replace(/\s/g, '').match(/^rgba?\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},(.+)\)/),
@@ -385,9 +402,9 @@ var ColorPicker = new prime({
 
         this.emit('change', element, hex, opacity);
 
-    },
+    }
 
-    updateFromPicker: function(input, target) {
+    updateFromPicker(input, target) {
         var getCoords = function(picker, container) {
 
             var left, top;
@@ -544,23 +561,23 @@ var ColorPicker = new prime({
         // Handle change event
         this.emit('change', this.element, hex, this.opacity);
 
-    },
+    }
 
-    reposition: function() {
+    reposition() {
         var offset = this.element[0].getBoundingClientRect(),
             ct = $('#g5-container')[0].getBoundingClientRect();
         this.wrapper.style({
             top: offset.top + offset.height - ct.top,
             left: offset.left - ct.left
         });
-    },
+    }
 
-    getValue: function(hex) {
+    getValue(hex) {
         if (this.opacity == 1) { return hex; }
         var rgb = hex2rgb(hex);
         return 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + this.opacity + ')';
     }
-});
+}
 
 // Parses a string and returns a valid hex string when possible
 var parseHex = function(string) {
@@ -637,7 +654,7 @@ var rgb2hex = function(rgb) {
         rgb.b.toString(16)
     ];
 
-    forEach(hex, function(val, nr) {
+    hex.forEach(function(val, nr) {
         if (val.length === 1) hex[nr] = '0' + val;
     });
 
