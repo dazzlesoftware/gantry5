@@ -1,10 +1,7 @@
 "use strict";
 
 var $             = require('elements'),
-    zen           = require('elements/zen'),
     ready         = require('elements/domready'),
-    trim          = require('mout/string/trim'),
-    keys          = require('mout/object/keys'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
     request       = require('../utils/request'),
@@ -16,6 +13,14 @@ var $             = require('elements'),
     flags         = require('../utils/flags-state'),
     translate     = require('../utils/translate'),
     Cards         = require('./cards');
+
+var trim = function(value) {
+    return value == null ? '' : String(value).trim();
+};
+
+var createContainer = function(html) {
+    return $(document.createElement('div')).html(html);
+};
 
 ready(function() {
     var body = $('body'),
@@ -118,7 +123,7 @@ ready(function() {
                 }
 
                 var form       = content.elements.content.find('form'),
-                    fakeDOM    = zen('div').html(response.body.html).find('form'),
+                    fakeDOM    = createContainer(response.body.html).find('form'),
                     submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
                 var search      = content.elements.content.find('.search input'),
@@ -199,7 +204,7 @@ ready(function() {
                 }
 
                 var form       = content.elements.content.find('form'),
-                    fakeDOM    = zen('div').html(response.body.html).find('form'),
+                    fakeDOM    = createContainer(response.body.html).find('form'),
                     submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
                 var editable = content.elements.content.find('[data-title-editable]');
@@ -252,7 +257,7 @@ ready(function() {
                                 parent.data('pm-data', JSON.stringify(response.body.item));
 
                                 var status = response.body.item.enabled || response.body.item.options.attributes.enabled;
-                                var dummy = zen('div').html(response.body.html);
+                                var dummy = createContainer(response.body.html);
                                 parent.html(dummy.firstChild().html());
                                 parent[status == '0' ? 'addClass' : 'removeClass']('g-menu-item-disabled');
                             }
@@ -304,7 +309,7 @@ ready(function() {
 
                     element.data('title-editable', original).text(original);
                 } else {
-                    var dummy = zen('div').html(response.body.position);
+                    var dummy = createContainer(response.body.position);
 
                     parent.html(dummy.find('[id]').html());
 

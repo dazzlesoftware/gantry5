@@ -1,17 +1,7 @@
 "use strict";
 
 var $             = require('elements'),
-    zen           = require('elements/zen'),
     ready         = require('elements/domready'),
-    trim          = require('mout/string/trim'),
-    keys          = require('mout/object/keys'),
-    modal         = require('../ui').modal,
-    toastr        = require('../ui').toastr,
-    request       = require('../utils/request'),
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
-
     Eraser        = require('../ui/eraser'),
     simpleSort    = require('sortablejs'),
 
