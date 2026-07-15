@@ -2,25 +2,22 @@
 
 var ready         = require('elements/domready'),
     $             = require('elements'),
-    zen           = require('elements/zen'),
-    has           = require('mout/object/has'),
-    some          = require('mout/array/some'),
-    modal         = require('../../ui').modal,
-    toastr        = require('../../ui').toastr,
-    request       = require('../../utils/request'),
-    indexOf       = require('mout/array/indexOf'),
-    contains      = require('mout/array/contains'),
-    lastItem      = require('mout/array/last'),
-    keys          = require('mout/object/keys'),
     simpleSort    = require('sortablejs'),
-    escapeUnicode = require('mout/string/escapeUnicode'),
-
-    trim          = require('mout/string/trim'),
-
-    getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     translate     = require('../../utils/translate');
 
 require('elements/insertion');
+
+var collectionIndex = function(collection, item) {
+    return Array.prototype.indexOf.call(collection, item);
+};
+
+var escapeUnicode = function(value) {
+    return String(value).replace(/[\s\S]/g, function(character) {
+        if (/[\x20-\x7e]/.test(character)) { return character; }
+
+        return '\\u' + ('000' + character.charCodeAt(0).toString(16)).slice(-4);
+    });
+};
 
 ready(function() {
     var body = $('body');
@@ -70,7 +67,7 @@ ready(function() {
             list  = param.find('ul'),
             tmpl  = param.find('[data-keyvalue-template]'),
             items = list.search('> [data-keyvalue-item]') || [],
-            last  = $(lastItem(items));
+            last  = items.length ? $(items[items.length - 1]) : null;
 
         var clone = $(tmpl[0].cloneNode(true));
 
@@ -89,10 +86,9 @@ ready(function() {
     body.delegate('click', '[data-keyvalue-remove]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
         var item      = element.parent('[data-keyvalue-item]'),
-            key       = item.find('input[type="text"]').data('keyvalue-key'),
             dataField = element.parent('.settings-param').find('[data-keyvalue-data]'),
             items     = element.parent('ul').search('> [data-keyvalue-item]'),
-            index     = indexOf(items, item[0]),
+            index     = collectionIndex(items, item[0]),
             data      = JSON.parse(dataField.value());
 
         data.splice(index, 1);
@@ -108,16 +104,18 @@ ready(function() {
             keyElement = parent.find('[data-keyvalue-key]'),
             valElement = parent.find('[data-keyvalue-value]'),
             key        = keyElement.data('keyvalue-key'),
-            keyValue   = trim(keyElement.value()),
-            valValue   = trim(valElement.value()),
+            keyValue   = String(keyElement.value() || '').trim(),
+            valValue   = String(valElement.value() || '').trim(),
             items      = element.parent('ul').search('> [data-keyvalue-item]:not(.g-keyvalue-warning):not(.g-keyvalue-excluded)'),
-            index      = indexOf(items, parent[0]),
+            index      = collectionIndex(items, parent[0]),
 
             dataField  = element.parent('.settings-param').find('[data-keyvalue-data]'),
             data       = JSON.parse(dataField.value()),
             exclude    = JSON.parse(dataField.data('keyvalue-exclude')),
-            excluded   = contains(exclude, keyValue),
-            duplicate  = some(data, function(obj) { return has(obj, keyValue); }) && key !== keyValue;
+            excluded   = Array.isArray(exclude) && exclude.includes(keyValue),
+            duplicate  = data.some(function(obj) {
+                return Object.prototype.hasOwnProperty.call(obj, keyValue);
+            }) && key !== keyValue;
 
         if (keyElement == element) {
             // renamed or cleared key, need to cleanup JSON
@@ -176,7 +174,7 @@ ready(function() {
 
         data.forEach(function(obj, index) {
             var clone = $(tmpl[0].cloneNode(true)),
-                key   = keys(obj).shift(),
+                key   = Object.keys(obj).shift(),
                 value = obj[key];
 
             list.appendChild(clone);
