@@ -1,22 +1,9 @@
 "use strict";
 
-var prime         = require('prime'),
-    $             = require('../utils/elements.utils'),
-    zen           = require('elements/zen'),
+var $             = require('../utils/elements.utils'),
     domready      = require('elements/domready'),
-    storage       = require('prime/map')(),
+    storage       = new Map(),
     modal         = require('../ui').modal,
-
-    size          = require('mout/collection/size'),
-    indexOf       = require('mout/array/indexOf'),
-    merge         = require('mout/object/merge'),
-    keys          = require('mout/object/keys'),
-    guid          = require('mout/random/guid'),
-    toQueryString = require('mout/queryString/encode'),
-    contains      = require('mout/string/contains'),
-
-    getParam      = require('mout/queryString/getParam'),
-    setParam      = require('mout/queryString/setParam'),
 
     request       = require('./request')(),
     History       = require('./history'),
@@ -30,6 +17,46 @@ var prime         = require('prime'),
 require('../ui/popover');
 
 var ERROR = false, TMP_SELECTIZE_DISABLE = false, ConfNavIndex = -1;
+
+var guid = function() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+    }
+
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(character) {
+        var random = Math.floor(Math.random() * 16),
+            value = character === 'x' ? random : (random & 0x3) | 0x8;
+
+        return value.toString(16);
+    });
+};
+
+var getParam = function(uri, name) {
+    return new URL(uri, window.location.href).searchParams.get(name);
+};
+
+var setParam = function(uri, name, value) {
+    var url = new URL(uri, window.location.href),
+        isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
+
+    url.searchParams.set(name, value);
+
+    return isAbsolute ? url.href : url.pathname + url.search + url.hash;
+};
+
+var toQueryString = function(parameters) {
+    var query = new URLSearchParams();
+
+    Object.keys(parameters || {}).forEach(function(key) {
+        var values = Array.isArray(parameters[key]) ? parameters[key] : [parameters[key]];
+
+        values.forEach(function(value) {
+            query.append(key, value);
+        });
+    });
+
+    return query.toString() ? '?' + query.toString() : '';
+};
 
 History.Adapter.bind(window, 'statechange', function() {
     if (request.running()) {
@@ -45,7 +72,7 @@ History.Adapter.bind(window, 'statechange', function() {
 
     if (Data.doNothing) { return true; }
 
-    if (size(Data) && Data.parsed !== false && storage.get(Data.uuid)) {
+    if (Data && Object.keys(Data).length && Data.parsed !== false && storage.has(Data.uuid)) {
         Data = storage.get(Data.uuid);
     }
 
@@ -84,7 +111,7 @@ History.Adapter.bind(window, 'statechange', function() {
 
     if (Data.params) {
         params = toQueryString(JSON.parse(Data.params));
-        if (contains(URI, '?')) { params = params.replace(/^\?/, '&'); }
+        if (URI.includes('?')) { params = params.replace(/^\?/, '&'); }
     }
 
     if (!ERROR) { modal.closeAll(); }
@@ -339,7 +366,7 @@ domready(function() {
         element.showIndicator();
 
         if (outlineDeleted == currentOutline) {
-            var ids = keys(confSelector.selectizeInstance.Options),
+            var ids = Object.keys(confSelector.selectizeInstance.Options),
                 id = ids.shift();
             body.outlineDeleted = null;
             item.href(item.href().replace('/' + outlineDeleted + '/', '/' + id + '/').replace('style=' + outlineDeleted, 'style=' + id));
@@ -354,7 +381,7 @@ domready(function() {
         var navbar = $('#navbar'),
             lis = navbar.search('li a[data-g5-ajaxify]');
 
-        ConfNavIndex = indexOf(lis, element[0]) + 1;
+        ConfNavIndex = Array.prototype.indexOf.call(lis, element[0]) + 1;
     });
 
     // generic ajaxified links
@@ -424,7 +451,7 @@ domready(function() {
                 extras.items = JSON.stringify(mm.menumanager.items);
             }
 
-            storage.set(uuid, merge({}, data, {
+            storage.set(uuid, Object.assign({}, data, {
                 target: target,
                 parent: parent,
                 element: element,
