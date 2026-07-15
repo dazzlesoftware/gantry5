@@ -1,22 +1,21 @@
 'use strict';
 var $                  = require('elements'),
     ready              = require('elements/domready'),
-    zen                = require('elements/zen'),
     Submit             = require('../fields/submit'),
     modal              = require('../ui').modal,
     toastr             = require('../ui').toastr,
     Eraser             = require('../ui/eraser'),
     request            = require('../utils/request'),
-    indexOf            = require('mout/array/indexOf'),
     simpleSort         = require('sortablejs'),
-
-    trim               = require('mout/string/trim'),
-    size               = require('mout/object/size'),
 
     parseAjaxURI       = require('../utils/get-ajax-url').parse,
     getAjaxSuffix      = require('../utils/get-ajax-suffix'),
     getOutlineNameById = require('../utils/get-outline').getOutlineNameById,
     translate          = require('../utils/translate');
+
+var createContainer = function(html) {
+    return $(document.createElement('div')).html(html);
+};
 
 var AtomsField   = '[name="page[head][atoms][_json]"]',
     groupOptions = [
@@ -166,7 +165,7 @@ var AttachSettings = function() {
             remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 var form       = content.elements.content.find('form'),
-                    fakeDOM    = zen('div').html(response.body.html).find('form'),
+                    fakeDOM    = createContainer(response.body.html).find('form'),
                     submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue  = JSON.parse(data);
 
@@ -208,7 +207,7 @@ var AttachSettings = function() {
                                 }
                             });
                         } else {
-                            var index = indexOf(items, item[0]);
+                            var index = Array.prototype.indexOf.call(items, item[0]);
                             dataValue[index] = response.body.item;
 
                             dataField.value(JSON.stringify(dataValue).replace(/\//g, '\\/'));
@@ -217,7 +216,7 @@ var AttachSettings = function() {
 
                             // toggle enabled/disabled status as needed
                             var enabled    = Number(dataValue[index].attributes.enabled),
-                                inheriting = response.body.item.inherit && size(response.body.item.inherit);
+                                inheriting = response.body.item.inherit && Object.keys(response.body.item.inherit).length;
                             item[enabled ? 'removeClass' : 'addClass']('atom-disabled');
                             item[!inheriting ? 'removeClass' : 'addClass']('g-inheriting');
                             item.attribute('title', enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom'));
