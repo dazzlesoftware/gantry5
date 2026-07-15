@@ -2,22 +2,25 @@
 
 var ready         = require('elements/domready'),
     $             = require('elements'),
-    zen           = require('elements/zen'),
     Submit        = require('../../fields/submit'),
     modal         = require('../../ui').modal,
     toastr        = require('../../ui').toastr,
     request       = require('../../utils/request'),
-    lastItem      = require('mout/array/last'),
-    indexOf       = require('mout/array/indexOf'),
     simpleSort    = require('sortablejs'),
-
-    trim          = require('mout/string/trim'),
 
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     translate     = require('../../utils/translate');
 
 require('elements/insertion');
+
+var collectionIndex = function(collection, item) {
+    return Array.prototype.indexOf.call(collection, item);
+};
+
+var createContainer = function(html) {
+    return $(document.createElement('div')).html(html);
+};
 
 ready(function() {
     var body = $('body');
@@ -81,7 +84,7 @@ ready(function() {
             dataField = param.find('[data-collection-data]'),
             tmpl = param.find('[data-collection-template]'),
             items = list.search('> [data-collection-item]') || [],
-            last = $(lastItem(items));
+            last = items.length ? $(items[items.length - 1]) : null;
 
         var clone = $(tmpl[0].cloneNode(true)), title, editable;
 
@@ -108,13 +111,13 @@ ready(function() {
 
     // Edit Title
     body.delegate('blur', '[data-collection-item] [data-title-editable]', function(event, element) {
-        var text = trim(element.text()),
+        var text = String(element.text() || '').trim(),
             item = element.parent('[data-collection-item]'),
             key = item.data('collection-item'),
             items = element.parent('ul').search('> [data-collection-item]'),
             dataField = element.parent('.settings-param').find('[data-collection-data]'),
             data = dataField.value(),
-            index = indexOf(items, item[0]);
+            index = collectionIndex(items, item[0]);
 
         if (index == -1) { return; }
 
@@ -132,7 +135,7 @@ ready(function() {
             list = element.parent('ul'),
             editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
             items = list.search('> [data-collection-item]'),
-            index = indexOf(items, item[0]),
+            index = collectionIndex(items, item[0]),
             dataField = element.parent('.settings-param').find('[data-collection-data]'),
             data = dataField.value();
 
@@ -153,7 +156,7 @@ ready(function() {
             editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
             url = param.find('[data-collection-template]').find('a').href(),
             items = list.search('> [data-collection-item]'),
-            index = indexOf(items, item[0]),
+            index = collectionIndex(items, item[0]),
             clone = $(item[0].cloneNode(true)).after(item),
             dataField = element.parent('.settings-param').find('[data-collection-data]'),
             data = dataField.value();
@@ -194,7 +197,7 @@ ready(function() {
             item = element.parent('[data-collection-item]'),
             items = parent.search('ul > [data-collection-item]');
 
-        var dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[indexOf(items, item[0])]) };
+        var dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[collectionIndex(items, item[0])]) };
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
@@ -209,7 +212,7 @@ ready(function() {
                 }
 
                 var form = content.elements.content.find('form'),
-                    fakeDOM = zen('div').html(response.body.html).find('form'),
+                    fakeDOM = createContainer(response.body.html).find('form'),
                     submit = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue = JSON.parse(data);
 
@@ -255,7 +258,7 @@ ready(function() {
                             });
                         } else {
                             if (item) { // single editing
-                                dataValue[indexOf(items, item[0])] = response.body.data;
+                                dataValue[collectionIndex(items, item[0])] = response.body.data;
                             } else { // multi editing
                                 dataValue = response.body.data;
                             }

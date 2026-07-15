@@ -5,10 +5,7 @@ var $             = require('../../utils/elements.utils'),
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
     getAjaxURL    = require('../../utils/get-ajax-url').global,
-    translate     = require('../../utils/translate'),
-
-    trim          = require('mout/string/trim'),
-    contains      = require('mout/array/contains');
+    translate     = require('../../utils/translate');
 
 domready(function() {
     var body = $('body');
@@ -30,7 +27,7 @@ domready(function() {
         element = $(element);
         var field = $(element.data('g5-iconpicker')),
             realPreview = element,
-            value = trim(field.value()).replace(/\s{2,}/g, ' ').split(' ');
+            value = String(field.value() || '').trim().replace(/\s{2,}/g, ' ').split(' ');
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
@@ -153,7 +150,7 @@ domready(function() {
                         if (instance.$target) { instance.$target.remove(); }
                     });
 
-                    if (contains(value, icon.data('g-icon'))) {
+                    if (value.includes(icon.data('g-icon'))) {
                         // set active icon
                         icon.addClass('active');
 
