@@ -4,9 +4,6 @@ var $              = require('elements'),
     ready          = require('elements/domready'),
     request        = require('./utils/request'),
     ui             = require('./ui'),
-    interpolate    = require('mout/string/interpolate'),
-    trim           = require('mout/string/trim'),
-    setParam       = require('mout/queryString/setParam'),
     modal          = ui.modal,
     toastr         = ui.toastr,
 
@@ -33,6 +30,33 @@ require('./fields');
 require('./ui/popover');
 require('./utils/ajaxify-links');
 require('./utils/rAF-polyfill');
+
+var trim = function(value, characters) {
+    var string = value == null ? '' : String(value);
+    if (!characters) { return string.trim(); }
+
+    var escaped = String(characters).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return string.replace(new RegExp('^[' + escaped + ']+|[' + escaped + ']+$', 'g'), '');
+};
+
+var interpolate = function(template, replacements) {
+    return String(template == null ? '' : template).replace(/\{\{([^}]+)}}/g, function(match, path) {
+        var value = path.split('.').reduce(function(current, key) {
+            return current == null ? undefined : current[key];
+        }, replacements);
+
+        return value == null ? '' : String(value);
+    });
+};
+
+var setParam = function(uri, name, value) {
+    var url = new URL(uri, window.location.href),
+        isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
+
+    url.searchParams.set(name, value);
+
+    return isAbsolute ? url.href : url.pathname + url.search + url.hash;
+};
 
 var createHandler = function(divisor, noun, restOfString) {
     return function(diff) {

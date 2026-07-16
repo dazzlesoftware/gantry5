@@ -52,15 +52,33 @@ var DragDrop = new prime({
     },
 
     attach: function() {
-        this.DRAG_EVENTS.EVENTS.START.forEach(bind(function(event) {
-            this.container.delegate(event, this.options.delegate, this.bound('start'));
+        if (this.attached) { return this; }
+        this.startListeners = [];
+        this.DRAG_EVENTS.EVENTS.START.forEach(bind(function(eventName) {
+            this.container.forEach(bind(function(node) {
+                var listener = bind(function(event) {
+                    var target = $(event.target || event.srcElement),
+                        match = target.matches(this.options.delegate) ? target : target.parent(this.options.delegate);
+
+                    if (match) { return this.bound('start')(event, match); }
+                }, this);
+
+                node.addEventListener(eventName, listener, false);
+                this.startListeners.push({ node: node, event: eventName, listener: listener });
+            }, this));
         }, this));
+        this.attached = true;
+        return this;
     },
 
     detach: function() {
-        this.DRAG_EVENTS.EVENTS.START.forEach(bind(function(event) {
-            this.container.undelegate(event, this.options.delegate, this.bound('start'));
-        }, this));
+        if (!this.attached) { return this; }
+        (this.startListeners || []).forEach(function(binding) {
+            binding.node.removeEventListener(binding.event, binding.listener, false);
+        });
+        this.startListeners = [];
+        this.attached = false;
+        return this;
     },
 
     start: function(event, element) {
@@ -76,6 +94,8 @@ var DragDrop = new prime({
         if (!element.parent('[data-lm-root]') && element.hasClass('g-block') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
 
         if (event.which && event.which !== 1 || $(event.target).matches(this.options.exclude)) { return true; }
+        if (event.__g5DragStarted) { return true; }
+        event.__g5DragStarted = true;
         this.element = $(element);
         this.original = this.element;
         this.matched = false;
@@ -336,7 +356,7 @@ var DragDrop = new prime({
         }
 
         this.direction = direction;
-        this.element.style({ transform: 'translate(' + deltaX + 'px, ' + deltaY + 'px)' });
+        this.element.style({ transform: 'translate3d(' + deltaX + 'px, ' + deltaY + 'px, 0)' });
 
         if (!this.isPlaceHolder) {
             if (this.lastMatched && this.matched !== this.lastMatched) {

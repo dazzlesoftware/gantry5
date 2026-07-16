@@ -40,6 +40,7 @@ var MenuManager = new prime({
     },
 
     init: function() {
+        if (this.dragdrop) { this.dragdrop.detach(); }
         this.setRoot();
 
         this.dragdrop = new DragDrop(this.refElement, this.options, this);

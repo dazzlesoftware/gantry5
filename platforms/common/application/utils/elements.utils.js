@@ -1,9 +1,6 @@
 "use strict";
 var $          = require('elements'),
-    map        = require('mout/array/map'),
-    series     = require('mout/function/series'),
     slick      = require('slick'),
-    zen        = require('elements/zen'),
     progresser = require('../ui/progresser');
 
 var unitless = ['opacity', 'zIndex', 'fontWeight', 'lineHeight', 'zoom', 'order', 'flexGrow', 'flexShrink'];
@@ -18,12 +15,25 @@ var styleValue = function(property, value) {
     return typeof value === 'number' && unitless.indexOf(property) === -1 ? value + 'px' : String(value);
 };
 
+var sequence = function() {
+    var callbacks = Array.prototype.slice.call(arguments);
+
+    return function() {
+        var args = arguments,
+            context = this;
+
+        callbacks.forEach(function(callback) {
+            callback.apply(context, args);
+        });
+    };
+};
+
 var walk = function(combinator, method) {
 
     return function(expression) {
         var parts = slick.parse(expression || "*");
 
-        expression = map(parts, function(part) {
+        expression = Array.prototype.map.call(parts, function(part) {
             return combinator + " " + part;
         }).join(', ');
 
@@ -119,10 +129,16 @@ $.implement({
             node.gHadIcon = !!icon;
 
             if (!icon) {
-                if (!node.find('span') && !node.children()) { zen('span').text(node.text()).top(node.empty()); }
+                if (!node.find('span') && node[0].children.length === 0) {
+                    var label = document.createElement('span');
+                    label.textContent = node.text();
+                    node[0].textContent = '';
+                    node[0].appendChild(label);
+                }
 
-                icon = zen('i');
-                icon.top(node);
+                var iconElement = document.createElement('i');
+                node[0].insertBefore(iconElement, node[0].firstChild);
+                icon = $(iconElement);
             }
 
             if (!node.gIndicator) { node.gIndicator = icon.attribute('class') || true; }
@@ -158,7 +174,7 @@ $.implement({
 
         callback = typeof animation === 'function' ? animation : (callback || function() {});
         if (this.gSlideCollapsed === false) { return callback(); }
-        callback = series(callbackStart, callback, callbackEnd);
+        callback = sequence(callbackStart, callback, callbackEnd);
 
         animation = typeof animation === 'string' ? animation : {
             duration: '250ms',
@@ -184,7 +200,7 @@ $.implement({
 
         callback = typeof animation === 'function' ? animation : (callback || function() {});
         if (this.gSlideCollapsed === true) { return callback(); }
-        callback = series(callbackStart, callback, callbackEnd);
+        callback = sequence(callbackStart, callback, callbackEnd);
 
         animation = typeof animation === 'string' ? animation : {
             duration: '250ms',

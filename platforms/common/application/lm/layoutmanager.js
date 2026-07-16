@@ -67,6 +67,7 @@ var LayoutManager = new prime({
     },
 
     init: function() {
+        if (this.dragdrop) { this.dragdrop.detach(); }
         this.dragdrop = new DragDrop(this.refElement, this.options);
         this.resizer = new Resizer(this.refElement, this.options);
         this.eraser = new Eraser('[data-lm-eraseblock]', this.options);
@@ -157,6 +158,9 @@ var LayoutManager = new prime({
             size = $(element).position(),
             coords = $(element)[0].getBoundingClientRect();
 
+        var stalePlaceholders = root.search('.original-placeholder');
+        if (stalePlaceholders) { stalePlaceholders.remove(); }
+
         this.block = null;
         this.mode = root.data('lm-root') || 'page';
 
@@ -185,15 +189,28 @@ var LayoutManager = new prime({
             });
 
         if (!this.block.isNew()) {
+            // Keep the source dimensions without painting a second copy of the
+            // complete layout block while the original follows the pointer.
+            this.original.style({
+                visibility: 'visible',
+                opacity: 1,
+                pointerEvents: 'none',
+                background: 'repeating-linear-gradient(135deg, #f4f4f4, #f4f4f4 10px, #e9e9e9 10px, #e9e9e9 20px)',
+                boxShadow: 'inset 0 0 0 2px #c8c8c8'
+            });
+            var placeholderContents = this.original.search('*');
+            if (placeholderContents) { placeholderContents.style({ visibility: 'hidden' }); }
             element.style({
                 position: 'fixed',
                 zIndex: 2500,
-                opacity: 0.5,
+                opacity: 0.75,
                 margin: 0,
                 width: Math.ceil(size.width),
                 height: Math.ceil(size.height),
                 left: coords.left,
-                top: coords.top
+                top: coords.top,
+                willChange: 'transform, opacity',
+                backfaceVisibility: 'hidden'
             }).find('[data-lm-blocktype]');
 
             if (this.block.getType() === 'grid') {
@@ -209,7 +226,9 @@ var LayoutManager = new prime({
             var position = element.position();
             this.original.style({
                 position: 'fixed',
-                opacity: 0.5
+                opacity: 0.75,
+                willChange: 'transform, opacity',
+                backfaceVisibility: 'hidden'
             }).style({
                 left: coords.left,
                 top: coords.top,

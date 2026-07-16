@@ -1,237 +1,219 @@
 "use strict";
-var prime   = require('prime'),
-    $       = require('elements'),
-    Emitter = require('prime/emitter');
 
-var Blocks = require('./blocks/');
-
-var forOwn     = require('mout/object/forOwn'),
-    forEach    = require('mout/collection/forEach'),
-    size       = require('mout/collection/size'),
-    isArray    = require('mout/lang/isArray'),
-    flatten    = require('mout/array/flatten'),
-    ID         = require('./id'),
-
-    set        = require('mout/object/set'),
-    unset      = require('mout/object/unset'),
-    get        = require('mout/object/get'),
-    deepFillIn = require('mout/object/deepFillIn'),
-    omit       = require('mout/object/omit');
+var $            = require('elements'),
+    EventEmitter = require('../utils/event-emitter'),
+    Blocks       = require('./blocks/'),
+    ID           = require('./id');
 
 require('elements/attributes');
 require('elements/traversal');
 
+var DEBUG = false;
 
-// start Debug
-var DEBUG  = false,
-    rpad   = require('mout/string/rpad'),
-    repeat = require('mout/string/repeat');
-// end   Debug
+var collectionSize = function(value) {
+    if (!value) { return 0; }
+    return Array.isArray(value) ? value.length : Object.keys(value).length;
+};
+
+var forEachCollection = function(collection, callback, context) {
+    if (!collection) { return; }
+    if (Array.isArray(collection) || typeof collection.length === 'number') {
+        Array.prototype.forEach.call(collection, callback, context);
+        return;
+    }
+    Object.keys(collection).forEach(function(key) {
+        callback.call(context, collection[key], key, collection);
+    });
+};
+
+var fillMissing = function(target, source) {
+    Object.keys(source || {}).forEach(function(key) {
+        var sourceValue = source[key],
+            targetValue = target[key];
+
+        if (typeof targetValue === 'undefined') {
+            target[key] = sourceValue;
+        } else if (targetValue && sourceValue && typeof targetValue === 'object' && typeof sourceValue === 'object' && !Array.isArray(targetValue) && !Array.isArray(sourceValue)) {
+            fillMissing(targetValue, sourceValue);
+        }
+    });
+    return target;
+};
+
+var withoutChildren = function(value) {
+    var output = {};
+    Object.keys(value || {}).forEach(function(key) {
+        if (key !== 'children') { output[key] = value[key]; }
+    });
+    return output;
+};
 
 $.implement({
     empty: function() {
         return this.forEach(function(node) {
-            var first;
-            while ((first = node.firstChild)) {
-                node.removeChild(first);
-            }
+            while (node.firstChild) { node.removeChild(node.firstChild); }
         });
     }
 });
 
-var Builder = new prime({
-
-    inherits: Emitter,
-
-    constructor: function(structure) {
-        if (structure) {
-            this.setStructure(structure);
-        }
+class Builder extends EventEmitter {
+    constructor(structure) {
+        super();
+        if (structure) { this.setStructure(structure); }
         this.map = {};
+    }
 
-        return this;
-    },
-
-    setStructure: function(structure) {
+    setStructure(structure) {
         try {
-            this.structure = (typeof structure === 'object') ? structure : JSON.parse(structure);
+            this.structure = typeof structure === 'object' ? structure : JSON.parse(structure);
+        } catch (error) {
+            console.error('Parsing error:', error);
         }
-        catch (e) {
-            console.error("Parsing error:", e);
-        }
-    },
+    }
 
-    add: function(block) {
+    add(block) {
         var id = typeof block === 'string' ? block : block.id;
-        set(this.map, id, block);
+        this.map[id] = block;
         block.isNew(false);
-    },
+    }
 
-    remove: function(block) {
-        block = typeof block === 'string' ? block : block.id;
-        unset(this.map, block);
-    },
-
-    get: function(block) {
+    remove(block) {
         var id = typeof block === 'string' ? block : block.id;
-        return get(this.map, id, block);
-    },
+        delete this.map[id];
+    }
 
-    load: function(data) {
+    get(block) {
+        var id = typeof block === 'string' ? block : block.id;
+        return Object.prototype.hasOwnProperty.call(this.map, id) ? this.map[id] : block;
+    }
+
+    load(data) {
         this.recursiveLoad(data);
         this.emit('loaded', data);
-
         return this;
-    },
+    }
 
-    serialize: function(root, flat) {
-        var serieChildren = [];
+    serialize(root, flat) {
+        var serializedChildren = [];
         root = root || $('[data-lm-root]');
-
         if (!root) { return; }
 
-        var blocks = root.search((!flat ? '> ' : '') + '[data-lm-id]'),
-            id, type, subtype, serial, hasChildren, children;
-
-        forEach(blocks, function(element) {
-            element = $(element);
-            id = element.data('lm-id');
-            type = element.data('lm-blocktype');
-            subtype = element.data('lm-blocksubtype') || false;
-            hasChildren = element.search('> [data-lm-id]');
+        var blocks = root.search((!flat ? '> ' : '') + '[data-lm-id]');
+        forEachCollection(blocks, function(node) {
+            var element = $(node),
+                id = element.data('lm-id'),
+                type = element.data('lm-blocktype'),
+                subtype = element.data('lm-blocksubtype') || false,
+                hasChildren = element.search('> [data-lm-id]'),
+                mapped = this.map[id],
+                children;
 
             if (flat) {
-                children = hasChildren ? hasChildren.map(function(element){ return $(element).data('lm-id'); }) : false;
+                children = hasChildren ? hasChildren.map(function(child) { return $(child).data('lm-id'); }) : false;
             } else {
                 children = hasChildren ? this.serialize(element) : [];
             }
 
-            serial = {
+            var serial = {
                 id: id,
                 type: type,
                 subtype: subtype,
-                title: get(this.map, id) ? get(this.map, id).getTitle() : 'Untitled',
-                attributes: get(this.map, id) ? get(this.map, id).getAttributes() : {},
-                inherit: get(this.map, id) ? get(this.map, id).getInheritance() : {},
+                title: mapped ? mapped.getTitle() : 'Untitled',
+                attributes: mapped ? mapped.getAttributes() : {},
+                inherit: mapped ? mapped.getInheritance() : {},
                 children: children
             };
 
             if (flat) {
-                var obj = {}; obj[id] = serial;
-                serial = obj;
+                var keyed = {};
+                keyed[id] = serial;
+                serial = keyed;
             }
-
-            serieChildren.push(serial);
+            serializedChildren.push(serial);
         }, this);
 
-        return serieChildren;
-    },
+        return serializedChildren;
+    }
 
-    insert: function(key, value, parent/*, object*/) {
+    insert(key, value, parent) {
         var root = $('[data-lm-root]');
-        if (!root) {
-            return;
-        }
+        if (!root) { return; }
+        if (!Blocks[value.type]) { console.error(value.type + ' does not exist'); }
 
-        if (!Blocks[value.type]) {
-            console[console.error ? 'error' : 'log'](value.type + ' does not exist');
-        }
+        var settings = fillMissing({
+                id: key,
+                attributes: {},
+                inherit: {},
+                subtype: value.subtype || false,
+                builder: this
+            }, withoutChildren(value)),
+            Element = new (Blocks[value.type] || Blocks.section)(settings);
 
-        var Element = new (Blocks[value.type] || Blocks['section'])(deepFillIn({
-            id: key,
-            attributes: {},
-            inherit: {},
-            subtype: value.subtype || false,
-            builder: this
-        }, omit(value, 'children')));
+        if (!parent) { Element.block.insert(root); }
+        else { Element.block.insert($('[data-lm-id="' + parent + '"]')); }
 
-        if (!parent) {
-            Element.block.insert(root);
-        }
-        else {
-            Element.block.insert($('[data-lm-id="' + parent + '"]'));
-        }
-
-        if (Element.getType() === 'block') {
-            Element.setSize();
-        }
-
+        if (Element.getType() === 'block') { Element.setSize(); }
         this.add(Element);
-        Element.emit('rendered', Element, parent ? get(this.map, parent) : null);
-
+        Element.emit('rendered', Element, parent ? this.map[parent] : null);
         return Element;
-    },
+    }
 
-    reset: function(data) {
+    reset(data) {
         this.map = {};
         this.setStructure(data || {});
         $('[data-lm-root]').empty();
         this.load();
-    },
+    }
 
-    cleanupLonely: function() {
+    cleanupLonely() {
         var ghosts = [],
-            parent, children = $('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
+            parent,
+            children = $('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
 
-        if (!children) {
-            return;
-        }
-
-
-        var isGrid;
+        if (!children) { return; }
         children.forEach(function(child) {
             child = $(child);
             parent = null;
-            isGrid = child.parent().hasClass('g-grid');
-
-            if (isGrid && child.siblings()) {
-                return false;
-            }
-
+            var isGrid = child.parent().hasClass('g-grid');
+            if (isGrid && child.siblings()) { return false; }
             if (isGrid) {
                 ghosts.push(child.data('lm-id'));
                 parent = child.parent();
             }
-
             ghosts.push(child.data('lm-id'));
-            child.children().before(parent ? parent : child);
-            (parent ? parent : child).remove();
+            child.children().before(parent || child);
+            (parent || child).remove();
         });
-
         return ghosts;
-    },
+    }
 
-    recursiveLoad: function(data, callback, depth, parent) {
+    recursiveLoad(data, callback, depth, parent) {
         data = data || this.structure;
         depth = depth || 0;
         parent = parent || false;
         callback = callback || this.insert;
 
-        forEach(data, function(value/*, key, object*/) {
-
+        forEachCollection(data, function(value) {
             if (!value.id) {
                 value.id = ID({ builder: { map: this.map }, type: value.type, subtype: value.subtype });
             }
 
-            // debug (flat view of the structure)
-            if (console && console.log && DEBUG) {
-                console.log(rpad(repeat('    ', depth) + '' + value.type, 35) + ' (' + rpad(value.id, 36) + ') parent: ' + parent);
+            if (DEBUG) {
+                console.log((('    '.repeat(depth)) + value.type).padEnd(35) + ' (' + String(value.id).padEnd(36) + ') parent: ' + parent);
             }
 
             this.emit('loading', callback.call(this, value.id, value, parent, depth));
-            if (value.children && size(value.children)) {
+            if (value.children && collectionSize(value.children)) {
                 depth++;
-
-                forEach(value.children, function(childValue/*, childKey, array*/) {
+                forEachCollection(value.children, function(childValue) {
                     this.recursiveLoad([childValue], callback, depth, value.id);
                 }, this);
             }
 
             this.get(value.id).emit('done', this.get(value.id));
-
             depth--;
         }, this);
     }
-});
+}
 
 module.exports = Builder;
