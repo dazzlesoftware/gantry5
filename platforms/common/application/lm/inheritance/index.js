@@ -5,12 +5,6 @@ var $                  = require('elements'),
     request            = require('../../utils/request'),
     modal              = require('../../ui').modal,
 
-    isArray            = require('mout/lang/isArray'),
-    forEach            = require('mout/collection/forEach'),
-    filter             = require('mout/object/filter'),
-    keys               = require('mout/object/keys'),
-    contains           = require('mout/collection/contains'),
-
     getAjaxSuffix      = require('../../utils/get-ajax-suffix'),
     parseAjaxURI       = require('../../utils/get-ajax-url').parse,
     getAjaxURL         = require('../../utils/get-ajax-url').global,
@@ -23,6 +17,14 @@ var IDsMap = {
     block: { panel: 'g-settings-block-attributes', tab: 'g-settings-block' },
     particles: 'g-inherit-particle',
     atoms: 'g-inherit-atom'
+};
+
+var collectionContains = function(collection, value) {
+    if (Array.isArray(collection) || typeof collection === 'string') {
+        return collection.includes(value);
+    }
+
+    return collection && typeof collection === 'object' ? Object.values(collection).includes(value) : false;
 };
 
 ready(function() {
@@ -101,13 +103,14 @@ ready(function() {
                 element;
 
             // refresh field values based on settings and ajax response
-            forEach(IDsMap, function(id, option) {
+            Object.keys(IDsMap).forEach(function(option) {
+                var id = IDsMap[option];
                 id = id.panel || id;
-                id = !isArray(id) ? [id] : id;
+                id = !Array.isArray(id) ? [id] : id;
 
                 id.forEach(function(currentID) {
-                    var shouldRefresh = contains(includes, option),
-                        isAvailable   = contains(available, option);
+                    var shouldRefresh = includes.includes(option),
+                        isAvailable   = available.includes(option);
 
                     if ((shouldRefresh || !isAvailable) && data.html[currentID] && (element = container.find('#' + currentID))) {
                         element.html(data.html[currentID]);
@@ -146,7 +149,7 @@ ready(function() {
             tab: (IDsMap[value] && IDsMap[value].tab || IDsMap[value])
         };
 
-        if (!isArray(IDs.panel)) {
+        if (!Array.isArray(IDs.panel)) {
             IDs.panel = [IDs.panel];
             IDs.tab = [IDs.tab];
         }
@@ -231,7 +234,10 @@ ready(function() {
         var container = modal.getByID(modal.getLast()),
             isLocked  = element.hasClass('fa-lock'),
             id        = element.parent('a').id().replace(/\-tab$/, ''),
-            prop      = keys(filter(IDsMap, function(value) { return value === id || value.tab === id || contains(value, id); }) || []).shift(),
+            prop      = Object.keys(IDsMap).find(function(key) {
+                var value = IDsMap[key];
+                return value === id || value.tab === id || collectionContains(value, id);
+            }),
             input     = container.find('[data-multicheckbox-field][value="' + prop + '"]'),
             particle  = {
                 mode: $('[name="inherit[mode]"]:checked'),

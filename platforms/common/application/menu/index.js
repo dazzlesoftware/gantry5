@@ -3,20 +3,27 @@ var ready         = require('elements/domready'),
     MenuManager   = require('./menumanager'),
     Submit        = require('../fields/submit'),
     $             = require('elements'),
-    zen           = require('elements/zen'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
     extraItems    = require('./extra-items'),
     request       = require('../utils/request'),
-    trim          = require('mout/string/trim'),
-    clamp         = require('mout/math/clamp'),
-    contains      = require('mout/array/contains'),
-    indexOf       = require('mout/array/indexOf'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     translate     = require('../utils/translate');
 
 var menumanager;
+
+var trim = function(value) {
+    return value == null ? '' : String(value).trim();
+};
+
+var clamp = function(value, minimum, maximum) {
+    return Math.min(maximum, Math.max(minimum, value));
+};
+
+var createContainer = function(html) {
+    return $(document.createElement('div')).html(html);
+};
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
@@ -64,7 +71,7 @@ ready(function() {
     }, true);
 
     body.delegate('keydown', '.percentage input', function(event/*, element*/) {
-        if (contains([46, 8, 9, 27, 13, 110, 190], event.keyCode) ||
+        if ([46, 8, 9, 27, 13, 110, 190].includes(event.keyCode) ||
                 // Allow: [Ctrl|Cmd]+A | [Ctrl|Cmd]+R
             (event.keyCode == 65 && (event.ctrlKey === true || event.ctrlKey === true)) ||
             (event.keyCode == 82 && (event.ctrlKey === true || event.metaKey === true)) ||
@@ -180,7 +187,7 @@ ready(function() {
                 Math.abs(window.scrollY - y) - bounding.top < deleter.height) {
                 var parent    = element.parent('[data-mm-id]'),
                     container = parent.parent('.submenu-selector').children('[data-mm-id]'),
-                    index     = indexOf(container, parent),
+                    index     = Array.prototype.indexOf.call(container, parent[0] || parent),
                     active    = $('.menu-selector .active'),
                     path      = active ? active.data('mm-id') : null;
 
@@ -217,7 +224,7 @@ ready(function() {
                 }
 
                 var form       = content.elements.content.find('form'),
-                    fakeDOM    = zen('div').html(response.body.html).find('form'),
+                    fakeDOM    = createContainer(response.body.html).find('form'),
                     submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     path;
 

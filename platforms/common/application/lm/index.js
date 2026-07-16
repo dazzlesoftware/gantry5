@@ -6,13 +6,6 @@ var ready          = require('elements/domready'),
     toastr         = require('../ui').toastr,
     sidebar        = require('./particles-sidebar'),
     request        = require('../utils/request'),
-    zen            = require('elements/zen'),
-    contains       = require('mout/array/contains'),
-    size           = require('mout/collection/size'),
-    trim           = require('mout/string/trim'),
-    strReplace     = require('mout/string/replace'),
-    properCase     = require('mout/string/properCase'),
-    precision      = require('mout/number/enforcePrecision'),
 
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
@@ -31,6 +24,32 @@ require('../ui/popover');
 require('./inheritance');
 
 var builder, layoutmanager, lmhistory, savestate, Tips;
+
+var size = function(value) {
+    if (!value) { return 0; }
+    return Array.isArray(value) ? value.length : Object.keys(value).length;
+};
+
+var trim = function(value) {
+    return value == null ? '' : String(value).trim();
+};
+
+var formatPresetName = function(value) {
+    return trim(value).replace(/_/g, ' ').replace(/\//g, ' / ').toLowerCase().replace(/^\w|\s\w/g, function(character) {
+        return character.toUpperCase();
+    });
+};
+
+var precision = function(value, decimalPlaces) {
+    var number = Number(value),
+        multiplier = Math.pow(10, decimalPlaces);
+
+    return Number((Math.round(number * multiplier) / multiplier).toFixed(decimalPlaces));
+};
+
+var createContainer = function(html) {
+    return $(document.createElement('div')).html(html);
+};
 
 builder = new Builder();
 lmhistory = new LMHistory();
@@ -73,7 +92,7 @@ ready(function() {
             };
 
         if (notice) { notice.style({ display: !size(session.data) ? 'block' : 'none' }); }
-        if (title) { title.text('(' + properCase(trim(strReplace(preset_name, [/_/g, /\//g], [' ', ' / ']))) + ')'); }
+        if (title) { title.text('(' + formatPresetName(preset_name) + ')'); }
 
         builder.reset(session.data);
         HM.forward.removeClass('disabled');
@@ -91,7 +110,7 @@ ready(function() {
             };
 
         if (notice) { notice.style({ display: !size(session.data) ? 'block' : 'none' }); }
-        if (title) { title.text('(' + properCase(trim(strReplace(preset_name, [/_/g, /\//g], [' ', ' / ']))) + ')'); }
+        if (title) { title.text('(' + formatPresetName(preset_name) + ')'); }
 
         builder.reset(session.data);
         HM.back.removeClass('disabled');
@@ -442,7 +461,7 @@ ready(function() {
             parentID = parent ? parent.data('lm-id') : false,
             parentType = parent ? parent.data('lm-blocktype') : false;
 
-        if (!contains(['block', 'grid'], blocktype)) {
+        if (!['block', 'grid'].includes(blocktype)) {
             data = {};
             data.id = builder.get(element.data('lm-id')).getId() || null;
             data.type = builder.get(element.data('lm-id')).getType() || element.data('lm-blocktype') || false;
@@ -474,7 +493,7 @@ ready(function() {
                 }
 
                 var form = content.elements.content.find('form'),
-                    fakeDOM = zen('div').html(response.body.html).find('form'),
+                    fakeDOM = createContainer(response.body.html).find('form'),
                     submit = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
                 if ((!form && !fakeDOM) || !submit) { return true; }

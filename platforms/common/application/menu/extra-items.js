@@ -1,18 +1,15 @@
 "use strict";
 var $             = require('elements'),
-    zen           = require('elements/zen'),
     ready         = require('elements/domready'),
     Submit        = require('../fields/submit'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
     request       = require('../utils/request'),
-    indexOf       = require('mout/array/indexOf'),
-    trim          = require('mout/string/trim'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
     getAjaxURL    = require('../utils/get-ajax-url').global,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     flags         = require('../utils/flags-state'),
-    deepEquals    = require('mout/lang/deepEquals'),
+    deepEquals    = require('../utils/deep-equals'),
     translate     = require('../utils/translate'),
 
     Cards         = require('../positions/cards'); // required for Positions
@@ -20,6 +17,10 @@ var $             = require('elements'),
 var WordpressWidgetsCustomizer = require('../utils/wp-widgets-customizer');
 
 var menumanager = null;
+
+var createContainer = function(html) {
+    return $(document.createElement('div')).html(html);
+};
 
 var randomID = function randomString(len, an) {
     an = an && an.toLowerCase();
@@ -58,7 +59,10 @@ var StepOne = function(map, mode) { // mode [reorder, resize, evenResize]
     if (this.isParticle && this.isNewParticle) {
         var blocktype = this.block.data('mm-blocktype');
         this.block.attribute('data-mm-blocktype', null).addClass('g-menu-item-' + blocktype).data('mm-original-type', blocktype);
-        zen('span.menu-item-type.badge').text(blocktype).after(this.block.find('.menu-item .title'));
+        $(document.createElement('span'))
+            .attribute('class', 'menu-item-type badge')
+            .text(blocktype)
+            .after(this.block.find('.menu-item .title'));
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
@@ -84,7 +88,7 @@ var StepOne = function(map, mode) { // mode [reorder, resize, evenResize]
 
                     filters.forEach(function(filter) {
                         filter = $(filter);
-                        text = trim(filter.data('mm-filter')).toLowerCase();
+                        text = String(filter.data('mm-filter') || '').trim().toLowerCase();
                         if (text.match(new RegExp("^" + value + '|\\s' + value, 'gi'))) {
                             found.push(filter.matches('[data-mm-type]') ? filter : filter.parent('[data-mm-type]'));
                         }
@@ -143,7 +147,7 @@ var StepTwo = function(data, content, button) {
 
         var form = content.find('form'),
             submit = content.find('input[type="submit"], button[type="submit"]'),
-            fakeDOM = zen('div').html(response.body.html).find('form');
+            fakeDOM = createContainer(response.body.html).find('form');
 
         if ((!form && !fakeDOM) || !submit) { return true; }
 
@@ -177,7 +181,7 @@ var StepTwo = function(data, content, button) {
                                 id      = randomID(5),
                                 base    = element.parent('[data-mm-base]').data('mm-base'),
                                 col     = (element.parent('[data-mm-id]').data('mm-id').match(/\d+$/) || [0])[0],
-                                index   = indexOf(element.parent().children('[data-mm-id]'), element[0]);
+                                index   = Array.prototype.indexOf.call(element.parent().children('[data-mm-id]'), element[0]);
 
                             while (menumanager.items[path + id]) { id = randomID(5); }
 
@@ -198,7 +202,7 @@ var StepTwo = function(data, content, button) {
                         } else {
                             // case for Positions
                             var position = $('[data-g5-position-name="' + response.body.position + '"]'),
-                                dummy = zen('div').html(response.body.html);
+                                dummy = createContainer(response.body.html);
 
                             position.find('> ul').appendChild(dummy.children());
 
