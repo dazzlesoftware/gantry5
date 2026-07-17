@@ -1,30 +1,29 @@
 "use strict";
 var DragEvents = require('../ui/drag.events'),
-    prime      = require('prime'),
-    Emitter    = require('prime/emitter'),
-    Bound      = require('prime-util/prime/bound'),
-    Options    = require('prime-util/prime/options'),
-    bind       = require('mout/function/bind'),
-    isString   = require('mout/lang/isString'),
-    nMap       = require('mout/math/map'),
-    clamp      = require('mout/math/clamp'),
-    precision  = require('mout/number/enforcePrecision'),
-    get        = require('mout/object/get'),
     $          = require('../utils/elements.utils');
 
 require('elements/events');
 require('elements/delegation');
 
-var Resizer = new prime({
-    mixin: [Bound, Options],
-    DRAG_EVENTS: DragEvents,
-    options: {
-        minSize: 5
+var clamp = function(value, min, max) {
+        return Math.min(max, Math.max(min, value));
     },
-    constructor: function(container, options) {
-        this.setOptions(options);
+    mapRange = function(value, min1, max1, min2, max2) {
+        return min2 + ((value - min1) / (max1 - min1)) * (max2 - min2);
+    },
+    precision = function(value, decimals) {
+        var multiplier = Math.pow(10, decimals);
+        return Math.round(value * multiplier) / multiplier;
+    };
+
+class Resizer {
+    constructor(container, options) {
+        this.DRAG_EVENTS = DragEvents;
+        this.options = Object.assign({minSize: 5}, options || {});
         this.history = this.options.history || {};
         this.builder = this.options.builder || {};
+        this.moveHandler = this.move.bind(this);
+        this.stopHandler = this.stop.bind(this);
         this.origin = {
             x: 0,
             y: 0,
@@ -34,21 +33,22 @@ var Resizer = new prime({
                 y: 0
             }
         };
-    },
+    }
 
-    getBlock: function(element) {
-        return get(this.builder.map, isString(element) ? element : $(element).data('lm-id') || '');
-    },
+    getBlock(element) {
+        var id = typeof element === 'string' ? element : $(element).data('lm-id') || '';
+        return this.builder.map ? this.builder.map[id] : undefined;
+    }
 
-    getAttribute: function(element, prop) {
+    getAttribute(element, prop) {
         return this.getBlock(element).getAttribute(prop);
-    },
+    }
 
-    getSize: function(element) {
+    getSize(element) {
         return this.getAttribute($(element), 'size');
-    },
+    }
 
-    start: function(event, element, siblings, offset) {
+    start(event, element, siblings, offset) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
         window.G5.tips.hide(element[0]);
@@ -100,20 +100,21 @@ var Resizer = new prime({
         this.origin.offset.parentRect.left = this.element.parent().find('> [data-lm-id]:first-child')[0].getBoundingClientRect().left;
         this.origin.offset.parentRect.right = this.element.parent().find('> [data-lm-id]:last-child')[0].getBoundingClientRect().right;
 
-        this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $(document).on(event, this.bound('move'));
-        }, this));
+        this.detachDocumentEvents();
+        this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
+            document.addEventListener(eventName, this.moveHandler, {passive: false});
+        }, this);
+        this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
+            document.addEventListener(eventName, this.stopHandler, {passive: false});
+        }, this);
+    }
 
-        this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $(document).on(event, this.bound('stop'));
-        }, this));
-    },
-
-    move: function(event) {
+    move(event) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        var clientX = event.clientX || event.touches[0].clientX || 0,
-            clientY = event.clientY || event.touches[0].clientY || 0,
+        var point = event.touches && event.touches.length ? event.touches[0] : event,
+            clientX = point.clientX || 0,
+            clientY = point.clientY || 0,
             parentRect = this.origin.offset.parentRect;
 
         var deltaX = (this.lastX || clientX) - clientX,
@@ -129,7 +130,7 @@ var Resizer = new prime({
             value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
             normalized = clamp(value, parentRect.left, parentRect.right);
 
-        size = nMap(normalized, parentRect.left, parentRect.right, 0, 100);
+        size = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
         size = size - this.siblings.sizeBefore;
         size = precision(clamp(size, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
 
@@ -168,24 +169,27 @@ var Resizer = new prime({
 
         this.lastX = clientX;
         this.lastY = clientY;
-    },
+    }
 
-    stop: function(event) {
+    stop(event) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $(document).off(event, this.bound('move'));
-        }, this));
+        this.detachDocumentEvents();
 
-        this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $(document).off(event, this.bound('stop'));
-        }, this));
-
-        if (event.target.matches('[data-lm-back], [data-lm-forward]')) { return; }
+        if (event.target && event.target.matches('[data-lm-back], [data-lm-forward]')) { return; }
         if (this.origin.size !== this.getSize(this.element)) { this.history.push(this.builder.serialize(), this.history.get().preset); }
-    },
+    }
 
-    evenResize: function(elements, animated) {
+    detachDocumentEvents() {
+        this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
+            document.removeEventListener(eventName, this.moveHandler, {passive: false});
+        }, this);
+        this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
+            document.removeEventListener(eventName, this.stopHandler, {passive: false});
+        }, this);
+    }
+
+    evenResize(elements, animated) {
         var total = elements.length,
             size = precision(100 / total, 4),
             block;
@@ -202,6 +206,6 @@ var Resizer = new prime({
             }
         }, this);
     }
-});
+}
 
 module.exports = Resizer;

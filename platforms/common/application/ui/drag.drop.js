@@ -1,11 +1,6 @@
 "use strict";
 
-var prime      = require('prime'),
-    Emitter    = require('prime/emitter'),
-    Bound      = require('prime-util/prime/bound'),
-    Options    = require('prime-util/prime/options'),
-    bind       = require('mout/function/bind'),
-    contains   = require('mout/array/contains'),
+var EventEmitter = require('../utils/event-emitter'),
     DragEvents = require('./drag.events'),
     $          = require('../utils/elements.utils');
 
@@ -15,23 +10,19 @@ require('elements/delegation');
 
 var isIE = (navigator.appName === "Microsoft Internet Explorer");
 
-var DragDrop = new prime({
-
-    mixin: [Bound, Options],
-    inherits: Emitter,
-
-    options: {
-        delegate: null,
-        droppables: false,
-        catchClick: false
-    },
-
-    DRAG_EVENTS: DragEvents,
-
-    constructor: function(container, options) {
+class DragDrop extends EventEmitter {
+    constructor(container, options) {
+        super();
         this.container = $(container);
         if (!this.container) { return; }
-        this.setOptions(options);
+        this.options = Object.assign({
+            delegate: null,
+            droppables: false,
+            catchClick: false
+        }, options || {});
+        this.DRAG_EVENTS = DragEvents;
+        this.moveHandler = this.move.bind(this);
+        this.deferStopHandler = this.deferStop.bind(this);
 
         this.element = null;
         this.origin = {
@@ -49,42 +40,44 @@ var DragDrop = new prime({
         this.lastOvered = null;
 
         this.attach();
-    },
+    }
 
-    attach: function() {
+    attach() {
         if (this.attached) { return this; }
         this.startListeners = [];
-        this.DRAG_EVENTS.EVENTS.START.forEach(bind(function(eventName) {
-            this.container.forEach(bind(function(node) {
-                var listener = bind(function(event) {
+        this.DRAG_EVENTS.EVENTS.START.forEach(function(eventName) {
+            this.container.forEach(function(node) {
+                var listener = function(event) {
                     var target = $(event.target || event.srcElement),
                         match = target.matches(this.options.delegate) ? target : target.parent(this.options.delegate);
 
-                    if (match) { return this.bound('start')(event, match); }
-                }, this);
+                    if (match) { return this.start(event, match); }
+                }.bind(this);
 
                 node.addEventListener(eventName, listener, false);
                 this.startListeners.push({ node: node, event: eventName, listener: listener });
-            }, this));
-        }, this));
+            }, this);
+        }, this);
         this.attached = true;
         return this;
-    },
+    }
 
-    detach: function() {
+    detach() {
         if (!this.attached) { return this; }
         (this.startListeners || []).forEach(function(binding) {
             binding.node.removeEventListener(binding.event, binding.listener, false);
         });
+        this.detachDragEvents();
         this.startListeners = [];
         this.attached = false;
         return this;
-    },
+    }
 
-    start: function(event, element) {
+    start(event, element) {
         //if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
         clearTimeout(this.scrollInterval);
+        this.detachDragEvents();
         if (element.LMTooltip) { element.LMTooltip.remove(); }
         $('html').attribute('style', 'height: 100% !important');
         this.scrollHeight = document.body.scrollHeight;
@@ -166,30 +159,31 @@ var DragDrop = new prime({
             zIndex: 100
         });
 
-        this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $('body').on(event, this.bound('move'));
-        }, this));
+        this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
+            document.body.addEventListener(eventName, this.moveHandler, {passive: false});
+        }, this);
 
-        this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
+        this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
             // Trackpads `tap` (mousedown + mouseup) happens too fast and the stop event
             // won't get attached. We need to defer it to avoid issues
-
-            $('body').on(event, this.bound('deferStop'));
-        }, this));
+            document.body.addEventListener(eventName, this.deferStopHandler, {passive: false});
+        }, this);
 
         this.emit('dragdrop:start', event, this.element);
 
         return this.element;
-    },
+    }
 
-    deferStop: function(event) {
-        var self = this;
+    deferStop(event) {
+        // Remove the whole mouse/touch/pointer set immediately so one physical
+        // release cannot queue more than one deferred stop.
+        this.detachDragEvents();
         setTimeout(function() {
-            self.stop(event);
-        }, 0);
-    },
+            if (this.element) { this.stop(event); }
+        }.bind(this), 0);
+    }
 
-    stop: function(event) {
+    stop(event) {
         //if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
         clearTimeout(this.scrollInterval);
@@ -202,13 +196,7 @@ var DragDrop = new prime({
             this.emit('dragdrop:stop:animation', this.element);
             this.emit('dragdrop:click', event, this.element);
 
-            this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-                $('body').off(event, this.bound('move'));
-            }, this));
-
-            this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-                $('body').off(event, this.bound('deferStop'));
-            }, this));
+            this.detachDragEvents();
 
             this.element = null;
 
@@ -218,13 +206,7 @@ var DragDrop = new prime({
         var settings = { duration: '250ms' };
 
         if (this.removeElement) {
-            this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-                $('body').off(event, this.bound('move'));
-            }, this));
-
-            this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-                $('body').off(event, this.bound('deferStop'));
-            }, this));
+            this.detachDragEvents();
 
             return this.emit('dragdrop:stop:erase', event, this.element);
         }
@@ -242,12 +224,12 @@ var DragDrop = new prime({
 
             if (!this.matched) {
 
-                settings.callback = bind(function(element) {
+                settings.callback = function(element) {
                     this._removeStyleAttribute(element);
-                    setTimeout(bind(function() {
+                    setTimeout(function() {
                         this.emit('dragdrop:stop:animation', element);
-                    }, this), 1);
-                }, this, this.element);
+                    }.bind(this), 1);
+                }.bind(this, this.element);
 
                 this.element.animate({
                     transform: this.origin.transform || 'translate(0, 0)',
@@ -265,18 +247,27 @@ var DragDrop = new prime({
             }
         }
 
-        this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $('body').off(event, this.bound('move'));
-        }, this));
-
-        this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $('body').off(event, this.bound('deferStop'));
-        }, this));
+        this.detachDragEvents();
 
         this.element = null;
-    },
+    }
 
-    move: function(event) {
+    detachDragEvents() {
+        this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
+            document.body.removeEventListener(eventName, this.moveHandler, {passive: false});
+        }, this);
+        this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
+            document.body.removeEventListener(eventName, this.deferStopHandler, {passive: false});
+        }, this);
+    }
+
+    bound(method) {
+        if (method === 'move') { return this.moveHandler; }
+        if (method === 'deferStop') { return this.deferStopHandler; }
+        return this[method].bind(this);
+    }
+
+    move(event) {
         //if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
         if (this.options.catchClick) {
@@ -392,15 +383,14 @@ var DragDrop = new prime({
         this.lastY = clientY;
 
         this.emit('dragdrop:move', event, this.element);
-    },
+    }
 
-    _removeStyleAttribute: function(element) {
+    _removeStyleAttribute(element) {
         element = $(element || this.element);
         if (element.data('mm-id')) { return; }
 
         element.attribute('style', null);//.style({flex: flex});
     }
-
-});
+}
 
 module.exports = DragDrop;

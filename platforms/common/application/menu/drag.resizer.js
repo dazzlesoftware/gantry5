@@ -1,32 +1,31 @@
 "use strict";
 var DragEvents = require('../ui/drag.events'),
-    prime      = require('prime'),
-    Emitter    = require('prime/emitter'),
-    Bound      = require('prime-util/prime/bound'),
-    Options    = require('prime-util/prime/options'),
-    bind       = require('mout/function/bind'),
-    isString   = require('mout/lang/isString'),
-    nMap       = require('mout/math/map'),
-    clamp      = require('mout/math/clamp'),
-    precision  = require('mout/number/enforcePrecision'),
-    get        = require('mout/object/get'),
     $          = require('../utils/elements.utils');
 
 require('elements/events');
 require('elements/delegation');
 
-var Resizer = new prime({
-    mixin: [Bound, Options],
-    DRAG_EVENTS: DragEvents,
-    options: {
-        minSize: 5
+var clamp = function(value, min, max) {
+        return Math.min(max, Math.max(min, value));
     },
-    constructor: function(container, options, menumanager) {
-        this.setOptions(options);
+    mapRange = function(value, min1, max1, min2, max2) {
+        return min2 + ((value - min1) / (max1 - min1)) * (max2 - min2);
+    },
+    precision = function(value, decimals) {
+        var multiplier = Math.pow(10, decimals);
+        return Math.round(value * multiplier) / multiplier;
+    };
+
+class Resizer {
+    constructor(container, options, menumanager) {
+        this.DRAG_EVENTS = DragEvents;
+        this.options = Object.assign({minSize: 5}, options || {});
         this.history = this.options.history || {};
         this.builder = this.options.builder || {};
         this.map = this.builder.map;
         this.menumanager = menumanager;
+        this.moveHandler = this.move.bind(this);
+        this.stopHandler = this.stop.bind(this);
         this.origin = {
             x: 0,
             y: 0,
@@ -36,25 +35,26 @@ var Resizer = new prime({
                 y: 0
             }
         };
-    },
+    }
 
-    getBlock: function(element) {
-        return get(this.map, isString(element) ? element : $(element).data('lm-id') || '');
-    },
+    getBlock(element) {
+        var id = typeof element === 'string' ? element : $(element).data('lm-id') || '';
+        return this.map ? this.map[id] : undefined;
+    }
 
-    getAttribute: function(element, prop) {
+    getAttribute(element, prop) {
         return this.getBlock(element).getAttribute(prop);
-    },
+    }
 
-    getSize: function(element) {
+    getSize(element) {
         element = $(element);
         var parent = element.matches('[data-mm-id]') ? element : element.parent('[data-mm-id]'),
             size = parent.find('.percentage input');
 
         return Number(size.value());
-    },
+    }
 
-    setSize: function(element, size, animated) {
+    setSize(element, size, animated) {
         element = $(element);
         animated = typeof animated === 'undefined' ? false : animated;
 
@@ -63,9 +63,9 @@ var Resizer = new prime({
 
         parent[animated ? 'animate' : 'style']({'flex': '0 1 '+size+'%'});
         pc.value(precision(size, 1));
-    },
+    }
 
-    start: function(event, element, siblings, offset) {
+    start(event, element, siblings, offset) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
         if (event.which && event.which !== 1) { return true; }
 
@@ -122,20 +122,21 @@ var Resizer = new prime({
         this.origin.offset.parentRect.right = this.element.parent('.submenu-selector').find('> [data-mm-id]:last-child')[0].getBoundingClientRect().right;
 
 
-        this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $(document).on(event, this.bound('move'));
-        }, this));
+        this.detachDocumentEvents();
+        this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
+            document.addEventListener(eventName, this.moveHandler, {passive: false});
+        }, this);
+        this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
+            document.addEventListener(eventName, this.stopHandler, {passive: false});
+        }, this);
+    }
 
-        this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $(document).on(event, this.bound('stop'));
-        }, this));
-    },
-
-    move: function(event) {
+    move(event) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        var clientX = event.clientX || event.touches[0].clientX || 0,
-            clientY = event.clientY || event.touches[0].clientY || 0,
+        var point = event.touches && event.touches.length ? event.touches[0] : event,
+            clientX = point.clientX || 0,
+            clientY = point.clientY || 0,
             parentRect = this.origin.offset.parentRect;
 
         var deltaX = (this.lastX || clientX) - clientX,
@@ -151,7 +152,7 @@ var Resizer = new prime({
             value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
             normalized = clamp(value, parentRect.left, parentRect.right);
 
-        size = nMap(normalized, parentRect.left, parentRect.right, 0, 100);
+        size = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
         size = size - this.siblings.sizeBefore;
         size = precision(clamp(size, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
 
@@ -187,26 +188,29 @@ var Resizer = new prime({
 
         this.lastX = clientX;
         this.lastY = clientY;
-    },
+    }
 
-    stop: function(event) {
+    stop(event) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        this.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $(document).off(event, this.bound('move'));
-        }, this));
-
-        this.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $(document).off(event, this.bound('stop'));
-        }, this));
+        this.detachDocumentEvents();
 
         this.element.parent('.submenu-selector').removeClass('moving');
 
         this.menumanager.emit('dragEnd', this.menumanager.map, 'resize');
         //if (this.origin.size !== this.getSize(this.element)) { this.history.push(this.builder.serialize()); }
-    },
+    }
 
-    updateItemSizes: function(elements) {
+    detachDocumentEvents() {
+        this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
+            document.removeEventListener(eventName, this.moveHandler, {passive: false});
+        }, this);
+        this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
+            document.removeEventListener(eventName, this.stopHandler, {passive: false});
+        }, this);
+    }
+
+    updateItemSizes(elements) {
         var parent = this.element ? this.element.parent('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
@@ -225,9 +229,9 @@ var Resizer = new prime({
         this.updateMaxValues(elements);
 
         return sizes;
-    },
+    }
 
-    updateMaxValues: function(elements) {
+    updateMaxValues(elements) {
         var parent = this.element ? this.element.parent('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
@@ -252,9 +256,9 @@ var Resizer = new prime({
             inputs.block.attribute('max', sizes.total - Number(inputs.block.attribute('min')));
             inputs.sibling.attribute('max', sizes.total - Number(inputs.sibling.attribute('min')));
         }, this);
-    },
+    }
 
-    evenResize: function(elements, animated) {
+    evenResize(elements, animated) {
         var total = elements.length,
             size = precision(100 / total, 4);
 
@@ -266,6 +270,6 @@ var Resizer = new prime({
         this.updateItemSizes(elements);
         this.menumanager.emit('dragEnd', this.menumanager.map, 'evenResize');
     }
-});
+}
 
 module.exports = Resizer;
