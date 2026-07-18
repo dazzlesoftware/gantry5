@@ -1,8 +1,6 @@
 "use strict";
 
-var $          = require('elements'),
-    Base       = require('./base'),
-    zen        = require('elements/zen'),
+var Base       = require('./base'),
     getAjaxURL = require('../../utils/get-ajax-url').config;
 
 class Atom extends Base {
@@ -12,7 +10,8 @@ class Atom extends Base {
     }
 
     updateTitle(title) {
-        this.block.find('.title').text(title);
+        var titleElement = this.block[0].querySelector('.title');
+        if (titleElement) { titleElement.textContent = title; }
         this.setTitle(title);
         return this;
     }
@@ -25,16 +24,24 @@ class Atom extends Base {
     }
 
     hasChanged(state, parent) {
-        var icon = this.block.find('span > i.changes-indicator:first-child');
+        var block = this.block[0],
+            icon = block.querySelector('span > i.changes-indicator:first-child');
         if (icon && parent && !parent.changeState) { return; }
 
-        this.block[state ? 'addClass' : 'removeClass']('block-has-changes');
+        block.classList.toggle('block-has-changes', Boolean(state));
         if (!state && icon) { icon.remove(); }
-        if (state && !icon) { zen('i.far.fa-circle.changes-indicator').before(this.block.find('.icon')); }
+        if (state && !icon) {
+            icon = document.createElement('i');
+            icon.className = 'far fa-circle changes-indicator';
+
+            var reference = block.querySelector('.icon'),
+                container = reference ? reference.parentNode : block.querySelector('span');
+            if (container) { container.insertBefore(icon, reference || container.firstChild); }
+        }
     }
 
     onRendered() {
-        var globallyDisabled = $('[data-lm-disabled][data-lm-subtype="' + this.getSubType() + '"]');
+        var globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
         if (globallyDisabled || this.getAttribute('enabled') === 0) { this.disable(); }
     }
 }

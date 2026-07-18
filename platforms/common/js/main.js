@@ -1006,9 +1006,7 @@ module.exports = function submit(elements, container, options = {}) {
 },{"../utils/field-validation":69}],8:[function(require,module,exports){
 "use strict";
 
-var $          = require('elements'),
-    Base       = require('./base'),
-    zen        = require('elements/zen'),
+var Base       = require('./base'),
     getAjaxURL = require('../../utils/get-ajax-url').config;
 
 class Atom extends Base {
@@ -1018,7 +1016,8 @@ class Atom extends Base {
     }
 
     updateTitle(title) {
-        this.block.find('.title').text(title);
+        var titleElement = this.block[0].querySelector('.title');
+        if (titleElement) { titleElement.textContent = title; }
         this.setTitle(title);
         return this;
     }
@@ -1031,16 +1030,24 @@ class Atom extends Base {
     }
 
     hasChanged(state, parent) {
-        var icon = this.block.find('span > i.changes-indicator:first-child');
+        var block = this.block[0],
+            icon = block.querySelector('span > i.changes-indicator:first-child');
         if (icon && parent && !parent.changeState) { return; }
 
-        this.block[state ? 'addClass' : 'removeClass']('block-has-changes');
+        block.classList.toggle('block-has-changes', Boolean(state));
         if (!state && icon) { icon.remove(); }
-        if (state && !icon) { zen('i.far.fa-circle.changes-indicator').before(this.block.find('.icon')); }
+        if (state && !icon) {
+            icon = document.createElement('i');
+            icon.className = 'far fa-circle changes-indicator';
+
+            var reference = block.querySelector('.icon'),
+                container = reference ? reference.parentNode : block.querySelector('span');
+            if (container) { container.insertBefore(icon, reference || container.firstChild); }
+        }
     }
 
     onRendered() {
-        var globallyDisabled = $('[data-lm-disabled][data-lm-subtype="' + this.getSubType() + '"]');
+        var globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
         if (globallyDisabled || this.getAttribute('enabled') === 0) { this.disable(); }
     }
 }
@@ -1051,12 +1058,16 @@ Atom.prototype.options = {
 
 module.exports = Atom;
 
-},{"../../utils/get-ajax-url":72,"./base":10,"elements":89,"elements/zen":92}],9:[function(require,module,exports){
+},{"../../utils/get-ajax-url":72,"./base":10}],9:[function(require,module,exports){
 "use strict";
 
-var $       = require('elements'),
-    zen     = require('elements/zen'),
-    Section = require('./section');
+var Section = require('./section');
+
+var elementFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = html.trim();
+    return template.content.firstElementChild;
+};
 
 class Atoms extends Section {
     layout() {
@@ -1069,32 +1080,34 @@ class Atoms extends Section {
     }
 
     onDone() {
-        if (!this.block.search('[data-lm-blocktype="atom"]')) {
+        var block = this.block[0];
+
+        if (!block.querySelector('[data-lm-blocktype="atom"]')) {
             var ids = [this.getId()],
-                segments = this.block.search('[data-lm-id]');
-            if (segments) {
-                segments.forEach(function(element) { ids.push($(element).data('lm-id')); });
-            }
+                segments = block.querySelectorAll('[data-lm-id]');
+            segments.forEach(function(element) { ids.push(element.getAttribute('data-lm-id')); });
             ids.reverse().forEach(function(id) { this.options.builder.remove(id); }, this);
-            this.block.empty()[0].outerHTML = this.deprecated;
+            block.replaceWith(elementFromHTML(this.deprecated));
             this._attachRedirect();
             return;
         }
 
-        if (!this.block.search('[data-lm-id]')) {
+        if (!block.querySelector('[data-lm-id]')) {
             this.grid.insert(this.block, 'bottom');
             this.options.builder.add(this.grid);
         }
-        zen('div').html(this.deprecated).firstChild().after(this.block);
+        block.after(elementFromHTML(this.deprecated));
         this._attachRedirect();
     }
 
     _attachRedirect() {
-        var item = $('[data-g5-nav="page"]');
+        var item = document.querySelector('[data-g5-nav="page"]');
         if (!item) { return; }
-        $('.atoms-notice a').on('click', function(event) {
+        var link = document.querySelector('.atoms-notice a');
+        if (!link) { return; }
+        link.addEventListener('click', function(event) {
             event.preventDefault();
-            $('body').emit('click', {target: item});
+            item.click();
         });
     }
 }
@@ -1106,7 +1119,7 @@ Atoms.prototype.options = {
 
 module.exports = Atoms;
 
-},{"./section":18,"elements":89,"elements/zen":92}],10:[function(require,module,exports){
+},{"./section":18}],10:[function(require,module,exports){
 "use strict";
 
 var EventEmitter = require('../../utils/event-emitter'),

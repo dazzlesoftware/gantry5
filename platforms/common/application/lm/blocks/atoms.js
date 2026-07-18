@@ -1,8 +1,12 @@
 "use strict";
 
-var $       = require('elements'),
-    zen     = require('elements/zen'),
-    Section = require('./section');
+var Section = require('./section');
+
+var elementFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = html.trim();
+    return template.content.firstElementChild;
+};
 
 class Atoms extends Section {
     layout() {
@@ -15,32 +19,34 @@ class Atoms extends Section {
     }
 
     onDone() {
-        if (!this.block.search('[data-lm-blocktype="atom"]')) {
+        var block = this.block[0];
+
+        if (!block.querySelector('[data-lm-blocktype="atom"]')) {
             var ids = [this.getId()],
-                segments = this.block.search('[data-lm-id]');
-            if (segments) {
-                segments.forEach(function(element) { ids.push($(element).data('lm-id')); });
-            }
+                segments = block.querySelectorAll('[data-lm-id]');
+            segments.forEach(function(element) { ids.push(element.getAttribute('data-lm-id')); });
             ids.reverse().forEach(function(id) { this.options.builder.remove(id); }, this);
-            this.block.empty()[0].outerHTML = this.deprecated;
+            block.replaceWith(elementFromHTML(this.deprecated));
             this._attachRedirect();
             return;
         }
 
-        if (!this.block.search('[data-lm-id]')) {
+        if (!block.querySelector('[data-lm-id]')) {
             this.grid.insert(this.block, 'bottom');
             this.options.builder.add(this.grid);
         }
-        zen('div').html(this.deprecated).firstChild().after(this.block);
+        block.after(elementFromHTML(this.deprecated));
         this._attachRedirect();
     }
 
     _attachRedirect() {
-        var item = $('[data-g5-nav="page"]');
+        var item = document.querySelector('[data-g5-nav="page"]');
         if (!item) { return; }
-        $('.atoms-notice a').on('click', function(event) {
+        var link = document.querySelector('.atoms-notice a');
+        if (!link) { return; }
+        link.addEventListener('click', function(event) {
             event.preventDefault();
-            $('body').emit('click', {target: item});
+            item.click();
         });
     }
 }
