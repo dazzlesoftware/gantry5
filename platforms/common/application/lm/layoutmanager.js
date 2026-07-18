@@ -1,28 +1,39 @@
 "use strict";
-var prime      = require('prime'),
+var EventEmitter = require('../utils/event-emitter'),
     $          = require('../utils/elements.utils'),
-    bind       = require('mout/function/bind'),
     zen        = require('elements/zen'),
-    Emitter    = require('prime/emitter'),
-    Bound      = require('prime-util/prime/bound'),
-    Options    = require('prime-util/prime/options'),
     Blocks     = require('./blocks'),
     DragDrop   = require('../ui/drag.drop'),
     Eraser     = require('../ui/eraser'),
     flags      = require('../utils/flags-state'),
     Resizer    = require('./drag.resizer'),
-    get        = require('mout/object/get'),
-    keys       = require('mout/object/keys'),
+    deepEquals = require('../utils/deep-equals');
 
-    every      = require('mout/array/every'),
-    precision  = require('mout/number/enforcePrecision'),
-    isArray    = require('mout/lang/isArray'),
-    deepEquals = require('mout/lang/deepEquals'),
-    find       = require('mout/collection/find'),
-    isObject   = require('mout/lang/isObject'),
-
-    contains   = require('mout/array/contains'),
-    forEach    = require('mout/collection/forEach');
+var get = function(object, key) {
+        return object ? object[key] : undefined;
+    },
+    keys = function(object) {
+        return Object.keys(object || {});
+    },
+    precision = function(value, decimals) {
+        var multiplier = Math.pow(10, decimals);
+        return Math.round(Number(value) * multiplier) / multiplier;
+    },
+    find = function(collection, callback) {
+        return Array.prototype.find.call(collection || [], callback);
+    },
+    contains = function(collection, value) {
+        return Array.prototype.indexOf.call(collection || [], value) !== -1;
+    },
+    forEach = function(collection, callback, context) {
+        if (Array.isArray(collection) || (collection && typeof collection.length === 'number')) {
+            Array.prototype.forEach.call(collection, callback, context);
+        } else {
+            Object.keys(collection || {}).forEach(function(key) {
+                callback.call(context, collection[key], key, collection);
+            });
+        }
+    };
 
 var singles = {
     disable: function() {
@@ -50,14 +61,10 @@ var singles = {
 
 };
 
-var LayoutManager = new prime({
-
-    mixin: [Bound, Options],
-    inherits: Emitter,
-
+var LayoutManagerDefinition = {
     options: {},
 
-    constructor: function(element, options) {
+    initialize: function(element, options) {
         this.setOptions(options);
         this.refElement = element;
 
@@ -399,13 +406,7 @@ var LayoutManager = new prime({
 
         this.eraser.hide();
 
-        this.dragdrop.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $('body').off(event, this.dragdrop.bound('move'));
-        }, this));
-
-        this.dragdrop.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $('body').off(event, this.dragdrop.bound('deferStop'));
-        }, this));
+        this.dragdrop.detachDragEvents();
 
         this.builder.remove(this.block.getId());
 
@@ -606,6 +607,30 @@ var LayoutManager = new prime({
             }
         }
     }
+};
+
+class LayoutManager extends EventEmitter {
+    constructor(element, options) {
+        super();
+        this._boundMethods = Object.create(null);
+        LayoutManagerDefinition.initialize.call(this, element, options);
+    }
+
+    setOptions(options) {
+        this.options = Object.assign({}, LayoutManagerDefinition.options, options || {});
+        return this;
+    }
+
+    bound(method) {
+        return this._boundMethods[method] || (this._boundMethods[method] = this[method].bind(this));
+    }
+}
+
+Object.keys(LayoutManagerDefinition).forEach(function(method) {
+    if (method !== 'options' && method !== 'initialize') {
+        LayoutManager.prototype[method] = LayoutManagerDefinition[method];
+    }
 });
+LayoutManager.prototype.options = LayoutManagerDefinition.options;
 
 module.exports = LayoutManager;

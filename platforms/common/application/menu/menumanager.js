@@ -1,35 +1,48 @@
 "use strict";
-var prime     = require('prime'),
+var EventEmitter = require('../utils/event-emitter'),
     $         = require('../utils/elements.utils'),
-    bind       = require('mout/function/bind'),
     zen       = require('elements/zen'),
-    Emitter   = require('prime/emitter'),
-    Bound     = require('prime-util/prime/bound'),
-    Options   = require('prime-util/prime/options'),
     DragDrop  = require('../ui/drag.drop'),
-    Eraser     = require('../ui/eraser'),
-    Resizer   = require('./drag.resizer'),
-    get       = require('mout/object/get'),
+    Eraser    = require('../ui/eraser'),
+    Resizer   = require('./drag.resizer');
 
-    ltrim     = require('mout/string/ltrim'),
-    every     = require('mout/array/every'),
-    last      = require('mout/array/last'),
-    indexOf   = require('mout/array/indexOf'),
-    isArray   = require('mout/lang/isArray'),
-    isObject  = require('mout/lang/isObject'),
-    deepClone = require('mout/lang/deepClone'),
-    equals    = require('mout/object/equals');
+var ltrim = function(value) {
+        return String(value == null ? '' : value).replace(/^\/+/, '');
+    },
+    last = function(collection) {
+        return collection && collection.length ? collection[collection.length - 1] : undefined;
+    },
+    indexOf = function(collection, value) {
+        return Array.prototype.indexOf.call(collection || [], value);
+    },
+    isPlainObject = function(value) {
+        if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
+        var prototype = Object.getPrototypeOf(value);
+        return prototype === null || prototype === Object.prototype;
+    },
+    cloneValue = function(value, seen) {
+        if (!value || typeof value !== 'object') { return value; }
+        if (value instanceof Date) { return new Date(value.getTime()); }
+        if (value instanceof RegExp) { return new RegExp(value.source, value.flags); }
+        if (!Array.isArray(value) && !isPlainObject(value)) { return value; }
+        if (seen.has(value)) { return seen.get(value); }
+
+        var clone = Array.isArray(value) ? [] : {};
+        seen.set(value, clone);
+        Object.keys(value).forEach(function(key) {
+            clone[key] = cloneValue(value[key], seen);
+        });
+        return clone;
+    },
+    deepClone = function(value) {
+        return cloneValue(value, new WeakMap());
+    };
 
 
-var MenuManager = new prime({
-
-    mixin: [Bound, Options],
-
-    inherits: Emitter,
-
+var MenuManagerDefinition = {
     options: {},
 
-    constructor: function(element, options) {
+    initialize: function(element, options) {
         this.setOptions(options);
         this.refElement = element;
         this.map = {};
@@ -336,13 +349,7 @@ var MenuManager = new prime({
 
         this.eraser.hide();
 
-        this.dragdrop.DRAG_EVENTS.EVENTS.MOVE.forEach(bind(function(event) {
-            $('body').off(event, this.dragdrop.bound('move'));
-        }, this));
-
-        this.dragdrop.DRAG_EVENTS.EVENTS.STOP.forEach(bind(function(event) {
-            $('body').off(event, this.dragdrop.bound('deferStop'));
-        }, this));
+        this.dragdrop.detachDragEvents();
 
         var particle = this.block,
             base = particle.parent('[data-mm-base]').data('mm-base'),
@@ -514,7 +521,31 @@ var MenuManager = new prime({
 
         if (!this.wasActive && this.block) { this.block.removeClass('active'); }
     }
+};
+
+class MenuManager extends EventEmitter {
+    constructor(element, options) {
+        super();
+        this._boundMethods = Object.create(null);
+        MenuManagerDefinition.initialize.call(this, element, options);
+    }
+
+    setOptions(options) {
+        this.options = Object.assign({}, MenuManagerDefinition.options, options || {});
+        return this;
+    }
+
+    bound(method) {
+        return this._boundMethods[method] || (this._boundMethods[method] = this[method].bind(this));
+    }
+}
+
+Object.keys(MenuManagerDefinition).forEach(function(method) {
+    if (method !== 'options' && method !== 'initialize') {
+        MenuManager.prototype[method] = MenuManagerDefinition[method];
+    }
 });
+MenuManager.prototype.options = MenuManagerDefinition.options;
 
 
 module.exports = MenuManager;
