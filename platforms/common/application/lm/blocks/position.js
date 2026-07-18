@@ -1,38 +1,35 @@
 "use strict";
-var prime    = require('prime'),
-    trim     = require('mout/string/trim'),
-    Particle = require('./particle');
+
+var Particle = require('./particle');
 
 var UID = 0;
 
-var Position = new prime({
-    inherits: Particle,
-    options: {
-        type: 'position'
-    },
-
-    constructor: function(options) {
+class Position extends Particle {
+    constructor(options) {
         ++UID;
-        Particle.call(this, options);
+        super(options);
         this.setAttribute('title', this.getTitle());
         this.setAttribute('key', this.getKey());
-
         if (this.isNew()) { --UID; }
-    },
+    }
 
-    getTitle: function() {
-        return trim(this.options.title || 'Position ' + UID);
-    },
+    getTitle() {
+        return String(this.options.title || 'Position ' + UID).trim();
+    }
 
-    getKey: function() {
-        return (this.getAttribute('key') || trim(this.getTitle()).replace(/\s/g, '-').toLowerCase());
-    },
+    getKey() {
+        return this.getAttribute('key') || this.getTitle().trim().replace(/\s/g, '-').toLowerCase();
+    }
 
-    updateKey: function(key) {
+    updateKey(key) {
         this.options.key = key || this.getKey();
         this.block.find('.font-small').text(this.getKey());
         return this;
-    },
-});
+    }
+}
+
+Position.prototype.options = {
+    type: 'position'
+};
 
 module.exports = Position;

@@ -1,47 +1,87 @@
 "use strict";
-var prime     = require('prime'),
-    Options   = require('prime-util/prime/options'),
-    Bound     = require('prime-util/prime/bound'),
-    Emitter   = require('prime/emitter'),
-    zen       = require('elements/zen'),
-    trim      = require('mout/string/trim'),
-    $         = require('elements'),
-    ID        = require('../id'),
 
-    size      = require('mout/object/size'),
-    get       = require('mout/object/get'),
-    has       = require('mout/object/has'),
-    set       = require('mout/object/set'),
-    translate = require('../../utils/translate'),
-    getCurrentOutline  = require('../../utils/get-outline').getCurrentOutline;
+var EventEmitter = require('../../utils/event-emitter'),
+    zen          = require('elements/zen'),
+    $            = require('elements'),
+    ID           = require('../id'),
+    translate    = require('../../utils/translate'),
+    getCurrentOutline = require('../../utils/get-outline').getCurrentOutline;
 
 require('elements/traversal');
 
-var Base = new prime({
-    mixin: [Bound, Options],
-    inherits: Emitter,
-    options: {
-        subtype: false,
-        attributes: {},
-        inherit: {}
+var isPlainObject = function(value) {
+        if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
+        var prototype = Object.getPrototypeOf(value);
+        return prototype === null || prototype === Object.prototype;
     },
-    constructor: function(options) {
-        this.setOptions(options);
+    mergeOptions = function(target) {
+        target = isPlainObject(target) ? Object.assign({}, target) : {};
+        Array.prototype.slice.call(arguments, 1).forEach(function(source) {
+            if (!isPlainObject(source)) { return; }
+            Object.keys(source).forEach(function(key) {
+                target[key] = isPlainObject(source[key]) && isPlainObject(target[key])
+                    ? mergeOptions(target[key], source[key])
+                    : source[key];
+            });
+        });
+        return target;
+    },
+    getPath = function(object, path) {
+        return String(path || '').split('.').reduce(function(value, key) {
+            return value == null ? undefined : value[key];
+        }, object);
+    },
+    setPath = function(object, path, value) {
+        var parts = String(path || '').split('.'),
+            last = parts.pop(),
+            target = object;
 
-        this.fresh = !this.options.id;
-        this.id = this.options.id || ID(this.options);
-        this.attributes = this.options.attributes || {};
-        this.inherit = this.options.inherit || {};
+        parts.forEach(function(key) {
+            if (!isPlainObject(target[key])) { target[key] = {}; }
+            target = target[key];
+        });
+        target[last] = value;
+        return object;
+    };
 
-        this.block = zen('div').html(this.layout()).firstChild();
+function Base(options) {
+    this.listeners = new Map();
+    this._boundMethods = Object.create(null);
+    this.setOptions(options);
 
-        this.on('rendered', this.bound('onRendered'));
+    this.fresh = !this.options.id;
+    this.id = this.options.id || ID(this.options);
+    this.attributes = this.options.attributes || {};
+    this.inherit = this.options.inherit || {};
 
+    this.block = zen('div').html(this.layout()).firstChild();
+    this.on('rendered', this.bound('onRendered'));
+
+    return this;
+}
+
+Base.prototype = Object.create(EventEmitter.prototype);
+Base.prototype.constructor = Base;
+Base.prototype.options = {
+    subtype: false,
+    attributes: {},
+    inherit: {}
+};
+
+Object.assign(Base.prototype, {
+    setOptions: function(options) {
+        this.options = mergeOptions({}, this.options || Base.prototype.options, options || {});
         return this;
     },
 
+    bound: function(method) {
+        return this._boundMethods[method] || (this._boundMethods[method] = this[method].bind(this));
+    },
+
     guid: function() {
-        return guid();
+        return typeof crypto !== 'undefined' && crypto.randomUUID
+            ? crypto.randomUUID()
+            : Date.now().toString(36) + Math.random().toString(36).slice(2);
     },
 
     getId: function() {
@@ -57,11 +97,11 @@ var Base = new prime({
     },
 
     getTitle: function() {
-        return trim(this.options.title || 'Untitled');
+        return String(this.options.title || 'Untitled').trim();
     },
 
     setTitle: function(title) {
-        this.options.title = trim(title || 'Untitled');
+        this.options.title = String(title || 'Untitled').trim();
         return this;
     },
 
@@ -71,13 +111,12 @@ var Base = new prime({
 
     getPageId: function() {
         var root = $('[data-lm-root]');
-        if (!root) return 'data-root-not-found';
-
+        if (!root) { return 'data-root-not-found'; }
         return root.data('lm-page');
     },
 
     getAttribute: function(key) {
-        return get(this.attributes, key);
+        return getPath(this.attributes, key);
     },
 
     getAttributes: function() {
@@ -93,34 +132,30 @@ var Base = new prime({
     },
 
     setAttribute: function(key, value) {
-        set(this.attributes, key, value);
+        setPath(this.attributes, key, value);
         return this;
     },
 
     setAttributes: function(attributes) {
         this.attributes = attributes;
-
         return this;
     },
 
     setInheritance: function(inheritance) {
         this.inherit = inheritance;
-
         return this;
     },
 
     hasAttribute: function(key) {
-        return has(this.attributes, key);
+        return typeof getPath(this.attributes, key) !== 'undefined';
     },
 
     enableInheritance: function() {},
-
     disableInheritance: function() {},
-
     refreshInheritance: function() {},
 
     hasInheritance: function() {
-        return size(this.inherit) && this.inherit.outline != getCurrentOutline();
+        return Object.keys(this.inherit || {}).length && this.inherit.outline != getCurrentOutline();
     },
 
     disable: function() {
@@ -144,9 +179,7 @@ var Base = new prime({
     },
 
     isNew: function(fresh) {
-        if (typeof fresh !== 'undefined') {
-            this.fresh = !!fresh;
-        }
+        if (typeof fresh !== 'undefined') { this.fresh = !!fresh; }
         return this.fresh;
     },
 
@@ -163,7 +196,6 @@ var Base = new prime({
     },
 
     layout: function() {},
-
     onRendered: function() {},
 
     setLayout: function(layout) {

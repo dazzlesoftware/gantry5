@@ -1,32 +1,26 @@
 "use strict";
-var prime      = require('prime'),
-    Section    = require('./section'),
 
-    getAjaxURL = require('../../utils/get-ajax-url').config;
+var Section = require('./section');
 
-var Wrapper = new prime({
-    inherits: Section,
-    options: {
-        type: 'wrapper',
-        attributes: {
-            name: "Wrapper"
-        }
-    },
-
-    layout: function() {
-        var settings_uri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId());
+class Wrapper extends Section {
+    layout() {
         return '<div class="wrapper-section" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"></div>';
-    },
+    }
 
-    hasChanged: function() {},
+    hasChanged() {}
 
-    getSize: function() {
+    getSize() {
         return false;
-    },
+    }
 
-    getId: function() {
+    getId() {
         return this.id || (this.id = this.options.type);
     }
-});
+}
+
+Wrapper.prototype.options = {
+    type: 'wrapper',
+    attributes: {name: 'Wrapper'}
+};
 
 module.exports = Wrapper;

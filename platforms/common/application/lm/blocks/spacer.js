@@ -1,16 +1,13 @@
 "use strict";
-var prime    = require('prime'),
-    Particle = require('./particle');
 
-var UID = 0;
+var Particle = require('./particle');
 
-var Spacer = new prime({
-    inherits: Particle,
-    options: {
-        type: 'spacer',
-        title: 'Spacer',
-        attributes: {}
-    }
-});
+class Spacer extends Particle {}
+
+Spacer.prototype.options = {
+    type: 'spacer',
+    title: 'Spacer',
+    attributes: {}
+};
 
 module.exports = Spacer;
