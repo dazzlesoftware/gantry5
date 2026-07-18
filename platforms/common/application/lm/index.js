@@ -206,7 +206,7 @@ ready(function() {
         layoutmanager.savestate.setSession(builder.serialize(null, true));
 
         // refresh LM eraser
-        layoutmanager.eraser.element = document.querySelector('[data-lm-eraseblock]');
+        layoutmanager.eraser.setElement(document.querySelector('[data-lm-eraseblock]'));
         layoutmanager.eraser.hide(true);
     });
 

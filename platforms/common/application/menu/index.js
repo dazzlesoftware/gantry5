@@ -57,7 +57,7 @@ ready(function() {
 
         // refresh MM eraser
         if (menumanager.eraser) {
-            menumanager.eraser.element = document.querySelector('[data-mm-eraseparticle]');
+            menumanager.eraser.setElement(document.querySelector('[data-mm-eraseparticle]'));
             menumanager.eraser.hide();
         }
     });

@@ -2762,7 +2762,7 @@ ready(function() {
         layoutmanager.savestate.setSession(builder.serialize(null, true));
 
         // refresh LM eraser
-        layoutmanager.eraser.element = document.querySelector('[data-lm-eraseblock]');
+        layoutmanager.eraser.setElement(document.querySelector('[data-lm-eraseblock]'));
         layoutmanager.eraser.hide(true);
     });
 
@@ -5268,7 +5268,7 @@ ready(function() {
 
         // refresh MM eraser
         if (menumanager.eraser) {
-            menumanager.eraser.element = document.querySelector('[data-mm-eraseparticle]');
+            menumanager.eraser.setElement(document.querySelector('[data-mm-eraseparticle]'));
             menumanager.eraser.hide();
         }
     });
@@ -6170,7 +6170,7 @@ var Atoms = {
 
     attachEraser: function() {
         if (Atoms.eraser) {
-            Atoms.eraser.element = $('[data-atoms-erase]');
+            Atoms.eraser.setElement($('[data-atoms-erase]'));
             return;
         }
 
@@ -9291,7 +9291,7 @@ const Positions = {
     attachEraser() {
         const element = document.querySelector('[data-g5-positions-erase]');
         if (Positions.eraser) {
-            Positions.eraser.element = element;
+            Positions.eraser.setElement(element);
             Positions.eraser.hide(true);
             return;
         }
@@ -10393,8 +10393,21 @@ const animateStyles = (element, styles, fast, easing = 'ease') => {
 class Eraser {
     constructor(element, options = {}) {
         this.options = { ...options };
-        this.element = typeof element === 'string' ? document.querySelector(element) : element;
+        this.setElement(element);
         if (this.element) this.hide(true);
+    }
+
+    setElement(element) {
+        const next = typeof element === 'string'
+            ? document.querySelector(element)
+            : (element && element.nodeType ? element : element && element[0]);
+
+        if (next !== this.element) {
+            this.element = next || null;
+            this.top = undefined;
+            this.left = undefined;
+        }
+        return this;
     }
 
     setTop() {

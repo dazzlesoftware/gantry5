@@ -51,7 +51,7 @@ var Atoms = {
 
     attachEraser: function() {
         if (Atoms.eraser) {
-            Atoms.eraser.element = $('[data-atoms-erase]');
+            Atoms.eraser.setElement($('[data-atoms-erase]'));
             return;
         }
 

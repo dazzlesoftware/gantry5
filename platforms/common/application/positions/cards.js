@@ -72,7 +72,7 @@ const Positions = {
     attachEraser() {
         const element = document.querySelector('[data-g5-positions-erase]');
         if (Positions.eraser) {
-            Positions.eraser.element = element;
+            Positions.eraser.setElement(element);
             Positions.eraser.hide(true);
             return;
         }

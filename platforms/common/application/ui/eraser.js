@@ -33,8 +33,21 @@ const animateStyles = (element, styles, fast, easing = 'ease') => {
 class Eraser {
     constructor(element, options = {}) {
         this.options = { ...options };
-        this.element = typeof element === 'string' ? document.querySelector(element) : element;
+        this.setElement(element);
         if (this.element) this.hide(true);
+    }
+
+    setElement(element) {
+        const next = typeof element === 'string'
+            ? document.querySelector(element)
+            : (element && element.nodeType ? element : element && element[0]);
+
+        if (next !== this.element) {
+            this.element = next || null;
+            this.top = undefined;
+            this.left = undefined;
+        }
+        return this;
     }
 
     setTop() {
