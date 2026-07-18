@@ -1,32 +1,114 @@
 "use strict";
 // selectize (v0.12.1) (commit: 4dae761)
 
-var prime      = require('prime'),
+var EventEmitter = require('../utils/event-emitter'),
     ready      = require('elements/domready'),
     zen        = require('elements/zen'),
 
     sifter     = require('sifter'),
+    $          = require('../utils/elements.utils');
 
-    Emitter    = require('prime/emitter'),
-    Bound      = require('prime-util/prime/bound'),
-    Options    = require('prime-util/prime/options'),
+var bind = function(fn, context) {
+        var args = Array.prototype.slice.call(arguments, 2);
+        return fn.bind.apply(fn, [context].concat(args));
+    },
+    forEach = function(collection, callback, context) {
+        if (!collection) { return collection; }
+        Array.prototype.forEach.call(collection, callback, context);
+        return collection;
+    },
+    indexOf = function(collection, value) {
+        return Array.prototype.indexOf.call(collection || [], value);
+    },
+    last = function(collection) {
+        return collection && collection.length ? collection[collection.length - 1] : undefined;
+    },
+    debounce = function(callback, delay) {
+        var timer;
+        return function() {
+            var context = this,
+                args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                callback.apply(context, args);
+            }, delay);
+        };
+    },
+    isArray = Array.isArray,
+    isBoolean = function(value) {
+        return typeof value === 'boolean';
+    },
+    isPlainObject = function(value) {
+        if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
+        var prototype = Object.getPrototypeOf(value);
+        return prototype === null || prototype === Object.prototype;
+    },
+    cloneValue = function(value, seen) {
+        if (!value || typeof value !== 'object') { return value; }
+        if (value instanceof Date) { return new Date(value.getTime()); }
+        if (value instanceof RegExp) { return new RegExp(value.source, value.flags); }
+        if (!Array.isArray(value) && !isPlainObject(value)) { return value; }
+        if (seen.has(value)) { return seen.get(value); }
 
-    $          = require('../utils/elements.utils'),
+        var clone = Array.isArray(value) ? [] : {};
+        seen.set(value, clone);
+        Object.keys(value).forEach(function(key) {
+            clone[key] = cloneValue(value[key], seen);
+        });
+        return clone;
+    },
+    mergeInto = function(target, source, seen) {
+        if (!isPlainObject(source)) { return target; }
+        if (seen.has(source)) { return seen.get(source); }
+        seen.set(source, target);
 
-    bind       = require('mout/function/bind'),
-    forEach    = require('mout/collection/forEach'),
-    indexOf    = require('mout/array/indexOf'),
-    last       = require('mout/array/last'),
-    debounce   = require('mout/function/debounce'),
-    isArray    = require('mout/lang/isArray'),
-    isBoolean  = require('mout/lang/isBoolean'),
-    merge      = require('mout/object/merge'),
-    unset      = require('mout/object/unset'),
-    size       = require('mout/object/size'),
-    values     = require('mout/object/values'),
-    escapeHTML = require('mout/string/escapeHtml'),
-    trim       = require('mout/string/trim'),
-    slugify    = require('mout/string/slugify');
+        Object.keys(source).forEach(function(key) {
+            var value = source[key];
+            if (isPlainObject(value)) {
+                if (seen.has(value)) {
+                    target[key] = seen.get(value);
+                } else {
+                    target[key] = mergeInto(isPlainObject(target[key]) ? target[key] : {}, value, seen);
+                }
+            } else {
+                target[key] = cloneValue(value, seen);
+            }
+        });
+        return target;
+    },
+    merge = function() {
+        var sources = Array.prototype.slice.call(arguments),
+            target = {},
+            seen = new WeakMap();
+
+        sources.forEach(function(source) {
+            if (isPlainObject(source)) { mergeInto(target, source, seen); }
+        });
+        return target;
+    },
+    size = function(object) {
+        return object ? Object.keys(object).length : 0;
+    },
+    escapeHTML = function(value) {
+        return String(value == null ? '' : value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/'/g, '&#39;')
+            .replace(/"/g, '&quot;');
+    },
+    trim = function(value) {
+        return String(value == null ? '' : value).trim();
+    },
+    slugify = function(value) {
+        return String(value == null ? '' : value)
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^\w\s-]/g, ' ')
+            .trim()
+            .replace(/\s+/g, '-')
+            .toLowerCase();
+    };
 
 
 var IS_MAC                = /Mac/.test(navigator.userAgent),
@@ -282,12 +364,7 @@ var autoGrow = function(input) {
     update();
 };
 
-var Selectize = new prime({
-
-    mixin: [Bound, Options],
-
-    inherits: Emitter,
-
+var SelectizeDefinition = {
     options: {
         delimiter: ' ',
         splitOn: null, // regexp or string for splitting up values from a paste command
@@ -365,7 +442,7 @@ var Selectize = new prime({
         }
     },
 
-    constructor: function(input, options) {
+    initialize: function(input, options) {
         input = $(input);
         this.setOptions(options);
 
@@ -2115,7 +2192,27 @@ var Selectize = new prime({
     getPreviousValue: function() {
         return this.previousValue;
     }
+};
+
+class Selectize extends EventEmitter {
+    constructor(input, options) {
+        super();
+        this.setOptions(options);
+        SelectizeDefinition.initialize.call(this, input, options);
+    }
+
+    setOptions(options) {
+        this.options = merge({}, SelectizeDefinition.options, options || {});
+        return this;
+    }
+}
+
+Object.keys(SelectizeDefinition).forEach(function(method) {
+    if (method !== 'options' && method !== 'initialize') {
+        Selectize.prototype[method] = SelectizeDefinition[method];
+    }
 });
+Selectize.prototype.options = SelectizeDefinition.options;
 
 $.implement({
     selectize: function(settings_user) {
