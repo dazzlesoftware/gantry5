@@ -1,71 +1,77 @@
 'use strict';
 
-var $             = require('elements'),
-    validateField = require('../utils/field-validation');
+const validateField = require('../utils/field-validation');
 
-var submit = function(elements, container, options) {
-    var valid   = [],
-        invalid = [];
+const elementFrom = value => {
+    if (value instanceof Element || value instanceof Document || value instanceof DocumentFragment) return value;
+    return value && value[0] instanceof Element ? value[0] : null;
+};
 
-    elements = $(elements);
-    container = $(container);
-    options = options || {};
+const elementsFrom = value => {
+    if (!value) return [];
+    if (value instanceof Element) return [value];
+    if (typeof value === 'string') return Array.from(document.querySelectorAll(value));
+    return Array.from(value).map(elementFrom).filter(Boolean);
+};
 
-    $(elements).forEach(function(input) {
-        input = $(input);
-        var name = input.attribute('name'),
-            type = input.attribute('type');
-        if (!name || input.disabled() || (type == 'radio' && !input.checked())) { return; }
+const fieldsNamed = (container, name) => Array.from(container.querySelectorAll('[name]'))
+    .filter(field => field.name === name);
 
-        input = container.find('[name="' + name + '"]' + (type == 'radio' ? ':checked' : ''));
+module.exports = function submit(elements, container, options = {}) {
+    const valid = [];
+    const invalid = [];
+    const root = elementFrom(container);
 
-        if (type === 'checkbox' && container.find('[type="hidden"][name="' + name + '"]')) {
-            input = container.find('[name="' + name + '"][type="checkbox"]');
+    if (!root) return { valid, invalid };
+
+    elementsFrom(elements).forEach(original => {
+        const name = original.name;
+        const originalType = original.type;
+        if (!name || original.disabled || (originalType === 'radio' && !original.checked)) return;
+
+        const matches = fieldsNamed(root, name);
+        let input = originalType === 'radio'
+            ? matches.find(field => field.checked)
+            : matches[0];
+
+        if (originalType === 'checkbox' && matches.some(field => field.type === 'hidden')) {
+            input = matches.find(field => field.type === 'checkbox');
+        }
+        if (!input) return;
+
+        let value = input.type === 'checkbox' ? Number(input.checked) : input.value;
+        const parent = input.closest('.settings-param');
+        let override = parent ? parent.querySelector(':scope > input[type="checkbox"]') : null;
+        const overrideTarget = input.getAttribute('data-override-target');
+        if (!override && overrideTarget) override = document.querySelector(overrideTarget);
+
+        if (input.tagName === 'SELECT' && input.multiple) {
+            value = Array.from(input.options)
+                .filter(option => option.selected)
+                .map(option => option.value);
         }
 
-        if (input) {
-            var value    = input.type() == 'checkbox' ? Number(input.checked()) : input.value(),
-                parent   = input.parent('.settings-param'),
-                override = parent ? parent.find('> input[type="checkbox"]') : null;
+        if (override && !override.checked) return;
 
-            override = override || $(input.data('override-target'));
+        const skipValidation = name.includes('block-size') && (!value || value === '');
+        if (!skipValidation && !validateField(input)) invalid.push(input);
 
-            if (['select', 'select-multiple'].includes(input.type()) && input.attribute('multiple')) {
-                value = (input.search('option[selected]') || []).map(function(selection) {
-                    return $(selection).value();
-                });
-            }
-
-            if (override && !override.checked()) { return; }
-
-            var skipValidation = name && name.indexOf('block-size') !== -1 && (!value || value === '');
-            if (!skipValidation && !validateField(input)) {
-                invalid.push(input);
-            }
-
-            if (Array.isArray(value)) {
-                value.forEach(function(selection) {
-                    valid.push(name + '[]=' + encodeURIComponent(selection));
-                });
-            } else if (!options.submitUnchecked || (input.type() != 'checkbox' || (input.type() == 'checkbox' && !!value))) {
-                valid.push(name + '=' + encodeURIComponent(value));
-            }
+        if (Array.isArray(value)) {
+            value.forEach(selection => {
+                valid.push(`${name}[]=${encodeURIComponent(selection)}`);
+            });
+        } else if (!options.submitUnchecked || input.type !== 'checkbox' || Boolean(value)) {
+            valid.push(`${name}=${encodeURIComponent(value)}`);
         }
     });
 
-    var titles = container.search('h4 [data-title-editable]'), key;
-    if (titles) {
-        titles.forEach(function(title) {
-            title = $(title);
-            if (title.parent('[data-collection-template]')) { return; }
+    root.querySelectorAll('h4 [data-title-editable]').forEach(title => {
+        if (title.closest('[data-collection-template]')) return;
 
-            key = title.data('collection-key') || (options.isRoot ? 'settings[title]' : 'title');
-            var editableTitle = title.data('title-editable');
-            valid.push(key + '=' + encodeURIComponent(editableTitle == null ? '' : String(editableTitle).trim()));
-        });
-    }
+        const key = title.getAttribute('data-collection-key') || (options.isRoot ? 'settings[title]' : 'title');
+        const editableTitle = title.getAttribute('data-title-editable');
+        valid.push(`${key}=${encodeURIComponent(editableTitle == null ? '' : editableTitle.trim())}`);
+    });
 
-    return { valid: valid, invalid: invalid };
+    return { valid, invalid };
 };
-
-module.exports = submit;

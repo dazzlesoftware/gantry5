@@ -1,17 +1,45 @@
 'use strict';
 
-const $ = require('../utils/elements.utils');
+const toPixels = value => typeof value === 'number' ? `${value}px` : value;
+
+const applyStyles = (element, styles) => {
+    Object.keys(styles).forEach(property => {
+        element.style[property] = toPixels(styles[property]);
+    });
+};
+
+const animateStyles = (element, styles, fast, easing = 'ease') => {
+    const finalStyles = Object.keys(styles).reduce((result, property) => {
+        result[property] = toPixels(styles[property]);
+        return result;
+    }, {});
+
+    if (fast || typeof element.animate !== 'function') {
+        applyStyles(element, finalStyles);
+        return;
+    }
+
+    const animation = element.animate([{}, finalStyles], {
+        duration: 150,
+        easing,
+        fill: 'forwards'
+    });
+    animation.addEventListener('finish', () => {
+        applyStyles(element, finalStyles);
+        animation.cancel();
+    }, { once: true });
+};
 
 class Eraser {
     constructor(element, options = {}) {
         this.options = { ...options };
-        this.element = $(element);
+        this.element = typeof element === 'string' ? document.querySelector(element) : element;
         if (this.element) this.hide(true);
     }
 
     setTop() {
         if (this.top !== undefined || !this.element) return;
-        this.top = Number.parseInt(this.element.compute('top'), 10);
+        this.top = Number.parseInt(getComputedStyle(this.element).top, 10) || 0;
         const container = document.querySelector('#g5-container');
         this.left = container ? container.getBoundingClientRect().left : 0;
         if (window.GANTRY_PLATFORM === 'grav') this.left = 0;
@@ -21,37 +49,25 @@ class Eraser {
         if (!this.element) return;
         this.setTop();
         this.out();
-        this.element[fast ? 'style' : 'animate'](
-            { top: this.top, left: this.left },
-            { duration: '150ms' }
-        );
+        animateStyles(this.element, { top: this.top, left: this.left }, fast);
     }
 
     hide(fast) {
         if (!this.element) return;
         this.setTop();
-        this.element.style('display', 'block');
+        this.element.style.display = 'block';
         this.out();
-        this.element[fast ? 'style' : 'animate'](
-            { top: -this.element[0].offsetHeight },
-            { duration: '150ms' }
-        );
+        animateStyles(this.element, { top: -this.element.offsetHeight }, fast);
     }
 
     over() {
-        const zone = this.element && this.element.find('.trash-zone');
-        if (zone) zone.animate(
-            { transform: 'scale(1.2)' },
-            { duration: '150ms', equation: 'cubic-bezier(0.5,0,0.5,1)' }
-        );
+        const zone = this.element && this.element.querySelector('.trash-zone');
+        if (zone) animateStyles(zone, { transform: 'scale(1.2)' }, false, 'cubic-bezier(0.5,0,0.5,1)');
     }
 
     out() {
-        const zone = this.element && this.element.find('.trash-zone');
-        if (zone) zone.animate(
-            { transform: 'scale(1)' },
-            { duration: '150ms', equation: 'cubic-bezier(0.5,0,0.5,1)' }
-        );
+        const zone = this.element && this.element.querySelector('.trash-zone');
+        if (zone) animateStyles(zone, { transform: 'scale(1)' }, false, 'cubic-bezier(0.5,0,0.5,1)');
     }
 }
 

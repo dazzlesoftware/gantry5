@@ -351,7 +351,8 @@ var LayoutManagerDefinition = {
 
         if (!this.block.isNew()) {
             target = $(target);
-            if (target.matches(this.eraser.element) || this.eraser.element.find(target)) {
+            var targetNode = target[0];
+            if (targetNode === this.eraser.element || this.eraser.element.contains(targetNode)) {
                 this.dragdrop.removeElement = true;
                 this.eraser.over();
             } else {
@@ -434,7 +435,8 @@ var LayoutManagerDefinition = {
     stop: function(event, target/*, element*/) {
         // we are removing the block
         var lastOvered = $(this.dragdrop.lastOvered);
-        if (lastOvered && lastOvered.matches(this.eraser.element.find('.trash-zone'))) {
+        var trashZone = this.eraser.element.querySelector('.trash-zone');
+        if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
             this.eraser.hide();
             return;
         }

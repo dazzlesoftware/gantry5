@@ -1,200 +1,193 @@
 "use strict";
 
-var ready        = require('../utils/dom').ready,
-    $            = require('../utils/elements.utils'),
-    decouple     = require('../utils/decouple'),
-    asyncForEach = require('../utils/async-foreach');
+const { ready, delegate } = require('../utils/dom');
+const decouple = require('../utils/decouple');
+const asyncForEach = require('../utils/async-foreach');
 
-var cache       = new WeakMap(),
-    Map         = {
-        get: function(key) { return cache.get(key && key[0] ? key[0] : key); },
-        set: function(key, value) { cache.set(key && key[0] ? key[0] : key, value); return this; }
+const cache = new WeakMap();
+const visible = element => getComputedStyle(element).display !== 'none';
+const checked = element => Boolean(element && element.checked);
+
+const hasGlobalFilter = element => {
+    if (element.closest('[data-g-global-filter]')) return true;
+    return element.parentElement
+        ? Array.from(element.parentElement.children).some(sibling => sibling.matches('[data-g-global-filter]'))
+        : false;
+};
+
+const emitChange = input => input.dispatchEvent(new Event('change', { bubbles: true }));
+
+const Assignments = {
+    toggleSection(event, element, index, array) {
+        if (event.type.startsWith('touch')) event.preventDefault();
+        if (hasGlobalFilter(element)) return Assignments.globalToggleSection(event, element);
+        if (element.matches('label')) return Assignments.treatLabel(event, element);
+
+        const card = element.closest('.card');
+        const save = document.querySelector('[data-save]');
+        const mode = element.getAttribute('data-g-assignments-check') == null ? 0 : 1;
+        if (!card) return;
+
+        let stored = cache.get(card);
+        if (!stored || !stored.inputs) {
+            stored = Object.assign({}, stored, {
+                inputs: Array.from(card.querySelectorAll('.enabler input[type="hidden"]'))
+            });
+            cache.set(card, stored);
+        }
+
+        asyncForEach(stored.inputs, item => {
+            const row = item.closest('label, h4');
+            if (!row || !visible(row)) return;
+            item.value = mode;
+            emitChange(item);
+        }, () => {
+            if (save && typeof index !== 'undefined' && array && index + 1 === array.length) {
+                save.disabled = false;
+            }
+        });
     },
-    Assignments = {
-        toggleSection: function(e, element, index, array) {
-            if (e.type.match(/^touch/)) { e.preventDefault(); }
-            if (element.siblings('[data-g-global-filter]') || element.parent('[data-g-global-filter]')) { return Assignments.globalToggleSection(e, element); }
-            if (element.matches('label')) { return Assignments.treatLabel(e, element); }
 
-            var card    = element.parent('.card'),
-                toggles = Map.get(card),
-                save    = $('[data-save]'),
-                mode    = element.data('g-assignments-check') == null ? 0 : 1;
+    filterSection(event, element, value, global) {
+        if (hasGlobalFilter(element)) return Assignments.globalFilterSection(event, element);
 
-            if (!toggles || !toggles.inputs) {
-                var inputs = card.search('.enabler input[type=hidden]');
+        const card = element.closest('.card');
+        const onlyEnabled = document.querySelector('[data-assignments-enabledonly]');
+        if (!card) return;
 
-                if (!toggles) { toggles = Map.set(card, { inputs: inputs }).get(card); }
-                if (!toggles.inputs) { toggles = Map.set(card, Object.assign({}, Map.get(card), { inputs: inputs })).get(card); }
-            }
-
-            // if necessary we should move to asyncForEach for an asynchronous loop, else forEach
-            asyncForEach(toggles.inputs, function(item) {
-                item = $(item);
-
-                if (item.parent('label, h4').compute('display') == 'none') { return; }
-
-                item.value(mode).emit('change');
-                $('body').emit('change', { target: item });
-            }, function() {
-                if (typeof index !== 'undefined' && typeof array !== 'undefined' && (index + 1 == array.length)) {
-                    save.disabled(false);
-                }
+        let stored = cache.get(card);
+        if (!stored || !stored.labels) {
+            stored = Object.assign({}, stored, {
+                labels: Array.from(card.querySelectorAll('label .settings-param-title'))
             });
-        },
+            cache.set(card, stored);
+        }
 
-        filterSection: function(e, element, value, global) {
-            if (element.siblings('[data-g-global-filter]') || element.parent('[data-g-global-filter]')) { return Assignments.globalFilterSection(e, element); }
-
-            var card        = element.parent('.card'),
-                onlyEnabled = $('[data-assignments-enabledonly]'),
-                items       = Map.get(card) || Map.set(card, { labels: card.search('label .settings-param-title') }).get(card);
-
-            value = value || element.value();
-
-            if (!items || !items.labels) {
-                var labels = card.search('label .settings-param-title');
-
-                if (!items) { items = Map.set(card, { labels: labels }).get(card); }
-                if (!items.labels) { items = Map.set(card, Object.assign({}, Map.get(card), { labels: labels })).get(card); }
-            }
-
-            items = $(items.labels);
-
-            if (!value && !onlyEnabled.checked()) {
-                card.style('display', 'inline-block');
-                return items ? items.search('!> label').style('display', 'block') : items;
-            }
-
-            var count = 0, off = 0, on = 0, text, match,
-                needle = String(value || '').trim().toLowerCase();
-
-            if (!items) {
-                element.parent('.card').style('display', onlyEnabled.checked() || value ? 'none' : 'inline-block');
-            }
-
-            asyncForEach(items, function(item, i) {
-                item = $(item);
-                text = item.text().trim().toLowerCase();
-                match = !needle || text.startsWith(needle) || text.includes(' ' + needle);
-
-                if (onlyEnabled.checked()) {
-                    match = Number(!!match) & Number(item.parent('label, h4').find('.enabler input[type="hidden"]').value());
-                }
-
-                if (match) {
-                    var group = item.parent('[data-g-assignments-parent]');
-                    if (group && (group = group.data('g-assignments-parent'))) {
-                        var parentGroup = item.parent('.card').find('[data-g-assignments-group="' + group + '"]');
-                        if (parentGroup) { parentGroup.style('display', 'block'); }
-                    }
-
-                    item.parent('label, h4').style('display', 'block');
-                    on++;
-                } else {
-                    item.parent('label, h4').style('display', 'none');
-                    off++;
-                }
-
-                count++;
-                if (count == items.length && global) {
-                    card.style('display', !on ? 'none' : 'inline-block');
-                }
+        const labels = stored.labels;
+        value = value || element.value;
+        if (!value && !checked(onlyEnabled)) {
+            card.style.display = 'inline-block';
+            labels.forEach(label => {
+                const row = label.closest('label');
+                if (row) row.style.display = 'block';
             });
-        },
+            return;
+        }
 
-        filterEnabledOnly: function(e, element) {
-            var global = $('[data-g-global-filter] input[type="text"]');
-            Assignments.globalFilterSection(e, global, element);
-        },
+        let completed = 0;
+        let shown = 0;
+        const needle = String(value || '').trim().toLowerCase();
 
-        treatLabel: function(event, element) {
-            if (event && event.stopPropagation && event.preventDefault) {
-                event.stopPropagation();
-                event.preventDefault();
+        if (!labels.length) card.style.display = checked(onlyEnabled) || value ? 'none' : 'inline-block';
+
+        asyncForEach(labels, item => {
+            const text = item.textContent.trim().toLowerCase();
+            const row = item.closest('label, h4');
+            let matches = !needle || text.startsWith(needle) || text.includes(` ${needle}`);
+
+            if (checked(onlyEnabled)) {
+                const enabled = row && row.querySelector('.enabler input[type="hidden"]');
+                matches = matches && Boolean(Number(enabled ? enabled.value : 0));
             }
 
-            if ($(event.target).matches('.knob, .toggle')) { return; }
-            var input = element.find('input[type="hidden"]:not([disabled])');
-            if (!input) { return; }
+            if (matches) {
+                const groupHolder = item.closest('[data-g-assignments-parent]');
+                const group = groupHolder && groupHolder.getAttribute('data-g-assignments-parent');
+                if (group) {
+                    const parentGroup = card.querySelector(`[data-g-assignments-group="${CSS.escape(group)}"]`);
+                    if (parentGroup) parentGroup.style.display = 'block';
+                }
+                if (row) row.style.display = 'block';
+                shown++;
+            } else if (row) {
+                row.style.display = 'none';
+            }
 
-            var value = input.value();
-            value = !!+value;
-            input.value(Number(!value)).emit('change');
-            $('body').emit('change', { target: input });
+            completed++;
+            if (completed === labels.length && global) {
+                card.style.display = shown ? 'inline-block' : 'none';
+            }
+        });
+    },
 
-            return false;
-        },
+    filterEnabledOnly(event) {
+        const global = document.querySelector('[data-g-global-filter] input[type="text"]');
+        Assignments.globalFilterSection(event, global);
+    },
 
-        globalToggleSection: function(e, element) {
-            var mode   = element.data('g-assignments-check') == null ? '[data-g-assignments-uncheck]' : '[data-g-assignments-check]',
-                save   = $('[data-save]'),
-                search = $('#assignments .card ' + mode + ', ' + '.settings-assignments .card ' + mode);
+    treatLabel(event, element) {
+        event.stopPropagation();
+        event.preventDefault();
+        if (event.target instanceof Element && event.target.closest('.knob, .toggle')) return;
 
-            if (!search) { return; }
+        const input = element.querySelector('input[type="hidden"]:not([disabled])');
+        if (!input) return;
+        input.value = Number(!Boolean(Number(input.value)));
+        emitChange(input);
+        return false;
+    },
 
-            save.disabled(true);
-            // if necessary we should move to asyncForEach for an asynchronous loop
-            asyncForEach(search, function(item, index, array) {
-                Assignments.toggleSection(e, $(item), index, array);
-            });
-        },
+    globalToggleSection(event, element) {
+        const selector = element.getAttribute('data-g-assignments-check') == null
+            ? '[data-g-assignments-uncheck]'
+            : '[data-g-assignments-check]';
+        const save = document.querySelector('[data-save]');
+        const controls = Array.from(document.querySelectorAll(`#assignments .card ${selector}, .settings-assignments .card ${selector}`));
+        if (!controls.length) return;
 
-        globalFilterSection: function(e, element) {
-            var value       = element.value(),
-                onlyEnabled = $('[data-assignments-enabledonly]'),
-                search      = $('#assignments .card .search input[type="text"], .settings-assignments .card .search input[type="text"]');
+        if (save) save.disabled = true;
+        asyncForEach(controls, (item, index, array) => {
+            Assignments.toggleSection(event, item, index, array);
+        });
+    },
 
-            if (!search && !onlyEnabled.checked()) { return; }
+    globalFilterSection(event, element) {
+        const value = element ? element.value : '';
+        const onlyEnabled = document.querySelector('[data-assignments-enabledonly]');
+        const searches = Array.from(document.querySelectorAll('#assignments .card .search input[type="text"], .settings-assignments .card .search input[type="text"]'));
+        if (!searches.length && !checked(onlyEnabled)) return;
 
-            asyncForEach(search, function(item) {
-                Assignments.filterSection(e, $(item), value, 'global');
-            });
-        },
+        asyncForEach(searches, item => {
+            Assignments.filterSection(event, item, value, 'global');
+        });
+    },
 
-        toggleStateDelegation: function(event, element) {
-            var enabled = element.value() == '1';
-            element.attribute('disabled', !enabled);
-        },
+    toggleStateDelegation(event, element) {
+        element.disabled = element.value !== '1';
+    },
 
-        // chrome workaround for overflow and columns
-        chromeFix: function() {
-            if (!Assignments.isChrome()) { return; }
-            var panels = $('#assignments .settings-param-wrapper, .settings-assignments .settings-param-wrapper'), height, maxHeight;
-            if (!panels) { return; }
-
-            panels.forEach(function(panel){
-                panel = $(panel);
-                maxHeight = parseInt(panel.compute('max-height'), 10);
-                height = panel[0].getBoundingClientRect().height;
-                panel.style({overflow: height >= maxHeight ? 'auto' : 'visible'});
+    chromeFix() {
+        if (!Assignments.isChrome()) return;
+        document.querySelectorAll('#assignments .settings-param-wrapper, .settings-assignments .settings-param-wrapper')
+            .forEach(panel => {
+                const maxHeight = Number.parseInt(getComputedStyle(panel).maxHeight, 10);
+                const height = panel.getBoundingClientRect().height;
+                panel.style.overflow = height >= maxHeight ? 'auto' : 'visible';
 
                 if (height >= maxHeight) {
-                    var alt = 100;
-                    decouple(panel, 'scroll', function() {
-                        alt = alt == 100 ? 100.01 : 100;
-                        panel.parent('.card').style('width', alt + '%');
+                    let alternateWidth = 100;
+                    decouple(panel, 'scroll', () => {
+                        alternateWidth = alternateWidth === 100 ? 100.01 : 100;
+                        const card = panel.closest('.card');
+                        if (card) card.style.width = `${alternateWidth}%`;
                     });
                 }
             });
-        },
+    },
 
-        isChrome: function() {
-            return navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-        }
-    };
+    isChrome() {
+        return navigator.userAgent.toLowerCase().includes('chrome');
+    }
+};
 
-ready(function() {
-    var body = $('body');
-
-    body.delegate('input', '#assignments .search input[type="text"], .settings-assignments .search input[type="text"]', Assignments.filterSection);
-    body.delegate('click', '#assignments .card label, #assignments [data-g-assignments-check], #assignments [data-g-assignments-uncheck], .settings-assignments .card label, .settings-assignments [data-g-assignments-check], .settings-assignments [data-g-assignments-uncheck]', Assignments.toggleSection);
-    body.delegate('touchend', '#assignments .card label, #assignments [data-g-assignments-check], #assignments [data-g-assignments-uncheck], .settings-assignments .card label, .settings-assignments [data-g-assignments-check], .settings-assignments [data-g-assignments-uncheck]', Assignments.toggleSection);
-    body.delegate('change', '[data-assignments-enabledonly]', Assignments.filterEnabledOnly);
-    body.delegate('change', '#assignments input[type="hidden"][name], .settings-assignments input[type="hidden"][name]', Assignments.toggleStateDelegation);
-
-    // chrome workaround for overflow and columns
-    //if (Assignments.isChrome()) Assignments.chromeFix();
+ready(() => {
+    const body = document.body;
+    delegate(body, 'input', '#assignments .search input[type="text"], .settings-assignments .search input[type="text"]', Assignments.filterSection);
+    const toggleSelector = '#assignments .card label, #assignments [data-g-assignments-check], #assignments [data-g-assignments-uncheck], .settings-assignments .card label, .settings-assignments [data-g-assignments-check], .settings-assignments [data-g-assignments-uncheck]';
+    delegate(body, 'click', toggleSelector, Assignments.toggleSection);
+    delegate(body, 'touchend', toggleSelector, Assignments.toggleSection);
+    delegate(body, 'change', '[data-assignments-enabledonly]', Assignments.filterEnabledOnly);
+    delegate(body, 'change', '#assignments input[type="hidden"][name], .settings-assignments input[type="hidden"][name]', Assignments.toggleStateDelegation);
 });
 
 module.exports = Assignments;

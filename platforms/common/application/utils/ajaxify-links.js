@@ -177,7 +177,7 @@ History.Adapter.bind(window, 'statechange', function() {
         selectorChangeEvent();
         assignments.chromeFix();
 
-        body.emit('statechangeEnd');
+        body[0].dispatchEvent(new CustomEvent('statechangeEnd', { bubbles: true }));
     });
 });
 

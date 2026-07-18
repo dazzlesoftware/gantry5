@@ -1,108 +1,94 @@
 "use strict";
 
-var ready          = require('elements/domready'),
-    $              = require('elements'),
-    decouple       = require('../utils/decouple'),
-    scrollbarWidth = require('../utils/get-scrollbar-width');
+const ready = require('../utils/dom').ready;
+const decouple = require('../utils/decouple');
+const scrollbarWidth = require('../utils/get-scrollbar-width');
 
-var container, sidebar, search, particles, height, heightTop, heightBottom, excludeTop, excludeBottom,
-    initialSidebarCoords, realSidebarTop;
+let container;
+let sidebar;
+let search;
+let particles;
+let heightTop = 0;
+let heightBottom = 0;
+let initialSidebarCoords;
+let realSidebarTop = 0;
 
-var initSizes = function() {
-    // fixed and contained particles sidebar
-    container = $('.sidebar-block');
-    if (!container) { return; }
+const paddingBottom = element => Number.parseInt(getComputedStyle(element).paddingBottom, 10) || 0;
 
-    sidebar = container.find('.g5-lm-particles-picker');
-    if (!sidebar) { return; }
+const initSizes = () => {
+    container = document.querySelector('.sidebar-block');
+    if (!container) return;
 
-    search = sidebar.find('> .search');
-    particles = sidebar.find('> .particles-container');
-    height = window.innerHeight;
+    sidebar = container.querySelector('.g5-lm-particles-picker');
+    if (!sidebar) return;
+
+    search = sidebar.querySelector(':scope > .search');
+    particles = sidebar.querySelector(':scope > .particles-container');
+    if (!search || !particles) return;
+
     heightTop = 0;
     heightBottom = 0;
-    initialSidebarCoords = sidebar[0].getBoundingClientRect();
-    realSidebarTop = sidebar.position().top;
-    excludeTop = $('body.admin.com_gantry5 nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav');
-    excludeBottom = $('body.admin.com_gantry5 #status');
+    initialSidebarCoords = sidebar.getBoundingClientRect();
+    realSidebarTop = sidebar.offsetTop;
 
-    if (excludeTop) {
-        $(excludeTop).forEach(function(element) {
-            heightTop += element.offsetHeight;
-        });
-    }
+    document.querySelectorAll('body.admin.com_gantry5 nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav')
+        .forEach(element => { heightTop += element.offsetHeight; });
+    document.querySelectorAll('body.admin.com_gantry5 #status')
+        .forEach(element => { heightBottom += element.offsetHeight; });
 
-    if (excludeBottom) {
-        $(excludeBottom).forEach(function(element) {
-            heightBottom += element.offsetHeight;
-        });
-    }
+    particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;
+    particles.style.overflow = 'auto';
 
-    particles.style({
-        'max-height': (height - heightTop - heightBottom - search[0].offsetHeight - 30),
-        overflow: 'auto'
-    });
-
-    if (particles[0].scrollHeight !== particles[0].offsetHeight) {
-        particles.addClass('has-scrollbar').style({ 'margin-right': -scrollbarWidth() });
-    }
+    const hasScrollbar = particles.scrollHeight !== particles.offsetHeight;
+    particles.classList.toggle('has-scrollbar', hasScrollbar);
+    particles.style.marginRight = hasScrollbar ? `${-scrollbarWidth()}px` : '';
 };
 
-ready(function() {
+ready(() => {
     initSizes();
 
-    var scrollElement = $(GANTRY_PLATFORM === 'grav' ? '#admin-main .content-padding' : window) || [window],
-        scroll        = function() {
-            if (!container || !sidebar) { return; }
+    const scrollElement = window.GANTRY_PLATFORM === 'grav'
+        ? document.querySelector('#admin-main .content-padding') || window
+        : window;
 
-            var scrollTop       = this.scrollY || this.scrollTop,
-                containerBounds = container[0].getBoundingClientRect(),
-                limit           = containerBounds.top + containerBounds.height,
-                sidebarCoords   = sidebar[0].getBoundingClientRect(),
-                shouldBeFixed   = (scrollTop > (initialSidebarCoords.top - heightTop - 10)) && scrollTop >= realSidebarTop - 10,
-                reachedTheLimit = sidebarCoords.height + 10 + heightTop + parseInt(container.compute('padding-bottom'), 10) >= limit,
-                sidebarTallerThanContainer = containerBounds.height <= sidebarCoords.height;
+    const scroll = function() {
+        if (!container || !sidebar) return;
 
-            sidebar.style('width', sidebarCoords.width);
-            if (shouldBeFixed && !reachedTheLimit) {
-                sidebar.removeClass('particles-absolute').addClass('particles-fixed');
-                sidebar.style({
-                    top: heightTop + 10,
-                    bottom: 'inherit'
-                });
-            } else if (shouldBeFixed && reachedTheLimit) {
-                if (sidebarTallerThanContainer || (GANTRY_PLATFORM === 'grav' && containerBounds.bottom < sidebarCoords.bottom)) {
-                    sidebar.removeClass('particles-fixed').addClass('particles-absolute');
-                    sidebar.style({
-                        top: 'inherit',
-                        bottom: parseInt(container.compute('padding-bottom'), 10)
-                    });
-                }
-            } else {
-                sidebar.removeClass('particles-fixed').removeClass('particles-absolute');
-                sidebar.style({
-                    top: 'inherit',
-                    bottom: 'inherit'
-                });
-            }
-        };
+        const scrollTop = scrollElement === window ? window.scrollY : scrollElement.scrollTop;
+        const containerBounds = container.getBoundingClientRect();
+        const limit = containerBounds.top + containerBounds.height;
+        const sidebarCoords = sidebar.getBoundingClientRect();
+        const shouldBeFixed = scrollTop > initialSidebarCoords.top - heightTop - 10 && scrollTop >= realSidebarTop - 10;
+        const reachedTheLimit = sidebarCoords.height + 10 + heightTop + paddingBottom(container) >= limit;
+        const sidebarTallerThanContainer = containerBounds.height <= sidebarCoords.height;
 
-    decouple(scrollElement[0], 'scroll', scroll.bind(scrollElement[0]));
+        sidebar.style.width = `${sidebarCoords.width}px`;
+        if (shouldBeFixed && !reachedTheLimit) {
+            sidebar.classList.remove('particles-absolute');
+            sidebar.classList.add('particles-fixed');
+            sidebar.style.top = `${heightTop + 10}px`;
+            sidebar.style.bottom = 'inherit';
+        } else if (shouldBeFixed && reachedTheLimit &&
+            (sidebarTallerThanContainer || (window.GANTRY_PLATFORM === 'grav' && containerBounds.bottom < sidebarCoords.bottom))) {
+            sidebar.classList.remove('particles-fixed');
+            sidebar.classList.add('particles-absolute');
+            sidebar.style.top = 'inherit';
+            sidebar.style.bottom = `${paddingBottom(container)}px`;
+        } else {
+            sidebar.classList.remove('particles-fixed', 'particles-absolute');
+            sidebar.style.top = 'inherit';
+            sidebar.style.bottom = 'inherit';
+        }
+    };
 
-    decouple(window, 'resize', function() {
-        if (!particles) { return; }
-
-        // initSizes();
-        scroll.call(scrollElement[0]);
-
-        particles.style({
-            'max-height': (window.innerHeight - heightTop - heightBottom - search[0].offsetHeight - 30)
-        });
+    decouple(scrollElement, 'scroll', scroll);
+    decouple(window, 'resize', () => {
+        if (!particles || !search) return;
+        scroll();
+        particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;
     });
 
-    $('body').on('statechangeEnd', function() {
-        initSizes();
-    });
+    document.body.addEventListener('statechangeEnd', initSizes);
 });
 
 module.exports = initSizes;
