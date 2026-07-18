@@ -1,196 +1,218 @@
 "use strict";
 
-var $   = require('elements'),
-    zen = require('elements/zen');
-
-var createClass = function(definition) {
-    var defaults = definition.options || {};
-
-    var Klass = function(element, options) {
-        this.options = Object.assign({}, defaults);
-        definition.constructor.call(this, element, options);
-    };
-
-    Klass.prototype.setOptions = function(options) {
-        this.options = Object.assign({}, defaults, options || {});
-        return this;
-    };
-
-    Object.keys(definition).forEach(function(key) {
-        if (key !== 'constructor' && key !== 'options') {
-            Klass.prototype[key] = definition[key];
-        }
-    });
-
-    return Klass;
+var defaults = {
+    value: 0.0,
+    size: 50.0,
+    startAngle: -Math.PI / 2,
+    thickness: 'auto',
+    fill: {
+        gradient: ['#9e38eb', '#4e68fc']
+    },
+    emptyFill: 'rgba(0, 0, 0, .1)',
+    animation: {
+        duration: 1200,
+        equation: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+    },
+    animationStartValue: 0.0,
+    reverse: false,
+    lineCap: 'butt',
+    insertElement: null,
+    insertLocation: 'before'
 };
 
-var Progresser = createClass({
+var asElement = function(element) {
+    if (element && element.nodeType) { return element; }
+    if (element && element[0] && element[0].nodeType) { return element[0]; }
+    return null;
+};
 
-    options: {
-        value: 0.0,
-        size: 50.0,
-        startAngle: -Math.PI / 2,
-        thickness: 'auto',
-        fill: { // { color: 'hex|rgba' } || { gradient: [from, to], gradientAngle: Math.PI / 4, gradientDirection: [x0, y0, x1, y1] }
-            gradient: ['#9e38eb', '#4e68fc']//['#3aeabb', '#fdd250']
-        },
-        emptyFill: 'rgba(0, 0, 0, .1)',
-        animation: {
-            duration: 1200,
-            equation: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
-        },
-        animationStartValue: 0.0,
-        reverse: false,
-        lineCap: 'butt', // butt, round, square
-        insertElement: null,
-        insertLocation: 'before'
-    },
+var insertCanvas = function(canvas, target, location) {
+    if (!target) { throw new Error('The progress indicator needs a target element.'); }
 
-    constructor: function(element, options) {
-        this.setOptions(options);
-
-        this.element = this.element || $(element);
-        this.canvas = this.canvas || zen('canvas')[this.options.insertLocation || 'before'](this.options.insertElement || this.element)[0];
-        this.radius = this.options.size / 2;
-        this.arcFill = null;
-        this.lastFrameValue = 0.0;
-
-        this.canvas.width = this.options.size;
-        this.canvas.height = this.options.size;
-        this.ctx = this.canvas.getContext('2d');
-
-        this.initFill();
-        this.draw();
-    },
-
-    initFill: function() {
-        var fill = this.options.fill,
-            size = this.options.size,
-            ctx  = this.ctx;
-
-        if (!fill) { throw Error('The fill is not specified.'); }
-
-        if (fill.color) {
-            this.arcFill = fill.color;
-        }
-
-        if (fill.gradient) {
-            var gr = fill.gradient;
-
-            if (gr.length == 1) { this.arcFill = gr[0]; }
-            else {
-                var ga = fill.gradientAngle || 0,  // gradient direction angle; 0 by default
-                    gd = fill.gradientDirection || [
-                            size / 2 * (1 - Math.cos(ga)), // x0
-                            size / 2 * (1 + Math.sin(ga)), // y0
-                            size / 2 * (1 + Math.cos(ga)), // x1
-                            size / 2 * (1 - Math.sin(ga))  // y1
-                        ],
-                    lg = ctx.createLinearGradient.apply(ctx, gd);
-
-                for (var i = 0; i < gr.length; i++) {
-                    var color = gr[i],
-                        pos   = i / (gr.length - 1);
-
-                    if (Array.isArray(color)) {
-                        pos = color[1];
-                        color = color[0];
-                    }
-
-                    lg.addColorStop(pos, color);
-                }
-
-                this.arcFill = lg;
-            }
-        }
-    },
-
-    draw: function() {
-        this[this.options.animation ? 'drawAnimated' : 'drawFrame'](this.options.value);
-    },
-
-    drawFrame: function(v) {
-        this.lastFrameValue = v;
-        this.ctx.clearRect(0, 0, this.options.size, this.options.size);
-        this.drawEmptyArc(v);
-        this.drawArc(v);
-    },
-
-    drawArc: function(v) {
-        var ctx = this.ctx,
-            r   = this.radius,
-            t   = this.getThickness(),
-            a   = this.options.startAngle;
-
-        ctx.save();
-        ctx.beginPath();
-
-        if (!this.options.reverse) {
-            ctx.arc(r, r, r - t / 2, a, a + Math.PI * 2 * v);
-        } else {
-            ctx.arc(r, r, r - t / 2, a - Math.PI * 2 * v, a);
-        }
-
-        ctx.lineWidth = t;
-        ctx.lineCap = this.options.lineCap;
-        ctx.strokeStyle = this.arcFill;
-        ctx.stroke();
-        ctx.restore();
-    },
-
-    drawEmptyArc: function(v) {
-        var ctx = this.ctx,
-            r   = this.radius,
-            t   = this.getThickness(),
-            a   = this.options.startAngle;
-
-        if (v < 1) {
-            ctx.save();
-            ctx.beginPath();
-
-            if (v <= 0) {
-                ctx.arc(r, r, r - t / 2, 0, Math.PI * 2);
-            } else {
-                if (!this.reverse) {
-                    ctx.arc(r, r, r - t / 2, a + Math.PI * 2 * v, a);
-                } else {
-                    ctx.arc(r, r, r - t / 2, a, a - Math.PI * 2 * v);
-                }
-            }
-
-            ctx.lineWidth = t;
-            ctx.strokeStyle = this.options.emptyFill;
-            ctx.stroke();
-            ctx.restore();
-        }
-    },
-
-    drawAnimated: function(v) {
-        this.element.emit('progress-animation-start');
-        var start = performance.now(),
-            duration = parseFloat(this.options.animation.duration) || 1200,
-            initial = this.options.animationStartValue,
-            frame = function(timestamp) {
-                var progress = Math.min(1, (timestamp - start) / duration),
-                    stepValue = initial * (1 - progress) + v * progress;
-                this.drawFrame(stepValue);
-                this.element.emit('progress-animation-change', progress, stepValue);
-
-                if (progress < 1) {
-                    requestAnimationFrame(frame);
-                    return;
-                }
-                if (this.options.animation.callback) { this.options.animation.callback(); }
-                this.element.emit('progress-animation-end');
-            }.bind(this);
-
-        requestAnimationFrame(frame);
-    },
-
-    getThickness: function() {
-        return typeof this.options.thickness === 'number' ? this.options.thickness : this.options.size / 14;
+    switch (location) {
+        case 'top':
+            target.insertBefore(canvas, target.firstChild);
+            break;
+        case 'bottom':
+            target.appendChild(canvas);
+            break;
+        case 'after':
+            target.parentNode.insertBefore(canvas, target.nextSibling);
+            break;
+        case 'before':
+        default:
+            target.parentNode.insertBefore(canvas, target);
+            break;
     }
-});
+};
+
+var Progresser = function(element, options) {
+    this.element = asElement(element);
+    this.options = Object.assign({}, defaults, options || {});
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.arcFill = null;
+    this.lastFrameValue = 0.0;
+    this.animationFrame = null;
+
+    var target = asElement(this.options.insertElement) || this.element;
+    insertCanvas(this.canvas, target, this.options.insertLocation || 'before');
+    this.update(options);
+};
+
+Progresser.prototype.update = function(options) {
+    this.options = Object.assign({}, this.options, options || {});
+    this.radius = this.options.size / 2;
+    this.canvas.width = this.options.size;
+    this.canvas.height = this.options.size;
+
+    if (this.animationFrame !== null) {
+        cancelAnimationFrame(this.animationFrame);
+        this.animationFrame = null;
+    }
+
+    this.initFill();
+    this.draw();
+    return this;
+};
+
+Progresser.prototype.initFill = function() {
+    var fill = this.options.fill,
+        size = this.options.size,
+        ctx = this.ctx;
+
+    if (!fill) { throw new Error('The fill is not specified.'); }
+
+    this.arcFill = fill.color || null;
+
+    if (fill.gradient) {
+        var colors = fill.gradient;
+        if (colors.length === 1) {
+            this.arcFill = colors[0];
+        } else {
+            var angle = fill.gradientAngle || 0,
+                direction = fill.gradientDirection || [
+                    size / 2 * (1 - Math.cos(angle)),
+                    size / 2 * (1 + Math.sin(angle)),
+                    size / 2 * (1 + Math.cos(angle)),
+                    size / 2 * (1 - Math.sin(angle))
+                ],
+                gradient = ctx.createLinearGradient.apply(ctx, direction);
+
+            colors.forEach(function(entry, index) {
+                var color = entry,
+                    position = index / (colors.length - 1);
+
+                if (Array.isArray(entry)) {
+                    color = entry[0];
+                    position = entry[1];
+                }
+                gradient.addColorStop(position, color);
+            });
+            this.arcFill = gradient;
+        }
+    }
+};
+
+Progresser.prototype.emit = function(name, detail) {
+    this.element.dispatchEvent(new CustomEvent(name, {
+        bubbles: true,
+        detail: detail
+    }));
+};
+
+Progresser.prototype.draw = function() {
+    if (this.options.animation) { this.drawAnimated(this.options.value); }
+    else { this.drawFrame(this.options.value); }
+};
+
+Progresser.prototype.drawFrame = function(value) {
+    this.lastFrameValue = value;
+    this.ctx.clearRect(0, 0, this.options.size, this.options.size);
+    this.drawEmptyArc(value);
+    this.drawArc(value);
+};
+
+Progresser.prototype.drawArc = function(value) {
+    var ctx = this.ctx,
+        radius = this.radius,
+        thickness = this.getThickness(),
+        angle = this.options.startAngle;
+
+    ctx.save();
+    ctx.beginPath();
+    if (!this.options.reverse) {
+        ctx.arc(radius, radius, radius - thickness / 2, angle, angle + Math.PI * 2 * value);
+    } else {
+        ctx.arc(radius, radius, radius - thickness / 2, angle - Math.PI * 2 * value, angle);
+    }
+    ctx.lineWidth = thickness;
+    ctx.lineCap = this.options.lineCap;
+    ctx.strokeStyle = this.arcFill;
+    ctx.stroke();
+    ctx.restore();
+};
+
+Progresser.prototype.drawEmptyArc = function(value) {
+    var ctx = this.ctx,
+        radius = this.radius,
+        thickness = this.getThickness(),
+        angle = this.options.startAngle;
+
+    if (value >= 1) { return; }
+
+    ctx.save();
+    ctx.beginPath();
+    if (value <= 0) {
+        ctx.arc(radius, radius, radius - thickness / 2, 0, Math.PI * 2);
+    } else if (!this.options.reverse) {
+        ctx.arc(radius, radius, radius - thickness / 2, angle + Math.PI * 2 * value, angle);
+    } else {
+        ctx.arc(radius, radius, radius - thickness / 2, angle, angle - Math.PI * 2 * value);
+    }
+    ctx.lineWidth = thickness;
+    ctx.strokeStyle = this.options.emptyFill;
+    ctx.stroke();
+    ctx.restore();
+};
+
+Progresser.prototype.drawAnimated = function(value) {
+    this.emit('progress-animation-start', { value: value });
+
+    var start = performance.now(),
+        duration = parseFloat(this.options.animation.duration) || 1200,
+        initial = this.lastFrameValue,
+        frame = function(timestamp) {
+            var progress = Math.min(1, (timestamp - start) / duration),
+                stepValue = initial * (1 - progress) + value * progress;
+
+            this.drawFrame(stepValue);
+            this.emit('progress-animation-change', {
+                progress: progress,
+                value: stepValue
+            });
+
+            if (progress < 1) {
+                this.animationFrame = requestAnimationFrame(frame);
+                return;
+            }
+
+            this.animationFrame = null;
+            if (this.options.animation.callback) { this.options.animation.callback(); }
+            this.emit('progress-animation-end', { value: value });
+        }.bind(this);
+
+    this.animationFrame = requestAnimationFrame(frame);
+};
+
+Progresser.prototype.getThickness = function() {
+    return typeof this.options.thickness === 'number' ? this.options.thickness : this.options.size / 14;
+};
+
+Progresser.prototype.destroy = function() {
+    if (this.animationFrame !== null) { cancelAnimationFrame(this.animationFrame); }
+    if (this.canvas.parentNode) { this.canvas.parentNode.removeChild(this.canvas); }
+    this.animationFrame = null;
+};
 
 module.exports = Progresser;

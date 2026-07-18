@@ -642,12 +642,12 @@ ready(function() {
 module.exports = {};
 
 },{"../ui":52,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/request":78,"./dropdown-edit":3,"elements":89,"elements/domready":87}],5:[function(require,module,exports){
-"use strict";
-var ready         = require('../utils/dom').ready,
-    $             = require('elements/attributes'),
-    History       = require('../utils/history'),
-    flags         = require('../utils/flags-state'),
-    submit        = require('./submit');
+'use strict';
+
+var dom = require('../utils/dom'),
+    History = require('../utils/history'),
+    flags = require('../utils/flags-state'),
+    submit = require('./submit');
 
 require('./multicheckbox');
 
@@ -655,68 +655,99 @@ var mapsEqual = function(first, second, comparator) {
     if (!(first instanceof Map) || !(second instanceof Map) || first.size !== second.size) { return false; }
 
     for (var entry of first) {
-        var key = entry[0], value = entry[1];
-        if (!second.has(key) || !comparator(value, second.get(key))) { return false; }
+        if (!second.has(entry[0]) || !comparator(entry[1], second.get(entry[0]))) { return false; }
     }
     return true;
 };
 
+var readData = function(element, name) {
+    return element.getAttribute('data-' + name);
+};
+
+var fieldValue = function(field, value) {
+    if (arguments.length > 1) {
+        field.value = value;
+        return value;
+    }
+
+    if (field instanceof HTMLSelectElement && field.multiple) {
+        return Array.from(field.selectedOptions, function(option) { return option.value; });
+    }
+    return field.value == null ? '' : field.value;
+};
+
+var findIndicator = function(element) {
+    return element ? element.querySelector('i') : null;
+};
+
+var showIndicator = function(element, className) {
+    if (!element) { return; }
+
+    var icon = findIndicator(element);
+    element.gHadIcon = Boolean(icon);
+
+    if (!icon) {
+        if (!element.querySelector('span') && element.children.length === 0) {
+            var label = document.createElement('span');
+            label.textContent = element.textContent;
+            element.textContent = '';
+            element.appendChild(label);
+        }
+        icon = document.createElement('i');
+        element.insertBefore(icon, element.firstChild);
+    }
+
+    if (!element.gIndicator) { element.gIndicator = icon.getAttribute('class') || true; }
+    icon.setAttribute('class', className || 'fa fa-fw fa-spin-fast fa-spinner');
+};
+
+var hideIndicator = function(element) {
+    if (!element || !element.gIndicator) { return; }
+
+    var icon = findIndicator(element);
+    if (!icon) { return; }
+
+    if (!element.gHadIcon) { icon.remove(); }
+    else { icon.setAttribute('class', element.gIndicator); }
+    element.gIndicator = null;
+};
+
 var originals,
+    presetsCache,
     collectFieldsValues = function(keys) {
-        var map      = new Map(),
-            defaults = $('[data-g-styles-defaults]'),
-            overridables = $('input[type="checkbox"].settings-param-toggle');
+        var map = new Map(),
+            defaultsElement = document.querySelector('[data-g-styles-defaults]'),
+            defaults = defaultsElement ? JSON.parse(readData(defaultsElement, 'g-styles-defaults')) : {},
+            overrides = document.querySelectorAll('input[type="checkbox"].settings-param-toggle');
 
-        defaults = defaults ? JSON.parse(defaults.data('g-styles-defaults')) : {};
-
-        // keep track of overrides getting enabled / disabled
-        // in order to detect if has changed
-        if (overridables) {
-            var overrides = {};
-
-            overridables.forEach(function(override) {
-                override = $(override);
-                overrides[override.id()] = override.checked();
-            });
-
-            map.set('__js__overrides', JSON.stringify(overrides));
+        if (overrides.length) {
+            var states = {};
+            overrides.forEach(function(override) { states[override.id] = override.checked; });
+            map.set('__js__overrides', JSON.stringify(states));
         }
 
         if (keys) {
-            var field;
             keys.forEach(function(key) {
-                field = $('[name="' + key + '"]');
-                if (field) {
-                    map.set(key, field.value());
-                }
+                var field = document.querySelector('[name="' + CSS.escape(key) + '"]');
+                if (field) { map.set(key, fieldValue(field)); }
             });
-
             return map;
         }
 
-        var fields = $('.settings-block [name]');
-        if (!fields) { return false; }
+        var fields = document.querySelectorAll('.settings-block [name]');
+        if (!fields.length) { return false; }
 
         fields.forEach(function(field) {
-            field = $(field);
-            var key     = field.attribute('name'),
+            var key = field.getAttribute('name'),
                 isInput = !Object.prototype.hasOwnProperty.call(defaults, key);
 
-            if (field.type() == 'checkbox' && !field.value().length) { field.value('0'); }
-            map.set(key, isInput ? field.value() : defaults[key]);
-        }, this);
-
+            if (field.type === 'checkbox' && !fieldValue(field).length) { fieldValue(field, '0'); }
+            map.set(key, isInput ? fieldValue(field) : defaults[key]);
+        });
         return map;
     },
-    createMapFrom       = function(data) {
-        var map = new Map();
-
-        Object.keys(data).forEach(function(key) {
-            var value = data[key];
-            map.set(key, value);
-        });
-
-        return map;
+    createMapFrom = function(data) {
+        return new Map(Object.keys(data).map(function(key) { return [key, data[key]]; }));
     };
 
 var compare = {
@@ -726,147 +757,124 @@ var compare = {
     presets: function() {}
 };
 
-ready(function() {
-    var body = $('body'), presetsCache;
+dom.ready(function() {
+    var body = document.body;
 
     originals = collectFieldsValues();
 
     compare.single = function(event, element) {
-        var parent      = element.parent('.settings-param') || element.parent('h4') || element.parent('.input-group'),
-            target      = parent ? (parent.matches('h4') ? parent : parent.find('.settings-param-title, .g-instancepicker-title')) : null,
-            isOverride  = parent ? parent.find('.settings-param-toggle') : false,
+        var parent = element.closest('.settings-param, h4, .input-group'),
+            target = parent ? (parent.matches('h4') ? parent : parent.querySelector('.settings-param-title, .g-instancepicker-title')) : null,
+            override = parent ? parent.querySelector('.settings-param-toggle') : null,
             isNewWidget = false,
-            isOverrideToggle = element.hasClass('settings-param-toggle');
+            isOverrideToggle = element.classList.contains('settings-param-toggle');
 
         if (!parent) { return; }
+        if (isOverrideToggle) { compare.whole('force'); return; }
 
-        if (isOverrideToggle) {
-            return compare.whole('force');
-        }
+        if (element.type === 'checkbox') { fieldValue(element, Number(element.checked).toString()); }
 
-        if (element.type() == 'checkbox') {
-            element.value(Number(element.checked()).toString());
-        }
-
-        if (originals && originals.get(element.attribute('name')) == null) {
-            originals.set(element.attribute('name'), element.value());
+        var name = element.getAttribute('name');
+        if (originals && originals.get(name) == null) {
+            originals.set(name, fieldValue(element));
             isNewWidget = true;
         }
+        if (!target || !originals || originals.get(name) == null) { return; }
 
-        if (!target || !originals || originals.get(element.attribute('name')) == null) { return; }
-        if (originals.get(element.attribute('name')) !== element.value() || isNewWidget) {
-            if (isOverride && event.forceOverride && !isOverride.checked()) { isOverride[0].click(); }
-            target.showIndicator('changes-indicator font-small far fa-circle fa-fw');
+        if (originals.get(name) !== fieldValue(element) || isNewWidget) {
+            if (override && event.forceOverride && !override.checked) { override.click(); }
+            showIndicator(target, 'changes-indicator font-small far fa-circle fa-fw');
         } else {
-            if (isOverride && event.forceOverride && isOverride.checked()) { isOverride[0].click(); }
-            target.hideIndicator();
+            if (override && event.forceOverride && override.checked) { override.click(); }
+            hideIndicator(target);
         }
 
-        compare.blanks(event, parent.find('.settings-param-field'));
+        compare.blanks(event, parent.querySelector('.settings-param-field'));
         compare.whole('force');
         compare.presets();
     };
 
     compare.whole = function(force) {
         if (!originals) { return; }
-        var equals = mapsEqual(originals, collectFieldsValues(force ? Array.from(originals.keys()) : null), function(a, b) {
-                if (typeof a === 'string' && typeof b === 'string' && a.substr(0, 1) == '#' && b.substr(0, 1) == '#') {
-                    return a.toLowerCase() == b.toLowerCase();
-                } else {
-                    return Object.is(a, b);
-                }
-            }),
-            save   = $('[data-save]');
 
-        if (!save) { return; }
+        var current = collectFieldsValues(force ? Array.from(originals.keys()) : null),
+            equals = mapsEqual(originals, current, function(a, b) {
+                if (typeof a === 'string' && typeof b === 'string' && a[0] === '#' && b[0] === '#') {
+                    return a.toLowerCase() === b.toLowerCase();
+                }
+                return Object.is(a, b);
+            }),
+            saves = document.querySelectorAll('[data-save]');
 
         flags.set('pending', !equals);
-        save[equals ? 'hideIndicator' : 'showIndicator']('changes-indicator far fa-circle fa-fw');
+        saves.forEach(function(save) {
+            if (equals) { hideIndicator(save); }
+            else { showIndicator(save, 'changes-indicator far fa-circle fa-fw'); }
+        });
     };
 
     compare.blanks = function(event, element) {
         if (!element) { return; }
-        var field = element.find('[name]'),
-            reset = element.find('.g-reset-field');
+        var field = element.querySelector('[name]'),
+            reset = element.querySelector('.g-reset-field');
         if (!field || !reset) { return true; }
-
-        var value = field.value();
-        if (!value || field.disabled()) { reset.style('display', 'none'); }
-        else { reset.removeAttribute('style'); }
+        reset.style.display = !fieldValue(field) || field.disabled ? 'none' : '';
     };
 
     compare.presets = function() {
-        var presets = $('[data-g-styles]'), store;
-        if (!presets) { return; }
+        var presets = document.querySelectorAll('[data-g-styles]');
+        if (!presets.length) { return; }
 
         if (!presetsCache) {
             presetsCache = new Map();
-            presets.forEach(function(preset, index) {
-                preset = $(preset);
-                store = {
-                    index: index,
-                    map: createMapFrom(JSON.parse(preset.data('g-styles')))
-                };
-                presetsCache.set(preset[0], store);
+            presets.forEach(function(preset) {
+                presetsCache.set(preset, createMapFrom(JSON.parse(readData(preset, 'g-styles'))));
             });
         }
 
-        var fields, equals;
-        presetsCache.forEach(function(data, element) {
-            fields = collectFieldsValues(Array.from(data.map.keys()));
-
-            // Do not consider __js__overrides when comparing for equality
+        presetsCache.forEach(function(presetMap, preset) {
+            var fields = collectFieldsValues(Array.from(presetMap.keys()));
             fields.delete('__js__overrides');
-
-            equals = mapsEqual(fields, data.map, function(a, b) { return a == b; });
-            $($('[data-g-styles]')[data.index]).parent()[equals ? 'addClass' : 'removeClass']('g-preset-match');
+            preset.parentElement.classList.toggle('g-preset-match', mapsEqual(fields, presetMap, function(a, b) { return a == b; }));
         });
     };
 
-    body.delegate('input', '.settings-block input[name][type="text"], .settings-block textarea[name]', compare.single);
-    body.delegate('change', '.settings-block input[name][type="hidden"], .settings-block input[name][type="checkbox"], .settings-block select[name], .settings-block .selectized[name], .settings-block input[id][type="checkbox"].settings-param-toggle', compare.single);
+    dom.delegate(body, 'input', '.settings-block input[name][type="text"], .settings-block textarea[name]', compare.single);
+    dom.delegate(body, 'change', '.settings-block input[name][type="hidden"], .settings-block input[name][type="checkbox"], .settings-block select[name], .settings-block .selectized[name], .settings-block input[id][type="checkbox"].settings-param-toggle', compare.single);
 
-    body.delegate('input', '.g-urltemplate', function(event, element) {
-        var previous = element.parent('.settings-param').siblings();
-        if (!previous) { return; }
-
-        previous = previous.find('[data-g-urltemplate]');
-
-        if (previous) {
-            var template = previous.data('g-urltemplate');
-            previous.attribute('href', template.replace(/#ID#/g, element.value()));
-        }
+    dom.delegate(body, 'input', '.g-urltemplate', function(event, element) {
+        var parent = element.closest('.settings-param');
+        if (!parent || !parent.parentElement) { return; }
+        var link = Array.from(parent.parentElement.children).filter(function(sibling) { return sibling !== parent; })
+            .map(function(sibling) { return sibling.querySelector('[data-g-urltemplate]'); })
+            .find(Boolean);
+        if (link) { link.href = readData(link, 'g-urltemplate').replace(/#ID#/g, fieldValue(element)); }
     });
 
-    // fields resets
-    body.delegate('mouseenter', '.settings-param-field', compare.blanks, true);
-    body.delegate('click', '.g-reset-field', function(e, element) {
-        var parent = element.parent('.settings-param-field'), field;
-        if (!parent) { return; }
+    dom.delegate(body, 'mouseover', '.settings-param-field', compare.blanks);
+    dom.delegate(body, 'click', '.g-reset-field', function(event, element) {
+        var parent = element.closest('.settings-param-field'),
+            field = parent ? parent.querySelector('[name]') : null;
+        if (!field || field.disabled) { return; }
 
-        field = parent.find('[name]');
-        if (field && !field.disabled()) {
-            var selectize = field.selectizeInstance;
-            if (selectize) { selectize.setValue(''); }
-            else { field.value(''); }
+        if (field.selectizeInstance) { field.selectizeInstance.setValue(''); }
+        else { fieldValue(field, ''); }
 
-            field.emit('change');
-            body.emit('input', { target: field });
-            body.emit('keyup', { target: field });
-        }
+        field.dispatchEvent(new Event('change', { bubbles: true }));
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+        field.dispatchEvent(new Event('keyup', { bubbles: true }));
     });
 
-    body.on('statechangeEnd', function() {
-        var State = History.getState();
-        body.emit('updateOriginalFields');
+    body.addEventListener('statechangeEnd', function() {
+        body.dispatchEvent(new CustomEvent('updateOriginalFields'));
     });
 
-    body.on('updateOriginalFields', function() {
+    body.addEventListener('updateOriginalFields', function() {
         originals = collectFieldsValues();
+        presetsCache = null;
         compare.presets();
     });
 
-    // force a presets comparison check
     compare.presets();
 });
 
@@ -876,7 +884,7 @@ module.exports = {
     submit: submit
 };
 
-},{"../utils/dom":65,"../utils/flags-state":70,"../utils/history":76,"./multicheckbox":6,"./submit":7,"elements/attributes":84}],6:[function(require,module,exports){
+},{"../utils/dom":65,"../utils/flags-state":70,"../utils/history":76,"./multicheckbox":6,"./submit":7}],6:[function(require,module,exports){
 'use strict';
 
 const { ready, delegate } = require('../utils/dom');
@@ -4453,7 +4461,7 @@ ready(function() {
         }
 
         if (page == 'other') { $('.settings-param-title, .card.settings-block > h4').hideIndicator(); }
-        body.emit('updateOriginalFields');
+        body[0].dispatchEvent(new CustomEvent('updateOriginalFields'));
 
         request('post', saveURL, data, function(error, response) {
             if (!response.body.success) {
@@ -9015,55 +9023,46 @@ module.exports = {};
 },{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":78,"../../utils/translate":80,"../../utils/wp-widgets-customizer":81}],43:[function(require,module,exports){
 "use strict";
 
-var ready         = require('elements/domready'),
-    $             = require('elements'),
-    simpleSort    = require('sortablejs'),
-    translate     = require('../../utils/translate');
+const { ready, delegate } = require('../../utils/dom');
+const simpleSort = require('sortablejs');
+const translate = require('../../utils/translate');
 
-require('elements/insertion');
+const collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
 
-var collectionIndex = function(collection, item) {
-    return Array.prototype.indexOf.call(collection, item);
-};
+const escapeUnicode = value => String(value).replace(/[\s\S]/g, character => {
+    if (/[\x20-\x7e]/.test(character)) return character;
+    return `\\u${(`000${character.charCodeAt(0).toString(16)}`).slice(-4)}`;
+});
 
-var escapeUnicode = function(value) {
-    return String(value).replace(/[\s\S]/g, function(character) {
-        if (/[\x20-\x7e]/.test(character)) { return character; }
+const emitChange = element => element.dispatchEvent(new Event('change', { bubbles: true }));
 
-        return '\\u' + ('000' + character.charCodeAt(0).toString(16)).slice(-4);
-    });
-};
+ready(() => {
+    const body = document.body;
 
-ready(function() {
-    var body = $('body');
-
-    var createSortables = function(list) {
-        var lists = list || $('.g-keyvalue-field ul');
-        if (!lists) { return; }
-        lists.forEach(function(list) {
-            list = $(list);
-            list.SimpleSort = simpleSort.create(list[0], {
+    const createSortables = list => {
+        const lists = list instanceof Element ? [list] : Array.from(document.querySelectorAll('.g-keyvalue-field ul'));
+        lists.forEach(element => {
+            element.SimpleSort = simpleSort.create(element, {
                 handle: '.fa-reorder',
                 filter: '[data-keyvalue-nosort]',
                 scroll: false,
                 animation: 150,
-                onStart: function() {
-                    $(this.el).addClass('keyvalue-sorting');
+                onStart() {
+                    this.el.classList.add('keyvalue-sorting');
                 },
-                onEnd: function(evt) {
-                    var element = $(this.el);
-                    element.removeClass('keyvalue-sorting');
+                onEnd(event) {
+                    const listElement = this.el;
+                    listElement.classList.remove('keyvalue-sorting');
+                    if (event.oldIndex === event.newIndex) return;
 
-                    if (evt.oldIndex === evt.newIndex) { return; }
+                    const param = listElement.closest('.settings-param');
+                    const dataField = param && param.querySelector('[data-keyvalue-data]');
+                    if (!dataField) return;
 
-                    var dataField = element.parent('.settings-param').find('[data-keyvalue-data]'),
-                        data      = dataField.value();
-
-                    data = JSON.parse(data);
-
-                    data.splice(evt.newIndex, 0, data.splice(evt.oldIndex, 1)[0]);
-                    dataField.value(JSON.stringify(data));
-                    body.emit('change', { target: dataField });
+                    const data = JSON.parse(dataField.value);
+                    data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
+                    dataField.value = JSON.stringify(data);
+                    emitChange(dataField);
                 }
             });
         });
@@ -9071,142 +9070,134 @@ ready(function() {
 
     createSortables();
 
-    // delegate sortables collections for ajax support
-    body.delegate('mouseover', '.g-keyvalue-field ul', function(event, element) {
-        if (!element.SimpleSort) { createSortables(element); }
+    delegate(body, 'mouseover', '.g-keyvalue-field ul', (event, element) => {
+        if (!element.SimpleSort) createSortables(element);
     });
 
-    // Add new item
-    body.delegate('click', '[data-keyvalue-addnew]', function(event, element) {
-        var param = element.parent('.settings-param'),
-            list  = param.find('ul'),
-            tmpl  = param.find('[data-keyvalue-template]'),
-            items = list.search('> [data-keyvalue-item]') || [],
-            last  = items.length ? $(items[items.length - 1]) : null;
+    delegate(body, 'click', '[data-keyvalue-addnew]', (event, element) => {
+        event.preventDefault();
+        const param = element.closest('.settings-param');
+        const list = param && param.querySelector('ul');
+        const template = param && param.querySelector('[data-keyvalue-template]');
+        if (!list || !template) return;
 
-        var clone = $(tmpl[0].cloneNode(true));
+        const items = Array.from(list.querySelectorAll(':scope > [data-keyvalue-item]'));
+        const clone = template.cloneNode(true);
+        const last = items[items.length - 1];
+        if (last) last.after(clone);
+        else list.prepend(clone);
 
-        if (last) { clone.after(last); }
-        else { clone.top(list); }
-
-        clone.attribute('style', null).data('keyvalue-item', clone.data('keyvalue-template'));
-        clone.attribute('data-keyvalue-template', null);
-        clone.attribute('data-keyvalue-nosort', null);
-        clone.find('[data-keyvalue-key]')[0].focus();
-
-        //body.emit('change', { target: dataField });
+        clone.removeAttribute('style');
+        clone.setAttribute('data-keyvalue-item', clone.getAttribute('data-keyvalue-template') || '');
+        clone.removeAttribute('data-keyvalue-template');
+        clone.removeAttribute('data-keyvalue-nosort');
+        const keyInput = clone.querySelector('[data-keyvalue-key]');
+        if (keyInput) keyInput.focus();
     });
 
-    // Remove item
-    body.delegate('click', '[data-keyvalue-remove]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        var item      = element.parent('[data-keyvalue-item]'),
-            dataField = element.parent('.settings-param').find('[data-keyvalue-data]'),
-            items     = element.parent('ul').search('> [data-keyvalue-item]'),
-            index     = collectionIndex(items, item[0]),
-            data      = JSON.parse(dataField.value());
+    delegate(body, 'click', '[data-keyvalue-remove]', (event, element) => {
+        event.preventDefault();
+        const item = element.closest('[data-keyvalue-item]');
+        const param = element.closest('.settings-param');
+        const list = element.closest('ul');
+        const dataField = param && param.querySelector('[data-keyvalue-data]');
+        if (!item || !list || !dataField) return;
 
+        const items = Array.from(list.querySelectorAll(':scope > [data-keyvalue-item]'));
+        const index = collectionIndex(items, item);
+        const data = JSON.parse(dataField.value);
         data.splice(index, 1);
-        dataField.value(escapeUnicode(JSON.stringify(data)));
+        dataField.value = escapeUnicode(JSON.stringify(data));
         item.remove();
-
-        body.emit('change', { target: dataField });
+        emitChange(dataField);
     });
 
-    var onBlur = function(event, element) {
-        var parent     = element.parent('[data-keyvalue-item]'),
-            wrapper    = parent.find('.g-keyvalue-wrapper'),
-            keyElement = parent.find('[data-keyvalue-key]'),
-            valElement = parent.find('[data-keyvalue-value]'),
-            key        = keyElement.data('keyvalue-key'),
-            keyValue   = String(keyElement.value() || '').trim(),
-            valValue   = String(valElement.value() || '').trim(),
-            items      = element.parent('ul').search('> [data-keyvalue-item]:not(.g-keyvalue-warning):not(.g-keyvalue-excluded)'),
-            index      = collectionIndex(items, parent[0]),
+    const onBlur = (event, element) => {
+        const parent = element.closest('[data-keyvalue-item]');
+        const param = element.closest('.settings-param');
+        if (!parent || !param) return;
 
-            dataField  = element.parent('.settings-param').find('[data-keyvalue-data]'),
-            data       = JSON.parse(dataField.value()),
-            exclude    = JSON.parse(dataField.data('keyvalue-exclude')),
-            excluded   = Array.isArray(exclude) && exclude.includes(keyValue),
-            duplicate  = data.some(function(obj) {
-                return Object.prototype.hasOwnProperty.call(obj, keyValue);
-            }) && key !== keyValue;
+        const wrapper = parent.querySelector('.g-keyvalue-wrapper');
+        const keyElement = parent.querySelector('[data-keyvalue-key]');
+        const valueElement = parent.querySelector('[data-keyvalue-value]');
+        const dataField = param.querySelector('[data-keyvalue-data]');
+        if (!wrapper || !keyElement || !valueElement || !dataField) return;
 
-        if (keyElement == element) {
-            // renamed or cleared key, need to cleanup JSON
-            if (key !== keyValue && !duplicate) {
-                if(typeof data[index] !== 'undefined') {
-                    delete data[index][key];
-                }
-                keyElement.data('keyvalue-key', keyValue || '');
+        const previousKey = keyElement.getAttribute('data-keyvalue-key');
+        const keyValue = String(keyElement.value || '').trim();
+        const value = String(valueElement.value || '').trim();
+        const list = element.closest('ul');
+        const items = Array.from(list.querySelectorAll(':scope > [data-keyvalue-item]:not(.g-keyvalue-warning):not(.g-keyvalue-excluded)'));
+        const index = collectionIndex(items, parent);
+        const data = JSON.parse(dataField.value);
+        const exclude = JSON.parse(dataField.getAttribute('data-keyvalue-exclude') || 'null');
+        const excluded = Array.isArray(exclude) && exclude.includes(keyValue);
+        const duplicate = data.some(object => Object.prototype.hasOwnProperty.call(object, keyValue)) && previousKey !== keyValue;
+
+        if (keyElement === element) {
+            if (previousKey !== keyValue && !duplicate) {
+                if (typeof data[index] !== 'undefined') delete data[index][previousKey];
+                keyElement.setAttribute('data-keyvalue-key', keyValue || '');
             }
 
-            parent[duplicate ? 'addClass' : 'removeClass']('g-keyvalue-warning');
-            parent[excluded ? 'addClass' : 'removeClass']('g-keyvalue-excluded');
+            parent.classList.toggle('g-keyvalue-warning', duplicate);
+            parent.classList.toggle('g-keyvalue-excluded', excluded);
+            const message = duplicate
+                ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue)
+                : excluded ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null;
 
-            wrapper
-                .data('tip', duplicate ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue) : (excluded ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null))
-                .data('tip-place', 'top-right')
-                .data('tip-spacing', 2)
-                .data('tip-offset', 8);
+            if (message) wrapper.setAttribute('data-tip', message);
+            else wrapper.removeAttribute('data-tip');
+            wrapper.setAttribute('data-tip-place', 'top-right');
+            wrapper.setAttribute('data-tip-spacing', '2');
+            wrapper.setAttribute('data-tip-offset', '8');
 
             if (excluded || duplicate) {
-                window.G5.tips.get(wrapper[0]).show();
+                const tooltip = window.G5.tips.get(wrapper);
+                if (tooltip) tooltip.show();
             } else {
-                window.G5.tips.remove(wrapper[0]);
+                window.G5.tips.remove(wrapper);
             }
         }
 
         if (keyValue && !excluded && !duplicate) {
-            if (!data[index]) { data.splice(index, 0, {}); }
-            data[index][keyValue] = valValue;
+            if (!data[index]) data.splice(index, 0, {});
+            data[index][keyValue] = value;
         }
 
-        dataField.value(escapeUnicode(JSON.stringify(data)));
-        body.emit('change', { target: dataField });
-
+        dataField.value = escapeUnicode(JSON.stringify(data));
+        emitChange(dataField);
     };
 
-    // Catch return key
-    body.delegate('keydown', '[data-keyvalue-item] input[type="text"]', function(event, element) {
-        var key = (event.which ? event.which : event.keyCode);
-        if (key === 13) { // Enter
-            onBlur(event, element);
-        }
+    delegate(body, 'keydown', '[data-keyvalue-item] input[type="text"]', (event, element) => {
+        if (event.key === 'Enter') onBlur(event, element);
     });
+    delegate(body, 'blur', '[data-keyvalue-item] input[type="text"]', onBlur, true);
 
-    // Change values
-    body.delegate('blur', '[data-keyvalue-item] input[type="text"]', onBlur, true);
+    delegate(body, 'update', '[data-keyvalue-data]', (event, element) => {
+        const parent = element.parentElement;
+        const list = parent && parent.querySelector('ul');
+        const template = parent && parent.querySelector('[data-keyvalue-template]');
+        if (!parent || !list || !template) return;
 
-    body.delegate('update', '[data-keyvalue-data]', function(event, element) {
-        var parent = element.parent(),
-            items  = parent.search('[data-keyvalue-item]'),
-            list   = parent.find('ul'),
-            data   = JSON.parse(element.value()),
-            tmpl   = parent.find('[data-keyvalue-template]');
-
-        if (items) { items.remove(); }
-
-        data.forEach(function(obj, index) {
-            var clone = $(tmpl[0].cloneNode(true)),
-                key   = Object.keys(obj).shift(),
-                value = obj[key];
-
+        parent.querySelectorAll('[data-keyvalue-item]').forEach(item => item.remove());
+        JSON.parse(element.value).forEach(object => {
+            const clone = template.cloneNode(true);
+            const key = Object.keys(object).shift();
             list.appendChild(clone);
-
-            clone.attribute('style', null).data('keyvalue-item', clone.data('keyvalue-template'));
-            clone.attribute('data-keyvalue-template', null);
-            clone.attribute('data-keyvalue-nosort', null);
-            clone.find('[data-keyvalue-key]').value(key);
-            clone.find('[data-keyvalue-value]').value(value);
+            clone.removeAttribute('style');
+            clone.setAttribute('data-keyvalue-item', clone.getAttribute('data-keyvalue-template') || '');
+            clone.removeAttribute('data-keyvalue-template');
+            clone.removeAttribute('data-keyvalue-nosort');
+            clone.querySelector('[data-keyvalue-key]').value = key;
+            clone.querySelector('[data-keyvalue-value]').value = object[key];
         });
     });
-
 });
 
 module.exports = {};
 
-},{"../../utils/translate":80,"elements":89,"elements/domready":87,"elements/insertion":90,"sortablejs":126}],44:[function(require,module,exports){
+},{"../../utils/dom":65,"../../utils/translate":80,"sortablejs":126}],44:[function(require,module,exports){
 'use strict';
 
 const { ready, delegate } = require('../../utils/dom');
@@ -9228,157 +9219,149 @@ module.exports = {};
 },{"../../utils/dom":65}],45:[function(require,module,exports){
 "use strict";
 
-var $             = require('elements'),
-    ready         = require('elements/domready'),
-    Eraser        = require('../ui/eraser'),
-    simpleSort    = require('sortablejs'),
+const { ready, delegate } = require('../utils/dom');
+const Eraser = require('../ui/eraser');
+const simpleSort = require('sortablejs');
+const flags = require('../utils/flags-state');
 
-    flags         = require('../utils/flags-state');
+const groupOptions = [
+    { name: 'positions', pull: true, put: true },
+    { name: 'positions', pull: false, put: false }
+];
 
+const elementsFrom = value => {
+    if (!value) return [];
+    if (value instanceof Element) return [value];
+    return Array.from(value).map(item => item instanceof Element ? item : item && item[0]).filter(Boolean);
+};
 
-var PositionsField = '[name="page[head][atoms][_json]"]',
-    groupOptions   = [
-        { name: 'positions', pull: true, put: true },
-        { name: 'positions', pull: false, put: false }
-    ];
+const updateSaveIndicator = changed => {
+    const save = document.querySelector('[data-save="Positions"]');
+    if (!save) return;
 
-var Positions = {
+    const indicator = save.querySelector('.changes-indicator');
+    if (!changed && indicator) indicator.remove();
+    if (changed && !indicator) {
+        const icon = document.createElement('i');
+        icon.className = 'changes-indicator far fa-fw fa-circle';
+        save.prepend(icon);
+    }
+};
+
+const Positions = {
     eraser: null,
     lists: [],
     state: [],
 
-    init: function(position) {
+    init(position) {
         Positions.state = Positions.serialize(position);
-
         return Positions.state;
     },
 
-    equals: function() {
+    equals() {
         return Positions.state === Positions.serialize();
     },
 
-    updatePendingChanges: function() {
-        var different = false,
-
-            equals    = Positions.equals(),
-            save      = $('[data-save="Positions"]'),
-            icon      = save.find('i'),
-            indicator = save.find('.changes-indicator');
-
-        if (equals && indicator) { save.hideIndicator(); }
-        if (!equals && !indicator) { save.showIndicator('changes-indicator far fa-fw fa-circle') }
-        flags.set('pending', !equals);
+    updatePendingChanges() {
+        const equal = Positions.equals();
+        updateSaveIndicator(!equal);
+        flags.set('pending', !equal);
     },
 
-    serialize: function(position) {
-        var data,
-            output    = [],
-            positions = $(position) || $('[data-g5-position]');
+    serialize(position) {
+        const output = [];
+        const positions = position ? elementsFrom(position) : Array.from(document.querySelectorAll('[data-g5-position]'));
+        if (!positions.length) return '[]';
 
-        if (!positions) {
-            return '[]';
-        }
-
-        positions.forEach(function(position) {
-            position = $(position);
-            data = JSON.parse(position.data('g5-position'));
+        positions.forEach(positionElement => {
+            const data = JSON.parse(positionElement.getAttribute('data-g5-position'));
             data.modules = [];
 
-            // collect positions items
-            (position.search('[data-pm-data]') || []).forEach(function(item) {
-                item = $(item);
-                data.modules.push(JSON.parse(item.data('pm-data') || '{}'));
+            positionElement.querySelectorAll('[data-pm-data]').forEach(item => {
+                data.modules.push(JSON.parse(item.getAttribute('data-pm-data') || '{}'));
             });
 
             output.push(data);
-            position.data('g5-position', JSON.stringify(data));
+            positionElement.setAttribute('data-g5-position', JSON.stringify(data));
         });
 
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
-    attachEraser: function() {
+    attachEraser() {
+        const element = document.querySelector('[data-g5-positions-erase]');
         if (Positions.eraser) {
-            Positions.eraser.element = $('[data-g5-positions-erase]');
-            Positions.eraser.hide('fast');
+            Positions.eraser.element = element;
+            Positions.eraser.hide(true);
             return;
         }
-
-        Positions.eraser = new Eraser('[data-g5-positions-erase]');
+        Positions.eraser = new Eraser(element);
     },
 
-    createSortables: function(element) {
-        var list, sort;
-
+    createSortables(element) {
         Positions.attachEraser();
 
-        groupOptions.forEach(function(groupOption, i) {
-            list = !i ? '[data-g5-position] ul' : '#trash';
-            list = $(list);
+        groupOptions.forEach((groupOption, groupIndex) => {
+            const selector = groupIndex === 0 ? '[data-g5-position] ul' : '#trash';
+            const lists = Array.from(document.querySelectorAll(selector));
+            let lastSort = null;
 
-            list.forEach(function(element, listIndex) {
-                sort = simpleSort.create(element, {
-                    sort: !i,
+            lists.forEach((list, listIndex) => {
+                const sort = simpleSort.create(list, {
+                    sort: groupIndex === 0,
                     filter: '[data-g5-position-ignore]',
                     group: groupOption,
                     scroll: true,
                     forceFallback: true,
                     animation: 100,
 
-                    onStart: function(event) {
+                    onStart(event) {
                         Positions.attachEraser();
-
-                        var item = $(event.item);
-                        item.addClass('position-dragging');
-
+                        event.item.classList.add('position-dragging');
                         Positions.eraser.show();
                     },
 
-                    onEnd: function(event) {
-                        var item       = $(event.item),
-                            trash      = $('#trash'),
-                            target     = $(this.originalEvent.target),
-                            touchTrash = false;
+                    onEnd(event) {
+                        const item = event.item;
+                        const trash = document.querySelector('#trash');
+                        const originalEvent = this.originalEvent || event.originalEvent;
+                        const target = originalEvent && originalEvent.target instanceof Element ? originalEvent.target : null;
+                        let touchTrash = false;
 
-                        // workaround for touch devices
-                        if (this.originalEvent.type === 'touchend') {
-                            var trashSize = trash[0].getBoundingClientRect(),
-                                oE        = this.originalEvent,
-                                position  = (oE.pageY || oE.changedTouches[0].pageY) - window.scrollY;
-
-                            touchTrash = position <= trashSize.height;
+                        if (originalEvent && originalEvent.type === 'touchend' && trash) {
+                            const trashSize = trash.getBoundingClientRect();
+                            const point = originalEvent.changedTouches && originalEvent.changedTouches[0];
+                            const pageY = originalEvent.pageY || (point && point.pageY) || 0;
+                            touchTrash = pageY - window.scrollY <= trashSize.height;
                         }
 
-                        if (target.matches('#trash') || target.parent('#trash') || touchTrash) {
+                        if (trash && ((target && (target === trash || trash.contains(target))) || touchTrash)) {
                             item.remove();
                             Positions.eraser.hide();
                             this.options.onSort(event);
                             return;
                         }
 
-                        item.removeClass('position-dragging');
-
+                        item.classList.remove('position-dragging');
                         Positions.eraser.hide();
                     },
 
-                    onSort: function(event) {
-                        var from  = $(event.from),
-                            to    = $(event.to),
-                            lists = [from.parent('[data-g5-position]'), to.parent('[data-g5-position]')];
+                    onSort(event) {
+                        const fromPosition = event.from.closest('[data-g5-position]');
+                        const toPosition = event.to.closest('[data-g5-position]');
+                        const affected = event.from === event.to
+                            ? [toPosition]
+                            : [fromPosition, toPosition];
 
-                        if (event.from[0] === event.to[0]) {
-                            lists.shift();
-                        }
-
-                        Positions.serialize(lists);
+                        Positions.serialize(affected.filter(Boolean));
                         Positions.updatePendingChanges();
                     },
 
-                    onOver: function(event) {
-                        if (!$(event.from).matches('ul')) { return; }
-
-                        var over = $(event.newIndex);
-                        if (over.matches('#trash') || over.parent('#trash')) {
+                    onOver(event) {
+                        if (!event.from.matches('ul')) return;
+                        const trash = document.querySelector('#trash');
+                        const over = event.related || (event.originalEvent && event.originalEvent.target);
+                        if (trash && over instanceof Node && (over === trash || trash.contains(over))) {
                             Positions.eraser.over();
                         } else {
                             Positions.eraser.out();
@@ -9386,39 +9369,28 @@ var Positions = {
                     }
                 });
 
-                if (!i) {
-                    if (!Positions.lists[listIndex]) {
-                        Positions.lists[listIndex] = sort;
-                    }
-                }
+                lastSort = sort;
+                if (groupIndex === 0 && !Positions.lists[listIndex]) Positions.lists[listIndex] = sort;
             });
 
-            if (!i) {
-                element.SimpleSort = sort;
-            }
+            if (groupIndex === 0 && element) element.SimpleSort = lastSort;
         });
     }
 };
 
-
-var AttachSortablePositions = function(positions) {
-    if (!positions) { return; }
-    if (!positions.SimpleSort) { Positions.createSortables(positions); }
+const attachSortablePositions = positions => {
+    if (positions && !positions.SimpleSort) Positions.createSortables(positions);
 };
 
-ready(function() {
-    var positions = $('#positions');
-
-    $('body').delegate('mouseover', '#positions', function(event, element) {
-        AttachSortablePositions(element);
-    });
-
-    AttachSortablePositions(positions);
+ready(() => {
+    const positions = document.querySelector('#positions');
+    delegate(document.body, 'mouseover', '#positions', (event, element) => attachSortablePositions(element));
+    attachSortablePositions(positions);
 });
 
 module.exports = Positions;
 
-},{"../ui/eraser":51,"../utils/flags-state":70,"elements":89,"elements/domready":87,"sortablejs":126}],46:[function(require,module,exports){
+},{"../ui/eraser":51,"../utils/dom":65,"../utils/flags-state":70,"sortablejs":126}],46:[function(require,module,exports){
 "use strict";
 
 var $             = require('elements'),
@@ -11534,202 +11506,224 @@ module.exports = $;
 },{"../utils/elements.utils":66,"../utils/request":78,"elements/zen":92}],55:[function(require,module,exports){
 "use strict";
 
-var $   = require('elements'),
-    zen = require('elements/zen');
-
-var createClass = function(definition) {
-    var defaults = definition.options || {};
-
-    var Klass = function(element, options) {
-        this.options = Object.assign({}, defaults);
-        definition.constructor.call(this, element, options);
-    };
-
-    Klass.prototype.setOptions = function(options) {
-        this.options = Object.assign({}, defaults, options || {});
-        return this;
-    };
-
-    Object.keys(definition).forEach(function(key) {
-        if (key !== 'constructor' && key !== 'options') {
-            Klass.prototype[key] = definition[key];
-        }
-    });
-
-    return Klass;
+var defaults = {
+    value: 0.0,
+    size: 50.0,
+    startAngle: -Math.PI / 2,
+    thickness: 'auto',
+    fill: {
+        gradient: ['#9e38eb', '#4e68fc']
+    },
+    emptyFill: 'rgba(0, 0, 0, .1)',
+    animation: {
+        duration: 1200,
+        equation: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+    },
+    animationStartValue: 0.0,
+    reverse: false,
+    lineCap: 'butt',
+    insertElement: null,
+    insertLocation: 'before'
 };
 
-var Progresser = createClass({
+var asElement = function(element) {
+    if (element && element.nodeType) { return element; }
+    if (element && element[0] && element[0].nodeType) { return element[0]; }
+    return null;
+};
 
-    options: {
-        value: 0.0,
-        size: 50.0,
-        startAngle: -Math.PI / 2,
-        thickness: 'auto',
-        fill: { // { color: 'hex|rgba' } || { gradient: [from, to], gradientAngle: Math.PI / 4, gradientDirection: [x0, y0, x1, y1] }
-            gradient: ['#9e38eb', '#4e68fc']//['#3aeabb', '#fdd250']
-        },
-        emptyFill: 'rgba(0, 0, 0, .1)',
-        animation: {
-            duration: 1200,
-            equation: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
-        },
-        animationStartValue: 0.0,
-        reverse: false,
-        lineCap: 'butt', // butt, round, square
-        insertElement: null,
-        insertLocation: 'before'
-    },
+var insertCanvas = function(canvas, target, location) {
+    if (!target) { throw new Error('The progress indicator needs a target element.'); }
 
-    constructor: function(element, options) {
-        this.setOptions(options);
-
-        this.element = this.element || $(element);
-        this.canvas = this.canvas || zen('canvas')[this.options.insertLocation || 'before'](this.options.insertElement || this.element)[0];
-        this.radius = this.options.size / 2;
-        this.arcFill = null;
-        this.lastFrameValue = 0.0;
-
-        this.canvas.width = this.options.size;
-        this.canvas.height = this.options.size;
-        this.ctx = this.canvas.getContext('2d');
-
-        this.initFill();
-        this.draw();
-    },
-
-    initFill: function() {
-        var fill = this.options.fill,
-            size = this.options.size,
-            ctx  = this.ctx;
-
-        if (!fill) { throw Error('The fill is not specified.'); }
-
-        if (fill.color) {
-            this.arcFill = fill.color;
-        }
-
-        if (fill.gradient) {
-            var gr = fill.gradient;
-
-            if (gr.length == 1) { this.arcFill = gr[0]; }
-            else {
-                var ga = fill.gradientAngle || 0,  // gradient direction angle; 0 by default
-                    gd = fill.gradientDirection || [
-                            size / 2 * (1 - Math.cos(ga)), // x0
-                            size / 2 * (1 + Math.sin(ga)), // y0
-                            size / 2 * (1 + Math.cos(ga)), // x1
-                            size / 2 * (1 - Math.sin(ga))  // y1
-                        ],
-                    lg = ctx.createLinearGradient.apply(ctx, gd);
-
-                for (var i = 0; i < gr.length; i++) {
-                    var color = gr[i],
-                        pos   = i / (gr.length - 1);
-
-                    if (Array.isArray(color)) {
-                        pos = color[1];
-                        color = color[0];
-                    }
-
-                    lg.addColorStop(pos, color);
-                }
-
-                this.arcFill = lg;
-            }
-        }
-    },
-
-    draw: function() {
-        this[this.options.animation ? 'drawAnimated' : 'drawFrame'](this.options.value);
-    },
-
-    drawFrame: function(v) {
-        this.lastFrameValue = v;
-        this.ctx.clearRect(0, 0, this.options.size, this.options.size);
-        this.drawEmptyArc(v);
-        this.drawArc(v);
-    },
-
-    drawArc: function(v) {
-        var ctx = this.ctx,
-            r   = this.radius,
-            t   = this.getThickness(),
-            a   = this.options.startAngle;
-
-        ctx.save();
-        ctx.beginPath();
-
-        if (!this.options.reverse) {
-            ctx.arc(r, r, r - t / 2, a, a + Math.PI * 2 * v);
-        } else {
-            ctx.arc(r, r, r - t / 2, a - Math.PI * 2 * v, a);
-        }
-
-        ctx.lineWidth = t;
-        ctx.lineCap = this.options.lineCap;
-        ctx.strokeStyle = this.arcFill;
-        ctx.stroke();
-        ctx.restore();
-    },
-
-    drawEmptyArc: function(v) {
-        var ctx = this.ctx,
-            r   = this.radius,
-            t   = this.getThickness(),
-            a   = this.options.startAngle;
-
-        if (v < 1) {
-            ctx.save();
-            ctx.beginPath();
-
-            if (v <= 0) {
-                ctx.arc(r, r, r - t / 2, 0, Math.PI * 2);
-            } else {
-                if (!this.reverse) {
-                    ctx.arc(r, r, r - t / 2, a + Math.PI * 2 * v, a);
-                } else {
-                    ctx.arc(r, r, r - t / 2, a, a - Math.PI * 2 * v);
-                }
-            }
-
-            ctx.lineWidth = t;
-            ctx.strokeStyle = this.options.emptyFill;
-            ctx.stroke();
-            ctx.restore();
-        }
-    },
-
-    drawAnimated: function(v) {
-        this.element.emit('progress-animation-start');
-        var start = performance.now(),
-            duration = parseFloat(this.options.animation.duration) || 1200,
-            initial = this.options.animationStartValue,
-            frame = function(timestamp) {
-                var progress = Math.min(1, (timestamp - start) / duration),
-                    stepValue = initial * (1 - progress) + v * progress;
-                this.drawFrame(stepValue);
-                this.element.emit('progress-animation-change', progress, stepValue);
-
-                if (progress < 1) {
-                    requestAnimationFrame(frame);
-                    return;
-                }
-                if (this.options.animation.callback) { this.options.animation.callback(); }
-                this.element.emit('progress-animation-end');
-            }.bind(this);
-
-        requestAnimationFrame(frame);
-    },
-
-    getThickness: function() {
-        return typeof this.options.thickness === 'number' ? this.options.thickness : this.options.size / 14;
+    switch (location) {
+        case 'top':
+            target.insertBefore(canvas, target.firstChild);
+            break;
+        case 'bottom':
+            target.appendChild(canvas);
+            break;
+        case 'after':
+            target.parentNode.insertBefore(canvas, target.nextSibling);
+            break;
+        case 'before':
+        default:
+            target.parentNode.insertBefore(canvas, target);
+            break;
     }
-});
+};
+
+var Progresser = function(element, options) {
+    this.element = asElement(element);
+    this.options = Object.assign({}, defaults, options || {});
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.arcFill = null;
+    this.lastFrameValue = 0.0;
+    this.animationFrame = null;
+
+    var target = asElement(this.options.insertElement) || this.element;
+    insertCanvas(this.canvas, target, this.options.insertLocation || 'before');
+    this.update(options);
+};
+
+Progresser.prototype.update = function(options) {
+    this.options = Object.assign({}, this.options, options || {});
+    this.radius = this.options.size / 2;
+    this.canvas.width = this.options.size;
+    this.canvas.height = this.options.size;
+
+    if (this.animationFrame !== null) {
+        cancelAnimationFrame(this.animationFrame);
+        this.animationFrame = null;
+    }
+
+    this.initFill();
+    this.draw();
+    return this;
+};
+
+Progresser.prototype.initFill = function() {
+    var fill = this.options.fill,
+        size = this.options.size,
+        ctx = this.ctx;
+
+    if (!fill) { throw new Error('The fill is not specified.'); }
+
+    this.arcFill = fill.color || null;
+
+    if (fill.gradient) {
+        var colors = fill.gradient;
+        if (colors.length === 1) {
+            this.arcFill = colors[0];
+        } else {
+            var angle = fill.gradientAngle || 0,
+                direction = fill.gradientDirection || [
+                    size / 2 * (1 - Math.cos(angle)),
+                    size / 2 * (1 + Math.sin(angle)),
+                    size / 2 * (1 + Math.cos(angle)),
+                    size / 2 * (1 - Math.sin(angle))
+                ],
+                gradient = ctx.createLinearGradient.apply(ctx, direction);
+
+            colors.forEach(function(entry, index) {
+                var color = entry,
+                    position = index / (colors.length - 1);
+
+                if (Array.isArray(entry)) {
+                    color = entry[0];
+                    position = entry[1];
+                }
+                gradient.addColorStop(position, color);
+            });
+            this.arcFill = gradient;
+        }
+    }
+};
+
+Progresser.prototype.emit = function(name, detail) {
+    this.element.dispatchEvent(new CustomEvent(name, {
+        bubbles: true,
+        detail: detail
+    }));
+};
+
+Progresser.prototype.draw = function() {
+    if (this.options.animation) { this.drawAnimated(this.options.value); }
+    else { this.drawFrame(this.options.value); }
+};
+
+Progresser.prototype.drawFrame = function(value) {
+    this.lastFrameValue = value;
+    this.ctx.clearRect(0, 0, this.options.size, this.options.size);
+    this.drawEmptyArc(value);
+    this.drawArc(value);
+};
+
+Progresser.prototype.drawArc = function(value) {
+    var ctx = this.ctx,
+        radius = this.radius,
+        thickness = this.getThickness(),
+        angle = this.options.startAngle;
+
+    ctx.save();
+    ctx.beginPath();
+    if (!this.options.reverse) {
+        ctx.arc(radius, radius, radius - thickness / 2, angle, angle + Math.PI * 2 * value);
+    } else {
+        ctx.arc(radius, radius, radius - thickness / 2, angle - Math.PI * 2 * value, angle);
+    }
+    ctx.lineWidth = thickness;
+    ctx.lineCap = this.options.lineCap;
+    ctx.strokeStyle = this.arcFill;
+    ctx.stroke();
+    ctx.restore();
+};
+
+Progresser.prototype.drawEmptyArc = function(value) {
+    var ctx = this.ctx,
+        radius = this.radius,
+        thickness = this.getThickness(),
+        angle = this.options.startAngle;
+
+    if (value >= 1) { return; }
+
+    ctx.save();
+    ctx.beginPath();
+    if (value <= 0) {
+        ctx.arc(radius, radius, radius - thickness / 2, 0, Math.PI * 2);
+    } else if (!this.options.reverse) {
+        ctx.arc(radius, radius, radius - thickness / 2, angle + Math.PI * 2 * value, angle);
+    } else {
+        ctx.arc(radius, radius, radius - thickness / 2, angle, angle - Math.PI * 2 * value);
+    }
+    ctx.lineWidth = thickness;
+    ctx.strokeStyle = this.options.emptyFill;
+    ctx.stroke();
+    ctx.restore();
+};
+
+Progresser.prototype.drawAnimated = function(value) {
+    this.emit('progress-animation-start', { value: value });
+
+    var start = performance.now(),
+        duration = parseFloat(this.options.animation.duration) || 1200,
+        initial = this.lastFrameValue,
+        frame = function(timestamp) {
+            var progress = Math.min(1, (timestamp - start) / duration),
+                stepValue = initial * (1 - progress) + value * progress;
+
+            this.drawFrame(stepValue);
+            this.emit('progress-animation-change', {
+                progress: progress,
+                value: stepValue
+            });
+
+            if (progress < 1) {
+                this.animationFrame = requestAnimationFrame(frame);
+                return;
+            }
+
+            this.animationFrame = null;
+            if (this.options.animation.callback) { this.options.animation.callback(); }
+            this.emit('progress-animation-end', { value: value });
+        }.bind(this);
+
+    this.animationFrame = requestAnimationFrame(frame);
+};
+
+Progresser.prototype.getThickness = function() {
+    return typeof this.options.thickness === 'number' ? this.options.thickness : this.options.size / 14;
+};
+
+Progresser.prototype.destroy = function() {
+    if (this.animationFrame !== null) { cancelAnimationFrame(this.animationFrame); }
+    if (this.canvas.parentNode) { this.canvas.parentNode.removeChild(this.canvas); }
+    this.animationFrame = null;
+};
 
 module.exports = Progresser;
 
-},{"elements":89,"elements/zen":92}],56:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 "use strict";
 // selectize (v0.12.1) (commit: 4dae761)
 
@@ -15516,7 +15510,7 @@ $.implement({
             instance = node.ProgresserInstance;
 
             if (!instance) { instance = new progresser(node, options); }
-            else { instance.constructor(node, options); }
+            else { instance.update(options); }
 
             node.ProgresserInstance = instance;
             return instance;
@@ -15531,14 +15525,15 @@ $.implement({
 
     showIndicator: function(klass, keepIcon) {
         this.forEach(function(node) {
-            node = $(node);
+            var raw = node;
+            node = $(raw);
             if (typeof klass == 'boolean') {
                 keepIcon = klass;
                 klass = null;
             }
 
             var icon = keepIcon ? false : node.find('i');
-            node.gHadIcon = !!icon;
+            raw.gHadIcon = !!icon;
 
             if (!icon) {
                 if (!node.find('span') && node[0].children.length === 0) {
@@ -15553,24 +15548,25 @@ $.implement({
                 icon = $(iconElement);
             }
 
-            if (!node.gIndicator) { node.gIndicator = icon.attribute('class') || true; }
+            if (!raw.gIndicator) { raw.gIndicator = icon.attribute('class') || true; }
             icon.attribute('class', klass || 'fa fa-fw fa-spin-fast fa-spinner');
         });
     },
 
     hideIndicator: function() {
         this.forEach(function(node) {
-            node = $(node);
-            if (!node.gIndicator) { return; }
+            var raw = node;
+            node = $(raw);
+            if (!raw.gIndicator) { return; }
 
             var icon = node.find('i');
 
             if (!icon) { return; }
 
-            if (!node.gHadIcon) { icon.remove(); }
-            else { icon.attribute('class', node.gIndicator); }
+            if (!raw.gHadIcon) { icon.remove(); }
+            else { icon.attribute('class', raw.gIndicator); }
 
-            node.gIndicator = null;
+            raw.gIndicator = null;
         });
     },
 

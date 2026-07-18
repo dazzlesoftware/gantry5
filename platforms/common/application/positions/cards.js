@@ -1,156 +1,148 @@
 "use strict";
 
-var $             = require('elements'),
-    ready         = require('elements/domready'),
-    Eraser        = require('../ui/eraser'),
-    simpleSort    = require('sortablejs'),
+const { ready, delegate } = require('../utils/dom');
+const Eraser = require('../ui/eraser');
+const simpleSort = require('sortablejs');
+const flags = require('../utils/flags-state');
 
-    flags         = require('../utils/flags-state');
+const groupOptions = [
+    { name: 'positions', pull: true, put: true },
+    { name: 'positions', pull: false, put: false }
+];
 
+const elementsFrom = value => {
+    if (!value) return [];
+    if (value instanceof Element) return [value];
+    return Array.from(value).map(item => item instanceof Element ? item : item && item[0]).filter(Boolean);
+};
 
-var PositionsField = '[name="page[head][atoms][_json]"]',
-    groupOptions   = [
-        { name: 'positions', pull: true, put: true },
-        { name: 'positions', pull: false, put: false }
-    ];
+const updateSaveIndicator = changed => {
+    const save = document.querySelector('[data-save="Positions"]');
+    if (!save) return;
 
-var Positions = {
+    const indicator = save.querySelector('.changes-indicator');
+    if (!changed && indicator) indicator.remove();
+    if (changed && !indicator) {
+        const icon = document.createElement('i');
+        icon.className = 'changes-indicator far fa-fw fa-circle';
+        save.prepend(icon);
+    }
+};
+
+const Positions = {
     eraser: null,
     lists: [],
     state: [],
 
-    init: function(position) {
+    init(position) {
         Positions.state = Positions.serialize(position);
-
         return Positions.state;
     },
 
-    equals: function() {
+    equals() {
         return Positions.state === Positions.serialize();
     },
 
-    updatePendingChanges: function() {
-        var different = false,
-
-            equals    = Positions.equals(),
-            save      = $('[data-save="Positions"]'),
-            icon      = save.find('i'),
-            indicator = save.find('.changes-indicator');
-
-        if (equals && indicator) { save.hideIndicator(); }
-        if (!equals && !indicator) { save.showIndicator('changes-indicator far fa-fw fa-circle') }
-        flags.set('pending', !equals);
+    updatePendingChanges() {
+        const equal = Positions.equals();
+        updateSaveIndicator(!equal);
+        flags.set('pending', !equal);
     },
 
-    serialize: function(position) {
-        var data,
-            output    = [],
-            positions = $(position) || $('[data-g5-position]');
+    serialize(position) {
+        const output = [];
+        const positions = position ? elementsFrom(position) : Array.from(document.querySelectorAll('[data-g5-position]'));
+        if (!positions.length) return '[]';
 
-        if (!positions) {
-            return '[]';
-        }
-
-        positions.forEach(function(position) {
-            position = $(position);
-            data = JSON.parse(position.data('g5-position'));
+        positions.forEach(positionElement => {
+            const data = JSON.parse(positionElement.getAttribute('data-g5-position'));
             data.modules = [];
 
-            // collect positions items
-            (position.search('[data-pm-data]') || []).forEach(function(item) {
-                item = $(item);
-                data.modules.push(JSON.parse(item.data('pm-data') || '{}'));
+            positionElement.querySelectorAll('[data-pm-data]').forEach(item => {
+                data.modules.push(JSON.parse(item.getAttribute('data-pm-data') || '{}'));
             });
 
             output.push(data);
-            position.data('g5-position', JSON.stringify(data));
+            positionElement.setAttribute('data-g5-position', JSON.stringify(data));
         });
 
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
-    attachEraser: function() {
+    attachEraser() {
+        const element = document.querySelector('[data-g5-positions-erase]');
         if (Positions.eraser) {
-            Positions.eraser.element = $('[data-g5-positions-erase]');
-            Positions.eraser.hide('fast');
+            Positions.eraser.element = element;
+            Positions.eraser.hide(true);
             return;
         }
-
-        Positions.eraser = new Eraser('[data-g5-positions-erase]');
+        Positions.eraser = new Eraser(element);
     },
 
-    createSortables: function(element) {
-        var list, sort;
-
+    createSortables(element) {
         Positions.attachEraser();
 
-        groupOptions.forEach(function(groupOption, i) {
-            list = !i ? '[data-g5-position] ul' : '#trash';
-            list = $(list);
+        groupOptions.forEach((groupOption, groupIndex) => {
+            const selector = groupIndex === 0 ? '[data-g5-position] ul' : '#trash';
+            const lists = Array.from(document.querySelectorAll(selector));
+            let lastSort = null;
 
-            list.forEach(function(element, listIndex) {
-                sort = simpleSort.create(element, {
-                    sort: !i,
+            lists.forEach((list, listIndex) => {
+                const sort = simpleSort.create(list, {
+                    sort: groupIndex === 0,
                     filter: '[data-g5-position-ignore]',
                     group: groupOption,
                     scroll: true,
                     forceFallback: true,
                     animation: 100,
 
-                    onStart: function(event) {
+                    onStart(event) {
                         Positions.attachEraser();
-
-                        var item = $(event.item);
-                        item.addClass('position-dragging');
-
+                        event.item.classList.add('position-dragging');
                         Positions.eraser.show();
                     },
 
-                    onEnd: function(event) {
-                        var item       = $(event.item),
-                            trash      = $('#trash'),
-                            target     = $(this.originalEvent.target),
-                            touchTrash = false;
+                    onEnd(event) {
+                        const item = event.item;
+                        const trash = document.querySelector('#trash');
+                        const originalEvent = this.originalEvent || event.originalEvent;
+                        const target = originalEvent && originalEvent.target instanceof Element ? originalEvent.target : null;
+                        let touchTrash = false;
 
-                        // workaround for touch devices
-                        if (this.originalEvent.type === 'touchend') {
-                            var trashSize = trash[0].getBoundingClientRect(),
-                                oE        = this.originalEvent,
-                                position  = (oE.pageY || oE.changedTouches[0].pageY) - window.scrollY;
-
-                            touchTrash = position <= trashSize.height;
+                        if (originalEvent && originalEvent.type === 'touchend' && trash) {
+                            const trashSize = trash.getBoundingClientRect();
+                            const point = originalEvent.changedTouches && originalEvent.changedTouches[0];
+                            const pageY = originalEvent.pageY || (point && point.pageY) || 0;
+                            touchTrash = pageY - window.scrollY <= trashSize.height;
                         }
 
-                        if (target.matches('#trash') || target.parent('#trash') || touchTrash) {
+                        if (trash && ((target && (target === trash || trash.contains(target))) || touchTrash)) {
                             item.remove();
                             Positions.eraser.hide();
                             this.options.onSort(event);
                             return;
                         }
 
-                        item.removeClass('position-dragging');
-
+                        item.classList.remove('position-dragging');
                         Positions.eraser.hide();
                     },
 
-                    onSort: function(event) {
-                        var from  = $(event.from),
-                            to    = $(event.to),
-                            lists = [from.parent('[data-g5-position]'), to.parent('[data-g5-position]')];
+                    onSort(event) {
+                        const fromPosition = event.from.closest('[data-g5-position]');
+                        const toPosition = event.to.closest('[data-g5-position]');
+                        const affected = event.from === event.to
+                            ? [toPosition]
+                            : [fromPosition, toPosition];
 
-                        if (event.from[0] === event.to[0]) {
-                            lists.shift();
-                        }
-
-                        Positions.serialize(lists);
+                        Positions.serialize(affected.filter(Boolean));
                         Positions.updatePendingChanges();
                     },
 
-                    onOver: function(event) {
-                        if (!$(event.from).matches('ul')) { return; }
-
-                        var over = $(event.newIndex);
-                        if (over.matches('#trash') || over.parent('#trash')) {
+                    onOver(event) {
+                        if (!event.from.matches('ul')) return;
+                        const trash = document.querySelector('#trash');
+                        const over = event.related || (event.originalEvent && event.originalEvent.target);
+                        if (trash && over instanceof Node && (over === trash || trash.contains(over))) {
                             Positions.eraser.over();
                         } else {
                             Positions.eraser.out();
@@ -158,34 +150,23 @@ var Positions = {
                     }
                 });
 
-                if (!i) {
-                    if (!Positions.lists[listIndex]) {
-                        Positions.lists[listIndex] = sort;
-                    }
-                }
+                lastSort = sort;
+                if (groupIndex === 0 && !Positions.lists[listIndex]) Positions.lists[listIndex] = sort;
             });
 
-            if (!i) {
-                element.SimpleSort = sort;
-            }
+            if (groupIndex === 0 && element) element.SimpleSort = lastSort;
         });
     }
 };
 
-
-var AttachSortablePositions = function(positions) {
-    if (!positions) { return; }
-    if (!positions.SimpleSort) { Positions.createSortables(positions); }
+const attachSortablePositions = positions => {
+    if (positions && !positions.SimpleSort) Positions.createSortables(positions);
 };
 
-ready(function() {
-    var positions = $('#positions');
-
-    $('body').delegate('mouseover', '#positions', function(event, element) {
-        AttachSortablePositions(element);
-    });
-
-    AttachSortablePositions(positions);
+ready(() => {
+    const positions = document.querySelector('#positions');
+    delegate(document.body, 'mouseover', '#positions', (event, element) => attachSortablePositions(element));
+    attachSortablePositions(positions);
 });
 
 module.exports = Positions;

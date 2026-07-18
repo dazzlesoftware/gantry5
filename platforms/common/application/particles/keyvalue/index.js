@@ -1,54 +1,45 @@
 "use strict";
 
-var ready         = require('elements/domready'),
-    $             = require('elements'),
-    simpleSort    = require('sortablejs'),
-    translate     = require('../../utils/translate');
+const { ready, delegate } = require('../../utils/dom');
+const simpleSort = require('sortablejs');
+const translate = require('../../utils/translate');
 
-require('elements/insertion');
+const collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
 
-var collectionIndex = function(collection, item) {
-    return Array.prototype.indexOf.call(collection, item);
-};
+const escapeUnicode = value => String(value).replace(/[\s\S]/g, character => {
+    if (/[\x20-\x7e]/.test(character)) return character;
+    return `\\u${(`000${character.charCodeAt(0).toString(16)}`).slice(-4)}`;
+});
 
-var escapeUnicode = function(value) {
-    return String(value).replace(/[\s\S]/g, function(character) {
-        if (/[\x20-\x7e]/.test(character)) { return character; }
+const emitChange = element => element.dispatchEvent(new Event('change', { bubbles: true }));
 
-        return '\\u' + ('000' + character.charCodeAt(0).toString(16)).slice(-4);
-    });
-};
+ready(() => {
+    const body = document.body;
 
-ready(function() {
-    var body = $('body');
-
-    var createSortables = function(list) {
-        var lists = list || $('.g-keyvalue-field ul');
-        if (!lists) { return; }
-        lists.forEach(function(list) {
-            list = $(list);
-            list.SimpleSort = simpleSort.create(list[0], {
+    const createSortables = list => {
+        const lists = list instanceof Element ? [list] : Array.from(document.querySelectorAll('.g-keyvalue-field ul'));
+        lists.forEach(element => {
+            element.SimpleSort = simpleSort.create(element, {
                 handle: '.fa-reorder',
                 filter: '[data-keyvalue-nosort]',
                 scroll: false,
                 animation: 150,
-                onStart: function() {
-                    $(this.el).addClass('keyvalue-sorting');
+                onStart() {
+                    this.el.classList.add('keyvalue-sorting');
                 },
-                onEnd: function(evt) {
-                    var element = $(this.el);
-                    element.removeClass('keyvalue-sorting');
+                onEnd(event) {
+                    const listElement = this.el;
+                    listElement.classList.remove('keyvalue-sorting');
+                    if (event.oldIndex === event.newIndex) return;
 
-                    if (evt.oldIndex === evt.newIndex) { return; }
+                    const param = listElement.closest('.settings-param');
+                    const dataField = param && param.querySelector('[data-keyvalue-data]');
+                    if (!dataField) return;
 
-                    var dataField = element.parent('.settings-param').find('[data-keyvalue-data]'),
-                        data      = dataField.value();
-
-                    data = JSON.parse(data);
-
-                    data.splice(evt.newIndex, 0, data.splice(evt.oldIndex, 1)[0]);
-                    dataField.value(JSON.stringify(data));
-                    body.emit('change', { target: dataField });
+                    const data = JSON.parse(dataField.value);
+                    data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
+                    dataField.value = JSON.stringify(data);
+                    emitChange(dataField);
                 }
             });
         });
@@ -56,137 +47,129 @@ ready(function() {
 
     createSortables();
 
-    // delegate sortables collections for ajax support
-    body.delegate('mouseover', '.g-keyvalue-field ul', function(event, element) {
-        if (!element.SimpleSort) { createSortables(element); }
+    delegate(body, 'mouseover', '.g-keyvalue-field ul', (event, element) => {
+        if (!element.SimpleSort) createSortables(element);
     });
 
-    // Add new item
-    body.delegate('click', '[data-keyvalue-addnew]', function(event, element) {
-        var param = element.parent('.settings-param'),
-            list  = param.find('ul'),
-            tmpl  = param.find('[data-keyvalue-template]'),
-            items = list.search('> [data-keyvalue-item]') || [],
-            last  = items.length ? $(items[items.length - 1]) : null;
+    delegate(body, 'click', '[data-keyvalue-addnew]', (event, element) => {
+        event.preventDefault();
+        const param = element.closest('.settings-param');
+        const list = param && param.querySelector('ul');
+        const template = param && param.querySelector('[data-keyvalue-template]');
+        if (!list || !template) return;
 
-        var clone = $(tmpl[0].cloneNode(true));
+        const items = Array.from(list.querySelectorAll(':scope > [data-keyvalue-item]'));
+        const clone = template.cloneNode(true);
+        const last = items[items.length - 1];
+        if (last) last.after(clone);
+        else list.prepend(clone);
 
-        if (last) { clone.after(last); }
-        else { clone.top(list); }
-
-        clone.attribute('style', null).data('keyvalue-item', clone.data('keyvalue-template'));
-        clone.attribute('data-keyvalue-template', null);
-        clone.attribute('data-keyvalue-nosort', null);
-        clone.find('[data-keyvalue-key]')[0].focus();
-
-        //body.emit('change', { target: dataField });
+        clone.removeAttribute('style');
+        clone.setAttribute('data-keyvalue-item', clone.getAttribute('data-keyvalue-template') || '');
+        clone.removeAttribute('data-keyvalue-template');
+        clone.removeAttribute('data-keyvalue-nosort');
+        const keyInput = clone.querySelector('[data-keyvalue-key]');
+        if (keyInput) keyInput.focus();
     });
 
-    // Remove item
-    body.delegate('click', '[data-keyvalue-remove]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        var item      = element.parent('[data-keyvalue-item]'),
-            dataField = element.parent('.settings-param').find('[data-keyvalue-data]'),
-            items     = element.parent('ul').search('> [data-keyvalue-item]'),
-            index     = collectionIndex(items, item[0]),
-            data      = JSON.parse(dataField.value());
+    delegate(body, 'click', '[data-keyvalue-remove]', (event, element) => {
+        event.preventDefault();
+        const item = element.closest('[data-keyvalue-item]');
+        const param = element.closest('.settings-param');
+        const list = element.closest('ul');
+        const dataField = param && param.querySelector('[data-keyvalue-data]');
+        if (!item || !list || !dataField) return;
 
+        const items = Array.from(list.querySelectorAll(':scope > [data-keyvalue-item]'));
+        const index = collectionIndex(items, item);
+        const data = JSON.parse(dataField.value);
         data.splice(index, 1);
-        dataField.value(escapeUnicode(JSON.stringify(data)));
+        dataField.value = escapeUnicode(JSON.stringify(data));
         item.remove();
-
-        body.emit('change', { target: dataField });
+        emitChange(dataField);
     });
 
-    var onBlur = function(event, element) {
-        var parent     = element.parent('[data-keyvalue-item]'),
-            wrapper    = parent.find('.g-keyvalue-wrapper'),
-            keyElement = parent.find('[data-keyvalue-key]'),
-            valElement = parent.find('[data-keyvalue-value]'),
-            key        = keyElement.data('keyvalue-key'),
-            keyValue   = String(keyElement.value() || '').trim(),
-            valValue   = String(valElement.value() || '').trim(),
-            items      = element.parent('ul').search('> [data-keyvalue-item]:not(.g-keyvalue-warning):not(.g-keyvalue-excluded)'),
-            index      = collectionIndex(items, parent[0]),
+    const onBlur = (event, element) => {
+        const parent = element.closest('[data-keyvalue-item]');
+        const param = element.closest('.settings-param');
+        if (!parent || !param) return;
 
-            dataField  = element.parent('.settings-param').find('[data-keyvalue-data]'),
-            data       = JSON.parse(dataField.value()),
-            exclude    = JSON.parse(dataField.data('keyvalue-exclude')),
-            excluded   = Array.isArray(exclude) && exclude.includes(keyValue),
-            duplicate  = data.some(function(obj) {
-                return Object.prototype.hasOwnProperty.call(obj, keyValue);
-            }) && key !== keyValue;
+        const wrapper = parent.querySelector('.g-keyvalue-wrapper');
+        const keyElement = parent.querySelector('[data-keyvalue-key]');
+        const valueElement = parent.querySelector('[data-keyvalue-value]');
+        const dataField = param.querySelector('[data-keyvalue-data]');
+        if (!wrapper || !keyElement || !valueElement || !dataField) return;
 
-        if (keyElement == element) {
-            // renamed or cleared key, need to cleanup JSON
-            if (key !== keyValue && !duplicate) {
-                if(typeof data[index] !== 'undefined') {
-                    delete data[index][key];
-                }
-                keyElement.data('keyvalue-key', keyValue || '');
+        const previousKey = keyElement.getAttribute('data-keyvalue-key');
+        const keyValue = String(keyElement.value || '').trim();
+        const value = String(valueElement.value || '').trim();
+        const list = element.closest('ul');
+        const items = Array.from(list.querySelectorAll(':scope > [data-keyvalue-item]:not(.g-keyvalue-warning):not(.g-keyvalue-excluded)'));
+        const index = collectionIndex(items, parent);
+        const data = JSON.parse(dataField.value);
+        const exclude = JSON.parse(dataField.getAttribute('data-keyvalue-exclude') || 'null');
+        const excluded = Array.isArray(exclude) && exclude.includes(keyValue);
+        const duplicate = data.some(object => Object.prototype.hasOwnProperty.call(object, keyValue)) && previousKey !== keyValue;
+
+        if (keyElement === element) {
+            if (previousKey !== keyValue && !duplicate) {
+                if (typeof data[index] !== 'undefined') delete data[index][previousKey];
+                keyElement.setAttribute('data-keyvalue-key', keyValue || '');
             }
 
-            parent[duplicate ? 'addClass' : 'removeClass']('g-keyvalue-warning');
-            parent[excluded ? 'addClass' : 'removeClass']('g-keyvalue-excluded');
+            parent.classList.toggle('g-keyvalue-warning', duplicate);
+            parent.classList.toggle('g-keyvalue-excluded', excluded);
+            const message = duplicate
+                ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue)
+                : excluded ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null;
 
-            wrapper
-                .data('tip', duplicate ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue) : (excluded ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null))
-                .data('tip-place', 'top-right')
-                .data('tip-spacing', 2)
-                .data('tip-offset', 8);
+            if (message) wrapper.setAttribute('data-tip', message);
+            else wrapper.removeAttribute('data-tip');
+            wrapper.setAttribute('data-tip-place', 'top-right');
+            wrapper.setAttribute('data-tip-spacing', '2');
+            wrapper.setAttribute('data-tip-offset', '8');
 
             if (excluded || duplicate) {
-                window.G5.tips.get(wrapper[0]).show();
+                const tooltip = window.G5.tips.get(wrapper);
+                if (tooltip) tooltip.show();
             } else {
-                window.G5.tips.remove(wrapper[0]);
+                window.G5.tips.remove(wrapper);
             }
         }
 
         if (keyValue && !excluded && !duplicate) {
-            if (!data[index]) { data.splice(index, 0, {}); }
-            data[index][keyValue] = valValue;
+            if (!data[index]) data.splice(index, 0, {});
+            data[index][keyValue] = value;
         }
 
-        dataField.value(escapeUnicode(JSON.stringify(data)));
-        body.emit('change', { target: dataField });
-
+        dataField.value = escapeUnicode(JSON.stringify(data));
+        emitChange(dataField);
     };
 
-    // Catch return key
-    body.delegate('keydown', '[data-keyvalue-item] input[type="text"]', function(event, element) {
-        var key = (event.which ? event.which : event.keyCode);
-        if (key === 13) { // Enter
-            onBlur(event, element);
-        }
+    delegate(body, 'keydown', '[data-keyvalue-item] input[type="text"]', (event, element) => {
+        if (event.key === 'Enter') onBlur(event, element);
     });
+    delegate(body, 'blur', '[data-keyvalue-item] input[type="text"]', onBlur, true);
 
-    // Change values
-    body.delegate('blur', '[data-keyvalue-item] input[type="text"]', onBlur, true);
+    delegate(body, 'update', '[data-keyvalue-data]', (event, element) => {
+        const parent = element.parentElement;
+        const list = parent && parent.querySelector('ul');
+        const template = parent && parent.querySelector('[data-keyvalue-template]');
+        if (!parent || !list || !template) return;
 
-    body.delegate('update', '[data-keyvalue-data]', function(event, element) {
-        var parent = element.parent(),
-            items  = parent.search('[data-keyvalue-item]'),
-            list   = parent.find('ul'),
-            data   = JSON.parse(element.value()),
-            tmpl   = parent.find('[data-keyvalue-template]');
-
-        if (items) { items.remove(); }
-
-        data.forEach(function(obj, index) {
-            var clone = $(tmpl[0].cloneNode(true)),
-                key   = Object.keys(obj).shift(),
-                value = obj[key];
-
+        parent.querySelectorAll('[data-keyvalue-item]').forEach(item => item.remove());
+        JSON.parse(element.value).forEach(object => {
+            const clone = template.cloneNode(true);
+            const key = Object.keys(object).shift();
             list.appendChild(clone);
-
-            clone.attribute('style', null).data('keyvalue-item', clone.data('keyvalue-template'));
-            clone.attribute('data-keyvalue-template', null);
-            clone.attribute('data-keyvalue-nosort', null);
-            clone.find('[data-keyvalue-key]').value(key);
-            clone.find('[data-keyvalue-value]').value(value);
+            clone.removeAttribute('style');
+            clone.setAttribute('data-keyvalue-item', clone.getAttribute('data-keyvalue-template') || '');
+            clone.removeAttribute('data-keyvalue-template');
+            clone.removeAttribute('data-keyvalue-nosort');
+            clone.querySelector('[data-keyvalue-key]').value = key;
+            clone.querySelector('[data-keyvalue-value]').value = object[key];
         });
     });
-
 });
 
 module.exports = {};

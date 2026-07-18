@@ -1,9 +1,9 @@
-"use strict";
-var ready         = require('../utils/dom').ready,
-    $             = require('elements/attributes'),
-    History       = require('../utils/history'),
-    flags         = require('../utils/flags-state'),
-    submit        = require('./submit');
+'use strict';
+
+var dom = require('../utils/dom'),
+    History = require('../utils/history'),
+    flags = require('../utils/flags-state'),
+    submit = require('./submit');
 
 require('./multicheckbox');
 
@@ -11,68 +11,99 @@ var mapsEqual = function(first, second, comparator) {
     if (!(first instanceof Map) || !(second instanceof Map) || first.size !== second.size) { return false; }
 
     for (var entry of first) {
-        var key = entry[0], value = entry[1];
-        if (!second.has(key) || !comparator(value, second.get(key))) { return false; }
+        if (!second.has(entry[0]) || !comparator(entry[1], second.get(entry[0]))) { return false; }
     }
     return true;
 };
 
+var readData = function(element, name) {
+    return element.getAttribute('data-' + name);
+};
+
+var fieldValue = function(field, value) {
+    if (arguments.length > 1) {
+        field.value = value;
+        return value;
+    }
+
+    if (field instanceof HTMLSelectElement && field.multiple) {
+        return Array.from(field.selectedOptions, function(option) { return option.value; });
+    }
+    return field.value == null ? '' : field.value;
+};
+
+var findIndicator = function(element) {
+    return element ? element.querySelector('i') : null;
+};
+
+var showIndicator = function(element, className) {
+    if (!element) { return; }
+
+    var icon = findIndicator(element);
+    element.gHadIcon = Boolean(icon);
+
+    if (!icon) {
+        if (!element.querySelector('span') && element.children.length === 0) {
+            var label = document.createElement('span');
+            label.textContent = element.textContent;
+            element.textContent = '';
+            element.appendChild(label);
+        }
+        icon = document.createElement('i');
+        element.insertBefore(icon, element.firstChild);
+    }
+
+    if (!element.gIndicator) { element.gIndicator = icon.getAttribute('class') || true; }
+    icon.setAttribute('class', className || 'fa fa-fw fa-spin-fast fa-spinner');
+};
+
+var hideIndicator = function(element) {
+    if (!element || !element.gIndicator) { return; }
+
+    var icon = findIndicator(element);
+    if (!icon) { return; }
+
+    if (!element.gHadIcon) { icon.remove(); }
+    else { icon.setAttribute('class', element.gIndicator); }
+    element.gIndicator = null;
+};
+
 var originals,
+    presetsCache,
     collectFieldsValues = function(keys) {
-        var map      = new Map(),
-            defaults = $('[data-g-styles-defaults]'),
-            overridables = $('input[type="checkbox"].settings-param-toggle');
+        var map = new Map(),
+            defaultsElement = document.querySelector('[data-g-styles-defaults]'),
+            defaults = defaultsElement ? JSON.parse(readData(defaultsElement, 'g-styles-defaults')) : {},
+            overrides = document.querySelectorAll('input[type="checkbox"].settings-param-toggle');
 
-        defaults = defaults ? JSON.parse(defaults.data('g-styles-defaults')) : {};
-
-        // keep track of overrides getting enabled / disabled
-        // in order to detect if has changed
-        if (overridables) {
-            var overrides = {};
-
-            overridables.forEach(function(override) {
-                override = $(override);
-                overrides[override.id()] = override.checked();
-            });
-
-            map.set('__js__overrides', JSON.stringify(overrides));
+        if (overrides.length) {
+            var states = {};
+            overrides.forEach(function(override) { states[override.id] = override.checked; });
+            map.set('__js__overrides', JSON.stringify(states));
         }
 
         if (keys) {
-            var field;
             keys.forEach(function(key) {
-                field = $('[name="' + key + '"]');
-                if (field) {
-                    map.set(key, field.value());
-                }
+                var field = document.querySelector('[name="' + CSS.escape(key) + '"]');
+                if (field) { map.set(key, fieldValue(field)); }
             });
-
             return map;
         }
 
-        var fields = $('.settings-block [name]');
-        if (!fields) { return false; }
+        var fields = document.querySelectorAll('.settings-block [name]');
+        if (!fields.length) { return false; }
 
         fields.forEach(function(field) {
-            field = $(field);
-            var key     = field.attribute('name'),
+            var key = field.getAttribute('name'),
                 isInput = !Object.prototype.hasOwnProperty.call(defaults, key);
 
-            if (field.type() == 'checkbox' && !field.value().length) { field.value('0'); }
-            map.set(key, isInput ? field.value() : defaults[key]);
-        }, this);
-
+            if (field.type === 'checkbox' && !fieldValue(field).length) { fieldValue(field, '0'); }
+            map.set(key, isInput ? fieldValue(field) : defaults[key]);
+        });
         return map;
     },
-    createMapFrom       = function(data) {
-        var map = new Map();
-
-        Object.keys(data).forEach(function(key) {
-            var value = data[key];
-            map.set(key, value);
-        });
-
-        return map;
+    createMapFrom = function(data) {
+        return new Map(Object.keys(data).map(function(key) { return [key, data[key]]; }));
     };
 
 var compare = {
@@ -82,147 +113,124 @@ var compare = {
     presets: function() {}
 };
 
-ready(function() {
-    var body = $('body'), presetsCache;
+dom.ready(function() {
+    var body = document.body;
 
     originals = collectFieldsValues();
 
     compare.single = function(event, element) {
-        var parent      = element.parent('.settings-param') || element.parent('h4') || element.parent('.input-group'),
-            target      = parent ? (parent.matches('h4') ? parent : parent.find('.settings-param-title, .g-instancepicker-title')) : null,
-            isOverride  = parent ? parent.find('.settings-param-toggle') : false,
+        var parent = element.closest('.settings-param, h4, .input-group'),
+            target = parent ? (parent.matches('h4') ? parent : parent.querySelector('.settings-param-title, .g-instancepicker-title')) : null,
+            override = parent ? parent.querySelector('.settings-param-toggle') : null,
             isNewWidget = false,
-            isOverrideToggle = element.hasClass('settings-param-toggle');
+            isOverrideToggle = element.classList.contains('settings-param-toggle');
 
         if (!parent) { return; }
+        if (isOverrideToggle) { compare.whole('force'); return; }
 
-        if (isOverrideToggle) {
-            return compare.whole('force');
-        }
+        if (element.type === 'checkbox') { fieldValue(element, Number(element.checked).toString()); }
 
-        if (element.type() == 'checkbox') {
-            element.value(Number(element.checked()).toString());
-        }
-
-        if (originals && originals.get(element.attribute('name')) == null) {
-            originals.set(element.attribute('name'), element.value());
+        var name = element.getAttribute('name');
+        if (originals && originals.get(name) == null) {
+            originals.set(name, fieldValue(element));
             isNewWidget = true;
         }
+        if (!target || !originals || originals.get(name) == null) { return; }
 
-        if (!target || !originals || originals.get(element.attribute('name')) == null) { return; }
-        if (originals.get(element.attribute('name')) !== element.value() || isNewWidget) {
-            if (isOverride && event.forceOverride && !isOverride.checked()) { isOverride[0].click(); }
-            target.showIndicator('changes-indicator font-small far fa-circle fa-fw');
+        if (originals.get(name) !== fieldValue(element) || isNewWidget) {
+            if (override && event.forceOverride && !override.checked) { override.click(); }
+            showIndicator(target, 'changes-indicator font-small far fa-circle fa-fw');
         } else {
-            if (isOverride && event.forceOverride && isOverride.checked()) { isOverride[0].click(); }
-            target.hideIndicator();
+            if (override && event.forceOverride && override.checked) { override.click(); }
+            hideIndicator(target);
         }
 
-        compare.blanks(event, parent.find('.settings-param-field'));
+        compare.blanks(event, parent.querySelector('.settings-param-field'));
         compare.whole('force');
         compare.presets();
     };
 
     compare.whole = function(force) {
         if (!originals) { return; }
-        var equals = mapsEqual(originals, collectFieldsValues(force ? Array.from(originals.keys()) : null), function(a, b) {
-                if (typeof a === 'string' && typeof b === 'string' && a.substr(0, 1) == '#' && b.substr(0, 1) == '#') {
-                    return a.toLowerCase() == b.toLowerCase();
-                } else {
-                    return Object.is(a, b);
-                }
-            }),
-            save   = $('[data-save]');
 
-        if (!save) { return; }
+        var current = collectFieldsValues(force ? Array.from(originals.keys()) : null),
+            equals = mapsEqual(originals, current, function(a, b) {
+                if (typeof a === 'string' && typeof b === 'string' && a[0] === '#' && b[0] === '#') {
+                    return a.toLowerCase() === b.toLowerCase();
+                }
+                return Object.is(a, b);
+            }),
+            saves = document.querySelectorAll('[data-save]');
 
         flags.set('pending', !equals);
-        save[equals ? 'hideIndicator' : 'showIndicator']('changes-indicator far fa-circle fa-fw');
+        saves.forEach(function(save) {
+            if (equals) { hideIndicator(save); }
+            else { showIndicator(save, 'changes-indicator far fa-circle fa-fw'); }
+        });
     };
 
     compare.blanks = function(event, element) {
         if (!element) { return; }
-        var field = element.find('[name]'),
-            reset = element.find('.g-reset-field');
+        var field = element.querySelector('[name]'),
+            reset = element.querySelector('.g-reset-field');
         if (!field || !reset) { return true; }
-
-        var value = field.value();
-        if (!value || field.disabled()) { reset.style('display', 'none'); }
-        else { reset.removeAttribute('style'); }
+        reset.style.display = !fieldValue(field) || field.disabled ? 'none' : '';
     };
 
     compare.presets = function() {
-        var presets = $('[data-g-styles]'), store;
-        if (!presets) { return; }
+        var presets = document.querySelectorAll('[data-g-styles]');
+        if (!presets.length) { return; }
 
         if (!presetsCache) {
             presetsCache = new Map();
-            presets.forEach(function(preset, index) {
-                preset = $(preset);
-                store = {
-                    index: index,
-                    map: createMapFrom(JSON.parse(preset.data('g-styles')))
-                };
-                presetsCache.set(preset[0], store);
+            presets.forEach(function(preset) {
+                presetsCache.set(preset, createMapFrom(JSON.parse(readData(preset, 'g-styles'))));
             });
         }
 
-        var fields, equals;
-        presetsCache.forEach(function(data, element) {
-            fields = collectFieldsValues(Array.from(data.map.keys()));
-
-            // Do not consider __js__overrides when comparing for equality
+        presetsCache.forEach(function(presetMap, preset) {
+            var fields = collectFieldsValues(Array.from(presetMap.keys()));
             fields.delete('__js__overrides');
-
-            equals = mapsEqual(fields, data.map, function(a, b) { return a == b; });
-            $($('[data-g-styles]')[data.index]).parent()[equals ? 'addClass' : 'removeClass']('g-preset-match');
+            preset.parentElement.classList.toggle('g-preset-match', mapsEqual(fields, presetMap, function(a, b) { return a == b; }));
         });
     };
 
-    body.delegate('input', '.settings-block input[name][type="text"], .settings-block textarea[name]', compare.single);
-    body.delegate('change', '.settings-block input[name][type="hidden"], .settings-block input[name][type="checkbox"], .settings-block select[name], .settings-block .selectized[name], .settings-block input[id][type="checkbox"].settings-param-toggle', compare.single);
+    dom.delegate(body, 'input', '.settings-block input[name][type="text"], .settings-block textarea[name]', compare.single);
+    dom.delegate(body, 'change', '.settings-block input[name][type="hidden"], .settings-block input[name][type="checkbox"], .settings-block select[name], .settings-block .selectized[name], .settings-block input[id][type="checkbox"].settings-param-toggle', compare.single);
 
-    body.delegate('input', '.g-urltemplate', function(event, element) {
-        var previous = element.parent('.settings-param').siblings();
-        if (!previous) { return; }
-
-        previous = previous.find('[data-g-urltemplate]');
-
-        if (previous) {
-            var template = previous.data('g-urltemplate');
-            previous.attribute('href', template.replace(/#ID#/g, element.value()));
-        }
+    dom.delegate(body, 'input', '.g-urltemplate', function(event, element) {
+        var parent = element.closest('.settings-param');
+        if (!parent || !parent.parentElement) { return; }
+        var link = Array.from(parent.parentElement.children).filter(function(sibling) { return sibling !== parent; })
+            .map(function(sibling) { return sibling.querySelector('[data-g-urltemplate]'); })
+            .find(Boolean);
+        if (link) { link.href = readData(link, 'g-urltemplate').replace(/#ID#/g, fieldValue(element)); }
     });
 
-    // fields resets
-    body.delegate('mouseenter', '.settings-param-field', compare.blanks, true);
-    body.delegate('click', '.g-reset-field', function(e, element) {
-        var parent = element.parent('.settings-param-field'), field;
-        if (!parent) { return; }
+    dom.delegate(body, 'mouseover', '.settings-param-field', compare.blanks);
+    dom.delegate(body, 'click', '.g-reset-field', function(event, element) {
+        var parent = element.closest('.settings-param-field'),
+            field = parent ? parent.querySelector('[name]') : null;
+        if (!field || field.disabled) { return; }
 
-        field = parent.find('[name]');
-        if (field && !field.disabled()) {
-            var selectize = field.selectizeInstance;
-            if (selectize) { selectize.setValue(''); }
-            else { field.value(''); }
+        if (field.selectizeInstance) { field.selectizeInstance.setValue(''); }
+        else { fieldValue(field, ''); }
 
-            field.emit('change');
-            body.emit('input', { target: field });
-            body.emit('keyup', { target: field });
-        }
+        field.dispatchEvent(new Event('change', { bubbles: true }));
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+        field.dispatchEvent(new Event('keyup', { bubbles: true }));
     });
 
-    body.on('statechangeEnd', function() {
-        var State = History.getState();
-        body.emit('updateOriginalFields');
+    body.addEventListener('statechangeEnd', function() {
+        body.dispatchEvent(new CustomEvent('updateOriginalFields'));
     });
 
-    body.on('updateOriginalFields', function() {
+    body.addEventListener('updateOriginalFields', function() {
         originals = collectFieldsValues();
+        presetsCache = null;
         compare.presets();
     });
 
-    // force a presets comparison check
     compare.presets();
 });
 

@@ -257,7 +257,7 @@ ready(function() {
         }
 
         if (page == 'other') { $('.settings-param-title, .card.settings-block > h4').hideIndicator(); }
-        body.emit('updateOriginalFields');
+        body[0].dispatchEvent(new CustomEvent('updateOriginalFields'));
 
         request('post', saveURL, data, function(error, response) {
             if (!response.body.success) {

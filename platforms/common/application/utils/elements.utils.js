@@ -104,7 +104,7 @@ $.implement({
             instance = node.ProgresserInstance;
 
             if (!instance) { instance = new progresser(node, options); }
-            else { instance.constructor(node, options); }
+            else { instance.update(options); }
 
             node.ProgresserInstance = instance;
             return instance;
@@ -119,14 +119,15 @@ $.implement({
 
     showIndicator: function(klass, keepIcon) {
         this.forEach(function(node) {
-            node = $(node);
+            var raw = node;
+            node = $(raw);
             if (typeof klass == 'boolean') {
                 keepIcon = klass;
                 klass = null;
             }
 
             var icon = keepIcon ? false : node.find('i');
-            node.gHadIcon = !!icon;
+            raw.gHadIcon = !!icon;
 
             if (!icon) {
                 if (!node.find('span') && node[0].children.length === 0) {
@@ -141,24 +142,25 @@ $.implement({
                 icon = $(iconElement);
             }
 
-            if (!node.gIndicator) { node.gIndicator = icon.attribute('class') || true; }
+            if (!raw.gIndicator) { raw.gIndicator = icon.attribute('class') || true; }
             icon.attribute('class', klass || 'fa fa-fw fa-spin-fast fa-spinner');
         });
     },
 
     hideIndicator: function() {
         this.forEach(function(node) {
-            node = $(node);
-            if (!node.gIndicator) { return; }
+            var raw = node;
+            node = $(raw);
+            if (!raw.gIndicator) { return; }
 
             var icon = node.find('i');
 
             if (!icon) { return; }
 
-            if (!node.gHadIcon) { icon.remove(); }
-            else { icon.attribute('class', node.gIndicator); }
+            if (!raw.gHadIcon) { icon.remove(); }
+            else { icon.attribute('class', raw.gIndicator); }
 
-            node.gIndicator = null;
+            raw.gIndicator = null;
         });
     },
 
