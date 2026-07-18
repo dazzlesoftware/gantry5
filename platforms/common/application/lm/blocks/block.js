@@ -1,8 +1,6 @@
 "use strict";
 
-var Base = require('./base'),
-    $    = require('../../utils/elements.utils'),
-    zen  = require('elements/zen');
+var Base = require('./base');
 
 var precision = function(value, decimals) {
     var multiplier = Math.pow(10, decimals);
@@ -27,11 +25,10 @@ class Block extends Base {
         size = precision(size, 1);
         if (store) { this.setAttribute('size', size); }
 
-        $(this.block).style({
-            flex: '0 1 ' + size + '%',
-            '-webkit-flex': '0 1 ' + size + '%',
-            '-ms-flex': '0 1 ' + size + '%'
-        });
+        var style = this.block[0].style;
+        style.flex = '0 1 ' + size + '%';
+        style.webkitFlex = '0 1 ' + size + '%';
+        style.msFlex = '0 1 ' + size + '%';
 
         this.emit('resized', size, this);
     }
@@ -41,24 +38,36 @@ class Block extends Base {
         size = precision(size, 1);
         if (store) { this.setAttribute('size', size); }
 
-        $(this.block).animate({
-            flex: '0 1 ' + size + '%',
-            '-webkit-flex': '0 1 ' + size + '%',
-            '-ms-flex': '0 1 ' + size + '%'
-        }, {
-            callback: function() {
-                this.block.attribute('style', null);
+        var block = this.block[0],
+            target = '0 1 ' + size + '%';
+
+        if (this.sizeAnimation) { this.sizeAnimation.cancel(); }
+        if (typeof block.animate === 'function') {
+            this.sizeAnimation = block.animate([
+                { flex: getComputedStyle(block).flex },
+                { flex: target }
+            ], {
+                duration: 250,
+                easing: 'ease',
+                fill: 'forwards'
+            });
+            this.sizeAnimation.addEventListener('finish', function() {
+                this.sizeAnimation = null;
+                block.removeAttribute('style');
                 this.setSize(size);
-            }.bind(this)
-        });
+            }.bind(this), { once: true });
+        } else {
+            block.removeAttribute('style');
+            this.setSize(size);
+        }
 
         this.emit('resized', size, this);
     }
 
     setLabelSize(size) {
-        var label = this.block.find('> .particle-size');
+        var label = this.block[0].querySelector(':scope > .particle-size');
         if (!label) { return false; }
-        label.text(precision(size, 1) + '%');
+        label.textContent = precision(size, 1) + '%';
     }
 
     layout() {
@@ -66,12 +75,21 @@ class Block extends Base {
     }
 
     onRendered(element, parent) {
-        if (element.block.find('> [data-lm-blocktype="section"]')) { this.removeDropzone(); }
+        var elementBlock = element.block[0];
+        if (elementBlock.querySelector(':scope > [data-lm-blocktype="section"]')) { this.removeDropzone(); }
         if (!parent) { return; }
 
-        var grandpa = parent.block.parent();
-        if (grandpa.data('lm-root') || (grandpa.data('lm-blocktype') == 'container' && (grandpa.parent().data('lm-root') || grandpa.parent().data('lm-blocktype') == 'wrapper'))) {
-            zen('span.particle-size').text(this.getSize() + '%').top(element.block);
+        var grandpa = parent.block[0].parentElement,
+            greatGrandpa = grandpa && grandpa.parentElement,
+            isRoot = grandpa && grandpa.hasAttribute('data-lm-root'),
+            isRootContainer = grandpa && grandpa.getAttribute('data-lm-blocktype') === 'container' && greatGrandpa &&
+                (greatGrandpa.hasAttribute('data-lm-root') || greatGrandpa.getAttribute('data-lm-blocktype') === 'wrapper');
+
+        if (isRoot || isRootContainer) {
+            var label = document.createElement('span');
+            label.className = 'particle-size';
+            label.textContent = this.getSize() + '%';
+            elementBlock.insertBefore(label, elementBlock.firstChild);
             element.on('resized', this.bound('onResize'));
         }
     }
@@ -82,20 +100,31 @@ class Block extends Base {
 
     hasChanged(state) {
         var icon,
-            child = this.block.find('> [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
+            block = this.block[0],
+            child = block.querySelector(':scope > [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
 
         this.changeState = state;
 
         if (!child) {
-            child = this.block.find('> .particle-size') || this.block.parent('[data-lm-blocktype="block"]').find('> .particle-size');
-            icon = child.find('i:first-child');
+            child = block.querySelector(':scope > .particle-size');
+            if (!child) {
+                var parentBlock = block.parentElement && block.parentElement.closest('[data-lm-blocktype="block"]');
+                child = parentBlock && parentBlock.querySelector(':scope > .particle-size');
+            }
+            if (!child) { return; }
+
+            icon = child.querySelector('i:first-child');
 
             if (!state && icon) { icon.remove(); }
-            if (state && !icon) { zen('i.far.fa-circle.changes-indicator').top(child); }
+            if (state && !icon) {
+                icon = document.createElement('i');
+                icon.className = 'far fa-circle changes-indicator';
+                child.insertBefore(icon, child.firstChild);
+            }
             return;
         }
 
-        var mapped = this.options.builder.get(child.data('lm-id'));
+        var mapped = this.options.builder.get(child.getAttribute('data-lm-id'));
         if (mapped) { mapped.emit('changed', state, this); }
     }
 }

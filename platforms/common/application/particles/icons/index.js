@@ -1,144 +1,134 @@
 "use strict";
-var $             = require('../../utils/elements.utils'),
-    domready      = require('elements/domready'),
-    modal         = require('../../ui').modal,
+
+var dom = require('../../utils/dom'),
+    modal = require('../../ui').modal,
+    popovers = require('../../ui/popover'),
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../../utils/get-ajax-url').global,
-    translate     = require('../../utils/translate');
+    parseAjaxURI = require('../../utils/get-ajax-url').parse,
+    getAjaxURL = require('../../utils/get-ajax-url').global,
+    translate = require('../../utils/translate');
 
-domready(function() {
-    var body = $('body');
-    body.delegate('keyup', '.g-icons input[type="text"]', function(event, element){
-        element = $(element);
-        var preview = element.sibling('[data-g5-iconpicker]') || element.siblings().find('[data-g5-iconpicker]'),
-            value = element.value(),
-            size;
+var escapeHTML = function(value) {
+    return String(value).replace(/[&<>"']/g, function(character) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        }[character];
+    });
+};
 
-        preview.find('i').attribute('class', value || 'far fa-hand-point-up picker');
+var findPreview = function(input) {
+    var parent = input.parentElement;
+    return parent ? parent.querySelector('[data-g5-iconpicker]') : null;
+};
 
-        size = preview[0].offsetWidth;
+dom.ready(function() {
+    var body = document.body;
 
-        if (!size) { preview.find('i').attribute('class', 'far fa-hand-point-up picker'); }
+    dom.delegate(body, 'keyup', '.g-icons input[type="text"]', function(event, input) {
+        var preview = findPreview(input),
+            icon = preview && preview.querySelector('i');
+        if (!icon) { return; }
+
+        icon.className = input.value || 'far fa-hand-point-up picker';
+        if (!preview.offsetWidth) { icon.className = 'far fa-hand-point-up picker'; }
     });
 
-    body.delegate('click', '[data-g5-iconpicker]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        element = $(element);
-        var field = $(element.data('g5-iconpicker')),
-            realPreview = element,
-            value = String(field.value() || '').trim().replace(/\s{2,}/g, ' ').split(' ');
+    dom.delegate(body, 'click', '[data-g5-iconpicker]', function(event, realPreview) {
+        event.preventDefault();
+
+        var fieldSelector = realPreview.getAttribute('data-g5-iconpicker'),
+            field = fieldSelector ? document.querySelector(fieldSelector) : null,
+            value = String(field ? field.value : '').trim().replace(/\s{2,}/g, ' ').split(' ').filter(Boolean);
+
+        if (!field) { return; }
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             className: 'g5-dialog-theme-default g5-modal-icons',
             remote: parseAjaxURI(getAjaxURL('icons') + getAjaxSuffix()),
             afterClose: function() {
-                var popovers = $('.g5-popover');
-                if (popovers) { popovers.remove(); }
+                document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
             },
             remoteLoaded: function(response, content) {
-                var html, large,
-                    container = content.elements.content,
-                    icons = container.search('[data-g-icon]');
+                var container = content.elements.content[0],
+                    icons = container.querySelectorAll('[data-g-icon]');
 
-                if (!icons || !response.body.success) {
-                    container.html(response.body.html || response.body);
+                if (!icons.length || !response.body.success) {
+                    container.innerHTML = response.body.html || response.body;
                     return false;
                 }
 
-                var updatePreview = function() {
-                    var data = [],
-                        active = container.find('[data-g-icon].active'),
-                        options = container.search('.g-particles-header .float-right input:checked, .g-particles-header .float-right select');
+                var selectButton = container.querySelector('[data-g-select]'),
+                    updatePreview = function() {
+                        var data = [],
+                            active = container.querySelector('[data-g-icon].active'),
+                            options = container.querySelectorAll('.g-particles-header .float-right input:checked, .g-particles-header .float-right select');
 
-                    if (active) { data.push(active.data('g-icon')); }
-                    if (options) {
+                        if (active) { data.push(active.getAttribute('data-g-icon')); }
                         options.forEach(function(option) {
-                            var v = $(option).value();
-                            if (v && v !== 'fa-') { data.push(v); }
+                            if (option.value && option.value !== 'fa-') { data.push(option.value); }
                         });
-                    }
 
-                    container.find('.g-icon-preview').html('<i class="' + data.join(' ') + '" aria-hidden="true"></i> <span>' + data[0] + '</span>');
-                    container.find('[data-g-select]').disabled(container.find('[data-g-icon].active') ? null : true);
-                };
+                        var preview = container.querySelector('.g-icon-preview');
+                        if (preview) {
+                            preview.innerHTML = '<i class="' + escapeHTML(data.join(' ')) + '" aria-hidden="true"></i> <span>' + escapeHTML(data[0] || '') + '</span>';
+                        }
+                        if (selectButton) { selectButton.disabled = !active; }
+                    },
+                    updateTotal = function() {
+                        var total = container.querySelectorAll('[data-g-icon]:not(.hide-icon)').length,
+                            label = container.querySelector('.particle-search-total');
+                        if (label) { label.textContent = total; }
+                    };
 
-                var updateTotal = function() {
-                    var total = container.search('[data-g-icon]:not(.hide-icon)');
-                    container.find('.particle-search-total').text(total ? total.length : 0);
-                };
+                if (selectButton) { selectButton.disabled = !container.querySelector('[data-g-icon].active'); }
 
-                container.find('[data-g-select]').disabled(container.find('[data-g-icon].active') ? null : true);
-
-                container.delegate('click', '[data-g-icon]', function(event, element) {
-                    if (event && event.preventDefault) { event.preventDefault(); }
-                    element = $(element);
-
-                    var active = container.find('[data-g-icon].active');
-                    if (active) { active.removeClass('active'); }
-
-                    element.addClass('active');
-                    container.find('[data-g-select]').disabled(null);
-
+                dom.delegate(container, 'click', '[data-g-icon]', function(iconEvent, icon) {
+                    iconEvent.preventDefault();
+                    var active = container.querySelector('[data-g-icon].active');
+                    if (active) { active.classList.remove('active'); }
+                    icon.classList.add('active');
                     updatePreview();
                 });
 
-                container.delegate('click', '[data-g-select]', function(event){
-                    event.preventDefault();
+                dom.delegate(container, 'click', '[data-g-select]', function(selectEvent) {
+                    selectEvent.preventDefault();
+                    if (!container.querySelector('[data-g-icon].active')) { return; }
 
-                    if (!container.find('[data-g-icon].active')) { return false; }
+                    var output = container.querySelector('.g-icon-preview i'),
+                        outputClass = output ? output.getAttribute('class') : '';
+                    field.value = outputClass;
 
-                    var output = container.find('.g-icon-preview i');
-                    field.value(output.attribute('class'));
-                    realPreview.find('i').attribute('class', output.attribute('class'));
-
-                    field.emit('input');
-
-                    $('body').emit('input', {target: field});
-
+                    var previewIcon = realPreview.querySelector('i');
+                    if (previewIcon) { previewIcon.className = outputClass; }
+                    field.dispatchEvent(new Event('input', { bubbles: true }));
                     modal.close();
                 });
 
-                container.delegate('change', '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', function(/*e, input*/) {
-                    updatePreview();
-                });
+                dom.delegate(container, 'change', '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
 
-                container.delegate('keyup', '.particle-search-wrapper input[type="text"]', function(e, input) {
-                    input = $(input);
-                    var value = input.value(),
-                        hidden = container.search('[data-g-icon].hide-icon');
-
-                    if (!value) {
-                        if (hidden) {
-                            hidden.removeClass('hide-icon');
-                            updateTotal();
-                        }
-                        return true;
-                    }
-
-                    var found = container.search('[data-g-icon*="' + value + '"]');
-                    container.search('[data-g-icon]').addClass('hide-icon');
-                    if (found) {
-                        found.removeClass('hide-icon');
-                    }
-
+                dom.delegate(container, 'keyup', '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
+                    var search = input.value.toLowerCase();
+                    icons.forEach(function(icon) {
+                        icon.classList.toggle('hide-icon', Boolean(search) && !icon.getAttribute('data-g-icon').toLowerCase().includes(search));
+                    });
                     updateTotal();
-
                 });
 
                 icons.forEach(function(icon) {
-                    icon = $(icon);
-                    html = '';
+                    var iconName = icon.getAttribute('data-g-icon'),
+                        html = '';
 
-                    for (var i = 5, l = 0; i > l; i--) {
-                        large = (!i) ? 'lg' : i + 'x';
-                        html += '<i class="' + icon.data('g-icon') + ' fa-' + large + '" aria-hidden="true"></i> ';
+                    for (var size = 5; size > 0; size--) {
+                        html += '<i class="' + escapeHTML(iconName) + ' fa-' + size + 'x" aria-hidden="true"></i> ';
                     }
+                    html += '<h3>' + escapeHTML(iconName) + '</h3>';
 
-                    html += '<h3>' + icon.data('g-icon') + '</h3>';
-
-                    icon.popover({
+                    var popover = popovers.create(icon, {
                         content: html,
                         placement: 'auto',
                         trigger: 'mouse',
@@ -146,37 +136,29 @@ domready(function() {
                         width: 'auto',
                         targetEvents: false,
                         delay: 1
-                    }).on('hidden.popover', function(instance) {
+                    });
+                    popover.on('hidden.popover', function(instance) {
                         if (instance.$target) { instance.$target.remove(); }
                     });
 
-                    if (value.includes(icon.data('g-icon'))) {
-                        // set active icon
-                        icon.addClass('active');
+                    if (!value.includes(iconName)) { return; }
 
-                        // toggle options
-                        value.forEach(function(name) {
-                            var field = container.find('[name="' + name + '"]');
-                            if (field) { field.checked(true); }
-                            else {
-                                field = container.find('option[value="' + name + '"]');
-                                if (field) { field.parent().value(name); }
-                            }
-                        });
+                    icon.classList.add('active');
+                    value.forEach(function(name) {
+                        var optionField = container.querySelector('[name="' + CSS.escape(name) + '"]');
+                        if (optionField) { optionField.checked = true; return; }
 
-                        // scroll into place of active icon
-                        var wrap = icon.parent('.icons-wrapper'),
-                            wrapHeight = wrap[0].offsetHeight;
-                        wrap[0].scrollTop = icon[0].offsetTop - (wrapHeight / 2);
+                        var option = container.querySelector('option[value="' + CSS.escape(name) + '"]');
+                        if (option) { option.parentElement.value = name; }
+                    });
 
-                        // update preview
-                        updatePreview();
-                    }
+                    var wrap = icon.closest('.icons-wrapper');
+                    if (wrap) { wrap.scrollTop = icon.offsetTop - (wrap.offsetHeight / 2); }
+                    updatePreview();
                 });
 
-                setTimeout(function() {
-                    container.find('.particle-search-wrapper input')[0].focus();
-                }, 5);
+                var searchInput = container.querySelector('.particle-search-wrapper input');
+                if (searchInput) { setTimeout(function() { searchInput.focus(); }, 5); }
             }
         });
     });

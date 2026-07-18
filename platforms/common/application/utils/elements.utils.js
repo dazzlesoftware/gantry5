@@ -1,7 +1,8 @@
 "use strict";
 var $          = require('elements'),
     slick      = require('slick'),
-    progresser = require('../ui/progresser');
+    progresser = require('../ui/progresser'),
+    indicator  = require('./indicator');
 
 var unitless = ['opacity', 'zIndex', 'fontWeight', 'lineHeight', 'zoom', 'order', 'flexGrow', 'flexShrink'];
 
@@ -119,48 +120,13 @@ $.implement({
 
     showIndicator: function(klass, keepIcon) {
         this.forEach(function(node) {
-            var raw = node;
-            node = $(raw);
-            if (typeof klass == 'boolean') {
-                keepIcon = klass;
-                klass = null;
-            }
-
-            var icon = keepIcon ? false : node.find('i');
-            raw.gHadIcon = !!icon;
-
-            if (!icon) {
-                if (!node.find('span') && node[0].children.length === 0) {
-                    var label = document.createElement('span');
-                    label.textContent = node.text();
-                    node[0].textContent = '';
-                    node[0].appendChild(label);
-                }
-
-                var iconElement = document.createElement('i');
-                node[0].insertBefore(iconElement, node[0].firstChild);
-                icon = $(iconElement);
-            }
-
-            if (!raw.gIndicator) { raw.gIndicator = icon.attribute('class') || true; }
-            icon.attribute('class', klass || 'fa fa-fw fa-spin-fast fa-spinner');
+            indicator.show(node, klass, keepIcon);
         });
     },
 
     hideIndicator: function() {
         this.forEach(function(node) {
-            var raw = node;
-            node = $(raw);
-            if (!raw.gIndicator) { return; }
-
-            var icon = node.find('i');
-
-            if (!icon) { return; }
-
-            if (!raw.gHadIcon) { icon.remove(); }
-            else { icon.attribute('class', raw.gIndicator); }
-
-            raw.gIndicator = null;
+            indicator.hide(node);
         });
     },
 

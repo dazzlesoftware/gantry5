@@ -318,7 +318,7 @@ domready(function() {
         event.preventDefault();
 
         var confSelector = $('#configuration-selector'),
-            outlineDeleted = body.outlineDeleted,
+            outlineDeleted = body[0].outlineDeleted,
             currentOutline = confSelector.value();
 
         ConfNavIndex = ConfNavIndex == -1 ? 1 : ConfNavIndex;
@@ -368,7 +368,7 @@ domready(function() {
         if (outlineDeleted == currentOutline) {
             var ids = Object.keys(confSelector.selectizeInstance.Options),
                 id = ids.shift();
-            body.outlineDeleted = null;
+            body[0].outlineDeleted = null;
             item.href(item.href().replace('/' + outlineDeleted + '/', '/' + id + '/').replace('style=' + outlineDeleted, 'style=' + id));
         }
 

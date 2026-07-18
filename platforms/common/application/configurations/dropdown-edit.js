@@ -1,16 +1,11 @@
 "use strict";
 
-var $             = require('elements'),
-    ready         = require('elements/domready'),
-    request       = require('../utils/request'),
-
-    modal         = require('../ui').modal,
-
+var dom = require('../utils/dom'),
+    request = require('../utils/request'),
+    modal = require('../ui').modal,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
-
-    History       = require('../utils/history');
+    parseAjaxURI = require('../utils/get-ajax-url').parse,
+    History = require('../utils/history');
 
 var guid = function() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
@@ -19,99 +14,99 @@ var guid = function() {
     return Date.now().toString(36) + Math.random().toString(36).slice(2);
 };
 
+var refreshWordpressLinks = function(title, value) {
+    if (window.GANTRY_PLATFORM !== 'wordpress') { return; }
 
-var refreshWordpressLinks = function (title, value) {
-    if (GANTRY_PLATFORM == 'wordpress') {
-        // refresh URIs with new configuration name
-        var replace = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
-            find = $('[href*="/' + value + '/"]'),
-            currentURI = History.getPageUrl(),
-            parsedURI = new URL(currentURI, window.location.href),
-            currentView = parsedURI.searchParams.get('view') || '';
+    var replacement = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
+        currentURI = History.getPageUrl(),
+        parsedURI = new URL(currentURI, window.location.href),
+        currentView = parsedURI.searchParams.get('view') || '';
 
-        if (find) {
-            find.forEach(function(lnk){
-                lnk = $(lnk);
-                var href = lnk.href().replace('/' + value + '/', '/' + replace + '/');
-                lnk.href(href);
-            });
-        }
-
-        currentView = currentView.replace('/' + value + '/', '/' + replace + '/');
-        parsedURI.searchParams.set('view', currentView);
-        currentURI = parsedURI.toString();
-        History.replaceState({ uuid: guid(), doNothing: true }, window.document.title, currentURI);
-    }
-};
-
-ready(function() {
-    var body = $('body');
-
-    var selectized, select, editable, href;
-    body.delegate('keydown', '.config-select-wrap [data-title-edit]', function(event, element) {
-        var key = (event.which ? event.which : event.keyCode);
-        if (key == 32 || key == 13) { // ARIA support: Space / Enter toggle
-            event.preventDefault();
-            body.emit('mousedown', event);
-        }
+    document.querySelectorAll('[href*="/' + CSS.escape(value) + '/"]').forEach(function(link) {
+        link.href = link.href.replace('/' + value + '/', '/' + replacement + '/');
     });
 
-    body.delegate('mousedown', '.config-select-wrap [data-title-edit]', function(event, element) {
-        selectized = element.siblings('.g-selectize-control');
-        select = element.siblings('select');
-        editable = element.siblings('[data-title-editable]');
+    currentView = currentView.replace('/' + value + '/', '/' + replacement + '/');
+    parsedURI.searchParams.set('view', currentView);
+    History.replaceState({ uuid: guid(), doNothing: true }, document.title, parsedURI.toString());
+};
+
+dom.ready(function() {
+    var body = document.body;
+
+    dom.delegate(body, 'keydown', '.config-select-wrap [data-title-edit]', function(event, editButton) {
+        if (event.keyCode !== 32 && event.keyCode !== 13) { return; }
+        event.preventDefault();
+        editButton.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+    });
+
+    dom.delegate(body, 'mousedown', '.config-select-wrap [data-title-edit]', function(event, editButton) {
+        var wrapper = editButton.parentElement,
+            selectized = wrapper && wrapper.querySelector('.g-selectize-control'),
+            select = wrapper && wrapper.querySelector('select'),
+            editable = wrapper && wrapper.querySelector('[data-title-editable]');
+
+        if (!selectized || !select || !editable) { return; }
 
         if (!editable.gConfEditAttached) {
             editable.gConfEditAttached = true;
-            editable.on('title-edit-end', function(title, original, canceled) {
-                title = String(title || '').trim();
-                if (canceled || title == original) {
-                    selectized.style('display', 'inline-block');
-                    editable.style('display', 'none').attribute('contenteditable', null);
+            editable.addEventListener('g5:title-edit-end', function(titleEvent) {
+                var detail = titleEvent.detail || {},
+                    title = String(detail.title || '').trim(),
+                    original = detail.original,
+                    canceled = detail.canceled;
 
+                var finish = function() {
+                    selectized.style.display = 'inline-block';
+                    editable.style.display = 'none';
+                    editable.removeAttribute('contenteditable');
+                };
+
+                if (canceled || title === original) {
+                    finish();
                     return;
                 }
 
-                element.addClass('disabled');
-                element.removeClass('fa-pencil').addClass('fa-spin-fast fa-spinner');
-                href = editable.data('g-config-href');
+                editButton.classList.add('disabled', 'fa-spin-fast', 'fa-spinner');
+                editButton.classList.remove('fa-pencil');
+
+                var href = editable.getAttribute('data-g-config-href'),
+                    value = select.value;
 
                 request('post', parseAjaxURI(href + getAjaxSuffix()), { title: title }, function(error, response) {
-                    if (!response.body.success) {
+                    var bodyResponse = response && response.body;
+                    if (!bodyResponse || !bodyResponse.success) {
                         modal.open({
-                            content: response.body.html || response.body.message || response.body,
+                            content: bodyResponse ? (bodyResponse.html || bodyResponse.message || bodyResponse) : (error ? error.message : 'Unable to rename outline.'),
                             afterOpen: function(container) {
-                                if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                                if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container[0]) {
+                                    container[0].style.width = '90%';
+                                }
                             }
                         });
-
-                        editable.data('title-editable', original).text(original);
+                        editable.setAttribute('data-title-editable', original);
+                        editable.textContent = original;
                     } else {
                         var selectize = select.selectizeInstance,
-                            value = select.value(),
-                            data = selectize.Options[value];
+                            data = selectize && selectize.Options[value];
 
-                        data[selectize.options.labelField] = title;
-                        selectize.updateOption(value, data);
-
-                        selectized.style('display', 'inline-block');
-                        editable.style('display', 'none')
+                        if (selectize && data) {
+                            data[selectize.options.labelField] = title;
+                            selectize.updateOption(value, data);
+                        }
+                        refreshWordpressLinks(title, value);
                     }
 
-                    // fix Wordpress non unique IDs by refreshing all hrefs
-                    refreshWordpressLinks(title, value);
-
-                    element.removeClass('disabled');
-                    element.removeClass('fa-spin-fast fa-spinner').addClass('fa-pencil');
+                    finish();
+                    editButton.classList.remove('disabled', 'fa-spin-fast', 'fa-spinner');
+                    editButton.classList.add('fa-pencil');
                 });
             });
         }
 
-        editable.style({
-            width: selectized.compute('width'),
-            display: 'inline-block'
-        });
-        selectized.style('display', 'none');
+        editable.style.width = selectized.getBoundingClientRect().width + 'px';
+        editable.style.display = 'inline-block';
+        selectized.style.display = 'none';
     });
 });
 

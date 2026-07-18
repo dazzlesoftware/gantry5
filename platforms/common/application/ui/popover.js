@@ -629,3 +629,12 @@ $.implement({
 });
 
 module.exports = $;
+module.exports.create = function(element, options) {
+    var popover = storage.get(element);
+    if (!popover) {
+        popover = new Popover(element, options || {});
+        storage.set(element, popover);
+        element.PopoverDefined = true;
+    }
+    return popover;
+};

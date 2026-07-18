@@ -1,7 +1,6 @@
 "use strict";
 
-var $                  = require('elements'),
-    Atom               = require('./atom'),
+var Atom               = require('./atom'),
     getAjaxURL         = require('../../utils/get-ajax-url').config,
     getOutlineNameById = require('../../utils/get-outline').getOutlineNameById,
     translate          = require('../../utils/translate');
@@ -33,32 +32,37 @@ class Particle extends Atom {
     }
 
     enableInheritance() {
-        this.block.attribute('class', this.cleanKlass(this.block.attribute('class')));
+        var block = this.block[0];
+        block.className = this.cleanKlass(block.className);
         if (!this.hasInheritance()) { return; }
 
-        var icon = this.block.find('.icon');
-        this.block.addClass('g-inheriting');
+        var icon = block.querySelector('.icon');
+        block.classList.add('g-inheriting');
         if (this.inherit.include.length) {
-            this.block.addClass('g-inheriting-' + this.inherit.include.join(' g-inheriting-'));
+            this.inherit.include.forEach(function(name) { block.classList.add('g-inheriting-' + name); });
         }
-        this.block.find('.icon .fa').attribute('class', 'fa ' + this.getIcon());
-        forOwn(this.getInheritanceTip(), function(value, key) { icon.data(key, value); });
+        var iconGlyph = block.querySelector('.icon .fa');
+        if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
+        forOwn(this.getInheritanceTip(), function(value, key) { icon.setAttribute('data-' + key, value); });
         global.G5.tips.reload();
     }
 
     disableInheritance() {
-        var icon = this.block.find('.icon');
-        this.block.attribute('class', this.cleanKlass(this.block.attribute('class')));
-        this.block.removeClass('g-inheriting');
-        this.block.find('.icon .fa').attribute('class', 'fa ' + this.getIcon());
-        forOwn(this.getInheritanceTip(), function(value, key) { icon.data(key, null); });
+        var block = this.block[0],
+            icon = block.querySelector('.icon'),
+            iconGlyph = block.querySelector('.icon .fa');
+        block.className = this.cleanKlass(block.className);
+        block.classList.remove('g-inheriting');
+        if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
+        forOwn(this.getInheritanceTip(), function(value, key) { icon.removeAttribute('data-' + key); });
         global.G5.tips.reload();
     }
 
     refreshInheritance() {
-        this.block[this.hasInheritance() ? 'removeClass' : 'addClass']('g-inheritance');
+        var block = this.block[0];
+        block.classList.toggle('g-inheritance', !this.hasInheritance());
         if (this.hasInheritance()) {
-            this.block.attribute('class', this.cleanKlass(this.block.attribute('class')));
+            block.className = this.cleanKlass(block.className);
         }
     }
 
@@ -91,14 +95,14 @@ class Particle extends Atom {
     }
 
     setLabelSize(size) {
-        var label = this.block.find('.particle-size');
+        var label = this.block[0].querySelector('.particle-size');
         if (!label) { return false; }
-        label.text(precision(size, 1) + '%');
+        label.textContent = precision(size, 1) + '%';
     }
 
     onRendered(element, parent) {
         var size = parent.getSize() || 100,
-            globallyDisabled = $('[data-lm-disabled][data-lm-subtype="' + this.getSubType() + '"]');
+            globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
 
         if (globallyDisabled || this.getAttribute('enabled') === 0) { this.disable(); }
         this.setLabelSize(size);
@@ -106,8 +110,8 @@ class Particle extends Atom {
     }
 
     getParent() {
-        var parent = this.block.parent('[data-lm-id]');
-        return this.options.builder.get(parent.data('lm-id'));
+        var parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
+        return parent ? this.options.builder.get(parent.getAttribute('data-lm-id')) : null;
     }
 
     onParentResize(resize) {
@@ -119,17 +123,18 @@ class Particle extends Atom {
 
         var type = this.getType(),
             subtype = this.getSubType(),
-            template = $('.particles-container [data-lm-blocktype="' + type + '"][data-lm-subtype="' + subtype + '"]');
+            template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || '') + '"]');
 
-        return template ? template.data('lm-icon') : 'fa-cube';
+        return template ? template.getAttribute('data-lm-icon') : 'fa-cube';
     }
 
     getLimits(parent) {
         if (!parent) { return false; }
-        var sibling = parent.block.nextSibling() || parent.block.previousSibling() || false;
+        var parentBlock = parent.block[0],
+            sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
         if (!sibling) { return [100, 100]; }
 
-        var siblingBlock = this.options.builder.get(sibling.data('lm-id')),
+        var siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id')),
             sizes = {
                 current: this.getParent().getSize(),
                 sibling: siblingBlock.getSize()

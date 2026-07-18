@@ -326,6 +326,10 @@ ready(function() {
         $title.storedTitle = trim($title.text());
         $title.titleEditCanceled = false;
         $title.emit('title-edit-start', $title.storedTitle);
+        $title[0].dispatchEvent(new CustomEvent('g5:title-edit-start', {
+            bubbles: true,
+            detail: { title: $title.storedTitle }
+        }));
     });
 
     body.delegate('keydown', '[data-title-editable]', function(event, element) {
@@ -358,7 +362,18 @@ ready(function() {
         element.attribute('contenteditable', null);
         element.data('title-editable', trim(element.text()));
         window.getSelection().removeAllRanges();
-        element.emit('title-edit-end', element.data('title-editable'), element.storedTitle, element.titleEditCanceled);
+        var title = element.data('title-editable'),
+            original = element.storedTitle,
+            canceled = element.titleEditCanceled;
+        element.emit('title-edit-end', title, original, canceled);
+        element[0].dispatchEvent(new CustomEvent('g5:title-edit-end', {
+            bubbles: true,
+            detail: {
+                title: title,
+                original: original,
+                canceled: canceled
+            }
+        }));
     }, true);
 
     // Quick Ajax Calls [data-ajax-action]

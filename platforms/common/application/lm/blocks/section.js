@@ -2,18 +2,20 @@
 
 var Base               = require('./base'),
     Grid               = require('./grid'),
-    $                  = require('elements'),
-    zen                = require('elements/zen'),
     getAjaxURL         = require('../../utils/get-ajax-url').config,
     getOutlineNameById = require('../../utils/get-outline').getOutlineNameById,
     translate          = require('../../utils/translate');
-
-require('elements/insertion');
 
 var forOwn = function(object, callback) {
     Object.keys(object || {}).forEach(function(key) {
         callback(object[key], key);
     });
+};
+
+var elementFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = html.trim();
+    return template.content.firstElementChild;
 };
 
 class Section extends Base {
@@ -41,7 +43,9 @@ class Section extends Base {
     }
 
     adopt(child) {
-        $(child).insert(this.block.find('.g-grid'));
+        var node = child && child.nodeType ? child : child && child[0],
+            grid = this.block[0].querySelector('.g-grid');
+        if (node && grid) { grid.appendChild(node); }
     }
 
     renderInheritanceLabel(outline) {
@@ -52,34 +56,37 @@ class Section extends Base {
 
     enableInheritance() {
         if (!this.hasInheritance()) { return; }
-        this.block.attribute('class', this.cleanKlass(this.block.attribute('class')));
-        this.block.addClass('g-inheriting');
+        var block = this.block[0];
+        block.className = this.cleanKlass(block.className);
+        block.classList.add('g-inheriting');
         if (this.inherit.include.length) {
-            this.block.addClass('g-inheriting-' + this.inherit.include.join(' g-inheriting-'));
+            this.inherit.include.forEach(function(name) { block.classList.add('g-inheriting-' + name); });
         }
 
-        if (!this.block.find('> .g-inherit')) {
-            var inherit = zen('div'),
-                html = this.renderInheritanceLabel(getOutlineNameById(this.inherit.outline));
-            inherit.html(html).children().after(this.block.find('> .section-header'));
+        if (!block.querySelector(':scope > .g-inherit')) {
+            var header = block.querySelector(':scope > .section-header'),
+                inherit = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById(this.inherit.outline)));
+            if (header && inherit) { header.after(inherit); }
         }
     }
 
     disableInheritance() {
-        var inherit = this.block.find('> .g-inherit.g-section-inherit');
+        var block = this.block[0],
+            inherit = block.querySelector(':scope > .g-inherit.g-section-inherit');
         if (inherit) { inherit.remove(); }
-        this.block.attribute('class', this.cleanKlass(this.block.attribute('class')));
-        this.block.removeClass('g-inheriting');
+        block.className = this.cleanKlass(block.className);
+        block.classList.remove('g-inheriting');
     }
 
     refreshInheritance() {
-        this.block.attribute('class', this.cleanKlass(this.block.attribute('class')));
+        var block = this.block[0];
+        block.className = this.cleanKlass(block.className);
         if (!this.hasInheritance()) { return; }
 
         this.enableInheritance();
-        var overlay = this.block.find('> .g-inherit'),
-            content = zen('div').html(this.renderInheritanceLabel(getOutlineNameById(this.inherit.outline)));
-        if (overlay && content) { overlay.html(content.children().html()); }
+        var overlay = block.querySelector(':scope > .g-inherit'),
+            content = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById(this.inherit.outline)));
+        if (overlay && content) { overlay.innerHTML = content.innerHTML; }
     }
 
     addInheritanceTip(html) {
@@ -110,27 +117,35 @@ class Section extends Base {
     }
 
     hasChanged(state, child) {
-        var icon = this.block.find('h4 > i:first-child');
+        var block = this.block[0],
+            heading = block.querySelector('h4'),
+            icon = heading && heading.querySelector(':scope > i:first-child');
         if (icon && child && !child.changeState) { return; }
-        this.block[state ? 'addClass' : 'removeClass']('block-has-changes');
+        block.classList.toggle('block-has-changes', Boolean(state));
         if (!state && icon) { icon.remove(); }
-        if (state && !icon) { zen('i.far.fa-circle.changes-indicator').top(this.block.find('h4')); }
+        if (state && !icon && heading) {
+            icon = document.createElement('i');
+            icon.className = 'far fa-circle changes-indicator';
+            heading.insertBefore(icon, heading.firstChild);
+        }
     }
 
     onDone() {
-        if (!this.block.search('[data-lm-id]')) {
+        var block = this.block[0];
+        if (!block.querySelector('[data-lm-id]')) {
             this.grid.insert(this.block, 'bottom');
             this.options.builder.add(this.grid);
         }
 
-        var plus = this.block.find('.fa-plus');
-        if (plus) {
-            plus.on('click', function(event) {
+        var plus = block.querySelector('.fa-plus');
+        if (plus && !plus.gSectionAddAttached) {
+            plus.gSectionAddAttached = true;
+            plus.addEventListener('click', function(event) {
                 if (event) { event.preventDefault(); }
-                if (this.block.find('.g-grid:last-child:empty')) { return false; }
+                if (block.querySelector('.g-grid:last-child:empty')) { return false; }
 
                 this.grid = new Grid();
-                var container = this.block.find('[data-lm-blocktype="container"]');
+                var container = block.querySelector('[data-lm-blocktype="container"]');
                 this.grid.insert(container || this.block, 'bottom');
                 this.options.builder.add(this.grid);
             }.bind(this));
@@ -139,16 +154,17 @@ class Section extends Base {
     }
 
     getParent() {
-        var parent = this.block.parent('[data-lm-id]');
-        return parent ? this.options.builder.get(parent.data('lm-id')) : null;
+        var parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
+        return parent ? this.options.builder.get(parent.getAttribute('data-lm-id')) : null;
     }
 
     getLimits(parent) {
         if (!parent) { return false; }
-        var sibling = parent.block.nextSibling() || parent.block.previousSibling() || false;
+        var parentBlock = parent.block[0],
+            sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
         if (!sibling) { return [100, 100]; }
 
-        var siblingBlock = this.options.builder.get(sibling.data('lm-id'));
+        var siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id'));
         if (siblingBlock.getType() !== 'block') { return false; }
         var sizes = {
             current: this.getParent().getSize(),
