@@ -1,23 +1,19 @@
 'use strict';
-var $                  = require('elements'),
-    ready              = require('elements/domready'),
-    Submit             = require('../fields/submit'),
-    modal              = require('../ui').modal,
-    toastr             = require('../ui').toastr,
-    Eraser             = require('../ui/eraser'),
-    request            = require('../utils/request'),
-    simpleSort         = require('sortablejs'),
 
-    parseAjaxURI       = require('../utils/get-ajax-url').parse,
-    getAjaxSuffix      = require('../utils/get-ajax-suffix'),
+var dom = require('../utils/dom'),
+    Submit = require('../fields/submit'),
+    modal = require('../ui').modal,
+    toastr = require('../ui').toastr,
+    Eraser = require('../ui/eraser'),
+    indicator = require('../utils/indicator'),
+    request = require('../utils/request'),
+    simpleSort = require('sortablejs'),
+    parseAjaxURI = require('../utils/get-ajax-url').parse,
+    getAjaxSuffix = require('../utils/get-ajax-suffix'),
     getOutlineNameById = require('../utils/get-outline').getOutlineNameById,
-    translate          = require('../utils/translate');
+    translate = require('../utils/translate');
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
-};
-
-var AtomsField   = '[name="page[head][atoms][_json]"]',
+var AtomsField = '[name="page[head][atoms][_json]"]',
     groupOptions = [
         { name: 'atoms', pull: 'clone', put: false },
         { name: 'atoms', pull: true, put: true },
@@ -26,48 +22,35 @@ var AtomsField   = '[name="page[head][atoms][_json]"]',
 
 var Atoms = {
     eraser: null,
-    lists: {
-        picker: null,
-        items: null
-    },
+    lists: { picker: null, items: null, trash: null },
 
     serialize: function() {
-        var output = [],
-            list   = $('.atoms-list'),
-            atoms  = list.search('[data-atom-picked]');
+        var list = document.querySelector('.atoms-list'),
+            output = [];
+        if (!list) { return '[]'; }
 
-        if (!atoms) {
-            list.empty();
-            return '[]';
-        }
-
-        atoms.forEach(function(item) {
-            item = $(item);
-            output.push(JSON.parse(item.data('atom-picked')));
+        list.querySelectorAll('[data-atom-picked]').forEach(function(item) {
+            output.push(JSON.parse(item.getAttribute('data-atom-picked')));
         });
-
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
     attachEraser: function() {
-        if (Atoms.eraser) {
-            Atoms.eraser.setElement($('[data-atoms-erase]'));
-            return;
-        }
-
-        Atoms.eraser = new Eraser('[data-atoms-erase]');
+        var element = document.querySelector('[data-atoms-erase]');
+        if (Atoms.eraser) { Atoms.eraser.setElement(element); return; }
+        Atoms.eraser = new Eraser(element);
     },
 
     createSortables: function(element) {
-        var list, sort;
-
         Atoms.attachEraser();
 
-        groupOptions.forEach(function(groupOption, i) {
-            list = !i ? '.atoms-picker' : (i == 1 ? '.atoms-list' : '#trash');
-            list = $(list);
-            sort = simpleSort.create(list[0], {
-                sort: i == 1,
+        groupOptions.forEach(function(groupOption, index) {
+            var selector = index === 0 ? '.atoms-picker' : (index === 1 ? '.atoms-list' : '#trash'),
+                list = document.querySelector(selector);
+            if (!list) { return; }
+
+            var sort = simpleSort.create(list, {
+                sort: index === 1,
                 filter: '[data-atom-ignore]',
                 group: groupOption,
                 scroll: false,
@@ -76,175 +59,148 @@ var Atoms = {
 
                 onStart: function(event) {
                     Atoms.attachEraser();
-
-                    var item = $(event.item);
-                    item.addClass('atom-dragging');
-
-                    if ($(event.from).hasClass('atoms-list')) {
-                        Atoms.eraser.show();
-                    }
+                    event.item.classList.add('atom-dragging');
+                    if (event.from.classList.contains('atoms-list')) { Atoms.eraser.show(); }
                 },
 
                 onEnd: function(event) {
-                    var item       = $(event.item),
-                        trash      = $('#trash'),
-                        target     = $(this.originalEvent.target),
+                    var item = event.item,
+                        trash = document.querySelector('#trash'),
+                        originalEvent = this.originalEvent || event.originalEvent,
+                        target = originalEvent && originalEvent.target instanceof Element ? originalEvent.target : null,
                         touchTrash = false;
 
-                    // workaround for touch devices
-                    if (this.originalEvent.type === 'touchend') {
-                        var trashSize = trash[0].getBoundingClientRect(),
-                            oE        = this.originalEvent,
-                            position  = (oE.pageY || oE.changedTouches[0].pageY) - window.scrollY;
-
-                        touchTrash = position <= trashSize.height;
+                    if (originalEvent && originalEvent.type === 'touchend' && trash) {
+                        var trashSize = trash.getBoundingClientRect(),
+                            point = originalEvent.changedTouches && originalEvent.changedTouches[0],
+                            pageY = originalEvent.pageY || (point && point.pageY) || 0;
+                        touchTrash = pageY - window.scrollY <= trashSize.height;
                     }
 
-                    if (target.matches('#trash') || target.parent('#trash') || touchTrash) {
+                    if (trash && ((target && (target === trash || trash.contains(target))) || touchTrash)) {
                         item.remove();
                         Atoms.eraser.hide();
-                        this.options.onSort();
+                        this.options.onSort(event);
                         return;
                     }
 
-                    item.removeClass('atom-dragging');
-
-                    if ($(event.from).hasClass('atoms-list')) {
-                        Atoms.eraser.hide();
-                    }
+                    item.classList.remove('atom-dragging');
+                    if (event.from.classList.contains('atoms-list')) { Atoms.eraser.hide(); }
                 },
 
                 onSort: function() {
-                    var serial = Atoms.serialize(),
-                        field  = $(AtomsField);
-
+                    var field = document.querySelector(AtomsField);
                     if (!field) { throw new Error('Field "' + AtomsField + '" not found in the DOM.'); }
-
-                    field.value(serial);
-                    $('body').emit('change', { target: field });
+                    field.value = Atoms.serialize();
+                    field.dispatchEvent(new Event('change', { bubbles: true }));
                 },
 
-                onOver: function(evt) {
-                    if (!$(evt.from).matches('.atoms-list')) { return; }
-
-                    var over = $(evt.newIndex);
-                    if (over.matches('#trash') || over.parent('#trash')) {
-                        Atoms.eraser.over();
-                    } else {
-                        Atoms.eraser.out();
-                    }
+                onOver: function(event) {
+                    if (!event.from.classList.contains('atoms-list')) { return; }
+                    var trash = document.querySelector('#trash'),
+                        over = event.related || (event.originalEvent && event.originalEvent.target);
+                    if (trash && over instanceof Node && (over === trash || trash.contains(over))) { Atoms.eraser.over(); }
+                    else { Atoms.eraser.out(); }
                 }
             });
 
-            Atoms.lists[!i ? 'picker' : 'items'] = sort;
-            if (i == 1) {
-                element.SimpleSort = sort;
-            }
+            if (index === 0) { Atoms.lists.picker = sort; }
+            else if (index === 1) { Atoms.lists.items = sort; element.SimpleSort = sort; }
+            else { Atoms.lists.trash = sort; }
         });
     }
 };
 
-var AttachSettings = function() {
-    var body = $('body');
+var attachSettings = function() {
+    dom.delegate(document.body, 'click', '.atoms-list [data-atom-picked] .config-cog', function(event, trigger) {
+        event.preventDefault();
+        var item = trigger.closest('[data-atom-picked]'),
+            list = item && item.parentElement,
+            dataField = document.querySelector(AtomsField);
+        if (!item || !list || !dataField) { return; }
 
-    body.delegate('click', '.atoms-list [data-atom-picked] .config-cog', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-
-        var list      = element.parent('ul'),
-            dataField = $(AtomsField),
-            data      = dataField.value(),
-            items     = list.search('> [data-atom-picked]'),
-            item      = element.parent('[data-atom-picked]'),
-            itemData  = item.data('atom-picked');
+        var itemData = item.getAttribute('data-atom-picked'),
+            dataValue = JSON.parse(dataField.value || '[]');
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
             data: { data: itemData },
             overlayClickToClose: false,
-            remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(trigger.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
-                    dataValue  = JSON.parse(data);
+                var container = content.elements.content[0],
+                    form = container.querySelector('form'),
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
                 if (modal.getAll().length > 1) {
-                    var applyAndSave = content.elements.content.search('[data-apply-and-save]');
-                    if (applyAndSave) { applyAndSave.remove(); }
+                    container.querySelectorAll('[data-apply-and-save]').forEach(function(button) { button.remove(); });
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 }
+                if (!form || !submits.length) { return true; }
 
-                if ((!form && !fakeDOM) || !submit) {
-                    return true;
-                }
+                submits.forEach(function(target) {
+                    target.addEventListener('click', function(submitEvent) {
+                        submitEvent.preventDefault();
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                // Atom Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
-
-                    var target = $(e.currentTarget);
-
-                    target.hideIndicator();
-                    target.showIndicator();
-
-                    // Refresh the form to collect fresh and dynamic fields
-                    var formElements = content.elements.content.find('form')[0].elements;
-                    var post = Submit(formElements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
-                        if (!response.body.success) {
-                            modal.open({
-                                content: response.body.html || response.body.message || response.body,
-                                afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                                }
-                            });
-                        } else {
-                            var index = Array.prototype.indexOf.call(items, item[0]);
-                            dataValue[index] = response.body.item;
-
-                            dataField.value(JSON.stringify(dataValue).replace(/\//g, '\\/'));
-                            item.find('.atom-title').text(dataValue[index].title);
-                            item.data('atom-picked', JSON.stringify(dataValue[index]).replace(/\//g, '\\/'));
-
-                            // toggle enabled/disabled status as needed
-                            var enabled    = Number(dataValue[index].attributes.enabled),
-                                inheriting = response.body.item.inherit && Object.keys(response.body.item.inherit).length;
-                            item[enabled ? 'removeClass' : 'addClass']('atom-disabled');
-                            item[!inheriting ? 'removeClass' : 'addClass']('g-inheriting');
-                            item.attribute('title', enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom'));
-
-                            item.data('tip', null);
-                            if (inheriting) {
-                                var inherit = response.body.item.inherit,
-                                    outline = getOutlineNameById(inherit ? inherit.outline : null),
-                                    atom = inherit.atom || '',
-                                    include = (inherit.include || []).join(', ');
-
-                                item.data('tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
-                            }
-
-                            body.emit('change', { target: dataField });
-                            global.G5.tips.reload();
-
-                            // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
-                            }
-
-                            modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                        form = container.querySelector('form');
+                        var post = Submit(form.elements, container);
+                        if (post.invalid.length) {
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
                         }
 
-                        target.hideIndicator();
+                        request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, resultResponse) {
+                            var result = resultResponse && resultResponse.body;
+                            if (!result || !result.success) {
+                                modal.open({
+                                    content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
+                                    afterOpen: function(modalContainer) {
+                                        if (result && !result.html && !result.message && modalContainer[0]) { modalContainer[0].style.width = '90%'; }
+                                    }
+                                });
+                            } else {
+                                var items = Array.from(list.querySelectorAll(':scope > [data-atom-picked]')),
+                                    itemIndex = items.indexOf(item);
+                                if (itemIndex !== -1) {
+                                    dataValue[itemIndex] = result.item;
+                                    dataField.value = JSON.stringify(dataValue).replace(/\//g, '\\/');
+                                    item.setAttribute('data-atom-picked', JSON.stringify(result.item).replace(/\//g, '\\/'));
+
+                                    var title = item.querySelector('.atom-title');
+                                    if (title) { title.textContent = result.item.title; }
+
+                                    var enabled = Number(result.item.attributes.enabled),
+                                        inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
+                                    item.classList.toggle('atom-disabled', !enabled);
+                                    item.classList.toggle('g-inheriting', Boolean(inheriting));
+                                    item.title = enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom');
+                                    item.removeAttribute('data-tip');
+
+                                    if (inheriting) {
+                                        var inherit = result.item.inherit,
+                                            outline = getOutlineNameById(inherit.outline),
+                                            atom = inherit.atom || '',
+                                            include = (inherit.include || []).join(', ');
+                                        item.setAttribute('data-tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
+                                    }
+                                    dataField.dispatchEvent(new Event('change', { bubbles: true }));
+                                    global.G5.tips.reload();
+                                }
+
+                                if (target.hasAttribute('data-apply-and-save')) {
+                                    var save = document.querySelector('.button-save');
+                                    if (save) { save.click(); }
+                                }
+                                modal.close();
+                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            }
+                            indicator.hide(target);
+                        });
                     });
                 });
             }
@@ -252,20 +208,15 @@ var AttachSettings = function() {
     });
 };
 
-var AttachSortableAtoms = function(atoms) {
-    if (!atoms) { return; }
-    if (!atoms.SimpleSort) { Atoms.createSortables(atoms); }
+var attachSortableAtoms = function(atoms) {
+    if (atoms && !atoms.SimpleSort) { Atoms.createSortables(atoms); }
 };
 
-ready(function() {
-    var atoms = $('#atoms');
-
-    $('body').delegate('mouseover', '#atoms', function(event, element) {
-        AttachSortableAtoms(element);
-    });
-
-    AttachSortableAtoms(atoms);
-    AttachSettings();
+dom.ready(function() {
+    var atoms = document.querySelector('#atoms');
+    dom.delegate(document.body, 'mouseover', '#atoms', function(event, element) { attachSortableAtoms(element); });
+    attachSortableAtoms(atoms);
+    attachSettings();
 });
 
 module.exports = Atoms;

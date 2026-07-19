@@ -349,7 +349,13 @@ ready(function() {
                 element.attribute('contenteditable', null);
                 element[0].blur();
 
-                element.emit('title-edit-exit', element.data('title-editable'), event.keyCode == 13 ? 'enter' : 'esc');
+                var exitTitle = element.data('title-editable'),
+                    exitKey = event.keyCode == 13 ? 'enter' : 'esc';
+                element.emit('title-edit-exit', exitTitle, exitKey);
+                element[0].dispatchEvent(new CustomEvent('g5:title-edit-exit', {
+                    bubbles: true,
+                    detail: { title: exitTitle, key: exitKey }
+                }));
                 return false;
             default:
                 return true;

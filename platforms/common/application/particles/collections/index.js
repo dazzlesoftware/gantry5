@@ -1,290 +1,246 @@
 "use strict";
 
-var ready         = require('elements/domready'),
-    $             = require('elements'),
-    Submit        = require('../../fields/submit'),
-    modal         = require('../../ui').modal,
-    toastr        = require('../../ui').toastr,
-    request       = require('../../utils/request'),
-    simpleSort    = require('sortablejs'),
-
-    parseAjaxURI  = require('../../utils/get-ajax-url').parse,
+var dom = require('../../utils/dom'),
+    Submit = require('../../fields/submit'),
+    modal = require('../../ui').modal,
+    toastr = require('../../ui').toastr,
+    indicator = require('../../utils/indicator'),
+    request = require('../../utils/request'),
+    simpleSort = require('sortablejs'),
+    parseAjaxURI = require('../../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    translate     = require('../../utils/translate');
+    translate = require('../../utils/translate');
 
-require('elements/insertion');
-
-var collectionIndex = function(collection, item) {
-    return Array.prototype.indexOf.call(collection, item);
+var directItems = function(list) {
+    return Array.from(list.children).filter(function(item) { return item.hasAttribute('data-collection-item'); });
 };
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
+var fieldFor = function(element) {
+    var param = element.closest('.settings-param');
+    return param && param.querySelector('[data-collection-data]');
 };
 
-ready(function() {
-    var body = $('body');
+dom.ready(function() {
+    var body = document.body;
 
-    var addNewByEnter = function(title, key) {
-        if (key == 'enter' && this.CollectionNew) {
-            this.CollectionNew = false;
-            body.emit('click', { target: this.parent('.settings-param').find('[data-collection-addnew]') });
-        }
-
-        if (key == 'esc' && this.CollectionNew) {
-            this.CollectionNew = false;
-            body.emit('click', { target: this.parent('[data-collection-item]').find('[data-collection-remove]') });
+    var addNewByExit = function(event) {
+        if (!this.CollectionNew) { return; }
+        this.CollectionNew = false;
+        if (event.detail.key === 'enter') {
+            var add = this.closest('.settings-param').querySelector('[data-collection-addnew]');
+            if (add) { add.click(); }
+        } else if (event.detail.key === 'esc') {
+            var remove = this.closest('[data-collection-item]').querySelector('[data-collection-remove]');
+            if (remove) { remove.click(); }
         }
     };
 
-    var createSortables = function(list) {
-        var lists = list || $('.collection-list ul');
-        if (!lists) { return; }
-        lists.forEach(function(list) {
-            list = $(list);
-            list.SimpleSort = simpleSort.create(list[0], {
+    var createSortables = function(value) {
+        var lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll('.collection-list ul'));
+        lists.filter(Boolean).forEach(function(list) {
+            if (list.SimpleSort) { return; }
+            list.SimpleSort = simpleSort.create(list, {
                 handle: '.fa-reorder',
                 filter: '[data-collection-nosort]',
                 scroll: false,
                 animation: 150,
-                onStart: function() {
-                    $(this.el).addClass('collection-sorting');
-                },
-                onEnd: function(evt) {
-                    var element = $(this.el);
-                    element.removeClass('collection-sorting');
+                onStart: function() { this.el.classList.add('collection-sorting'); },
+                onEnd: function(event) {
+                    this.el.classList.remove('collection-sorting');
+                    if (event.oldIndex === event.newIndex) { return; }
 
-                    if (evt.oldIndex === evt.newIndex) { return; }
-
-                    var dataField = element.parent('.settings-param').find('[data-collection-data]'),
-                        data = dataField.value();
-
-                    data = JSON.parse(data);
-
-                    data.splice(evt.newIndex, 0, data.splice(evt.oldIndex, 1)[0]);
-                    dataField.value(JSON.stringify(data));
-                    body.emit('change', { target: dataField });
+                    var dataField = fieldFor(this.el),
+                        data = JSON.parse(dataField.value || '[]');
+                    data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
+                    dataField.value = JSON.stringify(data);
+                    dataField.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
         });
     };
 
     createSortables();
+    dom.delegate(body, 'mouseover', '.collection-list ul', function(event, list) { createSortables(list); });
 
-    // delegate sortables collections for ajax support
-    body.delegate('mouseover', '.collection-list ul', function(event, element) {
-        if (!element.SimpleSort) { createSortables(element); }
+    dom.delegate(body, 'click', '[data-collection-addnew]', function(event, element) {
+        event.preventDefault();
+        var param = element.closest('.settings-param'),
+            list = param && param.querySelector('ul'),
+            template = param && param.querySelector('[data-collection-template]'),
+            dataField = param && param.querySelector('[data-collection-data]');
+        if (!list || !template || !dataField) { return; }
+
+        var items = directItems(list),
+            clone = template.cloneNode(true),
+            title = clone.querySelector('a'),
+            editable = title && title.querySelector('[data-title-editable]'),
+            editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
+
+        if (items.length) { items[items.length - 1].after(clone); }
+        else { list.insertBefore(clone, list.firstChild); }
+        if (items.length && editAll) { editAll.style.display = 'inline-block'; }
+
+        title.href = title.href.replace(/%id%/g, items.length);
+        clone.removeAttribute('style');
+        clone.setAttribute('data-collection-item', clone.getAttribute('data-collection-template'));
+        clone.removeAttribute('data-collection-template');
+        clone.removeAttribute('data-collection-nosort');
+
+        if (editable) {
+            editable.CollectionNew = true;
+            editable.addEventListener('g5:title-edit-exit', addNewByExit);
+            var editButton = title.parentElement.querySelector('[data-title-edit]');
+            if (editButton) { editButton.click(); }
+        }
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    // Add new item
-    body.delegate('click', '[data-collection-addnew]', function(event, element) {
-        var param = element.parent('.settings-param'),
-            list = param.find('ul'),
-            editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
-            dataField = param.find('[data-collection-data]'),
-            tmpl = param.find('[data-collection-template]'),
-            items = list.search('> [data-collection-item]') || [],
-            last = items.length ? $(items[items.length - 1]) : null;
+    dom.delegate(body, 'blur', '[data-collection-item] [data-title-editable]', function(event, editable) {
+        var item = editable.closest('[data-collection-item]'),
+            list = item && item.parentElement,
+            dataField = fieldFor(editable);
+        if (!item || !list || !dataField) { return; }
 
-        var clone = $(tmpl[0].cloneNode(true)), title, editable;
-
-        if (last) { clone.after(last); }
-        else { clone.top(list); }
-
-        if (items.length && editall) { editall.style('display', 'inline-block'); }
-
-        title = clone.find('a');
-        editable = title.find('[data-title-editable]');
-
-        var re = new RegExp('%id%', 'g');
-        title.href(title.href().replace(re, items.length));
-
-        clone.attribute('style', null).data('collection-item', clone.data('collection-template'));
-        clone.attribute('data-collection-template', null);
-        clone.attribute('data-collection-nosort', null);
-        editable.CollectionNew = true;
-        body.emit('click', { target: title.siblings('[data-title-edit]') });
-
-        editable.on('title-edit-exit', addNewByEnter);
-        body.emit('change', { target: dataField });
-    });
-
-    // Edit Title
-    body.delegate('blur', '[data-collection-item] [data-title-editable]', function(event, element) {
-        var text = String(element.text() || '').trim(),
-            item = element.parent('[data-collection-item]'),
-            key = item.data('collection-item'),
-            items = element.parent('ul').search('> [data-collection-item]'),
-            dataField = element.parent('.settings-param').find('[data-collection-data]'),
-            data = dataField.value(),
-            index = collectionIndex(items, item[0]);
-
-        if (index == -1) { return; }
-
-        data = JSON.parse(data);
+        var index = directItems(list).indexOf(item);
+        if (index === -1) { return; }
+        var data = JSON.parse(dataField.value || '[]'),
+            key = item.getAttribute('data-collection-item');
         if (!data[index]) { data.splice(index, 0, {}); }
-        data[index][key] = text;
-        dataField.value(JSON.stringify(data));
-        body.emit('change', { target: dataField });
+        data[index][key] = editable.textContent.trim();
+        dataField.value = JSON.stringify(data);
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     }, true);
 
-    // Remove item
-    body.delegate('click', '[data-collection-remove]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        var item = element.parent('[data-collection-item]'),
-            list = element.parent('ul'),
-            editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
-            items = list.search('> [data-collection-item]'),
-            index = collectionIndex(items, item[0]),
-            dataField = element.parent('.settings-param').find('[data-collection-data]'),
-            data = dataField.value();
+    dom.delegate(body, 'click', '[data-collection-remove]', function(event, element) {
+        event.preventDefault();
+        var item = element.closest('[data-collection-item]'),
+            list = item && item.parentElement,
+            dataField = fieldFor(element);
+        if (!item || !list || !dataField) { return; }
 
-        data = JSON.parse(data);
+        var items = directItems(list),
+            index = items.indexOf(item),
+            data = JSON.parse(dataField.value || '[]'),
+            editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
         data.splice(index, 1);
-        dataField.value(JSON.stringify(data));
+        dataField.value = JSON.stringify(data);
         item.remove();
-        if (items.length <= 2 && editall) { editall.style('display', 'none'); }
-        body.emit('change', { target: dataField });
+        if (items.length <= 2 && editAll) { editAll.style.display = 'none'; }
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    // Duplicate item
-    body.delegate('click', '[data-collection-duplicate]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        var param = element.parent('.settings-param'),
-            item = element.parent('[data-collection-item]'),
-            list = element.parent('ul'),
-            editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
-            url = param.find('[data-collection-template]').find('a').href(),
-            items = list.search('> [data-collection-item]'),
-            index = collectionIndex(items, item[0]),
-            clone = $(item[0].cloneNode(true)).after(item),
-            dataField = element.parent('.settings-param').find('[data-collection-data]'),
-            data = dataField.value();
+    dom.delegate(body, 'click', '[data-collection-duplicate]', function(event, element) {
+        event.preventDefault();
+        var item = element.closest('[data-collection-item]'),
+            list = item && item.parentElement,
+            param = element.closest('.settings-param'),
+            dataField = fieldFor(element);
+        if (!item || !list || !param || !dataField) { return; }
 
-        var re = new RegExp('%id%', 'g');
-        clone.find('a').href(url.replace(re, items.length + 1));
+        var items = directItems(list),
+            index = items.indexOf(item),
+            templateLink = param.querySelector('[data-collection-template] a'),
+            clone = item.cloneNode(true),
+            data = JSON.parse(dataField.value || '[]'),
+            editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
+        item.after(clone);
+        var cloneLink = clone.querySelector('a');
+        if (cloneLink && templateLink) { cloneLink.href = templateLink.href.replace(/%id%/g, items.length + 1); }
 
-        data = JSON.parse(data);
-        data.splice(index, 0, data[index]);
-        dataField.value(JSON.stringify(data));
-
-        if (items.length >= 1) { editall.style('display', 'inline-block'); }
-        body.emit('change', { target: dataField });
+        data.splice(index, 0, JSON.parse(JSON.stringify(data[index])));
+        dataField.value = JSON.stringify(data);
+        if (items.length >= 1 && editAll) { editAll.style.display = 'inline-block'; }
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    // Preventing click of links when title is being edited
-    body.delegate('click', '[data-collection-item] a', function(event, element) {
-        if (element.find('[contenteditable]')) {
+    dom.delegate(body, 'click', '[data-collection-item] a', function(event, link) {
+        if (link.querySelector('[contenteditable]')) {
             event.preventDefault();
             event.stopPropagation();
         }
     });
 
-    // Load item settings
-    body.delegate('click', '[data-collection-item] .config-cog, [data-collection-editall]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
+    dom.delegate(body, 'click', '[data-collection-item] .config-cog, [data-collection-editall]', function(event, element) {
+        event.preventDefault();
+        var editable = element.querySelector('[data-title-editable]');
+        if (editable && editable.hasAttribute('contenteditable')) { event.stopPropagation(); return; }
 
-        var editable = element.find('[data-title-editable]');
-        if (editable && editable.attribute('contenteditable')) {
-            event.stopPropagation();
-            return false;
-        }
+        var isEditAll = element.hasAttribute('data-collection-editall'),
+            parent = element.closest('.settings-param'),
+            dataField = parent && parent.querySelector('[data-collection-data]'),
+            item = element.closest('[data-collection-item]'),
+            list = parent && parent.querySelector('ul');
+        if (!parent || !dataField || !list) { return; }
 
-        var isEditAll = element.data('collection-editall') !== null,
-            parent = element.parent('.settings-param'),
-            dataField = parent.find('[data-collection-data]'),
-            data = dataField.value(),
-            item = element.parent('[data-collection-item]'),
-            items = parent.search('ul > [data-collection-item]');
+        var items = directItems(list),
+            data = dataField.value || '[]',
+            itemIndex = item ? items.indexOf(item) : -1,
+            dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
 
-        var dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[collectionIndex(items, item[0])]) };
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
             className: 'g5-dialog-theme-default g5-modal-collection g5-modal-collection-' + (isEditAll ? 'editall' : 'single'),
             data: dataPost,
             overlayClickToClose: false,
-            remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(element.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
-                }
+                if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var form = content.elements.content.find('form'),
-                    fakeDOM = createContainer(response.body.html).find('form'),
-                    submit = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
+                var container = content.elements.content[0],
+                    form = container.querySelector('form'),
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue = JSON.parse(data);
 
                 if (modal.getAll().length > 1) {
-                    var applyAndSave = content.elements.content.search('[data-apply-and-save]');
-                    if (applyAndSave) { applyAndSave.remove(); }
+                    container.querySelectorAll('[data-apply-and-save]').forEach(function(button) { button.remove(); });
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 }
+                if (!form || !submits.length) { return true; }
 
-                if (dataValue.length == 1) {
-                    // TODO: need to determine better how to handle single collections cards
-                    //content.elements.content.style({ width: 450 });
-                }
+                submits.forEach(function(target) {
+                    target.addEventListener('click', function(submitEvent) {
+                        submitEvent.preventDefault();
+                        indicator.hide(target);
+                        indicator.show(target);
+                        form = container.querySelector('form');
+                        var post = Submit(form.elements, container);
 
-                if ((!form && !fakeDOM) || !submit) {
-                    return true;
-                }
-
-                // Collection Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
-
-                    var target = $(e.currentTarget);
-
-                    target.hideIndicator();
-                    target.showIndicator();
-
-                    var post = Submit(fakeDOM[0].elements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
-                        if (!response.body.success) {
-                            modal.open({
-                                content: response.body.html || response.body.message || response.body,
-                                afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                                }
-                            });
-                        } else {
-                            if (item) { // single editing
-                                dataValue[collectionIndex(items, item[0])] = response.body.data;
-                            } else { // multi editing
-                                dataValue = response.body.data;
-                            }
-
-                            dataField.value(JSON.stringify(dataValue));
-                            body.emit('change', { target: dataField });
-
-                            element.parent('.settings-param-field').search('ul > [data-collection-item]').forEach(function(item, index) {
-                                item = $(item);
-                                var label = item.find('[data-title-editable]'),
-                                    text = dataValue[index][item.data('collection-item')];
-
-                                label.data('title-editable', text).text(text);
-                            });
-
-                            // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
-                            }
-
-                            modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                        if (post.invalid.length) {
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
                         }
 
-                        target.hideIndicator();
+                        request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, resultResponse) {
+                            var result = resultResponse && resultResponse.body;
+                            if (!result || !result.success) {
+                                modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
+                            } else {
+                                if (itemIndex !== -1) { dataValue[itemIndex] = result.data; }
+                                else { dataValue = result.data; }
+
+                                dataField.value = JSON.stringify(dataValue);
+                                dataField.dispatchEvent(new Event('change', { bubbles: true }));
+                                directItems(list).forEach(function(collectionItem, index) {
+                                    var label = collectionItem.querySelector('[data-title-editable]'),
+                                        text = dataValue[index][collectionItem.getAttribute('data-collection-item')];
+                                    if (label) {
+                                        label.setAttribute('data-title-editable', text);
+                                        label.textContent = text;
+                                    }
+                                });
+
+                                if (target.hasAttribute('data-apply-and-save')) {
+                                    var save = document.querySelector('.button-save');
+                                    if (save) { save.click(); }
+                                }
+                                modal.close();
+                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            }
+                            indicator.hide(target);
+                        });
                     });
                 });
             }

@@ -1,364 +1,278 @@
 "use strict";
 
-var $             = require('elements'),
-    ready         = require('elements/domready'),
-    modal         = require('../ui').modal,
-    toastr        = require('../ui').toastr,
-    request       = require('../utils/request'),
+var dom = require('../utils/dom'),
+    modal = require('../ui').modal,
+    toastr = require('../ui').toastr,
+    request = require('../utils/request'),
+    indicator = require('../utils/indicator'),
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
-    Submit        = require('../fields/submit'),
+    parseAjaxURI = require('../utils/get-ajax-url').parse,
+    getAjaxURL = require('../utils/get-ajax-url').global,
+    Submit = require('../fields/submit'),
+    flags = require('../utils/flags-state'),
+    translate = require('../utils/translate'),
+    Cards = require('./cards');
 
-    flags         = require('../utils/flags-state'),
-    translate     = require('../utils/translate'),
-    Cards         = require('./cards');
-
-var trim = function(value) {
-    return value == null ? '' : String(value).trim();
+var trim = function(value) { return value == null ? '' : String(value).trim(); };
+var asElement = function(element) { return element && element.nodeType ? element : element && element[0]; };
+var elementFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = String(html || '').trim();
+    return template.content.firstElementChild;
 };
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
+var showError = function(error, response) {
+    var result = response && response.body;
+    modal.open({
+        content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
+        afterOpen: function(container) {
+            if (result && !result.html && !result.message && container[0]) { container[0].style.width = '90%'; }
+        }
+    });
 };
 
-ready(function() {
-    var body = $('body'),
+dom.ready(function() {
+    var body = document.body,
         warningURL = parseAjaxURI(getAjaxURL('confirmdeletion') + getAjaxSuffix());
 
     Cards.init();
 
-    // Handles Positions Duplicate / Remove
-    body.delegate('click', '#positions [data-g-config], [data-g-create="position"]', function(event, element) {
-        var mode = element.data('g-config'),
-            href = element.data('g-config-href'),
-            encode = window.btoa(href),//.substr(-20, 20), // in case the strings gets too long
-            method = (element.data('g-config-method') || 'post').toLowerCase();
+    var attachEditableValidation = function(container) {
+        var editable = container.querySelector('[data-title-editable]');
+        if (!editable || editable.gPositionModalTitleAttached) { return; }
+        editable.gPositionModalTitleAttached = true;
+        editable.addEventListener('g5:title-edit-end', function(event) {
+            var title = trim(event.detail && event.detail.title);
+            if (!title) {
+                title = trim(event.detail && event.detail.original) || 'Title';
+                editable.textContent = title;
+                editable.setAttribute('data-title-editable', title);
+            }
+        });
+    };
 
-        if (event && event.preventDefault) { event.preventDefault(); }
+    var attachEditables = function(editables) {
+        editables.forEach(function(editable) {
+            if (editable.confWasAttached) { return; }
+            editable.confWasAttached = true;
+            editable.addEventListener('g5:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
+            editable.addEventListener('g5:title-edit-end', function(event) {
+                var detail = event.detail || {};
+                editable.style.textOverflow = 'ellipsis';
+                if (detail.canceled || detail.title === detail.original) { return; }
 
-        if (mode == 'delete' && !flags.get('free:to:delete:' + encode, false)) {
-            // confirm before proceeding
+                var href = editable.getAttribute('data-g-config-href'),
+                    type = editable.getAttribute('data-title-editable-type'),
+                    method = (editable.getAttribute('data-g-config-method') || 'post').toLowerCase(),
+                    parent = editable.closest('[id]'),
+                    editButton = parent && parent.querySelector('[data-title-edit]'),
+                    data = type === 'title' ? { title: trim(detail.title) } : { key: trim(detail.title) },
+                    position = parent && parent.querySelector('[data-g5-position]');
+
+                if (!parent || !position) { return; }
+                data.data = position.getAttribute('data-g5-position');
+                indicator.show(parent);
+                if (editButton) { editButton.classList.add('disabled'); }
+
+                request(method, parseAjaxURI(href + getAjaxSuffix()), data, function(error, response) {
+                    var result = response && response.body;
+                    if (!result || !result.success) {
+                        showError(error, response);
+                        editable.setAttribute('data-title-editable', detail.original);
+                        editable.textContent = detail.original;
+                    } else {
+                        var replacement = elementFromHTML(result.position),
+                            replacementPosition = replacement && (replacement.matches('[id]') ? replacement : replacement.querySelector('[id]'));
+                        if (replacementPosition) {
+                            parent.innerHTML = replacementPosition.innerHTML;
+                            attachEditables(parent.querySelectorAll('[data-title-editable]'));
+                        }
+                    }
+                    indicator.hide(parent);
+                    if (editButton) { editButton.classList.remove('disabled'); }
+                });
+            });
+        });
+    };
+
+    dom.delegate(body, 'click', '#positions [data-g-config], [data-g-create="position"]', function(event, element) {
+        event.preventDefault();
+        var mode = element.getAttribute('data-g-config'),
+            href = element.getAttribute('data-g-config-href'),
+            encoded = window.btoa(href),
+            method = (element.getAttribute('data-g-config-method') || 'post').toLowerCase();
+
+        if (mode === 'delete' && !flags.get('free:to:delete:' + encoded, false)) {
             flags.warning({
                 url: warningURL,
-                data: {page_type: 'POSITION'},
+                data: { page_type: 'POSITION' },
                 callback: function(response, content) {
-                    var confirm = content.find('[data-g-delete-confirm]'),
-                        cancel  = content.find('[data-g-delete-cancel]');
-
+                    var container = asElement(content),
+                        confirm = container && container.querySelector('[data-g-delete-confirm]'),
+                        cancel = container && container.querySelector('[data-g-delete-cancel]');
                     if (!confirm) { return; }
 
-                    confirm.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        flags.set('free:to:delete:' + encode, true);
-                        $([confirm, cancel]).attribute('disabled');
-                        body.emit('click', { target: element });
-
+                    confirm.addEventListener('click', function(confirmEvent) {
+                        confirmEvent.preventDefault();
+                        if (confirm.disabled) { return; }
+                        flags.set('free:to:delete:' + encoded, true);
+                        confirm.disabled = true;
+                        if (cancel) { cancel.disabled = true; }
+                        element.click();
                         modal.close();
                     });
-
-                    cancel.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        $([confirm, cancel]).attribute('disabled');
-                        flags.set('free:to:delete:' + encode, false);
-
-                        modal.close();
-                    });
+                    if (cancel) {
+                        cancel.addEventListener('click', function(cancelEvent) {
+                            cancelEvent.preventDefault();
+                            if (cancel.disabled) { return; }
+                            confirm.disabled = true;
+                            cancel.disabled = true;
+                            flags.set('free:to:delete:' + encoded, false);
+                            modal.close();
+                        });
+                    }
                 }
             });
-
-            return false;
+            return;
         }
 
-        element.hideIndicator();
-        element.showIndicator();
-
+        indicator.hide(element);
+        indicator.show(element);
         request(method, parseAjaxURI(href + getAjaxSuffix()), {}, function(error, response) {
-            if (!response.body.success) {
-                modal.open({
-                    content: response.body.html || response.body.message || response.body,
-                    afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                    }
-                });
+            var result = response && response.body;
+            if (!result || !result.success) {
+                showError(error, response);
             } else {
-                var positionDeleted = response.body.position,
-                    reload = $('[href="' + getAjaxURL('positions') + '"]');
-
-                if (!reload) { window.location = window.location; }
-                else {
-                    body.emit('click', {target: reload});
-                }
-
-                toastr.success(response.body.html || 'Action successfully completed.', response.body.title || '');
-                if (positionDeleted) {
-                    body.positionDeleted = positionDeleted;
-                }
+                var reload = Array.from(document.querySelectorAll('[href]')).find(function(link) {
+                    return link.getAttribute('href') === getAjaxURL('positions');
+                });
+                if (reload) { reload.click(); }
+                else { window.location.reload(); }
+                toastr.success(result.html || 'Action successfully completed.', result.title || '');
+                if (result.position) { body.positionDeleted = result.position; }
             }
-
-            element.hideIndicator();
+            indicator.hide(element);
         });
-
     });
 
-    // Positions Add
-    body.delegate('click', '#positions .position-add', function(event, element) {
+    dom.delegate(body, 'click', '#positions .position-add', function(event, element) {
         event.preventDefault();
-
-        var data = {};
-
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'get',
             overlayClickToClose: false,
-            remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(element.href + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
-                }
+                if (!response.body.success) { modal.enableCloseByOverlay(); return; }
+                var container = content.elements.content[0],
+                    search = container.querySelector('.search input'),
+                    blocks = container.querySelectorAll('[data-mm-type]'),
+                    filters = container.querySelectorAll('[data-mm-filter]'),
+                    urlTemplate = container.querySelector('.g-urltemplate');
 
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
+                attachEditableValidation(container);
 
-                var search      = content.elements.content.find('.search input'),
-                    blocks      = content.elements.content.search('[data-mm-type]'),
-                    filters     = content.elements.content.search('[data-mm-filter]'),
-                    urlTemplate = content.elements.content.find('.g-urltemplate');
-
-                if (urlTemplate) { body.emit('input', { target: urlTemplate }); }
-
-                var editable = content.elements.content.find('[data-title-editable]');
-                if (editable) {
-                    editable.on('title-edit-end', function(title, original/*, canceled*/) {
-                        title = trim(title);
-                        if (!title) {
-                            title = trim(original) || 'Title';
-                            this.text(title).data('title-editable', title);
-
-                            return true;
-                        }
-                    });
-                }
-
-                if (search && filters && blocks) {
-                    search.on('input', function() {
-                        if (!this.value()) {
-                            blocks.removeClass('hidden');
-                            return;
-                        }
-
-                        blocks.addClass('hidden');
-
-                        var found = [], value = this.value().toLowerCase(), text;
-
+                if (search && filters.length && blocks.length) {
+                    search.addEventListener('input', function() {
+                        var value = search.value.toLowerCase();
+                        blocks.forEach(function(block) { block.classList.toggle('hidden', Boolean(value)); });
+                        if (!value) { return; }
                         filters.forEach(function(filter) {
-                            filter = $(filter);
-                            text = trim(filter.data('mm-filter')).toLowerCase();
-                            if (text.match(new RegExp("^" + value + '|\\s' + value, 'gi'))) {
-                                found.push(filter.matches('[data-mm-type]') ? filter : filter.parent('[data-mm-type]'));
-                            }
-                        }, this);
-
-                        if (found.length) { $(found).removeClass('hidden'); }
+                            var text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
+                                match = text.startsWith(value) || text.includes(' ' + value),
+                                block = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
+                            if (match && block) { block.classList.remove('hidden'); }
+                        });
                     });
                 }
-
-                if (search) {
-                    setTimeout(function() {
-                        search[0].focus();
-                    }, 5);
-                }
-
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                if (search) { setTimeout(function() { search.focus(); }, 5); }
             }
         });
     });
 
-    // Positions Items settings
-    body.delegate('click', '#positions .item-settings', function(event, element) {
+    dom.delegate(body, 'click', '#positions .item-settings', function(event, element) {
         event.preventDefault();
+        var item = element.closest('[data-pm-data]'),
+            positionElement = element.closest('[data-g5-position]');
+        if (!item || !positionElement) { return; }
 
-        var data = {},
-            parent = element.parent('[data-pm-data]'),
-            position = JSON.parse(element.parent('[data-g5-position]').data('g5-position'));
-
-        data.position = position.name;
-        data.item = parent.data('pm-data');
-
+        var position = JSON.parse(positionElement.getAttribute('data-g5-position'));
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
-            data: data,
+            data: { position: position.name, item: item.getAttribute('data-pm-data') },
             overlayClickToClose: false,
-            remote: parseAjaxURI(getAjaxURL('positions/edit/' + parent.data('pm-blocktype')) + getAjaxSuffix()),
+            remote: parseAjaxURI(getAjaxURL('positions/edit/' + item.getAttribute('data-pm-blocktype')) + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
-                }
+                if (!response.body.success) { modal.enableCloseByOverlay(); return; }
+                var container = content.elements.content[0],
+                    form = container.querySelector('form'),
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                attachEditableValidation(container);
+                if (!form || !submits.length) { return true; }
 
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                submits.forEach(function(target) {
+                    target.addEventListener('click', function(submitEvent) {
+                        submitEvent.preventDefault();
+                        target.disabled = true;
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                var editable = content.elements.content.find('[data-title-editable]');
-                if (editable) {
-                    editable.on('title-edit-end', function(title, original/*, canceled*/) {
-                        title = trim(title);
-                        if (!title) {
-                            title = trim(original) || 'Title';
-                            this.text(title).data('title-editable', title);
-
-                            return true;
+                        form = container.querySelector('form');
+                        var post = Submit(form.elements, container);
+                        if (post.invalid.length) {
+                            target.disabled = false;
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
                         }
-                    });
-                }
 
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                        request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&'), function(error, resultResponse) {
+                            var result = resultResponse && resultResponse.body;
+                            if (!result || !result.success) {
+                                showError(error, resultResponse);
+                            } else {
+                                item.setAttribute('data-pm-data', JSON.stringify(result.item));
+                                var enabled = result.item.enabled || result.item.options.attributes.enabled,
+                                    replacement = elementFromHTML(result.html);
+                                if (replacement) { item.innerHTML = replacement.innerHTML; }
+                                item.classList.toggle('g-menu-item-disabled', String(enabled) === '0');
 
-                // Position Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
-                    fakeDOM = content.elements.content.find('form');
-
-                    var target = $(e.currentTarget);
-                    target.disabled(true);
-                    target.hideIndicator();
-                    target.showIndicator();
-
-                    var post = Submit(fakeDOM[0].elements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.disabled(false);
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&'), function(error, response) {
-                        if (!response.body.success) {
-                            modal.open({
-                                content: response.body.html || response.body.message || response.body,
-                                afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                                if (target.hasAttribute('data-apply-and-save')) {
+                                    var save = document.querySelector('.button-save');
+                                    if (save) { save.click(); }
                                 }
-                            });
-                        } else {
-                            var parent = element.parent('[data-pm-data]');
-
-                            if (parent) {
-                                parent.data('pm-data', JSON.stringify(response.body.item));
-
-                                var status = response.body.item.enabled || response.body.item.options.attributes.enabled;
-                                var dummy = createContainer(response.body.html);
-                                parent.html(dummy.firstChild().html());
-                                parent[status == '0' ? 'addClass' : 'removeClass']('g-menu-item-disabled');
+                                Cards.serialize(positionElement);
+                                Cards.updatePendingChanges();
+                                modal.close();
+                                toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
-
-                            // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
-                            }
-
-                            Cards.serialize(element.parent('[data-g5-position]'));
-                            Cards.updatePendingChanges();
-
-                            modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
-                        }
-
-                        target.hideIndicator();
+                            target.disabled = false;
+                            indicator.hide(target);
+                        });
                     });
                 });
             }
         });
     });
 
-    // Handles Positions Titles Rename
-    var updateTitle = function(title, original, wasCanceled) {
-            this.style('text-overflow', 'ellipsis');
-            if (wasCanceled || title == original) { return; }
-            var element = this,
-                href = element.data('g-config-href'),
-                type = element.data('title-editable-type'),
-                method = (element.data('g-config-method') || 'post').toLowerCase(),
-                parent = element.parent('[id]');
-
-            parent.showIndicator();
-            parent.find('[data-title-edit]').addClass('disabled');
-
-            var data = type === 'title' ? { title: trim(title) } : { key: trim(title) };
-            data.data = parent.find('[data-g5-position]').data('g5-position');
-
-            request(method, parseAjaxURI(href + getAjaxSuffix()), data, function(error, response) {
-                if (!response.body.success) {
-                    modal.open({
-                        content: response.body.html || response.body.message || response.body,
-                        afterOpen: function(container) {
-                            if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                        }
-                    });
-
-                    element.data('title-editable', original).text(original);
-                } else {
-                    var dummy = createContainer(response.body.position);
-
-                    parent.html(dummy.find('[id]').html());
-
-                    var editables = parent.search('[data-title-editable]');
-                    attachEditables(editables);
-                }
-
-                parent.hideIndicator();
-                parent.find('[data-title-edit]').removeClass('disabled');
-            });
-        },
-
-        attachEditables = function(editables) {
-            if (!editables || !editables.length) { return; }
-            editables.forEach(function(editable) {
-                editable = $(editable);
-                editable.confWasAttached = true;
-                editable.on('title-edit-start', function(){
-                    editable.style('text-overflow', 'inherit');
-                });
-                editable.on('title-edit-end', updateTitle);
-            });
-        };
-
-    // Toggle all assignments on/off
-    body.delegate('change', '[data-g5-positions-assignments] input[type="hidden"]', function(event, element) {
-        var card = element.parent('.card'),
-            wrapper = card.find('.settings-param-wrapper');
-
-        wrapper[element.value() == 1 ? 'addClass' : 'removeClass']('hide');
-        wrapper.search('input[type="hidden"]').forEach(function(element) {
-            element = $(element);
-            element.value(0).disabled(true);
+    dom.delegate(body, 'change', '[data-g5-positions-assignments] input[type="hidden"]', function(event, element) {
+        var card = element.closest('.card'),
+            wrapper = card && card.querySelector('.settings-param-wrapper');
+        if (!wrapper) { return; }
+        wrapper.classList.toggle('hide', element.value !== '1');
+        wrapper.querySelectorAll('input[type="hidden"]').forEach(function(input) {
+            input.value = '0';
+            input.disabled = true;
         });
     });
 
-    // Global state change
-    body.on('statechangeAfter', function(event, element) {
-        var editables = $('#positions [data-title-editable]');
-        if (!editables) { return true; }
-
-        editables = editables.filter(function(editable) {
-            return (typeof $(editable).confWasAttached) === 'undefined';
-        });
-
-        attachEditables(editables);
+    body.addEventListener('statechangeEnd', function() {
+        attachEditables(document.querySelectorAll('#positions [data-title-editable]'));
     });
-
-    attachEditables($('#positions [data-title-editable]'));
+    attachEditables(document.querySelectorAll('#positions [data-title-editable]'));
 });
 
 module.exports = {};

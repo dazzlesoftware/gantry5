@@ -4578,7 +4578,13 @@ ready(function() {
                 element.attribute('contenteditable', null);
                 element[0].blur();
 
-                element.emit('title-edit-exit', element.data('title-editable'), event.keyCode == 13 ? 'enter' : 'esc');
+                var exitTitle = element.data('title-editable'),
+                    exitKey = event.keyCode == 13 ? 'enter' : 'esc';
+                element.emit('title-edit-exit', exitTitle, exitKey);
+                element[0].dispatchEvent(new CustomEvent('g5:title-edit-exit', {
+                    bubbles: true,
+                    detail: { title: exitTitle, key: exitKey }
+                }));
                 return false;
             default:
                 return true;
@@ -6158,25 +6164,21 @@ module.exports = MenuManager;
 },{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.resizer":31,"elements/zen":93}],35:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
-var $                  = require('elements'),
-    ready              = require('elements/domready'),
-    Submit             = require('../fields/submit'),
-    modal              = require('../ui').modal,
-    toastr             = require('../ui').toastr,
-    Eraser             = require('../ui/eraser'),
-    request            = require('../utils/request'),
-    simpleSort         = require('sortablejs'),
 
-    parseAjaxURI       = require('../utils/get-ajax-url').parse,
-    getAjaxSuffix      = require('../utils/get-ajax-suffix'),
+var dom = require('../utils/dom'),
+    Submit = require('../fields/submit'),
+    modal = require('../ui').modal,
+    toastr = require('../ui').toastr,
+    Eraser = require('../ui/eraser'),
+    indicator = require('../utils/indicator'),
+    request = require('../utils/request'),
+    simpleSort = require('sortablejs'),
+    parseAjaxURI = require('../utils/get-ajax-url').parse,
+    getAjaxSuffix = require('../utils/get-ajax-suffix'),
     getOutlineNameById = require('../utils/get-outline').getOutlineNameById,
-    translate          = require('../utils/translate');
+    translate = require('../utils/translate');
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
-};
-
-var AtomsField   = '[name="page[head][atoms][_json]"]',
+var AtomsField = '[name="page[head][atoms][_json]"]',
     groupOptions = [
         { name: 'atoms', pull: 'clone', put: false },
         { name: 'atoms', pull: true, put: true },
@@ -6185,48 +6187,35 @@ var AtomsField   = '[name="page[head][atoms][_json]"]',
 
 var Atoms = {
     eraser: null,
-    lists: {
-        picker: null,
-        items: null
-    },
+    lists: { picker: null, items: null, trash: null },
 
     serialize: function() {
-        var output = [],
-            list   = $('.atoms-list'),
-            atoms  = list.search('[data-atom-picked]');
+        var list = document.querySelector('.atoms-list'),
+            output = [];
+        if (!list) { return '[]'; }
 
-        if (!atoms) {
-            list.empty();
-            return '[]';
-        }
-
-        atoms.forEach(function(item) {
-            item = $(item);
-            output.push(JSON.parse(item.data('atom-picked')));
+        list.querySelectorAll('[data-atom-picked]').forEach(function(item) {
+            output.push(JSON.parse(item.getAttribute('data-atom-picked')));
         });
-
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
     attachEraser: function() {
-        if (Atoms.eraser) {
-            Atoms.eraser.setElement($('[data-atoms-erase]'));
-            return;
-        }
-
-        Atoms.eraser = new Eraser('[data-atoms-erase]');
+        var element = document.querySelector('[data-atoms-erase]');
+        if (Atoms.eraser) { Atoms.eraser.setElement(element); return; }
+        Atoms.eraser = new Eraser(element);
     },
 
     createSortables: function(element) {
-        var list, sort;
-
         Atoms.attachEraser();
 
-        groupOptions.forEach(function(groupOption, i) {
-            list = !i ? '.atoms-picker' : (i == 1 ? '.atoms-list' : '#trash');
-            list = $(list);
-            sort = simpleSort.create(list[0], {
-                sort: i == 1,
+        groupOptions.forEach(function(groupOption, index) {
+            var selector = index === 0 ? '.atoms-picker' : (index === 1 ? '.atoms-list' : '#trash'),
+                list = document.querySelector(selector);
+            if (!list) { return; }
+
+            var sort = simpleSort.create(list, {
+                sort: index === 1,
                 filter: '[data-atom-ignore]',
                 group: groupOption,
                 scroll: false,
@@ -6235,175 +6224,148 @@ var Atoms = {
 
                 onStart: function(event) {
                     Atoms.attachEraser();
-
-                    var item = $(event.item);
-                    item.addClass('atom-dragging');
-
-                    if ($(event.from).hasClass('atoms-list')) {
-                        Atoms.eraser.show();
-                    }
+                    event.item.classList.add('atom-dragging');
+                    if (event.from.classList.contains('atoms-list')) { Atoms.eraser.show(); }
                 },
 
                 onEnd: function(event) {
-                    var item       = $(event.item),
-                        trash      = $('#trash'),
-                        target     = $(this.originalEvent.target),
+                    var item = event.item,
+                        trash = document.querySelector('#trash'),
+                        originalEvent = this.originalEvent || event.originalEvent,
+                        target = originalEvent && originalEvent.target instanceof Element ? originalEvent.target : null,
                         touchTrash = false;
 
-                    // workaround for touch devices
-                    if (this.originalEvent.type === 'touchend') {
-                        var trashSize = trash[0].getBoundingClientRect(),
-                            oE        = this.originalEvent,
-                            position  = (oE.pageY || oE.changedTouches[0].pageY) - window.scrollY;
-
-                        touchTrash = position <= trashSize.height;
+                    if (originalEvent && originalEvent.type === 'touchend' && trash) {
+                        var trashSize = trash.getBoundingClientRect(),
+                            point = originalEvent.changedTouches && originalEvent.changedTouches[0],
+                            pageY = originalEvent.pageY || (point && point.pageY) || 0;
+                        touchTrash = pageY - window.scrollY <= trashSize.height;
                     }
 
-                    if (target.matches('#trash') || target.parent('#trash') || touchTrash) {
+                    if (trash && ((target && (target === trash || trash.contains(target))) || touchTrash)) {
                         item.remove();
                         Atoms.eraser.hide();
-                        this.options.onSort();
+                        this.options.onSort(event);
                         return;
                     }
 
-                    item.removeClass('atom-dragging');
-
-                    if ($(event.from).hasClass('atoms-list')) {
-                        Atoms.eraser.hide();
-                    }
+                    item.classList.remove('atom-dragging');
+                    if (event.from.classList.contains('atoms-list')) { Atoms.eraser.hide(); }
                 },
 
                 onSort: function() {
-                    var serial = Atoms.serialize(),
-                        field  = $(AtomsField);
-
+                    var field = document.querySelector(AtomsField);
                     if (!field) { throw new Error('Field "' + AtomsField + '" not found in the DOM.'); }
-
-                    field.value(serial);
-                    $('body').emit('change', { target: field });
+                    field.value = Atoms.serialize();
+                    field.dispatchEvent(new Event('change', { bubbles: true }));
                 },
 
-                onOver: function(evt) {
-                    if (!$(evt.from).matches('.atoms-list')) { return; }
-
-                    var over = $(evt.newIndex);
-                    if (over.matches('#trash') || over.parent('#trash')) {
-                        Atoms.eraser.over();
-                    } else {
-                        Atoms.eraser.out();
-                    }
+                onOver: function(event) {
+                    if (!event.from.classList.contains('atoms-list')) { return; }
+                    var trash = document.querySelector('#trash'),
+                        over = event.related || (event.originalEvent && event.originalEvent.target);
+                    if (trash && over instanceof Node && (over === trash || trash.contains(over))) { Atoms.eraser.over(); }
+                    else { Atoms.eraser.out(); }
                 }
             });
 
-            Atoms.lists[!i ? 'picker' : 'items'] = sort;
-            if (i == 1) {
-                element.SimpleSort = sort;
-            }
+            if (index === 0) { Atoms.lists.picker = sort; }
+            else if (index === 1) { Atoms.lists.items = sort; element.SimpleSort = sort; }
+            else { Atoms.lists.trash = sort; }
         });
     }
 };
 
-var AttachSettings = function() {
-    var body = $('body');
+var attachSettings = function() {
+    dom.delegate(document.body, 'click', '.atoms-list [data-atom-picked] .config-cog', function(event, trigger) {
+        event.preventDefault();
+        var item = trigger.closest('[data-atom-picked]'),
+            list = item && item.parentElement,
+            dataField = document.querySelector(AtomsField);
+        if (!item || !list || !dataField) { return; }
 
-    body.delegate('click', '.atoms-list [data-atom-picked] .config-cog', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-
-        var list      = element.parent('ul'),
-            dataField = $(AtomsField),
-            data      = dataField.value(),
-            items     = list.search('> [data-atom-picked]'),
-            item      = element.parent('[data-atom-picked]'),
-            itemData  = item.data('atom-picked');
+        var itemData = item.getAttribute('data-atom-picked'),
+            dataValue = JSON.parse(dataField.value || '[]');
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
             data: { data: itemData },
             overlayClickToClose: false,
-            remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(trigger.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
-                    dataValue  = JSON.parse(data);
+                var container = content.elements.content[0],
+                    form = container.querySelector('form'),
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
                 if (modal.getAll().length > 1) {
-                    var applyAndSave = content.elements.content.search('[data-apply-and-save]');
-                    if (applyAndSave) { applyAndSave.remove(); }
+                    container.querySelectorAll('[data-apply-and-save]').forEach(function(button) { button.remove(); });
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 }
+                if (!form || !submits.length) { return true; }
 
-                if ((!form && !fakeDOM) || !submit) {
-                    return true;
-                }
+                submits.forEach(function(target) {
+                    target.addEventListener('click', function(submitEvent) {
+                        submitEvent.preventDefault();
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                // Atom Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
-
-                    var target = $(e.currentTarget);
-
-                    target.hideIndicator();
-                    target.showIndicator();
-
-                    // Refresh the form to collect fresh and dynamic fields
-                    var formElements = content.elements.content.find('form')[0].elements;
-                    var post = Submit(formElements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
-                        if (!response.body.success) {
-                            modal.open({
-                                content: response.body.html || response.body.message || response.body,
-                                afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                                }
-                            });
-                        } else {
-                            var index = Array.prototype.indexOf.call(items, item[0]);
-                            dataValue[index] = response.body.item;
-
-                            dataField.value(JSON.stringify(dataValue).replace(/\//g, '\\/'));
-                            item.find('.atom-title').text(dataValue[index].title);
-                            item.data('atom-picked', JSON.stringify(dataValue[index]).replace(/\//g, '\\/'));
-
-                            // toggle enabled/disabled status as needed
-                            var enabled    = Number(dataValue[index].attributes.enabled),
-                                inheriting = response.body.item.inherit && Object.keys(response.body.item.inherit).length;
-                            item[enabled ? 'removeClass' : 'addClass']('atom-disabled');
-                            item[!inheriting ? 'removeClass' : 'addClass']('g-inheriting');
-                            item.attribute('title', enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom'));
-
-                            item.data('tip', null);
-                            if (inheriting) {
-                                var inherit = response.body.item.inherit,
-                                    outline = getOutlineNameById(inherit ? inherit.outline : null),
-                                    atom = inherit.atom || '',
-                                    include = (inherit.include || []).join(', ');
-
-                                item.data('tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
-                            }
-
-                            body.emit('change', { target: dataField });
-                            global.G5.tips.reload();
-
-                            // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
-                            }
-
-                            modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                        form = container.querySelector('form');
+                        var post = Submit(form.elements, container);
+                        if (post.invalid.length) {
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
                         }
 
-                        target.hideIndicator();
+                        request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, resultResponse) {
+                            var result = resultResponse && resultResponse.body;
+                            if (!result || !result.success) {
+                                modal.open({
+                                    content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
+                                    afterOpen: function(modalContainer) {
+                                        if (result && !result.html && !result.message && modalContainer[0]) { modalContainer[0].style.width = '90%'; }
+                                    }
+                                });
+                            } else {
+                                var items = Array.from(list.querySelectorAll(':scope > [data-atom-picked]')),
+                                    itemIndex = items.indexOf(item);
+                                if (itemIndex !== -1) {
+                                    dataValue[itemIndex] = result.item;
+                                    dataField.value = JSON.stringify(dataValue).replace(/\//g, '\\/');
+                                    item.setAttribute('data-atom-picked', JSON.stringify(result.item).replace(/\//g, '\\/'));
+
+                                    var title = item.querySelector('.atom-title');
+                                    if (title) { title.textContent = result.item.title; }
+
+                                    var enabled = Number(result.item.attributes.enabled),
+                                        inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
+                                    item.classList.toggle('atom-disabled', !enabled);
+                                    item.classList.toggle('g-inheriting', Boolean(inheriting));
+                                    item.title = enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom');
+                                    item.removeAttribute('data-tip');
+
+                                    if (inheriting) {
+                                        var inherit = result.item.inherit,
+                                            outline = getOutlineNameById(inherit.outline),
+                                            atom = inherit.atom || '',
+                                            include = (inherit.include || []).join(', ');
+                                        item.setAttribute('data-tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
+                                    }
+                                    dataField.dispatchEvent(new Event('change', { bubbles: true }));
+                                    global.G5.tips.reload();
+                                }
+
+                                if (target.hasAttribute('data-apply-and-save')) {
+                                    var save = document.querySelector('.button-save');
+                                    if (save) { save.click(); }
+                                }
+                                modal.close();
+                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            }
+                            indicator.hide(target);
+                        });
                     });
                 });
             }
@@ -6411,314 +6373,265 @@ var AttachSettings = function() {
     });
 };
 
-var AttachSortableAtoms = function(atoms) {
-    if (!atoms) { return; }
-    if (!atoms.SimpleSort) { Atoms.createSortables(atoms); }
+var attachSortableAtoms = function(atoms) {
+    if (atoms && !atoms.SimpleSort) { Atoms.createSortables(atoms); }
 };
 
-ready(function() {
-    var atoms = $('#atoms');
-
-    $('body').delegate('mouseover', '#atoms', function(event, element) {
-        AttachSortableAtoms(element);
-    });
-
-    AttachSortableAtoms(atoms);
-    AttachSettings();
+dom.ready(function() {
+    var atoms = document.querySelector('#atoms');
+    dom.delegate(document.body, 'mouseover', '#atoms', function(event, element) { attachSortableAtoms(element); });
+    attachSortableAtoms(atoms);
+    attachSettings();
 });
 
 module.exports = Atoms;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../fields/submit":7,"../ui":52,"../ui/eraser":51,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/get-outline":73,"../utils/request":79,"../utils/translate":81,"elements":90,"elements/domready":88,"sortablejs":127}],36:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../ui/eraser":51,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/get-outline":73,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"sortablejs":127}],36:[function(require,module,exports){
 "use strict";
 
-var ready         = require('elements/domready'),
-    $             = require('elements'),
-    Submit        = require('../../fields/submit'),
-    modal         = require('../../ui').modal,
-    toastr        = require('../../ui').toastr,
-    request       = require('../../utils/request'),
-    simpleSort    = require('sortablejs'),
-
-    parseAjaxURI  = require('../../utils/get-ajax-url').parse,
+var dom = require('../../utils/dom'),
+    Submit = require('../../fields/submit'),
+    modal = require('../../ui').modal,
+    toastr = require('../../ui').toastr,
+    indicator = require('../../utils/indicator'),
+    request = require('../../utils/request'),
+    simpleSort = require('sortablejs'),
+    parseAjaxURI = require('../../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    translate     = require('../../utils/translate');
+    translate = require('../../utils/translate');
 
-require('elements/insertion');
-
-var collectionIndex = function(collection, item) {
-    return Array.prototype.indexOf.call(collection, item);
+var directItems = function(list) {
+    return Array.from(list.children).filter(function(item) { return item.hasAttribute('data-collection-item'); });
 };
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
+var fieldFor = function(element) {
+    var param = element.closest('.settings-param');
+    return param && param.querySelector('[data-collection-data]');
 };
 
-ready(function() {
-    var body = $('body');
+dom.ready(function() {
+    var body = document.body;
 
-    var addNewByEnter = function(title, key) {
-        if (key == 'enter' && this.CollectionNew) {
-            this.CollectionNew = false;
-            body.emit('click', { target: this.parent('.settings-param').find('[data-collection-addnew]') });
-        }
-
-        if (key == 'esc' && this.CollectionNew) {
-            this.CollectionNew = false;
-            body.emit('click', { target: this.parent('[data-collection-item]').find('[data-collection-remove]') });
+    var addNewByExit = function(event) {
+        if (!this.CollectionNew) { return; }
+        this.CollectionNew = false;
+        if (event.detail.key === 'enter') {
+            var add = this.closest('.settings-param').querySelector('[data-collection-addnew]');
+            if (add) { add.click(); }
+        } else if (event.detail.key === 'esc') {
+            var remove = this.closest('[data-collection-item]').querySelector('[data-collection-remove]');
+            if (remove) { remove.click(); }
         }
     };
 
-    var createSortables = function(list) {
-        var lists = list || $('.collection-list ul');
-        if (!lists) { return; }
-        lists.forEach(function(list) {
-            list = $(list);
-            list.SimpleSort = simpleSort.create(list[0], {
+    var createSortables = function(value) {
+        var lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll('.collection-list ul'));
+        lists.filter(Boolean).forEach(function(list) {
+            if (list.SimpleSort) { return; }
+            list.SimpleSort = simpleSort.create(list, {
                 handle: '.fa-reorder',
                 filter: '[data-collection-nosort]',
                 scroll: false,
                 animation: 150,
-                onStart: function() {
-                    $(this.el).addClass('collection-sorting');
-                },
-                onEnd: function(evt) {
-                    var element = $(this.el);
-                    element.removeClass('collection-sorting');
+                onStart: function() { this.el.classList.add('collection-sorting'); },
+                onEnd: function(event) {
+                    this.el.classList.remove('collection-sorting');
+                    if (event.oldIndex === event.newIndex) { return; }
 
-                    if (evt.oldIndex === evt.newIndex) { return; }
-
-                    var dataField = element.parent('.settings-param').find('[data-collection-data]'),
-                        data = dataField.value();
-
-                    data = JSON.parse(data);
-
-                    data.splice(evt.newIndex, 0, data.splice(evt.oldIndex, 1)[0]);
-                    dataField.value(JSON.stringify(data));
-                    body.emit('change', { target: dataField });
+                    var dataField = fieldFor(this.el),
+                        data = JSON.parse(dataField.value || '[]');
+                    data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
+                    dataField.value = JSON.stringify(data);
+                    dataField.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
         });
     };
 
     createSortables();
+    dom.delegate(body, 'mouseover', '.collection-list ul', function(event, list) { createSortables(list); });
 
-    // delegate sortables collections for ajax support
-    body.delegate('mouseover', '.collection-list ul', function(event, element) {
-        if (!element.SimpleSort) { createSortables(element); }
+    dom.delegate(body, 'click', '[data-collection-addnew]', function(event, element) {
+        event.preventDefault();
+        var param = element.closest('.settings-param'),
+            list = param && param.querySelector('ul'),
+            template = param && param.querySelector('[data-collection-template]'),
+            dataField = param && param.querySelector('[data-collection-data]');
+        if (!list || !template || !dataField) { return; }
+
+        var items = directItems(list),
+            clone = template.cloneNode(true),
+            title = clone.querySelector('a'),
+            editable = title && title.querySelector('[data-title-editable]'),
+            editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
+
+        if (items.length) { items[items.length - 1].after(clone); }
+        else { list.insertBefore(clone, list.firstChild); }
+        if (items.length && editAll) { editAll.style.display = 'inline-block'; }
+
+        title.href = title.href.replace(/%id%/g, items.length);
+        clone.removeAttribute('style');
+        clone.setAttribute('data-collection-item', clone.getAttribute('data-collection-template'));
+        clone.removeAttribute('data-collection-template');
+        clone.removeAttribute('data-collection-nosort');
+
+        if (editable) {
+            editable.CollectionNew = true;
+            editable.addEventListener('g5:title-edit-exit', addNewByExit);
+            var editButton = title.parentElement.querySelector('[data-title-edit]');
+            if (editButton) { editButton.click(); }
+        }
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    // Add new item
-    body.delegate('click', '[data-collection-addnew]', function(event, element) {
-        var param = element.parent('.settings-param'),
-            list = param.find('ul'),
-            editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
-            dataField = param.find('[data-collection-data]'),
-            tmpl = param.find('[data-collection-template]'),
-            items = list.search('> [data-collection-item]') || [],
-            last = items.length ? $(items[items.length - 1]) : null;
+    dom.delegate(body, 'blur', '[data-collection-item] [data-title-editable]', function(event, editable) {
+        var item = editable.closest('[data-collection-item]'),
+            list = item && item.parentElement,
+            dataField = fieldFor(editable);
+        if (!item || !list || !dataField) { return; }
 
-        var clone = $(tmpl[0].cloneNode(true)), title, editable;
-
-        if (last) { clone.after(last); }
-        else { clone.top(list); }
-
-        if (items.length && editall) { editall.style('display', 'inline-block'); }
-
-        title = clone.find('a');
-        editable = title.find('[data-title-editable]');
-
-        var re = new RegExp('%id%', 'g');
-        title.href(title.href().replace(re, items.length));
-
-        clone.attribute('style', null).data('collection-item', clone.data('collection-template'));
-        clone.attribute('data-collection-template', null);
-        clone.attribute('data-collection-nosort', null);
-        editable.CollectionNew = true;
-        body.emit('click', { target: title.siblings('[data-title-edit]') });
-
-        editable.on('title-edit-exit', addNewByEnter);
-        body.emit('change', { target: dataField });
-    });
-
-    // Edit Title
-    body.delegate('blur', '[data-collection-item] [data-title-editable]', function(event, element) {
-        var text = String(element.text() || '').trim(),
-            item = element.parent('[data-collection-item]'),
-            key = item.data('collection-item'),
-            items = element.parent('ul').search('> [data-collection-item]'),
-            dataField = element.parent('.settings-param').find('[data-collection-data]'),
-            data = dataField.value(),
-            index = collectionIndex(items, item[0]);
-
-        if (index == -1) { return; }
-
-        data = JSON.parse(data);
+        var index = directItems(list).indexOf(item);
+        if (index === -1) { return; }
+        var data = JSON.parse(dataField.value || '[]'),
+            key = item.getAttribute('data-collection-item');
         if (!data[index]) { data.splice(index, 0, {}); }
-        data[index][key] = text;
-        dataField.value(JSON.stringify(data));
-        body.emit('change', { target: dataField });
+        data[index][key] = editable.textContent.trim();
+        dataField.value = JSON.stringify(data);
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     }, true);
 
-    // Remove item
-    body.delegate('click', '[data-collection-remove]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        var item = element.parent('[data-collection-item]'),
-            list = element.parent('ul'),
-            editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
-            items = list.search('> [data-collection-item]'),
-            index = collectionIndex(items, item[0]),
-            dataField = element.parent('.settings-param').find('[data-collection-data]'),
-            data = dataField.value();
+    dom.delegate(body, 'click', '[data-collection-remove]', function(event, element) {
+        event.preventDefault();
+        var item = element.closest('[data-collection-item]'),
+            list = item && item.parentElement,
+            dataField = fieldFor(element);
+        if (!item || !list || !dataField) { return; }
 
-        data = JSON.parse(data);
+        var items = directItems(list),
+            index = items.indexOf(item),
+            data = JSON.parse(dataField.value || '[]'),
+            editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
         data.splice(index, 1);
-        dataField.value(JSON.stringify(data));
+        dataField.value = JSON.stringify(data);
         item.remove();
-        if (items.length <= 2 && editall) { editall.style('display', 'none'); }
-        body.emit('change', { target: dataField });
+        if (items.length <= 2 && editAll) { editAll.style.display = 'none'; }
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    // Duplicate item
-    body.delegate('click', '[data-collection-duplicate]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        var param = element.parent('.settings-param'),
-            item = element.parent('[data-collection-item]'),
-            list = element.parent('ul'),
-            editall = list.parent('[data-field-name]').find('[data-collection-editall]'),
-            url = param.find('[data-collection-template]').find('a').href(),
-            items = list.search('> [data-collection-item]'),
-            index = collectionIndex(items, item[0]),
-            clone = $(item[0].cloneNode(true)).after(item),
-            dataField = element.parent('.settings-param').find('[data-collection-data]'),
-            data = dataField.value();
+    dom.delegate(body, 'click', '[data-collection-duplicate]', function(event, element) {
+        event.preventDefault();
+        var item = element.closest('[data-collection-item]'),
+            list = item && item.parentElement,
+            param = element.closest('.settings-param'),
+            dataField = fieldFor(element);
+        if (!item || !list || !param || !dataField) { return; }
 
-        var re = new RegExp('%id%', 'g');
-        clone.find('a').href(url.replace(re, items.length + 1));
+        var items = directItems(list),
+            index = items.indexOf(item),
+            templateLink = param.querySelector('[data-collection-template] a'),
+            clone = item.cloneNode(true),
+            data = JSON.parse(dataField.value || '[]'),
+            editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
+        item.after(clone);
+        var cloneLink = clone.querySelector('a');
+        if (cloneLink && templateLink) { cloneLink.href = templateLink.href.replace(/%id%/g, items.length + 1); }
 
-        data = JSON.parse(data);
-        data.splice(index, 0, data[index]);
-        dataField.value(JSON.stringify(data));
-
-        if (items.length >= 1) { editall.style('display', 'inline-block'); }
-        body.emit('change', { target: dataField });
+        data.splice(index, 0, JSON.parse(JSON.stringify(data[index])));
+        dataField.value = JSON.stringify(data);
+        if (items.length >= 1 && editAll) { editAll.style.display = 'inline-block'; }
+        dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
-    // Preventing click of links when title is being edited
-    body.delegate('click', '[data-collection-item] a', function(event, element) {
-        if (element.find('[contenteditable]')) {
+    dom.delegate(body, 'click', '[data-collection-item] a', function(event, link) {
+        if (link.querySelector('[contenteditable]')) {
             event.preventDefault();
             event.stopPropagation();
         }
     });
 
-    // Load item settings
-    body.delegate('click', '[data-collection-item] .config-cog, [data-collection-editall]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
+    dom.delegate(body, 'click', '[data-collection-item] .config-cog, [data-collection-editall]', function(event, element) {
+        event.preventDefault();
+        var editable = element.querySelector('[data-title-editable]');
+        if (editable && editable.hasAttribute('contenteditable')) { event.stopPropagation(); return; }
 
-        var editable = element.find('[data-title-editable]');
-        if (editable && editable.attribute('contenteditable')) {
-            event.stopPropagation();
-            return false;
-        }
+        var isEditAll = element.hasAttribute('data-collection-editall'),
+            parent = element.closest('.settings-param'),
+            dataField = parent && parent.querySelector('[data-collection-data]'),
+            item = element.closest('[data-collection-item]'),
+            list = parent && parent.querySelector('ul');
+        if (!parent || !dataField || !list) { return; }
 
-        var isEditAll = element.data('collection-editall') !== null,
-            parent = element.parent('.settings-param'),
-            dataField = parent.find('[data-collection-data]'),
-            data = dataField.value(),
-            item = element.parent('[data-collection-item]'),
-            items = parent.search('ul > [data-collection-item]');
+        var items = directItems(list),
+            data = dataField.value || '[]',
+            itemIndex = item ? items.indexOf(item) : -1,
+            dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
 
-        var dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[collectionIndex(items, item[0])]) };
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
             className: 'g5-dialog-theme-default g5-modal-collection g5-modal-collection-' + (isEditAll ? 'editall' : 'single'),
             data: dataPost,
             overlayClickToClose: false,
-            remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(element.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
-                }
+                if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var form = content.elements.content.find('form'),
-                    fakeDOM = createContainer(response.body.html).find('form'),
-                    submit = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
+                var container = content.elements.content[0],
+                    form = container.querySelector('form'),
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue = JSON.parse(data);
 
                 if (modal.getAll().length > 1) {
-                    var applyAndSave = content.elements.content.search('[data-apply-and-save]');
-                    if (applyAndSave) { applyAndSave.remove(); }
+                    container.querySelectorAll('[data-apply-and-save]').forEach(function(button) { button.remove(); });
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 }
+                if (!form || !submits.length) { return true; }
 
-                if (dataValue.length == 1) {
-                    // TODO: need to determine better how to handle single collections cards
-                    //content.elements.content.style({ width: 450 });
-                }
+                submits.forEach(function(target) {
+                    target.addEventListener('click', function(submitEvent) {
+                        submitEvent.preventDefault();
+                        indicator.hide(target);
+                        indicator.show(target);
+                        form = container.querySelector('form');
+                        var post = Submit(form.elements, container);
 
-                if ((!form && !fakeDOM) || !submit) {
-                    return true;
-                }
-
-                // Collection Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
-
-                    var target = $(e.currentTarget);
-
-                    target.hideIndicator();
-                    target.showIndicator();
-
-                    var post = Submit(fakeDOM[0].elements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
-                        if (!response.body.success) {
-                            modal.open({
-                                content: response.body.html || response.body.message || response.body,
-                                afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                                }
-                            });
-                        } else {
-                            if (item) { // single editing
-                                dataValue[collectionIndex(items, item[0])] = response.body.data;
-                            } else { // multi editing
-                                dataValue = response.body.data;
-                            }
-
-                            dataField.value(JSON.stringify(dataValue));
-                            body.emit('change', { target: dataField });
-
-                            element.parent('.settings-param-field').search('ul > [data-collection-item]').forEach(function(item, index) {
-                                item = $(item);
-                                var label = item.find('[data-title-editable]'),
-                                    text = dataValue[index][item.data('collection-item')];
-
-                                label.data('title-editable', text).text(text);
-                            });
-
-                            // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
-                            }
-
-                            modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                        if (post.invalid.length) {
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
                         }
 
-                        target.hideIndicator();
+                        request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, resultResponse) {
+                            var result = resultResponse && resultResponse.body;
+                            if (!result || !result.success) {
+                                modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
+                            } else {
+                                if (itemIndex !== -1) { dataValue[itemIndex] = result.data; }
+                                else { dataValue = result.data; }
+
+                                dataField.value = JSON.stringify(dataValue);
+                                dataField.dispatchEvent(new Event('change', { bubbles: true }));
+                                directItems(list).forEach(function(collectionItem, index) {
+                                    var label = collectionItem.querySelector('[data-title-editable]'),
+                                        text = dataValue[index][collectionItem.getAttribute('data-collection-item')];
+                                    if (label) {
+                                        label.setAttribute('data-title-editable', text);
+                                        label.textContent = text;
+                                    }
+                                });
+
+                                if (target.hasAttribute('data-apply-and-save')) {
+                                    var save = document.querySelector('.button-save');
+                                    if (save) { save.click(); }
+                                }
+                                modal.close();
+                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            }
+                            indicator.hide(target);
+                        });
                     });
                 });
             }
@@ -6728,7 +6641,7 @@ ready(function() {
 
 module.exports = {};
 
-},{"../../fields/submit":7,"../../ui":52,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":79,"../../utils/translate":81,"elements":90,"elements/domready":88,"elements/insertion":91,"sortablejs":127}],37:[function(require,module,exports){
+},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"sortablejs":127}],37:[function(require,module,exports){
 "use strict";
 
 var $          = require('elements'),
@@ -9415,370 +9328,284 @@ module.exports = Positions;
 },{"../ui/eraser":51,"../utils/dom":65,"../utils/flags-state":70,"sortablejs":127}],46:[function(require,module,exports){
 "use strict";
 
-var $             = require('elements'),
-    ready         = require('elements/domready'),
-    modal         = require('../ui').modal,
-    toastr        = require('../ui').toastr,
-    request       = require('../utils/request'),
+var dom = require('../utils/dom'),
+    modal = require('../ui').modal,
+    toastr = require('../ui').toastr,
+    request = require('../utils/request'),
+    indicator = require('../utils/indicator'),
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
-    Submit        = require('../fields/submit'),
+    parseAjaxURI = require('../utils/get-ajax-url').parse,
+    getAjaxURL = require('../utils/get-ajax-url').global,
+    Submit = require('../fields/submit'),
+    flags = require('../utils/flags-state'),
+    translate = require('../utils/translate'),
+    Cards = require('./cards');
 
-    flags         = require('../utils/flags-state'),
-    translate     = require('../utils/translate'),
-    Cards         = require('./cards');
-
-var trim = function(value) {
-    return value == null ? '' : String(value).trim();
+var trim = function(value) { return value == null ? '' : String(value).trim(); };
+var asElement = function(element) { return element && element.nodeType ? element : element && element[0]; };
+var elementFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = String(html || '').trim();
+    return template.content.firstElementChild;
 };
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
+var showError = function(error, response) {
+    var result = response && response.body;
+    modal.open({
+        content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
+        afterOpen: function(container) {
+            if (result && !result.html && !result.message && container[0]) { container[0].style.width = '90%'; }
+        }
+    });
 };
 
-ready(function() {
-    var body = $('body'),
+dom.ready(function() {
+    var body = document.body,
         warningURL = parseAjaxURI(getAjaxURL('confirmdeletion') + getAjaxSuffix());
 
     Cards.init();
 
-    // Handles Positions Duplicate / Remove
-    body.delegate('click', '#positions [data-g-config], [data-g-create="position"]', function(event, element) {
-        var mode = element.data('g-config'),
-            href = element.data('g-config-href'),
-            encode = window.btoa(href),//.substr(-20, 20), // in case the strings gets too long
-            method = (element.data('g-config-method') || 'post').toLowerCase();
+    var attachEditableValidation = function(container) {
+        var editable = container.querySelector('[data-title-editable]');
+        if (!editable || editable.gPositionModalTitleAttached) { return; }
+        editable.gPositionModalTitleAttached = true;
+        editable.addEventListener('g5:title-edit-end', function(event) {
+            var title = trim(event.detail && event.detail.title);
+            if (!title) {
+                title = trim(event.detail && event.detail.original) || 'Title';
+                editable.textContent = title;
+                editable.setAttribute('data-title-editable', title);
+            }
+        });
+    };
 
-        if (event && event.preventDefault) { event.preventDefault(); }
+    var attachEditables = function(editables) {
+        editables.forEach(function(editable) {
+            if (editable.confWasAttached) { return; }
+            editable.confWasAttached = true;
+            editable.addEventListener('g5:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
+            editable.addEventListener('g5:title-edit-end', function(event) {
+                var detail = event.detail || {};
+                editable.style.textOverflow = 'ellipsis';
+                if (detail.canceled || detail.title === detail.original) { return; }
 
-        if (mode == 'delete' && !flags.get('free:to:delete:' + encode, false)) {
-            // confirm before proceeding
+                var href = editable.getAttribute('data-g-config-href'),
+                    type = editable.getAttribute('data-title-editable-type'),
+                    method = (editable.getAttribute('data-g-config-method') || 'post').toLowerCase(),
+                    parent = editable.closest('[id]'),
+                    editButton = parent && parent.querySelector('[data-title-edit]'),
+                    data = type === 'title' ? { title: trim(detail.title) } : { key: trim(detail.title) },
+                    position = parent && parent.querySelector('[data-g5-position]');
+
+                if (!parent || !position) { return; }
+                data.data = position.getAttribute('data-g5-position');
+                indicator.show(parent);
+                if (editButton) { editButton.classList.add('disabled'); }
+
+                request(method, parseAjaxURI(href + getAjaxSuffix()), data, function(error, response) {
+                    var result = response && response.body;
+                    if (!result || !result.success) {
+                        showError(error, response);
+                        editable.setAttribute('data-title-editable', detail.original);
+                        editable.textContent = detail.original;
+                    } else {
+                        var replacement = elementFromHTML(result.position),
+                            replacementPosition = replacement && (replacement.matches('[id]') ? replacement : replacement.querySelector('[id]'));
+                        if (replacementPosition) {
+                            parent.innerHTML = replacementPosition.innerHTML;
+                            attachEditables(parent.querySelectorAll('[data-title-editable]'));
+                        }
+                    }
+                    indicator.hide(parent);
+                    if (editButton) { editButton.classList.remove('disabled'); }
+                });
+            });
+        });
+    };
+
+    dom.delegate(body, 'click', '#positions [data-g-config], [data-g-create="position"]', function(event, element) {
+        event.preventDefault();
+        var mode = element.getAttribute('data-g-config'),
+            href = element.getAttribute('data-g-config-href'),
+            encoded = window.btoa(href),
+            method = (element.getAttribute('data-g-config-method') || 'post').toLowerCase();
+
+        if (mode === 'delete' && !flags.get('free:to:delete:' + encoded, false)) {
             flags.warning({
                 url: warningURL,
-                data: {page_type: 'POSITION'},
+                data: { page_type: 'POSITION' },
                 callback: function(response, content) {
-                    var confirm = content.find('[data-g-delete-confirm]'),
-                        cancel  = content.find('[data-g-delete-cancel]');
-
+                    var container = asElement(content),
+                        confirm = container && container.querySelector('[data-g-delete-confirm]'),
+                        cancel = container && container.querySelector('[data-g-delete-cancel]');
                     if (!confirm) { return; }
 
-                    confirm.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        flags.set('free:to:delete:' + encode, true);
-                        $([confirm, cancel]).attribute('disabled');
-                        body.emit('click', { target: element });
-
+                    confirm.addEventListener('click', function(confirmEvent) {
+                        confirmEvent.preventDefault();
+                        if (confirm.disabled) { return; }
+                        flags.set('free:to:delete:' + encoded, true);
+                        confirm.disabled = true;
+                        if (cancel) { cancel.disabled = true; }
+                        element.click();
                         modal.close();
                     });
-
-                    cancel.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        $([confirm, cancel]).attribute('disabled');
-                        flags.set('free:to:delete:' + encode, false);
-
-                        modal.close();
-                    });
+                    if (cancel) {
+                        cancel.addEventListener('click', function(cancelEvent) {
+                            cancelEvent.preventDefault();
+                            if (cancel.disabled) { return; }
+                            confirm.disabled = true;
+                            cancel.disabled = true;
+                            flags.set('free:to:delete:' + encoded, false);
+                            modal.close();
+                        });
+                    }
                 }
             });
-
-            return false;
+            return;
         }
 
-        element.hideIndicator();
-        element.showIndicator();
-
+        indicator.hide(element);
+        indicator.show(element);
         request(method, parseAjaxURI(href + getAjaxSuffix()), {}, function(error, response) {
-            if (!response.body.success) {
-                modal.open({
-                    content: response.body.html || response.body.message || response.body,
-                    afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                    }
-                });
+            var result = response && response.body;
+            if (!result || !result.success) {
+                showError(error, response);
             } else {
-                var positionDeleted = response.body.position,
-                    reload = $('[href="' + getAjaxURL('positions') + '"]');
-
-                if (!reload) { window.location = window.location; }
-                else {
-                    body.emit('click', {target: reload});
-                }
-
-                toastr.success(response.body.html || 'Action successfully completed.', response.body.title || '');
-                if (positionDeleted) {
-                    body.positionDeleted = positionDeleted;
-                }
+                var reload = Array.from(document.querySelectorAll('[href]')).find(function(link) {
+                    return link.getAttribute('href') === getAjaxURL('positions');
+                });
+                if (reload) { reload.click(); }
+                else { window.location.reload(); }
+                toastr.success(result.html || 'Action successfully completed.', result.title || '');
+                if (result.position) { body.positionDeleted = result.position; }
             }
-
-            element.hideIndicator();
+            indicator.hide(element);
         });
-
     });
 
-    // Positions Add
-    body.delegate('click', '#positions .position-add', function(event, element) {
+    dom.delegate(body, 'click', '#positions .position-add', function(event, element) {
         event.preventDefault();
-
-        var data = {};
-
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'get',
             overlayClickToClose: false,
-            remote: parseAjaxURI(element.attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(element.href + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
-                }
+                if (!response.body.success) { modal.enableCloseByOverlay(); return; }
+                var container = content.elements.content[0],
+                    search = container.querySelector('.search input'),
+                    blocks = container.querySelectorAll('[data-mm-type]'),
+                    filters = container.querySelectorAll('[data-mm-filter]'),
+                    urlTemplate = container.querySelector('.g-urltemplate');
 
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
+                attachEditableValidation(container);
 
-                var search      = content.elements.content.find('.search input'),
-                    blocks      = content.elements.content.search('[data-mm-type]'),
-                    filters     = content.elements.content.search('[data-mm-filter]'),
-                    urlTemplate = content.elements.content.find('.g-urltemplate');
-
-                if (urlTemplate) { body.emit('input', { target: urlTemplate }); }
-
-                var editable = content.elements.content.find('[data-title-editable]');
-                if (editable) {
-                    editable.on('title-edit-end', function(title, original/*, canceled*/) {
-                        title = trim(title);
-                        if (!title) {
-                            title = trim(original) || 'Title';
-                            this.text(title).data('title-editable', title);
-
-                            return true;
-                        }
-                    });
-                }
-
-                if (search && filters && blocks) {
-                    search.on('input', function() {
-                        if (!this.value()) {
-                            blocks.removeClass('hidden');
-                            return;
-                        }
-
-                        blocks.addClass('hidden');
-
-                        var found = [], value = this.value().toLowerCase(), text;
-
+                if (search && filters.length && blocks.length) {
+                    search.addEventListener('input', function() {
+                        var value = search.value.toLowerCase();
+                        blocks.forEach(function(block) { block.classList.toggle('hidden', Boolean(value)); });
+                        if (!value) { return; }
                         filters.forEach(function(filter) {
-                            filter = $(filter);
-                            text = trim(filter.data('mm-filter')).toLowerCase();
-                            if (text.match(new RegExp("^" + value + '|\\s' + value, 'gi'))) {
-                                found.push(filter.matches('[data-mm-type]') ? filter : filter.parent('[data-mm-type]'));
-                            }
-                        }, this);
-
-                        if (found.length) { $(found).removeClass('hidden'); }
+                            var text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
+                                match = text.startsWith(value) || text.includes(' ' + value),
+                                block = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
+                            if (match && block) { block.classList.remove('hidden'); }
+                        });
                     });
                 }
-
-                if (search) {
-                    setTimeout(function() {
-                        search[0].focus();
-                    }, 5);
-                }
-
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                if (search) { setTimeout(function() { search.focus(); }, 5); }
             }
         });
     });
 
-    // Positions Items settings
-    body.delegate('click', '#positions .item-settings', function(event, element) {
+    dom.delegate(body, 'click', '#positions .item-settings', function(event, element) {
         event.preventDefault();
+        var item = element.closest('[data-pm-data]'),
+            positionElement = element.closest('[data-g5-position]');
+        if (!item || !positionElement) { return; }
 
-        var data = {},
-            parent = element.parent('[data-pm-data]'),
-            position = JSON.parse(element.parent('[data-g5-position]').data('g5-position'));
-
-        data.position = position.name;
-        data.item = parent.data('pm-data');
-
+        var position = JSON.parse(positionElement.getAttribute('data-g5-position'));
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
-            data: data,
+            data: { position: position.name, item: item.getAttribute('data-pm-data') },
             overlayClickToClose: false,
-            remote: parseAjaxURI(getAjaxURL('positions/edit/' + parent.data('pm-blocktype')) + getAjaxSuffix()),
+            remote: parseAjaxURI(getAjaxURL('positions/edit/' + item.getAttribute('data-pm-blocktype')) + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
-                }
+                if (!response.body.success) { modal.enableCloseByOverlay(); return; }
+                var container = content.elements.content[0],
+                    form = container.querySelector('form'),
+                    submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                attachEditableValidation(container);
+                if (!form || !submits.length) { return true; }
 
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                submits.forEach(function(target) {
+                    target.addEventListener('click', function(submitEvent) {
+                        submitEvent.preventDefault();
+                        target.disabled = true;
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                var editable = content.elements.content.find('[data-title-editable]');
-                if (editable) {
-                    editable.on('title-edit-end', function(title, original/*, canceled*/) {
-                        title = trim(title);
-                        if (!title) {
-                            title = trim(original) || 'Title';
-                            this.text(title).data('title-editable', title);
-
-                            return true;
+                        form = container.querySelector('form');
+                        var post = Submit(form.elements, container);
+                        if (post.invalid.length) {
+                            target.disabled = false;
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
                         }
-                    });
-                }
 
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                        request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&'), function(error, resultResponse) {
+                            var result = resultResponse && resultResponse.body;
+                            if (!result || !result.success) {
+                                showError(error, resultResponse);
+                            } else {
+                                item.setAttribute('data-pm-data', JSON.stringify(result.item));
+                                var enabled = result.item.enabled || result.item.options.attributes.enabled,
+                                    replacement = elementFromHTML(result.html);
+                                if (replacement) { item.innerHTML = replacement.innerHTML; }
+                                item.classList.toggle('g-menu-item-disabled', String(enabled) === '0');
 
-                // Position Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
-                    fakeDOM = content.elements.content.find('form');
-
-                    var target = $(e.currentTarget);
-                    target.disabled(true);
-                    target.hideIndicator();
-                    target.showIndicator();
-
-                    var post = Submit(fakeDOM[0].elements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.disabled(false);
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&'), function(error, response) {
-                        if (!response.body.success) {
-                            modal.open({
-                                content: response.body.html || response.body.message || response.body,
-                                afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                                if (target.hasAttribute('data-apply-and-save')) {
+                                    var save = document.querySelector('.button-save');
+                                    if (save) { save.click(); }
                                 }
-                            });
-                        } else {
-                            var parent = element.parent('[data-pm-data]');
-
-                            if (parent) {
-                                parent.data('pm-data', JSON.stringify(response.body.item));
-
-                                var status = response.body.item.enabled || response.body.item.options.attributes.enabled;
-                                var dummy = createContainer(response.body.html);
-                                parent.html(dummy.firstChild().html());
-                                parent[status == '0' ? 'addClass' : 'removeClass']('g-menu-item-disabled');
+                                Cards.serialize(positionElement);
+                                Cards.updatePendingChanges();
+                                modal.close();
+                                toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
-
-                            // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
-                            }
-
-                            Cards.serialize(element.parent('[data-g5-position]'));
-                            Cards.updatePendingChanges();
-
-                            modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
-                        }
-
-                        target.hideIndicator();
+                            target.disabled = false;
+                            indicator.hide(target);
+                        });
                     });
                 });
             }
         });
     });
 
-    // Handles Positions Titles Rename
-    var updateTitle = function(title, original, wasCanceled) {
-            this.style('text-overflow', 'ellipsis');
-            if (wasCanceled || title == original) { return; }
-            var element = this,
-                href = element.data('g-config-href'),
-                type = element.data('title-editable-type'),
-                method = (element.data('g-config-method') || 'post').toLowerCase(),
-                parent = element.parent('[id]');
-
-            parent.showIndicator();
-            parent.find('[data-title-edit]').addClass('disabled');
-
-            var data = type === 'title' ? { title: trim(title) } : { key: trim(title) };
-            data.data = parent.find('[data-g5-position]').data('g5-position');
-
-            request(method, parseAjaxURI(href + getAjaxSuffix()), data, function(error, response) {
-                if (!response.body.success) {
-                    modal.open({
-                        content: response.body.html || response.body.message || response.body,
-                        afterOpen: function(container) {
-                            if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
-                        }
-                    });
-
-                    element.data('title-editable', original).text(original);
-                } else {
-                    var dummy = createContainer(response.body.position);
-
-                    parent.html(dummy.find('[id]').html());
-
-                    var editables = parent.search('[data-title-editable]');
-                    attachEditables(editables);
-                }
-
-                parent.hideIndicator();
-                parent.find('[data-title-edit]').removeClass('disabled');
-            });
-        },
-
-        attachEditables = function(editables) {
-            if (!editables || !editables.length) { return; }
-            editables.forEach(function(editable) {
-                editable = $(editable);
-                editable.confWasAttached = true;
-                editable.on('title-edit-start', function(){
-                    editable.style('text-overflow', 'inherit');
-                });
-                editable.on('title-edit-end', updateTitle);
-            });
-        };
-
-    // Toggle all assignments on/off
-    body.delegate('change', '[data-g5-positions-assignments] input[type="hidden"]', function(event, element) {
-        var card = element.parent('.card'),
-            wrapper = card.find('.settings-param-wrapper');
-
-        wrapper[element.value() == 1 ? 'addClass' : 'removeClass']('hide');
-        wrapper.search('input[type="hidden"]').forEach(function(element) {
-            element = $(element);
-            element.value(0).disabled(true);
+    dom.delegate(body, 'change', '[data-g5-positions-assignments] input[type="hidden"]', function(event, element) {
+        var card = element.closest('.card'),
+            wrapper = card && card.querySelector('.settings-param-wrapper');
+        if (!wrapper) { return; }
+        wrapper.classList.toggle('hide', element.value !== '1');
+        wrapper.querySelectorAll('input[type="hidden"]').forEach(function(input) {
+            input.value = '0';
+            input.disabled = true;
         });
     });
 
-    // Global state change
-    body.on('statechangeAfter', function(event, element) {
-        var editables = $('#positions [data-title-editable]');
-        if (!editables) { return true; }
-
-        editables = editables.filter(function(editable) {
-            return (typeof $(editable).confWasAttached) === 'undefined';
-        });
-
-        attachEditables(editables);
+    body.addEventListener('statechangeEnd', function() {
+        attachEditables(document.querySelectorAll('#positions [data-title-editable]'));
     });
-
-    attachEditables($('#positions [data-title-editable]'));
+    attachEditables(document.querySelectorAll('#positions [data-title-editable]'));
 });
 
 module.exports = {};
 
-},{"../fields/submit":7,"../ui":52,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/request":79,"../utils/translate":81,"./cards":45,"elements":90,"elements/domready":88}],47:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"./cards":45}],47:[function(require,module,exports){
 'use strict';
 
 const modal = require('../ui').modal;
