@@ -111,6 +111,10 @@ class Modal {
         return storage;
     }
 
+    element(value) {
+        return value && value.nodeType ? value : value && value[0] ? value[0] : null;
+    }
+
     open(options) {
         options = Object.assign({}, this.options, options || {});
         options.id = this.globalID++;

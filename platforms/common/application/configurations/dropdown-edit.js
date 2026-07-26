@@ -79,8 +79,9 @@ dom.ready(function() {
                         modal.open({
                             content: bodyResponse ? (bodyResponse.html || bodyResponse.message || bodyResponse) : (error ? error.message : 'Unable to rename outline.'),
                             afterOpen: function(container) {
-                                if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container[0]) {
-                                    container[0].style.width = '90%';
+                                container = modal.element(container);
+                                if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container) {
+                                    container.style.width = '90%';
                                 }
                             }
                         });

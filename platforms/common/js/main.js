@@ -335,8 +335,9 @@ dom.ready(function() {
                         modal.open({
                             content: bodyResponse ? (bodyResponse.html || bodyResponse.message || bodyResponse) : (error ? error.message : 'Unable to rename outline.'),
                             afterOpen: function(container) {
-                                if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container[0]) {
-                                    container[0].style.width = '90%';
+                                container = modal.element(container);
+                                if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container) {
+                                    container.style.width = '90%';
                                 }
                             }
                         });
@@ -425,7 +426,8 @@ dom.ready(function() {
                         modal.open({
                             content: result ? (result.html || result.message || result) : (error ? error.message : 'Unable to rename outline.'),
                             afterOpen: function(container) {
-                                if (result && !result.html && !result.message && container[0]) { container[0].style.width = '90%'; }
+                                container = modal.element(container);
+                                if (result && !result.html && !result.message && container) { container.style.width = '90%'; }
                             }
                         });
                         editable.setAttribute('data-title-editable', original);
@@ -2985,7 +2987,8 @@ ready(function() {
                 modal.open({
                     content: response.body.html || response.body.message || response.body,
                     afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                        container = modal.element(container);
+                        if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                     }
                 });
                 return;
@@ -3176,7 +3179,8 @@ ready(function() {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
                                 afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                                    container = modal.element(container);
+                                    if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                                 }
                             });
                         } else {
@@ -4590,7 +4594,8 @@ ready(function() {
                 modal.open({
                     content: response.body.html || response.body.message || response.body,
                     afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                        container = modal.element(container);
+                        if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                     }
                 });
             } else {
@@ -4724,7 +4729,8 @@ ready(function() {
                 modal.open({
                     content: response.body.html || response.body.message || response.body,
                     afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                        container = modal.element(container);
+                        if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                     }
                 });
 
@@ -5214,7 +5220,8 @@ var StepTwo = function(data, content, button) {
             modal.open({
                 content: response.body.html || response.body.message || response.body,
                 afterOpen: function(container) {
-                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                    container = modal.element(container);
+                    if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                 }
             });
 
@@ -5253,7 +5260,8 @@ var StepTwo = function(data, content, button) {
                     modal.open({
                         content: response.body.html || response.body.message || response.body,
                         afterOpen: function(container) {
-                            if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                            container = modal.element(container);
+                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                         }
                     });
                 } else {
@@ -5701,7 +5709,8 @@ ready(function() {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
                                 afterOpen: function(container) {
-                                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                                    container = modal.element(container);
+                                    if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                                 }
                             });
                         } else {
@@ -6464,7 +6473,8 @@ var attachSettings = function() {
                                 modal.open({
                                     content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
                                     afterOpen: function(modalContainer) {
-                                        if (result && !result.html && !result.message && modalContainer[0]) { modalContainer[0].style.width = '90%'; }
+                                        modalContainer = modal.element(modalContainer);
+                                        if (result && !result.html && !result.message && modalContainer) { modalContainer.style.width = '90%'; }
                                     }
                                 });
                             } else {
@@ -7804,7 +7814,8 @@ class FilePicker {
                     modal.open({
                         content: response.body.html || response.body.message || response.body,
                         afterOpen: function(container) {
-                            if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                            container = modal.element(container);
+                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                         }
                     });
                 } else {
@@ -7858,7 +7869,8 @@ class FilePicker {
                     modal.open({
                         content: response.body.html || response.body.message || response.body,
                         afterOpen: function(container) {
-                            if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                            container = modal.element(container);
+                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                         }
                     });
                 } else {
@@ -9493,7 +9505,8 @@ var showError = function(error, response) {
     modal.open({
         content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
         afterOpen: function(container) {
-            if (result && !result.html && !result.message && container[0]) { container[0].style.width = '90%'; }
+            container = modal.element(container);
+            if (result && !result.html && !result.message && container) { container.style.width = '90%'; }
         }
     });
 };
@@ -10559,6 +10572,10 @@ class Modal {
 
     storage() {
         return storage;
+    }
+
+    element(value) {
+        return value && value.nodeType ? value : value && value[0] ? value[0] : null;
     }
 
     open(options) {
@@ -14946,7 +14963,8 @@ History.Adapter.bind(window, 'statechange', function() {
                 modal.open({
                     content: response.body.html || response.body.message || response.body,
                     afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                        container = modal.element(container);
+                        if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                     }
                 });
 

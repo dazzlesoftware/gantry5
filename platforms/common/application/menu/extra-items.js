@@ -128,7 +128,8 @@ var StepTwo = function(data, content, button) {
             modal.open({
                 content: response.body.html || response.body.message || response.body,
                 afterOpen: function(container) {
-                    if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                    container = modal.element(container);
+                    if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                 }
             });
 
@@ -167,7 +168,8 @@ var StepTwo = function(data, content, button) {
                     modal.open({
                         content: response.body.html || response.body.message || response.body,
                         afterOpen: function(container) {
-                            if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                            container = modal.element(container);
+                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
                         }
                     });
                 } else {

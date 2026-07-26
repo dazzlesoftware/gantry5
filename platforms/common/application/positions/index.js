@@ -26,7 +26,8 @@ var showError = function(error, response) {
     modal.open({
         content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
         afterOpen: function(container) {
-            if (result && !result.html && !result.message && container[0]) { container[0].style.width = '90%'; }
+            container = modal.element(container);
+            if (result && !result.html && !result.message && container) { container.style.width = '90%'; }
         }
     });
 };

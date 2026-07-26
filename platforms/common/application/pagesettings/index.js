@@ -160,7 +160,8 @@ var attachSettings = function() {
                                 modal.open({
                                     content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
                                     afterOpen: function(modalContainer) {
-                                        if (result && !result.html && !result.message && modalContainer[0]) { modalContainer[0].style.width = '90%'; }
+                                        modalContainer = modal.element(modalContainer);
+                                        if (result && !result.html && !result.message && modalContainer) { modalContainer.style.width = '90%'; }
                                     }
                                 });
                             } else {
