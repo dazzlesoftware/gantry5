@@ -1,12 +1,8 @@
 "use strict";
 
-var $            = require('elements'),
-    EventEmitter = require('../utils/event-emitter'),
+var EventEmitter = require('../utils/event-emitter'),
     Blocks       = require('./blocks/'),
     ID           = require('./id');
-
-require('elements/attributes');
-require('elements/traversal');
 
 var DEBUG = false;
 
@@ -48,14 +44,6 @@ var withoutChildren = function(value) {
     return output;
 };
 
-$.implement({
-    empty: function() {
-        return this.forEach(function(node) {
-            while (node.firstChild) { node.removeChild(node.firstChild); }
-        });
-    }
-});
-
 class Builder extends EventEmitter {
     constructor(structure) {
         super();
@@ -74,7 +62,7 @@ class Builder extends EventEmitter {
     add(block) {
         var id = typeof block === 'string' ? block : block.id;
         this.map[id] = block;
-        block.isNew(false);
+        if (block && typeof block.isNew === 'function') { block.isNew(false); }
     }
 
     remove(block) {
@@ -95,23 +83,24 @@ class Builder extends EventEmitter {
 
     serialize(root, flat) {
         var serializedChildren = [];
-        root = root || $('[data-lm-root]');
+        root = root ? (root.nodeType ? root : root[0]) : document.querySelector('[data-lm-root]');
         if (!root) { return; }
 
-        var blocks = root.search((!flat ? '> ' : '') + '[data-lm-id]');
+        var blocks = flat
+            ? root.querySelectorAll('[data-lm-id]')
+            : Array.from(root.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
         forEachCollection(blocks, function(node) {
-            var element = $(node),
-                id = element.data('lm-id'),
-                type = element.data('lm-blocktype'),
-                subtype = element.data('lm-blocksubtype') || false,
-                hasChildren = element.search('> [data-lm-id]'),
+            var id = node.getAttribute('data-lm-id'),
+                type = node.getAttribute('data-lm-blocktype'),
+                subtype = node.getAttribute('data-lm-blocksubtype') || false,
+                hasChildren = Array.from(node.children).filter(function(child) { return child.hasAttribute('data-lm-id'); }),
                 mapped = this.map[id],
                 children;
 
             if (flat) {
-                children = hasChildren ? hasChildren.map(function(child) { return $(child).data('lm-id'); }) : false;
+                children = hasChildren.length ? hasChildren.map(function(child) { return child.getAttribute('data-lm-id'); }) : false;
             } else {
-                children = hasChildren ? this.serialize(element) : [];
+                children = hasChildren.length ? this.serialize(node) : [];
             }
 
             var serial = {
@@ -136,7 +125,7 @@ class Builder extends EventEmitter {
     }
 
     insert(key, value, parent) {
-        var root = $('[data-lm-root]');
+        var root = document.querySelector('[data-lm-root]');
         if (!root) { return; }
         if (!Blocks[value.type]) { console.error(value.type + ' does not exist'); }
 
@@ -149,8 +138,9 @@ class Builder extends EventEmitter {
             }, withoutChildren(value)),
             Element = new (Blocks[value.type] || Blocks.section)(settings);
 
-        if (!parent) { Element.block.insert(root); }
-        else { Element.block.insert($('[data-lm-id="' + parent + '"]')); }
+        var block = Element.block[0],
+            target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
+        if (target) { target.appendChild(block); }
 
         if (Element.getType() === 'block') { Element.setSize(); }
         this.add(Element);
@@ -161,28 +151,35 @@ class Builder extends EventEmitter {
     reset(data) {
         this.map = {};
         this.setStructure(data || {});
-        $('[data-lm-root]').empty();
+        var root = document.querySelector('[data-lm-root]');
+        if (root) { root.replaceChildren(); }
         this.load();
     }
 
     cleanupLonely() {
         var ghosts = [],
             parent,
-            children = $('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
+            children = document.querySelectorAll('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
 
-        if (!children) { return; }
+        if (!children.length) { return; }
         children.forEach(function(child) {
-            child = $(child);
             parent = null;
-            var isGrid = child.parent().hasClass('g-grid');
-            if (isGrid && child.siblings()) { return false; }
+            var childParent = child.parentElement,
+                isGrid = childParent && childParent.classList.contains('g-grid');
+            if (isGrid && childParent.children.length > 1) { return; }
             if (isGrid) {
-                ghosts.push(child.data('lm-id'));
-                parent = child.parent();
+                var gridId = childParent.getAttribute('data-lm-id');
+                if (gridId) { ghosts.push(gridId); }
+                parent = childParent;
             }
-            ghosts.push(child.data('lm-id'));
-            child.children().before(parent || child);
-            (parent || child).remove();
+            var childId = child.getAttribute('data-lm-id');
+            if (childId) { ghosts.push(childId); }
+
+            var removalTarget = parent || child;
+            Array.from(child.children).forEach(function(grandchild) {
+                removalTarget.parentNode.insertBefore(grandchild, removalTarget);
+            });
+            removalTarget.remove();
         });
         return ghosts;
     }

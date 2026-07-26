@@ -2,6 +2,12 @@
 
 const deepDiff = require('deep-diff').diff;
 
+const cloneSnapshot = value => {
+    if (value == null) return value;
+    if (typeof structuredClone === 'function') return structuredClone(value);
+    return JSON.parse(JSON.stringify(value));
+};
+
 class History {
     constructor(session, preset) {
         this.index = 0;
@@ -56,8 +62,8 @@ class History {
 
         const session = {
             time: Date.now(),
-            data: { ...(data || {}) },
-            preset: { ...(preset || {}) }
+            data: cloneSnapshot(data || []),
+            preset: cloneSnapshot(preset || {})
         };
         if (this.equals(session.data)) return session;
 
@@ -68,7 +74,8 @@ class History {
     }
 
     get(index = this.index) {
-        return this.session[index] || false;
+        const session = this.session[index];
+        return session ? cloneSnapshot(session) : false;
     }
 
     equals(session, compare) {
@@ -87,8 +94,8 @@ class History {
     setSession(session, preset) {
         this.session = session ? [{
             time: Date.now(),
-            data: { ...session },
-            preset
+            data: cloneSnapshot(session),
+            preset: cloneSnapshot(preset)
         }] : [];
         this.index = 0;
         return this.session;

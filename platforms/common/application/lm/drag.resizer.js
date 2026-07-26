@@ -1,9 +1,15 @@
 "use strict";
-var DragEvents = require('../ui/drag.events'),
-    $          = require('../utils/elements.utils');
+var DragEvents = require('../ui/drag.events');
 
-require('elements/events');
-require('elements/delegation');
+var asElement = function(element) {
+    return element && element.nodeType ? element : element && element[0];
+};
+
+var asElements = function(elements) {
+    if (!elements) { return []; }
+    if (elements.nodeType) { return [elements]; }
+    return Array.from(elements).map(asElement).filter(Boolean);
+};
 
 var clamp = function(value, min, max) {
         return Math.min(max, Math.max(min, value));
@@ -24,6 +30,7 @@ class Resizer {
         this.builder = this.options.builder || {};
         this.moveHandler = this.move.bind(this);
         this.stopHandler = this.stop.bind(this);
+        this.listenerOptions = { passive: false };
         this.origin = {
             x: 0,
             y: 0,
@@ -36,35 +43,47 @@ class Resizer {
     }
 
     getBlock(element) {
-        var id = typeof element === 'string' ? element : $(element).data('lm-id') || '';
+        element = typeof element === 'string' ? element : asElement(element);
+        var id = typeof element === 'string' ? element : (element && element.getAttribute('data-lm-id')) || '';
         return this.builder.map ? this.builder.map[id] : undefined;
     }
 
     getAttribute(element, prop) {
-        return this.getBlock(element).getAttribute(prop);
+        var block = this.getBlock(element);
+        return block ? block.getAttribute(prop) : undefined;
     }
 
     getSize(element) {
-        return this.getAttribute($(element), 'size');
+        return this.getAttribute(element, 'size');
     }
 
     start(event, element, siblings, offset) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        window.G5.tips.hide(element[0]);
+        element = asElement(element);
+        siblings = asElements(siblings);
+        if (!element) { return; }
+
+        window.G5.tips.hide(element);
         if (event.which && event.which !== 1) { return true; }
 
         // Stops text selection
         event.preventDefault();
 
-        this.element = $(element);
+        this.element = element;
         this.siblings = {
             occupied: 0,
             elements: siblings,
-            next: this.element.nextSibling(),
-            prevs: this.element.previousSiblings(),
+            next: this.element.nextElementSibling,
+            prevs: [],
             sizeBefore: 0
         };
+
+        var previous = this.element.previousElementSibling;
+        while (previous) {
+            this.siblings.prevs.unshift(previous);
+            previous = previous.previousElementSibling;
+        }
 
         if (this.siblings.elements.length > 1) {
             this.siblings.occupied -= this.getSize(this.siblings.next);
@@ -73,11 +92,9 @@ class Resizer {
             }, this);
         }
 
-        if (this.siblings.prevs) {
-            this.siblings.prevs.forEach(function(sibling) {
-                this.siblings.sizeBefore += this.getSize(sibling);
-            }, this);
-        }
+        this.siblings.prevs.forEach(function(sibling) {
+            this.siblings.sizeBefore += this.getSize(sibling);
+        }, this);
 
         this.origin = {
             size: this.getSize(this.element),
@@ -86,26 +103,30 @@ class Resizer {
             y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
 
-        var clientRect = this.element[0].getBoundingClientRect(),
-            parentRect = this.element.parent()[0].getBoundingClientRect();
+        var parent = this.element.parentElement,
+            clientRect = this.element.getBoundingClientRect(),
+            parentRect = parent.getBoundingClientRect();
 
         this.origin.offset = {
             clientRect: clientRect,
             parentRect: {left: parentRect.left, right: parentRect.right},
             x: this.origin.x - clientRect.right,
             y: clientRect.top - this.origin.y,
-            down: offset
+            down: offset || 0
         };
 
-        this.origin.offset.parentRect.left = this.element.parent().find('> [data-lm-id]:first-child')[0].getBoundingClientRect().left;
-        this.origin.offset.parentRect.right = this.element.parent().find('> [data-lm-id]:last-child')[0].getBoundingClientRect().right;
+        var blocks = Array.from(parent.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
+        if (blocks.length) {
+            this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
+            this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
+        }
 
         this.detachDocumentEvents();
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.addEventListener(eventName, this.moveHandler, {passive: false});
+            document.addEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.addEventListener(eventName, this.stopHandler, {passive: false});
+            document.addEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
@@ -127,7 +148,7 @@ class Resizer {
                                                                  'down';
         var size,
             diff = 100 - this.siblings.occupied,
-            value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
+            value = clientX + (!this.siblings.prevs.length ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
             normalized = clamp(value, parentRect.left, parentRect.right);
 
         size = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
@@ -143,14 +164,17 @@ class Resizer {
         this.getBlock(this.siblings.next).setSize(diff, true);
 
         // Hack to handle cases where size is not an integer
-        var siblings = this.element.siblings(),
-            amount = siblings ? siblings.length + 1 : 1;
+        var siblings = Array.from(this.element.parentElement.children).filter(function(sibling) {
+                return sibling !== this.element && sibling.hasAttribute('data-lm-id');
+            }, this),
+            amount = siblings.length + 1;
         if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
             var total = 0, blocks;
 
-            blocks = $([siblings, this.element]);
+            blocks = siblings.concat(this.element);
             blocks.forEach(function(block, index){
                 block = this.getBlock(block);
+                if (!block) { return; }
                 size = block.getSize();
                 if (size % 1) {
                     size = precision(100 / amount, 0);
@@ -176,16 +200,16 @@ class Resizer {
 
         this.detachDocumentEvents();
 
-        if (event.target && event.target.matches('[data-lm-back], [data-lm-forward]')) { return; }
+        if (event.target instanceof Element && event.target.matches('[data-lm-back], [data-lm-forward]')) { return; }
         if (this.origin.size !== this.getSize(this.element)) { this.history.push(this.builder.serialize(), this.history.get().preset); }
     }
 
     detachDocumentEvents() {
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.moveHandler, {passive: false});
+            document.removeEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.stopHandler, {passive: false});
+            document.removeEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
@@ -196,13 +220,22 @@ class Resizer {
 
         if (typeof animated === 'undefined') { animated = true; }
 
-        elements.forEach(function(element) {
-            element = $(element);
+        asElements(elements).forEach(function(element) {
             block = this.getBlock(element);
             if (block && block.hasAttribute('size') && typeof block.getSize === 'function') {
                 block[animated ? 'setAnimatedSize' : 'setSize'](size, size !== block.getSize());
             } else {
-                if (element) { element[animated ? 'animate' : 'style']({ flex: '0 1 ' + size + '%' }); }
+                if (!element) { return; }
+                var flex = '0 1 ' + size + '%';
+                if (animated && typeof element.animate === 'function') {
+                    var animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex: flex }], {
+                        duration: 250,
+                        easing: 'ease'
+                    });
+                    animation.addEventListener('finish', function() { element.style.flex = flex; }, { once: true });
+                } else {
+                    element.style.flex = flex;
+                }
             }
         }, this);
     }

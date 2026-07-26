@@ -369,7 +369,7 @@ class Fonts {
         if (!preview) { return; }
 
         if (!this.selected.selected.length) {
-            preview.empty();
+            preview[0].replaceChildren();
             this.selected.element.removeClass('font-selected');
             return;
         }
@@ -426,7 +426,7 @@ class Fonts {
                         content = popover.$target.find('.g5-popover-content'),
                         checked;
 
-                    content.empty();
+                    content[0].replaceChildren();
 
                     var div, current;
                     subsets.forEach(function(cs) {
@@ -464,7 +464,7 @@ class Fonts {
                     var content  = popover.$target.find('.g5-popover-content'),
                         variants = element.parent('[data-variants]').data('variants').split(',');
 
-                    content.empty();
+                    content[0].replaceChildren();
 
                     asyncForEach(variants, function(variant) {
                         variant = variant == '400' ? 'regular' : (variant == '400italic' ? 'italic' : variant + '');
@@ -529,7 +529,7 @@ class Fonts {
                 content = popover.$target.find('.g5-popover-content'),
                 checked;
 
-            content.empty();
+            content[0].replaceChildren();
 
             cats.forEach(function(category) {
                 if (category == 'local-fonts') { return; }
@@ -557,7 +557,7 @@ class Fonts {
             var subs    = subsets.data('font-subsets').split(','),
                 content = popover.$target.find('.g5-popover-content');
 
-            content.empty();
+            content[0].replaceChildren();
 
             var div;
             subs.forEach(function(sub) {

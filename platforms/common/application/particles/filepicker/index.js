@@ -278,11 +278,11 @@ class FilePicker {
                     }
 
                     if (response.body.files) {
-                        files.empty();
+                        files[0].replaceChildren();
                         dummy = zen('div').html(response.body.files);
                         dummy.children().bottom(files).style({ opacity: 0 }).animate({ opacity: 1 }, { duration: '250ms' });
                     } else {
-                        files.find('> ul:not(.g-list-labels)').empty();
+                        files.find('> ul:not(.g-list-labels)')[0].replaceChildren();
                     }
 
                     this.dropzone.previewsContainer = files.find('ul:not(.g-list-labels)')[0];

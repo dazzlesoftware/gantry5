@@ -420,7 +420,8 @@ ready(function() {
                 notice = $('#lm-no-layout'),
                 title = $('.layout-title .title small');
 
-            root.data('lm-root', JSON.stringify(structure)).empty();
+            root.data('lm-root', JSON.stringify(structure));
+            root[0].replaceChildren();
             root.data('lm-preset', preset);
             if (notice) { notice.style({ display: 'none' }); }
             if (title) { title.text('(' + preset_name + ')'); }

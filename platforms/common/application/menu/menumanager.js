@@ -492,8 +492,6 @@ var MenuManagerDefinition = {
             this.ordering[active] = colsOrder;
         }
 
-        if (!parent.children()) { parent.empty(); }
-
         /*if (console && console.group && console.info && console.table && console.groupEnd) {
          console.group();
          console.info('New Ordering');

@@ -155,7 +155,7 @@ ready(function() {
 
         var block = $(last[0].cloneNode(true));
         block.data('mm-id', 'list-' + count);
-        block.find('.submenu-items').empty();
+        block.find('.submenu-items')[0].replaceChildren();
         block.find('[data-mm-base-level]').data('mm-base-level', 1);
         block.find('.submenu-level').text('Level 1');
         block.after(last);

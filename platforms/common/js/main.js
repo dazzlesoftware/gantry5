@@ -2016,13 +2016,9 @@ module.exports = Wrapper;
 },{"./section":18}],22:[function(require,module,exports){
 "use strict";
 
-var $            = require('elements'),
-    EventEmitter = require('../utils/event-emitter'),
+var EventEmitter = require('../utils/event-emitter'),
     Blocks       = require('./blocks/'),
     ID           = require('./id');
-
-require('elements/attributes');
-require('elements/traversal');
 
 var DEBUG = false;
 
@@ -2064,14 +2060,6 @@ var withoutChildren = function(value) {
     return output;
 };
 
-$.implement({
-    empty: function() {
-        return this.forEach(function(node) {
-            while (node.firstChild) { node.removeChild(node.firstChild); }
-        });
-    }
-});
-
 class Builder extends EventEmitter {
     constructor(structure) {
         super();
@@ -2090,7 +2078,7 @@ class Builder extends EventEmitter {
     add(block) {
         var id = typeof block === 'string' ? block : block.id;
         this.map[id] = block;
-        block.isNew(false);
+        if (block && typeof block.isNew === 'function') { block.isNew(false); }
     }
 
     remove(block) {
@@ -2111,23 +2099,24 @@ class Builder extends EventEmitter {
 
     serialize(root, flat) {
         var serializedChildren = [];
-        root = root || $('[data-lm-root]');
+        root = root ? (root.nodeType ? root : root[0]) : document.querySelector('[data-lm-root]');
         if (!root) { return; }
 
-        var blocks = root.search((!flat ? '> ' : '') + '[data-lm-id]');
+        var blocks = flat
+            ? root.querySelectorAll('[data-lm-id]')
+            : Array.from(root.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
         forEachCollection(blocks, function(node) {
-            var element = $(node),
-                id = element.data('lm-id'),
-                type = element.data('lm-blocktype'),
-                subtype = element.data('lm-blocksubtype') || false,
-                hasChildren = element.search('> [data-lm-id]'),
+            var id = node.getAttribute('data-lm-id'),
+                type = node.getAttribute('data-lm-blocktype'),
+                subtype = node.getAttribute('data-lm-blocksubtype') || false,
+                hasChildren = Array.from(node.children).filter(function(child) { return child.hasAttribute('data-lm-id'); }),
                 mapped = this.map[id],
                 children;
 
             if (flat) {
-                children = hasChildren ? hasChildren.map(function(child) { return $(child).data('lm-id'); }) : false;
+                children = hasChildren.length ? hasChildren.map(function(child) { return child.getAttribute('data-lm-id'); }) : false;
             } else {
-                children = hasChildren ? this.serialize(element) : [];
+                children = hasChildren.length ? this.serialize(node) : [];
             }
 
             var serial = {
@@ -2152,7 +2141,7 @@ class Builder extends EventEmitter {
     }
 
     insert(key, value, parent) {
-        var root = $('[data-lm-root]');
+        var root = document.querySelector('[data-lm-root]');
         if (!root) { return; }
         if (!Blocks[value.type]) { console.error(value.type + ' does not exist'); }
 
@@ -2165,8 +2154,9 @@ class Builder extends EventEmitter {
             }, withoutChildren(value)),
             Element = new (Blocks[value.type] || Blocks.section)(settings);
 
-        if (!parent) { Element.block.insert(root); }
-        else { Element.block.insert($('[data-lm-id="' + parent + '"]')); }
+        var block = Element.block[0],
+            target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
+        if (target) { target.appendChild(block); }
 
         if (Element.getType() === 'block') { Element.setSize(); }
         this.add(Element);
@@ -2177,28 +2167,35 @@ class Builder extends EventEmitter {
     reset(data) {
         this.map = {};
         this.setStructure(data || {});
-        $('[data-lm-root]').empty();
+        var root = document.querySelector('[data-lm-root]');
+        if (root) { root.replaceChildren(); }
         this.load();
     }
 
     cleanupLonely() {
         var ghosts = [],
             parent,
-            children = $('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
+            children = document.querySelectorAll('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
 
-        if (!children) { return; }
+        if (!children.length) { return; }
         children.forEach(function(child) {
-            child = $(child);
             parent = null;
-            var isGrid = child.parent().hasClass('g-grid');
-            if (isGrid && child.siblings()) { return false; }
+            var childParent = child.parentElement,
+                isGrid = childParent && childParent.classList.contains('g-grid');
+            if (isGrid && childParent.children.length > 1) { return; }
             if (isGrid) {
-                ghosts.push(child.data('lm-id'));
-                parent = child.parent();
+                var gridId = childParent.getAttribute('data-lm-id');
+                if (gridId) { ghosts.push(gridId); }
+                parent = childParent;
             }
-            ghosts.push(child.data('lm-id'));
-            child.children().before(parent || child);
-            (parent || child).remove();
+            var childId = child.getAttribute('data-lm-id');
+            if (childId) { ghosts.push(childId); }
+
+            var removalTarget = parent || child;
+            Array.from(child.children).forEach(function(grandchild) {
+                removalTarget.parentNode.insertBefore(grandchild, removalTarget);
+            });
+            removalTarget.remove();
         });
         return ghosts;
     }
@@ -2234,13 +2231,19 @@ class Builder extends EventEmitter {
 
 module.exports = Builder;
 
-},{"../utils/event-emitter":68,"./blocks/":14,"./id":25,"elements":90,"elements/attributes":85,"elements/traversal":92}],23:[function(require,module,exports){
+},{"../utils/event-emitter":68,"./blocks/":14,"./id":25}],23:[function(require,module,exports){
 "use strict";
-var DragEvents = require('../ui/drag.events'),
-    $          = require('../utils/elements.utils');
+var DragEvents = require('../ui/drag.events');
 
-require('elements/events');
-require('elements/delegation');
+var asElement = function(element) {
+    return element && element.nodeType ? element : element && element[0];
+};
+
+var asElements = function(elements) {
+    if (!elements) { return []; }
+    if (elements.nodeType) { return [elements]; }
+    return Array.from(elements).map(asElement).filter(Boolean);
+};
 
 var clamp = function(value, min, max) {
         return Math.min(max, Math.max(min, value));
@@ -2261,6 +2264,7 @@ class Resizer {
         this.builder = this.options.builder || {};
         this.moveHandler = this.move.bind(this);
         this.stopHandler = this.stop.bind(this);
+        this.listenerOptions = { passive: false };
         this.origin = {
             x: 0,
             y: 0,
@@ -2273,35 +2277,47 @@ class Resizer {
     }
 
     getBlock(element) {
-        var id = typeof element === 'string' ? element : $(element).data('lm-id') || '';
+        element = typeof element === 'string' ? element : asElement(element);
+        var id = typeof element === 'string' ? element : (element && element.getAttribute('data-lm-id')) || '';
         return this.builder.map ? this.builder.map[id] : undefined;
     }
 
     getAttribute(element, prop) {
-        return this.getBlock(element).getAttribute(prop);
+        var block = this.getBlock(element);
+        return block ? block.getAttribute(prop) : undefined;
     }
 
     getSize(element) {
-        return this.getAttribute($(element), 'size');
+        return this.getAttribute(element, 'size');
     }
 
     start(event, element, siblings, offset) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        window.G5.tips.hide(element[0]);
+        element = asElement(element);
+        siblings = asElements(siblings);
+        if (!element) { return; }
+
+        window.G5.tips.hide(element);
         if (event.which && event.which !== 1) { return true; }
 
         // Stops text selection
         event.preventDefault();
 
-        this.element = $(element);
+        this.element = element;
         this.siblings = {
             occupied: 0,
             elements: siblings,
-            next: this.element.nextSibling(),
-            prevs: this.element.previousSiblings(),
+            next: this.element.nextElementSibling,
+            prevs: [],
             sizeBefore: 0
         };
+
+        var previous = this.element.previousElementSibling;
+        while (previous) {
+            this.siblings.prevs.unshift(previous);
+            previous = previous.previousElementSibling;
+        }
 
         if (this.siblings.elements.length > 1) {
             this.siblings.occupied -= this.getSize(this.siblings.next);
@@ -2310,11 +2326,9 @@ class Resizer {
             }, this);
         }
 
-        if (this.siblings.prevs) {
-            this.siblings.prevs.forEach(function(sibling) {
-                this.siblings.sizeBefore += this.getSize(sibling);
-            }, this);
-        }
+        this.siblings.prevs.forEach(function(sibling) {
+            this.siblings.sizeBefore += this.getSize(sibling);
+        }, this);
 
         this.origin = {
             size: this.getSize(this.element),
@@ -2323,26 +2337,30 @@ class Resizer {
             y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
 
-        var clientRect = this.element[0].getBoundingClientRect(),
-            parentRect = this.element.parent()[0].getBoundingClientRect();
+        var parent = this.element.parentElement,
+            clientRect = this.element.getBoundingClientRect(),
+            parentRect = parent.getBoundingClientRect();
 
         this.origin.offset = {
             clientRect: clientRect,
             parentRect: {left: parentRect.left, right: parentRect.right},
             x: this.origin.x - clientRect.right,
             y: clientRect.top - this.origin.y,
-            down: offset
+            down: offset || 0
         };
 
-        this.origin.offset.parentRect.left = this.element.parent().find('> [data-lm-id]:first-child')[0].getBoundingClientRect().left;
-        this.origin.offset.parentRect.right = this.element.parent().find('> [data-lm-id]:last-child')[0].getBoundingClientRect().right;
+        var blocks = Array.from(parent.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
+        if (blocks.length) {
+            this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
+            this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
+        }
 
         this.detachDocumentEvents();
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.addEventListener(eventName, this.moveHandler, {passive: false});
+            document.addEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.addEventListener(eventName, this.stopHandler, {passive: false});
+            document.addEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
@@ -2364,7 +2382,7 @@ class Resizer {
                                                                  'down';
         var size,
             diff = 100 - this.siblings.occupied,
-            value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
+            value = clientX + (!this.siblings.prevs.length ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
             normalized = clamp(value, parentRect.left, parentRect.right);
 
         size = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
@@ -2380,14 +2398,17 @@ class Resizer {
         this.getBlock(this.siblings.next).setSize(diff, true);
 
         // Hack to handle cases where size is not an integer
-        var siblings = this.element.siblings(),
-            amount = siblings ? siblings.length + 1 : 1;
+        var siblings = Array.from(this.element.parentElement.children).filter(function(sibling) {
+                return sibling !== this.element && sibling.hasAttribute('data-lm-id');
+            }, this),
+            amount = siblings.length + 1;
         if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
             var total = 0, blocks;
 
-            blocks = $([siblings, this.element]);
+            blocks = siblings.concat(this.element);
             blocks.forEach(function(block, index){
                 block = this.getBlock(block);
+                if (!block) { return; }
                 size = block.getSize();
                 if (size % 1) {
                     size = precision(100 / amount, 0);
@@ -2413,16 +2434,16 @@ class Resizer {
 
         this.detachDocumentEvents();
 
-        if (event.target && event.target.matches('[data-lm-back], [data-lm-forward]')) { return; }
+        if (event.target instanceof Element && event.target.matches('[data-lm-back], [data-lm-forward]')) { return; }
         if (this.origin.size !== this.getSize(this.element)) { this.history.push(this.builder.serialize(), this.history.get().preset); }
     }
 
     detachDocumentEvents() {
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.moveHandler, {passive: false});
+            document.removeEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.stopHandler, {passive: false});
+            document.removeEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
@@ -2433,13 +2454,22 @@ class Resizer {
 
         if (typeof animated === 'undefined') { animated = true; }
 
-        elements.forEach(function(element) {
-            element = $(element);
+        asElements(elements).forEach(function(element) {
             block = this.getBlock(element);
             if (block && block.hasAttribute('size') && typeof block.getSize === 'function') {
                 block[animated ? 'setAnimatedSize' : 'setSize'](size, size !== block.getSize());
             } else {
-                if (element) { element[animated ? 'animate' : 'style']({ flex: '0 1 ' + size + '%' }); }
+                if (!element) { return; }
+                var flex = '0 1 ' + size + '%';
+                if (animated && typeof element.animate === 'function') {
+                    var animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex: flex }], {
+                        duration: 250,
+                        easing: 'ease'
+                    });
+                    animation.addEventListener('finish', function() { element.style.flex = flex; }, { once: true });
+                } else {
+                    element.style.flex = flex;
+                }
             }
         }, this);
     }
@@ -2447,10 +2477,16 @@ class Resizer {
 
 module.exports = Resizer;
 
-},{"../ui/drag.events":50,"../utils/elements.utils":66,"elements/delegation":87,"elements/events":89}],24:[function(require,module,exports){
+},{"../ui/drag.events":50}],24:[function(require,module,exports){
 'use strict';
 
 const deepDiff = require('deep-diff').diff;
+
+const cloneSnapshot = value => {
+    if (value == null) return value;
+    if (typeof structuredClone === 'function') return structuredClone(value);
+    return JSON.parse(JSON.stringify(value));
+};
 
 class History {
     constructor(session, preset) {
@@ -2506,8 +2542,8 @@ class History {
 
         const session = {
             time: Date.now(),
-            data: { ...(data || {}) },
-            preset: { ...(preset || {}) }
+            data: cloneSnapshot(data || []),
+            preset: cloneSnapshot(preset || {})
         };
         if (this.equals(session.data)) return session;
 
@@ -2518,7 +2554,8 @@ class History {
     }
 
     get(index = this.index) {
-        return this.session[index] || false;
+        const session = this.session[index];
+        return session ? cloneSnapshot(session) : false;
     }
 
     equals(session, compare) {
@@ -2537,8 +2574,8 @@ class History {
     setSession(session, preset) {
         this.session = session ? [{
             time: Date.now(),
-            data: { ...session },
-            preset
+            data: cloneSnapshot(session),
+            preset: cloneSnapshot(preset)
         }] : [];
         this.index = 0;
         return this.session;
@@ -3001,7 +3038,8 @@ ready(function() {
                 notice = $('#lm-no-layout'),
                 title = $('.layout-title .title small');
 
-            root.data('lm-root', JSON.stringify(structure)).empty();
+            root.data('lm-root', JSON.stringify(structure));
+            root[0].replaceChildren();
             root.data('lm-preset', preset);
             if (notice) { notice.style({ display: 'none' }); }
             if (title) { title.text('(' + preset_name + ')'); }
@@ -4667,11 +4705,29 @@ module.exports = modules;
 
 },{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":33,"./pagesettings":35,"./particles":41,"./positions":46,"./positions/cards":45,"./styles":47,"./ui":52,"./ui/popover":54,"./ui/tooltips":59,"./utils/ajaxify-links":60,"./utils/field-validation":69,"./utils/flags-state":70,"./utils/get-ajax-suffix":71,"./utils/get-ajax-url":72,"./utils/rAF-polyfill":78,"./utils/request":79,"./utils/translate":81,"elements":90,"elements/attributes":85,"elements/delegation":87,"elements/domready":88,"elements/events":89,"elements/insertion":91,"elements/traversal":92,"elements/zen":93}],31:[function(require,module,exports){
 "use strict";
-var DragEvents = require('../ui/drag.events'),
-    $          = require('../utils/elements.utils');
+var DragEvents = require('../ui/drag.events');
 
-require('elements/events');
-require('elements/delegation');
+var asElement = function(element) {
+        return element && element.nodeType ? element : element && element[0];
+    },
+    asElements = function(elements) {
+        if (!elements) { return []; }
+        if (elements.nodeType) { return [elements]; }
+        return Array.from(elements).map(asElement).filter(Boolean);
+    },
+    directChildren = function(element, selector) {
+        return element
+            ? Array.from(element.children).filter(function(child) { return child.matches(selector); })
+            : [];
+    },
+    previousSiblings = function(element) {
+        var siblings = [], previous = element ? element.previousElementSibling : null;
+        while (previous) {
+            siblings.unshift(previous);
+            previous = previous.previousElementSibling;
+        }
+        return siblings;
+    };
 
 var clamp = function(value, min, max) {
         return Math.min(max, Math.max(min, value));
@@ -4694,6 +4750,7 @@ class Resizer {
         this.menumanager = menumanager;
         this.moveHandler = this.move.bind(this);
         this.stopHandler = this.stop.bind(this);
+        this.listenerOptions = {passive: false};
         this.origin = {
             x: 0,
             y: 0,
@@ -4706,7 +4763,8 @@ class Resizer {
     }
 
     getBlock(element) {
-        var id = typeof element === 'string' ? element : $(element).data('lm-id') || '';
+        element = typeof element === 'string' ? element : asElement(element);
+        var id = typeof element === 'string' ? element : (element && element.dataset.lmId) || '';
         return this.map ? this.map[id] : undefined;
     }
 
@@ -4715,22 +4773,35 @@ class Resizer {
     }
 
     getSize(element) {
-        element = $(element);
-        var parent = element.matches('[data-mm-id]') ? element : element.parent('[data-mm-id]'),
-            size = parent.find('.percentage input');
+        element = asElement(element);
+        var parent = element && (element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]')),
+            size = parent && parent.querySelector('.percentage input');
 
-        return Number(size.value());
+        return size ? Number(size.value) : 0;
     }
 
     setSize(element, size, animated) {
-        element = $(element);
+        element = asElement(element);
+        if (!element) { return; }
         animated = typeof animated === 'undefined' ? false : animated;
 
-        var parent = element.matches('[data-mm-id]') ? element : element.parent('[data-mm-id]'),
-            pc = parent.find('.percentage input');
+        var parent = element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]'),
+            pc = parent && parent.querySelector('.percentage input'),
+            flex = '0 1 ' + size + '%';
 
-        parent[animated ? 'animate' : 'style']({'flex': '0 1 '+size+'%'});
-        pc.value(precision(size, 1));
+        if (!parent) { return; }
+        if (animated && typeof parent.animate === 'function') {
+            var animation = parent.animate([
+                {flex: getComputedStyle(parent).flex},
+                {flex: flex}
+            ], {duration: 250, easing: 'ease'});
+            animation.addEventListener('finish', function() {
+                parent.style.flex = flex;
+            }, {once: true});
+        } else {
+            parent.style.flex = flex;
+        }
+        if (pc) { pc.value = precision(size, 1); }
     }
 
     start(event, element, siblings, offset) {
@@ -4740,18 +4811,24 @@ class Resizer {
         // Stops text selection
         event.preventDefault();
 
-        this.element = $(element);
+        this.element = asElement(element);
+        if (!this.element) { return false; }
 
-        var parent = this.element.parent('.submenu-selector');
+        var parent = this.element.closest('.submenu-selector');
         if (!parent) { return false; }
 
-        parent.addClass('moving');
+        var current = this.element.closest('[data-mm-id]'),
+            next = current && current.nextElementSibling,
+            nextColumn = next && next.querySelector(':scope > .submenu-column');
+        if (!current || !nextColumn) { return false; }
+
+        parent.classList.add('moving');
         
         this.siblings = {
             occupied: 0,
-            elements: siblings,
-            next: this.element.parent('[data-mm-id]').nextSibling().find('> .submenu-column'),
-            prevs: this.element.parent('[data-mm-id]').previousSiblings(),
+            elements: asElements(siblings),
+            next: nextColumn,
+            prevs: previousSiblings(current),
             sizeBefore: 0
         };
 
@@ -4775,27 +4852,30 @@ class Resizer {
             y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
 
-        var clientRect = this.element[0].getBoundingClientRect(),
-            parentRect = this.element.parent()[0].getBoundingClientRect();
+        var clientRect = this.element.getBoundingClientRect(),
+            parentRect = this.element.parentElement.getBoundingClientRect();
 
         this.origin.offset = {
             clientRect: clientRect,
             parentRect: {left: parentRect.left, right: parentRect.right},
             x: this.origin.x - clientRect.right,
             y: clientRect.top - this.origin.y,
-            down: offset
+            down: offset || 0
         };
 
-        this.origin.offset.parentRect.left = this.element.parent('.submenu-selector').find('> [data-mm-id]:first-child')[0].getBoundingClientRect().left;
-        this.origin.offset.parentRect.right = this.element.parent('.submenu-selector').find('> [data-mm-id]:last-child')[0].getBoundingClientRect().right;
+        var blocks = directChildren(parent, '[data-mm-id]');
+        if (blocks.length) {
+            this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
+            this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
+        }
 
 
         this.detachDocumentEvents();
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.addEventListener(eventName, this.moveHandler, {passive: false});
+            document.addEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.addEventListener(eventName, this.stopHandler, {passive: false});
+            document.addEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
@@ -4835,9 +4915,8 @@ class Resizer {
         if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
             var total = 0, blocks;
 
-            blocks = $([siblings, this.element.parent('[data-mm-id]')]);
+            blocks = asElements(siblings).concat(this.element.closest('[data-mm-id]'));
             blocks.forEach(function(block, index){
-                block = $(block);
                 size = this.getSize(block);
                 if (size % 1) {
                     size = precision(100 / amount, 0);
@@ -4863,7 +4942,8 @@ class Resizer {
 
         this.detachDocumentEvents();
 
-        this.element.parent('.submenu-selector').removeClass('moving');
+        var parent = this.element && this.element.closest('.submenu-selector');
+        if (parent) { parent.classList.remove('moving'); }
 
         this.menumanager.emit('dragEnd', this.menumanager.map, 'resize');
         //if (this.origin.size !== this.getSize(this.element)) { this.history.push(this.builder.serialize()); }
@@ -4871,28 +4951,30 @@ class Resizer {
 
     detachDocumentEvents() {
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.moveHandler, {passive: false});
+            document.removeEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.stopHandler, {passive: false});
+            document.removeEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
     updateItemSizes(elements) {
-        var parent = this.element ? this.element.parent('.submenu-selector') : null;
+        var parent = this.element ? this.element.closest('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
-        var blocks = elements || parent.search('> [data-mm-id]'),
+        var blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'),
             sizes = [],
-            active = $('.menu-selector .active'),
-            path = active ? active.data('mm-id') : null;
+            active = document.querySelector('.menu-selector .active'),
+            path = active ? active.dataset.mmId : null;
 
         blocks.forEach(function(block){
             sizes.push(this.getSize(block));
         }, this);
 
         // update active path with new columns sizes
-        this.menumanager.items[path].columns = sizes;
+        if (path && this.menumanager.items[path]) {
+            this.menumanager.items[path].columns = sizes;
+        }
 
         this.updateMaxValues(elements);
 
@@ -4900,20 +4982,20 @@ class Resizer {
     }
 
     updateMaxValues(elements) {
-        var parent = this.element ? this.element.parent('.submenu-selector') : null;
+        var parent = this.element ? this.element.closest('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
-        var blocks = elements || parent.search('> [data-mm-id]'), sizes, inputs;
+        var blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'), sizes, inputs;
 
         blocks.forEach(function(block){
-            block = $(block);
-            var sibling = block.nextSibling() || block.previousSibling();
+            var sibling = block.nextElementSibling || block.previousElementSibling;
             if (!sibling) { return; }
 
             inputs = {
-                block: block.find('input.column-pc'),
-                sibling: sibling.find('input.column-pc')
+                block: block.querySelector('input.column-pc'),
+                sibling: sibling.querySelector('input.column-pc')
             };
+            if (!inputs.block || !inputs.sibling) { return; }
 
             sizes = {
                 current: this.getSize(block),
@@ -4921,17 +5003,17 @@ class Resizer {
             };
 
             sizes.total = sizes.current + sizes.sibling;
-            inputs.block.attribute('max', sizes.total - Number(inputs.block.attribute('min')));
-            inputs.sibling.attribute('max', sizes.total - Number(inputs.sibling.attribute('min')));
+            inputs.block.max = sizes.total - Number(inputs.block.min);
+            inputs.sibling.max = sizes.total - Number(inputs.sibling.min);
         }, this);
     }
 
     evenResize(elements, animated) {
+        elements = asElements(elements);
         var total = elements.length,
             size = precision(100 / total, 4);
 
         elements.forEach(function(element) {
-            element = $(element);
             this.setSize(element, size, (typeof animated == 'undefined' ? false : animated));
         }, this);
 
@@ -4942,7 +5024,7 @@ class Resizer {
 
 module.exports = Resizer;
 
-},{"../ui/drag.events":50,"../utils/elements.utils":66,"elements/delegation":87,"elements/events":89}],32:[function(require,module,exports){
+},{"../ui/drag.events":50}],32:[function(require,module,exports){
 "use strict";
 var $             = require('elements'),
     ready         = require('elements/domready'),
@@ -5412,7 +5494,7 @@ ready(function() {
 
         var block = $(last[0].cloneNode(true));
         block.data('mm-id', 'list-' + count);
-        block.find('.submenu-items').empty();
+        block.find('.submenu-items')[0].replaceChildren();
         block.find('[data-mm-base-level]').data('mm-base-level', 1);
         block.find('.submenu-level').text('Level 1');
         block.after(last);
@@ -6100,8 +6182,6 @@ var MenuManagerDefinition = {
 
             this.ordering[active] = colsOrder;
         }
-
-        if (!parent.children()) { parent.empty(); }
 
         /*if (console && console.group && console.info && console.table && console.groupEnd) {
          console.group();
@@ -7679,11 +7759,11 @@ class FilePicker {
                     }
 
                     if (response.body.files) {
-                        files.empty();
+                        files[0].replaceChildren();
                         dummy = zen('div').html(response.body.files);
                         dummy.children().bottom(files).style({ opacity: 0 }).animate({ opacity: 1 }, { duration: '250ms' });
                     } else {
-                        files.find('> ul:not(.g-list-labels)').empty();
+                        files.find('> ul:not(.g-list-labels)')[0].replaceChildren();
                     }
 
                     this.dropzone.previewsContainer = files.find('ul:not(.g-list-labels)')[0];
@@ -8235,7 +8315,7 @@ class Fonts {
         if (!preview) { return; }
 
         if (!this.selected.selected.length) {
-            preview.empty();
+            preview[0].replaceChildren();
             this.selected.element.removeClass('font-selected');
             return;
         }
@@ -8292,7 +8372,7 @@ class Fonts {
                         content = popover.$target.find('.g5-popover-content'),
                         checked;
 
-                    content.empty();
+                    content[0].replaceChildren();
 
                     var div, current;
                     subsets.forEach(function(cs) {
@@ -8330,7 +8410,7 @@ class Fonts {
                     var content  = popover.$target.find('.g5-popover-content'),
                         variants = element.parent('[data-variants]').data('variants').split(',');
 
-                    content.empty();
+                    content[0].replaceChildren();
 
                     asyncForEach(variants, function(variant) {
                         variant = variant == '400' ? 'regular' : (variant == '400italic' ? 'italic' : variant + '');
@@ -8395,7 +8475,7 @@ class Fonts {
                 content = popover.$target.find('.g5-popover-content'),
                 checked;
 
-            content.empty();
+            content[0].replaceChildren();
 
             cats.forEach(function(category) {
                 if (category == 'local-fonts') { return; }
@@ -8423,7 +8503,7 @@ class Fonts {
             var subs    = subsets.data('font-subsets').split(','),
                 content = popover.$target.find('.g5-popover-content');
 
-            content.empty();
+            content[0].replaceChildren();
 
             var div;
             subs.forEach(function(sub) {

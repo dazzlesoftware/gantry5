@@ -1,9 +1,27 @@
 "use strict";
-var DragEvents = require('../ui/drag.events'),
-    $          = require('../utils/elements.utils');
+var DragEvents = require('../ui/drag.events');
 
-require('elements/events');
-require('elements/delegation');
+var asElement = function(element) {
+        return element && element.nodeType ? element : element && element[0];
+    },
+    asElements = function(elements) {
+        if (!elements) { return []; }
+        if (elements.nodeType) { return [elements]; }
+        return Array.from(elements).map(asElement).filter(Boolean);
+    },
+    directChildren = function(element, selector) {
+        return element
+            ? Array.from(element.children).filter(function(child) { return child.matches(selector); })
+            : [];
+    },
+    previousSiblings = function(element) {
+        var siblings = [], previous = element ? element.previousElementSibling : null;
+        while (previous) {
+            siblings.unshift(previous);
+            previous = previous.previousElementSibling;
+        }
+        return siblings;
+    };
 
 var clamp = function(value, min, max) {
         return Math.min(max, Math.max(min, value));
@@ -26,6 +44,7 @@ class Resizer {
         this.menumanager = menumanager;
         this.moveHandler = this.move.bind(this);
         this.stopHandler = this.stop.bind(this);
+        this.listenerOptions = {passive: false};
         this.origin = {
             x: 0,
             y: 0,
@@ -38,7 +57,8 @@ class Resizer {
     }
 
     getBlock(element) {
-        var id = typeof element === 'string' ? element : $(element).data('lm-id') || '';
+        element = typeof element === 'string' ? element : asElement(element);
+        var id = typeof element === 'string' ? element : (element && element.dataset.lmId) || '';
         return this.map ? this.map[id] : undefined;
     }
 
@@ -47,22 +67,35 @@ class Resizer {
     }
 
     getSize(element) {
-        element = $(element);
-        var parent = element.matches('[data-mm-id]') ? element : element.parent('[data-mm-id]'),
-            size = parent.find('.percentage input');
+        element = asElement(element);
+        var parent = element && (element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]')),
+            size = parent && parent.querySelector('.percentage input');
 
-        return Number(size.value());
+        return size ? Number(size.value) : 0;
     }
 
     setSize(element, size, animated) {
-        element = $(element);
+        element = asElement(element);
+        if (!element) { return; }
         animated = typeof animated === 'undefined' ? false : animated;
 
-        var parent = element.matches('[data-mm-id]') ? element : element.parent('[data-mm-id]'),
-            pc = parent.find('.percentage input');
+        var parent = element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]'),
+            pc = parent && parent.querySelector('.percentage input'),
+            flex = '0 1 ' + size + '%';
 
-        parent[animated ? 'animate' : 'style']({'flex': '0 1 '+size+'%'});
-        pc.value(precision(size, 1));
+        if (!parent) { return; }
+        if (animated && typeof parent.animate === 'function') {
+            var animation = parent.animate([
+                {flex: getComputedStyle(parent).flex},
+                {flex: flex}
+            ], {duration: 250, easing: 'ease'});
+            animation.addEventListener('finish', function() {
+                parent.style.flex = flex;
+            }, {once: true});
+        } else {
+            parent.style.flex = flex;
+        }
+        if (pc) { pc.value = precision(size, 1); }
     }
 
     start(event, element, siblings, offset) {
@@ -72,18 +105,24 @@ class Resizer {
         // Stops text selection
         event.preventDefault();
 
-        this.element = $(element);
+        this.element = asElement(element);
+        if (!this.element) { return false; }
 
-        var parent = this.element.parent('.submenu-selector');
+        var parent = this.element.closest('.submenu-selector');
         if (!parent) { return false; }
 
-        parent.addClass('moving');
+        var current = this.element.closest('[data-mm-id]'),
+            next = current && current.nextElementSibling,
+            nextColumn = next && next.querySelector(':scope > .submenu-column');
+        if (!current || !nextColumn) { return false; }
+
+        parent.classList.add('moving');
         
         this.siblings = {
             occupied: 0,
-            elements: siblings,
-            next: this.element.parent('[data-mm-id]').nextSibling().find('> .submenu-column'),
-            prevs: this.element.parent('[data-mm-id]').previousSiblings(),
+            elements: asElements(siblings),
+            next: nextColumn,
+            prevs: previousSiblings(current),
             sizeBefore: 0
         };
 
@@ -107,27 +146,30 @@ class Resizer {
             y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
 
-        var clientRect = this.element[0].getBoundingClientRect(),
-            parentRect = this.element.parent()[0].getBoundingClientRect();
+        var clientRect = this.element.getBoundingClientRect(),
+            parentRect = this.element.parentElement.getBoundingClientRect();
 
         this.origin.offset = {
             clientRect: clientRect,
             parentRect: {left: parentRect.left, right: parentRect.right},
             x: this.origin.x - clientRect.right,
             y: clientRect.top - this.origin.y,
-            down: offset
+            down: offset || 0
         };
 
-        this.origin.offset.parentRect.left = this.element.parent('.submenu-selector').find('> [data-mm-id]:first-child')[0].getBoundingClientRect().left;
-        this.origin.offset.parentRect.right = this.element.parent('.submenu-selector').find('> [data-mm-id]:last-child')[0].getBoundingClientRect().right;
+        var blocks = directChildren(parent, '[data-mm-id]');
+        if (blocks.length) {
+            this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
+            this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
+        }
 
 
         this.detachDocumentEvents();
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.addEventListener(eventName, this.moveHandler, {passive: false});
+            document.addEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.addEventListener(eventName, this.stopHandler, {passive: false});
+            document.addEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
@@ -167,9 +209,8 @@ class Resizer {
         if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
             var total = 0, blocks;
 
-            blocks = $([siblings, this.element.parent('[data-mm-id]')]);
+            blocks = asElements(siblings).concat(this.element.closest('[data-mm-id]'));
             blocks.forEach(function(block, index){
-                block = $(block);
                 size = this.getSize(block);
                 if (size % 1) {
                     size = precision(100 / amount, 0);
@@ -195,7 +236,8 @@ class Resizer {
 
         this.detachDocumentEvents();
 
-        this.element.parent('.submenu-selector').removeClass('moving');
+        var parent = this.element && this.element.closest('.submenu-selector');
+        if (parent) { parent.classList.remove('moving'); }
 
         this.menumanager.emit('dragEnd', this.menumanager.map, 'resize');
         //if (this.origin.size !== this.getSize(this.element)) { this.history.push(this.builder.serialize()); }
@@ -203,28 +245,30 @@ class Resizer {
 
     detachDocumentEvents() {
         this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.moveHandler, {passive: false});
+            document.removeEventListener(eventName, this.moveHandler, this.listenerOptions);
         }, this);
         this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-            document.removeEventListener(eventName, this.stopHandler, {passive: false});
+            document.removeEventListener(eventName, this.stopHandler, this.listenerOptions);
         }, this);
     }
 
     updateItemSizes(elements) {
-        var parent = this.element ? this.element.parent('.submenu-selector') : null;
+        var parent = this.element ? this.element.closest('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
-        var blocks = elements || parent.search('> [data-mm-id]'),
+        var blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'),
             sizes = [],
-            active = $('.menu-selector .active'),
-            path = active ? active.data('mm-id') : null;
+            active = document.querySelector('.menu-selector .active'),
+            path = active ? active.dataset.mmId : null;
 
         blocks.forEach(function(block){
             sizes.push(this.getSize(block));
         }, this);
 
         // update active path with new columns sizes
-        this.menumanager.items[path].columns = sizes;
+        if (path && this.menumanager.items[path]) {
+            this.menumanager.items[path].columns = sizes;
+        }
 
         this.updateMaxValues(elements);
 
@@ -232,20 +276,20 @@ class Resizer {
     }
 
     updateMaxValues(elements) {
-        var parent = this.element ? this.element.parent('.submenu-selector') : null;
+        var parent = this.element ? this.element.closest('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
-        var blocks = elements || parent.search('> [data-mm-id]'), sizes, inputs;
+        var blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'), sizes, inputs;
 
         blocks.forEach(function(block){
-            block = $(block);
-            var sibling = block.nextSibling() || block.previousSibling();
+            var sibling = block.nextElementSibling || block.previousElementSibling;
             if (!sibling) { return; }
 
             inputs = {
-                block: block.find('input.column-pc'),
-                sibling: sibling.find('input.column-pc')
+                block: block.querySelector('input.column-pc'),
+                sibling: sibling.querySelector('input.column-pc')
             };
+            if (!inputs.block || !inputs.sibling) { return; }
 
             sizes = {
                 current: this.getSize(block),
@@ -253,17 +297,17 @@ class Resizer {
             };
 
             sizes.total = sizes.current + sizes.sibling;
-            inputs.block.attribute('max', sizes.total - Number(inputs.block.attribute('min')));
-            inputs.sibling.attribute('max', sizes.total - Number(inputs.sibling.attribute('min')));
+            inputs.block.max = sizes.total - Number(inputs.block.min);
+            inputs.sibling.max = sizes.total - Number(inputs.sibling.min);
         }, this);
     }
 
     evenResize(elements, animated) {
+        elements = asElements(elements);
         var total = elements.length,
             size = precision(100 / total, 4);
 
         elements.forEach(function(element) {
-            element = $(element);
             this.setSize(element, size, (typeof animated == 'undefined' ? false : animated));
         }, this);
 

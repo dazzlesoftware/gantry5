@@ -204,13 +204,16 @@ class EventListener implements EventSubscriberInterface
 
                 // Set parent and position.
                 $parent_path = ltrim(dirname('/' . $key), '/\\');
-                if ($parent_path) {
+                if ($parent_path && isset($items[$parent_path])) {
                     $parent = $items[$parent_path];
-                    $parent_id = (int)$parent['id'];
+                    $parent_id = isset($parent['id']) ? (int)$parent['id'] : 0;
                 } else {
                     $parent_id = 0;
                 }
-                $position = $ordering[$key];
+                // Gantry-only items can temporarily have a root or otherwise
+                // unmapped path while the menu editor is creating them.
+                // Preserve the WordPress order until their path is finalized.
+                $position = isset($ordering[$key]) ? $ordering[$key] : (int)$wpItem->menu_order;
 
                 $args = [
                     'menu-item-db-id' => $db_id,
