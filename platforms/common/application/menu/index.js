@@ -1,5 +1,5 @@
 "use strict";
-var ready         = require('elements/domready'),
+var ready         = require('../utils/dom').ready,
     MenuManager   = require('./menumanager'),
     Submit        = require('../fields/submit'),
     $             = require('elements'),

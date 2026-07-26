@@ -1,6 +1,6 @@
 "use strict";
 var $             = require('elements'),
-    ready         = require('elements/domready'),
+    ready         = require('../utils/dom').ready,
     Submit        = require('../fields/submit'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,

@@ -1,7 +1,7 @@
 "use strict";
 
 var $             = require('../utils/elements.utils'),
-    domready      = require('elements/domready'),
+    domready      = require('./dom').ready,
     storage       = new Map(),
     modal         = require('../ui').modal,
 

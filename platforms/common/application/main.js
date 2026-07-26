@@ -1,7 +1,7 @@
 "use strict";
 var $              = require('elements'),
     zen            = require('elements/zen'),
-    ready          = require('elements/domready'),
+    ready          = require('./utils/dom').ready,
     request        = require('./utils/request'),
     ui             = require('./ui'),
     modal          = ui.modal,
@@ -426,7 +426,7 @@ var modules = {
     ui: require('./ui'),
     styles: require('./styles'),
     "$": $,
-    domready: require('elements/domready'),
+    domready: ready,
     particles: require('./particles'),
     zen: require('elements/zen'),
     atoms: require('./pagesettings'),

@@ -2,7 +2,7 @@
 // selectize (v0.12.1) (commit: 4dae761)
 
 var EventEmitter = require('../utils/event-emitter'),
-    ready      = require('elements/domready'),
+    ready      = require('../utils/dom').ready,
     zen        = require('elements/zen'),
 
     sifter     = require('sifter'),

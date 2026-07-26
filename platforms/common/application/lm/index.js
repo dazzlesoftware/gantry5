@@ -1,5 +1,5 @@
 "use strict";
-var ready          = require('elements/domready'),
+var ready          = require('../utils/dom').ready,
     $              = require('elements/attributes'),
     Submit         = require('../fields/submit'),
     modal          = require('../ui').modal,
