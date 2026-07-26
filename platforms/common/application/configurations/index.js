@@ -91,7 +91,7 @@ dom.ready(function() {
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     title = container.querySelector('[name="title"]'),
                     confirm = container.querySelector('[data-g-outline-create-confirm]');
                 if (!title || !confirm) { return; }

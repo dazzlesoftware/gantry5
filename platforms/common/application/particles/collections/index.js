@@ -187,7 +187,7 @@ dom.ready(function() {
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue = JSON.parse(data);

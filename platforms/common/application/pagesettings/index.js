@@ -129,7 +129,7 @@ var attachSettings = function() {
             overlayClickToClose: false,
             remote: parseAjaxURI(trigger.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 

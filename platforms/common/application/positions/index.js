@@ -165,7 +165,7 @@ dom.ready(function() {
             remote: parseAjaxURI(element.href + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     search = container.querySelector('.search input'),
                     blocks = container.querySelectorAll('[data-mm-type]'),
                     filters = container.querySelectorAll('[data-mm-filter]'),
@@ -207,7 +207,7 @@ dom.ready(function() {
             remote: parseAjaxURI(getAjaxURL('positions/edit/' + item.getAttribute('data-pm-blocktype')) + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 attachEditableValidation(container);

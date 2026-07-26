@@ -54,7 +54,7 @@ dom.ready(function() {
                 document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
             },
             remoteLoaded: function(response, content) {
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     icons = container.querySelectorAll('[data-g-icon]');
 
                 if (!icons.length || !response.body.success) {

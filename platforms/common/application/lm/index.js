@@ -6,6 +6,7 @@ var ready          = require('../utils/dom').ready,
     toastr         = require('../ui').toastr,
     sidebar        = require('./particles-sidebar'),
     request        = require('../utils/request'),
+    indicator      = require('../utils/indicator'),
 
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
@@ -45,10 +46,6 @@ var precision = function(value, decimalPlaces) {
         multiplier = Math.pow(10, decimalPlaces);
 
     return Number((Math.round(number * multiplier) / multiplier).toFixed(decimalPlaces));
-};
-
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
 };
 
 builder = new Builder();
@@ -494,67 +491,72 @@ ready(function() {
                     return;
                 }
 
-                var form = content.elements.content.find('form'),
-                    fakeDOM = createContainer(response.body.html).find('form'),
-                    submit = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                var container = modal.element(content.elements.content),
+                    template = document.createElement('template');
+                template.innerHTML = String(response.body.html || '');
 
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                var form = container && container.querySelector('form'),
+                    fakeDOM = template.content.querySelector('form'),
+                    submit = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
+                    actionForm = fakeDOM || form;
 
-                var urlTemplate = content.elements.content.find('.g-urltemplate');
-                if (urlTemplate) { body.emit('input', { target: urlTemplate }); }
+                if (!container || !form || !actionForm || !submit.length) { return true; }
 
-                var blockSize = content.elements.content.find('[name="block[size]"]');
+                var urlTemplate = container.querySelector('.g-urltemplate');
+                if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
+
+                var blockSize = container.querySelector('[name="block[size]"]');
 
                 // logic for limits
                 if (blockSize && data.size_limits) {
-                    var note = content.elements.content.find('.blocksize-note'),
+                    var note = container.querySelector('.blocksize-note'),
                         min = precision(data.size_limits[0], 1),
                         max = precision(data.size_limits[1], 1);
 
-                    blockSize.attribute('min', min);
-                    blockSize.attribute('max', max);
+                    blockSize.setAttribute('min', min);
+                    blockSize.setAttribute('max', max);
 
                     if (note) {
-                        var noteHTML = note.html();
+                        var noteHTML = note.innerHTML;
                         noteHTML = noteHTML.replace(/#min#/g, min);
                         noteHTML = noteHTML.replace(/#max#/g, max);
 
-                        note.html(noteHTML);
-                        note.find('.blocksize-' + (min == max ? 'range' : 'fixed')).addClass('hidden');
+                        note.innerHTML = noteHTML;
+                        var noteVariant = note.querySelector('.blocksize-' + (min == max ? 'range' : 'fixed'));
+                        if (noteVariant) { noteVariant.classList.add('hidden'); }
                     }
 
                     var isValid = function() {
-                        return parseFloat(blockSize.value()) >= min && parseFloat(blockSize.value()) <= max ? '' : translate('GANTRY5_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
+                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GANTRY5_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
                     };
 
-                    blockSize.on('input', function(){
-                        blockSize[0].setCustomValidity(isValid());
+                    blockSize.addEventListener('input', function(){
+                        blockSize.setCustomValidity(isValid());
                     });
                 }
 
                 // Particle Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
+                submit.forEach(function(target) {
+                    target.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        target.disabled = true;
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                    var target = $(e.currentTarget);
-                    target.disabled(true);
+                        // Refresh the form to collect fresh and dynamic fields.
+                        var currentForm = container.querySelector('form'),
+                            formElements = currentForm ? currentForm.elements : [],
+                            post = Submit(formElements, container);
 
-                    target.hideIndicator();
-                    target.showIndicator();
+                        if (post.invalid.length) {
+                            target.disabled = false;
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
+                        }
 
-                    // Refresh the form to collect fresh and dynamic fields
-                    var formElements = content.elements.content.find('form')[0].elements;
-                    var post = Submit(formElements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.disabled(false);
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
+                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -623,9 +625,9 @@ ready(function() {
                             lmhistory.push(builder.serialize(), lmhistory.get().preset);
 
                             // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
+                            if (target.hasAttribute('data-apply-and-save')) {
+                                var save = document.querySelector('.button-save');
+                                if (save) { save.click(); }
                             }
 
                             modal.close();
@@ -633,7 +635,9 @@ ready(function() {
                             toastr.success(translate('GANTRY5_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED', particle.getTitle()), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
-                        target.hideIndicator();
+                        indicator.hide(target);
+                        target.disabled = false;
+                        });
                     });
                 });
             }

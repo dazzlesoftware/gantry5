@@ -463,7 +463,7 @@ dom.ready(function() {
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     title = container.querySelector('[name="title"]'),
                     confirm = container.querySelector('[data-g-outline-create-confirm]');
                 if (!title || !confirm) { return; }
@@ -2626,6 +2626,7 @@ var ready          = require('../utils/dom').ready,
     toastr         = require('../ui').toastr,
     sidebar        = require('./particles-sidebar'),
     request        = require('../utils/request'),
+    indicator      = require('../utils/indicator'),
 
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
@@ -2665,10 +2666,6 @@ var precision = function(value, decimalPlaces) {
         multiplier = Math.pow(10, decimalPlaces);
 
     return Number((Math.round(number * multiplier) / multiplier).toFixed(decimalPlaces));
-};
-
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
 };
 
 builder = new Builder();
@@ -3114,67 +3111,72 @@ ready(function() {
                     return;
                 }
 
-                var form = content.elements.content.find('form'),
-                    fakeDOM = createContainer(response.body.html).find('form'),
-                    submit = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+                var container = modal.element(content.elements.content),
+                    template = document.createElement('template');
+                template.innerHTML = String(response.body.html || '');
 
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                var form = container && container.querySelector('form'),
+                    fakeDOM = template.content.querySelector('form'),
+                    submit = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
+                    actionForm = fakeDOM || form;
 
-                var urlTemplate = content.elements.content.find('.g-urltemplate');
-                if (urlTemplate) { body.emit('input', { target: urlTemplate }); }
+                if (!container || !form || !actionForm || !submit.length) { return true; }
 
-                var blockSize = content.elements.content.find('[name="block[size]"]');
+                var urlTemplate = container.querySelector('.g-urltemplate');
+                if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
+
+                var blockSize = container.querySelector('[name="block[size]"]');
 
                 // logic for limits
                 if (blockSize && data.size_limits) {
-                    var note = content.elements.content.find('.blocksize-note'),
+                    var note = container.querySelector('.blocksize-note'),
                         min = precision(data.size_limits[0], 1),
                         max = precision(data.size_limits[1], 1);
 
-                    blockSize.attribute('min', min);
-                    blockSize.attribute('max', max);
+                    blockSize.setAttribute('min', min);
+                    blockSize.setAttribute('max', max);
 
                     if (note) {
-                        var noteHTML = note.html();
+                        var noteHTML = note.innerHTML;
                         noteHTML = noteHTML.replace(/#min#/g, min);
                         noteHTML = noteHTML.replace(/#max#/g, max);
 
-                        note.html(noteHTML);
-                        note.find('.blocksize-' + (min == max ? 'range' : 'fixed')).addClass('hidden');
+                        note.innerHTML = noteHTML;
+                        var noteVariant = note.querySelector('.blocksize-' + (min == max ? 'range' : 'fixed'));
+                        if (noteVariant) { noteVariant.classList.add('hidden'); }
                     }
 
                     var isValid = function() {
-                        return parseFloat(blockSize.value()) >= min && parseFloat(blockSize.value()) <= max ? '' : translate('GANTRY5_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
+                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GANTRY5_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
                     };
 
-                    blockSize.on('input', function(){
-                        blockSize[0].setCustomValidity(isValid());
+                    blockSize.addEventListener('input', function(){
+                        blockSize.setCustomValidity(isValid());
                     });
                 }
 
                 // Particle Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
+                submit.forEach(function(target) {
+                    target.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        target.disabled = true;
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                    var target = $(e.currentTarget);
-                    target.disabled(true);
+                        // Refresh the form to collect fresh and dynamic fields.
+                        var currentForm = container.querySelector('form'),
+                            formElements = currentForm ? currentForm.elements : [],
+                            post = Submit(formElements, container);
 
-                    target.hideIndicator();
-                    target.showIndicator();
+                        if (post.invalid.length) {
+                            target.disabled = false;
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
+                        }
 
-                    // Refresh the form to collect fresh and dynamic fields
-                    var formElements = content.elements.content.find('form')[0].elements;
-                    var post = Submit(formElements, content.elements.content);
-
-                    if (post.invalid.length) {
-                        target.disabled(false);
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
+                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -3243,9 +3245,9 @@ ready(function() {
                             lmhistory.push(builder.serialize(), lmhistory.get().preset);
 
                             // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
+                            if (target.hasAttribute('data-apply-and-save')) {
+                                var save = document.querySelector('.button-save');
+                                if (save) { save.click(); }
                             }
 
                             modal.close();
@@ -3253,7 +3255,9 @@ ready(function() {
                             toastr.success(translate('GANTRY5_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED', particle.getTitle()), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
-                        target.hideIndicator();
+                        indicator.hide(target);
+                        target.disabled = false;
+                        });
                     });
                 });
             }
@@ -3271,7 +3275,7 @@ module.exports = {
     savestate: savestate
 };
 
-},{"../fields/submit":7,"../ui":52,"../ui/popover":54,"../utils/dom":65,"../utils/field-validation":69,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/history":76,"../utils/request":79,"../utils/save-state":80,"../utils/translate":81,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":29,"elements/attributes":85}],27:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../ui/popover":54,"../utils/dom":65,"../utils/field-validation":69,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/history":76,"../utils/indicator":77,"../utils/request":79,"../utils/save-state":80,"../utils/translate":81,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":29,"elements/attributes":85}],27:[function(require,module,exports){
 "use strict";
 
 var dom                = require('../../utils/dom'),
@@ -5413,6 +5417,7 @@ var ready         = require('../utils/dom').ready,
     toastr        = require('../ui').toastr,
     extraItems    = require('./extra-items'),
     request       = require('../utils/request'),
+    indicator     = require('../utils/indicator'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     translate     = require('../utils/translate');
@@ -5425,10 +5430,6 @@ var trim = function(value) {
 
 var clamp = function(value, minimum, maximum) {
     return Math.min(maximum, Math.max(minimum, value));
-};
-
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
 };
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -5629,82 +5630,85 @@ ready(function() {
                     return;
                 }
 
-                var form       = content.elements.content.find('form'),
-                    fakeDOM    = createContainer(response.body.html).find('form'),
-                    submit     = content.elements.content.search('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
+                var container = modal.element(content.elements.content),
+                    template = document.createElement('template');
+                template.innerHTML = String(response.body.html || '');
+
+                var form       = container && container.querySelector('form'),
+                    fakeDOM    = template.content.querySelector('form'),
+                    submit     = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
+                    actionForm = fakeDOM || form,
                     path;
 
-                var search      = content.elements.content.find('.search input'),
-                    blocks      = content.elements.content.search('[data-mm-type]'),
-                    filters     = content.elements.content.search('[data-mm-filter]'),
-                    urlTemplate = content.elements.content.find('.g-urltemplate');
+                var search      = container.querySelector('.search input'),
+                    blocks      = container.querySelectorAll('[data-mm-type]'),
+                    filters     = container.querySelectorAll('[data-mm-filter]'),
+                    urlTemplate = container.querySelector('.g-urltemplate');
 
-                if (urlTemplate) { body.emit('input', { target: urlTemplate }); }
+                if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-                var editable = content.elements.content.find('[data-title-editable]');
+                var editable = container.querySelector('[data-title-editable]');
                 if (editable) {
-                    editable.on('title-edit-end', function(title, original/*, canceled*/) {
-                        title = trim(title);
+                    editable.addEventListener('g5:title-edit-end', function(titleEvent) {
+                        var detail = titleEvent.detail || {},
+                            title = trim(detail.title),
+                            original = detail.original;
                         if (!title) {
                             title = trim(original) || 'Title';
-                            this.text(title).data('title-editable', title);
-
-                            return true;
+                            editable.textContent = title;
+                            editable.setAttribute('data-title-editable', title);
                         }
                     });
                 }
 
-                if (search && filters && blocks) {
-                    search.on('input', function() {
-                        if (!this.value()) {
-                            blocks.removeClass('hidden');
+                if (search && filters.length && blocks.length) {
+                    search.addEventListener('input', function() {
+                        if (!search.value) {
+                            blocks.forEach(function(block) { block.classList.remove('hidden'); });
                             return;
                         }
 
-                        blocks.addClass('hidden');
-
-                        var found = [], value = this.value().toLowerCase(), text;
+                        blocks.forEach(function(block) { block.classList.add('hidden'); });
+                        var value = search.value.toLowerCase();
 
                         filters.forEach(function(filter) {
-                            filter = $(filter);
-                            text = trim(filter.data('mm-filter')).toLowerCase();
-                            if (text.match(new RegExp("^" + value + '|\\s' + value, 'gi'))) {
-                                found.push(filter.matches('[data-mm-type]') ? filter : filter.parent('[data-mm-type]'));
+                            var text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
+                                found = text.startsWith(value) || text.includes(' ' + value),
+                                block = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
+                            if (found && block) {
+                                block.classList.remove('hidden');
                             }
-                        }, this);
-
-                        if (found.length) { $(found).removeClass('hidden'); }
+                        });
                     });
                 }
 
                 if (search) {
                     setTimeout(function() {
-                        search[0].focus();
+                        search.focus();
                     }, 5);
                 }
 
-                if ((!form && !fakeDOM) || !submit) { return true; }
+                if (!container || !form || !actionForm || !submit.length) { return true; }
 
                 // Menuitems Settings apply
-                submit.on('click', function(e) {
-                    e.preventDefault();
+                submit.forEach(function(target) {
+                    target.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        target.disabled = true;
+                        indicator.hide(target);
+                        indicator.show(target);
 
-                    var target = $(e.currentTarget);
-                    target.disabled(true);
-                    target.hideIndicator();
-                    target.showIndicator();
+                        var post = Submit(actionForm.elements, container, {isRoot: isRoot});
 
-                    var post = Submit(fakeDOM[0].elements, content.elements.content, {isRoot: isRoot});
+                        if (post.invalid.length) {
+                            target.disabled = false;
+                            indicator.hide(target);
+                            indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
+                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            return;
+                        }
 
-                    if (post.invalid.length) {
-                        target.disabled(false);
-                        target.hideIndicator();
-                        target.showIndicator('fa fa-fw fa-exclamation-triangle');
-                        toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
-                        return;
-                    }
-
-                    request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&'), function(error, response) {
+                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&'), function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -5735,16 +5739,18 @@ ready(function() {
                             menumanager.emit('dragEnd', menumanager.map);
 
                             // if it's apply and save we also save the panel
-                            if (target.data('apply-and-save') !== null) {
-                                var save = $('body').find('.button-save');
-                                if (save) { body.emit('click', { target: save }); }
+                            if (target.hasAttribute('data-apply-and-save')) {
+                                var save = document.querySelector('.button-save');
+                                if (save) { save.click(); }
                             }
 
                             modal.close();
                             toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
-                        target.hideIndicator();
+                        indicator.hide(target);
+                        target.disabled = false;
+                        });
                     });
                 });
             }
@@ -5756,7 +5762,7 @@ module.exports = {
     menumanager: menumanager
 };
 
-},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/request":79,"../utils/translate":81,"./extra-items":32,"./menumanager":34,"elements":89}],34:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"./extra-items":32,"./menumanager":34,"elements":89}],34:[function(require,module,exports){
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
     $         = require('../utils/elements.utils'),
@@ -6442,7 +6448,7 @@ var attachSettings = function() {
             overlayClickToClose: false,
             remote: parseAjaxURI(trigger.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
@@ -6727,7 +6733,7 @@ dom.ready(function() {
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue = JSON.parse(data);
@@ -8815,7 +8821,7 @@ dom.ready(function() {
                 document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
             },
             remoteLoaded: function(response, content) {
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     icons = container.querySelectorAll('[data-g-icon]');
 
                 if (!icons.length || !response.body.success) {
@@ -9644,7 +9650,7 @@ dom.ready(function() {
             remote: parseAjaxURI(element.href + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     search = container.querySelector('.search input'),
                     blocks = container.querySelectorAll('[data-mm-type]'),
                     filters = container.querySelectorAll('[data-mm-filter]'),
@@ -9686,7 +9692,7 @@ dom.ready(function() {
             remote: parseAjaxURI(getAjaxURL('positions/edit/' + item.getAttribute('data-pm-blocktype')) + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
-                var container = content.elements.content[0],
+                var container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 attachEditableValidation(container);
