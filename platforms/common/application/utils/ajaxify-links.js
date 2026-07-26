@@ -1,32 +1,35 @@
 "use strict";
 
-var $             = require('../utils/elements.utils'),
-    domready      = require('./dom').ready,
+var dom           = require('./dom'),
     storage       = new Map(),
     modal         = require('../ui').modal,
-
+    Selectize     = require('../ui/selectize'),
+    indicator     = require('./indicator'),
     request       = require('./request')(),
     History       = require('./history'),
     flags         = require('./flags-state'),
     parseAjaxURI  = require('./get-ajax-url').parse,
     getAjaxSuffix = require('./get-ajax-suffix'),
-    lm            = require('../lm'),
     mm            = require('../menu'),
     assignments   = require('../assignments');
 
-require('../ui/popover');
+require('../lm');
 
-var ERROR = false, TMP_SELECTIZE_DISABLE = false, ConfNavIndex = -1;
+var ERROR = false,
+    TMP_SELECTIZE_DISABLE = false,
+    ConfNavIndex = -1;
+
+var asElement = function(element) {
+    return element && element.nodeType ? element : element && element[0];
+};
 
 var guid = function() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
         return window.crypto.randomUUID();
     }
-
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(character) {
         var random = Math.floor(Math.random() * 16),
             value = character === 'x' ? random : (random & 0x3) | 0x8;
-
         return value.toString(16);
     });
 };
@@ -38,74 +41,182 @@ var getParam = function(uri, name) {
 var setParam = function(uri, name, value) {
     var url = new URL(uri, window.location.href),
         isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
-
     url.searchParams.set(name, value);
-
     return isAbsolute ? url.href : url.pathname + url.search + url.hash;
 };
 
 var toQueryString = function(parameters) {
     var query = new URLSearchParams();
-
     Object.keys(parameters || {}).forEach(function(key) {
         var values = Array.isArray(parameters[key]) ? parameters[key] : [parameters[key]];
-
-        values.forEach(function(value) {
-            query.append(key, value);
-        });
+        values.forEach(function(value) { query.append(key, value); });
     });
-
     return query.toString() ? '?' + query.toString() : '';
 };
 
+var dispatchState = function(type, element, data) {
+    var source = asElement(element),
+        target = type === 'statechangeAfter' ? document.body : (source || document.body);
+    target.dispatchEvent(new CustomEvent(type, {
+        bubbles: true,
+        detail: { target: source || target, Data: data }
+    }));
+};
+
+var showNavbar = function(navbar, visible) {
+    if (!navbar) { return; }
+    navbar.hidden = false;
+    navbar.style.display = '';
+    var from = getComputedStyle(navbar).opacity;
+    var animation = navbar.animate(
+        [{ opacity: from }, { opacity: visible ? 1 : 0 }],
+        { duration: 180, easing: 'ease', fill: 'forwards' }
+    );
+    animation.finished.catch(function() {}).then(function() {
+        animation.cancel();
+        navbar.style.opacity = '';
+        navbar.hidden = !visible;
+    });
+};
+
+var setButtonsDisabled = function(buttons, disabled) {
+    buttons.filter(Boolean).forEach(function(button) { button.disabled = disabled; });
+};
+
+var warningButtons = function(content) {
+    content = modal.element(content);
+    return {
+        save: content && content.querySelector('[data-g-unsaved-save]'),
+        discard: content && content.querySelector('[data-g-unsaved-discard]')
+    };
+};
+
+var clickWithSpinner = function(element, spinner) {
+    element = asElement(element);
+    if (!element) { return; }
+    var event = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+    event.activeSpinner = asElement(spinner);
+    element.dispatchEvent(event);
+};
+
+var selectorChangeEvent = function() {
+    document.querySelectorAll('[data-selectize-ajaxify]').forEach(function(selector) {
+        Selectize.initialize([selector]);
+        var selectize = Selectize.getInstance(selector);
+        if (!selectize || selectize.HasChangeEvent) { return; }
+
+        selectize.on('change', function() {
+            if (TMP_SELECTIZE_DISABLE) {
+                TMP_SELECTIZE_DISABLE = false;
+                return;
+            }
+
+            var value = selectize.getValue(),
+                options = selectize.Options;
+            if (!options[value]) { return; }
+
+            var flagCallback = function() {
+                flags.off('update:pending', flagCallback);
+                modal.close();
+
+                var input = asElement(selectize.input);
+                input.setAttribute('data-g5-ajaxify', '');
+                input.setAttribute('data-g5-ajaxify-target', selector.getAttribute('data-g5-ajaxify-target') || '[data-g5-content-wrapper]');
+                var targetParent = selector.getAttribute('data-g5-ajaxify-target-parent');
+                if (targetParent) { input.setAttribute('data-g5-ajaxify-target-parent', targetParent); }
+                else { input.removeAttribute('data-g5-ajaxify-target-parent'); }
+                input.setAttribute('data-g5-ajaxify-href', options[value].url);
+                if (options[value].params) {
+                    input.setAttribute('data-g5-ajaxify-params', JSON.stringify(options[value].params));
+                } else {
+                    input.removeAttribute('data-g5-ajaxify-params');
+                }
+
+                var active = document.querySelector('#navbar li.active, #main-header li.active, #navbar li:nth-child(2)');
+                if (active) { indicator.show(active); }
+                clickWithSpinner(input, active);
+            };
+
+            if (flags.get('pending')) {
+                flags.warning({
+                    callback: function(response, content) {
+                        var buttons = warningButtons(content);
+                        if (!buttons.save) { return; }
+
+                        buttons.save.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            if (buttons.save.disabled) { return; }
+                            setButtonsDisabled([buttons.save, buttons.discard], true);
+                            flags.on('update:pending', flagCallback);
+                            var save = document.querySelector('.button-save');
+                            if (save) { save.click(); }
+                        });
+                        if (buttons.discard) {
+                            buttons.discard.addEventListener('click', function(event) {
+                                event.preventDefault();
+                                if (buttons.discard.disabled) { return; }
+                                setButtonsDisabled([buttons.save, buttons.discard], true);
+                                flags.set('pending', false);
+                                flagCallback();
+                            });
+                        }
+                    },
+                    afterclose: function() {
+                        TMP_SELECTIZE_DISABLE = true;
+                        selectize.setValue(selectize.getPreviousValue());
+                    }
+                });
+                return;
+            }
+            flagCallback();
+        });
+        selectize.HasChangeEvent = true;
+    });
+};
+
 History.Adapter.bind(window, 'statechange', function() {
-    if (request.running()) {
-        return false;
-    }
-    var body = $('body'),
+    if (request.running()) { return false; }
+
+    var body = document.body,
         State = History.getState(),
         URI = State.url,
-        Data = State.data,
-        sidebar = $('#navbar'),
-        mainheader = $('#main-header'),
+        Data = State.data || {},
+        sidebar = document.querySelector('#navbar'),
+        mainheader = document.querySelector('#main-header'),
         params = '';
 
     if (Data.doNothing) { return true; }
-
-    if (Data && Object.keys(Data).length && Data.parsed !== false && storage.has(Data.uuid)) {
+    if (Object.keys(Data).length && Data.parsed !== false && storage.has(Data.uuid)) {
         Data = storage.get(Data.uuid);
     }
 
+    Data.element = asElement(Data.element);
+    var isTopNavOrMenu = false;
     if (Data.element) {
-        var isTopNavOrMenu = Data.element.parent('#main-header') || Data.element.matches('.menu-select-wrap');
-        body.emit('statechangeBefore', {
-            target: Data.element,
-            Data: Data
-        });
+        isTopNavOrMenu = Boolean(Data.element.closest('#main-header') || Data.element.matches('.menu-select-wrap'));
+        dispatchState('statechangeBefore', Data.element, Data);
     } else {
         var url = URI.replace(window.location.origin, '');
-        Data.element = $('[href="' + url + '"]');
+        Data.element = Array.from(document.querySelectorAll('[href]')).find(function(link) {
+            return link.getAttribute('href') === url;
+        }) || null;
     }
 
     URI = parseAjaxURI(URI + getAjaxSuffix());
 
-    var lis;
     if (sidebar && Data.element) {
-        var active = sidebar.search('li.active');
-        lis = sidebar.search('li');
-        lis.removeClass('active');
-
-        if (Data.element.parent('#navbar')) {
-            Data.element.parent('li').addClass('active');
+        sidebar.querySelectorAll('li.active').forEach(function(item) { item.classList.remove('active'); });
+        if (Data.element.closest('#navbar')) {
+            var sideItem = Data.element.closest('li');
+            if (sideItem) { sideItem.classList.add('active'); }
         }
     }
 
-    if (mainheader && Data.element && (!Data.element.matches('a.menu-item') && !Data.element.matches('select.menu-select-wrap'))) {
-        lis = mainheader.search('.float-right li');
-        lis.removeClass('active');
-
-        if (Data.element.parent('#main-header')) {
-            Data.element.parent('li').addClass('active');
+    if (mainheader && Data.element && !Data.element.matches('a.menu-item, select.menu-select-wrap')) {
+        mainheader.querySelectorAll('.float-right li').forEach(function(item) { item.classList.remove('active'); });
+        if (Data.element.closest('#main-header')) {
+            var headerItem = Data.element.closest('li');
+            if (headerItem) { headerItem.classList.add('active'); }
         }
     }
 
@@ -116,340 +227,196 @@ History.Adapter.bind(window, 'statechange', function() {
 
     if (!ERROR) { modal.closeAll(); }
     request.url(URI + params).data(Data.extras || {}).method(Data.extras ? 'post' : 'get').send(function(error, response) {
-        if (!response.body.success) {
+        var result = response && response.body;
+        if (!result || !result.success) {
             if (!ERROR) {
                 ERROR = true;
-                modal.open({
-                    content: response.body.html || response.body.message || response.body,
-                    afterOpen: function(container) {
-                        container = modal.element(container);
-                        if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                    }
-                });
-
+                modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
                 History.back();
             } else {
                 ERROR = false;
             }
-
-            if (Data.element) {
-                Data.element.hideIndicator();
-            }
-
+            if (Data.element) { indicator.hide(Data.element); }
             return false;
-
         }
 
-        var target = Data.parent ? Data.element.parent(Data.parent) : $(Data.target),
-            destination = (target || $('[data-g5-content]') || body);
+        var target = Data.parent && Data.element ? Data.element.closest(Data.parent) :
+                (Data.target ? document.querySelector(Data.target) : null),
+            destination = target || document.querySelector('[data-g5-content]') || body;
 
-        if (response.body && response.body.html) {
-            var fader;
-            destination.html(response.body.html);
-            if (fader = (destination.matches('[data-g5-content]') ? destination : destination.find('[data-g5-content]'))) {
-                var navbar = $('#navbar');
-                fader.style({ opacity: 0 });
-
-                if (isTopNavOrMenu) {
-                    $(navbar).attribute('tabindex', '-1').attribute('aria-hidden', 'true');
-                }
-
-                navbar[isTopNavOrMenu ? 'slideUp' : 'slideDown']();
-                fader.animate({ opacity: 1 });
+        destination.innerHTML = result.html || result;
+        var fader = destination.matches('[data-g5-content]') ? destination : destination.querySelector('[data-g5-content]');
+        if (fader) {
+            fader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'ease' });
+            if (isTopNavOrMenu && sidebar) {
+                sidebar.setAttribute('tabindex', '-1');
+                sidebar.setAttribute('aria-hidden', 'true');
             }
-        } else { destination.html(response.body); }
-
-        body.getPopover().hideAll(true).destroy();
-
-        if (Data.element) {
-            body.emit('statechangeAfter', {
-                target: Data.element,
-                Data: Data
-            });
+            showNavbar(sidebar, !isTopNavOrMenu);
         }
 
-        var element = (Data.event && Data.event.activeSpinner) || Data.element;
-        if (element) {
-            element.hideIndicator();
-        }
+        document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
+        if (Data.element) { dispatchState('statechangeAfter', Data.element, Data); }
 
-        var selects = $('[data-selectize]');
-        if (selects) { selects.selectize(); }
+        var spinner = (Data.event && Data.event.activeSpinner) || Data.element;
+        if (spinner) { indicator.hide(spinner); }
+
+        Selectize.initialize(document.querySelectorAll('[data-selectize]'));
         selectorChangeEvent();
         assignments.chromeFix();
-
-        body[0].dispatchEvent(new CustomEvent('statechangeEnd', { bubbles: true }));
+        body.dispatchEvent(new CustomEvent('statechangeEnd', { bubbles: true }));
     });
 });
 
-var selectorChangeEvent = function() {
-    var selectors = $('[data-selectize-ajaxify]');
-    if (!selectors) { return; }
+dom.ready(function() {
+    var body = document.body;
 
-    selectors.forEach(function(selector) {
-        selector = $(selector);
-        var selectize = selector.selectize().selectizeInstance;
-        if (!selectize || selectize.HasChangeEvent) { return; }
-
-        selectize.on('change', function() {
-            if (TMP_SELECTIZE_DISABLE) {
-                TMP_SELECTIZE_DISABLE = false;
-                return false;
-            }
-            var value = selectize.getValue(),
-                options = selectize.Options,
-                flagCallback = function() {
-                    flags.off('update:pending', flagCallback);
-                    modal.close();
-
-                    selectize.input
-                        .data('g5-ajaxify', '')
-                        .data('g5-ajaxify-target', selector.data('g5-ajaxify-target') || '[data-g5-content-wrapper]')
-                        .data('g5-ajaxify-target-parent', selector.data('g5-ajaxify-target-parent') || null)
-                        .data('g5-ajaxify-href', options[value].url)
-                        .data('g5-ajaxify-params', options[value].params ? JSON.stringify(options[value].params) : null);
-
-
-                    var active = $('#navbar li.active') || $('#main-header li.active') || $('#navbar li:nth-child(2)');
-                    if (active) { active.showIndicator(); }
-
-                    $('body').emit('click', {
-                        target: selectize.input,
-                        activeSpinner: active
-                    });
-                };
-
-            if (!options[value]) { return; }
-
-            if (flags.get('pending')) {
-                flags.warning({
-                    callback: function(response, content) {
-                        var saveContinue = content.find('[data-g-unsaved-save]'),
-                            discardContinue = content.find('[data-g-unsaved-discard]');
-
-                        if (!saveContinue) { return; }
-                        saveContinue.on('click', function(e) {
-                            e.preventDefault();
-                            if (this.attribute('disabled')) { return false; }
-
-                            $([saveContinue, discardContinue]).attribute('disabled');
-                            flags.on('update:pending', flagCallback);
-                            $('body').emit('click', { target: $('.button-save') });
-                        });
-
-                        discardContinue.on('click', function(e) {
-                            e.preventDefault();
-                            if (this.attribute('disabled')) { return false; }
-
-                            $([saveContinue, discardContinue]).attribute('disabled');
-                            flags.set('pending', false);
-                            flagCallback();
-                        });
-                    },
-
-                    afterclose: function() {
-                        TMP_SELECTIZE_DISABLE = true;
-                        selectize.setValue(selectize.getPreviousValue());
-                    }
-                });
-
-                return;
-            }
-
-            flagCallback();
-        });
-
-        selectize.HasChangeEvent = true;
-    });
-};
-
-
-domready(function() {
-    var body = $('body');
-
-    // Update NONCE if any
-    if (GANTRY_AJAX_NONCE) {
+    if (window.GANTRY_AJAX_NONCE) {
         var currentURI = History.getPageUrl(),
-            currentNonce, currentView;
-
-        // hack to inject the default view in WP/Grav in case it's missing
-        switch (GANTRY_PLATFORM) {
-            case 'wordpress':
-                currentNonce = getParam(currentURI, '_wpnonce');
-                // currentView = getParam(currentURI, 'view');
-
-                /*
-                if (!currentView) {
-                    currentURI = setParam(currentURI, 'view', 'configurations/default/styles');
-                    History.replaceState({ uuid: guid(), doNothing: true }, window.document.title, currentURI);
-                }
-                */
-
-                // refresh nonce
-                if (currentNonce !== GANTRY_AJAX_NONCE) {
-                    currentURI = setParam(currentURI, '_wpnonce', GANTRY_AJAX_NONCE);
-                    History.replaceState({ uuid: guid(), doNothing: true }, window.document.title, currentURI);
-                }
-                break;
-
-            case 'grav':
-                currentNonce = getParam(currentURI, 'nonce');
-                // currentView = contains(currentURI, 'configurations/default/styles');
-
-                /*
-                if (!currentView) {
-                    currentURI += 'configurations/default/styles';
-                    History.replaceState({ uuid: guid(), doNothing: true }, window.document.title, currentURI);
-                }
-                */
-
-                // refresh nonce
-                if (currentNonce !== GANTRY_AJAX_NONCE) {
-                    currentURI = setParam(currentURI, 'nonce', GANTRY_AJAX_NONCE);
-                    History.replaceState({ uuid: guid(), doNothing: true }, window.document.title, currentURI);
-                }
-                break;
+            currentNonce;
+        if (window.GANTRY_PLATFORM === 'wordpress') {
+            currentNonce = getParam(currentURI, '_wpnonce');
+            if (currentNonce !== window.GANTRY_AJAX_NONCE) {
+                currentURI = setParam(currentURI, '_wpnonce', window.GANTRY_AJAX_NONCE);
+                History.replaceState({ uuid: guid(), doNothing: true }, document.title, currentURI);
+            }
+        } else if (window.GANTRY_PLATFORM === 'grav') {
+            currentNonce = getParam(currentURI, 'nonce');
+            if (currentNonce !== window.GANTRY_AJAX_NONCE) {
+                currentURI = setParam(currentURI, 'nonce', window.GANTRY_AJAX_NONCE);
+                History.replaceState({ uuid: guid(), doNothing: true }, document.title, currentURI);
+            }
         }
-
-
     }
 
-    // back to configuration
-    body.delegate('click', '.button-back-to-conf', function(event, element) {
+    dom.delegate(body, 'click', '.button-back-to-conf', function(event, element) {
         event.preventDefault();
+        var confSelector = document.querySelector('#configuration-selector'),
+            outlineDeleted = body.outlineDeleted,
+            currentOutline = confSelector && confSelector.value,
+            navbar = document.querySelector('#navbar');
+        if (!confSelector || !navbar) { return; }
 
-        var confSelector = $('#configuration-selector'),
-            outlineDeleted = body[0].outlineDeleted,
-            currentOutline = confSelector.value();
+        ConfNavIndex = ConfNavIndex === -1 ? 1 : ConfNavIndex;
+        var item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-g5-ajaxify]');
+        if (!item) { return; }
 
-        ConfNavIndex = ConfNavIndex == -1 ? 1 : ConfNavIndex;
-        var navbar = $('#navbar'),
-            item = navbar.find('li:nth-child(' + (ConfNavIndex + 1) + ') [data-g5-ajaxify]');
+        var continueBack = function() {
+            flags.off('update:pending', continueBack);
+            modal.close();
+            item.click();
+            navbar.removeAttribute('tabindex');
+            navbar.setAttribute('aria-hidden', 'false');
+            showNavbar(navbar, true);
+        };
 
         if (flags.get('pending')) {
             flags.warning({
                 callback: function(response, content) {
-                    var saveContinue = content.find('[data-g-unsaved-save]'),
-                        discardContinue = content.find('[data-g-unsaved-discard]'),
-                        flagCallback = function() {
-                            flags.off('update:pending', flagCallback);
-                            modal.close();
-
-                            body.emit('click', { target: item });
-                            navbar.attribute('tabindex', null).attribute('aria-hidden', 'false');
-                            navbar.slideDown();
-                        };
-
-                    if (!saveContinue) { return; }
-                    saveContinue.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        $([saveContinue, discardContinue]).attribute('disabled');
-                        flags.on('update:pending', flagCallback);
-                        body.emit('click', { target: $('.button-save') });
+                    var buttons = warningButtons(content);
+                    if (!buttons.save) { return; }
+                    buttons.save.addEventListener('click', function(saveEvent) {
+                        saveEvent.preventDefault();
+                        if (buttons.save.disabled) { return; }
+                        setButtonsDisabled([buttons.save, buttons.discard], true);
+                        flags.on('update:pending', continueBack);
+                        var save = document.querySelector('.button-save');
+                        if (save) { save.click(); }
                     });
-
-                    discardContinue.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        $([saveContinue, discardContinue]).attribute('disabled');
-                        flags.set('pending', false);
-                        flagCallback();
-                    });
+                    if (buttons.discard) {
+                        buttons.discard.addEventListener('click', function(discardEvent) {
+                            discardEvent.preventDefault();
+                            if (buttons.discard.disabled) { return; }
+                            setButtonsDisabled([buttons.save, buttons.discard], true);
+                            flags.set('pending', false);
+                            continueBack();
+                        });
+                    }
                 }
             });
-
             return;
         }
 
-        element.showIndicator();
-
+        indicator.show(element);
         if (outlineDeleted == currentOutline) {
-            var ids = Object.keys(confSelector.selectizeInstance.Options),
+            var selectize = Selectize.getInstance(confSelector),
+                ids = selectize ? Object.keys(selectize.Options) : [],
                 id = ids.shift();
-            body[0].outlineDeleted = null;
-            item.href(item.href().replace('/' + outlineDeleted + '/', '/' + id + '/').replace('style=' + outlineDeleted, 'style=' + id));
-        }
-
-        body.emit('click', { target: item });
-        navbar.attribute('tabindex', null);
-        navbar.slideDown();
-    });
-
-    body.delegate('click', '#navbar a[data-g5-ajaxify]', function(event, element) {
-        var navbar = $('#navbar'),
-            lis = navbar.search('li a[data-g5-ajaxify]');
-
-        ConfNavIndex = Array.prototype.indexOf.call(lis, element[0]) + 1;
-    });
-
-    // generic ajaxified links
-    body.delegate('click', '[data-g5-ajaxify]', function(event, element) {
-        if (event && event.preventDefault) {
-            if (event.which === 2 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
-                return true;
+            body.outlineDeleted = null;
+            if (id) {
+                item.href = item.href.replace('/' + outlineDeleted + '/', '/' + id + '/').replace('style=' + outlineDeleted, 'style=' + id);
             }
-
-            event.preventDefault();
         }
+        item.click();
+        navbar.removeAttribute('tabindex');
+        showNavbar(navbar, true);
+    });
 
-        if (flags.get('pending') && (!element.matches('a.menu-item') && !element.parent('[data-menu-items]'))) {
+    dom.delegate(body, 'click', '#navbar a[data-g5-ajaxify]', function(event, element) {
+        var links = document.querySelectorAll('#navbar li a[data-g5-ajaxify]');
+        ConfNavIndex = Array.from(links).indexOf(element) + 1;
+    });
+
+    dom.delegate(body, 'click', '[data-g5-ajaxify]', function(event, element) {
+        if (event.which === 2 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) { return; }
+        event.preventDefault();
+
+        var replay = function() {
+            flags.off('update:pending', replay);
+            modal.close();
+            element.click();
+        };
+
+        if (flags.get('pending') && !element.matches('a.menu-item') && !element.closest('[data-menu-items]')) {
             flags.warning({
                 callback: function(response, content) {
-                    var saveContinue = content.find('[data-g-unsaved-save]'),
-                        discardContinue = content.find('[data-g-unsaved-discard]'),
-                        flagCallback = function() {
-                            flags.off('update:pending', flagCallback);
-                            modal.close();
-                            body.emit('click', event);
-                        };
-
-                    if (!saveContinue) { return; }
-                    saveContinue.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        $([saveContinue, discardContinue]).attribute('disabled');
-                        flags.on('update:pending', flagCallback);
-                        body.emit('click', { target: $('.button-save') });
+                    var buttons = warningButtons(content);
+                    if (!buttons.save) { return; }
+                    buttons.save.addEventListener('click', function(saveEvent) {
+                        saveEvent.preventDefault();
+                        if (buttons.save.disabled) { return; }
+                        setButtonsDisabled([buttons.save, buttons.discard], true);
+                        flags.on('update:pending', replay);
+                        var save = document.querySelector('.button-save');
+                        if (save) { save.click(); }
                     });
-
-                    discardContinue.on('click', function(e) {
-                        e.preventDefault();
-                        if (this.attribute('disabled')) { return false; }
-
-                        $([saveContinue, discardContinue]).attribute('disabled');
-                        flags.set('pending', false);
-                        flagCallback();
-                    });
+                    if (buttons.discard) {
+                        buttons.discard.addEventListener('click', function(discardEvent) {
+                            discardEvent.preventDefault();
+                            if (buttons.discard.disabled) { return; }
+                            setButtonsDisabled([buttons.save, buttons.discard], true);
+                            flags.set('pending', false);
+                            replay();
+                        });
+                    }
                 }
             });
-
             return;
         }
 
-        element.showIndicator();
+        indicator.show(element);
+        var rawData = element.getAttribute('data-g5-ajaxify'),
+            target = element.getAttribute('data-g5-ajaxify-target'),
+            parent = element.getAttribute('data-g5-ajaxify-target-parent'),
+            url = element.getAttribute('href') || element.getAttribute('data-g5-ajaxify-href'),
+            params = element.getAttribute('data-g5-ajaxify-params') || false,
+            title = element.getAttribute('title') || document.title,
+            data = rawData ? JSON.parse(rawData) : { parsed: false };
 
-        var data = element.data('g5-ajaxify'),
-            target = element.data('g5-ajaxify-target'),
-            parent = element.data('g5-ajaxify-target-parent'),
-            url = element.attribute('href') || element.data('g5-ajaxify-href'),
-            params = element.data('g5-ajaxify-params') || false,
-            title = element.attribute('title') || window.document.title;
-
-        data = data ? JSON.parse(data) : { parsed: false };
         if (data) {
-            var uuid = guid(), extras;
-
-            // TODO: The menu needs to be able to receive POST
-            if (element.data('mm-id') || element.parent('[data-mm-id]')) {
-                extras = {};
-                extras.menutype = $('select.menu-select-wrap').value();
-                extras.settings = JSON.stringify(mm.menumanager.settings);
-                extras.ordering = JSON.stringify(mm.menumanager.ordering);
-                extras.items = JSON.stringify(mm.menumanager.items);
+            var uuid = guid(),
+                extras;
+            if (element.hasAttribute('data-mm-id') || element.closest('[data-mm-id]')) {
+                var menuSelect = document.querySelector('select.menu-select-wrap'),
+                    manager = mm.menumanager;
+                if (manager) {
+                    extras = {
+                        menutype: menuSelect ? menuSelect.value : '',
+                        settings: JSON.stringify(manager.settings),
+                        ordering: JSON.stringify(manager.ordering),
+                        items: JSON.stringify(manager.items)
+                    };
+                }
             }
 
             storage.set(uuid, Object.assign({}, data, {
@@ -464,21 +431,17 @@ domready(function() {
         }
 
         History.pushState(data, title, url);
-
-        var navbar, active, actives = $('#navbar .active, #main-header .active');
-
-        if (navbar = element.parent('#navbar, #main-header')) {
-            if (actives) { actives.removeClass('active'); }
-
-            active = navbar.search('.active');
-            if (active) { active.removeClass('active'); }
-            element.parent('li').addClass('active');
+        var navbar = element.closest('#navbar, #main-header');
+        if (navbar) {
+            document.querySelectorAll('#navbar .active, #main-header .active').forEach(function(active) {
+                active.classList.remove('active');
+            });
+            var item = element.closest('li');
+            if (item) { item.classList.add('active'); }
         }
     });
 
-    // attach change events to configurations selector
     selectorChangeEvent();
 });
-
 
 module.exports = {};

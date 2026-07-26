@@ -9,7 +9,6 @@
 
 defined('ABSPATH') or die;
 
-use Timber\Post;
 use Timber\Timber;
 
 /*
@@ -18,10 +17,13 @@ use Timber\Timber;
 
 $context = Timber::context();
 
-$post            = new Post();
+$post = Timber::get_post();
+if ($post === null) {
+    return;
+}
 $context['post'] = $post;
 
-if (post_password_required($post)) {
+if (post_password_required($post->ID)) {
     return;
 }
 

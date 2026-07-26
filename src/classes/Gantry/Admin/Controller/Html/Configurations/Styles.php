@@ -269,6 +269,52 @@ class Styles extends HtmlController
         $theme = $this->container['theme'];
         $outline = $this->params['outline'];
 
-        return $theme->updateCss($outline !== 'default' ? [$outline => ucfirst($outline)] : null);
+        if ($outline !== 'default') {
+            return $theme->updateCss([$outline => ucfirst($outline)]);
+        }
+
+        // Default style changes affect every outline. Compile the active default
+        // files immediately, then invalidate derived files so Gantry recompiles
+        // each one on demand instead of blocking this request on every outline.
+        $warnings = $theme->updateCss(['default' => 'Default']);
+        $this->invalidateDerivedCss($theme);
+
+        return $warnings;
+    }
+
+    /**
+     * Remove compiled files for outlines which inherit from Default.
+     *
+     * @param Theme $theme
+     * @return void
+     */
+    protected function invalidateDerivedCss(Theme $theme)
+    {
+        /** @var UniformResourceLocator $locator */
+        $locator = $this->container['locator'];
+        $outlines = (array) $this->container['outlines'];
+        $files = (array) $theme->details()->get('configuration.css.files');
+        $compiler = $theme->compiler();
+
+        unset($outlines['default']);
+
+        foreach (array_keys($outlines) as $outline) {
+            $compiler->reset()->setConfiguration($outline);
+
+            foreach ($files as $file) {
+                $path = $locator->findResource($compiler->getCssUrl($file));
+                if (!$path || !is_file($path)) {
+                    continue;
+                }
+
+                $map = $path . '.map';
+                if (is_file($map)) {
+                    @unlink($map);
+                }
+                @unlink($path);
+            }
+        }
+
+        clearstatcache();
     }
 }

@@ -120,9 +120,11 @@ class Menu extends AbstractMenu
 
             $menus = array_flip($this->getMenus());
             if (isset($menus[$this->params['menu']])) {
-                $menu = new \TimberMenu($menus[$this->params['menu']]);
+                $menu = \Timber\Timber::get_menu($menus[$this->params['menu']]);
 
-                $config->set('settings.title', $menu->name);
+                if ($menu !== null) {
+                    $config->set('settings.title', $menu->name);
+                }
             }
         }
 
