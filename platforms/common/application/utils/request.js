@@ -125,21 +125,34 @@ class Request {
         };
         if (/GET|HEAD/.test(method)) delete options.body;
 
-        fetch(url, options)
+        const responsePromise = fetch(url, options)
             .then(async (nativeResponse) => {
                 const response = new Response(await nativeResponse.text(), nativeResponse.status, nativeResponse.headers);
                 const error = response.error ? new Error(`${method} ${url} ${response.status}`) : null;
+
+                return { error, response };
+            });
+
+        responsePromise
+            .then(({ error, response }) => {
                 this._running = false;
                 this._controller = null;
                 this.emit('load', response);
                 callback(error, response);
-            })
-            .catch((error) => {
+            }, (error) => {
                 this._running = false;
                 this._controller = null;
                 if (error.name === 'AbortError') this.emit('abort', error);
                 else this.emit('error', error);
-                callback(error);
+                callback(error, {
+                    body: {
+                        success: false,
+                        message: error.message || String(error)
+                    },
+                    error: true,
+                    ok: false,
+                    status: 0
+                });
             })
             .finally(() => {
                 this.emit('loadend');

@@ -454,6 +454,8 @@ var SelectizeDefinition = {
         this.rand = 'selectize-id-' + (Math.random() + 1).toString(36).substring(5);
         this.input = input;
         this.input.selectizeInstance = this;
+        this.input[0].selectizeInstance = this;
+        this.input[0].selectize = this;
 
         this.order = 0;
         this.tabIndex = input.attribute('tabindex') || '';
@@ -673,6 +675,8 @@ var SelectizeDefinition = {
         this.on('change', this.onChange);
 
         this.input.selectizeInstance = this;
+        this.input[0].selectizeInstance = this;
+        this.input[0].selectize = this;
         this.input.addClass('selectized');
         this.emit('initialize');
 
@@ -2122,6 +2126,7 @@ var SelectizeDefinition = {
 
         delete this.$control_input.selectizeGrow;
         delete this.input.selectizeInstance;
+        delete this.input[0].selectizeInstance;
         delete this.input[0].selectize;
     },
 
@@ -2377,11 +2382,26 @@ $.implement({
     }
 });
 
+Selectize.initialize = function(elements, settings) {
+    var collection = $(elements);
+    if (collection) { collection.selectize(settings); }
+    return collection;
+};
+
+Selectize.getInstance = function(element) {
+    element = element && element.nodeType ? element : element && element[0];
+    if (element && (element.selectizeInstance || element.selectize)) {
+        return element.selectizeInstance || element.selectize;
+    }
+    var collection = $(element);
+    return collection ? collection.selectizeInstance : null;
+};
+
 ready(function() {
     var selects = $('[data-selectize]');
     if (!selects) { return; }
 
-    selects.selectize();
+    Selectize.initialize(selects);
 });
 
 

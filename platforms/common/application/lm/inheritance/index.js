@@ -1,14 +1,16 @@
 "use strict";
 
-var $                  = require('elements'),
-    ready              = require('../../utils/dom').ready,
+var dom                = require('../../utils/dom'),
+    ready              = dom.ready,
+    delegate           = dom.delegate,
+    indicator          = require('../../utils/indicator'),
     request            = require('../../utils/request'),
     modal              = require('../../ui').modal,
+    Selectize          = require('../../ui/selectize'),
 
     getAjaxSuffix      = require('../../utils/get-ajax-suffix'),
     parseAjaxURI       = require('../../utils/get-ajax-url').parse,
     getAjaxURL         = require('../../utils/get-ajax-url').global,
-    getOutlineNameById = require('../../utils/get-outline').getOutlineNameById,
     getCurrentOutline  = require('../../utils/get-outline').getCurrentOutline;
 
 
@@ -19,90 +21,127 @@ var IDsMap = {
     atoms: 'g-inherit-atom'
 };
 
-var collectionContains = function(collection, value) {
-    if (Array.isArray(collection) || typeof collection === 'string') {
-        return collection.includes(value);
-    }
+var asElement = function(element) {
+        return element && element.nodeType ? element : element && element[0];
+    },
+    collectionContains = function(collection, value) {
+        if (Array.isArray(collection) || typeof collection === 'string') {
+            return collection.includes(value);
+        }
 
-    return collection && typeof collection === 'object' ? Object.values(collection).includes(value) : false;
-};
+        return collection && typeof collection === 'object' ? Object.values(collection).includes(value) : false;
+    },
+    emitChange = function(element, options) {
+        element = asElement(element);
+        if (!element) { return; }
+
+        var event = new Event('change', {bubbles: true});
+        Object.assign(event, options || {});
+        element.dispatchEvent(event);
+    },
+    getModalContainer = function() {
+        return asElement(modal.getByID(modal.getLast()));
+    },
+    getMode = function(root) {
+        return (root || document).querySelector('[name="inherit[mode]"]:checked');
+    },
+    getSelectedItem = function(root) {
+        return (root || document).querySelector(
+            '[name="inherit[particle]"]:checked, [name="inherit[atom]"]:checked'
+        );
+    };
 
 ready(function() {
-    var body             = $('body'),
+    var body             = document.body,
         currentSelection = {},
         currentMode      = {};
 
-    body.delegate('change', '[name="inherit[outline]"]', function(event, element) {
-        var label          = element.parent('.settings-param').find('.settings-param-title'),
-            text           = element.siblings().find('.g-item'),
-            value          = element.value(),
-            name           = $('[name="inherit[section]"]') ? $('[name="inherit[section]"]').value() : '',
-            form           = element.parent('[data-g-inheritance-settings]'),
-            includesFields = $('[data-multicheckbox-field="inherit[include]"]:checked') || [],
-            particle       = {
-                list: $('#g-inherit-particle, #g-inherit-atom'),
-                mode: $('[name="inherit[mode]"]:checked'),
-                radios: $('[name="inherit[particle]"], [name="inherit[atom]"]'),
-                checked: $('[name="inherit[particle]"]:checked, [name="inherit[atom]"]:checked')
+    delegate(body, 'change', '[name="inherit[outline]"]', function(event, element) {
+        var settingsParam = element.closest('.settings-param'),
+            label         = settingsParam && settingsParam.querySelector('.settings-param-title'),
+            text          = settingsParam && settingsParam.querySelector('.g-item'),
+            value         = element.value,
+            section       = document.querySelector('[name="inherit[section]"]'),
+            name          = section ? section.value : '',
+            form          = element.closest('[data-g-inheritance-settings]'),
+            includesFields = Array.from(document.querySelectorAll(
+                '[data-multicheckbox-field="inherit[include]"]:checked'
+            )),
+            mode          = getMode(form),
+            checked       = getSelectedItem(form),
+            particle      = {
+                list: document.querySelector('#g-inherit-particle, #g-inherit-atom'),
+                mode: mode,
+                radios: form && form.querySelector(
+                    '[name="inherit[particle]"], [name="inherit[atom]"]'
+                ),
+                checked: checked
             };
 
-        if (!text) { return true; }
+        if (!text || !form || !mode) { return true; }
 
-        var hasChanged = currentSelection[name] !== value || currentMode[name] !== particle.mode.value();
+        var hasChanged = currentSelection[name] !== value || currentMode[name] !== mode.value;
 
         if (hasChanged && !value) {
             includesFields.forEach(function(include) {
-                $(include).checked(false);
-                body.emit('change', { target: include });
+                include.checked = false;
+                emitChange(include);
             });
         }
 
-        var formData = JSON.parse(form.data('g-inheritance-settings')),
+        var formData = JSON.parse(form.dataset.gInheritanceSettings || '{}'),
             data     = {
                 outline: value || getCurrentOutline(),
                 type: formData.type || '',
                 subtype: formData.subtype || '',
-                mode: particle.mode.value(),
-                inherit: !!value && particle.mode.value() === 'inherit' ? '1' : '0'
+                mode: mode.value,
+                inherit: !!value && mode.value === 'inherit' ? '1' : '0'
             };
 
         data.id = formData.id;
 
-        label.showIndicator();
-        element.selectizeInstance.blur();
+        indicator.show(label);
+        var selectize = Selectize.getInstance(element);
+        if (selectize) { selectize.blur(); }
 
-        if (particle.radios && particle.checked) {
-            if (!hasChanged) {
-                data.selected = particle.checked.value();
-                data.id = particle.checked.value();
-                particle.list = false;
-            }
+        if (particle.radios && checked && !hasChanged) {
+            data.selected = checked.value;
+            data.id = checked.value;
+            particle.list = false;
         }
 
         var URI_mode = data.type === 'atom' ? 'atoms' : 'layouts',
             URI      = particle.list ? URI_mode + '/list' : URI_mode;
 
         request('POST', parseAjaxURI(getAjaxURL(URI) + getAjaxSuffix()), data, function(error, response) {
-            label.hideIndicator();
+            indicator.hide(label);
 
             if (!response.body.success) {
                 modal.open({
                     content: response.body.html || response.body.message || response.body,
                     afterOpen: function(container) {
-                        if (!response.body.html && !response.body.message) { container.style({ width: '90%' }); }
+                        container = asElement(container);
+                        if (container && !response.body.html && !response.body.message) {
+                            container.style.width = '90%';
+                        }
                     }
                 });
 
                 return;
             }
 
-            var data      = response.body,
-                includes  = form.find('[name="inherit[include]"]').value().split(','),
-                available = form.search('[data-multicheckbox-field="inherit[include]"]').map(function(item) { return $(item).value(); }),
-                container = modal.getByID(modal.getLast()),
-                element;
+            var responseData = response.body,
+                includeField = form.querySelector('[name="inherit[include]"]'),
+                includes     = includeField && includeField.value ? includeField.value.split(',') : [],
+                available    = Array.from(form.querySelectorAll(
+                    '[data-multicheckbox-field="inherit[include]"]'
+                )).map(function(item) { return item.value; }),
+                container    = getModalContainer(),
+                refreshed;
 
-            // refresh field values based on settings and ajax response
+            if (!container) { return; }
+
+            // Refresh field values based on settings and AJAX response.
             Object.keys(IDsMap).forEach(function(option) {
                 var id = IDsMap[option];
                 id = id.panel || id;
@@ -112,37 +151,36 @@ ready(function() {
                     var shouldRefresh = includes.includes(option),
                         isAvailable   = available.includes(option);
 
-                    if ((shouldRefresh || !isAvailable) && data.html[currentID] && (element = container.find('#' + currentID))) {
-                        element.html(data.html[currentID]);
-                        var selects = element.search('[data-selectize]');
-                        if (selects) { selects.selectize(); }
+                    if ((shouldRefresh || !isAvailable) && responseData.html &&
+                        responseData.html[currentID] &&
+                        (refreshed = container.querySelector('#' + currentID))) {
+                        refreshed.innerHTML = responseData.html[currentID];
+                        Selectize.initialize(refreshed.querySelectorAll('[data-selectize]'));
                     }
                 });
             });
 
-            if (hasChanged && includesFields && currentSelection[name] === '') {
-                includesFields.forEach(function(include) { body.emit('change', { target: include }); });
+            if (hasChanged && includesFields.length && currentSelection[name] === '') {
+                includesFields.forEach(function(include) { emitChange(include); });
             }
 
             currentSelection[name] = value;
-            currentMode[name] = particle.mode.value();
+            currentMode[name] = mode.value;
         });
     });
 
-    body.delegate('change', '#g-settings-inheritance [data-multicheckbox-field]', function(event, element) {
-        var outline = $('[name="inherit[outline]"]');
-        if (!outline) { return true; }
+    delegate(body, 'change', '#g-settings-inheritance [data-multicheckbox-field]', function(event, element) {
+        var root = element.closest('[data-g-inheritance-settings]') || document,
+            outlineElement = root.querySelector('[name="inherit[outline]"]');
+        if (!outlineElement) { return true; }
 
-        outline   = outline.value();
-
-        var value     = element.value(),
-            isChecked = element.checked(),
+        var outline   = outlineElement.value,
+            value     = element.value,
+            isChecked = element.checked,
             noRefresh = event.noRefresh,
-            particle  = {
-                mode: $('[name="inherit[mode]"]:checked'),
-                radios: $('[name="inherit[particle]"], [name="inherit[atom]"]'),
-                checked: $('[name="inherit[particle]"]:checked, [name="inherit[atom]"]:checked')
-            };
+            mode      = getMode(root);
+
+        if (!mode) { return true; }
 
         var IDs = {
             panel: (IDsMap[value] && IDsMap[value].panel || IDsMap[value]),
@@ -155,30 +193,37 @@ ready(function() {
         }
 
         IDs.panel.forEach(function(currentPanel, index) {
-            var panel = $('#' + currentPanel),
-                tab   = $('#' + IDs.tab[index] + '-tab');
+            var panel = document.getElementById(currentPanel),
+                tab   = document.getElementById(IDs.tab[index] + '-tab');
 
-            if (!panel || !tab) { return true; }
+            if (!panel || !tab) { return; }
 
-            var inherit = panel.find('.g-inherit'),
-                isClone = particle.mode.value() === 'clone',
-                refresh = function(noRefresh) {
-                    if (!noRefresh) {
-                        body.emit('change', { target: element.parent('.settings-block').find('[name="inherit[outline]"]') });
-                    }
+            var inherit = panel.querySelector('.g-inherit'),
+                isClone = mode.value === 'clone',
+                refresh = function(skipRefresh) {
+                    if (skipRefresh) { return; }
+                    var settingsBlock = element.closest('.settings-block'),
+                        selector = settingsBlock && settingsBlock.querySelector('[name="inherit[outline]"]');
+                    emitChange(selector);
                 };
 
             if (!isChecked || !outline || isClone) {
-                var lock = tab.find('.fa-lock');
+                var lock = tab.querySelector('.fa-lock');
 
-                if (lock) { lock.removeClass('fa-lock').addClass('fa-unlock'); }
-                if (inherit) { inherit.hide(); }
+                if (lock) {
+                    lock.classList.remove('fa-lock');
+                    lock.classList.add('fa-unlock');
+                }
+                if (inherit) { inherit.style.display = 'none'; }
                 if (isClone) { refresh(noRefresh); }
             } else {
-                var unlock = tab.find('.fa-unlock');
+                var unlock = tab.querySelector('.fa-unlock');
 
-                if (unlock) { unlock.removeClass('fa-unlock').addClass('fa-lock'); }
-                if (inherit) { inherit.show(); }
+                if (unlock) {
+                    unlock.classList.remove('fa-unlock');
+                    unlock.classList.add('fa-lock');
+                }
+                if (inherit) { inherit.style.removeProperty('display'); }
 
                 refresh(noRefresh);
             }
@@ -186,74 +231,88 @@ ready(function() {
     });
 
 
-    body.delegate('change', '[name="inherit[mode]"], [name="inherit[particle]"], [name="inherit[atom]"]', function(event, element) {
-        var container  = modal.getByID(modal.getLast()),
-            outline    = container.find('[name="inherit[outline]"]'),
-            checkboxes = container.search('[data-multicheckbox-field]') || [],
-            noRefresh  = false;
+    delegate(
+        body,
+        'change',
+        '[name="inherit[mode]"], [name="inherit[particle]"], [name="inherit[atom]"]',
+        function(event, element) {
+            var container = getModalContainer();
+            if (!container) { return; }
 
-        if (element.attribute('name') === 'inherit[mode]') {
-            noRefresh = true;
+            var outline    = container.querySelector('[name="inherit[outline]"]'),
+                checkboxes = container.querySelectorAll('[data-multicheckbox-field]'),
+                noRefresh  = element.name === 'inherit[mode]';
+
+            emitChange(outline, {noRefresh: noRefresh});
+            checkboxes.forEach(function(checkbox) {
+                emitChange(checkbox, {noRefresh: noRefresh});
+            });
         }
+    );
 
-        body.emit('change', { target: outline, noRefresh: noRefresh });
-        checkboxes.forEach(function(checkbox) {
-            body.emit('change', { target: checkbox, noRefresh: noRefresh });
-        });
-    });
+    delegate(
+        body,
+        'click',
+        '#g-inherit-particle .fa-info-circle, #g-inherit-atom .fa-info-circle',
+        function(event, element) {
+            event.preventDefault();
 
-    body.delegate('click', '#g-inherit-particle .fa-info-circle, #g-inherit-atom .fa-info-circle', function(event, element) {
-        event.preventDefault();
+            var container = getModalContainer(),
+                outline   = container && container.querySelector('[name="inherit[outline]"]'),
+                parent    = element.parentElement,
+                id        = parent && parent.querySelector(
+                    'input[name="inherit[particle]"], input[name="inherit[atom]"]'
+                );
 
-        var container = modal.getByID(modal.getLast()),
-            outline   = container.find('[name="inherit[outline]"]'),
-            id        = element.siblings('input[name="inherit[particle]"], input[name="inherit[atom]"]');
+            if (!id || !outline) { return false; }
 
-        if (!id || !outline) { return false; }
-
-        var URI = id.name() === 'inherit[atom]' ? 'atoms/instance' : 'layouts/particle';
-        modal.open({
-            content: 'Loading',
-            method: 'post',
-            data: { id: id.value(), outline: outline.value() || getCurrentOutline() },
-            remote: parseAjaxURI(getAjaxURL(URI) + getAjaxSuffix()),
-            remoteLoaded: function(response, content) {
-                if (!response.body.success) {
-                    modal.enableCloseByOverlay();
-                    return;
+            var URI = id.name === 'inherit[atom]' ? 'atoms/instance' : 'layouts/particle';
+            modal.open({
+                content: 'Loading',
+                method: 'post',
+                data: {id: id.value, outline: outline.value || getCurrentOutline()},
+                remote: parseAjaxURI(getAjaxURL(URI) + getAjaxSuffix()),
+                remoteLoaded: function(response) {
+                    if (!response.body.success) {
+                        modal.enableCloseByOverlay();
+                    }
                 }
-            }
-        });
+            });
 
-        return false;
-    });
+            return false;
+        }
+    );
 
-    body.delegate('mouseup', '.g-tabs .fa-lock, .g-tabs .fa-unlock', function(event, element) {
-        if (!element.parent('li').hasClass('active')) { return false; }
+    delegate(body, 'mouseup', '.g-tabs .fa-lock, .g-tabs .fa-unlock', function(event, element) {
+        var listItem = element.closest('li');
+        if (!listItem || !listItem.classList.contains('active')) { return false; }
 
-        var container = modal.getByID(modal.getLast()),
-            isLocked  = element.hasClass('fa-lock'),
-            id        = element.parent('a').id().replace(/\-tab$/, ''),
+        var container = getModalContainer(),
+            anchor    = element.closest('a'),
+            isLocked  = element.classList.contains('fa-lock'),
+            id        = anchor ? anchor.id.replace(/\-tab$/, '') : '',
             prop      = Object.keys(IDsMap).find(function(key) {
                 var value = IDsMap[key];
                 return value === id || value.tab === id || collectionContains(value, id);
             }),
-            input     = container.find('[data-multicheckbox-field][value="' + prop + '"]'),
-            particle  = {
-                mode: $('[name="inherit[mode]"]:checked'),
-                radios: $('[name="inherit[particle]"], [name="inherit[atom]"]'),
-                checked: $('[name="inherit[particle]"]:checked, [name="inherit[atom]"]:checked')
-            };
+            input     = container && container.querySelector(
+                '[data-multicheckbox-field][value="' + prop + '"]'
+            ),
+            mode      = container && getMode(container),
+            radios    = container && container.querySelector(
+                '[name="inherit[particle]"], [name="inherit[atom]"]'
+            ),
+            checked   = container && getSelectedItem(container);
 
         if (input) {
-            // do not try to refresh attributes/block inheritance when there's no particle selected
-            // or if we are in clone mode
-            if (particle.mode.value() === 'clone' || (particle.radios && !particle.checked)) {
+            // Do not refresh particle inheritance without a selected particle,
+            // or while the inheritance mode is cloning.
+            if ((mode && mode.value === 'clone') || (radios && !checked)) {
                 return false;
             }
 
-            input.checked(!isLocked);
-            body.emit('change', { target: input });
+            input.checked = !isLocked;
+            emitChange(input);
         }
     });
 });
