@@ -492,13 +492,9 @@ ready(function() {
                 }
 
                 var container = modal.element(content.elements.content),
-                    template = document.createElement('template');
-                template.innerHTML = String(response.body.html || '');
-
-                var form = container && container.querySelector('form'),
-                    fakeDOM = template.content.querySelector('form'),
+                    form = container && container.querySelector('form'),
                     submit = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
-                    actionForm = fakeDOM || form;
+                    actionForm = form;
 
                 if (!container || !form || !actionForm || !submit.length) { return true; }
 
@@ -556,7 +552,11 @@ ready(function() {
                             return;
                         }
 
-                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
+                        request(
+                            actionForm.getAttribute('method') || 'post',
+                            parseAjaxURI((actionForm.getAttribute('action') || '') + getAjaxSuffix()),
+                            post.valid.join('&') || {},
+                            function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -637,7 +637,8 @@ ready(function() {
 
                         indicator.hide(target);
                         target.disabled = false;
-                        });
+                            }
+                        );
                     });
                 });
             }

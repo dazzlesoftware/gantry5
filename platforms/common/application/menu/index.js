@@ -1,8 +1,7 @@
 "use strict";
-var ready         = require('../utils/dom').ready,
+var dom           = require('../utils/dom'),
     MenuManager   = require('./menumanager'),
     Submit        = require('../fields/submit'),
-    $             = require('elements'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
     extraItems    = require('./extra-items'),
@@ -22,13 +21,8 @@ var clamp = function(value, minimum, maximum) {
     return Math.min(maximum, Math.max(minimum, value));
 };
 
-var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-
-var FOCUSIN  = isFirefox ? 'focus' : 'focusin',
-    FOCUSOUT = isFirefox ? 'blur' : 'focusout';
-
-ready(function() {
-    var body = $('body');
+dom.ready(function() {
+    var body = document.body;
 
     menumanager = new MenuManager('[data-mm-container]', {
         delegate: '.g5-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
@@ -48,7 +42,8 @@ ready(function() {
     menumanager.setRoot();
 
     // Refresh ordering/items on menu type change or Menu navigation link
-    body.delegate('statechangeAfter', '#main-header [data-g5-ajaxify], select.menu-select-wrap', function(/*event, element*/) {
+    body.addEventListener('statechangeAfter', function() {
+        if (!document.querySelector('#menu-editor')) { return; }
         menumanager.setRoot();
         menumanager.refresh();
 
@@ -59,15 +54,12 @@ ready(function() {
         }
     });
 
-    body.delegate(FOCUSIN, '.percentage input', function(event, element) {
-        element = $(element);
-        element.currentSize = Number(element.value());
+    dom.delegate(body, 'focusin', '.percentage input', function(event, element) {
+        element.currentSize = Number(element.value);
+        element.select();
+    });
 
-        element[0].focus();
-        element[0].select();
-    }, true);
-
-    body.delegate('keydown', '.percentage input', function(event/*, element*/) {
+    dom.delegate(body, 'keydown', '.percentage input', function(event) {
         if ([46, 8, 9, 27, 13, 110, 190].includes(event.keyCode) ||
                 // Allow: [Ctrl|Cmd]+A | [Ctrl|Cmd]+R
             (event.keyCode == 65 && (event.ctrlKey === true || event.ctrlKey === true)) ||
@@ -83,32 +75,31 @@ ready(function() {
         }
     });
 
-    body.delegate('keydown', '.percentage input', function(event, element) {
-        element = $(element);
-        var value  = Number(element.value()),
-            min    = Number(element.attribute('min')),
-            max    = Number(element.attribute('max')),
+    dom.delegate(body, 'keydown', '.percentage input', function(event, element) {
+        var value  = Number(element.value),
+            min    = Number(element.min),
+            max    = Number(element.max),
             upDown = event.keyCode == 38 || event.keyCode == 40;
 
         if (upDown) {
+            event.preventDefault();
             value += event.keyCode == 38 ? +1 : -1;
             value = clamp(value, min, max);
-            element.value(value);
-            body.emit('keyup', { target: element });
+            element.value = value;
+            element.dispatchEvent(new Event('keyup', { bubbles: true }));
         }
     });
 
-    body.delegate('keyup', '.percentage input', function(event, element) {
-        element = $(element);
-        var value = Number(element.value()),
-            min   = Number(element.attribute('min')),
-            max   = Number(element.attribute('max'));
+    dom.delegate(body, 'keyup', '.percentage input', function(event, element) {
+        var value = Number(element.value),
+            min   = Number(element.min),
+            max   = Number(element.max);
 
         var resizer = menumanager.resizer,
-            parent  = element.parent('[data-mm-id]'),
-            sibling = parent.nextSibling('[data-mm-id]') || parent.previousSibling('[data-mm-id]');
+            parent  = element.closest('[data-mm-id]'),
+            sibling = parent && (parent.nextElementSibling || parent.previousElementSibling);
 
-        if (!value || value < min || value > max) { return; }
+        if (!parent || !sibling || !value || value < min || value > max) { return; }
 
         var sizes = {
             current: Number(element.currentSize),
@@ -123,54 +114,61 @@ ready(function() {
         resizer.setSize(parent, value);
         resizer.setSize(sibling, sizes.diff);
 
-        menumanager.resizer.updateItemSizes(parent.parent('.submenu-selector').search('> [data-mm-id]'));
+        menumanager.resizer.updateItemSizes(Array.from(parent.parentElement.children).filter(function(child) {
+            return child.matches('[data-mm-id]');
+        }));
         menumanager.emit('dragEnd', menumanager.map, 'inputChange');
     });
 
-    body.delegate(FOCUSOUT, '.percentage input', function(event, element) {
-        element = $(element);
-        var value = Number(element.value());
-        if (value < Number(element.attribute('min')) || value > Number(element.attribute('max'))) {
-            element.value(element.currentSize);
+    dom.delegate(body, 'focusout', '.percentage input', function(event, element) {
+        var value = Number(element.value);
+        if (value < Number(element.min) || value > Number(element.max)) {
+            element.value = element.currentSize;
         }
-    }, true);
+    });
 
     // Add new columns
-    body.delegate('click', '.add-column', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        element = $(element);
-
-        var container = element.parent('[data-g5-menu-columns]').find('.submenu-selector'),
-            children  = container.children(),
-            last      = container.find('> :last-child'),
-            count     = children ? children.length : 0,
-            active    = $('.menu-selector .active'),
-            path      = active ? active.data('mm-id') : null;
+    dom.delegate(body, 'click', '.add-column', function(event, element) {
+        event.preventDefault();
+        var columns = element.closest('[data-g5-menu-columns]'),
+            container = columns && columns.querySelector('.submenu-selector'),
+            children = container ? Array.from(container.children) : [],
+            last = children[children.length - 1],
+            count = children.length,
+            active = document.querySelector('.menu-selector .active'),
+            path = active ? active.getAttribute('data-mm-id') : null;
+        if (!container || !last) { return; }
 
         // do not allow to create a new column if there's already one and it's empty
-        if (count == 1 && !children.search('.submenu-items > [data-mm-id]')) { return false; }
+        if (count === 1 && !container.querySelector('.submenu-items > [data-mm-id]')) { return; }
 
-        var block = $(last[0].cloneNode(true));
-        block.data('mm-id', 'list-' + count);
-        block.find('.submenu-items')[0].replaceChildren();
-        block.find('[data-mm-base-level]').data('mm-base-level', 1);
-        block.find('.submenu-level').text('Level 1');
-        block.after(last);
+        var block = last.cloneNode(true),
+            items = block.querySelector('.submenu-items'),
+            baseLevel = block.querySelector('[data-mm-base-level]'),
+            level = block.querySelector('.submenu-level');
+        block.setAttribute('data-mm-id', 'list-' + count);
+        if (items) { items.replaceChildren(); }
+        if (baseLevel) { baseLevel.setAttribute('data-mm-base-level', '1'); }
+        if (level) { level.textContent = 'Level 1'; }
+        last.after(block);
 
         if (!menumanager.ordering[path]) {
             menumanager.ordering[path] = [[]];
         }
 
         menumanager.ordering[path].push([]);
-        menumanager.resizer.evenResize($('.submenu-selector > [data-mm-id]'));
+        menumanager.resizer.evenResize(container.querySelectorAll(':scope > [data-mm-id]'));
     });
 
     // Attach events to pseudo (x) for deleting a column
     ['click', 'touchend'].forEach(function(evt) {
-        body.delegate(evt, '[data-g5-menu-columns] .submenu-items:empty', function(event, element) {
-            var bounding = element[0].getBoundingClientRect(),
-                x        = event.pageX || event.changedTouches[0].pageX || 0, y = event.pageY || event.changedTouches[0].pageY || 0,
-                siblings = $('.submenu-selector > [data-mm-id]'),
+        dom.delegate(body, evt, '[data-g5-menu-columns] .submenu-items:empty', function(event, element) {
+            var point = event.changedTouches && event.changedTouches[0],
+                bounding = element.getBoundingClientRect(),
+                x = event.pageX || (point && point.pageX) || 0,
+                y = event.pageY || (point && point.pageY) || 0,
+                selector = element.closest('.submenu-selector'),
+                siblings = selector ? selector.querySelectorAll(':scope > [data-mm-id]') : [],
                 deleter  = {
                     width: 36,
                     height: 36
@@ -182,14 +180,16 @@ ready(function() {
 
             if (x >= bounding.left + bounding.width - deleter.width && x <= bounding.left + bounding.width &&
                 Math.abs(window.scrollY - y) - bounding.top < deleter.height) {
-                var parent    = element.parent('[data-mm-id]'),
-                    container = parent.parent('.submenu-selector').children('[data-mm-id]'),
-                    index     = Array.prototype.indexOf.call(container, parent[0] || parent),
-                    active    = $('.menu-selector .active'),
-                    path      = active ? active.data('mm-id') : null;
+                var parent = element.closest('[data-mm-id]'),
+                    container = parent && parent.parentElement,
+                    columns = container ? Array.from(container.children).filter(function(child) { return child.matches('[data-mm-id]'); }) : [],
+                    index = columns.indexOf(parent),
+                    active = document.querySelector('.menu-selector .active'),
+                    path = active ? active.getAttribute('data-mm-id') : null;
+                if (!parent || !path || index < 0) { return; }
 
                 parent.remove();
-                siblings = $('.submenu-selector > [data-mm-id]');
+                siblings = container.querySelectorAll(':scope > [data-mm-id]');
                 menumanager.ordering[path].splice(index, 1);
                 menumanager.resizer.evenResize(siblings);
             }
@@ -197,15 +197,25 @@ ready(function() {
     });
 
     // Menu Items settings
-    body.delegate('click', '#menu-editor .config-cog, #menu-editor .global-menu-settings', function(event, element) {
+    dom.delegate(body, 'click', '#menu-editor .config-cog, #menu-editor .global-menu-settings', function(event, element) {
         event.preventDefault();
 
-        var data = {}, isRoot = element.hasClass('global-menu-settings');
+        var data = {},
+            isRoot = element.classList.contains('global-menu-settings'),
+            itemElement = element.closest('[data-mm-id]');
 
         if (isRoot) {
             data.settings = JSON.stringify(menumanager.settings);
         } else {
-            data.item = JSON.stringify(menumanager.items[element.parent('[data-mm-id]').data('mm-id')]);
+            var itemId = itemElement && itemElement.getAttribute('data-mm-id');
+            if (!menumanager.items || typeof menumanager.items[itemId] === 'undefined') {
+                menumanager.setRoot();
+            }
+            if (!itemId || !menumanager.items || typeof menumanager.items[itemId] === 'undefined') {
+                toastr.error('Unable to find the selected menu item. Please reload the Menu Manager.', 'Menu item unavailable');
+                return;
+            }
+            data.item = JSON.stringify(menumanager.items[itemId]);
         }
 
         modal.open({
@@ -213,21 +223,17 @@ ready(function() {
             method: 'post',
             data: data,
             overlayClickToClose: false,
-            remote: parseAjaxURI($(element).attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(element.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) {
                     modal.enableCloseByOverlay();
                     return;
                 }
 
-                var container = modal.element(content.elements.content),
-                    template = document.createElement('template');
-                template.innerHTML = String(response.body.html || '');
-
-                var form       = container && container.querySelector('form'),
-                    fakeDOM    = template.content.querySelector('form'),
+                var container  = modal.element(content.elements.content),
+                    form       = container && container.querySelector('form'),
                     submit     = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
-                    actionForm = fakeDOM || form,
+                    actionForm = form,
                     path;
 
                 var search      = container.querySelector('.search input'),
@@ -298,7 +304,11 @@ ready(function() {
                             return;
                         }
 
-                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&'), function(error, response) {
+                        request(
+                            actionForm.getAttribute('method') || 'post',
+                            parseAjaxURI((actionForm.getAttribute('action') || '') + getAjaxSuffix()),
+                            post.valid.join('&'),
+                            function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -309,7 +319,7 @@ ready(function() {
                             });
                         } else {
                             if (response.body.path || (response.body.item && response.body.item.type == 'particle')) {
-                                path = response.body.path || element.parent('[data-mm-id]').data('mm-id');
+                                path = response.body.path || itemElement.getAttribute('data-mm-id');
                                 menumanager.items[path] = response.body.item;
                             } else if (response.body.item && response.body.item.type == 'particle') {
 
@@ -318,11 +328,11 @@ ready(function() {
                             }
 
                             if (response.body.html) {
-                                var parent = element.parent('[data-mm-id]');
+                                var parent = itemElement;
                                 if (parent) {
                                     var status = response.body.item.enabled || response.body.item.options.particle.enabled;
-                                    parent.html(response.body.html);
-                                    parent[status == '0' ? 'addClass' : 'removeClass']('g-menu-item-disabled');
+                                    parent.innerHTML = response.body.html;
+                                    parent.classList.toggle('g-menu-item-disabled', status == '0');
                                 }
                             }
 
@@ -340,7 +350,8 @@ ready(function() {
 
                         indicator.hide(target);
                         target.disabled = false;
-                        });
+                            }
+                        );
                     });
                 });
             }

@@ -1,31 +1,48 @@
 "use strict";
-var $             = require('elements'),
-    ready         = require('../utils/dom').ready,
+
+var dom           = require('../utils/dom'),
     Submit        = require('../fields/submit'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
+    Selectize     = require('../ui/selectize'),
     request       = require('../utils/request'),
+    indicator     = require('../utils/indicator'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
     getAjaxURL    = require('../utils/get-ajax-url').global,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     flags         = require('../utils/flags-state'),
     deepEquals    = require('../utils/deep-equals'),
     translate     = require('../utils/translate'),
-
-    Cards         = require('../positions/cards'); // required for Positions
+    Cards         = require('../positions/cards');
 
 var WordpressWidgetsCustomizer = require('../utils/wp-widgets-customizer');
-
 var menumanager = null;
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
+var asElement = function(element) {
+    return element && element.nodeType ? element : element && element[0];
+};
+
+var fragmentFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = String(html || '').trim();
+    return template.content;
+};
+
+var fieldByName = function(name) {
+    return Array.from(document.querySelectorAll('[name]')).find(function(field) {
+        return field.name === name;
+    }) || null;
+};
+
+var directChildren = function(parent, selector) {
+    return Array.from(parent ? parent.children : []).filter(function(child) {
+        return child.matches(selector);
+    });
 };
 
 var randomID = function randomString(len, an) {
     an = an && an.toLowerCase();
-    var str = "", i = 0, min = an == 'a' ? 10 : 0, max = an == 'n' ? 10 : 62;
-
+    var str = '', i = 0, min = an === 'a' ? 10 : 0, max = an === 'n' ? 10 : 62;
     for (; i++ < len;) {
         var r = Math.random() * (max - min) + min << 0;
         str += String.fromCharCode(r += r > 9 ? r < 36 ? 55 : 61 : 48);
@@ -33,73 +50,68 @@ var randomID = function randomString(len, an) {
     return str;
 };
 
-var StepOne = function(map, mode) { // mode [reorder, resize, evenResize]
+var StepOne = function(map, mode) {
     if (this.isNewParticle && mode !== 'reorder') { return; }
     this.resizer.updateItemSizes();
-
     menumanager = this;
 
-    var save = $('[data-save]'),
+    var save = document.querySelector('[data-save]'),
         current = {
             settings: this.settings,
             ordering: this.ordering,
             items: this.items
         };
 
-    if (!this.isNewParticle) {
+    if (!this.isNewParticle && save) {
         if (!deepEquals(map, current)) {
-            save.showIndicator('far fa-fw changes-indicator fa-circle');
+            indicator.show(save, 'far fa-fw changes-indicator fa-circle');
             flags.set('pending', true);
         } else {
-            save.hideIndicator();
+            indicator.hide(save);
             flags.set('pending', false);
         }
     }
 
     if (this.isParticle && this.isNewParticle) {
-        var blocktype = this.block.data('mm-blocktype');
-        this.block.attribute('data-mm-blocktype', null).addClass('g-menu-item-' + blocktype).data('mm-original-type', blocktype);
-        $(document.createElement('span'))
-            .attribute('class', 'menu-item-type badge')
-            .text(blocktype)
-            .after(this.block.find('.menu-item .title'));
+        var block = asElement(this.block),
+            blocktype = block && block.getAttribute('data-mm-blocktype'),
+            title = block && block.querySelector('.menu-item .title');
+        if (!block) { return; }
 
+        block.removeAttribute('data-mm-blocktype');
+        block.classList.add('g-menu-item-' + blocktype);
+        block.setAttribute('data-mm-original-type', blocktype);
+
+        var badge = document.createElement('span');
+        badge.className = 'menu-item-type badge';
+        badge.textContent = blocktype;
+        if (title) { title.after(badge); }
+
+        var config = block.querySelector('.config-cog');
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
-            //data: data,
-            remote: parseAjaxURI($(this.block).find('.config-cog').attribute('href') + getAjaxSuffix()),
-            remoteLoaded: function(response, modal) {
-                var search = modal.elements.content.find('.search input'),
-                    blocks = modal.elements.content.search('[data-mm-type]'),
-                    filters = modal.elements.content.search('[data-mm-filter]');
+            remote: parseAjaxURI((config ? config.getAttribute('href') : '') + getAjaxSuffix()),
+            remoteLoaded: function(response, modalInstance) {
+                var content = modal.element(modalInstance.elements.content),
+                    search = content && content.querySelector('.search input'),
+                    blocks = content ? content.querySelectorAll('[data-mm-type]') : [],
+                    filters = content ? content.querySelectorAll('[data-mm-filter]') : [];
 
-                if (!search || !filters || !blocks) { return; }
-
-                search.on('input', function() {
-                    if (!this.value()) {
-                        blocks.removeClass('hidden');
-                        return;
-                    }
-
-                    blocks.addClass('hidden');
-
-                    var found = [], value = this.value().toLowerCase(), text;
+                if (!search || !filters.length || !blocks.length) { return; }
+                search.addEventListener('input', function() {
+                    var value = search.value.toLowerCase();
+                    blocks.forEach(function(item) { item.classList.toggle('hidden', Boolean(value)); });
+                    if (!value) { return; }
 
                     filters.forEach(function(filter) {
-                        filter = $(filter);
-                        text = String(filter.data('mm-filter') || '').trim().toLowerCase();
-                        if (text.match(new RegExp("^" + value + '|\\s' + value, 'gi'))) {
-                            found.push(filter.matches('[data-mm-type]') ? filter : filter.parent('[data-mm-type]'));
-                        }
-                    }, this);
-
-                    if (found.length) { $(found).removeClass('hidden'); }
+                        var text = String(filter.getAttribute('data-mm-filter') || '').trim().toLowerCase(),
+                            match = text.startsWith(value) || text.includes(' ' + value),
+                            item = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
+                        if (match && item) { item.classList.remove('hidden'); }
+                    });
                 });
-
-                setTimeout(function(){
-                    search[0].focus();
-                }, 5);
+                setTimeout(function() { search.focus(); }, 5);
             }
         });
     }
@@ -108,204 +120,176 @@ var StepOne = function(map, mode) { // mode [reorder, resize, evenResize]
 };
 
 var StepTwo = function(data, content, button) {
-    var uri = content.find('[data-mm-particle-stepone]').data('mm-particle-stepone'),
+    content = asElement(content);
+    button = asElement(button);
+    if (!content || !button) { return; }
+
+    var route = content.querySelector('[data-mm-particle-stepone]'),
+        uri = route && route.getAttribute('data-mm-particle-stepone'),
         picker = data.instancepicker,
-        moduleType = {
-            wordpress: 'widget',
-            joomla: 'particle'
-        };
+        item;
 
     if (picker) {
-        var item = JSON.parse(data.item);
+        item = JSON.parse(data.item);
         picker = JSON.parse(picker);
-        delete(data.instancepicker);
-        //uri = getAjaxURL(item.type + '/' + item[moduleType[GANTRY_PLATFORM]]);
+        delete data.instancepicker;
         uri = getAjaxURL(item.type + '/' + item[item.type]);
     }
 
-    request('post', parseAjaxURI(uri + getAjaxSuffix()), data, function(error, response) {
-        if (!response.body.success) {
-            modal.open({
-                content: response.body.html || response.body.message || response.body,
-                afterOpen: function(container) {
-                    container = modal.element(container);
-                    if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                }
-            });
-
-            button.hideIndicator();
-
+    request('post', parseAjaxURI(uri + getAjaxSuffix()), data, function(error, stepResponse) {
+        var result = stepResponse && stepResponse.body;
+        if (!result || !result.success) {
+            modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
+            indicator.hide(button);
             return;
         }
 
-        content.html(response.body.html);
+        content.innerHTML = result.html;
+        Selectize.initialize(content.querySelectorAll('[data-selectize]'));
 
-        var selects = $('[data-selectize]');
-        if (selects) { selects.selectize(); }
+        var urlTemplate = content.querySelector('.g-urltemplate');
+        if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-        var urlTemplate = content.find('.g-urltemplate');
-        if (urlTemplate) { $('body').emit('input', { target: urlTemplate }); }
+        var form = content.querySelector('form'),
+            submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
+        if (!form || !submits.length) { return true; }
 
-        var form = content.find('form'),
-            submit = content.find('input[type="submit"], button[type="submit"]'),
-            fakeDOM = createContainer(response.body.html).find('form');
+        content.querySelectorAll('[data-apply-and-save]').forEach(function(applyAndSave) { applyAndSave.remove(); });
+        submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
 
-        if ((!form && !fakeDOM) || !submit) { return true; }
+        submits.forEach(function(submit) {
+            submit.addEventListener('click', function(event) {
+                event.preventDefault();
+                indicator.show(submit);
 
-        var applyAndSave = content.search('[data-apply-and-save]');
-        if (applyAndSave) { applyAndSave.remove(); }
+                var post = Submit(form.elements, content, { submitUnchecked: true }),
+                    method = form.getAttribute('method') || 'post',
+                    action = form.getAttribute('action') || '';
 
-        // Module / Particle Settings apply
-        submit.on('click', function(e) {
-            e.preventDefault();
+                request(method, parseAjaxURI(action + getAjaxSuffix()), post.valid.join('&') || {}, function(submitError, submitResponse) {
+                    var submitResult = submitResponse && submitResponse.body,
+                        field = null;
 
-            submit.showIndicator();
-
-            var post = Submit(fakeDOM[0].elements, content, { submitUnchecked: true });
-
-            request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
-                if (!response.body.success) {
-                    modal.open({
-                        content: response.body.html || response.body.message || response.body,
-                        afterOpen: function(container) {
-                            container = modal.element(container);
-                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                        }
-                    });
-                } else {
-                    // it's menu
-                    // FIXME: this is now handling both the Menu and the Positions when inserting a new Particle. Needs to be separated
-                    if (!picker) {
+                    if (!submitResult || !submitResult.success) {
+                        modal.open({
+                            content: submitResult ? (submitResult.html || submitResult.message || submitResult) : (submitError ? submitError.message : 'Request failed.')
+                        });
+                    } else if (!picker) {
                         if (menumanager) {
-                            // case for Menu Manager
-                            var element = menumanager.element,
-                                path    = element.data('mm-id') + '-',
-                                id      = randomID(5),
-                                base    = element.parent('[data-mm-base]').data('mm-base'),
-                                col     = (element.parent('[data-mm-id]').data('mm-id').match(/\d+$/) || [0])[0],
-                                index   = Array.prototype.indexOf.call(element.parent().children('[data-mm-id]'), element[0]);
+                            var element = asElement(menumanager.element),
+                                path = element.getAttribute('data-mm-id') + '-',
+                                id = randomID(5),
+                                baseParent = element.closest('[data-mm-base]'),
+                                columnParent = element.closest('[data-mm-id]'),
+                                base = baseParent && baseParent.getAttribute('data-mm-base'),
+                                col = ((columnParent && columnParent.getAttribute('data-mm-id') || '').match(/\d+$/) || [0])[0],
+                                index = directChildren(element.parentElement, '[data-mm-id]').indexOf(element);
 
                             while (menumanager.items[path + id]) { id = randomID(5); }
-
-                            menumanager.items[path + id] = response.body.item;
-                            if (!menumanager.ordering[base]) menumanager.ordering[base] = [];
-                            if (!menumanager.ordering[base][col]) menumanager.ordering[base][col] = [];
+                            menumanager.items[path + id] = submitResult.item;
+                            if (!menumanager.ordering[base]) { menumanager.ordering[base] = []; }
+                            if (!menumanager.ordering[base][col]) { menumanager.ordering[base][col] = []; }
                             menumanager.ordering[base][col].splice(index, 1, path + id);
-                            element.data('mm-id', path + id);
-
-                            if (response.body.html) {
-                                element.html(response.body.html);
-                            }
+                            element.setAttribute('data-mm-id', path + id);
+                            if (submitResult.html) { element.innerHTML = submitResult.html; }
 
                             menumanager.isNewParticle = false;
                             menumanager.emit('dragEnd', menumanager.map);
                             toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
-
                         } else {
-                            // case for Positions
-                            var position = $('[data-g5-position-name="' + response.body.position + '"]'),
-                                dummy = createContainer(response.body.html);
-
-                            position.find('> ul').appendChild(dummy.children());
-
+                            var position = document.querySelector('[data-g5-position-name="' + CSS.escape(submitResult.position) + '"]'),
+                                list = position && position.querySelector(':scope > ul');
+                            if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
                             Cards.updatePendingChanges();
-
                             toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
-                    } else { // it's field picker
-                        var field = $('[name="' + picker.field + '"]'),
-                            btnPicker = field.siblings('[data-g-instancepicker]'),
-                            label = field.siblings('.g-instancepicker-title');
+                    } else {
+                        field = fieldByName(picker.field);
+                        var parent = field && field.parentElement,
+                            btnPicker = parent && parent.querySelector('[data-g-instancepicker]'),
+                            label = parent && parent.querySelector('.g-instancepicker-title');
 
                         if (field) {
-                            field.value(JSON.stringify(response.body.item));
-                            $('body').emit('change', { target: field });
+                            field.value = JSON.stringify(submitResult.item);
+                            field.dispatchEvent(new Event('change', { bubbles: true }));
                         }
-                        if (label) { label.text(response.body.item.title); }
-
-                        if (item.type == 'particle') {
-                            btnPicker.text(btnPicker.data('g-instancepicker-alttext'));
+                        if (label) { label.textContent = submitResult.item.title; }
+                        if (item.type === 'particle' && btnPicker) {
+                            btnPicker.textContent = btnPicker.getAttribute('data-g-instancepicker-alttext') || '';
                         }
                     }
-                }
 
-                modal.close();
-                submit.hideIndicator();
-                WordpressWidgetsCustomizer(field);
+                    modal.close();
+                    indicator.hide(submit);
+                    WordpressWidgetsCustomizer(field);
+                });
             });
         });
     });
 };
 
+dom.ready(function() {
+    var body = document.body;
 
-ready(function() {
-    var body = $('body');
+    dom.delegate(body, 'click', '.menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]', function(event, element) {
+        var container = element.closest('.menu-editor-extras'),
+            selectButton = container && container.querySelector('[data-mm-select]');
+        if (!container || !selectButton) { return; }
 
-    body.delegate('click', '.menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]', function(event, element) {
-        var container = element.parent('.menu-editor-extras'),
-            elements = container.search('[data-lm-blocktype], [data-mm-module]'),
-            selectButton = container.find('[data-mm-select]');
-
-        elements.removeClass('selected');
-        element.addClass('selected');
-
-        selectButton.attribute('disabled', null);
+        container.querySelectorAll('[data-lm-blocktype], [data-mm-module]').forEach(function(item) {
+            item.classList.remove('selected');
+        });
+        element.classList.add('selected');
+        selectButton.disabled = false;
+        selectButton.classList.remove('disabled');
     });
 
-    // second step
-    body.delegate('click', '.menu-editor-extras [data-mm-select]', function(event, element) {
+    dom.delegate(body, 'click', '.menu-editor-extras [data-mm-select]', function(event, element) {
         event.preventDefault();
+        if (element.classList.contains('disabled') || element.disabled) { return; }
 
-        if (element.hasClass('disabled') || element.attribute('disabled')) { return false; }
+        var container = element.closest('.menu-editor-extras'),
+            selected = container && container.querySelector('[data-lm-blocktype].selected, [data-mm-module].selected');
+        if (!container || !selected) { return; }
 
-        var container = element.parent('.menu-editor-extras'),
-            selected = container.find('[data-lm-blocktype].selected, [data-mm-module].selected'),
-            type = selected.data('mm-type');
-
-        data = { type: type };
+        var type = selected.getAttribute('data-mm-type'),
+            data = { type: type },
+            instancepicker = element.getAttribute('data-g-instancepicker');
 
         switch (type) {
             case 'particle':
-                data['particle'] = selected.data('lm-subtype');
+                data.particle = selected.getAttribute('data-lm-subtype');
                 break;
-
             case 'widget':
-                data['widget'] = selected.data('lm-subtype');
+                data.widget = selected.getAttribute('data-lm-subtype');
                 break;
-
             case 'module':
-                data['particle'] = type;
-                data['title'] = selected.find('[data-mm-title]').data('mm-title');
-                data['options'] = { particle: { module_id: selected.data('mm-module') } };
+                data.particle = type;
+                var moduleTitle = selected.querySelector('[data-mm-title]');
+                data.title = moduleTitle && moduleTitle.getAttribute('data-mm-title');
+                data.options = { particle: { module_id: selected.getAttribute('data-mm-module') } };
                 break;
         }
 
-        element.showIndicator();
-
-
-        var data, instancepicker = element.data('g-instancepicker');
-
-        if (instancepicker && type == 'module') {
-            data = JSON.parse(instancepicker);
-            var field = $('[name="' + data.field + '"]');
+        indicator.show(element);
+        if (instancepicker && type === 'module') {
+            var pickerData = JSON.parse(instancepicker),
+                field = fieldByName(pickerData.field);
             if (field) {
-                field.value(selected.data('mm-module'));
-                body.emit('input', { target: field });
+                field.value = selected.getAttribute('data-mm-module');
+                field.dispatchEvent(new Event('input', { bubbles: true }));
             }
-
-            element.hideIndicator();
+            indicator.hide(element);
             modal.close();
-
-            return false;
-        } else {
-            var ip = instancepicker;
-            element.data('g-instancepicker', null);
-            StepTwo({
-                item: JSON.stringify(data),
-                instancepicker: ip ? ip : null
-            }, element.parent('.g5-content'), element);
+            return;
         }
+
+        element.removeAttribute('data-g-instancepicker');
+        StepTwo({
+            item: JSON.stringify(data),
+            instancepicker: instancepicker || null
+        }, element.closest('.g5-content'), element);
     });
 });
 

@@ -3112,13 +3112,9 @@ ready(function() {
                 }
 
                 var container = modal.element(content.elements.content),
-                    template = document.createElement('template');
-                template.innerHTML = String(response.body.html || '');
-
-                var form = container && container.querySelector('form'),
-                    fakeDOM = template.content.querySelector('form'),
+                    form = container && container.querySelector('form'),
                     submit = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
-                    actionForm = fakeDOM || form;
+                    actionForm = form;
 
                 if (!container || !form || !actionForm || !submit.length) { return true; }
 
@@ -3176,7 +3172,11 @@ ready(function() {
                             return;
                         }
 
-                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
+                        request(
+                            actionForm.getAttribute('method') || 'post',
+                            parseAjaxURI((actionForm.getAttribute('action') || '') + getAjaxSuffix()),
+                            post.valid.join('&') || {},
+                            function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -3257,7 +3257,8 @@ ready(function() {
 
                         indicator.hide(target);
                         target.disabled = false;
-                        });
+                            }
+                        );
                     });
                 });
             }
@@ -5095,33 +5096,50 @@ module.exports = Resizer;
 
 },{"../ui/drag.events":50}],32:[function(require,module,exports){
 "use strict";
-var $             = require('elements'),
-    ready         = require('../utils/dom').ready,
+
+var dom           = require('../utils/dom'),
     Submit        = require('../fields/submit'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
+    Selectize     = require('../ui/selectize'),
     request       = require('../utils/request'),
+    indicator     = require('../utils/indicator'),
     parseAjaxURI  = require('../utils/get-ajax-url').parse,
     getAjaxURL    = require('../utils/get-ajax-url').global,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     flags         = require('../utils/flags-state'),
     deepEquals    = require('../utils/deep-equals'),
     translate     = require('../utils/translate'),
-
-    Cards         = require('../positions/cards'); // required for Positions
+    Cards         = require('../positions/cards');
 
 var WordpressWidgetsCustomizer = require('../utils/wp-widgets-customizer');
-
 var menumanager = null;
 
-var createContainer = function(html) {
-    return $(document.createElement('div')).html(html);
+var asElement = function(element) {
+    return element && element.nodeType ? element : element && element[0];
+};
+
+var fragmentFromHTML = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = String(html || '').trim();
+    return template.content;
+};
+
+var fieldByName = function(name) {
+    return Array.from(document.querySelectorAll('[name]')).find(function(field) {
+        return field.name === name;
+    }) || null;
+};
+
+var directChildren = function(parent, selector) {
+    return Array.from(parent ? parent.children : []).filter(function(child) {
+        return child.matches(selector);
+    });
 };
 
 var randomID = function randomString(len, an) {
     an = an && an.toLowerCase();
-    var str = "", i = 0, min = an == 'a' ? 10 : 0, max = an == 'n' ? 10 : 62;
-
+    var str = '', i = 0, min = an === 'a' ? 10 : 0, max = an === 'n' ? 10 : 62;
     for (; i++ < len;) {
         var r = Math.random() * (max - min) + min << 0;
         str += String.fromCharCode(r += r > 9 ? r < 36 ? 55 : 61 : 48);
@@ -5129,73 +5147,68 @@ var randomID = function randomString(len, an) {
     return str;
 };
 
-var StepOne = function(map, mode) { // mode [reorder, resize, evenResize]
+var StepOne = function(map, mode) {
     if (this.isNewParticle && mode !== 'reorder') { return; }
     this.resizer.updateItemSizes();
-
     menumanager = this;
 
-    var save = $('[data-save]'),
+    var save = document.querySelector('[data-save]'),
         current = {
             settings: this.settings,
             ordering: this.ordering,
             items: this.items
         };
 
-    if (!this.isNewParticle) {
+    if (!this.isNewParticle && save) {
         if (!deepEquals(map, current)) {
-            save.showIndicator('far fa-fw changes-indicator fa-circle');
+            indicator.show(save, 'far fa-fw changes-indicator fa-circle');
             flags.set('pending', true);
         } else {
-            save.hideIndicator();
+            indicator.hide(save);
             flags.set('pending', false);
         }
     }
 
     if (this.isParticle && this.isNewParticle) {
-        var blocktype = this.block.data('mm-blocktype');
-        this.block.attribute('data-mm-blocktype', null).addClass('g-menu-item-' + blocktype).data('mm-original-type', blocktype);
-        $(document.createElement('span'))
-            .attribute('class', 'menu-item-type badge')
-            .text(blocktype)
-            .after(this.block.find('.menu-item .title'));
+        var block = asElement(this.block),
+            blocktype = block && block.getAttribute('data-mm-blocktype'),
+            title = block && block.querySelector('.menu-item .title');
+        if (!block) { return; }
 
+        block.removeAttribute('data-mm-blocktype');
+        block.classList.add('g-menu-item-' + blocktype);
+        block.setAttribute('data-mm-original-type', blocktype);
+
+        var badge = document.createElement('span');
+        badge.className = 'menu-item-type badge';
+        badge.textContent = blocktype;
+        if (title) { title.after(badge); }
+
+        var config = block.querySelector('.config-cog');
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
-            //data: data,
-            remote: parseAjaxURI($(this.block).find('.config-cog').attribute('href') + getAjaxSuffix()),
-            remoteLoaded: function(response, modal) {
-                var search = modal.elements.content.find('.search input'),
-                    blocks = modal.elements.content.search('[data-mm-type]'),
-                    filters = modal.elements.content.search('[data-mm-filter]');
+            remote: parseAjaxURI((config ? config.getAttribute('href') : '') + getAjaxSuffix()),
+            remoteLoaded: function(response, modalInstance) {
+                var content = modal.element(modalInstance.elements.content),
+                    search = content && content.querySelector('.search input'),
+                    blocks = content ? content.querySelectorAll('[data-mm-type]') : [],
+                    filters = content ? content.querySelectorAll('[data-mm-filter]') : [];
 
-                if (!search || !filters || !blocks) { return; }
-
-                search.on('input', function() {
-                    if (!this.value()) {
-                        blocks.removeClass('hidden');
-                        return;
-                    }
-
-                    blocks.addClass('hidden');
-
-                    var found = [], value = this.value().toLowerCase(), text;
+                if (!search || !filters.length || !blocks.length) { return; }
+                search.addEventListener('input', function() {
+                    var value = search.value.toLowerCase();
+                    blocks.forEach(function(item) { item.classList.toggle('hidden', Boolean(value)); });
+                    if (!value) { return; }
 
                     filters.forEach(function(filter) {
-                        filter = $(filter);
-                        text = String(filter.data('mm-filter') || '').trim().toLowerCase();
-                        if (text.match(new RegExp("^" + value + '|\\s' + value, 'gi'))) {
-                            found.push(filter.matches('[data-mm-type]') ? filter : filter.parent('[data-mm-type]'));
-                        }
-                    }, this);
-
-                    if (found.length) { $(found).removeClass('hidden'); }
+                        var text = String(filter.getAttribute('data-mm-filter') || '').trim().toLowerCase(),
+                            match = text.startsWith(value) || text.includes(' ' + value),
+                            item = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
+                        if (match && item) { item.classList.remove('hidden'); }
+                    });
                 });
-
-                setTimeout(function(){
-                    search[0].focus();
-                }, 5);
+                setTimeout(function() { search.focus(); }, 5);
             }
         });
     }
@@ -5204,215 +5217,186 @@ var StepOne = function(map, mode) { // mode [reorder, resize, evenResize]
 };
 
 var StepTwo = function(data, content, button) {
-    var uri = content.find('[data-mm-particle-stepone]').data('mm-particle-stepone'),
+    content = asElement(content);
+    button = asElement(button);
+    if (!content || !button) { return; }
+
+    var route = content.querySelector('[data-mm-particle-stepone]'),
+        uri = route && route.getAttribute('data-mm-particle-stepone'),
         picker = data.instancepicker,
-        moduleType = {
-            wordpress: 'widget',
-            joomla: 'particle'
-        };
+        item;
 
     if (picker) {
-        var item = JSON.parse(data.item);
+        item = JSON.parse(data.item);
         picker = JSON.parse(picker);
-        delete(data.instancepicker);
-        //uri = getAjaxURL(item.type + '/' + item[moduleType[GANTRY_PLATFORM]]);
+        delete data.instancepicker;
         uri = getAjaxURL(item.type + '/' + item[item.type]);
     }
 
-    request('post', parseAjaxURI(uri + getAjaxSuffix()), data, function(error, response) {
-        if (!response.body.success) {
-            modal.open({
-                content: response.body.html || response.body.message || response.body,
-                afterOpen: function(container) {
-                    container = modal.element(container);
-                    if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                }
-            });
-
-            button.hideIndicator();
-
+    request('post', parseAjaxURI(uri + getAjaxSuffix()), data, function(error, stepResponse) {
+        var result = stepResponse && stepResponse.body;
+        if (!result || !result.success) {
+            modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
+            indicator.hide(button);
             return;
         }
 
-        content.html(response.body.html);
+        content.innerHTML = result.html;
+        Selectize.initialize(content.querySelectorAll('[data-selectize]'));
 
-        var selects = $('[data-selectize]');
-        if (selects) { selects.selectize(); }
+        var urlTemplate = content.querySelector('.g-urltemplate');
+        if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-        var urlTemplate = content.find('.g-urltemplate');
-        if (urlTemplate) { $('body').emit('input', { target: urlTemplate }); }
+        var form = content.querySelector('form'),
+            submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
+        if (!form || !submits.length) { return true; }
 
-        var form = content.find('form'),
-            submit = content.find('input[type="submit"], button[type="submit"]'),
-            fakeDOM = createContainer(response.body.html).find('form');
+        content.querySelectorAll('[data-apply-and-save]').forEach(function(applyAndSave) { applyAndSave.remove(); });
+        submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
 
-        if ((!form && !fakeDOM) || !submit) { return true; }
+        submits.forEach(function(submit) {
+            submit.addEventListener('click', function(event) {
+                event.preventDefault();
+                indicator.show(submit);
 
-        var applyAndSave = content.search('[data-apply-and-save]');
-        if (applyAndSave) { applyAndSave.remove(); }
+                var post = Submit(form.elements, content, { submitUnchecked: true }),
+                    method = form.getAttribute('method') || 'post',
+                    action = form.getAttribute('action') || '';
 
-        // Module / Particle Settings apply
-        submit.on('click', function(e) {
-            e.preventDefault();
+                request(method, parseAjaxURI(action + getAjaxSuffix()), post.valid.join('&') || {}, function(submitError, submitResponse) {
+                    var submitResult = submitResponse && submitResponse.body,
+                        field = null;
 
-            submit.showIndicator();
-
-            var post = Submit(fakeDOM[0].elements, content, { submitUnchecked: true });
-
-            request(fakeDOM.attribute('method'), parseAjaxURI(fakeDOM.attribute('action') + getAjaxSuffix()), post.valid.join('&') || {}, function(error, response) {
-                if (!response.body.success) {
-                    modal.open({
-                        content: response.body.html || response.body.message || response.body,
-                        afterOpen: function(container) {
-                            container = modal.element(container);
-                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                        }
-                    });
-                } else {
-                    // it's menu
-                    // FIXME: this is now handling both the Menu and the Positions when inserting a new Particle. Needs to be separated
-                    if (!picker) {
+                    if (!submitResult || !submitResult.success) {
+                        modal.open({
+                            content: submitResult ? (submitResult.html || submitResult.message || submitResult) : (submitError ? submitError.message : 'Request failed.')
+                        });
+                    } else if (!picker) {
                         if (menumanager) {
-                            // case for Menu Manager
-                            var element = menumanager.element,
-                                path    = element.data('mm-id') + '-',
-                                id      = randomID(5),
-                                base    = element.parent('[data-mm-base]').data('mm-base'),
-                                col     = (element.parent('[data-mm-id]').data('mm-id').match(/\d+$/) || [0])[0],
-                                index   = Array.prototype.indexOf.call(element.parent().children('[data-mm-id]'), element[0]);
+                            var element = asElement(menumanager.element),
+                                path = element.getAttribute('data-mm-id') + '-',
+                                id = randomID(5),
+                                baseParent = element.closest('[data-mm-base]'),
+                                columnParent = element.closest('[data-mm-id]'),
+                                base = baseParent && baseParent.getAttribute('data-mm-base'),
+                                col = ((columnParent && columnParent.getAttribute('data-mm-id') || '').match(/\d+$/) || [0])[0],
+                                index = directChildren(element.parentElement, '[data-mm-id]').indexOf(element);
 
                             while (menumanager.items[path + id]) { id = randomID(5); }
-
-                            menumanager.items[path + id] = response.body.item;
-                            if (!menumanager.ordering[base]) menumanager.ordering[base] = [];
-                            if (!menumanager.ordering[base][col]) menumanager.ordering[base][col] = [];
+                            menumanager.items[path + id] = submitResult.item;
+                            if (!menumanager.ordering[base]) { menumanager.ordering[base] = []; }
+                            if (!menumanager.ordering[base][col]) { menumanager.ordering[base][col] = []; }
                             menumanager.ordering[base][col].splice(index, 1, path + id);
-                            element.data('mm-id', path + id);
-
-                            if (response.body.html) {
-                                element.html(response.body.html);
-                            }
+                            element.setAttribute('data-mm-id', path + id);
+                            if (submitResult.html) { element.innerHTML = submitResult.html; }
 
                             menumanager.isNewParticle = false;
                             menumanager.emit('dragEnd', menumanager.map);
                             toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
-
                         } else {
-                            // case for Positions
-                            var position = $('[data-g5-position-name="' + response.body.position + '"]'),
-                                dummy = createContainer(response.body.html);
-
-                            position.find('> ul').appendChild(dummy.children());
-
+                            var position = document.querySelector('[data-g5-position-name="' + CSS.escape(submitResult.position) + '"]'),
+                                list = position && position.querySelector(':scope > ul');
+                            if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
                             Cards.updatePendingChanges();
-
                             toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
-                    } else { // it's field picker
-                        var field = $('[name="' + picker.field + '"]'),
-                            btnPicker = field.siblings('[data-g-instancepicker]'),
-                            label = field.siblings('.g-instancepicker-title');
+                    } else {
+                        field = fieldByName(picker.field);
+                        var parent = field && field.parentElement,
+                            btnPicker = parent && parent.querySelector('[data-g-instancepicker]'),
+                            label = parent && parent.querySelector('.g-instancepicker-title');
 
                         if (field) {
-                            field.value(JSON.stringify(response.body.item));
-                            $('body').emit('change', { target: field });
+                            field.value = JSON.stringify(submitResult.item);
+                            field.dispatchEvent(new Event('change', { bubbles: true }));
                         }
-                        if (label) { label.text(response.body.item.title); }
-
-                        if (item.type == 'particle') {
-                            btnPicker.text(btnPicker.data('g-instancepicker-alttext'));
+                        if (label) { label.textContent = submitResult.item.title; }
+                        if (item.type === 'particle' && btnPicker) {
+                            btnPicker.textContent = btnPicker.getAttribute('data-g-instancepicker-alttext') || '';
                         }
                     }
-                }
 
-                modal.close();
-                submit.hideIndicator();
-                WordpressWidgetsCustomizer(field);
+                    modal.close();
+                    indicator.hide(submit);
+                    WordpressWidgetsCustomizer(field);
+                });
             });
         });
     });
 };
 
+dom.ready(function() {
+    var body = document.body;
 
-ready(function() {
-    var body = $('body');
+    dom.delegate(body, 'click', '.menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]', function(event, element) {
+        var container = element.closest('.menu-editor-extras'),
+            selectButton = container && container.querySelector('[data-mm-select]');
+        if (!container || !selectButton) { return; }
 
-    body.delegate('click', '.menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]', function(event, element) {
-        var container = element.parent('.menu-editor-extras'),
-            elements = container.search('[data-lm-blocktype], [data-mm-module]'),
-            selectButton = container.find('[data-mm-select]');
-
-        elements.removeClass('selected');
-        element.addClass('selected');
-
-        selectButton.attribute('disabled', null);
+        container.querySelectorAll('[data-lm-blocktype], [data-mm-module]').forEach(function(item) {
+            item.classList.remove('selected');
+        });
+        element.classList.add('selected');
+        selectButton.disabled = false;
+        selectButton.classList.remove('disabled');
     });
 
-    // second step
-    body.delegate('click', '.menu-editor-extras [data-mm-select]', function(event, element) {
+    dom.delegate(body, 'click', '.menu-editor-extras [data-mm-select]', function(event, element) {
         event.preventDefault();
+        if (element.classList.contains('disabled') || element.disabled) { return; }
 
-        if (element.hasClass('disabled') || element.attribute('disabled')) { return false; }
+        var container = element.closest('.menu-editor-extras'),
+            selected = container && container.querySelector('[data-lm-blocktype].selected, [data-mm-module].selected');
+        if (!container || !selected) { return; }
 
-        var container = element.parent('.menu-editor-extras'),
-            selected = container.find('[data-lm-blocktype].selected, [data-mm-module].selected'),
-            type = selected.data('mm-type');
-
-        data = { type: type };
+        var type = selected.getAttribute('data-mm-type'),
+            data = { type: type },
+            instancepicker = element.getAttribute('data-g-instancepicker');
 
         switch (type) {
             case 'particle':
-                data['particle'] = selected.data('lm-subtype');
+                data.particle = selected.getAttribute('data-lm-subtype');
                 break;
-
             case 'widget':
-                data['widget'] = selected.data('lm-subtype');
+                data.widget = selected.getAttribute('data-lm-subtype');
                 break;
-
             case 'module':
-                data['particle'] = type;
-                data['title'] = selected.find('[data-mm-title]').data('mm-title');
-                data['options'] = { particle: { module_id: selected.data('mm-module') } };
+                data.particle = type;
+                var moduleTitle = selected.querySelector('[data-mm-title]');
+                data.title = moduleTitle && moduleTitle.getAttribute('data-mm-title');
+                data.options = { particle: { module_id: selected.getAttribute('data-mm-module') } };
                 break;
         }
 
-        element.showIndicator();
-
-
-        var data, instancepicker = element.data('g-instancepicker');
-
-        if (instancepicker && type == 'module') {
-            data = JSON.parse(instancepicker);
-            var field = $('[name="' + data.field + '"]');
+        indicator.show(element);
+        if (instancepicker && type === 'module') {
+            var pickerData = JSON.parse(instancepicker),
+                field = fieldByName(pickerData.field);
             if (field) {
-                field.value(selected.data('mm-module'));
-                body.emit('input', { target: field });
+                field.value = selected.getAttribute('data-mm-module');
+                field.dispatchEvent(new Event('input', { bubbles: true }));
             }
-
-            element.hideIndicator();
+            indicator.hide(element);
             modal.close();
-
-            return false;
-        } else {
-            var ip = instancepicker;
-            element.data('g-instancepicker', null);
-            StepTwo({
-                item: JSON.stringify(data),
-                instancepicker: ip ? ip : null
-            }, element.parent('.g5-content'), element);
+            return;
         }
+
+        element.removeAttribute('data-g-instancepicker');
+        StepTwo({
+            item: JSON.stringify(data),
+            instancepicker: instancepicker || null
+        }, element.closest('.g5-content'), element);
     });
 });
 
 module.exports = StepOne;
 
-},{"../fields/submit":7,"../positions/cards":45,"../ui":52,"../utils/deep-equals":64,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/request":79,"../utils/translate":81,"../utils/wp-widgets-customizer":82,"elements":89}],33:[function(require,module,exports){
+},{"../fields/submit":7,"../positions/cards":45,"../ui":52,"../ui/selectize":56,"../utils/deep-equals":64,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"../utils/wp-widgets-customizer":82}],33:[function(require,module,exports){
 "use strict";
-var ready         = require('../utils/dom').ready,
+var dom           = require('../utils/dom'),
     MenuManager   = require('./menumanager'),
     Submit        = require('../fields/submit'),
-    $             = require('elements'),
     modal         = require('../ui').modal,
     toastr        = require('../ui').toastr,
     extraItems    = require('./extra-items'),
@@ -5432,13 +5416,8 @@ var clamp = function(value, minimum, maximum) {
     return Math.min(maximum, Math.max(minimum, value));
 };
 
-var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-
-var FOCUSIN  = isFirefox ? 'focus' : 'focusin',
-    FOCUSOUT = isFirefox ? 'blur' : 'focusout';
-
-ready(function() {
-    var body = $('body');
+dom.ready(function() {
+    var body = document.body;
 
     menumanager = new MenuManager('[data-mm-container]', {
         delegate: '.g5-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
@@ -5458,7 +5437,8 @@ ready(function() {
     menumanager.setRoot();
 
     // Refresh ordering/items on menu type change or Menu navigation link
-    body.delegate('statechangeAfter', '#main-header [data-g5-ajaxify], select.menu-select-wrap', function(/*event, element*/) {
+    body.addEventListener('statechangeAfter', function() {
+        if (!document.querySelector('#menu-editor')) { return; }
         menumanager.setRoot();
         menumanager.refresh();
 
@@ -5469,15 +5449,12 @@ ready(function() {
         }
     });
 
-    body.delegate(FOCUSIN, '.percentage input', function(event, element) {
-        element = $(element);
-        element.currentSize = Number(element.value());
+    dom.delegate(body, 'focusin', '.percentage input', function(event, element) {
+        element.currentSize = Number(element.value);
+        element.select();
+    });
 
-        element[0].focus();
-        element[0].select();
-    }, true);
-
-    body.delegate('keydown', '.percentage input', function(event/*, element*/) {
+    dom.delegate(body, 'keydown', '.percentage input', function(event) {
         if ([46, 8, 9, 27, 13, 110, 190].includes(event.keyCode) ||
                 // Allow: [Ctrl|Cmd]+A | [Ctrl|Cmd]+R
             (event.keyCode == 65 && (event.ctrlKey === true || event.ctrlKey === true)) ||
@@ -5493,32 +5470,31 @@ ready(function() {
         }
     });
 
-    body.delegate('keydown', '.percentage input', function(event, element) {
-        element = $(element);
-        var value  = Number(element.value()),
-            min    = Number(element.attribute('min')),
-            max    = Number(element.attribute('max')),
+    dom.delegate(body, 'keydown', '.percentage input', function(event, element) {
+        var value  = Number(element.value),
+            min    = Number(element.min),
+            max    = Number(element.max),
             upDown = event.keyCode == 38 || event.keyCode == 40;
 
         if (upDown) {
+            event.preventDefault();
             value += event.keyCode == 38 ? +1 : -1;
             value = clamp(value, min, max);
-            element.value(value);
-            body.emit('keyup', { target: element });
+            element.value = value;
+            element.dispatchEvent(new Event('keyup', { bubbles: true }));
         }
     });
 
-    body.delegate('keyup', '.percentage input', function(event, element) {
-        element = $(element);
-        var value = Number(element.value()),
-            min   = Number(element.attribute('min')),
-            max   = Number(element.attribute('max'));
+    dom.delegate(body, 'keyup', '.percentage input', function(event, element) {
+        var value = Number(element.value),
+            min   = Number(element.min),
+            max   = Number(element.max);
 
         var resizer = menumanager.resizer,
-            parent  = element.parent('[data-mm-id]'),
-            sibling = parent.nextSibling('[data-mm-id]') || parent.previousSibling('[data-mm-id]');
+            parent  = element.closest('[data-mm-id]'),
+            sibling = parent && (parent.nextElementSibling || parent.previousElementSibling);
 
-        if (!value || value < min || value > max) { return; }
+        if (!parent || !sibling || !value || value < min || value > max) { return; }
 
         var sizes = {
             current: Number(element.currentSize),
@@ -5533,54 +5509,61 @@ ready(function() {
         resizer.setSize(parent, value);
         resizer.setSize(sibling, sizes.diff);
 
-        menumanager.resizer.updateItemSizes(parent.parent('.submenu-selector').search('> [data-mm-id]'));
+        menumanager.resizer.updateItemSizes(Array.from(parent.parentElement.children).filter(function(child) {
+            return child.matches('[data-mm-id]');
+        }));
         menumanager.emit('dragEnd', menumanager.map, 'inputChange');
     });
 
-    body.delegate(FOCUSOUT, '.percentage input', function(event, element) {
-        element = $(element);
-        var value = Number(element.value());
-        if (value < Number(element.attribute('min')) || value > Number(element.attribute('max'))) {
-            element.value(element.currentSize);
+    dom.delegate(body, 'focusout', '.percentage input', function(event, element) {
+        var value = Number(element.value);
+        if (value < Number(element.min) || value > Number(element.max)) {
+            element.value = element.currentSize;
         }
-    }, true);
+    });
 
     // Add new columns
-    body.delegate('click', '.add-column', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        element = $(element);
-
-        var container = element.parent('[data-g5-menu-columns]').find('.submenu-selector'),
-            children  = container.children(),
-            last      = container.find('> :last-child'),
-            count     = children ? children.length : 0,
-            active    = $('.menu-selector .active'),
-            path      = active ? active.data('mm-id') : null;
+    dom.delegate(body, 'click', '.add-column', function(event, element) {
+        event.preventDefault();
+        var columns = element.closest('[data-g5-menu-columns]'),
+            container = columns && columns.querySelector('.submenu-selector'),
+            children = container ? Array.from(container.children) : [],
+            last = children[children.length - 1],
+            count = children.length,
+            active = document.querySelector('.menu-selector .active'),
+            path = active ? active.getAttribute('data-mm-id') : null;
+        if (!container || !last) { return; }
 
         // do not allow to create a new column if there's already one and it's empty
-        if (count == 1 && !children.search('.submenu-items > [data-mm-id]')) { return false; }
+        if (count === 1 && !container.querySelector('.submenu-items > [data-mm-id]')) { return; }
 
-        var block = $(last[0].cloneNode(true));
-        block.data('mm-id', 'list-' + count);
-        block.find('.submenu-items')[0].replaceChildren();
-        block.find('[data-mm-base-level]').data('mm-base-level', 1);
-        block.find('.submenu-level').text('Level 1');
-        block.after(last);
+        var block = last.cloneNode(true),
+            items = block.querySelector('.submenu-items'),
+            baseLevel = block.querySelector('[data-mm-base-level]'),
+            level = block.querySelector('.submenu-level');
+        block.setAttribute('data-mm-id', 'list-' + count);
+        if (items) { items.replaceChildren(); }
+        if (baseLevel) { baseLevel.setAttribute('data-mm-base-level', '1'); }
+        if (level) { level.textContent = 'Level 1'; }
+        last.after(block);
 
         if (!menumanager.ordering[path]) {
             menumanager.ordering[path] = [[]];
         }
 
         menumanager.ordering[path].push([]);
-        menumanager.resizer.evenResize($('.submenu-selector > [data-mm-id]'));
+        menumanager.resizer.evenResize(container.querySelectorAll(':scope > [data-mm-id]'));
     });
 
     // Attach events to pseudo (x) for deleting a column
     ['click', 'touchend'].forEach(function(evt) {
-        body.delegate(evt, '[data-g5-menu-columns] .submenu-items:empty', function(event, element) {
-            var bounding = element[0].getBoundingClientRect(),
-                x        = event.pageX || event.changedTouches[0].pageX || 0, y = event.pageY || event.changedTouches[0].pageY || 0,
-                siblings = $('.submenu-selector > [data-mm-id]'),
+        dom.delegate(body, evt, '[data-g5-menu-columns] .submenu-items:empty', function(event, element) {
+            var point = event.changedTouches && event.changedTouches[0],
+                bounding = element.getBoundingClientRect(),
+                x = event.pageX || (point && point.pageX) || 0,
+                y = event.pageY || (point && point.pageY) || 0,
+                selector = element.closest('.submenu-selector'),
+                siblings = selector ? selector.querySelectorAll(':scope > [data-mm-id]') : [],
                 deleter  = {
                     width: 36,
                     height: 36
@@ -5592,14 +5575,16 @@ ready(function() {
 
             if (x >= bounding.left + bounding.width - deleter.width && x <= bounding.left + bounding.width &&
                 Math.abs(window.scrollY - y) - bounding.top < deleter.height) {
-                var parent    = element.parent('[data-mm-id]'),
-                    container = parent.parent('.submenu-selector').children('[data-mm-id]'),
-                    index     = Array.prototype.indexOf.call(container, parent[0] || parent),
-                    active    = $('.menu-selector .active'),
-                    path      = active ? active.data('mm-id') : null;
+                var parent = element.closest('[data-mm-id]'),
+                    container = parent && parent.parentElement,
+                    columns = container ? Array.from(container.children).filter(function(child) { return child.matches('[data-mm-id]'); }) : [],
+                    index = columns.indexOf(parent),
+                    active = document.querySelector('.menu-selector .active'),
+                    path = active ? active.getAttribute('data-mm-id') : null;
+                if (!parent || !path || index < 0) { return; }
 
                 parent.remove();
-                siblings = $('.submenu-selector > [data-mm-id]');
+                siblings = container.querySelectorAll(':scope > [data-mm-id]');
                 menumanager.ordering[path].splice(index, 1);
                 menumanager.resizer.evenResize(siblings);
             }
@@ -5607,15 +5592,25 @@ ready(function() {
     });
 
     // Menu Items settings
-    body.delegate('click', '#menu-editor .config-cog, #menu-editor .global-menu-settings', function(event, element) {
+    dom.delegate(body, 'click', '#menu-editor .config-cog, #menu-editor .global-menu-settings', function(event, element) {
         event.preventDefault();
 
-        var data = {}, isRoot = element.hasClass('global-menu-settings');
+        var data = {},
+            isRoot = element.classList.contains('global-menu-settings'),
+            itemElement = element.closest('[data-mm-id]');
 
         if (isRoot) {
             data.settings = JSON.stringify(menumanager.settings);
         } else {
-            data.item = JSON.stringify(menumanager.items[element.parent('[data-mm-id]').data('mm-id')]);
+            var itemId = itemElement && itemElement.getAttribute('data-mm-id');
+            if (!menumanager.items || typeof menumanager.items[itemId] === 'undefined') {
+                menumanager.setRoot();
+            }
+            if (!itemId || !menumanager.items || typeof menumanager.items[itemId] === 'undefined') {
+                toastr.error('Unable to find the selected menu item. Please reload the Menu Manager.', 'Menu item unavailable');
+                return;
+            }
+            data.item = JSON.stringify(menumanager.items[itemId]);
         }
 
         modal.open({
@@ -5623,21 +5618,17 @@ ready(function() {
             method: 'post',
             data: data,
             overlayClickToClose: false,
-            remote: parseAjaxURI($(element).attribute('href') + getAjaxSuffix()),
+            remote: parseAjaxURI(element.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) {
                     modal.enableCloseByOverlay();
                     return;
                 }
 
-                var container = modal.element(content.elements.content),
-                    template = document.createElement('template');
-                template.innerHTML = String(response.body.html || '');
-
-                var form       = container && container.querySelector('form'),
-                    fakeDOM    = template.content.querySelector('form'),
+                var container  = modal.element(content.elements.content),
+                    form       = container && container.querySelector('form'),
                     submit     = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
-                    actionForm = fakeDOM || form,
+                    actionForm = form,
                     path;
 
                 var search      = container.querySelector('.search input'),
@@ -5708,7 +5699,11 @@ ready(function() {
                             return;
                         }
 
-                        request(actionForm.method, parseAjaxURI(actionForm.action + getAjaxSuffix()), post.valid.join('&'), function(error, response) {
+                        request(
+                            actionForm.getAttribute('method') || 'post',
+                            parseAjaxURI((actionForm.getAttribute('action') || '') + getAjaxSuffix()),
+                            post.valid.join('&'),
+                            function(error, response) {
                         if (!response.body.success) {
                             modal.open({
                                 content: response.body.html || response.body.message || response.body,
@@ -5719,7 +5714,7 @@ ready(function() {
                             });
                         } else {
                             if (response.body.path || (response.body.item && response.body.item.type == 'particle')) {
-                                path = response.body.path || element.parent('[data-mm-id]').data('mm-id');
+                                path = response.body.path || itemElement.getAttribute('data-mm-id');
                                 menumanager.items[path] = response.body.item;
                             } else if (response.body.item && response.body.item.type == 'particle') {
 
@@ -5728,11 +5723,11 @@ ready(function() {
                             }
 
                             if (response.body.html) {
-                                var parent = element.parent('[data-mm-id]');
+                                var parent = itemElement;
                                 if (parent) {
                                     var status = response.body.item.enabled || response.body.item.options.particle.enabled;
-                                    parent.html(response.body.html);
-                                    parent[status == '0' ? 'addClass' : 'removeClass']('g-menu-item-disabled');
+                                    parent.innerHTML = response.body.html;
+                                    parent.classList.toggle('g-menu-item-disabled', status == '0');
                                 }
                             }
 
@@ -5750,7 +5745,8 @@ ready(function() {
 
                         indicator.hide(target);
                         target.disabled = false;
-                        });
+                            }
+                        );
                     });
                 });
             }
@@ -5762,7 +5758,7 @@ module.exports = {
     menumanager: menumanager
 };
 
-},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"./extra-items":32,"./menumanager":34,"elements":89}],34:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"./extra-items":32,"./menumanager":34}],34:[function(require,module,exports){
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
     $         = require('../utils/elements.utils'),
@@ -7556,11 +7552,12 @@ module.exports = ColorPicker;
 (function (global){(function (){
 "use strict";
 
-var $             = require('../../utils/elements.utils'),
+var dom           = require('../../utils/dom'),
     request       = require('../../utils/request'),
-    zen           = require('elements/zen'),
-    ready         = require('../../utils/dom').ready,
     modal         = require('../../ui').modal,
+    popovers      = require('../../ui/popover'),
+    Progresser    = require('../../ui/progresser'),
+    indicator     = require('../../utils/indicator'),
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
     getAjaxURL    = require('../../utils/get-ajax-url').global,
@@ -7572,13 +7569,50 @@ var clone = function(value) {
     return JSON.parse(JSON.stringify(value));
 };
 
+var parseElement = function(html) {
+    var template = document.createElement('template');
+    template.innerHTML = String(html || '').trim();
+    return template.content;
+};
+
+var animateOpacity = function(element, opacity, duration, callback) {
+    if (!element) {
+        if (callback) { callback(); }
+        return;
+    }
+
+    var from = getComputedStyle(element).opacity,
+        animation = element.animate([{ opacity: from }, { opacity: opacity }], {
+            duration: duration,
+            easing: 'ease',
+            fill: 'forwards'
+        });
+
+    animation.finished.catch(function() {}).then(function() {
+        element.style.opacity = opacity;
+        animation.cancel();
+        if (callback) { callback(); }
+    });
+};
+
+var updateProgress = function(element, options) {
+    if (!element) { return null; }
+    if (!element.g5Progresser) {
+        element.g5Progresser = new Progresser(element, options);
+    } else {
+        element.g5Progresser.update(options);
+    }
+    return element.g5Progresser;
+};
+
 class FilePicker {
     constructor(element) {
-        var data = element.data('g5-filepicker'), value;
+        var data = element.getAttribute('data-g5-filepicker');
         this.data = data ? JSON.parse(data) : false;
 
         if (this.data && !this.data.value) {
-            this.data.value = $(this.data.field).value();
+            var field = this.getField();
+            this.data.value = field ? field.value : '';
         }
 
         this.colors = {
@@ -7587,13 +7621,18 @@ class FilePicker {
             small: '#aaaaaa',
             gradient: ['#9e38eb', '#4e68fc']
         };
+    }
 
-        //console.log(this.data);
+    getField() {
+        if (!this.data || !this.data.field) { return null; }
+        if (this.data.field.nodeType) { return this.data.field; }
+        return document.querySelector(this.data.field);
     }
 
     open() {
         if (this.data) {
-            this.data.value = $(this.data.field).value();
+            var field = this.getField();
+            this.data.value = field ? field.value : '';
         }
 
         modal.open({
@@ -7604,61 +7643,58 @@ class FilePicker {
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
             remoteLoaded: this.loaded.bind(this),
             afterClose: function() {
-                if (this.dropzone) { this.dropzone.destroy(); }
+                if (this.dropzone) {
+                    this.dropzone.destroy();
+                    this.dropzone = null;
+                }
             }.bind(this)
         });
     }
 
     getPath() {
-        var actives = this.content.search('.g-folders .active'), active, path;
-        if (!actives) { return null; }
+        var actives = this.content.querySelectorAll('.g-folders .active');
+        if (!actives.length) { return null; }
 
-        active = $(actives[actives.length - 1]);
-        path = JSON.parse(active.data('folder')).pathname;
+        var data = JSON.parse(actives[actives.length - 1].getAttribute('data-folder')),
+            path = data.pathname;
         return path.replace(/\/$/, '') + '/';
     }
 
     getPreviewTemplate() {
-        var li    = zen('li[data-file]'),
-            del   = zen('span.g-file-delete[data-g-file-delete][data-dz-remove]').html('<i class="fa fa-fw fa-trash-o fa-trash-alt" aria-hidden="true"></i>').bottom(li),
-            thumb = zen('div.g-thumb[data-dz-thumbnail]').bottom(li),
-            name  = zen('span.g-file-name[data-dz-name]').bottom(li),
-            size  = zen('span.g-file-size[data-dz-size]').bottom(li),
-            mtime = zen('span.g-file-mtime[data-dz-mtime]').bottom(li);
-
-        zen('span.g-file-progress[data-file-uploadprogress]').html('<span class="g-file-progress-text"></span>').bottom(li);
-        zen('div').bottom(thumb);
-
-        li.bottom('body');
-        var html = li[0].outerHTML;
-        li.remove();
-
-        return html;
+        return '<li data-file>' +
+            '<span class="g-file-delete" data-g-file-delete data-dz-remove><i class="fa fa-fw fa-trash-o fa-trash-alt" aria-hidden="true"></i></span>' +
+            '<div class="g-thumb" data-dz-thumbnail><div></div></div>' +
+            '<span class="g-file-name" data-dz-name></span>' +
+            '<span class="g-file-size" data-dz-size></span>' +
+            '<span class="g-file-mtime" data-dz-mtime></span>' +
+            '<span class="g-file-progress" data-file-uploadprogress><span class="g-file-progress-text"></span></span>' +
+            '</li>';
     }
 
     loaded(response, modalInstance) {
-        var content   = modalInstance.elements.content,
-            bookmarks = content.search('.g-bookmark'),
-            files     = content.find('.g-files'),
+        var content   = modal.element(modalInstance.elements.content),
+            files     = content && content.querySelector('.g-files'),
             fieldData = clone(this.data),
             colors    = this.colors,
             self      = this;
 
+        if (!content) { return false; }
         this.content = content;
 
         if (files) {
+            var previews = files.querySelector('ul:not(.g-list-labels)');
             this.dropzone = new dropzone('body', {
                 previewTemplate: this.getPreviewTemplate(),
-                previewsContainer: files.find('ul:not(.g-list-labels)')[0],
+                previewsContainer: previews,
                 thumbnailWidth: 100,
                 thumbnailHeight: 100,
                 clickable: '[data-upload]',
                 acceptedFiles: this.acceptedFiles(this.data.filter) || '',
                 accept: function(file, done) {
-                    if (!this.data.filter) { done(); }
-                    else {
-                        if (file.name.toLowerCase().match(this.data.filter)) { done(); }
-                        else { done('<code>' + file.name + '</code> ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': <br />  <code>' + this.data.filter + '</code>'); }
+                    if (!this.data.filter || file.name.toLowerCase().match(this.data.filter)) {
+                        done();
+                    } else {
+                        done('<code>' + file.name + '</code> ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': <br />  <code>' + this.data.filter + '</code>');
                     }
                 }.bind(this),
                 url: function(file) {
@@ -7666,361 +7702,323 @@ class FilePicker {
                 }.bind(this)
             });
 
-            // dropzone events
             this.dropzone.on('thumbnail', function(file, dataUrl) {
                 var ext = file.name.split('.');
-                ext = (!ext.length || ext.length == 1) ? '-' : ext.reverse()[0];
-                $(file.previewElement).addClass('g-image g-image-' + ext.toLowerCase()).find('[data-dz-thumbnail] > div').attribute('style', 'background-image: url(' + encodeURI(dataUrl) + ');');
+                ext = (!ext.length || ext.length === 1) ? '-' : ext.reverse()[0];
+                var element = file.previewElement,
+                    thumbnail = element.querySelector('[data-dz-thumbnail] > div');
+                element.classList.add('g-image', 'g-image-' + ext.toLowerCase());
+                if (thumbnail) { thumbnail.style.backgroundImage = 'url(' + encodeURI(dataUrl) + ')'; }
             });
 
             this.dropzone.on('addedfile', function(file) {
-                var element      = $(file.previewElement),
-                    uploader     = element.find('[data-file-uploadprogress]'),
-                    isList       = files.hasClass('g-filemode-list'),
+                var element      = file.previewElement,
+                    uploader     = element.querySelector('[data-file-uploadprogress]'),
+                    isList       = files.classList.contains('g-filemode-list'),
                     progressConf = {
                         value: 0,
                         animation: false,
                         insertLocation: 'bottom'
-                    };
+                    },
+                    ext = file.name.split('.');
 
-                var ext = file.name.split('.');
-                ext = (!ext.length || ext.length == 1) ? '-' : ext.reverse()[0];
-
+                ext = (!ext.length || ext.length === 1) ? '-' : ext.reverse()[0];
+                var thumb = element.querySelector('.g-thumb');
                 if (!file.type.match(/image.*/)) {
-                    element.find('.g-thumb').text(ext);
-                } else {
-                    element.find('.g-thumb').addClass('g-image g-image-' + ext.toLowerCase());
+                    if (thumb) { thumb.textContent = ext; }
+                } else if (thumb) {
+                    thumb.classList.add('g-image', 'g-image-' + ext.toLowerCase());
                 }
 
-                progressConf = Object.assign({}, progressConf, (isList ? {
+                Object.assign(progressConf, isList ? {
                     size: 20,
                     thickness: 10,
-                    fill: {
-                        color: colors.small,
-                        gradient: false
-                    }
+                    fill: { color: colors.small, gradient: false }
                 } : {
                     size: 50,
                     thickness: 'auto',
-                    fill: {
-                        gradient: colors.gradient,
-                        color: false
-                    }
-                }));
+                    fill: { gradient: colors.gradient, color: false }
+                });
 
-                element.addClass('g-file-uploading');
-                uploader.progresser(progressConf);
-                uploader.attribute('title', translate('GANTRY5_PLATFORM_JS_PROCESSING')).find('.g-file-progress-text').html('&bull;&bull;&bull;').attribute('title', translate('GANTRY5_PLATFORM_JS_PROCESSING'));
-
+                element.classList.add('g-file-uploading');
+                updateProgress(uploader, progressConf);
+                uploader.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
+                var progressText = uploader.querySelector('.g-file-progress-text');
+                if (progressText) {
+                    progressText.innerHTML = '&bull;&bull;&bull;';
+                    progressText.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
+                }
             }).on('processing', function(file) {
-
-                var element = $(file.previewElement).find('[data-file-uploadprogress]');
-                element.find('.g-file-progress-text').text('0%').attribute('title', '0%');
-
-            }).on('sending', function(file, xhr, formData) {
-
-                var element = $(file.previewElement).find('[data-file-uploadprogress]');
-                element.attribute('title', '0%').find('.g-file-progress-text').text('0%').attribute('title', '0%');
-
-            }).on('uploadprogress', function(file, progress, bytesSent) {
-
-                var element = $(file.previewElement).find('[data-file-uploadprogress]');
-                element.progresser({ value: progress / 100 });
-                element.attribute('title', Math.round(progress) + '%').find('.g-file-progress-text').text(Math.round(progress) + '%').attribute('title', Math.round(progress) + '%');
-
-            }).on('complete', function(file) {
-                self.refreshFiles(content);
+                self.setProgressText(file.previewElement, '0%');
+            }).on('sending', function(file) {
+                self.setProgressText(file.previewElement, '0%');
+            }).on('uploadprogress', function(file, progress) {
+                var uploader = file.previewElement.querySelector('[data-file-uploadprogress]'),
+                    label = Math.round(progress) + '%';
+                updateProgress(uploader, { value: progress / 100 });
+                self.setProgressText(file.previewElement, label);
+            }).on('complete', function() {
+                self.refreshFiles();
             }).on('error', function(file, error) {
-                var element  = $(file.previewElement),
-                    uploader = element.find('[data-file-uploadprogress]'),
-                    text     = element.find('.g-file-progress-text'),
-                    isList   = files.hasClass('g-filemode-list');
+                var element  = file.previewElement,
+                    uploader = element.querySelector('[data-file-uploadprogress]'),
+                    text     = element.querySelector('.g-file-progress-text'),
+                    isList   = files.classList.contains('g-filemode-list');
 
-                element.addClass('g-file-error');
-
-                uploader.title('Error').progresser({
-                    fill: {
-                        color: colors.error,
-                        gradient: false
-                    },
+                element.classList.add('g-file-error');
+                uploader.title = 'Error';
+                updateProgress(uploader, {
+                    fill: { color: colors.error, gradient: false },
                     value: 1,
                     thickness: isList ? 10 : 25
                 });
 
-                text.title('Error').html('<i class="fa fa-exclamation" aria-hidden="true"></i>').parent('[data-file-uploadprogress]').popover({
-                    content: error.html ? error.html : (error.error && error.error.message ? error.error.message : error),
-                    placement: 'auto',
-                    trigger: 'mouse',
-                    style: 'filepicker, above-modal',
-                    width: 'auto',
-                    targetEvents: false
-                });
+                if (text) {
+                    text.title = 'Error';
+                    text.innerHTML = '<i class="fa fa-exclamation" aria-hidden="true"></i>';
+                    popovers.create(uploader, {
+                        content: error && error.html ? error.html : (error && error.error && error.error.message ? error.error.message : error),
+                        placement: 'auto',
+                        trigger: 'mouse',
+                        style: 'filepicker, above-modal',
+                        width: 'auto',
+                        targetEvents: false
+                    });
+                }
+            }).on('success', function(file, uploadResponse) {
+                var element  = file.previewElement,
+                    uploader = element.querySelector('[data-file-uploadprogress]'),
+                    mtime    = element.querySelector('.g-file-mtime'),
+                    text     = element.querySelector('.g-file-progress-text'),
+                    thumb    = element.querySelector('.g-thumb'),
+                    isList   = files.classList.contains('g-filemode-list');
 
-            }).on('success', function(file, response, xhr) {
-                var element  = $(file.previewElement),
-                    uploader = element.find('[data-file-uploadprogress]'),
-                    mtime    = element.find('.g-file-mtime'),
-                    text     = element.find('.g-file-progress-text'),
-                    thumb    = element.find('.g-thumb'),
-                    isList   = files.hasClass('g-filemode-list');
-
-                uploader.progresser({
-                    fill: {
-                        color: colors.success,
-                        gradient: false
-                    },
+                updateProgress(uploader, {
+                    fill: { color: colors.success, gradient: false },
                     value: 1,
                     thickness: isList ? 10 : 25
                 });
-
-                text.html('<i class="fa fa-check" aria-hidden="true"></i>');
+                if (text) { text.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>'; }
 
                 setTimeout(function() {
-                    uploader.animate({ opacity: 0 }, { duration: 500 });
-                    thumb.animate({ opacity: 1 }, {
-                        duration: 500,
-                        callback: function() {
-                            element.data('file', JSON.stringify(response.finfo)).data('file-url', response.url).removeClass('g-file-uploading');
-                            element.dropzone = file;
-                            uploader.remove();
-                            mtime.text(translate('GANTRY5_PLATFORM_JUST_NOW'));
-                        }
+                    animateOpacity(uploader, 0, 500);
+                    animateOpacity(thumb, 1, 500, function() {
+                        element.setAttribute('data-file', JSON.stringify(uploadResponse.finfo));
+                        element.setAttribute('data-file-url', uploadResponse.url);
+                        element.classList.remove('g-file-uploading');
+                        element.dropzone = file;
+                        if (uploader) { uploader.remove(); }
+                        if (mtime) { mtime.textContent = translate('GANTRY5_PLATFORM_JUST_NOW'); }
                     });
-                }.bind(this), 500);
+                }, 500);
             });
         }
 
-        // g5 events
-        content.delegate('click', '.g-bookmark-title', function(event, element) {
-            if (event && event.preventDefault) { event.preventDefault(); }
-            var sibling = element.nextSibling('.g-folders'),
-                parent  = element.parent('.g-bookmark');
-
-            if (!sibling) { return; }
-            sibling.slideToggle(function() {
-                parent.toggleClass('collapsed', sibling.gSlideCollapsed);
-            });
+        dom.delegate(content, 'click', '.g-bookmark-title', function(event, element) {
+            event.preventDefault();
+            var sibling = element.nextElementSibling,
+                parent = element.closest('.g-bookmark');
+            if (!sibling || !sibling.matches('.g-folders')) { return; }
+            sibling.hidden = !sibling.hidden;
+            if (parent) { parent.classList.toggle('collapsed', sibling.hidden); }
         });
 
-        content.delegate('click', '[data-folder]', function(event, element) {
-            if (event && event.preventDefault) { event.preventDefault(); }
-            var data     = JSON.parse(element.data('folder')),
-                selected = $('[data-file].selected');
+        dom.delegate(content, 'click', '[data-folder]', function(event, element) {
+            event.preventDefault();
+            var data = JSON.parse(element.getAttribute('data-folder')),
+                selected = files && files.querySelector('[data-file].selected');
 
             fieldData.root = data.pathname;
-            fieldData.value = selected ? selected.data('file-url') : false;
+            fieldData.value = selected ? selected.getAttribute('data-file-url') : false;
             fieldData.subfolder = true;
 
-            element.showIndicator('fa fa-li fa-fw fa-spin-fast fa-spinner');
-            request(parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()), fieldData).send(function(error, response) {
-                element.hideIndicator();
+            indicator.show(element, 'fa fa-li fa-fw fa-spin-fast fa-spinner');
+            request(parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()), fieldData).send(function(error, folderResponse) {
+                indicator.hide(element);
                 this.addActiveState(element);
 
-                if (!response.body.success) {
+                var result = folderResponse && folderResponse.body;
+                if (!result || !result.success) {
                     modal.open({
-                        content: response.body.html || response.body.message || response.body,
-                        afterOpen: function(container) {
-                            container = modal.element(container);
-                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                        }
+                        content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.')
                     });
-                } else {
-                    var dummy, next;
-                    if (response.body.subfolder) {
-                        dummy = zen('div').html(response.body.subfolder);
-                        next = element.nextSibling();
+                    return;
+                }
 
-                        if (next && !next.attribute('data-folder')) { next.remove(); }
-                        dummy.children().after(element);
-                    }
+                if (result.subfolder) {
+                    var next = element.nextElementSibling;
+                    if (next && !next.hasAttribute('data-folder')) { next.remove(); }
+                    var fragment = parseElement(result.subfolder),
+                        anchor = element;
+                    Array.from(fragment.children).forEach(function(child) {
+                        anchor.after(child);
+                        anchor = child;
+                    });
+                }
 
-                    if (response.body.files) {
-                        files[0].replaceChildren();
-                        dummy = zen('div').html(response.body.files);
-                        dummy.children().bottom(files).style({ opacity: 0 }).animate({ opacity: 1 }, { duration: '250ms' });
+                if (files) {
+                    if (result.files) {
+                        files.replaceChildren(parseElement(result.files));
                     } else {
-                        files.find('> ul:not(.g-list-labels)')[0].replaceChildren();
+                        var list = files.querySelector('ul:not(.g-list-labels)');
+                        if (list) { list.replaceChildren(); }
                     }
-
-                    this.dropzone.previewsContainer = files.find('ul:not(.g-list-labels)')[0];
+                    this.dropzone.previewsContainer = files.querySelector('ul:not(.g-list-labels)');
                 }
             }.bind(this));
         }.bind(this));
 
-        content.delegate('click', '[data-g-file-preview]', function(event, element) {
+        dom.delegate(content, 'click', '[data-g-file-preview]', function(event, element) {
             event.preventDefault();
             event.stopPropagation();
-            var parent    = element.parent('[data-file]'),
-                data      = JSON.parse(parent.data('file'));
+            var parent = element.closest('[data-file]'),
+                data = parent && JSON.parse(parent.getAttribute('data-file'));
+            if (!parent || !data || !data.isImage) { return; }
 
-            if (data.isImage) {
-                var thumb = parent.find('.g-thumb > div');
+            var thumb = parent.querySelector('.g-thumb > div'),
+                background = thumb && thumb.style.backgroundImage;
+            if (background) {
                 modal.open({
                     className: 'g5-dialog-theme-default g5-modal-filepreview center',
-                    content: '<img src="' + thumb[0].style.backgroundImage.slice(4, -1).replace(/"/g, '') + '" />'
+                    content: '<img src="' + background.slice(4, -1).replace(/"/g, '') + '" />'
                 });
             }
-        }.bind(this));
+        });
 
-        content.delegate('click', '[data-g-file-delete]', function(event, element) {
+        dom.delegate(content, 'click', '[data-g-file-delete]', function(event, element) {
             event.preventDefault();
-            var parent    = element.parent('[data-file]'),
-                data      = JSON.parse(parent.data('file')),
-                deleteURI = parseAjaxURI(getAjaxURL('filepicker/' + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix()));
+            var parent = element.closest('[data-file]'),
+                data = parent && JSON.parse(parent.getAttribute('data-file'));
+            if (!parent || !data || !data.isInCustom) { return; }
 
-            if (!data.isInCustom) { return false; }
-
-            request('delete', deleteURI, function(error, response) {
-                if (!response.body.success) {
-                    modal.open({
-                        content: response.body.html || response.body.message || response.body,
-                        afterOpen: function(container) {
-                            container = modal.element(container);
-                            if (container && !response.body.html && !response.body.message) { container.style.width = '90%'; }
-                        }
-                    });
-                } else {
-                    parent.addClass('g-file-deleted');
-                    setTimeout(function() {
-                        parent.remove();
-
-                        self.refreshFiles(content);
-                    }, 210);
+            var deleteURI = parseAjaxURI(getAjaxURL('filepicker/' + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix()));
+            request('delete', deleteURI, function(error, deleteResponse) {
+                var result = deleteResponse && deleteResponse.body;
+                if (!result || !result.success) {
+                    modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
+                    return;
                 }
+
+                parent.classList.add('g-file-deleted');
+                setTimeout(function() {
+                    parent.remove();
+                    self.refreshFiles();
+                }, 210);
             });
-        }.bind(this));
+        });
 
-        content.delegate('click', '[data-file]', function(event, element) {
-            if (event && event.preventDefault) { event.preventDefault(); }
-            var target = $(event.target),
-                remove = target.data('g-file-delete') !== null || target.parent('[data-g-file-delete]'),
-                preview = target.data('g-file-preview') !== null || target.parent('[data-g-file-preview]');
+        dom.delegate(content, 'click', '[data-file]', function(event, element) {
+            event.preventDefault();
+            var remove = event.target.closest('[data-g-file-delete]'),
+                preview = event.target.closest('[data-g-file-preview]');
+            if (element.classList.contains('g-file-error') || element.classList.contains('g-file-uploading') || remove || preview) { return; }
+            files.querySelectorAll('[data-file]').forEach(function(file) { file.classList.remove('selected'); });
+            element.classList.add('selected');
+        });
 
-            if (element.hasClass('g-file-error') || element.hasClass('g-file-uploading') || remove || preview) { return; }
-            var data = JSON.parse(element.data('file'));
-
-            files.search('[data-file]').removeClass('selected');
-            element.addClass('selected');
-        }.bind(this));
-
-        content.delegate('click', '[data-select]', function(event, element) {
-            if (event && event.preventDefault) { event.preventDefault(); }
-            var selected = files.find('[data-file].selected'),
-                value    = selected ? selected.data('file-url') : '';
-
-            $(this.data.field).value(value);
-            $('body').emit('input', { target: this.data.field });
+        dom.delegate(content, 'click', '[data-select]', function(event) {
+            event.preventDefault();
+            var selected = files && files.querySelector('[data-file].selected'),
+                field = this.getField();
+            if (field) {
+                field.value = selected ? selected.getAttribute('data-file-url') : '';
+                field.dispatchEvent(new Event('input', { bubbles: true }));
+                field.dispatchEvent(new Event('change', { bubbles: true }));
+            }
             modal.close();
         }.bind(this));
 
-        content.delegate('click', '[data-files-mode]', function(event, element) {
-            if (event && event.preventDefault) { event.preventDefault(); }
-            if (element.hasClass('active')) { return; }
+        dom.delegate(content, 'click', '[data-files-mode]', function(event, element) {
+            event.preventDefault();
+            if (element.classList.contains('active')) { return; }
 
-            var modes = $('[data-files-mode]');
-            modes.removeClass('active');
-            element.addClass('active');
-            Cookie.write('g5_files_mode', element.data('files-mode'));
+            content.querySelectorAll('[data-files-mode]').forEach(function(mode) { mode.classList.remove('active'); });
+            element.classList.add('active');
+            Cookie.write('g5_files_mode', element.getAttribute('data-files-mode'));
 
-            files.animate({ opacity: 0 }, {
-                duration: 200,
-                callback: function() {
-                    var mode           = element.data('files-mode'),
-                        uploadProgress = files.search('[data-file-uploadprogress]'),
-                        progressConf   = (mode == 'list') ? {
-                            size: 20,
-                            thickness: 10,
-                            fill: {
-                                color: colors.small,
-                                gradient: false
-                            }
-                        } : {
-                            size: 50,
-                            thickness: 'auto',
-                            fill: {
-                                gradient: colors.gradient,
-                                color: false
-                            }
-                        };
+            animateOpacity(files, 0, 200, function() {
+                var mode = element.getAttribute('data-files-mode'),
+                    progressConf = mode === 'list' ? {
+                        size: 20,
+                        thickness: 10,
+                        fill: { color: colors.small, gradient: false }
+                    } : {
+                        size: 50,
+                        thickness: 'auto',
+                        fill: { gradient: colors.gradient, color: false }
+                    };
 
-
-                    files.attribute('class', 'g-files g-block g-filemode-' + mode);
-                    if (uploadProgress) {
-                        uploadProgress.forEach(function(element) {
-                            element = $(element);
-                            var config = clone(progressConf);
-
-                            if (element.parent('.g-file-error')) {
-                                config.fill = { color: colors.error };
-                                config.value = 1;
-                                config.thickness = mode == 'list' ? 10 : 25;
-                            }
-
-                            element.progresser(config);
-                        });
+                files.className = 'g-files g-block g-filemode-' + mode;
+                files.querySelectorAll('[data-file-uploadprogress]').forEach(function(progressElement) {
+                    var config = clone(progressConf);
+                    if (progressElement.closest('.g-file-error')) {
+                        config.fill = { color: colors.error };
+                        config.value = 1;
+                        config.thickness = mode === 'list' ? 10 : 25;
                     }
-                    files.animate({ opacity: 1 }, { duration: 200 });
-                }
+                    updateProgress(progressElement, config);
+                });
+                animateOpacity(files, 1, 200);
             });
+        });
+    }
 
-        }.bind(this));
+    setProgressText(preview, value) {
+        var uploader = preview.querySelector('[data-file-uploadprogress]'),
+            text = preview.querySelector('.g-file-progress-text');
+        if (uploader) { uploader.title = value; }
+        if (text) {
+            text.textContent = value;
+            text.title = value;
+        }
     }
 
     addActiveState(element) {
-        var opened = this.content.search('[data-folder].active, .g-folders > .active'), parent = element.parent();
-        if (opened) { opened.removeClass('active'); }
+        this.content.querySelectorAll('[data-folder].active, .g-folders > .active').forEach(function(opened) {
+            opened.classList.remove('active');
+        });
+        element.classList.add('active');
 
-        element.addClass('active');
-
-        while (parent.tag() == 'ul' && !parent.hasClass('g-folders')) {
-            parent.previousSibling().addClass('active');
-            parent = parent.parent();
+        var parent = element.parentElement;
+        while (parent && parent.tagName === 'UL' && !parent.classList.contains('g-folders')) {
+            if (parent.previousElementSibling) { parent.previousElementSibling.classList.add('active'); }
+            parent = parent.parentElement;
         }
     }
 
     acceptedFiles(filter) {
-        var attr = '';
         switch (filter) {
             case '.(jpe?g|gif|png|svg)$':
-                attr = '.jpg,.jpeg,.gif,.png,.svg,.JPG,.JPEG,.GIF,.PNG,.SVG';
-                break;
+                return '.jpg,.jpeg,.gif,.png,.svg,.JPG,.JPEG,.GIF,.PNG,.SVG';
             case '.(mp4|webm|ogv|mov)$':
-                attr = '.mp4,.webm,.ogv,.mov,.MP4,.WEBM,.OGV,.MOV';
-                break;
+                return '.mp4,.webm,.ogv,.mov,.MP4,.WEBM,.OGV,.MOV';
+            default:
+                return '';
         }
-
-        return attr;
     }
 
-    refreshFiles(content) {
-        var active = $('[data-folder].active'),
+    refreshFiles() {
+        var active = this.content.querySelectorAll('[data-folder].active'),
             folder = active[active.length - 1];
-        if (folder) {
-            content.emit('click', { target: $(folder) });
-        }
+        if (folder) { folder.click(); }
     }
 }
 
-ready(function() {
-    var body = $('body');
-    body.delegate('click', '[data-g5-filepicker]', function(event, element) {
-        if (event && event.preventDefault) { event.preventDefault(); }
-        element = $(element);
-        var node = element[0];
-        if (!node.GantryFilePicker) {
-            node.GantryFilePicker = new FilePicker(element);
+dom.ready(function() {
+    dom.delegate(document.body, 'click', '[data-g5-filepicker]', function(event, element) {
+        event.preventDefault();
+        if (!element.GantryFilePicker) {
+            element.GantryFilePicker = new FilePicker(element);
         }
-
-        node.GantryFilePicker.open();
+        element.GantryFilePicker.open();
     });
 });
-
 
 module.exports = FilePicker;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../ui":52,"../../utils/cookie":62,"../../utils/dom":65,"../../utils/elements.utils":66,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":79,"../../utils/translate":81,"dropzone":84,"elements/zen":92}],39:[function(require,module,exports){
+},{"../../ui":52,"../../ui/popover":54,"../../ui/progresser":55,"../../utils/cookie":62,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"dropzone":84}],39:[function(require,module,exports){
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
 var $             = require('../../utils/elements.utils'),
