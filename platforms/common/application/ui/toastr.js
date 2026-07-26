@@ -1,7 +1,5 @@
 "use strict";
 
-var $ = require('../utils/elements.utils.js');
-
 var merge = function(target) {
     target = target || {};
     Array.prototype.slice.call(arguments, 1).forEach(function(source) {
@@ -49,17 +47,47 @@ var defaults = {
 };
 
 var createElement = function(tag, className, attributes) {
-    var node = document.createElement(tag);
-    if (className) { node.className = className; }
-    Object.keys(attributes || {}).forEach(function(name) {
-        node.setAttribute(name, attributes[name]);
-    });
-    return $(node);
-};
+        var node = document.createElement(tag);
+        if (className) { node.className = className; }
+        Object.keys(attributes || {}).forEach(function(name) {
+            node.setAttribute(name, attributes[name]);
+        });
+        return node;
+    },
+    prepend = function(child, parent) {
+        parent.insertBefore(child, parent.firstChild);
+    },
+    setHTML = function(element, content) {
+        element.innerHTML = content == null ? '' : String(content);
+        return element;
+    },
+    animateOpacity = function(element, opacity, duration, easing, callback) {
+        if (element.gNotificationAnimation) {
+            element.gNotificationAnimation.cancel();
+            element.gNotificationAnimation = null;
+        }
 
-var prepend = function(child, parent) {
-    parent[0].insertBefore(child[0], parent[0].firstChild);
-};
+        var finish = function() {
+            element.style.opacity = opacity;
+            element.gNotificationAnimation = null;
+            if (typeof callback === 'function') { callback(); }
+        };
+
+        if (typeof element.animate === 'function') {
+            var animation = element.animate(
+                [{opacity: getComputedStyle(element).opacity}, {opacity: opacity}],
+                {duration: Number(duration) || 0, easing: easing || 'ease'}
+            );
+            element.gNotificationAnimation = animation;
+            animation.addEventListener('finish', finish, {once: true});
+            return animation;
+        }
+
+        element.style.transition = 'opacity ' + (Number(duration) || 0) + 'ms ' + (easing || 'ease');
+        element.style.opacity = opacity;
+        setTimeout(finish, Number(duration) || 0);
+        return null;
+    };
 
 class Toaster {
     constructor(options) {
@@ -75,32 +103,32 @@ class Toaster {
 
     base(message, title, options) {
         options = this.mergeOptions(options);
-        return this.notify(merge(options, { title: title || '', type: options.type || 'base', message: message }));
+        return this.notify(merge(options, {title: title || '', type: options.type || 'base', message: message}));
     }
 
     success(message, title, options) {
         options = this.mergeOptions(options);
-        return this.notify(merge(options, { title: title || 'Success!', type: 'success', message: message }));
+        return this.notify(merge(options, {title: title || 'Success!', type: 'success', message: message}));
     }
 
     info(message, title, options) {
         options = this.mergeOptions(options);
-        return this.notify(merge(options, { title: title || 'Info', type: 'info', message: message }));
+        return this.notify(merge(options, {title: title || 'Info', type: 'info', message: message}));
     }
 
     warning(message, title, options) {
         options = this.mergeOptions(options);
-        return this.notify(merge(options, { title: title || 'Warning!', type: 'warning', message: message }));
+        return this.notify(merge(options, {title: title || 'Warning!', type: 'warning', message: message}));
     }
 
     error(message, title, options) {
         options = this.mergeOptions(options);
-        return this.notify(merge(options, { title: title || 'Error!', type: 'error', message: message }));
+        return this.notify(merge(options, {title: title || 'Error!', type: 'error', message: message}));
     }
 
     notify(options) {
         options = this.mergeOptions(options);
-        if (options.preventDuplicates && this.previousNotice === options.message) { return; }
+        if (options.preventDuplicates && this.previousNotice === options.message) { return null; }
 
         this.id++;
         this.previousNotice = options.message;
@@ -111,35 +139,40 @@ class Toaster {
             message = createElement('div'),
             icon = createElement('i', 'fa'),
             progress = createElement('div', 'g-notifications-progress'),
-            close = createElement('a', 'fa fa-close', { href: '#' });
+            close = createElement('a', 'fa fa-close', {href: '#'});
+
+        if (!container) { return null; }
 
         this.map.set(element, {
             container: container,
             interval: null,
-            progressBar: { interval: null, hideETA: null, maxHideTime: null },
-            response: { id: this.id, state: 'visible', start: new Date(), options: options },
+            progressBar: {interval: null, hideETA: null, maxHideTime: null},
+            response: {id: this.id, state: 'visible', start: new Date(), options: options},
             options: options
         });
 
-        if (options.title) { element.appendChild(title.html(options.title).addClass(options.titleClass)); }
-        if (options.message) { element.appendChild(message.html(options.message).addClass(options.messageClass)); }
+        if (options.title) {
+            title.classList.add(options.titleClass);
+            element.appendChild(setHTML(title, options.title));
+        }
+        if (options.message) {
+            message.classList.add(options.messageClass);
+            element.appendChild(setHTML(message, options.message));
+        }
         if (options.closeButton) { prepend(close, element); }
         if (options.progressBar) { prepend(progress, element); }
 
         if (options.type && options.title && options.types[options.type]) {
-            element.addClass('g-notifications-theme-' + options.type);
-            prepend(icon.addClass(options.types[options.type]), title);
+            element.classList.add('g-notifications-theme-' + options.type);
+            icon.classList.add(options.types[options.type]);
+            prepend(icon, title);
         }
 
-        element.style({ opacity: 0 });
+        element.style.opacity = 0;
         if (options.newestOnTop) { prepend(element, container); }
-        else { container[0].appendChild(element[0]); }
+        else { container.appendChild(element); }
 
-        element.animate({ opacity: 1 }, {
-            duration: options.showDuration,
-            equation: options.showEquation,
-            callback: options.onShow
-        });
+        animateOpacity(element, 1, options.showDuration, options.showEquation, options.onShow);
 
         if (options.timeOut > 0) {
             var map = this.map.get(element);
@@ -156,59 +189,64 @@ class Toaster {
 
         var stick = function() { this.stickAround(element); }.bind(this),
             delay = function() { this.delayedHide(element); }.bind(this);
-        element.on('mouseover', stick);
-        element.on('mouseout', delay);
+        element.addEventListener('mouseover', stick);
+        element.addEventListener('mouseout', delay);
 
         if (!options.onClick && options.tapToDismiss) {
-            element.on('click', function() {
-                element.off('mouseover', stick);
-                element.off('mouseout', delay);
+            element.addEventListener('click', function() {
+                element.removeEventListener('mouseover', stick);
+                element.removeEventListener('mouseout', delay);
                 this.hide(element);
             }.bind(this));
         } else if (options.onClick) {
-            element.on('click', options.onClick);
+            element.addEventListener('click', options.onClick);
         }
 
         if (options.closeButton) {
-            close.on('click', function(event) {
+            close.addEventListener('click', function(event) {
                 event.stopPropagation();
                 event.preventDefault();
-                element.off('mouseover', stick);
-                element.off('mouseout', delay);
+                element.removeEventListener('mouseover', stick);
+                element.removeEventListener('mouseout', delay);
                 this.hide(element, true);
             }.bind(this));
         }
+
+        return element;
     }
 
     stickAround(element) {
         var map = this.map.get(element);
+        if (!map) { return; }
         clearTimeout(map.interval);
         map.progressBar.hideETA = 0;
-        element.animate({ opacity: 1 }, {
-            duration: map.options.showDuration,
-            equation: map.options.showEquation,
-            callback: map.options.onShow
-        });
+        animateOpacity(element, 1, map.options.showDuration, map.options.showEquation, map.options.onShow);
     }
 
     hide(element, override) {
-        if (element.find(':focus') && !override) { return; }
+        if (!element || !this.map.has(element)) { return false; }
+        if (element.querySelector(':focus') && !override) { return false; }
+
         var map = this.map.get(element);
-        clearTimeout(map.progressBar.interval);
-        return element.animate({ opacity: 0 }, {
-            duration: map.options.hideDuration,
-            equation: map.options.hideEquation,
-            callback: function() {
+        clearTimeout(map.interval);
+        clearInterval(map.progressBar.interval);
+        return animateOpacity(
+            element,
+            0,
+            map.options.hideDuration,
+            map.options.hideEquation,
+            function() {
                 this.remove(element);
                 if (map.options.onHidden && map.response.state !== 'hidden') { map.options.onHidden(); }
                 map.response.state = 'hidden';
                 map.response.endTime = new Date();
             }.bind(this)
-        });
+        );
     }
 
     delayedHide(element) {
         var map = this.map.get(element);
+        if (!map) { return; }
         if (map.options.timeOut > 0 || map.options.extendedTimeout > 0) {
             map.interval = setTimeout(function() { this.hide(element); }.bind(this), map.options.extendedTimeout);
             map.progressBar.maxHideTime = parseFloat(map.options.extendedTimeout);
@@ -217,16 +255,17 @@ class Toaster {
     }
 
     updateProgress(element, progress) {
-        var map = this.map.get(element),
-            percentage = ((map.progressBar.hideETA - Date.now()) / map.progressBar.maxHideTime) * 100;
-        progress.style({ width: percentage + '%' });
+        var map = this.map.get(element);
+        if (!map || !map.progressBar.maxHideTime) { return; }
+        var percentage = ((map.progressBar.hideETA - Date.now()) / map.progressBar.maxHideTime) * 100;
+        progress.style.width = Math.max(0, percentage) + '%';
     }
 
     getContainer(options, create) {
         options = this.mergeOptions(options);
-        var container = $('#' + options.containerID);
+        var container = document.getElementById(options.containerID);
         if (container) { return container; }
-        return create ? this.createContainer(options) : container;
+        return create ? this.createContainer(options) : null;
     }
 
     createContainer(options) {
@@ -236,19 +275,22 @@ class Toaster {
                 'aria-live': 'polite',
                 role: 'alert'
             }),
-            target = $(options.target);
+            target = document.querySelector(options.target);
 
+        if (!target) { return null; }
         if (options.targetLocation === 'top') { prepend(container, target); }
-        else { target[0].appendChild(container[0]); }
+        else { target.appendChild(container); }
         return container;
     }
 
     remove(element) {
         if (!element) { return; }
         var map = this.map.get(element);
+        if (!map) { return; }
         if (!map.container) { map.container = this.getContainer(map.options); }
+
         element.remove();
-        if (!map.container.children()) {
+        if (map.container && !map.container.children.length) {
             map.container.remove();
             this.previousNotice = null;
         }
