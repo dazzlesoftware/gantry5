@@ -1,7 +1,7 @@
 "use strict";
 
 var $        = require('../utils/elements.utils'),
-    zen      = require('elements/zen'),
+    zen      = require('../utils/create-element'),
     storage  = new WeakMap(),
 
     request  = require('../utils/request');

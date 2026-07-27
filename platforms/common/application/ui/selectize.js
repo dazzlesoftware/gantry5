@@ -3,7 +3,7 @@
 
 var EventEmitter = require('../utils/event-emitter'),
     ready      = require('../utils/dom').ready,
-    zen        = require('elements/zen'),
+    zen        = require('../utils/create-element'),
     NativeSearchIndex = require('../utils/search-index'),
     $          = require('../utils/elements.utils');
 

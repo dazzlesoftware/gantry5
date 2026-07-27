@@ -1,6 +1,6 @@
 "use strict";
 var $              = require('elements'),
-    zen            = require('elements/zen'),
+    zen            = require('./utils/create-element'),
     ready          = require('./utils/dom').ready,
     request        = require('./utils/request'),
     ui             = require('./ui'),
@@ -430,7 +430,7 @@ var modules = {
     "$": $,
     domready: ready,
     particles: require('./particles'),
-    zen: require('elements/zen'),
+    zen: zen,
     atoms: require('./pagesettings'),
     tips: require('./ui/tooltips')
 };

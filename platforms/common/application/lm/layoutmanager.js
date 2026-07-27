@@ -1,7 +1,7 @@
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
     $          = require('../utils/elements.utils'),
-    zen        = require('elements/zen'),
+    zen        = require('../utils/create-element'),
     Blocks     = require('./blocks'),
     DragDrop   = require('../ui/drag.drop'),
     Eraser     = require('../ui/eraser'),

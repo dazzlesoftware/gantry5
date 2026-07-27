@@ -2,7 +2,7 @@
 // Based on Vex (https://github.com/hubspot/vex)
 
 var $        = require('../utils/elements.utils'),
-    zen      = require('elements/zen'),
+    zen      = require('../utils/create-element'),
     domready = require('../utils/dom').ready,
 
     request  = require('../utils/request');

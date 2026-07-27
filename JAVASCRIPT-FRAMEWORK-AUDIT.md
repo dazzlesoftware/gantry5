@@ -19,6 +19,7 @@ The Gantry core and administration interface are significantly closer to native 
 - Position cards now use native cross-list pointer dragging, automatic scrolling, and trash deletion instead of SortableJS.
 - Page-settings atoms now use native cloning, grid-aware reordering, and trash deletion; SortableJS has been removed completely.
 - Gantry's custom adjacent/all-sibling helpers now use native DOM traversal and `Element.matches()` instead of importing Slick directly.
+- The admin element builder now uses `document.createElement()` and native attribute/class assignment instead of the Slick-powered `elements/zen` parser.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -208,7 +209,7 @@ Completed:
 
 Remaining sequence:
 
-1. Slick's transitive use inside the legacy `elements` package
+1. Slick's transitive traversal use inside the legacy `elements` package
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.
 
@@ -253,4 +254,4 @@ After dependency removal stabilizes:
 
 ## Immediate next target
 
-Replace another bounded part of the legacy `elements` DOM abstraction, beginning with traversal methods now backed internally by Slick.
+Replace the legacy `elements` traversal module with native query, matching, containment, and relationship helpers.

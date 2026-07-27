@@ -2,7 +2,7 @@
 
 var $          = require('elements'),
     ready      = require('../../utils/dom').ready,
-    zen        = require('elements/zen'),
+    zen        = require('../../utils/create-element'),
 
     DragEvents = require('../../ui/drag.events');
 

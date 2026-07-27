@@ -1,7 +1,7 @@
 "use strict";
 
 var EventEmitter = require('../../utils/event-emitter'),
-    zen          = require('elements/zen'),
+    zen          = require('../../utils/create-element'),
     $            = require('elements'),
     ID           = require('../id'),
     translate    = require('../../utils/translate'),
