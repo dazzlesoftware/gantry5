@@ -9,9 +9,10 @@
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
 - **20 first-party core/platform files** still depend on external JavaScript libraries.
-- **20 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, Dropzone, Sifter, Slick, and WebFontLoader.
+- **20 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, Dropzone, Sifter, and Slick.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
+- The font picker now uses native stylesheet loading and the CSS Font Loading API; `webfontloader` has been removed.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -69,7 +70,6 @@ Counts overlap because a single file may import more than one package.
 | Slick | 2 | Used by the legacy DOM utility layer |
 | Dropzone | 1 | File picker |
 | Sifter | 1 | Selectize searching and filtering |
-| WebFontLoader | 1 | Font picker |
 
 ### Converted platform templates
 
@@ -198,15 +198,17 @@ Avoid recreating a large general-purpose framework.
 
 Recommended sequence:
 
-Completed: Deep Diff in Layout Manager history.
+Completed:
+
+- Deep Diff in Layout Manager history
+- WebFontLoader in the font picker
 
 Remaining sequence:
 
 1. Sifter and Selectize behavior
-2. WebFontLoader
-3. Dropzone
-4. SortableJS
-5. Slick remnants
+2. Dropzone
+3. SortableJS
+4. Slick remnants
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.
 

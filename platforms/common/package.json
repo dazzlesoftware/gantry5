@@ -13,8 +13,7 @@
     "prime-util": "github:arian/prime-util#v0.5.0",
     "sifter": "^0.5.4",
     "slick": "github:kamicane/slick#v1.12.2",
-    "sortablejs": "gantry/Sortable#master",
-    "webfontloader": "^1.6.28"
+    "sortablejs": "gantry/Sortable#master"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.3",

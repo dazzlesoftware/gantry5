@@ -14,11 +14,86 @@ var $             = require('../../utils/elements.utils'),
     modal         = require('../../ui').modal,
     asyncForEach  = require('../../utils/async-foreach'),
     translate     = require('../../utils/translate'),
+    inViewport    = require('../../utils/elements.viewport');
 
-    request       = require('../../utils/request'),
-    inViewport    = require('../../utils/elements.viewport'),
+const fontVariantLoads = new Map();
 
-    wf            = require('webfontloader');
+const parseFontRequest = request => {
+    const parts = request.replace(/\+/g, ' ').split(':');
+    const family = parts.shift().trim();
+    const variants = parts.length ? parts.join(':').split(',') : ['regular'];
+
+    return variants.map((variant) => {
+        const normalized = variant === 'regular' ? '400' : (variant === 'italic' ? '400italic' : variant);
+        const match = normalized.match(/^([1-9]00)(italic)?$/);
+        const weight = match ? match[1] : '400';
+        const style = match && match[2] ? 'italic' : 'normal';
+
+        return {
+            family: family,
+            fvd: `${style === 'italic' ? 'i' : 'n'}${Number(weight) / 100}`,
+            key: `${family}:${weight}:${style}`,
+            style: style,
+            weight: weight
+        };
+    });
+};
+
+const loadStylesheet = requests => new Promise((resolve, reject) => {
+    const link = document.createElement('link');
+    const families = requests.map(request => request.trim().replace(/\s+/g, '+')).join('|');
+    const timeout = window.setTimeout(() => {
+        link.remove();
+        reject(new Error('Google Fonts stylesheet request timed out'));
+    }, 10000);
+    const complete = callback => {
+        window.clearTimeout(timeout);
+        callback();
+    };
+
+    link.rel = 'stylesheet';
+    link.href = `https://fonts.googleapis.com/css?family=${families}&display=swap`;
+    link.dataset.gantryFontRequest = families;
+    link.addEventListener('load', () => complete(resolve), { once: true });
+    link.addEventListener('error', () => complete(() => {
+        link.remove();
+        reject(new Error('Unable to load Google Fonts stylesheet'));
+    }), { once: true });
+    document.head.appendChild(link);
+});
+
+const loadGoogleFonts = (families, fontactive) => {
+    const requests = [...new Set(families)];
+    const variants = requests.flatMap(parseFontRequest);
+    const pending = variants.filter(variant => !fontVariantLoads.has(variant.key));
+
+    if (pending.length) {
+        const stylesheet = loadStylesheet(requests);
+
+        pending.forEach((variant) => {
+            const font = `${variant.style} ${variant.weight} 16px "${variant.family}"`;
+            const loaded = stylesheet.then(() => (
+                document.fonts && document.fonts.load
+                    ? document.fonts.load(font)
+                    : Promise.resolve()
+            )).catch((error) => {
+                fontVariantLoads.delete(variant.key);
+                throw error;
+            });
+
+            fontVariantLoads.set(variant.key, loaded);
+        });
+    }
+
+    variants.forEach((variant) => {
+        const loaded = fontVariantLoads.get(variant.key);
+        if (!loaded) return;
+
+        loaded
+            .then(() => fontactive(variant.family, variant.fvd))
+            .catch(() => {});
+    });
+};
 
 var removeValue = function(array, value) {
     var index;
@@ -60,7 +135,6 @@ class Fonts {
         'telugu': 'దేశ భాషలందు తెలుగు లెస్స',
         'vietnamese': 'Tôi có thể ăn thủy tinh mà không hại gì.'
         };
-        this.wf = wf;
         this.field = null;
         this.element = null;
         this.throttle = false;
@@ -140,19 +214,12 @@ class Fonts {
 
             if (!list || !list.length) { return; }
 
-            this.wf.load({
-                classes: false,
-                google: {
-                    families: list
-                },
-                fontactive: function(family, fvd) {
-                    container.find('li[data-font="' + family + '"]:not(.g-variant-hide) > .preview').style({
-                        fontFamily: family,
-                        fontWeight: fvd
-                    });
-                    this.loadedFonts.push(family);
-                }.bind(this)
-            });
+            loadGoogleFonts(list, function(family, fvd) {
+                container.find('li[data-font="' + family + '"]:not(.g-variant-hide) > .preview').style(
+                    this.fvdToStyle(family, fvd)
+                );
+                insertUnique(this.loadedFonts, family);
+            }.bind(this));
         }.bind(this), 100);
     }
 
@@ -304,29 +371,22 @@ class Fonts {
         if (!this.selected.expanded) {
             var variants = this.selected.element.data('variants'), variant;
             if (variants.split(',').length > 1) {
-                this.manipulateLink(this.selected.font);
                 this.selected.element.search('[data-font]').removeClass('g-variant-hide');
 
                 if (!this.selected.loaded) {
-                    this.wf.load({
-                        classes: false,
-                        google: {
-                            families: [this.selected.font.replace(/\s/g, '+') + ':' + variants]
-                        },
-                        fontactive: function(family, fvd) {
-                            var style  = this.fvdToStyle(family, fvd),
-                                search = style.fontWeight;
+                    loadGoogleFonts([this.selected.font.replace(/\s/g, '+') + ':' + variants], function(family, fvd) {
+                        var style  = this.fvdToStyle(family, fvd),
+                            search = style.fontWeight;
 
-                            if (search == '400') {
-                                search = style.fontStyle == 'normal' ? 'regular' : 'italic';
-                            } else if (style.fontStyle == 'italic') {
-                                search += 'italic';
-                            }
+                        if (search == '400') {
+                            search = style.fontStyle == 'normal' ? 'regular' : 'italic';
+                        } else if (style.fontStyle == 'italic') {
+                            search += 'italic';
+                        }
 
-                            this.selected.element.find('li[data-variant="' + search + '"] .preview').style(style);
-                            this.selected.loaded = true;
-                        }.bind(this)
-                    });
+                        this.selected.element.find('li[data-variant="' + search + '"] .preview').style(style);
+                        this.selected.loaded = true;
+                    }.bind(this));
                 }
             }
         } else {
@@ -336,19 +396,6 @@ class Fonts {
         }
 
         this.selected.expanded = !this.selected.expanded;
-    }
-
-    manipulateLink(family) {
-        family = family.replace(/\s/g, '+');
-        var link = $('head link[href*="' + family + '"]');
-        if (!link) { return; }
-
-        var parts = decodeURIComponent(link.href()).split('|');
-        if (!parts || parts.length <= 1) { return; }
-
-        removeValue(parts, family);
-
-        link.attribute('href', encodeURI(parts.join('|')));
     }
 
     toggle(event, element) {
