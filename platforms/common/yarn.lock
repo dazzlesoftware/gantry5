@@ -2363,10 +2363,6 @@ slick@^1.12.2, "slick@github:kamicane/slick#v1.12.2":
   version "1.12.2"
   resolved "git+ssh://git@github.com/kamicane/slick.git#6eb8da55711e3b0ca81777b96cf45da868af382f"
 
-sortablejs@gantry/Sortable#master:
-  version "1.4.2"
-  resolved "git+ssh://git@github.com/gantry/Sortable.git#46cee08cf126386259c25bf35bc124b3d66d5d8e"
-
 "source-map-js@>=0.6.2 <2.0.0":
   version "1.2.1"
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz"

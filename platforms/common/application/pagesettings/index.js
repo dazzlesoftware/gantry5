@@ -7,18 +7,13 @@ var dom = require('../utils/dom'),
     Eraser = require('../ui/eraser'),
     indicator = require('../utils/indicator'),
     request = require('../utils/request'),
-    simpleSort = require('sortablejs'),
+    DraggableGroup = require('../utils/draggable-group'),
     parseAjaxURI = require('../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../utils/get-ajax-suffix'),
     getOutlineNameById = require('../utils/get-outline').getOutlineNameById,
     translate = require('../utils/translate');
 
-var AtomsField = '[name="page[head][atoms][_json]"]',
-    groupOptions = [
-        { name: 'atoms', pull: 'clone', put: false },
-        { name: 'atoms', pull: true, put: true },
-        { name: 'atoms', pull: false, put: false }
-    ];
+var AtomsField = '[name="page[head][atoms][_json]"]';
 
 var Atoms = {
     eraser: null,
@@ -43,71 +38,62 @@ var Atoms = {
 
     createSortables: function(element) {
         Atoms.attachEraser();
+        var root = element || document.querySelector('#atoms');
+        if (!root || root.SimpleSort) { return; }
 
-        groupOptions.forEach(function(groupOption, index) {
-            var selector = index === 0 ? '.atoms-picker' : (index === 1 ? '.atoms-list' : '#trash'),
-                list = document.querySelector(selector);
-            if (!list) { return; }
+        var controller = new DraggableGroup(root, {
+            lists: '.atoms-picker, .atoms-list',
+            items: '[data-atom-picked]',
+            filter: '[data-atom-ignore]',
+            cloneFrom: '.atoms-picker',
+            trash: '#trash',
+            draggingClass: 'atom-dragging',
+            direction: 'grid',
+            preview: true,
 
-            var sort = simpleSort.create(list, {
-                sort: index === 1,
-                filter: '[data-atom-ignore]',
-                group: groupOption,
-                scroll: false,
-                forceFallback: true,
-                animation: 100,
+            canReceive: function(list) {
+                return list.classList.contains('atoms-list');
+            },
 
-                onStart: function(event) {
-                    Atoms.attachEraser();
-                    event.item.classList.add('atom-dragging');
-                    if (event.from.classList.contains('atoms-list')) { Atoms.eraser.show(); }
-                },
+            canDelete: function(state) {
+                return state.from.classList.contains('atoms-list');
+            },
 
-                onEnd: function(event) {
-                    var item = event.item,
-                        trash = document.querySelector('#trash'),
-                        originalEvent = this.originalEvent || event.originalEvent,
-                        target = originalEvent && originalEvent.target instanceof Element ? originalEvent.target : null,
-                        touchTrash = false;
+            onPreview: function(preview, source) {
+                var color = getComputedStyle(source).borderTopColor;
+                preview.style.backgroundColor = color;
+                preview.style.borderColor = color;
+                preview.style.color = '#fff';
+                preview.querySelectorAll('.atom-title, .atom-settings, .drag-indicator, i').forEach(function(element) {
+                    element.style.color = '#fff';
+                });
+            },
 
-                    if (originalEvent && originalEvent.type === 'touchend' && trash) {
-                        var trashSize = trash.getBoundingClientRect(),
-                            point = originalEvent.changedTouches && originalEvent.changedTouches[0],
-                            pageY = originalEvent.pageY || (point && point.pageY) || 0;
-                        touchTrash = pageY - window.scrollY <= trashSize.height;
-                    }
+            onStart: function(event) {
+                Atoms.attachEraser();
+                if (!event.cloned) { Atoms.eraser.show(); }
+            },
 
-                    if (trash && ((target && (target === trash || trash.contains(target))) || touchTrash)) {
-                        item.remove();
-                        Atoms.eraser.hide();
-                        this.options.onSort(event);
-                        return;
-                    }
+            onTrashOver: function(over) {
+                if (over) { Atoms.eraser.over(); }
+                else { Atoms.eraser.out(); }
+            },
 
-                    item.classList.remove('atom-dragging');
-                    if (event.from.classList.contains('atoms-list')) { Atoms.eraser.hide(); }
-                },
+            onEnd: function(event) {
+                if (!event.cloned) { Atoms.eraser.hide(); }
+                if (!event.changed) { return; }
 
-                onSort: function() {
-                    var field = document.querySelector(AtomsField);
-                    if (!field) { throw new Error('Field "' + AtomsField + '" not found in the DOM.'); }
-                    field.value = Atoms.serialize();
-                    field.dispatchEvent(new Event('change', { bubbles: true }));
-                },
-
-                onOver: function(event) {
-                    if (!event.from.classList.contains('atoms-list')) { return; }
-                    var trash = document.querySelector('#trash'),
-                        over = event.related || (event.originalEvent && event.originalEvent.target);
-                    if (trash && over instanceof Node && (over === trash || trash.contains(over))) { Atoms.eraser.over(); }
-                    else { Atoms.eraser.out(); }
-                }
-            });
-
-            if (index === 0) { Atoms.lists.picker = sort; }
-            else if (index === 1) { Atoms.lists.items = sort; element.SimpleSort = sort; }
-            else { Atoms.lists.trash = sort; }
+                var field = document.querySelector(AtomsField);
+                if (!field) { throw new Error('Field "' + AtomsField + '" not found in the DOM.'); }
+                field.value = Atoms.serialize();
+                field.dispatchEvent(new Event('change', { bubbles: true }));
+            }
         });
+
+        Atoms.lists.picker = controller;
+        Atoms.lists.items = controller;
+        Atoms.lists.trash = controller;
+        root.SimpleSort = controller;
     }
 };
 
