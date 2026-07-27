@@ -1293,7 +1293,7 @@ Object.assign(Base.prototype, {
 
 module.exports = Base;
 
-},{"../../utils/event-emitter":68,"../../utils/get-outline":73,"../../utils/translate":81,"../id":25,"elements":89,"elements/traversal":91,"elements/zen":92}],11:[function(require,module,exports){
+},{"../../utils/event-emitter":68,"../../utils/get-outline":73,"../../utils/translate":81,"../id":25,"elements":88,"elements/traversal":90,"elements/zen":91}],11:[function(require,module,exports){
 "use strict";
 
 var Base = require('./base');
@@ -2482,12 +2482,73 @@ module.exports = Resizer;
 },{"../ui/drag.events":50}],24:[function(require,module,exports){
 'use strict';
 
-const deepDiff = require('deep-diff').diff;
-
 const cloneSnapshot = value => {
     if (value == null) return value;
     if (typeof structuredClone === 'function') return structuredClone(value);
     return JSON.parse(JSON.stringify(value));
+};
+
+const isObject = value => value !== null && typeof value === 'object';
+
+const snapshotsEqual = (left, right, seen = new WeakMap()) => {
+    if (left === right || (Number.isNaN(left) && Number.isNaN(right))) return true;
+    if (!isObject(left) || !isObject(right)) return false;
+    if (left.constructor !== right.constructor) return false;
+
+    if (left instanceof Date) return left.getTime() === right.getTime();
+    if (left instanceof RegExp) return left.source === right.source && left.flags === right.flags;
+
+    const knownMatch = seen.get(left);
+    if (knownMatch) return knownMatch === right;
+    seen.set(left, right);
+
+    const leftKeys = Object.keys(left);
+    const rightKeys = Object.keys(right);
+
+    if (leftKeys.length !== rightKeys.length) return false;
+
+    return leftKeys.every((key) => (
+        Object.prototype.hasOwnProperty.call(right, key)
+        && snapshotsEqual(left[key], right[key], seen)
+    ));
+};
+
+const collectDifferences = (left, right, path = [], differences = []) => {
+    if (snapshotsEqual(left, right)) return differences;
+
+    if (isObject(left) && isObject(right) && left.constructor === right.constructor) {
+        const keys = new Set([...Object.keys(left), ...Object.keys(right)]);
+
+        keys.forEach((key) => {
+            const currentPath = [...path, Array.isArray(left) ? Number(key) : key];
+            const hasLeft = Object.prototype.hasOwnProperty.call(left, key);
+            const hasRight = Object.prototype.hasOwnProperty.call(right, key);
+
+            if (!hasLeft) {
+                differences.push({ kind: 'N', path: currentPath, rhs: right[key] });
+            } else if (!hasRight) {
+                differences.push({ kind: 'D', path: currentPath, lhs: left[key] });
+            } else {
+                collectDifferences(left[key], right[key], currentPath, differences);
+            }
+        });
+
+        return differences;
+    }
+
+    differences.push({
+        kind: 'E',
+        path: path.length ? path : undefined,
+        lhs: left,
+        rhs: right
+    });
+
+    return differences;
+};
+
+const diffSnapshots = (left, right) => {
+    const differences = collectDifferences(left, right);
+    return differences.length ? differences : undefined;
 };
 
 class History {
@@ -2565,12 +2626,12 @@ class History {
             const current = this.get();
             compare = current ? current.data : undefined;
         }
-        return deepDiff(session, compare) === undefined;
+        return snapshotsEqual(session, compare);
     }
 
     diff(obj1, obj2) {
         if (!obj1 && !obj2 && this.session.length <= 1) return 'Not enough sessions to diff';
-        return deepDiff(obj1 || this.get(this.index - 1), obj2 || this.get());
+        return diffSnapshots(obj1 || this.get(this.index - 1), obj2 || this.get());
     }
 
     setSession(session, preset) {
@@ -2589,7 +2650,7 @@ class History {
 
 module.exports = History;
 
-},{"deep-diff":83}],25:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 const randomId = () => {
@@ -3276,7 +3337,7 @@ module.exports = {
     savestate: savestate
 };
 
-},{"../fields/submit":7,"../ui":52,"../ui/popover":54,"../utils/dom":65,"../utils/field-validation":69,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/history":76,"../utils/indicator":77,"../utils/request":79,"../utils/save-state":80,"../utils/translate":81,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":29,"elements/attributes":85}],27:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../ui/popover":54,"../utils/dom":65,"../utils/field-validation":69,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/history":76,"../utils/indicator":77,"../utils/request":79,"../utils/save-state":80,"../utils/translate":81,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":29,"elements/attributes":84}],27:[function(require,module,exports){
 "use strict";
 
 var dom                = require('../../utils/dom'),
@@ -4236,7 +4297,7 @@ LayoutManager.prototype.options = LayoutManagerDefinition.options;
 
 module.exports = LayoutManager;
 
-},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/deep-equals":64,"../utils/elements.utils":66,"../utils/event-emitter":68,"../utils/flags-state":70,"./blocks":14,"./drag.resizer":23,"elements/zen":92}],29:[function(require,module,exports){
+},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/deep-equals":64,"../utils/elements.utils":66,"../utils/event-emitter":68,"../utils/flags-state":70,"./blocks":14,"./drag.resizer":23,"elements/zen":91}],29:[function(require,module,exports){
 "use strict";
 
 const ready = require('../utils/dom').ready;
@@ -4773,7 +4834,7 @@ var modules = {
 window.G5 = modules;
 module.exports = modules;
 
-},{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":33,"./pagesettings":35,"./particles":41,"./positions":46,"./positions/cards":45,"./styles":47,"./ui":52,"./ui/popover":54,"./ui/tooltips":59,"./utils/ajaxify-links":60,"./utils/dom":65,"./utils/field-validation":69,"./utils/flags-state":70,"./utils/get-ajax-suffix":71,"./utils/get-ajax-url":72,"./utils/rAF-polyfill":78,"./utils/request":79,"./utils/translate":81,"elements":89,"elements/attributes":85,"elements/delegation":87,"elements/events":88,"elements/insertion":90,"elements/traversal":91,"elements/zen":92}],31:[function(require,module,exports){
+},{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":33,"./pagesettings":35,"./particles":41,"./positions":46,"./positions/cards":45,"./styles":47,"./ui":52,"./ui/popover":54,"./ui/tooltips":59,"./utils/ajaxify-links":60,"./utils/dom":65,"./utils/field-validation":69,"./utils/flags-state":70,"./utils/get-ajax-suffix":71,"./utils/get-ajax-url":72,"./utils/rAF-polyfill":78,"./utils/request":79,"./utils/translate":81,"elements":88,"elements/attributes":84,"elements/delegation":86,"elements/events":87,"elements/insertion":89,"elements/traversal":90,"elements/zen":91}],31:[function(require,module,exports){
 "use strict";
 var DragEvents = require('../ui/drag.events');
 
@@ -6311,7 +6372,7 @@ MenuManager.prototype.options = MenuManagerDefinition.options;
 
 module.exports = MenuManager;
 
-},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.resizer":31,"elements/zen":92}],35:[function(require,module,exports){
+},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.resizer":31,"elements/zen":91}],35:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -6539,7 +6600,7 @@ module.exports = Atoms;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../fields/submit":7,"../ui":52,"../ui/eraser":51,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/get-outline":73,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"sortablejs":126}],36:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../ui/eraser":51,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/get-outline":73,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"sortablejs":125}],36:[function(require,module,exports){
 "use strict";
 
 var dom = require('../../utils/dom'),
@@ -6792,7 +6853,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"sortablejs":126}],37:[function(require,module,exports){
+},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"sortablejs":125}],37:[function(require,module,exports){
 "use strict";
 
 var $          = require('elements'),
@@ -7548,7 +7609,7 @@ ready(function() {
 
 module.exports = ColorPicker;
 
-},{"../../ui/drag.events":50,"../../utils/dom":65,"elements":89,"elements/zen":92}],38:[function(require,module,exports){
+},{"../../ui/drag.events":50,"../../utils/dom":65,"elements":88,"elements/zen":91}],38:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -8018,7 +8079,7 @@ module.exports = FilePicker;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../ui":52,"../../ui/popover":54,"../../ui/progresser":55,"../../utils/cookie":62,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"dropzone":84}],39:[function(require,module,exports){
+},{"../../ui":52,"../../ui/popover":54,"../../ui/progresser":55,"../../utils/cookie":62,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"dropzone":83}],39:[function(require,module,exports){
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
 var $             = require('../../utils/elements.utils'),
@@ -8762,7 +8823,7 @@ ready(function() {
 
 module.exports = Fonts;
 
-},{"../../ui":52,"../../utils/async-foreach":61,"../../utils/decouple":63,"../../utils/dom":65,"../../utils/elements.utils":66,"../../utils/elements.viewport":67,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":79,"../../utils/translate":81,"elements/zen":92,"webfontloader":128}],40:[function(require,module,exports){
+},{"../../ui":52,"../../utils/async-foreach":61,"../../utils/decouple":63,"../../utils/dom":65,"../../utils/elements.utils":66,"../../utils/elements.viewport":67,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":79,"../../utils/translate":81,"elements/zen":91,"webfontloader":127}],40:[function(require,module,exports){
 "use strict";
 
 var dom = require('../../utils/dom'),
@@ -9287,7 +9348,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../../utils/dom":65,"../../utils/translate":81,"sortablejs":126}],44:[function(require,module,exports){
+},{"../../utils/dom":65,"../../utils/translate":81,"sortablejs":125}],44:[function(require,module,exports){
 'use strict';
 
 const { ready, delegate } = require('../../utils/dom');
@@ -9480,7 +9541,7 @@ ready(() => {
 
 module.exports = Positions;
 
-},{"../ui/eraser":51,"../utils/dom":65,"../utils/flags-state":70,"sortablejs":126}],46:[function(require,module,exports){
+},{"../ui/eraser":51,"../utils/dom":65,"../utils/flags-state":70,"sortablejs":125}],46:[function(require,module,exports){
 "use strict";
 
 var dom = require('../utils/dom'),
@@ -10306,7 +10367,7 @@ class DragDrop extends EventEmitter {
 
 module.exports = DragDrop;
 
-},{"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.events":50,"elements/delegation":87,"elements/events":88}],50:[function(require,module,exports){
+},{"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.events":50,"elements/delegation":86,"elements/events":87}],50:[function(require,module,exports){
 "use strict";
 var getSupportedEvent = function(events) {
     events = events.split(' ');
@@ -10892,7 +10953,7 @@ var modal = new Modal();
 
 module.exports = modal;
 
-},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/request":79,"elements/zen":92}],54:[function(require,module,exports){
+},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/request":79,"elements/zen":91}],54:[function(require,module,exports){
 "use strict";
 
 var $        = require('../utils/elements.utils'),
@@ -11534,7 +11595,7 @@ module.exports.create = function(element, options) {
     return popover;
 };
 
-},{"../utils/elements.utils":66,"../utils/request":79,"elements/zen":92}],55:[function(require,module,exports){
+},{"../utils/elements.utils":66,"../utils/request":79,"elements/zen":91}],55:[function(require,module,exports){
 "use strict";
 
 var defaults = {
@@ -14164,7 +14225,7 @@ ready(function() {
 
 module.exports = Selectize;
 
-},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/event-emitter":68,"elements/zen":92,"sifter":122}],57:[function(require,module,exports){
+},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/event-emitter":68,"elements/zen":91,"sifter":121}],57:[function(require,module,exports){
 "use strict";
 
 var merge = function(target) {
@@ -15672,7 +15733,7 @@ $.implement({
 
 module.exports = $;
 
-},{"../ui/progresser":55,"./indicator":77,"elements":89,"slick":124}],67:[function(require,module,exports){
+},{"../ui/progresser":55,"./indicator":77,"elements":88,"slick":123}],67:[function(require,module,exports){
 'use strict';
 
 module.exports = (container, selector, threshold = 0) => {
@@ -18370,534 +18431,6 @@ module.exports = (field) => {
 };
 
 },{}],83:[function(require,module,exports){
-;(function(root, factory) { // eslint-disable-line no-extra-semi
-  var deepDiff = factory(root);
-  // eslint-disable-next-line no-undef
-  if (typeof define === 'function' && define.amd) {
-      // AMD
-      define('DeepDiff', function() { // eslint-disable-line no-undef
-          return deepDiff;
-      });
-  } else if (typeof exports === 'object' || typeof navigator === 'object' && navigator.product.match(/ReactNative/i)) {
-      // Node.js or ReactNative
-      module.exports = deepDiff;
-  } else {
-      // Browser globals
-      var _deepdiff = root.DeepDiff;
-      deepDiff.noConflict = function() {
-          if (root.DeepDiff === deepDiff) {
-              root.DeepDiff = _deepdiff;
-          }
-          return deepDiff;
-      };
-      root.DeepDiff = deepDiff;
-  }
-}(this, function(root) {
-  var validKinds = ['N', 'E', 'A', 'D'];
-
-  // nodejs compatible on server side and in the browser.
-  function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor;
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  }
-
-  function Diff(kind, path) {
-    Object.defineProperty(this, 'kind', {
-      value: kind,
-      enumerable: true
-    });
-    if (path && path.length) {
-      Object.defineProperty(this, 'path', {
-        value: path,
-        enumerable: true
-      });
-    }
-  }
-
-  function DiffEdit(path, origin, value) {
-    DiffEdit.super_.call(this, 'E', path);
-    Object.defineProperty(this, 'lhs', {
-      value: origin,
-      enumerable: true
-    });
-    Object.defineProperty(this, 'rhs', {
-      value: value,
-      enumerable: true
-    });
-  }
-  inherits(DiffEdit, Diff);
-
-  function DiffNew(path, value) {
-    DiffNew.super_.call(this, 'N', path);
-    Object.defineProperty(this, 'rhs', {
-      value: value,
-      enumerable: true
-    });
-  }
-  inherits(DiffNew, Diff);
-
-  function DiffDeleted(path, value) {
-    DiffDeleted.super_.call(this, 'D', path);
-    Object.defineProperty(this, 'lhs', {
-      value: value,
-      enumerable: true
-    });
-  }
-  inherits(DiffDeleted, Diff);
-
-  function DiffArray(path, index, item) {
-    DiffArray.super_.call(this, 'A', path);
-    Object.defineProperty(this, 'index', {
-      value: index,
-      enumerable: true
-    });
-    Object.defineProperty(this, 'item', {
-      value: item,
-      enumerable: true
-    });
-  }
-  inherits(DiffArray, Diff);
-
-  function arrayRemove(arr, from, to) {
-    var rest = arr.slice((to || from) + 1 || arr.length);
-    arr.length = from < 0 ? arr.length + from : from;
-    arr.push.apply(arr, rest);
-    return arr;
-  }
-
-  function realTypeOf(subject) {
-    var type = typeof subject;
-    if (type !== 'object') {
-      return type;
-    }
-
-    if (subject === Math) {
-      return 'math';
-    } else if (subject === null) {
-      return 'null';
-    } else if (Array.isArray(subject)) {
-      return 'array';
-    } else if (Object.prototype.toString.call(subject) === '[object Date]') {
-      return 'date';
-    } else if (typeof subject.toString === 'function' && /^\/.*\//.test(subject.toString())) {
-      return 'regexp';
-    }
-    return 'object';
-  }
-
-  // http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
-  function hashThisString(string) {
-    var hash = 0;
-    if (string.length === 0) { return hash; }
-    for (var i = 0; i < string.length; i++) {
-      var char = string.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash;
-  }
-
-  // Gets a hash of the given object in an array order-independent fashion
-  // also object key order independent (easier since they can be alphabetized)
-  function getOrderIndependentHash(object) {
-    var accum = 0;
-    var type = realTypeOf(object);
-
-    if (type === 'array') {
-      object.forEach(function (item) {
-        // Addition is commutative so this is order indep
-        accum += getOrderIndependentHash(item);
-      });
-
-      var arrayString = '[type: array, hash: ' + accum + ']';
-      return accum + hashThisString(arrayString);
-    }
-
-    if (type === 'object') {
-      for (var key in object) {
-        if (object.hasOwnProperty(key)) {
-          var keyValueString = '[ type: object, key: ' + key + ', value hash: ' + getOrderIndependentHash(object[key]) + ']';
-          accum += hashThisString(keyValueString);
-        }
-      }
-
-      return accum;
-    }
-
-    // Non object, non array...should be good?
-    var stringToHash = '[ type: ' + type + ' ; value: ' + object + ']';
-    return accum + hashThisString(stringToHash);
-  }
-
-  function deepDiff(lhs, rhs, changes, prefilter, path, key, stack, orderIndependent) {
-    changes = changes || [];
-    path = path || [];
-    stack = stack || [];
-    var currentPath = path.slice(0);
-    if (typeof key !== 'undefined' && key !== null) {
-      if (prefilter) {
-        if (typeof (prefilter) === 'function' && prefilter(currentPath, key)) {
-          return;
-        } else if (typeof (prefilter) === 'object') {
-          if (prefilter.prefilter && prefilter.prefilter(currentPath, key)) {
-            return;
-          }
-          if (prefilter.normalize) {
-            var alt = prefilter.normalize(currentPath, key, lhs, rhs);
-            if (alt) {
-              lhs = alt[0];
-              rhs = alt[1];
-            }
-          }
-        }
-      }
-      currentPath.push(key);
-    }
-
-    // Use string comparison for regexes
-    if (realTypeOf(lhs) === 'regexp' && realTypeOf(rhs) === 'regexp') {
-      lhs = lhs.toString();
-      rhs = rhs.toString();
-    }
-
-    var ltype = typeof lhs;
-    var rtype = typeof rhs;
-    var i, j, k, other;
-
-    var ldefined = ltype !== 'undefined' ||
-      (stack && (stack.length > 0) && stack[stack.length - 1].lhs &&
-        Object.getOwnPropertyDescriptor(stack[stack.length - 1].lhs, key));
-    var rdefined = rtype !== 'undefined' ||
-      (stack && (stack.length > 0) && stack[stack.length - 1].rhs &&
-        Object.getOwnPropertyDescriptor(stack[stack.length - 1].rhs, key));
-
-    if (!ldefined && rdefined) {
-      changes.push(new DiffNew(currentPath, rhs));
-    } else if (!rdefined && ldefined) {
-      changes.push(new DiffDeleted(currentPath, lhs));
-    } else if (realTypeOf(lhs) !== realTypeOf(rhs)) {
-      changes.push(new DiffEdit(currentPath, lhs, rhs));
-    } else if (realTypeOf(lhs) === 'date' && (lhs - rhs) !== 0) {
-      changes.push(new DiffEdit(currentPath, lhs, rhs));
-    } else if (ltype === 'object' && lhs !== null && rhs !== null) {
-      for (i = stack.length - 1; i > -1; --i) {
-        if (stack[i].lhs === lhs) {
-          other = true;
-          break;
-        }
-      }
-      if (!other) {
-        stack.push({ lhs: lhs, rhs: rhs });
-        if (Array.isArray(lhs)) {
-          // If order doesn't matter, we need to sort our arrays
-          if (orderIndependent) {
-            lhs.sort(function (a, b) {
-              return getOrderIndependentHash(a) - getOrderIndependentHash(b);
-            });
-
-            rhs.sort(function (a, b) {
-              return getOrderIndependentHash(a) - getOrderIndependentHash(b);
-            });
-          }
-          i = rhs.length - 1;
-          j = lhs.length - 1;
-          while (i > j) {
-            changes.push(new DiffArray(currentPath, i, new DiffNew(undefined, rhs[i--])));
-          }
-          while (j > i) {
-            changes.push(new DiffArray(currentPath, j, new DiffDeleted(undefined, lhs[j--])));
-          }
-          for (; i >= 0; --i) {
-            deepDiff(lhs[i], rhs[i], changes, prefilter, currentPath, i, stack, orderIndependent);
-          }
-        } else {
-          var akeys = Object.keys(lhs);
-          var pkeys = Object.keys(rhs);
-          for (i = 0; i < akeys.length; ++i) {
-            k = akeys[i];
-            other = pkeys.indexOf(k);
-            if (other >= 0) {
-              deepDiff(lhs[k], rhs[k], changes, prefilter, currentPath, k, stack, orderIndependent);
-              pkeys[other] = null;
-            } else {
-              deepDiff(lhs[k], undefined, changes, prefilter, currentPath, k, stack, orderIndependent);
-            }
-          }
-          for (i = 0; i < pkeys.length; ++i) {
-            k = pkeys[i];
-            if (k) {
-              deepDiff(undefined, rhs[k], changes, prefilter, currentPath, k, stack, orderIndependent);
-            }
-          }
-        }
-        stack.length = stack.length - 1;
-      } else if (lhs !== rhs) {
-        // lhs is contains a cycle at this element and it differs from rhs
-        changes.push(new DiffEdit(currentPath, lhs, rhs));
-      }
-    } else if (lhs !== rhs) {
-      if (!(ltype === 'number' && isNaN(lhs) && isNaN(rhs))) {
-        changes.push(new DiffEdit(currentPath, lhs, rhs));
-      }
-    }
-  }
-
-  function observableDiff(lhs, rhs, observer, prefilter, orderIndependent) {
-    var changes = [];
-    deepDiff(lhs, rhs, changes, prefilter, null, null, null, orderIndependent);
-    if (observer) {
-      for (var i = 0; i < changes.length; ++i) {
-        observer(changes[i]);
-      }
-    }
-    return changes;
-  }
-
-  function orderIndependentDeepDiff(lhs, rhs, changes, prefilter, path, key, stack) {
-    return deepDiff(lhs, rhs, changes, prefilter, path, key, stack, true);
-  }
-
-  function accumulateDiff(lhs, rhs, prefilter, accum) {
-    var observer = (accum) ?
-      function (difference) {
-        if (difference) {
-          accum.push(difference);
-        }
-      } : undefined;
-    var changes = observableDiff(lhs, rhs, observer, prefilter);
-    return (accum) ? accum : (changes.length) ? changes : undefined;
-  }
-
-  function accumulateOrderIndependentDiff(lhs, rhs, prefilter, accum) {
-    var observer = (accum) ?
-      function (difference) {
-        if (difference) {
-          accum.push(difference);
-        }
-      } : undefined;
-    var changes = observableDiff(lhs, rhs, observer, prefilter, true);
-    return (accum) ? accum : (changes.length) ? changes : undefined;
-  }
-
-  function applyArrayChange(arr, index, change) {
-    if (change.path && change.path.length) {
-      var it = arr[index],
-        i, u = change.path.length - 1;
-      for (i = 0; i < u; i++) {
-        it = it[change.path[i]];
-      }
-      switch (change.kind) {
-        case 'A':
-          applyArrayChange(it[change.path[i]], change.index, change.item);
-          break;
-        case 'D':
-          delete it[change.path[i]];
-          break;
-        case 'E':
-        case 'N':
-          it[change.path[i]] = change.rhs;
-          break;
-      }
-    } else {
-      switch (change.kind) {
-        case 'A':
-          applyArrayChange(arr[index], change.index, change.item);
-          break;
-        case 'D':
-          arr = arrayRemove(arr, index);
-          break;
-        case 'E':
-        case 'N':
-          arr[index] = change.rhs;
-          break;
-      }
-    }
-    return arr;
-  }
-
-  function applyChange(target, source, change) {
-    if (typeof change === 'undefined' && source && ~validKinds.indexOf(source.kind)) {
-      change = source;
-    }
-    if (target && change && change.kind) {
-      var it = target,
-        i = -1,
-        last = change.path ? change.path.length - 1 : 0;
-      while (++i < last) {
-        if (typeof it[change.path[i]] === 'undefined') {
-          it[change.path[i]] = (typeof change.path[i + 1] !== 'undefined' && typeof change.path[i + 1] === 'number') ? [] : {};
-        }
-        it = it[change.path[i]];
-      }
-      switch (change.kind) {
-        case 'A':
-          if (change.path && typeof it[change.path[i]] === 'undefined') {
-            it[change.path[i]] = [];
-          }
-          applyArrayChange(change.path ? it[change.path[i]] : it, change.index, change.item);
-          break;
-        case 'D':
-          delete it[change.path[i]];
-          break;
-        case 'E':
-        case 'N':
-          it[change.path[i]] = change.rhs;
-          break;
-      }
-    }
-  }
-
-  function revertArrayChange(arr, index, change) {
-    if (change.path && change.path.length) {
-      // the structure of the object at the index has changed...
-      var it = arr[index],
-        i, u = change.path.length - 1;
-      for (i = 0; i < u; i++) {
-        it = it[change.path[i]];
-      }
-      switch (change.kind) {
-        case 'A':
-          revertArrayChange(it[change.path[i]], change.index, change.item);
-          break;
-        case 'D':
-          it[change.path[i]] = change.lhs;
-          break;
-        case 'E':
-          it[change.path[i]] = change.lhs;
-          break;
-        case 'N':
-          delete it[change.path[i]];
-          break;
-      }
-    } else {
-      // the array item is different...
-      switch (change.kind) {
-        case 'A':
-          revertArrayChange(arr[index], change.index, change.item);
-          break;
-        case 'D':
-          arr[index] = change.lhs;
-          break;
-        case 'E':
-          arr[index] = change.lhs;
-          break;
-        case 'N':
-          arr = arrayRemove(arr, index);
-          break;
-      }
-    }
-    return arr;
-  }
-
-  function revertChange(target, source, change) {
-    if (target && source && change && change.kind) {
-      var it = target,
-        i, u;
-      u = change.path.length - 1;
-      for (i = 0; i < u; i++) {
-        if (typeof it[change.path[i]] === 'undefined') {
-          it[change.path[i]] = {};
-        }
-        it = it[change.path[i]];
-      }
-      switch (change.kind) {
-        case 'A':
-          // Array was modified...
-          // it will be an array...
-          revertArrayChange(it[change.path[i]], change.index, change.item);
-          break;
-        case 'D':
-          // Item was deleted...
-          it[change.path[i]] = change.lhs;
-          break;
-        case 'E':
-          // Item was edited...
-          it[change.path[i]] = change.lhs;
-          break;
-        case 'N':
-          // Item is new...
-          delete it[change.path[i]];
-          break;
-      }
-    }
-  }
-
-  function applyDiff(target, source, filter) {
-    if (target && source) {
-      var onChange = function (change) {
-        if (!filter || filter(target, source, change)) {
-          applyChange(target, source, change);
-        }
-      };
-      observableDiff(target, source, onChange);
-    }
-  }
-
-  Object.defineProperties(accumulateDiff, {
-
-    diff: {
-      value: accumulateDiff,
-      enumerable: true
-    },
-    orderIndependentDiff: {
-      value: accumulateOrderIndependentDiff,
-      enumerable: true
-    },
-    observableDiff: {
-      value: observableDiff,
-      enumerable: true
-    },
-    orderIndependentObservableDiff: {
-      value: orderIndependentDeepDiff,
-      enumerable: true
-    },
-    orderIndepHash: {
-      value: getOrderIndependentHash,
-      enumerable: true
-    },
-    applyDiff: {
-      value: applyDiff,
-      enumerable: true
-    },
-    applyChange: {
-      value: applyChange,
-      enumerable: true
-    },
-    revertChange: {
-      value: revertChange,
-      enumerable: true
-    },
-    isConflict: {
-      value: function () {
-        return typeof $conflict !== 'undefined';
-      },
-      enumerable: true
-    }
-  });
-
-  // hackish...
-  accumulateDiff.DeepDiff = accumulateDiff;
-  // ...but works with:
-  // import DeepDiff from 'deep-diff'
-  // import { DeepDiff } from 'deep-diff'
-  // const DeepDiff = require('deep-diff');
-  // const { DeepDiff } = require('deep-diff');
-
-  if (root) {
-    root.DeepDiff = accumulateDiff;
-  }
-
-  return accumulateDiff;
-}));
-
-},{}],84:[function(require,module,exports){
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -29339,7 +28872,7 @@ window.Dropzone = Dropzone;
 /******/ })()
 ;
 });
-},{}],85:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 /*
 attributes
 */"use strict"
@@ -29558,7 +29091,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":86,"mout/array/filter":94,"mout/array/forEach":95,"mout/array/indexOf":96,"mout/string/trim":115}],86:[function(require,module,exports){
+},{"./base":85,"mout/array/filter":93,"mout/array/forEach":94,"mout/array/indexOf":95,"mout/string/trim":114}],85:[function(require,module,exports){
 /*
 elements
 */"use strict"
@@ -29689,7 +29222,7 @@ var Elements = prime({
 
 module.exports = $
 
-},{"mout/array/every":93,"mout/array/filter":94,"mout/array/forEach":95,"mout/array/map":97,"mout/array/some":98,"prime":119}],87:[function(require,module,exports){
+},{"mout/array/every":92,"mout/array/filter":93,"mout/array/forEach":94,"mout/array/map":96,"mout/array/some":97,"prime":118}],86:[function(require,module,exports){
 /*
 delegation
 */"use strict"
@@ -29772,7 +29305,7 @@ $.implement({
 
 module.exports = $
 
-},{"./events":88,"./traversal":91,"prime/map":120}],88:[function(require,module,exports){
+},{"./events":87,"./traversal":90,"prime/map":119}],87:[function(require,module,exports){
 /*
 events
 */"use strict"
@@ -29852,7 +29385,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":86,"prime/emitter":118}],89:[function(require,module,exports){
+},{"./base":85,"prime/emitter":117}],88:[function(require,module,exports){
 /*
 elements
 */"use strict"
@@ -29866,7 +29399,7 @@ var $ = require("./base")
 
 module.exports = $
 
-},{"./attributes":85,"./base":86,"./delegation":87,"./events":88,"./insertion":90,"./traversal":91}],90:[function(require,module,exports){
+},{"./attributes":84,"./base":85,"./delegation":86,"./events":87,"./insertion":89,"./traversal":90}],89:[function(require,module,exports){
 /*
 insertion
 */"use strict"
@@ -29960,7 +29493,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":86}],91:[function(require,module,exports){
+},{"./base":85}],90:[function(require,module,exports){
 /*
 traversal
 */"use strict"
@@ -30065,7 +29598,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":86,"mout/array/map":97,"slick":124}],92:[function(require,module,exports){
+},{"./base":85,"mout/array/map":96,"slick":123}],91:[function(require,module,exports){
 /*
 zen
 */"use strict"
@@ -30123,7 +29656,7 @@ module.exports = function(expression, doc){
 
 }
 
-},{"./base":86,"mout/array/forEach":95,"mout/array/map":97,"slick/parser":125}],93:[function(require,module,exports){
+},{"./base":85,"mout/array/forEach":94,"mout/array/map":96,"slick/parser":124}],92:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -30152,7 +29685,7 @@ var makeIterator = require('../function/makeIterator_');
     module.exports = every;
 
 
-},{"../function/makeIterator_":100}],94:[function(require,module,exports){
+},{"../function/makeIterator_":99}],93:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -30180,7 +29713,7 @@ var makeIterator = require('../function/makeIterator_');
 
 
 
-},{"../function/makeIterator_":100}],95:[function(require,module,exports){
+},{"../function/makeIterator_":99}],94:[function(require,module,exports){
 
 
     /**
@@ -30205,7 +29738,7 @@ var makeIterator = require('../function/makeIterator_');
 
 
 
-},{}],96:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 
 
     /**
@@ -30235,7 +29768,7 @@ var makeIterator = require('../function/makeIterator_');
     module.exports = indexOf;
 
 
-},{}],97:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -30259,7 +29792,7 @@ var makeIterator = require('../function/makeIterator_');
      module.exports = map;
 
 
-},{"../function/makeIterator_":100}],98:[function(require,module,exports){
+},{"../function/makeIterator_":99}],97:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -30288,7 +29821,7 @@ var makeIterator = require('../function/makeIterator_');
     module.exports = some;
 
 
-},{"../function/makeIterator_":100}],99:[function(require,module,exports){
+},{"../function/makeIterator_":99}],98:[function(require,module,exports){
 
 
     /**
@@ -30302,7 +29835,7 @@ var makeIterator = require('../function/makeIterator_');
 
 
 
-},{}],100:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 var identity = require('./identity');
 var prop = require('./prop');
 var deepMatches = require('../object/deepMatches');
@@ -30338,7 +29871,7 @@ var deepMatches = require('../object/deepMatches');
 
 
 
-},{"../object/deepMatches":107,"./identity":99,"./prop":101}],101:[function(require,module,exports){
+},{"../object/deepMatches":106,"./identity":98,"./prop":100}],100:[function(require,module,exports){
 
 
     /**
@@ -30354,7 +29887,7 @@ var deepMatches = require('../object/deepMatches');
 
 
 
-},{}],102:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 var mixIn = require('../object/mixIn');
 
     /**
@@ -30374,7 +29907,7 @@ var mixIn = require('../object/mixIn');
 
 
 
-},{"../object/mixIn":111}],103:[function(require,module,exports){
+},{"../object/mixIn":110}],102:[function(require,module,exports){
 var isKind = require('./isKind');
     /**
      */
@@ -30384,7 +29917,7 @@ var isKind = require('./isKind');
     module.exports = isArray;
 
 
-},{"./isKind":104}],104:[function(require,module,exports){
+},{"./isKind":103}],103:[function(require,module,exports){
 var kindOf = require('./kindOf');
     /**
      * Check if value is from a specific "kind".
@@ -30395,7 +29928,7 @@ var kindOf = require('./kindOf');
     module.exports = isKind;
 
 
-},{"./kindOf":105}],105:[function(require,module,exports){
+},{"./kindOf":104}],104:[function(require,module,exports){
 
     /**
      * Gets the "kind" of value. (e.g. "String", "Number", etc)
@@ -30406,7 +29939,7 @@ var kindOf = require('./kindOf');
     module.exports = kindOf;
 
 
-},{}],106:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 
 
     /**
@@ -30421,7 +29954,7 @@ var kindOf = require('./kindOf');
 
 
 
-},{}],107:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 var forOwn = require('./forOwn');
 var isArray = require('../lang/isArray');
 
@@ -30479,7 +30012,7 @@ var isArray = require('../lang/isArray');
 
 
 
-},{"../lang/isArray":103,"./forOwn":109}],108:[function(require,module,exports){
+},{"../lang/isArray":102,"./forOwn":108}],107:[function(require,module,exports){
 var hasOwn = require('./hasOwn');
 
     var _hasDontEnumBug,
@@ -30557,7 +30090,7 @@ var hasOwn = require('./hasOwn');
 
 
 
-},{"./hasOwn":110}],109:[function(require,module,exports){
+},{"./hasOwn":109}],108:[function(require,module,exports){
 var hasOwn = require('./hasOwn');
 var forIn = require('./forIn');
 
@@ -30578,7 +30111,7 @@ var forIn = require('./forIn');
 
 
 
-},{"./forIn":108,"./hasOwn":110}],110:[function(require,module,exports){
+},{"./forIn":107,"./hasOwn":109}],109:[function(require,module,exports){
 
 
     /**
@@ -30592,7 +30125,7 @@ var forIn = require('./forIn');
 
 
 
-},{}],111:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 var forOwn = require('./forOwn');
 
     /**
@@ -30622,7 +30155,7 @@ var forOwn = require('./forOwn');
     module.exports = mixIn;
 
 
-},{"./forOwn":109}],112:[function(require,module,exports){
+},{"./forOwn":108}],111:[function(require,module,exports){
 
     /**
      * Contains all Unicode white-spaces. Taken from
@@ -30636,7 +30169,7 @@ var forOwn = require('./forOwn');
     ];
 
 
-},{}],113:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 var toString = require('../lang/toString');
 var WHITE_SPACES = require('./WHITE_SPACES');
     /**
@@ -30672,7 +30205,7 @@ var WHITE_SPACES = require('./WHITE_SPACES');
     module.exports = ltrim;
 
 
-},{"../lang/toString":106,"./WHITE_SPACES":112}],114:[function(require,module,exports){
+},{"../lang/toString":105,"./WHITE_SPACES":111}],113:[function(require,module,exports){
 var toString = require('../lang/toString');
 var WHITE_SPACES = require('./WHITE_SPACES');
     /**
@@ -30707,7 +30240,7 @@ var WHITE_SPACES = require('./WHITE_SPACES');
     module.exports = rtrim;
 
 
-},{"../lang/toString":106,"./WHITE_SPACES":112}],115:[function(require,module,exports){
+},{"../lang/toString":105,"./WHITE_SPACES":111}],114:[function(require,module,exports){
 var toString = require('../lang/toString');
 var WHITE_SPACES = require('./WHITE_SPACES');
 var ltrim = require('./ltrim');
@@ -30724,7 +30257,7 @@ var rtrim = require('./rtrim');
     module.exports = trim;
 
 
-},{"../lang/toString":106,"./WHITE_SPACES":112,"./ltrim":113,"./rtrim":114}],116:[function(require,module,exports){
+},{"../lang/toString":105,"./WHITE_SPACES":111,"./ltrim":112,"./rtrim":113}],115:[function(require,module,exports){
 
 
     /**
@@ -30744,7 +30277,7 @@ var rtrim = require('./rtrim');
 
 
 
-},{}],117:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 (function (process,global,setImmediate){(function (){
 /*
 defer
@@ -30863,7 +30396,7 @@ module.exports = defer
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
 
-},{"_process":121,"mout/array/forEach":95,"mout/array/indexOf":96,"mout/lang/kindOf":105,"mout/time/now":116,"timers":127}],118:[function(require,module,exports){
+},{"_process":120,"mout/array/forEach":94,"mout/array/indexOf":95,"mout/lang/kindOf":104,"mout/time/now":115,"timers":126}],117:[function(require,module,exports){
 /*
 Emitter
 */"use strict"
@@ -30934,7 +30467,7 @@ Emitter.EMIT_SYNC = {}
 
 module.exports = Emitter
 
-},{"./defer":117,"./index":119,"mout/array/forEach":95,"mout/array/indexOf":96}],119:[function(require,module,exports){
+},{"./defer":116,"./index":118,"mout/array/forEach":94,"mout/array/indexOf":95}],118:[function(require,module,exports){
 /*
 prime
  - prototypal inheritance
@@ -31026,7 +30559,7 @@ var prime = function(proto){
 
 module.exports = prime
 
-},{"mout/lang/createObject":102,"mout/lang/kindOf":105,"mout/object/hasOwn":110,"mout/object/mixIn":111}],120:[function(require,module,exports){
+},{"mout/lang/createObject":101,"mout/lang/kindOf":104,"mout/object/hasOwn":109,"mout/object/mixIn":110}],119:[function(require,module,exports){
 /*
 Map
 */"use strict"
@@ -31152,7 +30685,7 @@ map.prototype = Map.prototype
 
 module.exports = map
 
-},{"./index":119,"mout/array/indexOf":96}],121:[function(require,module,exports){
+},{"./index":118,"mout/array/indexOf":95}],120:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -31338,7 +30871,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],122:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 /**
  * sifter.js
  * Copyright (c) 2013 Brian Reavis & contributors
@@ -31838,7 +31371,7 @@ process.umask = function() { return 0; };
 }));
 
 
-},{}],123:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 /*
 Slick Finder
 */"use strict"
@@ -32669,7 +32202,7 @@ slick.parse = parse;
 
 module.exports = slick
 
-},{"./parser":125}],124:[function(require,module,exports){
+},{"./parser":124}],123:[function(require,module,exports){
 (function (global){(function (){
 /*
 slick
@@ -32679,7 +32212,7 @@ module.exports = "document" in global ? require("./finder") : { parse: require("
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./finder":123,"./parser":125}],125:[function(require,module,exports){
+},{"./finder":122,"./parser":124}],124:[function(require,module,exports){
 /*
 Slick Parser
  - originally created by the almighty Thomas Aylott <@subtlegradient> (http://subtlegradient.com)
@@ -32931,7 +32464,7 @@ var parse = function(expression){
 
 module.exports = parse
 
-},{}],126:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 /**!
  * Sortable
  * @author	RubaXa   <trash@rubaxa.org>
@@ -34207,7 +33740,7 @@ module.exports = parse
 	return Sortable;
 });
 
-},{}],127:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 (function (setImmediate,clearImmediate){(function (){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -34287,7 +33820,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this)}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 
-},{"process/browser.js":121,"timers":127}],128:[function(require,module,exports){
+},{"process/browser.js":120,"timers":126}],127:[function(require,module,exports){
 /* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */(function(){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function p(a,b,c){p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return p.apply(null,arguments)}var q=Date.now||function(){return+new Date};function ca(a,b){this.a=a;this.o=b||a;this.c=this.o.document}var da=!!window.FontFace;function t(a,b,c,d){b=a.c.createElement(b);if(c)for(var e in c)c.hasOwnProperty(e)&&("style"==e?b.style.cssText=c[e]:b.setAttribute(e,c[e]));d&&b.appendChild(a.c.createTextNode(d));return b}function u(a,b,c){a=a.c.getElementsByTagName(b)[0];a||(a=document.documentElement);a.insertBefore(c,a.lastChild)}function v(a){a.parentNode&&a.parentNode.removeChild(a)}
 function w(a,b,c){b=b||[];c=c||[];for(var d=a.className.split(/\s+/),e=0;e<b.length;e+=1){for(var f=!1,g=0;g<d.length;g+=1)if(b[e]===d[g]){f=!0;break}f||d.push(b[e])}b=[];for(e=0;e<d.length;e+=1){f=!1;for(g=0;g<c.length;g+=1)if(d[e]===c[g]){f=!0;break}f||b.push(d[e])}a.className=b.join(" ").replace(/\s+/g," ").replace(/^\s+|\s+$/,"")}function y(a,b){for(var c=a.className.split(/\s+/),d=0,e=c.length;d<e;d++)if(c[d]==b)return!0;return!1}
 function ea(a){return a.o.location.hostname||a.a.location.hostname}function z(a,b,c){function d(){m&&e&&f&&(m(g),m=null)}b=t(a,"link",{rel:"stylesheet",href:b,media:"all"});var e=!1,f=!0,g=null,m=c||null;da?(b.onload=function(){e=!0;d()},b.onerror=function(){e=!0;g=Error("Stylesheet failed to load");d()}):setTimeout(function(){e=!0;d()},0);u(a,"head",b)}

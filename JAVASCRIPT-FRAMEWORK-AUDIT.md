@@ -8,9 +8,10 @@
 
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
-- **21 first-party core/platform files** still depend on external JavaScript libraries.
-- **21 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, Dropzone, Sifter, Slick, WebFontLoader, and Deep Diff.
+- **20 first-party core/platform files** still depend on external JavaScript libraries.
+- **20 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, Dropzone, Sifter, Slick, and WebFontLoader.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
+- Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -22,37 +23,36 @@ Generated bundles, `node_modules`, Composer `vendor` directories, minified third
 
 ### Remaining dependency count
 
-There are **21 first-party framework-dependent files**:
+There are **20 first-party framework-dependent files**:
 
-- 21 JavaScript source files importing external runtime packages.
+- 20 JavaScript source files importing external runtime packages.
 
-One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the 21 first-party-file count.
+One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the 20 first-party-file count.
 
 ### Core JavaScript files with external runtime dependencies
 
-The following 21 files still import one or more external libraries:
+The following 20 files still import one or more external libraries:
 
 1. `assets/common/application/menu/index.js`
 2. `assets/common/application/offcanvas/index.js`
 3. `assets/common/application/utils/dollar-extras.js`
 4. `platforms/common/application/lm/blocks/base.js`
-5. `platforms/common/application/lm/history.js`
-6. `platforms/common/application/lm/index.js`
-7. `platforms/common/application/lm/layoutmanager.js`
-8. `platforms/common/application/main.js`
-9. `platforms/common/application/menu/menumanager.js`
-10. `platforms/common/application/pagesettings/index.js`
-11. `platforms/common/application/particles/collections/index.js`
-12. `platforms/common/application/particles/colorpicker/index.js`
-13. `platforms/common/application/particles/filepicker/index.js`
-14. `platforms/common/application/particles/fonts/index.js`
-15. `platforms/common/application/particles/keyvalue/index.js`
-16. `platforms/common/application/positions/cards.js`
-17. `platforms/common/application/ui/drag.drop.js`
-18. `platforms/common/application/ui/modal.js`
-19. `platforms/common/application/ui/popover.js`
-20. `platforms/common/application/ui/selectize.js`
-21. `platforms/common/application/utils/elements.utils.js`
+5. `platforms/common/application/lm/index.js`
+6. `platforms/common/application/lm/layoutmanager.js`
+7. `platforms/common/application/main.js`
+8. `platforms/common/application/menu/menumanager.js`
+9. `platforms/common/application/pagesettings/index.js`
+10. `platforms/common/application/particles/collections/index.js`
+11. `platforms/common/application/particles/colorpicker/index.js`
+12. `platforms/common/application/particles/filepicker/index.js`
+13. `platforms/common/application/particles/fonts/index.js`
+14. `platforms/common/application/particles/keyvalue/index.js`
+15. `platforms/common/application/positions/cards.js`
+16. `platforms/common/application/ui/drag.drop.js`
+17. `platforms/common/application/ui/modal.js`
+18. `platforms/common/application/ui/popover.js`
+19. `platforms/common/application/ui/selectize.js`
+20. `platforms/common/application/utils/elements.utils.js`
 
 ### Dependency breakdown
 
@@ -70,7 +70,6 @@ Counts overlap because a single file may import more than one package.
 | Dropzone | 1 | File picker |
 | Sifter | 1 | Selectize searching and filtering |
 | WebFontLoader | 1 | Font picker |
-| Deep Diff | 1 | Layout Manager history |
 
 ### Converted platform templates
 
@@ -199,12 +198,15 @@ Avoid recreating a large general-purpose framework.
 
 Recommended sequence:
 
-1. Deep Diff in Layout Manager history
-2. Sifter and Selectize behavior
-3. WebFontLoader
-4. Dropzone
-5. SortableJS
-6. Slick remnants
+Completed: Deep Diff in Layout Manager history.
+
+Remaining sequence:
+
+1. Sifter and Selectize behavior
+2. WebFontLoader
+3. Dropzone
+4. SortableJS
+5. Slick remnants
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.
 
