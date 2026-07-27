@@ -2,13 +2,8 @@
 
 const { ready, delegate } = require('../utils/dom');
 const Eraser = require('../ui/eraser');
-const simpleSort = require('sortablejs');
+const DraggableGroup = require('../utils/draggable-group');
 const flags = require('../utils/flags-state');
-
-const groupOptions = [
-    { name: 'positions', pull: true, put: true },
-    { name: 'positions', pull: false, put: false }
-];
 
 const elementsFrom = value => {
     if (!value) return [];
@@ -81,81 +76,36 @@ const Positions = {
 
     createSortables(element) {
         Positions.attachEraser();
+        const root = element || document.querySelector('#positions');
+        if (!root || root.SimpleSort) return;
 
-        groupOptions.forEach((groupOption, groupIndex) => {
-            const selector = groupIndex === 0 ? '[data-g5-position] ul' : '#trash';
-            const lists = Array.from(document.querySelectorAll(selector));
-            let lastSort = null;
+        const group = new DraggableGroup(root, {
+            lists: '[data-g5-position] ul',
+            items: '[data-pm-data]',
+            filter: '[data-g5-position-ignore]',
+            trash: '#trash',
+            draggingClass: 'position-dragging',
+            scrollContainer: '.position-container',
 
-            lists.forEach((list, listIndex) => {
-                const sort = simpleSort.create(list, {
-                    sort: groupIndex === 0,
-                    filter: '[data-g5-position-ignore]',
-                    group: groupOption,
-                    scroll: true,
-                    forceFallback: true,
-                    animation: 100,
+            onStart() {
+                Positions.attachEraser();
+                Positions.eraser.show();
+            },
 
-                    onStart(event) {
-                        Positions.attachEraser();
-                        event.item.classList.add('position-dragging');
-                        Positions.eraser.show();
-                    },
+            onTrashOver(over) {
+                if (over) Positions.eraser.over();
+                else Positions.eraser.out();
+            },
 
-                    onEnd(event) {
-                        const item = event.item;
-                        const trash = document.querySelector('#trash');
-                        const originalEvent = this.originalEvent || event.originalEvent;
-                        const target = originalEvent && originalEvent.target instanceof Element ? originalEvent.target : null;
-                        let touchTrash = false;
-
-                        if (originalEvent && originalEvent.type === 'touchend' && trash) {
-                            const trashSize = trash.getBoundingClientRect();
-                            const point = originalEvent.changedTouches && originalEvent.changedTouches[0];
-                            const pageY = originalEvent.pageY || (point && point.pageY) || 0;
-                            touchTrash = pageY - window.scrollY <= trashSize.height;
-                        }
-
-                        if (trash && ((target && (target === trash || trash.contains(target))) || touchTrash)) {
-                            item.remove();
-                            Positions.eraser.hide();
-                            this.options.onSort(event);
-                            return;
-                        }
-
-                        item.classList.remove('position-dragging');
-                        Positions.eraser.hide();
-                    },
-
-                    onSort(event) {
-                        const fromPosition = event.from.closest('[data-g5-position]');
-                        const toPosition = event.to.closest('[data-g5-position]');
-                        const affected = event.from === event.to
-                            ? [toPosition]
-                            : [fromPosition, toPosition];
-
-                        Positions.serialize(affected.filter(Boolean));
-                        Positions.updatePendingChanges();
-                    },
-
-                    onOver(event) {
-                        if (!event.from.matches('ul')) return;
-                        const trash = document.querySelector('#trash');
-                        const over = event.related || (event.originalEvent && event.originalEvent.target);
-                        if (trash && over instanceof Node && (over === trash || trash.contains(over))) {
-                            Positions.eraser.over();
-                        } else {
-                            Positions.eraser.out();
-                        }
-                    }
-                });
-
-                lastSort = sort;
-                if (groupIndex === 0 && !Positions.lists[listIndex]) Positions.lists[listIndex] = sort;
-            });
-
-            if (groupIndex === 0 && element) element.SimpleSort = lastSort;
+            onEnd() {
+                Positions.eraser.hide();
+                Positions.serialize();
+                Positions.updatePendingChanges();
+            }
         });
+
+        Positions.lists = group.lists;
+        root.SimpleSort = group;
     }
 };
 

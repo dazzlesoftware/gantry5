@@ -582,6 +582,7 @@ var LayoutManagerDefinition = {
 
         singles.disable();
         singles.cleanup(this.builder);
+        this.builder.normalizeGridSizes();
 
         this.history.push(this.builder.serialize(), this.history.get().preset);
     },

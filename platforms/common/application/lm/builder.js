@@ -2,7 +2,8 @@
 
 var EventEmitter = require('../utils/event-emitter'),
     Blocks       = require('./blocks/'),
-    ID           = require('./id');
+    ID           = require('./id'),
+    normalizeGridSizes = require('./normalize-grid-sizes');
 
 var DEBUG = false;
 
@@ -77,7 +78,14 @@ class Builder extends EventEmitter {
 
     load(data) {
         this.recursiveLoad(data);
+        this.normalizeGridSizes();
         this.emit('loaded', data);
+        return this;
+    }
+
+    normalizeGridSizes(root) {
+        root = root || document.querySelector('[data-lm-root]');
+        normalizeGridSizes(root, this.get.bind(this));
         return this;
     }
 

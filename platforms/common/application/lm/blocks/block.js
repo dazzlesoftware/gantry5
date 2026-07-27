@@ -52,9 +52,11 @@ class Block extends Base {
                 fill: 'forwards'
             });
             this.sizeAnimation.addEventListener('finish', function() {
+                var animation = this.sizeAnimation;
                 this.sizeAnimation = null;
                 block.removeAttribute('style');
                 this.setSize(size);
+                animation.cancel();
             }.bind(this), { once: true });
         } else {
             block.removeAttribute('style');
