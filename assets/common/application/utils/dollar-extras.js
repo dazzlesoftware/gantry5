@@ -1,26 +1,47 @@
 "use strict";
-var $          = require('elements'),
-    map        = require('mout/array/map'),
-    slick      = require('slick');
+const $ = require('elements');
 
-var walk = function(combinator, method) {
+const matches = (element, expression) => element
+    && element.nodeType === Node.ELEMENT_NODE
+    && element.matches(expression || '*');
 
-    return function(expression) {
-        var parts = slick.parse(expression || "*");
+const adjacentSiblings = function(expression) {
+    const siblings = [];
 
-        expression = map(parts, function(part) {
-            return combinator + " " + part;
-        }).join(', ');
+    this.forEach(element => {
+        const previous = element.previousElementSibling;
+        const next = element.nextElementSibling;
 
-        return this[method](expression);
-    };
+        if (matches(previous, expression) && !siblings.includes(previous)) {
+            siblings.push(previous);
+        }
+        if (matches(next, expression) && !siblings.includes(next)) {
+            siblings.push(next);
+        }
+    });
 
+    return $(siblings);
 };
 
+const matchingSiblings = function(expression) {
+    const siblings = [];
+
+    this.forEach(element => {
+        if (!element.parentElement) return;
+
+        Array.from(element.parentElement.children).forEach(sibling => {
+            if (sibling !== element && matches(sibling, expression) && !siblings.includes(sibling)) {
+                siblings.push(sibling);
+            }
+        });
+    });
+
+    return $(siblings);
+};
 
 $.implement({
-    sibling: walk('++', 'find'),
-    siblings: walk('~~', 'search')
+    sibling: adjacentSiblings,
+    siblings: matchingSiblings
 });
 
 

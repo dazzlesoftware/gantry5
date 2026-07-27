@@ -2359,7 +2359,7 @@ simple-concat@^1.0.0:
   resolved "https://registry.npmjs.org/simple-concat/-/simple-concat-1.0.1.tgz"
   integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
 
-slick@^1.12.2, "slick@github:kamicane/slick#v1.12.2":
+slick@^1.12.2:
   version "1.12.2"
   resolved "git+ssh://git@github.com/kamicane/slick.git#6eb8da55711e3b0ca81777b96cf45da868af382f"
 
