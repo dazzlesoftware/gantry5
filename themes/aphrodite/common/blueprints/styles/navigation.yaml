@@ -8,30 +8,8 @@ form:
     background:
       type: input.colorpicker
       label: Background
-      default: "#ffffff"
+      default: "#312f38"
     text-color:
       type: input.colorpicker
       label: Text
-      default: "#252525"
-
-    separator-color-1:
-      type: input.colorpicker
-      label: Separator Color 1
-      default: "#0345bf"
-
-    separator-color-2:
-      type: input.colorpicker
-      label: Separator Color 2
-      default: "#ff406c"
-
-    separator-height:
-      type: input.text
-      label: Separator Height
-      description: Height of the line below the navigation (for example 3px).
-      default: 3px
-
-    separator-split:
-      type: input.text
-      label: Separator Split
-      description: Percentage occupied by Separator Color 1 before Separator Color 2 begins.
-      default: 72%
+      default: "#ffffff"

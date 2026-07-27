@@ -165,40 +165,65 @@
 
 {% block javascript_footer %}
 {% if total > limit.total and display.pagination_buttons %}
-{% do gantry.load('jquery') %}
 <script>
-    (function ($) {
-        $(document).on('click', 'button.contentarray-button', function () {
-            var id = $(this).attr('data-id'),
-                start = $(this).attr('data-start'),
-                request = {
-                'option' : 'com_ajax',
-                'plugin' : 'particle',
-                'Itemid' : {{ gantry.page.itemid|int }},
-                'id'     : id,
-                'start'  : start,
-                'format' : 'json'
-            };
-            $.ajax({
-                type       : 'GET',
-                data       : request,
-                indexValue : id + '-particle',
-                success: function (response) {
-                    if(response.data){
-                        $('#' + this.indexValue).html(response.data[0].html);
-                    } else {
-                        // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
-                        $('#' + this.indexValue).html(response.message);
+    if (!window.GantryContentArrayJoomlaInitialized) {
+        window.GantryContentArrayJoomlaInitialized = true;
+
+        document.addEventListener('click', async function (event) {
+            const eventTarget = event.target instanceof Element ? event.target : event.target.parentElement;
+            const button = eventTarget ? eventTarget.closest('button.contentarray-button') : null;
+
+            if (!button || button.disabled) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const id = button.dataset.id;
+            const target = document.getElementById(`${id}-particle`);
+
+            if (!target) {
+                return;
+            }
+
+            const url = new URL(window.location.href);
+            url.searchParams.set('option', 'com_ajax');
+            url.searchParams.set('plugin', 'particle');
+            url.searchParams.set('Itemid', {{ gantry.page.itemid|int }});
+            url.searchParams.set('id', id);
+            url.searchParams.set('start', button.dataset.start);
+            url.searchParams.set('format', 'json');
+
+            button.disabled = true;
+            target.setAttribute('aria-busy', 'true');
+
+            try {
+                const request = await fetch(url.toString(), {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                    headers: {
+                        Accept: 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
-                },
-                error: function(response) {
-                    // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
-                    $('#' + this.indexValue).html('AJAX FAILED ON ERROR');
+                });
+
+                if (!request.ok) {
+                    throw new Error(`Content array request failed with status ${request.status}`);
                 }
-            });
-            return false;
+
+                const response = await request.json();
+                const html = response.data && response.data[0] ? response.data[0].html : response.message;
+                target.innerHTML = html || '';
+            } catch (error) {
+                target.innerHTML = 'AJAX FAILED ON ERROR';
+            } finally {
+                target.removeAttribute('aria-busy');
+                if (button.isConnected) {
+                    button.disabled = false;
+                }
+            }
         });
-    })(jQuery)
+    }
 </script>
 {% endif %}
 {% endblock %}

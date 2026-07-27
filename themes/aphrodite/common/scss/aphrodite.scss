@@ -1,6 +1,137 @@
-// Aphrodite for Gantry 5
-// Keep Nucleus as the Gantry layout contract; Bootstrap drives presentation.
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
 @import "dependencies";
+
+//-------------------------------------------
+
+// THEME STYLING
+
+// Base
 @import "nucleus/theme/base";
-@import "aphrodite/styles/bootstrap-bridge";
+
+// Fonts
+@import "aphrodite/styles/fonts";
+
+// Core
+@import "aphrodite/styles/core";
+
+// Hyperlinks
+@import "aphrodite/styles/hyperlinks";
+
+// Typography
+@import "aphrodite/styles/typography";
+
+// Utilities
+@import "aphrodite/styles/utilities";
+
+// Variations
+@import "aphrodite/styles/variations";
+
+// Buttons
+@import "aphrodite/styles/buttons";
+
+// Tables
+@import "aphrodite/styles/tables";
+
+// Forms
+@import "aphrodite/styles/forms";
+
+// Dropdown Animations
+@import "aphrodite/styles/dropdownanimations";
+
+// Demo Styling
+@import "aphrodite/styles/aphrodite-style";
+
+//-------------------------------------------
+
+// SECTIONS STYLING
+
+// PageSurround
+@import "aphrodite/sections/pagesurround";
+
+// Header
+@import "aphrodite/sections/header";
+
+// Navigation
+@import "aphrodite/sections/navigation";
+
+// Main Nav
+@import "aphrodite/sections/mainnav";
+
+// Intro
+@import "aphrodite/sections/intro";
+
+// Features
+@import "aphrodite/sections/features";
+
+// Utility
+@import "aphrodite/sections/utility";
+
+// Above
+@import "aphrodite/sections/above";
+
+// Testimonials
+@import "aphrodite/sections/testimonials";
+
+// Expanded
+@import "aphrodite/sections/expanded";
+
+// Main
+@import "aphrodite/sections/main";
+
+// Aside
+@import "aphrodite/sections/aside";
+
+// Sidebar
+@import "aphrodite/sections/sidebar";
+
+// Footer
+@import "aphrodite/sections/footer";
+
+// Off Canvas
+@import "aphrodite/sections/offcanvas";
+
+//-------------------------------------------
+
+// LAYOUTS STYLING
+
+// Error
+@import "aphrodite/layouts/error";
+
+// Offline
+@import "aphrodite/layouts/offline";
+
+//-------------------------------------------
+
+// PARTICLES STYLING
+
+// Logo
+@import "aphrodite/particles/logo";
+
+// Social
+@import "aphrodite/particles/social";
+
+// Content Array
+@import "aphrodite/particles/contentarray";
+
+// Content Cubes
+@import "aphrodite/particles/contentcubes";
+
+// Content Tabs
+@import "aphrodite/particles/contenttabs";
+
+// Owl Carousel
+@import "aphrodite/particles/owlcarousel";
+
+// Horizontal Menu
+@import "aphrodite/particles/horizontalmenu";
+
+// To Top
+@import "aphrodite/particles/totop";
+
+//-------------------------------------------
+
+// BREAKPOINTS
 @import "nucleus/theme/breakpoints/base";
+
+//-------------------------------------------

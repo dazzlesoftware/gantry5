@@ -4,15 +4,13 @@ preset:
   name: default
   timestamp: 1475750119
 layout:
-  /top/:
-    -
-      - aphroditetopbar-4100
   /navigation/:
     -
       - system-messages-7972
     -
-      - 'logo-9608 28'
-      - 'menu-6409 72'
+      - 'logo-9608 15'
+      - 'menu-6409 65'
+      - 'social-3171 20'
   /header/: {  }
   /intro/: {  }
   /features/: {  }
@@ -44,11 +42,6 @@ layout:
     -
       - mobile-menu-5697
 structure:
-  top:
-    type: section
-    attributes:
-      boxed: ''
-      class: g-flushed
   navigation:
     type: section
     attributes:
@@ -113,24 +106,8 @@ structure:
     attributes:
       boxed: ''
 content:
-  aphroditetopbar-4100:
-    title: 'Aphrodite Top Bar'
-    attributes:
-      label: 'Customer Care'
-      phone: '+1 (780) 830-8814'
-      phone_link: 'tel:+17808308814'
-      social:
-        - { name: Facebook, icon: 'fab fa-facebook-f', link: '#', target: _blank }
-        - { name: Instagram, icon: 'fab fa-instagram', link: '#', target: _blank }
-        - { name: X, icon: 'fab fa-twitter', link: '#', target: _blank }
-        - { name: LinkedIn, icon: 'fab fa-linkedin-in', link: '#', target: _blank }
-        - { name: WhatsApp, icon: 'fab fa-whatsapp', link: '#', target: _blank }
   logo-9608:
     title: 'Logo / Image'
-  menu-6409:
-    title: Menu
-    attributes:
-      menu: main-menu
   social-3171:
     block:
       class: g-social-header

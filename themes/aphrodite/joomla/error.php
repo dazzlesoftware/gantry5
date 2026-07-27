@@ -23,7 +23,6 @@ $gantry = include $className;
 /** @var Platform $joomla */
 $joomla = $gantry['platform'];
 $joomla->document = $this;
-g5_aphrodite_add_joomla_assets($this);
 
 /** @var Theme $theme */
 $theme = $gantry['theme'];

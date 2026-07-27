@@ -8,7 +8,11 @@
             {# Begin Entry Title #}
             {% if gantry.config.get('content.' ~ scope ~ '.title.enabled', '1') %}
                 <h2 class="entry-title">
-                    <a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a>
+                    {% if gantry.config.get('content.' ~ scope ~ '.title.link', '0') %}
+                        <a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a>
+                    {% else %}
+                        {{ post.title }}
+                    {% endif %}
                 </h2>
             {% endif %}
             {# End Entry Title #}

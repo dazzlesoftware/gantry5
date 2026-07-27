@@ -4,9 +4,9 @@ details:
   icon: paper-plane
   date: '@versiondate@'
   author:
-    name: 'Dazzle Software, LLC'
+    name: Dazzle Software, LLC
     email: 'support@dazzlesoftware.org'
-    link: 'https://www.dazzlesoftware.org'
+    link: 'https://dazzlesoftware.org'
 
   documentation:
     link: 'http://docs.gantry.org/gantry5'
@@ -14,9 +14,12 @@ details:
   support:
     link: 'https://gitter.im/gantry/gantry5'
 
-  copyright: 'Copyright (C) 2026 Dazzle Software, LLC. All rights reserved.'
+  updates:
+    link: 'http://updates.rockettheme.com/themes/aphrodite.yaml'
+
+  copyright: Copyright (C) 2026 Dazzle Software, LLC
   license: GPLv3 and later
-  description: Aphrodite Bootstrap 5 Theme for Gantry 5
+  description: Aphrodite Theme
   images:
     thumbnail: 'admin/images/preset1.png'
     preview: 'admin/images/preset1.png'

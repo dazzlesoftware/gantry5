@@ -122,10 +122,7 @@ class Theme extends AbstractTheme
     {
         if (!$this->renderer) {
             $twig = parent::renderer();
-            $twig = \apply_filters('twig_apply_filters', $twig);
-            $twig = \apply_filters('timber/twig/filters', $twig);
-            $twig = \apply_filters('timber/twig/functions', $twig);
-            $twig = \apply_filters('timber/twig/escapers', $twig);
+            $twig = \apply_filters('timber/twig', $twig);
             $twig = \apply_filters('timber/loader/twig', $twig);
             $this->renderer = $twig;
         }
@@ -365,6 +362,11 @@ class Theme extends AbstractTheme
      */
     public function timber_loader_twig(Environment $twig)
     {
+        $loader = $twig->getLoader();
+        if ($loader instanceof FilesystemLoader) {
+            $this->setTwigLoaderPaths($loader);
+        }
+
         $twig->enableAutoReload();
 
         return $twig;

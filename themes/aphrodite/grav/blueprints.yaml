@@ -1,0 +1,21 @@
+name: Aphrodite
+version: "@version@"
+description: "Default Gantry 5 theme."
+icon: gantry
+author:
+  name: Dazzle Software
+  email: 'support@dazzlesoftware.org'
+  url: 'https://dazzlesoftware.org'
+homepage: 'http://gantry.org'
+readme: 'https://github.com/gantry/gantry5/blob/master/README.md'
+keywords: gantry, gantry5, theme
+bugs: 'https://github.com/gantry/gantry5/issues'
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.7' }
+  - { name: gantry5, version: '>=5.5' }
+
+form:
+  validation: loose
+  fields:

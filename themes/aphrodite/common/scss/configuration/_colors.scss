@@ -5,37 +5,28 @@ $off-white:                     #eceff3;
 
 // Base
 $base-background:               #ffffff !default;
-$base-text-color:               #252525 !default;
-$base-border-color:             #ededed !default;
+$base-text-color:               #424753 !default;
+$base-border-color:             #e0e0e5 !default;
 
 // Accents
-$accent-color-1:                #0345bf !default;
-$accent-color-2:                #ff406c !default;
+$accent-color-1:                #4db2b3 !default;
+$accent-color-2:                #8f4dae !default;
 
 // Links
-$link-regular:                  #0345bf !default;
-$link-hover:                    #044cd0 !default;
+$link-regular:                  #4db2b3 !default;
+$link-hover:                    #424753 !default;
 
 // Page Surround
 $pagesurround-background:       $base-background !default;
 
 // Navigation
-$navigation-background:         #ffffff !default;
-$navigation-text-color:         #252525 !default;
-$navigation-separator-color-1:  #0345bf !default;
-$navigation-separator-color-2:  #ff406c !default;
-$navigation-separator-height:   3px !default;
-$navigation-separator-split:    72% !default;
-
-// Top Bar
-$topbar-background:             #111111 !default;
-$topbar-text-color:             #666666 !default;
-$topbar-hover-color:            #ff406c !default;
+$navigation-background:         #312f38 !default;
+$navigation-text-color:         #ffffff !default;
 
 // Header
-$header-background:             #ffffff !default;
+$header-background:             #312f38 !default;
 $header-background-image:       false !default;
-$header-text-color:             #252525 !default;
+$header-text-color:             #eceeef !default;
 
 // Intro
 $intro-background:              #f4f5f7 !default;
@@ -67,9 +58,9 @@ $footer-background:             #312f38 !default;
 $footer-text-color:             #ffffff !default;
 
 // Off Canvas
-$offcanvas-background:          #0345bf !default;
+$offcanvas-background:          #4db2b3 !default;
 $offcanvas-text-color:          #eceeef !default;
-$offcanvas-toggle-color:        #0345bf !default;
+$offcanvas-toggle-color:        #4db2b3 !default;
 
 // Block Variations
 $box1-background:               $accent-color-1 !default;

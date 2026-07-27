@@ -13,9 +13,13 @@
                     <span class="meta-prefix">{{ gantry.config.get('content.' ~ scope ~ '.meta-date.prefix', '') ~ ' ' }}</span>
                 {% endif %}
 
-                <a href="{{ post.link }}" title="{{ post.title }}" class="meta-date-link">
-                    <time class="date entry-date published" datetime="{{ post.date('c') }}">{{ post.date(gantry.config.get('content.' ~ scope ~ '.meta-date.format', 'j F Y')) }}</time>
-                </a>
+                {% if gantry.config.get('content.' ~ scope ~ '.meta-date.link', '1') %}
+                    <a href="{{ post.link }}" title="{{ post.title }}" class="meta-date-link">
+                        <span class="date">{{ post.date(gantry.config.get('content.' ~ scope ~ '.meta-date.format', 'j F Y')) }}</span>
+                    </a>
+                {% else %}
+                    <span class="date">{{ post.date(gantry.config.get('content.' ~ scope ~ '.meta-date.format', 'j F Y')) }}</span>
+                {% endif %}
             </div>
         {% endif %}
         {# End Meta - Date #}

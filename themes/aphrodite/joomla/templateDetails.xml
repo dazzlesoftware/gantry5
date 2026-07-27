@@ -5,15 +5,14 @@
     <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
     <authorEmail>support@dazzlesoftware.org</authorEmail>
-    <authorUrl>https://www.dazzlesoftware.org</authorUrl>
-    <copyright>Copyright (C) 2026 Dazzle Software, LLC. All rights reserved.</copyright>
+    <authorUrl>https://dazzlesoftware.org</authorUrl>
+    <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
     <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
-    <description>Aphrodite Bootstrap 5 theme for Gantry 5.</description>
+    <description>TPL_G5_APHRODITE_DESC</description>
     <scriptfile>install.php</scriptfile>
     <files>
         <folder>admin</folder>
         <folder>blueprints</folder>
-        <folder>css</folder>
         <folder>config</folder>
         <folder>fonts</folder>
         <folder>gantry</folder>
@@ -26,7 +25,6 @@
         <folder>layouts</folder>
         <folder>particles</folder>
         <folder>scss</folder>
-        <folder>webfonts</folder>
         <file>component.php</file>
         <file>error.php</file>
         <file>index.php</file>
@@ -75,4 +73,7 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="Gantry 5 Aphrodite">https://updates.gantry.org/5.0/joomla/tpl_g5_aphrodite.xml</server>
+    </updateservers>
 </extension>
