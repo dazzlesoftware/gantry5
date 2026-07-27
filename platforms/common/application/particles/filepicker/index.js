@@ -10,8 +10,7 @@ var dom           = require('../../utils/dom'),
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
     getAjaxURL    = require('../../utils/get-ajax-url').global,
     translate     = require('../../utils/translate'),
-    Cookie        = require('../../utils/cookie'),
-    dropzone      = require('dropzone').default;
+    Cookie        = require('../../utils/cookie');
 
 var clone = function(value) {
     return JSON.parse(JSON.stringify(value));
@@ -53,6 +52,303 @@ var updateProgress = function(element, options) {
     return element.g5Progresser;
 };
 
+var fileExtension = function(file) {
+    var parts = file.name.split('.');
+    return (!parts.length || parts.length === 1) ? '-' : parts.pop().toLowerCase();
+};
+
+var formatBytes = function(bytes) {
+    var units = ['B', 'KB', 'MB', 'GB', 'TB'],
+        value = Number(bytes) || 0,
+        unit = 0;
+
+    while (value >= 1024 && unit < units.length - 1) {
+        value /= 1024;
+        unit++;
+    }
+
+    return (unit ? value.toFixed(2) : value) + ' ' + units[unit];
+};
+
+class NativeUploader {
+    constructor(filePicker, files, previewsContainer) {
+        this.filePicker = filePicker;
+        this.files = files;
+        this.previewsContainer = previewsContainer;
+        this.requests = new Set();
+        this.refreshTimer = null;
+
+        this.input = document.createElement('input');
+        this.input.type = 'file';
+        this.input.multiple = true;
+        this.input.hidden = true;
+        this.input.accept = filePicker.acceptedFiles(filePicker.data.filter);
+        filePicker.content.appendChild(this.input);
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleDrag = this.handleDrag.bind(this);
+        this.handleDrop = this.handleDrop.bind(this);
+
+        filePicker.content.addEventListener('click', this.handleClick);
+        filePicker.content.addEventListener('dragenter', this.handleDrag);
+        filePicker.content.addEventListener('dragover', this.handleDrag);
+        filePicker.content.addEventListener('dragleave', this.handleDrag);
+        filePicker.content.addEventListener('drop', this.handleDrop);
+        this.input.addEventListener('change', this.handleChange);
+    }
+
+    setPreviewsContainer(container) {
+        this.previewsContainer = container;
+    }
+
+    handleClick(event) {
+        if (!event.target.closest('[data-upload]')) return;
+        event.preventDefault();
+        this.input.click();
+    }
+
+    handleChange() {
+        this.addFiles(this.input.files);
+        this.input.value = '';
+    }
+
+    handleDrag(event) {
+        if (!event.dataTransfer || !Array.from(event.dataTransfer.types || []).includes('Files')) return;
+        event.preventDefault();
+        if (event.type === 'dragenter' || event.type === 'dragover') {
+            this.files.classList.add('g-file-dragover');
+            if (event.dataTransfer) event.dataTransfer.dropEffect = 'copy';
+        } else {
+            this.files.classList.remove('g-file-dragover');
+        }
+    }
+
+    handleDrop(event) {
+        this.handleDrag(event);
+        this.files.classList.remove('g-file-dragover');
+        if (event.dataTransfer) this.addFiles(event.dataTransfer.files);
+    }
+
+    addFiles(fileList) {
+        Array.from(fileList || []).forEach(file => this.upload(file));
+    }
+
+    accepts(file) {
+        if (!this.filePicker.data.filter) return true;
+        try {
+            return new RegExp(this.filePicker.data.filter, 'i').test(file.name);
+        } catch (error) {
+            return true;
+        }
+    }
+
+    createPreview(file) {
+        if (!this.previewsContainer) return null;
+
+        var empty = this.previewsContainer.querySelector('.no-files-found');
+        if (empty) empty.remove();
+
+        var fragment = parseElement(this.filePicker.getPreviewTemplate()),
+            element = fragment.firstElementChild,
+            extension = fileExtension(file),
+            thumb = element.querySelector('.g-thumb'),
+            name = element.querySelector('.g-file-name'),
+            size = element.querySelector('.g-file-size');
+
+        if (name) name.textContent = file.name;
+        if (size) size.textContent = formatBytes(file.size);
+
+        element.classList.add('g-file-uploading');
+        element.classList.add('g-image-' + extension);
+        if (file.type && file.type.indexOf('image/') === 0) {
+            if (thumb) thumb.classList.add('g-image', 'g-image-' + extension);
+            var reader = new FileReader();
+            reader.addEventListener('load', function() {
+                var thumbnail = element.querySelector('[data-upload-thumbnail] > div');
+                if (thumbnail) thumbnail.style.backgroundImage = 'url("' + reader.result + '")';
+            }, { once: true });
+            reader.readAsDataURL(file);
+        } else if (thumb) {
+            thumb.textContent = extension;
+        }
+
+        this.previewsContainer.appendChild(element);
+        return element;
+    }
+
+    prepareProgress(element) {
+        var uploader = element.querySelector('[data-file-uploadprogress]'),
+            isList = this.files.classList.contains('g-filemode-list'),
+            config = {
+                value: 0,
+                animation: false,
+                insertLocation: 'bottom'
+            };
+
+        Object.assign(config, isList ? {
+            size: 20,
+            thickness: 10,
+            fill: { color: this.filePicker.colors.small, gradient: false }
+        } : {
+            size: 50,
+            thickness: 'auto',
+            fill: { gradient: this.filePicker.colors.gradient, color: false }
+        });
+
+        updateProgress(uploader, config);
+        uploader.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
+        this.filePicker.setProgressText(element, '0%');
+    }
+
+    showError(element, error) {
+        var uploader = element.querySelector('[data-file-uploadprogress]'),
+            text = element.querySelector('.g-file-progress-text'),
+            isList = this.files.classList.contains('g-filemode-list'),
+            message = error && error.html
+                ? error.html
+                : (error && error.error && error.error.message
+                    ? error.error.message
+                    : (error && error.message ? error.message : error));
+
+        element.classList.add('g-file-error');
+        uploader.title = 'Error';
+        updateProgress(uploader, {
+            fill: { color: this.filePicker.colors.error, gradient: false },
+            value: 1,
+            thickness: isList ? 10 : 25
+        });
+
+        if (text) {
+            text.title = 'Error';
+            text.innerHTML = '<i class="fa fa-exclamation" aria-hidden="true"></i>';
+            popovers.create(uploader, {
+                content: message || 'Upload failed.',
+                placement: 'auto',
+                trigger: 'mouse',
+                style: 'filepicker, above-modal',
+                width: 'auto',
+                targetEvents: false
+            });
+        }
+    }
+
+    showSuccess(element, uploadResponse) {
+        var uploader = element.querySelector('[data-file-uploadprogress]'),
+            mtime = element.querySelector('.g-file-mtime'),
+            text = element.querySelector('.g-file-progress-text'),
+            thumb = element.querySelector('.g-thumb'),
+            isList = this.files.classList.contains('g-filemode-list');
+
+        updateProgress(uploader, {
+            fill: { color: this.filePicker.colors.success, gradient: false },
+            value: 1,
+            thickness: isList ? 10 : 25
+        });
+        if (text) text.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
+
+        window.setTimeout(function() {
+            animateOpacity(uploader, 0, 500);
+            animateOpacity(thumb, 1, 500, function() {
+                element.setAttribute('data-file', JSON.stringify(uploadResponse.finfo));
+                element.setAttribute('data-file-url', uploadResponse.url);
+                element.classList.remove('g-file-uploading');
+                if (uploader) uploader.remove();
+                if (mtime) mtime.textContent = translate('GANTRY5_PLATFORM_JUST_NOW');
+            });
+        }, 500);
+    }
+
+    parseResponse(xhr) {
+        if (xhr.response && typeof xhr.response === 'object') return xhr.response;
+        var text = '';
+        try {
+            text = xhr.responseText || '';
+        } catch (error) {
+            return 'Upload failed.';
+        }
+        try {
+            return JSON.parse(text);
+        } catch (error) {
+            return text || 'Upload failed.';
+        }
+    }
+
+    upload(file) {
+        var element = this.createPreview(file);
+        if (!element) return;
+
+        this.prepareProgress(element);
+
+        if (!this.accepts(file)) {
+            this.showError(
+                element,
+                file.name + ' ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': ' + this.filePicker.data.filter
+            );
+            return;
+        }
+
+        var path = this.filePicker.getPath();
+        if (!path) {
+            this.showError(element, 'Select an upload folder first.');
+            return;
+        }
+
+        var url = parseAjaxURI(
+                getAjaxURL('filepicker/upload/' + window.btoa(encodeURIComponent(path + file.name)))
+                + getAjaxSuffix()
+            ),
+            form = new FormData(),
+            xhr = new XMLHttpRequest();
+
+        form.append('file', file, file.name);
+        this.requests.add(xhr);
+
+        xhr.open('POST', url, true);
+        xhr.responseType = 'json';
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.upload.addEventListener('progress', function(event) {
+            if (!event.lengthComputable) return;
+            var progress = (event.loaded / event.total) * 100,
+                uploader = element.querySelector('[data-file-uploadprogress]');
+            updateProgress(uploader, { value: progress / 100 });
+            this.filePicker.setProgressText(element, Math.round(progress) + '%');
+        }.bind(this));
+        xhr.addEventListener('load', function() {
+            this.requests.delete(xhr);
+            var response = this.parseResponse(xhr);
+            if (xhr.status >= 200 && xhr.status < 300 && response && response.finfo) {
+                this.showSuccess(element, response);
+                window.clearTimeout(this.refreshTimer);
+                this.refreshTimer = window.setTimeout(this.filePicker.refreshFiles.bind(this.filePicker), 1100);
+            } else {
+                this.showError(element, response);
+            }
+        }.bind(this));
+        xhr.addEventListener('error', function() {
+            this.requests.delete(xhr);
+            this.showError(element, 'Upload failed.');
+        }.bind(this));
+        xhr.addEventListener('abort', function() {
+            this.requests.delete(xhr);
+        }.bind(this));
+        xhr.send(form);
+    }
+
+    destroy() {
+        window.clearTimeout(this.refreshTimer);
+        this.requests.forEach(xhr => xhr.abort());
+        this.requests.clear();
+        this.filePicker.content.removeEventListener('click', this.handleClick);
+        this.filePicker.content.removeEventListener('dragenter', this.handleDrag);
+        this.filePicker.content.removeEventListener('dragover', this.handleDrag);
+        this.filePicker.content.removeEventListener('dragleave', this.handleDrag);
+        this.filePicker.content.removeEventListener('drop', this.handleDrop);
+        this.input.removeEventListener('change', this.handleChange);
+        this.input.remove();
+    }
+}
+
 class FilePicker {
     constructor(element) {
         var data = element.getAttribute('data-g5-filepicker');
@@ -91,9 +387,9 @@ class FilePicker {
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
             remoteLoaded: this.loaded.bind(this),
             afterClose: function() {
-                if (this.dropzone) {
-                    this.dropzone.destroy();
-                    this.dropzone = null;
+                if (this.uploader) {
+                    this.uploader.destroy();
+                    this.uploader = null;
                 }
             }.bind(this)
         });
@@ -110,11 +406,10 @@ class FilePicker {
 
     getPreviewTemplate() {
         return '<li data-file>' +
-            '<span class="g-file-delete" data-g-file-delete data-dz-remove><i class="fa fa-fw fa-trash-o fa-trash-alt" aria-hidden="true"></i></span>' +
-            '<div class="g-thumb" data-dz-thumbnail><div></div></div>' +
-            '<span class="g-file-name" data-dz-name></span>' +
-            '<span class="g-file-size" data-dz-size></span>' +
-            '<span class="g-file-mtime" data-dz-mtime></span>' +
+            '<div class="g-thumb" data-upload-thumbnail><div></div></div>' +
+            '<span class="g-file-name"></span>' +
+            '<span class="g-file-size"></span>' +
+            '<span class="g-file-mtime"></span>' +
             '<span class="g-file-progress" data-file-uploadprogress><span class="g-file-progress-text"></span></span>' +
             '</li>';
     }
@@ -131,135 +426,7 @@ class FilePicker {
 
         if (files) {
             var previews = files.querySelector('ul:not(.g-list-labels)');
-            this.dropzone = new dropzone('body', {
-                previewTemplate: this.getPreviewTemplate(),
-                previewsContainer: previews,
-                thumbnailWidth: 100,
-                thumbnailHeight: 100,
-                clickable: '[data-upload]',
-                acceptedFiles: this.acceptedFiles(this.data.filter) || '',
-                accept: function(file, done) {
-                    if (!this.data.filter || file.name.toLowerCase().match(this.data.filter)) {
-                        done();
-                    } else {
-                        done('<code>' + file.name + '</code> ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': <br />  <code>' + this.data.filter + '</code>');
-                    }
-                }.bind(this),
-                url: function(file) {
-                    return parseAjaxURI(getAjaxURL('filepicker/upload/' + global.btoa(encodeURIComponent(this.getPath() + file[0].name))) + getAjaxSuffix());
-                }.bind(this)
-            });
-
-            this.dropzone.on('thumbnail', function(file, dataUrl) {
-                var ext = file.name.split('.');
-                ext = (!ext.length || ext.length === 1) ? '-' : ext.reverse()[0];
-                var element = file.previewElement,
-                    thumbnail = element.querySelector('[data-dz-thumbnail] > div');
-                element.classList.add('g-image', 'g-image-' + ext.toLowerCase());
-                if (thumbnail) { thumbnail.style.backgroundImage = 'url(' + encodeURI(dataUrl) + ')'; }
-            });
-
-            this.dropzone.on('addedfile', function(file) {
-                var element      = file.previewElement,
-                    uploader     = element.querySelector('[data-file-uploadprogress]'),
-                    isList       = files.classList.contains('g-filemode-list'),
-                    progressConf = {
-                        value: 0,
-                        animation: false,
-                        insertLocation: 'bottom'
-                    },
-                    ext = file.name.split('.');
-
-                ext = (!ext.length || ext.length === 1) ? '-' : ext.reverse()[0];
-                var thumb = element.querySelector('.g-thumb');
-                if (!file.type.match(/image.*/)) {
-                    if (thumb) { thumb.textContent = ext; }
-                } else if (thumb) {
-                    thumb.classList.add('g-image', 'g-image-' + ext.toLowerCase());
-                }
-
-                Object.assign(progressConf, isList ? {
-                    size: 20,
-                    thickness: 10,
-                    fill: { color: colors.small, gradient: false }
-                } : {
-                    size: 50,
-                    thickness: 'auto',
-                    fill: { gradient: colors.gradient, color: false }
-                });
-
-                element.classList.add('g-file-uploading');
-                updateProgress(uploader, progressConf);
-                uploader.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
-                var progressText = uploader.querySelector('.g-file-progress-text');
-                if (progressText) {
-                    progressText.innerHTML = '&bull;&bull;&bull;';
-                    progressText.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
-                }
-            }).on('processing', function(file) {
-                self.setProgressText(file.previewElement, '0%');
-            }).on('sending', function(file) {
-                self.setProgressText(file.previewElement, '0%');
-            }).on('uploadprogress', function(file, progress) {
-                var uploader = file.previewElement.querySelector('[data-file-uploadprogress]'),
-                    label = Math.round(progress) + '%';
-                updateProgress(uploader, { value: progress / 100 });
-                self.setProgressText(file.previewElement, label);
-            }).on('complete', function() {
-                self.refreshFiles();
-            }).on('error', function(file, error) {
-                var element  = file.previewElement,
-                    uploader = element.querySelector('[data-file-uploadprogress]'),
-                    text     = element.querySelector('.g-file-progress-text'),
-                    isList   = files.classList.contains('g-filemode-list');
-
-                element.classList.add('g-file-error');
-                uploader.title = 'Error';
-                updateProgress(uploader, {
-                    fill: { color: colors.error, gradient: false },
-                    value: 1,
-                    thickness: isList ? 10 : 25
-                });
-
-                if (text) {
-                    text.title = 'Error';
-                    text.innerHTML = '<i class="fa fa-exclamation" aria-hidden="true"></i>';
-                    popovers.create(uploader, {
-                        content: error && error.html ? error.html : (error && error.error && error.error.message ? error.error.message : error),
-                        placement: 'auto',
-                        trigger: 'mouse',
-                        style: 'filepicker, above-modal',
-                        width: 'auto',
-                        targetEvents: false
-                    });
-                }
-            }).on('success', function(file, uploadResponse) {
-                var element  = file.previewElement,
-                    uploader = element.querySelector('[data-file-uploadprogress]'),
-                    mtime    = element.querySelector('.g-file-mtime'),
-                    text     = element.querySelector('.g-file-progress-text'),
-                    thumb    = element.querySelector('.g-thumb'),
-                    isList   = files.classList.contains('g-filemode-list');
-
-                updateProgress(uploader, {
-                    fill: { color: colors.success, gradient: false },
-                    value: 1,
-                    thickness: isList ? 10 : 25
-                });
-                if (text) { text.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>'; }
-
-                setTimeout(function() {
-                    animateOpacity(uploader, 0, 500);
-                    animateOpacity(thumb, 1, 500, function() {
-                        element.setAttribute('data-file', JSON.stringify(uploadResponse.finfo));
-                        element.setAttribute('data-file-url', uploadResponse.url);
-                        element.classList.remove('g-file-uploading');
-                        element.dropzone = file;
-                        if (uploader) { uploader.remove(); }
-                        if (mtime) { mtime.textContent = translate('GANTRY5_PLATFORM_JUST_NOW'); }
-                    });
-                }, 500);
-            });
+            this.uploader = new NativeUploader(this, files, previews);
         }
 
         dom.delegate(content, 'click', '.g-bookmark-title', function(event, element) {
@@ -311,7 +478,7 @@ class FilePicker {
                         var list = files.querySelector('ul:not(.g-list-labels)');
                         if (list) { list.replaceChildren(); }
                     }
-                    this.dropzone.previewsContainer = files.querySelector('ul:not(.g-list-labels)');
+                    this.uploader.setPreviewsContainer(files.querySelector('ul:not(.g-list-labels)'));
                 }
             }.bind(this));
         }.bind(this));

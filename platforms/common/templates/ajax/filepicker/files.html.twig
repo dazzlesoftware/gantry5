@@ -34,7 +34,7 @@
         <li data-file="{{ file|json_encode()|e('html_attr') }}" data-file-url="{{ file.pathname }}"{{ file.pathname == value ? ' class="selected"' : '' }}
             title="{{ file.filename }} ({{ macro.bytesToSize(file.size) }})">
             {% if file.isInCustom %}
-                <span class="g-file-delete" data-g-file-delete data-dz-remove title="{{ 'GANTRY5_PLATFORM_FILE_REMOVE'|trans }}">
+                <span class="g-file-delete" data-g-file-delete title="{{ 'GANTRY5_PLATFORM_FILE_REMOVE'|trans }}">
                     <i class="far fa-fw fa-trash-alt" aria-hidden="true"></i>
                 </span>
             {% endif %}
