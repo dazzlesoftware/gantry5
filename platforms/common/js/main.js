@@ -16060,7 +16060,6 @@ module.exports = DraggableGroup;
 },{}],68:[function(require,module,exports){
 "use strict";
 var $          = require('elements'),
-    slick      = require('slick'),
     progresser = require('../ui/progresser'),
     indicator  = require('./indicator');
 
@@ -16089,18 +16088,43 @@ var sequence = function() {
     };
 };
 
-var walk = function(combinator, method) {
+var matches = function(element, expression) {
+    return element && element.nodeType === Node.ELEMENT_NODE
+        && element.matches(expression || '*');
+};
 
-    return function(expression) {
-        var parts = slick.parse(expression || "*");
+var adjacentSiblings = function(expression) {
+    var siblings = [];
 
-        expression = Array.prototype.map.call(parts, function(part) {
-            return combinator + " " + part;
-        }).join(', ');
+    this.forEach(function(element) {
+        var previous = element.previousElementSibling,
+            next = element.nextElementSibling;
 
-        return this[method](expression);
-    };
+        if (matches(previous, expression) && siblings.indexOf(previous) === -1) {
+            siblings.push(previous);
+        }
+        if (matches(next, expression) && siblings.indexOf(next) === -1) {
+            siblings.push(next);
+        }
+    });
 
+    return $(siblings);
+};
+
+var matchingSiblings = function(expression) {
+    var siblings = [];
+
+    this.forEach(function(element) {
+        if (!element.parentElement) { return; }
+
+        Array.prototype.forEach.call(element.parentElement.children, function(sibling) {
+            if (sibling !== element && matches(sibling, expression) && siblings.indexOf(sibling) === -1) {
+                siblings.push(sibling);
+            }
+        });
+    });
+
+    return $(siblings);
 };
 
 
@@ -16262,14 +16286,14 @@ $.implement({
         return size;
     },
 
-    sibling: walk('++', 'find'),
+    sibling: adjacentSiblings,
 
-    siblings: walk('~~', 'search')
+    siblings: matchingSiblings
 });
 
 module.exports = $;
 
-},{"../ui/progresser":56,"./indicator":79,"elements":91,"slick":125}],69:[function(require,module,exports){
+},{"../ui/progresser":56,"./indicator":79,"elements":91}],69:[function(require,module,exports){
 'use strict';
 
 module.exports = (container, selector, threshold = 0) => {

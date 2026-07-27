@@ -18,6 +18,7 @@ The Gantry core and administration interface are significantly closer to native 
 - Collection and key/value fields now use native pointer and keyboard reordering instead of SortableJS.
 - Position cards now use native cross-list pointer dragging, automatic scrolling, and trash deletion instead of SortableJS.
 - Page-settings atoms now use native cloning, grid-aware reordering, and trash deletion; SortableJS has been removed completely.
+- Gantry's custom adjacent/all-sibling helpers now use native DOM traversal and `Element.matches()` instead of importing Slick directly.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -66,7 +67,7 @@ Counts overlap because a single file may import more than one package.
 | `prime` | 3 | Legacy class abstraction |
 | `prime-util` | 2 | Mixins and supporting utilities for `prime` |
 | `domready` | 2 | Replaceable with `DOMContentLoaded` or immediate-ready checks |
-| Slick | 2 | Used by the legacy DOM utility layer |
+| Slick | 0 direct | Still bundled transitively by the legacy `elements` package |
 
 ### Converted platform templates
 
@@ -207,7 +208,7 @@ Completed:
 
 Remaining sequence:
 
-1. Slick remnants
+1. Slick's transitive use inside the legacy `elements` package
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.
 
@@ -252,4 +253,4 @@ After dependency removal stabilizes:
 
 ## Immediate next target
 
-The recommended next implementation task is rewriting the three platform content-array templates. They are isolated, directly use jQuery, and share enough behavior to establish a consistent native implementation for WordPress, Joomla, and Grav.
+Replace another bounded part of the legacy `elements` DOM abstraction, beginning with traversal methods now backed internally by Slick.
