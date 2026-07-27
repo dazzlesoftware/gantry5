@@ -4,8 +4,7 @@
 var EventEmitter = require('../utils/event-emitter'),
     ready      = require('../utils/dom').ready,
     zen        = require('elements/zen'),
-
-    sifter     = require('sifter'),
+    NativeSearchIndex = require('../utils/search-index'),
     $          = require('../utils/elements.utils');
 
 var bind = function(fn, context) {
@@ -109,7 +108,6 @@ var bind = function(fn, context) {
             .replace(/\s+/g, '-')
             .toLowerCase();
     };
-
 
 var IS_MAC                = /Mac/.test(navigator.userAgent),
     IS_IE                 = /MSIE 9/i.test(navigator.userAgent) || /MSIE 10/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent),
@@ -483,7 +481,7 @@ var SelectizeDefinition = {
         this.onSearchChange = this.options.loadThrottle === null ? this.onSearchChange : debounce(this.onSearchChange, this.options.loadThrottle);
 
         // search system
-        this.sifter = new sifter(this.Options, { diacritics: this.options.diacritics });
+        this.searchIndex = new NativeSearchIndex(this.Options, { diacritics: this.options.diacritics });
 
         var i, n;
 
@@ -1258,7 +1256,7 @@ var SelectizeDefinition = {
     },
 
     getScoreFunction: function(query) {
-        return this.sifter.getScoreFunction(query, this.getSearchOptions());
+        return this.searchIndex.getScoreFunction(query, this.getSearchOptions());
     },
 
     getSearchOptions: function() {
@@ -1289,7 +1287,7 @@ var SelectizeDefinition = {
         // perform search
         if (query !== this.lastQuery) {
             this.lastQuery = query;
-            result = this.sifter.search(query, merge(options, { score: calculateScore }));
+            result = this.searchIndex.search(query, merge(options, { score: calculateScore }));
             this.currentResults = result;
         } else {
             result = merge({}, this.currentResults);
@@ -1586,7 +1584,7 @@ var SelectizeDefinition = {
         this.loadedSearches = {};
         this.UserOptions = {};
         this.renderCache = {};
-        this.Options = this.sifter.items = {};
+        this.Options = this.searchIndex.items = {};
         this.lastQuery = null;
         this.emit('option_clear');
         this.clear();

@@ -1293,7 +1293,7 @@ Object.assign(Base.prototype, {
 
 module.exports = Base;
 
-},{"../../utils/event-emitter":68,"../../utils/get-outline":73,"../../utils/translate":81,"../id":25,"elements":87,"elements/traversal":89,"elements/zen":90}],11:[function(require,module,exports){
+},{"../../utils/event-emitter":68,"../../utils/get-outline":73,"../../utils/translate":82,"../id":25,"elements":88,"elements/traversal":90,"elements/zen":91}],11:[function(require,module,exports){
 "use strict";
 
 var Base = require('./base');
@@ -1490,7 +1490,7 @@ Container.prototype.options = {
 
 module.exports = Container;
 
-},{"../../utils/get-ajax-url":72,"../../utils/translate":81,"./base":10}],13:[function(require,module,exports){
+},{"../../utils/get-ajax-url":72,"../../utils/translate":82,"./base":10}],13:[function(require,module,exports){
 "use strict";
 
 var Base = require('./base');
@@ -1585,7 +1585,7 @@ Offcanvas.prototype.options = {
 
 module.exports = Offcanvas;
 
-},{"../../utils/get-ajax-url":72,"../../utils/get-outline":73,"../../utils/translate":81,"./section":18}],16:[function(require,module,exports){
+},{"../../utils/get-ajax-url":72,"../../utils/get-outline":73,"../../utils/translate":82,"./section":18}],16:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -1740,7 +1740,7 @@ module.exports = Particle;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../utils/get-ajax-url":72,"../../utils/get-outline":73,"../../utils/translate":81,"./atom":8}],17:[function(require,module,exports){
+},{"../../utils/get-ajax-url":72,"../../utils/get-outline":73,"../../utils/translate":82,"./atom":8}],17:[function(require,module,exports){
 "use strict";
 
 var Particle = require('./particle');
@@ -1958,7 +1958,7 @@ Section.prototype.options = {};
 
 module.exports = Section;
 
-},{"../../utils/get-ajax-url":72,"../../utils/get-outline":73,"../../utils/translate":81,"./base":10,"./grid":13}],19:[function(require,module,exports){
+},{"../../utils/get-ajax-url":72,"../../utils/get-outline":73,"../../utils/translate":82,"./base":10,"./grid":13}],19:[function(require,module,exports){
 "use strict";
 
 var Particle = require('./particle');
@@ -3337,7 +3337,7 @@ module.exports = {
     savestate: savestate
 };
 
-},{"../fields/submit":7,"../ui":52,"../ui/popover":54,"../utils/dom":65,"../utils/field-validation":69,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/history":76,"../utils/indicator":77,"../utils/request":79,"../utils/save-state":80,"../utils/translate":81,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":29,"elements/attributes":83}],27:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../ui/popover":54,"../utils/dom":65,"../utils/field-validation":69,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/history":76,"../utils/indicator":77,"../utils/request":79,"../utils/save-state":80,"../utils/translate":82,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":29,"elements/attributes":84}],27:[function(require,module,exports){
 "use strict";
 
 var dom                = require('../../utils/dom'),
@@ -4297,7 +4297,7 @@ LayoutManager.prototype.options = LayoutManagerDefinition.options;
 
 module.exports = LayoutManager;
 
-},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/deep-equals":64,"../utils/elements.utils":66,"../utils/event-emitter":68,"../utils/flags-state":70,"./blocks":14,"./drag.resizer":23,"elements/zen":90}],29:[function(require,module,exports){
+},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/deep-equals":64,"../utils/elements.utils":66,"../utils/event-emitter":68,"../utils/flags-state":70,"./blocks":14,"./drag.resizer":23,"elements/zen":91}],29:[function(require,module,exports){
 "use strict";
 
 const ready = require('../utils/dom').ready;
@@ -4834,7 +4834,7 @@ var modules = {
 window.G5 = modules;
 module.exports = modules;
 
-},{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":33,"./pagesettings":35,"./particles":41,"./positions":46,"./positions/cards":45,"./styles":47,"./ui":52,"./ui/popover":54,"./ui/tooltips":59,"./utils/ajaxify-links":60,"./utils/dom":65,"./utils/field-validation":69,"./utils/flags-state":70,"./utils/get-ajax-suffix":71,"./utils/get-ajax-url":72,"./utils/rAF-polyfill":78,"./utils/request":79,"./utils/translate":81,"elements":87,"elements/attributes":83,"elements/delegation":85,"elements/events":86,"elements/insertion":88,"elements/traversal":89,"elements/zen":90}],31:[function(require,module,exports){
+},{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":33,"./pagesettings":35,"./particles":41,"./positions":46,"./positions/cards":45,"./styles":47,"./ui":52,"./ui/popover":54,"./ui/tooltips":59,"./utils/ajaxify-links":60,"./utils/dom":65,"./utils/field-validation":69,"./utils/flags-state":70,"./utils/get-ajax-suffix":71,"./utils/get-ajax-url":72,"./utils/rAF-polyfill":78,"./utils/request":79,"./utils/translate":82,"elements":88,"elements/attributes":84,"elements/delegation":86,"elements/events":87,"elements/insertion":89,"elements/traversal":90,"elements/zen":91}],31:[function(require,module,exports){
 "use strict";
 var DragEvents = require('../ui/drag.events');
 
@@ -5453,7 +5453,7 @@ dom.ready(function() {
 
 module.exports = StepOne;
 
-},{"../fields/submit":7,"../positions/cards":45,"../ui":52,"../ui/selectize":56,"../utils/deep-equals":64,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"../utils/wp-widgets-customizer":82}],33:[function(require,module,exports){
+},{"../fields/submit":7,"../positions/cards":45,"../ui":52,"../ui/selectize":56,"../utils/deep-equals":64,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":82,"../utils/wp-widgets-customizer":83}],33:[function(require,module,exports){
 "use strict";
 var dom           = require('../utils/dom'),
     MenuManager   = require('./menumanager'),
@@ -5819,7 +5819,7 @@ module.exports = {
     menumanager: menumanager
 };
 
-},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"./extra-items":32,"./menumanager":34}],34:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":82,"./extra-items":32,"./menumanager":34}],34:[function(require,module,exports){
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
     $         = require('../utils/elements.utils'),
@@ -6372,7 +6372,7 @@ MenuManager.prototype.options = MenuManagerDefinition.options;
 
 module.exports = MenuManager;
 
-},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.resizer":31,"elements/zen":90}],35:[function(require,module,exports){
+},{"../ui/drag.drop":49,"../ui/eraser":51,"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.resizer":31,"elements/zen":91}],35:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -6600,7 +6600,7 @@ module.exports = Atoms;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../fields/submit":7,"../ui":52,"../ui/eraser":51,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/get-outline":73,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"sortablejs":124}],36:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../ui/eraser":51,"../utils/dom":65,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/get-outline":73,"../utils/indicator":77,"../utils/request":79,"../utils/translate":82,"sortablejs":124}],36:[function(require,module,exports){
 "use strict";
 
 var dom = require('../../utils/dom'),
@@ -6853,7 +6853,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81,"sortablejs":124}],37:[function(require,module,exports){
+},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":82,"sortablejs":124}],37:[function(require,module,exports){
 "use strict";
 
 var $          = require('elements'),
@@ -7609,7 +7609,7 @@ ready(function() {
 
 module.exports = ColorPicker;
 
-},{"../../ui/drag.events":50,"../../utils/dom":65,"elements":87,"elements/zen":90}],38:[function(require,module,exports){
+},{"../../ui/drag.events":50,"../../utils/dom":65,"elements":88,"elements/zen":91}],38:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -8246,7 +8246,7 @@ module.exports = FilePicker;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../ui":52,"../../ui/popover":54,"../../ui/progresser":55,"../../utils/cookie":62,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":81}],39:[function(require,module,exports){
+},{"../../ui":52,"../../ui/popover":54,"../../ui/progresser":55,"../../utils/cookie":62,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/indicator":77,"../../utils/request":79,"../../utils/translate":82}],39:[function(require,module,exports){
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
 var $             = require('../../utils/elements.utils'),
@@ -9037,7 +9037,7 @@ ready(function() {
 
 module.exports = Fonts;
 
-},{"../../ui":52,"../../utils/async-foreach":61,"../../utils/decouple":63,"../../utils/dom":65,"../../utils/elements.utils":66,"../../utils/elements.viewport":67,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/translate":81,"elements/zen":90}],40:[function(require,module,exports){
+},{"../../ui":52,"../../utils/async-foreach":61,"../../utils/decouple":63,"../../utils/dom":65,"../../utils/elements.utils":66,"../../utils/elements.viewport":67,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/translate":82,"elements/zen":91}],40:[function(require,module,exports){
 "use strict";
 
 var dom = require('../../utils/dom'),
@@ -9206,7 +9206,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../../ui":52,"../../ui/popover":54,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/translate":81}],41:[function(require,module,exports){
+},{"../../ui":52,"../../ui/popover":54,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/translate":82}],41:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -9385,7 +9385,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":79,"../../utils/translate":81,"../../utils/wp-widgets-customizer":82}],43:[function(require,module,exports){
+},{"../../fields/submit":7,"../../ui":52,"../../utils/dom":65,"../../utils/get-ajax-suffix":71,"../../utils/get-ajax-url":72,"../../utils/request":79,"../../utils/translate":82,"../../utils/wp-widgets-customizer":83}],43:[function(require,module,exports){
 "use strict";
 
 const { ready, delegate } = require('../../utils/dom');
@@ -9562,7 +9562,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../../utils/dom":65,"../../utils/translate":81,"sortablejs":124}],44:[function(require,module,exports){
+},{"../../utils/dom":65,"../../utils/translate":82,"sortablejs":124}],44:[function(require,module,exports){
 'use strict';
 
 const { ready, delegate } = require('../../utils/dom');
@@ -10036,7 +10036,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":81,"./cards":45}],47:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":52,"../utils/dom":65,"../utils/flags-state":70,"../utils/get-ajax-suffix":71,"../utils/get-ajax-url":72,"../utils/indicator":77,"../utils/request":79,"../utils/translate":82,"./cards":45}],47:[function(require,module,exports){
 'use strict';
 
 const modal = require('../ui').modal;
@@ -10581,7 +10581,7 @@ class DragDrop extends EventEmitter {
 
 module.exports = DragDrop;
 
-},{"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.events":50,"elements/delegation":85,"elements/events":86}],50:[function(require,module,exports){
+},{"../utils/elements.utils":66,"../utils/event-emitter":68,"./drag.events":50,"elements/delegation":86,"elements/events":87}],50:[function(require,module,exports){
 "use strict";
 var getSupportedEvent = function(events) {
     events = events.split(' ');
@@ -11167,7 +11167,7 @@ var modal = new Modal();
 
 module.exports = modal;
 
-},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/request":79,"elements/zen":90}],54:[function(require,module,exports){
+},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/request":79,"elements/zen":91}],54:[function(require,module,exports){
 "use strict";
 
 var $        = require('../utils/elements.utils'),
@@ -11809,7 +11809,7 @@ module.exports.create = function(element, options) {
     return popover;
 };
 
-},{"../utils/elements.utils":66,"../utils/request":79,"elements/zen":90}],55:[function(require,module,exports){
+},{"../utils/elements.utils":66,"../utils/request":79,"elements/zen":91}],55:[function(require,module,exports){
 "use strict";
 
 var defaults = {
@@ -12036,8 +12036,7 @@ module.exports = Progresser;
 var EventEmitter = require('../utils/event-emitter'),
     ready      = require('../utils/dom').ready,
     zen        = require('elements/zen'),
-
-    sifter     = require('sifter'),
+    NativeSearchIndex = require('../utils/search-index'),
     $          = require('../utils/elements.utils');
 
 var bind = function(fn, context) {
@@ -12141,7 +12140,6 @@ var bind = function(fn, context) {
             .replace(/\s+/g, '-')
             .toLowerCase();
     };
-
 
 var IS_MAC                = /Mac/.test(navigator.userAgent),
     IS_IE                 = /MSIE 9/i.test(navigator.userAgent) || /MSIE 10/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent),
@@ -12515,7 +12513,7 @@ var SelectizeDefinition = {
         this.onSearchChange = this.options.loadThrottle === null ? this.onSearchChange : debounce(this.onSearchChange, this.options.loadThrottle);
 
         // search system
-        this.sifter = new sifter(this.Options, { diacritics: this.options.diacritics });
+        this.searchIndex = new NativeSearchIndex(this.Options, { diacritics: this.options.diacritics });
 
         var i, n;
 
@@ -13290,7 +13288,7 @@ var SelectizeDefinition = {
     },
 
     getScoreFunction: function(query) {
-        return this.sifter.getScoreFunction(query, this.getSearchOptions());
+        return this.searchIndex.getScoreFunction(query, this.getSearchOptions());
     },
 
     getSearchOptions: function() {
@@ -13321,7 +13319,7 @@ var SelectizeDefinition = {
         // perform search
         if (query !== this.lastQuery) {
             this.lastQuery = query;
-            result = this.sifter.search(query, merge(options, { score: calculateScore }));
+            result = this.searchIndex.search(query, merge(options, { score: calculateScore }));
             this.currentResults = result;
         } else {
             result = merge({}, this.currentResults);
@@ -13618,7 +13616,7 @@ var SelectizeDefinition = {
         this.loadedSearches = {};
         this.UserOptions = {};
         this.renderCache = {};
-        this.Options = this.sifter.items = {};
+        this.Options = this.searchIndex.items = {};
         this.lastQuery = null;
         this.emit('option_clear');
         this.clear();
@@ -14439,7 +14437,7 @@ ready(function() {
 
 module.exports = Selectize;
 
-},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/event-emitter":68,"elements/zen":90,"sifter":120}],57:[function(require,module,exports){
+},{"../utils/dom":65,"../utils/elements.utils":66,"../utils/event-emitter":68,"../utils/search-index":81,"elements/zen":91}],57:[function(require,module,exports){
 "use strict";
 
 var merge = function(target) {
@@ -15947,7 +15945,7 @@ $.implement({
 
 module.exports = $;
 
-},{"../ui/progresser":55,"./indicator":77,"elements":87,"slick":122}],67:[function(require,module,exports){
+},{"../ui/progresser":55,"./indicator":77,"elements":88,"slick":122}],67:[function(require,module,exports){
 'use strict';
 
 module.exports = (container, selector, threshold = 0) => {
@@ -18614,12 +18612,136 @@ module.exports = SaveState;
 },{}],81:[function(require,module,exports){
 'use strict';
 
+const normalizeText = (value, diacritics) => {
+    const normalized = String(value == null ? '' : value).toLowerCase();
+    return diacritics
+        ? normalized.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        : normalized;
+};
+
+const getValue = (item, field, nesting) => {
+    if (!nesting) return item == null ? undefined : item[field];
+    return String(field).split('.').reduce(
+        (value, key) => value == null ? undefined : value[key],
+        item
+    );
+};
+
+const compareValues = (left, right, diacritics) => {
+    if (typeof left === 'number' && typeof right === 'number') {
+        return left > right ? 1 : (left < right ? -1 : 0);
+    }
+
+    const normalizedLeft = normalizeText(left, diacritics);
+    const normalizedRight = normalizeText(right, diacritics);
+    return normalizedLeft > normalizedRight ? 1 : (normalizedLeft < normalizedRight ? -1 : 0);
+};
+
+class SearchIndex {
+    constructor(items, settings) {
+        this.items = items;
+        this.settings = settings || { diacritics: true };
+    }
+
+    tokenize(query) {
+        const normalized = normalizeText(query, this.settings.diacritics).trim();
+        return normalized ? normalized.split(/\s+/) : [];
+    }
+
+    getScoreFunction(query, options) {
+        const tokens = this.tokenize(query);
+        const fields = Array.isArray(options.fields) ? options.fields : [options.fields].filter(Boolean);
+        const conjunction = options.conjunction || 'and';
+        const diacritics = this.settings.diacritics;
+        const nesting = options.nesting;
+
+        if (!tokens.length || !fields.length) return () => 0;
+
+        const scoreValue = (value, token) => {
+            if (value == null || value === '') return 0;
+
+            const normalized = normalizeText(value, diacritics);
+            const position = normalized.indexOf(token);
+            if (position === -1) return 0;
+
+            return (token.length / normalized.length) + (position === 0 ? 0.5 : 0);
+        };
+
+        const scoreToken = (item, token) => fields.reduce(
+            (sum, field) => sum + scoreValue(getValue(item, field, nesting), token),
+            0
+        ) / fields.length;
+
+        return (item) => {
+            const scores = tokens.map(token => scoreToken(item, token));
+            if (conjunction === 'and' && scores.some(score => score <= 0)) return 0;
+            return scores.reduce((sum, score) => sum + score, 0) / scores.length;
+        };
+    }
+
+    getSortFunction(query, options) {
+        let fields = Array.isArray(options.sort) ? options.sort.slice() : [];
+        const hasScore = fields.some(sort => sort.field === '$score');
+        const diacritics = this.settings.diacritics;
+
+        if (query && !hasScore) fields.unshift({ field: '$score', direction: 'desc' });
+        if (!query) fields = fields.filter(sort => sort.field !== '$score');
+        if (!fields.length) return null;
+
+        return (left, right) => {
+            for (const sort of fields) {
+                const multiplier = sort.direction === 'desc' ? -1 : 1;
+                const leftValue = sort.field === '$score'
+                    ? left.score
+                    : getValue(this.items[left.id], sort.field, options.nesting);
+                const rightValue = sort.field === '$score'
+                    ? right.score
+                    : getValue(this.items[right.id], sort.field, options.nesting);
+                const result = multiplier * compareValues(leftValue, rightValue, diacritics);
+
+                if (result) return result;
+            }
+
+            return 0;
+        };
+    }
+
+    search(query, options) {
+        const normalizedQuery = normalizeText(query, this.settings.diacritics).trim();
+        const score = options.score || this.getScoreFunction(normalizedQuery, options);
+        const results = [];
+
+        Object.keys(this.items).forEach((id) => {
+            const itemScore = normalizedQuery ? score(this.items[id]) : 1;
+            if (!normalizedQuery || options.filter === false || itemScore > 0) {
+                results.push({ score: itemScore, id });
+            }
+        });
+
+        const sort = this.getSortFunction(normalizedQuery, options);
+        if (sort) results.sort(sort);
+
+        return {
+            options,
+            query: normalizedQuery,
+            tokens: this.tokenize(normalizedQuery),
+            total: results.length,
+            items: typeof options.limit === 'number' ? results.slice(0, options.limit) : results
+        };
+    }
+}
+
+module.exports = SearchIndex;
+
+},{}],82:[function(require,module,exports){
+'use strict';
+
 module.exports = (key, replacement = '') => {
     const translate = window.G5T || ((value) => value);
     return String(translate(key)).split('%s').join(replacement);
 };
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 'use strict';
 
 module.exports = (field) => {
@@ -18644,7 +18766,7 @@ module.exports = (field) => {
     return true;
 };
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 /*
 attributes
 */"use strict"
@@ -18863,7 +18985,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":84,"mout/array/filter":92,"mout/array/forEach":93,"mout/array/indexOf":94,"mout/string/trim":113}],84:[function(require,module,exports){
+},{"./base":85,"mout/array/filter":93,"mout/array/forEach":94,"mout/array/indexOf":95,"mout/string/trim":114}],85:[function(require,module,exports){
 /*
 elements
 */"use strict"
@@ -18994,7 +19116,7 @@ var Elements = prime({
 
 module.exports = $
 
-},{"mout/array/every":91,"mout/array/filter":92,"mout/array/forEach":93,"mout/array/map":95,"mout/array/some":96,"prime":117}],85:[function(require,module,exports){
+},{"mout/array/every":92,"mout/array/filter":93,"mout/array/forEach":94,"mout/array/map":96,"mout/array/some":97,"prime":118}],86:[function(require,module,exports){
 /*
 delegation
 */"use strict"
@@ -19077,7 +19199,7 @@ $.implement({
 
 module.exports = $
 
-},{"./events":86,"./traversal":89,"prime/map":118}],86:[function(require,module,exports){
+},{"./events":87,"./traversal":90,"prime/map":119}],87:[function(require,module,exports){
 /*
 events
 */"use strict"
@@ -19157,7 +19279,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":84,"prime/emitter":116}],87:[function(require,module,exports){
+},{"./base":85,"prime/emitter":117}],88:[function(require,module,exports){
 /*
 elements
 */"use strict"
@@ -19171,7 +19293,7 @@ var $ = require("./base")
 
 module.exports = $
 
-},{"./attributes":83,"./base":84,"./delegation":85,"./events":86,"./insertion":88,"./traversal":89}],88:[function(require,module,exports){
+},{"./attributes":84,"./base":85,"./delegation":86,"./events":87,"./insertion":89,"./traversal":90}],89:[function(require,module,exports){
 /*
 insertion
 */"use strict"
@@ -19265,7 +19387,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":84}],89:[function(require,module,exports){
+},{"./base":85}],90:[function(require,module,exports){
 /*
 traversal
 */"use strict"
@@ -19370,7 +19492,7 @@ $.implement({
 
 module.exports = $
 
-},{"./base":84,"mout/array/map":95,"slick":122}],90:[function(require,module,exports){
+},{"./base":85,"mout/array/map":96,"slick":122}],91:[function(require,module,exports){
 /*
 zen
 */"use strict"
@@ -19428,7 +19550,7 @@ module.exports = function(expression, doc){
 
 }
 
-},{"./base":84,"mout/array/forEach":93,"mout/array/map":95,"slick/parser":123}],91:[function(require,module,exports){
+},{"./base":85,"mout/array/forEach":94,"mout/array/map":96,"slick/parser":123}],92:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -19457,7 +19579,7 @@ var makeIterator = require('../function/makeIterator_');
     module.exports = every;
 
 
-},{"../function/makeIterator_":98}],92:[function(require,module,exports){
+},{"../function/makeIterator_":99}],93:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -19485,7 +19607,7 @@ var makeIterator = require('../function/makeIterator_');
 
 
 
-},{"../function/makeIterator_":98}],93:[function(require,module,exports){
+},{"../function/makeIterator_":99}],94:[function(require,module,exports){
 
 
     /**
@@ -19510,7 +19632,7 @@ var makeIterator = require('../function/makeIterator_');
 
 
 
-},{}],94:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 
 
     /**
@@ -19540,7 +19662,7 @@ var makeIterator = require('../function/makeIterator_');
     module.exports = indexOf;
 
 
-},{}],95:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -19564,7 +19686,7 @@ var makeIterator = require('../function/makeIterator_');
      module.exports = map;
 
 
-},{"../function/makeIterator_":98}],96:[function(require,module,exports){
+},{"../function/makeIterator_":99}],97:[function(require,module,exports){
 var makeIterator = require('../function/makeIterator_');
 
     /**
@@ -19593,7 +19715,7 @@ var makeIterator = require('../function/makeIterator_');
     module.exports = some;
 
 
-},{"../function/makeIterator_":98}],97:[function(require,module,exports){
+},{"../function/makeIterator_":99}],98:[function(require,module,exports){
 
 
     /**
@@ -19607,7 +19729,7 @@ var makeIterator = require('../function/makeIterator_');
 
 
 
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 var identity = require('./identity');
 var prop = require('./prop');
 var deepMatches = require('../object/deepMatches');
@@ -19643,7 +19765,7 @@ var deepMatches = require('../object/deepMatches');
 
 
 
-},{"../object/deepMatches":105,"./identity":97,"./prop":99}],99:[function(require,module,exports){
+},{"../object/deepMatches":106,"./identity":98,"./prop":100}],100:[function(require,module,exports){
 
 
     /**
@@ -19659,7 +19781,7 @@ var deepMatches = require('../object/deepMatches');
 
 
 
-},{}],100:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 var mixIn = require('../object/mixIn');
 
     /**
@@ -19679,7 +19801,7 @@ var mixIn = require('../object/mixIn');
 
 
 
-},{"../object/mixIn":109}],101:[function(require,module,exports){
+},{"../object/mixIn":110}],102:[function(require,module,exports){
 var isKind = require('./isKind');
     /**
      */
@@ -19689,7 +19811,7 @@ var isKind = require('./isKind');
     module.exports = isArray;
 
 
-},{"./isKind":102}],102:[function(require,module,exports){
+},{"./isKind":103}],103:[function(require,module,exports){
 var kindOf = require('./kindOf');
     /**
      * Check if value is from a specific "kind".
@@ -19700,7 +19822,7 @@ var kindOf = require('./kindOf');
     module.exports = isKind;
 
 
-},{"./kindOf":103}],103:[function(require,module,exports){
+},{"./kindOf":104}],104:[function(require,module,exports){
 
     /**
      * Gets the "kind" of value. (e.g. "String", "Number", etc)
@@ -19711,7 +19833,7 @@ var kindOf = require('./kindOf');
     module.exports = kindOf;
 
 
-},{}],104:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 
 
     /**
@@ -19726,7 +19848,7 @@ var kindOf = require('./kindOf');
 
 
 
-},{}],105:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 var forOwn = require('./forOwn');
 var isArray = require('../lang/isArray');
 
@@ -19784,7 +19906,7 @@ var isArray = require('../lang/isArray');
 
 
 
-},{"../lang/isArray":101,"./forOwn":107}],106:[function(require,module,exports){
+},{"../lang/isArray":102,"./forOwn":108}],107:[function(require,module,exports){
 var hasOwn = require('./hasOwn');
 
     var _hasDontEnumBug,
@@ -19862,7 +19984,7 @@ var hasOwn = require('./hasOwn');
 
 
 
-},{"./hasOwn":108}],107:[function(require,module,exports){
+},{"./hasOwn":109}],108:[function(require,module,exports){
 var hasOwn = require('./hasOwn');
 var forIn = require('./forIn');
 
@@ -19883,7 +20005,7 @@ var forIn = require('./forIn');
 
 
 
-},{"./forIn":106,"./hasOwn":108}],108:[function(require,module,exports){
+},{"./forIn":107,"./hasOwn":109}],109:[function(require,module,exports){
 
 
     /**
@@ -19897,7 +20019,7 @@ var forIn = require('./forIn');
 
 
 
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 var forOwn = require('./forOwn');
 
     /**
@@ -19927,7 +20049,7 @@ var forOwn = require('./forOwn');
     module.exports = mixIn;
 
 
-},{"./forOwn":107}],110:[function(require,module,exports){
+},{"./forOwn":108}],111:[function(require,module,exports){
 
     /**
      * Contains all Unicode white-spaces. Taken from
@@ -19941,7 +20063,7 @@ var forOwn = require('./forOwn');
     ];
 
 
-},{}],111:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 var toString = require('../lang/toString');
 var WHITE_SPACES = require('./WHITE_SPACES');
     /**
@@ -19977,7 +20099,7 @@ var WHITE_SPACES = require('./WHITE_SPACES');
     module.exports = ltrim;
 
 
-},{"../lang/toString":104,"./WHITE_SPACES":110}],112:[function(require,module,exports){
+},{"../lang/toString":105,"./WHITE_SPACES":111}],113:[function(require,module,exports){
 var toString = require('../lang/toString');
 var WHITE_SPACES = require('./WHITE_SPACES');
     /**
@@ -20012,7 +20134,7 @@ var WHITE_SPACES = require('./WHITE_SPACES');
     module.exports = rtrim;
 
 
-},{"../lang/toString":104,"./WHITE_SPACES":110}],113:[function(require,module,exports){
+},{"../lang/toString":105,"./WHITE_SPACES":111}],114:[function(require,module,exports){
 var toString = require('../lang/toString');
 var WHITE_SPACES = require('./WHITE_SPACES');
 var ltrim = require('./ltrim');
@@ -20029,7 +20151,7 @@ var rtrim = require('./rtrim');
     module.exports = trim;
 
 
-},{"../lang/toString":104,"./WHITE_SPACES":110,"./ltrim":111,"./rtrim":112}],114:[function(require,module,exports){
+},{"../lang/toString":105,"./WHITE_SPACES":111,"./ltrim":112,"./rtrim":113}],115:[function(require,module,exports){
 
 
     /**
@@ -20049,7 +20171,7 @@ var rtrim = require('./rtrim');
 
 
 
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 (function (process,global,setImmediate){(function (){
 /*
 defer
@@ -20168,7 +20290,7 @@ module.exports = defer
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
 
-},{"_process":119,"mout/array/forEach":93,"mout/array/indexOf":94,"mout/lang/kindOf":103,"mout/time/now":114,"timers":125}],116:[function(require,module,exports){
+},{"_process":120,"mout/array/forEach":94,"mout/array/indexOf":95,"mout/lang/kindOf":104,"mout/time/now":115,"timers":125}],117:[function(require,module,exports){
 /*
 Emitter
 */"use strict"
@@ -20239,7 +20361,7 @@ Emitter.EMIT_SYNC = {}
 
 module.exports = Emitter
 
-},{"./defer":115,"./index":117,"mout/array/forEach":93,"mout/array/indexOf":94}],117:[function(require,module,exports){
+},{"./defer":116,"./index":118,"mout/array/forEach":94,"mout/array/indexOf":95}],118:[function(require,module,exports){
 /*
 prime
  - prototypal inheritance
@@ -20331,7 +20453,7 @@ var prime = function(proto){
 
 module.exports = prime
 
-},{"mout/lang/createObject":100,"mout/lang/kindOf":103,"mout/object/hasOwn":108,"mout/object/mixIn":109}],118:[function(require,module,exports){
+},{"mout/lang/createObject":101,"mout/lang/kindOf":104,"mout/object/hasOwn":109,"mout/object/mixIn":110}],119:[function(require,module,exports){
 /*
 Map
 */"use strict"
@@ -20457,7 +20579,7 @@ map.prototype = Map.prototype
 
 module.exports = map
 
-},{"./index":117,"mout/array/indexOf":94}],119:[function(require,module,exports){
+},{"./index":118,"mout/array/indexOf":95}],120:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -20642,506 +20764,6 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
-
-},{}],120:[function(require,module,exports){
-/**
- * sifter.js
- * Copyright (c) 2013 Brian Reavis & contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
- * file except in compliance with the License. You may obtain a copy of the License at:
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
- * ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
- *
- * @author Brian Reavis <brian@thirdroute.com>
- */
-
-(function(root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		define(factory);
-	} else if (typeof exports === 'object') {
-		module.exports = factory();
-	} else {
-		root.Sifter = factory();
-	}
-}(this, function() {
-
-	/**
-	 * Textually searches arrays and hashes of objects
-	 * by property (or multiple properties). Designed
-	 * specifically for autocomplete.
-	 *
-	 * @constructor
-	 * @param {array|object} items
-	 * @param {object} items
-	 */
-	var Sifter = function(items, settings) {
-		this.items = items;
-		this.settings = settings || {diacritics: true};
-	};
-
-	/**
-	 * Splits a search string into an array of individual
-	 * regexps to be used to match results.
-	 *
-	 * @param {string} query
-	 * @returns {array}
-	 */
-	Sifter.prototype.tokenize = function(query) {
-		query = trim(String(query || '').toLowerCase());
-		if (!query || !query.length) return [];
-
-		var i, n, regex, letter;
-		var tokens = [];
-		var words = query.split(/ +/);
-
-		for (i = 0, n = words.length; i < n; i++) {
-			regex = escape_regex(words[i]);
-			if (this.settings.diacritics) {
-				for (letter in DIACRITICS) {
-					if (DIACRITICS.hasOwnProperty(letter)) {
-						regex = regex.replace(new RegExp(letter, 'g'), DIACRITICS[letter]);
-					}
-				}
-			}
-			tokens.push({
-				string : words[i],
-				regex  : new RegExp(regex, 'i')
-			});
-		}
-
-		return tokens;
-	};
-
-	/**
-	 * Iterates over arrays and hashes.
-	 *
-	 * ```
-	 * this.iterator(this.items, function(item, id) {
-	 *    // invoked for each item
-	 * });
-	 * ```
-	 *
-	 * @param {array|object} object
-	 */
-	Sifter.prototype.iterator = function(object, callback) {
-		var iterator;
-		if (is_array(object)) {
-			iterator = Array.prototype.forEach || function(callback) {
-				for (var i = 0, n = this.length; i < n; i++) {
-					callback(this[i], i, this);
-				}
-			};
-		} else {
-			iterator = function(callback) {
-				for (var key in this) {
-					if (this.hasOwnProperty(key)) {
-						callback(this[key], key, this);
-					}
-				}
-			};
-		}
-
-		iterator.apply(object, [callback]);
-	};
-
-	/**
-	 * Returns a function to be used to score individual results.
-	 *
-	 * Good matches will have a higher score than poor matches.
-	 * If an item is not a match, 0 will be returned by the function.
-	 *
-	 * @param {object|string} search
-	 * @param {object} options (optional)
-	 * @returns {function}
-	 */
-	Sifter.prototype.getScoreFunction = function(search, options) {
-		var self, fields, tokens, token_count, nesting;
-
-		self        = this;
-		search      = self.prepareSearch(search, options);
-		tokens      = search.tokens;
-		fields      = search.options.fields;
-		token_count = tokens.length;
-		nesting     = search.options.nesting;
-
-		/**
-		 * Calculates how close of a match the
-		 * given value is against a search token.
-		 *
-		 * @param {mixed} value
-		 * @param {object} token
-		 * @return {number}
-		 */
-		var scoreValue = function(value, token) {
-			var score, pos;
-
-			if (!value) return 0;
-			value = String(value || '');
-			pos = value.search(token.regex);
-			if (pos === -1) return 0;
-			score = token.string.length / value.length;
-			if (pos === 0) score += 0.5;
-			return score;
-		};
-
-		/**
-		 * Calculates the score of an object
-		 * against the search query.
-		 *
-		 * @param {object} token
-		 * @param {object} data
-		 * @return {number}
-		 */
-		var scoreObject = (function() {
-			var field_count = fields.length;
-			if (!field_count) {
-				return function() { return 0; };
-			}
-			if (field_count === 1) {
-				return function(token, data) {
-					return scoreValue(getattr(data, fields[0], nesting), token);
-				};
-			}
-			return function(token, data) {
-				for (var i = 0, sum = 0; i < field_count; i++) {
-					sum += scoreValue(getattr(data, fields[i], nesting), token);
-				}
-				return sum / field_count;
-			};
-		})();
-
-		if (!token_count) {
-			return function() { return 0; };
-		}
-		if (token_count === 1) {
-			return function(data) {
-				return scoreObject(tokens[0], data);
-			};
-		}
-
-		if (search.options.conjunction === 'and') {
-			return function(data) {
-				var score;
-				for (var i = 0, sum = 0; i < token_count; i++) {
-					score = scoreObject(tokens[i], data);
-					if (score <= 0) return 0;
-					sum += score;
-				}
-				return sum / token_count;
-			};
-		} else {
-			return function(data) {
-				for (var i = 0, sum = 0; i < token_count; i++) {
-					sum += scoreObject(tokens[i], data);
-				}
-				return sum / token_count;
-			};
-		}
-	};
-
-	/**
-	 * Returns a function that can be used to compare two
-	 * results, for sorting purposes. If no sorting should
-	 * be performed, `null` will be returned.
-	 *
-	 * @param {string|object} search
-	 * @param {object} options
-	 * @return function(a,b)
-	 */
-	Sifter.prototype.getSortFunction = function(search, options) {
-		var i, n, self, field, fields, fields_count, multiplier, multipliers, get_field, implicit_score, sort;
-
-		self   = this;
-		search = self.prepareSearch(search, options);
-		sort   = (!search.query && options.sort_empty) || options.sort;
-
-		/**
-		 * Fetches the specified sort field value
-		 * from a search result item.
-		 *
-		 * @param  {string} name
-		 * @param  {object} result
-		 * @return {mixed}
-		 */
-		get_field = function(name, result) {
-			if (name === '$score') return result.score;
-			return getattr(self.items[result.id], name, options.nesting);
-		};
-
-		// parse options
-		fields = [];
-		if (sort) {
-			for (i = 0, n = sort.length; i < n; i++) {
-				if (search.query || sort[i].field !== '$score') {
-					fields.push(sort[i]);
-				}
-			}
-		}
-
-		// the "$score" field is implied to be the primary
-		// sort field, unless it's manually specified
-		if (search.query) {
-			implicit_score = true;
-			for (i = 0, n = fields.length; i < n; i++) {
-				if (fields[i].field === '$score') {
-					implicit_score = false;
-					break;
-				}
-			}
-			if (implicit_score) {
-				fields.unshift({field: '$score', direction: 'desc'});
-			}
-		} else {
-			for (i = 0, n = fields.length; i < n; i++) {
-				if (fields[i].field === '$score') {
-					fields.splice(i, 1);
-					break;
-				}
-			}
-		}
-
-		multipliers = [];
-		for (i = 0, n = fields.length; i < n; i++) {
-			multipliers.push(fields[i].direction === 'desc' ? -1 : 1);
-		}
-
-		// build function
-		fields_count = fields.length;
-		if (!fields_count) {
-			return null;
-		} else if (fields_count === 1) {
-			field = fields[0].field;
-			multiplier = multipliers[0];
-			return function(a, b) {
-				return multiplier * cmp(
-					get_field(field, a),
-					get_field(field, b)
-				);
-			};
-		} else {
-			return function(a, b) {
-				var i, result, a_value, b_value, field;
-				for (i = 0; i < fields_count; i++) {
-					field = fields[i].field;
-					result = multipliers[i] * cmp(
-						get_field(field, a),
-						get_field(field, b)
-					);
-					if (result) return result;
-				}
-				return 0;
-			};
-		}
-	};
-
-	/**
-	 * Parses a search query and returns an object
-	 * with tokens and fields ready to be populated
-	 * with results.
-	 *
-	 * @param {string} query
-	 * @param {object} options
-	 * @returns {object}
-	 */
-	Sifter.prototype.prepareSearch = function(query, options) {
-		if (typeof query === 'object') return query;
-
-		options = extend({}, options);
-
-		var option_fields     = options.fields;
-		var option_sort       = options.sort;
-		var option_sort_empty = options.sort_empty;
-
-		if (option_fields && !is_array(option_fields)) options.fields = [option_fields];
-		if (option_sort && !is_array(option_sort)) options.sort = [option_sort];
-		if (option_sort_empty && !is_array(option_sort_empty)) options.sort_empty = [option_sort_empty];
-
-		return {
-			options : options,
-			query   : String(query || '').toLowerCase(),
-			tokens  : this.tokenize(query),
-			total   : 0,
-			items   : []
-		};
-	};
-
-	/**
-	 * Searches through all items and returns a sorted array of matches.
-	 *
-	 * The `options` parameter can contain:
-	 *
-	 *   - fields {string|array}
-	 *   - sort {array}
-	 *   - score {function}
-	 *   - filter {bool}
-	 *   - limit {integer}
-	 *
-	 * Returns an object containing:
-	 *
-	 *   - options {object}
-	 *   - query {string}
-	 *   - tokens {array}
-	 *   - total {int}
-	 *   - items {array}
-	 *
-	 * @param {string} query
-	 * @param {object} options
-	 * @returns {object}
-	 */
-	Sifter.prototype.search = function(query, options) {
-		var self = this, value, score, search, calculateScore;
-		var fn_sort;
-		var fn_score;
-
-		search  = this.prepareSearch(query, options);
-		options = search.options;
-		query   = search.query;
-
-		// generate result scoring function
-		fn_score = options.score || self.getScoreFunction(search);
-
-		// perform search and sort
-		if (query.length) {
-			self.iterator(self.items, function(item, id) {
-				score = fn_score(item);
-				if (options.filter === false || score > 0) {
-					search.items.push({'score': score, 'id': id});
-				}
-			});
-		} else {
-			self.iterator(self.items, function(item, id) {
-				search.items.push({'score': 1, 'id': id});
-			});
-		}
-
-		fn_sort = self.getSortFunction(search, options);
-		if (fn_sort) search.items.sort(fn_sort);
-
-		// apply limits
-		search.total = search.items.length;
-		if (typeof options.limit === 'number') {
-			search.items = search.items.slice(0, options.limit);
-		}
-
-		return search;
-	};
-
-	// utilities
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-	var cmp = function(a, b) {
-		if (typeof a === 'number' && typeof b === 'number') {
-			return a > b ? 1 : (a < b ? -1 : 0);
-		}
-		a = asciifold(String(a || ''));
-		b = asciifold(String(b || ''));
-		if (a > b) return 1;
-		if (b > a) return -1;
-		return 0;
-	};
-
-	var extend = function(a, b) {
-		var i, n, k, object;
-		for (i = 1, n = arguments.length; i < n; i++) {
-			object = arguments[i];
-			if (!object) continue;
-			for (k in object) {
-				if (object.hasOwnProperty(k)) {
-					a[k] = object[k];
-				}
-			}
-		}
-		return a;
-	};
-
-	/**
-	 * A property getter resolving dot-notation
-	 * @param  {Object}  obj     The root object to fetch property on
-	 * @param  {String}  name    The optionally dotted property name to fetch
-	 * @param  {Boolean} nesting Handle nesting or not
-	 * @return {Object}          The resolved property value
-	 */
-	var getattr = function(obj, name, nesting) {
-	    if (!obj || !name) return;
-	    if (!nesting) return obj[name];
-	    var names = name.split(".");
-	    while(names.length && (obj = obj[names.shift()]));
-	    return obj;
-	};
-
-	var trim = function(str) {
-		return (str + '').replace(/^\s+|\s+$|/g, '');
-	};
-
-	var escape_regex = function(str) {
-		return (str + '').replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
-	};
-
-	var is_array = Array.isArray || (typeof $ !== 'undefined' && $.isArray) || function(object) {
-		return Object.prototype.toString.call(object) === '[object Array]';
-	};
-
-	var DIACRITICS = {
-		'a': '[aḀḁĂăÂâǍǎȺⱥȦȧẠạÄäÀàÁáĀāÃãÅåąĄÃąĄ]',
-		'b': '[b␢βΒB฿𐌁ᛒ]',
-		'c': '[cĆćĈĉČčĊċC̄c̄ÇçḈḉȻȼƇƈɕᴄＣｃ]',
-		'd': '[dĎďḊḋḐḑḌḍḒḓḎḏĐđD̦d̦ƉɖƊɗƋƌᵭᶁᶑȡᴅＤｄð]',
-		'e': '[eÉéÈèÊêḘḙĚěĔĕẼẽḚḛẺẻĖėËëĒēȨȩĘęᶒɆɇȄȅẾếỀềỄễỂểḜḝḖḗḔḕȆȇẸẹỆệⱸᴇＥｅɘǝƏƐε]',
-		'f': '[fƑƒḞḟ]',
-		'g': '[gɢ₲ǤǥĜĝĞğĢģƓɠĠġ]',
-		'h': '[hĤĥĦħḨḩẖẖḤḥḢḣɦʰǶƕ]',
-		'i': '[iÍíÌìĬĭÎîǏǐÏïḮḯĨĩĮįĪīỈỉȈȉȊȋỊịḬḭƗɨɨ̆ᵻᶖİiIıɪＩｉ]',
-		'j': '[jȷĴĵɈɉʝɟʲ]',
-		'k': '[kƘƙꝀꝁḰḱǨǩḲḳḴḵκϰ₭]',
-		'l': '[lŁłĽľĻļĹĺḶḷḸḹḼḽḺḻĿŀȽƚⱠⱡⱢɫɬᶅɭȴʟＬｌ]',
-		'n': '[nŃńǸǹŇňÑñṄṅŅņṆṇṊṋṈṉN̈n̈ƝɲȠƞᵰᶇɳȵɴＮｎŊŋ]',
-		'o': '[oØøÖöÓóÒòÔôǑǒŐőŎŏȮȯỌọƟɵƠơỎỏŌōÕõǪǫȌȍՕօ]',
-		'p': '[pṔṕṖṗⱣᵽƤƥᵱ]',
-		'q': '[qꝖꝗʠɊɋꝘꝙq̃]',
-		'r': '[rŔŕɌɍŘřŖŗṘṙȐȑȒȓṚṛⱤɽ]',
-		's': '[sŚśṠṡṢṣꞨꞩŜŝŠšŞşȘșS̈s̈]',
-		't': '[tŤťṪṫŢţṬṭƮʈȚțṰṱṮṯƬƭ]',
-		'u': '[uŬŭɄʉỤụÜüÚúÙùÛûǓǔŰűŬŭƯưỦủŪūŨũŲųȔȕ∪]',
-		'v': '[vṼṽṾṿƲʋꝞꝟⱱʋ]',
-		'w': '[wẂẃẀẁŴŵẄẅẆẇẈẉ]',
-		'x': '[xẌẍẊẋχ]',
-		'y': '[yÝýỲỳŶŷŸÿỸỹẎẏỴỵɎɏƳƴ]',
-		'z': '[zŹźẐẑŽžŻżẒẓẔẕƵƶ]'
-	};
-
-	var asciifold = (function() {
-		var i, n, k, chunk;
-		var foreignletters = '';
-		var lookup = {};
-		for (k in DIACRITICS) {
-			if (DIACRITICS.hasOwnProperty(k)) {
-				chunk = DIACRITICS[k].substring(2, DIACRITICS[k].length - 1);
-				foreignletters += chunk;
-				for (i = 0, n = chunk.length; i < n; i++) {
-					lookup[chunk.charAt(i)] = k;
-				}
-			}
-		}
-		var regexp = new RegExp('[' +  foreignletters + ']', 'g');
-		return function(str) {
-			return str.replace(regexp, function(foreignletter) {
-				return lookup[foreignletter];
-			}).toLowerCase();
-		};
-	})();
-
-
-	// export
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-	return Sifter;
-}));
-
 
 },{}],121:[function(require,module,exports){
 /*
@@ -23592,6 +23214,6 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this)}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 
-},{"process/browser.js":119,"timers":125}]},{},[30])
+},{"process/browser.js":120,"timers":125}]},{},[30])
 
 //# sourceMappingURL=main.js.map

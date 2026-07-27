@@ -9,11 +9,12 @@
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
 - **19 first-party core/platform files** still depend on external JavaScript libraries.
-- **19 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, Sifter, and Slick.
+- **19 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, and Slick.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
 - The font picker now uses native stylesheet loading and the CSS Font Loading API; `webfontloader` has been removed.
 - The file picker now uses native file inputs, drag-and-drop events, `FormData`, and `XMLHttpRequest` upload progress; Dropzone has been removed.
+- Selectize option filtering and ranking now use a native search index with Unicode normalization; Sifter has been removed.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -68,7 +69,6 @@ Counts overlap because a single file may import more than one package.
 | `prime-util` | 2 | Mixins and supporting utilities for `prime` |
 | `domready` | 2 | Replaceable with `DOMContentLoaded` or immediate-ready checks |
 | Slick | 2 | Used by the legacy DOM utility layer |
-| Sifter | 1 | Selectize searching and filtering |
 
 ### Converted platform templates
 
@@ -202,12 +202,12 @@ Completed:
 - Deep Diff in Layout Manager history
 - WebFontLoader in the font picker
 - Dropzone in the file picker
+- Sifter in Selectize option searching and ranking
 
 Remaining sequence:
 
-1. Sifter and Selectize behavior
-2. SortableJS
-3. Slick remnants
+1. SortableJS
+2. Slick remnants
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.
 
