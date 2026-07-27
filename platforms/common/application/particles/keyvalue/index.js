@@ -1,7 +1,7 @@
 "use strict";
 
 const { ready, delegate } = require('../../utils/dom');
-const simpleSort = require('sortablejs');
+const ReorderableList = require('../../utils/reorderable-list');
 const translate = require('../../utils/translate');
 
 const collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
@@ -19,20 +19,15 @@ ready(() => {
     const createSortables = list => {
         const lists = list instanceof Element ? [list] : Array.from(document.querySelectorAll('.g-keyvalue-field ul'));
         lists.forEach(element => {
-            element.SimpleSort = simpleSort.create(element, {
+            if (element.SimpleSort) return;
+            element.SimpleSort = new ReorderableList(element, {
+                item: '[data-keyvalue-item]',
                 handle: '.fa-reorder',
                 filter: '[data-keyvalue-nosort]',
-                scroll: false,
-                animation: 150,
-                onStart() {
-                    this.el.classList.add('keyvalue-sorting');
-                },
                 onEnd(event) {
-                    const listElement = this.el;
-                    listElement.classList.remove('keyvalue-sorting');
                     if (event.oldIndex === event.newIndex) return;
 
-                    const param = listElement.closest('.settings-param');
+                    const param = element.closest('.settings-param');
                     const dataField = param && param.querySelector('[data-keyvalue-data]');
                     if (!dataField) return;
 
@@ -40,7 +35,8 @@ ready(() => {
                     data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
                     dataField.value = JSON.stringify(data);
                     emitChange(dataField);
-                }
+                },
+                sortingClass: 'keyvalue-sorting'
             });
         });
     };

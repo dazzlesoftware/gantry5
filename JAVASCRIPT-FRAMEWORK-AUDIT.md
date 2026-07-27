@@ -8,13 +8,14 @@
 
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
-- **19 first-party core/platform files** still depend on external JavaScript libraries.
-- **19 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, and Slick.
+- **17 first-party core/platform files** still depend on external JavaScript libraries.
+- **17 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, SortableJS, and Slick.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
 - The font picker now uses native stylesheet loading and the CSS Font Loading API; `webfontloader` has been removed.
 - The file picker now uses native file inputs, drag-and-drop events, `FormData`, and `XMLHttpRequest` upload progress; Dropzone has been removed.
 - Selectize option filtering and ranking now use a native search index with Unicode normalization; Sifter has been removed.
+- Collection and key/value fields now use native pointer and keyboard reordering instead of SortableJS.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -26,15 +27,15 @@ Generated bundles, `node_modules`, Composer `vendor` directories, minified third
 
 ### Remaining dependency count
 
-There are **19 first-party framework-dependent files**:
+There are **17 first-party framework-dependent files**:
 
-- 19 JavaScript source files importing external runtime packages.
+- 17 JavaScript source files importing external runtime packages.
 
-One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the 19 first-party-file count.
+One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the 17 first-party-file count.
 
 ### Core JavaScript files with external runtime dependencies
 
-The following 19 files still import one or more external libraries:
+The following 17 files still import one or more external libraries:
 
 1. `assets/common/application/menu/index.js`
 2. `assets/common/application/offcanvas/index.js`
@@ -45,16 +46,14 @@ The following 19 files still import one or more external libraries:
 7. `platforms/common/application/main.js`
 8. `platforms/common/application/menu/menumanager.js`
 9. `platforms/common/application/pagesettings/index.js`
-10. `platforms/common/application/particles/collections/index.js`
-11. `platforms/common/application/particles/colorpicker/index.js`
-12. `platforms/common/application/particles/fonts/index.js`
-13. `platforms/common/application/particles/keyvalue/index.js`
-14. `platforms/common/application/positions/cards.js`
-15. `platforms/common/application/ui/drag.drop.js`
-16. `platforms/common/application/ui/modal.js`
-17. `platforms/common/application/ui/popover.js`
-18. `platforms/common/application/ui/selectize.js`
-19. `platforms/common/application/utils/elements.utils.js`
+10. `platforms/common/application/particles/colorpicker/index.js`
+11. `platforms/common/application/particles/fonts/index.js`
+12. `platforms/common/application/positions/cards.js`
+13. `platforms/common/application/ui/drag.drop.js`
+14. `platforms/common/application/ui/modal.js`
+15. `platforms/common/application/ui/popover.js`
+16. `platforms/common/application/ui/selectize.js`
+17. `platforms/common/application/utils/elements.utils.js`
 
 ### Dependency breakdown
 
@@ -64,7 +63,7 @@ Counts overlap because a single file may import more than one package.
 |---|---:|---|
 | `elements` | 15 | Legacy DOM abstraction used in place of native DOM APIs |
 | `mout` | 4 | Legacy utility modules |
-| SortableJS | 4 | Page settings, collections, key/value fields, and position cards |
+| SortableJS | 2 | Page settings atoms and position cards |
 | `prime` | 3 | Legacy class abstraction |
 | `prime-util` | 2 | Mixins and supporting utilities for `prime` |
 | `domready` | 2 | Replaceable with `DOMContentLoaded` or immediate-ready checks |
@@ -203,10 +202,11 @@ Completed:
 - WebFontLoader in the font picker
 - Dropzone in the file picker
 - Sifter in Selectize option searching and ranking
+- SortableJS in collection and key/value field reordering
 
 Remaining sequence:
 
-1. SortableJS
+1. SortableJS for atoms and position cards
 2. Slick remnants
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.

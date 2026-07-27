@@ -6,7 +6,7 @@ var dom = require('../../utils/dom'),
     toastr = require('../../ui').toastr,
     indicator = require('../../utils/indicator'),
     request = require('../../utils/request'),
-    simpleSort = require('sortablejs'),
+    ReorderableList = require('../../utils/reorderable-list'),
     parseAjaxURI = require('../../utils/get-ajax-url').parse,
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     translate = require('../../utils/translate');
@@ -39,22 +39,20 @@ dom.ready(function() {
         var lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll('.collection-list ul'));
         lists.filter(Boolean).forEach(function(list) {
             if (list.SimpleSort) { return; }
-            list.SimpleSort = simpleSort.create(list, {
+            list.SimpleSort = new ReorderableList(list, {
+                item: '[data-collection-item]',
                 handle: '.fa-reorder',
                 filter: '[data-collection-nosort]',
-                scroll: false,
-                animation: 150,
-                onStart: function() { this.el.classList.add('collection-sorting'); },
                 onEnd: function(event) {
-                    this.el.classList.remove('collection-sorting');
                     if (event.oldIndex === event.newIndex) { return; }
 
-                    var dataField = fieldFor(this.el),
+                    var dataField = fieldFor(list),
                         data = JSON.parse(dataField.value || '[]');
                     data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
                     dataField.value = JSON.stringify(data);
                     dataField.dispatchEvent(new Event('change', { bubbles: true }));
-                }
+                },
+                sortingClass: 'collection-sorting'
             });
         });
     };
