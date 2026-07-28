@@ -4,10 +4,6 @@ var EventEmitter = require('../utils/event-emitter'),
     DragEvents = require('./drag.events'),
     $          = require('../utils/elements.utils');
 
-// $ utils
-require('elements/events');
-require('elements/delegation');
-
 var isIE = (navigator.appName === "Microsoft Internet Explorer");
 
 class DragDrop extends EventEmitter {

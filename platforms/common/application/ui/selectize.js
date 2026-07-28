@@ -2304,7 +2304,7 @@ $.implement({
                 optionsMap[value] = opt;
                 options.push(opt);
 
-                if (option.matches(':selected')) {
+                if (option[0].selected) {
                     settings_element.items.push(value);
                 }
             };

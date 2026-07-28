@@ -1,5 +1,5 @@
 "use strict";
-var $              = require('elements'),
+var $              = require('./utils/elements-native'),
     zen            = require('./utils/create-element'),
     ready          = require('./utils/dom').ready,
     request        = require('./utils/request'),
@@ -21,11 +21,6 @@ var $              = require('elements'),
     changelog      = require('./changelog'),
     translate      = require('./utils/translate');
 
-require('elements/attributes');
-require('elements/events');
-require('elements/delegation');
-require('elements/insertion');
-require('elements/traversal');
 require('./fields');
 require('./ui/popover');
 require('./utils/ajaxify-links');

@@ -1,6 +1,6 @@
 "use strict";
 
-var $          = require('elements'),
+var $          = require('../../utils/elements-native'),
     ready      = require('../../utils/dom').ready,
     zen        = require('../../utils/create-element'),
 

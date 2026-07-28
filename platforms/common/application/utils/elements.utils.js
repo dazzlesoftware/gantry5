@@ -1,5 +1,5 @@
 "use strict";
-var $          = require('elements'),
+var $          = require('./elements-native'),
     progresser = require('../ui/progresser'),
     indicator  = require('./indicator');
 

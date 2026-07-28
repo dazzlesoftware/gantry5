@@ -8,8 +8,8 @@
 
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
-- **15 first-party core/platform files** still depend on external JavaScript libraries.
-- **15 core JavaScript files** import runtime libraries such as `elements`, `prime`, `mout`, and Slick.
+- **5 first-party core/platform files** still import external JavaScript libraries directly.
+- Admin consumers now use a local native traversal/delegation adapter; remaining direct imports are concentrated in that adapter and the shared frontend layer.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
 - The font picker now uses native stylesheet loading and the CSS Font Loading API; `webfontloader` has been removed.
@@ -20,6 +20,7 @@ The Gantry core and administration interface are significantly closer to native 
 - Page-settings atoms now use native cloning, grid-aware reordering, and trash deletion; SortableJS has been removed completely.
 - Gantry's custom adjacent/all-sibling helpers now use native DOM traversal and `Element.matches()` instead of importing Slick directly.
 - The admin element builder now uses `document.createElement()` and native attribute/class assignment instead of the Slick-powered `elements/zen` parser.
+- The admin traversal and delegated-event layer now uses native selectors, DOM relationships, and browser events; Slick is absent from the generated admin bundle.
 - **1,143 physical theme files** contain jQuery-dependent code.
 - Theme duplication reduces those files to approximately **356 distinct implementations**.
 - No active React, Vue, Backbone, or theme-level MooTools usage was detected.
@@ -31,31 +32,23 @@ Generated bundles, `node_modules`, Composer `vendor` directories, minified third
 
 ### Remaining dependency count
 
-There are **15 first-party framework-dependent files**:
+There are **5 first-party files with direct external runtime imports**:
 
-- 15 JavaScript source files importing external runtime packages.
+- 5 JavaScript source files importing external runtime packages.
 
-One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the 15 first-party-file count.
+One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the first-party-file count.
 
-### Core JavaScript files with external runtime dependencies
+### Core JavaScript files with direct external runtime imports
 
-The following 15 files still import one or more external libraries:
+The following 5 files still import one or more external libraries:
 
 1. `assets/common/application/menu/index.js`
 2. `assets/common/application/offcanvas/index.js`
 3. `assets/common/application/utils/dollar-extras.js`
-4. `platforms/common/application/lm/blocks/base.js`
-5. `platforms/common/application/lm/index.js`
-6. `platforms/common/application/lm/layoutmanager.js`
-7. `platforms/common/application/main.js`
-8. `platforms/common/application/menu/menumanager.js`
-9. `platforms/common/application/particles/colorpicker/index.js`
-10. `platforms/common/application/particles/fonts/index.js`
-11. `platforms/common/application/ui/drag.drop.js`
-12. `platforms/common/application/ui/modal.js`
-13. `platforms/common/application/ui/popover.js`
-14. `platforms/common/application/ui/selectize.js`
-15. `platforms/common/application/utils/elements.utils.js`
+4. `platforms/common/application/utils/create-element.js`
+5. `platforms/common/application/utils/elements-native.js`
+
+Several admin modules still use the local compatibility APIs indirectly. They no longer import Slick or external DOM packages themselves and can now be migrated incrementally without changing traversal behavior again.
 
 ### Dependency breakdown
 
@@ -63,12 +56,12 @@ Counts overlap because a single file may import more than one package.
 
 | Dependency | Files | Notes |
 |---|---:|---|
-| `elements` | 15 | Legacy DOM abstraction used in place of native DOM APIs |
-| `mout` | 4 | Legacy utility modules |
-| `prime` | 3 | Legacy class abstraction |
+| `elements` | 5 | Concentrated in two local adapters and three frontend files |
+| `mout` | 2 | Shared frontend menu and offcanvas |
+| `prime` | 2 | Shared frontend menu and offcanvas |
 | `prime-util` | 2 | Mixins and supporting utilities for `prime` |
 | `domready` | 2 | Replaceable with `DOMContentLoaded` or immediate-ready checks |
-| Slick | 0 direct | Still bundled transitively by the legacy `elements` package |
+| Slick | 0 direct | Removed from the admin bundle; still transitively bundled by frontend `elements` |
 
 ### Converted platform templates
 
@@ -254,4 +247,4 @@ After dependency removal stabilizes:
 
 ## Immediate next target
 
-Replace the legacy `elements` traversal module with native query, matching, containment, and relationship helpers.
+Replace the shared frontend `elements` traversal and `elements/zen` usage so Slick is absent from both core bundles.

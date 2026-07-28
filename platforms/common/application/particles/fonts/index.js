@@ -481,13 +481,14 @@ class Fonts {
                         zen('div').html('<label><input type="checkbox" ' + current + ' value="' + cs + '"/> ' + labelize(cs.replace('ext', 'extended')) + '</label>').bottom(content);
                     }, this);
 
-                    content.delegate('click', 'input[type="checkbox"]', function(event, input) {
-                        input = $(input);
-                        checked = content.search('input[type="checkbox"]:checked');
-                        this.selected.charsets = checked ? checked.map('value') : [];
+                    content[0].querySelectorAll('input[type="checkbox"]').forEach(function(input) {
+                        input.addEventListener('change', function() {
+                            checked = content[0].querySelectorAll('input[type="checkbox"]:checked');
+                            this.selected.charsets = Array.from(checked, function(item) { return item.value; });
 
-                        element.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">' + this.selected.charsets.length + ' of ' + subsets.length + '</span> selected)');
-                    }.bind(this));
+                            element.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">' + this.selected.charsets.length + ' of ' + subsets.length + '</span> selected)');
+                        }.bind(this));
+                    }, this);
 
                     popover.displayContent();
                 }.bind(this));
@@ -584,13 +585,14 @@ class Fonts {
                 zen('div').html('<label><input type="checkbox" ' + current + ' value="' + category + '"/> ' + labelize(category) + '</label>').bottom(content);
             }, this);
 
-            content.delegate('click', 'input[type="checkbox"]', function(event, input) {
-                input = $(input);
-                checked = content.search('input[type="checkbox"]:checked');
-                this.filters.categories = checked ? checked.map('value') : [];
-                categories.find('small').text(this.filters.categories.length);
-                this.search();
-            }.bind(this));
+            content[0].querySelectorAll('input[type="checkbox"]').forEach(function(input) {
+                input.addEventListener('change', function() {
+                    checked = content[0].querySelectorAll('input[type="checkbox"]:checked');
+                    this.filters.categories = Array.from(checked, function(item) { return item.value; });
+                    categories.find('small').text(this.filters.categories.length);
+                    this.search();
+                }.bind(this));
+            }, this);
 
             popover.displayContent();
         }.bind(this));
@@ -612,14 +614,15 @@ class Fonts {
                 zen('div').html('<label><input name="font-subset[]" type="radio" ' + current + ' value="' + sub + '"/> ' + labelize(sub.replace('ext', 'extended')) + '</label>').bottom(content);
             }, this);
 
-            content.delegate('change', 'input[type="radio"]', function(event, input) {
-                input = $(input);
-                this.filters.script = input.value();
-                $('.g-particles-header input.font-preview').value(this.previewSentence[this.filters.script]);
-                subsets.find('small').text(labelize(input.value().replace('ext', 'extended')));
-                this.search();
-                this.updatePreview();
-            }.bind(this));
+            content[0].querySelectorAll('input[type="radio"]').forEach(function(input) {
+                input.addEventListener('change', function() {
+                    this.filters.script = input.value;
+                    $('.g-particles-header input.font-preview').value(this.previewSentence[this.filters.script]);
+                    subsets.find('small').text(labelize(input.value.replace('ext', 'extended')));
+                    this.search();
+                    this.updatePreview();
+                }.bind(this));
+            }, this);
 
             popover.displayContent();
         }.bind(this));

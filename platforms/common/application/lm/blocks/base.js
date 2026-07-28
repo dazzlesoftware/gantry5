@@ -2,12 +2,10 @@
 
 var EventEmitter = require('../../utils/event-emitter'),
     zen          = require('../../utils/create-element'),
-    $            = require('elements'),
+    $            = require('../../utils/elements-native'),
     ID           = require('../id'),
     translate    = require('../../utils/translate'),
     getCurrentOutline = require('../../utils/get-outline').getCurrentOutline;
-
-require('elements/traversal');
 
 var isPlainObject = function(value) {
         if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
