@@ -28,7 +28,6 @@
         <folder>language</folder>
         <folder>layouts</folder>
         <folder>particles</folder>
-        <folder>roksprocket</folder>
         <folder>scss</folder>
         <file>component.php</file>
         <file>error.php</file>

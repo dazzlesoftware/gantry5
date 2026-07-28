@@ -24,7 +24,7 @@ The Gantry core and administration interface are significantly closer to native 
 - **1,579 physical theme files** contain jQuery-dependent code: 940 JavaScript files and 639 Twig templates with inline scripts.
 - Theme duplication reduces those files to approximately **489 distinct implementations**: 201 JavaScript implementations and 288 Twig implementations.
 - Excluding 148 minified library copies leaves **792 readable jQuery-dependent JavaScript files** representing **193 distinct implementations**.
-- **4 physical theme files** contain the same remaining MooTools/MooFx implementation.
+- **0 theme JavaScript files** contain MooTools or MooFx code after removing the obsolete RokSprocket overrides.
 - No React, Vue, Angular, or Backbone usage was detected.
 - Core code still uses CommonJS extensively and has not yet moved to native ES modules.
 
@@ -77,12 +77,7 @@ They now use guarded native delegated click listeners, `URL`/`URLSearchParams`, 
 
 ### MooTools status
 
-Four physical theme files still contain MooTools/MooFx code. They are copies of one distinct `stories.js` implementation:
-
-- `themes/ambrosia/common/roksprocket/layouts/features/themes/stories/stories.js`
-- `themes/ethereal/common/roksprocket/layouts/features/themes/stories/stories.js`
-- `themes/kraken/common/roksprocket/layouts/features/themes/stories/stories.js`
-- `themes/salient/common/roksprocket/layouts/features/themes/stories/stories.js`
+No active theme-level MooTools or MooFx code remains. The four obsolete RokSprocket override trees in Ambrosia, Ethereal, Kraken, and Salient were removed on July 28, 2026.
 
 MooTools-related items still present in the core include:
 
@@ -128,7 +123,7 @@ The physical-file count is high because many themes contain copies of the same p
 | Owl Carousel | 134 | 87 |
 | Swiper | 193 | 58 |
 | Slick | 6 | 3 |
-| MooTools/MooFx | 4 | 1 |
+| MooTools/MooFx theme code | 0 | 0 |
 
 Other recurring particle and script families include:
 
@@ -256,17 +251,16 @@ After dependency removal stabilizes:
 The practical migration backlog is approximately:
 
 - **489 distinct jQuery-dependent implementations** across recovered themes.
-- **1 distinct MooTools/MooFx implementation**, copied into four themes.
+- **0 theme-level MooTools/MooFx implementations**.
 - **3 core-adjacent Twig framework loaders**, including the optional JavaScript Frameworks atom and the Grav search particle.
 
 Physical files should not be converted independently. Equivalent particle and library implementations should be consolidated first, then replaced with a shared native implementation.
 
 ## Immediate next target
 
-1. Convert or remove the four duplicated MooTools/MooFx `stories.js` files.
-2. Modernize the JavaScript Frameworks atom so new pages cannot load jQuery UI, MooTools, or obsolete Bootstrap JavaScript versions.
-3. Replace the explicit jQuery dependency in the Grav search particle.
-4. Continue with the most frequently duplicated jQuery theme families, starting with counters, video, Swiper, audio, calendar, and single-page navigation.
+1. Modernize the JavaScript Frameworks atom so new pages cannot load jQuery UI, MooTools, or obsolete Bootstrap JavaScript versions.
+2. Replace the explicit jQuery dependency in the Grav search particle.
+3. Continue with the most frequently duplicated jQuery theme families, starting with counters, video, Swiper, audio, calendar, and single-page navigation.
 
 ## Audit methodology
 
