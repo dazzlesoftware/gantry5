@@ -273,10 +273,12 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
         }
         if (empty($params['menu'])) {
             $params['menu'] = $this->getDefaultMenuName();
-            if (!$params['menu'] && !empty($params['admin'])) {
-                // In admin just select the first menu if there isn't default menu to be selected.
+            if (!$params['menu'] || !\in_array($params['menu'], $menus, true)) {
+                // Fall back to the first available menu if the platform has no valid default.
+                // WordPress does not implement a default menu, and Joomla may not have
+                // one for the current language.
                 $params['menu'] = reset($menus);
-            };
+            }
         } elseif ($params['menu'] === '-active-') {
             $params['menu'] = $this->getActiveMenuName();
         }

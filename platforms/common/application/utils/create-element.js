@@ -1,6 +1,6 @@
 "use strict";
 
-const $ = require('elements/base');
+const $ = require('./elements-native');
 
 const attributePattern = /\[\s*([^\s~|^$*=\]]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*\]/g;
 const classPattern = /\.([a-zA-Z_][\w-]*)/g;

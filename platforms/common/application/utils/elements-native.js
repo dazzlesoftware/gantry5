@@ -1,13 +1,85 @@
 "use strict";
 
-const $ = require('elements/base');
-
-require('elements/attributes');
-require('elements/events');
-require('elements/insertion');
-
+const wrapperCache = new WeakMap();
+const eventListeners = new WeakMap();
 const delegatedListeners = new WeakMap();
 const elementNode = value => value && value[0] ? value[0] : value;
+const unique = nodes => Array.from(new Set(nodes));
+
+function Elements(nodes) {
+    nodes.forEach((node, index) => {
+        this[index] = node;
+    });
+    this.length = nodes.length;
+}
+
+function $(value, context) {
+    if (value === null || value === undefined) return null;
+    if (value instanceof Elements) return value;
+
+    let nodes = [];
+    if (typeof value === 'string') {
+        const expression = value.trim();
+        if (expression.startsWith('<') && expression.endsWith('>')) {
+            const template = document.createElement('template');
+            template.innerHTML = expression;
+            nodes = Array.from(template.content.children);
+        } else {
+            const root = elementNode(context) || document;
+            nodes = Array.from(root.querySelectorAll(selectorGroups(expression)));
+        }
+    } else if (value.nodeType || value === window) {
+        nodes = [value];
+    } else if (typeof value.length === 'number') {
+        Array.from(value).forEach(item => {
+            const wrapped = $(item, context);
+            if (wrapped) nodes.push(...Array.from(wrapped));
+        });
+    }
+
+    nodes = unique(nodes.filter(Boolean));
+    if (!nodes.length) return null;
+    if (nodes.length === 1) {
+        const cached = wrapperCache.get(nodes[0]);
+        if (cached) return cached;
+        const wrapped = new Elements(nodes);
+        wrapperCache.set(nodes[0], wrapped);
+        return wrapped;
+    }
+    return new Elements(nodes);
+}
+
+Elements.prototype = Object.create($.prototype);
+Elements.prototype.constructor = Elements;
+
+$.implement = methods => {
+    Object.keys(methods).forEach(name => {
+        $.prototype[name] = methods[name];
+    });
+    return $;
+};
+
+$.prototype.forEach = function(callback, context) {
+    Array.from(this).forEach(callback, context);
+    return this;
+};
+$.prototype.map = function(callback, context) {
+    return Array.from(this).map(callback, context);
+};
+$.prototype.filter = function(callback, context) {
+    return Array.from(this).filter(callback, context);
+};
+$.prototype.every = function(callback, context) {
+    return Array.from(this).every(callback, context);
+};
+$.prototype.some = function(callback, context) {
+    return Array.from(this).some(callback, context);
+};
+$.prototype.unlink = function() {
+    this.forEach(node => wrapperCache.delete(node));
+    return this.map(node => node);
+};
+
 const selectorGroups = expression => String(expression || '*').split(',').map(selector => {
     selector = selector.trim();
     return /^[>+~]/.test(selector) ? `:scope ${selector}` : selector;
@@ -21,7 +93,6 @@ const matches = (element, expression) => {
         : String(expression);
     return Boolean(element && element.nodeType === 1 && element.matches(selector));
 };
-const unique = nodes => Array.from(new Set(nodes));
 const documentOrder = nodes => unique(nodes).sort((left, right) => {
     if (left === right) return 0;
     return left.compareDocumentPosition(right) & 2 ? 1 : -1;
@@ -44,7 +115,227 @@ const closestDelegated = (target, selector, root) => {
     return root === document || root === window || root === match || root.contains(match) ? match : null;
 };
 
+const accessors = {};
+['type', 'value', 'name', 'href', 'title', 'id', 'className'].forEach(name => {
+    accessors[name] = function(value) {
+        if (value === undefined) return this[0][name];
+        return this.forEach(node => { node[name] = value; });
+    };
+});
+['checked', 'disabled', 'selected'].forEach(name => {
+    accessors[name] = function(value) {
+        if (value === undefined) return Boolean(this[0][name]);
+        return this.forEach(node => { node[name] = Boolean(value); });
+    };
+});
+$.implement(accessors);
+
 $.implement({
+    setAttribute: function(name, value) {
+        return this.forEach(node => node.setAttribute(name, value));
+    },
+
+    getAttribute: function(name) {
+        return this[0].hasAttribute(name) ? this[0].getAttribute(name) : null;
+    },
+
+    hasAttribute: function(name) {
+        return this[0].hasAttribute(name);
+    },
+
+    removeAttribute: function(name) {
+        return this.forEach(node => node.removeAttribute(name));
+    },
+
+    attribute: function(name, value) {
+        if (name && typeof name === 'object') {
+            Object.keys(name).forEach(key => this.attribute(key, name[key]));
+            return this;
+        }
+        const properties = ['type', 'value', 'name', 'href', 'title', 'id'];
+        const booleans = ['checked', 'disabled', 'selected'];
+        if (value === undefined) {
+            if (properties.includes(name)) return this[0][name];
+            if (booleans.includes(name)) return Boolean(this[0][name]);
+            return this.getAttribute(name);
+        }
+        if (value === null) return this.removeAttribute(name);
+        if (properties.includes(name)) return this.forEach(node => { node[name] = value; });
+        if (booleans.includes(name)) return this.forEach(node => { node[name] = Boolean(value); });
+        return this.setAttribute(name, value);
+    },
+
+    classNames: function() {
+        return Array.from(this[0].classList || []).sort();
+    },
+
+    hasClass: function(className) {
+        return this[0].classList.contains(className);
+    },
+
+    addClass: function(className) {
+        const classes = String(className || '').trim().split(/\s+/).filter(Boolean);
+        return this.forEach(node => node.classList.add(...classes));
+    },
+
+    removeClass: function(className) {
+        const classes = String(className || '').trim().split(/\s+/).filter(Boolean);
+        return this.forEach(node => node.classList.remove(...classes));
+    },
+
+    toggleClass: function(className, force) {
+        const add = force !== undefined ? force : !this.hasClass(className);
+        this.forEach(node => node.classList.toggle(className, Boolean(add)));
+        return Boolean(add);
+    },
+
+    tag: function() {
+        return this[0].tagName.toLowerCase();
+    },
+
+    html: function(value) {
+        if (value === undefined) return this[0].innerHTML;
+        return this.forEach(node => { node.innerHTML = value; });
+    },
+
+    text: function(value) {
+        if (value === undefined) return this[0].textContent;
+        return this.forEach(node => { node.textContent = value; });
+    },
+
+    data: function(key, value) {
+        if (value === undefined) return this.getAttribute(`data-${key}`);
+        if (value === null) return this.removeAttribute(`data-${key}`);
+        return this.setAttribute(`data-${key}`, value);
+    },
+
+    check: function() {
+        return this.checked(true);
+    },
+
+    uncheck: function() {
+        return this.checked(false);
+    },
+
+    disable: function() {
+        return this.disabled(true);
+    },
+
+    enable: function() {
+        return this.disabled(false);
+    },
+
+    select: function() {
+        return this.selected(true);
+    },
+
+    deselect: function() {
+        return this.selected(false);
+    },
+
+    on: function(event, handle, useCapture) {
+        return this.forEach(node => {
+            let listeners = eventListeners.get(node);
+            if (!listeners) {
+                listeners = [];
+                eventListeners.set(node, listeners);
+            }
+            if (listeners.some(item => item.event === event && item.handle === handle
+                && item.useCapture === Boolean(useCapture))) return;
+
+            const listener = nativeEvent => handle.call($(node), nativeEvent);
+            const registration = {
+                event,
+                handle,
+                useCapture: Boolean(useCapture),
+                listener
+            };
+            listeners.push(registration);
+            node.addEventListener(event, listener, registration.useCapture);
+        });
+    },
+
+    off: function(event, handle, useCapture) {
+        return this.forEach(node => {
+            const listeners = eventListeners.get(node);
+            if (!listeners) return;
+            for (let index = listeners.length - 1; index >= 0; index--) {
+                const item = listeners[index];
+                if (item.event !== event
+                    || (handle && item.handle !== handle)
+                    || item.useCapture !== Boolean(useCapture)) continue;
+                node.removeEventListener(event, item.listener, item.useCapture);
+                listeners.splice(index, 1);
+            }
+            if (!listeners.length) eventListeners.delete(node);
+        });
+    },
+
+    emit: function(event, ...args) {
+        return this.forEach(node => {
+            const listeners = eventListeners.get(node) || [];
+            listeners.filter(item => item.event === event)
+                .slice()
+                .forEach(item => item.handle.apply($(node), args));
+        });
+    },
+
+    appendChild: function(child) {
+        this[0].appendChild(elementNode(child));
+        return this;
+    },
+
+    insertBefore: function(child, reference) {
+        this[0].insertBefore(elementNode(child), elementNode(reference));
+        return this;
+    },
+
+    removeChild: function(child) {
+        this[0].removeChild(elementNode(child));
+        return this;
+    },
+
+    replaceChild: function(child, reference) {
+        this[0].replaceChild(elementNode(child), elementNode(reference));
+        return this;
+    },
+
+    before: function(element) {
+        element = elementNode(element);
+        if (!element || !element.parentNode) return this;
+        return this.forEach(node => element.parentNode.insertBefore(node, element));
+    },
+
+    after: function(element) {
+        element = elementNode(element);
+        if (!element || !element.parentNode) return this;
+        return this.forEach(node => element.parentNode.insertBefore(node, element.nextSibling));
+    },
+
+    bottom: function(element) {
+        element = elementNode(element);
+        return this.forEach(node => element.appendChild(node));
+    },
+
+    top: function(element) {
+        element = elementNode(element);
+        return this.forEach(node => element.insertBefore(node, element.firstChild));
+    },
+
+    insert: function(element) {
+        return this.bottom(element);
+    },
+
+    remove: function() {
+        return this.forEach(node => node.remove());
+    },
+
+    replace: function(element) {
+        element = elementNode(element);
+        if (element && element.parentNode) element.parentNode.replaceChild(this[0], element);
+        return this;
+    },
+
     search: function(expression) {
         const found = [];
         this.forEach(context => found.push(...descendants(context, expression)));

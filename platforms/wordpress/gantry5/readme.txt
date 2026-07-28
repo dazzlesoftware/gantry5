@@ -4,7 +4,7 @@ Author URI: http://gantry.org
 Tags: gantry, gantry5, framework, theme, builder
 Requires at least: 5.2
 Tested up to: 7.0
-Requires PHP: 8.1.0
+Requires PHP: 8.3.0
 Stable tag: @version@
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -97,7 +97,7 @@ Please note that Gantry Framework plugin doesn't come up with the default theme.
 We try to ensure that any Gantry theme and the Gantry Plugin specifically will work with any modern and secure server environment. The recommended minimum requirements are :
 
 * WordPress 5.2 or higher
-* PHP 8.1.0+ (8.2+ recommended)
+* PHP 8.3.0+
 
 = Is there any documentation available ? =
 

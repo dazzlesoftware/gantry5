@@ -1,6 +1,6 @@
 # JavaScript Framework Dependency Audit
 
-**Audit date:** July 27, 2026  
+**Audit date:** July 28, 2026
 **Project:** Gantry 5 / Genesis  
 **Goal:** Remove JavaScript framework dependencies and transition first-party code to modern, native ES6+ JavaScript.
 
@@ -8,8 +8,8 @@
 
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
-- **2 first-party core/platform files** still import external JavaScript libraries directly.
-- Admin consumers now use local native element-creation and traversal/delegation adapters; the shared frontend layer is framework-free.
+- **0 first-party Gantry core `.js` files** import external JavaScript frameworks directly.
+- Admin consumers now use standalone native element-creation and traversal/delegation adapters; both core bundles are framework-free.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
 - The font picker now uses native stylesheet loading and the CSS Font Loading API; `webfontloader` has been removed.
@@ -21,9 +21,11 @@ The Gantry core and administration interface are significantly closer to native 
 - Gantry's custom adjacent/all-sibling helpers now use native DOM traversal and `Element.matches()` instead of importing Slick directly.
 - The admin element builder now uses `document.createElement()` and native attribute/class assignment instead of the Slick-powered `elements/zen` parser.
 - The admin traversal and delegated-event layer now uses native selectors, DOM relationships, and browser events; Slick is absent from the generated admin bundle.
-- **1,143 physical theme files** contain jQuery-dependent code.
-- Theme duplication reduces those files to approximately **356 distinct implementations**.
-- No active React, Vue, Backbone, or theme-level MooTools usage was detected.
+- **1,579 physical theme files** contain jQuery-dependent code: 940 JavaScript files and 639 Twig templates with inline scripts.
+- Theme duplication reduces those files to approximately **489 distinct implementations**: 201 JavaScript implementations and 288 Twig implementations.
+- Excluding 148 minified library copies leaves **792 readable jQuery-dependent JavaScript files** representing **193 distinct implementations**.
+- **4 physical theme files** contain the same remaining MooTools/MooFx implementation.
+- No React, Vue, Angular, or Backbone usage was detected.
 - Core code still uses CommonJS extensively and has not yet moved to native ES modules.
 
 Generated bundles, `node_modules`, Composer `vendor` directories, minified third-party files, and compiled asset directories were excluded where appropriate to avoid double-counting.
@@ -32,20 +34,23 @@ Generated bundles, `node_modules`, Composer `vendor` directories, minified third
 
 ### Remaining dependency count
 
-There are **2 first-party files with direct external runtime imports**:
+There are **0 first-party Gantry core JavaScript files with direct external runtime imports**:
 
-- 2 JavaScript source files importing external runtime packages.
+- No JavaScript source files import external runtime packages.
 
 One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the first-party-file count.
 
+Three core-adjacent Twig loaders remain:
+
+- `engines/common/nucleus/particles/frameworks.html.twig` can optionally load jQuery, jQuery UI, MooTools, and Bootstrap JavaScript.
+- `engines/joomla/nucleus/particles/frameworks.html.twig` can optionally load jQuery, jQuery UI, and MooTools.
+- `engines/grav/nucleus/particles/search.html.twig` explicitly requests jQuery.
+
 ### Core JavaScript files with direct external runtime imports
 
-The following 2 files still import one or more external libraries:
+No first-party core JavaScript files still import external runtime libraries.
 
-1. `platforms/common/application/utils/create-element.js`
-2. `platforms/common/application/utils/elements-native.js`
-
-Several admin modules still use the local compatibility APIs indirectly. They no longer import Slick or external DOM packages themselves and can now be migrated incrementally without changing traversal behavior again.
+Several admin modules still use the local compatibility APIs indirectly. Those adapters are implemented entirely with native DOM APIs and can be migrated incrementally without changing traversal behavior again.
 
 ### Dependency breakdown
 
@@ -53,7 +58,7 @@ Counts overlap because a single file may import more than one package.
 
 | Dependency | Files | Notes |
 |---|---:|---|
-| `elements` | 2 | Limited to two local admin compatibility adapters |
+| `elements` | 0 | Replaced by standalone native admin compatibility adapters |
 | `mout` | 0 | Removed from first-party core runtime code |
 | `prime` | 0 | Removed from first-party core runtime code |
 | `prime-util` | 0 | Removed from first-party core runtime code |
@@ -72,7 +77,12 @@ They now use guarded native delegated click listeners, `URL`/`URLSearchParams`, 
 
 ### MooTools status
 
-No active theme-level MooTools or MooFx usage was detected.
+Four physical theme files still contain MooTools/MooFx code. They are copies of one distinct `stories.js` implementation:
+
+- `themes/ambrosia/common/roksprocket/layouts/features/themes/stories/stories.js`
+- `themes/ethereal/common/roksprocket/layouts/features/themes/stories/stories.js`
+- `themes/kraken/common/roksprocket/layouts/features/themes/stories/stories.js`
+- `themes/salient/common/roksprocket/layouts/features/themes/stories/stories.js`
 
 MooTools-related items still present in the core include:
 
@@ -102,9 +112,11 @@ The recovered themes contain the largest remaining framework migration workload.
 
 | Category | Physical files | Distinct content variants |
 |---|---:|---:|
-| Twig templates with inline scripts | 352 | 164 |
-| JavaScript files | 791 | 192 |
-| **Total** | **1,143** | **356** |
+| Twig templates with inline scripts | 639 | 288 |
+| JavaScript files | 940 | 201 |
+| **Total** | **1,579** | **489** |
+
+Of the 940 JavaScript files, 148 are minified third-party library copies. Excluding those leaves 792 readable files representing 193 distinct implementations.
 
 The physical-file count is high because many themes contain copies of the same particles, initialization files, and third-party libraries. The distinct-content count is a better estimate of the actual rewrite workload.
 
@@ -112,11 +124,11 @@ The physical-file count is high because many themes contain copies of the same p
 
 | Dependency or plugin family | Physical files | Distinct implementations |
 |---|---:|---:|
-| jQuery-dependent code | 1,143 | 356 |
-| Owl Carousel | 88 | 73 |
-| Swiper | 80 | 26 |
-| Slick | 2 | 1 |
-| Other detected jQuery plugins | 49 | 3 |
+| jQuery-dependent code | 1,579 | 489 |
+| Owl Carousel | 134 | 87 |
+| Swiper | 193 | 58 |
+| Slick | 6 | 3 |
+| MooTools/MooFx | 4 | 1 |
 
 Other recurring particle and script families include:
 
@@ -137,7 +149,7 @@ Theme migrations should be centralized by particle or library family. Rewriting 
 
 ## ES6+ and module status
 
-The core audit found **89 first-party JavaScript source files** in:
+The core audit found **94 first-party JavaScript source files** in:
 
 - `platforms/common/application`
 - `assets/common/application`
@@ -146,13 +158,13 @@ Current syntax and module usage:
 
 | Feature | Files |
 |---|---:|
-| CommonJS `require()` | 64 |
-| CommonJS `module.exports` or `exports` | 88 |
-| `var` declarations | 54 |
+| CommonJS `require()` | 62 |
+| CommonJS `module.exports` or `exports` | 93 |
+| `var` declarations | 51 |
 | Native ES module `import`/`export` | 0 |
-| ES6 `class` syntax | 32 |
-| Arrow functions | 34 |
-| Promise or async usage | 1 |
+| ES6 `class` syntax | 37 |
+| Arrow functions | 42 |
+| Promise or async usage | 6 |
 
 Framework removal and ES6 modernization are separate but related tasks. A file may already be framework-free while still using CommonJS, `var`, and ES5 callback syntax.
 
@@ -170,7 +182,7 @@ The three content-array templates now use:
 
 ### Phase 2: Replace the legacy core DOM layer
 
-The shared frontend menu and offcanvas code has been migrated away from `elements`, `prime`, `prime-util`, `mout`, and `domready`. Admin consumers use two native compatibility adapters that still import the minimal `elements` base modules.
+The shared frontend menu and offcanvas code has been migrated away from `elements`, `prime`, `prime-util`, `mout`, and `domready`. Admin consumers use two standalone compatibility adapters implemented with native DOM APIs.
 
 Build a small set of focused native utilities only where repeated behavior warrants it:
 
@@ -196,10 +208,7 @@ Completed:
 - SortableJS in collection and key/value field reordering
 - SortableJS in position-card cross-list dragging and trash deletion
 - SortableJS in page-settings atom cloning, reordering, and trash deletion
-
-Remaining sequence:
-
-1. Remove the remaining `elements/base`, attributes, events, and insertion compatibility imports from the two native admin adapters
+- The remaining `elements/base`, attributes, events, and insertion compatibility imports
 
 Native drag-and-drop, pointer events, file inputs, array searching, and browser font loading APIs should be preferred where practical.
 
@@ -242,6 +251,28 @@ After dependency removal stabilizes:
 - Update the build pipeline to consume native ES module entry points.
 - Continue producing optimized browser bundles for production packages where necessary.
 
+## Current remaining workload
+
+The practical migration backlog is approximately:
+
+- **489 distinct jQuery-dependent implementations** across recovered themes.
+- **1 distinct MooTools/MooFx implementation**, copied into four themes.
+- **3 core-adjacent Twig framework loaders**, including the optional JavaScript Frameworks atom and the Grav search particle.
+
+Physical files should not be converted independently. Equivalent particle and library implementations should be consolidated first, then replaced with a shared native implementation.
+
 ## Immediate next target
 
-Remove the remaining `elements` compatibility imports from the native admin element-creation and traversal/delegation adapters. The shared frontend menu and offcanvas implementations are now native ES6+ JavaScript, and Slick is absent from both generated core bundles.
+1. Convert or remove the four duplicated MooTools/MooFx `stories.js` files.
+2. Modernize the JavaScript Frameworks atom so new pages cannot load jQuery UI, MooTools, or obsolete Bootstrap JavaScript versions.
+3. Replace the explicit jQuery dependency in the Grav search particle.
+4. Continue with the most frequently duplicated jQuery theme families, starting with counters, video, Swiper, audio, calendar, and single-page navigation.
+
+## Audit methodology
+
+The scan includes `.js` files and Twig templates beneath `themes/`. It excludes `node_modules`, Composer `vendor` directories, `dist`, and compiled JavaScript/CSS output directories. Files are counted in two ways:
+
+- **Physical files:** every matching copy in the repository.
+- **Distinct implementations:** unique SHA-256 content hashes, which collapse byte-identical copies.
+
+Counts for plugin families overlap because one file can reference both jQuery and a jQuery plugin such as Owl Carousel or Swiper.

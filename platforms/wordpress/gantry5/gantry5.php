@@ -1,16 +1,23 @@
 <?php
 // phpcs:disable PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 /**
- * @package   Genesis
- * @author    Dazzle Software https://dazzlesoftware.org
- * @copyright Copyright (C) 2026 Dazzle Software, LLC
- * @license   GNU/GPLv3 and later
+ * Plugin Name: Gantry 5 Framework
+ * Plugin URI: https://dazzlesoftware.org/
+ * Description: Framework for Gantry 5 based themes.
+ * Version: @version@
+ * Requires PHP: 8.3
+ * Author: Dazzle Software
+ * Author URI: https://dazzlesoftware.org/
+ * License: GNU General Public License v3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain: gantry5
+ * Domain Path: /admin/languages
  */
 
 defined('ABSPATH') or die;
 
-// Fail safe version check for PHP < 8.1.0
-if (PHP_VERSION_ID < 80100) {
+// Fail safe version check for PHP < 8.3.0
+if (PHP_VERSION_ID < 80300) {
     if (is_admin()) {
         add_action('admin_notices', 'gantry5_php_version_error');
     }
@@ -190,7 +197,7 @@ function gantry5_php_version_error()
             /* translators: 1: current PHP version, 2: required PHP version. */
             esc_html__('You are running PHP %1$s, but Gantry 5 Framework needs at least PHP %2$s to run.', 'gantry5'),
             esc_html(PHP_VERSION),
-            '8.1.0'
+            '8.3.0'
         )
     );
 }
