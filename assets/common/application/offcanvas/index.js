@@ -1,421 +1,394 @@
-// Offcanvas slide with desktop, touch and all-in-one touch devices support that supports both left and right placement.
-// Fast and optimized using CSS3 transitions
-// Based on the awesome Slideout.js <https://mango.github.io/slideout/>
+// Offcanvas slide with desktop, touch and all-in-one touch device support.
+// Based on Slideout.js <https://mango.github.io/slideout/>.
 
 "use strict";
 
-var ready     = require('domready'),
-    prime     = require('prime'),
-    bind      = require('mout/function/bind'),
-    forEach   = require('mout/array/forEach'),
-    mapNumber = require('mout/math/map'),
-    clamp     = require('mout/math/clamp'),
-    timeout   = require('mout/function/timeout'),
-    trim      = require('mout/string/trim'),
-    decouple  = require('../utils/decouple'),
-    Bound     = require('prime-util/prime/bound'),
-    Options   = require('prime-util/prime/options'),
-    $         = require('elements'),
-    zen       = require('elements/zen');
+const decouple = require("../utils/decouple");
 
-// thanks David Walsh
-var prefix = (function() {
-    var styles = window.getComputedStyle(document.documentElement, ''),
-        pre    = (Array.prototype.slice.call(styles).join('')
-                .match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o'])
-        )[1],
-        dom    = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
-    return {
-        dom: dom,
-        lowercase: pre,
-        css: '-' + pre + '-',
-        js: pre[0].toUpperCase() + pre.substr(1)
-    };
-})();
+const hasTouchEvents = "ontouchstart" in window
+    || (window.DocumentTouch && document instanceof window.DocumentTouch);
+const clamp = (value, minimum, maximum) => Math.min(Math.max(value, minimum), maximum);
+const mapNumber = (value, inputMinimum, inputMaximum, outputMinimum, outputMaximum) => {
+    if (inputMaximum === inputMinimum) return outputMinimum;
+    const ratio = (value - inputMinimum) / (inputMaximum - inputMinimum);
+    return outputMinimum + ratio * (outputMaximum - outputMinimum);
+};
 
-var hasTouchEvents = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
-    isScrolling    = false, scrollTimeout;
+let isScrolling = false;
+let scrollTimeout;
 
-var Offcanvas = new prime({
+class Offcanvas {
+    constructor(options = {}) {
+        const defaults = {
+            effect: "ease",
+            duration: 300,
+            tolerance: padding => padding / 3,
+            padding: 0,
+            touch: true,
+            css3: true,
+            openClass: "g-offcanvas-open",
+            openingClass: "g-offcanvas-opening",
+            closingClass: "g-offcanvas-closing",
+            overlayClass: "g-nav-overlay"
+        };
 
-    mixin: [Bound, Options],
-
-    options: {
-        effect: 'ease',
-        duration: 300,
-        tolerance: function(padding) { // tolerance can also be just an integer value
-            return padding / 3;
-        },
-        padding: 0,
-        touch: true,
-        css3: true,
-
-        openClass: 'g-offcanvas-open',
-        openingClass: 'g-offcanvas-opening',
-        closingClass: 'g-offcanvas-closing',
-        overlayClass: 'g-nav-overlay'
-    },
-
-    constructor: function(options) {
-        this.setOptions(options);
-
+        this.options = { ...defaults, ...options };
         this.attached = false;
         this.opening = false;
         this.moved = false;
         this.dragging = false;
         this.opened = false;
         this.preventOpen = false;
+        this.listeners = [];
         this.offset = {
-            x: {
-                start: 0,
-                current: 0
-            },
-            y: {
-                start: 0,
-                current: 0
-            }
+            x: { start: 0, current: 0 },
+            y: { start: 0, current: 0 }
         };
 
-        this.bodyEl = $('body');
-        this.htmlEl = $('html');
+        this.bodyEl = document.body;
+        this.htmlEl = document.documentElement;
+        this.panel = document.querySelector("#g-page-surround");
+        this.offcanvas = document.querySelector("#g-offcanvas");
 
-        this.panel = $('#g-page-surround');
-        this.offcanvas = $('#g-offcanvas');
+        if (!this.panel || !this.offcanvas) {
+            this.available = false;
+            return;
+        }
+        this.available = true;
 
-        if (!this.panel || !this.offcanvas) { return false; }
-
-        var swipe = this.offcanvas.data('g-offcanvas-swipe'),
-            css3 = this.offcanvas.data('g-offcanvas-css3');
-        this.setOptions({ touch: !!(swipe !== null ? parseInt(swipe) : 1), css3: !!(css3 !== null ? parseInt(css3) : 1) });
+        const swipe = this.offcanvas.getAttribute("data-g-offcanvas-swipe");
+        const css3 = this.offcanvas.getAttribute("data-g-offcanvas-css3");
+        this.options.touch = Boolean(swipe !== null ? parseInt(swipe, 10) : 1);
+        this.options.css3 = Boolean(css3 !== null ? parseInt(css3, 10) : 1);
 
         if (!this.options.padding) {
-            this.offcanvas[0].style.display = 'block';
-            var width = this.offcanvas[0].getBoundingClientRect().width;
-            this.offcanvas[0].style.removeProperty('display');
-
-            this.setOptions({ padding: width });
+            this.offcanvas.style.display = "block";
+            this.options.padding = this.offcanvas.getBoundingClientRect().width;
+            this.offcanvas.style.removeProperty("display");
         }
 
-        this.tolerance = typeof this.options.tolerance == 'function' ? this.options.tolerance.call(this, this.options.padding) : this.options.tolerance;
+        this.tolerance = typeof this.options.tolerance === "function"
+            ? this.options.tolerance.call(this, this.options.padding)
+            : this.options.tolerance;
 
-        this.htmlEl.addClass('g-offcanvas-' + (this.options.css3 ? 'css3' : 'css2'));
-
+        this.htmlEl.classList.add(`g-offcanvas-${this.options.css3 ? "css3" : "css2"}`);
         this.attach();
         this._checkTogglers();
+    }
 
-        return this;
-    },
+    listen(element, type, handler, options) {
+        if (!element) return;
+        const listener = handler.bind(this);
+        element.addEventListener(type, listener, options);
+        this.listeners.push({ element, type, listener, options });
+    }
 
-    attach: function() {
+    delegate(element, type, selector, handler, options) {
+        if (!element) return;
+        const listener = event => {
+            const target = event.target instanceof Element ? event.target.closest(selector) : null;
+            if (target && element.contains(target)) handler.call(this, event, target);
+        };
+        element.addEventListener(type, listener, options);
+        this.listeners.push({ element, type, listener, options });
+    }
+
+    attach() {
+        if (!this.available || this.attached) return this;
         this.attached = true;
 
-        if (this.options.touch && hasTouchEvents) {
-            this.attachTouchEvents();
-        }
+        if (this.options.touch && hasTouchEvents) this.attachTouchEvents();
 
-        forEach(['toggle', 'open', 'close'], bind(function(mode) {
-            this.bodyEl.delegate('click', '[data-offcanvas-' + mode + ']', this.bound(mode));
-            if (hasTouchEvents) { this.bodyEl.delegate('touchend', '[data-offcanvas-' + mode + ']', this.bound(mode)); }
-        }, this));
+        ["toggle", "open", "close"].forEach(mode => {
+            const selector = `[data-offcanvas-${mode}]`;
+            this.delegate(this.bodyEl, "click", selector, this[mode]);
+            if (hasTouchEvents) this.delegate(this.bodyEl, "touchend", selector, this[mode]);
+        });
 
         this.attachMutationEvent();
 
-        this.overlay = zen('div[data-offcanvas-close].' + this.options.overlayClass).top(this.panel);
+        this.overlay = document.createElement("div");
+        this.overlay.className = this.options.overlayClass;
+        this.overlay.setAttribute("data-offcanvas-close", "");
+        this.panel.prepend(this.overlay);
 
         return this;
-    },
+    }
 
-    attachMutationEvent: function () {
-        this.observer = new MutationObserver(() => {
-          this._checkTogglers();
-        });
-        this.observer.observe(this.offcanvas[0], {
-          childList: true,
-          subtree: true,
-        });
-      },
-    
-    attachTouchEvents: function() {
-        var msPointerSupported = window.navigator.msPointerEnabled,
-            touch              = {
-                start: msPointerSupported ? 'MSPointerDown' : 'touchstart',
-                move: msPointerSupported ? 'MSPointerMove' : 'touchmove',
-                end: msPointerSupported ? 'MSPointerUp' : 'touchend'
-            };
+    attachMutationEvent() {
+        if (!this.available) return;
+        if (this.observer) this.observer.disconnect();
+        this.observer = new MutationObserver(() => this._checkTogglers());
+        this.observer.observe(this.offcanvas, { childList: true, subtree: true });
+    }
 
-        this._scrollBound = decouple(window, 'scroll', this.bound('_bodyScroll'));
-        this.bodyEl.on(touch.move, this.bound('_bodyMove'));
-        this.panel.on(touch.start, this.bound('_touchStart'));
-        this.panel.on('touchcancel', this.bound('_touchCancel'));
-        this.panel.on(touch.end, this.bound('_touchEnd'));
-        this.panel.on(touch.move, this.bound('_touchMove'));
-    },
+    attachTouchEvents() {
+        const msPointerSupported = window.navigator.msPointerEnabled;
+        this.touchEvents = {
+            start: msPointerSupported ? "MSPointerDown" : "touchstart",
+            move: msPointerSupported ? "MSPointerMove" : "touchmove",
+            end: msPointerSupported ? "MSPointerUp" : "touchend"
+        };
 
-    detach: function() {
+        this._scrollBound = decouple(window, "scroll", this._bodyScroll.bind(this));
+        this.listen(this.bodyEl, this.touchEvents.move, this._bodyMove, { passive: false });
+        this.listen(this.panel, this.touchEvents.start, this._touchStart, { passive: true });
+        this.listen(this.panel, "touchcancel", this._touchCancel);
+        this.listen(this.panel, this.touchEvents.end, this._touchEnd);
+        this.listen(this.panel, this.touchEvents.move, this._touchMove, { passive: true });
+    }
+
+    detach() {
+        if (!this.attached) return this;
         this.attached = false;
 
-        if (this.options.touch && hasTouchEvents) {
-            this.detachTouchEvents();
-        }
+        this.listeners.forEach(({ element, type, listener, options }) => {
+            element.removeEventListener(type, listener, options);
+        });
+        this.listeners = [];
 
-        forEach(['toggle', 'open', 'close'], bind(function(mode) {
-            this.bodyEl.undelegate('click', '[data-offcanvas-' + mode + ']', this.bound(mode));
-            if (hasTouchEvents) { this.bodyEl.undelegate('touchend', '[data-offcanvas-' + mode + ']', this.bound(mode)); }
-        }, this));
+        if (this._scrollBound) {
+            window.removeEventListener("scroll", this._scrollBound);
+            this._scrollBound = null;
+        }
 
         this.detachMutationEvent();
-        this.overlay.remove();
-
-        return this;
-    },
-
-    detachMutationEvent: function () {
-        this.observer.disconnect();
-      },
-
-    detachTouchEvents: function() {
-        var msPointerSupported = window.navigator.msPointerEnabled,
-            touch              = {
-                start: msPointerSupported ? 'MSPointerDown' : 'touchstart',
-                move: msPointerSupported ? 'MSPointerMove' : 'touchmove',
-                end: msPointerSupported ? 'MSPointerUp' : 'touchend'
-            };
-
-        window.removeEventListener('scroll', this._scrollBound);
-        this.bodyEl.off(touch.move, this.bound('_bodyMove'));
-        this.panel.off(touch.start, this.bound('_touchStart'));
-        this.panel.off('touchcancel', this.bound('_touchCancel'));
-        this.panel.off(touch.end, this.bound('_touchEnd'));
-        this.panel.off(touch.move, this.bound('_touchMove'));
-    },
-
-
-    open: function(event) {
-        if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
-        else { this.dragging = false; }
-
-        if (this.opened) { return this; }
-
-        this.htmlEl.addClass(this.options.openClass);
-        this.htmlEl.addClass(this.options.openingClass);
-
-        this.overlay[0].style.opacity = 1;
-
-        if (this.options.css3) {
-            // for translate3d
-            this.panel[0].style[this.getOffcanvasPosition()] = 'inherit';
+        if (this.overlay) {
+            this.overlay.remove();
+            this.overlay = null;
         }
+        return this;
+    }
+
+    detachMutationEvent() {
+        if (this.observer) {
+            this.observer.disconnect();
+            this.observer = null;
+        }
+    }
+
+    open(event) {
+        if (!this.available) return this;
+        if (event && /^touch/i.test(event.type)) event.preventDefault();
+        else this.dragging = false;
+        if (this.opened) return this;
+
+        this.htmlEl.classList.add(this.options.openClass, this.options.openingClass);
+        if (this.overlay) this.overlay.style.opacity = 1;
+        if (this.options.css3) this.panel.style[this.getOffcanvasPosition()] = "inherit";
 
         this._setTransition();
-        this._translateXTo((this.bodyEl.hasClass('g-offcanvas-right') ? -1 : 1) * this.options.padding);
+        this._translateXTo(
+            (this.bodyEl.classList.contains("g-offcanvas-right") ? -1 : 1) * this.options.padding
+        );
         this.opened = true;
 
-        setTimeout(bind(function() {
-            var panel = this.panel[0];
-
-            this.htmlEl.removeClass(this.options.openingClass);
-            this.offcanvas.attribute('aria-expanded', true);
-            $('[data-offcanvas-toggle]').attribute('aria-expanded', true);
-            panel.style.transition = panel.style[prefix.css + 'transition'] = '';
-        }, this), this.options.duration);
+        clearTimeout(this.transitionTimer);
+        this.transitionTimer = setTimeout(() => {
+            this.htmlEl.classList.remove(this.options.openingClass);
+            this.offcanvas.setAttribute("aria-expanded", "true");
+            document.querySelectorAll("[data-offcanvas-toggle]")
+                .forEach(toggle => toggle.setAttribute("aria-expanded", "true"));
+            this.panel.style.transition = "";
+        }, this.options.duration);
 
         return this;
-    },
+    }
 
-    close: function(event, element) {
-        if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
-        else { this.dragging = false; }
+    close(event, element) {
+        if (!this.available) return this;
+        if (event && /^touch/i.test(event.type)) event.preventDefault();
+        else this.dragging = false;
 
         element = element || window;
+        if (!this.opened && !this.opening) return this;
+        if (this.panel !== element && this.dragging) return false;
 
-        if (!this.opened && !this.opening) { return this; }
-        if (this.panel !== element && this.dragging) { return false; }
-
-        this.htmlEl.addClass(this.options.closingClass);
-
-        this.overlay[0].style.opacity = 0;
+        this.htmlEl.classList.add(this.options.closingClass);
+        if (this.overlay) this.overlay.style.opacity = 0;
 
         this._setTransition();
         this._translateXTo(0);
         this.opened = false;
-        this.offcanvas.attribute('aria-expanded', false);
-        $('[data-offcanvas-toggle]').attribute('aria-expanded', false);
+        this.offcanvas.setAttribute("aria-expanded", "false");
+        document.querySelectorAll("[data-offcanvas-toggle]")
+            .forEach(toggle => toggle.setAttribute("aria-expanded", "false"));
 
-        setTimeout(bind(function() {
-            var panel = this.panel[0];
-
-            this.htmlEl.removeClass(this.options.openClass);
-            this.htmlEl.removeClass(this.options.closingClass);
-            panel.style.transition = panel.style[prefix.css + 'transition'] = '';
-            panel.style.transform = panel.style[prefix.css + 'transform'] = '';
-            panel.style[this.getOffcanvasPosition()] = '';
-        }, this), this.options.duration);
-
+        clearTimeout(this.transitionTimer);
+        this.transitionTimer = setTimeout(() => {
+            this.htmlEl.classList.remove(this.options.openClass, this.options.closingClass);
+            this.panel.style.transition = "";
+            this.panel.style.transform = "";
+            this.panel.style[this.getOffcanvasPosition()] = "";
+        }, this.options.duration);
 
         return this;
-    },
+    }
 
-    toggle: function(event, element) {
-        if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
-        else { this.dragging = false; }
+    toggle(event, element) {
+        if (event && /^touch/i.test(event.type)) event.preventDefault();
+        else this.dragging = false;
+        return this[this.opened ? "close" : "open"](event, element);
+    }
 
-        return this[this.opened ? 'close' : 'open'](event, element);
-    },
+    getOffcanvasPosition() {
+        return this.bodyEl.classList.contains("g-offcanvas-right") ? "right" : "left";
+    }
 
-    getOffcanvasPosition: function() {
-        return this.bodyEl.hasClass('g-offcanvas-right') ? 'right' : 'left';
-    },
-
-    _setTransition: function() {
-        var panel = this.panel[0];
-
+    _setTransition() {
         if (this.options.css3) {
-            // for translate3d
-            panel.style[prefix.css + 'transition'] = panel.style.transition = prefix.css + 'transform ' + this.options.duration + 'ms ' + this.options.effect;
+            this.panel.style.transition =
+                `transform ${this.options.duration}ms ${this.options.effect}`;
         } else {
-            // left/right transition
-            panel.style[prefix.css + 'transition'] = panel.style.transition = 'left ' + this.options.duration + 'ms ' + this.options.effect + ', right ' + this.options.duration + 'ms ' + this.options.effect;
+            this.panel.style.transition =
+                `left ${this.options.duration}ms ${this.options.effect}, `
+                + `right ${this.options.duration}ms ${this.options.effect}`;
         }
-    },
+    }
 
-    _translateXTo: function(x) {
-        var panel     = this.panel[0],
-            placement = this.getOffcanvasPosition();
-
+    _translateXTo(x) {
+        const placement = this.getOffcanvasPosition();
         this.offset.x.current = x;
-
         if (this.options.css3) {
-            // for translate3d
-            panel.style[prefix.css + 'transform'] = panel.style.transform = 'translate3d(' + x + 'px, 0, 0)';
+            this.panel.style.transform = `translate3d(${x}px, 0, 0)`;
         } else {
-            // left/right transition
-            panel.style[placement] = Math.abs(x) + 'px';
+            this.panel.style[placement] = `${Math.abs(x)}px`;
         }
-    },
+    }
 
-    _bodyScroll: function() {
-        if (!this.moved) {
-            clearTimeout(scrollTimeout);
-            isScrolling = true;
-            scrollTimeout = setTimeout(function() {
-                isScrolling = false;
-            }, 250);
-        }
-    },
+    _bodyScroll() {
+        if (this.moved) return;
+        clearTimeout(scrollTimeout);
+        isScrolling = true;
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+        }, 250);
+    }
 
-    _bodyMove: function() {
-        if (this.moved) { event.preventDefault(); }
+    _bodyMove(event) {
+        if (this.moved && event.cancelable) event.preventDefault();
         this.dragging = true;
-
         return false;
-    },
+    }
 
-    _touchStart: function(event) {
-        if (!event.touches) { return; }
-
+    _touchStart(event) {
+        if (!event.touches) return;
         this.moved = false;
         this.opening = false;
         this.dragging = false;
         this.offset.x.start = event.touches[0].pageX;
         this.offset.y.start = event.touches[0].pageY;
-        this.preventOpen = (!this.opened && this.offcanvas[0].clientWidth !== 0);
-    },
+        this.preventOpen = !this.opened && this.offcanvas.clientWidth !== 0;
+    }
 
-    _touchCancel: function() {
+    _touchCancel() {
         this.moved = false;
         this.opening = false;
-    },
+    }
 
-    _touchMove: function(event) {
-        if (isScrolling || this.preventOpen || !event.touches) { return; }
+    _touchMove(event) {
+        if (isScrolling || this.preventOpen || !event.touches) return;
+        if (this.options.css3) this.panel.style[this.getOffcanvasPosition()] = "inherit";
+
+        const placement = this.getOffcanvasPosition();
+        const diffX = clamp(
+            event.touches[0].clientX - this.offset.x.start,
+            -this.options.padding,
+            this.options.padding
+        );
+        let translateX = this.offset.x.current = diffX;
+        const diffY = Math.abs(event.touches[0].pageY - this.offset.y.start);
+        const offset = placement === "right" ? -1 : 1;
+
+        if (Math.abs(translateX) > this.options.padding) return;
+        if (diffY > 5 && !this.moved) return;
+
+        if (Math.abs(diffX) <= 0) return;
+        this.opening = true;
+
+        if (placement === "left" && ((this.opened && diffX > 0) || (!this.opened && diffX < 0))) {
+            return;
+        }
+        if (placement === "right" && ((this.opened && diffX < 0) || (!this.opened && diffX > 0))) {
+            return;
+        }
+
+        if (!this.moved && !this.htmlEl.classList.contains(this.options.openClass)) {
+            this.htmlEl.classList.add(this.options.openClass);
+        }
+
+        if ((placement === "left" && diffX <= 0) || (placement === "right" && diffX >= 0)) {
+            translateX = diffX + offset * this.options.padding;
+            this.opening = false;
+        }
+
+        if (this.overlay) {
+            this.overlay.style.opacity = mapNumber(
+                Math.abs(translateX),
+                0,
+                this.options.padding,
+                0,
+                1
+            );
+        }
+
         if (this.options.css3) {
-            this.panel[0].style[this.getOffcanvasPosition()] = 'inherit';
+            this.panel.style.transform = `translate3d(${translateX}px, 0, 0)`;
+        } else {
+            this.panel.style[placement] = `${Math.abs(translateX)}px`;
         }
+        this.moved = true;
+    }
 
-        var placement  = this.getOffcanvasPosition(),
-            diffX      = clamp(event.touches[0].clientX - this.offset.x.start, -this.options.padding, this.options.padding),
-            translateX = this.offset.x.current = diffX,
-            diffY  = Math.abs(event.touches[0].pageY - this.offset.y.start),
-            offset = placement == 'right' ? -1 : 1,
-            overlayOpacity;
-
-        if (Math.abs(translateX) > this.options.padding) { return; }
-        if (diffY > 5 && !this.moved) { return; }
-
-        if (Math.abs(diffX) > 0) {
-            this.opening = true;
-
-            // offcanvas on left
-            if (placement == 'left' && (this.opened && diffX > 0 || !this.opened && diffX < 0)) { return; }
-
-            // offcanvas on right
-            if (placement == 'right' && (this.opened && diffX < 0 || !this.opened && diffX > 0)) { return; }
-
-            if (!this.moved && !this.htmlEl.hasClass(this.options.openClass)) {
-                this.htmlEl.addClass(this.options.openClass);
-            }
-
-            if ((placement == 'left' && diffX <= 0) || (placement == 'right' && diffX >= 0)) {
-                translateX = diffX + (offset * this.options.padding);
-                this.opening = false;
-            }
-
-            overlayOpacity = mapNumber(Math.abs(translateX), 0, this.options.padding, 0, 1);
-            this.overlay[0].style.opacity = overlayOpacity;
-
-            if (this.options.css3) {
-                // for translate3d
-                this.panel[0].style[prefix.css + 'transform'] = this.panel[0].style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
-            } else {
-                // left/right transition
-                this.panel[0].style[placement] = Math.abs(translateX) + 'px';
-            }
-
-            this.moved = true;
-        }
-    },
-
-    _touchEnd: function(event) {
+    _touchEnd(event) {
         if (this.moved) {
-            var tolerance = Math.abs(this.offset.x.current) > this.tolerance,
-                placement = this.bodyEl.hasClass('g-offcanvas-right') ? true : false,
-                direction = !placement ? (this.offset.x.current < 0) : (this.offset.x.current > 0);
+            const tolerance = Math.abs(this.offset.x.current) > this.tolerance;
+            const placedRight = this.bodyEl.classList.contains("g-offcanvas-right");
+            const direction = !placedRight
+                ? this.offset.x.current < 0
+                : this.offset.x.current > 0;
 
             this.opening = tolerance ? !direction : direction;
             this.opened = !this.opening;
-            this[this.opening ? 'open' : 'close'](event, this.panel);
+            this[this.opening ? "open" : "close"](event, this.panel);
         }
-
         this.moved = false;
-
         return true;
-    },
+    }
 
-    _checkTogglers: function(mutator) {
-        var togglers        = $('[data-offcanvas-toggle], [data-offcanvas-open], [data-offcanvas-close]'),
-            mobileContainer = $('#g-mobilemenu-container'),
-            blocks, mCtext;
+    _checkTogglers() {
+        if (!this.available) return;
+        const togglers = Array.from(document.querySelectorAll(
+            "[data-offcanvas-toggle], [data-offcanvas-open], [data-offcanvas-close]"
+        ));
+        const mobileContainer = document.querySelector("#g-mobilemenu-container");
+        if (!togglers.length) return;
+        if (this.opened) this.close();
 
-        if (!togglers || (mutator && ((mutator.target || mutator.srcElement) !== mobileContainer[0]))) { return; }
-        if (this.opened) { this.close(); }
+        setTimeout(() => {
+            const blocks = Array.from(this.offcanvas.querySelectorAll(".g-block"));
+            const mobileText = mobileContainer ? mobileContainer.textContent.length : 0;
+            const shouldCollapse = blocks.length === 1
+                && mobileContainer
+                && !this.offcanvas.textContent.trim().length
+                && !blocks.some(block => block.querySelector(".g-menu-item"));
 
-        timeout(function() {
-            blocks = this.offcanvas.search('.g-block');
-            mCtext = mobileContainer ? mobileContainer.text().length : 0;
-            var shouldCollapse = (blocks && blocks.length === 1) && mobileContainer && (!trim(this.offcanvas.text()).length && !blocks.find('.g-menu-item'));
-
-            togglers[shouldCollapse ? 'addClass' : 'removeClass']('g-offcanvas-hide');
+            togglers.forEach(toggler => {
+                toggler.classList.toggle("g-offcanvas-hide", Boolean(shouldCollapse));
+            });
             if (mobileContainer) {
-                mobileContainer.parent('.g-block')[!mCtext ? 'addClass' : 'removeClass']('hidden');
+                const block = mobileContainer.closest(".g-block");
+                if (block) block.classList.toggle("hidden", !mobileText);
             }
 
-            if (!shouldCollapse && !this.attached) { this.attach(); }
-            else if (shouldCollapse && this.attached) {
+            if (!shouldCollapse && !this.attached) {
+                this.attach();
+            } else if (shouldCollapse && this.attached) {
                 this.detach();
                 this.attachMutationEvent();
             }
-        }, 0, this);
+        }, 0);
     }
-});
+}
 
 module.exports = Offcanvas;
