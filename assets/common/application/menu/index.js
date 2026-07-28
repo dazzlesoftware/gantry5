@@ -1,384 +1,438 @@
 "use strict";
 
-var ready   = require('domready'),
-    prime   = require('prime'),
-    $       = require('../utils/dollar-extras'),
-    zen     = require('elements/zen'),
-    bind    = require('mout/function/bind'),
-    timeout = require('mout/function/timeout'),
-    Bound   = require('prime-util/prime/bound'),
-    Options = require('prime-util/prime/options');
+const hasTouchEvents = "ontouchstart" in window
+    || (window.DocumentTouch && document instanceof window.DocumentTouch);
 
+const closest = (element, selector) => element instanceof Element ? element.closest(selector) : null;
+const directChildren = (element, selector) => Array.from(element ? element.children : [])
+    .filter(child => child.matches(selector));
+const descendants = (element, selector) => Array.from(element ? element.querySelectorAll(selector) : []);
+const clearStyle = element => element && element.removeAttribute("style");
 
-var hasTouchEvents = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
+class Menu {
+    constructor(options = {}) {
+        const defaults = {
+            selectors: {
+                mainContainer: ".g-main-nav",
+                mobileContainer: "#g-mobilemenu-container",
+                topLevel: ".g-toplevel",
+                rootItems: "> ul > li",
+                parent: ".g-parent",
+                item: ".g-menu-item",
+                dropdown: ".g-dropdown",
+                overlay: ".g-menu-overlay",
+                touchIndicator: ".g-menu-parent-indicator",
+                linkedParent: "[data-g-menuparent]",
+                mobileTarget: "[data-g-mobile-target]"
+            },
+            states: {
+                active: "g-active",
+                inactive: "g-inactive",
+                selected: "g-selected",
+                touchEvents: "g-menu-hastouch"
+            }
+        };
 
-var Menu = new prime({
-
-    mixin: [Bound, Options],
-
-    options: {
-        selectors: {
-            mainContainer: '.g-main-nav',
-            mobileContainer: '#g-mobilemenu-container',
-            topLevel: '.g-toplevel',
-            rootItems: '> ul > li',
-            parent: '.g-parent',
-            item: '.g-menu-item',
-            dropdown: '.g-dropdown',
-            overlay: '.g-menu-overlay',
-            touchIndicator: '.g-menu-parent-indicator',
-            linkedParent: '[data-g-menuparent]',
-            mobileTarget: '[data-g-mobile-target]'
-        },
-
-        states: {
-            active: 'g-active',
-            inactive: 'g-inactive',
-            selected: 'g-selected',
-            touchEvents: 'g-menu-hastouch'
-        }
-    },
-
-    constructor: function(options) {
-        this.setOptions(options);
-
+        this.options = {
+            ...defaults,
+            ...options,
+            selectors: { ...defaults.selectors, ...(options.selectors || {}) },
+            states: { ...defaults.states, ...(options.states || {}) }
+        };
         this.selectors = this.options.selectors;
         this.states = this.options.states;
-        this.overlay = zen('div' + this.selectors.overlay);
         this.active = null;
         this.location = [];
+        this.listeners = [];
 
-        var pageSurround = $('#g-page-surround');
-        if (pageSurround) {
-            this.overlay.top(pageSurround);
-        }
+        this.overlay = document.createElement("div");
+        this.overlay.className = this.selectors.overlay.replace(/^\./, "");
 
-        var mainContainer = $(this.selectors.mainContainer);
-        if (!mainContainer) { return; }
+        const pageSurround = document.querySelector("#g-page-surround");
+        if (pageSurround) pageSurround.prepend(this.overlay);
 
-        var gHoverExpand  = mainContainer.data('g-hover-expand');
+        const mainContainer = document.querySelector(this.selectors.mainContainer);
+        if (!mainContainer) return;
 
-        this.hoverExpand = gHoverExpand === null || gHoverExpand === 'true';
+        const hoverExpand = mainContainer.getAttribute("data-g-hover-expand");
+        this.hoverExpand = hoverExpand === null || hoverExpand === "true";
         if (hasTouchEvents || !this.hoverExpand) {
-            mainContainer.addClass(this.states.touchEvents);
+            mainContainer.classList.add(this.states.touchEvents);
         }
 
         this.attach();
-    },
+    }
 
-    attach: function() {
-        var selectors       = this.selectors,
-            main            = $(selectors.mainContainer + ' ' + selectors.item),
-            mobileContainer = $(selectors.mobileContainer),
-            body            = $('body');
+    listen(element, type, handler, options) {
+        if (!element) return;
+        const listener = handler.bind(this);
+        element.addEventListener(type, listener, options);
+        this.listeners.push({ element, type, listener, options });
+    }
 
-        if (!main) { return; }
+    attach() {
+        const selectors = this.selectors;
+        const mainItems = document.querySelectorAll(`${selectors.mainContainer} ${selectors.item}`);
+        const mobileContainer = document.querySelector(selectors.mobileContainer);
+        const body = document.body;
+
+        if (!mainItems.length) return;
         if (this.hoverExpand) {
-            main.on('mouseenter', this.bound('mouseenter'));
-            main.on('mouseleave', this.bound('mouseleave'));
+            mainItems.forEach(item => {
+                this.listen(item, "mouseenter", this.mouseenter);
+                this.listen(item, "mouseleave", this.mouseleave);
+            });
         }
 
-        body.delegate('click', ':not(' + selectors.mainContainer + ') ' + selectors.linkedParent + ', .g-fullwidth .g-sublevel ' + selectors.linkedParent, this.bound('click'));
-        body.delegate('click', ':not(' + selectors.mainContainer + ') a[href]', this.bound('resetAfterClick'));
+        this.listen(body, "click", this.handleBodyClick);
 
         if (hasTouchEvents || !this.hoverExpand) {
-            var linkedParent = $(selectors.linkedParent);
-            if (linkedParent) {
-                linkedParent.on('touchmove', this.bound('touchmove'));
-                linkedParent.on('touchend', this.bound('touchend'));
-            }
-            this.overlay.on('touchend', this.bound('closeAllDropdowns'));
+            document.querySelectorAll(selectors.linkedParent).forEach(link => {
+                this.listen(link, "touchmove", this.touchmove, { passive: true });
+                this.listen(link, "touchend", this.touchend);
+            });
+            this.listen(this.overlay, "touchend", this.closeAllDropdowns);
         }
 
         if (mobileContainer) {
-            var query = 'only all and (max-width: ' + this._calculateBreakpoint((mobileContainer.data('g-menu-breakpoint') || '48rem')) + ')',
-                match = matchMedia(query);
-            match.addListener(this.bound('_checkQuery'));
-            this._checkQuery(match);
+            const breakpoint = mobileContainer.getAttribute("data-g-menu-breakpoint") || "48rem";
+            this.mediaQuery = window.matchMedia(
+                `only all and (max-width: ${this._calculateBreakpoint(breakpoint)})`
+            );
+            this.mediaQueryListener = event => this._checkQuery(event);
+            if (this.mediaQuery.addEventListener) {
+                this.mediaQuery.addEventListener("change", this.mediaQueryListener);
+            } else {
+                this.mediaQuery.addListener(this.mediaQueryListener);
+            }
+            this._checkQuery(this.mediaQuery);
         }
-    },
+    }
 
-    detach: function() {},
+    detach() {
+        this.listeners.forEach(({ element, type, listener, options }) => {
+            element.removeEventListener(type, listener, options);
+        });
+        this.listeners = [];
 
-    click: function(event) {
+        if (this.mediaQuery && this.mediaQueryListener) {
+            if (this.mediaQuery.removeEventListener) {
+                this.mediaQuery.removeEventListener("change", this.mediaQueryListener);
+            } else {
+                this.mediaQuery.removeListener(this.mediaQueryListener);
+            }
+        }
+    }
+
+    handleBodyClick(event) {
+        const linkedParent = closest(event.target, this.selectors.linkedParent);
+        if (linkedParent) {
+            const inMainMenu = Boolean(linkedParent.closest(this.selectors.mainContainer));
+            const inFullwidthSublevel = Boolean(linkedParent.closest(".g-fullwidth .g-sublevel"));
+            if (!inMainMenu || inFullwidthSublevel) {
+                this.click(event);
+                return;
+            }
+        }
+
+        const anchor = closest(event.target, "a[href]");
+        if (anchor && !anchor.closest(this.selectors.mainContainer)) {
+            this.resetAfterClick(event);
+        }
+    }
+
+    click(event) {
         this.touchend(event);
-    },
+    }
 
-    resetAfterClick: function(event) {
-        var target = $(event.target);
-
-        if (target.data('g-menuparent') !== null) {
-            return true;
-        }
+    resetAfterClick(event) {
+        const target = event.target instanceof Element ? event.target : null;
+        if (target && target.hasAttribute("data-g-menuparent")) return true;
 
         this.closeDropdown(event);
-        if (global.G5 && global.G5.offcanvas) {
-            G5.offcanvas.close();
-        }
-    },
+        if (window.G5 && window.G5.offcanvas) window.G5.offcanvas.close();
+        return true;
+    }
 
-    mouseenter: function(event) {
-        var element = $(event.target);
-        if (!element.parent(this.options.selectors.mainContainer)) { return; }
-        if (element.parent(this.options.selectors.item) && !element.parent('.g-standard')) { return; }
-
+    mouseenter(event) {
+        const element = event.currentTarget;
+        if (!closest(element, this.selectors.mainContainer)) return;
+        if (closest(element.parentElement, this.selectors.item) && !closest(element, ".g-standard")) return;
         this.openDropdown(element);
-    },
+    }
 
-    mouseleave: function(event) {
-        var element = $(event.target);
-        if (!element.parent(this.options.selectors.mainContainer)) { return; }
-        if (element.parent(this.options.selectors.item) && !element.parent('.g-standard')) { return; }
-
+    mouseleave(event) {
+        const element = event.currentTarget;
+        if (!closest(element, this.selectors.mainContainer)) return;
+        if (closest(element.parentElement, this.selectors.item) && !closest(element, ".g-standard")) return;
         this.closeDropdown(element);
-    },
+    }
 
-    touchmove: function(event) {
-        var target      = $(event.target);
-        target.isMoving = true;
-    },
+    touchmove(event) {
+        const target = event.target instanceof Element ? event.target : event.currentTarget;
+        target.gantryMenuMoving = true;
+    }
 
-    touchend: function(event) {
-        var selectors = this.selectors,
-            states    = this.states;
+    touchend(event) {
+        const selectors = this.selectors;
+        const states = this.states;
+        let target = event.target instanceof Element ? event.target : null;
+        if (!target) return true;
 
-        var target      = $(event.target),
-            indicator   = target.parent(selectors.item).find(selectors.touchIndicator),
-            menuType    = target.parent('.g-standard') ? 'standard' : 'megamenu',
-            isGoingBack = target.parent('.g-go-back'),
-            parent, isSelected;
+        const item = closest(target, selectors.item);
+        const indicator = item ? item.querySelector(selectors.touchIndicator) : null;
+        const menuType = closest(target, ".g-standard") ? "standard" : "megamenu";
+        const isGoingBack = Boolean(closest(target, ".g-go-back"));
 
-        if (target.isMoving) {
-            target.isMoving = false;
+        if (target.gantryMenuMoving) {
+            target.gantryMenuMoving = false;
             return false;
         }
+        target.gantryMenuMoving = false;
 
-        target.off('touchmove', this.bound('touchmove'));
-        target.isMoving = false;
+        if (indicator) target = indicator;
 
-        if (indicator) {
-            target = indicator;
-        }
+        const parent = target.matches(selectors.item) ? target : closest(target, selectors.item);
+        if (!parent) return true;
+        const isSelected = parent.classList.contains(states.selected);
 
-        parent = target.matches(selectors.item) ? target : target.parent(selectors.item);
-        isSelected = parent.hasClass(states.selected);
-
-        if (!parent.find(selectors.dropdown) && !indicator) { return true; }
+        if (!parent.querySelector(selectors.dropdown) && !indicator) return true;
 
         event.stopPropagation();
-        if (!indicator || target.matches(selectors.touchIndicator)) {
-            event.preventDefault();
+        if (!indicator || target.matches(selectors.touchIndicator)) event.preventDefault();
+
+        if (!isSelected && parent.parentElement) {
+            Array.from(parent.parentElement.children)
+                .filter(sibling => sibling !== parent && sibling.matches(`${selectors.item}.${states.selected}`))
+                .forEach(open => this.closeDropdown(open));
         }
 
-        if (!isSelected) {
-            var siblings = parent.siblings();
-            if (siblings) {
-                var currentlyOpen = siblings.search(selectors.touchIndicator + ' !> * !> ' + selectors.item + '.' + states.selected);
-                (currentlyOpen || []).forEach(bind(function(open) {
-                    this.closeDropdown(open);
-                }, this));
-            }
-        }
+        const isOutsideMain = !closest(parent, selectors.mainContainer);
+        const hasDropdown = parent.querySelector(
+            `:scope > ${selectors.dropdown}, :scope > * > ${selectors.dropdown}`
+        );
 
-        if ((menuType == 'megamenu' || !parent.parent(selectors.mainContainer)) && (parent.find(' > ' + selectors.dropdown + ', > * > ' + selectors.dropdown) || isGoingBack)) {
-            var sublevel = target.parent('.g-sublevel') || target.parent('.g-toplevel'),
-                slideout = parent.find('.g-sublevel'),
-                columns  = parent.parent('.g-dropdown-column'),
-                blocks;
+        if ((menuType === "megamenu" || isOutsideMain) && (hasDropdown || isGoingBack)) {
+            let sublevel = closest(target, ".g-sublevel") || closest(target, ".g-toplevel");
+            const slideout = parent.querySelector(".g-sublevel");
+            const columns = closest(parent, ".g-dropdown-column");
 
             if (sublevel) {
-                var isNavMenu = target.parent(selectors.mainContainer);
-                if (!isNavMenu || (isNavMenu && !sublevel.matches('.g-toplevel'))) { this._fixHeights(sublevel, slideout, isGoingBack, isNavMenu); }
-                if (!isNavMenu && columns && (blocks = columns.search('> .g-grid > .g-block'))) {
-                    if (blocks.length > 1) { sublevel = blocks.search('> .g-sublevel'); }
+                const isNavMenu = Boolean(closest(target, selectors.mainContainer));
+                if (!isNavMenu || !sublevel.matches(".g-toplevel")) {
+                    this._fixHeights(sublevel, slideout, isGoingBack, isNavMenu);
                 }
 
-                sublevel[!isSelected ? 'addClass' : 'removeClass']('g-slide-out');
+                if (!isNavMenu && columns) {
+                    const grid = directChildren(columns, ".g-grid")[0];
+                    const blocks = directChildren(grid, ".g-block");
+                    if (blocks.length > 1) {
+                        const blockSublevels = blocks
+                            .map(block => directChildren(block, ".g-sublevel")[0])
+                            .filter(Boolean);
+                        if (blockSublevels.length) sublevel = blockSublevels;
+                    }
+                }
+
+                const sublevels = Array.isArray(sublevel) ? sublevel : [sublevel];
+                sublevels.forEach(element => {
+                    element.classList.toggle("g-slide-out", !isSelected);
+                });
             }
         }
 
-        this[!isSelected ? 'openDropdown' : 'closeDropdown'](parent);
-        if (event.type !== 'click') { this.toggleOverlay(target.parent(selectors.mainContainer)); }
-    },
+        this[isSelected ? "closeDropdown" : "openDropdown"](parent);
+        if (event.type !== "click") {
+            this.toggleOverlay(closest(target, selectors.mainContainer));
+        }
+        return false;
+    }
 
-    openDropdown: function(element) {
-        element = $(element.target || element);
-        var dropdown = element.find(this.selectors.dropdown);
+    openDropdown(element) {
+        element = element && (element.currentTarget || element.target || element);
+        if (!(element instanceof Element)) return;
 
-        element.addClass(this.states.selected);
-
+        const dropdown = element.querySelector(this.selectors.dropdown);
+        element.classList.add(this.states.selected);
         if (dropdown) {
-            dropdown.removeClass(this.states.inactive).addClass(this.states.active);
+            dropdown.classList.remove(this.states.inactive);
+            dropdown.classList.add(this.states.active);
         }
-    },
+    }
 
-    closeDropdown: function(element) {
-        element = $(element.target || element);
-        var dropdown = element.find(this.selectors.dropdown);
+    closeDropdown(element) {
+        element = element && (element.currentTarget || element.target || element);
+        if (!(element instanceof Element)) return;
 
-        element.removeClass(this.states.selected);
+        const menuItem = element.matches(this.selectors.item)
+            ? element
+            : closest(element, this.selectors.item) || element;
+        const dropdown = menuItem.querySelector
+            ? menuItem.querySelector(this.selectors.dropdown)
+            : null;
 
-        if (dropdown) {
-            var sublevels = dropdown.search('.g-sublevel'),
-                slideouts = dropdown.search('.g-slide-out, .' + this.states.selected),
-                actives   = dropdown.search('.' + this.states.active);
+        menuItem.classList.remove(this.states.selected);
+        if (!dropdown) return;
 
-            if (sublevels) { sublevels.attribute('style', null); }
-            if (slideouts) { slideouts.removeClass('g-slide-out').removeClass(this.states.selected); }
-            if (actives) { actives.removeClass(this.states.active).addClass(this.states.inactive); }
+        descendants(dropdown, ".g-sublevel").forEach(clearStyle);
+        descendants(dropdown, `.g-slide-out, .${this.states.selected}`).forEach(item => {
+            item.classList.remove("g-slide-out", this.states.selected);
+        });
+        descendants(dropdown, `.${this.states.active}`).forEach(item => {
+            item.classList.remove(this.states.active);
+            item.classList.add(this.states.inactive);
+        });
+        dropdown.classList.remove(this.states.active);
+        dropdown.classList.add(this.states.inactive);
+    }
 
-            dropdown.removeClass(this.states.active).addClass(this.states.inactive);
-        }
-    },
+    closeAllDropdowns() {
+        const topLevel = document.querySelector(
+            `${this.selectors.mainContainer} > ${this.selectors.topLevel}`
+        );
+        if (!topLevel) return;
 
-    closeAllDropdowns: function() {
-        var selectors = this.selectors,
-            states    = this.states,
-            topLevel  = $(selectors.mainContainer + ' > .g-toplevel'),
-            roots     = topLevel.search(' >' + selectors.item);
-
-        if (roots) { roots.removeClass(states.selected); }
-        if (topLevel) {
-            var allRoots = topLevel.search('> ' + this.options.selectors.item);
-            if (allRoots) { allRoots.forEach(this.closeDropdown.bind(this)); }
-            this.closeDropdown(topLevel);
-        }
-
+        directChildren(topLevel, this.selectors.item).forEach(item => this.closeDropdown(item));
+        topLevel.classList.remove(this.states.selected);
         this.toggleOverlay(topLevel);
-    },
+    }
 
-    resetStates: function(menu) {
-        if (!menu) { return; }
-        var items   = menu.search('.g-toplevel, .g-dropdown-column, .g-dropdown, .g-selected, .g-active, .g-slide-out'),
-            actives = menu.search('.g-active');
-        if (!items) { return; }
+    resetStates(menu) {
+        if (!menu) return;
+        const items = [menu, ...descendants(
+            menu,
+            ".g-toplevel, .g-dropdown-column, .g-dropdown, .g-selected, .g-active, .g-slide-out"
+        )];
+        items.forEach(item => {
+            clearStyle(item);
+            item.classList.remove("g-selected", "g-slide-out");
+            if (item.classList.contains("g-active")) {
+                item.classList.remove("g-active");
+                item.classList.add("g-inactive");
+            }
+        });
+    }
 
-        menu.attribute('style', null).removeClass('g-selected').removeClass('g-slide-out');
-        items.attribute('style', null).removeClass('g-selected').removeClass('g-slide-out');
-        if (actives) { actives.removeClass('g-active').addClass('g-inactive'); }
-    },
+    toggleOverlay(menu) {
+        if (!menu) return;
+        const shouldOpen = Boolean(menu.querySelector(".g-active, .g-selected"));
+        this.overlay.classList.toggle("g-menu-overlay-open", shouldOpen);
+        this.overlay.style.opacity = shouldOpen ? 1 : 0;
+    }
 
-    toggleOverlay: function(menu) {
-        if (!menu) { return; }
-        var shouldOpen = !!menu.find('.g-active, .g-selected');
+    _fixHeights(parent, sublevel, isGoingBack, isNavMenu) {
+        if (!parent || !sublevel || parent === sublevel) return;
+        if (isGoingBack) clearStyle(parent);
 
-        this.overlay[shouldOpen ? 'addClass' : 'removeClass']('g-menu-overlay-open');
-        this.overlay[0].style.opacity = shouldOpen ? 1 : 0;
-    },
+        const target = !isNavMenu ? closest(sublevel, ".g-dropdown") : sublevel;
+        if (!target) return;
+        const heights = {
+            from: parent.getBoundingClientRect(),
+            to: target.getBoundingClientRect()
+        };
+        const height = Math.max(heights.from.height, heights.to.height);
 
-    _fixHeights: function(parent, sublevel, isGoingBack, isNavMenu) {
-        if (parent == sublevel) { return; }
         if (isGoingBack) {
-            parent.attribute('style', null);
-        }
-
-        var parents, heights = {
-                from: parent[0].getBoundingClientRect(),
-                to: (!isNavMenu ? sublevel.parent('.g-dropdown')[0] : sublevel[0]).getBoundingClientRect()
-            },
-            height  = Math.max(heights.from.height, heights.to.height);
-
-        if (isGoingBack) {
-            parents = parent.parents('[style^="height"]');
-            (parents || []).forEach(function(element) {
-                element = $(element);
-                if (element.parent('.g-toplevel')) {
-                    element[0].style.height = heights.from.height + 'px';
+            closestHeightParents(parent).forEach(element => {
+                if (closest(element, ".g-toplevel")) {
+                    element.style.height = `${heights.from.height}px`;
                 }
             });
         }
 
-        if (!isGoingBack) {
-            // if from height is < than to height set the parent height else, set the target
-            if (heights.from.height < heights.to.height) {
-                parent[0].style.height = height + 'px';
-
-                parents = parent.parents('[style^="height"]');
-                (parents || []).forEach(function(element) {
-                    element = $(element);
-                    if (element.parent('.g-toplevel')) {
-                        element[0].style.height = height + 'px';
-                    }
-                });
-            } else if (isNavMenu) {
-                sublevel[0].style.height = height + 'px';
-            }
-
-            // fix sublevels heights in side menu (offcanvas etc)
-            if (!isNavMenu) {
-                var maxHeight = height,
-                    block     = $(sublevel).parent('.g-block:not(.size-100)'),
-                    column    = block ? block.parent('.g-dropdown-column') : null;
-                (sublevel.parents('.g-slide-out, .g-dropdown-column') || parent).forEach(function(slideout) {
-                    maxHeight = Math.max(height, parseInt(slideout.style.height || 0, 10));
-                });
-
-                if (column) {
-                    column[0].style.height = maxHeight + 'px';
-
-                    var blocks = column.search('> .g-grid > .g-block'),
-                        diff   = maxHeight;
-
-                    blocks.forEach(function(block, i) {
-                        if ((i + 1) != blocks.length) {
-                            diff -= block.getBoundingClientRect().height;
-                        } else {
-                            $(block).find('.g-sublevel')[0].style.height = diff + 'px';
-                        }
-                    });
-
-
-                } else {
-                    sublevel[0].style.height = maxHeight + 'px';
-                }
-            }
+        if (isGoingBack) return;
+        if (heights.from.height < heights.to.height) {
+            parent.style.height = `${height}px`;
+            closestHeightParents(parent).forEach(element => {
+                if (closest(element, ".g-toplevel")) element.style.height = `${height}px`;
+            });
+        } else if (isNavMenu) {
+            sublevel.style.height = `${height}px`;
         }
-    },
 
-    _calculateBreakpoint: function(value) {
-        var digit     = parseFloat(value.match(/^\d{1,}/).shift()),
-            unit      = value.match(/[a-z]{1,}$/i).shift(),
-            tolerance = unit.match(/r?em/) ? -0.062 : -1;
+        if (isNavMenu) return;
+        let maxHeight = height;
+        const block = closest(sublevel, ".g-block:not(.size-100)");
+        const column = block ? closest(block, ".g-dropdown-column") : null;
+        ancestorMatches(sublevel, ".g-slide-out, .g-dropdown-column").forEach(slideout => {
+            maxHeight = Math.max(maxHeight, parseInt(slideout.style.height || 0, 10));
+        });
 
-        return (digit + tolerance) + unit;
-    },
+        if (column) {
+            column.style.height = `${maxHeight}px`;
+            const grid = directChildren(column, ".g-grid")[0];
+            const blocks = directChildren(grid, ".g-block");
+            let remaining = maxHeight;
+            blocks.forEach((currentBlock, index) => {
+                if (index + 1 !== blocks.length) {
+                    remaining -= currentBlock.getBoundingClientRect().height;
+                } else {
+                    const childSublevel = currentBlock.querySelector(":scope > .g-sublevel");
+                    if (childSublevel) childSublevel.style.height = `${remaining}px`;
+                }
+            });
+        } else {
+            sublevel.style.height = `${maxHeight}px`;
+        }
+    }
 
-    _checkQuery: function(mq) {
-        var selectors       = this.options.selectors,
-            mobileContainer = $(selectors.mobileContainer),
-            mainContainer   = $(selectors.mainContainer + selectors.mobileTarget) || $(selectors.mainContainer),
-            find, dropdowns;
+    _calculateBreakpoint(value) {
+        const digitMatch = String(value).match(/^\d+(?:\.\d+)?/);
+        const unitMatch = String(value).match(/[a-z]+$/i);
+        if (!digitMatch || !unitMatch) return value;
+        const unit = unitMatch[0];
+        const tolerance = /r?em/.test(unit) ? -0.062 : -1;
+        return `${parseFloat(digitMatch[0]) + tolerance}${unit}`;
+    }
 
-        if (mq.matches) {
-            // move to Mobile Container
-            find = mainContainer.find(selectors.topLevel);
-            if (find) {
-                mainContainer.parent('.g-block').addClass('hidden');
-                mobileContainer.parent('.g-block').removeClass('hidden');
-                find.top(mobileContainer);
+    _checkQuery(mediaQuery) {
+        const selectors = this.selectors;
+        const mobileContainer = document.querySelector(selectors.mobileContainer);
+        const mainContainer = document.querySelector(
+            `${selectors.mainContainer}${selectors.mobileTarget}`
+        ) || document.querySelector(selectors.mainContainer);
+        if (!mobileContainer || !mainContainer) return;
+
+        let menu;
+        if (mediaQuery.matches) {
+            menu = mainContainer.querySelector(selectors.topLevel);
+            if (menu) {
+                const mainBlock = closest(mainContainer, ".g-block");
+                const mobileBlock = closest(mobileContainer, ".g-block");
+                if (mainBlock) mainBlock.classList.add("hidden");
+                if (mobileBlock) mobileBlock.classList.remove("hidden");
+                mobileContainer.prepend(menu);
             }
         } else {
-            // move back to Original Location
-            find = mobileContainer.find(selectors.topLevel);
-            if (find) {
-                mobileContainer.parent('.g-block').addClass('hidden');
-                mainContainer.parent('.g-block').removeClass('hidden');
-                find.top(mainContainer);
+            menu = mobileContainer.querySelector(selectors.topLevel);
+            if (menu) {
+                const mobileBlock = closest(mobileContainer, ".g-block");
+                const mainBlock = closest(mainContainer, ".g-block");
+                if (mobileBlock) mobileBlock.classList.add("hidden");
+                if (mainBlock) mainBlock.classList.remove("hidden");
+                mainContainer.prepend(menu);
             }
         }
 
-        this.resetStates(find);
-
-        // we need to reintroduce fixed widths for those dropdowns that come with it
-        if (!mq.matches && (find && (dropdowns = find.search('[data-g-item-width]')))) {
-            dropdowns.forEach(function(dropdown) {
-                dropdown = $(dropdown);
-                dropdown[0].style.width = dropdown.data('g-item-width');
+        this.resetStates(menu);
+        if (!mediaQuery.matches && menu) {
+            descendants(menu, "[data-g-item-width]").forEach(dropdown => {
+                dropdown.style.width = dropdown.getAttribute("data-g-item-width");
             });
         }
-    },
+    }
 
-    _debug: function() {}
-});
+    _debug() {}
+}
+
+const ancestorMatches = (element, selector) => {
+    const matches = [];
+    for (let parent = element.parentElement; parent; parent = parent.parentElement) {
+        if (parent.matches(selector)) matches.push(parent);
+    }
+    return matches;
+};
+
+const closestHeightParents = element => ancestorMatches(element, '[style^="height"]');
 
 module.exports = Menu;

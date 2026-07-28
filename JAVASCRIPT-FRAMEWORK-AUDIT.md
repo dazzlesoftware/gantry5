@@ -8,7 +8,7 @@
 
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
-- **5 first-party core/platform files** still import external JavaScript libraries directly.
+- **4 first-party core/platform files** still import external JavaScript libraries directly.
 - Admin consumers now use a local native traversal/delegation adapter; remaining direct imports are concentrated in that adapter and the shared frontend layer.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
@@ -32,21 +32,20 @@ Generated bundles, `node_modules`, Composer `vendor` directories, minified third
 
 ### Remaining dependency count
 
-There are **5 first-party files with direct external runtime imports**:
+There are **4 first-party files with direct external runtime imports**:
 
-- 5 JavaScript source files importing external runtime packages.
+- 4 JavaScript source files importing external runtime packages.
 
 One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the first-party-file count.
 
 ### Core JavaScript files with direct external runtime imports
 
-The following 5 files still import one or more external libraries:
+The following 4 files still import one or more external libraries:
 
-1. `assets/common/application/menu/index.js`
-2. `assets/common/application/offcanvas/index.js`
-3. `assets/common/application/utils/dollar-extras.js`
-4. `platforms/common/application/utils/create-element.js`
-5. `platforms/common/application/utils/elements-native.js`
+1. `assets/common/application/offcanvas/index.js`
+2. `assets/common/application/utils/dollar-extras.js`
+3. `platforms/common/application/utils/create-element.js`
+4. `platforms/common/application/utils/elements-native.js`
 
 Several admin modules still use the local compatibility APIs indirectly. They no longer import Slick or external DOM packages themselves and can now be migrated incrementally without changing traversal behavior again.
 
@@ -56,11 +55,11 @@ Counts overlap because a single file may import more than one package.
 
 | Dependency | Files | Notes |
 |---|---:|---|
-| `elements` | 5 | Concentrated in two local adapters and three frontend files |
-| `mout` | 2 | Shared frontend menu and offcanvas |
-| `prime` | 2 | Shared frontend menu and offcanvas |
-| `prime-util` | 2 | Mixins and supporting utilities for `prime` |
-| `domready` | 2 | Replaceable with `DOMContentLoaded` or immediate-ready checks |
+| `elements` | 4 | Concentrated in two local adapters and two frontend files |
+| `mout` | 1 | Shared frontend offcanvas |
+| `prime` | 1 | Shared frontend offcanvas |
+| `prime-util` | 1 | Mixins and supporting utilities for `prime` |
+| `domready` | 1 | Unused import remaining in shared frontend offcanvas |
 | Slick | 0 direct | Removed from the admin bundle; still transitively bundled by frontend `elements` |
 
 ### Converted platform templates
@@ -247,4 +246,4 @@ After dependency removal stabilizes:
 
 ## Immediate next target
 
-Replace the shared frontend `elements` traversal and `elements/zen` usage so Slick is absent from both core bundles.
+Replace the shared frontend offcanvas `elements` traversal and `elements/zen` usage so Slick is absent from both core bundles. The menu implementation is now native ES6+ JavaScript.
