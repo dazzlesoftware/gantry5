@@ -45,19 +45,25 @@
         return Math.abs(value) === 1 ? singular : plural;
     };
 
-    const block = (value, word, pad = true) => {
+    const createBlock = (unit, pad = true) => {
         const wrapper = document.createElement('span');
         const number = document.createElement('span');
         const labelElement = document.createElement('span');
 
         wrapper.className = 'counter-block';
+        wrapper.dataset.simplecounterUnit = unit;
         number.className = 'number';
         labelElement.className = 'word';
-        number.textContent = pad ? String(value).padStart(2, '0') : String(value);
-        labelElement.textContent = word;
         wrapper.append(number, labelElement);
 
-        return wrapper;
+        return {
+            wrapper,
+            number,
+            label: labelElement,
+            pad,
+            value: null,
+            word: null
+        };
     };
 
     class SimpleCounter {
@@ -65,14 +71,43 @@
             this.element = element;
             this.target = parseTarget(element.dataset.countdown);
             this.timer = null;
+            this.blocks = {
+                day: createBlock('day', false),
+                hour: createBlock('hour'),
+                minute: createBlock('minute'),
+                second: createBlock('second')
+            };
 
             if (!this.target) {
                 element.classList.add('g-simplecounter-invalid');
                 return;
             }
 
+            element.replaceChildren(
+                this.blocks.day.wrapper,
+                this.blocks.hour.wrapper,
+                this.blocks.minute.wrapper,
+                this.blocks.second.wrapper
+            );
             this.update();
             this.timer = window.setInterval(() => this.update(), SECOND);
+        }
+
+        renderUnit(unit, value) {
+            const block = this.blocks[unit];
+            const word = label(this.element, unit, value);
+
+            if (block.value !== value) {
+                block.number.textContent = block.pad
+                    ? String(value).padStart(2, '0')
+                    : String(value);
+                block.value = value;
+            }
+
+            if (block.word !== word) {
+                block.label.textContent = word;
+                block.word = word;
+            }
         }
 
         update() {
@@ -87,12 +122,10 @@
             const minutes = Math.floor((remaining % HOUR) / MINUTE);
             const seconds = Math.floor((remaining % MINUTE) / SECOND);
 
-            this.element.replaceChildren(
-                block(days, label(this.element, 'day', days), false),
-                block(hours, label(this.element, 'hour', hours)),
-                block(minutes, label(this.element, 'minute', minutes)),
-                block(seconds, label(this.element, 'second', seconds))
-            );
+            this.renderUnit('day', days);
+            this.renderUnit('hour', hours);
+            this.renderUnit('minute', minutes);
+            this.renderUnit('second', seconds);
 
             if (remaining === 0) {
                 this.destroy();

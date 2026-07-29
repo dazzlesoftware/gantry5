@@ -23,6 +23,8 @@
 		padding: 0;
 	}
 	.number {
+		font-variant-numeric: lining-nums tabular-nums;
+		font-feature-settings: "lnum" 1, "tnum" 1;
 		width: 100px;
 		height: 80px;
 		line-height: 80px;
