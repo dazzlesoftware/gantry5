@@ -1,0 +1,37 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% if particle.title %}
+        <h2 class="g-title">{{ particle.title|raw }}</h2>
+    {% endif %}
+
+    <div class="g-genesisfeatures {{ particle.class|default('fp-features')|e }}">
+        <div class="g-grid">
+            {% for item in particle.items %}
+                {% if not item.disabled %}
+                    <div class="g-block size-{{ particle.columns|default('33-3')|e }} {{ item.class|e }}">
+                        <div class="card">
+                            <div class="card-block">
+                                {% if item.icon %}
+                                    <i class="{{ item.icon|e }}" aria-hidden="true"></i>
+                                {% endif %}
+
+                                <h4 class="card-title">
+                                    {% if item.link %}
+                                        <a href="{{ item.link|e }}" target="{{ item.target|default('_self')|e }}"{% if item.target == '_blank' %} rel="noopener noreferrer"{% endif %}>{{ item.title|e }}</a>
+                                    {% else %}
+                                        {{ item.title|e }}
+                                    {% endif %}
+                                </h4>
+
+                                {% if item.description %}
+                                    <p class="card-text">{{ item.description|raw }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

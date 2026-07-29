@@ -84,6 +84,12 @@
 
         // Features
         .fp-features {
+            .g-grid {
+                @include breakpoint(no-mobile) {
+                    row-gap: 4.5rem;
+                }
+            }
+
             .g-block {
                 @include breakpoint(mobile-only) {
                     &:not(:last-child) {

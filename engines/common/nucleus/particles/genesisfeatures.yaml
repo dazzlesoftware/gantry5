@@ -1,0 +1,85 @@
+name: Genesis Features
+description: Display a reusable grid of supported content management platforms.
+type: particle
+icon: fa-th-large
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class names for the particle.
+      default: fp-features
+
+    title:
+      type: input.text
+      label: Title
+      description: Optional title displayed above the platform grid.
+
+    columns:
+      type: select.select
+      label: Columns
+      description: Select the number of platform cards displayed per row.
+      default: 33-3
+      options:
+        50: 2 Columns
+        33-3: 3 Columns
+        25: 4 Columns
+
+    items:
+      type: collection.list
+      array: true
+      label: CMS Platforms
+      description: Add, remove, edit, or reorder the platforms displayed in the grid.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Title
+          description: Enter the platform name.
+
+        .description:
+          type: textarea.textarea
+          label: Description
+          description: Enter a short description of the platform integration.
+
+        .icon:
+          type: input.icon
+          label: Icon
+          description: Select the icon displayed above the title.
+
+        .link:
+          type: input.text
+          label: Link
+          description: Optionally link the platform title.
+
+        .target:
+          type: select.select
+          label: Link Target
+          default: _self
+          options:
+            _self: Current Window
+            _blank: New Window
+
+        .class:
+          type: input.selectize
+          label: CSS Classes
+          description: CSS class names for the individual card.
+
+        .disabled:
+          type: input.checkbox
+          label: Disabled
+          description: Hide this platform without deleting it.
+          default: false

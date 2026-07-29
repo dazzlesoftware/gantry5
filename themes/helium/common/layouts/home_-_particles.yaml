@@ -13,7 +13,7 @@ layout:
       - custom-5807
   /features/:
     -
-      - custom-3119
+      - genesisfeatures-3119
   /utility/:
     -
       - contenttabs-3854
@@ -120,10 +120,36 @@ content:
       html: "<div class=\"fp-intro\">\n    <h2 class=\"g-title\">Build your beautiful theme, the way you want it, with Helium</h2>\n    <p>Craft memorable, emotive experiences with our Gantry 5 framework.</p>\n    <div class=\"ipad-mockup\">\n        <img src=\"gantry-media://intro/mockup.png\" alt=\"\" />\n    </div>\n</div>"
     block:
       variations: center
-  custom-3119:
-    title: Features
+  genesisfeatures-3119:
+    title: 'Genesis Features'
     attributes:
-      html: "<div class=\"fp-features\">\n    <div class=\"g-grid\">\n        <div class=\"g-block size-33-3\">\n            <div class=\"card\">\n                <div class=\"card-block\">\n                    <i class=\"fa fa-joomla fab fab-joomla\"></i>\n                    <h4 class=\"card-title\">Joomla</h4>\n                    <p class=\"card-text\">Bring your website to life with one of the most powerful and popular theming frameworks for Joomla.</p>\n                </div>\n            </div>\n        </div>\n        <div class=\"g-block size-33-3\">\n            <div class=\"card\">\n                <div class=\"card-block\">\n                    <i class=\"fa fa-wordpress fab fab-wordpress\"></i>\n                    <h4 class=\"card-title\">WordPress</h4>\n                    <p class=\"card-text\">Gantry extends WordPress' native functionality, empowering users to manipulate virtually every aspect of their visitors' experience.</p>\n                </div>\n            </div>\n        </div>\n        <div class=\"g-block size-33-3\">\n            <div class=\"card\">\n                <div class=\"card-block\">\n                    <i class=\"fa fa-grav fab fab-grav\"></i>\n                    <h4 class=\"card-title\">Grav</h4>\n                    <p class=\"card-text\">Gantry 5 is the first theming framework for Grav, designed by members of the same team that developed the CMS.</p>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+      class: fp-features
+      columns: 33-3
+      items:
+        -
+          title: Drupal
+          description: 'Build flexible, content-rich experiences with Gantry''s visual layout system and Drupal''s powerful content management tools.'
+          icon: 'fa fa-drupal fab fa-drupal'
+        -
+          title: Grav
+          description: 'Create fast, flexible websites with Gantry''s visual layout tools and Grav''s modern flat-file CMS.'
+          icon: 'fa fa-grav fab fa-grav'
+        -
+          title: Joomla
+          description: 'Bring your website to life with one of the most powerful and popular theming frameworks for Joomla.'
+          icon: 'fa fa-joomla fab fa-joomla'
+        -
+          title: TYPO3
+          description: 'Combine Gantry''s adaptable layouts with TYPO3''s enterprise content management capabilities for scalable, multilingual websites.'
+          icon: 'fa fa-cogs'
+        -
+          title: WordPress
+          description: 'Gantry extends WordPress'' native functionality, empowering users to shape virtually every aspect of their visitors'' experience.'
+          icon: 'fa fa-wordpress fab fa-wordpress'
+        -
+          title: XOOPS
+          description: 'Use Gantry''s flexible theming tools with XOOPS to build modular, community-focused websites that are easy to extend.'
+          icon: 'fa fa-cubes'
     block:
       variations: center
   contenttabs-3854:

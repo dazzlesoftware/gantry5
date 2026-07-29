@@ -32,6 +32,34 @@ form:
       description: Customize the description.
       placeholder: Enter short description
 
+    typography:
+      type: separator.separator
+      label: Typography
+
+    titlefont:
+      type: input.fonts
+      label: Title Font
+      description: Select a font for the title. Leave blank to inherit the theme font.
+
+    descriptionfont:
+      type: input.fonts
+      label: Description Font
+      description: Select a font for the description. Leave blank to inherit the theme font.
+
+    numberfont:
+      type: input.fonts
+      label: Number Font
+      description: Select a font for the countdown numbers. Leave blank to inherit the theme font.
+
+    labelfont:
+      type: input.fonts
+      label: Unit Label Font
+      description: Select a font for the Days, Hours, Minutes, and Seconds labels. Leave blank to inherit the theme font.
+
+    countdown:
+      type: separator.separator
+      label: Countdown
+
     date:
       type: select.select
       label: Day

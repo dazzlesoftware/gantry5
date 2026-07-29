@@ -15,6 +15,59 @@
     const HOUR = 60 * MINUTE;
     const DAY = 24 * HOUR;
     const instances = new WeakMap();
+    const loadedFonts = new Set();
+
+    const loadGoogleFont = (query) => {
+        const url = `https://fonts.googleapis.com/css?${query}`;
+
+        if (loadedFonts.has(url)) {
+            return;
+        }
+
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+        link.dataset.simplecounterFont = '';
+        document.head.append(link);
+        loadedFonts.add(url);
+    };
+
+    const parseFont = (value) => {
+        const font = String(value || '').trim();
+
+        if (!font) {
+            return null;
+        }
+
+        if (!font.startsWith('family=')) {
+            return font;
+        }
+
+        const parameters = new URLSearchParams(font);
+        const family = parameters.get('family');
+
+        if (!family) {
+            return null;
+        }
+
+        loadGoogleFont(parameters.toString());
+
+        const familyName = family.split(':', 1)[0].trim();
+        return familyName ? JSON.stringify(familyName) : null;
+    };
+
+    const applyFont = (root, elements, property, value) => {
+        const font = parseFont(value);
+
+        if (!font || !root) {
+            return;
+        }
+
+        root.style.setProperty(property, font);
+        elements.forEach((element) => {
+            element.style.fontFamily = `var(${property})`;
+        });
+    };
 
     const parseTarget = (value) => {
         if (!value) {
@@ -89,8 +142,38 @@
                 this.blocks.minute.wrapper,
                 this.blocks.second.wrapper
             );
+            this.applyFonts();
             this.update();
             this.timer = window.setInterval(() => this.update(), SECOND);
+        }
+
+        applyFonts() {
+            const root = this.element.closest('.g-simplecounter');
+
+            applyFont(
+                root,
+                root?.querySelectorAll('.g-title') || [],
+                '--g-simplecounter-title-font',
+                this.element.getAttribute('data-simplecounter-titlefont')
+            );
+            applyFont(
+                root,
+                root?.querySelectorAll('.g-simplecounter-content') || [],
+                '--g-simplecounter-description-font',
+                this.element.getAttribute('data-simplecounter-descriptionfont')
+            );
+            applyFont(
+                root,
+                Object.values(this.blocks).map(({number}) => number),
+                '--g-simplecounter-number-font',
+                this.element.getAttribute('data-simplecounter-numberfont')
+            );
+            applyFont(
+                root,
+                Object.values(this.blocks).map(({label: labelElement}) => labelElement),
+                '--g-simplecounter-label-font',
+                this.element.getAttribute('data-simplecounter-labelfont')
+            );
         }
 
         renderUnit(unit, value) {
