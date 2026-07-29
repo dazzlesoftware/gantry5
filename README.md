@@ -171,6 +171,7 @@ For a production package build, use `assets-build.bat all --prod` followed by `p
 | `assets-watch.bat` | Runs Gulp in watch mode for `all`, `css`, or `js`. Press `Ctrl+C` to stop it. | During active frontend development. |
 | `php83-tests.bat` | Verifies PHP 8.3+ and runs the PHPUnit compatibility suite with TestDox output. Extra PHPUnit arguments are forwarded. | After Composer installation and before packaging or committing PHP changes. |
 | `package-build.bat` | Runs the Phing package builder through `bin\build` and writes packages to `dist`. | After dependencies, assets, and tests are ready. |
+| `wordpress-deploy-builds.bat` | Replaces the local WordPress `gantry5` plugin and all `g5_*` themes with packages from `dist`. Other plugins and themes are preserved. | After `package-build.bat wordpress-dev` when refreshing the local WordPress test site. |
 | `assets-reset.bat` | Runs targeted asset cleanup and then reinstalls the four known asset projects. | When the normal Node installation is stale or damaged. |
 | `assets-cleanup.bat` | Removes `node_modules` from the root and the three known asset subprojects. | Before a targeted clean reinstall. Usually use `assets-reset.bat` instead. |
 | `node-modules-cleanup-all.bat` | Recursively removes every outermost `node_modules` directory under the repository, including the root. | For a complete Node reset. Use `--dry-run` or `-n` to preview. |
@@ -215,6 +216,29 @@ package-build.bat wordpress-prod -Dversion=6.0.0
 ```
 
 Existing files in `dist` may be replaced during a package build.
+
+### Deploying to the WordPress Test Site
+
+Build and deploy the WordPress development packages with:
+
+```bat
+package-build.bat wordpress-dev
+wordpress-deploy-builds.bat
+```
+
+The deploy script defaults to:
+
+```text
+C:\wamp64\www\wordpress\wp-content
+```
+
+It validates the target and package set before making changes. It then deletes the existing `plugins\gantry5` directory and every `themes\g5_*` directory before extracting the matching development packages. WordPress default themes, other themes, and other plugins are preserved.
+
+An alternate `wp-content` path and package suffix can be supplied:
+
+```bat
+wordpress-deploy-builds.bat "D:\sites\wordpress\wp-content" develop
+```
 
 ### Complete Clean Rebuild
 
