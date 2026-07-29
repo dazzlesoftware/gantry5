@@ -29,12 +29,9 @@ call :link-source "platforms\wordpress\gantry5" || exit /b 1
 call :install "." || exit /b 1
 call :install "bin\builder" || exit /b 1
 call :install "platforms\grav\gantry5" || exit /b 1
-call :install "platforms\grav\gantry5\compat" || exit /b 1
 call :install "platforms\joomla\lib_gantry5" || exit /b 1
-call :install "platforms\joomla\lib_gantry5\compat" || exit /b 1
 call :install "platforms\joomla\plg_system_gantry5_debugbar" || exit /b 1
 call :install "platforms\wordpress\gantry5" || exit /b 1
-call :install "platforms\wordpress\gantry5\compat" || exit /b 1
 call :install "platforms\wordpress\gantry5_debugbar" || exit /b 1
 
 echo.

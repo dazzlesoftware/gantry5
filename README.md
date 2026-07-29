@@ -154,6 +154,9 @@ composer-install-all.bat
 assets-install.bat
 assets-build.bat all
 php83-tests.bat
+php bin\validate-joomla-scss.php
+php bin\validate-wordpress-scss.php
+php bin\validate-grav-scss.php
 package-build.bat dev
 ```
 
@@ -165,7 +168,7 @@ For a production package build, use `assets-build.bat all --prod` followed by `p
 
 | Script | Purpose | When to run it |
 |:--|:--|:--|
-| `composer-install-all.bat` | Verifies PHP 8.3+, creates missing platform `src` junctions, and runs `composer install` in the root, builder, platform, compatibility, and debug-bar projects. | First setup, after a `composer.lock` change, or after Composer cleanup. |
+| `composer-install-all.bat` | Verifies PHP 8.3+, creates missing platform `src` junctions, and runs `composer install` in the root, builder, current platform, and debug-bar projects. | First setup, after a `composer.lock` change, or after Composer cleanup. |
 | `assets-install.bat` | Verifies Node.js 20.19.0+ and runs `npm install` in the root and all asset subprojects. | First setup, after a `package.json` or lock-file change, or after Node cleanup. |
 | `assets-build.bat` | Runs the local Gulp compiler. It accepts `all`, `css`, or `js`, plus an optional `--prod`. | After asset installation and whenever JS or SCSS needs compiling. |
 | `assets-watch.bat` | Runs Gulp in watch mode for `all`, `css`, or `js`. Press `Ctrl+C` to stop it. | During active frontend development. |
@@ -216,6 +219,22 @@ package-build.bat wordpress-prod -Dversion=6.0.0
 ```
 
 Existing files in `dist` may be replaced during a package build.
+
+### Modern SCSS Validation
+
+Validate every common and platform-specific theme entry point with the installed
+scssphp 2.x compiler before packaging:
+
+```bat
+php bin\validate-joomla-scss.php
+php bin\validate-wordpress-scss.php
+php bin\validate-grav-scss.php
+```
+
+These validators use only the current platform Composer dependencies. They do
+not load the removed scssphp 1.x compatibility projects. WordPress packages
+bundle the current stable Twig 3 runtime; Grav uses the Twig runtime supplied by
+the current stable Grav installation instead of bundling a second copy.
 
 ### Deploying to the WordPress Test Site
 

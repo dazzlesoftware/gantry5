@@ -28,6 +28,7 @@
                 <exclude name="scss.sh"/>
                 <exclude name="**/*.js.map"/>
                 <exclude name="**/*.css.map"/>
+                <exclude name="compat/" />
             </fileset>
         </copy>
 
@@ -124,7 +125,9 @@
         </copy>
 
         <copy todir="${tmp_dir}/packages/plugin/gantry5/src/classes" overwrite="true">
-            <fileset dir="${path.src}/classes"/>
+            <fileset dir="${path.src}/classes">
+                <exclude name="Leafo/"/>
+            </fileset>
         </copy>
 
         <copy todir="${tmp_dir}/packages/plugin/gantry5/src" overwrite="true">

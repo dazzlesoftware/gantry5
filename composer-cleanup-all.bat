@@ -6,12 +6,9 @@ cd /d "%~dp0"
 call :cleanup "." || exit /b 1
 call :cleanup "bin\builder" || exit /b 1
 call :cleanup "platforms\grav\gantry5" || exit /b 1
-call :cleanup "platforms\grav\gantry5\compat" || exit /b 1
 call :cleanup "platforms\joomla\lib_gantry5" || exit /b 1
-call :cleanup "platforms\joomla\lib_gantry5\compat" || exit /b 1
 call :cleanup "platforms\joomla\plg_system_gantry5_debugbar" || exit /b 1
 call :cleanup "platforms\wordpress\gantry5" || exit /b 1
-call :cleanup "platforms\wordpress\gantry5\compat" || exit /b 1
 call :cleanup "platforms\wordpress\gantry5_debugbar" || exit /b 1
 
 echo.

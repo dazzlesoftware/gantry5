@@ -28,7 +28,6 @@
                 <exclude name="scss.sh"/>
                 <exclude name="**/*.js.map"/>
                 <exclude name="**/*.css.map"/>
-                <!-- PHP 8 compatibility -->
                 <exclude name="compat/" />
             </fileset>
         </copy>
@@ -92,7 +91,9 @@
         </copy>
 
         <copy todir="${tmp_dir}/wordpress/packages/plugin/gantry5/src/classes" overwrite="true">
-            <fileset dir="${path.src}/classes"/>
+            <fileset dir="${path.src}/classes">
+                <exclude name="Leafo/"/>
+            </fileset>
         </copy>
 
         <copy todir="${tmp_dir}/wordpress/packages/plugin/gantry5/src" overwrite="true">
@@ -134,19 +135,6 @@
             </fileset>
         </copy>
 
-        <!-- PHP 8 compatibility -->
-        <copy todir="${tmp_dir}/wordpress/packages/plugin/gantry5/compat" overwrite="true">
-            <fileset dir="${path.platforms}/wordpress/gantry5/compat">
-                <exclude name="vendor/bin/"/>
-                <exclude name="**/doc/"/>
-                <exclude name="**/ext/"/>
-                <exclude name="**/.*"/>
-                <exclude name="**/CHANGELOG"/>
-                <exclude name="**/drupal_test.sh"/>
-                <exclude name="**/LICENSE"/>
-                <exclude name="vendor/**/composer.lock"/>
-            </fileset>
-        </copy>
     </target>
 
     <target name="build-wordpress-media">
