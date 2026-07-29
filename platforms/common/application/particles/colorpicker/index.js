@@ -2,9 +2,7 @@
 
 var $          = require('../../utils/elements-native'),
     ready      = require('../../utils/dom').ready,
-    zen        = require('../../utils/create-element'),
-
-    DragEvents = require('../../ui/drag.events');
+    zen        = require('../../utils/create-element');
 
 var clamp = function(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -12,9 +10,10 @@ var clamp = function(value, min, max) {
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
-var MOUSEDOWN = DragEvents.EVENTS.START,
-    MOUSEMOVE = DragEvents.EVENTS.MOVE,
-    MOUSEUP   = DragEvents.EVENTS.STOP,
+var supportsPointerEvents = typeof window.PointerEvent === 'function',
+    MOUSEDOWN = supportsPointerEvents ? ['pointerdown'] : ['mousedown', 'touchstart'],
+    MOUSEMOVE = supportsPointerEvents ? ['pointermove'] : ['mousemove', 'touchmove'],
+    MOUSEUP   = supportsPointerEvents ? ['pointerup', 'pointercancel'] : ['mouseup', 'touchend', 'touchcancel'],
     FOCUSIN   = isFirefox ? 'focus' : 'focusin';
 
 class ColorPicker {
@@ -117,6 +116,7 @@ class ColorPicker {
 
         if (!this.built) { return; }
         this.wrapper.removeClass('cp-visible');
+        this.target = null;
 
         MOUSEMOVE.forEach(function(mousemove) {
             body.off(mousemove, this.bound('bodyMove'));
@@ -142,14 +142,16 @@ class ColorPicker {
     }
 
     bodyMove(event) {
-        event.preventDefault();
+        if (!this.target) { return; }
 
-        if (this.target) { this.move(this.target, event); }
+        event.preventDefault();
+        this.move(this.target, event);
     }
 
     bodyClick(event) {
-        var target = $(event.target);
-        if (!target.parent('.cp-wrapper') && !target.parent('.g-colorpicker')) {
+        var target = event.target instanceof Element ? event.target : null;
+
+        if (!target || (!target.closest('.cp-wrapper') && !target.closest('.g-colorpicker'))) {
             this.hide();
         }
     }
@@ -161,15 +163,14 @@ class ColorPicker {
         this.move(this.target, event, true);
     }
 
-    targetReset(event) {
-        event.preventDefault();
-
+    targetReset() {
         this.target = null;
     }
 
     move(target, event) {
         var input = this.element,
-            picker = target.find('.cp-picker'),
+            picker = target.hasClass('cp-grid') ? this.gridPicker
+                : (target.hasClass('cp-opacity-slider') ? this.opacityPicker : this.sliderPicker),
             clientRect = target[0].getBoundingClientRect(),
             offsetX = clientRect.left + window.scrollX,
             offsetY = clientRect.top + window.scrollY,
@@ -228,11 +229,15 @@ class ColorPicker {
 
     build() {
         this.wrapper = zen('div.cp-wrapper.cp-with-opacity.cp-mode-hue');
-        this.slider = zen('div.cp-slider.cp-sprite').bottom(this.wrapper).appendChild(zen('div.cp-picker'));
-        this.opacitySlider = zen('div.cp-opacity-slider.cp-sprite').bottom(this.wrapper).appendChild(zen('div.cp-picker'));
-        this.grid = zen('div.cp-grid.cp-sprite').bottom(this.wrapper).appendChild(zen('div.cp-grid-inner')).appendChild(zen('div.cp-picker'));
+        this.slider = zen('div.cp-slider.cp-sprite').bottom(this.wrapper);
+        this.sliderPicker = zen('div.cp-picker').bottom(this.slider);
+        this.opacitySlider = zen('div.cp-opacity-slider.cp-sprite').bottom(this.wrapper);
+        this.opacityPicker = zen('div.cp-picker').bottom(this.opacitySlider);
+        this.grid = zen('div.cp-grid.cp-sprite').bottom(this.wrapper);
+        this.gridInner = zen('div.cp-grid-inner').bottom(this.grid);
+        this.gridPicker = zen('div.cp-picker').bottom(this.grid);
 
-        zen('div').bottom(this.grid.find('.cp-picker'));
+        zen('div').bottom(this.gridPicker);
 
         var tabs = zen('div.cp-tabs').bottom(this.wrapper);
 
@@ -249,7 +254,7 @@ class ColorPicker {
                 if (element == this.tabs.transparent) {
                     this.opacity = 0;
                     var sliderHeight = this.opacitySlider.position().height;
-                    this.opacitySlider.find('.cp-picker').style({ 'top': clamp(sliderHeight - (sliderHeight * this.opacity), 0, sliderHeight) });
+                    this.opacityPicker.style({ 'top': clamp(sliderHeight - (sliderHeight * this.opacity), 0, sliderHeight) });
                     this.move(this.opacitySlider, { manualOpacity: true });
                     return;
                 }
@@ -289,7 +294,7 @@ class ColorPicker {
             // opacity
             this.opacity = Math.max(opacity, 0);
             var sliderHeight = this.opacitySlider.position().height;
-            this.opacitySlider.find('.cp-picker').style({ 'top': clamp(sliderHeight - (sliderHeight * this.opacity), 0, sliderHeight) });
+            this.opacityPicker.style({ 'top': clamp(sliderHeight - (sliderHeight * this.opacity), 0, sliderHeight) });
 
             // bg color
             var gridHeight = this.grid.position().height,
@@ -305,7 +310,8 @@ class ColorPicker {
                     phi = hsb.h * Math.PI / 180;
                     x = clamp(75 - Math.cos(phi) * r, 0, gridWidth);
                     y = clamp(75 - Math.sin(phi) * r, 0, gridHeight);
-                    this.grid.style({ backgroundColor: 'transparent' }).find('.cp-picker').style({
+                    this.grid.style({ backgroundColor: 'transparent' });
+                    this.gridPicker.style({
                         top: y,
                         left: x
                     });
@@ -313,7 +319,7 @@ class ColorPicker {
                     // Set slider position
                     y = 150 - (hsb.b / (100 / gridHeight));
                     if (hex === '') y = 0;
-                    this.slider.find('.cp-picker').style({ top: y });
+                    this.sliderPicker.style({ top: y });
 
                     // Update panel color
                     this.slider.style({
@@ -329,14 +335,14 @@ class ColorPicker {
                     // Set grid position
                     x = clamp((5 * hsb.h) / 12, 0, 150);
                     y = clamp(gridHeight - Math.ceil(hsb.b / (100 / gridHeight)), 0, gridHeight);
-                    this.grid.find('.cp-picker').style({
+                    this.gridPicker.style({
                         top: y,
                         left: x
                     });
 
                     // Set slider position
                     y = clamp(sliderHeight - (hsb.s * (sliderHeight / 100)), 0, sliderHeight);
-                    this.slider.find('.cp-picker').style({ top: y });
+                    this.sliderPicker.style({ top: y });
 
                     // Update UI
                     this.slider.style({
@@ -346,21 +352,21 @@ class ColorPicker {
                             b: hsb.b
                         })
                     });
-                    this.grid.find('.cp-grid-inner').style({ opacity: hsb.s / 100 });
+                    this.gridInner.style({ opacity: hsb.s / 100 });
                     break;
 
                 case 'brightness':
                     // Set grid position
                     x = clamp((5 * hsb.h) / 12, 0, 150);
                     y = clamp(gridHeight - Math.ceil(hsb.s / (100 / gridHeight)), 0, gridHeight);
-                    this.grid.find('.cp-picker').style({
+                    this.gridPicker.style({
                         top: y,
                         left: x
                     });
 
                     // Set slider position
                     y = clamp(sliderHeight - (hsb.b * (sliderHeight / 100)), 0, sliderHeight);
-                    this.slider.find('.cp-picker').style({ top: y });
+                    this.sliderPicker.style({ top: y });
 
                     // Update UI
                     this.slider.style({
@@ -370,21 +376,21 @@ class ColorPicker {
                             b: 100
                         })
                     });
-                    this.grid.find('.cp-grid-inner').style({ opacity: 1 - (hsb.b / 100) });
+                    this.gridInner.style({ opacity: 1 - (hsb.b / 100) });
                     break;
                 case 'hue':
                 default:
                     // Set grid position
                     x = clamp(Math.ceil(hsb.s / (100 / gridWidth)), 0, gridWidth);
                     y = clamp(gridHeight - Math.ceil(hsb.b / (100 / gridHeight)), 0, gridHeight);
-                    this.grid.find('.cp-picker').style({
+                    this.gridPicker.style({
                         top: y,
                         left: x
                     });
 
                     // Set slider position
                     y = clamp(sliderHeight - (hsb.h / (360 / sliderHeight)), 0, sliderHeight);
-                    this.slider.find('.cp-picker').style({ top: y });
+                    this.sliderPicker.style({ top: y });
 
                     // Update panel color
                     this.grid.style({
@@ -427,9 +433,9 @@ class ColorPicker {
             opacitySlider = this.wrapper.find('.cp-opacity-slider'),
 
             // Picker objects
-            gridPicker = grid.find('.cp-picker'),
-            sliderPicker = slider.find('.cp-picker'),
-            opacityPicker = opacitySlider.find('.cp-picker'),
+            gridPicker = this.gridPicker,
+            sliderPicker = this.sliderPicker,
+            opacityPicker = this.opacityPicker,
 
             // Picker positions
             gridPos = getCoords(gridPicker, grid),
@@ -501,7 +507,7 @@ class ColorPicker {
                             b: brightness
                         })
                     });
-                    grid.find('.cp-grid-inner').style({ opacity: saturation / 100 });
+                    this.gridInner.style({ opacity: saturation / 100 });
                     break;
 
                 case 'brightness':
@@ -523,7 +529,7 @@ class ColorPicker {
                             b: 100
                         })
                     });
-                    grid.find('.cp-grid-inner').style({ opacity: 1 - (brightness / 100) });
+                    this.gridInner.style({ opacity: 1 - (brightness / 100) });
                     break;
 
                 default:
@@ -741,7 +747,10 @@ ready(function() {
             element.style({ backgroundColor: hex });
         }
 
-        element.parent('.g-colorpicker')[!check ? 'addClass' : 'removeClass']('light-text');
+        var colorpicker = element[0] && element[0].closest('.g-colorpicker');
+        if (colorpicker) {
+            $(colorpicker)[!check ? 'addClass' : 'removeClass']('light-text');
+        }
 
         this.timer = setTimeout(function() {
             element.emit('input');

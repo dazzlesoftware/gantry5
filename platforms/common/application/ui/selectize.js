@@ -2322,7 +2322,7 @@ $.implement({
                     settings_element.Optgroups.push(optgrp);
                 }
 
-                options = optgroup.search('option');
+                options = optgroup.search('option') || [];
                 for (i = 0, n = options.length; i < n; i++) {
                     addOption(options[i], id);
                 }

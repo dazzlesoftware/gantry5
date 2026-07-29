@@ -3,7 +3,13 @@
 const wrapperCache = new WeakMap();
 const eventListeners = new WeakMap();
 const delegatedListeners = new WeakMap();
-const elementNode = value => value && value[0] ? value[0] : value;
+const elementNode = value => {
+    if (typeof value === 'string') {
+        return document.querySelector(value);
+    }
+
+    return value && value[0] ? value[0] : value;
+};
 const unique = nodes => Array.from(new Set(nodes));
 
 function Elements(nodes) {
@@ -314,11 +320,13 @@ $.implement({
 
     bottom: function(element) {
         element = elementNode(element);
+        if (!element || typeof element.appendChild !== 'function') return this;
         return this.forEach(node => element.appendChild(node));
     },
 
     top: function(element) {
         element = elementNode(element);
+        if (!element || typeof element.insertBefore !== 'function') return this;
         return this.forEach(node => element.insertBefore(node, element.firstChild));
     },
 

@@ -388,6 +388,11 @@ ready(function() {
 
         if (!href) { return false; }
 
+        var extras = $('[data-g-extras]');
+        if (extras && extras[0].PopoverDefined) {
+            extras.getPopover().hide();
+        }
+
         indicator.showIndicator();
         request(method, parseAjaxURI(href + getAjaxSuffix()), function(error, response) {
             if (!response.body.success) {
@@ -406,8 +411,8 @@ ready(function() {
             }
 
             indicator.hideIndicator();
-        })
-    });
+        });
+    }, true);
 });
 
 var modules = {

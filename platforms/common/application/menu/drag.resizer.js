@@ -117,7 +117,7 @@ class Resizer {
         if (!current || !nextColumn) { return false; }
 
         parent.classList.add('moving');
-        
+
         this.siblings = {
             occupied: 0,
             elements: asElements(siblings),

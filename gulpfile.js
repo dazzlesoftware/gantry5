@@ -68,8 +68,7 @@ paths = {
     js: [
         { // admin
             in: './platforms/common/application/main.js',
-            out: './platforms/common/js/main.js',
-            expose: [{ lib: './platforms/common/js/tooltips.js', require: 'ext/tooltips' }]
+            out: './platforms/common/js/main.js'
         },
         { // frontend
             in: './assets/common/application/main.js',
@@ -277,12 +276,21 @@ function watchify(done) {
 }
 
 function js() {
-    var streams = [];
-    paths.js.forEach(function(app) {
-        streams.push(compileJS(app));
+    var streams = paths.js.map(function(app) {
+        return compileJS(app);
     });
 
-    return merge(streams);
+    return Promise.all(streams.map(function(stream) {
+        return new Promise(function(resolve, reject) {
+            if (stream.writableFinished) {
+                resolve();
+                return;
+            }
+
+            stream.once('finish', resolve);
+            stream.once('error', reject);
+        });
+    }));
 }
 
 function css(done) {

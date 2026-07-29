@@ -1,7 +1,5 @@
 'use strict';
 
-const {ready} = require('../utils/dom');
-
 const defaults = {
     baseClass: 'g-tips',
     typeClass: null,
@@ -276,11 +274,6 @@ class Tooltips {
     }
 }
 
-let instance = null;
-
-ready(() => {
-    instance = new Tooltips(document);
-    window.G5.tips = instance;
-});
+const instance = new Tooltips(document);
 
 module.exports = instance;
