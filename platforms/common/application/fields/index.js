@@ -177,7 +177,7 @@ dom.ready(function() {
         reset.style.display = !fieldValue(field) || field.disabled ? 'none' : '';
     };
 
-    compare.presets = function() {
+    compare.presets = function(preserveServerSelection) {
         var presets = document.querySelectorAll('[data-g-styles]');
         if (!presets.length) { return; }
 
@@ -187,6 +187,8 @@ dom.ready(function() {
                 presetsCache.set(preset, createMapFrom(JSON.parse(readData(preset, 'g-styles'))));
             });
         }
+
+        if (preserveServerSelection) { return; }
 
         presetsCache.forEach(function(presetMap, preset) {
             var fields = collectFieldsValues(Array.from(presetMap.keys()));
@@ -222,7 +224,9 @@ dom.ready(function() {
     });
 
     body.addEventListener('statechangeEnd', function() {
-        body.dispatchEvent(new CustomEvent('updateOriginalFields'));
+        originals = collectFieldsValues();
+        presetsCache = null;
+        compare.presets(true);
     });
 
     body.addEventListener('updateOriginalFields', function() {
@@ -231,7 +235,7 @@ dom.ready(function() {
         compare.presets();
     });
 
-    compare.presets();
+    compare.presets(true);
 });
 
 module.exports = {

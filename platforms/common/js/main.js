@@ -782,7 +782,7 @@ dom.ready(function() {
         reset.style.display = !fieldValue(field) || field.disabled ? 'none' : '';
     };
 
-    compare.presets = function() {
+    compare.presets = function(preserveServerSelection) {
         var presets = document.querySelectorAll('[data-g-styles]');
         if (!presets.length) { return; }
 
@@ -792,6 +792,8 @@ dom.ready(function() {
                 presetsCache.set(preset, createMapFrom(JSON.parse(readData(preset, 'g-styles'))));
             });
         }
+
+        if (preserveServerSelection) { return; }
 
         presetsCache.forEach(function(presetMap, preset) {
             var fields = collectFieldsValues(Array.from(presetMap.keys()));
@@ -827,7 +829,9 @@ dom.ready(function() {
     });
 
     body.addEventListener('statechangeEnd', function() {
-        body.dispatchEvent(new CustomEvent('updateOriginalFields'));
+        originals = collectFieldsValues();
+        presetsCache = null;
+        compare.presets(true);
     });
 
     body.addEventListener('updateOriginalFields', function() {
@@ -836,7 +840,7 @@ dom.ready(function() {
         compare.presets();
     });
 
-    compare.presets();
+    compare.presets(true);
 });
 
 module.exports = {
@@ -10034,6 +10038,7 @@ module.exports = {};
 'use strict';
 
 const modal = require('../ui').modal;
+const fields = require('../fields');
 const { ready, delegate } = require('../utils/dom');
 
 require('../ui/popover');
@@ -10067,6 +10072,10 @@ ready(() => {
             emitFieldEvent(input, type);
             emitFieldEvent(input, 'keyup');
         });
+
+        // Re-evaluate once after every preset value, including the hidden
+        // styles[preset] field, has been applied.
+        fields.compare.presets();
     });
 
     delegate(document.body, 'click', '[data-g-styles] .swatch-preview', (event, swatch) => {
@@ -10090,7 +10099,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../ui":53,"../ui/popover":55,"../utils/dom":67}],49:[function(require,module,exports){
+},{"../fields":5,"../ui":53,"../ui/popover":55,"../utils/dom":67}],49:[function(require,module,exports){
 'use strict';
 
 const Cookie = require('../utils/cookie');
@@ -16097,13 +16106,8 @@ module.exports = DraggableGroup;
 const wrapperCache = new WeakMap();
 const eventListeners = new WeakMap();
 const delegatedListeners = new WeakMap();
-const elementNode = value => {
-    if (typeof value === 'string') {
-        return document.querySelector(value);
-    }
-
-    return value && value[0] ? value[0] : value;
-};
+const elementNode = value => value && value[0] ? value[0] : value;
+const targetNode = value => typeof value === 'string' ? document.querySelector(value) : elementNode(value);
 const unique = nodes => Array.from(new Set(nodes));
 
 function Elements(nodes) {
@@ -16413,13 +16417,13 @@ $.implement({
     },
 
     bottom: function(element) {
-        element = elementNode(element);
+        element = targetNode(element);
         if (!element || typeof element.appendChild !== 'function') return this;
         return this.forEach(node => element.appendChild(node));
     },
 
     top: function(element) {
-        element = elementNode(element);
+        element = targetNode(element);
         if (!element || typeof element.insertBefore !== 'function') return this;
         return this.forEach(node => element.insertBefore(node, element.firstChild));
     },

@@ -1,6 +1,7 @@
 'use strict';
 
 const modal = require('../ui').modal;
+const fields = require('../fields');
 const { ready, delegate } = require('../utils/dom');
 
 require('../ui/popover');
@@ -34,6 +35,10 @@ ready(() => {
             emitFieldEvent(input, type);
             emitFieldEvent(input, 'keyup');
         });
+
+        // Re-evaluate once after every preset value, including the hidden
+        // styles[preset] field, has been applied.
+        fields.compare.presets();
     });
 
     delegate(document.body, 'click', '[data-g-styles] .swatch-preview', (event, swatch) => {
