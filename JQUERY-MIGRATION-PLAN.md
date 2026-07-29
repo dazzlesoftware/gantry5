@@ -12,13 +12,13 @@ The Gantry administration application no longer imports or calls jQuery directly
 
 | Scope | Physical files | Distinct implementations |
 |---|---:|---:|
-| Theme JavaScript | 811 | 196 |
-| Theme Twig templates | 639 | 288 |
-| **Theme total** | **1,450** | **484** |
+| Theme JavaScript | 719 | 194 |
+| Theme Twig templates | 593 | 286 |
+| **Theme total** | **1,312** | **480** |
 
-All 1,450 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
+All 1,312 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
 
-The previous count was 1,579 physical files and 489 distinct implementations. Removing the obsolete RokSprocket trees eliminated 129 physical files and five distinct implementations.
+The original count was 1,579 physical files and 489 distinct implementations. Removing the obsolete RokSprocket trees eliminated 129 physical files and five distinct implementations. Consolidating Simple Counter eliminated another 138 jQuery-dependent theme files and four distinct implementations.
 
 ### Affected themes
 
@@ -125,7 +125,7 @@ Counts overlap because a file can belong to more than one family.
 
 | Migration family | Physical files | Distinct variants | Affected themes | Suggested priority |
 |---|---:|---:|---:|---|
-| Simple Counter | 138 | 4 | 46 | 1 |
+| Simple Counter | 0 | 0 | 0 | Complete |
 | Video | 114 | 15 | 46 | 1 |
 | Search | 27 | 7 | 27 | 1 |
 | Fixed Header | 30 | 23 | 30 | 1 |
@@ -143,9 +143,8 @@ Counts overlap because a file can belong to more than one family.
 
 ### Priority 1: Small native controllers
 
-Start with behavior that maps cleanly to browser APIs:
+Continue with behavior that maps cleanly to browser APIs:
 
-- Simple Counter: `IntersectionObserver` plus `requestAnimationFrame`.
 - Video: native media events and class manipulation.
 - Search: native form/input events and `fetch()`.
 - Fixed Header: `IntersectionObserver`, scroll events, and `classList`.
@@ -194,7 +193,7 @@ For each migration family:
 5. Copy or package the shared controller through the build process instead of maintaining dozens of independent rewrites.
 6. Remove old plugin files only after every referencing particle has migrated.
 
-Avoid editing 46 copies of `simplecounter.init.js` independently. The four distinct Simple Counter variants should become one shared controller plus configuration.
+Simple Counter now provides the shared-controller model: its schema and Twig markup live in the common Nucleus particle directory, its native controller lives in common assets, and each theme retains only its custom SCSS.
 
 ## 5. Proposed task batches
 
@@ -301,7 +300,7 @@ package-build.bat prod
 | JQ-CORE-003 | Modernize Frameworks atom | Not started | Major-version compatibility decision |
 | JQ-CORE-004 | Remove DebugBar jQuery loading | Not started | DebugBar UI verification |
 | JQ-CORE-005 | Retire platform registration keys | Not started | Core callers removed |
-| JQ-THEME-001 | Consolidate Simple Counter | Not started | Shared controller pattern |
+| JQ-THEME-001 | Consolidate Simple Counter | Complete | Shared native controller in common assets |
 | JQ-THEME-002 | Consolidate Video | Not started | Shared controller pattern |
 | JQ-THEME-003 | Consolidate Fixed Header | Not started | None |
 | JQ-THEME-004 | Consolidate Search | Not started | JQ-CORE-002 patterns |
@@ -319,4 +318,4 @@ package-build.bat prod
 
 ## 9. Recommended next task
 
-Begin with **JQ-CORE-001: Replace Lightcase**. It is the only bundled core JavaScript plugin that directly requires jQuery, and removing it will eliminate the main first-party runtime reason for Gantry core to register jQuery.
+Continue with **JQ-THEME-002: Consolidate Video** to apply the new shared native-controller pattern to another high-volume theme family. **JQ-CORE-001: Replace Lightcase** remains the highest-value core-runtime removal.

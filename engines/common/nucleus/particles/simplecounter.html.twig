@@ -1,0 +1,35 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% set month = particle.month|default(0) + 1 %}
+    <div class="g-simplecounter {{ particle.class|e }}">
+        {% if particle.title %}
+            <h2 class="g-title title">{{ particle.title|raw }}</h2>
+        {% endif %}
+
+        <div class="g-simplecounter-content">
+            {{ particle.desc|raw }}
+        </div>
+
+        <div class="g-simplecounter-block">
+            <div
+                class="g-simplecounter-calendar"
+                id="g-{{ id }}"
+                data-simplecounter
+                data-countdown="{{ particle.year|default(2030) }}-{{ '%02d'|format(month) }}-{{ '%02d'|format(particle.date|default(1)) }}"
+                data-simplecounter-daytext="{{ particle.daytext|default('Day')|e('html_attr') }}"
+                data-simplecounter-daystext="{{ particle.daystext|default('Days')|e('html_attr') }}"
+                data-simplecounter-hourtext="{{ particle.hourtext|default('Hour')|e('html_attr') }}"
+                data-simplecounter-hourstext="{{ particle.hourstext|default('Hours')|e('html_attr') }}"
+                data-simplecounter-minutetext="{{ particle.minutetext|default('Minute')|e('html_attr') }}"
+                data-simplecounter-minutestext="{{ particle.minutestext|default('Minutes')|e('html_attr') }}"
+                data-simplecounter-secondtext="{{ particle.secondtext|default('Second')|e('html_attr') }}"
+                data-simplecounter-secondstext="{{ particle.secondstext|default('Seconds')|e('html_attr') }}"
+            ></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/simplecounter.js'), 11, 'footer') %}
+{% endblock %}
