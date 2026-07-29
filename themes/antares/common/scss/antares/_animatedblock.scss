@@ -230,9 +230,8 @@
 }
 
 /* Safari 6.1+ */
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
-{
+@media screen and (min-color-index: 0) and (-webkit-min-device-pixel-ratio: 0) {
     .g-animatedblock-item-wrapper { 
         transform: translateZ(0);
     }
-}}
+}

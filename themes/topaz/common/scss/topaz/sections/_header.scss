@@ -138,11 +138,11 @@
             background: transparentize($white, 0.30);
             @include breakpoint(tablet-range) {
                 margin-left: 0;
-                width: 100%%;
+                width: 100%;
             }
             @include breakpoint(mobile-only) {
                 margin-left: 0;
-                width: 100%%;
+                width: 100%;
             }
             .search, .search-wrapper {
                 @include breakpoint(mobile-only) {

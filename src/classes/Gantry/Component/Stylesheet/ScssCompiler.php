@@ -10,18 +10,15 @@
 
 namespace Gantry\Component\Stylesheet;
 
-use Composer\Autoload\ClassLoader;
-use Gantry\Component\Filesystem\Folder;
-use Gantry\Component\Stylesheet\Scss\Compiler;
 use Gantry\Component\Stylesheet\Scss\Functions;
-use Gantry\Component\Stylesheet\Scss\LegacyCompiler;
 use Gantry\Debugger;
 use Gantry\Framework\Document;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme;
 use Grav\Common\Plugins;
 use ScssPhp\ScssPhp\CompilationResult;
-use ScssPhp\ScssPhp\Exception\CompilerException;
+use ScssPhp\ScssPhp\Compiler;
+use ScssPhp\ScssPhp\Exception\SassException;
 use DazzleSoftware\Toolbox\File\File;
 use DazzleSoftware\Toolbox\File\JsonFile;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
@@ -75,16 +72,6 @@ class ScssCompiler extends CssCompiler
         }
 
         if (!class_exists(Compiler::class, false)) {
-            /** @var ClassLoader $loader */
-            $loader = static::gantry()['loader'];
-            if (version_compare(static::$options['compatibility'], '5.5', '<')) {
-                /** @phpstan-ignore-next-line */
-                $loader->setPsr4('ScssPhp\\ScssPhp\\', GANTRY5_LIBRARY . '/vendor/scssphp/scssphp/src');
-            } else {
-                /** @phpstan-ignore-next-line */
-                $loader->setPsr4('ScssPhp\\ScssPhp\\', GANTRY5_LIBRARY . '/compat/vendor/scssphp/scssphp/src');
-            }
-
             // Do not use SCSS compiler from Grav Admin.
             $adminPlugin = class_exists(Plugins::class) ? Plugins::getPlugin('admin') : null;
             if ($adminPlugin && method_exists($adminPlugin, 'getAutoloader')) {
@@ -125,10 +112,6 @@ class ScssCompiler extends CssCompiler
      */
     public function compileFile($in)
     {
-        if (isset(static::$options['legacy'][$in])) {
-            return $this->compileLegacyFile($in);
-        }
-
         // Buy some extra time as compilation may take a lot of time in shared environments.
         @set_time_limit(30);
         @set_time_limit(60);
@@ -168,7 +151,7 @@ class ScssCompiler extends CssCompiler
 
         // Set the lookup paths.
         $this->functions->setBasePath($path);
-        $compiler->setImportPaths([[$this, 'findImport']]);
+        $compiler->setImportPaths($this->realPaths);
 
         // Run the compiler.
         $compiler->addVariables($this->getVariables(true));
@@ -176,15 +159,7 @@ class ScssCompiler extends CssCompiler
         try {
             $this->result = $compiler->compileString($scss);
             $css = $this->result->getCss();
-        } catch (CompilerException $e) {
-            if (version_compare(static::$options['compatibility'], '5.5', '<')) {
-                static::$options['legacy'][$in] = true;
-                $this->warnings['__TITLE__'] = 'Please update your theme!';
-                $this->warnings[$in] = ['WARNING: ' . $e->getMessage()];
-
-                return $this->compileLegacyFile($in);
-            }
-
+        } catch (SassException $e) {
             throw new \RuntimeException("ERROR: CSS Compilation on file '{$in}.scss' failed on error: {$e->getMessage()}", 500, $e);
         } catch (\Exception $e) {
             throw new \RuntimeException("ERROR: CSS Compilation on file '{$in}.scss' failed on fatal error: {$e->getMessage()}", 500, $e);
@@ -260,136 +235,6 @@ WARN;
     }
 
     /**
-     * @param string $in    Filename without path or extension.
-     * @return bool         True if the output file was saved.
-     * @throws \RuntimeException
-     */
-    public function compileLegacyFile($in)
-    {
-        // Buy some extra time as compilation may take a lot of time in shared environments.
-        @set_time_limit(30);
-        @set_time_limit(60);
-        @set_time_limit(90);
-        @set_time_limit(120);
-        ob_start();
-
-        $gantry = Gantry::instance();
-
-        /** @var UniformResourceLocator $locator */
-        $locator = $gantry['locator'];
-
-        $out = $this->getCssUrl($in);
-        $path = $locator->findResource($out, true, true);
-        $file = File::instance($path);
-
-        // Attempt to lock the file for writing.
-        try {
-            $file->lock(false);
-        } catch (\Exception $e) {
-            // Another process has locked the file; we will check this in a bit.
-        }
-
-        if ($file->locked() === false) {
-            // File was already locked by another process, lets avoid compiling the same file twice.
-            return false;
-        }
-
-        // Set the lookup paths.
-        $compiler = $this->getLegacyCompiler();
-        $compiler->setBasePath($path);
-        $compiler->setImportPaths([[$this, 'findLegacyImport']]);
-
-        // Run the compiler.
-        $compiler->setVariables($this->getVariables());
-        $scss = '@import "' . $in . '.scss"';
-        try {
-            $css = $compiler->compile($scss);
-        } catch (CompilerException $e) {
-            throw new \RuntimeException("CSS Compilation on file '{$in}.scss' failed on error: {$e->getMessage()}", 500, $e);
-        }
-        if (strpos($css, $scss) === 0) {
-            $css = '/* ' . $scss . ' */';
-        }
-
-        // Extract map from css and save it as separate file.
-        if ($pos = strrpos($css, '/*# sourceMappingURL=')) {
-            $map = json_decode(urldecode(substr($css, $pos + 43, -3)), true);
-
-            /** @var Document $document */
-            $document = $gantry['document'];
-
-            foreach ($map['sources'] as &$source) {
-                $source = $document->url($source, false, -1);
-            }
-            unset($source);
-
-            $mapFile = JsonFile::instance($path . '.map');
-            $mapFile->save($map);
-            $mapFile->free();
-
-            $css = substr($css, 0, $pos) . '/*# sourceMappingURL=' . Gantry::basename($out) . '.map */';
-        }
-
-
-        $warnings = preg_replace('/\n +(\w)/mu', '\1', ob_get_clean());
-        if ($warnings) {
-            $warnings = explode("\n\n", $warnings);
-            foreach ($warnings as $i => $warning) {
-                if ($warning === '') {
-                    unset($warnings[$i]);
-                    continue;
-                }
-                if (strpos($warning, '[Bourbon] [Deprecation]') !== false) {
-                    if (\GANTRY_DEBUGGER) {
-                        Debugger::addMessage("{$in}: {$warning}", 'deprecated');
-                    }
-                    if (static::$options['deprecations']) {
-                        unset($warnings[$i]);
-                    }
-                } else {
-                    if (\GANTRY_DEBUGGER) {
-                        Debugger::addMessage("{$in}: {$warning}", 'warning');
-                    }
-                }
-            }
-
-            if (!isset($this->warnings[$in])) {
-                $this->warnings[$in] = [];
-            }
-            if ($warnings) {
-                $this->warnings[$in] = array_merge($this->warnings[$in], array_values($warnings));
-            }
-        }
-
-        if (!$this->production) {
-            $warning = <<<WARN
-/* GANTRY5 DEVELOPMENT MODE ENABLED.
- *
- * WARNING: This file is automatically generated by Gantry5. Any modifications to this file will be lost!
- *
- * For more information on modifying CSS, please read:
- *
- * http://docs.gantry.org/gantry5/configure/styles
- * http://docs.gantry.org/gantry5/tutorials/adding-a-custom-style-sheet
- */
-WARN;
-            $css = $warning . "\n\n" . $css;
-        } else {
-            $css = "{$this->checksum()}\n{$css}";
-        }
-
-        $file->save($css);
-        $file->unlock();
-        $file->free();
-
-        $this->createMeta($out, md5($css));
-        $this->includedFiles = $compiler->getParsedFiles();
-        $compiler->cleanParsedFiles();
-
-        return true;
-    }
-
-    /**
      * @param string   $name       Name of function to register to the compiler.
      * @param callable $callback   Function to run when called by the compiler.
      * @return $this
@@ -410,101 +255,6 @@ WARN;
         $this->functions->unregisterFunction($name);
 
         return $this;
-    }
-
-    /**
-     * @param string $url
-     * @return null|string
-     * @internal
-     */
-    public function findImport($url)
-    {
-        // Ignore vanilla css and external requests.
-        if (preg_match('/\.css$|^https?:\/\//', $url)) {
-            return null;
-        }
-
-        // Append current folder for the lookup
-        $currentDir = Compiler::$currentDir;
-        $current = null;
-        if ($currentDir) {
-            foreach ($this->realPaths as $base) {
-                if (strpos($currentDir . '/', $base . '/') === 0) {
-                    $current = substr($currentDir, strlen($base) + 1);
-
-                    break;
-                }
-            }
-        }
-
-        // Try both normal and the _partial filename against relative SCSS folder.
-        if ($current) {
-            $path = $this->tryImport("{$current}/{$url}");
-            if ($path) {
-                return $path;
-            }
-        }
-
-        // Try both normal and the _partial filename against root SCSS folder.
-        return $this->tryImport($url);
-    }
-
-    /**
-     * @param string $url
-     * @return null|string
-     * @internal
-     */
-    public function findLegacyImport($url)
-    {
-        // Ignore vanilla css and external requests.
-        if (preg_match('/\.css$|^https?:\/\//', $url)) {
-            return null;
-        }
-
-        $gantry = Gantry::instance();
-
-        /** @var UniformResourceLocator $locator */
-        $locator = $gantry['locator'];
-
-        // Try both normal and the _partial filename.
-        $files = array($url, preg_replace('/[^\/]+$/', '_\0', $url));
-
-        foreach ($this->paths as $base) {
-            foreach ($files as $file) {
-                if (!preg_match('|\.scss$|', $file)) {
-                    $file .= '.scss';
-                }
-                if ($locator->findResource($base . '/' . $file)) {
-                    return $base . '/' . $file;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * @param string $url
-     * @return string|null
-     */
-    protected function tryImport($url)
-    {
-        // Try both normal and the _partial filename.
-        $files = [$url, preg_replace('/[^\/]+$/', '_\0', $url)];
-
-        foreach ($this->realPaths as $base) {
-            foreach ($files as $file) {
-                if (!preg_match('|\.scss$|', $file)) {
-                    $file .= '.scss';
-                }
-                $filepath = $base . '/' . $file;
-                if (is_file($filepath)) {
-                    return $filepath;
-                }
-            }
-        }
-
-        return null;
     }
 
     /**
@@ -531,19 +281,7 @@ WARN;
      */
     protected function getCompiler()
     {
-        /** @var UniformResourceLocator $locator */
-        $locator = Gantry::instance()['locator'];
-        $cacheDir = $locator->findResource('gantry-cache://theme/scss/source', true, true);
-        if (!file_exists($cacheDir)) {
-            Folder::create($cacheDir);
-        }
-
-        $options = [
-            'cacheDir' => $cacheDir,
-            //'prefix' => '',
-            'forceRefresh' => true
-        ];
-        $compiler = new Compiler($options);
+        $compiler = new Compiler();
 
         $this->functions->setCompiler($compiler);
 
@@ -558,28 +296,6 @@ WARN;
                 'sourceMapBasepath' => GANTRY5_ROOT,
             ]);
         }
-
-        return $compiler;
-    }
-
-    /**
-     * @return LegacyCompiler
-     */
-    protected function getLegacyCompiler()
-    {
-        // Autoload legacy compiler classes
-        /** @var ClassLoader $loader */
-        $loader = static::gantry()['loader'];
-        $loader->setPsr4('Leafo\\ScssPhp\\', [GANTRY5_LIBRARY . '/src/classes/Leafo/ScssPhp', GANTRY5_LIBRARY . '/vendor/leafo/scssphp/src']);
-
-        $compiler = new LegacyCompiler();
-        $compiler->setFormatter('Leafo\ScssPhp\Formatter\Expanded');
-        $compiler->setSourceMap(Compiler::SOURCE_MAP_INLINE);
-        $compiler->setSourceMapOptions([
-            'sourceMapBasepath' => '/',
-            'sourceRoot'        => '/',
-        ]);
-        $compiler->setLineNumberStyle(Compiler::LINE_COMMENTS);
 
         return $compiler;
     }

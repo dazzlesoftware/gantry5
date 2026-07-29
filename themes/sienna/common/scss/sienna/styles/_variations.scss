@@ -98,7 +98,7 @@
         border-radius: $border-radius;
 
         p {
-            color: transparentize($white, 20%);
+            color: transparentize($white, 0.2);
         }
     }
 
@@ -154,7 +154,7 @@
         border-radius: $border-radius;
 
         p {
-            color: transparentize($white, 20%);
+            color: transparentize($white, 0.2);
         }
     }
 

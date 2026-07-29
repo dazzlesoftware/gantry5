@@ -63,13 +63,13 @@
 }
 
 // 1 Column
-&.g-video-container-columns-1 {
+.g-video-container-columns-1 {
     .g-video-inner {
         width: 100%;
     }
 }
 // 2 Columns
-&.g-video-container-columns-2 {
+.g-video-container-columns-2 {
     display: flex;
     flex-wrap: wrap;
     .g-video-inner {
@@ -90,7 +90,7 @@
     }
 }
 // 3 Columns
-&.g-video-container-columns-3 {
+.g-video-container-columns-3 {
     display: flex;
     flex-wrap: wrap;
     .g-video-inner {
@@ -114,7 +114,7 @@
     }
 }
 // 4 Columns
-&.g-video-container-columns-4 {
+.g-video-container-columns-4 {
     display: flex;
     flex-wrap: wrap;
 

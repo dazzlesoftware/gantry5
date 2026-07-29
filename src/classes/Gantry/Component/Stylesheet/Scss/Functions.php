@@ -13,6 +13,13 @@ use Gantry\Component\Filesystem\Folder;
 use Gantry\Framework\Document;
 use Gantry\Framework\Gantry;
 use ScssPhp\ScssPhp\Compiler;
+use ScssPhp\ScssPhp\Value\ListSeparator;
+use ScssPhp\ScssPhp\Value\SassArgumentList;
+use ScssPhp\ScssPhp\Value\SassBoolean;
+use ScssPhp\ScssPhp\Value\SassList;
+use ScssPhp\ScssPhp\Value\SassNumber;
+use ScssPhp\ScssPhp\Value\SassString;
+use ScssPhp\ScssPhp\Value\Value;
 
 /**
  * Class Compiler
@@ -41,7 +48,7 @@ class Functions
         $this->compiler = $compiler;
 
         $compiler->registerFunction('url', [$this, 'libUrl'], ['url']);
-        $compiler->registerFunction('get-font-url', [$this, 'libGetFontUrl'], ['list...']);
+        $compiler->registerFunction('get-font-url', [$this, 'libGetFontUrl'], ['font']);
         $compiler->registerFunction('get-font-family', [$this, 'libGetFontFamily'], ['family']);
         $compiler->registerFunction('get-local-fonts', [$this, 'libGetLocalFonts'], ['list...']);
         $compiler->registerFunction('get-local-font-weights', [$this, 'libGetLocalFontWeights'], ['font']);
@@ -112,20 +119,14 @@ class Functions
      * @return string
      * @throws \ScssPhp\ScssPhp\Exception\CompilerException
      */
-    public function libUrl(array $args)
+    public function libUrl(array $args): Value
     {
         // Function has a single parameter.
         $parsed = reset($args);
         if (!$parsed) {
-            throw $this->compiler->error('url() is missing parameter');
+            throw new \InvalidArgumentException('url() is missing parameter');
         }
-        $url = $this->compiler->compileValue($parsed);
-        if (!is_string($url)) {
-            throw $this->compiler->error('url() value is not a string');
-        }
-
-        // Compile parsed value to string.
-        $url = trim($url, '\'"');
+        $url = $this->valueToString($parsed);
 
         // Handle ../ inside CSS files (points to current theme).
         if (strpos($url, '../') === 0 && strpos($url, '../', 3) === false) {
@@ -149,7 +150,7 @@ class Functions
         }
 
         // Return valid CSS.
-        return "url('{$url}')";
+        return new SassString("url('{$url}')", false);
     }
 
     /**
@@ -158,9 +159,9 @@ class Functions
      * @param array $args
      * @return string|false
      */
-    public function libGetFontUrl($args)
+    public function libGetFontUrl(array $args): Value
     {
-        $value = trim($this->compiler->compileValue(reset($args)), '\'"');
+        $value = $this->valueToString(reset($args));
 
         // It's a google font
         if (0 === strpos($value, 'family=')) {
@@ -171,11 +172,11 @@ class Functions
             if ($font && !isset($this->usedFonts[$font])) {
                 $this->usedFonts[$font] = true;
 
-                return "url('//fonts.googleapis.com/css?{$value}')";
+                return new SassString("//fonts.googleapis.com/css?{$value}");
             }
         }
 
-        return false;
+        return SassBoolean::create(false);
     }
 
     /**
@@ -184,11 +185,11 @@ class Functions
      * @param array $args
      * @return string
      */
-    public function libGetFontFamily($args)
+    public function libGetFontFamily(array $args): Value
     {
-        $value = trim($this->compiler->compileValue(reset($args)), '\'"');
+        $value = $this->valueToString(reset($args));
 
-        return $this->encodeFonts($this->decodeFonts($value));
+        return new SassString($this->encodeFonts($this->decodeFonts($value)), false);
     }
 
     /**
@@ -197,9 +198,9 @@ class Functions
      * @param array $args
      * @return array
      */
-    public function libGetLocalFonts($args)
+    public function libGetLocalFonts(array $args): Value
     {
-        $args = $this->compileArgs($args);
+        $args = $this->expandArguments($args);
 
         $fonts = [[]];
         foreach ($args as $value) {
@@ -210,12 +211,10 @@ class Functions
         $fonts = $this->getLocalFonts($fonts);
 
         // Create a basic list of strings so that SCSS parser can parse the list.
-        $list = [];
-        foreach ($fonts as $font => $data) {
-            $list[] = ['string', '"', [$font]];
-        }
-
-        return ['list', ',', $list];
+        return new SassList(
+            array_map(static fn($font) => new SassString($font), array_keys($fonts)),
+            ListSeparator::COMMA
+        );
     }
 
     /**
@@ -224,19 +223,17 @@ class Functions
      * @param array $args
      * @return array
      */
-    public function libGetLocalFontWeights($args)
+    public function libGetLocalFontWeights(array $args): Value
     {
-        $name = trim($this->compiler->compileValue(reset($args)), '\'"');
+        $name = $this->valueToString(reset($args));
 
         $weights = isset($this->fonts[$name]) ? array_keys($this->fonts[$name]) : [];
 
         // Create a list of numbers so that SCSS parser can parse the list.
-        $list = [];
-        foreach ($weights as $weight) {
-            $list[] = ['string', '', [(int) $weight]];
-        }
-
-        return ['list', ',', $list];
+        return new SassList(
+            array_map(static fn($weight) => SassNumber::create((int) $weight), $weights),
+            ListSeparator::COMMA
+        );
     }
 
     /**
@@ -245,9 +242,9 @@ class Functions
      * @param array $args
      * @return string|false
      */
-    public function libGetLocalFontUrl($args)
+    public function libGetLocalFontUrl(array $args): Value
     {
-        $args = $this->compileArgs($args);
+        $args = array_map([$this, 'valueToString'], $args);
 
         $name = isset($args[0]) ? trim($args[0], '\'"') : '';
         $weight = isset($args[1]) ? $args[1] : 400;
@@ -257,10 +254,10 @@ class Functions
         if (isset($this->fonts[$name][$weight]) && !isset($this->usedFonts[$weightName])) {
             $this->usedFonts[$weightName] = true;
 
-            return $this->fonts[$name][$weight];
+            return new SassString($this->fonts[$name][$weight], false);
         }
 
-        return false;
+        return SassBoolean::create(false);
     }
 
     /**
@@ -335,12 +332,21 @@ class Functions
      * @param array $args
      * @return mixed
      */
-    protected function compileArgs($args)
+    protected function expandArguments(array $args): array
     {
-        foreach ($args as &$arg) {
-            $arg = $this->compiler->compileValue($arg);
+        if (isset($args[0]) && $args[0] instanceof SassArgumentList) {
+            $args = $args[0]->asList();
         }
 
-        return $args;
+        return array_map([$this, 'valueToString'], $args);
+    }
+
+    protected function valueToString(Value $value): string
+    {
+        if ($value instanceof SassString) {
+            return $value->getText();
+        }
+
+        return trim($value->toCssString(), '\'"');
     }
 }

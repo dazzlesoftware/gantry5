@@ -453,7 +453,7 @@ $border-width: 1px;
     margin: 0 0.35rem;
     width: 14px;
     height: 14px;
-    background: transparentize(set-color($base-background), 70%);
+    background: transparentize(set-color($base-background), 0.7);
 
     &.flipster__nav__item--current {
         background: set-color($base-background);

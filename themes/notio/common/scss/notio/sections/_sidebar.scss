@@ -47,11 +47,11 @@
     .g-owlcarousel-video-carousel {
         @include breakpoint(no-mobile) {
             .owl-stage-outer {
-                margin-right: -(($content-margin + $content-padding) - calc(2px));
+                margin-right: calc(2px - #{$content-margin + $content-padding});
 
                 .dir-rtl & {
                     margin-right: auto;
-                    margin-left: -(($content-margin + $content-padding) - calc(2px))
+                    margin-left: calc(2px - #{$content-margin + $content-padding});
                 }
             }
         }

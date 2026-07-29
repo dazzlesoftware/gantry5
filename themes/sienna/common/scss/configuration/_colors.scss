@@ -36,6 +36,10 @@ $header-background:				#ffffff !default;
 $header-text-color:				#666666 !default;
 $header-background-image:		false !default;
 
+// Navigation
+$navigation-background:			$header-background !default;
+$navigation-text-color:			$header-text-color !default;
+
 // Above
 $above-background:				#ffffff !default;
 $above-text-color:				#666666 !default;

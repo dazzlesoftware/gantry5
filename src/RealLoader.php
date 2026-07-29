@@ -103,27 +103,8 @@ abstract class RealLoader
             throw new \LogicException('Please run composer in Gantry 5 Library!');
         }
 
-        // Load compat libraries only on platforms that still rely on the legacy stack.
-        // WordPress ships with modern dependencies in vendor/, so prefer those there.
-        $useCompatLibraries = GANTRY5_PLATFORM !== 'wordpress' && \PHP_VERSION_ID >= 70205 && GANTRY5_PLATFORM !== 'grav';
-        if ($useCompatLibraries) {
-            /** @var ClassLoader $loader */
-            $loader = require "{$lib}/compat/vendor/autoload.php";
-            $loader->unregister();
-        }
-
         /** @var ClassLoader $loader */
         $loader = require $autoload;
-
-        // On legacy platforms, map Pimple/Twig to compat vendor.
-        if ($useCompatLibraries) {
-            $loader->setPsr4('Twig\\', "{$lib}/compat/vendor/twig/twig/src");
-            $loader->set('Pimple', "{$lib}/compat/vendor/pimple/pimple/src");
-        }
-
-        // Skip registering SCSS compiler until it's needed.
-        $loader->setPsr4('ScssPhp\\ScssPhp\\', '');
-        $loader->setPsr4('Leafo\\ScssPhp\\', '');
 
         // Support for development environments.
         if (file_exists($lib . '/src/platforms')) {

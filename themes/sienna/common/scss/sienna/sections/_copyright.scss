@@ -3,7 +3,7 @@
     color: $copyright-text-color;
 
     .g-bordered-spacer {
-        border: 1px solid transparentize($copyright-text-color, 85%);
+        border: 1px solid transparentize($copyright-text-color, 0.85);
         margin: 0 $content-padding + $content-margin;
     }
 }

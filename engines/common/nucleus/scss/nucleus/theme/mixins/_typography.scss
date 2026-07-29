@@ -3,7 +3,7 @@
 	// Import once Google fonts.
 	$url: get-font-url($font-list);
 	@if $url {
-		@import $url;
+		@import url($url);
 	}
 	// Import once all local fonts in the list.
 	@each $font in get-local-fonts($font-list) {

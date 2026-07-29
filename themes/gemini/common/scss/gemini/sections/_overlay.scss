@@ -1,5 +1,5 @@
 #g-container-overlay {
-    background: fade-out($overlay-background, 1 - number($overlay-opacity));
+    background: fade-out($overlay-background, 1 - $overlay-opacity);
     color: $overlay-text-color;
     @extend .section-paddings;
 
@@ -12,7 +12,7 @@
     	background-size: cover;
     	background-repeat: no-repeat;
 		&:before {
-		   	background: fade-out($overlay-background, 1 - number($overlay-opacity));
+            background: fade-out($overlay-background, 1 - $overlay-opacity);
 		   	position: absolute;
 		   	content: "";
 		   	top: 0;

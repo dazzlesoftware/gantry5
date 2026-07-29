@@ -238,7 +238,7 @@
 // Dropdown Side Offsets
 @include dropdown-offset-x(3px, left);
 
-.dir-rtl & {
+.dir-rtl {
     @include dropdown-offset-x(3px, right);
 }
 
