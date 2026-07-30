@@ -1,7 +1,11 @@
 name: Video
-description: Embed videos from YouTube, Vimeo, Local, or External URL.
+description: Embed videos from YouTube, Vimeo, a local file, or an external URL.
 type: particle
-icon: fa-video-camera
+icon: fa-video
+
+configuration:
+  caching:
+    type: static
 
 form:
   overrideable: false
@@ -9,13 +13,19 @@ form:
     enabled:
       type: input.checkbox
       label: Enabled
-      description: Globally enable particle.
+      description: Globally enable the particle.
       default: true
-          
+
     class:
       type: input.selectize
       label: CSS Classes
       description: CSS class name for the particle.
+
+    headertext:
+      type: input.text
+      label: Header Text
+      description: Customize the optional header text.
+      placeholder: Enter header text
 
     title:
       type: input.text
@@ -23,50 +33,77 @@ form:
       description: Customize the title text.
       placeholder: Enter title
 
+    description:
+      type: textarea.textarea
+      label: Description
+      description: Customize the optional description text.
+      placeholder: Enter description text
+
+    columns:
+      type: select.selectize
+      label: Columns
+      description: Select the number of columns.
+      default: 1
+      options:
+        1: 1 column
+        2: 2 columns
+        3: 3 columns
+        4: 4 columns
+
     items:
       type: collection.list
       array: true
-      label: Blocks
-      description: Create each item to appear in the content row.
+      label: Videos
+      description: Add each video to display.
       value: title
       ajax: true
       fields:
         .caption:
           type: input.text
           label: Caption
-          description: Video caption
+          description: Enter the video caption.
+
+        .caption2:
+          type: input.text
+          label: Secondary Caption
+          description: Enter an optional secondary video caption.
+
         .source:
           type: select.selectize
           label: Source
-          description: Video Source
-          placeholder: 'Select...'
+          description: Select the video source.
+          placeholder: Select...
           default: local
           options:
-              preset: Slideshow Preset
-              vimeo: Vimeo Url
-              youtube: YouTube Url
-              local: Local Video
-              external: External Url
+            preset: Slideshow Preset
+            vimeo: Vimeo URL
+            youtube: YouTube URL
+            local: Local Video
+            external: External URL
+
         .video:
           type: input.text
-          label: Url
-          description: URL from YouTube, Vimeo, or External
+          label: URL
+          description: Enter a YouTube, Vimeo, or external video URL.
+
         .local:
           type: collection.list
           array: true
           label: Local Video Sources
-          description: Serve your video in multiple formats.
+          description: Serve the local video in multiple formats.
           value: title
           ajax: true
           fields:
             .file:
               type: input.videopicker
               label: Local Video
-              description: Select desired video.
+              description: Select the video file.
+
         .posterimage:
           type: input.imagepicker
           label: Poster Image
-          description: Select the poster image for Local or External Video. 
+          description: Select the poster image for a local or external video.
+
         .loop:
           type: select.select
           label: Loop
@@ -75,6 +112,7 @@ form:
           options:
             enabled: Enable
             disabled: Disable
+
         .autoplay:
           type: select.select
           label: Autoplay
@@ -83,39 +121,45 @@ form:
           options:
             enabled: Enable
             disabled: Disable
+
         .controls:
           type: select.select
-          label: Show Controls (YouTube, Local, and External)
-          description: Enable or disable play bar (applies to YouTube, Local, and External videos).
+          label: Show Controls
+          description: Show controls for YouTube, local, and external videos.
           default: disabled
           options:
             enabled: Enable
             disabled: Disable
+
         .info:
           type: select.select
           label: Show Info (YouTube)
-          description: Enable or disable top info bar (applies to YouTube only).
+          description: Show the YouTube information bar when supported.
           default: disabled
           options:
             enabled: Enable
             disabled: Disable
+
         .related:
           type: select.select
           label: Related Videos (YouTube)
-          description: Enable or disable displaying related videos when Youtube video is paused or has ended.
+          description: Display related videos when a YouTube video is paused or ends.
           default: disabled
           options:
             enabled: Enable
-            disabled: Disable            
+            disabled: Disable
+
         .muted:
           type: select.select
           label: Muted
-          description: Videos must be Muted in order for Autoplay to work in Chrome.
+          description: Autoplay generally requires the video to be muted.
           default: enabled
           options:
             enabled: Enable
-            disabled: Disable  
+            disabled: Disable
+
         .start:
           type: input.number
           label: Start Time (YouTube)
-          description: Determine start time of YouTube video (in seconds).                          
+          description: Set the YouTube start time in seconds.
+          min: 0

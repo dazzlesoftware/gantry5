@@ -1,0 +1,107 @@
+.g-video-container {
+    .g-video {
+        position: relative;
+        height: 0;
+        max-width: 100%;
+        padding-bottom: 56.25%;
+        overflow: hidden;
+        background: $black;
+
+        iframe,
+        object,
+        embed,
+        video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .g-video-inner {
+        box-sizing: border-box;
+    }
+
+    @for $columns from 1 through 4 {
+        &.g-video-container-columns-#{$columns} {
+            display: flex;
+            flex-wrap: wrap;
+
+            .g-video-inner {
+                width: calc(100% / #{$columns});
+                padding-right: if($columns == 1, 0, $content-padding);
+
+                @include breakpoint(tablet-range) {
+                    width: if($columns > 2, 50%, calc(100% / #{$columns}));
+                }
+
+                @include breakpoint(mobile-only) {
+                    width: 100%;
+                    padding-right: 0;
+                    margin-bottom: $content-margin;
+                }
+            }
+        }
+    }
+
+    .g-videolocal-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 4rem;
+        height: 4rem;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: rgba($black, 0.7);
+        cursor: pointer;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.2s ease;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 54%;
+            width: 0;
+            height: 0;
+            border-top: 0.7rem solid transparent;
+            border-bottom: 0.7rem solid transparent;
+            border-left: 1rem solid $white;
+            content: "";
+            transform: translate(-50%, -50%);
+        }
+
+        &.pause {
+            opacity: 0;
+
+            &::before {
+                left: 50%;
+                width: 0.9rem;
+                height: 1.4rem;
+                border: 0 solid $white;
+                border-width: 0 0.3rem;
+            }
+        }
+
+        &:focus-visible {
+            outline: 0.2rem solid $white;
+            outline-offset: 0.2rem;
+        }
+    }
+
+    .g-video:hover .g-videolocal-play.pause,
+    .g-videolocal-play.pause:focus-visible {
+        opacity: 1;
+    }
+
+    .g-video-nocontrols::-webkit-media-controls {
+        display: none !important;
+    }
+}
+
+.g-video-caption,
+.g-video-caption2 {
+    padding: $content-padding 0;
+    text-align: center;
+}

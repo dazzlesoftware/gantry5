@@ -1,0 +1,1236 @@
+============================================================
+Running Gantry package build: wordpress-dev
+WARNING: Existing files in dist will be replaced.
+============================================================
+[00;36mBuildfile: G:\GitHub\gantry5\bin\builder\build.xml[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > preflight:
+[0m
+[00;36m     [echo] Checking if we can run all build options...[0m
+[00;36m   [delete] Deleting directory G:\g5build\tmp[0m
+[00;36m   [delete] Deleting directory G:\g5build\package[0m
+[00;36m   [delete] Deleting directory G:\GitHub\gantry5\dist[0m
+[00;32m
+gantry5 > info:
+[0m
+[00;36m     [echo] Phing Version:   Phing 3.1.2[0m
+[00;36m     [echo] Project:         gantry5[0m
+[00;36m     [echo] XML Version:     5.6.2-dev-c872b875f[0m
+[00;36m     [echo] XML Author:      Dazzle Software, LLC[0m
+[00;36m     [echo] XML Copyright:   Copyright (C) 2026 Dazzle Software, LLC[0m
+[00;36m     [echo] XML License:     https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later[0m
+[00;36m     [echo] XML Description: PKG_GANTRY5_DESCRIPTION[0m
+[00;36m     [echo] Date:            ${TODAY}[0m
+[00;32m
+gantry5 > mkdir:
+[0m
+[00;36m     [echo] Making directory structure...[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\packages[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\templates[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\themes[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\wordpress[0m
+[00;36m    [mkdir] Created dir: G:\g5build\package[0m
+[00;36m    [mkdir] Created dir: G:\g5build\package\distribution[0m
+[00;36m    [mkdir] Created dir: G:\g5build\package\distribution\packages[0m
+[00;36m    [mkdir] Created dir: G:\GitHub\gantry5\dist[0m
+[00;32m
+gantry5 > wordpress:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > cleanup:
+[0m
+[00;36m   [delete] Deleting directory G:\g5build\tmp[0m
+[00;36m   [delete] Deleting directory G:\g5build\package[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > mkdir:
+[0m
+[00;36m     [echo] Making directory structure...[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\packages[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\templates[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\themes[0m
+[00;36m    [mkdir] Created dir: G:\g5build\tmp\wordpress[0m
+[00;36m    [mkdir] Created dir: G:\g5build\package[0m
+[00;36m    [mkdir] Created dir: G:\g5build\package\distribution[0m
+[00;36m    [mkdir] Created dir: G:\g5build\package\distribution\packages[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-installer:
+[0m
+[00;36m     [echo] Building Installer..[0m
+[00;36m     [copy] Copying 1 file to G:\g5build\package\distribution[0m
+[00;32m
+gantry5 > build-wordpress-plugin:
+[0m
+[00;36m     [echo] Building Plugin...[0m
+[00;36m     [copy] Created 20 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5[0m
+[00;36m     [copy] Copying 38 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5[0m
+[00;36m     [copy] Created 49 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5\admin[0m
+[00;36m     [copy] Copying 260 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\admin[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-library:
+[0m
+[00;36m     [echo] Building Library..[0m
+[00;36m     [copy] Copying 3 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\src[0m
+[00;36m     [copy] Created 47 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5\src\classes[0m
+[00;36m     [copy] Copying 149 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\src\classes[0m
+[00;36m     [copy] Created 7 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5\src[0m
+[00;36m     [copy] Copying 40 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\src[0m
+[00;36m     [copy] Created 347 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5\vendor[0m
+[00;36m     [copy] Copying 1920 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\vendor[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-media:
+[0m
+[00;36m     [echo] Building Media (assets/nucleus)..[0m
+[00;36m     [copy] Created 7 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5\assets[0m
+[00;36m     [copy] Copying 54 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\assets[0m
+[00;36m     [copy] Created 40 empty directories in G:\g5build\tmp\wordpress\packages\plugin\gantry5\engines[0m
+[00;36m     [copy] Copying 234 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5\engines[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\packages\plugin\gantry5[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-pkg_gantry5_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-installer:
+[0m
+[00;36m     [echo] Building Installer..[0m
+[00;36m     [copy] Copying 1 file to G:\g5build\package\distribution[0m
+[00;32m
+gantry5 > build-wordpress-themes:
+[0m
+[00;36m     [echo] Building Themes..[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme acronym..[0m
+[00;36m     [copy] Created 51 empty directories in G:\g5build\tmp\wordpress\themes\acronym\g5_acronym[0m
+[00;36m     [copy] Copying 276 files to G:\g5build\tmp\wordpress\themes\acronym\g5_acronym[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\acronym\g5_acronym[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\acronym\g5_acronym[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\acronym\g5_acronym[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_acronym_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme akuatik..[0m
+[00;36m     [copy] Created 42 empty directories in G:\g5build\tmp\wordpress\themes\akuatik\g5_akuatik[0m
+[00;36m     [copy] Copying 270 files to G:\g5build\tmp\wordpress\themes\akuatik\g5_akuatik[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\akuatik\g5_akuatik[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\akuatik\g5_akuatik[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\akuatik\g5_akuatik[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_akuatik_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme ambrosia..[0m
+[00;36m     [copy] Created 46 empty directories in G:\g5build\tmp\wordpress\themes\ambrosia\g5_ambrosia[0m
+[00;36m     [copy] Copying 240 files to G:\g5build\tmp\wordpress\themes\ambrosia\g5_ambrosia[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\ambrosia\g5_ambrosia[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\ambrosia\g5_ambrosia[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\ambrosia\g5_ambrosia[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_ambrosia_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme anacron..[0m
+[00;36m     [copy] Created 81 empty directories in G:\g5build\tmp\wordpress\themes\anacron\g5_anacron[0m
+[00;36m     [copy] Copying 310 files to G:\g5build\tmp\wordpress\themes\anacron\g5_anacron[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\anacron\g5_anacron[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\anacron\g5_anacron[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\anacron\g5_anacron[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_anacron_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme antares..[0m
+[00;36m     [copy] Created 49 empty directories in G:\g5build\tmp\wordpress\themes\antares\g5_antares[0m
+[00;36m     [copy] Copying 268 files to G:\g5build\tmp\wordpress\themes\antares\g5_antares[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\antares\g5_antares[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\antares\g5_antares[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\antares\g5_antares[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_antares_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme aphrodite..[0m
+[00;36m     [copy] Created 54 empty directories in G:\g5build\tmp\wordpress\themes\aphrodite\g5_aphrodite[0m
+[00;36m     [copy] Copying 214 files to G:\g5build\tmp\wordpress\themes\aphrodite\g5_aphrodite[0m
+[00;36m     [copy] Created 16 empty directories in G:\g5build\tmp\wordpress\themes\aphrodite\g5_aphrodite[0m
+[00;36m     [copy] Copying 91 files to G:\g5build\tmp\wordpress\themes\aphrodite\g5_aphrodite[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\aphrodite\g5_aphrodite[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_aphrodite_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme audacity..[0m
+[00;36m     [copy] Created 48 empty directories in G:\g5build\tmp\wordpress\themes\audacity\g5_audacity[0m
+[00;36m     [copy] Copying 289 files to G:\g5build\tmp\wordpress\themes\audacity\g5_audacity[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\audacity\g5_audacity[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\audacity\g5_audacity[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\audacity\g5_audacity[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_audacity_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme aurora..[0m
+[00;36m     [copy] Created 50 empty directories in G:\g5build\tmp\wordpress\themes\aurora\g5_aurora[0m
+[00;36m     [copy] Copying 257 files to G:\g5build\tmp\wordpress\themes\aurora\g5_aurora[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\aurora\g5_aurora[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\aurora\g5_aurora[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\aurora\g5_aurora[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_aurora_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme base..[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme calla..[0m
+[00;36m     [copy] Created 41 empty directories in G:\g5build\tmp\wordpress\themes\calla\g5_calla[0m
+[00;36m     [copy] Copying 297 files to G:\g5build\tmp\wordpress\themes\calla\g5_calla[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\calla\g5_calla[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\calla\g5_calla[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\calla\g5_calla[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_calla_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme callisto..[0m
+[00;36m     [copy] Created 50 empty directories in G:\g5build\tmp\wordpress\themes\callisto\g5_callisto[0m
+[00;36m     [copy] Copying 249 files to G:\g5build\tmp\wordpress\themes\callisto\g5_callisto[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\callisto\g5_callisto[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\callisto\g5_callisto[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\callisto\g5_callisto[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_callisto_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme chimera..[0m
+[00;36m     [copy] Created 43 empty directories in G:\g5build\tmp\wordpress\themes\chimera\g5_chimera[0m
+[00;36m     [copy] Copying 291 files to G:\g5build\tmp\wordpress\themes\chimera\g5_chimera[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\chimera\g5_chimera[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\chimera\g5_chimera[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\chimera\g5_chimera[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_chimera_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme citadel..[0m
+[00;36m     [copy] Created 80 empty directories in G:\g5build\tmp\wordpress\themes\citadel\g5_citadel[0m
+[00;36m     [copy] Copying 338 files to G:\g5build\tmp\wordpress\themes\citadel\g5_citadel[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\citadel\g5_citadel[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\citadel\g5_citadel[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\citadel\g5_citadel[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_citadel_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme clarity..[0m
+[00;36m     [copy] Created 43 empty directories in G:\g5build\tmp\wordpress\themes\clarity\g5_clarity[0m
+[00;36m     [copy] Copying 274 files to G:\g5build\tmp\wordpress\themes\clarity\g5_clarity[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\clarity\g5_clarity[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\clarity\g5_clarity[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\clarity\g5_clarity[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_clarity_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme denali..[0m
+[00;36m     [copy] Created 45 empty directories in G:\g5build\tmp\wordpress\themes\denali\g5_denali[0m
+[00;36m     [copy] Copying 297 files to G:\g5build\tmp\wordpress\themes\denali\g5_denali[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\denali\g5_denali[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\denali\g5_denali[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\denali\g5_denali[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_denali_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme elixir..[0m
+[00;36m     [copy] Created 40 empty directories in G:\g5build\tmp\wordpress\themes\elixir\g5_elixir[0m
+[00;36m     [copy] Copying 255 files to G:\g5build\tmp\wordpress\themes\elixir\g5_elixir[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\elixir\g5_elixir[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\elixir\g5_elixir[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\elixir\g5_elixir[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_elixir_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme epsilon..[0m
+[00;36m     [copy] Created 44 empty directories in G:\g5build\tmp\wordpress\themes\epsilon\g5_epsilon[0m
+[00;36m     [copy] Copying 269 files to G:\g5build\tmp\wordpress\themes\epsilon\g5_epsilon[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\epsilon\g5_epsilon[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\epsilon\g5_epsilon[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\epsilon\g5_epsilon[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_epsilon_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme ethereal..[0m
+[00;36m     [copy] Created 47 empty directories in G:\g5build\tmp\wordpress\themes\ethereal\g5_ethereal[0m
+[00;36m     [copy] Copying 262 files to G:\g5build\tmp\wordpress\themes\ethereal\g5_ethereal[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\ethereal\g5_ethereal[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\ethereal\g5_ethereal[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\ethereal\g5_ethereal[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_ethereal_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme fluent..[0m
+[00;36m     [copy] Created 49 empty directories in G:\g5build\tmp\wordpress\themes\fluent\g5_fluent[0m
+[00;36m     [copy] Copying 253 files to G:\g5build\tmp\wordpress\themes\fluent\g5_fluent[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\fluent\g5_fluent[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\fluent\g5_fluent[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\fluent\g5_fluent[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_fluent_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme flux..[0m
+[00;36m     [copy] Created 56 empty directories in G:\g5build\tmp\wordpress\themes\flux\g5_flux[0m
+[00;36m     [copy] Copying 285 files to G:\g5build\tmp\wordpress\themes\flux\g5_flux[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\flux\g5_flux[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\flux\g5_flux[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\flux\g5_flux[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_flux_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme galatea..[0m
+[00;36m     [copy] Created 64 empty directories in G:\g5build\tmp\wordpress\themes\galatea\g5_galatea[0m
+[00;36m     [copy] Copying 306 files to G:\g5build\tmp\wordpress\themes\galatea\g5_galatea[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\galatea\g5_galatea[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\galatea\g5_galatea[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\galatea\g5_galatea[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_galatea_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme gemini..[0m
+[00;36m     [copy] Created 54 empty directories in G:\g5build\tmp\wordpress\themes\gemini\g5_gemini[0m
+[00;36m     [copy] Copying 277 files to G:\g5build\tmp\wordpress\themes\gemini\g5_gemini[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\gemini\g5_gemini[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\gemini\g5_gemini[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\gemini\g5_gemini[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_gemini_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme hadron..[0m
+[00;36m     [copy] Created 50 empty directories in G:\g5build\tmp\wordpress\themes\hadron\g5_hadron[0m
+[00;36m     [copy] Copying 256 files to G:\g5build\tmp\wordpress\themes\hadron\g5_hadron[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\hadron\g5_hadron[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\hadron\g5_hadron[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\hadron\g5_hadron[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_hadron_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme helium..[0m
+[00;36m     [copy] Created 54 empty directories in G:\g5build\tmp\wordpress\themes\helium\g5_helium[0m
+[00;36m     [copy] Copying 214 files to G:\g5build\tmp\wordpress\themes\helium\g5_helium[0m
+[00;36m     [copy] Created 16 empty directories in G:\g5build\tmp\wordpress\themes\helium\g5_helium[0m
+[00;36m     [copy] Copying 91 files to G:\g5build\tmp\wordpress\themes\helium\g5_helium[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\helium\g5_helium[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_helium_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme horizon..[0m
+[00;36m     [copy] Created 41 empty directories in G:\g5build\tmp\wordpress\themes\horizon\g5_horizon[0m
+[00;36m     [copy] Copying 306 files to G:\g5build\tmp\wordpress\themes\horizon\g5_horizon[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\horizon\g5_horizon[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\horizon\g5_horizon[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\horizon\g5_horizon[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_horizon_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme hydrogen..[0m
+[00;36m     [copy] Created 20 empty directories in G:\g5build\tmp\wordpress\themes\hydrogen\g5_hydrogen[0m
+[00;36m     [copy] Copying 79 files to G:\g5build\tmp\wordpress\themes\hydrogen\g5_hydrogen[0m
+[00;36m     [copy] Created 15 empty directories in G:\g5build\tmp\wordpress\themes\hydrogen\g5_hydrogen[0m
+[00;36m     [copy] Copying 83 files to G:\g5build\tmp\wordpress\themes\hydrogen\g5_hydrogen[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\hydrogen\g5_hydrogen[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_hydrogen_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme hydrogen-demo..[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme interstellar..[0m
+[00;36m     [copy] Created 56 empty directories in G:\g5build\tmp\wordpress\themes\interstellar\g5_interstellar[0m
+[00;36m     [copy] Copying 280 files to G:\g5build\tmp\wordpress\themes\interstellar\g5_interstellar[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\interstellar\g5_interstellar[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\interstellar\g5_interstellar[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\interstellar\g5_interstellar[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_interstellar_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme isotope..[0m
+[00;36m     [copy] Created 44 empty directories in G:\g5build\tmp\wordpress\themes\isotope\g5_isotope[0m
+[00;36m     [copy] Copying 249 files to G:\g5build\tmp\wordpress\themes\isotope\g5_isotope[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\isotope\g5_isotope[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\isotope\g5_isotope[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\isotope\g5_isotope[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_isotope_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme koleti..[0m
+[00;36m     [copy] Created 44 empty directories in G:\g5build\tmp\wordpress\themes\koleti\g5_koleti[0m
+[00;36m     [copy] Copying 305 files to G:\g5build\tmp\wordpress\themes\koleti\g5_koleti[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\koleti\g5_koleti[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\koleti\g5_koleti[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\koleti\g5_koleti[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_koleti_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme kraken..[0m
+[00;36m     [copy] Created 35 empty directories in G:\g5build\tmp\wordpress\themes\kraken\g5_kraken[0m
+[00;36m     [copy] Copying 183 files to G:\g5build\tmp\wordpress\themes\kraken\g5_kraken[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\kraken\g5_kraken[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\kraken\g5_kraken[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\kraken\g5_kraken[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_kraken_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme lexicon..[0m
+[00;36m     [copy] Created 58 empty directories in G:\g5build\tmp\wordpress\themes\lexicon\g5_lexicon[0m
+[00;36m     [copy] Copying 296 files to G:\g5build\tmp\wordpress\themes\lexicon\g5_lexicon[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\lexicon\g5_lexicon[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\lexicon\g5_lexicon[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\lexicon\g5_lexicon[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_lexicon_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme manticore..[0m
+[00;36m     [copy] Created 41 empty directories in G:\g5build\tmp\wordpress\themes\manticore\g5_manticore[0m
+[00;36m     [copy] Copying 295 files to G:\g5build\tmp\wordpress\themes\manticore\g5_manticore[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\manticore\g5_manticore[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\manticore\g5_manticore[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\manticore\g5_manticore[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_manticore_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme myriad..[0m
+[00;36m     [copy] Created 57 empty directories in G:\g5build\tmp\wordpress\themes\myriad\g5_myriad[0m
+[00;36m     [copy] Copying 302 files to G:\g5build\tmp\wordpress\themes\myriad\g5_myriad[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\myriad\g5_myriad[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\myriad\g5_myriad[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\myriad\g5_myriad[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_myriad_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme notio..[0m
+[00;36m     [copy] Created 56 empty directories in G:\g5build\tmp\wordpress\themes\notio\g5_notio[0m
+[00;36m     [copy] Copying 323 files to G:\g5build\tmp\wordpress\themes\notio\g5_notio[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\notio\g5_notio[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\notio\g5_notio[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\notio\g5_notio[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_notio_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme orion..[0m
+[00;36m     [copy] Created 46 empty directories in G:\g5build\tmp\wordpress\themes\orion\g5_orion[0m
+[00;36m     [copy] Copying 286 files to G:\g5build\tmp\wordpress\themes\orion\g5_orion[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\orion\g5_orion[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\orion\g5_orion[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\orion\g5_orion[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_orion_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme phoenix..[0m
+[00;36m     [copy] Created 44 empty directories in G:\g5build\tmp\wordpress\themes\phoenix\g5_phoenix[0m
+[00;36m     [copy] Copying 336 files to G:\g5build\tmp\wordpress\themes\phoenix\g5_phoenix[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\phoenix\g5_phoenix[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\phoenix\g5_phoenix[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\phoenix\g5_phoenix[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_phoenix_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme photon..[0m
+[00;36m     [copy] Created 57 empty directories in G:\g5build\tmp\wordpress\themes\photon\g5_photon[0m
+[00;36m     [copy] Copying 284 files to G:\g5build\tmp\wordpress\themes\photon\g5_photon[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\photon\g5_photon[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\photon\g5_photon[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\photon\g5_photon[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_photon_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme protean..[0m
+[00;36m     [copy] Created 57 empty directories in G:\g5build\tmp\wordpress\themes\protean\g5_protean[0m
+[00;36m     [copy] Copying 285 files to G:\g5build\tmp\wordpress\themes\protean\g5_protean[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\protean\g5_protean[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\protean\g5_protean[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\protean\g5_protean[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_protean_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme reiko..[0m
+[00;36m     [copy] Created 46 empty directories in G:\g5build\tmp\wordpress\themes\reiko\g5_reiko[0m
+[00;36m     [copy] Copying 270 files to G:\g5build\tmp\wordpress\themes\reiko\g5_reiko[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\reiko\g5_reiko[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\reiko\g5_reiko[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\reiko\g5_reiko[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_reiko_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme remnant..[0m
+[00;36m     [copy] Created 60 empty directories in G:\g5build\tmp\wordpress\themes\remnant\g5_remnant[0m
+[00;36m     [copy] Copying 302 files to G:\g5build\tmp\wordpress\themes\remnant\g5_remnant[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\remnant\g5_remnant[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\remnant\g5_remnant[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\remnant\g5_remnant[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_remnant_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme requiem..[0m
+[00;36m     [copy] Created 39 empty directories in G:\g5build\tmp\wordpress\themes\requiem\g5_requiem[0m
+[00;36m     [copy] Copying 208 files to G:\g5build\tmp\wordpress\themes\requiem\g5_requiem[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\requiem\g5_requiem[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\requiem\g5_requiem[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\requiem\g5_requiem[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_requiem_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme salient..[0m
+[00;36m     [copy] Created 48 empty directories in G:\g5build\tmp\wordpress\themes\salient\g5_salient[0m
+[00;36m     [copy] Copying 232 files to G:\g5build\tmp\wordpress\themes\salient\g5_salient[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\salient\g5_salient[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\salient\g5_salient[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\salient\g5_salient[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_salient_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme sienna..[0m
+[00;36m     [copy] Created 69 empty directories in G:\g5build\tmp\wordpress\themes\sienna\g5_sienna[0m
+[00;36m     [copy] Copying 317 files to G:\g5build\tmp\wordpress\themes\sienna\g5_sienna[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\sienna\g5_sienna[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\sienna\g5_sienna[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\sienna\g5_sienna[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_sienna_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme studius..[0m
+[00;36m     [copy] Created 43 empty directories in G:\g5build\tmp\wordpress\themes\studius\g5_studius[0m
+[00;36m     [copy] Copying 337 files to G:\g5build\tmp\wordpress\themes\studius\g5_studius[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\studius\g5_studius[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\studius\g5_studius[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\studius\g5_studius[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_studius_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme supra..[0m
+[00;36m     [copy] Created 62 empty directories in G:\g5build\tmp\wordpress\themes\supra\g5_supra[0m
+[00;36m     [copy] Copying 314 files to G:\g5build\tmp\wordpress\themes\supra\g5_supra[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\supra\g5_supra[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\supra\g5_supra[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\supra\g5_supra[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_supra_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme topaz..[0m
+[00;36m     [copy] Created 57 empty directories in G:\g5build\tmp\wordpress\themes\topaz\g5_topaz[0m
+[00;36m     [copy] Copying 267 files to G:\g5build\tmp\wordpress\themes\topaz\g5_topaz[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\topaz\g5_topaz[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\topaz\g5_topaz[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\topaz\g5_topaz[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_topaz_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme vermilion..[0m
+[00;36m     [copy] Created 61 empty directories in G:\g5build\tmp\wordpress\themes\vermilion\g5_vermilion[0m
+[00;36m     [copy] Copying 293 files to G:\g5build\tmp\wordpress\themes\vermilion\g5_vermilion[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\vermilion\g5_vermilion[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\vermilion\g5_vermilion[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\vermilion\g5_vermilion[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_vermilion_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme versla..[0m
+[00;36m     [copy] Created 51 empty directories in G:\g5build\tmp\wordpress\themes\versla\g5_versla[0m
+[00;36m     [copy] Copying 280 files to G:\g5build\tmp\wordpress\themes\versla\g5_versla[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\versla\g5_versla[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\versla\g5_versla[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\versla\g5_versla[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_versla_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme xenon..[0m
+[00;36m     [copy] Created 44 empty directories in G:\g5build\tmp\wordpress\themes\xenon\g5_xenon[0m
+[00;36m     [copy] Copying 241 files to G:\g5build\tmp\wordpress\themes\xenon\g5_xenon[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\xenon\g5_xenon[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\xenon\g5_xenon[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\xenon\g5_xenon[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_xenon_develop.zip[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > build-wordpress-theme:
+[0m
+[00;36m     [echo] Building Theme zenith..[0m
+[00;36m     [copy] Created 58 empty directories in G:\g5build\tmp\wordpress\themes\zenith\g5_zenith[0m
+[00;36m     [copy] Copying 337 files to G:\g5build\tmp\wordpress\themes\zenith\g5_zenith[0m
+[00;36m     [copy] Created 13 empty directories in G:\g5build\tmp\wordpress\themes\zenith\g5_zenith[0m
+[00;36m     [copy] Copying 88 files to G:\g5build\tmp\wordpress\themes\zenith\g5_zenith[0m
+[00;36m     [copy] Copying 2 files to G:\g5build\tmp\wordpress\themes\zenith\g5_zenith[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > checksum:
+[0m
+[00;36m [property] Loading G:\GitHub\gantry5\bin\builder\build.ini[0m
+[00;36m[xmlproperty] Loading G:\GitHub\gantry5\bin\builder\..\..\platforms\joomla\pkg_gantry5.xml[0m
+[00;32m
+gantry5 > archive:
+[0m
+[00;36m      [zip] Building zip: G:\GitHub\gantry5\dist\wordpress-tpl_g5_zenith_develop.zip[0m
+[00;32m
+gantry5 > create-map:
+[0m
+[00;32m
+gantry5 > cleanup:
+[0m
+[00;36m   [delete] Deleting directory G:\g5build\tmp[0m
+[00;36m   [delete] Deleting directory G:\g5build\package[0m
+[00;32m
+gantry5 > postflight:
+[0m
+[00;36m     [echo] Congratulations, build finished without error![0m
+[00;32m
+gantry5 > wordpress-dev:
+[0m
+[00;32m
+BUILD FINISHED
+
+Total time: 2 minutes  42.83 seconds
+[0m
+
+Gantry package build completed successfully.
+Packages are available in: G:\GitHub\gantry5\dist

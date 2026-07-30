@@ -7,7 +7,7 @@
 {% assets with { priority: 10 } %}
     {% block head_stylesheets -%}
         <link rel="stylesheet" href="gantry-engine://css-compiled/nucleus.css" type="text/css"/>
-        {% for scss in gantry.theme.configuration.css.persistent|default(gantry.theme.configuration.css.files) %}
+        {% for scss in gantry.theme.configuration.css.persistent|default(gantry.theme.configuration.css.files|default([])) %}
         <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
     {% endblock -%}
@@ -49,7 +49,7 @@
                 <link rel="stylesheet" href="gantry-assets://css/font-awesome6-pseudo.min.css" type="text/css">
             {% endif %}
         {% endif %}
-        {% for scss in gantry.theme.configuration.css.overrides %}
+        {% for scss in gantry.theme.configuration.css.overrides|default([]) %}
             <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
     {% endblock -%}

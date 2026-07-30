@@ -149,3 +149,12 @@
     }
     color: $menustyle-text-color;
 }
+
+.g-video-inner {
+    display: flex;
+    flex-direction: column;
+
+    .g-video-captions {
+        order: -1;
+    }
+}

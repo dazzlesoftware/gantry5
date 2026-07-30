@@ -1,6 +1,6 @@
 # jQuery Migration Plan
 
-**Audit date:** July 29, 2026  
+**Audit date:** July 30, 2026
 **Project:** Gantry 5 / Genesis  
 **Objective:** Remove jQuery and jQuery UI dependencies from maintained Gantry code and recovered themes, replacing them with modern native JavaScript.
 
@@ -12,13 +12,13 @@ The Gantry administration application no longer imports or calls jQuery directly
 
 | Scope | Physical files | Distinct implementations |
 |---|---:|---:|
-| Theme JavaScript | 719 | 194 |
-| Theme Twig templates | 593 | 286 |
-| **Theme total** | **1,312** | **480** |
+| Theme JavaScript | 673 | 192 |
+| Theme Twig templates | 548 | 281 |
+| **Theme total** | **1,221** | **473** |
 
-All 1,312 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
+All 1,221 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
 
-The original count was 1,579 physical files and 489 distinct implementations. Removing the obsolete RokSprocket trees eliminated 129 physical files and five distinct implementations. Consolidating Simple Counter eliminated another 138 jQuery-dependent theme files and four distinct implementations.
+The original count was 1,579 physical files and 489 distinct implementations. Removing the obsolete RokSprocket trees and consolidating Simple Counter and Video into shared native core particles removed hundreds of duplicated jQuery-dependent theme files.
 
 ### Affected themes
 
@@ -126,7 +126,8 @@ Counts overlap because a file can belong to more than one family.
 | Migration family | Physical files | Distinct variants | Affected themes | Suggested priority |
 |---|---:|---:|---:|---|
 | Simple Counter | 0 | 0 | 0 | Complete |
-| Video | 114 | 15 | 46 | 1 |
+| Video particle | 0 | 0 | 0 | Complete |
+| Video carousel / featured integrations | 23 | 8 | 17 | 3 |
 | Search | 27 | 7 | 27 | 1 |
 | Fixed Header | 30 | 23 | 30 | 1 |
 | Mailchimp / Newsletter | 35 | 12 | 35 | 1 |
@@ -145,7 +146,7 @@ Counts overlap because a file can belong to more than one family.
 
 Continue with behavior that maps cleanly to browser APIs:
 
-- Video: native media events and class manipulation.
+- Video: complete; the shared core particle now uses native media events and class manipulation.
 - Search: native form/input events and `fetch()`.
 - Fixed Header: `IntersectionObserver`, scroll events, and `classList`.
 - Mailchimp/Newsletter: native form submission, validation, and response handling.
@@ -301,7 +302,7 @@ package-build.bat prod
 | JQ-CORE-004 | Remove DebugBar jQuery loading | Not started | DebugBar UI verification |
 | JQ-CORE-005 | Retire platform registration keys | Not started | Core callers removed |
 | JQ-THEME-001 | Consolidate Simple Counter | Complete | Shared native controller in common assets |
-| JQ-THEME-002 | Consolidate Video | Not started | Shared controller pattern |
+| JQ-THEME-002 | Consolidate Video | Complete | Shared native controller in common assets |
 | JQ-THEME-003 | Consolidate Fixed Header | Not started | None |
 | JQ-THEME-004 | Consolidate Search | Not started | JQ-CORE-002 patterns |
 | JQ-THEME-005 | Consolidate Mailchimp/Newsletter | Not started | Native request helper |
@@ -318,4 +319,4 @@ package-build.bat prod
 
 ## 9. Recommended next task
 
-Continue with **JQ-THEME-002: Consolidate Video** to apply the new shared native-controller pattern to another high-volume theme family. **JQ-CORE-001: Replace Lightcase** remains the highest-value core-runtime removal.
+Continue with **JQ-THEME-003: Consolidate Fixed Header** or **JQ-THEME-004: Consolidate Search** using the established shared native-controller pattern. The remaining video-named files belong to Owl Carousel, Featured Videos, and Video Carousel integrations and should be handled with **JQ-THEME-011**. **JQ-CORE-001: Replace Lightcase** remains the highest-value core-runtime removal.

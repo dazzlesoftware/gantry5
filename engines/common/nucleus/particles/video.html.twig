@@ -1,0 +1,118 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <div class="g-video-container g-video-container-columns-{{ particle.columns|default(1) }} {{ particle.class|e }}">
+        {% if particle.headertext %}
+            <div class="g-headertext">{{ particle.headertext|raw }}</div>
+        {% endif %}
+
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+
+        {% if particle.description %}
+            <p class="g-description">{{ particle.description|raw }}</p>
+        {% endif %}
+
+        {% for item in particle.items|default([]) %}
+            <div class="g-video-inner">
+                <div
+                    id="g-{{ id }}-{{ loop.index }}"
+                    class="g-video"
+                    data-g-video-id="g-{{ id }}-{{ loop.index }}"
+                    data-video-controller
+                >
+                    {% if item.source == 'vimeo' %}
+                        {% set vimeo_id = item.video|replace({'https://vimeo.com/ondemand/': '', 'https://vimeo.com/': ''}) %}
+                        <iframe
+                            width="100%"
+                            height="auto"
+                            src="https://player.vimeo.com/video/{{ vimeo_id|e('html_attr') }}?autoplay={{ item.autoplay == 'enabled' ? 1 : 0 }}&amp;loop={{ item.loop == 'enabled' ? 1 : 0 }}&amp;muted={{ item.muted == 'enabled' ? 1 : 0 }}"
+                            title="{{ item.caption|default(particle.title|default('Vimeo video'))|e('html_attr') }}"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    {% endif %}
+
+                    {% if item.source == 'youtube' %}
+                        {% set youtube_id = item.video|replace({'https://www.youtube.com/watch?v=': '', 'http://www.youtube.com/watch?v=': '', 'https://youtu.be/': '', 'http://youtu.be/': ''}) %}
+                        <iframe
+                            width="100%"
+                            height="auto"
+                            src="https://www.youtube.com/embed/{{ youtube_id|e('html_attr') }}?showinfo={{ item.info == 'enabled' ? 1 : 0 }}&amp;autoplay={{ item.autoplay == 'enabled' ? 1 : 0 }}&amp;controls={{ item.controls == 'enabled' ? 1 : 0 }}{% if item.loop == 'enabled' %}&amp;loop=1&amp;playlist={{ youtube_id|e('html_attr') }}{% endif %}&amp;rel={{ item.related == 'enabled' ? 1 : 0 }}&amp;mute={{ item.muted == 'enabled' ? 1 : 0 }}&amp;start={{ item.start|default(0) }}"
+                            title="{{ item.caption|default(particle.title|default('YouTube video'))|e('html_attr') }}"
+                            allow="autoplay; encrypted-media; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    {% endif %}
+
+                    {% if item.source == 'local' %}
+                        <video
+                            {% if item.autoplay == 'enabled' %}autoplay{% endif %}
+                            {% if item.posterimage %}poster="{{ url(item.posterimage)|e }}"{% endif %}
+                            {% if item.loop == 'enabled' %}loop{% endif %}
+                            {% if item.controls == 'enabled' %}controls{% else %}class="g-video-nocontrols"{% endif %}
+                            {% if item.muted == 'enabled' %}muted{% endif %}
+                            playsinline
+                        >
+                            {% for source in item.local|default([]) %}
+                                <source src="{{ url(source.file)|e }}" type="video/{{ source.file|slice(-4)|replace({'.': ''})|e('html_attr') }}">
+                            {% endfor %}
+                        </video>
+                    {% endif %}
+
+                    {% if item.source == 'external' %}
+                        <video
+                            {% if item.autoplay == 'enabled' %}autoplay{% endif %}
+                            {% if item.posterimage %}poster="{{ url(item.posterimage)|e }}"{% endif %}
+                            {% if item.loop == 'enabled' %}loop{% endif %}
+                            {% if item.controls == 'enabled' %}controls{% else %}class="g-video-nocontrols"{% endif %}
+                            {% if item.muted == 'enabled' %}muted{% endif %}
+                            playsinline
+                        >
+                            <source src="{{ item.video|e }}" type="video/{{ item.video|slice(-4)|replace({'.': ''})|e('html_attr') }}">
+                        </video>
+                    {% endif %}
+
+                    {% if item.source == 'preset' %}
+                        {% set preset_video = gantry.theme.presets[gantry.theme.preset].styles.slideshow.video|default(gantry.config.get('styles.slideshow.video')) %}
+                        <video
+                            {% if item.autoplay == 'enabled' %}autoplay{% endif %}
+                            {% if item.loop == 'enabled' %}loop{% endif %}
+                            {% if item.controls == 'enabled' %}controls{% else %}class="g-video-nocontrols"{% endif %}
+                            {% if item.muted == 'enabled' %}muted{% endif %}
+                            playsinline
+                        >
+                            <source src="{{ url(preset_video)|e }}" type="video/{{ preset_video|slice(-4)|replace({'.': ''})|e('html_attr') }}">
+                            <source src="{{ url(preset_video)|replace({'webm': 'mp4'})|e }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+
+                    {% if item.source in ['local', 'external', 'preset'] and item.controls != 'enabled' %}
+                        <div
+                            class="g-videolocal-play{% if item.autoplay == 'enabled' %} pause{% endif %}"
+                            role="button"
+                            tabindex="0"
+                            aria-label="{{ item.autoplay == 'enabled' ? 'Pause video' : 'Play video' }}"
+                        ></div>
+                    {% endif %}
+                </div>
+
+                {% if item.caption or item.caption2 %}
+                    <div class="g-video-captions">
+                        {% if item.caption %}
+                            <div class="g-video-caption">{{ item.caption|raw }}</div>
+                        {% endif %}
+                        {% if item.caption2 %}
+                            <div class="g-video-caption2">{{ item.caption2|raw }}</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/video.js'), 11, 'footer') %}
+{% endblock %}

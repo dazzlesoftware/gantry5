@@ -209,3 +209,10 @@
 
     }
 }
+
+.g-video-inner.is-playing {
+    .g-video-captions {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
