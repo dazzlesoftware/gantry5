@@ -258,6 +258,53 @@ WARN;
     }
 
     /**
+     * Resolve an SCSS import for cache and dependency checks.
+     *
+     * scssphp 2.x resolves imports through the filesystem paths configured in
+     * compileFile(). Gantry still needs this method to detect missing or
+     * changed imports before deciding whether a stylesheet must be rebuilt.
+     *
+     * @param string $url
+     * @return null|string
+     */
+    public function findImport($url)
+    {
+        // Leave plain CSS and external URLs to the browser.
+        if (preg_match('/\.css$|^https?:\/\//', $url)) {
+            return null;
+        }
+
+        return $this->tryImport($url);
+    }
+
+    /**
+     * Search configured SCSS paths for a normal file or Sass partial.
+     *
+     * @param string $url
+     * @return null|string
+     */
+    protected function tryImport($url)
+    {
+        $url = str_replace('\\', '/', $url);
+        $files = [$url, preg_replace('/[^\/]+$/', '_\0', $url)];
+
+        foreach ($this->realPaths as $base) {
+            foreach ($files as $file) {
+                if (!preg_match('/\.scss$/', $file)) {
+                    $file .= '.scss';
+                }
+
+                $filepath = rtrim($base, '/\\') . '/' . $file;
+                if (is_file($filepath)) {
+                    return $filepath;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param bool $encoded
      * @return array
      */
