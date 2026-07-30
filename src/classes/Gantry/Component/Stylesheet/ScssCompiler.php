@@ -169,23 +169,46 @@ class ScssCompiler extends CssCompiler
         }
 
         // Extract map from css and save it as separate file.
-        $pos = strrpos($css, '/*# sourceMappingURL=');
+        $sourceMapMarker = '/*# sourceMappingURL=';
+        $pos = strrpos($css, $sourceMapMarker);
         if ($pos !== false) {
-            $map = json_decode(urldecode(substr($css, $pos + 43, -3)), true);
+            $sourceMapStart = $pos + strlen($sourceMapMarker);
+            $sourceMapEnd = strpos($css, ' */', $sourceMapStart);
+            $sourceMapUrl = $sourceMapEnd !== false
+                ? trim(substr($css, $sourceMapStart, $sourceMapEnd - $sourceMapStart))
+                : '';
+            $separator = strpos($sourceMapUrl, ',');
+            $metadata = $separator !== false ? substr($sourceMapUrl, 0, $separator) : '';
+            $sourceMapData = $separator !== false ? substr($sourceMapUrl, $separator + 1) : '';
+
+            if (str_contains($metadata, ';base64')) {
+                $sourceMapData = base64_decode($sourceMapData, true) ?: '';
+            } else {
+                $sourceMapData = rawurldecode($sourceMapData);
+            }
+
+            $map = json_decode($sourceMapData, true);
+            if (!is_array($map)) {
+                $map = [];
+            }
 
             /** @var Document $document */
             $document = $gantry['document'];
 
-            foreach ($map['sources'] as &$source) {
+            $sources = isset($map['sources']) && is_array($map['sources']) ? $map['sources'] : [];
+            foreach ($sources as &$source) {
                 $source = $document::url($source, false, -1);
             }
             unset($source);
+            $map['sources'] = $sources;
 
-            $mapFile = JsonFile::instance($path . '.map');
-            $mapFile->save($map);
-            $mapFile->free();
+            if ($map) {
+                $mapFile = JsonFile::instance($path . '.map');
+                $mapFile->save($map);
+                $mapFile->free();
 
-            $css = substr($css, 0, $pos) . '/*# sourceMappingURL=' . Gantry::basename($out) . '.map */';
+                $css = substr($css, 0, $pos) . '/*# sourceMappingURL=' . Gantry::basename($out) . '.map */';
+            }
         }
 
         $warnings = preg_replace('/\n +(\w)/mu', '\1', stream_get_contents($logfile, -1, 0));
