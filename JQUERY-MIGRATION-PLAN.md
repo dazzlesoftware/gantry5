@@ -136,7 +136,7 @@ Counts overlap because a file can belong to more than one family.
 | Audio Player | 76 | 5 | 38 | 2 |
 | Swiper | 92 | 12 | 45 | 2 |
 | Single Page Navigation | 64 | 2 | 32 | 2 |
-| Owl / Carousel / Testimonials | 92 | 37 | 39 | 3 |
+| Owl runtime and dependent controllers | 62 | 21 | 29 | 3 |
 | Calendar / CLNDR | 76 | 4 | 38 | 3 |
 | Gallery / Mosaic / Grid | 60 | 21 | 37 | 3 |
 | Slider / Slideshow | 117 | 101 | 40 | 4 |
@@ -214,10 +214,16 @@ particle:
   Swiper navigation and pagination.
 
 The specialized Owl layout overrides in Citadel, Galatea, Interstellar,
-Photon, Protean, Remnant, Sienna, and Topaz remain a separate migration
+Protean, Remnant, Sienna, and Topaz remain a separate migration
 batch. Their showcase, news slider, testimonial, Joomla-content, and video
 behaviors must be mapped explicitly to Swiper before their old Owl runtime
 can be removed.
+
+Photon is the first recovered theme to complete this migration. Its standard
+and testimonial layouts now use a theme-owned `swipercarousel` override,
+shared Swiper assets, native pagination/navigation, and Swiper naming
+throughout its Twig, YAML, layout presets, SCSS, and media paths. Its copied
+Owl runtime has been removed.
 
 ## 5. Proposed task batches
 
@@ -334,7 +340,7 @@ package-build.bat prod
 | JQ-THEME-008 | Rewrite Audio Player | Not started | Native media controller |
 | JQ-THEME-009 | Modernize Swiper integration | Not started | Library decision |
 | JQ-THEME-010 | Rewrite Single Page Navigation | Not started | IntersectionObserver pattern |
-| JQ-THEME-011 | Replace Owl/carousels | Not started | Carousel library decision |
+| JQ-THEME-011 | Replace Owl/carousels | In progress | Photon complete; 29 themes remain |
 | JQ-THEME-012 | Replace CLNDR/calendar | Not started | Calendar design decision |
 | JQ-THEME-013 | Replace gallery/mosaic stack | Not started | Layout library decision |
 | JQ-THEME-014 | Consolidate sliders/slideshows | Not started | Carousel foundation |

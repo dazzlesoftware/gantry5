@@ -44,9 +44,9 @@
     }
 
     // Video Carousel
-    .g-owlcarousel-video-carousel {
+    .g-swipercarousel-video-carousel {
         @include breakpoint(no-mobile) {
-            .owl-stage-outer {
+            .swiper-wrapper {
                 margin-right: calc(2px - #{$content-margin + $content-padding});
 
                 .dir-rtl & {

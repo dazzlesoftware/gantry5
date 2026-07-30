@@ -62,11 +62,25 @@ class GantrySwiper {
             this.element.append(navigation);
         }
 
-        if (enabled(this.element.dataset.pagination) && !this.element.querySelector(':scope > .swiper-pagination')) {
+        if (enabled(this.element.dataset.pagination) && !this.getPaginationElement()) {
             const pagination = document.createElement('div');
             pagination.className = 'swiper-pagination';
             this.element.append(pagination);
         }
+    }
+
+    getPaginationElement() {
+        const selector = this.element.dataset.paginationSelector;
+
+        if (selector) {
+            try {
+                return document.querySelector(selector);
+            } catch (error) {
+                console.warn(`Invalid Swiper pagination selector: ${selector}`, error);
+            }
+        }
+
+        return this.element.querySelector(':scope > .swiper-pagination');
     }
 
     create() {
@@ -113,7 +127,7 @@ class GantrySwiper {
             observer: true,
             observeParents: true,
             pagination: pagination ? {
-                el: this.element.querySelector('.swiper-pagination'),
+                el: this.getPaginationElement(),
                 bulletElement: 'button',
                 clickable: true,
                 renderBullet(index, className) {
@@ -135,6 +149,16 @@ class GantrySwiper {
 
     syncState(swiper) {
         this.element.classList.toggle('swiper-rtl', swiper.rtlTranslate);
+
+        const activeSlide = swiper.slides?.[swiper.activeIndex] || null;
+
+        this.element.dispatchEvent(new CustomEvent('g5:swiper:change', {
+            bubbles: true,
+            detail: {
+                activeSlide,
+                activeIndex: swiper.realIndex
+            }
+        }));
     }
 }
 

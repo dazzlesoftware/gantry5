@@ -1,5 +1,5 @@
-name: Owl Carousel
-description: Display Owl Carousel.
+name: Swiper Carousel
+description: Display a responsive carousel powered by Swiper.
 type: particle
 icon: fa-sliders
 
@@ -39,10 +39,10 @@ form:
       type: select.select
       label: Width
       description: Choose the width.
-      default: g-owlcarousel-fullwidth
+      default: g-swipercarousel-fullwidth
       options:
-        g-owlcarousel-fullwidth: Full Width
-        g-owlcarousel-compact: Compact
+        g-swipercarousel-fullwidth: Full Width
+        g-swipercarousel-compact: Compact
 
     animateOut:
       type: input.text
@@ -137,8 +137,8 @@ form:
     items:
       type: collection.list
       array: true
-      label: Owl Carousel Items
-      description: Create each Owl Carousel item to display.
+      label: Swiper Carousel Items
+      description: Create each Swiper carousel item to display.
       value: name
       ajax: true
 

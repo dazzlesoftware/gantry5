@@ -43,7 +43,7 @@ layout:
       -
         'expandedright 32':
           -
-            - owlcarousel-6713
+            - swipercarousel-6713
           -
             - simplecontent-4269
   /utilityBanner/: {  }
@@ -64,7 +64,7 @@ layout:
   /extensionBanner/: {  }
   /extension/:
     -
-      - owlcarousel-4704
+      - swipercarousel-4704
   /bottomBanner/:
     -
       - position-position-4953
@@ -554,8 +554,8 @@ content:
               subtagdesc: 'Give a section one, two, or twenty rows! Fill them with particles and module positions to your heart’s desire. There is really no limit to what you can do with Gantry 5’s Layout Manager!'
               name: 'New item'
           name: Layouts
-  owlcarousel-6713:
-    title: 'Owl Carousel'
+  swipercarousel-6713:
+    title: 'Swiper Carousel'
     attributes:
       dots: '0'
       items:
@@ -580,7 +580,7 @@ content:
           buttonclass: ''
           name: Corporate
     block:
-      class: owlcarousel-offset
+      class: swipercarousel-offset
       fixed: '1'
   simplecontent-4269:
     title: 'Simple Content'
@@ -600,8 +600,8 @@ content:
           title: 'Simple Content'
     block:
       class: 'moduletable nomarginall box-white g-offset-padding g-bottom-offset'
-  owlcarousel-4704:
-    title: 'Owl Carousel'
+  swipercarousel-4704:
+    title: 'Swiper Carousel'
     attributes:
       layout: testimonial
       nav: '0'

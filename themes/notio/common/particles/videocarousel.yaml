@@ -221,6 +221,41 @@ form:
         enabled: Enable
         disabled: Disable
 
+    nav:
+      type: select.select
+      label: Previous / Next
+      description: Enable or disable previous and next navigation.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    prevText:
+      type: input.text
+      label: Previous Content
+      placeholder: '<i class="fa fa-chevron-circle-left"></i>'
+
+    nextText:
+      type: input.text
+      label: Next Content
+      placeholder: '<i class="fa fa-chevron-circle-right"></i>'
+
+    loop:
+      type: select.select
+      label: Carousel Loop
+      description: Continuously loop through the video slides.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+
+    transitionSpeed:
+      type: input.number
+      label: Transition Speed
+      description: Slide transition duration in milliseconds.
+      min: 0
+      default: 500
+
     items:
       type: collection.list
       array: true
@@ -269,6 +304,22 @@ form:
           type: select.select
           label: Loop
           description: Enable or disable video looping.
+          default: enabled
+          options:
+            enabled: Enable
+            disabled: Disable
+        .autoplay:
+          type: select.select
+          label: Video Autoplay
+          description: Start the video automatically when browser policy allows it.
+          default: disabled
+          options:
+            enabled: Enable
+            disabled: Disable
+        .muted:
+          type: select.select
+          label: Muted
+          description: Autoplay generally requires the video to be muted.
           default: enabled
           options:
             enabled: Enable
