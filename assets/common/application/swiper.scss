@@ -1,0 +1,47 @@
+@use "swiper/swiper.css";
+@use "swiper/modules/a11y.css";
+@use "swiper/modules/autoplay.css";
+@use "swiper/modules/effect-fade.css";
+@use "swiper/modules/keyboard.css";
+@use "swiper/modules/navigation.css";
+@use "swiper/modules/pagination.css";
+
+// Theme-owned SCSS remains responsible for colors, typography, spacing, and
+// presentation-specific layouts.
+.g-swipercarousel.swiper {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+
+    > .swiper-wrapper {
+        display: flex;
+        float: none;
+        width: 100%;
+    }
+
+    .swiper-slide {
+        float: none;
+        flex-shrink: 0;
+        width: 100%;
+    }
+
+    > .swiper-navigation,
+    > .swiper-pagination {
+        z-index: 10;
+    }
+
+    > .swiper-navigation {
+        .swiper-button-prev,
+        .swiper-button-next {
+            position: absolute;
+
+            &::after {
+                content: none;
+            }
+        }
+    }
+
+    > .swiper-pagination {
+        position: absolute;
+    }
+}

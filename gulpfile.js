@@ -56,6 +56,7 @@ var argv            = require('yargs').argv,
     merge           = require('merge-stream'),
     sourcemaps      = require('gulp-sourcemaps'),
     browserify      = require('browserify'),
+    esbuild         = require('esbuild'),
     watchifyModule  = require('watchify'),
     jsonminify      = require('gulp-jsonminify'),
     sass            = require('gulp-sass')(require('sass')),
@@ -73,6 +74,12 @@ paths = {
         { // frontend
             in: './assets/common/application/main.js',
             out: './assets/common/js/main.js'
+        }
+    ],
+    esm: [
+        { // shared Swiper carousel
+            in: './assets/common/application/swiper.js',
+            out: './assets/common/js/swiper.js'
         }
     ],
     css: [
@@ -114,6 +121,11 @@ paths = {
             in: './engines/wordpress/nucleus/scss/wordpress.scss',
             out: './engines/wordpress/nucleus/css-compiled/wordpress.css',
             load: './engines/common/nucleus/scss'
+        },
+        { // shared Swiper carousel
+            in: './assets/common/application/swiper.scss',
+            out: './assets/common/css/swiper.css',
+            load: './assets/common/node_modules'
         }
     ],
     minify: [
@@ -207,6 +219,24 @@ var compileJS = function(app, watching) {
     return bundleShare(bundle, _in, _out, _maps, _dest);
 };
 
+var compileESM = function(app) {
+    log(colors.blue('*'), 'Compiling', app.in);
+
+    return esbuild.build({
+        entryPoints: [app.in],
+        outfile: app.out,
+        bundle: true,
+        format: 'iife',
+        platform: 'browser',
+        target: ['es2018'],
+        minify: prod,
+        sourcemap: !prod,
+        legalComments: 'eof'
+    }).then(function() {
+        log(colors.green('√'), 'Saved ' + app.in);
+    });
+};
+
 var bundleShare = function(bundle, _in, _out, _maps, _dest) {
     return bundle.bundle()
         .on('error', function(error) {
@@ -270,6 +300,14 @@ function watchify(done) {
         // var _path = app.in.substring(0, app.in.lastIndexOf('/'));
         streams.push(compileJS(app, true));
     });
+
+    paths.esm.forEach(function(app) {
+        var _path = app.in.substring(0, app.in.lastIndexOf('/'));
+        compileESM(app);
+        gulp.watch(_path + '/**/*.js', function() {
+            return compileESM(app);
+        });
+    });
     
     // Signal task completion
     if (done) done();
@@ -280,7 +318,7 @@ function js() {
         return compileJS(app);
     });
 
-    return Promise.all(streams.map(function(stream) {
+    var streamPromises = streams.map(function(stream) {
         return new Promise(function(resolve, reject) {
             if (stream.writableFinished) {
                 resolve();
@@ -290,7 +328,13 @@ function js() {
             stream.once('finish', resolve);
             stream.once('error', reject);
         });
-    }));
+    });
+
+    var esmPromises = paths.esm.map(function(app) {
+        return compileESM(app);
+    });
+
+    return Promise.all(streamPromises.concat(esmPromises));
 }
 
 function css(done) {

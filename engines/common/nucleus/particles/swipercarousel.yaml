@@ -1,0 +1,178 @@
+name: Swiper Carousel
+description: Display a responsive, touch-enabled carousel powered by Swiper.
+type: particle
+icon: fa-sliders
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text.
+      placeholder: Enter title
+
+    displayitems:
+      type: input.number
+      label: Display at Once
+      description: Number of items to display at once on desktop.
+      min: 1
+      default: 1
+
+    nav:
+      type: select.select
+      label: Previous / Next
+      description: Enable or disable previous and next navigation.
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    prevText:
+      type: input.text
+      label: Previous Content
+      description: Optional HTML displayed inside the previous button.
+      placeholder: '&larr;'
+
+    nextText:
+      type: input.text
+      label: Next Content
+      description: Optional HTML displayed inside the next button.
+      placeholder: '&rarr;'
+
+    dots:
+      type: select.select
+      label: Pagination
+      description: Enable or disable pagination dots.
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    loop:
+      type: select.select
+      label: Loop
+      description: Continuously loop through carousel items when enough slides exist.
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      description: Enable or disable autoplay.
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    autoplaySpeed:
+      type: input.number
+      label: Autoplay Delay
+      description: Delay between slides in milliseconds.
+      min: 1000
+      default: 5000
+
+    pauseOnHover:
+      type: select.select
+      label: Pause on Hover
+      description: Pause autoplay while the carousel is hovered.
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    transitionSpeed:
+      type: input.number
+      label: Transition Speed
+      description: Slide transition duration in milliseconds.
+      min: 0
+      default: 500
+
+    effect:
+      type: select.select
+      label: Transition Effect
+      description: Fade is available when displaying one item at a time.
+      default: slide
+      options:
+        slide: Slide
+        fade: Fade
+
+    imageOverlay:
+      type: select.select
+      label: Image Overlay
+      description: Enable or disable the theme image overlay.
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    items:
+      type: collection.list
+      array: true
+      label: Swiper Items
+      description: Create each carousel item to display.
+      value: name
+      ajax: true
+
+      fields:
+        .class:
+          type: input.selectize
+          label: CSS Classes
+          description: CSS class names for the individual item.
+        .name:
+          type: input.text
+          label: Name
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select the desired image.
+        .title:
+          type: input.text
+          label: Title
+          description: Enter the title.
+        .desc:
+          type: textarea.textarea
+          label: Description
+          description: Customize the description.
+          placeholder: Enter short description
+        .link:
+          type: input.text
+          label: Link
+          description: Input the item link.
+        .linktext:
+          type: input.text
+          label: Link Text
+          description: Input the text for the item link.
+        .buttontarget:
+          type: select.select
+          label: Target
+          default: _self
+          options:
+            _self: Current Window
+            _blank: New Window
+        .buttonclass:
+          type: input.text
+          label: Button Class
+          description: Input the button class.
+          default: button-outline
+        .disable:
+          type: input.checkbox
+          label: Disable
+          description: Disables the item on the front end.
+          default: false

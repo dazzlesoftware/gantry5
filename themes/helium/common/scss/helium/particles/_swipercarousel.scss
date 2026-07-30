@@ -1,0 +1,199 @@
+.g-swipercarousel {
+    color: #eceeef;
+
+    .g-swipercarousel-item-wrapper,
+    .g-swipercarousel-item-img {
+        position: relative;
+    }
+
+    .g-swipercarousel-item-img {
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        &::after {
+            position: absolute;
+            content: "";
+            inset: 0;
+        }
+    }
+
+    .g-swipercarousel-item-content-container {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        transform-style: preserve-3d;
+
+        @include breakpoint(very-large-desktop-range) {
+            width: $breakpoints-very-large-desktop-container;
+        }
+
+        @include breakpoint(large-desktop-range) {
+            width: $breakpoints-large-desktop-container;
+        }
+
+        @include breakpoint(desktop-range) {
+            width: $breakpoints-desktop-container;
+        }
+
+        @include breakpoint(tablet-range) {
+            width: ($breakpoints-tablet-container - 8rem);
+        }
+
+        @include breakpoint(large-mobile-range) {
+            width: $breakpoints-large-mobile-container;
+        }
+
+        @include breakpoint(small-mobile-range) {
+            width: 100%;
+        }
+    }
+
+    .g-swipercarousel-item-content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        @include breakpoint(desktop-range) {
+            padding-top: 2.5rem;
+        }
+    }
+
+    .g-swipercarousel-item-content {
+        margin: ($content-margin * 2) $content-margin $content-margin;
+        padding: $content-padding;
+        text-align: center;
+
+        @include breakpoint(tablet-range) {
+            padding-top: 2.5rem;
+        }
+    }
+
+    .g-swipercarousel-item-title {
+        font-family: get-font-family($font-family-default);
+        font-size: 3.5rem;
+        line-height: 4rem;
+        font-weight: $font-weight-medium;
+        margin: ($content-margin * 2) ($content-margin * 2) $content-margin;
+
+        @include breakpoint(desktop-range) {
+            font-size: 3rem;
+            line-height: 3.875rem;
+        }
+
+        @include breakpoint(tablet-range) {
+            margin-top: ($content-margin * 5);
+            font-size: 2rem;
+            line-height: 2.875rem;
+        }
+
+        @include breakpoint(mobile-only) {
+            margin-top: 0;
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+
+    .g-swipercarousel-item-desc {
+        margin: 0 0 $content-margin;
+        padding-bottom: $content-padding * 1.5;
+        font-size: 1.5rem;
+        line-height: $core-line-height - 0.5;
+        font-weight: $font-weight-light;
+
+        @include breakpoint(desktop-range) {
+            font-size: 1rem;
+            line-height: 1.875rem;
+        }
+
+        @include breakpoint(tablet-range) {
+            padding-bottom: 0;
+        }
+
+        @include breakpoint(mobile-only) {
+            display: none;
+        }
+    }
+
+    .g-swipercarousel-item-button {
+        @include breakpoint(tablet-range) {
+            padding: 1rem 2.625rem;
+            font-size: $core-font-size - 0.4;
+        }
+
+        @include breakpoint(mobile-only) {
+            display: none;
+        }
+    }
+
+    .swiper-navigation {
+        .swiper-button-prev,
+        .swiper-button-next {
+            top: 50%;
+            width: 42px;
+            height: 42px;
+            color: $white;
+            border: 1px solid $white;
+            border-radius: 50%;
+            transition: all 0.3s;
+
+            &:hover {
+                background: rgba($white, 0.2);
+                border-color: transparent;
+            }
+        }
+
+        .swiper-button-prev {
+            left: 3rem;
+        }
+
+        .swiper-button-next {
+            right: 3rem;
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 12%;
+
+        @include breakpoint(desktop-range) {
+            bottom: 5%;
+        }
+
+        @include breakpoint(tablet-range) {
+            bottom: 1rem;
+        }
+
+        @include breakpoint(mobile-only) {
+            bottom: 0.5rem;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        width: 15px;
+        height: 15px;
+        margin: 0 ($content-margin * 0.5) !important;
+        background: $base-text-color;
+        opacity: 0.75;
+        transition: all 0.2s;
+
+        &.swiper-pagination-bullet-active,
+        &:hover {
+            background: $white;
+            opacity: 1;
+        }
+    }
+
+    &.has-color-overlay {
+        .swiper-slide:nth-child(even) .g-swipercarousel-item-img::after {
+            background: linear-gradient(40deg, $accent-color-1, $accent-color-2);
+            opacity: 0.9;
+        }
+
+        .swiper-slide:nth-child(odd) .g-swipercarousel-item-img::after {
+            background: linear-gradient(140deg, $accent-color-2, $accent-color-1);
+            opacity: 0.9;
+        }
+    }
+}

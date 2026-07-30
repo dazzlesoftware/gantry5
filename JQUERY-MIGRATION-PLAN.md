@@ -12,11 +12,11 @@ The Gantry administration application no longer imports or calls jQuery directly
 
 | Scope | Physical files | Distinct implementations |
 |---|---:|---:|
-| Theme JavaScript | 673 | 192 |
-| Theme Twig templates | 548 | 281 |
-| **Theme total** | **1,221** | **473** |
+| Theme JavaScript | 671 | 192 |
+| Theme Twig templates | 546 | 280 |
+| **Theme total** | **1,217** | **472** |
 
-All 1,221 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
+All 1,217 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
 
 The original count was 1,579 physical files and 489 distinct implementations. Removing the obsolete RokSprocket trees and consolidating Simple Counter and Video into shared native core particles removed hundreds of duplicated jQuery-dependent theme files.
 
@@ -195,6 +195,29 @@ For each migration family:
 6. Remove old plugin files only after every referencing particle has migrated.
 
 Simple Counter now provides the shared-controller model: its schema and Twig markup live in the common Nucleus particle directory, its native controller lives in common assets, and each theme retains only its custom SCSS.
+
+Swiper Carousel now follows the same model for the reusable `swipercarousel`
+particle:
+
+- The shared schema and Twig template live in
+  `engines/common/nucleus/particles/swipercarousel.*`.
+- The controller is native ES2018+ code in
+  `assets/common/application/swiper.js`.
+- Swiper is pinned through NPM and bundled locally with only Navigation,
+  Pagination, Autoplay, A11y, Keyboard, and Effect Fade.
+- The generated browser assets are `assets/common/js/swiper.js` and
+  `assets/common/css/swiper.css`; no CDN or jQuery wrapper is used.
+- The particle, generated markup, DOM hooks, SCSS files, and bundled
+  controller use Swiper naming without Owl compatibility classes.
+- Aphrodite and Helium now inherit the shared core particle. Themes that did
+  not previously have carousel SCSS have a theme-owned Accent 1 override for
+  Swiper navigation and pagination.
+
+The specialized Owl layout overrides in Citadel, Galatea, Interstellar,
+Photon, Protean, Remnant, Sienna, and Topaz remain a separate migration
+batch. Their showcase, news slider, testimonial, Joomla-content, and video
+behaviors must be mapped explicitly to Swiper before their old Owl runtime
+can be removed.
 
 ## 5. Proposed task batches
 

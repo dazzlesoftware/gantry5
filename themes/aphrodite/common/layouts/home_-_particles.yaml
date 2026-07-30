@@ -7,7 +7,7 @@ layout:
   navigation: {  }
   /header/:
     -
-      - owlcarousel-2455
+      - swipercarousel-2455
   /intro/:
     -
       - custom-5807
@@ -93,8 +93,8 @@ structure:
         - attributes
         - children
 content:
-  owlcarousel-2455:
-    title: 'Owl Carousel'
+  swipercarousel-2455:
+    title: 'Swiper Carousel'
     attributes:
       items:
         -
