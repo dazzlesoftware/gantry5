@@ -1,6 +1,7 @@
 name: Featured Videos
 description: Background slideshow with small picture
 type: particle
+category: media
 icon: fa-youtube-play
 
 form:

@@ -1,6 +1,7 @@
 name: Genesis Features
 description: Display a reusable grid of supported content management platforms.
 type: particle
+category: content
 icon: fa-th-large
 
 configuration:

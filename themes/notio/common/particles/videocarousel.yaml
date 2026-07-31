@@ -1,6 +1,7 @@
 name: Video Carousel
 description: Display videos in a carousel form.
 type: particle
+category: slider
 icon: fa-tv
 
 configuration:

@@ -1,6 +1,7 @@
 name: Mosaic
 description: Display content dynamically in blocks
 type: particle
+category: media
 icon: fa-address-book
 
 configuration:

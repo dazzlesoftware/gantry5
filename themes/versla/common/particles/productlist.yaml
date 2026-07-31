@@ -1,6 +1,7 @@
 name: Product List
 description: Particle for displaying various products on customizable grid.
 type: particle
+category: dynamic-content
 icon: fa-shopping-bag
 
 form:

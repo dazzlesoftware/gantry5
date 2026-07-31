@@ -1,6 +1,7 @@
 name: Headlines
 description: Display Headlines.
 type: particle
+category: content
 icon: fa-bookmark
 
 configuration:

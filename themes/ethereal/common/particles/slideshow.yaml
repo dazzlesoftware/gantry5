@@ -2,6 +2,7 @@ name: Slideshow
 description: Display slideshow.
 type: particle
 
+category: slider
 configuration:
   caching:
     type: static

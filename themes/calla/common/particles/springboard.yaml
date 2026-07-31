@@ -1,6 +1,7 @@
 name: Springboard
 description: Display images in a carousel form.
 type: particle
+category: general
 icon: fa-photo
 
 configuration:

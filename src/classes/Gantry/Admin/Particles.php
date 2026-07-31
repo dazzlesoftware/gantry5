@@ -23,6 +23,14 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Particles
 {
+    /** @var array<string,string> */
+    protected const CATEGORIES = [
+        'dynamic-content' => 'Dynamic Content',
+        'general' => 'General',
+        'content' => 'Content',
+        'media' => 'Media',
+        'slider' => 'Slider'
+    ];
     /** @var Gantry */
     protected $container;
     /** @var array|null */
@@ -233,5 +241,33 @@ class Particles
         }
 
         return isset($this->themeParticleNames[$name]);
+    }
+
+    /**
+     * Categorize a particle for the admin picker. Particle blueprints may override
+     * the automatic classification with a top-level "category" value.
+     *
+     * @param string $name
+     * @param array $particle
+     * @return array{label:string,slug:string}
+     */
+    public function category($name, array $particle = [])
+    {
+        $category = strtolower(trim((string)($particle['category'] ?? '')));
+        $category = str_replace(['_', ' '], '-', $category);
+
+        if (!isset(self::CATEGORIES[$category])) {
+            $category = 'general';
+        }
+
+        return ['label' => self::CATEGORIES[$category], 'slug' => $category];
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    public function categories()
+    {
+        return self::CATEGORIES;
     }
 }

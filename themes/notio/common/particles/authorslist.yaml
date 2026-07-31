@@ -1,6 +1,7 @@
 name: Authors List
 description: Create list of your site authors with links to their profiles.
 type: particle
+category: dynamic-content
 icon: fa-address-card
 
 form:

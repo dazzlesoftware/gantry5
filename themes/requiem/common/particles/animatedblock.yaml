@@ -1,6 +1,7 @@
 name: Animated Block
 description: Display animated block content.
 type: particle
+category: general
 icon: fa-spinner
 
 configuration:

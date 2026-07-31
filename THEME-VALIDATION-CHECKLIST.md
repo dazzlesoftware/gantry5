@@ -116,7 +116,7 @@ Only test particles included by the theme.
 | Theme | WordPress | Joomla | Grav | Notes |
 |---|:---:|:---:|:---:|---|
 | Acronym | [x] | [ ] | — | WordPress validated 2026-07-31 after four-card Swiper layout, positioning, and navigation restoration. |
-| Akuatik | [ ] | [ ] | — | |
+| Akuatik | [x] | [ ] | — | WordPress validated 2026-07-31 after Twig 3 Infolist compatibility correction. |
 | Ambrosia | [ ] | [ ] | — | |
 | Anacron | [ ] | [ ] | — | |
 | Antares | [ ] | [ ] | — | |
@@ -173,6 +173,7 @@ Add one entry after each completed platform validation.
 |---|---|---|---|---|---|
 | 2026-07-31 | Callisto | WordPress | Development | Pass | Native Swiper sliders, Newsflash, feature cards, accordion, navigation sizing, alignment, and interactions validated. |
 | 2026-07-31 | Acronym | WordPress | Development | Pass | Four-card Swiper carousel, responsive layout, card positioning, and previous/next controls validated. |
+| 2026-07-31 | Akuatik | WordPress | Development | Pass | Twig 3 rendering and Infolist output validated after removing the obsolete spaceless tag. |
 
 ## Recommended Validation Order
 
@@ -180,10 +181,11 @@ Validate themes that recently received the largest JavaScript changes first:
 
 1. Callisto WordPress — completed
 2. Acronym WordPress — completed
-3. Callisto Joomla
-4. Interstellar
-5. Photon
-6. Galatea
+3. Akuatik WordPress — completed
+4. Callisto Joomla
+5. Interstellar
+6. Photon
+7. Galatea
 6. Aphrodite
 7. Helium
 8. Hydrogen

@@ -1,5 +1,11 @@
 $particle: #2A82B7;
-$theme-particle: #8F4DAE;
+$particle-categories: (
+    dynamic-content: #D35454,
+    general: #2A82B7,
+    content: #8F4DAE,
+    media: #D9822B,
+    slider: #2E9C76
+);
 $position: #359AD9;
 $spacer: #eee;
 $system: #20A085;
@@ -564,11 +570,13 @@ $atom: #9055AF;
                 @include stripes-background($particle);
             }
 
-            &.theme-particle {
-                background-color: $theme-particle;
+            @each $category, $color in $particle-categories {
+                &.particle-category-#{$category} {
+                    background-color: $color;
 
-                &.g-inheriting {
-                    @include stripes-background($theme-particle);
+                    &.g-inheriting {
+                        @include stripes-background($color);
+                    }
                 }
             }
         }
@@ -999,12 +1007,14 @@ $atom: #9055AF;
                 }
             }
 
-            &.theme-particle[data-lm-blocktype="particle"], &.theme-particle[data-mm-blocktype="particle"], &.theme-particle[data-pm-blocktype="particle"] {
-                color: $theme-particle;
-                border-color: $theme-particle;
+            @each $category, $color in $particle-categories {
+                &.particle-category-#{$category}[data-lm-blocktype="particle"], &.particle-category-#{$category}[data-mm-blocktype="particle"], &.particle-category-#{$category}[data-pm-blocktype="particle"] {
+                    color: $color;
+                    border-color: $color;
 
-                &.original-placeholder, .particle-icon {
-                    background-color: $theme-particle;
+                    &.original-placeholder, .particle-icon {
+                        background-color: $color;
+                    }
                 }
             }
 

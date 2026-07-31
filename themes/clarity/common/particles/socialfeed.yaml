@@ -1,6 +1,7 @@
 name: Social Feed
 description: Display instagram feed.
 type: particle
+category: dynamic-content
 icon: fa-th
 
 form:

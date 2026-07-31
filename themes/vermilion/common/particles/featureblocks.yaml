@@ -1,6 +1,7 @@
 name: Feature Blocks
 description: Display feature blocks.
 type: particle
+category: content
 icon: fa-th-large
 
 configuration: 

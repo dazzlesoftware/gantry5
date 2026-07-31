@@ -1,6 +1,7 @@
 name: Swiper Carousel
 description: Display a responsive, touch-enabled carousel powered by Swiper.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

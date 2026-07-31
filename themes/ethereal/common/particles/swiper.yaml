@@ -1,6 +1,7 @@
 name: Swiper
 description: Display swiper.
 type: particle
+category: slider
 icon: fa-newspaper-o
 
 configuration:

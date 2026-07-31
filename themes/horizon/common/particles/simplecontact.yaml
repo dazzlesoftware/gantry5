@@ -1,6 +1,7 @@
 name: Simple Contact
 description: Display simple contact items.
 type: particle
+category: general
 icon: fa-phone
 
 configuration:

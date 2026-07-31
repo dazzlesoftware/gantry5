@@ -1,6 +1,7 @@
 name: MailChimp
 description: Display MailChimp newsletter form.
 type: particle
+category: general
 icon: fa-file-text-o
 
 configuration:

@@ -1,6 +1,7 @@
 name: Score Block
 description: Display scores table.
 type: particle
+category: dynamic-content
 icon: fa-table
 
 configuration:

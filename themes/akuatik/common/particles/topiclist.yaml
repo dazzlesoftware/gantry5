@@ -1,6 +1,7 @@
 name: Topic List
 description: Simple topic listing
 type: particle
+category: dynamic-content
 icon: fa-list
 
 form:

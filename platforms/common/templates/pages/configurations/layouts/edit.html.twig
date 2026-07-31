@@ -25,11 +25,12 @@
                     {% for type, particle in list %}
                         {% for item_key, item in particle %}
                             {% set isDisabled = not gantry.config.get('particles.' ~ item_key ~ '.enabled', true) %}
-                            <li class="g5-lm-particle-{{ type }}{{ item._gantry_source|default(null) == 'theme' ? ' theme-particle' : '' }}"
+                            <li class="g5-lm-particle-{{ type }} particle-category-{{ item._gantry_category_slug|default('general') }}"
                                 data-lm-blocktype="{{ type }}"
                                 data-lm-subtype="{{ item_key }}"
                                 data-lm-icon="{{ item.icon|default('fa-cube') }}"
                                 {% if item._gantry_source|default(null) == 'theme' %}data-lm-source="theme"{% endif %}
+                                data-lm-category="{{ item._gantry_category_slug|default('general') }}"
                                 {% if isDisabled %}
                                 data-lm-disabled=""
                                 data-lm-nodrag=""

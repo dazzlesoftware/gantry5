@@ -1,6 +1,7 @@
 name: Testimonial Slider
 description: Vertical scrolling testimonials
 type: particle
+category: slider
 icon: fa-users
 
 configuration:

@@ -1,6 +1,7 @@
 name: Number Headline
 description: Display number headline content.
 type: particle
+category: content
 icon: fa-newspaper-o
 
 configuration:

@@ -1,6 +1,7 @@
 name: Swiper Showcase
 description: Display Swiper Showcase particle.
 type: particle
+category: slider
 icon: fa-sliders
 
 form:

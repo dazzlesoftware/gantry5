@@ -1,6 +1,7 @@
 name: Top Rated
 description: Top Rated slider with filtering option.
 type: particle
+category: general
 icon: fa-line-chart
 
 form:

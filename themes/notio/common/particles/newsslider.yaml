@@ -1,6 +1,7 @@
 name: News Slider
 description: Background slider with thumbs
 type: particle
+category: slider
 icon: fa-newspaper-o
 
 configuration:

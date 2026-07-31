@@ -1,6 +1,7 @@
 name: Slider
 description: Slideshow with text and images. 
 type: particle
+category: slider
 icon: fa-image
 
 form:

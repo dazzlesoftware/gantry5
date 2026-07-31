@@ -1,6 +1,7 @@
 name: To Top
 description: Scroll back to top.
 type: particle
+category: general
 icon: fa-chevron-up
 
 configuration:

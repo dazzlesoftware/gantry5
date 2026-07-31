@@ -1,6 +1,7 @@
 name: Team
 description: Display team members.
 type: particle
+category: content
 icon: fa-user
 
 form:

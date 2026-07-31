@@ -1,6 +1,7 @@
 name: Grid Promo Gallery
 description: Display Grid Promo Gallery.
 type: particle
+category: media
 icon: fa-camera-retro
 
 configuration:

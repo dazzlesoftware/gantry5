@@ -1,6 +1,7 @@
 name: Location Pins
 description: Display pins with your restaurant/cafe locations and short info.
 type: particle
+category: general
 icon: fa-map-marker
 
 configuration:

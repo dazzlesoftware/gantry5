@@ -1,6 +1,7 @@
 name: Tab Image
 description: Display tab image content.
 type: particle
+category: media
 icon: fa-server
 
 configuration:

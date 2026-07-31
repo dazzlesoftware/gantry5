@@ -1,6 +1,7 @@
 name: Accordion
 description: Display items in Accordion layout.
 type: particle
+category: content
 icon: fa-list
 
 form:

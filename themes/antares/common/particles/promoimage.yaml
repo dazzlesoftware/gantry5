@@ -1,6 +1,7 @@
 name: Promo Image
 description: Display promo image.
 type: particle
+category: media
 icon: fa-camera
 
 configuration:

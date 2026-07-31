@@ -1,6 +1,7 @@
 name: Blog Content
 description: Display blog content.
 type: particle
+category: dynamic-content
 icon: fa-th-large
 
 configuration:

@@ -1,6 +1,7 @@
 name: Pricing Table
 description: Display Pricing Table items.
 type: particle
+category: content
 icon: fa-table
 
 configuration:

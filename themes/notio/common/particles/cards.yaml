@@ -1,6 +1,7 @@
 name: Cards
 description: Displays customizable cards
 type: particle
+category: content
 icon: fa-id-card-o
 
 configuration:

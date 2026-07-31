@@ -1,6 +1,7 @@
 name: Flipping Content
 description: Display Flipping Content.
 type: particle
+category: content
 icon: fa-exchange
 
 configuration:

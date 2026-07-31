@@ -1,6 +1,7 @@
 name: Progress Bar
 description: Display progressbar.
 type: particle
+category: general
 icon: fa-expand
 
 configuration:

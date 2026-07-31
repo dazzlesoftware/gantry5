@@ -1,6 +1,7 @@
 name: Mini Player
 description: Play music through audio player interface.
 type: particle
+category: general
 icon: fa-soundcloud
 
 configuration:

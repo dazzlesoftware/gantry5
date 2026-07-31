@@ -1,6 +1,7 @@
 name: Logos
 description: Display desired brand logos.
 type: particle
+category: general
 icon: fa-apple
 
 form:

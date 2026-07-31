@@ -1,6 +1,7 @@
 name: Block Content
 description: Displays Block Content
 type: particle
+category: content
 icon: fa-th-large
 
 configuration:

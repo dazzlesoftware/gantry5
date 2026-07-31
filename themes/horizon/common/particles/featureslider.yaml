@@ -1,6 +1,7 @@
 name: Feature Slider
 description: Slideshow with text and images to feature various services. 
 type: particle
+category: slider
 icon: fa-picture-o
 
 form:

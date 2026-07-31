@@ -1,6 +1,7 @@
 name: Simple Weather
 description: Display weather plugin.
 type: particle
+category: dynamic-content
 icon: fa-sun-o
 
 configuration:

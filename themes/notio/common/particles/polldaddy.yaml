@@ -1,6 +1,7 @@
 name: Polldaddy Voting
 description: Display Polldaddy voting poll.
 type: particle
+category: dynamic-content
 icon: fa-dot-circle-o
 
 form:

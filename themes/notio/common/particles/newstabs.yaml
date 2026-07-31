@@ -1,6 +1,7 @@
 name: News Tabs
 description: Display various content in tabbed environment.
 type: particle
+category: slider
 icon: fa-quote-left
 
 form:

@@ -1,6 +1,7 @@
 name: Icon Headline
 description: Display icon headline content.
 type: particle
+category: content
 icon: fa-leaf
 
 configuration:

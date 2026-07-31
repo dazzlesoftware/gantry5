@@ -1,6 +1,7 @@
 name: Video
 description: Embed videos from YouTube, Vimeo, a local file, or an external URL.
 type: particle
+category: media
 icon: fa-video
 
 configuration:

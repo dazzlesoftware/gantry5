@@ -1,6 +1,7 @@
 name: Image Overlay
 description: Display image with overlay.
 type: particle
+category: media
 icon: fa-adjust
 
 configuration:

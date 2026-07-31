@@ -1,6 +1,7 @@
 name: Calendar
 description: Calendar particles for displaying dates.
 type: particle
+category: dynamic-content
 icon: fa-calendar
 
 configuration:

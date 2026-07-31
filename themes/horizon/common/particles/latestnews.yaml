@@ -1,6 +1,7 @@
 name: Latest News
 description: Display latest news.
 type: particle
+category: dynamic-content
 icon: fa-newspaper-o
 
 form:

@@ -1,6 +1,7 @@
 name: Content Tabs
 description: Display Content Tabs.
 type: particle
+category: slider
 icon: fa-table
 
 configuration:

@@ -1,6 +1,7 @@
 name: Upcoming Games
 description: Display upcoming games as list
 type: particle
+category: general
 icon: fa-gamepad
 
 configuration:

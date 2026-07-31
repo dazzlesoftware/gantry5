@@ -1,6 +1,7 @@
 name: Recent Reviews
 description: Display recent reviews.
 type: particle
+category: dynamic-content
 icon: fa-newspaper-o
 
 form:

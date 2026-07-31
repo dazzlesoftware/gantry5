@@ -1,6 +1,7 @@
 name: Showcase
 description: Background showcase with small picture
 type: particle
+category: slider
 icon: fa-camera-retro
 
 form:

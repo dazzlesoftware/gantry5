@@ -1,6 +1,7 @@
 name: Panel Slider
 description: Content slider with images and icons.
 type: particle
+category: slider
 icon: fa-columns
 
 configuration:

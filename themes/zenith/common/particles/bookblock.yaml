@@ -1,6 +1,7 @@
 name: BookBlock
 description: Display items in BookBlock layout.
 type: particle
+category: slider
 icon: fa-book
 
 form:

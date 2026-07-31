@@ -1,6 +1,7 @@
 name: Button
 description: Display simple button
 type: particle
+category: general
 icon: fa-battery-4
 
 form:

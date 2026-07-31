@@ -1,6 +1,7 @@
 name: Slideshow
 description: Background slideshow with small picture
 type: particle
+category: slider
 icon: fa-camera-retro
 
 form:

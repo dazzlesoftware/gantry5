@@ -1,6 +1,7 @@
 name: Comparison Table
 description: Display comparison table items.
 type: particle
+category: content
 icon: fa-table
 
 configuration:

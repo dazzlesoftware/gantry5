@@ -1,6 +1,7 @@
 name: Timeline
 description: Show timeline elements.
 type: particle
+category: content
 icon: fa-calendar-o
 
 form:

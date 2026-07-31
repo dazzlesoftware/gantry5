@@ -1,6 +1,7 @@
 name: Swiper Cards
 description: Display a responsive Swiper cards carousel.
 type: particle
+category: slider
 icon: fa-id-badge
 
 form:

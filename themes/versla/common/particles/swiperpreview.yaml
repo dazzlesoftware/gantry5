@@ -1,6 +1,7 @@
 name: Swiper Preview
 description: Display Swiper Preview particle.
 type: particle
+category: slider
 icon: fa-sliders
 
 form:

@@ -1,6 +1,7 @@
 name: Comments Slider
 description: Comments slideshow with small pictures
 type: particle
+category: general
 icon: fa-comment
 
 form:

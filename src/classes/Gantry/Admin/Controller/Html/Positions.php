@@ -299,9 +299,10 @@ class Positions extends HtmlController
      */
     public function selectParticle($position)
     {
-        $groups = [
-            'Particles' => ['particle' => []],
-        ];
+        $groups = [];
+        foreach ($this->container['particles']->categories() as $category) {
+            $groups[$category] = ['particle' => []];
+        }
 
         $particles = [
             'position'    => [],
@@ -318,10 +319,8 @@ class Positions extends HtmlController
         }
         unset($group);
 
-        foreach ($groups as $section => $children) {
-            foreach ($children as $key => $child) {
-                $groups[$section][$key] = $particles[$key];
-            }
+        foreach ($particles['particle'] as $name => $particle) {
+            $groups[$particle['_gantry_category']]['particle'][$name] = $particle;
         }
 
         $this->params += [
@@ -344,10 +343,13 @@ class Positions extends HtmlController
             $type = isset($particle['type']) ? $particle['type'] : 'particle';
             $particleName = isset($particle['name']) ? $particle['name'] : $name;
             $particleIcon = isset($particle['icon']) ? $particle['icon'] : null;
+            $category = $this->container['particles']->category($name, $particle);
             $list[$type][$name] = [
                 'name' => $particleName,
                 'icon' => $particleIcon,
-                '_gantry_source' => $this->container['particles']->isThemeParticle($name) ? 'theme' : null
+                '_gantry_source' => $this->container['particles']->isThemeParticle($name) ? 'theme' : null,
+                '_gantry_category' => $category['label'],
+                '_gantry_category_slug' => $category['slug']
             ];
         }
 

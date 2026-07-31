@@ -1,6 +1,7 @@
 name: Video Grid
 description: Display video grid.
 type: particle
+category: media
 icon: fa-video-camera
 
 configuration:

@@ -1,6 +1,7 @@
 name: Table tabs
 description: Display profile.
 type: particle
+category: slider
 icon: fa fa-table
 
 form:

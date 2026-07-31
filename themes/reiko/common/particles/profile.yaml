@@ -1,6 +1,7 @@
 name: Profile
 description: Display profile.
 type: particle
+category: general
 icon: fa fa-user
 
 form:

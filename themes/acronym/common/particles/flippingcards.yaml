@@ -1,6 +1,7 @@
 name: Flipping Cards
 description: Particle to flip content with 3D animation.
 type: particle
+category: content
 icon: fa-share-square-o
 
 form:

@@ -1,6 +1,7 @@
 name: Popup Grid
 description: Display Popup Grid content.
 type: particle
+category: content
 icon: fa-arrows-alt
 
 configuration:

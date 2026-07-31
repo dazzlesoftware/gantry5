@@ -1,6 +1,7 @@
 name: Contact
 description: Display contact.
 type: particle
+category: general
 icon: fa-envelope-o
 
 configuration:

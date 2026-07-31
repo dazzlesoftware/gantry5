@@ -1,6 +1,7 @@
 name: Newsletter
 description: Display newsletter form.
 type: particle
+category: dynamic-content
 icon: fa-file-text-o
 
 configuration:

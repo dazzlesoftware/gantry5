@@ -1,6 +1,7 @@
 name: Grid Content
 description: Display Grid Content.
 type: particle
+category: content
 icon: fa-table
 
 configuration:

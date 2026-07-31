@@ -1,6 +1,7 @@
 name: Sliding Menu
 description: Display sliding menu.
 type: particle
+category: general
 icon: fa-bars
 
 form:

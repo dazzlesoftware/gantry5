@@ -1,6 +1,7 @@
 name: Image Slider
 description: Display Image Slider.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

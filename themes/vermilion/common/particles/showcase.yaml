@@ -1,6 +1,7 @@
 name: Showcase
 description: Display showcase.
 type: particle
+category: slider
 icon: fa-television
 
 form:

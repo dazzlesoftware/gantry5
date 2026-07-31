@@ -1,6 +1,7 @@
 name: Case Studies
 description: Display testimonials.
 type: particle
+category: general
 icon: fa-address-book
 
 configuration:

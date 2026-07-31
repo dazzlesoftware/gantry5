@@ -1,6 +1,7 @@
 name: Social
 description: Display social buttons.
 type: particle
+category: general
 icon: fa-facebook
 
 configuration:

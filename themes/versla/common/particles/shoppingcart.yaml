@@ -1,6 +1,7 @@
 name: Shopping Cart
 description: Display snipcart shopping cart.
 type: particle
+category: dynamic-content
 icon: fa-shopping-cart
 
 configuration:

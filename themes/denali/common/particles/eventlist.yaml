@@ -1,6 +1,7 @@
 name: Event List
 description: Simple particle for displaying events.
 type: particle
+category: dynamic-content
 icon: fa-map-marker
 
 form:

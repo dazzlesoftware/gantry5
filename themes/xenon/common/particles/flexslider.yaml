@@ -1,6 +1,7 @@
 name: FlexSlider
 description: Display FlexSlider.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

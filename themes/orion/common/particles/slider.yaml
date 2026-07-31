@@ -1,6 +1,7 @@
 name: Slider
 description: Background slideshow with small picture
 type: particle
+category: slider
 icon: fa-youtube-play
 
 form:

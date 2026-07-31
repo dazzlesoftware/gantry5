@@ -1,6 +1,7 @@
 name: Vertical Slideshow
 description: Background vertical slideshow with small picture
 type: particle
+category: slider
 icon: fa-camera-retro
 
 form:

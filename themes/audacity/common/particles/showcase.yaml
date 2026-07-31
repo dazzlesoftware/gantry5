@@ -1,6 +1,7 @@
 name: Showcase
 description: Display Showcase.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

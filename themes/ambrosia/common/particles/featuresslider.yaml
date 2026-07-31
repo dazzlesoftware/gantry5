@@ -1,6 +1,7 @@
 name: Features Slider
 description: Display Features Slider.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

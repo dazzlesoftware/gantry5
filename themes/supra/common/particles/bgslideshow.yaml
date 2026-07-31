@@ -1,6 +1,7 @@
 name: Slideshow
 description: Add beautiful backgrounds and slideshows to your website.
 type: particle
+category: slider
 icon: fa-camera
 
 configuration:

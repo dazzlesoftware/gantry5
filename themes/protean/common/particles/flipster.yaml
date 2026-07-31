@@ -1,6 +1,7 @@
 name: Flipster Cover Flow
 description: Display content in the familiar 'cover flow' effect.
 type: particle
+category: slider
 icon: fa-picture-o
 
 configuration:

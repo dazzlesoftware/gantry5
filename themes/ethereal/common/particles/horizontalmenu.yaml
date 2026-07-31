@@ -1,6 +1,7 @@
 name: Horizontal Menu
 description: Display horizontal menu.
 type: particle
+category: general
 icon: fa-forward
 
 configuration:

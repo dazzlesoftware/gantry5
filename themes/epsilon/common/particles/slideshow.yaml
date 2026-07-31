@@ -1,6 +1,7 @@
 name: Slideshow
 description: Display Slideshow.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

@@ -1,6 +1,7 @@
 name: Category List
 description: Simple category listing
 type: particle
+category: dynamic-content
 icon: fa-folder
 
 form:

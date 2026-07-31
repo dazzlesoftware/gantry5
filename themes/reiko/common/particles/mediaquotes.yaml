@@ -1,6 +1,7 @@
 name: Media Quotes
 description: Display media quotes.
 type: particle
+category: media
 icon: fa-newspaper-o
 
 form:

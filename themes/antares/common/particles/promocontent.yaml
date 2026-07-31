@@ -1,6 +1,7 @@
 name: Promo Content
 description: Display promo content items.
 type: particle
+category: content
 icon: fa-television
 
 configuration:

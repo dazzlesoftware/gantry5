@@ -323,8 +323,8 @@
         padding: 0;
     }
 
-    .swiper-slide {
-        .item {
+    .swiper-slide.item,
+    .swiper-slide .item {
             .g-swipercarousel-item-image {
                 background-position: center;
                 background-size: cover;
@@ -394,7 +394,6 @@
                     }
                 }
             }
-        }
     }
 
     // Dots
@@ -622,6 +621,7 @@
             margin-top: 10px;
             margin-bottom: 10px;
 
+            &.item,
             .item {
                 box-shadow: none;
                 border-radius: $border-radius;
@@ -769,9 +769,8 @@
         overflow: hidden;
         padding: 0;
 
-        .swiper-slide {
-
-            .item {
+        .swiper-slide.item,
+        .swiper-slide .item {
                 p {
                     margin: 0;
                 }
@@ -857,7 +856,6 @@
                         color: $base-text-color;
                     }
                 }
-            }
         }
 
         .swiper-controls {

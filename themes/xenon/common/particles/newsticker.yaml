@@ -1,6 +1,7 @@
 name: News Ticker
 description: Display News Ticker items.
 type: particle
+category: dynamic-content
 icon: fa-ellipsis-h
 
 configuration:

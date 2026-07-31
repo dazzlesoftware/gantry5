@@ -1,6 +1,7 @@
 name: Image Grid
 description: Display image grid.
 type: particle
+category: media
 icon: fa-picture-o
 
 configuration:

@@ -1,6 +1,7 @@
 name: Slider
 description: Display Slider.
 type: particle
+category: slider
 icon: fa-sliders
 
 configuration:

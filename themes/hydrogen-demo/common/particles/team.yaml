@@ -2,6 +2,7 @@ name: Team
 description: Displays a single team member (test particle).
 type: particle
 
+category: content
 form:
   fields:
     enabled:

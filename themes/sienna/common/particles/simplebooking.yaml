@@ -1,6 +1,7 @@
 name: Simple Booking
 description: Create simple reservation system.
 type: particle
+category: general
 icon: fa-map
 
 configuration:

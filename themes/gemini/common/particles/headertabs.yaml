@@ -1,6 +1,7 @@
 name: Header Tabs
 description: Display Header Tabs.
 type: particle
+category: slider
 icon: fa-table
 
 configuration:

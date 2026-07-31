@@ -1,6 +1,7 @@
 name: Photo Collage
 description: Display media quotes.
 type: particle
+category: media
 icon: fa-camera
 
 form:

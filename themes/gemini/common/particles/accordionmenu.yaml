@@ -1,6 +1,7 @@
 name: Accordion Menu
 description: Display multi level accordion menu.
 type: particle
+category: content
 icon: fa-list-alt
 
 configuration:

@@ -1,6 +1,7 @@
 name: Accordion Slider
 description: Display items in paginated Accordion layout.
 type: particle
+category: slider
 icon: fa-slideshare
 
 form:

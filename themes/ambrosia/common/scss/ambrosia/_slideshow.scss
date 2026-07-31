@@ -11,7 +11,7 @@
 	.sprocket-features, .g-swipercarousel-feature-slider {
 		&.layout-slideshow, [id^="g-swipercarousel-featuresslider-"] {
 			.sprocket-features-img-container, .g-swipercarousel-item-image {
-				height: 70vh;
+				height: min(70vh, 500px);
 				@include breakpoint(mobile-only) {
 					height: 450px;
 				}
@@ -20,7 +20,7 @@
 				}
 			}
 			.sprocket-features-title, .g-swipercarousel-item-title {
-				padding-top: 50vh;
+				padding-top: min(50vh, 320px);
 				@include breakpoint(desktop-range) {
 					padding-top: 320px;
 				}
@@ -33,7 +33,7 @@
 			}
 			.sprocket-features-arrows .arrow, .swiper-navigation .swiper-button-prev, .swiper-navigation .swiper-button-next {
 				background: transparent;
-				top: 50vh;
+				top: min(50vh, 320px);
 				@include breakpoint(desktop-range) {
 					top: 320px;
 				}

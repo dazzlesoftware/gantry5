@@ -1,6 +1,7 @@
 name: Carousel
 description: Display images in a carousel form.
 type: particle
+category: slider
 icon: fa-window-close
 
 configuration:

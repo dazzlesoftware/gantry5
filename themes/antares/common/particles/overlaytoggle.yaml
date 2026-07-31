@@ -1,6 +1,7 @@
 name: Overlay Toggle
 description: Displays Overlay Toggle
 type: particle
+category: general
 icon: fa-clone
 
 configuration:

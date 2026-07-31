@@ -1,6 +1,7 @@
 name: Popup Module
 description: Display Popup Module items.
 type: particle
+category: general
 icon: fa-clone
 
 form:

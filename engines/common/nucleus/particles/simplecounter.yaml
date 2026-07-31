@@ -1,6 +1,7 @@
 name: Simple Counter
 description: Display a countdown to a selected date.
 type: particle
+category: general
 icon: fa-calendar-plus-o
 
 configuration:

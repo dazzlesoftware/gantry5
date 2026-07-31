@@ -1,6 +1,7 @@
 name: Headerlicious
 description: Display neat looking header text with tagline.
 type: particle
+category: general
 icon: fa-header
 
 configuration:

@@ -1,6 +1,7 @@
 name: Image
 description: Display an image.
 type: particle
+category: media
 icon: fa-file-image-o
 
 configuration:

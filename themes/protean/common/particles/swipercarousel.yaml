@@ -1,6 +1,7 @@
 name: Swiper Carousel
 description: Display Swiper Carousel.
 type: particle
+category: slider
 icon: fa-sliders
 
 form:

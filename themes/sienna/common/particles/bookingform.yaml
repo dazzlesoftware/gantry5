@@ -1,6 +1,7 @@
 name: Booking Form
 description: Create simple booking forms.
 type: particle
+category: general
 icon: fa-suitcase
 
 configuration:

@@ -1,6 +1,7 @@
 name: Showcase Slider
 description: Background slider with thumbs
 type: particle
+category: slider
 icon: fa-camera-retro
 
 form:

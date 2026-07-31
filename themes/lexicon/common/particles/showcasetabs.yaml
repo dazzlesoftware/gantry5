@@ -1,6 +1,7 @@
 name: Showcase Tabs
 description: Displays Showcase Tabs.
 type: particle
+category: slider
 icon: fa-table
 
 configuration:

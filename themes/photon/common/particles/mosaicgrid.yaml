@@ -1,6 +1,7 @@
 name: Mosaic Grid
 description: Display Mosaic Grid content.
 type: particle
+category: media
 icon: fa-th
 
 configuration:

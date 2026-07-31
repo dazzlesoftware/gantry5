@@ -1,6 +1,7 @@
 name: Activities
 description: Display various activities as a image grid.
 type: particle
+category: dynamic-content
 icon: fa-file-image-o
 
 configuration:

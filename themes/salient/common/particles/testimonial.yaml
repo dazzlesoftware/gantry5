@@ -1,6 +1,7 @@
 name: Testimonial
 description: Displays Testimonial
 type: particle
+category: content
 icon: fa-commenting-o
 
 configuration:

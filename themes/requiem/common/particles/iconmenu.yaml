@@ -1,6 +1,7 @@
 name: Icon Menu
 description: Display icon menu.
 type: particle
+category: general
 icon: fa-plus-circle
 
 configuration:

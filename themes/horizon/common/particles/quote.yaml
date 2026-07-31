@@ -1,6 +1,7 @@
 name: Quote
 description: Show impressive quote on your website. 
 type: particle
+category: content
 icon: fa-quote-right
 
 form:

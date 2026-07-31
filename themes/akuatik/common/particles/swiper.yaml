@@ -1,6 +1,7 @@
 name: Swiper
 description: Swiper JS
 type: particle
+category: slider
 icon: fa-sliders
 
 form:

@@ -2,6 +2,7 @@ name: Pickers Test
 description: Colorpicker test.
 type: particle
 
+category: general
 form:
   fields:
     enabled:

@@ -1,6 +1,7 @@
 name: Promo
 description: Display newsletter form.
 type: particle
+category: content
 icon: fa-header
 
 configuration:

@@ -1,6 +1,7 @@
 name: Simple Form
 description: Create simple forms.
 type: particle
+category: general
 icon: fa-wpforms
 
 configuration:

@@ -1,6 +1,7 @@
 name: Chartist
 description: Display Chartist items.
 type: particle
+category: general
 icon: fa-line-chart
 
 configuration:

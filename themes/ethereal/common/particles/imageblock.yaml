@@ -1,6 +1,7 @@
 name: Image Block
 description: Display image block content.
 type: particle
+category: media
 icon: fa-file-photo-o
 
 configuration:

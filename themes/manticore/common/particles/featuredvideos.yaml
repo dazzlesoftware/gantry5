@@ -1,6 +1,7 @@
 name: Featured Videos
 description: Display featured videos.
 type: particle
+category: media
 icon: fa-youtube
 
 form:

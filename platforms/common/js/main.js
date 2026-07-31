@@ -1612,7 +1612,7 @@ class Particle extends Atom {
     layout() {
         var settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
             subtype = this.getSubType() ? 'data-lm-blocksubtype="' + this.getSubType() + '"' : '',
-            klass = this.getSourceClass();
+            klass = this.getCategoryClass();
 
         if (this.hasInheritance()) {
             klass = ' g-inheriting';
@@ -1721,12 +1721,12 @@ class Particle extends Atom {
         return template ? template.getAttribute('data-lm-icon') : 'fa-cube';
     }
 
-    getSourceClass() {
+    getCategoryClass() {
         var type = this.getType(),
             subtype = this.getSubType(),
             template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || '') + '"]');
 
-        return template && template.getAttribute('data-lm-source') === 'theme' ? ' theme-particle' : '';
+        return template ? ' particle-category-' + (template.getAttribute('data-lm-category') || 'general') : '';
     }
 
     getLimits(parent) {

@@ -1,6 +1,7 @@
 name: Content Cubes
 description: Display content in side-by-side cubes.
 type: particle
+category: content
 icon: fa-cube
 
 configuration:

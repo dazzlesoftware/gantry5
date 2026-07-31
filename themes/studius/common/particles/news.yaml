@@ -1,6 +1,7 @@
 name: News
 description: Display user stories.
 type: particle
+category: dynamic-content
 icon: fa-newspaper
 
 form:

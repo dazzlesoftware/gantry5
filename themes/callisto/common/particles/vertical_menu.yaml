@@ -1,6 +1,7 @@
 name: Vertical Menu
 description: Simple menu
 type: particle
+category: general
 icon: fa-bars
 
 configuration:

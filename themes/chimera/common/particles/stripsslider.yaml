@@ -1,6 +1,7 @@
 name: Strips Slider
 description: Display Strips Slider.
 type: particle
+category: slider
 icon: fa-columns
 
 configuration:

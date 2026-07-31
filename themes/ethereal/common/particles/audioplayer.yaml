@@ -1,6 +1,7 @@
 name: Audio Player
 description: Play music through audio player interface.
 type: particle
+category: media
 icon: fa-music
 
 configuration:

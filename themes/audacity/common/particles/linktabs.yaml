@@ -1,6 +1,7 @@
 name: Link Tabs
 description: Displays Link Tabs.
 type: particle
+category: slider
 icon: fa-table
 
 configuration:

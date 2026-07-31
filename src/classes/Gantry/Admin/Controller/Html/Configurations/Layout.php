@@ -87,9 +87,11 @@ class Layout extends HtmlController
         $layout = $this->getLayout($outline);
 
         $groups = [
-            'Positions' => ['position' => [], 'spacer' => [], 'system' => []],
-            'Particles' => ['particle' => []]
+            'Positions' => ['position' => [], 'spacer' => [], 'system' => []]
         ];
+        foreach ($this->container['particles']->categories() as $category) {
+            $groups[$category] = ['particle' => []];
+        }
 
         $particles = [
             'position' => [],
@@ -104,10 +106,11 @@ class Layout extends HtmlController
         }
         unset($group);
 
-        foreach ($groups as $section => $children) {
-            foreach ($children as $key => $child) {
-                $groups[$section][$key] = $particles[$key];
-            }
+        foreach (['position', 'spacer', 'system'] as $type) {
+            $groups['Positions'][$type] = $particles[$type];
+        }
+        foreach ($particles['particle'] as $name => $particle) {
+            $groups[$particle['_gantry_category']]['particle'][$name] = $particle;
         }
 
         $this->params['page_id'] = $outline;
@@ -508,12 +511,15 @@ class Layout extends HtmlController
             $type = isset($particle['type']) ? $particle['type'] : 'particle';
             $particleName = isset($particle['name']) ? $particle['name'] : $name;
             $particleIcon = isset($particle['icon']) ? $particle['icon'] : null;
+            $category = $this->container['particles']->category($name, $particle);
 
             if (!$onlyEnabled || $config->get("particles.{$name}.enabled", true)) {
                 $list[$type][$name] = [
                     'name' => $particleName,
                     'icon' => $particleIcon,
-                    '_gantry_source' => $this->container['particles']->isThemeParticle($name) ? 'theme' : null
+                    '_gantry_source' => $this->container['particles']->isThemeParticle($name) ? 'theme' : null,
+                    '_gantry_category' => $category['label'],
+                    '_gantry_category_slug' => $category['slug']
                 ];
             }
         }

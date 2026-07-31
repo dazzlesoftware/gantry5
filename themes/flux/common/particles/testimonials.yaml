@@ -1,6 +1,7 @@
 name: Testimonials
 description: Display testimonials.
 type: particle
+category: content
 icon: fa-id-badge
 
 configuration:

@@ -1,6 +1,7 @@
 name: Simple Content
 description: Displays Simple Content
 type: particle
+category: content
 icon: fa-file-text-o
 
 configuration:

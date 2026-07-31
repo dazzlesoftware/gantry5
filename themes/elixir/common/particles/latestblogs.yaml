@@ -1,6 +1,7 @@
 name: Latest Blogs
 description: Display latest news.
 type: particle
+category: dynamic-content
 icon: fa-newspaper-o
 
 form:

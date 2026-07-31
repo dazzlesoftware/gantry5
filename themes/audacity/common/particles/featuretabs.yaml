@@ -1,6 +1,7 @@
 name: Feature Tabs
 description: Displays Feature Tabs.
 type: particle
+category: slider
 icon: fa-table
 
 configuration:

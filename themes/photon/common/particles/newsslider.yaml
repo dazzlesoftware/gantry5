@@ -1,6 +1,7 @@
 name: News Slider
 description: Display News Slider items.
 type: particle
+category: slider
 icon: fa-list
 
 configuration:

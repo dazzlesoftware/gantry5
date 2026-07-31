@@ -1,6 +1,7 @@
 name: Copyright
 description: Display copyright information.
 type: particle
+category: general
 icon: fa-copyright
 
 configuration:

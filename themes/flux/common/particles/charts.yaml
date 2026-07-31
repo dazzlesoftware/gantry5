@@ -1,6 +1,7 @@
 name: Simple Charts
 description: Display good-looking charts.
 type: particle
+category: general
 icon: fa-line-chart
 
 configuration:

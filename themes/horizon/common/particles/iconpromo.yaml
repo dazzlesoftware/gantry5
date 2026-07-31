@@ -1,6 +1,7 @@
 name: Icon Promo
 description: Display icon promo with text.
 type: particle
+category: content
 icon: fa-file
 
 form:

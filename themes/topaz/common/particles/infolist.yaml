@@ -1,6 +1,7 @@
 name: Info List
 description: Displays Info List
 type: particle
+category: content
 icon: fa-info-circle
 
 configuration:

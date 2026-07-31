@@ -1,6 +1,7 @@
 name: OffSidebar Toggle
 description: Display Pricing Table items.
 type: particle
+category: general
 icon: fa-bars
 
 configuration:

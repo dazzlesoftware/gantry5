@@ -1,6 +1,7 @@
 name: Quick Menu
 description: Display quick menu for your coffe/restaurant visitors.
 type: particle
+category: general
 icon: fa-cutlery
 
 configuration:

@@ -1,6 +1,7 @@
 name: Ethereal Block
 description: Display content in the Ethereal Block.
 type: particle
+category: general
 icon: fa-indent
 
 configuration:

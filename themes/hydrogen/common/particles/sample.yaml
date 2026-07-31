@@ -1,6 +1,7 @@
 name: Sample Content
 description: Displays Sample Content
 type: particle
+category: general
 icon: far fa-edit
 
 configuration:

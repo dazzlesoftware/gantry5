@@ -1,6 +1,7 @@
 name: User Stories
 description: Display user stories.
 type: particle
+category: content
 icon: fa-users
 
 form:

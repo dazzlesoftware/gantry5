@@ -1,6 +1,7 @@
 name: Simple CTA
 description: Display simple call to action.
 type: particle
+category: general
 icon: fa-battery-4
 
 form:

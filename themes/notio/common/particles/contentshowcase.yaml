@@ -1,6 +1,7 @@
 name: Content Showcase
 description: Display content with additional snippets.
 type: particle
+category: slider
 icon: fa-bookmark
 
 form:

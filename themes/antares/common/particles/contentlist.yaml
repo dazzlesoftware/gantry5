@@ -1,6 +1,7 @@
 name: Content List
 description: Display content list content.
 type: particle
+category: content
 icon: fa-th-list
 
 configuration:

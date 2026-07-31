@@ -1,6 +1,7 @@
 name: Particles
 description: A lightweight particle for creating aniamted background particles.
 type: particle
+category: dynamic-content
 icon: fa-snowflake-o
 
 form:

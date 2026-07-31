@@ -1,6 +1,7 @@
 name: Logo
 description: Display a logo.
 type: particle
+category: general
 icon: fa-file-image-o
 
 configuration:
