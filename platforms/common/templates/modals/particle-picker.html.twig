@@ -15,10 +15,11 @@
                         <ul>
                             {% for type, particle in list %}
                                 {% for item_key, item in particle %}
-                                    <li class="g5-lm-particle-{{ type }}"
+                                    <li class="g5-lm-particle-{{ type }}{{ item._gantry_source|default(null) == 'theme' ? ' theme-particle' : '' }}"
                                         data-lm-nodrag
                                         data-mm-type="particle"
                                         data-lm-blocktype="{{ type }}"
+                                        {% if item._gantry_source|default(null) == 'theme' %}data-lm-source="theme"{% endif %}
                                         data-mm-filter="{{ item.name }}"
                                         data-lm-subtype="{{ item_key }}">
                                         <span class="icon"><i class="fa fa-fw {{ item.icon|default('fa-cube') }}" aria-hidden="true"></i></span>

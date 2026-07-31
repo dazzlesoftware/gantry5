@@ -510,7 +510,11 @@ class Layout extends HtmlController
             $particleIcon = isset($particle['icon']) ? $particle['icon'] : null;
 
             if (!$onlyEnabled || $config->get("particles.{$name}.enabled", true)) {
-                $list[$type][$name] = ['name' => $particleName, 'icon' => $particleIcon];
+                $list[$type][$name] = [
+                    'name' => $particleName,
+                    'icon' => $particleIcon,
+                    '_gantry_source' => $this->container['particles']->isThemeParticle($name) ? 'theme' : null
+                ];
             }
         }
 

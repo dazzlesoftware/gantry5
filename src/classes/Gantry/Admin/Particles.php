@@ -29,6 +29,8 @@ class Particles
     protected $files;
     /** @var array|null */
     protected $particles;
+    /** @var array|null */
+    protected $themeParticleNames;
 
     /**
      * Particles constructor.
@@ -104,6 +106,9 @@ class Particles
             }
             if (in_array($type, ['spacer', 'system'])) {
                 $type = 'position';
+            }
+            if ($this->isThemeParticle($name)) {
+                $particle['_gantry_source'] = 'theme';
             }
             $list[$type][$name] = $particle;
         }
@@ -208,5 +213,25 @@ class Particles
         }
 
         return $this->files;
+    }
+
+    /**
+     * Returns true when the active particle blueprint is supplied by the theme.
+     * Theme overrides of engine particles are intentionally treated as theme particles.
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function isThemeParticle($name)
+    {
+        if (null === $this->themeParticleNames) {
+            /** @var UniformResourceLocator $locator */
+            $locator = $this->container['locator'];
+            $paths = $locator->findResources('gantry-theme://particles');
+            $files = (new ConfigFileFinder)->listFiles($paths);
+            $this->themeParticleNames = array_fill_keys(array_keys($files), true);
+        }
+
+        return isset($this->themeParticleNames[$name]);
     }
 }

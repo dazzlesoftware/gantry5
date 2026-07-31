@@ -620,7 +620,11 @@ class Menu extends HtmlController
             $type = isset($particle['type']) ? $particle['type'] : 'particle';
             $particleName = isset($particle['name']) ? $particle['name'] : $name;
             $particleIcon = isset($particle['icon']) ? $particle['icon'] : null;
-            $list[$type][$name] = ['name' => $particleName, 'icon' => $particleIcon];
+            $list[$type][$name] = [
+                'name' => $particleName,
+                'icon' => $particleIcon,
+                '_gantry_source' => $this->container['particles']->isThemeParticle($name) ? 'theme' : null
+            ];
         }
 
         return $list;

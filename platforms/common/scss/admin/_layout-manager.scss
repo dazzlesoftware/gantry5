@@ -1,4 +1,5 @@
 $particle: #2A82B7;
+$theme-particle: #8F4DAE;
 $position: #359AD9;
 $spacer: #eee;
 $system: #20A085;
@@ -562,6 +563,14 @@ $atom: #9055AF;
             &.g-inheriting {
                 @include stripes-background($particle);
             }
+
+            &.theme-particle {
+                background-color: $theme-particle;
+
+                &.g-inheriting {
+                    @include stripes-background($theme-particle);
+                }
+            }
         }
 
         .spacer {
@@ -987,6 +996,15 @@ $atom: #9055AF;
                     border: 0;
                     background-color: $particle;
                     color: #fff;
+                }
+            }
+
+            &.theme-particle[data-lm-blocktype="particle"], &.theme-particle[data-mm-blocktype="particle"], &.theme-particle[data-pm-blocktype="particle"] {
+                color: $theme-particle;
+                border-color: $theme-particle;
+
+                &.original-placeholder, .particle-icon {
+                    background-color: $theme-particle;
                 }
             }
 
