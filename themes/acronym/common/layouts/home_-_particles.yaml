@@ -121,7 +121,7 @@ content:
     attributes:
       class: ''
       lazyload: enabled
-      displayitems: '5'
+      displayitems: '4'
       title: ''
       description: ''
       nav: enabled

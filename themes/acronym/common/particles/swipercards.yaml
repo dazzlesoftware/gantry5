@@ -29,9 +29,10 @@ form:
     displayitems:
       type: input.number
       label: Display at Once
-      description: Number of items to display at once.
+      description: Number of items to display at once (maximum 4 in Acronym).
       min: 1
-      default: 5
+      max: 4
+      default: 4
 
     title:
       type: input.text

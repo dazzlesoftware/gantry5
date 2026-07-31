@@ -7,15 +7,20 @@
 
     {% set navigationValue = particle.nav|default('enabled') ~ '' %}
     {% set navigationEnabled = navigationValue in ['enable', 'enabled', 'true', '1'] %}
+    {% set displayItems = particle.displayitems|default(4) %}
+    {% if displayItems > 4 %}
+        {% set displayItems = 4 %}
+    {% endif %}
 
-    <div class="{{ particle.class|e }} g-swipercards g-swipercards-{{ particle.displayitems|default(5)|e }}-items">
+    <div class="{{ particle.class|e }} g-swipercards g-swipercards-{{ displayItems|e }}-items"
+         data-carousel-id="g-swipercarousel-{{ id }}">
         {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
         {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|raw }}</div>{% endif %}
 
         <div id="g-swipercarousel-{{ id }}"
              class="g-swipercarousel swiper{% if navigationEnabled %} g-swipercards-show-nav{% endif %}"
              data-g-swiper
-             data-slides-per-view="{{ particle.displayitems|default(5)|e }}"
+             data-slides-per-view="{{ displayItems|e }}"
              data-navigation="{{ particle.nav|default('enabled')|e }}"
              data-pagination="disabled"
              data-loop="{{ particle.loop|default('enabled')|e }}"
@@ -50,13 +55,14 @@
                 </div>
             {% endfor %}
 
-            {% if navigationEnabled %}
-                <div class="swiper-navigation">
-                    <button class="swiper-button-prev" type="button" aria-label="Previous slide"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-                    <button class="swiper-button-next" type="button" aria-label="Next slide"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-                </div>
-            {% endif %}
         </div>
+
+        {% if navigationEnabled %}
+            <div class="custom-swiper-navigation swiper-navigation">
+                <button class="swiper-button-prev" type="button" aria-label="Previous slide"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                <button class="swiper-button-next" type="button" aria-label="Next slide"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 
