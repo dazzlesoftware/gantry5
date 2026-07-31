@@ -5,8 +5,10 @@
         <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
 
-    {% set navigationEnabled = particle.nav in ['enable', 'enabled', true, 1, '1'] %}
-    {% set paginationEnabled = particle.dots in ['enable', 'enabled', true, 1, '1'] %}
+    {% set navigationValue = particle.nav|default('1') ~ '' %}
+    {% set paginationValue = particle.dots|default('0') ~ '' %}
+    {% set navigationEnabled = navigationValue in ['enable', 'enabled', 'true', '1'] %}
+    {% set paginationEnabled = paginationValue in ['enable', 'enabled', 'true', '1'] %}
 
     {% if particle.footerShadow %}
         {% styles with { priority: -10 } %}

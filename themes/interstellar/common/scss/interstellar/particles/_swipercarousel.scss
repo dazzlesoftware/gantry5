@@ -415,7 +415,9 @@
         border: 0;
         color: inherit;
         font: inherit;
-        padding: 0;
+        box-sizing: border-box;
+        min-width: 0;
+        padding: 0 $content-padding 0 0;
         text-align: left;
         flex: 0 0 auto;
         margin: 0px;
@@ -439,11 +441,13 @@
         }
         span {
             display: block;
-            margin-right: 1rem;
+            max-width: 100%;
+            margin: 0;
+            overflow-wrap: anywhere;
+            white-space: normal;
 
             .dir-rtl & {
-                margin-left: 1rem;
-                margin-right: 0;
+                text-align: right;
             }
         }
         a {
