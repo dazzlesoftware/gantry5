@@ -1,0 +1,124 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
+
+    {% set navigationEnabled = particle.nav in ['enable', 'enabled', true, 1, '1'] %}
+    {% set paginationEnabled = particle.dots in ['enable', 'enabled', true, 1, '1'] %}
+    {% set showcase = particle.layout == 'showcase' %}
+
+    {% if showcase %}
+        <div class="g-container-wrapper-panel">
+            <div class="g-container carousel">
+                {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+                <div class="g-swipercarousel-panel-container" id="g-swipercarousel-panel-{{ id }}" role="tablist">
+                    {% for item in particle.items|default([]) %}
+                        <button class="g-swipercarousel-panel{% if loop.first %} selected{% endif %}"
+                                type="button" role="tab" data-slide-index="{{ loop.index0 }}"
+                                aria-selected="{{ loop.first ? 'true' : 'false' }}">
+                            {% if item.title %}<span class="g-swipercarousel-panel-title">{{ item.title|raw }}</span>{% endif %}
+                            {% if item.subtitle %}<span class="g-swipercarousel-panel-subtitle">{{ item.subtitle|raw }}</span>{% endif %}
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="{{ showcase ? 'g-container-wrapper' : '' }}">
+        <div class="{{ showcase ? 'g-container carousel' : '' }}">
+            <div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|default('standard')|e }}"
+                 {% if showcase %}data-g-swiper-showcase data-panel-selector="#g-swipercarousel-panel-{{ id }}"{% endif %}>
+                {% if showcase %}
+                    <div class="g-swipercarousel-panel-indicator" aria-hidden="true">
+                        <svg width="96" height="46" viewBox="0 0 95.13 45.44" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M0,14.75c28.5-1.13,22.56,30.69,48.25,30.69c20.44,0.03,24.25-32.69,46.88-30.69V0H0V14.75z"/>
+                        </svg>
+                    </div>
+                {% elseif particle.title %}
+                    <h2 class="g-title">{{ particle.title|raw }}</h2>
+                {% endif %}
+
+                <div id="g-swipercarousel-{{ id }}"
+                     class="g-swipercarousel swiper {{ particle.width|default('g-swipercarousel-fullwidth')|e }}"
+                     data-g-swiper
+                     data-slides-per-view="1"
+                     data-navigation="{{ particle.nav|default('enabled')|e }}"
+                     data-pagination="{{ particle.dots|default('disabled')|e }}"
+                     data-loop="{{ showcase ? 'disabled' : particle.loop|default('enabled')|e }}"
+                     data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+                     data-autoplay-delay="{{ particle.autoplaySpeed|default('5000')|e }}"
+                     data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+                     data-speed="{{ particle.transitionSpeed|default('500')|e }}"
+                     data-effect="{{ particle.effect|default('fade')|e }}">
+                    {% for item in particle.items|default([]) %}
+                        {% if showcase %}
+                            <div class="g-swipercarousel-showcase-item">
+                                <div class="g-swipercarousel-content-left">
+                                    <div class="g-swipercarousel-content-padding">
+                                        {% if item.title %}<div class="g-swipercarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                                        {% if item.desc %}<div class="g-swipercarousel-item-desc">{{ item.desc|raw }}</div>{% endif %}
+                                        {% if item.link %}
+                                            <div class="g-swipercarousel-item-link">
+                                                <a target="{{ item.buttontarget|default('_self')|e }}"
+                                                   {% if item.buttontarget|default('_self') == '_blank' %}rel="noopener noreferrer"{% endif %}
+                                                   class="g-swipercarousel-item-button button {{ item.buttonclass|e }}"
+                                                   href="{{ item.link|e }}">{{ item.linktext|raw }}</a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="g-swipercarousel-content-right">
+                                    <div class="g-swipercarousel-content-padding">
+                                        {% if item.icon %}<i class="{{ item.icon|e }}" aria-hidden="true"></i>{% endif %}
+                                        {% if item.icon2 %}<i class="{{ item.icon2|e }}" aria-hidden="true"></i>{% endif %}
+                                        {% if item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.title|striptags|e }}" loading="lazy" />{% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif particle.layout == 'testimonial' %}
+                            {% if item.desc %}
+                                <div class="g-swipercarousel-item-desc">
+                                    {% if item.icon %}<i class="{{ item.icon|e }}" aria-hidden="true"></i>{% endif %}
+                                    {{ item.desc|raw }}
+                                    {% if item.title %}<div class="g-swipercarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="g-swipercarousel-standard-item">
+                                {% if item.image %}<div class="image"><img src="{{ url(item.image)|e }}" alt="{{ item.title|striptags|e }}" loading="lazy" /></div>{% endif %}
+                                {% if item.title %}<div class="g-swipercarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                                {% if item.desc %}<div class="g-swipercarousel-item-desc">{{ item.desc|raw }}</div>{% endif %}
+                                {% if item.link %}
+                                    <div class="g-swipercarousel-item-link">
+                                        <a target="{{ item.buttontarget|default('_self')|e }}"
+                                           {% if item.buttontarget|default('_self') == '_blank' %}rel="noopener noreferrer"{% endif %}
+                                           class="g-swipercarousel-item-button button {{ item.buttonclass|e }}"
+                                           href="{{ item.link|e }}">{{ item.linktext|raw }}</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if navigationEnabled %}
+                        <div class="swiper-navigation">
+                            <button class="swiper-button-prev" type="button" aria-label="Previous slide">{{ particle.prevText|default('<i class="fa fa-chevron-circle-left" aria-hidden="true"></i>')|raw }}</button>
+                            <button class="swiper-button-next" type="button" aria-label="Next slide">{{ particle.nextText|default('<i class="fa fa-chevron-circle-right" aria-hidden="true"></i>')|raw }}</button>
+                        </div>
+                    {% endif %}
+                    {% if paginationEnabled %}<div class="swiper-pagination"></div>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% if particle.layout == 'showcase' %}
+        {% do gantry.document.addScript(url('gantry-theme://js/swipercarousel.js'), 12, 'footer') %}
+    {% endif %}
+{% endblock %}

@@ -5557,11 +5557,22 @@
             `;
         this.element.append(navigation);
       }
-      if (enabled(this.element.dataset.pagination) && !this.element.querySelector(":scope > .swiper-pagination")) {
+      if (enabled(this.element.dataset.pagination) && !this.getPaginationElement()) {
         const pagination = document.createElement("div");
         pagination.className = "swiper-pagination";
         this.element.append(pagination);
       }
+    }
+    getPaginationElement() {
+      const selector2 = this.element.dataset.paginationSelector;
+      if (selector2) {
+        try {
+          return document.querySelector(selector2);
+        } catch (error) {
+          console.warn(`Invalid Swiper pagination selector: ${selector2}`, error);
+        }
+      }
+      return this.element.querySelector(":scope > .swiper-pagination");
     }
     create() {
       const { dataset } = this.element;
@@ -5606,7 +5617,7 @@
         observer: true,
         observeParents: true,
         pagination: pagination ? {
-          el: this.element.querySelector(".swiper-pagination"),
+          el: this.getPaginationElement(),
           bulletElement: "button",
           clickable: true,
           renderBullet(index, className) {
@@ -5625,7 +5636,16 @@
       return instance;
     }
     syncState(swiper) {
+      var _a;
       this.element.classList.toggle("swiper-rtl", swiper.rtlTranslate);
+      const activeSlide = ((_a = swiper.slides) == null ? void 0 : _a[swiper.activeIndex]) || null;
+      this.element.dispatchEvent(new CustomEvent("g5:swiper:change", {
+        bubbles: true,
+        detail: {
+          activeSlide,
+          activeIndex: swiper.realIndex
+        }
+      }));
     }
   };
   var initialize = (root = document) => {

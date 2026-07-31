@@ -18,7 +18,7 @@ layout:
       - 'custom-2069 30'
   /slideshow/:
     -
-      - owlcarousel-7547
+      - swipercarousel-7547
   /above/:
     -
       - 'spacer-spacer-5973 40'
@@ -28,7 +28,7 @@ layout:
   /utility/: {  }
   /feature/:
     -
-      - owlcarousel-3975
+      - swipercarousel-3975
   /expanded/:
     -
       - 'simplecontent-5168 30'
@@ -136,7 +136,7 @@ content:
     title: 'FP Promo Desc'
     attributes:
       html: "<p>Not only that, but thanks to the powerful Gantry 5 framework, you can easily assign individual elements to specific screen types.</p>\n<a href=\"http://www.gantry.org\" class=\"button\">Learn More</a>"
-  owlcarousel-7547:
+  swipercarousel-7547:
     title: 'FP Slideshow Services'
     attributes:
       title: Services
@@ -228,7 +228,7 @@ content:
           readmore_class: ''
           readmore_target: _self
           title: 'Contact Info'
-  owlcarousel-3975:
+  swipercarousel-3975:
     title: 'FP Feature Testimonials'
     attributes:
       title: Testimonials

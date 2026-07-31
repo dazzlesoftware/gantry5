@@ -17,7 +17,7 @@ layout:
       - 'social-7220 20'
   /slideshow/:
     -
-      - owlcarousel-5492
+      - swipercarousel-5492
   /header/:
     -
       - mosaicgrid-1440
@@ -151,11 +151,11 @@ content:
         class: align-right
     block:
       class: hidden-phone
-  owlcarousel-5492:
-    title: 'About Us Owl Carousel'
+  swipercarousel-5492:
+    title: 'About Us Swiper Carousel'
     attributes:
       class: center-block
-      width: g-owlcarousel-compact
+      width: g-swipercarousel-compact
       animateOut: fadeOut
       prevText: '&larr;'
       nextText: '&rarr;'

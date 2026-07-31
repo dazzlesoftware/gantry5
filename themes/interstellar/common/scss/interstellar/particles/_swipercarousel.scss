@@ -1,348 +1,7 @@
-//-------------------------------------------//
-
-// OWL CAROUSEL ORIGINAL STYLING
-
-/*
-*  Owl Carousel - Animate Plugin
-*/
-.owl-carousel .animated {
-    -webkit-animation-duration: 1000ms;
-    animation-duration: 1000ms;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-.owl-carousel .owl-animated-in {
-    z-index: 0;
-}
-
-.owl-carousel .owl-animated-out {
-    z-index: 1;
-}
-
-.owl-carousel .fadeOut {
-    -webkit-animation-name: fadeOut;
-    animation-name: fadeOut;
-}
-
-@-webkit-keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-/*
-*  Owl Carousel - Auto Height Plugin
-*/
-.owl-height {
-    -webkit-transition: height 500ms ease-in-out;
-    -moz-transition: height 500ms ease-in-out;
-    -ms-transition: height 500ms ease-in-out;
-    -o-transition: height 500ms ease-in-out;
-    transition: height 500ms ease-in-out;
-}
-
-/*
-*  Core Owl Carousel CSS File
-*/
-.owl-carousel {
-    display: none;
-    width: 100%;
-    -webkit-tap-highlight-color: transparent;
-    /* position relative and z-index fix webkit rendering fonts issue */
-    position: relative;
-    z-index: 1;
-}
-
-.owl-carousel .owl-stage {
-    position: relative;
-    -ms-touch-action: pan-Y;
-}
-
-.owl-carousel .owl-stage:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-}
-
-.owl-carousel .owl-stage-outer {
-    position: relative;
-    overflow: hidden;
-    /* fix for flashing background */
-    -webkit-transform: translate3d(0px, 0px, 0px);
-}
-
-.owl-carousel .owl-controls .owl-nav .owl-prev,
-.owl-carousel .owl-controls .owl-nav .owl-next,
-.owl-carousel .owl-controls .owl-dot {
-    cursor: pointer;
-    cursor: hand;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.owl-carousel.owl-loaded {
-    display: block;
-}
-
-.owl-carousel.owl-loading {
-    opacity: 0;
-    display: block;
-}
-
-.owl-carousel.owl-hidden {
-    opacity: 0;
-}
-
-.owl-carousel .owl-refresh .owl-item {
-    display: none;
-}
-
-.owl-carousel .owl-item {
-    position: relative;
-    min-height: 1px;
-    float: left;
-    width: 100%;
-    -webkit-backface-visibility: hidden;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transform: translate3d(0,0,0) !important;
-}
-
-.owl-carousel .owl-item img {
-    display: block;
-    width: 100%;
-    -webkit-transform-style: preserve-3d;
-}
-
-.owl-carousel.owl-text-select-on .owl-item {
-    -webkit-user-select: auto;
-    -moz-user-select: auto;
-    -ms-user-select: auto;
-    user-select: auto;
-}
-
-.owl-carousel .owl-grab {
-    cursor: move;
-    cursor: -webkit-grab;
-    cursor: -o-grab;
-    cursor: -ms-grab;
-    cursor: grab;
-}
-
-.owl-carousel.owl-rtl {
-    direction: rtl;
-}
-
-.owl-carousel.owl-rtl .owl-item {
-    float: right;
-}
-
-/* No Js */
-.no-js .owl-carousel {
-    display: block;
-}
-
-/*
-*  Owl Carousel - Lazy Load Plugin
-*/
-.owl-carousel .owl-item .owl-lazy {
-    opacity: 0;
-    -webkit-transition: opacity 400ms ease;
-    -moz-transition: opacity 400ms ease;
-    -ms-transition: opacity 400ms ease;
-    -o-transition: opacity 400ms ease;
-    transition: opacity 400ms ease;
-}
-
-.owl-carousel .owl-item img {
-    transform-style: preserve-3d;
-}
-
-/*
-*  Owl Carousel - Video Plugin
-*/
-.owl-carousel .owl-video-wrapper {
-    position: relative;
-    height: 100%;
-    background: #000;
-}
-
-.owl-carousel .owl-video-play-icon {
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    left: 50%;
-    top: 50%;
-    margin-left: -40px;
-    margin-top: -40px;
-    background: url("owl.video.play.png") no-repeat;
-    cursor: pointer;
-    z-index: 1;
-    -webkit-backface-visibility: hidden;
-    -webkit-transition: scale 100ms ease;
-    -moz-transition: scale 100ms ease;
-    -ms-transition: scale 100ms ease;
-    -o-transition: scale 100ms ease;
-    transition: scale 100ms ease;
-}
-
-.owl-carousel .owl-video-play-icon:hover {
-    -webkit-transition: scale(1.3, 1.3);
-    -moz-transition: scale(1.3, 1.3);
-    -ms-transition: scale(1.3, 1.3);
-    -o-transition: scale(1.3, 1.3);
-    transition: scale(1.3, 1.3);
-}
-
-.owl-carousel .owl-video-playing .owl-video-tn,
-.owl-carousel .owl-video-playing .owl-video-play-icon {
-    display: none;
-}
-
-.owl-carousel .owl-video-tn {
-    opacity: 0;
-    height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
-    -webkit-transition: opacity 400ms ease;
-    -moz-transition: opacity 400ms ease;
-    -ms-transition: opacity 400ms ease;
-    -o-transition: opacity 400ms ease;
-    transition: opacity 400ms ease;
-}
-
-.owl-carousel .owl-video-frame {
-    position: relative;
-    z-index: 1;
-}
-
-/*
-*  Owl Carousel - Nav & Dots
-*/
-.owl-nav {
-    opacity: 1;
-    transition: opacity 0.25s;
-    @include breakpoint(small-mobile-range) {
-        padding-bottom: $content-padding;
-    }
-    div, button {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 40px;
-        height: 40px;
-        display: inline-block;
-        background-color: transparent;
-        outline: none;
-        opacity: 1;
-        color: $white;
-        text-transform: uppercase;
-        font-size: $core-font-size + 1;
-        font-weight: $font-weight-bold;
-        transition: all 0.25s;
-        &:hover {
-            color: $accent-color-1;
-        }
-        @include breakpoint(small-mobile-range) {
-            position: relative;
-        }
-        &.owl-prev {
-            margin-right: $content-padding * 5;
-            @include breakpoint(small-mobile-range) {
-                margin-right: $content-padding * 2;
-            }
-        }
-        .dir-rtl & {
-            left: 0;
-            right: auto;
-
-            &.owl-next {
-                margin-left: $content-padding * 5;
-                @include breakpoint(small-mobile-range) {
-                    margin-left: $content-padding * 2;
-                }
-            }
-        }
-    }
-    &.disabled {
-      display: none;
-    }
-}
-.owl-controls {
-    @include breakpoint(small-mobile-range) {
-        text-align: center;
-    }
-}
-
-.owl-dots {
-    .owl-dot {
-        display: inline-block;
-        background: transparentize($white, 0.50);
-        width: 15px;
-        height: 15px;
-        padding: 0;
-        outline: none;
-        border-radius: 100%;
-        margin: 0 0.1rem;
-        background: transparent;
-        border: 2px solid $white;
-        transition: all 0.2s ease-out;
-        &.active {
-            background: $white;
-        }
-    }
-}
-
-.owlcarousel-offset {
-    margin-right: -45px !important;
-    margin-bottom: -45px !important;
-    margin-left: -45px !important;
-    @include breakpoint(mobile-only) {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-    }
-    position: relative;
-    z-index: 2;
-    &.size-100 {
-        flex-basis: auto;
-        width: auto;
-    }
-}
-
-//-------------------------------------------//
-
-.g-owlcarousel-layout-standard {
-    .owl-item {
+.g-swipercarousel-layout-standard {
+    .swiper-slide {
         .image {
+            position: relative;
             &:before {
                 position: absolute;
                 display: block;
@@ -358,12 +17,12 @@
             }
         }
     }
-    .owl-dots {
+    .swiper-pagination {
         position: absolute;
         bottom: 0;
         margin: $content-margin + $content-padding;
     }
-    .owl-nav {
+    .swiper-navigation {
         position: absolute;
         top: 0;
         left: 0;
@@ -372,7 +31,7 @@
         div, button {
             position: relative;
             border-radius: 100%;
-            &.owl-prev {
+            &.swiper-button-prev {
                 margin-right: $content-margin;
             }
         }
@@ -380,19 +39,22 @@
 }
 
 // THEME PARTICLES STYLING
-.g-owlcarousel {
+.g-swipercarousel {
+    position: relative;
+    overflow: hidden;
+
     &:hover {
-        .owl-nav {
+        .swiper-navigation {
             opacity: 1;
         }
     }
 }
 
-.g-owlcarousel-item-wrapper {
+.g-swipercarousel-item-wrapper {
     position: relative;
 }
 
-.g-owlcarousel-item-img {
+.g-swipercarousel-item-img {
     position: relative;
     &:after {
         position: absolute;
@@ -404,7 +66,7 @@
     }
 }
 
-.g-owlcarousel-item-content-container {
+.g-swipercarousel-item-content-container {
     position: absolute;
     margin: auto;
     top: 0;
@@ -430,20 +92,20 @@
     }
 }
 
-.g-owlcarousel-item-content-wrapper {
+.g-swipercarousel-item-content-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
 
-.g-owlcarousel-item-content {
+.g-swipercarousel-item-content {
     margin: $content-margin;
     padding: $content-padding;
-    .g-owlcarousel-fullwidth & {
+    .g-swipercarousel-fullwidth & {
         width: 100%;
     }
-    .g-owlcarousel-compact & {
+    .g-swipercarousel-compact & {
         width: 50%;
         .center-block & {
             margin: auto;
@@ -460,7 +122,7 @@
     }
 }
 
-.g-owlcarousel-item-title {
+.g-swipercarousel-item-title {
     font-family: get-font-family($font-family-default);
     font-size: $core-font-size + 2;
     color: $white;
@@ -474,7 +136,7 @@
     margin: $content-margin + $content-padding;
 }
 
-.g-owlcarousel-item-desc {
+.g-swipercarousel-item-desc {
     font-size: $core-font-size + 0.4;
     line-height: $core-line-height;
     font-weight: $font-weight-light;
@@ -485,7 +147,7 @@
     }
 }
 
-.g-owlcarousel-item-button {
+.g-swipercarousel-item-button {
     @include breakpoint(small-mobile-range) {
         padding: 0.25rem 1rem;
         font-weight: $font-weight-regular;
@@ -494,8 +156,8 @@
 }
 
 // Testimonial Layout
-.g-owlcarousel-layout-testimonial {
-    .owl-stage-outer {
+.g-swipercarousel-layout-testimonial {
+    .swiper-wrapper {
         @include breakpoint(no-mobile) {
             overflow: visible;
 
@@ -529,7 +191,7 @@
         letter-spacing: 1px;
         text-transform: uppercase;
     }
-    .g-owlcarousel-item-desc {
+    .g-swipercarousel-item-desc {
         font-family: get-font-family($font-family-serif);
         @include breakpoint(mobile-only) {
             display: block;
@@ -551,7 +213,7 @@
             margin: $content-margin;
         }
 
-        .g-owlcarousel-item-title {
+        .g-swipercarousel-item-title {
             font-family: get-font-family($font-family-default);
             font-weight: $font-weight-regular;
             font-style: normal;
@@ -563,29 +225,29 @@
         }
     }
 
-    .owl-dots {
+    .swiper-pagination {
         margin: $content-margin 0;
         text-align: center;
         vertical-align: middle;
-        .owl-dot {
+        .swiper-pagination-bullet {
             vertical-align: middle;
             border-radius: 100%;
             margin: 0 0.1rem;
             background: transparent;
             border: 2px solid $white;
             transition: all 0.2s ease-out;
-            &.active {
+            &.swiper-pagination-bullet-active {
                 background: $white;
             }
         }
     }
-    .owl-nav {
+    .swiper-navigation {
         margin: $content-margin 0;
         text-align: center;
         div, button {
             position: relative;
 
-            &.owl-prev {
+            &.swiper-button-prev {
                 margin-right: $content-padding;
             }
         }
@@ -593,19 +255,19 @@
 }
 
 // Showcase Layout
-.g-owlcarousel-layout-showcase {
+.g-swipercarousel-layout-showcase {
     position: relative;
 
-    .owl-controls {
+    .swiper-navigation {
         @include breakpoint(tablet-range) {
             margin-top: $content-margin + $content-padding;
         }
-        .owl-next {
+        .swiper-button-next {
             margin-right: $content-margin + $content-padding;
         }
     }
 
-    .g-owlcarousel-item-title {
+    .g-swipercarousel-item-title {
         font-weight: $font-weight-ultrabold;
         font-size: $core-font-size + 5rem;
         position: relative;
@@ -624,7 +286,7 @@
             font-size: $core-font-size + 2rem;
         }
     }
-    .g-owlcarousel-item-desc {
+    .g-swipercarousel-item-desc {
         font-weight: $font-weight-light;
         font-size: $core-font-size + 1.5rem;
         line-height: $core-line-height - 0.3;
@@ -638,34 +300,34 @@
             font-size: $core-font-size + 0.5;
         }
     }
-    .owl-item {
+    .swiper-slide {
         opacity: 0;
-        &.active {
+        &.swiper-slide-active {
             opacity: 1;
         }
     }
-    .item {
+    .g-swipercarousel-showcase-item {
         display: flex;
         flex-flow: row wrap;
         flex-wrap: wrap;
         width: 100%;
     }
-    .g-owlcarousel-content-left {
+    .g-swipercarousel-content-left {
         flex: 0 1 60%;
         width: 60%;
         @include breakpoint(mobile-only) {
             flex: 0 1 100%;
             width: 100%;
         }
-        .g-owlcarousel-content-padding {
+        .g-swipercarousel-content-padding {
             padding-right: $content-padding + $content-margin * 2;
             @include breakpoint(mobile-only) {
                 padding: 0;
             }
         }
     }
-    .g-owlcarousel-content-right {
-        .g-owlcarousel-content-padding {
+    .g-swipercarousel-content-right {
+        .g-swipercarousel-content-padding {
             padding-right: $content-padding + $content-margin * 2;
             @include breakpoint(mobile-only) {
                 padding: 0;
@@ -741,13 +403,20 @@
     }
 }
 
-.g-owlcarousel-panel-container {
+.g-swipercarousel-panel-container {
     display: flex;
     flex-flow: row wrap;
     flex-wrap: wrap;
     position: relative;
 
-    .g-owlcarousel-panel {
+    .g-swipercarousel-panel {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        font: inherit;
+        padding: 0;
+        text-align: left;
         flex: 0 0 auto;
         margin: 0px;
         width: 25%;
@@ -782,14 +451,14 @@
             width: 100%;
             height: 100%;
         }
-        .g-owlcarousel-panel-title {
+        .g-swipercarousel-panel-title {
             color: $accent-color-1;
             font-family: get-font-family($font-family-promo);
             font-weight: $font-weight-bold;
             font-size: $core-font-size + 0.1;
             line-height: $core-line-height - 0.3;
         }
-        .g-owlcarousel-panel-subtitle {
+        .g-swipercarousel-panel-subtitle {
             color: $base-text-color;
             font-family: get-font-family($font-family-promo);
             font-weight: $font-weight-regular;
@@ -798,15 +467,62 @@
     }
 }
 
-.g-owlcarousel-panel-indicator {
+.g-swipercarousel-panel-indicator {
     width: 96px;
     height: 50px;
     position: absolute;
     left: 0;
     z-index: 2;
-    .dir-rtl & {
-        left: 200px;
-    }
     transition: all 0.2s ease-out;
     top: -($content-margin + $content-padding + 0.95rem);
+}
+
+.g-swipercarousel {
+    .swiper-navigation {
+        button {
+            position: absolute;
+            top: 50%;
+            width: 44px;
+            height: 44px;
+            margin: -22px 0 0;
+            padding: 0;
+            color: $white;
+            background: transparent;
+            border: 0;
+            border-radius: 100%;
+            font-size: $core-font-size + 1;
+            z-index: 3;
+
+            &::after,
+            .swiper-navigation-icon {
+                display: none;
+            }
+        }
+
+        .swiper-button-prev {
+            left: $content-margin;
+        }
+
+        .swiper-button-next {
+            right: $content-margin;
+        }
+    }
+
+    .swiper-pagination {
+        .swiper-pagination-bullet {
+            width: 15px;
+            height: 15px;
+            margin: 0 0.1rem;
+            padding: 0;
+            border: 2px solid $white;
+            border-radius: 100%;
+            background: transparent;
+            opacity: 0.5;
+
+            &.swiper-pagination-bullet-active {
+                background: $white;
+                opacity: 1;
+            }
+        }
+    }
 }

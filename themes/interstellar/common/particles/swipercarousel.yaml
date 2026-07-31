@@ -1,0 +1,140 @@
+name: Swiper Carousel
+description: Display a responsive standard, testimonial, or showcase carousel powered by Swiper.
+type: particle
+icon: fa-sliders
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+    class:
+      type: input.selectize
+      label: CSS Classes
+    title:
+      type: input.text
+      label: Title
+      placeholder: Enter title
+    layout:
+      type: select.select
+      label: Layout
+      default: standard
+      options:
+        standard: Standard
+        testimonial: Testimonial
+        showcase: Showcase
+    width:
+      type: select.select
+      label: Width
+      default: g-swipercarousel-fullwidth
+      options:
+        g-swipercarousel-fullwidth: Full Width
+        g-swipercarousel-compact: Compact
+    effect:
+      type: select.select
+      label: Transition Effect
+      default: fade
+      options:
+        fade: Fade
+        slide: Slide
+    transitionSpeed:
+      type: input.number
+      label: Transition Speed
+      description: Transition duration in milliseconds.
+      default: 500
+      min: 0
+    nav:
+      type: select.select
+      label: Previous / Next
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+    prevText:
+      type: input.text
+      label: Previous Text
+    nextText:
+      type: input.text
+      label: Next Text
+    dots:
+      type: select.select
+      label: Pagination
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+    loop:
+      type: select.select
+      label: Loop
+      description: Showcase mode intentionally disables looping so its tabs remain synchronized.
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+    autoplay:
+      type: select.select
+      label: Autoplay
+      default: disabled
+      options:
+        enabled: Enable
+        disabled: Disable
+    autoplaySpeed:
+      type: input.number
+      label: Autoplay Delay
+      description: Delay between slides in milliseconds.
+      default: 5000
+      min: 1000
+    pauseOnHover:
+      type: select.select
+      label: Pause on Hover
+      default: enabled
+      options:
+        enabled: Enable
+        disabled: Disable
+    items:
+      type: collection.list
+      array: true
+      label: Carousel Items
+      description: Create each carousel slide.
+      value: name
+      ajax: true
+      fields:
+        .image:
+          type: input.imagepicker
+          label: Image
+        .icon:
+          type: input.icon
+          label: Icon
+        .icon2:
+          type: input.icon
+          label: Icon 2
+        .title:
+          type: input.text
+          label: Title
+        .subtitle:
+          type: input.text
+          label: Subtitle
+        .desc:
+          type: textarea.textarea
+          label: Description
+        .link:
+          type: input.text
+          label: Link
+        .linktext:
+          type: input.text
+          label: Link Text
+        .buttontarget:
+          type: select.selectize
+          label: Target
+          default: _self
+          options:
+            _self: Self
+            _blank: New Window
+        .buttonclass:
+          type: input.text
+          label: Button Class

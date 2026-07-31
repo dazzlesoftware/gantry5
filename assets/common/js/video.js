@@ -20,11 +20,15 @@
         }
 
         if (iframe.dataset.videoProvider === 'youtube') {
+            const targetOrigin = iframe.src.includes('youtube-nocookie.com')
+                ? 'https://www.youtube-nocookie.com'
+                : 'https://www.youtube.com';
+
             iframe.contentWindow.postMessage(JSON.stringify({
                 event: 'command',
                 func: command === 'pause' ? 'pauseVideo' : 'playVideo',
                 args: []
-            }), 'https://www.youtube.com');
+            }), targetOrigin);
         }
 
         if (iframe.dataset.videoProvider === 'vimeo') {
@@ -58,25 +62,8 @@
             }
 
             if (this.iframe) {
-                this.iframe.addEventListener('load', () => {
-                    providerFrames.set(this.iframe.contentWindow, this);
-
-                    if (this.iframe.dataset.videoProvider === 'youtube') {
-                        this.iframe.contentWindow?.postMessage(JSON.stringify({
-                            event: 'listening',
-                            id: this.element.id || 'g5-video'
-                        }), 'https://www.youtube.com');
-                    }
-
-                    if (this.iframe.dataset.videoProvider === 'vimeo') {
-                        ['play', 'pause', 'ended'].forEach((eventName) => {
-                            this.iframe.contentWindow?.postMessage({
-                                method: 'addEventListener',
-                                value: eventName
-                            }, 'https://player.vimeo.com');
-                        });
-                    }
-                });
+                this.iframe.addEventListener('load', () => this.registerProvider());
+                this.registerProvider();
             }
 
             if (this.control && this.video) {
@@ -95,6 +82,30 @@
             }
 
             this.sync();
+        }
+
+        registerProvider() {
+            if (!this.iframe?.contentWindow) {
+                return;
+            }
+
+            providerFrames.set(this.iframe.contentWindow, this);
+
+            if (this.iframe.dataset.videoProvider === 'youtube') {
+                this.iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'listening',
+                    id: this.element.id || 'g5-video'
+                }), 'https://www.youtube.com');
+            }
+
+            if (this.iframe.dataset.videoProvider === 'vimeo') {
+                ['play', 'pause', 'ended'].forEach((eventName) => {
+                    this.iframe.contentWindow.postMessage({
+                        method: 'addEventListener',
+                        value: eventName
+                    }, 'https://player.vimeo.com');
+                });
+            }
         }
 
         toggle() {
@@ -116,6 +127,10 @@
         activate() {
             if (this.iframe?.dataset.src && !this.iframe.hasAttribute('src')) {
                 this.iframe.src = this.iframe.dataset.src;
+            }
+
+            if (this.iframe && this.element.dataset.videoAutoplay === 'true') {
+                sendProviderCommand(this.iframe, 'play');
             }
 
             if (this.video?.dataset.videoAutoplay === 'true') {

@@ -100,5 +100,5 @@
         {% endif %}
     });
     </script>
-    <script src="{{ url('gantry-theme://js/owlcarousel.video.init.js') }}"></script>
+    {% do gantry.document.addScript(url('gantry-assets://js/video.js'), 12, 'footer') %}
 {% endblock %}

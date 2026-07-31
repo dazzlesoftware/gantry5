@@ -12,13 +12,19 @@ The Gantry administration application no longer imports or calls jQuery directly
 
 | Scope | Physical files | Distinct implementations |
 |---|---:|---:|
-| Theme JavaScript | 671 | 192 |
-| Theme Twig templates | 546 | 280 |
-| **Theme total** | **1,217** | **472** |
+| Theme JavaScript | 652 | 190 |
+| Theme Twig templates | 542 | 276 |
+| **Theme total** | **1,194** | **466** |
 
-All 1,217 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
+All 1,194 files contain an explicit jQuery reference. Generated bundles, `node_modules`, Composer `vendor` directories, distribution packages, caches, and compiled JavaScript directories are excluded.
 
 The original count was 1,579 physical files and 489 distinct implementations. Removing the obsolete RokSprocket trees and consolidating Simple Counter and Video into shared native core particles removed hundreds of duplicated jQuery-dependent theme files.
+
+The shared Video controller now handles HTML5 video, YouTube, and Vimeo with
+native media events and provider `postMessage` APIs. It pauses inactive Swiper
+slides and off-screen media, coordinates video playback with carousel
+autoplay, and contains no jQuery or Vzaar support. Fifteen copied
+`owlcarousel.video.init.js` helpers have been removed.
 
 ### Affected themes
 
@@ -127,7 +133,7 @@ Counts overlap because a file can belong to more than one family.
 |---|---:|---:|---:|---|
 | Simple Counter | 0 | 0 | 0 | Complete |
 | Video particle | 0 | 0 | 0 | Complete |
-| Video carousel / featured integrations | 23 | 8 | 17 | 3 |
+| Video carousel / featured integrations | 6 | 5 | 3 | 3 |
 | Search | 27 | 7 | 27 | 1 |
 | Fixed Header | 30 | 23 | 30 | 1 |
 | Mailchimp / Newsletter | 35 | 12 | 35 | 1 |
@@ -136,7 +142,7 @@ Counts overlap because a file can belong to more than one family.
 | Audio Player | 76 | 5 | 38 | 2 |
 | Swiper | 92 | 12 | 45 | 2 |
 | Single Page Navigation | 64 | 2 | 32 | 2 |
-| Owl runtime and dependent controllers | 62 | 21 | 29 | 3 |
+| Owl runtime and dependent controllers | 45 | 20 | 27 | 3 |
 | Calendar / CLNDR | 76 | 4 | 38 | 3 |
 | Gallery / Mosaic / Grid | 60 | 21 | 37 | 3 |
 | Slider / Slideshow | 117 | 101 | 40 | 4 |
@@ -213,8 +219,8 @@ particle:
   not previously have carousel SCSS have a theme-owned Accent 1 override for
   Swiper navigation and pagination.
 
-The specialized Owl layout overrides in Citadel, Galatea, Interstellar,
-Protean, Remnant, Sienna, and Topaz remain a separate migration
+The specialized Owl layout overrides in Citadel, Protean, Remnant, Sienna,
+and Topaz remain a separate migration
 batch. Their showcase, news slider, testimonial, Joomla-content, and video
 behaviors must be mapped explicitly to Swiper before their old Owl runtime
 can be removed.
@@ -224,6 +230,27 @@ and testimonial layouts now use a theme-owned `swipercarousel` override,
 shared Swiper assets, native pagination/navigation, and Swiper naming
 throughout its Twig, YAML, layout presets, SCSS, and media paths. Its copied
 Owl runtime has been removed.
+
+Galatea and Interstellar have also completed the migration. Galatea now uses
+its theme-owned Swiper slideshow presentation, while Interstellar preserves
+its standard, testimonial, and tabbed showcase layouts. The Interstellar
+showcase synchronization is handled by a small native ES2018+ controller.
+Both themes now use Swiper names throughout their particles, layout presets,
+SCSS, JavaScript, and media paths, and both copied Owl runtimes have been
+removed.
+
+The remaining Owl footprint is 45 JavaScript files (20 distinct variants)
+across 27 themes, plus 124 Twig templates, 12 YAML files, and 162 stylesheet
+files containing Owl-specific markup or selectors.
+
+Notio's specialized Video Carousel now uses the shared Swiper bundle and
+native Video controller. Its YouTube, Vimeo, local-file, and external-file
+sources support slide-aware pause/resume behavior without jQuery. Vzaar has
+been removed from maintained schemas and templates. The three legacy Owl
+video entry points in Citadel, Protean, and Remnant now accept only YouTube
+or Vimeo and use the shared native controller for local HTML5 playback;
+their remaining Owl runtime code will disappear when those full particles
+are migrated.
 
 ## 5. Proposed task batches
 
@@ -331,7 +358,7 @@ package-build.bat prod
 | JQ-CORE-004 | Remove DebugBar jQuery loading | Not started | DebugBar UI verification |
 | JQ-CORE-005 | Retire platform registration keys | Not started | Core callers removed |
 | JQ-THEME-001 | Consolidate Simple Counter | Complete | Shared native controller in common assets |
-| JQ-THEME-002 | Consolidate Video | Complete | Shared native controller in common assets |
+| JQ-THEME-002 | Consolidate Video | Complete | Shared native controller; HTML5, YouTube, Vimeo, and Swiper lifecycle support |
 | JQ-THEME-003 | Consolidate Fixed Header | Not started | None |
 | JQ-THEME-004 | Consolidate Search | Not started | JQ-CORE-002 patterns |
 | JQ-THEME-005 | Consolidate Mailchimp/Newsletter | Not started | Native request helper |

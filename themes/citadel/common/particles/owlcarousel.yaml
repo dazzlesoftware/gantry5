@@ -419,7 +419,7 @@ form:
         .video:
           type: input.text
           label: External Url
-          description: URL from YouTube, Vimeo, or vzaar
+          description: URL from YouTube or Vimeo
         .videolocal:
           type: input.videopicker
           label: Local Video

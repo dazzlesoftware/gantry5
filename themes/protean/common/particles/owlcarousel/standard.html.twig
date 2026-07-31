@@ -23,18 +23,19 @@
             </div>
             {% endif %}
 
-            {% if item.video and item.videosource == 'external' %}
+            {% set externalVideo = item.video|default('')|lower %}
+            {% if item.video and item.videosource == 'external' and ('youtube.com' in externalVideo or 'youtu.be' in externalVideo or 'vimeo.com' in externalVideo) %}
             <div class="video" id="video-item-{{ loop.index }}">
                 <a class="owl-video" href="{{ url(item.video)|e }}"></a>
             </div>
             {% endif %}
 
             {% if item.videolocal and item.videosource == 'local' %}
-            <div class="video" id="video-item-{{ loop.index }}">
-                <video {% if item.videothumb %}poster="{{ url(item.videothumb)|e }}"{% endif %}  {% if particle.videoloop == 'enabled' %}loop{% endif %}>
+            <div class="video" id="video-item-{{ loop.index }}" data-video-controller data-video-autoplay="{{ particle.videoautoplay == 'enabled' ? 'true' : 'false' }}">
+                <video class="g-video-nocontrols" data-video-autoplay="{{ particle.videoautoplay == 'enabled' ? 'true' : 'false' }}" preload="metadata" playsinline {% if item.videothumb %}poster="{{ url(item.videothumb)|e }}"{% endif %} {% if particle.videoloop == 'enabled' %}loop{% endif %}>
                     <source src="{{ url(item.videolocal)|e }}" type="video/mp4">
                     </video>
-                    <div class="owl-videolocal-play-icon"></div>
+                    <button type="button" class="owl-videolocal-play-icon g-videolocal-play" aria-label="Play video" aria-pressed="false"></button>
                 </div>
                 {% endif %}
 

@@ -17,7 +17,7 @@ layout:
       - 'social-1573 20'
   /slideshow/:
     -
-      - owlcarousel-1698
+      - swipercarousel-1698
   /header/:
     -
       - mosaicgrid-9520
@@ -149,11 +149,11 @@ content:
         class: align-right
     block:
       class: hidden-phone
-  owlcarousel-1698:
-    title: 'Owl Carousel'
+  swipercarousel-1698:
+    title: 'Swiper Carousel'
     attributes:
       class: center-block
-      width: g-owlcarousel-compact
+      width: g-swipercarousel-compact
       animateOut: fadeOut
       animateIn: fadeIn
       prevText: '&larr;'
@@ -162,7 +162,7 @@ content:
       items:
         -
           image: 'gantry-media://demo/home/slideshow/img-01.jpg'
-          title: 'Owl Carousel Slideshow'
+          title: 'Swiper Carousel Slideshow'
           desc: 'Galatea is a beautiful, clean design that blends background elements in a modern way.'
           link: '#'
           linktext: 'Get Started'
