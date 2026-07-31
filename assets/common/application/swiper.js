@@ -522,9 +522,10 @@ const bindBackgroundSlides = (root = document) => {
 };
 
 const bindAccordionSlides = (root = document) => {
-    const containers = root.matches?.('.g-swipercarousel-accordionslider')
+    const accordionSelector = '.g-swipercarousel-accordionslider, .g-swipercarousel-lists[data-g-accordion="true"]';
+    const containers = root.matches?.(accordionSelector)
         ? [root]
-        : Array.from(root.querySelectorAll?.('.g-swipercarousel-accordionslider') || []);
+        : Array.from(root.querySelectorAll?.(accordionSelector) || []);
 
     containers.forEach((container) => {
         if (container.dataset.gSwiperAccordionReady === 'true') {
@@ -532,6 +533,21 @@ const bindAccordionSlides = (root = document) => {
         }
 
         const items = Array.from(container.querySelectorAll('.g-swipercarousel-item'));
+        const setItemOpen = (item, open) => {
+            const heading = item.querySelector('.g-swipercarousel-item-title');
+            const content = item.querySelector(':scope > .g-swipercarousel-content');
+            if (!heading || !content) {
+                return;
+            }
+
+            heading.classList.toggle('ui-accordion-header-active', open);
+            heading.classList.toggle('ui-state-active', open);
+            heading.setAttribute('aria-expanded', String(open));
+            content.classList.toggle('ui-accordion-content-active', open);
+            content.hidden = !open;
+            item.querySelector('.indicator span')?.replaceChildren(document.createTextNode(open ? '\u2212' : '+'));
+        };
+
         items.forEach((item, index) => {
             const heading = item.querySelector('.g-swipercarousel-item-title');
             const content = item.querySelector(':scope > .g-swipercarousel-content');
@@ -539,18 +555,15 @@ const bindAccordionSlides = (root = document) => {
                 return;
             }
 
-            const setOpen = (open) => {
-                heading.classList.toggle('ui-accordion-header-active', open);
-                heading.classList.toggle('ui-state-active', open);
-                heading.setAttribute('aria-expanded', String(open));
-                content.classList.toggle('ui-accordion-content-active', open);
-                content.hidden = !open;
-                item.querySelector('.indicator span')?.replaceChildren(document.createTextNode(open ? '−' : '+'));
-            };
-
             heading.setAttribute('role', 'button');
             heading.setAttribute('tabindex', '0');
-            const toggle = () => setOpen(content.hidden);
+            const toggle = () => {
+                const open = content.hidden;
+                if (open) {
+                    items.forEach((otherItem) => setItemOpen(otherItem, false));
+                }
+                setItemOpen(item, open);
+            };
             heading.addEventListener('click', toggle);
             heading.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
@@ -558,7 +571,7 @@ const bindAccordionSlides = (root = document) => {
                     toggle();
                 }
             });
-            setOpen(index === 0);
+            setItemOpen(item, index === 0);
         });
 
         container.dataset.gSwiperAccordionReady = 'true';

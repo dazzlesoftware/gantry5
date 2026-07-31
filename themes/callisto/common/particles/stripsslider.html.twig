@@ -18,7 +18,8 @@
                 </div>
             {% endif %}
 
-            <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper"
+            <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel">
+                <div class="swiper"
         data-g-swiper
         data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
         data-navigation="{{ particle.nav|default('disabled')|e }}"
@@ -30,11 +31,13 @@
         data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
         data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
         data-centered="{{ particle.center|default('disabled')|e }}"
+        data-slides-per-group="{{ particle.displayitems|default(1)|e }}"
         data-space-between="20">
 
                 {% for item in particle.items %}
-                    <div class="item" {% if item.image %}style="background-image: url({{ url(item.image)|e }});"{% endif %}>
-                        <div class="g-swipercarousel-content">
+                    <div>
+                        <div class="item" {% if item.image %}style="background-image: url({{ url(item.image)|e }});"{% endif %}>
+                            <div class="g-swipercarousel-content">
                             {% if item.title %}
                                 <h4 class="g-swipercarousel-item-title">
                                     {% if item.link %}<a href="{{ item.link|e }}">{% endif %}
@@ -56,10 +59,12 @@
                                     <span>{{ item.linktext|html|raw|default('Read More') }}</span>
                                 </a>
                             {% endif %}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
 
+                </div>
             </div>
         </div>
 
