@@ -1,73 +1,73 @@
-.g-owlcarousel-showcase {
-	.g-owlcarousel {
+.g-swipercarousel-showcase {
+	.g-swipercarousel {
 		position: relative;
 
-		.g-owlcarousel-image-container {
+		.g-swipercarousel-image-container {
 		    float: left;
 		    padding: 0 5px 0 0;
 		    width: 66.66667%;
 
 		    @include breakpoint(mobile-only) {
-		    	float: none;
-    			width: 100%;
-    			padding: 5px;
+			float: none;
+			width: 100%;
+			padding: 5px;
 		    }
-    	}		
-	
- 		.g-owlcarousel-content {  
- 			float: right;
-    		width: 33.33333%;  
-			padding: 0 15px; 
+	}
+
+		.g-swipercarousel-content {
+			float: right;
+		width: 33.33333%;
+			padding: 0 15px;
 
 			@include breakpoint(mobile-only) {
-		    	float: none;
-    			width: 100%;
-    			padding: 5px 5px 15px 5px;
+			float: none;
+			width: 100%;
+			padding: 5px 5px 15px 5px;
 		    }
 
-		    .g-owlcarousel-item-title {
+		    .g-swipercarousel-item-title {
 				font-family: get-font-family($font-family-alt);
-    			font-weight: bold;
-    			font-size: 1.85em;
-    			line-height: 1.25em;	 
-    			margin: 0;   
+			font-weight: bold;
+			font-size: 1.85em;
+			line-height: 1.25em;
+			margin: 0;
 
-    			@include breakpoint(tablet-range) {
-    				font-size: 23.1px;
-    			}
+			@include breakpoint(tablet-range) {
+				font-size: 23.1px;
+			}
 
-    			.fp-showcase-maintop & {
+			.fp-showcase-maintop & {
 					a {
 						color: $white !important;
 					}
-    			}
+			}
 		    }
 
-		    .g-owlcarousel-item-desc {
-		    	font-size: 1em;
-    			margin-top: 10px;
-    			line-height: 1.65em;
-			
+		    .g-swipercarousel-item-desc {
+			font-size: 1em;
+			margin-top: 10px;
+			line-height: 1.65em;
+
 				.fp-showcase-maintop & {
 					color: lighten($accent-color-1, 35%);
 				}
 		    }
 
 		    .readon3 {
-		    	color: lighten($accent-color-1, 35%);
+			color: lighten($accent-color-1, 35%);
 		    }
 		}
 
-		.owl-dots {
+		.swiper-pagination {
 			bottom: 0;
-    		left: 66.66667%;
-    		margin-left: 10px;
-    		width: auto;
+		left: 66.66667%;
+		margin-left: 10px;
+		width: auto;
 
-    		@include breakpoint(mobile-only) {
-    			left: auto;
-    			right: 0;
-    		}
+		@include breakpoint(mobile-only) {
+			left: auto;
+			right: 0;
+		}
 
 			button {
 				opacity: 1;
@@ -81,7 +81,7 @@
 
 					&:hover {
 						background-color: $accent-color-1;
-					}	
+					}
 				}
 
 				&:hover {
@@ -99,10 +99,10 @@
 
 						&:hover {
 							background-color: $white;
-						}	
+						}
 					}
 				}
 			}
-		}      
+		}
 	}
 }

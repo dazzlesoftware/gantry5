@@ -21,6 +21,9 @@
 {% do gantry.document.addInlineStyle(breakpoints) %}
 
 {% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
     {% if particle.demo == "enabled" %}
         {% if gantry.theme.preset %}
             {% set preset = gantry.theme.preset | replace({'preset': ''}) - 1 %}
@@ -30,8 +33,19 @@
     {% else %}
         {% set preset = '0' %}
     {% endif %}
-    <div class="{{ particle.class|e }} g-owlcarousel-carousel">
-        <div id="g-carousel-{{ id }}" class="g-carousel owl-carousel" data-carousel-autoplaytimeout="{{ particle.autoplaySpeed|default('5000') }}" data-carousel-pausehover="{% if particle.pauseOnHover == "enabled" %}true{% else %}false{% endif %}" data-carousel-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-carousel-id="{{ id }}" data-carousel-preset="{{ preset }}" data-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-carousel-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+    <div class="{{ particle.class|e }} g-swipercarousel-carousel">
+        <div id="g-carousel-{{ id }}" class="g-carousel swiper" data-carousel-autoplaytimeout="{{ particle.autoplaySpeed|default('5000') }}" data-carousel-pausehover="{% if particle.pauseOnHover == "enabled" %}true{% else %}false{% endif %}" data-carousel-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-carousel-id="{{ id }}" data-carousel-preset="{{ preset }}" data-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-carousel-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}"
+        data-g-swiper
+        data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
             {% if not particle.source or particle.source == 'particle' %}
                 {% for item in particle.items %}
                     <div class="g-carousel-image-wrapper" style="background-image: url({{ url(item.image) }});">
@@ -51,8 +65,8 @@
 
                         {% if item.link_text and item.link %}
                             <a class="g-carousel-link" href="{{ item.link }}">{{ item.link_text }}</a>
-                        {% else %}   
-                            <br /> 
+                        {% else %}
+                            <br />
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -64,6 +78,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    <script src="{{ url('gantry-theme://js/owlcarousel.js') }}"></script>
-    <script src="{{ url('gantry-theme://js/carousel.init.js') }}"></script>
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

@@ -3,6 +3,9 @@
 {% do gantry.load('lightcase.init') %}
 
 {% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
 
     <div id="{{ id }}" class="g-slider section-vertical-paddings{{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.autoplayTimeout }}" data-slider-speed="{{ particle.speed }}" data-slider-dots="{% if particle.dots == "enabled" %}true{% else %}false{% endif %}" data-slider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
 
@@ -11,10 +14,21 @@
                 <h3 class="title">{{ particle.title }}</h3>
                 <h5 class="subtitle">{{particle.description}}</h5>
             </div>
-            <div class="custom-owl-nav"></div>
+            <div class="custom-swiper-navigation"></div>
         </div>
 
-        <div class="g-slider-carousel g-owlcarousel owl-carousel" data-slider-carousel-id="{{ id }}" data-slider-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}">
+        <div class="g-slider-carousel g-swipercarousel swiper" data-slider-carousel-id="{{ id }}" data-slider-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}"
+        data-g-swiper
+        data-slides-per-view="4"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
             {% if not particle.source or particle.source == 'particle' %}
                 {% for item in particle.items %}
                     {% set height = particle.height|default('600')|number_format %}
@@ -54,8 +68,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

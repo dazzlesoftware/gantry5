@@ -13,7 +13,7 @@
             display: block;
         }
 
-        .owl-nav {
+        .swiper-navigation {
             width: 100%;
             display: block;
             position: relative;
@@ -25,7 +25,7 @@
                 margin: 0;
                 position: relative;
             }
-        } 
+        }
     }
 
     .desktop {
@@ -66,7 +66,7 @@
             }
         }
 
-        .owl-nav {
+        .swiper-navigation {
             position: absolute;
             top: 16rem;
             left: -3rem;
@@ -159,14 +159,14 @@
         }
     }
 
-    .owl-dots {
+    .swiper-pagination {
         text-align: center;
         height: 35px;
 
-        .owl-dot {
+        .swiper-pagination-bullet {
             border: 2px solid $accent-color-1;
             transform-origin: center;
-        
+
             &.active {
                 background: $white;
                 width: 25px;
@@ -175,7 +175,7 @@
         }
     }
 
-    .owl-stage-outer {
+    .swiper {
         @include breakpoint(mobile-only) {
             width: 99%;
         }

@@ -1,26 +1,26 @@
-.g-owlcarousel-slider {
-	position: relative;	
-	.g-owlcarousel {
+.g-swipercarousel-slider {
+	position: relative;
+	.g-swipercarousel {
 
-		.g-owlcarousel-image-container {
+		.g-swipercarousel-image-container {
 			position: relative;
 		}
-	
- 		.g-owlcarousel-content {   
-	 		position: absolute;
+
+		.g-swipercarousel-content {
+			position: absolute;
 		    width: 100%;
 		    top: 0;
 		    right: 0;
 		    bottom: 0;
 		    left: 0;
-		    box-sizing: border-box; 
+		    box-sizing: border-box;
 			padding: 15px;
 
 			.fp-showcase & {
 				background: fade-out(darken($showcase-background, 15%), 0.25);
 			}
 
-			.g-owlcarousel-content-wrapper {
+			.g-swipercarousel-content-wrapper {
 				position: absolute;
 				width: 40%;
 				left: 60px;
@@ -46,7 +46,7 @@
 					text-align: center;
 				}
 
-			    .g-owlcarousel-item-title {
+			    .g-swipercarousel-item-title {
 					font-family: get-font-family($font-family-alt);
 					font-weight: bold;
 				    font-size: 4em;
@@ -55,9 +55,9 @@
 
 				    .fp-showcase & {
 					    color: $showcase-text-color;
-				    	&:hover {
-				    		color: fade-out($showcase-text-color, 0.15);
-				    	}
+					&:hover {
+						color: fade-out($showcase-text-color, 0.15);
+					}
 				    }
 
 				    @include breakpoint(desktop-range) {
@@ -80,19 +80,19 @@
 					}
 
 				    a {
-				    	.fp-showcase & {
-					    	color: $showcase-text-color;
-					    	&:hover {
-					    		color: fade-out($showcase-text-color, 0.15);
-					    	}
+					.fp-showcase & {
+						color: $showcase-text-color;
+						&:hover {
+							color: fade-out($showcase-text-color, 0.15);
+						}
 					    }
 				    }
 			    }
 
-			    .g-owlcarousel-item-desc {
-	    			font-size: 1.3em;
-    				line-height: 1.5em;
-    				margin-top: 10px;
+			    .g-swipercarousel-item-desc {
+				font-size: 1.3em;
+				line-height: 1.5em;
+				margin-top: 10px;
 
 				    @include breakpoint(desktop-range) {
 						font-size: 1.1em;
@@ -113,26 +113,26 @@
 						display: none;
 					}
 
-    				.rt-title-tag {
-    					font-size: 0.85em;
-    					margin: 0 0 5px 0;
-    					font-family: get-font-family($font-family-alt2);
-    				}
+				.rt-title-tag {
+					font-size: 0.85em;
+					margin: 0 0 5px 0;
+					font-family: get-font-family($font-family-alt2);
+				}
 
-    				.readon {
+				.readon {
 
-    					.fp-showcase & {
-    						font-size: 1rem;
-    					}
-    					@include breakpoint(mobile-only) {
-    						display: none;
-    					}
-    				}
+					.fp-showcase & {
+						font-size: 1rem;
+					}
+					@include breakpoint(mobile-only) {
+						display: none;
+					}
+				}
 			    }
 			}
 		}
 
-		.owl-dots {
+		.swiper-pagination {
 			bottom: 15px;
 			left: 50%;
 			text-align: left;
@@ -150,7 +150,7 @@
 
 					&:hover {
 						background-color: $accent-color-1;
-					}	
+					}
 				}
 
 				&:hover {
@@ -159,9 +159,9 @@
 			}
 		}
 
-	    .owl-nav {
-	      button.owl-prev, button.owl-next {
-	      	background: $accent-color-1;
+	    .swiper-navigation {
+	      button.swiper-button-prev, button.swiper-button-next {
+		background: $accent-color-1;
 			color: $white;
 			width: 30px;
 			height: 30px;
@@ -171,31 +171,31 @@
 			border: 0;
 			transition: all 0.2s ease-in-out;
 
-			&:hover {	
-				opacity: 1;	
+			&:hover {
+				opacity: 1;
 			}
 
 	        &:focus {
 	          outline: none;
 	        }
 
-        	&:before {
+	&:before {
                 font-family: FontAwesome;
                 position: relative;
-            }    
+            }
 
-            &.owl-prev {
-                left: 5px;  
-                padding-right: 3px;            
+            &.swiper-button-prev {
+                left: 5px;
+                padding-right: 3px;
 
                 &:before {
                     content: "\f104";
                 }
             }
 
-            &.owl-next {
+            &.swiper-button-next {
                 right: 5px;
-                padding-left: 3px;                                 
+                padding-left: 3px;
 
                 &:before {
                     content: "\f105";
@@ -203,13 +203,13 @@
             }
 
 	        span {
-	        	display: none;
+		display: none;
 	        }
 	      }
-	    }       
+	    }
 	}
 
-	.owl-thumbs {
+	.swiper-thumbs {
 		position: absolute;
 		right: 45px;
 		bottom: 45px;
@@ -234,29 +234,29 @@
 			text-align: center;
 		}
 
-		.owl-thumb {
+		.swiper-thumb {
 			transition: opacity 0.2s ease-in;
 			cursor: pointer;
 			width: 150px;
-	    	margin: 15px;
-	    	opacity: 0.5;
-	    	display: inline-block;
-	    	transform: translateZ(0);
-    		backface-visibility: hidden;
+		margin: 15px;
+		opacity: 0.5;
+		display: inline-block;
+		transform: translateZ(0);
+		backface-visibility: hidden;
 
-	    	&.active {
-	    		opacity: 1;
-	    	}
+		&.active {
+			opacity: 1;
+		}
 
-	    	@include breakpoint(tablet-range) {
+		@include breakpoint(tablet-range) {
 				width: 115px;
 				margin: 5px;
-	    	}
+		}
 
-	    	@include breakpoint(mobile-only) {
+		@include breakpoint(mobile-only) {
 				width: 80px;
 				margin: 3px;
-	    	}
+		}
 		}
 	}
 }

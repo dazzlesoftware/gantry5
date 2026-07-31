@@ -1,98 +1,70 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
     {% block layout %}
 
         <div class="{{ particle.class|e }}">
 
-            <div class="g-owlcarousel-slider">
+            <div class="g-swipercarousel-slider">
 
-                <div id="g-owlcarousel-{{ id }}" data-owlcarousel-id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel">     
+                <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
 
                     {% for item in particle.items %}
-                    <div class="g-owlcarousel-item-{{ loop.index }} {{ item.class|e }}">
+                    <div class="g-swipercarousel-item-{{ loop.index }} {{ item.class|e }}">
 
-                        <div class="g-owlcarousel-content"> 
+                        <div class="g-swipercarousel-content">
 
-                           <div class="g-owl-container"> 
+                           <div class="g-swiper-container">
 
                                 {% if item.title or item.desc or item.link %}
-                                    <div class="g-owlcarousel-text">
+                                    <div class="g-swipercarousel-text">
 
-                                            {% if item.title %}{% if item.linktitle =="enabled" %}<h2 class="g-owlcarousel-item-title"><a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.link|e }}">{{ item.title|html|raw }}</a></h2>{% else %}<h2 class="g-owlcarousel-item-title">{{ item.title|html|raw }}</h2>{% endif %}{% endif %}
+                                            {% if item.title %}{% if item.linktitle =="enabled" %}<h2 class="g-swipercarousel-item-title"><a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.link|e }}">{{ item.title|html|raw }}</a></h2>{% else %}<h2 class="g-swipercarousel-item-title">{{ item.title|html|raw }}</h2>{% endif %}{% endif %}
 
                                             {% if item.desc or item.link %}
-                                                <div class="g-owlcarousel-item-desc">
+                                                <div class="g-swipercarousel-item-desc">
                                                     {% if item.desc %}<div>{{ item.desc|html|raw }}</div>{% endif %}
 
                                                     {% if item.link %}
-                                                        <div class="g-owlcarousel-item-link">
-                                                            <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button {{ item.buttonclass|default('readon')|e }}" href="{{ item.link|e }}">
+                                                        <div class="g-swipercarousel-item-link">
+                                                            <a target="{{ item.buttontarget|default('_self')|e }}" class="g-swipercarousel-item-button {{ item.buttonclass|default('readon')|e }}" href="{{ item.link|e }}">
                                                                 {{ item.linktext|html|raw|default('Read More') }}
                                                             </a>
                                                         </div>
                                                     {% endif %}
-                                                </div>  
-                                            {% endif %} 
+                                                </div>
+                                            {% endif %}
                                     </div>
                                 {% endif %}
 
-                                    <div class="g-owlcarousel-image-container">
+                                    <div class="g-swipercarousel-image-container">
                                         <img src="{{ url(item.image)|e }}" />
-                                    </div> 
-                        </div>            
-                        </div>   
-                    </div>  
+                                    </div>
+                        </div>
+                        </div>
+                    </div>
                     {% endfor %}
-                </div>    
+                </div>
             </div>
-        </div>    
+        </div>
 
     {% endblock %}
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript">
-    jQuery(document).ready(function () {
-        jQuery('#g-owlcarousel-{{ id }}').owlCarousel({
-            items: 1,
-            rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
-            {% if particle.animateOut and particle.animateOut != 'default' %}
-            animateOut: '{{ particle.animateOut|default('fadeOut')|e }}',
-            {% endif %}
-            {% if particle.animateIn and particle.animateIn != 'default' %}
-            animateIn: '{{ particle.animateIn|default('fadeIn')|e }}',
-            {% endif %}
-            {% if particle.nav == 'enabled' %}
-            nav: true,
-            {% else %}
-            nav: false,
-            {% endif %}
-            {% if particle.dots == 'enabled' %}
-            dots: true,
-            {% else %}
-            dots: false,
-            {% endif %}
-            {% if particle.loop == 'enabled' %}
-            loop: true,
-            {% else %}
-            loop: false,
-            {% endif %}
-            {% if particle.autoplay == 'enabled' %}
-            autoplay: true,
-            autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
-            {% if particle.pauseOnHover == 'enabled' %}
-            autoplayHoverPause: true,
-            {% else %}
-            autoplayHoverPause: false,
-            {% endif %}
-            {% else %}
-            autoplay: false,
-            {% endif %}
-        })
-    });
-    
-    </script>
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

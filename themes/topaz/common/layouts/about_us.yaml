@@ -78,7 +78,7 @@ layout:
       -
         'slideshowmain 70':
           -
-            - owlcarousel-4690
+            - swipercarousel-4690
       -
         'slideshowright 15': {  }
   /container-utility/:
@@ -709,7 +709,7 @@ content:
           title: Business
     block:
       variations: box5
-  owlcarousel-4690:
+  swipercarousel-4690:
     title: 'About Us - What We Do'
     attributes:
       source: particle
@@ -717,7 +717,7 @@ content:
       title: 'This is what we do'
       description: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligul.'
       layout: standard
-      width: g-owlcarousel-fullwidth
+      width: g-swipercarousel-fullwidth
       animateIn: fadeIn
       animateOut: fadeOut
       nav: disabled

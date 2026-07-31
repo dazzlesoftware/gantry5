@@ -1,7 +1,7 @@
-.g-owlcarousel-strips-slider {
-  .g-owlcarousel {
+.g-swipercarousel-strips-slider {
+  .g-swipercarousel {
 
-    .owl-item {
+    .swiper-slide {
       margin-top: 10px;
       margin-bottom: 10px;
 
@@ -65,11 +65,11 @@
         }
       }
 
-      .g-owlcarousel-content {
+      .g-swipercarousel-content {
         text-align: center;
       }
 
-      .g-owlcarousel-item-title {
+      .g-swipercarousel-item-title {
         margin-top: 15px;
 
         a {
@@ -85,16 +85,16 @@
         }
       }
 
-      .g-owlcarousel-item-desc {
+      .g-swipercarousel-item-desc {
         padding: 0 15px 15px;
       }
     }
 
-    .owl-dots {
+    .swiper-pagination {
       position: relative;
       margin-bottom: 25px;
 
-      .owl-dot {
+      .swiper-pagination-bullet {
         display: inline-block;
         padding: 7px;
         margin: 0 3px;
@@ -123,11 +123,11 @@
         span {
           display: none;
         }
-      }  
+      }
     }
 
-    .owl-nav {
-      button.owl-prev, button.owl-next {
+    .swiper-navigation {
+      button.swiper-button-prev, button.swiper-button-next {
           position: absolute;
           width: 45px;
           height: 45px;
@@ -148,7 +148,7 @@
 
         &:hover {
           color: $button-text-color;
-          background-color: $button-background; 
+          background-color: $button-background;
           border: 2px solid $button-background;
         }
 
@@ -161,15 +161,15 @@
         }
       }
 
-      .owl-next {
-        right: -65px;  
+      .swiper-button-next {
+        right: -65px;
         &:before {
           content: '\f105';
           font-family: FontAwesome;
         }
       }
 
-      .owl-prev {
+      .swiper-button-prev {
         left: -65px;
         &:before {
           content: '\f104';

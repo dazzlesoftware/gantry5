@@ -36,7 +36,18 @@
 {% set articles = article_finder.find() %}
 
 {# Content #}
-<div class="g-slider-carousel g-owlcarousel owl-carousel" data-slider-carousel-id="{{ id }}">
+<div class="g-slider-carousel g-swipercarousel swiper" data-slider-carousel-id="{{ id }}"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
     {% for article in articles %}
 
         {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
@@ -46,12 +57,12 @@
                 {% set article_image = article.images.image_fulltext %}
             {% endif %}
         {% endif %}
-              
+
         <div>
             <div class="g-slider-carousel-image-container">
                 {% if display.image.enabled %}
                     <img src="{{ url(article_image)|e }}" alt="{{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}">
-                {% endif %}    
+                {% endif %}
 
                 <div class="g-slider-carousel-title">
                     {{ display.title.limit ? article.title|truncate_text(display.title.limit) : article.title }}
@@ -66,3 +77,7 @@
         </div>
     {% endfor %}
 </div>
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

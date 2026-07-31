@@ -1,19 +1,19 @@
 #g-expandedbottom {
     background: $expandedbottom-background;
-    color: $expandedbottom-text-color; 	
-}  
+    color: $expandedbottom-text-color;
+}
 
 .fp-expandedbottom {
-	.owl-carousel .owl-item {
+	.swiper .swiper-slide {
 		img {
 			border-radius: 3px;
 			width: 100px;
 		}
-		.g-owlcarousel-item-desc {
+		.g-swipercarousel-item-desc {
 			font-family: get-font-family($font-family-promo);
 		}
-	} 
-}  
+	}
+}
 
 @media print {
 	#g-expandedbottom {

@@ -1,7 +1,7 @@
-.g-owlcarousel-strips-slider {
-  .g-owlcarousel {
+.g-swipercarousel-strips-slider {
+  .g-swipercarousel {
 
-    .owl-item {
+    .swiper-slide {
       margin-top: 10px;
       margin-bottom: 10px;
 
@@ -10,20 +10,20 @@
         border: 2px solid transparent;
       }
 
-      .g-owlcarousel-content {
+      .g-swipercarousel-content {
         text-align: center;
       }
 
-      .g-owlcarousel-item-title {
+      .g-swipercarousel-item-title {
         margin-top: 15px;
       }
 
-      .g-owlcarousel-item-desc {
+      .g-swipercarousel-item-desc {
         padding: 0 15px 15px;
       }
     }
 
-    .owl-dots {
+    .swiper-pagination {
       position: relative;
       margin-top: 35px;
 
@@ -40,7 +40,7 @@
             @include hexagon(16px, 10px, $accent-color-1);
           }
 
-          &.owl-dot {
+          &.swiper-pagination-bullet {
             margin: 0 2px;
           }
         }
@@ -52,17 +52,17 @@
 
           &:hover {
             background-color: $accent-color-1;
-          } 
+          }
         }
 
         &:hover {
           background-color: $dark-grey;
         }
-      }  
+      }
     }
 
-    .owl-nav {
-      button.owl-prev, button.owl-next {
+    .swiper-navigation {
+      button.swiper-button-prev, button.swiper-button-next {
             line-height: $base-line-height + 1 !important;
             font-size: 28px;
             margin-top: -12px !important;
@@ -88,11 +88,11 @@
           font-size: 2.5rem;
         }
       }
-      .owl-next {
+      .swiper-button-next {
         right: -60px;
       }
 
-      .owl-prev {
+      .swiper-button-prev {
         left: -60px;
       }
     }

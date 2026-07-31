@@ -1,5 +1,5 @@
 // Slideshow Styling
-.owl-stage-outer {
+.swiper {
     overflow: visible;
     @include breakpoint (mobile-only) {
         padding: 0 0;
@@ -11,9 +11,9 @@
     z-index: 1;
     .g-slideshow-carousel {
         position: relative;
-        .owl-stage {
+        .swiper-wrapper {
             display: flex;
-            .owl-item {
+            .swiper-slide {
                 padding: 0; // Active slide custom styling
                 padding-bottom: 0;
                 &.active {
@@ -162,9 +162,9 @@
                 }
             }
         } // Nav
-        .owl-nav {
-            button.owl-prev,
-            button.owl-next {
+        .swiper-navigation {
+            button.swiper-button-prev,
+            button.swiper-button-next {
                 position: absolute;
                 top: 50%;
                 width: 45px;
@@ -183,14 +183,14 @@
                     color: transparentize($white, 0.4);
                 }
             }
-            .owl-prev {
+            .swiper-button-prev {
                 left: 10%;
                 .fa {
                     left: -1px;
                     top: 1px;
                 }
             }
-            .owl-next {
+            .swiper-button-next {
                 right: 10%;
                 .fa {
                     left: 1px;
@@ -198,7 +198,7 @@
                 }
             }
         } // Dots
-        .owl-dots {
+        .swiper-pagination {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -212,7 +212,7 @@
                 right: auto;
                 left: $content-padding;
             }
-            .owl-dot {
+            .swiper-pagination-bullet {
                 width: 12px;
                 height: 12px;
                 margin-bottom: 0.3rem;

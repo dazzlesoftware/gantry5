@@ -1,0 +1,117 @@
+{% extends '@particles/swipercarousel.html.twig' %}
+
+{# Standard Layout #}
+{% block layout %}
+    <div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|e }} g-swipercarousel-{{ particle.displayitems }}-items">
+        {% if particle.title or particle.description %}
+        <div class="g-grid">
+            <div class="g-block">
+                <div class="g-content g-swipercarousel-header">
+                    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+                    {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|raw }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper {{ particle.width|e }}"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
+
+            {% for item in particle.items %}
+                <div class="item">
+                    {% if item.image %}
+                        <div class="image">
+                            <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
+                        </div>
+                    {% endif %}
+
+                    {% set externalVideo = item.video|default('')|lower %}
+                    {% if item.video and item.videosource == 'external' and ('youtube.com' in externalVideo or 'youtu.be' in externalVideo or 'vimeo.com' in externalVideo) %}
+                    <div class="video" id="video-item-{{ loop.index }}">
+                        <a class="swiper-video" href="{{ url(item.video)|e }}"></a>
+                    </div>
+                    {% endif %}
+
+                    {% if item.videolocal and item.videosource == 'local' %}
+                    <div class="video" id="video-item-{{ loop.index }}" data-video-controller data-video-autoplay="{{ particle.videoautoplay == 'enabled' ? 'true' : 'false' }}">
+                        <video class="g-video-nocontrols" data-video-autoplay="{{ particle.videoautoplay == 'enabled' ? 'true' : 'false' }}" preload="metadata" playsinline {% if item.videothumb %}poster="{{ url(item.videothumb)|e }}"{% endif %} {% if particle.videoloop == 'enabled' %}loop{% endif %}>
+                            <source src="{{ url(item.videolocal)|e }}" type="video/mp4">
+                        </video>
+                        <button type="button" class="swiper-videolocal-play-icon g-videolocal-play" aria-label="Play video" aria-pressed="false"></button>
+                    </div>
+                    {% endif %}
+
+                    {% if item.subtitle or item.title or item.desc or item.link or item.author %}
+                        <div class="g-swipercarousel-content">
+                            {% if item.subtitle %}<span class="g-swipercarousel-item-subtitle">{{ item.subtitle|raw }}</span>{% endif %}
+                            {% if item.title %}<div class="g-swipercarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                            {% if item.desc %}<div class="g-swipercarousel-item-desc">{{ item.desc|raw }}</div>{% endif %}
+
+                            {% if item.link %}
+                                <div class="g-swipercarousel-item-link">
+                                    <a target="{{ item.buttontarget|default('_self')|e }}" class="g-swipercarousel-item-button button {{ item.buttonclass|e }}" href="{{ item.link|e }}">
+                                        {{ item.linktext|raw }}
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            {% if item.author %}
+                                <div class="g-swipercarousel-author">
+                                    {% if item.authorimage %}
+                                        <span class="author-image">
+                                    <img src="{{ url(item.authorimage)|e }}" alt="{{ item.author|e }}" />
+                                </span>
+                                    {% endif %}
+                                    {% if item.author %}<span class="author-name">{{ item.author|e }}</span>{% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var swiper{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-{{ id }}');
+            swiper{{ id|replace({'-':'_'}) }}.on('changed.swiper.carousel', function(event) {
+                var currentItem = "#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-" + (event.item.index + 1);
+                jQuery(currentItem).trigger("click");
+            })
+            {% if particle.nav == 'enabled' %}
+            jQuery('#g-swipercarousel-{{ id }}-controls .swiper-button-next').click(function() {
+                swiper{{ id|replace({'-':'_'}) }}.trigger('next.swiper.carousel');
+            })
+            jQuery('#g-swipercarousel-{{ id }}-controls .swiper-button-prev').click(function() {
+                swiper{{ id|replace({'-':'_'}) }}.trigger('prev.swiper.carousel');
+            })
+            {% endif %}
+        });
+
+        var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-panel-{{ id }} .g-swipercarousel-panel');
+        {% for item in particle.items %}
+        jQuery("#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-{{ loop.index }}").click(function(event) {
+            owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
+            jQuery(this).addClass('selected');
+        });
+        {% endfor %}
+    </script>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends '@particles/swipercarousel.html.twig' %}
+
+{# Testimonial Layout #}
+{% block layout %}
+<div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|e }} g-swipercarousel-{{ particle.displayitems }}-items">
+    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+    <div id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper {{ particle.width|e }}"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
+        {% for item in particle.items %}
+        <div class="item">
+            {% if item.desc %}
+            <div class="g-swipercarousel-item-desc">
+                {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                {{ item.desc|raw }}
+                {% if item.title %}<div class="g-swipercarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+            </div>
+            {% endif %}
+
+            {% if item.author %}
+            <div class="g-swipercarousel-author">
+                {% if item.authorimage %}
+                <span class="author-image">
+                    <img src="{{ url(item.authorimage)|e }}" alt="{{ item.author|e }}" />
+                </span>
+                {% endif %}
+                {% if item.author %}<span class="author-name">{{ item.author|raw }}</span>{% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

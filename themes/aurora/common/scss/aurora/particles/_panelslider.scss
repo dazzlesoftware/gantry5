@@ -3,7 +3,7 @@
     position: relative;
 
     // Stage
-    .owl-stage {
+    .swiper-wrapper {
       display: flex;
     }
 
@@ -13,7 +13,7 @@
         z-index: 2;
 
         // Item
-        .owl-item {
+        .swiper-slide {
             z-index: 1;
             position: relative;
 
@@ -41,7 +41,7 @@
                 }
             }
 
-            &.owl-current {
+            &.swiper-current {
                 z-index: 2;
 
                 .tab {
@@ -121,7 +121,7 @@
     }
 
     // Prev & Next Controls
-    .owl-nav {
+    .swiper-navigation {
         > div, > button {
             position: absolute;
             margin: auto;
@@ -143,7 +143,7 @@
             }
         }
 
-        .owl-prev {
+        .swiper-button-prev {
             left: 4vw;
             right: auto;
 
@@ -159,7 +159,7 @@
             }
         }
 
-        .owl-next {
+        .swiper-button-next {
             left: auto;
             right: 4vw;
 

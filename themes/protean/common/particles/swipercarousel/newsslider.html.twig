@@ -1,0 +1,75 @@
+{% extends '@particles/swipercarousel.html.twig' %}
+
+{# NewsSlider Layout #}
+{% block layout %}
+    {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+    <div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|e }} g-swipercarousel-{{ particle.displayitems }}-items">
+        <div class="g-swipercarousel-panel-container" id="g-swipercarousel-panel-{{ id }}">
+
+            {% for item in particle.items %}
+                <div class="g-swipercarousel-panel {% if loop.first %}selected{% endif %}" id="g-swipercarousel-panel-{{ loop.index }}">
+                    <div class="g-swipercarousel-panel-link">
+                        {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                        {% if item.title %}<span class="g-swipercarousel-panel-title">{{ item.title|raw }}</span>{% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper {{ particle.width|e }}"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
+
+            {% for item in particle.items %}
+                <div class="item">
+                    {% if item.subtitle %}<h3 class="g-title">{{ item.subtitle|raw }}</h3>{% endif %}
+                    {% if item.title %}<h3 class="g-item-title">{{ item.title|raw }}</h3>{% endif %}
+                    {% if item.author %}
+                        <div class="g-swipercarousel-author">
+                            {% if item.authorimage %}
+                                <span class="author-image">
+                                <img src="{{ url(item.authorimage)|e }}" alt="{{ item.author|e }}" />
+                            </span>
+                            {% endif %}
+                            {% if item.author %}<span class="author-name">{{ item.author|e }}</span>{% endif %}
+                        </div>
+                    {% endif %}
+                    <div class="g-swipercarousel-content">
+                        {% if item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />{% endif %}
+                        {% if item.desc %}{{ item.desc|e }}{% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script type="text/javascript">
+    var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-panel-{{ id }} .g-swipercarousel-panel');
+    {% for item in particle.items %}
+    jQuery("#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-{{ loop.index }}").click(function(event) {
+        var swiper{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-{{ id }}');
+        owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
+        var toIndex = {{ loop.index }} - 1;
+        swiper{{ id|replace({'-':'_'}) }}.trigger('to.swiper.carousel', [toIndex, {{ loop.index }} - 1, true]);
+        jQuery(this).addClass('selected');
+    });
+    {% endfor %}
+    </script>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

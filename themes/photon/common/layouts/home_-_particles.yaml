@@ -442,7 +442,7 @@ content:
               subtagdesc: 'Give your content a clean, organized look by splitting it into elegant, easy-to-navigate tabs.'
               name: 'New item'
             -
-              tag: 'Owl Carousel'
+              tag: 'Swiper Carousel'
               subtagdotaccent: accent1
               subtagdotcustom: ''
               subtagtext: '3'

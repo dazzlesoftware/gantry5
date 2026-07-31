@@ -1,0 +1,65 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
+
+    {% set navigationValue = particle.nav|default('enabled') ~ '' %}
+    {% set navigationEnabled = navigationValue in ['enable', 'enabled', 'true', '1'] %}
+
+    <div class="{{ particle.class|e }} g-swipercards g-swipercards-{{ particle.displayitems|default(5)|e }}-items">
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|raw }}</div>{% endif %}
+
+        <div id="g-swipercarousel-{{ id }}"
+             class="g-swipercarousel swiper{% if navigationEnabled %} g-swipercards-show-nav{% endif %}"
+             data-g-swiper
+             data-slides-per-view="{{ particle.displayitems|default(5)|e }}"
+             data-navigation="{{ particle.nav|default('enabled')|e }}"
+             data-pagination="disabled"
+             data-loop="{{ particle.loop|default('enabled')|e }}"
+             data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+             data-autoplay-delay="{{ particle.autoplaySpeed|default('5000')|e }}"
+             data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+             data-speed="{{ particle.scrollspeed|default('1000')|e }}">
+            {% for item in particle.items|default([]) %}
+                <div class="g-swipercards-item">
+                    {% if item.link %}
+                        <a class="g-swipercards-image-link" href="{{ url(item.link)|e }}" title="{{ item.title|e }}">
+                    {% else %}
+                        <div class="g-swipercards-image-link">
+                    {% endif %}
+
+                    {% if item.image %}
+                        <img src="{{ url(item.image)|e }}"
+                             alt="{{ item.title|striptags|e }}"
+                             {% if particle.lazyload|default('enabled') == 'enabled' %}loading="lazy"{% endif %} />
+                    {% endif %}
+
+                    <span class="indicator"><span>{{ item.caption|raw }}</span></span>
+
+                    {% if item.title or item.subtitle %}
+                        <span class="g-swipercards-item-desc">
+                            {% if item.title %}<span class="g-swipercards-item-desc-title">{{ item.title|e }}</span>{% endif %}
+                            {% if item.subtitle %}<span class="g-swipercards-item-desc-subtitle">{{ item.subtitle|e }}</span>{% endif %}
+                        </span>
+                    {% endif %}
+
+                    {% if item.link %}</a>{% else %}</div>{% endif %}
+                </div>
+            {% endfor %}
+
+            {% if navigationEnabled %}
+                <div class="swiper-navigation">
+                    <button class="swiper-button-prev" type="button" aria-label="Previous slide"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                    <button class="swiper-button-next" type="button" aria-label="Next slide"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

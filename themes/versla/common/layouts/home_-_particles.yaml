@@ -10,7 +10,7 @@ layout:
     -
       - simplecontent-7077
     -
-      - owlshowcase-7890
+      - swipershowcase-7890
   /header/:
     -
       - productlist-8300
@@ -19,7 +19,7 @@ layout:
       - infolist-3806
   /feature/:
     -
-      - owlpreview-1055
+      - swiperpreview-1055
   /expanded/:
     -
       - 'simplecontent-6429 50'
@@ -119,8 +119,8 @@ content:
           readmore_class: ''
           readmore_target: _self
           title: Quote
-  owlshowcase-7890:
-    title: 'Owl Showcase'
+  swipershowcase-7890:
+    title: 'Swiper Showcase'
     attributes:
       class: ''
       presets: disabled
@@ -465,7 +465,7 @@ content:
               brand: 'from Chuck Klosterman'
               price: '19.00'
               image: 'gantry-media://home/header/img-01.jpg'
-              description: 'New York Times bestselling author of Sex, Drugs, and Cocoa Puffs and Downtown Owl, "the Ethicist" of the New York Times Magazine, Chuck Klosterman returns to fiction with his second novel—an imaginative page-turner about a therapist and her unusual patient, a man who can render himself invisible.'
+              description: 'New York Times bestselling author of Sex, Drugs, and Cocoa Puffs and Downtown Swiper, "the Ethicist" of the New York Times Magazine, Chuck Klosterman returns to fiction with his second novel—an imaginative page-turner about a therapist and her unusual patient, a man who can render himself invisible.'
               name: 'The Visible Man'
           name: Books
         -
@@ -564,8 +564,8 @@ content:
           readmoreclass: ''
           readmoretarget: _self
           title: 'Track it down'
-  owlpreview-1055:
-    title: 'Owl Preview'
+  swiperpreview-1055:
+    title: 'Swiper Preview'
     attributes:
       class: ''
       presets: disabled

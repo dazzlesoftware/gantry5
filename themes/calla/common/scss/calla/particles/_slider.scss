@@ -3,10 +3,10 @@
     position: relative;
     .g-slider-carousel {
         position: relative;
-        .owl-stage {
+        .swiper-wrapper {
             display: flex;
         }
-        .owl-stage-outer {
+        .swiper {
             overflow: visible;
             position: relative;
             &:before,
@@ -35,7 +35,7 @@
             }
         }
         &[data-slider-carousel-nav="true"] {
-            .owl-stage-outer {}
+            .swiper {}
         }
         .g-slider-carousel-image-container {
             position: relative;
@@ -68,7 +68,7 @@
                 }
             }
         } //Item
-        .owl-item {
+        .swiper-slide {
             outline: none;
             //cursor: pointer;
             img {
@@ -95,7 +95,7 @@
                 }
             }
         } // Prev & Next Controls
-        .owl-nav {
+        .swiper-navigation {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -111,7 +111,7 @@
                 pointer-events: all;
                 font-size: 1.4rem;
             }
-            .owl-prev {
+            .swiper-button-prev {
                 margin-left: 10px;
                 left: 0;
                 right: auto;
@@ -126,7 +126,7 @@
                     }
                 }
             }
-            .owl-next {
+            .swiper-button-next {
                 margin-right: 10px;
                 left: auto;
                 right: 0;

@@ -1,14 +1,14 @@
 #g-mainbottom {
-    color: $mainbottom-text-color; 
+    color: $mainbottom-text-color;
 
     > .g-grid {
         background-color: fade-out($mainbottom-background, 0.30);
     }
-}    
+}
 
 .fp-mainbottom {
-	.g-owlcarousel-slider .g-owlcarousel {
-		.owl-image-overlay {
+	.g-swipercarousel-slider .g-swipercarousel {
+		.swiper-image-overlay {
 			background: fade-out($mainbottom-background, 0.30);
 		    bottom: 0;
 		    content: "";
@@ -20,44 +20,44 @@
 		    top: 0;
 		    width: 100%;
 		}
-		.g-owlcarousel-content {
-		    .g-owlcarousel-item-title {
-		    	font-size: 5em;
-		    	margin-bottom: 45px;
+		.g-swipercarousel-content {
+		    .g-swipercarousel-item-title {
+			font-size: 5em;
+			margin-bottom: 45px;
 
-		    	@include breakpoint(tablet-range) {
-    				margin-bottom: 25px;
-    			}
+			@include breakpoint(tablet-range) {
+				margin-bottom: 25px;
+			}
 
 				@include breakpoint(large-mobile-range) {
-		    		margin-top: 12%;
-    				margin-bottom: -10%;
-    			}
-    			@include breakpoint(small-mobile-range) {
-		    		display: none;
-    			}
+				margin-top: 12%;
+				margin-bottom: -10%;
+			}
+			@include breakpoint(small-mobile-range) {
+				display: none;
+			}
 		    }
-		    .g-owlcarousel-item-desc {
-    			font-family: get-font-family($font-family-promo);
+		    .g-swipercarousel-item-desc {
+			font-family: get-font-family($font-family-promo);
 		        font-size: 1.3em;
 
-    			@include breakpoint(mobile-only) {
-    				font-size: 1em;
+			@include breakpoint(mobile-only) {
+				font-size: 1em;
 				    line-height: 25px;
 				    margin-top: -8%;
 				    padding: 15% 15px;
 				    width: 75%;
 				    margin-left: auto;
 				    margin-right: auto;
-    			}
-    		}	
-		} 
+			}
+		}
+		}
 		.button {
 			@include breakpoint(mobile-only) {
 				display: none;
-			}	
+			}
 		}
-		.owl-dots {
+		.swiper-pagination {
 			margin-left: 0;
 			bottom: inherit;
 		    left: 50%;
@@ -76,7 +76,7 @@
 				transform: translate(-50%, -50px) scale(0.6);
 			}
 
-			.owl-dot {
+			.swiper-pagination-bullet {
 				border-radius: 100%;
 				background: none;
 				border: 2px solid $mainbottom-text-color;
@@ -89,12 +89,12 @@
 			}
 		}
 		&:hover {
-			.owl-dots {
+			.swiper-pagination {
 				opacity: 1;
 				visibility: visible;
 			}
-		}   
-	}    
+		}
+	}
 }
 
 @media print {

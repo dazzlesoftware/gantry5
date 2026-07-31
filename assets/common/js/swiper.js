@@ -5534,6 +5534,7 @@
       this.instance = this.create();
     }
     prepareMarkup() {
+      var _a, _b;
       let wrapper = this.element.querySelector(":scope > .swiper-wrapper");
       if (!wrapper) {
         wrapper = document.createElement("div");
@@ -5548,20 +5549,84 @@
           slide2.classList.add("swiper-slide");
         });
       }
-      if (enabled(this.element.dataset.navigation, true) && !this.element.querySelector(":scope > .swiper-navigation")) {
+      const navigationEnabled = enabled(
+        (_a = this.element.dataset.navigation) != null ? _a : this.findDataset(["carouselNav", "nav"]),
+        true
+      );
+      this.navigationElement = this.element.querySelector(":scope > .swiper-navigation") || this.findExternalNavigation();
+      if (navigationEnabled && !this.navigationElement) {
+        const navigation = document.createElement("div");
+        navigation.className = "swiper-navigation";
+        this.navigationElement = navigation;
+        this.element.append(navigation);
+      }
+      if (navigationEnabled && this.navigationElement && !this.navigationElement.querySelector(".swiper-button-prev, .swiper-button-next")) {
+        this.navigationElement.classList.add("swiper-navigation");
+        this.navigationElement.innerHTML = `
+                <button class="swiper-button-prev" type="button" aria-label="${this.element.dataset.previousLabel || "Previous slide"}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="swiper-button-next" type="button" aria-label="${this.element.dataset.nextLabel || "Next slide"}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            `;
+      } else if (navigationEnabled && this.navigationElement) {
+        this.navigationElement.querySelectorAll(".swiper-button-prev, .swiper-button-next").forEach((button) => {
+          if (button.tagName !== "BUTTON") {
+            button.setAttribute("role", "button");
+            button.setAttribute("tabindex", "0");
+          }
+        });
+      }
+      if (navigationEnabled && this.navigationElement && !this.navigationElement.querySelector(".swiper-button-prev")) {
+        const previous = document.createElement("button");
+        previous.className = "swiper-button-prev";
+        previous.type = "button";
+        previous.setAttribute("aria-label", this.element.dataset.previousLabel || "Previous slide");
+        previous.innerHTML = '<i class="fa fa-chevron-left" aria-hidden="true"></i>';
+        this.navigationElement.prepend(previous);
+      }
+      if (navigationEnabled && this.navigationElement && !this.navigationElement.querySelector(".swiper-button-next")) {
+        const next = document.createElement("button");
+        next.className = "swiper-button-next";
+        next.type = "button";
+        next.setAttribute("aria-label", this.element.dataset.nextLabel || "Next slide");
+        next.innerHTML = '<i class="fa fa-chevron-right" aria-hidden="true"></i>';
+        this.navigationElement.append(next);
+      }
+      if (navigationEnabled && this.navigationElement === this.element) {
         const navigation = document.createElement("div");
         navigation.className = "swiper-navigation";
         navigation.innerHTML = `
-                <button class="swiper-button-prev" type="button" aria-label="${this.element.dataset.previousLabel || "Previous slide"}"></button>
-                <button class="swiper-button-next" type="button" aria-label="${this.element.dataset.nextLabel || "Next slide"}"></button>
+                <button class="swiper-button-prev" type="button" aria-label="${this.element.dataset.previousLabel || "Previous slide"}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="swiper-button-next" type="button" aria-label="${this.element.dataset.nextLabel || "Next slide"}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
             `;
         this.element.append(navigation);
+        this.navigationElement = navigation;
       }
-      if (enabled(this.element.dataset.pagination) && !this.getPaginationElement()) {
+      const paginationEnabled = enabled((_b = this.element.dataset.pagination) != null ? _b : this.findDataset(["dots"]));
+      if (paginationEnabled && !this.getPaginationElement()) {
         const pagination = document.createElement("div");
         pagination.className = "swiper-pagination";
         this.element.append(pagination);
       }
+    }
+    findExternalNavigation() {
+      var _a;
+      const container = this.element.closest([
+        "[data-carousel-id]",
+        "[data-slider-id]",
+        "[data-slideshow-id]",
+        "[data-showcase-id]",
+        "[data-panelslider-id]",
+        "[data-bgslideshow-id]",
+        "[data-featuredvideos-id]"
+      ].join(", "));
+      return (container == null ? void 0 : container.querySelector('.custom-swiper-navigation, [id^="g-swipercarousel-accordionslider-controls"]')) || ((_a = this.element.closest(".g-swipercarousel-accordionslider")) == null ? void 0 : _a.querySelector('[id^="g-swipercarousel-accordionslider-controls"]')) || null;
     }
     getPaginationElement() {
       const selector2 = this.element.dataset.paginationSelector;
@@ -5572,16 +5637,25 @@
           console.warn(`Invalid Swiper pagination selector: ${selector2}`, error);
         }
       }
-      return this.element.querySelector(":scope > .swiper-pagination");
+      const internal = this.element.querySelector(":scope > .swiper-pagination");
+      if (internal) {
+        return internal;
+      }
+      const adjacent = this.element.nextElementSibling;
+      return (adjacent == null ? void 0 : adjacent.matches(".swiper-pagination")) ? adjacent : null;
     }
     create() {
+      var _a, _b, _c, _d, _e, _f, _g, _h;
       const { dataset } = this.element;
+      const role = dataset.gSwiperRole || "";
       const slides = this.element.querySelectorAll(".swiper-slide").length;
-      const slidesPerView = Math.max(1, number(dataset.slidesPerView, 1));
-      const navigation = enabled(dataset.navigation, true);
-      const pagination = enabled(dataset.pagination);
-      const autoplay = enabled(dataset.autoplay);
-      const requestedLoop = enabled(dataset.loop, true);
+      const isPrimarySlides = /(?:^|\s)g-(?:slider|slideshow|showcase|panelslider|bgslideshow)-slides(?:\s|$)/.test(this.element.className);
+      const inferredItems = this.findDataset(["items", "itemsAmount", "displayitems"]);
+      const slidesPerView = Math.max(1, number((_a = dataset.slidesPerView) != null ? _a : isPrimarySlides ? 1 : inferredItems, 1));
+      const navigation = role === "main" ? false : enabled((_b = dataset.navigation) != null ? _b : this.findDataset(["carouselNav", "nav"]), true);
+      const pagination = enabled((_c = dataset.pagination) != null ? _c : this.findDataset(["dots"]));
+      const autoplay = role === "navigation" ? false : enabled((_d = dataset.autoplay) != null ? _d : this.findDataset(["autoplay"]));
+      const requestedLoop = enabled((_e = dataset.loop) != null ? _e : this.findDataset(["loop"]), true);
       const effect = dataset.effect === "fade" && slidesPerView === 1 ? "fade" : "slide";
       const instance = new Swiper(this.element, {
         modules: [A11y, Autoplay, EffectFade, Keyboard, Navigation, Pagination],
@@ -5593,15 +5667,12 @@
         },
         autoHeight: enabled(dataset.autoHeight, true),
         autoplay: autoplay ? {
-          delay: Math.max(1e3, number(dataset.autoplayDelay, 5e3)),
+          delay: Math.max(1e3, number((_f = dataset.autoplayDelay) != null ? _f : this.findDataset(["autoplayInterval", "timeout", "delay"]), 5e3)),
           disableOnInteraction: false,
           pauseOnMouseEnter: enabled(dataset.pauseOnHover, true)
         } : false,
-        breakpoints: slidesPerView > 1 ? {
-          0: { slidesPerView: 1 },
-          768: { slidesPerView: Math.max(1, Math.ceil(slidesPerView / 2)) },
-          960: { slidesPerView }
-        } : void 0,
+        breakpoints: this.getBreakpoints(slidesPerView),
+        centeredSlides: enabled(dataset.centered),
         effect,
         fadeEffect: { crossFade: true },
         grabCursor: true,
@@ -5609,13 +5680,17 @@
           enabled: true,
           onlyInViewport: true
         },
+        initialSlide: this.getInitialSlide(),
         loop: requestedLoop && slides > slidesPerView,
         navigation: navigation ? {
-          nextEl: this.element.querySelector(".swiper-button-next"),
-          prevEl: this.element.querySelector(".swiper-button-prev")
+          addIcons: false,
+          nextEl: (_g = this.navigationElement) == null ? void 0 : _g.querySelector(".swiper-button-next"),
+          prevEl: (_h = this.navigationElement) == null ? void 0 : _h.querySelector(".swiper-button-prev")
         } : false,
         observer: true,
         observeParents: true,
+        slidesPerGroup: Math.max(1, number(dataset.slidesPerGroup, 1)),
+        spaceBetween: Math.max(0, number(dataset.spaceBetween, 0)),
         pagination: pagination ? {
           el: this.getPaginationElement(),
           bulletElement: "button",
@@ -5635,6 +5710,61 @@
       });
       return instance;
     }
+    findDataset(suffixes) {
+      let current = this.element;
+      const normalized = suffixes.map((suffix) => suffix.toLowerCase());
+      while (current) {
+        const match = Object.entries(current.dataset || {}).find(([key]) => {
+          const lowerKey = key.toLowerCase();
+          return normalized.some((suffix) => lowerKey === suffix || lowerKey.endsWith(suffix));
+        });
+        if (match) {
+          return match[1];
+        }
+        current = current.parentElement;
+      }
+      return void 0;
+    }
+    getBreakpoints(slidesPerView) {
+      if (slidesPerView <= 1) {
+        return void 0;
+      }
+      const smallMobile = Math.max(1, number(this.findDataset(["itemsSmallmobile"]), 1));
+      const mobile = Math.max(1, number(this.findDataset(["itemsMobile"]), Math.ceil(slidesPerView / 2)));
+      const tablet = Math.max(1, number(this.findDataset(["itemsTablet"]), Math.ceil(slidesPerView / 2)));
+      return {
+        0: { slidesPerView: smallMobile },
+        480: { slidesPerView: mobile },
+        768: { slidesPerView: tablet },
+        960: { slidesPerView }
+      };
+    }
+    getInitialSlide() {
+      if (this.element.dataset.initialSlide !== void 0) {
+        return Math.max(0, number(this.element.dataset.initialSlide, 0));
+      }
+      const container = this.element.closest([
+        "[data-carousel-id]",
+        "[data-slider-id]",
+        "[data-slideshow-id]",
+        "[data-showcase-id]",
+        "[data-eventlist-id]"
+      ].join(", "));
+      const selected = container == null ? void 0 : container.querySelector(".selected, .current, .swiper-current, .active");
+      const itemClass = selected ? Array.from(selected.classList).find((className) => !["selected", "current", "swiper-current", "active"].includes(className)) : null;
+      const selectable = (selected == null ? void 0 : selected.parentElement) && itemClass ? Array.from(selected.parentElement.children).filter((item) => item.classList.contains(itemClass)) : [];
+      const selectedIndex = selected ? selectable.indexOf(selected) : -1;
+      if (selectedIndex >= 0) {
+        return selectedIndex;
+      }
+      const preset = this.findDataset(["preset", "presets"]);
+      if (preset === false || preset === "false") {
+        return 0;
+      }
+      const presetIndex = number(preset, 0);
+      const oneBasedSliderPreset = (container == null ? void 0 : container.matches(".g-slider")) && container.querySelector("[data-slider-slides-id]");
+      return Math.max(0, oneBasedSliderPreset ? presetIndex - 1 : presetIndex);
+    }
     syncState(swiper) {
       var _a;
       this.element.classList.toggle("swiper-rtl", swiper.rtlTranslate);
@@ -5648,6 +5778,216 @@
       }));
     }
   };
+  var bindSynchronizedCarousels = (root = document) => {
+    var _a, _b;
+    const containerSelector = [
+      "[data-slider-id]",
+      "[data-slideshow-id]",
+      "[data-showcase-id]",
+      "[data-panelslider-id]",
+      "[data-bgslideshow-id]",
+      "[data-newsslider-id]",
+      "[data-eventlist-id]",
+      "[data-featuredvideos-id]"
+    ].join(", ");
+    const containers = ((_a = root.matches) == null ? void 0 : _a.call(root, containerSelector)) ? [root] : Array.from(((_b = root.querySelectorAll) == null ? void 0 : _b.call(root, containerSelector)) || []);
+    containers.forEach((container) => {
+      if (container.dataset.gSwiperSyncReady === "true") {
+        return;
+      }
+      const carousels = Array.from(container.querySelectorAll(":scope [data-g-swiper]")).filter((element) => {
+        var _a2;
+        return (_a2 = element.gantrySwiper) == null ? void 0 : _a2.instance;
+      });
+      if (carousels.length < 2) {
+        return;
+      }
+      const mainElement = carousels.find((element) => /-slides(?:\s|$)/.test(element.className)) || carousels[0];
+      const navigationElement = carousels.find((element) => element !== mainElement && /-carousel(?:\s|$)/.test(element.className)) || carousels[1];
+      const main = mainElement.gantrySwiper.instance;
+      const navigation = navigationElement.gantrySwiper.instance;
+      const updateCurrent = () => {
+        navigation.slides.forEach((slide2) => slide2.classList.remove("swiper-current"));
+        const current = navigation.slides[main.realIndex];
+        current == null ? void 0 : current.classList.add("swiper-current");
+        navigation.slideTo(main.realIndex);
+      };
+      navigationElement.addEventListener("click", (event) => {
+        const slide2 = event.target.closest(".swiper-slide");
+        if (!slide2) {
+          return;
+        }
+        const index = navigation.slides.indexOf(slide2);
+        if (index >= 0) {
+          main.slideToLoop(index);
+        }
+      });
+      main.on("slideChange", updateCurrent);
+      updateCurrent();
+      container.dataset.gSwiperSyncReady = "true";
+    });
+  };
+  var bindStaticNavigation = (root = document) => {
+    const definitions = [
+      {
+        container: "[data-newsslider-id]",
+        items: ".g-newsslider-carousel-item-container",
+        active: "current"
+      },
+      {
+        container: "[data-eventlist-id]",
+        items: ".g-eventlist-item",
+        active: "selected"
+      }
+    ];
+    definitions.forEach((definition) => {
+      var _a, _b;
+      const containers = ((_a = root.matches) == null ? void 0 : _a.call(root, definition.container)) ? [root] : Array.from(((_b = root.querySelectorAll) == null ? void 0 : _b.call(root, definition.container)) || []);
+      containers.forEach((container) => {
+        var _a2;
+        if (container.dataset.gSwiperStaticReady === "true") {
+          return;
+        }
+        const swiperElement = container.querySelector("[data-g-swiper]");
+        const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.gantrySwiper) == null ? void 0 : _a2.instance;
+        const items = Array.from(container.querySelectorAll(definition.items));
+        if (!swiper || !items.length) {
+          return;
+        }
+        const update2 = () => {
+          items.forEach((item) => item.classList.remove(definition.active));
+          const current = items[swiper.realIndex];
+          current == null ? void 0 : current.classList.add(definition.active);
+          current == null ? void 0 : current.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        };
+        items.forEach((item, index) => {
+          item.addEventListener("click", () => swiper.slideToLoop(index));
+        });
+        swiper.on("slideChange", update2);
+        update2();
+        container.dataset.gSwiperStaticReady = "true";
+      });
+    });
+  };
+  var bindShowcaseSets = (root = document) => {
+    var _a, _b;
+    const containers = ((_a = root.matches) == null ? void 0 : _a.call(root, "[data-showcase-id]")) ? [root] : Array.from(((_b = root.querySelectorAll) == null ? void 0 : _b.call(root, "[data-showcase-id]")) || []);
+    containers.forEach((container) => {
+      var _a2;
+      if (container.dataset.gSwiperShowcaseReady === "true") {
+        return;
+      }
+      const swiperElement = container.querySelector("[data-showcase-slides-id][data-g-swiper]");
+      const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.gantrySwiper) == null ? void 0 : _a2.instance;
+      const sets = Array.from(container.querySelectorAll(".g-showcase-slides.desktop .g-showcase-slides-set"));
+      if (!swiper || !sets.length) {
+        return;
+      }
+      const itemsPerSet = Math.max(1, number(container.dataset.showcaseItems, 1));
+      const update2 = () => {
+        var _a3, _b2;
+        sets.forEach((set) => set.classList.remove("active"));
+        const index = Math.min(sets.length - 1, Math.floor(swiper.realIndex / itemsPerSet));
+        (_a3 = sets[index]) == null ? void 0 : _a3.classList.add("active");
+        (_b2 = sets[index]) == null ? void 0 : _b2.querySelectorAll(".g-showcase-slides-slide").forEach((slide2) => {
+          slide2.classList.add("finished");
+        });
+      };
+      swiper.on("slideChangeTransitionStart", () => {
+        sets.forEach((set) => {
+          set.querySelectorAll(".g-showcase-slides-slide").forEach((slide2) => {
+            slide2.classList.remove("finished");
+          });
+        });
+      });
+      swiper.on("slideChangeTransitionEnd", update2);
+      update2();
+      container.dataset.gSwiperShowcaseReady = "true";
+    });
+  };
+  var bindBackgroundSlides = (root = document) => {
+    var _a, _b;
+    const containers = ((_a = root.matches) == null ? void 0 : _a.call(root, "[data-bgslideshow-id]")) ? [root] : Array.from(((_b = root.querySelectorAll) == null ? void 0 : _b.call(root, "[data-bgslideshow-id]")) || []);
+    containers.forEach((container) => {
+      var _a2;
+      if (container.dataset.gSwiperBackgroundReady === "true") {
+        return;
+      }
+      const swiperElement = container.querySelector("[data-bgslideshow-slides-id][data-g-swiper]");
+      const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.gantrySwiper) == null ? void 0 : _a2.instance;
+      const images = Array.from(container.querySelectorAll("[data-bgslideshow-carousel-id] img"));
+      let target = null;
+      try {
+        target = document.querySelector(container.dataset.vegasElement);
+      } catch (e) {
+        target = null;
+      }
+      if (!swiper || !target || !images.length) {
+        return;
+      }
+      const update2 = () => {
+        var _a3, _b2;
+        const image = ((_a3 = images[swiper.realIndex]) == null ? void 0 : _a3.currentSrc) || ((_b2 = images[swiper.realIndex]) == null ? void 0 : _b2.src);
+        if (!image) {
+          return;
+        }
+        if (typeof target.animate === "function") {
+          target.animate([{ opacity: 0.85 }, { opacity: 1 }], {
+            duration: Math.max(150, number(container.dataset.bgslideshowTransitionDuration, 500)),
+            easing: "ease-out"
+          });
+        }
+        target.style.backgroundImage = `url("${image.replaceAll('"', '\\"')}")`;
+        target.style.backgroundRepeat = "no-repeat";
+        target.style.backgroundSize = container.dataset.bgslideshowCover || "cover";
+        target.style.backgroundPosition = [
+          container.dataset.bgslideshowAlign || "center",
+          container.dataset.bgslideshowValign || "center"
+        ].join(" ");
+      };
+      swiper.on("slideChange", update2);
+      update2();
+      container.dataset.gSwiperBackgroundReady = "true";
+    });
+  };
+  var bindAccordionSlides = (root = document) => {
+    var _a, _b;
+    const containers = ((_a = root.matches) == null ? void 0 : _a.call(root, ".g-swipercarousel-accordionslider")) ? [root] : Array.from(((_b = root.querySelectorAll) == null ? void 0 : _b.call(root, ".g-swipercarousel-accordionslider")) || []);
+    containers.forEach((container) => {
+      if (container.dataset.gSwiperAccordionReady === "true") {
+        return;
+      }
+      const items = Array.from(container.querySelectorAll(".g-swipercarousel-item"));
+      items.forEach((item, index) => {
+        const heading = item.querySelector(".g-swipercarousel-item-title");
+        const content = item.querySelector(":scope > .g-swipercarousel-content");
+        if (!heading || !content) {
+          return;
+        }
+        const setOpen = (open) => {
+          var _a2;
+          heading.classList.toggle("ui-accordion-header-active", open);
+          heading.classList.toggle("ui-state-active", open);
+          heading.setAttribute("aria-expanded", String(open));
+          content.classList.toggle("ui-accordion-content-active", open);
+          content.hidden = !open;
+          (_a2 = item.querySelector(".indicator span")) == null ? void 0 : _a2.replaceChildren(document.createTextNode(open ? "\u2212" : "+"));
+        };
+        heading.setAttribute("role", "button");
+        heading.setAttribute("tabindex", "0");
+        const toggle = () => setOpen(content.hidden);
+        heading.addEventListener("click", toggle);
+        heading.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggle();
+          }
+        });
+        setOpen(index === 0);
+      });
+      container.dataset.gSwiperAccordionReady = "true";
+    });
+  };
   var initialize = (root = document) => {
     var _a, _b;
     const elements = ((_a = root.matches) == null ? void 0 : _a.call(root, selector)) ? [root] : Array.from(((_b = root.querySelectorAll) == null ? void 0 : _b.call(root, selector)) || []);
@@ -5658,6 +5998,11 @@
       element.dataset.gSwiperReady = "true";
       element.gantrySwiper = new GantrySwiper(element);
     });
+    bindSynchronizedCarousels(root);
+    bindStaticNavigation(root);
+    bindShowcaseSets(root);
+    bindBackgroundSlides(root);
+    bindAccordionSlides(root);
   };
   var ready = () => {
     initialize();

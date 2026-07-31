@@ -32,7 +32,7 @@ layout:
       -
         'headermain 80':
           grid-1731:
-            - owlcarousel-5908
+            - swipercarousel-5908
       -
         'headerright 10': {  }
   /container-showcase/:
@@ -127,7 +127,7 @@ layout:
       -
         'footermain 80':
           grid-8057:
-            - owlcarousel-1641
+            - swipercarousel-1641
       -
         'footerright 10': {  }
   /container-copyright/:
@@ -694,8 +694,8 @@ content:
   menu-7876:
     block:
       variations: align-right
-  owlcarousel-5908:
-    title: 'Owl Carousel'
+  swipercarousel-5908:
+    title: 'Swiper Carousel'
     attributes:
       presets: enabled
       nav: disabled
@@ -1035,8 +1035,8 @@ content:
           name: 'New item'
     block:
       class: fp-simplebooking
-  owlcarousel-1641:
-    title: 'Owl Carousel'
+  swipercarousel-1641:
+    title: 'Swiper Carousel'
     attributes:
       layout: testimonial
       nav: disabled

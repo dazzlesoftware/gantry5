@@ -5,12 +5,12 @@
     border-bottom: 5px solid $accent-color-1;
     // Container
     .g-container {
-    	width: 100%;
+	width: 100%;
     }
     // RokSprocket Features
-	.sprocket-features, .g-owlcarousel-feature-slider {
-		&.layout-slideshow, [id^="g-owlcarousel-featuresslider-"] {
-			.sprocket-features-img-container, .g-owlcarousel-item-image {
+	.sprocket-features, .g-swipercarousel-feature-slider {
+		&.layout-slideshow, [id^="g-swipercarousel-featuresslider-"] {
+			.sprocket-features-img-container, .g-swipercarousel-item-image {
 				height: 70vh;
 				@include breakpoint(mobile-only) {
 					height: 450px;
@@ -19,7 +19,7 @@
 					height: 500px;
 				}
 			}
-			.sprocket-features-title, .g-owlcarousel-item-title {
+			.sprocket-features-title, .g-swipercarousel-item-title {
 				padding-top: 50vh;
 				@include breakpoint(desktop-range) {
 					padding-top: 320px;
@@ -31,7 +31,7 @@
 					line-height: 1.25;
 				}
 			}
-			.sprocket-features-arrows .arrow, .owl-nav .owl-prev, .owl-nav .owl-next {
+			.sprocket-features-arrows .arrow, .swiper-navigation .swiper-button-prev, .swiper-navigation .swiper-button-next {
 				background: transparent;
 				top: 50vh;
 				@include breakpoint(desktop-range) {

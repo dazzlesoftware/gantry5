@@ -1,20 +1,20 @@
 #g-bottom {
 	background: $bottom-background;
-	color: $bottom-text-color;	
+	color: $bottom-text-color;
 }
 
 #bottom-slider {
-	.g-owlcarousel-strips-slider {
+	.g-swipercarousel-strips-slider {
 		border-bottom: 1px solid rgba(136, 136, 136, 0.25);
 	    border-top: 1px solid rgba(136, 136, 136, 0.25);
 	    margin-bottom: 1.5rem;
 	    margin-top: -0.5rem;
-		.owl-item {
+		.swiper-slide {
 			.item {
 				border-radius: 0;
 			}
 		}
-		.g-owlcarousel-content {
+		.g-swipercarousel-content {
 			padding: 0;
 			position: absolute;
 		    bottom: 0;
@@ -25,43 +25,43 @@
 		    background: transparent;
 		    .readon {
 			    span {
-			    	display: none;
+				display: none;
 			    }
 			    &:after {
-			    	margin-left: -1rem;
-			    	font-size: 2.5rem;
-			    	content: "\f002";
-			    }	
-			}    
+				margin-left: -1rem;
+				font-size: 2.5rem;
+				content: "\f002";
+			    }
+			}
 		}
-	    .owl-nav {
-	    	top: 50%;
-	    	left: 0;
-	    	position: absolute;
-    		width: 100%;
-    		margin-top: -10px;
-    		padding: 0;
+	    .swiper-navigation {
+		top: 50%;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		margin-top: -10px;
+		padding: 0;
             > div, > button {
-        		color: #222;
-            	background: transparent;
-            	width: 22px;
-            	height: 22px;
-                &.owl-prev {
-                	left: -35px;
-                	margin-right: 0;
-                	&:before {
+		color: #222;
+	background: transparent;
+	width: 22px;
+	height: 22px;
+                &.swiper-button-prev {
+	left: -35px;
+	margin-right: 0;
+	&:before {
                         content: "\f104";
                         left: 50%;
                         margin-left: -3px;
                     }
                 }
 
-                &.owl-next {
-                	right: -35px;
+                &.swiper-button-next {
+	right: -35px;
                     &:before {
                         content: "\f105";
                         right: 50%;
-	                	margin-right: -3px;
+		margin-right: -3px;
                     }
                 }
 
@@ -77,7 +77,7 @@
                     display: none;
                 }
             }
-        }    	
+        }
 	}
 }
 

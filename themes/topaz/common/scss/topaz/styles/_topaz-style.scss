@@ -103,7 +103,7 @@
     }
 }
 
-// Bottom Aligned owlCarousel
+// Bottom Aligned swiperCarousel
 .g-bottom-aligned {
     position: relative;
     z-index: 2;
@@ -120,10 +120,10 @@
     }
 }
 
-// Particles - Standard OwlCarousel Bottom Margin Reset
+// Particles - Standard SwiperCarousel Bottom Margin Reset
 #g-container-bottom {
-    .g-bottom-owlcarousel {
-        .g-owlcarousel-layout-standard {
+    .g-bottom-swipercarousel {
+        .g-swipercarousel-layout-standard {
             margin: 0;
         }
     }

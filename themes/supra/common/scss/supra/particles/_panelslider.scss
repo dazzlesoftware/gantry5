@@ -3,7 +3,7 @@
     position: relative;
     background: linear-gradient(to right, adjust-hue($accent-color-1, 40%), $accent-color-2);
 
-    .owl-nav {
+    .swiper-navigation {
         position: absolute;
         height: 100%;
         width: 100%;
@@ -22,7 +22,7 @@
               font-size: $core-font-size + 0.2;
             }
         }
-        .owl-prev {
+        .swiper-button-prev {
             float: left;
             position: relative;
             margin-left: -3rem;
@@ -31,7 +31,7 @@
               margin-left: -2.5rem;
             }
         }
-        .owl-next {
+        .swiper-button-next {
             float: right;
             position: relative;
             margin-right: -3rem;
@@ -47,14 +47,14 @@
         margin: 0 10vw;
         width: auto;
         z-index: 2;
-        .owl-stage-outer {
-            .owl-stage {
+        .swiper {
+            .swiper-wrapper {
                 white-space: nowrap;
             }
         }
 
         // Item
-        .owl-item {
+        .swiper-slide {
             z-index: 1;
 
             .tab {
@@ -107,7 +107,7 @@
             &:nth-child(6) .tab { background: adjust-hue($accent-color-2, 15%); }
             &:nth-child(7) .tab { background: adjust-hue($accent-color-2, 10%); }
 
-            &.owl-current {
+            &.swiper-current {
                 z-index: 2;
 
                 .tab {

@@ -1,5 +1,5 @@
 // Slideshow Styling
-.owl-stage-outer {
+.swiper {
     overflow: visible;
     @include breakpoint (mobile-only) {
         padding: 0 0;
@@ -17,10 +17,10 @@
     .g-slideshow-carousel {
         position: relative;
 
-        .owl-stage {
+        .swiper-wrapper {
             display: flex;
 
-            .owl-item {
+            .swiper-slide {
                 padding: 4rem 0; // Active slide custom styling
                 padding-bottom: 0;
 
@@ -147,9 +147,9 @@
         }
 
         // Nav
-        .owl-nav {
-            button.owl-prev,
-            button.owl-next {
+        .swiper-navigation {
+            button.swiper-button-prev,
+            button.swiper-button-next {
                 position: absolute;
                 top: 50%;
                 width: 40px;
@@ -171,7 +171,7 @@
                 }
             }
 
-            .owl-prev {
+            .swiper-button-prev {
                 left: 15%;
 
                 @include breakpoint(large-desktop-range) {
@@ -188,7 +188,7 @@
                 }
             }
 
-            .owl-next {
+            .swiper-button-next {
                 right: 15%;
 
                 @include breakpoint(large-desktop-range) {
@@ -207,7 +207,7 @@
         }
 
         // Dots
-        .owl-dots {
+        .swiper-pagination {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -224,7 +224,7 @@
                 left: $content-padding;
             }
 
-            .owl-dot {
+            .swiper-pagination-bullet {
                 width: 12px;
                 height: 12px;
                 margin-bottom: 0.3rem;

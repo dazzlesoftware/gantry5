@@ -50,7 +50,7 @@
             margin: 0;
             padding: 0;
         }
-        .g-owlcarousel-layout-standard .owl-item > div {
+        .g-swipercarousel-layout-standard .swiper-slide > div {
             .image {
                 &:before {
                     background: linear-gradient(140deg, rgba(0,0,0,0.0) 50%, transparentize($accent-color-2, 0.50) 50%);
@@ -61,7 +61,7 @@
                 }
             }
         }
-        .g-owlcarousel-layout-standard .owl-item > div .g-owlcarousel-item-title {
+        .g-swipercarousel-layout-standard .swiper-slide > div .g-swipercarousel-item-title {
             text-transform: uppercase;
         }
     }

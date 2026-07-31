@@ -5,7 +5,7 @@
     .g-slideshow-carousel {
         position: relative;
 
-        .owl-stage {
+        .swiper-wrapper {
             display: flex;
 
             .g-slideshow-carousel-image-container {
@@ -85,7 +85,7 @@
         }
 
         // Dots
-        .owl-dots {
+        .swiper-pagination {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -102,7 +102,7 @@
                 left: $content-padding;
             }
 
-            .owl-dot {
+            .swiper-pagination-bullet {
                 width: 12px;
                 height: 12px;
                 margin-bottom: 0.3rem;

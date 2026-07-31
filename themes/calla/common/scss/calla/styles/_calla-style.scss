@@ -30,8 +30,8 @@
 // Slideshow
 #g-slideshow.fp-slideshow {
     @include breakpoint(mobile-only) {
-        .g-owlcarousel-carousel {
-            .owl-item {
+        .g-swipercarousel-carousel {
+            .swiper-slide {
                 .g-carousel-image-wrapper {
                     background-position-x: 50%;
                 }

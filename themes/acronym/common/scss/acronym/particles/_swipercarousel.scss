@@ -1,0 +1,438 @@
+.g-swipercarousel {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+
+    > .swiper-wrapper {
+        display: flex;
+    }
+
+    .swiper-slide {
+        box-sizing: border-box;
+        flex-shrink: 0;
+        min-width: 0;
+    }
+
+    .swiper-navigation button {
+        position: absolute;
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        margin: auto;
+        padding: 0;
+        color: $white;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        cursor: pointer;
+        font-size: $core-font-size + 1;
+        opacity: 1;
+        outline: none;
+        transition: color 0.25s, opacity 0.25s;
+
+        &::after,
+        .swiper-navigation-icon {
+            display: none;
+        }
+
+        &:hover,
+        &:focus {
+            color: $accent-color-1;
+        }
+
+        &.swiper-button-disabled {
+            cursor: default;
+            opacity: 0.35;
+        }
+    }
+
+    .swiper-pagination {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .swiper-pagination-bullet {
+            display: inline-flex;
+            width: 15px;
+            height: 15px;
+            margin: 0 0.6rem;
+            padding: 0;
+            background: $white;
+            border: 0;
+            border-radius: 100%;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s, background-color 0.2s;
+
+            &.swiper-pagination-bullet-active {
+                background: $accent-color-1;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.swipercarousel-offset {
+    position: relative;
+    z-index: 2;
+    max-width: initial;
+    margin-right: -45px !important;
+    margin-bottom: -45px !important;
+    margin-left: -45px !important;
+
+    @include breakpoint(mobile-only) {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    &.size-100 {
+        flex-basis: auto;
+        width: auto;
+    }
+}
+
+.g-swipercarousel-description {
+    font-family: get-font-family($font-family-default);
+    font-size: $core-font-size + 0.25;
+    font-weight: $font-weight-regular;
+}
+
+// Showcase
+.g-swipershowcase {
+    position: relative;
+    display: block;
+
+    .g-swipercarousel > .swiper-wrapper {
+        border-radius: $border-radius $border-radius 0 0;
+    }
+
+    .g-swipershowcase-item {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .g-showcase-image-link {
+        position: relative;
+        display: block;
+        flex: 1 1 50%;
+        min-width: 0;
+        color: inherit;
+        transform-style: preserve-3d;
+        transition: color 0.2s;
+    }
+
+    .showcase-image {
+        position: relative;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .item-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        color: $white;
+        text-align: center;
+
+        .fa {
+            padding-bottom: $content-padding + 0.25;
+            font-size: $core-font-size + 3rem;
+
+            @include breakpoint(tablet-range) {
+                padding-bottom: $content-padding;
+                font-size: $core-font-size + 1.5;
+            }
+
+            @include breakpoint(mobile-only) {
+                padding-bottom: $content-padding;
+                font-size: $core-font-size + 1;
+            }
+        }
+
+        .item-overlay-title {
+            display: block;
+            font-size: $core-font-size + 2.75rem;
+            font-weight: $font-weight-bold;
+            line-height: 1;
+
+            @include breakpoint(tablet-range) {
+                padding-bottom: ($content-padding / 4);
+                font-size: $core-font-size + 1.5;
+            }
+
+            @include breakpoint(mobile-only) {
+                padding-bottom: ($content-padding / 4);
+                font-size: $core-font-size + 0.5;
+            }
+        }
+
+        .item-overlay-desc {
+            display: block;
+            font-size: $core-font-size + 1;
+            font-weight: $font-weight-regular;
+            opacity: 0.75;
+
+            @include breakpoint(tablet-range) {
+                padding-bottom: $content-padding;
+                font-size: $core-font-size + 0.75;
+            }
+
+            @include breakpoint(mobile-only) {
+                font-size: $core-font-size;
+            }
+        }
+    }
+
+    .swiper-navigation button {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+
+        .fa {
+            font-size: $core-font-size + 0.5;
+            font-weight: $font-weight-regular;
+        }
+
+        &:hover,
+        &:focus {
+            color: fade-out($white, 0.40);
+        }
+
+        &.swiper-button-prev {
+            right: auto;
+            left: 50px;
+
+            @include breakpoint(mobile-only) {
+                left: 0;
+            }
+        }
+
+        &.swiper-button-next {
+            right: 50px;
+            left: auto;
+
+            @include breakpoint(mobile-only) {
+                right: 0;
+            }
+        }
+
+        .dir-rtl & {
+            &.swiper-button-prev {
+                right: 50px;
+                left: auto;
+
+                @include breakpoint(mobile-only) {
+                    right: 0;
+                }
+            }
+
+            &.swiper-button-next {
+                right: auto;
+                left: 50px;
+
+                @include breakpoint(mobile-only) {
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 5rem;
+
+        @include breakpoint(tablet-range) {
+            bottom: 2.5rem;
+        }
+
+        @include breakpoint(mobile-only) {
+            bottom: 1rem;
+        }
+
+        .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border: 3px solid $white;
+            opacity: 1;
+
+            @include breakpoint(mobile-only) {
+                width: 15px;
+                height: 15px;
+                border-width: 2px;
+            }
+
+            &.swiper-pagination-bullet-active {
+                background: $white;
+            }
+        }
+    }
+}
+
+// Cards
+.g-swipercards {
+    position: relative;
+    display: block;
+    margin-left: 6.25rem;
+
+    .dir-rtl & {
+        margin-right: 6.25rem;
+        margin-left: 0;
+    }
+
+    .swiper-slide {
+        padding: $content-margin;
+    }
+
+    .g-swipercards-item {
+        position: relative;
+        height: 100%;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: $border-radius;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            object-fit: cover;
+            transition: all 0.35s;
+        }
+
+        .indicator {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            color: $white;
+            font-style: normal;
+            text-transform: uppercase;
+
+            span {
+                padding: $content-padding;
+                font-size: $core-font-size - 0.2;
+                letter-spacing: 2px;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: all 0.35s;
+
+                @include breakpoint(mobile-only) {
+                    letter-spacing: 1px;
+                }
+            }
+        }
+
+        &:hover {
+            z-index: 10;
+
+            .g-swipercards-image-link::before {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .indicator span {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .g-swipercards-image-link {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: all 0.35s;
+
+        &::before {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-200deg, transparentize($accent-color-1, 0.50), transparentize($accent-color-2, 0.10));
+            border-radius: $border-radius;
+            content: "";
+            opacity: 0;
+            transform: scale(1, 0.2);
+            transform-origin: bottom;
+            transition: all 0.35s;
+        }
+    }
+
+    .g-swipercards-item-desc {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        flex-direction: column;
+        color: $white;
+
+        span {
+            flex: none;
+        }
+    }
+
+    .g-swipercards-item-desc-title {
+        display: block;
+        width: 100%;
+        padding: 0 $content-padding;
+        font-weight: $font-weight-bold;
+        @include responsive-font(1.3vw, $core-font-size, false, $core-font-size);
+    }
+
+    .g-swipercards-item-desc-subtitle {
+        padding: 0 $content-padding $content-padding;
+        font-size: $core-font-size - 0.2;
+    }
+
+    .swiper-navigation button {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+
+        .fa {
+            font-size: $core-font-size + 1.5;
+            font-weight: $font-weight-regular;
+        }
+
+        &:hover,
+        &:focus {
+            color: fade-out($white, 0.40);
+        }
+
+        &.swiper-button-prev {
+            right: auto;
+            left: -70px;
+
+            .dir-rtl & {
+                right: -70px;
+                left: auto;
+            }
+        }
+
+        &.swiper-button-next {
+            display: none;
+            visibility: hidden;
+        }
+    }
+}

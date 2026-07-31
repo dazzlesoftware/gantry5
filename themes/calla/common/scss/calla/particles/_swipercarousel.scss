@@ -1,0 +1,407 @@
+//-------------------------------------------//
+
+// SWIPER CAROUSEL ORIGINAL STYLING
+
+/*
+ *  Swiper Carousel - Animate Plugin
+ */
+.swiper {
+    .animated {
+        animation-duration: 1000ms;
+        animation-fill-mode: both;
+    }
+
+    .swiper-animated-in {
+        z-index: 0;
+    }
+
+    .swiper-animated-out {
+        z-index: 1;
+    }
+
+    .fadeOut {
+        animation-name: fadeOut;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/*
+ *  Swiper Carousel - Auto Height Plugin
+ */
+
+.swiper-height {
+    transition: height 500ms ease-in-out;
+}
+
+/*
+ *  Swiper Carousel - Core
+ */
+.swiper {
+    display: block;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    /* position relative and z-index fix webkit rendering fonts issue */
+    position: relative;
+    z-index: 1;
+
+    .swiper-wrapper {
+        position: relative;
+        -ms-touch-action: pan-Y;
+        touch-action: manipulation;
+        -moz-backface-visibility: hidden; /* fix firefox animation glitch */
+    }
+
+    .swiper-wrapper:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+    }
+
+    .swiper {
+        position: relative;
+        overflow: hidden;
+        /* fix for flashing background */
+        -webkit-transform: translate3d(0px, 0px, 0px);
+    }
+
+    .swiper-wrapper,
+    .swiper-slide {
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+    }
+
+    .swiper-slide {
+        position: relative;
+        min-height: 1px;
+
+        -webkit-backface-visibility: hidden;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+    }
+
+    .swiper-navigation.disabled,
+    .swiper-pagination.disabled {
+        display: none;
+    }
+
+    .swiper-navigation .swiper-button-prev,
+    .swiper-navigation .swiper-button-next,
+    .swiper-pagination-bullet {
+        cursor: pointer;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .swiper-navigation button.swiper-button-prev,
+    .swiper-navigation button.swiper-button-next,
+    button.swiper-pagination-bullet {
+        background: none;
+        color: inherit;
+        border: none;
+        padding:0!important;
+        font: inherit;
+    }
+
+    &.swiper-initialized {
+        display: block;
+    }
+
+    &.swiper-loading {
+        opacity: 0;
+        display: block;
+    }
+
+    &.swiper-hidden {
+        opacity: 0;
+    }
+
+    &.swiper-refresh .swiper-slide {
+        visibility: hidden;
+    }
+
+    &.swiper-drag .swiper-slide {
+        touch-action: pan-y;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    &.swiper-grab {
+        cursor: move;
+        cursor: grab;
+    }
+
+    &.swiper-rtl {
+        direction: rtl;
+    }
+
+    &.swiper-rtl .swiper-slide {
+
+    }
+}
+
+/* No Js */
+.no-js .swiper {
+    display: block;
+}
+
+/*
+ *  Swiper Carousel - Lazy Load Plugin
+ */
+
+.swiper {
+    .swiper-slide {
+        .swiper-lazy {
+            opacity: 0;
+            transition: opacity 400ms ease;
+        }
+
+        /**
+            This is introduced due to a bug in IE11 where lazy loading combined with autoheight plugin causes a wrong
+            calculation of the height of the swiper-slide that breaks page layouts
+         */
+        .swiper-lazy[src^=""], .swiper-lazy:not([src]) {
+            max-height: 0;
+        }
+
+        img.swiper-lazy {
+            transform-style: preserve-3d;
+        }
+    }
+}
+
+/*
+ *  Swiper Carousel - Video Plugin
+ */
+
+.swiper{
+    .swiper-video-wrapper {
+        position: relative;
+        height: 100%;
+        background: #000;
+    }
+
+    .swiper-video-play-icon {
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        left: 50%;
+        top: 50%;
+        margin-left: -40px;
+        margin-top: -40px;
+        background: url("../../images/swipercarousel/swiper.video.play.png") no-repeat;
+        cursor: pointer;
+        z-index: 1;
+        -webkit-backface-visibility: hidden;
+        transition: transform 100ms ease;
+    }
+
+    .swiper-video-play-icon:hover {
+        transform: scale(1.3, 1.3);
+    }
+
+    .swiper-video-playing .swiper-video-tn,
+    .swiper-video-playing .swiper-video-play-icon {
+        display: none;
+    }
+
+    .swiper-video-tn {
+        opacity: 0;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: opacity 400ms ease;
+    }
+
+    .swiper-video-frame {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/*
+ *  Swiper Carousel - Nav & Dots
+ */
+
+.swiper-navigation {
+    margin-top: 0;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+
+    [class*='swiper-'] {
+        display: inline-block;
+        margin: auto;
+        padding: 0.9rem 0;
+        color: $white;
+        font-size: $core-font-size;
+        ext-align: center;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.25s;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+
+.swiper-pagination {
+    .swiper-pagination-bullet {
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+// THEME PARTICLES STYLING
+.g-swipercarousel {
+    .g-swipercarousel-item-wrapper {
+        position: relative;
+    }
+
+    .g-swipercarousel-item-img {
+        position: relative;
+
+        &:after {
+            position: absolute;
+            content: "";
+            height: 50%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .g-swipercarousel-item-content-container {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform-style: preserve-3d;
+
+        @include breakpoint(large-desktop-range) {
+            width: $breakpoints-large-desktop-container;
+        }
+
+        @include breakpoint(desktop-range) {
+            width: $breakpoints-desktop-container;
+        }
+
+        @include breakpoint(tablet-range) {
+            width: $breakpoints-tablet-container;
+        }
+
+        @include breakpoint(large-mobile-range) {
+            width: $breakpoints-large-mobile-container;
+        }
+
+        @include breakpoint(small-mobile-range) {
+            width: 100%;
+        }
+    }
+
+    .g-swipercarousel-item-content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .g-swipercarousel-item-content {
+        margin: $content-margin;
+        padding: $content-padding;
+
+        .g-swipercarousel-fullwidth & {
+            width: 100%;
+        }
+
+        .g-swipercarousel-compact & {
+            width: 50%;
+
+            .center-block & {
+                margin: auto;
+            }
+
+            @include breakpoint(desktop-range) {
+                width: 65%;
+            }
+
+            @include breakpoint(tablet-range) {
+                width: 75%;
+            }
+
+            @include breakpoint(mobile-only) {
+                width: 100%;
+            }
+        }
+    }
+
+    .g-swipercarousel-item-title {
+        font-family: get-font-family($font-family-default);
+        font-size: $core-font-size + 2;
+        color: $white;
+        padding-bottom: $content-padding - 0.4;
+        font-weight: $font-weight-regular;
+        text-transform: uppercase;
+        position: absolute;
+        top: 40%;
+        left: 0;
+        z-index: 2;
+        margin: $content-margin + $content-padding;
+    }
+
+    .g-swipercarousel-item-desc {
+        font-size: $core-font-size + 0.4;
+        line-height: $core-line-height;
+        font-weight: $font-weight-light;
+        padding-bottom: $content-padding * 2;
+        margin-bottom: $content-margin;
+    }
+
+    .g-swipercarousel-item-button {
+        @include breakpoint(small-mobile-range) {
+            padding: 0.25rem 1rem;
+            font-weight: $font-weight-regular;
+            font-size: $core-font-size - 0.2;
+        }
+    }
+}

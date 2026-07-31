@@ -11,7 +11,7 @@ layout:
       - 'menu-4196 80'
   /slideshow/:
     -
-      - owlcarousel-4880
+      - swipercarousel-4880
   /above/:
     -
       - simplecontent-6075
@@ -31,7 +31,7 @@ layout:
       - system-content-4995
   /extension/:
     -
-      - owlcarousel-8199
+      - swipercarousel-8199
   /bottom/:
     -
       - infolist-6050
@@ -111,7 +111,7 @@ content:
   logo-5992:
     block:
       variations: align-right
-  owlcarousel-4880:
+  swipercarousel-4880:
     title: Slideshow
     attributes:
       class: ''
@@ -121,7 +121,7 @@ content:
       title: ''
       description: ''
       layout: standard
-      width: g-owlcarousel-fullwidth
+      width: g-swipercarousel-fullwidth
       animateIn: fadeIn
       animateOut: fadeOut
       nav: disabled
@@ -527,7 +527,7 @@ content:
           readmoreclass: ''
           readmoretarget: _self
           title: 'Move, resize, and create <br/>with the Layout Manager.'
-  owlcarousel-8199:
+  swipercarousel-8199:
     title: Testimonials
     attributes:
       class: ''
@@ -537,7 +537,7 @@ content:
       title: ''
       description: ''
       layout: testimonial
-      width: g-owlcarousel-fullwidth
+      width: g-swipercarousel-fullwidth
       animateIn: fadeIn
       animateOut: fadeOut
       nav: disabled

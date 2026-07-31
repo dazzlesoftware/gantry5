@@ -1,42 +1,42 @@
-.g-owlcarousel-slider {
-	.g-owlcarousel {
+.g-swipercarousel-slider {
+	.g-swipercarousel {
 		position: relative;
 
 
-		.g-owlcarousel-image-container {
-    		img {
-    			width: auto;
-    			display: inline-block;
-    		}
-    	}		
-	
- 		.g-owlcarousel-text {    
+		.g-swipercarousel-image-container {
+		img {
+			width: auto;
+			display: inline-block;
+		}
+	}
 
- 			@include breakpoint(mobile-only) {
- 				margin-bottom: 25px;
- 			}  
+		.g-swipercarousel-text {
 
-		    .g-owlcarousel-item-title {
+			@include breakpoint(mobile-only) {
+				margin-bottom: 25px;
+			}
+
+		    .g-swipercarousel-item-title {
 				font-family: get-font-family($font-family-bold);
 				text-transform: uppercase;
 				font-size: 2.8em;
 				letter-spacing: -1px;
 				line-height: 1.1em;
-			    margin-bottom: 25px;	    
+			    margin-bottom: 25px;
 		    }
 
-		    .g-owlcarousel-item-desc {
-		    	font-size: 1em;
-    			margin-top: 20px;
-    			line-height: 22px;
+		    .g-swipercarousel-item-desc {
+			font-size: 1em;
+			margin-top: 20px;
+			line-height: 22px;
 		    }
 
-		    .g-owlcarousel-item-button {
-		    	margin: 15px 0;
+		    .g-swipercarousel-item-button {
+			margin: 15px 0;
 		    }
 		}
 
-		.owl-dots {
+		.swiper-pagination {
 			bottom: 15px;
 			left: 50%;
 			text-align: left;
@@ -55,7 +55,7 @@
 						@include hexagon(16px, 10px, $accent-color-1);
 					}
 
-					&.owl-dot {
+					&.swiper-pagination-bullet {
 						margin: 0 6px;
 					}
 				}
@@ -67,7 +67,7 @@
 
 					&:hover {
 						background-color: $accent-color-1;
-					}	
+					}
 				}
 
 				&:hover {
@@ -76,10 +76,10 @@
 			}
 		}
 
-	    .owl-nav {
-	      button.owl-prev, button.owl-next {
-	      	background: $dark-grey;
-	      	line-height: 38px;
+	    .swiper-navigation {
+	      button.swiper-button-prev, button.swiper-button-next {
+		background: $dark-grey;
+		line-height: 38px;
 			color: $accent-color-1;
 			margin-top: -12px !important;
 			opacity: 0.5;
@@ -98,8 +98,8 @@
 				display: none;
 			}
 
-			&:hover {	
-				opacity: 1;	
+			&:hover {
+				opacity: 1;
 			}
 
 	        &:focus {
@@ -107,26 +107,26 @@
 	        }
 
 	        span {
-	        	font-size: 2.5rem;
+		font-size: 2.5rem;
 	        }
 	      }
 
-	      .owl-next {
-	      	@include breakpoint(large-desktop-range) {
-		    	right: 2rem;
+	      .swiper-button-next {
+		@include breakpoint(large-desktop-range) {
+			right: 2rem;
 		    }
 		    right: 0rem;
 	      }
 
-	      .owl-prev {
+	      .swiper-button-prev {
 	        left: 0rem;
 	        }
-	    }       
+	    }
 	}
 }
 
-.g-owlcarousel-slider {
-	.g-owlcarousel-text, .g-owlcarousel-image-container {
+.g-swipercarousel-slider {
+	.g-swipercarousel-text, .g-swipercarousel-image-container {
 		float: left;
 
 		@include breakpoint(mobile-only) {

@@ -1,7 +1,7 @@
 #g-extension {
     @if $extension-background-image {
         background: $extension-background url($extension-background-image) repeat;
-    } @else { 
+    } @else {
         background: $extension-background;
     }
     color: $extension-text-color;
@@ -29,7 +29,7 @@
         &:hover {
             background: $accent-color-2;
             border-bottom: 2px solid darken($accent-color-2, 15%);
-        }        
+        }
     }
     .readon2 {
         color: $white;
@@ -38,8 +38,8 @@
         &:hover {
             background: darken($extension-background, 8%);
             border-bottom: 2px solid darken($extension-background, 20%);
-        }       
-    }    
+        }
+    }
     .fp-extension {
         img {
             opacity: 0.5;
@@ -53,22 +53,22 @@
 }
 
 .fp-testimonials {
-    .g-owlcarousel-testimonials {
-        .g-owlcarousel-header {
+    .g-swipercarousel-testimonials {
+        .g-swipercarousel-header {
             h2.title {
                 text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.2);
             }
         }
-        .g-owlcarousel {
+        .g-swipercarousel {
             color: $extension-text-color;
 
-            .g-owlcarousel-content {
+            .g-swipercarousel-content {
                 font-family: serif;
                 font-style: italic;
                 font-size: 1.6em;
                 line-height: 1.3em;
             }
-            .g-owlcarousel-item-desc {
+            .g-swipercarousel-item-desc {
                 .rt-overlay-dark & {
                     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1);
                 }
@@ -84,7 +84,7 @@
                     margin-left: 10px;
                 }
             }
-        }    
+        }
     }
 }
 

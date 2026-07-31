@@ -1,5 +1,5 @@
 .g-carousel {
-    .owl-item {
+    .swiper-slide {
         position: relative;
 
         .g-carousel-item {
@@ -38,7 +38,7 @@
     }
 
     // Prev & Next Controls
-    .owl-nav {
+    .swiper-navigation {
         margin-top: $content-padding;
         margin-bottom: $content-margin;
         text-align: center;
@@ -62,11 +62,11 @@
             }
         }
 
-        .owl-prev {
+        .swiper-button-prev {
 
         }
 
-        .owl-next {
+        .swiper-button-next {
 
         }
     }

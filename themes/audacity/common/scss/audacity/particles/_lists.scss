@@ -1,53 +1,53 @@
 #lists {
-	&.g-owlcarousel-lists {
+	&.g-swipercarousel-lists {
 		position: relative;
 
-		.g-owlcarousel {
+		.g-swipercarousel {
 		    overflow: hidden;
-        	padding: 0;
+	padding: 0;
 
-        	.owl-item {
+	.swiper-slide {
 
 	            .item {
 	                p {
 	                    margin: 0;
 	                }
 	            }
-            }    
+            }
 
-			.g-owlcarousel-item {
+			.g-swipercarousel-item {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 				padding: 5px 0;
-    			margin-bottom: 2px;
+			margin-bottom: 2px;
 
-				.g-owlcarousel-item-title {
+				.g-swipercarousel-item-title {
 					font-family: get-font-family($font-family-alt);
-			    	font-weight: bold;
-			    	position: relative;
-                   	font-size: 18px;
-			    	border: 0;
+				font-weight: bold;
+				position: relative;
+	font-size: 18px;
+				border: 0;
                     cursor: pointer;
 
                     @include breakpoint(tablet-range) {
-                		font-size: 105%;
-                	}
+		font-size: 105%;
+	}
 
-                	@include breakpoint(mobile-only) {
-                		font-size: 100%;
-                	}
+	@include breakpoint(mobile-only) {
+		font-size: 100%;
+	}
 
                     .fp-bottom-a & {
 						font-family: get-font-family($font-family-alt2);
 						font-size: 1em;
-                   		line-height: 1.5em;
+		line-height: 1.5em;
 
-                    	@include breakpoint(tablet-range) {
-                    		font-size: 0.9em;
-                    	}
+	@include breakpoint(tablet-range) {
+		font-size: 0.9em;
+	}
 
-                    	@include breakpoint(mobile-only) {
-                    		font-size: 0.9em;
-                    	}
+	@include breakpoint(mobile-only) {
+		font-size: 0.9em;
+	}
 					}
 
 					&.padding {
@@ -72,15 +72,15 @@
 					    opacity: 0.25;
 
 					    .fp-bottom-a & {
-					    	margin-top: 15px;
+						margin-top: 15px;
 
-					    	@include breakpoint(mobile-only) {
+						@include breakpoint(mobile-only) {
 								margin-top: 10px;
 							}
 					    }
 
 					    @include breakpoint(mobile-only) {
-					    	width: 20px;
+						width: 20px;
 					    }
 
 						span {
@@ -98,13 +98,13 @@
 						    content: "+";
 						    text-shadow: none;
 						    font-size: 1em;
-    						line-height: 1.5em;
+						line-height: 1.5em;
 						    display: block;
 						    padding: 3px;
 
 						    @include breakpoint(mobile-only) {
-					    		padding: 0;
-					    	}
+							padding: 0;
+						}
 						}
 
 						&:hover {
@@ -117,21 +117,21 @@
 
                         .fp-bottom-a & {
 	                        font-size: 1.5em;
-	    					line-height: 1.5em;
-	    					color: darken($bottom-text-color, 25%);
+						line-height: 1.5em;
+						color: darken($bottom-text-color, 25%);
 
-	    					@include breakpoint(tablet-range) {
-	                    		font-size: 1.15em;
-	                    	}
+						@include breakpoint(tablet-range) {
+			font-size: 1.15em;
+		}
 
-	                    	@include breakpoint(mobile-only) {
-	                    		font-size: 1em;
-	                    	}
-    					}
+		@include breakpoint(mobile-only) {
+			font-size: 1em;
+		}
+					}
 
                         .ui-accordion-header-icon {
                             display: none;
-                        }                        
+                        }
 
 						.indicator {
 							opacity: 1;
@@ -140,24 +140,24 @@
 								padding: 0;
 							}
 						}
-					} 
+					}
 				}
 				.ui-accordion-content {
-					.g-owlcarousel-item-desc {
+					.g-swipercarousel-item-desc {
 						font-family: get-font-family($font-family-alt);
 						padding-left: 5px;
-					}	
+					}
 				}
 			}
-			.owl-nav {
+			.swiper-navigation {
 				margin-top: 40px;
 				> div, > button {
 					color: #ffffff;
-    				background: $accent-color-1;
-    				border-radius: 2px;
-    				border: none;
-    				position: absolute;
-    				font-size: 1.25em;
+				background: $accent-color-1;
+				border-radius: 2px;
+				border: none;
+				position: absolute;
+				font-size: 1.25em;
 				    display: block;
 				    width: 30px;
 				    height: 30px;
@@ -176,50 +176,50 @@
 						opacity: 1;
 					}
 
-			    &.owl-next {
-			    	&:before {
-				    	content: '\f105';
+			    &.swiper-button-next {
+				&:before {
+					content: '\f105';
 					    font-family: FontAwesome;
 					    position: absolute;
 					    top: 0px;
 					    left: 12px;
-				    } 
+				    }
 			    }
-				    &.owl-prev {
-			    	margin-right: 2.2rem;
-			    	&:before {
-				    	content: '\f104';
+				    &.swiper-button-prev {
+				margin-right: 2.2rem;
+				&:before {
+					content: '\f104';
 					    font-family: FontAwesome;
 					    position: absolute;
 					    top: 0px;
 					    left: 10px;
-				    } 
+				    }
 			    }
 			    span {
-			    	display: none;
+				display: none;
 				    }
 				}
 			}
-			.owl-dots {
+			.swiper-pagination {
 				position: absolute;
-   			 	right: 80px;
-   			 	bottom: 0;
-   			 	width: auto;
+				right: 80px;
+				bottom: 0;
+				width: auto;
 
-   			 	.owl-dot {
+				.swiper-pagination-bullet {
 					border: 2px solid $accent-color-1;
-    				background: transparent;
-	                opacity: 0.25;  
-	                margin: 0 2px; 			 	
-   			 		padding: 0;
-   			 		border-radius: 100%;
-   			 		&.active {
-   			 			opacity: 1;
-   			 			background: $accent-color-1;
-   			 		}  			 		
-   			 	}
+				background: transparent;
+	                opacity: 0.25;
+	                margin: 0 2px;
+					padding: 0;
+					border-radius: 100%;
+					&.active {
+						opacity: 1;
+						background: $accent-color-1;
+					}
+				}
 			}
 		}
-	}		
+	}
 }
 

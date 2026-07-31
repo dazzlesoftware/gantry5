@@ -1,9 +1,9 @@
-.g-owlcarousel-strips-slider {
-  .g-owlcarousel {
+.g-swipercarousel-strips-slider {
+  .g-swipercarousel {
 
-    .owl-item {
+    .swiper-slide {
 
-      .g-owlcarousel-content {
+      .g-swipercarousel-content {
         position: relative;
 
         .rt-strips-tag {
@@ -21,7 +21,7 @@
           border-radius: 3px;
         }
 
-        .g-owlcarousel-item-title {
+        .g-swipercarousel-item-title {
           font-family: get-font-family($font-family-alt);
           font-weight: bold;
           font-size: 1.85em;
@@ -44,7 +44,7 @@
           }
         }
 
-        .g-owlcarousel-item-desc {
+        .g-swipercarousel-item-desc {
           font-family: get-font-family($font-family-alt2);
 
           .fp-extension & {
@@ -58,7 +58,7 @@
       }
     }
 
-    .owl-dots {
+    .swiper-pagination {
       position: relative;
       margin-top: 35px;
 
@@ -73,17 +73,17 @@
 
           &:hover {
             background-color: $accent-color-1;
-          } 
+          }
         }
 
         &:hover {
           background-color: $dark-grey;
         }
-      }  
+      }
     }
 
-    .owl-nav {
-      button.owl-prev, button.owl-next {
+    .swiper-navigation {
+      button.swiper-button-prev, button.swiper-button-next {
         background: $accent-color-1;
         color: $white;
         width: 45px;
@@ -98,8 +98,8 @@
           margin-top: -85px;
         }
 
-        &:hover { 
-          opacity: 1; 
+        &:hover {
+          opacity: 1;
         }
 
         &:focus {
@@ -109,18 +109,18 @@
         &:before {
               font-family: FontAwesome;
               position: relative;
-          }    
+          }
 
-        &.owl-prev {
-            left: 10px;             
+        &.swiper-button-prev {
+            left: 10px;
 
             &:before {
                 content: "\f104";
             }
         }
 
-        &.owl-next {
-            right: 10px;                                
+        &.swiper-button-next {
+            right: 10px;
 
             &:before {
                 content: "\f105";

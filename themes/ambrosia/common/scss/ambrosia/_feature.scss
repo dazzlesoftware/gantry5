@@ -16,7 +16,7 @@
          .g-title-regular {
             font-size: 1.05rem;
             padding: 0;
-        }    
+        }
     }
     ul.g-contenttabs-tab-wrapper-container {
         float: right;
@@ -31,7 +31,7 @@
         }
         > li {
             float: none;
-            margin-bottom: -1px;  
+            margin-bottom: -1px;
         }
         .g-contenttabs-tab-title {
             color: $black;
@@ -49,7 +49,7 @@
             margin-left: -1px;
             @include breakpoint(mobile-only) {
                 font-size: 1.5rem;
-            }    
+            }
             &:hover {
                 background: transparent;
             }
@@ -59,22 +59,22 @@
                 color: $white !important;
                 background: $accent-color-1 !important;
             }
-        }    
+        }
     }
     .ui-tabs {
         .ui-tabs-nav {
             display: block;
             li.ui-tabs-active {
                 .ui-tabs-anchor {
-                   cursor: pointer; 
+                   cursor: pointer;
                 }
             }
-        } 
+        }
     }
 }
 
 #feature-headlines {
-    .g-owlcarousel-headlines {
+    .g-swipercarousel-headlines {
         margin: -0.5rem 0;
         .headlines-container {
             .headlines-badge {
@@ -87,7 +87,7 @@
                     margin: 0.6rem;
                 }
             }
-            .g-owlcarousel {
+            .g-swipercarousel {
                 .g-headlines-desc {
                     font-family: get-font-family($font-family-promo);
                     font-weight: $font-weight-bold;
@@ -108,10 +108,10 @@
                         }
                         @include breakpoint(mobile-only) {
                             font-size: 1.15rem;
-                        } 
-                    }                       
+                        }
+                    }
                 }
-                .owl-nav {
+                .swiper-navigation {
                     div, button {
                         top: auto;
                         display: block;
@@ -133,17 +133,17 @@
                         transition: background 0.25s ease;
                         &:before {
                             font-family: FontAwesome;
-                        } 
+                        }
                         &:hover {
                             background: #404040;
                         }
-                        &.owl-next {
+                        &.swiper-button-next {
                             top: -7px;
                             &:before {
                                 content: "\f106";
                             }
                         }
-                        &.owl-prev {
+                        &.swiper-button-prev {
                             bottom: -7px;
                             margin-right: 0;
                             &:before {
@@ -152,14 +152,14 @@
                             @include breakpoint(mobile-only) {
                                 bottom: inherit;
                                 top: 23px;
-                            }                              
+                            }
                         }
                         span {
                             display: none;
                         }
                     }
-                } 
-            } 
+                }
+            }
         }
     }
 }

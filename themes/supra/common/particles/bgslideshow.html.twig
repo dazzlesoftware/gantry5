@@ -10,12 +10,26 @@
 {% endblock %}
 
 {% block particle %}
-<div id="{{ id }}" class="{{ particle.class|e }}" data-bgslideshow-id="{{ id }}" data-bgslideshow-items="{{ particle.displayitems }}" data-bgslideshow-itemstablet="{{ particle.displayitems_tablet }}" data-bgslideshow-itemsmobile="{{ particle.displayitems_mobile }}" data-bgslideshow-itemssmallmobile="{{ particle.displayitems_smallmobile }}" data-bgslideshow-delay="{{ particle.delay }}" data-vegas-element="{{ particle.element }}" data-bgslideshow-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
+<div id="{{ id }}" class="{{ particle.class|e }}" data-bgslideshow-id="{{ id }}" data-bgslideshow-items="{{ particle.displayitems }}" data-bgslideshow-itemstablet="{{ particle.displayitems_tablet }}" data-bgslideshow-itemsmobile="{{ particle.displayitems_mobile }}" data-bgslideshow-itemssmallmobile="{{ particle.displayitems_smallmobile }}" data-bgslideshow-delay="{{ particle.delay }}" data-bgslideshow-transition-duration="{{ particle.transitionDuration|default(500) }}" data-bgslideshow-cover="{{ particle.cover|default('cover') == 'disabled' ? 'contain' : 'cover' }}" data-bgslideshow-align="{{ particle.align|default('center') }}" data-bgslideshow-valign="{{ particle.valign|default('center') }}" data-vegas-element="{{ particle.element }}" data-bgslideshow-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
     {% if particle.title %}
         <h2 class="g-title">{{ particle.title|raw }}</h2>
     {% endif %}
 
-    <div id="slides-{{ id }}" class="g-bgslideshow-slides g-owlcarousel owl-carousel" data-bgslideshow-slides-id="{{ id }}">
+    <div id="slides-{{ id }}" class="g-bgslideshow-slides g-swipercarousel swiper" data-bgslideshow-slides-id="{{ id }}"
+        data-g-swiper
+        data-g-swiper-role="main"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
         {% for item in particle.items %}
             <div>
                 <div class="g-bgslideshow-slides-item-title">
@@ -32,7 +46,18 @@
             </div>
         {% endfor %}
     </div>
-    <div id="carousel-{{ id }}" class="g-bgslideshow-carousel g-owlcarousel owl-carousel" data-bgslideshow-carousel-id="{{ id }}">
+    <div id="carousel-{{ id }}" class="g-bgslideshow-carousel g-swipercarousel swiper" data-bgslideshow-carousel-id="{{ id }}"
+        data-g-swiper
+        data-g-swiper-role="navigation"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
         {% for item in particle.items %}
             <div class="">
                 <div class="g-bgslideshow-carousel-image-container">
@@ -51,34 +76,6 @@
 </div>
 {% endblock %}
 
-
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
-<script src="{{ url('gantry-theme://js/vegas.js') }}"></script>
-{% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
-<script src="{{ url('gantry-theme://js/bgslideshow.init.js') }}"></script>
-<script type="text/javascript">
-jQuery(function() {
-    jQuery('{{ particle.element }}').vegas({
-        preload: {% if particle.preload == 'enabled' %}true{% else %}false{% endif %},
-        timer: false,
-        overlay: {% if particle.overlay %}'{{ url(particle.overlay)|e }}'{% else %}false{% endif %},
-        autoplay: {% if particle.autoplay == 'enabled' %}true{% else %}false{% endif %},
-        loop: {% if particle.loop == 'enabled' %}true{% else %}false{% endif %},
-        delay: {{ particle.delay }},
-        cover: {% if particle.cover == 'enabled' %}true{% elseif particle.cover == 'disabled' %}false{% else %}'{{ particle.cover }}'{% endif %},
-        align: '{{ particle.align }}',
-        valign: '{{ particle.valign }}',
-        transition: '{{ particle.transition }}',
-        transitionDuration: {{ particle.transitionDuration }},
-        animation: {% if particle.animation %}'{{ particle.animation }}'{% else %}''{% endif %},
-        animationDuration:  '{{ particle.animationDuration }}',
-        slides: [
-            {% for item in particle.items %}
-            { src: '{{ url(item.image)|e }}' },
-            {% endfor %}
-        ],
-    });
-});
-</script>
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

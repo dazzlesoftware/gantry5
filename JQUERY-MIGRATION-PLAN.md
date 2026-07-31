@@ -1,7 +1,7 @@
 # jQuery Migration Plan
 
-**Audit date:** July 30, 2026
-**Project:** Gantry 5 / Genesis  
+**Audit date:** July 31, 2026
+**Project:** Gantry 5 / Genesis
 **Objective:** Remove jQuery and jQuery UI dependencies from maintained Gantry code and recovered themes, replacing them with modern native JavaScript.
 
 ## 1. Current baseline
@@ -23,8 +23,8 @@ The original count was 1,579 physical files and 489 distinct implementations. Re
 The shared Video controller now handles HTML5 video, YouTube, and Vimeo with
 native media events and provider `postMessage` APIs. It pauses inactive Swiper
 slides and off-screen media, coordinates video playback with carousel
-autoplay, and contains no jQuery or Vzaar support. Fifteen copied
-`owlcarousel.video.init.js` helpers have been removed.
+autoplay, and contains no jQuery or Vzaar support. Fifteen copied legacy
+video-carousel helpers have been removed.
 
 ### Affected themes
 
@@ -142,7 +142,7 @@ Counts overlap because a file can belong to more than one family.
 | Audio Player | 76 | 5 | 38 | 2 |
 | Swiper | 92 | 12 | 45 | 2 |
 | Single Page Navigation | 64 | 2 | 32 | 2 |
-| Owl runtime and dependent controllers | 45 | 20 | 27 | 3 |
+| Legacy carousel runtime and dependent controllers | 0 | 0 | 0 | Complete |
 | Calendar / CLNDR | 76 | 4 | 38 | 3 |
 | Gallery / Mosaic / Grid | 60 | 21 | 37 | 3 |
 | Slider / Slideshow | 117 | 101 | 40 | 4 |
@@ -169,7 +169,7 @@ Goal: establish shared initialization, instance scoping, teardown, accessibility
 
 ### Priority 3: Larger third-party replacements
 
-- Owl Carousel, carousels, and testimonials.
+- Legacy carousels and testimonials.
 - CLNDR/calendar.
 - Galleries, mosaics, Shuffle, Isotope, and popup grids.
 
@@ -214,43 +214,48 @@ particle:
 - The generated browser assets are `assets/common/js/swiper.js` and
   `assets/common/css/swiper.css`; no CDN or jQuery wrapper is used.
 - The particle, generated markup, DOM hooks, SCSS files, and bundled
-  controller use Swiper naming without Owl compatibility classes.
+  controller use Swiper naming without legacy compatibility classes.
 - Aphrodite and Helium now inherit the shared core particle. Themes that did
   not previously have carousel SCSS have a theme-owned Accent 1 override for
   Swiper navigation and pagination.
 
-The specialized Owl layout overrides in Citadel, Protean, Remnant, Sienna,
-and Topaz remain a separate migration
-batch. Their showcase, news slider, testimonial, Joomla-content, and video
-behaviors must be mapped explicitly to Swiper before their old Owl runtime
-can be removed.
+All recovered-theme carousel layouts now use the shared Swiper controller.
+This includes the specialized showcase, news slider, testimonial,
+Joomla-content, paired-thumbnail, event-list, accordion, and background
+slideshow behaviors.
 
 Photon is the first recovered theme to complete this migration. Its standard
 and testimonial layouts now use a theme-owned `swipercarousel` override,
 shared Swiper assets, native pagination/navigation, and Swiper naming
 throughout its Twig, YAML, layout presets, SCSS, and media paths. Its copied
-Owl runtime has been removed.
+The copied legacy runtime has been removed.
 
 Galatea and Interstellar have also completed the migration. Galatea now uses
 its theme-owned Swiper slideshow presentation, while Interstellar preserves
 its standard, testimonial, and tabbed showcase layouts. The Interstellar
 showcase synchronization is handled by a small native ES2018+ controller.
 Both themes now use Swiper names throughout their particles, layout presets,
-SCSS, JavaScript, and media paths, and both copied Owl runtimes have been
+SCSS, JavaScript, and media paths, and both copied legacy runtimes have been
 removed.
 
-The remaining Owl footprint is 45 JavaScript files (20 distinct variants)
-across 27 themes, plus 124 Twig templates, 12 YAML files, and 162 stylesheet
-files containing Owl-specific markup or selectors.
+Acronym has completed the migration as well. Its Cards and Showcase particles
+now use theme-owned Swiper templates and styling, the shared ES2018+
+controller, native lazy loading, and renamed layout presets and media paths.
+Its copied legacy runtime and obsolete media directory have been removed.
+
+The recovered-theme carousel migration is complete across all 30 affected
+themes. No legacy runtime, initializer, filename, template hook, YAML key,
+stylesheet selector, or media path remains beneath `themes/` or `assets/`.
+Theme-specific presentation remains in each theme while behavior is
+centralized in the shared native ES2018+ Swiper controller.
 
 Notio's specialized Video Carousel now uses the shared Swiper bundle and
 native Video controller. Its YouTube, Vimeo, local-file, and external-file
 sources support slide-aware pause/resume behavior without jQuery. Vzaar has
-been removed from maintained schemas and templates. The three legacy Owl
+been removed from maintained schemas and templates. The three legacy
 video entry points in Citadel, Protean, and Remnant now accept only YouTube
 or Vimeo and use the shared native controller for local HTML5 playback;
-their remaining Owl runtime code will disappear when those full particles
-are migrated.
+their carousel particles now also use the shared Swiper runtime.
 
 ## 5. Proposed task batches
 
@@ -288,7 +293,7 @@ are migrated.
 
 ### Batch F: Legacy carousel and gallery stack
 
-- Owl Carousel.
+- Legacy carousel runtimes.
 - FlexSlider.
 - Flipster.
 - BookBlock.
@@ -367,7 +372,7 @@ package-build.bat prod
 | JQ-THEME-008 | Rewrite Audio Player | Not started | Native media controller |
 | JQ-THEME-009 | Modernize Swiper integration | Not started | Library decision |
 | JQ-THEME-010 | Rewrite Single Page Navigation | Not started | IntersectionObserver pattern |
-| JQ-THEME-011 | Replace Owl/carousels | In progress | Photon complete; 29 themes remain |
+| JQ-THEME-011 | Replace legacy carousels | Complete | Shared Swiper controller; 30 recovered themes migrated |
 | JQ-THEME-012 | Replace CLNDR/calendar | Not started | Calendar design decision |
 | JQ-THEME-013 | Replace gallery/mosaic stack | Not started | Layout library decision |
 | JQ-THEME-014 | Consolidate sliders/slideshows | Not started | Carousel foundation |
@@ -375,4 +380,4 @@ package-build.bat prod
 
 ## 9. Recommended next task
 
-Continue with **JQ-THEME-003: Consolidate Fixed Header** or **JQ-THEME-004: Consolidate Search** using the established shared native-controller pattern. The remaining video-named files belong to Owl Carousel, Featured Videos, and Video Carousel integrations and should be handled with **JQ-THEME-011**. **JQ-CORE-001: Replace Lightcase** remains the highest-value core-runtime removal.
+Continue with **JQ-THEME-003: Consolidate Fixed Header** or **JQ-THEME-004: Consolidate Search** using the established shared native-controller pattern. **JQ-CORE-001: Replace Lightcase** remains the highest-value core-runtime removal.

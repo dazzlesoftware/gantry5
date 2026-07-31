@@ -1,18 +1,18 @@
-.g-owlcarousel-carousel {
-    // Owl Core
-    .owl-stage {
+.g-swipercarousel-carousel {
+    // Swiper Core
+    .swiper-wrapper {
         display: flex;
         flex-wrap: wrap;
         padding: 0 0 $content-padding;
 
-        .owl-item {
+        .swiper-slide {
             display: flex;
             height: auto;
         }
     }
 
     // Header
-    .g-owlcarousel-carousel-header {
+    .g-swipercarousel-carousel-header {
         display: flex;
         align-items: center;
         position: relative;
@@ -22,7 +22,7 @@
         }
 
         // Title
-        .g-owlcarousel-carousel-title-container {
+        .g-swipercarousel-carousel-title-container {
             flex: 1;
             text-align: center;
             @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
@@ -33,11 +33,11 @@
                 flex: 0;
             }
 
-            .g-owlcarousel-carousel-title {
+            .g-swipercarousel-carousel-title {
                 display: inline-block;
             }
 
-            .g-owlcarousel-carousel-controls {
+            .g-swipercarousel-carousel-controls {
                 display: inline-block;
                 margin-left: 2rem;
                 font-weight: $font-weight-regular;
@@ -46,7 +46,7 @@
                     margin-right: 2rem;
                     margin-left: 0;
 
-                    .owl-prev {
+                    .swiper-button-prev {
                         .fa-chevron-left {
                             &:before {
                                 content: "\f054";
@@ -54,7 +54,7 @@
                         }
                     }
 
-                    .owl-next {
+                    .swiper-button-next {
                         .fa-chevron-right {
                             &:before {
                                 content: "\f053";
@@ -82,7 +82,7 @@
         }
 
         // Description
-        .g-owlcarousel-carousel-description {
+        .g-swipercarousel-carousel-description {
             flex: 1;
             @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
             padding-top: $content-margin;
@@ -102,7 +102,7 @@
         margin: ($content-margin * 1.5) 0;
         padding: ($content-padding * 0.5) 0;
 
-        .owl-item {
+        .swiper-slide {
             // Colored Items
             &:nth-child(8n + 1) {
                 .g-carousel-item {

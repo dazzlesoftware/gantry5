@@ -36,7 +36,18 @@
 {% set articles = article_finder.find() %}
 
 {# Content #}
-<div class="g-slider-slides g-owlcarousel owl-carousel" data-slider-slides-id="{{ id }}">
+<div class="g-slider-slides g-swipercarousel swiper" data-slider-slides-id="{{ id }}"
+        data-g-swiper
+        data-g-swiper-role="main"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
 {% for article in articles %}
     {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
         {% if article.images.image_intro and display.image.enabled == 'intro' %}
@@ -76,7 +87,18 @@
 
 {# Thumbs #}
 {% if particle.thumbs == "enabled" %}
-    <div class="g-slider-carousel g-owlcarousel owl-carousel" data-slider-carousel-id="{{ id }}" data-slider-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}">
+    <div class="g-slider-carousel g-swipercarousel swiper" data-slider-carousel-id="{{ id }}" data-slider-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}"
+        data-g-swiper
+        data-g-swiper-role="navigation"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
         {% for article in articles %}
             {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
                 {% if article.images.image_intro and display.image.enabled == 'intro' %}
@@ -97,3 +119,7 @@
         {% endfor %}
     </div>
 {% endif %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

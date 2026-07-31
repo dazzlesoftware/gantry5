@@ -70,7 +70,7 @@
                 }
             }
         } // Dots
-        .owl-dots {
+        .swiper-pagination {
             width: 40%;
             position: absolute;
             top: 12rem;
@@ -85,7 +85,7 @@
             display: flex;
             align-items: flex-end;
             flex-direction: column;
-            .owl-dot {
+            .swiper-pagination-bullet {
                 border-radius: 100%;
                 background: transparent;
                 border: 2px solid $white;
@@ -115,13 +115,13 @@
             right: 2rem;
             left: auto;
         }
-        .owl-stage {
+        .swiper-wrapper {
             display: flex;
         }
         &[data-slider-carousel-nav="true"] {
-            .owl-stage-outer {}
+            .swiper {}
         } //Item
-        .owl-item {
+        .swiper-slide {
             outline: none;
             cursor: pointer;
             padding-top: 1rem;
@@ -155,7 +155,7 @@
                 }
             } // Hover State
             &:hover,
-            &.owl-current {
+            &.swiper-current {
                 .g-slider-carousel-image-container {
                     transform: translateY(-1rem);
                     img {
@@ -169,7 +169,7 @@
                 }
             }
         } // Prev & Next Controls
-        .owl-nav {
+        .swiper-navigation {
             >div, >button {
                 position: absolute;
                 margin: auto;
@@ -187,7 +187,7 @@
                     color: fade-out($white, 0.4);
                 }
             }
-            .owl-prev {
+            .swiper-button-prev {
                 margin-left: 10px;
                 left: 0;
                 right: auto;
@@ -202,7 +202,7 @@
                     }
                 }
             }
-            .owl-next {
+            .swiper-button-next {
                 margin-right: 10px;
                 left: auto;
                 right: 0;

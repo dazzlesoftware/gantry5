@@ -1,7 +1,7 @@
 .breadcrumb {
-  	> li {
-   		text-shadow: none;
-  	}
+	> li {
+		text-shadow: none;
+	}
 }
 
 .rt-nomodulecontent {
@@ -32,8 +32,8 @@
 				label {
 					display: block;
 				}
-			}	
-		} 
+			}
+		}
 	}
 	#frame {
 		padding: 0;
@@ -60,28 +60,28 @@
 	}
 }
 
-.g-owlcarousel-lists {
+.g-swipercarousel-lists {
 	div[id*='lists'] {
 		position: relative;
 
-		&.g-owlcarousel {
+		&.g-swipercarousel {
 		    overflow: hidden;
-	    	padding: 0;
+		padding: 0;
 
-	    	.owl-item {
+		.swiper-slide {
 	            .item {
 	                p {
 	                    margin: 0;
 	                }
 	            }
-	        }    
+	        }
 
-			.g-owlcarousel-item {
+			.g-swipercarousel-item {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 				padding: 5px 0;
 				margin-bottom: 2px;
 
-				.g-owlcarousel-item-title {
+				.g-swipercarousel-item-title {
 					position: relative;
 				    padding: 10px 0 10px 15px;
 				    margin: 0;
@@ -134,7 +134,7 @@
 
 	                    .ui-accordion-header-icon {
 	                        display: none;
-	                    }                        
+	                    }
 
 						.indicator {
 							opacity: 1;
@@ -144,20 +144,20 @@
 								font-size: 13px;
 							}
 						}
-					} 
+					}
 				}
 
-				.g-owlcarousel-content {
+				.g-swipercarousel-content {
 					border-bottom: 0;
 	                padding-bottom: 3px;
 
-					.g-owlcarousel-item-desc {
+					.g-swipercarousel-item-desc {
 						display: block;
 					    padding: 0 15px;
 					}
-				}	
+				}
 			}
-			.owl-nav {
+			.swiper-navigation {
 				margin-top: 40px;
 				> div, > button {
 					color: #ffffff;
@@ -184,52 +184,52 @@
 						opacity: 1;
 					}
 
-				    &.owl-next {
-				    	&:before {
-					    	content: '\f105';
+				    &.swiper-button-next {
+					&:before {
+						content: '\f105';
 						    font-family: FontAwesome;
 						    position: absolute;
 						    top: 0;
 						    left: 11px;
-					    } 
+					    }
 				    }
-				    &.owl-prev {
-				    	margin-right: 1.8rem;
-				    	&:before {
-					    	content: '\f104';
+				    &.swiper-button-prev {
+					margin-right: 1.8rem;
+					&:before {
+						content: '\f104';
 						    font-family: FontAwesome;
 						    position: absolute;
 						    top: 0;
 						    left: 9px;
-					    } 
+					    }
 				    }
 				    span {
-				    	display: none;
+					display: none;
 				    }
 				}
 			}
-			.owl-dots {
+			.swiper-pagination {
 				position: absolute;
-			 	right: 75px;
-			 	bottom: 0;
-			 	width: auto;
+				right: 75px;
+				bottom: 0;
+				width: auto;
 
-			 	.owl-dot {
-	            	background: rgba(0, 0, 0, 0.7);
-	            	opacity: 0.8;
-	            	margin: 0 2px; 			 	
-			 		padding: 7px;
-			 		width: 0;
-			 		height: 0;
-			 		border-radius: 1em;
-			 		&.active {
-			 			background: $black;
-			 			opacity: 1;
-			 		}  			 		
-			 	}
+				.swiper-pagination-bullet {
+		background: rgba(0, 0, 0, 0.7);
+		opacity: 0.8;
+		margin: 0 2px;
+					padding: 7px;
+					width: 0;
+					height: 0;
+					border-radius: 1em;
+					&.active {
+						background: $black;
+						opacity: 1;
+					}
+				}
 			}
 		}
-	}	
+	}
 }
 
 .g-comingsoon {
@@ -240,6 +240,6 @@
 
 .g-offline {
 	#frame form {
-    	text-align: center;
+	text-align: center;
     }
 }

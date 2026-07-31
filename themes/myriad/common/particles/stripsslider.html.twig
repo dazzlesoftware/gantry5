@@ -1,49 +1,64 @@
-{% extends '@nucleus/partials/particle.html.twig' %}  
+{% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
     {% block layout %}
 
-        <div id="{% if particle.scrolltheme == 'enabled' %}strips-scroll{% else %}strips{% endif %}" class="{{ particle.class|e }} g-owlcarousel-strips-slider g-owlcarousel-strips-{{ particle.displayitems }}-items">
+        <div id="{% if particle.scrolltheme == 'enabled' %}strips-scroll{% else %}strips{% endif %}" class="{{ particle.class|e }} g-swipercarousel-strips-slider g-swipercarousel-strips-{{ particle.displayitems }}-items">
             {% if particle.title or particle.description %}
                 <div class="g-grid">
                     <div class="g-block">
-                        <div class="g-content g-owlcarousel-header">
+                        <div class="g-content g-swipercarousel-header">
                             {% if particle.title %}<h2 class="g-title">{{ particle.title }}</h2>{% endif %}
-                            {% if particle.description %}<div class="g-owlcarousel-description">{{ particle.description|html|raw }}</div>{% endif %}
+                            {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|html|raw }}</div>{% endif %}
                         </div>
                     </div>
                 </div>
             {% endif %}
 
-            
+
             {% if particle.scrolltheme == 'enabled' %}
             <div class="viewport">
                 <div class="overview">
-            {% endif %}       
+            {% endif %}
 
-                    <div id="g-owlcarousel-{{ id }}" data-owlcarousel-id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel">
+                    <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper"
+        data-g-swiper
+        data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}"
+        data-space-between="20">
 
                         {% for item in particle.items %}
                             {% if particle.scrolltheme == 'enabled' %}
                                 <div class="item">
                                     {% if item.image %}
-                                        <div class="g-owl-image-container">
+                                        <div class="g-swiper-image-container">
                                             <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />
                                             {% if item.desc %}
-                                                <div class="g-owlcarousel-item-desc">
+                                                <div class="g-swipercarousel-item-desc">
                                                     <span>{{ item.desc|html|raw }}</span>
 
                                                     {% if item.link %}
-                                                        <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button owl-readon" href="{{ item.link|e }}">
+                                                        <a target="{{ item.buttontarget|default('_self')|e }}" class="g-swipercarousel-item-button swiper-readon" href="{{ item.link|e }}">
                                                             {{ item.linktext|html|raw|default('Read More') }}
                                                         </a>
                                                     {% endif %}
                                                 </div>
-                                            {% endif %}                                    
-                                        </div>    
+                                            {% endif %}
+                                        </div>
                                     {% endif %}
                                         {% if item.title %}
-                                            <h4 class="g-owlcarousel-item-title">
+                                            <h4 class="g-swipercarousel-item-title">
                                                 {% if item.link %}<a href="{{ item.link|e }}" target="{{ item.buttontarget|default('_self')|e }}">{% endif %}
 
                                                 {{ item.title|html|raw }}
@@ -51,13 +66,13 @@
                                                 {% if item.link %}</a>{% endif %}
                                             </h4>
                                         {% endif %}
-                                </div>                        
-                            {% else %} 
+                                </div>
+                            {% else %}
                                 <div class="item">
                                     {% if item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />{% endif %}
-                                    <div class="g-owlcarousel-content">
+                                    <div class="g-swipercarousel-content">
                                         {% if item.title %}
-                                            <h4 class="g-owlcarousel-item-title">
+                                            <h4 class="g-swipercarousel-item-title">
                                                 {% if item.link %}<a href="{{ item.link|e }}" target="{{ item.buttontarget|default('_self')|e }}">{% endif %}
 
                                                 {{ item.title|html|raw }}
@@ -67,11 +82,11 @@
                                         {% endif %}
 
                                         {% if item.desc %}
-                                            <div class="g-owlcarousel-item-desc">
+                                            <div class="g-swipercarousel-item-desc">
                                                 <span>{{ item.desc|html|raw }}</span>
 
                                                 {% if item.link %}
-                                                    <a target="{{ item.buttontarget|default('_self')|e }}" class="g-owlcarousel-item-button owl-readon" href="{{ item.link|e }}">
+                                                    <a target="{{ item.buttontarget|default('_self')|e }}" class="g-swipercarousel-item-button swiper-readon" href="{{ item.link|e }}">
                                                         {{ item.linktext|html|raw|default('Read More') }}
                                                     </a>
                                                 {% endif %}
@@ -81,9 +96,9 @@
                                 </div>
                             {% endif %}
                         {% endfor %}
-                    </div>    
+                    </div>
             {% if particle.scrolltheme == 'enabled' %}
-                </div>      
+                </div>
             </div>
             {% endif %}
 
@@ -99,59 +114,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/owl.carousel.min.js') }}"></script>
-    {% if particle.scrolltheme == 'enabled' %}
-    <script src="{{ url('gantry-theme://js/tinyscrollbar.min.js') }}"></script>
-    {% endif %}
-    <script type="text/javascript">
-    jQuery(document).ready(function () {
-        jQuery('#g-owlcarousel-{{ id }}').owlCarousel({
-            items: {{ particle.displayitems }},
-            slideBy: {{ particle.displayitems }},
-            smartSpeed: 100,
-            rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
-            {% if particle.nav == 'enabled' %}
-            nav: true,
-            {% else %}
-            nav: false,
-            {% endif %}
-            {% if particle.dots == 'enabled' %}
-            dots: true,
-            {% else %}
-            dots: false,
-            {% endif %}
-            {% if particle.loop == 'enabled' %}
-            loop: true,
-            {% else %}
-            loop: false,
-            {% endif %}
-            {% if particle.autoplay == 'enabled' %}
-            autoplay: true,
-            autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
-            {% if particle.pauseOnHover == 'enabled' %}
-            autoplayHoverPause: true,
-            {% else %}
-            autoplayHoverPause: false,
-            {% endif %}
-            {% else %}
-            autoplay: false,
-            {% endif %}
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                480: {
-                    items: 2,
-                },
-                768: {
-                    items: 3,
-                },
-                1015: {
-                    items: {{ particle.displayitems }},
-                },
-            },
-        })
-    });
-    </script>
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

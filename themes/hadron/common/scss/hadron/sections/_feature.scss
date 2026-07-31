@@ -5,7 +5,7 @@
 
 .fp-feature {
 	@include breakpoint(small-mobile-range) {
-    	text-align: center;
+	text-align: center;
     }
 }
 
@@ -13,10 +13,10 @@
     margin-bottom: 0;
 
     @include breakpoint(tablet-range) {
-    	width: 70%;
+	width: 70%;
     }
     @include breakpoint(large-mobile-range) {
-    	width: 70%;
+	width: 70%;
     }
 }
 
@@ -26,31 +26,31 @@
 		padding-top: 0;
 	}
 
-    .g-owlcarousel-strips-slider {
-	    .g-owlcarousel {
-	     	.owl-nav {
-		        button.owl-prev, button.owl-next {
+    .g-swipercarousel-strips-slider {
+	    .g-swipercarousel {
+		.swiper-navigation {
+		        button.swiper-button-prev, button.swiper-button-next {
 		            top: 0;
 		            margin-top: -80px;
 
 				    @include breakpoint(large-mobile-range) {
-				    	margin-top: -30px;
+					margin-top: -30px;
 				    }
 				    @include breakpoint(small-mobile-range) {
 						display: none;
 				    }
-		        }    
+		        }
 
-		        .owl-prev {
+		        .swiper-button-prev {
 		            left: inherit;
 		            right: 55px;
 		        }
-		        .owl-next {
+		        .swiper-button-next {
 		            right: 0px;
-		        }   
-		    }    
+		        }
+		    }
 	    }
-	}    
+	}
 }
 
 

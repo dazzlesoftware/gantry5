@@ -1,32 +1,32 @@
 #lists {
-	&.g-owlcarousel-lists {
+	&.g-swipercarousel-lists {
 		position: relative;
 
-		.g-owlcarousel {
+		.g-swipercarousel {
 		    overflow: hidden;
-        	padding: 0;
+	padding: 0;
 
-        	.owl-item {
+	.swiper-slide {
 
 	            .item {
 	                p {
 	                    margin: 0;
 	                }
 	            }
-            }    
+            }
 
-			.g-owlcarousel-item {
+			.g-swipercarousel-item {
 				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 				padding: 5px 0;
-    			margin-bottom: 2px;
+			margin-bottom: 2px;
 
-				.g-owlcarousel-item-title {
-			    	font-weight: bold;
-			    	position: relative;
+				.g-swipercarousel-item-title {
+				font-weight: bold;
+				position: relative;
                     font-size: 18px;
                     line-height: 1.2em !important;
-			    	border: 0;
-			    	padding: 5px 10px;
+				border: 0;
+				padding: 5px 10px;
                     margin: -1px 0px 2px -1px !important;
                     cursor: pointer;
 
@@ -78,7 +78,7 @@
 
                         .ui-accordion-header-icon {
                             display: none;
-                        }                        
+                        }
 
 						.indicator {
 							opacity: 1;
@@ -86,19 +86,19 @@
 								content: "×";
 							}
 						}
-					} 
+					}
 				}
-				.g-owlcarousel-item-desc {
+				.g-swipercarousel-item-desc {
 					padding-left: 5px;
-				}	
+				}
 			}
-			.owl-nav {
+			.swiper-navigation {
 				margin-top: 40px;
 				> div, > button {
 					color: #ffffff;
-    				background: rgba(0, 0, 0, 0.5);
-    				border-radius: 2px;
-    				position: absolute;
+				background: rgba(0, 0, 0, 0.5);
+				border-radius: 2px;
+				position: absolute;
 				    display: block;
 				    width: 25px;
 				    height: 25px;
@@ -118,49 +118,49 @@
 						opacity: 1;
 					}
 
-			    &.owl-next {
-			    	&:before {
-				    	content: '\f105';
+			    &.swiper-button-next {
+				&:before {
+					content: '\f105';
 					    font-family: FontAwesome;
 					    position: absolute;
 					    top: -1px;
 					    left: 10px;
-				    } 
+				    }
 			    }
-				    &.owl-prev {
-			    	margin-right: 1.8rem;
-			    	&:before {
-				    	content: '\f104';
+				    &.swiper-button-prev {
+				margin-right: 1.8rem;
+				&:before {
+					content: '\f104';
 					    font-family: FontAwesome;
 					    position: absolute;
 					    top: -1px;
 					    left: 8px;
-				    } 
+				    }
 			    }
 			    span {
-			    	display: none;
+				display: none;
 				    }
 				}
 			}
-			.owl-dots {
+			.swiper-pagination {
 				position: absolute;
-   			 	right: 80px;
-   			 	bottom: 0;
-   			 	width: auto;
+				right: 80px;
+				bottom: 0;
+				width: auto;
 
-   			 	.owl-dot {
+				.swiper-pagination-bullet {
 	                background: rgba(0, 0, 0, 0.7);
-	                opacity: 0.8;  
-	                margin: 0 2px; 			 	
-   			 		padding: 0;
-   			 		border-radius: 100%;
-   			 		&.active {
-   			 			opacity: 1; 
-   			 			background: #000000;
-   			 		}  			 		
-   			 	}
+	                opacity: 0.8;
+	                margin: 0 2px;
+					padding: 0;
+					border-radius: 100%;
+					&.active {
+						opacity: 1;
+						background: #000000;
+					}
+				}
 			}
 		}
-	}		
+	}
 }
 

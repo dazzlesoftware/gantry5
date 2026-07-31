@@ -1,0 +1,468 @@
+//-------------------------------------------//
+
+// SWIPER CAROUSEL ORIGINAL STYLING
+
+/*
+*  Swiper Carousel - Animate Plugin
+*/
+.swiper .animated {
+    -webkit-animation-duration: 1000ms;
+    animation-duration: 1000ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.swiper .swiper-animated-in {
+    z-index: 0;
+}
+
+.swiper .swiper-animated-out {
+    z-index: 1;
+}
+
+.swiper .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/*
+*  Swiper Carousel - Auto Height Plugin
+*/
+.swiper-height {
+    -webkit-transition: height 500ms ease-in-out;
+    -moz-transition: height 500ms ease-in-out;
+    -ms-transition: height 500ms ease-in-out;
+    -o-transition: height 500ms ease-in-out;
+    transition: height 500ms ease-in-out;
+}
+
+/*
+*  Core Swiper Carousel CSS File
+*/
+.swiper {
+    display: block;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    /* position relative and z-index fix webkit rendering fonts issue */
+    position: relative;
+    z-index: 1;
+}
+
+.swiper .swiper-wrapper {
+    position: relative;
+    -ms-touch-action: pan-Y;
+}
+
+.swiper .swiper-wrapper:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.swiper .swiper {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px);
+}
+
+.swiper .swiper-navigation .swiper-button-prev,
+.swiper .swiper-navigation .swiper-button-next,
+.swiper .swiper-pagination-bullet {
+    cursor: pointer;
+    cursor: hand;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.swiper.swiper-initialized {
+    display: block;
+}
+
+.swiper.swiper-loading {
+    opacity: 0;
+    display: block;
+}
+
+.swiper.swiper-hidden {
+    opacity: 0;
+}
+
+.swiper .swiper-refresh .swiper-slide {
+    display: none;
+}
+
+.swiper .swiper-slide {
+    position: relative;
+    min-height: 1px;
+
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.swiper .swiper-slide img {
+    display: block;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+}
+
+.swiper.swiper-text-select-on .swiper-slide {
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+}
+
+.swiper .swiper-grab {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -o-grab;
+    cursor: -ms-grab;
+    cursor: grab;
+}
+
+.swiper.swiper-rtl {
+    direction: rtl;
+}
+
+.swiper.swiper-rtl .swiper-slide {
+
+}
+
+/* No Js */
+.no-js .swiper {
+    display: block;
+}
+
+/*
+*  Swiper Carousel - Lazy Load Plugin
+*/
+.swiper .swiper-slide .swiper-lazy {
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease;
+    -moz-transition: opacity 400ms ease;
+    -ms-transition: opacity 400ms ease;
+    -o-transition: opacity 400ms ease;
+    transition: opacity 400ms ease;
+}
+
+.swiper .swiper-slide img {
+    transform-style: preserve-3d;
+}
+
+/*
+*  Swiper Carousel - Video Plugin
+*/
+.swiper .swiper-video-wrapper {
+    position: relative;
+    height: 100%;
+    background: #000;
+}
+
+.swiper .swiper-video-play-icon, .swiper .swiper-videolocal-play-icon {
+    position: absolute;
+    height: 66px;
+    width: 66px;
+    left: 50%;
+    bottom: 15%;
+    margin-left: -40px;
+    margin-top: -40px;
+    background: url('gantry-media://swipercarousel/play.svg') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 3;
+    -webkit-backface-visibility: hidden;
+    transition: all 0.2s ease-out;
+    opacity: 1;
+
+    &.paused {
+        background: url('gantry-media://swipercarousel/paused.svg');
+        background-size: contain;
+        opacity: 0.8;
+    }
+}
+
+.swiper .swiper-video-play-icon:hover {
+    -webkit-transition: scale(1.3, 1.3);
+    -moz-transition: scale(1.3, 1.3);
+    -ms-transition: scale(1.3, 1.3);
+    -o-transition: scale(1.3, 1.3);
+    transition: scale(1.3, 1.3);
+}
+
+.swiper .swiper-video-playing .swiper-video-tn,
+.swiper .swiper-video-playing .swiper-video-play-icon {
+    display: none;
+}
+
+.swiper .swiper-video-tn {
+    opacity: 0;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    -webkit-transition: opacity 400ms ease;
+    -moz-transition: opacity 400ms ease;
+    -ms-transition: opacity 400ms ease;
+    -o-transition: opacity 400ms ease;
+    transition: opacity 400ms ease;
+}
+
+.swiper .swiper-video-frame {
+    position: relative;
+    z-index: 1;
+}
+
+/*
+*  Swiper Carousel - Nav & Dots
+*/
+.swiper-navigation {
+    opacity: 1;
+    transition: opacity 0.25s;
+
+    div, button {
+        position: absolute;
+        bottom: 1px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        background-color: transparent;
+        outline: none;
+        opacity: 1;
+        color: $white;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: $core-font-size + 1;
+        font-weight: $font-weight-bold;
+        transition: all 0.25s;
+
+        &:hover {
+            color: $accent-color-1;
+        }
+
+        &.swiper-button-prev {
+            margin-right: $content-padding * 5;
+
+            @include breakpoint(small-mobile-range) {
+                margin-right: $content-padding * 2;
+            }
+        }
+
+        .dir-rtl & {
+            left: 0;
+            right: auto;
+        }
+    }
+
+    &.disabled {
+        display: none;
+    }
+}
+
+.swiper-pagination {
+    .swiper-pagination-bullet {
+        display: inline-block;
+        background: transparentize($white, 0.50);
+        padding: 0;
+        outline: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 0 0.6rem;
+        background: $white;
+        vertical-align: middle;
+        transition: all 0.2s ease-out;
+
+        &.active {
+            background: $accent-color-1;
+        }
+    }
+}
+
+.swipercarousel-offset {
+    margin-right: -45px !important;
+    margin-bottom: -45px !important;
+    margin-left: -45px !important;
+
+    @include breakpoint(mobile-only) {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    position: relative;
+    z-index: 2;
+
+    &.size-100 {
+        flex-basis: auto;
+        width: auto;
+    }
+}
+
+.g-swipercarousel-description {
+    font-family: get-font-family($font-family-default);
+    font-size: $core-font-size + 0.25;
+    font-weight: $font-weight-regular;
+}
+.g-swipercarousel-header {
+    padding: $content-padding !important;
+    margin: $content-margin;
+}
+
+// THEME PARTICLES STYLING
+.g-swipercarousel {
+    &:hover {
+        .swiper-navigation {
+            opacity: 1;
+        }
+    }
+}
+
+.g-swipercarousel-item-wrapper {
+    position: relative;
+}
+
+.g-swipercarousel-item-img {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: "";
+        height: 50%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.g-swipercarousel-item-content-container {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform-style: preserve-3d;
+
+    @include breakpoint(large-desktop-range) {
+        width: $breakpoints-large-desktop-container;
+    }
+
+    @include breakpoint(desktop-range) {
+        width: $breakpoints-desktop-container;
+    }
+
+    @include breakpoint(tablet-range) {
+        width: $breakpoints-tablet-container;
+    }
+
+    @include breakpoint(large-mobile-range) {
+        width: $breakpoints-large-mobile-container;
+    }
+
+    @include breakpoint(small-mobile-range) {
+        width: 100%;
+    }
+}
+
+.g-swipercarousel-item-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.g-swipercarousel-item-content {
+    margin: $content-margin;
+    padding: $content-padding;
+
+    .g-swipercarousel-fullwidth & {
+        width: 100%;
+    }
+
+    .g-swipercarousel-compact & {
+        width: 50%;
+
+        .center-block & {
+            margin: auto;
+        }
+
+        @include breakpoint(desktop-range) {
+            width: 65%;
+        }
+
+        @include breakpoint(tablet-range) {
+            width: 75%;
+        }
+
+        @include breakpoint(mobile-only) {
+            width: 100%;
+        }
+    }
+}
+
+.g-swipercarousel-item-title {
+    font-family: get-font-family($font-family-default);
+    font-size: $core-font-size + 2;
+    color: $white;
+    padding-bottom: $content-padding - 0.4;
+    font-weight: $font-weight-regular;
+    text-transform: uppercase;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    z-index: 2;
+    margin: $content-margin + $content-padding;
+}
+
+.g-swipercarousel-item-desc {
+    font-size: $core-font-size + 0.4;
+    line-height: $core-line-height;
+    font-weight: $font-weight-light;
+    padding-bottom: $content-padding * 2;
+    margin-bottom: $content-margin;
+}
+
+.g-swipercarousel-item-button {
+    @include breakpoint(small-mobile-range) {
+        padding: 0.25rem 1rem;
+        font-weight: $font-weight-regular;
+        font-size: $core-font-size - 0.2;
+    }
+}

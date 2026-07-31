@@ -1,15 +1,15 @@
-.g-owlcarousel-testimonials {
-  
-  .g-owlcarousel-item-desc {
+.g-swipercarousel-testimonials {
+
+  .g-swipercarousel-item-desc {
     padding: 15px;
     margin: 10px;
   }
-  .g-owlcarousel {
-    .owl-dots {
+  .g-swipercarousel {
+    .swiper-pagination {
 
       bottom: 0;
 
-      .owl-dot {
+      .swiper-pagination-bullet {
         display: inline-block;
         padding: 5px;
         width: 0;
@@ -33,10 +33,10 @@
           font-size: 0.85em;
           line-height: 1em;
         }
-      }  
+      }
     }
 
-    .owl-nav {
+    .swiper-navigation {
       > button {
         padding: 0;
         position: absolute;
@@ -72,7 +72,7 @@
         }
       }
 
-      .owl-next {  
+      .swiper-button-next {
         right: -30px;
         &:before {
           content: '\f105';
@@ -80,7 +80,7 @@
         }
       }
 
-      .owl-prev {
+      .swiper-button-prev {
         left: -30px;
         &:before {
           content: '\f104';
@@ -88,5 +88,5 @@
         }
       }
     }
-  }  
+  }
 }

@@ -7,13 +7,13 @@
             padding: 0 0 $section-padding 0;
         }
     }
-    .g-owlcarousel-layout-standard {
+    .g-swipercarousel-layout-standard {
         margin: 0 $content-padding;
-        .owl-nav {
-            .owl-prev {
+        .swiper-navigation {
+            .swiper-button-prev {
                 left: -33px;
             }
-            .owl-next {
+            .swiper-button-next {
                 right: -33px;
 
             }
@@ -29,7 +29,7 @@
                 justify-content: center;
             }
         }
-        .owl-item {
+        .swiper-slide {
             padding: 0 $content-margin;
             > div {
                 box-shadow: none;

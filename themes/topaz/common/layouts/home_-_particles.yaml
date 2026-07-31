@@ -37,7 +37,7 @@ layout:
         'headermain 70':
           -
             - 'custom-6075 70'
-            - 'owlcarousel-9683 30'
+            - 'swipercarousel-9683 30'
       -
         'headerright 15': {  }
   /container-showcase/:
@@ -58,7 +58,7 @@ layout:
       -
         'slideshowmain 70':
           -
-            - owlcarousel-6103
+            - swipercarousel-6103
       -
         'slideshowright 15': {  }
   /container-above/:
@@ -118,10 +118,10 @@ layout:
       -
         'bottommain 70':
           -
-            - owlcarousel-7737
+            - swipercarousel-7737
           -
             - 'spacer-4346 30'
-            - 'owlcarousel-6323 70'
+            - 'swipercarousel-6323 70'
       -
         'bottomright 15': {  }
   /container-footer/:
@@ -589,8 +589,8 @@ content:
     title: 'Custom HTML'
     attributes:
       html: "<h3 class=\"g-title\">Global Reports</h3>\n\n<h3 class=\"g-item-title\">\n<a href=\"#\">\n<strong>Create</strong>\na Professional Website\n</a>\n</h3>\n\n<div class=\"g-array-item-text\"> Topaz is an extremely versatile theme, perfect for modern content-driven websites. </div>\n\n<div class=\"g-array-item-text visible-tablet\"> <br>It features a uniquely flexible layout and a variety of well-designed particles to make your content shine. </div>"
-  owlcarousel-9683:
-    title: 'Owl Carousel'
+  swipercarousel-9683:
+    title: 'Swiper Carousel'
     attributes:
       title: Breaking
       layout: showcase
@@ -667,8 +667,8 @@ content:
     block:
       class: fp-showcase-right
       variations: title-center
-  owlcarousel-6103:
-    title: 'Owl Carousel'
+  swipercarousel-6103:
+    title: 'Swiper Carousel'
     attributes:
       displayitems: '3'
       items:
@@ -749,7 +749,7 @@ content:
           linktext: ''
           buttontarget: _self
           buttonclass: ''
-          name: Colorful          
+          name: Colorful
   bookblock-4028:
     title: BookBlock
     attributes:
@@ -780,8 +780,8 @@ content:
           title: 'Display Your Content Your Way with BookBlock'
         -
           category: 'Great Flexibility'
-          intro: 'The Owl Carousel particle set is a brilliant way to display your visually-rich content. '
-          content: "<p>It is a fully responsive and touch optimized particle, easily configured in the back end. Use it to display your latest headlines and make it easier for your visitors to find what they need.</p>\n\n<p>There are several different particles available in Topaz powered by Owl Carousel. These include content lists with image headings, popular image sliders with text overlays, and simple - yet gorgeous - image sliders that make it easy to display and navigate through multiple thumbnails at once.</p>"
+          intro: 'The Swiper Carousel particle set is a brilliant way to display your visually-rich content. '
+          content: "<p>It is a fully responsive and touch optimized particle, easily configured in the back end. Use it to display your latest headlines and make it easier for your visitors to find what they need.</p>\n\n<p>There are several different particles available in Topaz powered by Swiper Carousel. These include content lists with image headings, popular image sliders with text overlays, and simple - yet gorgeous - image sliders that make it easy to display and navigate through multiple thumbnails at once.</p>"
           readmore: 'Read More'
           readmorelink: '#'
           readmoretarget: _self
@@ -789,11 +789,11 @@ content:
           image: 'gantry-media://demo/home/feature/img-03.jpg'
           imagetitle: Powerful
           imagedesc: 'Save countless hours of development time with Topaz, a perfect choice for professionals, corporations, and content-driven sites.'
-          title: 'Owl Carousel'
+          title: 'Swiper Carousel'
     block:
       variations: box5
-  owlcarousel-7737:
-    title: 'Owl Carousel'
+  swipercarousel-7737:
+    title: 'Swiper Carousel'
     attributes:
       layout: newsslider
       items:
@@ -916,8 +916,8 @@ content:
           name: 'Easy Settings'
     block:
       variations: nopaddingall
-  owlcarousel-6323:
-    title: 'Owl Carousel'
+  swipercarousel-6323:
+    title: 'Swiper Carousel'
     attributes:
       displayitems: '6'
       prevText: '<i class="fa fa-chevron-left" aria-hidden="true"></i>'

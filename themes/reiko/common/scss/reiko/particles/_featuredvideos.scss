@@ -37,9 +37,9 @@
             }
 
             // Custom Nav
-            .custom-owl-nav {
-                .owl-prev,
-                .owl-next {
+            .custom-swiper-navigation {
+                .swiper-button-prev,
+                .swiper-button-next {
                     background: transparent;
                     border-radius: 50%;
                     padding: 0;
@@ -62,7 +62,7 @@
                 }
 
                 .dir-rtl & {
-                    .owl-prev {
+                    .swiper-button-prev {
                         .fa-angle-left {
                             &:before {
                                 content: "\f105";
@@ -70,7 +70,7 @@
                         }
                     }
 
-                    .owl-next {
+                    .swiper-button-next {
                         .fa-angle-right {
                             &:before {
                                 content: "\f104";
@@ -85,11 +85,11 @@
     .g-featuredvideos-carousel {
         position: relative;
 
-        .owl-stage {
+        .swiper-wrapper {
             margin: ($content-margin * 3) 0;
             display: flex;
 
-            .owl-item {
+            .swiper-slide {
                 padding-bottom: 0;
                 transition: all 200ms cubic-bezier(.51, .4, .35, .9) 20ms;
 
@@ -172,7 +172,7 @@
         }
 
         // Dots
-        .owl-dots {
+        .swiper-pagination {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -189,7 +189,7 @@
                 left: $content-padding;
             }
 
-            .owl-dot {
+            .swiper-pagination-bullet {
                 width: 12px;
                 height: 12px;
                 margin-bottom: 0.3rem;

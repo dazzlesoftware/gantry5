@@ -1,6 +1,6 @@
-.g-owlcarousel-slider {
-	.g-owlcarousel {
-		.g-owlcarousel-image-container {
+.g-swipercarousel-slider {
+	.g-swipercarousel {
+		.g-swipercarousel-image-container {
 			height: 500px;
 			position: relative;
 
@@ -12,35 +12,35 @@
 			}
 			@include breakpoint(mobile-only) {
 				height: 130px;
-			}			
+			}
 
 			img {
 				width: 100%;
 			}
 		}
-	
- 		.g-owlcarousel-content {
- 			position: absolute;
- 			text-align: center;
- 			color: $white;
- 			bottom: 0;
- 			min-height: 70px;
+
+		.g-swipercarousel-content {
+			position: absolute;
+			text-align: center;
+			color: $white;
+			bottom: 0;
+			min-height: 70px;
 		    background: fade-out($accent-color-1, 0.25);
 		    margin: 0;
 		    width: 100%;
-		    top: 0;	    
+		    top: 0;
 
 		    .rt-slideshow2-author {
-	 			img {
-	 				width: auto;
-	 				margin: 20px auto;
-	 			}
-	 			@include breakpoint(tablet-range) {
+				img {
+					width: auto;
+					margin: 20px auto;
+				}
+				@include breakpoint(tablet-range) {
 					display: none;
 				}
- 			}
+			}
 
- 			.g-owlcarousel-padding {
+			.g-swipercarousel-padding {
 				width: 800px;
 				margin: 0 auto;
 
@@ -53,9 +53,9 @@
 				@include breakpoint(mobile-only) {
 					width: 230px;
 				}
- 			}
-		    .g-owlcarousel-item-title {
-		    	font-size: 250%;
+			}
+		    .g-swipercarousel-item-title {
+			font-size: 250%;
 	            font-family: get-font-family($font-family-alt);
 			    margin-top: 70px;
 			    padding: 0 5%;
@@ -72,37 +72,37 @@
 				@include breakpoint(mobile-only) {
 					font-size: 16px !important;
 					margin-top: 35px;
-				}			    
+				}
 		    }
 
-		    .g-owlcarousel-item-desc {
-		    	font-size: 1.2em;
-    			line-height: 1.75em;
-    			margin: 20px 0 0;
-    			padding: 0;
-    			display: block;
+		    .g-swipercarousel-item-desc {
+			font-size: 1.2em;
+			line-height: 1.75em;
+			margin: 20px 0 0;
+			padding: 0;
+			display: block;
 
-    			@include breakpoint(desktop-range) {
+			@include breakpoint(desktop-range) {
 					font-size: 100%;
 				}
-    			@include breakpoint(tablet-range) {
+			@include breakpoint(tablet-range) {
 					font-size: 100%;
-				}				
+				}
 				@include breakpoint(mobile-only) {
 					display: none;
-				}	
+				}
 		    }
 
 		    .button {
 			    margin: 45px 0 0 0;
-	    		border: 1px solid #FFFFFF;
-	    		background: rgba(255,255,255,0.15);
-	    		color: #FFFFFF;
-    		}
-		}  
+			border: 1px solid #FFFFFF;
+			background: rgba(255,255,255,0.15);
+			color: #FFFFFF;
+		}
+		}
 
-		
-		.owl-dots {
+
+		.swiper-pagination {
 			bottom: 3%;
 			left: 45%;
 			@include breakpoint(mobile-only) {
@@ -110,11 +110,11 @@
 			}
 		}
 
-	    .owl-nav {
-	        button.owl-prev,
-        	button.owl-next {
-        		border: none;
-	    		padding: 40px;
+	    .swiper-navigation {
+	        button.swiper-button-prev,
+	button.swiper-button-next {
+		border: none;
+			padding: 40px;
 	            opacity: 0.5;
 	            display: block;
 	            color: #fff;
@@ -125,35 +125,35 @@
 	            transition: opacity 0.2s ease-in;
 
 	            @include breakpoint(mobile-only) {
-	            	padding: 20px;
+		padding: 20px;
 	            }
 
 	            &:hover {
-	            	opacity: 1;
+		opacity: 1;
 	            }
 
 	            span {
 	                display: none;
 	            }
-	        }    
+	        }
 
-            button.owl-prev {
-                left: 12%; 
-                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center; 
+            button.swiper-button-prev {
+                left: 12%;
+                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center;
                 @include breakpoint(mobile-only) {
-	            	left: 2%;
+		left: 2%;
 					background-size: 10px;
-	            }           
+	            }
             }
 
-            button.owl-next {
-                right: 12%;  
-                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center; 
+            button.swiper-button-next {
+                right: 12%;
+                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center;
                 @include breakpoint(mobile-only) {
-	            	right: 2%;
+		right: 2%;
 					background-size: 10px;
-	            }                              
+	            }
             }
-	    }       
+	    }
 	}
 }

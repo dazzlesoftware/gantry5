@@ -659,7 +659,7 @@ content:
     attributes:
       key: above-b
     block:
-      class: 'fp-above-owlcarousel nopaddingbottom'
+      class: 'fp-above-swipercarousel nopaddingbottom'
       variations: nomarginall
   position-position-8553:
     title: 'Showcase A'

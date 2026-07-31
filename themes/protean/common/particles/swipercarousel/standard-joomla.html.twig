@@ -1,0 +1,81 @@
+{% extends '@particles/swipercarousel.html.twig' %}
+
+{# Load Content From Joomla #}
+{% set category_options = particle.jcategories ? {id: [particle.jcategories|split(','), 0]} : {} %}
+{% set categories_finder = joomla.finder('category', category_options).published(1).language().find() %}
+{% set article_finder = joomla.finder('content').category(categories_finder).published(1).featured(false).language() %}
+{% set items = article_finder.order('publish_up', 'ASC').limit(particle.jarticles|default('1')).start(0).find() %}
+
+{# Categories Names #}
+{% set categories_names %}
+    {%- for category in categories_finder -%}
+        {{- category.title -}}
+        {% if not loop.last %}{{ ', ' }}{% endif %}
+    {%- endfor -%}
+{% endset %}
+
+{# Standard Layout #}
+{% block layout %}
+    <div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|e }} g-swipercarousel-{{ particle.displayitems }}-items">
+        {% if particle.title or particle.description %}
+        <div class="g-grid">
+            <div class="g-block">
+                <div class="g-content g-swipercarousel-header">
+                    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+                    {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|raw }}</div>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper {{ particle.width|e }}"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
+
+            {% for item in items %}
+                <div>
+                    {% if particle.jintroimage == 'enabled' and item.images.image_intro %}
+                        <div class="image" style="background-image: url('{{ url(item.images.image_intro)|e }}');">
+                            <img src="{{ url(item.images.image_intro)|e }}" alt="{{ item.title|e }}" />
+                        </div>
+                    {% endif %}
+
+                    {% if (particle.jcategoriesnames == 'enabled' and categories_names) or (particle.jtitle == 'enabled' and item.title) or (particle.jintrotext == 'enabled' and item.introtext) or (particle.jlink == 'enabled' and item.route) or (particle.jauthor == 'enabled' and item.author.name) %}
+                        <div class="g-swipercarousel-content">
+                            {% if particle.jcategoriesnames == 'enabled' and categories_names %}<span class="g-swipercarousel-item-subtitle">{{ categories_names|e }}</span>{% endif %}
+                            {% if particle.jtitle == 'enabled' and item.title %}<div class="g-swipercarousel-item-title">{{ item.title|raw }}</div>{% endif %}
+                            {% if particle.jintrotext == 'enabled' and item.introtext %}<div class="g-swipercarousel-item-desc">{{ item.introtext|raw }}</div>{% endif %}
+
+                            {% if particle.jlink == 'enabled' and item.route %}
+                                <div class="g-swipercarousel-item-link">
+                                    <a target="_self" class="g-swipercarousel-item-button button" href="{{ item.route|e }}">
+                                        {{ particle.jlinktext|raw }}
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            {% if particle.jauthor == 'enabled' and item.author.name %}
+                                <div class="g-swipercarousel-author">
+                                    <span class="author-name">{{ item.author.name|e }}</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

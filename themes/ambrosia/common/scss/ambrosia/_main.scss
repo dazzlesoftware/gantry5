@@ -18,8 +18,8 @@
 			.g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
 				@include breakpoint(small-mobile-range) {
 					display: none;
-				}						
-			}				
+				}
+			}
 		}
 	}
 	.fp-mainright-tab, #mainright-tabs {
@@ -36,61 +36,61 @@
 			.g-style-preset2 &, .g-style-preset4 &, .g-style-preset6 & {
 				@include breakpoint(tablet-range) {
 					font-size: 0.85rem;
-				}						
-			}		
+				}
+			}
 		}
 	}
 }
 
-#mainbar-tabs { 
+#mainbar-tabs {
     .g-contenttabs-container {
-    	border: 1px solid rgba(136, 136, 136, 0.25);
-    	overflow: hidden;
+	border: 1px solid rgba(136, 136, 136, 0.25);
+	overflow: hidden;
     }
     .g-contenttabs-content-wrapper-container {
-    	padding: 0;
+	padding: 0;
 		.g-contenttabs-content {
 			display: block;
 		}
     }
     ul.g-contenttabs-tab-wrapper-container {
-    	padding: 1rem !important;
-    	text-align: right;
-    	display: block;
-    	border-bottom: 1px solid #ddd;
-    	background: #f5f5f5;
-    	margin: 0;
+	padding: 1rem !important;
+	text-align: right;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	background: #f5f5f5;
+	margin: 0;
 
-    	> li {
-    		float: none;
-    		display: inline-block;
-    		a {
-    			color: #888888
-    		}
-    	}
-    	.g-contenttabs-tab-title {
-	    	padding: 0 0.5rem;
-	    	font-family: get-font-family($font-family-title);
-	    	font-weight: $font-weight-bold;
-	    	font-size: 0.85rem;
-	    	line-height: 1.5;
-	    	&:hover {
-	    		background: transparent;
-	    	}
-	    }	
+	> li {
+		float: none;
+		display: inline-block;
+		a {
+			color: #888888
+		}
+	}
+	.g-contenttabs-tab-title {
+		padding: 0 0.5rem;
+		font-family: get-font-family($font-family-title);
+		font-weight: $font-weight-bold;
+		font-size: 0.85rem;
+		line-height: 1.5;
+		&:hover {
+			background: transparent;
+		}
+	    }
 
         .ui-tabs-active.ui-state-active {
             .g-contenttabs-tab-title {
-	    		background: transparent;
-	    		border: none;
-	    		color: #000;
-	    		cursor: pointer;
-	    	}	
-    	}
+			background: transparent;
+			border: none;
+			color: #000;
+			cursor: pointer;
+		}
+	}
 	}
 }
 
-#mainright-tabs { 
+#mainright-tabs {
 	ul.g-contenttabs-tab-wrapper-container {
 		> li {
 			margin-right: 5px;
@@ -102,8 +102,8 @@
 		    font-weight: 700;
 		    font-size: 0.75rem;
 		    line-height: 1.5;
-		}	
-    	.ui-tabs-active.ui-state-active {
+		}
+	.ui-tabs-active.ui-state-active {
            .g-contenttabs-tab-title {
 			    background: $accent-color-1;
 			    border: none;
@@ -112,23 +112,23 @@
 			}
 		}
 	}
-}	
+}
 
 #mainleft-headlines {
-    .g-owlcarousel-headlines {
-    	.headlines-badge {
-    		span {
-    			margin: 0.6rem;
-    			padding: 0 !important;
-    			border-bottom: 2px solid;
-    			font-size: 0.85rem;
-    		}
-    	}
-    	.headlines-container {
-    		.g-owlcarousel {
-    			.owl-stage-outer {
-    				width: 100%;
-    				.owl-item {
+    .g-swipercarousel-headlines {
+	.headlines-badge {
+		span {
+			margin: 0.6rem;
+			padding: 0 !important;
+			border-bottom: 2px solid;
+			font-size: 0.85rem;
+		}
+	}
+	.headlines-container {
+		.g-swipercarousel {
+			.swiper {
+				width: 100%;
+				.swiper-slide {
                         line-height: 1.2em;
                         font-size: 1.2em;
                         padding: 10px 25px 10px 10px;
@@ -138,12 +138,12 @@
                         @include breakpoint(tablet-range) {
                             padding: 10px 15px 10px 10px;
                         }
-    				}
-    			}
-    			.g-headlines-desc {
-    				font-size: 0.875rem;
-    			}
-                .owl-nav {
+				}
+			}
+			.g-headlines-desc {
+				font-size: 0.875rem;
+			}
+                .swiper-navigation {
                     div, button {
                         top: auto;
                         display: block;
@@ -164,22 +164,22 @@
                         transition: background 0.25s ease;
                         &:before {
                             font-family: FontAwesome;
-                        } 
-                        &:hover {
-                        	background: lighten($accent-color-1, 15%);
                         }
-                        &.owl-next {
+                        &:hover {
+	background: lighten($accent-color-1, 15%);
+                        }
+                        &.swiper-button-next {
                             top: 0;
                             &:before {
                                 content: "\f106";
                             }
                         }
-                        &.owl-prev {
+                        &.swiper-button-prev {
                             top: 30px;
                             margin-right: 0;
                             &:before {
                                 content: "\f107";
-                            }                              
+                            }
                         }
                         span {
                             display: none;
@@ -188,7 +188,7 @@
                 }
             }
         }
-    }                		    
+    }
 }
 
 @media print {

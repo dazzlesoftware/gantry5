@@ -1,20 +1,20 @@
-.g-owlcarousel-strips-slider {
-  .g-owlcarousel {
+.g-swipercarousel-strips-slider {
+  .g-swipercarousel {
 
-  	.owl-item {
-  		margin-top: 10px;
-  		margin-bottom: 10px;
-  	}
+	.swiper-slide {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 
-  	.readon {
-  		margin-top: 10px;
-  	}
+	.readon {
+		margin-top: 10px;
+	}
 
-    .owl-dots {
+    .swiper-pagination {
       margin-top: -10px;
       text-align: left;
 
-      .owl-dot {
+      .swiper-pagination-bullet {
         display: inline-block;
         padding: 5px;
         width: 0;
@@ -38,10 +38,10 @@
           font-size: 0.85em;
           line-height: 1em;
         }
-      }  
+      }
     }
 
-    .owl-nav {
+    .swiper-navigation {
       > button {
         padding: 0;
         position: absolute;
@@ -74,15 +74,15 @@
         }
       }
 
-      .owl-next {
-        right: 0;  
+      .swiper-button-next {
+        right: 0;
         &:before {
           content: '\f105';
           font-family: FontAwesome;
         }
       }
 
-      .owl-prev {
+      .swiper-button-prev {
         right: 3rem;
         left: auto;
         &:before {
@@ -94,6 +94,6 @@
   }
 }
 
-.rt-demo-clients .g-owlcarousel-content {
+.rt-demo-clients .g-swipercarousel-content {
     height: 180px;
 }

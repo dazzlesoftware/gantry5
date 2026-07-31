@@ -1,4 +1,4 @@
-.g-owlcarousel-testimonials {
+.g-swipercarousel-testimonials {
     .g-testimonials {
 
         // Testimonial
@@ -41,7 +41,7 @@
         }
 
         // Arrows
-        .owl-nav {
+        .swiper-navigation {
             position: absolute;
             @include breakpoint(mobile-only) {
                 position: relative;
@@ -72,13 +72,13 @@
                     font-size: $core-font-size + 1;
                 }
 
-                &.owl-prev {
+                &.swiper-button-prev {
                     left: 0;
                     @include breakpoint(mobile-only) {
                         margin-right: $content-padding;
                     }
                 }
-                &.owl-next {
+                &.swiper-button-next {
                     right: 0;
                     @include breakpoint(mobile-only) {
                         margin-left: $content-padding;
@@ -88,10 +88,10 @@
 
         }
         // Dots
-        .owl-dots {
+        .swiper-pagination {
             text-align: left;
             margin-top: $content-padding;
-            .owl-dot {
+            .swiper-pagination-bullet {
                 margin: 0 0.2rem;
                 width: 8px;
                 height: 8px;

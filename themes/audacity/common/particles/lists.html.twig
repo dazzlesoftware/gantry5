@@ -1,26 +1,40 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
     {% block layout %}
 
-        <div id="lists" class="{{ particle.class|e }} g-owlcarousel-lists g-owlcarousel-lists-{{ particle.displayitems }}-items">
+        <div id="lists" class="{{ particle.class|e }} g-swipercarousel-lists g-swipercarousel-lists-{{ particle.displayitems }}-items">
             {% if particle.title or particle.description %}
                 <div class="g-grid">
                     <div class="g-block">
                             {% if particle.title %}<h2 class="title">{{ particle.title|html|raw }}</h2>{% endif %}
-                            {% if particle.description %}<div class="g-owlcarousel-description">{{ particle.description|html|raw }}</div>{% endif %}
+                            {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|html|raw }}</div>{% endif %}
                     </div>
                 </div>
             {% endif %}
 
-            <div id="g-owlcarousel-{{ id }}" data-owlcarousel-id="g-owlcarousel-{{ id }}" class="g-owlcarousel owl-carousel">
+            <div id="g-swipercarousel-{{ id }}" data-swipercarousel-id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
 
                 {% for row in particle.items|batch(particle.displayitems) %}
                     <div class="item">
                         {% for item in row  %}
-                            <div class="g-owlcarousel-item">
+                            <div class="g-swipercarousel-item">
                                 {% if item.title %}
-                                    <h4 class="g-owlcarousel-item-title{% if particle.accordion == 'enabled' %} padding{% endif %}">
+                                    <h4 class="g-swipercarousel-item-title{% if particle.accordion == 'enabled' %} padding{% endif %}">
 
                                         {{ item.title|html|raw }}
 
@@ -29,10 +43,10 @@
                                 {% endif %}
 
                                 {% if item.desc %}
-                                    <div class="g-owlcarousel-content">
+                                    <div class="g-swipercarousel-content">
 
                                         {% if item.desc %}
-                                            <div class="g-owlcarousel-item-desc">
+                                            <div class="g-swipercarousel-item-desc">
                                                 {% if item.desc %}<p>{{ item.desc|html|raw }}</p>{% endif %}
                                             </div>
                                         {% endif %}
@@ -57,49 +71,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    <script src="{{ url('gantry-theme://js/owl.carousel.min.js') }}"></script>
-    <script type="text/javascript">
-    jQuery(document).ready(function () {
-        jQuery('#g-owlcarousel-{{ id }}').owlCarousel({
-            items: 1,
-            rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
-            {% if particle.nav == 'enabled' %}
-            nav: true,
-            {% else %}
-            nav: false,
-            {% endif %}
-            {% if particle.dots == 'enabled' %}
-            dots: true,
-            {% else %}
-            dots: false,
-            {% endif %}
-            loop: false,
-            {% if particle.autoplay == 'enabled' %}
-            autoplay: true,
-            autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
-            {% if particle.pauseOnHover == 'enabled' %}
-            autoplayHoverPause: true,
-            {% else %}
-            autoplayHoverPause: false,
-            {% endif %}
-            {% else %}
-            autoplay: false,
-            {% endif %}
-            URLhashListener: true,
-        })
-    });
-    {% if particle.accordion == 'enabled' %}
-    jQuery(document).ready(function () {
-        jQuery("#g-owlcarousel-{{ id }}").accordion({
-            heightStyle: "content",
-            header: ".g-owlcarousel-item-title",
-            collapsible: true,
-            active: 0,
-            beforeActivate: function (event, ui) {
-                window.dispatchEvent(new Event('resize'));
-            }
-        })
-    });
-    {% endif %}
-    </script>
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

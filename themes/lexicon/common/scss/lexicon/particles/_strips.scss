@@ -1,7 +1,7 @@
-.g-owlcarousel-strips-slider {
-  .g-owlcarousel {
+.g-swipercarousel-strips-slider {
+  .g-swipercarousel {
 
-    .owl-item {
+    .swiper-slide {
       margin-top: 10px;
       margin-bottom: 10px;
 
@@ -9,20 +9,20 @@
         display: inline;
       }
 
-      .g-owlcarousel-item-title {
+      .g-swipercarousel-item-title {
         margin-top: 15px;
       }
 
-      .g-owlcarousel-item-desc {
+      .g-swipercarousel-item-desc {
         padding: 0 15px 15px;
       }
     }
 
-    .owl-dots {
+    .swiper-pagination {
       position: relative;
       margin-bottom: 25px;
 
-      .owl-dot {
+      .swiper-pagination-bullet {
         display: inline-block;
         padding: 7px;
         margin: 0 3px;
@@ -51,11 +51,11 @@
         span {
           display: none;
         }
-      }  
+      }
     }
 
-    .owl-nav {
-      button.owl-prev, button.owl-next {
+    .swiper-navigation {
+      button.swiper-button-prev, button.swiper-button-next {
           position: absolute;
           display: block;
           width: 40px;
@@ -87,15 +87,15 @@
         }
       }
 
-      .owl-next {
-        right: -65px;  
+      .swiper-button-next {
+        right: -65px;
         &:before {
           content: '\f105';
           font-family: FontAwesome;
         }
       }
 
-      .owl-prev {
+      .swiper-button-prev {
         left: -65px;
         &:before {
           content: '\f104';

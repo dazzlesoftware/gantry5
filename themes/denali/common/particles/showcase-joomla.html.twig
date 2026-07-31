@@ -85,18 +85,29 @@
             {% endfor %}
         </div>
     {% endfor %}
-    <div class="owl-nav">
-        <div class="owl-prev">
+    <div class="swiper-navigation">
+        <div class="swiper-button-prev">
             <i class="fa fa-angle-up" aria-hidden="true"></i>
         </div>
-        <div class="owl-next">
+        <div class="swiper-button-next">
             <i class="fa fa-angle-down" aria-hidden="true"></i>
         </div>
     </div>
 </div>
 
 {# Mobile #}
-<div class="g-showcase-slides mobile g-owlcarousel owl-carousel" data-showcase-slides-id="{{ id }}">
+<div class="g-showcase-slides mobile g-swipercarousel swiper" data-showcase-slides-id="{{ id }}"
+        data-g-swiper
+        data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
     {% for row in articles | batch(4) %}
         {% if loop.first %}{% set set_id = 'finished' %}
         {% else %}{% set set_id = '' %}
@@ -140,3 +151,7 @@
         {% endfor %}
     {% endfor %}
 </div>
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

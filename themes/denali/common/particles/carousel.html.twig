@@ -1,11 +1,25 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 {% do gantry.load('lightcase.init') %}
 {% block particle %}
-    <div class="{{ particle.class|e }} g-owlcarousel-carousel">
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
+    <div class="{{ particle.class|e }} g-swipercarousel-carousel">
         {% if particle.title %}
             <h2 class="g-title">{{ particle.title|raw }}</h2>
         {% endif %}
-        <div id="g-carousel-{{ id }}" class="g-carousel owl-carousel">
+        <div id="g-carousel-{{ id }}" class="g-carousel swiper"
+        data-g-swiper
+        data-slides-per-view="4"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
             {% if not particle.source or particle.source == 'particle' %}
                 {% for item in particle.items %}
                     <div class="g-carousel-item">
@@ -30,56 +44,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% if particle.demo == "enabled" %}
-        {% if gantry.theme.preset %}
-            {% set preset = gantry.theme.preset | replace({'preset': ''}) - 1 %}
-        {% else %}
-            {% set preset = 0 %}
-        {% endif %}
-    {% endif %}
-    <script src="{{ url('gantry-theme://js/owlcarousel.js') }}"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            var owl{{ id|replace({'-':'_'}) }} = jQuery('#g-carousel-{{ id }}');
-            owl{{ id|replace({'-':'_'}) }}.owlCarousel({
-                margin: 100,
-                center: {% if particle.center == 'enabled' %}true{% else %}false{% endif %},
-                rtl: {% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %},
-                {% if particle.nav == 'enabled' %}
-                nav: true,
-                navText: ['{{ particle.prevText|default('<i class="fa fa-arrow-left fa-fw"></i>')|e('js') }}', '{{ particle.nextText|default('<i class="fa fa-arrow-right fa-fw"></i>')|e('js') }}'],
-                {% else %}
-                nav: false,
-                {% endif %}
-                dots: false,
-                loop: {% if particle.loop == 'enabled' %}true{% else %}false{% endif %},
-                {% if particle.autoplay == 'enabled' %}
-                autoplay: true,
-                autoplayTimeout: {{ particle.autoplaySpeed|default('5000') }},
-                {% if particle.pauseOnHover == 'enabled' %}
-                autoplayHoverPause: true,
-                {% else %}
-                autoplayHoverPause: false,
-                {% endif %}
-                {% else %}
-                autoplay: false,
-                {% endif %}
-                items: 4,
-                responsive:{
-                    0: {
-                        autoWidth: false,
-                        items: 1,
-                    },
-                    650: {
-                        autoWidth: false,
-                        items: 2,
-                    },
-                    1200: {
-                        autoWidth: true,
-                    }
-                },
-                startPosition: {% if particle.demo == "enabled" %}{{ preset }}{% else %}0{% endif %},
-            })
-        });
-    </script>
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

@@ -74,7 +74,7 @@
     }
 
     // Prev & Next Controls
-    .owl-nav {
+    .swiper-navigation {
         margin-bottom: $content-margin;
 
         > div {
@@ -97,7 +97,7 @@
             }
         }
 
-        .owl-prev {
+        .swiper-button-prev {
             left: 2vw;
             right: auto;
 
@@ -113,7 +113,7 @@
             }
         }
 
-        .owl-next {
+        .swiper-button-next {
             left: auto;
             right: 2vw;
 

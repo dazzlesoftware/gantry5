@@ -1,5 +1,5 @@
 .g-carousel {
-    .owl-item {
+    .swiper-slide {
         position: relative;
 
         .g-carousel-image-wrapper {
@@ -64,9 +64,9 @@
     }
 
     // Nav
-    .owl-nav {
-        button.owl-prev,
-        button.owl-next {
+    .swiper-navigation {
+        button.swiper-button-prev,
+        button.swiper-button-next {
             position: absolute;
             bottom: 5%;
             color: $black;
@@ -83,7 +83,7 @@
             }
         }
 
-        .owl-prev {
+        .swiper-button-prev {
             left: 5%;
 
             .fa {
@@ -92,7 +92,7 @@
             }
         }
 
-        .owl-next {
+        .swiper-button-next {
             right: 5%;
 
             .fa {

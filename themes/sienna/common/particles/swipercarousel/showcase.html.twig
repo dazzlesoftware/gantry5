@@ -1,0 +1,85 @@
+{% extends '@particles/swipercarousel.html.twig' %}
+
+{# Showcase Layout #}
+{% block layout %}
+    <div class="{{ particle.class|e }} g-swipercarousel-layout-{{ particle.layout|e }} g-swipercarousel-{{ particle.displayitems }}-items">
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        <div id="g-swipercarousel-{{ id }}" class="g-swipercarousel swiper {{ particle.width|e }}"
+        data-g-swiper
+        data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
+
+            {% for item in particle.items %}
+                <div class="item">
+                    {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}
+                    {% if item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" />{% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="g-container-wrapper-panel">
+            <div class="g-swipercarousel-panel-container" id="g-swipercarousel-panel-{{ id }}">
+
+                {% for item in particle.items %}
+                    <div class="g-swipercarousel-panel {% if loop.first %}selected{% endif %}" id="g-swipercarousel-panel-{{ loop.index }}">
+                        <a href="#{{ id }}-{{ loop.index }}">
+                            {% if item.title %}<span class="g-swipercarousel-panel-title">{{ item.title|raw }}</span>{% endif %}
+                            {% if item.subtitle %}<span class="g-swipercarousel-panel-subtitle">{{ item.subtitle|raw }}</span>{% endif %}
+                            {% if item.desc %}<span class="g-swipercarousel-panel-desc">{{ item.desc|raw }}</span>{% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        {% if particle.nav == 'enabled' %}
+        <div id="g-swipercarousel-{{ id }}-controls" class="swiper-controls">
+            <div class="swiper-navigation">
+                <div class="swiper-button-prev" style=""><i class="fa fa-long-arrow-up" aria-hidden="true"></i></div>
+                <div class="swiper-button-next" style=""><i class="fa fa-long-arrow-down" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var swiper{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-{{ id }}');
+            swiper{{ id|replace({'-':'_'}) }}.on('changed.swiper.carousel', function(event) {
+                var currentItem = "#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-" + (event.item.index + 1);
+                jQuery(currentItem).trigger("click");
+            })
+            {% if particle.nav == 'enabled' %}
+            jQuery('#g-swipercarousel-{{ id }}-controls .swiper-button-next').click(function() {
+                swiper{{ id|replace({'-':'_'}) }}.trigger('next.swiper.carousel');
+            })
+            jQuery('#g-swipercarousel-{{ id }}-controls .swiper-button-prev').click(function() {
+                swiper{{ id|replace({'-':'_'}) }}.trigger('prev.swiper.carousel');
+            })
+            {% endif %}
+        });
+
+        var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-panel-{{ id }} .g-swipercarousel-panel');
+        {% for item in particle.items %}
+        jQuery("#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-{{ loop.index }}").click(function(event) {
+            owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
+            jQuery(this).addClass('selected');
+        });
+        {% endfor %}
+    </script>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+{% endblock %}

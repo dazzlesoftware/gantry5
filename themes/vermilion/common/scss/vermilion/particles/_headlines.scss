@@ -1,9 +1,9 @@
-.g-owlcarousel-headlines {
+.g-swipercarousel-headlines {
     .headlines-container {
         background: transparent;
         margin: 0 45px;
 
-        .g-owlcarousel-content {
+        .g-swipercarousel-content {
             padding: 10px;
 
             @include breakpoint(mobile-only) {
@@ -25,8 +25,8 @@
             }
         }
 
-        .owl-nav {
-            button.owl-next, button.owl-prev {
+        .swiper-navigation {
+            button.swiper-button-next, button.swiper-button-prev {
                 position: absolute;
                 border: 0;
                 display: block;
@@ -44,26 +44,26 @@
                 background: rgba(0, 0, 0, 0.5);
                 &:before {
                     font-family: FontAwesome;
-                } 
+                }
                 &:hover {
                     opacity: 1;
                 }
-                &.owl-next {
-                        right: -45px; 
+                &.swiper-button-next {
+                        right: -45px;
                     &:before {
                         content: "\f105";
                     }
                 }
-                &.owl-prev {
+                &.swiper-button-prev {
                         left: -45px;
                     &:before {
                         content: "\f104";
-                    }                         
+                    }
                 }
                 span {
                     display: none;
                 }
             }
-        }  
+        }
     }
 }

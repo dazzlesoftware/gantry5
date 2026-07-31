@@ -12,13 +12,13 @@
         }
 
         &[data-slider-carousel-nav="true"] {
-            .owl-stage-outer {
+            .swiper {
                 margin: 0 4rem;
             }
         }
 
         //Item
-        .owl-item {
+        .swiper-slide {
             outline: none;
             cursor: pointer;
             padding-top: 1rem;
@@ -56,7 +56,7 @@
             }
 
             // Hover State
-            &:hover, &.owl-current {
+            &:hover, &.swiper-current {
                 .g-slider-carousel-image-container {
                     transform: translateY(-1rem);
 
@@ -79,7 +79,7 @@
         }
 
         // Prev & Next Controls
-        .owl-nav {
+        .swiper-navigation {
             > div {
                 position: absolute;
                 margin: auto;
@@ -100,7 +100,7 @@
                 }
             }
 
-            .owl-prev {
+            .swiper-button-prev {
                 margin-left: 10px;
                 left: 0;
                 right: auto;
@@ -118,7 +118,7 @@
                 }
             }
 
-            .owl-next {
+            .swiper-button-next {
                 margin-right: 10px;
                 left: auto;
                 right: 0;
@@ -144,7 +144,7 @@
         padding-bottom: $content-padding * 6;
 
         // Item
-        .owl-item {
+        .swiper-slide {
             text-align: center;
 
             .g-bgslideshow-slides-item-title {

@@ -1,10 +1,10 @@
-.g-owlcarousel-slider {
-	.g-owlcarousel {
-		.g-owlcarousel-image-container {
+.g-swipercarousel-slider {
+	.g-swipercarousel {
+		.g-swipercarousel-image-container {
 			position: relative;
 		}
-	
- 		.g-owlcarousel-content {
+
+		.g-swipercarousel-content {
 		    background: transparent;
 		    width: 80%;
 		    text-align: center;
@@ -12,22 +12,22 @@
 		    bottom: inherit;
 		    top: 50%;
 		    left: 50%;
-		    z-index: 10;    
+		    z-index: 10;
 		    transform: translate(-50%,-50%);
 
-		    .g-owlcarousel-item-title {
+		    .g-swipercarousel-item-title {
 				font-size: 2.5em;
-    			margin: 0;
-    			padding: 0;
-    			line-height: 50px;
-    			border-radius: 5px;			    
+			margin: 0;
+			padding: 0;
+			line-height: 50px;
+			border-radius: 5px;
 		    }
 
-		    .g-owlcarousel-item-desc {
-		    	font-size: 1.3em;
-    			margin-top: 10px;
-    			font-size: 1.5em;
-    			line-height: 35px;
+		    .g-swipercarousel-item-desc {
+			font-size: 1.3em;
+			margin-top: 10px;
+			font-size: 1.5em;
+			line-height: 35px;
 		    }
 
 		    .button {
@@ -54,24 +54,24 @@
 				    background-color: $white !important;
 				    border: 2px solid transparent;
 			    }
-    		}
-		}  
+		}
+		}
 
-		
-		.owl-dots {
+
+		.swiper-pagination {
 			bottom: 3%;
 			left: 45%;
 			@include breakpoint(mobile-only) {
 				left: 35%;
 			}
 
-			.owl-dot {
+			.swiper-pagination-bullet {
 				padding: 0;
 			}
 		}
 
-	    .owl-nav {
-	      button.owl-prev, button.owl-next {
+	    .swiper-navigation {
+	      button.swiper-button-prev, button.swiper-button-next {
 	          position: absolute;
 	          display: block;
 	          width: 40px;
@@ -102,21 +102,21 @@
 	        }
 	      }
 
-	      .owl-next {
-	        right: 15px;  
+	      .swiper-button-next {
+	        right: 15px;
 	        &:before {
 	          content: '\f105';
 	          font-family: FontAwesome;
 	        }
 	      }
 
-	      .owl-prev {
+	      .swiper-button-prev {
 	        left: 15px;
 	        &:before {
 	          content: '\f104';
 	          font-family: FontAwesome;
 	        }
 	      }
-	    }       
+	    }
 	}
 }

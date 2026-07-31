@@ -45,7 +45,7 @@ layout:
     -
       - simplecontent-2140
     -
-      - owlcarousel-9067
+      - swipercarousel-9067
   copyright: {  }
   offcanvas: {  }
 structure:
@@ -516,7 +516,7 @@ content:
           title: 'What Our Fans Say'
     block:
       variations: center
-  owlcarousel-9067:
+  swipercarousel-9067:
     title: Testimonials
     attributes:
       class: ''
@@ -526,7 +526,7 @@ content:
       title: ''
       description: ''
       layout: testimonial
-      width: g-owlcarousel-fullwidth
+      width: g-swipercarousel-fullwidth
       animateIn: fadeIn
       animateOut: fadeOut
       nav: disabled

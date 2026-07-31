@@ -52,21 +52,95 @@ class GantrySwiper {
             });
         }
 
-        if (enabled(this.element.dataset.navigation, true) && !this.element.querySelector(':scope > .swiper-navigation')) {
+        const navigationEnabled = enabled(
+            this.element.dataset.navigation ?? this.findDataset(['carouselNav', 'nav']),
+            true
+        );
+        this.navigationElement = this.element.querySelector(':scope > .swiper-navigation')
+            || this.findExternalNavigation();
+
+        if (navigationEnabled && !this.navigationElement) {
             const navigation = document.createElement('div');
             navigation.className = 'swiper-navigation';
-            navigation.innerHTML = `
-                <button class="swiper-button-prev" type="button" aria-label="${this.element.dataset.previousLabel || 'Previous slide'}"></button>
-                <button class="swiper-button-next" type="button" aria-label="${this.element.dataset.nextLabel || 'Next slide'}"></button>
-            `;
+            this.navigationElement = navigation;
             this.element.append(navigation);
         }
 
-        if (enabled(this.element.dataset.pagination) && !this.getPaginationElement()) {
+        if (navigationEnabled && this.navigationElement && !this.navigationElement.querySelector('.swiper-button-prev, .swiper-button-next')) {
+            this.navigationElement.classList.add('swiper-navigation');
+            this.navigationElement.innerHTML = `
+                <button class="swiper-button-prev" type="button" aria-label="${this.element.dataset.previousLabel || 'Previous slide'}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="swiper-button-next" type="button" aria-label="${this.element.dataset.nextLabel || 'Next slide'}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            `;
+        } else if (navigationEnabled && this.navigationElement) {
+            this.navigationElement.querySelectorAll('.swiper-button-prev, .swiper-button-next').forEach((button) => {
+                if (button.tagName !== 'BUTTON') {
+                    button.setAttribute('role', 'button');
+                    button.setAttribute('tabindex', '0');
+                }
+            });
+        }
+
+        if (navigationEnabled && this.navigationElement && !this.navigationElement.querySelector('.swiper-button-prev')) {
+            const previous = document.createElement('button');
+            previous.className = 'swiper-button-prev';
+            previous.type = 'button';
+            previous.setAttribute('aria-label', this.element.dataset.previousLabel || 'Previous slide');
+            previous.innerHTML = '<i class="fa fa-chevron-left" aria-hidden="true"></i>';
+            this.navigationElement.prepend(previous);
+        }
+
+        if (navigationEnabled && this.navigationElement && !this.navigationElement.querySelector('.swiper-button-next')) {
+            const next = document.createElement('button');
+            next.className = 'swiper-button-next';
+            next.type = 'button';
+            next.setAttribute('aria-label', this.element.dataset.nextLabel || 'Next slide');
+            next.innerHTML = '<i class="fa fa-chevron-right" aria-hidden="true"></i>';
+            this.navigationElement.append(next);
+        }
+
+        if (navigationEnabled && this.navigationElement === this.element) {
+            const navigation = document.createElement('div');
+            navigation.className = 'swiper-navigation';
+            navigation.innerHTML = `
+                <button class="swiper-button-prev" type="button" aria-label="${this.element.dataset.previousLabel || 'Previous slide'}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="swiper-button-next" type="button" aria-label="${this.element.dataset.nextLabel || 'Next slide'}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            `;
+            this.element.append(navigation);
+            this.navigationElement = navigation;
+        }
+
+        const paginationEnabled = enabled(this.element.dataset.pagination ?? this.findDataset(['dots']));
+        if (paginationEnabled && !this.getPaginationElement()) {
             const pagination = document.createElement('div');
             pagination.className = 'swiper-pagination';
             this.element.append(pagination);
         }
+    }
+
+    findExternalNavigation() {
+        const container = this.element.closest([
+            '[data-carousel-id]',
+            '[data-slider-id]',
+            '[data-slideshow-id]',
+            '[data-showcase-id]',
+            '[data-panelslider-id]',
+            '[data-bgslideshow-id]',
+            '[data-featuredvideos-id]'
+        ].join(', '));
+
+        return container?.querySelector('.custom-swiper-navigation, [id^="g-swipercarousel-accordionslider-controls"]')
+            || this.element.closest('.g-swipercarousel-accordionslider')
+                ?.querySelector('[id^="g-swipercarousel-accordionslider-controls"]')
+            || null;
     }
 
     getPaginationElement() {
@@ -80,17 +154,30 @@ class GantrySwiper {
             }
         }
 
-        return this.element.querySelector(':scope > .swiper-pagination');
+        const internal = this.element.querySelector(':scope > .swiper-pagination');
+        if (internal) {
+            return internal;
+        }
+
+        const adjacent = this.element.nextElementSibling;
+        return adjacent?.matches('.swiper-pagination') ? adjacent : null;
     }
 
     create() {
         const { dataset } = this.element;
+        const role = dataset.gSwiperRole || '';
         const slides = this.element.querySelectorAll('.swiper-slide').length;
-        const slidesPerView = Math.max(1, number(dataset.slidesPerView, 1));
-        const navigation = enabled(dataset.navigation, true);
-        const pagination = enabled(dataset.pagination);
-        const autoplay = enabled(dataset.autoplay);
-        const requestedLoop = enabled(dataset.loop, true);
+        const isPrimarySlides = /(?:^|\s)g-(?:slider|slideshow|showcase|panelslider|bgslideshow)-slides(?:\s|$)/.test(this.element.className);
+        const inferredItems = this.findDataset(['items', 'itemsAmount', 'displayitems']);
+        const slidesPerView = Math.max(1, number(dataset.slidesPerView ?? (isPrimarySlides ? 1 : inferredItems), 1));
+        const navigation = role === 'main'
+            ? false
+            : enabled(dataset.navigation ?? this.findDataset(['carouselNav', 'nav']), true);
+        const pagination = enabled(dataset.pagination ?? this.findDataset(['dots']));
+        const autoplay = role === 'navigation'
+            ? false
+            : enabled(dataset.autoplay ?? this.findDataset(['autoplay']));
+        const requestedLoop = enabled(dataset.loop ?? this.findDataset(['loop']), true);
         const effect = dataset.effect === 'fade' && slidesPerView === 1 ? 'fade' : 'slide';
 
         const instance = new Swiper(this.element, {
@@ -103,15 +190,12 @@ class GantrySwiper {
             },
             autoHeight: enabled(dataset.autoHeight, true),
             autoplay: autoplay ? {
-                delay: Math.max(1000, number(dataset.autoplayDelay, 5000)),
+                delay: Math.max(1000, number(dataset.autoplayDelay ?? this.findDataset(['autoplayInterval', 'timeout', 'delay']), 5000)),
                 disableOnInteraction: false,
                 pauseOnMouseEnter: enabled(dataset.pauseOnHover, true)
             } : false,
-            breakpoints: slidesPerView > 1 ? {
-                0: { slidesPerView: 1 },
-                768: { slidesPerView: Math.max(1, Math.ceil(slidesPerView / 2)) },
-                960: { slidesPerView }
-            } : undefined,
+            breakpoints: this.getBreakpoints(slidesPerView),
+            centeredSlides: enabled(dataset.centered),
             effect,
             fadeEffect: { crossFade: true },
             grabCursor: true,
@@ -119,13 +203,17 @@ class GantrySwiper {
                 enabled: true,
                 onlyInViewport: true
             },
+            initialSlide: this.getInitialSlide(),
             loop: requestedLoop && slides > slidesPerView,
             navigation: navigation ? {
-                nextEl: this.element.querySelector('.swiper-button-next'),
-                prevEl: this.element.querySelector('.swiper-button-prev')
+                addIcons: false,
+                nextEl: this.navigationElement?.querySelector('.swiper-button-next'),
+                prevEl: this.navigationElement?.querySelector('.swiper-button-prev')
             } : false,
             observer: true,
             observeParents: true,
+            slidesPerGroup: Math.max(1, number(dataset.slidesPerGroup, 1)),
+            spaceBetween: Math.max(0, number(dataset.spaceBetween, 0)),
             pagination: pagination ? {
                 el: this.getPaginationElement(),
                 bulletElement: 'button',
@@ -147,6 +235,80 @@ class GantrySwiper {
         return instance;
     }
 
+    findDataset(suffixes) {
+        let current = this.element;
+        const normalized = suffixes.map((suffix) => suffix.toLowerCase());
+
+        while (current) {
+            const match = Object.entries(current.dataset || {}).find(([key]) => {
+                const lowerKey = key.toLowerCase();
+                return normalized.some((suffix) => lowerKey === suffix || lowerKey.endsWith(suffix));
+            });
+
+            if (match) {
+                return match[1];
+            }
+
+            current = current.parentElement;
+        }
+
+        return undefined;
+    }
+
+    getBreakpoints(slidesPerView) {
+        if (slidesPerView <= 1) {
+            return undefined;
+        }
+
+        const smallMobile = Math.max(1, number(this.findDataset(['itemsSmallmobile']), 1));
+        const mobile = Math.max(1, number(this.findDataset(['itemsMobile']), Math.ceil(slidesPerView / 2)));
+        const tablet = Math.max(1, number(this.findDataset(['itemsTablet']), Math.ceil(slidesPerView / 2)));
+
+        return {
+            0: { slidesPerView: smallMobile },
+            480: { slidesPerView: mobile },
+            768: { slidesPerView: tablet },
+            960: { slidesPerView }
+        };
+    }
+
+    getInitialSlide() {
+        if (this.element.dataset.initialSlide !== undefined) {
+            return Math.max(0, number(this.element.dataset.initialSlide, 0));
+        }
+
+        const container = this.element.closest([
+            '[data-carousel-id]',
+            '[data-slider-id]',
+            '[data-slideshow-id]',
+            '[data-showcase-id]',
+            '[data-eventlist-id]'
+        ].join(', '));
+        const selected = container?.querySelector('.selected, .current, .swiper-current, .active');
+        const itemClass = selected
+            ? Array.from(selected.classList).find((className) => !['selected', 'current', 'swiper-current', 'active'].includes(className))
+            : null;
+        const selectable = selected?.parentElement && itemClass
+            ? Array.from(selected.parentElement.children).filter((item) => item.classList.contains(itemClass))
+            : [];
+        const selectedIndex = selected ? selectable.indexOf(selected) : -1;
+
+        if (selectedIndex >= 0) {
+            return selectedIndex;
+        }
+
+        const preset = this.findDataset(['preset', 'presets']);
+        if (preset === false || preset === 'false') {
+            return 0;
+        }
+
+        const presetIndex = number(preset, 0);
+        const oneBasedSliderPreset = container?.matches('.g-slider')
+            && container.querySelector('[data-slider-slides-id]');
+
+        return Math.max(0, oneBasedSliderPreset ? presetIndex - 1 : presetIndex);
+    }
+
     syncState(swiper) {
         this.element.classList.toggle('swiper-rtl', swiper.rtlTranslate);
 
@@ -162,6 +324,247 @@ class GantrySwiper {
     }
 }
 
+const bindSynchronizedCarousels = (root = document) => {
+    const containerSelector = [
+        '[data-slider-id]',
+        '[data-slideshow-id]',
+        '[data-showcase-id]',
+        '[data-panelslider-id]',
+        '[data-bgslideshow-id]',
+        '[data-newsslider-id]',
+        '[data-eventlist-id]',
+        '[data-featuredvideos-id]'
+    ].join(', ');
+    const containers = root.matches?.(containerSelector)
+        ? [root]
+        : Array.from(root.querySelectorAll?.(containerSelector) || []);
+
+    containers.forEach((container) => {
+        if (container.dataset.gSwiperSyncReady === 'true') {
+            return;
+        }
+
+        const carousels = Array.from(container.querySelectorAll(':scope [data-g-swiper]'))
+            .filter((element) => element.gantrySwiper?.instance);
+
+        if (carousels.length < 2) {
+            return;
+        }
+
+        const mainElement = carousels.find((element) => /-slides(?:\s|$)/.test(element.className)) || carousels[0];
+        const navigationElement = carousels.find((element) => element !== mainElement && /-carousel(?:\s|$)/.test(element.className)) || carousels[1];
+        const main = mainElement.gantrySwiper.instance;
+        const navigation = navigationElement.gantrySwiper.instance;
+
+        const updateCurrent = () => {
+            navigation.slides.forEach((slide) => slide.classList.remove('swiper-current'));
+            const current = navigation.slides[main.realIndex];
+            current?.classList.add('swiper-current');
+            navigation.slideTo(main.realIndex);
+        };
+
+        navigationElement.addEventListener('click', (event) => {
+            const slide = event.target.closest('.swiper-slide');
+            if (!slide) {
+                return;
+            }
+
+            const index = navigation.slides.indexOf(slide);
+            if (index >= 0) {
+                main.slideToLoop(index);
+            }
+        });
+
+        main.on('slideChange', updateCurrent);
+        updateCurrent();
+        container.dataset.gSwiperSyncReady = 'true';
+    });
+};
+
+const bindStaticNavigation = (root = document) => {
+    const definitions = [
+        {
+            container: '[data-newsslider-id]',
+            items: '.g-newsslider-carousel-item-container',
+            active: 'current'
+        },
+        {
+            container: '[data-eventlist-id]',
+            items: '.g-eventlist-item',
+            active: 'selected'
+        }
+    ];
+
+    definitions.forEach((definition) => {
+        const containers = root.matches?.(definition.container)
+            ? [root]
+            : Array.from(root.querySelectorAll?.(definition.container) || []);
+
+        containers.forEach((container) => {
+            if (container.dataset.gSwiperStaticReady === 'true') {
+                return;
+            }
+
+            const swiperElement = container.querySelector('[data-g-swiper]');
+            const swiper = swiperElement?.gantrySwiper?.instance;
+            const items = Array.from(container.querySelectorAll(definition.items));
+            if (!swiper || !items.length) {
+                return;
+            }
+
+            const update = () => {
+                items.forEach((item) => item.classList.remove(definition.active));
+                const current = items[swiper.realIndex];
+                current?.classList.add(definition.active);
+                current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            };
+
+            items.forEach((item, index) => {
+                item.addEventListener('click', () => swiper.slideToLoop(index));
+            });
+            swiper.on('slideChange', update);
+            update();
+            container.dataset.gSwiperStaticReady = 'true';
+        });
+    });
+};
+
+const bindShowcaseSets = (root = document) => {
+    const containers = root.matches?.('[data-showcase-id]')
+        ? [root]
+        : Array.from(root.querySelectorAll?.('[data-showcase-id]') || []);
+
+    containers.forEach((container) => {
+        if (container.dataset.gSwiperShowcaseReady === 'true') {
+            return;
+        }
+
+        const swiperElement = container.querySelector('[data-showcase-slides-id][data-g-swiper]');
+        const swiper = swiperElement?.gantrySwiper?.instance;
+        const sets = Array.from(container.querySelectorAll('.g-showcase-slides.desktop .g-showcase-slides-set'));
+        if (!swiper || !sets.length) {
+            return;
+        }
+
+        const itemsPerSet = Math.max(1, number(container.dataset.showcaseItems, 1));
+        const update = () => {
+            sets.forEach((set) => set.classList.remove('active'));
+            const index = Math.min(sets.length - 1, Math.floor(swiper.realIndex / itemsPerSet));
+            sets[index]?.classList.add('active');
+            sets[index]?.querySelectorAll('.g-showcase-slides-slide').forEach((slide) => {
+                slide.classList.add('finished');
+            });
+        };
+
+        swiper.on('slideChangeTransitionStart', () => {
+            sets.forEach((set) => {
+                set.querySelectorAll('.g-showcase-slides-slide').forEach((slide) => {
+                    slide.classList.remove('finished');
+                });
+            });
+        });
+        swiper.on('slideChangeTransitionEnd', update);
+        update();
+        container.dataset.gSwiperShowcaseReady = 'true';
+    });
+};
+
+const bindBackgroundSlides = (root = document) => {
+    const containers = root.matches?.('[data-bgslideshow-id]')
+        ? [root]
+        : Array.from(root.querySelectorAll?.('[data-bgslideshow-id]') || []);
+
+    containers.forEach((container) => {
+        if (container.dataset.gSwiperBackgroundReady === 'true') {
+            return;
+        }
+
+        const swiperElement = container.querySelector('[data-bgslideshow-slides-id][data-g-swiper]');
+        const swiper = swiperElement?.gantrySwiper?.instance;
+        const images = Array.from(container.querySelectorAll('[data-bgslideshow-carousel-id] img'));
+        let target = null;
+
+        try {
+            target = document.querySelector(container.dataset.vegasElement);
+        } catch {
+            target = null;
+        }
+
+        if (!swiper || !target || !images.length) {
+            return;
+        }
+
+        const update = () => {
+            const image = images[swiper.realIndex]?.currentSrc || images[swiper.realIndex]?.src;
+            if (!image) {
+                return;
+            }
+
+            if (typeof target.animate === 'function') {
+                target.animate([{ opacity: 0.85 }, { opacity: 1 }], {
+                    duration: Math.max(150, number(container.dataset.bgslideshowTransitionDuration, 500)),
+                    easing: 'ease-out'
+                });
+            }
+            target.style.backgroundImage = `url("${image.replaceAll('"', '\\"')}")`;
+            target.style.backgroundRepeat = 'no-repeat';
+            target.style.backgroundSize = container.dataset.bgslideshowCover || 'cover';
+            target.style.backgroundPosition = [
+                container.dataset.bgslideshowAlign || 'center',
+                container.dataset.bgslideshowValign || 'center'
+            ].join(' ');
+        };
+
+        swiper.on('slideChange', update);
+        update();
+        container.dataset.gSwiperBackgroundReady = 'true';
+    });
+};
+
+const bindAccordionSlides = (root = document) => {
+    const containers = root.matches?.('.g-swipercarousel-accordionslider')
+        ? [root]
+        : Array.from(root.querySelectorAll?.('.g-swipercarousel-accordionslider') || []);
+
+    containers.forEach((container) => {
+        if (container.dataset.gSwiperAccordionReady === 'true') {
+            return;
+        }
+
+        const items = Array.from(container.querySelectorAll('.g-swipercarousel-item'));
+        items.forEach((item, index) => {
+            const heading = item.querySelector('.g-swipercarousel-item-title');
+            const content = item.querySelector(':scope > .g-swipercarousel-content');
+            if (!heading || !content) {
+                return;
+            }
+
+            const setOpen = (open) => {
+                heading.classList.toggle('ui-accordion-header-active', open);
+                heading.classList.toggle('ui-state-active', open);
+                heading.setAttribute('aria-expanded', String(open));
+                content.classList.toggle('ui-accordion-content-active', open);
+                content.hidden = !open;
+                item.querySelector('.indicator span')?.replaceChildren(document.createTextNode(open ? '−' : '+'));
+            };
+
+            heading.setAttribute('role', 'button');
+            heading.setAttribute('tabindex', '0');
+            const toggle = () => setOpen(content.hidden);
+            heading.addEventListener('click', toggle);
+            heading.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggle();
+                }
+            });
+            setOpen(index === 0);
+        });
+
+        container.dataset.gSwiperAccordionReady = 'true';
+    });
+};
+
 const initialize = (root = document) => {
     const elements = root.matches?.(selector)
         ? [root]
@@ -175,6 +578,12 @@ const initialize = (root = document) => {
         element.dataset.gSwiperReady = 'true';
         element.gantrySwiper = new GantrySwiper(element);
     });
+
+    bindSynchronizedCarousels(root);
+    bindStaticNavigation(root);
+    bindShowcaseSets(root);
+    bindBackgroundSlides(root);
+    bindAccordionSlides(root);
 };
 
 const ready = () => {

@@ -1,7 +1,7 @@
-.g-owlcarousel-lists {
+.g-swipercarousel-lists {
 		position: relative;
 
-	.g-owlcarousel {
+	.g-swipercarousel {
 		border: 2px solid;
 		border-radius: $base-border-radius;
 		.rt-overlay-dark & {
@@ -11,19 +11,19 @@
 			border: 2px solid $dark-grey;
 		}
 
-    	.owl-item {
+	.swiper-slide {
             .item {
                 p {
                     margin: 0;
                 }
 
                 .readon {
-                	margin: 10px 0;
+	margin: 10px 0;
                 }
             }
-        }    
+        }
 
-		.g-owlcarousel-item {
+		.g-swipercarousel-item {
 
 			.rt-overlay-dark & {
 				border-bottom: 2px solid $white !important;
@@ -58,7 +58,7 @@
 				}
 			}
 
-			.g-owlcarousel-item-title {
+			.g-swipercarousel-item-title {
 				font-size: 18px;
 				position: relative;
 			    padding: 10px 0 10px 45px;
@@ -112,7 +112,7 @@
 
                     .ui-accordion-header-icon {
                         display: none;
-                    }                        
+                    }
 
 					.indicator {
 						opacity: 1;
@@ -122,17 +122,17 @@
 							font-size: 13px;
 						}
 					}
-				} 
+				}
 			}
 
-			.g-owlcarousel-content {
+			.g-swipercarousel-content {
 				border-bottom: 0;
                 padding-bottom: 8px;
                 padding-left: 45px;
                 padding-right: 45px;
-			}	
+			}
 		}
-		.owl-nav {
+		.swiper-navigation {
 			margin-top: 40px;
 			> div, > button {
 				color: #ffffff;
@@ -159,50 +159,50 @@
 					opacity: 1;
 				}
 
-			    &.owl-next {
-			    	&:before {
-				    	content: '\f105';
+			    &.swiper-button-next {
+				&:before {
+					content: '\f105';
 					    font-family: FontAwesome;
 					    position: absolute;
 					    top: 0;
 					    left: 11px;
-				    } 
+				    }
 			    }
-			    &.owl-prev {
-			    	margin-right: 1.8rem;
-			    	&:before {
-				    	content: '\f104';
+			    &.swiper-button-prev {
+				margin-right: 1.8rem;
+				&:before {
+					content: '\f104';
 					    font-family: FontAwesome;
 					    position: absolute;
 					    top: 0;
 					    left: 9px;
-				    } 
+				    }
 			    }
 			    span {
-			    	display: none;
+				display: none;
 			    }
 			}
 		}
-		.owl-dots {
+		.swiper-pagination {
 			position: absolute;
-		 	right: 75px;
-		 	bottom: 0;
-		 	width: auto;
+			right: 75px;
+			bottom: 0;
+			width: auto;
 
-		 	.owl-dot {
-            	background: rgba(0, 0, 0, 0.7);
-            	opacity: 0.8;
-            	margin: 0 2px; 			 	
-		 		padding: 7px;
-		 		width: 0;
-		 		height: 0;
-		 		border-radius: 1em;
-		 		&.active {
-		 			background: $black;
-		 			opacity: 1;
-		 		}  			 		
-		 	}
+			.swiper-pagination-bullet {
+	background: rgba(0, 0, 0, 0.7);
+	opacity: 0.8;
+	margin: 0 2px;
+				padding: 7px;
+				width: 0;
+				height: 0;
+				border-radius: 1em;
+				&.active {
+					background: $black;
+					opacity: 1;
+				}
+			}
 		}
 	}
-}	
+}
 

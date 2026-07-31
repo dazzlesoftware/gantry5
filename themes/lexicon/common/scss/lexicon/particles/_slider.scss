@@ -1,10 +1,10 @@
-.g-owlcarousel-slider {
-	.g-owlcarousel {
-		.g-owlcarousel-image-container {
+.g-swipercarousel-slider {
+	.g-swipercarousel {
+		.g-swipercarousel-image-container {
 			position: relative;
 		}
-	
- 		.g-owlcarousel-content {
+
+		.g-swipercarousel-content {
 		    background: transparent;
 		    width: 80%;
 		    text-align: center;
@@ -12,22 +12,22 @@
 		    bottom: inherit;
 		    top: 50%;
 		    left: 50%;
-		    z-index: 10;    
+		    z-index: 10;
 		    transform: translate(-50%,-50%);
 
-		    .g-owlcarousel-item-title {
+		    .g-swipercarousel-item-title {
 				font-size: 2.5em;
-    			margin: 0;
-    			padding: 0;
-    			line-height: 50px;
-    			border-radius: 5px;			    
+			margin: 0;
+			padding: 0;
+			line-height: 50px;
+			border-radius: 5px;
 		    }
 
-		    .g-owlcarousel-item-desc {
-		    	font-size: 1.3em;
-    			margin-top: 10px;
-    			font-size: 1.5em;
-    			line-height: 35px;
+		    .g-swipercarousel-item-desc {
+			font-size: 1.3em;
+			margin-top: 10px;
+			font-size: 1.5em;
+			line-height: 35px;
 		    }
 
 		    .button {
@@ -54,24 +54,24 @@
 				    background-color: $white !important;
 				    border: 2px solid transparent;
 			    }
-    		}
-		}  
+		}
+		}
 
-		
-		.owl-dots {
+
+		.swiper-pagination {
 			bottom: 3%;
 			left: 45%;
 			@include breakpoint(mobile-only) {
 				left: 35%;
 			}
 
-			.owl-dot {
+			.swiper-pagination-bullet {
 				padding: 0;
 			}
 		}
 
-	    .owl-nav {
-	      button.owl-prev, button.owl-next {
+	    .swiper-navigation {
+	      button.swiper-button-prev, button.swiper-button-next {
 	          position: absolute;
 	          display: block;
 	          width: 40px;
@@ -102,30 +102,30 @@
 	        }
 	      }
 
-	      .owl-next {
-	        right: 15px;  
+	      .swiper-button-next {
+	        right: 15px;
 	        &:before {
 	          content: '\f105';
 	          font-family: FontAwesome;
 	        }
 	      }
 
-	      .owl-prev {
+	      .swiper-button-prev {
 	        left: 15px;
 	        &:before {
 	          content: '\f104';
 	          font-family: FontAwesome;
 	        }
 	      }
-	    }       
+	    }
 	}
 }
 
 // Add Overlay Class to Block
 .overlay {
-	&.g-owlcarousel-slider {
-	 	.g-owlcarousel {
-			.owl-image-overlay {
+	&.g-swipercarousel-slider {
+		.g-swipercarousel {
+			.swiper-image-overlay {
 				background: fade-out($accent-color-1, 0.30);
 			    bottom: 0;
 			    content: "";
@@ -137,44 +137,44 @@
 			    top: 0;
 			    width: 100%;
 			}
-			.g-owlcarousel-content {
-			    .g-owlcarousel-item-title {
-			    	font-size: 5em;
-			    	margin-bottom: 45px;
+			.g-swipercarousel-content {
+			    .g-swipercarousel-item-title {
+				font-size: 5em;
+				margin-bottom: 45px;
 
-			    	@include breakpoint(tablet-range) {
-	    				margin-bottom: 25px;
-	    			}
+				@include breakpoint(tablet-range) {
+					margin-bottom: 25px;
+				}
 
 					@include breakpoint(large-mobile-range) {
-			    		margin-top: 12%;
-	    				margin-bottom: -10%;
-	    			}
-	    			@include breakpoint(small-mobile-range) {
-			    		display: none;
-	    			}
+					margin-top: 12%;
+					margin-bottom: -10%;
+				}
+				@include breakpoint(small-mobile-range) {
+					display: none;
+				}
 			    }
-			    .g-owlcarousel-item-desc {
-	    			font-family: get-font-family($font-family-default);
+			    .g-swipercarousel-item-desc {
+				font-family: get-font-family($font-family-default);
 			        font-size: 1.3em;
 
-	    			@include breakpoint(mobile-only) {
-	    				font-size: 1em;
+				@include breakpoint(mobile-only) {
+					font-size: 1em;
 					    line-height: 25px;
 					    margin-top: -8%;
 					    padding: 15% 15px;
 					    width: 75%;
 					    margin-left: auto;
 					    margin-right: auto;
-	    			}
-	    		}	
-			} 
+				}
+			}
+			}
 			.button {
 				@include breakpoint(mobile-only) {
 					display: none;
-				}	
+				}
 			}
-			.owl-dots {
+			.swiper-pagination {
 				margin-left: 0;
 				bottom: inherit;
 			    left: 50%;
@@ -193,7 +193,7 @@
 					transform: translate(-50%, -50px) scale(0.6);
 				}
 
-				.owl-dot {
+				.swiper-pagination-bullet {
 					border-radius: 100%;
 					background: none;
 					border: 2px solid $base-text-color;
@@ -206,11 +206,11 @@
 				}
 			}
 			&:hover {
-				.owl-dots {
+				.swiper-pagination {
 					opacity: 1;
 					visibility: visible;
 				}
-			}  
-		}	 
-	}    
+			}
+		}
+	}
 }

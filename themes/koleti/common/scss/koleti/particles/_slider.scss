@@ -43,7 +43,7 @@
                 }
             }
         }// Custom Nav
-            .custom-owl-nav {
+            .custom-swiper-navigation {
                 @include breakpoint(tablet-range){
                     padding: 0 $content-padding;
                 }
@@ -51,8 +51,8 @@
                     margin: 0 auto;
                 }
                 display: flex;
-                .owl-prev,
-                .owl-next {
+                .swiper-button-prev,
+                .swiper-button-next {
                     background: transparent;
                     color: $black;
                     border: 2px solid $black;
@@ -84,11 +84,11 @@
                         outline: none;
                     }
                 }
-                .owl-next{
+                .swiper-button-next{
                     margin-right: 0;
                 }
                 .dir-rtl & {
-                    .owl-prev {
+                    .swiper-button-prev {
                         margin-right: 0;
                         .fa-angle-left {
                             left: 1px !important;
@@ -97,7 +97,7 @@
                             }
                         }
                     }
-                    .owl-next {
+                    .swiper-button-next {
                         margin-right: ($content-margin * 2);
                         .fa-angle-right {
                             left: -1px !important;
@@ -111,10 +111,10 @@
     }
     .g-slider-carousel {
         position: relative;
-        .owl-stage {
+        .swiper-wrapper {
             margin: ($content-margin * 3) 0;
             display: flex;
-            .owl-item {
+            .swiper-slide {
                 padding-bottom: 0;
                 overflow: hidden;
                 transition: all 200ms cubic-bezier(.51, .4, .35, .9) 20ms;
@@ -213,7 +213,7 @@
                 line-height: $core-line-height * 1.3;
             }
         } // Dots
-        .owl-dots {
+        .swiper-pagination {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -227,7 +227,7 @@
                 right: auto;
                 left: $content-padding;
             }
-            .owl-dot {
+            .swiper-pagination-bullet {
                 width: 12px;
                 height: 12px;
                 margin-bottom: 0.3rem;

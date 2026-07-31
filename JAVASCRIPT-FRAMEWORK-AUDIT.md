@@ -1,6 +1,6 @@
 # JavaScript Framework Dependency Audit
 
-**Audit date:** July 28, 2026
+**Audit date:** July 31, 2026
 **Project:** Gantry 5 / Genesis  
 **Goal:** Remove JavaScript framework dependencies and transition first-party code to modern, native ES6+ JavaScript.
 
@@ -25,6 +25,9 @@ The Gantry core and administration interface are significantly closer to native 
 - Theme duplication reduces those files to approximately **489 distinct implementations**: 201 JavaScript implementations and 288 Twig implementations.
 - Excluding 148 minified library copies leaves **792 readable jQuery-dependent JavaScript files** representing **193 distinct implementations**.
 - **0 theme JavaScript files** contain MooTools or MooFx code after removing the obsolete RokSprocket overrides.
+- **0 recovered-theme files** contain the retired carousel runtime, naming,
+  selectors, or asset paths. All 30 affected themes now use the shared
+  ES2018+ Swiper controller without jQuery.
 - No React, Vue, Angular, or Backbone usage was detected.
 - Core code still uses CommonJS extensively and has not yet moved to native ES modules.
 
@@ -120,7 +123,7 @@ The physical-file count is high because many themes contain copies of the same p
 | Dependency or plugin family | Physical files | Distinct implementations |
 |---|---:|---:|
 | jQuery-dependent code | 1,579 | 489 |
-| Owl Carousel | 134 | 87 |
+| Retired carousel runtime | 0 | 0 |
 | Swiper | 193 | 58 |
 | Slick | 6 | 3 |
 | MooTools/MooFx theme code | 0 | 0 |
@@ -269,4 +272,4 @@ The scan includes `.js` files and Twig templates beneath `themes/`. It excludes 
 - **Physical files:** every matching copy in the repository.
 - **Distinct implementations:** unique SHA-256 content hashes, which collapse byte-identical copies.
 
-Counts for plugin families overlap because one file can reference both jQuery and a jQuery plugin such as Owl Carousel or Swiper.
+Counts for plugin families overlap because one file can reference both jQuery and a jQuery plugin such as Swiper.

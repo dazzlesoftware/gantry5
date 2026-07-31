@@ -1,10 +1,24 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% styles %}
+        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+    {% endstyles %}
 
     <div id="{{ id }}" class="g-slideshow {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}">
 
-        <div class="g-slideshow-carousel g-owlcarousel owl-carousel" data-slideshow-carousel-id="{{ id }}">
+        <div class="g-slideshow-carousel g-swipercarousel swiper" data-slideshow-carousel-id="{{ id }}"
+        data-g-swiper
+        data-slides-per-view="1"
+        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-pagination="{{ particle.dots|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
+        data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
+        data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
+        data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
+        data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
+        data-centered="{{ particle.center|default('disabled')|e }}">
             {% if not particle.source or particle.source == 'particle' %}
                 {% for item in particle.items %}
                     <div>
@@ -29,8 +43,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/owlcarousel.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

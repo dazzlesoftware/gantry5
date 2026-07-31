@@ -1,38 +1,38 @@
-.g-owlcarousel-slider {
+.g-swipercarousel-slider {
 	margin: 0 60px;
-	.g-owlcarousel {
-		.g-owlcarousel-image-container {
+	.g-swipercarousel {
+		.g-swipercarousel-image-container {
 			width: 75%;
 			float: right;
 		}
-	
- 		.g-owlcarousel-content {
-		    width: 25%;
-		    float: left;  
 
-		    .g-owlcarousel-item-title {
+		.g-swipercarousel-content {
+		    width: 25%;
+		    float: left;
+
+		    .g-swipercarousel-item-title {
 				font-size: 25px;
-    			line-height: 35px;		    
+			line-height: 35px;
 		    }
 
-		    .g-owlcarousel-item-desc {
-		    	font-size: 1em;
-    			margin-top: 20px;
-    			line-height: 22px;
+		    .g-swipercarousel-item-desc {
+			font-size: 1em;
+			margin-top: 20px;
+			line-height: 22px;
 		    }
 		}
 
-		.g-owlcarousel-content, .g-owlcarousel-image-container {
+		.g-swipercarousel-content, .g-swipercarousel-image-container {
 			@include breakpoint(mobile-only) {
 			    float: none;
-	    		width: 100%;
-	    		margin: auto;
-	    		text-align: center;
-	    	}
-    	}
+			width: 100%;
+			margin: auto;
+			text-align: center;
+		}
+	}
 
-	    .owl-nav {
-	      button.owl-prev, button.owl-next {
+	    .swiper-navigation {
+	      button.swiper-button-prev, button.swiper-button-next {
 			width: 55px;
 			height: 55px;
 			line-height: 40px;
@@ -44,9 +44,9 @@
 
 			@include breakpoint(large-mobile-range) {
 				width: 35px;
-    			height: 35px;
-    			line-height: 20px;
-    			font-size: 1em;
+			height: 35px;
+			line-height: 20px;
+			font-size: 1em;
 			}
 
 			@include breakpoint(small-mobile-range) {
@@ -64,8 +64,8 @@
 
 			&:hover {
 				color: $button-text-color;
-				background-color: $button-background;	
-				border: 2px solid $button-background;		
+				background-color: $button-background;
+				border: 2px solid $button-background;
 			}
 
 	        &:focus {
@@ -77,25 +77,25 @@
 	        }
 	      }
 
-	      .owl-next {
-	        right: -100px;  
+	      .swiper-button-next {
+	        right: -100px;
 	        &:before {
 	          content: '\f105';
 	          font-family: FontAwesome;
 	        }
 	      }
 
-	      .owl-prev {
+	      .swiper-button-prev {
 	        left: -100px;
 
 	        @include breakpoint(mobile-only) {
-	        	right: 25px !important;
+		right: 25px !important;
 	        }
 	        &:before {
 	          content: '\f104';
 	          font-family: FontAwesome;
 	        }
 	      }
-	    }       
+	    }
 	}
 }

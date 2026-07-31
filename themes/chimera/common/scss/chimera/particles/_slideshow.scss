@@ -1,31 +1,31 @@
-.g-owlcarousel-slideshow {
-	.g-owlcarousel {
-		.g-owlcarousel-item-image {
+.g-swipercarousel-slideshow {
+	.g-swipercarousel {
+		.g-swipercarousel-item-image {
 			background-position: bottom center;
 			background-size: cover;
 			background-repeat: no-repeat;
 		}
-	
- 		.g-owlcarousel-content {
- 			bottom: 0;
- 			left: auto;
- 			position: absolute;
- 			width: 100%;
- 			top:0;
- 			z-index: 2;
- 			text-align: center;
- 			background-color: fade-out($slideshow-background, 0.50);
 
- 			.g-owlcarousel-padding {
- 				padding: 0;
- 				position: absolute;
+		.g-swipercarousel-content {
+			bottom: 0;
+			left: auto;
+			position: absolute;
+			width: 100%;
+			top:0;
+			z-index: 2;
+			text-align: center;
+			background-color: fade-out($slideshow-background, 0.50);
+
+			.g-swipercarousel-padding {
+				padding: 0;
+				position: absolute;
 				top: 50%;
 				left: 50%;
 				transform: translate(-50.1%,-50%);
- 			}
-		    .g-owlcarousel-item-title {
-		    	color: fade-out($slideshow-text-color, 0.50);
-		    	font-size: 400%;
+			}
+		    .g-swipercarousel-item-title {
+			color: fade-out($slideshow-text-color, 0.50);
+			font-size: 400%;
 	            font-family: get-font-family($font-family-alt);
 	            padding: 0;
 	            width: 100%;
@@ -37,8 +37,8 @@
 				}
 		    }
 
-		    .g-owlcarousel-item-desc {
-    			margin: 25px auto 0 auto;
+		    .g-swipercarousel-item-desc {
+			margin: 25px auto 0 auto;
 			    font-size: 120%;
 			    padding: 0;
 			    width: 60%;
@@ -49,14 +49,14 @@
 
 		    .readon {
 			    margin: 45px 0 0 0;
-	    		border: 1px solid #FFFFFF;
-	    		background: rgba(255,255,255,0.15);
-	    		color: #FFFFFF;
-    		}
-		}  
+			border: 1px solid #FFFFFF;
+			background: rgba(255,255,255,0.15);
+			color: #FFFFFF;
+		}
+		}
 
-		
-		.owl-dots {
+
+		.swiper-pagination {
 			bottom: 3%;
 			left: 45%;
 			@include breakpoint(mobile-only) {
@@ -64,12 +64,12 @@
 			}
 		}
 
-	    .owl-nav {
-	        button.owl-prev,
-        	button.owl-next {
-	        	border: 2px solid $white !important;
-	    		border-radius: 100%;
-	    		padding: 40px;
+	    .swiper-navigation {
+	        button.swiper-button-prev,
+	button.swiper-button-next {
+		border: 2px solid $white !important;
+			border-radius: 100%;
+			padding: 40px;
 	            opacity: 0.5;
 	            display: block;
 	            color: #fff;
@@ -80,36 +80,36 @@
 	            transition: opacity 0.2s ease-in;
 
 	            @include breakpoint(mobile-only) {
-	            	padding: 20px;
+		padding: 20px;
 	            }
 
 	            &:hover {
-	            	opacity: 1;
+		opacity: 1;
 	            }
 
 	            span {
 	                display: none;
 	            }
-	        }    
+	        }
 
-            button.owl-prev {
-                left: 12%; 
-                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center fade-out($white, 0.75); 
+            button.swiper-button-prev {
+                left: 12%;
+                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center fade-out($white, 0.75);
                 @include breakpoint(mobile-only) {
-	            	left: 2%;
+		left: 2%;
 					background-size: 10px;
-	            }           
+	            }
             }
 
-            button.owl-next {
-                right: 12%;  
-                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center fade-out($white, 0.75); 
+            button.swiper-button-next {
+                right: 12%;
+                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center fade-out($white, 0.75);
                 @include breakpoint(mobile-only) {
-	            	right: 2%;
+		right: 2%;
 					background-size: 10px;
-	            }                              
+	            }
             }
-	    }       
+	    }
 	}
 }
 

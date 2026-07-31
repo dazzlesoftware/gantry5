@@ -11,7 +11,7 @@
             {% for item in particle.items %}
 
             <div class="g-popupgrid-item {{ item.overlay|e }} {{ item.animations|e }}" data-size="{{ item.datasize|default('435x653')|e }}">
-                <div data-src="{{ url(item.img) }}" class="g-popupgrid-item-img-wrap">
+                <div src="{{ url(item.img) }}" class="g-popupgrid-item-img-wrap">
                     <img class="g-popupgrid-item-img-wrap-img" src="{{ url(item.img) }}" alt="{{ item.title|e }}" />
                     {% if item.overlay|e %}
                         <div class="g-popupgrid-description-preview-overlay">
