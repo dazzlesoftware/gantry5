@@ -118,13 +118,13 @@ Only test particles included by the theme.
 | Acronym | [x] | [ ] | — | WordPress validated 2026-07-31 after four-card Swiper layout, positioning, and navigation restoration. |
 | Akuatik | [x] | [ ] | — | WordPress validated 2026-07-31 after Twig 3 Infolist compatibility correction. |
 | Ambrosia | [x] | [ ] | — | WordPress validated 2026-07-31 after Swiper slider restoration and Newsflash, Side Notes, hero, and bottom-strip navigation alignment. |
-| Anacron | [ ] | [ ] | — | |
-| Antares | [ ] | [ ] | — | |
-| Aphrodite | [ ] | [ ] | [ ] | |
+| Anacron | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring single Swiper navigation arrows and the permanently fixed floating header. |
+| Antares | [x] | [ ] | — | WordPress validated 2026-08-01. |
+| Aphrodite | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
 | Audacity | [ ] | [ ] | — | |
 | Aurora | [ ] | [ ] | — | |
 | Calla | [ ] | [ ] | — | |
-| Callisto | [x] | [ ] | — | WordPress validated 2026-07-31 after native Swiper conversion and visual restoration. |
+| Callisto | [x] | [ ] | — | WordPress validated 2026-07-31 after native Swiper conversion, visual restoration, and dynamic accordion height correction. |
 | Chimera | [ ] | [ ] | — | |
 | Citadel | [ ] | [ ] | — | |
 | Clarity | [ ] | [ ] | — | |
@@ -137,7 +137,7 @@ Only test particles included by the theme.
 | Galatea | [ ] | [ ] | — | |
 | Gemini | [ ] | [ ] | — | |
 | Hadron | [ ] | [ ] | — | |
-| Helium | [ ] | [ ] | [ ] | |
+| Helium | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
 | Horizon | [ ] | [ ] | — | |
 | Hydrogen | [ ] | [ ] | [ ] | |
 | Interstellar | [ ] | [ ] | — | |
@@ -171,10 +171,14 @@ Add one entry after each completed platform validation.
 
 | Date | Theme | Platform | Build | Result | Notes |
 |---|---|---|---|---|---|
-| 2026-07-31 | Callisto | WordPress | Development | Pass | Native Swiper sliders, Newsflash, feature cards, accordion, navigation sizing, alignment, and interactions validated. |
+| 2026-07-31 | Callisto | WordPress | Development | Pass | Native Swiper sliders, Newsflash, feature cards, accordion auto-height updates, navigation sizing, alignment, and interactions validated. |
 | 2026-07-31 | Acronym | WordPress | Development | Pass | Four-card Swiper carousel, responsive layout, card positioning, and previous/next controls validated. |
 | 2026-07-31 | Akuatik | WordPress | Development | Pass | Twig 3 rendering and Infolist output validated after removing the obsolete spaceless tag. |
 | 2026-07-31 | Ambrosia | WordPress | Development | Pass | Swiper hero and content sliders, Newsflash controls, Side Notes controls, and bottom image-strip navigation validated. |
+| 2026-08-01 | Anacron | WordPress | Development | Pass | Header Swiper navigation and permanently fixed floating-header behavior validated. |
+| 2026-08-01 | Antares | WordPress | Development | Pass | Theme rendering, styling, and interactive components validated. |
+| 2026-08-01 | Aphrodite | WordPress | Development | Pass | Theme rendering, styling, responsive navigation, Bootstrap integration, and interactive components validated. |
+| 2026-08-01 | Helium | WordPress | Development | Pass | Theme rendering, styling, responsive behavior, and interactive components validated. |
 
 ## Recommended Validation Order
 
@@ -184,11 +188,13 @@ Validate themes that recently received the largest JavaScript changes first:
 2. Acronym WordPress — completed
 3. Akuatik WordPress — completed
 4. Ambrosia WordPress — completed
-5. Callisto Joomla
-6. Interstellar
-7. Photon
-8. Galatea
-9. Aphrodite
-10. Helium
-11. Hydrogen
+5. Anacron WordPress — completed
+6. Antares WordPress — completed
+7. Aphrodite WordPress — completed
+8. Helium WordPress — completed
+9. Callisto Joomla
+10. Interstellar
+11. Photon
+12. Galatea
+13. Hydrogen
 12. Remaining themes in alphabetical order

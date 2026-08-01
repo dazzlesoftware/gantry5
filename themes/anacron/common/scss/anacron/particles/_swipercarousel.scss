@@ -272,6 +272,14 @@
             text-align: center;
             transition: all 0.3s;
 
+            // Swiper supplies its own arrow through ::after. Anacron already
+            // renders a Font Awesome chevron inside the button, so displaying
+            // both produces a doubled << / >> control.
+            &::after {
+                content: none;
+                display: none;
+            }
+
             .fa {
                 position: relative;
             }

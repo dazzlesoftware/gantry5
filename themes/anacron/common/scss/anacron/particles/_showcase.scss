@@ -91,6 +91,12 @@
                 transition: all 0.2s ease-in;
                 z-index: 100;
 
+                // Preserve Anacron's original ::before chevron and suppress
+                // the additional icon supplied by the shared Swiper markup.
+                > .fa {
+                    display: none;
+                }
+
                 &:hover {
                     background: darken($showcase-background, 50%);
                 }
