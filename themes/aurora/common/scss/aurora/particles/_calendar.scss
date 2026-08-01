@@ -25,7 +25,6 @@
             @include responsive-font($responsive-font-size, $core-font-size, false, false);
 
             .controls {
-                @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.15, false, false);
                 line-height: 3.5;
                 background-color: $accent-color-1;
                 color: $white;
@@ -72,6 +71,7 @@
                     font-weight: $font-weight-bold;
                     letter-spacing: 1px;
                 }
+                & { @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.15, false, false); }
             }
 
             .days-container {

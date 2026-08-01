@@ -23,10 +23,10 @@
     left: 0;
     top: 0;
     margin-top: -20vw;
+    pointer-events: none;
     @include breakpoint(mobile-only) {
       margin-top: -8vw;
     }
-    pointer-events: none;
     .g-content {
         padding: 0;
         margin: 0;

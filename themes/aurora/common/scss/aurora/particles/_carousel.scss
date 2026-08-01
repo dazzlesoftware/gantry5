@@ -2,12 +2,13 @@
     // Swiper Core
     .swiper-wrapper {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        align-items: stretch !important;
         padding: 0 0 $content-padding;
 
         .swiper-slide {
             display: flex;
-            height: auto;
+            height: auto !important;
         }
     }
 
@@ -25,7 +26,6 @@
         .g-swipercarousel-carousel-title-container {
             flex: 1;
             text-align: center;
-            @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
             font-weight: $font-weight-bold;
             color: $black;
 
@@ -65,10 +65,16 @@
 
                 > div, > button {
                     display: inline-block;
+                    position: static;
+                    width: auto;
+                    height: auto;
                     background: none;
                     margin: 0 0.75rem;
+                    margin-top: 0;
                     outline: none;
                     padding: 0;
+                    color: inherit;
+                    transform: none;
 
                     .fa {
                         @include responsive-font($responsive-font-size, $core-font-size, false, false);
@@ -79,12 +85,12 @@
                     }
                 }
             }
+            & { @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false); }
         }
 
         // Description
         .g-swipercarousel-carousel-description {
             flex: 1;
-            @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
             padding-top: $content-margin;
             text-align: center;
 
@@ -95,6 +101,7 @@
             @include breakpoint(mobile-only) {
                 flex: 0;
             }
+            & { @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false); }
         }
     }
 
@@ -179,6 +186,7 @@
 
             .g-carousel-item {
                 position: relative;
+                width: 100%;
                 margin: ($content-padding / 2);
                 padding: $content-padding * 2;
                 border-radius: 0.5rem;
@@ -222,7 +230,6 @@
                 .g-carousel-title {
                     display: block;
                     padding: ($content-padding + 1) 0 $content-padding;
-                    @include responsive-font($responsive-font-size, $core-font-size + 0.2, false, false);
                     font-weight: $font-weight-bold;
                     line-height: $core-line-height + 0.2;
                     text-align: left;
@@ -234,12 +241,12 @@
                     @include breakpoint(mobile-only) {
                         text-align: center;
                     }
+                    & { @include responsive-font($responsive-font-size, $core-font-size + 0.2, false, false); }
                 }
 
                 // Description
                 .g-carousel-description {
                     display: block;
-                    @include responsive-font($responsive-font-size - 0.15, $core-font-size + 0.1, false, false);
                     text-align: left;
 
                     .dir-rtl & {
@@ -249,6 +256,7 @@
                     @include breakpoint(mobile-only) {
                         text-align: center;
                     }
+                    & { @include responsive-font($responsive-font-size - 0.15, $core-font-size + 0.1, false, false); }
                 }
                 .g-carousel-readmore {
                     display: block;

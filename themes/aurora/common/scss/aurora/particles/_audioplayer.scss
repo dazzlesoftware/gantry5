@@ -52,10 +52,10 @@
     .g-audioplayer-playlist {
         display: block;
         font-size: $core-font-size + 0.4;
+        font-weight: $font-weight-medium;
         @include breakpoint(mobile-only) {
           font-size: $core-font-size + 0.3;
         }
-        font-weight: $font-weight-medium;
         ol {
             padding-left: 0;
             li {
@@ -67,13 +67,14 @@
                 }
                 .fa {
                     padding-left: $content-margin;
+                    color: $accent-color-1;
+                    opacity: 0;
+                    transition: all 0.3s ease-in-out;
+
                     .dir-rtl & {
                         padding-left: 0;
                         padding-right: $content-margin;
                     }
-                    color: $accent-color-1;
-                    opacity: 0;
-                    transition: all 0.3s ease-in-out;
                 }
                 &.playing .fa {
                     opacity: 1;

@@ -10,7 +10,7 @@
         <div class="g-panelslider-slides g-swipercarousel swiper" data-panelslider-slides-id="{{ id }}"
         data-g-swiper
         data-g-swiper-role="main"
-        data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-navigation="disabled"
         data-pagination="{{ particle.dots|default('disabled')|e }}"
         data-loop="{{ particle.loop|default('disabled')|e }}"
         data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
@@ -137,10 +137,16 @@
             {% endif %}
         </div>
 
+        <div class="g-panelslider-carousel-wrapper">
         <div class="g-panelslider-carousel g-swipercarousel swiper" data-panelslider-carousel-id="{{ id }}"
         data-g-swiper
         data-g-swiper-role="navigation"
+        data-slides-per-view="4"
+        data-items-tablet="3"
+        data-items-mobile="2"
+        data-items-small-mobile="1"
         data-navigation="{{ particle.nav|default('disabled')|e }}"
+        data-space-between="20"
         data-pagination="{{ particle.dots|default('disabled')|e }}"
         data-loop="{{ particle.loop|default('disabled')|e }}"
         data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
@@ -188,6 +194,10 @@
                 {% endfor %}
 
             {% endif %}
+        </div>
+        {% if particle.nav == 'enabled' %}
+            <div class="g-panelslider-carousel-navigation custom-swiper-navigation" aria-label="{{ particle.title|default('Panel slider')|striptags|e }} navigation"></div>
+        {% endif %}
         </div>
     </div>
 {% endblock %}

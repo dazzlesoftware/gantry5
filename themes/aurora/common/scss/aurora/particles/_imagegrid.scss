@@ -44,22 +44,23 @@
             bottom: 0;
             right: 0;
             div {
-                @include responsive-font($responsive-font-size + 0.8, $core-font-size, false, false);
                 max-width: 100%;
                 text-align: center;
                 flex: none;
                 -webkit-flex: none;
                 font-weight: bold;
-                .dir-rtl & {
-                    margin-right: 0;
-                }
                 opacity: 0;
                 transform: scale(0);
                 transition: all 0.35s;
 
+                .dir-rtl & {
+                    margin-right: 0;
+                }
+
                 .fa {
                     font-size: $core-font-size + 3;
                 }
+                & { @include responsive-font($responsive-font-size + 0.8, $core-font-size, false, false); }
             }
         }
         &:hover {

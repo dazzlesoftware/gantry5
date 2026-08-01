@@ -7,9 +7,9 @@
         align-items: center;
     }
     .g-simplecontent-item-content-title {
-        @include responsive-font($responsive-font-size + 1.8, $core-font-size, false, false);
         color: $black;
         line-height: $core-line-height - 0.3;
+        @include responsive-font($responsive-font-size + 1.8, $core-font-size, false, false);
     }
 }
 

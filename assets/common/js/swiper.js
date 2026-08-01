@@ -5859,6 +5859,11 @@
         }
       });
       main.on("slideChange", updateCurrent);
+      navigation.on("slideChange", () => {
+        if (main.realIndex !== navigation.realIndex) {
+          main.slideToLoop(navigation.realIndex);
+        }
+      });
       updateCurrent();
       container.dataset.gSwiperSyncReady = "true";
     });

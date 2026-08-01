@@ -202,7 +202,6 @@
                         text-align: center;
 
                         .g-swiper-text {
-                            @include responsive-font($responsive-font-size + 0.1, $core-font-size + 0.3, false, false);
                             font-weight: $font-weight-regular;
                             line-height: 1.3;
                             margin: 1rem 4rem;
@@ -212,10 +211,10 @@
                             @include breakpoint(mobile-only) {
                                 font-size: $core-font-size; 
                             }
+                            & { @include responsive-font($responsive-font-size + 0.1, $core-font-size + 0.3, false, false); }
                         }
 
                         .g-swiper-title {
-                            @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.8, false, false);
                             font-weight: $font-weight-medium;
                             line-height: 1.3;
                             margin: 1rem 3rem;
@@ -224,6 +223,7 @@
                             @include breakpoint(mobile-only) {
                                 font-size: $core-font-size + 0.2; 
                             }
+                            & { @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.8, false, false); }
                         }
 
                         .button {
@@ -307,7 +307,6 @@ div[class*="g-swiper-thumbs"] {
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
             height: 100%;
             margin: -1rem 2rem 0;
             text-align: center;
@@ -316,6 +315,7 @@ div[class*="g-swiper-thumbs"] {
             span {
                 z-index: 2;
             }
+            & { @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false); }
         }
 
         &:before {

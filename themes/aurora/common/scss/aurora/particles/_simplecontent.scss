@@ -28,7 +28,6 @@
     }
 
     .g-simplecontent-item-content-title {
-        @include responsive-font($responsive-font-size + 4.5, $core-font-size + 0.8, false, false);
         margin: ($content-margin - 0.1) 0;
         font-weight: $font-weight-bold;
         line-height: $core-line-height - 0.5;
@@ -50,6 +49,7 @@
                 font-size: $core-font-size + 1;
             }
         }
+        & { @include responsive-font($responsive-font-size + 4.5, $core-font-size + 0.8, false, false); }
     }
 
     .g-simplecontent-item-author {
@@ -70,13 +70,13 @@
     }
 
     .g-simplecontent-item-main-content {
-        @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
         margin: ($content-margin + $content-padding) 0;
 
         .g-simplecontent-layout-header & {
             font-size: $core-font-size;
             margin-bottom: $content-margin * 2;
         }
+        & { @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false); }
     }
 
     .g-simplecontent-item-readmore-container {

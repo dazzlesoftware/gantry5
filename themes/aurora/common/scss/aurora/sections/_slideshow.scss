@@ -3,6 +3,21 @@
     color: $slideshow-text-color;
     background: $slideshow-background;
 
+    // Background declarations must precede nested selectors for modern Sass.
+    @if $slideshow-background-image {
+        background: $slideshow-background url($slideshow-background-image) no-repeat;
+        background-size: 50% 100%;
+        background-position: right;
+
+        .dir-rtl & {
+            background-position: left;
+        }
+
+        @include breakpoint(mobile-only) {
+          background-size: cover;
+        }
+    }
+
     .g-slider-slides-item-title {
         color: $white;
     }
@@ -30,20 +45,6 @@
         @include responsive-font($responsive-font-size + 0.3, $core-font-size + 0.1, false, false);
     }
 
-    // Background
-    @if $slideshow-background-image {
-        background: $slideshow-background url($slideshow-background-image) no-repeat;
-        background-size: 50% 100%;
-        background-position: right;
-
-        .dir-rtl & {
-            background-position: left;
-        }
-
-        @include breakpoint(mobile-only) {
-          background-size: cover;
-        }
-    }
 }
 
 @media print {

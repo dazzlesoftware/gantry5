@@ -22,6 +22,12 @@
     $dimension: if(unit($responsive) == 'vh', 'height', 'width');
     $min-breakpoint: $min / $responsive-unitless * 100;
 
+    @if $fallback {
+        font-size: $fallback;
+    }
+
+    font-size: $responsive;
+
     @media (max-#{$dimension}: #{$min-breakpoint}) {
         font-size: $min;
     }
@@ -34,9 +40,4 @@
         }
     }
 
-    @if $fallback {
-        font-size: $fallback;
-    }
-
-    font-size: $responsive;
 }

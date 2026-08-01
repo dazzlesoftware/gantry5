@@ -3,7 +3,6 @@
     font-family: get-font-family($font-family-default);
     font-weight: $font-weight-semibold;
     color: $white !important;
-    @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
     background: $accent-color-1;
     margin: 0 0 0.5rem 0;
     padding: 0.8rem 2rem;
@@ -21,6 +20,7 @@
     .g-style-preset2 & {
         color: darken($accent-color-1, 50%) !important;
     }
+    & { @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false); }
 }
 
 .button {

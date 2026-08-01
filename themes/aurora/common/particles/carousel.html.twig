@@ -4,7 +4,7 @@
     {% styles %}
         <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
-    <div class="{{ particle.class|e }} g-swipercarousel-carousel">
+    <div class="{{ particle.class|e }} g-swipercarousel-carousel" data-carousel-id="g-carousel-{{ id }}">
 
         {% if particle.title or particle.description or particle.nav == 'enabled' %}
         <div class="g-swipercarousel-carousel-header">
@@ -17,7 +17,7 @@
                     {% endif %}
 
                     {% if particle.nav == 'enabled' %}
-                        <div class="g-swipercarousel-carousel-controls" id="g-swipercarousel-carousel-controls-{{ id }}"></div>
+                        <div class="g-swipercarousel-carousel-controls custom-swiper-navigation" id="g-swipercarousel-carousel-controls-{{ id }}"></div>
                     {% endif %}
                 </div>
             {% endif %}
@@ -76,6 +76,7 @@
                 {% set articles = article_finder.find() %}
 
                 {% for article in articles %}
+                    <div class="g-carousel-slide">
                     <div class="g-carousel-item">
                         <a class="g-carousel-link" href="{{ url(article.route|e) }}"></a>
 
@@ -98,12 +99,14 @@
                             <span class="g-carousel-readmore">{{ display.readmore }}</span>
                         {% endif %}
                     </div>
+                    </div>
                 {% endfor %}
 
             {% else %}
 
                 {# Particle Content #}
                 {% for item in particle.items %}
+                    <div class="g-carousel-slide">
                     <div class="g-carousel-item">
                         {% if item.link is not empty %}
                             <a class="g-carousel-link" href="{{ url(item.link)|e }}" target="{{ item.linktarget|default('_self')|e }}"></a>
@@ -126,6 +129,7 @@
                         {% if item.readmore %}
                             <span class="g-carousel-readmore">{{ item.readmore }}</span>
                         {% endif %}
+                    </div>
                     </div>
                 {% endfor %}
 

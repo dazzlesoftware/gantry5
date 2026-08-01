@@ -21,13 +21,13 @@
                 @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.2, false, false);
             }
             .g-testimonial-position {
-                @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
                 color: $base-text-color;
+                @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
             }
             .g-testimonial-author {
                 color: $black;
-                @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
                 font-weight: $font-weight-medium;
+                @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
             }
         }
 
@@ -43,25 +43,26 @@
         // Arrows
         .swiper-navigation {
             position: absolute;
-            @include breakpoint(mobile-only) {
-                position: relative;
-                text-align: center;
-            }
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
             z-index: -1;
+            @include breakpoint(mobile-only) {
+                position: relative;
+                text-align: center;
+            }
 
             div, button {
                 color: transparentize($base-text-color, 0.50);
-                &:hover {
-                    color: $base-text-color;
-                }
                 font-size: 1.5rem;
                 bottom: auto;
                 margin: 0;
                 top: 45%;
+
+                &:hover {
+                    color: $base-text-color;
+                }
 
                 @include breakpoint(mobile-only) {
                     position: relative;
