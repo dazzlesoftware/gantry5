@@ -29,6 +29,7 @@ class GantrySwiper {
         this.element = element;
         this.prepareMarkup();
         this.instance = this.create();
+        this.bindThumbnailNavigation();
     }
 
     prepareMarkup() {
@@ -312,6 +313,16 @@ class GantrySwiper {
     syncState(swiper) {
         this.element.classList.toggle('swiper-rtl', swiper.rtlTranslate);
 
+        this.getPaginationElement()?.querySelectorAll('.swiper-pagination-bullet').forEach((bullet, index) => {
+            bullet.classList.toggle('active', index === swiper.realIndex);
+        });
+
+        this.thumbnailItems?.forEach((thumbnail, index) => {
+            const active = index === swiper.realIndex;
+            thumbnail.classList.toggle('active', active);
+            thumbnail.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+
         const activeSlide = swiper.slides?.[swiper.activeIndex] || null;
 
         this.element.dispatchEvent(new CustomEvent('g5:swiper:change', {
@@ -321,6 +332,39 @@ class GantrySwiper {
                 activeIndex: swiper.realIndex
             }
         }));
+    }
+
+    bindThumbnailNavigation() {
+        if (String(this.element.dataset.pagination || '').toLowerCase() !== 'thumbs') {
+            return;
+        }
+
+        const container = this.element.closest('.g-swipercarousel-slider');
+        this.thumbnailItems = Array.from(container?.querySelectorAll(':scope > .swiper-thumbs .swiper-thumb') || []);
+
+        this.thumbnailItems.forEach((thumbnail, index) => {
+            thumbnail.setAttribute('role', 'button');
+            thumbnail.setAttribute('tabindex', '0');
+            thumbnail.setAttribute('aria-label', `Go to slide ${index + 1}`);
+
+            const activate = () => {
+                if (this.instance.params.loop) {
+                    this.instance.slideToLoop(index);
+                } else {
+                    this.instance.slideTo(index);
+                }
+            };
+
+            thumbnail.addEventListener('click', activate);
+            thumbnail.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    activate();
+                }
+            });
+        });
+
+        this.syncState(this.instance);
     }
 }
 

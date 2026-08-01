@@ -121,7 +121,7 @@ Only test particles included by the theme.
 | Anacron | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring single Swiper navigation arrows and the permanently fixed floating header. |
 | Antares | [x] | [ ] | — | WordPress validated 2026-08-01. |
 | Aphrodite | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
-| Audacity | [ ] | [ ] | — | |
+| Audacity | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring single Swiper arrows, native Breaking News accordion controls, thumbnail navigation, and bullet pagination. |
 | Aurora | [ ] | [ ] | — | |
 | Calla | [ ] | [ ] | — | |
 | Callisto | [x] | [ ] | — | WordPress validated 2026-07-31 after native Swiper conversion, visual restoration, and dynamic accordion height correction. |
@@ -179,6 +179,7 @@ Add one entry after each completed platform validation.
 | 2026-08-01 | Antares | WordPress | Development | Pass | Theme rendering, styling, and interactive components validated. |
 | 2026-08-01 | Aphrodite | WordPress | Development | Pass | Theme rendering, styling, responsive navigation, Bootstrap integration, and interactive components validated. |
 | 2026-08-01 | Helium | WordPress | Development | Pass | Theme rendering, styling, responsive behavior, and interactive components validated. |
+| 2026-08-01 | Audacity | WordPress | Development | Pass | Single Swiper navigation arrows, native Breaking News expand/collapse controls, thumbnail navigation, and bullet pagination validated. |
 
 ## Recommended Validation Order
 

@@ -136,7 +136,7 @@
 						.indicator {
 							opacity: 1;
 							&:before {
-								content: "×";
+								content: "\2212";
 								padding: 0;
 							}
 						}
@@ -222,4 +222,3 @@
 		}
 	}
 }
-

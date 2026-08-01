@@ -6,7 +6,8 @@
     {% endstyles %}
     {% block layout %}
 
-        <div id="lists" class="{{ particle.class|e }} g-swipercarousel-lists g-swipercarousel-lists-{{ particle.displayitems }}-items">
+        <div id="lists" class="{{ particle.class|e }} g-swipercarousel-lists g-swipercarousel-lists-{{ particle.displayitems }}-items"
+             data-g-accordion="{{ particle.accordion == 'enabled' ? 'true' : 'false' }}">
             {% if particle.title or particle.description %}
                 <div class="g-grid">
                     <div class="g-block">
@@ -61,13 +62,6 @@
         </div>
 
     {% endblock %}
-{% endblock %}
-
-{% block javascript %}
-    {% do gantry.load('jquery') %}
-    {% if particle.accordion == 'enabled' %}
-        <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
-    {% endif %}
 {% endblock %}
 
 {% block javascript_footer %}

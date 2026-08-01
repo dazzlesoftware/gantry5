@@ -5532,6 +5532,7 @@
       this.element = element;
       this.prepareMarkup();
       this.instance = this.create();
+      this.bindThumbnailNavigation();
     }
     prepareMarkup() {
       var _a, _b;
@@ -5766,9 +5767,17 @@
       return Math.max(0, oneBasedSliderPreset ? presetIndex - 1 : presetIndex);
     }
     syncState(swiper) {
-      var _a;
+      var _a, _b, _c;
       this.element.classList.toggle("swiper-rtl", swiper.rtlTranslate);
-      const activeSlide = ((_a = swiper.slides) == null ? void 0 : _a[swiper.activeIndex]) || null;
+      (_a = this.getPaginationElement()) == null ? void 0 : _a.querySelectorAll(".swiper-pagination-bullet").forEach((bullet, index) => {
+        bullet.classList.toggle("active", index === swiper.realIndex);
+      });
+      (_b = this.thumbnailItems) == null ? void 0 : _b.forEach((thumbnail, index) => {
+        const active = index === swiper.realIndex;
+        thumbnail.classList.toggle("active", active);
+        thumbnail.setAttribute("aria-current", active ? "true" : "false");
+      });
+      const activeSlide = ((_c = swiper.slides) == null ? void 0 : _c[swiper.activeIndex]) || null;
       this.element.dispatchEvent(new CustomEvent("g5:swiper:change", {
         bubbles: true,
         detail: {
@@ -5776,6 +5785,33 @@
           activeIndex: swiper.realIndex
         }
       }));
+    }
+    bindThumbnailNavigation() {
+      if (String(this.element.dataset.pagination || "").toLowerCase() !== "thumbs") {
+        return;
+      }
+      const container = this.element.closest(".g-swipercarousel-slider");
+      this.thumbnailItems = Array.from((container == null ? void 0 : container.querySelectorAll(":scope > .swiper-thumbs .swiper-thumb")) || []);
+      this.thumbnailItems.forEach((thumbnail, index) => {
+        thumbnail.setAttribute("role", "button");
+        thumbnail.setAttribute("tabindex", "0");
+        thumbnail.setAttribute("aria-label", `Go to slide ${index + 1}`);
+        const activate = () => {
+          if (this.instance.params.loop) {
+            this.instance.slideToLoop(index);
+          } else {
+            this.instance.slideTo(index);
+          }
+        };
+        thumbnail.addEventListener("click", activate);
+        thumbnail.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activate();
+          }
+        });
+      });
+      this.syncState(this.instance);
     }
   };
   var bindSynchronizedCarousels = (root = document) => {

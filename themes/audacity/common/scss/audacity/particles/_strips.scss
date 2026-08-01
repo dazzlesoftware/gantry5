@@ -94,6 +94,12 @@
         border: 0;
         transition: all 0.2s ease-in-out;
 
+        // Audacity draws its navigation chevrons with ::before.
+        // Hide the shared Swiper icon so only one arrow is displayed.
+        > .fa {
+          display: none;
+        }
+
         .fp-extension & {
           margin-top: -85px;
         }
