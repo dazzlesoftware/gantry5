@@ -236,6 +236,22 @@ not load the removed scssphp 1.x compatibility projects. WordPress packages
 bundle the current stable Twig 3 runtime; Grav uses the Twig runtime supplied by
 the current stable Grav installation instead of bundling a second copy.
 
+Run every platform validator and treat Sass warnings and deprecations as build
+failures with:
+
+```bat
+scss-validate-all.bat
+```
+
+The batch script checks Joomla, WordPress, and Grav even if an earlier platform
+fails, then returns a non-zero exit code if any SCSS entry point fails to compile
+or emits a warning. Individual platform validators can use the same behavior by
+adding `--strict-warnings`:
+
+```bat
+php bin\validate-wordpress-scss.php --strict-warnings
+```
+
 ### Deploying to the WordPress Test Site
 
 Build and deploy the WordPress development packages with:

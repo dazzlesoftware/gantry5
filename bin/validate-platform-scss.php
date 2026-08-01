@@ -9,11 +9,15 @@
 declare(strict_types=1);
 
 use ScssPhp\ScssPhp\Compiler;
-use ScssPhp\ScssPhp\Logger\QuietLogger;
+use ScssPhp\ScssPhp\Deprecation;
+use ScssPhp\ScssPhp\Logger\LoggerInterface;
+use ScssPhp\ScssPhp\StackTrace\Trace;
 use ScssPhp\ScssPhp\Value\SassBoolean;
 use ScssPhp\ScssPhp\Value\SassList;
 use ScssPhp\ScssPhp\Value\SassString;
 use ScssPhp\ScssPhp\Value\Value;
+use SourceSpan\FileSpan;
+use SourceSpan\SourceSpan;
 
 if (!isset($platform, $vendorAutoload)) {
     throw new LogicException('The platform and vendor autoload path are required.');
@@ -32,7 +36,9 @@ $enginePaths = [
 ];
 $themeDirectories = glob($root . '/themes/*', GLOB_ONLYDIR) ?: [];
 $failures = [];
+$warningFailures = [];
 $compiled = 0;
+$strictWarnings = in_array('--strict-warnings', $argv ?? [], true);
 
 $toString = static function (Value $value): string {
     if ($value instanceof SassString) {
@@ -64,7 +70,25 @@ foreach ($themeDirectories as $themeDirectory) {
 
         try {
             $compiler = new Compiler();
-            $compiler->setLogger(new QuietLogger());
+            $logger = new class implements LoggerInterface {
+                /** @var list<string> */
+                public array $warnings = [];
+
+                public function warn(
+                    string $message,
+                    ?Deprecation $deprecation = null,
+                    ?FileSpan $span = null,
+                    ?Trace $trace = null
+                ): void {
+                    $type = $deprecation !== null ? 'DEPRECATION' : 'WARNING';
+                    $this->warnings[] = "{$type}: {$message}";
+                }
+
+                public function debug(string $message, SourceSpan $span): void
+                {
+                }
+            };
+            $compiler->setLogger($logger);
             $compiler->setImportPaths($importPaths);
 
             // Gantry resolves these values at runtime. The validator only needs
@@ -105,7 +129,17 @@ foreach ($themeDirectories as $themeDirectory) {
 
             $compiler->compileFile($entryPoint);
             ++$compiled;
-            echo '[PASS] ' . str_replace('\\', '/', substr($entryPoint, strlen($root) + 1)) . PHP_EOL;
+            $relative = str_replace('\\', '/', substr($entryPoint, strlen($root) + 1));
+
+            if ($logger->warnings) {
+                $warningFailures[$relative] = $logger->warnings;
+                echo '[WARN] ' . $relative . ' (' . count($logger->warnings) . ')' . PHP_EOL;
+                foreach ($logger->warnings as $warning) {
+                    echo '       ' . str_replace(PHP_EOL, PHP_EOL . '       ', $warning) . PHP_EOL;
+                }
+            } else {
+                echo '[PASS] ' . $relative . PHP_EOL;
+            }
         } catch (Throwable $exception) {
             $relative = str_replace('\\', '/', substr($entryPoint, strlen($root) + 1));
             $failures[$relative] = $exception->getMessage();
@@ -120,4 +154,13 @@ echo PHP_EOL . "Compiled {$compiled} {$platformName} SCSS entry points successfu
 if ($failures) {
     echo count($failures) . " entry point(s) failed." . PHP_EOL;
     exit(1);
+}
+
+if ($warningFailures) {
+    echo count($warningFailures) . " entry point(s) compiled with warnings." . PHP_EOL;
+
+    if ($strictWarnings) {
+        echo "Strict warning validation failed." . PHP_EOL;
+        exit(2);
+    }
 }
