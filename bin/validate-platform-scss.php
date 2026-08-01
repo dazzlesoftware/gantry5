@@ -80,8 +80,21 @@ foreach ($themeDirectories as $themeDirectory) {
                     ?FileSpan $span = null,
                     ?Trace $trace = null
                 ): void {
-                    $type = $deprecation !== null ? 'DEPRECATION' : 'WARNING';
-                    $this->warnings[] = "{$type}: {$message}";
+                    $type = $deprecation !== null ? 'DEPRECATION WARNING' : 'WARNING';
+
+                    if ($span === null) {
+                        $formatted = "{$type}: {$message}";
+                    } elseif ($trace !== null) {
+                        $formatted = "{$type}: {$message}\n\n" . $span->highlight();
+                    } else {
+                        $formatted = $type . ' on ' . $span->message("\n{$message}");
+                    }
+
+                    if ($trace !== null) {
+                        $formatted .= "\n" . rtrim($trace->getFormattedTrace());
+                    }
+
+                    $this->warnings[] = $formatted;
                 }
 
                 public function debug(string $message, SourceSpan $span): void

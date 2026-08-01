@@ -154,9 +154,7 @@ composer-install-all.bat
 assets-install.bat
 assets-build.bat all
 php83-tests.bat
-php bin\validate-joomla-scss.php
-php bin\validate-wordpress-scss.php
-php bin\validate-grav-scss.php
+scss-validate-all.bat
 package-build.bat dev
 ```
 
@@ -173,6 +171,7 @@ For a production package build, use `assets-build.bat all --prod` followed by `p
 | `assets-build.bat` | Runs the local Gulp compiler. It accepts `all`, `css`, or `js`, plus an optional `--prod`. | After asset installation and whenever JS or SCSS needs compiling. |
 | `assets-watch.bat` | Runs Gulp in watch mode for `all`, `css`, or `js`. Press `Ctrl+C` to stop it. | During active frontend development. |
 | `php83-tests.bat` | Verifies PHP 8.3+ and runs the PHPUnit compatibility suite with TestDox output. Extra PHPUnit arguments are forwarded. | After Composer installation and before packaging or committing PHP changes. |
+| `scss-validate-all.bat` | Compiles every Joomla, WordPress, and Grav theme SCSS entry point with modern scssphp and fails on compiler warnings or deprecations. | After SCSS changes and before packaging. |
 | `package-build.bat` | Runs the Phing package builder through `bin\build` and writes packages to `dist`. | After dependencies, assets, and tests are ready. |
 | `wordpress-deploy-builds.bat` | Replaces the local WordPress `gantry5` plugin and all `g5_*` themes with packages from `dist`. Other plugins and themes are preserved. | After `package-build.bat wordpress-dev` when refreshing the local WordPress test site. |
 | `assets-reset.bat` | Runs targeted asset cleanup and then reinstalls the four known asset projects. | When the normal Node installation is stale or damaged. |
