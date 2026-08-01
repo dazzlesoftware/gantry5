@@ -483,6 +483,12 @@
                 display: none;
             }
 
+            // Swiper supplies an icon element, while Ambrosia draws its own
+            // theme arrow with ::before. Keep only the themed arrow.
+            .fa {
+                display: none;
+            }
+
             &.swiper-button-prev {
                 left: 10%;
                 right: auto;
@@ -559,7 +565,7 @@
 
     .headlines-container {
         .headlines-badge {
-
+            float: left;
             line-height: 2.6rem;
 
             span {
@@ -574,6 +580,7 @@
         }
 
         .g-swipercarousel {
+            &.swiper,
             .swiper {
                 width: 80%;
 

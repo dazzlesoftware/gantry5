@@ -533,6 +533,21 @@ const bindAccordionSlides = (root = document) => {
         }
 
         const items = Array.from(container.querySelectorAll('.g-swipercarousel-item'));
+        const updateSwiperHeight = () => {
+            const swiper = container.querySelector('[data-g-swiper]')?.gantrySwiper?.instance;
+            if (!swiper) {
+                return;
+            }
+
+            // Accordion content changes the active slide's height without moving
+            // the carousel. Refresh on the next two frames so Swiper measures the
+            // completed DOM update instead of retaining the previous slide height.
+            requestAnimationFrame(() => {
+                swiper.update();
+                swiper.updateAutoHeight(0);
+                requestAnimationFrame(() => swiper.updateAutoHeight(0));
+            });
+        };
         const setItemOpen = (item, open) => {
             const heading = item.querySelector('.g-swipercarousel-item-title');
             const content = item.querySelector(':scope > .g-swipercarousel-content');
@@ -563,6 +578,7 @@ const bindAccordionSlides = (root = document) => {
                     items.forEach((otherItem) => setItemOpen(otherItem, false));
                 }
                 setItemOpen(item, open);
+                updateSwiperHeight();
             };
             heading.addEventListener('click', toggle);
             heading.addEventListener('keydown', (event) => {

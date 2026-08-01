@@ -5959,6 +5959,18 @@
         return;
       }
       const items = Array.from(container.querySelectorAll(".g-swipercarousel-item"));
+      const updateSwiperHeight = () => {
+        var _a2, _b2;
+        const swiper = (_b2 = (_a2 = container.querySelector("[data-g-swiper]")) == null ? void 0 : _a2.gantrySwiper) == null ? void 0 : _b2.instance;
+        if (!swiper) {
+          return;
+        }
+        requestAnimationFrame(() => {
+          swiper.update();
+          swiper.updateAutoHeight(0);
+          requestAnimationFrame(() => swiper.updateAutoHeight(0));
+        });
+      };
       const setItemOpen = (item, open) => {
         var _a2;
         const heading = item.querySelector(".g-swipercarousel-item-title");
@@ -5987,6 +5999,7 @@
             items.forEach((otherItem) => setItemOpen(otherItem, false));
           }
           setItemOpen(item, open);
+          updateSwiperHeight();
         };
         heading.addEventListener("click", toggle);
         heading.addEventListener("keydown", (event) => {

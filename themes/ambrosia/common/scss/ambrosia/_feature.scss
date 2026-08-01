@@ -74,10 +74,24 @@
 }
 
 #feature-headlines {
+    > .g-content {
+        // The red bar is drawn by this element. Use it as the navigation
+        // boundary so the black control fills the bar from edge to edge.
+        position: relative;
+    }
+
     .g-swipercarousel-headlines {
         margin: -0.5rem 0;
+        padding-right: 0;
+        position: static;
         .headlines-container {
+            display: flex;
+            align-items: stretch;
+
             .headlines-badge {
+                float: none;
+                flex: 0 0 auto;
+
                 span {
                     border-bottom: 2px solid;
                     display: inline-block;
@@ -88,6 +102,11 @@
                 }
             }
             .g-swipercarousel {
+                flex: 1 1 auto;
+                min-width: 0;
+                width: auto;
+                position: static;
+
                 .g-headlines-desc {
                     font-family: get-font-family($font-family-promo);
                     font-weight: $font-weight-bold;
@@ -112,49 +131,59 @@
                     }
                 }
                 .swiper-navigation {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 36px;
+                    height: 100%;
+                    z-index: 5;
+
                     div, button {
-                        top: auto;
-                        display: block;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         float: right;
                         font-weight: bold;
                         position: absolute;
-                        right: -20px;
+                        right: 0;
+                        left: auto;
+                        bottom: auto;
+                        margin: 0;
+                        padding: 0;
                         border-radius: 0;
                         color: #fff;
                         background: #000;
                         opacity: 1;
                         box-shadow: none;
-                        width: 30px;
-                        height: 30px;
-                        line-height: 30px;
-                        font-size: 1.75rem;
+                        width: 36px;
+                        height: 50%;
+                        line-height: 1;
+                        font-size: 2rem;
                         -webkit-transition: background 0.25s ease;
                         -moz-transition: background 0.25s ease;
                         transition: background 0.25s ease;
                         &:before {
                             font-family: FontAwesome;
+                            position: static;
+                            line-height: 1;
                         }
                         &:hover {
                             background: #404040;
                         }
                         &.swiper-button-next {
-                            top: -7px;
+                            top: 0;
                             &:before {
                                 content: "\f106";
                             }
                         }
                         &.swiper-button-prev {
-                            bottom: -7px;
+                            top: 50%;
                             margin-right: 0;
                             &:before {
                                 content: "\f107";
                             }
-                            @include breakpoint(mobile-only) {
-                                bottom: inherit;
-                                top: 23px;
-                            }
                         }
-                        span {
+                        span, .fa {
                             display: none;
                         }
                     }
