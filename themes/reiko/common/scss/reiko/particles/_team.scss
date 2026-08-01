@@ -25,9 +25,9 @@
         .g-team-title {
             display: block;
             @include responsive-font($responsive-font-size + 1, $core-font-size, false, false);
-            font-weight: $font-weight-bold;
-            color: $black;
-            padding-right: $content-padding;
+            & { font-weight: $font-weight-bold; }
+            & { color: $black; }
+            & { padding-right: $content-padding; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -45,10 +45,10 @@
                 padding-right: $content-padding;
                 color: transparentize($base-text-color, 0.65);
                 @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-                font-weight: $font-weight-semibold;
-                line-height: 1.5;
-                letter-spacing: 5px;
-                text-transform: uppercase;
+                & { font-weight: $font-weight-semibold; }
+                & { line-height: 1.5; }
+                & { letter-spacing: 5px; }
+                & { text-transform: uppercase; }
 
                 @include breakpoint(mobile-only) {
                     text-align: center;
@@ -109,12 +109,12 @@
                 cursor: pointer;
                 padding: $content-margin - .5 $content-padding - .6;
                 @include responsive-font($responsive-font-size, $core-font-size, false, false);
-                font-weight: $font-weight-regular;
-                color: darken($base-text-color, 10%);
-                position: relative;
-                border-radius: 5px;
-                border: 2px solid transparent;
-                transition: border 150ms;
+                & { font-weight: $font-weight-regular; }
+                & { color: darken($base-text-color, 10%); }
+                & { position: relative; }
+                & { border-radius: 5px; }
+                & { border: 2px solid transparent; }
+                & { transition: border 150ms; }
 
                 &.selected {
                     background: transparent;
@@ -157,11 +157,11 @@
     // Grid Settings
     .g-team-grid {
         position: relative;
-        margin: 0 -($content-padding);
+        margin: 0 (-1 * ($content-padding));
         overflow: visible !important;
 
         @include breakpoint(mobile-only) {
-            margin: 0 -$content-padding;
+            margin: 0 (-$content-padding);
         }
 
         // Item & Item content
@@ -204,7 +204,7 @@
 
                 .g-team-grid-item-icon {
                     background: $accent-color-2;
-                    @include display (flex);
+                    display: flex;
                     position: absolute;
                     padding: .5rem;
                     border-radius: 50%;
@@ -269,7 +269,7 @@
                 text-align: left;
                 z-index: 3;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                transition: color 0.5s;
+                & { transition: color 0.5s; }
 
                 .dir-rtl & {
                     text-align: right;
@@ -279,7 +279,7 @@
                     color: $black;
                     font-weight: $font-weight-bold;
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                    line-height: $core-line-height - 0.4;
+                    & { line-height: $core-line-height - 0.4; }
                 }
 
                 .g-team-grid-item-subtitle {
@@ -293,13 +293,13 @@
                 .g-team-grid-item-case {
                     color: $black;
                     @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
-                    font-weight: $font-weight-semibold;
-                    background: transparent;
-                    display: inline-block;
-                    letter-spacing: 3px;
-                    clear: both;
-                    margin-bottom: $content-margin * 2;
-                    padding: ($content-margin / 2) $content-margin;
+                    & { font-weight: $font-weight-semibold; }
+                    & { background: transparent; }
+                    & { display: inline-block; }
+                    & { letter-spacing: 3px; }
+                    & { clear: both; }
+                    & { margin-bottom: $content-margin * 2; }
+                    & { padding: ($content-margin / 2) $content-margin; }
                 }
 
                 .g-team-grid-item-description {

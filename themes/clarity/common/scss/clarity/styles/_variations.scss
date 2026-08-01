@@ -134,8 +134,8 @@
     .g-latestnews-title,
     .g-testimonials-title {
         @include responsive-font($responsive-font-size + 4.8, $core-font-size + 2, false, false);
-        font-family: get-font-family($font-family-title);
-        font-weight: $font-weight-bold !important;
+        & { font-family: get-font-family($font-family-title); }
+        & { font-weight: $font-weight-bold !important; }
     }
 }
 

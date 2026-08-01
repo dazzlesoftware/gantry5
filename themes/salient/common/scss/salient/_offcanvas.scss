@@ -48,13 +48,13 @@
 	} @else {
 	    display: block;
 	}		
-	font-size: $core-font-size + 0.25;
-	color: $offcanvas-toggle-color;
-	border-radius: $border-radius;
-	padding: 0.15rem;
-	top: 1rem;
-	left: 1rem;
-	z-index: 100001;
+	& { font-size: $core-font-size + 0.25; }
+	& { color: $offcanvas-toggle-color; }
+	& { border-radius: $border-radius; }
+	& { padding: 0.15rem; }
+	& { top: 1rem; }
+	& { left: 1rem; }
+	& { z-index: 100001; }
 
 	.toggle-fixed & {
 		position: fixed;
@@ -135,7 +135,7 @@
 }
 
 #g-mobilemenu-container {
-	margin: -($content-padding + $content-margin);
+	margin: (-1 * ($content-padding + $content-margin));
 }
 
 // Preset Thumbnails

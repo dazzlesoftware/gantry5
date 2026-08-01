@@ -1,7 +1,7 @@
 // Panel Slider
 .g-panelslider {
     position: relative;
-    background: linear-gradient(to right, adjust-hue($accent-color-1, 40%), $accent-color-2);
+    background: linear-gradient(to right, adjust-hue($accent-color-1, 40deg), $accent-color-2);
 
     .swiper-navigation {
         position: absolute;
@@ -67,7 +67,7 @@
                 @include breakpoint(mobile-only) {
                   padding: $content-padding - 0.5 0;
                 }
-                position: relative;
+                & { position: relative; }
 
                 &:before {
                     top: 0;
@@ -84,9 +84,9 @@
 
             .g-panelslider-carousel-title {
                 @include responsive-font($responsive-font-size + 0.3, $core-font-size + 0.1, false, false);
-                margin-top: ($content-margin * 1.5);
-                position: relative;
-                z-index: 1;
+                & { margin-top: ($content-margin * 1.5); }
+                & { position: relative; }
+                & { z-index: 1; }
             }
 
             i {
@@ -99,13 +99,13 @@
             }
 
             // Colored tabs
-            &:nth-child(1) .tab { background: adjust-hue($accent-color-1, 35%); }
-            &:nth-child(2) .tab { background: adjust-hue($accent-color-1, 15%); }
-            &:nth-child(3) .tab { background: adjust-hue($accent-color-1, 10%); }
-            &:nth-child(4) .tab { background: adjust-hue($accent-color-1, 5%); }
-            &:nth-child(5) .tab { background: adjust-hue($accent-color-2, 20%); }
-            &:nth-child(6) .tab { background: adjust-hue($accent-color-2, 15%); }
-            &:nth-child(7) .tab { background: adjust-hue($accent-color-2, 10%); }
+            &:nth-child(1) .tab { background: adjust-hue($accent-color-1, 35deg); }
+            &:nth-child(2) .tab { background: adjust-hue($accent-color-1, 15deg); }
+            &:nth-child(3) .tab { background: adjust-hue($accent-color-1, 10deg); }
+            &:nth-child(4) .tab { background: adjust-hue($accent-color-1, 5deg); }
+            &:nth-child(5) .tab { background: adjust-hue($accent-color-2, 20deg); }
+            &:nth-child(6) .tab { background: adjust-hue($accent-color-2, 15deg); }
+            &:nth-child(7) .tab { background: adjust-hue($accent-color-2, 10deg); }
 
             &.swiper-current {
                 z-index: 2;
@@ -151,7 +151,7 @@
 
             .g-panelslider-slides-description-content {
                 @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.4, false, false);
-                font-weight: $font-weight-semibold;
+                & { font-weight: $font-weight-semibold; }
             }
 
             .g-panelslider-slides-description-footer {

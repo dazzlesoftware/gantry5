@@ -4,8 +4,8 @@
     letter-spacing: 1px;
     white-space: normal;
     @include word-wrap(break-word);
-    transition: 0.35s ease;
-    text-transform: lowercase;
+    & { transition: 0.35s ease; }
+    & { text-transform: lowercase; }
     @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
 }
 

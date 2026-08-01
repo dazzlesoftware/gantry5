@@ -25,11 +25,11 @@
     box-shadow: none;
     &:hover {
         color: $white;
-        background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40%), 10%));
+        background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40deg), 10%));
     }
     &:active, &:focus {
         color: $white;
-        background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40%), 10%));
+        background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40deg), 10%));
     }
 }
 
@@ -313,7 +313,7 @@ dl.article-info {
             font-size: $core-font-size;
         }
 
-        line-height: $core-line-height + 0.5;
+        & { line-height: $core-line-height + 0.5; }
     }
 }
 
@@ -700,7 +700,7 @@ p.readmore {
 
                 &:hover, &:active, &:focus{
                     color: $white;
-                    background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40%), 10%));
+                    background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40deg), 10%));
                 }
             }
         }
@@ -714,7 +714,7 @@ p.readmore {
     .btn {
         &:hover, &:active, &:focus{
             color: $white;
-            background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40%), 10%));
+            background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40deg), 10%));
         }
     }
 }

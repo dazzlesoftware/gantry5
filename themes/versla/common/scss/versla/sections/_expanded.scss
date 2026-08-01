@@ -12,7 +12,7 @@
             @include breakpoint(mobile-only) {
                 font-size: $core-font-size;
             }
-            opacity: 0.5;
+            & { opacity: 0.5; }
         }
         .g-simplecontent-item-leading-content {
             font-size: $core-font-size + 1.8;
@@ -22,8 +22,8 @@
             @include breakpoint(mobile-only) {
                 font-size: $core-font-size + 1;
             }
-            font-style: italic;
-            font-weight: $font-weight-light;
+            & { font-style: italic; }
+            & { font-weight: $font-weight-light; }
         }
         .g-simplecontent-item-main-content {
             font-size: $core-font-size + 0.2;

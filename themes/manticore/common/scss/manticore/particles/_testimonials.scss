@@ -54,7 +54,7 @@
 
     .g-testimonials-content {
         @include responsive-font($responsive-font-size + 1.6, $core-font-size + .6, false, false);
-        width: 50%;
+        & { width: 50%; }
 
         @include breakpoint(tablet-range) {
             width: 80%;

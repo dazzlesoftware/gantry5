@@ -4,12 +4,12 @@
         padding-bottom: 0;
         margin-bottom: 0;
         @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
-        line-height: normal;
-        margin-bottom: 3rem;
-        margin: 0 auto;
-        margin-bottom: $content-padding;
-        font-weight: $font-weight-extrabold;
-        text-align: center;
+        & { line-height: normal; }
+        & { margin-bottom: 3rem; }
+        & { margin: 0 auto; }
+        & { margin-bottom: $content-padding; }
+        & { font-weight: $font-weight-extrabold; }
+        & { text-align: center; }
     }
 }
 
@@ -48,8 +48,8 @@
 .g-pricingtable-headertext {
     font-weight: $font-weight-regular;
     @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-    text-align: center;
-    margin-bottom: $content-padding;
+    & { text-align: center; }
+    & { margin-bottom: $content-padding; }
 }
 
 .g-pricingtable-footertext {
@@ -164,8 +164,8 @@
 
         .g-pricingtable-plan {
             @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.1, false, false);
-            font-weight: $font-weight-regular;
-            color: set-color($base-background);
+            & { font-weight: $font-weight-regular; }
+            & { color: set-color($base-background); }
 
             a {
                 color: set-color($base-background);
@@ -200,9 +200,9 @@
 
         .g-pricingtable-item {
             @include responsive-font($responsive-font-size - 0.35, $core-font-size, false, false);
-            font-weight: $font-weight-regular;
-            padding-bottom: $content-margin;
-            color: set-color($base-background);
+            & { font-weight: $font-weight-regular; }
+            & { padding-bottom: $content-margin; }
+            & { color: set-color($base-background); }
 
             &.g-pricingtable-item-0 {
                 position: relative;

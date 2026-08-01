@@ -36,7 +36,7 @@ $css_multipliers: 2, 3;
                 @if ($prop == "padding") {
                     #{$prop}: $content-padding * $multi;
                 }
-                @elseif ($prop == "margin") {
+                @else if ($prop == "margin") {
                     #{$prop}: $content-margin * $multi;
                 }
             }
@@ -56,7 +56,7 @@ $css_multipliers: 2, 3;
 // General
 .title1, .title2, .title-gradient, .title-outline {
     .g-title {
-        margin: -($content-padding) -($content-padding) 1.5rem -($content-padding);
+        margin: (-$content-padding) (-$content-padding) 1.5rem (-$content-padding);
         padding: $content-margin 1rem;
     }
 }

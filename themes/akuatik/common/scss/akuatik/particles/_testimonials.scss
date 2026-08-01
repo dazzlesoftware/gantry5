@@ -48,7 +48,7 @@
         overflow: hidden;
         position: relative;
         z-index: 10;
-        @include display (flex);
+        display: flex;
     }
 
     .swiper-slide {
@@ -174,9 +174,9 @@
         right: 25%;
         left: auto;
         @include responsive-font($responsive-font-size, $core-font-size, false, false);
-        margin: 0;
-        color: $accent-color-2;
-        text-shadow: 0 0 3px $black;
+        & { margin: 0; }
+        & { color: $accent-color-2; }
+        & { text-shadow: 0 0 3px $black; }
 
         .dir-rtl & {
             left: 25%;

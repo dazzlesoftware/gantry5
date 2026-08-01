@@ -15,7 +15,7 @@
     margin-bottom: $content-padding;
   }
   .g-blockcontent-description {
-    margin-top: -($content-padding + $content-margin);
+    margin-top: (-1 * ($content-padding + $content-margin));
   }
   .g-blockcontent-subcontent-title {
     margin: 0;
@@ -32,8 +32,8 @@
     font-weight: $font-weight-regular;    
   }
   .g-blockcontent-subcontent {
-    margin-left: -($content-margin + $content-padding);
-    margin-right: -($content-margin + $content-padding);
+    margin-left: (-1 * ($content-margin + $content-padding));
+    margin-right: (-1 * ($content-margin + $content-padding));
   }
   .g-blockcontent-subcontent-subtitle {
     font-family: get-font-family($font-family-default);

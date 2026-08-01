@@ -116,15 +116,15 @@
                 position: absolute;
                 font-weight: $font-weight-medium;
                 @include responsive-font($responsive-font-size + 1.5, $core-font-size + 1, false, false);
-                line-height: $core-line-height - 0.2;
-                padding: 0 .5rem;
-                margin: 0 2rem;
-                color: $white;
-                text-shadow: 0 0 8px fade-out($black, 0.95);
-                top: -3rem;
-                left: 0;
-                max-width: 90%;
-                transition: all 0.25s;
+                & { line-height: $core-line-height - 0.2; }
+                & { padding: 0 .5rem; }
+                & { margin: 0 2rem; }
+                & { color: $white; }
+                & { text-shadow: 0 0 8px fade-out($black, 0.95); }
+                & { top: -3rem; }
+                & { left: 0; }
+                & { max-width: 90%; }
+                & { transition: all 0.25s; }
 
                 .dir-rtl & {
                     left: auto;
@@ -160,7 +160,7 @@
                 color: $white;
                 text-align: center;
                 @include responsive-font($responsive-font-size, $core-font-size + 0.5, false, false);
-                transition: all 0.3s;
+                & { transition: all 0.3s; }
 
                 .fa {
                     position: relative;

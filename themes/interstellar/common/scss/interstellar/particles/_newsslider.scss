@@ -40,8 +40,8 @@
             padding-left: 4rem;
             font-size: $core-font-size - 0.1;
         }
-        transition: all 0.75s ease-out;
-        opacity: 0.3;
+        & { transition: all 0.75s ease-out; }
+        & { opacity: 0.3; }
         &:nth-last-child(2) {
             border-bottom: 0;
         }
@@ -80,7 +80,7 @@
         width: 100%;
         min-height: 400px;
     }
-    background: $slideshow-background;
+    & { background: $slideshow-background; }
 }
 
 .g-newsslider-content {
@@ -194,7 +194,7 @@
         font-size: $core-font-size - 0.1;
     }
 
-    display: block;
+    & { display: block; }
 }
 
 /* Tiny Scrollbar */
@@ -310,7 +310,7 @@
             flex: 0 1 100% !important;
             width: 100% !important;
         }
-        transition: all 0.75s ease-out;
+        & { transition: all 0.75s ease-out; }
         &.prev {
             background: $accent-color-1;
             &:hover {

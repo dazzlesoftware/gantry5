@@ -115,7 +115,7 @@
 		@include breakpoint(large-desktop-range) {
 			right: 2rem;
 		    }
-		    right: 0rem;
+		    & { right: 0rem; }
 	      }
 
 	      .swiper-button-prev {

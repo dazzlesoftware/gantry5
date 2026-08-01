@@ -91,7 +91,7 @@
 			@include breakpoint(mobile-only) {
 				margin: 4rem auto 1rem auto;
 			}
-			transition: all 0.2s;
+			& { transition: all 0.2s; }
 		}
 		@include breakpoint(mobile-only) {
 			padding-bottom: 4rem;

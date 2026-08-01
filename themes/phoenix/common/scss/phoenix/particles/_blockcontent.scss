@@ -61,8 +61,8 @@
 
 .g-blockcontent-description {
     @include responsive-font($responsive-font-size, $core-font-size, false, false);
-    color: $base-text-color;
-    font-weight: $font-weight-light;
+    & { color: $base-text-color; }
+    & { font-weight: $font-weight-light; }
 }
 
 .g-blockcontent-buttons {

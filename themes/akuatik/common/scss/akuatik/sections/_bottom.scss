@@ -26,9 +26,9 @@
 
     .g-blockcontent-description {
         @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
-        font-weight: $font-weight-medium;
-        color: darken($accent-color-2, 20);
-        margin-bottom: $content-margin * 4;
+        & { font-weight: $font-weight-medium; }
+        & { color: darken($accent-color-2, 20); }
+        & { margin-bottom: $content-margin * 4; }
     }
 }
 

@@ -215,7 +215,7 @@
 }
 
 #g-mobilemenu-container {
-    margin: -($content-padding + $content-margin);
+    margin: (-1 * ($content-padding + $content-margin));
 }
 
 // Preset Thumbnails

@@ -6,10 +6,10 @@
         display: inline-block;
         color: $base-text-color;
         @include responsive-font($responsive-font-size + 1.5, $core-font-size, false, false);
-        font-weight: $font-weight-bold;
-        border-radius: $border-radius;
-        letter-spacing: 1px;
-        text-align: center;
+        & { font-weight: $font-weight-bold; }
+        & { border-radius: $border-radius; }
+        & { letter-spacing: 1px; }
+        & { text-align: center; }
     }
     .g-simplecontent-item-created-date {
         font-size: $core-font-size - 0.2;
@@ -30,9 +30,9 @@
 
     .g-simplecontent-item-content-title {
         @include responsive-font($responsive-font-size + 4.5, $core-font-size + 0.8, false, false);
-        margin: ($content-margin - 0.1) 0;
-        font-weight: $font-weight-bold;
-        line-height: $core-line-height - 0.5;
+        & { margin: ($content-margin - 0.1) 0; }
+        & { font-weight: $font-weight-bold; }
+        & { line-height: $core-line-height - 0.5; }
 
         .g-simplecontent-layout-header & {
             font-size: $h1-font-size;
@@ -72,7 +72,7 @@
 
     .g-simplecontent-item-main-content {
         @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
-        margin: ($content-margin + $content-padding) 0;
+        & { margin: ($content-margin + $content-padding) 0; }
 
         .g-simplecontent-layout-header & {
             font-size: $core-font-size;

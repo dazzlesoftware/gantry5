@@ -104,7 +104,7 @@
           right: auto;
           left: 0;
         }
-	    top: 6px;
+	    & { top: 6px; }
 	}
 	.g-overlaytoggle-text {
 	    color: $overlay-text-color;
@@ -197,7 +197,7 @@
 // Demo
 #g-container-overlay {
 	.g-overlay-blockcontent {
-		margin: 0 -($content-margin);
+		margin: 0 (-1 * ($content-margin));
 	}
 	.g-blockcontent-subcontent-title {
 		span {

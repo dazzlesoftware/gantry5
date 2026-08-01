@@ -17,7 +17,7 @@
   &.fp-slideshow-blocks {
     padding-top: $content-margin / 2;
     > .g-container {
-      margin-top: -($content-margin);
+      margin-top: (-1 * ($content-margin));
       }
     .g-content {
       margin: $content-margin / 2;

@@ -1,7 +1,7 @@
 // Search Plugin
 .g-search {
     @include responsive-font($responsive-font-size - 0.2, $core-font-size + 0.15, false, false);
-    text-align: right;
+    & { text-align: right; }
 
     .dir-rtl & {
         text-align: left;

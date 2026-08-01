@@ -202,10 +202,10 @@
                 text-align: center;
                 margin: 1rem auto 0 auto;
             }
-            background: transparent;
-            border: 0;
-            width: 25%;
-            margin: 1.25rem 1rem;
+            & { background: transparent; }
+            & { border: 0; }
+            & { width: 25%; }
+            & { margin: 1.25rem 1rem; }
             .sprocket-tabs-inner {
                 color: $black;
                 background: transparent;

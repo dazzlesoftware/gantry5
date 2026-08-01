@@ -22,7 +22,7 @@
 
         h2 {
             @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
-            font-weight: $font-weight-regular;
+            & { font-weight: $font-weight-regular; }
 
             a {
                 color: $accent-color-3;

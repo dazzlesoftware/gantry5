@@ -2,8 +2,8 @@
     *,  *:before,  *:after {
         box-sizing: border-box !important;
     }
-    position: relative;
-	text-align: center;
+    & { position: relative; }
+	& { text-align: center; }
     .g-promoimage-effect {
         display: block;
         background: $accent-color-1;

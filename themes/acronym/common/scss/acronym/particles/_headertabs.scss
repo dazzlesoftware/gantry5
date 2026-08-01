@@ -38,8 +38,8 @@
             @include breakpoint(tablet-range) {
                 padding: 1rem;
             }
-            margin: 0;
-            transition: all 0.25s;
+            & { margin: 0; }
+            & { transition: all 0.25s; }
 
             &:before {
                 position: absolute;
@@ -61,8 +61,8 @@
                 @include breakpoint(tablet-range) {
                     font-size: $core-font-size + 0.2;
                 }
-                font-weight: $font-weight-light;
-                color: $black;
+                & { font-weight: $font-weight-light; }
+                & { color: $black; }
             }
 
             .g-headertabs-tab-desc {

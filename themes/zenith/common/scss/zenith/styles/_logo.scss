@@ -1,8 +1,8 @@
 .g-logo {
     font-weight: $font-weight-medium;
     @include responsive-font($responsive-font-size + 0.3, $core-font-size + 0.2, false, false);
-    box-shadow: none !important;
-    text-transform: lowercase;
+    & { box-shadow: none !important; }
+    & { text-transform: lowercase; }
     @include breakpoint (tablet-range){
         padding-left: $content-margin * 2;
     }

@@ -38,8 +38,8 @@
 
             h6 {
                 @include responsive-font($responsive-font-size + 1.1, $core-font-size, false, false);
-                cursor: pointer;
-                color: $accent-color-2;
+                & { cursor: pointer; }
+                & { color: $accent-color-2; }
             }
         }
     }

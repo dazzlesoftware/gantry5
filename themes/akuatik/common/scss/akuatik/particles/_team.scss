@@ -25,9 +25,9 @@
         .g-team-title {
             display: block;
             @include responsive-font($responsive-font-size + 1, $core-font-size, false, false);
-            font-weight: $font-weight-bold;
-            color: $black;
-            padding-right: $content-padding;
+            & { font-weight: $font-weight-bold; }
+            & { color: $black; }
+            & { padding-right: $content-padding; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -45,10 +45,10 @@
                 padding-right: $content-padding;
                 color: transparentize($base-text-color, 0.65);
                 @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-                font-weight: $font-weight-semibold;
-                line-height: 1.5;
-                letter-spacing: 5px;
-                text-transform: uppercase;
+                & { font-weight: $font-weight-semibold; }
+                & { line-height: 1.5; }
+                & { letter-spacing: 5px; }
+                & { text-transform: uppercase; }
 
                 @include breakpoint(mobile-only) {
                     text-align: center;
@@ -111,19 +111,19 @@
                 cursor: pointer;
                 padding: $content-margin - .5 $content-padding - .6;
                 @include responsive-font($responsive-font-size *1.2, $core-font-size, false, false);
-                font-weight: $font-weight-medium;
-                color: $accent-color-2;
-                position: relative;
-                border-radius: 5px;
-                border: 2px solid transparent;
-                transition: .3s ease;
-                transition: border 150ms;
+                & { font-weight: $font-weight-medium; }
+                & { color: $accent-color-2; }
+                & { position: relative; }
+                & { border-radius: 5px; }
+                & { border: 2px solid transparent; }
+                & { transition: .3s ease; }
+                & { transition: border 150ms; }
 
                 &.selected {
                     background: transparent;
                     @include responsive-font($responsive-font-size * 2.2, $core-font-size, false, false);
-                    font-weight: $font-weight-semibold;
-                    color: $black;
+                    & { font-weight: $font-weight-semibold; }
+                    & { color: $black; }
 
                     @include breakpoint(mobile-only) {
                         background: none;
@@ -161,11 +161,11 @@
     // Grid Settings
     .g-team-grid {
         position: relative;
-        margin: 0 -($content-padding);
+        margin: 0 (-1 * ($content-padding));
         overflow: visible !important;
 
         @include breakpoint(mobile-only) {
-            margin: 0 -$content-padding;
+            margin: 0 (-$content-padding);
         }
 
         &.animate {

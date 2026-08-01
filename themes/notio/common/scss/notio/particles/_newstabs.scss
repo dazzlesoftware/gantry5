@@ -112,8 +112,8 @@
         .g-newstabs-tab-title {
             color: $white;
             @include responsive-font($responsive-font-size + 0.75, $core-font-size + 0.75, false, false);
-            font-weight: $font-weight-medium;
-            padding-bottom: ($content-padding / 2);
+            & { font-weight: $font-weight-medium; }
+            & { padding-bottom: ($content-padding / 2); }
         }
 
         // Content

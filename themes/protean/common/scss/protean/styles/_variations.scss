@@ -300,9 +300,9 @@
           font-size: $core-font-size + 1;
           line-height: $core-line-height - 0.3;
         }
-        font-family: get-font-family($font-family-title);
-        font-weight: $font-weight-light;
-        text-transform: none;
+        & { font-family: get-font-family($font-family-title); }
+        & { font-weight: $font-weight-light; }
+        & { text-transform: none; }
     }
 }
 

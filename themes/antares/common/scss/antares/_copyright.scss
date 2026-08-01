@@ -99,7 +99,7 @@
 		    width: 100%;
 		    color: $accent-color-1;
 		}	
-		transition: opacity 0.25s;
+		& { transition: opacity 0.25s; }
 		&:hover {
 			opacity: 0.8;
 		}	

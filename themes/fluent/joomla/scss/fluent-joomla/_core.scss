@@ -4,14 +4,14 @@
     font-weight: $font-weight-semibold;
     color: $white;
     @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
-    background: $accent-color-1;
-    margin: 0 0 0.5rem 0;
-    padding: 0.8rem 2rem;
-    padding-bottom: 0.85rem;
-    border-radius: 2rem;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $accent-color-1; }
+    & { margin: 0 0 0.5rem 0; }
+    & { padding: 0.8rem 2rem; }
+    & { padding-bottom: 0.85rem; }
+    & { border-radius: 2rem; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: lighten($accent-color-1, 5%);
@@ -313,7 +313,7 @@ dl.article-info {
             font-size: $core-font-size;
         }
 
-        line-height: $core-line-height + 0.5;
+        & { line-height: $core-line-height + 0.5; }
     }
 }
 

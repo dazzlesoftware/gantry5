@@ -86,7 +86,7 @@
         display: block;
         opacity: 0.65;
         transform: scale(1);
-        @include transition (all 0.3s);
+        transition: all 0.3s;
     }
 
     .g-popupgrid-description-preview-tag {
@@ -112,9 +112,9 @@
 
         .g-popupgrid-description-preview-title {
             @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
-            line-height: $core-line-height - 0.25;
-            color: $black;
-            margin-bottom: $content-margin;
+            & { line-height: $core-line-height - 0.25; }
+            & { color: $black; }
+            & { margin-bottom: $content-margin; }
         }
 
         .g-popupgrid-description-preview-readmore {
@@ -222,7 +222,7 @@
         position: absolute;
         right: 0;
         top: 0;
-        background: linear-gradient(-45deg, fade-out(adjust-hue($accent-color-1, 40%), 0.50), fade-out($accent-color-2, 0.50) 50%);
+        background: linear-gradient(-45deg, fade-out(adjust-hue($accent-color-1, 40deg), 0.50), fade-out($accent-color-2, 0.50) 50%);
         opacity: 0;
         z-index: 10;
         display: flex;
@@ -426,7 +426,7 @@
     height: 100%;
     pointer-events: none;
     opacity: 0;
-    background: linear-gradient(-45deg, fade-out(adjust-hue($accent-color-1, 40%), 0.50), fade-out($accent-color-2, 0.50) 50%);
+    background: linear-gradient(-45deg, fade-out(adjust-hue($accent-color-1, 40deg), 0.50), fade-out($accent-color-2, 0.50) 50%);
 }
 
 // Fix for scrollbars

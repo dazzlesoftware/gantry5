@@ -11,7 +11,7 @@
     .g-pricingtable-particle {
         .g-pricingtable-headertext {
             @include responsive-font($responsive-font-size - 0.2, $core-font-size + 0.2, false, false);
-            text-align: center;
+            & { text-align: center; }
         }
     }
 }

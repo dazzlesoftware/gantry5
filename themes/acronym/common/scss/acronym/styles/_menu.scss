@@ -2,12 +2,12 @@
     padding: $content-margin $content-margin + 0.3;
     font-size: $core-font-size - 0.3;
     @include responsive-font(0.8vw, $core-font-size - 0.3, $core-font-size, $core-font-size);
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    white-space: normal;
+    & { font-weight: $font-weight-bold; }
+    & { text-transform: uppercase; }
+    & { letter-spacing: 1px; }
+    & { white-space: normal; }
     @include word-wrap(break-word);
-    transition: 0.35s ease;
+    & { transition: 0.35s ease; }
 
     @include breakpoint(tablet-range) {
         font-size: 0.8rem;

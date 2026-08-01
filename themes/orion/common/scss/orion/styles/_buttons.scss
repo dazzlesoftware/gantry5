@@ -4,16 +4,16 @@
     font-weight: $font-weight-bold;
     color: $white;
     @include responsive-font($responsive-font-size, $core-font-size, false, false);
-    background: $accent-color-1;
-    text-align: center;
-    margin: 0 0 0.5rem 0;
-    padding: 0.4rem 1.5rem;
-    padding-bottom: 0.45rem;
-    border: 2px solid transparent;
-    border-radius: 0.4rem;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $accent-color-1; }
+    & { text-align: center; }
+    & { margin: 0 0 0.5rem 0; }
+    & { padding: 0.4rem 1.5rem; }
+    & { padding-bottom: 0.45rem; }
+    & { border: 2px solid transparent; }
+    & { border-radius: 0.4rem; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: $white;

@@ -4,13 +4,13 @@
     font-weight: $font-weight-medium;
     color: $white !important;
     @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-    background: $black;
-    margin: 0 0 0.5rem 0;
-    padding: 0.3rem 1.2rem;
-    border-radius: 0.3rem;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $black; }
+    & { margin: 0 0 0.5rem 0; }
+    & { padding: 0.3rem 1.2rem; }
+    & { border-radius: 0.3rem; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: $accent-color-1;

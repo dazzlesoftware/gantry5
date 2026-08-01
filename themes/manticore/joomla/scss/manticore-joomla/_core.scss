@@ -4,16 +4,16 @@
     font-weight: $font-weight-bold;
     color: $white;
     @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-    background: $black;
-    text-align: center;
-    margin: 0 0 0.5rem 0;
-    padding: 0.4rem 1.5rem;
-    padding-bottom: 0.45rem;
-    border-radius: 0.4rem;
-    border: 2px solid transparent;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $black; }
+    & { text-align: center; }
+    & { margin: 0 0 0.5rem 0; }
+    & { padding: 0.4rem 1.5rem; }
+    & { padding-bottom: 0.45rem; }
+    & { border-radius: 0.4rem; }
+    & { border: 2px solid transparent; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: $white;
@@ -331,7 +331,7 @@ dl.article-info {
             font-size: $core-font-size;
         }
 
-        line-height: $core-line-height + 0.5;
+        & { line-height: $core-line-height + 0.5; }
     }
 }
 

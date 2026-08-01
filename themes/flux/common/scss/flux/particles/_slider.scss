@@ -190,13 +190,13 @@
                 position: absolute;
                 z-index: 1;
                 @include responsive-font($responsive-font-size + 12, $core-font-size + 1, false, false);
-                font-weight: $font-weight-black;
-                white-space: nowrap;
-                width: 100%;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
+                & { font-weight: $font-weight-black; }
+                & { white-space: nowrap; }
+                & { width: 100%; }
+                & { top: 0; }
+                & { bottom: 0; }
+                & { left: 0; }
+                & { right: 0; }
             }
 
             .g-slider-slides-item-link {

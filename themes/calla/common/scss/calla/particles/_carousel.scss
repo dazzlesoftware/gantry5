@@ -32,17 +32,17 @@
                 transform: translateY(-50%);
                 font-weight: $font-weight-semibold;
                 @include responsive-font($responsive-font-size + 12, $core-font-size + 2, false, false);
-                line-height: $core-line-height - 0.5;
-                color: $white;
+                & { line-height: $core-line-height - 0.5; }
+                & { color: $white; }
             }
         }
 
         .g-carousel-description {
             @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.1, false, false);
-            color: $black;
-            text-shadow: 0 0 5px fade-out($white, 0.2);
-            font-weight: $font-weight-regular;
-            width: 30%;
+            & { color: $black; }
+            & { text-shadow: 0 0 5px fade-out($white, 0.2); }
+            & { font-weight: $font-weight-regular; }
+            & { width: 30%; }
 
             @include breakpoint(tablet-range) {
                 margin-top: 1rem;
@@ -56,10 +56,10 @@
 
         .g-carousel-link {
             @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-            color: $black;
-            font-weight: $font-weight-semibold;
-            color: $black;
-            text-decoration: underline;
+            & { color: $black; }
+            & { font-weight: $font-weight-semibold; }
+            & { color: $black; }
+            & { text-decoration: underline; }
         }
     }
 
@@ -72,7 +72,7 @@
             color: $black;
             text-align: center;
             @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
-            transition: all 0.3s;
+            & { transition: all 0.3s; }
 
             .fa {
                 position: relative;

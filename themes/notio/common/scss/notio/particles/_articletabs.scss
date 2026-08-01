@@ -73,15 +73,15 @@
                     font-weight: $font-weight-medium;
                     color: $white !important;
                     @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-                    background: $black;
-                    min-width: 140px;
-                    text-align: center;
-                    margin: 0 0 0.5rem 0;
-                    padding: 0.3rem 1.2rem;
-                    border-radius: 0.3rem;
-                    vertical-align: middle;
-                    text-shadow: none;
-                    transition: all 0.2s;
+                    & { background: $black; }
+                    & { min-width: 140px; }
+                    & { text-align: center; }
+                    & { margin: 0 0 0.5rem 0; }
+                    & { padding: 0.3rem 1.2rem; }
+                    & { border-radius: 0.3rem; }
+                    & { vertical-align: middle; }
+                    & { text-shadow: none; }
+                    & { transition: all 0.2s; }
 
                     &:hover,
                     &:active,
@@ -160,8 +160,8 @@
                 // First Column Title Styling
                 .g-articletabs-item-title {
                     @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.15, false, false);
-                    line-height: normal;
-                    color: $black;
+                    & { line-height: normal; }
+                    & { color: $black; }
 
                     a {
                         color: $black;
@@ -187,8 +187,8 @@
                     .g-articletabs-item-title {
                         h3 {
                             @include responsive-font($responsive-font-size - 0.2, $core-font-size - 0.1, false, false);
-                            margin-top: 0;
-                            margin-bottom: $content-margin;
+                            & { margin-top: 0; }
+                            & { margin-bottom: $content-margin; }
                         }
 
                         a {

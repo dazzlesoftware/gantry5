@@ -64,9 +64,9 @@
     @include breakpoint(desktop-range) {
       margin-left: 2.2rem;
     }
-    font-family: get-font-family($font-family-default);
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
+    & { font-family: get-font-family($font-family-default); }
+    & { font-weight: $font-weight-bold; }
+    & { text-transform: uppercase; }
     .g-toplevel {
 
       > li {
@@ -81,8 +81,8 @@
           @include breakpoint(tablet-range) {
             font-size: $core-font-size - 0.25;
           }
-          color: fade-out($navigation-text-color, 0.55);
-          padding: 0;
+          & { color: fade-out($navigation-text-color, 0.55); }
+          & { padding: 0; }
           .g-menu-parent-indicator {
             &:after {
               content: "\f107";

@@ -15,7 +15,7 @@
 
     &:hover, &:active, &:focus {
         color: $white;
-        background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40%), 10%));
+        background: linear-gradient(darken($accent-color-1, 10%) ,darken(adjust-hue($accent-color-1, 40deg), 10%));
     }
 }
 
@@ -129,7 +129,7 @@
     }
 
     &.button-grey {
-        background: linear-gradient($box-grey-background ,darken(adjust-hue($box-grey-background, 20%), 10%));
+        background: linear-gradient($box-grey-background ,darken(adjust-hue($box-grey-background, 20deg), 10%));
 
         &.button-3, &.button-4 {
             background: transparent !important;
@@ -149,7 +149,7 @@
     }
 
     &.button-pink {
-        background: linear-gradient($box-pink-background ,darken(adjust-hue($box-pink-background, 20%), 10%));
+        background: linear-gradient($box-pink-background ,darken(adjust-hue($box-pink-background, 20deg), 10%));
 
         &.button-3, &.button-4 {
             background: transparent !important;
@@ -169,7 +169,7 @@
     }
 
     &.button-red {
-        background: linear-gradient($box-red-background ,darken(adjust-hue($box-red-background, 20%), 10%));
+        background: linear-gradient($box-red-background ,darken(adjust-hue($box-red-background, 20deg), 10%));
         &.button-3, &.button-4 {
             background: transparent !important;
             color: $box-red-background !important;
@@ -187,7 +187,7 @@
     }
 
     &.button-purple {
-        background: linear-gradient($box-purple-background ,darken(adjust-hue($box-purple-background, 20%), 10%));
+        background: linear-gradient($box-purple-background ,darken(adjust-hue($box-purple-background, 20deg), 10%));
 
         &.button-3, &.button-4 {
             background: transparent !important;
@@ -208,7 +208,7 @@
 
     &.button-orange {
         background: $box-orange-background;
-        background: linear-gradient($box-orange-background ,darken(adjust-hue($box-orange-background, 20%), 10%));
+        background: linear-gradient($box-orange-background ,darken(adjust-hue($box-orange-background, 20deg), 10%));
 
         &.button-3, &.button-4 {
             background: transparent !important;
@@ -229,7 +229,7 @@
 
     &.button-blue {
         background: $box-blue-background;
-        background: linear-gradient($box-blue-background ,darken(adjust-hue($box-blue-background, 20%), 10%));
+        background: linear-gradient($box-blue-background ,darken(adjust-hue($box-blue-background, 20deg), 10%));
 
         &.button-3, &.button-4 {
             background: transparent !important;

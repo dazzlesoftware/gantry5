@@ -40,14 +40,14 @@
                 @include breakpoint(mobile-only) {
                     min-height: 300px;
                 }
-                width: 60%;
+                & { width: 60%; }
                 @include breakpoint(tablet-range) {
                     width: 50%;
                 }
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                position: relative;
+                & { background-size: cover; }
+                & { background-repeat: no-repeat; }
+                & { background-position: center; }
+                & { position: relative; }
                 @include breakpoint(mobile-only) {
                     width: 100%;
                     position: absolute;
@@ -61,12 +61,12 @@
                     @include breakpoint(mobile-only) {
                         height: 100%;
                     }
-                    background: linear-gradient(to top, $slideshow-background 0%, rgba(15, 15, 15, 0) 50%);
+                    & { background: linear-gradient(to top, $slideshow-background 0%, rgba(15, 15, 15, 0) 50%); }
                     @include breakpoint(mobile-only) {
                         background-color: transparent !important;
                         background: linear-gradient(to top, $slideshow-background 0%, rgba(15, 15, 15, 0) 130%);
                     }
-                    background-color: transparent;
+                    & { background-color: transparent; }
                 }
             }
         } // Dots
@@ -77,14 +77,14 @@
             @include breakpoint(tablet-range) {
                 width: 50%;
             }
-            left: 0;
-            padding-right: $content-padding;
+            & { left: 0; }
+            & { padding-right: $content-padding; }
             @include breakpoint(mobile-only) {
                 display: none;
             }
-            display: flex;
-            align-items: flex-end;
-            flex-direction: column;
+            & { display: flex; }
+            & { align-items: flex-end; }
+            & { flex-direction: column; }
             .swiper-pagination-bullet {
                 border-radius: 100%;
                 background: transparent;
@@ -110,7 +110,7 @@
             bottom: 0rem;
             padding-top: $content-padding;
         }
-        z-index: 3;
+        & { z-index: 3; }
         .dir-rtl & {
             right: 2rem;
             left: auto;

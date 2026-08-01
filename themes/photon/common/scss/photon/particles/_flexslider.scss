@@ -645,7 +645,7 @@ html[xmlns] .flexslider .g-flexslider-slideshow-slides {
         top: 0;
         opacity: 0;
         z-index: 10;
-        @include transition (opacity 0.3s);
+        transition: opacity 0.3s;
         span {
             color: $white;
             font-size: 2rem;

@@ -54,19 +54,19 @@
             @include breakpoint(tablet-range) {
               padding: $content-padding;
             }
-            margin-right: $content-margin - 0.3;
+            & { margin-right: $content-margin - 0.3; }
             @include breakpoint(mobile-only) {
               margin: 0;
               margin-bottom: $content-margin - 0.3;
             }
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: center;
+            & { display: flex; }
+            & { flex-wrap: wrap; }
+            & { justify-content: flex-start; }
+            & { align-items: center; }
             @include breakpoint(mobile-only) {
               display: block;
             }
-            -ms-flex-direction: column;
+            & { -ms-flex-direction: column; }
             .g-contenttabs-block-title {
                 padding-bottom: $content-padding + $content-margin;
             }
@@ -146,9 +146,9 @@
                 margin-top: 1.5rem;
                 padding-top: 0.5rem;
             }
-            border-top: 2px solid transparent;
-            transition: all 0.25s;
-            position: relative;
+            & { border-top: 2px solid transparent; }
+            & { transition: all 0.25s; }
+            & { position: relative; }
             &:before {
                 content: '';
                 position: absolute;

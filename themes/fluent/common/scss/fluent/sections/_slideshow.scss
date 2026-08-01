@@ -31,16 +31,16 @@
     }
     .g-simplecontent-item-leading-content {
         @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
-        margin-left: $content-padding * 3;
+        & { margin-left: $content-padding * 3; }
         @include breakpoint(mobile-only) {
             margin-left: 0;
         }
-        flex: 2;
-        color: $white;
+        & { flex: 2; }
+        & { color: $white; }
     }
     .g-simplecontent-item-content-title {
         @include responsive-font($responsive-font-size + 2.5, $core-font-size + 0.8, false, false);
-         flex: 1;
+         & { flex: 1; }
 
     }
 

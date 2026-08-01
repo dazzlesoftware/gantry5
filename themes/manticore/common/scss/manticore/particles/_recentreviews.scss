@@ -26,9 +26,9 @@
         .g-recentreviews-title {
             display: block;
             @include responsive-font($responsive-font-size + .5, $core-font-size, false, false);
-            padding-right: $content-padding;
-            font-family: get-font-family($font-family-title);
-            font-weight: $font-weight-bold;
+            & { padding-right: $content-padding; }
+            & { font-family: get-font-family($font-family-title); }
+            & { font-weight: $font-weight-bold; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -88,11 +88,11 @@
             .g-recentreviews-nav-item {
                 padding: $content-margin - .5 $content-padding - .6;
                 @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-                font-weight: $font-weight-regular;
-                position: relative;
-                border-radius: 12px;
-                text-transform: capitalize;
-                cursor: pointer;
+                & { font-weight: $font-weight-regular; }
+                & { position: relative; }
+                & { border-radius: 12px; }
+                & { text-transform: capitalize; }
+                & { cursor: pointer; }
 
                 &.selected {
                     background: $accent-color-1;
@@ -139,11 +139,11 @@
     // Grid Settings
     .g-recentreviews-grid {
         position: relative;
-        margin: 0 -($content-padding);
+        margin: 0 (-1 * ($content-padding));
         overflow: visible !important;
 
         @include breakpoint(mobile-only) {
-            margin: 0 -$content-padding;
+            margin: 0 (-$content-padding);
         }
 
         // Grid sizing
@@ -202,7 +202,7 @@
                 z-index: 3;
                 padding: $content-padding;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                transition: color 0.5s;
+                & { transition: color 0.5s; }
 
                 .dir-rtl & {
                     text-align: right;
@@ -212,9 +212,9 @@
                     font-family: get-font-family($font-family-title);
                     font-weight: $font-weight-bold;
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                    margin-top: $content-margin - 0.3;
-                    line-height: $core-line-height - 0.4;
-                    cursor: pointer;
+                    & { margin-top: $content-margin - 0.3; }
+                    & { line-height: $core-line-height - 0.4; }
+                    & { cursor: pointer; }
 
                     &:hover {
                         text-decoration: underline;
@@ -273,13 +273,13 @@
                 .g-recentreviews-grid-item-case {
                     color: $black;
                     @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
-                    font-weight: $font-weight-regular;
-                    background: transparent;
-                    display: inline-block;
-                    letter-spacing: 3px;
-                    clear: both;
-                    margin-bottom: $content-margin - 0.3;
-                    text-transform: uppercase;
+                    & { font-weight: $font-weight-regular; }
+                    & { background: transparent; }
+                    & { display: inline-block; }
+                    & { letter-spacing: 3px; }
+                    & { clear: both; }
+                    & { margin-bottom: $content-margin - 0.3; }
+                    & { text-transform: uppercase; }
                 }
 
                 .g-recentreviews-grid-item-description {

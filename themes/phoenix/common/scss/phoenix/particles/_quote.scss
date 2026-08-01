@@ -1,10 +1,10 @@
 .g-quote {
     blockquote {
         @include responsive-font($responsive-font-size + 1, $core-font-size + 0.2, false, false);
-        font-weight: $font-weight-extrabold;
-        font-family: get-font-family($font-family-title);
-        margin: 0 auto;
-        width: 60%;
+        & { font-weight: $font-weight-extrabold; }
+        & { font-family: get-font-family($font-family-title); }
+        & { margin: 0 auto; }
+        & { width: 60%; }
 
         @include breakpoint(mobile-only) {
             width: 100%;

@@ -1,14 +1,14 @@
 .g-iconpromo {
     h1 {
         @include responsive-font($responsive-font-size + 2.5, $core-font-size + 1, false, false);
-        font-weight: $font-weight-extrabold;
+        & { font-weight: $font-weight-extrabold; }
     }
 
     span {
         display: block;
         margin-top: $content-padding;
         @include responsive-font($responsive-font-size + 0.4, $core-font-size, false, false);
-        font-weight: $font-weight-regular;
+        & { font-weight: $font-weight-regular; }
      }
 
     .g-iconpromo-icon {

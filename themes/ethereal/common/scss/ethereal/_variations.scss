@@ -56,7 +56,7 @@
 
 .title1, .title2, .title3, .title4, .title-white, .title-grey, .title-pink, .title-red, .title-purple, .title-orange, .title-blue {
 	.g-title {
-		margin: -($content-padding) -($content-padding) 1.5rem -($content-padding);
+		margin: (-1 * ($content-padding)) (-1 * ($content-padding)) 1.5rem (-1 * ($content-padding));
     padding: $content-margin 1rem;
 	}
 }

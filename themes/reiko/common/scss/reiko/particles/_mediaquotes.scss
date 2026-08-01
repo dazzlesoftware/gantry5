@@ -23,12 +23,12 @@
         cursor: pointer;
         padding: $content-margin - .5 $content-padding - .6;
         @include responsive-font($responsive-font-size, $core-font-size, false, false);
-        font-weight: $font-weight-regular;
-        color: darken($base-text-color, 10%);
-        position: relative;
-        border-radius: 5px;
-        text-transform: capitalize;
-        border: 2px solid transparent;
+        & { font-weight: $font-weight-regular; }
+        & { color: darken($base-text-color, 10%); }
+        & { position: relative; }
+        & { border-radius: 5px; }
+        & { text-transform: capitalize; }
+        & { border: 2px solid transparent; }
 
         &.selected {
             border-color: $black;
@@ -78,14 +78,14 @@
     // Grid Settings
     .g-mediaquotes-grid {
         position: relative;
-        margin: 0 -($content-padding);
+        margin: 0 (-1 * ($content-padding));
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         overflow: visible !important;
 
         @include breakpoint(mobile-only) {
-            margin: 0 -$content-padding;
+            margin: 0 (-$content-padding);
         }
 
          // Item & Item content
@@ -229,8 +229,8 @@
                 text-align: left;
                 z-index: 3;
                 padding-left: $content-padding;
-                @include responsive-font($responsive-font-size + 0.5, $core-font-size +.3, false, false);
-                transition: color 0.5s;
+                @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.3, false, false);
+                & { transition: color 0.5s; }
 
                 .dir-rtl & {
                     text-align: right;
@@ -249,22 +249,22 @@
                 .g-mediaquotes-grid-item-description {
                     color: $black;
                     margin-bottom: $content-margin + .6;
-                    @include responsive-font($responsive-font-size + 0.5, $core-font-size +.3, false, false);
-                    line-height: $core-line-height - .4;
-                    font-family: get-font-family($font-family-feather);
-                    font-style: italic;
-                    font-weight: $font-weight-medium;
+                    @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.3, false, false);
+                    & { line-height: $core-line-height - .4; }
+                    & { font-family: get-font-family($font-family-feather); }
+                    & { font-style: italic; }
+                    & { font-weight: $font-weight-medium; }
                 }
 
                 .g-mediaquotes-grid-item-bottom-wrapper {
-                    @include display (flex);
+                    display: flex;
                     flex-direction: row;
                     justify-content: flex-start;
                     align-items: center;
                     color: $grey;
 
                     .g-mediaquotes-grid-item-image {
-                        @include display (flex);
+                        display: flex;
                         margin-right: $content-margin * 2;
                         -webkit-filter: grayscale(100%);
                         filter: grayscale(100%);

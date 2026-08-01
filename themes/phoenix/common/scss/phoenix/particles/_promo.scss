@@ -8,6 +8,6 @@
    padding: $content-padding * 2;
    color: set-color($base-background);
    @include responsive-font($responsive-font-size + 1.5, $core-font-size + 1, false, false);
-   font-weight: $font-weight-bold;
-   text-align: center;
+   & { font-weight: $font-weight-bold; }
+   & { text-align: center; }
 }

@@ -4,13 +4,13 @@
 
     .g-infolist-title {
         @include responsive-font($responsive-font-size + 2.5, $core-font-size + 0.8, false, false);
-        color: $black;
-        margin-bottom: 0;
-        padding-bottom: 0;
+        & { color: $black; }
+        & { margin-bottom: 0; }
+        & { padding-bottom: 0; }
     }
     .g-infolist-desc {
         @include responsive-font($responsive-font-size + 0.6, $core-font-size + 0.3, false, false);
-        padding-bottom: $content-padding;
+        & { padding-bottom: $content-padding; }
         @include breakpoint(mobile-only) {
           padding-bottom: 0;
         }

@@ -66,7 +66,7 @@
         .g-carousel-caption {
             padding: $content-padding 0;
             @include responsive-font($responsive-font-size - 0.15, $core-font-size + 0.1, false, false);
-            text-align: left;
+            & { text-align: left; }
             @include breakpoint(mobile-only) {
               text-align: center;
             }
@@ -89,7 +89,7 @@
 
             .fa {
                 @include responsive-font($responsive-font-size + 1.25, $core-font-size + 1, false, false);
-                font-weight: $font-weight-regular;
+                & { font-weight: $font-weight-regular; }
             }
 
             &:hover {

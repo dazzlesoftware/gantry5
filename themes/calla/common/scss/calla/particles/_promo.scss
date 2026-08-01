@@ -24,7 +24,7 @@
         position: absolute;
         font-weight: $font-weight-bold;
         @include responsive-font($responsive-font-size + 10, $core-font-size + 4, false, false);
-        color: darken($accent-color-1, 10%);
+        & { color: darken($accent-color-1, 10%); }
 
         .dir-rtl & {
             left: auto;

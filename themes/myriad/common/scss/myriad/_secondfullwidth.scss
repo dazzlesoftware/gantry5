@@ -158,10 +158,10 @@
 						    @media (max-width: 480px) {
 							font-size: 100%;
 						    }
-						    font-weight: normal;
-						    letter-spacing: 1px;
-						    text-align: center;
-						    color: $white;
+						    & { font-weight: normal; }
+						    & { letter-spacing: 1px; }
+						    & { text-align: center; }
+						    & { color: $white; }
 						    a {
 							color: $white;
 						    }
@@ -181,8 +181,8 @@
 							@include breakpoint(mobile-only) {
 								border-radius: 0px;
 							}
-							transform: translateZ(0) scale3d(1,1,1);
-			                    transition: all 0.2s ease;
+							& { transform: translateZ(0) scale3d(1,1,1); }
+			                    & { transition: all 0.2s ease; }
 						}
 
 						.g-swipercarousel-item-desc {
@@ -251,7 +251,7 @@
     @include breakpoint(mobile-only) {
 	margin-top: 10px;
     }
-    position: absolute;
+    & { position: absolute; }
     .track {
 	height: 17px;
 	position: relative;

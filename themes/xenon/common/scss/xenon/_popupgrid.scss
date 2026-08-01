@@ -64,7 +64,7 @@
     display: block;
     opacity: 0.65;
     transform: scale(1);
-    @include transition (all 0.3s);
+    transition: all 0.3s;
   }
 
   .g-popupgrid-description-preview-tag {
@@ -190,7 +190,7 @@
   background: fade-out($accent-color-1, 0.25);
   opacity: 0;
   z-index: 10;
-  @include transition (opacity 0.3s);
+  transition: opacity 0.3s;
   span {
     color: $white;
     position: absolute;

@@ -61,8 +61,8 @@
             .g-array-item-text {
                 font-weight: $font-weight-thin;
                 @include responsive-font(3.4vw, 40px, false, 50px);
-                line-height: $core-line-height - 0.2;
-                margin-right: 30%;
+                & { line-height: $core-line-height - 0.2; }
+                & { margin-right: 30%; }
                 .dir-rtl & {
                     margin: 0;
                     margin-left: 30%;

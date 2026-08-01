@@ -292,7 +292,7 @@
 // Demo
 #g-overlay {
 	.g-overlay-blockcontent {
-		margin: 0 -($content-margin);
+		margin: 0 (-1 * ($content-margin));
 	}
 	.g-blockcontent-subcontent-title {
 		span {

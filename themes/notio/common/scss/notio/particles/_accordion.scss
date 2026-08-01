@@ -37,18 +37,18 @@
           float: none;
           margin-left: 1rem;
         }
-        cursor: pointer;
-        font-size: ($core-font-size * 2 - 0.2);
-        font-weight: $font-weight-light;
-        font-family: "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-        line-height: ($core-font-size * 2) - 0.1;
-        padding-left: 1px;
-        color: $accent-color-2;
-        border-radius: 50%;
-        border: 1px solid $accent-color-2;
-        width: 35px;
-        height: 35px;
-        transition: all 0.2s;
+        & { cursor: pointer; }
+        & { font-size: ($core-font-size * 2 - 0.2); }
+        & { font-weight: $font-weight-light; }
+        & { font-family: "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; }
+        & { line-height: ($core-font-size * 2) - 0.1; }
+        & { padding-left: 1px; }
+        & { color: $accent-color-2; }
+        & { border-radius: 50%; }
+        & { border: 1px solid $accent-color-2; }
+        & { width: 35px; }
+        & { height: 35px; }
+        & { transition: all 0.2s; }
 
         &:hover {
             color: $base-text-color;

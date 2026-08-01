@@ -46,14 +46,14 @@
             @include breakpoint(mobile-only) {
                 font-size: $core-font-size + 0.2;
             }
-            font-weight: $font-weight-light;
-            border-radius: 0;
-            background: transparent;
-            padding: 0.75rem;
-            padding-left: 0;
-            margin-bottom: 0;
-            width: 440px;
-            color: $accent-color-1;
+            & { font-weight: $font-weight-light; }
+            & { border-radius: 0; }
+            & { background: transparent; }
+            & { padding: 0.75rem; }
+            & { padding-left: 0; }
+            & { margin-bottom: 0; }
+            & { width: 440px; }
+            & { color: $accent-color-1; }
 
             &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
                 color: $accent-color-1;
@@ -81,7 +81,7 @@
             @include breakpoint(mobile-only) {
                 width: 100%;
             }
-            white-space: nowrap;
+            & { white-space: nowrap; }
         }
 
         .g-newsletter-button-icon {

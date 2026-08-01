@@ -67,12 +67,12 @@
                 position: relative;
                 font-weight: $font-weight-semibold;
                 @include responsive-font($responsive-font-size + 5, $core-font-size + 1, false, false);
-                line-height: $core-line-height - 0.4;
-                padding: 6vw 8vw;
-                margin: 0;
-                color: $white;
-                text-shadow: 0 0 8px fade-out($black, 0.95);
-                width: 20%;
+                & { line-height: $core-line-height - 0.4; }
+                & { padding: 6vw 8vw; }
+                & { margin: 0; }
+                & { color: $white; }
+                & { text-shadow: 0 0 8px fade-out($black, 0.95); }
+                & { width: 20%; }
 
                 a {
                     color: $white;

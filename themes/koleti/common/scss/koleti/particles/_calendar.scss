@@ -80,7 +80,7 @@
             }
         }
         @include responsive-font($responsive-font-size + 0.15, $core-font-size + 0.15, false, false);
-        color: $white;
+        & { color: $white; }
         .prev-push,
         .next-push {
             position: relative;
@@ -319,7 +319,7 @@
                     height: 100%;
                     display: flex;
                     justify-content: flex-start;
-                    @include flex-wrap (wrap);
+                    flex-wrap: wrap;
                     .event {
                         position: relative;
                         background: $white;
@@ -330,7 +330,7 @@
                         animation-name: show;
                         animation-duration: .360s;
                         animation-timing-function: ease-out;
-                        @include transition (all 4s);
+                        transition: all 4s;
                         margin-right: 2%;
                         @include breakpoint (tablet-range) {
                             width: 48%;

@@ -287,9 +287,9 @@
           font-size: $core-font-size + 1;
           line-height: $core-line-height - 0.3;
         }
-        font-family: get-font-family($font-family-title);
-        font-weight: $font-weight-light;
-        text-transform: none;
+        & { font-family: get-font-family($font-family-title); }
+        & { font-weight: $font-weight-light; }
+        & { text-transform: none; }
     }
 }
 
@@ -382,7 +382,7 @@
     }
 
     .button {
-        background: linear-gradient($box-grey-background ,darken(adjust-hue($box-grey-background, 20%), 10%));
+        background: linear-gradient($box-grey-background ,darken(adjust-hue($box-grey-background, 20deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -407,7 +407,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-grey-background, 10%) ,darken(adjust-hue($box-grey-background, 30%), 10%));
+        background: linear-gradient(darken($box-grey-background, 10%) ,darken(adjust-hue($box-grey-background, 30deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -437,7 +437,7 @@
     }
 
     .button {
-        background: linear-gradient($box-pink-background ,darken(adjust-hue($box-pink-background, 20%), 10%));
+        background: linear-gradient($box-pink-background ,darken(adjust-hue($box-pink-background, 20deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -454,7 +454,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-pink-background, 10%) ,darken(adjust-hue($box-pink-background, 10%), 10%));
+        background: linear-gradient(darken($box-pink-background, 10%) ,darken(adjust-hue($box-pink-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -492,7 +492,7 @@
     }
 
     .button {
-        background: linear-gradient($box-red-background ,darken(adjust-hue($box-red-background, 20%), 10%));
+        background: linear-gradient($box-red-background ,darken(adjust-hue($box-red-background, 20deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -509,7 +509,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-red-background, 10%) ,darken(adjust-hue($box-red-background, 10%), 10%));
+        background: linear-gradient(darken($box-red-background, 10%) ,darken(adjust-hue($box-red-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -547,7 +547,7 @@
     }
 
     .button {
-        background: linear-gradient($box-purple-background ,darken(adjust-hue($box-purple-background, 20%), 10%));
+        background: linear-gradient($box-purple-background ,darken(adjust-hue($box-purple-background, 20deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -564,7 +564,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-purple-background, 10%) ,darken(adjust-hue($box-purple-background, 10%), 10%));
+        background: linear-gradient(darken($box-purple-background, 10%) ,darken(adjust-hue($box-purple-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -602,7 +602,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-blue-background, 10%) ,darken(adjust-hue($box-blue-background, 10%), 10%));
+        background: linear-gradient(darken($box-blue-background, 10%) ,darken(adjust-hue($box-blue-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -619,7 +619,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-blue-background, 10%) ,darken(adjust-hue($box-blue-background, 10%), 10%));
+        background: linear-gradient(darken($box-blue-background, 10%) ,darken(adjust-hue($box-blue-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -657,7 +657,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-orange-background, 10%) ,darken(adjust-hue($box-orange-background, 10%), 10%));
+        background: linear-gradient(darken($box-orange-background, 10%) ,darken(adjust-hue($box-orange-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;
@@ -674,7 +674,7 @@
     }
 
     .button {
-        background: linear-gradient(darken($box-orange-background, 10%) ,darken(adjust-hue($box-orange-background, 10%), 10%));
+        background: linear-gradient(darken($box-orange-background, 10%) ,darken(adjust-hue($box-orange-background, 10deg), 10%));
 
         &:hover, &:active, &:focus {
             color: $white;

@@ -13,9 +13,9 @@
             width: 100%;
             display: none;
         }
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
+        & { display: flex; }
+        & { flex-direction: column; }
+        & { overflow: hidden; }
 
         // Thumb Container
         .g-newsslider-carousel-item-container {
@@ -53,8 +53,8 @@
 
                 .g-newsslider-carousel-item-title {
                     @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-                    font-weight: $font-weight-regular;
-                    line-height: normal;
+                    & { font-weight: $font-weight-regular; }
+                    & { line-height: normal; }
                 }
 
                 .g-newsslider-carousel-item-meta {
@@ -178,8 +178,8 @@
 
                 .g-newsslider-slides-item-title {
                     @include responsive-font($responsive-font-size + 2, $core-font-size + 0.5, false, false);
-                    font-weight: $font-weight-black;
-                    line-height: $core-line-height - 0.4;
+                    & { font-weight: $font-weight-black; }
+                    & { line-height: $core-line-height - 0.4; }
 
                     a {
                         color: $white;

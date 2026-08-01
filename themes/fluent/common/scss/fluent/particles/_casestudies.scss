@@ -37,9 +37,9 @@
         // Title
         .g-casestudies-title {
             @include responsive-font($responsive-font-size + 1.5, $core-font-size, false, false);
-            font-weight: $font-weight-bold;
-            color: $base-text-color;
-            padding-right: $content-padding;
+            & { font-weight: $font-weight-bold; }
+            & { color: $base-text-color; }
+            & { padding-right: $content-padding; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -129,7 +129,7 @@
 
     // Grid Settings
     .g-casestudies-grid {
-        margin: 0 -($content-padding - 0.5);
+        margin: 0 (-1 * ($content-padding - 0.5));
         overflow: visible !important;
 
         // Item & Item content
@@ -196,12 +196,12 @@
                 text-align: left;
                 z-index: 2;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                transition: color 0.5s;
+                & { transition: color 0.5s; }
 
                 .g-casestudies-grid-item-title {
                     font-weight: $font-weight-medium;
                     @include responsive-font($responsive-font-size, $core-font-size , false, false);
-                    line-height: $core-line-height - 0.4;
+                    & { line-height: $core-line-height - 0.4; }
                 }
                 .g-casestudies-grid-item-subtitle {
                     text-transform: uppercase;

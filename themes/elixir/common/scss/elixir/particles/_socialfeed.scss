@@ -20,8 +20,8 @@
     .g-socialfeed-title {
         display: block;
         @include responsive-font($responsive-font-size + 1.2, $core-font-size + 1, false, false);
-        font-weight: $font-weight-bold;
-        padding: $content-padding ($content-padding * 2);
+        & { font-weight: $font-weight-bold; }
+        & { padding: $content-padding ($content-padding * 2); }
 
         @include breakpoint(mobile-only) {
             text-align: center;
@@ -34,10 +34,10 @@
             padding-right: $content-padding;
             color: transparentize($base-text-color, 0.65);
             @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-            font-weight: $font-weight-semibold;
-            line-height: 1.5;
-            letter-spacing: 5px;
-            text-transform: uppercase;
+            & { font-weight: $font-weight-semibold; }
+            & { line-height: 1.5; }
+            & { letter-spacing: 5px; }
+            & { text-transform: uppercase; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -99,11 +99,11 @@
             cursor: pointer;
             padding: $content-margin - .5 $content-padding - .6;
             @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-            font-weight: $font-weight-regular;
-            position: relative;
-            border-radius: 12px;
-            text-transform: capitalize;
-            border: 2px solid transparent;
+            & { font-weight: $font-weight-regular; }
+            & { position: relative; }
+            & { border-radius: 12px; }
+            & { text-transform: capitalize; }
+            & { border: 2px solid transparent; }
 
             &.selected {
                 background: $accent-color-1;
@@ -273,7 +273,7 @@
                 text-align: left;
                 z-index: 3;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                transition: color 0.5s;
+                & { transition: color 0.5s; }
 
                 .dir-rtl & {
                     text-align: right;
@@ -282,8 +282,8 @@
                 .g-socialfeed-grid-item-title {
                     font-weight: $font-weight-medium;
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                    margin-top: $content-margin - 0.3;
-                    line-height: $core-line-height - 0.4;
+                    & { margin-top: $content-margin - 0.3; }
+                    & { line-height: $core-line-height - 0.4; }
 
                     &:hover {
                         text-decoration: underline;
@@ -309,13 +309,13 @@
                 .g-socialfeed-grid-item-case {
                     color: $black;
                     @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
-                    font-weight: $font-weight-regular;
-                    background: transparent;
-                    display: inline-block;
-                    letter-spacing: 3px;
-                    clear: both;
-                    margin-bottom: $content-margin - 0.3;
-                    text-transform: uppercase;
+                    & { font-weight: $font-weight-regular; }
+                    & { background: transparent; }
+                    & { display: inline-block; }
+                    & { letter-spacing: 3px; }
+                    & { clear: both; }
+                    & { margin-bottom: $content-margin - 0.3; }
+                    & { text-transform: uppercase; }
                 }
             }
 

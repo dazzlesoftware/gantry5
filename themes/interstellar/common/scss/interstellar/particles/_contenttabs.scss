@@ -89,7 +89,7 @@
             flex: 0 1 100%;
             width: 100%;
         }
-        padding-right: $content-padding;
+        & { padding-right: $content-padding; }
         .dir-rtl & {
             padding-right: 0;
             padding-left: $content-padding;

@@ -136,8 +136,8 @@
   .g-pricingtable-cta {
     margin-top: $content-padding + 1;
     height: 48px;
-    margin-left: -($content-margin + $content-padding);
-    margin-right: -($content-margin + $content-padding);
+    margin-left: (-1 * ($content-margin + $content-padding));
+    margin-right: (-1 * ($content-margin + $content-padding));
     .button {
       position: absolute;
       bottom: 0;

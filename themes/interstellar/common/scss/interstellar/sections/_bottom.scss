@@ -16,7 +16,7 @@
             @include breakpoint(tablet-range) {
             font-size: $core-font-size + 4.3;
             }
-            line-height: $core-line-height - 0.2;
+            & { line-height: $core-line-height - 0.2; }
             &:first-letter {
                 font-weight: $font-weight-light;
                 font-size: $core-font-size + 2.8;

@@ -23,7 +23,7 @@
             @include breakpoint(mobile-only) {
                 font-size: $core-font-size;
             }
-            color: lighten($base-text-color, 20%);
+            & { color: lighten($base-text-color, 20%); }
         }
         label {
             margin-bottom: $content-margin;

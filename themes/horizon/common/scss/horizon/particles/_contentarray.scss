@@ -1,7 +1,7 @@
 .g-content-array {
     margin-top: $content-padding;
-    margin-left: -($content-padding);
-    margin-right: -($content-padding);
+    margin-left: (-1 * ($content-padding));
+    margin-right: (-1 * ($content-padding));
 
     .g-grid {
         margin-bottom: 0.5rem;

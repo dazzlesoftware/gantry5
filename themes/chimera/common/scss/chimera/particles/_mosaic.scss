@@ -37,9 +37,9 @@
         // Title
         .g-mosaic-title {
             @include responsive-font($responsive-font-size + 1.7, $core-font-size, false, false);
-            font-weight: $font-weight-bold;
-            color: $base-text-color;
-            padding-right: $content-padding;
+            & { font-weight: $font-weight-bold; }
+            & { color: $base-text-color; }
+            & { padding-right: $content-padding; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -100,7 +100,7 @@
                 padding: 5px 20px;
                 border-radius: 3px;
                 @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
-                opacity: 0.7;
+                & { opacity: 0.7; }
 
                 &.selected, &:hover {
                     color: #ffffff;
@@ -138,7 +138,7 @@
 
     // Grid Settings
     .g-mosaic-grid {
-        margin: 0 -($content-padding - 0.5);
+        margin: 0 (-1 * ($content-padding - 0.5));
         overflow: visible !important;
 
         // Item & Item content
@@ -229,12 +229,12 @@
                 text-align: left;
                 z-index: 2;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                transition: color 0.5s;
+                & { transition: color 0.5s; }
 
                 .g-mosaic-grid-item-title {
                     font-weight: $font-weight-medium;
                     @include responsive-font($responsive-font-size + 0.1, $core-font-size , false, false);
-                    line-height: $core-line-height - 0.4;
+                    & { line-height: $core-line-height - 0.4; }
                 }
                 .g-mosaic-grid-item-subtitle {
                     margin: 15px 0;

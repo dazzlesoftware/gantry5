@@ -2,8 +2,8 @@
     color: $black;
     font-weight: $font-weight-bold;
     @include responsive-font($responsive-font-size + 0.5, $core-font-size + 1, false, false);
-    line-height: $core-line-height;
-    box-shadow: none !important;
+    & { line-height: $core-line-height; }
+    & { box-shadow: none !important; }
 
     @include breakpoint(mobile-only) {
         text-align: center;

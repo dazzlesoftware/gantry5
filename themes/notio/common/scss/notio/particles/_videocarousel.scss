@@ -10,7 +10,7 @@
             flex: 1 auto;
             padding: 0;
             @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
-            color: $white;
+            & { color: $white; }
         }
 
         .g-video-carousel-pagination {

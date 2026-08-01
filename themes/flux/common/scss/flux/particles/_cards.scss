@@ -24,10 +24,10 @@
         @include breakpoint(tablet-range) {
             margin: $content-padding;
         }
-        margin-top: $content-padding + 3;
-        font-weight: $font-weight-bold;
+        & { margin-top: $content-padding + 3; }
+        & { font-weight: $font-weight-bold; }
         @include responsive-font($responsive-font-size + 1, $core-font-size + 0.3, false, false);
-        line-height: $core-line-height - 0.4;
+        & { line-height: $core-line-height - 0.4; }
     }
 
     .g-cards-subcontent-block {
@@ -60,9 +60,9 @@
             @include breakpoint(tablet-range) {
                 margin: $content-padding;
             }
-            padding-bottom: $content-padding + 3;
-            display: flex;
-            align-items: center;
+            & { padding-bottom: $content-padding + 3; }
+            & { display: flex; }
+            & { align-items: center; }
             .g-cards-subcontent-footer-id {
                 margin-left: $content-padding;
                 .dir-rtl & {

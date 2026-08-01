@@ -34,13 +34,13 @@
 	} @else {
 	    display: block;
 	}		
-	font-size: $core-font-size + 0.25;
-	color: darken($offcanvas-toggle-color, 25%);
-	border-radius: $border-radius;
-	padding: 0.15rem;
-	top: $content-padding/2;
-	left: $content-padding/2;
-	z-index: 10001;
+	& { font-size: $core-font-size + 0.25; }
+	& { color: darken($offcanvas-toggle-color, 25%); }
+	& { border-radius: $border-radius; }
+	& { padding: 0.15rem; }
+	& { top: $content-padding/2; }
+	& { left: $content-padding/2; }
+	& { z-index: 10001; }
 
 	.toggle-fixed & {
 		position: fixed;
@@ -93,7 +93,7 @@
 }
 
 #g-mobilemenu-container {
-	margin: -($content-padding + $content-margin);
+	margin: (-1 * ($content-padding + $content-margin));
 }
 
 .g-offcanvas-open {

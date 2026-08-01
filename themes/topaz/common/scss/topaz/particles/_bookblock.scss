@@ -153,7 +153,7 @@
             font-size: $core-font-size + 0.5;
         }
 
-        color: $accent-color-1;
+        & { color: $accent-color-1; }
     }
     .bb-item-intro {
         font-size: $core-font-size + 0.2;
@@ -162,13 +162,13 @@
             font-size: $core-font-size + 0.1;
         }
 
-        padding-bottom: $content-padding;
-        border-bottom: 1px solid lighten($border-color-light, 10%);
+        & { padding-bottom: $content-padding; }
+        & { border-bottom: 1px solid lighten($border-color-light, 10%); }
         // Non standard for webkit
-        word-break: break-word;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        hyphens: auto;
+        & { word-break: break-word; }
+        & { -webkit-hyphens: auto; }
+        & { -moz-hyphens: auto; }
+        & { hyphens: auto; }
     }
     .bb-item-content {
         // Non standard for webkit
@@ -198,8 +198,8 @@
                 font-size: $core-font-size + 0.1;
             }
 
-            text-align: center;
-            display: block;
+            & { text-align: center; }
+            & { display: block; }
         }
     }
 }
@@ -409,7 +409,7 @@
         float: none;
         height: auto;
     }
-    overflow: hidden;
+    & { overflow: hidden; }
 }
 
 .bb-custom-firstpage h1 {

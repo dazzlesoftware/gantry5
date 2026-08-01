@@ -9,8 +9,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
-        font-weight: $font-weight-black;
-        color: $white;
+        & { font-weight: $font-weight-black; }
+        & { color: $white; }
     }
 
     // Simple Menu Particle

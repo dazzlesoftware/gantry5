@@ -70,7 +70,7 @@
 
 	// Grid Promo Gallery
 	.g-gridpromogallery {
-		margin-top: -($content-padding + $content-margin);
+		margin-top: (-1 * ($content-padding + $content-margin));
 		margin-bottom: -6rem;
 		.g-gridpromogallery-item-text {
 			@include breakpoint(tablet-range) {

@@ -10,9 +10,9 @@
     @include breakpoint(small-mobile-range) {
         flex-direction: column;
     }
-    border-bottom: 2px solid transparentize($black, 0.90);
-    padding-top: $content-padding;
-    padding-bottom: $content-padding;
+    & { border-bottom: 2px solid transparentize($black, 0.90); }
+    & { padding-top: $content-padding; }
+    & { padding-bottom: $content-padding; }
     &:last-child {
         border: 0 none;
     }
@@ -51,9 +51,9 @@
         @include breakpoint(small-mobile-range) {
             justify-content: center;
         }
-        line-height: $core-line-height - 0.3;
-        padding-top: $content-margin;
-        padding-bottom: $content-margin;
+        & { line-height: $core-line-height - 0.3; }
+        & { padding-top: $content-margin; }
+        & { padding-bottom: $content-margin; }
 
         .g-eventlist-location-line1 {
             font-size: $core-font-size + 0.4;

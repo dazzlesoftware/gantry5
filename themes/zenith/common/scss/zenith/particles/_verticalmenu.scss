@@ -59,7 +59,7 @@ span.icon-vertical-menu {
     width: 100%;
     height: 100%;
     @include responsive-font($responsive-font-size - 0.2, $core-font-size - 0.1, false, false);
-    font-weight: $font-weight-bold;
+    & { font-weight: $font-weight-bold; }
 
     @include breakpoint(mobile-only) {
         background: $black;
@@ -83,14 +83,14 @@ span.icon-vertical-menu {
     @include breakpoint(tablet-range) {
         top: 0;
     }
-    left: 0;
-    visibility: hidden;
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+    & { left: 0; }
+    & { visibility: hidden; }
+    & { overflow: hidden; }
+    & { width: 100%; }
+    & { height: auto; }
+    & { margin: 0; }
+    & { padding: 0; }
+    & { list-style-type: none; }
 }
 
 .menu__level:focus {

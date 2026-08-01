@@ -126,8 +126,8 @@
         .g-pricingtable-plan {
             padding: $content-padding 0 0;
             @include responsive-font($responsive-font-size + 0.4, $core-font-size + 0.1, false, false);
-            font-weight: $font-weight-regular;
-            color: $black;
+            & { font-weight: $font-weight-regular; }
+            & { color: $black; }
 
             a {
                 color: $black;
@@ -163,8 +163,8 @@
 
         .g-pricingtable-item {
             @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-            font-weight: $font-weight-regular;
-            padding-bottom: $content-margin;
+            & { font-weight: $font-weight-regular; }
+            & { padding-bottom: $content-margin; }
 
             &.g-pricingtable-item-0 {
                 position: relative;

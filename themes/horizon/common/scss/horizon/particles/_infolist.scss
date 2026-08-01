@@ -101,7 +101,7 @@
 
         .g-infolist-item-icon {
             @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
-            position: relative;
+            & { position: relative; }
             
             // Patterns
             .g-infolist-pattern-1,
@@ -177,7 +177,7 @@
             margin: 0;
             font-weight: $font-weight-regular;
             @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-            opacity: 0.8;
+            & { opacity: 0.8; }
         }
 
         .g-infolist-tags {

@@ -34,13 +34,13 @@
 	} @else {
 	    display: block;
 	}		
-	font-size: $core-font-size + 0.25;
-	color: $offcanvas-toggle-color;
-	border-radius: $border-radius;
-	padding: 0.15rem;
-	top: 0.25rem;
-	left: 0.25rem;
-	z-index: 100001;
+	& { font-size: $core-font-size + 0.25; }
+	& { color: $offcanvas-toggle-color; }
+	& { border-radius: $border-radius; }
+	& { padding: 0.15rem; }
+	& { top: 0.25rem; }
+	& { left: 0.25rem; }
+	& { z-index: 100001; }
 
 	.toggle-fixed & {
 		position: fixed;
@@ -118,7 +118,7 @@
 }
 
 #g-mobilemenu-container {
-	margin: -($content-padding + $content-margin);
+	margin: (-1 * ($content-padding + $content-margin));
 }
 
 // Preset Thumbnails

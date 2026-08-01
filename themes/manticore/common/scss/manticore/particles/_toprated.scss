@@ -155,10 +155,10 @@
                 margin: 0 5px;
                 padding: $content-margin - 0.5 $content-padding - 0.6;
                 @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
-                font-weight: $font-weight-medium;
-                border-radius: 12px;
-                cursor: pointer;
-                transition: all 0.25s;
+                & { font-weight: $font-weight-medium; }
+                & { border-radius: 12px; }
+                & { cursor: pointer; }
+                & { transition: all 0.25s; }
 
                 @include breakpoint(mobile-only) {
                     display: block;
@@ -261,7 +261,7 @@
 
                 h3 {
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.1, false, false);
-                    margin-bottom: 0;
+                    & { margin-bottom: 0; }
                 }
             }
 

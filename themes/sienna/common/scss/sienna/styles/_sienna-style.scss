@@ -100,8 +100,8 @@
         flex: 0 100%;
 
     }
-    position: relative;
-    z-index: 3;
+    & { position: relative; }
+    & { z-index: 3; }
 
     .g-bookingform-visible, .g-bookingform-hidden {
         display: flex;
@@ -114,7 +114,7 @@
             @include breakpoint(mobile-only) {
                 flex: 0 0 100%;
             }
-            margin-bottom: 0;
+            & { margin-bottom: 0; }
         }
         .g-bookingform-spinner {
             flex: 0 0 10%;
@@ -148,9 +148,9 @@
     @include breakpoint(mobile-only) {
         margin-bottom: 0;
     }
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    & { display: flex; }
+    & { align-items: center; }
+    & { justify-content: center; }
 
     .g-content {
         margin: 0 $content-margin;
@@ -217,8 +217,8 @@
                 margin: 0;
             }
         }
-        display: flex;
-        justify-content: center;
+        & { display: flex; }
+        & { justify-content: center; }
         @include breakpoint(mobile-only) {
             display: block;
         }
@@ -261,8 +261,8 @@
     }
 
     .g-simplebooking-items, .g-simplebooking-form {
-        margin-left: -($content-padding + $content-margin);
-        margin-right: -($content-padding + $content-margin);
+        margin-left: (-1 * ($content-padding + $content-margin));
+        margin-right: (-1 * ($content-padding + $content-margin));
     }
     .g-simplebooking-form {
         padding-left: ($content-padding + $content-margin);
@@ -384,8 +384,8 @@
             @include breakpoint(tablet-range) {
                 font-size: 1.5vmax;
             }
-            color: $copyright-text-color;
-            font-weight: $font-weight-regular;
+            & { color: $copyright-text-color; }
+            & { font-weight: $font-weight-regular; }
             &:hover {
                 color: $white;
             }

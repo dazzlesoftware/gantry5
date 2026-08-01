@@ -1,12 +1,12 @@
 %item-container {
     padding: $content-margin $content-padding;
     @include responsive-font($responsive-font-size - 0.3, $core-font-size - 0.3, 16px, false);
-    font-weight: $font-weight-regular;
-    line-height: 1;
-    letter-spacing: 0.1em;
-    white-space: normal;
+    & { font-weight: $font-weight-regular; }
+    & { line-height: 1; }
+    & { letter-spacing: 0.1em; }
+    & { white-space: normal; }
     @include word-wrap(break-word);
-    transition: 0.35s ease;
+    & { transition: 0.35s ease; }
 }
 
 %dropdown-column {
@@ -106,8 +106,8 @@
                                 right: -10px;
                             }
 
-                            border-radius: 7px;
-                            background: $menustyle-text-color-active;
+                            & { border-radius: 7px; }
+                            & { background: $menustyle-text-color-active; }
                         }
                     }
                 }

@@ -15,7 +15,7 @@
         position: absolute;
         font-weight: $font-weight-semibold;
         @include responsive-font($responsive-font-size + 12, $core-font-size + 4, false, false);
-        line-height: 0;
+        & { line-height: 0; }
 
         .dir-rtl & {
             left: auto;

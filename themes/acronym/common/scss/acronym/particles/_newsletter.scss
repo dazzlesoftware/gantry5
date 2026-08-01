@@ -85,7 +85,7 @@
                 border: 0;
                 margin-top: 5px;
             }
-            white-space: nowrap;
+            & { white-space: nowrap; }
         }
 
         .g-newsletter-button-icon {

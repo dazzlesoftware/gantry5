@@ -328,8 +328,8 @@
         margin-left: 0 !important;
     }
 
-    position: relative;
-    z-index: 2;
+    & { position: relative; }
+    & { z-index: 2; }
 
     &.size-100 {
         flex-basis: auto;

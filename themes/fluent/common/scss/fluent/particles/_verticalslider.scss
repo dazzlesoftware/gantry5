@@ -80,8 +80,8 @@
             .g-verticalslider-small-title {
                 color: $black;
                 @include responsive-font($responsive-font-size + 1, $core-font-size + 1.5, false, false);
-                font-weight: $font-weight-bold;
-                line-height: 1.1;
+                & { font-weight: $font-weight-bold; }
+                & { line-height: 1.1; }
             }
 
             .g-verticalslider-description {

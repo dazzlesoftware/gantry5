@@ -26,7 +26,7 @@
     @include breakpoint(mobile-only) {
       margin-top: -8vw;
     }
-    pointer-events: none;
+    & { pointer-events: none; }
     .g-content {
         padding: 0;
         margin: 0;

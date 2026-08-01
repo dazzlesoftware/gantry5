@@ -21,7 +21,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);
-            font-weight: $font-weight-black;
+            & { font-weight: $font-weight-black; }
 
             @include breakpoint(mobile-only) {
                 margin: 0 0 ($content-margin * 2);

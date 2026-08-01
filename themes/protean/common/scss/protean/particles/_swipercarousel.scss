@@ -342,8 +342,8 @@
         margin-left: 0 !important;
     }
 
-    position: relative;
-    z-index: 2;
+    & { position: relative; }
+    & { z-index: 2; }
 
     &.size-100 {
         flex-basis: auto;
@@ -414,8 +414,8 @@
                 @include breakpoint(tablet-range) {
                     left: 35%;
                 }
-                position: relative;
-                padding: 23rem 0 3rem 0;
+                & { position: relative; }
+                & { padding: 23rem 0 3rem 0; }
                 @include breakpoint(mobile-only) {
                     left: auto;
                     text-align: center;
@@ -433,7 +433,7 @@
                 @include breakpoint(mobile-only) {
                     padding-bottom: $content-margin;
                 }
-                margin: 0;
+                & { margin: 0; }
             }
             .g-swipercarousel-item-link {
                 display: inline-block;
@@ -519,10 +519,10 @@
         @include breakpoint(mobile-only) {
             position: relative;
         }
-        width: 100%;
-        bottom: 0;
-        z-index: 2;
-        text-align: center;
+        & { width: 100%; }
+        & { bottom: 0; }
+        & { z-index: 2; }
+        & { text-align: center; }
         .g-swipercarousel-panel-container {
             margin: 0;
             display: flex;
@@ -539,8 +539,8 @@
                     width: 6rem;
                     min-width: 6rem;
                 }
-                overflow: hidden;
-                text-align:right;
+                & { overflow: hidden; }
+                & { text-align:right; }
                 .dir-rtl & {
                   text-align:left;
                 }
@@ -548,9 +548,9 @@
                   text-align: center !important;
                   width: 100%;
                 }
-                transition: all 0.5s ease-out;
-                background-color: lighten($black, 20%);
-                border-left: 1px solid lighten($black, 30%);
+                & { transition: all 0.5s ease-out; }
+                & { background-color: lighten($black, 20%); }
+                & { border-left: 1px solid lighten($black, 30%); }
                 &:first-child {
                     border-radius: 1rem 0 0 0;
 
@@ -584,7 +584,7 @@
                     @include breakpoint(mobile-only) {
                         min-width: 15rem;
                     }
-                    background: transparentize(lighten($black, 20%), 0.20);
+                    & { background: transparentize(lighten($black, 20%), 0.20); }
                 }
                 &.selected {
                     min-width: 20rem;
@@ -595,7 +595,7 @@
                     @include breakpoint(mobile-only) {
                         min-width: 15rem;
                     }
-                    background: $accent-color-1;
+                    & { background: $accent-color-1; }
                 }
                 .g-swipercarousel-panel-title {
                     vertical-align: middle;
@@ -608,8 +608,8 @@
                     @include breakpoint(mobile-only) {
                         font-size: $core-font-size + 0.5;
                     }
-                    font-weight: $font-weight-light;
-                    margin-bottom: 0;
+                    & { font-weight: $font-weight-light; }
+                    & { margin-bottom: 0; }
                 }
                 .fa {
                     color: $white;
@@ -650,9 +650,9 @@
                       float: none !important;
                       padding: 0.5rem;
                     }
-                    width: auto;
-                    height: auto;
-                    vertical-align: middle;
+                    & { width: auto; }
+                    & { height: auto; }
+                    & { vertical-align: middle; }
                 }
             }
         }
@@ -682,11 +682,11 @@
                 line-height: 39px;
                 font-size: 1rem;
             }
-            color:  transparentize($base-background, 0.50);
-            text-align: center;
-            margin: auto;
-            border-radius: 50%;
-            border: 2px solid transparentize($base-background, 0.50);
+            & { color:  transparentize($base-background, 0.50); }
+            & { text-align: center; }
+            & { margin: auto; }
+            & { border-radius: 50%; }
+            & { border: 2px solid transparentize($base-background, 0.50); }
 
             $swiper-navigation-position: 1rem;
 
@@ -1040,10 +1040,10 @@
         @include breakpoint(mobile-only) {
             width: 100%;
         }
-        background: $white;
-        border: 2px solid darken($base-background, 10%);
-        padding: $content-padding;
-        border-radius: $border-radius;
+        & { background: $white; }
+        & { border: 2px solid darken($base-background, 10%); }
+        & { padding: $content-padding; }
+        & { border-radius: $border-radius; }
 
         .swiper-slide {
             img {
@@ -1100,10 +1100,10 @@
         @include breakpoint(mobile-only) {
             width: 100%;
         }
-        height: 100%;
-        background: $base-background;
-        padding: 0;
-        border-radius: $border-radius 0 0 $border-radius;
+        & { height: 100%; }
+        & { background: $base-background; }
+        & { padding: 0; }
+        & { border-radius: $border-radius 0 0 $border-radius; }
         .dir-rtl & {
             border-radius: 0 $border-radius $border-radius 0;
         }
@@ -1347,5 +1347,5 @@
     }
 
     transition: all 0.2s ease-out;
-    top: -($content-margin + $content-padding + 0.95rem);
+    top: (-1 * ($content-margin + $content-padding + 0.95rem));
 }

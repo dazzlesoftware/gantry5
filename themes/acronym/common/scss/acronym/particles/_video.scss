@@ -144,7 +144,7 @@
     color: $white;
     text-align: center;
     @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
-    padding: $content-padding + 1 0;
+    & { padding: $content-padding + 1 0; }
     @include breakpoint(mobile-only) {
       padding: $content-padding 0;
     }

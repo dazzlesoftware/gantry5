@@ -295,7 +295,7 @@ dl.article-info {
             font-size: $core-font-size;
         }
 
-        line-height: $core-line-height + 0.5;
+        & { line-height: $core-line-height + 0.5; }
     }
 }
 

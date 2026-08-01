@@ -24,7 +24,7 @@
 }
 
 .g-blockcontent-subcontent {
-    margin: -($content-margin + $content-padding);
+    margin: (-1 * ($content-margin + $content-padding));
 
     @include breakpoint(mobile-only) {
       margin: -$content-margin;

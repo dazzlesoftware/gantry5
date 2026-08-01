@@ -24,8 +24,8 @@ h2 {
 
     &.g-title {
         @include responsive-font($responsive-font-size + 0.4, $core-font-size, false, false);
-        font-weight: $font-weight-medium;
-        color: $black;
+        & { font-weight: $font-weight-medium; }
+        & { color: $black; }
     }
 }
 

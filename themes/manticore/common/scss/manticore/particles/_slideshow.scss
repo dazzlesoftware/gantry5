@@ -31,8 +31,8 @@
 
                 .g-slideshow-top-title {
                     @include responsive-font($responsive-font-size, $core-font-size, false, false);
-                    font-weight: $font-weight-bold;
-                    line-height: 1.2;
+                    & { font-weight: $font-weight-bold; }
+                    & { line-height: 1.2; }
 
                     @include breakpoint(mobile-only) {
                         font-size: $core-font-size + 0.5;
@@ -42,11 +42,11 @@
 
                 .g-slideshow-main-title {
                     @include responsive-font($responsive-font-size + 2, $core-font-size + 1, false, false);
-                    font-weight: $font-weight-bold;
-                    font-family: get-font-family($font-family-title);
-                    line-height: 1.2;
-                    max-width: 60%;
-                    margin-bottom: 3rem;
+                    & { font-weight: $font-weight-bold; }
+                    & { font-family: get-font-family($font-family-title); }
+                    & { line-height: 1.2; }
+                    & { max-width: 60%; }
+                    & { margin-bottom: 3rem; }
 
                     @include breakpoint(mobile-only) {
                         font-size: $core-font-size + 1.25;

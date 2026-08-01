@@ -106,13 +106,13 @@
             text-align: left;
             text-transform: none;
             @include responsive-font($responsive-font-size, $core-font-size, false, false);
-            line-height: $core-line-height*.9;
-            font-weight: $font-weight-medium;
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-            letter-spacing: .2em;
-            padding: 0;
-            color: $grey;
+            & { line-height: $core-line-height*.9; }
+            & { font-weight: $font-weight-medium; }
+            & { margin-top: 1rem; }
+            & { margin-bottom: 2rem; }
+            & { letter-spacing: .2em; }
+            & { padding: 0; }
+            & { color: $grey; }
 
             .dir-rtl & {
                 text-align: right;
@@ -127,16 +127,16 @@
 
         .g-simplecontent-item-content-title {
             @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
-            font-weight: $font-weight-medium;
-            line-height: 1.5;
-            max-width: 800px;
-            font-family: get-font-family($font-family-title);
+            & { font-weight: $font-weight-medium; }
+            & { line-height: 1.5; }
+            & { max-width: 800px; }
+            & { font-family: get-font-family($font-family-title); }
         }
 
         .g-simplecontent-item-main-content {
             @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.2, false, false);
-            color: $grey;
-            font-family: get-font-family($font-family-default);
+            & { color: $grey; }
+            & { font-family: get-font-family($font-family-default); }
         }
 
         .g-simplecontent-item-readmore-container {

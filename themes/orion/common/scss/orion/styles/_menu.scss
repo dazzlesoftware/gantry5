@@ -1,12 +1,12 @@
 %item-container {
     padding: $content-margin $content-padding;
     @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, 18px, false);
-    font-weight: $font-weight-medium;
-    line-height: 1;
-    letter-spacing: 0.1em;
-    white-space: normal;
+    & { font-weight: $font-weight-medium; }
+    & { line-height: 1; }
+    & { letter-spacing: 0.1em; }
+    & { white-space: normal; }
     @include word-wrap(break-word);
-    transition: 0.35s ease;
+    & { transition: 0.35s ease; }
 }
 
 %dropdown-column {

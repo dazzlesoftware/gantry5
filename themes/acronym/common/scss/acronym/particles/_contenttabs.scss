@@ -232,10 +232,10 @@
                             @include breakpoint(mobile-only) {
                               font-size: $core-font-size + 0.2;
                             }
-                            font-weight: $font-weight-light;
-                            color: $white;
-                            border: none;
-                            padding: 0;
+                            & { font-weight: $font-weight-light; }
+                            & { color: $white; }
+                            & { border: none; }
+                            & { padding: 0; }
                             @include breakpoint(mobile-only) {
                               margin: 0;
                             }
@@ -260,7 +260,7 @@
                                 @include breakpoint(mobile-only) {
                                   font-size: $core-font-size;
                                 }
-                                padding-bottom: $content-padding * 0.5;
+                                & { padding-bottom: $content-padding * 0.5; }
                             }
                         }
                     }

@@ -10,9 +10,9 @@
         @include breakpoint(mobile-only) {
             flex-direction: column;
         }
-        flex-flow: row wrap;
-        @include align-content(flex-end);
-        width: 100%;
+        & { flex-flow: row wrap; }
+        & { align-content: flex-end; }
+        & { width: 100%; }
     }
 
     // Card

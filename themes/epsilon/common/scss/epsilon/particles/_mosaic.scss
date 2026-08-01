@@ -107,7 +107,7 @@
 
     // Grid Settings
     .g-mosaic-grid {
-        margin: 0 -($content-padding - 0.5);
+        margin: 0 (-1 * ($content-padding - 0.5));
         overflow: visible !important;
 
         // Item & Item content

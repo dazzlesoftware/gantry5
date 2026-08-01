@@ -721,7 +721,7 @@
         .g-pricingtable-plan {
             padding: $content-padding 0 0;
             @include responsive-font($responsive-font-size, $core-font-size, false, false);
-            font-weight: $font-weight-regular;
+            & { font-weight: $font-weight-regular; }
 
             a {
                 color: inherit;
@@ -758,8 +758,8 @@
 
         .g-pricingtable-item {
             @include responsive-font($responsive-font-size - 0.15, $core-font-size, false, false);
-            font-weight: $font-weight-regular;
-            padding-bottom: $content-margin;
+            & { font-weight: $font-weight-regular; }
+            & { padding-bottom: $content-margin; }
 
             // Rotation
             @include breakpoint(mobile-only) {

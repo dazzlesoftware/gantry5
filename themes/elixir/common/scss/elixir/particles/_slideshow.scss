@@ -244,9 +244,9 @@
 
                 .g-slideshow-description1 {
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                    font-weight: $font-weight-regular;
-                    line-height: 1.75;
-                    font-family: get-font-family($font-family-default);
+                    & { font-weight: $font-weight-regular; }
+                    & { line-height: 1.75; }
+                    & { font-family: get-font-family($font-family-default); }
 
                     span {
                         background: $base-background;
@@ -268,10 +268,10 @@
 
                 .g-slideshow-description2 {
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                    font-weight: $font-weight-regular;
-                    line-height: 1.75;
-                    font-family: get-font-family($font-family-default);
-                    position: relative;
+                    & { font-weight: $font-weight-regular; }
+                    & { line-height: 1.75; }
+                    & { font-family: get-font-family($font-family-default); }
+                    & { position: relative; }
 
                     span {
                         background: $base-background;
@@ -293,9 +293,9 @@
 
                 .g-slideshow-main-title {
                     @include responsive-font($responsive-font-size + 2, $core-font-size + 1, false, false);
-                    font-weight: $font-weight-bold;
-                    font-family: get-font-family($font-family-title);
-                    line-height: 1.3;
+                    & { font-weight: $font-weight-bold; }
+                    & { font-family: get-font-family($font-family-title); }
+                    & { line-height: 1.3; }
 
                     span {
                         background: $base-background;

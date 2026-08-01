@@ -25,9 +25,9 @@
    }
    span.g-promo-headline {
       @include responsive-font($responsive-font-size - 0.1, $core-font-size - 0.1, false, false);
-      background: set-color($base-text-color);
-      padding: 0.4rem 1rem;
-      font-weight: $font-weight-medium;
+      & { background: set-color($base-text-color); }
+      & { padding: 0.4rem 1rem; }
+      & { font-weight: $font-weight-medium; }
    }
 
    h1 {
@@ -37,15 +37,15 @@
       color: set-color($base-text-color);
       span.g-promo-details {
          @include responsive-font($responsive-font-size + 1, $core-font-size + 0.5, false, false);
-         font-weight: $font-weight-semibold;
+         & { font-weight: $font-weight-semibold; }
       }
    }
 
-   display: flex;
-   justify-content: space-between;
-   flex-direction: column;
-   align-items: flex-start;
-   padding: $content-padding * 2;
+   & { display: flex; }
+   & { justify-content: space-between; }
+   & { flex-direction: column; }
+   & { align-items: flex-start; }
+   & { padding: $content-padding * 2; }
 
    @include breakpoint(small-mobile-range) {
       padding: $content-padding; 

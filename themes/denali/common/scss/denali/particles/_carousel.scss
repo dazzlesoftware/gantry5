@@ -24,8 +24,8 @@
                         transform: translateY(-50%);
                         font-weight: $font-weight-black;
                         @include responsive-font($responsive-font-size + 2.25, $core-font-size + 1, false, false);
-                        text-align: center;
-                        line-height: $core-line-height - 0.5;
+                        & { text-align: center; }
+                        & { line-height: $core-line-height - 0.5; }
                     }
 
                     img {
@@ -53,8 +53,8 @@
             .fa {
                 width: 100%;
                 @include responsive-font($responsive-font-size + 0.5, $core-font-size + 0.5, false, false);
-                font-weight: $font-weight-regular;
-                line-height: 1.5;
+                & { font-weight: $font-weight-regular; }
+                & { line-height: 1.5; }
             }
 
             &:hover {

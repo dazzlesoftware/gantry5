@@ -8,10 +8,10 @@
             text-align: left;
             text-transform: none;
             @include responsive-font($responsive-font-size + 1.4, $core-font-size + 1, false, false);
-            line-height: $core-line-height*.9;
-            margin-bottom: 2rem;
-            padding: 0;
-            letter-spacing: 0;
+            & { line-height: $core-line-height*.9; }
+            & { margin-bottom: 2rem; }
+            & { padding: 0; }
+            & { letter-spacing: 0; }
 
             .dir-rtl & {
                 text-align: right;

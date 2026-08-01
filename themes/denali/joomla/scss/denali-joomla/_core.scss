@@ -4,15 +4,15 @@
     font-weight: $font-weight-semibold;
     color: darken($accent-color-1, 30%);
     @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
-    background: $accent-color-1;
-    margin: 0 0 0.5rem 0;
-    border: 2px solid transparent;
-    padding: 0.4rem 2rem;
-    padding-bottom: 0.45rem;
-    border-radius: 2rem;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $accent-color-1; }
+    & { margin: 0 0 0.5rem 0; }
+    & { border: 2px solid transparent; }
+    & { padding: 0.4rem 2rem; }
+    & { padding-bottom: 0.45rem; }
+    & { border-radius: 2rem; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: transparent;
@@ -311,7 +311,7 @@ dl.article-info {
             font-size: $core-font-size;
         }
 
-        line-height: $core-line-height + 0.5;
+        & { line-height: $core-line-height + 0.5; }
     }
 }
 

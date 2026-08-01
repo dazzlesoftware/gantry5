@@ -138,14 +138,14 @@
                 position: absolute;
                 font-weight: $font-weight-medium;
                 @include responsive-font($responsive-font-size + .25, $core-font-size, false, false);
-                line-height: $core-line-height + 0.13;
-                padding: 0 .5rem;
-                margin: 0 2rem;
-                color: $white;
-                text-shadow: 0 0 8px fade-out($black, 0.95);
-                bottom: 3rem;
-                left: 0;
-                width: 90%;
+                & { line-height: $core-line-height + 0.13; }
+                & { padding: 0 .5rem; }
+                & { margin: 0 2rem; }
+                & { color: $white; }
+                & { text-shadow: 0 0 8px fade-out($black, 0.95); }
+                & { bottom: 3rem; }
+                & { left: 0; }
+                & { width: 90%; }
 
                 @include breakpoint(mobile-only) {
                     font-size: $core-font-size + 0.5;

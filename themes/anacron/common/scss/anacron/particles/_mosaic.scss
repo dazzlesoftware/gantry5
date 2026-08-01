@@ -37,9 +37,9 @@
         // Title
         .g-mosaic-title {
             @include responsive-font($responsive-font-size + 1.7, $core-font-size, false, false);
-            font-weight: $font-weight-bold;
-            color: $base-text-color;
-            padding-right: $content-padding;
+            & { font-weight: $font-weight-bold; }
+            & { color: $base-text-color; }
+            & { padding-right: $content-padding; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -143,7 +143,7 @@
 
     // Grid Settings
     .g-mosaic-grid {
-        margin: 0 -($content-padding - 0.5);
+        margin: 0 (-1 * ($content-padding - 0.5));
         overflow: visible !important;
 
         // Item & Item content

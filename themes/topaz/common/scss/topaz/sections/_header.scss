@@ -220,16 +220,16 @@
                     margin-right: $content-padding;
                 }
             }
-            font: normal normal normal 14px/1 FontAwesome;
-            font-size: inherit;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            content: '\f002';
-            color: $accent-color-4;
-            position: absolute;
-            font-size: 1.5rem;
-            transform: scaleX(-1);
+            & { font: normal normal normal 14px/1 FontAwesome; }
+            & { font-size: inherit; }
+            & { text-rendering: auto; }
+            & { -webkit-font-smoothing: antialiased; }
+            & { -moz-osx-font-smoothing: grayscale; }
+            & { content: '\f002'; }
+            & { color: $accent-color-4; }
+            & { position: absolute; }
+            & { font-size: 1.5rem; }
+            & { transform: scaleX(-1); }
         }
     }
 
@@ -255,7 +255,7 @@
             font-size: $core-font-size + 1.2rem;
         }
 
-        font-weight: $font-weight-regular;
+        & { font-weight: $font-weight-regular; }
 
         @include breakpoint(tablet-range) {
             font-size: $core-font-size + 1.8rem;
@@ -305,7 +305,7 @@
             font-size: $core-font-size;
         }
 
-        color: $accent-color-4;
+        & { color: $accent-color-4; }
     }
 
     // Main Nav

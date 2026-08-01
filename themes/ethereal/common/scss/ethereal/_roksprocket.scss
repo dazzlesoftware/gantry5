@@ -367,7 +367,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        @include flex-shrink(0);
+        flex-shrink: 0;
         flex-basis: 100%;
         @include breakpoint(mobile-only) {
             display: block;
@@ -378,8 +378,8 @@
     &.layout-stories {
         .sprocket-features-title {
             @include g-swiper-title;
-            font-weight: normal;
-            font-family: get-font-family($font-family-title);
+            & { font-weight: normal; }
+            & { font-family: get-font-family($font-family-title); }
         }
         @include breakpoint(mobile-only) {
             [class^="sprocket-features-index-"] {
@@ -553,7 +553,7 @@
                 &.next {
                     right: 0;
                     &:before {
-                        content: " →";
+                        content: " â†’";
                         right: 16px;
                         position: absolute;
                     }
@@ -561,7 +561,7 @@
                 &.prev {
                     left: 0;
                     &:before {
-                        content: "← ";
+                        content: "â† ";
                         left: 16px;
                         position: absolute;
                     }

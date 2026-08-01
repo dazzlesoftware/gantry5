@@ -37,8 +37,8 @@
                 h1 {
                     color: $white;
                     @include responsive-font($responsive-font-size + 1.8, $core-font-size + 0.5, false, false);
-                    font-weight: $font-weight-light;
-                    text-transform: uppercase;
+                    & { font-weight: $font-weight-light; }
+                    & { text-transform: uppercase; }
                 }
                 span{
                     text-transform: uppercase;

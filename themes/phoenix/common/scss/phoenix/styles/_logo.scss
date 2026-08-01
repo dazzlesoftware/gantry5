@@ -4,8 +4,8 @@
     position: relative;
     font-weight: $font-weight-extrabold;
     @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.3, false, false);
-    box-shadow: none !important;
-    line-height: normal;
+    & { box-shadow: none !important; }
+    & { line-height: normal; }
     @include breakpoint(mobile-only) {
         margin-left: 2rem;
     }

@@ -106,12 +106,12 @@
 
                         .g-testimonialslider-carousel-item-author {
                             @include responsive-font($responsive-font-size, $core-font-size, false, false);
-                            font-weight: $font-weight-medium;
+                            & { font-weight: $font-weight-medium; }
                         }
 
                         .g-testimonialslider-carousel-item-author-title {
                             @include responsive-font($responsive-font-size - 0.15, $core-font-size - 0.15, false, false);
-                            color: lighten($base-text-color, 60%);
+                            & { color: lighten($base-text-color, 60%); }
                         }
                     }
                 }

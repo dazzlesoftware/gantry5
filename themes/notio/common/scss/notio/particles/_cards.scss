@@ -18,11 +18,11 @@
 
     .g-cards-subcontent-title {
         @include responsive-font($responsive-font-size + 0.4, $core-font-size + 1, false, false);
-        line-height: $core-line-height - 0.4;
+        & { line-height: $core-line-height - 0.4; }
     }
     .g-cards-subcontent-description {
         @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
-        line-height: $core-line-height - 0.1;
+        & { line-height: $core-line-height - 0.1; }
     }
 
     .g-cards-subcontent-block {
@@ -42,8 +42,8 @@
             @include breakpoint(tablet-range) {
                 margin: $content-padding;
             }
-            display: flex;
-            align-items: center;
+            & { display: flex; }
+            & { align-items: center; }
             .g-cards-subcontent-footer-id {
                 margin-left: $content-padding;
                 .dir-rtl & {

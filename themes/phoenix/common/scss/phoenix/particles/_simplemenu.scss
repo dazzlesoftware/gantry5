@@ -24,7 +24,7 @@
             font-weight: $font-weight-bold;
             font-family: get-font-family($font-family-title);
             @include responsive-font($responsive-font-size, $core-font-size, false, false);
-            text-transform: uppercase;
+            & { text-transform: uppercase; }
 
             @include breakpoint(mobile-only) {
                 margin: 0 0 ($content-margin * 2);

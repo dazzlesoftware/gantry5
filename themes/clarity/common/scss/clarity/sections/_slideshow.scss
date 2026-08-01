@@ -18,15 +18,15 @@
 
     .g-simplecontent-item-content-title {
         @include responsive-font($responsive-font-size, $core-font-size, false, false);
-        text-transform: uppercase;
-        opacity: 0.5;
-        letter-spacing: 4px;
+        & { text-transform: uppercase; }
+        & { opacity: 0.5; }
+        & { letter-spacing: 4px; }
     }
 
     .g-simplecontent-item-leading-content {
         @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.3, false, false);
-        font-weight: $font-weight-bold;
-        line-height: normal;
+        & { font-weight: $font-weight-bold; }
+        & { line-height: normal; }
     }
 
     .g-simplecontent .g-simplecontent-layout-header {

@@ -5,7 +5,7 @@
     padding-left: $content-margin;
     white-space: normal;
     @include word-wrap(break-word);
-    transition: 0.35s ease;
+    & { transition: 0.35s ease; }
 }
 
 %dropdown-column {
@@ -98,7 +98,7 @@
 
                 > .g-menu-item-content {
                     display: inline-block;
-                    margin: 0 -($content-margin*1.5);
+                    margin: 0 (-1 * ($content-margin*1.5));
                     padding: 0 $content-margin*1.5;
                     vertical-align: middle;
                     word-break: normal;

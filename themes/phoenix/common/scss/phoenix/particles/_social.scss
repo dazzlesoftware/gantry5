@@ -9,7 +9,7 @@
 
         a {
             @include responsive-font($responsive-font-size, $core-font-size, false, false);
-            border-radius: 2px;
+            & { border-radius: 2px; }
 
             @include breakpoint(tablet-range) {
                 font-size: $core-font-size + 0.15;

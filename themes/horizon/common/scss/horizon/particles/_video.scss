@@ -3,19 +3,19 @@
         padding-bottom: 0;
         margin-bottom: 0;
         @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
-        line-height: normal;
-        margin-bottom: 3rem;
-        margin: 0 auto;
-        margin-bottom: $content-padding;
-        font-weight: $font-weight-extrabold;
-        text-align: center;
+        & { line-height: normal; }
+        & { margin-bottom: 3rem; }
+        & { margin: 0 auto; }
+        & { margin-bottom: $content-padding; }
+        & { font-weight: $font-weight-extrabold; }
+        & { text-align: center; }
     }
 
     .g-headertext {
         font-weight: $font-weight-medium;
         @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-        text-align: center;
-        margin-bottom: $content-padding;
+        & { text-align: center; }
+        & { margin-bottom: $content-padding; }
     }
 
     .g-description {
@@ -197,15 +197,15 @@
     @include breakpoint(small-mobile-range) {
         bottom: 1rem;
     }
-    width: 100%;
+    & { width: 100%; }
 
     .g-video-caption {
         @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-        font-weight: $font-weight-medium;
+        & { font-weight: $font-weight-medium; }
     }
     .g-video-caption2 {
         @include responsive-font($responsive-font-size + 2, $core-font-size + 0.3, false, false);
-        font-weight: $font-weight-semibold;
+        & { font-weight: $font-weight-semibold; }
 
     }
 }

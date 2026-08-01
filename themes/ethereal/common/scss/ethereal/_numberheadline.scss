@@ -43,8 +43,8 @@
         content: '';
         height: 1px;
         position: absolute;
-        left: -($content-padding);
-        right: -($content-padding);
+        left: (-1 * ($content-padding));
+        right: (-1 * ($content-padding));
     }
 	@include breakpoint(tablet-range) {
 		margin: 0 -0.5rem -0.5rem;

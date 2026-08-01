@@ -27,7 +27,7 @@
                 @include breakpoint(mobile-only) {
                     font-size: $core-font-size;
                 }
-                color: lighten($base-text-color, 20%);
+                & { color: lighten($base-text-color, 20%); }
             }
             label {
                 margin-bottom: $content-margin;
@@ -178,7 +178,7 @@
         .g-simplebooking-item-container {
             display: flex;
             align-items: center;
-            @include align-content(stretch);
+            align-content: stretch;
             padding: $content-padding;
             flex-flow: row nowrap;
             @include breakpoint(mobile-only) {
@@ -187,7 +187,7 @@
                 width: auto;
                 height: auto;
             }
-            border-bottom: 2px solid $border-color-light;
+            & { border-bottom: 2px solid $border-color-light; }
 
             &.g-simplebooking-form {
                 display: none;
@@ -234,7 +234,7 @@
                     width: auto;
                     height: auto;
                 }
-                transition: all 0.35s;
+                & { transition: all 0.35s; }
                 &:before {
                     color: $white;
                     background: linear-gradient(-45deg, transparentize($accent-color-2, 0.35) 50%, transparentize($accent-color-1, 0.35) 50%);

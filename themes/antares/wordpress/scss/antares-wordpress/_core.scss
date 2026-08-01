@@ -25,7 +25,7 @@
 
         // Entries
         .entries {
-            margin: 0 -$content-padding;
+            margin: 0 (-$content-padding);
 
             .g-block {
                 padding: 0 $content-padding;

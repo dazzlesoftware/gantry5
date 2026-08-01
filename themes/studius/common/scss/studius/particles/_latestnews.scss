@@ -30,10 +30,10 @@
         .g-latestnews-title {
             display: block;
             @include responsive-font($responsive-font-size, $core-font-size, false, false);
-            color: $base-text-color;
-            flex-grow: 1;
-            font-weight: $font-weight-light;
-            padding-right: $content-padding;
+            & { color: $base-text-color; }
+            & { flex-grow: 1; }
+            & { font-weight: $font-weight-light; }
+            & { padding-right: $content-padding; }
 
             @include breakpoint(mobile-only) {
                 text-align: center;
@@ -50,7 +50,7 @@
                 display: block;
                 padding-right: $content-padding;
                 @include responsive-font($responsive-font-size + 1, $core-font-size, false, false);
-                font-weight: $font-weight-regular;
+                & { font-weight: $font-weight-regular; }
 
                 @include breakpoint(mobile-only) {
                     text-align: center;
@@ -113,12 +113,12 @@
                 cursor: pointer;
                 padding: $content-margin - .5 $content-padding - .6;
                 @include responsive-font($responsive-font-size + 0.4, $core-font-size, false, false);
-                font-weight: $font-weight-semibold;
-                position: relative;
-                border-radius: 12px;
-                text-transform: capitalize;
-                border: 2px solid transparent;
-                opacity: 0.4;
+                & { font-weight: $font-weight-semibold; }
+                & { position: relative; }
+                & { border-radius: 12px; }
+                & { text-transform: capitalize; }
+                & { border: 2px solid transparent; }
+                & { opacity: 0.4; }
 
                 @include breakpoint(mobile-only) {
                     color: set-color($base-background);
@@ -171,11 +171,11 @@
     // Grid Settings
     .g-latestnews-grid {
         position: relative;
-        margin: 0 -($content-padding);
+        margin: 0 (-1 * ($content-padding));
         overflow: visible !important;
 
         @include breakpoint(mobile-only) {
-            margin: 0 -$content-padding;
+            margin: 0 (-$content-padding);
         }
 
         // Item & Item content
@@ -222,7 +222,7 @@
 
                         .g-latestnews-grid-item-title {
                             @include responsive-font($responsive-font-size + 1, $core-font-size + 0.2, false, false);
-                            line-height: $core-line-height - .06;
+                            & { line-height: $core-line-height - .06; }
 
                             @include breakpoint (desktop-range) {
                                 font-size: $core-font-size + .2;
@@ -285,7 +285,7 @@
                 text-align: left;
                 z-index: 3;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                transition: color 0.5s;
+                & { transition: color 0.5s; }
 
                 .dir-rtl & {
                     text-align: right;
@@ -295,8 +295,8 @@
                     font-weight: $font-weight-bold;
                     font-family: get-font-family($font-family-title);
                     @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.2, false, false);
-                    margin-top: $content-padding;
-                    line-height: $core-line-height - 0.4;
+                    & { margin-top: $content-padding; }
+                    & { line-height: $core-line-height - 0.4; }
 
                     &:hover {
                         text-decoration: underline;
@@ -321,18 +321,18 @@
                 .g-latestnews-grid-item-case {
                     color: $black;
                     @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
-                    font-weight: $font-weight-regular;
-                    background: transparent;
-                    display: inline-block;
-                    letter-spacing: 3px;
-                    clear: both;
-                    margin-bottom: $content-margin - 0.3;
-                    text-transform: uppercase;
+                    & { font-weight: $font-weight-regular; }
+                    & { background: transparent; }
+                    & { display: inline-block; }
+                    & { letter-spacing: 3px; }
+                    & { clear: both; }
+                    & { margin-bottom: $content-margin - 0.3; }
+                    & { text-transform: uppercase; }
                 }
 
                 .g-latestnews-grid-item-description {
                     @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
-                    font-weight: $font-weight-light;
+                    & { font-weight: $font-weight-light; }
                     @include breakpoint(mobile-only) {
                         padding: $content-padding * 2;
                     }

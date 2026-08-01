@@ -57,7 +57,7 @@
   &:before {
     content: "";
     position: absolute;
-    top: -($width / 4);
+    top: (-1 * ($width / 4));
     left: 0;
     width: 0;
     height: 0;
@@ -68,7 +68,7 @@
   &:after {
     content: "";
     position: absolute;
-    bottom: -($width / 4);
+    bottom: (-1 * ($width / 4));
     left: 0;
     width: 0;
     height: 0;

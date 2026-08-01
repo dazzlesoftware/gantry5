@@ -5,10 +5,10 @@
     &.cols-1, &.cols-2, &.cols-3, &.cols-4, &.cols-5, &.cols-6 {
         .list-blog-row {
             display: flex;
+            margin: -$content-padding;
             @include breakpoint(mobile-only) {
               flex-direction: column;
             }
-            margin: -$content-padding;
             .list-item {
                 flex: 1;
                 flex-basis: 0;

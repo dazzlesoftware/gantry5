@@ -4,13 +4,13 @@
     font-weight: $font-weight-semibold;
     color: $white !important;
     @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
-    background: $accent-color-1;
-    margin: 0 0 0.5rem 0;
-    padding: 0.45rem 2rem;
-    border-radius: $border-radius;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $accent-color-1; }
+    & { margin: 0 0 0.5rem 0; }
+    & { padding: 0.45rem 2rem; }
+    & { border-radius: $border-radius; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: linear-gradient(lighten($accent-color-2, 5%), $accent-color-1);

@@ -197,14 +197,14 @@
             display: block;
             padding-top: 2rem;
         }
-        text-align: center;
-        -webkit-transform: translate3d(0, 0, 0);
-        padding: $content-padding;
-        margin: $content-margin;
-        font-size: $core-font-size + 1;
-        line-height: $core-line-height - 0.5;
-        font-weight: $font-weight-regular;
-        font-style: italic;
+        & { text-align: center; }
+        & { -webkit-transform: translate3d(0, 0, 0); }
+        & { padding: $content-padding; }
+        & { margin: $content-margin; }
+        & { font-size: $core-font-size + 1; }
+        & { line-height: $core-line-height - 0.5; }
+        & { font-weight: $font-weight-regular; }
+        & { font-style: italic; }
 
         i {
             display: block;
@@ -333,20 +333,20 @@
                 padding: 0;
             }
         }
-        flex: 0 1 40%;
-        width: 40%;
+        & { flex: 0 1 40%; }
+        & { width: 40%; }
         @include breakpoint(mobile-only) {
             flex: 0 1 100%;
             width: 100%;
         }
-        -webkit-align-items: center;
-        display: -webkit-flex;
-        -webkit-align-items: center;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        -webkit-justify-content: flex-end;
-        justify-content: flex-end;
+        & { -webkit-align-items: center; }
+        & { display: -webkit-flex; }
+        & { -webkit-align-items: center; }
+        & { display: flex; }
+        & { align-items: center; }
+        & { white-space: nowrap; }
+        & { -webkit-justify-content: flex-end; }
+        & { justify-content: flex-end; }
         @include breakpoint(mobile-only) {
             -webkit-justify-content: center;
             justify-content: center;
@@ -391,7 +391,7 @@
     @include breakpoint(small-mobile-range) {
         width: $breakpoints-mobile-container;
     }
-    padding: $content-padding + $content-margin;
+    & { padding: $content-padding + $content-margin; }
 
     h2.g-title {
         font-family: get-font-family($font-family-promo);
@@ -428,9 +428,9 @@
         @include breakpoint(mobile-only) {
             width: 50%;
         }
-        display: inline-block;
-        cursor: pointer;
-        margin-bottom: 40px;
+        & { display: inline-block; }
+        & { cursor: pointer; }
+        & { margin-bottom: 40px; }
         &:after {
             content: '';
             background: darken($base-background, 5%);
@@ -478,7 +478,7 @@
     left: 0;
     z-index: 2;
     transition: all 0.2s ease-out;
-    top: -($content-margin + $content-padding + 0.95rem);
+    top: (-1 * ($content-margin + $content-padding + 0.95rem));
 }
 
 .g-swipercarousel {

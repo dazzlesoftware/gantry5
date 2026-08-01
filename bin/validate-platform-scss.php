@@ -70,6 +70,11 @@ foreach ($themeDirectories as $themeDirectory) {
 
         try {
             $compiler = new Compiler();
+            if ($strictWarnings && method_exists($compiler, 'setVerbose')) {
+                // Report every deprecation instead of scssphp's per-type cap so
+                // one strict validation pass identifies the complete backlog.
+                $compiler->setVerbose(true);
+            }
             $logger = new class implements LoggerInterface {
                 /** @var list<string> */
                 public array $warnings = [];

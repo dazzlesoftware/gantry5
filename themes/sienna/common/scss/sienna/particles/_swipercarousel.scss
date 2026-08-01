@@ -338,8 +338,8 @@
         margin-left: 0 !important;
     }
 
-    position: relative;
-    z-index: 2;
+    & { position: relative; }
+    & { z-index: 2; }
 
     &.size-100 {
         flex-basis: auto;
@@ -414,8 +414,8 @@
                 @include breakpoint(small-mobile-range) {
                     display: none;
                 }
-                margin: 0 $content-margin;
-                padding: 0 $content-margin;
+                & { margin: 0 $content-margin; }
+                & { padding: 0 $content-margin; }
             }
 
             .g-swipercarousel-item-title {
@@ -428,11 +428,11 @@
                 @include breakpoint(mobile-only) {
                     font-size: $core-font-size + 1;
                 }
-                font-weight: $font-weight-light;
-                line-height: $core-line-height - 0.4;
-                margin: 0;
-                margin-left: -8px;
-                padding-bottom: 1.2rem;
+                & { font-weight: $font-weight-light; }
+                & { line-height: $core-line-height - 0.4; }
+                & { margin: 0; }
+                & { margin-left: -8px; }
+                & { padding-bottom: 1.2rem; }
 
                 strong {
                     font-family: get-font-family($font-family-subpromo);
@@ -712,11 +712,11 @@
             padding-top: 2rem;
         }
 
-        text-align: center;
-        -webkit-transform: translate3d(0, 0, 0);
-        padding: $content-padding;
-        margin: $content-margin;
-        font-size: $core-font-size + 1.3;
+        & { text-align: center; }
+        & { -webkit-transform: translate3d(0, 0, 0); }
+        & { padding: $content-padding; }
+        & { margin: $content-margin; }
+        & { font-size: $core-font-size + 1.3; }
         @include breakpoint(mobile-only) {
             font-size: $core-font-size + 0.5;
             padding: $content-padding 0;
@@ -725,7 +725,7 @@
             font-size: $core-font-size + 0.9;
         }
 
-        line-height: $core-line-height - 0.5;
+        & { line-height: $core-line-height - 0.5; }
 
         i {
             display: block;
@@ -843,10 +843,10 @@
         @include breakpoint(mobile-only) {
             width: 100%;
         }
-        background: $white;
-        border: 2px solid darken($base-background, 10%);
-        padding: $content-padding;
-        border-radius: $border-radius;
+        & { background: $white; }
+        & { border: 2px solid darken($base-background, 10%); }
+        & { padding: $content-padding; }
+        & { border-radius: $border-radius; }
 
         .swiper-slide {
             img {
@@ -903,10 +903,10 @@
         @include breakpoint(mobile-only) {
             width: 100%;
         }
-        height: 100%;
-        background: $base-background;
-        padding: 0;
-        border-radius: $border-radius 0 0 $border-radius;
+        & { height: 100%; }
+        & { background: $base-background; }
+        & { padding: 0; }
+        & { border-radius: $border-radius 0 0 $border-radius; }
         .dir-rtl & {
             border-radius: 0 $border-radius $border-radius 0;
         }
@@ -1097,5 +1097,5 @@
     }
 
     transition: all 0.2s ease-out;
-    top: -($content-margin + $content-padding + 0.95rem);
+    top: (-1 * ($content-margin + $content-padding + 0.95rem));
 }

@@ -5,11 +5,11 @@
         display: inline-block;
         color: $base-text-color;
         @include responsive-font($responsive-font-size, $core-font-size, false, false);
-        font-weight: $font-weight-semibold;
-        letter-spacing: 5px;
-        border-radius: $border-radius;
-        text-align: center;
-        text-transform: uppercase;
+        & { font-weight: $font-weight-semibold; }
+        & { letter-spacing: 5px; }
+        & { border-radius: $border-radius; }
+        & { text-align: center; }
+        & { text-transform: uppercase; }
     }
 
     .g-simplecontent-item-created-date {
@@ -28,15 +28,15 @@
 
         .g-simplecontent-item-content-title {
             @include responsive-font($responsive-font-size + 2.5, $core-font-size + 1.3, false, false);
-            display: inline-block;
-            padding: $content-margin;
-            font-weight: $font-weight-medium;
-            margin: 0;
-            color: $white;
-            background: $black;
-            box-decoration-break: clone;
-            -webkit-box-decoration-break: clone;
-            border-radius: 5px;
+            & { display: inline-block; }
+            & { padding: $content-margin; }
+            & { font-weight: $font-weight-medium; }
+            & { margin: 0; }
+            & { color: $white; }
+            & { background: $black; }
+            & { box-decoration-break: clone; }
+            & { -webkit-box-decoration-break: clone; }
+            & { border-radius: 5px; }
         }
 
         .g-simplecontent-item-leading-content {
@@ -66,9 +66,9 @@
 
     .g-simplecontent-item-content-title {
         @include responsive-font($responsive-font-size + 0.2, $core-font-size + 0.2, false, false);
-        margin: ($content-margin - 0.1) 0;
-        font-weight: $font-weight-semibold;
-        line-height: $core-line-height - 0.5;
+        & { margin: ($content-margin - 0.1) 0; }
+        & { font-weight: $font-weight-semibold; }
+        & { line-height: $core-line-height - 0.5; }
 
         .g-simplecontent-layout-header & {
             font-size: $h1-font-size;
@@ -108,7 +108,7 @@
 
     .g-simplecontent-item-main-content {
         @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
-        margin: ($content-margin + $content-padding) 0;
+        & { margin: ($content-margin + $content-padding) 0; }
 
         .g-simplecontent-layout-header & {
             font-size: $core-font-size;

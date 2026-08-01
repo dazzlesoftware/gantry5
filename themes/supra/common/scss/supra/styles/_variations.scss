@@ -285,7 +285,7 @@
     &.widget,
     &.g-outer-box,
     > .g-content {
-        background: linear-gradient(-200deg, adjust_hue($accent-color-1, 60%), $accent-color-2);
+        background: linear-gradient(-200deg, adjust_hue($accent-color-1, 60deg), $accent-color-2);
         transform-origin: bottom;
         color: $white;
     }
@@ -306,7 +306,7 @@
 
     .button {
         box-shadow: none;
-        background: transparentize(adjust_hue($accent-color-1, 60%), 0.35);
+        background: transparentize(adjust_hue($accent-color-1, 60deg), 0.35);
 
         &:hover {
             box-shadow: none;

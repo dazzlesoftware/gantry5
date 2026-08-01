@@ -23,8 +23,8 @@
 }
 
 .g-blockcontent-subcontent {
-    margin-left: -($content-margin + $content-padding);
-    margin-right: -($content-margin + $content-padding);
+    margin-left: (-1 * ($content-margin + $content-padding));
+    margin-right: (-1 * ($content-margin + $content-padding));
     .g-blockcontent-spacing & {
         margin-left: 0;
         margin-right: 0;

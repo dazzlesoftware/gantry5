@@ -144,7 +144,7 @@
         margin: 0;
         font-weight: $font-weight-regular;
         @include responsive-font($responsive-font-size + 0.3, $core-font-size + 0.1, false, false);
-        opacity: 0.7;
+        & { opacity: 0.7; }
     }
 
     .g-infolist-tags {

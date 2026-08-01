@@ -13,8 +13,8 @@
             margin-bottom: $content-margin * 3;
             font-family: get-font-family($font-family-title);
             @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.2, false, false);
-            font-weight: $font-weight-semibold;
-            padding-bottom: $content-padding;
+            & { font-weight: $font-weight-semibold; }
+            & { padding-bottom: $content-padding; }
             span {
                 background-color: $accent-color-1;
             }

@@ -55,7 +55,7 @@
             @include breakpoint(mobile-only) {
                 width: 100%;
             }
-            white-space: nowrap;
+            & { white-space: nowrap; }
         }
 
         .g-newsletter-button-icon {

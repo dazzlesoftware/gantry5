@@ -25,11 +25,11 @@
         @include breakpoint(mobile-only) {
             font-size: $core-font-size + 1;
         }
-        font-weight: $font-weight-ultrabold;
+        & { font-weight: $font-weight-ultrabold; }
         strong {
             font-weight: $font-weight-ultrabold;
         }
-        margin: ($content-margin - 0.1) 0;
+        & { margin: ($content-margin - 0.1) 0; }
 
         .g-simplecontent-layout-header & {
             font-family: get-font-family($font-family-title);

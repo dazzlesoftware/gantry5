@@ -39,7 +39,7 @@
             > li {
                 &:after {
                     content: '';
-                    top: -($content-padding - 0.3);
+                    top: (-1 * ($content-padding - 0.3));
                     width: 1px;
                     right: 0;
                     padding: $content-padding + 1 0;

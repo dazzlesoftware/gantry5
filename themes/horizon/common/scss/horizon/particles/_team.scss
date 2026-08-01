@@ -61,15 +61,15 @@
                         }  
                     }
                 }
-                position: relative;
-                list-style-type: none;
-                float: left;
-                overflow: hidden;
-                visibility: hidden;
-                outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
-                -webkit-transform: rotate(-60deg) skewY(30deg) translatez(-1px);
-                -ms-transform: rotate(-60deg) skewY(30deg) translatez(-1px);
-                transform: rotate(-60deg) skewY(30deg) translatez(-1px);
+                & { position: relative; }
+                & { list-style-type: none; }
+                & { float: left; }
+                & { overflow: hidden; }
+                & { visibility: hidden; }
+                & { outline: 1px solid transparent; } /* fix for jagged edges in FF on hover transition */
+                & { -webkit-transform: rotate(-60deg) skewY(30deg) translatez(-1px); }
+                & { -ms-transform: rotate(-60deg) skewY(30deg) translatez(-1px); }
+                & { transform: rotate(-60deg) skewY(30deg) translatez(-1px); }
 
                 @include breakpoint(desktop-only) {
                     width: 19.2%; /* = (100-4) / 5 */

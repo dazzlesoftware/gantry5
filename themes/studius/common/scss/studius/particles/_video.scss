@@ -3,19 +3,19 @@
         padding-bottom: 0;
         margin-bottom: 0;
         @include responsive-font($responsive-font-size + 1.5, $core-font-size + 0.5, false, false);
-        line-height: normal;
-        margin-bottom: 3rem;
-        margin: 0 auto;
-        margin-bottom: $content-padding;
-        font-weight: $font-weight-extrabold;
-        text-align: center;
+        & { line-height: normal; }
+        & { margin-bottom: 3rem; }
+        & { margin: 0 auto; }
+        & { margin-bottom: $content-padding; }
+        & { font-weight: $font-weight-extrabold; }
+        & { text-align: center; }
     }
 
     .g-headertext {
         font-weight: $font-weight-medium;
         @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-        text-align: center;
-        margin-bottom: $content-padding;
+        & { text-align: center; }
+        & { margin-bottom: $content-padding; }
     }
 
     .g-description {
@@ -183,11 +183,11 @@
 .g-video-caption {
     text-align: center;
     @include responsive-font($responsive-font-size + 0.3, $core-font-size, false, false);
-    padding: $content-padding + 1 0;
+    & { padding: $content-padding + 1 0; }
 
     @include breakpoint(mobile-only) {
         padding: $content-padding 0;
     }
 
-    color: $base-text-color;
+    & { color: $base-text-color; }
 }

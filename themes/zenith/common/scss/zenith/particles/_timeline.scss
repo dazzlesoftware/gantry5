@@ -20,17 +20,17 @@
 
         .g-item-title {
             @include responsive-font($responsive-font-size + .2, $core-font-size - .1, false, false);
-            padding: $content-padding;
-            position: relative;
-            border-radius: 4px;
-            border: 1px solid inherit;
-            margin: 0;
-            font-weight: $font-weight-bold;
+            & { padding: $content-padding; }
+            & { position: relative; }
+            & { border-radius: 4px; }
+            & { border: 1px solid inherit; }
+            & { margin: 0; }
+            & { font-weight: $font-weight-bold; }
 
             span {
                 @include responsive-font($responsive-font-size, $core-font-size - .2, $core-font-size, false);
-                display: block;
-                font-weight: $font-weight-regular;
+                & { display: block; }
+                & { font-weight: $font-weight-regular; }
             }
 
             a {

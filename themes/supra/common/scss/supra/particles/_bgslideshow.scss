@@ -68,12 +68,12 @@
                 transition: all 0.35s;
                 position: absolute;
                 @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                top: -1rem;
-                width: 100%;
-                height: 100%;
-                padding: $content-padding;
-                font-weight: $font-weight-bold;
-                z-index: 5;
+                & { top: -1rem; }
+                & { width: 100%; }
+                & { height: 100%; }
+                & { padding: $content-padding; }
+                & { font-weight: $font-weight-bold; }
+                & { z-index: 5; }
 
                 a {
                     color: $white;
@@ -152,13 +152,13 @@
 
         .g-bgslideshow-slides-item-title {
             @include responsive-font($responsive-font-size + 9, $core-font-size + 2, false, false);
-            font-weight: $font-weight-black;
-            line-height: $core-line-height - 0.3;
+            & { font-weight: $font-weight-black; }
+            & { line-height: $core-line-height - 0.3; }
         }
 
         .g-bgslideshow-slides-item-description {
             @include responsive-font($responsive-font-size + 0.6, $core-font-size + 0.1, false, false);
-            font-weight: $font-weight-semibold;
+            & { font-weight: $font-weight-semibold; }
 
             @include breakpoint(mobile-only) {
               margin: $content-margin 0;

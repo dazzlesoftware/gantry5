@@ -4,15 +4,15 @@
     font-weight: $font-weight-semibold;
     color: $button-text-color;
     @include responsive-font($responsive-font-size, $core-font-size - 0.1, false, false);
-    background: $button-background-color;
-    margin: 0 0 0.5rem 0;
-    border: 2px solid transparent;
-    padding: 0.4rem 2rem;
-    padding-bottom: 0.45rem;
-    border-radius: 0;
-    vertical-align: middle;
-    text-shadow: none;
-    transition: all 0.2s;
+    & { background: $button-background-color; }
+    & { margin: 0 0 0.5rem 0; }
+    & { border: 2px solid transparent; }
+    & { padding: 0.4rem 2rem; }
+    & { padding-bottom: 0.45rem; }
+    & { border-radius: 0; }
+    & { vertical-align: middle; }
+    & { text-shadow: none; }
+    & { transition: all 0.2s; }
 
     &:hover, &:active, &:focus {
         background: transparent;

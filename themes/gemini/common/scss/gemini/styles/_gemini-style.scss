@@ -43,8 +43,8 @@
 // Intro
 .g-gemini-intro {
     @include responsive-font(2.5vw, $core-font-size + 1, $core-font-size + 2, $core-font-size + 2);
-    font-weight: $font-weight-thin;
-    color: $black;
+    & { font-weight: $font-weight-thin; }
+    & { color: $black; }
     strong {
         font-weight: $font-weight-bold;
     }
