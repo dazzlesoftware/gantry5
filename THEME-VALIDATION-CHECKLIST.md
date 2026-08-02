@@ -139,7 +139,7 @@ Only test particles included by the theme.
 | Hadron | [ ] | [ ] | — | |
 | Helium | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
 | Horizon | [ ] | [ ] | — | |
-| Hydrogen | [ ] | [ ] | [ ] | |
+| Hydrogen | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
 | Interstellar | [ ] | [ ] | — | |
 | Isotope | [ ] | [ ] | — | |
 | Koleti | [ ] | [ ] | — | |
@@ -179,6 +179,7 @@ Add one entry after each completed platform validation.
 | 2026-08-01 | Antares | WordPress | Development | Pass | Theme rendering, styling, and interactive components validated. |
 | 2026-08-01 | Aphrodite | WordPress | Development | Pass | Theme rendering, styling, responsive navigation, Bootstrap integration, and interactive components validated. |
 | 2026-08-01 | Helium | WordPress | Development | Pass | Theme rendering, styling, responsive behavior, and interactive components validated. |
+| 2026-08-01 | Hydrogen | WordPress | Development | Pass | Theme rendering, styling, responsive behavior, and interactive components validated. |
 | 2026-08-01 | Audacity | WordPress | Development | Pass | Single Swiper navigation arrows, native Breaking News expand/collapse controls, thumbnail navigation, and bullet pagination validated. |
 | 2026-08-01 | Aurora | WordPress | Development | Pass | Theme rendering, responsive layout, homepage feature sizing and alignment, and testimonial carousel pagination validated. The theme works overall; visual redesign is deferred to a future update. |
 
@@ -198,5 +199,5 @@ Validate themes that recently received the largest JavaScript changes first:
 10. Interstellar
 11. Photon
 12. Galatea
-13. Hydrogen
-12. Remaining themes in alphabetical order
+13. Hydrogen WordPress â€” completed
+14. Remaining themes in alphabetical order
