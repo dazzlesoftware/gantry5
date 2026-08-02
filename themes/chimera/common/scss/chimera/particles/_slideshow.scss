@@ -1,6 +1,25 @@
 .g-swipercarousel-slideshow {
+	min-height: 100vh;
+
 	.g-swipercarousel {
+		min-height: 100vh;
+
+		.swiper-wrapper,
+		.swiper-slide {
+			min-height: 100vh;
+		}
+
+		.swiper-slide {
+			position: relative;
+			overflow: hidden;
+		}
+
 		.g-swipercarousel-item-image {
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			width: 100%;
+			height: 100vh;
 			background-position: bottom center;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -13,10 +32,12 @@
 			width: 100%;
 			top:0;
 			z-index: 2;
+			pointer-events: none;
 			text-align: center;
 			background-color: fade-out($slideshow-background, 0.50);
 
 			.g-swipercarousel-padding {
+				width: min(80%, 64rem);
 				padding: 0;
 				position: absolute;
 				top: 50%;
@@ -52,6 +73,7 @@
 			border: 1px solid #FFFFFF;
 			background: rgba(255,255,255,0.15);
 			color: #FFFFFF;
+			pointer-events: auto;
 		}
 		}
 
