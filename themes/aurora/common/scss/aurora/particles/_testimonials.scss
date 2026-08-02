@@ -90,6 +90,9 @@
         }
         // Dots
         .swiper-pagination {
+            position: static;
+            width: auto;
+            transform: none;
             text-align: left;
             margin-top: $content-padding;
             .swiper-pagination-bullet {
@@ -98,7 +101,7 @@
                 height: 8px;
                 background: transparentize($accent-color-1, 0.70);
 
-                &.active, &:hover {
+                &.active, &.swiper-pagination-bullet-active, &:hover {
                     background: $accent-color-1;
                 }
             }

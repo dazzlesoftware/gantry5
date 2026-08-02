@@ -6,6 +6,35 @@
         align-items: center;
     }
 
+    // Keep the homepage feature composition at its intended desktop scale.
+    // Fluid type and the 45/55 grid otherwise continue growing on ultrawide
+    // displays and pull the title too far away from the testimonial.
+    &.fp-feature {
+        .g-grid {
+            max-width: 75rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media only all and (min-width: 75rem) {
+            .g-promo-3 {
+                font-size: 4rem;
+            }
+
+            .g-testimonial-text {
+                font-size: 1.2rem;
+            }
+
+            .g-testimonial-author {
+                font-size: 1rem;
+            }
+
+            .g-testimonial-position {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
     // Simple Content
     .g-simplecontent {
         .g-simplecontent-item-content-title, .g-simplecontent-item-leading-content {
