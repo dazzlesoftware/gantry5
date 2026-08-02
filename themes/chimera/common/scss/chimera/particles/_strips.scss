@@ -1,9 +1,36 @@
 .g-swipercarousel-strips-slider {
   .g-swipercarousel {
+	// Keep a dedicated lane below the cards for navigation and pagination.
+	// Swiper appends these controls inside this element at runtime.
+	padding-bottom: 65px;
 
 	.swiper-slide {
 		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-bottom: 0;
+		height: auto;
+
+		.g-swipercarousel-content,
+		.g-swipercarousel-item-desc,
+		.g-swipercarousel-item-desc > div {
+			height: 90px;
+		}
+
+		.g-swipercarousel-item-desc > div {
+			display: flex;
+			align-items: stretch;
+		}
+
+		.rt-floatleft {
+			float: none;
+			flex: 0 0 90px;
+			margin: 0;
+		}
+
+		.rt-grey-box {
+			box-sizing: border-box;
+			width: 90px;
+			height: 90px;
+		}
 
       img {
         width: 500px;
@@ -25,7 +52,14 @@
 
     .rt-strips-desc {
       background: darken($white, 8%);
-      padding: 0 5px 12px 0;
+	  box-sizing: border-box;
+	  display: flex;
+	  flex: 1 1 auto;
+	  min-width: 0;
+	  height: 90px;
+	  padding: 10px 12px;
+	  flex-direction: column;
+	  justify-content: center;
 
       @include breakpoint(large-mobile-range) {
         padding-right: 5px;
@@ -37,7 +71,7 @@
         line-height: 1.35em !important;
         margin-top: 0;
         margin-bottom: 0;
-        padding-top: 12px;
+		padding-top: 0;
 
         @include breakpoint(mobile-only) {
           font-size: 0.85em;
@@ -52,8 +86,13 @@
 	}
 
     .swiper-pagination {
-	position: relative;
-	margin-top: 25px;
+	position: absolute;
+	left: 50%;
+	bottom: 16px;
+	width: auto;
+	margin: 0;
+	transform: translateX(-50%);
+	z-index: 20;
 
       @include breakpoint(mobile-only) {
         display: none;
@@ -94,23 +133,21 @@
       button.swiper-button-next {
         padding: 0;
         position: absolute;
-        display: block;
+        display: flex;
+		align-items: center;
+		justify-content: center;
         width: 40px;
         height: 40px;
-        top: 97.5%;
-        @include breakpoint(tablet-range) {
-          top: 93%;
-        }
-        @include breakpoint(mobile-only) {
-          top: 105%;
-        }
+		top: auto;
+		bottom: 2px;
+		transform: none;
         & { border-radius: 3px; }
         & { border: none; }
         & { cursor: pointer; }
         & { z-index: 50; }
         & { text-align: center; }
         & { font-size: 24px; }
-        & { line-height: 38px; }
+        & { line-height: 1; }
         & { opacity: 0.7; }
         & { color: #555555; }
 
@@ -121,10 +158,22 @@
         span {
           display: none;
         }
+
+        // Use Chimera's compact pseudo-element arrow only; Swiper also
+        // injects an icon element which otherwise produces a double arrow.
+        > i {
+          display: none;
+        }
+
+		&:before {
+			display: block;
+			line-height: 1;
+		}
       }
 
       .swiper-button-next {
-        right: 40%;
+		left: calc(50% + 125px);
+		right: auto;
         &:before {
           content: '\f105';
           font-family: FontAwesome;
@@ -132,7 +181,8 @@
       }
 
       .swiper-button-prev {
-        left: 40%;
+		left: auto;
+		right: calc(50% + 125px);
         &:before {
           content: '\f104';
           font-family: FontAwesome;
