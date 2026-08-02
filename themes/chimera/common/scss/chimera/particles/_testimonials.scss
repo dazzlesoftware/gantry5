@@ -41,50 +41,70 @@
         padding: 0;
         position: absolute;
         display: block;
-        width: 40px;
-        height: 40px;
-        border-radius: 3px;
+        top: 50%;
+        width: 48px;
+        height: 64px;
+        transform: translateY(-50%);
+        border-radius: 0;
         border: none;
         cursor: pointer;
         z-index: 50;
         text-align: center;
-        font-size: 24px;
-        line-height: 38px;
+        font-size: 0;
+        line-height: 1;
         opacity: 0.7;
-        color: #ffffff;
-        background: rgba(0, 0, 0, 0.5);
+        color: transparent;
+        background: transparent;
 
         @include breakpoint(mobile-only) {
-          top: 100%;
+          width: 36px;
+          height: 52px;
         }
 
         &:hover {
           opacity: 1;
-          background: rgba(0, 0, 0, 0.5);
+          background: transparent;
         }
 
         &:focus {
           outline: none;
         }
 
-        span {
+        span,
+        i {
           display: none;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 27px;
+          height: 27px;
+          border-top: 2px solid rgba(255, 255, 255, 0.8);
+          border-right: 2px solid rgba(255, 255, 255, 0.8);
+
+          @include breakpoint(mobile-only) {
+            width: 21px;
+            height: 21px;
+          }
         }
       }
 
       .swiper-button-next {
         right: -30px;
+
         &:before {
-          content: '\f105';
-          font-family: FontAwesome;
+          transform: translate(-65%, -50%) rotate(45deg);
         }
       }
 
       .swiper-button-prev {
         left: -30px;
+
         &:before {
-          content: '\f104';
-          font-family: FontAwesome;
+          transform: translate(-35%, -50%) rotate(-135deg);
         }
       }
     }
