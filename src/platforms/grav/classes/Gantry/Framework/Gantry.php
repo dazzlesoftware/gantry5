@@ -9,6 +9,7 @@
 
 namespace Gantry\Framework;
 
+use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Grav\Common\Config\Config;
 use Grav\Common\Grav;
 
@@ -25,9 +26,19 @@ class Gantry extends Base\Gantry
     {
         $container = parent::init();
 
-        // Use locator from Grav.
+        // Keep Gantry on DazzleSoftware Toolbox while importing Grav's stream
+        // configuration through the locator's public, implementation-neutral API.
         $container['locator'] = static function() {
-            return Grav::instance()['locator'];
+            $gravLocator = Grav::instance()['locator'];
+            $locator = new UniformResourceLocator(ROOT_DIR);
+
+            foreach ($gravLocator->getPaths() as $scheme => $prefixes) {
+                foreach ($prefixes as $prefix => $paths) {
+                    $locator->addPath($scheme, $prefix, $paths, false, true);
+                }
+            }
+
+            return $locator;
         };
 
         return $container;
