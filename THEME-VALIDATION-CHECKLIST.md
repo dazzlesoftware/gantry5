@@ -125,7 +125,7 @@ Only test particles included by the theme.
 | Aurora | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring testimonial pagination and homepage feature sizing and alignment. The theme works overall; a broader template redesign is planned for a later date. |
 | Calla | [x] | [ ] | — | WordPress validated 2026-08-02 after restoring Twig compatibility, slider stability, navigation layering, homepage content alignment, and bottom-positioned carousel controls. |
 | Callisto | [x] | [ ] | — | WordPress validated 2026-07-31 after native Swiper conversion, visual restoration, and dynamic accordion height correction. |
-| Chimera | [ ] | [ ] | — | |
+| Chimera | [x] | [ ] | — | WordPress validated 2026-08-02 after restoring the hero and recent-project Swiper sliders, navigation arrows, pagination alignment, card sizing, and visual layout. |
 | Citadel | [ ] | [ ] | — | |
 | Clarity | [ ] | [ ] | — | |
 | Denali | [ ] | [ ] | — | |
@@ -183,6 +183,7 @@ Add one entry after each completed platform validation.
 | 2026-08-01 | Audacity | WordPress | Development | Pass | Single Swiper navigation arrows, native Breaking News expand/collapse controls, thumbnail navigation, and bullet pagination validated. |
 | 2026-08-01 | Aurora | WordPress | Development | Pass | Theme rendering, responsive layout, homepage feature sizing and alignment, and testimonial carousel pagination validated. The theme works overall; visual redesign is deferred to a future update. |
 | 2026-08-02 | Calla | WordPress | Development | Pass | Twig rendering, vertical navigation, stable Swiper slide positioning, homepage content alignment, and bottom-positioned previous/next controls validated. |
+| 2026-08-02 | Chimera | WordPress | Development | Pass | Hero and recent-project Swiper sliders, navigation arrows, pagination alignment, card sizing, and visual layout validated. |
 
 ## Recommended Validation Order
 
