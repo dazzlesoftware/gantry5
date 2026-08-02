@@ -3,17 +3,17 @@
 {% do gantry.load('lightcase.init') %}
 
 {% set breakpoints %}
-.g-carousel-image-wrapper {
+#g-carousel-{{ id }} .g-carousel-image-wrapper {
     min-height: {{ particle.height }};
 }
 @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}) and (min-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
-    .g-carousel-image-wrapper {
-    min-height: {{ particle.tablet_height }};
+    #g-carousel-{{ id }} .g-carousel-image-wrapper {
+        min-height: {{ particle.tablet_height }};
     }
 }
 @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88') }}) and (min-width: {{ gantry.config.get('styles.breakpoints.tablet-desktop')|default('76rem') }}) {
-    .g-carousel-image-wrapper {
-    min-height: {{ particle.desktop_height }};
+    #g-carousel-{{ id }} .g-carousel-image-wrapper {
+        min-height: {{ particle.desktop_height }};
     }
 }
 {% endset %}
