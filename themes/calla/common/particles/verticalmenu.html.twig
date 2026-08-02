@@ -100,24 +100,24 @@
 {% endmacro %}
 
 {% macro displaySubmenu(items, menu, gantry) %}
-	{% for item in items if item.id != 'root' %}
-		{% if item.children %}
-			{% set some_children_visible = false %}
-			{% for item in item.children if item.visible %}
-				{% set some_children_visible = true %}
-			{% endfor %}
+    {% for item in items %}
+        {% if item.id != 'root' and item.children %}
+            {% set some_children_visible = false %}
+            {% for child in item.children %}
+                {% if child.visible %}
+                    {% set some_children_visible = true %}
+                {% endif %}
+            {% endfor %}
 
-			{% if some_children_visible %}
-				{% if item.id %}
-					<ul data-menu="submenu-{{ item.id }}" class="menu__level">
-						{% for item in item.children %}
-							{{ _self.displaySubItem(item, menu, gantry, item.id) }}
-						{% endfor %}
-					</ul>
-				{% endif %}
-			{% endif %}
-		{% endif %}
-	{% endfor %}
+            {% if some_children_visible and item.id %}
+                <ul data-menu="submenu-{{ item.id }}" class="menu__level">
+                    {% for child in item.children %}
+                        {{ _self.displaySubItem(child, menu, gantry, child.id) }}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
 {% endmacro %}
 
 {% block particle %}
