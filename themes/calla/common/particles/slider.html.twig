@@ -12,14 +12,18 @@
         data-slides-per-view="{{ particle.amount|default(1)|e }}"
         data-navigation="{{ particle.nav|default('disabled')|e }}"
         data-pagination="{{ particle.dots|default('disabled')|e }}"
-        data-loop="{{ particle.loop|default('disabled')|e }}"
+        data-loop="{{ particle.loop|default('enabled')|e }}"
         data-autoplay="{{ particle.autoplay|default('disabled')|e }}"
         data-autoplay-delay="{{ particle.autoplaySpeed|default(particle.autoplayTimeout|default(5000))|e }}"
         data-pause-on-hover="{{ particle.pauseOnHover|default('enabled')|e }}"
         data-speed="{{ particle.scrollspeed|default(particle.transitionSpeed|default(particle.speed|default(500)))|e }}"
         data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
-        data-centered="{{ particle.center|default('disabled')|e }}">
-                {% for item in particle.items %}
+        data-centered="{{ particle.center|default('enabled')|e }}"
+        data-space-between="40">
+                {# Owl generated clones for this centered demo. Repeat the source set so
+                   modern Swiper has enough slides to preserve the same looping edges. #}
+                {% set slider_items = particle.items|merge(particle.items) %}
+                {% for item in slider_items %}
                     <div>
                         <div class="g-slider-carousel-image-container">
                             <img src="{{ url(item.image)|e }}" alt="{{ item.alt }}">
