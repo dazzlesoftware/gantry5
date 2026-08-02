@@ -60,6 +60,7 @@
 
 {% block javascript_footer %}
     {{ parent() }}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
     <script type="text/javascript">
         jQuery(document).ready(function () {
             var swiper{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-{{ id }}');
@@ -85,8 +86,4 @@
         });
         {% endfor %}
     </script>
-{% endblock %}
-
-{% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

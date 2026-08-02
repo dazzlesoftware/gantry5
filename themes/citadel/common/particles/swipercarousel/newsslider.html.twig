@@ -56,6 +56,7 @@
 
 {% block javascript_footer %}
     {{ parent() }}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
     <script type="text/javascript">
         var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-panel-{{ id }} .g-swipercarousel-panel');
         {% for item in particle.items %}
@@ -65,8 +66,4 @@
         });
         {% endfor %}
     </script>
-{% endblock %}
-
-{% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}
