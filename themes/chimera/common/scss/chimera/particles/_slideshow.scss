@@ -86,52 +86,82 @@
 			}
 		}
 
-	    .swiper-navigation {
-	        button.swiper-button-prev,
-	button.swiper-button-next {
-		border: 2px solid $white !important;
-			border-radius: 100%;
-			padding: 40px;
-	            opacity: 0.5;
-	            display: block;
-	            color: #fff;
-	            width: 0;
-	            height: 0;
-	            box-sizing: content-box;
-	            font-size: 2.2em;
-	            transition: opacity 0.2s ease-in;
+		.swiper-navigation {
+			button.swiper-button-prev,
+			button.swiper-button-next {
+				border: 2px solid $white !important;
+				border-radius: 100%;
+				padding: 0;
+				opacity: 0.5;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: $white;
+				width: 84px;
+				height: 84px;
+				box-sizing: border-box;
+				top: 50%;
+				margin-top: 0;
+				transform: translateY(-50%);
+				background-color: fade-out($white, 0.75);
+				background-image: none !important;
+				transition: opacity 0.2s ease-in;
 
-	            @include breakpoint(mobile-only) {
-		padding: 20px;
-	            }
+				@include breakpoint(mobile-only) {
+					width: 44px;
+					height: 44px;
+				}
 
-	            &:hover {
-		opacity: 1;
-	            }
+				&:hover {
+					opacity: 1;
+				}
 
-	            span {
-	                display: none;
-	            }
-	        }
+				span,
+				i {
+					display: none;
+				}
 
-            button.swiper-button-prev {
-                left: 12%;
-                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center fade-out($white, 0.75);
-                @include breakpoint(mobile-only) {
-		left: 2%;
-					background-size: 10px;
-	            }
-            }
+				&::after {
+					content: '' !important;
+					display: block;
+					width: 18px;
+					height: 18px;
+					border-top: 2px solid currentColor;
+					border-right: 2px solid currentColor;
 
-            button.swiper-button-next {
-                right: 12%;
-                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center fade-out($white, 0.75);
-                @include breakpoint(mobile-only) {
-		right: 2%;
-					background-size: 10px;
-	            }
-            }
-	    }
+					@include breakpoint(mobile-only) {
+						width: 11px;
+						height: 11px;
+					}
+				}
+			}
+
+			button.swiper-button-prev {
+				left: 12%;
+
+				&::after {
+					transform: rotate(-135deg);
+					margin-left: 5px;
+				}
+
+				@include breakpoint(mobile-only) {
+					left: 2%;
+				}
+			}
+
+			button.swiper-button-next {
+				right: 12%;
+
+				&::after {
+					transform: rotate(45deg);
+					margin-right: 5px;
+				}
+
+				@include breakpoint(mobile-only) {
+					right: 2%;
+				}
+			}
+		}
 	}
 }
 
