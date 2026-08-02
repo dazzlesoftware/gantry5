@@ -122,7 +122,7 @@ Only test particles included by the theme.
 | Antares | [x] | [ ] | — | WordPress validated 2026-08-01. |
 | Aphrodite | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
 | Audacity | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring single Swiper arrows, native Breaking News accordion controls, thumbnail navigation, and bullet pagination. |
-| Aurora | [ ] | [ ] | — | |
+| Aurora | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring testimonial pagination and homepage feature sizing and alignment. The theme works overall; a broader template redesign is planned for a later date. |
 | Calla | [ ] | [ ] | — | |
 | Callisto | [x] | [ ] | — | WordPress validated 2026-07-31 after native Swiper conversion, visual restoration, and dynamic accordion height correction. |
 | Chimera | [ ] | [ ] | — | |
@@ -180,6 +180,7 @@ Add one entry after each completed platform validation.
 | 2026-08-01 | Aphrodite | WordPress | Development | Pass | Theme rendering, styling, responsive navigation, Bootstrap integration, and interactive components validated. |
 | 2026-08-01 | Helium | WordPress | Development | Pass | Theme rendering, styling, responsive behavior, and interactive components validated. |
 | 2026-08-01 | Audacity | WordPress | Development | Pass | Single Swiper navigation arrows, native Breaking News expand/collapse controls, thumbnail navigation, and bullet pagination validated. |
+| 2026-08-01 | Aurora | WordPress | Development | Pass | Theme rendering, responsive layout, homepage feature sizing and alignment, and testimonial carousel pagination validated. The theme works overall; visual redesign is deferred to a future update. |
 
 ## Recommended Validation Order
 
