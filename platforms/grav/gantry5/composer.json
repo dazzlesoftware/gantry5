@@ -12,6 +12,7 @@
         "ext-dom": "*",
         "ext-xml": "*",
         "ext-simplexml": "*",
+        "dazzlesoftware/toolbox": "^1.0",
         "scssphp/scssphp": "^2.1.0"
     },
     "autoload": {
