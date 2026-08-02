@@ -6,7 +6,7 @@
         .swiper-wrapper {
             display: flex;
         }
-        .swiper {
+        &.swiper {
             overflow: visible;
             position: relative;
             &:before,
