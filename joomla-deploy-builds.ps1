@@ -20,15 +20,19 @@ $dist = Join-Path $repository 'dist'
 $joomla = [IO.Path]::GetFullPath($JoomlaRoot).TrimEnd('\', '/')
 $administrator = Join-Path $joomla 'administrator'
 $templates = Join-Path $joomla 'templates'
-$plugins = Join-Path $joomla 'plugins'
 $joomlaCli = Join-Path $joomla 'cli\joomla.php'
 
-foreach ($directory in @($dist, $joomla, $administrator, $templates, $plugins)) {
+foreach ($directory in @($dist, $joomla, $administrator, $templates)) {
     if (-not (Test-Path -LiteralPath $directory -PathType Container)) {
         throw "Required directory does not exist: $directory"
     }
 }
-foreach ($file in @((Join-Path $joomla 'defines.php'), $joomlaCli)) {
+foreach ($file in @(
+    (Join-Path $joomla 'index.php'),
+    (Join-Path $joomla 'configuration.php'),
+    (Join-Path $joomla 'includes\defines.php'),
+    $joomlaCli
+)) {
     if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
         throw "The deployment target does not look like a Joomla installation; missing: $file"
     }
@@ -49,50 +53,14 @@ if ($themeArchives.Count -eq 0) {
     throw "No Joomla theme archives were found for '$BuildSuffix'."
 }
 
-$resolvedJoomla = (Resolve-Path -LiteralPath $joomla).Path.TrimEnd('\', '/')
-$resolvedTemplates = (Resolve-Path -LiteralPath $templates).Path.TrimEnd('\', '/')
-if (-not $resolvedTemplates.StartsWith("$resolvedJoomla\", [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'Resolved template directory is outside the requested Joomla installation.'
-}
-
-# These are exclusively owned by the Gantry package. Removing them before the
-# Joomla installer runs prevents stale files from surviving an update install.
-$gantryPaths = @(
-    'administrator\components\com_gantry5',
-    'components\com_gantry5',
-    'libraries\gantry5',
-    'media\gantry5',
-    'modules\mod_gantry5_particle',
-    'plugins\gantry5\preset',
-    'plugins\quickicon\gantry5',
-    'plugins\system\gantry5',
-    'plugins\system\gantry5_debugbar',
-    'administrator\manifests\packages\pkg_gantry5.xml',
-    'administrator\manifests\libraries\gantry5.xml',
-    'administrator\manifests\files\gantry5_nucleus.xml'
+$themeSlugs = @(
+    $themeArchives | ForEach-Object {
+        if ($_.BaseName -notmatch '^joomla-tpl_g5_(.+)_' + [regex]::Escape($BuildSuffix) + '$') {
+            throw "Unable to determine theme name from archive: $($_.Name)"
+        }
+        $Matches[1]
+    }
 )
-
-Write-Host 'Removing old Gantry framework files...'
-foreach ($relative in $gantryPaths) {
-    $target = [IO.Path]::GetFullPath((Join-Path $joomla $relative))
-    if (-not $target.StartsWith("$resolvedJoomla\", [StringComparison]::OrdinalIgnoreCase)) {
-        throw "Refusing to remove a path outside the Joomla installation: $target"
-    }
-    if (Test-Path -LiteralPath $target) {
-        Write-Host "  $relative"
-        Remove-Item -LiteralPath $target -Recurse -Force
-    }
-}
-
-$oldTemplates = @(Get-ChildItem -LiteralPath $templates -Directory -Filter 'g5_*')
-Write-Host "Removing $($oldTemplates.Count) old Gantry templates..."
-foreach ($template in $oldTemplates) {
-    if (-not $template.FullName.StartsWith("$resolvedTemplates\", [StringComparison]::OrdinalIgnoreCase)) {
-        throw "Refusing to remove a template outside the Joomla template directory: $($template.FullName)"
-    }
-    Remove-Item -LiteralPath $template.FullName -Recurse -Force
-}
-
 function Install-JoomlaExtension([IO.FileInfo] $Archive) {
     Write-Host "  $($Archive.Name)"
     & $PhpExecutable $joomlaCli extension:install "--path=$($Archive.FullName)" --no-interaction
@@ -101,15 +69,30 @@ function Install-JoomlaExtension([IO.FileInfo] $Archive) {
     }
 }
 
-Write-Host 'Installing Gantry package through the Joomla CLI...'
+Write-Host 'Installing/updating Gantry package through the Joomla CLI...'
 Install-JoomlaExtension $packageArchives[0]
 
-Write-Host "Installing $($themeArchives.Count) template packages..."
+Write-Host "Installing/updating $($themeArchives.Count) template packages..."
 foreach ($archive in $themeArchives) {
     Install-JoomlaExtension $archive
 }
 
-$installedTemplates = @(Get-ChildItem -LiteralPath $templates -Directory -Filter 'g5_*')
+$installedTemplates = @(
+    foreach ($slug in $themeSlugs) {
+        $matches = @(
+            foreach ($prefix in @('g5_', 'rt_')) {
+                $candidate = Join-Path $templates ($prefix + $slug)
+                if (Test-Path -LiteralPath $candidate -PathType Container) {
+                    Get-Item -LiteralPath $candidate
+                }
+            }
+        )
+        if ($matches.Count -ne 1) {
+            throw "Expected exactly one installed template directory for '$slug'; found $($matches.Count)."
+        }
+        $matches[0]
+    }
+)
 if (-not (Test-Path -LiteralPath (Join-Path $joomla 'administrator\components\com_gantry5\gantry5.php') -PathType Leaf)) {
     throw 'The deployed Joomla Gantry component is missing gantry5.php.'
 }
