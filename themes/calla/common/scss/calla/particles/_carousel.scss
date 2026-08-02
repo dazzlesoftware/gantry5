@@ -2,8 +2,9 @@
     .swiper-slide {
         position: relative;
 
-        .g-carousel-image-wrapper {
+        &.g-carousel-image-wrapper {
             width: 100%;
+            box-sizing: border-box;
             background-size: cover;
             position: relative;
             display: block;
