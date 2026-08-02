@@ -43,8 +43,9 @@
         data-effect="{{ (particle.animateIn or particle.animateOut) ? 'fade' : 'slide' }}"
         data-centered="{{ particle.center|default('disabled')|e }}">
 
+                <div class="swiper-wrapper">
                 {% for item in particle.items %}
-                <div class="g-swipercarousel-item-{{ loop.index }} {{ item.class|e }}">
+                <div class="swiper-slide g-swipercarousel-item-{{ loop.index }} {{ item.class|e }}">
                             <div class="g-swipercarousel-item-image" style="background-image: url({{ url(item.image) }}); ">
                             </div>
 
@@ -71,6 +72,7 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+                </div>
             </div>
 
             {% if particle.tobottom == 'enabled' %}
