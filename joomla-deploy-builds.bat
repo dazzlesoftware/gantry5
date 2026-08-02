@@ -22,9 +22,8 @@ echo Source:  %~dp0dist
 echo Target:  %joomla_root%
 echo Variant: %build_suffix%
 echo.
-echo Existing Gantry framework files and templates\g5_* directories
-echo will be deleted. Other Joomla extensions will be preserved.
-echo Joomla's CLI installer will register the fresh packages.
+echo Joomla's CLI installer will install or update each package.
+echo Existing extension records and template styles will be preserved.
 echo ============================================================
 
 powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass ^
