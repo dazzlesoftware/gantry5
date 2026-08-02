@@ -123,7 +123,7 @@ Only test particles included by the theme.
 | Aphrodite | [x] | [ ] | [ ] | WordPress validated 2026-08-01. |
 | Audacity | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring single Swiper arrows, native Breaking News accordion controls, thumbnail navigation, and bullet pagination. |
 | Aurora | [x] | [ ] | — | WordPress validated 2026-08-01 after restoring testimonial pagination and homepage feature sizing and alignment. The theme works overall; a broader template redesign is planned for a later date. |
-| Calla | [ ] | [ ] | — | |
+| Calla | [x] | [ ] | — | WordPress validated 2026-08-02 after restoring Twig compatibility, slider stability, navigation layering, homepage content alignment, and bottom-positioned carousel controls. |
 | Callisto | [x] | [ ] | — | WordPress validated 2026-07-31 after native Swiper conversion, visual restoration, and dynamic accordion height correction. |
 | Chimera | [ ] | [ ] | — | |
 | Citadel | [ ] | [ ] | — | |
@@ -182,6 +182,7 @@ Add one entry after each completed platform validation.
 | 2026-08-01 | Hydrogen | WordPress | Development | Pass | Theme rendering, styling, responsive behavior, and interactive components validated. |
 | 2026-08-01 | Audacity | WordPress | Development | Pass | Single Swiper navigation arrows, native Breaking News expand/collapse controls, thumbnail navigation, and bullet pagination validated. |
 | 2026-08-01 | Aurora | WordPress | Development | Pass | Theme rendering, responsive layout, homepage feature sizing and alignment, and testimonial carousel pagination validated. The theme works overall; visual redesign is deferred to a future update. |
+| 2026-08-02 | Calla | WordPress | Development | Pass | Twig rendering, vertical navigation, stable Swiper slide positioning, homepage content alignment, and bottom-positioned previous/next controls validated. |
 
 ## Recommended Validation Order
 
