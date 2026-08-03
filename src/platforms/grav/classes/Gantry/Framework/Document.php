@@ -177,10 +177,4 @@ class Document extends HtmlDocument
         return $url;
     }
 
-    protected static function registerJquery()
-    {
-        /** @var Assets $assets */
-        $assets = Grav::instance()['assets'];
-        $assets->addJs('jquery', 111);
-    }
 }

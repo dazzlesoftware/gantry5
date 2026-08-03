@@ -29,7 +29,7 @@
                                 <div id="g-linktabs-item-{{ loop.index }}">
                                     <span class="g-linktabs-content">
                                         <span class="g-linktabs-desc">
-                                            {{ item.content|html|raw }} 
+                                            {{ item.content|html|raw }}
                                         </span>
                                     </span>
                                 </div>
@@ -44,20 +44,6 @@
 
 {% endblock %}
 
-{% block javascript %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
-{% endblock %}
-
 {% block javascript_footer %}
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#g-linktabs-{{ id }}').tabs({
-                show: {
-                    effect: 'fade',
-                    duration: 350
-                }
-            });
-        });
-    </script>
+{% do gantry.document.addScript(url('gantry-assets://js/tabs.js'), 11, 'footer') %}
 {% endblock %}

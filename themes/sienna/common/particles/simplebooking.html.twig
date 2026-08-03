@@ -8,17 +8,17 @@
         <div class="g-simplebooking-visible">
             <div class="g-simplebooking-item  g-simplebooking-calendar">
                 <label>{{ particle.checkin }}<sup>*</sup></label>
-                <input type="text" class="g-simplebooking-datepicker g-simplebooking-item-required g-simplebooking-item-id-1" name="{{ particle.checkin|title|replace({' ': ''}) }}" placeholder="{{ particle.checkin_placeholder }}">
+                <input type="date" class="g-simplebooking-datepicker g-simplebooking-item-required g-simplebooking-item-id-1" name="{{ particle.checkin|title|replace({' ': ''}) }}" placeholder="{{ particle.checkin_placeholder }}">
                 <i class="fa fa-calendar" aria-hidden="true"></i>
             </div>
             <div class="g-simplebooking-item  g-simplebooking-calendar">
                 <label>{{ particle.checkout }}<sup>*</sup></label>
-                <input type="text" class="g-simplebooking-datepicker g-simplebooking-item-required g-simplebooking-item-id-2" name="{{ particle.checkout|title|replace({' ': ''}) }}" placeholder="{{ particle.checkout_placeholder }}">
+                <input type="date" class="g-simplebooking-datepicker g-simplebooking-item-required g-simplebooking-item-id-2" name="{{ particle.checkout|title|replace({' ': ''}) }}" placeholder="{{ particle.checkout_placeholder }}">
                 <i class="fa fa-calendar" aria-hidden="true"></i>
             </div>
             <div class="g-simplebooking-item g-simplebooking-spinner " data-trigger="spinner">
                 <label>{{ particle.adults }}<sup>*</sup></label>
-                <input type="text" class="g-simplebooking-item-required g-simplebooking-item-id-3" data-min="{{ particle.adults_min }}" data-max="{{ particle.adults_max }}" name="{{ particle.adults|title|replace({' ': ''}) }}" placeholder="">
+                <input type="number" class="g-simplebooking-item-required g-simplebooking-item-id-3" min="{{ particle.adults_min }}" max="{{ particle.adults_max }}" data-min="{{ particle.adults_min }}" data-max="{{ particle.adults_max }}" name="{{ particle.adults|title|replace({' ': ''}) }}" placeholder="">
                 <div class="g-simplebooking-spinners">
                     <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
                     <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -26,7 +26,7 @@
             </div>
             <div class="g-simplebooking-item g-simplebooking-spinner " data-trigger="spinner">
                 <label>{{ particle.children }}</label>
-                <input type="text" class="g-simplebooking-item-id-4" data-min="{{ particle.children_min }}" data-max="{{ particle.children_max }}" name="{{ particle.children|title|replace({' ': ''}) }}" placeholder="">
+                <input type="number" class="g-simplebooking-item-id-4" min="{{ particle.children_min }}" max="{{ particle.children_max }}" data-min="{{ particle.children_min }}" data-max="{{ particle.children_max }}" name="{{ particle.children|title|replace({' ': ''}) }}" placeholder="">
                 <div class="g-simplebooking-spinners">
                     <a href="javascript:;" data-spin="up"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
                     <a href="javascript:;" data-spin="down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -118,9 +118,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
-<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
-<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
 <script src="{{ url('gantry-theme://js/simplebooking.js') }}"></script>
 
 <script type="text/javascript">

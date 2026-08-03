@@ -1,9 +1,5 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% block javascript %}
-<script src="{{ url('gantry-theme://js/newsticker.js') }}"></script>
-{% endblock %}
-
 {% block particle %}
 <div class="{{ particle.class|e }}">
   	{% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
@@ -34,21 +30,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-	{% do gantry.load('jquery') %}
-	<script type="text/javascript">
-	jQuery(document).ready(function(){	
-		jQuery('.g-newsticker-{{ id }}').easyTicker({
-			direction: 'up',
-			speed: 'fast',
-			interval: 2000,
-			height: 'auto',
-			visible: 1,
-			mousePause: 1,
-			controls: {
-				up: '.g-next',
-				down: '.g-prev'
-			}
-		});	
-	});
-	</script>
+<script src="{{ url('gantry-assets://js/news-ticker.js') }}"></script>
 {% endblock %}

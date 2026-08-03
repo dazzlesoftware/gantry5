@@ -175,7 +175,7 @@ var arrayParallel = function parallel(fns, context, callback) {
 function noop() {}
 
 /**
- * Always returns a numeric value, given a value. Logic from jQuery's `isNumeric`.
+ * Always returns a numeric value, given a value. Uses legacy `isNumeric` semantics.
  * @param {*} value Possibly numeric value.
  * @return {number} `value` or zero if `value` isn't numeric.
  */
@@ -972,7 +972,7 @@ var Shuffle = function (_TinyEmitter) {
 
     /**
      * Retrieve an element from an option.
-     * @param {string|jQuery|Element} option The option to check.
+     * @param {string|Element} option The option to check.
      * @return {?Element} The plain element or null.
      * @private
      */
@@ -989,9 +989,6 @@ var Shuffle = function (_TinyEmitter) {
       } else if (option && option.nodeType && option.nodeType === 1) {
         return option;
 
-        // Check for jQuery object
-      } else if (option && option.jquery) {
-        return option[0];
       }
 
       return null;

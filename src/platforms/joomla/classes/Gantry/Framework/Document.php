@@ -24,12 +24,7 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 class Document extends HtmlDocument
 {
     protected static $availableFrameworks = [
-        'jquery' => 'registerJquery',
-        'jquery.framework' => 'registerJquery',
-        'jquery.ui.core' => 'registerJqueryUiCore',
-        'jquery.ui.sortable' => 'registerJqueryUiSortable',
         'bootstrap' => 'registerBootstrap',
-        'bootstrap.2' => 'registerBootstrap2',
         'bootstrap.3' => 'registerBootstrap3',
         'bootstrap.4' => 'registerBootstrap4',
         'bootstrap.5' => 'registerBootstrap5',
@@ -165,51 +160,6 @@ class Document extends HtmlDocument
                     break;
             }
         }
-    }
-
-    protected static function registerJquery()
-    {
-        if (!static::errorPage()) {
-            HTMLHelper::_('jquery.framework');
-
-            return;
-        }
-
-        /** @var WebAssetManager $wa */
-        $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-
-        array_map(
-            static function ($script) use ($wa) {
-                $asset = $wa->getAsset('script', $script);
-
-                // Workaround for error document type.
-                static::addHeaderTag(
-                    [
-                        'tag' => 'script',
-                        'src' => $asset->getUri(true)
-                    ],
-                    'head',
-                    100
-                );
-            },
-            ['jquery', 'jquery-noconflict']
-        );
-    }
-
-    protected static function registerJqueryUiCore()
-    {
-        // Modern Joomla: delegate to parent sortable implementation
-        parent::registerJqueryUiSortable();
-
-        return;
-
-    }
-
-    protected static function registerJqueryUiSortable()
-    {
-        parent::registerJqueryUiSortable();
-
-        return;
     }
 
     protected static function registerBootstrap()

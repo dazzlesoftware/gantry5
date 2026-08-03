@@ -14,12 +14,11 @@
 {% endblock %}
 
 {% block javascript %}
-{% do gantry.load('jquery') %}
     <script type="text/javascript">
         var pd_callback_{{ particle.pollid|e }} = function(json){
-            var obj = jQuery.parseJSON( json );
+            const obj = typeof json === 'string' ? JSON.parse(json) : json;
             if(obj.result == 'load') {
-                jQuery('style').remove('#poll_style{{ particle.pollid|e }}');
+                document.getElementById('poll_style{{ particle.pollid|e }}')?.remove();
             }
         };
     </script>

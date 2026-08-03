@@ -3,7 +3,7 @@
 {% block particle %}
 
     <div class="{{ particle.class|e }} g-title-wrapper">
-    
+
     {% if particle.pattern == 'enabled' %}
     <div class="g-gridstatistic-pattern">
         <div data-aos="zoom-in-right" class="slideshow-pattern-left">
@@ -51,43 +51,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/odometer.js') }}"></script>
-    <script type="text/javascript">
-        ;((function() {
-
-            var isElementInViewport = function(el, delta) {
-                var rect = jQuery(el).get(0).getBoundingClientRect();
-                delta = delta || 0;
-                return (
-                    rect.top >= -delta &&
-                    rect.left >= -delta &&
-                    rect.bottom <= (delta + (window.innerHeight || document.documentElement.clientHeight)) &&
-                    rect.right <= (delta + (window.innerWidth || document.documentElement.clientWidth))
-                );
-            }
-
-            jQuery(window).scroll(function() {
-                var odometers = jQuery.find('.odometer'), value, instances = {};
-                odometers.forEach(function(odometer, idx) {
-                    odometer = jQuery(odometer).get(0);
-                    if (!instances['o-' + idx] && isElementInViewport(odometer, 100)) {
-                        value = jQuery(odometer).attr('data-odometer-value');
-                        instances['o-' + idx] = {
-                            i: new Odometer({ el: odometer, format: '{{ particle.numberformat|default('d') }}' }),
-                            v: value
-                        };
-                        setTimeout(function() {
-                            instances['o-' + idx].i.update(instances['o-' + idx].v || 0);
-                        }, 100);
-                    }
-                });
-            });
-
-            jQuery(window).ready(function() {
-                jQuery(this).trigger('scroll');
-            });
-
-        })());
-    </script>
+    {% do gantry.document.addScript(url('gantry-assets://js/gridstatistic.js'), 11, 'footer') %}
 {% endblock %}

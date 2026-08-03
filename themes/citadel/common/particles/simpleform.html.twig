@@ -15,7 +15,7 @@
                 <textarea type="text" class="{% if item.required == 'enabled' %} g-simpleform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-simpleform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}"></textarea>
                 {% endif %}
                 {% if item.type == 'text' or item.type == 'datepicker' or item.type == 'spinner' %}
-                <input type="text" class="{% if item.type == 'datepicker' %}g-simpleform-datepicker{% endif %}{% if item.required == 'enabled' %} g-simpleform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-simpleform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}data-min="{{ item.min }}" data-max="{{ item.max }}"{% endif %}>
+                <input type="{% if item.type == 'datepicker' %}date{% elseif item.type == 'spinner' %}number{% else %}text{% endif %}" class="{% if item.type == 'datepicker' %}g-simpleform-datepicker{% endif %}{% if item.required == 'enabled' %} g-simpleform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-simpleform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}min="{{ item.min }}" max="{{ item.max }}"{% endif %}>
                 {% endif %}
                 {% if item.type == 'datepicker' %}
                 <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -45,7 +45,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
-<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
 <script src="{{ url('gantry-theme://js/simpleform.js') }}"></script>
 {% endblock %}

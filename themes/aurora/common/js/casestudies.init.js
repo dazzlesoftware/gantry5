@@ -1,30 +1,18 @@
-jQuery(document).ready(function () {
-    jQuery('[data-casestudies-id]').each(function(index) {
-        var mainContainer = jQuery(this)
-        var navContainer = jQuery('.g-casestudies-nav', mainContainer);
-
-        jQuery('.g-casestudies-grid').masonry({
-            // options...
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-casestudies-id]').forEach((container) => {
+        const navigation = container.querySelector('.g-casestudies-nav');
+        const grid = container.querySelector('.g-casestudies-grid');
+        const sizer = container.querySelector('.g-casestudies-grid-sizer');
+        if (!grid || typeof Shuffle === 'undefined') return;
+        const shuffle = new Shuffle(grid, {
             itemSelector: '.g-casestudies-grid-item',
-            columnWidth: '.g-casestudies-grid-sizer',
-            percentPosition: false,
-            resize: false
+            sizer
         });
-
-        var Shuffle = window.Shuffle;
-        var element = document.querySelector('.g-casestudies-grid', mainContainer);
-        var sizer = jQuery('.g-casestudies-grid-sizer', mainContainer);
-
-        var shuffleInstance = new Shuffle(element, {
-            itemSelector: '.g-casestudies-grid-item',
-            sizer: sizer // could also be a selector: '.my-sizer-element'
-        });
-        shuffleInstance.filter('1');
-
-        jQuery('.g-casestudies-nav-item', navContainer).click(function() {
-            jQuery('.g-casestudies-nav-item', navContainer).removeClass('selected');
-            jQuery(this).addClass('selected');
-            shuffleInstance.filter(jQuery(this).attr('data-group'));
-        });
+        shuffle.filter('1');
+        const buttons = [...navigation?.querySelectorAll('.g-casestudies-nav-item') || []];
+        buttons.forEach((button) => button.addEventListener('click', () => {
+            buttons.forEach((item) => item.classList.toggle('selected', item === button));
+            shuffle.filter(button.dataset.group);
+        }));
     });
 });

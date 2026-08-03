@@ -10,9 +10,9 @@ javascript:
     priority: '0'
     name: 'Block Variations'
   -
-    location: 'gantry-assets://js/jquery.lettering.min.js'
-    inline: "jQuery(document).ready(function() {\n  jQuery(\".g-profile-section-title\").lettering('words');\n});"
+    location: ''
+    inline: "document.querySelectorAll('.g-profile-section-title').forEach(function (title) { title.innerHTML = title.textContent.trim().split(/\\s+/).map(function (word, index) { return '<span class=\\\"word' + (index + 1) + '\\\">' + word + '</span>'; }).join(' '); });"
     in_footer: '1'
     extra: {  }
     priority: '0'
-    name: 'Lettering JS'
+    name: 'Profile title words'

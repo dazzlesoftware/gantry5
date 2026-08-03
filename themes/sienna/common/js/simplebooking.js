@@ -1,102 +1,80 @@
-jQuery(function() {
-    jQuery( ".g-simplebooking-datepicker" ).datepicker({
-        prevText: '<i class="fa fa-angle-left" aria-hidden="true">'+'<' + '/i>',
-        nextText: '<i class="fa fa-angle-right" aria-hidden="true">'+'<' + '/i>'
+document.querySelectorAll('[data-simplebooking-id]:not(form)').forEach((container) => {
+    const searchForm = container.querySelector('.g-simplebooking-mainform');
+    const required = [...searchForm.querySelectorAll('.g-simplebooking-item-required')];
+    const items = [...container.querySelectorAll('.g-simplebooking-items > .g-simplebooking-item')];
+    const input = (className) => searchForm.querySelector(`.${className}`)?.value || '';
+    const validate = (fields) => {
+        const empty = fields.filter((field) => !field.value || field.value === '0');
+        fields.forEach((field) => field.addEventListener('input', () => field.classList.remove('g-simplebooking-item-required-highlighted'), { once: true }));
+        empty.forEach((field) => field.classList.add('g-simplebooking-item-required-highlighted'));
+        empty[0]?.focus();
+        return empty.length === 0;
+    };
+
+    container.querySelectorAll('[data-trigger="spinner"]').forEach((spinner) => {
+        const field = spinner.querySelector('input');
+        spinner.querySelectorAll('[data-spin]').forEach((button) => button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const minimum = Number(field.dataset.min || 0);
+            const maximum = Number(field.dataset.max || Number.MAX_SAFE_INTEGER);
+            const delta = button.dataset.spin === 'up' ? 1 : -1;
+            field.value = Math.min(maximum, Math.max(minimum, Number(field.value || minimum) + delta));
+            field.dispatchEvent(new Event('input', { bubbles: true }));
+        }));
     });
-});
 
-jQuery('[data-simplebooking-id]').each(function(index) {
-    var parentContainer = jQuery( this );
-
-    jQuery( this ).find( ".g-simplebooking-button" ).click(function(){
-        var empty = jQuery(".g-simplebooking-mainform", parentContainer).find(".g-simplebooking-item-required").filter(function() {
-            if (this.value === "" || this.value === '0') {
-                return true;
-            }
+    container.querySelector('.g-simplebooking-button')?.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (!validate(required)) return;
+        const start = new Date(input('g-simplebooking-item-id-1'));
+        const end = new Date(input('g-simplebooking-item-id-2'));
+        const adults = Number(input('g-simplebooking-item-id-3'));
+        const children = Number(input('g-simplebooking-item-id-4'));
+        items.forEach((item) => {
+            const available = adults <= Number(item.dataset.adults)
+                && children <= Number(item.dataset.children)
+                && start >= new Date(item.dataset.start)
+                && end <= new Date(item.dataset.end);
+            item.hidden = !available;
         });
-        if(empty.length) {
-            empty.addClass("g-simplebooking-item-required-highlighted");
-            jQuery(".g-simplebooking-mainform", parentContainer).find(".g-simplebooking-item-required").click(function(){
-                this.removeClass("g-simplebooking-item-required-highlighted");
-            });
-        } else {
-            if( jQuery(".g-simplebooking-item-id-1", parentContainer).val().length === 0 && jQuery(".g-simplebooking-item-id-2", parentContainer).val().length === 0 && jQuery(".g-simplebooking-item-id-3", parentContainer).val() == 0 && jQuery(".g-simplebooking-item-id-4", parentContainer).val() == 0  ) {
-                jQuery(".g-simplebooking-items .g-simplebooking-item", parentContainer).fadeIn();
-            } else {
-                jQuery(".g-simplebooking-items .g-simplebooking-item", parentContainer).fadeOut();
-            }
-            jQuery(".g-simplebooking-items .g-simplebooking-item", parentContainer).filter(function () {
-                var dateFrom = jQuery(this).data('start');
-                var dateTo = jQuery(this).data('end');
-                var dateCheckFrom = jQuery(".g-simplebooking-item-id-1", parentContainer).val();
-                var dateCheckTo = jQuery(".g-simplebooking-item-id-2", parentContainer).val();
-                var from = new Date(dateFrom);
-                var to   = new Date(dateTo);
-                var checkFrom = new Date(dateCheckFrom);
-                var checkTo = new Date(dateCheckTo);
-
-                return jQuery(this).data('adults') >= jQuery(".g-simplebooking-item-id-3", parentContainer).val() && jQuery(this).data('children') >= jQuery(".g-simplebooking-item-id-4", parentContainer).val() && (checkFrom >= from && checkTo <= to);
-            }).fadeIn();
-        }
     });
 
-    jQuery(".g-simplebooking-items .g-simplebooking-item", parentContainer).each(function(index) {
-        var itemContainer = jQuery( this );
-        jQuery( this ).find( ".g-simplebooking-item-container .g-simplebooking-item-button .button" ).click(function(){
-            var empty = jQuery(".g-simplebooking-mainform", parentContainer).find(".g-simplebooking-item-required").filter(function() {
-                if (this.value === "" || this.value === '0') {
-                    return true;
-                }
-            });
-            if(empty.length) {
-                empty.addClass("g-simplebooking-item-required-highlighted");
-                jQuery(".g-simplebooking-mainform", parentContainer).find(".g-simplebooking-item-required").click(function(){
-                    this.removeClass("g-simplebooking-item-required-highlighted");
+    items.forEach((item) => {
+        const list = item.querySelector('.g-simplebooking-list');
+        const details = item.querySelector('.g-simplebooking-form');
+        const form = details?.querySelector('form');
+        item.querySelector('.g-simplebooking-item-button .button')?.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (!validate(required)) return;
+            list.hidden = true;
+            details.style.display = 'block';
+        });
+        item.querySelector('.g-simplebooking-buttonback .button')?.addEventListener('click', (event) => {
+            event.preventDefault();
+            list.hidden = false;
+            details.style.display = 'none';
+        });
+        item.querySelector('.g-simplebooking-button2 .button')?.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const contact = [...details.querySelectorAll('.g-simplebooking-item-required')];
+            if (!validate(contact)) return;
+            form.querySelector('.g-simplebooking-hiddenfields-checkin').value = input('g-simplebooking-item-id-1');
+            form.querySelector('.g-simplebooking-hiddenfields-checkout').value = input('g-simplebooking-item-id-2');
+            form.querySelector('.g-simplebooking-hiddenfields-adults').value = input('g-simplebooking-item-id-3');
+            form.querySelector('.g-simplebooking-hiddenfields-children').value = input('g-simplebooking-item-id-4');
+            try {
+                const response = await fetch(`https://getsimpleform.com/messages?form_api_token=${encodeURIComponent(form.dataset.simplebookingToken)}`, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { Accept: 'application/json' }
                 });
-            } else {
-                jQuery(".g-simplebooking-list", itemContainer).hide();
-                jQuery(".g-simplebooking-form", itemContainer).fadeIn().css("display", "block");
-                jQuery(".g-simplebooking-form .g-simplebooking-item", itemContainer).fadeIn().css("display", "block");
-                jQuery(".g-simplebooking-form .g-simplebooking-hidden", itemContainer).fadeIn().css("display", "flex");
+                if (!response.ok) throw new Error(`Booking submission failed (${response.status})`);
+                details.querySelector('.g-simplebooking-hidden').hidden = true;
+                details.querySelector('.g-simplebooking-thankyou').style.display = 'block';
+            } catch (error) {
+                details.querySelector('.g-simplebooking-hidden').hidden = true;
+                details.querySelector('.g-simplebooking-error').style.display = 'block';
             }
         });
-        jQuery( this ).find( ".g-simplebooking-buttonback .button" ).click(function(){
-            jQuery(".g-simplebooking-list", itemContainer).fadeIn().css("display", "flex");
-            jQuery(".g-simplebooking-form", itemContainer).hide();
-            jQuery(".g-simplebooking-form .g-simplebooking-hidden", itemContainer).hide();
-        });
-
-        jQuery( this ).find( ".g-simplebooking-button2 .button" ).click(function(){
-            var empty = jQuery(".g-simplebooking-form .g-simplebooking-hidden", itemContainer).find(".g-simplebooking-item-required").filter(function() {
-                return this.value === "";
-            });
-            if(empty.length) {
-                empty.addClass("g-simplebooking-item-required-highlighted");
-                jQuery(".g-simplebooking-form .g-simplebooking-hidden", itemContainer).find(".g-simplebooking-item-required").click(function(){
-                    this.removeClass("g-simplebooking-item-required-highlighted");
-                });
-            } else {
-                jQuery(".g-simplebooking-form .g-simplebooking-hiddenfields-checkin", itemContainer).val(jQuery(".g-simplebooking-item-id-1", parentContainer).val());
-                jQuery(".g-simplebooking-form .g-simplebooking-hiddenfields-checkout", itemContainer).val(jQuery(".g-simplebooking-item-id-2", parentContainer).val());
-                jQuery(".g-simplebooking-form .g-simplebooking-hiddenfields-adults", itemContainer).val(jQuery(".g-simplebooking-item-id-3", parentContainer).val());
-                jQuery(".g-simplebooking-form .g-simplebooking-hiddenfields-children", itemContainer).val(jQuery(".g-simplebooking-item-id-4", parentContainer).val());
-                jQuery.ajax({
-                    dataType: 'jsonp',
-                    url: 'https://getsimpleform.com/messages/ajax?form_api_token=' + jQuery(".g-simplebooking-form form", itemContainer).attr('data-simplebooking-token'),
-                    data: jQuery(".g-simplebooking-form form", itemContainer).serialize()
-                }).done(function() {
-                    jQuery(".g-simplebooking-form .g-simplebooking-hidden", itemContainer).hide();
-                    jQuery(".g-simplebooking-form  .g-simplebooking-thankyou", itemContainer).fadeIn();
-                })
-                .fail(function() {
-                    jQuery(".g-simplebooking-form .g-simplebooking-hidden", itemContainer).hide();
-                    jQuery(".g-simplebooking-form  .g-simplebooking-error", itemContainer).fadeIn();
-                })
-            }
-            return false;
-        });
-
     });
-
-
 });

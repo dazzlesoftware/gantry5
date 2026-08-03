@@ -188,12 +188,11 @@ data-swiper-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mo
 {% block javascript_footer %}
     {% if particle.thumbs == 'enabled' and particle.thumbslayout == 'top' %}
     <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#{{ id }}-thumbs').insertBefore('#{{ id }}');
-        });
+        const thumbs = document.getElementById('{{ id }}-thumbs');
+        const slider = document.getElementById('{{ id }}');
+        if (thumbs && slider) slider.before(thumbs);
     </script>
     {% endif %}
-    {% do gantry.load('jquery') %}
     {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
     {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
     {% do gantry.document.addScript(url('gantry-theme://js/swiper.init.js'), 10, 'footer') %}

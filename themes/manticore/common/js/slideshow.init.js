@@ -1,19 +1,20 @@
-jQuery(document).ready(function () {
-    jQuery('[data-slideshow-id]').each(function (index) {
-        var container = jQuery(this);
-        var thumbs = container.data('slideshow-thumbnails');
-        var autoplay = container.data('slideshow-autoplay') ? { delay: container.data('slideshow-timeout'), disableOnInteraction: false } : false;
-        var touchMove = container.data('slideshow-touchmove');
+function asBool(value) { return value === true || value === 'true' || value === '1'; }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-slideshow-id]').forEach(function (container, index) {
+        var thumbs = container.dataset.slideshowThumbnails;
+        var autoplay = asBool(container.dataset.slideshowAutoplay) ? { delay: container.dataset.slideshowTimeout, disableOnInteraction: false } : false;
+        var touchMove = asBool(container.dataset.slideshowTouchmove);
 
         if(container.parents('.fp-slideshow').length > 0) {
             container.closest('.g-grid').addClass('has-slideshow');
         }
 
         if(thumbs) {
-            var sliderThumbs = new Swiper(jQuery('.g-slideshow-thumbs', this), {
+            var sliderThumbs = new Swiper(container.querySelector('.g-slideshow-thumbs'), {
                 spaceBetween: 10,
                 slidesPerView: 1,
-                loop: container.data('slideshow-loop'),
+                loop: asBool(container.dataset.slideshowLoop),
                 centeredSlides: false,
                 freeMode: true,
                 loopedSlides: 1, //looped slides should be the same
@@ -54,9 +55,9 @@ jQuery(document).ready(function () {
             });
         }
 
-        var slideSwipe = new Swiper(jQuery(this), {
-            speed: container.data('slideshow-speed'),
-            loop: container.data('slideshow-loop'),
+        var slideSwipe = new Swiper(container, {
+            speed: container.dataset.slideshowSpeed,
+            loop: asBool(container.dataset.slideshowLoop),
             direction: 'vertical',
             allowTouchMove: touchMove,
             autoplay: autoplay,
@@ -70,7 +71,7 @@ jQuery(document).ready(function () {
                 prevEl: '.swiper-button-prev',
             },
             thumbs: thumbs ? { swiper: sliderThumbs } : thumbs,
-            effect: container.data('slideshow-effect'),
+            effect: container.dataset.slideshowEffect,
             fadeEffect: {
                 crossFade: true
             },

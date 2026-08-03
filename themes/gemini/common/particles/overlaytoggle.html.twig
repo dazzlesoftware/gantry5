@@ -15,18 +15,16 @@
 
 {% block javascript_footer %}
 <script>
-jQuery(document).ready(function (){
-  /* When user clicks the Icon */
-  jQuery(".nav-toggle").click(function() {
-    jQuery(this).toggleClass("active");
-    jQuery("#g-container-overlay").toggleClass("open");
-  });
-
-  /* When user clicks outside */
-  jQuery("#g-container-overlay").click(function() {
-    jQuery(".nav-toggle").toggleClass("active");
-    jQuery("#g-container-overlay").toggleClass("open");
-  });
+document.addEventListener('click', (event) => {
+    const toggle = event.target.closest('.nav-toggle');
+    const overlay = event.target.closest('#g-container-overlay');
+    if (!toggle && !overlay) return;
+    event.preventDefault();
+    const trigger = toggle || document.querySelector('.nav-toggle');
+    const target = document.getElementById('g-container-overlay');
+    trigger?.classList.toggle('active');
+    target?.classList.toggle('open');
+    trigger?.setAttribute('aria-expanded', String(target?.classList.contains('open')));
 });
 </script>
 {% endblock %}

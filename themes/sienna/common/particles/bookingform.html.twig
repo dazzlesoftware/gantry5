@@ -12,7 +12,7 @@
                     {% if item.label %}
                     <label for="g-bookingform-item-id-{{ loop.index }}">{{ item.label }}{% if item.required == 'enabled' %}<sup>*</sup>{% endif %}</label>
                     {% endif %}
-                    <input type="text" class="{% if item.type == 'datepicker' %}g-bookingform-datepicker{% endif %}{% if item.required == 'enabled' %} g-bookingform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-bookingform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}data-min="{{ item.min }}" data-max="{{ item.max }}"{% endif %}>
+                    <input type="{% if item.type == 'datepicker' %}date{% elseif item.type == 'spinner' %}number{% else %}text{% endif %}" class="{% if item.type == 'datepicker' %}g-bookingform-datepicker{% endif %}{% if item.required == 'enabled' %} g-bookingform-item-required{% endif %}" name="{{ item.label|title|replace({' ':''}) }}" {% if item.required == 'enabled' %}required="required"{% endif %} id="g-bookingform-item-id-{{ loop.index }}" placeholder="{{ item.placeholder }}" {% if item.type == 'spinner' %}min="{{ item.min }}" max="{{ item.max }}"{% endif %}>
                     {% if item.type == 'datepicker' %}
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                     {% endif %}
@@ -67,8 +67,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
-<script src="{{ url('gantry-theme://js/datepicker.js') }}"></script>
-<script src="{{ url('gantry-theme://js/spinner.js') }}"></script>
 <script src="{{ url('gantry-theme://js/bookingform.js') }}"></script>
 {% endblock %}

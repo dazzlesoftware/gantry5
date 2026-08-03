@@ -13,7 +13,7 @@
 		<form id="g-newsletter-form-{{ id }}" class="g-newsletter-form" action="//feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('//feedburner.google.com/fb/a/mailverify?uri={{ particle.uri|e }}', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
 			{% if particle.sidetext %}
 				<div class="g-newsletter-sidetext">{{ particle.sidetext|raw }}</div>
-			{% endif %}			
+			{% endif %}
 			<div class="g-newsletter-form-wrapper">
 				<div class="g-newsletter-inputbox">
 					<input type="text" placeholder="{{ particle.inputboxtext|raw }}" name="email">

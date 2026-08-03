@@ -68,33 +68,6 @@
 
 {% block javascript_footer %}
     {{ parent() }}
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            var swiper{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-{{ id }}');
-            swiper{{ id|replace({'-':'_'}) }}.on('changed.swiper.carousel', function(event) {
-                var currentItem = "#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-" + (event.item.index + 1);
-                jQuery(currentItem).trigger("click");
-            })
-            {% if particle.nav == 'enabled' %}
-            jQuery('#g-swipercarousel-{{ id }}-controls .swiper-button-next').click(function() {
-                swiper{{ id|replace({'-':'_'}) }}.trigger('next.swiper.carousel');
-            })
-            jQuery('#g-swipercarousel-{{ id }}-controls .swiper-button-prev').click(function() {
-                swiper{{ id|replace({'-':'_'}) }}.trigger('prev.swiper.carousel');
-            })
-            {% endif %}
-        });
-
-        var owlPanelItems{{ id|replace({'-':'_'}) }} = jQuery('#g-swipercarousel-panel-{{ id }} .g-swipercarousel-panel');
-        {% for item in items %}
-        jQuery("#g-swipercarousel-panel-{{ id }} #g-swipercarousel-panel-{{ loop.index }}").click(function(event) {
-            owlPanelItems{{ id|replace({'-':'_'}) }}.removeClass('selected');
-            jQuery(this).addClass('selected');
-        });
-        {% endfor %}
-    </script>
-{% endblock %}
-
-{% block javascript_footer %}
     {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper-panels.js'), 10, 'footer') %}
 {% endblock %}

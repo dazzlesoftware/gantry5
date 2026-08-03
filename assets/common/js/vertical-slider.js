@@ -1,0 +1,57 @@
+(function () {
+    'use strict';
+
+    function bool(value) {
+        return value === 'true' || value === '1';
+    }
+
+    document.querySelectorAll('[data-verticalslider-id]').forEach(function (container) {
+        var list = container.querySelector('ul');
+        if (!list) return;
+
+        var slides = Array.from(list.children);
+        if (!slides.length) return;
+
+        var index = Math.max(0, Number.parseInt(container.dataset.verticalsliderPresets || '1', 10) - 1);
+        var loop = bool(container.dataset.verticalsliderLoop);
+        var interval;
+
+        function show(next) {
+            if (loop) next = (next + slides.length) % slides.length;
+            index = Math.max(0, Math.min(next, slides.length - 1));
+            slides.forEach(function (slide, slideIndex) {
+                slide.hidden = slideIndex !== index;
+                slide.classList.toggle('active', slideIndex === index);
+            });
+        }
+
+        function button(label, className, direction) {
+            var control = document.createElement('button');
+            control.type = 'button';
+            control.className = className;
+            control.setAttribute('aria-label', label);
+            control.innerHTML = '<i class="fa fa-chevron-' + direction + '" aria-hidden="true"></i>';
+            return control;
+        }
+
+        if (bool(container.dataset.verticalsliderControls)) {
+            var previous = button('Previous slide', 'g-verticalslider-prev', 'up');
+            var next = button('Next slide', 'g-verticalslider-next', 'down');
+            previous.addEventListener('click', function () { show(index - 1); });
+            next.addEventListener('click', function () { show(index + 1); });
+            container.append(previous, next);
+        }
+
+        container.querySelectorAll('[data-thumbnail]').forEach(function (element) {
+            element.addEventListener('mouseenter', function () {
+                element.style.setProperty('--verticalslider-thumbnail', 'url("' + element.dataset.thumbnail + '")');
+            });
+        });
+
+        show(index);
+        if (bool(container.dataset.verticalsliderAuto)) {
+            interval = window.setInterval(function () { show(index + 1); }, Number(container.dataset.verticalsliderPause) || 5000);
+            container.addEventListener('mouseenter', function () { window.clearInterval(interval); });
+        }
+    });
+}());

@@ -1,32 +1,22 @@
-jQuery(document).ready(function () {
-    jQuery('[data-mosaic-id]').each(function(index) {
-        var mainContainer = jQuery(this)
-        var navContainer = jQuery('.g-mosaic-nav', mainContainer);
-
-        jQuery('.g-mosaic-grid', mainContainer).masonry({
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-mosaic-id]').forEach((container) => {
+        const navigation = container.querySelector('.g-mosaic-nav');
+        const grid = container.querySelector('.g-mosaic-grid');
+        const sizer = container.querySelector('.g-mosaic-grid-sizer');
+        if (!grid || typeof Shuffle === 'undefined') return;
+        const selected = navigation?.querySelector('.selected');
+        const shuffle = new Shuffle(grid, {
             itemSelector: '.g-mosaic-grid-item',
-            columnWidth: '.g-mosaic-grid-sizer',
-            percentPosition: false,
-            resize: false
+            sizer,
+            group: selected?.dataset.group
         });
-
-        var Shuffle = window.Shuffle;
-        var element = document.querySelector('.g-mosaic-grid', mainContainer);
-        var sizer = jQuery('.g-mosaic-grid-sizer', mainContainer);
-
-        var shuffleInstance = new Shuffle(jQuery('.g-mosaic-grid', mainContainer), {
-            itemSelector: '.g-mosaic-grid-item',
-            sizer: sizer,
-            group: jQuery('.selected', navContainer).attr('data-group')
+        const buttons = [...navigation?.querySelectorAll('.g-mosaic-nav-item') || []];
+        navigation?.querySelector('.g-mosaic-nav-container')?.addEventListener('click', () => {
+            buttons.forEach((button) => button.classList.toggle('clicked'));
         });
-
-        jQuery('.g-mosaic-nav-container', navContainer).on('click', function() {
-            jQuery('.g-mosaic-nav-item', navContainer).toggleClass('clicked');
-        });
-        jQuery('.g-mosaic-nav-item', navContainer).click(function() {
-            jQuery('.g-mosaic-nav-item', navContainer).removeClass('selected');
-            jQuery(this).addClass('selected');
-            shuffleInstance.filter(jQuery(this).attr('data-group'));
-        });
+        buttons.forEach((button) => button.addEventListener('click', () => {
+            buttons.forEach((item) => item.classList.toggle('selected', item === button));
+            shuffle.filter(button.dataset.group);
+        }));
     });
 });

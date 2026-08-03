@@ -57,7 +57,7 @@
                                         <img src="{{ url(item.image)|e }}" alt="{{ item.title }}"/>
                                     </div>
                                 {% endif %}
-                                
+
                                 <div class="g-casestudies-grid-item-content">
                                     <div class="g-casestudies-grid-item-case">
                                         {{ case.title }}
@@ -102,10 +102,8 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do 
-        gantry.load('jquery') %}
+    {% do
     <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
-    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
     <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
     <script src="{{ url('gantry-theme://js/casestudies.init.js') }}"></script>
 {% endblock %}

@@ -1,24 +1,15 @@
-
-// Frame wiggle
-jQuery(".wiggle .g-content").append("<div class='wiggle-frame'></div>");
-window.addEventListener('load', function (e) {
-    window.addEventListener('mousemove', function (e) {
-        var elems = jQuery(".wiggle:not(.wiggle-static)");
-        for (var i = 0; i < elems.length; i++) {
-            var elem = elems[i];
-            var elemOffset = elem.getBoundingClientRect();
-            elem.style.transform = 'translate(' + Math.floor(-(e.clientX - elemOffset.left) / 100) + 'px, ' + Math.floor(-(e.clientY - elemOffset.top) / 200) + 'px ' + ')';
-        }
-    })
+document.querySelectorAll('.wiggle .g-content').forEach((content) => {
+    const frame = document.createElement('div');
+    frame.className = 'wiggle-frame';
+    content.append(frame);
 });
-
-window.addEventListener('load', function (e) {
-    window.addEventListener('mousemove', function (e) {
-        var elems = jQuery(".wiggle:not(.wiggle-static) .wiggle-frame");
-        for (var i = 0; i < elems.length; i++) {
-            var elem = elems[i];
-            var elemOffset = elem.getBoundingClientRect();
-            elem.style.transform = 'translate(' + Math.floor(-(e.clientX - elemOffset.left) / 69) + 'px, ' + Math.floor(-(e.clientY - elemOffset.top) / 100) + 'px ' + ')';
-        }
-    })
-});
+window.addEventListener('mousemove', (event) => {
+    document.querySelectorAll('.wiggle:not(.wiggle-static)').forEach((element) => {
+        const box = element.getBoundingClientRect();
+        element.style.transform = `translate(${Math.floor(-(event.clientX - box.left) / 100)}px, ${Math.floor(-(event.clientY - box.top) / 200)}px)`;
+    });
+    document.querySelectorAll('.wiggle:not(.wiggle-static) .wiggle-frame').forEach((element) => {
+        const box = element.getBoundingClientRect();
+        element.style.transform = `translate(${Math.floor(-(event.clientX - box.left) / 69)}px, ${Math.floor(-(event.clientY - box.top) / 100)}px)`;
+    });
+}, { passive: true });

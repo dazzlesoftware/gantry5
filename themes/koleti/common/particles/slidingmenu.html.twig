@@ -184,8 +184,5 @@
 <div class="content-wrap"></div>
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/snap.svg-min.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/classie.js'), 10, 'footer') %}
     {% do gantry.document.addScript(url('gantry-theme://js/slidingmenu.init.js'), 10, 'footer') %}
 {% endblock %}

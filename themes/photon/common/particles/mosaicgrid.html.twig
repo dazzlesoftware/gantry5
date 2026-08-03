@@ -76,21 +76,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
-<script src="{{ url('gantry-theme://js/mosaicgrid.js') }}"></script>
-<script type="text/javascript">
-// init Isotope
-var grid{{ id|replace({'-':'_'}) }} = document.querySelector('#g-mosaicgrid-{{ id }}');
-
-var msnry{{ id|replace({'-':'_'}) }} = new Masonry(grid{{ id|replace({'-':'_'}) }}, {
-    itemSelector: '.g-mosaicgrid-item-container',
-    columnWidth: '.g-mosaicgrid-sizer',
-    percentPosition: true
-});
-
-jQuery(grid{{ id|replace({'-':'_'}) }}).imagesLoaded()
-.always( function( instance ) {
-    msnry{{ id|replace({'-':'_'}) }}.layout();
-})
-</script>
+<script src="{{ url('gantry-assets://js/mosaic-grid.js') }}"></script>
 {% endblock %}

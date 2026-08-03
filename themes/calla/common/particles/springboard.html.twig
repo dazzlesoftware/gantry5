@@ -93,15 +93,12 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ url('gantry-theme://js/fastclick.js') }}"></script>
-    <script src="{{ url('gantry-theme://js/springboard.js') }}"></script>
+    <script src="{{ url('gantry-assets://js/springboard.js') }}"></script>
     <script src="{{ url('gantry-theme://js/anime.min.js') }}"></script>
     <script src="{{ url('gantry-theme://js/charming.min.js') }}"></script>
     <script src="{{ url('gantry-theme://js/tooltips.js') }}"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var addRule = (function(style) {
                 var sheet = document.head.appendChild(style).sheet;
                 return function(selector, css) {
@@ -112,8 +109,8 @@
                 }
             })(document.createElement("style"));
 
-            var items = jQuery('.g-springboard .g-springboard-icon');
-            items.each(function(index) {
+            var items = document.querySelectorAll('.g-springboard .g-springboard-icon');
+            items.forEach(function(item, index) {
                 if(Math.random() >= 0.5) {
                     var vertical = "top";
                 } else {
@@ -132,9 +129,9 @@
                 });
             });
 
-            jQuery(items).click(function(event, item) {
-                var link = jQuery(this).data("springboard-link");
-                var target = jQuery(this).data("springboard-target");
+            items.forEach(function (item) { item.addEventListener('click', function () {
+                var link = item.dataset.springboardLink;
+                var target = item.dataset.springboardTarget;
 
                 if(typeof link !== 'undefined') {
                     if(target === '_self') {
@@ -143,7 +140,7 @@
                         window.open(link, '_blank');
                     }
                 }
-            });
+            }); });
         });
     </script>
 {% endblock %}

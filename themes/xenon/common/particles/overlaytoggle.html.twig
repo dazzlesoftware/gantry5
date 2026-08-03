@@ -1,20 +1,17 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block javascript %}
-{% do gantry.load('jquery') %}
 <script>
-jQuery(document).ready(function (){
-  /* When user clicks the Icon */
-  jQuery(".nav-toggle").click(function() {
-    jQuery(this).toggleClass("active");
-    jQuery("#g-overlay").toggleClass("open");
-  });
-
-  /* When user clicks outside */
-  jQuery("#g-overlay").click(function() {
-    jQuery(".nav-toggle").toggleClass("active");
-    jQuery("#g-overlay").toggleClass("open");
-  }); 
+document.addEventListener('click', (event) => {
+    const toggle = event.target.closest('.nav-toggle');
+    const overlay = event.target.closest('#g-overlay');
+    if (!toggle && !overlay) return;
+    event.preventDefault();
+    const trigger = toggle || document.querySelector('.nav-toggle');
+    const target = document.getElementById('g-overlay');
+    trigger?.classList.toggle('active');
+    target?.classList.toggle('open');
+    trigger?.setAttribute('aria-expanded', String(target?.classList.contains('open')));
 });
 </script>
 {% endblock %}
@@ -22,7 +19,7 @@ jQuery(document).ready(function (){
 {% block particle %}
 <div class="{{ particle.class|e }}">
   <div class="g-overlaytoggle">
-    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %} 
+    {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
     <a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#" onclick="return false">
       {% if particle.menutext %}<span class="g-overlaytoggle-text">{{ particle.menutext|raw }}</span>{% endif %}
     </a>

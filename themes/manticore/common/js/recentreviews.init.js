@@ -1,29 +1,29 @@
-jQuery(document).ready(function () {
-    jQuery('[data-recentreviews-id]').each(function (index) {
-        var mainContainer = jQuery(this);
-        var navContainer = jQuery('.g-recentreviews-nav', mainContainer);
-
-        mainContainer.imagesLoaded(function () {
-            var Shuffle = window.Shuffle;
-            var element = document.querySelector('.g-recentreviews-grid', mainContainer);
-            var sizer = jQuery('.g-recentreviews-grid-sizer', mainContainer);
-            var shuffleInstance = new Shuffle(jQuery('.g-recentreviews-grid', mainContainer), {
-                itemSelector: '.g-recentreviews-grid-item',
-                sizer: sizer,
-                randomize: true,
-                group: jQuery('.selected', navContainer).attr('data-group'),                
-            });
-            jQuery('.g-recentreviews-nav-container', navContainer).on('click', function () {
-                jQuery('.g-recentreviews-nav-item', navContainer).toggleClass('clicked');
-            });
-
-            jQuery('.g-recentreviews-nav-item', navContainer).click(function () {
-                jQuery('.g-recentreviews-nav-item', navContainer).removeClass('selected');
-                jQuery(this).addClass('selected');
-                shuffleInstance.filter(jQuery(this).attr('data-group'));
-            });
-            mainContainer.addClass('visible');
+document.addEventListener('DOMContentLoaded', () => {
+    const imagesReady = (container) => Promise.all([...container.querySelectorAll('img')].map((image) => (
+        image.complete ? Promise.resolve() : new Promise((resolve) => {
+            image.addEventListener('load', resolve, { once: true });
+            image.addEventListener('error', resolve, { once: true });
+        })
+    )));
+    document.querySelectorAll('[data-recentreviews-id]').forEach(async (container) => {
+        await imagesReady(container);
+        const navigation = container.querySelector('.g-recentreviews-nav');
+        const grid = container.querySelector('.g-recentreviews-grid');
+        if (!grid || typeof Shuffle === 'undefined') return;
+        const buttons = [...navigation?.querySelectorAll('.g-recentreviews-nav-item') || []];
+        const shuffle = new Shuffle(grid, {
+            itemSelector: '.g-recentreviews-grid-item',
+            sizer: container.querySelector('.g-recentreviews-grid-sizer'),
+            randomize: true,
+            group: navigation?.querySelector('.selected')?.dataset.group
         });
-
+        navigation?.querySelector('.g-recentreviews-nav-container')?.addEventListener('click', () => {
+            buttons.forEach((button) => button.classList.toggle('clicked'));
+        });
+        buttons.forEach((button) => button.addEventListener('click', () => {
+            buttons.forEach((item) => item.classList.toggle('selected', item === button));
+            shuffle.filter(button.dataset.group);
+        }));
+        container.classList.add('visible');
     });
 });

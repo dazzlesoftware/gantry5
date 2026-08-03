@@ -16,8 +16,8 @@
     .headroom-bg-section + section, .headroom-bg-section + header {
         padding-top: {{ particle.mobilepadding|default('80') }}px !important;
     }
-}                
-{% endif %}      
+}
+{% endif %}
 
 {% if particle.pinnedbg == 'custom' %}
 {{ particle.section|default('#g-navigation') }} {
@@ -28,7 +28,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
     {% do gantry.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
     <script>
         // User Section
@@ -57,31 +56,23 @@
 
         {% if particle.display == 'enable-mobile' %}
             {% if particle.autohide == 'enabled' %}
-            jQuery(document).ready(function () {
-                jQuery('.g-offcanvas-toggle').prependTo('{{ particle.section|default("#g-navigation") }}');
-             });   
+            const offcanvasToggle = document.querySelector('.g-offcanvas-toggle');
+                const offcanvasTarget = document.querySelector('{{ particle.section|default("#g-navigation") }}');
+                if (offcanvasToggle && offcanvasTarget) offcanvasTarget.prepend(offcanvasToggle);
             {% else %}
                 document.body.classList.add("toggle-fixed");
-            {% endif %} 
+            {% endif %}
         {% elseif particle.display == 'disable-mobile' %}
             document.body.classList.add("disable-mobile");
         {% endif %}
 
         {% if particle.display == 'slideshow-hide' %}
-            jQuery(document).ready(function () {
-                jQuery(window).scroll(function() { 
-                    var body = jQuery('body');
-                    var scroll = jQuery(window).scrollTop();
-                    var height = jQuery(window).height();
-
-                    if (scroll > (height - 250)) {
-                        body.addClass('scrolling-enable');
-                    } else if (scroll < (height - 250) && body.hasClass('scrolling-enable')) {
-                        body.removeClass('scrolling-enable');
-                    }
-                });
-            });
-        {% endif %}    
+            const updateScrollState = () => {
+                document.body.classList.toggle('scrolling-enable', window.scrollY > window.innerHeight - 250);
+            };
+            window.addEventListener('scroll', updateScrollState, { passive: true });
+            updateScrollState();
+        {% endif %}
 
         headroom.init();
     </script>

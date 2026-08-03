@@ -1,10 +1,12 @@
-jQuery(document).ready(function () {
-    jQuery('[data-featureslider-id]').each(function (index) {
-      var container = jQuery('.area', this);
-      var autoplay = container.data('featureslider-autoplay') ? { delay: container.data('featureslider-timeout'), disableOnInteraction: false } : false;
-      var touchMove = container.data('featureslider-touchmove');
-      var touchMoveTabs = container.data('featureslider-touchmovetabs');
-  
+function asBool(value) { return value === true || value === 'true' || value === '1'; }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-featureslider-id]').forEach(function (root, index) {
+      var container = root.querySelector('.area');
+      var autoplay = asBool(container.dataset.featuresliderAutoplay) ? { delay: container.dataset.featuresliderTimeout, disableOnInteraction: false } : false;
+      var touchMove = asBool(container.dataset.featuresliderTouchmove);
+      var touchMoveTabs = asBool(container.dataset.featuresliderTouchmovetabs);
+
       var thumbs = new Swiper('.g-featureslider-thumbs', {
         slidesPerView: 4,
         direction: 'vertical',
@@ -14,9 +16,9 @@ jQuery(document).ready(function () {
         allowTouchMove: touchMoveTabs,
       });
 
-      var slideSwiper = new Swiper(jQuery(container), {
-        speed: container.data('featureslider-speed'),
-        loop: container.data('featureslider-loop'),
+      var slideSwiper = new Swiper(container, {
+        speed: container.dataset.featuresliderSpeed,
+        loop: asBool(container.dataset.featuresliderLoop),
         direction: 'horizontal',
         allowTouchMove: touchMove,
         grabCursor: touchMove,
@@ -41,4 +43,4 @@ jQuery(document).ready(function () {
       });
     });
   });
-  
+

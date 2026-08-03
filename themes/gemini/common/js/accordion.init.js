@@ -1,59 +1,37 @@
-jQuery(document).ready(function () {
-    jQuery('[data-accordion-id]').each(function(index) {
-        var mainContainer = jQuery(this);
-        function openFirstPanel() {
-            jQuery('> li:first-child div', jQuery(this)).addClass('active').css('opacity', 0).slideDown("slow").animate({ opacity: 1 }, {
-                queue: false,
-                duration: 'slow'
+(() => {
+    'use strict';
+
+    const initialize = () => {
+        document.querySelectorAll('[data-accordion-id]').forEach((accordion) => {
+            if (accordion.dataset.accordionReady) return;
+            accordion.dataset.accordionReady = 'true';
+            const items = [...accordion.children].filter((item) => item.matches('li'));
+            const setOpen = (item, open) => {
+                const panel = item.querySelector('.accordion-item-content');
+                if (!panel) return;
+                item.classList.toggle('active', open);
+                panel.classList.toggle('active', open);
+                panel.hidden = !open;
+                panel.style.opacity = open ? '1' : '0';
+                item.querySelector('.indicator span')?.replaceChildren(open ? '-' : '+');
+            };
+
+            items.forEach((item, index) => {
+                const panel = item.querySelector('.accordion-item-content');
+                if (panel && !panel.id) panel.id = `${accordion.dataset.accordionId || 'accordion'}-panel-${index}`;
+                setOpen(item, index === 0);
+                item.addEventListener('click', (event) => {
+                    if (event.target.closest('.accordion-item-content a, .accor-button')) return;
+                    const opening = !item.classList.contains('active');
+                    items.forEach((candidate) => setOpen(candidate, opening && candidate === item));
+                });
             });
-            jQuery('> li:first-child', jQuery(this)).addClass('active').slideDown("slow").animate({ opacity: 1 }, {
-                queue: false,
-                duration: 'slow'
-            });
-            jQuery('> li:first-child .indicator span', jQuery(this)).text('-');
-        }
-
-        var allPanels = jQuery('li .accordion-item-content', jQuery(this)).hide();
-        openFirstPanel();
-
-        jQuery('> li', jQuery(this)).click(function() {
-            var selectedItem = jQuery(this);
-            var target = jQuery('.accordion-item-content', jQuery(this));
-
-            if (target.hasClass('active')) {
-                target.removeClass('active').slideUp("slow").animate({ opacity: 0 }, {
-                    queue: false,
-                    duration: 'slow'
-                });
-            } else {
-                allPanels.removeClass('active').slideUp("slow").animate({ opacity: 0 }, {
-                    queue: false,
-                    duration: 'slow'
-                });
-                target.addClass('active').slideDown("slow").animate({ opacity: 1 }, {
-                    queue: false,
-                    duration: 'slow'
-                });
-            }
-            if (selectedItem.hasClass('active')) {
-                selectedItem.removeClass('active');
-                jQuery('.indicator span', jQuery(this)).text('+');
-            } else {
-                jQuery('.accordion li', mainContainer).removeClass('active');
-                jQuery('.indicator span', mainContainer).text('+');
-                selectedItem.addClass('active');
-                jQuery('.indicator span', jQuery(this)).text('-');
-            }
-            return false;
         });
+    };
 
-    });
-});
-
-jQuery( ".accordion-item-content a" ).click(function( event ) {
-    event.stopPropagation();
-});
-
-jQuery( ".accor-button" ).click(function( event ) {
-    event.stopPropagation();
-});
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize, { once: true });
+    } else {
+        initialize();
+    }
+})();

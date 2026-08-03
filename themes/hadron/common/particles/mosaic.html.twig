@@ -58,7 +58,7 @@
                                     <span class="g-mosaic-hovercontent">{{ item.linklabel|default('Read More') }}</span>
                                     {% endif %}
                                 {% if item.url %}</a>{% endif %}
-                            </div>    
+                            </div>
                         </div>
 
                     </div>
@@ -69,10 +69,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
 <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
-<script src="{{ url('gantry-theme://js/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
-<script src="{{ url('gantry-theme://js/masonry.pkgd.min.js') }}"></script>
 <script src="{{ url('gantry-theme://js/mosaic.init.js') }}"></script>
 {% endblock %}

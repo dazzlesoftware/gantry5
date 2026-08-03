@@ -1,5 +1,5 @@
-jQuery(document).ready(function() {
-    jQuery('[data-particlesjs-id]').each(function(index) {
-        particlesJS.load(jQuery(this).attr('id'), jQuery(this).attr('data-particlesjs-path'), function() {});
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-particlesjs-id]').forEach((container) => {
+        particlesJS.load(container.id, container.dataset.particlesjsPath, () => {});
     });
 });

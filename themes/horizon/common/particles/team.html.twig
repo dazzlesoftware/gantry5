@@ -64,7 +64,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-	{% do gantry.load('jquery') %}
 	{% do gantry.document.addScript(url('gantry-theme://js/team.init.js'), 10, 'footer') %}
 {% endblock %}
-

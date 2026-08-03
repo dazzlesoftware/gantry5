@@ -1,23 +1,21 @@
-jQuery(document).ready(function () {
-    jQuery('[data-quickmenu-id]').each(function (index) {
-        var container = jQuery(this);
-        var thumbs = new Swiper(jQuery('.thumbs', container), {
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-quickmenu-id]').forEach((container) => {
+        const thumbnails = container.querySelector('.thumbs');
+        const slides = container.querySelector('.items');
+        if (!thumbnails || !slides) return;
+        const thumbs = new Swiper(thumbnails, {
             slidesPerView: 4,
             freeMode: true,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
+            watchSlidesProgress: true
         });
-
-        var items = new Swiper(jQuery('.items', container), {
+        new Swiper(slides, {
             spaceBetween: 20,
-            thumbs: {
-                swiper: thumbs
-            },
+            thumbs: { swiper: thumbs },
             pagination: {
-                el: '.swiper-pagination',
+                el: container.querySelector('.swiper-pagination'),
                 type: 'bullets',
-                clickable: true,
-            },
+                clickable: true
+            }
         });
     });
 });

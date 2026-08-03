@@ -1,8 +1,7 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
-{% do gantry.document.addScript(url('gantry-theme://js/enllax.js')) %}
+{% do gantry.document.addScript(url('gantry-assets://js/parallax.js')) %}
 
     <script>
         function setAttributes(el, attrs) {

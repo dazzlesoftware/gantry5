@@ -1,9 +1,8 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block javascript %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/flexslider.js') }}"></script>
-    <script src="{{ url('gantry-theme://js/enllax.js') }}"></script>
+    <script src="{{ url('gantry-assets://js/carousel.js') }}"></script>
+    <script src="{{ url('gantry-assets://js/parallax.js') }}"></script>
 {% endblock %}
 
 {% block particle %}
@@ -146,8 +145,8 @@
 {% block javascript_footer %}
     {% if particle.layout == "slideshow" %}
         <script type="text/javascript">
-            jQuery(document).ready(function () {
-                jQuery('#g-flexslider-slideshow-{{ id }}').flexslider({
+            document.addEventListener('DOMContentLoaded', function () {
+                window.GantryCarousel.create(document.querySelector('#g-flexslider-slideshow-{{ id }}'), {
                     selector: ".g-flexslider-slideshow-slides > .g-flexslider-slideshow-item-container",
                     animation: "{{ particle.animation|default('slide') }}",
                     prevText: "{{ particle.prevButtonText|default('') }}",
@@ -175,8 +174,8 @@
     {% elseif particle.layout == "testimonial" %}
 
         <script type="text/javascript">
-            jQuery(document).ready(function () {
-                jQuery('#g-flexslider-testimonial-{{ id }}').flexslider({
+            document.addEventListener('DOMContentLoaded', function () {
+                window.GantryCarousel.create(document.querySelector('#g-flexslider-testimonial-{{ id }}'), {
                     selector: ".g-flexslider-testimonial-slides > .g-flexslider-testimonial-item-container",
                     animation: "{{ particle.animation|default('slide') }}",
                     prevText: "{{ particle.prevButtonText|default('') }}",
@@ -204,8 +203,8 @@
     {% elseif particle.layout == "showcase" %}
 
         <script type="text/javascript">
-            jQuery(document).ready(function () {
-                jQuery('#g-flexslider-carousel-{{ id }}').flexslider({
+            document.addEventListener('DOMContentLoaded', function () {
+                window.GantryCarousel.create(document.querySelector('#g-flexslider-carousel-{{ id }}'), {
                     selector: ".g-flexslider-carousel-slides > .g-flexslider-carousel-item-container",
                     animation: "{{ particle.animation|default('slide') }}",
                     controlNav: false,
@@ -225,7 +224,7 @@
                     pauseOnHover: false,
                     {% endif %}
                 });
-                jQuery('#g-flexslider-showcase-{{ id }}').flexslider({
+                window.GantryCarousel.create(document.querySelector('#g-flexslider-showcase-{{ id }}'), {
                     selector: ".g-flexslider-showcase-slides > .g-flexslider-showcase-item-container",
                     animation: "{{ particle.animation|default('slide') }}",
                     directionNav: false,

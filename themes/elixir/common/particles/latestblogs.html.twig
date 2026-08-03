@@ -49,10 +49,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
     <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
-    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
     <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
     <script src="{{ url('gantry-theme://js/latestblogs.init.js') }}"></script>
 {% endblock %}
-

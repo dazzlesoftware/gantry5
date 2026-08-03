@@ -31,7 +31,7 @@
                                     <span class="g-showcasetabs-content">
                                         <img src="{{ url(item.image)|e }}" class="g-showcasetabs-image" {% if item.alt %}alt="{{ item.alt }}"{% endif %} />
                                         <span class="g-showcasetabs-desc center">
-                                            {{ item.content|html|raw }} 
+                                            {{ item.content|html|raw }}
                                             {% if item.link %}
                                                 <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.link|e }}" class="{{ item.buttonclass|e }}"><span>{{ item.linklabel|default('Read More') }}</span></a>
                                             {% endif %}
@@ -49,24 +49,6 @@
 
 {% endblock %}
 
-{% block javascript %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
-{% endblock %}
-
 {% block javascript_footer %}
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#g-showcasetabs-{{ id }}').tabs({
-                show: {
-                    effect: 'fade',
-                    duration: 350
-                }
-            });
-
-            if (!jQuery('.g-showcasetabs').hasClass('layout-top')) {
-                jQuery('.g-showcasetabs-tab-wrapper-container').appendTo('.g-showcasetabs-container');
-            }   
-        });
-    </script>
+{% do gantry.document.addScript(url('gantry-assets://js/tabs.js'), 11, 'footer') %}
 {% endblock %}

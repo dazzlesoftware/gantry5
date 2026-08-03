@@ -1,13 +1,14 @@
-jQuery(document).ready(function () {
-    jQuery('[data-slideshow-id]').each(function (index) {
-        var container = jQuery(this);
-        var autoplay = container.data('slideshow-autoplay') ? {delay: container.data('slideshow-timeout'), disableOnInteraction: false} : false;
-        var touchMove = container.data('slideshow-touchmove');
-        var slideDirection = container.data('slideshow-direction');
+function asBool(value) { return value === true || value === 'true' || value === '1'; }
 
-        var slideSwipe = new Swiper(jQuery(this), {
-            speed: container.data('slideshow-speed'),
-            loop: container.data('slideshow-loop'),
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-slideshow-id]').forEach(function (container, index) {
+        var autoplay = asBool(container.dataset.slideshowAutoplay) ? {delay: container.dataset.slideshowTimeout, disableOnInteraction: false} : false;
+        var touchMove = asBool(container.dataset.slideshowTouchmove);
+        var slideDirection = container.dataset.slideshowDirection;
+
+        var slideSwipe = new Swiper(container, {
+            speed: container.dataset.slideshowSpeed,
+            loop: asBool(container.dataset.slideshowLoop),
             direction: slideDirection,
             allowTouchMove: touchMove,
             autoplay: autoplay,
@@ -20,7 +21,7 @@ jQuery(document).ready(function () {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            effect: container.data('slideshow-effect'),
+            effect: container.dataset.slideshowEffect,
             fadeEffect: {
               crossFade: true
             },

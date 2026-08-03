@@ -29,11 +29,6 @@ class Document extends HtmlDocument
     protected static $script_info = [];
     /** @var array */
     protected static $availableFrameworks = [
-        'jquery' => 'registerJquery',
-        'jquery.framework' => 'registerJquery',
-        'jquery.ui.core' => 'registerJqueryUiCore',
-        'jquery.ui.sortable' => 'registerJqueryUiSortable',
-        'bootstrap.2' => 'registerBootstrap2',
         'bootstrap.3' => 'registerBootstrap3',
         'bootstrap.4' => 'registerBootstrap4',
         'bootstrap.5' => 'registerBootstrap5',
@@ -214,26 +209,6 @@ class Document extends HtmlDocument
         $append = implode(' ', $append);
 
         return str_replace(' src=', " {$append} src=", $tag);
-    }
-
-    protected static function registerJquery()
-    {
-        \wp_enqueue_script('jquery');
-    }
-
-    protected static function registerJqueryUiCore()
-    {
-        \wp_enqueue_script('jquery-ui-core');
-    }
-
-    protected static function registerJqueryUiSortable()
-    {
-        \wp_enqueue_script('jquery-ui-sortable');
-    }
-
-    protected static function registerBootstrap2()
-    {
-        \wp_enqueue_script('bootstrap', 'https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js', [], '2.3.2', true);
     }
 
     protected static function registerBootstrap3()

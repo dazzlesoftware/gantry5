@@ -1,14 +1,15 @@
-jQuery(document).ready(function () {
-  jQuery('[data-showcase-id]').each(function (index) {
-    var container = jQuery(this);
-    var autoplay = container.data('showcase-autoplay') ? { delay: container.data('showcase-timeout'), disableOnInteraction: false } : false;
-    var touchMove = container.data('showcase-touchmove');
-    var slideDirection = container.data('showcase-direction');
-    var mobileBreakpoint = Length.toPx(document.body, container.data('showcase-mobile-breakpoint'));
+function asBool(value) { return value === true || value === 'true' || value === '1'; }
 
-    var slideSwipe = new Swiper(jQuery(this), {
-      speed: container.data('showcase-speed'),
-      loop: container.data('showcase-loop'),
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('[data-showcase-id]').forEach(function (container, index) {
+    var autoplay = asBool(container.dataset.showcaseAutoplay) ? { delay: container.dataset.showcaseTimeout, disableOnInteraction: false } : false;
+    var touchMove = asBool(container.dataset.showcaseTouchmove);
+    var slideDirection = container.dataset.showcaseDirection;
+    var mobileBreakpoint = Length.toPx(document.body, container.dataset.showcaseMobileBreakpoint);
+
+    var slideSwipe = new Swiper(container, {
+      speed: container.dataset.showcaseSpeed,
+      loop: asBool(container.dataset.showcaseLoop),
       slidesPerView: 1,
       centeredSlides: false,
       direction: 'horizontal',
@@ -25,7 +26,7 @@ jQuery(document).ready(function () {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      effect: container.data('showcase-effect'),
+      effect: container.dataset.showcaseEffect,
       fadeEffect: {
         crossFade: true
       },

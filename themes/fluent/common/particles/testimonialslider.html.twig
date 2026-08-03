@@ -58,9 +58,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
 {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-{% do gantry.document.addScript(url('gantry-theme://js/jquery.matchHeight-min.js'), 10, 'footer') %}
-{% do gantry.document.addScript(url('gantry-theme://js/jquery.mThumbnailScroller.js'), 10, 'footer') %}
-{% do gantry.document.addScript(url('gantry-theme://js/testimonialslider.init.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-assets://js/testimonial-slider.js'), 10, 'footer') %}
 {% endblock %}

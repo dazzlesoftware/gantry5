@@ -11,7 +11,7 @@
          {% set preset = 'all' %}
     {% endif %}
     <div class="{{ particle.class|e }} g-casestudies" data-casestudies-id="{{ id }}" data-casestudies-preset="{% if particle.demo == "enabled" %}{{ preset }}{% elseif particle.source == gantry.platform.name %}all{% else %}false{% endif %}">
-        
+
         {% if not particle.source or particle.source == 'particle' %}
         <div class="g-casestudies-header">
             {% if particle.title %}
@@ -87,7 +87,7 @@
                 {% endfor %}
             {% endfor %}
         </div>
-        
+
         {% else %}
             {% include '@particles/casestudies-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
@@ -96,9 +96,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
     <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>
-    <script src="{{ url('gantry-theme://js/imagesloaded.pkgd.js') }}"></script>
     <script src="{{ url('gantry-theme://js/shuffle.js') }}"></script>
     <script src="{{ url('gantry-theme://js/casestudies.init.js') }}"></script>
 {% endblock %}

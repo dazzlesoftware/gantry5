@@ -159,7 +159,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
     {% do gantry.document.addScript(url('gantry-theme://js/modernizr-vmenu.js'), 10, 'footer') %}
     {% do gantry.document.addScript(url('gantry-theme://js/classie.js'), 10, 'footer') %}
     {% do gantry.document.addScript(url('gantry-theme://js/verticalmenu.js'), 10, 'footer') %}

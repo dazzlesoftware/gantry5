@@ -40,8 +40,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/swiper.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 10, 'footer') %}
     {% do gantry.document.addScript(url('gantry-theme://js/verticalslideshow.init.js'), 10, 'footer') %}
 {% endblock %}
-

@@ -1,12 +1,13 @@
-jQuery(document).ready(function () {
-    jQuery('[data-verticalslideshow-id]').each(function (index) {
-        var container = jQuery(this);
-        var autoplay = container.data('verticalslideshow-autoplay') ? { delay: container.data('verticalslideshow-timeout'), disableOnInteraction: false } : false;
-        var touchMove = container.data('verticalslideshow-touchmove');
+function asBool(value) { return value === true || value === 'true' || value === '1'; }
 
-        var slideSwipe = new Swiper(jQuery(this), {
-            speed: container.data('verticalslideshow-speed'),
-            loop: container.data('verticalslideshow-loop'),
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-verticalslideshow-id]').forEach(function (container, index) {
+        var autoplay = asBool(container.dataset.verticalslideshowAutoplay) ? { delay: container.dataset.verticalslideshowTimeout, disableOnInteraction: false } : false;
+        var touchMove = asBool(container.dataset.verticalslideshowTouchmove);
+
+        var slideSwipe = new Swiper(container, {
+            speed: container.dataset.verticalslideshowSpeed,
+            loop: asBool(container.dataset.verticalslideshowLoop),
             allowTouchMove: touchMove,
             grabCursor: touchMove,
             autoplay: autoplay,

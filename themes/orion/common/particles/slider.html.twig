@@ -83,9 +83,7 @@ data-swiper-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mo
 {% endblock %}
 
 {% block javascript_footer %}
-	{% do gantry.load('jquery') %}
     {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
 	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
 	{% do gantry.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
 {% endblock %}
-

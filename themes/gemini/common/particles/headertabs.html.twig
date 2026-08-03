@@ -1,9 +1,5 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% block javascript %}
-<script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
-{% endblock %}
-
 {% block particle %}
 <div class="{{ particle.class|e }}">
     {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
@@ -46,5 +42,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.document.addScript(url('gantry-theme://js/headertabs.init.js'), 10, 'footer') %}
+{% do gantry.document.addScript(url('gantry-assets://js/tabs.js'), 11, 'footer') %}
 {% endblock %}

@@ -1,64 +1,37 @@
-jQuery(document).ready(function () {
-    jQuery('[data-accordion-id]').each(function(index) {
-        var mainContainer = jQuery(this);
-        function openFirstPanel() {
-            jQuery('> li:first-child div', mainContainer).addClass('active').css('opacity', 0).slideDown("slow").animate({ opacity: 1 }, {
-                queue: false,
-                duration: 'slow'
+(() => {
+    'use strict';
+
+    const initialize = () => {
+        document.querySelectorAll('[data-accordion-id]').forEach((accordion) => {
+            if (accordion.dataset.accordionReady) return;
+            accordion.dataset.accordionReady = 'true';
+            const items = [...accordion.children].filter((item) => item.matches('li'));
+            const setOpen = (item, open) => {
+                const panel = item.querySelector('.accordion-item-content');
+                if (!panel) return;
+                item.classList.toggle('active', open);
+                panel.classList.toggle('active', open);
+                panel.hidden = !open;
+                panel.style.opacity = open ? '1' : '0';
+                item.querySelector('.indicator span')?.replaceChildren(open ? '-' : '+');
+            };
+
+            items.forEach((item, index) => {
+                const panel = item.querySelector('.accordion-item-content');
+                if (panel && !panel.id) panel.id = `${accordion.dataset.accordionId || 'accordion'}-panel-${index}`;
+                setOpen(item, index === 0);
+                item.addEventListener('click', (event) => {
+                    if (event.target.closest('.accordion-item-content a, .accor-button')) return;
+                    const opening = !item.classList.contains('active');
+                    items.forEach((candidate) => setOpen(candidate, opening && candidate === item));
+                });
             });
-            jQuery('> li:first-child', mainContainer).addClass('active').slideDown("slow").animate({ opacity: 1 }, {
-                queue: false,
-                duration: 'slow'
-            });
-            jQuery('> li:first-child .toggle i', mainContainer).removeClass('fa-minus');
-            jQuery('> li:first-child .toggle i', mainContainer).addClass('fa-minus');
-        }
-
-        var allPanels = jQuery('li .accordion-item-content', mainContainer).hide();
-
-        openFirstPanel();
-
-        jQuery('> li', jQuery(this)).click(function() {
-            var target = jQuery('.accordion-item-content', jQuery(this));
-
-            if (target.hasClass('active')) {
-                target.removeClass('active').slideUp("slow").animate({ opacity: 0 }, {
-                    queue: false,
-                    duration: 'slow'
-                });
-            } else {
-                allPanels.removeClass('active').slideUp("slow").animate({ opacity: 0 }, {
-                    queue: false,
-                    duration: 'slow'
-                });
-                target.addClass('active').slideDown("slow").animate({ opacity: 1 }, {
-                    queue: false,
-                    duration: 'slow'
-                });
-            }
-
-            if (jQuery(this).hasClass('active')) {
-                jQuery(this).removeClass('active');
-                jQuery('.toggle i', jQuery(this)).removeClass('fa-minus');
-                jQuery('.toggle i', jQuery(this)).addClass('fa-plus');
-            } else {
-                jQuery('li', mainContainer).removeClass('active');
-                jQuery('.toggle i', mainContainer).removeClass('fa-minus');
-                jQuery('.toggle i', mainContainer).addClass('fa-plus');
-                jQuery(this).addClass('active');
-                jQuery('.toggle i', jQuery(this)).removeClass('fa-plus');
-                jQuery('.toggle i', jQuery(this)).addClass('fa-minus');
-            }
-            return false;
         });
+    };
 
-    });
-});
-
-jQuery( ".accordion-item-content a" ).click(function( event ) {
-    event.stopPropagation();
-});
-
-jQuery( ".accor-button" ).click(function( event ) {
-    event.stopPropagation();
-});
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize, { once: true });
+    } else {
+        initialize();
+    }
+})();

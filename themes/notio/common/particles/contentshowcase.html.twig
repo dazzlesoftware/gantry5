@@ -275,40 +275,28 @@
 
 {% block javascript_footer %}
     {% if total > limit.total and limit.pagination_buttons %}
-        {% do gantry.load('jquery') %}
         <script>
-            (function ($) {
-                $(document).on('click', 'button.contentshowcase-pagination-button', function () {
-                    var id = $(this).attr('data-id'),
-                        start = $(this).attr('data-start'),
-                        request = {
+            document.addEventListener('click', function (event) {
+                var button = event.target.closest('button.contentshowcase-pagination-button');
+                if (!button) return;
+                event.preventDefault();
+                var id = button.dataset.id,
+                    request = {
                             'option' : 'com_ajax',
                             'plugin' : 'particle',
                             'Itemid' : {{ gantry.page.itemid|int }},
                             'id'     : id,
-                            'start'  : start,
+                            'start'  : button.dataset.start,
                             'format' : 'json'
-                        };
-                    $.ajax({
-                        type       : 'GET',
-                        data       : request,
-                        indexValue : id + '-particle',
-                        success: function (response) {
-                            if(response.data){
-                                $('#' + this.indexValue).html(response.data[0].html);
-                            } else {
-                                // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
-                                $('#' + this.indexValue).html(response.message);
-                            }
-                        },
-                        error: function(response) {
-                            // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
-                            $('#' + this.indexValue).html('AJAX FAILED ON ERROR');
-                        }
-                    });
-                    return false;
-                });
-            })(jQuery);
+                    },
+                    target = document.getElementById(id + '-particle'),
+                    url = new URL(window.location.href);
+                Object.keys(request).forEach(function (key) { url.searchParams.set(key, request[key]); });
+                fetch(url.toString(), { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                    .then(function (response) { if (!response.ok) throw new Error(response.statusText); return response.json(); })
+                    .then(function (response) { if (target) target.innerHTML = response.data ? response.data[0].html : response.message; })
+                    .catch(function () { if (target) target.textContent = 'Unable to load more content.'; });
+            });
         </script>
     {% endif %}
 {% endblock %}

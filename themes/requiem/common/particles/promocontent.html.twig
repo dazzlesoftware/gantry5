@@ -105,7 +105,7 @@
 
   {% if particle.descanimation == 'typewriter' %}
   	<script>
-  	    jQuery(function(){
+	    document.addEventListener('DOMContentLoaded', function () {
   	        var typed = new Typed('#{{ particle.animationElementID|e }}', {
   	            stringsElement: '#{{ particle.animationElementID|e }}-strings',
   	            typeSpeed: {{ particle.typespeed|default('20') }},
@@ -121,7 +121,6 @@
 
 {% block javascript_footer %}
   {% if particle.descanimation == 'typewriter' %}
-    {% do gantry.load('jquery') %}
     <script src="{{ url('gantry-theme://js/typed.min.js') }}"></script>
   {% endif %}
 {% endblock %}

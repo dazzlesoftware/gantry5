@@ -39,11 +39,6 @@ class HtmlDocument
     protected static $styles = [];
     /** @var array */
     protected static $availableFrameworks = [
-        'jquery' => 'registerJquery',
-        'jquery.framework' => 'registerJquery',
-        'jquery.ui.core' => 'registerJqueryUiSortable',
-        'jquery.ui.sortable' => 'registerJqueryUiSortable',
-        'bootstrap.2' => 'registerBootstrap2',
         'bootstrap.3' => 'registerBootstrap3',
         'bootstrap.4' => 'registerBootstrap4',
         'bootstrap.5' => 'registerBootstrap5',
@@ -748,39 +743,6 @@ class HtmlDocument
                 call_user_func([static::class, static::$availableFrameworks[$framework]]);
             }
         }
-    }
-
-    protected static function registerJquery()
-    {
-        static::addScript(
-            [
-                'src' => 'https://code.jquery.com/jquery-3.6.0.min.js',
-			    'integrity' => 'sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=',
-			    'crossorigin' => 'anonymous'
-            ],
-            11
-        );
-    }
-
-    protected static function registerJqueryUiSortable()
-    {
-        static::registerJquery();
-
-        static::addScript(
-            [
-                'src' => 'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
-                'integrity' => 'sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=',
-                'crossorigin' => 'anonymous'
-            ],
-            11
-        );
-    }
-
-    protected static function registerBootstrap2()
-    {
-        static::registerJquery();
-
-        static::addScript(['src' => 'https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js'], 11);
     }
 
     protected static function registerBootstrap3()

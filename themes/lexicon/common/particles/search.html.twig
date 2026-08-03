@@ -34,7 +34,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
     {% do gantry.load('lightcase.init') %} 
     {% if gantry.platform.name == "grav" %}
         <script>

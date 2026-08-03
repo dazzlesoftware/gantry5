@@ -1,84 +1,75 @@
-(function(){
-    jQuery(document).ready(function () {
-        AudioSetup = false,
-        AllAudioJS = null;
-        jQuery('[data-audioplayer-id]').each(function(index) {
-            var audiocontainer = jQuery(this),
-            AudioJS;
+(() => {
+    'use strict';
 
-            if (!AudioSetup) {
-                AllAudioJS = audiojs.createAll({ // Initialize Audio JS
-                    trackEnded: function(e) {
-                        var container = jQuery('#' + this.wrapper.id).closest('[data-audioplayer-id]');
-                        next = jQuery('li.playing', container).next();
-                        if (!next.length) next = jQuery('ol li', container).first();
-                        next.click();
-                    }
-                });
-                AudioSetup = true;
+    const initialize = () => {
+        const containers = [...document.querySelectorAll('[data-audioplayer-id]')];
+        if (!containers.length || typeof audiojs === 'undefined') return;
+
+        const players = audiojs.createAll({
+            trackEnded() {
+                const container = document.getElementById(this.wrapper.id)?.closest('[data-audioplayer-id]');
+                const next = container?.querySelector('li.playing')?.nextElementSibling
+                    || container?.querySelector('ol li');
+                next?.click();
             }
+        });
 
-            AudioJS = AllAudioJS[index];
+        containers.forEach((container, index) => {
+            if (container.dataset.audioReady) return;
+            container.dataset.audioReady = 'true';
+            container.tabIndex = container.tabIndex >= 0 ? container.tabIndex : 0;
+            const player = players[index];
+            const tracks = [...container.querySelectorAll('ol li')];
+            if (!player || !tracks.length) return;
 
-            // Load in a track on click
-            jQuery('ol li', audiocontainer).click(function(e) {
-                e.preventDefault();
-                jQuery(this).addClass('playing').siblings().removeClass('playing');
-                jQuery('.g-audioplayer-cover', audiocontainer).attr('alt', jQuery('a', this).text());
-                jQuery('.g-audioplayer-cover', audiocontainer).attr('src', jQuery('a', this).attr('data-cover'));
-                jQuery('.g-audioplayer-trackinfo', audiocontainer).html(jQuery('a', this).first().text());
-                AudioJS.load(jQuery('a', this).attr('data-src'));
-                AudioJS.play();
+            const play = (track, autoplay = true) => {
+                tracks.forEach((item) => item.classList.toggle('playing', item === track));
+                const link = track.querySelector('a[data-src]');
+                if (!link) return;
+                const cover = container.querySelector('.g-audioplayer-cover');
+                if (cover) {
+                    cover.src = link.dataset.cover || '';
+                    cover.alt = link.textContent.trim();
+                }
+                const info = container.querySelector('.g-audioplayer-trackinfo');
+                if (info) info.textContent = link.textContent.trim();
+                player.load(link.dataset.src);
+                if (autoplay) player.play();
+            };
+            const adjacent = (direction) => {
+                const current = container.querySelector('li.playing');
+                const target = direction > 0 ? current?.nextElementSibling : current?.previousElementSibling;
+                play(target || (direction > 0 ? tracks[0] : tracks.at(-1)));
+            };
+
+            tracks.forEach((track) => track.addEventListener('click', (event) => {
+                if (event.target.closest('.g-audioplayer-button')) return;
+                event.preventDefault();
+                play(track);
+            }));
+            container.querySelector('.next')?.addEventListener('click', (event) => {
+                event.preventDefault();
+                adjacent(1);
             });
-
-            jQuery('.next', this).click(function(e) {
-                var next = jQuery('li.playing', audiocontainer).next();
-                if (!next.length) next = jQuery('ol li', audiocontainer).first();
-                next.click();
+            container.querySelector('.previous')?.addEventListener('click', (event) => {
+                event.preventDefault();
+                adjacent(-1);
             });
-            jQuery('.previous', this).click(function(e) {
-                var prev = jQuery('li.playing', audiocontainer).prev();
-                if (!prev.length) prev = jQuery('ol li', audiocontainer).last();
-                prev.click();
-            });
-
-            // Keyboard shortcuts
-            jQuery(document).keydown(function(e) {
-                var unicode = e.charCode ? e.charCode : e.keyCode;
-                // right arrow
-                if (unicode == 39) {
-                    var next = jQuery('li.playing', audiocontainer).next();
-                    if (!next.length) next = jQuery('ol li').first();
-                    next.click();
-                    // back arrow
-                } else if (unicode == 37) {
-                    var prev = jQuery('li.playing', audiocontainer).prev();
-                    if (!prev.length) prev = jQuery('ol li', audiocontainer).last();
-                    prev.click();
-                    // spacebar
-                } else if (unicode == 32) {
-                    AudioJS.playPause();
+            container.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowRight') adjacent(1);
+                if (event.key === 'ArrowLeft') adjacent(-1);
+                if (event.key === ' ') {
+                    event.preventDefault();
+                    player.playPause();
                 }
             });
-
-            LoadFirst.call(this, AudioJS);
+            play(tracks[0], false);
         });
-    });
+    };
 
-    var LoadFirst = function(audio) {
-        var first = jQuery('ol a', this).attr('data-src'),
-        firstcover = jQuery('ol a', this).attr('data-cover'),
-        firsttrackinfo = jQuery('ol a', this).html();
-
-        jQuery('ol li', this).first().addClass('playing');
-        audio.load(first);
-
-        jQuery('.g-audioplayer-cover', this).attr('src', firstcover);
-        jQuery('.g-audioplayer-cover', this).attr('alt', jQuery('ol a', this).first().text());
-        jQuery('.g-audioplayer-trackinfo', this).html(firsttrackinfo).text();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize, { once: true });
+    } else {
+        initialize();
     }
 })();
-
-    jQuery( ".g-audioplayer-button" ).click(function( event ) {
-        event.stopPropagation();
-    });

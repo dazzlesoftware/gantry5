@@ -8,11 +8,9 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.load('jquery') %}
-<script src="{{ url('gantry-theme://js/raphael-2.0.2.min.js') }}"></script>
-<script src="{{ url('gantry-theme://js/morris.js') }}"></script>
+<script src="{{ url('gantry-assets://js/line-chart.js') }}"></script>
 <script type="text/javascript">
-new Morris.Line({
+window.GantryLineChart.render({
     element: '{{ id }}',
     data: [
         {% for item in particle.items %}

@@ -7,7 +7,7 @@ module.exports = (field) => {
         !document.body.classList.contains('widgets-php')) return false;
 
     // A native bubbling event reaches WordPress's delegated widget listeners,
-    // including listeners registered through jQuery, without depending on it.
+    // including listeners registered through legacy DOM libraries, without depending on them.
     input.dispatchEvent(new Event('change', { bubbles: true }));
 
     const parent = input.parentElement;

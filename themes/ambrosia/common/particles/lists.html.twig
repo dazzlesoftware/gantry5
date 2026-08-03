@@ -77,13 +77,6 @@
     {% endblock %}
 {% endblock %}
 
-{% block javascript %}
-    {% do gantry.load('jquery') %}
-    {% if particle.accordion %}
-        <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
-    {% endif %}
-{% endblock %}
-
 {% block javascript_footer %}
     {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

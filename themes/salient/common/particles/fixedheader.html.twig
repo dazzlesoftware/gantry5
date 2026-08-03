@@ -11,14 +11,14 @@
     .headroom-bg-section + section, .headroom-bg-section + header {
         padding-top: {{ particle.mobilepadding|default('120') }}px !important;
     }
-}    
-{% endif %} 
+}
+{% endif %}
 
 {% if particle.pinnedbg == 'custom' %}
 {{ particle.section|default('#g-navigation') }} {
     background-color: {{ particle.custombg }} !important;
 }
-{% endif %} 
+{% endif %}
 </style>
 {% endblock %}
 
@@ -50,7 +50,7 @@
         });
 
         {% if particle.mobile == "enabled" %}
-        document.body.classList.add("toggle-fixed");  
+        document.body.classList.add("toggle-fixed");
         {% else %}
         document.body.classList.add("disable-mobile");
         {% endif %}

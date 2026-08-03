@@ -45,7 +45,7 @@
                                         {% endif %}
                                         <div class="g-featuretabs-desc">
 
-                                            {{ item.content|html|raw }} 
+                                            {{ item.content|html|raw }}
                                             {% if item.link %}
                                                 <a target="{{ item.buttontarget|default('_self')|e }}" href="{{ item.link|e }}" class="{{ item.buttonclass|e }}"><span>{{ item.linklabel|default('Read More') }}</span></a>
                                             {% endif %}
@@ -63,20 +63,6 @@
 
 {% endblock %}
 
-{% block javascript %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/juihelper.js') }}"></script>
-{% endblock %}
-
 {% block javascript_footer %}
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery('#g-featuretabs-{{ id }}').tabs({
-                show: {
-                    effect: 'fade',
-                    duration: 350
-                }
-            }); 
-        });
-    </script>
+{% do gantry.document.addScript(url('gantry-assets://js/tabs.js'), 11, 'footer') %}
 {% endblock %}

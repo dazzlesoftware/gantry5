@@ -1,11 +1,14 @@
-jQuery(document).ready(function () {
-    jQuery('[data-pricingtable-id]').each(function () {
-        jQuery('.g-pricingtable-switcher div').click(function () {
-            var container = jQuery(this);
-            jQuery('.g-pricingtable-switcher div').removeClass('active');
-            jQuery(this).toggleClass('active');
-            jQuery('.g-pricingtable-price').each(function () {
-                jQuery('.g-pricingtable-price-span', this).text(jQuery(this).data('pricingtable-' + jQuery(container).data('pricingtable-switcher')));
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-pricingtable-id]').forEach((table) => {
+        table.querySelectorAll('.g-pricingtable-switcher div').forEach((switcher) => {
+            switcher.addEventListener('click', () => {
+                table.querySelectorAll('.g-pricingtable-switcher div').forEach((item) => item.classList.toggle('active', item === switcher));
+                const period = switcher.dataset.pricingtableSwitcher;
+                table.querySelectorAll('.g-pricingtable-price').forEach((price) => {
+                    const value = price.dataset[`pricingtable${period.charAt(0).toUpperCase() + period.slice(1)}`];
+                    const output = price.querySelector('.g-pricingtable-price-span');
+                    if (output && value !== undefined) output.textContent = value;
+                });
             });
         });
     });

@@ -1,28 +1,28 @@
-jQuery(document).ready(function () {
-    jQuery('[data-news-id]').each(function (index) {
-      var container = jQuery('.area', this);
-      var autoplay = container.data('news-autoplay') ? { delay: container.data('news-timeout'), disableOnInteraction: false } : false;
-      var touchMove = container.data('news-touchmove');
-      var mobileBreakpoint = Length.toPx(document.body, container.data('news-mobile-breakpoint'));
-      var tabletBreakpoint = Length.toPx(document.body, container.data('news-tablet-breakpoint'));
-      var desktopBreakpoint = Length.toPx(document.body, container.data('news-desktop-breakpoint')); 
-      var largeDesktopBreakpoint = Length.toPx(document.body, container.data('news-largedesktop-breakpoint'));   
-      var mobileSlides = container.data('news-mobileslides');
-      var mobileGroup = container.data('news-mobilegroup');
-      var mobileSpace = container.data('news-mobilespace');
-      var tabletSlides = container.data('news-tabletslides');
-      var tabletGroup = container.data('news-tabletgroup');
-      var tabletSpace = container.data('news-tabletspace');
-      var desktopSlides = container.data('news-desktopslides');
-      var desktopGroup = container.data('news-desktopgroup');
-      var desktopSpace = container.data('news-desktopspace');
-      var largeDesktopSlides = container.data('news-largedesktopslides');
-      var largeDesktopGroup = container.data('news-largedesktopgroup');
-      var largeDesktopSpace = container.data('news-largedesktopspace'); 
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-news-id]').forEach(function (root, index) {
+      var container = root.querySelector('.area');
+      var autoplay = (container.dataset.newsAutoplay === 'true') ? { delay: container.dataset.newsTimeout, disableOnInteraction: false } : false;
+      var touchMove = (container.dataset.newsTouchmove === 'true');
+      var mobileBreakpoint = Length.toPx(document.body, container.dataset.newsMobileBreakpoint);
+      var tabletBreakpoint = Length.toPx(document.body, container.dataset.newsTabletBreakpoint);
+      var desktopBreakpoint = Length.toPx(document.body, container.dataset.newsDesktopBreakpoint);
+      var largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.newsLargedesktopBreakpoint);
+      var mobileSlides = container.dataset.newsMobileslides;
+      var mobileGroup = container.dataset.newsMobilegroup;
+      var mobileSpace = container.dataset.newsMobilespace;
+      var tabletSlides = container.dataset.newsTabletslides;
+      var tabletGroup = container.dataset.newsTabletgroup;
+      var tabletSpace = container.dataset.newsTabletspace;
+      var desktopSlides = container.dataset.newsDesktopslides;
+      var desktopGroup = container.dataset.newsDesktopgroup;
+      var desktopSpace = container.dataset.newsDesktopspace;
+      var largeDesktopSlides = container.dataset.newsLargedesktopslides;
+      var largeDesktopGroup = container.dataset.newsLargedesktopgroup;
+      var largeDesktopSpace = container.dataset.newsLargedesktopspace;
 
-      var slidenews = new Swiper(jQuery(container), {
-        speed: container.data('news-speed'),
-        loop: container.data('news-loop'),
+      var slidenews = new Swiper(container, {
+        speed: container.dataset.newsSpeed,
+        loop: (container.dataset.newsLoop === 'true'),
         direction: 'horizontal',
         allowTouchMove: touchMove,
         grabCursor: touchMove,
@@ -31,7 +31,7 @@ jQuery(document).ready(function () {
           nextEl: '.news-button-next',
           prevEl: '.news-button-prev',
         },
-        effect: container.data('news-effect'),
+        effect: container.dataset.newsEffect,
         fadeEffect: {
           crossFade: true
         },
@@ -71,4 +71,4 @@ jQuery(document).ready(function () {
       });
     });
   });
-  
+

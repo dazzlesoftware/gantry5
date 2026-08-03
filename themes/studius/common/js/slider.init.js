@@ -1,30 +1,32 @@
-jQuery(document).ready(function () {
-    jQuery('[data-slider-id]').each(function (index) {
-      var container = jQuery('.area', this);
-      var autoplay = container.data('slider-autoplay') ? { delay: container.data('slider-timeout'), disableOnInteraction: false } : false;
-      var touchMove = container.data('slider-touchmove');
-      var centered = container.data('slider-centered');
-      var thumbs = container.data('slider-thumbnails');
-      var mobileBreakpoint = Length.toPx(document.body, container.data('swiper-mobile-breakpoint'));
-      var tabletBreakpoint = Length.toPx(document.body, container.data('swiper-tablet-breakpoint'));
-      var desktopBreakpoint = Length.toPx(document.body, container.data('swiper-desktop-breakpoint')); 
-      var largeDesktopBreakpoint = Length.toPx(document.body, container.data('swiper-largedesktop-breakpoint'));   
-      var mobileSlides = container.data('swiper-mobileslides');
-      var mobileGroup = container.data('swiper-mobilegroup');
-      var mobileSpace = container.data('swiper-mobilespace');
-      var tabletSlides = container.data('swiper-tabletslides');
-      var tabletGroup = container.data('swiper-tabletgroup');
-      var tabletSpace = container.data('swiper-tabletspace');
-      var desktopSlides = container.data('swiper-desktopslides');
-      var desktopGroup = container.data('swiper-desktopgroup');
-      var desktopSpace = container.data('swiper-desktopspace');
-      var largeDesktopSlides = container.data('swiper-largedesktopslides');
-      var largeDesktopGroup = container.data('swiper-largedesktopgroup');
-      var largeDesktopSpace = container.data('swiper-largedesktopspace'); 
+function asBool(value) { return value === true || value === 'true' || value === '1'; }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-slider-id]').forEach(function (root, index) {
+      var container = root.querySelector('.area');
+      var autoplay = asBool(container.dataset.sliderAutoplay) ? { delay: container.dataset.sliderTimeout, disableOnInteraction: false } : false;
+      var touchMove = asBool(container.dataset.sliderTouchmove);
+      var centered = container.dataset.sliderCentered;
+      var thumbs = container.dataset.sliderThumbnails;
+      var mobileBreakpoint = Length.toPx(document.body, container.dataset.swiperMobileBreakpoint);
+      var tabletBreakpoint = Length.toPx(document.body, container.dataset.swiperTabletBreakpoint);
+      var desktopBreakpoint = Length.toPx(document.body, container.dataset.swiperDesktopBreakpoint);
+      var largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.swiperLargedesktopBreakpoint);
+      var mobileSlides = container.dataset.swiperMobileslides;
+      var mobileGroup = container.dataset.swiperMobilegroup;
+      var mobileSpace = container.dataset.swiperMobilespace;
+      var tabletSlides = container.dataset.swiperTabletslides;
+      var tabletGroup = container.dataset.swiperTabletgroup;
+      var tabletSpace = container.dataset.swiperTabletspace;
+      var desktopSlides = container.dataset.swiperDesktopslides;
+      var desktopGroup = container.dataset.swiperDesktopgroup;
+      var desktopSpace = container.dataset.swiperDesktopspace;
+      var largeDesktopSlides = container.dataset.swiperLargedesktopslides;
+      var largeDesktopGroup = container.dataset.swiperLargedesktopgroup;
+      var largeDesktopSpace = container.dataset.swiperLargedesktopspace;
 
 
       if (thumbs) {
-        var thumbsSwiper = new Swiper(jQuery('.g-thumbs',this), {
+        var thumbsSwiper = new Swiper(container.querySelector('.g-thumbs'), {
           loop: 0,
           slidesPerView: 'auto',
           direction: 'vertical',
@@ -33,8 +35,8 @@ jQuery(document).ready(function () {
           allowTouchMove: 0,
         });
       }
-  
-      var slideSwiper = new Swiper(jQuery(container), {
+
+      var slideSwiper = new Swiper(container, {
         direction: 'vertical',
         allowTouchMove: touchMove,
         grabCursor: touchMove,
@@ -46,7 +48,7 @@ jQuery(document).ready(function () {
           nextEl: '.slider-button-next',
           prevEl: '.slider-button-prev',
         },
-        effect: container.data('slider-effect'),
+        effect: container.dataset.sliderEffect,
         fadeEffect: {
           crossFade: true
         },
@@ -86,4 +88,4 @@ jQuery(document).ready(function () {
       });
     });
   });
-  
+

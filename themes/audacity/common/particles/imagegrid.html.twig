@@ -21,18 +21,3 @@
 	</div>
 	{% endblock %}
 
-{% block javascript_footer %}
-    {% if particle.album %}
-    {% do gantry.load('jquery') %}
-    <script type="text/javascript">
-	    jQuery(document).ready(function () {
-			jQuery('a[data-rel="lightcase:{{ particle.album }}"]').lightcase({
-				showSequenceInfo: {% if particle.sqinfo %}true{% else %}false{% endif %}
-	        })
-	    });
-	</script>
-	{% endif %}
-
-{% endblock %}
-
-

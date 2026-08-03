@@ -1,60 +1,41 @@
-jQuery(document).ready(function () {
-    jQuery('[data-team-id]').each(function(index) {
-        var mainContainer = jQuery(this);
-        var navContainer = jQuery('.g-team-nav', mainContainer);
-        var initial_group = jQuery(this).attr('data-initial-group');
+document.addEventListener('DOMContentLoaded', () => {
+    const imagesReady = (container) => Promise.all([...container.querySelectorAll('img')].map((image) => (
+        image.complete ? Promise.resolve() : new Promise((resolve) => {
+            image.addEventListener('load', resolve, { once: true });
+            image.addEventListener('error', resolve, { once: true });
+        })
+    )));
+    const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-        mainContainer.imagesLoaded(function () {
-            var Shuffle = window.Shuffle;
-            var element = document.querySelector('.g-team-grid', mainContainer);
-            var sizer = jQuery('.g-team-grid-sizer', mainContainer);
-
-            var shuffleInstance = new Shuffle(jQuery('.g-team-grid', mainContainer), {
-                itemSelector: '.g-team-grid-item',
-                sizer: sizer,
-                columnWidth: 0,
-                isCentered: false,
-                randomize: true,
-                useTransforms: true,
-            });
-            
-            // Initial slide
-            if (typeof(initial_group) != 'undefined' && initial_group != null) {
-                jQuery("div[data-group]", mainContainer).removeClass('selected');
-                jQuery("div[data-group='"+ initial_group +"']", mainContainer).addClass('selected');
-                shuffleInstance.filter(initial_group);
-            };
-            
-
-            jQuery('.g-team-nav-container', navContainer).on('click', function () {
-                jQuery('.g-team-nav-item', navContainer).toggleClass('clicked');
-            });
-
-            jQuery('.g-team-nav-item', navContainer).click(function () {
-                jQuery('.g-team-nav-item', navContainer).removeClass('selected');
-                jQuery(this).addClass('selected');
-                shuffleInstance.filter(jQuery(this).attr('data-group'));
-            });
-
-            mainContainer.addClass('visible');
-
-            jQuery('.g-team-grid-item-blob', mainContainer).each(function(index, item) {
-                var p1 = randomIntFromInterval(60, 65);
-                var p2 = randomIntFromInterval(35, 40);
-                var p3 = randomIntFromInterval(50, 55);
-                var p4 = randomIntFromInterval(45, 50);
-                var p5 = randomIntFromInterval(55, 60);
-                var p6 = randomIntFromInterval(45, 50);
-                var p7 = randomIntFromInterval(50, 55);
-                var p8 = randomIntFromInterval(40, 45);
-
-                jQuery(item).css('border-radius', p1 + '% ' + p2 + '% ' + p3 + '% ' + p4 + '% / ' + p5 + '% ' + p6 + '% ' + p7 + '% ' + p8 + '%');
-                jQuery(item).css('animation-duration', randomIntFromInterval(15, 35) + 's');
-            });
+    document.querySelectorAll('[data-team-id]').forEach(async (container) => {
+        await imagesReady(container);
+        const navigation = container.querySelector('.g-team-nav');
+        const grid = container.querySelector('.g-team-grid');
+        const sizer = container.querySelector('.g-team-grid-sizer');
+        if (!grid || typeof Shuffle === 'undefined') return;
+        const shuffle = new Shuffle(grid, {
+            itemSelector: '.g-team-grid-item',
+            sizer,
+            columnWidth: 0,
+            isCentered: false,
+            randomize: true,
+            useTransforms: true
+        });
+        const buttons = [...navigation?.querySelectorAll('.g-team-nav-item') || []];
+        const select = (button, group) => {
+            buttons.forEach((item) => item.classList.toggle('selected', item === button));
+            shuffle.filter(group);
+        };
+        const initial = container.dataset.initialGroup;
+        if (initial) select(buttons.find((button) => button.dataset.group === initial), initial);
+        navigation?.querySelector('.g-team-nav-container')?.addEventListener('click', () => {
+            buttons.forEach((button) => button.classList.toggle('clicked'));
+        });
+        buttons.forEach((button) => button.addEventListener('click', () => select(button, button.dataset.group)));
+        container.classList.add('visible');
+        container.querySelectorAll('.g-team-grid-item-blob').forEach((blob) => {
+            blob.style.borderRadius = `${random(60, 65)}% ${random(35, 40)}% ${random(50, 55)}% ${random(45, 50)}% / ${random(55, 60)}% ${random(45, 50)}% ${random(50, 55)}% ${random(40, 45)}%`;
+            blob.style.animationDuration = `${random(15, 35)}s`;
         });
     });
-
-    function randomIntFromInterval(min, max) { // min and max included
-        return Math.floor(Math.random() * (max - min + 1) + min).toString();
-    }
 });

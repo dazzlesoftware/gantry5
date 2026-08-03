@@ -87,7 +87,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/slick.min.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/toprated.init.js'), 10, 'footer') %}
+    {% do gantry.document.addScript(url('gantry-assets://js/filter-carousel.js'), 10, 'footer') %}
 {% endblock %}

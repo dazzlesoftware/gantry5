@@ -1,30 +1,30 @@
-jQuery(document).ready(function () {
-    jQuery('[data-comments-id]').each(function (index) {
-      var container = jQuery('.area', this);
-      var autoplay = container.data('comments-autoplay') ? { delay: container.data('comments-timeout'), disableOnInteraction: false } : false;
-      var touchMove = container.data('comments-touchmove');
-      var centered = container.data('comments-centered');
-      var thumbs = container.data('comments-thumbnails');
-      var mobileBreakpoint = Length.toPx(document.body, container.data('swiper-mobile-breakpoint'));
-      var tabletBreakpoint = Length.toPx(document.body, container.data('swiper-tablet-breakpoint'));
-      var desktopBreakpoint = Length.toPx(document.body, container.data('swiper-desktop-breakpoint')); 
-      var largeDesktopBreakpoint = Length.toPx(document.body, container.data('swiper-largedesktop-breakpoint'));   
-      var mobileSlides = container.data('swiper-mobileslides');
-      var mobileGroup = container.data('swiper-mobilegroup');
-      var mobileSpace = container.data('swiper-mobilespace');
-      var tabletSlides = container.data('swiper-tabletslides');
-      var tabletGroup = container.data('swiper-tabletgroup');
-      var tabletSpace = container.data('swiper-tabletspace');
-      var desktopSlides = container.data('swiper-desktopslides');
-      var desktopGroup = container.data('swiper-desktopgroup');
-      var desktopSpace = container.data('swiper-desktopspace');
-      var largeDesktopSlides = container.data('swiper-largedesktopslides');
-      var largeDesktopGroup = container.data('swiper-largedesktopgroup');
-      var largeDesktopSpace = container.data('swiper-largedesktopspace'); 
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-comments-id]').forEach(function (root, index) {
+      var container = root.querySelector('.area');
+      var autoplay = (container.dataset.commentsAutoplay === 'true') ? { delay: container.dataset.commentsTimeout, disableOnInteraction: false } : false;
+      var touchMove = (container.dataset.commentsTouchmove === 'true');
+      var centered = container.dataset.commentsCentered;
+      var thumbs = container.dataset.commentsThumbnails;
+      var mobileBreakpoint = Length.toPx(document.body, container.dataset.swiperMobileBreakpoint);
+      var tabletBreakpoint = Length.toPx(document.body, container.dataset.swiperTabletBreakpoint);
+      var desktopBreakpoint = Length.toPx(document.body, container.dataset.swiperDesktopBreakpoint);
+      var largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.swiperLargedesktopBreakpoint);
+      var mobileSlides = container.dataset.swiperMobileslides;
+      var mobileGroup = container.dataset.swiperMobilegroup;
+      var mobileSpace = container.dataset.swiperMobilespace;
+      var tabletSlides = container.dataset.swiperTabletslides;
+      var tabletGroup = container.dataset.swiperTabletgroup;
+      var tabletSpace = container.dataset.swiperTabletspace;
+      var desktopSlides = container.dataset.swiperDesktopslides;
+      var desktopGroup = container.dataset.swiperDesktopgroup;
+      var desktopSpace = container.dataset.swiperDesktopspace;
+      var largeDesktopSlides = container.dataset.swiperLargedesktopslides;
+      var largeDesktopGroup = container.dataset.swiperLargedesktopgroup;
+      var largeDesktopSpace = container.dataset.swiperLargedesktopspace;
 
 
       if (thumbs) {
-        var thumbsSwiper = new Swiper(jQuery('.g-comment-thumbs',this), {
+        var thumbsSwiper = new Swiper(root.querySelector('.g-comment-thumbs'), {
           loop: 0,
           slidesPerView: '1',
           direction: 'horizontal',
@@ -48,8 +48,8 @@ jQuery(document).ready(function () {
         }
         });
       }
-  
-      var slideSwiper = new Swiper(jQuery(container), {
+
+      var slideSwiper = new Swiper(container, {
         direction: 'horizontal',
         allowTouchMove: touchMove,
         grabCursor: touchMove,
@@ -61,7 +61,7 @@ jQuery(document).ready(function () {
           nextEl: '.comments-button-next',
           prevEl: '.comments-button-prev',
         },
-        effect: container.data('comments-effect'),
+        effect: container.dataset.commentsEffect,
         fadeEffect: {
           crossFade: true
         },
@@ -101,4 +101,4 @@ jQuery(document).ready(function () {
       });
     });
   });
-  
+

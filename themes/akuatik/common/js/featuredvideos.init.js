@@ -1,28 +1,32 @@
-jQuery(document).ready(function () {
-    // Parse YouTube URL
-    function youtube_parser(url) {
-        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-        var match = url.match(regExp);
-        return (match && match[7].length == 11) ? match[7] : false;
-    }
-    // Grab video ID's
-    var yT_videos = '';
-    var yT_token = '';
-    jQuery('[data-featuredvideos-id]').each(function (index) {
-        yT_token = jQuery(this).data('featuredvideos-accesstoken');
-        jQuery('.g-featuredvideos-item-yt', this).each(function (index) {
-            yT_videos += youtube_parser(jQuery(this).attr("href")) + ',';
-        });
-
-    });
-    jQuery.getJSON('https://www.googleapis.com/youtube/v3/videos?key='+ yT_token +'&fields=items(statistics(likeCount))&part=snippet,statistics&id=' + yT_videos, yT_data)
-    
-    // Populate data
-    function yT_data(data) {
-        jQuery('[data-featuredvideos-id]').each(function (index) {
-            jQuery('.g-featuredvideos-item-count', this).each(function (item_index) {
-                jQuery('span', this).text(data.items[item_index].statistics.likeCount);
+document.addEventListener('DOMContentLoaded', () => {
+    const videoId = (value) => {
+        try {
+            const url = new URL(value);
+            return url.hostname === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v') || url.pathname.split('/').filter(Boolean).at(-1);
+        } catch (error) {
+            return null;
+        }
+    };
+    document.querySelectorAll('[data-featuredvideos-id]').forEach(async (container) => {
+        const token = container.dataset.featuredvideosAccesstoken;
+        const links = [...container.querySelectorAll('.g-featuredvideos-item-yt')];
+        const ids = links.map((link) => videoId(link.href)).filter(Boolean);
+        if (!token || !ids.length) return;
+        try {
+            const parameters = new URLSearchParams({
+                key: token,
+                fields: 'items(statistics(likeCount))',
+                part: 'statistics',
+                id: ids.join(',')
             });
-        });
-    }
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?${parameters}`);
+            if (!response.ok) throw new Error(`YouTube request failed (${response.status})`);
+            const data = await response.json();
+            container.querySelectorAll('.g-featuredvideos-item-count span').forEach((count, index) => {
+                count.textContent = data.items?.[index]?.statistics?.likeCount || '0';
+            });
+        } catch (error) {
+            console.warn('Featured video statistics could not be loaded.', error);
+        }
+    });
 });

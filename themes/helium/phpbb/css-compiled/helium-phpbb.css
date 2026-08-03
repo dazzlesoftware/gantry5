@@ -1,77 +1,183 @@
-#page-body {
+body #page-body {
   font-family: Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: #424753;
 }
-#page-body h1, #page-body h2, #page-body h3, #page-body h4, #page-body h5, #page-body h6,
-#page-body .forumtitle, #page-body .topictitle, #page-body .panel h2, #page-body .panel h3 {
+body #page-body h1, body #page-body h2, body #page-body h3, body #page-body h4, body #page-body h5, body #page-body h6,
+body #page-body .forumtitle, body #page-body .topictitle, body #page-body .panel h2, body #page-body .panel h3 {
   font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-weight: 600;
 }
-#page-body a {
+body #page-body a {
   color: #4db2b3;
   transition: color 0.2s;
 }
-#page-body a:hover {
+body #page-body a:hover {
   color: #424753;
 }
-#page-body .forumtitle a, #page-body .topictitle a {
+body #page-body .forumtitle a, body #page-body .topictitle a {
   color: #424753;
 }
-#page-body .forumtitle a:hover, #page-body .topictitle a:hover {
+body #page-body .forumtitle a:hover, body #page-body .topictitle a:hover {
   color: #4db2b3;
 }
+body #page-body .postlink {
+  color: #4db2b3;
+  border-bottom-color: #4db2b3;
+}
+body #page-body .postlink:hover {
+  background: #eceff3;
+  color: #424753;
+}
 
-#page-body .forabg, #page-body .forumbg, #page-body .panel, #page-body .navbar {
+body .headerbar {
+  background: #312f38;
+  background-image: none;
+  color: #ffffff;
+  border: none;
+}
+body .navbar {
+  background: #eceff3;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+body ul.navlinks {
+  border-top-color: transparent;
+}
+body .search-header {
+  box-shadow: none;
+}
+body .search-box .inputbox {
+  border-color: #e0e0e5;
+}
+body .search-box .inputbox:hover, body .search-box .inputbox:focus {
+  border-color: #4db2b3;
+}
+
+body #page-body .forabg, body #page-body .forumbg, body #page-body .panel {
   background: #ffffff;
   border: 1px solid #e0e0e5;
   border-radius: 0.25rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
-#page-body .navbar {
-  padding: 0.5rem 1rem;
-}
-#page-body .forabg, #page-body .forumbg {
+body #page-body .forabg, body #page-body .forumbg {
   border: none;
   box-shadow: none;
   background: transparent;
+  background-image: none;
 }
-#page-body .forabg > div, #page-body .forumbg > div {
+body #page-body .forabg > div, body #page-body .forumbg > div {
   border: 1px solid #e0e0e5;
   border-radius: 0.25rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   background: #ffffff;
 }
-#page-body .forabg .header, #page-body .forumbg .header {
+body #page-body .forabg .header, body #page-body .forumbg .header {
   background: #312f38;
+  background-image: none;
   color: #ffffff;
   border: none;
 }
-#page-body .forabg .header a, #page-body .forabg .header li, #page-body .forabg .header .responsive-show, #page-body .forumbg .header a, #page-body .forumbg .header li, #page-body .forumbg .header .responsive-show {
+body #page-body .forabg .header a, body #page-body .forabg .header li, body #page-body .forabg .header .responsive-show, body #page-body .forumbg .header a, body #page-body .forumbg .header li, body #page-body .forumbg .header .responsive-show {
   color: #ffffff;
 }
-#page-body .forabg .header a:hover, #page-body .forumbg .header a:hover {
+body #page-body .forabg .header a:hover, body #page-body .forumbg .header a:hover {
   color: #4db2b3;
 }
-#page-body .row {
+body #page-body ul.forums {
   background: transparent;
+  background-image: none;
+}
+body #page-body .row {
+  background: transparent;
+  border-top-color: transparent;
   border-bottom: 1px solid #e0e0e5;
   transition: background 0.15s;
 }
-#page-body .row:last-child {
+body #page-body .row:last-child {
   border-bottom: none;
 }
-#page-body .row:hover {
+body #page-body .row:hover {
   background: #eceff3;
 }
-#page-body dd, #page-body dt {
+body #page-body .row:hover dd {
+  border-left-color: #e0e0e5;
+}
+body #page-body ul.topiclist li {
+  color: #424753;
+}
+body #page-body ul.topiclist dd {
+  border-left-color: #e0e0e5;
+}
+body #page-body dd, body #page-body dt {
   border-color: #e0e0e5;
 }
+body #page-body .jumpbox-cat-link {
+  background: #312f38;
+  border-top-color: #312f38;
+  color: #ffffff;
+}
+body #page-body .jumpbox-cat-link:hover {
+  background: #4db2b3;
+  border-top-color: #4db2b3;
+}
+body #page-body .jumpbox-forum-link {
+  background: #eceff3;
+}
+body #page-body .jumpbox-forum-link:hover {
+  background: rgba(77, 178, 179, 0.15);
+}
+body #page-body .jumpbox-sub-link {
+  background: #eceff3;
+}
+body #page-body .jumpbox-sub-link:hover {
+  background: rgba(77, 178, 179, 0.15);
+}
+body #page-body .tabs .tab > a {
+  background: #eceff3;
+  color: #424753;
+}
+body #page-body .tabs .tab > a:hover {
+  background: #dce2e9;
+  color: #4db2b3;
+}
+body #page-body .tabs .activetab > a,
+body #page-body .tabs .activetab > a:hover {
+  background: #ffffff;
+  background-image: none;
+  border-color: #e0e0e5;
+  box-shadow: none;
+  color: #424753;
+}
+body #page-body .minitabs .tab > a {
+  background: #eceff3;
+}
+body #page-body .minitabs .activetab > a,
+body #page-body .minitabs .activetab > a:hover {
+  background: #ffffff;
+  color: #424753;
+}
+body #page-body .navigation a {
+  background: #eceff3;
+  color: #424753;
+}
+body #page-body .navigation a:hover {
+  background: #dce2e9;
+  color: #4db2b3;
+}
+body #page-body .navigation .active-subsection a {
+  background: #ffffff;
+  color: #4db2b3;
+}
+body #page-body .navigation .active-subsection a:hover {
+  color: #4db2b3;
+}
 
-#page-body a.button1, #page-body input.button1,
-#page-body a.button2, #page-body input.button2,
-#page-body input.button3,
-#page-body input[type=submit], #page-body input[type=button], #page-body input[type=reset] {
+body #page-body a.button1, body #page-body input.button1,
+body #page-body a.button2, body #page-body input.button2,
+body #page-body input.button3,
+body #page-body input[type=submit], body #page-body input[type=button], body #page-body input[type=reset] {
   display: inline-block;
   font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-weight: 600;
@@ -79,6 +185,7 @@
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   background: #4db2b3;
+  background-image: none;
   color: #ffffff;
   border: 1px solid transparent;
   border-radius: 2.5rem;
@@ -86,45 +193,70 @@
   text-shadow: none;
   transition: background 0.2s;
 }
-#page-body a.button1:hover, #page-body a.button1:focus, #page-body a.button1:active, #page-body input.button1:hover, #page-body input.button1:focus, #page-body input.button1:active,
-#page-body a.button2:hover,
-#page-body a.button2:focus,
-#page-body a.button2:active, #page-body input.button2:hover, #page-body input.button2:focus, #page-body input.button2:active,
-#page-body input.button3:hover,
-#page-body input.button3:focus,
-#page-body input.button3:active,
-#page-body input[type=submit]:hover,
-#page-body input[type=submit]:focus,
-#page-body input[type=submit]:active, #page-body input[type=button]:hover, #page-body input[type=button]:focus, #page-body input[type=button]:active, #page-body input[type=reset]:hover, #page-body input[type=reset]:focus, #page-body input[type=reset]:active {
+body #page-body a.button1:hover, body #page-body a.button1:focus, body #page-body a.button1:active, body #page-body input.button1:hover, body #page-body input.button1:focus, body #page-body input.button1:active,
+body #page-body a.button2:hover,
+body #page-body a.button2:focus,
+body #page-body a.button2:active, body #page-body input.button2:hover, body #page-body input.button2:focus, body #page-body input.button2:active,
+body #page-body input.button3:hover,
+body #page-body input.button3:focus,
+body #page-body input.button3:active,
+body #page-body input[type=submit]:hover,
+body #page-body input[type=submit]:focus,
+body #page-body input[type=submit]:active, body #page-body input[type=button]:hover, body #page-body input[type=button]:focus, body #page-body input[type=button]:active, body #page-body input[type=reset]:hover, body #page-body input[type=reset]:focus, body #page-body input[type=reset]:active {
   background: #3d8f90;
+  background-image: none;
+  border-color: transparent;
   color: #ffffff;
 }
-#page-body a.button2, #page-body input.button2 {
+body #page-body a.button2, body #page-body input.button2 {
   background: #8f4dae;
 }
-#page-body a.button2:hover, #page-body a.button2:focus, #page-body a.button2:active, #page-body input.button2:hover, #page-body input.button2:focus, #page-body input.button2:active {
+body #page-body a.button2:hover, body #page-body a.button2:focus, body #page-body a.button2:active, body #page-body input.button2:hover, body #page-body input.button2:focus, body #page-body input.button2:active {
   background: #723d8b;
 }
-#page-body .pagination a.button, #page-body .pagination .button {
-  border-radius: 50%;
+body #page-body .button, body #page-body .button-secondary {
   background: transparent;
+  background-image: none;
+  border-color: #e0e0e5;
+  box-shadow: none;
   color: #424753;
-  border: 1px solid #e0e0e5;
 }
-#page-body .pagination a.button:hover, #page-body .pagination .button:hover {
+body #page-body .button .icon, body #page-body .button-secondary .icon {
+  color: #424753;
+}
+body #page-body .button:hover, body #page-body .button:focus, body #page-body .button-secondary:hover, body #page-body .button-secondary:focus {
+  background: #ffffff;
+  border-color: #4db2b3;
+  color: #4db2b3;
+  text-shadow: none;
+}
+body #page-body .button:hover .icon, body #page-body .button:focus .icon, body #page-body .button-secondary:hover .icon, body #page-body .button-secondary:focus .icon {
+  color: #4db2b3;
+}
+body #page-body .pagination li a, body #page-body .pagination li span {
+  background: transparent;
+  border-color: #e0e0e5;
+  box-shadow: none;
+  color: #424753;
+}
+body #page-body .pagination a.button, body #page-body .pagination .button {
+  border-radius: 50%;
+}
+body #page-body .pagination li.active span {
+  background: #4db2b3;
+  border-color: #4db2b3;
+  color: #ffffff;
+  border-radius: 50%;
+}
+body #page-body .pagination li a:hover, body #page-body .pagination li a:hover .icon {
   background: #4db2b3;
   border-color: #4db2b3;
   color: #ffffff;
 }
-#page-body .pagination li.active span {
-  background: #4db2b3;
-  color: #ffffff;
-  border-radius: 50%;
-}
 
-#page-body input[type=text], #page-body input[type=password], #page-body input[type=email],
-#page-body input[type=number], #page-body input[type=search], #page-body input[type=url],
-#page-body textarea, #page-body select {
+body #page-body input[type=text], body #page-body input[type=password], body #page-body input[type=email],
+body #page-body input[type=number], body #page-body input[type=search], body #page-body input[type=url],
+body #page-body textarea, body #page-body select, body #page-body .inputbox {
   background: #ffffff;
   border: 1px solid #e0e0e5;
   border-radius: 0.25rem;
@@ -132,49 +264,62 @@
   padding: 0.5rem 0.9rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-#page-body input[type=text]:hover, #page-body input[type=password]:hover, #page-body input[type=email]:hover,
-#page-body input[type=number]:hover, #page-body input[type=search]:hover, #page-body input[type=url]:hover,
-#page-body textarea:hover, #page-body select:hover {
+body #page-body input[type=text]:hover, body #page-body input[type=password]:hover, body #page-body input[type=email]:hover,
+body #page-body input[type=number]:hover, body #page-body input[type=search]:hover, body #page-body input[type=url]:hover,
+body #page-body textarea:hover, body #page-body select:hover, body #page-body .inputbox:hover {
   border-color: #4db2b3;
 }
-#page-body input[type=text]:focus, #page-body input[type=password]:focus, #page-body input[type=email]:focus,
-#page-body input[type=number]:focus, #page-body input[type=search]:focus, #page-body input[type=url]:focus,
-#page-body textarea:focus, #page-body select:focus {
+body #page-body input[type=text]:focus, body #page-body input[type=password]:focus, body #page-body input[type=email]:focus,
+body #page-body input[type=number]:focus, body #page-body input[type=search]:focus, body #page-body input[type=url]:focus,
+body #page-body textarea:focus, body #page-body select:focus, body #page-body .inputbox:focus {
   border-color: #4db2b3;
   box-shadow: 0 0 4px rgba(77, 178, 179, 0.5);
   outline: none;
 }
 
-#page-body .post {
+body #page-body .post {
   border-color: #e0e0e5;
 }
-#page-body .postprofile {
+body #page-body .postprofile {
   background: #eceff3;
   border-radius: 0.25rem;
+  border-color: transparent;
 }
-#page-body .codebox {
+body #page-body .codebox {
   background: #f6f6f6;
   border: 1px solid #e0e0e5;
   border-radius: 0.25rem;
 }
-#page-body .codebox code {
+body #page-body .codebox code {
   color: #237794;
 }
-#page-body blockquote {
+body #page-body blockquote {
   border-left: 3px solid #4db2b3;
   background: #eceff3;
   border-radius: 0 0.25rem 0.25rem 0;
 }
-#page-body .signature {
+body #page-body .signature {
   border-top: 1px solid #e0e0e5;
 }
+body #page-body .dropdown-extended .header {
+  background: #eceff3;
+  background-image: none;
+}
+body #page-body .dropdown-extended a.mark_read,
+body #page-body .dropdown-extended ul li:hover,
+body #page-body .search-results li:hover, body #page-body .search-results li.active {
+  background: rgba(77, 178, 179, 0.1);
+}
 
-#page-body .error, #page-body p.error {
+body #page-body .error, body #page-body p.error {
   color: #b94a48;
 }
-#page-body .confirmbox, #page-body .successbox {
+body #page-body .confirmbox, body #page-body .successbox {
   border-radius: 0.25rem;
   border: 1px solid #e0e0e5;
+}
+body #page-body .badge {
+  background: #4db2b3;
 }
 
 .g-phpbb-gantry-tagline {

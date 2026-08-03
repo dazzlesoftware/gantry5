@@ -346,53 +346,31 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('jquery') %}
-    <script src="{{ url('gantry-theme://js/jquery.responsiveTabs.js') }}"></script>
-    <script src="{{ url('gantry-theme://js/articletabs.init.js') }}"></script>
-
-    {% set ajax_is_used = false %}
-    {% for tab in particle.tabs %}
-        {% if tab.article.limit.pagination_buttons %}
-            {% set ajax_is_used = true %}
-        {% endif %}
-    {% endfor %}
-
-    {% if ajax_is_used %}
-        <script>
-            (function ($) {
-                $(document).on('click', 'button.articletabs-pagination-button', function () {
-                    var id = $(this).attr('data-id'),
-                        tab = $(this).attr('data-tab'),
-                        start = $(this).attr('data-start'),
-                        request = {
-                            'option' : 'com_ajax',
-                            'plugin' : 'particle',
-                            'Itemid' : {{ gantry.page.itemid|int }},
-                            'id'     : id,
-                            'tab'    : tab,
-                            'start'  : start,
-                            'format' : 'json'
-                        };
-                    $.ajax({
-                        type       : 'GET',
-                        data       : request,
-                        indexValue : 'tab-' + id + '-' + tab,
-                        success: function (response) {
-                            if(response.data){
-                                $('#' + this.indexValue).html(response.data[0].html);
-                            } else {
-                                // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
-                                $('#' + this.indexValue).html(response.message);
-                            }
-                        },
-                        error: function(response) {
-                            // TODO: Improve error handling -- instead of replacing particle content, display flash message or something...
-                            $('#' + this.indexValue).html('AJAX FAILED ON ERROR');
-                        }
-                    });
-                    return false;
-                });
-            })(jQuery);
-        </script>
-    {% endif %}
+    {% do gantry.document.addScript(url('gantry-assets://js/tabs.js'), 11, 'footer') %}
+    <script>
+        document.addEventListener('click', async (event) => {
+            const button = event.target.closest('button.articletabs-pagination-button');
+            if (!button) return;
+            event.preventDefault();
+            const target = document.getElementById(`tab-${button.dataset.id}-${button.dataset.tab}`);
+            const url = new URL(window.location.href);
+            Object.entries({
+                option: 'com_ajax',
+                plugin: 'particle',
+                Itemid: '{{ gantry.page.itemid|int }}',
+                id: button.dataset.id,
+                tab: button.dataset.tab,
+                start: button.dataset.start,
+                format: 'json'
+            }).forEach(([key, value]) => url.searchParams.set(key, value));
+            try {
+                const response = await fetch(url, { headers: { Accept: 'application/json' } });
+                if (!response.ok) throw new Error(`Request failed (${response.status})`);
+                const payload = await response.json();
+                target.innerHTML = payload.data?.[0]?.html || payload.message || '';
+            } catch (error) {
+                target.textContent = 'Content could not be loaded.';
+            }
+        });
+    </script>
 {% endblock %}

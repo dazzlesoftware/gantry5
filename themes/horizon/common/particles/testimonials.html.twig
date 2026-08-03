@@ -75,9 +75,7 @@
 	{% endblock %}
 
 	{% block javascript_footer %}
-		{% do gantry.load('jquery') %}
         {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
         {% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-        {% do gantry.document.addScript(url('gantry-theme://js/testimonials.init.js'), 10, 'footer') %}
+        {% do gantry.document.addScript(url('gantry-assets://js/testimonials.js'), 10, 'footer') %}
 	{% endblock %}
-

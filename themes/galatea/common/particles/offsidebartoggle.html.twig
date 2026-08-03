@@ -13,34 +13,36 @@
 {% block javascript_footer %}
 <script type="text/javascript">
 {% if particle.type == "slidedown" %}
-jQuery(document).ready(function (){
-  jQuery('body').addClass('g-offsidebar-open-slidedown');
+document.addEventListener('DOMContentLoaded', function () {
+  document.body.classList.add('g-offsidebar-open-slidedown');
 });
 {% elseif particle.type == "pushpage" %}
-jQuery(document).ready(function (){
-  var offSidebar = jQuery('#g-offsidebar');
-  offSidebar.parent().after(offSidebar);
-  jQuery('body').addClass('g-offsidebar-open-pushpage');
-  jQuery('.g-offsidebar-toggle-icon').click(function() {
-    jQuery('.g-offsidebar-open-pushpage').toggleClass('g-body-pushed');
+document.addEventListener('DOMContentLoaded', function () {
+  var offSidebar = document.querySelector('#g-offsidebar');
+  if (offSidebar && offSidebar.parentElement) offSidebar.parentElement.after(offSidebar);
+  document.body.classList.add('g-offsidebar-open-pushpage');
+  document.querySelectorAll('.g-offsidebar-toggle-icon').forEach(function (toggle) { toggle.addEventListener('click', function () {
+    document.body.classList.toggle('g-body-pushed');
+  }); });
+  document.querySelector('#g-offsidebar-overlay')?.addEventListener('click', function() {
+    Object.assign(this.style, { opacity: '0', zIndex: '-1' });
+    document.body.classList.toggle('g-body-pushed');
   });
-  jQuery('#g-offsidebar-overlay').click(function() {
-    jQuery(this).css({'opacity': '0', 'z-index': '-1'});
-    jQuery('.g-offsidebar-open-pushpage').toggleClass('g-body-pushed');
-  });  
 });
 {% endif %}
 </script>
 
 <script type="text/javascript">
-jQuery(document).ready(function (){
-  jQuery('.g-offsidebar-toggle-icon').click(function() {
-    jQuery('#g-offsidebar').toggleClass('g-offsidebar-open');
-    jQuery('#g-offsidebar-overlay').css({'opacity': '1', 'z-index': '10002'});
-  });
-  jQuery('#g-offsidebar-overlay').click(function() {
-    jQuery(this).css({'opacity': '0', 'z-index': '-1'});
-    jQuery('#g-offsidebar').toggleClass('g-offsidebar-open');
+document.addEventListener('DOMContentLoaded', function () {
+  var sidebar = document.querySelector('#g-offsidebar');
+  var overlay = document.querySelector('#g-offsidebar-overlay');
+  document.querySelectorAll('.g-offsidebar-toggle-icon').forEach(function (toggle) { toggle.addEventListener('click', function () {
+    sidebar?.classList.toggle('g-offsidebar-open');
+    if (overlay) Object.assign(overlay.style, { opacity: '1', zIndex: '10002' });
+  }); });
+  overlay?.addEventListener('click', function () {
+    Object.assign(overlay.style, { opacity: '0', zIndex: '-1' });
+    sidebar?.classList.remove('g-offsidebar-open');
   });
 });
 </script>
