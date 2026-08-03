@@ -22,11 +22,15 @@
         "scssphp/scssphp": "^2.1.0",
         "psr/container": "^1.0",
         "psr/http-message": "^1.0",
-        "psr/http-factory": "^1.0"
+        "psr/http-factory": "^1.0",
+        "psr/log": "^1.0",
+        "filp/whoops": "^2.15.2"
     },
     "autoload": {
         "psr-4": {
-            "Gantry\\": "src/classes/Gantry"
+            "Gantry\\": "src/classes/Gantry",
+            "Whoops\\": "vendor/filp/whoops/src/Whoops",
+            "Psr\\Log\\": "vendor/psr/log/Psr/Log"
         }
     },
     "extra": {

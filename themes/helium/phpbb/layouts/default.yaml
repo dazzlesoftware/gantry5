@@ -6,7 +6,8 @@ preset:
 layout:
   /navigation/:
     -
-      - custom-1001
+      - 'logo-1001 25'
+      - 'custom-1004 75'
   /container-main/:
     -
       -
@@ -15,7 +16,8 @@ layout:
             - system-content-1002
   /footer/:
     -
-      - custom-1003
+      - 'copyright-1003 60'
+      - 'custom-1005 40'
 structure:
   navigation:
     type: section
@@ -33,11 +35,18 @@ structure:
     attributes:
       boxed: ''
 content:
-  custom-1001:
-    title: 'Gantry Navigation'
+  logo-1001:
+    title: 'Logo / Image'
     attributes:
-      html: '<div class="g-phpbb-gantry-nav"><strong>Gantry 5</strong> / Helium &mdash; phpBB Edition</div>'
-  custom-1003:
-    title: 'Gantry Footer'
+      text: 'Gantry 5 / Helium'
+      link: true
+  custom-1004:
+    title: 'Tagline'
     attributes:
-      html: '<div class="g-phpbb-gantry-footer">Styled by Gantry 5 &amp; Helium</div>'
+      html: '<div class="g-phpbb-gantry-tagline">phpBB Edition</div>'
+  copyright-1003:
+    title: Copyright
+  custom-1005:
+    title: 'Footer note'
+    attributes:
+      html: '<div class="g-phpbb-gantry-footer-note">Styled by Gantry 5 &amp; Helium</div>'
