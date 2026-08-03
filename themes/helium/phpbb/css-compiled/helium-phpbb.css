@@ -1,3 +1,9 @@
+body #g-navigation .g-container > .g-grid:not(:has(.g-system-messages)) {
+  display: flex;
+  align-items: center;
+  min-height: 6.25rem;
+}
+
 body #page-body {
   font-family: Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: #424753;

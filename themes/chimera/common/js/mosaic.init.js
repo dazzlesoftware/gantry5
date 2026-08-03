@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigation = container.querySelector('.g-mosaic-nav');
         const grid = container.querySelector('.g-mosaic-grid');
         const sizer = container.querySelector('.g-mosaic-grid-sizer');
-        if (!grid || typeof Shuffle === 'undefined') return;
+        if (!grid || typeof NativeGrid === 'undefined') return;
         const selected = navigation?.querySelector('.selected');
-        const shuffle = new Shuffle(grid, {
+        const gridLayout = new NativeGrid(grid, {
             itemSelector: '.g-mosaic-grid-item',
             sizer,
             group: selected?.dataset.group
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         buttons.forEach((button) => button.addEventListener('click', () => {
             buttons.forEach((item) => item.classList.toggle('selected', item === button));
-            shuffle.filter(button.dataset.group);
+            gridLayout.filter(button.dataset.group);
         }));
     });
 });

@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigation = container.querySelector('.g-latestnews-nav');
         const grid = container.querySelector('.g-latestnews-grid');
         const sizer = container.querySelector('.g-latestnews-grid-sizer');
-        if (grid && typeof Shuffle !== 'undefined') {
+        if (grid && typeof NativeGrid !== 'undefined') {
             const selected = navigation?.querySelector('.selected');
-            const shuffle = new Shuffle(grid, {
+            const gridLayout = new NativeGrid(grid, {
                 itemSelector: '.g-latestnews-grid-item',
                 sizer,
                 randomize: true,
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             buttons.forEach((button) => button.addEventListener('click', () => {
                 buttons.forEach((item) => item.classList.toggle('selected', item === button));
-                shuffle.filter(button.dataset.group);
+                gridLayout.filter(button.dataset.group);
             }));
         }
         container.classList.add('visible');

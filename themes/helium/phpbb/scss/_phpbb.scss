@@ -22,6 +22,38 @@
 //    than relying on cascade order or `!important`.
 
 // ---------------------------------------------------------------------------
+// Navigation section height (Gantry's own chrome, not phpBB markup -- but the fix is
+// phpBB-specific, so it lives here)
+// ---------------------------------------------------------------------------
+//
+// #g-navigation has no explicit height anywhere in the shared SCSS (themes/helium/common/scss/
+// helium/sections/_navigation.scss) -- its rendered height is 100% a side effect of its tallest
+// child's own line-height (.g-logo: 2.8rem, .g-toplevel: 3.125 unitless -- both scale purely off
+// ambient font-size, not font metrics). That shared CSS compiles byte-identical for phpBB and
+// WordPress (diffed directly against a live WordPress+Helium install to confirm), yet phpBB's
+// navigation bar renders visibly shorter -- root cause not fully isolated (every avenue checked
+// -- root font-size, prosilver cascade/specificity, browser cache, per-install Style settings,
+// per-outline particle config, the logo SVG's own markup -- came back identical or ruled out).
+// Confirmed empirically (adding `height` directly to `#g-navigation` visibly matches WordPress)
+// that phpBB's *computed* auto-height is meaningfully shorter than the CSS alone would suggest.
+// A bare `height` on `#g-navigation` alone breaks child positioning, because nothing in the
+// existing CSS uses flexbox centering here -- children are placed by their own line-height
+// sitting at the top of whatever box they're in, not stretched/centered to fill a parent. Fixing
+// both together: force the row to a fixed height AND add flex vertical-centering so the taller
+// box actually re-centers its content instead of leaving it stranded at the top.
+body #g-navigation {
+    // #g-navigation's own layout has 2 sibling .g-grid rows: an (almost always empty) system
+    // messages row first, then the actual logo/menu/social row -- :not(:has(...)) excludes the
+    // former so it doesn't also get stretched to the same height, which would just add a large
+    // empty gap above the real content.
+    .g-container > .g-grid:not(:has(.g-system-messages)) {
+        display: flex;
+        align-items: center;
+        min-height: 6.25rem;
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Typography & links
 // ---------------------------------------------------------------------------
 

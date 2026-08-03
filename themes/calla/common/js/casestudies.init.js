@@ -3,16 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigation = container.querySelector('.g-casestudies-nav');
         const grid = container.querySelector('.g-casestudies-grid');
         const sizer = container.querySelector('.g-casestudies-grid-sizer');
-        if (!grid || typeof Shuffle === 'undefined') return;
-        const shuffle = new Shuffle(grid, {
+        if (!grid || typeof NativeGrid === 'undefined') return;
+        const gridLayout = new NativeGrid(grid, {
             itemSelector: '.g-casestudies-grid-item',
             sizer
         });
-        shuffle.filter('1');
+        gridLayout.filter('1');
         const buttons = [...navigation?.querySelectorAll('.g-casestudies-nav-item') || []];
         buttons.forEach((button) => button.addEventListener('click', () => {
             buttons.forEach((item) => item.classList.toggle('selected', item === button));
-            shuffle.filter(button.dataset.group);
+            gridLayout.filter(button.dataset.group);
         }));
     });
 });

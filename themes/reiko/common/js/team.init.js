@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigation = container.querySelector('.g-team-nav');
         const grid = container.querySelector('.g-team-grid');
         const sizer = container.querySelector('.g-team-grid-sizer');
-        if (!grid || typeof Shuffle === 'undefined') return;
-        const shuffle = new Shuffle(grid, {
+        if (!grid || typeof NativeGrid === 'undefined') return;
+        const gridLayout = new NativeGrid(grid, {
             itemSelector: '.g-team-grid-item',
             sizer,
             columnWidth: 0,
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const buttons = [...navigation?.querySelectorAll('.g-team-nav-item') || []];
         const select = (button, group) => {
             buttons.forEach((item) => item.classList.toggle('selected', item === button));
-            shuffle.filter(group);
+            gridLayout.filter(group);
         };
         const initial = container.dataset.initialGroup;
         if (initial) select(buttons.find((button) => button.dataset.group === initial), initial);

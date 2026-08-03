@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
         await imagesReady(container);
         const navigation = container.querySelector('.g-recentreviews-nav');
         const grid = container.querySelector('.g-recentreviews-grid');
-        if (!grid || typeof Shuffle === 'undefined') return;
+        if (!grid || typeof NativeGrid === 'undefined') return;
         const buttons = [...navigation?.querySelectorAll('.g-recentreviews-nav-item') || []];
-        const shuffle = new Shuffle(grid, {
+        const gridLayout = new NativeGrid(grid, {
             itemSelector: '.g-recentreviews-grid-item',
             sizer: container.querySelector('.g-recentreviews-grid-sizer'),
             randomize: true,
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         buttons.forEach((button) => button.addEventListener('click', () => {
             buttons.forEach((item) => item.classList.toggle('selected', item === button));
-            shuffle.filter(button.dataset.group);
+            gridLayout.filter(button.dataset.group);
         }));
         container.classList.add('visible');
     });
