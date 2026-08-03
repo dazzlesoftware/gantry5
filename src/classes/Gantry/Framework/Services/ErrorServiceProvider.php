@@ -12,13 +12,13 @@ namespace Gantry\Framework\Services;
 use Gantry\Component\Whoops\SystemFacade;
 use Gantry\Debugger;
 use Gantry\Framework\Platform;
+use Gantry\Framework\Request;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Whoops\Handler\JsonResponseHandler;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use Whoops\Util\Misc;
 
 /**
  * Class ErrorServiceProvider
@@ -63,8 +63,20 @@ class ErrorServiceProvider implements ServiceProviderInterface
 
         $errors->pushHandler($error_page);
 
-        $jsonRequest = $this->format === 'json' || ($_SERVER && isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] === 'application/json');
-        if (Misc::isAjaxRequest() || $jsonRequest) {
+        // Go through Gantry's own Request abstraction rather than $_SERVER / Whoops's
+        // Misc::isAjaxRequest() directly -- some hosts (e.g. phpBB) replace the raw superglobals
+        // with guarded objects that trigger a fatal error on any direct access outside of their
+        // own request abstraction, which Request's platform-specific implementation already
+        // knows how to read safely.
+        /** @var Request $request */
+        $request = $container['request'];
+        $accept = (string) $request->server['HTTP_ACCEPT'];
+        $requestedWith = (string) $request->server['HTTP_X_REQUESTED_WITH'];
+
+        $jsonRequest = $this->format === 'json' || $accept === 'application/json';
+        $ajaxRequest = strtolower($requestedWith) === 'xmlhttprequest';
+
+        if ($ajaxRequest || $jsonRequest) {
             $json_handler = new JsonResponseHandler();
             //$json_handler->setJsonApi(true);
 

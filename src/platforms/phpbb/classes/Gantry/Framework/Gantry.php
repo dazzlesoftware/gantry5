@@ -9,6 +9,7 @@
 
 namespace Gantry\Framework;
 
+use Gantry\phpBB\NullEventDispatcher;
 use Gantry\phpBB\Runtime;
 
 /**
@@ -17,6 +18,24 @@ use Gantry\phpBB\Runtime;
  */
 class Gantry extends Base\Gantry
 {
+    /**
+     * @return static
+     */
+    protected static function init()
+    {
+        $container = parent::init();
+
+        // phpBB's own bootstrap already loaded its own (ancient, incompatible) copy of
+        // Symfony\Component\EventDispatcher\EventDispatcher long before this runs, so the real
+        // one Base\Gantry::init() just registered can never actually be the class in memory.
+        // See Gantry\phpBB\NullEventDispatcher for the full explanation.
+        $container['events'] = static function () {
+            return new NullEventDispatcher();
+        };
+
+        return $container;
+    }
+
     /**
      * @return array
      */

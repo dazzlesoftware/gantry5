@@ -1,0 +1,31 @@
+{% assets with { priority: 10 } %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ url('gantry-admin://assets/css-compiled/g-admin.css') }}" type="text/css" />
+    {% endblock %}
+
+    {% block javascript %}
+        <script>
+            var GANTRY_AJAX_SUFFIX = '{{ gantry.ajax_suffix|raw }}';
+            var GANTRY_AJAX_URL = '{{ gantry.route('%ajax%')|e }}';
+            var GANTRY_AJAX_CONF_URL = '{{ gantry.route('configurations/%ajax%')|e }}';
+            var GANTRY_AJAX_NONCE = '{{ gantry.ajax_nonce|raw }}';
+            var GANTRY_PLATFORM = 'phpbb';
+        </script>
+    {% endblock %}
+{% endassets -%}
+
+{# The {% assets %} block above only queues these into Gantry's Document registry (needed so
+   the front-end's phpBB-template-var-based flush works) -- print them directly here instead,
+   since this page isn't going through phpBB's own template system at all. #}
+{{ gantry.styles('head')|join("\n")|raw }}
+{{ gantry.scripts('head')|join("\n")|raw }}
+
+<div id="g5-container">
+    {% block content %}
+    {% endblock %}
+
+    {% block footer_section %}
+    {% endblock %}
+</div>
+
+{{ gantry.scripts('footer')|join("\n")|raw }}
