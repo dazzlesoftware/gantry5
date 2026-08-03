@@ -18,7 +18,6 @@ use Gantry\phpBB\Runtime;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
-use Twig\Extension\EscaperExtension;
 use Twig\Loader\LoaderInterface;
 
 /**
@@ -63,7 +62,10 @@ class Theme extends AbstractTheme
                 $twig->enableAutoReload();
             }
 
-            $twig->getExtension(EscaperExtension::class)->setDefaultStrategy('html');
+            // Note: phpBB constructs this Twig environment with autoescape disabled, since its
+            // legacy templates output raw HTML vars everywhere without `|raw`. Do NOT force an
+            // escaping strategy here (Grav's Theme does, but Grav owns its own, separate Twig
+            // environment) -- doing so double-escapes phpBB's own template output.
 
             $this->setTwigLoaderPaths($loader);
 
