@@ -105,8 +105,6 @@ class Debugger
         if (self::$debugbar) {
             $gantry = Gantry::instance();
 
-            $gantry->load('jquery');
-
             self::$renderer = self::$debugbar->getJavascriptRenderer();
             self::$renderer->setIncludeVendors(false);
 

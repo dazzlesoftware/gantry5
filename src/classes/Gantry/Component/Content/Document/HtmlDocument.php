@@ -831,8 +831,6 @@ class HtmlDocument
 
     protected static function registerLightcase()
     {
-        static::registerJquery();
-
         static::addScript(['src' => static::url('gantry-assets://js/lightcase.js', false, null, false)], 11, 'footer');
         static::addStyle(['href' => static::url('gantry-assets://css/lightcase.css', false, null, false)], 11);
     }
@@ -840,8 +838,6 @@ class HtmlDocument
     protected static function registerLightcaseInit()
     {
         static::registerLightcase();
-
-        static::addInlineScript(['content' => "jQuery(document).ready(function($) { jQuery('[data-rel^=lightcase]').lightcase({maxWidth: '100%', maxHeight: '100%', video: {width: '1280', height: '720'}}); });"], 0, 'footer');
     }
 
     /**

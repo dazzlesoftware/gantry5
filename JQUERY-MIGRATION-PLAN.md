@@ -1,12 +1,12 @@
 # jQuery Migration Plan
 
-**Audit date:** July 31, 2026
+**Audit date:** August 3, 2026
 **Project:** Gantry 5 / Genesis
 **Objective:** Remove jQuery and jQuery UI dependencies from maintained Gantry code and recovered themes, replacing them with modern native JavaScript.
 
 ## 1. Current baseline
 
-The Gantry administration application no longer imports or calls jQuery directly. The remaining work is concentrated in compatibility loaders, Lightcase, platform integrations, and recovered theme particles.
+The Gantry administration application no longer imports or calls jQuery directly. Lightcase, the Grav search loader, the Frameworks atom, and both bundled DebugBar integrations are now jQuery-free. The remaining work is concentrated in platform compatibility registration and recovered theme particles.
 
 ### Current counts
 
@@ -357,10 +357,10 @@ package-build.bat prod
 
 | ID | Task | Status | Dependencies |
 |---|---|---|---|
-| JQ-CORE-001 | Replace Lightcase | Not started | None |
-| JQ-CORE-002 | Rewrite Grav search | Not started | None |
-| JQ-CORE-003 | Modernize Frameworks atom | Not started | Major-version compatibility decision |
-| JQ-CORE-004 | Remove DebugBar jQuery loading | Not started | DebugBar UI verification |
+| JQ-CORE-001 | Replace Lightcase | Complete | Native delegated lightbox controller; browser UI verification remains |
+| JQ-CORE-002 | Rewrite Grav search | Complete | SimpleSearch markup is native; obsolete loader removed |
+| JQ-CORE-003 | Modernize Frameworks atom | Complete | Only Bootstrap 5/current Joomla Bootstrap remains selectable |
+| JQ-CORE-004 | Remove DebugBar jQuery loading | Complete | Bundled DebugBar resources contain no jQuery calls |
 | JQ-CORE-005 | Retire platform registration keys | Not started | Core callers removed |
 | JQ-THEME-001 | Consolidate Simple Counter | Complete | Shared native controller in common assets |
 | JQ-THEME-002 | Consolidate Video | Complete | Shared native controller; HTML5, YouTube, Vimeo, and Swiper lifecycle support |
@@ -380,4 +380,4 @@ package-build.bat prod
 
 ## 9. Recommended next task
 
-Continue with **JQ-THEME-003: Consolidate Fixed Header** or **JQ-THEME-004: Consolidate Search** using the established shared native-controller pattern. **JQ-CORE-001: Replace Lightcase** remains the highest-value core-runtime removal.
+Continue with **JQ-THEME-003: Consolidate Fixed Header** or **JQ-THEME-004: Consolidate Search** using the established shared native-controller pattern. Platform jQuery registration keys remain until all recovered-theme callers have migrated.

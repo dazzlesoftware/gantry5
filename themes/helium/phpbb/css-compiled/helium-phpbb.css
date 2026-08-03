@@ -1,0 +1,188 @@
+#page-body {
+  font-family: Raleway", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color: #424753;
+}
+#page-body h1, #page-body h2, #page-body h3, #page-body h4, #page-body h5, #page-body h6,
+#page-body .forumtitle, #page-body .topictitle, #page-body .panel h2, #page-body .panel h3 {
+  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 600;
+}
+#page-body a {
+  color: #4db2b3;
+  transition: color 0.2s;
+}
+#page-body a:hover {
+  color: #424753;
+}
+#page-body .forumtitle a, #page-body .topictitle a {
+  color: #424753;
+}
+#page-body .forumtitle a:hover, #page-body .topictitle a:hover {
+  color: #4db2b3;
+}
+
+#page-body .forabg, #page-body .forumbg, #page-body .panel, #page-body .navbar {
+  background: #ffffff;
+  border: 1px solid #e0e0e5;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+#page-body .navbar {
+  padding: 0.5rem 1rem;
+}
+#page-body .forabg, #page-body .forumbg {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+#page-body .forabg > div, #page-body .forumbg > div {
+  border: 1px solid #e0e0e5;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  background: #ffffff;
+}
+#page-body .forabg .header, #page-body .forumbg .header {
+  background: #312f38;
+  color: #ffffff;
+  border: none;
+}
+#page-body .forabg .header a, #page-body .forabg .header li, #page-body .forabg .header .responsive-show, #page-body .forumbg .header a, #page-body .forumbg .header li, #page-body .forumbg .header .responsive-show {
+  color: #ffffff;
+}
+#page-body .forabg .header a:hover, #page-body .forumbg .header a:hover {
+  color: #4db2b3;
+}
+#page-body .row {
+  background: transparent;
+  border-bottom: 1px solid #e0e0e5;
+  transition: background 0.15s;
+}
+#page-body .row:last-child {
+  border-bottom: none;
+}
+#page-body .row:hover {
+  background: #eceff3;
+}
+#page-body dd, #page-body dt {
+  border-color: #e0e0e5;
+}
+
+#page-body a.button1, #page-body input.button1,
+#page-body a.button2, #page-body input.button2,
+#page-body input.button3,
+#page-body input[type=submit], #page-body input[type=button], #page-body input[type=reset] {
+  display: inline-block;
+  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  background: #4db2b3;
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 2.5rem;
+  padding: 0.6rem 1.75rem;
+  text-shadow: none;
+  transition: background 0.2s;
+}
+#page-body a.button1:hover, #page-body a.button1:focus, #page-body a.button1:active, #page-body input.button1:hover, #page-body input.button1:focus, #page-body input.button1:active,
+#page-body a.button2:hover,
+#page-body a.button2:focus,
+#page-body a.button2:active, #page-body input.button2:hover, #page-body input.button2:focus, #page-body input.button2:active,
+#page-body input.button3:hover,
+#page-body input.button3:focus,
+#page-body input.button3:active,
+#page-body input[type=submit]:hover,
+#page-body input[type=submit]:focus,
+#page-body input[type=submit]:active, #page-body input[type=button]:hover, #page-body input[type=button]:focus, #page-body input[type=button]:active, #page-body input[type=reset]:hover, #page-body input[type=reset]:focus, #page-body input[type=reset]:active {
+  background: #3d8f90;
+  color: #ffffff;
+}
+#page-body a.button2, #page-body input.button2 {
+  background: #8f4dae;
+}
+#page-body a.button2:hover, #page-body a.button2:focus, #page-body a.button2:active, #page-body input.button2:hover, #page-body input.button2:focus, #page-body input.button2:active {
+  background: #723d8b;
+}
+#page-body .pagination a.button, #page-body .pagination .button {
+  border-radius: 50%;
+  background: transparent;
+  color: #424753;
+  border: 1px solid #e0e0e5;
+}
+#page-body .pagination a.button:hover, #page-body .pagination .button:hover {
+  background: #4db2b3;
+  border-color: #4db2b3;
+  color: #ffffff;
+}
+#page-body .pagination li.active span {
+  background: #4db2b3;
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+#page-body input[type=text], #page-body input[type=password], #page-body input[type=email],
+#page-body input[type=number], #page-body input[type=search], #page-body input[type=url],
+#page-body textarea, #page-body select {
+  background: #ffffff;
+  border: 1px solid #e0e0e5;
+  border-radius: 0.25rem;
+  color: #424753;
+  padding: 0.5rem 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#page-body input[type=text]:hover, #page-body input[type=password]:hover, #page-body input[type=email]:hover,
+#page-body input[type=number]:hover, #page-body input[type=search]:hover, #page-body input[type=url]:hover,
+#page-body textarea:hover, #page-body select:hover {
+  border-color: #4db2b3;
+}
+#page-body input[type=text]:focus, #page-body input[type=password]:focus, #page-body input[type=email]:focus,
+#page-body input[type=number]:focus, #page-body input[type=search]:focus, #page-body input[type=url]:focus,
+#page-body textarea:focus, #page-body select:focus {
+  border-color: #4db2b3;
+  box-shadow: 0 0 4px rgba(77, 178, 179, 0.5);
+  outline: none;
+}
+
+#page-body .post {
+  border-color: #e0e0e5;
+}
+#page-body .postprofile {
+  background: #eceff3;
+  border-radius: 0.25rem;
+}
+#page-body .codebox {
+  background: #f6f6f6;
+  border: 1px solid #e0e0e5;
+  border-radius: 0.25rem;
+}
+#page-body .codebox code {
+  color: #237794;
+}
+#page-body blockquote {
+  border-left: 3px solid #4db2b3;
+  background: #eceff3;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+#page-body .signature {
+  border-top: 1px solid #e0e0e5;
+}
+
+#page-body .error, #page-body p.error {
+  color: #b94a48;
+}
+#page-body .confirmbox, #page-body .successbox {
+  border-radius: 0.25rem;
+  border: 1px solid #e0e0e5;
+}
+
+.g-phpbb-gantry-tagline {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.g-phpbb-gantry-footer-note {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}

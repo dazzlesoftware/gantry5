@@ -41,13 +41,9 @@ There is **1 first-party Gantry core JavaScript file with a direct external runt
 
 - `assets/common/application/swiper.js` imports `swiper` and `swiper/modules` (version 14.0.7).
 
-One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the first-party-file count.
+The bundled Lightcase plugin has been replaced by a native delegated lightbox controller that preserves existing `data-rel="lightcase..."` markup, galleries, keyboard navigation, focus containment, inline content, images, videos, and iframe media.
 
-Three core-adjacent Twig loaders remain:
-
-- `engines/common/nucleus/particles/frameworks.html.twig` can optionally load jQuery, jQuery UI, MooTools, and Bootstrap JavaScript.
-- `engines/joomla/nucleus/particles/frameworks.html.twig` can optionally load jQuery, jQuery UI, and MooTools.
-- `engines/grav/nucleus/particles/search.html.twig` explicitly requests jQuery.
+No core-adjacent Twig template requests jQuery. The Frameworks atom now exposes only Bootstrap 5 (or the current Joomla Bootstrap integration), and the obsolete Grav SimpleSearch jQuery loader has been removed.
 
 ### Core JavaScript files with direct external runtime imports
 
@@ -259,15 +255,15 @@ The practical migration backlog is approximately:
 
 - **393 distinct content variants with explicit jQuery references** across recovered themes.
 - **0 theme-level MooTools/MooFx implementations**.
-- **3 core-adjacent Twig framework loaders**, including the optional JavaScript Frameworks atom and the Grav search particle.
+- **0 core-adjacent Twig jQuery loaders**.
 
 Physical files should not be converted independently. Equivalent particle and library implementations should be consolidated first, then replaced with a shared native implementation.
 
 ## Immediate next target
 
-1. Modernize the JavaScript Frameworks atom so new pages cannot load jQuery UI, MooTools, or obsolete Bootstrap JavaScript versions.
-2. Replace the explicit jQuery dependency in the Grav search particle.
-3. Continue with the most frequently duplicated jQuery theme families, starting with counters, video, Swiper, audio, calendar, and single-page navigation.
+1. Consolidate and migrate the recovered-theme Fixed Header and Search families.
+2. Continue with Swiper wrappers, audio, calendar, and single-page navigation.
+3. Retire platform jQuery registration keys after their remaining theme callers are gone.
 
 ## Audit methodology
 
