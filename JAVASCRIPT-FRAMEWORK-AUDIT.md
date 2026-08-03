@@ -1,6 +1,6 @@
 # JavaScript Framework Dependency Audit
 
-**Audit date:** July 31, 2026
+**Audit date:** August 3, 2026
 **Project:** Gantry 5 / Genesis  
 **Goal:** Remove JavaScript framework dependencies and transition first-party code to modern, native ES6+ JavaScript.
 
@@ -8,8 +8,8 @@
 
 The Gantry core and administration interface are significantly closer to native JavaScript, but framework and library dependencies remain in both the core and recovered themes.
 
-- **0 first-party Gantry core `.js` files** import external JavaScript frameworks directly.
-- Admin consumers now use standalone native element-creation and traversal/delegation adapters; both core bundles are framework-free.
+- **1 first-party Gantry core `.js` file** imports an external JavaScript framework directly: the shared Swiper 14 controller.
+- Admin consumers now use standalone native element-creation and traversal/delegation adapters; the admin bundle is framework-free, while the frontend bundle intentionally includes Swiper.
 - The **3 platform content-array Twig templates have been converted** from jQuery events and AJAX to native delegated events and `fetch()`.
 - Layout Manager history now uses native snapshot comparison; the abandoned `deep-diff` package has been removed.
 - The font picker now uses native stylesheet loading and the CSS Font Loading API; `webfontloader` has been removed.
@@ -21,15 +21,15 @@ The Gantry core and administration interface are significantly closer to native 
 - Gantry's custom adjacent/all-sibling helpers now use native DOM traversal and `Element.matches()` instead of importing Slick directly.
 - The admin element builder now uses `document.createElement()` and native attribute/class assignment instead of the Slick-powered `elements/zen` parser.
 - The admin traversal and delegated-event layer now uses native selectors, DOM relationships, and browser events; Slick is absent from the generated admin bundle.
-- **1,579 physical theme files** contain jQuery-dependent code: 940 JavaScript files and 639 Twig templates with inline scripts.
-- Theme duplication reduces those files to approximately **489 distinct implementations**: 201 JavaScript implementations and 288 Twig implementations.
-- Excluding 148 minified library copies leaves **792 readable jQuery-dependent JavaScript files** representing **193 distinct implementations**.
+- **1,080 physical theme files** contain an explicit `jQuery` reference: 610 JavaScript files and 470 Twig templates with inline scripts.
+- Theme duplication reduces those files to approximately **393 distinct implementations**: 173 JavaScript implementations and 220 Twig implementations.
+- Excluding 57 explicitly named `.min.js` copies leaves **553 readable jQuery-referencing JavaScript files** representing **167 distinct implementations**.
 - **0 theme JavaScript files** contain MooTools or MooFx code after removing the obsolete RokSprocket overrides.
 - **0 recovered-theme files** contain the retired carousel runtime, naming,
   selectors, or asset paths. All 30 affected themes now use the shared
   ES2018+ Swiper controller without jQuery.
-- No React, Vue, Angular, or Backbone usage was detected.
-- Core code still uses CommonJS extensively and has not yet moved to native ES modules.
+- No React, Vue, Angular, Backbone, Svelte, Alpine, or Ember usage was detected.
+- Core code still uses CommonJS extensively; the new shared Swiper controller is the first native ES module.
 
 Generated bundles, `node_modules`, Composer `vendor` directories, minified third-party files, and compiled asset directories were excluded where appropriate to avoid double-counting.
 
@@ -37,9 +37,9 @@ Generated bundles, `node_modules`, Composer `vendor` directories, minified third
 
 ### Remaining dependency count
 
-There are **0 first-party Gantry core JavaScript files with direct external runtime imports**:
+There is **1 first-party Gantry core JavaScript file with a direct external runtime import**:
 
-- No JavaScript source files import external runtime packages.
+- `assets/common/application/swiper.js` imports `swiper` and `swiper/modules` (version 14.0.7).
 
 One additional bundled jQuery plugin, `assets/common/js/lightcase.js`, exists as third-party compatibility code and is not included in the first-party-file count.
 
@@ -51,7 +51,9 @@ Three core-adjacent Twig loaders remain:
 
 ### Core JavaScript files with direct external runtime imports
 
-No first-party core JavaScript files still import external runtime libraries.
+The shared Swiper controller is the only active direct external framework import. No first-party source imports jQuery, MooTools, `elements`, `mout`, `prime`, `prime-util`, or `domready` at runtime. The apparent `mout` and `prime` calls in `platforms/common/application/main.js` are commented diagnostic examples, not executable imports.
+
+`assets/common/package.json` still declares `domready`, `elements`, `mout`, `prime`, and `prime-util` as production dependencies. These declarations appear unused by current first-party source and should be removed only after a clean install and full bundle build confirms that no transitive or build-time path relies on them.
 
 Several admin modules still use the local compatibility APIs indirectly. Those adapters are implemented entirely with native DOM APIs and can be migrated incrementally without changing traversal behavior again.
 
@@ -66,7 +68,8 @@ Counts overlap because a single file may import more than one package.
 | `prime` | 0 | Removed from first-party core runtime code |
 | `prime-util` | 0 | Removed from first-party core runtime code |
 | `domready` | 0 | Replaced with native ready-state handling |
-| Slick | 0 direct | Removed from both generated core bundles |
+| Slick | 0 direct | Removed from generated core bundles |
+| Swiper | 1 | Intentional shared frontend controller; imported as an ES module |
 
 ### Converted platform templates
 
@@ -110,11 +113,11 @@ The recovered themes contain the largest remaining framework migration workload.
 
 | Category | Physical files | Distinct content variants |
 |---|---:|---:|
-| Twig templates with inline scripts | 639 | 288 |
-| JavaScript files | 940 | 201 |
-| **Total** | **1,579** | **489** |
+| Twig templates with inline scripts | 470 | 220 |
+| JavaScript files | 610 | 173 |
+| **Total** | **1,080** | **393** |
 
-Of the 940 JavaScript files, 148 are minified third-party library copies. Excluding those leaves 792 readable files representing 193 distinct implementations.
+Of the 610 JavaScript files, 57 have an explicit `.min.js` filename. Excluding those leaves 553 readable files representing 167 distinct content variants. This filename-based minified count is reproducible, but does not attempt to classify minified code stored under a non-minified filename.
 
 The physical-file count is high because many themes contain copies of the same particles, initialization files, and third-party libraries. The distinct-content count is a better estimate of the actual rewrite workload.
 
@@ -122,9 +125,10 @@ The physical-file count is high because many themes contain copies of the same p
 
 | Dependency or plugin family | Physical files | Distinct implementations |
 |---|---:|---:|
-| jQuery-dependent code | 1,579 | 489 |
+| Explicit jQuery references | 1,080 | 393 |
 | Retired carousel runtime | 0 | 0 |
-| Swiper | 193 | 58 |
+| Swiper, all theme files | 388 | 189 |
+| Swiper files also referencing jQuery | 176 | 78 |
 | Slick | 6 | 3 |
 | MooTools/MooFx theme code | 0 | 0 |
 
@@ -147,7 +151,7 @@ Theme migrations should be centralized by particle or library family. Rewriting 
 
 ## ES6+ and module status
 
-The core audit found **94 first-party JavaScript source files** in:
+The core audit found **95 first-party JavaScript source files** in:
 
 - `platforms/common/application`
 - `assets/common/application`
@@ -156,13 +160,13 @@ Current syntax and module usage:
 
 | Feature | Files |
 |---|---:|
-| CommonJS `require()` | 62 |
+| CommonJS `require()` | 61 |
 | CommonJS `module.exports` or `exports` | 93 |
 | `var` declarations | 51 |
-| Native ES module `import`/`export` | 0 |
-| ES6 `class` syntax | 37 |
-| Arrow functions | 42 |
-| Promise or async usage | 6 |
+| Native ES module `import`/`export` | 1 |
+| ES6 `class` syntax | 38 |
+| Arrow functions | 43 |
+| Promise, `async`, or `await` usage | 3 |
 
 Framework removal and ES6 modernization are separate but related tasks. A file may already be framework-free while still using CommonJS, `var`, and ES5 callback syntax.
 
@@ -253,7 +257,7 @@ After dependency removal stabilizes:
 
 The practical migration backlog is approximately:
 
-- **489 distinct jQuery-dependent implementations** across recovered themes.
+- **393 distinct content variants with explicit jQuery references** across recovered themes.
 - **0 theme-level MooTools/MooFx implementations**.
 - **3 core-adjacent Twig framework loaders**, including the optional JavaScript Frameworks atom and the Grav search particle.
 
@@ -267,7 +271,7 @@ Physical files should not be converted independently. Equivalent particle and li
 
 ## Audit methodology
 
-The scan includes `.js` files and Twig templates beneath `themes/`. It excludes `node_modules`, Composer `vendor` directories, `dist`, and compiled JavaScript/CSS output directories. Files are counted in two ways:
+The scan includes `.js` files and Twig templates beneath `themes/`. It excludes `node_modules`, Composer `vendor` directories, `dist`, and compiled JavaScript/CSS output directories. Framework detection uses explicit framework identifiers and known API signatures. For jQuery totals, the reproducible primary measure is a case-insensitive lexical `jquery` reference; bare `$` alone is not counted because bundled AOS, Moment, Snap.svg, and Swiper code uses `$` internally without depending on jQuery. Files are counted in two ways:
 
 - **Physical files:** every matching copy in the repository.
 - **Distinct implementations:** unique SHA-256 content hashes, which collapse byte-identical copies.
