@@ -14,7 +14,7 @@ Maintained Gantry code and recovered-theme particles no longer require or load j
 | Recovered-theme JavaScript, excluding vendor compatibility text | 0 | 0 |
 | Recovered-theme Twig templates | 0 | 0 |
 
-The scan excludes generated/package dependencies, Joomla installer PHP expressions, and the user-maintained phpBB integration. Forty-six minified AOS copies match the broad `\$\(` heuristic because the minifier names an internal numeric conversion function `$`; they contain no `jQuery` identifier and AOS is dependency-free.
+The scan excludes generated/package dependencies, Joomla installer PHP expressions, and the user-maintained phpBB integration.
 
 The final loader scan covers `themes`, `engines`, `src`, and `platforms` and searches for `gantry.load('jquery')`, `jquery.framework`, jQuery UI registration keys, CDN URLs, and platform enqueue calls.
 
@@ -48,8 +48,8 @@ These libraries remain because they are dependency-free and provide behavior bey
 | Library | Maintained source/copies | Status |
 |---|---:|---|
 | Swiper 14 | 1 source plus 1 generated browser bundle | Intentional ES-module dependency for feature-rich sliders |
-| AOS | 46 recovered-theme copies | Dependency-free animation library; broad `$(` scans produce a false positive |
-| Shuffle | 25 recovered-theme copies | Dependency-free filtering/layout library; jQuery adapters removed |
+| Native scroll animations | 46 recovered-theme copies | First-party ES6+ `IntersectionObserver` controller; retains existing `data-aos` markup and CSS compatibility |
+| Shuffle | 23 recovered-theme copies | Dependency-free filtering/layout library; jQuery adapters removed |
 | Anime.js | 2 recovered-theme copies | Dependency-free animation library |
 | Typed.js | 1 recovered-theme copy | Dependency-free typewriter effect |
 | Native Lightcase compatibility controller | 1 shared controller | First-party implementation, not the former plugin |
@@ -60,8 +60,12 @@ No React, Vue, Angular, Backbone, Svelte, Alpine, Ember, MooTools, or active jQu
 
 New shared controllers use browser-native APIs including `querySelector(All)`, `classList`, `dataset`, `CustomEvent`, `fetch`, `URL`, `FormData`, pointer events, `ResizeObserver`, `IntersectionObserver`, media events, and CSS transforms. The administration bundle still uses CommonJS internally; converting its module format is separate from eliminating runtime framework dependencies.
 
+The recovered-theme AOS runtime was replaced by a small native `IntersectionObserver` controller. Existing particle settings, `data-aos` markup, animation styles, reduced-motion behavior, dynamic content discovery, and `aos:in`/`aos:out` compatibility events remain supported without loading the third-party JavaScript library.
+
 ## Verification
 
+- Native scroll controllers: all 46 files passed `node --check`; all 46 particle templates load and initialize the replacement.
+- AOS runtime scan: 0 JavaScript files and 0 JavaScript/Twig runtime references remain outside the excluded phpBB integration.
 - Production JavaScript bundle: `assets-build.bat js --prod` — passed.
 - Changed JavaScript syntax: 196 files checked with `node --check` — passed.
 - Changed PHP syntax: 4 files checked with `php -l` — passed.

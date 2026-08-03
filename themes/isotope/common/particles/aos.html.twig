@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="gantry-theme://js/aos.js"></script>
+    <script src="gantry-theme://js/scroll-animations.js"></script>
 {% endblock %}
 
 {% set init %}
-	AOS.init({
+	NativeScrollAnimations.init({
 
 	duration: {{ particle.duration }},
 	once: {{ particle.once }},
