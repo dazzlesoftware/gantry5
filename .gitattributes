@@ -10,3 +10,4 @@
 # Enforce normalized line endings in source/distributions.
 * text=auto eol=lf
 *.php text eol=lf
+*.bat text eol=crlf

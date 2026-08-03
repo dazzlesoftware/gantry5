@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('ABSPATH')) {
-    if (!defined('_JEXEC') && !defined('GRAV_ROOT')) {
+    if (!defined('_JEXEC') && !defined('GRAV_ROOT') && !defined('IN_PHPBB')) {
         exit;
     }
 }

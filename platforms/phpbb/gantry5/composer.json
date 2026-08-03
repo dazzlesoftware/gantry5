@@ -1,0 +1,43 @@
+{
+    "name": "dazzlesoftware/gantry5",
+    "type": "phpbb-extension",
+    "description": "Gantry Framework for phpBB",
+    "version": "5.6.1",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Dazzle Software, LLC",
+            "homepage": "https://dazzlesoftware.org"
+        }
+    ],
+
+    "require": {
+        "php": ">=8.3.0",
+        "ext-mbstring": "*",
+        "ext-json": "*",
+        "ext-dom": "*",
+        "ext-xml": "*",
+        "ext-simplexml": "*",
+        "dazzlesoftware/toolbox": "^1.0",
+        "scssphp/scssphp": "^2.1.0",
+        "psr/container": "^1.0",
+        "psr/http-message": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gantry\\": "src/classes/Gantry"
+        }
+    },
+    "extra": {
+        "display-name": "Gantry 5",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.0"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        }
+    }
+}

@@ -1,0 +1,18 @@
+// REQUIRED DEPENDENCIES - DO NOT CHANGE
+
+// Load Bourbon library
+$output-bourbon-deprecation-warnings: false;
+@import "vendor/bourbon/bourbon";
+
+//-------------------------------------------
+
+// Load Nucleus Configuration Defaults
+@import "configuration/nucleus/base";
+
+// Load Theme Configuration
+@import "configuration/base";
+
+//-------------------------------------------
+
+// phpBB-specific SCSS is not built out yet (tracked separately); this entry point exists so
+// the theme's persistent CSS files list compiles cleanly in the meantime.

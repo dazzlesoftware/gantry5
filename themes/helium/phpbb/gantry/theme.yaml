@@ -1,0 +1,50 @@
+details:
+  name: Helium
+  version: '@version@'
+  icon: paper-plane
+  date: '@versiondate@'
+  author:
+    name: Dazzle Software, LLC
+    email: 'support@dazzlesoftware.org'
+    link: 'https://dazzlesoftware.org'
+
+  documentation:
+    link: 'http://docs.gantry.org/gantry5'
+
+  support:
+    link: 'https://gitter.im/gantry/gantry5'
+
+  copyright: Copyright (C) 2026 Dazzle Software, LLC
+  license: GPLv3 and later
+  description: Helium Theme for phpBB
+
+configuration:
+  gantry:
+    platform: phpbb
+    engine: nucleus
+
+  theme:
+    parent: g5_helium
+    base: 'gantry-theme://common'
+
+  css:
+    compiler: '\Gantry\Component\Stylesheet\ScssCompiler'
+    options:
+      compatibility: '5.5'
+      deprecations: true
+    target: 'gantry-theme://css-compiled'
+    paths:
+      - 'gantry-theme://scss'
+      - 'gantry-engine://scss'
+    files:
+      - helium
+      - helium-phpbb
+      - custom
+    persistent:
+      - helium
+      - helium-phpbb
+    overrides:
+      - custom
+
+  dependencies:
+    gantry: '5.5'

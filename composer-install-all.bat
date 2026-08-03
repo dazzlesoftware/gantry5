@@ -25,6 +25,7 @@ if errorlevel 1 (
 call :link-source "platforms\grav\gantry5" || exit /b 1
 call :link-source "platforms\joomla\lib_gantry5" || exit /b 1
 call :link-source "platforms\wordpress\gantry5" || exit /b 1
+call :link-source "platforms\phpbb\gantry5" || exit /b 1
 
 call :install "." || exit /b 1
 call :install "bin\builder" || exit /b 1
@@ -33,6 +34,7 @@ call :install "platforms\joomla\lib_gantry5" || exit /b 1
 call :install "platforms\joomla\plg_system_gantry5_debugbar" || exit /b 1
 call :install "platforms\wordpress\gantry5" || exit /b 1
 call :install "platforms\wordpress\gantry5_debugbar" || exit /b 1
+call :install "platforms\phpbb\gantry5" || exit /b 1
 
 echo.
 echo All Composer installs completed successfully.

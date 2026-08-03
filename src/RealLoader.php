@@ -11,7 +11,7 @@
 namespace Gantry5;
 
 if (!defined('ABSPATH')) {
-    if (!defined('_JEXEC') && !defined('GRAV_ROOT')) {
+    if (!defined('_JEXEC') && !defined('GRAV_ROOT') && !defined('IN_PHPBB')) {
         exit;
     }
 }
@@ -91,6 +91,12 @@ abstract class RealLoader
             define('GANTRY5_PLATFORM', 'grav');
             define('GANTRY5_ROOT', rtrim(ROOT_DIR, '/'));
             define('GANTRY5_LIBRARY', $locator('plugin://gantry5'));
+        } elseif (defined('IN_PHPBB') && defined('GANTRY5_PHPBB_ROOT_PATH') && defined('GANTRY5_PHPBB_EXT_PATH')) {
+            // phpBB has no native constant for its absolute root path or this extension's own
+            // path, so the extension's listener defines these two before booting the loader.
+            define('GANTRY5_PLATFORM', 'phpbb');
+            define('GANTRY5_ROOT', rtrim(GANTRY5_PHPBB_ROOT_PATH, '/\\'));
+            define('GANTRY5_LIBRARY', rtrim(GANTRY5_PHPBB_EXT_PATH, '/\\'));
         } else {
             throw new \RuntimeException('Gantry: CMS not detected!');
         }

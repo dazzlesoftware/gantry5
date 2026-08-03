@@ -1,0 +1,43 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1
+layout:
+  /navigation/:
+    -
+      - custom-1001
+  /container-main/:
+    -
+      -
+        'mainbar 100':
+          -
+            - system-content-1002
+  /footer/:
+    -
+      - custom-1003
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+  mainbar:
+    type: section
+    subtype: main
+  container-main:
+    attributes:
+      boxed: ''
+  footer:
+    type: section
+    subtype: footer
+    attributes:
+      boxed: ''
+content:
+  custom-1001:
+    title: 'Gantry Navigation'
+    attributes:
+      html: '<div class="g-phpbb-gantry-nav"><strong>Gantry 5</strong> / Helium &mdash; phpBB Edition</div>'
+  custom-1003:
+    title: 'Gantry Footer'
+    attributes:
+      html: '<div class="g-phpbb-gantry-footer">Styled by Gantry 5 &amp; Helium</div>'
