@@ -83,11 +83,14 @@
          data-menu-ordering="{{ menu.ordering|json_encode|escape('html_attr') }}"
          data-menu-items="{{ menu.items(false)|json_encode|escape('html_attr') }}"
          data-menu-settings="{{ menu.settings|json_encode|escape('html_attr') }}">
-        {% if menu.items|length %}
-            {% include 'menu/base.html.twig' with {'item': menu.root} %}
-        {% else %}
-            {% include 'menu/empty.html.twig' with {'item': menu.root} %}
-        {% endif %}
+        {#- Unlike Grav/WordPress, phpBB has no page tree to seed a new menu with, so
+            menu.items|length is 0 for every brand-new menu, not just a rare edge case --
+            menu/empty.html.twig is a dead end (a static message, no drop target at all), so
+            falling back to it here would make it permanently impossible to add the first item.
+            menu/base.html.twig's <ul data-mm-base=""> is what menumanager.js actually binds
+            drag/drop to -- render it unconditionally so dragging in a Particle/Module from the
+            picker above always works, even while the menu is still empty. #}
+        {% include 'menu/base.html.twig' with {'item': menu.root} %}
     </div>
 
     <div id="trash" data-mm-eraseparticle=""><div class="trash-zone">&times;</div><span>{{ 'GANTRY5_PLATFORM_DROP_DELETE'|trans }}</span></div>

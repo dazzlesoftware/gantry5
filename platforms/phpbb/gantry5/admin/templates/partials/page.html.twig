@@ -5,11 +5,32 @@
 
     {% block javascript %}
         <script>
-            var GANTRY_AJAX_SUFFIX = '{{ gantry.ajax_suffix|raw }}';
-            var GANTRY_AJAX_URL = '{{ gantry.route('%ajax%')|e }}';
-            var GANTRY_AJAX_CONF_URL = '{{ gantry.route('configurations/%ajax%')|e }}';
-            var GANTRY_AJAX_NONCE = '{{ gantry.ajax_nonce|raw }}';
+            {# These need JS-string escaping (quotes/backslashes), NOT HTML escaping -- the
+               plain `|e`/`|escape` filter here defaults to HTML-escaping, which turns every "&"
+               in the URL into a literal "&amp;" text sequence inside the JS string (correct for
+               an href="" attribute, where the HTML parser decodes it back; wrong here, since
+               nothing decodes entities inside a <script> string, so fetch() ends up requesting a
+               URL with literal "&amp;" in its query string instead of "&"). #}
+            var GANTRY_AJAX_SUFFIX = '{{ gantry.ajax_suffix|e('js') }}';
+            var GANTRY_AJAX_URL = '{{ gantry.route('%ajax%')|e('js') }}';
+            var GANTRY_AJAX_CONF_URL = '{{ gantry.route('configurations/%ajax%')|e('js') }}';
+            var GANTRY_AJAX_NONCE = '{{ gantry.ajax_nonce|e('js') }}';
             var GANTRY_PLATFORM = 'phpbb';
+
+            // Some admin JS actions (e.g. Save Layout) POST back to "the current page" rather
+            // than to GANTRY_AJAX_URL -- but the visible URL (from the ACP sidebar link) never
+            // has our nonce/g5_path on it in the first place. Rewrite it once, without a real
+            // navigation, so anything that submits to window.location.href picks these up too.
+            if (window.history && window.history.replaceState) {
+                try {
+                    var g5Url = new URL(window.location.href);
+                    g5Url.searchParams.set('nonce', GANTRY_AJAX_NONCE);
+                    if (!g5Url.searchParams.has('g5_path')) {
+                        g5Url.searchParams.set('g5_path', 'configurations/default/layout');
+                    }
+                    window.history.replaceState(null, '', g5Url.toString());
+                } catch (e) {}
+            }
         </script>
     {% endblock %}
 {% endassets -%}

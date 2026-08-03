@@ -96,10 +96,35 @@ class listener implements EventSubscriberInterface
             $body = substr($rendered, $pos + \strlen($marker));
         }
 
-        echo $this->getTheme()->render('@nucleus/index.html.twig', [
-            'content' => $body,
-            'phpbb_head' => $head,
-        ]);
+        try {
+            $rendered_page = $this->getTheme()->render('@nucleus/index.html.twig', [
+                'content' => $body,
+                'phpbb_head' => $head,
+            ]);
+        } catch (\Throwable $e) {
+            $rendered_page = '<pre style="white-space:pre-wrap;color:#c00;padding:1em;background:#fee;">'
+                . htmlspecialchars($e->getMessage() . "\n" . $e->getTraceAsString(), ENT_QUOTES)
+                . '</pre>';
+        }
+
+        // Defensive safety net: the base output-buffer level at this point in a phpBB request is
+        // always exactly 1 (opened by phpBB's own bootstrap). A Twig \Exception/\Error thrown
+        // while inside a native `{% set x %}...{% endset %}` capture (compiles to
+        // `ob_start(); ...; $x = ob_get_clean();`) skips that ob_get_clean(), leaking an extra
+        // open buffer level for the rest of the request -- this actually happened here once (see
+        // Theme::renderer()'s Lexer-reset fix for the real cause: a SyntaxError from a corrupted
+        // shared Twig Lexer, caught by the particle's own outer `{% try %}` so render() itself
+        // still returned successfully) and produced a silent `Content-Length: 0` response, since
+        // phpBB's own exit_handler() (includes/functions.php) only pops ONE buffer level
+        // (`(ob_get_level() > 0) ? @ob_flush() : @flush();`) -- insufficient with 2+ open.
+        // Collapse back to the 1-level baseline unconditionally before echoing, so any future
+        // exception-during-a-capture bug degrades to a normal caught-error page instead of a
+        // silently empty one.
+        while (ob_get_level() > 1) {
+            ob_end_flush();
+        }
+
+        echo $rendered_page;
 
         $event['display_template'] = false;
     }

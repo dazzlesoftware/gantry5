@@ -89,10 +89,7 @@ class Document extends HtmlDocument
             return '';
         }
 
-        /** @var \phpbb\path_helper $pathHelper */
-        $pathHelper = Runtime::service('path_helper');
-
-        return rtrim($pathHelper->get_web_root_path(), '/');
+        return Runtime::webRoot();
     }
 
     /**
@@ -100,10 +97,7 @@ class Document extends HtmlDocument
      */
     public static function rootUri()
     {
-        /** @var \phpbb\path_helper $pathHelper */
-        $pathHelper = Runtime::service('path_helper');
-
-        return rtrim($pathHelper->get_web_root_path(), '/') ?: '/';
+        return Runtime::webRoot() ?: '/';
     }
 
     /**
@@ -111,9 +105,6 @@ class Document extends HtmlDocument
      */
     public static function siteUrl()
     {
-        /** @var \phpbb\path_helper $pathHelper */
-        $pathHelper = Runtime::service('path_helper');
-
-        return rtrim($pathHelper->get_web_root_path(), '/') ?: '/';
+        return Runtime::webRoot() ?: '/';
     }
 }

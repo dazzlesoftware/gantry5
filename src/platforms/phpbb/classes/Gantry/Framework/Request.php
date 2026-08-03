@@ -49,9 +49,16 @@ class Request extends BaseRequest
      */
     protected function extract($request, $type)
     {
+        // raw_variable(), not variable() -- variable() runs every string through
+        // htmlspecialchars() (XSS protection for values phpBB itself might echo back into HTML).
+        // Gantry's admin controllers send/expect raw JSON payloads in POST fields (e.g. the
+        // layout editor's "layout"/"preset" fields) and decode them themselves; htmlspecialchars
+        // mangles every quote into `&quot;` first, so json_decode() on the result always fails
+        // ("Structure missing" et al). No other platform's raw $_POST access applies this kind of
+        // transform, so raw_variable() is the correct equivalent here, not a security downgrade.
         $data = [];
         foreach ($request->variable_names($type) as $name) {
-            $data[$name] = $request->variable($name, '', true, $type);
+            $data[$name] = $request->raw_variable($name, '', $type);
         }
 
         return $data;

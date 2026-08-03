@@ -99,4 +99,44 @@ abstract class Runtime
     {
         return static::$extensionPath;
     }
+
+    /**
+     * The absolute, web-facing root URL prefix (e.g. "/phpBB3", or "" if phpBB is installed at
+     * the domain root), computed once from the current request's own script path rather than
+     * `\phpbb\path_helper::get_web_root_path()` -- that method returns a path relative to
+     * *whichever script is currently running*, meant for embedding directly in that page's own
+     * links. It gives a subtly wrong answer (with a stray "/adm" segment) when called from
+     * inside an ACP module for anything other than that same page's own immediate links, which
+     * silently breaks any asset URL built from it and reused later (e.g. by client-side
+     * JavaScript after a history.pushState makes the visible URL diverge from the request that
+     * actually generated the page).
+     *
+     * @return string
+     */
+    public static function webRoot()
+    {
+        static $webRoot;
+
+        if ($webRoot === null) {
+            /** @var \phpbb\request\request $request */
+            $request = static::service('request');
+            $scriptName = (string) $request->server('SCRIPT_NAME', '');
+
+            foreach (['/adm/index.' . static::phpExt(), '/index.' . static::phpExt()] as $suffix) {
+                if ($suffix !== '/' && substr($scriptName, -\strlen($suffix)) === $suffix) {
+                    $webRoot = substr($scriptName, 0, -\strlen($suffix));
+                    break;
+                }
+            }
+
+            if ($webRoot === null) {
+                $webRoot = rtrim(\dirname($scriptName), '/');
+                if ($webRoot === '.' || $webRoot === '\\') {
+                    $webRoot = '';
+                }
+            }
+        }
+
+        return $webRoot;
+    }
 }

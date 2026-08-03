@@ -60,6 +60,34 @@ class gantry5_module
             }
         });
 
+        /** @var \phpbb\request\request $request */
+        $request = $phpbb_container->get('request');
+
+        // The shared admin JS calls fetch() directly and never sets X-Requested-With, so
+        // \phpbb\request\request::is_ajax() (which keys off that header) never returns true for
+        // these calls. `g5_path` is NOT a safe signal on its own: page.html.twig rewrites the
+        // visible URL via history.replaceState() to include the current g5_path (so a plain
+        // POST-to-window.location.href submit picks it up too), so a plain F5 reload of that
+        // rewritten URL would also carry g5_path and would incorrectly get routed as ajax. Only
+        // `g5_format` (appended via Router's ajax_suffix, '&g5_format=json') is exclusive to
+        // JS-issued fetch() calls -- the URL rewrite deliberately never sets it.
+        $isGantryAjax = $request->is_set('g5_format');
+
+        if ($isGantryAjax) {
+            // The admin JS fetches particle forms / save results to inject directly into a modal
+            // or to parse as JSON -- it wants Gantry's own response completely bare, not wrapped
+            // in phpBB's ACP chrome (which would nest a second full <html> document inside the
+            // modal, with its own relative asset links resolving wrong once injected).
+            try {
+                $router->dispatch();
+            } catch (\Throwable $e) {
+                echo '<pre style="white-space:pre-wrap;color:#c00;padding:1em;background:#fee;">'
+                    . htmlspecialchars($e->getMessage() . "\n" . $e->getTraceAsString(), ENT_QUOTES)
+                    . '</pre>';
+            }
+            exit;
+        }
+
         \ob_start();
         try {
             $router->dispatch();

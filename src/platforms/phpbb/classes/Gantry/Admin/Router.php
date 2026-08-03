@@ -60,21 +60,47 @@ class Router extends BaseRouter
             'params' => $request->post->getJsonArray('params'),
         ];
 
-        $this->container['ajax_suffix'] = '';
+        // getAjaxSuffix() (platforms/common/application/utils/get-ajax-suffix.js) is appended to
+        // every modal-remote-load / save URL the shared admin JS builds, specifically so the
+        // request comes back as a bare JSON fragment instead of a full page render -- Grav uses
+        // '.json' (its Router reads $uri->extension()), WordPress uses '&action=gantry5'. Without
+        // an equivalent here, $this->format below always defaulted to 'html', so
+        // BaseController rendered the full admin page shell (layout.html.twig/base.html.twig,
+        // complete with <head> assets) for every particle/container/section edit modal instead of
+        // the JSON {success,html} envelope the JS expects -- that raw full-page HTML then got
+        // dumped into the modal by elements-native.js, whose relative asset links (font-awesome,
+        // stylesheet.css) resolved wrong against the current /adm/index.php location.
+        $this->container['ajax_suffix'] = '&g5_format=json';
 
         // Gantry::route() builds every URL as '/' . base_url . sprintf($route, $path) -- base_url
         // must be just the site-relative prefix (Grav sets its own plugin base the same way), NOT
-        // baked into the route template too, or it ends up doubled.
-        /** @var \phpbb\path_helper $pathHelper */
-        $pathHelper = Runtime::service('path_helper');
-        $webRoot = rtrim($pathHelper->get_web_root_path(), '/');
+        // baked into the route template too, or it ends up doubled. Runtime::webRoot() is the
+        // reliable site-relative prefix (see its docblock for why path_helper isn't safe here).
+        $webRoot = Runtime::webRoot();
 
         $nonce = static::createNonce();
+
+        // phpBB identifies ACP modules in URLs by a mangled version of the module class's own
+        // basename (functions_module.php::get_module_identifier(): backslashes become dashes),
+        // not by anything we choose ourselves -- "i=gantry5" 404s because that identifier simply
+        // doesn't exist.
+        $moduleId = str_replace('\\', '-', '\\' . \dazzlesoftware\gantry5\acp\gantry5_module::class);
+
+        // phpBB's ACP redirects (302) any adm/index.php request whose `sid` doesn't match the
+        // current admin session -- a plain browser navigation always carries it (phpBB injects it
+        // into every link it renders itself), but our own route()-built URLs never included it, so
+        // every fetch() call from the admin JS (particle/container edit, devprod toggle, etc.) hit
+        // that redirect instead of our module code. fetch() follows redirects transparently, so
+        // the symptom wasn't an error -- it was a silently-wrong page (without g5_format) landing
+        // in the modal, whose relative <head> asset links then 404'd against /adm/'s location.
+        /** @var \phpbb\user $user */
+        $user = Runtime::service('user');
+        $sid = (string) $user->session_id;
 
         $this->container['base_url'] = '';
         $this->container['ajax_nonce'] = $nonce;
         $this->container['routes'] = [
-            '1' => "{$webRoot}/adm/index.php?i=gantry5&mode=main&nonce={$nonce}&g5_path=%s",
+            '1' => "{$webRoot}/adm/index.php?sid={$sid}&i={$moduleId}&mode=main&nonce={$nonce}&g5_path=%s",
         ];
     }
 
