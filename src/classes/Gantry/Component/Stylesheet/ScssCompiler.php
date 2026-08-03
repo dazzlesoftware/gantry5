@@ -243,6 +243,15 @@ class ScssCompiler extends CssCompiler
 WARN;
             $css = $warning . "\n\n" . $css;
         } else {
+            // Compressed scssphp output can start with a UTF-8 BOM when the
+            // stylesheet contains non-ASCII characters. The checksum must be
+            // the first 36 bytes for production cache validation, so leaving
+            // the BOM in place after the checksum makes it part of the first
+            // selector and corrupts that rule (for example, `.g-content`).
+            if (strncmp($css, "\xEF\xBB\xBF", 3) === 0) {
+                $css = substr($css, 3);
+            }
+
             $css = "{$this->checksum()}\n{$css}";
         }
 

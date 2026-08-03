@@ -9,6 +9,96 @@
  * http://www.codrops.com
  */
 {
+	const easing = {
+		linear: 'linear',
+		easeInQuad: 'cubic-bezier(.55,.085,.68,.53)',
+		easeOutQuad: 'cubic-bezier(.25,.46,.45,.94)',
+		easeInOutQuad: 'cubic-bezier(.455,.03,.515,.955)',
+		easeInQuint: 'cubic-bezier(.755,.05,.855,.06)',
+		easeInOutQuint: 'cubic-bezier(.86,0,.07,1)',
+		easeInExpo: 'cubic-bezier(.95,.05,.795,.035)',
+		easeInOutSine: 'cubic-bezier(.445,.05,.55,.95)',
+		easeOutQuint: 'cubic-bezier(.23,1,.32,1)',
+		easeOutExpo: 'cubic-bezier(.19,1,.22,1)',
+		easeOutBack: 'cubic-bezier(.175,.885,.32,1.275)',
+		easeOutElastic: 'cubic-bezier(.34,1.56,.64,1)'
+	};
+	const transformProperties = {
+		translateX: ['--tooltip-x', (value) => typeof value === 'number' ? `${value}px` : value],
+		translateY: ['--tooltip-y', (value) => typeof value === 'number' ? `${value}px` : value],
+		scale: ['--tooltip-scale', String],
+		rotate: ['--tooltip-rotate', (value) => typeof value === 'number' ? `${value}deg` : value]
+	};
+	const activeAnimations = new WeakMap();
+
+	if (window.CSS?.registerProperty) {
+		[
+			['--tooltip-x', '<length-percentage>', '0px'],
+			['--tooltip-y', '<length-percentage>', '0px'],
+			['--tooltip-scale', '<number>', '1'],
+			['--tooltip-rotate', '<angle>', '0deg']
+		].forEach(([name, syntax, initialValue]) => {
+			try { CSS.registerProperty({ name, syntax, inherits: false, initialValue }); } catch (error) { /* already registered */ }
+		});
+	}
+
+	const animationTargets = (targets) => targets instanceof Element ? [targets] : [...targets || []];
+	const resolve = (value, target, index, total) => typeof value === 'function' ? value(target, index, total) : value;
+	const timing = (settings, target, index, total) => ({
+		duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : Number(resolve(settings.duration, target, index, total) ?? 400),
+		delay: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : Number(resolve(settings.delay, target, index, total) ?? 0),
+		easing: Array.isArray(settings.easing) ? `cubic-bezier(${settings.easing.join(',')})` : (easing[settings.easing] || settings.easing || 'ease'),
+		fill: 'forwards'
+	});
+	const dashOffset = (target) => {
+		const length = target.getTotalLength?.() || 0;
+		target.style.strokeDasharray = String(length);
+		return length;
+	};
+
+	const nativeRemove = (targets) => animationTargets(targets).forEach((target) => {
+		(activeAnimations.get(target) || []).forEach((animation) => {
+			animation.commitStyles?.();
+			animation.cancel();
+		});
+		activeAnimations.delete(target);
+	});
+
+	const nativeAnimate = ({ targets, ...settings }) => animationTargets(targets).forEach((target, index, all) => {
+		target.style.transform = 'translate(var(--tooltip-x, 0), var(--tooltip-y, 0)) scale(var(--tooltip-scale, 1)) rotate(var(--tooltip-rotate, 0deg))';
+		const animations = [];
+		const reserved = new Set(['duration', 'delay', 'easing', 'elasticity']);
+
+		Object.entries(settings).filter(([property]) => !reserved.has(property)).forEach(([property, definition]) => {
+			const propertySettings = definition && !Array.isArray(definition) && typeof definition === 'object'
+				? { ...settings, ...definition }
+				: settings;
+			const values = propertySettings.value ?? definition;
+			const steps = Array.isArray(values) && values.every((value) => value && typeof value === 'object') ? values : null;
+			const [cssProperty, format = String] = transformProperties[property] || [property, String];
+			let elapsed = 0;
+
+			const animate = (value, stepSettings) => {
+				const resolved = resolve(value, target, index, all.length);
+				const finalValue = resolved === dashOffset ? dashOffset(target) : resolved;
+				const keyframes = Array.isArray(finalValue)
+					? [{ [cssProperty]: format(resolve(finalValue[0], target, index, all.length)) }, { [cssProperty]: format(resolve(finalValue[1], target, index, all.length)) }]
+					: [{ [cssProperty]: getComputedStyle(target).getPropertyValue(cssProperty) || undefined }, { [cssProperty]: format(finalValue) }];
+				const options = timing(stepSettings, target, index, all.length);
+				const stepDelay = options.delay;
+				options.delay = stepDelay + elapsed;
+				const animation = target.animate(keyframes, options);
+				animations.push(animation);
+				elapsed += stepDelay + options.duration;
+			};
+
+			if (steps) steps.forEach((step) => animate(step.value, { ...propertySettings, ...step }));
+			else animate(values, propertySettings);
+		});
+
+		activeAnimations.set(target, animations);
+	});
+
 	const config = {
 		cora: {
 			in: {
@@ -927,7 +1017,7 @@
 				path: {
 					duration: 600,
 					easing: 'easeInOutSine',
-					strokeDashoffset: [anime.setDashoffset, 0],
+					strokeDashoffset: [dashOffset, 0],
 					fill: {
 						value: '#141514',
 						duration: 400,
@@ -973,7 +1063,7 @@
 				path: {
 					duration: 300,
 					easing: 'easeInOutSine',
-					strokeDashoffset: anime.setDashoffset,
+					strokeDashoffset: dashOffset,
 					fill: {
 						value: '#1d1f1e',
 						duration: 400,
@@ -1065,34 +1155,34 @@
 		}
 		animate(dir) {
 			if ( config[this.type][dir].base ) {
-				anime.remove(this.DOM.base);
+				nativeRemove(this.DOM.base);
 				let baseAnimOpts = {targets: this.DOM.base};
-				anime(Object.assign(baseAnimOpts, config[this.type][dir].base));
+				nativeAnimate(Object.assign(baseAnimOpts, config[this.type][dir].base));
 			}
 			if ( config[this.type][dir].shape ) {
-				anime.remove(this.DOM.shape);
+				nativeRemove(this.DOM.shape);
 				let shapeAnimOpts = {targets: this.DOM.shape};
-				anime(Object.assign(shapeAnimOpts, config[this.type][dir].shape));
+				nativeAnimate(Object.assign(shapeAnimOpts, config[this.type][dir].shape));
 			}
 			if ( config[this.type][dir].path ) {
-				anime.remove(this.DOM.path);
+				nativeRemove(this.DOM.path);
 				let shapeAnimOpts = {targets: this.DOM.path};
-				anime(Object.assign(shapeAnimOpts, config[this.type][dir].path));
+				nativeAnimate(Object.assign(shapeAnimOpts, config[this.type][dir].path));
 			}
 			if ( config[this.type][dir].content ) {
-				anime.remove(this.DOM.content);
+				nativeRemove(this.DOM.content);
 				let contentAnimOpts = {targets: this.DOM.content};
-				anime(Object.assign(contentAnimOpts, config[this.type][dir].content));
+				nativeAnimate(Object.assign(contentAnimOpts, config[this.type][dir].content));
 			}
 			if ( config[this.type][dir].trigger ) {
-				anime.remove(this.DOM.triggerSpan);
+				nativeRemove(this.DOM.triggerSpan);
 				let triggerAnimOpts = {targets: this.DOM.triggerSpan};
-				anime(Object.assign(triggerAnimOpts, config[this.type][dir].trigger));
+				nativeAnimate(Object.assign(triggerAnimOpts, config[this.type][dir].trigger));
 			}
 			if ( config[this.type][dir].deco ) {
-				anime.remove(this.DOM.deco);
+				nativeRemove(this.DOM.deco);
 				let decoAnimOpts = {targets: this.DOM.deco};
-				anime(Object.assign(decoAnimOpts, config[this.type][dir].deco));
+				nativeAnimate(Object.assign(decoAnimOpts, config[this.type][dir].deco));
 			}
 		}
 		destroy() {

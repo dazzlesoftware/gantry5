@@ -1,1 +1,946 @@
-!function t(e,s,i){function o(a,r){if(!s[a]){if(!e[a]){var l="function"==typeof require&&require;if(!r&&l)return l(a,!0);if(n)return n(a,!0);var c=new Error("Cannot find module '"+a+"'");throw c.code="MODULE_NOT_FOUND",c}var h=s[a]={exports:{}};e[a][0].call(h.exports,function(t){return o(e[a][1][t]||t)},h,h.exports,t,e,s,i)}return s[a].exports}for(var n="function"==typeof require&&require,a=0;a<i.length;a++)o(i[a]);return o}({1:[function(t,e,s){"use strict";const i=t("./menu"),o=t("./offcanvas");t("./totop");const{ready:n,query:a,queryAll:r,delegate:l}=t("./utils/dom"),c={ready:n,query:a,queryAll:r,delegate:l};window.G5=c,e.exports=c,n(()=>{try{c.offcanvas=new o}catch(t){console.error("Gantry off-canvas initialization failed:",t)}try{c.menu=new i}catch(t){console.error("Gantry menu initialization failed:",t)}})},{"./menu":2,"./offcanvas":3,"./totop":4,"./utils/dom":6}],2:[function(t,e,s){"use strict";const i="ontouchstart"in window||window.DocumentTouch&&document instanceof window.DocumentTouch,o=(t,e)=>t instanceof Element?t.closest(e):null,n=(t,e)=>Array.from(t?t.children:[]).filter(t=>t.matches(e)),a=(t,e)=>Array.from(t?t.querySelectorAll(e):[]),r=t=>t&&t.removeAttribute("style");const l=(t,e)=>{const s=[];for(let i=t.parentElement;i;i=i.parentElement)i.matches(e)&&s.push(i);return s},c=t=>l(t,'[style^="height"]');e.exports=class{constructor(t={}){const e={selectors:{mainContainer:".g-main-nav",mobileContainer:"#g-mobilemenu-container",topLevel:".g-toplevel",rootItems:"> ul > li",parent:".g-parent",item:".g-menu-item",dropdown:".g-dropdown",overlay:".g-menu-overlay",touchIndicator:".g-menu-parent-indicator",linkedParent:"[data-g-menuparent]",mobileTarget:"[data-g-mobile-target]"},states:{active:"g-active",inactive:"g-inactive",selected:"g-selected",touchEvents:"g-menu-hastouch"}};this.options={...e,...t,selectors:{...e.selectors,...t.selectors||{}},states:{...e.states,...t.states||{}}},this.selectors=this.options.selectors,this.states=this.options.states,this.active=null,this.location=[],this.listeners=[],this.overlay=document.createElement("div"),this.overlay.className=this.selectors.overlay.replace(/^\./,"");const s=document.querySelector("#g-page-surround");s&&s.prepend(this.overlay);const o=document.querySelector(this.selectors.mainContainer);if(!o)return;const n=o.getAttribute("data-g-hover-expand");this.hoverExpand=null===n||"true"===n,!i&&this.hoverExpand||o.classList.add(this.states.touchEvents),this.attach()}listen(t,e,s,i){if(!t)return;const o=s.bind(this);t.addEventListener(e,o,i),this.listeners.push({element:t,type:e,listener:o,options:i})}attach(){const t=this.selectors,e=document.querySelectorAll(`${t.mainContainer} ${t.item}`),s=document.querySelector(t.mobileContainer),o=document.body;if(e.length&&(this.hoverExpand&&e.forEach(t=>{this.listen(t,"mouseenter",this.mouseenter),this.listen(t,"mouseleave",this.mouseleave)}),this.listen(o,"click",this.handleBodyClick),!i&&this.hoverExpand||(document.querySelectorAll(t.linkedParent).forEach(t=>{this.listen(t,"touchmove",this.touchmove,{passive:!0}),this.listen(t,"touchend",this.touchend)}),this.listen(this.overlay,"touchend",this.closeAllDropdowns)),s)){const t=s.getAttribute("data-g-menu-breakpoint")||"48rem";this.mediaQuery=window.matchMedia(`only all and (max-width: ${this._calculateBreakpoint(t)})`),this.mediaQueryListener=t=>this._checkQuery(t),this.mediaQuery.addEventListener?this.mediaQuery.addEventListener("change",this.mediaQueryListener):this.mediaQuery.addListener(this.mediaQueryListener),this._checkQuery(this.mediaQuery)}}detach(){this.listeners.forEach(({element:t,type:e,listener:s,options:i})=>{t.removeEventListener(e,s,i)}),this.listeners=[],this.mediaQuery&&this.mediaQueryListener&&(this.mediaQuery.removeEventListener?this.mediaQuery.removeEventListener("change",this.mediaQueryListener):this.mediaQuery.removeListener(this.mediaQueryListener))}handleBodyClick(t){const e=o(t.target,this.selectors.linkedParent);if(e){const s=Boolean(e.closest(this.selectors.mainContainer)),i=Boolean(e.closest(".g-fullwidth .g-sublevel"));if(!s||i)return void this.click(t)}const s=o(t.target,"a[href]");s&&!s.closest(this.selectors.mainContainer)&&this.resetAfterClick(t)}click(t){this.touchend(t)}resetAfterClick(t){const e=t.target instanceof Element?t.target:null;return e&&e.hasAttribute("data-g-menuparent")||(this.closeDropdown(t),window.G5&&window.G5.offcanvas&&window.G5.offcanvas.close()),!0}mouseenter(t){const e=t.currentTarget;o(e,this.selectors.mainContainer)&&(o(e.parentElement,this.selectors.item)&&!o(e,".g-standard")||this.openDropdown(e))}mouseleave(t){const e=t.currentTarget;o(e,this.selectors.mainContainer)&&(o(e.parentElement,this.selectors.item)&&!o(e,".g-standard")||this.closeDropdown(e))}touchmove(t){(t.target instanceof Element?t.target:t.currentTarget).gantryMenuMoving=!0}touchend(t){const e=this.selectors,s=this.states;let i=t.target instanceof Element?t.target:null;if(!i)return!0;const a=o(i,e.item),r=a?a.querySelector(e.touchIndicator):null,l=o(i,".g-standard")?"standard":"megamenu",c=Boolean(o(i,".g-go-back"));if(i.gantryMenuMoving)return i.gantryMenuMoving=!1,!1;i.gantryMenuMoving=!1,r&&(i=r);const h=i.matches(e.item)?i:o(i,e.item);if(!h)return!0;const d=h.classList.contains(s.selected);if(!h.querySelector(e.dropdown)&&!r)return!0;t.stopPropagation(),r&&!i.matches(e.touchIndicator)||t.preventDefault(),!d&&h.parentElement&&Array.from(h.parentElement.children).filter(t=>t!==h&&t.matches(`${e.item}.${s.selected}`)).forEach(t=>this.closeDropdown(t));const u=!o(h,e.mainContainer),g=h.querySelector(`:scope > ${e.dropdown}, :scope > * > ${e.dropdown}`);if(("megamenu"===l||u)&&(g||c)){let t=o(i,".g-sublevel")||o(i,".g-toplevel");const s=h.querySelector(".g-sublevel"),a=o(h,".g-dropdown-column");if(t){const r=Boolean(o(i,e.mainContainer));if(r&&t.matches(".g-toplevel")||this._fixHeights(t,s,c,r),!r&&a){const e=n(a,".g-grid")[0],s=n(e,".g-block");if(s.length>1){const e=s.map(t=>n(t,".g-sublevel")[0]).filter(Boolean);e.length&&(t=e)}}(Array.isArray(t)?t:[t]).forEach(t=>{t.classList.toggle("g-slide-out",!d)})}}return this[d?"closeDropdown":"openDropdown"](h),"click"!==t.type&&this.toggleOverlay(o(i,e.mainContainer)),!1}openDropdown(t){if(!((t=t&&(t.currentTarget||t.target||t))instanceof Element))return;const e=t.querySelector(this.selectors.dropdown);t.classList.add(this.states.selected),e&&(e.classList.remove(this.states.inactive),e.classList.add(this.states.active))}closeDropdown(t){if(!((t=t&&(t.currentTarget||t.target||t))instanceof Element))return;const e=t.matches(this.selectors.item)?t:o(t,this.selectors.item)||t,s=e.querySelector?e.querySelector(this.selectors.dropdown):null;e.classList.remove(this.states.selected),s&&(a(s,".g-sublevel").forEach(r),a(s,`.g-slide-out, .${this.states.selected}`).forEach(t=>{t.classList.remove("g-slide-out",this.states.selected)}),a(s,`.${this.states.active}`).forEach(t=>{t.classList.remove(this.states.active),t.classList.add(this.states.inactive)}),s.classList.remove(this.states.active),s.classList.add(this.states.inactive))}closeAllDropdowns(){const t=document.querySelector(`${this.selectors.mainContainer} > ${this.selectors.topLevel}`);t&&(n(t,this.selectors.item).forEach(t=>this.closeDropdown(t)),t.classList.remove(this.states.selected),this.toggleOverlay(t))}resetStates(t){if(!t)return;[t,...a(t,".g-toplevel, .g-dropdown-column, .g-dropdown, .g-selected, .g-active, .g-slide-out")].forEach(t=>{r(t),t.classList.remove("g-selected","g-slide-out"),t.classList.contains("g-active")&&(t.classList.remove("g-active"),t.classList.add("g-inactive"))})}toggleOverlay(t){if(!t)return;const e=Boolean(t.querySelector(".g-active, .g-selected"));this.overlay.classList.toggle("g-menu-overlay-open",e),this.overlay.style.opacity=e?1:0}_fixHeights(t,e,s,i){if(!t||!e||t===e)return;s&&r(t);const a=i?e:o(e,".g-dropdown");if(!a)return;const h={from:t.getBoundingClientRect(),to:a.getBoundingClientRect()},d=Math.max(h.from.height,h.to.height);if(s&&c(t).forEach(t=>{o(t,".g-toplevel")&&(t.style.height=`${h.from.height}px`)}),s)return;if(h.from.height<h.to.height?(t.style.height=`${d}px`,c(t).forEach(t=>{o(t,".g-toplevel")&&(t.style.height=`${d}px`)})):i&&(e.style.height=`${d}px`),i)return;let u=d;const g=o(e,".g-block:not(.size-100)"),p=g?o(g,".g-dropdown-column"):null;if(l(e,".g-slide-out, .g-dropdown-column").forEach(t=>{u=Math.max(u,parseInt(t.style.height||0,10))}),p){p.style.height=`${u}px`;const t=n(p,".g-grid")[0],e=n(t,".g-block");let s=u;e.forEach((t,i)=>{if(i+1!==e.length)s-=t.getBoundingClientRect().height;else{const e=t.querySelector(":scope > .g-sublevel");e&&(e.style.height=`${s}px`)}})}else e.style.height=`${u}px`}_calculateBreakpoint(t){const e=String(t).match(/^\d+(?:\.\d+)?/),s=String(t).match(/[a-z]+$/i);if(!e||!s)return t;const i=s[0],o=/r?em/.test(i)?-.062:-1;return`${parseFloat(e[0])+o}${i}`}_checkQuery(t){const e=this.selectors,s=document.querySelector(e.mobileContainer),i=document.querySelector(`${e.mainContainer}${e.mobileTarget}`)||document.querySelector(e.mainContainer);if(!s||!i)return;let n;if(t.matches){if(n=i.querySelector(e.topLevel),n){const t=o(i,".g-block"),e=o(s,".g-block");t&&t.classList.add("hidden"),e&&e.classList.remove("hidden"),s.prepend(n)}}else if(n=s.querySelector(e.topLevel),n){const t=o(s,".g-block"),e=o(i,".g-block");t&&t.classList.add("hidden"),e&&e.classList.remove("hidden"),i.prepend(n)}this.resetStates(n),!t.matches&&n&&a(n,"[data-g-item-width]").forEach(t=>{t.style.width=t.getAttribute("data-g-item-width")})}_debug(){}}},{}],3:[function(t,e,s){"use strict";const i=t("../utils/decouple"),o="ontouchstart"in window||window.DocumentTouch&&document instanceof window.DocumentTouch;let n,a=!1;e.exports=class{constructor(t={}){if(this.options={effect:"ease",duration:300,tolerance:t=>t/3,padding:0,touch:!0,css3:!0,openClass:"g-offcanvas-open",openingClass:"g-offcanvas-opening",closingClass:"g-offcanvas-closing",overlayClass:"g-nav-overlay",...t},this.attached=!1,this.opening=!1,this.moved=!1,this.dragging=!1,this.opened=!1,this.preventOpen=!1,this.listeners=[],this.offset={x:{start:0,current:0},y:{start:0,current:0}},this.bodyEl=document.body,this.htmlEl=document.documentElement,this.panel=document.querySelector("#g-page-surround"),this.offcanvas=document.querySelector("#g-offcanvas"),!this.panel||!this.offcanvas)return void(this.available=!1);this.available=!0;const e=this.offcanvas.getAttribute("data-g-offcanvas-swipe"),s=this.offcanvas.getAttribute("data-g-offcanvas-css3");this.options.touch=Boolean(null!==e?parseInt(e,10):1),this.options.css3=Boolean(null!==s?parseInt(s,10):1),this.options.padding||(this.offcanvas.style.display="block",this.options.padding=this.offcanvas.getBoundingClientRect().width,this.offcanvas.style.removeProperty("display")),this.tolerance="function"==typeof this.options.tolerance?this.options.tolerance.call(this,this.options.padding):this.options.tolerance,this.htmlEl.classList.add("g-offcanvas-"+(this.options.css3?"css3":"css2")),this.attach(),this._checkTogglers()}listen(t,e,s,i){if(!t)return;const o=s.bind(this);t.addEventListener(e,o,i),this.listeners.push({element:t,type:e,listener:o,options:i})}delegate(t,e,s,i,o){if(!t)return;const n=e=>{const o=e.target instanceof Element?e.target.closest(s):null;o&&t.contains(o)&&i.call(this,e,o)};t.addEventListener(e,n,o),this.listeners.push({element:t,type:e,listener:n,options:o})}attach(){return!this.available||this.attached||(this.attached=!0,this.options.touch&&o&&this.attachTouchEvents(),["toggle","open","close"].forEach(t=>{const e=`[data-offcanvas-${t}]`;this.delegate(this.bodyEl,"click",e,this[t]),o&&this.delegate(this.bodyEl,"touchend",e,this[t])}),this.attachMutationEvent(),this.overlay=document.createElement("div"),this.overlay.className=this.options.overlayClass,this.overlay.setAttribute("data-offcanvas-close",""),this.panel.prepend(this.overlay)),this}attachMutationEvent(){this.available&&(this.observer&&this.observer.disconnect(),this.observer=new MutationObserver(()=>this._checkTogglers()),this.observer.observe(this.offcanvas,{childList:!0,subtree:!0}))}attachTouchEvents(){const t=window.navigator.msPointerEnabled;this.touchEvents={start:t?"MSPointerDown":"touchstart",move:t?"MSPointerMove":"touchmove",end:t?"MSPointerUp":"touchend"},this._scrollBound=i(window,"scroll",this._bodyScroll.bind(this)),this.listen(this.bodyEl,this.touchEvents.move,this._bodyMove,{passive:!1}),this.listen(this.panel,this.touchEvents.start,this._touchStart,{passive:!0}),this.listen(this.panel,"touchcancel",this._touchCancel),this.listen(this.panel,this.touchEvents.end,this._touchEnd),this.listen(this.panel,this.touchEvents.move,this._touchMove,{passive:!0})}detach(){return this.attached?(this.attached=!1,this.listeners.forEach(({element:t,type:e,listener:s,options:i})=>{t.removeEventListener(e,s,i)}),this.listeners=[],this._scrollBound&&(window.removeEventListener("scroll",this._scrollBound),this._scrollBound=null),this.detachMutationEvent(),this.overlay&&(this.overlay.remove(),this.overlay=null),this):this}detachMutationEvent(){this.observer&&(this.observer.disconnect(),this.observer=null)}open(t){return this.available?(t&&/^touch/i.test(t.type)?t.preventDefault():this.dragging=!1,this.opened||(this.htmlEl.classList.add(this.options.openClass,this.options.openingClass),this.overlay&&(this.overlay.style.opacity=1),this.options.css3&&(this.panel.style[this.getOffcanvasPosition()]="inherit"),this._setTransition(),this._translateXTo((this.bodyEl.classList.contains("g-offcanvas-right")?-1:1)*this.options.padding),this.opened=!0,clearTimeout(this.transitionTimer),this.transitionTimer=setTimeout(()=>{this.htmlEl.classList.remove(this.options.openingClass),this.offcanvas.setAttribute("aria-expanded","true"),document.querySelectorAll("[data-offcanvas-toggle]").forEach(t=>t.setAttribute("aria-expanded","true")),this.panel.style.transition=""},this.options.duration)),this):this}close(t,e){return this.available?(t&&/^touch/i.test(t.type)?t.preventDefault():this.dragging=!1,e=e||window,this.opened||this.opening?(this.panel===e||!this.dragging)&&(this.htmlEl.classList.add(this.options.closingClass),this.overlay&&(this.overlay.style.opacity=0),this._setTransition(),this._translateXTo(0),this.opened=!1,this.offcanvas.setAttribute("aria-expanded","false"),document.querySelectorAll("[data-offcanvas-toggle]").forEach(t=>t.setAttribute("aria-expanded","false")),clearTimeout(this.transitionTimer),this.transitionTimer=setTimeout(()=>{this.htmlEl.classList.remove(this.options.openClass,this.options.closingClass),this.panel.style.transition="",this.panel.style.transform="",this.panel.style[this.getOffcanvasPosition()]=""},this.options.duration),this):this):this}toggle(t,e){return t&&/^touch/i.test(t.type)?t.preventDefault():this.dragging=!1,this[this.opened?"close":"open"](t,e)}getOffcanvasPosition(){return this.bodyEl.classList.contains("g-offcanvas-right")?"right":"left"}_setTransition(){this.options.css3?this.panel.style.transition=`transform ${this.options.duration}ms ${this.options.effect}`:this.panel.style.transition=`left ${this.options.duration}ms ${this.options.effect}, right ${this.options.duration}ms ${this.options.effect}`}_translateXTo(t){const e=this.getOffcanvasPosition();this.offset.x.current=t,this.options.css3?this.panel.style.transform=`translate3d(${t}px, 0, 0)`:this.panel.style[e]=`${Math.abs(t)}px`}_bodyScroll(){this.moved||(clearTimeout(n),a=!0,n=setTimeout(()=>{a=!1},250))}_bodyMove(t){return this.moved&&t.cancelable&&t.preventDefault(),this.dragging=!0,!1}_touchStart(t){t.touches&&(this.moved=!1,this.opening=!1,this.dragging=!1,this.offset.x.start=t.touches[0].pageX,this.offset.y.start=t.touches[0].pageY,this.preventOpen=!this.opened&&0!==this.offcanvas.clientWidth)}_touchCancel(){this.moved=!1,this.opening=!1}_touchMove(t){if(a||this.preventOpen||!t.touches)return;this.options.css3&&(this.panel.style[this.getOffcanvasPosition()]="inherit");const e=this.getOffcanvasPosition(),s=(i=t.touches[0].clientX-this.offset.x.start,o=-this.options.padding,n=this.options.padding,Math.min(Math.max(i,o),n));var i,o,n;let r=this.offset.x.current=s;const l=Math.abs(t.touches[0].pageY-this.offset.y.start),c="right"===e?-1:1;Math.abs(r)>this.options.padding||l>5&&!this.moved||Math.abs(s)<=0||(this.opening=!0,"left"===e&&(this.opened&&s>0||!this.opened&&s<0)||"right"===e&&(this.opened&&s<0||!this.opened&&s>0)||(this.moved||this.htmlEl.classList.contains(this.options.openClass)||this.htmlEl.classList.add(this.options.openClass),("left"===e&&s<=0||"right"===e&&s>=0)&&(r=s+c*this.options.padding,this.opening=!1),this.overlay&&(this.overlay.style.opacity=((t,e,s,i,o)=>s===e?i:i+(t-e)/(s-e)*(o-i))(Math.abs(r),0,this.options.padding,0,1)),this.options.css3?this.panel.style.transform=`translate3d(${r}px, 0, 0)`:this.panel.style[e]=`${Math.abs(r)}px`,this.moved=!0))}_touchEnd(t){if(this.moved){const e=Math.abs(this.offset.x.current)>this.tolerance,s=this.bodyEl.classList.contains("g-offcanvas-right")?this.offset.x.current>0:this.offset.x.current<0;this.opening=e?!s:s,this.opened=!this.opening,this[this.opening?"open":"close"](t,this.panel)}return this.moved=!1,!0}_checkTogglers(){if(!this.available)return;const t=Array.from(document.querySelectorAll("[data-offcanvas-toggle], [data-offcanvas-open], [data-offcanvas-close]")),e=document.querySelector("#g-mobilemenu-container");t.length&&(this.opened&&this.close(),setTimeout(()=>{const s=Array.from(this.offcanvas.querySelectorAll(".g-block")),i=e?e.textContent.length:0,o=1===s.length&&e&&!this.offcanvas.textContent.trim().length&&!s.some(t=>t.querySelector(".g-menu-item"));if(t.forEach(t=>{t.classList.toggle("g-offcanvas-hide",Boolean(o))}),e){const t=e.closest(".g-block");t&&t.classList.toggle("hidden",!i)}o||this.attached?o&&this.attached&&(this.detach(),this.attachMutationEvent()):this.attach()},0))}}},{"../utils/decouple":5}],4:[function(t,e,s){"use strict";const{ready:i,query:o}=t("../utils/dom");i(()=>{const t=o("#g-totop");t&&t.addEventListener("click",t=>{t.preventDefault(),window.scrollTo({top:0,behavior:"smooth"})})}),e.exports={}},{"../utils/dom":6}],5:[function(t,e,s){"use strict";e.exports=(t,e,s,i={passive:!0})=>{const o=t&&t[0]?t[0]:t;let n,a=null;const r=t=>{n=t,null===a&&(a=requestAnimationFrame(()=>{a=null,s.call(o,n)}))};return o.addEventListener(e,r,i),r}},{}],6:[function(t,e,s){"use strict";e.exports={ready:t=>{let e=!1;const s=()=>{e||(e=!0,t())};if("loading"===document.readyState)return document.addEventListener("DOMContentLoaded",s,{once:!0}),void setTimeout(s,0);s()},query:(t,e=document)=>e.querySelector(t),queryAll:(t,e=document)=>[...e.querySelectorAll(t)],delegate:(t,e,s,i,o)=>{const n=e=>{const o=e.target instanceof Element?e.target.closest(s):null;o&&t.contains(o)&&i.call(o,e,o)};return t.addEventListener(e,n,o),()=>t.removeEventListener(e,n,o)}}},{}]},{},[1]);
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+'use strict';
+
+const Menu = require('./menu');
+const Offcanvas = require('./offcanvas');
+require('./totop');
+
+const { ready, query, queryAll, delegate } = require('./utils/dom');
+const instances = { ready, query, queryAll, delegate };
+
+window.G5 = instances;
+module.exports = instances;
+
+ready(() => {
+    try {
+        instances.offcanvas = new Offcanvas();
+    } catch (error) {
+        console.error('Gantry off-canvas initialization failed:', error);
+    }
+
+    try {
+        instances.menu = new Menu();
+    } catch (error) {
+        console.error('Gantry menu initialization failed:', error);
+    }
+});
+
+},{"./menu":2,"./offcanvas":3,"./totop":4,"./utils/dom":6}],2:[function(require,module,exports){
+"use strict";
+
+const hasTouchEvents = "ontouchstart" in window
+    || (window.DocumentTouch && document instanceof window.DocumentTouch);
+
+const closest = (element, selector) => element instanceof Element ? element.closest(selector) : null;
+const directChildren = (element, selector) => Array.from(element ? element.children : [])
+    .filter(child => child.matches(selector));
+const descendants = (element, selector) => Array.from(element ? element.querySelectorAll(selector) : []);
+const clearStyle = element => element && element.removeAttribute("style");
+
+class Menu {
+    constructor(options = {}) {
+        const defaults = {
+            selectors: {
+                mainContainer: ".g-main-nav",
+                mobileContainer: "#g-mobilemenu-container",
+                topLevel: ".g-toplevel",
+                rootItems: "> ul > li",
+                parent: ".g-parent",
+                item: ".g-menu-item",
+                dropdown: ".g-dropdown",
+                overlay: ".g-menu-overlay",
+                touchIndicator: ".g-menu-parent-indicator",
+                linkedParent: "[data-g-menuparent]",
+                mobileTarget: "[data-g-mobile-target]"
+            },
+            states: {
+                active: "g-active",
+                inactive: "g-inactive",
+                selected: "g-selected",
+                touchEvents: "g-menu-hastouch"
+            }
+        };
+
+        this.options = {
+            ...defaults,
+            ...options,
+            selectors: { ...defaults.selectors, ...(options.selectors || {}) },
+            states: { ...defaults.states, ...(options.states || {}) }
+        };
+        this.selectors = this.options.selectors;
+        this.states = this.options.states;
+        this.active = null;
+        this.location = [];
+        this.listeners = [];
+
+        this.overlay = document.createElement("div");
+        this.overlay.className = this.selectors.overlay.replace(/^\./, "");
+
+        const pageSurround = document.querySelector("#g-page-surround");
+        if (pageSurround) pageSurround.prepend(this.overlay);
+
+        const mainContainer = document.querySelector(this.selectors.mainContainer);
+        if (!mainContainer) return;
+
+        const hoverExpand = mainContainer.getAttribute("data-g-hover-expand");
+        this.hoverExpand = hoverExpand === null || hoverExpand === "true";
+        if (hasTouchEvents || !this.hoverExpand) {
+            mainContainer.classList.add(this.states.touchEvents);
+        }
+
+        this.attach();
+    }
+
+    listen(element, type, handler, options) {
+        if (!element) return;
+        const listener = handler.bind(this);
+        element.addEventListener(type, listener, options);
+        this.listeners.push({ element, type, listener, options });
+    }
+
+    attach() {
+        const selectors = this.selectors;
+        const mainItems = document.querySelectorAll(`${selectors.mainContainer} ${selectors.item}`);
+        const mobileContainer = document.querySelector(selectors.mobileContainer);
+        const body = document.body;
+
+        if (!mainItems.length) return;
+        if (this.hoverExpand) {
+            mainItems.forEach(item => {
+                this.listen(item, "mouseenter", this.mouseenter);
+                this.listen(item, "mouseleave", this.mouseleave);
+            });
+        }
+
+        this.listen(body, "click", this.handleBodyClick);
+
+        if (hasTouchEvents || !this.hoverExpand) {
+            document.querySelectorAll(selectors.linkedParent).forEach(link => {
+                this.listen(link, "touchmove", this.touchmove, { passive: true });
+                this.listen(link, "touchend", this.touchend);
+            });
+            this.listen(this.overlay, "touchend", this.closeAllDropdowns);
+        }
+
+        if (mobileContainer) {
+            const breakpoint = mobileContainer.getAttribute("data-g-menu-breakpoint") || "48rem";
+            this.mediaQuery = window.matchMedia(
+                `only all and (max-width: ${this._calculateBreakpoint(breakpoint)})`
+            );
+            this.mediaQueryListener = event => this._checkQuery(event);
+            if (this.mediaQuery.addEventListener) {
+                this.mediaQuery.addEventListener("change", this.mediaQueryListener);
+            } else {
+                this.mediaQuery.addListener(this.mediaQueryListener);
+            }
+            this._checkQuery(this.mediaQuery);
+        }
+    }
+
+    detach() {
+        this.listeners.forEach(({ element, type, listener, options }) => {
+            element.removeEventListener(type, listener, options);
+        });
+        this.listeners = [];
+
+        if (this.mediaQuery && this.mediaQueryListener) {
+            if (this.mediaQuery.removeEventListener) {
+                this.mediaQuery.removeEventListener("change", this.mediaQueryListener);
+            } else {
+                this.mediaQuery.removeListener(this.mediaQueryListener);
+            }
+        }
+    }
+
+    handleBodyClick(event) {
+        const linkedParent = closest(event.target, this.selectors.linkedParent);
+        if (linkedParent) {
+            const inMainMenu = Boolean(linkedParent.closest(this.selectors.mainContainer));
+            const inFullwidthSublevel = Boolean(linkedParent.closest(".g-fullwidth .g-sublevel"));
+            if (!inMainMenu || inFullwidthSublevel) {
+                this.click(event);
+                return;
+            }
+        }
+
+        const anchor = closest(event.target, "a[href]");
+        if (anchor && !anchor.closest(this.selectors.mainContainer)) {
+            this.resetAfterClick(event);
+        }
+    }
+
+    click(event) {
+        this.touchend(event);
+    }
+
+    resetAfterClick(event) {
+        const target = event.target instanceof Element ? event.target : null;
+        if (target && target.hasAttribute("data-g-menuparent")) return true;
+
+        this.closeDropdown(event);
+        if (window.G5 && window.G5.offcanvas) window.G5.offcanvas.close();
+        return true;
+    }
+
+    mouseenter(event) {
+        const element = event.currentTarget;
+        if (!closest(element, this.selectors.mainContainer)) return;
+        if (closest(element.parentElement, this.selectors.item) && !closest(element, ".g-standard")) return;
+        this.openDropdown(element);
+    }
+
+    mouseleave(event) {
+        const element = event.currentTarget;
+        if (!closest(element, this.selectors.mainContainer)) return;
+        if (closest(element.parentElement, this.selectors.item) && !closest(element, ".g-standard")) return;
+        this.closeDropdown(element);
+    }
+
+    touchmove(event) {
+        const target = event.target instanceof Element ? event.target : event.currentTarget;
+        target.gantryMenuMoving = true;
+    }
+
+    touchend(event) {
+        const selectors = this.selectors;
+        const states = this.states;
+        let target = event.target instanceof Element ? event.target : null;
+        if (!target) return true;
+
+        const item = closest(target, selectors.item);
+        const indicator = item ? item.querySelector(selectors.touchIndicator) : null;
+        const menuType = closest(target, ".g-standard") ? "standard" : "megamenu";
+        const isGoingBack = Boolean(closest(target, ".g-go-back"));
+
+        if (target.gantryMenuMoving) {
+            target.gantryMenuMoving = false;
+            return false;
+        }
+        target.gantryMenuMoving = false;
+
+        if (indicator) target = indicator;
+
+        const parent = target.matches(selectors.item) ? target : closest(target, selectors.item);
+        if (!parent) return true;
+        const isSelected = parent.classList.contains(states.selected);
+
+        if (!parent.querySelector(selectors.dropdown) && !indicator) return true;
+
+        event.stopPropagation();
+        if (!indicator || target.matches(selectors.touchIndicator)) event.preventDefault();
+
+        if (!isSelected && parent.parentElement) {
+            Array.from(parent.parentElement.children)
+                .filter(sibling => sibling !== parent && sibling.matches(`${selectors.item}.${states.selected}`))
+                .forEach(open => this.closeDropdown(open));
+        }
+
+        const isOutsideMain = !closest(parent, selectors.mainContainer);
+        const hasDropdown = parent.querySelector(
+            `:scope > ${selectors.dropdown}, :scope > * > ${selectors.dropdown}`
+        );
+
+        if ((menuType === "megamenu" || isOutsideMain) && (hasDropdown || isGoingBack)) {
+            let sublevel = closest(target, ".g-sublevel") || closest(target, ".g-toplevel");
+            const slideout = parent.querySelector(".g-sublevel");
+            const columns = closest(parent, ".g-dropdown-column");
+
+            if (sublevel) {
+                const isNavMenu = Boolean(closest(target, selectors.mainContainer));
+                if (!isNavMenu || !sublevel.matches(".g-toplevel")) {
+                    this._fixHeights(sublevel, slideout, isGoingBack, isNavMenu);
+                }
+
+                if (!isNavMenu && columns) {
+                    const grid = directChildren(columns, ".g-grid")[0];
+                    const blocks = directChildren(grid, ".g-block");
+                    if (blocks.length > 1) {
+                        const blockSublevels = blocks
+                            .map(block => directChildren(block, ".g-sublevel")[0])
+                            .filter(Boolean);
+                        if (blockSublevels.length) sublevel = blockSublevels;
+                    }
+                }
+
+                const sublevels = Array.isArray(sublevel) ? sublevel : [sublevel];
+                sublevels.forEach(element => {
+                    element.classList.toggle("g-slide-out", !isSelected);
+                });
+            }
+        }
+
+        this[isSelected ? "closeDropdown" : "openDropdown"](parent);
+        if (event.type !== "click") {
+            this.toggleOverlay(closest(target, selectors.mainContainer));
+        }
+        return false;
+    }
+
+    openDropdown(element) {
+        element = element && (element.currentTarget || element.target || element);
+        if (!(element instanceof Element)) return;
+
+        const dropdown = element.querySelector(this.selectors.dropdown);
+        element.classList.add(this.states.selected);
+        if (dropdown) {
+            dropdown.classList.remove(this.states.inactive);
+            dropdown.classList.add(this.states.active);
+        }
+    }
+
+    closeDropdown(element) {
+        element = element && (element.currentTarget || element.target || element);
+        if (!(element instanceof Element)) return;
+
+        const menuItem = element.matches(this.selectors.item)
+            ? element
+            : closest(element, this.selectors.item) || element;
+        const dropdown = menuItem.querySelector
+            ? menuItem.querySelector(this.selectors.dropdown)
+            : null;
+
+        menuItem.classList.remove(this.states.selected);
+        if (!dropdown) return;
+
+        descendants(dropdown, ".g-sublevel").forEach(clearStyle);
+        descendants(dropdown, `.g-slide-out, .${this.states.selected}`).forEach(item => {
+            item.classList.remove("g-slide-out", this.states.selected);
+        });
+        descendants(dropdown, `.${this.states.active}`).forEach(item => {
+            item.classList.remove(this.states.active);
+            item.classList.add(this.states.inactive);
+        });
+        dropdown.classList.remove(this.states.active);
+        dropdown.classList.add(this.states.inactive);
+    }
+
+    closeAllDropdowns() {
+        const topLevel = document.querySelector(
+            `${this.selectors.mainContainer} > ${this.selectors.topLevel}`
+        );
+        if (!topLevel) return;
+
+        directChildren(topLevel, this.selectors.item).forEach(item => this.closeDropdown(item));
+        topLevel.classList.remove(this.states.selected);
+        this.toggleOverlay(topLevel);
+    }
+
+    resetStates(menu) {
+        if (!menu) return;
+        const items = [menu, ...descendants(
+            menu,
+            ".g-toplevel, .g-dropdown-column, .g-dropdown, .g-selected, .g-active, .g-slide-out"
+        )];
+        items.forEach(item => {
+            clearStyle(item);
+            item.classList.remove("g-selected", "g-slide-out");
+            if (item.classList.contains("g-active")) {
+                item.classList.remove("g-active");
+                item.classList.add("g-inactive");
+            }
+        });
+    }
+
+    toggleOverlay(menu) {
+        if (!menu) return;
+        const shouldOpen = Boolean(menu.querySelector(".g-active, .g-selected"));
+        this.overlay.classList.toggle("g-menu-overlay-open", shouldOpen);
+        this.overlay.style.opacity = shouldOpen ? 1 : 0;
+    }
+
+    _fixHeights(parent, sublevel, isGoingBack, isNavMenu) {
+        if (!parent || !sublevel || parent === sublevel) return;
+        if (isGoingBack) clearStyle(parent);
+
+        const target = !isNavMenu ? closest(sublevel, ".g-dropdown") : sublevel;
+        if (!target) return;
+        const heights = {
+            from: parent.getBoundingClientRect(),
+            to: target.getBoundingClientRect()
+        };
+        const height = Math.max(heights.from.height, heights.to.height);
+
+        if (isGoingBack) {
+            closestHeightParents(parent).forEach(element => {
+                if (closest(element, ".g-toplevel")) {
+                    element.style.height = `${heights.from.height}px`;
+                }
+            });
+        }
+
+        if (isGoingBack) return;
+        if (heights.from.height < heights.to.height) {
+            parent.style.height = `${height}px`;
+            closestHeightParents(parent).forEach(element => {
+                if (closest(element, ".g-toplevel")) element.style.height = `${height}px`;
+            });
+        } else if (isNavMenu) {
+            sublevel.style.height = `${height}px`;
+        }
+
+        if (isNavMenu) return;
+        let maxHeight = height;
+        const block = closest(sublevel, ".g-block:not(.size-100)");
+        const column = block ? closest(block, ".g-dropdown-column") : null;
+        ancestorMatches(sublevel, ".g-slide-out, .g-dropdown-column").forEach(slideout => {
+            maxHeight = Math.max(maxHeight, parseInt(slideout.style.height || 0, 10));
+        });
+
+        if (column) {
+            column.style.height = `${maxHeight}px`;
+            const grid = directChildren(column, ".g-grid")[0];
+            const blocks = directChildren(grid, ".g-block");
+            let remaining = maxHeight;
+            blocks.forEach((currentBlock, index) => {
+                if (index + 1 !== blocks.length) {
+                    remaining -= currentBlock.getBoundingClientRect().height;
+                } else {
+                    const childSublevel = currentBlock.querySelector(":scope > .g-sublevel");
+                    if (childSublevel) childSublevel.style.height = `${remaining}px`;
+                }
+            });
+        } else {
+            sublevel.style.height = `${maxHeight}px`;
+        }
+    }
+
+    _calculateBreakpoint(value) {
+        const digitMatch = String(value).match(/^\d+(?:\.\d+)?/);
+        const unitMatch = String(value).match(/[a-z]+$/i);
+        if (!digitMatch || !unitMatch) return value;
+        const unit = unitMatch[0];
+        const tolerance = /r?em/.test(unit) ? -0.062 : -1;
+        return `${parseFloat(digitMatch[0]) + tolerance}${unit}`;
+    }
+
+    _checkQuery(mediaQuery) {
+        const selectors = this.selectors;
+        const mobileContainer = document.querySelector(selectors.mobileContainer);
+        const mainContainer = document.querySelector(
+            `${selectors.mainContainer}${selectors.mobileTarget}`
+        ) || document.querySelector(selectors.mainContainer);
+        if (!mobileContainer || !mainContainer) return;
+
+        let menu;
+        if (mediaQuery.matches) {
+            menu = mainContainer.querySelector(selectors.topLevel);
+            if (menu) {
+                const mainBlock = closest(mainContainer, ".g-block");
+                const mobileBlock = closest(mobileContainer, ".g-block");
+                if (mainBlock) mainBlock.classList.add("hidden");
+                if (mobileBlock) mobileBlock.classList.remove("hidden");
+                mobileContainer.prepend(menu);
+            }
+        } else {
+            menu = mobileContainer.querySelector(selectors.topLevel);
+            if (menu) {
+                const mobileBlock = closest(mobileContainer, ".g-block");
+                const mainBlock = closest(mainContainer, ".g-block");
+                if (mobileBlock) mobileBlock.classList.add("hidden");
+                if (mainBlock) mainBlock.classList.remove("hidden");
+                mainContainer.prepend(menu);
+            }
+        }
+
+        this.resetStates(menu);
+        if (!mediaQuery.matches && menu) {
+            descendants(menu, "[data-g-item-width]").forEach(dropdown => {
+                dropdown.style.width = dropdown.getAttribute("data-g-item-width");
+            });
+        }
+    }
+
+    _debug() {}
+}
+
+const ancestorMatches = (element, selector) => {
+    const matches = [];
+    for (let parent = element.parentElement; parent; parent = parent.parentElement) {
+        if (parent.matches(selector)) matches.push(parent);
+    }
+    return matches;
+};
+
+const closestHeightParents = element => ancestorMatches(element, '[style^="height"]');
+
+module.exports = Menu;
+
+},{}],3:[function(require,module,exports){
+// Offcanvas slide with desktop, touch and all-in-one touch device support.
+// Based on Slideout.js <https://mango.github.io/slideout/>.
+
+"use strict";
+
+const decouple = require("../utils/decouple");
+
+const hasTouchEvents = "ontouchstart" in window
+    || (window.DocumentTouch && document instanceof window.DocumentTouch);
+const clamp = (value, minimum, maximum) => Math.min(Math.max(value, minimum), maximum);
+const mapNumber = (value, inputMinimum, inputMaximum, outputMinimum, outputMaximum) => {
+    if (inputMaximum === inputMinimum) return outputMinimum;
+    const ratio = (value - inputMinimum) / (inputMaximum - inputMinimum);
+    return outputMinimum + ratio * (outputMaximum - outputMinimum);
+};
+
+let isScrolling = false;
+let scrollTimeout;
+
+class Offcanvas {
+    constructor(options = {}) {
+        const defaults = {
+            effect: "ease",
+            duration: 300,
+            tolerance: padding => padding / 3,
+            padding: 0,
+            touch: true,
+            css3: true,
+            openClass: "g-offcanvas-open",
+            openingClass: "g-offcanvas-opening",
+            closingClass: "g-offcanvas-closing",
+            overlayClass: "g-nav-overlay"
+        };
+
+        this.options = { ...defaults, ...options };
+        this.attached = false;
+        this.opening = false;
+        this.moved = false;
+        this.dragging = false;
+        this.opened = false;
+        this.preventOpen = false;
+        this.listeners = [];
+        this.offset = {
+            x: { start: 0, current: 0 },
+            y: { start: 0, current: 0 }
+        };
+
+        this.bodyEl = document.body;
+        this.htmlEl = document.documentElement;
+        this.panel = document.querySelector("#g-page-surround");
+        this.offcanvas = document.querySelector("#g-offcanvas");
+
+        if (!this.panel || !this.offcanvas) {
+            this.available = false;
+            return;
+        }
+        this.available = true;
+
+        const swipe = this.offcanvas.getAttribute("data-g-offcanvas-swipe");
+        const css3 = this.offcanvas.getAttribute("data-g-offcanvas-css3");
+        this.options.touch = Boolean(swipe !== null ? parseInt(swipe, 10) : 1);
+        this.options.css3 = Boolean(css3 !== null ? parseInt(css3, 10) : 1);
+
+        if (!this.options.padding) {
+            this.offcanvas.style.display = "block";
+            this.options.padding = this.offcanvas.getBoundingClientRect().width;
+            this.offcanvas.style.removeProperty("display");
+        }
+
+        this.tolerance = typeof this.options.tolerance === "function"
+            ? this.options.tolerance.call(this, this.options.padding)
+            : this.options.tolerance;
+
+        this.htmlEl.classList.add(`g-offcanvas-${this.options.css3 ? "css3" : "css2"}`);
+        this.attach();
+        this._checkTogglers();
+    }
+
+    listen(element, type, handler, options) {
+        if (!element) return;
+        const listener = handler.bind(this);
+        element.addEventListener(type, listener, options);
+        this.listeners.push({ element, type, listener, options });
+    }
+
+    delegate(element, type, selector, handler, options) {
+        if (!element) return;
+        const listener = event => {
+            const target = event.target instanceof Element ? event.target.closest(selector) : null;
+            if (target && element.contains(target)) handler.call(this, event, target);
+        };
+        element.addEventListener(type, listener, options);
+        this.listeners.push({ element, type, listener, options });
+    }
+
+    attach() {
+        if (!this.available || this.attached) return this;
+        this.attached = true;
+
+        if (this.options.touch && hasTouchEvents) this.attachTouchEvents();
+
+        ["toggle", "open", "close"].forEach(mode => {
+            const selector = `[data-offcanvas-${mode}]`;
+            this.delegate(this.bodyEl, "click", selector, this[mode]);
+            if (hasTouchEvents) this.delegate(this.bodyEl, "touchend", selector, this[mode]);
+        });
+
+        this.attachMutationEvent();
+
+        this.overlay = document.createElement("div");
+        this.overlay.className = this.options.overlayClass;
+        this.overlay.setAttribute("data-offcanvas-close", "");
+        this.panel.prepend(this.overlay);
+
+        return this;
+    }
+
+    attachMutationEvent() {
+        if (!this.available) return;
+        if (this.observer) this.observer.disconnect();
+        this.observer = new MutationObserver(() => this._checkTogglers());
+        this.observer.observe(this.offcanvas, { childList: true, subtree: true });
+    }
+
+    attachTouchEvents() {
+        const msPointerSupported = window.navigator.msPointerEnabled;
+        this.touchEvents = {
+            start: msPointerSupported ? "MSPointerDown" : "touchstart",
+            move: msPointerSupported ? "MSPointerMove" : "touchmove",
+            end: msPointerSupported ? "MSPointerUp" : "touchend"
+        };
+
+        this._scrollBound = decouple(window, "scroll", this._bodyScroll.bind(this));
+        this.listen(this.bodyEl, this.touchEvents.move, this._bodyMove, { passive: false });
+        this.listen(this.panel, this.touchEvents.start, this._touchStart, { passive: true });
+        this.listen(this.panel, "touchcancel", this._touchCancel);
+        this.listen(this.panel, this.touchEvents.end, this._touchEnd);
+        this.listen(this.panel, this.touchEvents.move, this._touchMove, { passive: true });
+    }
+
+    detach() {
+        if (!this.attached) return this;
+        this.attached = false;
+
+        this.listeners.forEach(({ element, type, listener, options }) => {
+            element.removeEventListener(type, listener, options);
+        });
+        this.listeners = [];
+
+        if (this._scrollBound) {
+            window.removeEventListener("scroll", this._scrollBound);
+            this._scrollBound = null;
+        }
+
+        this.detachMutationEvent();
+        if (this.overlay) {
+            this.overlay.remove();
+            this.overlay = null;
+        }
+        return this;
+    }
+
+    detachMutationEvent() {
+        if (this.observer) {
+            this.observer.disconnect();
+            this.observer = null;
+        }
+    }
+
+    open(event) {
+        if (!this.available) return this;
+        if (event && /^touch/i.test(event.type)) event.preventDefault();
+        else this.dragging = false;
+        if (this.opened) return this;
+
+        this.htmlEl.classList.add(this.options.openClass, this.options.openingClass);
+        if (this.overlay) this.overlay.style.opacity = 1;
+        if (this.options.css3) this.panel.style[this.getOffcanvasPosition()] = "inherit";
+
+        this._setTransition();
+        this._translateXTo(
+            (this.bodyEl.classList.contains("g-offcanvas-right") ? -1 : 1) * this.options.padding
+        );
+        this.opened = true;
+
+        clearTimeout(this.transitionTimer);
+        this.transitionTimer = setTimeout(() => {
+            this.htmlEl.classList.remove(this.options.openingClass);
+            this.offcanvas.setAttribute("aria-expanded", "true");
+            document.querySelectorAll("[data-offcanvas-toggle]")
+                .forEach(toggle => toggle.setAttribute("aria-expanded", "true"));
+            this.panel.style.transition = "";
+        }, this.options.duration);
+
+        return this;
+    }
+
+    close(event, element) {
+        if (!this.available) return this;
+        if (event && /^touch/i.test(event.type)) event.preventDefault();
+        else this.dragging = false;
+
+        element = element || window;
+        if (!this.opened && !this.opening) return this;
+        if (this.panel !== element && this.dragging) return false;
+
+        this.htmlEl.classList.add(this.options.closingClass);
+        if (this.overlay) this.overlay.style.opacity = 0;
+
+        this._setTransition();
+        this._translateXTo(0);
+        this.opened = false;
+        this.offcanvas.setAttribute("aria-expanded", "false");
+        document.querySelectorAll("[data-offcanvas-toggle]")
+            .forEach(toggle => toggle.setAttribute("aria-expanded", "false"));
+
+        clearTimeout(this.transitionTimer);
+        this.transitionTimer = setTimeout(() => {
+            this.htmlEl.classList.remove(this.options.openClass, this.options.closingClass);
+            this.panel.style.transition = "";
+            this.panel.style.transform = "";
+            this.panel.style[this.getOffcanvasPosition()] = "";
+        }, this.options.duration);
+
+        return this;
+    }
+
+    toggle(event, element) {
+        if (event && /^touch/i.test(event.type)) event.preventDefault();
+        else this.dragging = false;
+        return this[this.opened ? "close" : "open"](event, element);
+    }
+
+    getOffcanvasPosition() {
+        return this.bodyEl.classList.contains("g-offcanvas-right") ? "right" : "left";
+    }
+
+    _setTransition() {
+        if (this.options.css3) {
+            this.panel.style.transition =
+                `transform ${this.options.duration}ms ${this.options.effect}`;
+        } else {
+            this.panel.style.transition =
+                `left ${this.options.duration}ms ${this.options.effect}, `
+                + `right ${this.options.duration}ms ${this.options.effect}`;
+        }
+    }
+
+    _translateXTo(x) {
+        const placement = this.getOffcanvasPosition();
+        this.offset.x.current = x;
+        if (this.options.css3) {
+            this.panel.style.transform = `translate3d(${x}px, 0, 0)`;
+        } else {
+            this.panel.style[placement] = `${Math.abs(x)}px`;
+        }
+    }
+
+    _bodyScroll() {
+        if (this.moved) return;
+        clearTimeout(scrollTimeout);
+        isScrolling = true;
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+        }, 250);
+    }
+
+    _bodyMove(event) {
+        if (this.moved && event.cancelable) event.preventDefault();
+        this.dragging = true;
+        return false;
+    }
+
+    _touchStart(event) {
+        if (!event.touches) return;
+        this.moved = false;
+        this.opening = false;
+        this.dragging = false;
+        this.offset.x.start = event.touches[0].pageX;
+        this.offset.y.start = event.touches[0].pageY;
+        this.preventOpen = !this.opened && this.offcanvas.clientWidth !== 0;
+    }
+
+    _touchCancel() {
+        this.moved = false;
+        this.opening = false;
+    }
+
+    _touchMove(event) {
+        if (isScrolling || this.preventOpen || !event.touches) return;
+        if (this.options.css3) this.panel.style[this.getOffcanvasPosition()] = "inherit";
+
+        const placement = this.getOffcanvasPosition();
+        const diffX = clamp(
+            event.touches[0].clientX - this.offset.x.start,
+            -this.options.padding,
+            this.options.padding
+        );
+        let translateX = this.offset.x.current = diffX;
+        const diffY = Math.abs(event.touches[0].pageY - this.offset.y.start);
+        const offset = placement === "right" ? -1 : 1;
+
+        if (Math.abs(translateX) > this.options.padding) return;
+        if (diffY > 5 && !this.moved) return;
+
+        if (Math.abs(diffX) <= 0) return;
+        this.opening = true;
+
+        if (placement === "left" && ((this.opened && diffX > 0) || (!this.opened && diffX < 0))) {
+            return;
+        }
+        if (placement === "right" && ((this.opened && diffX < 0) || (!this.opened && diffX > 0))) {
+            return;
+        }
+
+        if (!this.moved && !this.htmlEl.classList.contains(this.options.openClass)) {
+            this.htmlEl.classList.add(this.options.openClass);
+        }
+
+        if ((placement === "left" && diffX <= 0) || (placement === "right" && diffX >= 0)) {
+            translateX = diffX + offset * this.options.padding;
+            this.opening = false;
+        }
+
+        if (this.overlay) {
+            this.overlay.style.opacity = mapNumber(
+                Math.abs(translateX),
+                0,
+                this.options.padding,
+                0,
+                1
+            );
+        }
+
+        if (this.options.css3) {
+            this.panel.style.transform = `translate3d(${translateX}px, 0, 0)`;
+        } else {
+            this.panel.style[placement] = `${Math.abs(translateX)}px`;
+        }
+        this.moved = true;
+    }
+
+    _touchEnd(event) {
+        if (this.moved) {
+            const tolerance = Math.abs(this.offset.x.current) > this.tolerance;
+            const placedRight = this.bodyEl.classList.contains("g-offcanvas-right");
+            const direction = !placedRight
+                ? this.offset.x.current < 0
+                : this.offset.x.current > 0;
+
+            this.opening = tolerance ? !direction : direction;
+            this.opened = !this.opening;
+            this[this.opening ? "open" : "close"](event, this.panel);
+        }
+        this.moved = false;
+        return true;
+    }
+
+    _checkTogglers() {
+        if (!this.available) return;
+        const togglers = Array.from(document.querySelectorAll(
+            "[data-offcanvas-toggle], [data-offcanvas-open], [data-offcanvas-close]"
+        ));
+        const mobileContainer = document.querySelector("#g-mobilemenu-container");
+        if (!togglers.length) return;
+        if (this.opened) this.close();
+
+        setTimeout(() => {
+            const blocks = Array.from(this.offcanvas.querySelectorAll(".g-block"));
+            const mobileText = mobileContainer ? mobileContainer.textContent.length : 0;
+            const shouldCollapse = blocks.length === 1
+                && mobileContainer
+                && !this.offcanvas.textContent.trim().length
+                && !blocks.some(block => block.querySelector(".g-menu-item"));
+
+            togglers.forEach(toggler => {
+                toggler.classList.toggle("g-offcanvas-hide", Boolean(shouldCollapse));
+            });
+            if (mobileContainer) {
+                const block = mobileContainer.closest(".g-block");
+                if (block) block.classList.toggle("hidden", !mobileText);
+            }
+
+            if (!shouldCollapse && !this.attached) {
+                this.attach();
+            } else if (shouldCollapse && this.attached) {
+                this.detach();
+                this.attachMutationEvent();
+            }
+        }, 0);
+    }
+}
+
+module.exports = Offcanvas;
+
+},{"../utils/decouple":5}],4:[function(require,module,exports){
+'use strict';
+
+const { ready, query } = require('../utils/dom');
+
+ready(() => {
+    const toTop = query('#g-totop');
+    if (!toTop) {
+        return;
+    }
+
+    toTop.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+module.exports = {};
+
+},{"../utils/dom":6}],5:[function(require,module,exports){
+'use strict';
+
+module.exports = (element, type, callback, options = { passive: true }) => {
+    const target = element && element[0] ? element[0] : element;
+    let latestEvent;
+    let frameId = null;
+
+    const capture = (event) => {
+        latestEvent = event;
+        if (frameId !== null) {
+            return;
+        }
+
+        frameId = requestAnimationFrame(() => {
+            frameId = null;
+            callback.call(target, latestEvent);
+        });
+    };
+
+    target.addEventListener(type, capture, options);
+    return capture;
+};
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
+const ready = (callback) => {
+    let called = false;
+    const run = () => {
+        if (called) return;
+        called = true;
+        callback();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run, { once: true });
+        setTimeout(run, 0);
+        return;
+    }
+
+    run();
+};
+
+const query = (selector, context = document) => context.querySelector(selector);
+const queryAll = (selector, context = document) => [...context.querySelectorAll(selector)];
+
+const delegate = (element, type, selector, callback, options) => {
+    const listener = (event) => {
+        const target = event.target instanceof Element ? event.target.closest(selector) : null;
+        if (target && element.contains(target)) {
+            callback.call(target, event, target);
+        }
+    };
+
+    element.addEventListener(type, listener, options);
+    return () => element.removeEventListener(type, listener, options);
+};
+
+module.exports = { ready, query, queryAll, delegate };
+
+},{}]},{},[1])
+
+//# sourceMappingURL=main.js.map

@@ -50,8 +50,8 @@ These libraries remain because they are dependency-free and provide behavior bey
 | Swiper 14 | 1 source plus 1 generated browser bundle | Intentional ES-module dependency for feature-rich sliders |
 | Native scroll animations | 46 recovered-theme copies | First-party ES6+ `IntersectionObserver` controller; retains existing `data-aos` markup and CSS compatibility |
 | Native filtered grids | 23 recovered-theme copies | First-party ES6+ filtering and responsive masonry controller |
-| Anime.js | 2 recovered-theme copies | Dependency-free animation library |
-| Typed.js | 1 recovered-theme copy | Dependency-free typewriter effect |
+| Native tooltip animations | 1 first-party controller | Web Animations API replacement for Anime.js tooltip effects |
+| Native typewriter | 1 first-party controller | Timer- and DOM-based replacement for Typed.js |
 | Native Lightcase compatibility controller | 1 shared controller | First-party implementation, not the former plugin |
 
 No React, Vue, Angular, Backbone, Svelte, Alpine, Ember, MooTools, or active jQuery UI runtime was detected in maintained Gantry/theme code.
@@ -64,11 +64,14 @@ The recovered-theme AOS runtime was replaced by a small native `IntersectionObse
 
 Shuffle.js was replaced across the recovered themes by a purpose-built native grid controller. Existing category controls, `data-groups` markup, randomized layouts, mixed-width masonry items, image-aware initialization, and responsive relayout remain supported without the third-party library.
 
+Anime.js and Typed.js were removed. Calla's tooltip effects now use the Web Animations API, including SVG path drawing and the existing per-theme animation configuration. Requiem's promo typewriter now uses a native DOM/timer controller that preserves inline HTML and honors reduced-motion preferences.
+
 ## Verification
 
 - Native scroll controllers: all 46 files passed `node --check`; all 46 particle templates load and initialize the replacement.
 - AOS runtime scan: 0 JavaScript files and 0 JavaScript/Twig runtime references remain outside the excluded phpBB integration.
 - Native filtered grids: all 23 controllers and 31 consumers passed `node --check`; 0 Shuffle.js runtime files or references remain.
+- Native tooltip and typewriter controllers passed `node --check`; 0 Anime.js or Typed.js runtime files or references remain.
 - Production JavaScript bundle: `assets-build.bat js --prod` — passed.
 - Changed JavaScript syntax: 196 files checked with `node --check` — passed.
 - Changed PHP syntax: 4 files checked with `php -l` — passed.

@@ -105,13 +105,13 @@
 
   {% if particle.descanimation == 'typewriter' %}
   	<script>
-	    document.addEventListener('DOMContentLoaded', function () {
-  	        var typed = new Typed('#{{ particle.animationElementID|e }}', {
+	    document.addEventListener('DOMContentLoaded', () => {
+	        new NativeTypewriter('#{{ particle.animationElementID|e }}', {
   	            stringsElement: '#{{ particle.animationElementID|e }}-strings',
   	            typeSpeed: {{ particle.typespeed|default('20') }},
   	            backSpeed: {{ particle.backspeed|default('20') }},
   	            startDelay: {{ particle.startdelay|default('500') }},
-  	            backDelay: {{ particle.backdelay|default('700') }},
+	            backDelay: {{ particle.backdelay|default('700') }}
   	        });
   	    });
   	</script>
@@ -121,6 +121,6 @@
 
 {% block javascript_footer %}
   {% if particle.descanimation == 'typewriter' %}
-    <script src="{{ url('gantry-theme://js/typed.min.js') }}"></script>
+    <script src="{{ url('gantry-theme://js/native-typewriter.js') }}"></script>
   {% endif %}
 {% endblock %}

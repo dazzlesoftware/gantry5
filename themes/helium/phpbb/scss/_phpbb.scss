@@ -418,12 +418,30 @@ body #page-body {
 body #page-body {
     .post {
         border-color: $base-border-color;
+        background: $base-background;
+    }
+
+    // Alternating post backgrounds (also used for zebra-striped tables/lists elsewhere) --
+    // prosilver tints these light blue by default; flatten to a barely-there neutral tint so
+    // posts read as plain white cards rather than carrying prosilver's own color identity.
+    .bg1, .bg2,
+    table.zebra-list tr:nth-child(odd) td, ul.zebra-list li:nth-child(odd),
+    table.zebra-list tr:nth-child(even) td, ul.zebra-list li:nth-child(even) {
+        background: $base-background;
+    }
+
+    .bg2 {
+        background: $off-white;
     }
 
     .postprofile {
         background: $off-white;
         border-radius: $core-border-radius;
         border-color: transparent;
+    }
+
+    .avatar, .no-avatar .avatar-container {
+        border-radius: 50%;
     }
 
     .codebox {
@@ -455,6 +473,39 @@ body #page-body {
     .dropdown-extended ul li:hover,
     .search-results li:hover, .search-results li.active {
         background: rgba($accent-color-1, 0.1);
+    }
+
+    // Top/bottom action bars (reply/quote/pagination row above and below post lists)
+    .action-bar {
+        .button:not(.button-icon-only) {
+            // Icon-only buttons already get the pill treatment from the Buttons section above;
+            // the plain reply/quote/etc. text buttons here should match too.
+            display: inline-block;
+            font-family: get-font-family($font-family-title);
+            font-weight: $font-weight-semibold;
+            font-size: $core-font-size - 0.15;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            background: $accent-color-1;
+            border-radius: 2.5rem;
+            padding: 0.6rem 1.5rem;
+            color: $white;
+            border-color: transparent;
+
+            &:hover, &:focus {
+                background: darken($accent-color-1, 10%);
+                color: $white;
+                border-color: transparent;
+            }
+
+            .icon {
+                color: inherit;
+            }
+        }
+    }
+
+    .icon.icon-blue, a:hover .icon.icon-blue {
+        color: $accent-color-1;
     }
 }
 

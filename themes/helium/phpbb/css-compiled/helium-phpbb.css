@@ -285,11 +285,23 @@ body #page-body textarea:focus, body #page-body select:focus, body #page-body .i
 
 body #page-body .post {
   border-color: #e0e0e5;
+  background: #ffffff;
+}
+body #page-body .bg1, body #page-body .bg2,
+body #page-body table.zebra-list tr:nth-child(odd) td, body #page-body ul.zebra-list li:nth-child(odd),
+body #page-body table.zebra-list tr:nth-child(even) td, body #page-body ul.zebra-list li:nth-child(even) {
+  background: #ffffff;
+}
+body #page-body .bg2 {
+  background: #eceff3;
 }
 body #page-body .postprofile {
   background: #eceff3;
   border-radius: 0.25rem;
   border-color: transparent;
+}
+body #page-body .avatar, body #page-body .no-avatar .avatar-container {
+  border-radius: 50%;
 }
 body #page-body .codebox {
   background: #f6f6f6;
@@ -315,6 +327,30 @@ body #page-body .dropdown-extended a.mark_read,
 body #page-body .dropdown-extended ul li:hover,
 body #page-body .search-results li:hover, body #page-body .search-results li.active {
   background: rgba(77, 178, 179, 0.1);
+}
+body #page-body .action-bar .button:not(.button-icon-only) {
+  display: inline-block;
+  font-family: Lato", "Helvetica", "Tahoma", "Geneva", "Arial", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  background: #4db2b3;
+  border-radius: 2.5rem;
+  padding: 0.6rem 1.5rem;
+  color: #ffffff;
+  border-color: transparent;
+}
+body #page-body .action-bar .button:not(.button-icon-only):hover, body #page-body .action-bar .button:not(.button-icon-only):focus {
+  background: #3d8f90;
+  color: #ffffff;
+  border-color: transparent;
+}
+body #page-body .action-bar .button:not(.button-icon-only) .icon {
+  color: inherit;
+}
+body #page-body .icon.icon-blue, body #page-body a:hover .icon.icon-blue {
+  color: #4db2b3;
 }
 
 body #page-body .error, body #page-body p.error {
