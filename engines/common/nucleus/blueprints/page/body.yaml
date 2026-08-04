@@ -13,7 +13,7 @@ form:
     attribs.class:
       type: input.selectize
       label: Body Classes
-      default: gantry
+      default: genesis
 
     attribs.extra:
       type: collection.keyvalue

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1472048538
 layout:
@@ -271,7 +271,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-01.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -287,7 +287,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-02.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-02.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -303,7 +303,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-03.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-03.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -319,7 +319,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-04.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-04.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -343,42 +343,42 @@ content:
       album: clients
       imagegriditems:
         -
-          image: 'gantry-media://pages/portfolio/footer/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-01.jpg'
           caption: 'Image 1'
           icon: 'fa fa-search'
           title: 'Image 1'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-02.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-02.jpg'
           caption: 'Image 2'
           icon: 'fa fa-search'
           title: 'Image 2'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-03.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-03.jpg'
           caption: 'Image 3'
           icon: 'fa fa-search'
           title: 'Image 3'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-04.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-04.jpg'
           caption: 'Image 4'
           icon: 'fa fa-search'
           title: 'Image 4'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-05.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-05.jpg'
           caption: 'Image 5'
           icon: 'fa fa-search'
           title: 'Image 5'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-06.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-06.jpg'
           caption: 'Image 6'
           icon: 'fa fa-search'
           title: 'Image 6'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-07.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-07.jpg'
           caption: 'Image 7'
           icon: 'fa fa-search'
           title: 'Image 7'
         -
-          image: 'gantry-media://pages/portfolio/footer/img-08.jpg'
+          image: 'genesis-media://pages/portfolio/footer/img-08.jpg'
           caption: 'Image 8'
           icon: 'fa fa-search'
           title: 'Image 8'

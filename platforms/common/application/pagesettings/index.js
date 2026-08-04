@@ -109,7 +109,7 @@ var attachSettings = function() {
             dataValue = JSON.parse(dataField.value || '[]');
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             data: { data: itemData },
             overlayClickToClose: false,
@@ -136,7 +136,7 @@ var attachSettings = function() {
                         if (post.invalid.length) {
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -165,7 +165,7 @@ var attachSettings = function() {
                                         inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
                                     item.classList.toggle('atom-disabled', !enabled);
                                     item.classList.toggle('g-inheriting', Boolean(inheriting));
-                                    item.title = enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom');
+                                    item.title = enabled ? '' : translate('GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom');
                                     item.removeAttribute('data-tip');
 
                                     if (inheriting) {
@@ -173,7 +173,7 @@ var attachSettings = function() {
                                             outline = getOutlineNameById(inherit.outline),
                                             atom = inherit.atom || '',
                                             include = (inherit.include || []).join(', ');
-                                        item.setAttribute('data-tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
+                                        item.setAttribute('data-tip', translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
                                     }
                                     dataField.dispatchEvent(new Event('change', { bubbles: true }));
                                     global.Genesis.tips.reload();
@@ -184,7 +184,7 @@ var attachSettings = function() {
                                     if (save) { save.click(); }
                                 }
                                 modal.close();
-                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                                toastr.success(translate('GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
                             indicator.hide(target);
                         });

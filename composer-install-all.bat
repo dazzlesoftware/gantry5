@@ -22,19 +22,19 @@ if errorlevel 1 (
     exit /b 1
 )
 
-call :link-source "platforms\grav\gantry5" || exit /b 1
-call :link-source "platforms\joomla\lib_gantry5" || exit /b 1
-call :link-source "platforms\wordpress\gantry5" || exit /b 1
-call :link-source "platforms\phpbb\gantry5" || exit /b 1
+call :link-source "platforms\grav\genesis" || exit /b 1
+call :link-source "platforms\joomla\lib_genesis" || exit /b 1
+call :link-source "platforms\wordpress\genesis" || exit /b 1
+call :link-source "platforms\phpbb\genesis" || exit /b 1
 
 call :install "." || exit /b 1
 call :install "bin\builder" || exit /b 1
-call :install "platforms\grav\gantry5" || exit /b 1
-call :install "platforms\joomla\lib_gantry5" || exit /b 1
-call :install "platforms\joomla\plg_system_gantry5_debugbar" || exit /b 1
-call :install "platforms\wordpress\gantry5" || exit /b 1
-call :install "platforms\wordpress\gantry5_debugbar" || exit /b 1
-call :install "platforms\phpbb\gantry5" || exit /b 1
+call :install "platforms\grav\genesis" || exit /b 1
+call :install "platforms\joomla\lib_genesis" || exit /b 1
+call :install "platforms\joomla\plg_system_genesis_debugbar" || exit /b 1
+call :install "platforms\wordpress\genesis" || exit /b 1
+call :install "platforms\wordpress\genesis_debugbar" || exit /b 1
+call :install "platforms\phpbb\genesis" || exit /b 1
 
 echo.
 echo All Composer installs completed successfully.

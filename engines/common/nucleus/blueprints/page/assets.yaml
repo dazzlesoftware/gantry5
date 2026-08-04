@@ -37,7 +37,7 @@ form:
           icon: far fa-file-code
           placeholder: 'http://cdn1.remote/file.css'
           filter: '\.(css|less|scss|sass)$'
-          root: 'gantry-assets://'
+          root: 'genesis-assets://'
 
         .inline:
           type: textarea.textarea
@@ -85,7 +85,7 @@ form:
           icon: far fa-file-code
           placeholder: 'http://cdn1.remote/file.js'
           filter: '\.(jsx?|coffee)$'
-          root: 'gantry-assets://'
+          root: 'genesis-assets://'
 
         .inline:
           type: textarea.textarea

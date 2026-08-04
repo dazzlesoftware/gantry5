@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block javascript_footer %}
-<script src="{{ url('gantry-assets://js/line-chart.js') }}"></script>
+<script src="{{ url('genesis-assets://js/line-chart.js') }}"></script>
 <script type="text/javascript">
-window.GantryLineChart.render({
+window.GenesisLineChart.render({
     element: '{{ id }}',
     data: [
         {% for item in particle.items %}

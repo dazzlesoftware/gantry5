@@ -139,7 +139,7 @@
 
             button.swiper-button-prev {
                 left: 12%;
-                background: url(gantry-theme://images/utilities/bottom-left.png) no-repeat center center;
+                background: url(genesis-theme://images/utilities/bottom-left.png) no-repeat center center;
                 @include breakpoint(mobile-only) {
 		left: 2%;
 					background-size: 10px;
@@ -148,7 +148,7 @@
 
             button.swiper-button-next {
                 right: 12%;
-                background: url(gantry-theme://images/utilities/bottom-right.png) no-repeat center center;
+                background: url(genesis-theme://images/utilities/bottom-right.png) no-repeat center center;
                 @include breakpoint(mobile-only) {
 		right: 2%;
 					background-size: 10px;

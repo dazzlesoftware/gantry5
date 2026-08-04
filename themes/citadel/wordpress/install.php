@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_CitadelInstallerScript
+ * Class Genesis_CitadelInstallerScript
  */
-class G5_CitadelInstallerScript
+class Genesis_CitadelInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

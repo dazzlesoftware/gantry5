@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1466236168
 layout:
@@ -609,7 +609,7 @@ content:
         -
           name: 'Rick Grimes'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Manager
@@ -623,7 +623,7 @@ content:
         -
           name: 'Maggie Greene'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: 'Front Desk'
@@ -637,7 +637,7 @@ content:
         -
           name: 'Daryl Dixon'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Housekeeping
@@ -669,7 +669,7 @@ content:
         -
           name: 'Dream Suite'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -683,7 +683,7 @@ content:
         -
           name: 'Business Suite'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -697,7 +697,7 @@ content:
         -
           name: 'Rural Suite'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''

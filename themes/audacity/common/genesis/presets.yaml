@@ -1,0 +1,311 @@
+preset1:
+  image: 'genesis-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#e10a30'
+    - '#f0600b'
+  styles:    
+    base:
+      background: '#e8e8e8'
+      text-color: '#686868'
+    accent:
+      color-1: '#e10a30'
+      color-2: '#f0600b'
+    font:
+      family-default: 'ptserif, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'playfairdisplay, Verdana, Helvetica, Arial, sans-serif'
+      family-alt2: 'roboto, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#000000'
+      text-color: '#ffffff'
+    showcase:
+      background: '#3f3f3f'
+      text-color: '#ffffff' 
+    utility:
+      background: '#e10a30'
+      text-color: '#ffffff'      
+    feature:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    maintop:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#686868'
+    copyright:
+      background: '#000000'
+      text-color: '#828282'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#e10a30'
+      toggle-color: '#e10a30'
+      
+preset2:
+  image: 'genesis-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#8668c8'
+    - '#782c8f'
+  styles:    
+    base:
+      background: '#e8e8e8'
+      text-color: '#686868'
+    accent:
+      color-1: '#8668c8'
+      color-2: '#782c8f'
+    font:
+      family-default: 'ptserif, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'playfairdisplay, Verdana, Helvetica, Arial, sans-serif'
+      family-alt2: 'roboto, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#000000'
+      text-color: '#ffffff'
+    showcase:
+      background: '#3f3f3f'
+      text-color: '#ffffff' 
+    utility:
+      background: '#8668c8'
+      text-color: '#ffffff'      
+    feature:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    maintop:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#686868'
+    copyright:
+      background: '#000000'
+      text-color: '#828282'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#8668c8'
+      toggle-color: '#8668c8'
+      
+preset3:
+  image: 'genesis-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#8f8f8f'
+    - '#707070'
+  styles:    
+    base:
+      background: '#e8e8e8'
+      text-color: '#686868'
+    accent:
+      color-1: '#8f8f8f'
+      color-2: '#707070'
+    font:
+      family-default: 'ptserif, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'playfairdisplay, Verdana, Helvetica, Arial, sans-serif'
+      family-alt2: 'roboto, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#000000'
+      text-color: '#ffffff'
+    showcase:
+      background: '#3f3f3f'
+      text-color: '#ffffff' 
+    utility:
+      background: '#8f8f8f'
+      text-color: '#ffffff'      
+    feature:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    maintop:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#686868'
+    copyright:
+      background: '#000000'
+      text-color: '#828282'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#8f8f8f'
+      toggle-color: '#8f8f8f'
+      
+preset4:
+  image: 'genesis-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#00b99a'
+    - '#1254be'
+  styles:    
+    base:
+      background: '#e8e8e8'
+      text-color: '#686868'
+    accent:
+      color-1: '#00b99a'
+      color-2: '#1254be'
+    font:
+      family-default: 'ptserif, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'playfairdisplay, Verdana, Helvetica, Arial, sans-serif'
+      family-alt2: 'roboto, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#000000'
+      text-color: '#ffffff'
+    showcase:
+      background: '#3f3f3f'
+      text-color: '#ffffff' 
+    utility:
+      background: '#00b99a'
+      text-color: '#ffffff'      
+    feature:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    maintop:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#686868'
+    copyright:
+      background: '#000000'
+      text-color: '#828282'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#00b99a'
+      toggle-color: '#00b99a'
+      
+preset5:
+  image: 'genesis-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#2885da'
+    - '#009e62'
+  styles:    
+    base:
+      background: '#e8e8e8'
+      text-color: '#686868'
+    accent:
+      color-1: '#2885da'
+      color-2: '#009e62'
+    font:
+      family-default: 'ptserif, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'playfairdisplay, Verdana, Helvetica, Arial, sans-serif'
+      family-alt2: 'roboto, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#000000'
+      text-color: '#ffffff'
+    showcase:
+      background: '#3f3f3f'
+      text-color: '#ffffff' 
+    utility:
+      background: '#2885da'
+      text-color: '#ffffff'      
+    feature:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    maintop:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#686868'
+    copyright:
+      background: '#000000'
+      text-color: '#828282'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#2885da'
+      toggle-color: '#2885da'
+      
+preset6:
+  image: 'genesis-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#dcbb50'
+    - '#dca350'
+  styles:    
+    base:
+      background: '#e8e8e8'
+      text-color: '#686868'
+    accent:
+      color-1: '#dcbb50'
+      color-2: '#dca350'
+    font:
+      family-default: 'ptserif, Verdana, Helvetica, Arial, sans-serif'
+      family-alt: 'playfairdisplay, Verdana, Helvetica, Arial, sans-serif'
+      family-alt2: 'roboto, Verdana, Helvetica, Arial, sans-serif'
+    navigation:
+      background: '#000000'
+      text-color: '#ffffff'
+    showcase:
+      background: '#3f3f3f'
+      text-color: '#ffffff' 
+    utility:
+      background: '#dcbb50'
+      text-color: '#ffffff'      
+    feature:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    maintop:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    mainbottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    extension:
+      background: '#000000'
+      text-color: '#ffffff'
+    bottom:
+      background: '#ffffff'
+      text-color: '#8f8f8f'
+    footer:
+      background: '#f5f5f5'
+      text-color: '#686868'
+    copyright:
+      background: '#000000'
+      text-color: '#828282'
+    offcanvas:
+      background: '#efefef'
+      text-color: '#dcbb50'
+      toggle-color: '#dcbb50'

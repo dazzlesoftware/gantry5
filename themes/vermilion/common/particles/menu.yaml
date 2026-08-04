@@ -20,7 +20,7 @@ form:
     _info:
       type: separator.note
       class: alert alert-info
-      content: GANTRY5_PARTICLE_MENU_INFO
+      content: GENESIS_PARTICLE_MENU_INFO
 
     menu:
       type: menu.list

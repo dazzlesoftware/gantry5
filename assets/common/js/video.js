@@ -94,7 +94,7 @@
             if (this.iframe.dataset.videoProvider === 'youtube') {
                 this.iframe.contentWindow.postMessage(JSON.stringify({
                     event: 'listening',
-                    id: this.element.id || 'g5-video'
+                    id: this.element.id || 'genesis-video'
                 }), 'https://www.youtube.com');
             }
 
@@ -166,7 +166,7 @@
         }
 
         syncPlayingState(playing) {
-            const swiper = this.element.closest('[data-g-swiper]')?.gantrySwiper?.instance;
+            const swiper = this.element.closest('[data-g-swiper]')?.genesisSwiper?.instance;
 
             this.element.classList.toggle('is-playing', playing);
             this.element.classList.toggle('pause', playing);
@@ -253,7 +253,7 @@
         });
     }).observe(document.documentElement, {childList: true, subtree: true});
 
-    document.addEventListener('g5:swiper:change', (event) => {
+    document.addEventListener('genesis:swiper:change', (event) => {
         const swiper = event.target;
         const activeSlide = event.detail?.activeSlide;
 
@@ -301,5 +301,5 @@
         initialize,
         pauseWithin
     };
-    window.G5Video = window.GenesisVideo;
+    window.GenesisVideo = window.GenesisVideo;
 })();

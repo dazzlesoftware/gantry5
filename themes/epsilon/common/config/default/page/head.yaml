@@ -23,9 +23,9 @@ atoms:
     attributes:
       enabled: '1'
       css:
-        - { location: 'gantry-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
+        - { location: 'genesis-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
       javascript:
-        - { location: 'gantry-assets://js/chart.js', inline: '', in_footer: '0', extra: {  }, priority: '0', name: Chart.js }
+        - { location: 'genesis-assets://js/chart.js', inline: '', in_footer: '0', extra: {  }, priority: '0', name: Chart.js }
   -
     type: frameworks
     title: 'JavaScript Frameworks'

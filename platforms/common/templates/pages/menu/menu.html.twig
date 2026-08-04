@@ -1,24 +1,24 @@
-{% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
+{% extends ajax-suffix ? "@genesis-admin/partials/ajax.html.twig" : "@genesis-admin/partials/base.html.twig" %}
 
 {% set visible = not error and genesis.authorize('menu.manage', id) %}
 {% set authorized = visible and genesis.authorize('menu.edit', id) %}
 
-{% block gantry %}
+{% block genesis %}
 <form method="post" action="{{ genesis.route('menu', id) }}" data-mm-container="">
     <div class="menu-header">
         <span class="float-right">
             <button class="button button-back-to-conf">
-                <i class="fa fa-fw fa-arrow-left" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_BACK_SETUP'|trans }}</span>
+                <i class="fa fa-fw fa-arrow-left" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_BACK_SETUP'|trans }}</span>
             </button>
             {% if authorized %}
             <button type="submit" class="button button-primary button-save" data-save="Menu">
-                <i class="fa fa-fw fa-check" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_SAVE_MENU'|trans }}</span>
+                <i class="fa fa-fw fa-check" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_SAVE_MENU'|trans }}</span>
             </button>
             {% endif %}
         </span>
-        <h2 class="page-title">{{ 'GANTRY5_PLATFORM_MENU_EDITOR'|trans }}</h2>
+        <h2 class="page-title">{{ 'GENESIS_PLATFORM_MENU_EDITOR'|trans }}</h2>
         {% if menus %}
-        <select placeholder="{{ 'GANTRY5_PLATFORM_SELECT_ELI'|trans }}"
+        <select placeholder="{{ 'GENESIS_PLATFORM_SELECT_ELI'|trans }}"
                 data-selectize-ajaxify=""
                 data-selectize=""
                 data-genesis-ajaxify-target="[data-genesis-content]"
@@ -38,7 +38,7 @@
     {% if error %}
         <div class="alert alert-danger">{{ error.message }}</div>
     {% elseif not authorized %}
-        <div class="alert alert-danger">{{ 'GANTRY5_PLATFORM_MENU_EDIT_UNAUTHORIZED'|trans }} {{ 'GANTRY5_PLATFORM_MENU_EDIT_UNAUTHORIZED_PLATFORM'|trans }}</div>
+        <div class="alert alert-danger">{{ 'GENESIS_PLATFORM_MENU_EDIT_UNAUTHORIZED'|trans }} {{ 'GENESIS_PLATFORM_MENU_EDIT_UNAUTHORIZED_PLATFORM'|trans }}</div>
     {% endif %}
 
     {% if authorized %}
@@ -48,30 +48,30 @@
             <li data-mm-blocktype="module" data-mm-id="__module">
                 <span class="menu-item">
                     <i class="far fa-fw fa-hand-paper" aria-hidden="true"></i>
-                    <span class="title">{{ 'GANTRY5_PLATFORM_MODULE'|trans }}</span>
+                    <span class="title">{{ 'GENESIS_PLATFORM_MODULE'|trans }}</span>
                 </span>
                 <a class="config-cog" href="{{ genesis.route('menu/select/module') }}">
-                    <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_MODULE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
+                    <i aria-label="{{ 'GENESIS_PLATFORM_MENU_MODULE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
                 </a>
             </li>
             {% elseif genesis.platform.has('widgets') %}
             <li data-mm-blocktype="widget" data-mm-id="__widget">
                 <span class="menu-item">
                     <i class="far fa-fw fa-hand-paper" aria-hidden="true"></i>
-                    <span class="title">{{ 'GANTRY5_PLATFORM_WIDGET'|trans }}</span>
+                    <span class="title">{{ 'GENESIS_PLATFORM_WIDGET'|trans }}</span>
                 </span>
                 <a class="config-cog" href="{{ genesis.route('menu/select/widget') }}">
-                    <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_WIDGET_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
+                    <i aria-label="{{ 'GENESIS_PLATFORM_MENU_WIDGET_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
                 </a>
             </li>
             {% endif %}
             <li data-mm-blocktype="particle" data-mm-id="__particle">
                 <span class="menu-item">
                     <i class="far fa-fw fa-hand-paper" aria-hidden="true"></i>
-                    <span class="title">{{ 'GANTRY5_PLATFORM_PARTICLE'|trans }}</span>
+                    <span class="title">{{ 'GENESIS_PLATFORM_PARTICLE'|trans }}</span>
                 </span>
                 <a class="config-cog" href="{{ genesis.route('menu/select/particle') }}">
-                    <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_PARTICLE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
+                    <i aria-label="{{ 'GENESIS_PLATFORM_MENU_PARTICLE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
                 </a>
             </li>
         </ul>
@@ -90,7 +90,7 @@
         {% endif %}
     </div>
 
-    <div id="trash" data-mm-eraseparticle=""><div class="trash-zone">&times;</div><span>{{ 'GANTRY5_PLATFORM_DROP_DELETE'|trans }}</span></div>
+    <div id="trash" data-mm-eraseparticle=""><div class="trash-zone">&times;</div><span>{{ 'GENESIS_PLATFORM_DROP_DELETE'|trans }}</span></div>
     {% endif %}
 </form>
 {% endblock %}

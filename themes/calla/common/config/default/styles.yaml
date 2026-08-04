@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#f1e5f8'
@@ -35,7 +35,7 @@ preset1:
       text-color: '#888888'
     slideshow:
       background: '#f1e5f8'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#121212'
     header:
       background: '#ffffff'
@@ -79,4 +79,4 @@ preset1:
       desktop-container: 76rem
       tablet-container: 51rem
       large-mobile-container: 30rem
-      mobile-menu-breakpoint: 51rem 
+      mobile-menu-breakpoint: 51rem

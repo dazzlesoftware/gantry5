@@ -1,10 +1,10 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#fb6058'
     - '#fab561'
-  styles:    
+  styles:
     base:
       background: '#ffffff'
       text-color: '#6e6e6e'
@@ -21,24 +21,24 @@ preset1:
       text-color: '#898788'
     showcase:
       background: '#eae6e5'
-      text-color: '#898788' 
+      text-color: '#898788'
     top:
       background: '#fb6058'
-      text-color: '#efefef' 
-      background-image: 'gantry-media://patterns/poly.png' 
+      text-color: '#efefef'
+      background-image: 'genesis-media://patterns/poly.png'
     utility:
       background: '#eae6e5'
-      text-color: '#898788'      
+      text-color: '#898788'
     feature:
       background: '#ffffff'
       text-color: '#aaa8a9'
     maintop:
       background: '#fb6058'
       text-color: '#efefef'
-      background-image: 'gantry-media://patterns/poly.png' 
+      background-image: 'genesis-media://patterns/poly.png'
     expandedtop:
       background: '#edeced'
-      text-color: '#818181' 
+      text-color: '#818181'
     expandedbottom:
       background: '#edeced'
       text-color: '#818181'
@@ -51,7 +51,7 @@ preset1:
     footer:
       background: '#323337'
       text-color: '#9f9fa1'
-      background-image: 'gantry-media://patterns/poly.png' 
+      background-image: 'genesis-media://patterns/poly.png'
     copyright:
       background: '#323337'
       text-color: '#9f9fa1'
@@ -59,4 +59,4 @@ preset1:
       background: '#efefef'
       text-color: '#fb6058'
       toggle-color: '#fb6058'
-      
+

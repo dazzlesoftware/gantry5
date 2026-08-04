@@ -41,9 +41,9 @@ if (-not (Get-Command $PhpExecutable -ErrorAction SilentlyContinue)) {
     throw "PHP executable was not found: $PhpExecutable"
 }
 
-$packageArchives = @(Get-ChildItem -LiteralPath $dist -File -Filter "joomla-pkg_gantry5_${BuildSuffix}.zip")
+$packageArchives = @(Get-ChildItem -LiteralPath $dist -File -Filter "joomla-pkg_genesis_${BuildSuffix}.zip")
 $themeArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "joomla-tpl_g5_*_${BuildSuffix}.zip" |
+    Get-ChildItem -LiteralPath $dist -File -Filter "joomla-tpl_genesis_*_${BuildSuffix}.zip" |
         Sort-Object Name
 )
 if ($packageArchives.Count -ne 1) {
@@ -55,7 +55,7 @@ if ($themeArchives.Count -eq 0) {
 
 $themeSlugs = @(
     $themeArchives | ForEach-Object {
-        if ($_.BaseName -notmatch '^joomla-tpl_g5_(.+)_' + [regex]::Escape($BuildSuffix) + '$') {
+        if ($_.BaseName -notmatch '^joomla-tpl_genesis_(.+)_' + [regex]::Escape($BuildSuffix) + '$') {
             throw "Unable to determine theme name from archive: $($_.Name)"
         }
         $Matches[1]
@@ -80,7 +80,7 @@ foreach ($archive in $themeArchives) {
 $installedTemplates = @(
     foreach ($slug in $themeSlugs) {
         $matches = @(
-            foreach ($prefix in @('g5_', 'rt_')) {
+            foreach ($prefix in @('genesis_', 'rt_')) {
                 $candidate = Join-Path $templates ($prefix + $slug)
                 if (Test-Path -LiteralPath $candidate -PathType Container) {
                     Get-Item -LiteralPath $candidate
@@ -93,8 +93,8 @@ $installedTemplates = @(
         $matches[0]
     }
 )
-if (-not (Test-Path -LiteralPath (Join-Path $joomla 'administrator\components\com_gantry5\gantry5.php') -PathType Leaf)) {
-    throw 'The deployed Joomla Genesis component is missing gantry5.php.'
+if (-not (Test-Path -LiteralPath (Join-Path $joomla 'administrator\components\com_genesis\genesis.php') -PathType Leaf)) {
+    throw 'The deployed Joomla Genesis component is missing genesis.php.'
 }
 if ($installedTemplates.Count -ne $themeArchives.Count) {
     throw "Expected $($themeArchives.Count) installed Genesis templates; found $($installedTemplates.Count)."

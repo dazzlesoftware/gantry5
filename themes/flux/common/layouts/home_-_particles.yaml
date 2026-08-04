@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1496839015
 layout:
@@ -142,15 +142,15 @@ content:
       items_amount: '3'
       items:
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           icon: 'fa fa-search'
           title: 'Good Morning'
         -
-          image: 'gantry-media://home/slideshow/img-02.jpg'
+          image: 'genesis-media://home/slideshow/img-02.jpg'
           icon: 'fa fa-search'
           title: Welcome
         -
-          image: 'gantry-media://home/slideshow/img-03.jpg'
+          image: 'genesis-media://home/slideshow/img-03.jpg'
           icon: 'fa fa-search'
           title: 'Good Evening'
     block:
@@ -290,7 +290,7 @@ content:
           accent: accent2
           headline1: 'May 9th, 2017'
           headline2: Amsterdam
-          img: 'gantry-media://home/feature/img-01.jpg'
+          img: 'genesis-media://home/feature/img-01.jpg'
           tag: 'Your host'
           fullname: 'Jesse Johnson'
           title: 'How to Manipulate the Menu Editor'
@@ -298,7 +298,7 @@ content:
           accent: accent2_light
           headline1: 'June 5th, 2017'
           headline2: London
-          img: 'gantry-media://home/feature/img-02.jpg'
+          img: 'genesis-media://home/feature/img-02.jpg'
           tag: 'Your host'
           fullname: 'Evelyn Estrada'
           title: 'What You Need to Know About the Style Panel'
@@ -306,7 +306,7 @@ content:
           accent: accent2_light
           headline1: 'July 13th, 2017'
           headline2: 'Mexico City'
-          img: 'gantry-media://home/feature/img-03.jpg'
+          img: 'genesis-media://home/feature/img-03.jpg'
           tag: 'Your host'
           fullname: 'Sean Phillips'
           title: 'How to Perform Magic in the Layout Manager'
@@ -314,7 +314,7 @@ content:
           accent: accent2
           headline1: 'August 25th, 2017'
           headline2: Manchester
-          img: 'gantry-media://home/feature/img-04.jpg'
+          img: 'genesis-media://home/feature/img-04.jpg'
           tag: 'Your host'
           fullname: 'Mark Powell'
           title: 'What You Need to Know About Assignments'
@@ -323,7 +323,7 @@ content:
   logo-7825:
     title: 'Book Image'
     attributes:
-      image: 'gantry-media://home/showcase/img-01.jpg'
+      image: 'genesis-media://home/showcase/img-01.jpg'
   infolist-1645:
     title: 'Info List'
     attributes:
@@ -401,17 +401,17 @@ content:
       nav: disabled
       items:
         -
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           position: 'CEO of a Company Inc.'
           testimonial: 'Flux is an excellent choice for photographers and design-oriented businesses. Display big, beautiful images that accent your website''s content.'
           author: 'Timothy Turner'
         -
-          image: 'gantry-media://home/expanded/img-02.jpg'
+          image: 'genesis-media://home/expanded/img-02.jpg'
           position: 'CEO of a Company Inc.'
           testimonial: 'Flux utilizes bold imagery and elegant data that businesses both small and large love. It is an excellent choice for startups that want to showcase the next big thing.'
           author: 'Albert Arnold'
         -
-          image: 'gantry-media://home/expanded/img-03.jpg'
+          image: 'genesis-media://home/expanded/img-03.jpg'
           position: 'CEO of a Company Inc.'
           testimonial: 'Artists and designers will love Flux''s variety of beautifully-designed particles that perfectly showcase your work. Flux is excellent for portfolios and blogs.'
           author: 'Vincent Ortega'
@@ -497,28 +497,28 @@ content:
     attributes:
       items:
         -
-          image: 'gantry-media://home/bottom/img-01.jpg'
+          image: 'genesis-media://home/bottom/img-01.jpg'
           icon: 'fa fa-search'
           caption: Elegant
           linkto: image
           link: ''
           name: 'Item 1'
         -
-          image: 'gantry-media://home/bottom/img-02.jpg'
+          image: 'genesis-media://home/bottom/img-02.jpg'
           icon: 'fa fa-search'
           caption: Modern
           linkto: image
           link: ''
           name: 'Item 2'
         -
-          image: 'gantry-media://home/bottom/img-04.jpg'
+          image: 'genesis-media://home/bottom/img-04.jpg'
           icon: 'fa fa-search'
           caption: Versatile
           linkto: image
           link: ''
           name: 'Item 3'
         -
-          image: 'gantry-media://home/bottom/img-03.jpg'
+          image: 'genesis-media://home/bottom/img-03.jpg'
           icon: 'fa fa-search'
           caption: Simple
           linkto: image

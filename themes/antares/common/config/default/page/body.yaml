@@ -1,7 +1,7 @@
 doctype: html
 attribs:
   id: ''
-  class: 'gantry g-antares-style'
+  class: 'genesis g-antares-style'
   extra: {  }
 layout:
   sections: '0'

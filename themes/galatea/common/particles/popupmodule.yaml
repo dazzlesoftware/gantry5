@@ -24,7 +24,7 @@ form:
       placeholder: Enter title
 
     module_id:
-      type: gantry.module
+      type: genesis.module
       label: Module Id
       class: g-urltemplate input-small
       picker_label: Pick a Module

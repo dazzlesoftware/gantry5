@@ -1,9 +1,9 @@
-@include font-face('rockettheme-apps', 'gantry-theme://fonts/rockettheme-apps/rockettheme-apps');
+@include font-face('rockettheme-apps', 'genesis-theme://fonts/rockettheme-apps/rockettheme-apps');
 
 // Dazzle Software Apps Support
 i.fa-grav-spaceman, i.fa-grav-text, i.fa-grav-full,
 i.fa-grav-logo, i.fa-grav-symbol, i.fa-grav-logo-both, i.fa-grav-both,
-i.fa-gantry, i.fa-gantry-logo, i.fa-gantry-symbol, i.fa-gantry-logo-both, i.fa-gantry-both {
+i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.fa-genesis-both {
     font-family: 'rockettheme-apps';
     speak: none;
     font-style: normal;
@@ -29,12 +29,12 @@ i.fa-gantry, i.fa-gantry-logo, i.fa-gantry-symbol, i.fa-gantry-logo-both, i.fa-g
 }
 
 // Genesis
-.fa-gantry-logo:before {
+.fa-genesis-logo:before {
     content: "\64";
 }
-.fa-gantry:before, .fa-gantry-symbol:before {
+.fa-genesis:before, .fa-genesis-symbol:before {
     content: "\63";
 }
-.fa-gantry-logo-both:before, .fa-gantry-both:before {
+.fa-genesis-logo-both:before, .fa-genesis-both:before {
     content: "\65";
 }

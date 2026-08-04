@@ -1,4 +1,4 @@
-Gantry Themes
+Genesis Themes
 =============
 
 Every platform (excluding common) has '''scss.sh''' script which runs in the background and can be used to re-compile CSS every time something changes.

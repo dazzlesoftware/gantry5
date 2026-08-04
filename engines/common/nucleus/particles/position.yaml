@@ -23,4 +23,4 @@ form:
       type: input.text
       label: Chrome
       description: Module chrome in this position.
-      placeholder: gantry
+      placeholder: genesis

@@ -7,8 +7,8 @@
  * @license   GNU/GPLv3 and later
  */
 
-namespace Gantry\Theme;
+namespace Genesis\Theme;
 
-use Gantry\Framework\Theme;
+use Genesis\Framework\Theme;
 
-class G5_Aphrodite extends Theme {}
+class Genesis_Aphrodite extends Theme {}

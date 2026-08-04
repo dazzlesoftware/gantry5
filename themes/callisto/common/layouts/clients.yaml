@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: pages_-_clients
   timestamp: 1496309260
 layout:
@@ -102,51 +102,51 @@ content:
       album: 'Callisto Clients'
       imagegriditems:
         -
-          image: 'gantry-theme://images/demo/clients/img-01.jpg'
+          image: 'genesis-theme://images/demo/clients/img-01.jpg'
           caption: 'Client 1'
           title: 'Client 1'
         -
-          image: 'gantry-theme://images/demo/clients/img-02.jpg'
+          image: 'genesis-theme://images/demo/clients/img-02.jpg'
           caption: 'Client 2'
           title: 'Client 2'
         -
-          image: 'gantry-theme://images/demo/clients/img-03.jpg'
+          image: 'genesis-theme://images/demo/clients/img-03.jpg'
           caption: 'Client 3'
           title: 'Client 3'
         -
-          image: 'gantry-theme://images/demo/clients/img-04.jpg'
+          image: 'genesis-theme://images/demo/clients/img-04.jpg'
           caption: 'Client 4'
           title: 'Client 4'
         -
-          image: 'gantry-theme://images/demo/clients/img-05.jpg'
+          image: 'genesis-theme://images/demo/clients/img-05.jpg'
           caption: 'Client 5'
           title: 'Client 5'
         -
-          image: 'gantry-theme://images/demo/clients/img-06.jpg'
+          image: 'genesis-theme://images/demo/clients/img-06.jpg'
           caption: 'Client 6'
           title: 'Client 6'
         -
-          image: 'gantry-theme://images/demo/clients/img-07.jpg'
+          image: 'genesis-theme://images/demo/clients/img-07.jpg'
           caption: 'Client 7'
           title: 'Client 7'
         -
-          image: 'gantry-theme://images/demo/clients/img-08.jpg'
+          image: 'genesis-theme://images/demo/clients/img-08.jpg'
           caption: 'Client 8'
           title: 'Client 8'
         -
-          image: 'gantry-theme://images/demo/clients/img-09.jpg'
+          image: 'genesis-theme://images/demo/clients/img-09.jpg'
           caption: 'Client 9'
           title: 'Client 9'
         -
-          image: 'gantry-theme://images/demo/clients/img-10.jpg'
+          image: 'genesis-theme://images/demo/clients/img-10.jpg'
           caption: 'Client 10'
           title: 'Client 10'
         -
-          image: 'gantry-theme://images/demo/clients/img-11.jpg'
+          image: 'genesis-theme://images/demo/clients/img-11.jpg'
           caption: 'Client 11'
           title: 'Client 11'
         -
-          image: 'gantry-theme://images/demo/clients/img-12.jpg'
+          image: 'genesis-theme://images/demo/clients/img-12.jpg'
           caption: 'Client 12'
           title: 'Client 12'
     block:

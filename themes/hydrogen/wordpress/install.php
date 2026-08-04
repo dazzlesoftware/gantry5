@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_HydrogenInstallerScript
+ * Class Genesis_HydrogenInstallerScript
  */
-class G5_HydrogenInstallerScript
+class Genesis_HydrogenInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

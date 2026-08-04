@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: swiper
   timestamp: 1580382706
 layout:
@@ -195,7 +195,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: ''
           text: ''
@@ -217,7 +217,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: ''
           text: ''
@@ -239,7 +239,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: ''
           text: ''
@@ -324,7 +324,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: ''
           text: ''
           thumb_title: ''
@@ -345,7 +345,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: ''
           text: ''
           thumb_title: ''
@@ -366,7 +366,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: ''
           text: ''
@@ -457,7 +457,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Designed for Modern Education'
           text: 'A Perfect Theme for Your Campus'
@@ -468,7 +468,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
@@ -479,7 +479,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -553,7 +553,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Designed for Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -563,7 +563,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -573,7 +573,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -653,7 +653,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -663,7 +663,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -673,7 +673,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -747,7 +747,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Designed for Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -757,7 +757,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -767,7 +767,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -778,7 +778,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Designed for Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -788,7 +788,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -798,7 +798,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -809,7 +809,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Designed for Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -819,7 +819,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -829,7 +829,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -909,7 +909,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -919,7 +919,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -929,7 +929,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -1003,7 +1003,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -1013,7 +1013,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -1023,7 +1023,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -1034,7 +1034,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -1044,7 +1044,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -1054,7 +1054,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'
@@ -1065,7 +1065,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Modern Education'
           text: 'A Perfect Theme for Your Campus'
           thumb_title: ''
@@ -1075,7 +1075,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -1085,7 +1085,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bgcolor: ''
           title: 'Multimedia Ready'
           text: 'Support for Audio and Video Content'

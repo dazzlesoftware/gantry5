@@ -980,7 +980,7 @@ var SelectizeDefinition = {
         if (this.ignoreFocus) {
             return;
         } else if (!this.ignoreBlur && (document.activeElement === this.$dropdown_content[0])) {
-            // ^- g5 custom [before: no e.target && ..]
+            // ^- genesis custom [before: no e.target && ..]
             // necessary to prevent IE closing the dropdown when the scrollbar is clicked
             this.ignoreBlur = true;
             this.onFocus(e);
@@ -1092,7 +1092,7 @@ var SelectizeDefinition = {
     },
 
     getValue: function(value) {
-        // g5 custom
+        // genesis custom
         if (this.tagType === TAG_SELECT && this.input.attribute('multiple')) {
             return value || this.items;
         } else {
@@ -1251,7 +1251,7 @@ var SelectizeDefinition = {
     blur: function(dest) {
         this.$control_input[0].blur();
         this.onBlur(null, dest);
-        // g5 custom
+        // genesis custom
         //this.$control_input[0].blur();
     },
 
@@ -1328,7 +1328,7 @@ var SelectizeDefinition = {
         groups = {};
         groups_order = [];
 
-        // g5 custom
+        // genesis custom
         //if (this.options.optgroupOrder) {
         //    groups_order = this.options.optgroupOrder;
         //    for (i = 0; i < groups_order.length; i++) {
@@ -1453,7 +1453,7 @@ var SelectizeDefinition = {
             this.emit('option_add', value, data);
         }
 
-        // g5 custom
+        // genesis custom
         /*value = hash_key(data[this.options.valueField]);
          if (typeof value !== 'string' || this.Options.hasOwnProperty(value)) return;
 
@@ -1637,7 +1637,7 @@ var SelectizeDefinition = {
             value = hash_key(value);
 
             if (this.items.indexOf(value) !== -1) {
-                // g5 custom [before: && this.isOpen]
+                // genesis custom [before: && this.isOpen]
                 if (inputMode === 'single') this.close();
                 return;
             }
@@ -2351,10 +2351,10 @@ $.implement({
                 tag_name    = $input.tag().toLowerCase(),
                 placeholder = $input.attribute('placeholder') || $input.attribute('data-placeholder');
 
-            // g5 custom
+            // genesis custom
             if (dataOptions) { dataOptions = JSON.parse(dataOptions); }
             settings = merge({}, settings, dataOptions);
-            // end g5 custom
+            // end genesis custom
 
             if (!placeholder && !settings.allowEmptyOption) {
                 var chlds = $input.children('option[value=""]');

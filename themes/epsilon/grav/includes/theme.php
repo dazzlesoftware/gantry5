@@ -1,7 +1,7 @@
 <?php
 
-namespace Gantry\Theme;
+namespace Genesis\Theme;
 
-use Gantry\Framework\Theme;
+use Genesis\Framework\Theme;
 
-class G5_Epsilon extends Theme {}
+class Genesis_Epsilon extends Theme {}

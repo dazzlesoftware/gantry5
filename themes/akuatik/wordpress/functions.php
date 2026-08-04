@@ -7,7 +7,7 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\Theme;
+use Genesis\Framework\Theme;
 
 defined('ABSPATH') or die;
 
@@ -20,30 +20,30 @@ defined('ABSPATH') or die;
 // Note: This file must be PHP 5.6 compatible.
 
 // Check min. required version of Genesis
-$requiredGantryVersion = '5.5';
-$translationDomain = 'g5_akuatik';
+$requiredGenesisVersion = '5.5';
+$translationDomain = 'genesis_akuatik';
 
 if (is_admin()) {
-    $gantry_private_updater = __DIR__ . '/private/theme-updates.php';
-    if (file_exists($gantry_private_updater)) {
-        require_once $gantry_private_updater;
+    $genesis_private_updater = __DIR__ . '/private/theme-updates.php';
+    if (file_exists($genesis_private_updater)) {
+        require_once $genesis_private_updater;
     }
 }
 
 // Bootstrap Genesis framework or fail gracefully.
-$gantry_include = locate_template('/custom/includes/gantry.php') ?: locate_template('/includes/gantry.php');
-if (!$gantry_include) {
-    wp_die('Genesis theme is missing a file: includes/gantry.php');
+$genesis_include = locate_template('/custom/includes/genesis.php') ?: locate_template('/includes/genesis.php');
+if (!$genesis_include) {
+    wp_die('Genesis theme is missing a file: includes/genesis.php');
 }
 
-$gantry = require $gantry_include;
-if (!$gantry) {
+$genesis = require $genesis_include;
+if (!$genesis) {
     return;
 }
 
-if (!$gantry->isCompatible($requiredGantryVersion)) {
+if (!$genesis->isCompatible($requiredGenesisVersion)) {
     $current_theme = wp_get_theme();
-    $error = sprintf(__('Please upgrade Genesis Framework to v%s (or later) before using %s theme!', $translationDomain), strtoupper($requiredGantryVersion), $current_theme->get('Name'));
+    $error = sprintf(__('Please upgrade Genesis Framework to v%s (or later) before using %s theme!', $translationDomain), strtoupper($requiredGenesisVersion), $current_theme->get('Name'));
 
     if(is_admin()) {
         add_action('admin_notices', static function () use ($error) {
@@ -55,7 +55,7 @@ if (!$gantry->isCompatible($requiredGantryVersion)) {
 }
 
 /** @var Theme $theme */
-$theme = $gantry['theme'];
+$theme = $genesis['theme'];
 
 // Theme helper files that can contain useful methods or filters
 $helpers = array(

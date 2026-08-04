@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_VerslaInstallerScript
+ * Class Genesis_VerslaInstallerScript
  */
-class G5_VerslaInstallerScript
+class Genesis_VerslaInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

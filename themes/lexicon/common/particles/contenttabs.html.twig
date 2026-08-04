@@ -28,21 +28,21 @@
                             <div class="g-contenttabs-tab-wrapper-body">
                                 <div id="g-contenttabs-item-{{ loop.index }}" class="g-contenttabs-content">
 
-                                    <div class="gantry-row">
+                                    <div class="genesis-row">
                                         {% if item.image %}
-                                        <div class="gantry-width-25">
-                                            <div class="gantry-width-spacer"><img alt="image" src="{{ url(item.image)|e }}"></div>
+                                        <div class="genesis-width-25">
+                                            <div class="genesis-width-spacer"><img alt="image" src="{{ url(item.image)|e }}"></div>
                                         </div>
                                         {% endif %}
-                                        <div class="gantry-width-{% if item.image and item.rheading %}50{% elseif item.image or item.rheading %}75{% else %}100{% endif %}">
-                                            <div class="gantry-width-spacer">
+                                        <div class="genesis-width-{% if item.image and item.rheading %}50{% elseif item.image or item.rheading %}75{% else %}100{% endif %}">
+                                            <div class="genesis-width-spacer">
                                                 <h4>{{ item.heading|html|raw }}</h4>
                                                 {{ item.content|html|raw }}
                                             </div>
                                         </div>
                                         {% if item.rheading %}
-                                        <div class="gantry-width-25">
-                                            <div class="gantry-width-spacer gantry-right gantry-text-right">
+                                        <div class="genesis-width-25">
+                                            <div class="genesis-width-spacer genesis-right genesis-text-right">
                                                 <h4 class="nomarginbottom">{{ item.rheading|html|raw }}</h4>
                                                 {% if item.smalltext %}<p class="rt-text-small"><em>{{ item.smalltext|html|raw }}</em></p>{% endif %}
                                                 {% if item.link %}<p><a class="{{ item.buttonclass|e }}" href="{{ item.link|e }}" target="{{ item.buttontarget|default('_self')|e }}">{{ item.linklabel|html|raw }}</a></p>{% endif %}
@@ -54,21 +54,21 @@
 
                                     {% if item.content2 or item.heading2 %}
                                     <hr>
-                                    <div class="gantry-row">
+                                    <div class="genesis-row">
                                         {% if item.image2 %}
-                                        <div class="gantry-width-25">
-                                            <div class="gantry-width-spacer"><img alt="image" src="{{ url(item.image2)|e }}"></div>
+                                        <div class="genesis-width-25">
+                                            <div class="genesis-width-spacer"><img alt="image" src="{{ url(item.image2)|e }}"></div>
                                         </div>
                                         {% endif %}
-                                        <div class="gantry-width-{% if item.image2 and item.rheading2 %}50{% elseif item.image2 or item.rheading2 %}75{% else %}100{% endif %}">
-                                            <div class="gantry-width-spacer">
+                                        <div class="genesis-width-{% if item.image2 and item.rheading2 %}50{% elseif item.image2 or item.rheading2 %}75{% else %}100{% endif %}">
+                                            <div class="genesis-width-spacer">
                                                 <h4>{{ item.heading2|html|raw }}</h4>
                                                 {{ item.content2|html|raw }}
                                             </div>
                                         </div>
                                         {% if item.rheading2 %}
-                                        <div class="gantry-width-25">
-                                            <div class="gantry-width-spacer gantry-right gantry-text-right">
+                                        <div class="genesis-width-25">
+                                            <div class="genesis-width-spacer genesis-right genesis-text-right">
                                                 <h4 class="nomarginbottom">{{ item.rheading2|html|raw }}</h4>
                                                 {% if item.smalltext2 %}<p class="rt-text-small"><em>{{ item.smalltext2|html|raw }}</em></p>{% endif %}
                                                 {% if item.link2 %}<p><a class="{{ item.buttonclass2|e }}" href="{{ item.link2|e }}" target="{{ item.buttontarget2|default('_self')|e }}">{{ item.linklabel2|html|raw }}</a></p>{% endif %}

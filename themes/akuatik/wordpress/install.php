@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_AkuatikInstallerScript
+ * Class Genesis_AkuatikInstallerScript
  */
-class G5_AkuatikInstallerScript
+class Genesis_AkuatikInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

@@ -7,6 +7,6 @@
  */
 
 $platform = 'grav';
-$vendorAutoload = 'platforms/grav/gantry5/vendor/autoload.php';
+$vendorAutoload = 'platforms/grav/genesis/vendor/autoload.php';
 
 require __DIR__ . '/validate-platform-scss.php';

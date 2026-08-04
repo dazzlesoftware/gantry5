@@ -119,10 +119,10 @@
 
 .title1 {
     @if (lightness($base-background) > 50) {
-        background: url('gantry-media://backgrounds/general/header-light.svg');
+        background: url('genesis-media://backgrounds/general/header-light.svg');
         
       } @else {
-        background: url('gantry-media://backgrounds/general/header-dark.svg');
+        background: url('genesis-media://backgrounds/general/header-dark.svg');
       }
       background-repeat: no-repeat;
       background-size: 80% auto;
@@ -160,7 +160,7 @@
     &.g-outer-box,
     > .g-content {
         color: $black;
-        background: #fafafa url('gantry-media://backgrounds/particles/pricingtables-light.svg') no-repeat;
+        background: #fafafa url('genesis-media://backgrounds/particles/pricingtables-light.svg') no-repeat;
         background-size: 150% 120%;
             
         .g-main-nav {
@@ -265,7 +265,7 @@
     &.g-outer-box,
     > .g-content {
         color: $white;
-        background: $black url('gantry-media://backgrounds/particles/pricingtables-dark.svg') no-repeat;
+        background: $black url('genesis-media://backgrounds/particles/pricingtables-dark.svg') no-repeat;
         background-size: 150% 120%;
     }
 

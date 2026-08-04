@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1448957599
 layout:
@@ -224,7 +224,7 @@ content:
       autoplaySpeed: '5000'
       items:
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -239,7 +239,7 @@ content:
           buttonclass: ''
           name: 'Item 01'
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -254,7 +254,7 @@ content:
           buttonclass: ''
           name: 'Item 02'
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -298,7 +298,7 @@ content:
     attributes:
       items:
         -
-          img: 'gantry-media://demo/home/showcase/img-460x920.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x920.jpg'
           width: 393px
           datasize: 460x920
           overlay: g-overlay-enable
@@ -312,7 +312,7 @@ content:
           buttonclass: button-2
           title: 'Display volumes of content with the News Slider particle'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x280.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x280.jpg'
           width: 393px
           datasize: 460x280
           overlay: g-overlay-enable
@@ -326,7 +326,7 @@ content:
           buttonclass: button-2
           title: 'Present data with stylish and animated graphs with Chartist'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x460.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
           width: 393px
           datasize: 460x460
           overlay: g-overlay-disable
@@ -340,7 +340,7 @@ content:
           buttonclass: button-2
           title: 'A custom styled table particle for content in singular columns'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x460.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
           width: 393px
           datasize: 460x460
           overlay: g-overlay-disable
@@ -354,7 +354,7 @@ content:
           buttonclass: button-2
           title: 'An interactive mosaic structure for images and popup content'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x460.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
           width: 393px
           datasize: 460x460
           overlay: g-overlay-enable
@@ -368,7 +368,7 @@ content:
           buttonclass: button-2
           title: 'Create beautiful and complex dropdowns with Genesis'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x960.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x960.jpg'
           width: 393px
           datasize: 460x960
           overlay: g-overlay-disable
@@ -382,7 +382,7 @@ content:
           buttonclass: button-2
           title: 'FlexSlider is a versatile slideshow particle with multiple layouts'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x280.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x280.jpg'
           width: 393px
           datasize: 460x280
           overlay: g-overlay-enable
@@ -396,7 +396,7 @@ content:
           buttonclass: button-2
           title: 'Quick and easy display of social media icons such as Twitter'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x620.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x620.jpg'
           width: 393px
           datasize: 460x620
           overlay: g-overlay-enable
@@ -410,7 +410,7 @@ content:
           buttonclass: button-2
           title: 'Genesis supports both fluid and fixed responsive options'
         -
-          img: 'gantry-media://demo/home/showcase/img-460x460.jpg'
+          img: 'genesis-media://demo/home/showcase/img-460x460.jpg'
           width: 393px
           datasize: 460x460
           overlay: g-overlay-enable
@@ -441,7 +441,7 @@ content:
           overlayParallaxRatio: ''
           title: 'Genesis Controls'
           desc: 'The Styles panel allows you to choose and individually configure the six preset style variations, section by section.'
-          testimonialImage: 'gantry-media://demo/home/utility/img-01.jpg'
+          testimonialImage: 'genesis-media://demo/home/utility/img-01.jpg'
           testimonialName: 'Taylor Forest'
           testimonialPosition: 'Founder &amp; CEO'
           link: ''
@@ -456,7 +456,7 @@ content:
           overlayParallaxRatio: ''
           title: 'Genesis Controls'
           desc: 'The Settings panel allows you to configure default values for the integrated particles and position parameters.'
-          testimonialImage: 'gantry-media://demo/home/utility/img-01.jpg'
+          testimonialImage: 'genesis-media://demo/home/utility/img-01.jpg'
           testimonialName: 'Ruth Mellanie'
           testimonialPosition: Designer
           link: ''
@@ -471,7 +471,7 @@ content:
           overlayParallaxRatio: ''
           title: 'Genesis Controls'
           desc: 'The Pages Settings panel provides you options to control structural elements such as the head and body areas.'
-          testimonialImage: 'gantry-media://demo/home/utility/img-01.jpg'
+          testimonialImage: 'genesis-media://demo/home/utility/img-01.jpg'
           testimonialName: 'Logan Moore'
           testimonialPosition: Developer
           link: ''
@@ -488,63 +488,63 @@ content:
       album: 'Lightcase Image Grid'
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Multiple columns available for menu dropdowns'
           title: 'Item 01'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Insert positions or particles inside dropdown menus'
           title: 'Item 02'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Built in mobile menu for intuitive navigation'
           title: 'Item 03'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'A responsive layout for mobiles, tablets, laptops and desktops'
           title: 'Item 04'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Many prebuilt particles for complex content creation'
           title: 'Item 05'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Built using SASS for programmable stylesheets'
           title: 'Item 06'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Built with Twig -  a PHP template engine'
           title: 'Item 07'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Configurations are stored in a human readable YAML format'
           title: 'Item 08'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Packaged with six preset style variations'
           title: 'Item 09'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'A drag and drop layout manager'
           title: 'Item 10'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Interactive controls for configuring styles'
           title: 'Item 11'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Extensive documentation for both Genesis and Xenon'
           title: 'Item 12'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Core Genesis caching to maximise performance'
           title: 'Item 13'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'The RokBox plugin provides popup modal support'
           title: 'Item 14'
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: 'Cross browser compatible'
           title: 'Item 15'
     block:
@@ -637,7 +637,7 @@ content:
       testimonials:
         -
           style: g-testimonial-standard
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'Install the RocketLauncher onto your server, to get a near equivalent copy of the demo, to help understand how Xenon is configured.'
           author: 'Jeffrey Beck'
           company: 'Creative Director'
@@ -645,7 +645,7 @@ content:
           title: 'Item 01'
         -
           style: g-testimonial-standard
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'Genesis is a free template framework from Dazzle Software, that is made available with the templates, as well as from GitHub.'
           author: 'Emily Hudson'
           company: 'Community Manager'
@@ -653,7 +653,7 @@ content:
           title: 'Item 02'
         -
           style: g-testimonial-standard
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'The theme supports all major browsers and uses the latest technologies to deliver its features across multiple devices, such as mobiles.'
           author: 'Benjamin Morrison'
           company: 'CEO & Founder'

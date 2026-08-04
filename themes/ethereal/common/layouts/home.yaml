@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1516143068
 layout:
@@ -94,7 +94,7 @@ structure:
 content:
   logo-9334:
     attributes:
-      image: 'gantry-theme://images/logo/logo-header.png'
+      image: 'genesis-theme://images/logo/logo-header.png'
     block:
       class: g-logo-block
   menu-6822:
@@ -104,21 +104,21 @@ content:
     attributes:
       items:
         -
-          image: 'gantry-theme://images/demo/home/slideshow/img-01.jpg'
+          image: 'genesis-theme://images/demo/home/slideshow/img-01.jpg'
           title: Creative
           desc: ''
           linktext: ''
           link: ''
           name: 'Slide 01'
         -
-          image: 'gantry-theme://images/demo/home/slideshow/img-02.jpg'
+          image: 'genesis-theme://images/demo/home/slideshow/img-02.jpg'
           title: Elegant
           desc: ''
           linktext: ''
           link: ''
           name: 'Slide 02'
         -
-          image: 'gantry-theme://images/demo/home/slideshow/img-03.jpg'
+          image: 'genesis-theme://images/demo/home/slideshow/img-03.jpg'
           title: Artistic
           desc: ''
           linktext: ''
@@ -138,17 +138,17 @@ content:
     attributes:
       items:
         -
-          image: 'gantry-theme://images/demo/home/feature/img-01.jpg'
+          image: 'genesis-theme://images/demo/home/feature/img-01.jpg'
           title: 'A professional design based on vibrancy and elegance'
           desc: 'Ethereal is an exquisite design bursting with sharpness and bold, but complementary visuals; within a rich framework of emphasized typography and iconography.'
           name: 'Swiper 1'
         -
-          image: 'gantry-theme://images/demo/home/feature/img-02.jpg'
+          image: 'genesis-theme://images/demo/home/feature/img-02.jpg'
           title: 'A versatile and flexible in-built dropdown menu system'
           desc: 'Genesis benefits from a built-in navigation system. Dropdowns can be configured to be multiple columns with dynamic or configurable fixed widths.'
           name: 'Swiper 2'
         -
-          image: 'gantry-theme://images/demo/home/feature/img-03.jpg'
+          image: 'genesis-theme://images/demo/home/feature/img-03.jpg'
           title: 'Built on Genesis, a modern and flexible theme framework'
           desc: 'Genesis is a revolutionary template framework, built for the modern web, with features such as responsive designs, drag & drop layout and menu controls.'
           name: 'Swiper 3'
@@ -207,7 +207,7 @@ content:
       cols: g-listgrid-4cols
       listgriditems:
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-01.jpg'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-01.jpg'
           icon: 'fa fa-fw fa-camera'
           headline: ''
           titlebottom: Positions
@@ -216,7 +216,7 @@ content:
           class: ''
           title: Positions
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-02.jpg'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-02.jpg'
           icon: 'fa fa-fw fa-database'
           headline: ''
           titlebottom: Variations
@@ -225,7 +225,7 @@ content:
           class: ''
           title: Variations
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-03.jpg'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-03.jpg'
           icon: 'fa fa-fw fa-comments'
           headline: ''
           titlebottom: Presets
@@ -234,7 +234,7 @@ content:
           class: ''
           title: Presets
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-04.png'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-04.png'
           icon: 'fa fa-fw fa-heart'
           headline: 'Advanced menu<span class="hidden-tablet"> with dropdowns, columns and much more</span>'
           titlebottom: ''
@@ -243,7 +243,7 @@ content:
           class: ''
           title: 'Advanced Menu'
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-05.jpg'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-05.jpg'
           icon: 'fa fa-fw fa-paper-plane'
           headline: ''
           titlebottom: Particles
@@ -252,7 +252,7 @@ content:
           class: ''
           title: Particles
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-06.jpg'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-06.jpg'
           icon: 'fa fa-fw fa-rocket'
           headline: ''
           titlebottom: 'Genesis'
@@ -261,7 +261,7 @@ content:
           class: ''
           title: 'Genesis'
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-07.png'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-07.png'
           icon: 'fa fa-fw fa-bus'
           headline: 'Responsive Layout<span class="hidden-tablet"> supporting mobiles, tablets and computers</span>'
           titlebottom: ''
@@ -270,7 +270,7 @@ content:
           class: ''
           title: Responsive
         -
-          image: 'gantry-theme://images/demo/home/main/imageblock/img-08.jpg'
+          image: 'genesis-theme://images/demo/home/main/imageblock/img-08.jpg'
           icon: 'fa fa-fw fa-bar-chart'
           headline: ''
           titlebottom: Performance
@@ -336,7 +336,7 @@ content:
     title: 'Must Read'
     attributes:
       title: 'Must Read'
-      image1: 'gantry-theme://images/demo/home/main/etherealblock/img-01.jpg'
+      image1: 'genesis-theme://images/demo/home/main/etherealblock/img-01.jpg'
       title1: 'Style Variations'
       desc1: 'Choose and configure from a range of light and dark style presets'
       listgriditems1:
@@ -348,7 +348,7 @@ content:
           icon: 'fa fa-fw fa-circle-o'
           text: Light
           title: Light
-      image2: 'gantry-theme://images/demo/home/main/etherealblock/img-02.jpg'
+      image2: 'genesis-theme://images/demo/home/main/etherealblock/img-02.jpg'
       title2: 100%
       desc2: 'Access to the RocketLauncher, theme, extensions and sources for one price'
       readmore2: 'Buy Now'
@@ -363,7 +363,7 @@ content:
           icon: 'fa fa-fw fa-cog'
           text: Particle
           title: Particle
-      image4: 'gantry-theme://images/demo/home/main/etherealblock/img-03.jpg'
+      image4: 'genesis-theme://images/demo/home/main/etherealblock/img-03.jpg'
       listgriditems4:
         -
           icon: 'fa fa-fw fa-exchange'
@@ -444,7 +444,7 @@ content:
   imageoverlay-7161:
     title: 'Genesis Image'
     attributes:
-      image: 'gantry-theme://images/demo/home/bottom/img-01.jpg'
+      image: 'genesis-theme://images/demo/home/bottom/img-01.jpg'
       imagetitle: 'The Next Generation of Template Frameworks'
       imagetag: 'Genesis'
       desc: 'Genesis is an advanced, versatile and multi-platform template framework designed for the modern web.'
@@ -478,7 +478,7 @@ content:
           title: Advanced
   logo-7344:
     attributes:
-      image: 'gantry-theme://images/logo/logo-footer.png'
+      image: 'genesis-theme://images/logo/logo-footer.png'
   custom-1650:
     title: 'Demo Information'
     attributes:
@@ -494,15 +494,15 @@ content:
       text:
         -
           text: Features
-          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          link: 'http://docs.genesis.org/genesis/basics/key-features'
           name: Features
         -
           text: 'Genesis'
-          link: 'http://gantry.org/'
+          link: 'http://genesis.org/'
           name: 'Genesis'
         -
           text: Particles
-          link: 'http://docs.gantry.org/gantry5/particles'
+          link: 'http://docs.genesis.org/genesis/particles'
           name: Particles
         -
           text: Download

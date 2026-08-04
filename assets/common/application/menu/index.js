@@ -170,7 +170,7 @@ class Menu {
 
     touchmove(event) {
         const target = event.target instanceof Element ? event.target : event.currentTarget;
-        target.gantryMenuMoving = true;
+        target.genesisMenuMoving = true;
     }
 
     touchend(event) {
@@ -184,11 +184,11 @@ class Menu {
         const menuType = closest(target, ".g-standard") ? "standard" : "megamenu";
         const isGoingBack = Boolean(closest(target, ".g-go-back"));
 
-        if (target.gantryMenuMoving) {
-            target.gantryMenuMoving = false;
+        if (target.genesisMenuMoving) {
+            target.genesisMenuMoving = false;
             return false;
         }
-        target.gantryMenuMoving = false;
+        target.genesisMenuMoving = false;
 
         if (indicator) target = indicator;
 

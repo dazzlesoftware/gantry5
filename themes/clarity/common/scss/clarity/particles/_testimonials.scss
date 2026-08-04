@@ -189,7 +189,7 @@
 
         &::before {
             position: absolute;
-            background: url('gantry-media://backgrounds/testimonials/line.svg') no-repeat;
+            background: url('genesis-media://backgrounds/testimonials/line.svg') no-repeat;
             content: '';
             width: 8px;
             height: 24px;
@@ -197,7 +197,7 @@
             left: .2rem;
 
             .dir-rtl & {
-                background: url('gantry-media://backgrounds/testimonials/line-rtl.svg') no-repeat;
+                background: url('genesis-media://backgrounds/testimonials/line-rtl.svg') no-repeat;
                 left: auto;
                 right: .2rem;
             }

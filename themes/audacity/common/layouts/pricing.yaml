@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: pricing
   timestamp: 1523567954
 layout:
@@ -250,7 +250,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Simple Plans and Pricing</h3>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications.</p>\n\t\t\t\t<p class=\"hidden-tablet\">Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>\n\t\t\t\t<p><a href=\"https://dazzlesoftware.org/grav/themes/audacity\" class=\"readon\">Sign Up</a></p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Top Audacity Features</h3>\n\t\t\t\t<ul>\n\t\t\t\t\t<li>Powered by Genesis Framework</li>\n\t\t\t\t\t<li>CSS Dropdown Menu and Vertical Menu</li>\n\t\t\t\t\t<li>6 Styled Presets & Custom Particles</li>\n\t\t\t\t</ul>\n\t\t\t\t<p class=\"success\">Want to use Audacity for your clients? <a href=\"https://dazzlesoftware.org/grav/themes/audacity\">Purchase Single Package Now</a>.</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<div class=\"genesis-row\">\n\t<div class=\"genesis-width-container\">\n\t\t<div class=\"genesis-width-50\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<h3>Simple Plans and Pricing</h3>\n\t\t\t\t<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications.</p>\n\t\t\t\t<p class=\"hidden-tablet\">Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>\n\t\t\t\t<p><a href=\"https://dazzlesoftware.org/grav/themes/audacity\" class=\"readon\">Sign Up</a></p>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-50\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<h3>Top Audacity Features</h3>\n\t\t\t\t<ul>\n\t\t\t\t\t<li>Powered by Genesis Framework</li>\n\t\t\t\t\t<li>CSS Dropdown Menu and Vertical Menu</li>\n\t\t\t\t\t<li>6 Styled Presets & Custom Particles</li>\n\t\t\t\t</ul>\n\t\t\t\t<p class=\"success\">Want to use Audacity for your clients? <a href=\"https://dazzlesoftware.org/grav/themes/audacity\">Purchase Single Package Now</a>.</p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
   custom-9433:
@@ -279,7 +279,7 @@ content:
     attributes:
       title: 'Sample Contact Info'
       titletag: ''
-      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      html: "<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"genesis-width-container\">\n\t<div class=\"genesis-width-40\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<img src=\"genesis-media://pages/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"genesis-width-60\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Audacity Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
     block:

@@ -8,7 +8,7 @@ form:
     background:
       type: input.colorpicker
       label: Background
-      default: "#3176d6"     
+      default: "#3176d6"
     text-color:
       type: input.colorpicker
       label: Text
@@ -16,7 +16,7 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/extension/img-01.jpg"      
+      default: "genesis-media://backgrounds/extension/img-01.jpg"
     overlay-opacity:
       type: input.text
       label: Overlay Opacity

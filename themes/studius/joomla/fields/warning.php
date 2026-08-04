@@ -26,9 +26,9 @@ class JFormFieldWarning extends JFormField
     {
         $app = Factory::getApplication();
         if ($app->isClient('administrator')) {
-            $app->enqueueMessage(Text::_('GANTRY5_THEME_INSTALL_GANTRY'), 'error');
+            $app->enqueueMessage(Text::_('GENESIS_THEME_INSTALL_GENESIS'), 'error');
         } else {
-            $app->enqueueMessage(Text::_('GANTRY5_THEME_FRONTEND_SETTINGS_DISABLED'), 'warning');
+            $app->enqueueMessage(Text::_('GENESIS_THEME_FRONTEND_SETTINGS_DISABLED'), 'warning');
         }
 
         return '';

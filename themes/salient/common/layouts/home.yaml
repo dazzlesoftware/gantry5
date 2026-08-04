@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1505834698
 layout:
@@ -203,7 +203,7 @@ content:
     attributes:
       bgclass: g-bg-2
       animationclass: g-animatedblock-animation-1
-      image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+      image: 'genesis-media://demo/home/slideshow/img-01.jpg'
       headline: 100+
       desc: Templates
       readmore: '&rarr;'
@@ -215,7 +215,7 @@ content:
     attributes:
       bgclass: g-bg-4
       animationclass: g-animatedblock-animation-2
-      image: 'gantry-media://demo/home/slideshow/img-02.png'
+      image: 'genesis-media://demo/home/slideshow/img-02.png'
       headline: '36'
       desc: Projects
       readmore: '&rarr;'
@@ -229,7 +229,7 @@ content:
     attributes:
       bgclass: g-bg-1
       animationclass: g-animatedblock-animation-1
-      image: 'gantry-media://demo/home/slideshow/img-03.jpg'
+      image: 'genesis-media://demo/home/slideshow/img-03.jpg'
       headline: Fresh
       desc: 'Simple & Clean'
       readmore: '&rarr;'
@@ -239,7 +239,7 @@ content:
   custom-2215:
     title: 'Grey Blocks'
     attributes:
-      html: '<img src="gantry-media://demo/home/slideshow/img-04.png" alt="Salient" />'
+      html: '<img src="genesis-media://demo/home/slideshow/img-04.png" alt="Salient" />'
     block:
       class: 'g-animatedblock hidden-phone'
       variations: nopaddingall
@@ -248,7 +248,7 @@ content:
     attributes:
       bgclass: g-bg-5
       animationclass: g-animatedblock-animation-3
-      image: 'gantry-media://demo/home/slideshow/img-05.png'
+      image: 'genesis-media://demo/home/slideshow/img-05.png'
       headline: '5'
       desc: 'Team Members'
       readmore: '&rarr;'
@@ -262,7 +262,7 @@ content:
     attributes:
       bgclass: g-bg-3
       animationclass: g-animatedblock-animation-1
-      image: 'gantry-media://demo/home/slideshow/img-06.jpg'
+      image: 'genesis-media://demo/home/slideshow/img-06.jpg'
       headline: '7'
       desc: 'Sample Pages'
       readmore: '&rarr;'
@@ -286,7 +286,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://demo/home/showcase/img-01.png'
+          img: 'genesis-media://demo/home/showcase/img-01.png'
           subtitle: ''
           description: ''
           class: ''
@@ -294,7 +294,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://demo/home/showcase/img-02.png'
+          img: 'genesis-media://demo/home/showcase/img-02.png'
           subtitle: ''
           description: ''
           class: ''
@@ -302,7 +302,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://demo/home/showcase/img-03.png'
+          img: 'genesis-media://demo/home/showcase/img-03.png'
           subtitle: ''
           description: ''
           class: ''
@@ -310,7 +310,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://demo/home/showcase/img-04.png'
+          img: 'genesis-media://demo/home/showcase/img-04.png'
           subtitle: ''
           description: ''
           class: ''
@@ -318,7 +318,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://demo/home/showcase/img-05.png'
+          img: 'genesis-media://demo/home/showcase/img-05.png'
           subtitle: ''
           description: ''
           class: ''
@@ -371,7 +371,7 @@ content:
         -
           name: Styling
           icon: ''
-          img: 'gantry-media://demo/home/mainbar/img-01.png'
+          img: 'genesis-media://demo/home/mainbar/img-01.png'
           subtitle: '<a href="#">01.</a>'
           description: 'The Styles settings allows for customizing the stylistic elements of the template, such as links, font or background colors.'
           class: ''
@@ -379,7 +379,7 @@ content:
         -
           name: Particles
           icon: ''
-          img: 'gantry-media://demo/home/mainbar/img-02.png'
+          img: 'genesis-media://demo/home/mainbar/img-02.png'
           subtitle: '<a href="#">02.</a>'
           description: 'Particles operate as customizable blocks that form the flesh of the frontend, from placeholders to self contained content and functions.'
           class: ''
@@ -387,7 +387,7 @@ content:
         -
           name: Layout
           icon: ''
-          img: 'gantry-media://demo/home/mainbar/img-03.png'
+          img: 'genesis-media://demo/home/mainbar/img-03.png'
           subtitle: '<a href="#">03.</a>'
           description: 'The Layout manager provides drag-and-drop functionality with power to move, resize, and configure content in seconds.'
           class: ''
@@ -450,7 +450,7 @@ content:
       cols: g-1cols
       testimonials:
         -
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
           author: 'Eddie Lobanovsky'
           company: 'Super Corporation'
@@ -464,7 +464,7 @@ content:
       mapposition: top
       maps:
         -
-          img: 'gantry-media://demo/home/footer/img-01.jpg'
+          img: 'genesis-media://demo/home/footer/img-01.jpg'
           overlay: enabled
           marker: enabled
           icon: 'fa fa-map-marker fa-fw'
@@ -480,7 +480,7 @@ content:
       class: ''
       promostyle: subpromo
       title: +1(555)666.777.8888
-      desc: '<p>hello@salient-gantry.com</p>'
+      desc: '<p>hello@salient-genesis.com</p>'
     block:
       class: fp-footside-a
       variations: 'box1 nomarginall'
@@ -523,7 +523,7 @@ content:
   logo-3485:
     attributes:
       rel: home
-      image: 'gantry-media://logo/logo-footer.png'
+      image: 'genesis-media://logo/logo-footer.png'
       alt: Salient
       class: g-footer-logo
   totop-5363:

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: portfolio
   timestamp: 1527100073
 layout:
@@ -161,7 +161,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: '#'
               target: _blank
@@ -169,7 +169,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: '#'
               target: _blank
@@ -177,7 +177,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: '#'
               target: _blank
@@ -185,7 +185,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: '#'
               target: _blank
@@ -196,7 +196,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -204,7 +204,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -212,7 +212,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -220,7 +220,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -231,7 +231,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -239,7 +239,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -247,7 +247,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -255,7 +255,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -266,7 +266,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -274,7 +274,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -282,7 +282,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -290,7 +290,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               url: ''
               target: _blank
@@ -299,7 +299,7 @@ content:
   custom-7122:
     title: 'Custom HTML'
     attributes:
-      html: "<h3>Our Awesome Project</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<span class=\"rt-image\">\n\t\t\t\t\t<img src=\"gantry-media://pages/portfolio/img-17.jpg\" alt=\"image\" />\n\t\t\t\t</span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"gantry-width-50\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<h3>Project Description</h3>\n\t\t\t\t<p>Efficiently unleash cross-media information without cross-media value.<span class=\"hidden-tablet\"> Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</span></p>\n\t\t\t\t<h3>Project Details</h3>\n\t\t\t\t<div class=\"gantry-row\">\n\t\t\t\t\t<div class=\"gantry-width-30\">\n\t\t\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Customer:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Live Demo:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Published<span class=\"hidden-tablet\"> Date</span>:</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"gantry-width-70\">\n\t\t\t\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Dazzle Software</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">https://dazzlesoftware.org</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">08 March, 2014</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"clear\"></div>\n\t\t\t\t<p class=\"largemargintop\"><a href=\"#\" class=\"readon\">Learn More</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<h3>Our Awesome Project</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<div class=\"genesis-row\">\n\t<div class=\"genesis-width-container\">\n\t\t<div class=\"genesis-width-50\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<span class=\"rt-image\">\n\t\t\t\t\t<img src=\"genesis-media://pages/portfolio/img-17.jpg\" alt=\"image\" />\n\t\t\t\t</span>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"genesis-width-50\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<h3>Project Description</h3>\n\t\t\t\t<p>Efficiently unleash cross-media information without cross-media value.<span class=\"hidden-tablet\"> Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</span></p>\n\t\t\t\t<h3>Project Details</h3>\n\t\t\t\t<div class=\"genesis-row\">\n\t\t\t\t\t<div class=\"genesis-width-30\">\n\t\t\t\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Customer:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Live Demo:</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Published<span class=\"hidden-tablet\"> Date</span>:</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"genesis-width-70\">\n\t\t\t\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">Dazzle Software</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">https://dazzlesoftware.org</p>\n\t\t\t\t\t\t\t<p class=\"smallmarginbottom\">08 March, 2014</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"clear\"></div>\n\t\t\t\t<p class=\"largemargintop\"><a href=\"#\" class=\"readon\">Learn More</a></p>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
   testimonials-5205:
     attributes:
       class: ''
@@ -355,7 +355,7 @@ content:
     attributes:
       title: 'Our Satisfied Clients'
       titletag: ''
-      html: "<p>Will You be the Next to Join Our Happy Clients?</p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-container\">\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-18.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-19.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-20.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-21.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"gantry-width-20\">\n\t\t\t<div class=\"gantry-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"gantry-media://pages/portfolio/img-22.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br /><br />\n\n<p><a href=\"#\" class=\"readon\">Join Now</a></p>"
+      html: "<p>Will You be the Next to Join Our Happy Clients?</p>\n\n<br />\n\n<div class=\"genesis-row\">\n\t<div class=\"genesis-width-container\">\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-18.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-19.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-20.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-21.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"genesis-width-20\">\n\t\t\t<div class=\"genesis-width-spacer\">\n\t\t\t\t<a href=\"#\"><img class=\"rt-transparent-image\" src=\"genesis-media://pages/portfolio/img-22.png\" alt=\"image\" /></a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div><br /><br />\n\n<p><a href=\"#\" class=\"readon\">Join Now</a></p>"
       twig: '0'
       filter: '0'
     block:
@@ -371,7 +371,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"gantry-width-container\">\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img src=\"gantry-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"gantry-width-60\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Lexicon Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"genesis-width-container\">\n\t<div class=\"genesis-width-40\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<img src=\"genesis-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"genesis-width-60\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Lexicon Theme, LLC</span><br />\n\t\t\t<span>123 Grav Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
     block:

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: _error
   timestamp: 1457453164
 layout:
@@ -105,22 +105,22 @@ content:
   logo-9571:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://logo/logo-footer.svg'
+      image: 'genesis-media://logo/logo-footer.svg'
   horizontalmenu-9034:
     title: 'Horizontal Menu'
     attributes:
       items:
         -
           text: Genesis
-          link: 'http://gantry.org'
+          link: 'http://genesis.org'
           name: Genesis
         -
           text: Documentation
-          link: 'http://docs.gantry.org'
+          link: 'http://docs.genesis.org'
           name: Documentation
         -
           text: Download
-          link: 'http://gantry.org/downloads'
+          link: 'http://genesis.org/downloads'
           name: Download
   totop-8670:
     title: 'To Top'

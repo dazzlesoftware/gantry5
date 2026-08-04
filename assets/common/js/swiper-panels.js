@@ -13,10 +13,10 @@
             });
         }
 
-        carousel.addEventListener('g5:swiper:change', function (event) { select(event.detail.activeIndex); });
+        carousel.addEventListener('genesis:swiper:change', function (event) { select(event.detail.activeIndex); });
         panels.forEach(function (panel, index) {
             panel.addEventListener('click', function () {
-                var instance = carousel.gantrySwiper && carousel.gantrySwiper.instance;
+                var instance = carousel.genesisSwiper && carousel.genesisSwiper.instance;
                 if (instance) {
                     if (typeof instance.slideToLoop === 'function') instance.slideToLoop(index);
                     else instance.slideTo(index);

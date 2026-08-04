@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1488232369
 layout:
@@ -133,31 +133,31 @@ content:
       items:
         -
           subtitle: '2 days ago'
-          image: 'gantry-media://home/header/img-01.jpg'
+          image: 'genesis-media://home/header/img-01.jpg'
           caption: 'Genesis'
           link: '#'
           title: 'The Importance of Great Design'
         -
           subtitle: '2 days ago'
-          image: 'gantry-media://home/header/img-02.jpg'
+          image: 'genesis-media://home/header/img-02.jpg'
           caption: 'Color Picker'
           link: '#'
           title: 'Find Your Hue with the Color Picker'
         -
           subtitle: '2 days ago'
-          image: 'gantry-media://home/header/img-03.jpg'
+          image: 'genesis-media://home/header/img-03.jpg'
           caption: 'Icon Picker'
           link: '#'
           title: 'Choose Icons with the Icon Picker'
         -
           subtitle: '2 days ago'
-          image: 'gantry-media://home/header/img-04.jpg'
+          image: 'genesis-media://home/header/img-04.jpg'
           caption: 'File Picker'
           link: '#'
           title: 'Select Photos with File Picker'
         -
           subtitle: '2 days ago'
-          image: 'gantry-media://home/header/img-05.jpg'
+          image: 'genesis-media://home/header/img-05.jpg'
           caption: 'Font Picker'
           link: '#'
           title: 'Perfect Your Text with Font Picker'
@@ -179,7 +179,7 @@ content:
           content_title: ''
           author: ''
           leading_content: 'Acronym is packed with animated features you can easily configure to meet your needs.'
-          main_content: "<div class=\"g-promo-signature\">\n<img src=\"gantry-media://home/above/avatar.png\" alt=\"Avatar\" class=\"g-promo-avatar\">\n<div class=\"g-promo-titles\">\n<div class=\"g-promo-title\">Stone Cold Steve Austin</div>\n<div class=\"g-promo-subtitle\">\nCEO of SprocketBeams\n</div>\n</div>\n<img src=\"gantry-media://home/above/signature.png\"  alt=\"Signature\" class=\"g-promo-sign\">\n</div>"
+          main_content: "<div class=\"g-promo-signature\">\n<img src=\"genesis-media://home/above/avatar.png\" alt=\"Avatar\" class=\"g-promo-avatar\">\n<div class=\"g-promo-titles\">\n<div class=\"g-promo-title\">Stone Cold Steve Austin</div>\n<div class=\"g-promo-subtitle\">\nCEO of SprocketBeams\n</div>\n</div>\n<img src=\"genesis-media://home/above/signature.png\"  alt=\"Signature\" class=\"g-promo-sign\">\n</div>"
           readmore_label: ''
           readmore_link: ''
           readmore_class: ''
@@ -190,19 +190,19 @@ content:
   logo-9937:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://home/feature/img-01.png'
+      image: 'genesis-media://home/feature/img-01.png'
   logo-2461:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://home/feature/img-02.png'
+      image: 'genesis-media://home/feature/img-02.png'
   logo-8996:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://home/feature/img-03.png'
+      image: 'genesis-media://home/feature/img-03.png'
   logo-3862:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://home/feature/img-04.png'
+      image: 'genesis-media://home/feature/img-04.png'
   swipershowcase-7305:
     title: 'Swiper Showcase'
     attributes:
@@ -223,14 +223,14 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/showcase/img-01.jpg'
+          image: 'genesis-media://home/showcase/img-01.jpg'
           icon: ''
           title: 'Great for Photographers'
           desc: 'Beautifully Present Images'
           link: '#'
           name: 'Item 1'
         -
-          image: 'gantry-media://home/showcase/img-02.jpg'
+          image: 'genesis-media://home/showcase/img-02.jpg'
           icon: ''
           title: 'Multiple Image Particles'
           desc: 'Display Your Images with Ease'

@@ -7,31 +7,31 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\Platform;
-use Gantry\Framework\Theme;
+use Genesis\Framework\Platform;
+use Genesis\Framework\Theme;
 
-class_exists('\\Gantry\\Framework\\Gantry') or die;
+class_exists('\\Genesis\\Framework\\Genesis') or die;
 
 /**
  * Define the template.
  */
-class GantryTheme extends Theme
+class GenesisTheme extends Theme
 {
 }
 
 // Initialize theme stream.
 /** @var Platform $platform */
-$platform = $gantry['platform'];
+$platform = $genesis['platform'];
 $platform->set(
-    'streams.gantry-theme.prefixes',
+    'streams.genesis-theme.prefixes',
     array('' => array(
-        "gantry-themes://{$gantry['theme.name']}/custom",
-        "gantry-themes://{$gantry['theme.name']}",
-        "gantry-themes://{$gantry['theme.name']}/common"
+        "genesis-themes://{$genesis['theme.name']}/custom",
+        "genesis-themes://{$genesis['theme.name']}",
+        "genesis-themes://{$genesis['theme.name']}/common"
     ))
 );
 
 // Define Genesis services.
-$gantry['theme'] = static function ($c) {
-    return new GantryTheme($c['theme.path'], $c['theme.name']);
+$genesis['theme'] = static function ($c) {
+    return new GenesisTheme($c['theme.path'], $c['theme.name']);
 };

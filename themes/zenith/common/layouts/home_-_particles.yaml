@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1553507228
 layout:
@@ -204,7 +204,7 @@ content:
       effect: coverflow
       items:
         -
-          image: 'gantry-media://home/slideshow/img-1.jpg'
+          image: 'genesis-media://home/slideshow/img-1.jpg'
           top_title: 'Hi, I’m Jericho Smith.'
           main_title: 'I’m a freelance musician.'
           button_text: 'Hire Me'
@@ -212,7 +212,7 @@ content:
           linktarget: _self
           title: 'Slide 1'
         -
-          image: 'gantry-media://home/slideshow/img-1.jpg'
+          image: 'genesis-media://home/slideshow/img-1.jpg'
           top_title: 'Hi, I’m Alexa Evans.'
           main_title: 'I’m a graphics designer.'
           button_text: 'Hire Me'
@@ -220,7 +220,7 @@ content:
           linktarget: _self
           title: 'Slide 2'
         -
-          image: 'gantry-media://home/slideshow/img-1.jpg'
+          image: 'genesis-media://home/slideshow/img-1.jpg'
           top_title: 'Hi, I’m Sam Austin.'
           main_title: 'I’m a community manager.'
           button_text: 'Hire Me'
@@ -344,43 +344,43 @@ content:
           content: 'Zenith is a revolutionary new design from Dazzle Software featuring dozens of powerful particles and typography options.'
           author: 'Penelope Gardner'
           position: 'CEO at New Yorker'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'Penelope Gardner'
         -
           content: 'The Testimonials particle makes it easy to share positive reviews and feedback received from customers and fans.'
           author: 'Anne Rise'
           position: 'CTO of Inatech Inc.'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'Anne Rise'
         -
           content: 'Showcase your best photos in the Photo Collage particle, complete with customized height, width, and accompanying icon.'
           author: 'Tessa Trello'
           position: 'CTO of Eclipse Phase LLC'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'Tessa Trello'
         -
           content: 'Grid Statistic supercharges your ability to convey important numbers and statistics to your audience.'
           author: 'Neil Tyson'
           position: 'CEO of Cosmos Inc.'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'Neil Tyson'
         -
           content: 'It’s never been easier to display the logos of companies you’ve worked with than it is with the powerful Logos particle.'
           author: 'Steve Woz'
           position: 'Senior Engineer at Trek Wars'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'Steve Woz'
         -
           content: 'Incorporate audio into your website with the simple, yet versatile Audio Player particle. Create playlists that drive traffic.'
           author: 'Emma Brown'
           position: 'CEO of Outa Time Productions'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'Emma Brown'
         -
           content: 'Build a better front page using the intuitive Showcase particle. Present a big, bright image and accompanying text with ease.'
           author: 'William Zone'
           position: 'CEO of Space Quest LLC'
-          photo: 'gantry-media://home/above/img-1.png'
+          photo: 'genesis-media://home/above/img-1.png'
           name: 'William Zone'
       article:
         filter:
@@ -426,21 +426,21 @@ content:
           title: 'Save time with Genesis’s Layout Manager.'
         -
           layout: photo
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           description: ''
           date: '2019-03-27'
           target: _self
           title: 'Build better menus with the Menu Editor.'
         -
           layout: photo
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           description: ''
           date: '2019-03-19'
           target: _self
           title: 'Easily add functional scripts with ease.'
         -
           layout: photo
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           description: ''
           date: '2019-03-09'
           target: _self
@@ -540,7 +540,7 @@ content:
           readmorelink: '#'
           readmoretarget: _self
           readmoreclass: ''
-          image: 'gantry-media://home/showcase/img-01.jpg'
+          image: 'genesis-media://home/showcase/img-01.jpg'
           title: 'Zenith is the Perfect Design'
         -
           category: ''
@@ -551,7 +551,7 @@ content:
           readmorelink: '#'
           readmoretarget: _self
           readmoreclass: ''
-          image: 'gantry-media://home/showcase/img-01.jpg'
+          image: 'genesis-media://home/showcase/img-01.jpg'
           title: 'Professional Color Presets and Layouts'
         -
           category: ''
@@ -562,7 +562,7 @@ content:
           readmorelink: '#'
           readmoretarget: _self
           readmoreclass: ''
-          image: 'gantry-media://home/showcase/img-01.jpg'
+          image: 'genesis-media://home/showcase/img-01.jpg'
           title: 'Do More with Genesis Particles'
       jcategories: ''
       jarticles: '1'
@@ -620,37 +620,37 @@ content:
         -
           width: width-2
           height: height-2
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-search-plus'
           title: 'Item 1'
         -
           width: width-2
           height: height-3
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-search-plus'
           title: 'Item 2'
         -
           width: width-2
           height: height-2
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-search-plus'
           title: 'Item 3'
         -
           width: width-2
           height: height-2
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-search-plus'
           title: 'Item 4'
         -
           width: width-2
           height: height-2
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-search-plus'
           title: 'Item 5'
         -
           width: width-2
           height: ''
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-search-plus'
           title: 'Item 6'
       article:
@@ -674,33 +674,33 @@ content:
     attributes:
       logos:
         -
-          image: 'gantry-media://home/extension/img-01.png'
+          image: 'genesis-media://home/extension/img-01.png'
           url: ''
           target: _self
           title: Adidas
         -
-          image: 'gantry-media://home/extension/img-02.png'
+          image: 'genesis-media://home/extension/img-02.png'
           url: ''
           target: _self
           title: Vogue
         -
-          image: 'gantry-media://home/extension/img-03.png'
+          image: 'genesis-media://home/extension/img-03.png'
           url: ''
           target: _self
           title: Oriflame
         -
-          image: 'gantry-media://home/extension/img-04.png'
+          image: 'genesis-media://home/extension/img-04.png'
           url: ''
           target: _self
           title: Huawei
         -
-          image: 'gantry-media://home/extension/img-05.png'
+          image: 'genesis-media://home/extension/img-05.png'
           url: ''
           target: _self
           title: T-mobile
   promo-8286:
     attributes:
       text: 'I will get <br /> back to you <br /> with a quote <br /> in 24 hours'
-      image: 'gantry-media://home/bottom/img-01.jpg'
+      image: 'genesis-media://home/bottom/img-01.jpg'
     block:
       variations: 'nomarginall nopaddingall'

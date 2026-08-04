@@ -9,9 +9,9 @@
 
 defined('ABSPATH') or die;
 
-use Gantry\Component\Config\Config;
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme;
+use Genesis\Component\Config\Config;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Theme;
 use Timber\Timber;
 
 /*
@@ -22,13 +22,13 @@ use Timber\Timber;
  * E.g., it puts together the home page when no home.php file exists
  */
 
-$gantry = Gantry::instance();
+$genesis = Genesis::instance();
 
 /** @var Theme $theme */
-$theme  = $gantry['theme'];
+$theme  = $genesis['theme'];
 
 /** @var Config $config */
-$config = $gantry['config'];
+$config = $genesis['config'];
 
 global $paged;
 

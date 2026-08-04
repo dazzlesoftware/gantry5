@@ -181,8 +181,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
-          image2: 'gantry-media://home/slideshow/img-01.png'
+          image: 'genesis-media://backgrounds/slideshow/bg-01.svg'
+          image2: 'genesis-media://home/slideshow/img-01.png'
           bg_horizontal: center
           bg_vertical: center
           bg_horizontal2: right
@@ -198,8 +198,8 @@ content:
           title: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
-          image2: 'gantry-media://home/slideshow/img-01.png'
+          image: 'genesis-media://backgrounds/slideshow/bg-01.svg'
+          image2: 'genesis-media://home/slideshow/img-01.png'
           bg_horizontal: center
           bg_vertical: center
           bg_horizontal2: right
@@ -215,8 +215,8 @@ content:
           title: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://backgrounds/slideshow/bg-01.svg'
-          image2: 'gantry-media://home/slideshow/img-01.png'
+          image: 'genesis-media://backgrounds/slideshow/bg-01.svg'
+          image2: 'genesis-media://home/slideshow/img-01.png'
           bg_horizontal: center
           bg_vertical: center
           bg_horizontal2: right
@@ -369,21 +369,21 @@ content:
           content: '“Akuatik is an exceptional theme for my company’s website. Its askew Slideshow and Testimonial particles are wonderful.”'
           author: 'Dread Pirate Roberts'
           position: 'CEO of The Company Inc'
-          photo: 'gantry-media://home/above/above-1.jpg'
+          photo: 'genesis-media://home/above/above-1.jpg'
           alttext: 'Testimonial'
           name: 'testimonial 1'
         -
           content: '“Akuatik is unlike any theme we’ve ever used before. The animated Team particle really draws our visitors’ eyes.”'
           author: 'Princess Buttercup'
           position: 'CEO of The Company Inc'
-          photo: 'gantry-media://home/above/above-1.jpg'
+          photo: 'genesis-media://home/above/above-1.jpg'
           alttext: 'Testimonial'
           name: 'testimonial 2'
         -
           content: '“Akuatik is perfect for small businesses and even large corporations. It is a brilliantly modern, yet professional design!”'
           author: 'Valerie Doe'
           position: 'CEO of The Company Inc'
-          photo: 'gantry-media://home/above/above-1.jpg'
+          photo: 'genesis-media://home/above/above-1.jpg'
           alttext: 'Testimonial'
           name: 'testimonial 3'
       article:
@@ -464,7 +464,7 @@ content:
       topics:
         -
           featured: 'yes'
-          image: 'gantry-media://home/feature/img-01.png'
+          image: 'genesis-media://home/feature/img-01.png'
           date: '2019-07-24'
           url: '#'
           target: _blank
@@ -616,13 +616,13 @@ content:
         -
           member:
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Senior Manager'
               url: '#'
               target: _self
               title: 'Alex Sarc'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: Manager
               url: '#'
               target: _self
@@ -631,31 +631,31 @@ content:
         -
           member:
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Creative Director'
               url: '#'
               target: _self
               title: 'John Doe'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Lead Designer'
               url: '#'
               target: _self
               title: 'Michael Smith'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: Illustrator
               url: '#'
               target: _self
               title: 'Janice Cold'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Web designer'
               url: '#'
               target: _self
               title: 'Miriam Vicci'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'UI/UX Expert'
               url: '#'
               target: _self
@@ -664,19 +664,19 @@ content:
         -
           member:
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Front End Developer'
               url: '#'
               target: _self
               title: 'Sonia Elvic'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Full Stack Developer'
               url: ''
               target: _self
               title: 'John Lee'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Back End Developer'
               url: '#'
               target: _self
@@ -685,13 +685,13 @@ content:
         -
           member:
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Content Manager'
               url: '#'
               target: _self
               title: 'Arthur Corry'
             -
-              image: 'gantry-media://home/expanded/img-01.jpg'
+              image: 'genesis-media://home/expanded/img-01.jpg'
               position: 'Senior Editor'
               url: '#'
               target: _self
@@ -713,7 +713,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-1.jpg'
+              image: 'genesis-media://home/extension/news-1.jpg'
               description: ''
               url: ''
               target: _self
@@ -731,7 +731,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-2.jpg'
+              image: 'genesis-media://home/extension/news-2.jpg'
               description: ''
               url: ''
               target: _self
@@ -740,7 +740,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-1.jpg'
+              image: 'genesis-media://home/extension/news-1.jpg'
               description: ''
               url: ''
               target: _self
@@ -749,7 +749,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-2.jpg'
+              image: 'genesis-media://home/extension/news-2.jpg'
               description: ''
               url: ''
               target: _self
@@ -767,7 +767,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-2.jpg'
+              image: 'genesis-media://home/extension/news-2.jpg'
               description: ''
               url: ''
               target: _self
@@ -776,7 +776,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-2.jpg'
+              image: 'genesis-media://home/extension/news-2.jpg'
               description: ''
               url: ''
               target: _self
@@ -794,7 +794,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-2.jpg'
+              image: 'genesis-media://home/extension/news-2.jpg'
               description: ''
               url: ''
               target: _self
@@ -812,7 +812,7 @@ content:
               layout: photo
               variant: light
               date: ''
-              image: 'gantry-media://home/extension/news-2.jpg'
+              image: 'genesis-media://home/extension/news-2.jpg'
               description: 'Embed video content in seconds with the Video particle.'
               url: ''
               target: _self

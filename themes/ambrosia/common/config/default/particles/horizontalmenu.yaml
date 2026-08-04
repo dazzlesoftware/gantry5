@@ -4,15 +4,15 @@ target: _parent
 items:
   -
     text: Features
-    link: 'http://docs.gantry.org/gantry5/basics/key-features'
+    link: 'http://docs.genesis.org/genesis/basics/key-features'
     name: Features
   -
     text: 'Genesis'
-    link: 'http://www.gantry.org/'
+    link: 'http://www.genesis.org/'
     name: 'Genesis'
   -
     text: Particles
-    link: 'http://docs.gantry.org/gantry5/particles'
+    link: 'http://docs.genesis.org/genesis/particles'
     name: Particles
   -
     text: Download

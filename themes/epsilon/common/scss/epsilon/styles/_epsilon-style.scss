@@ -32,7 +32,7 @@
 }
 .rt-powered-by {
 	display: block;
-	background: url(gantry-theme://images/logo/logo-alt.png) 0 0 no-repeat;
+	background: url(genesis-theme://images/logo/logo-alt.png) 0 0 no-repeat;
 	margin: auto;
     width: 210px;
     height: 78px;
@@ -496,7 +496,7 @@ div[id^="logo"] {
 		&.g-logo {
 			width: 180px;
 			height: 80px;
-			background: url(gantry-theme://images/logo/logo.png) center center no-repeat $accent-color-1;
+			background: url(genesis-theme://images/logo/logo.png) center center no-repeat $accent-color-1;
 
 			img {
 				display: none;
@@ -586,7 +586,7 @@ div[id^="logo"] {
 }
 
 .rt-footer-logo {
-	background: url(gantry-theme://images/logo/logo-alt.png) 0 0 no-repeat;
+	background: url(genesis-theme://images/logo/logo-alt.png) 0 0 no-repeat;
 	width: 118px;
 	height: 78px;
 	margin: auto;

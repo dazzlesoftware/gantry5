@@ -89,18 +89,18 @@ paths = {
             load: './engines/common/nucleus/scss'
         },
         { // admin - joomla
-            in: './platforms/joomla/com_gantry5/admin/scss/joomla-admin.scss',
-            out: './platforms/joomla/com_gantry5/admin/css-compiled/joomla-g-admin.css',
+            in: './platforms/joomla/com_genesis/admin/scss/joomla-admin.scss',
+            out: './platforms/joomla/com_genesis/admin/css-compiled/joomla-g-admin.css',
             load: './engines/common/nucleus/scss'
         },
         { // admin - wordpress
-            in: './platforms/wordpress/gantry5/admin/scss/wordpress-admin.scss',
-            out: './platforms/wordpress/gantry5/admin/css-compiled/wordpress-g-admin.css',
+            in: './platforms/wordpress/genesis/admin/scss/wordpress-admin.scss',
+            out: './platforms/wordpress/genesis/admin/css-compiled/wordpress-g-admin.css',
             load: './engines/common/nucleus/scss'
         },
         { // admin - grav
-            in: './platforms/grav/gantry5/admin/scss/grav-admin.scss',
-            out: './platforms/grav/gantry5/admin/css-compiled/grav-g-admin.css',
+            in: './platforms/grav/genesis/admin/scss/grav-admin.scss',
+            out: './platforms/grav/genesis/admin/css-compiled/grav-g-admin.css',
             load: './engines/common/nucleus/scss'
         },
         { // nucleus

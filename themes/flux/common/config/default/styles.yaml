@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#7b00f7'
@@ -31,15 +31,15 @@ preset1:
       text-color: '#ffffff'
     slideshow:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#605c72'
     header:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/header/img-01.jpg'
       text-color: '#605c72'
     above:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
       text-color: '#ffffff'
     feature:
       background: '#ffffff'
@@ -79,7 +79,7 @@ preset1:
       large-mobile-container: 30rem
       mobile-menu-breakpoint: 51rem
 preset2:
-  image: 'gantry-admin://images/preset2.png'
+  image: 'genesis-admin://images/preset2.png'
   description: 'Preset 2'
   colors:
     - '#e73a4a'
@@ -111,15 +111,15 @@ preset2:
       text-color: '#ffffff'
     slideshow:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#605c72'
     header:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/header/img-01.jpg'
       text-color: '#605c72'
     above:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
       text-color: '#ffffff'
     feature:
       background: '#ffffff'
@@ -159,7 +159,7 @@ preset2:
       large-mobile-container: 30rem
       mobile-menu-breakpoint: 51rem
 preset3:
-  image: 'gantry-admin://images/preset3.png'
+  image: 'genesis-admin://images/preset3.png'
   description: 'Preset 3'
   colors:
     - '#2fb581'
@@ -191,15 +191,15 @@ preset3:
       text-color: '#ffffff'
     slideshow:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#605c72'
     header:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/header/img-01.jpg'
       text-color: '#605c72'
     above:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
       text-color: '#ffffff'
     feature:
       background: '#ffffff'
@@ -239,7 +239,7 @@ preset3:
       large-mobile-container: 30rem
       mobile-menu-breakpoint: 51rem
 preset4:
-  image: 'gantry-admin://images/preset4.png'
+  image: 'genesis-admin://images/preset4.png'
   description: 'Preset 4'
   colors:
     - '#0066ff'
@@ -271,15 +271,15 @@ preset4:
       text-color: '#ffffff'
     slideshow:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#605c72'
     header:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/header/img-01.jpg'
       text-color: '#605c72'
     above:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
       text-color: '#ffffff'
     feature:
       background: '#ffffff'
@@ -319,7 +319,7 @@ preset4:
       large-mobile-container: 30rem
       mobile-menu-breakpoint: 51rem
 preset5:
-  image: 'gantry-admin://images/preset5.png'
+  image: 'genesis-admin://images/preset5.png'
   description: 'Preset 5'
   colors:
     - '#ffa619'
@@ -351,15 +351,15 @@ preset5:
       text-color: '#ffffff'
     slideshow:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#605c72'
     header:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/header/img-01.jpg'
       text-color: '#605c72'
     above:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
       text-color: '#ffffff'
     feature:
       background: '#ffffff'

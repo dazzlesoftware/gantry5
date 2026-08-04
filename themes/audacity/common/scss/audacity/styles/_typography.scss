@@ -159,7 +159,7 @@ h6 {font-size: $base-font-size * 1.2; line-height: $base-line-height * 1.1;}
 	}
 }
 
-.gantry-example {
+.genesis-example {
     position: relative;
     margin: 15px 0;
     padding: 45px 19px 14px;
@@ -168,7 +168,7 @@ h6 {font-size: $base-font-size * 1.2; line-height: $base-line-height * 1.1;}
     border-radius: 4px;
 }
 
-.gantry-example:after {
+.genesis-example:after {
         content: "Example";
         position: absolute;
         top: -1px;
@@ -183,25 +183,25 @@ h6 {font-size: $base-font-size * 1.2; line-height: $base-line-height * 1.1;}
         font-style: normal;
 }
 
-.gantry-example > p:last-child {
+.genesis-example > p:last-child {
         margin-bottom: 0;
 }
 
-.gantry-example blockquote, .gantry-example .table, .gantry-example .well {
+.genesis-example blockquote, .genesis-example .table, .genesis-example .well {
         margin-bottom: 5px;
 }
 
-.gantry-left {
+.genesis-left {
     float: left;
     margin-right: 15px;
 }
 
-.gantry-right {
+.genesis-right {
     float: right;
     margin-left: 15px;
 }
 
-.gantry-example + .prettyprint {
+.genesis-example + .prettyprint {
     margin-top: -20px;
     padding-top: 15px;
 }

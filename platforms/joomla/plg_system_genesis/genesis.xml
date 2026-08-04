@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+    <name>plg_system_genesis</name>
+    <version>@version@</version>
+    <creationDate>@versiondate@</creationDate>
+    <author>Dazzle Software, LLC</author>
+    <authorEmail>support@dazzlesoftware.org</authorEmail>
+    <authorUrl>https://dazzlesoftware.org</authorUrl>
+    <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
+    <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
+    <description>PLG_SYSTEM_GENESIS_DESCRIPTION</description>
+
+    <files>
+        <filename plugin="genesis">genesis.php</filename>
+        <filename>MD5SUMS</filename>
+        <folder>forms</folder>
+        <folder>language</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="PLG_SYSTEM_GENESIS">
+                <field name="production"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="0"
+                       description="PLG_SYSTEM_GENESIS_FIELD_PRODUCTION_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_PRODUCTION_LABEL">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="use_assignments"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="1"
+                       description="PLG_SYSTEM_GENESIS_FIELD_USE_ASSIGNMENTS_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_USE_ASSIGNMENTS_LABEL">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="use_media_folder"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="0"
+                       description="PLG_SYSTEM_GENESIS_FIELD_USE_MEDIA_FOLDER_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_USE_MEDIA_FOLDER_LABEL">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="asset_timestamps"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="1"
+                       description="PLG_SYSTEM_GENESIS_FIELD_ASSET_TIMESTAMPS_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_ASSET_TIMESTAMPS_LABEL">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="asset_timestamps_period"
+                       type="text"
+                       default="7"
+                       filter="float"
+                       description="PLG_SYSTEM_GENESIS_FIELD_ASSET_TIMESTAMPS_PERIOD_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_ASSET_TIMESTAMPS_PERIOD_LABEL"/>
+
+                <field name="compile_yaml"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="1"
+                       description="PLG_SYSTEM_GENESIS_FIELD_COMPILE_YAML_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_COMPILE_YAML_LABEL">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="compile_twig"
+                       type="radio"
+                       class="btn-group btn-group-yesno"
+                       default="1"
+                       description="PLG_SYSTEM_GENESIS_FIELD_COMPILE_TWIG_DESC"
+                       label="PLG_SYSTEM_GENESIS_FIELD_COMPILE_TWIG_LABEL">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

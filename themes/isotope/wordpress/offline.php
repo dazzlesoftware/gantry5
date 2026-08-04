@@ -9,18 +9,18 @@
 
 defined('ABSPATH') or die;
 
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Theme;
 use Timber\Timber;
 
 /*
  * The template to display when page is offline
  */
 
-$gantry = Gantry::instance();
+$genesis = Genesis::instance();
 
 /** @var Theme $theme */
-$theme  = $gantry['theme'];
+$theme  = $genesis['theme'];
 $theme->setLayout('_offline', true);
 
 // We need to render contents of <head> before plugin content gets added.

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1544802425
 layout:
@@ -171,7 +171,7 @@ content:
       speed: '250'
       items:
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           small_title: 'Designed for Modern Education'
           button_text: 'Explore Now'
           button_link: '#'
@@ -179,7 +179,7 @@ content:
           linktarget: _self
           title: 'A Perfect Theme for Your Campus'
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           small_title: 'Packed with Premium Features'
           button_text: 'Explore Now'
           button_link: '#'
@@ -187,7 +187,7 @@ content:
           linktarget: _self
           title: 'Over 30 Particles to Choose From'
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           small_title: 'Multimedia Ready'
           button_text: 'Explore Now'
           button_link: '#'
@@ -224,19 +224,19 @@ content:
       cases:
         -
           layout: text
-          image: 'gantry-media://home/header/img-01.jpg'
+          image: 'genesis-media://home/header/img-01.jpg'
           description: 'Vanderbilt’s first African American vice chancellor will return to teaching after a distinguished 27-year career in higher education'
           url: '#'
           title: 'David Williams stepping down as vice chancellor, athletics director'
         -
           layout: photo
-          image: 'gantry-media://home/header/img-02.jpg'
+          image: 'genesis-media://home/header/img-02.jpg'
           description: ''
           url: ''
           title: 'One of our students gets some prestigious art award and we want to brag.'
         -
           layout: text
-          image: 'gantry-media://home/header/img-01.jpg'
+          image: 'genesis-media://home/header/img-01.jpg'
           description: 'Our students engage with the arts as both creators and viewers. We are painters and sculptors, actors and songwriters...'
           url: '#'
           title: 'The visual arts are fundamentally important to the life and culture of our College'
@@ -248,25 +248,25 @@ content:
           title: 'Every child is an artist. The problem is how to remain an artist once we grow up.'
         -
           layout: photo
-          image: 'gantry-media://home/header/img-02.jpg'
+          image: 'genesis-media://home/header/img-02.jpg'
           description: ''
           url: ''
           title: 'Last chance to visit our 2018 Graduates'' Exhibition'
         -
           layout: text
-          image: 'gantry-media://home/header/img-01.jpg'
+          image: 'genesis-media://home/header/img-01.jpg'
           description: 'In a colorful musical celebration of autumn, the Vermont Symphony Orchestra (VSO) returns to Evergreen College on Saturday...'
           url: '#'
           title: 'Vermont Symphony Orchestra Returns to Evergreen College with Music and More Made in Vermont'
         -
           layout: text
-          image: 'gantry-media://home/header/img-01.jpg'
+          image: 'genesis-media://home/header/img-01.jpg'
           description: 'Evergreen College’s Kevin P. Mahaney ’84 Center for the Arts is proud to announce the 2018–2019 season lineup, with beautiful performances...'
           url: '#'
           title: 'Mahaney Center for the Arts Announces New Season'
         -
           layout: photo
-          image: 'gantry-media://home/header/img-02.jpg'
+          image: 'genesis-media://home/header/img-02.jpg'
           description: ''
           url: ''
           title: 'Al the Details about our Fifth Annual Speed Painting Competition'
@@ -332,7 +332,7 @@ content:
   logo-3537:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://home/above/img-01.jpg'
+      image: 'genesis-media://home/above/img-01.jpg'
       class: g-above-image
     block:
       variations: 'nomarginall nopaddingall'
@@ -349,35 +349,35 @@ content:
         -
           description: "- Art Cirriculum Writer<br>\n- Art Administrator<br>\n- Arts and Cultural Planner<br>\n- Website Owner & Blogger<br>\n- Graphic Novel Author<br>"
           icon: 'fa fa-i-cursor'
-          image: 'gantry-media://home/feature/image-01.jpg'
+          image: 'genesis-media://home/feature/image-01.jpg'
           link: ''
           linktarget: modal
           title: Writing
         -
           description: "- Graphic Designer<br>\n- Design Director<br>\n- Interactive Designer<br>\n- Advertising Designer<br>\n- Package Designer"
           icon: 'fa fa-crop'
-          image: 'gantry-media://home/feature/image-01.jpg'
+          image: 'genesis-media://home/feature/image-01.jpg'
           link: ''
           linktarget: modal
           title: 'Graphic Design'
         -
           description: "- Advertising Director<br>\n- Logo & Branding Designer<br>\n- Advertisement Designer<br>\n- Magazine Layout Designer<br>\n- Typographer"
           icon: 'fa fa-scissors'
-          image: 'gantry-media://home/feature/image-01.jpg'
+          image: 'genesis-media://home/feature/image-01.jpg'
           link: ''
           linktarget: modal
           title: 'Fashion Design'
         -
           description: "- Digital photography<br>\n- Digital video production<br>\n- Computer animation<br>\n- Graphic design<br>\n- Digital audio production"
           icon: 'fa fa-desktop'
-          image: 'gantry-media://home/feature/image-01.jpg'
+          image: 'genesis-media://home/feature/image-01.jpg'
           link: ''
           linktarget: modal
           title: 'Digital Media'
         -
           description: "- Architect<br>\n- Landscape architect<br>\n- Interior designer<br>\n- Environmental artist<br>\n- Exhibition designer"
           icon: 'fa fa-soccer-ball-o'
-          image: 'gantry-media://home/feature/image-01.jpg'
+          image: 'genesis-media://home/feature/image-01.jpg'
           link: ''
           linktarget: modal
           title: 'Spatial Design'
@@ -1330,9 +1330,9 @@ content:
           video: '#'
           local:
             -
-              file: 'gantry-media://home/utility/video-01.mp4'
+              file: 'genesis-media://home/utility/video-01.mp4'
               title: 'New item'
-          posterimage: 'gantry-media://home/utility/img-01.jpg'
+          posterimage: 'genesis-media://home/utility/img-01.jpg'
           loop: enabled
           autoplay: disabled
           controls: disabled

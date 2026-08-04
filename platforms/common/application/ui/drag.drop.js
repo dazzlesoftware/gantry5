@@ -83,8 +83,8 @@ class DragDrop extends EventEmitter {
         if (!element.parent('[data-lm-root]') && element.hasClass('g-block') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
 
         if (event.which && event.which !== 1 || $(event.target).matches(this.options.exclude)) { return true; }
-        if (event.__g5DragStarted) { return true; }
-        event.__g5DragStarted = true;
+        if (event.__genesisDragStarted) { return true; }
+        event.__genesisDragStarted = true;
         this.element = $(element);
         this.original = this.element;
         this.matched = false;

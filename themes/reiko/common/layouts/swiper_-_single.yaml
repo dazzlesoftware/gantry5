@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: swiper
   timestamp: 1580382706
 layout:
@@ -195,7 +195,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Score Big with Reiko</span>'
           text: 'A New Theme for Sports Fans'
@@ -206,7 +206,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Packed with Premium Features</span>'
           text: 'Over 30 Particles to Choose From'
@@ -217,7 +217,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Mobile Responsive</span>'
           text: 'Slide and Thumb Breakpoints'
@@ -297,7 +297,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Score Big with Reiko</span>'
           text: 'A New Theme for Sports Fans'
@@ -308,7 +308,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Packed with Premium Features</span>'
           text: 'Over 30 Particles to Choose From'
@@ -319,7 +319,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Mobile Responsive</span>'
           text: 'Slide and Thumb Breakpoints'
@@ -399,7 +399,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: kenburns
           duration: '7000'
@@ -413,7 +413,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: kenburnsDownRight
           duration: '7000'
@@ -427,7 +427,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: kenburnsUpLeft
           duration: '7000'
@@ -510,7 +510,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Score Big with Reiko</span>'
           text: 'A New Theme for Sports Fans'
@@ -521,7 +521,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Packed with Premium Features</span>'
           text: 'Over 30 Particles to Choose From'
@@ -532,7 +532,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Mobile Responsive</span>'
           text: 'Slide and Thumb Breakpoints'
@@ -543,7 +543,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Icon Picker for Icons'
           text: 'Easily Add Icons to Menus and Particles'
@@ -623,7 +623,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Score Big with Reiko</span>'
           text: 'A New Theme for Sports Fans'
@@ -634,7 +634,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: '<span>Packed with Premium Features</span>'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -644,7 +644,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Mobile Responsive</span>'
           text: 'Slide and Thumb Breakpoints'
@@ -724,7 +724,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Score Big with Reiko</span>'
           text: 'A New Theme for Sports Fans'
@@ -735,7 +735,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: '<span>Packed with Premium Features</span>'
           text: 'Over 30 Particles to Choose From'
           thumb_title: Premium
@@ -745,7 +745,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: '<span>Mobile Responsive</span>'
           text: 'Slide and Thumb Breakpoints'
@@ -756,7 +756,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Icon Picker for Icons'
           text: 'Easily Add Icons to Menus and Particles'

@@ -1,7 +1,7 @@
 doctype: html
 attribs:
   id: ''
-  class: 'gantry g-galatea-style'
+  class: 'genesis g-galatea-style'
   extra: {  }
 layout:
   sections: '0'

@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_OrionInstallerScript
+ * Class Genesis_OrionInstallerScript
  */
-class G5_OrionInstallerScript
+class Genesis_OrionInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

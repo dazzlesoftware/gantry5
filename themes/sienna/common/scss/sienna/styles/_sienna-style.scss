@@ -142,7 +142,7 @@
 .fp-feature-simplecontent {
     text-align: center;
     color: $base-background;
-    background: url('gantry-media://backgrounds/feature/img-05.jpg') no-repeat;
+    background: url('genesis-media://backgrounds/feature/img-05.jpg') no-repeat;
     background-size: cover;
     margin-bottom: $content-padding + $content-margin;
     @include breakpoint(mobile-only) {

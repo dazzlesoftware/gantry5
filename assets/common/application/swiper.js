@@ -24,7 +24,7 @@ const number = (value, fallback) => {
     return Number.isFinite(parsed) ? parsed : fallback;
 };
 
-class GantrySwiper {
+class GenesisSwiper {
     constructor(element) {
         this.element = element;
         this.prepareMarkup();
@@ -325,7 +325,7 @@ class GantrySwiper {
 
         const activeSlide = swiper.slides?.[swiper.activeIndex] || null;
 
-        this.element.dispatchEvent(new CustomEvent('g5:swiper:change', {
+        this.element.dispatchEvent(new CustomEvent('genesis:swiper:change', {
             bubbles: true,
             detail: {
                 activeSlide,
@@ -389,7 +389,7 @@ const bindSynchronizedCarousels = (root = document) => {
         }
 
         const carousels = Array.from(container.querySelectorAll(':scope [data-g-swiper]'))
-            .filter((element) => element.gantrySwiper?.instance);
+            .filter((element) => element.genesisSwiper?.instance);
 
         if (carousels.length < 2) {
             return;
@@ -397,8 +397,8 @@ const bindSynchronizedCarousels = (root = document) => {
 
         const mainElement = carousels.find((element) => /-slides(?:\s|$)/.test(element.className)) || carousels[0];
         const navigationElement = carousels.find((element) => element !== mainElement && /-carousel(?:\s|$)/.test(element.className)) || carousels[1];
-        const main = mainElement.gantrySwiper.instance;
-        const navigation = navigationElement.gantrySwiper.instance;
+        const main = mainElement.genesisSwiper.instance;
+        const navigation = navigationElement.genesisSwiper.instance;
 
         const updateCurrent = () => {
             navigation.slides.forEach((slide) => slide.classList.remove('swiper-current'));
@@ -455,7 +455,7 @@ const bindStaticNavigation = (root = document) => {
             }
 
             const swiperElement = container.querySelector('[data-g-swiper]');
-            const swiper = swiperElement?.gantrySwiper?.instance;
+            const swiper = swiperElement?.genesisSwiper?.instance;
             const items = Array.from(container.querySelectorAll(definition.items));
             if (!swiper || !items.length) {
                 return;
@@ -489,7 +489,7 @@ const bindShowcaseSets = (root = document) => {
         }
 
         const swiperElement = container.querySelector('[data-showcase-slides-id][data-g-swiper]');
-        const swiper = swiperElement?.gantrySwiper?.instance;
+        const swiper = swiperElement?.genesisSwiper?.instance;
         const sets = Array.from(container.querySelectorAll('.g-showcase-slides.desktop .g-showcase-slides-set'));
         if (!swiper || !sets.length) {
             return;
@@ -529,7 +529,7 @@ const bindBackgroundSlides = (root = document) => {
         }
 
         const swiperElement = container.querySelector('[data-bgslideshow-slides-id][data-g-swiper]');
-        const swiper = swiperElement?.gantrySwiper?.instance;
+        const swiper = swiperElement?.genesisSwiper?.instance;
         const images = Array.from(container.querySelectorAll('[data-bgslideshow-carousel-id] img'));
         let target = null;
 
@@ -583,7 +583,7 @@ const bindAccordionSlides = (root = document) => {
 
         const items = Array.from(container.querySelectorAll('.g-swipercarousel-item'));
         const updateSwiperHeight = () => {
-            const swiper = container.querySelector('[data-g-swiper]')?.gantrySwiper?.instance;
+            const swiper = container.querySelector('[data-g-swiper]')?.genesisSwiper?.instance;
             if (!swiper) {
                 return;
             }
@@ -654,7 +654,7 @@ const initialize = (root = document) => {
         }
 
         element.dataset.gSwiperReady = 'true';
-        element.gantrySwiper = new GantrySwiper(element);
+        element.genesisSwiper = new GenesisSwiper(element);
     });
 
     bindSynchronizedCarousels(root);
@@ -686,5 +686,5 @@ if (document.readyState === 'loading') {
     ready();
 }
 
-window.GenesisSwiper = { GantrySwiper, initialize };
-window.G5Swiper = window.GenesisSwiper;
+window.GenesisSwiper = { GenesisSwiper, initialize };
+window.GenesisSwiper = window.GenesisSwiper;

@@ -28,14 +28,14 @@
                             <div class="g-contenttabs-tab-wrapper-body">
                                 <div id="g-contenttabs-item-{{ loop.index }}" class="g-contenttabs-content">
                                     {% if item.image %}
-                                    <div {% if item.content %} class="gantry-width-50"{% endif %}>
+                                    <div {% if item.content %} class="genesis-width-50"{% endif %}>
                                         <div class="tabs-image">
                                             <img src="{{ url(item.image)|e }}" alt="image" />
                                         </div>
                                     </div>
                                     {% endif %}
                                     {% if item.content %}
-                                    <div {% if item.image %}class="gantry-width-50"{% endif %}>
+                                    <div {% if item.image %}class="genesis-width-50"{% endif %}>
                                         <div class="tabs-content">
                                             {{ item.content|html|raw }}
 

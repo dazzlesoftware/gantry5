@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_MyriadInstallerScript
+ * Class Genesis_MyriadInstallerScript
  */
-class G5_MyriadInstallerScript
+class Genesis_MyriadInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

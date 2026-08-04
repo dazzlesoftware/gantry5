@@ -7,12 +7,12 @@
  * @license   GNU/GPLv3 and later
  */
 
-namespace Gantry\Theme;
+namespace Genesis\Theme;
 
-use Gantry\Framework\Theme;
+use Genesis\Framework\Theme;
 
 /**
- * Class G5_Hydrogen
- * @package Gantry\Theme
+ * Class Genesis_Hydrogen
+ * @package Genesis\Theme
  */
-class G5_Hydrogen extends Theme {}
+class Genesis_Hydrogen extends Theme {}

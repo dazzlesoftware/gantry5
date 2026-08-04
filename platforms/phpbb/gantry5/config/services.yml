@@ -1,8 +1,0 @@
-services:
-    dazzlesoftware.gantry5.listener:
-        class: dazzlesoftware\gantry5\event\listener
-        arguments:
-            - '@service_container'
-            - '@path_helper'
-        tags:
-            - { name: event.listener }

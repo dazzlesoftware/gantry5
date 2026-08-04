@@ -15,7 +15,7 @@ class SwiperShowcase {
         this.panels.forEach((panel) => {
             panel.addEventListener('click', () => this.select(Number.parseInt(panel.dataset.slideIndex, 10), true));
         });
-        this.carousel.addEventListener('g5:swiper:change', (event) => this.select(event.detail.activeIndex));
+        this.carousel.addEventListener('genesis:swiper:change', (event) => this.select(event.detail.activeIndex));
         window.addEventListener('resize', () => this.positionIndicator(), { passive: true });
         this.select(0);
     }
@@ -34,7 +34,7 @@ class SwiperShowcase {
         });
 
         if (navigate) {
-            this.carousel.gantrySwiper?.instance?.slideTo(index);
+            this.carousel.genesisSwiper?.instance?.slideTo(index);
         }
 
         this.positionIndicator(selected);
@@ -58,7 +58,7 @@ const initialize = (root = document) => {
     elements.forEach((element) => {
         if (!element.dataset.gSwiperShowcaseReady) {
             element.dataset.gSwiperShowcaseReady = 'true';
-            element.gantrySwiperShowcase = new SwiperShowcase(element);
+            element.genesisSwiperShowcase = new SwiperShowcase(element);
         }
     });
 };

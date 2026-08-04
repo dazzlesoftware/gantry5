@@ -5,10 +5,10 @@
 <div class="g-icon-list">
 	{% if particle.title %}<h2 class="title">{{ particle.title|html|raw }}{% if particle.titletag %}<span class="rt-title-tag">{{ particle.titletag|html|raw }}</span>{% endif %}</h2>{% endif %}
 
-	<div class="gantry-row">
+	<div class="genesis-row">
 		{% for item in particle.iconlists %}
-			<div class="gantry-width-{{ particle.cols }}">
-				<div class="gantry-width-spacer">
+			<div class="genesis-width-{{ particle.cols }}">
+				<div class="genesis-width-spacer">
 					<p class="nomarginbottom"><span class="{{ item.icon }} rt-icon-large"></span></p>
 					<span class="rt-circle-number">{{ item.circlenumber|html|raw }}</span>
 					<h4>{{ item.title|html|raw }}</h4>

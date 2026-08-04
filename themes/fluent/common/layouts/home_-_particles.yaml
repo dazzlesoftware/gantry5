@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1512637103
 layout:
@@ -140,8 +140,8 @@ content:
       source: particle
       items:
         -
-          avatar: 'gantry-media://home/slideshow/avatar-01.jpg'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          avatar: 'genesis-media://home/slideshow/avatar-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: ''
           date: '2017-11-16'
           link: '#'
@@ -149,8 +149,8 @@ content:
           categorylink: '#'
           title: 'Beautifully crafted modern, versatile particles'
         -
-          avatar: 'gantry-media://home/slideshow/avatar-01.jpg'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          avatar: 'genesis-media://home/slideshow/avatar-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: ''
           date: '2017-11-01'
           date_format: 'l, F d, Y'
@@ -159,8 +159,8 @@ content:
           categorylink: '#'
           title: 'User-sortable, dynamic Case Studies particle'
         -
-          avatar: 'gantry-media://home/slideshow/avatar-01.jpg'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          avatar: 'genesis-media://home/slideshow/avatar-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: ''
           date: '2017-11-01'
           date_format: 'l, F d, Y'
@@ -169,8 +169,8 @@ content:
           categorylink: '#'
           title: 'News Slider particle with CMS content support'
         -
-          avatar: 'gantry-media://home/slideshow/avatar-01.jpg'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          avatar: 'genesis-media://home/slideshow/avatar-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: ''
           date: '2017-11-01'
           date_format: 'l, F d, Y'
@@ -179,8 +179,8 @@ content:
           categorylink: '#'
           title: 'Exclusive Testimonial Slider with smooth scrolling'
         -
-          avatar: 'gantry-media://home/slideshow/avatar-01.jpg'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          avatar: 'genesis-media://home/slideshow/avatar-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: ''
           date: '2017-11-01'
           date_format: 'l, F d, Y'
@@ -189,8 +189,8 @@ content:
           categorylink: '#'
           title: 'Vertical Slider combines clean design with bold imagery'
         -
-          avatar: 'gantry-media://home/slideshow/avatar-01.jpg'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          avatar: 'genesis-media://home/slideshow/avatar-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: ''
           date: '2017-11-01'
           date_format: 'l, F d, Y'
@@ -239,7 +239,7 @@ content:
             -
               layout: default-bottom
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Menu
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -247,7 +247,7 @@ content:
             -
               layout: default-top
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Menu
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -255,7 +255,7 @@ content:
             -
               layout: default-bottom
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Menu
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -263,7 +263,7 @@ content:
             -
               layout: default-top
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Menu
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -274,7 +274,7 @@ content:
             -
               layout: alt-top
               variation: dark
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               subtitle: Layout
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -282,7 +282,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               subtitle: Layout
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -290,7 +290,7 @@ content:
             -
               layout: alt-top
               variation: dark
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               subtitle: Layout
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -298,7 +298,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               subtitle: Layout
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -309,7 +309,7 @@ content:
             -
               layout: default-bottom
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Picker
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -317,7 +317,7 @@ content:
             -
               layout: default-top
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Picker
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -325,7 +325,7 @@ content:
             -
               layout: default-bottom
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Picker
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -333,7 +333,7 @@ content:
             -
               layout: default-top
               variation: light
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               subtitle: Picker
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -344,7 +344,7 @@ content:
             -
               layout: alt-top
               variation: dark
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               subtitle: Style
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -352,7 +352,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               subtitle: Style
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -360,7 +360,7 @@ content:
             -
               layout: alt-top
               variation: dark
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               subtitle: Style
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -368,7 +368,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               subtitle: Style
               url: 'https://dazzlesoftware.org'
               target: _blank
@@ -456,31 +456,31 @@ content:
       matchheight: enabled
       items:
         -
-          avatar: 'gantry-media://home/expanded/img-01.png'
+          avatar: 'genesis-media://home/expanded/img-01.png'
           author: 'Mark Davis'
           authortitle: 'CEO Davis & Davis'
           description: 'Fluent is the ideal design for my corporate website. Its support for transparency looks beautiful against vibrant, colorful background images. Perfect!'
           title: 'Item 1'
         -
-          avatar: 'gantry-media://home/expanded/img-02.png'
+          avatar: 'genesis-media://home/expanded/img-02.png'
           author: 'Jakub Baran'
           authortitle: 'CEO Unicorn Corp.'
           description: 'When I wanted to create a portfolio for my photography business, Fluent was the obvious choice. It is modern, responsive, and it looks great with my images.'
           title: 'Item 2'
         -
-          avatar: 'gantry-media://home/expanded/img-03.png'
+          avatar: 'genesis-media://home/expanded/img-03.png'
           author: 'Katrin Lange'
           authortitle: 'CEO Awesomeness Inc.'
           description: 'When we opened our new cupcake shop, we wanted to build a website that looked like an extension of our storefront. Fluent was the ideal match for us. Easy to use, too!'
           title: 'Item 3'
         -
-          avatar: 'gantry-media://home/expanded/img-01.png'
+          avatar: 'genesis-media://home/expanded/img-01.png'
           author: 'Karol Orzel'
           authortitle: 'CEO Sausage LTD.'
           description: 'We build websites for every type of client you could imagine. Fluent proved to be an excellent choice for everything from small local businesses to tech startups.'
           title: 'Item 4'
         -
-          avatar: 'gantry-media://home/expanded/img-02.png'
+          avatar: 'genesis-media://home/expanded/img-02.png'
           author: 'Ryan Pierson'
           authortitle: 'CEO of AllSource'
           description: 'Fluent was so easy to set up and use, that I was up and running with my website in minutes. The powerful Genesis framework made it super simple to do!'
@@ -502,7 +502,7 @@ content:
       mobileheight: '380'
       items:
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           small_title: 'Modern Design'
           desc: 'Transparent elements are beautiful.'
           buttontext: 'Click me'
@@ -511,7 +511,7 @@ content:
           buttonclass: ''
           title: 'Item 1'
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           small_title: 'Beautiful Presets'
           desc: 'Six gorgeous style presets included.'
           buttontext: 'Click me!'
@@ -520,7 +520,7 @@ content:
           buttonclass: ''
           title: 'Item 2'
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           small_title: 'Easy to Use'
           desc: 'Configure page layouts in seconds.'
           buttontext: 'Click me!'
@@ -529,7 +529,7 @@ content:
           buttonclass: ''
           title: 'Item 3'
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           small_title: 'Multiple Particles'
           desc: 'Particles make creating content quite simple.'
           buttontext: 'Click me'
@@ -538,7 +538,7 @@ content:
           buttonclass: ''
           title: 'Item 4'
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           small_title: 'Personal Styles'
           desc: 'Style your content using a variety of settings.'
           buttontext: 'Click me'
@@ -547,7 +547,7 @@ content:
           buttonclass: ''
           title: 'Item 5'
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           small_title: Responsive
           desc: 'Fluent is built with a responsive layout.'
           buttontext: 'Click me'

@@ -86,7 +86,7 @@ dom.ready(function() {
 
         if (editable) {
             editable.CollectionNew = true;
-            editable.addEventListener('g5:title-edit-exit', addNewByExit);
+            editable.addEventListener('genesis:title-edit-exit', addNewByExit);
             var editButton = title.parentElement.querySelector('[data-title-edit]');
             if (editButton) { editButton.click(); }
         }
@@ -176,7 +176,7 @@ dom.ready(function() {
             dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             className: 'genesis-dialog-theme-default genesis-modal-collection genesis-modal-collection-' + (isEditAll ? 'editall' : 'single'),
             data: dataPost,
@@ -207,7 +207,7 @@ dom.ready(function() {
                         if (post.invalid.length) {
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -235,7 +235,7 @@ dom.ready(function() {
                                     if (save) { save.click(); }
                                 }
                                 modal.close();
-                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                                toastr.success(translate('GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
                             indicator.hide(target);
                         });

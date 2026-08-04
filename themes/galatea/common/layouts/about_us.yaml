@@ -162,7 +162,7 @@ content:
       dots: '0'
       items:
         -
-          image: 'gantry-media://pages/about-us/slideshow/img-01.jpg'
+          image: 'genesis-media://pages/about-us/slideshow/img-01.jpg'
           title: 'About Us'
           desc: 'Galatea is a beautiful, clean design that blends foreground with background elements in an elegant, modern way.'
           link: '#'
@@ -171,7 +171,7 @@ content:
           buttonclass: button-2
           name: 'Slide 1'
         -
-          image: 'gantry-media://pages/about-us/slideshow/img-02.jpg'
+          image: 'genesis-media://pages/about-us/slideshow/img-02.jpg'
           title: 'About Us'
           desc: 'Galatea is a beautiful, clean design that blends foreground with background elements in an elegant, modern way.'
           link: '#'
@@ -180,7 +180,7 @@ content:
           buttonclass: button-2
           name: 'Slide 2'
         -
-          image: 'gantry-media://pages/about-us/slideshow/img-03.jpg'
+          image: 'genesis-media://pages/about-us/slideshow/img-03.jpg'
           title: 'About Us'
           desc: 'Galatea is a beautiful, clean design that blends foreground with background elements in an elegant, modern way.'
           link: '#'
@@ -196,7 +196,7 @@ content:
       items:
         -
           style: g-mosaicgrid-style1
-          img: 'gantry-media://pages/about-us/header/img-01.jpg'
+          img: 'genesis-media://pages/about-us/header/img-01.jpg'
           titleText: Sam
           titleURL: '#'
           titleTarget: _self
@@ -211,7 +211,7 @@ content:
           title: Sam
         -
           style: g-mosaicgrid-style1
-          img: 'gantry-media://pages/about-us/header/img-02.jpg'
+          img: 'genesis-media://pages/about-us/header/img-02.jpg'
           titleText: Alex
           titleURL: '#'
           titleTarget: _self
@@ -226,7 +226,7 @@ content:
           title: Alex
         -
           style: g-mosaicgrid-style1
-          img: 'gantry-media://pages/about-us/header/img-03.jpg'
+          img: 'genesis-media://pages/about-us/header/img-03.jpg'
           titleText: Joe
           titleURL: '#'
           titleTarget: _self
@@ -241,7 +241,7 @@ content:
           title: Joe
         -
           style: g-mosaicgrid-style1
-          img: 'gantry-media://pages/about-us/header/img-04.jpg'
+          img: 'genesis-media://pages/about-us/header/img-04.jpg'
           titleText: Kim
           titleURL: '#'
           titleTarget: _self
@@ -284,35 +284,35 @@ content:
       album: clients
       imagegriditems:
         -
-          image: 'gantry-media://pages/about-us/feature/img-01.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-01.jpg'
           caption: 'Image 1'
           title: 'Image 1'
         -
-          image: 'gantry-media://pages/about-us/feature/img-02.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-02.jpg'
           caption: 'Image 2'
           title: 'Image 2'
         -
-          image: 'gantry-media://pages/about-us/feature/img-03.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-03.jpg'
           caption: 'Image 3'
           title: 'Image 3'
         -
-          image: 'gantry-media://pages/about-us/feature/img-04.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-04.jpg'
           caption: 'Image 4'
           title: 'Image 4'
         -
-          image: 'gantry-media://pages/about-us/feature/img-05.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-05.jpg'
           caption: 'Image 5'
           title: 'Image 5'
         -
-          image: 'gantry-media://pages/about-us/feature/img-06.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-06.jpg'
           caption: 'Image 6'
           title: 'Image 6'
         -
-          image: 'gantry-media://pages/about-us/feature/img-07.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-07.jpg'
           caption: 'Image 7'
           title: 'Image 7'
         -
-          image: 'gantry-media://pages/about-us/feature/img-08.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-08.jpg'
           caption: 'Image 8'
           title: 'Image 8'
   position-position-8538:
@@ -329,7 +329,7 @@ content:
         -
           name: Introduction
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -343,7 +343,7 @@ content:
         -
           name: Mission
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -357,7 +357,7 @@ content:
         -
           name: Business
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -477,7 +477,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           icon: ''
           readmoreclass: ''
           title: Genesis
@@ -588,7 +588,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://github.com/gantry/gantry5'
+          link: 'https://github.com/genesis/genesis'
           icon: ''
           readmoreclass: ''
           title: Github

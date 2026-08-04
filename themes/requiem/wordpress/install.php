@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_RequiemInstallerScript
+ * Class Genesis_RequiemInstallerScript
  */
-class G5_RequiemInstallerScript
+class Genesis_RequiemInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

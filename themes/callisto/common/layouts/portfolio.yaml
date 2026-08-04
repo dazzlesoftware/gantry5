@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/2-col-right.png'
+  image: 'genesis-admin://images/layouts/2-col-right.png'
   name: portfolio
   timestamp: 1496332897
 layout:
@@ -110,7 +110,7 @@ content:
   contentlist-8674:
     title: 'Callisto Premium Project'
     attributes:
-      image: 'gantry-theme://images/demo/portfolio/img-01.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-01.jpg'
       imagetag: 'On Going'
       headline: 'Callisto Premium Project'
       subtitle: 'Website Redesign and Publishing'
@@ -155,12 +155,12 @@ content:
   custom-1803:
     title: 'Responsive Layout'
     attributes:
-      html: "<h2 class=\"g-title\">Responsive Layout</h2>\n<p><img src=\"gantry-theme://images/demo/portfolio/img-02.jpg\" alt=\"image\"></p>\n<p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>"
+      html: "<h2 class=\"g-title\">Responsive Layout</h2>\n<p><img src=\"genesis-theme://images/demo/portfolio/img-02.jpg\" alt=\"image\"></p>\n<p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>"
   promoimage-4042:
     title: Magazine
     attributes:
       title: Magazine
-      image: 'gantry-theme://images/demo/portfolio/img-03.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-03.jpg'
       promoimagetitle: Magazine
       desc: 'Short project description here'
       iconbutton: 'fa fa-file-text-o'
@@ -170,7 +170,7 @@ content:
     title: Logo
     attributes:
       title: Logo
-      image: 'gantry-theme://images/demo/portfolio/img-04.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-04.jpg'
       promoimagetitle: Logo
       desc: 'Short project description here'
       iconbutton: 'fa fa-file-text-o'
@@ -180,7 +180,7 @@ content:
     title: Brochure
     attributes:
       title: Brochure
-      image: 'gantry-theme://images/demo/portfolio/img-05.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-05.jpg'
       promoimagetitle: Brochure
       desc: 'Short project description here'
       iconbutton: 'fa fa-file-text-o'
@@ -190,7 +190,7 @@ content:
     title: Decorations
     attributes:
       title: Decorations
-      image: 'gantry-theme://images/demo/portfolio/img-06.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-06.jpg'
       promoimagetitle: Decorations
       desc: 'Short project description here'
       iconbutton: 'fa fa-file-text-o'
@@ -200,7 +200,7 @@ content:
     title: Illustrations
     attributes:
       title: Illustrations
-      image: 'gantry-theme://images/demo/portfolio/img-07.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-07.jpg'
       promoimagetitle: Illustrations
       desc: 'Short project description here'
       iconbutton: 'fa fa-file-text-o'
@@ -210,7 +210,7 @@ content:
     title: Photos
     attributes:
       title: Photos
-      image: 'gantry-theme://images/demo/portfolio/img-08.jpg'
+      image: 'genesis-theme://images/demo/portfolio/img-08.jpg'
       promoimagetitle: Photos
       desc: 'Short project description here'
       iconbutton: 'fa fa-file-text-o'

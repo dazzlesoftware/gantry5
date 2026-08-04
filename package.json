@@ -1,7 +1,7 @@
 {
   "name": "genesis-framework",
   "version": "5.4.0",
-  "description": "Genesis Framework JS and CSS bundler (formerly Gantry 5)",
+  "description": "Genesis Framework JS and CSS bundler (formerly Genesis 5)",
   "engines": {
     "node": ">=20.19.0"
   },
@@ -33,12 +33,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gantry/gantry5.git"
+    "url": "https://github.com/genesis/genesis.git"
   },
   "author": "Djamil Legato",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gantry/gantry5/issues"
+    "url": "https://github.com/genesis/genesis/issues"
   },
-  "homepage": "https://github.com/gantry/gantry5"
+  "homepage": "https://github.com/genesis/genesis"
 }

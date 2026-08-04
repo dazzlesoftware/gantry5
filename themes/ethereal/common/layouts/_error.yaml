@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: _error
   timestamp: 1516143068
 layout:
@@ -128,7 +128,7 @@ content:
       html: "<h2 class=\"g-title\">Sample Sitemap</h2>\n\n<div class=\"g-grid\">\n\t<div class=\"g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"#\">Home</a></li>\n\t\t\t<li><a href=\"#\">Features</a></li>\n\t\t\t<li><a href=\"#\">Typography</a></li>\n\t\t\t<li><a href=\"#\">Particles</a></li>\n\t\t\t<li><a href=\"#\">Variations</a></li>\n\t\t</ul>\t\t\n\t</div>\n\t<div class=\"g-block\">\n\t\t<ul class=\"nomarginall noliststyle\">\n\t\t\t<li><a href=\"#\">Buttons</a></li>\n\t\t\t<li><a href=\"#\">Pages</a></li>\n\t\t\t<li><a href=\"#\">Guide</a></li>\n\t\t\t<li><a href=\"#\">Support</a></li>\n\t\t\t<li><a href=\"#\">Download</a></li>\n\t\t</ul>\t\t\n\t</div>\t\n</div>"
   logo-4894:
     attributes:
-      image: 'gantry-theme://images/logo/logo-footer.png'
+      image: 'genesis-theme://images/logo/logo-footer.png'
   custom-8479:
     title: 'Demo Information'
     attributes:
@@ -141,7 +141,7 @@ content:
   custom-2135:
     title: 'Horizontal Menu'
     attributes:
-      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Genesis</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.genesis.org/genesis/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.genesis.org/\">Genesis</a></li>\n\t<li><a href=\"http://docs.genesis.org/genesis/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
   totop-4255:
     title: 'To Top'
     attributes:

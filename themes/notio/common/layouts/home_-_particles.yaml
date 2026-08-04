@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1503487537
 layout:
@@ -167,8 +167,8 @@ content:
         -
           headline: 'A New News Template from Dazzle Software'
           description: 'Notio is a beautifully-designed magazine and news template built on the powerful Genesis framework. Feature packed and ready to deploy!'
-          img: 'gantry-media://home/sidebar-top/img-01.jpg'
-          signature: 'gantry-media://home/sidebar-top/signature-01.png'
+          img: 'genesis-media://home/sidebar-top/img-01.jpg'
+          signature: 'genesis-media://home/sidebar-top/signature-01.png'
           fullname: 'Jane Doe'
           tag: 'Editor in Chief'
           title: Welcome!
@@ -180,7 +180,7 @@ content:
       fixedheight: '200'
       items:
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: 'Taylor Jackson'
           date: '2017-08-06'
           link: ''
@@ -188,7 +188,7 @@ content:
           categorylink: ''
           title: 'Display Your Best Content with Genesis'
         -
-          image: 'gantry-media://home/slideshow/img-02.jpg'
+          image: 'genesis-media://home/slideshow/img-02.jpg'
           author: 'Katie Rogers'
           date: '2017-08-05'
           link: ''
@@ -196,7 +196,7 @@ content:
           categorylink: ''
           title: 'Generate Subscribers with the Newsletter'
         -
-          image: 'gantry-media://home/slideshow/img-03.jpg'
+          image: 'genesis-media://home/slideshow/img-03.jpg'
           author: 'Mike Ross'
           date: '2017-08-04'
           link: ''
@@ -204,7 +204,7 @@ content:
           categorylink: ''
           title: 'Showcase Video Content in a Video Carousel'
         -
-          image: 'gantry-media://home/slideshow/img-04.jpg'
+          image: 'genesis-media://home/slideshow/img-04.jpg'
           author: 'Taylor Jackson'
           date: '2017-08-03'
           link: ''
@@ -212,7 +212,7 @@ content:
           categorylink: ''
           title: 'Article Tabs Drives Traffic to Your Latest Content'
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           author: 'Katie Rogers'
           date: '2017-08-02'
           link: ''
@@ -220,7 +220,7 @@ content:
           categorylink: ''
           title: 'Highlight Quotes and Information with Cards'
         -
-          image: 'gantry-media://home/slideshow/img-02.jpg'
+          image: 'genesis-media://home/slideshow/img-02.jpg'
           author: 'Mike Ross'
           date: '2017-08-01'
           link: ''
@@ -834,28 +834,28 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               author: 'Tim Arango'
               date: '2017-08-08'
               content: 'Content Tabs packs a ton of content into a small space. Create custom content items or generate directly from the CMS.'
               link: ''
               title: 'Beautifully Display Content on Your Site with Content Tabs'
             -
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               author: 'Katie Rogers'
               date: ''
               content: ''
               link: ''
               title: 'Create Content with Images and Text with Simple Form Fields'
             -
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               author: 'Taylor Jackson'
               date: ''
               content: ''
               link: ''
               title: 'Dynamically Generate Content Directly from Your CMS Articles'
             -
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               author: 'Pawel Kadysz'
               date: ''
               content: ''
@@ -906,28 +906,28 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               author: 'Tim Arango'
               date: '2017-08-08'
               content: 'Find the perfect font using Genesis''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
               link: ''
               title: 'Search From Hundreds of Fonts with Real-time Preview'
             -
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               author: 'Jane Doe'
               date: ''
               content: ''
               link: ''
               title: 'Switch Between Fonts in Seconds'
             -
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               author: 'Johnny Example'
               date: ''
               content: ''
               link: ''
               title: 'Preview Multiple Fonts in Real Time'
             -
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               author: 'Janet Doe'
               date: ''
               content: ''
@@ -978,28 +978,28 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               author: 'John Doe'
               date: '2016-12-01'
               content: 'Genesis''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
               link: ''
               title: 'Browse Over 670 Font Awesome Icons'
             -
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               author: 'Johnny Example'
               date: ''
               content: ''
               link: ''
               title: 'Search for Icons in Real Time'
             -
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               author: 'Jane Doe'
               date: ''
               content: ''
               link: ''
               title: 'Give Your Content a Modern Touch in Seconds'
             -
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               author: 'Jack Johnson'
               date: ''
               content: ''
@@ -1050,28 +1050,28 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               author: 'John Doe'
               date: '2016-12-01'
               content: 'Whether you''re selecting background colors for your website or adjusting the hue of a font in a single particle, the Color Picker makes it easy.'
               link: ''
               title: 'Customize Your Website with Genesis''s Color Picker'
             -
-              image: 'gantry-media://home/header/img-02.jpg'
+              image: 'genesis-media://home/header/img-02.jpg'
               author: 'Johnny Example'
               date: ''
               content: ''
               link: ''
               title: 'Find the Right Color in Seconds'
             -
-              image: 'gantry-media://home/header/img-03.jpg'
+              image: 'genesis-media://home/header/img-03.jpg'
               author: 'Jane Doe'
               date: ''
               content: ''
               link: ''
               title: 'Over 16 Million Colors to Choose From'
             -
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               author: 'Jack Nicholson'
               date: ''
               content: ''
@@ -1125,7 +1125,7 @@ content:
       source: particle
       items:
         -
-          image: 'gantry-media://home/showcase/img-01.jpg'
+          image: 'genesis-media://home/showcase/img-01.jpg'
           author: 'Super User'
           content: 'Notio from Dazzle Software brings a modern, content-focused design and advanced CMS integration to Genesis.'
           link: ''
@@ -1171,14 +1171,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-01.jpg'
+              image: 'genesis-media://home/bottom/img-01.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
               title: 'Image 1'
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-02.jpg'
+              image: 'genesis-media://home/bottom/img-02.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
@@ -1189,14 +1189,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-03.jpg'
+              image: 'genesis-media://home/bottom/img-03.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
               title: 'Image 1'
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-04.jpg'
+              image: 'genesis-media://home/bottom/img-04.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
@@ -1207,14 +1207,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-05.jpg'
+              image: 'genesis-media://home/bottom/img-05.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
               title: 'Image 1'
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-06.jpg'
+              image: 'genesis-media://home/bottom/img-06.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
@@ -1225,14 +1225,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-07.jpg'
+              image: 'genesis-media://home/bottom/img-07.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
               title: 'Image 1'
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-08.jpg'
+              image: 'genesis-media://home/bottom/img-08.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
@@ -1243,14 +1243,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-09.jpg'
+              image: 'genesis-media://home/bottom/img-09.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
               title: 'Image 1'
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-10.jpg'
+              image: 'genesis-media://home/bottom/img-10.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
@@ -1261,14 +1261,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-11.jpg'
+              image: 'genesis-media://home/bottom/img-11.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
               title: 'Image 1'
             -
               subtitle: ''
-              image: 'gantry-media://home/bottom/img-12.jpg'
+              image: 'genesis-media://home/bottom/img-12.jpg'
               icon: 'fa fa-search'
               linkto: image
               link: ''
@@ -1285,13 +1285,13 @@ content:
       posttext: 'We’re hiring! Want to work with us? Write a short email and <a href="#">send it here.</a>'
       items:
         -
-          image: 'gantry-media://home/aside/img-02.jpg'
+          image: 'genesis-media://home/aside/img-02.jpg'
           specialty: 'Tech News'
           desc: ''
           link: '#'
           name: 'Charles Owens'
         -
-          image: 'gantry-media://home/aside/img-04.jpg'
+          image: 'genesis-media://home/aside/img-04.jpg'
           specialty: 'World & Politics'
           desc: ''
           link: '#'
@@ -1309,5 +1309,5 @@ content:
   logo-4894:
     title: Ad
     attributes:
-      image: 'gantry-media://home/aside/ad.png'
+      image: 'genesis-media://home/aside/ad.png'
       class: ''

@@ -1,7 +1,7 @@
 <?php
 
-namespace Gantry\Theme;
+namespace Genesis\Theme;
 
-use Gantry\Framework\Theme;
+use Genesis\Framework\Theme;
 
-class G5_Sienna extends Theme {}
+class Genesis_Sienna extends Theme {}

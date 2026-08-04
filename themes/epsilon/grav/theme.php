@@ -9,14 +9,14 @@
 
 namespace Grav\Theme;
 
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme as GantryTheme;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Theme as GenesisTheme;
 use Grav\Common\Theme;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
-class G5_Epsilon extends Theme
+class Genesis_Epsilon extends Theme
 {
-    public $gantry = '5.5';
+    public $genesis = '5.5';
     protected $theme;
 
     public static function getSubscribedEvents()
@@ -35,7 +35,7 @@ class G5_Epsilon extends Theme
         $path = $locator('theme://');
         $name = $this->name;
 
-        if (!class_exists('\Gantry5\Loader')) {
+        if (!class_exists('\Genesis\Loader')) {
             if ($this->isAdmin()) {
                 $this->grav['messages']->add('Please enable Genesis plugin in order to use current theme!', 'error');
                 return;
@@ -43,13 +43,13 @@ class G5_Epsilon extends Theme
             throw new \LogicException('Please install and enable Genesis Framework plugin!');
         }
 
-        \Gantry5\Loader::setup();
-        $gantry = Gantry::instance();
-        $gantry['theme.path'] = $path;
-        $gantry['theme.name'] = $name;
+        \Genesis\Loader::setup();
+        $genesis = Genesis::instance();
+        $genesis['theme.path'] = $path;
+        $genesis['theme.name'] = $name;
         require $locator('theme://includes/theme.php');
-        $gantry['theme'] = static function ($c) {
-            return new \Gantry\Theme\G5_Epsilon($c['theme.path'], $c['theme.name']);
+        $genesis['theme'] = static function ($c) {
+            return new \Genesis\Theme\Genesis_Epsilon($c['theme.path'], $c['theme.name']);
         };
     }
 }

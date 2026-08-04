@@ -1,5 +1,5 @@
 enabled: '1'
 url: ''
-image: 'gantry-theme://images/logo/logo-header.png'
+image: 'genesis-theme://images/logo/logo-header.png'
 text: Ethereal
 class: g-logo

@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_HeliumInstallerScript
+ * Class Genesis_HeliumInstallerScript
  */
-class G5_HeliumInstallerScript
+class Genesis_HeliumInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

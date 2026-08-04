@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1463470148
 layout:
@@ -122,7 +122,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
+          image: 'genesis-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
           title: 'The Genesis revolution has finally arrived!'
           desc: '<p>Callisto is a Dazzle Software Club theme for the new Genesis Framework, a powerful, highly customizable and mobile friendly web builder.</p><a class="button button-3" href="#">Read More</a>'
           link: ''
@@ -131,7 +131,7 @@ content:
           buttonclass: button-3
           name: 'Item 1'
         -
-          image: 'gantry-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
+          image: 'genesis-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
           title: 'Built in Menu Support with Custom Editor'
           desc: '<p>Genesis benefits from its own built-in menu system, negating the need for auxiliary plugins, as well as featuring a drag and drop setup for advanced dropdown configuration.</p><a class="button button-3" href="#">Read More</a>'
           link: ''
@@ -140,7 +140,7 @@ content:
           buttonclass: button-3
           name: 'Item 2'
         -
-          image: 'gantry-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
+          image: 'genesis-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
           title: 'Choose and Configure the Six Preset Styles'
           desc: '<p>Callisto is distributed with ten preset styles, with light and dark variations. Each can be customized in the Style Settings to individualize the theme text, background and accent colors.</p><a class="button button-3" href="#">Read More</a>'
           link: ''
@@ -153,7 +153,7 @@ content:
   contentlist-5190:
     title: 'FP Main Content List'
     attributes:
-      image: 'gantry-media://demo/home/feature/callisto-content/img-01.jpg'
+      image: 'genesis-media://demo/home/feature/callisto-content/img-01.jpg'
       imagetag: Callisto
       headline: 'Construct unique and dynamic content <span class="hidden-tablet">creations </span>with RokSprocket'
       subtitle: 'Intuitive and Versatile'
@@ -208,19 +208,19 @@ content:
         -
           linklabel: ''
           link: ''
-          content: "<div class=\"g-infolist\">\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"http://docs.gantry.org\"><span>Introduce yourself to the new and powerful Genesis Framework</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span>Genesis benefits from an extensive, and ever expanding, catalog of online and freely available documentation covering basic to <span class=\"hidden-tablet\">more </span>advanced topics.</span>\n            </div>\n        </div>\n    </div>\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"https://dazzlesoftware.org/docs\"><span>Theme specific help guides to assist in setup and configuration</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span class=\"visible-desktop\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding of their various features and capabilities.</span>\n            <span class=\"visible-tablet visible-phone\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding.</span>\n            </div>\n        </div>\n    </div>\n</div>"
+          content: "<div class=\"g-infolist\">\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"genesis-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"http://docs.genesis.org\"><span>Introduce yourself to the new and powerful Genesis Framework</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span>Genesis benefits from an extensive, and ever expanding, catalog of online and freely available documentation covering basic to <span class=\"hidden-tablet\">more </span>advanced topics.</span>\n            </div>\n        </div>\n    </div>\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"genesis-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"https://dazzlesoftware.org/docs\"><span>Theme specific help guides to assist in setup and configuration</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span class=\"visible-desktop\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding of their various features and capabilities.</span>\n            <span class=\"visible-tablet visible-phone\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding.</span>\n            </div>\n        </div>\n    </div>\n</div>"
           title: Guide
         -
           linklabel: ''
           link: ''
-          content: "<div class=\"g-infolist\">\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://dazzlesoftware.org/forum\"><span>A community forum to ask the moderators and developers questions</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tOur forums are monitored by a team of moderators, as well as the developers, to assist in general questions and problems relating to the themes and plugins.\t\t\t</div>\t\t</div>\t</div>\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://github.com/gantry/\"><span>Genesis is community driven and offers direct chat via Gitter</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tGithub allows for an system where you can contribute code, post issues and feedback on the Genesis open source project.<span class=\"hidden-tablet\"> Discuss Genesis live with us via Gitter.</span>\t\t\t</div>\t\t</div>\t</div></div>"
+          content: "<div class=\"g-infolist\">\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"genesis-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://dazzlesoftware.org/forum\"><span>A community forum to ask the moderators and developers questions</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tOur forums are monitored by a team of moderators, as well as the developers, to assist in general questions and problems relating to the themes and plugins.\t\t\t</div>\t\t</div>\t</div>\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"genesis-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://github.com/genesis/\"><span>Genesis is community driven and offers direct chat via Gitter</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tGithub allows for an system where you can contribute code, post issues and feedback on the Genesis open source project.<span class=\"hidden-tablet\"> Discuss Genesis live with us via Gitter.</span>\t\t\t</div>\t\t</div>\t</div></div>"
           title: Support
     block:
       class: nopaddingall
   contentlist-1210:
     title: 'Ultimate Customization'
     attributes:
-      image: 'gantry-media://demo/home/main/callisto-content/img-01.jpg'
+      image: 'genesis-media://demo/home/main/callisto-content/img-01.jpg'
       imagetag: Ultimate
       headline: 'Ultimate Customization'
       subtitle: 'Plug and Play Presets'
@@ -274,7 +274,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Positions</span>Ultimate control over layout with drag &amp; drop positions'
           desc: 'Infinite Possibilities'
           link: '#'
@@ -282,7 +282,7 @@ content:
           buttontarget: _self
           name: 'Item 1'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Variation</span>Assortment of preset block variations for style and structure'
           desc: Individualization
           link: '#'
@@ -290,7 +290,7 @@ content:
           buttontarget: _self
           name: 'Item 2'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Speed</span>Improve site loading performance with built-in Twig caching'
           desc: 'Swift &amp; Simple'
           link: '#'
@@ -298,7 +298,7 @@ content:
           buttontarget: _self
           name: 'Item 3'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Menu</span>Dropdown menu system built directly into the Genesis core'
           desc: 'Easy Setup'
           link: '#'
@@ -306,7 +306,7 @@ content:
           buttontarget: _self
           name: 'Item 4'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Genesis</span>Built on the state-of-the-art template framework: Genesis'
           desc: Framework
           link: '#'
@@ -314,7 +314,7 @@ content:
           buttontarget: _self
           name: 'Item 5'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Icons</span>Diversify your site typography with FontAwesome icons'
           desc: Typography
           link: '#'
@@ -322,7 +322,7 @@ content:
           buttontarget: _self
           name: 'Item 6'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Particles</span>Selection of standard and custom particles driven by Twig'
           desc: 'User Friendly'
           link: '#'
@@ -330,7 +330,7 @@ content:
           buttontarget: _self
           name: 'Item 7'
         -
-          image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/roksprocket-strips/img-01.jpg'
           title: '<span class="g-strips-tag">Sample</span>Examples of various structures showing layout flexibility'
           desc: 'Example Pages'
           link: '#'
@@ -342,7 +342,7 @@ content:
   promoimage-4985:
     title: 'Promo Image'
     attributes:
-      image: 'gantry-media://demo/home/extension/promo-image/img-01.jpg'
+      image: 'genesis-media://demo/home/extension/promo-image/img-01.jpg'
       promoimagetitle: Mobile
       desc: 'Mobile friendly with responsive layout and Offsection position'
       iconbutton: 'fa fa-file-text-o fa-fw'
@@ -421,35 +421,35 @@ content:
       album: 'Genesis Album'
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-01.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-01.jpg'
           caption: 'Lightcase Image 1'
           title: 'Photo 1'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-02.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-02.jpg'
           caption: 'Lightcase Image 2'
           title: 'Photo 2'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-03.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-03.jpg'
           caption: 'Lightcase Image 3'
           title: 'Photo 3'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-04.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-04.jpg'
           caption: 'Lightcase Image 4'
           title: 'Photo 4'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-05.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-05.jpg'
           caption: 'Lightcase Image 5'
           title: 'Photo 5'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-06.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-06.jpg'
           caption: 'Lightcase Image 6'
           title: 'Photo 6'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-07.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-07.jpg'
           caption: 'Lightcase Image 7'
           title: 'Photo 7'
         -
-          image: 'gantry-media://demo/home/extension/image-grid/img-08.jpg'
+          image: 'genesis-media://demo/home/extension/image-grid/img-08.jpg'
           caption: 'Lightcase Image 8'
           title: 'Photo 8'
     block:

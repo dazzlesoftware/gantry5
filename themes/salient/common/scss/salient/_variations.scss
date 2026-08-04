@@ -112,13 +112,13 @@
 .box1, .box2, .box3, .box4 {
   &.moduletable, &.widget,
 	&.g-outer-box {
-		background-image: url("gantry-theme://images/variations/box-bg.png") !important;
+		background-image: url("genesis-theme://images/variations/box-bg.png") !important;
 		background-repeat: no-repeat !important;
 		background-position: center center !important;	
 	}
   &.moduletable, &.widget,
 	 > .g-content {
-		background-image: url("gantry-theme://images/variations/box-bg.png");
+		background-image: url("genesis-theme://images/variations/box-bg.png");
 		background-repeat: no-repeat;
 		background-position: center center;			
 	}	

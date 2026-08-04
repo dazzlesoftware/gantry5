@@ -1,6 +1,6 @@
 #g-mainbody {
 	background: $mainbody-background;
-    color: $mainbody-text-color; 
+    color: $mainbody-text-color;
 
 	.fp-headlines {
 		> .g-content {
@@ -35,20 +35,20 @@
 		hr {
 			margin: 10px -10px 20px -10px;
 		}
-	}	
+	}
 }
 
 .fp-content-bottom {
     .g-content {
-    	padding: 15px;
-    	width: 88%;
-    	margin: 25px auto;
+	padding: 15px;
+	width: 88%;
+	margin: 25px auto;
     }
     @include breakpoint(mobile-only) {
-    	.gantry-right {
-    		float: left !important;
-    		margin-left: 0;
-    	}
+	.genesis-right {
+		float: left !important;
+		margin-left: 0;
+	}
     }
 }
 

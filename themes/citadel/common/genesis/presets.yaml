@@ -1,0 +1,462 @@
+preset1:
+  image: 'genesis-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#f9b234'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#f9b234'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#f9b234'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#f9b234'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#f9b234'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem
+preset2:
+  image: 'genesis-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#ff5144'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#ff5144'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#ff5144'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#ff5144'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#ff5144'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem
+preset3:
+  image: 'genesis-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#6d4ae0'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#6d4ae0'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#6d4ae0'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#6d4ae0'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#6d4ae0'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem
+preset4:
+  image: 'genesis-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#00bde2'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#00bde2'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#00bde2'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#00bde2'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#00bde2'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem
+preset5:
+  image: 'genesis-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#00c67e'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#00c67e'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#00c67e'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#00c67e'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#00c67e'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem
+preset6:
+  image: 'genesis-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#f3600b'
+    - '#ffffff'
+    - '#111111'
+  styles:
+    base:
+      background: '#eeeeee'
+      text-color: '#666666'
+    accent:
+      color-1: '#f3600b'
+      color-2: '#111111'
+    font:
+      family-default:   'sintony, sans-serif, Tahoma, Geneva, Arial'
+      family-title:     'cabin, sans-serif, Tahoma, Geneva, Arial'
+      family-promo:     'raleway, sans-serif, Tahoma, Geneva, Arial'
+      family-subpromo:  'playfairdisplay, sans-serif, Tahoma, Geneva, Arial'
+      family-logo:      'blanch, sans-serif, Tahoma, Geneva, Arial'
+      family-weather:  'weather'
+    top:
+      background: '#f3600b'
+      text-color: '#ffffff'
+    navigation:
+      background: 'rgba(0,0,0, 0.5)'
+      text-color: '#ffffff'
+    slideshow:
+      background: '#ffffff'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
+      text-color: '#666666'
+    header:
+      background: '#ffffff'
+      text-color: '#666666'
+    above:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
+      text-color: '#ffffff'
+    showcase:
+      background: '#ffffff'
+      text-color: '#666666'
+    utility:
+      background: '#ffffff'
+      text-color: '#666666'
+    feature:
+      background: '#111111'
+      text-color: '#ffffff'
+    main:
+      background: '#ffffff'
+      text-color: '#666666'
+    expanded:
+      background: '#f3600b'
+      text-color: '#ffffff'
+    extension:
+      background: '#ffffff'
+      text-color: '#666666'
+    bottom:
+      background: '#f3600b'
+      text-color: '#ffffff'
+    footer:
+      background: '#111111'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
+      text-color: '#ffffff'
+    copyright:
+      background: 'rgba(0,0,0, 0.0)'
+      text-color: '#acacac'
+    offcanvas:
+      background: '#121212'
+      text-color: '#ffffff'
+      toggle-color: '#ffffff'
+    breakpoints:
+      large-desktop-container: 80rem
+      desktop-container: 60rem
+      tablet-container: 48rem
+      large-mobile-container: 30rem
+      mobile-menu-breakpoint: 48rem

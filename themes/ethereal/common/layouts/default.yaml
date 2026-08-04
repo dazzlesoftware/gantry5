@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1516143068
 layout:
@@ -137,7 +137,7 @@ content:
       key: top-c
   logo-9829:
     attributes:
-      image: 'gantry-theme://images/logo/logo-header.png'
+      image: 'genesis-theme://images/logo/logo-header.png'
     block:
       class: g-logo-block
   menu-5768:
@@ -243,7 +243,7 @@ content:
       key: footer-c
   logo-5214:
     attributes:
-      image: 'gantry-theme://images/logo/logo-footer.png'
+      image: 'genesis-theme://images/logo/logo-footer.png'
   custom-4582:
     title: 'Demo Information'
     attributes:
@@ -260,7 +260,7 @@ content:
   custom-3006:
     title: 'Horizontal Menu'
     attributes:
-      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.gantry.org/gantry5/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.gantry.org/\">Genesis</a></li>\n\t<li><a href=\"http://docs.gantry.org/gantry5/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
+      html: "<ul class=\"g-horizontalmenu\">\n\t<li><a href=\"http://docs.genesis.org/genesis/basics/key-features\">Features</a></li>\n\t<li><a href=\"http://www.genesis.org/\">Genesis</a></li>\n\t<li><a href=\"http://docs.genesis.org/genesis/particles\">Particles</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/joomla/templates/ethereal\">Download</a></li>\n\t<li><a href=\"https://dazzlesoftware.org/forum/joomla-template-ethereal\">Support</a></li>\n</ul>"
   totop-4060:
     title: 'To Top'
     attributes:

@@ -2,10 +2,10 @@
 
 const Cookie = require('../utils/cookie');
 const { ready, delegate } = require('../utils/dom');
-const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('g5-collapsed') || {};
+const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('genesis-collapsed') || {};
 const writeStorage = (storage) => {
     Cookie.write('genesis-collapsed', storage);
-    Cookie.write('g5-collapsed', storage);
+    Cookie.write('genesis-collapsed', storage);
 };
 
 const config = (element) => JSON.parse(element.getAttribute('data-g-collapse') || '{}');

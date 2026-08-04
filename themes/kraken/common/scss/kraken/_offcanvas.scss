@@ -212,19 +212,19 @@
 			bottom: -1rem;
 		}
     &.g-logo-alt {
-  		.g-style-preset7 &, .g-style-preset8 & {
-  			img {
-  				display: none;
-  			}
-  			span:before {
-  				content: "";
-  				display: block;
-  				width: 48px;
-  				height: 48px;
-  				margin: 1.5rem auto 0 auto;
-  				vertical-align: middle;
-  				background: url("gantry-theme://images/logo/logo-alt.png") no-repeat;
-  			}
+		.g-style-preset7 &, .g-style-preset8 & {
+			img {
+				display: none;
+			}
+			span:before {
+				content: "";
+				display: block;
+				width: 48px;
+				height: 48px;
+				margin: 1.5rem auto 0 auto;
+				vertical-align: middle;
+				background: url("genesis-theme://images/logo/logo-alt.png") no-repeat;
+			}
       }
 		}
 	}

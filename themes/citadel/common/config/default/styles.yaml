@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#f9b234'
@@ -27,15 +27,15 @@ preset1:
       text-color: '#ffffff'
     slideshow:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
-      video: 'gantry-media://videos/slideshow/sample.webm'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
+      video: 'genesis-media://videos/slideshow/sample.webm'
       text-color: '#666666'
     header:
       background: '#ffffff'
       text-color: '#666666'
     above:
       background: '#111111'
-      background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/img-01.jpg'
       text-color: '#ffffff'
     showcase:
       background: '#ffffff'
@@ -60,7 +60,7 @@ preset1:
       text-color: '#ffffff'
     footer:
       background: '#111111'
-      background-image: 'gantry-media://backgrounds/footer/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/footer/img-01.jpg'
       text-color: '#ffffff'
     copyright:
       background: 'rgba(0,0,0, 0.0)'

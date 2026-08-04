@@ -1,7 +1,7 @@
 doctype: html
 attribs:
   id: ''
-  class: gantry
+  class: genesis
   extra: {  }
 layout:
   sections: '0'

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1478643075
 layout:
@@ -161,7 +161,7 @@ content:
         -
           name: 'Rick Grimes'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Owner
@@ -175,7 +175,7 @@ content:
         -
           name: 'Maggie Greene'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Manager
@@ -189,7 +189,7 @@ content:
         -
           name: 'Daryl Dixon'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Cashier
@@ -217,7 +217,7 @@ content:
         -
           name: 'Purchase Goods'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -231,7 +231,7 @@ content:
         -
           name: 'Sell Goods'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -245,7 +245,7 @@ content:
         -
           name: 'Make Profit'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''

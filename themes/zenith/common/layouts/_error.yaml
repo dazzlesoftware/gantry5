@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: _error
   timestamp: 1553596965
 layout:
@@ -167,7 +167,7 @@ content:
   logo-9680:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://pages/all/img-01.jpg'
+      image: 'genesis-media://pages/all/img-01.jpg'
       text: ''
       title: ''
       class: avatar-logo

@@ -1,0 +1,8 @@
+services:
+    dazzlesoftware.genesis.listener:
+        class: dazzlesoftware\genesis\event\listener
+        arguments:
+            - '@service_container'
+            - '@path_helper'
+        tags:
+            - { name: event.listener }

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: services
   timestamp: 1496332897
 layout:
@@ -151,7 +151,7 @@ content:
   contentlist-9027:
     title: 'Why Choose Us'
     attributes:
-      image: 'gantry-theme://images/demo/services/img-01.jpg'
+      image: 'genesis-theme://images/demo/services/img-01.jpg'
       imagetag: Services
       headline: 'Why Choose Us'
       subtitle: 'Absolutely Stunning Design and Functionality'

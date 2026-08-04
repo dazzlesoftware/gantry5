@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1592047681
 layout:
@@ -196,7 +196,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: center
           main_title: '<div data-aos="fade-right"><span>Designed for Fitness</span></div>'
@@ -207,7 +207,7 @@ content:
           title: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: center
           main_title: '<span>Inspire Greatness</span>'
@@ -218,7 +218,7 @@ content:
           title: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: center
           main_title: '<span>Attract New Customers</span>'
@@ -266,19 +266,19 @@ content:
       cols: g-activities-4cols
       activitiesitems:
         -
-          image: 'gantry-media://home/above/img-01.jpg'
+          image: 'genesis-media://home/above/img-01.jpg'
           url: 'https://dazzlesoftware.org'
           caption: Weight
         -
-          image: 'gantry-media://home/above/img-01.jpg'
+          image: 'genesis-media://home/above/img-01.jpg'
           url: 'https://dazzlesoftware.org'
           caption: Fitness
         -
-          image: 'gantry-media://home/above/img-01.jpg'
+          image: 'genesis-media://home/above/img-01.jpg'
           url: 'https://dazzlesoftware.org'
           caption: Yoga
         -
-          image: 'gantry-media://home/above/img-01.jpg'
+          image: 'genesis-media://home/above/img-01.jpg'
           url: 'https://dazzlesoftware.org'
           caption: Boxing
     block:
@@ -288,37 +288,37 @@ content:
     attributes:
       logos:
         -
-          image: 'gantry-media://home/feature/logo-01-dark.png'
+          image: 'genesis-media://home/feature/logo-01-dark.png'
           url: '#'
           target: _self
           title: Logo
         -
-          image: 'gantry-media://home/feature/logo-02-dark.png'
+          image: 'genesis-media://home/feature/logo-02-dark.png'
           url: '#'
           target: _self
           title: Logo
         -
-          image: 'gantry-media://home/feature/logo-03-dark.png'
+          image: 'genesis-media://home/feature/logo-03-dark.png'
           url: '#'
           target: _self
           title: Logo
         -
-          image: 'gantry-media://home/feature/logo-04-dark.png'
+          image: 'genesis-media://home/feature/logo-04-dark.png'
           url: '#'
           target: _self
           title: Logo
         -
-          image: 'gantry-media://home/feature/logo-05-dark.png'
+          image: 'genesis-media://home/feature/logo-05-dark.png'
           url: '#'
           target: _self
           title: Logo
         -
-          image: 'gantry-media://home/feature/logo-06-dark.png'
+          image: 'genesis-media://home/feature/logo-06-dark.png'
           url: '#'
           target: _self
           title: Logo
         -
-          image: 'gantry-media://home/feature/logo-07-dark.png'
+          image: 'genesis-media://home/feature/logo-07-dark.png'
           url: '#'
           target: _self
           title: Logo
@@ -347,7 +347,7 @@ content:
           title: 'New item'
   image-7722:
     attributes:
-      image: 'gantry-media://home/showcase/img-01.png'
+      image: 'genesis-media://home/showcase/img-01.png'
   simplecontent-2495:
     title: 'Simple Content'
     attributes:
@@ -383,28 +383,28 @@ content:
         -
           description: '23 classes'
           icon: ''
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           link: ''
           linktarget: modal
           title: 'Improve fitness'
         -
           description: '5 classes'
           icon: ''
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           link: ''
           linktarget: modal
           title: 'Build Muscle'
         -
           description: '19 classes'
           icon: ''
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           link: ''
           linktarget: modal
           title: 'Relax & Unwind'
         -
           description: '3 classes'
           icon: ''
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           link: ''
           linktarget: modal
           title: 'Learn Boxing'
@@ -526,7 +526,7 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/bottom/img-01.jpg'
+              image: 'genesis-media://home/bottom/img-01.jpg'
               description: 'Slideshow · Swiper'
               date: ''
               url: '#'
@@ -534,14 +534,14 @@ content:
               title: 'Dynamic Image Slideshows'
             -
               class: hidden-tablet
-              image: 'gantry-media://home/bottom/img-01.jpg'
+              image: 'genesis-media://home/bottom/img-01.jpg'
               description: 'Quotes · Promo'
               date: ''
               url: '#'
               target: _self
               title: 'Inspirational Quotes and Messages'
             -
-              image: 'gantry-media://home/bottom/img-01.jpg'
+              image: 'genesis-media://home/bottom/img-01.jpg'
               description: 'Pricing Table · Newsletter'
               date: ''
               url: '#'

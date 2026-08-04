@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1465972737
 layout:
@@ -701,7 +701,7 @@ content:
       nav: disabled
       items:
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: 'One <strong>of</strong> the <br /> 25 wonders  <br /> <strong>of</strong> the world'
           subtitle: ''
@@ -714,7 +714,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: 'One <strong>of</strong> the <br /> 25 wonders  <br /> <strong>of</strong> the world'
           subtitle: ''
@@ -727,7 +727,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: 'One <strong>of</strong> the <br /> 25 wonders  <br /> <strong>of</strong> the world'
           subtitle: ''
@@ -740,7 +740,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: 'One <strong>of</strong> the <br /> 25 wonders  <br /> <strong>of</strong> the world'
           subtitle: ''
@@ -753,7 +753,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: 'One <strong>of</strong> the <br /> 25 wonders  <br /> <strong>of</strong> the world'
           subtitle: ''
@@ -767,7 +767,7 @@ content:
           name: 'New item'
 
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: 'One <strong>of</strong> the <br /> 25 wonders  <br /> <strong>of</strong> the world'
           subtitle: ''
@@ -827,23 +827,23 @@ content:
       cols: g-imagegrid-5cols
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
           caption: Breakfast
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/slideshow/img-02.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-02.jpg'
           caption: Beach
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/slideshow/img-03.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-03.jpg'
           caption: Kitchen
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-04.jpg'
           caption: 'Living Room'
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/slideshow/img-05.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-05.jpg'
           caption: Sea
           title: 'New item'
     block:
@@ -890,19 +890,19 @@ content:
       layout: g-imagegrid-captions
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           caption: Food
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/feature/img-02.jpg'
+          image: 'genesis-media://demo/home/feature/img-02.jpg'
           caption: Beach
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/feature/img-03.jpg'
+          image: 'genesis-media://demo/home/feature/img-03.jpg'
           caption: Room
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/feature/img-04.jpg'
+          image: 'genesis-media://demo/home/feature/img-04.jpg'
           caption: Pool
           title: 'New item'
     block:
@@ -996,7 +996,7 @@ content:
           end: '2016-05-31'
           adults: '5'
           children: '1'
-          image: 'gantry-media://demo/home/expanded/img-01.jpg'
+          image: 'genesis-media://demo/home/expanded/img-01.jpg'
           title: 'Rural suite'
           subtitle: '3 people suite, 2 bedrooms'
           description: 'Drawn out with our most ambitious guests in mind, these suites have been specially designed for comfort and relaxation.'
@@ -1010,7 +1010,7 @@ content:
           end: '2016-06-23'
           adults: '8'
           children: '2'
-          image: 'gantry-media://demo/home/expanded/img-02.jpg'
+          image: 'genesis-media://demo/home/expanded/img-02.jpg'
           title: 'Dream suite'
           subtitle: '3 people suite, 2 bedrooms'
           description: 'Affirm your independence in our two bedroom Dream Suite, ideal for a gathering with friends, family, or a special occasion.'
@@ -1024,7 +1024,7 @@ content:
           end: '2016-05-31'
           adults: '9'
           children: '5'
-          image: 'gantry-media://demo/home/expanded/img-03.jpg'
+          image: 'genesis-media://demo/home/expanded/img-03.jpg'
           title: 'Business suite'
           subtitle: '3 people suite, 2 bedrooms'
           description: 'Business Suites are ideal for meetings or events, and come equipped with facilities to match the needs of the industrious traveler.'
@@ -1048,7 +1048,7 @@ content:
           title: ''
           subtitle: ''
           author: 'Taylor Jackson <br /> <span>CEO of Orange Computers Ltd.<span>'
-          authorimage: 'gantry-media://demo/home/footer/img-01.jpg'
+          authorimage: 'genesis-media://demo/home/footer/img-01.jpg'
           desc: 'We have spent an amazing week at the Hotel. The food, the room, the service were all outstanding. Will definitely go back there next year.'
           link: ''
           linktext: ''
@@ -1061,7 +1061,7 @@ content:
           title: ''
           subtitle: ''
           author: 'Derek Short <br /> <span>CTO of the RocketTeer Foundation<span>'
-          authorimage: 'gantry-media://demo/home/footer/img-01.jpg'
+          authorimage: 'genesis-media://demo/home/footer/img-01.jpg'
           desc: 'Believe everything you read about this charming hotel. The location is perfect, our suite (they upgraded us) was lovely and we had a terrace!'
           link: ''
           linktext: ''
@@ -1074,7 +1074,7 @@ content:
           title: ''
           subtitle: ''
           author: 'Julie Black <br /> <span>COO of Ameribeats LLC<span>'
-          authorimage: 'gantry-media://demo/home/footer/img-01.jpg'
+          authorimage: 'genesis-media://demo/home/footer/img-01.jpg'
           desc: 'The entire staff was fantastic! Everyone was very helpful, offering suggestions on attractions, calling taxis, and anything else we needed.'
           link: ''
           linktext: ''

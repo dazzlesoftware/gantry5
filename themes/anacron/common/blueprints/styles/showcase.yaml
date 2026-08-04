@@ -12,12 +12,12 @@ form:
     text-color:
       type: input.colorpicker
       label: Text
-      default: "#ffffff"  
+      default: "#ffffff"
     link-color:
       type: input.colorpicker
       label: Link
-      default: "#07659e"    
+      default: "#07659e"
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/showcase/preset1/bg.png"           
+      default: "genesis-media://backgrounds/showcase/preset1/bg.png"

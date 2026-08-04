@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<updates>
+	<update>
+		<name>pkg_genesis</name>
+		<description>Genesis Framework</description>
+		<element>pkg_genesis</element>
+		<type>package</type>
+		<client>site</client>
+		<version>@version@</version>
+		<infourl title="Genesis @version@">http://docs.genesis.org/genesis</infourl>
+        <sha512>@sha512_joomla_package@</sha512>
+		<downloads>
+			<downloadurl type="full" format="zip">http://updates.genesis.org/download/@version@/joomla-pkg_genesis_v@version@.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Dazzle Software, LLC</maintainer>
+		<maintainerurl>http://genesis.org</maintainerurl>
+		<section>Updates</section>
+		<targetplatform name="joomla" version="(3.9)|(3.10)|(4.0)|(4.1)|(4.2)|(4.3)|(4.4)|(5.0)|(5.1)|(5.2)|(5.3)"/>
+		<php_minimum>5.6.20</php_minimum>
+	</update>
+</updates>

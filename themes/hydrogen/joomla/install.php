@@ -9,19 +9,19 @@
 
 defined('_JEXEC') or die;
 
-use Gantry\Framework\Gantry;
-use Gantry\Framework\ThemeInstaller;
-use Gantry5\Loader;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\ThemeInstaller;
+use Genesis\Loader;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
 /**
- * Class G5_HydrogenInstallerScript
+ * Class Genesis_HydrogenInstallerScript
  */
-class G5_HydrogenInstallerScript
+class Genesis_HydrogenInstallerScript
 {
     /** @var string */
-    public $requiredGantryVersion = '5.5';
+    public $requiredGenesisVersion = '5.5';
 
     /**
      * @param string $type
@@ -40,16 +40,16 @@ class G5_HydrogenInstallerScript
 
         // Prevent installation if Genesis isn't enabled or is too old for this template.
         try {
-            if (!class_exists('Gantry5\Loader')) {
+            if (!class_exists('Genesis\Loader')) {
                 throw new RuntimeException(sprintf('Please install Genesis Framework before installing %s template!', $name));
             }
 
             Loader::setup();
 
-            $gantry = Gantry::instance();
+            $genesis = Genesis::instance();
 
-            if (!method_exists($gantry, 'isCompatible') || !$gantry->isCompatible($this->requiredGantryVersion)) {
-                throw new \RuntimeException(sprintf('Please upgrade Genesis Framework to v%s (or later) before installing %s template!', strtoupper($this->requiredGantryVersion), $name));
+            if (!method_exists($genesis, 'isCompatible') || !$genesis->isCompatible($this->requiredGenesisVersion)) {
+                throw new \RuntimeException(sprintf('Please upgrade Genesis Framework to v%s (or later) before installing %s template!', strtoupper($this->requiredGenesisVersion), $name));
             }
 
         } catch (Exception $e) {

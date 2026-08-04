@@ -7,7 +7,7 @@ atoms:
     attributes:
       enabled: '1'
       css:
-        - { location: 'gantry-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
+        - { location: 'genesis-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
       javascript:
         - { location: '', inline: 'document.querySelectorAll(''.box1 .g-title, .box2 .g-title, .box3 .g-title, .title1 .g-title, .title2 .g-title, .title3 .g-title, .title-grey .g-title, .title-pink .g-title, .title-red .g-title, .title-purple .g-title, .title-orange .g-title, .title-blue .g-title'').forEach(function (title) { title.insertAdjacentHTML(''afterbegin'', ''<div class="g-rectangles-before"><div class="rectangle1"></div><div class="rectangle2"></div><div class="rectangle3"></div></div>''); title.insertAdjacentHTML(''beforeend'', ''<div class="g-rectangles-after"><div class="rectangle1"></div><div class="rectangle2"></div><div class="rectangle3"></div></div>''); });', in_footer: '1', extra: {  }, name: 'Title Rectangles' }
   -

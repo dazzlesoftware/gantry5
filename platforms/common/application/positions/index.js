@@ -42,7 +42,7 @@ dom.ready(function() {
         var editable = container.querySelector('[data-title-editable]');
         if (!editable || editable.gPositionModalTitleAttached) { return; }
         editable.gPositionModalTitleAttached = true;
-        editable.addEventListener('g5:title-edit-end', function(event) {
+        editable.addEventListener('genesis:title-edit-end', function(event) {
             var title = trim(event.detail && event.detail.title);
             if (!title) {
                 title = trim(event.detail && event.detail.original) || 'Title';
@@ -56,8 +56,8 @@ dom.ready(function() {
         editables.forEach(function(editable) {
             if (editable.confWasAttached) { return; }
             editable.confWasAttached = true;
-            editable.addEventListener('g5:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
-            editable.addEventListener('g5:title-edit-end', function(event) {
+            editable.addEventListener('genesis:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
+            editable.addEventListener('genesis:title-edit-end', function(event) {
                 var detail = event.detail || {};
                 editable.style.textOverflow = 'ellipsis';
                 if (detail.canceled || detail.title === detail.original) { return; }
@@ -159,7 +159,7 @@ dom.ready(function() {
     dom.delegate(body, 'click', '#positions .position-add', function(event, element) {
         event.preventDefault();
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'get',
             overlayClickToClose: false,
             remote: parseAjaxURI(element.href + getAjaxSuffix()),
@@ -200,7 +200,7 @@ dom.ready(function() {
 
         var position = JSON.parse(positionElement.getAttribute('data-genesis-position'));
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             data: { position: position.name, item: item.getAttribute('data-pm-data') },
             overlayClickToClose: false,
@@ -226,7 +226,7 @@ dom.ready(function() {
                             target.disabled = false;
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -248,7 +248,7 @@ dom.ready(function() {
                                 Cards.serialize(positionElement);
                                 Cards.updatePendingChanges();
                                 modal.close();
-                                toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                                toastr.success(translate('GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
                             target.disabled = false;
                             indicator.hide(target);

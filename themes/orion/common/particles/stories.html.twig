@@ -1,7 +1,7 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="genesis-theme://css/swiper.min.css"/>
 {% endblock %}
 
 {% block particle %}
@@ -63,7 +63,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do genesis.document.addScript(url('gantry-theme://js/stories.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('genesis-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('genesis-theme://js/stories.init.js'), 10, 'footer') %}
 {% endblock %}

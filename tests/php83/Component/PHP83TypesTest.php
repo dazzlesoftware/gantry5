@@ -1,8 +1,8 @@
 <?php
 
-namespace Gantry\Tests\PHP83;
+namespace Genesis\Tests\PHP83;
 
-use Gantry\Tests\PHP83\MockableTest;
+use Genesis\Tests\PHP83\MockableTest;
 
 /**
  * Test PHP 8.3 specific type handling and compatibility
@@ -12,12 +12,12 @@ class PHP83TypesTest extends MockableTest
     /**
      * Test that nullable types and union types work correctly
      * 
-     * @covers \Gantry\Component\Stylesheet\CssCompiler
+     * @covers \Genesis\Component\Stylesheet\CssCompiler
      */
     public function testNullableAndUnionTypes()
     {
         // Test with null values for nullable parameters
-        $instance = new \Gantry\Component\Stylesheet\CssCompiler();
+        $instance = new \Genesis\Component\Stylesheet\CssCompiler();
         
         // Set null target path and verify it handles correctly
         $instance->setTargetPath(null);
@@ -32,13 +32,13 @@ class PHP83TypesTest extends MockableTest
     /**
      * Test compatibility with PHP 8.3 trait handling
      * 
-     * @covers \Gantry\Component\Theme\ThemeTrait
+     * @covers \Genesis\Component\Theme\ThemeTrait
      */
     public function testTraitCompatibility()
     {
         // Create a mock class using the trait
         $mock = new class {
-            use \Gantry\Component\Theme\ThemeTrait;
+            use \Genesis\Component\Theme\ThemeTrait;
             
             public function getUrl()
             {

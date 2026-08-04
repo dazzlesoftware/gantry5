@@ -18,7 +18,7 @@ $dist = Join-Path $repository 'dist'
 $wpContent = [IO.Path]::GetFullPath($WordPressContent)
 $plugins = Join-Path $wpContent 'plugins'
 $themes = Join-Path $wpContent 'themes'
-$gantryPlugin = Join-Path $plugins 'gantry5'
+$genesisPlugin = Join-Path $plugins 'genesis'
 
 if ([IO.Path]::GetFileName($wpContent.TrimEnd('\', '/')) -ne 'wp-content') {
     throw "The deployment target must be a wp-content directory: $wpContent"
@@ -31,10 +31,10 @@ foreach ($directory in @($dist, $plugins, $themes)) {
 }
 
 $pluginArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-pkg_gantry5_${BuildSuffix}.zip"
+    Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-pkg_genesis_${BuildSuffix}.zip"
 )
 $themeArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-tpl_g5_*_${BuildSuffix}.zip" |
+    Get-ChildItem -LiteralPath $dist -File -Filter "wordpress-tpl_genesis_*_${BuildSuffix}.zip" |
         Sort-Object Name
 )
 
@@ -57,13 +57,13 @@ if (
     throw 'Resolved plugin or theme directory is outside the requested wp-content directory.'
 }
 
-Write-Host "Removing old Genesis plugin: $gantryPlugin"
-if (Test-Path -LiteralPath $gantryPlugin) {
-    Remove-Item -LiteralPath $gantryPlugin -Recurse -Force
+Write-Host "Removing old Genesis plugin: $genesisPlugin"
+if (Test-Path -LiteralPath $genesisPlugin) {
+    Remove-Item -LiteralPath $genesisPlugin -Recurse -Force
 }
 
 $oldThemes = @(
-    Get-ChildItem -LiteralPath $themes -Directory -Filter 'g5_*'
+    Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*'
 )
 
 Write-Host "Removing $($oldThemes.Count) old Genesis themes..."
@@ -85,11 +85,11 @@ foreach ($archive in $themeArchives) {
 }
 
 $installedThemes = @(
-    Get-ChildItem -LiteralPath $themes -Directory -Filter 'g5_*'
+    Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*'
 )
 
-if (-not (Test-Path -LiteralPath (Join-Path $gantryPlugin 'gantry5.php') -PathType Leaf)) {
-    throw 'The deployed Genesis plugin is missing gantry5.php.'
+if (-not (Test-Path -LiteralPath (Join-Path $genesisPlugin 'genesis.php') -PathType Leaf)) {
+    throw 'The deployed Genesis plugin is missing genesis.php.'
 }
 
 if ($installedThemes.Count -ne $themeArchives.Count) {
@@ -98,5 +98,5 @@ if ($installedThemes.Count -ne $themeArchives.Count) {
 
 Write-Host ''
 Write-Host 'Deployment verification passed:'
-Write-Host "  Plugin: $gantryPlugin"
+Write-Host "  Plugin: $genesisPlugin"
 Write-Host "  Themes: $($installedThemes.Count)"

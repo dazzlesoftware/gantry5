@@ -1,7 +1,7 @@
 // Helium-native styling for phpBB's own (prosilver-derived) markup.
 //
 // phpBB's captured page body isn't rendered through Genesis/Twig at all (see
-// platforms/phpbb/gantry5/event/listener.php) -- it's phpBB's own compiled Twig-via-legacy-syntax
+// platforms/phpbb/genesis/event/listener.php) -- it's phpBB's own compiled Twig-via-legacy-syntax
 // output, using phpBB's own class names (.forabg, .forumbg, .postbody, etc.), completely separate
 // from Genesis's particle/section markup that the rest of the Helium SCSS targets. This file maps
 // those phpBB class names onto Helium's actual design tokens (colors, radius, shadows, type)
@@ -534,12 +534,12 @@ body #page-body {
 // overall_footer.html's Footer note block)
 // ---------------------------------------------------------------------------
 
-.g-phpbb-gantry-tagline {
+.g-phpbb-genesis-tagline {
     opacity: 0.8;
     font-size: $core-font-size - 0.1;
 }
 
-.g-phpbb-gantry-footer-note {
+.g-phpbb-genesis-footer-note {
     font-size: $core-font-size - 0.15;
     opacity: 0.7;
 }

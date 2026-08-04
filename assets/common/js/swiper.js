@@ -5527,7 +5527,7 @@
     const parsed = Number.parseInt(value, 10);
     return Number.isFinite(parsed) ? parsed : fallback;
   };
-  var GantrySwiper = class {
+  var GenesisSwiper = class {
     constructor(element) {
       this.element = element;
       this.prepareMarkup();
@@ -5778,7 +5778,7 @@
         thumbnail.setAttribute("aria-current", active ? "true" : "false");
       });
       const activeSlide = ((_c = swiper.slides) == null ? void 0 : _c[swiper.activeIndex]) || null;
-      this.element.dispatchEvent(new CustomEvent("g5:swiper:change", {
+      this.element.dispatchEvent(new CustomEvent("genesis:swiper:change", {
         bubbles: true,
         detail: {
           activeSlide,
@@ -5833,15 +5833,15 @@
       }
       const carousels = Array.from(container.querySelectorAll(":scope [data-g-swiper]")).filter((element) => {
         var _a2;
-        return (_a2 = element.gantrySwiper) == null ? void 0 : _a2.instance;
+        return (_a2 = element.genesisSwiper) == null ? void 0 : _a2.instance;
       });
       if (carousels.length < 2) {
         return;
       }
       const mainElement = carousels.find((element) => /-slides(?:\s|$)/.test(element.className)) || carousels[0];
       const navigationElement = carousels.find((element) => element !== mainElement && /-carousel(?:\s|$)/.test(element.className)) || carousels[1];
-      const main = mainElement.gantrySwiper.instance;
-      const navigation = navigationElement.gantrySwiper.instance;
+      const main = mainElement.genesisSwiper.instance;
+      const navigation = navigationElement.genesisSwiper.instance;
       const updateCurrent = () => {
         navigation.slides.forEach((slide2) => slide2.classList.remove("swiper-current"));
         const current = navigation.slides[main.realIndex];
@@ -5890,7 +5890,7 @@
           return;
         }
         const swiperElement = container.querySelector("[data-g-swiper]");
-        const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.gantrySwiper) == null ? void 0 : _a2.instance;
+        const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.genesisSwiper) == null ? void 0 : _a2.instance;
         const items = Array.from(container.querySelectorAll(definition.items));
         if (!swiper || !items.length) {
           return;
@@ -5919,7 +5919,7 @@
         return;
       }
       const swiperElement = container.querySelector("[data-showcase-slides-id][data-g-swiper]");
-      const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.gantrySwiper) == null ? void 0 : _a2.instance;
+      const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.genesisSwiper) == null ? void 0 : _a2.instance;
       const sets = Array.from(container.querySelectorAll(".g-showcase-slides.desktop .g-showcase-slides-set"));
       if (!swiper || !sets.length) {
         return;
@@ -5955,7 +5955,7 @@
         return;
       }
       const swiperElement = container.querySelector("[data-bgslideshow-slides-id][data-g-swiper]");
-      const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.gantrySwiper) == null ? void 0 : _a2.instance;
+      const swiper = (_a2 = swiperElement == null ? void 0 : swiperElement.genesisSwiper) == null ? void 0 : _a2.instance;
       const images = Array.from(container.querySelectorAll("[data-bgslideshow-carousel-id] img"));
       let target = null;
       try {
@@ -6002,7 +6002,7 @@
       const items = Array.from(container.querySelectorAll(".g-swipercarousel-item"));
       const updateSwiperHeight = () => {
         var _a2, _b2;
-        const swiper = (_b2 = (_a2 = container.querySelector("[data-g-swiper]")) == null ? void 0 : _a2.gantrySwiper) == null ? void 0 : _b2.instance;
+        const swiper = (_b2 = (_a2 = container.querySelector("[data-g-swiper]")) == null ? void 0 : _a2.genesisSwiper) == null ? void 0 : _b2.instance;
         if (!swiper) {
           return;
         }
@@ -6062,7 +6062,7 @@
         return;
       }
       element.dataset.gSwiperReady = "true";
-      element.gantrySwiper = new GantrySwiper(element);
+      element.genesisSwiper = new GenesisSwiper(element);
     });
     bindSynchronizedCarousels(root);
     bindStaticNavigation(root);
@@ -6088,8 +6088,8 @@
   } else {
     ready();
   }
-  window.GenesisSwiper = { GantrySwiper, initialize };
-  window.G5Swiper = window.GenesisSwiper;
+  window.GenesisSwiper = { GenesisSwiper, initialize };
+  window.GenesisSwiper = window.GenesisSwiper;
 })();
 /*! Swiper 14.0.7 | Copyright 2014-2026 Vladimir Kharlampidi | MIT License */
 //# sourceMappingURL=swiper.js.map

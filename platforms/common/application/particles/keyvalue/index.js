@@ -116,8 +116,8 @@ ready(() => {
             parent.classList.toggle('g-keyvalue-warning', duplicate);
             parent.classList.toggle('g-keyvalue-excluded', excluded);
             const message = duplicate
-                ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue)
-                : excluded ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null;
+                ? translate('GENESIS_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue)
+                : excluded ? translate('GENESIS_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null;
 
             if (message) wrapper.setAttribute('data-tip', message);
             else wrapper.removeAttribute('data-tip');

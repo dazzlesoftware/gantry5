@@ -16,4 +16,4 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://patterns/poly.png" 
+      default: "genesis-media://patterns/poly.png"

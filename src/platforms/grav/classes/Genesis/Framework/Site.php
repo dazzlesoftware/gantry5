@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
+ */
+
+namespace Genesis\Framework;
+
+use Grav\Common\Config\Config;
+use Grav\Common\Grav;
+use Grav\Common\Uri;
+
+/**
+ * Class Site
+ * @package Genesis\Framework
+ */
+class Site
+{
+    /** @var string */
+    public $theme;
+    /** @var string */
+    public $url;
+    /** @var string */
+    public $title;
+    /** @var string */
+    public $description;
+
+    public function __construct()
+    {
+        $grav = Grav::instance();
+
+        /** @var Config $config */
+        $config = $grav['config'];
+
+        /** @var Uri $uri */
+        $uri = $grav['uri'];
+
+        $this->theme = $config->get('system.theme');
+        $this->url = $uri->rootUrl();
+        $this->title = $config->get('site.title');
+        $this->description = $config->get('site.description');
+    }
+}

@@ -47,7 +47,7 @@ dom.ready(function() {
         if (!field) { return; }
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             className: 'genesis-dialog-theme-default genesis-modal-icons',
             remote: parseAjaxURI(getAjaxURL('icons') + getAjaxSuffix()),
             afterClose: function() {

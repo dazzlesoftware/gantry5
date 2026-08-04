@@ -141,5 +141,5 @@
         render();
     };
 
-    window.GantryCalendar = { create };
+    window.GenesisCalendar = { create };
 })();

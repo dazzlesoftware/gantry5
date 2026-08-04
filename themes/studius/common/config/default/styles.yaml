@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#193564'
@@ -31,33 +31,33 @@ preset1:
       text-color: '#193564'
     slideshow:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/slideshow/bg-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/bg-01.jpg'
       text-color: '#ffffff'
     header:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/header/bg-01.svg'
       text-color: '#193564'
     above:
       background: '#193564'
-      background-image: 'gantry-media://backgrounds/above/bg-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/bg-01.jpg'
       text-color: #ffffff'
     feature:
       background: '#f6faff'
       text-color: '#193564'
     showcase:
       background: '#f6faff'
-      background-image: 'gantry-media://backgrounds/showcase/bg-01.png'
+      background-image: 'genesis-media://backgrounds/showcase/bg-01.png'
       text-color: '#193564'
     utility:
       background: '#f2f9fb'
-      background-image: 'gantry-media://backgrounds/utility/bg-01.png'
+      background-image: 'genesis-media://backgrounds/utility/bg-01.png'
       text-color: '#193564'
     main:
       background: 'rgba(255,255,255,0)'
       text-color: '#193564'
     expanded:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/expanded/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/expanded/bg-01.svg'
       text-color: '#193564'
     extension:
       background: '#193564'

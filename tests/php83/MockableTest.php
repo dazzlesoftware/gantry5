@@ -1,6 +1,6 @@
 <?php
 
-namespace Gantry\Tests\PHP83;
+namespace Genesis\Tests\PHP83;
 
 use PHPUnit\Framework\TestCase;
 
@@ -25,9 +25,9 @@ class MockableTest extends TestCase
     protected function registerMockClasses()
     {
         // Create mock CssCompiler if needed
-        if (!class_exists('\Gantry\Component\Stylesheet\CssCompiler')) {
+        if (!class_exists('\Genesis\Component\Stylesheet\CssCompiler')) {
             eval('
-                namespace Gantry\Component\Stylesheet;
+                namespace Genesis\Component\Stylesheet;
                 
                 class CssCompiler {
                     protected $targetPath = null;
@@ -49,9 +49,9 @@ class MockableTest extends TestCase
         }
         
         // Create mock ThemeTrait if needed
-        if (!trait_exists('\Gantry\Component\Theme\ThemeTrait')) {
+        if (!trait_exists('\Genesis\Component\Theme\ThemeTrait')) {
             eval('
-                namespace Gantry\Component\Theme;
+                namespace Genesis\Component\Theme;
                 
                 trait ThemeTrait {
                     protected $url;
@@ -145,9 +145,9 @@ class MockableTest extends TestCase
         }
         
         // Create mock Layout class if needed
-        if (!class_exists('\Gantry\Component\Layout\Layout')) {
+        if (!class_exists('\Genesis\Component\Layout\Layout')) {
             eval('
-                namespace Gantry\Component\Layout;
+                namespace Genesis\Component\Layout;
                 
                 class Layout implements \ArrayAccess, \Iterator, \DazzleSoftware\Toolbox\ArrayTraits\ExportInterface
                 {
@@ -220,9 +220,9 @@ class MockableTest extends TestCase
         }
     
         // Create mock Twig classes if needed
-        if (!class_exists('\Gantry\Component\Twig\TwigExtension')) {
+        if (!class_exists('\Genesis\Component\Twig\TwigExtension')) {
             eval('
-                namespace Gantry\Component\Twig;
+                namespace Genesis\Component\Twig;
                 
                 class TwigExtension {
                     public function getFilters()
@@ -245,11 +245,11 @@ class MockableTest extends TestCase
         }
         
         // Create mock Genesis class if needed
-        if (!class_exists('\Gantry\Framework\Base\Gantry')) {
+        if (!class_exists('\Genesis\Framework\Base\Genesis')) {
             eval('
-                namespace Gantry\Framework\Base;
+                namespace Genesis\Framework\Base;
                 
-                class Gantry
+                class Genesis
                 {
                     private static $instance;
                     
@@ -312,9 +312,9 @@ class MockableTest extends TestCase
         }
         
         // Create mock Platform class if needed
-        if (!class_exists('\Gantry\Framework\Platform')) {
+        if (!class_exists('\Genesis\Framework\Platform')) {
             eval('
-                namespace Gantry\Framework;
+                namespace Genesis\Framework;
                 
                 class Platform {
                     public static function isJoomla() { return false; }
@@ -326,18 +326,18 @@ class MockableTest extends TestCase
             ');
             
             eval('
-                namespace Gantry\Joomla\Framework;
+                namespace Genesis\Joomla\Framework;
                 
-                class Platform extends \Gantry\Framework\Platform {
+                class Platform extends \Genesis\Framework\Platform {
                     public static function isJoomla() { return true; }
                     public function getName() { return "joomla"; }
                 }
             ');
             
             eval('
-                namespace Gantry\WordPress\Framework;
+                namespace Genesis\WordPress\Framework;
                 
-                class Platform extends \Gantry\Framework\Platform {
+                class Platform extends \Genesis\Framework\Platform {
                     public static function isWordpress() { return true; }
                     public function getName() { return "wordpress"; }
                 }

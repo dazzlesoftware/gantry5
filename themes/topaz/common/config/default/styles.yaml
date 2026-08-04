@@ -23,8 +23,8 @@ slideshow:
   text-color: '#656a7b'
 header:
   background: '#152248'
-  background-image: 'gantry-media://backgrounds/header/img-01.png'
-  background-image2: 'gantry-media://backgrounds/header/img-02.jpg'
+  background-image: 'genesis-media://backgrounds/header/img-01.png'
+  background-image2: 'genesis-media://backgrounds/header/img-02.jpg'
   text-color: '#ffffff'
 above:
   background: 'rgba(0, 0, 0, 0)'

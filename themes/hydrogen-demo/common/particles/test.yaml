@@ -102,16 +102,16 @@ form:
       root:
         - 'media/images'
         - '../../../../../'
-        - 'gantry-media://'
-        - 'gantry-media://images'
-        - 'gantry-media://imagez'
-        - 'gantry-something://'
+        - 'genesis-media://'
+        - 'genesis-media://images'
+        - 'genesis-media://imagez'
+        - 'genesis-something://'
         - 'media/images/bla'
     file-4:
       type: input.filepicker
       label: "Filter: '^img-'"
       icon: fa-filter
-      root: 'gantry-media://'
+      root: 'genesis-media://'
       filter: '^img-'
     file-5:
       type: input.imagepicker

@@ -1,7 +1,0 @@
-actions:
-  admin.gantry:
-    type: default
-    label: Genesis
-
-  default:
-    type: access

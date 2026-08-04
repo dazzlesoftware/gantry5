@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="genesis" label="Genesis Menu">
+            <field
+                name="genesis"
+                type="hidden"
+                value="1"
+            />
+            <field
+                name="genesis-attributes"
+                type="subform"
+                label="List Tag Attributes"
+                description=""
+                layout="joomla.form.field.subform.repeatable-table"
+                icon="list"
+                multiple="true"
+            >
+                <form hidden="true" name="list_templates_modal" repeat="true">
+                    <field
+                        name="key"
+                        type="text"
+                        label="Key"
+                        size="15"
+                    />
+
+                    <field
+                        name="value"
+                        type="text"
+                        label="Value"
+                        size="15"
+                    />
+                </form>
+            </field>
+            <field
+                name="genesis-link_attributes"
+                type="subform"
+                label="Link Tag Attributes"
+                description=""
+                layout="joomla.form.field.subform.repeatable-table"
+                icon="list"
+                multiple="true"
+            >
+                <form hidden="true" name="list_templates_modal" repeat="true">
+                    <field
+                        name="key"
+                        type="text"
+                        label="Key"
+                        size="15"
+                    />
+
+                    <field
+                        name="value"
+                        type="text"
+                        label="Value"
+                        size="15"
+                    />
+                </form>
+            </field>
+            <field name="genesis-hash"
+                   type="text"
+                   label="Append Hash"/>
+            <field name="genesis-dropdown"
+                   type="list"
+                   label="Dropdown Style">
+                <option value="">- Use Default -</option>
+                <option value="standard">Simple</option>
+                <option value="fullwidth">Extended</option>
+            </field>
+            <field name="genesis-dropdown_dir"
+                   type="list"
+                   label="Dropdown Direction">
+                <option value="left">Expand Left</option>
+                <option value="center">Keep Centered</option>
+                <option value="right">Expand Right</option>
+            </field>
+            <field name="genesis-dropdown_hide"
+                   type="checkbox"
+                   label="Disable Dropdowns"/>
+            <field name="genesis-width"
+                   type="text"
+                   label="Dropdown Width"/>
+            <field name="genesis-class"
+                   type="text"
+                   label="CSS Classes"/>
+            <field name="genesis-icon"
+                   type="text"
+                   label="Icon"/>
+            <field name="genesis-subtitle"
+                   type="text"
+                   label="Subtitle"/>
+            <field name="genesis-layout"
+                   type="hidden"/>
+            <field name="genesis-visible"
+                   type="hidden"
+                   filter="bool"/>
+            <field name="genesis-columns"
+                   type="hidden"
+                   filter="raw"/>
+            <field name="genesis-columns_count"
+                   type="hidden"
+                   filter="raw"/>
+            <field name="genesis-particle"
+                   type="hidden"/>
+            <field name="genesis-options"
+                   type="hidden"
+                   filter="raw"/>
+        </fieldset>
+    </fields>
+</form>

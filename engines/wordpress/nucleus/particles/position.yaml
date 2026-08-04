@@ -23,4 +23,4 @@ form:
       type: input.text
       label: Chrome
       description: Module chrome in this widget block.
-      placeholder: gantry
+      placeholder: genesis

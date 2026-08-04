@@ -21,7 +21,7 @@ use Joomla\Registry\Registry;
 /**
  * Genesis package installer script.
  */
-class Pkg_Gantry5InstallerScript
+class Pkg_GenesisInstallerScript
 {
     /**
      * List of supported versions. Newest version first!
@@ -78,18 +78,18 @@ class Pkg_Gantry5InstallerScript
     public function uninstall($parent)
     {
         // Hack.. Joomla really doesn't give any information from the extension that's being uninstalled..
-        $manifestFile = JPATH_MANIFESTS . '/packages/pkg_gantry5.xml';
+        $manifestFile = JPATH_MANIFESTS . '/packages/pkg_genesis.xml';
         if (is_file($manifestFile)) {
             $manifest = simplexml_load_file($manifestFile);
             $this->prepareExtensions($manifest, 0);
         }
 
         // Clear cached files.
-        if (is_dir(JPATH_CACHE . '/gantry5')) {
-            Folder::delete(JPATH_CACHE . '/gantry5');
+        if (is_dir(JPATH_CACHE . '/genesis')) {
+            Folder::delete(JPATH_CACHE . '/genesis');
         }
-        if (is_dir(JPATH_SITE . '/cache/gantry5')) {
-            Folder::delete(JPATH_SITE . '/cache/gantry5');
+        if (is_dir(JPATH_SITE . '/cache/genesis')) {
+            Folder::delete(JPATH_SITE . '/cache/genesis');
         }
 
         return true;
@@ -136,8 +136,8 @@ class Pkg_Gantry5InstallerScript
         $cache = Factory::getCache();
         $cache->clean('_system');
 
-        // Clear Gantry5 cache.
-        $path = Factory::getConfig()->get('cache_path', JPATH_SITE . '/cache') . '/gantry5';
+        // Clear Genesis cache.
+        $path = Factory::getConfig()->get('cache_path', JPATH_SITE . '/cache') . '/genesis';
         if (is_dir($path)) {
             Folder::delete($path);
         }
@@ -189,9 +189,9 @@ class Pkg_Gantry5InstallerScript
         $name = Text::sprintf($manifest->name);
         $version = $manifest->version;
         $date = $manifest->creationDate;
-        $edit_url = Route::_('index.php?option=com_gantry5', false);
+        $edit_url = Route::_('index.php?option=com_genesis', false);
 
-        include JPATH_ADMINISTRATOR . "/components/com_gantry5/install/templates/{$template}.php";
+        include JPATH_ADMINISTRATOR . "/components/com_genesis/install/templates/{$template}.php";
     }
 
     /**
@@ -268,7 +268,7 @@ class Pkg_Gantry5InstallerScript
             ->from('#__extensions')
             ->where('type=' . $db->quote('template'))
             ->where('client_id=0')
-            ->where('element IN (' . $db->quote('g5_hydrogen') . ',' . $db->quote('g5_helium') . ')');
+            ->where('element IN (' . $db->quote('genesis_hydrogen') . ',' . $db->quote('genesis_helium') . ')');
         $db->setQuery($query);
 
         $templates = (array) $db->loadObjectList();
@@ -386,10 +386,10 @@ class Pkg_Gantry5InstallerScript
     }
 
     /**
-     * @param string $gantryVersion
+     * @param string $genesisVersion
      * @return array
      */
-    protected function checkRequirements($gantryVersion)
+    protected function checkRequirements($genesisVersion)
     {
         $results = array();
         $this->checkVersion($results, 'PHP', PHP_VERSION);

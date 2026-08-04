@@ -78,7 +78,7 @@ ready(() => {
         if (data.modal_close) return;
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: !value || data.type === 'module' ? 'get' : 'post',
             data: !value || data.type === 'module' ? {} : value,
             overlayClickToClose: false,

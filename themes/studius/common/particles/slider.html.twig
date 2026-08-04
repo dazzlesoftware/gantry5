@@ -2,7 +2,7 @@
 
 {% do genesis.load('lightcase.init') %}
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="genesis-theme://css/swiper.min.css" />
 <style>
     @media only all and (max-width: {{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
         #{{ id }} .g-slider-carousel {
@@ -95,7 +95,7 @@ data-swiper-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.large-m
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do genesis.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('genesis-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('genesis-theme://js/slider.init.js'), 10, 'footer') %}
 {% endblock %}

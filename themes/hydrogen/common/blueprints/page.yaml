@@ -12,4 +12,4 @@ form:
     body.class:
       type: input.text
       label: Body Class
-      default: gantry
+      default: genesis

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
-<project name="gantry5-joomla" basedir="." description="Phing Build Script" default="prod">
+<project name="genesis-joomla" basedir="." description="Phing Build Script" default="prod">
     <xmlproperty file="${path.platforms}/joomla/${cfg.prefix}${cfg.name}.xml" collapseAttributes="true" prefix="xml" keepRoot="false" />
 
     <!-- Genesis compatibility packages -->
@@ -8,7 +8,7 @@
         <echo message="Building Installer.." />
 
         <!-- Copy files needed by the installer -->
-        <copy file="${path.platforms}/joomla/pkg_gantry5.xml" todir="${build_dir}/distribution" overwrite="true">
+        <copy file="${path.platforms}/joomla/pkg_genesis.xml" todir="${build_dir}/distribution" overwrite="true">
             <filterchain refid="filter"/>
         </copy>
 
@@ -30,14 +30,14 @@
 
         <!-- Phing's copy task does not reliably create a missing multi-level
              destination path on Windows. Create the parents explicitly. -->
-        <mkdir dir="${tmp_dir}/packages/com_gantry5/site" />
-        <mkdir dir="${tmp_dir}/packages/com_gantry5/admin" />
+        <mkdir dir="${tmp_dir}/packages/com_genesis/site" />
+        <mkdir dir="${tmp_dir}/packages/com_genesis/admin" />
 
-        <copy todir="${tmp_dir}/packages/com_gantry5/site" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/com_gantry5/site"/>
+        <copy todir="${tmp_dir}/packages/com_genesis/site" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/com_genesis/site"/>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/com_gantry5/admin" overwrite="true">
+        <copy todir="${tmp_dir}/packages/com_genesis/admin" overwrite="true">
             <fileset dir="${path.platforms}/common">
                 <exclude name=".sass-cache/"/>
                 <exclude name="application/"/>
@@ -48,7 +48,7 @@
                 <exclude name="**/*.js.map"/>
                 <exclude name="**/*.css.map"/>
             </fileset>
-            <fileset dir="${path.platforms}/joomla/com_gantry5/admin">
+            <fileset dir="${path.platforms}/joomla/com_genesis/admin">
                 <exclude name=".sass-cache/"/>
                 <exclude name="common/"/>
                 <exclude name="gulpfile.js"/>
@@ -60,58 +60,58 @@
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/com_gantry5/admin" overwrite="true">
+        <copy todir="${tmp_dir}/packages/com_genesis/admin" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/com_gantry5/admin">
+            <fileset dir="${path.platforms}/joomla/com_genesis/admin">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
-        <move todir="${tmp_dir}/packages/com_gantry5" overwrite="true">
-            <fileset dir="${tmp_dir}/packages/com_gantry5/admin">
-                <include name="gantry5.xml"/>
+        <move todir="${tmp_dir}/packages/com_genesis" overwrite="true">
+            <fileset dir="${tmp_dir}/packages/com_genesis/admin">
+                <include name="genesis.xml"/>
             </fileset>
         </move>
 
         <!-- Generate Manifest files -->
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/com_gantry5/site" />
+            <property name="source" value="${tmp_dir}/packages/com_genesis/site" />
         </phingcall>
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/com_gantry5/admin" />
+            <property name="source" value="${tmp_dir}/packages/com_genesis/admin" />
         </phingcall>
     </target>
 
     <target name="build-joomla-library" depends="build-joomla-installer">
         <echo message="Building Library.." />
 
-        <copy todir="${tmp_dir}/packages/lib_gantry5" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/lib_gantry5">
+        <copy todir="${tmp_dir}/packages/lib_genesis" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/lib_genesis">
                 <exclude name="src/"/>
                 <exclude name="vendor/"/>
                 <exclude name="compat/"/>
             </fileset>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/lib_gantry5/src" overwrite="true">
+        <copy todir="${tmp_dir}/packages/lib_genesis/src" overwrite="true">
             <filterchain refid="filter" />
             <fileset dir="${path.src}">
                 <include name="*.php"/>
             </fileset>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/lib_gantry5/src/classes" overwrite="true">
+        <copy todir="${tmp_dir}/packages/lib_genesis/src/classes" overwrite="true">
             <fileset dir="${path.src}/classes">
                 <exclude name="Leafo/"/>
             </fileset>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/lib_gantry5/src" overwrite="true">
+        <copy todir="${tmp_dir}/packages/lib_genesis/src" overwrite="true">
             <fileset dir="${path.src}/platforms/joomla"/>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/lib_gantry5/vendor" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/lib_gantry5/vendor">
+        <copy todir="${tmp_dir}/packages/lib_genesis/vendor" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/lib_genesis/vendor">
                 <exclude name="bin/"/>
                 <exclude name="**/test/"/>
                 <exclude name="**/tests/"/>
@@ -146,15 +146,15 @@
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/lib_gantry5" overwrite="true">
+        <copy todir="${tmp_dir}/packages/lib_genesis" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/lib_gantry5">
+            <fileset dir="${path.platforms}/joomla/lib_genesis">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
         <!-- Common assets -->
-        <copy todir="${tmp_dir}/packages/lib_gantry5/assets" overwrite="true">
+        <copy todir="${tmp_dir}/packages/lib_genesis/assets" overwrite="true">
             <fileset dir="${path.assets}/common">
                 <exclude name="application/**"/>
                 <exclude name="**/*.js.map"/>
@@ -176,14 +176,14 @@
 
         <!-- Generate Manifest files -->
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/lib_gantry5" />
+            <property name="source" value="${tmp_dir}/packages/lib_genesis" />
         </phingcall>
     </target>
 
     <target name="build-joomla-nucleus" depends="build-joomla-installer">
         <echo message="Building Nucleus.." />
 
-        <copy todir="${tmp_dir}/packages/gantry5_nucleus" overwrite="true">
+        <copy todir="${tmp_dir}/packages/genesis_nucleus" overwrite="true">
             <fileset dir="${path.engines}/common">
                 <exclude name="**/*.sh"/>
                 <exclude name="**/.sass-cache/"/>
@@ -197,88 +197,88 @@
             <fileset dir="${path.engines}/joomla">
                 <exclude name="**/*.sh"/>
             </fileset>
-            <fileset dir="${path.platforms}/joomla/gantry5_nucleus"/>
+            <fileset dir="${path.platforms}/joomla/genesis_nucleus"/>
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/gantry5_nucleus" overwrite="true">
+        <copy todir="${tmp_dir}/packages/genesis_nucleus" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/gantry5_nucleus">
+            <fileset dir="${path.platforms}/joomla/genesis_nucleus">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
         <!-- Generate Manifest files -->
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/gantry5_nucleus/nucleus" />
+            <property name="source" value="${tmp_dir}/packages/genesis_nucleus/nucleus" />
         </phingcall>
     </target>
 
     <target name="build-joomla-plugins" depends="build-joomla-installer">
         <echo message="Building Plugins.." />
 
-        <copy todir="${tmp_dir}/packages/plg_system_gantry5" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/plg_system_gantry5"/>
+        <copy todir="${tmp_dir}/packages/plg_system_genesis" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/plg_system_genesis"/>
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/plg_system_gantry5" overwrite="true">
+        <copy todir="${tmp_dir}/packages/plg_system_genesis" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/plg_system_gantry5">
+            <fileset dir="${path.platforms}/joomla/plg_system_genesis">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/plg_quickicon_gantry5" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/plg_quickicon_gantry5"/>
+        <copy todir="${tmp_dir}/packages/plg_quickicon_genesis" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/plg_quickicon_genesis"/>
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/plg_quickicon_gantry5" overwrite="true">
+        <copy todir="${tmp_dir}/packages/plg_quickicon_genesis" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/plg_quickicon_gantry5">
+            <fileset dir="${path.platforms}/joomla/plg_quickicon_genesis">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
-        <copy todir="${tmp_dir}/packages/plg_gantry5_preset" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/plg_gantry5_preset"/>
+        <copy todir="${tmp_dir}/packages/plg_genesis_preset" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/plg_genesis_preset"/>
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/plg_gantry5_preset" overwrite="true">
+        <copy todir="${tmp_dir}/packages/plg_genesis_preset" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/plg_gantry5_preset">
+            <fileset dir="${path.platforms}/joomla/plg_genesis_preset">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
         <echo message="Building Modules.." />
 
-        <copy todir="${tmp_dir}/packages/mod_gantry5_particle" overwrite="true">
-            <fileset dir="${path.platforms}/joomla/mod_gantry5_particle"/>
+        <copy todir="${tmp_dir}/packages/mod_genesis_particle" overwrite="true">
+            <fileset dir="${path.platforms}/joomla/mod_genesis_particle"/>
         </copy>
 
         <!-- Add version information to all xml files -->
-        <copy todir="${tmp_dir}/packages/mod_gantry5_particle" overwrite="true">
+        <copy todir="${tmp_dir}/packages/mod_genesis_particle" overwrite="true">
             <filterchain refid="filter"/>
-            <fileset dir="${path.platforms}/joomla/mod_gantry5_particle">
+            <fileset dir="${path.platforms}/joomla/mod_genesis_particle">
                 <include name="*.xml"/>
             </fileset>
         </copy>
 
         <!-- Generate Manifest files -->
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/plg_system_gantry5" />
+            <property name="source" value="${tmp_dir}/packages/plg_system_genesis" />
         </phingcall>
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/plg_quickicon_gantry5" />
+            <property name="source" value="${tmp_dir}/packages/plg_quickicon_genesis" />
         </phingcall>
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/plg_gantry5_preset" />
+            <property name="source" value="${tmp_dir}/packages/plg_genesis_preset" />
         </phingcall>
         <phingcall target="checksum">
-            <property name="source" value="${tmp_dir}/packages/mod_gantry5_particle" />
+            <property name="source" value="${tmp_dir}/packages/mod_genesis_particle" />
         </phingcall>
     </target>
 
@@ -299,15 +299,15 @@
         <echo message="Building Theme ${directory}.." />
 
         <if>
-            <available file='${path.themes}/${directory}/joomla/gantry/theme.yaml' type='file' />
+            <available file='${path.themes}/${directory}/joomla/genesis/theme.yaml' type='file' />
             <then>
-                <copy todir="${tmp_dir}/templates/tpl_g5_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/templates/tpl_genesis_${directory}" overwrite="true">
                     <fileset dir="${path.themes}/${directory}/common">
                         <exclude name="custom/**"/>
                     </fileset>
                 </copy>
 
-                <copy todir="${tmp_dir}/templates/tpl_g5_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/templates/tpl_genesis_${directory}" overwrite="true">
                     <fileset dir="${path.themes}/${directory}/joomla">
                         <exclude name="common/**"/>
                         <exclude name="custom/**"/>
@@ -315,24 +315,24 @@
                 </copy>
 
                 <!-- Add version information to all xml files -->
-                <copy todir="${tmp_dir}/templates/tpl_g5_${directory}" overwrite="true">
+                <copy todir="${tmp_dir}/templates/tpl_genesis_${directory}" overwrite="true">
                     <filterchain refid="filter"/>
                     <fileset dir="${path.themes}/${directory}/joomla">
                         <include name="**/*.xml"/>
-                        <include name="gantry/theme.yaml"/>
+                        <include name="genesis/theme.yaml"/>
                         <include name="install.php"/>
                     </fileset>
                 </copy>
 
                 <!-- Generate Manifest files -->
                 <phingcall target="checksum">
-                    <property name="source" value="${tmp_dir}/templates/tpl_g5_${directory}" />
+                    <property name="source" value="${tmp_dir}/templates/tpl_genesis_${directory}" />
                 </phingcall>
 
                 <!-- Zip the created Zips for packages -->
                 <phingcall target="archive">
-                    <property name="destination.file" value="${package_dir}/joomla-tpl_g5_${directory}${str.fileversion}" />
-                    <property name="base.directory" value="${tmp_dir}/templates/tpl_g5_${directory}" />
+                    <property name="destination.file" value="${package_dir}/joomla-tpl_genesis_${directory}${str.fileversion}" />
+                    <property name="base.directory" value="${tmp_dir}/templates/tpl_genesis_${directory}" />
                 </phingcall>
             </then>
         </if>

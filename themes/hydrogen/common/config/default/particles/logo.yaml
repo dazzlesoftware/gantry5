@@ -1,5 +1,5 @@
 enabled: '1'
 url: ''
-image: 'gantry-assets://images/gantry5-logo.png'
+image: 'genesis-assets://images/genesis-logo.png'
 text: 'Genesis'
-class: gantry-logo
+class: genesis-logo

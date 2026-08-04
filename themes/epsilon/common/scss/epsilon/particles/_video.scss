@@ -31,7 +31,7 @@
         margin-right: auto;
         bottom: 50%;
         margin-bottom: -40px;
-        background: url('gantry-media://swipercarousel/play.svg') no-repeat;
+        background: url('genesis-media://swipercarousel/play.svg') no-repeat;
         background-size: contain;
         cursor: pointer;
         opacity: 1;
@@ -50,7 +50,7 @@
         }
 
         &.pause {
-            background: url('gantry-media://swipercarousel/paused.svg');
+            background: url('genesis-media://swipercarousel/paused.svg');
             background-size: contain;
             opacity: 0;
         }

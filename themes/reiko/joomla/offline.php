@@ -9,17 +9,17 @@
 
 defined('_JEXEC') or die;
 
-use Gantry\Framework\Theme;
+use Genesis\Framework\Theme;
 
 // Bootstrap Genesis framework or fail gracefully (inside included file).
-$className = __DIR__ . '/custom/includes/gantry.php';
+$className = __DIR__ . '/custom/includes/genesis.php';
 if (!is_file($className)) {
-    $className = __DIR__ . '/includes/gantry.php';
+    $className = __DIR__ . '/includes/genesis.php';
 }
-$gantry = include $className;
+$genesis = include $className;
 
 /** @var Theme $theme */
-$theme = $gantry['theme'];
+$theme = $genesis['theme'];
 
 ob_start();
 include JPATH_THEMES . '/system/offline.php';
@@ -32,7 +32,7 @@ $context = array(
 );
 
 // Reset used outline configuration.
-unset($gantry['configuration']);
+unset($genesis['configuration']);
 
 // Render the page.
 echo $theme

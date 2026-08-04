@@ -2,7 +2,7 @@
 
 {% block particle %}
     {% styles %}
-        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
     <div id="{{ id }}" class="g-slider {{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-items="{{ particle.items_amount }}" data-slider-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}">
         {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
@@ -63,5 +63,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

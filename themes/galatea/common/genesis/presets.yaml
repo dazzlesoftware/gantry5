@@ -1,0 +1,480 @@
+preset1:
+  image: 'genesis-admin://images/preset1.png'
+  description: 'Preset 1'
+  colors:
+    - '#59ca88'
+    - '#ffffff'
+    - '#5180e8'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+    accent:
+      color-1: '#59ca88'
+      color-2: '#5180e8'
+      color-3: '#faa94f'
+    font:
+      family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    offsidebar:
+      background-1: '#ffffff'
+      background-2: 'rgba(0, 0, 0, 0.00)'
+      text-color: '#686868'
+      large-desktop-width: '15rem'
+      desktop-width: '12rem'
+      tablet-width: '10rem'
+    top:
+      background: '#4c4f56'
+      text-color: '#ffffff'
+    navigation:
+      background: '#000000'
+      text-color: 'rgba(255, 255, 255, 0.8)'
+    slideshow:
+      background: '#20232a'
+      text-color: '#ffffff'
+    header:
+      background: '#20232a'
+      text-color: '#ffffff'
+    above:
+      background: '#181818'
+      text-color: '#ffffff'
+      background-image: 'genesis-media://backgrounds/above/above-bg.jpg'
+    showcase:
+      background: '#f1f2f6'
+      text-color: '#787878'
+    utility:
+      background: '#ffffff'
+      text-color: '#787878'
+    feature:
+      background-1: '#59ca88'
+      background-2: '#5180e8'
+      text-color: '#ffffff'
+    aside:
+      background: '#ffffff'
+      text-color: '#686868'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#121212'
+      text-color: '#787878'
+    extension:
+      background-1: '#59ca88'
+      background-2: '#5180e8'
+      text-color: '#ffffff'
+    bottom:
+      background: '#20232a'
+      text-color: '#686868'
+    footer:
+      background: '#1b1e23'
+      text-color: '#ffffff'
+    copyright:
+      background: '#17181d'
+      text-color: '#686868'
+    offcanvas:
+      background: '#ffffff'
+      text-color: '#686868'
+      toggle-color: '#ffffff'
+
+
+preset2:
+  image: 'genesis-admin://images/preset2.png'
+  description: 'Preset 2'
+  colors:
+    - '#f2b600'
+    - '#ffffff'
+    - '#e5360b'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+    accent:
+      color-1: '#f2b600'
+      color-2: '#e5360b'
+      color-3: '#5180e8'
+    font:
+      family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    offsidebar:
+      background-1: '#ffffff'
+      background-2: 'rgba(0, 0, 0, 0.00)'
+      text-color: '#686868'
+      large-desktop-width: '15rem'
+      desktop-width: '12rem'
+      tablet-width: '10rem'
+    top:
+      background: '#4c4f56'
+      text-color: '#ffffff'
+    navigation:
+      background: '#000000'
+      text-color: 'rgba(255, 255, 255, 0.8)'
+    slideshow:
+      background: '#20232a'
+      text-color: '#ffffff'
+    header:
+      background: '#20232a'
+      text-color: '#ffffff'
+    above:
+      background: '#181818'
+      text-color: '#ffffff'
+      background-image: 'genesis-media://backgrounds/above/above-bg.jpg'
+    showcase:
+      background: '#f1f2f6'
+      text-color: '#787878'
+    utility:
+      background: '#ffffff'
+      text-color: '#787878'
+    feature:
+      background-1: '#f2b600'
+      background-2: '#e5360b'
+      text-color: '#ffffff'
+    aside:
+      background: '#ffffff'
+      text-color: '#686868'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#121212'
+      text-color: '#787878'
+    extension:
+      background-1: '#f2b600'
+      background-2: '#e5360b'
+      text-color: '#ffffff'
+    bottom:
+      background: '#20232a'
+      text-color: '#686868'
+    footer:
+      background: '#1b1e23'
+      text-color: '#ffffff'
+    copyright:
+      background: '#17181d'
+      text-color: '#686868'
+    offcanvas:
+      background: '#ffffff'
+      text-color: '#686868'
+      toggle-color: '#ffffff'
+
+
+preset3:
+  image: 'genesis-admin://images/preset3.png'
+  description: 'Preset 3'
+  colors:
+    - '#2659f0'
+    - '#ffffff'
+    - '#a964e1'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+    accent:
+      color-1: '#2659f0'
+      color-2: '#a964e1'
+      color-3: '#5180e8'
+    font:
+      family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    offsidebar:
+      background-1: '#ffffff'
+      background-2: 'rgba(0, 0, 0, 0.00)'
+      text-color: '#686868'
+      large-desktop-width: '15rem'
+      desktop-width: '12rem'
+      tablet-width: '10rem'
+    top:
+      background: '#4c4f56'
+      text-color: '#ffffff'
+    navigation:
+      background: '#000000'
+      text-color: 'rgba(255, 255, 255, 0.8)'
+    slideshow:
+      background: '#20232a'
+      text-color: '#ffffff'
+    header:
+      background: '#20232a'
+      text-color: '#ffffff'
+    above:
+      background: '#181818'
+      text-color: '#ffffff'
+      background-image: 'genesis-media://backgrounds/above/above-bg.jpg'
+    showcase:
+      background: '#f1f2f6'
+      text-color: '#787878'
+    utility:
+      background: '#ffffff'
+      text-color: '#787878'
+    feature:
+      background-1: '#2659f0'
+      background-2: '#a964e1'
+      text-color: '#ffffff'
+    aside:
+      background: '#ffffff'
+      text-color: '#686868'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#121212'
+      text-color: '#787878'
+    extension:
+      background-1: '#2659f0'
+      background-2: '#a964e1'
+      text-color: '#ffffff'
+    bottom:
+      background: '#20232a'
+      text-color: '#686868'
+    footer:
+      background: '#1b1e23'
+      text-color: '#ffffff'
+    copyright:
+      background: '#17181d'
+      text-color: '#686868'
+    offcanvas:
+      background: '#ffffff'
+      text-color: '#686868'
+      toggle-color: '#ffffff'
+
+
+
+preset4:
+  image: 'genesis-admin://images/preset4.png'
+  description: 'Preset 4'
+  colors:
+    - '#bb74c4'
+    - '#ffffff'
+    - '#577de8'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+    accent:
+      color-1: '#bb74c4'
+      color-2: '#577de8'
+      color-3: '#5180e8'
+    font:
+      family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    offsidebar:
+      background-1: '#ffffff'
+      background-2: 'rgba(0, 0, 0, 0.00)'
+      text-color: '#686868'
+      large-desktop-width: '15rem'
+      desktop-width: '12rem'
+      tablet-width: '10rem'
+    top:
+      background: '#4c4f56'
+      text-color: '#ffffff'
+    navigation:
+      background: '#000000'
+      text-color: 'rgba(255, 255, 255, 0.8)'
+    slideshow:
+      background: '#20232a'
+      text-color: '#ffffff'
+    header:
+      background: '#20232a'
+      text-color: '#ffffff'
+    above:
+      background: '#181818'
+      text-color: '#ffffff'
+      background-image: 'genesis-media://backgrounds/above/above-bg.jpg'
+    showcase:
+      background: '#f1f2f6'
+      text-color: '#787878'
+    utility:
+      background: '#ffffff'
+      text-color: '#787878'
+    feature:
+      background-1: '#bb74c4'
+      background-2: '#577de8'
+      text-color: '#ffffff'
+    aside:
+      background: '#ffffff'
+      text-color: '#686868'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#121212'
+      text-color: '#787878'
+    extension:
+      background-1: '#bb74c4'
+      background-2: '#577de8'
+      text-color: '#ffffff'
+    bottom:
+      background: '#20232a'
+      text-color: '#686868'
+    footer:
+      background: '#1b1e23'
+      text-color: '#ffffff'
+    copyright:
+      background: '#17181d'
+      text-color: '#686868'
+    offcanvas:
+      background: '#ffffff'
+      text-color: '#686868'
+      toggle-color: '#ffffff'
+
+
+
+preset5:
+  image: 'genesis-admin://images/preset5.png'
+  description: 'Preset 5'
+  colors:
+    - '#d20b22'
+    - '#ffffff'
+    - '#e3af66'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+    accent:
+      color-1: '#d20b22'
+      color-2: '#e3af66'
+      color-3: '#5180e8'
+    font:
+      family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    offsidebar:
+      background-1: '#ffffff'
+      background-2: 'rgba(0, 0, 0, 0.00)'
+      text-color: '#686868'
+      large-desktop-width: '15rem'
+      desktop-width: '12rem'
+      tablet-width: '10rem'
+    top:
+      background: '#4c4f56'
+      text-color: '#ffffff'
+    navigation:
+      background: '#000000'
+      text-color: 'rgba(255, 255, 255, 0.8)'
+    slideshow:
+      background: '#20232a'
+      text-color: '#ffffff'
+    header:
+      background: '#20232a'
+      text-color: '#ffffff'
+    above:
+      background: '#181818'
+      text-color: '#ffffff'
+      background-image: 'genesis-media://backgrounds/above/above-bg.jpg'
+    showcase:
+      background: '#f1f2f6'
+      text-color: '#787878'
+    utility:
+      background: '#ffffff'
+      text-color: '#787878'
+    feature:
+      background-1: '#d20b22'
+      background-2: '#e3af66'
+      text-color: '#ffffff'
+    aside:
+      background: '#ffffff'
+      text-color: '#686868'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#121212'
+      text-color: '#787878'
+    extension:
+      background-1: '#d20b22'
+      background-2: '#e3af66'
+      text-color: '#ffffff'
+    bottom:
+      background: '#20232a'
+      text-color: '#686868'
+    footer:
+      background: '#1b1e23'
+      text-color: '#ffffff'
+    copyright:
+      background: '#17181d'
+      text-color: '#686868'
+    offcanvas:
+      background: '#ffffff'
+      text-color: '#686868'
+      toggle-color: '#ffffff'
+
+
+preset6:
+  image: 'genesis-admin://images/preset6.png'
+  description: 'Preset 6'
+  colors:
+    - '#222222'
+    - '#ffffff'
+    - '#010101'
+  styles:
+    base:
+      background: '#ffffff'
+      text-color: '#686868'
+    accent:
+      color-1: '#222222'
+      color-2: '#010101'
+      color-3: '#5180e8'
+    font:
+      family-default: 'muli, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-title:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+      family-promo:   'hind, Helvetica, Tahoma, Geneva, Arial, sans-serif'
+    offsidebar:
+      background-1: '#ffffff'
+      background-2: 'rgba(0, 0, 0, 0.00)'
+      text-color: '#686868'
+      large-desktop-width: '15rem'
+      desktop-width: '12rem'
+      tablet-width: '10rem'
+    top:
+      background: '#4c4f56'
+      text-color: '#ffffff'
+    navigation:
+      background: '#000000'
+      text-color: 'rgba(255, 255, 255, 0.8)'
+    slideshow:
+      background: '#20232a'
+      text-color: '#ffffff'
+    header:
+      background: '#20232a'
+      text-color: '#ffffff'
+    above:
+      background: '#181818'
+      text-color: '#ffffff'
+      background-image: 'genesis-media://backgrounds/above/above-bg.jpg'
+    showcase:
+      background: '#f1f2f6'
+      text-color: '#787878'
+    utility:
+      background: '#ffffff'
+      text-color: '#787878'
+    feature:
+      background-1: '#222222'
+      background-2: '#010101'
+      text-color: '#ffffff'
+    aside:
+      background: '#ffffff'
+      text-color: '#686868'
+    main:
+      background: '#ffffff'
+      text-color: '#686868'
+    expanded:
+      background: '#121212'
+      text-color: '#787878'
+    extension:
+      background-1: '#222222'
+      background-2: '#010101'
+      text-color: '#ffffff'
+    bottom:
+      background: '#20232a'
+      text-color: '#686868'
+    footer:
+      background: '#1b1e23'
+      text-color: '#ffffff'
+    copyright:
+      background: '#17181d'
+      text-color: '#686868'
+    offcanvas:
+      background: '#ffffff'
+      text-color: '#686868'
+      toggle-color: '#ffffff'

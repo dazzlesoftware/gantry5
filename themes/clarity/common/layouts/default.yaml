@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1578424745
 layout:
@@ -174,7 +174,7 @@ content:
   logo-3453:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://logo.svg'
+      image: 'genesis-media://logo.svg'
   menu-2872:
     block:
       variations: 'center nopaddingleft nopaddingright nomarginright largemarginleft'

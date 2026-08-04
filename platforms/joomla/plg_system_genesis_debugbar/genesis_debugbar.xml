@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+    <name>plg_system_genesis_debugbar</name>
+    <version>@version@</version>
+    <creationDate>@versiondate@</creationDate>
+    <author>Dazzle Software, LLC</author>
+    <authorEmail>support@dazzlesoftware.org</authorEmail>
+    <authorUrl>https://dazzlesoftware.org</authorUrl>
+    <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
+    <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
+    <description>PLG_SYSTEM_GENESIS_DEBUGBAR_DESCRIPTION</description>
+
+    <files>
+        <filename plugin="genesis_debugbar">genesis_debugbar.php</filename>
+        <!--filename>MD5SUMS</filename-->
+        <filename>composer.json</filename>
+        <filename>composer.lock</filename>
+        <filename>Debugger.php</filename>
+        <folder>language</folder>
+        <folder>vendor</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+        </fields>
+    </config>
+</extension>

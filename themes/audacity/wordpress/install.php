@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_AudacityInstallerScript
+ * Class Genesis_AudacityInstallerScript
  */
-class G5_AudacityInstallerScript
+class Genesis_AudacityInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

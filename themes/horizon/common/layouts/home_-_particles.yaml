@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1614347604
 layout:
@@ -173,19 +173,19 @@ content:
       items:
         -
           description: 'Horizon provides exceptional design elements that bring new life to business websites.'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           link: '#'
           link_text: 'Learn More ->'
           title: 'Breathtaking designs for a new generation.'
         -
           description: 'Bring attention to the most important details of your company with the slider particle.'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           link: '#'
           link_text: 'Learn More ->'
           title: 'A big, bold slider for your homepage.'
         -
           description: 'Build gorgeous websites in a fraction of the time with Genesis.'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           link: '#'
           link_text: 'Learn More ->'
           title: 'Leave yesterday''s internet behind.'
@@ -219,17 +219,17 @@ content:
       testimonial:
         -
           content: 'Horizon changed the way my company does business online. Instead of the same social media pages every other company is using, our website gives our brand a unique storytelling medium.'
-          photo: 'gantry-media://home/header/img-01.png'
+          photo: 'genesis-media://home/header/img-01.png'
           position: 'Company CEO'
           name: 'Marcus Smith'
         -
           content: 'Your company deserves to have its story told on a website that reflects the quality of your products and services. Never settle for less. Make Horizon part of your company''s image.'
-          photo: 'gantry-media://home/header/img-01.png'
+          photo: 'genesis-media://home/header/img-01.png'
           position: 'CEO Boss'
           name: 'Dan Jacobs'
         -
           content: 'Dazzle Software has been creating cutting-edge templates and themes for over 15 years. Horizon brings the latest in web technologies and website composition to your site.'
-          photo: 'gantry-media://home/header/img-01.png'
+          photo: 'genesis-media://home/header/img-01.png'
           position: 'Company Marketer'
           name: 'Sharon Winn'
       article:
@@ -255,7 +255,7 @@ content:
   teamhighlight-3310:
     title: 'Team Highlight'
     attributes:
-      image: 'gantry-media://home/above/img-01.jpg'
+      image: 'genesis-media://home/above/img-01.jpg'
       name: 'Leon Grahma'
       position: 'Horizon CEO'
   simplecontent-3175:
@@ -290,23 +290,23 @@ content:
       items:
         -
           description: 'Horizon is innovation personified. It is built from the ground up to fit the needs of brands large and small, on the powerful and versatile Genesis framework.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: Innovation
         -
           description: 'The Dazzle Software team has over a decade of experience building templates and themes for hundreds of thousands of customers.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: Collaboration
         -
           description: 'Make your website as unique as your brand. Versatility is core to Horizon.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: Creativity
         -
           description: 'Every Dazzle Software template is professionally designed, produced, and supported by our industry-leading team.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: Expertise
         -
           description: 'Horizon is available on several leading CMS solutions, enabling you to fit the right theme with the right CMS for your business.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: Delivery
       largedesktopslides: '1'
       largedesktopgroup: '1'
@@ -405,7 +405,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: 'Horizon CEO'
           link: '#'
           target: _self
@@ -413,7 +413,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: 'Horizon CEO'
           link: '#'
           target: _self
@@ -429,7 +429,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: 'Horizon Boss'
           link: '#'
           target: _self
@@ -453,7 +453,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: 'Horizon CEO'
           link: '#'
           target: _self
@@ -461,7 +461,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: 'CEO Depart'
           link: '#'
           target: _self
@@ -469,7 +469,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: Manager
           link: '#'
           target: _self
@@ -485,7 +485,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: Lawyer
           link: '#'
           target: _self
@@ -493,7 +493,7 @@ content:
         -
           empty: notempty
           nameonly: nameonlyno
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           role: Janitor
           link: '#'
           target: _self
@@ -512,7 +512,7 @@ content:
     attributes:
       headline: 'Promo particle'
       title: 'Promote your brand<br />your way.'
-      image: 'gantry-media://home/extension/img-01.jpg'
+      image: 'genesis-media://home/extension/img-01.jpg'
       patterns: enabled
   contentarray-2765:
     title: 'Joomla Articles'
@@ -549,32 +549,32 @@ content:
       title: 'They Trusted Us'
       logos:
         -
-          image: 'gantry-media://home/extension/logo-01.png'
+          image: 'genesis-media://home/extension/logo-01.png'
           url: '#'
           target: _self
           title: 'Item 1'
         -
-          image: 'gantry-media://home/extension/logo-02.png'
+          image: 'genesis-media://home/extension/logo-02.png'
           url: '#'
           target: _self
           title: 'Item 2'
         -
-          image: 'gantry-media://home/extension/logo-03.png'
+          image: 'genesis-media://home/extension/logo-03.png'
           url: '#'
           target: _self
           title: 'Item 3'
         -
-          image: 'gantry-media://home/extension/logo-04.png'
+          image: 'genesis-media://home/extension/logo-04.png'
           url: '#'
           target: _self
           title: 'Item 4'
         -
-          image: 'gantry-media://home/extension/logo-05.png'
+          image: 'genesis-media://home/extension/logo-05.png'
           url: '#'
           target: _self
           title: 'Item 5'
         -
-          image: 'gantry-media://home/extension/logo-06.png'
+          image: 'genesis-media://home/extension/logo-06.png'
           url: '#'
           target: _self
           title: 'Item 6'
@@ -595,9 +595,9 @@ content:
           video: ''
           local:
             -
-              file: 'gantry-media://home/bottom/video.mp4'
+              file: 'genesis-media://home/bottom/video.mp4'
               title: 'Item 1'
-          posterimage: 'gantry-media://home/bottom/poster-01.jpg'
+          posterimage: 'genesis-media://home/bottom/poster-01.jpg'
           loop: enabled
           autoplay: disabled
           controls: disabled

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1556907571
 layout:
@@ -166,7 +166,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          image: 'genesis-media://home/fp-stories-showcase/img-01.jpg'
           title: 'A New Form for the Latest News'
           desc: '<p class="rt-title-tag">Content Focused</p><p><span class="rt-displayinline">Audacity is perfect for any news or magazine site<span class="visible-desktop">, that display vast amounts of content, in an elegant manner</span>.</span></p>'
           linktitle: enabled
@@ -176,7 +176,7 @@ content:
           buttonclass: readon
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          image: 'genesis-media://home/fp-stories-showcase/img-01.jpg'
           title: 'An Easy to Use Content System'
           desc: '<p class="rt-title-tag">Layout Manager</p><p><span class="rt-displayinline">The Layout Manager is a versatile, content system<span class="visible-desktop"> that has multiple particles, options, and a rich user interface</span>.</span></p>'
           linktitle: enabled
@@ -186,7 +186,7 @@ content:
           buttonclass: readon
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          image: 'genesis-media://home/fp-stories-showcase/img-01.jpg'
           title: 'A Versatile Foundation'
           desc: '<p class="rt-title-tag">Genesis Framework</p><p><span class="rt-displayinline">Genesis is a powerful cross-platform framework<span class="visible-desktop"> that sits at the heart of the template, powering various features</span>.</span></p>'
           linktitle: enabled
@@ -196,7 +196,7 @@ content:
           buttonclass: readon
           name: 'Item 3'
         -
-          image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
+          image: 'genesis-media://home/fp-stories-showcase/img-01.jpg'
           title: 'Highly Flexible Menu System'
           desc: '<p class="rt-title-tag">Multiple Menu Options</p><p><span class="rt-displayinline">Dropdown Menu is a CSS based system, with advanced features<span class="visible-desktop"> such as multiple columns and inline modules</span>.</span></p>'
           linktitle: enabled
@@ -290,7 +290,7 @@ content:
         -
           title: '<span>A responsive layout that auto-adapts to <span class="hidden-tablet">multiple </span><span class="visible-tablet">most </span>devices</span>'
           titletag: 'Flexible Structure'
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'Responsive Layout'
           content: '<p>A responsive structure adapts automatically to the viewing device, whether desktop, tablet or mobile, and adjusts accordingly for a seamless and uniform experience.</p>'
           linklabel: 'Read More'
@@ -301,7 +301,7 @@ content:
         -
           title: 'Powered by the free & popular Genesis Framework'
           titletag: 'Free/GPL Framework'
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'Genesis Framework'
           content: '<p>Genesis is the cross-platform framework that sits at the center of the theme, providing a rich library of standardized features, packaged with an intuitive control panel.</p>'
           linklabel: 'Read More'
@@ -312,7 +312,7 @@ content:
         -
           title: 'Configurable CSS dropdown navigation system'
           titletag: 'CSS Based'
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'CSS Navigation'
           content: '<p>The dropdown menu benefits from inline icons, subtext, modules and positions, alongside multiple columns, all configurable on a per-menu-item basis.</p>'
           linklabel: 'Read More'
@@ -323,7 +323,7 @@ content:
         -
           title: 'An array of six customizable preset variations'
           titletag: 'Multiple Presets'
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'Multiple Presets'
           content: '<p>Choose from a selection of six preset style variations, each that can be extensively customized to create a unique appearance, with great ease and swiftness.</p>'
           linklabel: 'Read More'
@@ -335,7 +335,7 @@ content:
           class: bottom-tablet
           title: '<span>Personalize modular content with <span class="hidden-tablet">stylistic </span><span class="visible-tablet">class </span>suffixes</span>'
           titletag: Individualize
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'Module Suffixes'
           content: '<p>Select from an assortment of stylistic and structural module class suffixes, that can be compounded, to add individual character and control to any module.</p>'
           linklabel: 'Read More'
@@ -347,7 +347,7 @@ content:
           class: 'hidden-tablet bottom-phone'
           title: 'Basic structural support for Right-To-Left languages'
           titletag: Compatibility
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'RTL Support'
           content: '<p>Enabling an RTL language and the RTL setting in the template''s Advanced settings, will activate the RTL compatibility styling, to provide better structural support.</p>'
           linklabel: 'Read More'
@@ -359,7 +359,7 @@ content:
           class: 'hidden-tablet hidden-phone'
           title: 'Exquisite graphs with HTML5 Canvas and Chart.js'
           titletag: 'Data Display'
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'Data Display'
           content: '<p>Chart.js provides a mechanism for dynamically generating graphs via HTML5, which can be used for basis data presentation or for more creative constructions.</p>'
           linklabel: 'Read More'
@@ -371,7 +371,7 @@ content:
           class: 'hidden-tablet hidden-phone'
           title: 'Diverse content typography & FontAwesome icons'
           titletag: 'Content Enhancement'
-          image: 'gantry-media://home/fp-scroller/img-01.jpg'
+          image: 'genesis-media://home/fp-scroller/img-01.jpg'
           alt: 'Content Enhancement'
           content: '<p>A rich portfolio of template typography, to enhance the various elements of the page, alongside the vast library of FontAwesome icons, to add depth and character to content.</p>'
           linklabel: 'Read More'
@@ -386,7 +386,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<div>\n\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\n\t<h2 class=\"title\"><span><span class=\"hidden-tablet\">An e</span><span class=\"visible-tablet\">E</span>xtensive<span class=\"hidden-tablet\"> array of</span> Color Chooser controls</span></h2>\n\t<p class=\"rt-title-tag\">Customization</p>\n\t<p class=\"nomarginbottom\"><span>Configure text and background colors<span class=\"hidden-tablet\"> for the various sections</span>.</span></p>\n\t<a href=\"#\" class=\"readon3\">Read More</a>\n</div>\n\n<hr />\n\n<div>\n\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\n\t<h2 class=\"title\"><span>Fresh Content <span class=\"hidden-tablet\">Display </span>Layouts &amp; Particles</span></h2>\n\t<p class=\"rt-title-tag\">Layout</p>\n\t<p class=\"nomarginbottom\"><span>New particles for Audacity include<span class=\"hidden-tablet\">: Slider and Feature Tabs</span>.</span></p>\n\t<a href=\"#\" class=\"readon3\">Read More</a>\n</div>"
+      html: "<div>\n\t<img src=\"genesis-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\n\t<h2 class=\"title\"><span><span class=\"hidden-tablet\">An e</span><span class=\"visible-tablet\">E</span>xtensive<span class=\"hidden-tablet\"> array of</span> Color Chooser controls</span></h2>\n\t<p class=\"rt-title-tag\">Customization</p>\n\t<p class=\"nomarginbottom\"><span>Configure text and background colors<span class=\"hidden-tablet\"> for the various sections</span>.</span></p>\n\t<a href=\"#\" class=\"readon3\">Read More</a>\n</div>\n\n<hr />\n\n<div>\n\t<img src=\"genesis-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\n\t<h2 class=\"title\"><span>Fresh Content <span class=\"hidden-tablet\">Display </span>Layouts &amp; Particles</span></h2>\n\t<p class=\"rt-title-tag\">Layout</p>\n\t<p class=\"nomarginbottom\"><span>New particles for Audacity include<span class=\"hidden-tablet\">: Slider and Feature Tabs</span>.</span></p>\n\t<a href=\"#\" class=\"readon3\">Read More</a>\n</div>"
       twig: '0'
       filter: '0'
     block:
@@ -403,7 +403,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
+          image: 'genesis-media://home/fp-showcase-maintop/img-01.jpg'
           title: '<span class="rt-displayinline"><span class="visible-desktop">The </span>Genesis<span class="visible-desktop"> Framework provides</span><span class="hidden-desktop">,</span> a powerful foundation</span>'
           desc: '<p><span class="rt-displayinline">Genesis is a cross-platform framework with a vast library of standardized features and functions<span class="visible-desktop">, to make powerful, flexible themes</span>.</span></p><p class="visible-large">Templates are easy to manage with Genesis, with its a rich and intuitive user interface, allowing for swift but extensive customization.</p>'
           linktitle: enabled
@@ -413,7 +413,7 @@ content:
           buttonclass: readon3
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
+          image: 'genesis-media://home/fp-showcase-maintop/img-01.jpg'
           title: '<span class="rt-displayinline">Choose from <span class="visible-desktop">Multiple</span> Menu<span class="visible-desktop"> Options</span><span class="visible-desktop"> with Smartphone Support</span></span>'
           desc: '<p><span class="rt-displayinline">Dropdown Menu is a CSS based navigation system with powerful features such as multiple columns<span class="visible-desktop"> and inline modules</span>.</span></p><p class="visible-large">Vertical menu particles are also available to display in a sidebar and other positions or in a separate module (usually sidebar) to accommodate the parent items.</p>'
           linktitle: enabled
@@ -423,7 +423,7 @@ content:
           buttonclass: readon3
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
+          image: 'genesis-media://home/fp-showcase-maintop/img-01.jpg'
           title: '<span class="rt-displayinline">An <span class="visible-desktop">Assortment</span><span class="hidden-desktop">Array</span> of Examples Pages<span class="visible-desktop"> to Exhibit Layout Flexibility</span></span>'
           desc: '<p><span class="rt-displayinline">The frontpage offers only one view of how Audacity can appear, therefore, <span class="visible-desktop">to show its full flexibility, </span>we provide sample pages.</span></p><p class="visible-large">Also demonstrated are the core Joomla components such as Contact and Blog, alongside different module layouts, and Chart.js graphs.</p>'
           linktitle: enabled
@@ -453,7 +453,7 @@ content:
           title: ''
           accent: none
           icon: 'fa fa-camera'
-          img: 'gantry-media://home/fp-maintop/img-01.jpg'
+          img: 'genesis-media://home/fp-maintop/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -468,7 +468,7 @@ content:
           title: ''
           accent: none
           icon: 'fa fa-database'
-          img: 'gantry-media://home/fp-maintop/img-01.jpg'
+          img: 'genesis-media://home/fp-maintop/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -483,7 +483,7 @@ content:
           title: ''
           accent: none
           icon: 'fa fa-car'
-          img: 'gantry-media://home/fp-maintop/img-01.jpg'
+          img: 'genesis-media://home/fp-maintop/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -501,14 +501,14 @@ content:
     attributes:
       items:
         -
-          content: "<div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Uniquely Design your Particle Content</span><span class=\"visible-tablet\">Particle Design</span></span>\t</h2>\t<p class=\"rt-title-tag\">\t\tStyle\t</p>\t<p>\t\t<span>A series of classes to individualize <span class=\"hidden-tablet\">title and background</span> style.</span>\t</p></div><hr /><div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Individualize your</span> Position Structure</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tLayout\t</p>\t<p>\t\t<span>Individually adjust margins and padding <span class=\"hidden-tablet\">for particles.</span></span>\t</p></div>"
+          content: "<div>\t<img src=\"genesis-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Uniquely Design your Particle Content</span><span class=\"visible-tablet\">Particle Design</span></span>\t</h2>\t<p class=\"rt-title-tag\">\t\tStyle\t</p>\t<p>\t\t<span>A series of classes to individualize <span class=\"hidden-tablet\">title and background</span> style.</span>\t</p></div><hr /><div>\t<img src=\"genesis-media://home/fp-feature/img-01.jpg\" alt=\"image\" />\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Individualize your</span> Position Structure</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tLayout\t</p>\t<p>\t\t<span>Individually adjust margins and padding <span class=\"hidden-tablet\">for particles.</span></span>\t</p></div>"
           linklabel: 'Read More'
           link: '#'
           buttontarget: _self
           buttonclass: readon
           title: Top
         -
-          content: "<div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Maximum Performance with</span> RokBooster</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tSpeed\t</p>\t<p>\t\t<span>Combine and consolidate CSS, J<span class=\"hidden-tablet\">ava</span>S<span class=\"hidden-tablet\">cript</span>, Fonts and Images.</span>\t</p></div><hr/><div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span>R<span class=\"hidden-tablet\">ight-</span>T<span class=\"hidden-tablet\">o-</span>L<span class=\"hidden-tablet\">eft Genesis &amp; Template</span> Support</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tMulti-Language\t</p>\t<p>\t\t<span>Audacity has basic <span class=\"hidden-tablet\">structural</span> support for Right-To-Left <span class=\"visible-large\">languages.</span></span>\t</p></div>"
+          content: "<div>\t<img src=\"genesis-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Maximum Performance with</span> RokBooster</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tSpeed\t</p>\t<p>\t\t<span>Combine and consolidate CSS, J<span class=\"hidden-tablet\">ava</span>S<span class=\"hidden-tablet\">cript</span>, Fonts and Images.</span>\t</p></div><hr/><div>\t<img src=\"genesis-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span>R<span class=\"hidden-tablet\">ight-</span>T<span class=\"hidden-tablet\">o-</span>L<span class=\"hidden-tablet\">eft Genesis &amp; Template</span> Support</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tMulti-Language\t</p>\t<p>\t\t<span>Audacity has basic <span class=\"hidden-tablet\">structural</span> support for Right-To-Left <span class=\"visible-large\">languages.</span></span>\t</p></div>"
           linklabel: 'Read More'
           link: '#'
           buttontarget: _self
@@ -532,7 +532,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          image: 'genesis-media://home/fp-strips/img-01.jpg'
           title: 'A Particle for Showcasing Feature Content'
           titletag: Slider
           desc: 'A slideshow layout, with configurable options'
@@ -542,7 +542,7 @@ content:
           buttonclass: readon3
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          image: 'genesis-media://home/fp-strips/img-01.jpg'
           title: 'A Content Grid Particle that Splits itself into Rows'
           titletag: Strips
           desc: 'A horizontal content block layout, split into defined rows'
@@ -552,7 +552,7 @@ content:
           buttonclass: readon3
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          image: 'genesis-media://home/fp-strips/img-01.jpg'
           title: 'Content Tabs with Multiple Options'
           titletag: Tabs
           desc: 'A tabbed layout with support for multiple animation options'
@@ -562,7 +562,7 @@ content:
           buttonclass: readon3
           name: 'Item 3'
         -
-          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          image: 'genesis-media://home/fp-strips/img-01.jpg'
           title: 'A Tabular Data Presenter Particle'
           titletag: Tables
           desc: 'A tabular layout with image support, plus rows for text'
@@ -572,7 +572,7 @@ content:
           buttonclass: readon3
           name: 'Item 4'
         -
-          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          image: 'genesis-media://home/fp-strips/img-01.jpg'
           title: 'A Text Snippet or Newsticker Content Layout'
           titletag: Headlines
           desc: 'A content snippet or newsticker layout with label support'
@@ -582,7 +582,7 @@ content:
           buttonclass: readon3
           name: 'Item 5'
         -
-          image: 'gantry-media://home/fp-strips/img-01.jpg'
+          image: 'genesis-media://home/fp-strips/img-01.jpg'
           title: 'A Content Particle Well Suited for Testimonials'
           titletag: Testimonials
           desc: 'A content particle, designed for quotes and testimonials'
@@ -643,7 +643,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-showcase-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-showcase-bottom/img-01.jpg'
           title: '<span class="rt-displayinline">Audacity features a diverse collection of <span class="visible-large">different</span><span class="hidden-large">distinct</span> particles and options</span>'
           desc: '<p class="rt-title-tag">Powerful Particles</p><p>Particles operate as customizable blocks that form the flesh of the frontend, from placeholders to self contained content and functions.</p>'
           linktitle: enabled
@@ -653,7 +653,7 @@ content:
           buttonclass: readon3
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-showcase-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-showcase-bottom/img-01.jpg'
           title: '<span class="rt-displayinline">A responsive layout dynamically adjusts to the viewing device, such as tablet</span>'
           desc: '<p class="rt-title-tag">Layout Controls</p><p><span class="rt-displayinline">A responsive structure allows for a seamless experience across your entire site, automatically adjusting to different screen resolutions<span class="visible-tablet"> and devices</span>.</span></p>'
           linktitle: enabled
@@ -663,7 +663,7 @@ content:
           buttonclass: readon3
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-showcase-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-showcase-bottom/img-01.jpg'
           title: 'The Color Chooser provides an intuitive and extensive UI for swift customization'
           desc: '<p class="rt-title-tag">Custom Style</p><p>Each of Audacity''s module rows have administrator configurable settings for background and text color, allowing for swift changes without the need to code.</p>'
           linktitle: enabled
@@ -683,35 +683,35 @@ content:
       sqinfo: ''
       imagegriditems:
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Arifin Finly - Developer'
           title: 'Item 1'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Kevin DuCommun - Lead Developer'
           title: 'Item 2'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'James Spencer - Developer / Support'
           title: 'Item 3'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Karol Orzel - Developer'
           title: 'Item 4'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Djamil Legato - Lead Developer'
           title: 'Item 5'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Jakub Baran - Developer'
           title: 'Item 6'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Sam Mahoney - Developer'
           title: 'Item 7'
         -
-          image: 'gantry-media://home/fp-bottom/img-01.jpg'
+          image: 'genesis-media://home/fp-bottom/img-01.jpg'
           caption: 'Ryan Pierson - WordSmith'
           title: 'Item 8'
     block:

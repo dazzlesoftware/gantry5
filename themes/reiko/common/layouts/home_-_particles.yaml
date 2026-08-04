@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1536588760
 layout:
@@ -173,17 +173,17 @@ content:
       speed: '1200'
       items:
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           link: '#'
           linktarget: _self
           title: 'Score Big with the New Reiko Theme!'
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           link: '#'
           linktarget: _self
           title: 'Save Time Building Your Team''s Website!'
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           link: '#'
           linktarget: _self
           title: 'Reiko is a New Theme for Sports Fans!'
@@ -276,22 +276,22 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 1'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 2'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 3'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 4'
@@ -299,27 +299,27 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 1'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 2'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 3'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 4'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 5'
@@ -327,12 +327,12 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: '#'
               title: '''It''s going to be fun to watch Fabinho'
             -
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               icon: 'fa fa-soccer-ball-o'
               url: ''
               title: 'Fella 1'
@@ -368,7 +368,7 @@ content:
             css: ''
   profile-8401:
     attributes:
-      image: 'gantry-media://home/feature/img-01.jpg'
+      image: 'genesis-media://home/feature/img-01.jpg'
       max_height: ''
       upper_title: 'From the coach'
       title: 'Reiko Features Exclusive Particles for Teams'
@@ -520,13 +520,13 @@ content:
           items:
             -
               layout: photo
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               description: ''
               url: '#'
               title: 'Henderson hopeful on fitness for World Cup semi-final'
             -
               layout: photo-large
-              image: 'gantry-media://home/showcase/img-03.jpg'
+              image: 'genesis-media://home/showcase/img-03.jpg'
               description: ''
               url: '#'
               title: 'Ryan Kent: It''s time to show what I learned last season'
@@ -553,13 +553,13 @@ content:
               title: 'Firmino''s Brazil knocked out by Mignolet''s Belgium'
             -
               layout: photo
-              image: 'gantry-media://home/showcase/img-05.jpg'
+              image: 'genesis-media://home/showcase/img-05.jpg'
               description: ''
               url: '#'
               title: 'Ousmane Dembele decision made amid Liverpool link'
             -
               layout: photo
-              image: 'gantry-media://home/showcase/img-05.jpg'
+              image: 'genesis-media://home/showcase/img-05.jpg'
               description: ''
               url: '#'
               title: 'Pre-season day five: Live updates from Melwood'
@@ -568,7 +568,7 @@ content:
           items:
             -
               layout: photo
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               description: ''
               url: '#'
               title: 'Evergreen face competition for World Cup star'
@@ -618,31 +618,31 @@ content:
       speed: '250'
       items:
         -
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           alt: ''
           link: 'https://www.youtube.com/embed/6iGe3E0_BrY'
           linktarget: modal
           title: 'Inside Pre-Season: Chester 0-7 Evergreen Keita and Fabinho’s LFC'
         -
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           alt: ''
           link: 'https://www.youtube.com/embed/-gF11fwUlcg'
           linktarget: modal
           title: 'Inside Pre-Season: Chester 0-7 Evergreen Keita and Fabinho’s LFC'
         -
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           alt: ''
           link: 'https://www.youtube.com/embed/Un25bPllrrk'
           linktarget: modal
           title: 'Inside Training: Van Dijk & Wijnaldum cheered on by Klopp Lorem ipsum dolor sit amet curabitur'
         -
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           alt: ''
           link: 'https://www.youtube.com/embed/UtqRyQFGXF8'
           llinktarget: modal
           title: 'Free: Watch every touch of Fabinho and Naby Keita''s LFC debuts'
         -
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           alt: ''
           link: 'https://www.youtube.com/embed/-waQtStzgFE'
           linktarget: modal
@@ -677,7 +677,7 @@ content:
           class: ''
           quote: 'Genesis''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
           quotesize: ''
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           date: '2018-09-11'
           dateformat: 'F d, Y'
           url: '#'
@@ -687,7 +687,7 @@ content:
           class: ''
           quote: 'Find the perfect font using Genesis''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
           quotesize: ''
-          image: 'gantry-media://home/expanded/img-03.jpg'
+          image: 'genesis-media://home/expanded/img-03.jpg'
           date: '2018-09-01'
           dateformat: 'F d, Y'
           url: '#'
@@ -697,7 +697,7 @@ content:
           class: ''
           quote: 'Whether you''re selecting background colors for your website or adjusting the hue of a font in a single particle, the Color Picker makes it easy.'
           quotesize: ''
-          image: 'gantry-media://home/expanded/img-02.jpg'
+          image: 'genesis-media://home/expanded/img-02.jpg'
           date: '2018-09-06'
           dateformat: 'F d, Y'
           url: '#'
@@ -707,7 +707,7 @@ content:
           class: ''
           quote: 'Genesis is a next-generation theming framework. It is packed with features that make it easier than ever to build your website.'
           quotesize: ''
-          image: 'gantry-media://home/expanded/img-04.jpg'
+          image: 'genesis-media://home/expanded/img-04.jpg'
           date: '2018-09-08'
           dateformat: 'F d, Y'
           url: '#'
@@ -717,7 +717,7 @@ content:
           class: ''
           quote: 'Dazzle Software themes come with an industry-leading set of core features, including style, menu, layout, content, and page management tools.'
           quotesize: ''
-          image: 'gantry-media://home/expanded/img-05.jpg'
+          image: 'genesis-media://home/expanded/img-05.jpg'
           date: '2018-09-03'
           dateformat: 'F d, Y'
           url: '#'
@@ -733,85 +733,85 @@ content:
       cases:
         -
           height: height-2
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 1'
         -
           width: width-2
           height: height-3
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 2'
         -
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 3'
         -
           width: width-2
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 4'
         -
           width: width-3
           height: height-3
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 5'
         -
           height: height-3
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 6'
         -
           height: height-2
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 7'
         -
           height: height-3
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 8'
         -
-          image: 'gantry-media://home/extension/img-01.jpg'
+          image: 'genesis-media://home/extension/img-01.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 9'
         -
           width: width-2
           height: height-3
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 10'
         -
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 11'
         -
           height: height-2
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 12'
         -
           height: height-2
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 13'
         -
           width: width-2
-          image: 'gantry-media://home/extension/img-02.jpg'
+          image: 'genesis-media://home/extension/img-02.jpg'
           icon: 'fa fa-search-plus'
           url: '#'
           title: 'Item 14'

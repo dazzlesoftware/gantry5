@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: portfolio
   timestamp: 1527100073
 layout:
@@ -134,7 +134,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -144,7 +144,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -154,7 +154,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -164,7 +164,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -177,7 +177,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -187,7 +187,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -197,7 +197,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -207,7 +207,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -220,7 +220,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -230,7 +230,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -240,7 +240,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -250,7 +250,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -263,7 +263,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -273,7 +273,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -283,7 +283,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -293,7 +293,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://pages/portfolio/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/img-01.jpg'
               subtitle: 'Objectively innovate empowered manufactured products'
               linklabel: ''
               url: '#'
@@ -330,7 +330,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -339,7 +339,7 @@ content:
           buttonclass: readon
           name: 'Item 1'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -348,7 +348,7 @@ content:
           buttonclass: readon
           name: 'Item 2'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -357,7 +357,7 @@ content:
           buttonclass: readon
           name: 'Item 3'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -366,7 +366,7 @@ content:
           buttonclass: readon
           name: 'Item 4'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -375,7 +375,7 @@ content:
           buttonclass: readon
           name: 'Item 5'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -384,7 +384,7 @@ content:
           buttonclass: readon
           name: 'Item 6'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -393,7 +393,7 @@ content:
           buttonclass: readon
           name: 'Item 7'
         -
-          image: 'gantry-media://pages/portfolio/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/img-01.jpg'
           title: Lorem
           desc: 'Lorem ipsum dolor sit amet aenean modo'
           link: '#'
@@ -417,7 +417,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<p>All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Epsilon RocketLauncher</a> to install an equivalent of the demo onto your site.</p>\n<p>Epsilon is only available as part of the Club Subscription.</p>\n\n<div class=\"gantry-width-block gantry-width-50\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<div class=\"rt-footer-logo\"></div>\n\t</div>\n</div>\n\n<div class=\"gantry-width-block gantry-width-50\">\n\t<div class=\"gantry-width-spacer nomarginleft\">\n\t\t<span>+1-(678)-123-6789</span><br />\n\t\t<span>Epsilon Center, LLC</span><br />\n\t\t<span>123 Joomla! Boulevard</span><br />\n\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t<span><a href=\"#\">hello@epsilon.com</a></span>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<p>All demo content is for sample purpose only, intended to show a live site. Use the <a href=\"#\">Epsilon RocketLauncher</a> to install an equivalent of the demo onto your site.</p>\n<p>Epsilon is only available as part of the Club Subscription.</p>\n\n<div class=\"genesis-width-block genesis-width-50\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<div class=\"rt-footer-logo\"></div>\n\t</div>\n</div>\n\n<div class=\"genesis-width-block genesis-width-50\">\n\t<div class=\"genesis-width-spacer nomarginleft\">\n\t\t<span>+1-(678)-123-6789</span><br />\n\t\t<span>Epsilon Center, LLC</span><br />\n\t\t<span>123 Joomla! Boulevard</span><br />\n\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t<span><a href=\"#\">hello@epsilon.com</a></span>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
   custom-5072:

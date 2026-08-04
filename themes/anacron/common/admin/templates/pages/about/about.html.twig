@@ -1,6 +1,6 @@
-{% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
+{% extends ajax-suffix ? "@genesis-admin/partials/ajax.html.twig" : "@genesis-admin/partials/base.html.twig" %}
 
-{% block gantry %}
+{% block genesis %}
     <div class="g-grid overview-header">
         <div class="g-block">
             <h2 class="theme-title">
@@ -34,5 +34,5 @@
         </div>
     </div>
 
-    {% include '@gantry-admin/partials/gantry-details.html.twig' %}
+    {% include '@genesis-admin/partials/genesis-details.html.twig' %}
 {% endblock %}

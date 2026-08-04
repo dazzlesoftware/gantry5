@@ -7,6 +7,6 @@
  */
 
 $platform = 'joomla';
-$vendorAutoload = 'platforms/joomla/lib_gantry5/vendor/autoload.php';
+$vendorAutoload = 'platforms/joomla/lib_genesis/vendor/autoload.php';
 
 require __DIR__ . '/validate-platform-scss.php';

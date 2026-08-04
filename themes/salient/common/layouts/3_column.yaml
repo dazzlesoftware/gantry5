@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/3-col.png'
+  image: 'genesis-admin://images/layouts/3-col.png'
   name: 3_column
   timestamp: 1505817160
 layout:

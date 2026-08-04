@@ -23,7 +23,7 @@ body.scrollheader {
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
+    {% do genesis.document.addScript(url('genesis-theme://js/headroom.min.js')) %}
     <script>
         // User Section
         var myElement = document.querySelector("{{ particle.section|default('#g-navigation') }}");

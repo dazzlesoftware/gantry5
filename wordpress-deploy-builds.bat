@@ -22,7 +22,7 @@ echo Source:  %~dp0dist
 echo Target:  %wp_content%
 echo Variant: %build_suffix%
 echo.
-echo Existing gantry5 and g5_* directories will be deleted.
+echo Existing genesis and genesis_* directories will be deleted.
 echo Other WordPress plugins and themes will be preserved.
 echo ============================================================
 

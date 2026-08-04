@@ -1,0 +1,33 @@
+{% extends "@genesis-admin/partials/page.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ url('genesis-admin://assets/css-compiled/admin.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome6-all.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url('genesis-admin://assets/css/font-awesome6-shim.min.css') }}" type="text/css" />
+    {{ parent() }}
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" async="async" src="{{ url('genesis-admin://assets/js/main.js') }}"></script>
+    {% include "@genesis-admin/partials/js-translations.html.twig" %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {% block genesis_content_wrapper %}
+        <div data-genesis-content-wrapper="">
+            <div class="g-grid">
+                <div class="g-block">
+                    <div class="g-content" data-genesis-content="">
+                        {% block genesis %}
+                            {{ content|raw }}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{% block footer_section %}
+{% endblock %}

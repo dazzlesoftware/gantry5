@@ -1,20 +1,20 @@
 name: Callisto
 version: "@version@"
 description: "Callisto theme for Genesis."
-icon: gantry
+icon: genesis
 author:
   name: Dazzle Software
   email: 'support@dazzlesoftware.org'
   url: 'https://dazzlesoftware.org'
 homepage: 'https://dazzlesoftware.org'
-readme: 'https://github.com/gantry/gantry5/blob/master/README.md'
-keywords: gantry, gantry5, theme
-bugs: 'https://github.com/gantry/gantry5/issues'
+readme: 'https://github.com/genesis/genesis/blob/master/README.md'
+keywords: genesis, genesis, theme
+bugs: 'https://github.com/genesis/genesis/issues'
 license: GPL-3.0-or-later
 
 dependencies:
   - { name: grav, version: '>=1.7' }
-  - { name: gantry5, version: '>=5.5' }
+  - { name: genesis, version: '>=5.5' }
 
 form:
   validation: loose

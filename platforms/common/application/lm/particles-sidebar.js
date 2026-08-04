@@ -31,9 +31,9 @@ const initSizes = () => {
     initialSidebarCoords = sidebar.getBoundingClientRect();
     realSidebarTop = sidebar.offsetTop;
 
-    document.querySelectorAll('body.admin.com_gantry5 nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav')
+    document.querySelectorAll('body.admin.com_genesis nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav')
         .forEach(element => { heightTop += element.offsetHeight; });
-    document.querySelectorAll('body.admin.com_gantry5 #status')
+    document.querySelectorAll('body.admin.com_genesis #status')
         .forEach(element => { heightBottom += element.offsetHeight; });
 
     particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;

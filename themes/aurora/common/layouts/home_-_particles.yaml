@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1507637475
 layout:
@@ -192,7 +192,7 @@ content:
       presets: enabled
       items:
         -
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           small_title: 'Introducing Aurora'
           desc: 'Aurora is an elegantly-designed, simple template designed with corporate websites in mind.'
           buttontext: 'Download now'
@@ -201,7 +201,7 @@ content:
           buttonclass: ''
           title: 'Hassle-free Corporate Template'
         -
-          image: 'gantry-media://home/slideshow/img-02.jpg'
+          image: 'genesis-media://home/slideshow/img-02.jpg'
           small_title: 'Introducing Aurora'
           desc: 'Aurora''s modern design and sleek visual elements provide a minimalistic look that is corporate ready.'
           buttontext: 'Download now'
@@ -210,7 +210,7 @@ content:
           buttonclass: ''
           title: 'Experience Aurora''s Stunning Simplicity'
         -
-          image: 'gantry-media://home/slideshow/img-03.jpg'
+          image: 'genesis-media://home/slideshow/img-03.jpg'
           small_title: 'Introducing Aurora'
           desc: 'Aurora features an all-new Vertical Slider particle that displays images with simple navigation. Perfect for featured content.'
           buttontext: 'Download now'
@@ -219,7 +219,7 @@ content:
           buttonclass: ''
           title: 'Brand New Vertical Slider Particle'
         -
-          image: 'gantry-media://home/slideshow/img-04.jpg'
+          image: 'genesis-media://home/slideshow/img-04.jpg'
           small_title: 'Introducing Aurora'
           desc: 'Simplify customization with Aurora''s robust set of Genesis particles and simple SVG-powered design elements.'
           buttontext: 'Download now'
@@ -228,7 +228,7 @@ content:
           buttonclass: ''
           title: 'Build a Brand New Website with Ease'
         -
-          image: 'gantry-media://home/slideshow/img-05.jpg'
+          image: 'genesis-media://home/slideshow/img-05.jpg'
           small_title: 'Introducing Aurora'
           desc: 'Genesis''s powerful drag-and-drop interface is easy to use. Customize your site''s entire layout in seconds.'
           buttontext: 'Download now'
@@ -292,15 +292,15 @@ content:
       album: ''
       imagegriditems:
         -
-          image: 'gantry-media://home/above/img-01.jpg'
+          image: 'genesis-media://home/above/img-01.jpg'
           caption: branding
           title: 'New item'
         -
-          image: 'gantry-media://home/above/img-02.jpg'
+          image: 'genesis-media://home/above/img-02.jpg'
           caption: apps
           title: 'New item'
         -
-          image: 'gantry-media://home/above/img-03.jpg'
+          image: 'genesis-media://home/above/img-03.jpg'
           caption: models
           title: 'New item'
   custom-8291:
@@ -328,22 +328,22 @@ content:
       loop: disabled
       items:
         -
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           position: 'ceo of apple inc.'
           testimonial: 'Aurora offers a rich selection of elegant typography to provide focus to varying content types.'
           author: 'patrick coleman'
         -
-          image: 'gantry-media://home/feature/img-02.jpg'
+          image: 'genesis-media://home/feature/img-02.jpg'
           position: 'ceo of womenFTW inc.'
           testimonial: 'Aurora is a responsive template, adapting to the viewing device''s width, mobile, tablet or desktop.'
           author: 'katrin lange'
         -
-          image: 'gantry-media://home/feature/img-03.jpg'
+          image: 'genesis-media://home/feature/img-03.jpg'
           position: 'ceo of unicorn inc.'
           testimonial: 'Featuring Genesis''s inheritance system. Save time by using inheritance to avoid repetitive changes!'
           author: 'jakub baran'
         -
-          image: 'gantry-media://home/feature/img-04.jpg'
+          image: 'genesis-media://home/feature/img-04.jpg'
           position: 'ceo of ninjas inc.'
           testimonial: 'Beautiful typography and a rich design make Aurora a brilliant choice for a wide variety of website types.'
           author: 'reggie simmons'
@@ -363,17 +363,17 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               subtitle: 'madrid, spain'
               url: '#'
               title: 'egg arena'
             -
-              image: 'gantry-media://home/showcase/img-03.jpg'
+              image: 'genesis-media://home/showcase/img-03.jpg'
               subtitle: 'new york, united states'
               url: '#'
               title: 'spike building'
             -
-              image: 'gantry-media://home/showcase/img-02.jpg'
+              image: 'genesis-media://home/showcase/img-02.jpg'
               subtitle: 'sydney, australia'
               url: '#'
               title: 'samsung hq'
@@ -381,17 +381,17 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-03.jpg'
+              image: 'genesis-media://home/showcase/img-03.jpg'
               subtitle: 'new york, united states'
               url: '#'
               title: 'spike building'
             -
-              image: 'gantry-media://home/showcase/img-02.jpg'
+              image: 'genesis-media://home/showcase/img-02.jpg'
               subtitle: 'sydney, australia'
               url: '#'
               title: 'samsung hq'
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               subtitle: 'madrid, spain'
               url: '#'
               title: 'egg arena'
@@ -399,17 +399,17 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               subtitle: 'madrid, spain'
               url: '#'
               title: 'egg arena'
             -
-              image: 'gantry-media://home/showcase/img-03.jpg'
+              image: 'genesis-media://home/showcase/img-03.jpg'
               subtitle: 'new york, united states'
               url: '#'
               title: 'spike building'
             -
-              image: 'gantry-media://home/showcase/img-02.jpg'
+              image: 'genesis-media://home/showcase/img-02.jpg'
               subtitle: 'sydney, australia'
               url: '#'
               title: 'samsung hq'
@@ -417,17 +417,17 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-03.jpg'
+              image: 'genesis-media://home/showcase/img-03.jpg'
               subtitle: 'new york, united states'
               url: '#'
               title: 'spike building'
             -
-              image: 'gantry-media://home/showcase/img-02.jpg'
+              image: 'genesis-media://home/showcase/img-02.jpg'
               subtitle: 'sydney, australia'
               url: '#'
               title: 'samsung hq'
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               subtitle: 'madrid, spain'
               url: '#'
               title: 'egg arena'
@@ -435,17 +435,17 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               subtitle: 'madrid, spain'
               url: '#'
               title: 'egg arena'
             -
-              image: 'gantry-media://home/showcase/img-03.jpg'
+              image: 'genesis-media://home/showcase/img-03.jpg'
               subtitle: 'new york, united states'
               url: '#'
               title: 'spike building'
             -
-              image: 'gantry-media://home/showcase/img-02.jpg'
+              image: 'genesis-media://home/showcase/img-02.jpg'
               subtitle: 'sydney, australia'
               url: '#'
               title: 'samsung hq'
@@ -533,7 +533,7 @@ content:
       nav: enabled
       items:
         -
-          image: 'gantry-media://home/bottom/img-01.jpg'
+          image: 'genesis-media://home/bottom/img-01.jpg'
           topline: 'September 2nd, 2017'
           description: "<b>Excellent design and feature-rich.</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''
@@ -541,7 +541,7 @@ content:
           linktarget: _self
           title: 'World Class Design and Support'
         -
-          image: 'gantry-media://home/bottom/img-02.jpg'
+          image: 'genesis-media://home/bottom/img-02.jpg'
           topline: 'September 3rd, 2017'
           description: "<b>Genesis is a versatile framework</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''
@@ -549,7 +549,7 @@ content:
           linktarget: _self
           title: 'Designed to be Intuitive from Start to Finish'
         -
-          image: 'gantry-media://home/bottom/img-03.jpg'
+          image: 'genesis-media://home/bottom/img-03.jpg'
           topline: 'September 4th, 2017'
           description: "<b>Excellent design and feature-rich.</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''
@@ -557,7 +557,7 @@ content:
           linktarget: _self
           title: 'Detailed Guides and Active Support'
         -
-          image: 'gantry-media://home/bottom/img-04.jpg'
+          image: 'genesis-media://home/bottom/img-04.jpg'
           topline: 'September 5th, 2017'
           description: "<b>Genesis is a versatile framework</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''
@@ -565,7 +565,7 @@ content:
           linktarget: _self
           title: 'Aurora''s RocketLauncher Quick Start'
         -
-          image: 'gantry-media://home/bottom/img-05.jpg'
+          image: 'genesis-media://home/bottom/img-05.jpg'
           topline: 'September 6th, 2017'
           description: "<b>Excellent design and feature-rich.</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''

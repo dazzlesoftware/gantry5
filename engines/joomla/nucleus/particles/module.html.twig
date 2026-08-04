@@ -1,5 +1,5 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-    {{ genesis.platform.displayModule(particle.module_id, {'style': particle.chrome|default('gantry'), 'position': 'particle'})|raw }}
+    {{ genesis.platform.displayModule(particle.module_id, {'style': particle.chrome|default('genesis'), 'position': 'particle'})|raw }}
 {% endblock %}

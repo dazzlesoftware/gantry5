@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#d6b67f'
@@ -9,7 +9,7 @@ preset1:
   styles:
     base:
       background: '#2d271d'
-      surround-image: 'gantry-media://backgrounds/body/bg-01.svg'
+      surround-image: 'genesis-media://backgrounds/body/bg-01.svg'
       text-color: '#736f6c'
       text-active-color: '#d6b67f'
     accent:
@@ -45,11 +45,11 @@ preset1:
       text-color: '#ffffff'
     above:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/above/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/above/bg-01.svg'
       text-color: '#000000'
     feature:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/feature/bg-01.jpg'
+      background-image: 'genesis-media://backgrounds/feature/bg-01.jpg'
       text-color: '#ffffff'
     showcase:
       background: '#000000'

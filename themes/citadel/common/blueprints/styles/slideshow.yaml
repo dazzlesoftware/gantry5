@@ -12,11 +12,11 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/slideshow/img-01.jpg"
+      default: "genesis-media://backgrounds/slideshow/img-01.jpg"
     video:
       type: input.videopicker
       label: Video
-      default: "gantry-media://videos/slideshow/sample.webm"
+      default: "genesis-media://videos/slideshow/sample.webm"
     text-color:
       type: input.colorpicker
       label: Text

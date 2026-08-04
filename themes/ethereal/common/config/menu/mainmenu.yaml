@@ -32,7 +32,7 @@ items:
     type: component
     alias: home
     path: home
-    link: 'index.php?option=com_gantry5&view=custom'
+    link: 'index.php?option=com_genesis&view=custom'
     title: Home
     subtitle: ''
     image: ''
@@ -359,7 +359,7 @@ items:
     type: url
     alias: error
     path: pages/error
-    link: 'index.php?option=com_gantry5&view=error'
+    link: 'index.php?option=com_genesis&view=error'
     title: Error
     subtitle: ''
     image: ''
@@ -378,7 +378,7 @@ items:
     type: component
     alias: coming-soon
     path: pages/coming-soon
-    link: 'index.php?option=com_gantry5&view=custom'
+    link: 'index.php?option=com_genesis&view=custom'
     title: 'Coming Soon'
     subtitle: ''
     image: ''

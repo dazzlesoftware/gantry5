@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/2-col-right.png'
+  image: 'genesis-admin://images/layouts/2-col-right.png'
   name: pages_-_about_us
   timestamp: 1496309260
 layout:
@@ -139,7 +139,7 @@ content:
   custom-9045:
     title: 'Introduction - Mission - Business'
     attributes:
-      html: "<div class=\"g-grid center\">\n    <div class=\"g-block\">\n        <div class=\"g-content\">\n          <img src=\"gantry-theme://images/demo/about-us/img-01.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Introduction</h2>\n        </div>\n    </div>\n    <div class=\"g-block\">\n        <div class=\"g-content\">\n          <img src=\"gantry-theme://images/demo/about-us/img-02.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Mission</h2>\n        </div>\n    </div>\n    <div class=\"g-block\">\n        <div class=\"g-content\">\n          <img src=\"gantry-theme://images/demo/about-us/img-03.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Business</h2>\n        </div>\n    </div>\n</div>"
+      html: "<div class=\"g-grid center\">\n    <div class=\"g-block\">\n        <div class=\"g-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-01.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Introduction</h2>\n        </div>\n    </div>\n    <div class=\"g-block\">\n        <div class=\"g-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-02.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Mission</h2>\n        </div>\n    </div>\n    <div class=\"g-block\">\n        <div class=\"g-content\">\n          <img src=\"genesis-theme://images/demo/about-us/img-03.jpg\" alt=\"image\">\n          <h2 class=\"g-title\">Business</h2>\n        </div>\n    </div>\n</div>"
     block:
       class: flush
       variations: box2

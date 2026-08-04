@@ -1576,7 +1576,7 @@ body.g-prime {
   border-top: 1px solid #ddd;
 }
 
-.com_gantry5 #footer, .gantry5 #footer, .admin-block #footer {
+.com_genesis #footer, .genesis #footer, .admin-block #footer {
   background-color: #e7e7e7;
   padding: 1em 0 3rem;
   margin-bottom: 0;
@@ -1590,14 +1590,14 @@ body.g-prime {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.com_gantry5 #footer .g-version, .com_gantry5 #footer .g-version-date, .gantry5 #footer .g-version, .gantry5 #footer .g-version-date, .admin-block #footer .g-version, .admin-block #footer .g-version-date {
+.com_genesis #footer .g-version, .com_genesis #footer .g-version-date, .genesis #footer .g-version, .genesis #footer .g-version-date, .admin-block #footer .g-version, .admin-block #footer .g-version-date {
   color: #8F4DAE;
 }
-.com_gantry5 #footer a, .gantry5 #footer a, .admin-block #footer a {
+.com_genesis #footer a, .genesis #footer a, .admin-block #footer a {
   color: #439A86 !important;
   text-decoration: none;
 }
-.com_gantry5 #footer a:hover, .gantry5 #footer a:hover, .admin-block #footer a:hover {
+.com_genesis #footer a:hover, .genesis #footer a:hover, .admin-block #footer a:hover {
   color: rgb(36.0769230769, 82.9230769231, 72.1538461538) !important;
 }
 
@@ -1826,11 +1826,11 @@ i.fa-Genesis, i.fa-Genesis-logo, i.fa-Genesis-symbol, i.fa-Genesis-logo-both, i.
 [data-genesis-container] .overview-details .preview-image {
   width: 350px;
 }
-[data-genesis-container] .overview-gantry .g-block {
+[data-genesis-container] .overview-genesis .g-block {
   padding: 0.938rem;
 }
 @media only all and (max-width: 47.99rem) {
-  [data-genesis-container] .overview-gantry {
+  [data-genesis-container] .overview-genesis {
     text-align: center;
   }
 }
@@ -1843,7 +1843,7 @@ i.fa-Genesis, i.fa-Genesis-logo, i.fa-Genesis-symbol, i.fa-Genesis-logo-both, i.
   margin-right: 1rem;
   color: #C6C6C6;
 }
-[data-genesis-container] .about-gantry {
+[data-genesis-container] .about-genesis {
   margin-top: 3rem;
   opacity: 0.8;
 }
@@ -2957,18 +2957,18 @@ i.fa-Genesis, i.fa-Genesis-logo, i.fa-Genesis-symbol, i.fa-Genesis-logo-both, i.
   border-color: #C6C6C6;
   position: relative;
 }
-[data-genesis-container] .navbar-block #gantry-logo {
+[data-genesis-container] .navbar-block #genesis-logo {
   right: 1.563rem;
   top: 0.938rem;
   position: absolute;
 }
 @media only all and (min-width: 48rem) and (max-width: 59.99rem) {
-  [data-genesis-container] .navbar-block #gantry-logo {
+  [data-genesis-container] .navbar-block #genesis-logo {
     display: none;
   }
 }
 @media only all and (max-width: 47.99rem) {
-  [data-genesis-container] .navbar-block #gantry-logo {
+  [data-genesis-container] .navbar-block #genesis-logo {
     display: none;
   }
 }

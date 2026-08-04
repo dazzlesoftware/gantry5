@@ -390,7 +390,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           icon: ''
           readmoreclass: ''
           title: Genesis
@@ -501,7 +501,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://github.com/gantry/gantry5'
+          link: 'https://github.com/genesis/genesis'
           icon: ''
           readmoreclass: ''
           title: Github

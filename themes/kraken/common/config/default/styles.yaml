@@ -17,7 +17,7 @@ top:
 header:
   background: '#272c35'
   text-color: '#ffffff'
-  background-image: 'gantry-media://backgrounds/header/preset-01.jpg'
+  background-image: 'genesis-media://backgrounds/header/preset-01.jpg'
 showcase:
   background: '#ffffff'
   text-color: '#272c35'

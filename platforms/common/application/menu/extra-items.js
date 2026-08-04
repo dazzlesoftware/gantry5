@@ -89,7 +89,7 @@ var StepOne = function(map, mode) {
 
         var config = block.querySelector('.config-cog');
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             remote: parseAjaxURI((config ? config.getAttribute('href') : '') + getAjaxSuffix()),
             remoteLoaded: function(response, modalInstance) {
@@ -195,14 +195,14 @@ var StepTwo = function(data, content, button) {
 
                             menumanager.isNewParticle = false;
                             menumanager.emit('dragEnd', menumanager.map);
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         } else {
                             var position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'),
                                 list = position && position.querySelector(':scope > ul');
                             if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
                             Cards.updatePendingChanges();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
                     } else {
                         field = fieldByName(picker.field);

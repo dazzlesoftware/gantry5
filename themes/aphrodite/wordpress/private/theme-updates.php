@@ -5,7 +5,7 @@
 
 defined('ABSPATH') || die;
 
-add_filter('pre_set_site_transient_update_themes', 'g5_aphrodite_private_theme_updates');
+add_filter('pre_set_site_transient_update_themes', 'genesis_aphrodite_private_theme_updates');
 
 /**
  * Normalize Genesis theme versions for developer builds.
@@ -13,7 +13,7 @@ add_filter('pre_set_site_transient_update_themes', 'g5_aphrodite_private_theme_u
  * @param string $version Theme version string.
  * @return string
  */
-function g5_aphrodite_private_normalize_version($version)
+function genesis_aphrodite_private_normalize_version($version)
 {
     $version = trim((string) $version);
 
@@ -26,7 +26,7 @@ function g5_aphrodite_private_normalize_version($version)
  * @param object $transient Theme update transient.
  * @return object
  */
-function g5_aphrodite_private_theme_updates($transient)
+function genesis_aphrodite_private_theme_updates($transient)
 {
     if (!is_object($transient)) {
         $transient = new stdClass();
@@ -36,8 +36,8 @@ function g5_aphrodite_private_theme_updates($transient)
         $transient->response = array();
     }
 
-    $slug = 'g5_aphrodite';
-    $url = 'https://updates.gantry.org/wp-updates/g5_aphrodite_copy.json';
+    $slug = 'genesis_aphrodite';
+    $url = 'https://updates.genesis.org/wp-updates/genesis_aphrodite_copy.json';
     $theme = wp_get_theme($slug);
 
     if (!$theme->exists()) {
@@ -67,8 +67,8 @@ function g5_aphrodite_private_theme_updates($transient)
 
     $installed_version = (string) $theme->get('Version');
     $available_version = (string) $payload['version'];
-    $installed_stable_version = g5_aphrodite_private_normalize_version($installed_version);
-    $available_stable_version = g5_aphrodite_private_normalize_version($available_version);
+    $installed_stable_version = genesis_aphrodite_private_normalize_version($installed_version);
+    $available_stable_version = genesis_aphrodite_private_normalize_version($available_version);
     $is_dev_build = $installed_version !== $installed_stable_version;
 
     $has_direct_update = version_compare($installed_version, $available_version, '<');

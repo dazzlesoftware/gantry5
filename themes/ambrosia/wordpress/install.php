@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_AmbrosiaInstallerScript
+ * Class Genesis_AmbrosiaInstallerScript
  */
-class G5_AmbrosiaInstallerScript
+class Genesis_AmbrosiaInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Gantry5 PHP 8.3 Compatibility Test Runner
+# Genesis PHP 8.3 Compatibility Test Runner
 
 # Check if PHP 8.3 is available
 if ! command -v php &> /dev/null; then
@@ -11,11 +11,11 @@ fi
 PHP_VERSION=$(php -r "echo PHP_VERSION;")
 
 echo "----------------------------------------"
-echo "Gantry5 PHP 8.3 Compatibility Test Suite"
+echo "Genesis PHP 8.3 Compatibility Test Suite"
 echo "----------------------------------------"
 echo "Using PHP version: $PHP_VERSION"
 
-# Change to Gantry5 root directory
+# Change to Genesis root directory
 cd "$(dirname "$0")/../../../"
 ROOT_DIR=$(pwd)
 

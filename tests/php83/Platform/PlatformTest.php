@@ -1,8 +1,8 @@
 <?php
 
-namespace Gantry\Tests\PHP83\Platform;
+namespace Genesis\Tests\PHP83\Platform;
 
-use Gantry\Tests\PHP83\MockableTest;
+use Genesis\Tests\PHP83\MockableTest;
 
 /**
  * Test platform detection and compatibility
@@ -15,8 +15,8 @@ class PlatformTest extends MockableTest
     public function testPlatformDetection()
     {
         // Get platform instance - dynamically determine which to test
-        if (class_exists('\\Gantry\\Framework\\Platform')) {
-            $platform = new \Gantry\Framework\Platform();
+        if (class_exists('\\Genesis\\Framework\\Platform')) {
+            $platform = new \Genesis\Framework\Platform();
             $this->assertNotNull($platform);
             
             // Test platform name

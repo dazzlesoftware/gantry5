@@ -1,5 +1,5 @@
 preset:
-  image: 'gantry-admin://images/layouts/body-only.png'
+  image: 'genesis-admin://images/layouts/body-only.png'
   name: _body_only
 children:
   -

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1469036149
 layout:
@@ -617,7 +617,7 @@ content:
         -
           name: 'Rick Grimes'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Producer
@@ -631,7 +631,7 @@ content:
         -
           name: 'Maggie Greene'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Camera
@@ -645,7 +645,7 @@ content:
         -
           name: 'Daryl Dixon'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Lighting
@@ -679,7 +679,7 @@ content:
         -
           name: 'Special Effects'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -693,7 +693,7 @@ content:
         -
           name: 'Script Editing'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -707,7 +707,7 @@ content:
         -
           name: 'Post Production'
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''

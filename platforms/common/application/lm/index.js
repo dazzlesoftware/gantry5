@@ -253,7 +253,7 @@ ready(function() {
 
         if (!tooltips.equalize && !tooltips.move) { return; }
 
-        var msg = tooltips.equalize ? translate('GANTRY5_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GANTRY5_PLATFORM_JS_LM_GRID_SORT_MOVE');
+        var msg = tooltips.equalize ? translate('GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE');
 
         element.data('tip', msg).data('tip-offset', -30);
 
@@ -523,7 +523,7 @@ ready(function() {
                     }
 
                     var isValid = function() {
-                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GANTRY5_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
+                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
                     };
 
                     blockSize.addEventListener('input', function(){
@@ -548,7 +548,7 @@ ready(function() {
                             target.disabled = false;
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -632,7 +632,7 @@ ready(function() {
 
                             modal.close();
 
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED', particle.getTitle()), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED', particle.getTitle()), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
                         indicator.hide(target);

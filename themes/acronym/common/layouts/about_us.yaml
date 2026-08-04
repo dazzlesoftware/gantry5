@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1488281659
 layout:
@@ -163,7 +163,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: CEO
@@ -177,7 +177,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: HR
@@ -191,7 +191,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Designer
@@ -219,7 +219,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -233,7 +233,7 @@ content:
         -
           name: Mission
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -247,7 +247,7 @@ content:
         -
           name: Business
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''

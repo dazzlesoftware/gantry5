@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1463006144
 layout:
@@ -597,7 +597,7 @@ content:
       nav: disabled
       items:
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           icon: ''
           title: Simple
           subtitle: 'Experience the Simplicity of Using Genesis'
@@ -610,7 +610,7 @@ content:
           buttonclass: ''
           name: Simple
         -
-          image: 'gantry-media://demo/home/header/img-02.jpg'
+          image: 'genesis-media://demo/home/header/img-02.jpg'
           icon: ''
           title: Fast
           subtitle: 'Topaz is PHP 7 Ready and Optimized for Speed'
@@ -623,7 +623,7 @@ content:
           buttonclass: ''
           name: Fast
         -
-          image: 'gantry-media://demo/home/header/img-03.jpg'
+          image: 'genesis-media://demo/home/header/img-03.jpg'
           icon: ''
           title: Versatile
           subtitle: 'Topaz is Easily Customized to Meet Your Needs'
@@ -661,7 +661,7 @@ content:
   custom-7245:
     title: 'This Week'
     attributes:
-      html: "<div class=\"moduletable\">\n    <h3 class=\"g-title\">This Week</h3>\n    <div class=\"g-particle\">\n        <div class=\"g-content-array\">\n\n            <div class=\"g-grid\">\n                <div class=\"g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"gantry-media://demo/home/showcase/img-01.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\"> Quickly Select and Change Colors with the Color Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Take advantage of the uniquely powerful Genesis Color Picker and change your theme’s color scheme in seconds. Adjust color, saturation, hue, and transparency quickly and easily.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"g-grid\">\n                <div class=\"g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"gantry-media://demo/home/showcase/img-02.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\"> Find the Right Icon in a Snap with Genesis’s Icon Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Font Awesome icons are awesome, and they’re supported natively in Topaz. Use Genesis’s powerful Icon Picker to easily add icons to menus, particles, and more.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"g-grid\">\n                <div class=\"g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"gantry-media://demo/home/showcase/img-03.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\">Choose the Right Font in Seconds with Genesis’s Font Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Want to pick the perfect font for your content? Select from hundreds of fonts in the Google Font Library with Genesis’s Font Picker. Powered by Genesis.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n</div>\n"
+      html: "<div class=\"moduletable\">\n    <h3 class=\"g-title\">This Week</h3>\n    <div class=\"g-particle\">\n        <div class=\"g-content-array\">\n\n            <div class=\"g-grid\">\n                <div class=\"g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"genesis-media://demo/home/showcase/img-01.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\"> Quickly Select and Change Colors with the Color Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Take advantage of the uniquely powerful Genesis Color Picker and change your theme’s color scheme in seconds. Adjust color, saturation, hue, and transparency quickly and easily.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"g-grid\">\n                <div class=\"g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"genesis-media://demo/home/showcase/img-02.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\"> Find the Right Icon in a Snap with Genesis’s Icon Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Font Awesome icons are awesome, and they’re supported natively in Topaz. Use Genesis’s powerful Icon Picker to easily add icons to menus, particles, and more.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"g-grid\">\n                <div class=\"g-block\">\n                    <div class=\"g-content\">\n                        <div class=\"g-array-item\">\n                            <div class=\"g-array-item-image\">\n                                <a href=\"#\">\n                                    <img src=\"genesis-media://demo/home/showcase/img-03.jpg\" width=\"1200\" height=\"800\"/>\n                                </a>\n                            </div>\n\n                            <div class=\"g-array-item-title\">\n                                <h3 class=\"g-item-title\">\n                                    <a href=\"#\">Choose the Right Font in Seconds with Genesis’s Font Picker </a>\n                                </h3>\n                            </div>\n\n                            <div class=\"g-array-item-details\">\n                                <span class=\"g-array-item-category\">\n                                    <a href=\"#\"> <i class=\"fa fa-folder-open\"></i>Blog</a>\n                                </span>\n                            </div>\n\n                            <div class=\"g-array-item-text\"> Want to pick the perfect font for your content? Select from hundreds of fonts in the Google Font Library with Genesis’s Font Picker. Powered by Genesis.</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </div>\n</div>\n"
       twig: '0'
       filter: '1'
     block:
@@ -673,12 +673,12 @@ content:
       displayitems: '3'
       items:
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
           icon: ''
           title: 'Built for Screens Big and Small'
           subtitle: Responsive
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -686,12 +686,12 @@ content:
           buttonclass: ''
           name: Responsive
         -
-          image: 'gantry-media://demo/home/slideshow/img-02.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-02.jpg'
           icon: ''
           title: 'Clean Design that Focuses on Content'
           subtitle: Modern
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -699,12 +699,12 @@ content:
           buttonclass: ''
           name: Modern
         -
-          image: 'gantry-media://demo/home/slideshow/img-03.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-03.jpg'
           icon: ''
           title: 'Choose From Six Premium Color Presets'
           subtitle: Colorful
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -712,12 +712,12 @@ content:
           buttonclass: ''
           name: Colorful
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
           icon: ''
           title: 'Built for Screens Big and Small'
           subtitle: Responsive
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -725,12 +725,12 @@ content:
           buttonclass: ''
           name: Responsive
         -
-          image: 'gantry-media://demo/home/slideshow/img-02.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-02.jpg'
           icon: ''
           title: 'Clean Design that Focuses on Content'
           subtitle: Modern
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -738,12 +738,12 @@ content:
           buttonclass: ''
           name: Modern
         -
-          image: 'gantry-media://demo/home/slideshow/img-03.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-03.jpg'
           icon: ''
           title: 'Choose From Six Premium Color Presets'
           subtitle: Colorful
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -762,7 +762,7 @@ content:
           readmorelink: '#'
           readmoretarget: _self
           readmoreclass: 'button fa fa-chevron-circle-right'
-          image: 'gantry-media://demo/home/feature/img-01.jpg'
+          image: 'genesis-media://demo/home/feature/img-01.jpg'
           imagetitle: Powerful
           imagedesc: 'Save countless hours of development time with Topaz, a perfect choice for professionals, corporations, and content-driven sites.'
           title: 'Professional Websites Made Easy'
@@ -774,7 +774,7 @@ content:
           readmorelink: '#'
           readmoretarget: _self
           readmoreclass: 'button fa fa-chevron-circle-right'
-          image: 'gantry-media://demo/home/feature/img-02.jpg'
+          image: 'genesis-media://demo/home/feature/img-02.jpg'
           imagetitle: Powerful
           imagedesc: 'Save countless hours of development time with Topaz, a perfect choice for professionals, corporations, and content-driven sites.'
           title: 'Display Your Content Your Way with BookBlock'
@@ -786,7 +786,7 @@ content:
           readmorelink: '#'
           readmoretarget: _self
           readmoreclass: 'button fa fa-chevron-circle-right'
-          image: 'gantry-media://demo/home/feature/img-03.jpg'
+          image: 'genesis-media://demo/home/feature/img-03.jpg'
           imagetitle: Powerful
           imagedesc: 'Save countless hours of development time with Topaz, a perfect choice for professionals, corporations, and content-driven sites.'
           title: 'Swiper Carousel'
@@ -798,12 +798,12 @@ content:
       layout: newsslider
       items:
         -
-          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          image: 'genesis-media://demo/home/bottom/img-01.jpg'
           icon: 'fa fa-compass'
           title: 'Menu Dropdown'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'Navigate and organize your site’s menu and submenus with this elegantly-designed menu dropdown, configurable and highly expandable from the Genesis administrator.'
           link: ''
           linktext: ''
@@ -811,12 +811,12 @@ content:
           buttonclass: ''
           name: 'Menu Dropdown'
         -
-          image: 'gantry-media://demo/home/bottom/img-02.jpg'
+          image: 'genesis-media://demo/home/bottom/img-02.jpg'
           icon: 'fa fa-cog'
           title: 'Unlimited Positions'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'Do you love module positions? You can create as many as you want, horizontally or vertically, within each section. Each position is created with drag-and-drop simplicity.'
           link: ''
           linktext: ''
@@ -824,12 +824,12 @@ content:
           buttonclass: ''
           name: 'Unlimited Positions'
         -
-          image: 'gantry-media://demo/home/bottom/img-03.jpg'
+          image: 'genesis-media://demo/home/bottom/img-03.jpg'
           icon: 'fa fa-cubes'
           title: 'Block Variations'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'Quickly adjust the look of a section or content block with an easy-to-navigate list of preset block variations to choose from. Pick one, or pick several in seconds.'
           link: ''
           linktext: ''
@@ -837,12 +837,12 @@ content:
           buttonclass: ''
           name: 'Block Variations'
         -
-          image: 'gantry-media://demo/home/bottom/img-04.jpg'
+          image: 'genesis-media://demo/home/bottom/img-04.jpg'
           icon: 'fa fa-coffee'
           title: 'Multiple Presets'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'We have carefully configured six gorgeous color presets for you to switch between with a single slick. Want to configure your own color scheme? Don’t worry, that’s easy, too!'
           link: ''
           linktext: ''
@@ -850,12 +850,12 @@ content:
           buttonclass: ''
           name: 'Multiple Presets'
         -
-          image: 'gantry-media://demo/home/bottom/img-05.jpg'
+          image: 'genesis-media://demo/home/bottom/img-05.jpg'
           icon: 'fa fa-eye'
           title: 'Responsive Layout'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'Topaz is built from the ground up to look as good on a mobile phone as it does on a large desktop monitor. Customize which content appears on different screen types!'
           link: ''
           linktext: ''
@@ -863,12 +863,12 @@ content:
           buttonclass: ''
           name: 'Responsive Layout'
         -
-          image: 'gantry-media://demo/home/bottom/img-06.jpg'
+          image: 'genesis-media://demo/home/bottom/img-06.jpg'
           icon: 'fa fa-envelope-o'
           title: 'Custom Typography'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'Buttons, backgrounds, and more are available to you virtually anywhere you need them. Create a highlighted area of text to draw attention to important information, and more!'
           link: ''
           linktext: ''
@@ -876,12 +876,12 @@ content:
           buttonclass: ''
           name: 'Custom Typography'
         -
-          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          image: 'genesis-media://demo/home/bottom/img-01.jpg'
           icon: 'fa fa-building-o'
           title: 'Menu Editor'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'Customizing your menus has never been easier. Topaz’s Menu Editor is simple to use, and powerful. Insert modules, particles, and icons with drag-and-drop simplicity.'
           link: ''
           linktext: ''
@@ -889,12 +889,12 @@ content:
           buttonclass: ''
           name: 'Menu Editor'
         -
-          image: 'gantry-media://demo/home/bottom/img-02.jpg'
+          image: 'genesis-media://demo/home/bottom/img-02.jpg'
           icon: 'fa fa-align-justify'
           title: 'Layout Manager'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'You don’t have to know how to code to create a unique layout for your site. Change virtually everything about your site’s layout in seconds with the Layout Manager.'
           link: ''
           linktext: ''
@@ -902,12 +902,12 @@ content:
           buttonclass: ''
           name: 'Layout Manager'
         -
-          image: 'gantry-media://demo/home/bottom/img-03.jpg'
+          image: 'genesis-media://demo/home/bottom/img-03.jpg'
           icon: 'fa fa-angle-double-right'
           title: 'Easy Settings'
           subtitle: Heading
           author: 'Grace Kelly'
-          authorimage: 'gantry-media://demo/home/bottom/img-07.jpg'
+          authorimage: 'genesis-media://demo/home/bottom/img-07.jpg'
           desc: 'If you can navigate a webpage, you can configure Topaz. The Genesis framework it is built on was built from the ground up to be quick, easy, and remarkably powerful.'
           link: ''
           linktext: ''
@@ -924,7 +924,7 @@ content:
       nextText: '<i class="fa fa-chevron-right" aria-hidden="true"></i>'
       items:
         -
-          image: 'gantry-media://demo/home/bottom/img-01.jpg'
+          image: 'genesis-media://demo/home/bottom/img-01.jpg'
           icon: ''
           title: ''
           subtitle: ''
@@ -937,7 +937,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/bottom/img-02.jpg'
+          image: 'genesis-media://demo/home/bottom/img-02.jpg'
           icon: ''
           title: ''
           subtitle: ''
@@ -950,7 +950,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/bottom/img-03.jpg'
+          image: 'genesis-media://demo/home/bottom/img-03.jpg'
           icon: ''
           title: ''
           subtitle: ''
@@ -963,7 +963,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/bottom/img-04.jpg'
+          image: 'genesis-media://demo/home/bottom/img-04.jpg'
           icon: ''
           title: ''
           subtitle: ''
@@ -976,7 +976,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/bottom/img-05.jpg'
+          image: 'genesis-media://demo/home/bottom/img-05.jpg'
           icon: ''
           title: ''
           subtitle: ''
@@ -989,7 +989,7 @@ content:
           buttonclass: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/bottom/img-06.jpg'
+          image: 'genesis-media://demo/home/bottom/img-06.jpg'
           icon: ''
           title: ''
           subtitle: ''

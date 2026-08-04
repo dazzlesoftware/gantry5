@@ -9,8 +9,8 @@
 
 defined('ABSPATH') or die;
 
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Theme;
 use Timber\Timber;
 
 /*
@@ -22,10 +22,10 @@ use Timber\Timber;
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
-$gantry = Gantry::instance();
+$genesis = Genesis::instance();
 
 /** @var Theme $theme */
-$theme  = $gantry['theme'];
+$theme  = $genesis['theme'];
 
 // We need to render contents of <head> before plugin content gets added.
 $context              = Timber::context();
@@ -33,13 +33,13 @@ $context['page_head'] = $theme->render('partials/page_head.html.twig', $context)
 
 $templates = ['archive.html.twig', 'index.html.twig'];
 
-$context['title'] = __('Archive', 'g5_hydrogen');
+$context['title'] = __('Archive', 'genesis_hydrogen');
 if (is_day()) {
-    $context['title'] = __('Archive:', 'g5_hydrogen') . ' ' . get_the_date('j F Y');
+    $context['title'] = __('Archive:', 'genesis_hydrogen') . ' ' . get_the_date('j F Y');
 } else if (is_month()) {
-    $context['title'] = __('Archive:', 'g5_hydrogen') . ' ' . get_the_date('F Y');
+    $context['title'] = __('Archive:', 'genesis_hydrogen') . ' ' . get_the_date('F Y');
 } else if (is_year()) {
-    $context['title'] = __('Archive:', 'g5_hydrogen') . ' ' . get_the_date('Y');
+    $context['title'] = __('Archive:', 'genesis_hydrogen') . ' ' . get_the_date('Y');
 } else if (is_tag()) {
     $context['title'] = single_tag_title('', false);
 } else if (is_category()) {

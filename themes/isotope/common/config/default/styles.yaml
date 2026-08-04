@@ -21,7 +21,7 @@ navigation:
 header:
   background: '#3176d6'
   text-color: '#ffffff'
-  background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+  background-image: 'genesis-media://backgrounds/header/img-01.jpg'
   overlay-opacity: '0.5'
 showcase:
   background: '#ffffff'
@@ -41,7 +41,7 @@ expanded:
 extension:
   background: '#3176d6'
   text-color: '#ffffff'
-  background-image: 'gantry-media://backgrounds/extension/img-01.jpg'
+  background-image: 'genesis-media://backgrounds/extension/img-01.jpg'
   overlay-opacity: '0.75'
 bottom:
   background: '#121212'

@@ -103,10 +103,10 @@
         background-repeat: no-repeat;
 
         @if (lightness($base-background) > 50) {
-            background-image: url('gantry-media://backgrounds/particles/pricingtables-light.svg');
+            background-image: url('genesis-media://backgrounds/particles/pricingtables-light.svg');
             
           } @else {
-            background-image: url('gantry-media://backgrounds/particles/pricingtables-dark.svg');
+            background-image: url('genesis-media://backgrounds/particles/pricingtables-dark.svg');
           }
         text-align: center;
 

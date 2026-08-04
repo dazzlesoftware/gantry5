@@ -1,96 +1,96 @@
 {
-    "project":"Gantry5",
+    "project":"Genesis",
     "platforms":{
         "joomla":{
             "nodes":{
                 "manifests":[
                     {
-                        "source":"/platforms/joomla/pkg_gantry5.xml",
-                        "destination":"/administrator/manifests/packages/pkg_gantry5.xml"
+                        "source":"/platforms/joomla/pkg_genesis.xml",
+                        "destination":"/administrator/manifests/packages/pkg_genesis.xml"
                     },
                     {
-                        "source":"/platforms/joomla/lib_gantry5/gantry5.xml",
-                        "destination":"/administrator/manifests/libraries/gantry5.xml"
+                        "source":"/platforms/joomla/lib_genesis/genesis.xml",
+                        "destination":"/administrator/manifests/libraries/genesis.xml"
                     },
                     {
-                        "source":"platforms/joomla/gantry5_nucleus/gantry5_nucleus.xml",
-                        "destination":"/administrator/manifests/files/gantry5_nucleus.xml"
+                        "source":"platforms/joomla/genesis_nucleus/genesis_nucleus.xml",
+                        "destination":"/administrator/manifests/files/genesis_nucleus.xml"
                     }
                 ],
                 "components":[
                     {
-                        "source":"/platforms/joomla/com_gantry5/site",
-                        "destination":"/components/com_gantry5"
+                        "source":"/platforms/joomla/com_genesis/site",
+                        "destination":"/components/com_genesis"
                     },
                     {
-                        "source":"/platforms/joomla/com_gantry5/admin",
-                        "destination":"/administrator/components/com_gantry5"
+                        "source":"/platforms/joomla/com_genesis/admin",
+                        "destination":"/administrator/components/com_genesis"
                     },
                     {
                         "source":"/platforms/common",
-                        "destination":"/administrator/components/com_gantry5/common"
+                        "destination":"/administrator/components/com_genesis/common"
                     }
                 ],
                 "library":[
                     {
-                        "source":"/platforms/joomla/lib_gantry5",
-                        "destination":"/libraries/gantry5"
+                        "source":"/platforms/joomla/lib_genesis",
+                        "destination":"/libraries/genesis"
                     },
                     {
                         "source":"/src",
-                        "destination":"/libraries/gantry5/src"
+                        "destination":"/libraries/genesis/src"
                     }
                 ],
                 "plugins":[
                     {
-                        "source":"/platforms/joomla/plg_gantry5_preset",
-                        "destination":"/plugins/gantry5/preset"
+                        "source":"/platforms/joomla/plg_genesis_preset",
+                        "destination":"/plugins/genesis/preset"
                     },
                     {
-                        "source":"/platforms/joomla/plg_system_gantry5",
-                        "destination":"/plugins/system/gantry5"
+                        "source":"/platforms/joomla/plg_system_genesis",
+                        "destination":"/plugins/system/genesis"
                     },
                     {
-                        "source":"/platforms/joomla/plg_quickicon_gantry5",
-                        "destination":"/plugins/quickicon/gantry5"
+                        "source":"/platforms/joomla/plg_quickicon_genesis",
+                        "destination":"/plugins/quickicon/genesis"
                     },
                     {
-                        "source":"/platforms/joomla/plg_system_gantry5_debugbar",
-                        "destination":"/plugins/system/gantry5_debugbar"
+                        "source":"/platforms/joomla/plg_system_genesis_debugbar",
+                        "destination":"/plugins/system/genesis_debugbar"
                     }
                 ],
                 "modules":[
                     {
-                        "source":"/platforms/joomla/mod_gantry5_particle",
-                        "destination":"/modules/mod_gantry5_particle"
+                        "source":"/platforms/joomla/mod_genesis_particle",
+                        "destination":"/modules/mod_genesis_particle"
                     }
                 ],
                 "media":[
                     {
                         "source":"/assets",
-                        "destination":"/media/gantry5/assets"
+                        "destination":"/media/genesis/assets"
                     },
                     {
                         "source":"/engines",
-                        "destination":"/media/gantry5/engines"
+                        "destination":"/media/genesis/engines"
                     }
                 ],
                 "templates":[
                     {
                         "source":"/themes/hydrogen/joomla",
-                        "destination":"/templates/g5_hydrogen"
+                        "destination":"/templates/genesis_hydrogen"
                     },
                     {
                         "source":"/themes/hydrogen/common",
-                        "destination":"/templates/g5_hydrogen/common"
+                        "destination":"/templates/genesis_hydrogen/common"
                     },
                     {
                         "source":"/themes/helium/joomla",
-                        "destination":"/templates/g5_helium"
+                        "destination":"/templates/genesis_helium"
                     },
                     {
                         "source":"/themes/helium/common",
-                        "destination":"/templates/g5_helium/common"
+                        "destination":"/templates/genesis_helium/common"
                     }
                 ]
             }
@@ -99,66 +99,66 @@
             "nodes":{
                 "plugin":[
                     {
-                        "source":"/platforms/wordpress/gantry5",
-                        "destination":"/wp-content/plugins/gantry5"
+                        "source":"/platforms/wordpress/genesis",
+                        "destination":"/wp-content/plugins/genesis"
                     },
                     {
                         "source":"/platforms/common",
-                        "destination":"/wp-content/plugins/gantry5/admin/common"
+                        "destination":"/wp-content/plugins/genesis/admin/common"
                     },
                     {
-                        "source":"/platforms/wordpress/gantry5_debugbar",
-                        "destination":"/wp-content/plugins/gantry5_debugbar"
+                        "source":"/platforms/wordpress/genesis_debugbar",
+                        "destination":"/wp-content/plugins/genesis_debugbar"
                     }
                 ],
                 "library":[
                     {
                         "source":"/src",
-                        "destination":"/wp-content/plugins/gantry5/src"
+                        "destination":"/wp-content/plugins/genesis/src"
                     }
                 ],
                 "media":[
                     {
                         "source":"/assets",
-                        "destination":"/wp-content/plugins/gantry5/assets"
+                        "destination":"/wp-content/plugins/genesis/assets"
                     },
                     {
                         "source":"/engines",
-                        "destination":"/wp-content/plugins/gantry5/engines"
+                        "destination":"/wp-content/plugins/genesis/engines"
                     }
                 ],
                 "themes":[
                     {
                         "source":"/themes/hydrogen/wordpress",
-                        "destination":"/wp-content/themes/g5_hydrogen"
+                        "destination":"/wp-content/themes/genesis_hydrogen"
                     },
                     {
                         "source":"/themes/hydrogen/common",
-                        "destination":"/wp-content/themes/g5_hydrogen/common"
+                        "destination":"/wp-content/themes/genesis_hydrogen/common"
                     },
                     {
                         "source":"/themes/hydrogen-child/wordpress",
-                        "destination":"/wp-content/themes/g5_hydrogen_child"
+                        "destination":"/wp-content/themes/genesis_hydrogen_child"
                     },
                     {
                         "source":"/themes/hydrogen/common",
-                        "destination":"/wp-content/themes/g5_hydrogen_child/common"
+                        "destination":"/wp-content/themes/genesis_hydrogen_child/common"
                     },
                     {
                         "source":"/themes/helium/wordpress",
-                        "destination":"/wp-content/themes/g5_helium"
+                        "destination":"/wp-content/themes/genesis_helium"
                     },
                     {
                         "source":"/themes/helium/common",
-                        "destination":"/wp-content/themes/g5_helium/common"
+                        "destination":"/wp-content/themes/genesis_helium/common"
                     },
                     {
                         "source":"/themes/helium-child/wordpress",
-                        "destination":"/wp-content/themes/g5_helium_child"
+                        "destination":"/wp-content/themes/genesis_helium_child"
                     },
                     {
                         "source":"/themes/helium/common",
-                        "destination":"/wp-content/themes/g5_helium_child/common"
+                        "destination":"/wp-content/themes/genesis_helium_child/common"
                     }
                 ]
             }
@@ -167,46 +167,46 @@
             "nodes":{
                 "admin":[
                     {
-                        "source":"/platforms/grav/gantry5",
-                        "destination":"/user/plugins/gantry5"
+                        "source":"/platforms/grav/genesis",
+                        "destination":"/user/plugins/genesis"
                     },
                     {
                         "source":"/platforms/common",
-                        "destination":"/user/plugins/gantry5/admin/common"
+                        "destination":"/user/plugins/genesis/admin/common"
                     }
                 ],
                 "libraries":[
                     {
                         "source":"/src",
-                        "destination":"/user/plugins/gantry5/src"
+                        "destination":"/user/plugins/genesis/src"
                     }
                 ],
                 "assets":[
                     {
                         "source":"/engines",
-                        "destination":"/user/plugins/gantry5/engines"
+                        "destination":"/user/plugins/genesis/engines"
                     },
                     {
                         "source":"/assets",
-                        "destination":"/user/plugins/gantry5/assets"
+                        "destination":"/user/plugins/genesis/assets"
                     }
                 ],
                 "themes":[
                     {
                         "source":"/themes/hydrogen/grav",
-                        "destination":"/user/themes/g5_hydrogen"
+                        "destination":"/user/themes/genesis_hydrogen"
                     },
                     {
                         "source":"/themes/hydrogen/common",
-                        "destination":"/user/themes/g5_hydrogen/common"
+                        "destination":"/user/themes/genesis_hydrogen/common"
                     },
                     {
                         "source":"/themes/helium/grav",
-                        "destination":"/user/themes/g5_helium"
+                        "destination":"/user/themes/genesis_helium"
                     },
                     {
                         "source":"/themes/helium/common",
-                        "destination":"/user/themes/g5_helium/common"
+                        "destination":"/user/themes/genesis_helium/common"
                     }
                 ]
             }

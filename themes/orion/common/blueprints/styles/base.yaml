@@ -11,7 +11,7 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/base/bg-01.svg"
+      default: "genesis-media://backgrounds/base/bg-01.svg"
     background-clipping:
       type: enable.enable
       label: Background Clipping

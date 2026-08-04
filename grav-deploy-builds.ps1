@@ -19,7 +19,7 @@ $grav = [IO.Path]::GetFullPath($GravRoot).TrimEnd('\', '/')
 $user = Join-Path $grav 'user'
 $plugins = Join-Path $user 'plugins'
 $themes = Join-Path $user 'themes'
-$gantryPlugin = Join-Path $plugins 'gantry5'
+$genesisPlugin = Join-Path $plugins 'genesis'
 
 foreach ($directory in @($dist, $grav, $user, $plugins, $themes)) {
     if (-not (Test-Path -LiteralPath $directory -PathType Container)) {
@@ -31,9 +31,9 @@ if (-not (Test-Path -LiteralPath (Join-Path $grav 'index.php') -PathType Leaf)) 
     throw "The deployment target does not look like a Grav installation: $grav"
 }
 
-$pluginArchives = @(Get-ChildItem -LiteralPath $dist -File -Filter "grav-pkg_gantry5_${BuildSuffix}.zip")
+$pluginArchives = @(Get-ChildItem -LiteralPath $dist -File -Filter "grav-pkg_genesis_${BuildSuffix}.zip")
 $themeArchives = @(
-    Get-ChildItem -LiteralPath $dist -File -Filter "grav-tpl_g5_*_${BuildSuffix}.zip" |
+    Get-ChildItem -LiteralPath $dist -File -Filter "grav-tpl_genesis_*_${BuildSuffix}.zip" |
         Sort-Object Name
 )
 
@@ -54,12 +54,12 @@ if (
     throw 'Resolved plugin or theme directory is outside the requested Grav installation.'
 }
 
-Write-Host "Removing old Genesis plugin: $gantryPlugin"
-if (Test-Path -LiteralPath $gantryPlugin) {
-    Remove-Item -LiteralPath $gantryPlugin -Recurse -Force
+Write-Host "Removing old Genesis plugin: $genesisPlugin"
+if (Test-Path -LiteralPath $genesisPlugin) {
+    Remove-Item -LiteralPath $genesisPlugin -Recurse -Force
 }
 
-$oldThemes = @(Get-ChildItem -LiteralPath $themes -Directory -Filter 'g5_*')
+$oldThemes = @(Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*')
 Write-Host "Removing $($oldThemes.Count) old Genesis themes..."
 foreach ($theme in $oldThemes) {
     if (-not $theme.FullName.StartsWith("$resolvedThemes\", [StringComparison]::OrdinalIgnoreCase)) {
@@ -77,9 +77,9 @@ foreach ($archive in $themeArchives) {
     Expand-Archive -LiteralPath $archive.FullName -DestinationPath $themes -Force
 }
 
-$installedThemes = @(Get-ChildItem -LiteralPath $themes -Directory -Filter 'g5_*')
-if (-not (Test-Path -LiteralPath (Join-Path $gantryPlugin 'gantry5.php') -PathType Leaf)) {
-    throw 'The deployed Grav Genesis plugin is missing gantry5.php.'
+$installedThemes = @(Get-ChildItem -LiteralPath $themes -Directory -Filter 'genesis_*')
+if (-not (Test-Path -LiteralPath (Join-Path $genesisPlugin 'genesis.php') -PathType Leaf)) {
+    throw 'The deployed Grav Genesis plugin is missing genesis.php.'
 }
 if ($installedThemes.Count -ne $themeArchives.Count) {
     throw "Expected $($themeArchives.Count) installed Grav themes; found $($installedThemes.Count)."
@@ -87,5 +87,5 @@ if ($installedThemes.Count -ne $themeArchives.Count) {
 
 Write-Host ''
 Write-Host 'Deployment verification passed:'
-Write-Host "  Plugin: $gantryPlugin"
+Write-Host "  Plugin: $genesisPlugin"
 Write-Host "  Themes: $($installedThemes.Count)"

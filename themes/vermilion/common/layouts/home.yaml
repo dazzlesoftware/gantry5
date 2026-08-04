@@ -261,7 +261,7 @@ content:
       cols: '25'
       items:
         -
-          image: 'gantry-media://home/fp-feature/img-01.jpg'
+          image: 'genesis-media://home/fp-feature/img-01.jpg'
           imagealt: ''
           animation: '1'
           overlaytitle: 'Advanced &amp; adaptable CSS <span class="hidden-tablet">dropdown </span>menu'
@@ -272,7 +272,7 @@ content:
           desc: 'Choose between our CSS-based dropdown menu with advanced features such as inline particles.'
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-feature/img-01.jpg'
+          image: 'genesis-media://home/fp-feature/img-01.jpg'
           imagealt: ''
           animation: '2'
           overlaytitle: 'Integrated styling for content<span class="visible-large"> blocks and particles</span>'
@@ -283,7 +283,7 @@ content:
           desc: 'Multiple default particles to choose from, and an advanced &amp; powerful custom administrative interface.'
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-feature/img-01.jpg'
+          image: 'genesis-media://home/fp-feature/img-01.jpg'
           imagealt: ''
           animation: '3'
           overlaytitle: 'Powerful and free core framework<span class="visible-large"> for Joomla</span>'
@@ -294,7 +294,7 @@ content:
           desc: 'Genesis is the powerful core framework that sits at the core of Vermilion, providing a rich feature set.'
           name: 'Item 3'
         -
-          image: 'gantry-media://home/fp-feature/img-01.jpg'
+          image: 'genesis-media://home/fp-feature/img-01.jpg'
           imagealt: ''
           animation: '4'
           overlaytitle: '<span><span class="visible-tablet">Several</span><span class="hidden-tablet">Eight stylistics and </span><span class="hidden-large"><span class="hidden-tablet">other</span></span><span class="visible-large">several structural</span> block variations</span>'
@@ -333,7 +333,7 @@ content:
     attributes:
       class: ''
       title: Particles
-      description: "Versatile Content Blocks for Gantry\n"
+      description: "Versatile Content Blocks for Genesis\n"
       displayitems: '3'
       mobiledisplayitems: '3'
       nav: disabled
@@ -344,55 +344,55 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Mosaic
           desc: 'The Mosaic particle displays content in dynamic blocks that adapt to their content size and by frontend filters.'
           link: '#'
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: 'Content Tabs'
           desc: 'A particle to display tabbed content, with configurable tab positions, either top, bottom, left or right.'
           link: '#'
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Headlines
           desc: 'The Headlines particle displays content in a news ticket type format, rotating through content snippets.'
           link: '#'
           name: 'Item 3'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Lists
           desc: 'The Lists particle displays content in a vertical format, either statically or dynamically through an accordion effect.'
           link: '#'
           name: 'Item 4'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Slider
           desc: 'The Slider particle displays image focused content as a slideshow or in a more robust showcase type format.'
           link: '#'
           name: 'Item 5'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Strips
           desc: 'The Strips particle displays content in horizontal rows, which can be stacked in a grid type format, and are pageable.'
           link: '#'
           name: 'Item 6'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: 'Custom UI'
           desc: 'The Layout Manager provides several options for setting up the layout of the theme''s Outlines.'
           link: '#'
           name: 'Item 7'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Responsive
           desc: 'Vermilion is built with a responsive layout, which means it automatically adapts to the viewing device.'
           link: '#'
           name: 'Item 8'
         -
-          image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-expandedbottom/img-01.jpg'
           title: Docs
           desc: 'Genesis benefits from an extensive catalog of online and free documentation covering several topics.'
           link: '#'
@@ -415,7 +415,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-01.jpg'
           title: '<span class="fa fa-trophy"></span>'
           desc: '<span>Take advantage of the uniquely powerful Genesis Color Picker<span class="hidden-phone hidden-tablet"> and change your theme’s color scheme in seconds. Adjust color, saturation, hue, and transparency quickly and easily</span>.</span>'
           link: '#'
@@ -424,7 +424,7 @@ content:
           buttonclass: ''
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-01.jpg'
           title: '<span class="fa fa-tasks"></span>'
           desc: '<span>Font Awesome icons are awesome<span class="hidden-phone hidden-tablet">, and they’re supported natively in Topaz. Use Genesis’s powerful Icon Picker to easily add icons to menus, particles, and more</span>.</span>'
           link: '#'
@@ -433,7 +433,7 @@ content:
           buttonclass: readon
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-01.jpg'
           title: '<span class="fa fa-arrows-alt"></span>'
           desc: '<span>Want to pick the perfect font for your content? <span class="hidden-phone hidden-tablet">Select from hundreds of fonts in the Google Font Library with Genesis’s Font Picker. Powered by Genesis.</span></span>'
           link: '#'

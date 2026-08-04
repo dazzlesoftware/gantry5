@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/body-only.png'
+  image: 'genesis-admin://images/layouts/body-only.png'
   name: _body_only
   timestamp: 1467996401
 layout:

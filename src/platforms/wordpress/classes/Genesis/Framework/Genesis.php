@@ -1,0 +1,97 @@
+<?php
+// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
+
+/**
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
+ */
+
+namespace Genesis\Framework;
+
+use Genesis\Debugger;
+use Pimple\ServiceProviderInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Timber\Timber;
+
+/**
+ * Class Genesis
+ * @package Genesis\Framework
+ */
+class Genesis extends Base\Genesis
+{
+    /**
+     * @return boolean
+     */
+    public function admin()
+    {
+        return \is_admin();
+    }
+
+    /**
+     * @param string $location
+     * @param bool   $force
+     * @return array
+     */
+    public function styles($location = 'head', $force = false)
+    {
+        // Do not display head, WordPress will take care of it (most of the time).
+        return !$force && $location === 'head' ? Document::$wp_styles : parent::styles($location);
+    }
+
+    /**
+     * @param string $location
+     * @param bool $force
+     * @return array
+     */
+    public function scripts($location = 'head', $force = false)
+    {
+        // Do not display head and footer, WordPress will take care of it (most of the time).
+        return !$force && in_array($location, ['head', 'footer']) ? Document::$wp_scripts[$location] : parent::scripts($location);
+    }
+
+    /**
+     * @return static
+     * @throws \LogicException
+     */
+    protected static function init()
+    {
+        $container = parent::init();
+
+        Timber::init();
+        if (\GENESIS_DEBUGGER) {
+            Debugger::addMessage('Using Timber Library v' . Timber::VERSION);
+        }
+
+        $lookup = $container['loader']->getPrefixesPsr4()['Genesis\\'];
+        $iterator = new \FilesystemIterator($lookup[0] . '/WordPress/Integration', \FilesystemIterator::SKIP_DOTS & \FilesystemIterator::UNIX_PATHS);
+
+        /** @var \FilesystemIterator $file */
+        foreach ($iterator as $file) {
+            if (!$file->isDir()) {
+                continue;
+            }
+            $class = "Genesis\\WordPress\\Integration\\{$file->getBasename()}\\{$file->getBasename()}";
+            if (class_exists($class) && call_user_func([$class, 'enabled'])) {
+                $integration = new $class;
+                if ($integration instanceof ServiceProviderInterface) {
+                    $container->register($integration);
+                }
+                if ($integration instanceof EventSubscriberInterface) {
+                    $container['events']->addSubscriber($integration);
+                }
+            }
+        }
+
+        return $container;
+    }
+
+    /**
+     * @return array
+     */
+    protected function loadGlobal()
+    {
+        return (array) \get_option('genesis_plugin');
+    }
+}

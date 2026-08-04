@@ -1,9 +1,9 @@
 <?php
 
-namespace Gantry\Tests\PHP83\Component\Layout;
+namespace Genesis\Tests\PHP83\Component\Layout;
 
-use Gantry\Tests\PHP83\MockableTest;
-use Gantry\Component\Layout\Layout;
+use Genesis\Tests\PHP83\MockableTest;
+use Genesis\Component\Layout\Layout;
 
 /**
  * Test layout component with PHP 8.3

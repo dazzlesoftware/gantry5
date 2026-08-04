@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @param object $params
  * @param array $attribs
  */
-function modChrome_gantry($module, &$params, &$attribs)
+function modChrome_genesis($module, &$params, &$attribs)
 {
 	$moduleTag      = $params->get('module_tag', 'div');
 	$headerTag      = htmlspecialchars($params->get('header_tag', 'h3'), ENT_COMPAT|ENT_SUBSTITUTE, 'UTF-8');

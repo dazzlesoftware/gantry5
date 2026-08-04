@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension version="3.9" type="component" method="upgrade">
+    <name>com_genesis</name>
+    <version>@version@</version>
+    <creationDate>@versiondate@</creationDate>
+    <author>Dazzle Software, LLC</author>
+    <authorEmail>support@dazzlesoftware.org</authorEmail>
+    <authorUrl>https://dazzlesoftware.org</authorUrl>
+    <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
+    <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
+    <description>COM_GENESIS_DESCRIPTION</description>
+
+    <files folder="site">
+        <filename>genesis.php</filename>
+        <filename>router.php</filename>
+        <filename>MD5SUMS</filename>
+        <folder>fields</folder>
+        <folder>views</folder>
+    </files>
+
+    <administration>
+        <files folder="admin">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>genesis.php</filename>
+            <filename>MD5SUMS</filename>
+            <folder>blueprints</folder>
+            <folder>css-compiled</folder>
+            <folder>fonts</folder>
+            <folder>images</folder>
+            <folder>install</folder>
+            <folder>js</folder>
+            <folder>language</folder>
+            <folder>scss</folder>
+            <folder>templates</folder>
+        </files>
+        <menu>COM_GENESIS</menu>
+        <submenu>
+            <menu view="themes">COM_GENESIS_ADMIN_MENU_THEMES</menu>
+            <menu>COM_GENESIS_ADMIN_MENU_THEME</menu>
+        </submenu>
+    </administration>
+</extension>

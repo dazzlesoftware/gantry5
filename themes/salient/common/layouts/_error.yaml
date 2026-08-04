@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/error.png'
+  image: 'genesis-admin://images/layouts/error.png'
   name: _error
   timestamp: 1505834698
 layout:
@@ -356,7 +356,7 @@ content:
   logo-8164:
     attributes:
       rel: home
-      image: 'gantry-media://logo/logo-footer.png'
+      image: 'genesis-media://logo/logo-footer.png'
       alt: Salient
       class: g-footer-logo
   totop-5809:

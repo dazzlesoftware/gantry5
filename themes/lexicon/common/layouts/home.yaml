@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1556042795
 layout:
@@ -194,7 +194,7 @@ structure:
 content:
   logo-5679:
     attributes:
-      image: 'gantry-media://logo/preset1/logo.png'
+      image: 'genesis-media://logo/preset1/logo.png'
       link: '1'
       class: g-logo
     block:
@@ -209,8 +209,8 @@ content:
       layout: layout-left
       items:
         -
-          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
-          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          thumb: 'genesis-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'genesis-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">Join the Adventure</span><span class="rt-title-tag">Buy Lexicon for You and Your Clients</span>'
           linklabel: 'Purchase Now'
           link: 'https://dazzlesoftware.org/joomla/templates/lexicon'
@@ -218,26 +218,26 @@ content:
           buttonclass: readon
           title: Contemporary
         -
-          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
-          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          thumb: 'genesis-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'genesis-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">New and Powerful</span><span class="rt-title-tag">Advanced Multi-Platform Framework</span>'
           linklabel: 'Download Now'
-          link: 'http://gantry.org/downloads'
+          link: 'http://genesis.org/downloads'
           buttontarget: _blank
           buttonclass: readon
           title: Genesis
         -
-          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
-          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          thumb: 'genesis-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'genesis-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">Rich Content Display</span><span class="rt-title-tag">Dynamic & Versatile Content Blocks</span>'
           linklabel: 'Learn More'
-          link: 'http://docs.gantry.org/gantry5/particles'
+          link: 'http://docs.genesis.org/genesis/particles'
           buttontarget: _blank
           buttonclass: readon
           title: Particles
         -
-          thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
-          image: 'gantry-media://home/fp-showcase/img-01.jpg'
+          thumb: 'genesis-media://home/fp-showcase/img-01-thumb.jpg'
+          image: 'genesis-media://home/fp-showcase/img-01.jpg'
           content: '<span class="rt-text-large">Mobile Responsive</span><span class="rt-title-tag">Adapts to your Viewing Device</span>'
           linklabel: 'View Details'
           link: 'https://dazzlesoftware.org/joomla/templates/lexicon'
@@ -255,7 +255,7 @@ content:
         -
           title: 'Genesis<span class="hidden-tablet"> Framework'
           type: link
-          link: 'http://gantry.org/'
+          link: 'http://genesis.org/'
           target: _blank
           class: ''
           name: 'Genesis Framework'
@@ -347,7 +347,7 @@ content:
           name: ''
           accent: none
           icon: ''
-          img: 'gantry-media://home/fp-content-top/img-01.jpg'
+          img: 'genesis-media://home/fp-content-top/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -362,7 +362,7 @@ content:
           name: ''
           accent: none
           icon: ''
-          img: 'gantry-media://home/fp-content-top/img-01.jpg'
+          img: 'genesis-media://home/fp-content-top/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -377,7 +377,7 @@ content:
           name: ''
           accent: none
           icon: ''
-          img: 'gantry-media://home/fp-content-top/img-01.jpg'
+          img: 'genesis-media://home/fp-content-top/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -397,7 +397,7 @@ content:
       items:
         -
           title: Display
-          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading: 'Tabbed Content Display'
           content: '<p>A particle to display tabbed content, with  configurable tab positions<span class="hidden-tablet"> to the top, bottom, left or right</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
           rheading: 'Content Tabs'
@@ -406,7 +406,7 @@ content:
           link: '#'
           buttontarget: _self
           buttonclass: readon
-          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image2: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading2: 'Ticker Styled Content'
           content2: '<p>The Headlines particle displays content in a news ticket type format<span class="hidden-tablet">, rotating through content snippets</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p> '
           rheading2: Headlines
@@ -418,7 +418,7 @@ content:
           name: 'Item 1'
         -
           title: Present
-          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading: 'Accordion Option'
           content: '<p>The Lists particle displays content in a vertical format<span class="hidden-tablet">, either statically or dynamically through an accordion effect</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
           rheading: Lists
@@ -427,7 +427,7 @@ content:
           link: '#'
           buttontarget: _self
           buttonclass: readon
-          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image2: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading2: 'Mosaic Structure'
           content2: '<p>The Mosaic particle displays content in dynamic blocks that adapt<span class="hidden-tablet"> to their content size and by frontend filters</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
           rheading2: Mosaic
@@ -439,7 +439,7 @@ content:
           name: 'Item 2'
         -
           title: Showcase
-          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading: 'Horizontal Content Blocks'
           content: '<p>The Strips particle displays content in horizontal rows<span class="hidden-tablet"> of image and/or text blocks, which are rotatable</span>.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
           rheading: 'Strips Slider'
@@ -448,7 +448,7 @@ content:
           link: '#'
           buttontarget: _self
           buttonclass: readon
-          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image2: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading2: 'Showcase Mode'
           content2: '<p>The Slider is<span class="hidden-tablet"> perfect as a focal point for either</span> a slideshow or a more robust showcase display.<br /><span class="rt-green-text"><strong>Available</strong></span></p>'
           rheading2: Slider
@@ -460,7 +460,7 @@ content:
           name: 'Item 3'
         -
           title: Explore
-          image: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading: 'Site Search'
           content: '<p>RokAjaxSearch is an ajax powered search system<span class="hidden-tablet"> for Joomla site and Google based searches</span>.<br /><span class="rt-red-text"><strong>Joomla Only</strong></span></p>'
           rheading: RokAjaxSearch
@@ -469,7 +469,7 @@ content:
           link: '#'
           buttontarget: _self
           buttonclass: readon
-          image2: 'gantry-media://home/fp-content-top-tabs/img-01.jpg'
+          image2: 'genesis-media://home/fp-content-top-tabs/img-01.jpg'
           heading2: Performance
           content2: '<p>Improvide site speed through compressing CSS and JS<span class="hidden-tablet">, as well as images and fonts</span>.<br /><span class="rt-red-text"><strong>Joomla Only</strong></span></p>'
           rheading2: RokBooster
@@ -516,7 +516,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<p class=\"rt-text-medium\"><em>Lexicon is centered around a flat design approach, spruced by professional and engaging color schemes to create presence for site content without distracting from it. <span class=\"hidden-tablet\">Ideal for showcasing product details in a vibrant but elegant fashion.</span></em></p>\n\n<br />\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-10 hidden-tablet\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<img class=\"rt-rounded\" src=\"gantry-media://home/fp-content-bottom/img-01.jpg\" alt=\"image\" />\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<h4 class=\"smallmarginbottom\">Responsive Layout</h4>\n\t\t\t<p><em>Automatic adaptation<span class=\"hidden-tablet\">  to varying devices</span></em></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-40\">\n\t\t<div class=\"gantry-width-spacer gantry-right\">\n\t\t\t<p class=\"medmargintop\"><a class=\"readon\" href=\"https://dazzlesoftware.org/joomla/templates/lexicon\">Download<span class=\"hidden-tablet\"> Lexicon</span></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<p class=\"rt-text-medium\"><em>Lexicon is centered around a flat design approach, spruced by professional and engaging color schemes to create presence for site content without distracting from it. <span class=\"hidden-tablet\">Ideal for showcasing product details in a vibrant but elegant fashion.</span></em></p>\n\n<br />\n\n<div class=\"genesis-row\">\n\t<div class=\"genesis-width-10 hidden-tablet\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<img class=\"rt-rounded\" src=\"genesis-media://home/fp-content-bottom/img-01.jpg\" alt=\"image\" />\n\t\t</div>\n\t</div>\n\n\t<div class=\"genesis-width-50\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<h4 class=\"smallmarginbottom\">Responsive Layout</h4>\n\t\t\t<p><em>Automatic adaptation<span class=\"hidden-tablet\">  to varying devices</span></em></p>\n\t\t</div>\n\t</div>\n\n\t<div class=\"genesis-width-40\">\n\t\t<div class=\"genesis-width-spacer genesis-right\">\n\t\t\t<p class=\"medmargintop\"><a class=\"readon\" href=\"https://dazzlesoftware.org/joomla/templates/lexicon\">Download<span class=\"hidden-tablet\"> Lexicon</span></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
     block:
@@ -530,7 +530,7 @@ content:
         -
           title: 'Genesis<span class="hidden-tablet"> Framework'
           type: link
-          link: 'http://gantry.org/'
+          link: 'http://genesis.org/'
           target: _blank
           class: ''
           name: 'Genesis Framework'
@@ -599,7 +599,7 @@ content:
     attributes:
       title: 'Stay in Touch'
       titletag: ''
-      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://www.facebook.com/Dazzle Software\"><span class=\"fa fa-facebook\"></span> <span>Facebook</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"https://twitter.com/rockettheme\"><span class=\"fa fa-twitter\"></span> <span>Twitter</span></a>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear medmarginbottom\"></div>\n\n<div class=\"gantry-row\">\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.linkedin.com/in/rockettheme\"><span class=\"fa fa-linkedin\"></span> <span>LinkedIn</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"gantry-width-50\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<a href=\"http://www.pinterest.com/rockettheme/\"><span class=\"fa fa-pinterest\"></span> <span>Pinterest</span></a>\n\t\t</div>\n\t</div>\n</div>"
+      html: "<div class=\"genesis-row\">\n\t<div class=\"genesis-width-50\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<a href=\"https://www.facebook.com/Dazzle Software\"><span class=\"fa fa-facebook\"></span> <span>Facebook</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"genesis-width-50\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<a href=\"https://twitter.com/rockettheme\"><span class=\"fa fa-twitter\"></span> <span>Twitter</span></a>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"clear medmarginbottom\"></div>\n\n<div class=\"genesis-row\">\n\t<div class=\"genesis-width-50\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<a href=\"http://www.linkedin.com/in/rockettheme\"><span class=\"fa fa-linkedin\"></span> <span>LinkedIn</span></a>\n\t\t</div>\n\t</div>\n\t<div class=\"genesis-width-50\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<a href=\"http://www.pinterest.com/rockettheme/\"><span class=\"fa fa-pinterest\"></span> <span>Pinterest</span></a>\n\t\t</div>\n\t</div>\n</div>"
       twig: '0'
       filter: '0'
     block:

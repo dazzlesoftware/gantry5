@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_KrakenInstallerScript
+ * Class Genesis_KrakenInstallerScript
  */
-class G5_KrakenInstallerScript
+class Genesis_KrakenInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

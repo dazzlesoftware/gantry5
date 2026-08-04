@@ -42,7 +42,7 @@ class Container extends Base {
 
         wrapper.className = 'container-wrapper clearfix';
         wrapper.innerHTML = '<div class="container-title"><span class="title">' + this.getType() + '</span></div>' +
-            '<div class="container-actions"><span data-tip="' + translate('GANTRY5_PLATFORM_JS_LM_SETTINGS', 'Container') + '" data-tip-place="top-left"><i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Container') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
+            '<div class="container-actions"><span data-tip="' + translate('GENESIS_PLATFORM_JS_LM_SETTINGS', 'Container') + '" data-tip-place="top-left"><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Container') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
         block.insertBefore(wrapper, block.firstChild);
     }
 }

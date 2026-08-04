@@ -62,7 +62,7 @@
     {{ genesis.document.getHtml('body_bottom')|join("\n    ")|raw }}
 {% endset -%}
 
-{%- do genesis.document.addScript(url('gantry-assets://js/main.js'), 11, 'footer') -%}
+{%- do genesis.document.addScript(url('genesis-assets://js/main.js'), 11, 'footer') -%}
 
 {# Head and footer needs to come last because of any of the above blocks may have CSS or JavaScript in them #}
 

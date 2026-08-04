@@ -11,7 +11,7 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/above/bg-01.svg"
+      default: "genesis-media://backgrounds/above/bg-01.svg"
     text-color:
       type: input.colorpicker
       label: Text

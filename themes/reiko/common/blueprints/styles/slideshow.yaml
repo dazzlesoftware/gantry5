@@ -11,11 +11,11 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/slideshow/background-01.jpg"
+      default: "genesis-media://backgrounds/slideshow/background-01.jpg"
     background-path:
       type: input.imagepicker
       label: Background Path
-      default: "gantry-media://backgrounds/slideshow/preset1/path-01.svg"
+      default: "genesis-media://backgrounds/slideshow/preset1/path-01.svg"
     text-color:
       type: input.colorpicker
       label: Text

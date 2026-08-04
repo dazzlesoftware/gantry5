@@ -25,7 +25,7 @@ header:
   text-color: '#949494'
 above:
   background: '#ffffff'
-  background-image: 'gantry-media://backgrounds/above/img-01.jpg'
+  background-image: 'genesis-media://backgrounds/above/img-01.jpg'
   text-color: '#283963'
 showcase:
   background: '#ffffff'

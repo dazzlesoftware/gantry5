@@ -1,0 +1,231 @@
+<?php
+// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+
+/**
+ * @package   Genesis
+ * @author    Dazzle Software https://dazzlesoftware.org
+ * @copyright Copyright (C) 2026 Dazzle Software, LLC
+ * @license   GNU/GPLv3 and later
+ */
+
+namespace Genesis\Component\Router;
+
+use Genesis\Admin\EventListener;
+use Genesis\Admin\Theme;
+use Genesis\Component\Controller\BaseController;
+use Genesis\Component\Filesystem\Streams;
+use Genesis\Component\Response\HtmlResponse;
+use Genesis\Component\Response\Response;
+use Genesis\Component\Response\JsonResponse;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Services\ErrorServiceProvider;
+use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Whoops\Exception\ErrorException;
+
+/**
+ * Class Router
+ * @package Genesis\Component\Router
+ */
+abstract class Router implements RouterInterface
+{
+    /** @var Genesis */
+    protected $container;
+    /** @var string */
+    protected $format;
+    /** @var string */
+    protected $resource;
+    /** @var string */
+    protected $method;
+    /** @var array */
+    protected $path;
+    /** @var array */
+    protected $params;
+
+    /**
+     * Router constructor.
+     * @param Genesis $container
+     */
+    public function __construct(Genesis $container)
+    {
+        $this->container = $container;
+    }
+
+    /**
+     * @return ResponseInterface|bool
+     * @throws ErrorException
+     */
+    public function dispatch()
+    {
+        $this->boot();
+        $this->load();
+
+        // Render the page or execute the task.
+        try {
+            $response = $this->execute($this->resource, $this->method, $this->path, $this->params, $this->format);
+
+        } catch (ErrorException $e) {
+            throw $e;
+
+        } catch (\Exception $e) {
+            // Handle errors.
+            if ($this->container->debug()) {
+                throw $e;
+            }
+            $response = $this->getErrorResponse($e, $this->format === 'json');
+        }
+
+        return $this->send($response);
+    }
+
+    /**
+     * @param string $resource
+     * @param string $method
+     * @param array $path
+     * @param array $params
+     * @param string $format
+     * @return HtmlResponse|JsonResponse|Response
+     */
+    public function execute($resource, $method = 'GET', $path = [], $params = [], $format = 'html')
+    {
+        $class = '\\Genesis\\Admin\\Controller\\' . ucfirst($format) . '\\' . str_replace(' ', '\\', ucwords(str_replace('/', ' ', $resource)));
+        // Protect against CSRF Attacks.
+        if (!in_array($method, ['GET', 'HEAD'], true) && !$this->checkSecurityToken()) {
+            throw new \RuntimeException('Invalid security token; please reload the page and try again.', 403);
+        }
+
+        if (!class_exists($class)) {
+            if ($format === 'json') {
+                // Special case: All HTML requests can be returned also as JSON.
+                $response = $this->execute($resource, $method, $path, $params, 'html');
+                return $response instanceof JsonResponse ? $response : new JsonResponse($response);
+            }
+
+            throw new \RuntimeException('Page Not Found', 404);
+        }
+
+        /** @var BaseController $controller */
+        $controller = new $class($this->container);
+
+        // Execute action.
+        $response = $controller->execute($method, $path, $params);
+
+        if (!$response instanceof Response) {
+            $response = new HtmlResponse($response);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @return $this
+     */
+    abstract protected function boot();
+
+    /**
+     * @return mixed
+     */
+    abstract protected function checkSecurityToken();
+
+    /**
+     * @return $this
+     */
+    public function load()
+    {
+        static $loaded = false;
+
+        if ($loaded) {
+            return $this;
+        }
+
+        $loaded = true;
+
+        if (isset($this->container['theme.path'])) {
+            $className = $this->container['theme.path'] . '/custom/includes/genesis.php';
+            if (!is_file($className)) {
+                $className = $this->container['theme.path'] . '/includes/genesis.php';
+            }
+            if (is_file($className)) {
+                include $className;
+            }
+        }
+
+        if (isset($this->container['theme'])) {
+            // Initialize current theme if it is set.
+            /** @phpstan-ignore-next-line */
+            $this->container['theme'];
+        } else {
+            // Otherwise initialize streams and error handler manually.
+            /** @var Streams $streams */
+            $streams = $this->container['streams'];
+            $streams->register();
+            $this->container->register(new ErrorServiceProvider);
+        }
+
+        $this->container['admin.theme'] = static function () {
+            return new Theme(GENESIS_ADMIN_PATH);
+        };
+
+        // Add event listener.
+        if (class_exists('Genesis\\Admin\\EventListener')) {
+            $listener = new EventListener;
+
+            /** @var EventDispatcher $events */
+            $events = $this->container['events'];
+            $events->addSubscriber($listener);
+        }
+
+        // Boot the service.
+        /** @phpstan-ignore-next-line */
+        $this->container['admin.theme'];
+
+        return $this;
+    }
+
+    /**
+     * @param \Exception $e
+     * @param bool $json
+     * @return HtmlResponse|JsonResponse
+     */
+    protected function getErrorResponse(\Exception $e, $json = false)
+    {
+        $response = new HtmlResponse;
+        $response->setStatusCode($e->getCode());
+
+        $params = [
+            'ajax' => $json,
+            'title' => $response->getStatus(),
+            'error' => $e,
+        ];
+
+        /** @var Theme $theme */
+        $theme = $this->container['admin.theme'];
+        $response->setContent($theme->render('@genesis-admin/error.html.twig', $params));
+
+        if ($json) {
+            return new JsonResponse([$e, $response]);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param Response $response
+     * @return ResponseInterface|bool
+     */
+    protected function send(Response $response)
+    {
+        // Output HTTP header.
+        header("HTTP/1.1 {$response->getStatus()}", true, $response->getStatusCode());
+        header("Content-Type: {$response->mimeType}; charset={$response->charset}");
+        foreach ($response->getHeaders() as $key => $values) {
+            foreach ($values as $value) {
+                header("{$key}: {$value}");
+            }
+        }
+
+        echo $response;
+
+        return true;
+    }
+}

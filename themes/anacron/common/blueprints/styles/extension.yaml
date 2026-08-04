@@ -8,7 +8,7 @@ form:
     background:
       type: input.colorpicker
       label: Background
-      default: "#41a4dd"       
+      default: "#41a4dd"
     text-color:
       type: input.colorpicker
       label: Text
@@ -16,8 +16,8 @@ form:
     link-color:
       type: input.colorpicker
       label: Link
-      default: "#07659e"      
+      default: "#07659e"
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/extension/preset1/bg.png"        
+      default: "genesis-media://backgrounds/extension/preset1/bg.png"

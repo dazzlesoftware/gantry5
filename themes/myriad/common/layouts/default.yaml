@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1527122282
 layout:
@@ -472,7 +472,7 @@ content:
     title: 'To Top'
     attributes:
       css:
-        class: 'gantry-totop'
+        class: 'genesis-totop'
     block:
       class: 'hidden-phone'      
       extra:

@@ -1,12 +1,12 @@
-# PHP 8.3 Compatibility Test Suite for Gantry5
+# PHP 8.3 Compatibility Test Suite for Genesis
 
-This test suite is designed to validate Gantry5 compatibility with PHP 8.3. It includes tests for critical components that may be affected by PHP 8.3 changes.
+This test suite is designed to validate Genesis compatibility with PHP 8.3. It includes tests for critical components that may be affected by PHP 8.3 changes.
 
 ## Test Categories
 
 ### Framework Tests
-Tests core Gantry framework functionality:
-- Gantry instance creation and container access
+Tests core Genesis framework functionality:
+- Genesis instance creation and container access
 - Service registration and retrieval 
 - Debug functionality
 
@@ -27,7 +27,7 @@ Tests individual components:
 Run the tests using PHPUnit:
 
 ```bash
-# From the Gantry5 root directory
+# From the Genesis root directory
 vendor/bin/phpunit
 ```
 

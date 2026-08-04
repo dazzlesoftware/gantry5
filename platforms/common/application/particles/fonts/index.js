@@ -53,7 +53,7 @@ const loadStylesheet = requests => new Promise((resolve, reject) => {
 
     link.rel = 'stylesheet';
     link.href = `https://fonts.googleapis.com/css?family=${families}&display=swap`;
-    link.dataset.gantryFontRequest = families;
+    link.dataset.genesisFontRequest = families;
     link.addEventListener('load', () => complete(resolve), { once: true });
     link.addEventListener('error', () => complete(() => {
         link.remove();
@@ -157,7 +157,7 @@ class Fonts {
         this.field = $(data.field);
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             className: 'genesis-dialog-theme-default genesis-modal-fonts',
             remote: parseAjaxURI(getAjaxURL('fontpicker') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {

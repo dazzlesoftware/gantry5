@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.jpg'
+  image: 'genesis-admin://images/layouts/default.jpg'
   name: default
   timestamp: 1533902282
 layout:
@@ -153,7 +153,7 @@ content:
   logo-2704:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://logo/logo.svg'
+      image: 'genesis-media://logo/logo.svg'
       link: '1'
       text: Reiko
       title: ''

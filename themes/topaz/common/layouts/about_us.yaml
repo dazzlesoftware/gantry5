@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1462890421
 layout:
@@ -615,7 +615,7 @@ content:
         -
           name: 'Rick Grimes'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-01.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: CEO
@@ -629,7 +629,7 @@ content:
         -
           name: 'Maggie Greene'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-02.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: HR
@@ -643,7 +643,7 @@ content:
         -
           name: 'Daryl Dixon'
           icon: ''
-          img: 'gantry-media://pages/about-us/showcase/img-03.jpg'
+          img: 'genesis-media://pages/about-us/showcase/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Designer
@@ -668,7 +668,7 @@ content:
         -
           name: Introduction
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-01.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -682,7 +682,7 @@ content:
         -
           name: Mission
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-02.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-02.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -696,7 +696,7 @@ content:
         -
           name: Business
           icon: ''
-          img: 'gantry-media://pages/about-us/mainbar/img-03.jpg'
+          img: 'genesis-media://pages/about-us/mainbar/img-03.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -730,12 +730,12 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://pages/about-us/main/img-01.jpg'
+          image: 'genesis-media://pages/about-us/main/img-01.jpg'
           icon: ''
           title: 'Lorem ipsum dolor sit.'
           subtitle: 'Project 1'
           author: Berlin
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -743,12 +743,12 @@ content:
           buttonclass: ''
           name: 'Project 1'
         -
-          image: 'gantry-media://pages/about-us/main/img-02.jpg'
+          image: 'genesis-media://pages/about-us/main/img-02.jpg'
           icon: ''
           title: 'Lorem ipsum dolor sit.'
           subtitle: 'Project 2'
           author: 'New York'
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -756,12 +756,12 @@ content:
           buttonclass: ''
           name: 'Project 2'
         -
-          image: 'gantry-media://pages/about-us/main/img-03.jpg'
+          image: 'genesis-media://pages/about-us/main/img-03.jpg'
           icon: ''
           title: 'Lorem ipsum dolor sit.'
           subtitle: 'Project 3'
           author: Warsow
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -769,12 +769,12 @@ content:
           buttonclass: ''
           name: 'Project 3'
         -
-          image: 'gantry-media://pages/about-us/main/img-04.jpg'
+          image: 'genesis-media://pages/about-us/main/img-04.jpg'
           icon: ''
           title: 'Lorem ipsum dolor sit.'
           subtitle: 'Project 4'
           author: Rome
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -782,12 +782,12 @@ content:
           buttonclass: ''
           name: 'Project 4'
         -
-          image: 'gantry-media://pages/about-us/main/img-05.jpg'
+          image: 'genesis-media://pages/about-us/main/img-05.jpg'
           icon: ''
           title: 'Lorem ipsum dolor sit.'
           subtitle: 'Project 5'
           author: Tokyo
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''
@@ -795,12 +795,12 @@ content:
           buttonclass: ''
           name: 'Project 5'
         -
-          image: 'gantry-media://pages/about-us/main/img-06.jpg'
+          image: 'genesis-media://pages/about-us/main/img-06.jpg'
           icon: ''
           title: 'Lorem ipsum dolor sit.'
           subtitle: 'Project 6'
           author: Aruba
-          authorimage: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          authorimage: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           link: ''
           linktext: ''

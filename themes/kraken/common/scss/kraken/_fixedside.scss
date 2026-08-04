@@ -21,13 +21,13 @@ $fixedside-position: 		left !default;
 
 	@if $fixedside-position == 'left' {
 		left: 0;
-    	.dir-rtl & {
+	.dir-rtl & {
 			left: auto;
 			right: 0;
-    	}
+	}
 	} @else {
 	    right: 0;
-    	.dir-rtl & {
+	.dir-rtl & {
 			right: auto;
 			left: 0;
 			.g-main-nav .g-dropdown {
@@ -41,7 +41,7 @@ $fixedside-position: 		left !default;
 					content: "\f105" !important;
 				}
 			}
-    	}
+	}
 	}
 
 
@@ -92,20 +92,20 @@ $fixedside-position: 		left !default;
 			bottom: -1rem;
 		}
     &.g-logo-alt {
-  		.g-style-preset7 &, .g-style-preset8 & {
-  			img {
-  				display: none;
-  			}
-  			span:before {
-  				content: "";
-  				display: block;
-  				width: 48px;
-  				height: 48px;
-  				margin: 1.5rem auto 0 auto;
-  				vertical-align: middle;
-  				background: url("gantry-theme://images/logo/logo-alt.png") no-repeat;
-  			}
-  		}
+		.g-style-preset7 &, .g-style-preset8 & {
+			img {
+				display: none;
+			}
+			span:before {
+				content: "";
+				display: block;
+				width: 48px;
+				height: 48px;
+				margin: 1.5rem auto 0 auto;
+				vertical-align: middle;
+				background: url("genesis-theme://images/logo/logo-alt.png") no-repeat;
+			}
+		}
     }
 	}
 
@@ -170,24 +170,24 @@ $fixedside-position: 		left !default;
 				}
 			}
 		}
-    
+
     .g-fullwidth {
       > .g-dropdown {
         .g-dropdown {
           top: 0;
-    			.dir-ltr & {
-    				left: 0;
-    			}
-    			.dir-rtl & {
-    				right: 0;
-    			}
+			.dir-ltr & {
+				left: 0;
+			}
+			.dir-rtl & {
+				right: 0;
+			}
         }
-  			.dir-ltr & {
-  				left: 100%;
-  			}
-  			.dir-rtl & {
-  				right: 100%;
-  			}
+			.dir-ltr & {
+				left: 100%;
+			}
+			.dir-rtl & {
+				right: 100%;
+			}
       }
     }
 
@@ -322,7 +322,7 @@ $fixedside-position: 		left !default;
 		}
 		.dir-rtl & {
 			margin-right: ($fixedside-width - 7) !important;
-		}		
+		}
 	}
 	.g-container {
 		.dir-ltr & {
@@ -364,8 +364,8 @@ only screen and (min-width: ($breakpoints-large-desktop-container + $fixedside-w
 }
 
 @media
-only screen and (min-width: $breakpoints-desktop-container) and 
-(max-width: (($breakpoints-large-desktop-container + $fixedside-width) - 0.062)) 
+only screen and (min-width: $breakpoints-desktop-container) and
+(max-width: (($breakpoints-large-desktop-container + $fixedside-width) - 0.062))
 {
 	#g-header {
 		.g-vertical-slides .g-swiper-slide-content-title {
@@ -422,13 +422,13 @@ only screen and (min-width: $breakpoints-desktop-container) and
 		}
 	}
     #g-navigation  {
-    	.g-logo span {
+	.g-logo span {
 			font-size: $core-font-size - 0.1;
 			margin-right: -1.25rem;
-    	}
-    	.g-main-nav .g-toplevel > li {
-    		margin: 0 0.25rem;
-    	}
+	}
+	.g-main-nav .g-toplevel > li {
+		margin: 0 0.25rem;
+	}
     }
 	.g-title-promo .g-title {
 		letter-spacing: 2px;
@@ -449,14 +449,14 @@ only screen and (min-width: $breakpoints-desktop-container) and
 		font-weight: $font-weight-regular;
     }
     #g-footer  {
-    	.g-logo span {
+	.g-logo span {
 			font-size: $core-font-size - 0.1;
 			margin-right: -1.25rem;
-    	}
-    	.g-horizontalmenu li {
-    		font-size: $core-font-size - 0.2;
-    		margin: 0 0.25rem;
-    	}
+	}
+	.g-horizontalmenu li {
+		font-size: $core-font-size - 0.2;
+		margin: 0 0.25rem;
+	}
 	    .g-social {
 			margin: 0 -1.25rem;
 		}

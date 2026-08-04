@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_AuroraInstallerScript
+ * Class Genesis_AuroraInstallerScript
  */
-class G5_AuroraInstallerScript
+class Genesis_AuroraInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

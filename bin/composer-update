@@ -11,18 +11,18 @@ composer_update('bin/builder', false);
 chdir('platforms');
 
 echo "# Running composer update for Grav\n";
-composer_update('grav/gantry5', true);
-composer_update('grav/gantry5/compat', false);
+composer_update('grav/genesis', true);
+composer_update('grav/genesis/compat', false);
 
 echo "# Running composer update for Joomla\n";
-composer_update('joomla/lib_gantry5', true);
-composer_update('joomla/plg_system_gantry5_debugbar', false);
-composer_update('joomla/lib_gantry5/compat', false);
+composer_update('joomla/lib_genesis', true);
+composer_update('joomla/plg_system_genesis_debugbar', false);
+composer_update('joomla/lib_genesis/compat', false);
 
 echo "# Running composer update for WP\n";
-composer_update('wordpress/gantry5', true);
-composer_update('wordpress/gantry5_debugbar', false);
-composer_update('wordpress/gantry5/compat', false);
+composer_update('wordpress/genesis', true);
+composer_update('wordpress/genesis_debugbar', false);
+composer_update('wordpress/genesis/compat', false);
 
 function composer_update($folder, $link)
 {

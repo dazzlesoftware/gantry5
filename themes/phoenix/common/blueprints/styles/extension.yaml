@@ -11,7 +11,7 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/extension/bg-01.jpg"
+      default: "genesis-media://backgrounds/extension/bg-01.jpg"
     text-color:
       type: input.colorpicker
       label: Text
@@ -20,4 +20,3 @@ form:
       type: enable.enable
       label: Section Clipping
       default: 1
-

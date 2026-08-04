@@ -1,0 +1,74 @@
+details:
+  name: Helium
+  version: '@version@'
+  icon: paper-plane
+  date: '@versiondate@'
+  author:
+    name: Dazzle Software, LLC
+    email: 'support@dazzlesoftware.org'
+    link: 'https://dazzlesoftware.org'
+
+  documentation:
+    link: 'http://docs.genesis.org/genesis'
+
+  support:
+    link: 'https://gitter.im/genesis/genesis'
+
+  copyright: Copyright (C) 2026 Dazzle Software, LLC
+  license: GPLv3 and later
+  description: Helium Theme for phpBB
+
+configuration:
+  genesis:
+    platform: phpbb
+    engine: nucleus
+
+  theme:
+    parent: genesis_helium
+    base: 'genesis-theme://common'
+
+  fonts:
+    Raleway:
+      900italic: 'genesis-theme://fonts/raleway/raleway-blackitalic/raleway-blackitalic-webfont'
+      900: 'genesis-theme://fonts/raleway/raleway-black/raleway-black-webfont'
+      700italic: 'genesis-theme://fonts/raleway/raleway-bold/raleway-bolditalic-webfont'
+      700: 'genesis-theme://fonts/raleway/raleway-bold/raleway-bold-webfont'
+      600italic: 'genesis-theme://fonts/raleway/raleway-semibolditalic/raleway-semibolditalic-webfont'
+      600: 'genesis-theme://fonts/raleway/raleway-semibold/raleway-semibold-webfont'
+      500italic: 'genesis-theme://fonts/raleway/raleway-mediumitalic/raleway-mediumitalic-webfont'
+      500: 'genesis-theme://fonts/raleway/raleway-medium/raleway-medium-webfont'
+      400italic: 'genesis-theme://fonts/raleway/raleway-italic/raleway-italic-webfont'
+      400: 'genesis-theme://fonts/raleway/raleway-regular/raleway-regular-webfont'
+      200italic: 'genesis-theme://fonts/raleway/raleway-lightitalic/raleway-lightitalic-webfont'
+      200: 'genesis-theme://fonts/raleway/raleway-light/raleway-light-webfont'
+    Lato:
+      900italic: 'genesis-theme://fonts/lato/lato-blackitalic/lato-blackitalic-webfont'
+      900: 'genesis-theme://fonts/lato/lato-black/lato-black-webfont'
+      700italic: 'genesis-theme://fonts/lato/lato-bold/lato-bolditalic-webfont'
+      700: 'genesis-theme://fonts/lato/lato-bold/lato-bold-webfont'
+      400italic: 'genesis-theme://fonts/lato/lato-italic/lato-italic-webfont'
+      400: 'genesis-theme://fonts/lato/lato-regular/lato-regular-webfont'
+      200italic: 'genesis-theme://fonts/lato/lato-lightitalic/lato-lightitalic-webfont'
+      200: 'genesis-theme://fonts/lato/lato-light/lato-light-webfont'
+
+  css:
+    compiler: '\Genesis\Component\Stylesheet\ScssCompiler'
+    options:
+      compatibility: '5.5'
+      deprecations: true
+    target: 'genesis-theme://css-compiled'
+    paths:
+      - 'genesis-theme://scss'
+      - 'genesis-engine://scss'
+    files:
+      - helium
+      - helium-phpbb
+      - custom
+    persistent:
+      - helium
+      - helium-phpbb
+    overrides:
+      - custom
+
+  dependencies:
+    genesis: '5.5'

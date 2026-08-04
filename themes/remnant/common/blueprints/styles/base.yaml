@@ -12,7 +12,7 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/base/img-01.jpg"
+      default: "genesis-media://backgrounds/base/img-01.jpg"
     text-color:
       type: input.colorpicker
       label: Base Text Color

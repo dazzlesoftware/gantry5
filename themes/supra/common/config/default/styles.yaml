@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#2276e3'
@@ -30,7 +30,7 @@ preset1:
       text-color: '#000000'
     slideshow:
       background: 'rgba(255, 255, 255, 0.0)'
-      background-image: 'gantry-media://backgrounds/slideshow/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/img-01.jpg'
       text-color: '#ffffff'
     header:
       background: '#000000'

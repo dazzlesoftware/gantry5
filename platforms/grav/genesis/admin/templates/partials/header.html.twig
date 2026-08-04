@@ -1,0 +1,48 @@
+<div class="g-grid">
+    <div class="g-block">
+        <div class="g-content clearfix">
+            <span class="theme-title"><i class="fa fa-tint" aria-hidden="true"></i> <span title="{{ genesis.theme.title|e }}">{{ 'GENESIS_PLATFORM_THEME'|trans }}: {{ genesis.theme.title|e }}</span> <small>(v{{ genesis.theme.version }} / {{ genesis.theme.name|e }})</small></span>
+
+            {% set settings_url = genesis.platform.settings %}
+            {% set settings_key = genesis.platform.settings_key %}
+            <ul class="float-right">
+                <li {{ (location == 'configurations') ? 'class="active"' }}>
+                    <a data-genesis-ajaxify data-genesis-ajaxify-target="[data-genesis-content]" href="{{ genesis.route('configurations')|e }}"><i class="fa fa-fw fa-th" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_OUTLINES'|trans }}</a>
+                </li>
+                <li {{ (location == 'positions') ? 'class="active"' }}>
+                    <a data-genesis-ajaxify data-genesis-ajaxify-target="[data-genesis-content]" href="{{ genesis.route('positions')|e }}"><i class="fa fa-fw fa-object-group" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_POSITIONS'|trans }}</a>
+                </li>
+                <li {{ (location == 'menu') ? 'class="active"' }}>
+                    <a data-genesis-ajaxify data-genesis-ajaxify-target="[data-genesis-content]" href="{{ genesis.route('menu')|e }}"><i class="fa fa-fw fa-bars" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_MENU'|trans }}</span></a>
+                </li>
+                <li {{ (location == 'about') ? 'class="active"' }}>
+                    <a data-genesis-ajaxify data-genesis-ajaxify-target="[data-genesis-content]" href="{{ genesis.route('about')|e }}"><i class="fa fa-fw fa-question-circle" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_ABOUT'|trans }}</span></a>
+                </li>
+                <li data-g-extras data-g-popover data-g-popover-style="extras" aria-haspopup="true" aria-expanded="false" role="presentation">
+                    <a href="#"><i class="fa fa-fw fa-cog" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_EXTRAS'|trans }} <i class="font-small fa fa-fw fa-chevron-down" aria-hidden="true"></i></a>
+                    <ul data-popover-content class="hidden" tabindex="0">
+                        {% set prod_mode = 'GENESIS_PLATFORM_PRODUCTION'|trans %}
+                        {% set dev_mode = 'GENESIS_PLATFORM_DEVELOPMENT'|trans %}
+                        <li data-g-devprod="{{ {0: dev_mode, 1: prod_mode}|json_encode|e('html_attr') }}">
+                            <i class="fa fa-fw fa-wrench" aria-hidden="true"></i> <span class="devprod-mode">{{ genesis.global.production ? prod_mode : dev_mode }}</span>
+                            <div class="float-right">
+                                <span class="enabler" role="checkbox" aria-checked="{{ genesis.global.production ? 'true' : 'false'}}" tabindex="0" aria-label="{{ 'GENESIS_PLATFORM_PRODUCTION_MODE_ARIA_LABEL'|trans }}">
+                                <input type="hidden" name="production_mode" value="{{ genesis.global.production ? 1 : 0 }}">
+                                    <span class="toggle"><span class="knob"></span></span>
+                                </span>
+                            </div>
+                        </li>
+                        <li data-g-popover-follow>
+                            <a tabindex="0" href="{{ genesis.route('cache')|e }}" data-ajax-action data-ajax-action-method="get" data-ajax-action-indicator="li[data-g-extras]"><i class="fa fa-fw fa-recycle" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_CLEAR_CACHE'|trans }}</a>
+                        </li>
+                        {% if settings_url %}
+                            <li>
+                                <a tabindex="0" href="{{ settings_url|e }}" data-settings-key="{{ settings_key|e }}"><i class="fa fa-fw fa-{{ genesis.platform.name }}" aria-hidden="true"></i> {{ 'GENESIS_PLATFORM_PLATFORM_SETTINGS'|trans }}</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

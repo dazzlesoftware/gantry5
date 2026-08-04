@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_positions
   timestamp: 1451342625
 layout:
@@ -278,7 +278,7 @@ content:
       items:
         -
           text: Features
-          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          link: 'http://docs.genesis.org/genesis/basics/key-features'
           name: Features
         -
           text: Support
@@ -300,7 +300,7 @@ content:
           name: Docs
         -
           text: Guides
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           name: Guides
         -
           text: Questions

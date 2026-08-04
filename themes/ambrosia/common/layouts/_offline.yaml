@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/offline.png'
+  image: 'genesis-admin://images/layouts/offline.png'
   name: _offline
   timestamp: 1516112276
 layout:

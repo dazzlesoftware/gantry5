@@ -179,8 +179,8 @@ content:
       pauseOnHover: enabled
       items:
         -
-          bgimage: 'gantry-media://home/showcase/bg1.png'
-          image: 'gantry-media://home/showcase/img1.png'
+          bgimage: 'genesis-media://home/showcase/bg1.png'
+          image: 'genesis-media://home/showcase/img1.png'
           contentanimation: flipInX
           imageclass: ''
           position: right
@@ -194,8 +194,8 @@ content:
           buttonclass: readon
           name: 'Item 1'
         -
-          bgimage: 'gantry-media://home/showcase/bg2.png'
-          image: 'gantry-media://home/showcase/img2.png'
+          bgimage: 'genesis-media://home/showcase/bg2.png'
+          image: 'genesis-media://home/showcase/img2.png'
           imageclass: ''
           position: left
           textalign: right
@@ -208,8 +208,8 @@ content:
           buttonclass: readon
           name: 'Item 2'
         -
-          bgimage: 'gantry-media://home/showcase/bg3.png'
-          image: 'gantry-media://home/showcase/img3.png'
+          bgimage: 'genesis-media://home/showcase/bg3.png'
+          image: 'genesis-media://home/showcase/img3.png'
           imageclass: center
           position: bottom
           textalign: center
@@ -382,7 +382,7 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/feature/img1.jpg'
+              image: 'genesis-media://home/feature/img1.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -391,7 +391,7 @@ content:
               buttonclass: readon
               name: 'Item 1'
             -
-              image: 'gantry-media://home/feature/img2.jpg'
+              image: 'genesis-media://home/feature/img2.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -400,7 +400,7 @@ content:
               buttonclass: readon
               name: 'Item 2'
             -
-              image: 'gantry-media://home/feature/img3.jpg'
+              image: 'genesis-media://home/feature/img3.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -412,7 +412,7 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/feature/img4.jpg'
+              image: 'genesis-media://home/feature/img4.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -421,7 +421,7 @@ content:
               buttonclass: readon
               name: 'Item 1'
             -
-              image: 'gantry-media://home/feature/img5.jpg'
+              image: 'genesis-media://home/feature/img5.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -430,7 +430,7 @@ content:
               buttonclass: readon
               name: 'Item 2'
             -
-              image: 'gantry-media://home/feature/img6.jpg'
+              image: 'genesis-media://home/feature/img6.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -442,7 +442,7 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/feature/img7.jpg'
+              image: 'genesis-media://home/feature/img7.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -451,7 +451,7 @@ content:
               buttonclass: readon
               name: 'Item 1'
             -
-              image: 'gantry-media://home/feature/img8.jpg'
+              image: 'genesis-media://home/feature/img8.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -460,7 +460,7 @@ content:
               buttonclass: readon
               name: 'Item 2'
             -
-              image: 'gantry-media://home/feature/img9.jpg'
+              image: 'genesis-media://home/feature/img9.jpg'
               title: ''
               subtitle: ''
               linklabel: ''
@@ -482,7 +482,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/maintop/img1.png'
+          image: 'genesis-media://home/maintop/img1.png'
           title: 'Custom Shapes'
           desc: '<h5 class="rt-uppercase">Quick, Easy &amp; Visually Effective</h5><p class="rt-small-text hidden-tablet">Epsilon uses a combination of custom template images, overlays and SVG masks to proliferate hexagons throughout the template.</p>'
           linktitle: enabled
@@ -492,7 +492,7 @@ content:
           buttonclass: readon
           name: 'Item 1'
         -
-          image: 'gantry-media://home/maintop/img2.png'
+          image: 'genesis-media://home/maintop/img2.png'
           title: FontAwesome
           desc: '<h5 class="rt-uppercase">Content Enhancement</h5><p class="rt-small-text hidden-tablet">Over 300 icons are available with FontAwesome, which allows for the easy implementation of icons into your content, to spruce up the feel.</p>'
           linktitle: enabled
@@ -529,7 +529,7 @@ content:
         -
           image: ''
           title: ''
-          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  A beautiful and rich selection of typography, based on Bootstrap, to emphasise <span class=\"hidden-tablet\">and embellish </span>content. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-1\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-1)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Leo Parry</span><span class=\"rt-testimonial-position\">CEO of Hexeris</span>"
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  A beautiful and rich selection of typography, based on Bootstrap, to emphasise <span class=\"hidden-tablet\">and embellish </span>content. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-1\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-1)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Leo Parry</span><span class=\"rt-testimonial-position\">CEO of Hexeris</span>"
           link: ''
           linklabel: ''
           target: _self
@@ -538,7 +538,7 @@ content:
         -
           image: ''
           title: ''
-          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span> A custom Joomla installation package that installs a near equivalent of the demo onto your server. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-2\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-2)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Daniel Lee</span><span class=\"rt-testimonial-position\">CEO of Praxis</span>"
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span> A custom Joomla installation package that installs a near equivalent of the demo onto your server. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-2\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-2)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Daniel Lee</span><span class=\"rt-testimonial-position\">CEO of Praxis</span>"
           link: ''
           linklabel: ''
           target: _self
@@ -547,7 +547,7 @@ content:
         -
           image: ''
           title: ''
-          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>   Choose from six preset<span class=\"hidden-tablet\"> style variation</span>s, with configurable options for text, link, accent, and background<span class=\"hidden-tablet\"> color</span>s. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-3\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-3)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Troy Michie</span><span class=\"rt-testimonial-position\">CEO of Stratos</span>"
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>   Choose from six preset<span class=\"hidden-tablet\"> style variation</span>s, with configurable options for text, link, accent, and background<span class=\"hidden-tablet\"> color</span>s. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-3\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-3)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Troy Michie</span><span class=\"rt-testimonial-position\">CEO of Stratos</span>"
           link: ''
           linklabel: ''
           target: _self
@@ -556,7 +556,7 @@ content:
         -
           image: ''
           title: ''
-          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  There are eight stylistic suffixes, to provide individual<span class=\"hidden-tablet\"> module</span> styling, as well as <span class=\"hidden-tablet\">several </span>structural suffixes. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-4\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-4)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Levi Durey</span><span class=\"rt-testimonial-position\">CEO of Hadron</span>"
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  There are eight stylistic suffixes, to provide individual<span class=\"hidden-tablet\"> module</span> styling, as well as <span class=\"hidden-tablet\">several </span>structural suffixes. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-4\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-4)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Levi Durey</span><span class=\"rt-testimonial-position\">CEO of Hadron</span>"
           link: ''
           linklabel: ''
           target: _self
@@ -565,7 +565,7 @@ content:
         -
           image: ''
           title: ''
-          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  There are over 90 module positions, most split into rows of 6, each with adjustable widths<span class=\"hidden-tablet\">, globally or per menu item</span>. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-5\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-5)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Natalie Cox</span><span class=\"rt-testimonial-position\">CEO of Oculus</span>"
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span>  There are over 90 module positions, most split into rows of 6, each with adjustable widths<span class=\"hidden-tablet\">, globally or per menu item</span>. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-5\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-5)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Natalie Cox</span><span class=\"rt-testimonial-position\">CEO of Oculus</span>"
           link: ''
           linklabel: ''
           target: _self
@@ -574,7 +574,7 @@ content:
         -
           image: ''
           title: ''
-          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span> SplitMenu is a static menu option that displays parents in the header and children in the sidebar<span class=\"hidden-tablet\">, as configurable</span>. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-6\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-6)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Billy Riley</span><span class=\"rt-testimonial-position\">CEO of Alerion</span>"
+          desc: "<span class=\"rt-testimonial-item\">\t<span class=\"icon-quote-left\"></span> SplitMenu is a static menu option that displays parents in the header and children in the sidebar<span class=\"hidden-tablet\">, as configurable</span>. <span class=\"icon-quote-right\"></span>\t<span class=\"rt-arrow-bottom\"></span></span><span class=\"rt-testimonial-img\">\t<svg class=\"rt-hexagon-svg\" width=\"150px\" height=\"150px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\t    <g>\t       <clipPath id=\"rt-hexagon-mask-6\">\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\t       </clipPath>\t    </g> \t    <a xlink:href=\"#\">\t     <image clip-path=\"url(#rt-hexagon-mask-6)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/expandedbottom/img1.jpg\" />\t    </a>\t</svg> </span><span class=\"rt-testimonial-author\">Billy Riley</span><span class=\"rt-testimonial-position\">CEO of Alerion</span>"
           link: ''
           linklabel: ''
           target: _self
@@ -585,7 +585,7 @@ content:
     attributes:
       title: 'New Products'
       titletag: ''
-      html: "<div class=\"rt-width-80\">An overview of the latest Joomla template offerings from Dazzle Software, available for individual purchase or part of a club subscription.</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-7\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-7)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Anacron</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Responsive</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Anacron is a vibrant, highly adaptable and engaging template, ideal for many sites, from community to business.</p>\n\t</div>\n</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-8\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-8)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Hadron</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Color Chooser</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Hadron is a contemporary, conservative and flat design direction with new and rich animations.</p>\n\t</div>\n</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-9\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-9)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Paradigm</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Icon Driven</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Paradigm is a rich infusion of elegant transparency with a modern frame, to create an invigorating site.</p>\n\t</div>\n</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-10\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-10)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/g5_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\t\t\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Spectral</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Header Images</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Spectral echoes modern approaches to create an elegant frame, focusing on content and excellence.</p>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<div class=\"rt-width-80\">An overview of the latest Joomla template offerings from Dazzle Software, available for individual purchase or part of a club subscription.</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-7\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-7)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Anacron</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Responsive</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Anacron is a vibrant, highly adaptable and engaging template, ideal for many sites, from community to business.</p>\n\t</div>\n</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-8\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-8)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Hadron</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Color Chooser</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Hadron is a contemporary, conservative and flat design direction with new and rich animations.</p>\n\t</div>\n</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-9\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-9)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Paradigm</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Icon Driven</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Paradigm is a rich infusion of elegant transparency with a modern frame, to create an invigorating site.</p>\n\t</div>\n</div>\n\n<div class=\"Genesis-width-25 Genesis-width-block\">\n\t<div class=\"Genesis-width-spacer\">\n\t\t<svg class=\"rt-hexagon-svg\" width=\"250px\" height=\"250px\" viewBox = \"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\">\n\t\t    <g>\n\t\t       <clipPath id=\"rt-hexagon-mask-10\">\n\t\t          <polygon points=\"99.9999999999999,196 16.8615612366939,148 16.8615612366939,52 100,4 183.138438763306,52 183.138438763306,148\" />\n\t\t       </clipPath>\n\t\t    </g> \n\t\t    <a xlink:href=\"#\">\n\t\t     <image clip-path=\"url(#rt-hexagon-mask-10)\" height=\"100%\" width=\"100%\" xlink:href=\"templates/genesis_epsilon/images/home/extension/img1.jpg\" />\n\t\t    </a>\n\t\t</svg> \n\t\t\n\t\t<h5 class=\"rt-uppercase nomarginbottom rt-regular-text\">Spectral</h5>\n\t\t<h5 class=\"rt-small-text nomargintop\">Header Images</h5>\n\t\t<div class=\"rt-divider\"></div>\n\t\t<div class=\"rt-price rt-light-text\">$49</div>\n\t\t<p class=\"rt-small-text\">Spectral echoes modern approaches to create an elegant frame, focusing on content and excellence.</p>\n\t</div>\n</div>\n\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
     block:

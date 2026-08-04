@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: swiper
   timestamp: 1580382706
 layout:
@@ -206,8 +206,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -221,8 +221,8 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -237,8 +237,8 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -322,8 +322,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -338,8 +338,8 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -354,8 +354,8 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -439,8 +439,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: kenburns
           duration: '7000'
@@ -454,8 +454,8 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: kenburnsDownRight
           duration: '7000'
@@ -469,8 +469,8 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: kenburnsUpLeft
           duration: '7000'
@@ -553,8 +553,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -562,15 +562,15 @@ content:
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: Colorful
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -578,15 +578,15 @@ content:
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: Features
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -594,15 +594,15 @@ content:
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
           thumb_title: Responsive
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -610,15 +610,15 @@ content:
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: Colorful
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -626,15 +626,15 @@ content:
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: Features
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -642,7 +642,7 @@ content:
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
           thumb_title: Responsive
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
@@ -718,8 +718,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -734,8 +734,8 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -750,8 +750,8 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -835,8 +835,8 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -844,15 +844,15 @@ content:
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: Colorful
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -860,15 +860,15 @@ content:
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: Premium
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -876,15 +876,15 @@ content:
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
           thumb_title: Responsive
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -892,15 +892,15 @@ content:
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: Colorful
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -908,15 +908,15 @@ content:
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: Premium
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
-          imageMobile: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
+          imageMobile: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -924,7 +924,7 @@ content:
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
           thumb_title: Responsive
-          imageThumb: 'gantry-media://swiper/img-01.jpg'
+          imageThumb: 'genesis-media://swiper/img-01.jpg'
           button_text: 'Read More'
           button_link: '#'
           linktarget: _self

@@ -1,10 +1,10 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#86dbc8'
     - '#34ae93'
-  styles:    
+  styles:
     base:
       background: '#27292b'
       text-color: '#bbbbbb'
@@ -22,10 +22,10 @@ preset1:
       text-color: '#bbbbbb'
     showcase:
       background: '#191a1c'
-      text-color: '#bbbbbb' 
+      text-color: '#bbbbbb'
     utility:
       background: '#1f2022'
-      text-color: '#bbbbbb'      
+      text-color: '#bbbbbb'
     feature:
       background: '#191a1c'
       text-color: '#bbbbbb'
@@ -34,7 +34,7 @@ preset1:
       text-color: '#bbbbbb'
     main:
       background: '#27292b'
-      text-color: '#bbbbbb'   
+      text-color: '#bbbbbb'
     mainbottom:
       background: '#27292b'
       text-color: '#bbbbbb'
@@ -54,4 +54,4 @@ preset1:
       background: '#191a1c'
       text-color: '#ffffff'
       toggle-color: '#191a1c'
-      
+

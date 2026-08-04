@@ -9,20 +9,20 @@
 
 namespace Grav\Theme;
 
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme as GantryTheme;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Theme as GenesisTheme;
 use Grav\Common\Theme;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
- * Class G5_Helium
+ * Class Genesis_Helium
  * @package Grav\Theme
  */
-class G5_Helium extends Theme
+class Genesis_Helium extends Theme
 {
     /** @var string */
-    public $gantry = '5.5';
-    /** @var GantryTheme */
+    public $genesis = '5.5';
+    /** @var GenesisTheme */
     protected $theme;
 
     /**
@@ -46,7 +46,7 @@ class G5_Helium extends Theme
         $path = $locator('theme://');
         $name = $this->name;
 
-        if (!class_exists('\Gantry5\Loader')) {
+        if (!class_exists('\Genesis\Loader')) {
             if ($this->isAdmin()) {
                 $messages = $this->grav['messages'];
                 $messages->add('Please enable Genesis plugin in order to use current theme!', 'error');
@@ -57,21 +57,21 @@ class G5_Helium extends Theme
         }
 
         // Setup Genesis Framework or throw exception.
-        \Gantry5\Loader::setup();
+        \Genesis\Loader::setup();
 
         // Get Genesis instance.
-        $gantry = Gantry::instance();
+        $genesis = Genesis::instance();
 
         // Set the theme path from Grav variable.
-        $gantry['theme.path'] = $path;
-        $gantry['theme.name'] = $name;
+        $genesis['theme.path'] = $path;
+        $genesis['theme.name'] = $name;
 
         // Define the template.
         require $locator('theme://includes/theme.php');
 
         // Define Genesis services.
-        $gantry['theme'] = static function ($c) {
-            return new \Gantry\Theme\G5_Helium($c['theme.path'], $c['theme.name']);
+        $genesis['theme'] = static function ($c) {
+            return new \Genesis\Theme\Genesis_Helium($c['theme.path'], $c['theme.name']);
         };
     }
 }

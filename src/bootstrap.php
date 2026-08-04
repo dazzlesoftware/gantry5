@@ -15,4 +15,4 @@ if (!defined('ABSPATH')) {
 
 include __DIR__ . '/Loader.php';
 
-return \Gantry5\Loader::get();
+return \Genesis\Loader::get();

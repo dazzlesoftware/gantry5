@@ -7,7 +7,7 @@
  * @license   GNU/GPLv3 and later
  */
 
-namespace Gantry5;
+namespace Genesis;
 
 use Composer\Autoload\ClassLoader;
 

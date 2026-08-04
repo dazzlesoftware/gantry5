@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension version="3.9" type="package" method="upgrade">
+    <name>pkg_genesis</name>
+    <packagename>genesis</packagename>
+    <version>@version@</version>
+    <creationDate>@versiondate@</creationDate>
+    <author>Dazzle Software, LLC</author>
+    <authorEmail>support@dazzlesoftware.org</authorEmail>
+    <authorUrl>https://dazzlesoftware.org</authorUrl>
+    <copyright>Copyright (C) 2026 Dazzle Software, LLC</copyright>
+    <license>https://www.gnu.org/licenses/gpl-3.0.html GNU/GPLv3 and later</license>
+    <description>PKG_GENESIS_DESCRIPTION</description>
+
+    <scriptfile>install.php</scriptfile>
+
+    <blockChildUninstall>true</blockChildUninstall>
+    <files folder="packages">
+        <!-- Mandatory system plugin -->
+        <file type="plugin"    group="system"     id="genesis"              enabled="1">plg_system_genesis_v@version@.zip</file>
+        <!-- Quick icons -->
+        <file type="plugin"    group="quickicon"  id="genesis"              enabled="1">plg_quickicon_genesis_v@version@.zip</file>
+        <!-- Mandatory system plugin -->
+        <file type="plugin"    group="genesis"    id="preset"                          >plg_genesis_preset_v@version@.zip</file>
+        <!-- Particle module -->
+        <file type="module"    client="site"      id="mod_genesis_particle" enabled="1">mod_genesis_particle_v@version@.zip</file>
+        <!-- Genesis framework library -->
+        <file type="library"                      id="genesis"              enabled="1">lib_genesis_v@version@.zip</file>
+        <!-- Common media files -->
+        <file type="file"                         id="genesis_nucleus"      enabled="1">genesis_nucleus_v@version@.zip</file>
+        <!-- Administration component -->
+        <file type="component"                    id="com_genesis"          enabled="1">com_genesis_v@version@.zip</file>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.pkg_genesis.sys.ini</language>
+    </languages>
+
+    <updateservers>
+        <server type="extension" priority="1" name="Genesis">http://updates.genesis.org/5.0/joomla/pkg_genesis.xml</server>
+        <server type="collection" priority="2" name="Genesis">http://updates.genesis.org/5.0/joomla/list.xml</server>
+    </updateservers>
+</extension>

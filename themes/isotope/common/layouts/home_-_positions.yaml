@@ -177,7 +177,7 @@ content:
     title: 'Footer D'
   branding-1875:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-2327:
     title: 'To Top'
     attributes:

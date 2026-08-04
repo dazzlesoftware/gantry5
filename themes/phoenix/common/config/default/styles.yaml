@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#000000'
@@ -39,12 +39,12 @@ preset1:
       text-color: '#ffffff'
     slideshow:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/slideshow/bg-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/bg-01.jpg'
       text-color: '#ffffff'
       section-clipping: 1
     header:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/header/bg-01.svg'
       text-color: '#ffffff'
     above:
       background: '#000000'
@@ -64,11 +64,11 @@ preset1:
       text-color: '#888888'
     expanded:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/header/bg-01.svg'
       text-color: '#888888'
     extension:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/extension/bg-01.jpg'
+      background-image: 'genesis-media://backgrounds/extension/bg-01.jpg'
       text-color: '#ffffff'
       section-clipping: 1
     bottom:
@@ -76,7 +76,7 @@ preset1:
       text-color: '#888888'
     footer:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/header/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/header/bg-01.svg'
       text-color: '#ffffff'
     copyright:
       background: '#000000'

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1452869994
 layout:
@@ -171,7 +171,7 @@ content:
       items:
         -
           image: ''
-          overlayImage: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          overlayImage: 'genesis-media://demo/home/slideshow/img-01.jpg'
           overlayParallax: '1'
           overlayParallaxRatio: '0.5'
           subtitle: 'Intuitive Interface'
@@ -187,7 +187,7 @@ content:
           name: 'Ultimate Framework'
         -
           image: ''
-          overlayImage: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          overlayImage: 'genesis-media://demo/home/slideshow/img-01.jpg'
           overlayParallax: '1'
           overlayParallaxRatio: '0.5'
           subtitle: 'Sliding Tabs'
@@ -203,7 +203,7 @@ content:
           name: 'Content Tabs'
         -
           image: ''
-          overlayImage: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          overlayImage: 'genesis-media://demo/home/slideshow/img-01.jpg'
           overlayParallax: '1'
           overlayParallaxRatio: '0.5'
           subtitle: 'Content with Particles'
@@ -247,7 +247,7 @@ content:
       gridpromogalleryitems:
         -
           itemclass: g-promogallery-style-1
-          img: 'gantry-media://demo/home/above/img-01.jpg'
+          img: 'genesis-media://demo/home/above/img-01.jpg'
           tag: 'Layout Configuration'
           headtext: ''
           desc: '<span>Easily configure complex layouts with the Powerful Genesis Drag & Drop interface for the whole site <span class="hidden-tablet">or specific pages</span></span>'
@@ -262,7 +262,7 @@ content:
       gridpromogalleryitems:
         -
           itemclass: g-promogallery-style-1
-          img: 'gantry-media://demo/home/above/img-02.jpg'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
           tag: 'Menu Editor'
           headtext: ''
           desc: 'Advanced menu with dropdown, columns and more'
@@ -271,7 +271,7 @@ content:
           title: 'Advanced menu with dropdown, columns and more'
         -
           itemclass: 'g-promogallery-style-2 g-border-bottom'
-          img: 'gantry-media://demo/home/above/img-02.jpg'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
           tag: 'Adaptable Design'
           headtext: ''
           desc: 'Responsive Layout supporting desktop and mobile'
@@ -286,7 +286,7 @@ content:
       gridpromogalleryitems:
         -
           itemclass: 'g-promogallery-style-2 g-border-right'
-          img: 'gantry-media://demo/home/above/img-02.jpg'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
           tag: Particle
           headtext: ''
           desc: 'A quick and easy way to create complex content'
@@ -295,7 +295,7 @@ content:
           title: 'A quick and easy way to create complex content'
         -
           itemclass: g-promogallery-style-2
-          img: 'gantry-media://demo/home/above/img-02.jpg'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
           tag: Offcanvas
           headtext: ''
           desc: 'Adding menu and content to the mobile sidemenu'
@@ -310,7 +310,7 @@ content:
       gridpromogalleryitems:
         -
           itemclass: g-promogallery-style-1
-          img: 'gantry-media://demo/home/above/img-02.jpg'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
           tag: FlexSlider
           headtext: ''
           desc: 'Display volumes of content with FlexSlider particle'
@@ -319,7 +319,7 @@ content:
           title: 'Display volumes of content with FlexSlider particle'
         -
           itemclass: g-promogallery-style-2
-          img: 'gantry-media://demo/home/above/img-02.jpg'
+          img: 'genesis-media://demo/home/above/img-02.jpg'
           tag: 'Social Icons'
           headtext: ''
           desc: 'Easily display any social media icons such as Facebook'
@@ -436,7 +436,7 @@ content:
       cols: g-5cols
       blocks:
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: ''
           tag: Menu
           desc: ''
@@ -446,7 +446,7 @@ content:
           linktarget: _self
           title: Menu
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: ''
           tag: Layout
           desc: ''
@@ -456,7 +456,7 @@ content:
           linktarget: _self
           title: Layout
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: ''
           tag: Style
           desc: ''
@@ -466,7 +466,7 @@ content:
           linktarget: _self
           title: Style
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: ''
           tag: Twig
           desc: ''
@@ -476,7 +476,7 @@ content:
           linktarget: _self
           title: Twig
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: ''
           tag: YAML
           desc: ''
@@ -505,7 +505,7 @@ content:
         -
           name: Configuration
           icon: ''
-          img: 'gantry-media://demo/home/feature/img-01.jpg'
+          img: 'genesis-media://demo/home/feature/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -518,7 +518,7 @@ content:
         -
           name: Usability
           icon: ''
-          img: 'gantry-media://demo/home/feature/img-01.jpg'
+          img: 'genesis-media://demo/home/feature/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -651,7 +651,7 @@ content:
       items:
         -
           text: Features
-          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          link: 'http://docs.genesis.org/genesis/basics/key-features'
           name: Features
         -
           text: Support
@@ -673,7 +673,7 @@ content:
           name: Docs
         -
           text: Guides
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           name: Guides
         -
           text: Questions

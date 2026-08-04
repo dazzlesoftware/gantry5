@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1561546225
 layout:
@@ -205,96 +205,96 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: 'Game On!'
           main_title: 'Take Your Website to the Next Level with Manticore'
           link: '#'
           linktarget: _self
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           author_linktarget: _blank
           title: 'Computer Game 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: 'Rich Visuals'
           main_title: 'Drive Traffic with Rich Visuals and Bold Headlines'
           link: '#'
           linktarget: _self
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           author_linktarget: _self
           title: 'Computer Game 3'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: 'Animated Particles'
           main_title: 'Animated Particles Bring Your Website to Life'
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           linktarget: _self
           title: 'Computer Game 5'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: 'Modern Style'
           main_title: 'The Perfect Design for Gaming, News, and More'
           link: '#'
           linktarget: _self
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           author_linktarget: _self
           title: 'Computer Game 7'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: Reviews
           main_title: 'Publish Rated Reviews with Brilliant Scores'
           link: '#'
           linktarget: _self
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           author_linktarget: _self
           title: 'Computer Game 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: Videos
           main_title: 'Share Your Latest Videos with Your Audience'
           link: '#'
           linktarget: _self
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           author_linktarget: _self
           title: 'Computer Game 4'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           bg_horizontal: center
           bg_vertical: top
           top_title: 'Easy Config'
           main_title: 'Manticore is Powered by the Genesis Framework'
           link: '#'
           linktarget: _self
-          author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
+          author_image: 'genesis-media://home/slideshow/avatar-01.jpg'
           author_text: 'Published by Dazzle Software'
           author_link: '#'
           author_linktarget: _self
@@ -343,7 +343,7 @@ content:
             -
               layout: photo
               date: '2019-05-23'
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               description: 'Built on the Powerful Genesis Framework'
               url: '#'
               target: _self
@@ -351,7 +351,7 @@ content:
             -
               layout: photo
               date: '2019-05-08'
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               description: 'Create Custom Layouts Using the Layout Manager'
               url: '#'
               target: _self
@@ -362,7 +362,7 @@ content:
             -
               layout: photo
               date: '2019-05-16'
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               description: 'Enhance Your Menus with the Menu Editor'
               url: '#'
               target: _self
@@ -370,7 +370,7 @@ content:
             -
               layout: photo
               date: '2019-05-13'
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               description: 'Exciting New Theme with Cutting-edge Features'
               url: '#'
               target: _self
@@ -381,7 +381,7 @@ content:
             -
               layout: photo
               date: '2019-05-08'
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               description: 'Fortnite Gets Avengers Endgame Event This Week'
               url: '#'
               target: _self
@@ -389,7 +389,7 @@ content:
             -
               layout: photo
               date: '2019-05-10'
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               description: 'Add Font Awesome Icons with Ease'
               url: '#'
               target: _self
@@ -400,7 +400,7 @@ content:
             -
               layout: photo
               date: '2019-05-01'
-              image: 'gantry-media://home/header/img-04.jpg'
+              image: 'genesis-media://home/header/img-04.jpg'
               description: 'Drive Traffic with Rich Visuals and Bold Headlines'
               url: '#'
               target: _self
@@ -408,7 +408,7 @@ content:
             -
               layout: photo
               date: '2019-05-07'
-              image: 'gantry-media://home/header/img-01.jpg'
+              image: 'genesis-media://home/header/img-01.jpg'
               description: 'Manticore Looks Good on Every Platform'
               url: '#'
               target: _self
@@ -463,8 +463,8 @@ content:
             -
               date: '2019-05-09'
               author: 'Jackson Grant'
-              avatar: 'gantry-media://home/above/avatar-01.jpg'
-              image: 'gantry-media://home/above/img-01.jpg'
+              avatar: 'genesis-media://home/above/avatar-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               description: 'Manticore is a fresh new take on news and magazine-style design for the world of gaming and entertainment. Review the latest releases and share videos of your recent adventures with Manticore!'
               url: '#'
               target: _blank
@@ -472,8 +472,8 @@ content:
             -
               date: '2019-05-09'
               author: 'Jackson Grant'
-              avatar: 'gantry-media://home/above/avatar-01.jpg'
-              image: 'gantry-media://home/above/img-01.jpg'
+              avatar: 'genesis-media://home/above/avatar-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               description: 'Don’t know how to code? No problem! Manticore is built on the powerful Genesis framework, making it easier than ever to create a custom layout for your website and add functional improvements without writing a single line of code.'
               url: '#'
               target: _blank
@@ -481,8 +481,8 @@ content:
             -
               date: '2019-05-01'
               author: 'Jackson Grant'
-              avatar: 'gantry-media://home/above/avatar-01.jpg'
-              image: 'gantry-media://home/above/img-01.jpg'
+              avatar: 'genesis-media://home/above/avatar-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               description: 'Want to add a new gallery to your home page? It’s easy as dragging and dropping the Image Grid particle into your layout using Genesis’s powerful Layout Manager. Setting up your content takes seconds!'
               url: '#'
               target: _blank
@@ -493,8 +493,8 @@ content:
             -
               date: '2019-05-11'
               author: 'Published by Jackson Grant'
-              avatar: 'gantry-media://home/above/avatar-01.jpg'
-              image: 'gantry-media://home/above/img-01.jpg'
+              avatar: 'genesis-media://home/above/avatar-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               description: 'Does your navigation menu leave you wanting more? No problem! You can add particles, custom links, and Font Awesome icons to your menu with a few clicks of the mouse.'
               url: '#'
               target: _self
@@ -502,8 +502,8 @@ content:
             -
               date: '2019-05-11'
               author: 'Published by Jackson Grant'
-              avatar: 'gantry-media://home/above/avatar-01.jpg'
-              image: 'gantry-media://home/above/img-01.jpg'
+              avatar: 'genesis-media://home/above/avatar-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               description: 'Manticore looks as good on mobile as it does on your desktop. Search engines are starting to grade sites on their mobile friendliness. Don’t settle for second place, add Manticore to your site!'
               url: '#'
               target: _self
@@ -636,7 +636,7 @@ content:
           items:
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '9.5'
               subtitle: 'RockStar Games'
               description: ''
@@ -645,7 +645,7 @@ content:
               title: 'Red Dead Redemption II'
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '9.4'
               subtitle: 'RockStar Games'
               description: ''
@@ -657,7 +657,7 @@ content:
           items:
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '8.2'
               subtitle: 'RockStar Games'
               description: ''
@@ -666,7 +666,7 @@ content:
               title: Bloodborne
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '7.8'
               subtitle: 'RockStar Games'
               description: ''
@@ -678,7 +678,7 @@ content:
           items:
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '8.9'
               subtitle: 'RockStar Games'
               description: ''
@@ -687,7 +687,7 @@ content:
               title: Cuphead
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '10'
               subtitle: 'RockStar Games'
               description: ''
@@ -699,7 +699,7 @@ content:
           items:
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '9.1'
               subtitle: 'RockStar Games'
               description: ''
@@ -708,7 +708,7 @@ content:
               title: Fortnite
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '9.5'
               subtitle: 'RockStar Games'
               description: ''
@@ -717,7 +717,7 @@ content:
               title: 'The Last of Us II'
             -
               class: ''
-              image: 'gantry-media://home/feature/img-01.png'
+              image: 'genesis-media://home/feature/img-01.png'
               score: '10.0'
               subtitle: 'RockStar Games'
               description: ''
@@ -757,35 +757,35 @@ content:
         -
           author: 'Streamed by Taylor Jackson'
           author_link: 'https://www.google.pl/'
-          avatar: 'gantry-media://home/showcase/avatar-01.jpg'
-          thumbnail: 'gantry-media://home/showcase/img-01.jpg'
+          avatar: 'genesis-media://home/showcase/avatar-01.jpg'
+          thumbnail: 'genesis-media://home/showcase/img-01.jpg'
           url: 'https://www.youtube.com/embed/Q19apeXtGXE'
           title: 'The Burning Crusade Dungeon Run'
         -
           author: 'Streamed by Taylor Jackson'
           author_link: 'https://www.google.pl/'
-          avatar: 'gantry-media://home/showcase/avatar-01.jpg'
-          thumbnail: 'gantry-media://home/showcase/img-01.jpg'
+          avatar: 'genesis-media://home/showcase/avatar-01.jpg'
+          thumbnail: 'genesis-media://home/showcase/img-01.jpg'
           url: 'https://www.youtube.com/embed/Q19apeXtGXE'
           title: 'Dark Souls 3'
         -
           author: 'Streamed by Taylor Jackson'
           author_link: 'https://www.google.pl/'
-          avatar: 'gantry-media://home/showcase/avatar-01.jpg'
-          thumbnail: 'gantry-media://home/showcase/img-01.jpg'
+          avatar: 'genesis-media://home/showcase/avatar-01.jpg'
+          thumbnail: 'genesis-media://home/showcase/img-01.jpg'
           url: 'https://www.youtube.com/embed/PTEIUoAPR0g'
           title: 'MK 11'
         -
           author: 'Streamed by Taylor Jackson'
           author_link: 'https://www.google.pl/'
-          avatar: 'gantry-media://home/showcase/avatar-01.jpg'
-          thumbnail: 'gantry-media://home/showcase/img-01.jpg'
+          avatar: 'genesis-media://home/showcase/avatar-01.jpg'
+          thumbnail: 'genesis-media://home/showcase/img-01.jpg'
           url: 'https://www.youtube.com/embed/Q19apeXtGXE'
           title: Speedrun
         -
           author: 'Streamed by Taylor Jackson'
           author_link: 'https://www.google.pl/'
-          avatar: 'gantry-media://home/showcase/avatar-01.jpg'
-          thumbnail: 'gantry-media://home/showcase/img-01.jpg'
+          avatar: 'genesis-media://home/showcase/avatar-01.jpg'
+          thumbnail: 'genesis-media://home/showcase/img-01.jpg'
           url: 'https://www.youtube.com/embed/Q19apeXtGXE'
           title: 'Zero Hits'

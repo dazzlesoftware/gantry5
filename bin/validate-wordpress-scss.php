@@ -7,6 +7,6 @@
  */
 
 $platform = 'wordpress';
-$vendorAutoload = 'platforms/wordpress/gantry5/vendor/autoload.php';
+$vendorAutoload = 'platforms/wordpress/genesis/vendor/autoload.php';
 
 require __DIR__ . '/validate-platform-scss.php';

@@ -36,5 +36,5 @@
         svg.appendChild(polyline);
         root.replaceChildren(svg);
     }
-    global.GantryLineChart = { render: render };
+    global.GenesisLineChart = { render: render };
 }(window));

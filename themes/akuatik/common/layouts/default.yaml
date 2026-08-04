@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1568021052
 layout:
@@ -179,7 +179,7 @@ content:
   logo-2704:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://logo/logo.svg'
+      image: 'genesis-media://logo/logo.svg'
       link: '1'
       text: akuatik
       title: ''

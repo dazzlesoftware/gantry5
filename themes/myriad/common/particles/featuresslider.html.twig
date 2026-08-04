@@ -9,12 +9,12 @@
 {% do genesis.document.addInlineStyle(ie11) %}
 
 {% block javascript %}
-    <script src="{{ url('gantry-theme://js/smooth-scroll.min.js') }}"></script>
+    <script src="{{ url('genesis-theme://js/smooth-scroll.min.js') }}"></script>
 {% endblock %}
 
 {% block particle %}
     {% styles %}
-        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
     {% block layout %}
 
@@ -90,5 +90,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

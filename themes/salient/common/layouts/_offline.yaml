@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/offline.png'
+  image: 'genesis-admin://images/layouts/offline.png'
   name: _offline
   timestamp: 1505834698
 layout:
@@ -148,7 +148,7 @@ content:
       buttonclass: 'button button-4'
   logo-2334:
     attributes:
-      image: 'gantry-media://logo/logo-footer.png'
+      image: 'genesis-media://logo/logo-footer.png'
       alt: Salient
       class: g-footer-logo
   totop-4722:

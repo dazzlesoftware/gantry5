@@ -14,7 +14,7 @@ form:
         inherit: Inherit
 
     outline:
-      type: gantry.outlines
+      type: genesis.outlines
       label: Outline
       description: Outline to inherit from.
       selectize:
@@ -23,7 +23,7 @@ form:
         '': No Inheritance
 
     atom:
-      type: gantry.atoms
+      type: genesis.atoms
       id: g-inherit-atom
       outline_field: outline
       label: Atom Instance

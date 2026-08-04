@@ -1,0 +1,55 @@
+{% assets with { priority: 10 } %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css-compiled/g-admin.css') }}" type="text/css" />
+    {% endblock %}
+
+    {% block javascript %}
+        <script>
+            {# These need JS-string escaping (quotes/backslashes), NOT HTML escaping -- the
+               plain `|e`/`|escape` filter here defaults to HTML-escaping, which turns every "&"
+               in the URL into a literal "&amp;" text sequence inside the JS string (correct for
+               an href="" attribute, where the HTML parser decodes it back; wrong here, since
+               nothing decodes entities inside a <script> string, so fetch() ends up requesting a
+               URL with literal "&amp;" in its query string instead of "&"). #}
+            var GENESIS_AJAX_SUFFIX = '{{ genesis.ajax_suffix|e('js') }}';
+            var GENESIS_AJAX_URL = '{{ genesis.route('%ajax%')|e('js') }}';
+            var GENESIS_AJAX_CONF_URL = '{{ genesis.route('configurations/%ajax%')|e('js') }}';
+            var GENESIS_AJAX_NONCE = '{{ genesis.ajax_nonce|e('js') }}';
+            var GENESIS_PLATFORM = 'phpbb';
+            var GENESIS_AJAX_SUFFIX = GENESIS_AJAX_SUFFIX, GENESIS_AJAX_URL = GENESIS_AJAX_URL,
+                GENESIS_AJAX_CONF_URL = GENESIS_AJAX_CONF_URL, GENESIS_AJAX_NONCE = GENESIS_AJAX_NONCE,
+                GENESIS_PLATFORM = GENESIS_PLATFORM;
+
+            // Some admin JS actions (e.g. Save Layout) POST back to "the current page" rather
+            // than to GENESIS_AJAX_URL -- but the visible URL (from the ACP sidebar link) never
+            // has our nonce/genesis_path on it in the first place. Rewrite it once, without a real
+            // navigation, so anything that submits to window.location.href picks these up too.
+            if (window.history && window.history.replaceState) {
+                try {
+                    var genesisUrl = new URL(window.location.href);
+                    genesisUrl.searchParams.set('nonce', GENESIS_AJAX_NONCE);
+                    if (!genesisUrl.searchParams.has('genesis_path') && !genesisUrl.searchParams.has('genesis_path')) {
+                        genesisUrl.searchParams.set('genesis_path', 'configurations/default/layout');
+                    }
+                    window.history.replaceState(null, '', genesisUrl.toString());
+                } catch (e) {}
+            }
+        </script>
+    {% endblock %}
+{% endassets -%}
+
+{# The {% assets %} block above only queues these into Genesis's Document registry (needed so
+   the front-end's phpBB-template-var-based flush works) -- print them directly here instead,
+   since this page isn't going through phpBB's own template system at all. #}
+{{ genesis.styles('head')|join("\n")|raw }}
+{{ genesis.scripts('head')|join("\n")|raw }}
+
+<div id="genesis-container" data-genesis-container="">
+    {% block content %}
+    {% endblock %}
+
+    {% block footer_section %}
+    {% endblock %}
+</div>
+
+{{ genesis.scripts('footer')|join("\n")|raw }}

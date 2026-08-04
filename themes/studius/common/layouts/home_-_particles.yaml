@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1602516936
 layout:
@@ -206,7 +206,7 @@ content:
         -
           headline: 'A Perfect Theme for Your School or University'
           icon: 'fa fa-graduation-cap'
-          image: 'gantry-media://rocketlauncher/home/slideshow/img-01.jpg'
+          image: 'genesis-media://rocketlauncher/home/slideshow/img-01.jpg'
           link: '#'
           linklabel: 'Explore now'
           linktarget: _blank
@@ -214,7 +214,7 @@ content:
         -
           headline: 'Packed with Premium Features'
           icon: 'fa fa-plug'
-          image: 'gantry-media://rocketlauncher/home/slideshow/img-02.jpg'
+          image: 'genesis-media://rocketlauncher/home/slideshow/img-02.jpg'
           link: '#'
           linklabel: 'Explore now'
           linktarget: _blank
@@ -222,7 +222,7 @@ content:
         -
           headline: 'Build a beautiful website in minutes.'
           icon: 'fa fa-rocket'
-          image: 'gantry-media://rocketlauncher/home/slideshow/img-03.jpg'
+          image: 'genesis-media://rocketlauncher/home/slideshow/img-03.jpg'
           link: '#'
           linklabel: 'Explore now'
           linktarget: _blank
@@ -373,7 +373,7 @@ content:
       variations: center
   image-9951:
     attributes:
-      image: 'gantry-media://rocketlauncher/home/above/img-01.jpg'
+      image: 'genesis-media://rocketlauncher/home/above/img-01.jpg'
     block:
       class: white-overlay
   gridstatistic-8481:
@@ -437,7 +437,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-02.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-02.jpg'
               description: ''
               date: ''
               url: ''
@@ -446,7 +446,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-01.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-01.jpg'
               description: ''
               date: ''
               url: ''
@@ -463,7 +463,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-03.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-03.jpg'
               description: ''
               date: ''
               url: ''
@@ -472,7 +472,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-04.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-04.jpg'
               description: ''
               date: ''
               url: ''
@@ -481,7 +481,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-05.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-05.jpg'
               description: ''
               date: ''
               url: ''
@@ -490,7 +490,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-07.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-07.jpg'
               description: ''
               date: ''
               url: ''
@@ -499,7 +499,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-05.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-05.jpg'
               description: ''
               date: ''
               url: ''
@@ -508,7 +508,7 @@ content:
             -
               class: ''
               textonly: disabled
-              image: 'gantry-media://rocketlauncher/home/feature/img-06.jpg'
+              image: 'genesis-media://rocketlauncher/home/feature/img-06.jpg'
               description: ''
               date: ''
               url: ''
@@ -609,7 +609,7 @@ content:
       class: section-overflow
   image-2414:
     attributes:
-      image: 'gantry-media://rocketlauncher/home/showcase/img-01.png'
+      image: 'genesis-media://rocketlauncher/home/showcase/img-01.png'
     block:
       variations: 'nomarginright nopaddingright nomarginleft nopaddingleft'
   heading-5392:
@@ -631,27 +631,27 @@ content:
       items:
         -
           content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
-          avatar: 'gantry-media://rocketlauncher/home/utility/img-04.jpeg'
+          avatar: 'genesis-media://rocketlauncher/home/utility/img-04.jpeg'
           position: 'Art Education'
           name: 'Robert Bates'
         -
           content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
-          avatar: 'gantry-media://rocketlauncher/home/utility/img-03.jpeg'
+          avatar: 'genesis-media://rocketlauncher/home/utility/img-03.jpeg'
           position: 'Music Education'
           name: 'Andria Farr'
         -
           content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
-          avatar: 'gantry-media://rocketlauncher/home/utility/img-01.jpeg'
+          avatar: 'genesis-media://rocketlauncher/home/utility/img-01.jpeg'
           position: Marketing
           name: 'Ann Ocasio'
         -
           content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
-          avatar: 'gantry-media://rocketlauncher/home/utility/img-02.jpeg'
+          avatar: 'genesis-media://rocketlauncher/home/utility/img-02.jpeg'
           position: 'Computer Science'
           name: 'Cassie Nichols'
         -
           content: 'We had an incredible experience working with our students and were impressed they made such a big difference in only three weeks. We''re grateful for the wonderful improvements they made and their ability to get familiar with the courses so quickly. '
-          avatar: 'gantry-media://rocketlauncher/home/utility/img-05.jpeg'
+          avatar: 'genesis-media://rocketlauncher/home/utility/img-05.jpeg'
           position: 'Software development'
           name: 'Carolyn McBride'
       largedesktopslides: '1'
@@ -698,22 +698,22 @@ content:
       mobilespace: '35'
       news:
         -
-          image: 'gantry-media://rocketlauncher/home/expanded/img-01.jpg'
+          image: 'genesis-media://rocketlauncher/home/expanded/img-01.jpg'
           link: ''
           target: _self
           content: 'Details about our Fifth Annual Speed Painting Competition'
         -
-          image: 'gantry-media://rocketlauncher/home/expanded/img-02.jpg'
+          image: 'genesis-media://rocketlauncher/home/expanded/img-02.jpg'
           link: ''
           target: _self
           content: 'Vermont Symphony Orchestra Returns to Evergreen College'
         -
-          image: 'gantry-media://rocketlauncher/home/expanded/img-03.jpg'
+          image: 'genesis-media://rocketlauncher/home/expanded/img-03.jpg'
           link: ''
           target: _self
           content: 'The Computer Science is fundamentally important'
         -
-          image: 'gantry-media://rocketlauncher/home/expanded/img-04.jpg'
+          image: 'genesis-media://rocketlauncher/home/expanded/img-04.jpg'
           link: ''
           target: _self
           content: 'Upcoming events on our university'

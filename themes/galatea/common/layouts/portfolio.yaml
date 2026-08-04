@@ -157,7 +157,7 @@ content:
       pauseOnHover: '0'
       items:
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-01.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -173,7 +173,7 @@ content:
           buttonclass: button-2
           name: 'Item 1'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-02.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -189,7 +189,7 @@ content:
           buttonclass: button-2
           name: 'Item 2'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-03.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -205,7 +205,7 @@ content:
           buttonclass: button-2
           name: 'Item 3'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-04.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -221,7 +221,7 @@ content:
           buttonclass: button-2
           name: 'Item 4'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-05.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -237,7 +237,7 @@ content:
           buttonclass: button-2
           name: 'Item 5'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-06.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -253,7 +253,7 @@ content:
           buttonclass: button-2
           name: 'Item 6'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-07.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-07.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -269,7 +269,7 @@ content:
           buttonclass: button-2
           name: 'Item 7'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-08.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-08.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -285,7 +285,7 @@ content:
           buttonclass: button-2
           name: 'Item 8'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-01.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -301,7 +301,7 @@ content:
           buttonclass: button-2
           name: 'Item 9'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-02.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -317,7 +317,7 @@ content:
           buttonclass: button-2
           name: 'Item 10'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-03.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -333,7 +333,7 @@ content:
           buttonclass: button-2
           name: 'Item 11'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-04.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -349,7 +349,7 @@ content:
           buttonclass: button-2
           name: 'Item 12'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-05.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -365,7 +365,7 @@ content:
           buttonclass: button-2
           name: 'Item 13'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-06.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -381,7 +381,7 @@ content:
           buttonclass: button-2
           name: 'Item 14'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-07.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-07.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -397,7 +397,7 @@ content:
           buttonclass: button-2
           name: 'Item 15'
         -
-          image: 'gantry-media://pages/portfolio/slideshow/img-08.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-08.jpg'
           overlayImage: ''
           overlayParallax: '0'
           overlayParallaxRatio: ''
@@ -421,7 +421,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/slideshow/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-01.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -437,7 +437,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/slideshow/img-02.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-02.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -453,7 +453,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/slideshow/img-03.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-03.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -469,7 +469,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/slideshow/img-04.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-04.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -485,7 +485,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/slideshow/img-05.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-05.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -501,7 +501,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/slideshow/img-06.jpg'
+          image: 'genesis-media://pages/portfolio/slideshow/img-06.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -521,35 +521,35 @@ content:
       album: clients
       imagegriditems:
         -
-          image: 'gantry-media://pages/about-us/feature/img-01.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-01.jpg'
           caption: 'Image 1'
           title: 'Image 1'
         -
-          image: 'gantry-media://pages/about-us/feature/img-02.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-02.jpg'
           caption: 'Image 2'
           title: 'Image 2'
         -
-          image: 'gantry-media://pages/about-us/feature/img-03.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-03.jpg'
           caption: 'Image 3'
           title: 'Image 3'
         -
-          image: 'gantry-media://pages/about-us/feature/img-04.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-04.jpg'
           caption: 'Image 4'
           title: 'Image 4'
         -
-          image: 'gantry-media://pages/about-us/feature/img-05.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-05.jpg'
           caption: 'Image 5'
           title: 'Image 5'
         -
-          image: 'gantry-media://pages/about-us/feature/img-06.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-06.jpg'
           caption: 'Image 6'
           title: 'Image 6'
         -
-          image: 'gantry-media://pages/about-us/feature/img-07.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-07.jpg'
           caption: 'Image 7'
           title: 'Image 7'
         -
-          image: 'gantry-media://pages/about-us/feature/img-08.jpg'
+          image: 'genesis-media://pages/about-us/feature/img-08.jpg'
           caption: 'Image 8'
           title: 'Image 8'
   blockcontent-3235:
@@ -559,7 +559,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://pages/portfolio/showcase/img-01.png'
+          img: 'genesis-media://pages/portfolio/showcase/img-01.png'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -573,7 +573,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://pages/portfolio/showcase/img-02.png'
+          img: 'genesis-media://pages/portfolio/showcase/img-02.png'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -587,7 +587,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://pages/portfolio/showcase/img-03.png'
+          img: 'genesis-media://pages/portfolio/showcase/img-03.png'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -601,7 +601,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://pages/portfolio/showcase/img-04.png'
+          img: 'genesis-media://pages/portfolio/showcase/img-04.png'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -615,7 +615,7 @@ content:
         -
           name: ''
           icon: ''
-          img: 'gantry-media://pages/portfolio/showcase/img-05.png'
+          img: 'genesis-media://pages/portfolio/showcase/img-05.png'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -809,7 +809,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           icon: ''
           readmoreclass: ''
           title: Genesis
@@ -920,7 +920,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://github.com/gantry/gantry5'
+          link: 'https://github.com/genesis/genesis'
           icon: ''
           readmoreclass: ''
           title: Github

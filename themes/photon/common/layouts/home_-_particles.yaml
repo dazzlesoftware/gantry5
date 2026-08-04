@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1457098912
 layout:
@@ -238,7 +238,7 @@ content:
       class: g-bottom-offset
       items:
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
           desc: ''
           buttontext: 'Read More'
           buttonlink: '#'
@@ -246,7 +246,7 @@ content:
           buttonclass: ''
           title: 'Corporate & Business Oriented Template'
         -
-          image: 'gantry-media://demo/home/slideshow/img-02.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-02.jpg'
           desc: ''
           buttontext: 'Read More'
           buttonlink: '#'
@@ -254,7 +254,7 @@ content:
           buttonclass: ''
           title: 'Six Presets With Individual Settings'
         -
-          image: 'gantry-media://demo/home/slideshow/img-03.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-03.jpg'
           desc: ''
           buttontext: 'Read More'
           buttonlink: '#'
@@ -262,7 +262,7 @@ content:
           buttonclass: ''
           title: 'Offset Restrictions With Unlimited Positions'
         -
-          image: 'gantry-media://demo/home/slideshow/img-04.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-04.jpg'
           desc: ''
           buttontext: 'Read More'
           buttonlink: '#'
@@ -270,7 +270,7 @@ content:
           buttonclass: ''
           title: 'Intuitive Drag And Drop Layout Possibilities'
         -
-          image: 'gantry-media://demo/home/slideshow/img-05.jpg'
+          image: 'genesis-media://demo/home/slideshow/img-05.jpg'
           desc: ''
           buttontext: 'Read More'
           buttonlink: '#'
@@ -287,23 +287,23 @@ content:
       cols: g-imagegrid-5cols
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/header/img-01.jpg'
+          image: 'genesis-media://demo/home/header/img-01.jpg'
           caption: ''
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-02.jpg'
+          image: 'genesis-media://demo/home/header/img-02.jpg'
           caption: ''
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-03.jpg'
+          image: 'genesis-media://demo/home/header/img-03.jpg'
           caption: ''
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-04.jpg'
+          image: 'genesis-media://demo/home/header/img-04.jpg'
           caption: ''
           title: 'New item'
         -
-          image: 'gantry-media://demo/home/header/img-05.jpg'
+          image: 'genesis-media://demo/home/header/img-05.jpg'
           caption: ''
           title: 'New item'
   pricingtable-9025:
@@ -560,7 +560,7 @@ content:
       dots: '0'
       items:
         -
-          image: 'gantry-media://demo/home/expanded/img-01.jpg'
+          image: 'genesis-media://demo/home/expanded/img-01.jpg'
           icon: ''
           title: Business
           desc: ''
@@ -570,7 +570,7 @@ content:
           buttonclass: ''
           name: Business
         -
-          image: 'gantry-media://demo/home/expanded/img-02.jpg'
+          image: 'genesis-media://demo/home/expanded/img-02.jpg'
           icon: ''
           title: Corporate
           desc: ''
@@ -608,7 +608,7 @@ content:
       dots: '1'
       items:
         -
-          image: 'gantry-media://demo/home/extension/avatar-01.jpg'
+          image: 'genesis-media://demo/home/extension/avatar-01.jpg'
           icon: 'fa fa-twitter'
           title: ''
           desc: 'The template styling is built with SCSS, a programmable stylesheet language for CSS, making the CSS more dynamic and adaptable. You can easily enable and disable automatic recompilation of SCSS files.'
@@ -618,7 +618,7 @@ content:
           buttonclass: ''
           name: 'Template Styling'
         -
-          image: 'gantry-media://demo/home/extension/avatar-02.jpg'
+          image: 'genesis-media://demo/home/extension/avatar-02.jpg'
           icon: 'fa fa-facebook-square'
           title: ''
           desc: 'Set up and configure page layouts with Genesis''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
@@ -628,7 +628,7 @@ content:
           buttonclass: ''
           name: 'Layout Manager'
         -
-          image: 'gantry-media://demo/home/extension/avatar-03.jpg'
+          image: 'genesis-media://demo/home/extension/avatar-03.jpg'
           icon: 'fa fa-google-plus'
           title: ''
           desc: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'

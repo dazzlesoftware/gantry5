@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_PhotonInstallerScript
+ * Class Genesis_PhotonInstallerScript
  */
-class G5_PhotonInstallerScript
+class Genesis_PhotonInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

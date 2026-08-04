@@ -55,4 +55,4 @@ form:
       label: Custom Configuration
       description: Select JSON config file.
       root:
-        - gantry-theme://json/particlejs
+        - genesis-theme://json/particlejs

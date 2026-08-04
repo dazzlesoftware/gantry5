@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_IsotopeInstallerScript
+ * Class Genesis_IsotopeInstallerScript
  */
-class G5_IsotopeInstallerScript
+class Genesis_IsotopeInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

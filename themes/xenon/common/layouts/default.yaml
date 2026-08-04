@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1448864390
 layout:
@@ -358,7 +358,7 @@ content:
       key: footer-d
   branding-3018:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-8334:
     title: 'To Top'
     attributes:

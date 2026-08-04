@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_ManticoreInstallerScript
+ * Class Genesis_ManticoreInstallerScript
  */
-class G5_ManticoreInstallerScript
+class Genesis_ManticoreInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

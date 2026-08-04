@@ -10,13 +10,13 @@
 		@include breakpoint(mobile-only) {
 			text-align: center;
 			border: 0;
-		}		
+		}
 	}
 	.g-content {
 		padding: 0 $content-padding;
 		@include breakpoint(mobile-only) {
 			padding: $content-padding/2 $content-padding 0 $content-padding;
-		}		
+		}
 	}
 
 	// Accent
@@ -36,34 +36,34 @@
 	// Logo
 	.g-logo {
 		font-family: get-font-family($font-family-title);
-		font-weight: $font-weight-bold;		
+		font-weight: $font-weight-bold;
 		font-size: $core-font-size + 0.5;
 		transition: none;
 		@include breakpoint(tablet-range) {
 			letter-spacing: 0;
-		}	
+		}
 		span {
 			text-transform: uppercase;
 			display: inline-block;
 			vertical-align: middle;
 		}
     &.g-logo-alt {
-  		.g-style-preset7 &, .g-style-preset8 & {
-  			img {
-  				display: none;
-  			}
-  			span {
-  				&:before {
-  					content: "";
-  					display: inline-block;
-  					width: 48px;
-  					height: 48px;
-  					vertical-align: -0.85rem;
-  					background: url("gantry-theme://images/logo/logo.png") no-repeat;
-  				}
+		.g-style-preset7 &, .g-style-preset8 & {
+			img {
+				display: none;
+			}
+			span {
+				&:before {
+					content: "";
+					display: inline-block;
+					width: 48px;
+					height: 48px;
+					vertical-align: -0.85rem;
+					background: url("genesis-theme://images/logo/logo.png") no-repeat;
+				}
         }
 			}
-		}	
+		}
 	}
 	// Horizontal Menu
 	.g-horizontalmenu-block {
@@ -75,30 +75,30 @@
 		}
 		@include breakpoint(mobile-only) {
 			border: 0;
-		}		
+		}
 	}
 	.g-horizontalmenu li {
 		vertical-align: bottom;
 		@include breakpoint(small-mobile-range) {
 			font-size: $core-font-size - 0.2;
 			margin: 0 3px;
-		}		
+		}
 	}
 
 	// Social Items
 	.g-social {
 		padding-top: 0.5rem;
 		text-align: right;
-    	.dir-rtl & {
-    		text-align: left;
-    	}		
+	.dir-rtl & {
+		text-align: left;
+	}
 		a {
 			margin: 0;
 		}
 		@include breakpoint(mobile-only) {
 			text-align: center;
 			margin-bottom: 1.5rem;
-		}			
+		}
 	}
 
 	// Info List - Grid Menu
@@ -118,13 +118,13 @@
 				}
 				@include breakpoint(tablet-range) {
 					font-size: $core-font-size - 0.45;
-				}		
+				}
 				@include breakpoint(mobile-only) {
 					font-size: $core-font-size - 0.2;
-				}					
+				}
 				a {
 					font-weight: normal;
-				}					
+				}
 			}
 			.g-infolist-item-text {
 				padding: 0;
@@ -133,7 +133,7 @@
 				.g-infolist-item {
 					@include breakpoint(mobile-only) {
 						width: 47% !important;
-					}						
+					}
 				}
 			}
 		}
@@ -144,7 +144,7 @@
 		p {
 			margin-top: 0.85rem;
 			font-size: $core-font-size - 0.1;
-		}		
+		}
 	}
 
 	// Contact
@@ -154,12 +154,12 @@
 				@include breakpoint(tablet-range) {
 					padding-left: 0;
 					padding-right: 0;
-				}				
+				}
 			}
 			.g-contact-icon {
 				@include breakpoint(tablet-range) {
 					display: none;
-				}				
+				}
 			}
 		}
 	}
@@ -176,7 +176,7 @@
 			@include breakpoint(tablet-range) {
 				font-size: $core-font-size - 0.2;
 			}
-		}			
+		}
 	}
 }
 

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home_positions
   timestamp: 1505834698
 layout:
@@ -341,7 +341,7 @@ content:
   logo-7806:
     attributes:
       rel: home
-      image: 'gantry-media://logo/logo-footer.png'
+      image: 'genesis-media://logo/logo-footer.png'
       alt: Salient
       class: g-footer-logo
   totop-2583:

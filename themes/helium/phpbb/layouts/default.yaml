@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1
 layout:
@@ -43,10 +43,10 @@ content:
   custom-1004:
     title: 'Tagline'
     attributes:
-      html: '<div class="g-phpbb-gantry-tagline">phpBB Edition</div>'
+      html: '<div class="g-phpbb-genesis-tagline">phpBB Edition</div>'
   copyright-1003:
     title: Copyright
   custom-1005:
     title: 'Footer note'
     attributes:
-      html: '<div class="g-phpbb-gantry-footer-note">Styled by Genesis &amp; Helium</div>'
+      html: '<div class="g-phpbb-genesis-footer-note">Styled by Genesis &amp; Helium</div>'

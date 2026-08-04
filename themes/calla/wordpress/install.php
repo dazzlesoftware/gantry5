@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_CallaInstallerScript
+ * Class Genesis_CallaInstallerScript
  */
-class G5_CallaInstallerScript
+class Genesis_CallaInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

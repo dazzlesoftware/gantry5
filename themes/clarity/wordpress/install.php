@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_ClarityInstallerScript
+ * Class Genesis_ClarityInstallerScript
  */
-class G5_ClarityInstallerScript
+class Genesis_ClarityInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

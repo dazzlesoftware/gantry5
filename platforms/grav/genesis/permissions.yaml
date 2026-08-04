@@ -1,0 +1,7 @@
+actions:
+  admin.genesis:
+    type: default
+    label: Genesis
+
+  default:
+    type: access

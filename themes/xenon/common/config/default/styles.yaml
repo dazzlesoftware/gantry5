@@ -2,7 +2,7 @@ preset: preset1
 base:
   background: '#ffffff'
   text-color: '#686868'
-  background-image: 'gantry-media://backgrounds/base/bg-01.jpg'
+  background-image: 'genesis-media://backgrounds/base/bg-01.jpg'
   favicon: ''
 accent:
   color-1: '#01a3d1'

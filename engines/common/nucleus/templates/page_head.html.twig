@@ -6,7 +6,7 @@
 
 {% assets with { priority: 10 } %}
     {% block head_stylesheets -%}
-        <link rel="stylesheet" href="gantry-engine://css-compiled/nucleus.css" type="text/css"/>
+        <link rel="stylesheet" href="genesis-engine://css-compiled/nucleus.css" type="text/css"/>
         {% for scss in genesis.theme.configuration.css.persistent|default(genesis.theme.configuration.css.files|default([])) %}
         <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
@@ -17,14 +17,14 @@
         {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_js_import|trim %}
             {{ genesis.config.page.fontawesome.html_js_import|html|raw -}}
         {% elseif faVersion == 'fa5js' %}
-            <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome6-all.min.js') }}"></script>
+            <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome6-all.min.js') }}"></script>
             {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
-                <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome6-shim.min.js') }}"></script>
+                <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome6-shim.min.js') }}"></script>
             {% endif %}
         {% elseif faVersion == 'fa7js' %}
-            <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome7-all.min.js') }}"></script>
+            <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome7-all.min.js') }}"></script>
             {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
-                <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome7-shim.min.js') }}"></script>
+                <script type="text/javascript" src="{{ url('genesis-assets://js/font-awesome7-shim.min.js') }}"></script>
             {% endif %}
         {% endif %}
     {% endif %}
@@ -37,16 +37,16 @@
             {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_css_import|trim %}
                 {{ genesis.config.page.fontawesome.html_css_import|html|raw -}}
             {% elseif faVersion == 'fa4' %}
-                <link rel="stylesheet" href="gantry-assets://css/font-awesome.min.css" type="text/css"/>
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome.min.css" type="text/css"/>
             {% elseif faVersion == 'fa5css' %}
-                <link rel="stylesheet" href="gantry-assets://css/font-awesome6-all.min.css" type="text/css">
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome6-all.min.css" type="text/css">
                 {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
 
                 {% endif %}
             {% elseif faVersion == 'fa7css' %}
-                <link rel="stylesheet" href="gantry-assets://css/font-awesome7-all.min.css" type="text/css">
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome7-all.min.css" type="text/css">
             {% elseif (faVersion == 'fa5js' or (faVersion == 'manual' and genesis.config.page.fontawesome.html_js_import)) and (genesis.config.page.fontawesome.content_compatibility|default(1)) %}
-                <link rel="stylesheet" href="gantry-assets://css/font-awesome6-pseudo.min.css" type="text/css">
+                <link rel="stylesheet" href="genesis-assets://css/font-awesome6-pseudo.min.css" type="text/css">
             {% endif %}
         {% endif %}
         {% for scss in genesis.theme.configuration.css.overrides|default([]) %}

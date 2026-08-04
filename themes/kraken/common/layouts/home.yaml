@@ -139,7 +139,7 @@ content:
     attributes:
       class: 'g-logo g-logo-alt'
       enabled: 0
-      image: 'gantry-media://logo/logo-alt.png'
+      image: 'genesis-media://logo/logo-alt.png'
     block:
       class: hidden-phone
   menu-6756:
@@ -307,7 +307,7 @@ content:
       gridcontentitems:
         -
           icon: ''
-          img: 'gantry-media://demo/home/mainbar/img01.jpg'
+          img: 'genesis-media://demo/home/mainbar/img01.jpg'
           textstyle: g-gridcontent-title-style-3
           text1: Photo
           text2: 'The new and powerful Genesis framework '
@@ -318,7 +318,7 @@ content:
           title: 'The new and powerful Genesis Framework'
         -
           icon: ''
-          img: 'gantry-media://demo/home/mainbar/img01.jpg'
+          img: 'genesis-media://demo/home/mainbar/img01.jpg'
           textstyle: g-gridcontent-title-style-3
           text1: News
           text2: 'A built-in and versatile dropdown menu system'
@@ -329,7 +329,7 @@ content:
           title: 'A built-in and versatile dropdown menu system'
         -
           icon: ''
-          img: 'gantry-media://demo/home/mainbar/img01.jpg'
+          img: 'genesis-media://demo/home/mainbar/img01.jpg'
           textstyle: g-gridcontent-title-style-3
           text1: Creation
           text2: 'Layout manager with drag and drop functionality '
@@ -415,8 +415,8 @@ content:
         -
           name: 'Customize from the Styles Panel'
           icon: ''
-          img: 'gantry-media://demo/home/aside/img01.jpg'
-          rokboximage: 'gantry-media://demo/home/aside/img01.jpg'
+          img: 'genesis-media://demo/home/aside/img01.jpg'
+          rokboximage: 'genesis-media://demo/home/aside/img01.jpg'
           rokboxcaption: 'Style Panel'
           subtitle: ''
           description: '<span>Style elements of the Kraken theme<span class="hidden-tablet">, such as links, font or background colors.</span></span>'
@@ -428,8 +428,8 @@ content:
         -
           name: 'Offcanvas section for extra content'
           icon: ''
-          img: 'gantry-media://demo/home/aside/img01.jpg'
-          rokboximage: 'gantry-media://demo/home/aside/img01.jpg'
+          img: 'genesis-media://demo/home/aside/img01.jpg'
+          rokboximage: 'genesis-media://demo/home/aside/img01.jpg'
           rokboxcaption: 'Offcanvas Section'
           subtitle: ''
           description: '<span>Content placed in the Offcanvas section<span class="hidden-tablet"> will appear outside of the main viewport.</span></span>'
@@ -450,7 +450,7 @@ content:
       elementHeight: auto
       items:
         -
-          image: 'gantry-media://demo/home/aside/img03.jpg'
+          image: 'genesis-media://demo/home/aside/img03.jpg'
           subtitle: ''
           title: 'Particles System'
           link: ''
@@ -458,7 +458,7 @@ content:
           desc: 'Genesis''s Particles system makes it easy to configure content blocks.'
           name: 'Item 1'
         -
-          image: 'gantry-media://demo/home/aside/img04.jpg'
+          image: 'genesis-media://demo/home/aside/img04.jpg'
           subtitle: ''
           title: 'Twig Templating'
           link: ''
@@ -466,7 +466,7 @@ content:
           desc: 'Genesis utilizes Twig - a flexible, fast, and secure template engine for PHP.'
           name: 'Item 2'
         -
-          image: 'gantry-media://demo/home/aside/img05.jpg'
+          image: 'genesis-media://demo/home/aside/img05.jpg'
           subtitle: ''
           title: 'YAML Configuration'
           link: ''
@@ -512,22 +512,22 @@ content:
   logo-6722:
     attributes:
       class: 'g-logo g-logo-alt'
-      image: 'gantry-media://logo/logo-alt.png'
+      image: 'genesis-media://logo/logo-alt.png'
   horizontalmenu-4713:
     title: 'Horizontal Menu'
     attributes:
       items:
         -
           text: Genesis
-          link: 'http://www.gantry.org/'
+          link: 'http://www.genesis.org/'
           name: Genesis
         -
           text: Features
-          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          link: 'http://docs.genesis.org/genesis/basics/key-features'
           name: Features
         -
           text: Particles
-          link: 'http://docs.gantry.org/gantry5/particles'
+          link: 'http://docs.genesis.org/genesis/particles'
           name: Particles
         -
           text: Join
@@ -538,7 +538,7 @@ content:
       variations: center
   branding-1872:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-8071:
     title: 'To Top'
     attributes:

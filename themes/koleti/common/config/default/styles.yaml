@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#5c5acf'
@@ -35,26 +35,26 @@ preset1:
       text-color: '#ffffff'
     slideshow:
       background: '#000000'
-      background-image: 'gantry-media://backgrounds/slideshow/background-01.jpg'
+      background-image: 'genesis-media://backgrounds/slideshow/background-01.jpg'
       text-color: '#ffffff'
     header:
       background: '#f3f5f7'
       text-color: '#030303'
     above:
       background: 'rgba(255, 255, 255, 0)'
-      background-image: 'gantry-media://backgrounds/above/background-01.jpg'
+      background-image: 'genesis-media://backgrounds/above/background-01.jpg'
       text-color: '#ffffff'
       transparent-background: 'rgba(0, 0, 0, 0.85)'
     feature:
       background: 'rgba(255, 255, 255, 0)'
-      background-image: 'gantry-media://backgrounds/feature/background-01.jpg'
+      background-image: 'genesis-media://backgrounds/feature/background-01.jpg'
       text-color: '#030303'
     showcase:
       background: '#f3f5f7'
       text-color: '#030303'
     utility:
       background: '#030303'
-      background-image: 'gantry-media://backgrounds/utility/background-01.jpg'
+      background-image: 'genesis-media://backgrounds/utility/background-01.jpg'
       text-color: '#ffffff'
       transparent-background: 'rgba(0, 0, 0, 0.7)'
     main:

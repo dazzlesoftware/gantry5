@@ -4,7 +4,7 @@
 
 <div id="feature-block">
 {% for item in particle.items %}
-	<div class="gantry-width-{{ particle.cols }} fp-feature-block">
+	<div class="genesis-width-{{ particle.cols }} fp-feature-block">
 		{% if item.image %}
 		<div class="fp-feature-image-block">
 			<img src="{{ item.image }}" alt="{{ item.imagealt|default('image') }}" />
@@ -15,7 +15,7 @@
 		</div>
 		{% endif %}
 		{% if item.title or item.desc %}
-		<div class="gantry-width-spacer">
+		<div class="genesis-width-spacer">
 			<div class="rt-icon-badge">{% if item.link %}<a href="{{ item.link }}">{% endif %}<span class="{{ item.icon }}"></span>{% if item.link %}</a>{% endif %}</div>
 			{% if item.title %}<h5 class="medpaddingtop">{{ item.title|raw }}</h5>{% endif %}
 			{% if item.desc %}<p>{{ item.desc|raw }}</p>{% endif %}

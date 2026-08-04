@@ -1,11 +1,11 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#3e9dd3'
     - '#78bf57'
     - '#888888'
-  styles:    
+  styles:
     base:
       background: '#ffffff'
       text-color: '#6e6e6e'
@@ -16,48 +16,48 @@ preset1:
     font:
       family-regular: 'cabin-regular, Verdana, Helvetica, Arial, sans-serif'
       family-bold: 'cabin-semibold, Verdana, Helvetica, Arial, sans-serif'
-    navigation:      
+    navigation:
       background: '#ffffff'
-      text-color: '#2f2f2f'  
-    showcase:      
+      text-color: '#2f2f2f'
+    showcase:
       background: '#41a4dd'
       text-color: '#ffffff'
-      link-color: '#07659e' 
-      background-image: 'gantry-media://backgrounds/showcase/preset1/bg.png'      
+      link-color: '#07659e'
+      background-image: 'genesis-media://backgrounds/showcase/preset1/bg.png'
     top:
       background: '#f5f6f8'
-      text-color: '#8b8b8b'      
-    utility:      
+      text-color: '#8b8b8b'
+    utility:
       background: '#ffffff'
       text-color: '#6e6e6e'
-    feature:      
+    feature:
       background: '#f5f6f8'
       text-color: '#8b8b8b'
-      background-image: 'gantry-media://backgrounds/feature/preset1/bg.png'
-    maintop:      
+      background-image: 'genesis-media://backgrounds/feature/preset1/bg.png'
+    maintop:
       background: '#f5f6f8'
       text-color: '#8b8b8b'
-    expandedtop:      
+    expandedtop:
       background: '#ffffff'
       text-color: '#6e6e6e'
-    expandedbottom:      
+    expandedbottom:
       background: '#f5f6f8'
       text-color: '#8b8b8b'
-    mainbottom:      
+    mainbottom:
       background: '#ffffff'
-      text-color: '#6e6e6e'      
-    extension:      
+      text-color: '#6e6e6e'
+    extension:
       background: '#41a4dd'
       text-color: '#2a6a8f'
-      link-color: '#07659e' 
-      background-image: 'gantry-media://backgrounds/extension/preset1/bg.png'     
-    bottom:      
+      link-color: '#07659e'
+      background-image: 'genesis-media://backgrounds/extension/preset1/bg.png'
+    bottom:
       background: '#2a6a8f'
       text-color: '#41a4dd'
-    footer:      
+    footer:
       background: '#35363a'
       text-color: '#8f8f8f'
-    copyright:      
+    copyright:
       background: '#2d2d2d'
       text-color: '#5f5f5f'
     offcanvas:

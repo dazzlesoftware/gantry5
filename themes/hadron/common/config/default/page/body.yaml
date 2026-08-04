@@ -1,6 +1,6 @@
 attribs:
   id: ''
-  class: 'gantry rt-overlay-dark'
+  class: 'genesis rt-overlay-dark'
   extra: {  }
 layout:
   sections: '0'

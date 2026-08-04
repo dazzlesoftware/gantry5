@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1601762106
 layout:
@@ -208,19 +208,19 @@ content:
       items:
         -
           description: ''
-          image: 'gantry-media://home/slideshow/img-01.png'
+          image: 'genesis-media://home/slideshow/img-01.png'
           link: ''
           linktarget: modal
           title: Item 1
         -
           description: ''
-          image: 'gantry-media://home/slideshow/img-01.png'
+          image: 'genesis-media://home/slideshow/img-01.png'
           link: ''
           linktarget: modal
           title: Item 2
         -
           description: ''
-          image: 'gantry-media://home/slideshow/img-01.png'
+          image: 'genesis-media://home/slideshow/img-01.png'
           link: ''
           linktarget: modal
           title: Item 3
@@ -264,22 +264,22 @@ content:
     attributes:
       logos:
         -
-          image: 'gantry-media://home/header/img-01.png'
+          image: 'genesis-media://home/header/img-01.png'
           url: '#'
           target: _self
           title: 'Item 1'
         -
-          image: 'gantry-media://home/header/img-01.png'
+          image: 'genesis-media://home/header/img-01.png'
           url: '#'
           target: _self
           title: 'Item 2'
         -
-          image: 'gantry-media://home/header/img-01.png'
+          image: 'genesis-media://home/header/img-01.png'
           url: '#'
           target: _self
           title: 'Item 3'
         -
-          image: 'gantry-media://home/header/img-01.png'
+          image: 'genesis-media://home/header/img-01.png'
           url: '#'
           target: _self
           title: 'Item 4'
@@ -406,17 +406,17 @@ content:
       effect: slide
       items:
         -
-          image: 'gantry-media://home/above/img-01.png'
+          image: 'genesis-media://home/above/img-01.png'
           main_title: 'Showcase Particle'
           description: 'The Showcase particle creates an intuitive and modern tool for highlighting the most important features of your product. Add an image, title, and description to each item that draws the attention of your visitors and provides important details about your featured products or services.'
           title: 'Feature Your Product'
         -
-          image: 'gantry-media://home/above/img-01.png'
+          image: 'genesis-media://home/above/img-01.png'
           main_title: "Invite your company team \Lto join Orion"
           description: 'Want to spread the word about partner companies you work with, publications that gave your products or services a positive review, or highlight the technologies you use to bring your product to life? The Logos particle is what you need!'
           title: 'Showcase Your Partners'
         -
-          image: 'gantry-media://home/above/img-01.png'
+          image: 'genesis-media://home/above/img-01.png'
           main_title: 'Grid Statistic Particle'
           description: 'When making the decision to buy a product or subscribe to a service, visitors are often looking for hard numbers they can use to gauge whether the purchase is worth it to them. The Grid Statistic particle gives you the ability to showcase your best stats with animated numbers that draw the attention of your customers.'
           title: 'Present Incredible Stats'
@@ -460,32 +460,32 @@ content:
       testimonial:
         -
           content: '“Orion makes it easier than ever to create a great product website.”'
-          photo: 'gantry-media://home/feature/logo.png'
+          photo: 'genesis-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 1'
         -
           content: '“I never thought it’s possible, but Orion is actually better than cookies and milk, combined.”'
-          photo: 'gantry-media://home/feature/logo.png'
+          photo: 'genesis-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 2'
         -
           content: '“Orion is a brilliant design, and the Genesis framework makes it even better!”'
-          photo: 'gantry-media://home/feature/logo.png'
+          photo: 'genesis-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 3'
         -
           content: '"The Genesis Framework makes setting up and using Orion practically effortless."'
-          photo: 'gantry-media://home/feature/logo.png'
+          photo: 'genesis-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 4'
         -
           content: '“Orion''s particles are the perfect match for my website''s vision.”'
-          photo: 'gantry-media://home/feature/logo.png'
+          photo: 'genesis-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 5'
         -
           content: '"The Menu Editor makes it easy to create a better navigation experience."'
-          photo: 'gantry-media://home/feature/logo.png'
+          photo: 'genesis-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 6'
       article:
@@ -860,19 +860,19 @@ content:
       story:
         -
           content: '“Orion takes full advantage of the many tools made possible by the Genesis framework. The Layout Manager makes it possible to perfect your site''s layout.”'
-          avatar: 'gantry-media://home/extension/img-01.jpg'
+          avatar: 'genesis-media://home/extension/img-01.jpg'
           position: 'UI/UX Expert'
           alttext: 'John Doe'
           name: 'John Doe'
         -
           content: '“Increased conversions are easy with Orion. It was built from the ground up to draw the visitor''s attention to your product''s main selling points.”'
-          avatar: 'gantry-media://home/extension/img-01.jpg'
+          avatar: 'genesis-media://home/extension/img-01.jpg'
           position: 'Business Expert'
           alttext: 'Jared Doe'
           name: 'Jared Doe'
         -
           content: '"Having the right tool for the job is essential. Orion comes with every tool a web designer could possibly need to create the perfect user experience."'
-          avatar: 'gantry-media://home/extension/img-01.jpg'
+          avatar: 'genesis-media://home/extension/img-01.jpg'
           position: 'UI/UX Expert'
           alttext: 'Jack Doe'
           name: 'Jack Doe'

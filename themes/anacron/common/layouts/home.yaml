@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1443176112
 layout:
@@ -219,7 +219,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'Genesis is a powerful core template framework that provides extensive, standardized features.'
               url: ''
               target: _blank
@@ -227,7 +227,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'Dropdown, is a CSS based dropdown menu system, with advanced features, such as multi-columns.'
               url: ''
               target: _blank
@@ -235,7 +235,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'A selection of eight, configurable preset style variations are available with varying color schemes.'
               url: ''
               target: _blank
@@ -246,7 +246,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'A selection of eight, configurable preset style variations are available with varying color schemes.'
               url: ''
               target: _blank
@@ -254,7 +254,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'Create versatile layouts with over 80 module positions spread across many grid rows.'
               url: ''
               target: _blank
@@ -262,7 +262,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'Customize your menu styling and inject particles in seconds with the powerful Menu Editor'
               url: ''
               target: _blank
@@ -273,7 +273,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'Create gorgeous layouts with drag-and-drop simplicity using the Layout Manager'
               url: ''
               target: _blank
@@ -281,7 +281,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'A beautiful and rich selection of typography, based on Bootstrap, to emphasize the content.'
               url: ''
               target: _blank
@@ -289,7 +289,7 @@ content:
             -
               layout: alt-bottom
               variation: dark
-              image: 'gantry-media://home/utility/img1.jpg'
+              image: 'genesis-media://home/utility/img1.jpg'
               subtitle: 'An extensive assortment of free and online documentation is available for Anacron.'
               url: ''
               target: _blank
@@ -299,7 +299,7 @@ content:
     title: 'Custom HTML'
     attributes:
       title: 'Dynamic, Scrolling Header'
-      html: "<div class=\"gantry-width-80 gantry-width-block rt-center rt-margin-auto\">\n\t<p>The Dynamic, Scrolling Header, is a custom design feature that adds an animation effect the header, where the logo and menu are contained, whereby the header elegantly collapses upon downward scroll and smoothly reappears on upward scroll.</p>\n</div>\n\n<div class=\"clear\"></div>\n\n<span class=\"rt-title-divider\"></span>\n\n"
+      html: "<div class=\"genesis-width-80 genesis-width-block rt-center rt-margin-auto\">\n\t<p>The Dynamic, Scrolling Header, is a custom design feature that adds an animation effect the header, where the logo and menu are contained, whereby the header elegantly collapses upon downward scroll and smoothly reappears on upward scroll.</p>\n</div>\n\n<div class=\"clear\"></div>\n\n<span class=\"rt-title-divider\"></span>\n\n"
     block:
       class: 'fp-feature rt-big-title nomarginbottom'
       variations: 'center nopaddingall'
@@ -307,7 +307,7 @@ content:
     title: 'Custom HTML'
     attributes:
       title: ''
-      html: "<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n      <h2><span class=\"title-icon fa fa-th\"></span><span>Responsive</span></h2>\n      <p>A responsive layout adapts to the viewing device, whether mobile, tablet or a small or larger desktop, to ensure your site is accessible on all devices.</p>\n    </div>\n</div>\n<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n    <h2><span class=\"title-icon fa fa-signal\"></span><span>Site Performance</span></h2>\n      <p>Dazzle Software creates sleek, dynamic themes that take full advantage of the latest Web technologies to deliver your content quickly and efficiently.</p>\n    </div>\n</div>\n\n<div class=\"gantry-width-33 gantry-width-block rt-left\">\n  <div class=\"gantry-width-spacer\">\n    <h2><span class=\"title-icon fa fa-thumbs-up\"></span><span>Great Support</span></h2> \n    <p>Receive exclusive access to the Anacron communty forum board for additional assistance, alongside the free and online documentation.</p>\n  </div>\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<div class=\"genesis-width-33 genesis-width-block rt-left\">\n  <div class=\"genesis-width-spacer\">\n      <h2><span class=\"title-icon fa fa-th\"></span><span>Responsive</span></h2>\n      <p>A responsive layout adapts to the viewing device, whether mobile, tablet or a small or larger desktop, to ensure your site is accessible on all devices.</p>\n    </div>\n</div>\n<div class=\"genesis-width-33 genesis-width-block rt-left\">\n  <div class=\"genesis-width-spacer\">\n    <h2><span class=\"title-icon fa fa-signal\"></span><span>Site Performance</span></h2>\n      <p>Dazzle Software creates sleek, dynamic themes that take full advantage of the latest Web technologies to deliver your content quickly and efficiently.</p>\n    </div>\n</div>\n\n<div class=\"genesis-width-33 genesis-width-block rt-left\">\n  <div class=\"genesis-width-spacer\">\n    <h2><span class=\"title-icon fa fa-thumbs-up\"></span><span>Great Support</span></h2> \n    <p>Receive exclusive access to the Anacron communty forum board for additional assistance, alongside the free and online documentation.</p>\n  </div>\n</div>\n\n<div class=\"clear\"></div>"
     block:
       class: 'nomargintop nopaddingtop'
   pricingtable-7110:
@@ -388,12 +388,12 @@ content:
         -
           linklabel: ''
           link: ''
-          content: "<div class=\"gantry-width-40 gantry-width-block\">\n  <div class=\"rt-about-img\">\n    <div class=\"rt-center\">\n      <img alt=\"image\" src=\"gantry-media://home/mainbottom/img1.jpg\"> <span class=\"rt-about-info\">Modern. Powerful.</span>\n    </div>\n  </div>\n</div>\n<div class=\"gantry-width-60 gantry-width-block\">\n  <h2 class=\"nomargintop\">Replicate the Demo.</h2>\n  <p><span class=\"rt-label-1\">Particles</span></p>\n  <p><span class=\"rt-label-2\">Multiple Platforms</span></p>\n  <p>The RocketLauncher is a customized install, that replaces the default sample data with the data from the demo, alongside images, the extensions and template. It is a quick way to replicate the demo onto your server.</p>\n</div>\n<div class=\"clear\"></div>"
+          content: "<div class=\"genesis-width-40 genesis-width-block\">\n  <div class=\"rt-about-img\">\n    <div class=\"rt-center\">\n      <img alt=\"image\" src=\"genesis-media://home/mainbottom/img1.jpg\"> <span class=\"rt-about-info\">Modern. Powerful.</span>\n    </div>\n  </div>\n</div>\n<div class=\"genesis-width-60 genesis-width-block\">\n  <h2 class=\"nomargintop\">Replicate the Demo.</h2>\n  <p><span class=\"rt-label-1\">Particles</span></p>\n  <p><span class=\"rt-label-2\">Multiple Platforms</span></p>\n  <p>The RocketLauncher is a customized install, that replaces the default sample data with the data from the demo, alongside images, the extensions and template. It is a quick way to replicate the demo onto your server.</p>\n</div>\n<div class=\"clear\"></div>"
           title: About
         -
           linklabel: ''
           link: ''
-          content: "<h2 class=\"nomargintop\">Layered Image Sources.</h2><p>Anacron is distributed with Adobe Fireworks PNG sources, layered and editable, to allow for quick and easy customization.</p><div class=\"fp-team-tab\">\t<div class=\"gantry-width-25 gantry-width-block\">\t\t<div class=\"gantry-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"gantry-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">John Doe</span>\t\t\t\t<span class=\"fp-team-position\">CEO</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"gantry-width-25 gantry-width-block\">\t\t<div class=\"gantry-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"gantry-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Mary Burke</span>\t\t\t\t<span class=\"fp-team-position\">Designer</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"gantry-width-25 gantry-width-block\">\t\t<div class=\"gantry-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"gantry-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Hans Jose</span>\t\t\t\t<span class=\"fp-team-position\">Developer</span>\t\t\t</p>\t\t</div>\t</div>\t\t<div class=\"gantry-width-25 gantry-width-block\">\t\t<div class=\"gantry-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"gantry-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Mark Riley</span>\t\t\t\t<span class=\"fp-team-position\">Support</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"clear\"></div>\t</div>"
+          content: "<h2 class=\"nomargintop\">Layered Image Sources.</h2><p>Anacron is distributed with Adobe Fireworks PNG sources, layered and editable, to allow for quick and easy customization.</p><div class=\"fp-team-tab\">\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">John Doe</span>\t\t\t\t<span class=\"fp-team-position\">CEO</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Mary Burke</span>\t\t\t\t<span class=\"fp-team-position\">Designer</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Hans Jose</span>\t\t\t\t<span class=\"fp-team-position\">Developer</span>\t\t\t</p>\t\t</div>\t</div>\t\t<div class=\"genesis-width-25 genesis-width-block\">\t\t<div class=\"genesis-width-spacer\">\t\t\t<p class=\"rt-center\">\t\t\t\t<img src=\"genesis-media://home/mainbottom/img2.jpg\" alt=\"image\" />\t\t\t\t<span class=\"fp-team-name\">Mark Riley</span>\t\t\t\t<span class=\"fp-team-position\">Support</span>\t\t\t</p>\t\t</div>\t</div>\t<div class=\"clear\"></div>\t</div>"
           title: Team
         -
           linklabel: ''
@@ -487,7 +487,7 @@ content:
   custom-2298:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"gantry-width-20 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"gantry-media://home/extension/img1.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"gantry-width-20 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"gantry-media://home/extension/img2.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"gantry-width-20 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"gantry-media://home/extension/img3.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"gantry-width-20 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"gantry-media://home/extension/img4.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"gantry-width-20 gantry-width-block\">\n\t<div class=\"gantry-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"gantry-media://home/extension/img5.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
+      html: "<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img1.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img2.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img3.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img4.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"genesis-width-20 genesis-width-block\">\n\t<div class=\"genesis-width-spacer\">\n\t\t<p class=\"rt-center\">\n\t\t\t<img src=\"genesis-media://home/extension/img5.png\" alt=\"image\" />\n\t\t</p>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
     block:
       class: fp-extension
       variations: center

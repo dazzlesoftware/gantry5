@@ -219,7 +219,7 @@ dom.ready(function() {
         }
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             data: data,
             overlayClickToClose: false,
@@ -245,7 +245,7 @@ dom.ready(function() {
 
                 var editable = container.querySelector('[data-title-editable]');
                 if (editable) {
-                    editable.addEventListener('g5:title-edit-end', function(titleEvent) {
+                    editable.addEventListener('genesis:title-edit-end', function(titleEvent) {
                         var detail = titleEvent.detail || {},
                             title = trim(detail.title),
                             original = detail.original;
@@ -300,7 +300,7 @@ dom.ready(function() {
                             target.disabled = false;
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -345,7 +345,7 @@ dom.ready(function() {
                             }
 
                             modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
                         indicator.hide(target);

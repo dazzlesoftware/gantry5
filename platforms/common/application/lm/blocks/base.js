@@ -157,7 +157,7 @@ Object.assign(Base.prototype, {
     },
 
     disable: function() {
-        this.block.title(translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'particle'));
+        this.block.title(translate('GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE', 'particle'));
         this.block.addClass('particle-disabled');
     },
 

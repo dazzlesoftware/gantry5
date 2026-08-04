@@ -200,7 +200,7 @@
     bottom: 15%;
     margin-left: -40px;
     margin-top: -40px;
-    background: url('gantry-media://swipercarousel/play.svg') no-repeat;
+    background: url('genesis-media://swipercarousel/play.svg') no-repeat;
     background-size: contain;
     cursor: pointer;
     z-index: 3;
@@ -209,7 +209,7 @@
     opacity: 1;
 
     &.paused {
-        background: url('gantry-media://swipercarousel/paused.svg');
+        background: url('genesis-media://swipercarousel/paused.svg');
         background-size: contain;
         opacity: 0.8;
     }

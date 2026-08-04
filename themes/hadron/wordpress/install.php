@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_HadronInstallerScript
+ * Class Genesis_HadronInstallerScript
  */
-class G5_HadronInstallerScript
+class Genesis_HadronInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

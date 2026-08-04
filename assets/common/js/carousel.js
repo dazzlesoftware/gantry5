@@ -29,7 +29,7 @@
                 slide.classList.toggle('flex-active-slide', active);
                 slide.setAttribute('aria-hidden', active ? 'false' : 'true');
             });
-            root.dispatchEvent(new CustomEvent('gantry:carousel-change', { detail: { index: index, source: notify === false ? null : root } }));
+            root.dispatchEvent(new CustomEvent('genesis:carousel-change', { detail: { index: index, source: notify === false ? null : root } }));
         }
 
         function control(label, className, delta, html) {
@@ -61,7 +61,7 @@
                 dots.appendChild(dot);
             });
             root.appendChild(dots);
-            root.addEventListener('gantry:carousel-change', function (event) {
+            root.addEventListener('genesis:carousel-change', function (event) {
                 Array.from(dots.children).forEach(function (dot, dotIndex) { dot.classList.toggle('flex-active', dotIndex === event.detail.index); });
             });
         }
@@ -71,16 +71,16 @@
                 slide.hidden = false;
                 slide.addEventListener('click', function () {
                     var target = document.querySelector(options.asNavFor);
-                    if (target) target.dispatchEvent(new CustomEvent('gantry:carousel-select', { detail: { index: slideIndex } }));
+                    if (target) target.dispatchEvent(new CustomEvent('genesis:carousel-select', { detail: { index: slideIndex } }));
                 });
             });
         }
-        root.addEventListener('gantry:carousel-select', function (event) { show(event.detail.index, false); });
+        root.addEventListener('genesis:carousel-select', function (event) { show(event.detail.index, false); });
 
         if (options.sync) {
-            root.addEventListener('gantry:carousel-change', function (event) {
+            root.addEventListener('genesis:carousel-change', function (event) {
                 var target = document.querySelector(options.sync);
-                if (target && event.detail.source) target.dispatchEvent(new CustomEvent('gantry:carousel-select', { detail: event.detail }));
+                if (target && event.detail.source) target.dispatchEvent(new CustomEvent('genesis:carousel-select', { detail: event.detail }));
             });
         }
 
@@ -99,5 +99,5 @@
         return { show: show, slides: slides };
     }
 
-    global.GantryCarousel = { create: create };
+    global.GenesisCarousel = { create: create };
 }(window));

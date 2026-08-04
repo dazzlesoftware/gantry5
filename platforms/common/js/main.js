@@ -306,7 +306,7 @@ dom.ready(function() {
 
         if (!editable.gConfEditAttached) {
             editable.gConfEditAttached = true;
-            editable.addEventListener('g5:title-edit-end', function(titleEvent) {
+            editable.addEventListener('genesis:title-edit-end', function(titleEvent) {
                 var detail = titleEvent.detail || {},
                     title = String(detail.title || '').trim(),
                     original = detail.original,
@@ -401,10 +401,10 @@ dom.ready(function() {
         editables.forEach(function(editable) {
             if (editable.confWasAttached) { return; }
             editable.confWasAttached = true;
-            editable.addEventListener('g5:title-edit-start', function() {
+            editable.addEventListener('genesis:title-edit-start', function() {
                 editable.style.textOverflow = 'inherit';
             });
-            editable.addEventListener('g5:title-edit-end', function(event) {
+            editable.addEventListener('genesis:title-edit-end', function(event) {
                 var detail = event.detail || {},
                     title = detail.title,
                     original = detail.original;
@@ -1244,7 +1244,7 @@ Object.assign(Base.prototype, {
     },
 
     disable: function() {
-        this.block.title(translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'particle'));
+        this.block.title(translate('GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE', 'particle'));
         this.block.addClass('particle-disabled');
     },
 
@@ -1483,7 +1483,7 @@ class Container extends Base {
 
         wrapper.className = 'container-wrapper clearfix';
         wrapper.innerHTML = '<div class="container-title"><span class="title">' + this.getType() + '</span></div>' +
-            '<div class="container-actions"><span data-tip="' + translate('GANTRY5_PLATFORM_JS_LM_SETTINGS', 'Container') + '" data-tip-place="top-left"><i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Container') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
+            '<div class="container-actions"><span data-tip="' + translate('GENESIS_PLATFORM_JS_LM_SETTINGS', 'Container') + '" data-tip-place="top-left"><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Container') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
         block.insertBefore(wrapper, block.firstChild);
     }
 }
@@ -1570,11 +1570,11 @@ class Offcanvas extends Section {
 
         if (this.hasInheritance()) {
             var outline = getOutlineNameById(this.inherit.outline);
-            inheritance = '<div class="g-inherit g-section-inherit"><div class="g-inherit-content">' + translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '</div></div>';
+            inheritance = '<div class="g-inherit g-section-inherit"><div class="g-inherit-content">' + translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '</div></div>';
             klass = ' g-inheriting g-inheriting-' + this.inherit.include.join(' g-inheriting-');
         }
 
-        return '<div class="offcanvas-section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getAttribute('name') + '">' + this.getAttribute('name') + '</h4><div class="section-actions float-right"><span data-tip="' + translate('GANTRY5_PLATFORM_JS_LM_ADD_ROW', 'Offcanvas') + '" data-tip-place="top-right"><i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_ADD_ROW', 'Offcanvas') + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate('GANTRY5_PLATFORM_JS_LM_SETTINGS', 'Offcanvas') + '" data-tip-place="top-right"><i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Offcanvas') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritance + '</div>';
+        return '<div class="offcanvas-section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getAttribute('name') + '">' + this.getAttribute('name') + '</h4><div class="section-actions float-right"><span data-tip="' + translate('GENESIS_PLATFORM_JS_LM_ADD_ROW', 'Offcanvas') + '" data-tip-place="top-right"><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_ADD_ROW', 'Offcanvas') + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate('GENESIS_PLATFORM_JS_LM_SETTINGS', 'Offcanvas') + '" data-tip-place="top-right"><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Offcanvas') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritance + '</div>';
     }
 
     getId() {
@@ -1621,7 +1621,7 @@ class Particle extends Atom {
             }
         }
 
-        return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span> <i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Particle') + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
+        return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span> <i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Particle') + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
     }
 
     enableInheritance() {
@@ -1675,7 +1675,7 @@ class Particle extends Atom {
             include = (this.inherit.include || []).join(', ');
 
         return {
-            tip: translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + particle + '<br />Replace: ' + include,
+            tip: translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + particle + '<br />Replace: ' + include,
             'tip-offset': -10,
             'tip-place': 'top-right'
         };
@@ -1831,7 +1831,7 @@ class Section extends Base {
             }
         }
 
-        return '<div class="section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getTitle() + '">' + this.getTitle() + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate('GANTRY5_PLATFORM_JS_LM_ADD_ROW', 'Section') + '" data-tip-place="top-right"><i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_ADD_ROW', 'Section') + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate('GANTRY5_PLATFORM_JS_LM_SETTINGS', 'Section') + '" data-tip-place="top-right"><i aria-label="' + translate('GANTRY5_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Section') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritanceLabel + '</div>';
+        return '<div class="section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getTitle() + '">' + this.getTitle() + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate('GENESIS_PLATFORM_JS_LM_ADD_ROW', 'Section') + '" data-tip-place="top-right"><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_ADD_ROW', 'Section') + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate('GENESIS_PLATFORM_JS_LM_SETTINGS', 'Section') + '" data-tip-place="top-right"><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Section') + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritanceLabel + '</div>';
     }
 
     adopt(child) {
@@ -1841,7 +1841,7 @@ class Section extends Base {
     }
 
     renderInheritanceLabel(outline) {
-        var content = translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>');
+        var content = translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>');
         if (this.block && this.getParent()) { content = ''; }
         return '<div class="g-inherit g-section-inherit"><div class="g-inherit-content" ' + this.addInheritanceTip(true) + '><i class="fa fa-lock" aria-hidden="true"></i> ' + content + '</div></div>';
     }
@@ -1896,7 +1896,7 @@ class Section extends Base {
             name = getOutlineNameById(outline),
             include = (this.inherit.include || []).join(', ');
         return {
-            tip: translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + name + '</strong>') + '<br />Outline ID: ' + outline + '<br />Replace: ' + include,
+            tip: translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + name + '</strong>') + '<br />Outline ID: ' + outline + '<br />Replace: ' + include,
             'tip-offset': -2,
             'tip-place': 'top-right'
         };
@@ -2954,7 +2954,7 @@ ready(function() {
 
         if (!tooltips.equalize && !tooltips.move) { return; }
 
-        var msg = tooltips.equalize ? translate('GANTRY5_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GANTRY5_PLATFORM_JS_LM_GRID_SORT_MOVE');
+        var msg = tooltips.equalize ? translate('GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE');
 
         element.data('tip', msg).data('tip-offset', -30);
 
@@ -3224,7 +3224,7 @@ ready(function() {
                     }
 
                     var isValid = function() {
-                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GANTRY5_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
+                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
                     };
 
                     blockSize.addEventListener('input', function(){
@@ -3249,7 +3249,7 @@ ready(function() {
                             target.disabled = false;
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -3333,7 +3333,7 @@ ready(function() {
 
                             modal.close();
 
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED', particle.getTitle()), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED', particle.getTitle()), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
                         indicator.hide(target);
@@ -4395,9 +4395,9 @@ const initSizes = () => {
     initialSidebarCoords = sidebar.getBoundingClientRect();
     realSidebarTop = sidebar.offsetTop;
 
-    document.querySelectorAll('body.admin.com_gantry5 nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav')
+    document.querySelectorAll('body.admin.com_genesis nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav')
         .forEach(element => { heightTop += element.offsetHeight; });
-    document.querySelectorAll('body.admin.com_gantry5 #status')
+    document.querySelectorAll('body.admin.com_genesis #status')
         .forEach(element => { heightBottom += element.offsetHeight; });
 
     particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;
@@ -4556,13 +4556,13 @@ var prettyDate = {
 
 window.onbeforeunload = function() {
     if (flags.get('pending')) {
-        return translate('GANTRY5_PLATFORM_JS_NO_SAVE_DETECTED');
+        return translate('GENESIS_PLATFORM_JS_NO_SAVE_DETECTED');
     }
 };
 
 ready(function() {
     var body     = $('body'),
-        sentence = translate('GANTRY5_PLATFORM_JS_SAVE_SUCCESS');
+        sentence = translate('GENESIS_PLATFORM_JS_SAVE_SUCCESS');
 
     // Close notification
     body.delegate('click', '[data-g-close]', function(event, element) {
@@ -4621,7 +4621,7 @@ ready(function() {
     // Save Tooltip
     body.delegate('mouseover', '.button-save', function(event, element) {
         if (!element.lastSaved) { return true; }
-        var feedback = translate('GANTRY5_PLATFORM_LAST_SAVED') + ': ' + prettyDate.format(element.lastSaved);
+        var feedback = translate('GENESIS_PLATFORM_LAST_SAVED') + ': ' + prettyDate.format(element.lastSaved);
         element
             .data('tip', feedback)
             .data('title', feedback);
@@ -4708,7 +4708,7 @@ ready(function() {
             saves.disabled(false);
             saves.hideIndicator();
             saves.showIndicator('fa fa-fw fa-exclamation-triangle');
-            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
             return;
         }
 
@@ -4728,14 +4728,14 @@ ready(function() {
                 modal.close();
 
                 if ($('#styles')) {
-                    extras = '<br />' + (response.body.warning ? '<hr />' + response.body.title + '<br />' + response.body.html : translate('GANTRY5_PLATFORM_JS_CSS_COMPILED'));
+                    extras = '<br />' + (response.body.warning ? '<hr />' + response.body.title + '<br />' + response.body.html : translate('GENESIS_PLATFORM_JS_CSS_COMPILED'));
                 }
 
                 toastr[response.body.warning ? 'warning' : 'success'](interpolate(sentence, {
                     verb: type.slice(-1) == 's' ? 'have' : 'has',
                     type: type,
                     extras: extras
-                }), type + ' ' + translate('GANTRY5_PLATFORM_SAVED'));
+                }), type + ' ' + translate('GENESIS_PLATFORM_SAVED'));
             }
 
             saves.disabled(false);
@@ -4783,7 +4783,7 @@ ready(function() {
         $title.storedTitle = trim($title.text());
         $title.titleEditCanceled = false;
         $title.emit('title-edit-start', $title.storedTitle);
-        $title[0].dispatchEvent(new CustomEvent('g5:title-edit-start', {
+        $title[0].dispatchEvent(new CustomEvent('genesis:title-edit-start', {
             bubbles: true,
             detail: { title: $title.storedTitle }
         }));
@@ -4809,7 +4809,7 @@ ready(function() {
                 var exitTitle = element.data('title-editable'),
                     exitKey = event.keyCode == 13 ? 'enter' : 'esc';
                 element.emit('title-edit-exit', exitTitle, exitKey);
-                element[0].dispatchEvent(new CustomEvent('g5:title-edit-exit', {
+                element[0].dispatchEvent(new CustomEvent('genesis:title-edit-exit', {
                     bubbles: true,
                     detail: { title: exitTitle, key: exitKey }
                 }));
@@ -4829,7 +4829,7 @@ ready(function() {
             original = element.storedTitle,
             canceled = element.titleEditCanceled;
         element.emit('title-edit-end', title, original, canceled);
-        element[0].dispatchEvent(new CustomEvent('g5:title-edit-end', {
+        element[0].dispatchEvent(new CustomEvent('genesis:title-edit-end', {
             bubbles: true,
             detail: {
                 title: title,
@@ -4896,10 +4896,9 @@ var modules = {
     tips: require('./ui/tooltips')
 };
 
-// Genesis is the canonical administrator API. G5 remains an identity alias
+// Genesis is the canonical administrator API. Genesis remains an identity alias
 // during the compatibility period.
 window.Genesis = modules;
-window.G5 = window.Genesis;
 module.exports = modules;
 
 },{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":34,"./pagesettings":36,"./particles":42,"./positions":47,"./positions/cards":46,"./styles":48,"./ui":53,"./ui/popover":55,"./ui/tooltips":60,"./utils/ajaxify-links":61,"./utils/create-element":64,"./utils/dom":67,"./utils/elements-native":69,"./utils/field-validation":73,"./utils/flags-state":74,"./utils/genesis-compat":75,"./utils/get-ajax-suffix":76,"./utils/get-ajax-url":77,"./utils/rAF-polyfill":83,"./utils/request":85,"./utils/translate":88}],32:[function(require,module,exports){
@@ -5315,7 +5314,7 @@ var StepOne = function(map, mode) {
 
         var config = block.querySelector('.config-cog');
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             remote: parseAjaxURI((config ? config.getAttribute('href') : '') + getAjaxSuffix()),
             remoteLoaded: function(response, modalInstance) {
@@ -5421,14 +5420,14 @@ var StepTwo = function(data, content, button) {
 
                             menumanager.isNewParticle = false;
                             menumanager.emit('dragEnd', menumanager.map);
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         } else {
                             var position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'),
                                 list = position && position.querySelector(':scope > ul');
                             if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
                             Cards.updatePendingChanges();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
                     } else {
                         field = fieldByName(picker.field);
@@ -5743,7 +5742,7 @@ dom.ready(function() {
         }
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             data: data,
             overlayClickToClose: false,
@@ -5769,7 +5768,7 @@ dom.ready(function() {
 
                 var editable = container.querySelector('[data-title-editable]');
                 if (editable) {
-                    editable.addEventListener('g5:title-edit-end', function(titleEvent) {
+                    editable.addEventListener('genesis:title-edit-end', function(titleEvent) {
                         var detail = titleEvent.detail || {},
                             title = trim(detail.title),
                             original = detail.original;
@@ -5824,7 +5823,7 @@ dom.ready(function() {
                             target.disabled = false;
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -5869,7 +5868,7 @@ dom.ready(function() {
                             }
 
                             modal.close();
-                            toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                            toastr.success(translate('GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         }
 
                         indicator.hide(target);
@@ -6553,7 +6552,7 @@ var attachSettings = function() {
             dataValue = JSON.parse(dataField.value || '[]');
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             data: { data: itemData },
             overlayClickToClose: false,
@@ -6580,7 +6579,7 @@ var attachSettings = function() {
                         if (post.invalid.length) {
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -6609,7 +6608,7 @@ var attachSettings = function() {
                                         inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
                                     item.classList.toggle('atom-disabled', !enabled);
                                     item.classList.toggle('g-inheriting', Boolean(inheriting));
-                                    item.title = enabled ? '' : translate('GANTRY5_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom');
+                                    item.title = enabled ? '' : translate('GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE', 'atom');
                                     item.removeAttribute('data-tip');
 
                                     if (inheriting) {
@@ -6617,7 +6616,7 @@ var attachSettings = function() {
                                             outline = getOutlineNameById(inherit.outline),
                                             atom = inherit.atom || '',
                                             include = (inherit.include || []).join(', ');
-                                        item.setAttribute('data-tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
+                                        item.setAttribute('data-tip', translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
                                     }
                                     dataField.dispatchEvent(new Event('change', { bubbles: true }));
                                     global.Genesis.tips.reload();
@@ -6628,7 +6627,7 @@ var attachSettings = function() {
                                     if (save) { save.click(); }
                                 }
                                 modal.close();
-                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                                toastr.success(translate('GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Atom'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
                             indicator.hide(target);
                         });
@@ -6743,7 +6742,7 @@ dom.ready(function() {
 
         if (editable) {
             editable.CollectionNew = true;
-            editable.addEventListener('g5:title-edit-exit', addNewByExit);
+            editable.addEventListener('genesis:title-edit-exit', addNewByExit);
             var editButton = title.parentElement.querySelector('[data-title-edit]');
             if (editButton) { editButton.click(); }
         }
@@ -6833,7 +6832,7 @@ dom.ready(function() {
             dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             className: 'genesis-dialog-theme-default genesis-modal-collection genesis-modal-collection-' + (isEditAll ? 'editall' : 'single'),
             data: dataPost,
@@ -6864,7 +6863,7 @@ dom.ready(function() {
                         if (post.invalid.length) {
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -6892,7 +6891,7 @@ dom.ready(function() {
                                     if (save) { save.click(); }
                                 }
                                 modal.close();
-                                toastr.success(translate('GANTRY5_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                                toastr.success(translate('GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED', 'Collection'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
                             indicator.hide(target);
                         });
@@ -7718,12 +7717,12 @@ var animateOpacity = function(element, opacity, duration, callback) {
 
 var updateProgress = function(element, options) {
     if (!element) { return null; }
-    if (!element.g5Progresser) {
-        element.g5Progresser = new Progresser(element, options);
+    if (!element.genesisProgresser) {
+        element.genesisProgresser = new Progresser(element, options);
     } else {
-        element.g5Progresser.update(options);
+        element.genesisProgresser.update(options);
     }
-    return element.g5Progresser;
+    return element.genesisProgresser;
 };
 
 var fileExtension = function(file) {
@@ -7871,7 +7870,7 @@ class NativeUploader {
         });
 
         updateProgress(uploader, config);
-        uploader.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
+        uploader.title = translate('GENESIS_PLATFORM_JS_PROCESSING');
         this.filePicker.setProgressText(element, '0%');
     }
 
@@ -7928,7 +7927,7 @@ class NativeUploader {
                 element.setAttribute('data-file-url', uploadResponse.url);
                 element.classList.remove('g-file-uploading');
                 if (uploader) uploader.remove();
-                if (mtime) mtime.textContent = translate('GANTRY5_PLATFORM_JUST_NOW');
+                if (mtime) mtime.textContent = translate('GENESIS_PLATFORM_JUST_NOW');
             });
         }, 500);
     }
@@ -7957,7 +7956,7 @@ class NativeUploader {
         if (!this.accepts(file)) {
             this.showError(
                 element,
-                file.name + ' ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': ' + this.filePicker.data.filter
+                file.name + ' ' + translate('GENESIS_PLATFORM_JS_FILTER_MISMATCH') + ': ' + this.filePicker.data.filter
             );
             return;
         }
@@ -8056,7 +8055,7 @@ class FilePicker {
         modal.open({
             method: 'post',
             data: this.data,
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             className: 'genesis-dialog-theme-default genesis-modal-filepicker',
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
             remoteLoaded: this.loaded.bind(this),
@@ -8225,7 +8224,7 @@ class FilePicker {
             element.classList.add('active');
             const mode = element.getAttribute('data-files-mode');
             Cookie.write('genesis_files_mode', mode);
-            Cookie.write('g5_files_mode', mode);
+            Cookie.write('genesis_files_mode', mode);
 
             animateOpacity(files, 0, 200, function() {
                 var mode = element.getAttribute('data-files-mode'),
@@ -8298,10 +8297,10 @@ class FilePicker {
 dom.ready(function() {
     dom.delegate(document.body, 'click', '[data-genesis-filepicker]', function(event, element) {
         event.preventDefault();
-        if (!element.GantryFilePicker) {
-            element.GantryFilePicker = new FilePicker(element);
+        if (!element.GenesisFilePicker) {
+            element.GenesisFilePicker = new FilePicker(element);
         }
-        element.GantryFilePicker.open();
+        element.GenesisFilePicker.open();
     });
 });
 
@@ -8365,7 +8364,7 @@ const loadStylesheet = requests => new Promise((resolve, reject) => {
 
     link.rel = 'stylesheet';
     link.href = `https://fonts.googleapis.com/css?family=${families}&display=swap`;
-    link.dataset.gantryFontRequest = families;
+    link.dataset.genesisFontRequest = families;
     link.addEventListener('load', () => complete(resolve), { once: true });
     link.addEventListener('error', () => complete(() => {
         link.remove();
@@ -8469,7 +8468,7 @@ class Fonts {
         this.field = $(data.field);
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             className: 'genesis-dialog-theme-default genesis-modal-fonts',
             remote: parseAjaxURI(getAjaxURL('fontpicker') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
@@ -9153,7 +9152,7 @@ dom.ready(function() {
         if (!field) { return; }
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             className: 'genesis-dialog-theme-default genesis-modal-icons',
             remote: parseAjaxURI(getAjaxURL('icons') + getAjaxSuffix()),
             afterClose: function() {
@@ -9366,7 +9365,7 @@ ready(() => {
         if (data.modal_close) return;
 
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: !value || data.type === 'module' ? 'get' : 'post',
             data: !value || data.type === 'module' ? {} : value,
             overlayClickToClose: false,
@@ -9570,8 +9569,8 @@ ready(() => {
             parent.classList.toggle('g-keyvalue-warning', duplicate);
             parent.classList.toggle('g-keyvalue-excluded', excluded);
             const message = duplicate
-                ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue)
-                : excluded ? translate('GANTRY5_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null;
+                ? translate('GENESIS_PLATFORM_JS_KEYVALUE_DUPLICATE', keyValue)
+                : excluded ? translate('GENESIS_PLATFORM_JS_KEYVALUE_EXCLUDED', keyValue) : null;
 
             if (message) wrapper.setAttribute('data-tip', message);
             else wrapper.removeAttribute('data-tip');
@@ -9812,7 +9811,7 @@ dom.ready(function() {
         var editable = container.querySelector('[data-title-editable]');
         if (!editable || editable.gPositionModalTitleAttached) { return; }
         editable.gPositionModalTitleAttached = true;
-        editable.addEventListener('g5:title-edit-end', function(event) {
+        editable.addEventListener('genesis:title-edit-end', function(event) {
             var title = trim(event.detail && event.detail.title);
             if (!title) {
                 title = trim(event.detail && event.detail.original) || 'Title';
@@ -9826,8 +9825,8 @@ dom.ready(function() {
         editables.forEach(function(editable) {
             if (editable.confWasAttached) { return; }
             editable.confWasAttached = true;
-            editable.addEventListener('g5:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
-            editable.addEventListener('g5:title-edit-end', function(event) {
+            editable.addEventListener('genesis:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
+            editable.addEventListener('genesis:title-edit-end', function(event) {
                 var detail = event.detail || {};
                 editable.style.textOverflow = 'ellipsis';
                 if (detail.canceled || detail.title === detail.original) { return; }
@@ -9929,7 +9928,7 @@ dom.ready(function() {
     dom.delegate(body, 'click', '#positions .position-add', function(event, element) {
         event.preventDefault();
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'get',
             overlayClickToClose: false,
             remote: parseAjaxURI(element.href + getAjaxSuffix()),
@@ -9970,7 +9969,7 @@ dom.ready(function() {
 
         var position = JSON.parse(positionElement.getAttribute('data-genesis-position'));
         modal.open({
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             data: { position: position.name, item: item.getAttribute('data-pm-data') },
             overlayClickToClose: false,
@@ -9996,7 +9995,7 @@ dom.ready(function() {
                             target.disabled = false;
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
-                            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+                            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
                             return;
                         }
 
@@ -10018,7 +10017,7 @@ dom.ready(function() {
                                 Cards.serialize(positionElement);
                                 Cards.updatePendingChanges();
                                 modal.close();
-                                toastr.success(translate('GANTRY5_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
+                                toastr.success(translate('GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                             }
                             target.disabled = false;
                             indicator.hide(target);
@@ -10118,10 +10117,10 @@ module.exports = {};
 
 const Cookie = require('../utils/cookie');
 const { ready, delegate } = require('../utils/dom');
-const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('g5-collapsed') || {};
+const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('genesis-collapsed') || {};
 const writeStorage = (storage) => {
     Cookie.write('genesis-collapsed', storage);
-    Cookie.write('g5-collapsed', storage);
+    Cookie.write('genesis-collapsed', storage);
 };
 
 const config = (element) => JSON.parse(element.getAttribute('data-g-collapse') || '{}');
@@ -10291,8 +10290,8 @@ class DragDrop extends EventEmitter {
         if (!element.parent('[data-lm-root]') && element.hasClass('g-block') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
 
         if (event.which && event.which !== 1 || $(event.target).matches(this.options.exclude)) { return true; }
-        if (event.__g5DragStarted) { return true; }
-        event.__g5DragStarted = true;
+        if (event.__genesisDragStarted) { return true; }
+        event.__genesisDragStarted = true;
         this.element = $(element);
         this.original = this.element;
         this.matched = false;
@@ -13030,7 +13029,7 @@ var SelectizeDefinition = {
         if (this.ignoreFocus) {
             return;
         } else if (!this.ignoreBlur && (document.activeElement === this.$dropdown_content[0])) {
-            // ^- g5 custom [before: no e.target && ..]
+            // ^- genesis custom [before: no e.target && ..]
             // necessary to prevent IE closing the dropdown when the scrollbar is clicked
             this.ignoreBlur = true;
             this.onFocus(e);
@@ -13142,7 +13141,7 @@ var SelectizeDefinition = {
     },
 
     getValue: function(value) {
-        // g5 custom
+        // genesis custom
         if (this.tagType === TAG_SELECT && this.input.attribute('multiple')) {
             return value || this.items;
         } else {
@@ -13301,7 +13300,7 @@ var SelectizeDefinition = {
     blur: function(dest) {
         this.$control_input[0].blur();
         this.onBlur(null, dest);
-        // g5 custom
+        // genesis custom
         //this.$control_input[0].blur();
     },
 
@@ -13378,7 +13377,7 @@ var SelectizeDefinition = {
         groups = {};
         groups_order = [];
 
-        // g5 custom
+        // genesis custom
         //if (this.options.optgroupOrder) {
         //    groups_order = this.options.optgroupOrder;
         //    for (i = 0; i < groups_order.length; i++) {
@@ -13503,7 +13502,7 @@ var SelectizeDefinition = {
             this.emit('option_add', value, data);
         }
 
-        // g5 custom
+        // genesis custom
         /*value = hash_key(data[this.options.valueField]);
          if (typeof value !== 'string' || this.Options.hasOwnProperty(value)) return;
 
@@ -13687,7 +13686,7 @@ var SelectizeDefinition = {
             value = hash_key(value);
 
             if (this.items.indexOf(value) !== -1) {
-                // g5 custom [before: && this.isOpen]
+                // genesis custom [before: && this.isOpen]
                 if (inputMode === 'single') this.close();
                 return;
             }
@@ -14401,10 +14400,10 @@ $.implement({
                 tag_name    = $input.tag().toLowerCase(),
                 placeholder = $input.attribute('placeholder') || $input.attribute('data-placeholder');
 
-            // g5 custom
+            // genesis custom
             if (dataOptions) { dataOptions = JSON.parse(dataOptions); }
             settings = merge({}, settings, dataOptions);
-            // end g5 custom
+            // end genesis custom
 
             if (!placeholder && !settings.allowEmptyOption) {
                 var chlds = $input.children('option[value=""]');
@@ -19898,7 +19897,7 @@ module.exports = SearchIndex;
 'use strict';
 
 module.exports = (key, replacement = '') => {
-    const translate = window.GenesisTranslate || window.G5T || ((value) => value);
+    const translate = window.GenesisTranslate || window.GenesisT || ((value) => value);
     return String(translate(key)).split('%s').join(replacement);
 };
 

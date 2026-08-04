@@ -8,7 +8,7 @@
         {% for item in particle.items %}
             <div class="g-miniplayer-item-wrapper">
                 <div class="g-miniplayer-item closed" data-miniplayer-audio-track="{% if item.source == 'external' %}{{ item.externalurl }}"{% endif %}{% if item.source == 'local' %}{{ url(item.localurl) }}"{% endif %}{% if item.source == "local" or item.source == "external" %}data-miniplayer-audio-cover="{{ url(item.cover)|e }}"{% endif %} {% if item.source == "local" or item.source == "external" %}data-miniplayer-audio-artist="{{ item.artist }}" data-miniplayer-audio-title="{{ item.tracktitle }}"{% endif %} >
-                    <img src="{{ url('gantry-media://player/vinyl.png') }}" alt="Album Record" class="g-miniplayer-record"/>
+                    <img src="{{ url('genesis-media://player/vinyl.png') }}" alt="Album Record" class="g-miniplayer-record"/>
                     <div class="g-miniplayer-cover">
                         <img src="" alt="" class="g-miniplayer-artwork"/>
                         <div class="g-miniplayer-trackinfos">
@@ -31,5 +31,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    <script src="{{ url('gantry-theme://js/miniplayer.init.js') }}"></script>
+    <script src="{{ url('genesis-theme://js/miniplayer.init.js') }}"></script>
 {% endblock %}

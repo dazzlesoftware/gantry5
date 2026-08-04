@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: swiper
   timestamp: 1580382706
 layout:
@@ -150,15 +150,15 @@ content:
       text:
         -
           text: Features
-          link: 'http://docs.gantry.org/gantry5/basics/key-features'
+          link: 'http://docs.genesis.org/genesis/basics/key-features'
           name: Features
         -
           text: 'Genesis'
-          link: 'http://www.gantry.org/'
+          link: 'http://www.genesis.org/'
           name: 'Genesis'
         -
           text: Particles
-          link: 'http://docs.gantry.org/gantry5/particles'
+          link: 'http://docs.genesis.org/genesis/particles'
           name: Particles
         -
           text: Download
@@ -197,7 +197,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -212,7 +212,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -228,7 +228,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -313,7 +313,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -329,7 +329,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -345,7 +345,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -430,7 +430,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: kenburns
@@ -445,7 +445,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: kenburnsDownRight
@@ -460,7 +460,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: kenburnsUpLeft
@@ -544,7 +544,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -561,7 +561,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -578,7 +578,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -595,7 +595,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -612,7 +612,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -629,7 +629,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -715,7 +715,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -731,7 +731,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -747,7 +747,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -832,7 +832,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -848,7 +848,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -865,7 +865,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -881,7 +881,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -897,7 +897,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''
@@ -914,7 +914,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           imageMobile: ''
           bgcolor: ''
           kb: ''

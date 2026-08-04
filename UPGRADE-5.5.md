@@ -16,7 +16,7 @@ You should add back the missing file (with added `.scss` extension). It can be e
 
 New SCSS compiler doesn't allow you to mix different units together (such as `rem` and `px`) as the conversion isn't reliable. As a workaround you can use a single unit (`rem`) everywhere or change SCSS files to calculate it in the browser.
 
-See [commit b16d10e](https://github.com/gantry/gantry5/commit/b16d10eb2b29a866628c3807ce31ad67b0141278) on how to fix it in your theme.
+See [commit b16d10e](https://github.com/genesis/genesis/commit/b16d10eb2b29a866628c3807ce31ad67b0141278) on how to fix it in your theme.
 
 ## Future proofing SCSS
 
@@ -28,7 +28,7 @@ configuration:
   ...
 
   dependencies:
-    gantry: '5.5'
+    genesis: '5.5'
 ```
 
 After doing this, go to styles tab in Genesis admin and
@@ -56,7 +56,7 @@ Themes designed to Joomla! 3 do not really work in Joomla! 4 without some change
 
 Joomla! 4 has made some changes to the templates, which means that also Genesis Themes need to be adjusted to make them to work in the latest Joomla!
 
-All the reference files mentioned below can be found from: https://github.com/gantry/gantry5/tree/develop/themes/helium/joomla
+All the reference files mentioned below can be found from: https://github.com/genesis/genesis/tree/develop/themes/helium/joomla
 
 - Update theme initialization to work in Joomla! 4.0
   (please copy updated `includes`, `fields` and `html` folders to your theme!)
@@ -79,4 +79,4 @@ Those still work, but I recommend those to be removed from the themes.
 
 # WordPress Fixes
 
-https://github.com/gantry/gantry5/commit/9d50df3808cf02973c022d885f6c4b96f3dc840e
+https://github.com/genesis/genesis/commit/9d50df3808cf02973c022d885f6c4b96f3dc840e

@@ -206,7 +206,7 @@ content:
       button: 'View More Features'
       blocks:
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: 'Anim<br />ated'
           tag: Effects
           desc: 'Rich CSS animations to enhance appeal<span class="hidden-tablet"> without detracting from content</span>'
@@ -214,7 +214,7 @@ content:
           link: '#'
           title: Animated
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: 'Vers<br />atile'
           tag: Genesis
           desc: 'Genesis  provides a <span class="hidden-tablet">flexible </span>foundation for <span class="hidden-tablet">intuitive </span>usability and control'
@@ -222,7 +222,7 @@ content:
           link: '#'
           title: Versatile
         -
-          image: 'gantry-media://demo/home/utility/img-01.jpg'
+          image: 'genesis-media://demo/home/utility/img-01.jpg'
           headline: 'Styl<br />istic'
           tag: Diverse
           desc: 'An array of configurable presets and block variations<span class="hidden-tablet"> to individualize content</span>'
@@ -246,7 +246,7 @@ content:
           title: 'Item 1'
         -
           style: g-testimonial-alt
-          img: 'gantry-media://demo/home/feature/img-01.jpg'
+          img: 'genesis-media://demo/home/feature/img-01.jpg'
           content: 'I like Requiem more and more each day because it makes my life a lot easier. I am amazed!'
           author: 'Taylor Jackson'
           company: 'CEO of Requiem Tpl'
@@ -326,28 +326,28 @@ content:
       cols: g-gridpromogallery-2cols
       gridpromogalleryitems:
         -
-          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          img: 'genesis-media://demo/home/expanded/img-01.jpg'
           tag: FixedSide
           headtext: 'Unique position for social items'
           desc: '32 Photos'
           link: '#'
           title: 'Item 1'
         -
-          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          img: 'genesis-media://demo/home/expanded/img-01.jpg'
           tag: Offcanvas
           headtext: 'Position designed for mobile'
           desc: '15K Words'
           link: '#'
           title: 'Item 2'
         -
-          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          img: 'genesis-media://demo/home/expanded/img-01.jpg'
           tag: Color
           headtext: 'Color Picker with Saturation options'
           desc: '3 Answers'
           link: '#'
           title: 'Item 3'
         -
-          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          img: 'genesis-media://demo/home/expanded/img-01.jpg'
           tag: Fonts
           headtext: 'A range of Web Fonts with Live Preview'
           desc: '98 Videos'
@@ -477,7 +477,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           icon: ''
           readmoreclass: ''
           title: Guides
@@ -697,7 +697,7 @@ content:
       class: g-title-bordered
   branding-5085:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
+      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
   totop-7373:
     title: 'To Top'
   social-4803:

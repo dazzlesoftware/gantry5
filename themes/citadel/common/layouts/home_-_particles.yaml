@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1468933785
 layout:
@@ -657,10 +657,10 @@ content:
           video: ''
           local:
             -
-              file: 'gantry-media://videos/slideshow/sample.webm'
+              file: 'genesis-media://videos/slideshow/sample.webm'
               title: 'Sample webm'
             -
-              file: 'gantry-media://videos/slideshow/sample.mp4'
+              file: 'genesis-media://videos/slideshow/sample.mp4'
               title: 'Sample mp4'
           loop: enabled
           autoplay: enabled
@@ -700,7 +700,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://demo/home/header/icon1.svg'
+          image: 'genesis-media://demo/home/header/icon1.svg'
           imageloc: center
           textstyle: compact
           imagestyle: compact
@@ -716,7 +716,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://demo/home/header/icon2.svg'
+          image: 'genesis-media://demo/home/header/icon2.svg'
           imageloc: center
           textstyle: compact
           imagestyle: compact
@@ -732,7 +732,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://demo/home/header/icon3.svg'
+          image: 'genesis-media://demo/home/header/icon3.svg'
           imageloc: center
           textstyle: compact
           imagestyle: compact
@@ -856,25 +856,25 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           showcaseimages:
             -
-              image: 'gantry-media://demo/home/above/img-01.jpg'
+              image: 'genesis-media://demo/home/above/img-01.jpg'
               icon: 'fa fa-arrows-alt'
               album: card1
               name: 'Image 1'
             -
-              image: 'gantry-media://demo/home/above/img-02.jpg'
+              image: 'genesis-media://demo/home/above/img-02.jpg'
               icon: 'fa fa-arrows-alt'
               album: card1
               name: 'Image 2'
             -
-              image: 'gantry-media://demo/home/above/img-03.jpg'
+              image: 'genesis-media://demo/home/above/img-03.jpg'
               icon: 'fa fa-arrows-alt'
               album: card1
               name: 'Image 3'
             -
-              image: 'gantry-media://demo/home/above/img-04.jpg'
+              image: 'genesis-media://demo/home/above/img-04.jpg'
               icon: 'fa fa-arrows-alt'
               album: card1
               name: 'Image 4'
@@ -897,22 +897,22 @@ content:
           image: ''
           showcaseimages:
             -
-              image: 'gantry-media://demo/home/above/img-02.jpg'
+              image: 'genesis-media://demo/home/above/img-02.jpg'
               icon: 'fa fa-arrows-alt'
               album: card2
               name: 'Image 1'
             -
-              image: 'gantry-media://demo/home/above/img-04.jpg'
+              image: 'genesis-media://demo/home/above/img-04.jpg'
               icon: 'fa fa-arrows-alt'
               album: card2
               name: 'Image 2'
             -
-              image: 'gantry-media://demo/home/above/img-03.jpg'
+              image: 'genesis-media://demo/home/above/img-03.jpg'
               icon: 'fa fa-arrows-alt'
               album: card2
               name: 'Image 3'
             -
-              image: 'gantry-media://demo/home/above/img-01.jpg'
+              image: 'genesis-media://demo/home/above/img-01.jpg'
               icon: 'fa fa-arrows-alt'
               album: card2
               name: 'Image 4'
@@ -962,10 +962,10 @@ content:
           video: ''
           local:
             -
-              file: 'gantry-media://videos/slideshow/sample.webm'
+              file: 'genesis-media://videos/slideshow/sample.webm'
               title: 'Sample webm'
             -
-              file: 'gantry-media://videos/slideshow/sample.mp4'
+              file: 'genesis-media://videos/slideshow/sample.mp4'
               title: 'Sample mp4'
           loop: enabled
           autoplay: disabled
@@ -1001,7 +1001,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://demo/home/feature/img-01.png'
+          image: 'genesis-media://demo/home/feature/img-01.png'
           icon: ''
           title: ''
           subtitle: ''
@@ -1018,7 +1018,7 @@ content:
           videothumb: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/feature/img-02.png'
+          image: 'genesis-media://demo/home/feature/img-02.png'
           icon: ''
           title: ''
           subtitle: ''
@@ -1035,7 +1035,7 @@ content:
           videothumb: ''
           name: 'New item'
         -
-          image: 'gantry-media://demo/home/feature/img-03.png'
+          image: 'genesis-media://demo/home/feature/img-03.png'
           icon: ''
           title: ''
           subtitle: ''
@@ -1174,7 +1174,7 @@ content:
         -
           icon: ''
           iconloc: center
-          image: 'gantry-media://demo/home/extension/lukeskywalker.png'
+          image: 'genesis-media://demo/home/extension/lukeskywalker.png'
           imageloc: center
           textstyle: compact
           imagestyle: avatar
@@ -1190,7 +1190,7 @@ content:
         -
           icon: ''
           iconloc: center
-          image: 'gantry-media://demo/home/extension/spock.png'
+          image: 'genesis-media://demo/home/extension/spock.png'
           imageloc: center
           textstyle: compact
           imagestyle: avatar
@@ -1206,7 +1206,7 @@ content:
         -
           icon: ''
           iconloc: center
-          image: 'gantry-media://demo/home/extension/leia.png'
+          image: 'genesis-media://demo/home/extension/leia.png'
           imageloc: center
           textstyle: compact
           imagestyle: avatar

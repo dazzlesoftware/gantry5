@@ -39,4 +39,4 @@ form:
       exclude: ['id', 'class']
 
     _inherit:
-      type: gantry.inherit
+      type: genesis.inherit

@@ -16,8 +16,8 @@ form:
     background-image:
       type: input.imagepicker
       label: Background Image
-      default: "gantry-media://backgrounds/header/img-01.jpg"      
+      default: "genesis-media://backgrounds/header/img-01.jpg"
     overlay-opacity:
       type: input.text
       label: Overlay Opacity
-      default: "0.5"      
+      default: "0.5"

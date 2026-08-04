@@ -154,7 +154,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: hi@isotope-g5.com
+          description: hi@isotope-genesis.com
           class: box4
           button: ''
           buttonlink: ''
@@ -207,8 +207,8 @@ content:
       pauseOnHover: '1'
       items:
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
-          overlayImage: 'gantry-media://demo/home/slideshow/overlay-01.png'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          overlayImage: 'genesis-media://demo/home/slideshow/overlay-01.png'
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: 'Design <span class="g-ampersand">&</span> Code'
@@ -222,8 +222,8 @@ content:
           buttonclass: button-3
           name: 'Design & Code'
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
-          overlayImage: 'gantry-media://demo/home/slideshow/overlay-01.png'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          overlayImage: 'genesis-media://demo/home/slideshow/overlay-01.png'
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: 'Simple <span class="g-ampersand">&</span> Swift'
@@ -237,8 +237,8 @@ content:
           buttonclass: button-3
           name: 'Simple & Swift'
         -
-          image: 'gantry-media://demo/home/slideshow/img-01.jpg'
-          overlayImage: 'gantry-media://demo/home/slideshow/overlay-01.png'
+          image: 'genesis-media://demo/home/slideshow/img-01.jpg'
+          overlayImage: 'genesis-media://demo/home/slideshow/overlay-01.png'
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: 'Drag <span class="g-ampersand">&</span> Drop'
@@ -264,7 +264,7 @@ content:
           overlayParallaxRatio: '0.3'
           title: ''
           desc: 'Headroom allows for select sections to scroll with the page, and hide dynamically. Just apply the g-headroom class to a section.'
-          testimonialImage: 'gantry-media://demo/home/showcase/img-01.jpg'
+          testimonialImage: 'genesis-media://demo/home/showcase/img-01.jpg'
           testimonialName: 'Taylor Jackson'
           testimonialPosition: 'CEO of Kuceeng, Inc.'
           link: ''
@@ -279,7 +279,7 @@ content:
           overlayParallaxRatio: '0.3'
           title: ''
           desc: 'Genesis supports both fixed and fluid width responsive options, giving you more flexibility in layout preferences.'
-          testimonialImage: 'gantry-media://demo/home/showcase/img-01.jpg'
+          testimonialImage: 'genesis-media://demo/home/showcase/img-01.jpg'
           testimonialName: 'Clara Berg'
           testimonialPosition: 'CEO of GoldPear, Inc.'
           link: ''
@@ -294,7 +294,7 @@ content:
           overlayParallaxRatio: '0.3'
           title: ''
           desc: 'A versatile dropdown menu is integrated directly into Genesis, with inline block support and a dedicated mobile menu.'
-          testimonialImage: 'gantry-media://demo/home/showcase/img-01.jpg'
+          testimonialImage: 'genesis-media://demo/home/showcase/img-01.jpg'
           testimonialName: 'Calvin Bond'
           testimonialPosition: 'CEO of Hape, Inc.'
           link: ''
@@ -318,7 +318,7 @@ content:
       autoplaySpeed: '5000'
       items:
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -333,7 +333,7 @@ content:
           buttonclass: button-3
           name: Parallax
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -348,7 +348,7 @@ content:
           buttonclass: button-3
           name: FlexSlider
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -363,7 +363,7 @@ content:
           buttonclass: button-3
           name: Offcanvas
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -378,7 +378,7 @@ content:
           buttonclass: button-3
           name: 'Styles Panel'
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -393,7 +393,7 @@ content:
           buttonclass: button-3
           name: 'Menu Editor'
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -408,7 +408,7 @@ content:
           buttonclass: button-3
           name: Particles
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -423,7 +423,7 @@ content:
           buttonclass: button-3
           name: 'Utilizes Twig'
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -438,7 +438,7 @@ content:
           buttonclass: button-3
           name: 'YAML Config'
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -453,7 +453,7 @@ content:
           buttonclass: button-3
           name: 'Preset Styles'
         -
-          image: 'gantry-media://demo/home/above/img-01.jpg'
+          image: 'genesis-media://demo/home/above/img-01.jpg'
           overlayImage: ''
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
@@ -495,7 +495,7 @@ content:
       cols: g-flippingcontent-4cols
       flippingcontentitems:
         -
-          img: 'gantry-media://demo/home/feature/img-01.png'
+          img: 'genesis-media://demo/home/feature/img-01.png'
           text1: ''
           text2: Layouts
           desc: 'Infinite layout possibilities with unlimited rows.'
@@ -504,7 +504,7 @@ content:
           link: '#'
           title: Layouts
         -
-          img: 'gantry-media://demo/home/feature/img-02.png'
+          img: 'genesis-media://demo/home/feature/img-02.png'
           text1: ''
           text2: Styles
           desc: 'Highly configurable with individual section style controls.'
@@ -513,7 +513,7 @@ content:
           link: '#'
           title: Styles
         -
-          img: 'gantry-media://demo/home/feature/img-03.png'
+          img: 'genesis-media://demo/home/feature/img-03.png'
           text1: ''
           text2: Menu
           desc: 'Advanced  editor for ordering, inline elements and columns.'
@@ -522,7 +522,7 @@ content:
           link: '#'
           title: Menu
         -
-          img: 'gantry-media://demo/home/feature/img-04.png'
+          img: 'genesis-media://demo/home/feature/img-04.png'
           text1: ''
           text2: Mobile
           desc: 'Responsive layout for mobiles, tablets and desktops.'
@@ -531,7 +531,7 @@ content:
           link: '#'
           title: Mobile
         -
-          img: 'gantry-media://demo/home/feature/img-05.png'
+          img: 'genesis-media://demo/home/feature/img-05.png'
           text1: ''
           text2: Particles
           desc: 'Self contained adaptable blocks with rich features.'
@@ -540,7 +540,7 @@ content:
           link: '#'
           title: Particles
         -
-          img: 'gantry-media://demo/home/feature/img-06.png'
+          img: 'genesis-media://demo/home/feature/img-06.png'
           text1: ''
           text2: Documentation
           desc: 'An extensive collection of template and framework guides.'
@@ -549,7 +549,7 @@ content:
           link: '#'
           title: Documentation
         -
-          img: 'gantry-media://demo/home/feature/img-07.png'
+          img: 'genesis-media://demo/home/feature/img-07.png'
           text1: ''
           text2: Configuration
           desc: 'YAML is used for configuration to improve access and usability.'
@@ -558,7 +558,7 @@ content:
           link: '#'
           title: Configuration
         -
-          img: 'gantry-media://demo/home/feature/img-08.png'
+          img: 'genesis-media://demo/home/feature/img-08.png'
           text1: ''
           text2: 'PHP & Twig'
           desc: 'Twig is a template engine for PHP to improve development.'
@@ -574,7 +574,7 @@ content:
       title: 'Template Features'
       items:
         -
-          img: 'gantry-media://demo/home/expanded/img-01.jpg'
+          img: 'genesis-media://demo/home/expanded/img-01.jpg'
           datasize: 960x640
           overlay: g-overlay-enable
           previewicon: 'fa fa-search-plus'
@@ -587,7 +587,7 @@ content:
           buttonclass: button-3
           title: 'New Popup Image Grid Particle'
         -
-          img: 'gantry-media://demo/home/expanded/img-02.jpg'
+          img: 'genesis-media://demo/home/expanded/img-02.jpg'
           datasize: 720x960
           overlay: g-overlay-disable
           previewicon: ''
@@ -600,7 +600,7 @@ content:
           buttonclass: button-3
           title: 'Advanced Built-in Menu Editor'
         -
-          img: 'gantry-media://demo/home/expanded/img-03.jpg'
+          img: 'genesis-media://demo/home/expanded/img-03.jpg'
           datasize: 630x960
           overlay: g-overlay-enable
           previewicon: 'fa fa-search-plus'
@@ -613,7 +613,7 @@ content:
           buttonclass: button-3
           title: 'Responsive Layout with Mobile Support'
         -
-          img: 'gantry-media://demo/home/expanded/img-04.jpg'
+          img: 'genesis-media://demo/home/expanded/img-04.jpg'
           datasize: 960x640
           overlay: g-overlay-enable
           previewicon: 'fa fa-search-plus'
@@ -626,7 +626,7 @@ content:
           buttonclass: button-3
           title: 'A Selection of Preset Styles'
         -
-          img: 'gantry-media://demo/home/expanded/img-05.jpg'
+          img: 'genesis-media://demo/home/expanded/img-05.jpg'
           datasize: 960x850
           overlay: g-overlay-enable
           previewicon: 'fa fa-search-plus'
@@ -639,7 +639,7 @@ content:
           buttonclass: button-3
           title: 'Extensive Documentation & Guides'
         -
-          img: 'gantry-media://demo/home/expanded/img-06.jpg'
+          img: 'genesis-media://demo/home/expanded/img-06.jpg'
           datasize: 960x650
           overlay: g-overlay-disable
           previewicon: ''
@@ -652,7 +652,7 @@ content:
           buttonclass: button-3
           title: 'Human Readable Configuration'
         -
-          img: 'gantry-media://demo/home/expanded/img-07.jpg'
+          img: 'genesis-media://demo/home/expanded/img-07.jpg'
           datasize: 960x960
           overlay: g-overlay-disable
           previewicon: ''
@@ -665,7 +665,7 @@ content:
           buttonclass: button-3
           title: 'Twig Templating Engine for PHP'
         -
-          img: 'gantry-media://demo/home/expanded/img-08.jpg'
+          img: 'genesis-media://demo/home/expanded/img-08.jpg'
           datasize: 960x760
           overlay: g-overlay-disable
           previewicon: ''
@@ -678,7 +678,7 @@ content:
           buttonclass: button-3
           title: 'Self Contained Dynamic Blocks'
         -
-          img: 'gantry-media://demo/home/expanded/img-09.jpg'
+          img: 'genesis-media://demo/home/expanded/img-09.jpg'
           datasize: 960x560
           overlay: g-overlay-enable
           previewicon: 'fa fa-search-plus'
@@ -691,7 +691,7 @@ content:
           buttonclass: button-3
           title: 'Offcanvas Area for Mobile Blocks'
         -
-          img: 'gantry-media://demo/home/expanded/img-10.jpg'
+          img: 'genesis-media://demo/home/expanded/img-10.jpg'
           datasize: 960x620
           overlay: g-overlay-disable
           previewicon: ''
@@ -772,7 +772,7 @@ content:
       testimonials:
         -
           style: g-testimonial-standard
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'The template styling is built with SCSS, a programmable stylesheet language for CSS, making the CSS more dynamic and adaptable.'
           author: 'Jerry Ellis'
           company: CEO
@@ -780,7 +780,7 @@ content:
           title: 'Jerry Ellis'
         -
           style: g-testimonial-standard
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'The Genesis administrator benefits from unlimited undo/redo, to ensure that your changes and hours of work are never lost.'
           author: 'Tiffany Graham'
           company: Manager
@@ -788,7 +788,7 @@ content:
           title: 'Tiffany Graham'
         -
           style: g-testimonial-standard
-          img: 'gantry-media://demo/home/bottom/img-01.jpg'
+          img: 'genesis-media://demo/home/bottom/img-01.jpg'
           content: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more.'
           author: 'Craig Robert'
           company: Developer
@@ -851,7 +851,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           icon: ''
           readmoreclass: ''
           title: Guides
@@ -1001,7 +1001,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://github.com/gantry/gantry5'
+          link: 'https://github.com/genesis/genesis'
           icon: ''
           readmoreclass: ''
           title: Github
@@ -1054,7 +1054,7 @@ content:
       html: "<h3 class=\"g-title\">Availability</h3>\n<p><a href=\"https://dazzlesoftware.org/joomla/templates/isotope\">Isotope</a> can be <span class=\"hidden-tablet\">individually </span>purchased with lifetime download / forum access.</p>\n<p>Alternatively, Isotope is available as part of a subscription.</p>"
   branding-1875:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-2327:
     title: 'To Top'
     attributes:

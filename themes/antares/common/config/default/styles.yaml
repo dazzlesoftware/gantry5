@@ -21,11 +21,11 @@ header:
   background: '#282828'
   text-color: '#ffffff'
   background-text: 'Genesis'
-  background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+  background-image: 'genesis-media://backgrounds/header/img-01.jpg'
 showcase:
   background: '#121212'
   text-color: '#888888'
-  background-image: 'gantry-media://backgrounds/showcase/img-01.jpg'
+  background-image: 'genesis-media://backgrounds/showcase/img-01.jpg'
 above:
   background: '#ffffff'
   text-color: '#686868'
@@ -41,7 +41,7 @@ expanded:
 extension:
   background: '#121212'
   text-color: '#888888'
-  background-image: 'gantry-media://backgrounds/extension/img-01.jpg'
+  background-image: 'genesis-media://backgrounds/extension/img-01.jpg'
 bottom:
   background: '#ffffff'
   text-color: '#686868'

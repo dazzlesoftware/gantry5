@@ -1,4 +1,4 @@
-{% set files_mode = get_cookie('genesis_files_mode')|default(get_cookie('g5_files_mode'))|json_decode|default('thumbnails') %}
+{% set files_mode = get_cookie('genesis_files_mode')|default(get_cookie('genesis_files_mode'))|json_decode|default('thumbnails') %}
 
 <div class="g-particles-header filepicker-header settings-block clearfix">
     <div class="float-right files-mode">
@@ -34,13 +34,13 @@
 {#<div class="g-breadcrumbs">{{ base }}</div>#}
 <div class="g-particles-footer settings-block clearfix">
     <div class="float-left footer-upload-info font-small">
-        {{ 'GANTRY5_PLATFORM_FILEPICKER_UPLOAD_DESC'|trans|raw }}
+        {{ 'GENESIS_PLATFORM_FILEPICKER_UPLOAD_DESC'|trans|raw }}
         <br/>
-        {{ 'GANTRY5_PLATFORM_FILEPICKER_CURRENT_FILTERS'|trans }} {{ filter ? ('<code>' ~ filter ~ '</code>')|raw :
-        ('<strong>' ~ 'GANTRY5_PLATFORM_FILEPICKER_NO_FILTER'|trans ~ '</strong>')|raw }}
+        {{ 'GENESIS_PLATFORM_FILEPICKER_CURRENT_FILTERS'|trans }} {{ filter ? ('<code>' ~ filter ~ '</code>')|raw :
+        ('<strong>' ~ 'GENESIS_PLATFORM_FILEPICKER_NO_FILTER'|trans ~ '</strong>')|raw }}
     </div>
     <div class="float-right">
-        <button href="#" class="button button-primary" data-select="">{{ 'GANTRY5_PLATFORM_SELECT'|trans }}</button>
-        <button href="#" class="button genesis-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
+        <button href="#" class="button button-primary" data-select="">{{ 'GENESIS_PLATFORM_SELECT'|trans }}</button>
+        <button href="#" class="button genesis-dialog-close">{{ 'GENESIS_PLATFORM_CANCEL'|trans }}</button>
     </div>
 </div>

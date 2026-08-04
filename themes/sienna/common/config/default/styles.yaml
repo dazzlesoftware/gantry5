@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#58bd91'
@@ -9,7 +9,7 @@ preset1:
     base:
       background: '#ffffff'
       text-color: '#666666'
-      background-image: 'gantry-media://backgrounds/header/img-01.jpg'
+      background-image: 'genesis-media://backgrounds/header/img-01.jpg'
     accent:
       color-1: '#58bd91'
       color-2: '#33a58c'

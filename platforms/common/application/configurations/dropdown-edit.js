@@ -50,7 +50,7 @@ dom.ready(function() {
 
         if (!editable.gConfEditAttached) {
             editable.gConfEditAttached = true;
-            editable.addEventListener('g5:title-edit-end', function(titleEvent) {
+            editable.addEventListener('genesis:title-edit-end', function(titleEvent) {
                 var detail = titleEvent.detail || {},
                     title = String(detail.title || '').trim(),
                     original = detail.original,

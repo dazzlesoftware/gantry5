@@ -29,10 +29,10 @@ dom.ready(function() {
         editables.forEach(function(editable) {
             if (editable.confWasAttached) { return; }
             editable.confWasAttached = true;
-            editable.addEventListener('g5:title-edit-start', function() {
+            editable.addEventListener('genesis:title-edit-start', function() {
                 editable.style.textOverflow = 'inherit';
             });
-            editable.addEventListener('g5:title-edit-end', function(event) {
+            editable.addEventListener('genesis:title-edit-end', function(event) {
                 var detail = event.detail || {},
                     title = detail.title,
                     original = detail.original;

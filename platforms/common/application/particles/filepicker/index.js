@@ -44,12 +44,12 @@ var animateOpacity = function(element, opacity, duration, callback) {
 
 var updateProgress = function(element, options) {
     if (!element) { return null; }
-    if (!element.g5Progresser) {
-        element.g5Progresser = new Progresser(element, options);
+    if (!element.genesisProgresser) {
+        element.genesisProgresser = new Progresser(element, options);
     } else {
-        element.g5Progresser.update(options);
+        element.genesisProgresser.update(options);
     }
-    return element.g5Progresser;
+    return element.genesisProgresser;
 };
 
 var fileExtension = function(file) {
@@ -197,7 +197,7 @@ class NativeUploader {
         });
 
         updateProgress(uploader, config);
-        uploader.title = translate('GANTRY5_PLATFORM_JS_PROCESSING');
+        uploader.title = translate('GENESIS_PLATFORM_JS_PROCESSING');
         this.filePicker.setProgressText(element, '0%');
     }
 
@@ -254,7 +254,7 @@ class NativeUploader {
                 element.setAttribute('data-file-url', uploadResponse.url);
                 element.classList.remove('g-file-uploading');
                 if (uploader) uploader.remove();
-                if (mtime) mtime.textContent = translate('GANTRY5_PLATFORM_JUST_NOW');
+                if (mtime) mtime.textContent = translate('GENESIS_PLATFORM_JUST_NOW');
             });
         }, 500);
     }
@@ -283,7 +283,7 @@ class NativeUploader {
         if (!this.accepts(file)) {
             this.showError(
                 element,
-                file.name + ' ' + translate('GANTRY5_PLATFORM_JS_FILTER_MISMATCH') + ': ' + this.filePicker.data.filter
+                file.name + ' ' + translate('GENESIS_PLATFORM_JS_FILTER_MISMATCH') + ': ' + this.filePicker.data.filter
             );
             return;
         }
@@ -382,7 +382,7 @@ class FilePicker {
         modal.open({
             method: 'post',
             data: this.data,
-            content: translate('GANTRY5_PLATFORM_JS_LOADING'),
+            content: translate('GENESIS_PLATFORM_JS_LOADING'),
             className: 'genesis-dialog-theme-default genesis-modal-filepicker',
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
             remoteLoaded: this.loaded.bind(this),
@@ -551,7 +551,7 @@ class FilePicker {
             element.classList.add('active');
             const mode = element.getAttribute('data-files-mode');
             Cookie.write('genesis_files_mode', mode);
-            Cookie.write('g5_files_mode', mode);
+            Cookie.write('genesis_files_mode', mode);
 
             animateOpacity(files, 0, 200, function() {
                 var mode = element.getAttribute('data-files-mode'),
@@ -624,10 +624,10 @@ class FilePicker {
 dom.ready(function() {
     dom.delegate(document.body, 'click', '[data-genesis-filepicker]', function(event, element) {
         event.preventDefault();
-        if (!element.GantryFilePicker) {
-            element.GantryFilePicker = new FilePicker(element);
+        if (!element.GenesisFilePicker) {
+            element.GenesisFilePicker = new FilePicker(element);
         }
-        element.GantryFilePicker.open();
+        element.GenesisFilePicker.open();
     });
 });
 

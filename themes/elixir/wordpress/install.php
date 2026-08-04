@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_ElixirInstallerScript
+ * Class Genesis_ElixirInstallerScript
  */
-class G5_ElixirInstallerScript
+class Genesis_ElixirInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

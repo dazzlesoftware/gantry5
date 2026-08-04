@@ -96,13 +96,13 @@ var prettyDate = {
 
 window.onbeforeunload = function() {
     if (flags.get('pending')) {
-        return translate('GANTRY5_PLATFORM_JS_NO_SAVE_DETECTED');
+        return translate('GENESIS_PLATFORM_JS_NO_SAVE_DETECTED');
     }
 };
 
 ready(function() {
     var body     = $('body'),
-        sentence = translate('GANTRY5_PLATFORM_JS_SAVE_SUCCESS');
+        sentence = translate('GENESIS_PLATFORM_JS_SAVE_SUCCESS');
 
     // Close notification
     body.delegate('click', '[data-g-close]', function(event, element) {
@@ -161,7 +161,7 @@ ready(function() {
     // Save Tooltip
     body.delegate('mouseover', '.button-save', function(event, element) {
         if (!element.lastSaved) { return true; }
-        var feedback = translate('GANTRY5_PLATFORM_LAST_SAVED') + ': ' + prettyDate.format(element.lastSaved);
+        var feedback = translate('GENESIS_PLATFORM_LAST_SAVED') + ': ' + prettyDate.format(element.lastSaved);
         element
             .data('tip', feedback)
             .data('title', feedback);
@@ -248,7 +248,7 @@ ready(function() {
             saves.disabled(false);
             saves.hideIndicator();
             saves.showIndicator('fa fa-fw fa-exclamation-triangle');
-            toastr.error(translate('GANTRY5_PLATFORM_JS_REVIEW_FIELDS'), translate('GANTRY5_PLATFORM_JS_INVALID_FIELDS'));
+            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
             return;
         }
 
@@ -268,14 +268,14 @@ ready(function() {
                 modal.close();
 
                 if ($('#styles')) {
-                    extras = '<br />' + (response.body.warning ? '<hr />' + response.body.title + '<br />' + response.body.html : translate('GANTRY5_PLATFORM_JS_CSS_COMPILED'));
+                    extras = '<br />' + (response.body.warning ? '<hr />' + response.body.title + '<br />' + response.body.html : translate('GENESIS_PLATFORM_JS_CSS_COMPILED'));
                 }
 
                 toastr[response.body.warning ? 'warning' : 'success'](interpolate(sentence, {
                     verb: type.slice(-1) == 's' ? 'have' : 'has',
                     type: type,
                     extras: extras
-                }), type + ' ' + translate('GANTRY5_PLATFORM_SAVED'));
+                }), type + ' ' + translate('GENESIS_PLATFORM_SAVED'));
             }
 
             saves.disabled(false);
@@ -323,7 +323,7 @@ ready(function() {
         $title.storedTitle = trim($title.text());
         $title.titleEditCanceled = false;
         $title.emit('title-edit-start', $title.storedTitle);
-        $title[0].dispatchEvent(new CustomEvent('g5:title-edit-start', {
+        $title[0].dispatchEvent(new CustomEvent('genesis:title-edit-start', {
             bubbles: true,
             detail: { title: $title.storedTitle }
         }));
@@ -349,7 +349,7 @@ ready(function() {
                 var exitTitle = element.data('title-editable'),
                     exitKey = event.keyCode == 13 ? 'enter' : 'esc';
                 element.emit('title-edit-exit', exitTitle, exitKey);
-                element[0].dispatchEvent(new CustomEvent('g5:title-edit-exit', {
+                element[0].dispatchEvent(new CustomEvent('genesis:title-edit-exit', {
                     bubbles: true,
                     detail: { title: exitTitle, key: exitKey }
                 }));
@@ -369,7 +369,7 @@ ready(function() {
             original = element.storedTitle,
             canceled = element.titleEditCanceled;
         element.emit('title-edit-end', title, original, canceled);
-        element[0].dispatchEvent(new CustomEvent('g5:title-edit-end', {
+        element[0].dispatchEvent(new CustomEvent('genesis:title-edit-end', {
             bubbles: true,
             detail: {
                 title: title,
@@ -436,8 +436,7 @@ var modules = {
     tips: require('./ui/tooltips')
 };
 
-// Genesis is the canonical administrator API. G5 remains an identity alias
+// Genesis is the canonical administrator API. Genesis remains an identity alias
 // during the compatibility period.
 window.Genesis = modules;
-window.G5 = window.Genesis;
 module.exports = modules;

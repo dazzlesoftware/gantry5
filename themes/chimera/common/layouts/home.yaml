@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1539288543
 layout:
@@ -180,7 +180,7 @@ content:
       tobottom: enabled
       items:
         -
-          image: 'gantry-media://home/fp-slideshow/img-01.jpg'
+          image: 'genesis-media://home/fp-slideshow/img-01.jpg'
           title: '<div data-aos="fade-down"><span class="hl">Beauty</span> in the Details</div>'
           desc: '<div data-aos="zoom-in" data-aos-delay="500" data-aos-anchor="#g-slideshow">Chimera is a clean, modern and minimalistic theme showcasing the beauty of your content</div>'
           link: '#'
@@ -191,7 +191,7 @@ content:
           buttonclass: readon
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-slideshow/img-02.jpg'
+          image: 'genesis-media://home/fp-slideshow/img-02.jpg'
           title: '<span class="hl">Bounce</span> and Zoom'
           desc: '<div>Scroll events trigger a series of effects to animate the introduction of template sections</div>'
           link: '#'
@@ -200,7 +200,7 @@ content:
           buttonclass: readon
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-slideshow/img-03.jpg'
+          image: 'genesis-media://home/fp-slideshow/img-03.jpg'
           title: '<span class="hl">Dynamic</span> Fixed Header'
           desc: '<div>The header dynamically appears on scroll, containing both the logo and dropdown menus</div>'
           link: '#'
@@ -397,7 +397,7 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-01.jpg'
           title: ''
           icon: 'fa fa-tachometer'
           desc: '<a href="#">Replicate the demo<span class="hidden-tablet"> with the RocketLauncher</span></a>'
@@ -408,7 +408,7 @@ content:
           buttontarget: _self
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-02.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-02.jpg'
           icon: 'fa fa-cut'
           desc: '<a href="#">Customize the theme<span class="hidden-tablet"> with the PNG Sources</span></a>'
           caption: 'Adobe® Fireworks'
@@ -418,7 +418,7 @@ content:
           buttontarget: _self
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-03.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-03.jpg'
           icon: 'fa fa-trophy'
           desc: '<a href="#">Web font based solution<span class="hidden-tablet"> for adding icons via CSS</span></a>'
           caption: FontAwesome
@@ -428,7 +428,7 @@ content:
           buttontarget: _self
           name: 'Item 3'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-03.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-03.jpg'
           icon: 'fa fa-sitemap'
           desc: '<a href="#">Configure the style options<span class="hidden-tablet"> via a custom UI</span></a>'
           caption: 'Template Manager'
@@ -438,7 +438,7 @@ content:
           buttontarget: _self
           name: 'Item 4'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-01.jpg'
           icon: 'fa fa-search'
           desc: '<a href="#">Full Joomla site search module<span class="hidden-tablet">, powered by AJAX</span></a>'
           caption: RokAjaxSearch
@@ -448,7 +448,7 @@ content:
           buttontarget: _self
           name: 'Item 5'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-02.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-02.jpg'
           icon: 'fa fa-code'
           desc: '<a href="#">Modify your CSS <span class="hidden-tablet">quickly and easily </span>with SCSS</a>'
           caption: Development
@@ -458,7 +458,7 @@ content:
           buttontarget: _self
           name: 'Item 6'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-02.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-02.jpg'
           icon: 'fa fa-truck'
           desc: ' <a href="#">A library of free, online help<span class="hidden-tablet"> guides and tutorials</span></a>'
           caption: Documentation
@@ -468,7 +468,7 @@ content:
           buttontarget: _self
           name: 'Item 7'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-01.jpg'
           icon: 'fa fa-th-list'
           desc: ' <a href="#">A standardized product core<span class="hidden-tablet"> with many features</span></a>'
           caption: 'Genesis Framework'
@@ -478,7 +478,7 @@ content:
           buttontarget: _self
           name: 'Item 8'
         -
-          image: 'gantry-media://home/fp-mainbottom/img-03.jpg'
+          image: 'genesis-media://home/fp-mainbottom/img-03.jpg'
           icon: 'fa fa-font'
           desc: '<a href="#">Basic support for <span class="hidden-tablet">third party CCK extension, </span>K2</a>'
           caption: Compatibility
@@ -504,10 +504,10 @@ content:
       pauseOnHover: enabled
       items:
         -
-          image: 'gantry-media://home/fp-fullwidth/img-01.jpg'
+          image: 'genesis-media://home/fp-fullwidth/img-01.jpg'
           title: '<div data-aos="fade-down">  <span>"Sleek Design and Easy Customization Made this the Perfect Theme for Me"</span></div>'
           desc: '<div data-aos="zoom-in" class="rt-slideshow2-content">  <p>I struggled for a long time to find the right design and functionality for my portfolio site. Chimera was exactly what I was looking for to get my site up and running quickly and easily. I love it!</p></div>'
-          authorimg: 'gantry-media://home/fp-fullwidth/img-author-01.jpg'
+          authorimg: 'genesis-media://home/fp-fullwidth/img-author-01.jpg'
           author: 'Martin McDouglas'
           aos: fade-up
           delay: '500'
@@ -517,10 +517,10 @@ content:
           buttonclass: button
           name: 'Item 1'
         -
-          image: 'gantry-media://home/fp-fullwidth/img-01.jpg'
+          image: 'genesis-media://home/fp-fullwidth/img-01.jpg'
           title: '"A Contemporary Style, Utilizing Modern Design Trends, as well as Being Functional"'
           desc: '<div class="rt-slideshow2-content">  <p>I regularly change my site''s design to ensure that it remains fresh, new and modern. Chimera offers a theme with all the standard features I''ve come to expect with a new design approach.</p></div>'
-          authorimg: 'gantry-media://home/fp-fullwidth/img-author-02.jpg'
+          authorimg: 'genesis-media://home/fp-fullwidth/img-author-02.jpg'
           author: 'Jerry Andrews'
           aos: ''
           delay: '0'
@@ -530,10 +530,10 @@ content:
           buttonclass: button
           name: 'Item 2'
         -
-          image: 'gantry-media://home/fp-fullwidth/img-01.jpg'
+          image: 'genesis-media://home/fp-fullwidth/img-01.jpg'
           title: '"An Impressive Animated Experience for my Visitors, to Ensure the Uniqueness"'
           desc: '<div class="rt-slideshow2-content">  <p>Chimera has a series of introductory animations on elements when you scroll through the page. They add character and life, whilst not detracting from the visitor''s experience.</p></div>'
-          authorimg: 'gantry-media://home/fp-fullwidth/img-author-03.jpg'
+          authorimg: 'genesis-media://home/fp-fullwidth/img-author-03.jpg'
           author: 'Sam Santiago'
           aos: ''
           delay: '0'
@@ -632,7 +632,7 @@ content:
     title: 'Custom HTML'
     attributes:
       title: 'Learn More About Chimera'
-      html: "<div class=\"gantry-width-container\">\n  <div data-aos=\"fade-right\" class=\"gantry-width-75\">\n    <div class=\"rt-float-left largemarginright\">\n      <div class=\"gantry-width-75\">\n        <p>Get more information about this incredible theme, its features, and discover all the ways that it can help you with your future projects.</p>\n      </div>\n    </div>\n  </div>\n  <div data-aos=\"fade-left\" class=\"gantry-width-25\" data-aos-delay=\"300\">\n    <div class=\"rt-floatright\">\n      <a href=\"#\" class=\"readon\">Learn More</a>\n    </div>\n  </div>  \n  <div class=\"clear\"></div>\n</div>"
+      html: "<div class=\"genesis-width-container\">\n  <div data-aos=\"fade-right\" class=\"genesis-width-75\">\n    <div class=\"rt-float-left largemarginright\">\n      <div class=\"genesis-width-75\">\n        <p>Get more information about this incredible theme, its features, and discover all the ways that it can help you with your future projects.</p>\n      </div>\n    </div>\n  </div>\n  <div data-aos=\"fade-left\" class=\"genesis-width-25\" data-aos-delay=\"300\">\n    <div class=\"rt-floatright\">\n      <a href=\"#\" class=\"readon\">Learn More</a>\n    </div>\n  </div>  \n  <div class=\"clear\"></div>\n</div>"
     block:
       variations: 'medpaddingtop medpaddingbottom'
   custom-6834:

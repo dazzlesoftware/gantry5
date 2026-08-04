@@ -19,7 +19,7 @@
       - Fixed header size inconsistency in Hydrogen template (Joomla 5) (#3374)
       - Fixed checksum warning preventing successful package updates (#3371)
       - Fixed issue where Hydrogen and Helium template updates were incorrectly shown in Joomla 5 update list (#3367)
-      - Fixed “Please install Gantry 5 Framework” error appearing in Joomla 5 installations (#3375)
+      - Fixed “Please install Genesis 5 Framework” error appearing in Joomla 5 installations (#3375)
 # 5.6.0
 ## 02/24/2026
 1. [Common](#common)
@@ -124,7 +124,7 @@
         - Fixed PHP compile error in NullLogger class for method signature compatibility (#3264)
         - Fixed PSR compatibility issues with Joomla 5.1.1 by updating dependencies (#3259)
         - Fixed pageblock head_top and head_meta not working in WordPress particles (#3250)
-        - Fixed the source URL of some CSS and Javascript assets is prefixed with an extra slash (Gantry 5.5.20) #3309
+        - Fixed the source URL of some CSS and Javascript assets is prefixed with an extra slash (Genesis 5.5.20) #3309
         - Fixed Grav's Extras Menu Prod/Dev Toggle creating deprecated custom environment path instead of using user/config/plugins/ (#3169)
         - Fixed Grav's siteUrl() returning just '/' instead of the full site URL (#2605)
 2. [Joomla](#joomla)
@@ -138,10 +138,10 @@
         - Fixed the installation error in Joomla 5 with the compatibility plugin disabled (#3328)
         - Fixed incorrect placeholder height styling in Joomla 4.3.0+ when dragging and sorting particles/grids(#3144)
         - Fixed incorrect display of SVG icons on the frontend login page and 404 error page in Joomla 5 (#3277)
-        - Fixed issue where Joomla modules used as Gantry 5 particles did not render correctly, especially in Joomla 5 environment(#3326)
-        - Fixed Gantry template edit page opening in dark mode even if dark mode is turned off (#3329 )
+        - Fixed issue where Joomla modules used as Genesis 5 particles did not render correctly, especially in Joomla 5 environment(#3326)
+        - Fixed Genesis template edit page opening in dark mode even if dark mode is turned off (#3329 )
     2. [](#todo)
-        - ~~Update Bootstrap from 5.0.2 to 5.3.3 to match Joomla 5.2+ (#3275)~~ (This will be released in the next version - Note this prior comment: https://github.com/gantry/gantry5/issues/3275)
+        - ~~Update Bootstrap from 5.0.2 to 5.3.3 to match Joomla 5.2+ (#3275)~~ (This will be released in the next version - Note this prior comment: https://github.com/genesis/genesis/issues/3275)
 3. [Wordpress](#wordpress)
     1. [](#improved)
         - Updated PHP version check to require 8.1.0 minimum
@@ -182,7 +182,7 @@
         - Fixed PHP compile error in NullLogger class for method signature compatibility (#3264)
         - Fixed PSR compatibility issues with Joomla 5.1.1 by updating dependencies (#3259)
         - Fixed pageblock head_top and head_meta not working in WordPress particles (#3250)
-        - Fixed the source URL of some CSS and Javascript assets is prefixed with an extra slash (Gantry 5.5.20) #3309
+        - Fixed the source URL of some CSS and Javascript assets is prefixed with an extra slash (Genesis 5.5.20) #3309
         - Fixed Grav's Extras Menu Prod/Dev Toggle creating deprecated custom environment path instead of using user/config/plugins/ (#3169)
         - Fixed Grav's siteUrl() returning just '/' instead of the full site URL (#2605)
 2. [Joomla](#joomla)
@@ -195,7 +195,7 @@
         - Fixed Joomla 5 backend error "Unable to load application: site" by adding proper error handling for site application access
         - Fixed the installation error in Joomla 5 with the compatibility plugin disabled (#3328)
     2. [](#todo)
-        - ~~Update Bootstrap from 5.0.2 to 5.3.3 to match Joomla 5.2+ (#3275)~~ (This will be released in the next version - Note this prior comment: https://github.com/gantry/gantry5/issues/3275)
+        - ~~Update Bootstrap from 5.0.2 to 5.3.3 to match Joomla 5.2+ (#3275)~~ (This will be released in the next version - Note this prior comment: https://github.com/genesis/genesis/issues/3275)
 3. [Wordpress](#wordpress)
     1. [](#improved)
         - Updated PHP version check to require 8.1.0 minimum
@@ -236,7 +236,7 @@
         - Fixed PHP compile error in NullLogger class for method signature compatibility (#3264)
         - Fixed PSR compatibility issues with Joomla 5.1.1 by updating dependencies (#3259)
         - Fixed pageblock head_top and head_meta not working in WordPress particles (#3250)
-        - Fixed the source URL of some CSS and Javascript assets is prefixed with an extra slash (Gantry 5.5.20) #3309
+        - Fixed the source URL of some CSS and Javascript assets is prefixed with an extra slash (Genesis 5.5.20) #3309
         - Fixed Grav's Extras Menu Prod/Dev Toggle creating deprecated custom environment path instead of using user/config/plugins/ (#3169)
         - Fixed Grav's siteUrl() returning just '/' instead of the full site URL (#2605)
 2. [Joomla](#joomla)
@@ -248,7 +248,7 @@
         - Removed dependency on Joomla Compatibility Plugin
         - Fixed Joomla 5 backend error "Unable to load application: site" by adding proper error handling for site application access
     2. [](#todo)
-        - ~~Update Bootstrap from 5.0.2 to 5.3.3 to match Joomla 5.2+ (#3275)~~ (This will be released in the next version - Note this prior comment: https://github.com/gantry/gantry5/issues/3275)
+        - ~~Update Bootstrap from 5.0.2 to 5.3.3 to match Joomla 5.2+ (#3275)~~ (This will be released in the next version - Note this prior comment: https://github.com/genesis/genesis/issues/3275)
 3. [Wordpress](#wordpress)
     1. [](#improved)
         - Updated PHP version check to require 8.1.0 minimum
@@ -280,7 +280,7 @@
 1. [Common](#common)
     1. [](#bugfix)
         - Added Webp file extension to lightcase (#3159)
-        - Spanish translation of Gantry 5 administration common platforms (#3120)
+        - Spanish translation of Genesis 5 administration common platforms (#3120)
         - PHP 8.x compatibility fixes
 2. [Joomla](#joomla)
     1. [](#bugfix)
@@ -334,7 +334,7 @@
 
 1. [Common](#common)
    1. [](#new)
-       - Implemented possibility to replace `gantry/theme.yaml` with your own in `custom/` folder (#782, #904, #2578, #3032)
+       - Implemented possibility to replace `genesis/theme.yaml` with your own in `custom/` folder (#782, #904, #2578, #3032)
    2. [](#bugfix)
        - Fixed `Config::flatten()` when the value is not defined or isn't an array
 2. [Joomla](#joomla)
@@ -471,7 +471,7 @@
     1. [](#new)
        - Added support for displaying Article Particles on random order (#2943)
     2. [](#improved)
-       - Themes: Pass Joomla document to Gantry when rendering php template files
+       - Themes: Pass Joomla document to Genesis when rendering php template files
          - Update `component.php`, `error.php`, `index.php`, `offline.php` in your theme!
     3. [](#bugfix)
        - Fixed some SEF URLs being broken/ugly (#2935)
@@ -535,8 +535,8 @@
         - Fixed deprecated warnings on `ArrayAccess` in PHP 8.1
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        - Fixed disappearing menu particles when updating from older Gantry version (#2892)
-        - Fixed markup of the gantry module chrome in J4 (#2911)
+        - Fixed disappearing menu particles when updating from older Genesis version (#2892)
+        - Fixed markup of the genesis module chrome in J4 (#2911)
         - Fixed Joomla `Link Class` not being added to the menu items (#2899)
         - Fixed broken particle AJAX calls (#2902)
 1. [WordPress](#wordpress)
@@ -551,7 +551,7 @@
         - Updated minimum requirement to PHP 5.6.20, added PHP 8 support
         - Updated Symfony Components from v2.8 to v3.4
         - Updated SCSS compiler to v1.6 and v1.8
-          - Themes requiring Gantry 5.5 will use the newer version of SCSS compiler and the older themes use v1.6
+          - Themes requiring Genesis 5.5 will use the newer version of SCSS compiler and the older themes use v1.6
           - Much faster and has far better compatibility to the latest SCSS specs
           - More strict and fails on badly written SCSS where the old version did not
         - Updated Bourbon SCSS library to v4.3.4 (#2835)
@@ -563,11 +563,11 @@
         - Removed IE8 and IE9 support CSS / JS files
         - Major rework in Menu Manager logic
         - Changed `Layout` to be the default tab (#2638)
-        - Added support for `includes/gantry.php` and `includes/theme.php` overrides in `custom/` (#2784, #2485)
+        - Added support for `includes/genesis.php` and `includes/theme.php` overrides in `custom/` (#2784, #2485)
         - Added menu target option for a Window without navigation (#2812)
         - Twig filter `|imagesize` no longer needs `|raw` filter in HTML output (#2825)
     1. [](#bugfix)
-        - Restricted Gantry Admin initialization to logged in admins
+        - Restricted Genesis Admin initialization to logged in admins
         - Fixed hardcoded date format in `partials/blog_item.html.twig` template (#2783)
         - Fixed browser console errors on missing css map files
         - Fixed getting missing menu configuration
@@ -597,7 +597,7 @@
     1. [](#improved)
         - Many WordPress menu system enhancements (#726)
     1. [](#bugfix)
-        - Fixed Gantry menu editor does not synch wordpress menu (#2473)
+        - Fixed Genesis menu editor does not synch wordpress menu (#2473)
         - Fixed duplicated menu items breaking menu admin (#2265)
         - Fixed custom admin url compatibility (#2478)
         - Fixed 404 in Menu Manager when clicking `Back to Setup` button (#2785)
@@ -639,9 +639,9 @@
         - Added configuration option to support Advanced Module Manager (#2710)
 1. [Grav](#grav)
     1. [](#bugfix)
-        - Fixed `{{ gantry.platform.filter() }}` throws error (#2700)
-        - Grav 1.7: Fixed Gantry modules and positions not showing up in Layout editor (#2701)
-        - Fixed Gantry positions not working if folder is missing (#2703)
+        - Fixed `{{ genesis.platform.filter() }}` throws error (#2700)
+        - Grav 1.7: Fixed Genesis modules and positions not showing up in Layout editor (#2701)
+        - Fixed Genesis positions not working if folder is missing (#2703)
         - Fixed fatal error in offline mode
 1. [WordPress](#wordpress)
     1. [](#bugfix)
@@ -662,7 +662,7 @@
     1. [](#bugfix)
         - Fixed issues when creating child theme in CLI
         - Fixed `TypeError: can't access property "getViewElement"` (#2651)
-        - CLI: Prevent creation of a child theme from a non-Gantry theme (#2395)
+        - CLI: Prevent creation of a child theme from a non-Genesis theme (#2395)
         - Fixed shortcodes not working from particles (#2675)
         - Helium: Fixed styling issue with Forgot Password form (#1812)
 
@@ -773,12 +773,12 @@
         - Added admin warning if server is still using unmaintained PHP 5.4 or 5.5 versions
         - Updated Timber to v1.9.2 (later versions have Twig conflict with current version of WPML)
     1. [](#bugfix)
-        - Fixed `Gantry 5 Particle` widget inactive Save button (#2211)
+        - Fixed `Genesis 5 Particle` widget inactive Save button (#2211)
         - Regression: Fixed pagination in `WordPress Posts` particle (#2480)
 1. [Grav](#grav)
     1. [](#bugfix)
         - Fixed compatibility issue with Grav 1.7.0-beta.1
-        - Fixed inconsistent admin permissions to be always `admin.gantry` or `admin.themes` (#2488)
+        - Fixed inconsistent admin permissions to be always `admin.genesis` or `admin.themes` (#2488)
 
 # 5.4.28
 ## 03/11/2019
@@ -831,7 +831,7 @@
 
 1. [Common](#common)
     1. [](#bugfix)
-        - Fixed regression `Class 'Gantry\Component\Twig\TwigNodePageblock' not found`
+        - Fixed regression `Class 'Genesis\Component\Twig\TwigNodePageblock' not found`
 1. [WordPress](#wordpress)
     1. [](#new)
         - Updated Timber to v1.8.1
@@ -845,7 +845,7 @@
         - Added twig tag `{% markdown %}...{% endmarkdown %}`
         - Added twig tag `{% switch type %}{% case 'foo' %}...{% default %}...{% endswitch %}`
         - Added twig filter `|nicetime` for 'n days ago' etc
-        - Made `gantry` twig variable global so it can be used inside macros
+        - Made `genesis` twig variable global so it can be used inside macros
     1. [](#improved)
         - Updated deprecated Twig code so it works in both in Twig 1.34+ and Twig 2.4+
         - Added twig/yaml deprecation warnings into DebugBar (if installed)
@@ -891,7 +891,7 @@
     1. [](#new)
         - Implemented `|markdown` filter for Twig (#2297)
     1. [](#bugfix)
-        - Fixed `The menu selected is empty` in Gantry 5 Menu Editor if there is no default menu item (#2320)
+        - Fixed `The menu selected is empty` in Genesis 5 Menu Editor if there is no default menu item (#2320)
 1. [WordPress](#wordpress)
     1. [](#new)
         - Implemented `|markdown` filter for Twig (#2297)
@@ -915,7 +915,7 @@
         - Updated Timber to v1.6.0
 1. [Grav](#grav)
     1. [](#bugfix)
-        - Added Grav Admin 1.7 styling compatibility for Gantry UI (#2236)
+        - Added Grav Admin 1.7 styling compatibility for Genesis UI (#2236)
 
 # 5.4.22
 ## 12/12/2017
@@ -954,7 +954,7 @@
         - Fixed directory lookup issue on WordPress.com Business instances (possible fix for other MS installations) (#2179)
         - Fixed plugin and theme packages because of a build script issue (#2154)
         - Fixed missing `title` attribute for the menu items (#2107)
-        - Fixed potentially registering same extension `GantryTwig` twice (#2034)
+        - Fixed potentially registering same extension `GenesisTwig` twice (#2034)
 
 # 5.4.19
 ## 10/18/2017
@@ -999,7 +999,7 @@
 1. [Grav](#grav)
     1. [](#improved)
         - Grav Content particle looks now for authors `name`, `alias` or `username` in page header
-        - Added option to cli command `bin/plugin gantry5 child-theme` to clone the theme settings (#2086)
+        - Added option to cli command `bin/plugin genesis child-theme` to clone the theme settings (#2086)
     1. [](#bugfix)
         - Fixed outline/particle assignments when `Include default language` in Grav was `No` (#2115)
         - Fixed outline assigment priority to slightly prefer outlines assigned to language
@@ -1048,7 +1048,7 @@
         - Removed forced input heights set on 19px (#2063)
 1. [Grav](#grav)
     1. [](#new)
-        - Added cli command `bin/plugin gantry5 child-theme` which allows you to create a child theme
+        - Added cli command `bin/plugin genesis child-theme` which allows you to create a child theme
         - Added multi-language support for outline and position assignments (#1651, #2068)
         - Added outline and position assignments by Page Type
 
@@ -1090,7 +1090,7 @@
 1. [Joomla](#joomla)
     1. [](#new)
         - Use the new package uninstall protection feature in Joomla 3.7
-        - Embedded `System - Gantry 5` settings into the component settings (#2010)
+        - Embedded `System - Genesis 5` settings into the component settings (#2010)
     1. [](#bugfix)
         - Fixed issue with Regular Labs Cache Cleaner (#1833)
         - Fixed issue with Hydrogen textarea (#1973)
@@ -1102,7 +1102,7 @@
         - Updated Timber to v1.3.1
     1. [](#bugfix)
         - Fixed checkboxes next to the setting enablers in Content tab getting unchecked after refresh (#1986)
-        - Fixed `Missing argument 2 for modify_gantry5_locale()`
+        - Fixed `Missing argument 2 for modify_genesis_locale()`
         - Fixed external scripts and CSS with query parameters being broken (#1975)
 1. [Grav](#grav)
     1. [](#bugfix)
@@ -1183,7 +1183,7 @@
         - Added accessibility support for Font Awesome icons (#1873, thanks @N8Solutions)
     1. [](#bugfix)
         - Fixed `{% pageblock bottom %}...{% endpageblock %}` not working from atoms
-        - Fixed issues with nested `collection.list` items after upgrading to Gantry 5.4.7 (#1877)
+        - Fixed issues with nested `collection.list` items after upgrading to Genesis 5.4.7 (#1877)
         - Fixed issues with `container.set` and `container.tabs` (#1882)
 1. [WordPress](#wordpress)
     1. [](#bugfix)
@@ -1209,19 +1209,19 @@
         - Helium: Remove forced font color settings for Home outline and `g-helium-style` body class (#1783)
         - Helium: Remove underline being added by Bootstrap on social icons and menu items (#1854)
     1. [](#bugfix)
-        - Fixed change in core SCSS not detected after Gantry 5 update when in production mode (#1752, #1847)
+        - Fixed change in core SCSS not detected after Genesis 5 update when in production mode (#1752, #1847)
 1. [Joomla](#joomla)
     1. [](#bugfix)
         - Namespaced positions references in the DOM to avoid Joomla conflicts (#1832)
         - Fixed particle button styling issues in Advanced Module Manager
-        - Fixed fatal error when editing gantry menu item or particle module and Gantry theme isn't set to default (#1845)
+        - Fixed fatal error when editing genesis menu item or particle module and Genesis theme isn't set to default (#1845)
         - Helium: Fixed wrong line height in Breadcrumbs divider (#1678)
 1. [WordPress](#wordpress)
     1. [](#new)
         - Add support for Bedrock (#1429)
 1. [Grav](#grav)
     1. [](#bugfix)
-        - Fixed `Gantry 5` menu item in the Grav Admin Panel is not being highlighted (#1840), requires Admin plugin v1.2.11
+        - Fixed `Genesis 5` menu item in the Grav Admin Panel is not being highlighted (#1840), requires Admin plugin v1.2.11
         - Fixed issue with Production / Development Toggle (#1846)
         - Fixed missing `bottom` JS position on default page types
         - Fixed admin and nucleus translations defaulting to English (#1855)
@@ -1265,14 +1265,14 @@
         - Fixed occasional `Undefined index: object_id` when trying to save menu with a separator (#1819)
         - Hydrogen: Fix pagination styling in mobile view (#1563)
         - Hydrogen / Helium: Fixed deleted or renamed `Home` outline reverting back (#1785)
-          - For existing sites please see [Issue 1785](https://github.com/gantry/gantry5/issues/1785) to fix the issue
+          - For existing sites please see [Issue 1785](https://github.com/genesis/genesis/issues/1785) to fix the issue
 1. [Grav](#grav)
     1. [](#new)
         - Added support for `Maintenance` plugin
         - Added particle for `LangSwitcher` plugin
         - Added particle for `Feed` plugin
     1. [](#improved)
-        - Rename `Appearance` to `Gantry 5` as it seems to be less confusing for most users
+        - Rename `Appearance` to `Genesis 5` as it seems to be less confusing for most users
         - Display changes indicator when in the Positions Manager and changes happen (#1741)
     1. [](#bugfix)
         - Fixed particles inside positions having extra margin and padding (`g-content` class)
@@ -1316,7 +1316,7 @@
 1. [Common](#common)
     1. [](#new)
         - Add particle caching when in production mode making a noticeable speed increase on particle heavy pages.
-          Installed Gantry 5 themes should to be updated to a version which supports particle caching.
+          Installed Genesis 5 themes should to be updated to a version which supports particle caching.
     1. [](#bugfix)
         - Fixed `$1` and `\\1` being lost inside `<pre>` and `<code>` blocks (#1782)
         - Admin: Fixed `Back to Setup` button not working after page reload
@@ -1325,7 +1325,7 @@
         - Fixed loading template styles `preg_replace(): Compilation failed` error (#1769)
         - Fixed blank page when rendering ACL rules in frontend Joomla forms (#1767, #1775)
         - Worked around Joomla rendering issue on duplicate module positions and modules (#1721)
-        - Fixed PHP 5.3 incompatibility in `System - Gantry 5` plugin (crashes Joomla admin!)
+        - Fixed PHP 5.3 incompatibility in `System - Genesis 5` plugin (crashes Joomla admin!)
 1. [WordPress](#wordpress)
     1. [](#improved)
         - Improved title styling for Login Form particle (#1774, thanks @adi8i)
@@ -1342,7 +1342,7 @@
 
 1. [Common](#common)
     1. [](#bugfix)
-        - Fix regression: Do not change links which aren't using Gantry streams in platform filter events (#1756)
+        - Fix regression: Do not change links which aren't using Genesis streams in platform filter events (#1756)
 
 # 5.4.1
 ## 12/13/2016
@@ -1363,7 +1363,7 @@
     1. [](#bugfix)
         - Fixed broken responsive support classes (#1705)
         - Fixed known PHP 7.1 issues
-        - Ignore broken Gantry 5 themes instead of throwing exception
+        - Ignore broken Genesis 5 themes instead of throwing exception
 1. [Joomla](#joomla)
     1. [](#new)
         - Resolve all stream URI links in Joomla page
@@ -1373,12 +1373,12 @@
         - Fixed error outline rendering modules which were assigned to menu items (#1732)
 1. [WordPress](#wordpress)
     1. [](#bugfix)
-        - Fixed broken link from Gantry admin to plugin settings
+        - Fixed broken link from Genesis admin to plugin settings
         - Fixed outline duplication copying assignments (#1719)
         - Fixed widgets and particles not showing up in menu (#1715)
 1. [Grav](#grav)
     1. [](#new)
-        - Grav is now integrated with Gantry 5!
+        - Grav is now integrated with Genesis 5!
 
 # 5.3.9
 ## 11/23/2016
@@ -1400,15 +1400,15 @@
     1. [](#bugfix)
         - Fixed PHP warning when saving menu with no menu items
         - Fixed incompatibility with WooCommerce Payu Latam plugin (#1628)
-        - Fixed `Gantry: Please set current configuration before using $gantry["config"]` (#942)
+        - Fixed `Genesis: Please set current configuration before using $genesis["config"]` (#942)
 
 # 5.3.8
 ## 11/10/2016
 
 1. [WordPress](#wordpress)
     1. [](#bugfix)
-        - Fixed Gantry settings not being available in multi-site environments (#1610, thanks @dudewithamood)
-        - Fixed issues with Gantry menu mixing up menu item parameters and ordering after using WordPress Importer (#1669)
+        - Fixed Genesis settings not being available in multi-site environments (#1610, thanks @dudewithamood)
+        - Fixed issues with Genesis menu mixing up menu item parameters and ordering after using WordPress Importer (#1669)
 
 # 5.3.7
 ## 11/09/2016
@@ -1421,7 +1421,7 @@
         - Helium: Remove Expanded section padding on tablet-range view
         - Helium: Remove unneeded menu overlay when viewing site on touch devices
         - Hydrogen / Helium: Fixed Offcanvas toggle visibility setting (#1630)
-        - Prevent broken Layout from breaking Gantry administration
+        - Prevent broken Layout from breaking Genesis administration
         - Fixed Collection Lists' multi edit collapse/expand that could potentially end up stuck closed (#1612)
         - Keep focus when clearing Inheritance dropdown (#1632)
         - Hide non-overridable fields inside tabs (#1665)
@@ -1429,14 +1429,14 @@
         - Fixed Base Outline loosing all particles when loading another outline with inheritance (#1617)
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        - Fix permissions for editing Particle modules without having access to Gantry admin (#1476)
-        - Fixed Gantry menu editor loosing content of CSS field in Joomla menu item (#1656)
-        - Fixed menu ordering issues when menu item alias got changed; to become effective menu must be saved once in Gantry (#595)
+        - Fix permissions for editing Particle modules without having access to Genesis admin (#1476)
+        - Fixed Genesis menu editor loosing content of CSS field in Joomla menu item (#1656)
+        - Fixed menu ordering issues when menu item alias got changed; to become effective menu must be saved once in Genesis (#595)
         - Fixed 'joomla.categories' YAML field type displaying trashed and archived categories (#1625)
 1. [WordPress](#wordpress)
     1. [](#bugfix)
         - Hydrogen / Helium: Fixed password field translation (#1657)
-        - Fixed editing the menu item titles under `Appearance > Menu` changing the order of menu items in Gantry (#1016)
+        - Fixed editing the menu item titles under `Appearance > Menu` changing the order of menu items in Genesis (#1016)
 
 # 5.3.6
 ## 10/06/2016
@@ -1462,7 +1462,7 @@
         - Fixed title editing for newly added Outlines (#1555)
         - Fixed fields set to not override still displaying overridable in Tabs containers (#1552)
         - Fixed broken URLs for non-existing files in Custom HTML particle
-        - Fixed XML errors outside Gantry triggering an error (thanks @Chrissi2812, #1567)
+        - Fixed XML errors outside Genesis triggering an error (thanks @Chrissi2812, #1567)
         - Fixed issue with Block attributes not rendering when the parent Section was inheriting (#1577, #1580)
         - Fixed particles getting lost in offcancas section when loading layout preset with older format (#1593)
         - Fixed first time compilation of custom.scss not working (#1590)
@@ -1471,7 +1471,7 @@
         - Fixed inheritance converting associative arrays into objects causing associative lists to be missing in inherited sections and particles (#1585)
 1. [Joomla](#joomla)
     1. [](#new)
-        - Add plugin events `onGantry5AdminInit` and `onGantry5ThemeInit` to allow custom Twig filters and functions (#1584)
+        - Add plugin events `onGenesisAdminInit` and `onGenesisThemeInit` to allow custom Twig filters and functions (#1584)
     1. [](#bugfix)
         - Fixed routing for `index.php?Itemid=xxx` URLs inside particles
         - Joomla Articles Particle: Add field for entering article ids (thanks @JoomFX - #1591)
@@ -1496,16 +1496,16 @@
     1. [](#new)
         - Implemented platform specific composer dependencies
     1. [](#bugfix)
-        - Fixed compiled CSS files having bad relative URLs, regression was introduced with [v5.3.3](http://gantry.org/#changelog:v=5.3.3) (#1528)
+        - Fixed compiled CSS files having bad relative URLs, regression was introduced with [v5.3.3](http://genesis.org/#changelog:v=5.3.3) (#1528)
         - Outlines in the Load panel in LM are now capitalized properly (#1520)
         - Fixed Global filter for Assignments (#1521)
         - Fixed disabled menu items still showing up on front-end and not displaying as disabled in the admin (#1532)
         - Fixed validation warning icon piling up when Applying and after an error (#1526)
         - Fixed untranslated string in Atoms validation (#1525)
-        - Removed extra `assets` and `engines` folders from `gantry-media://` stream
+        - Removed extra `assets` and `engines` folders from `genesis-media://` stream
 1. [WordPress](#wordpress)
     1. [](#new)
-        - Include Timber Library v1.1.3 into Gantry Plugin. Removes dependency to Timber Plugin. (#1542)
+        - Include Timber Library v1.1.3 into Genesis Plugin. Removes dependency to Timber Plugin. (#1542)
     1. [](#improved)
         - Updated Hydrogen and Helium themes to use Timber 1.1 classes
     1. [](#bugfix)
@@ -1516,7 +1516,7 @@
 
 1. [Common](#common)
     1. [](#bugfix)
-        - **Patch Release**: This patch release fixes a regression introduced with [v5.3.3](http://gantry.org/#changelog:v=5.3.3) where Layout Manager and Menu Manager item settings were not clickable.
+        - **Patch Release**: This patch release fixes a regression introduced with [v5.3.3](http://genesis.org/#changelog:v=5.3.3) where Layout Manager and Menu Manager item settings were not clickable.
 
 # 5.3.3
 ## 08/24/2016
@@ -1550,9 +1550,9 @@
     1. [](#improved)
         - Helium: Added multiple `raw` filters in the content views
     1. [](#bugfix)
-        - Helium: Offline page should now properly display the offline message set in the Gantry 5 settings page.
+        - Helium: Offline page should now properly display the offline message set in the Genesis 5 settings page.
         - Added missing custom directory to Timber template lookup (#1465)
-        - Fixed `|trans` twig filter having `gantry5` textdomain hardcoded (#1459)
+        - Fixed `|trans` twig filter having `genesis` textdomain hardcoded (#1459)
         - Fixed possible fatal error in menu particle (#1493)
         - Fixed new outline having checkboxes in Content tab selected (#1482)
 
@@ -1562,8 +1562,8 @@
 1. [Common](#common)
     1. [](#new)
         - Helium: Added two new button variations - `button-square` and `button-bevel`
-        - Implemented new Tabs Container that allows to better organize Particles fields in the admin (#1026 - [more details](https://github.com/gantry/gantry5/issues/1026#issuecomment-232265381))
-        - Hydrogen and Helium now require Gantry 5.3.2
+        - Implemented new Tabs Container that allows to better organize Particles fields in the admin (#1026 - [more details](https://github.com/genesis/genesis/issues/1026#issuecomment-232265381))
+        - Hydrogen and Helium now require Genesis 5.3.2
         - Updated Google Fonts library (+70 new fonts)
     1. [](#improved)
         - Helium: Improved OwlCarousel color overlay support
@@ -1574,9 +1574,9 @@
         - Helium: OwlCarousel Color Overlay is now alternated to match while transitioning
     1. [](#bugfix)
         - Helium: Fixed wrong dropdown menu item text hover color
-        - Fixed missing languages files in Gantry 5 Particle Module, causing JS errors and preventing the Picker to work
+        - Fixed missing languages files in Genesis 5 Particle Module, causing JS errors and preventing the Picker to work
         - Definitive fix for z-index issue Layout Manager when sections were inheriting without children (#1430)
-        - Always ensure that the `G5T` method (translations for JS) is available (#1434)
+        - Always ensure that the `GenesisT` method (translations for JS) is available (#1434)
         - Better escaping for JS translations
         - Fixed issue in Layout Manager when inheriting an empty Section from another Outline (#1435)
         - Fixed mis-representation of an inherited Section/Particle when set to "No Inheritance" but with all the Replace options selected
@@ -1590,7 +1590,7 @@
         - Fixed save in menu editor, menu items were not saved properly (#1439)
 1. [Joomla](#joomla)
     1. [](#new)
-        - Allow to install and update Gantry in Joomla 3.6
+        - Allow to install and update Genesis in Joomla 3.6
         - Helium is now going to be available from Joomla Updates
         - Improve template installation by adding support for nice looking installation and upgrade messages (written in twig)
         - Add support to install sample data separately from the template
@@ -1598,18 +1598,18 @@
         - Helium: Enhanced Menu Modules in Offcanvas (#1442)
     1. [](#bugfix)
         - Menu subtitles get wiped out from all menu items when saving menu (#1438)
-        - Fixed missing language loading in Gantry 5 Particle Module (#1437)
+        - Fixed missing language loading in Genesis 5 Particle Module (#1437)
 1. [WordPress](#wordpress)
     1. [](#bugfix)
         - Fixed Fatal error when using BuddyPress (thanks @AlwynBarry - #1441)
-        - Fixed `Missing argument 4 for gantry5_upgrader_source_selection()` (#1440)
+        - Fixed `Missing argument 4 for genesis_upgrader_source_selection()` (#1440)
 
 # 5.3.1
 ## 07/11/2016
 
 1. [Common](#common)
     1. [](#new)
-        - Added permanent warning at the top of admin when using PHP 5.4. Gantry will soon drop PHP 5.4 support. Please upgrade as soon as possible. [More details](http://gantry.org/blog/php54-end-of-support)
+        - Added permanent warning at the top of admin when using PHP 5.4. Genesis will soon drop PHP 5.4 support. Please upgrade as soon as possible. [More details](http://genesis.org/blog/php54-end-of-support)
     1. [](#improved)
         - Allow Presets description to be translatable (#1212)
         - Converted all hardcoded JS strings to translatable languages (#1212)
@@ -1625,7 +1625,7 @@
         - Fixed z-index issue in Layout Manager when sections were inheriting without children (#1430)
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        - Fixed warning in `Gantry 5 Particle` module about not using a Gantry 5 Theme (#1420)
+        - Fixed warning in `Genesis 5 Particle` module about not using a Genesis 5 Theme (#1420)
         - Fixed Bootstrap table having always a border (#1330)
         - Fixed Bootstrap pagination having too much margin (#1389)
 
@@ -1680,11 +1680,11 @@
         - Enable `Layout` tab for `Base Outline`
     1. [](#improved)
         - Hydrogen for Joomla loads now optional `alert` assets from Nucleus to fix potential styling issues
-        - Gantry 5 Particle now displays, as a tooltip, the Particle type in the lists of modules when hovering over the badge (#1373)
-        - Gantry 5 Particle badge for unselected Particles is now orange, to distinct from the selected ones (green)
+        - Genesis 5 Particle now displays, as a tooltip, the Particle type in the lists of modules when hovering over the badge (#1373)
+        - Genesis 5 Particle badge for unselected Particles is now orange, to distinct from the selected ones (green)
         - Added warning message to particle module when there is no default template set (#1316)
     1. [](#bugfix)
-        - Fixed issue with `Link Title Attribute` menu setting in Joomla, where the value would be translated as subtitle in Gantry, rather than `title=""` attribute (#1176)
+        - Fixed issue with `Link Title Attribute` menu setting in Joomla, where the value would be translated as subtitle in Genesis, rather than `title=""` attribute (#1176)
         - Fixed untranslated 404 page title (#1001)
         - Fixed wrong title in newly created outline
         - Fixed content array particle: alias in link duplicating (#1400)
@@ -1695,7 +1695,7 @@
         - Extend Assignments with multiple `BuddyPress` conditionals. This requires BuddyPress 2.6 and newer (thanks @horch004 - #1298)
         - Extend Assignments with possibility to assign outline to all posts or archive page of custom post type (thanks @horch004 - #1298)
     1. [](#improved)
-        - Gantry 5 Particle Widget is now compatible with WordPress Customizer and will live-refresh on change (#869)
+        - Genesis 5 Particle Widget is now compatible with WordPress Customizer and will live-refresh on change (#869)
         - Add support for Widgets with checkboxes that use the trick of hidden/checkbox fields with the same name (#1014)
     1. [](#bugfix)
         - Fixed post type priority not being used in assignments (#1340)
@@ -1719,7 +1719,7 @@
 1. [Joomla](#joomla)
     1. [](#bugfix)
         - Fixed regression in positioning module content by removing `row-fluid` wrapping from Joomla modules
-        - Fixed `Gantry 5 - Presets` plugin being enabled during upgrades (#1285)
+        - Fixed `Genesis 5 - Presets` plugin being enabled during upgrades (#1285)
 
 # 5.2.17
 ## 05/19/2016
@@ -1736,7 +1736,7 @@
         - Fixed articles particle displaying unpublished, trashed and archived articles (#1289)
 1. [WordPress](#wordpress)
     1. [](#bugfix)
-        - Work around commit issues to WP SVN to allow again automated updates (5.2.16 was skipped, see [changelog](http://gantry.org/#changelog:v=5.2.16&p=wordpress))
+        - Work around commit issues to WP SVN to allow again automated updates (5.2.16 was skipped, see [changelog](http://genesis.org/#changelog:v=5.2.16&p=wordpress))
 
 # 5.2.16
 ## 05/17/2016
@@ -1744,7 +1744,7 @@
 1. [Common](#common)
     1. [](#new)
         - Hydrogen: The template now includes the emoji fonts (thanks @810 - #1253)
-        - Frontend: Exposed `G5.$` and `G5.ready` JavaScript utils (ref, #1256)
+        - Frontend: Exposed `Genesis.$` and `Genesis.ready` JavaScript utils (ref, #1256)
         - Menu Particle: Added new option `Expand on Hover` to allow / disallow menu items to expand on mouseover or limit them to click / touch only (#1256)
         - Menu Editor: It is now possible to disable menu items directly from the editor without having to pass through the platform (#1020)
     1. [](#improved)
@@ -1759,7 +1759,7 @@
 1. [Joomla](#joomla)
     1. [](#new)
         - Add particle badges support for `Advanced Module Manager` (thanks @nonumber)
-        - Make Gantry menu to honour new `Display in menu` field in Joomla! 3.5.1 (#1255)
+        - Make Genesis menu to honour new `Display in menu` field in Joomla! 3.5.1 (#1255)
     1. [](#improved)
         - The Joomla Articles Particle now offers the option to pick either `intro` or `fulltext` image (thanks @nikola3244 - #1261, related to #1258)
     1. [](#bugfix)
@@ -1788,7 +1788,7 @@
         - Fixed expand / collapse in Filepicker (#1246)
         - Override checkboxes are now getting detected as changes when checked / unchecked (#333)
         - Fixed rendering issue in layout if all blocks next to each other are `Fixed Size` and some of them have nothing in them
-        - Locked the Particle Settings editing overlay in Gantry 5 Particle Module, to prevent losing settings by accident (#1247, related to #1227)
+        - Locked the Particle Settings editing overlay in Genesis 5 Particle Module, to prevent losing settings by accident (#1247, related to #1227)
         - [CHANGE]: Copyright Particle output now renders without the hardcoded `Copyright` word that couldn't be translated. Before: `Copyright © 2016 SiteOwner`, After: `SiteOwner © 2016` (#950)
         - [REGRESSION] Disabling `Compile twig` attempts to write lots of directories to hard drive root (#1250)
         - Prevent resolving stream paths outside of defined scheme root
@@ -1826,13 +1826,13 @@
     1. [](#new)
         - Added support to have Joomla articles and categories in particles (#1225)
         - Added `Joomla Articles` particle
-        - Added support for Joomla Template & Menu ACL in Gantry admin (#600)
+        - Added support for Joomla Template & Menu ACL in Genesis admin (#600)
     1. [](#bugfix)
-        - Fixed duplicating template style while caching was turned on not being recognized as Gantry 5 outline (#1200)
+        - Fixed duplicating template style while caching was turned on not being recognized as Genesis 5 outline (#1200)
         - Fixed logo particle link going to current page rather than home page on J! 3.5 (#1210)
         - Module instance edit fails with "You are not permitted to use that link to directly access that page" on J! 3.5 (#1215)
-        - Gantry update is shown even if the new version was just installed (#1204)
-        - Untranslated string `COM_GANTRY5_PARTICLE_NOT_INITIALIZED` (#1118)
+        - Genesis update is shown even if the new version was just installed (#1204)
+        - Untranslated string `COM_GENESIS_PARTICLE_NOT_INITIALIZED` (#1118)
 1. [WordPress](#wordpress)
     1. [](#new)
         - Added `WordPress Posts` particle
@@ -1846,7 +1846,7 @@
 
 1. [Common](#common)
     1. [](#new)
-        - Implemented an universal method `gantry.load()` to include common JS frameworks from Twig on all platforms (#1132)
+        - Implemented an universal method `genesis.load()` to include common JS frameworks from Twig on all platforms (#1132)
     1. [](#improved)
         - The `dropdown-offset-x()` mixin now includes a 3rd option that allows to disable or customize the offsets for the first level dropdown child (fixes #1182, thanks @JoomFX)
         - Add possibility to target all particles with a single CSS rule `div.g-particle` (#909)
@@ -1860,12 +1860,12 @@
         - Fixed error on saving system outline layouts (#1167)
 1. [WordPress](#wordpress)
     1. [](#new)
-        - Allow Gantry theme upgrades from WordPress theme uploader (#1165)
+        - Allow Genesis theme upgrades from WordPress theme uploader (#1165)
     1. [](#improved)
         - Removed hardcoded `h2` tag from Login Form particle title. You can still place your `HTML` code inside of the input field.
     1. [](#bugfix)
-        - Fixed Hydrogen Child theme to reference properly `g5_hydrogen` parent directory
-        - Fixed Gantry 5 Clear Cache fires during every plugin installation/update (#996)
+        - Fixed Hydrogen Child theme to reference properly `genesis_hydrogen` parent directory
+        - Fixed Genesis 5 Clear Cache fires during every plugin installation/update (#996)
         - Fixed child comment reply input position in Hydrogen
         - Fixed `Undefined $_GLOBALS` on the WP login page when the Offline Mode is enabled
 
@@ -2036,10 +2036,10 @@
         - Prefixed `.colorpicker` class name to avoid potential conflicts
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        - Fixed Particles picked from Menu Item of type `Gantry 5 Themes » custom` filtering out HTML
-        - Fixed `Undefined variable: gantry` in some sites
-        - Fixed missing translations in **System - Gantry 5** plugin
-        - Fixed fatal error in **Particle Module** if default style does not point to Gantry template
+        - Fixed Particles picked from Menu Item of type `Genesis 5 Themes » custom` filtering out HTML
+        - Fixed `Undefined variable: genesis` in some sites
+        - Fixed missing translations in **System - Genesis 5** plugin
+        - Fixed fatal error in **Particle Module** if default style does not point to Genesis template
 1. [Wordpress](#wordpress)
     1. [](#bugfix)
         - Add missing variable `wordpress` in Twig context
@@ -2056,7 +2056,7 @@
         - Add updates support for Joomla! 3.5 (#999)
         - Module Picker now shows also the Module ID (#1002)
     1. [](#bugfix)
-        - Gantry 5 module still renders title and container when particle is disabled (#991)
+        - Genesis 5 module still renders title and container when particle is disabled (#991)
         - Fix template installation if using PostgreSQL
 1. [WordPress](#wordpress)
     1. [](#new)
@@ -2064,7 +2064,7 @@
         - Added new body class specific to the currently used outline
     1. [](#bugfix)
         - **Clear Cache** does not clear Timber Twig files (#995)
-        - Gantry 5 widget still renders title and container when particle is disabled (#991)
+        - Genesis 5 widget still renders title and container when particle is disabled (#991)
         - Fixed meta conditional checks in single post layout in Hydrogen
 
 # 5.2.2
@@ -2079,17 +2079,17 @@
     1. [](#bugfix)
         - Fixed again compatibility for PHP 5.3 and prevent from failing with the error "Parse error: syntax error, unexpected '[' in ..."
         - Fixed CSS and JavaScript, potentially rendering empty when only inline was specified without any location
-        - Fixed some themes having full width containers after upgrade to Gantry 5.2 (#967)
+        - Fixed some themes having full width containers after upgrade to Genesis 5.2 (#967)
         - Fixed check for enabled/disabled for Atoms and Assets (#988)
         - Fixed Menu Editor where items could be dragged between different levels (#985)
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        - Disable frontend editing for Gantry particle module, fixes 404 error (#966)
+        - Disable frontend editing for Genesis particle module, fixes 404 error (#966)
 1. [WordPress](#wordpress)
     1. [](#improved)
         - Greatly improve page load time (#738)
     1. [](#bugfix)
-        - Hydrogen: Fix fatal error if Gantry hasn't been loaded (#983)
+        - Hydrogen: Fix fatal error if Genesis hasn't been loaded (#983)
         - Fix potential Fatal Error during installation
 
 # 5.2.1
@@ -2097,10 +2097,10 @@
 
 1. [Common](#common)
     1. [](#new)
-        - Hydrogen now requires Gantry 5.2.0 or higher and will display a notice if theme requirements aren't met
+        - Hydrogen now requires Genesis 5.2.0 or higher and will display a notice if theme requirements aren't met
     1. [](#improved)
         - Added particle icons for Particle Picker in the Menu Editor
-        - Clear Gantry cache after Gantry upgrade
+        - Clear Genesis cache after Genesis upgrade
         - Clear theme cache after theme upgrade
     1. [](#bugfix)
         - Fixed regression in Layout Manager where a malformed JSON output was preventing from drag and dropping particles around (#959)
@@ -2110,7 +2110,7 @@
         - New Layout Format: Fix loading position with different key to id
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        -  Upgrading Gantry may cause `g-container` to disappear (#957)
+        -  Upgrading Genesis may cause `g-container` to disappear (#957)
 1. [WordPress](#wordpress)
     1. [](#improved)
         - Removed Hydrogen conditional tags for loading `page_head.html.twig` file
@@ -2123,7 +2123,7 @@
 
 1. [Common](#common)
     1. [](#new)
-        - Updated Hydrogen and Admin with the new Gantry logo. Thanks Henning!
+        - Updated Hydrogen and Admin with the new Genesis logo. Thanks Henning!
         - Page Settings: Implemented new feature that allows to specify global and/or per-outline overrides for Meta Tags, Body attributes, Assets, Favicons, etc.
         - Atoms are moved from Layout to Page Settings. Migration is automatic and backward compatibility proof
         - File Picker: It is now possible to preview the images from the thumbnails list
@@ -2163,7 +2163,7 @@
     1. [](#bugfix)
         - Renaming of Outlines from navigation bar will now properly refresh all links with the new value (#912)
         - Fixed issue in Hydrogen where Visual Composer wouldn't work on Pages
-        - Fixed open_basedir warning in admin when getting list of Gantry themes
+        - Fixed open_basedir warning in admin when getting list of Genesis themes
 
 # 5.1.6
 ## 10/14/2015
@@ -2177,7 +2177,7 @@
         - Fixed text color for inputs and textareas when appearing in the menu (#896)
 1. [Joomla](#joomla)
     1. [](#bugfix)
-        - Restored the old behavior from Gantry 5.1.4 where Bootstrap CSS/JS isn't loaded unless needed by the page content
+        - Restored the old behavior from Genesis 5.1.4 where Bootstrap CSS/JS isn't loaded unless needed by the page content
 1. [WordPress](#wordpress)
     1. [](#new)
         - Enable shortcodes in Text Widget and widgets that use `widget_content` filter (#887)
@@ -2192,7 +2192,7 @@
 
 1. [Common](#common)
     1. [](#new)
-        - Add support for twig `{{ gantry.page.url({'var': 'value'}) }}` to request current URL with extra attributes (#875)
+        - Add support for twig `{{ genesis.page.url({'var': 'value'}) }}` to request current URL with extra attributes (#875)
     1. [](#improved)
         - Enhanced the droppable areas for Menu Editor in the sublevels (#132)
     1. [](#bugfix)
@@ -2209,18 +2209,18 @@
         - Implement support for Joomla objects in twig (#873)
         - Implement support for static Joomla function calls in twig (#874)
     1. [](#bugfix)
-        - Added missing Module Class Suffix entry field for the Gantry Particle Module (#871)
+        - Added missing Module Class Suffix entry field for the Genesis Particle Module (#871)
 1. [WordPress](#wordpress)
     1. [](#new)
         - New `[loadposition id=""][/loadposition]` shortcode for loading widgets inside of content
     1. [](#improved)
         - Changes indicator is now showing in Widgets and Customizer, whenever an instance gets modified and in order to remind of saving (#822)
-        - Gantry updates are now available and interactive in the Admin via a Purple bar notification (#718)
+        - Genesis updates are now available and interactive in the Admin via a Purple bar notification (#718)
         - Improve widget rendering for particles, roksprocket and rokgallery
     1. [](#bugfix)
         - Duplicating outline may cause 'Preset not found' error (#859)
         - Fix WooCommerce and some other plugins from having missing CSS and JavaScript (requires theme update) (#855)
-        - Fixed fatal errors with PHP <= 5.3, causing Hydrogen and Gantry to not display the proper errors of PHP incompatibility (#833)
+        - Fixed fatal errors with PHP <= 5.3, causing Hydrogen and Genesis to not display the proper errors of PHP incompatibility (#833)
         - Fixed customizer JS errors thrown due to wrongly formatted `before_widget` (#864)
         - Newly cloned Outline should not have any assignments (#866)
         - Fixed duplicated `<title>` tag in head (#870)
@@ -2258,7 +2258,7 @@
 1. [WordPress](#wordpress)
     1. [](#new)
         - Ability to set custom cache path when hosting company doesn't allow PHP files in `wp-content/cache` ie. WPEngine
-        - Added Gantry streams to the `kses` allowed protocols
+        - Added Genesis streams to the `kses` allowed protocols
     1. [](#bugfix)
         - Fixed Offline Mode not working properly
         - Added missing Hydrogen block variations
@@ -2333,11 +2333,11 @@
         - Process shortcodes in custom HTML particle (#369)
         - New Twig extension and filter : json_decode
     1. [](#improved)
-        - Dramatically improved the click/touch response in the whole Admin and G5 Particle Module (fixes #551)
+        - Dramatically improved the click/touch response in the whole Admin and Genesis Particle Module (fixes #551)
         - WAI-ARIA: Thanks to @Mediaversal, a lot of Admin work has been done for accessibility (#754 - ref. #713)
         - Catch and display warnings from SCSS compiler (#705)
         - Dropdowns / Tags fields have been improved for tab stop, it is now easier to navigate through fields via keyboard (partly #713 related)
-        - Enable twig debug extension if Gantry debug has been turned on
+        - Enable twig debug extension if Genesis debug has been turned on
         - Implemented validation for the Block Size of a Particle Block (#539)
         - Add HTML body class for used layout preset (#750)
     1. [](#bugfix)
@@ -2354,7 +2354,7 @@
         - Make Debug module position fixed to the bottom of every layout (#715)
     1. [](#bugfix)
         - Fixed blocks using bootstrap responsive utility classes displaying improperly (#722)
-        - Gantry update message is showing up even when there is no update (#631)
+        - Genesis update message is showing up even when there is no update (#631)
         - Module positions not showing up after installing/updating theme (#212)
         - Missing padding in modal windows of 3rd party components (#746)
 1. [WordPress](#wordpress)
@@ -2369,7 +2369,7 @@
         - Fix fatal error in PHP 5.2: while unsupported, it should still fail gracefully
         - Uninstall is leaving behind cache files and options (#659)
         - Move blueprints for content into its proper location
-        - Fixed the styling for the Gantry 5 settings page
+        - Fixed the styling for the Genesis 5 settings page
         - Fatal error when editing menu item name in the editor (#752)
 
 # 5.1.0
@@ -2405,12 +2405,12 @@
         - Enable date particle, analytics and assets atoms by default to avoid confusion (#330)
         - Fixed collapse of cards in Assignments when filtering with a non-matching word (#672)
         - Fixed resizing Particles in LM where attached events wouldn't get properly removed and causing oddities with the History (fixes #556)
-        - Disable whoops when Gantry is in production mode and debug mode has been disabled (#681)
+        - Disable whoops when Genesis is in production mode and debug mode has been disabled (#681)
         - Removed additional padding from modals that were incorrectly inheriting it
         - Logo Particle now properly redirects to Home even if clicked from a subpage (#676)
         - Menu Particle: max levels does not work (#698)
         - Ignore non-overrideable values in Settings page (#621)
-        - Exceptions thrown outside Gantry are not triggering the default error page, but intercepted by Whoops (#649)
+        - Exceptions thrown outside Genesis are not triggering the default error page, but intercepted by Whoops (#649)
 1. [Joomla](#joomla)
     1. [](#bugfix)
         - Fixed available theme notice text problems when no themes are installed (#655)
@@ -2423,7 +2423,7 @@
         - Fixed Joomla frontend image manager alignment issues
 1. [WordPress](#wordpress)
     1. [](#new)
-        - WordPress is now integrated with Gantry 5!
+        - WordPress is now integrated with Genesis 5!
 
 # 5.0.1
 ## 07/16/2015
@@ -2438,10 +2438,10 @@
 1. [](#bugfix)
     * Fixed regression with the style of Collections in admin and supporting long strings  (#569)
     * Fixed Assignments filtering failing with empty Menus (#578)
-    * Fixed UTF8 special characters being stripped out of Module Gantry 5 Particle causing the value to be lost (#570)
+    * Fixed UTF8 special characters being stripped out of Module Genesis 5 Particle causing the value to be lost (#570)
     * Fixed initial load of Module Particle not updating the link to the Joomla Module Manager instance (#582)
     * Fixed Menu Item subtitles in Menu Editor, causing any subtitle to get lost (#579)
-    * Fixed Menu Item target not getting synched up between Joomla and Gantry (#584)
+    * Fixed Menu Item target not getting synched up between Joomla and Genesis (#584)
     * Fixed dropdowns on frontend not working when Offcanvas was disabled (#583)
     * Fixed edge case where resizing the browser wouldn't properly recalculate the Particles Picker size (#585)
     * Fixed issue in Menu Editor where it was possible to create more than one empty Columns (#585)
@@ -2465,7 +2465,7 @@
               - Fixed Menu Start Level
           - To Top: Scrolling to the top is now smooth
     * Global and generic changes:
-        - Added a new Development / Production toggle under the Extras tab which allows to toggle between the two states from within Gantry 5 admin
+        - Added a new Development / Production toggle under the Extras tab which allows to toggle between the two states from within Genesis 5 admin
         - Production / Development now compile different CSS output. In Production mode, everything is compressed, in Development mode CSS is expanded and Line Numbers are added to easily reference the files (This only applies for the Styles Panel and custom.scss)
         - Enhanched Filepicker, it now uses streams, supports drag&drop from desktop for upload and allows to delete files (if they are overridden files)
         - Initial work on the multi language support
@@ -2486,17 +2486,17 @@
     * Global and generic changes:
         - Updated Google Fonts library (+15 fonts)
         - Use Protocol less urls for loading Google Fonts (so it is http and https compatible)
-        - In Joomla Module Manager, Gantry 5 Particle Modules will now display a badge with their type
+        - In Joomla Module Manager, Genesis 5 Particle Modules will now display a badge with their type
         - Improved RTL support and automatic detection
 1. [](#bugfix)
     * Menu:
-        - Many bug fixes to synchronize Joomla with Gantry 5
+        - Many bug fixes to synchronize Joomla with Genesis 5
         - Fixed cases where Particles / Modules wouldn't be deletable
         - Preventing disabled Particles from showing up on frontend when they are disabled
     * Outlines:
         - Preventing Default and non-deletable outlines from being deleted (UI adjusted accordingly)
         - Fixed case where an outline wouldn't be deletable due to a wrong flag set
-    * Gantry 5 Particle Module:
+    * Genesis 5 Particle Module:
         - Prevent Joomla from stripping out HTML content
         - You can now reset the value and change the Particle type
     * Layout Manager:
@@ -2513,4 +2513,4 @@
         - System Plugin and Particle Module are now PHP 5.3 compatible and won't fail with the error "Parse error: syntax error, unexpected '[' in ..."
         - Fixed "Cache path not defined for compiled files"
         - Fixed untranslated positions string in the Joomla Module Editor on frontend
-        - Fixed Page Heading not displaying in the Gantry 5 Custom View page
+        - Fixed Page Heading not displaying in the Genesis 5 Custom View page

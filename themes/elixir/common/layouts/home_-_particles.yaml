@@ -187,7 +187,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           main_title: '<div data-aos="fade-right"><span>Perfect for Coffee Shops and Pubs.</span></div>'
           description1: '<div data-aos="fade-right"><span>Built on the Genesis Framework. Ready for Your Next Project.</span></div>'
           description2: '<div data-aos="fade-left"><span>Elixir is a beautiful responsive theme built using a next-generation framework. It is packed with features that are a perfect fit for cafés, coffee shops, pubs, and more! Your customers will love it!</span></div>'
@@ -196,7 +196,7 @@ content:
           title: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           main_title: '<span>Give Your Customers More to Love.</span>'
           description1: '<span>Over 30+ Particles available. Customize your site with Elixir.</span>'
           description2: '<span>The Slideshow particle catches the eye with text that flies off the side of the image, flipping between slides as your customers learn about your business'' incredible offerings.</span>'
@@ -205,7 +205,7 @@ content:
           title: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           main_title: '<span>Elixir Warms Hearts and Phones.</span>'
           description1: '<span>Mobile friendly design. Responsive to your viewing device.</span>'
           description2: '<span>Elixir is built with a responsive layout, so it will expand and contract accordingly to the size and resolution of the screen, whether mobile, tablet or desktop.</span>'
@@ -317,7 +317,7 @@ content:
           data-aos: fade-down
   image-8214:
     attributes:
-      image: 'gantry-media://home/header/img-01.jpg'
+      image: 'genesis-media://home/header/img-01.jpg'
     block:
       variations: 'nomarginall nopaddingall align-right'
       extra:
@@ -382,14 +382,14 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               description: 'Use CMS Content or Custom Items'
               price: $29.95
               url: ''
               target: _self
               title: 'Content Sources'
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               description: 'Create Multiple Categories of Items'
               price: $19.95
               url: ''
@@ -399,7 +399,7 @@ content:
         -
           items:
             -
-              image: 'gantry-media://home/showcase/img-01.jpg'
+              image: 'genesis-media://home/showcase/img-01.jpg'
               description: 'Display Images, Descriptions, and Prices'
               price: $19.95
               url: ''
@@ -449,28 +449,28 @@ content:
       items:
         -
           date: ''
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           description: 'by Carl Grimes, February 23, 2018'
           url: '#'
           target: _self
           title: 'Create Custom Linked Content Using Simple Forms'
         -
           date: ''
-          image: 'gantry-media://home/utility/img-02.jpg'
+          image: 'genesis-media://home/utility/img-02.jpg'
           description: 'by Maggie Greene, February 23, 2018'
           url: '#'
           target: _self
           title: 'Arrange Content in Multiple Columns'
         -
           date: ''
-          image: 'gantry-media://home/utility/img-02.jpg'
+          image: 'genesis-media://home/utility/img-02.jpg'
           description: 'by Carol Peletier, February 23, 2018'
           url: '#'
           target: _self
           title: 'Customize the Date Format to Meet Your Needs'
         -
           date: ''
-          image: 'gantry-media://home/utility/img-01.jpg'
+          image: 'genesis-media://home/utility/img-01.jpg'
           description: 'by Brian Griffin, February 23, 2018'
           url: '#'
           target: _self
@@ -493,7 +493,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://home/expanded/img-01.jpg'
+          img: 'genesis-media://home/expanded/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -507,7 +507,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://home/expanded/img-01.jpg'
+          img: 'genesis-media://home/expanded/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -521,7 +521,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://home/expanded/img-01.jpg'
+          img: 'genesis-media://home/expanded/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
@@ -535,7 +535,7 @@ content:
         -
           accent: none
           icon: ''
-          img: 'gantry-media://home/expanded/img-01.jpg'
+          img: 'genesis-media://home/expanded/img-01.jpg'
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''

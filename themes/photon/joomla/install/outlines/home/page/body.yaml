@@ -1,7 +1,7 @@
 doctype: html
 attribs:
   id: ''
-  class: 'gantry g-photon-style'
+  class: 'genesis g-photon-style'
   extra: {  }
 layout:
   sections: '0'

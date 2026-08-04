@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_SiennaInstallerScript
+ * Class Genesis_SiennaInstallerScript
  */
-class G5_SiennaInstallerScript
+class Genesis_SiennaInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

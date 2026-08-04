@@ -41,4 +41,4 @@ form:
       default: 1
 
     _inherit:
-      type: gantry.inherit
+      type: genesis.inherit

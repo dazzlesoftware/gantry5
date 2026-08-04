@@ -1,7 +1,7 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="genesis-theme://css/swiper.min.css"/>
 {% endblock %}
 
 {% do genesis.load('lightcase.init') %}
@@ -57,7 +57,7 @@ data-swiper-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.large-m
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do genesis.document.addScript(url('gantry-theme://js/comments.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('genesis-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('genesis-theme://js/comments.init.js'), 10, 'footer') %}
 {% endblock %}

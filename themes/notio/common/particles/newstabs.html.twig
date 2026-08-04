@@ -210,7 +210,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-assets://js/tabs.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/tabs.js'), 11, 'footer') %}
     <script>
         document.addEventListener('click', async (event) => {
             const button = event.target.closest('button.newstabs-pagination-button');

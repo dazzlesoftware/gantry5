@@ -14,7 +14,7 @@ form:
         inherit: Inherit
 
     outline:
-      type: gantry.outlines
+      type: genesis.outlines
       label: Outline
       description: Outline to inherit from.
       selectize:

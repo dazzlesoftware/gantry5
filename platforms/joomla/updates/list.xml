@@ -2,23 +2,23 @@
 <extensionset name="Genesis" description="Genesis Updates">
     <extension name="Genesis"
                description="Genesis Framework"
-               element="pkg_gantry5"
+               element="pkg_genesis"
                type="package"
                client="site"
                version="@version@"
-               detailsurl="http://updates.gantry.org/5.0/joomla/pkg_gantry5.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/pkg_genesis.xml"/>
     <extension name="Hydrogen"
                description="Hydrogen Template"
-               element="g5_hydrogen"
+               element="genesis_hydrogen"
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.gantry.org/5.0/joomla/tpl_g5_hydrogen.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_genesis_hydrogen.xml"/>
     <extension name="Helium"
                description="Helium Template"
-               element="g5_helium"
+               element="genesis_helium"
                type="template"
                client="site"
                version="@version@"
-               detailsurl="http://updates.gantry.org/5.0/joomla/tpl_g5_helium.xml"/>
+               detailsurl="http://updates.genesis.org/5.0/joomla/tpl_genesis_helium.xml"/>
 </extensionset>

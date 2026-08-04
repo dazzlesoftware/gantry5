@@ -65,11 +65,11 @@ textarea, select[multiple=multiple], input[type=color], input[type=date], input[
   font-family: "rockettheme-apps";
   font-style: normal;
   font-weight: normal;
-  src: url("gantry-theme://fonts/rockettheme-apps/rockettheme-apps.eot?#iefix") format("embedded-opentype"), url("gantry-theme://fonts/rockettheme-apps/rockettheme-apps.woff2") format("woff2"), url("gantry-theme://fonts/rockettheme-apps/rockettheme-apps.woff") format("woff"), url("gantry-theme://fonts/rockettheme-apps/rockettheme-apps.ttf") format("truetype"), url("gantry-theme://fonts/rockettheme-apps/rockettheme-apps.svg#rockettheme-apps") format("svg");
+  src: url("genesis-theme://fonts/rockettheme-apps/rockettheme-apps.eot?#iefix") format("embedded-opentype"), url("genesis-theme://fonts/rockettheme-apps/rockettheme-apps.woff2") format("woff2"), url("genesis-theme://fonts/rockettheme-apps/rockettheme-apps.woff") format("woff"), url("genesis-theme://fonts/rockettheme-apps/rockettheme-apps.ttf") format("truetype"), url("genesis-theme://fonts/rockettheme-apps/rockettheme-apps.svg#rockettheme-apps") format("svg");
 }
 i.fa-grav-spaceman, i.fa-grav-text, i.fa-grav-full,
 i.fa-grav-logo, i.fa-grav-symbol, i.fa-grav-logo-both, i.fa-grav-both,
-i.fa-gantry, i.fa-gantry-logo, i.fa-gantry-symbol, i.fa-gantry-logo-both, i.fa-gantry-both {
+i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.fa-genesis-both {
   font-family: "rockettheme-apps";
   speak: none;
   font-style: normal;
@@ -94,15 +94,15 @@ i.fa-gantry, i.fa-gantry-logo, i.fa-gantry-symbol, i.fa-gantry-logo-both, i.fa-g
   content: "f";
 }
 
-.fa-gantry-logo:before {
+.fa-genesis-logo:before {
   content: "d";
 }
 
-.fa-gantry:before, .fa-gantry-symbol:before {
+.fa-genesis:before, .fa-genesis-symbol:before {
   content: "c";
 }
 
-.fa-gantry-logo-both:before, .fa-gantry-both:before {
+.fa-genesis-logo-both:before, .fa-genesis-both:before {
   content: "e";
 }
 

@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_CallistoInstallerScript
+ * Class Genesis_CallistoInstallerScript
  */
-class G5_CallistoInstallerScript
+class Genesis_CallistoInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

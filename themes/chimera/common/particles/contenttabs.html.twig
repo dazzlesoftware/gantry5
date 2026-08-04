@@ -29,11 +29,11 @@
                                 <div id="g-contenttabs-item-{{ loop.index }}" class="g-contenttabs-content">
                                     {{ item.content|html|raw }}
 
-                                    <div class="gantry-row rt-center">
-                                        <div class="gantry-width-container">
+                                    <div class="genesis-row rt-center">
+                                        <div class="genesis-width-container">
                                             {% for icon in item.icons %}
-                                                <div class="gantry-width-25">
-                                                    <div class="gantry-width-spacer">
+                                                <div class="genesis-width-25">
+                                                    <div class="genesis-width-spacer">
                                                         <div class="rt-icon-circle" {% if icon.aos %}data-aos="{{ icon.aos }}" data-aos-delay="{{ item.delay }}"{% endif %}>
                                                             <i class="{{ icon.icon }}"></i> <span>{{ icon.subtext }}</span>
                                                         </div>

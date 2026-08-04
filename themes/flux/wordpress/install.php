@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_FluxInstallerScript
+ * Class Genesis_FluxInstallerScript
  */
-class G5_FluxInstallerScript
+class Genesis_FluxInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

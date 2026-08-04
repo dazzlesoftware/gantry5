@@ -1,9 +1,9 @@
 <?php
 
-namespace Gantry\Tests\PHP83\Component;
+namespace Genesis\Tests\PHP83\Component;
 
-use Gantry\Tests\PHP83\MockableTest;
-use Gantry\Component\Twig\TwigExtension;
+use Genesis\Tests\PHP83\MockableTest;
+use Genesis\Component\Twig\TwigExtension;
 
 /**
  * Test Twig integration with PHP 8.3

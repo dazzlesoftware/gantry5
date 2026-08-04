@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1494574524
 layout:
@@ -136,7 +136,7 @@ content:
   bgslideshow-1616:
     title: 'BG Slideshow'
     attributes:
-      overlay: 'gantry-media://overlays/02.png'
+      overlay: 'genesis-media://overlays/02.png'
       cover: enabled
       align: top
       valign: top
@@ -145,40 +145,40 @@ content:
       items:
         -
           description: 'Supra is a modern Genesis template.'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: Hello.
         -
           description: 'A content-rich design for a modern web.'
-          image: 'gantry-media://home/slideshow/img-02.jpg'
+          image: 'genesis-media://home/slideshow/img-02.jpg'
           title: Greetings.
         -
           description: 'Rich design and beautiful content aesthetics.'
-          image: 'gantry-media://home/slideshow/img-03.jpg'
+          image: 'genesis-media://home/slideshow/img-03.jpg'
           title: Howdy.
         -
           description: 'A compellingly inviting image showcase.'
-          image: 'gantry-media://home/slideshow/img-04.jpg'
+          image: 'genesis-media://home/slideshow/img-04.jpg'
           title: Welcome.
         -
           description: 'Elegant design made for versatility.'
-          image: 'gantry-media://home/slideshow/img-01.jpg'
+          image: 'genesis-media://home/slideshow/img-01.jpg'
           title: Bonjour.
         -
           description: 'Content-rich design perfect for business and news.'
-          image: 'gantry-media://home/slideshow/img-02.jpg'
+          image: 'genesis-media://home/slideshow/img-02.jpg'
           title: Shalom.
         -
           description: 'Let’s make something awesome.'
-          image: 'gantry-media://home/slideshow/img-03.jpg'
+          image: 'genesis-media://home/slideshow/img-03.jpg'
           title: 'Good Day.'
         -
           description: 'Built on modern technologies for tomorrow.'
-          image: 'gantry-media://home/slideshow/img-04.jpg'
+          image: 'genesis-media://home/slideshow/img-04.jpg'
           title: 'Buenos Dias.'
   custom-9972:
     title: 'Custom HTML'
     attributes:
-      html: '<img src="gantry-media://home/header/img-01.jpg" />'
+      html: '<img src="genesis-media://home/header/img-01.jpg" />'
   simplecontent-6252:
     title: 'Simple Content'
     attributes:
@@ -233,7 +233,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/above/img-01.jpg'
+              image: 'genesis-media://home/above/img-01.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -244,14 +244,14 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/above/img-02.jpg'
+              image: 'genesis-media://home/above/img-02.jpg'
               caption: ''
               linkto: image
               link: ''
               title: Bold
             -
               subtitle: ''
-              image: 'gantry-media://home/above/img-03.jpg'
+              image: 'genesis-media://home/above/img-03.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -262,7 +262,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://home/above/img-04.jpg'
+              image: 'genesis-media://home/above/img-04.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -290,22 +290,22 @@ content:
     attributes:
       items:
         -
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: 'Item 1'
         -
-          image: 'gantry-media://home/feature/img-02.jpg'
+          image: 'genesis-media://home/feature/img-02.jpg'
           title: 'Item 2'
         -
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: 'Item 3'
         -
-          image: 'gantry-media://home/feature/img-02.jpg'
+          image: 'genesis-media://home/feature/img-02.jpg'
           title: 'Item 4'
         -
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           title: 'Item 5'
         -
-          image: 'gantry-media://home/feature/img-02.jpg'
+          image: 'genesis-media://home/feature/img-02.jpg'
           title: 'Item 6'
     block:
       class: 'fp-feature-slider flush'
@@ -332,7 +332,7 @@ content:
     attributes:
       items:
         -
-          img: 'gantry-media://home/showcase/img-04.jpg'
+          img: 'genesis-media://home/showcase/img-04.jpg'
           datasize: ''
           overlay: g-overlay-enable
           overlaytext: 'Menu Editor'
@@ -347,7 +347,7 @@ content:
           buttonclass: ''
           name: 'Item 1'
         -
-          img: 'gantry-media://home/showcase/img-03.jpg'
+          img: 'genesis-media://home/showcase/img-03.jpg'
           datasize: ''
           overlay: g-overlay-enable
           overlaytext: 'Styles Panel'
@@ -362,7 +362,7 @@ content:
           buttonclass: ''
           name: 'Item 2'
         -
-          img: 'gantry-media://home/showcase/img-05.jpg'
+          img: 'genesis-media://home/showcase/img-05.jpg'
           datasize: ''
           overlay: g-overlay-enable
           overlaytext: 'Layout Manager'
@@ -377,7 +377,7 @@ content:
           buttonclass: ''
           name: 'Item 3'
         -
-          img: 'gantry-media://home/showcase/img-02.jpg'
+          img: 'genesis-media://home/showcase/img-02.jpg'
           datasize: ''
           overlay: g-overlay-enable
           overlaytext: 'Icon / Font Picker'
@@ -398,60 +398,60 @@ content:
     attributes:
       items:
         -
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-handshake-o'
           description: 'Supra is a perfect fit for bloggers with its abundance of content-rich features and premium particles.'
           signature1: 'Lois Lane'
           signature2: 'Blogger at Example Corp.'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: Blog
         -
-          image: 'gantry-media://home/expanded/img-02.jpg'
+          image: 'genesis-media://home/expanded/img-02.jpg'
           icon: 'fa fa-ticket'
           description: 'Supra offers a unique advantage for news sites by combining beautiful typography and vibrant imagery.'
           signature1: 'Piper Wright'
           signature2: 'Journalist at Diamond City'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: News
         -
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-laptop'
           description: 'Supra''s modern design and versatile layout makes it an excellent choice for corporate websites.'
           signature1: 'Lex Luthor'
           signature2: 'CEO at LexCorp'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: Corporate
         -
-          image: 'gantry-media://home/expanded/img-02.jpg'
+          image: 'genesis-media://home/expanded/img-02.jpg'
           icon: 'fa fa-comments-o'
           description: 'Artists and photographers will love Supra''s incredible set of premium particles.'
           signature1: 'Jane Doe'
           signature2: 'Artist at Stark Enterprises'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: Portfolio
         -
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-credit-card'
           description: 'Creating a new website for your startup shouldn''t be rocket science. Supra makes it easier than ever.'
           signature1: 'Mark Zuccini'
           signature2: 'Founder of Example Inc.'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: Startup
         -
-          image: 'gantry-media://home/expanded/img-02.jpg'
+          image: 'genesis-media://home/expanded/img-02.jpg'
           icon: 'fa fa-paper-plane-o'
           description: 'With easy-to-manage pricing tables and other features, Supra is an excellent choice for service-based businesses.'
           signature1: 'Clark Kent'
           signature2: 'CEO at Example LLC.'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: Service
         -
-          image: 'gantry-media://home/expanded/img-01.jpg'
+          image: 'genesis-media://home/expanded/img-01.jpg'
           icon: 'fa fa-shopping-basket'
           description: 'Small businesses and organizations will love Supra''s clean, professional look and easy set up.'
           signature1: 'Ellen Taylor'
           signature2: 'Founder of Example Inc.'
-          avatar: 'gantry-media://home/expanded/avatar-01.jpg'
+          avatar: 'genesis-media://home/expanded/avatar-01.jpg'
           title: Organization
     block:
       variations: 'nomarginall nopaddingall'
@@ -548,7 +548,7 @@ content:
   custom-1287:
     title: 'Custom HTML'
     attributes:
-      html: '<a href="//www.youtube.com/embed/O66Wc2GmFXY?autoplay=1" data-rel="lightcase"><img src="gantry-media://home/utility/img-01.jpg" /></a>'
+      html: '<a href="//www.youtube.com/embed/O66Wc2GmFXY?autoplay=1" data-rel="lightcase"><img src="genesis-media://home/utility/img-01.jpg" /></a>'
   simplecontent-6576:
     title: 'Simple Content'
     attributes:

@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_NotioInstallerScript
+ * Class Genesis_NotioInstallerScript
  */
-class G5_NotioInstallerScript
+class Genesis_NotioInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

@@ -1,6 +1,6 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% macro displayParticle(item, gantry) %}
+{% macro displayParticle(item, genesis) %}
     {% if item.particle.enabled is null or item.particle.enabled %}
         {% set classes = item.options.block.class %}
         <div class="menu-item-particle{{ classes ? ' ' ~ classes }}">
@@ -9,7 +9,7 @@
                 '@particles/' ~ item.particle ~ '.html.twig'
             ]
             ignore missing with {
-                gantry: gantry,
+                genesis: genesis,
                 particle: item.options.particle
             }
             only %}
@@ -17,7 +17,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro displayTitle(item, gantry) %}
+{% macro displayTitle(item, genesis) %}
     {% if item.icon_only %}
         <i class="{{ item.icon|e }}"></i>
     {% else %}
@@ -33,7 +33,7 @@
     {% endif %}    
 {% endmacro %}
 
-{% macro displayItem(item, menu, gantry, id) %}
+{% macro displayItem(item, menu, genesis, id) %}
     {% if item.visible and item.enabled %}
         {% set title = item.icon_only ? ' title="' ~ item.title | e ~ '"' %}
         {% set active = menu.isActive(item) ? 'menu__link--current' %}
@@ -44,18 +44,18 @@
             <li class="menu__item {{ item.class|default('') }}">
                 <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="{{ item.url }}" {{ target|raw }}>
                     <span>
-                    {{ _self.displayTitle(item, gantry) }}
+                    {{ _self.displayTitle(item, genesis) }}
                     </span>
                 </a>
             </li>
         {% else %}
             {% if item.type == 'particle' %}
-                {{ _self.displayParticle(item, gantry) }}
+                {{ _self.displayParticle(item, genesis) }}
             {% elseif item.type == 'heading' or item.type == 'separator' %}
                 <li class="menu__item {{ item.class|default('') }}">
                     <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="javascript:void(0)">
                       <span>
-                        {{ _self.displayTitle(item, gantry) }}
+                        {{ _self.displayTitle(item, genesis) }}
                           </span>
                     </a>
                 </li>
@@ -72,7 +72,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro displaySubItem(item, menu, gantry, id) %}
+{% macro displaySubItem(item, menu, genesis, id) %}
     {% if item.visible and item.enabled %}
         <li class="menu__item {{ item.class|default('') }}">
             {% set title = item.icon_only ? ' title="' ~ item.title | e ~ '"' %}
@@ -83,16 +83,16 @@
             {% if item.url %}
                 <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="{{ item.url }}" {{ target|raw }}>
                 <span>
-                    {{ _self.displayTitle(item, gantry) }}
+                    {{ _self.displayTitle(item, genesis) }}
                      </span>
                 </a>
             {% else %}
                 {% if item.type == 'particle' %}
-                    {{ _self.displayParticle(item, gantry) }}
+                    {{ _self.displayParticle(item, genesis) }}
                 {% elseif item.type == 'heading' or item.type == 'separator' %}
                     <a class="menu__link {{ active }}" {% if (item.children) and not item.dropdown_hide %}data-submenu="submenu-{{ id }}"{% endif %} href="javascript:void(0)">
                         <span>
-                            {{ _self.displayTitle(item, gantry) }}
+                            {{ _self.displayTitle(item, genesis) }}
                         </span>
                     </a>
                 {% else %}
@@ -107,7 +107,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro displaySubmenu(items, menu, gantry) %}
+{% macro displaySubmenu(items, menu, genesis) %}
     {% for item in items if item.id != 'root' %}
         {% if item.children %}
             {% set some_children_visible = false %}
@@ -119,7 +119,7 @@
             {% if item.id %}
                 <ul data-menu="submenu-{{ item.id }}" class="menu__level">
                     {% for item in item.children %}
-                        {{ _self.displaySubItem(item, menu, gantry, item.id) }}
+                        {{ _self.displaySubItem(item, menu, genesis, item.id) }}
                     {% endfor %}
                 </ul>
                 {% endif %}
@@ -149,18 +149,18 @@
         <div class="menu__wrap">
             <ul data-menu="main" class="menu__level">
                 {% for item in menu.root %}
-                    {{ _self.displayItem(item, menu, gantry, item.id) }}
+                    {{ _self.displayItem(item, menu, genesis, item.id) }}
                 {% endfor %}
             </ul>
 
-            {{ _self.displaySubmenu(menu, menu, gantry) }}
+            {{ _self.displaySubmenu(menu, menu, genesis) }}
         </div>
     </nav>
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-theme://js/modernizr-vmenu.js'), 10, 'footer') %}
-    {% do genesis.document.addScript(url('gantry-theme://js/classie.js'), 10, 'footer') %}
-    {% do genesis.document.addScript(url('gantry-theme://js/verticalmenu.js'), 10, 'footer') %}
-    {% do genesis.document.addScript(url('gantry-theme://js/verticalmenu.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/modernizr-vmenu.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/classie.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/verticalmenu.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-theme://js/verticalmenu.init.js'), 10, 'footer') %}
 {% endblock %}

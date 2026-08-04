@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1547685902
 layout:
@@ -198,7 +198,7 @@ structure:
 content:
   logo-5679:
     attributes:
-      image: 'gantry-media://logo/logo.png'
+      image: 'genesis-media://logo/logo.png'
       class: g-logo
     block:
       variations: 'nomarginall nopaddingall'

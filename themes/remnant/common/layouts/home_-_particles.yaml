@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1470992774
 layout:
@@ -158,50 +158,50 @@ content:
         -
           artist: ''
           tracktitle: 'The Fragmentation'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           soundcloudartist: disabled
           title: 'Item 1'
         -
           artist: ''
           tracktitle: 'Who Am I To Judge'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           soundcloudartist: disabled
           title: 'Item 2'
         -
           artist: ''
           tracktitle: 'The Chase'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           soundcloudartist: disabled
           title: 'Item 3'
         -
           artist: ''
           tracktitle: 'March of the Giants'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           soundcloudartist: disabled
           title: 'Item 4'
         -
           artist: ''
           tracktitle: 'Through the Fog'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           soundcloudartist: disabled
           title: 'Item 5'
@@ -286,7 +286,7 @@ content:
       album: Videos
       videogriditems:
         -
-          thumbnail: 'gantry-media://demo/home/above/img-01.jpg'
+          thumbnail: 'genesis-media://demo/home/above/img-01.jpg'
           icon: 'fa fa-play-circle'
           video: 'https://www.youtube.com/watch?v=3JWTaaS7LdU'
           videotitle: 'I will always love you'
@@ -294,7 +294,7 @@ content:
           videodescription: 'Remnant is one theme you will love. From its easy-to-use Genesis interface to its powerful particles.'
           title: 'Item 1'
         -
-          thumbnail: 'gantry-media://demo/home/above/img-02.jpg'
+          thumbnail: 'genesis-media://demo/home/above/img-02.jpg'
           icon: 'fa fa-play-circle'
           video: 'https://www.youtube.com/watch?v=y6Sxv-sUYtM'
           videotitle: 'Because I''m happy'
@@ -302,7 +302,7 @@ content:
           videodescription: 'Make your fans happy with this beautiful, all-in-one theme that is as versatile as your music collection.'
           title: 'Item 2'
         -
-          thumbnail: 'gantry-media://demo/home/above/img-03.jpg'
+          thumbnail: 'genesis-media://demo/home/above/img-03.jpg'
           icon: 'fa fa-play-circle'
           video: 'https://www.youtube.com/watch?v=hTWKbfoikeg'
           videotitle: 'Smells like teen spirit'
@@ -310,7 +310,7 @@ content:
           videodescription: 'A great theme is timeless. It captures the essence of your brand and elevates it for years to come.'
           title: 'Item 3'
         -
-          thumbnail: 'gantry-media://demo/home/above/img-04.jpg'
+          thumbnail: 'genesis-media://demo/home/above/img-04.jpg'
           icon: 'fa fa-play-circle'
           video: 'https://www.youtube.com/watch?v=otCpCn0l4Wo'
           videotitle: 'Can’t touch this!'
@@ -351,17 +351,17 @@ content:
       album: ''
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/showcase/img-big-left.jpg'
+          image: 'genesis-media://demo/home/showcase/img-big-left.jpg'
           caption: 'New York'
           icon: 'fa fa-search'
           title: 'Item 1'
         -
-          image: 'gantry-media://demo/home/showcase/img-small-left.jpg'
+          image: 'genesis-media://demo/home/showcase/img-small-left.jpg'
           caption: Toronto
           icon: 'fa fa-search'
           title: 'Item 2'
         -
-          image: 'gantry-media://demo/home/showcase/img-small-left2.jpg'
+          image: 'genesis-media://demo/home/showcase/img-small-left2.jpg'
           caption: Warsaw
           icon: 'fa fa-search'
           title: 'Item 3'
@@ -379,17 +379,17 @@ content:
       album: ''
       imagegriditems:
         -
-          image: 'gantry-media://demo/home/showcase/img-small-right.jpg'
+          image: 'genesis-media://demo/home/showcase/img-small-right.jpg'
           caption: Cracow
           icon: 'fa fa-search'
           title: 'Item 1'
         -
-          image: 'gantry-media://demo/home/showcase/img-small-right2.jpg'
+          image: 'genesis-media://demo/home/showcase/img-small-right2.jpg'
           caption: Dublin
           icon: 'fa fa-search'
           title: 'Item 2'
         -
-          image: 'gantry-media://demo/home/showcase/img-big-right.jpg'
+          image: 'genesis-media://demo/home/showcase/img-big-right.jpg'
           caption: Moscow
           icon: 'fa fa-search'
           title: 'Item 3'
@@ -399,7 +399,7 @@ content:
   custom-4105:
     title: 'Custom HTML'
     attributes:
-      html: "    <div class=\"platform-content row-fluid\">\n        <div class=\"span12\">\n            <div class=\"blog\">\n                <div class=\"page-header\">\n                    <h1>Home</h1>\n                </div>\n                <div class=\"items-leading clearfix\">\n                    <div class=\"leading-0\">\n                        <div class=\"page-header\">\n                            <h2><a href=\n                            \"#\"\n                            >Remnant delivers with Audio Player\n                            Particle</a></h2>\n                        </div>\n                        <div class=\"pull-none item-image\">\n                            <a href=\n                            \"#\">\n                            <img src=\"gantry-media://demo/home/expanded/img-01.jpg\"></a>\n                        </div>\n                        <p class=\"g-lead\">Rock out to your favorite track on\n                        any website.</p>\n                        <p>Audio Player and Mini Player particles support\n                        SoundCloud, External, and Local audio files.</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>"
+      html: "    <div class=\"platform-content row-fluid\">\n        <div class=\"span12\">\n            <div class=\"blog\">\n                <div class=\"page-header\">\n                    <h1>Home</h1>\n                </div>\n                <div class=\"items-leading clearfix\">\n                    <div class=\"leading-0\">\n                        <div class=\"page-header\">\n                            <h2><a href=\n                            \"#\"\n                            >Remnant delivers with Audio Player\n                            Particle</a></h2>\n                        </div>\n                        <div class=\"pull-none item-image\">\n                            <a href=\n                            \"#\">\n                            <img src=\"genesis-media://demo/home/expanded/img-01.jpg\"></a>\n                        </div>\n                        <p class=\"g-lead\">Rock out to your favorite track on\n                        any website.</p>\n                        <p>Audio Player and Mini Player particles support\n                        SoundCloud, External, and Local audio files.</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>"
   custom-6018:
     title: 'Custom HTML'
     attributes:
@@ -438,60 +438,60 @@ content:
           artist: ''
           tracktitle: 'Illenium - With You'
           releasedate: '2016'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           title: 'Item 1'
         -
           artist: ''
           tracktitle: 'You Can''t Stop Me'
           releasedate: '2014'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           title: 'Item 2'
         -
           artist: ''
           tracktitle: Heathens
           releasedate: '2016'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           title: 'Item 3'
         -
           artist: ''
           tracktitle: 'Zombie Apocalypse'
           releasedate: '2015'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           title: 'Item 4'
         -
           artist: ''
           tracktitle: Overcome
           releasedate: '2012'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           title: 'Item 5'
         -
           artist: ''
           tracktitle: 'Tormented Odyssey'
           releasedate: '2013'
-          cover: 'gantry-media://demo/home/audio/img-01.jpg'
+          cover: 'genesis-media://demo/home/audio/img-01.jpg'
           source: local
           externalurl: ''
-          localurl: 'gantry-media://demo/home/audio/sample.mp3'
+          localurl: 'genesis-media://demo/home/audio/sample.mp3'
           soundcloudurl: ''
           title: 'Item 6'
     block:
@@ -546,7 +546,7 @@ content:
           title: ''
           subtitle: Deejay
           author: B.B Queen
-          authorimage: 'gantry-media://demo/home/footer/img-01.png'
+          authorimage: 'genesis-media://demo/home/footer/img-01.png'
           desc: '<a href="https://twitter.com/rockettheme" title="Dazzle Software" target="_blank">@rockettheme</a> Building my site is so simple. Remnant makes it easy to keep my fans updated!'
           link: ''
           linktext: ''
@@ -563,7 +563,7 @@ content:
           title: ''
           subtitle: Rock Star
           author: 'Madonna Manson'
-          authorimage: 'gantry-media://demo/home/footer/img-02.png'
+          authorimage: 'genesis-media://demo/home/footer/img-02.png'
           desc: '<a href="https://twitter.com/rockettheme" title="Dazzle Software" target="_blank">@rockettheme</a> Our fans get quick access to our tour dates, videos, and music. Remnant rocks!'
           link: ''
           linktext: ''
@@ -580,7 +580,7 @@ content:
           title: ''
           subtitle: Producer
           author: 'Stevie Jackson'
-          authorimage: 'gantry-media://demo/home/footer/img-03.png'
+          authorimage: 'genesis-media://demo/home/footer/img-03.png'
           desc: '<a href="https://twitter.com/rockettheme" title="Dazzle Software" target="_blank">@rockettheme</a> Remnant makes it easy to create one or more unique websites that fits my artists'' needs.'
           link: ''
           linktext: ''
@@ -597,7 +597,7 @@ content:
           title: ''
           subtitle: Agent
           author: Rihanna Ramone
-          authorimage: 'gantry-media://demo/home/footer/img-04.png'
+          authorimage: 'genesis-media://demo/home/footer/img-04.png'
           desc: '<a href="https://twitter.com/rockettheme" title="Dazzle Software" target="_blank">@rockettheme</a> Having all of my client''s media in one place is a great way to help them connect with fans.'
           link: ''
           linktext: ''
@@ -614,7 +614,7 @@ content:
           title: ''
           subtitle: Songwriter
           author: 'Alex Santana'
-          authorimage: 'gantry-media://demo/home/footer/img-05.png'
+          authorimage: 'genesis-media://demo/home/footer/img-05.png'
           desc: '<a href="https://twitter.com/rockettheme" title="Dazzle Software" target="_blank">@rockettheme</a> Remnant''s particles and Genesis framework make it easy to keep the site updated.'
           link: ''
           linktext: ''
@@ -631,7 +631,7 @@ content:
           title: ''
           subtitle: Recording Artist
           author: Ozzy Morrison
-          authorimage: 'gantry-media://demo/home/footer/img-06.png'
+          authorimage: 'genesis-media://demo/home/footer/img-06.png'
           desc: '<a href="https://twitter.com/rockettheme" title="Dazzle Software" target="_blank">@rockettheme</a> Remnant is the perfect fit for any artist. From music to filmmaking, r&b to punk.'
           link: ''
           linktext: ''

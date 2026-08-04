@@ -2,7 +2,7 @@
 
 {% block particle %}
     {% styles %}
-        <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url('genesis-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
 
     <div id="{{ id }}" class="g-slideshow {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}">
@@ -43,5 +43,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

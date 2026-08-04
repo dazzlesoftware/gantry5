@@ -1,6 +1,6 @@
 // TODO: Make sure you have Joomla Bootstrap symlinked
 //  from JOOMLA4_INSTALL/media/vendor/bootstrap/scss
-//  to GANTRY5/engines/joomla/nucleus/scss/vendor/bootstrap5
+//  to GENESIS/engines/joomla/nucleus/scss/vendor/bootstrap5
 
 // Bootstrap functions
 @import "vendor/bootstrap5/functions";
@@ -97,4 +97,3 @@
 .platform-content.container {
   max-width: 100% !important;
 }
-

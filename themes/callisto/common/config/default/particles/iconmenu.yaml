@@ -5,17 +5,17 @@ items:
   -
     icon: 'fa fa-diamond'
     text: Features
-    link: 'http://docs.gantry.org/gantry5/basics/key-features'
+    link: 'http://docs.genesis.org/genesis/basics/key-features'
     name: Features
   -
     icon: 'fa fa-rocket'
     text: 'Genesis'
-    link: 'http://www.gantry.org/'
+    link: 'http://www.genesis.org/'
     name: 'Genesis'
   -
     icon: 'fa fa-gear'
     text: Addons
-    link: 'http://docs.gantry.org/gantry5/particles'
+    link: 'http://docs.genesis.org/genesis/particles'
     name: Addons
   -
     icon: 'fa fa-cloud-download'

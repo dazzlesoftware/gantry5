@@ -1,5 +1,5 @@
 preset1:
-  image: 'gantry-admin://images/preset1.png'
+  image: 'genesis-admin://images/preset1.png'
   description: 'Preset 1'
   colors:
     - '#0069e3'
@@ -7,7 +7,7 @@ preset1:
   styles:
     base:
       background: '#ffffff'
-      background-image: 'gantry-media://backgrounds/base/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/base/bg-01.svg'
       background-clipping: 1
       text-color: '#888888'
     accent:
@@ -32,37 +32,37 @@ preset1:
       text-color: '#000000'
     slideshow:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/slideshow/bg-light.svg'
+      background-image: 'genesis-media://backgrounds/slideshow/bg-light.svg'
       text-color: '#000000'
     header:
       background: 'rgba(255,255,255,0)'
       text-color: '#888888'
     above:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/above/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/above/bg-01.svg'
       text-color: '#000000'
     feature:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/feature/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/feature/bg-01.svg'
       text-color: '#000000'
     showcase:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/showcase/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/showcase/bg-01.svg'
       text-color: '#000000'
     utility:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/utility/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/utility/bg-01.svg'
       text-color: '#000000'
     main:
       background: 'rgba(255,255,255,0)'
       text-color: '#000000'
     expanded:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/expanded/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/expanded/bg-01.svg'
       text-color: '#000000'
     extension:
       background: 'rgba(255,255,255,0)'
-      background-image: 'gantry-media://backgrounds/extension/bg-01.svg'
+      background-image: 'genesis-media://backgrounds/extension/bg-01.svg'
       text-color: '#000000'
     bottom:
       background: 'rgba(255,255,255,0)'

@@ -136,7 +136,7 @@ children:
                 attributes:
                   class: 'g-logo g-logo-alt'
                   enabled: 0
-                  image: 'gantry-media://logo/logo-alt.png'
+                  image: 'genesis-media://logo/logo-alt.png'
                 children: {  }
           -
             id: 557d7ce8-07f6-490b-8bfd-8e9a3bf438e1
@@ -1103,7 +1103,7 @@ children:
                 attributes:
                   class: 'g-logo g-logo-alt'
                   enabled: 1
-                  image: 'gantry-media://logo/logo-alt.png'
+                  image: 'genesis-media://logo/logo-alt.png'
                 children: {  }
           -
             id: 2f8f7500-7483-428f-b264-884932521d21
@@ -1127,15 +1127,15 @@ children:
                   items:
                     -
                       text: Genesis
-                      link: 'http://www.gantry.org/'
+                      link: 'http://www.genesis.org/'
                       name: Genesis
                     -
                       text: Features
-                      link: 'http://docs.gantry.org/gantry5/basics/key-features'
+                      link: 'http://docs.genesis.org/genesis/basics/key-features'
                       name: Features
                     -
                       text: Particles
-                      link: 'http://docs.gantry.org/gantry5/particles'
+                      link: 'http://docs.genesis.org/genesis/particles'
                       name: Particles
                     -
                       text: Join
@@ -1189,7 +1189,7 @@ children:
                 title: Branding
                 attributes:
                   enabled: 1
-                  content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
+                  content: 'Powered by <a href="http://www.genesis.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
                 children: {  }
           -
             id: a240af8c-d434-47b4-a97c-33e748780231

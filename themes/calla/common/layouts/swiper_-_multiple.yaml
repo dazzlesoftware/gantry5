@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: swiper
   timestamp: 1580382706
 layout:
@@ -200,7 +200,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -214,7 +214,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -228,7 +228,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -305,7 +305,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -315,7 +315,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -325,7 +325,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
@@ -405,7 +405,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -419,7 +419,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -433,7 +433,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -510,7 +510,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -520,7 +520,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -530,7 +530,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
@@ -541,7 +541,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -551,7 +551,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -561,7 +561,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
@@ -572,7 +572,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -582,7 +582,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Packed with Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -592,7 +592,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
@@ -672,7 +672,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -686,7 +686,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -700,7 +700,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           kb: ''
           duration: '7000'
@@ -777,7 +777,7 @@ content:
       items:
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -787,7 +787,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -797,7 +797,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
@@ -808,7 +808,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -818,7 +818,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -828,7 +828,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'
@@ -839,7 +839,7 @@ content:
           name: 'Item 3'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Bright, Colorful Design'
           text: 'Highlighting modern style'
           thumb_title: ''
@@ -849,7 +849,7 @@ content:
           name: 'Item 1'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           title: 'Premium Features'
           text: 'Over 30 Particles to Choose From'
           thumb_title: ''
@@ -859,7 +859,7 @@ content:
           name: 'Item 2'
         -
           class: ''
-          image: 'gantry-media://swiper/img-01.jpg'
+          image: 'genesis-media://swiper/img-01.jpg'
           bgcolor: ''
           title: 'Mobile Responsive'
           text: 'Slide and Thumb Breakpoints'

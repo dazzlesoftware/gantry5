@@ -1,0 +1,29 @@
+{% assets with { priority: 10 } %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ url('genesis-admin://assets/css-compiled/joomla-g-admin.css')|e }}" type="text/css" />
+    {% endblock %}
+
+    {% block javascript %}
+        <script>
+            var GENESIS_AJAX_SUFFIX = '{{ genesis.ajax_suffix|raw }}';
+            var GENESIS_AJAX_URL = '{{ genesis.route('%ajax%')|e }}';
+            var GENESIS_AJAX_CONF_URL = '{{ genesis.route('configurations/%ajax%')|e }}';
+            var GENESIS_AJAX_NONCE = null;
+            var GENESIS_PLATFORM = 'joomla';
+            var GENESIS_AJAX_SUFFIX = GENESIS_AJAX_SUFFIX, GENESIS_AJAX_URL = GENESIS_AJAX_URL,
+                GENESIS_AJAX_CONF_URL = GENESIS_AJAX_CONF_URL, GENESIS_AJAX_NONCE = GENESIS_AJAX_NONCE,
+                GENESIS_PLATFORM = GENESIS_PLATFORM;
+        </script>
+        <script type="text/javascript" src="{{ url('genesis-admin://js/dark-mode.js')|e }}"></script>
+    {% endblock %}
+{% endassets -%}
+
+<div id="genesis-container" data-genesis-container="">
+    {% block content %}
+    {% endblock %}
+
+    {% block footer_section %}
+    {% endblock %}
+</div>
+
+{% do genesis.platform.finalize() %}

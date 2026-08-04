@@ -1,0 +1,26 @@
+body.genesis {
+    [data-genesis-container] {
+        .genesis-dialog {
+            @include breakpoint(desktop-only) {
+                padding-left: 160px;
+            }
+            @include breakpoint(tablet-range) {
+                padding-left: 36px;
+            }
+        }
+
+        .genesis-dialog-loading-spinner.genesis-dialog-theme-default {
+            top: 3em;
+
+            @include breakpoint(desktop-only) {
+                left: 160px;
+            }
+            @include breakpoint(tablet-range) {
+                left: 36px;
+            }
+            @include breakpoint(mobile-only) {
+                top: 4em;
+            }
+        }
+    }
+}

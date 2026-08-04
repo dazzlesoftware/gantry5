@@ -5,8 +5,8 @@ atoms:
     attributes:
       enabled: '1'
       css:
-        - { location: 'gantry-assets://css/demo.css', inline: '', extra: {  }, name: 'Demo CSS' }
-        - { location: 'gantry-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
+        - { location: 'genesis-assets://css/demo.css', inline: '', extra: {  }, name: 'Demo CSS' }
+        - { location: 'genesis-assets://css/animate.css', inline: '', extra: {  }, name: 'Animate CSS' }
       javascript:
   -
     type: frameworks

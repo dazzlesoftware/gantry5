@@ -9,18 +9,18 @@
 
 defined('ABSPATH') or die;
 
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme;
+use Genesis\Framework\Genesis;
+use Genesis\Framework\Theme;
 use Timber\Timber;
 
 /*
  * The template for displaying 404 pages (Not Found)
  */
 
-$gantry = Gantry::instance();
+$genesis = Genesis::instance();
 
 /** @var Theme $theme */
-$theme  = $gantry['theme'];
+$theme  = $genesis['theme'];
 $theme->setLayout('_error', true);
 
 // We need to render contents of <head> before plugin content gets added.

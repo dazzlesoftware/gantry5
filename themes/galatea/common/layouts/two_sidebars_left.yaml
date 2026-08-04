@@ -154,7 +154,7 @@ content:
   logo-8106:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://demo/layouts/img-02.jpg'
+      image: 'genesis-media://demo/layouts/img-02.jpg'
       text: ''
       class: ''
     block:
@@ -175,7 +175,7 @@ content:
   logo-2392:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://features/overview/img-07.jpg'
+      image: 'genesis-media://features/overview/img-07.jpg'
       text: ''
       class: ''
     block:
@@ -183,7 +183,7 @@ content:
   logo-5449:
     title: 'Logo / Image'
     attributes:
-      image: 'gantry-media://features/overview/img-02.jpg'
+      image: 'genesis-media://features/overview/img-02.jpg'
       text: ''
       class: ''
     block:
@@ -238,7 +238,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'http://docs.gantry.org/'
+          link: 'http://docs.genesis.org/'
           icon: ''
           readmoreclass: ''
           title: Genesis
@@ -349,7 +349,7 @@ content:
           tag: ''
           subtag: ''
           label: ''
-          link: 'https://github.com/gantry/gantry5'
+          link: 'https://github.com/genesis/genesis'
           icon: ''
           readmoreclass: ''
           title: Github

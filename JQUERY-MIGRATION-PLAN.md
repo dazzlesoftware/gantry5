@@ -1,7 +1,7 @@
 # jQuery Migration Plan
 
 **Audit date:** August 3, 2026
-**Project:** Genesis (formerly Gantry 5)
+**Project:** Genesis (formerly Genesis 5)
 **Status:** Implementation complete; final repository validation recorded below.
 
 ## Acceptance criteria
@@ -32,7 +32,7 @@
 - Existing Lightcase `data-rel` markup is supported by the native delegated lightbox.
 - Swiper 14 remains an intentional dependency-free carousel library. Theme-owned legacy Swiper copies were removed in favor of the shared generated bundle.
 - AOS contains no jQuery integration; its minified internal `$()` function is a scan false positive.
-- phpBB template JavaScript is platform-owned and outside the recovered gantry-theme migration. It was not modified because the workspace contains unrelated user changes in that integration.
+- phpBB template JavaScript is platform-owned and outside the recovered genesis-theme migration. It was not modified because the workspace contains unrelated user changes in that integration.
 
 ## Reproducible scans
 
@@ -42,7 +42,7 @@ rg -l 'jQuery|\$\(' themes --glob '*.js' --glob '!*/aos.js' --glob '!helium/phpb
 rg -l 'jQuery|\$\(' themes --glob '*.twig'
 
 # Genesis loader and registration APIs (expected: no active matches)
-rg -n "gantry\.load\('jquery'\)|jquery\.framework|jquery\.ui|registerJquery|wp_enqueue_script\('jquery'" themes engines src platforms
+rg -n "genesis\.load\('jquery'\)|jquery\.framework|jquery\.ui|registerJquery|wp_enqueue_script\('jquery'" themes engines src platforms
 
 # Obsolete runtime filenames (particle/SCSS compatibility names may remain)
 rg --files | rg -i 'jquery|jquery-ui|flexslider\.js|flipster\.js|filterizr|lightslider|fullpage\.js|enllax|morris|raphael'

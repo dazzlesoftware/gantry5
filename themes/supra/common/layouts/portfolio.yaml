@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1495135884
 layout:
@@ -271,7 +271,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-01.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-01.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -287,7 +287,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-02.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-02.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -303,7 +303,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-03.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-03.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -319,7 +319,7 @@ content:
         -
           icon: ''
           iconloc: left
-          image: 'gantry-media://pages/portfolio/expanded/img-04.jpg'
+          image: 'genesis-media://pages/portfolio/expanded/img-04.jpg'
           imageloc: left
           textstyle: compact
           imagestyle: large
@@ -347,7 +347,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-01.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-01.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -358,7 +358,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-02.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-02.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -369,7 +369,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-03.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-03.jpg'
               caption: 'Image 3'
               linkto: image
               link: ''
@@ -380,7 +380,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-04.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-04.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -391,7 +391,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-05.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-05.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -402,7 +402,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-06.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-06.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -413,7 +413,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-07.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-07.jpg'
               caption: ''
               linkto: image
               link: ''
@@ -424,7 +424,7 @@ content:
           imagegriditems:
             -
               subtitle: ''
-              image: 'gantry-media://pages/portfolio/footer/img-08.jpg'
+              image: 'genesis-media://pages/portfolio/footer/img-08.jpg'
               caption: ''
               linkto: image
               link: ''

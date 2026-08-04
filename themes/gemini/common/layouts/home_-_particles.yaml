@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1483618411
 layout:
@@ -221,11 +221,11 @@ content:
     attributes:
       items:
         -
-          tab_image: 'gantry-media://home/header/img-01.jpg'
+          tab_image: 'genesis-media://home/header/img-01.jpg'
           tab_desc: "Create a dynamic user experience"
           tab_name: Experience
         -
-          tab_image: 'gantry-media://home/header/img-01.jpg'
+          tab_image: 'genesis-media://home/header/img-01.jpg'
           tab_desc: 'Building immersive experiences'
           tab_name: Professionalism
   accordionslider-2330:
@@ -347,17 +347,17 @@ content:
       items:
         -
           description: 'Gemini is packed with features enabling you to get more done on the teme level. This ensures a consistent and reliable user experience.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           content: '<blockquote>Design is not just what it looks like and feels like. Design is how it works.<cite>Steve Jobs</cite></blockquote>'
           title: Consistency
         -
           description: 'Gemini is built with a wide range of website types in mind. This, in addition to the flexible Genesis framework, makes it exceedingly versatile.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           content: "<blockquote>Stay committed to your decisions, but stay flexible in your approach.<cite>Tony Robbins</cite></blockquote>\n\n\n"
           title: Versatility
         -
           description: 'Both the Genesis framework and the Gemini theme are created to ensure that your website is perfectly optimized for performance and ease of use.'
-          image: 'gantry-media://home/feature/img-01.jpg'
+          image: 'genesis-media://home/feature/img-01.jpg'
           content: '<blockquote>"There''s a way to do it better—find it."<cite>Thomas Edison</cite></blockquote>'
           title: Optimization
   simplecontent-8234:

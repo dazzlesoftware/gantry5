@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1505834698
 layout:
@@ -335,7 +335,7 @@ content:
   logo-3823:
     attributes:
       rel: home
-      image: 'gantry-media://logo/logo-footer.png'
+      image: 'genesis-media://logo/logo-footer.png'
       alt: Salient
       class: g-footer-logo
   totop-1692:

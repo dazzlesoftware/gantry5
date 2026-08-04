@@ -1,19 +1,19 @@
 # Genesis
 
-> Genesis is the new name for Gantry 5. During the transition, installed extensions, package names, filesystem paths, APIs, and download URLs may continue to use the `gantry5`, `Gantry`, or `G5` identifiers for compatibility.
+> Genesis is the new name for Genesis 5. During the transition, installed extensions, package names, filesystem paths, APIs, and download URLs may continue to use the `genesis`, `Genesis`, or `Genesis` identifiers for compatibility.
 
 ## Recent Updates – 2026 Activity & 5.6.0 Release
 
 We've been heads-down on development since taking over stewardship, with lighter public communication than ideal (last major updates were quieter after October 2025). Thank you for your patience—we're back to more visible progress.
 
-**Gantry 5.6.0** was released under the former product name on **February 24, 2026**:
+**Genesis 5.6.0** was released under the former product name on **February 24, 2026**:
 - Full native compatibility with **Joomla 5** (dropped Joomla 4 support)
 - PHP **8.3.0 or newer** is required
 - Platform-specific improvements and fixes across Joomla, WordPress, and Grav
 - Updated compatibility matrix and admin notices for smoother upgrades
 - Recent commits include Joomla 5 native changes, WordPress page assignment fixes, code cleanups, and version bumps
 
-Check the full [CHANGELOG.md](https://github.com/gantry/gantry5/blob/develop/CHANGELOG.md) for details.
+Check the full [CHANGELOG.md](https://github.com/genesis/genesis/blob/develop/CHANGELOG.md) for details.
 
 **Project Status**  
 Genesis is actively developed and maintained by the Dazzle Software team. It is **not** in maintenance-only mode or abandoned—we are committed long-term.
@@ -22,36 +22,36 @@ Genesis is actively developed and maintained by the Dazzle Software team. It is 
 - Genesis remains **free and open-source** under GPL-3.0-or-later.
 - Focus areas: **Developer tools** + **AI-assisted features** (smarter particle/outline workflows, AI integration points).
 - Optional premium **add-on packages** to expand core capabilities without gating anything.
-- Actively working on a **theme migration addon** to help convert legacy Dazzle Software Gantry themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to Genesis using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.
+- Actively working on a **theme migration addon** to help convert legacy Dazzle Software Genesis themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to Genesis using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.
   This includes tools to adapt/replace bundled legacy Dazzle Software addons/plugins like **RokSprocket**, **RokGallery**, **RokNavMenu**, **RokCandy**, **RokQuickCart**, **RokFeatureTable**, and others that were common in RT themes.  
   *No firm promises on 100% perfect 1:1 fidelity* (legacy extensions + platform changes can be complex), but we believe we can cover most common scenarios and make upgrades far easier for sites still on older RT setups.
 
-- **Genesis** is in active development as the successor name for Gantry, with deeper modern integrations (including MCP support). A detailed feature list and roadmap will be shared through the project channels.
+- **Genesis** is in active development as the successor name for Genesis, with deeper modern integrations (including MCP support). A detailed feature list and roadmap will be shared through the project channels.
 
 **Community & Transparency**  
-We'll improve regular updates here on GitHub (discussions/announcements), gantry.org/blog, and possibly X. If you have open PRs, issues, or ideas—especially around legacy theme migrations—please open a discussion or comment below. We're prioritizing backlog review and merges now that 5.6.0 is out.
+We'll improve regular updates here on GitHub (discussions/announcements), genesis.org/blog, and possibly X. If you have open PRs, issues, or ideas—especially around legacy theme migrations—please open a discussion or comment below. We're prioritizing backlog review and merges now that 5.6.0 is out.
 
-Thanks for joining us as Gantry becomes Genesis. Your feedback and support mean a lot—let's keep building!
+Thanks for joining us as Genesis becomes Genesis. Your feedback and support mean a lot—let's keep building!
 
 — Gene Teigland, Dazzle Software
 
 
 
 > [!IMPORTANT]
-> **GANTRY IS BECOMING GENESIS** - [Read about the stewardship transition](https://dazzlesoftware.org/gantry/)
+> **GENESIS IS BECOMING GENESIS** - [Read about the stewardship transition](https://dazzlesoftware.org/genesis/)
 >
-Dazzle Software is the official steward of the framework formerly known as Gantry. Under its new Genesis name, the project continues the flexible, fast, and clean theming framework used across WordPress, Joomla, Grav, and phpBB.
+Dazzle Software is the official steward of the framework formerly known as Genesis. Under its new Genesis name, the project continues the flexible, fast, and clean theming framework used across WordPress, Joomla, Grav, and phpBB.
 
-Genesis builds on Gantry's established architecture and ecosystem. Existing Gantry installations and themes remain a compatibility priority throughout the rename.
+Genesis builds on Genesis's established architecture and ecosystem. Existing Genesis installations and themes remain a compatibility priority throughout the rename.
 
 ================
 
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
-[![Join the chat at https://gitter.im/gantry/gantry5](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gantry/gantry5?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/genesis/genesis](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/genesis/genesis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Ready to get started with Genesis? That's great! We are here to help.
 
-On this page, you will get some quick tips to help you hit the ground running with Genesis. Some installation packages and linked documentation still use the Gantry 5 name during the compatibility transition.
+On this page, you will get some quick tips to help you hit the ground running with Genesis. Some installation packages and linked documentation still use the Genesis 5 name during the compatibility transition.
 
 We hope you enjoy Genesis every bit as much as we enjoy building it.
 
@@ -69,22 +69,22 @@ The back-end administration requirements of Genesis in order of preference are a
 
 ## Installing Genesis and the Hydrogen Theme
 
-Genesis is a framework for building and running Genesis-powered themes. You need to install both the **framework** and a compatible **theme**. Existing Gantry 5 themes remain part of the supported compatibility path.
+Genesis is a framework for building and running Genesis-powered themes. You need to install both the **framework** and a compatible **theme**. Existing Genesis 5 themes remain part of the supported compatibility path.
 
-During the rename transition, download packages continue to use their existing Gantry 5 names and locations. Download the latest framework build and Hydrogen using the links below or from [GitHub](http://github.com/gantry/gantry5/).
+During the rename transition, download packages continue to use their existing Genesis 5 names and locations. Download the latest framework build and Hydrogen using the links below or from [GitHub](http://github.com/genesis/genesis/).
 
-| [Download Stable](http://www.gantry.org/downloads#gantry5) | [Download CI Builds](http://gantry.org/downloads#ci-builds) |
+| [Download Stable](http://www.genesis.org/downloads#genesis) | [Download CI Builds](http://genesis.org/downloads#ci-builds) |
 |:---------------------------------------------------:|:---------------------------------------------------------:|
 
 Once you have the latest packages, installation is simple. We have provided a step-by-step guide in the **Installation** portion of this documentation.
 
-[**Learn More**](http://docs.gantry.org/gantry5/basics/installation)
+[**Learn More**](http://docs.genesis.org/genesis/basics/installation)
 
 ## Accessing the Genesis Administrator
 
 ### Joomla
 
-After installing and activating the Genesis framework and Hydrogen, you can access its administrator in several ways. During the compatibility transition, Joomla may still display the legacy **Components > Gantry 5 Templates** menu and extension identifier.
+After installing and activating the Genesis framework and Hydrogen, you can access its administrator in several ways. During the compatibility transition, Joomla may still display the legacy **Components > Genesis 5 Templates** menu and extension identifier.
 
 Here, you will see a list of installed Genesis-compatible themes. You can **Preview** a theme or select **Configure** to open the administrator and modify your site.
 
@@ -100,9 +100,9 @@ You will notice the following menu items in the Genesis Administrator:
 
 3. **Platform Settings**: This button takes you to the CMS settings page for Genesis. In Joomla, this is the **Permissions** configuration page.
 
-4. **Clear Cache**: This button clears the cache files related to Gantry. This includes all of the temporary files outside of CSS and configuration information.
+4. **Clear Cache**: This button clears the cache files related to Genesis. This includes all of the temporary files outside of CSS and configuration information.
 
-5. **Outlines Dropdown**: This dropdown makes it easy to quickly switch between Outlines without having to leave the Gantry Administrator.
+5. **Outlines Dropdown**: This dropdown makes it easy to quickly switch between Outlines without having to leave the Genesis Administrator.
 
 6. **Styles**: This administrative panel gives you access to style related outline settings. This includes things like theme colors, fonts, style presets, and more.
 
@@ -110,7 +110,7 @@ You will notice the following menu items in the Genesis Administrator:
 
 8. **Layout**: This administrative panel is where you would configure the layout for your theme. Creating an placing module positions, Particles, spacers, and non-rendered scripts such as Google Analytics code is all done in this panel.
 
-[**Learn More**](http://docs.gantry.org/gantry5/configure/gantry-admin)
+[**Learn More**](http://docs.genesis.org/genesis/configure/genesis-admin)
 
 ## What are Outlines, Particles, Atoms, etc.?
 
@@ -122,19 +122,19 @@ Genesis uses a few framework-specific terms. Here is a quick breakdown of their 
 | Particle      | A typically small block of data used on the front end. It acts like a widget or module and can be configured in the Genesis Administrator. |
 | Atom          | A type of Particle that contains non-rendered data, such as custom scripting (JS, CSS, etc.) or analytics scripts for traffic tracking.                |
 
-[**Learn More**](http://docs.gantry.org/gantry5/basics/terminology)
+[**Learn More**](http://docs.genesis.org/genesis/basics/terminology)
 
 ## Where to Get Help
 
-A chat room has been set up using [Gitter](https://gitter.im/gantry/gantry5) where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.
+A chat room has been set up using [Gitter](https://gitter.im/genesis/genesis) where you can go to talk about the project with developers, contributors, and other members of the community. This is the best place to go to get quick tips and discuss features with others.
 
-[Documentation](http://docs.gantry.org) is also available, and being continually added to as development progresses. Is something missing? You can contribute to the documentation through GitHub.
+[Documentation](http://docs.genesis.org) is also available, and being continually added to as development progresses. Is something missing? You can contribute to the documentation through GitHub.
 
 ## How to Contribute
 
 Contributing to Genesis or its documentation is easy. Development is conducted through [GitHub](https://github.com), where you can submit issues, suggest improvements, and open pull requests.
 
-We recommend chatting with the team via [Gitter](https://gitter.im/gantry/gantry5) prior to submitting the pull request to avoid doubling up on a fix that is already pending or likely to be overwritten by an upcoming change.
+We recommend chatting with the team via [Gitter](https://gitter.im/genesis/genesis) prior to submitting the pull request to avoid doubling up on a fix that is already pending or likely to be overwritten by an upcoming change.
 
 ## Developing from Source on Windows
 
@@ -177,7 +177,7 @@ For a production package build, use `assets-build.bat all --prod` followed by `p
 | `php83-tests.bat` | Verifies PHP 8.3+ and runs the PHPUnit compatibility suite with TestDox output. Extra PHPUnit arguments are forwarded. | After Composer installation and before packaging or committing PHP changes. |
 | `scss-validate-all.bat` | Compiles every Joomla, WordPress, and Grav theme SCSS entry point with modern scssphp and fails on compiler warnings or deprecations. | After SCSS changes and before packaging. |
 | `package-build.bat` | Runs the Phing package builder through `bin\build` and writes packages to `dist`. | After dependencies, assets, and tests are ready. |
-| `wordpress-deploy-builds.bat` | Replaces the local WordPress `gantry5` plugin and all `g5_*` themes with packages from `dist`. Other plugins and themes are preserved. | After `package-build.bat wordpress-dev` when refreshing the local WordPress test site. |
+| `wordpress-deploy-builds.bat` | Replaces the local WordPress `genesis` plugin and all `genesis_*` themes with packages from `dist`. Other plugins and themes are preserved. | After `package-build.bat wordpress-dev` when refreshing the local WordPress test site. |
 | `assets-reset.bat` | Runs targeted asset cleanup and then reinstalls the four known asset projects. | When the normal Node installation is stale or damaged. |
 | `assets-cleanup.bat` | Removes `node_modules` from the root and the three known asset subprojects. | Before a targeted clean reinstall. Usually use `assets-reset.bat` instead. |
 | `node-modules-cleanup-all.bat` | Recursively removes every outermost `node_modules` directory under the repository, including the root. | For a complete Node reset. Use `--dry-run` or `-n` to preview. |
@@ -270,7 +270,7 @@ The deploy script defaults to:
 C:\wamp64\www\wordpress\wp-content
 ```
 
-It validates the target and package set before making changes. It then deletes the existing `plugins\gantry5` directory and every `themes\g5_*` directory before extracting the matching development packages. WordPress default themes, other themes, and other plugins are preserved.
+It validates the target and package set before making changes. It then deletes the existing `plugins\genesis` directory and every `themes\genesis_*` directory before extracting the matching development packages. WordPress default themes, other themes, and other plugins are preserved.
 
 An alternate `wp-content` path and package suffix can be supplied:
 

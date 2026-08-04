@@ -7,14 +7,14 @@
  * @license   GNU/GPLv3 and later
  */
 
-use Gantry\Framework\ThemeInstaller;
+use Genesis\Framework\ThemeInstaller;
 
 defined('ABSPATH') or die;
 
 /**
- * Class G5_TopazInstallerScript
+ * Class Genesis_TopazInstallerScript
  */
-class G5_TopazInstallerScript
+class Genesis_TopazInstallerScript
 {
     /**
      * Called by TemplateInstaller to customize post-installation.

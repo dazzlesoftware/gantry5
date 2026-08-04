@@ -1,7 +1,7 @@
 # JavaScript Framework Dependency Audit
 
 **Audit date:** August 3, 2026
-**Project:** Genesis (formerly Gantry 5)
+**Project:** Genesis (formerly Genesis 5)
 
 ## Result
 
@@ -16,7 +16,7 @@ Maintained Genesis code and recovered-theme particles no longer require or load 
 
 The scan excludes generated/package dependencies, Joomla installer PHP expressions, and the user-maintained phpBB integration.
 
-The final loader scan covers `themes`, `engines`, `src`, and `platforms` and searches for `gantry.load('jquery')`, `jquery.framework`, jQuery UI registration keys, CDN URLs, and platform enqueue calls.
+The final loader scan covers `themes`, `engines`, `src`, and `platforms` and searches for `genesis.load('jquery')`, `jquery.framework`, jQuery UI registration keys, CDN URLs, and platform enqueue calls.
 
 ## Core status
 
