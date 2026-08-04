@@ -81,7 +81,7 @@ class Layouts extends JsonController
             $name = $type;
             $particle = false;
             $defaults = [];
-            $blueprints = BlueprintForm::instance("layout/{$name}.yaml", 'Genesis-admin://blueprints');
+            $blueprints = BlueprintForm::instance("layout/{$name}.yaml", 'genesis-admin://blueprints');
         } else {
             $name = $subtype;
             $particle = true;
@@ -143,7 +143,7 @@ class Layouts extends JsonController
         $particleBlueprints = $this->container['particles']->getBlueprintForm($name);
         $particleBlueprints->set('form/fields/_inherit', ['type' => 'genesis.inherit']);
 
-        $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'Genesis-admin://blueprints');
+        $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'genesis-admin://blueprints');
 
         // TODO: Use blueprints to merge configuration.
         $particle->attributes = (object) $attributes;
@@ -178,7 +178,7 @@ class Layouts extends JsonController
      */
      protected function renderBlockFields(array $block, array $params)
      {
-         $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'Genesis-admin://blueprints');
+         $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'genesis-admin://blueprints');
 
          $paramsBlock = [
                  'title' => $this->container['translator']->translate('GENESIS_PLATFORM_BLOCK'),

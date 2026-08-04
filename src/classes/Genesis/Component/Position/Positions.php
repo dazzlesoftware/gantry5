@@ -44,7 +44,7 @@ class Positions extends Collection
      * @return $this
      * @throws \RuntimeException
      */
-    public function load($path = 'Genesis-positions://')
+    public function load($path = 'genesis-positions://')
     {
         $this->path = $path;
         $positions = [];

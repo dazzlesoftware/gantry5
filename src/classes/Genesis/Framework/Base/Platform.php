@@ -97,7 +97,7 @@ abstract class Platform
                     'prefixes' => ['' => ['genesis-theme://particles', 'genesis-engine://particles']]
                 ],
                 // Genesis administration.
-                'Genesis-admin' => [
+                'genesis-admin' => [
                     'type' => 'ReadOnlyStream',
                     'prefixes' => []
                 ],

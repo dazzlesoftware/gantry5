@@ -277,7 +277,7 @@ class Menu extends HtmlController
 
         $name = isset($data['particle']) ? $data['particle'] : null;
 
-        $block = BlueprintForm::instance('menu/block.yaml', 'Genesis-admin://blueprints');
+        $block = BlueprintForm::instance('menu/block.yaml', 'genesis-admin://blueprints');
         $blueprints = $this->container['particles']->getBlueprintForm($name);
 
         // Load particle blueprints and default settings.
@@ -550,7 +550,7 @@ class Menu extends HtmlController
      */
     protected function loadBlueprints($name = 'menu')
     {
-        return BlueprintForm::instance("menu/{$name}.yaml", 'Genesis-admin://blueprints');
+        return BlueprintForm::instance("menu/{$name}.yaml", 'genesis-admin://blueprints');
     }
 
     /**

@@ -1,5 +1,5 @@
 preset:
-  image: 'Genesis-admin://images/layouts/offline.png'
+  image: 'genesis-admin://images/layouts/offline.png'
   name: _offline
   timestamp: 1443693008
 children:

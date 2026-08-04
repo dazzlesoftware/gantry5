@@ -124,11 +124,11 @@ class Translator implements TranslatorInterface
             $section = 'nucleus';
         }
 
-        $filename = 'Genesis-admin://translations/' . $language . '/' . $section . '.yaml';
+        $filename = 'genesis-admin://translations/' . $language . '/' . $section . '.yaml';
         $file = CompiledYamlFile::instance($filename);
 
         if (!$file->exists() && ($pos = strpos($language, '-'))) {
-            $filename = 'Genesis-admin://translations/' . substr($language, 0, $pos) . '/' . $section . '.yaml';
+            $filename = 'genesis-admin://translations/' . substr($language, 0, $pos) . '/' . $section . '.yaml';
             $file = CompiledYamlFile::instance($filename);
         }
 

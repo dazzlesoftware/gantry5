@@ -166,7 +166,7 @@ class Content
             $paths = $locator->findResources('genesis-blueprints://content');
             if (!$paths) {
                 // Deprecated in Genesis 5.1.1
-                $paths = $locator->findResources('Genesis-admin://blueprints/content');
+                $paths = $locator->findResources('genesis-admin://blueprints/content');
             }
 
             $this->files = (new ConfigFileFinder)->listFiles($paths);

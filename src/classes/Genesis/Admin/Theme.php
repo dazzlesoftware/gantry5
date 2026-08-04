@@ -86,7 +86,7 @@ class Theme extends AbstractTheme
 
         // Add admin paths.
         foreach ($patform->get('streams.genesis-admin.prefixes') as $prefix => $paths) {
-            $locator->addPath('Genesis-admin', $prefix, $paths);
+            $locator->addPath('genesis-admin', $prefix, $paths);
         }
 
         // Fire admin init event.
@@ -130,8 +130,8 @@ class Theme extends AbstractTheme
         /** @var UniformResourceLocator $locator */
         $locator = $genesis['locator'];
 
-        $loader->setPaths($locator->findResources('Genesis-admin://templates'));
-        $loader->setPaths($locator->findResources('Genesis-admin://templates'), 'Genesis-admin');
+        $loader->setPaths($locator->findResources('genesis-admin://templates'));
+        $loader->setPaths($locator->findResources('genesis-admin://templates'), 'genesis-admin');
 
         return $loader;
     }

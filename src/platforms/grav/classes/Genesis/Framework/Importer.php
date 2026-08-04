@@ -69,7 +69,7 @@ class Importer
 
     public function positions()
     {
-        $folder = $this->locator->findResource('Genesis-positions://', true, true);
+        $folder = $this->locator->findResource('genesis-positions://', true, true);
 
         if (is_dir($folder)) {
             Folder::delete($folder);

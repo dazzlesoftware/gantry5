@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'Genesis-admin://images/layouts/home.png'
+  image: 'genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1556907571
 layout:

@@ -45,7 +45,7 @@ class Platform extends BasePlatform
 
         // Initialize custom streams for Grav.
         $this->items['streams'] += [
-            'Genesis-positions' => [
+            'genesis-positions' => [
                 'type' => 'ReadOnlyStream',
                 'prefixes' => [
                     '' => [

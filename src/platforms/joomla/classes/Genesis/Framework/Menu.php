@@ -569,9 +569,9 @@ class Menu extends AbstractMenu
                 case 'heading':
                 case 'separator':
                     // Check if menu item contains a particle.
-                    if ($params && !empty($params->get('Genesis-particle'))) {
+                    if ($params && !empty($params->get('genesis-particle'))) {
                         $type = 'particle';
-                        $options = $params->get('Genesis-options');
+                        $options = $params->get('genesis-options');
                         $enabled = isset($options['particle']['enabled']) ? $options['particle']['enabled'] : true;
                     }
 

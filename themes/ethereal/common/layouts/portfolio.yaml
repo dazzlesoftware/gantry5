@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'Genesis-admin://images/layouts/default.png'
+  image: 'genesis-admin://images/layouts/default.png'
   name: portfolio
   timestamp: 1516143068
 layout:

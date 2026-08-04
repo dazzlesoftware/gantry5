@@ -38,7 +38,7 @@ class Platform extends BasePlatform
         parent::__construct($container);
 
         $this->items['streams'] += [
-            'Genesis-positions' => [
+            'genesis-positions' => [
                 'type' => 'ReadOnlyStream',
                 'prefixes' => [
                     '' => [$this->getCachePath() . '/positions']

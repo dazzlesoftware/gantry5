@@ -46,7 +46,7 @@ class LayoutReader
         // Make sure that all preset values are set by defining defaults.
         $result['preset'] += [
             'name' => '',
-            'image' => 'Genesis-admin://images/layouts/default.png'
+            'image' => 'genesis-admin://images/layouts/default.png'
         ];
 
         return $result;

@@ -194,7 +194,7 @@ class EventListener implements EventSubscriberInterface
             // Delete removed particles from the menu.
             if (null === $path && $info['type'] === 'heading') {
                 $params = json_decode($info['params'], true);
-                if (!empty($params['Genesis-particle'])) {
+                if (!empty($params['genesis-particle'])) {
                     $table->delete($key, false);
                     unset($stored[$key]);
                 }
