@@ -19,7 +19,7 @@ const initSizes = () => {
     container = document.querySelector('.sidebar-block');
     if (!container) return;
 
-    sidebar = container.querySelector('.g5-lm-particles-picker');
+    sidebar = container.querySelector('.genesis-lm-particles-picker');
     if (!sidebar) return;
 
     search = sidebar.querySelector(':scope > .search');
@@ -47,7 +47,7 @@ const initSizes = () => {
 ready(() => {
     initSizes();
 
-    const scrollElement = window.GANTRY_PLATFORM === 'grav'
+    const scrollElement = window.GENESIS_PLATFORM === 'grav'
         ? document.querySelector('#admin-main .content-padding') || window
         : window;
 
@@ -69,7 +69,7 @@ ready(() => {
             sidebar.style.top = `${heightTop + 10}px`;
             sidebar.style.bottom = 'inherit';
         } else if (shouldBeFixed && reachedTheLimit &&
-            (sidebarTallerThanContainer || (window.GANTRY_PLATFORM === 'grav' && containerBounds.bottom < sidebarCoords.bottom))) {
+            (sidebarTallerThanContainer || (window.GENESIS_PLATFORM === 'grav' && containerBounds.bottom < sidebarCoords.bottom))) {
             sidebar.classList.remove('particles-fixed');
             sidebar.classList.add('particles-absolute');
             sidebar.style.top = 'inherit';

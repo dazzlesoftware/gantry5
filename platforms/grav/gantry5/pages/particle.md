@@ -1,5 +1,5 @@
 ---
-title: Gantry Particle
+title: Genesis Particle
 robots: noindex,nofollow
 cache_enable: false
 process:

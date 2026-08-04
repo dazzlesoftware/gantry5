@@ -46,11 +46,11 @@ const Positions = {
 
     serialize(position) {
         const output = [];
-        const positions = position ? elementsFrom(position) : Array.from(document.querySelectorAll('[data-g5-position]'));
+        const positions = position ? elementsFrom(position) : Array.from(document.querySelectorAll('[data-genesis-position]'));
         if (!positions.length) return '[]';
 
         positions.forEach(positionElement => {
-            const data = JSON.parse(positionElement.getAttribute('data-g5-position'));
+            const data = JSON.parse(positionElement.getAttribute('data-genesis-position'));
             data.modules = [];
 
             positionElement.querySelectorAll('[data-pm-data]').forEach(item => {
@@ -58,14 +58,14 @@ const Positions = {
             });
 
             output.push(data);
-            positionElement.setAttribute('data-g5-position', JSON.stringify(data));
+            positionElement.setAttribute('data-genesis-position', JSON.stringify(data));
         });
 
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
     attachEraser() {
-        const element = document.querySelector('[data-g5-positions-erase]');
+        const element = document.querySelector('[data-genesis-positions-erase]');
         if (Positions.eraser) {
             Positions.eraser.setElement(element);
             Positions.eraser.hide(true);
@@ -80,9 +80,9 @@ const Positions = {
         if (!root || root.SimpleSort) return;
 
         const group = new DraggableGroup(root, {
-            lists: '[data-g5-position] ul',
+            lists: '[data-genesis-position] ul',
             items: '[data-pm-data]',
-            filter: '[data-g5-position-ignore]',
+            filter: '[data-genesis-position-ignore]',
             trash: '#trash',
             draggingClass: 'position-dragging',
             scrollContainer: '.position-container',

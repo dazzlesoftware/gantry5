@@ -33,7 +33,7 @@ class plgGantry5Preset extends CMSPlugin
      */
     public function __construct(&$subject, $config = array())
     {
-        // Do not load if Gantry libraries are not installed or initialised.
+        // Do not load if Genesis libraries are not installed or initialised.
         if (!class_exists('Gantry5\Loader')) return;
 
         parent::__construct($subject, $config);

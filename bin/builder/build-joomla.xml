@@ -3,7 +3,7 @@
 <project name="gantry5-joomla" basedir="." description="Phing Build Script" default="prod">
     <xmlproperty file="${path.platforms}/joomla/${cfg.prefix}${cfg.name}.xml" collapseAttributes="true" prefix="xml" keepRoot="false" />
 
-    <!--Gantry 5 Packages -->
+    <!-- Genesis compatibility packages -->
     <target name="build-joomla-installer">
         <echo message="Building Installer.." />
 

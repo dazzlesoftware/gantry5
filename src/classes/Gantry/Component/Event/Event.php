@@ -13,7 +13,7 @@ use ArrayAccess;
 use Symfony\Contracts\EventDispatcher\Event as SymfonyEvent;
 
 /**
- * Symfony event with Gantry's legacy array payload behavior.
+ * Symfony event with Genesis's legacy array payload behavior.
  *
  * @implements ArrayAccess<string|int, mixed>
  */

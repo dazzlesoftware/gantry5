@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1457353897
 layout:
@@ -187,7 +187,7 @@ content:
           created_date: ''
           content_title: 'Rows & Columns Example'
           author: ''
-          leading_content: 'Gantry provides an intuitive, drag and drop interface for constructing layouts. Each section benefits from unlimited rows and up to 20 columns, although a maximum of 4-6 is recommended.'
+          leading_content: 'Genesis provides an intuitive, drag and drop interface for constructing layouts. Each section benefits from unlimited rows and up to 20 columns, although a maximum of 4-6 is recommended.'
           main_content: ''
           readmore_label: ''
           readmore_link: ''
@@ -307,7 +307,7 @@ content:
   custom-5410:
     title: 'Mainbody Examples'
     attributes:
-      html: "<h1 class=\"g-title\">Mainbody Examples</h1>\n<p>The mainbody is a unique section in Gantry 5 that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
+      html: "<h1 class=\"g-title\">Mainbody Examples</h1>\n<p>The mainbody is a unique section in Genesis that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
     block:
       class: 'nomarginbottom nopaddingbottom'
       variations: title2

@@ -5,7 +5,7 @@ let cached = null;
 module.exports = () => {
     if (cached !== null) return cached;
 
-    const container = document.querySelector('#g5-container') || document.body;
+    const container = document.querySelector('[data-genesis-container]') || document.body;
     const dummy = document.createElement('div');
     Object.assign(dummy.style, {
         width: '100px',

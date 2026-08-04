@@ -29,9 +29,9 @@ use Composer\Autoload\ClassLoader;
 abstract class RealLoader
 {
     /** @var string */
-    protected static $errorMessagePhpMin = 'You are running PHP %s, but Gantry 5 Framework needs at least PHP %s to run.';
+    protected static $errorMessagePhpMin = 'You are running PHP %s, but Genesis Framework needs at least PHP %s to run.';
     /** @var string */
-    protected static $errorMessageGantryLoaded = 'Attempting to load Gantry 5 Framework multiple times.';
+    protected static $errorMessageGantryLoaded = 'Attempting to load Genesis Framework multiple times.';
 
     /**
      * Initializes Gantry5 and returns Composer ClassLoader.
@@ -47,18 +47,18 @@ abstract class RealLoader
             throw new \RuntimeException(sprintf(self::$errorMessagePhpMin, $phpVersion, '5.6.20'));
         }
 
-        if (defined('GANTRY5_VERSION')) {
+        if (defined('GENESIS_VERSION') || defined('GANTRY5_VERSION')) {
             throw new \LogicException(self::$errorMessageGantryLoaded);
         }
 
-        define('GANTRY5_VERSION', '5.6.1');
-        define('GANTRY5_VERSION_DATE', '2026-05-06');
+        self::defineRuntimeConstant('GENESIS_VERSION', 'GANTRY5_VERSION', '5.6.1');
+        self::defineRuntimeConstant('GENESIS_VERSION_DATE', 'GANTRY5_VERSION_DATE', '2026-05-06');
 
         if (!defined('DS')) {
             define('DS', DIRECTORY_SEPARATOR);
         }
 
-        define('GANTRY_DEBUGGER', class_exists('Gantry\\Debugger'));
+        self::defineRuntimeConstant('GENESIS_DEBUGGER', 'GANTRY_DEBUGGER', class_exists('Gantry\\Debugger'));
 
         return self::autoload();
     }
@@ -72,51 +72,77 @@ abstract class RealLoader
     {
         // Register platform specific overrides.
         if (defined('JVERSION') && defined('JPATH_ROOT')) {
-            define('GANTRY5_PLATFORM', 'joomla');
-            define('GANTRY5_ROOT', JPATH_ROOT);
-            define('GANTRY5_LIBRARY', JPATH_ROOT . '/libraries/gantry5');
+            self::defineRuntimeConstant('GENESIS_PLATFORM', 'GANTRY5_PLATFORM', 'joomla');
+            self::defineRuntimeConstant('GENESIS_ROOT', 'GANTRY5_ROOT', JPATH_ROOT);
+            self::defineRuntimeConstant('GENESIS_LIBRARY', 'GANTRY5_LIBRARY', JPATH_ROOT . '/libraries/gantry5');
         } elseif (defined('WP_DEBUG') && defined('ABSPATH') && defined('WP_CONTENT_DIR')) {
-            define('GANTRY5_PLATFORM', 'wordpress');
+            self::defineRuntimeConstant('GENESIS_PLATFORM', 'GANTRY5_PLATFORM', 'wordpress');
             if (defined('CONTENT_DIR') && class_exists('Env')) {
                 // Bedrock support.
-                define('GANTRY5_ROOT', preg_replace('|' . preg_quote(CONTENT_DIR, '|'). '$|', '', WP_CONTENT_DIR));
+                $root = preg_replace('|' . preg_quote(CONTENT_DIR, '|'). '$|', '', WP_CONTENT_DIR);
             } else {
                 // Plain WP support.
-                define('GANTRY5_ROOT', dirname(WP_CONTENT_DIR));
+                $root = dirname(WP_CONTENT_DIR);
             }
-            define('GANTRY5_LIBRARY', WP_CONTENT_DIR . '/plugins/gantry5');
+            self::defineRuntimeConstant('GENESIS_ROOT', 'GANTRY5_ROOT', $root);
+            self::defineRuntimeConstant('GENESIS_LIBRARY', 'GANTRY5_LIBRARY', WP_CONTENT_DIR . '/plugins/gantry5');
         } elseif (defined('GRAV_VERSION') && defined('ROOT_DIR')) {
             /** @var \DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator $locator */
             $locator = \Grav\Common\Grav::instance()['locator'];
-            define('GANTRY5_PLATFORM', 'grav');
-            define('GANTRY5_ROOT', rtrim(ROOT_DIR, '/'));
-            define('GANTRY5_LIBRARY', $locator('plugin://gantry5'));
-        } elseif (defined('IN_PHPBB') && defined('GANTRY5_PHPBB_ROOT_PATH') && defined('GANTRY5_PHPBB_EXT_PATH')) {
+            self::defineRuntimeConstant('GENESIS_PLATFORM', 'GANTRY5_PLATFORM', 'grav');
+            self::defineRuntimeConstant('GENESIS_ROOT', 'GANTRY5_ROOT', rtrim(ROOT_DIR, '/'));
+            self::defineRuntimeConstant('GENESIS_LIBRARY', 'GANTRY5_LIBRARY', $locator('plugin://gantry5'));
+        } elseif (defined('IN_PHPBB') && defined('GENESIS_PHPBB_ROOT_PATH') && defined('GENESIS_PHPBB_EXT_PATH')) {
             // phpBB has no native constant for its absolute root path or this extension's own
             // path, so the extension's listener defines these two before booting the loader.
-            define('GANTRY5_PLATFORM', 'phpbb');
-            define('GANTRY5_ROOT', rtrim(GANTRY5_PHPBB_ROOT_PATH, '/\\'));
-            define('GANTRY5_LIBRARY', rtrim(GANTRY5_PHPBB_EXT_PATH, '/\\'));
+            self::defineRuntimeConstant('GENESIS_PLATFORM', 'GANTRY5_PLATFORM', 'phpbb');
+            self::defineRuntimeConstant('GENESIS_ROOT', 'GANTRY5_ROOT', rtrim(GENESIS_PHPBB_ROOT_PATH, '/\\'));
+            self::defineRuntimeConstant('GENESIS_LIBRARY', 'GANTRY5_LIBRARY', rtrim(GENESIS_PHPBB_EXT_PATH, '/\\'));
         } else {
-            throw new \RuntimeException('Gantry: CMS not detected!');
+            throw new \RuntimeException('Genesis: CMS not detected!');
         }
 
-        $lib = GANTRY5_LIBRARY;
+        $lib = GENESIS_LIBRARY;
         $autoload = "{$lib}/vendor/autoload.php";
 
         // Initialize auto-loading.
         if (!file_exists($autoload)) {
-            throw new \LogicException('Please run composer in Gantry 5 Library!');
+            throw new \LogicException('Please run Composer in the Genesis library!');
         }
 
         /** @var ClassLoader $loader */
         $loader = require $autoload;
 
+        // Expose the Genesis namespace without breaking extensions that still use Gantry\.
+        // Both names resolve to the same loaded class or interface.
+        spl_autoload_register(static function (string $class): void {
+            $prefix = 'Genesis\\';
+            if (strncmp($class, $prefix, strlen($prefix)) !== 0) {
+                return;
+            }
+
+            $legacy = 'Gantry\\' . substr($class, strlen($prefix));
+            if (class_exists($legacy) || interface_exists($legacy)) {
+                class_alias($legacy, $class);
+            }
+        }, true, true);
+
         // Support for development environments.
         if (file_exists($lib . '/src/platforms')) {
-            $loader->addPsr4('Gantry\\', "{$lib}/src/platforms/" . GANTRY5_PLATFORM . '/classes/Gantry', true);
+            $loader->addPsr4('Gantry\\', "{$lib}/src/platforms/" . GENESIS_PLATFORM . '/classes/Gantry', true);
         }
 
         return $loader;
+    }
+
+    /**
+     * Defines a canonical Genesis runtime constant and its Gantry compatibility alias.
+     *
+     * @param mixed $value
+     */
+    private static function defineRuntimeConstant(string $genesisName, string $legacyName, $value): void
+    {
+        define($genesisName, $value);
+        define($legacyName, $value);
     }
 }

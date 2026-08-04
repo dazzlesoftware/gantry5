@@ -40,9 +40,9 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
 
 
     /**
-     * Register services to Gantry DI. Needed if you want to access something globally or from Twig template.
+     * Register services to Genesis DI. Needed if you want to access something globally or from Twig template.
      *
-     * Example: {{ gantry.woocommerce.do_something() }}
+     * Example: {{ genesis.woocommerce.do_something() }}
      *
      * @param Container $gantry
      */
@@ -57,7 +57,7 @@ class WooCommerce implements ServiceProviderInterface, EventSubscriberInterface
     }
 
     /**
-     * Subscribe to Gantry events.
+     * Subscribe to Genesis events.
      *
      * @return array
      */

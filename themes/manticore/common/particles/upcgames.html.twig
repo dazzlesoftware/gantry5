@@ -19,9 +19,8 @@
                     </li>
                 {% endfor %}
             {% else %}
-                {% include '@particles/upcgames-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+                {% include '@particles/upcgames-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
             {% endif %}
         </ul>
     </div>
 {% endblock %}
-

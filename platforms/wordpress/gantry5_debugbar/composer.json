@@ -1,6 +1,6 @@
 {
-    "name": "gantry/wordpress-debugbar",
-    "description": "DebugBar for Gantry WordPress",
+    "name": "dazzlesoftware/genesis-wordpress-debugbar",
+    "description": "Genesis DebugBar for WordPress",
     "license": "GPL-3.0-or-later",
 
     "require": {

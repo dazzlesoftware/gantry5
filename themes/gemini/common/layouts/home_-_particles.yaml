@@ -188,7 +188,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'Quickly customize with Gantry 5.'
+          description: 'Quickly customize with Genesis.'
           class: ''
           button: ''
           buttonlink: ''
@@ -296,14 +296,14 @@ content:
     title: 'Collaborating with teams'
     attributes:
       class: ''
-      title: 'Working with Gantry 5'
+      title: 'Working with Genesis'
       items:
         -
           layout: standard
           created_date: ''
           content_title: '<strong>Digital Age.</strong> New Age.'
           author: ''
-          leading_content: 'Gantry 5 is a next-generation framework built with the latest in web technologies. Equipped with human-readable Twig and YAML files, and workable with a drag-and-drop interface, it truly is a next-generation framework.'
+          leading_content: 'Genesis is a next-generation framework built with the latest in web technologies. Equipped with human-readable Twig and YAML files, and workable with a drag-and-drop interface, it truly is a next-generation framework.'
           main_content: ''
           readmore_label: 'Get In Touch'
           readmore_link: '#'
@@ -351,12 +351,12 @@ content:
           content: '<blockquote>Design is not just what it looks like and feels like. Design is how it works.<cite>Steve Jobs</cite></blockquote>'
           title: Consistency
         -
-          description: 'Gemini is built with a wide range of website types in mind. This, in addition to the flexible Gantry 5 framework, makes it exceedingly versatile.'
+          description: 'Gemini is built with a wide range of website types in mind. This, in addition to the flexible Genesis framework, makes it exceedingly versatile.'
           image: 'gantry-media://home/feature/img-01.jpg'
           content: "<blockquote>Stay committed to your decisions, but stay flexible in your approach.<cite>Tony Robbins</cite></blockquote>\n\n\n"
           title: Versatility
         -
-          description: 'Both the Gantry 5 framework and the Gemini theme are created to ensure that your website is perfectly optimized for performance and ease of use.'
+          description: 'Both the Genesis framework and the Gemini theme are created to ensure that your website is perfectly optimized for performance and ease of use.'
           image: 'gantry-media://home/feature/img-01.jpg'
           content: '<blockquote>"There''s a way to do it better—find it."<cite>Thomas Edison</cite></blockquote>'
           title: Optimization

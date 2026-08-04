@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Gantry5 Dark Mode: Joomla dark mode detected:', isJoomlaDarkMode);
     
-    // Apply dark mode class to Gantry container
+    // Apply dark mode class to Genesis container
     if (isJoomlaDarkMode) {
         const gantryContainer = document.getElementById('g5-container');
         if (gantryContainer) {
-            gantryContainer.classList.add('g5-dark-mode');
-            console.log('Gantry5 Dark Mode: Applied dark mode to Gantry container');
+            gantryContainer.classList.add('genesis-dark-mode');
+            console.log('Gantry5 Dark Mode: Applied dark mode to Genesis container');
         }
     }
     
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const gantryContainer = document.getElementById('g5-container');
                 if (gantryContainer) {
                     if (isDark) {
-                        gantryContainer.classList.add('g5-dark-mode');
-                        console.log('Gantry5 Dark Mode: Applied dark mode to Gantry container (mutation)');
+                        gantryContainer.classList.add('genesis-dark-mode');
+                        console.log('Gantry5 Dark Mode: Applied dark mode to Genesis container (mutation)');
                     } else {
-                        gantryContainer.classList.remove('g5-dark-mode');
-                        console.log('Gantry5 Dark Mode: Removed dark mode from Gantry container (mutation)');
+                        gantryContainer.classList.remove('genesis-dark-mode');
+                        console.log('Gantry5 Dark Mode: Removed dark mode from Genesis container (mutation)');
                     }
                 }
             }
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isJoomlaDarkMode) {
             const gantryContainer = document.getElementById('g5-container');
             if (gantryContainer) {
-                gantryContainer.classList.add('g5-dark-mode');
-                console.log('Gantry5 Dark Mode: Force applied dark mode to Gantry container');
+                gantryContainer.classList.add('genesis-dark-mode');
+                console.log('Gantry5 Dark Mode: Force applied dark mode to Genesis container');
             }
         }
     };

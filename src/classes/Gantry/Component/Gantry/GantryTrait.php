@@ -17,15 +17,15 @@ use Gantry\Framework\Gantry;
  */
 trait GantryTrait
 {
-    /** @var Gantry */
+    /** @var Genesis */
     private static $gantry;
 
     /**
-     * Get global Gantry instance.
+     * Get global Genesis instance.
      *
-     * @return Gantry
+     * @return Genesis
      */
-    public static function gantry()
+    public static function Genesis()
     {
         // We cannot set variable directly for the trait as it doesn't work in HHVM.
         if (!self::$gantry) {

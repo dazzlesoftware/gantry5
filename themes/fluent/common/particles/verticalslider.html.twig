@@ -1,7 +1,7 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-    <div id="{{ id }}" class="g-verticalslider {{ particle.class|e }}" data-verticalslider-id="{{ id }}" {% if particle.presets == 'enabled' %}data-verticalslider-presets="{{ gantry.theme.preset|default('preset1')|replace({'preset':''}) - 1 }}"{% endif %}  data-verticalslider-height="{{ particle.height }}" data-verticalslider-mobileheight="{{ particle.mobileheight }}" data-verticalslider-speed="{{ particle.speed }}" data-verticalslider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-verticalslider-auto="{% if particle.auto == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-pause="{{ particle.pause|default('2000') }}" data-verticalslider-loop="{% if particle.loop == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-controls="{% if particle.controls == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-pager="{% if particle.pager == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-mobile="{{ gantry.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('51rem') }}">
+    <div id="{{ id }}" class="g-verticalslider {{ particle.class|e }}" data-verticalslider-id="{{ id }}" {% if particle.presets == 'enabled' %}data-verticalslider-presets="{{ genesis.theme.preset|default('preset1')|replace({'preset':''}) - 1 }}"{% endif %}  data-verticalslider-height="{{ particle.height }}" data-verticalslider-mobileheight="{{ particle.mobileheight }}" data-verticalslider-speed="{{ particle.speed }}" data-verticalslider-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-verticalslider-auto="{% if particle.auto == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-pause="{{ particle.pause|default('2000') }}" data-verticalslider-loop="{% if particle.loop == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-controls="{% if particle.controls == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-pager="{% if particle.pager == 'enabled' %}true{% else %}false{% endif %}" data-verticalslider-mobile="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('51rem') }}">
         {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
 
         <ul>
@@ -95,6 +95,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-{% do gantry.document.addScript(url('gantry-assets://js/vertical-slider.js'), 10, 'footer') %}
+{% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+{% do genesis.document.addScript(url('gantry-assets://js/vertical-slider.js'), 10, 'footer') %}
 {% endblock %}

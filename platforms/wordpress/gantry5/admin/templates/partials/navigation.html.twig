@@ -6,65 +6,65 @@
                 <ul>
                     {% include 'partials/configuration-selector.html.twig' %}
                     <li {{ (location == 'configurations/layout') ? 'class="active"' }}>
-                        <a data-g5-ajaxify=""
-                           data-g5-nav="layout"
-                           data-g5-nav-url="{{ gantry.route('configurations', configuration, 'layout') }}"
-                           data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                           data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                           href="{{ gantry.route('configurations', configuration, 'layout') }}"
+                        <a data-genesis-ajaxify=""
+                           data-genesis-nav="layout"
+                           data-genesis-nav-url="{{ genesis.route('configurations', configuration, 'layout') }}"
+                           data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                           data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                           href="{{ genesis.route('configurations', configuration, 'layout') }}"
                         >
                             <i class="fa fa-fw fa-columns" aria-hidden="true"></i><span>{{ 'GANTRY5_PLATFORM_LAYOUT'|trans }}</span>
                         </a>
                     </li>
                     <li {{ (location == 'configurations/styles') ? 'class="active"' }}>
-                        <a data-g5-ajaxify=""
-                           data-g5-nav="styles"
-                           data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                           data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                           href="{{ gantry.route('configurations', configuration, 'styles') }}"
+                        <a data-genesis-ajaxify=""
+                           data-genesis-nav="styles"
+                           data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                           data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                           href="{{ genesis.route('configurations', configuration, 'styles') }}"
                         >
                             <i class="fa fa-fw fa-adjust" aria-hidden="true"></i><span>{{ 'GANTRY5_PLATFORM_STYLES'|trans }}</span>
                         </a>
                     </li>
                     <li {{ (location == 'configurations/content') ? 'class="active"' }}>
-                        <a data-g5-ajaxify=""
-                           data-g5-nav="content"
-                           data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                           data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                           href="{{ gantry.route('configurations', configuration, 'content') }}"
+                        <a data-genesis-ajaxify=""
+                           data-genesis-nav="content"
+                           data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                           data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                           href="{{ genesis.route('configurations', configuration, 'content') }}"
                         >
                             <i class="far fa-fw fa-file-alt" aria-hidden="true"></i><span>{{ 'GANTRY5_PLATFORM_CONTENT'|trans }}</span>
                         </a>
                     </li>
                     <li {{ (location == 'configurations/page') ? 'class="active"' }}>
-                        <a data-g5-ajaxify=""
-                           data-g5-nav="page"
-                           data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                           data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                           href="{{ gantry.route('configurations', configuration, 'page') }}"
+                        <a data-genesis-ajaxify=""
+                           data-genesis-nav="page"
+                           data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                           data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                           href="{{ genesis.route('configurations', configuration, 'page') }}"
                         >
                             <i class="fa fa-fw fa-list-alt" aria-hidden="true"></i><span>{{ 'GANTRY5_PLATFORM_PAGESETTINGS'|trans }}</span>
                         </a>
                     </li>
                     {% if configuration and configuration != 'default' and not (configuration starts with '_') %}
                     <li {{ (location == 'configurations/assignments') ? 'class="active"' }}>
-                        <a data-g5-ajaxify=""
-                           data-g5-nav="assignments"
-                           data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                           data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                           href="{{ gantry.route('configurations', configuration, 'assignments') }}"
+                        <a data-genesis-ajaxify=""
+                           data-genesis-nav="assignments"
+                           data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                           data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                           href="{{ genesis.route('configurations', configuration, 'assignments') }}"
                         >
                             <i class="far fa-fw fa-check-square" aria-hidden="true"></i><span>{{ 'GANTRY5_PLATFORM_ASSIGNMENTS'|trans }}</span>
                         </a>
                     </li>
                     {% endif %}
-                    {% if (location == 'configurations/settings' or gantry.particles.overrides(configuration)) %}
+                    {% if (location == 'configurations/settings' or genesis.particles.overrides(configuration)) %}
                         <li {{ (location == 'configurations/settings') ? 'class="active"' }}>
-                            <a data-g5-ajaxify=""
-                               data-g5-nav="settings"
-                               data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                               data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                               href="{{ gantry.route('configurations', configuration, 'settings') }}"
+                            <a data-genesis-ajaxify=""
+                               data-genesis-nav="settings"
+                               data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                               data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                               href="{{ genesis.route('configurations', configuration, 'settings') }}"
                             >
                                 <i class="fa fa-fw fa-wrench" aria-hidden="true"></i><span>{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS'|trans }}</span>
                             </a>
@@ -73,7 +73,7 @@
                 </ul>
             </section>
         </nav>
-        <a href="{{ gantry.route('themes') }}" aria-hidden="true" tabindex="-1">
+        <a href="{{ genesis.route('themes') }}" aria-hidden="true" tabindex="-1">
             <svg version="1.1" id="gantry-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="81px" height="28.239px" viewBox="0 0 81 28.239" style="enable-background:new 0 0 81 28.239;" xml:space="preserve">
                 <g>
                     <path style="fill:#a0a0a0;" d="M8.101,26.332c2.639-0.358,4.636-2.603,4.672-5.311l0.008-1.451l-1.184,0.847

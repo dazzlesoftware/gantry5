@@ -146,9 +146,9 @@ content:
           title: 'design, cover, logo'
         -
           icon: 'fa fa-check-square-o fa-fw'
-          text: Gantry
+          text: Genesis
           link: '#'
-          title: Gantry
+          title: Genesis
     block:
       class: nopaddingall
       variations: 'box2 rounded'

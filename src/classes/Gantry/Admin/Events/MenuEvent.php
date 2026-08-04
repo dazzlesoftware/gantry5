@@ -21,7 +21,7 @@ use Gantry\Component\Event\Event;
  */
 class MenuEvent extends Event
 {
-    /** @var Gantry */
+    /** @var Genesis */
     public $gantry;
     /** @var Theme */
     public $theme;

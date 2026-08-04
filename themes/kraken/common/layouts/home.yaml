@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/home.png'
+  image: 'Genesis-admin://images/layouts/home.png'
   name: home
   timestamp: 1460017697
 layout:
@@ -310,19 +310,19 @@ content:
           img: 'gantry-media://demo/home/mainbar/img01.jpg'
           textstyle: g-gridcontent-title-style-3
           text1: Photo
-          text2: 'The new and powerful Gantry 5 framework '
-          desc: 'Gantry 5 is an advanced, versatile and multi-platform template framework, perfectly designed for the modern web.'
+          text2: 'The new and powerful Genesis framework '
+          desc: 'Genesis is an advanced, versatile and multi-platform template framework, perfectly designed for the modern web.'
           linktext: ''
           link: '#'
           linkclass: arrow
-          title: 'The new and powerful Gantry 5 Framework'
+          title: 'The new and powerful Genesis Framework'
         -
           icon: ''
           img: 'gantry-media://demo/home/mainbar/img01.jpg'
           textstyle: g-gridcontent-title-style-3
           text1: News
           text2: 'A built-in and versatile dropdown menu system'
-          desc: 'Gantry 5 benefits from an integrated menu system, with intuitive mobile support, and extensive controls.'
+          desc: 'Genesis benefits from an integrated menu system, with intuitive mobile support, and extensive controls.'
           linktext: ''
           link: '#'
           linkclass: arrow
@@ -333,7 +333,7 @@ content:
           textstyle: g-gridcontent-title-style-3
           text1: Creation
           text2: 'Layout manager with drag and drop functionality '
-          desc: 'Gantry 5''s layout manager utilizes a drag and drop interface, providing an easy mechanism for modifying positions.'
+          desc: 'Genesis''s layout manager utilizes a drag and drop interface, providing an easy mechanism for modifying positions.'
           linktext: ''
           link: '#'
           linkclass: arrow
@@ -388,7 +388,7 @@ content:
           textstyle: g-gridcontent-title-style-4
           text1: ''
           text2: '<span>Contemporary Interface<span class="hidden-tablet"> provides Multiple Options for Users</span></span>'
-          desc: 'Gantry 5''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, todays. '
+          desc: 'Genesis''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, todays. '
           linktext: ''
           link: ''
           linkclass: button-3
@@ -455,7 +455,7 @@ content:
           title: 'Particles System'
           link: ''
           linktext: ''
-          desc: 'Gantry 5''s Particles system makes it easy to configure content blocks.'
+          desc: 'Genesis''s Particles system makes it easy to configure content blocks.'
           name: 'Item 1'
         -
           image: 'gantry-media://demo/home/aside/img04.jpg'
@@ -463,7 +463,7 @@ content:
           title: 'Twig Templating'
           link: ''
           linktext: ''
-          desc: 'Gantry 5 utilizes Twig - a flexible, fast, and secure template engine for PHP.'
+          desc: 'Genesis utilizes Twig - a flexible, fast, and secure template engine for PHP.'
           name: 'Item 2'
         -
           image: 'gantry-media://demo/home/aside/img05.jpg'
@@ -518,9 +518,9 @@ content:
     attributes:
       items:
         -
-          text: Gantry
+          text: Genesis
           link: 'http://www.gantry.org/'
-          name: Gantry
+          name: Genesis
         -
           text: Features
           link: 'http://docs.gantry.org/gantry5/basics/key-features'
@@ -538,7 +538,7 @@ content:
       variations: center
   branding-1872:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-8071:
     title: 'To Top'
     attributes:

@@ -55,8 +55,11 @@ abstract class Gantry extends Container
         if (null === $instance) {
             $instance = static::restart();
 
+            if (!defined('GENESIS_DEBUG')) {
+                define('GENESIS_DEBUG', $instance->debug());
+            }
             if (!defined('GANTRY5_DEBUG')) {
-                define('GANTRY5_DEBUG', $instance->debug());
+                define('GANTRY5_DEBUG', GENESIS_DEBUG);
             }
         }
 
@@ -93,7 +96,7 @@ abstract class Gantry extends Container
      */
     public function admin()
     {
-        return defined('GANTRYADMIN_PATH');
+        return defined('GENESIS_ADMIN_PATH') || defined('GANTRYADMIN_PATH');
     }
 
 
@@ -378,9 +381,9 @@ abstract class Gantry extends Container
     }
 
     /**
-     * Check if Gantry is compatible with your theme / extension.
+     * Check if Genesis is compatible with your theme / extension.
      *
-     * This function can be used to make sure that user has installed Gantry version
+     * This function can be used to make sure that user has installed Genesis version
      * that has been tested to work with your extension. All existing functions should
      * be backwards compatible, but each release can add some new functionality, which
      * you may want to use.
@@ -395,7 +398,7 @@ abstract class Gantry extends Container
      *
      * @param string $version Minimum required version.
      *
-     * @return boolean Yes, if it is safe to use Gantry Framework.
+     * @return boolean Yes, if it is safe to use Genesis Framework.
      */
     public function isCompatible($version)
     {
@@ -410,7 +413,7 @@ abstract class Gantry extends Container
         }
 
         // Check if future version is needed.
-        if (version_compare($version, GANTRY5_VERSION, '>')) {
+        if (version_compare($version, GENESIS_VERSION, '>')) {
             return false;
         }
 
@@ -418,7 +421,7 @@ abstract class Gantry extends Container
     }
 
     /**
-     * Check if Gantry is running from a Git repository or is a CI build.
+     * Check if Genesis is running from a Git repository or is a CI build.
      *
      * Developers tend to do their work directly in the Git repositories instead of
      * creating and installing new builds after every change. This function can be
@@ -429,7 +432,7 @@ abstract class Gantry extends Container
      */
     public function isDev()
     {
-        return '@version@' === GANTRY5_VERSION || strpos(GANTRY5_VERSION, 'dev-') === 0;
+        return '@version@' === GENESIS_VERSION || strpos(GENESIS_VERSION, 'dev-') === 0;
     }
 
     /**

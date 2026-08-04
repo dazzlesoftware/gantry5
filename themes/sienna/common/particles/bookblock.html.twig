@@ -21,7 +21,7 @@
     {% endif %}
 
     <div class="{{ particle.class|e }}">
-        <div id="{{ id }}" data-bookblock-id="{{ id }}" data-bookblock-direction="{{ gantry.page.direction }}" class="bb-bookblock">
+        <div id="{{ id }}" data-bookblock-id="{{ id }}" data-bookblock-direction="{{ genesis.page.direction }}" class="bb-bookblock">
 
             {% for item in items %}
             <div class="bb-item">
@@ -105,5 +105,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.document.addScript(url('gantry-assets://js/bookblock.js'), 11, 'footer') %}
+{% do genesis.document.addScript(url('gantry-assets://js/bookblock.js'), 11, 'footer') %}
 {% endblock %}

@@ -778,7 +778,7 @@ content:
           subtitle: ''
           author: 'Ivan Chavez'
           authorimage: ''
-          desc: 'Citadel delivers with Video Support and the new Inheritance System from Gantry 5.'
+          desc: 'Citadel delivers with Video Support and the new Inheritance System from Genesis.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -1194,7 +1194,7 @@ content:
           imageloc: center
           textstyle: compact
           imagestyle: avatar
-          desc: "I love Citadel. Keep up the excellent work. Very easy to use. Citadel is a Gantry 5 dream template!\n<span class=\"author\"> - Shawn Avery</span>"
+          desc: "I love Citadel. Keep up the excellent work. Very easy to use. Citadel is a Genesis dream template!\n<span class=\"author\"> - Shawn Avery</span>"
           tag: ''
           subtag: ''
           label: ''

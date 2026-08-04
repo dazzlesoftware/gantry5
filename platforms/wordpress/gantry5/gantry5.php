@@ -1,9 +1,9 @@
 <?php
 // phpcs:disable PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 /**
- * Plugin Name: Gantry 5 Framework
+ * Plugin Name: Genesis Framework
  * Plugin URI: https://dazzlesoftware.org/
- * Description: Framework for Gantry 5 based themes.
+ * Description: Genesis theme framework with Genesis compatibility.
  * Version: @version@
  * Requires PHP: 8.3
  * Author: Dazzle Software
@@ -16,6 +16,29 @@
 
 defined('ABSPATH') or die;
 
+/**
+ * Applies a canonical Genesis filter followed by its Gantry compatibility hook.
+ *
+ * @param mixed $value
+ * @param mixed ...$args
+ * @return mixed
+ */
+function genesis_apply_filters($genesisHook, $legacyHook, $value, ...$args)
+{
+    $value = apply_filters($genesisHook, $value, ...$args);
+
+    return apply_filters($legacyHook, $value, ...$args);
+}
+
+/**
+ * Fires a canonical Genesis action followed by its Gantry compatibility hook.
+ */
+function genesis_do_action($genesisHook, $legacyHook, ...$args)
+{
+    do_action($genesisHook, ...$args);
+    do_action($legacyHook, ...$args);
+}
+
 // Fail safe version check for PHP < 8.3.0
 if (PHP_VERSION_ID < 80300) {
     if (is_admin()) {
@@ -26,9 +49,12 @@ if (PHP_VERSION_ID < 80300) {
 
 require_once dirname(__FILE__) . '/src/Loader.php';
 
+if (!defined('GENESIS_PATH')) {
+    // Keep the installed legacy slug while exposing the canonical runtime name.
+    define('GENESIS_PATH', rtrim(WP_PLUGIN_DIR, '/\\') . '/gantry5');
+}
 if (!defined('GANTRY5_PATH')) {
-    // Works also with symlinks.
-    define('GANTRY5_PATH', rtrim(WP_PLUGIN_DIR, '/\\') . '/gantry5');
+    define('GANTRY5_PATH', GENESIS_PATH);
 }
 
 if (!is_admin()) {
@@ -38,20 +64,22 @@ if (!is_admin()) {
 // Load plugin settings.
 require_once dirname(__FILE__) . '/admin/settings.php';
 
+if (!defined('GENESIS_ADMIN_PATH')) {
+    define('GENESIS_ADMIN_PATH', GENESIS_PATH . '/admin');
+}
 if (!defined('GANTRYADMIN_PATH')) {
-    // Works also with symlinks.
-    define('GANTRYADMIN_PATH', GANTRY5_PATH . '/admin');
+    define('GANTRYADMIN_PATH', GENESIS_ADMIN_PATH);
 }
 
 gantry5_register_private_theme_updaters();
 
-// Force a one-time refresh when Gantry's theme updater behavior changes.
+// Force a one-time refresh when Genesis's theme updater behavior changes.
 add_action('load-themes.php', 'gantry5_maybe_reset_theme_update_cache', 5);
 
-// Let WordPress core handle Gantry theme updates (WordPress.org only).
+// Let WordPress core handle Genesis theme updates (WordPress.org only).
 add_action('load-themes.php', 'gantry5_refresh_wporg_theme_updates');
 
-// Add Gantry 5 defaults on plugin activation.
+// Add Genesis defaults on plugin activation.
 register_activation_hook(__FILE__, 'gantry5_plugin_defaults');
 add_action('admin_init', 'gantry5_plugin_defaults');
 
@@ -170,7 +198,7 @@ add_action('init', 'gantry5_load_textdomain', 1);
 function gantry5_load_textdomain()
 {
     $domain = 'gantry5';
-    $languages_path = basename(GANTRY5_PATH) . '/admin/languages';
+    $languages_path = basename(GENESIS_PATH) . '/admin/languages';
 
     if (load_plugin_textdomain($domain, false, $languages_path) === false) {
         add_filter('plugin_locale', 'gantry5_modify_locale', 10, 2);
@@ -195,13 +223,13 @@ function gantry5_php_version_error()
         '<div class="error"><p>%s</p></div>',
         sprintf(
             /* translators: 1: current PHP version, 2: required PHP version. */
-            esc_html__('You are running PHP %1$s, but Gantry 5 Framework needs at least PHP %2$s to run.', 'gantry5'),
+            esc_html__('You are running PHP %1$s, but Genesis Framework needs at least PHP %2$s to run.', 'gantry5'),
             esc_html(PHP_VERSION),
             '8.3.0'
         )
     );
 }
-// Preserve Gantry theme settings on update.
+// Preserve Genesis theme settings on update.
 add_action('upgrader_pre_install', 'gantry5_backup_theme_settings', 10, 2);
 add_action('upgrader_post_install', 'gantry5_restore_theme_settings', 10, 2);
 

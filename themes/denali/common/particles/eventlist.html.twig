@@ -6,13 +6,13 @@
     {% endstyles %}
     <div class="{{ particle.class|e }}">
         {% if particle.demo == "enabled" %}
-            {% if gantry.theme.preset %}
-                {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+            {% if genesis.theme.preset %}
+                {% set preset = genesis.theme.preset | replace({'preset': ''}) %}
             {% else %}
                 {% set preset = 1 %}
             {% endif %}
         {% endif %}
-        <div class="g-eventlist-container" data-eventlist-id="{{ id }}" data-eventlist-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-eventlist-mobile="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-eventlist-tablet="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-eventlist-desktop="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-eventlist-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
+        <div class="g-eventlist-container" data-eventlist-id="{{ id }}" data-eventlist-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-eventlist-mobile="{{ genesis.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-eventlist-tablet="{{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-eventlist-desktop="{{ genesis.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-eventlist-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
 
             <div class="g-eventlist-carousel swiper"
         data-g-swiper
@@ -87,5 +87,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

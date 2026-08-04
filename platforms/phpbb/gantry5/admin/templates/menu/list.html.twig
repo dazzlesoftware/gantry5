@@ -5,10 +5,10 @@
     {%- if item.level > 1 %}
         <li>
             <a class="menu-item menu-item-back"
-               data-g5-ajaxify=""
-               data-g5-ajaxify-params="{{ {'inline': 1, 'group': group}|json_encode|escape('html_attr') }}"
-               data-g5-ajaxify-target-parent=".submenu-column"
-               href="{{ gantry.route('menu', id, item.parent.path) }}"
+               data-genesis-ajaxify=""
+               data-genesis-ajaxify-params="{{ {'inline': 1, 'group': group}|json_encode|escape('html_attr') }}"
+               data-genesis-ajaxify-target-parent=".submenu-column"
+               href="{{ genesis.route('menu', id, item.parent.path) }}"
             >
                 {% for i in range(1, item.level-1) %}
                 <i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i> &nbsp;

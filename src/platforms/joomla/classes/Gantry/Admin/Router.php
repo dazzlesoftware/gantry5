@@ -24,7 +24,7 @@ use Joomla\CMS\Uri\Uri;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
- * Gantry administration router for Joomla.
+ * Genesis administration router for Joomla.
  */
 class Router extends BaseRouter
 {
@@ -177,7 +177,7 @@ class Router extends BaseRouter
             $application->sendHeaders();
         }
 
-        // Output Gantry response.
+        // Output Genesis response.
         echo $response;
 
         if ($response instanceof JsonResponse) {

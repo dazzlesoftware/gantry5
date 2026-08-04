@@ -5,10 +5,10 @@
         {# Begin Entry Header #}
         <section class="entry-header">
 
-            {% if gantry.config.get('content.' ~ scope ~ '.title.enabled', '1') %}
+            {% if genesis.config.get('content.' ~ scope ~ '.title.enabled', '1') %}
                 {# Begin Entry Title #}
                 <h2 class="entry-title">
-                    {% if gantry.config.get('content.' ~ scope ~ '.title.link', '0') %}
+                    {% if genesis.config.get('content.' ~ scope ~ '.title.link', '0') %}
                         <a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a>
                     {% else %}
                         {{ post.title }}
@@ -18,7 +18,7 @@
             {% endif %}
 
             {# Begin Entry Meta #}
-            {% if gantry.config.get('content.' ~ scope ~ '.meta-date.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-author.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-comments.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-categories.enabled', '1') or gantry.config.get('content.' ~ scope ~ '.meta-tags.enabled', '0') %}
+            {% if genesis.config.get('content.' ~ scope ~ '.meta-date.enabled', '1') or genesis.config.get('content.' ~ scope ~ '.meta-author.enabled', '1') or genesis.config.get('content.' ~ scope ~ '.meta-comments.enabled', '1') or genesis.config.get('content.' ~ scope ~ '.meta-categories.enabled', '1') or genesis.config.get('content.' ~ scope ~ '.meta-tags.enabled', '0') %}
                 {% include ['partials/meta-' ~ scope ~ '.html.twig', 'partials/meta.html.twig'] %}
             {% endif %}
             {# End Entry Meta #}
@@ -33,10 +33,10 @@
             <section class="entry-content">
 
                 {# Begin Featured Image #}
-                {% if gantry.config.get('content.' ~ scope ~ '.featured-image.enabled', '1') and post.thumbnail.src %}
-                    {% set position = (gantry.config.get('content.' ~ scope ~ '.featured-image.position', 'none') == 'none') ? '' : 'float-' ~ gantry.config.get('content.' ~ scope ~ '.featured-image.position', 'none') %}
+                {% if genesis.config.get('content.' ~ scope ~ '.featured-image.enabled', '1') and post.thumbnail.src %}
+                    {% set position = (genesis.config.get('content.' ~ scope ~ '.featured-image.position', 'none') == 'none') ? '' : 'float-' ~ genesis.config.get('content.' ~ scope ~ '.featured-image.position', 'none') %}
                     <a href="{{ post.link }}" class="post-thumbnail" aria-hidden="true">
-                        <img src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" class="featured-image tease-featured-image {{ position }}" alt="{{ post.title }}" />
+                        <img src="{{ post.thumbnail.src|resize(genesis.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), genesis.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" class="featured-image tease-featured-image {{ position }}" alt="{{ post.title }}" />
                     </a>
                 {% endif %}
                 {# End Featured Image #}

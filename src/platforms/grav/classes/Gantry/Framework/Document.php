@@ -31,7 +31,7 @@ class Document extends HtmlDocument
     }
 
     /**
-     * NOTE: In PHP this function can be called either from Gantry DI container or statically.
+     * NOTE: In PHP this function can be called either from Genesis DI container or statically.
      *
      * @param bool|false $addDomain
      * @return string

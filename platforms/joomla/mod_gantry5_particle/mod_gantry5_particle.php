@@ -15,7 +15,7 @@ use Gantry\Debugger;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
-// Detect Gantry Framework or fail gracefully.
+// Detect Genesis Framework or fail gracefully.
 if (!class_exists('Gantry\Framework\Gantry')) {
     $app = Factory::getApplication();
     $app->enqueueMessage(

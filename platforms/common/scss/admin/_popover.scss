@@ -42,8 +42,8 @@ $close-size:                20px;
 $close-color:               #000;
 
 /*  webui popover  */
-#g5-container {
-    .g5-popover {
+[data-genesis-container] {
+    .genesis-popover {
         position: absolute;
         top: 0;
         left: 0;
@@ -77,17 +77,17 @@ $close-color:               #000;
         }
 
         // addons
-        &.g5-popover-above-modal {
+        &.genesis-popover-above-modal {
             z-index: 1500;
         }
 
-        &.g5-popover-nooverflow {
-            .g5-popover-content {
+        &.genesis-popover-nooverflow {
+            .genesis-popover-content {
                 overflow: visible;
             }
         }
 
-        &.g5-popover-font-preview {
+        &.genesis-popover-font-preview {
             color: #333;
             ul, li {
                 @extend %list-reset;
@@ -102,7 +102,7 @@ $close-color:               #000;
         }
     }
 
-    .g5-popover-inner .close{
+    .genesis-popover-inner .close{
         font-family: arial;
         margin:5px 10px 0 0;
         float: right;
@@ -118,7 +118,7 @@ $close-color:               #000;
         }
     }
 
-    .g5-popover-title {
+    .genesis-popover-title {
         padding: 8px 14px;
         margin: 0;
         font-size: $font-size-base;
@@ -129,24 +129,24 @@ $close-color:               #000;
         border-radius: ($border-radius-large - 1) ($border-radius-large - 1) 0 0;
     }
 
-    .g5-popover-content {
+    .genesis-popover-content {
         padding: 9px 14px;
         overflow: auto;
     }
 
-    .g5-popover-inverse {
+    .genesis-popover-inverse {
         background-color:$popover-inverse-bg;
         color:$popover-inverse-color;
 
-        .g5-popover-title {
+        .genesis-popover-title {
             background: $popover-inverse-title-bg;
             border-bottom: none;
             color:$popover-inverse-color;
         }
     }
 
-    .g5-popover-no-padding {
-        .g5-popover-content {
+    .genesis-popover-no-padding {
+        .genesis-popover-content {
             padding: 0;
         }
         .list-group-item{
@@ -161,7 +161,7 @@ $close-color:               #000;
         }
     }
 
-    .g5-popover > .g-arrow{
+    .genesis-popover > .g-arrow{
         &,&:after{
             position: absolute;
             display: block;
@@ -172,15 +172,15 @@ $close-color:               #000;
         }
     }
 
-    .g5-popover > .g-arrow {
+    .genesis-popover > .g-arrow {
         border-width: $popover-arrow-outer-width;
     }
-    .g5-popover > .g-arrow:after {
+    .genesis-popover > .g-arrow:after {
         border-width: $popover-arrow-width;
         content: "";
     }
 
-    .g5-popover{
+    .genesis-popover{
         &.top >.g-arrow,
         &.top-right >.g-arrow,
         &.top-left >.g-arrow
@@ -253,7 +253,7 @@ $close-color:               #000;
         }
     }
 
-    .g5-popover-inverse{
+    .genesis-popover-inverse{
         &.top > .g-arrow,
         &.top-left > .g-arrow,
         &.top-right > .g-arrow{
@@ -284,11 +284,11 @@ $close-color:               #000;
         }
     }
 
-    .g5-popover i.icon-refresh:before{
+    .genesis-popover i.icon-refresh:before{
         content: "";
     }
 
-    .g5-popover i.icon-refresh{
+    .genesis-popover i.icon-refresh{
         display: block;
         width:30px;
         height:30px;
@@ -299,7 +299,7 @@ $close-color:               #000;
     }
 
     // Generic popovers
-    .g5-popover-generic {
+    .genesis-popover-generic {
         ul {
             @extend %list-reset;
         }
@@ -322,7 +322,7 @@ $close-color:               #000;
     }
 
     // Extras
-    .g5-popover-extras {
+    .genesis-popover-extras {
         ul {
             @extend %list-reset;
         }

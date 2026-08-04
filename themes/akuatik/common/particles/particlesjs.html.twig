@@ -1,6 +1,6 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 {% block particle %}
-    <div id="{{ id }}" data-particlesjs-id="{{ id }}" data-particlesjs-mode="{% if particle.sectiononly == 'enabled' %}section{% else %}body{% endif %}" data-particlesjs-path="{% if particle.file %}{{ url(particle.file, true) }}{% else %}{% if (gantry.theme.preset and particle.preset_sync == "enabled")  %}{{ url('gantry-theme://json/particlejs/' ~ gantry.theme.preset ~ '.json', true) }}{% else %}{{ url('gantry-theme://json/particlejs/' ~ particle.conf_presets ~ '.json', true) }}{% endif %}{% endif %}"  class="g-particlesjs"></div>
+    <div id="{{ id }}" data-particlesjs-id="{{ id }}" data-particlesjs-mode="{% if particle.sectiononly == 'enabled' %}section{% else %}body{% endif %}" data-particlesjs-path="{% if particle.file %}{{ url(particle.file, true) }}{% else %}{% if (genesis.theme.preset and particle.preset_sync == "enabled")  %}{{ url('gantry-theme://json/particlejs/' ~ genesis.theme.preset ~ '.json', true) }}{% else %}{{ url('gantry-theme://json/particlejs/' ~ particle.conf_presets ~ '.json', true) }}{% endif %}{% endif %}"  class="g-particlesjs"></div>
 {% endblock %}
 
 {% block javascript_footer %}

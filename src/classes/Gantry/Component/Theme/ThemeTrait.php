@@ -156,7 +156,7 @@ trait ThemeTrait
         // Set configuration if given.
         if ($name && $name !== $outline) {
             if (\GANTRY_DEBUGGER) {
-                Debugger::addMessage("Using Gantry outline {$name}");
+                Debugger::addMessage("Using Genesis outline {$name}");
             }
 
             $gantry['configuration'] = $name;
@@ -347,7 +347,7 @@ trait ThemeTrait
             try {
                 $name = static::gantry()['configuration'];
             } catch (\Exception $e) {
-                throw new \LogicException('Gantry: Outline has not been defined yet', 500);
+                throw new \LogicException('Genesis: Outline has not been defined yet', 500);
             }
         }
 

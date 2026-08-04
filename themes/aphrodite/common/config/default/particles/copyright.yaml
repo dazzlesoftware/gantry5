@@ -2,10 +2,10 @@ enabled: '1'
 date:
   start: '2016'
   end: now
-owner: 'Gantry Framework'
+owner: 'Genesis Framework'
 link: ''
 target: _blank
 additional:
-  text: 'Developed by Dazzle Software exclusively<br />for Gantry 5.'
+  text: 'Developed by Dazzle Software exclusively<br />for Genesis.'
 css:
   class: ''

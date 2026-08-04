@@ -62,7 +62,7 @@ class Assignments extends HtmlController
 
         // Fire save event.
         $event = new AssigmentsEvent();
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->assignments = $assignments;

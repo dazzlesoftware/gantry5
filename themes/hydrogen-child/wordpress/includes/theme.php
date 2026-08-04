@@ -28,7 +28,7 @@ $platform->set(
     ))
 );
 
-// Define Gantry services.
+// Define Genesis services.
 $gantry['theme'] = static function ($c) {
     return new GantryTheme($c['theme.path'], $c['theme.name']);
 };

@@ -17,11 +17,11 @@
             </li>
         {% endfor %}
     </ul>
-    <a class="global-menu-settings" href="{{ gantry.route('menu/edit', id) }}">
+    <a class="global-menu-settings" href="{{ genesis.route('menu/edit', id) }}">
         <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_GLOBAL_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
     </a>
 </section>
-<div class="column-container" data-g5-menu-columns="">
+<div class="column-container" data-genesis-menu-columns="">
     {% if columns %}
         {% include 'menu/columns.html.twig' with {'item': columns } %}
     {% endif %}

@@ -178,7 +178,7 @@
 
                     const url = new URL({{ wordpress.call('admin_url', 'admin-ajax.php')|json_encode|raw }}, window.location.href);
                     url.searchParams.set('action', 'particle');
-                    url.searchParams.set('outline', {{ gantry.page.outline|json_encode|raw }});
+                    url.searchParams.set('outline', {{ genesis.page.outline|json_encode|raw }});
                     url.searchParams.set('id', id);
                     url.searchParams.set('start', button.dataset.start);
                     url.searchParams.set('format', 'json');

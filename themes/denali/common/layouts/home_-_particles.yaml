@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1519679458
 layout:
@@ -170,7 +170,7 @@ content:
         -
           image: 'gantry-media://home/slideshow/img-01.jpg'
           alt: 'Example image'
-          description: 'Denali''s elegant design is backed by Gantry 5''s power and flexibility.'
+          description: 'Denali''s elegant design is backed by Genesis''s power and flexibility.'
           buttontext: 'Read more'
           buttonlink: '#'
           buttontarget: _self
@@ -512,13 +512,13 @@ content:
           created_date: ''
           content_title: ''
           author: ''
-          leading_content: 'Denali is powered by the Gantry 5 framework, a brilliant combination of power and simplicity that makes creating a unique website easy.'
-          main_content: "Gantry was born when the Dazzle Software development team wanted to consolidate our extensive set of custom Grav, Joomla and WordPress theme functionality into a simple, easy to use framework. The result, a dynamic, easy-to-use framework that requires no coding experience to use. The only thing Gantry 5 doesn't do is compromise.\n"
+          leading_content: 'Denali is powered by the Genesis framework, a brilliant combination of power and simplicity that makes creating a unique website easy.'
+          main_content: "Genesis was born when the Dazzle Software development team wanted to consolidate our extensive set of custom Grav, Joomla and WordPress theme functionality into a simple, easy to use framework. The result, a dynamic, easy-to-use framework that requires no coding experience to use. The only thing Genesis doesn't do is compromise.\n"
           readmore_label: ''
           readmore_link: ''
           readmore_class: ''
           readmore_target: _self
-          title: 'Gantry Text'
+          title: 'Genesis Text'
   eventlist-3132:
     title: 'Upcoming Exhibitions'
     attributes:
@@ -601,7 +601,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-02.jpg'
               subtitle: 'Jul 17'
-              description: 'Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
+              description: 'Quickly find the perfect fonts using Genesis''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -611,7 +611,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-03.jpg'
               subtitle: 'Oct 12'
-              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Gantry''s Icon Picker. Features quick search and style settings.'
+              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Genesis''s Icon Picker. Features quick search and style settings.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -621,7 +621,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-04.jpg'
               subtitle: 'Dec 25'
-              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Gantry 5 has you covered.'
+              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Genesis has you covered.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -631,7 +631,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-05.jpg'
               subtitle: 'Dec 24'
-              description: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+              description: 'Genesis makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -641,7 +641,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-06.jpg'
               subtitle: 'Sep 12'
-              description: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+              description: 'Genesis''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -694,7 +694,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-03.jpg'
               subtitle: 'May 5'
-              description: 'Particle injection is possible in the Gantry Menu Editor, enabling you to drag-and-drop Particles to your menu with the same simplicity you can experience from the Layout Manager.'
+              description: 'Particle injection is possible in the Genesis Menu Editor, enabling you to drag-and-drop Particles to your menu with the same simplicity you can experience from the Layout Manager.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -704,7 +704,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-04.jpg'
               subtitle: 'Jul 19'
-              description: 'The Menu Editor panel in the Gantry Admin is where you can configure menu columns and dropdown levels.'
+              description: 'The Menu Editor panel in the Genesis Admin is where you can configure menu columns and dropdown levels.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -767,7 +767,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-02.jpg'
               subtitle: 'Jun 4'
-              description: 'Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
+              description: 'Quickly find the perfect fonts using Genesis''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -777,7 +777,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-03.jpg'
               subtitle: 'Aug 16'
-              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Gantry''s Icon Picker. Features quick search and style settings.'
+              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Genesis''s Icon Picker. Features quick search and style settings.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -787,7 +787,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-04.jpg'
               subtitle: 'Dec 7'
-              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Gantry 5 has you covered.'
+              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Genesis has you covered.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -797,7 +797,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-05.jpg'
               subtitle: 'May 5'
-              description: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+              description: 'Genesis makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -807,7 +807,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-06.jpg'
               subtitle: 'Oct 12'
-              description: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+              description: 'Genesis''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -860,7 +860,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-03.jpg'
               subtitle: 'May 5'
-              description: 'Particle injection is possible in the Gantry Menu Editor, enabling you to drag-and-drop Particles to your menu with the same simplicity you can experience from the Layout Manager.'
+              description: 'Particle injection is possible in the Genesis Menu Editor, enabling you to drag-and-drop Particles to your menu with the same simplicity you can experience from the Layout Manager.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -870,7 +870,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-04.jpg'
               subtitle: 'Jul 19'
-              description: 'The Menu Editor panel in the Gantry Admin is where you can configure menu columns and dropdown levels.'
+              description: 'The Menu Editor panel in the Genesis Admin is where you can configure menu columns and dropdown levels.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -933,7 +933,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-02.jpg'
               subtitle: 'Apr 9'
-              description: 'Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
+              description: 'Quickly find the perfect fonts using Genesis''s Font Picker. Powered by Google Fonts with over 850 font families to choose from. Features live preview and search.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -943,7 +943,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-03.jpg'
               subtitle: 'Nov 12'
-              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Gantry''s Icon Picker. Features quick search and style settings.'
+              description: 'Choose the perfect icon from Font Awesome''s extensive icon library using Genesis''s Icon Picker. Features quick search and style settings.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -953,7 +953,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-04.jpg'
               subtitle: 'Jun 23'
-              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Gantry 5 has you covered.'
+              description: 'Whether you’re adding an image that you would like to serve as your logo, or linking up a video file for the Particle’s built-in video player, Genesis has you covered.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -963,7 +963,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-05.jpg'
               subtitle: 'Dec 24'
-              description: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+              description: 'Genesis makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -973,7 +973,7 @@ content:
               layout: alt-bottom
               image: 'gantry-media://home/extension/img-06.jpg'
               subtitle: 'Sep 12'
-              description: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+              description: 'Genesis''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
               url: '#'
               buttontext: 'Read more'
               buttonclass: ''
@@ -1028,7 +1028,7 @@ content:
           image: 'gantry-media://home/bottom/img-01.jpg'
           alt: ''
           title: 'Pricing Table - Make Your Products Shine'
-          caption: 'Carousel takes full advantage of Gantry 5''s Image Picker to make selecting the right images ease. Real-time preview, direct upload, and more.'
+          caption: 'Carousel takes full advantage of Genesis''s Image Picker to make selecting the right images ease. Real-time preview, direct upload, and more.'
           linkto: image
           link: ''
           name: 'Item 3'

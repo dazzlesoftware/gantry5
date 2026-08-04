@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Gantry Specific Module Chrome for Joomla 3
+ * Genesis Specific Module Chrome for Joomla 3
  *
  * @param object $module
  * @param object $params

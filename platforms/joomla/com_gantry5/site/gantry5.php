@@ -19,7 +19,7 @@ use Joomla\Registry\Registry;
 /** @var CMSApplication $application */
 $application = Factory::getApplication();
 
-// Detect Gantry Framework or fail gracefully.
+// Detect Genesis Framework or fail gracefully.
 if (!class_exists('Gantry\Framework\Gantry')) {
     $language = $application->getLanguage();
     $language->load('com_gantry5', JPATH_ADMINISTRATOR)
@@ -108,7 +108,7 @@ if (!$data) {
 }
 
 $context = [
-    'gantry' => $gantry,
+    'Genesis' => $gantry,
     'noConfig' => true,
     'inContent' => true,
     'segment' => [

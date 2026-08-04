@@ -26,7 +26,7 @@ msgstr ""
 
 #: functions.php:31
 msgid ""
-"Please upgrade Gantry 5 Framework to v%s (or later) before using %s theme!"
+"Please upgrade Genesis Framework to v%s (or later) before using %s theme!"
 msgstr ""
 
 #: functions.php:52
@@ -70,7 +70,7 @@ msgid "Search results for:"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Default Gantry 5 theme. Provides a simple, clean and fast design to get you started on developing your own theme or setting up a quick new site"
+msgid "Default Genesis theme. Provides a simple, clean and fast design to get you started on developing your own theme or setting up a quick new site"
 msgstr ""
 
 #. views/404.html.twig

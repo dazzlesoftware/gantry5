@@ -2,15 +2,15 @@
 
 {% block particle %}
     {% if particle.demo == "enabled" %}
-        {% if gantry.theme.preset %}
-            {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+        {% if genesis.theme.preset %}
+            {% set preset = genesis.theme.preset | replace({'preset': ''}) %}
         {% else %}
             {% set preset = '1' %}
         {% endif %}
     {% else %}
          {% set preset = 'all' %}
     {% endif %}
-    <div class="{{ particle.class|e }} g-casestudies" data-casestudies-id="{{ id }}" data-casestudies-preset="{% if particle.demo == "enabled" %}{{ preset }}{% elseif particle.source == gantry.platform.name %}all{% else %}false{% endif %}">
+    <div class="{{ particle.class|e }} g-casestudies" data-casestudies-id="{{ id }}" data-casestudies-preset="{% if particle.demo == "enabled" %}{{ preset }}{% elseif particle.source == genesis.platform.name %}all{% else %}false{% endif %}">
 
         {% if not particle.source or particle.source == 'particle' %}
         <div class="g-casestudies-header">
@@ -89,7 +89,7 @@
         </div>
 
         {% else %}
-            {% include '@particles/casestudies-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% include '@particles/casestudies-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
 
     </div>

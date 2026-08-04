@@ -43,9 +43,9 @@ form:
     html_css_import:
       type: textarea.textarea
       label: CSS Link HTML (Manual Override)
-      description: Enter your HTML to manually load the CSS files of the Font Awesome library. This option replaces the Gantry version of the library.
+      description: Enter your HTML to manually load the CSS files of the Font Awesome library. This option replaces the Genesis version of the library.
 
     html_js_import:
       type: textarea.textarea
       label: JS Script HTML (Manual Override)
-      description: Enter your HTML to manually load the JS files of the Font Awesome library. This option replaces the Gantry version of the library.
+      description: Enter your HTML to manually load the JS files of the Font Awesome library. This option replaces the Genesis version of the library.

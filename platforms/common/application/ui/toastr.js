@@ -39,7 +39,7 @@ var defaults = {
     titleClass: 'g-notifications-title',
     messageClass: 'g-notifications-message',
     closeButton: true,
-    target: '#g5-container',
+    target: '[data-genesis-container]',
     targetLocation: 'bottom',
     newestOnTop: true,
     preventDuplicates: false,

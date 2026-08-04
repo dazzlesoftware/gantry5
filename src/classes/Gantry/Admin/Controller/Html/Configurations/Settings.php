@@ -251,7 +251,7 @@ class Settings extends HtmlController
 
         // Fire save event.
         $event = new SettingsEvent();
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->data = $data;

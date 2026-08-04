@@ -27,12 +27,12 @@ var stored = new WeakMap(),
     }()),
     defaults = {
         baseClassNames: {
-            container: 'g5-dialog',
-            content: 'g5-content',
-            overlay: 'g5-overlay',
-            close: 'g5-close',
-            closing: 'g5-closing',
-            open: 'g5-dialog-open'
+            container: 'genesis-dialog',
+            content: 'genesis-content',
+            overlay: 'genesis-overlay',
+            close: 'genesis-close',
+            closing: 'genesis-closing',
+            open: 'genesis-dialog-open'
         },
 
         content: '',
@@ -40,14 +40,14 @@ var stored = new WeakMap(),
         showCloseButton: true,
         escapeToClose: true,
         overlayClickToClose: true,
-        appendNode: '#g5-container',
-        className: 'g5-dialog-theme-default',
+        appendNode: '[data-genesis-container]',
+        className: 'genesis-dialog-theme-default',
         css: {},
         overlayClassName: '',
         overlayCSS: '',
         contentClassName: '',
         contentCSS: '',
-        closeClassName: 'g5-dialog-close',
+        closeClassName: 'genesis-dialog-close',
         closeCSS: '',
 
         afterOpen: null,
@@ -217,8 +217,8 @@ class Modal {
             elements.content.appendChild(elements.closeButton);
         }
 
-        // delegate container to pick g5-close clicks
-        elements.container.delegate('click', '.g5-dialog-close', function(event){
+        // delegate container to pick genesis-close clicks
+        elements.container.delegate('click', '.genesis-dialog-close', function(event){
             event.preventDefault();
             this._closeButtonClick(elements.container);
         }.bind(this));
@@ -227,7 +227,7 @@ class Modal {
         var container = $(options.appendNode);
 
         // wordpress workaround for out-of-scope cases
-        if (GANTRY_PLATFORM == 'wordpress') {
+        if (GENESIS_PLATFORM == 'wordpress') {
             container = $('#widgets-editor') || $('#customize-preview') || $('#widgets-right') || $(options.appendNode);
             if ('#' + container.id() != options.appendNode) {
                 var wpwrap = $('#wpwrap') || $('.wp-customizer'), sibling, workaround;
@@ -399,11 +399,11 @@ class Modal {
 
     showLoading() {
         this.hideLoading();
-        return $('#g5-container').appendChild(zen('div.g5-dialog-loading-spinner.' + this.options.className));
+        return $('[data-genesis-container]').appendChild(zen('div.genesis-dialog-loading-spinner.' + this.options.className));
     }
 
     hideLoading() {
-        var spinner = $('.g5-dialog-loading-spinner');
+        var spinner = $('.genesis-dialog-loading-spinner');
         return spinner ? spinner.remove() : false;
     }
 

@@ -47,7 +47,7 @@ $themeArchives = @(
         Sort-Object Name
 )
 if ($packageArchives.Count -ne 1) {
-    throw "Expected exactly one Joomla Gantry package archive for '$BuildSuffix'; found $($packageArchives.Count)."
+    throw "Expected exactly one Joomla Genesis package archive for '$BuildSuffix'; found $($packageArchives.Count)."
 }
 if ($themeArchives.Count -eq 0) {
     throw "No Joomla theme archives were found for '$BuildSuffix'."
@@ -69,7 +69,7 @@ function Install-JoomlaExtension([IO.FileInfo] $Archive) {
     }
 }
 
-Write-Host 'Installing/updating Gantry package through the Joomla CLI...'
+Write-Host 'Installing/updating Genesis package through the Joomla CLI...'
 Install-JoomlaExtension $packageArchives[0]
 
 Write-Host "Installing/updating $($themeArchives.Count) template packages..."
@@ -94,13 +94,13 @@ $installedTemplates = @(
     }
 )
 if (-not (Test-Path -LiteralPath (Join-Path $joomla 'administrator\components\com_gantry5\gantry5.php') -PathType Leaf)) {
-    throw 'The deployed Joomla Gantry component is missing gantry5.php.'
+    throw 'The deployed Joomla Genesis component is missing gantry5.php.'
 }
 if ($installedTemplates.Count -ne $themeArchives.Count) {
-    throw "Expected $($themeArchives.Count) installed Gantry templates; found $($installedTemplates.Count)."
+    throw "Expected $($themeArchives.Count) installed Genesis templates; found $($installedTemplates.Count)."
 }
 
 Write-Host ''
 Write-Host 'Deployment verification passed:'
-Write-Host "  Gantry package: $($packageArchives[0].Name)"
+Write-Host "  Genesis package: $($packageArchives[0].Name)"
 Write-Host "  Templates: $($installedTemplates.Count)"

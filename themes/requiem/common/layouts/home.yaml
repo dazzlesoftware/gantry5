@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home
   timestamp: 1506985282
 layout:
@@ -163,7 +163,7 @@ content:
     attributes:
       promostyle: promo
       promo: Requiem
-      desc: 'Exquisitely designed template for Gantry 5 framework.'
+      desc: 'Exquisitely designed template for Genesis framework.'
       desc2: 'A rich, highly flexible and visually diverse template.'
       descanimation: typewriter
       animationElementID: typewriter-1
@@ -198,7 +198,7 @@ content:
     title: 'Promo Content'
     attributes:
       promostyle: standard
-      desc: '<span class="para"><a href="#">Requiem</a> is an exquisitely designed template for the <a href="#">Gantry 5</a> template framework. Easy to style, configure and customize through an advanced, user friendly and <a href="#">modern</a> interface.</span>'
+      desc: '<span class="para"><a href="#">Requiem</a> is an exquisitely designed template for the <a href="#">Genesis</a> template framework. Easy to style, configure and customize through an advanced, user friendly and <a href="#">modern</a> interface.</span>'
   animatedblock-3167:
     title: 'Animated Block'
     attributes:
@@ -216,8 +216,8 @@ content:
         -
           image: 'gantry-media://demo/home/utility/img-01.jpg'
           headline: 'Vers<br />atile'
-          tag: Gantry
-          desc: 'Gantry 5  provides a <span class="hidden-tablet">flexible </span>foundation for <span class="hidden-tablet">intuitive </span>usability and control'
+          tag: Genesis
+          desc: 'Genesis  provides a <span class="hidden-tablet">flexible </span>foundation for <span class="hidden-tablet">intuitive </span>usability and control'
           readmore: 'Read More'
           link: '#'
           title: Versatile
@@ -358,7 +358,7 @@ content:
     attributes:
       promostyle: superpromo
       promo: 'The Framework'
-      desc: 'The Gantry 5 Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
+      desc: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
       tags:
         -
           icon: 'fa fa-bullhorn fa-fw'
@@ -677,7 +677,7 @@ content:
   custom-5842:
     title: About
     attributes:
-      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, intended to represent a live site.</p>\n<p class=\"hidden-tablet\">Note: Requiem is built on the latest version of the Gantry 5 Framework.</p>"
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, intended to represent a live site.</p>\n<p class=\"hidden-tablet\">Note: Requiem is built on the latest version of the Genesis Framework.</p>"
     block:
       class: 'g-about g-title-bordered'
   contact-7305:
@@ -697,7 +697,7 @@ content:
       class: g-title-bordered
   branding-5085:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry Framework</a>'
+      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
   totop-7373:
     title: 'To Top'
   social-4803:

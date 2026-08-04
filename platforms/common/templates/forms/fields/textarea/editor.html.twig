@@ -1,6 +1,6 @@
 {% extends 'forms/' ~ layout|default('field') ~ '.html.twig' %}
 
-{% set editor = gantry.platform.getEditor((scope ~ name)|fieldName, value|join("\n")) %}
+{% set editor = genesis.platform.getEditor((scope ~ name)|fieldName, value|join("\n")) %}
 
 {% block input %}
     {% if editor %}

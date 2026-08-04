@@ -23,6 +23,6 @@ require_once dirname(__FILE__) . '/Debugger.php';
 function gantry5_debugbar_php_version_warning()
 {
     echo '<div class="error"><p>';
-    echo sprintf("You are running <b>PHP %s</b>, but <b>Gantry 5 DebugBar</b> needs at least <b>PHP 5.6.20</b> to run.", PHP_VERSION);
+    echo sprintf("You are running <b>PHP %s</b>, but <b>Genesis DebugBar</b> needs at least <b>PHP 5.6.20</b> to run.", PHP_VERSION);
     echo '</p></div>';
 }

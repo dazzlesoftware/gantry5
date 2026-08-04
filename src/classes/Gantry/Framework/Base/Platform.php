@@ -76,12 +76,12 @@ abstract class Platform
                     'type' => 'ReadOnlyStream',
                     'prefixes' => $this->getMediaPaths()
                 ],
-                // Container for all Gantry engines.
+                // Container for all Genesis engines.
                 'gantry-engines' => [
                     'type' => 'ReadOnlyStream',
                     'prefixes' => $this->getEnginesPaths()
                 ],
-                // Gantry engine used to render the selected theme.
+                // Genesis engine used to render the selected theme.
                 'gantry-engine' => [
                     'type' => 'ReadOnlyStream',
                     'prefixes' => $this->getEnginePaths()
@@ -91,13 +91,13 @@ abstract class Platform
                     'type' => 'ReadOnlyStream',
                     'prefixes' => ['' => ['gantry-theme://layouts', 'gantry-engine://layouts']]
                 ],
-                // Gantry particles.
+                // Genesis particles.
                 'gantry-particles' => [
                     'type' => 'ReadOnlyStream',
                     'prefixes' => ['' => ['gantry-theme://particles', 'gantry-engine://particles']]
                 ],
-                // Gantry administration.
-                'gantry-admin' => [
+                // Genesis administration.
+                'Genesis-admin' => [
                     'type' => 'ReadOnlyStream',
                     'prefixes' => []
                 ],

@@ -6088,7 +6088,8 @@
   } else {
     ready();
   }
-  window.G5Swiper = { GantrySwiper, initialize };
+  window.GenesisSwiper = { GantrySwiper, initialize };
+  window.G5Swiper = window.GenesisSwiper;
 })();
 /*! Swiper 14.0.7 | Copyright 2014-2026 Vladimir Kharlampidi | MIT License */
 //# sourceMappingURL=swiper.js.map

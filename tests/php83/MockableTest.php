@@ -11,7 +11,7 @@ class MockableTest extends TestCase
 {
     /**
      * Create mock classes for testing
-     * Many Gantry features require initialized framework
+     * Many Genesis features require initialized framework
      */
     protected function setUp(): void
     {
@@ -244,7 +244,7 @@ class MockableTest extends TestCase
             ');
         }
         
-        // Create mock Gantry class if needed
+        // Create mock Genesis class if needed
         if (!class_exists('\Gantry\Framework\Base\Gantry')) {
             eval('
                 namespace Gantry\Framework\Base;
@@ -280,9 +280,9 @@ class MockableTest extends TestCase
                     }
                     
                     /**
-                     * Get instance of the Gantry Framework
+                     * Get instance of the Genesis Framework
                      *
-                     * @return Gantry
+                     * @return Genesis
                      */
                     public static function instance()
                     {

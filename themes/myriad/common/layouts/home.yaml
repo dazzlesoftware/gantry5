@@ -253,7 +253,7 @@ content:
         -
           image: 'gantry-media://home/fp-slideshow/img-01.jpg'
           title: Power!
-          desc: 'Core Gantry Framework'
+          desc: 'Core Genesis Framework'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -303,8 +303,8 @@ content:
           name: 'Item 3'
         -
           image: 'gantry-media://home/fp-fullstrip/img-01.jpg'
-          title: 'Built on the Core Gantry Framework'
-          desc: 'Gantry is the foundation for all features and functions'
+          title: 'Built on the Core Genesis Framework'
+          desc: 'Genesis is the foundation for all features and functions'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -339,7 +339,7 @@ content:
         -
           image: 'gantry-media://home/fp-firstfullwidth/img-01.jpg'
           title: '<span data-aos="fade-down">Particles</span>'
-          desc: '<span data-aos="fade-up">Myriad for Gantry 5 includes a variety of powerful particles that make adding content to your website easy. Whether you’re building a contact page, adding blog content, creating an image gallery, or giving your visitors a place to sign up for your newsletter, Myriad on Gantry 5 has you covered.</span>'
+          desc: '<span data-aos="fade-up">Myriad for Genesis includes a variety of powerful particles that make adding content to your website easy. Whether you’re building a contact page, adding blog content, creating an image gallery, or giving your visitors a place to sign up for your newsletter, Myriad on Genesis has you covered.</span>'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -348,7 +348,7 @@ content:
         -
           image: 'gantry-media://home/fp-firstfullwidth/img-01.jpg'
           title: 'Layout Manager'
-          desc: 'Gantry 5’s powerful layout manager delivers cutting-edge layout control with drag-and-drop functionality in an elegant interface that blends naturally with the CMS. Create an unlimited number of positions and rows, drop particles into place with ease, and do more in less time than ever before.'
+          desc: 'Genesis’s powerful layout manager delivers cutting-edge layout control with drag-and-drop functionality in an elegant interface that blends naturally with the CMS. Create an unlimited number of positions and rows, drop particles into place with ease, and do more in less time than ever before.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -357,7 +357,7 @@ content:
         -
           image: 'gantry-media://home/fp-firstfullwidth/img-01.jpg'
           title: 'Menu Editor'
-          desc: 'Gantry 5’s powerful menu editor makes it easy to edit, arrange, and add content to your site’s menu. Inject particles directly into the menu’s dropdowns, add FontAwesome icons, and configure your menu’s appearance with ease.'
+          desc: 'Genesis’s powerful menu editor makes it easy to edit, arrange, and add content to your site’s menu. Inject particles directly into the menu’s dropdowns, add FontAwesome icons, and configure your menu’s appearance with ease.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -427,7 +427,7 @@ content:
         -
           image: 'gantry-media://home/fp-secondfullwidth/img-01.jpg'
           title: 'Basic RTL Support'
-          desc: 'Gantry has RTL support for its grid structure to switch positions, alongside template specific adjustments.'
+          desc: 'Genesis has RTL support for its grid structure to switch positions, alongside template specific adjustments.'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -481,7 +481,7 @@ content:
         -
           image: ''
           title: 'Individual Template Overrides'
-          desc: 'Gantry offers the ability to override default template…'
+          desc: 'Genesis offers the ability to override default template…'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -489,7 +489,7 @@ content:
         -
           image: ''
           title: 'Configurable Preset Styles'
-          desc: 'Gantry makes use of a powerful Preset system…'
+          desc: 'Genesis makes use of a powerful Preset system…'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -497,7 +497,7 @@ content:
         -
           image: ''
           title: 'Dynamic Layout Panel '
-          desc: 'The Layouts panel in the Gantry-based template administration…'
+          desc: 'The Layouts panel in the Genesis-based template administration…'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -505,7 +505,7 @@ content:
         -
           image: ''
           title: 'Specific Styling Fields'
-          desc: 'The Style panel in the Gantry based template…'
+          desc: 'The Style panel in the Genesis based template…'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -521,7 +521,7 @@ content:
         -
           image: ''
           title: 'Per-Browser Specific Control'
-          desc: 'The Gantry Framework has the ability to load…'
+          desc: 'The Genesis Framework has the ability to load…'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -576,4 +576,3 @@ content:
       extra:
         -
           data-aos: fade-down
-          

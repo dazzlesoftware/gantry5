@@ -1,5 +1,5 @@
 name: Branding
-description: Displays powered by link to Gantry Framework
+description: Displays powered by link to Genesis Framework
 type: particle
 category: general
 icon: fa-trademark
@@ -20,7 +20,7 @@ form:
       type: textarea.textarea
       label: Content
       description: Create or modify custom branding content.
-      default: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry Framework</a>'
+      default: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
 
     css.class:
       type: input.selectize

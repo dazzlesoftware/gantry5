@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<extensionset name="Gantry 5" description="Gantry 5 Updates">
-    <extension name="Gantry 5"
-               description="Gantry 5 Framework"
+<extensionset name="Genesis" description="Genesis Updates">
+    <extension name="Genesis"
+               description="Genesis Framework"
                element="pkg_gantry5"
                type="package"
                client="site"

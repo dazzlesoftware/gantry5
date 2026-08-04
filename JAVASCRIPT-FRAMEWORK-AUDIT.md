@@ -1,15 +1,15 @@
 # JavaScript Framework Dependency Audit
 
 **Audit date:** August 3, 2026
-**Project:** Gantry 5 / Genesis
+**Project:** Genesis (formerly Gantry 5)
 
 ## Result
 
-Maintained Gantry code and recovered-theme particles no longer require or load jQuery or jQuery UI.
+Maintained Genesis code and recovered-theme particles no longer require or load jQuery or jQuery UI.
 
 | Scope | Active jQuery calls | jQuery loaders/registrations |
 |---|---:|---:|
-| Gantry core and platform document classes | 0 | 0 |
+| Genesis core and platform document classes | 0 | 0 |
 | Engine Twig templates | 0 | 0 |
 | Recovered-theme JavaScript, excluding vendor compatibility text | 0 | 0 |
 | Recovered-theme Twig templates | 0 | 0 |
@@ -54,7 +54,7 @@ These libraries remain because they are dependency-free and provide behavior bey
 | Native typewriter | 1 first-party controller | Timer- and DOM-based replacement for Typed.js |
 | Native Lightcase compatibility controller | 1 shared controller | First-party implementation, not the former plugin |
 
-No React, Vue, Angular, Backbone, Svelte, Alpine, Ember, MooTools, or active jQuery UI runtime was detected in maintained Gantry/theme code.
+No React, Vue, Angular, Backbone, Svelte, Alpine, Ember, MooTools, or active jQuery UI runtime was detected in maintained Genesis/theme code.
 
 ## ES6+ direction
 

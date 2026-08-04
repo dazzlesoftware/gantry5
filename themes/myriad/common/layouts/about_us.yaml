@@ -255,7 +255,7 @@ content:
   custom-2633:
     title: 'Custom HTML'
     attributes:
-      html: "<h2 class=\"title module-title\"><span>We Always Try to Create a Difference</span></h2>\n\n<p>Utilized with Versatile and Flexible Features Powered by the Gantry Framework.</p>\n\n<p><a href=\"#\" class=\"readon largemargintop\">Download Myriad</a></p>"
+      html: "<h2 class=\"title module-title\"><span>We Always Try to Create a Difference</span></h2>\n\n<p>Utilized with Versatile and Flexible Features Powered by the Genesis Framework.</p>\n\n<p><a href=\"#\" class=\"readon largemargintop\">Download Myriad</a></p>"
     block:
       variations: center
   custom-7934:

@@ -16,7 +16,7 @@ if errorlevel 1 (
 )
 
 echo ============================================================
-echo Deploying Gantry WordPress builds
+echo Deploying Genesis WordPress builds
 echo ============================================================
 echo Source:  %~dp0dist
 echo Target:  %wp_content%

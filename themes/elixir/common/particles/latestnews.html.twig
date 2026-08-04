@@ -74,7 +74,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            {% include '@particles/latestnews-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% include '@particles/latestnews-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
     </div>
 {% endblock %}

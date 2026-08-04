@@ -1,6 +1,6 @@
-name: Gantry 5 Framework
+name: Genesis Framework
 version: '@version@'
-description: Gantry 5 Theme framework
+description: Genesis theme framework with Genesis compatibility
 icon: gantry
 author:
   name: Dazzle Software
@@ -34,7 +34,7 @@ form:
     production:
       type: toggle
       label: Production Mode
-      description: Production mode makes Gantry faster by more aggressive caching and ignoring changed files in the filesystem. Most changes made from admin should still be detected.
+      description: Production mode makes Genesis faster by more aggressive caching and ignoring changed files in the filesystem. Most changes made from admin should still be detected.
       highlight: 1
       default: 1
       options:
@@ -46,7 +46,7 @@ form:
     use_media_folder:
       type: toggle
       label: Use Grav Images Folder
-      description: 'By default Gantry media picker saves all files under the <strong>data://gantry5/themes/[theme]/images</strong> folder. If you want to save files into <strong>user://images</strong> folder instead, please select this option. Files in the old location can still be used, but are overridden by the files in the selected folder.'
+      description: 'By default Genesis media picker saves all files under the <strong>data://gantry5/themes/[theme]/images</strong> folder. If you want to save files into <strong>user://images</strong> folder instead, please select this option. Files in the old location can still be used, but are overridden by the files in the selected folder.'
       highlight: 1
       default: 0
       options:
@@ -95,7 +95,7 @@ form:
     debug:
       type: toggle
       label: Debug Mode
-      description: By enabling debugging mode, you will get more information what's going on inside Gantry.
+      description: By enabling debugging mode, you will get more information what's going on inside Genesis.
       highlight: 1
       default: 0
       options:

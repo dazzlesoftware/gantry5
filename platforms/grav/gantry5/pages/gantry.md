@@ -1,5 +1,5 @@
 ---
-title: Gantry Templates
+title: Genesis Templates
 
 cache_enable: false
 process:
@@ -11,4 +11,3 @@ access:
     admin.themes: true
     admin.super: true
 ---
-

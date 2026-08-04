@@ -69,7 +69,7 @@ class Widget extends JsonController
 
         if (isset($this->params['scope'])) {
             $scope = $this->params['scope'];
-            $block = BlueprintForm::instance("{$scope}/block.yaml", 'gantry-admin://blueprints');
+            $block = BlueprintForm::instance("{$scope}/block.yaml", 'Genesis-admin://blueprints');
 
             // Load particle blueprints.
             $validator = $this->loadBlueprints($scope);
@@ -221,7 +221,7 @@ class Widget extends JsonController
      */
     protected function loadBlueprints($name = 'menu')
     {
-        return BlueprintForm::instance("menu/{$name}.yaml", 'gantry-admin://blueprints');
+        return BlueprintForm::instance("menu/{$name}.yaml", 'Genesis-admin://blueprints');
     }
 
     /**

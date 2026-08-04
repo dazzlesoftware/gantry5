@@ -262,7 +262,7 @@ content:
           ykey: '80'
           title: 'Key 5'
   simplecontent-7114:
-    title: 'Gantry 5 Features'
+    title: 'Genesis Features'
     attributes:
       class: ''
       title: ''
@@ -270,15 +270,15 @@ content:
         -
           layout: header
           created_date: ''
-          content_title: 'Gantry 5 Features'
+          content_title: 'Genesis Features'
           author: ''
-          leading_content: 'Gantry 5 is a next-generation theming framework. It is packed with features that make it easier than ever to build your website.'
-          main_content: 'Themes powered by Gantry 5 come with an industry-leading set of core features, including: style, menu, layout, content, and page management tools. Find out why thousands of websites are switching to the powerful Gantry 5 framework.'
+          leading_content: 'Genesis is a next-generation theming framework. It is packed with features that make it easier than ever to build your website.'
+          main_content: 'Themes powered by Genesis come with an industry-leading set of core features, including: style, menu, layout, content, and page management tools. Find out why thousands of websites are switching to the powerful Genesis framework.'
           readmore_label: ''
           readmore_link: ''
           readmore_class: ''
           readmore_target: _self
-          title: 'Gantry 5 Features'
+          title: 'Genesis Features'
     block:
       class: section-vertical-paddings
   cards-2993:
@@ -328,8 +328,8 @@ content:
     title: 'Info List'
     attributes:
       class: ''
-      title: 'Gantry 5 Pickers'
-      intro: 'Gantry 5''s Pickers Simplify Site Configuration'
+      title: 'Genesis Pickers'
+      intro: 'Genesis''s Pickers Simplify Site Configuration'
       cols: g-2cols
       infolists:
         -
@@ -371,7 +371,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: "Powered by the popular Font Awesome icon library, Gantry 5's Icon Picker makes browsing and using icons easy.\n"
+          desc: "Powered by the popular Font Awesome icon library, Genesis's Icon Picker makes browsing and using icons easy.\n"
           tag: ''
           subtag: ''
           label: ''
@@ -387,7 +387,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: "Browse, upload, and select images, video, and other files with ease from Gantry 5's modern File Picker tool.\n"
+          desc: "Browse, upload, and select images, video, and other files with ease from Genesis's modern File Picker tool.\n"
           tag: ''
           subtag: ''
           label: ''

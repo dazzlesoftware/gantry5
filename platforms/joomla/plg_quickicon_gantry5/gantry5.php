@@ -39,7 +39,7 @@ class plgQuickiconGantry5 extends CMSPlugin
      */
     public function __construct(&$subject, $config = array())
     {
-        // Do not load if Gantry libraries are not installed or initialised.
+        // Do not load if Genesis libraries are not installed or initialised.
         if (!class_exists('Gantry5\Loader')) {
             return;
         }
@@ -61,7 +61,7 @@ class plgQuickiconGantry5 extends CMSPlugin
     }
 
     /**
-     * Display Gantry 5 backend icon
+     * Display Genesis backend icon
      *
      * @param string $context
      * @return array|null
@@ -79,7 +79,7 @@ class plgQuickiconGantry5 extends CMSPlugin
             $updates = null;
             if ($user->authorise('core.manage', 'com_installer'))
             {
-                // Initialise Gantry.
+                // Initialise Genesis.
                 Loader::setup();
                 $gantry = Gantry::instance();
 

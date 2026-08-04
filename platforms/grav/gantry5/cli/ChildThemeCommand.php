@@ -65,7 +65,7 @@ class ChildThemeCommand extends ConsoleCommand
                 'Do not clone outlines and configuration to the child theme'
             )
             ->setDescription('Creates a new child theme')
-            ->setHelp('The <info>child-theme</info> creates a new child theme from an existing Gantry theme')
+            ->setHelp('The <info>child-theme</info> creates a new child theme from an existing Genesis theme')
         ;
     }
 
@@ -251,7 +251,7 @@ PHP
                 }
 
                 if (!file_exists($folder . '/gantry/theme.yaml')) {
-                    throw new \RuntimeException('You can only create child theme from a Gantry 5 theme');
+                    throw new \RuntimeException('You can only create a child theme from a Genesis-compatible theme');
                 }
 
                 break;

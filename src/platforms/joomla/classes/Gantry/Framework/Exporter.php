@@ -41,8 +41,8 @@ class Exporter
 
         $export = [
             'export' => [
-                'gantry' => [
-                    'version' => GANTRY5_VERSION !== '@version@' ? GANTRY5_VERSION : 'GIT',
+                'Genesis' => [
+                    'version' => GENESIS_VERSION !== '@version@' ? GENESIS_VERSION : 'GIT',
                     'format' => 1
                 ],
                 'platform' => [
@@ -452,7 +452,7 @@ class Exporter
         $themeName = $theme['name'];
         $themeTitle = $theme['title'];
 
-        # Install Gantry package and theme.
+        # Install Genesis package and theme.
         $out = <<<EOS
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -486,14 +486,14 @@ EOS;
 
     protected $installSql = <<<EOS
 
-# Install Gantry package
+# Install Genesis package
 
 INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`) VALUES
 (0,'pkg_gantry5','package','pkg_gantry5','',0,1,1,0,'','{}','');
 
 SELECT @package_id := LAST_INSERT_ID();
 
-# Install Gantry extensions
+# Install Genesis extensions
 
 INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`) VALUES
 (@package_id,'plg_system_gantry5','plugin','gantry5','system',0,1,1,0,'','{}',''),
@@ -502,9 +502,9 @@ INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, 
 (@package_id,'mod_gantry5_particle','module','mod_gantry5_particle','',0,1,0,0,'','{\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"static\"}',''),
 (@package_id,'gantry5_nucleus','file','gantry5_nucleus','',0,1,0,0,'','{}',''),
 (@package_id,'com_gantry5','component','com_gantry5','',1,1,0,0,'','{}',''),
-(@package_id,'Gantry 5 Framework','library','gantry5','',0,1,1,0,'','{}','');
+(@package_id,'Genesis Framework','library','gantry5','',0,1,1,0,'','{}','');
 
-# Install Gantry theme
+# Install Genesis theme
 
 INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`) VALUES
 (0,@theme_name,'template',@theme_name,'',0,1,1,0,'','{}','');
@@ -514,11 +514,11 @@ SELECT @theme_id := LAST_INSERT_ID();
 # Update sites
 
 INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`,  `extra_query`) VALUES
-('Gantry 5','extension','http://updates.gantry.org/5.0/joomla/pkg_gantry5.xml',1,'');
+('Genesis','extension','http://updates.gantry.org/5.0/joomla/pkg_gantry5.xml',1,'');
 INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALUES (LAST_INSERT_ID(),@package_id);
 
 INSERT INTO `#__update_sites` (`name`, `type`, `location`, `enabled`, `extra_query`) VALUES
-('Gantry 5','collection','http://updates.gantry.org/5.0/joomla/list.xml',1,'');
+('Genesis','collection','http://updates.gantry.org/5.0/joomla/list.xml',1,'');
 INSERT INTO `#__update_sites_extensions` (`update_site_id`, `extension_id`) VALUES (LAST_INSERT_ID(),@package_id);
 
 EOS;

@@ -36,7 +36,7 @@
 {% set articles = article_finder.find() %}
 
 <div id="{{ id }}" data-featureslider-id="{{ id }}" class="g-featureslider-wrapper" {% if particle.height %} style="min-height: {{ particle.height }}px;" {% endif %}>
-	<div class="g-featureslider swiper-container area {{ particle.class|e }}" data-featureslider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-featureslider-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-featureslider-timeout="{{ particle.autoplayTimeout }}" data-featureslider-speed="{{ particle.speed }}" data-featureslider-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-featureslider-touchmovetabs="{% if particle.touchmovetabs == "enabled" %}true{% else %}false{% endif %}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %}>
+	<div class="g-featureslider swiper-container area {{ particle.class|e }}" data-featureslider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-featureslider-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-featureslider-timeout="{{ particle.autoplayTimeout }}" data-featureslider-speed="{{ particle.speed }}" data-featureslider-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-featureslider-touchmovetabs="{% if particle.touchmovetabs == "enabled" %}true{% else %}false{% endif %}" {% if genesis.page.direction == 'rtl' %} dir="rtl" {% endif %}>
 		<div class="g-featureslider-carousel swiper-wrapper">
 			
 			{% for article in articles %}
@@ -96,4 +96,3 @@
 		</div>
 	</div>
 </div>
-

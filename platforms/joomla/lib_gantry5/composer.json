@@ -1,6 +1,6 @@
 {
-    "name": "gantry/joomla",
-    "description": "Gantry Framework Library",
+    "name": "dazzlesoftware/genesis-joomla",
+    "description": "Genesis Framework library for Joomla",
     "license": "GPL-3.0-or-later",
 
     "require": {

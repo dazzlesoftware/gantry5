@@ -30,7 +30,7 @@
             </li>
             {% for key, current in group %}
             <li tabindex="0" aria-label="{{ 'GANTRY5_PLATFORM_X_PRESET'|trans(current) }}" role="button"
-                data-switch="{{ gantry.route('configurations/' ~ configuration ~ '/layout/preset/' ~ key) }}"
+                data-switch="{{ genesis.route('configurations/' ~ configuration ~ '/layout/preset/' ~ key) }}"
                 class="g-switch-preset"
             >
                 {{ current }}
@@ -41,8 +41,8 @@
     </div>
 
     <div class="g-pane clearfix" role="tabpanel" id="g-switcher-outlines" aria-labelledby="g-switcher-outlines-tab" aria-expanded="false">
-        {% set user_conf = gantry.outlines.copy.user %}
-        {% set system_conf = gantry.outlines.system %}
+        {% set user_conf = genesis.outlines.copy.user %}
+        {% set system_conf = genesis.outlines.system %}
 
         <div class="g-preserve-particles">
             <label>
@@ -61,7 +61,7 @@
             <li tabindex="0"
                 aria-label="{{ 'GANTRY5_PLATFORM_X_OUTLINE'|trans('GANTRY5_PLATFORM_BASE_OUTLINE'|trans) }}"
                 role="button"
-                data-switch="{{ gantry.route('configurations/' ~ configuration ~ '/layout/switch/default') }}"
+                data-switch="{{ genesis.route('configurations/' ~ configuration ~ '/layout/switch/default') }}"
                 class="g-switch-configuration"
             >
                 {{ 'GANTRY5_PLATFORM_BASE_OUTLINE'|trans }}
@@ -72,7 +72,7 @@
                     <li tabindex="0"
                         aria-label="{{ 'GANTRY5_PLATFORM_X_OUTLINE'|trans(label) }}"
                         role="button"
-                        data-switch="{{ gantry.route('configurations/' ~ configuration ~ '/layout/switch/' ~ key) }}"
+                        data-switch="{{ genesis.route('configurations/' ~ configuration ~ '/layout/switch/' ~ key) }}"
                         class="g-switch-configuration"
                     >
                         {{ label }}
@@ -89,7 +89,7 @@
                     <li tabindex="0"
                         aria-label="{{ 'GANTRY5_PLATFORM_X_OUTLINE'|trans(label) }}"
                         role="button"
-                        data-switch="{{ gantry.route('configurations/' ~ configuration ~ '/layout/switch/' ~ key) }}"
+                        data-switch="{{ genesis.route('configurations/' ~ configuration ~ '/layout/switch/' ~ key) }}"
                         class="g-switch-configuration"
                     >
                         {{ label }}

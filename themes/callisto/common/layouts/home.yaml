@@ -123,8 +123,8 @@ content:
       items:
         -
           image: 'gantry-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
-          title: 'The Gantry 5 revolution has finally arrived!'
-          desc: '<p>Callisto is a Dazzle Software Club theme for the new Gantry 5 Framework, a powerful, highly customizable and mobile friendly web builder.</p><a class="button button-3" href="#">Read More</a>'
+          title: 'The Genesis revolution has finally arrived!'
+          desc: '<p>Callisto is a Dazzle Software Club theme for the new Genesis Framework, a powerful, highly customizable and mobile friendly web builder.</p><a class="button button-3" href="#">Read More</a>'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -133,7 +133,7 @@ content:
         -
           image: 'gantry-media://demo/home/showcase/roksprocket-showcase/img-01.jpg'
           title: 'Built in Menu Support with Custom Editor'
-          desc: '<p>Gantry 5 benefits from its own built-in menu system, negating the need for auxiliary plugins, as well as featuring a drag and drop setup for advanced dropdown configuration.</p><a class="button button-3" href="#">Read More</a>'
+          desc: '<p>Genesis benefits from its own built-in menu system, negating the need for auxiliary plugins, as well as featuring a drag and drop setup for advanced dropdown configuration.</p><a class="button button-3" href="#">Read More</a>'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -208,12 +208,12 @@ content:
         -
           linklabel: ''
           link: ''
-          content: "<div class=\"g-infolist\">\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"http://docs.gantry.org\"><span>Introduce yourself to the new and powerful Gantry 5 Framework</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span>Gantry benefits from an extensive, and ever expanding, catalog of online and freely available documentation covering basic to <span class=\"hidden-tablet\">more </span>advanced topics.</span>\n            </div>\n        </div>\n    </div>\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"https://dazzlesoftware.org/docs\"><span>Theme specific help guides to assist in setup and configuration</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span class=\"visible-desktop\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding of their various features and capabilities.</span>\n            <span class=\"visible-tablet visible-phone\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding.</span>\n            </div>\n        </div>\n    </div>\n</div>"
+          content: "<div class=\"g-infolist\">\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"http://docs.gantry.org\"><span>Introduce yourself to the new and powerful Genesis Framework</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span>Genesis benefits from an extensive, and ever expanding, catalog of online and freely available documentation covering basic to <span class=\"hidden-tablet\">more </span>advanced topics.</span>\n            </div>\n        </div>\n    </div>\n    <div class=\"g-infolist-item g-infolist-with-img\">\n        <div class=\"g-infolist-item-img g-block size-22 hidden-phone\"> <img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\"> </div>\n        <div class=\"g-infolist-item-text g-block size-68\">\n            <div class=\"g-infolist-item-title\"> <a href=\"https://dazzlesoftware.org/docs\"><span>Theme specific help guides to assist in setup and configuration</span></a> </div>\n            <div class=\"g-infolist-item-desc\"> <span class=\"visible-desktop\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding of their various features and capabilities.</span>\n            <span class=\"visible-tablet visible-phone\">The Dazzle Software site provides free documentation for all our themes and plugins, to supplement understanding.</span>\n            </div>\n        </div>\n    </div>\n</div>"
           title: Guide
         -
           linklabel: ''
           link: ''
-          content: "<div class=\"g-infolist\">\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://dazzlesoftware.org/forum\"><span>A community forum to ask the moderators and developers questions</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tOur forums are monitored by a team of moderators, as well as the developers, to assist in general questions and problems relating to the themes and plugins.\t\t\t</div>\t\t</div>\t</div>\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://github.com/gantry/\"><span>Gantry is community driven and offers direct chat via Gitter</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tGithub allows for an system where you can contribute code, post issues and feedback on the Gantry open source project.<span class=\"hidden-tablet\"> Discuss Gantry live with us via Gitter.</span>\t\t\t</div>\t\t</div>\t</div></div>"
+          content: "<div class=\"g-infolist\">\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://dazzlesoftware.org/forum\"><span>A community forum to ask the moderators and developers questions</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tOur forums are monitored by a team of moderators, as well as the developers, to assist in general questions and problems relating to the themes and plugins.\t\t\t</div>\t\t</div>\t</div>\t<div class=\"g-infolist-item g-infolist-with-img\">\t\t<div class=\"g-infolist-item-img g-block size-22 hidden-phone\">\t\t\t<img src=\"gantry-theme://images/demo/home/feature/roksprocket-tabs/img-01.jpg\" alt=\"image\">\t\t</div>\t\t<div class=\"g-infolist-item-text g-block size-68\">\t\t\t<div class=\"g-infolist-item-title\">\t\t\t\t<a href=\"https://github.com/gantry/\"><span>Genesis is community driven and offers direct chat via Gitter</span></a>\t\t\t</div>\t\t\t<div class=\"g-infolist-item-desc\">\t\t\t\tGithub allows for an system where you can contribute code, post issues and feedback on the Genesis open source project.<span class=\"hidden-tablet\"> Discuss Genesis live with us via Gitter.</span>\t\t\t</div>\t\t</div>\t</div></div>"
           title: Support
     block:
       class: nopaddingall
@@ -299,7 +299,7 @@ content:
           name: 'Item 3'
         -
           image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
-          title: '<span class="g-strips-tag">Menu</span>Dropdown menu system built directly into the Gantry core'
+          title: '<span class="g-strips-tag">Menu</span>Dropdown menu system built directly into the Genesis core'
           desc: 'Easy Setup'
           link: '#'
           linktext: ''
@@ -307,7 +307,7 @@ content:
           name: 'Item 4'
         -
           image: 'gantry-media://demo/home/extension/roksprocket-strips/img-01.jpg'
-          title: '<span class="g-strips-tag">Gantry</span>Built on the state-of-the-art template framework: Gantry'
+          title: '<span class="g-strips-tag">Genesis</span>Built on the state-of-the-art template framework: Genesis'
           desc: Framework
           link: '#'
           linktext: ''
@@ -388,7 +388,7 @@ content:
         -
           image: ''
           title: 'Twig Templating'
-          desc: '<div><span class="visible-desktop">Gantry 5 utilizes Twig - a flexible, fast, and secure template engine for PHP - to make creating powerful, dynamic themes quick and easy.</span><span class="visible-tablet visible-phone">Gantry 5 utilizes Twig - a template engine for PHP.</span></div>'
+          desc: '<div><span class="visible-desktop">Genesis utilizes Twig - a flexible, fast, and secure template engine for PHP - to make creating powerful, dynamic themes quick and easy.</span><span class="visible-tablet visible-phone">Genesis utilizes Twig - a template engine for PHP.</span></div>'
           link: '#'
           linktext: ''
           buttontarget: _self
@@ -396,7 +396,7 @@ content:
         -
           image: ''
           title: 'Particles System'
-          desc: '<div><span class="visible-desktop">Gantry 5''s Particles system makes it easy to create, configure, and manage content blocks on multiple levels.</span><span class="visible-phone visible-tablet">Gantry 5''s Particles system makes it easy to manage content blocks.</span></div>'
+          desc: '<div><span class="visible-desktop">Genesis''s Particles system makes it easy to create, configure, and manage content blocks on multiple levels.</span><span class="visible-phone visible-tablet">Genesis''s Particles system makes it easy to manage content blocks.</span></div>'
           link: '#'
           linktext: ''
           buttontarget: _self
@@ -404,7 +404,7 @@ content:
         -
           image: ''
           title: 'Use SCSS, LESS or CSS'
-          desc: '<div><span class="visible-desktop">The Gantry 5 Framework has built-in support for SCSS, and pure CSS, with the ability to support and LESS.</span><span class="visible-tablet visible-phone">The Gantry 5 Framework has built-in support for SCSS and LESS.</span></div>'
+          desc: '<div><span class="visible-desktop">The Genesis Framework has built-in support for SCSS, and pure CSS, with the ability to support and LESS.</span><span class="visible-tablet visible-phone">The Genesis Framework has built-in support for SCSS and LESS.</span></div>'
           link: '#'
           linktext: ''
           buttontarget: _self
@@ -416,9 +416,9 @@ content:
     title: 'Photo Gallery'
     attributes:
       title: 'Photo Gallery'
-      desc: 'Using the power of <a href="#">Gantry 5 Particles</a> to create a customizable image grid.'
+      desc: 'Using the power of <a href="#">Genesis Particles</a> to create a customizable image grid.'
       cols: g-imagegrid-4cols
-      album: 'Gantry 5 Album'
+      album: 'Genesis Album'
       imagegriditems:
         -
           image: 'gantry-media://demo/home/extension/image-grid/img-01.jpg'
@@ -461,7 +461,7 @@ content:
       infolists:
         -
           link: '#'
-          description: 'Gantry 5''s new layout manager features drag-and-drop functionality.'
+          description: 'Genesis''s new layout manager features drag-and-drop functionality.'
           title: 'Flexible and Easy Layout Manager'
         -
           link: '#'
@@ -469,12 +469,12 @@ content:
           title: 'Powerful Menu Editor'
         -
           link: '#'
-          description: 'Gantry 5''s Particles system makes it easy to create and configure content blocks.'
+          description: 'Genesis''s Particles system makes it easy to create and configure content blocks.'
           title: 'New Particles System'
   custom-4557:
     title: 'Demo Information'
     attributes:
-      html: "<h2 class=\"g-title\">Demo Information</h2>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from <a href=\"http://tookapic.com\">tookapic.com</a> for exclusive use on this demo only.</p>\n<p>Note: Callisto theme is built on the Gantry 5 framework, the most customizable and powerful version of the framework yet.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/callisto\" class=\"button button-3\"><i class=\"fa fa-cloud-download\"></i> Download</a>"
+      html: "<h2 class=\"g-title\">Demo Information</h2>\n\n<p>All demo content is for sample purposes only, intended to represent a live site. All content images are licensed from <a href=\"http://tookapic.com\">tookapic.com</a> for exclusive use on this demo only.</p>\n<p>Note: Callisto theme is built on the Genesis framework, the most customizable and powerful version of the framework yet.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/callisto\" class=\"button button-3\"><i class=\"fa fa-cloud-download\"></i> Download</a>"
   contact-6183:
     title: 'Contact Details'
     attributes:

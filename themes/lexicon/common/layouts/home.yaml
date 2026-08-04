@@ -225,7 +225,7 @@ content:
           link: 'http://gantry.org/downloads'
           buttontarget: _blank
           buttonclass: readon
-          title: Gantry
+          title: Genesis
         -
           thumb: 'gantry-media://home/fp-showcase/img-01-thumb.jpg'
           image: 'gantry-media://home/fp-showcase/img-01.jpg'
@@ -253,12 +253,12 @@ content:
       title: 'Inside Lexicon'
       items:
         -
-          title: 'Gantry<span class="hidden-tablet"> Framework'
+          title: 'Genesis<span class="hidden-tablet"> Framework'
           type: link
           link: 'http://gantry.org/'
           target: _blank
           class: ''
-          name: 'Gantry Framework'
+          name: 'Genesis Framework'
         -
           title: 'Dropdown<span class="hidden-tablet"> Menu</span>'
           type: link
@@ -528,12 +528,12 @@ content:
       title: 'Inside Lexicon'
       items:
         -
-          title: 'Gantry<span class="hidden-tablet"> Framework'
+          title: 'Genesis<span class="hidden-tablet"> Framework'
           type: link
           link: 'http://gantry.org/'
           target: _blank
           class: ''
-          name: 'Gantry Framework'
+          name: 'Genesis Framework'
         -
           title: 'Dropdown<span class="hidden-tablet"> Menu</span>'
           type: link

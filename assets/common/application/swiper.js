@@ -686,4 +686,5 @@ if (document.readyState === 'loading') {
     ready();
 }
 
-window.G5Swiper = { GantrySwiper, initialize };
+window.GenesisSwiper = { GantrySwiper, initialize };
+window.G5Swiper = window.GenesisSwiper;

@@ -13,7 +13,7 @@
         'orderby': orderby,
         'order': order,
     } %}
-    {% set posts = gantry.platform.call('Timber::get_posts', array) %}
+    {% set posts = genesis.platform.call('Timber::get_posts', array) %}
     {% set Options = field.selectize.Options %}
     {% set options = [] %}
         {% for id,post in posts %}

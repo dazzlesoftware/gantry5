@@ -1,6 +1,6 @@
 body.gantry5 {
-    #g5-container {
-        .g5-dialog {
+    [data-genesis-container] {
+        .genesis-dialog {
             @include breakpoint(desktop-only) {
                 padding-left: 160px;
             }
@@ -9,7 +9,7 @@ body.gantry5 {
             }
         }
 
-        .g5-dialog-loading-spinner.g5-dialog-theme-default {
+        .genesis-dialog-loading-spinner.genesis-dialog-theme-default {
             top: 3em;
 
             @include breakpoint(desktop-only) {

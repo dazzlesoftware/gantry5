@@ -415,7 +415,7 @@ class Position extends Collection
      */
     protected function path()
     {
-        return "gantry-positions://{$this->name}";
+        return "Genesis-positions://{$this->name}";
     }
 
 }

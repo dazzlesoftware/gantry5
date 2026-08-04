@@ -1,7 +1,7 @@
 {
-    "name": "rockettheme/gantry5",
+    "name": "dazzlesoftware/genesis-grav",
     "type": "grav-plugin",
-    "description": "Gantry Framework",
+    "description": "Genesis Framework for Grav",
     "keywords": ["gantry"],
     "license": "MIT",
 

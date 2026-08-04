@@ -35,7 +35,7 @@
 {% set total = article_finder.count() %}
 {% set articles = article_finder.find() %}
 
-<div id="{{ id }}" class="g-swiper swiper-container {{ particle.class|e }}" data-swiper-id="{{ id }}" {{ swiper_settings }} {{ swiper_slides }} {{ swiper_thumbs }} {{ swiper_breakpoints }} {% if gantry.page.direction == 'rtl' %}dir="rtl"{% endif %}>
+<div id="{{ id }}" class="g-swiper swiper-container {{ particle.class|e }}" data-swiper-id="{{ id }}" {{ swiper_settings }} {{ swiper_slides }} {{ swiper_thumbs }} {{ swiper_breakpoints }} {% if genesis.page.direction == 'rtl' %}dir="rtl"{% endif %}>
     <div class="g-swiper-slider swiper-wrapper" style="height: {{ particle.height|default('70vh') }};">
         {% for article in articles %}
             {% if display.image.enabled and article.images.image_intro or article.images.image_fulltext %}
@@ -87,7 +87,7 @@
     </div>
 
     {% if particle.nav == 'enabled' %}
-        {% if gantry.page.direction == 'rtl' %}
+        {% if genesis.page.direction == 'rtl' %}
             <div class="swiper-navigation rtl">
                 <div class="swiper-button-next-{{ id|replace({'swiper-': ''}) }}">
                     <i class="fa fa-angle-left"></i>
@@ -135,7 +135,7 @@
         </div>
         
         {% if particle.thumbsnav == 'enabled' %}                 
-            {% if gantry.page.direction == 'rtl' %}
+            {% if genesis.page.direction == 'rtl' %}
                 <div class="swiper-navigation rtl">
                     <div class="swiper-thumbs-button-next">
                         <i class="fa fa-angle-left"></i>

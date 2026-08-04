@@ -188,7 +188,7 @@ content:
         -
           image: 'gantry-media://home/fp-stories-showcase/img-01.jpg'
           title: 'A Versatile Foundation'
-          desc: '<p class="rt-title-tag">Gantry Framework</p><p><span class="rt-displayinline">Gantry is a powerful cross-platform framework<span class="visible-desktop"> that sits at the heart of the template, powering various features</span>.</span></p>'
+          desc: '<p class="rt-title-tag">Genesis Framework</p><p><span class="rt-displayinline">Genesis is a powerful cross-platform framework<span class="visible-desktop"> that sits at the heart of the template, powering various features</span>.</span></p>'
           linktitle: enabled
           link: '#'
           linktext: 'Read More'
@@ -299,11 +299,11 @@ content:
           buttonclass: readon3
           name: 'Item 1'
         -
-          title: 'Powered by the free & popular Gantry Framework'
+          title: 'Powered by the free & popular Genesis Framework'
           titletag: 'Free/GPL Framework'
           image: 'gantry-media://home/fp-scroller/img-01.jpg'
-          alt: 'Gantry Framework'
-          content: '<p>Gantry is the cross-platform framework that sits at the center of the theme, providing a rich library of standardized features, packaged with an intuitive control panel.</p>'
+          alt: 'Genesis Framework'
+          content: '<p>Genesis is the cross-platform framework that sits at the center of the theme, providing a rich library of standardized features, packaged with an intuitive control panel.</p>'
           linklabel: 'Read More'
           link: '#'
           buttontarget: _self
@@ -404,8 +404,8 @@ content:
       items:
         -
           image: 'gantry-media://home/fp-showcase-maintop/img-01.jpg'
-          title: '<span class="rt-displayinline"><span class="visible-desktop">The </span>Gantry<span class="visible-desktop"> Framework provides</span><span class="hidden-desktop">,</span> a powerful foundation</span>'
-          desc: '<p><span class="rt-displayinline">Gantry is a cross-platform framework with a vast library of standardized features and functions<span class="visible-desktop">, to make powerful, flexible themes</span>.</span></p><p class="visible-large">Templates are easy to manage with Gantry, with its a rich and intuitive user interface, allowing for swift but extensive customization.</p>'
+          title: '<span class="rt-displayinline"><span class="visible-desktop">The </span>Genesis<span class="visible-desktop"> Framework provides</span><span class="hidden-desktop">,</span> a powerful foundation</span>'
+          desc: '<p><span class="rt-displayinline">Genesis is a cross-platform framework with a vast library of standardized features and functions<span class="visible-desktop">, to make powerful, flexible themes</span>.</span></p><p class="visible-large">Templates are easy to manage with Genesis, with its a rich and intuitive user interface, allowing for swift but extensive customization.</p>'
           linktitle: enabled
           link: '#'
           linktext: 'Read More'
@@ -508,7 +508,7 @@ content:
           buttonclass: readon
           title: Top
         -
-          content: "<div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Maximum Performance with</span> RokBooster</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tSpeed\t</p>\t<p>\t\t<span>Combine and consolidate CSS, J<span class=\"hidden-tablet\">ava</span>S<span class=\"hidden-tablet\">cript</span>, Fonts and Images.</span>\t</p></div><hr/><div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span>R<span class=\"hidden-tablet\">ight-</span>T<span class=\"hidden-tablet\">o-</span>L<span class=\"hidden-tablet\">eft Gantry &amp; Template</span> Support</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tMulti-Language\t</p>\t<p>\t\t<span>Audacity has basic <span class=\"hidden-tablet\">structural</span> support for Right-To-Left <span class=\"visible-large\">languages.</span></span>\t</p></div>"
+          content: "<div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span><span class=\"hidden-tablet\">Maximum Performance with</span> RokBooster</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tSpeed\t</p>\t<p>\t\t<span>Combine and consolidate CSS, J<span class=\"hidden-tablet\">ava</span>S<span class=\"hidden-tablet\">cript</span>, Fonts and Images.</span>\t</p></div><hr/><div>\t<img src=\"gantry-media://home/fp-feature/img-01.jpg\" alt=\"image\"/>\t<h2 class=\"title\">\t\t<span>R<span class=\"hidden-tablet\">ight-</span>T<span class=\"hidden-tablet\">o-</span>L<span class=\"hidden-tablet\">eft Genesis &amp; Template</span> Support</span>\t</h2>\t<p class=\"rt-title-tag\">\t\tMulti-Language\t</p>\t<p>\t\t<span>Audacity has basic <span class=\"hidden-tablet\">structural</span> support for Right-To-Left <span class=\"visible-large\">languages.</span></span>\t</p></div>"
           linklabel: 'Read More'
           link: '#'
           buttontarget: _self
@@ -610,7 +610,7 @@ content:
           name: 'Item 1'
         -
           title: '<span>An incredible display and experience<span class="hidden-tablet">  for your visitors.</span></span>'
-          desc: '<span>Audacity is powered by the Gantry 5 framework, a brilliant combination of power and simplicity <span class="visible-large">that makes creating a unique website easy.</span></span>'
+          desc: '<span>Audacity is powered by the Genesis framework, a brilliant combination of power and simplicity <span class="visible-large">that makes creating a unique website easy.</span></span>'
           name: 'Item 2'
         -
           title: '<span>Custom notice pages with integrated template styling<span class="visible-large"> for offline and error displays</span></span>'
@@ -618,11 +618,11 @@ content:
           name: 'Item 3'
         -
           title: '<span>Comprehensive catalog of online guides<span class="visible-desktop"> for our themes &amp; extensions</span></span>'
-          desc: '<span>Dazzle Software provides free online documentation for our products<span class="visible-large">, including Gantry, our templates and extensions</span>.</span>'
+          desc: '<span>Dazzle Software provides free online documentation for our products<span class="visible-large">, including Genesis, our templates and extensions</span>.</span>'
           name: 'Item 4'
         -
-          title: '<span>Choose the Right Font in Seconds<span class="visible-desktop">  with Gantry’s Font Picker</span></span>'
-          desc: '<span>Quickly find the perfect fonts using Gantry 5''s Font Picker. Powered by Google Fonts<span class="visible-large"> with over 850 font families to choose from. Features live preview and search.</span></span>'
+          title: '<span>Choose the Right Font in Seconds<span class="visible-desktop">  with Genesis’s Font Picker</span></span>'
+          desc: '<span>Quickly find the perfect fonts using Genesis''s Font Picker. Powered by Google Fonts<span class="visible-large"> with over 850 font families to choose from. Features live preview and search.</span></span>'
           name: 'Item 5'
         -
           title: '<span>RokBooster improves site performance and page load speed</span>'

@@ -36,7 +36,7 @@ class JFormFieldParticle extends FormField
         /** @var CMSApplication $application */
         $application = Factory::getApplication();
 
-        // Detect Gantry Framework or fail gracefully.
+        // Detect Genesis Framework or fail gracefully.
         if (!class_exists('Gantry5\Loader')) {
             $application->enqueueMessage(
                 Text::sprintf('MOD_GANTRY5_PLUGIN_MISSING', Text::_('MOD_GANTRY5_PARTICLE')),
@@ -45,8 +45,11 @@ class JFormFieldParticle extends FormField
             return '';
         }
 
+        if (!defined('GENESIS_ADMIN_PATH')) {
+            define('GENESIS_ADMIN_PATH', JPATH_ADMINISTRATOR . '/components/com_gantry5');
+        }
         if (!defined('GANTRYADMIN_PATH')) {
-            define('GANTRYADMIN_PATH', JPATH_ADMINISTRATOR . '/components/com_gantry5');
+            define('GANTRYADMIN_PATH', GENESIS_ADMIN_PATH);
         }
 
         // Initialize administrator or fail gracefully.
@@ -55,7 +58,7 @@ class JFormFieldParticle extends FormField
 
             $language = $application->getLanguage();
             $language->load('com_gantry5', JPATH_ADMINISTRATOR)
-                || $language->load('com_gantry5', GANTRYADMIN_PATH);
+                || $language->load('com_gantry5', GENESIS_ADMIN_PATH);
 
             $this->container = Gantry::instance();
             $this->container['router'] = function ($c) {

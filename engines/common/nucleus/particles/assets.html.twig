@@ -11,11 +11,11 @@
         {% endif %}
 
         {% if css.location %}
-            {% do gantry.document.addStyle(params|default({})|merge({href: css.location}), css.priority) %}
+            {% do genesis.document.addStyle(params|default({})|merge({href: css.location}), css.priority) %}
         {% endif %}
 
         {% if css.inline %}
-            {% do gantry.document.addInlineStyle(params|default({})|merge({content: css.inline}), css.priority) %}
+            {% do genesis.document.addInlineStyle(params|default({})|merge({content: css.inline}), css.priority) %}
         {% endif %}
     {% endfor %}
 
@@ -30,11 +30,11 @@
         {% endif %}
 
         {% if script.location %}
-            {% do gantry.document.addScript(params|default({})|merge({src: script.location}), script.priority, script.in_footer == true ? 'footer' : 'head') %}
+            {% do genesis.document.addScript(params|default({})|merge({src: script.location}), script.priority, script.in_footer == true ? 'footer' : 'head') %}
         {% endif %}
 
         {% if script.inline %}
-            {% do gantry.document.addInlineScript(params|default({})|merge({content: script.inline}), script.priority, script.in_footer == true ? 'footer' : 'head') %}
+            {% do genesis.document.addInlineScript(params|default({})|merge({content: script.inline}), script.priority, script.in_footer == true ? 'footer' : 'head') %}
         {% endif %}
     {% endfor %}
 {% endif %}

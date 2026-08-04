@@ -11,9 +11,9 @@ include __DIR__ . '/style.php';
     </h1>
 
     <p>
-        Thank you for choosing Gantry 5 Template Framework!
+        Thank you for choosing Genesis Framework!
         <br>
-        The next step is to install a Gantry 5 template. For more information, please read the <a href="http://docs.gantry.org/gantry5/basics/installation">documentation</a>.
+        The next step is to install a Genesis-compatible template. For more information, please read the <a href="http://docs.gantry.org/gantry5/basics/installation">documentation</a>.
     </p>
 
     <div class="g5-rockettheme">

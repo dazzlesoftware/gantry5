@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
 
 <style>
-    @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
+    @media only all and (max-width: {{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
         #{{ id }} .g-slideshow-slider {
             height: {{ particle.heightMobile|default('500px') }} !important;
         }
@@ -14,7 +14,7 @@
 
 {% block particle %}
 	<div class="g-slideshow-mask">
-		<div id="{{ id }}" class="g-slideshow swiper-container {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-effect="{{ particle.effect }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}"  data-slideshow-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %}>
+		<div id="{{ id }}" class="g-slideshow swiper-container {{ particle.class|e }}" data-slideshow-id="{{ id }}" data-slideshow-effect="{{ particle.effect }}" data-slideshow-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slideshow-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slideshow-timeout="{{ particle.autoplayTimeout }}" data-slideshow-speed="{{ particle.speed }}" data-slideshow-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}"  data-slideshow-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" {% if genesis.page.direction == 'rtl' %} dir="rtl" {% endif %}>
 			<div class="g-slideshow-slider swiper-wrapper" style="height: {{ particle.height|default('60vh') }};">
 				{% if not particle.source or particle.source == 'particle' %}
 					{% for item in particle.items %}
@@ -84,12 +84,12 @@
 						</div>
 					{% endfor %}
 				{% else %}
-					{% include '@particles/slideshow-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+					{% include '@particles/slideshow-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
 				{% endif %}
 			</div>
 			<!-- navigation -->
             {% if particle.nav == 'enabled' %}
-                {% if gantry.page.direction == 'rtl' %}
+                {% if genesis.page.direction == 'rtl' %}
                     <div class="navigation rtl">
                         <div class="swiper-button-next">
                             <i class="fa fa-angle-left"></i>
@@ -119,7 +119,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/slideshow.init.js'), 10, 'footer') %}
 {% endblock %}

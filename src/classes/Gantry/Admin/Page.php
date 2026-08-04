@@ -22,14 +22,14 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Page
 {
-    /** @var Gantry */
+    /** @var Genesis */
     protected $container;
     protected $files;
     protected $blocks;
 
     /**
      * Page constructor.
-     * @param Gantry $container
+     * @param Genesis $container
      */
     public function __construct($container)
     {
@@ -48,7 +48,7 @@ class Page
             $this->blocks = [];
             foreach ($files as $key => $fileArray) {
                 $filename = key($fileArray);
-                $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+                $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
                 $this->blocks[$key] = $file->content();
                 $file->free();
             }
@@ -90,7 +90,7 @@ class Page
         }
 
         $filename = key($files[$id]);
-        $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+        $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
         $setting = (array)$file->content();
         $file->free();
 

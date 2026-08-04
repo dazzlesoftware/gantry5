@@ -2,8 +2,8 @@
 
 {% block options %}
     {{ parent() }}
-    {% if gantry.menu is not null %}
-        {% for group, items in gantry.menu.getGroupedItems() %}
+    {% if genesis.menu is not null %}
+        {% for group, items in genesis.menu.getGroupedItems() %}
             {% if items|length %}
             <optgroup label="{{ group|capitalize }}">
             {% for key, item in items %}

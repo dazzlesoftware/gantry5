@@ -1,4 +1,4 @@
-#g5-container {
+[data-genesis-container] {
     .g-icons {
         > *:not(div), label {
             display: inline-block;
@@ -15,17 +15,17 @@
         }
     }
 
-    .g5-popover-icons-preview, [data-g5-iconpicker] .fa {
+    .genesis-popover-icons-preview, [data-genesis-iconpicker] .fa {
         width: auto !important;
         font-size: 1rem !important;
     }
 
-    .g5-popover-icons-preview h3 {
+    .genesis-popover-icons-preview h3 {
         text-align: center;
         margin-bottom: 0;
     }
 
-    .g5-dialog.g5-dialog-theme-default.g5-modal-icons .g5-content {
+    .genesis-dialog.genesis-dialog-theme-default.genesis-modal-icons .genesis-content {
         width: 650px;
 
         .g-icon-preview {

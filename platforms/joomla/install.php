@@ -19,7 +19,7 @@ use Joomla\Filesystem\Folder;
 use Joomla\Registry\Registry;
 
 /**
- * Gantry 5 package installer script.
+ * Genesis package installer script.
  */
 class Pkg_Gantry5InstallerScript
 {
@@ -161,10 +161,10 @@ class Pkg_Gantry5InstallerScript
         // Enable and lock extensions to prevent uninstalling them individually.
         $this->prepareExtensions($manifest, 1);
 
-        // Repair missing update-site registrations for installed Gantry templates.
+        // Repair missing update-site registrations for installed Genesis templates.
         $this->registerTemplateUpdateSites();
 
-        // Make sure that all file formats used by Gantry 5 are editable from template manager.
+        // Make sure that all file formats used by Genesis are editable from template manager.
         $this->adjustTemplateSettings();
 
         // Install sample data on first install.

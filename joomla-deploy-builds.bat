@@ -16,7 +16,7 @@ if errorlevel 1 (
 )
 
 echo ============================================================
-echo Deploying Gantry Joomla builds
+echo Deploying Genesis Joomla builds
 echo ============================================================
 echo Source:  %~dp0dist
 echo Target:  %joomla_root%

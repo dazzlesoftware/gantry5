@@ -47,7 +47,7 @@ abstract class Widgets
         \add_filter('dynamic_sidebar_params', ['Gantry\Wordpress\Widgets', 'sidebarChromeFilter'], -1000);
 
         if (!empty($params['prepare_layout'])) {
-            // Only pre-render Gantry widgets on prepare layout.
+            // Only pre-render Genesis widgets on prepare layout.
             global $wp_registered_sidebars, $wp_registered_widgets;
 
             $sidebar          = $wp_registered_sidebars[$key];
@@ -60,7 +60,7 @@ abstract class Widgets
                     continue;
                 }
 
-                // Make sure we have Gantry 5 compatible widget.
+                // Make sure we have Genesis compatible widget.
                 if (empty($wp_registered_widgets[$id]['gantry5'])
                     && $wp_registered_widgets[$id]['classname'] !== 'roksprocket_options'
                     && $wp_registered_widgets[$id]['classname'] !== 'rokgallery_options'
@@ -70,7 +70,7 @@ abstract class Widgets
 
                 $callback = $wp_registered_widgets[$id]['callback'];
 
-                // Pre-render Gantry widget.
+                // Pre-render Genesis widget.
                 if (is_callable($callback)) {
                     $name = $wp_registered_widgets[$id]['name'];
 
@@ -133,7 +133,7 @@ abstract class Widgets
         $widgetObj     = $widgetData['widget'];
         $gantry5Widget = !empty($widgetObj->gantry5);
 
-        // Do not do anything yet if we are only preparing layout and widget isn't Gantry 5 compatible.
+        // Do not do anything yet if we are only preparing layout and widget isn't Genesis compatible.
         if (!$gantry5Widget && !empty($params['prepare_layout'])
             && $widgetData['id'] !== 'roksprocket_options'
             && $widgetData['id'] !== 'rokgallery_options'
@@ -173,7 +173,7 @@ abstract class Widgets
             return null;
         }
 
-        // Make sure we have Gantry 5 compatible widget.
+        // Make sure we have Genesis compatible widget.
         if (empty($wp_registered_widgets[$id]['gantry5'])) {
             return null;
         }
@@ -181,7 +181,7 @@ abstract class Widgets
         $sidebar = $wp_registered_sidebars[$sidebar_id];
         $callback = $wp_registered_widgets[$id]['callback'];
 
-        // Pre-render Gantry widget.
+        // Pre-render Genesis widget.
         $contents = null;
         if (is_callable($callback)) {
             $name = $wp_registered_widgets[$id]['name'];
@@ -500,7 +500,7 @@ abstract class Widgets
      * @param string $chrome
      * @return array
      */
-    protected static function getChromeArgs($chrome = 'gantry')
+    protected static function getChromeArgs($chrome = 'Genesis')
     {
         /** @var Theme $theme */
         $theme = static::gantry()['theme'];

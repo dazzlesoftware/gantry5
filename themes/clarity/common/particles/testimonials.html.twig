@@ -41,7 +41,7 @@
                 {% endfor %}
 
             {% else %}
-                {% include '@particles/testimonials-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+                {% include '@particles/testimonials-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
             {% endif %}
 
         </div>
@@ -49,5 +49,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/testimonials.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-assets://js/testimonials.js'), 10, 'footer') %}
 {% endblock %}

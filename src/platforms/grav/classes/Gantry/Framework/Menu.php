@@ -101,7 +101,7 @@ class Menu extends AbstractMenu
         $flex = $grav['flex'];
         $directory = $flex->getDirectory('pages');
         if (!$directory) {
-            throw new \RuntimeException('Flex Pages are required for Gantry to work!');
+            throw new \RuntimeException('Flex Pages are required for Genesis to work!');
         }
         /** @var PageIndex $pages */
         $pages = $directory->getCollection();
@@ -198,7 +198,7 @@ class Menu extends AbstractMenu
         $flex = $grav['flex'];
         $directory = $flex->getDirectory('pages');
         if (!$directory) {
-            throw new \RuntimeException('Flex Pages are required for Gantry to work!');
+            throw new \RuntimeException('Flex Pages are required for Genesis to work!');
         }
         /** @var PageIndex $pages */
         $pages = $directory->getIndex();
@@ -313,8 +313,8 @@ class Menu extends AbstractMenu
 
         // Add menu item properties from the page header.
         $header = $page ? $page->header() : null;
-        if (isset($header->gantry['menu']) && is_array($header->gantry['menu'])) {
-            $properties = array_replace($properties, $header->gantry['menu']);
+        if (isset($header->Genesis['menu']) && is_array($header->Genesis['menu'])) {
+            $properties = array_replace($properties, $header->Genesis['menu']);
             if (isset($properties['particle'])) {
                 $properties['type'] = 'particle';
                 $properties['enabled'] = !isset($properties['particle']['enabled']) || !empty($properties['particle']['enabled']);

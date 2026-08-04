@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1455306122
 layout:
@@ -171,7 +171,7 @@ content:
           name: 'Slide 1'
         -
           image: 'gantry-media://demo/home/slideshow/img-01.jpg'
-          title: 'Gantry 5 Framework'
+          title: 'Genesis Framework'
           desc: 'The next generation in user friendly theme configuration and development.'
           link: '#'
           linktext: 'Get Started'
@@ -284,7 +284,7 @@ content:
           tagicons:
             -
               iconitem: 'fa fa-gear fa-fw'
-              icontext: Gantry
+              icontext: Genesis
               title: 'Tag 1'
           title: 'Item 5'
         -
@@ -293,7 +293,7 @@ content:
           titleText: Features
           titleURL: '#'
           titleTarget: _self
-          desc: 'Gantry 5 offers an advanced and user friendly Menu Editor and Layout Manager and many more powerful features to help build your site.'
+          desc: 'Genesis offers an advanced and user friendly Menu Editor and Layout Manager and many more powerful features to help build your site.'
           animations: g-mosaicgrid-zoom
           buttontext: ''
           buttonlink: ''
@@ -309,7 +309,7 @@ content:
   custom-6584:
     title: 'FP Showcase A'
     attributes:
-      html: "<h2 class=\"g-title\">Gantry is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"http://www.gantry.org\" class=\"readon\">Read more about Gantry</a></p>"
+      html: "<h2 class=\"g-title\">Genesis is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"http://www.gantry.org\" class=\"readon\">Read more about Genesis</a></p>"
     block:
       class: 'g-title-large g-title-300 g-center-vertical'
   logo-4844:
@@ -326,19 +326,19 @@ content:
       class: center
       subcontents:
         -
-          name: 'Gantry 5'
+          name: 'Genesis'
           icon: 'fa fa-heartbeat fa-fw fa-3x'
           img: ''
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'Gantry 5 is an advanced, versatile and multi-platform template framework, perfectly designed for the modern web. '
+          description: 'Genesis is an advanced, versatile and multi-platform template framework, perfectly designed for the modern web. '
           class: ''
           button: ''
           buttonlink: ''
           buttonclass: ''
           buttontarget: _self
-          title: 'Gantry 5'
+          title: 'Genesis'
         -
           name: YAML-Driven
           icon: 'fa fa-calendar-check-o fa-fw fa-3x'
@@ -569,7 +569,7 @@ content:
           link: 'http://docs.gantry.org/'
           icon: ''
           readmoreclass: ''
-          title: Gantry
+          title: Genesis
         -
           image: ''
           imageloc: left
@@ -697,7 +697,7 @@ content:
   custom-3225:
     title: About
     attributes:
-      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Genesis Framework.</span></p>\t"
   newsletter-7556:
     attributes:
       class: 'center-block g-title-large'

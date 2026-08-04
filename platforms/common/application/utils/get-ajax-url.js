@@ -11,17 +11,17 @@ const decodeHtml = (value) => {
 const replaceView = (template, view, search = '%ajax%') =>
     decodeHtml(String(template || '').split(search).join(view));
 
-const getAjaxURL = (view, search) => replaceView(window.GANTRY_AJAX_URL, view, search);
-const getConfAjaxURL = (view, search) => replaceView(window.GANTRY_AJAX_CONF_URL, view, search);
+const getAjaxURL = (view, search) => replaceView(window.GENESIS_AJAX_URL, view, search);
+const getConfAjaxURL = (view, search) => replaceView(window.GENESIS_AJAX_CONF_URL, view, search);
 
 const parseAjaxURI = (uri) => {
     let result = String(uri || '');
 
-    if (window.GANTRY_PLATFORM === 'wordpress') {
+    if (window.GENESIS_PLATFORM === 'wordpress') {
         return result.replace(/themes\.php/ig, 'admin-ajax.php');
     }
 
-    if (window.GANTRY_PLATFORM === 'grav') {
+    if (window.GENESIS_PLATFORM === 'grav') {
         const suffix = getAjaxSuffix();
         const queryIndex = result.indexOf('?');
         if (suffix && queryIndex !== -1 && result.endsWith(suffix)) {

@@ -180,7 +180,7 @@ content:
         -
           image: 'gantry-media://home/slideshow/img-01.jpg'
           title: Calla
-          caption: 'Calla is powered by our modern Gantry 5 framework, packed with features, and ready to take your site to new heights!'
+          caption: 'Calla is powered by our modern Genesis framework, packed with features, and ready to take your site to new heights!'
           link: '#'
           link_text: 'Read More'
           name: 'Calla 3'
@@ -406,7 +406,7 @@ content:
         -
           image: 'gantry-media://home/feature/img-01.jpg'
           image_small: 'gantry-media://home/feature/img-01-thumb.jpg'
-          title_small: 'Built on the powerful Gantry 5 framework.'
+          title_small: 'Built on the powerful Genesis framework.'
           alt: 'Some Alt Attr'
           title: 'goodbye drab, hello delightful!'
         -
@@ -491,7 +491,7 @@ content:
               accent: accent-color-1
               image: ''
               subtitle: '3 days ago'
-              description: 'The powerful Gantry 5 framework includes a stunning Layout Manager. Customize a page''s layout with drag-and-drop simplicity. Add particles and positions in seconds, and apply CSS classes through simple forms.'
+              description: 'The powerful Genesis framework includes a stunning Layout Manager. Customize a page''s layout with drag-and-drop simplicity. Add particles and positions in seconds, and apply CSS classes through simple forms.'
               url: ''
               title: 'Modify Your Website''s Layout in a Snap with the Layout Manager'
             -
@@ -507,7 +507,7 @@ content:
               accent: accent-color-1
               image: ''
               subtitle: '3 days ago'
-              description: 'The powerful Menu Editor included with Gantry 5-powered themes like Calla makes it easier than ever to rearrange, redesign, and inject new elements into your website''s menus.'
+              description: 'The powerful Menu Editor included with Genesis-powered themes like Calla makes it easier than ever to rearrange, redesign, and inject new elements into your website''s menus.'
               url: ''
               title: 'Create More Complete Menus with the Menu Editor'
           title: guide

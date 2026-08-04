@@ -1,5 +1,5 @@
 {% try %}
-{% set menu = gantry.menu.instance(particle) %}
+{% set menu = genesis.menu.instance(particle) %}
 {% catch %}
 <div class="alert alert-error">{{ e.getMessage }}</div>
 {% endtry %}
@@ -109,7 +109,7 @@
 {% macro displaySubmenu(item, menu, context, dropdown_type) %}
     {% import _self as SELF %}
     {% if not item.dropdown_hide %}
-        <ul class="g-dropdown g-inactive {{ context.gantry.config.get('styles.menu.animation')|default('g-fade') }}"{{ SELF.getCustomWidth(item, menu, 'submenu', dropdown_type) }}>
+        <ul class="g-dropdown g-inactive {{ context.genesis.config.get('styles.menu.animation')|default('g-fade') }}"{{ SELF.getCustomWidth(item, menu, 'submenu', dropdown_type) }}>
             <li class="g-dropdown-column">
                 {{ SELF.displayContainers(item, menu, context, dropdown_type) }}
             </li>

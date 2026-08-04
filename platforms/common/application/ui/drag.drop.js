@@ -299,7 +299,7 @@ class DragDrop extends EventEmitter {
         if (!overing) { return; }
 
         if (!$(overing).matches('#trash') && !$(overing).parent('#trash')) {
-            var st, sl, trash = $('#g5-container #trash');
+            var st, sl, trash = $('[data-genesis-container] #trash');
             if (clientY + 50 >= Height && Scroll + Height < scrollHeight) {
                 this.scrollInterval = setInterval(function() {
                     sl = (window.pageXOffset || document.documentElement.scrollLeft) - (document.documentElement.clientLeft || 0);

@@ -37,10 +37,10 @@ class G5_Xenon extends Theme
 
         if (!class_exists('\Gantry5\Loader')) {
             if ($this->isAdmin()) {
-                $this->grav['messages']->add('Please enable Gantry 5 plugin in order to use current theme!', 'error');
+                $this->grav['messages']->add('Please enable Genesis plugin in order to use current theme!', 'error');
                 return;
             }
-            throw new \LogicException('Please install and enable Gantry 5 Framework plugin!');
+            throw new \LogicException('Please install and enable Genesis Framework plugin!');
         }
 
         \Gantry5\Loader::setup();

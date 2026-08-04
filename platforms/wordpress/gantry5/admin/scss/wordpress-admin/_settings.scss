@@ -1,6 +1,6 @@
 @each $preset, $core-accent in $wp-admin-presets {
     .admin-color-#{$preset} {
-        #g5-container {
+        [data-genesis-container] {
             .settings-block {
                 input, textarea, select {
                     &:focus {

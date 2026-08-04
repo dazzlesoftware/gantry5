@@ -6,7 +6,7 @@ use Gantry\Tests\PHP83\MockableTest;
 use Gantry\Framework\Base\Gantry;
 
 /**
- * Test core Gantry framework functionality with PHP 8.3
+ * Test core Genesis framework functionality with PHP 8.3
  */
 class GantryTest extends MockableTest
 {
@@ -15,7 +15,7 @@ class GantryTest extends MockableTest
      */
     public function testGantryInstance()
     {
-        // Get the Gantry instance
+        // Get the Genesis instance
         $gantry = Gantry::instance();
         
         // Test that we got a valid instance
@@ -27,7 +27,7 @@ class GantryTest extends MockableTest
     }
     
     /**
-     * Test Gantry container services
+     * Test Genesis container services
      */
     public function testGantryContainer()
     {

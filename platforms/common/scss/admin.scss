@@ -12,7 +12,7 @@ $output-bourbon-deprecation-warnings: false;
 @import "nucleus/functions/base";
 @import "nucleus/mixins/base";
 
-#g5-container {
+[data-genesis-container] {
 	@import "nucleus";
 }
 

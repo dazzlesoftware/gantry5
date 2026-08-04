@@ -12,25 +12,25 @@ use Timber\Timber;
 defined('ABSPATH') or die;
 
 // Extend Timber context
-add_filter('timber_context', array('G5ThemeHelper', 'add_to_context'));
+add_filter('timber_context', array('GenesisThemeHelper', 'add_to_context'));
 
 // Modify the default Admin Bar margins to render properly in the mobile mode
-add_theme_support('admin-bar', array('callback' => array('G5ThemeHelper', 'admin_bar_margins')));
+add_theme_support('admin-bar', array('callback' => array('GenesisThemeHelper', 'admin_bar_margins')));
 
 // Add comments pagination link attributes
-add_filter('previous_comments_link_attributes', array('G5ThemeHelper', 'comments_pagination_attributes'));
-add_filter('next_comments_link_attributes', array('G5ThemeHelper', 'comments_pagination_attributes'));
+add_filter('previous_comments_link_attributes', array('GenesisThemeHelper', 'comments_pagination_attributes'));
+add_filter('next_comments_link_attributes', array('GenesisThemeHelper', 'comments_pagination_attributes'));
 
 // Change single post pagination to list items
-add_filter('wp_link_pages_link', array('G5ThemeHelper', 'wp_link_pages_li_return'));
+add_filter('wp_link_pages_link', array('GenesisThemeHelper', 'wp_link_pages_li_return'));
 
 // Modify Tag Cloud widget arguments
-add_filter('widget_tag_cloud_args', array('G5ThemeHelper', 'tag_cloud_widget_modified_args'));
+add_filter('widget_tag_cloud_args', array('GenesisThemeHelper', 'tag_cloud_widget_modified_args'));
 
 /**
- * Helper class G5ThemeHelper containing useful theme functions and hooks
+ * Genesis theme helper containing useful theme functions and hooks.
  */
-class G5ThemeHelper
+class GenesisThemeHelper
 {
     /**
      * Extend the Timber context
@@ -184,4 +184,9 @@ class G5ThemeHelper
         </style>
         <?php
     }
+}
+
+// Keep the former public callback name available to child themes and plugins.
+if (!class_exists('G5ThemeHelper', false)) {
+    class_alias(GenesisThemeHelper::class, 'G5ThemeHelper');
 }

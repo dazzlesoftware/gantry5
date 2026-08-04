@@ -15,7 +15,7 @@ var guid = function() {
 };
 
 var refreshWordpressLinks = function(title, value) {
-    if (window.GANTRY_PLATFORM !== 'wordpress') { return; }
+    if (window.GENESIS_PLATFORM !== 'wordpress') { return; }
 
     var replacement = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
         currentURI = History.getPageUrl(),

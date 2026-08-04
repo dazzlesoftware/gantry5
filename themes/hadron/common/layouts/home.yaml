@@ -161,8 +161,8 @@ content:
       items:
         -
           image: 'gantry-media://home/showcase/img-01.png'
-          title: '<span class="rt-bold hidden-tablet">Flexible Layouts</span> Gantry 5'
-          desc: 'Gantry provides unlimited positions and blocks, each with configurable widths.<span class="hidden-tablet"> There are multiple sections and grids available, providing you with ultimate flexibility.</span><br />'
+          title: '<span class="rt-bold hidden-tablet">Flexible Layouts</span> Genesis'
+          desc: 'Genesis provides unlimited positions and blocks, each with configurable widths.<span class="hidden-tablet"> There are multiple sections and grids available, providing you with ultimate flexibility.</span><br />'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -320,7 +320,7 @@ content:
   lists-4300:
     attributes:
       class: ''
-      title: 'Gantry Extras'
+      title: 'Genesis Extras'
       description: ''
       displayitems: '3'
       accordion: enabled
@@ -333,7 +333,7 @@ content:
       items:
         -
           title: 'Grid System'
-          desc: 'Gantry allows for unlimited positions and particles on one grid...'
+          desc: 'Genesis allows for unlimited positions and particles on one grid...'
           linklabel: 'Read More'
           link: '#'
           buttontarget: _self
@@ -341,7 +341,7 @@ content:
           name: 'Item 1'
         -
           title: 'Custom Interface'
-          desc: 'Gantry based templates are controlled via an advanced user interface, with tabs...'
+          desc: 'Genesis based templates are controlled via an advanced user interface, with tabs...'
           linklabel: 'Read More'
           link: '#'
           buttontarget: _self

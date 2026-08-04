@@ -128,9 +128,9 @@ content:
     attributes:
       items:
         -
-          text: Gantry
+          text: Genesis
           link: 'http://gantry.org'
-          name: Gantry
+          name: Genesis
         -
           text: Documentation
           link: 'http://docs.gantry.org'

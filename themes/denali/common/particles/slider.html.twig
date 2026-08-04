@@ -5,14 +5,14 @@
         <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
     {% if particle.demo == "enabled" %}
-        {% if gantry.theme.preset %}
-            {% set preset = gantry.theme.preset | replace({'preset': ''}) %}
+        {% if genesis.theme.preset %}
+            {% set preset = genesis.theme.preset | replace({'preset': ''}) %}
         {% else %}
             {% set preset = 1 %}
         {% endif %}
     {% endif %}
 
-    <div id="{{ id }}" class="g-slider {{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.timeout }}" data-slider-dots="{% if particle.dots == "enabled" %}true{% else %}false{% endif %}" data-slider-items="{{ particle.amount }}" data-slider-itemstablet="{{ particle.tablet_amount }}" data-slider-itemsmobile="{{ particle.mobile_amount }}" data-slider-itemssmallmobile="{{ particle.smallmobile_amount }}" data-slider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-slider-mobile="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-slider-tablet="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-slider-desktop="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-slider-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
+    <div id="{{ id }}" class="g-slider {{ particle.class|e }}" data-slider-id="{{ id }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.timeout }}" data-slider-dots="{% if particle.dots == "enabled" %}true{% else %}false{% endif %}" data-slider-items="{{ particle.amount }}" data-slider-itemstablet="{{ particle.tablet_amount }}" data-slider-itemsmobile="{{ particle.mobile_amount }}" data-slider-itemssmallmobile="{{ particle.smallmobile_amount }}" data-slider-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-slider-mobile="{{ genesis.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-slider-tablet="{{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-slider-desktop="{{ genesis.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-slider-preset="{% if particle.demo == "enabled" %}{{ preset }}{% else %}false{% endif %}">
 
         {% if not particle.source or particle.source == 'particle' %}
             <div class="g-slider-slides g-swipercarousel swiper" data-slider-slides-id="{{ id }}"
@@ -63,11 +63,11 @@
                 </div>
             {% endif %}
         {% else %}
-            {% include '@particles/slider-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% include '@particles/slider-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
     </div>
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

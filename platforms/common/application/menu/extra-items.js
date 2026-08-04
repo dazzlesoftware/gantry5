@@ -197,7 +197,7 @@ var StepTwo = function(data, content, button) {
                             menumanager.emit('dragEnd', menumanager.map);
                             toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         } else {
-                            var position = document.querySelector('[data-g5-position-name="' + CSS.escape(submitResult.position) + '"]'),
+                            var position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'),
                                 list = position && position.querySelector(':scope > ul');
                             if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
@@ -289,7 +289,7 @@ dom.ready(function() {
         StepTwo({
             item: JSON.stringify(data),
             instancepicker: instancepicker || null
-        }, element.closest('.g5-content'), element);
+        }, element.closest('.genesis-content'), element);
     });
 });
 

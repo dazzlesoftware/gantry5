@@ -21,8 +21,9 @@ class Assignments extends AbstractAssignments
      */
     public function types()
     {
-        // Fixed: Added WordPress prefix 'gantry5_' to the hook
-        return apply_filters('gantry5_assignments_types', []);
+        return function_exists('genesis_apply_filters')
+            ? genesis_apply_filters('genesis_assignments_types', 'gantry5_assignments_types', [])
+            : apply_filters('gantry5_assignments_types', []);
     }
 
     /**
@@ -32,7 +33,8 @@ class Assignments extends AbstractAssignments
      */
     public function page()
     {
-        // Fixed: Added WordPress prefix 'gantry5_' to the hook
-        return apply_filters('gantry5_assignments_page', []);
+        return function_exists('genesis_apply_filters')
+            ? genesis_apply_filters('genesis_assignments_page', 'gantry5_assignments_page', [])
+            : apply_filters('gantry5_assignments_page', []);
     }
 }

@@ -189,7 +189,7 @@ content:
     attributes:
       title: 'We Always Try to Create a Difference'
       titletag: ''
-      html: "<p>Utilized with Versatile and Flexible Features Powered by the Gantry Framework.</p>\n\n<p><a href=\"https://dazzlesoftware.org/grav/themes/lexicon\" class=\"readon largemargintop\">Download Lexicon</a></p>"
+      html: "<p>Utilized with Versatile and Flexible Features Powered by the Genesis Framework.</p>\n\n<p><a href=\"https://dazzlesoftware.org/grav/themes/lexicon\" class=\"readon largemargintop\">Download Lexicon</a></p>"
     block:
       variations: 'center box2'
   custom-7934:

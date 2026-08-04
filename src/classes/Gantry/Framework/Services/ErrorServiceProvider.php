@@ -63,7 +63,7 @@ class ErrorServiceProvider implements ServiceProviderInterface
 
         $errors->pushHandler($error_page);
 
-        // Go through Gantry's own Request abstraction rather than $_SERVER / Whoops's
+        // Go through Genesis's own Request abstraction rather than $_SERVER / Whoops's
         // Misc::isAjaxRequest() directly -- some hosts (e.g. phpBB) replace the raw superglobals
         // with guarded objects that trigger a fatal error on any direct access outside of their
         // own request abstraction, which Request's platform-specific implementation already

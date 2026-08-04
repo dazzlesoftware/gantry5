@@ -28,7 +28,7 @@ class Devprod extends JsonController
 
         // Fire save event.
         $event = new Event();
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->controller = $this;
         $event->data = ['production' => $production];
 

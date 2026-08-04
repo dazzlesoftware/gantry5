@@ -1,15 +1,15 @@
 @import "toastr";
 
-html.g5-dialog-open {
+html.genesis-dialog-open {
     overflow: hidden;
 }
 
-#g5-container {
-    .g5-dialog, .g5-dialog *, .g5-dialog *:before, .g5-dialog *:after {
+[data-genesis-container] {
+    .genesis-dialog, .genesis-dialog *, .genesis-dialog *:before, .genesis-dialog *:after {
         box-sizing: border-box;
     }
 
-    .g5-dialog {
+    .genesis-dialog {
         position: fixed;
         top: 0;
         right: 0;
@@ -27,7 +27,7 @@ html.g5-dialog-open {
         }
     }
 
-    .g5-overlay {
+    .genesis-overlay {
         animation: fadeIn 0.5s;
         transform: translate3d(0, 0, 0);
         position: fixed;
@@ -39,34 +39,34 @@ html.g5-dialog-open {
         background: rgba(0, 0, 0, 0.4);
     }
 
-    .g5-content {
+    .genesis-content {
         animation: fadeIn 0.5s;
         background: $white;
         outline: transparent;
     }
 
-    .g5-dialog.g5-closing .g5-content {
+    .genesis-dialog.genesis-closing .genesis-content {
         animation: fadeOut 0.3s;
     }
 
-    .g5-dialog.g5-closing .g5-overlay {
+    .genesis-dialog.genesis-closing .genesis-overlay {
         animation: fadeOut 0.3s;
     }
 
-    .g5-close:before {
+    .genesis-close:before {
         font-family: Arial, sans-serif;
         content: "\00D7";
     }
 
-    .g5-dialog.g5-dialog-theme-default {
+    .genesis-dialog.genesis-dialog-theme-default {
 
-        &.g5-closing .g5-content {
+        &.genesis-closing .genesis-content {
             animation: flyOut 0.5s;
         }
-        .g5-content {
+        .genesis-content {
             animation: flyIn 0.5s;
         }
-        .g5-content {
+        .genesis-content {
             border-radius: 5px;
             background: #f0f0f0;
             color: $core-text;
@@ -81,7 +81,7 @@ html.g5-dialog-open {
                 color: inherit;
             }
         }
-        .g5-close {
+        .genesis-close {
             border-radius: 5px;
             position: absolute;
             top: 0;
@@ -127,7 +127,7 @@ html.g5-dialog-open {
         }
     }
 
-    .g5-dialog-loading-spinner.g5-dialog-theme-default {
+    .genesis-dialog-loading-spinner.genesis-dialog-theme-default {
         box-shadow: 0 0 0 0.5em #f0f0f0, 0 0 1px 0.5em rgba(0, 0, 0, 0.3);
         border-radius: 100%;
         background: #f0f0f0;
@@ -138,7 +138,7 @@ html.g5-dialog-open {
     }
 
     // collections
-    .g5-dialog.g5-modal-collection-editall .g5-content {
+    .genesis-dialog.genesis-modal-collection-editall .genesis-content {
         width: 90%;
 
         .settings-block:not(:only-child) {
@@ -157,7 +157,7 @@ html.g5-dialog-open {
         }
     }
 
-    .g5-dialog-loading-spinner {
+    .genesis-dialog-loading-spinner {
         animation: rotate 0.7s linear infinite;
         box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
         position: fixed;

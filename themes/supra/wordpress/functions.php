@@ -19,7 +19,7 @@ defined('ABSPATH') or die;
 
 // Note: This file must be PHP 5.6 compatible.
 
-// Check min. required version of Gantry 5
+// Check min. required version of Genesis
 $requiredGantryVersion = '5.5';
 $translationDomain = 'g5_supra';
 
@@ -30,10 +30,10 @@ if (is_admin()) {
     }
 }
 
-// Bootstrap Gantry framework or fail gracefully.
+// Bootstrap Genesis framework or fail gracefully.
 $gantry_include = locate_template('/custom/includes/gantry.php') ?: locate_template('/includes/gantry.php');
 if (!$gantry_include) {
-    wp_die('Gantry theme is missing a file: includes/gantry.php');
+    wp_die('Genesis theme is missing a file: includes/gantry.php');
 }
 
 $gantry = require $gantry_include;
@@ -43,7 +43,7 @@ if (!$gantry) {
 
 if (!$gantry->isCompatible($requiredGantryVersion)) {
     $current_theme = wp_get_theme();
-    $error = sprintf(__('Please upgrade Gantry 5 Framework to v%s (or later) before using %s theme!', $translationDomain), strtoupper($requiredGantryVersion), $current_theme->get('Name'));
+    $error = sprintf(__('Please upgrade Genesis Framework to v%s (or later) before using %s theme!', $translationDomain), strtoupper($requiredGantryVersion), $current_theme->get('Name'));
 
     if(is_admin()) {
         add_action('admin_notices', static function () use ($error) {

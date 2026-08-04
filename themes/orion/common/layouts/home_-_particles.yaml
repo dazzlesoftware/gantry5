@@ -299,7 +299,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Experience the joy of creating a website on the powerful Gantry 5 Framework.'
+          desc: 'Experience the joy of creating a website on the powerful Genesis Framework.'
           tag: ''
           subtag: ''
           label: ''
@@ -350,7 +350,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Give your site’s pages a look of their own using Gantry 5’s Outlines tool.'
+          desc: 'Give your site’s pages a look of their own using Genesis’s Outlines tool.'
           tag: ''
           subtag: ''
           label: ''
@@ -469,12 +469,12 @@ content:
           alttext: Testimonial
           name: 'Item 2'
         -
-          content: '“Orion is a brilliant design, and the Gantry 5 framework makes it even better!”'
+          content: '“Orion is a brilliant design, and the Genesis framework makes it even better!”'
           photo: 'gantry-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 3'
         -
-          content: '"The Gantry 5 Framework makes setting up and using Orion practically effortless."'
+          content: '"The Genesis Framework makes setting up and using Orion practically effortless."'
           photo: 'gantry-media://home/feature/logo.png'
           alttext: Testimonial
           name: 'Item 4'
@@ -859,7 +859,7 @@ content:
       mobilespace: '35'
       story:
         -
-          content: '“Orion takes full advantage of the many tools made possible by the Gantry 5 framework. The Layout Manager makes it possible to perfect your site''s layout.”'
+          content: '“Orion takes full advantage of the many tools made possible by the Genesis framework. The Layout Manager makes it possible to perfect your site''s layout.”'
           avatar: 'gantry-media://home/extension/img-01.jpg'
           position: 'UI/UX Expert'
           alttext: 'John Doe'

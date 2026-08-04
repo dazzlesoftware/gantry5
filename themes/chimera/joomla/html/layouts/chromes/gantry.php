@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Gantry Module Chrome for Joomla 4
+ * Genesis Module Chrome for Joomla 4
  */
 
 use Joomla\Utilities\ArrayHelper;

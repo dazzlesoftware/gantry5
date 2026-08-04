@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
 {% endblock %}
 
-{% do gantry.load('lightcase.init') %}
+{% do genesis.load('lightcase.init') %}
 
 {% block particle %}
 	{% set news_slides %}
@@ -12,7 +12,7 @@
 	{% endset %}
 
 	{% set news_breakpoints %}
-	data-news-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-news-tablet-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-news-desktop-breakpoint="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-news-largedesktop-breakpoint="{{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88rem') }}"
+	data-news-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-news-tablet-breakpoint="{{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-news-desktop-breakpoint="{{ genesis.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-news-largedesktop-breakpoint="{{ genesis.config.get('styles.breakpoints.large-desktop-container')|default('88rem') }}"
 	{% endset %}
 
 	{% if particle.title %}
@@ -29,7 +29,7 @@
 	{% endif %}
 
 	<div id="{{ id }}" data-news-id="{{ id }}" class="news-wrapper">
-		<div class="g-news swiper-container area {{ particle.class|e }}" data-news-effect="{{ particle.effect }}" data-news-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-news-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-news-timeout="{{ particle.autoplayTimeout }}" data-news-speed="{{ particle.speed }}" data-news-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %} {{ news_slides }} {{ news_breakpoints }}>
+		<div class="g-news swiper-container area {{ particle.class|e }}" data-news-effect="{{ particle.effect }}" data-news-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-news-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-news-timeout="{{ particle.autoplayTimeout }}" data-news-speed="{{ particle.speed }}" data-news-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" {% if genesis.page.direction == 'rtl' %} dir="rtl" {% endif %} {{ news_slides }} {{ news_breakpoints }}>
 			<div class="g-news-wrapper swiper-wrapper">
 				{% if not particle.source or particle.source == 'particle' %}
 					{% for news in particle.news %}
@@ -53,7 +53,7 @@
 						</div>
 					{% endfor %}
 				{% else %}
-					{% include '@particles/news-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+					{% include '@particles/news-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
 				{% endif %}
 
 			</div>
@@ -72,7 +72,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/news.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/news.init.js'), 10, 'footer') %}
 {% endblock %}

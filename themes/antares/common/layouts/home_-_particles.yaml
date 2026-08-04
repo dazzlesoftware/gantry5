@@ -250,10 +250,10 @@ content:
           img: 'gantry-media://demo/home/above/img-01.jpg'
           tag: 'Layout Configuration'
           headtext: ''
-          desc: '<span>Easily configure complex layouts with the Powerful Gantry 5 Drag & Drop interface for the whole site <span class="hidden-tablet">or specific pages</span></span>'
+          desc: '<span>Easily configure complex layouts with the Powerful Genesis Drag & Drop interface for the whole site <span class="hidden-tablet">or specific pages</span></span>'
           link: '#'
           linktarget: _self
-          title: 'Easily configure complex layouts with Gantry 5 Drag & Drop interface for the whole site or specific pages'
+          title: 'Easily configure complex layouts with Genesis Drag & Drop interface for the whole site or specific pages'
     block:
       class: fp-above-a
   gridpromogallery-3026:
@@ -351,7 +351,7 @@ content:
           tabname: tab1
           subtitle: '<span class="g-icon-triangle-stroked"></span>'
           title: 'Extensive Documentation &amp; Guides'
-          desc: 'Gantry 5 has a comprehensive library of written and video documentation to assist in its setup, use and customization, as well as associated template guides.'
+          desc: 'Genesis has a comprehensive library of written and video documentation to assist in its setup, use and customization, as well as associated template guides.'
           tag: Tutorials
           name: 'Extensive Documentation & Guides'
         -
@@ -373,9 +373,9 @@ content:
   promocontent-2820:
     title: 'FP Utility A'
     attributes:
-      title: 'Gantry 5'
+      title: 'Genesis'
       promostyle: standard
-      desc: 'The Gantry 5 Framework is an ideal platform for users of all levels, whether beginners or web professionals. It has been written from the ground up to focus on speed and performance, whether the frontend or backend.'
+      desc: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. It has been written from the ground up to focus on speed and performance, whether the frontend or backend.'
       readmore: Explore
       readmoreclass: 'button-alt button-special'
       link: '#'
@@ -509,7 +509,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Font Picker, and much more. '
+          description: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Font Picker, and much more. '
           class: ''
           button: 'Read More'
           buttonlink: '#'
@@ -522,7 +522,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'The Gantry 5 administrator benefits from unlimited undo/redo, to ensure that your changes and hours of work are never lost. '
+          description: 'The Genesis administrator benefits from unlimited undo/redo, to ensure that your changes and hours of work are never lost. '
           class: ''
           button: 'Read More'
           buttonlink: '#'
@@ -535,7 +535,7 @@ content:
     attributes:
       class: g-blockcontent-style-3
       headline: 'Powerful Interface'
-      description: 'Gantry 5''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.'
+      description: 'Genesis''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.'
       linktarget: _self
       subcontents:
         -
@@ -545,7 +545,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'Gantry 5 utilizes Twig - a flexible, fast, and secure template engine for PHP - to create powerful, dynamic themes quick and easy. '
+          description: 'Genesis utilizes Twig - a flexible, fast, and secure template engine for PHP - to create powerful, dynamic themes quick and easy. '
           class: ''
           button: ''
           buttonlink: ''

@@ -1,32 +1,32 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% do gantry.load('lightcase.init') %}
+{% do genesis.load('lightcase.init') %}
 
 {% set breakpoints %}
 #g-carousel-{{ id }} .g-carousel-image-wrapper {
     min-height: {{ particle.height }};
 }
-@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}) and (min-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
+@media only all and (max-width: {{ genesis.config.get('styles.breakpoints.desktop-container')|default('76rem') }}) and (min-width: {{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}) {
     #g-carousel-{{ id }} .g-carousel-image-wrapper {
         min-height: {{ particle.tablet_height }};
     }
 }
-@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88') }}) and (min-width: {{ gantry.config.get('styles.breakpoints.tablet-desktop')|default('76rem') }}) {
+@media only all and (max-width: {{ genesis.config.get('styles.breakpoints.large-desktop-container')|default('88') }}) and (min-width: {{ genesis.config.get('styles.breakpoints.tablet-desktop')|default('76rem') }}) {
     #g-carousel-{{ id }} .g-carousel-image-wrapper {
         min-height: {{ particle.desktop_height }};
     }
 }
 {% endset %}
 
-{% do gantry.document.addInlineStyle(breakpoints) %}
+{% do genesis.document.addInlineStyle(breakpoints) %}
 
 {% block particle %}
     {% styles %}
         <link rel="stylesheet" href="{{ url('gantry-assets://css/swiper.css') }}" type="text/css" />
     {% endstyles %}
     {% if particle.demo == "enabled" %}
-        {% if gantry.theme.preset %}
-            {% set preset = gantry.theme.preset | replace({'preset': ''}) - 1 %}
+        {% if genesis.theme.preset %}
+            {% set preset = genesis.theme.preset | replace({'preset': ''}) - 1 %}
         {% else %}
             {% set preset = '0' %}
         {% endif %}
@@ -34,7 +34,7 @@
         {% set preset = '0' %}
     {% endif %}
     <div class="{{ particle.class|e }} g-swipercarousel-carousel">
-        <div id="g-carousel-{{ id }}" class="g-carousel swiper" data-carousel-autoplaytimeout="{{ particle.autoplaySpeed|default('5000') }}" data-carousel-pausehover="{% if particle.pauseOnHover == "enabled" %}true{% else %}false{% endif %}" data-carousel-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-carousel-id="{{ id }}" data-carousel-preset="{{ preset }}" data-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-carousel-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}"
+        <div id="g-carousel-{{ id }}" class="g-carousel swiper" data-carousel-autoplaytimeout="{{ particle.autoplaySpeed|default('5000') }}" data-carousel-pausehover="{% if particle.pauseOnHover == "enabled" %}true{% else %}false{% endif %}" data-carousel-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-carousel-id="{{ id }}" data-carousel-preset="{{ preset }}" data-carousel-nav="{{ particle.nav == 'enabled' ? 'true' : 'false' }}" data-carousel-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}"
         data-g-swiper
         data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
         data-navigation="{{ particle.nav|default('disabled')|e }}"
@@ -71,12 +71,12 @@
                     </div>
                 {% endfor %}
             {% else %}
-                {% include '@particles/carousel-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+                {% include '@particles/carousel-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
             {% endif %}
         </div>
     </div>
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

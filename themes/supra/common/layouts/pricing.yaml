@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1495135884
 layout:
@@ -145,7 +145,7 @@ content:
           created_date: ''
           content_title: '<strong>Pricing</strong> Overview'
           author: ''
-          leading_content: 'Gantry is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.'
+          leading_content: 'Genesis is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.'
           main_content: ''
           readmore_label: ''
           readmore_link: ''

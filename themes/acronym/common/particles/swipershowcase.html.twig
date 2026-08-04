@@ -1,6 +1,6 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% do gantry.load('lightcase.init') %}
+{% do genesis.load('lightcase.init') %}
 
 {% block particle %}
     {% styles %}
@@ -14,7 +14,7 @@
     {% set fadeEnabled = particle.animateIn or particle.animateOut %}
     {% set initialSlide = 0 %}
     {% if particle.presets|default('disabled') == 'enabled' %}
-        {% set preset = gantry.theme.preset|replace({'preset': ''}) %}
+        {% set preset = genesis.theme.preset|replace({'preset': ''}) %}
         {% set initialSlide = preset in ['1', '2', '3', '4', '5', '6'] ? ((preset * 1) - 1) * 3 : 0 %}
     {% endif %}
 
@@ -112,5 +112,5 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-assets://js/swiper.js'), 11, 'footer') %}
 {% endblock %}

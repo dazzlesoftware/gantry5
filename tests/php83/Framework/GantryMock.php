@@ -3,7 +3,7 @@
 namespace Gantry\Framework\Base;
 
 /**
- * Mock Gantry class for testing
+ * Mock Genesis class for testing
  */
 class Gantry
 {
@@ -36,9 +36,9 @@ class Gantry
     }
     
     /**
-     * Get instance of the Gantry Framework
+     * Get instance of the Genesis Framework
      *
-     * @return Gantry
+     * @return Genesis
      */
     public static function instance()
     {

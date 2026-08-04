@@ -127,7 +127,7 @@ class Theme extends AbstractTheme
         }
 
         $context = $attribs + [
-            'gantry' => $this,
+            'Genesis' => $this,
             'inContent' => false
         ];
 

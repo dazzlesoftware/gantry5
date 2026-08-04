@@ -1,8 +1,8 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
 {% block gantry %}
-    {% if gantry.particles.overrides(configuration) or gantry.request.get.get('enable') %}
-    {% set stored_data = get_cookie('g5-collapsed')|default('{}')|json_decode %}
+    {% if genesis.particles.overrides(configuration) or genesis.request.get.get('enable') %}
+    {% set stored_data = get_cookie('genesis-collapsed')|default(get_cookie('g5-collapsed'))|default('{}')|json_decode %}
     <div id="settings">
         <form method="post">
             <div data-set-page="{{ page_id }}" data-set-root="">
@@ -30,7 +30,7 @@
                         <div class="cards-wrapper g-grid">
                             {% for id, particle in list %}
                                 {% if not particle.hidden %}
-                                    {% set particle = gantry.particles.getBlueprintForm(id) %}
+                                    {% set particle = genesis.particles.getBlueprintForm(id) %}
                                     {% set prefix = 'particles.' ~ id ~ '.' %}
                                     {% set collapsed = particle.form.collapsed or attribute(stored_data, prefix) %}
                                     {% set labels = {collapse: 'GANTRY5_PLATFORM_COLLAPSE'|trans, expand: 'GANTRY5_PLATFORM_EXPAND'|trans} %}
@@ -71,10 +71,10 @@
             <input type="hidden" name="_end" value="1" />
         </form>
         {% else %}
-            {% set ajaxify %}data-g5-ajaxify="" data-g5-nav="settings" data-g5-ajaxify-target="[data-g5-content-wrapper]" data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"{% endset %}
+            {% set ajaxify %}data-genesis-ajaxify="" data-genesis-nav="settings" data-genesis-ajaxify-target="[data-genesis-content-wrapper]" data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"{% endset %}
             <h2 class="page-title">{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS'|trans }}</h2>
-            <p>{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS_FROM_BASE'|trans(ajaxify, gantry.route('configurations/default/settings'), 'GANTRY5_PLATFORM_BASE_OUTLINE'|trans)|raw }}</p>
-            <p>{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS_ENTER'|trans(ajaxify, gantry.route('configurations', configuration, 'settings') ~ '&enable=1')|raw }}</p>
+            <p>{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS_FROM_BASE'|trans(ajaxify, genesis.route('configurations/default/settings'), 'GANTRY5_PLATFORM_BASE_OUTLINE'|trans)|raw }}</p>
+            <p>{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS_ENTER'|trans(ajaxify, genesis.route('configurations', configuration, 'settings') ~ '&enable=1')|raw }}</p>
             <p class="alert alert-notice">{{ 'GANTRY5_PLATFORM_PARTICLE_DEFAULTS_WARNING'|trans('GANTRY5_PLATFORM_PARTICLE_DEFAULTS'|trans)|raw }}</p>
         {% endif %}
     </div>

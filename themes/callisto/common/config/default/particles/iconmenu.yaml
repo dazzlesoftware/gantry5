@@ -9,9 +9,9 @@ items:
     name: Features
   -
     icon: 'fa fa-rocket'
-    text: 'Gantry 5'
+    text: 'Genesis'
     link: 'http://www.gantry.org/'
-    name: 'Gantry 5'
+    name: 'Genesis'
   -
     icon: 'fa fa-gear'
     text: Addons

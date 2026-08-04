@@ -101,7 +101,7 @@ class AssignmentsMenu implements AssignmentsInterface
 
         $args = \wp_parse_args($args, $defaults);
 
-        $menus = \wp_get_nav_menus(\apply_filters('gantry5_assignments_get_menus_args', $args));
+        $menus = \wp_get_nav_menus(\genesis_apply_filters('genesis_assignments_get_menus_args', 'gantry5_assignments_get_menus_args', $args));
 
         return $menus;
     }
@@ -152,7 +152,7 @@ class AssignmentsMenu implements AssignmentsInterface
 
         }
 
-        return \apply_filters('gantry5_assignments_' . $menu->slug . '_menu_list_items', $items, $menu->slug, $this->type);
+        return \genesis_apply_filters('genesis_assignments_' . $menu->slug . '_menu_list_items', 'gantry5_assignments_' . $menu->slug . '_menu_list_items', $items, $menu->slug, $this->type);
     }
 
     /**
@@ -162,8 +162,8 @@ class AssignmentsMenu implements AssignmentsInterface
      */
     function _URLorigin($s, $use_forwarded_host = false)
     {
-        $s_port = \apply_filters('gantry5_current_url_server_port', '80');
-        $s_ssl_port = \apply_filters('gantry5_current_url_server_ssl_port', '443');
+        $s_port = \genesis_apply_filters('genesis_current_url_server_port', 'gantry5_current_url_server_port', '80');
+        $s_ssl_port = \genesis_apply_filters('genesis_current_url_server_ssl_port', 'gantry5_current_url_server_ssl_port', '443');
 
         $ssl      = (!empty($s['HTTPS']) && $s['HTTPS'] === 'on');
         $sp       = strtolower($s['SERVER_PROTOCOL']);

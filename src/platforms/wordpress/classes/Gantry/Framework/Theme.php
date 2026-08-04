@@ -145,7 +145,7 @@ class Theme extends AbstractTheme
             $timberContext = Timber::context();
         }
 
-        // Include Gantry specific things to the context.
+        // Include Genesis specific things to the context.
         $context = array_replace($timberContext, $context);
 
         return $this->renderer()->render($file, $context);
@@ -182,7 +182,7 @@ class Theme extends AbstractTheme
             \add_action('load-widgets.php',
                 function() {
                     \add_action('admin_notices', function() {
-                        $message = __('No widget blocks have been defined. Please add some in Gantry 5 Layout Manger or read <a target="_blank" rel="noopener" href="http://docs.gantry.org/gantry5/particles/position">documentation</a> on how to create widget blocks.', 'gantry5');
+                        $message = __('No widget blocks have been defined. Please add some in Genesis Layout Manger or read <a target="_blank" rel="noopener" href="http://docs.gantry.org/gantry5/particles/position">documentation</a> on how to create widget blocks.', 'gantry5');
                         echo '<div class="error"><p>' . wp_kses_post($message) . '</p></div>';
                     });
                 });
@@ -453,7 +453,7 @@ class Theme extends AbstractTheme
     {
         $meta = \get_post_meta($menu_item->ID, '_menu_item_gantry5', true);
 
-        $menu_item->gantry = $meta ? json_decode($meta, true) : null;
+        $menu_item->Genesis = $meta ? json_decode($meta, true) : null;
 
         return $menu_item;
     }
@@ -608,10 +608,10 @@ class Theme extends AbstractTheme
     {
         $engineDomain = $this->details()->get('configuration.gantry.engine', 'nucleus');
         $lookup = '/engines/' . $engineDomain . '/languages';
-        if (!file_exists(GANTRY5_PATH . $lookup)) {
+        if (!file_exists(GENESIS_PATH . $lookup)) {
             $lookup = '/engines/wordpress/' . $engineDomain . '/languages';
         }
-        $lookup = basename(GANTRY5_PATH) . $lookup;
+        $lookup = basename(GENESIS_PATH) . $lookup;
 
         $themeDomain = $this->details()->get('configuration.theme.textdomain', $this->name);
         $themePath = $this->path . '/languages';
@@ -679,7 +679,7 @@ class Theme extends AbstractTheme
             }
 
             $context = [
-                'gantry' => $gantry,
+                'Genesis' => $gantry,
                 'inContent' => false,
                 'ajax' => $props,
             ];

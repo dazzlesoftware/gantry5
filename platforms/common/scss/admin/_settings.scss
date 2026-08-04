@@ -1,6 +1,6 @@
 @import "selectize";
 
-#g5-container {//wrapper
+[data-genesis-container] {//wrapper
 
 #settings {
     h2 {
@@ -299,7 +299,7 @@
 }
 
 // modal
-.g5-dialog {
+.genesis-dialog {
 
     .settings-block {
         width: 100%;
@@ -372,7 +372,7 @@
     }
 }
 
-.g5-collection-wrapper {
+.genesis-collection-wrapper {
     max-height: 350px;
     overflow: auto;
 }

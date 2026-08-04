@@ -8,7 +8,7 @@
 
         {% if not is_user_logged_in %}
 
-            <form action="{{ function('wp_login_url', gantry.request.server['REQUEST_URI'])|raw }}" method="post" id="g-loginform">
+            <form action="{{ function('wp_login_url', genesis.request.server['REQUEST_URI'])|raw }}" method="post" id="g-loginform">
                 {% do function('wp_nonce_field', 'log-in') %}
 
                 {% if particle.pretext is not empty %}
@@ -53,7 +53,7 @@
 
         {% else %}
 
-            <form action="{{ function('wp_logout_url', gantry.request.server['REQUEST_URI'])|raw }}" method="post" id="g-loginform">
+            <form action="{{ function('wp_logout_url', genesis.request.server['REQUEST_URI'])|raw }}" method="post" id="g-loginform">
                 {% do function('wp_nonce_field', 'log-out') %}
                 <div class="greeting">
                     <p>{{ particle.greeting|format(current_user.display_name) }}</p>

@@ -75,7 +75,7 @@ class Atoms extends JsonController
         $blueprints->set('form/fields/_inherit', ['type' => 'gantry.inherit']);
 
         $params = [
-            'gantry'        => $this->container,
+            'Genesis'        => $this->container,
             'parent'        => 'settings',
             'route'         => "configurations.{$outline}.settings",
             'inherit'       => $inherit ? $outline : null,

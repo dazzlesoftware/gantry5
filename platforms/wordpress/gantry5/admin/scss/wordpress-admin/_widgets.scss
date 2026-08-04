@@ -1,5 +1,5 @@
 body.wp-admin.widgets-php, body.wp-customizer {
-    #g5-container {
+    [data-genesis-container] {
         .g-content {
             margin: 0 0 0.625rem;
             padding: 0 0 0.938rem;
@@ -11,7 +11,7 @@ body.wp-admin.widgets-php, body.wp-customizer {
             }
         }
 
-        .g5-dialog {
+        .genesis-dialog {
             z-index: 99999;
 
             .button-primary {

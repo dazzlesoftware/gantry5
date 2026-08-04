@@ -123,7 +123,7 @@ ready(function() {
 
     // Layout Manager
     layoutmanager = new LayoutManager('[data-lm-container]', {
-        delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .g5-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
+        delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
         droppables: '[data-lm-dropzone]',
         exclude: '.section-header .button, .section-header .fa, .lm-newblocks .float-right .button, [data-lm-nodrag], [data-lm-disabled]',
         resize_handles: '[data-lm-root] .g-grid > .g-block:not(:last-child)',
@@ -186,7 +186,7 @@ ready(function() {
     });
 
     // Picker
-    body.delegate('statechangeBefore', '[data-g5-lm-picker]', function() {
+    body.delegate('statechangeBefore', '[data-genesis-lm-picker]', function() {
         modal.close();
     });
 
@@ -227,7 +227,7 @@ ready(function() {
     // Grid same widths button (evenize, equalize)
     ['click', 'touchend'].forEach(function(evt){
         body.delegate(evt, '[data-lm-samewidth]:not(:empty)', function(event, element) {
-            window.G5.tips.hide(element[0]);
+            window.Genesis.tips.hide(element[0]);
             var clientRect = element[0].getBoundingClientRect();
             if ((event.clientX || event.pageX || event.changedTouches[0].pageX || 0) < clientRect.width + clientRect.left) { return; }
 
@@ -257,7 +257,7 @@ ready(function() {
 
         element.data('tip', msg).data('tip-offset', -30);
 
-        window.G5.tips
+        window.Genesis.tips
             .get(element[0])
             .content(msg)
             .place(tooltips.equalize ? 'top-left' : 'top-right')
@@ -265,7 +265,7 @@ ready(function() {
     });
 
     body.delegate('mouseout', '[data-lm-samewidth]:not(:empty)', function(event, element) {
-        window.G5.tips.hide(element[0]);
+        window.Genesis.tips.hide(element[0]);
     });
 
     // Clear Layout
@@ -328,7 +328,7 @@ ready(function() {
         if (event && event.preventDefault) { event.preventDefault(); }
 
         // it's already loading something.
-        if (element.parent('.g5-popover-content').find('[data-switch] i')) {
+        if (element.parent('.genesis-popover-content').find('[data-switch] i')) {
             return false;
         }
 

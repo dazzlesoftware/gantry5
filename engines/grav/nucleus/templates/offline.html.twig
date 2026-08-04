@@ -2,7 +2,7 @@
 
 {% block content %}
     {{ content|raw }}
-    {{ gantry.global.offline_message|markdown|raw }}
+    {{ genesis.global.offline_message|markdown|raw }}
 
     {% if (page.header.form) %}
     {% set show_login_form = 1 %}

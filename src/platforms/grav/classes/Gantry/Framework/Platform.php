@@ -45,7 +45,7 @@ class Platform extends BasePlatform
 
         // Initialize custom streams for Grav.
         $this->items['streams'] += [
-            'gantry-positions' => [
+            'Genesis-positions' => [
                 'type' => 'ReadOnlyStream',
                 'prefixes' => [
                     '' => [
@@ -198,7 +198,7 @@ class Platform extends BasePlatform
         }
 
         if (\GANTRY_DEBUGGER) {
-            Debugger::addMessage("Rendering Gantry module '{$module['id']}'", 'info');
+            Debugger::addMessage("Rendering Genesis module '{$module['id']}'", 'info');
         }
 
         /** @var Theme $theme */

@@ -73,7 +73,7 @@ class Assignments extends AbstractAssignments
 
         $gantry->fireEvent('assignments.types', $event);
 
-        return \apply_filters('gantry5_assignments_types', $event->types);
+        return \genesis_apply_filters('genesis_assignments_types', 'gantry5_assignments_types', $event->types);
     }
 
     /**
@@ -83,7 +83,7 @@ class Assignments extends AbstractAssignments
     {
         $list = parent::getPage();
 
-        \do_action('gantry5_assignments_page', $list);
+        \genesis_do_action('genesis_assignments_page', 'gantry5_assignments_page', $list);
 
         return $list;
     }

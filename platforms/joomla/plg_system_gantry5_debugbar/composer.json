@@ -1,6 +1,6 @@
 {
-    "name": "gantry/joomla-debugbar",
-    "description": "Gantry 5 DebugBar for Joomla",
+    "name": "dazzlesoftware/genesis-joomla-debugbar",
+    "description": "Genesis DebugBar for Joomla",
     "license": "GPL-3.0-or-later",
 
     "require": {

@@ -2,14 +2,14 @@
 
 {% block options %}
     {{ parent() }}
-    {% set current = gantry.menu.getDefaultMenuName() %}
-    {% for menu_name,menu_title in gantry.menu.getMenuOptions() %}
+    {% set current = genesis.menu.getDefaultMenuName() %}
+    {% for menu_name,menu_title in genesis.menu.getMenuOptions() %}
         <option
                 {# required attribute structures #}
                 {% if menu_name == value %}selected="selected"{% endif %}
                 value="{{ menu_name }}"
                 {# non-gloval attribute structures #}
                 {% if field.options.disabled in ['on', 'true', 1] %}disabled="disabled"{% endif %}
-                >{{ menu_title }}{{ (current == menu_name and gantry.menu.hasDefaultMenu()) ? ' ★' : '' }}</option>
+                >{{ menu_title }}{{ (current == menu_name and genesis.menu.hasDefaultMenu()) ? ' ★' : '' }}</option>
     {% endfor %}
 {% endblock %}

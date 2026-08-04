@@ -391,7 +391,7 @@ class HtmlDocument
     }
 
     /**
-     * NOTE: In PHP this function can be called either from Gantry DI container or statically.
+     * NOTE: In PHP this function can be called either from Genesis DI container or statically.
      *
      * @return string
      */
@@ -401,7 +401,7 @@ class HtmlDocument
     }
 
     /**
-     * NOTE: In PHP this function can be called either from Gantry DI container or statically.
+     * NOTE: In PHP this function can be called either from Genesis DI container or statically.
      *
      * @param bool|null $addDomain
      * @return string
@@ -416,7 +416,7 @@ class HtmlDocument
      *
      * @example {{ url('gantry-theme://images/logo.png')|default('http://www.placehold.it/150x100/f4f4f4') }}
      *
-     * NOTE: In PHP this function can be called either from Gantry DI container or statically.
+     * NOTE: In PHP this function can be called either from Genesis DI container or statically.
      *
      * @param  string $url         Resource to be located.
      * @param  bool|null $domain   True to include domain name, false to not, null to use default.
@@ -451,7 +451,7 @@ class HtmlDocument
         $path = isset($parts['path']) ? $parts['path'] : '';
 
         if ($scheme && !$port) {
-            // If URL has a scheme, we need to check if it's one of Gantry streams.
+            // If URL has a scheme, we need to check if it's one of Genesis streams.
             $gantry = static::gantry();
 
             /** @var UniformResourceLocator $locator */
@@ -488,7 +488,7 @@ class HtmlDocument
             }
             if ($timestamp_age > 0) {
                 // We want to add timestamp to the URI: do it only for existing files.
-                $realPath = @realpath(GANTRY5_ROOT . '/' . $path);
+                $realPath = @realpath(GENESIS_ROOT . '/' . $path);
                 if ($realPath && is_file($realPath)) {
                     $time = filemtime($realPath);
                     // Only append timestamp for files that are less than the maximum age.

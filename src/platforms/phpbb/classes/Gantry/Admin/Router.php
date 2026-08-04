@@ -19,10 +19,10 @@ use Gantry\phpBB\Runtime;
  * @package Gantry\Admin
  *
  * phpBB has no per-theme admin picker like Grav/WordPress/Joomla -- there is exactly one
- * installed Gantry theme (g5_helium), so this router always administers that theme. The ACP
+ * installed Genesis theme (g5_helium), so this router always administers that theme. The ACP
  * module (platforms/phpbb/gantry5/acp/gantry5_module.php) has a single fixed URL
- * (adm/index.php?i=gantry5&mode=main) and encodes the actual Gantry resource/path/format Gantry's
- * admin JS wants to hit via a `g5_path` query/POST variable instead of pretty path segments.
+ * (adm/index.php?i=gantry5&mode=main) and encodes the actual Genesis resource/path/format Genesis's
+ * admin JS wants to hit via a `genesis_path` query/POST variable instead of pretty path segments.
  */
 class Router extends BaseRouter
 {
@@ -39,19 +39,19 @@ class Router extends BaseRouter
 
         $booted = true;
 
-        $this->container['theme.path'] = GANTRY5_PHPBB_EXT_PATH . 'themes/g5_helium';
+        $this->container['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/g5_helium';
         $this->container['theme.name'] = 'g5_helium';
 
         /** @var Request $request */
         $request = $this->container['request'];
 
-        $path = trim((string) $request->request['g5_path'], '/');
+        $path = trim((string) ($request->request['genesis_path'] ?: $request->request['g5_path']), '/');
         $parts = $path !== '' ? explode('/', $path) : ['configurations', 'default', 'layout'];
 
         $this->method = $request->getMethod();
         $this->resource = array_shift($parts);
         $this->path = $parts;
-        $this->format = (string) $request->request['g5_format'] ?: 'html';
+        $this->format = (string) ($request->request['genesis_format'] ?: $request->request['g5_format']) ?: 'html';
         $this->params = [
             'ajax' => $this->format === 'json',
             'location' => $this->resource,
@@ -70,7 +70,7 @@ class Router extends BaseRouter
         // the JSON {success,html} envelope the JS expects -- that raw full-page HTML then got
         // dumped into the modal by elements-native.js, whose relative asset links (font-awesome,
         // stylesheet.css) resolved wrong against the current /adm/index.php location.
-        $this->container['ajax_suffix'] = '&g5_format=json';
+        $this->container['ajax_suffix'] = '&genesis_format=json';
 
         // Gantry::route() builds every URL as '/' . base_url . sprintf($route, $path) -- base_url
         // must be just the site-relative prefix (Grav sets its own plugin base the same way), NOT
@@ -100,7 +100,7 @@ class Router extends BaseRouter
         $this->container['base_url'] = '';
         $this->container['ajax_nonce'] = $nonce;
         $this->container['routes'] = [
-            '1' => "{$webRoot}/adm/index.php?sid={$sid}&i={$moduleId}&mode=main&nonce={$nonce}&g5_path=%s",
+            '1' => "{$webRoot}/adm/index.php?sid={$sid}&i={$moduleId}&mode=main&nonce={$nonce}&genesis_path=%s",
         ];
     }
 

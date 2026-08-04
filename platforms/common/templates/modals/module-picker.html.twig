@@ -2,20 +2,20 @@
 
 module.[id | title | position | enabled | access]
 #}
-<div data-mm-particle-stepone="{{ gantry.route('menu/particle') }}" class="menu-editor-extras">
+<div data-mm-particle-stepone="{{ genesis.route('menu/particle') }}" class="menu-editor-extras">
     <div class="card settings-block">
         <h4>
             {{ 'GANTRY5_PLATFORM_PICK_MODULE'|trans }}
         </h4>
         <div class="inner-params">
-            <div class="g5-mm-modules-picker menu-editor-modules">
+            <div class="genesis-mm-modules-picker menu-editor-modules">
                 <div class="search settings-block">
                     <input type="text" placeholder="{{ 'GANTRY5_PLATFORM_SEARCH_ELI'|trans }}" />
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
                 <div class="modules-wrapper">
                     <ul>
-                        {% for module in gantry.platform.listModules %}
+                        {% for module in genesis.platform.listModules %}
                         <li data-mm-module="{{ module.id }}" data-mm-type="module">
                             <span class="module-infos">
                                 <span data-title="{{ (module.enabled ? 'GANTRY5_PLATFORM_PUBLISHED'|trans : 'GANTRY5_PLATFORM_UNPUBLISHED'|trans) ~ ' / ' ~ module.access }}"
@@ -49,6 +49,6 @@ module.[id | title | position | enabled | access]
     <div class="g-modal-actions">
         {#<a class="button float-left">{{ 'GANTRY5_PLATFORM_DEFAULTS'|trans }}</a>#}
         <button class="button button-primary" type="submit" data-mm-select disabled>{{ 'GANTRY5_PLATFORM_SELECT'|trans }}</button>
-        <button class="button g5-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
+        <button class="button genesis-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
     </div>
 </div>

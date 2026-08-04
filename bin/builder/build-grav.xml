@@ -2,7 +2,7 @@
 <!DOCTYPE project>
 <project name="gantry5-grav" basedir="." description="Phing Build Script" default="prod">
 
-    <!--Gantry 5 Packages -->
+    <!-- Genesis compatibility packages -->
     <target name="build-grav-installer">
         <echo message="Building Installer.." />
 

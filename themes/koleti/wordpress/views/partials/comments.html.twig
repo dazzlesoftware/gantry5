@@ -16,7 +16,7 @@
                 <h2 class="g-title">{{ post.comment_count ~ ' ' ~ __('Comments', textdomain) }}</h2>
 
                 <ol class="commentlist">
-                    {{ function('wp_list_comments', {style: 'ol', type: 'comment', callback: ['G5ThemeHelper', 'comments']}) }}
+                    {{ function('wp_list_comments', {style: 'ol', type: 'comment', callback: ['GenesisThemeHelper', 'comments']}) }}
                 </ol>
 
                 <footer>

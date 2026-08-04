@@ -122,7 +122,7 @@
 
 {% block particle %}
     {% try %}
-        {% set menu = gantry.menu.instance(particle) %}
+        {% set menu = genesis.menu.instance(particle) %}
     {% catch %}
         <div class="alert alert-error">{{ e.getMessage }}</div>
     {% endtry %}
@@ -151,8 +151,8 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/modernizr-vmenu.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/classie.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/verticalmenu.js'), 10, 'footer') %}
-    {% do gantry.document.addScript(url('gantry-theme://js/verticalmenu.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/modernizr-vmenu.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/classie.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/verticalmenu.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/verticalmenu.init.js'), 10, 'footer') %}
 {% endblock %}

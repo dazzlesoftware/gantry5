@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1473508539
 layout:
@@ -155,7 +155,7 @@ content:
         -
           image: 'gantry-media://demo/home/slideshow/img-01.jpg'
           icon: 'fa fa-cog'
-          title: Gantry
+          title: Genesis
           subtitle: 'A powerful, versatile framework'
           author: ''
           authorimage: ''
@@ -168,7 +168,7 @@ content:
           video: ''
           videolocal: ''
           videothumb: ''
-          name: 'Gantry'
+          name: 'Genesis'
         -
           image: 'gantry-media://demo/home/slideshow/img-01.jpg'
           icon: 'fa fa-columns'
@@ -559,7 +559,7 @@ content:
           subtitle: ''
           author: ''
           authorimage: ''
-          desc: 'Gantry 5''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.'
+          desc: 'Genesis''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -577,7 +577,7 @@ content:
           subtitle: ''
           author: ''
           authorimage: ''
-          desc: 'Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds.'
+          desc: 'Set up and configure page layouts with Genesis''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -613,7 +613,7 @@ content:
           subtitle: ''
           author: ''
           authorimage: ''
-          desc: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
+          desc: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -718,7 +718,7 @@ content:
       imagegriditems:
         -
           image: 'gantry-media://demo/home/bottom/img-01.jpg'
-          caption: 'Gantry 5 Framework'
+          caption: 'Genesis Framework'
           title: 'Item 1'
         -
           image: 'gantry-media://demo/home/bottom/img-02.jpg'

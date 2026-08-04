@@ -37,7 +37,7 @@ goto :usage
 
 :build
 echo ============================================================
-echo Running Gantry package build: %target%
+echo Running Genesis package build: %target%
 echo WARNING: Existing files in dist will be replaced.
 echo ============================================================
 if "%~1"=="" (
@@ -48,12 +48,12 @@ if "%~1"=="" (
 set "result=%errorlevel%"
 if not "%result%"=="0" (
     echo.
-    echo ERROR: Gantry package build failed.
+    echo ERROR: Genesis package build failed.
     exit /b %result%
 )
 
 echo.
-echo Gantry package build completed successfully.
+echo Genesis package build completed successfully.
 echo Packages are available in: %~dp0dist
 exit /b 0
 

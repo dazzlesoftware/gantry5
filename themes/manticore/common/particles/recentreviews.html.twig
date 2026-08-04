@@ -85,7 +85,7 @@
             {% endfor %}
         </div>
     {% else %}
-        {% include '@particles/recentreviews-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% include '@particles/recentreviews-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
     {% endif %}
 </div>{% endblock %}{% block javascript_footer %}
 <script src="{{ url('//cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Array.prototype.includes') }}"></script>

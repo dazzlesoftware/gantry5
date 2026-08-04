@@ -25,18 +25,18 @@ add_filter('pre_wp_unique_post_slug', 'gantry5_wp_unique_post_slug', 0, 6);
 
 // Check if Timber is active before displaying sidebar button
 if (class_exists( 'Timber')) {
-    // Load Gantry 5 icon styling for the admin sidebar
+    // Load Genesis icon styling for the admin sidebar
     add_action(
         'admin_enqueue_scripts',
         static function() {
             if(is_admin()) {
-                $version = defined('GANTRY5_VERSION') ? GANTRY5_VERSION : null;
+                $version = defined('GENESIS_VERSION') ? GENESIS_VERSION : null;
                 wp_enqueue_style('wordpress-admin-icon', Document::url('gantry-assets://css/wordpress-admin-icon.css'), [], $version);
             }
         }
     );
 
-    // Adjust menu to contain Gantry stuff.
+    // Adjust menu to contain Genesis stuff.
     add_action(
         'admin_menu',
         static function() {
@@ -199,9 +199,9 @@ function gantry5_layout_manager()
         return;
     }
 
-    // Detect Gantry Framework or fail gracefully.
+    // Detect Genesis Framework or fail gracefully.
     if (!class_exists(Loader::class)) {
-        wp_die(esc_html__('Gantry 5 Framework not found.', 'gantry5'));
+        wp_die(esc_html__('Genesis Framework not found.', 'gantry5'));
     }
 
     // Initialize administrator or fail gracefully.
@@ -232,7 +232,7 @@ function gantry5_upgrader_package_options($options)
             $options['abort_if_destination_exists'] = new Gantry5Truthy('<bool><true></true></bool>');
             $options['hook_extra']['gantry5_abort'] = $options['abort_if_destination_exists'];
         } elseif ($options['hook_extra']['type'] === 'plugin' && strpos(basename($options['package']), 'gantry5') !== false) {
-            // Allow Gantry plugin to be manually upgraded / downgraded.
+            // Allow Genesis plugin to be manually upgraded / downgraded.
             $options['clear_destination'] = true;
         }
     }
@@ -242,9 +242,9 @@ function gantry5_upgrader_package_options($options)
 
 function gantry5_upgrader_source_selection($source, $remote_source, $upgrader, $options = [])
 {
-    // Allow upgrading Gantry themes from uploader.
+    // Allow upgrading Genesis themes from uploader.
     if (isset($options['gantry5_abort']) && file_exists("{$source}/gantry/theme.yaml")) {
-        $upgrader->skin->feedback('Gantry 5 theme detected.');
+        $upgrader->skin->feedback('Genesis-compatible theme detected.');
         unset($options['gantry5_abort']->true);
     }
 
@@ -258,7 +258,7 @@ function gantry5_upgrader_post_install($success, $options, $result)
         $plugin = (isset($options['plugin']) && $options['plugin'] === 'gantry5/gantry5.php')
             || (isset($options['type']) && $options['type'] === 'plugin' && basename($result['destination']) === 'gantry5');
 
-        // Clear gantry cache after plugin / Gantry theme installs.
+        // Clear Genesis cache after plugin / Genesis theme installs.
         if ($theme || $plugin) {
             global $wp_filesystem;
 

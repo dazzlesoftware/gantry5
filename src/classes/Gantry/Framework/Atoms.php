@@ -66,7 +66,7 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
     {
         $this->name = $name;
         $this->items = array_filter($atoms);
-        $this->inherit = file_exists('gantry-admin://blueprints/layout/inheritance/atom.yaml');
+        $this->inherit = file_exists('Genesis-admin://blueprints/layout/inheritance/atom.yaml');
 
         foreach ($this->items as &$item) {
             if (!empty($item['id'])) {
@@ -260,13 +260,13 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
         $list = $this->getOutlines($type, false);
 
         if ($force || (empty($inheriting) && $list)) {
-            $inheritance = BlueprintForm::instance('layout/inheritance/atom.yaml', 'gantry-admin://blueprints');
+            $inheritance = BlueprintForm::instance('layout/inheritance/atom.yaml', 'Genesis-admin://blueprints');
             $inheritance->set('form/fields/outline/filter', array_keys($list));
             $inheritance->set('form/fields/atom/atom', $type);
 
         } elseif (!empty($inheriting)) {
             // Already inherited by other outlines.
-            $inheritance = BlueprintForm::instance('layout/inheritance/messages/inherited.yaml', 'gantry-admin://blueprints');
+            $inheritance = BlueprintForm::instance('layout/inheritance/messages/inherited.yaml', 'Genesis-admin://blueprints');
             $inheritance->set(
                 'form/fields/_note/content',
                 sprintf($inheritance->get('form/fields/_note/content'), 'atom', ' <ul><li>' . implode('</li> <li>', $inheriting) . '</li></ul>')
@@ -274,11 +274,11 @@ class Atoms implements \ArrayAccess, \Iterator, ExportInterface
 
         } elseif ($this->name === 'default') {
             // Base outline.
-            $inheritance = BlueprintForm::instance('layout/inheritance/messages/default.yaml', 'gantry-admin://blueprints');
+            $inheritance = BlueprintForm::instance('layout/inheritance/messages/default.yaml', 'Genesis-admin://blueprints');
 
         } else {
             // Nothing to inherit from.
-            $inheritance = BlueprintForm::instance('layout/inheritance/messages/empty.yaml', 'gantry-admin://blueprints');
+            $inheritance = BlueprintForm::instance('layout/inheritance/messages/empty.yaml', 'Genesis-admin://blueprints');
         }
 
         return $inheritance;

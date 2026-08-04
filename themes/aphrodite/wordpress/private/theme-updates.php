@@ -8,7 +8,7 @@ defined('ABSPATH') || die;
 add_filter('pre_set_site_transient_update_themes', 'g5_aphrodite_private_theme_updates');
 
 /**
- * Normalize Gantry theme versions for developer builds.
+ * Normalize Genesis theme versions for developer builds.
  *
  * @param string $version Theme version string.
  * @return string

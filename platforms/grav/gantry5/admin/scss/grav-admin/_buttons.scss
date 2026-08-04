@@ -7,7 +7,7 @@
     }
 }
 
-#admin-main #g5-container {
+#admin-main [data-genesis-container] {
     .button {
         @include button-color($button-bg, $white);
     }

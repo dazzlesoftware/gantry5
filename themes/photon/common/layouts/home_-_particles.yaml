@@ -276,14 +276,14 @@ content:
           buttonlink: '#'
           buttontarget: _self
           buttonclass: ''
-          title: 'Rich Collection Of Gantry 5 Particles'
+          title: 'Rich Collection Of Genesis Particles'
     block:
       class: 'nomarginbottom nopaddingbottom'
   imagegrid-3167:
     title: 'Image Grid'
     attributes:
       title: 'Photo Gallery'
-      desc: 'Using the power of Gantry 5 Particles to create a customizable image grid.'
+      desc: 'Using the power of Genesis Particles to create a customizable image grid.'
       cols: g-imagegrid-5cols
       imagegriditems:
         -
@@ -340,7 +340,7 @@ content:
     attributes:
       items:
         -
-          desc: 'Twig is a templating engine for PHP, that provides a sub-platform, making the code easier to manage and customize, and powers the Gantry 5 Particles.'
+          desc: 'Twig is a templating engine for PHP, that provides a sub-platform, making the code easier to manage and customize, and powers the Genesis Particles.'
           buttontext: ''
           buttonlink: ''
           buttontarget: _self
@@ -354,7 +354,7 @@ content:
           buttonclass: ''
           title: 'Responsive Layout Support'
         -
-          desc: 'The Menu Editor in Gantry 5 allows you to change the menu item order, set multiple columns and place inline particles or positions inside a dropdown.'
+          desc: 'The Menu Editor in Genesis allows you to change the menu item order, set multiple columns and place inline particles or positions inside a dropdown.'
           buttontext: ''
           buttonlink: ''
           buttontarget: _self
@@ -396,7 +396,7 @@ content:
           iconcolor: accent1
           desc: ''
           link: ''
-          title: 'Gantry 5 Framework'
+          title: 'Genesis Framework'
         -
           icon: 'fa fa-cubes'
           iconcolor: accent1
@@ -488,7 +488,7 @@ content:
               subtagdotaccent: accent2
               subtagdotcustom: ''
               subtagtext: '2'
-              subtagdesc: 'Add personality to your menu with icons using Gantry 5’s Icon Picker.'
+              subtagdesc: 'Add personality to your menu with icons using Genesis’s Icon Picker.'
               name: 'New item'
             -
               tag: 'Custom Width'
@@ -551,7 +551,7 @@ content:
               subtagdotaccent: accent2
               subtagdotcustom: ''
               subtagtext: '4'
-              subtagdesc: 'Give a section one, two, or twenty rows! Fill them with particles and module positions to your heart’s desire. There is really no limit to what you can do with Gantry 5’s Layout Manager!'
+              subtagdesc: 'Give a section one, two, or twenty rows! Fill them with particles and module positions to your heart’s desire. There is really no limit to what you can do with Genesis’s Layout Manager!'
               name: 'New item'
           name: Layouts
   swipercarousel-6713:
@@ -591,7 +591,7 @@ content:
           created_date: 'MAR 03, 2016'
           content_title: 'About Photon'
           author: ''
-          leading_content: "All demo content is for sample purposes only, to represent a live site.\n<br>\nNote: Photon is built on the latest version of the Gantry 5 Framework."
+          leading_content: "All demo content is for sample purposes only, to represent a live site.\n<br>\nNote: Photon is built on the latest version of the Genesis Framework."
           main_content: ''
           readmore_label: 'Read More'
           readmore_link: ''
@@ -621,7 +621,7 @@ content:
           image: 'gantry-media://demo/home/extension/avatar-02.jpg'
           icon: 'fa fa-facebook-square'
           title: ''
-          desc: 'Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
+          desc: 'Set up and configure page layouts with Genesis''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
           link: ''
           linktext: ''
           buttontarget: _self
@@ -631,12 +631,12 @@ content:
           image: 'gantry-media://demo/home/extension/avatar-03.jpg'
           icon: 'fa fa-google-plus'
           title: ''
-          desc: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
+          desc: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
           link: ''
           linktext: ''
           buttontarget: _self
           buttonclass: ''
-          name: 'Gantry 5 Configuration'
+          name: 'Genesis Configuration'
   position-position-4953:
     title: 'Bottom Banner A'
     attributes:

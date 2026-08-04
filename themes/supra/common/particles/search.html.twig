@@ -5,16 +5,16 @@
         <a href="#g-search-{{ id }}" data-rel="lightcase" title="{{ particle.title }}"><i class="fa fa-search" aria-hidden="true"></i></a>
 
         <div id="g-search-{{ id }}" class="g-search-lightcase">
-            {% if gantry.platform.name == "joomla" %}
+            {% if genesis.platform.name == "joomla" %}
                 <form action="{{ joomla.route('index.php?option=com_search') }}" method="post">
                     <input type="text" class="search-input" name="searchword" placeholder="{{ particle.placeholder|default('Your keyword...') }}" size="30" maxlength="200" value="" title="{{ particle.title }}">
                     <input type="hidden" name="task" value="search">
                 </form>
-            {% elseif gantry.platform.name == "wordpress"  %}
-                <form method="get" action="{{ gantry.siteUrl() }}" role="search">
+            {% elseif genesis.platform.name == "wordpress"  %}
+                <form method="get" action="{{ genesis.siteUrl() }}" role="search">
                     <input type="search" class="search-input" placeholder="{{ particle.placeholder|default('Your keyword...') }}" value="" name="s" title="{{ particle.title }}">
                 </form>
-            {% elseif gantry.platform.name == "grav"  %}
+            {% elseif genesis.platform.name == "grav"  %}
                 <form name="search" onSubmit="return validateSearch(event);" data-simplesearch-form>
                     <input
                         name="searchfield"
@@ -24,7 +24,7 @@
                         value=""
                         placeholder="{{ particle.placeholder|default('Your keyword...') }}"
                         data-search-separator="{{ config.system.param_sep }}"
-                        data-search-input="{{ gantry.siteUrl() }}{{ config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route) }}/query"
+                        data-search-input="{{ genesis.siteUrl() }}{{ config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route) }}/query"
                         title="{{ particle.title }}"
                     />
                 </form>
@@ -35,8 +35,8 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('lightcase.init') %}
-    {% if gantry.platform.name == "grav" %}
+    {% do genesis.load('lightcase.init') %}
+    {% if genesis.platform.name == "grav" %}
         <script>
             {% set min_chars = config.plugins.simplesearch.min_query_length|default('3') %}
             function validateSearch(event) {

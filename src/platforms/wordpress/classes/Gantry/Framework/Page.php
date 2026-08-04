@@ -26,7 +26,7 @@ class Page extends Base\Page
 
     /**
      * Page constructor.
-     * @param Gantry $container
+     * @param Genesis $container
      */
     public function __construct($container)
     {
@@ -72,7 +72,7 @@ class Page extends Base\Page
         // TODO: we might need something like
         // class="{{body_class}}" data-template="{{ twigTemplate|default('base.twig') }}"
 
-        $body_classes = \apply_filters('gantry5_body_classes', [
+        $body_classes = \genesis_apply_filters('genesis_body_classes', 'gantry5_body_classes', [
                 'site',
                 'outline-' . Gantry::instance()['configuration'],
                 'dir-' . $this->direction

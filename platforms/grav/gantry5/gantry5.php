@@ -109,7 +109,7 @@ class Gantry5Plugin extends Plugin
     }
 
     /**
-     * Bootstrap Gantry loader.
+     * Bootstrap Genesis loader.
      */
     public function initialize()
     {
@@ -117,7 +117,7 @@ class Gantry5Plugin extends Plugin
     }
 
     /**
-     * Initialize Gantry admin if in Grav admin.
+     * Initialize Genesis admin if in Grav admin.
      */
     public function initializeGantryAdmin()
     {
@@ -127,7 +127,7 @@ class Gantry5Plugin extends Plugin
             return;
         }
 
-        // If Gantry theme is active, display extra menu item and make sure that page types get loaded.
+        // If Genesis theme is active, display extra menu item and make sure that page types get loaded.
         $theme = $this->config->get('system.pages.theme');
         if ($theme && is_file("themes://{$theme}/gantry/theme.yaml")) {
             $enabled = true;
@@ -142,11 +142,14 @@ class Gantry5Plugin extends Plugin
             return;
         }
 
-        // Setup Gantry 5 Framework or throw exception.
+        // Setup Genesis Framework or throw exception.
         Loader::setup();
 
+        if (!defined('GENESIS_ADMIN_PATH')) {
+            define('GENESIS_ADMIN_PATH', 'plugins://gantry5/admin');
+        }
         if (!defined('GANTRYADMIN_PATH')) {
-            define('GANTRYADMIN_PATH', 'plugins://gantry5/admin');
+            define('GANTRYADMIN_PATH', GENESIS_ADMIN_PATH);
         }
 
         $base = rtrim($this->grav['base_url_relative'], '/');
@@ -170,7 +173,7 @@ class Gantry5Plugin extends Plugin
         }
 
         if (\GANTRY_DEBUGGER) {
-            Debugger::addMessage('Inside Gantry administration');
+            Debugger::addMessage('Inside Genesis administration');
         }
     }
 
@@ -185,7 +188,7 @@ class Gantry5Plugin extends Plugin
             return;
         }
 
-        // Setup Gantry 5 Framework or throw exception.
+        // Setup Genesis Framework or throw exception.
         Loader::setup();
 
         $gantry = Gantry::instance();
@@ -199,7 +202,7 @@ class Gantry5Plugin extends Plugin
         $version = isset($this->grav['theme']->gantry) ? $this->grav['theme']->gantry : 0;
 
         if (!$gantry->isCompatible($version)) {
-            $message = "Theme requires Gantry v{$version} (or later) in order to work! Please upgrade Gantry Framework.";
+            $message = "Theme requires Genesis/Gantry v{$version} (or later) in order to work! Please upgrade Genesis Framework.";
             if ($this->isAdmin()) {
                 /** @var Message $messages */
                 $messages = $this->grav['messages'];
@@ -266,7 +269,7 @@ class Gantry5Plugin extends Plugin
         $this->initializeApi();
 
         if (\GANTRY_DEBUGGER) {
-            Debugger::addMessage("Gantry theme {$theme->name} selected");
+            Debugger::addMessage("Genesis theme {$theme->name} selected");
         }
     }
 
@@ -358,7 +361,7 @@ class Gantry5Plugin extends Plugin
     {
         $nonce = Utils::getNonce('gantry-admin');
 
-        $this->grav['twig']->plugins_hooked_nav['Gantry 5'] = [
+        $this->grav['twig']->plugins_hooked_nav['gantry'] = [
             'authorize' => ['admin.gantry', 'admin.themes', 'admin.super'],
             'location' => 'gantry',
             'route' => "gantry/configurations/default/layout?nonce={$nonce}",

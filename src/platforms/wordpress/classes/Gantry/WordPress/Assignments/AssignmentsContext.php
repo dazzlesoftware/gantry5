@@ -68,7 +68,7 @@ class AssignmentsContext implements AssignmentsInterface
         }
 
         // Allow to filter out rules by 3rd party plugin integration
-        $rules = \apply_filters('gantry5_assignments_page_context_rules', $rules, $this->priority);
+        $rules = \genesis_apply_filters('genesis_assignments_page_context_rules', 'gantry5_assignments_page_context_rules', $rules, $this->priority);
 
         return [$rules];
     }
@@ -94,7 +94,7 @@ class AssignmentsContext implements AssignmentsInterface
     {
         $items = [];
 
-        $context = \apply_filters('gantry5_assignments_page_context_array', $this->context, $this->type);
+        $context = \genesis_apply_filters('genesis_assignments_page_context_array', 'gantry5_assignments_page_context_array', $this->context, $this->type);
         ksort($context);
 
         foreach($context as $conditional => $label) {
@@ -104,7 +104,7 @@ class AssignmentsContext implements AssignmentsInterface
             ];
         }
 
-        return \apply_filters('gantry5_assignments_page_context_list_items', $items, $this->type);
+        return \genesis_apply_filters('genesis_assignments_page_context_list_items', 'gantry5_assignments_page_context_list_items', $items, $this->type);
     }
 
 }

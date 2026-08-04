@@ -22,14 +22,14 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  */
 class Styles
 {
-    /** @var Gantry */
+    /** @var Genesis */
     protected $container;
     protected $files;
     protected $blocks;
 
     /**
      * Styles constructor.
-     * @param Gantry $container
+     * @param Genesis $container
      */
     public function __construct($container)
     {
@@ -48,7 +48,7 @@ class Styles
             $this->blocks = [];
             foreach ($files as $key => $fileArray) {
                 $filename = key($fileArray);
-                $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+                $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
                 $this->blocks[$key] = $file->content();
                 $file->free();
             }
@@ -90,7 +90,7 @@ class Styles
         }
 
         $filename = key($files[$id]);
-        $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+        $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
         $particle = $file->content();
         $file->free();
 

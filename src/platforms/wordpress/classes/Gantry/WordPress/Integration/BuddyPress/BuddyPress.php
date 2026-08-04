@@ -39,9 +39,9 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
 
 
     /**
-     * Register services to Gantry DI. Needed if you want to access something globally or from Twig template.
+     * Register services to Genesis DI. Needed if you want to access something globally or from Twig template.
      *
-     * Example: {{ gantry.buddypress.do_something() }}
+     * Example: {{ genesis.buddypress.do_something() }}
      *
      * @param Container $gantry
      */
@@ -56,7 +56,7 @@ class BuddyPress implements ServiceProviderInterface, EventSubscriberInterface
     }
 
     /**
-     * Subscribe to Gantry events.
+     * Subscribe to Genesis events.
      *
      * @return array
      */

@@ -1,4 +1,4 @@
-# Gantry Theme Validation Checklist
+# Genesis Theme Validation Checklist
 
 Use this checklist to establish a stable baseline for every theme before continuing the JavaScript framework-removal work.
 
@@ -25,12 +25,12 @@ Run these checks for every applicable theme and platform.
 
 ### Fresh Build and Installation
 
-- [ ] Build the Gantry development package for the target platform.
+- [ ] Build the Genesis development package for the target platform.
 - [ ] Build the development theme package.
-- [ ] Remove the previously installed Gantry package and theme.
-- [ ] Install the newly built Gantry package.
+- [ ] Remove the previously installed Genesis package and theme.
+- [ ] Install the newly built Genesis package.
 - [ ] Install and activate the newly built theme.
-- [ ] Clear the Gantry, CMS, and browser caches.
+- [ ] Clear the Genesis, CMS, and browser caches.
 - [ ] Confirm the frontend loads with its compiled theme styling.
 - [ ] Confirm there are no PHP fatal errors, warnings, or Twig exceptions.
 - [ ] Confirm there are no JavaScript errors in the browser console.
@@ -66,7 +66,7 @@ Only test particles included by the theme.
 - [ ] Forms, search, login, social, and to-top particles work.
 - [ ] No Owl Carousel, MooTools, MooFx, or unnecessary jQuery assets load.
 
-### Gantry Administration
+### Genesis Administration
 
 - [ ] Open the Layout editor.
 - [ ] Drag, reorder, resize, add, and delete particles.
@@ -85,7 +85,7 @@ Only test particles included by the theme.
 - [ ] Test Page Settings switches and atoms.
 - [ ] Test page or menu assignments.
 - [ ] Test menu selection, menu item editing, and menu saving.
-- [ ] Confirm all AJAX actions return to the Gantry interface instead of displaying raw JSON.
+- [ ] Confirm all AJAX actions return to the Genesis interface instead of displaying raw JSON.
 
 ### Platform-Specific Checks
 

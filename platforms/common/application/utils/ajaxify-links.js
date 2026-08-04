@@ -120,16 +120,16 @@ var selectorChangeEvent = function() {
                 modal.close();
 
                 var input = asElement(selectize.input);
-                input.setAttribute('data-g5-ajaxify', '');
-                input.setAttribute('data-g5-ajaxify-target', selector.getAttribute('data-g5-ajaxify-target') || '[data-g5-content-wrapper]');
-                var targetParent = selector.getAttribute('data-g5-ajaxify-target-parent');
-                if (targetParent) { input.setAttribute('data-g5-ajaxify-target-parent', targetParent); }
-                else { input.removeAttribute('data-g5-ajaxify-target-parent'); }
-                input.setAttribute('data-g5-ajaxify-href', options[value].url);
+                input.setAttribute('data-genesis-ajaxify', '');
+                input.setAttribute('data-genesis-ajaxify-target', selector.getAttribute('data-genesis-ajaxify-target') || '[data-genesis-content-wrapper]');
+                var targetParent = selector.getAttribute('data-genesis-ajaxify-target-parent');
+                if (targetParent) { input.setAttribute('data-genesis-ajaxify-target-parent', targetParent); }
+                else { input.removeAttribute('data-genesis-ajaxify-target-parent'); }
+                input.setAttribute('data-genesis-ajaxify-href', options[value].url);
                 if (options[value].params) {
-                    input.setAttribute('data-g5-ajaxify-params', JSON.stringify(options[value].params));
+                    input.setAttribute('data-genesis-ajaxify-params', JSON.stringify(options[value].params));
                 } else {
-                    input.removeAttribute('data-g5-ajaxify-params');
+                    input.removeAttribute('data-genesis-ajaxify-params');
                 }
 
                 var active = document.querySelector('#navbar li.active, #main-header li.active, #navbar li:nth-child(2)');
@@ -242,10 +242,10 @@ History.Adapter.bind(window, 'statechange', function() {
 
         var target = Data.parent && Data.element ? Data.element.closest(Data.parent) :
                 (Data.target ? document.querySelector(Data.target) : null),
-            destination = target || document.querySelector('[data-g5-content]') || body;
+            destination = target || document.querySelector('[data-genesis-content]') || body;
 
         destination.innerHTML = result.html || result;
-        var fader = destination.matches('[data-g5-content]') ? destination : destination.querySelector('[data-g5-content]');
+        var fader = destination.matches('[data-genesis-content]') ? destination : destination.querySelector('[data-genesis-content]');
         if (fader) {
             fader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'ease' });
             if (isTopNavOrMenu && sidebar) {
@@ -255,7 +255,7 @@ History.Adapter.bind(window, 'statechange', function() {
             showNavbar(sidebar, !isTopNavOrMenu);
         }
 
-        document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
+        document.querySelectorAll('.genesis-popover').forEach(function(popover) { popover.remove(); });
         if (Data.element) { dispatchState('statechangeAfter', Data.element, Data); }
 
         var spinner = (Data.event && Data.event.activeSpinner) || Data.element;
@@ -271,19 +271,19 @@ History.Adapter.bind(window, 'statechange', function() {
 dom.ready(function() {
     var body = document.body;
 
-    if (window.GANTRY_AJAX_NONCE) {
+    if (window.GENESIS_AJAX_NONCE) {
         var currentURI = History.getPageUrl(),
             currentNonce;
-        if (window.GANTRY_PLATFORM === 'wordpress') {
+        if (window.GENESIS_PLATFORM === 'wordpress') {
             currentNonce = getParam(currentURI, '_wpnonce');
-            if (currentNonce !== window.GANTRY_AJAX_NONCE) {
-                currentURI = setParam(currentURI, '_wpnonce', window.GANTRY_AJAX_NONCE);
+            if (currentNonce !== window.GENESIS_AJAX_NONCE) {
+                currentURI = setParam(currentURI, '_wpnonce', window.GENESIS_AJAX_NONCE);
                 History.replaceState({ uuid: guid(), doNothing: true }, document.title, currentURI);
             }
-        } else if (window.GANTRY_PLATFORM === 'grav') {
+        } else if (window.GENESIS_PLATFORM === 'grav') {
             currentNonce = getParam(currentURI, 'nonce');
-            if (currentNonce !== window.GANTRY_AJAX_NONCE) {
-                currentURI = setParam(currentURI, 'nonce', window.GANTRY_AJAX_NONCE);
+            if (currentNonce !== window.GENESIS_AJAX_NONCE) {
+                currentURI = setParam(currentURI, 'nonce', window.GENESIS_AJAX_NONCE);
                 History.replaceState({ uuid: guid(), doNothing: true }, document.title, currentURI);
             }
         }
@@ -298,7 +298,7 @@ dom.ready(function() {
         if (!confSelector || !navbar) { return; }
 
         ConfNavIndex = ConfNavIndex === -1 ? 1 : ConfNavIndex;
-        var item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-g5-ajaxify]');
+        var item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-genesis-ajaxify]');
         if (!item) { return; }
 
         var continueBack = function() {
@@ -352,12 +352,12 @@ dom.ready(function() {
         showNavbar(navbar, true);
     });
 
-    dom.delegate(body, 'click', '#navbar a[data-g5-ajaxify]', function(event, element) {
-        var links = document.querySelectorAll('#navbar li a[data-g5-ajaxify]');
+    dom.delegate(body, 'click', '#navbar a[data-genesis-ajaxify]', function(event, element) {
+        var links = document.querySelectorAll('#navbar li a[data-genesis-ajaxify]');
         ConfNavIndex = Array.from(links).indexOf(element) + 1;
     });
 
-    dom.delegate(body, 'click', '[data-g5-ajaxify]', function(event, element) {
+    dom.delegate(body, 'click', '[data-genesis-ajaxify]', function(event, element) {
         if (event.which === 2 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) { return; }
         event.preventDefault();
 
@@ -395,11 +395,11 @@ dom.ready(function() {
         }
 
         indicator.show(element);
-        var rawData = element.getAttribute('data-g5-ajaxify'),
-            target = element.getAttribute('data-g5-ajaxify-target'),
-            parent = element.getAttribute('data-g5-ajaxify-target-parent'),
-            url = element.getAttribute('href') || element.getAttribute('data-g5-ajaxify-href'),
-            params = element.getAttribute('data-g5-ajaxify-params') || false,
+        var rawData = element.getAttribute('data-genesis-ajaxify'),
+            target = element.getAttribute('data-genesis-ajaxify-target'),
+            parent = element.getAttribute('data-genesis-ajaxify-target-parent'),
+            url = element.getAttribute('href') || element.getAttribute('data-genesis-ajaxify-href'),
+            params = element.getAttribute('data-genesis-ajaxify-params') || false,
             title = element.getAttribute('title') || document.title,
             data = rawData ? JSON.parse(rawData) : { parsed: false };
 

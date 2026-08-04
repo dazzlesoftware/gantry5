@@ -21,8 +21,8 @@ use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
  *
  * phpBB has no page tree / native nav-menu API (unlike Grav's Flex Pages or WordPress's
  * wp_nav_menu) to build menu items from -- so unlike those platforms' Menu classes,
- * getItemsFromPlatform() always returns an empty list here. Every phpBB Gantry menu is
- * therefore effectively a "custom" menu: every item comes purely from Gantry's own menu YAML
+ * getItemsFromPlatform() always returns an empty list here. Every phpBB Genesis menu is
+ * therefore effectively a "custom" menu: every item comes purely from Genesis's own menu YAML
  * (AbstractMenu::addCustom(), which this relies on unchanged) -- links, separators, headings and
  * particles the admin builds directly in the Menu Manager, never platform-page-derived entries.
  */

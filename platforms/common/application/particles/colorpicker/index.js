@@ -51,13 +51,13 @@ class ColorPicker {
         var body = $('body');
 
         MOUSEDOWN.forEach(function(mousedown) {
-            body.delegate(mousedown, '#g5-container .g-colorpicker i', this.bound('iconClick'));
+            body.delegate(mousedown, '[data-genesis-container] .g-colorpicker i', this.bound('iconClick'));
         }, this);
 
-        body.delegate(FOCUSIN, '#g5-container .g-colorpicker input', this.bound('show'), true);
+        body.delegate(FOCUSIN, '[data-genesis-container] .g-colorpicker input', this.bound('show'), true);
 
 
-        body.delegate('keydown', '#g5-container .g-colorpicker input', function(event, element) {
+        body.delegate('keydown', '[data-genesis-container] .g-colorpicker input', function(event, element) {
             switch (event.keyCode) {
                 case 9: // tab
                     this.hide();
@@ -72,13 +72,13 @@ class ColorPicker {
         }.bind(this));
 
         // Update on keyup
-        body.delegate('keyup', '#g5-container .g-colorpicker input', function(event, element) {
+        body.delegate('keyup', '[data-genesis-container] .g-colorpicker input', function(event, element) {
             this.updateFromInput(true, element);
             return true;
         }.bind(this));
 
         // Update on paste
-        body.delegate('paste', '#g5-container .g-colorpicker input', function(event, element) {
+        body.delegate('paste', '[data-genesis-container] .g-colorpicker input', function(event, element) {
             setTimeout(function() {
                 this.updateFromInput(true, element);
             }.bind(this), 1);
@@ -272,7 +272,7 @@ class ColorPicker {
             }.bind(this));
         }, this);
 
-        this.wrapper.bottom('#g5-container');
+        this.wrapper.bottom('[data-genesis-container]');
 
         this.built = true;
         this.mode = 'hue';
@@ -571,7 +571,7 @@ class ColorPicker {
 
     reposition() {
         var offset = this.element[0].getBoundingClientRect(),
-            ct = $('#g5-container')[0].getBoundingClientRect();
+            ct = $('[data-genesis-container]')[0].getBoundingClientRect();
         this.wrapper.style({
             top: offset.top + offset.height - ct.top,
             left: offset.left - ct.left

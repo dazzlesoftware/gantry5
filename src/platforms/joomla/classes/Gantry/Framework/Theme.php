@@ -183,7 +183,7 @@ class Theme extends AbstractTheme
 
         PluginHelper::importPlugin('gantry5');
 
-        // Trigger the onGantryThemeInit event.
+        $application->triggerEvent('onGenesisThemeInit', ['theme' => $this]);
         $application->triggerEvent('onGantry5ThemeInit', ['theme' => $this]);
     }
 

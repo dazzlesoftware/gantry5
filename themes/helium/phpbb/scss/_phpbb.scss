@@ -1,9 +1,9 @@
 // Helium-native styling for phpBB's own (prosilver-derived) markup.
 //
-// phpBB's captured page body isn't rendered through Gantry/Twig at all (see
+// phpBB's captured page body isn't rendered through Genesis/Twig at all (see
 // platforms/phpbb/gantry5/event/listener.php) -- it's phpBB's own compiled Twig-via-legacy-syntax
 // output, using phpBB's own class names (.forabg, .forumbg, .postbody, etc.), completely separate
-// from Gantry's particle/section markup that the rest of the Helium SCSS targets. This file maps
+// from Genesis's particle/section markup that the rest of the Helium SCSS targets. This file maps
 // those phpBB class names onto Helium's actual design tokens (colors, radius, shadows, type)
 // instead of just retinting prosilver's own colors -- prosilver's own theme/*.css files (base,
 // content, forms, buttons, colours) are still loaded first and provide layout/structure; this
@@ -22,7 +22,7 @@
 //    than relying on cascade order or `!important`.
 
 // ---------------------------------------------------------------------------
-// Navigation section height (Gantry's own chrome, not phpBB markup -- but the fix is
+// Navigation section height (Genesis's own chrome, not phpBB markup -- but the fix is
 // phpBB-specific, so it lives here)
 // ---------------------------------------------------------------------------
 //
@@ -529,7 +529,7 @@ body #page-body {
 }
 
 // ---------------------------------------------------------------------------
-// Gantry-authored content injected into phpBB's own header/footer templates
+// Genesis-authored content injected into phpBB's own header/footer templates
 // (see themes/helium/phpbb/template/overall_header.html's Tagline block and
 // overall_footer.html's Footer note block)
 // ---------------------------------------------------------------------------

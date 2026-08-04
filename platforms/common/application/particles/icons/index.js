@@ -22,7 +22,7 @@ var escapeHTML = function(value) {
 
 var findPreview = function(input) {
     var parent = input.parentElement;
-    return parent ? parent.querySelector('[data-g5-iconpicker]') : null;
+    return parent ? parent.querySelector('[data-genesis-iconpicker]') : null;
 };
 
 dom.ready(function() {
@@ -37,10 +37,10 @@ dom.ready(function() {
         if (!preview.offsetWidth) { icon.className = 'far fa-hand-point-up picker'; }
     });
 
-    dom.delegate(body, 'click', '[data-g5-iconpicker]', function(event, realPreview) {
+    dom.delegate(body, 'click', '[data-genesis-iconpicker]', function(event, realPreview) {
         event.preventDefault();
 
-        var fieldSelector = realPreview.getAttribute('data-g5-iconpicker'),
+        var fieldSelector = realPreview.getAttribute('data-genesis-iconpicker'),
             field = fieldSelector ? document.querySelector(fieldSelector) : null,
             value = String(field ? field.value : '').trim().replace(/\s{2,}/g, ' ').split(' ').filter(Boolean);
 
@@ -48,10 +48,10 @@ dom.ready(function() {
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
-            className: 'g5-dialog-theme-default g5-modal-icons',
+            className: 'genesis-dialog-theme-default genesis-modal-icons',
             remote: parseAjaxURI(getAjaxURL('icons') + getAjaxSuffix()),
             afterClose: function() {
-                document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
+                document.querySelectorAll('.genesis-popover').forEach(function(popover) { popover.remove(); });
             },
             remoteLoaded: function(response, content) {
                 var container = modal.element(content.elements.content),

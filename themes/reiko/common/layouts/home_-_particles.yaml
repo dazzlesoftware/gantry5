@@ -675,7 +675,7 @@ content:
       cases:
         -
           class: ''
-          quote: 'Gantry 5''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
+          quote: 'Genesis''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
           quotesize: ''
           image: 'gantry-media://home/expanded/img-01.jpg'
           date: '2018-09-11'
@@ -685,7 +685,7 @@ content:
           title: 'Icon Picker'
         -
           class: ''
-          quote: 'Find the perfect font using Gantry 5''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
+          quote: 'Find the perfect font using Genesis''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
           quotesize: ''
           image: 'gantry-media://home/expanded/img-03.jpg'
           date: '2018-09-01'
@@ -705,14 +705,14 @@ content:
           title: 'Color Picker'
         -
           class: ''
-          quote: 'Gantry 5 is a next-generation theming framework. It is packed with features that make it easier than ever to build your website.'
+          quote: 'Genesis is a next-generation theming framework. It is packed with features that make it easier than ever to build your website.'
           quotesize: ''
           image: 'gantry-media://home/expanded/img-04.jpg'
           date: '2018-09-08'
           dateformat: 'F d, Y'
           url: '#'
           target: _self
-          title: 'Gantry 5'
+          title: 'Genesis'
         -
           class: ''
           quote: 'Dazzle Software themes come with an industry-leading set of core features, including style, menu, layout, content, and page management tools.'

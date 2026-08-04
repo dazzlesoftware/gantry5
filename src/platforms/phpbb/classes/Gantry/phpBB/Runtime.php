@@ -12,11 +12,11 @@ namespace Gantry\phpBB;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Static registry giving the Gantry Framework adapter classes access to the phpBB services
+ * Static registry giving the Genesis Framework adapter classes access to the phpBB services
  * they need, without requiring every adapter class to be constructed through phpBB's DI
  * container.
  *
- * Populated once per request by the Gantry extension's event listener
+ * Populated once per request by the Genesis extension's event listener
  * (platforms/phpbb/gantry5/event/listener.php) before Gantry::instance() is ever called.
  */
 abstract class Runtime
@@ -61,7 +61,7 @@ abstract class Runtime
     public static function container()
     {
         if (null === static::$container) {
-            throw new \RuntimeException('Gantry: phpBB runtime has not been booted yet');
+            throw new \RuntimeException('Genesis: phpBB runtime has not been booted yet');
         }
 
         return static::$container;

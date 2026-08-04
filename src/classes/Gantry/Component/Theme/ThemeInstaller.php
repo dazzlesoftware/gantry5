@@ -30,7 +30,7 @@ use Twig\Loader\FilesystemLoader;
  */
 abstract class ThemeInstaller
 {
-    /** @var bool Set to true if in Gantry. */
+    /** @var bool Set to true if in Genesis. */
     public $initialized = false;
     /** @var array */
     public $actions = [];
@@ -246,7 +246,7 @@ abstract class ThemeInstaller
             @unlink($md5path);
         }
 
-        // Restart Gantry and initialize it.
+        // Restart Genesis and initialize it.
         $gantry = Gantry::restart();
         $gantry['theme.name'] = $name;
 

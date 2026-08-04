@@ -1,6 +1,6 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
-{% set edit = gantry.authorize('outline.assign') %}
+{% set edit = genesis.authorize('outline.assign') %}
 
 {% block gantry %}
     <div id="assignments">
@@ -77,7 +77,7 @@
                                     {% for link in list.items %}
                                         {% set path = 'assignments.' ~ type ~ '.' ~ name ~ '.' ~ link.name %}
                                         {% set group = link.section ? 'data-g-assignments-group="' ~ link.name|e ~ '"' : 'data-g-assignments-parent="' ~ link.taxonomy|e ~ '"' %}
-                                        {% set value = link.value is defined ? link.value : gantry.config.get(path) %}
+                                        {% set value = link.value is defined ? link.value : genesis.config.get(path) %}
                                         <label class="settings-param{% if link.section %} settings-param-section{% endif %}" {{ group|raw }}>
                                             {% include 'forms/fields/enable/enable.html.twig' with {
                                             'default': true,

@@ -351,7 +351,7 @@ class NativeUploader {
 
 class FilePicker {
     constructor(element) {
-        var data = element.getAttribute('data-g5-filepicker');
+        var data = element.getAttribute('data-genesis-filepicker');
         this.data = data ? JSON.parse(data) : false;
 
         if (this.data && !this.data.value) {
@@ -383,7 +383,7 @@ class FilePicker {
             method: 'post',
             data: this.data,
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
-            className: 'g5-dialog-theme-default g5-modal-filepicker',
+            className: 'genesis-dialog-theme-default genesis-modal-filepicker',
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
             remoteLoaded: this.loaded.bind(this),
             afterClose: function() {
@@ -494,7 +494,7 @@ class FilePicker {
                 background = thumb && thumb.style.backgroundImage;
             if (background) {
                 modal.open({
-                    className: 'g5-dialog-theme-default g5-modal-filepreview center',
+                    className: 'genesis-dialog-theme-default genesis-modal-filepreview center',
                     content: '<img src="' + background.slice(4, -1).replace(/"/g, '') + '" />'
                 });
             }
@@ -549,7 +549,9 @@ class FilePicker {
 
             content.querySelectorAll('[data-files-mode]').forEach(function(mode) { mode.classList.remove('active'); });
             element.classList.add('active');
-            Cookie.write('g5_files_mode', element.getAttribute('data-files-mode'));
+            const mode = element.getAttribute('data-files-mode');
+            Cookie.write('genesis_files_mode', mode);
+            Cookie.write('g5_files_mode', mode);
 
             animateOpacity(files, 0, 200, function() {
                 var mode = element.getAttribute('data-files-mode'),
@@ -620,7 +622,7 @@ class FilePicker {
 }
 
 dom.ready(function() {
-    dom.delegate(document.body, 'click', '[data-g5-filepicker]', function(event, element) {
+    dom.delegate(document.body, 'click', '[data-genesis-filepicker]', function(event, element) {
         event.preventDefault();
         if (!element.GantryFilePicker) {
             element.GantryFilePicker = new FilePicker(element);

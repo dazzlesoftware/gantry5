@@ -68,7 +68,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
         // Get label and items for each taxonomy
         $list = [];
         foreach ($taxonomies as $tax) {
-            $tax = \apply_filters('gantry5_assignments_' . $this->type . '_' . $tax->name . '_taxonomy_object', $tax);
+            $tax = \genesis_apply_filters('genesis_assignments_' . $this->type . '_' . $tax->name . '_taxonomy_object', 'gantry5_assignments_' . $this->type . '_' . $tax->name . '_taxonomy_object', $tax);
 
             $list[$tax->name]['label'] = sprintf($this->label, $tax->labels->name);
             $list[$tax->name]['items'][] = [
@@ -110,7 +110,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
 
         $args = \wp_parse_args($args, $defaults);
 
-        $taxonomies = \get_taxonomies(\apply_filters('gantry5_assignments_get_taxonomies_args', $args), 'object');
+        $taxonomies = \get_taxonomies(\genesis_apply_filters('genesis_assignments_get_taxonomies_args', 'gantry5_assignments_get_taxonomies_args', $args), 'object');
 
         return $taxonomies;
     }
@@ -169,7 +169,7 @@ class AssignmentsTaxonomy implements AssignmentsInterface
             }
         }
 
-        return \apply_filters('gantry5_assignments_' . $this->type . '_' . $tax->name . '_taxonomy_list_items', $items, $tax, $this->type);
+        return \genesis_apply_filters('genesis_assignments_' . $this->type . '_' . $tax->name . '_taxonomy_list_items', 'gantry5_assignments_' . $this->type . '_' . $tax->name . '_taxonomy_list_items', $items, $tax, $this->type);
 
     }
 

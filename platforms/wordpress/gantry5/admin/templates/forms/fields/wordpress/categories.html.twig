@@ -7,7 +7,7 @@
         'taxonomy': taxonomy,
         'hide_empty': hide_empty
 	} %}
-    {% set categories = gantry.platform.getCategories(query_parameters) %}
+    {% set categories = genesis.platform.getCategories(query_parameters) %}
     {% set Options = field.selectize.Options %}
     {% set options = [] %}
     {% if categories %}

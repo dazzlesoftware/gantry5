@@ -1,8 +1,12 @@
+# Genesis
+
+> Genesis is the new name for Gantry 5. During the transition, installed extensions, package names, filesystem paths, APIs, and download URLs may continue to use the `gantry5`, `Gantry`, or `G5` identifiers for compatibility.
+
 ## Recent Updates – 2026 Activity & 5.6.0 Release
 
 We've been heads-down on development since taking over stewardship, with lighter public communication than ideal (last major updates were quieter after October 2025). Thank you for your patience—we're back to more visible progress.
 
-**Gantry 5.6.0** was released on **February 24, 2026** (just released!):
+**Gantry 5.6.0** was released under the former product name on **February 24, 2026**:
 - Full native compatibility with **Joomla 5** (dropped Joomla 4 support)
 - PHP **8.3.0 or newer** is required
 - Platform-specific improvements and fixes across Joomla, WordPress, and Grav
@@ -12,48 +16,48 @@ We've been heads-down on development since taking over stewardship, with lighter
 Check the full [CHANGELOG.md](https://github.com/gantry/gantry5/blob/develop/CHANGELOG.md) for details.
 
 **Project Status**  
-Gantry is actively developed and maintained by the Dazzle Software team. It's **not** in maintenance-only mode or abandoned—we're committed long-term.
+Genesis is actively developed and maintained by the Dazzle Software team. It is **not** in maintenance-only mode or abandoned—we are committed long-term.
 
 **What's Ahead in 2026**
 - Genesis remains **free and open-source** under GPL-3.0-or-later.
 - Focus areas: **Developer tools** + **AI-assisted features** (smarter particle/outline workflows, AI integration points).
 - Optional premium **add-on packages** to expand core capabilities without gating anything.
-- Actively working on a **theme migration addon** to help convert legacy Dazzle Software Gantry themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to current Gantry using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.  
+- Actively working on a **theme migration addon** to help convert legacy Dazzle Software Gantry themes (e.g., Quasar, Dominion, Galatea, Versla, and similar from their older catalog) to Genesis using **Helium** (or Hydrogen) as the base—while preserving as much of the original design, layout, and styling as possible.
   This includes tools to adapt/replace bundled legacy Dazzle Software addons/plugins like **RokSprocket**, **RokGallery**, **RokNavMenu**, **RokCandy**, **RokQuickCart**, **RokFeatureTable**, and others that were common in RT themes.  
   *No firm promises on 100% perfect 1:1 fidelity* (legacy extensions + platform changes can be complex), but we believe we can cover most common scenarios and make upgrades far easier for sites still on older RT setups.
 
-- **Gantry 6.0** (next major version) is in planning/active development, with deeper modern integrations (including MCP support). A detailed feature list and roadmap will be shared soon via GitHub discussions and gantry.org.
+- **Genesis** is in active development as the successor name for Gantry, with deeper modern integrations (including MCP support). A detailed feature list and roadmap will be shared through the project channels.
 
 **Community & Transparency**  
 We'll improve regular updates here on GitHub (discussions/announcements), gantry.org/blog, and possibly X. If you have open PRs, issues, or ideas—especially around legacy theme migrations—please open a discussion or comment below. We're prioritizing backlog review and merges now that 5.6.0 is out.
 
-Thanks for sticking with Gantry. Your feedback and support mean a lot—let's keep building!
+Thanks for joining us as Gantry becomes Genesis. Your feedback and support mean a lot—let's keep building!
 
 — Gene Teigland, Dazzle Software
 
 
 
 > [!IMPORTANT]
-> **A NEW CHAPTER FOR GANTRY** - [Read about it here](https://dazzlesoftware.org/gantry/)
+> **GANTRY IS BECOMING GENESIS** - [Read about the stewardship transition](https://dazzlesoftware.org/gantry/)
 >
-Dazzle Software is now the official steward of Gantry and gantry.org, the powerful theming framework that has shaped websites across WordPress, Joomla, and Grav for over a decade. Gantry has long been trusted by developers and organizations for its flexibility, speed, and clean design principles. We’ve crafted with it. We’ve relied on it. And now—we’re building its future.
+Dazzle Software is the official steward of the framework formerly known as Gantry. Under its new Genesis name, the project continues the flexible, fast, and clean theming framework used across WordPress, Joomla, Grav, and phpBB.
 
-Gantry’s success is built on the vision and dedication of Andy Miller and the team at Dazzle Software. Their innovative work laid the foundation for a framework trusted by thousands. We are honored that they have officially chosen us to carry this legacy forward and continue the development of Gantry into the future.
+Genesis builds on Gantry's established architecture and ecosystem. Existing Gantry installations and themes remain a compatibility priority throughout the rename.
 
 ================
 
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 [![Join the chat at https://gitter.im/gantry/gantry5](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gantry/gantry5?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Ready to get started with Gantry 5? That's great! We are here to help.
+Ready to get started with Genesis? That's great! We are here to help.
 
-On this page, you will get some quick tips to help you hit the ground running with Gantry 5. You can find more detailed documentation for each of these tips by clicking the **Learn More** button at the bottom of each section.
+On this page, you will get some quick tips to help you hit the ground running with Genesis. Some installation packages and linked documentation still use the Gantry 5 name during the compatibility transition.
 
-We hope you enjoy Gantry 5 every bit as much as we have enjoyed making it.
+We hope you enjoy Genesis every bit as much as we enjoy building it.
 
 ## Browser Requirements
 
-The back-end administration requirements of Gantry in order of preference are as follows:
+The back-end administration requirements of Genesis in order of preference are as follows:
 
 * Google Chrome 60+
 * Firefox 60+
@@ -63,11 +67,11 @@ The back-end administration requirements of Gantry in order of preference are as
 
 **Note:** Internet Explorer is no longer supported
 
-## Installing Gantry 5 and the Hydrogen Theme
+## Installing Genesis and the Hydrogen Theme
 
-Gantry 5 is a framework by which Gantry-powered themes are made. In order for a Gantry theme to work, you will need to install both the **framework** and the **theme**. Doing this is not difficult at all.
+Genesis is a framework for building and running Genesis-powered themes. You need to install both the **framework** and a compatible **theme**. Existing Gantry 5 themes remain part of the supported compatibility path.
 
-The first thing you need to do is download the latest build of Gantry 5 and Hydrogen. You can do so by clicking the links below, or via [GitHub](http://github.com/gantry/gantry5/).
+During the rename transition, download packages continue to use their existing Gantry 5 names and locations. Download the latest framework build and Hydrogen using the links below or from [GitHub](http://github.com/gantry/gantry5/).
 
 | [Download Stable](http://www.gantry.org/downloads#gantry5) | [Download CI Builds](http://gantry.org/downloads#ci-builds) |
 |:---------------------------------------------------:|:---------------------------------------------------------:|
@@ -76,25 +80,25 @@ Once you have the latest packages, installation is simple. We have provided a st
 
 [**Learn More**](http://docs.gantry.org/gantry5/basics/installation)
 
-## Accessing the Gantry Administrator
+## Accessing the Genesis Administrator
 
 ### Joomla
 
-When you have installed and activated both the Gantry framework and Hydrogen, you can access the Gantry 5 administrator in several different ways. The easiest being simply navigating to **Components > Gantry 5 Templates** from the back end of Joomla.
+After installing and activating the Genesis framework and Hydrogen, you can access its administrator in several ways. During the compatibility transition, Joomla may still display the legacy **Components > Gantry 5 Templates** menu and extension identifier.
 
-Here, you will see a list of any installed Gantry-powered themes. You can **Preview** the theme from here or select **Configure** to go directly to the **Gantry Administrator** where you can get started modifying your Gantry-powered site.
+Here, you will see a list of installed Genesis-compatible themes. You can **Preview** a theme or select **Configure** to open the administrator and modify your site.
 
-## Navigating the Gantry 5 Administrator
+## Navigating the Genesis Administrator
 
-The Gantry Administrator has multiple administrative tools you can flip through to configure how your Gantry-powered theme looks and functions. Here is a quick breakdown of each of these tools, and what you can do with them.
+The Genesis Administrator has multiple tools for configuring how your theme looks and functions. Here is a quick breakdown of each tool.
 
-You will notice the following menu items in the Gantry 5 Administrator:
+You will notice the following menu items in the Genesis Administrator:
 
 1. **Menu Editor**: This administrative panel gives you the ability to enhance the platform's menu by altering styling, rearranging links, and creating menu items that sit outside of the CMS's integrated Menu Manager.
 
 2. **About**: This page gives you quick, at-a-glance information about the currently-accessed theme. This is a one-stop shop for information about the theme including: name, version number, creator, support links, features, and more.
 
-3. **Platform Settings**: This button takes you to the CMS' settings page for Gantry 5. In Joomla, this is the **Permissions** configuration page.
+3. **Platform Settings**: This button takes you to the CMS settings page for Genesis. In Joomla, this is the **Permissions** configuration page.
 
 4. **Clear Cache**: This button clears the cache files related to Gantry. This includes all of the temporary files outside of CSS and configuration information.
 
@@ -110,12 +114,12 @@ You will notice the following menu items in the Gantry 5 Administrator:
 
 ## What are Outlines, Particles, Atoms, etc.?
 
-Because Gantry 5 is so different from any version of Gantry before it, we came up with some terms to help make sense of the relationships Gantry's new features have with one-another. Here is a quick breakdown of commonly used terms related to Gantry 5.
+Genesis uses a few framework-specific terms. Here is a quick breakdown of their relationships.
 
 | Term          | Definition                                                                                                                                             |
 | :-----        | :-----                                                                                                                                                 |
 | Outline       | A configurable style used in one or more areas of your site. It serves as the container on which a page's style, settings, and layout are set.         |
-| Particle      | A typically small block of data used on the front end. It acts a lot like a widget/module, but can be easily configured in the Gantry 5 Administrator. |
+| Particle      | A typically small block of data used on the front end. It acts like a widget or module and can be configured in the Genesis Administrator. |
 | Atom          | A type of Particle that contains non-rendered data, such as custom scripting (JS, CSS, etc.) or analytics scripts for traffic tracking.                |
 
 [**Learn More**](http://docs.gantry.org/gantry5/basics/terminology)
@@ -128,7 +132,7 @@ A chat room has been set up using [Gitter](https://gitter.im/gantry/gantry5) whe
 
 ## How to Contribute
 
-Contributing to the Gantry 5 framework, or to its associated documentation is easy. Development for both of these projects is being conducted via [Github](http://github.com), where you can submit **Issues** to report any bugs or suggest improvements, as well as submit your own **Pull Requests** to submit your own fixes and additions.
+Contributing to Genesis or its documentation is easy. Development is conducted through [GitHub](https://github.com), where you can submit issues, suggest improvements, and open pull requests.
 
 We recommend chatting with the team via [Gitter](https://gitter.im/gantry/gantry5) prior to submitting the pull request to avoid doubling up on a fix that is already pending or likely to be overwritten by an upcoming change.
 

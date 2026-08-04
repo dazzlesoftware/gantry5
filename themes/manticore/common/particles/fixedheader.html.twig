@@ -7,7 +7,7 @@
 }
 
 {% if particle.mobile == "enabled" %}
-@media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container')|default('48rem') }}) {
+@media only all and (max-width: {{ genesis.config.get('styles.breakpoints.tablet-container')|default('48rem') }}) {
     .headroom-bg-section + section, .headroom-bg-section + header {
         padding-top: {{ particle.mobilepadding|default('200') }}px !important;
     }
@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
+    {% do genesis.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
     <script>
         // User Section
         var myElement = document.querySelector("{{ particle.section|default('#g-navigation') }}");

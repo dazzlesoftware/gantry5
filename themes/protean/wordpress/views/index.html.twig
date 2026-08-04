@@ -8,10 +8,10 @@
         <div class="blog">
 
             {# Begin Page Header #}
-            {% if gantry.config.get('content.' ~ scope ~ '.heading.enabled', '0') and gantry.config.get('content.' ~ scope ~ '.heading.text') is not empty %}
+            {% if genesis.config.get('content.' ~ scope ~ '.heading.enabled', '0') and genesis.config.get('content.' ~ scope ~ '.heading.text') is not empty %}
                 <header class="page-header">
                     <h1>
-                        {{ gantry.config.get('content.' ~ scope ~ '.heading.text') }}
+                        {{ genesis.config.get('content.' ~ scope ~ '.heading.text') }}
                     </h1>
                 </header>
             {% endif %}
@@ -21,7 +21,7 @@
             <section class="entries">
                 <div class="g-grid">
                     {% for post in posts %}
-                        <div class="g-block {% if pagination.current == 1 and 'sticky' in post.class %}size-100{% else %}{{ gantry.config.get('content.' ~ scope ~ '.content.columns')|default('size-100') }}{% endif %}">
+                        <div class="g-block {% if pagination.current == 1 and 'sticky' in post.class %}size-100{% else %}{{ genesis.config.get('content.' ~ scope ~ '.content.columns')|default('size-100') }}{% endif %}">
                             {% include ['partials/content-' ~ scope ~ '.html.twig', (post.format) ? 'partials/content-' ~ post.format ~ '.html.twig' : '', 'partials/content.html.twig'] %}
                         </div>
                     {% endfor %}

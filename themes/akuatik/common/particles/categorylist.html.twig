@@ -13,7 +13,7 @@
                 </a>
             {% endfor %}
         {% else %}
-            {% include '@particles/categorylist-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% include '@particles/categorylist-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
 
         <a href="{{ particle.readmorelink }}" target="{{ particle.readmoretarget|default('_self')|e }}" class="g-categorylist-link">
@@ -21,4 +21,3 @@
         </a>
     </div>
 {% endblock %}
-

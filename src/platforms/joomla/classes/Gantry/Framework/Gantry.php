@@ -70,6 +70,7 @@ class Gantry extends Base\Gantry
         $app = Factory::getApplication();
 
         // Trigger the event.
+        $app->triggerEvent('onGenesisGlobalConfig', ['global' => &$global]);
         $app->triggerEvent('onGantryGlobalConfig', ['global' => &$global]);
 
         return $global;

@@ -377,7 +377,7 @@ abstract class CssCompiler implements CssCompilerInterface
         static $checksum;
 
         if (!$checksum) {
-            $checksum = md5(GANTRY5_VERSION . ' ' . Gantry::instance()['theme']->version);
+            $checksum = md5(GENESIS_VERSION . ' ' . Gantry::instance()['theme']->version);
         }
 
         return '/*' . substr($checksum, 0, $len - 4) . '*/';

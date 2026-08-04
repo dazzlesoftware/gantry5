@@ -10,11 +10,11 @@
         </span>
             <h2 class="page-title">
                 {{ 'GANTRY5_PLATFORM_OUTLINES'|trans }}
-                {% if gantry.authorize('outline.create') %}
-                <a href="{{ gantry.route('configurations', 'create') }}"
+                {% if genesis.authorize('outline.create') %}
+                <a href="{{ genesis.route('configurations', 'create') }}"
                    title="{{ 'GANTRY5_PLATFORM_ADD_NEW_OUTLINE'|trans }}"
                    aria-label="{{ 'GANTRY5_PLATFORM_ADD_NEW_OUTLINE'|trans }}"
-                   data-g5-outline-create class="button button-primary">
+                   data-genesis-outline-create class="button button-primary">
                     <i class="fa fa-fw fa-plus" aria-hidden="true"></i>
                 </a>
                 {% endif %}
@@ -26,18 +26,18 @@
                 {% set name = 'default' %}
                 {% include '@gantry-admin/layouts/outline.html.twig' %}
             </li>
-            {% for name, title in gantry.outlines.user %}
-                <li class="card g-block size-1-4{{ gantry.outlines.isDefault(name) ? ' outline-is-default' : '' }}">
+            {% for name, title in genesis.outlines.user %}
+                <li class="card g-block size-1-4{{ genesis.outlines.isDefault(name) ? ' outline-is-default' : '' }}">
                     {% include '@gantry-admin/layouts/outline.html.twig' %}
                 </li>
             {% endfor %}
-            {% if gantry.authorize('outline.create') %}
+            {% if genesis.authorize('outline.create') %}
             <li class="card g-block size-1-4 add-new">
                 <div class="page">
-                    <a href="{{ gantry.route('configurations', 'create') }}"
+                    <a href="{{ genesis.route('configurations', 'create') }}"
                        title="{{ 'GANTRY5_PLATFORM_ADD_NEW_OUTLINE'|trans }}"
                        aria-label="{{ 'GANTRY5_PLATFORM_ADD_NEW_OUTLINE'|trans }}"
-                       data-g5-outline-create tabindex="0">
+                       data-genesis-outline-create tabindex="0">
                         <i class="fa fa-fw fa-plus" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -47,8 +47,8 @@
 
         <h2>{{ 'GANTRY5_PLATFORM_SYSTEM_OUTLINES'|trans }}</h2>
         <ul class="g-grid">
-            {% for name, title in gantry.outlines.system %}
-                {% set preset = gantry.outlines.layoutPreset(name) %}
+            {% for name, title in genesis.outlines.system %}
+                {% set preset = genesis.outlines.layoutPreset(name) %}
                 <li class="card g-block size-1-4">
                     <div class="page">
                         <h4>{{ title }} <span class="float-right font-small">({{ 'GANTRY5_PLATFORM_ID_X'|trans(name) }})</span></h4>
@@ -60,19 +60,19 @@
                                 <a data-tip="{{ 'GANTRY5_PLATFORM_EDIT'|trans }}"
                                    title="{{ 'GANTRY5_PLATFORM_EDIT_X'|trans(title) }}"
                                    aria-label="{{ 'GANTRY5_PLATFORM_EDIT_X'|trans(title) }}"
-                                   data-g5-ajaxify=""
-                                   data-g5-ajaxify-target="[data-g5-content-wrapper]"
-                                   data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-                                   href="{{ gantry.route('configurations', name, 'layout') }}"
+                                   data-genesis-ajaxify=""
+                                   data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+                                   data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+                                   href="{{ genesis.route('configurations', name, 'layout') }}"
                                    class="button button-primary">
                                     <i class="fa fa-fw fa-pencil fa-pencil-alt" aria-hidden="true"></i>
                                 </a>
-                                {% if gantry.authorize('outline.create') %}
-                                <a href="{{ gantry.route('configurations', name, 'duplicate') }}"
+                                {% if genesis.authorize('outline.create') %}
+                                <a href="{{ genesis.route('configurations', name, 'duplicate') }}"
                                    data-tip="{{ 'GANTRY5_PLATFORM_DUPLICATE'|trans }}"
                                    title="{{ 'GANTRY5_PLATFORM_DUPLICATE_X'|trans(title) }}"
                                    aria-label="{{ 'GANTRY5_PLATFORM_DUPLICATE_X'|trans(title) }}"
-                                   data-g5-outline-duplicate class="button button-secondary">
+                                   data-genesis-outline-duplicate class="button button-secondary">
                                     <i class="fa fa-fw fa-copy" aria-hidden="true"></i>
                                 </a>
                                 {% endif %}

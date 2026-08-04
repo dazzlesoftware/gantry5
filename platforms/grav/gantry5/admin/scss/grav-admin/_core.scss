@@ -4,7 +4,7 @@ body #admin-main .admin-block {
 }
 
 // G5 Container
-#g5-container {
+[data-genesis-container] {
     font-family: inherit;
     font-weight: inherit;
 
@@ -81,7 +81,7 @@ body #admin-main .admin-block {
         }
     }
 
-    .g5-popover-extras.in {
+    .genesis-popover-extras.in {
         position: fixed;
         top: 4rem !important;
         right: 1rem !important;
@@ -89,6 +89,6 @@ body #admin-main .admin-block {
     }
 }
 
-.sidebar-closed #g5-container #main-header {
+.sidebar-closed [data-genesis-container] #main-header {
     left: 4.2rem;
 }

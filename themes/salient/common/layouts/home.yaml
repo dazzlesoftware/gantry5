@@ -328,7 +328,7 @@ content:
     attributes:
       promostyle: superpromo
       promo: 'Contemporary <br />Interface'
-      desc: '<p>Gantry 5''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.</p>'
+      desc: '<p>Genesis''s administrative interface has been completely rebuilt from the ground up to meet the needs of tomorrow''s developer, today. The admin provides multiple options for styles, layout, particles, and more.</p>'
       readmore: '&rarr;'
       readmoreclass: 'button-arrow nopaddingall'
       link: '#'
@@ -397,7 +397,7 @@ content:
     attributes:
       title: 'Open Positions'
       promostyle: subpromo
-      promo: 'Gantry 5 features an advanced Menu Editor, which augments the core menu with a rich, drag and drop interface. '
+      promo: 'Genesis features an advanced Menu Editor, which augments the core menu with a rich, drag and drop interface. '
       readmore: '&rarr;'
       readmoreclass: button-arrow
       link: '#'
@@ -409,7 +409,7 @@ content:
     attributes:
       promostyle: standard
       title: 'Extensive Documentation'
-      desc: '<p>Gantry benefits from an extensive, and ever expanding, catalog of online and free documentation covering basic to more advanced topics.</p>'
+      desc: '<p>Genesis benefits from an extensive, and ever expanding, catalog of online and free documentation covering basic to more advanced topics.</p>'
       readmore: 'Know More'
       link: '#'
       linkstyle: block
@@ -429,7 +429,7 @@ content:
     attributes:
       promostyle: standard
       title: 'YAML-Driven / Twig Templating'
-      desc: '<p>Gantry is built with several modern web technologies, such as the Twig PHP templating engine and YAML for human readable configuration files.</p>'
+      desc: '<p>Genesis is built with several modern web technologies, such as the Twig PHP templating engine and YAML for human readable configuration files.</p>'
       readmore: 'Know More'
       link: '#'
       linkstyle: block
@@ -451,7 +451,7 @@ content:
       testimonials:
         -
           img: 'gantry-media://demo/home/bottom/img-01.jpg'
-          content: 'The Gantry 5 Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
+          content: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
           author: 'Eddie Lobanovsky'
           company: 'Super Corporation'
           companyurl: '#'
@@ -556,4 +556,4 @@ content:
   custom-6240:
     title: Offcanvas
     attributes:
-      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Salient</h2>\n\n<p>Salient is an excellent design with a fresh approach for the ever-changing Web. Integrated with Gantry 5, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/salient\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"
+      html: "<div class=\"g-offcanvas-toggle\" data-offcanvas-toggle=\"\">\n  <i class=\"fa fa-fw fa-remove\"></i>\n</div>\n\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Creativity</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Innovation</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Originality</a></h4>\n<h4 class=\"g-subpromo nomarginbottom\"><a href=\"#\">Imagination</a></h4>\n\n<div class=\"largemarginall largepaddingall\">&nbsp;</div>\n\n<hr />\n\n<h2 class=\"g-promo\">Salient</h2>\n\n<p>Salient is an excellent design with a fresh approach for the ever-changing Web. Integrated with Genesis, it is infinitely customizable, incredibly powerful, and remarkably simple.</p>\n\n<a href=\"https://dazzlesoftware.org/joomla/templates/salient\" class=\"button button-3\"><i class=\"fa fa-fw fa-cloud-download\"></i> Download</a>"

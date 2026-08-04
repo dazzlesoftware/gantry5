@@ -49,7 +49,8 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
     public function getGlobals(): array
     {
         return [
-            'gantry' => static::gantry(),
+            'genesis' => static::gantry(),
+            'Genesis' => static::gantry(),
         ];
     }
 
@@ -74,7 +75,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFilter('attribute_array', [$this, 'attributeArrayFilter'], ['is_safe' => ['html']]),
         ];
 
-        //if (1 || GANTRY5_PLATFORM !== 'grav') {
+        //if (1 || GENESIS_PLATFORM !== 'grav') {
         $filters = array_merge($filters, [
             new TwigFilter('fieldName', [$this, 'fieldNameFilter']),
             new TwigFilter('json_decode', [$this, 'jsonDecodeFilter']),
@@ -112,11 +113,11 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('url', [$this, 'urlFunc']),
         ];
 
-        if (GANTRY5_PLATFORM === 'grav') {
+        if (GENESIS_PLATFORM === 'grav') {
             $functions[] = new TwigFunction('taxonomy_categories', [$this, 'taxonomyCategories']);
         }
 
-//        if (1 || GANTRY5_PLATFORM !== 'grav') {
+//        if (1 || GENESIS_PLATFORM !== 'grav') {
         $functions = array_merge($functions, [
             new TwigFunction('array', [$this, 'arrayFilter']),
             new TwigFunction('json_decode', [$this, 'jsonDecodeFilter']),

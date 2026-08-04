@@ -3,7 +3,7 @@
 {% block particle %}
 <div class="{{ particle.class|e }}">
     {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
-    <div class="g-productlist" id="{{ id }}" data-productlist-id="{{ id }}" {% if particle.presets == 'enabled' %}data-productlist-demosync="{{ gantry.theme.preset|replace({'preset':''}) }}"{% endif %}>
+    <div class="g-productlist" id="{{ id }}" data-productlist-id="{{ id }}" {% if particle.presets == 'enabled' %}data-productlist-demosync="{{ genesis.theme.preset|replace({'preset':''}) }}"{% endif %}>
         <div class="g-productlist-controls">
             <div class="g-productlist-layouts">
                 <ul>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="g-product-actions">
                             <div class="g-product-addtocart">
-                                <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ gantry.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                                <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ genesis.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
                             </div>
                             <div class="g-product-more">
                                 <a href="#modal{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}" id="modallink-{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}" data-modal-id="modal{{ id|replace({'-':'_'}) }}{{ category_id }}{{ loop.index }}"  title="{{ particle.morebtn|e }}" class="button button-4"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="g-product-actions">
                             <div class="g-product-addtocart">
-                                <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ gantry.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ particle.cartbtn }}</a>
+                                <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ genesis.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ particle.cartbtn }}</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             {{ particle.currency }} {% if product.price %}{{ product.price }}{% else %}0.00{% endif %}
                         </div>
                         <div class="g-product-addtocart">
-                            <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ gantry.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ particle.cartbtn }}</a>
+                            <a class="snipcart-add-item button button-4" data-item-id="{% if product.customid %}{{ product.customid }}{% else %}{{ product.name|title|replace({' ':''}) }}-{{ id|title|replace({'-':''}) }}{{ category_id }}{{ loop.index }}{% endif %}" data-item-name="{{ product.name }}"  data-item-price="{% if product.price %}{{ product.price }}{% else %}0.00{% endif %}" data-item-url="{{ genesis.page.url }}"  {% if product.attributes %}{% for attr in product.attributes %}data-{{ attr.name }}="{{ attr.value }}" {% endfor %}{% endif %} href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> {{ particle.cartbtn }}</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
 </div>
 {% endblock %}
 {% block javascript_footer %}
-{% do gantry.document.addScript(url('gantry-assets://js/product-list.js'), 10, 'footer') %}
+{% do genesis.document.addScript(url('gantry-assets://js/product-list.js'), 10, 'footer') %}
 {% endblock %}
 
 {% block javascript %}

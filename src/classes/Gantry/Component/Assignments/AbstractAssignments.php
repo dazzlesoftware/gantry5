@@ -138,7 +138,7 @@ abstract class AbstractAssignments
 
         $cache = $locator->findResource('gantry-cache://theme/compiled/config', true, true);
 
-        $config = new CompiledConfig($cache, [$files], GANTRY5_ROOT);
+        $config = new CompiledConfig($cache, [$files], GENESIS_ROOT);
 
         return $config->load()->toArray();
     }

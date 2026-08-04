@@ -31,7 +31,7 @@ class Particles
         'media' => 'Media',
         'slider' => 'Slider'
     ];
-    /** @var Gantry */
+    /** @var Genesis */
     protected $container;
     /** @var array|null */
     protected $files;
@@ -42,7 +42,7 @@ class Particles
 
     /**
      * Particles constructor.
-     * @param Gantry $container
+     * @param Genesis $container
      */
     public function __construct($container)
     {
@@ -85,7 +85,7 @@ class Particles
             $this->particles = [];
             foreach ($files as $key => $fileArray) {
                 $filename = key($fileArray);
-                $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+                $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
                 $particle = (array)$file->content();
                 $file->free();
 
@@ -141,7 +141,7 @@ class Particles
         }
 
         $filename = key($files[$id]);
-        $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+        $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
         $particle = (array)$file->content();
         $particle['subtype'] = $id; // TODO: can this be done better or is it fine like that?
         $file->free();

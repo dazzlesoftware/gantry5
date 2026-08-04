@@ -221,7 +221,7 @@ content:
         -
           image: 'gantry-media://home/slideshow/img-04.jpg'
           small_title: 'Introducing Aurora'
-          desc: 'Simplify customization with Aurora''s robust set of Gantry 5 particles and simple SVG-powered design elements.'
+          desc: 'Simplify customization with Aurora''s robust set of Genesis particles and simple SVG-powered design elements.'
           buttontext: 'Download now'
           buttonlink: '#'
           buttontarget: _self
@@ -230,12 +230,12 @@ content:
         -
           image: 'gantry-media://home/slideshow/img-05.jpg'
           small_title: 'Introducing Aurora'
-          desc: 'Gantry 5''s powerful drag-and-drop interface is easy to use. Customize your site''s entire layout in seconds.'
+          desc: 'Genesis''s powerful drag-and-drop interface is easy to use. Customize your site''s entire layout in seconds.'
           buttontext: 'Download now'
           buttonlink: '#'
           buttontarget: _self
           buttonclass: ''
-          title: 'Relax and Let Gantry 5 Do the Heavy Lifting'
+          title: 'Relax and Let Genesis Do the Heavy Lifting'
     block:
       variations: 'nomarginall nopaddingall'
   logo-4158:
@@ -306,7 +306,7 @@ content:
   custom-8291:
     title: 'Promo 1'
     attributes:
-      html: 'A full-featured Gantry 5 Template. Info: <a href="mailto:info@example.com">info@example.com</a>'
+      html: 'A full-featured Genesis Template. Info: <a href="mailto:info@example.com">info@example.com</a>'
     block:
       class: g-promo-1
       variations: center
@@ -340,7 +340,7 @@ content:
         -
           image: 'gantry-media://home/feature/img-03.jpg'
           position: 'ceo of unicorn inc.'
-          testimonial: 'Featuring Gantry 5''s inheritance system. Save time by using inheritance to avoid repetitive changes!'
+          testimonial: 'Featuring Genesis''s inheritance system. Save time by using inheritance to avoid repetitive changes!'
           author: 'jakub baran'
         -
           image: 'gantry-media://home/feature/img-04.jpg'
@@ -469,28 +469,28 @@ content:
         -
           icon: 'fa fa-search'
           title: 'Artfully Designed Font Picker'
-          description: 'Select from hundreds of fonts in Google''s font library or upload your own with Gantry 5''s Font Picker.'
+          description: 'Select from hundreds of fonts in Google''s font library or upload your own with Genesis''s Font Picker.'
           link: '#'
           linktarget: _self
           name: 'Item 2'
         -
           icon: 'fa fa-search'
           title: 'Cheerfully Colorful Color Picker'
-          description: 'Quickly and easily customize the color scheme of your website using Gantry 5''s powerful Color Picker tool.'
+          description: 'Quickly and easily customize the color scheme of your website using Genesis''s powerful Color Picker tool.'
           link: '#'
           linktarget: _self
           name: 'Item 3'
         -
           icon: 'fa fa-search'
           title: 'Magnificently Made Menu Editor'
-          description: 'Fine-tune your website''s menu with ease using Gantry 5''s built-in Menu Editor. Add items, elements, and more!'
+          description: 'Fine-tune your website''s menu with ease using Genesis''s built-in Menu Editor. Add items, elements, and more!'
           link: '#'
           linktarget: _self
           name: 'Item 4'
         -
           icon: 'fa fa-search'
           title: 'Very Versatile Layout Manager'
-          description: 'Build a beautiful website with completely custom layouts throughout with Gantry 5''s Layout Manager.'
+          description: 'Build a beautiful website with completely custom layouts throughout with Genesis''s Layout Manager.'
           link: '#'
           linktarget: _self
           name: 'Item 5'
@@ -504,7 +504,7 @@ content:
         -
           icon: 'fa fa-search'
           title: 'Incredibly Intuitive Icon Picker'
-          description: 'Looking for the right icon? Gantry''s Icon Picker includes hundreds of quality Font Awesome icons to choose from.'
+          description: 'Looking for the right icon? Genesis''s Icon Picker includes hundreds of quality Font Awesome icons to choose from.'
           link: '#'
           linktarget: _self
           name: 'Item 7'
@@ -543,7 +543,7 @@ content:
         -
           image: 'gantry-media://home/bottom/img-02.jpg'
           topline: 'September 3rd, 2017'
-          description: "<b>Gantry 5 is a versatile framework</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
+          description: "<b>Genesis is a versatile framework</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''
           linklabel: ''
           linktarget: _self
@@ -559,7 +559,7 @@ content:
         -
           image: 'gantry-media://home/bottom/img-04.jpg'
           topline: 'September 5th, 2017'
-          description: "<b>Gantry 5 is a versatile framework</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
+          description: "<b>Genesis is a versatile framework</b>\n<br /><br />\nIn addition to powerful, versatile templates built on a next-generation framework, Dazzle Software offers incredible support that is second to none.\n<br /><br />\nSo, what are you waiting for? Pick up Aurora or join a Dazzle Software Club and take your website to new heights..."
           link: ''
           linklabel: ''
           linktarget: _self

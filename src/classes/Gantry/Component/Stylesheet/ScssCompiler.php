@@ -293,7 +293,7 @@ WARN;
      * Resolve an SCSS import for cache and dependency checks.
      *
      * scssphp 2.x resolves imports through the filesystem paths configured in
-     * compileFile(). Gantry still needs this method to detect missing or
+     * compileFile(). Genesis still needs this method to detect missing or
      * changed imports before deciding whether a stylesheet must be rebuilt.
      *
      * @param string $url
@@ -372,7 +372,7 @@ WARN;
             // TODO: Look if we can / should use option to let compiler to save the source map.
             $compiler->setSourceMapOptions([
                 'sourceMapRootpath' => '',
-                'sourceMapBasepath' => GANTRY5_ROOT,
+                'sourceMapBasepath' => GENESIS_ROOT,
             ]);
         }
 

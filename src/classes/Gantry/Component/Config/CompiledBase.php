@@ -44,7 +44,7 @@ abstract class CompiledBase
      * @param string $path  Base path for the file list.
      * @throws \BadMethodCallException
      */
-    public function __construct($cacheFolder, array $files, $path = GANTRY5_ROOT)
+    public function __construct($cacheFolder, array $files, $path = GENESIS_ROOT)
     {
         if (!$cacheFolder) {
             throw new \BadMethodCallException('Cache folder not defined.');

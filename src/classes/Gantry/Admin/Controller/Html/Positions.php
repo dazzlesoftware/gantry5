@@ -203,7 +203,7 @@ class Positions extends HtmlController
 
         $blueprints = $this->container['particles']->getBlueprintForm($name);
 
-        $chromeBlueprints = BlueprintForm::instance('position/chrome.yaml', 'gantry-admin://blueprints');
+        $chromeBlueprints = BlueprintForm::instance('position/chrome.yaml', 'Genesis-admin://blueprints');
 
         $data['title'] = isset($data['title']) ? $data['title'] : $blueprints['name'];
         $data['chrome'] = isset($data['chrome']) ? $data['chrome'] : [];

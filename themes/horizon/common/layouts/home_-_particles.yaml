@@ -184,7 +184,7 @@ content:
           link_text: 'Learn More ->'
           title: 'A big, bold slider for your homepage.'
         -
-          description: 'Build gorgeous websites in a fraction of the time with Gantry 5.'
+          description: 'Build gorgeous websites in a fraction of the time with Genesis.'
           image: 'gantry-media://home/slideshow/img-01.jpg'
           link: '#'
           link_text: 'Learn More ->'
@@ -269,7 +269,7 @@ content:
           created_date: ''
           content_title: ''
           author: ''
-          leading_content: 'Horizon features some of the greatest particles ever made for the Gantry 5 framework. Gorgeous sliders, statistic meters, icon grids, comparison tables, and more. Built on a responsive framework that makes it easier than ever to create a unique user experience for your customers.'
+          leading_content: 'Horizon features some of the greatest particles ever made for the Genesis framework. Gorgeous sliders, statistic meters, icon grids, comparison tables, and more. Built on a responsive framework that makes it easier than ever to create a unique user experience for your customers.'
           main_content: ''
           readmore_label: ''
           readmore_link: ''
@@ -289,7 +289,7 @@ content:
       patterns: enabled
       items:
         -
-          description: 'Horizon is innovation personified. It is built from the ground up to fit the needs of brands large and small, on the powerful and versatile Gantry 5 framework.'
+          description: 'Horizon is innovation personified. It is built from the ground up to fit the needs of brands large and small, on the powerful and versatile Genesis framework.'
           image: 'gantry-media://home/feature/img-01.jpg'
           title: Innovation
         -

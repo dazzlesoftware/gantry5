@@ -31,14 +31,17 @@ class gantry5_module
 
         $this->boot($phpbb_container);
 
+        if (!\defined('GENESIS_ADMIN_PATH')) {
+            \define('GENESIS_ADMIN_PATH', GENESIS_PHPBB_EXT_PATH . 'admin');
+        }
         if (!\defined('GANTRYADMIN_PATH')) {
-            \define('GANTRYADMIN_PATH', GANTRY5_PHPBB_EXT_PATH . 'admin');
+            \define('GANTRYADMIN_PATH', GENESIS_ADMIN_PATH);
         }
 
         $gantry = \Gantry\Framework\Gantry::instance();
 
         if (!isset($gantry['theme'])) {
-            $gantry['theme.path'] = GANTRY5_PHPBB_EXT_PATH . 'themes/g5_helium';
+            $gantry['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/g5_helium';
             $gantry['theme.name'] = 'g5_helium';
             $gantry['theme'] = static function ($c) {
                 return new \Gantry\Framework\Theme($c['theme.path'], $c['theme.name']);
@@ -71,11 +74,11 @@ class gantry5_module
         // rewritten URL would also carry g5_path and would incorrectly get routed as ajax. Only
         // `g5_format` (appended via Router's ajax_suffix, '&g5_format=json') is exclusive to
         // JS-issued fetch() calls -- the URL rewrite deliberately never sets it.
-        $isGantryAjax = $request->is_set('g5_format');
+        $isGantryAjax = $request->is_set('genesis_format') || $request->is_set('g5_format');
 
         if ($isGantryAjax) {
             // The admin JS fetches particle forms / save results to inject directly into a modal
-            // or to parse as JSON -- it wants Gantry's own response completely bare, not wrapped
+            // or to parse as JSON -- it wants Genesis's own response completely bare, not wrapped
             // in phpBB's ACP chrome (which would nest a second full <html> document inside the
             // modal, with its own relative asset links resolving wrong once injected).
             try {
@@ -108,7 +111,7 @@ class gantry5_module
     }
 
     /**
-     * Bootstraps the Gantry Framework container for this request, on first use only. Mirrors
+     * Bootstraps the Genesis Framework container for this request, on first use only. Mirrors
      * event/listener.php::boot() (front-end bootstrap) -- kept separate since the ACP module and
      * the front-end listener are wired through completely different phpBB entry points, and the
      * module has direct access to $phpbb_container while the listener gets it via constructor
@@ -133,11 +136,17 @@ class gantry5_module
         $rootPath = rtrim((string) realpath($pathHelper->get_phpbb_root_path()), '/\\') . '/';
         $extPath = rtrim((string) realpath(__DIR__ . '/..'), '/\\') . '/';
 
+        if (!\defined('GENESIS_PHPBB_ROOT_PATH')) {
+            \define('GENESIS_PHPBB_ROOT_PATH', $rootPath);
+        }
         if (!\defined('GANTRY5_PHPBB_ROOT_PATH')) {
-            \define('GANTRY5_PHPBB_ROOT_PATH', $rootPath);
+            \define('GANTRY5_PHPBB_ROOT_PATH', GENESIS_PHPBB_ROOT_PATH);
+        }
+        if (!\defined('GENESIS_PHPBB_EXT_PATH')) {
+            \define('GENESIS_PHPBB_EXT_PATH', $extPath);
         }
         if (!\defined('GANTRY5_PHPBB_EXT_PATH')) {
-            \define('GANTRY5_PHPBB_EXT_PATH', $extPath);
+            \define('GANTRY5_PHPBB_EXT_PATH', GENESIS_PHPBB_EXT_PATH);
         }
 
         require_once $extPath . 'vendor/autoload.php';

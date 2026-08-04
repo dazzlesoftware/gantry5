@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block head_application %}
-    {% do gantry.platform.finalize %}
+    {% do genesis.platform.finalize %}
 
     {% block assets deferred %}
         {{ assets.css()|raw }}

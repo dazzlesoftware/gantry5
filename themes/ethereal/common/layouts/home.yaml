@@ -145,12 +145,12 @@ content:
         -
           image: 'gantry-theme://images/demo/home/feature/img-02.jpg'
           title: 'A versatile and flexible in-built dropdown menu system'
-          desc: 'Gantry 5 benefits from a built-in navigation system. Dropdowns can be configured to be multiple columns with dynamic or configurable fixed widths.'
+          desc: 'Genesis benefits from a built-in navigation system. Dropdowns can be configured to be multiple columns with dynamic or configurable fixed widths.'
           name: 'Swiper 2'
         -
           image: 'gantry-theme://images/demo/home/feature/img-03.jpg'
-          title: 'Built on Gantry 5, a modern and flexible theme framework'
-          desc: 'Gantry 5 is a revolutionary template framework, built for the modern web, with features such as responsive designs, drag & drop layout and menu controls.'
+          title: 'Built on Genesis, a modern and flexible theme framework'
+          desc: 'Genesis is a revolutionary template framework, built for the modern web, with features such as responsive designs, drag & drop layout and menu controls.'
           name: 'Swiper 3'
     block:
       class: 'flush g-feature-swiper-content'
@@ -172,9 +172,9 @@ content:
           icon3text: ''
           title: RokSprocket
         -
-          headline: 'Versatile array of Gantry 5 only content particles'
-          tag: 'Gantry 5'
-          desc: 'Complex content creations purely with Gantry 5 particles.'
+          headline: 'Versatile array of Genesis only content particles'
+          tag: 'Genesis'
+          desc: 'Complex content creations purely with Genesis particles.'
           divider: bottom
           link: ''
           icon1: ''
@@ -183,7 +183,7 @@ content:
           icon2text: ''
           icon3: ''
           icon3text: ''
-          title: 'Gantry 5'
+          title: 'Genesis'
         -
           headline: 'Ultimate control with the intuitive template manager'
           tag: Configure
@@ -255,11 +255,11 @@ content:
           image: 'gantry-theme://images/demo/home/main/imageblock/img-06.jpg'
           icon: 'fa fa-fw fa-rocket'
           headline: ''
-          titlebottom: 'Gantry 5'
+          titlebottom: 'Genesis'
           tag: 'Modern Framework'
           variation: 'box1 spaced nopaddingall'
           class: ''
-          title: 'Gantry 5'
+          title: 'Genesis'
         -
           image: 'gantry-theme://images/demo/home/main/imageblock/img-07.png'
           icon: 'fa fa-fw fa-bus'
@@ -283,7 +283,7 @@ content:
   custom-2217:
     title: 'Short Description'
     attributes:
-      html: '<p>Ethereal has been developed exclusively for the groundbreaking Gantry 5 Framework. Ethereal leverages the power and simplicity of Gantry 5 to provide a wide array of features and layout possibilities to make it the perfect theme for any site.</p>'
+      html: '<p>Ethereal has been developed exclusively for the groundbreaking Genesis Framework. Ethereal leverages the power and simplicity of Genesis to provide a wide array of features and layout possibilities to make it the perfect theme for any site.</p>'
   numberheadline-7891:
     title: 'This Month'
     attributes:
@@ -379,7 +379,7 @@ content:
   custom-1712:
     title: 'Simple and Comprehensive Configuration'
     attributes:
-      html: "<div class=\"g-tag\"><strong>Simple and Comprehensive Configuration</strong></div>\n<p class=\"g-quote\">The Gantry 5 Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.</p>"
+      html: "<div class=\"g-tag\"><strong>Simple and Comprehensive Configuration</strong></div>\n<p class=\"g-quote\">The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.</p>"
     block:
       class: g-positive-margin-top
       variations: center
@@ -442,12 +442,12 @@ content:
       class: flush
       variations: 'title-underline title-center'
   imageoverlay-7161:
-    title: 'Gantry 5 Image'
+    title: 'Genesis Image'
     attributes:
       image: 'gantry-theme://images/demo/home/bottom/img-01.jpg'
       imagetitle: 'The Next Generation of Template Frameworks'
-      imagetag: 'Gantry 5'
-      desc: 'Gantry 5 is an advanced, versatile and multi-platform template framework designed for the modern web.'
+      imagetag: 'Genesis'
+      desc: 'Genesis is an advanced, versatile and multi-platform template framework designed for the modern web.'
   blogcontent-3771:
     title: 'Blog Content'
     attributes:
@@ -465,7 +465,7 @@ content:
           icon3text: Standard
           title: Particles
         -
-          headline: 'Advanced and dynamic architecture underpinning Gantry 5'
+          headline: 'Advanced and dynamic architecture underpinning Genesis'
           desc: 'Twig is a powerful templating engine for PHP that makes for fast and flexible coding. YAML is a human-readable framework for template configurations.'
           divider: none
           link: ''
@@ -497,9 +497,9 @@ content:
           link: 'http://docs.gantry.org/gantry5/basics/key-features'
           name: Features
         -
-          text: 'Gantry 5'
+          text: 'Genesis'
           link: 'http://gantry.org/'
-          name: 'Gantry 5'
+          name: 'Genesis'
         -
           text: Particles
           link: 'http://docs.gantry.org/gantry5/particles'

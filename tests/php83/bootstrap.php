@@ -1,6 +1,6 @@
 <?php
 /**
- * Gantry Framework - PHP 8.3 Compatibility Test Suite
+ * Genesis Framework - PHP 8.3 Compatibility Test Suite
  *
  * @copyright (c) 2024
  */
@@ -29,7 +29,7 @@ $mockedClasses = [
     'Gantry\\Framework\\Base\\Gantry'
 ];
 
-// Register class autoloader for Gantry classes
+// Register class autoloader for Genesis classes
 spl_autoload_register(function ($class) use ($mockedClasses) {
     // Skip classes we've already mocked
     if (in_array($class, $mockedClasses)) {
@@ -60,7 +60,7 @@ spl_autoload_register(function ($class) use ($mockedClasses) {
     
     // Only load real classes if they're not in our mock list
     if (!in_array($class, $mockedClasses)) {
-        // Then check for real Gantry classes
+        // Then check for real Genesis classes
         $filename = GANTRY5_CLASSES . '/' . str_replace('\\', '/', $class) . '.php';
         if (file_exists($filename)) {
             include_once $filename;

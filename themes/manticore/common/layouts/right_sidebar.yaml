@@ -206,7 +206,7 @@ content:
   custom-2258:
     title: 'Flexible Layouts'
     attributes:
-      html: "<h3 class=\"g-title\">Flexible Layouts</h3>\n<p>Gantry 5 benefits from a flexible and intuitive, drag &amp; drop layout manager. You can add as many rows and blocks to each section as you desire, and configure their distance to intervals of 1%.</p>\n\n<p>Each block has individual controls, such as an autocomplete select box for box variations, as well as individual CSS fields.</p>"
+      html: "<h3 class=\"g-title\">Flexible Layouts</h3>\n<p>Genesis benefits from a flexible and intuitive, drag &amp; drop layout manager. You can add as many rows and blocks to each section as you desire, and configure their distance to intervals of 1%.</p>\n\n<p>Each block has individual controls, such as an autocomplete select box for box variations, as well as individual CSS fields.</p>"
   custom-5370:
     title: 'H2 Heading'
     attributes:

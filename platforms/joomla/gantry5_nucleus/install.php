@@ -13,7 +13,7 @@ use Joomla\Filesystem\File;
 use Joomla\Filesystem\Folder;
 
 /**
- * Gantry 5 Nucleus installer script.
+ * Genesis Nucleus installer script.
  */
 class Gantry5_NucleusInstallerScript
 {

@@ -314,7 +314,7 @@ content:
   custom-5410:
     title: 'Mainbody Examples'
     attributes:
-      html: "<h1 class=\"g-title\">Mainbody Examples</h1>\n<p>The mainbody is a unique section in Gantry 5 that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
+      html: "<h1 class=\"g-title\">Mainbody Examples</h1>\n<p>The mainbody is a unique section in Genesis that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
     block:
       class: 'nomarginbottom nopaddingbottom'
       variations: title2

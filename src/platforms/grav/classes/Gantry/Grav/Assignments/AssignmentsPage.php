@@ -74,7 +74,7 @@ class AssignmentsPage implements AssignmentsInterface
         $flex = $grav['flex'];
         $directory = $flex->getDirectory('pages');
         if (!$directory) {
-            throw new \RuntimeException('Flex Pages are required for Gantry to work!');
+            throw new \RuntimeException('Flex Pages are required for Genesis to work!');
         }
         /** @var PageIndex $pages */
         $pages = $directory->getCollection();

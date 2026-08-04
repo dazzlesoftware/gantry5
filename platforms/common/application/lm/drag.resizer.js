@@ -64,7 +64,7 @@ class Resizer {
         siblings = asElements(siblings);
         if (!element) { return; }
 
-        window.G5.tips.hide(element);
+        window.Genesis.tips.hide(element);
         if (event.which && event.which !== 1) { return true; }
 
         // Stops text selection

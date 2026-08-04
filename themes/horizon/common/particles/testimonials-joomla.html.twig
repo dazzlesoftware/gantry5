@@ -62,7 +62,7 @@
 			{% if display.author.enabled and article.created_by_alias %}
             <div class="g-testimonials-separator">
                 <svg width="570" height="36" viewbox="0 0 570 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 2H270V32L300 2H570" stroke="{{ gantry.config.get('styles.base.text-color') }}" stroke-width="3" class="base-text-color" />
+                    <path d="M0 2H270V32L300 2H570" stroke="{{ genesis.config.get('styles.base.text-color') }}" stroke-width="3" class="base-text-color" />
                 </svg>
             </div>
 
@@ -81,4 +81,3 @@
 	</div>
 </div>
 {% endfor %}
-

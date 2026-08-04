@@ -16,7 +16,7 @@ if errorlevel 1 (
 )
 
 echo ============================================================
-echo Deploying Gantry Grav builds
+echo Deploying Genesis Grav builds
 echo ============================================================
 echo Source:  %~dp0dist
 echo Target:  %grav_root%

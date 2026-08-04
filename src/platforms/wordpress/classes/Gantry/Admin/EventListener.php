@@ -124,7 +124,7 @@ class EventListener implements EventSubscriberInterface
             }
         }
 
-        $menus = array_flip($event->gantry['menu']->getMenus());
+        $menus = array_flip($event->Genesis['menu']->getMenus());
         $menuId = isset($menus[$event->resource]) ? $menus[$event->resource] : 0;
 
         // Save global menu settings into Wordpress.
@@ -210,7 +210,7 @@ class EventListener implements EventSubscriberInterface
                 } else {
                     $parent_id = 0;
                 }
-                // Gantry-only items can temporarily have a root or otherwise
+                // Genesis-only items can temporarily have a root or otherwise
                 // unmapped path while the menu editor is creating them.
                 // Preserve the WordPress order until their path is finalized.
                 $position = isset($ordering[$key]) ? $ordering[$key] : (int)$wpItem->menu_order;

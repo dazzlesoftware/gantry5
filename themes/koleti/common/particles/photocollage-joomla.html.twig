@@ -4,7 +4,7 @@
 {% set sort = article_settings.sort %}
 {% set limit = article_settings.limit %}
 {% set display = article_settings.display %}
-{% do gantry.load('lightcase.init') %}
+{% do genesis.load('lightcase.init') %}
 
 {# Category Finder #}
 {% set category_options = filter.categories ? {

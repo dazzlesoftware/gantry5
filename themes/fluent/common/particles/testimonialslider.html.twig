@@ -11,7 +11,7 @@
 
 {% block particle %}
 
-    <div id="{{ id }}" class="g-testimonialslider {{ particle.class|e }}" data-testimonialslider-id="{{ id }}" data-testimonialslider-speed="{{ particle.speed|default('10') }}" data-testimonialslider-rtl="{% if gantry.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-testimonialslider-matchheight="{{ particle.matchheight|default('enabled') }}" data-testimonialslider-mobile="{{ gantry.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('51rem') }}" {{ attr_extra }}>
+    <div id="{{ id }}" class="g-testimonialslider {{ particle.class|e }}" data-testimonialslider-id="{{ id }}" data-testimonialslider-speed="{{ particle.speed|default('10') }}" data-testimonialslider-rtl="{% if genesis.page.direction == 'rtl' %}true{% else %}false{% endif %}" data-testimonialslider-matchheight="{{ particle.matchheight|default('enabled') }}" data-testimonialslider-mobile="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('51rem') }}" {{ attr_extra }}>
         <div class="g-testimonialslider-carousel" data-testimonialslider-carousel-id="{{ id }}" {% if particle.matchheight == 'enabled' %}style="height: 50px;"{% elseif particle.matchheight == 'disabled' and particle.fixedheight %}style="height: {{ particle.fixedheight }}px;"{% endif %}>
 
             {% for item in particle.items %}
@@ -58,6 +58,6 @@
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-{% do gantry.document.addScript(url('gantry-assets://js/testimonial-slider.js'), 10, 'footer') %}
+{% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+{% do genesis.document.addScript(url('gantry-assets://js/testimonial-slider.js'), 10, 'footer') %}
 {% endblock %}

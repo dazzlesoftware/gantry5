@@ -81,7 +81,7 @@ dom.ready(function() {
         });
     };
 
-    dom.delegate(body, 'click', '[data-g5-outline-create], [data-g5-outline-duplicate]', function(event, trigger) {
+    dom.delegate(body, 'click', '[data-genesis-outline-create], [data-genesis-outline-duplicate]', function(event, trigger) {
         event.preventDefault();
         modal.open({
             content: 'Loading',

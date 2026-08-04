@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Shared modern scssphp validator for a Gantry platform.
+ * Shared modern scssphp validator for a Genesis platform.
  *
  * The including script must define $platform and $vendorAutoload.
  */
@@ -24,7 +24,7 @@ if (!isset($platform, $vendorAutoload)) {
 }
 
 // A full collection sweep compiles many large, import-heavy themes in one
-// process. This limit applies only to the CLI validator, not to Gantry itself.
+// process. This limit applies only to the CLI validator, not to Genesis itself.
 ini_set('memory_limit', '1G');
 
 $root = dirname(__DIR__);
@@ -109,7 +109,7 @@ foreach ($themeDirectories as $themeDirectory) {
             $compiler->setLogger($logger);
             $compiler->setImportPaths($importPaths);
 
-            // Gantry resolves these values at runtime. The validator only needs
+            // Genesis resolves these values at runtime. The validator only needs
             // valid modern Sass values to exercise every import and expression.
             $compiler->registerFunction(
                 'url',

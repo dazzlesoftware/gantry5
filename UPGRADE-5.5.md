@@ -20,9 +20,9 @@ See [commit b16d10e](https://github.com/gantry/gantry5/commit/b16d10eb2b29a86662
 
 ## Future proofing SCSS
 
-To limit the errors, Gantry 5.5 uses older version of the SCSS compiler by default. To use the newer version you need to set minimum Gantry version in your theme:
+To limit the errors, Genesis 5.5 uses older version of the SCSS compiler by default. To use the newer version you need to set minimum Genesis version in your theme:
 
-`gantry/theme.yaml`
+`Genesis/theme.yaml`
 ```yaml
 configuration:
   ...
@@ -31,7 +31,7 @@ configuration:
     gantry: '5.5'
 ```
 
-After doing this, go to styles tab in Gantry admin and
+After doing this, go to styles tab in Genesis admin and
 - Extras > Clear Cache
 - Recompile CSS
 
@@ -42,7 +42,7 @@ Now fix the errors to clear badly written SCSS such as:
 - `fadeout($x, n%)` should be `fade-out($x, m)` where `m = n/100` or in range `0...1`
 - `transparentize($x, n%)` should be `transparentize($x, m)` where `m = n/100` or in range `0...1`
 
-SCSS compiler will also show a lot of deprecated warnings for features which will not be supported in the next version of Gantry anymore. We will soon release a script to automatically fix those.
+SCSS compiler will also show a lot of deprecated warnings for features which will not be supported in the next version of Genesis anymore. We will soon release a script to automatically fix those.
 
 **NOTE:** There is still an issue with incompatible units if breakponts use `px`. We are looking to fix it.
 
@@ -50,11 +50,11 @@ SCSS compiler will also show a lot of deprecated warnings for features which wil
 
 Themes designed to Joomla! 3 do not really work in Joomla! 4 without some changes. This document helps you to add Joomla! 4 support to your themes.
 
-**NOTE:** Joomla! 4 support in Gantry is still work in progress!
+**NOTE:** Joomla! 4 support in Genesis is still work in progress!
 
 ## Updating theme files to make the theme to run in Joomla! 4.0
 
-Joomla! 4 has made some changes to the templates, which means that also Gantry Themes need to be adjusted to make them to work in the latest Joomla!
+Joomla! 4 has made some changes to the templates, which means that also Genesis Themes need to be adjusted to make them to work in the latest Joomla!
 
 All the reference files mentioned below can be found from: https://github.com/gantry/gantry5/tree/develop/themes/helium/joomla
 

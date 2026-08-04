@@ -312,7 +312,7 @@ class Filepicker extends JsonController
         }
 
         // TODO: handle streams
-        $targetPath = GANTRY5_ROOT . '/' . $path;
+        $targetPath = GENESIS_ROOT . '/' . $path;
 
         if (!file_exists($targetPath)) {
             throw new \RuntimeException('File not found.', 404);
@@ -533,7 +533,7 @@ class Filepicker extends JsonController
         $directory = dirname($path);
         $directory = $directory === '.' ? '' : trim($directory, '/');
 
-        return rtrim(GANTRY5_ROOT, '/\\') . ($directory ? '/' . $directory : '');
+        return rtrim(GENESIS_ROOT, '/\\') . ($directory ? '/' . $directory : '');
     }
 
     /**
@@ -612,7 +612,7 @@ class Filepicker extends JsonController
         if ($isStream) {
             $targetPath = $locator->findResource($path, true, true);
         } else {
-            $targetPath = GANTRY5_ROOT . '/' . $path;
+            $targetPath = GENESIS_ROOT . '/' . $path;
         }
 
         $file = File::instance($targetPath);

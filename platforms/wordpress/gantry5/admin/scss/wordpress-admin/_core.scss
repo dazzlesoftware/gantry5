@@ -22,7 +22,7 @@ body.gantry5 {
         z-index: $wp-zindex;
     }
 
-    #g5-container {
+    [data-genesis-container] {
         a:focus {
             box-shadow: none;
         }
@@ -81,7 +81,7 @@ body.gantry5 {
             color: inherit;
         }
 
-        .g5-dialog, .g5-popover.g5-popover-above-modal {
+        .genesis-dialog, .genesis-popover.genesis-popover-above-modal {
             z-index: $wp-zindex;
         }
 
@@ -134,7 +134,7 @@ body.gantry5 {
 
 }
 
-#g5-container.g5wp-out-of-scope {
+[data-genesis-container].g5wp-out-of-scope {
     z-index: $wp-zindex;
     position: fixed;
     top: 0;
@@ -146,7 +146,7 @@ body.gantry5 {
         display: none;
     }
 
-    .g5-popover {
+    .genesis-popover {
         z-index: $wp-zindex;
     }
 

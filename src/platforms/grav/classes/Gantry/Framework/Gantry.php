@@ -26,7 +26,7 @@ class Gantry extends Base\Gantry
     {
         $container = parent::init();
 
-        // Keep Gantry on DazzleSoftware Toolbox while importing Grav's stream
+        // Keep Genesis on DazzleSoftware Toolbox while importing Grav's stream
         // configuration through the locator's public, implementation-neutral API.
         $container['locator'] = static function() {
             $gravLocator = Grav::instance()['locator'];

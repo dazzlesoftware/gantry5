@@ -36,14 +36,14 @@ function gantry5_sanitize_plugin_settings($input)
 function gantry5_manage_settings()
 {
     if (current_user_can('manage_options')) {
-        add_options_page('Gantry 5 Settings', 'Gantry 5 Settings', 'manage_options', 'g5-settings', 'gantry5_plugin_settings');
+        add_options_page('Genesis Settings', 'Genesis Settings', 'manage_options', 'g5-settings', 'gantry5_plugin_settings');
     }
 }
 
 function gantry5_modify_plugin_action_links($links, $file)
 {
-    // Return normal links if not Gantry 5 or insufficient permissions
-    if (plugin_basename(GANTRY5_PATH . '/gantry5.php') !== $file || !current_user_can('manage_options')) {
+    // Return normal links if not Genesis or insufficient permissions
+    if (plugin_basename(GENESIS_PATH . '/gantry5.php') !== $file || !current_user_can('manage_options')) {
         return $links;
     }
 
@@ -74,7 +74,7 @@ function gantry5_plugin_settings()
     $settings_updated = isset($_GET['settings-updated']) ? sanitize_text_field(wp_unslash($_GET['settings-updated'])) : '';
 
     if ($settings_updated === 'true') {
-        echo '<div id="message" class="updated fade"><p>' . esc_html__('Gantry 5 plugin settings saved.', 'gantry5') . '</p></div>';
+        echo '<div id="message" class="updated fade"><p>' . esc_html__('Genesis plugin settings saved.', 'gantry5') . '</p></div>';
     }
 
     ?>
@@ -84,13 +84,13 @@ function gantry5_plugin_settings()
             <form method="post" action="<?php echo esc_url(admin_url('options.php')); ?>">
                 <?php settings_fields('gantry5_plugin_options'); ?>
 
-                <h1 class="available-options"><?php esc_html_e('Gantry 5 Settings', 'gantry5'); ?></h1>
+                <h1 class="available-options"><?php esc_html_e('Genesis Settings', 'gantry5'); ?></h1>
 
                 <table class="form-table">
                     <tbody>
                         <tr>
                             <th scope="row">
-                                <label for="production1" title="<?php esc_attr_e('Production mode makes Gantry faster by more aggressive caching and ignoring changed files in the filesystem. Most changes made from administration should still be detected, but changes made in filesystem or database will be ignored.', 'gantry5'); ?>"><?php esc_html_e('Production Mode', 'gantry5'); ?></label>
+                                <label for="production1" title="<?php esc_attr_e('Production mode makes Genesis faster by more aggressive caching and ignoring changed files in the filesystem. Most changes made from administration should still be detected, but changes made in filesystem or database will be ignored.', 'gantry5'); ?>"><?php esc_html_e('Production Mode', 'gantry5'); ?></label>
                             </th>
                             <td>
                                 <input id="production1" type="radio" <?php checked($option['production'], '1'); ?> value="1" name="gantry5_plugin[production]" />
@@ -101,7 +101,7 @@ function gantry5_plugin_settings()
                         </tr>
                         <tr>
                             <th scope="row">
-                                <label for="use_media_folder1" title="<?php esc_attr_e('By default Gantry media picker saves all files into the theme. If you want to save files into uploads folder instead, please select this option. Files in the old location can still be used, but are overridden by the files in the selected folder.', 'gantry5'); ?>"><?php esc_html_e('Use Uploads Folder', 'gantry5'); ?></label>
+                                <label for="use_media_folder1" title="<?php esc_attr_e('By default Genesis media picker saves all files into the theme. If you want to save files into uploads folder instead, please select this option. Files in the old location can still be used, but are overridden by the files in the selected folder.', 'gantry5'); ?>"><?php esc_html_e('Use Uploads Folder', 'gantry5'); ?></label>
                             </th>
                             <td>
                                 <input id="use_media_folder1" type="radio" <?php checked($option['use_media_folder'], '1'); ?> value="1" name="gantry5_plugin[use_media_folder]" />

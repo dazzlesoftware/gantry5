@@ -61,8 +61,8 @@ ready(() => {
         let value;
         let uri;
 
-        if (data.type === moduleType[window.GANTRY_PLATFORM]) {
-            uri = (data.type !== 'widget' ? 'particle/' : '') + moduleType[window.GANTRY_PLATFORM];
+        if (data.type === moduleType[window.GENESIS_PLATFORM]) {
+            uri = (data.type !== 'widget' ? 'particle/' : '') + moduleType[window.GENESIS_PLATFORM];
         } else {
             uri = 'particle';
         }
@@ -113,7 +113,7 @@ ready(() => {
                 }
 
                 const elementData = JSON.parse(picker.dataset.gInstancepicker || '{}');
-                if (elementData.type === moduleType[window.GANTRY_PLATFORM]) elementData.modal_close = true;
+                if (elementData.type === moduleType[window.GENESIS_PLATFORM]) elementData.modal_close = true;
 
                 if (select) {
                     select.dataset.gInstancepicker = JSON.stringify(elementData);

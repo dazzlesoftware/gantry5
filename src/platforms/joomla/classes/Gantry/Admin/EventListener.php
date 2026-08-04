@@ -28,7 +28,7 @@ use DazzleSoftware\Toolbox\File\IniFile;
 use DazzleSoftware\Toolbox\ResourceLocator\UniformResourceLocator;
 
 /**
- * Gantry event listener for admin actions for Joomla.
+ * Genesis event listener for admin actions for Joomla.
  * @package Gantry\Admin
  */
 class EventListener implements EventSubscriberInterface
@@ -54,7 +54,7 @@ class EventListener implements EventSubscriberInterface
      */
     public function onAdminThemeInit(Event $event)
     {
-        $this->triggerEvent('onGantry5AdminInit', ['theme' => $event->theme]);
+        $this->triggerEvent('onGenesisAdminInit', ['theme' => $event->theme]);
     }
 
     /**
@@ -62,7 +62,7 @@ class EventListener implements EventSubscriberInterface
      */
     public function onGlobalSave(Event $event)
     {
-        $this->triggerEvent('onGantry5SaveConfig', [$event->data]);
+        $this->triggerEvent('onGenesisSaveConfig', [$event->data]);
     }
 
     /**
@@ -70,7 +70,7 @@ class EventListener implements EventSubscriberInterface
      */
     public function onStylesSave(Event $event)
     {
-        $this->triggerEvent('onGantry5UpdateCss', ['theme' => $event->theme]);
+        $this->triggerEvent('onGenesisUpdateCss', ['theme' => $event->theme]);
     }
 
     /**
@@ -86,7 +86,7 @@ class EventListener implements EventSubscriberInterface
     public function onLayoutSave(Event $event)
     {
         /** @var Gantry $gantry */
-        $gantry = $event->gantry;
+        $gantry = $event->Genesis;
 
         /** @var Layout $layout */
         $layout = $event->layout;
@@ -165,7 +165,7 @@ class EventListener implements EventSubscriberInterface
         ];
 
         /** @var Gantry $gantry */
-        $gantry = $event->gantry;
+        $gantry = $event->Genesis;
         if ($gantry->authorize('menu.edit') && !$menuType->save($options)) {
             throw new \RuntimeException('Saving menu failed: '. $menuType->getError(), 400);
         }
@@ -194,7 +194,7 @@ class EventListener implements EventSubscriberInterface
             // Delete removed particles from the menu.
             if (null === $path && $info['type'] === 'heading') {
                 $params = json_decode($info['params'], true);
-                if (!empty($params['gantry-particle'])) {
+                if (!empty($params['Genesis-particle'])) {
                     $table->delete($key, false);
                     unset($stored[$key]);
                 }
@@ -288,7 +288,7 @@ class EventListener implements EventSubscriberInterface
                 }
             }
 
-            // Gantry params.
+            // Genesis params.
             $modified = Menu::updateJParams($params, $item) | $modified;
             if ($modified && $gantry->authorize('menu.edit')) {
                 $table->params = (string) $params;
@@ -390,7 +390,14 @@ class EventListener implements EventSubscriberInterface
         /** @var CMSApplication $app */
         $app = Factory::getApplication();
 
-        // Trigger the onGantryThemeInit event.
         $app->triggerEvent($eventName, $args);
+        $legacyEvents = [
+            'onGenesisAdminInit' => 'onGantry5AdminInit',
+            'onGenesisSaveConfig' => 'onGantry5SaveConfig',
+            'onGenesisUpdateCss' => 'onGantry5UpdateCss',
+        ];
+        if (isset($legacyEvents[$eventName])) {
+            $app->triggerEvent($legacyEvents[$eventName], $args);
+        }
     }
 }

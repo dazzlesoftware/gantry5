@@ -90,7 +90,7 @@ var MenuManagerDefinition = {
                 items: deepClone(this.items)
             };
 
-            var submenus = $('[data-g5-menu-columns] .submenu-selector'), columns;
+            var submenus = $('[data-genesis-menu-columns] .submenu-selector'), columns;
             if (this.resizer && submenus && (columns = submenus.search('> [data-mm-id]'))) { this.resizer.updateMaxValues(columns); }
         }
     },
@@ -106,7 +106,7 @@ var MenuManagerDefinition = {
             return true;
         }
 
-        if (element.find('[data-g5-ajaxify]')) {
+        if (element.find('[data-genesis-ajaxify]')) {
             var siblings = element.siblings();
             element.addClass('active');
             if (siblings) { siblings.removeClass('active'); }
@@ -123,7 +123,7 @@ var MenuManagerDefinition = {
     },
 
     start: function(event, element) {
-        var root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.g5-mm-particles-picker'),
+        var root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.genesis-mm-particles-picker'),
             size = $(element).position(),
             coords = $(element)[0].getBoundingClientRect();
 
@@ -133,7 +133,7 @@ var MenuManagerDefinition = {
         this.type =  element.parent('.g-toplevel') || element.matches('.g-toplevel') ? 'main' : (element.matches('.g-block') ? 'column' : 'columns_items');
         this.isParticle = element.matches('[data-mm-blocktype]') || element.matches('[data-mm-original-type]');
         this.wasActive = element.hasClass('active');
-        this.isNewParticle = element.parent('.g5-mm-particles-picker');
+        this.isNewParticle = element.parent('.genesis-mm-particles-picker');
         this.ParticleIndex = -1;
         this.root = root;
         this.Element = element;

@@ -161,7 +161,7 @@ class Module implements \ArrayAccess
         /** @var UniformResourceLocator $locator */
         $locator = Gantry::instance()['locator'];
 
-        return CompiledYamlFile::instance($locator->findResource("gantry-positions://{$position}/{$name}.yaml", true, $save));
+        return CompiledYamlFile::instance($locator->findResource("Genesis-positions://{$position}/{$name}.yaml", true, $save));
     }
 
     /**
@@ -176,7 +176,7 @@ class Module implements \ArrayAccess
         /** @var UniformResourceLocator $locator */
         $locator = Gantry::instance()['locator'];
 
-        if (!file_exists($locator->findResource("gantry-positions://{$position}/{$name}.yaml", true, true))) {
+        if (!file_exists($locator->findResource("Genesis-positions://{$position}/{$name}.yaml", true, true))) {
             return $name;
         }
 
@@ -184,7 +184,7 @@ class Module implements \ArrayAccess
 
         do {
             $count++;
-        } while (file_exists($locator->findResource("gantry-positions://{$position}/{$name}_{$count}.yaml", true, true)));
+        } while (file_exists($locator->findResource("Genesis-positions://{$position}/{$name}_{$count}.yaml", true, true)));
 
         return "{$name}_{$count}";
     }

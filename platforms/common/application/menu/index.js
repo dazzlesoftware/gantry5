@@ -25,7 +25,7 @@ dom.ready(function() {
     var body = document.body;
 
     menumanager = new MenuManager('[data-mm-container]', {
-        delegate: '.g5-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
+        delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
         droppables: '#menu-editor [data-mm-id]',
         exclude: '[data-lm-nodrag], .menu-item-back, .fa-cog, .config-cog',
         resize_handles: '.submenu-column:not(:last-child)',
@@ -130,7 +130,7 @@ dom.ready(function() {
     // Add new columns
     dom.delegate(body, 'click', '.add-column', function(event, element) {
         event.preventDefault();
-        var columns = element.closest('[data-g5-menu-columns]'),
+        var columns = element.closest('[data-genesis-menu-columns]'),
             container = columns && columns.querySelector('.submenu-selector'),
             children = container ? Array.from(container.children) : [],
             last = children[children.length - 1],
@@ -162,7 +162,7 @@ dom.ready(function() {
 
     // Attach events to pseudo (x) for deleting a column
     ['click', 'touchend'].forEach(function(evt) {
-        dom.delegate(body, evt, '[data-g5-menu-columns] .submenu-items:empty', function(event, element) {
+        dom.delegate(body, evt, '[data-genesis-menu-columns] .submenu-items:empty', function(event, element) {
             var point = event.changedTouches && event.changedTouches[0],
                 bounding = element.getBoundingClientRect(),
                 x = event.pageX || (point && point.pageX) || 0,

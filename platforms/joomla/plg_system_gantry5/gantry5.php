@@ -71,7 +71,7 @@ class plgSystemGantry5 extends CMSPlugin
         // Use Joomla's class loader instead of JLoader which is deprecated in Joomla 5
         require_once JPATH_LIBRARIES . '/gantry5/src/Loader.php';
 
-        // Detect Gantry Framework or fail gracefully.
+        // Detect Genesis Framework or fail gracefully.
         if (!class_exists('Gantry5\Loader')) {
             if ($this->app->isClient('administrator')) {
                 $this->app->enqueueMessage(
@@ -246,7 +246,7 @@ class plgSystemGantry5 extends CMSPlugin
     }
 
     /**
-     * Load Gantry framework before dispatching to the component.
+     * Load Genesis framework before dispatching to the component.
      *
      * @throws \RuntimeException
      */
@@ -263,7 +263,7 @@ class plgSystemGantry5 extends CMSPlugin
             $gantryPath = JPATH_THEMES . "/{$templateName}/includes/gantry.php";
         }
         if (is_file($gantryPath)) {
-            // Manually setup Gantry 5 Framework from the template.
+            // Manually setup Genesis Framework from the template.
             $gantry = include $gantryPath;
 
             if (!$gantry) {
@@ -275,10 +275,10 @@ class plgSystemGantry5 extends CMSPlugin
 
         } else {
 
-            // Setup Gantry 5 Framework or throw exception.
+            // Setup Genesis Framework or throw exception.
             Loader::setup();
 
-            // Get Gantry instance.
+            // Get Genesis instance.
             $gantry = Gantry::instance();
 
             // Initialize the template.
@@ -294,7 +294,7 @@ class plgSystemGantry5 extends CMSPlugin
         }
 
         if (\GANTRY_DEBUGGER) {
-            Debugger::addMessage("Using Gantry 5 template {$templateName}");
+            Debugger::addMessage("Using Genesis template {$templateName}");
         }
 
         /** @var Theme $theme */
@@ -321,7 +321,7 @@ class plgSystemGantry5 extends CMSPlugin
     }
 
     /**
-     * Re-route Gantry templates to Gantry Administration component.
+     * Re-route Genesis templates to Genesis Administration component.
      */
     private function onAfterRouteAdmin()
     {
@@ -340,7 +340,7 @@ class plgSystemGantry5 extends CMSPlugin
                     $styles = $this->getStyles();
                     $selected = array_intersect_key($styles, array_flip($cid));
 
-                    // If no Gantry templates were selected, just let com_templates deal with the request.
+                    // If no Genesis templates were selected, just let com_templates deal with the request.
                     if (!$selected) {
                         return;
                     }
@@ -395,7 +395,7 @@ class plgSystemGantry5 extends CMSPlugin
     }
 
     /**
-     * Convert links in com_templates to point into Gantry Administrator component.
+     * Convert links in com_templates to point into Genesis Administrator component.
      */
     private function onAfterRenderAdmin()
     {
@@ -516,7 +516,7 @@ class plgSystemGantry5 extends CMSPlugin
                 $params = new Registry($table->params ?: '{}');
                 $isGantry = !empty($params['gantry']);
                 if ($isGantry and class_exists(Menu::class)) {
-                    // Remove default Gantry params.
+                    // Remove default Genesis params.
                     $gantryParams = Menu::decodeJParams($params);
                     Menu::updateJParams($params, $gantryParams);
 
@@ -628,7 +628,7 @@ class plgSystemGantry5 extends CMSPlugin
                 $menuParams = Menu::decodeJParams($data->params);
                 $isGantry = !empty($data->params['gantry']) || is_array($menuParams);
                 if ($isNew || $isGantry) {
-                    // Add default Gantry params to menu item.
+                    // Add default Genesis params to menu item.
                     if (null === $menuParams) {
                         $menuParams = [];
                     }
@@ -658,7 +658,7 @@ class plgSystemGantry5 extends CMSPlugin
 
         switch ($form->getName()) {
             case 'com_config.component':
-                // If we are editing configuration from Gantry component, add missing fields from system plugin.
+                // If we are editing configuration from Genesis component, add missing fields from system plugin.
                 $rules = $form->getField('rules');
                 if ($rules && $rules->getAttribute('component') === 'com_gantry5') {
                     $this->loadLanguage("{$name}.sys");
@@ -681,7 +681,7 @@ class plgSystemGantry5 extends CMSPlugin
                 $isNew = $data->parent_id === null;
                 $isGantry = !empty($data->params['gantry']) || is_array(Menu::decodeJParams($data->params));
                 if ($isNew || $isGantry) {
-                    // Add Gantry Menu tab to the form.
+                    // Add Genesis Menu tab to the form.
                     \Joomla\CMS\Form\Form::addFormPath(__DIR__ . '/forms');
                     $form->loadFile('menu_item', false);
                 }
@@ -698,7 +698,7 @@ class plgSystemGantry5 extends CMSPlugin
      * @param string $type
      * @return string
      */
-    private function appendHtml(array $matches, $content = 'Gantry 5', $type = '')
+    private function appendHtml(array $matches, $content = 'Genesis', $type = '')
     {
         $html = $matches[0];
 
@@ -779,7 +779,7 @@ class plgSystemGantry5 extends CMSPlugin
         $gantry = Gantry::instance();
 
         if (!isset($gantry['theme.name']) || $name !== $gantry['theme.name']) {
-            // Restart Gantry and initialize it.
+            // Restart Genesis and initialize it.
             $gantry = Gantry::restart();
             $gantry['theme.name'] = $name;
 

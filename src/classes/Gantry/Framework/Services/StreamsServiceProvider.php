@@ -29,7 +29,7 @@ class StreamsServiceProvider implements ServiceProviderInterface
     public function register(Container $gantry)
     {
         $gantry['locator'] = static function() {
-            return new UniformResourceLocator(GANTRY5_ROOT);
+            return new UniformResourceLocator(GENESIS_ROOT);
         };
 
         $gantry['streams'] = static function(Gantry $gantry) {

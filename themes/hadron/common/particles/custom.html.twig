@@ -5,6 +5,6 @@
 {% if particle.title %}<h2 class="title">{{ particle.title|html|raw }}{% if particle.titletag %}<span class="rt-title-tag">{{ particle.titletag|html|raw }}</span>{% endif %}</h2>{% endif %}
 
 
-    {% set html = particle.twig ? gantry.theme.compile(particle.html) : particle.html %}
-    {{ (particle.filter ? gantry.platform.filter(html) : html)|html|raw }}
+    {% set html = particle.twig ? genesis.theme.compile(particle.html) : particle.html %}
+    {{ (particle.filter ? genesis.platform.filter(html) : html)|html|raw }}
 {% endblock %}

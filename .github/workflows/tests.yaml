@@ -38,7 +38,7 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-      - name: Build Gantry packages
+      - name: Build Genesis packages
         run: composer build-dev
       - name: Run PHP 8.3 compatibility tests
         if: matrix.php == '8.3'

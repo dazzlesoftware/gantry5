@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1568059496
 layout:
@@ -263,7 +263,7 @@ content:
     title: 'Simple Content'
     attributes:
       class: text-left
-      title: 'A bold design built on the powerful Gantry framework.'
+      title: 'A bold design built on the powerful Genesis framework.'
       items:
         -
           layout: standard

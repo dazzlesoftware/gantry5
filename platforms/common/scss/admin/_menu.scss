@@ -1,7 +1,7 @@
 // Submenu Ratio Height
 $submenu-ratio:                 60px;
 
-#g5-container { //wrapper
+[data-genesis-container] { //wrapper
 
 #menu-editor {
     .parent-indicator {
@@ -110,7 +110,7 @@ $submenu-ratio:                 60px;
 
 }
 
-.g5-mm-particles-picker {
+.genesis-mm-particles-picker {
     ul {
         margin-bottom: 0;
 

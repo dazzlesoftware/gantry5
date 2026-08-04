@@ -68,10 +68,10 @@ dom.ready(function() {
                     parent = editable.closest('[id]'),
                     editButton = parent && parent.querySelector('[data-title-edit]'),
                     data = type === 'title' ? { title: trim(detail.title) } : { key: trim(detail.title) },
-                    position = parent && parent.querySelector('[data-g5-position]');
+                    position = parent && parent.querySelector('[data-genesis-position]');
 
                 if (!parent || !position) { return; }
-                data.data = position.getAttribute('data-g5-position');
+                data.data = position.getAttribute('data-genesis-position');
                 indicator.show(parent);
                 if (editButton) { editButton.classList.add('disabled'); }
 
@@ -195,10 +195,10 @@ dom.ready(function() {
     dom.delegate(body, 'click', '#positions .item-settings', function(event, element) {
         event.preventDefault();
         var item = element.closest('[data-pm-data]'),
-            positionElement = element.closest('[data-g5-position]');
+            positionElement = element.closest('[data-genesis-position]');
         if (!item || !positionElement) { return; }
 
-        var position = JSON.parse(positionElement.getAttribute('data-g5-position'));
+        var position = JSON.parse(positionElement.getAttribute('data-genesis-position'));
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
@@ -259,7 +259,7 @@ dom.ready(function() {
         });
     });
 
-    dom.delegate(body, 'change', '[data-g5-positions-assignments] input[type="hidden"]', function(event, element) {
+    dom.delegate(body, 'change', '[data-genesis-positions-assignments] input[type="hidden"]', function(event, element) {
         var card = element.closest('.card'),
             wrapper = card && card.querySelector('.settings-param-wrapper');
         if (!wrapper) { return; }

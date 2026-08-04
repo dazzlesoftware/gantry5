@@ -670,7 +670,7 @@ class ThemeInstaller extends AbstractInstaller
         static $component_id;
 
         if (!$component_id) {
-            // Get Gantry component id.
+            // Get Genesis component id.
             $component_id = ComponentHelper::getComponent('com_gantry5')->id;
         }
 
@@ -681,7 +681,7 @@ class ThemeInstaller extends AbstractInstaller
      * Ensure the installed template has its Joomla update server registered.
      *
      * Older installs and some custom install flows can miss this linkage, which
-     * prevents Joomla from listing theme updates alongside the Gantry package.
+     * prevents Joomla from listing theme updates alongside the Genesis package.
      *
      * @param Manifest|null $manifest
      */

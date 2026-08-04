@@ -61,7 +61,7 @@
                 </span>
                 <div class="settings-param-field" data-field-name="{{ name }}">
                     {% block input -%}
-                        <div class="g5-collection-wrapper">
+                        <div class="genesis-collection-wrapper">
                         <ul>
                         {%- if field.fields -%}
                                 {% for key, val in value %}
@@ -69,14 +69,14 @@
                                         <li data-collection-item="{{ field.value }}">
                                             {% set itemValue = field.value == field.key ? key : val[field.value] %}
                                             {% if can_reorder %}<i class="fa fa-reorder font-small item-reorder" aria-hidden="true"></i>{% endif %}
-                                            <a class="config-cog" href="{{ gantry.route(field_route ~ '/' ~ key) }}"><span data-title-editable="{{ itemValue }}" class="g-title">{{ itemValue }}</span></a>
+                                            <a class="config-cog" href="{{ genesis.route(field_route ~ '/' ~ key) }}"><span data-title-editable="{{ itemValue }}" class="g-title">{{ itemValue }}</span></a>
                                             {% if can_remove %}<i class="fa fa-fw fa-trash font-small" aria-hidden="true" data-collection-remove=""></i>{% endif %}
                                             {% if can_addnew %}<i class="far fa-fw fa-copy font-small" aria-hidden="true" data-collection-duplicate=""></i>{% endif %}
                                             <i class="fa fa-fw fa-pencil fa-pencil-alt font-small" aria-hidden="true" tabindex="0" aria-label="{{ 'GANTRY5_PLATFORM_EDIT_TITLE'|trans(itemValue) }}" data-title-edit=""></i>
                                         </li>
                                     {% else %}
                                         {% block collection_fields %}
-                                            <div data-g5-collections="">
+                                            <div data-genesis-collections="">
                                                 {% for childName, child in field.fields %}
                                                     {% set container = child.type starts with 'container.' %}
                                                     {% if childName starts with '.' %}
@@ -111,14 +111,14 @@
                         <ul style="display: none">
                             <li data-collection-nosort="" data-collection-template="{{ field.value }}" style="display: none;">
                                 {% if can_reorder %}<i class="fa fa-reorder font-small item-reorder" aria-hidden="true"></i>{% endif %}
-                                <a class="config-cog" href="{{ gantry.route(field_route ~ '/%id%') }}"><span data-title-editable="New item" class="title">New item</span></a>
+                                <a class="config-cog" href="{{ genesis.route(field_route ~ '/%id%') }}"><span data-title-editable="New item" class="title">New item</span></a>
                                 {% if can_remove %}<i class="fa fa-fw fa-trash font-small" aria-hidden="true" data-collection-remove=""></i>{% endif %}
                                 {% if can_addnew %}<i class="far fa-fw fa-copy font-small" aria-hidden="true" data-collection-duplicate=""></i>{% endif %}
                                 <i class="fa fa-fw fa-pencil fa-pencil-alt font-small" aria-hidden="true" data-title-edit=""></i>
                             </li>
                         </ul>
                         {% if can_addnew %}<span class="collection-addnew button button-simple" data-collection-addnew="" title="Add new item"><i class="fa fa-plus font-small" aria-hidden="true"></i></span>{% endif %}
-                        <a href="{{ gantry.route(field_route) }}" class="collection-editall button button-simple" data-collection-editall="" title="Edit all items" {% if value|length <= 1 %}style="display: none;"{% endif %}><i class="fa fa-th-large font-small" aria-hidden="true"></i></a>
+                        <a href="{{ genesis.route(field_route) }}" class="collection-editall button button-simple" data-collection-editall="" title="Edit all items" {% if value|length <= 1 %}style="display: none;"{% endif %}><i class="fa fa-th-large font-small" aria-hidden="true"></i></a>
                     </div>
                     <input data-collection-data="" name="{{ (scope ~ name ~ '._json')|fieldName }}" type="hidden" value="{{ value|default({})|json_encode(constant('JSON_UNESCAPED_SLASHES'))|e('html_attr') }}"/>
                     {% endblock %}

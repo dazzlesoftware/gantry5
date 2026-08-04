@@ -1,7 +1,7 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
 {% block gantry %}
-{% set action = gantry.route(configuration ~ '/' ~ route|replace({'.': '/'}) ~ '/validate') %}
+{% set action = genesis.route(configuration ~ '/' ~ route|replace({'.': '/'}) ~ '/validate') %}
 <form method="post" action="{{ action|e }}">
     {% if blueprints.type == 'collection.list' %}
         {% include 'forms/fields.html.twig' %}
@@ -25,7 +25,7 @@
     <div class="g-modal-actions">
         <button class="button button-primary" type="submit">{{ 'GANTRY5_PLATFORM_APPLY'|trans }}</button>
         <button class="button button-primary" data-apply-and-save="">{{ 'GANTRY5_PLATFORM_APPLY_SAVE'|trans }}</button>
-        <button class="button g5-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
+        <button class="button genesis-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
     </div>
 </form>
 {% endblock %}

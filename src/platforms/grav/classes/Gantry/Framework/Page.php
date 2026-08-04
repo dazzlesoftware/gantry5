@@ -38,7 +38,7 @@ class Page extends Base\Page
 
     /**
      * Page constructor.
-     * @param Gantry $container
+     * @param Genesis $container
      */
     public function __construct($container)
     {

@@ -36,7 +36,7 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-      - name: Build Gantry packages (using CHANGELOG.md to get the version)
+      - name: Build Genesis packages (using CHANGELOG.md to get the version)
         run: composer build-prod
       - name: Upload packages to release
         uses: svenstaro/upload-release-action@v2

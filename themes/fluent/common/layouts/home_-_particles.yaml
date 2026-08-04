@@ -379,7 +379,7 @@ content:
     attributes:
       class: ''
       title: 'Fluent is a Clean Design with Modern, Transparent Elements'
-      intro: 'Fluent is built from the ground up on the robust Gantry 5 framework. It features an abundance of new particles that make creating a gorgeous, responsive website a breeze.'
+      intro: 'Fluent is built from the ground up on the robust Genesis framework. It features an abundance of new particles that make creating a gorgeous, responsive website a breeze.'
       cols: g-2cols
       infolists:
         -
@@ -389,7 +389,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Gantry 5 makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
+          desc: 'Genesis makes configuring elements of your website as easy as filling out a form. Particles are created with human-readable YAML and Twig.'
           tag: ''
           subtag: ''
           label: ''
@@ -405,7 +405,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Gantry 5''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
+          desc: 'Genesis''s powerful Layout Manager makes configuring your website''s layout as simple as dragging and dropping elements into place.'
           tag: ''
           subtag: ''
           label: ''
@@ -483,7 +483,7 @@ content:
           avatar: 'gantry-media://home/expanded/img-02.png'
           author: 'Ryan Pierson'
           authortitle: 'CEO of AllSource'
-          description: 'Fluent was so easy to set up and use, that I was up and running with my website in minutes. The powerful Gantry 5 framework made it super simple to do!'
+          description: 'Fluent was so easy to set up and use, that I was up and running with my website in minutes. The powerful Genesis framework made it super simple to do!'
           title: 'Item 5'
     block:
       class: flush

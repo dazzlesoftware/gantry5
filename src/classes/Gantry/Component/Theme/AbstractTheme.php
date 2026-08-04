@@ -165,7 +165,7 @@ abstract class AbstractTheme
      */
     public function render($file, array $context = [])
     {
-        // Include Gantry specific things to the context.
+        // Include Genesis specific things to the context.
         $context = $this->getContext($context);
 
         return $this->renderer()->render($file, $context);
@@ -183,7 +183,7 @@ abstract class AbstractTheme
         $renderer = $this->renderer();
         $template = $renderer->createTemplate($string);
 
-        // Include Gantry specific things to the context.
+        // Include Genesis specific things to the context.
         $context = $this->getContext($context);
 
         return $template->render($context);

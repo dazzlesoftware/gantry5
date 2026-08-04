@@ -178,7 +178,7 @@ class Menu extends HtmlController
 
         // Fire save event.
         $event = new MenuEvent();
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->resource = $id;
@@ -277,7 +277,7 @@ class Menu extends HtmlController
 
         $name = isset($data['particle']) ? $data['particle'] : null;
 
-        $block = BlueprintForm::instance('menu/block.yaml', 'gantry-admin://blueprints');
+        $block = BlueprintForm::instance('menu/block.yaml', 'Genesis-admin://blueprints');
         $blueprints = $this->container['particles']->getBlueprintForm($name);
 
         // Load particle blueprints and default settings.
@@ -550,7 +550,7 @@ class Menu extends HtmlController
      */
     protected function loadBlueprints($name = 'menu')
     {
-        return BlueprintForm::instance("menu/{$name}.yaml", 'gantry-admin://blueprints');
+        return BlueprintForm::instance("menu/{$name}.yaml", 'Genesis-admin://blueprints');
     }
 
     /**

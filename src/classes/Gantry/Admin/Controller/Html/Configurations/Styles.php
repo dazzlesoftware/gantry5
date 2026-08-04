@@ -232,7 +232,7 @@ class Styles extends HtmlController
 
         // Fire save event.
         $event = new StylesEvent();
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->data = $data;
@@ -274,7 +274,7 @@ class Styles extends HtmlController
         }
 
         // Default style changes affect every outline. Compile the active default
-        // files immediately, then invalidate derived files so Gantry recompiles
+        // files immediately, then invalidate derived files so Genesis recompiles
         // each one on demand instead of blocking this request on every outline.
         $warnings = $theme->updateCss(['default' => 'Default']);
         $this->invalidateDerivedCss($theme);

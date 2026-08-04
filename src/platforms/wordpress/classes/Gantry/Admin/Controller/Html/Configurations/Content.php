@@ -243,7 +243,7 @@ class Content extends HtmlController
 
         // Fire save event.
         $event = new Event;
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->data = $data;

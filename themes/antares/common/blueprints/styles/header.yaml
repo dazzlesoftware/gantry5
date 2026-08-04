@@ -17,7 +17,7 @@ form:
       type: input.text
       label: Background Text
       description: Set background text
-      default: "Gantry 5"
+      default: "Genesis"
     background-image:
       type: input.imagepicker
       label: Background Image

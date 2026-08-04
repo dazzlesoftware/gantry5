@@ -135,7 +135,7 @@ content:
   custom-2069:
     title: 'FP Promo Desc'
     attributes:
-      html: "<p>Not only that, but thanks to the powerful Gantry 5 framework, you can easily assign individual elements to specific screen types.</p>\n<a href=\"http://www.gantry.org\" class=\"button\">Learn More</a>"
+      html: "<p>Not only that, but thanks to the powerful Genesis framework, you can easily assign individual elements to specific screen types.</p>\n<a href=\"http://www.gantry.org\" class=\"button\">Learn More</a>"
   swipercarousel-7547:
     title: 'FP Slideshow Services'
     attributes:
@@ -164,7 +164,7 @@ content:
           icon2: 'fa fa-ambulance'
           title: 'Color Picker'
           subtitle: 'Quickly and easily select the perfect color(s) for your website.'
-          desc: 'Quickly define colors for virtually any aspect of your sites’ design with Gantry 5’s Color Picker.'
+          desc: 'Quickly define colors for virtually any aspect of your sites’ design with Genesis’s Color Picker.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -205,7 +205,7 @@ content:
           created_date: ''
           content_title: 'Our Office'
           author: ''
-          leading_content: 'Interstellar was handcrafted by the talented Dazzle Software team on the incredible Gantry 5 framework. It was designed to be a perfect match for a wide variety of websites.'
+          leading_content: 'Interstellar was handcrafted by the talented Dazzle Software team on the incredible Genesis framework. It was designed to be a perfect match for a wide variety of websites.'
           main_content: ''
           readmore_label: ''
           readmore_link: ''
@@ -257,7 +257,7 @@ content:
           icon2: ''
           title: 'Jim Conroy'
           subtitle: ''
-          desc: 'Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
+          desc: 'Set up and configure page layouts with Genesis''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds. '
           link: ''
           linktext: ''
           buttontarget: _self
@@ -269,12 +269,12 @@ content:
           icon2: ''
           title: 'Pat Harrison'
           subtitle: ''
-          desc: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
+          desc: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.'
           link: ''
           linktext: ''
           buttontarget: _self
           buttonclass: ''
-          name: 'Gantry 5 Configuration'
+          name: 'Genesis Configuration'
   simplecontent-5168:
     title: 'FP Expanded Portfolio'
     attributes:
@@ -285,7 +285,7 @@ content:
           created_date: ''
           content_title: Portfolio
           author: ''
-          leading_content: "All demo content is for sample purposes only, to represent a live site.\n<br />\nNote: Interstellar is built on the latest version of the Gantry 5 Framework."
+          leading_content: "All demo content is for sample purposes only, to represent a live site.\n<br />\nNote: Interstellar is built on the latest version of the Genesis Framework."
           main_content: ''
           readmore_label: 'View more'
           readmore_link: ''
@@ -379,7 +379,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: Designer
-          description: "Interstellar has saved us countless hours in development thanks to the powerful next-generation Gantry 5 framework.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
+          description: "Interstellar has saved us countless hours in development thanks to the powerful next-generation Genesis framework.<br />\n<i class=\"fa fa-twitter-square\"></i> <i class=\"fa fa-facebook-square\"></i> <i class=\"fa fa-linkedin-square\"></i>"
           class: ''
           button: ''
           buttonlink: ''

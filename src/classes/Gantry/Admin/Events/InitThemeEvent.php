@@ -19,7 +19,7 @@ use Gantry\Component\Event\Event;
  */
 class InitThemeEvent extends Event
 {
-    /** @var Gantry */
+    /** @var Genesis */
     public $gantry;
     /** @var Theme */
     public $theme;

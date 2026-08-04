@@ -291,7 +291,7 @@ content:
           bg_horizontal: center
           bg_vertical: top
           top_title: 'Easy Config'
-          main_title: 'Manticore is Powered by the Gantry 5 Framework'
+          main_title: 'Manticore is Powered by the Genesis Framework'
           link: '#'
           linktarget: _self
           author_image: 'gantry-media://home/slideshow/avatar-01.jpg'
@@ -344,10 +344,10 @@ content:
               layout: photo
               date: '2019-05-23'
               image: 'gantry-media://home/header/img-01.jpg'
-              description: 'Built on the Powerful Gantry 5 Framework'
+              description: 'Built on the Powerful Genesis Framework'
               url: '#'
               target: _self
-              title: 'Built on the Powerful Gantry 5 Framework'
+              title: 'Built on the Powerful Genesis Framework'
             -
               layout: photo
               date: '2019-05-08'
@@ -474,7 +474,7 @@ content:
               author: 'Jackson Grant'
               avatar: 'gantry-media://home/above/avatar-01.jpg'
               image: 'gantry-media://home/above/img-01.jpg'
-              description: 'Don’t know how to code? No problem! Manticore is built on the powerful Gantry 5 framework, making it easier than ever to create a custom layout for your website and add functional improvements without writing a single line of code.'
+              description: 'Don’t know how to code? No problem! Manticore is built on the powerful Genesis framework, making it easier than ever to create a custom layout for your website and add functional improvements without writing a single line of code.'
               url: '#'
               target: _blank
               title: 'No Coding Required'
@@ -483,7 +483,7 @@ content:
               author: 'Jackson Grant'
               avatar: 'gantry-media://home/above/avatar-01.jpg'
               image: 'gantry-media://home/above/img-01.jpg'
-              description: 'Want to add a new gallery to your home page? It’s easy as dragging and dropping the Image Grid particle into your layout using Gantry’s powerful Layout Manager. Setting up your content takes seconds!'
+              description: 'Want to add a new gallery to your home page? It’s easy as dragging and dropping the Image Grid particle into your layout using Genesis’s powerful Layout Manager. Setting up your content takes seconds!'
               url: '#'
               target: _blank
               title: 'Drag-and-drop Simplicity'

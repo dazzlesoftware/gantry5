@@ -1,8 +1,8 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-	{% set url = url(particle.url)|default(gantry.siteUrl()) %}
-	{% if (url == gantry.siteUrl()) %}
+	{% set url = url(particle.url)|default(genesis.siteUrl()) %}
+	{% if (url == genesis.siteUrl()) %}
 		{% set rel='rel="home"' %}
 	{% endif %}
 	{% set image = url(particle.image) %}
@@ -42,4 +42,3 @@
 		</div>
 	{% endif %}
 {% endblock %}
-

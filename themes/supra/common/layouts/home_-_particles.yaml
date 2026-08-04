@@ -144,7 +144,7 @@ content:
       paddingtop: 25vh
       items:
         -
-          description: 'Supra is a modern Gantry 5 template.'
+          description: 'Supra is a modern Genesis template.'
           image: 'gantry-media://home/slideshow/img-01.jpg'
           title: Hello.
         -
@@ -190,7 +190,7 @@ content:
           created_date: ''
           content_title: ''
           author: ''
-          leading_content: "Supra is a minimal, versatile Joomla template. Perfect for business and personal sites. It is built from the ground up for speed and ease of use on the powerful Gantry 5 framework. <br /><br />\n"
+          leading_content: "Supra is a minimal, versatile Joomla template. Perfect for business and personal sites. It is built from the ground up for speed and ease of use on the powerful Genesis framework. <br /><br />\n"
           main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. '
           readmore_label: ''
           readmore_link: ''
@@ -206,7 +206,7 @@ content:
         -
           layout: header
           created_date: ''
-          content_title: 'Gantry 5'
+          content_title: 'Genesis'
           author: ''
           leading_content: 'A modern framework built from the ground up for a modern web.'
           main_content: ''
@@ -279,8 +279,8 @@ content:
           created_date: ''
           content_title: 'Website Design'
           author: ''
-          leading_content: 'Supra is a minimal, versatile Joomla template. Perfect for business and personal sites. It is built from the ground up for speed and ease of use on the powerful Gantry 5 framework.'
-          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. Simple, intuitive forms and drag-and-drop functionality are hallmarks of any Gantry 5-powered template from Dazzle Software. With Supra, you can create a gorgeous content-rich website in no time.'
+          leading_content: 'Supra is a minimal, versatile Joomla template. Perfect for business and personal sites. It is built from the ground up for speed and ease of use on the powerful Genesis framework.'
+          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. Simple, intuitive forms and drag-and-drop functionality are hallmarks of any Genesis-powered template from Dazzle Software. With Supra, you can create a gorgeous content-rich website in no time.'
           readmore_label: 'Get Started'
           readmore_link: '#'
           readmore_class: 'button button-xlarge'
@@ -320,7 +320,7 @@ content:
           created_date: ''
           content_title: 'Powerful Tools'
           author: ''
-          leading_content: 'The Gantry 5 Framework features a powerful set of tools to help you get more done, faster.'
+          leading_content: 'The Genesis Framework features a powerful set of tools to help you get more done, faster.'
           main_content: 'Choose the right colors with the Color Picker. Add icons with the Icon Picker. Select files easily with the File Picker. Utilize the perfect font with the Font Picker.'
           readmore_label: 'Get Started'
           readmore_link: '#'
@@ -382,7 +382,7 @@ content:
           overlay: g-overlay-enable
           overlaytext: 'Icon / Font Picker'
           overlayicon: ''
-          title: 'Gantry 5’s Pickers save you development time and energy.'
+          title: 'Genesis’s Pickers save you development time and energy.'
           tag: ''
           desc: ''
           animations: ''
@@ -466,8 +466,8 @@ content:
           created_date: ''
           content_title: Supra.
           author: ''
-          leading_content: 'Supra is a beautifully-designed modern template built from the ground up for versatility and ease of use. It is powered by the popular Gantry 5 framework.'
-          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. Simple, intuitive forms and drag-and-drop functionality are hallmarks of any Gantry 5-powered template from Dazzle Software. With Supra, you can create a gorgeous content-rich website in no time.'
+          leading_content: 'Supra is a beautifully-designed modern template built from the ground up for versatility and ease of use. It is powered by the popular Genesis framework.'
+          main_content: 'Supra features nearly thirty high-quality particles that make it easy to build a full-featured website without ever having to open a code editor. Simple, intuitive forms and drag-and-drop functionality are hallmarks of any Genesis-powered template from Dazzle Software. With Supra, you can create a gorgeous content-rich website in no time.'
           readmore_label: ''
           readmore_link: ''
           readmore_class: ''
@@ -488,7 +488,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Gantry 5''s powerful Font Picker enables you to browse hundreds of fonts, see real-time previews of your text, and use them in your site.'
+          desc: 'Genesis''s powerful Font Picker enables you to browse hundreds of fonts, see real-time previews of your text, and use them in your site.'
           tag: ''
           subtag: ''
           label: ''
@@ -504,7 +504,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Gantry 5''s powerful Color Picker makes choosing colors for your website a breeze. Enjoy full control over your site''s color scheme.'
+          desc: 'Genesis''s powerful Color Picker makes choosing colors for your website a breeze. Enjoy full control over your site''s color scheme.'
           tag: ''
           subtag: ''
           label: ''
@@ -520,7 +520,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Powered by the popular Font Awesome icon library, Gantry 5''s Icon Picker makes browsing and using icons to enhance your site''s visual experience easy.'
+          desc: 'Powered by the popular Font Awesome icon library, Genesis''s Icon Picker makes browsing and using icons to enhance your site''s visual experience easy.'
           tag: ''
           subtag: ''
           label: ''
@@ -536,7 +536,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Browse, upload, and select images, video, and other files with ease from Gantry 5''s modern File Picker tool. Adding images to your site has never been easier.'
+          desc: 'Browse, upload, and select images, video, and other files with ease from Genesis''s modern File Picker tool. Adding images to your site has never been easier.'
           tag: ''
           subtag: ''
           label: ''

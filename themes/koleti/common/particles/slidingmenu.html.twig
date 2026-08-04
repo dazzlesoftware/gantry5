@@ -2,7 +2,7 @@
     <div class="slidingmenu-overlay"></div>
     <nav class="menu">
         {% try %}
-            {% set menu = gantry.menu.instance(particle) %}
+            {% set menu = genesis.menu.instance(particle) %}
         {% catch %}
             <div class="alert alert-error">{{ e.getMessage }}</div>
         {% endtry %}
@@ -124,7 +124,7 @@
         {% macro displaySubmenu(item, menu, context, dropdown_type) %}
             {% import _self as self %}
             {% if not item.dropdown_hide %}
-                {% set animation = context.gantry.config.get('styles.menu.animation')|default('g-fade') %}
+                {% set animation = context.genesis.config.get('styles.menu.animation')|default('g-fade') %}
                 {% if ((item.groups|length == 1 and not dropdown_type == 'fullwidth') or dropdown_type == 'standard') or (item.width|default('auto') != 'auto' and dropdown_type == 'fullwidth')%}{% set dropdown_dir = 'g-dropdown-' ~ item.dropdown_dir|default('right') %}
                 {% endif %}
                 <ul class="g-dropdown g-inactive {{ animation }} {{ dropdown_dir }}" {{ self.getCustomWidth(item, menu, 'submenu', dropdown_type) }}>
@@ -149,7 +149,7 @@
     <button class="close-button" id="close-button">Close Menu</button>
 
     {% if particle.animation == 'elastic' %}
-        {% if gantry.page.direction == 'rtl' %}
+        {% if genesis.page.direction == 'rtl' %}
             <div class="morph-shape" id="morph-shape" data-morph-open="M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
                     <path transform="translate(50.500000, 400.000000) scale(-1, 1) translate(-50.500000, -400.000000)" d="M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z"/>
@@ -165,7 +165,7 @@
     {% endif %}
 
     {% if particle.animation == 'bubble' %}
-        {% if gantry.page.direction == 'rtl' %}
+        {% if genesis.page.direction == 'rtl' %}
             <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
                     <path transform="translate(51.500000, 400.000000) scale(-1, 1) translate(-51.500000, -400.000000) " d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
@@ -184,5 +184,5 @@
 <div class="content-wrap"></div>
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/slidingmenu.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/slidingmenu.init.js'), 10, 'footer') %}
 {% endblock %}

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1582666992
 layout:
@@ -189,7 +189,7 @@ content:
           class: ''
           image: 'gantry-media://home/slideshow/img-01.jpg'
           main_title: '<div data-aos="fade-right"><span>Perfect for Coffee Shops and Pubs.</span></div>'
-          description1: '<div data-aos="fade-right"><span>Built on the Gantry 5 Framework. Ready for Your Next Project.</span></div>'
+          description1: '<div data-aos="fade-right"><span>Built on the Genesis Framework. Ready for Your Next Project.</span></div>'
           description2: '<div data-aos="fade-left"><span>Elixir is a beautiful responsive theme built using a next-generation framework. It is packed with features that are a perfect fit for cafés, coffee shops, pubs, and more! Your customers will love it!</span></div>'
           link: '#'
           linktarget: _self
@@ -356,15 +356,15 @@ content:
         -
           layout: header
           created_date: ''
-          content_title: 'Built Using the Powerful Gantry 5 Framework'
+          content_title: 'Built Using the Powerful Genesis Framework'
           author: ''
           leading_content: ''
-          main_content: "No one likes to spend countless hours configuring their website. You need a solution that works for you when and how you need it to. This is the core reason Dazzle Software created the powerful Gantry 5 framework.\n\nGantry 5 is a collection of next-generation technologies that make creating, configuring, and deploying themes on popular content management systems like WordPress, Joomla, and Grav a breeze. It utilizes modern solutions such as YAML configuration and Twig templating to make each theme as versatile as it is easy to set up.\n\nOne of Gantry 5's biggest advantages is its speed. Not only can you deploy a website quickly using a Gantry-powered template or theme, but it has been designed from the ground up to offer the speed and dependability a modern internet demands.\n\nWhether you're creating a small site for a local coffee shop or the digital hub of a global brand, Elixir by Dazzle Software is ready to take your next project to new heights."
+          main_content: "No one likes to spend countless hours configuring their website. You need a solution that works for you when and how you need it to. This is the core reason Dazzle Software created the powerful Genesis framework.\n\nGenesis is a collection of next-generation technologies that make creating, configuring, and deploying themes on popular content management systems like WordPress, Joomla, and Grav a breeze. It utilizes modern solutions such as YAML configuration and Twig templating to make each theme as versatile as it is easy to set up.\n\nOne of Genesis's biggest advantages is its speed. Not only can you deploy a website quickly using a Genesis-powered template or theme, but it has been designed from the ground up to offer the speed and dependability a modern internet demands.\n\nWhether you're creating a small site for a local coffee shop or the digital hub of a global brand, Elixir by Dazzle Software is ready to take your next project to new heights."
           readmore_label: 'Order Online'
           readmore_link: ''
           readmore_class: ''
           readmore_target: _self
-          title: Gantry
+          title: Genesis
     block:
       variations: 'nomarginall nopaddingall'
   latestnews-4454:

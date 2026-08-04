@@ -38,7 +38,7 @@ content:
   logo-1001:
     title: 'Logo / Image'
     attributes:
-      text: 'Gantry 5 / Helium'
+      text: 'Genesis / Helium'
       link: true
   custom-1004:
     title: 'Tagline'
@@ -49,4 +49,4 @@ content:
   custom-1005:
     title: 'Footer note'
     attributes:
-      html: '<div class="g-phpbb-gantry-footer-note">Styled by Gantry 5 &amp; Helium</div>'
+      html: '<div class="g-phpbb-gantry-footer-note">Styled by Genesis &amp; Helium</div>'

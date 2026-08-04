@@ -51,15 +51,15 @@ abstract class BaseController implements RestfulControllerInterface
     /** @var array Parameters from router. */
     protected $params = [];
 
-    /** @var Gantry */
+    /** @var Genesis */
     protected $container;
 
     /**
      * BaseController constructor.
      *
-     * @param Gantry $container
+     * @param Genesis $container
      */
-    public function __construct(Gantry $container)
+    public function __construct(Genesis $container)
     {
         $this->container = $container;
         $this->request = $container['request'];

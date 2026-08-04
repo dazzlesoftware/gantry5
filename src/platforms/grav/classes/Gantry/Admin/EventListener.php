@@ -82,7 +82,7 @@ class EventListener implements EventSubscriberInterface
      */
     protected function updateCookie($name, $value, $expire = 0)
     {
-        // TODO: move to better place, copied from Gantry main plugin file.
+        // TODO: move to better place, copied from Genesis main plugin file.
         $grav = Grav::instance();
 
         /** @var Uri $uri */
@@ -135,7 +135,7 @@ class EventListener implements EventSubscriberInterface
         $flex = $grav['flex'];
         $directory = $flex->getDirectory('pages');
         if (!$directory) {
-            throw new \RuntimeException('Flex Pages are required for Gantry to work!');
+            throw new \RuntimeException('Flex Pages are required for Genesis to work!');
         }
         /** @var PageIndex $pages */
         $pages = $directory->getCollection();

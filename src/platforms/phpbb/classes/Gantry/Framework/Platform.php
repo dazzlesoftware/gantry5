@@ -38,7 +38,7 @@ class Platform extends BasePlatform
         parent::__construct($container);
 
         $this->items['streams'] += [
-            'gantry-positions' => [
+            'Genesis-positions' => [
                 'type' => 'ReadOnlyStream',
                 'prefixes' => [
                     '' => [$this->getCachePath() . '/positions']
@@ -90,7 +90,7 @@ class Platform extends BasePlatform
     }
 
     /**
-     * The locator (UniformResourceLocator) is rooted at GANTRY5_ROOT (the phpBB installation
+     * The locator (UniformResourceLocator) is rooted at GENESIS_ROOT (the phpBB installation
      * root), and needs paths relative to it -- not absolute filesystem paths -- for any resource
      * that must resolve to a public URL (engines, themes, assets). Only getCachePath() (which is
      * always resolved with $absolute = true) can safely return an absolute path.

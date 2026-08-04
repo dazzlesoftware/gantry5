@@ -148,7 +148,7 @@ class Fonts {
     }
 
     open(event, element) {
-        var data = element.data('g5-fontpicker');
+        var data = element.data('genesis-fontpicker');
         if (!data) {
             throw new Error('No fontpicker data found');
         }
@@ -158,7 +158,7 @@ class Fonts {
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
-            className: 'g5-dialog-theme-default g5-modal-fonts',
+            className: 'genesis-dialog-theme-default genesis-modal-fonts',
             remote: parseAjaxURI(getAjaxURL('fontpicker') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 var container = content.elements.content;
@@ -470,7 +470,7 @@ class Fonts {
 
                 element.on('beforeshow.popover', function(popover) {
                     var subsets = element.parent('[data-subsets]').data('subsets').split(','),
-                        content = popover.$target.find('.g5-popover-content'),
+                        content = popover.$target.find('.genesis-popover-content'),
                         checked;
 
                     content[0].replaceChildren();
@@ -509,7 +509,7 @@ class Fonts {
                 });
 
                 element.on('beforeshow.popover', function(popover) {
-                    var content  = popover.$target.find('.g5-popover-content'),
+                    var content  = popover.$target.find('.genesis-popover-content'),
                         variants = element.parent('[data-variants]').data('variants').split(',');
 
                     content[0].replaceChildren();
@@ -574,7 +574,7 @@ class Fonts {
             style: 'font-categories, above-modal'
         }).on('beforeshow.popover', function(popover) {
             var cats    = categories.data('font-categories').split(','),
-                content = popover.$target.find('.g5-popover-content'),
+                content = popover.$target.find('.genesis-popover-content'),
                 checked;
 
             content[0].replaceChildren();
@@ -604,7 +604,7 @@ class Fonts {
             style: 'font-subsets, above-modal'
         }).on('beforeshow.popover', function(popover) {
             var subs    = subsets.data('font-subsets').split(','),
-                content = popover.$target.find('.g5-popover-content');
+                content = popover.$target.find('.genesis-popover-content');
 
             content[0].replaceChildren();
 
@@ -776,7 +776,7 @@ class Fonts {
 
 ready(function() {
     var body = $('body');
-    body.delegate('click', '[data-g5-fontpicker]', function(event, element) {
+    body.delegate('click', '[data-genesis-fontpicker]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
         var node = element[0],
             FontPicker = storage.get(node);

@@ -28,7 +28,7 @@ class Particle extends \WP_Widget
     /** @var bool */
     public $gantry5 = true;
 
-    /** @var Gantry */
+    /** @var Genesis */
     protected $container;
     /** @var array */
     protected $content = [];
@@ -39,9 +39,9 @@ class Particle extends \WP_Widget
 
         parent::__construct(
             'particle_widget',
-            __( 'Gantry 5 Particle', 'gantry5' ),
+            __( 'Genesis Particle', 'gantry5' ),
             [
-                'description' => __( 'Displays Gantry 5 particle instance in a widget block.', 'gantry5' ),
+                'description' => __( 'Displays Genesis particle instance in a widget block.', 'gantry5' ),
                 'gantry5' => true
             ]
         );
@@ -58,13 +58,15 @@ class Particle extends \WP_Widget
     }
 
     /**
-     * Initialise Gantry
+     * Initialise Genesis
      */
     public function initialiseGantry()
     {
+        if (!defined('GENESIS_ADMIN_PATH')) {
+            define('GENESIS_ADMIN_PATH', GENESIS_PATH . '/admin');
+        }
         if (!defined('GANTRYADMIN_PATH')) {
-            // Works also with symlinks.
-            define('GANTRYADMIN_PATH', GANTRY5_PATH . '/admin');
+            define('GANTRYADMIN_PATH', GENESIS_ADMIN_PATH);
         }
         if (!isset($this->container['router'])) {
             $router = new Router($this->container);
@@ -131,7 +133,7 @@ class Particle extends \WP_Widget
             ];
 
             $context = [
-                'gantry' => $this->container,
+                'Genesis' => $this->container,
                 'inContent' => true
             ];
 

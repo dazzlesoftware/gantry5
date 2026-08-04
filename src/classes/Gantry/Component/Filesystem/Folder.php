@@ -49,7 +49,7 @@ abstract class Folder
      * @param  string  $base
      * @return string
      */
-    public static function getRelativePath($path, $base = GANTRY5_ROOT)
+    public static function getRelativePath($path, $base = GENESIS_ROOT)
     {
         $base = preg_replace('![\\\/]+!', '/', $base);
         $path = preg_replace('![\\\/]+!', '/', $path);

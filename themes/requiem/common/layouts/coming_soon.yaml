@@ -181,7 +181,7 @@ content:
       buttonclass: button-4
   branding-3217:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry Framework</a>'
+      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
       css:
         class: branding
   totop-8356:

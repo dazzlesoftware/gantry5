@@ -313,7 +313,7 @@ content:
           content_title: ''
           author: ''
           leading_content: ''
-          main_content: 'All demo content is for sample purposes to represent a live site. Demo content, including images, will appear differently in the RocketLauncher. Denali is built on the latest Gantry 5 framework.'
+          main_content: 'All demo content is for sample purposes to represent a live site. Demo content, including images, will appear differently in the RocketLauncher. Denali is built on the latest Genesis framework.'
           readmore_label: ''
           readmore_link: ''
           readmore_class: ''

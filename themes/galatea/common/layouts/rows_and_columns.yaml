@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: gala_-_rowsandcolumns
   timestamp: 1456245260
 layout:
@@ -285,7 +285,7 @@ content:
   custom-5410:
     title: 'Custom HTML'
     attributes:
-      html: "<h1>Mainbody Examples</h1>\n<p class=\"nomarginbottom\">The mainbody is a unique section in Gantry 5 that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
+      html: "<h1>Mainbody Examples</h1>\n<p class=\"nomarginbottom\">The mainbody is a unique section in Genesis that allows for up to three columns (varies on outline) to be configured independently from one another. Therefore, you can have multiple rows and columns in each column, creating very unique layout possibilities. In the example below, block variations are used to delineate each block.</p>"
     block:
       class: 'nomarginbottom nopaddingbottom'
   custom-6468:
@@ -393,7 +393,7 @@ content:
           link: 'http://docs.gantry.org/'
           icon: ''
           readmoreclass: ''
-          title: Gantry
+          title: Genesis
         -
           image: ''
           imageloc: left
@@ -521,7 +521,7 @@ content:
   custom-3225:
     title: About
     attributes:
-      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Genesis Framework.</span></p>\t"
   position-position-5600:
     title: Footer
     attributes:

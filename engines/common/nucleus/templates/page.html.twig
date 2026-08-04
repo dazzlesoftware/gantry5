@@ -1,10 +1,10 @@
-{%- do gantry.debugger.startTimer('render', 'Rendering page') %}
-{%- do gantry.theme.setLayout() -%}
-{%- do gantry.theme.loadAtoms() -%}
-{%- set segments = gantry.theme.segments() -%}
+{%- do genesis.debugger.startTimer('render', 'Rendering page') %}
+{%- do genesis.theme.setLayout() -%}
+{%- do genesis.theme.loadAtoms() -%}
+{%- set segments = genesis.theme.segments() -%}
 
 {%- set content %}
-    {% if gantry.theme.hasContent() %}
+    {% if genesis.theme.hasContent() %}
         {% block content %}
         {% endblock %}
     {% endif %}
@@ -41,28 +41,28 @@
 {%- set page_top %}
     {% block page_top %}
     {% endblock %}
-    {{ gantry.document.getHtml('top')|join("\n    ")|raw }}
+    {{ genesis.document.getHtml('top')|join("\n    ")|raw }}
 {% endset -%}
 
 {%- set page_bottom %}
     {% block page_bottom %}
     {% endblock %}
-    {{ gantry.document.getHtml('bottom')|join("\n    ")|raw }}
+    {{ genesis.document.getHtml('bottom')|join("\n    ")|raw }}
 {% endset -%}
 
 {%- set body_top %}
     {% block body_top %}
     {% endblock %}
-    {{ gantry.document.getHtml('body_top')|join("\n    ")|raw }}
+    {{ genesis.document.getHtml('body_top')|join("\n    ")|raw }}
 {% endset -%}
 
 {%- set body_bottom %}
     {% block body_bottom %}
     {% endblock %}
-    {{ gantry.document.getHtml('body_bottom')|join("\n    ")|raw }}
+    {{ genesis.document.getHtml('body_bottom')|join("\n    ")|raw }}
 {% endset -%}
 
-{%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 11, 'footer') -%}
+{%- do genesis.document.addScript(url('gantry-assets://js/main.js'), 11, 'footer') -%}
 
 {# Head and footer needs to come last because of any of the above blocks may have CSS or JavaScript in them #}
 
@@ -74,20 +74,20 @@
 
 {%- set page_footer %}
     {% block page_footer %}
-        {% do gantry.platform.finalize() -%}
-        {{ gantry.scripts('footer')|join("\n    ")|raw -}}
+        {% do genesis.platform.finalize() -%}
+        {{ genesis.scripts('footer')|join("\n    ")|raw -}}
     {% endblock %}
 
-    {{ gantry.debugger.render()|raw }}
+    {{ genesis.debugger.render()|raw }}
 {% endset -%}
 
 {%- block page -%}
-<!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
-<html{{ gantry.page.htmlAttributes|raw }}>
+<!DOCTYPE {{ genesis.config.page.doctype|default('html')|raw }}>
+<html{{ genesis.page.htmlAttributes|raw }}>
     {{ page_head|raw }}
     {% block page_body -%}
-    <body{{ gantry.page.bodyAttributes({'class': [offcanvas_position, gantry.page.preset, 'g-style-' ~ gantry.theme.preset]})|raw }}>
-        {{ gantry.config.page.body.body_top|raw }}
+    <body{{ genesis.page.bodyAttributes({'class': [offcanvas_position, genesis.page.preset, 'g-style-' ~ genesis.theme.preset]})|raw }}>
+        {{ genesis.config.page.body.body_top|raw }}
         {{ body_top|raw }}
         {{ page_offcanvas|raw }}
         <div id="g-page-surround">
@@ -100,7 +100,7 @@
         </div>
         {{ body_bottom|raw }}
         {{ page_footer|raw }}
-        {{ gantry.config.page.body.body_bottom|raw }}
+        {{ genesis.config.page.body.body_bottom|raw }}
     </body>
     {%- endblock %}
 

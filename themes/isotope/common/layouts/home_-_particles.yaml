@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: home_-_particles
   timestamp: 1446497252
 layout:
@@ -227,7 +227,7 @@ content:
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: 'Simple <span class="g-ampersand">&</span> Swift'
-          desc: 'Customize with ease using the intuitive Gantry 5 interface.'
+          desc: 'Customize with ease using the intuitive Genesis interface.'
           testimonialImage: ''
           testimonialName: ''
           testimonialPosition: ''
@@ -278,7 +278,7 @@ content:
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: ''
-          desc: 'Gantry 5 supports both fixed and fluid width responsive options, giving you more flexibility in layout preferences.'
+          desc: 'Genesis supports both fixed and fluid width responsive options, giving you more flexibility in layout preferences.'
           testimonialImage: 'gantry-media://demo/home/showcase/img-01.jpg'
           testimonialName: 'Clara Berg'
           testimonialPosition: 'CEO of GoldPear, Inc.'
@@ -293,7 +293,7 @@ content:
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: ''
-          desc: 'A versatile dropdown menu is integrated directly into Gantry 5, with inline block support and a dedicated mobile menu.'
+          desc: 'A versatile dropdown menu is integrated directly into Genesis, with inline block support and a dedicated mobile menu.'
           testimonialImage: 'gantry-media://demo/home/showcase/img-01.jpg'
           testimonialName: 'Calvin Bond'
           testimonialPosition: 'CEO of Hape, Inc.'
@@ -458,7 +458,7 @@ content:
           overlayParallax: '1'
           overlayParallaxRatio: '0.3'
           title: Guides
-          desc: '<em>The template and Gantry benefit from extensive written and video documentation to assist in configuration and customization.</em>'
+          desc: '<em>The template and Genesis benefit from extensive written and video documentation to assist in configuration and customization.</em>'
           testimonialImage: ''
           testimonialName: ''
           testimonialPosition: ''
@@ -592,7 +592,7 @@ content:
           overlay: g-overlay-disable
           previewicon: ''
           tag: Menu
-          desc: 'The Menu Editor in Gantry 5 allows you to change the menu item order, set multiple columns and place inline particles or positions inside a dropdown.'
+          desc: 'The Menu Editor in Genesis allows you to change the menu item order, set multiple columns and place inline particles or positions inside a dropdown.'
           animations: 'g-rotate g-blur'
           buttontext: 'Learn More'
           buttonlink: '#'
@@ -631,7 +631,7 @@ content:
           overlay: g-overlay-enable
           previewicon: 'fa fa-search-plus'
           tag: Support
-          desc: 'Gantry 5 has a comprehensive library of written and video documentation to assist in its setup, use and customization, as well as associated template guides.'
+          desc: 'Genesis has a comprehensive library of written and video documentation to assist in its setup, use and customization, as well as associated template guides.'
           animations: 'g-zoom g-blur'
           buttontext: 'Learn More'
           buttonlink: '#'
@@ -644,7 +644,7 @@ content:
           overlay: g-overlay-disable
           previewicon: ''
           tag: Config
-          desc: 'YAML is a human readable language, that is used for all Gantry 5 configuration, which is easy to setup and customize, if necessary.'
+          desc: 'YAML is a human readable language, that is used for all Genesis configuration, which is easy to setup and customize, if necessary.'
           animations: 'g-zoom g-grayscale'
           buttontext: 'Learn More'
           buttonlink: '#'
@@ -657,7 +657,7 @@ content:
           overlay: g-overlay-disable
           previewicon: ''
           tag: PHP
-          desc: 'Twig is a templating engine for PHP, that provides a sub-platform, making the code easier to manage and customize, and powers the Gantry 5 Particles.'
+          desc: 'Twig is a templating engine for PHP, that provides a sub-platform, making the code easier to manage and customize, and powers the Genesis Particles.'
           animations: 'g-zoom g-grayscale'
           buttontext: 'Learn More'
           buttonlink: '#'
@@ -695,8 +695,8 @@ content:
           datasize: 960x620
           overlay: g-overlay-disable
           previewicon: ''
-          tag: 'Gantry 5'
-          desc: 'Gantry 5 is a next generation template framework, for multiple platforms, with powerful core features such as a drag and drop Layout Manager.'
+          tag: 'Genesis'
+          desc: 'Genesis is a next generation template framework, for multiple platforms, with powerful core features such as a drag and drop Layout Manager.'
           animations: 'g-zoom g-rotate g-blur g-grayscale'
           buttontext: 'Learn More'
           buttonlink: '#'
@@ -717,7 +717,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'The Gantry 5 Framework has been written from the ground out to focus on speed and performance, whether the frontend or backend.'
+          description: 'The Genesis Framework has been written from the ground out to focus on speed and performance, whether the frontend or backend.'
           class: ''
           button: ''
           buttonlink: ''
@@ -756,7 +756,7 @@ content:
           rokboximage: ''
           rokboxcaption: ''
           subtitle: ''
-          description: 'Gantry 5 is free and open source, with regular updates issued via the administrator; and you can track progress and post issues via Github.'
+          description: 'Genesis is free and open source, with regular updates issued via the administrator; and you can track progress and post issues via Github.'
           class: ''
           button: ''
           buttonlink: ''
@@ -781,7 +781,7 @@ content:
         -
           style: g-testimonial-standard
           img: 'gantry-media://demo/home/bottom/img-01.jpg'
-          content: 'The Gantry 5 administrator benefits from unlimited undo/redo, to ensure that your changes and hours of work are never lost.'
+          content: 'The Genesis administrator benefits from unlimited undo/redo, to ensure that your changes and hours of work are never lost.'
           author: 'Tiffany Graham'
           company: Manager
           companyurl: '#'
@@ -789,7 +789,7 @@ content:
         -
           style: g-testimonial-standard
           img: 'gantry-media://demo/home/bottom/img-01.jpg'
-          content: 'Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more.'
+          content: 'Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more.'
           author: 'Craig Robert'
           company: Developer
           companyurl: '#'
@@ -1047,14 +1047,14 @@ content:
   custom-2723:
     title: About
     attributes:
-      html: "<h3 class=\"g-title\">About</h3>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p>Note: Isotope is built on the latest version of the Gantry 5 Framework.</p>"
+      html: "<h3 class=\"g-title\">About</h3>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p>Note: Isotope is built on the latest version of the Genesis Framework.</p>"
   custom-3300:
     title: Availability
     attributes:
       html: "<h3 class=\"g-title\">Availability</h3>\n<p><a href=\"https://dazzlesoftware.org/joomla/templates/isotope\">Isotope</a> can be <span class=\"hidden-tablet\">individually </span>purchased with lifetime download / forum access.</p>\n<p>Alternatively, Isotope is available as part of a subscription.</p>"
   branding-1875:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
   totop-2327:
     title: 'To Top'
     attributes:

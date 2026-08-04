@@ -580,10 +580,10 @@ abstract class AbstractMenu implements \ArrayAccess, \Iterator, \Countable
 
         // Add custom menu elements.
         foreach ($items as $route => $item) {
-            // If existing menu item does not contain Gantry metadata, update properties from menu YAML.
+            // If existing menu item does not contain Genesis metadata, update properties from menu YAML.
             $object = isset($this->items[$route]) ? $this->items[$route] : null;
             if ($object) {
-                if (empty($object->gantry)) {
+                if (empty($object->Genesis)) {
                     foreach ($item as $key => $value) {
                         $object[$key] = $value;
                     }

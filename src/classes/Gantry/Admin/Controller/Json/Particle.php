@@ -104,7 +104,7 @@ class Particle extends JsonController
         }
 
         // TODO: add support for other block types as well, like menu.
-        // $block = BlueprintForm::instance('layout/block.yaml', 'gantry-admin://blueprints');
+        // $block = BlueprintForm::instance('layout/block.yaml', 'Genesis-admin://blueprints');
         $blueprints = $this->container['particles']->getBlueprintForm($name);
 
         // Load particle blueprints and default settings.
@@ -214,6 +214,6 @@ class Particle extends JsonController
      */
     protected function loadBlueprints($name = 'menu')
     {
-        return BlueprintForm::instance("menu/{$name}.yaml", 'gantry-admin://blueprints');
+        return BlueprintForm::instance("menu/{$name}.yaml", 'Genesis-admin://blueprints');
     }
 }

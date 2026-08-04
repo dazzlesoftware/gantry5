@@ -19,11 +19,11 @@ use Joomla\CMS\Language\Text;
 $app = Factory::getApplication();
 $user = $app->getIdentity();
 
-// ACL for Gantry admin access.
+// ACL for Genesis admin access.
 if (!$user || (
     !$user->authorise('core.manage', 'com_gantry5')
     && !$user->authorise('core.manage', 'com_templates')
-    // Editing particle module makes AJAX call to Gantry component, but has restricted access to json only.
+    // Editing particle module makes AJAX call to Genesis component, but has restricted access to json only.
     && !($user->authorise('core.manage', 'com_modules') && strtolower($app->input->getCmd('format', 'html')) === 'json')
 )) {
     $app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
@@ -31,11 +31,14 @@ if (!$user || (
     return false;
 }
 
+if (!defined('GENESIS_ADMIN_PATH')) {
+    define('GENESIS_ADMIN_PATH', JPATH_COMPONENT_ADMINISTRATOR);
+}
 if (!defined('GANTRYADMIN_PATH')) {
-    define('GANTRYADMIN_PATH', JPATH_COMPONENT_ADMINISTRATOR);
+    define('GANTRYADMIN_PATH', GENESIS_ADMIN_PATH);
 }
 
-// Detect Gantry Framework or fail gracefully.
+// Detect Genesis Framework or fail gracefully.
 if (!class_exists('Gantry5\Loader')) {
     $app->enqueueMessage(
         Text::sprintf('COM_GANTRY5_PLUGIN_MISSING', Text::_('COM_GANTRY5')),

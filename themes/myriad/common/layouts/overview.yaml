@@ -198,7 +198,7 @@ content:
   custom-4093:
     title: 'Custom HTML'
     attributes:
-      html: "<h2 class=\"title\"><span>Various Pages<span class=\"rt-title-tag\">Flexible and adaptable sample pages</span></span></h2>\n\n<p class=\"promo2\">See a range of example page layouts possible with Myriad template, through its responsive layout and the Gantry Framework grid system</p>"
+      html: "<h2 class=\"title\"><span>Various Pages<span class=\"rt-title-tag\">Flexible and adaptable sample pages</span></span></h2>\n\n<p class=\"promo2\">See a range of example page layouts possible with Myriad template, through its responsive layout and the Genesis Framework grid system</p>"
     block:
       class: 'rt-title-large nomarginall'
       variations: center

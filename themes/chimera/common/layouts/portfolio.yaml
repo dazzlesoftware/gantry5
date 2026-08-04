@@ -365,7 +365,7 @@ content:
       items:
         -
           title: ''
-          desc: '<p class="promo2">Set up and configure page layouts with Gantry 5''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds.</p>'
+          desc: '<p class="promo2">Set up and configure page layouts with Genesis''s new Layout Manager. Featuring drag-and-drop functionality that gives you the power to place content blocks, resize them, and configure their unique settings in seconds.</p>'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -383,7 +383,7 @@ content:
         -
           image: ''
           title: ''
-          desc: '<p class="promo2">Configuration in Gantry 5 features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.</p>'
+          desc: '<p class="promo2">Configuration in Genesis features sophisticated built-in fields such as Icon Picker, Image Picker, Font Picker, Collections, and much more. You can change almost any aspect of a theme without breaking out a single editor.</p>'
           link: ''
           linktext: ''
           buttontarget: _self

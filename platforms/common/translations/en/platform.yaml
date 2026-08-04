@@ -102,7 +102,7 @@ GANTRY5_PLATFORM_PLATFORM_SETTINGS: "Platform Settings"
 GANTRY5_PLATFORM_FOOTER: '<a href="http://gantry.org">Genesis Administration</a> by <a href="https://dazzlesoftware.org">Dazzle Software</a>'
 GANTRY5_PLATFORM_BASE_OUTLINE: "Base Outline"
 GANTRY5_PLATFORM_GLOBAL_DEFAULTS: "Global Defaults"
-GANTRY5_PLATFORM_GANTRY_DETAILS: '<p>Gantry 5 is the most customizable and powerful version of the framework yet. Packed full of features such as drag-and-drop layout creation and the powerful particle system, Gantry 5 has been designed from the ground up to be lightning fast and hassle free.</p><ul class="overview-list"><li><i class="fa fa-asterisk" aria-hidden="true"></i>Fast, flexible, easy to use framework</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Drag-n-drop layout controls</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Powerful dynamic particles system</li></ul>'
+GANTRY5_PLATFORM_GANTRY_DETAILS: '<p>Genesis is a fast, flexible framework for building highly customizable themes. It combines drag-and-drop layout creation with a powerful particle system while preserving compatibility with the Genesis ecosystem.</p><ul class="overview-list"><li><i class="fa fa-asterisk" aria-hidden="true"></i>Fast, flexible, easy to use framework</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Drag-n-drop layout controls</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Powerful dynamic particles system</li></ul>'
 GANTRY5_PLATFORM_THEME: "Theme"
 GANTRY5_PLATFORM_DEV: "Dev"
 GANTRY5_PLATFORM_PROD: "Prod"
@@ -172,7 +172,7 @@ GANTRY5_PLATFORM_NO_THEMES_INSTALLED: "No themes installed"
 GANTRY5_PLATFORM_ATOMS: "Atoms"
 GANTRY5_PLATFORM_ATOMS_CONFIGURE_SETTINGS: "Configure Atom Settings"
 GANTRY5_PLATFORM_ATOMS_DISABLED_DESC: "This atom has been disabled and it won't be rendered on front-end. You can still configure, move and delete."
-GANTRY5_PLATFORM_ATOMS_DEPRECATED_MESSAGE: "The above Atoms have been imported from the current Outline Layout. Since Gantry 5.2.0 Atoms are no longer located in the Layout Manager. While we are automatically migrating the Atoms for you, please ensure all the settings are correct and resave the Page Settings, as well as the Layout, if needed."
+GANTRY5_PLATFORM_ATOMS_DEPRECATED_MESSAGE: "The above Atoms have been imported from the current Outline Layout. Since Genesis 5.2.0 Atoms are no longer located in the Layout Manager. While we are automatically migrating the Atoms for you, please ensure all the settings are correct and resave the Page Settings, as well as the Layout, if needed."
 GANTRY5_PLATFORM_LM_LOAD_PRESET: "Load Preset"
 GANTRY5_PLATFORM_LM_CLEAR_LAYOUT: "Clear"
 GANTRY5_PLATFORM_LM_PRESET_UNKNOWN: "Unknown"
@@ -186,7 +186,7 @@ GANTRY5_PLATFORM_SAVE_CONTENT_SETTINGS: "Save Content Settings"
 GANTRY5_PLATFORM_CREATE_OUTLINE: "Create New Outline"
 
 GANTRY5_PLATFORM_PARTICLE_DEFAULTS_FROM_BASE: 'You can define default options for Particles from <a %s href="%s">%s</a>.'
-GANTRY5_PLATFORM_PARTICLE_DEFAULTS_WARNING: 'As of Gantry v5.3.0, the <strong>%s</strong> (previously known as <strong>Settings</strong>) tab in the Gantry admin has been hidden. This was done to cut down on any confusion as it presents an extra level of inheritance that is only needed for advanced usage cases.'
+GANTRY5_PLATFORM_PARTICLE_DEFAULTS_WARNING: 'As of Genesis v5.3.0, the <strong>%s</strong> (previously known as <strong>Settings</strong>) tab in the Genesis admin has been hidden. This was done to cut down on any confusion as it presents an extra level of inheritance that is only needed for advanced usage cases.'
 GANTRY5_PLATFORM_PARTICLE_DEFAULTS_ENTER: 'If required, you can still enter to this administrative panel by <a %s href="%s">clicking here</a>.'
 GANTRY5_PLATFORM_PARTICLE_PREVIEW: "Attention! This is a read-only view of the Particle you selected. Any change made here cannot be saved."
 GANTRY5_PLATFORM_ATOM_PREVIEW: "Attention! This is a read-only view of the Atom you selected. Any change made here cannot be saved."
@@ -235,7 +235,7 @@ GANTRY5_PLATFORM_JS_SAVE_SUCCESS: "The {{type}} {{verb}} been successfully saved
 GANTRY5_PLATFORM_SAVED: "Saved"
 GANTRY5_PLATFORM_LAST_SAVED: "Last Saved"
 GANTRY5_PLATFORM_JS_CSS_COMPILED: "The CSS was successfully compiled!"
-GANTRY5_PLATFORM_PHP54_WARNING: 'You are currently running PHP <strong>%s</strong> which will soon no longer be supported by Gantry. Please upgrade as soon as possible. <a target: "_blank" href: "http://gantry.org/blog/php54-end-of-support">More Details.</a>'
+GANTRY5_PLATFORM_PHP54_WARNING: 'You are currently running PHP <strong>%s</strong> which will soon no longer be supported by Genesis. Please upgrade as soon as possible. <a target: "_blank" href: "http://gantry.org/blog/php54-end-of-support">More Details.</a>'
 GANTRY5_PLATFORM_SAMPLE_DATA_INSTALLED: "Sample Data Installed"
 GANTRY5_PLATFORM_CHROME: "Chrome"
 GANTRY5_PLATFORM_MENU_EDIT_UNAUTHORIZED: "You are not allowed to edit this menu."

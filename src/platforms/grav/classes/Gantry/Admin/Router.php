@@ -88,7 +88,7 @@ class Router extends BaseRouter
 
         $this->container['ajax_suffix'] = '.json';
 
-        $nonce = Utils::getNonce('gantry-admin');
+        $nonce = Utils::getNonce('Genesis-admin');
         $this->container['base_url'] = $plugin->base;
         $this->container['ajax_nonce'] = $nonce;
         if ($base) {
@@ -146,7 +146,7 @@ class Router extends BaseRouter
         $request = $this->container['request'];
         $nonce = $request->get->get('nonce');
 
-        return isset($nonce) && Utils::verifyNonce($nonce, 'gantry-admin');
+        return isset($nonce) && Utils::verifyNonce($nonce, 'Genesis-admin');
     }
 
     /**

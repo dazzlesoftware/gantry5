@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Generate the Grav platform adapter for every Gantry theme that does not
+ * Generate the Grav platform adapter for every Genesis theme that does not
  * already provide one. Theme-specific configuration is taken from WordPress
  * first, then Joomla; shared assets continue to live in ../common.
  *
@@ -28,7 +28,7 @@ foreach (new DirectoryIterator($themesRoot) as $themeDirectory) {
     $marker = $grav . '/.generated-grav-theme';
     $generatedBlueprint = $grav . '/blueprints.yaml';
     $isGenerated = is_file($marker)
-        || (is_file($generatedBlueprint) && str_contains(file_get_contents($generatedBlueprint), ' theme for Gantry 5.'));
+        || (is_file($generatedBlueprint) && str_contains(file_get_contents($generatedBlueprint), ' theme for Genesis.'));
 
     // Existing hand-maintained Grav themes must never be replaced.
     if ((is_dir($grav) && !$isGenerated) || !is_dir($path . '/common')) {
@@ -54,7 +54,7 @@ foreach (new DirectoryIterator($themesRoot) as $themeDirectory) {
         'g5_' . $slug . '.yaml' => "enabled: true\n",
         'theme.php' => gravThemePhp($class),
         'includes/theme.php' => gantryThemePhp($class),
-        'gantry/theme.yaml' => $config,
+        'Genesis/theme.yaml' => $config,
         'scss/' . $slug . '-grav.scss' => gravScss($slug),
         'scss/' . $slug . '-grav/_core.scss' => gravCoreScss(),
     ];
@@ -104,15 +104,15 @@ function blueprint(string $name): string
     return <<<YAML
 name: {$name}
 version: "@version@"
-description: "{$name} theme for Gantry 5."
-icon: gantry
+description: "{$name} theme for Genesis."
+icon: Genesis
 author:
   name: Dazzle Software
   email: 'support@dazzlesoftware.org'
   url: 'https://dazzlesoftware.org'
 homepage: 'https://dazzlesoftware.org'
 readme: 'https://github.com/gantry/gantry5/blob/master/README.md'
-keywords: gantry, gantry5, theme
+keywords: Genesis, gantry5, theme
 bugs: 'https://github.com/gantry/gantry5/issues'
 license: GPL-3.0-or-later
 
@@ -137,7 +137,7 @@ function gravThemeYaml(string $yaml, string $slug, string $sourcePlatform): stri
     $yaml = preg_replace('/^(\s{4}file:)\s*.*$/m', '$1 \'gantry-theme://includes/theme.php\'', $yaml, 1);
     $yaml = preg_replace('/^(\s{4}class:)\s*.*$/m', '$1 \'\\Gantry\\Framework\\Theme\'', $yaml, 1);
     $yaml = preg_replace('/^\s{4}textdomain:.*\R/m', '', $yaml);
-    $yaml = preg_replace('/^(\s{4}gantry:)\s*.*$/m', '$1 \'5.5\'', $yaml);
+    $yaml = preg_replace('/^(\s{4}Genesis:)\s*.*$/m', '$1 \'5.5\'', $yaml);
     $yaml = str_replace($slug . '-' . $sourcePlatform, $slug . '-grav', $yaml);
     $yaml = preg_replace('/\Rchrome:\R[\s\S]*$/', "\n", $yaml);
 
@@ -199,10 +199,10 @@ class __CLASS__ extends Theme
 
         if (!class_exists('\Gantry5\Loader')) {
             if ($this->isAdmin()) {
-                $this->grav['messages']->add('Please enable Gantry 5 plugin in order to use current theme!', 'error');
+                $this->grav['messages']->add('Please enable the Genesis plugin in order to use the current theme!', 'error');
                 return;
             }
-            throw new \LogicException('Please install and enable Gantry 5 Framework plugin!');
+            throw new \LogicException('Please install and enable the Genesis Framework plugin!');
         }
 
         \Gantry5\Loader::setup();

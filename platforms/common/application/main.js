@@ -1,4 +1,5 @@
 "use strict";
+require('./utils/genesis-compat');
 var $              = require('./utils/elements-native'),
     zen            = require('./utils/create-element'),
     ready          = require('./utils/dom').ready,
@@ -183,7 +184,7 @@ ready(function() {
             invalid = [],
             type    = element.data('save'),
             extras  = '',
-            page    = $('[data-lm-root]') ? 'layout' : ($('[data-mm-id]') ? 'menu' : ($('[data-g5-position]') ? 'positions' : 'other')),
+            page    = $('[data-lm-root]') ? 'layout' : ($('[data-mm-id]') ? 'menu' : ($('[data-genesis-position]') ? 'positions' : 'other')),
             saveURL = parseAjaxURI(trim(window.location.href, '#') + getAjaxSuffix());
 
         switch (page) {
@@ -435,5 +436,8 @@ var modules = {
     tips: require('./ui/tooltips')
 };
 
-window.G5 = modules;
+// Genesis is the canonical administrator API. G5 remains an identity alias
+// during the compatibility period.
+window.Genesis = modules;
+window.G5 = window.Genesis;
 module.exports = modules;

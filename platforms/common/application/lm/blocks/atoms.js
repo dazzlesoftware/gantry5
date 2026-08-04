@@ -40,7 +40,7 @@ class Atoms extends Section {
     }
 
     _attachRedirect() {
-        var item = document.querySelector('[data-g5-nav="page"]');
+        var item = document.querySelector('[data-genesis-nav="page"]');
         if (!item) { return; }
         var link = document.querySelector('.atoms-notice a');
         if (!link) { return; }

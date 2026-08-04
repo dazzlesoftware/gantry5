@@ -85,7 +85,7 @@ class AssignmentsPost implements AssignmentsInterface
         // Get label and items for each post types
         $list = [];
         foreach($post_types as $post_type) {
-            $post_type = \apply_filters('gantry5_assignments_' . $post_type->name . '_object', $post_type);
+            $post_type = \genesis_apply_filters('genesis_assignments_' . $post_type->name . '_object', 'gantry5_assignments_' . $post_type->name . '_object', $post_type);
 
             if($post_type) {
                 $list[$post_type->name]['label'] = $post_type->labels->name;
@@ -117,7 +117,7 @@ class AssignmentsPost implements AssignmentsInterface
 
         $args = \wp_parse_args($args, $defaults);
 
-        $post_types = \get_post_types(\apply_filters('gantry5_assignments_get_post_types_args', $args), 'object');
+        $post_types = \get_post_types(\genesis_apply_filters('genesis_assignments_get_post_types_args', 'gantry5_assignments_get_post_types_args', $args), 'object');
 
         return $post_types;
     }
@@ -216,7 +216,7 @@ class AssignmentsPost implements AssignmentsInterface
 
         }
 
-        return \apply_filters('gantry5_assignments_' . $post_type->name . '_list_items', $items, $post_type, $this->type);
+        return \genesis_apply_filters('genesis_assignments_' . $post_type->name . '_list_items', 'gantry5_assignments_' . $post_type->name . '_list_items', $items, $post_type, $this->type);
 
     }
 
@@ -286,6 +286,6 @@ class AssignmentsPost implements AssignmentsInterface
             }
         }
 
-        return \apply_filters('gantry5_assignments_' . $post_type->name . '_terms_list_items', $items, $taxonomies, $post_type, $this->type);
+        return \genesis_apply_filters('genesis_assignments_' . $post_type->name . '_terms_list_items', 'gantry5_assignments_' . $post_type->name . '_terms_list_items', $items, $taxonomies, $post_type, $this->type);
     }
 }

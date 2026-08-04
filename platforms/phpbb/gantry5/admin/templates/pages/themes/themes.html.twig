@@ -1,17 +1,17 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
-{% set settings_url = gantry.platform.settings %}
-{% set settings_key = gantry.platform.settings_key %}
+{% set settings_url = genesis.platform.settings %}
+{% set settings_key = genesis.platform.settings_key %}
 
 {% block content %}
-    <div id="g5-container" class="g-container">
+    <div id="g5-container" data-genesis-container="" class="g-container">
         <div class="inner-container">
             <div class="g-grid">
                 <div class="g-block main-block">
                     <section id="main">
-                        <div data-g5-content="">
+                        <div data-genesis-content="">
                             {% block gantry %}
-                                <div class="g-content" data-g5-content="">
+                                <div class="g-content" data-genesis-content="">
                                     <div class="g-grid overview-header">
                                         <div class="g-block">
                                             <h2 class="theme-title"><i class="fa fa-fw fa-plug" aria-hidden="true"></i> {{ 'GANTRY5_PLATFORM_AVAILABLE_THEMES'|trans }}</h2>

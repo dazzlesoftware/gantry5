@@ -1,5 +1,5 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
-{% do gantry.load('lightcase.init') %}
+{% do genesis.load('lightcase.init') %}
 {% block particle %}
     <div class="{{ particle.class|e }}">
         <div class="g-blockcontent">
@@ -81,10 +81,9 @@
                         {% endfor %}
                     {% endif %}
                 {% else %}
-                    {% include '@particles/blockcontent-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+                    {% include '@particles/blockcontent-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
                 {% endif %}
             </div>
         </div>
     </div>
 {% endblock %}
-

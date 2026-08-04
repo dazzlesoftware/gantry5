@@ -53,9 +53,9 @@ class Eraser {
     setTop() {
         if (this.top !== undefined || !this.element) return;
         this.top = Number.parseInt(getComputedStyle(this.element).top, 10) || 0;
-        const container = document.querySelector('#g5-container');
+        const container = document.querySelector('[data-genesis-container]');
         this.left = container ? container.getBoundingClientRect().left : 0;
-        if (window.GANTRY_PLATFORM === 'grav') this.left = 0;
+        if (window.GENESIS_PLATFORM === 'grav') this.left = 0;
     }
 
     show(fast) {

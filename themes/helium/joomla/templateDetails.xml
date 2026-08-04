@@ -74,6 +74,6 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="Gantry 5 Helium">https://updates.gantry.org/5.0/joomla/tpl_g5_helium.xml</server>
+        <server type="extension" priority="1" name="Genesis Helium">https://updates.gantry.org/5.0/joomla/tpl_g5_helium.xml</server>
     </updateservers>
 </extension>

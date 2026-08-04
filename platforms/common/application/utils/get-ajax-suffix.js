@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = () => window.GANTRY_AJAX_SUFFIX || '';
+module.exports = () => window.GENESIS_AJAX_SUFFIX || '';

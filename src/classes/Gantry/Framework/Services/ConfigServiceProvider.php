@@ -48,7 +48,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
         $gantry['config'] = static function(Gantry $gantry) {
             // Make sure configuration has been set.
             if (!isset($gantry['configuration'])) {
-                throw new \LogicException('Gantry: Please set current configuration before using $gantry["config"]', 500);
+                throw new \LogicException('Genesis: Please set current configuration before using $gantry["config"]', 500);
             }
 
             if (\GANTRY_DEBUGGER) {
@@ -79,7 +79,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
 
         $cache = $locator->findResource('gantry-cache://theme/compiled/blueprints', true, true);
         if (is_bool($cache)) {
-            throw new \RuntimeException('Who just removed Gantry 5 cache folder? Try reloading the page if it fixes the issue');
+            throw new \RuntimeException('Who just removed Genesis cache folder? Try reloading the page if it fixes the issue');
         }
 
         $files = [];
@@ -88,7 +88,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
         $paths = $locator->findResources('gantry-blueprints://');
         $files += (new ConfigFileFinder)->locateFiles($paths);
 
-        $config = new CompiledBlueprints($cache, $files, GANTRY5_ROOT);
+        $config = new CompiledBlueprints($cache, $files, GENESIS_ROOT);
 
         return $config->load();
     }
@@ -121,10 +121,10 @@ class ConfigServiceProvider implements ServiceProviderInterface
 
         $cache = $locator->findResource('gantry-cache://theme/compiled/config', true, true);
         if (is_bool($cache)) {
-            throw new \RuntimeException('Who just removed Gantry 5 cache folder? Try reloading the page if it fixes the issue');
+            throw new \RuntimeException('Who just removed Genesis cache folder? Try reloading the page if it fixes the issue');
         }
 
-        $compiled = new CompiledConfig($cache, $files, GANTRY5_ROOT);
+        $compiled = new CompiledConfig($cache, $files, GENESIS_ROOT);
         $compiled->setBlueprints(static function() use ($container) {
             return $container['blueprints'];
         });

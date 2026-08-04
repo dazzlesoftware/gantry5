@@ -50,7 +50,7 @@ class Import extends HtmlController
             throw new \RuntimeException('No file sent', 400);
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The Gantry admin router already requires the matching nonce.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- The Genesis admin router already requires the matching nonce.
         $upload = $_FILES['file'];
 
         switch ($upload['error']) {
@@ -77,7 +77,7 @@ class Import extends HtmlController
 
         $zip = new \ZipArchive;
         if ($zip->open($filename) !== true || !($export = Yaml::parse($zip->getFromName('export.yaml'))) || !isset($export['gantry'])) {
-            throw new \RuntimeException('Uploaded file is not Gantry 5 export file', 400);
+            throw new \RuntimeException('Uploaded file is not Genesis export file', 400);
         }
 
         /** @var UniformResourceLocator $locator */

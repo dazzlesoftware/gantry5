@@ -1,12 +1,12 @@
 <optgroup label="{{ 'GANTRY5_PLATFORM_GLOBAL_DEFAULTS'|trans }}">
     <option value="default"
             {% if configuration == 'default' %}selected="selected"{% endif %}
-            data-data="{{ {params: {navbar: true}, url: gantry.route('configurations/default', configuration_page|default('styles'))}|json_encode|e('html_attr') }}">
+            data-data="{{ {params: {navbar: true}, url: genesis.route('configurations/default', configuration_page|default('styles'))}|json_encode|e('html_attr') }}">
         {{ 'GANTRY5_PLATFORM_BASE_OUTLINE'|trans }}
     </option>
 </optgroup>
 
-{% set user_conf = gantry.outlines.user %}
+{% set user_conf = genesis.outlines.user %}
 {% if user_conf.count %}
     <optgroup label="{{ 'GANTRY5_PLATFORM_THEME_OUTLINES'|trans }}">
         {% for name, title in user_conf %}
@@ -16,7 +16,7 @@
             {% endif %}
             <option value="{{ name }}"
                     {% if name == configuration %}selected="selected"{% endif %}
-                    data-data="{{ {params: {navbar: true}, url: gantry.route('configurations', name|e, configuration_page|default('layout'))}|json_encode|e('html_attr') }}"
+                    data-data="{{ {params: {navbar: true}, url: genesis.route('configurations', name|e, configuration_page|default('layout'))}|json_encode|e('html_attr') }}"
             >
                 {{ title }}
             </option>
@@ -24,7 +24,7 @@
     </optgroup>
 {% endif %}
 
-{% set system_conf = gantry.outlines.system %}
+{% set system_conf = genesis.outlines.system %}
 {% if system_conf.count %}
     <optgroup label="{{ 'GANTRY5_PLATFORM_SYSTEM_OUTLINES'|trans }}">
         {% for name, title in system_conf %}
@@ -35,7 +35,7 @@
             {% endif %}
             <option value="{{ name }}"
                     {% if name == configuration %}selected="selected"{% endif %}
-                    data-data="{{ {params: {navbar: true}, url: gantry.route('configurations', name|e, configuration_page|default('layout'))}|json_encode|e('html_attr') }}"
+                    data-data="{{ {params: {navbar: true}, url: genesis.route('configurations', name|e, configuration_page|default('layout'))}|json_encode|e('html_attr') }}"
             >
                 {{ title }}
             </option>

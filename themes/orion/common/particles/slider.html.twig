@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="gantry-theme://css/swiper.min.css"/>
 {% endblock %}
 
-{% do gantry.load('lightcase.init') %}
+{% do genesis.load('lightcase.init') %}
 {% block particle %}
 
 {% set swiper_slides %}
@@ -12,11 +12,11 @@ data-swiper-mobileslides="{{ particle.mobileslides|default('2') }}" data-swiper-
 {% endset %}
 
 {% set swiper_breakpoints %}
-data-swiper-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-swiper-tablet-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-swiper-desktop-breakpoint="{{ gantry.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-swiper-largedesktop-breakpoint="{{ gantry.config.get('styles.breakpoints.large-desktop-container')|default('88rem') }}"
+data-swiper-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.large-mobile-container')|default('30rem') }}" data-swiper-tablet-breakpoint="{{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" data-swiper-desktop-breakpoint="{{ genesis.config.get('styles.breakpoints.desktop-container')|default('76rem') }}" data-swiper-largedesktop-breakpoint="{{ genesis.config.get('styles.breakpoints.large-desktop-container')|default('88rem') }}"
 {% endset %}
 
 <div id="{{ id }}" data-slider-id="{{ id }}">
-	<div class="g-slider swiper-container area {{ particle.class|e }}" data-slider-thumbnails="{% if particle.thumbs == 'enabled' %}true{% else %}false{% endif %}" data-slider-effect="{{ particle.effect }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.autoplayTimeout }}" data-slider-speed="{{ particle.speed }}" data-slider-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-slider-centered="{% if particle.centered == "enabled" %}true{% else %}false{% endif %}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %} {{ swiper_slides }} {{ swiper_breakpoints }}>
+	<div class="g-slider swiper-container area {{ particle.class|e }}" data-slider-thumbnails="{% if particle.thumbs == 'enabled' %}true{% else %}false{% endif %}" data-slider-effect="{{ particle.effect }}" data-slider-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-slider-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-slider-timeout="{{ particle.autoplayTimeout }}" data-slider-speed="{{ particle.speed }}" data-slider-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-slider-centered="{% if particle.centered == "enabled" %}true{% else %}false{% endif %}" {% if genesis.page.direction == 'rtl' %} dir="rtl" {% endif %} {{ swiper_slides }} {{ swiper_breakpoints }}>
 
 		<div class="g-slider-carousel swiper-wrapper">
 			{% for item in particle.items %}
@@ -38,7 +38,7 @@ data-swiper-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mo
 
 		<!-- navigation -->
 		{% if particle.nav == 'enabled' %}
-			{% if gantry.page.direction == 'rtl' %}
+			{% if genesis.page.direction == 'rtl' %}
 				<div class="navigation rtl">
 					<div class="slider-button-next">
 						<i class="fa fa-angle-left"></i>
@@ -83,7 +83,7 @@ data-swiper-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.large-mo
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/slider.init.js'), 10, 'footer') %}
 {% endblock %}

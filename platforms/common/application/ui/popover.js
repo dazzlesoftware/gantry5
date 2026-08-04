@@ -7,7 +7,7 @@ var $        = require('../utils/elements.utils'),
     request  = require('../utils/request');
 
 var defaults = {
-        mainClass: 'g5-popover',
+        mainClass: 'genesis-popover',
         placement: 'auto',
         width: 'auto',
         height: 'auto',
@@ -25,13 +25,13 @@ var defaults = {
         allowElementsClick: false,
         url: '',
         type: 'html',
-        where: '#g5-container',
-        template: '<div class="g5-popover">' +
+        where: '[data-genesis-container]',
+        template: '<div class="genesis-popover">' +
         '<div class="g-arrow"></div>' +
-        '<div class="g5-popover-inner">' +
+        '<div class="genesis-popover-inner">' +
         '<a href="#" class="close">x</a>' +
-        '<h3 class="g5-popover-title"></h3>' +
-        '<div class="g5-popover-content"><i class="icon-refresh"></i> <p>&nbsp;</p></div>' +
+        '<h3 class="genesis-popover-title"></h3>' +
+        '<div class="genesis-popover-content"><i class="icon-refresh"></i> <p>&nbsp;</p></div>' +
         '</div>' +
         '</div>'
     };
@@ -207,7 +207,7 @@ class Popover {
         var container = $(this.options.where);
 
         // wordpress workaround for out-of-scope cases
-        if (GANTRY_PLATFORM == 'wordpress') {
+        if (GENESIS_PLATFORM == 'wordpress') {
             container = $('#widgets-editor') || $('#customize-preview') || $('#widgets-right') || $(this.options.where);
             if ('#' + container.id() != this.options.where) {
                 var wpwrap = $('#wpwrap') || $('.wp-customizer'), sibling, workaround;
@@ -240,7 +240,7 @@ class Popover {
 
         if (!this.options.padding) {
             targetContent.css('height', targetContent.position().height);
-            this.$target.addClass('g5-popover-no-padding');
+            this.$target.addClass('genesis-popover-no-padding');
         }
 
         targetWidth = target[0].offsetWidth;
@@ -293,7 +293,7 @@ class Popover {
     }
 
     getTitle() {
-        return this.options.title || this.element.data('g5-popover-title') || this.element.attribute('title');
+        return this.options.title || this.element.data('genesis-popover-title') || this.element.attribute('title');
     }
 
     setTitle(title) {
@@ -322,7 +322,7 @@ class Popover {
             } else {
                 content = this.options.content;
             }
-            this.content = this.element.data('g5-popover-content') || content;
+            this.content = this.element.data('genesis-popover-content') || content;
         }
         return this.content;
     }
@@ -436,7 +436,7 @@ class Popover {
         if (typeof(this.options.placement) === 'function') {
             placement = this.options.placement.call(this, this.getTarget()[0], this.element[0]);
         } else {
-            placement = this.element.data('g5-popover-placement') || this.options.placement;
+            placement = this.element.data('genesis-popover-placement') || this.options.placement;
         }
 
         if (placement === 'auto') {
@@ -603,7 +603,7 @@ $.implement({
 
     position: function() {
         var node = this[0],
-            ct = $('#g5-container')[0].getBoundingClientRect(),
+            ct = $('[data-genesis-container]')[0].getBoundingClientRect(),
             box = {
                 left: 0,
                 right: 0,

@@ -1,6 +1,6 @@
 {
-    "name": "gantry/wordpress",
-    "description": "Gantry Framework Library",
+    "name": "dazzlesoftware/genesis-wordpress",
+    "description": "Genesis Framework library for WordPress",
     "license": "GPL-3.0-or-later",
 
     "require": {

@@ -1,7 +1,7 @@
 {% extends 'forms/fields/input/selectize.html.twig' %}
 
 {% block global_attributes %}
-    {% set variations = gantry.theme.details.configuration['block-variations'] %}
+    {% set variations = genesis.theme.details.configuration['block-variations'] %}
     {% set Options = field.selectize.Options %}
     {% set Optgroups = field.selectize.Optgroups %}
     {% set options = [] %}

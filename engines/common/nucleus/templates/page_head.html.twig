@@ -1,29 +1,29 @@
-{%- do gantry.debugger.assets() -%}
-{%- do gantry.theme.loadAtoms() -%}
+{%- do genesis.debugger.assets() -%}
+{%- do genesis.theme.loadAtoms() -%}
 
-{% set faEnabled = gantry.config.page.fontawesome.enable|default(1) %}
-{% set faVersion = gantry.config.page.fontawesome.version ?? gantry.config.page.fontawesome.default_version ?? 'fa4' %}
+{% set faEnabled = genesis.config.page.fontawesome.enable|default(1) %}
+{% set faVersion = genesis.config.page.fontawesome.version ?? genesis.config.page.fontawesome.default_version ?? 'fa4' %}
 
 {% assets with { priority: 10 } %}
     {% block head_stylesheets -%}
         <link rel="stylesheet" href="gantry-engine://css-compiled/nucleus.css" type="text/css"/>
-        {% for scss in gantry.theme.configuration.css.persistent|default(gantry.theme.configuration.css.files|default([])) %}
+        {% for scss in genesis.theme.configuration.css.persistent|default(genesis.theme.configuration.css.files|default([])) %}
         <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
     {% endblock -%}
 
     {% block head_scripts -%}
     {% if faEnabled %}
-        {% if faVersion == 'manual' or gantry.config.page.fontawesome.html_js_import|trim %}
-            {{ gantry.config.page.fontawesome.html_js_import|html|raw -}}
+        {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_js_import|trim %}
+            {{ genesis.config.page.fontawesome.html_js_import|html|raw -}}
         {% elseif faVersion == 'fa5js' %}
             <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome6-all.min.js') }}"></script>
-            {% if gantry.config.page.fontawesome.fa4_compatibility|default(1) %}
+            {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
                 <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome6-shim.min.js') }}"></script>
             {% endif %}
         {% elseif faVersion == 'fa7js' %}
             <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome7-all.min.js') }}"></script>
-            {% if gantry.config.page.fontawesome.fa4_compatibility|default(1) %}
+            {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
                 <script type="text/javascript" src="{{ url('gantry-assets://js/font-awesome7-shim.min.js') }}"></script>
             {% endif %}
         {% endif %}
@@ -34,34 +34,34 @@
 
    {% block head_overrides -%}
         {% if faEnabled %}
-            {% if faVersion == 'manual' or gantry.config.page.fontawesome.html_css_import|trim %}
-                {{ gantry.config.page.fontawesome.html_css_import|html|raw -}}
+            {% if faVersion == 'manual' or genesis.config.page.fontawesome.html_css_import|trim %}
+                {{ genesis.config.page.fontawesome.html_css_import|html|raw -}}
             {% elseif faVersion == 'fa4' %}
                 <link rel="stylesheet" href="gantry-assets://css/font-awesome.min.css" type="text/css"/>
             {% elseif faVersion == 'fa5css' %}
                 <link rel="stylesheet" href="gantry-assets://css/font-awesome6-all.min.css" type="text/css">
-                {% if gantry.config.page.fontawesome.fa4_compatibility|default(1) %}
+                {% if genesis.config.page.fontawesome.fa4_compatibility|default(1) %}
 
                 {% endif %}
             {% elseif faVersion == 'fa7css' %}
                 <link rel="stylesheet" href="gantry-assets://css/font-awesome7-all.min.css" type="text/css">
-            {% elseif (faVersion == 'fa5js' or (faVersion == 'manual' and gantry.config.page.fontawesome.html_js_import)) and (gantry.config.page.fontawesome.content_compatibility|default(1)) %}
+            {% elseif (faVersion == 'fa5js' or (faVersion == 'manual' and genesis.config.page.fontawesome.html_js_import)) and (genesis.config.page.fontawesome.content_compatibility|default(1)) %}
                 <link rel="stylesheet" href="gantry-assets://css/font-awesome6-pseudo.min.css" type="text/css">
             {% endif %}
         {% endif %}
-        {% for scss in gantry.theme.configuration.css.overrides|default([]) %}
+        {% for scss in genesis.theme.configuration.css.overrides|default([]) %}
             <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
     {% endblock -%}
 {% endassets -%}
 
 <head>
-    {{ gantry.document.getHtml('head_top')|join("\n    ")|raw }}
+    {{ genesis.document.getHtml('head_top')|join("\n    ")|raw }}
     {% block head_meta %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        {% if gantry.config.page.head.meta -%}
-            {% for attributes in gantry.config.page.head.meta -%}
+        {% if genesis.config.page.head.meta -%}
+            {% for attributes in genesis.config.page.head.meta -%}
                 {%- for key, value in attributes %}
                     {% if key starts with 'og:' %}
                     <meta property="{{ key|e }}" content="{{ value|e }}" />
@@ -71,15 +71,15 @@
                 {% endfor -%}
             {%- endfor -%}
         {%- endif -%}
-        {{ gantry.document.getHtml('head_meta')|join("\n    ")|raw }}
+        {{ genesis.document.getHtml('head_meta')|join("\n    ")|raw }}
 
-        {% if gantry.config.page.assets.favicon %}
-        <link rel="icon" type="image/x-icon" href="{{ url(gantry.config.page.assets.favicon) }}" />
+        {% if genesis.config.page.assets.favicon %}
+        <link rel="icon" type="image/x-icon" href="{{ url(genesis.config.page.assets.favicon) }}" />
         {% endif %}
 
-        {% if gantry.config.page.assets.touchicon %}
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ url(gantry.config.page.assets.touchicon) }}">
-        <link rel="icon" sizes="192x192" href="{{ url(gantry.config.page.assets.touchicon) }}">
+        {% if genesis.config.page.assets.touchicon %}
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url(genesis.config.page.assets.touchicon) }}">
+        <link rel="icon" sizes="192x192" href="{{ url(genesis.config.page.assets.touchicon) }}">
         {% endif %}
     {% endblock %}
 
@@ -89,8 +89,8 @@
     {%- endblock %}
 
     {% block head_application -%}
-        {{ gantry.styles('head')|join("\n")|raw }}
-        {{ gantry.scripts('head')|join("\n")|raw }}
+        {{ genesis.styles('head')|join("\n")|raw }}
+        {{ genesis.scripts('head')|join("\n")|raw }}
     {%- endblock %}
 
     {% block head_ie_stylesheets -%}
@@ -98,9 +98,9 @@
 
     {% block head %}{% endblock -%}
     {% block head_custom %}
-        {% if gantry.config.page.head.head_bottom %}
-        {{ gantry.config.page.head.head_bottom|raw }}
+        {% if genesis.config.page.head.head_bottom %}
+        {{ genesis.config.page.head.head_bottom|raw }}
         {% endif %}
     {% endblock -%}
-    {{ gantry.document.getHtml('head_bottom')|join("\n    ")|raw }}
+    {{ genesis.document.getHtml('head_bottom')|join("\n    ")|raw }}
 </head>

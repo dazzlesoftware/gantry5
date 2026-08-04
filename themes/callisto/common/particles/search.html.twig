@@ -4,16 +4,16 @@
 
     <div id="g-search-{{ id }}" class="g-search {{ particle.class|e }}">
         <h3 class="g-title">{{ particle.title }}</h3>
-        {% if gantry.platform.name == "joomla" %}
+        {% if genesis.platform.name == "joomla" %}
         <form action="{{ joomla.route('index.php?option=com_search') }}" method="post">
             <input type="text" class="search-input" name="searchword" placeholder="{{ particle.placeholder }}" size="30" maxlength="200" value="">
             <input type="hidden" name="task" value="search">
         </form>
-        {% elseif gantry.platform.name == "wordpress"  %}
-        <form method="get" action="{{ gantry.siteUrl() }}" role="search">
+        {% elseif genesis.platform.name == "wordpress"  %}
+        <form method="get" action="{{ genesis.siteUrl() }}" role="search">
             <input type="search" class="search-input" placeholder="{{ particle.placeholder }}" value="" name="s">
         </form>
-        {% elseif gantry.platform.name == "grav"  %}
+        {% elseif genesis.platform.name == "grav"  %}
                 <form name="search" onSubmit="return validateSearch(event);" data-simplesearch-form>
                     <input
                         name="searchfield"
@@ -23,7 +23,7 @@
                         value=""
                         placeholder="{{ particle.placeholder|default('') }}"
                         data-search-separator="{{ config.system.param_sep }}"
-                        data-search-input="{{ gantry.siteUrl() }}{{ config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route) }}/query"
+                        data-search-input="{{ genesis.siteUrl() }}{{ config.plugins.simplesearch.route == '@self' ? '' : (config.plugins.simplesearch.route == '/' ? '' : config.plugins.simplesearch.route) }}/query"
                     />
                 </form>
         {% endif  %}
@@ -32,8 +32,8 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.load('lightcase.init') %} 
-    {% if gantry.platform.name == "grav" %}
+    {% do genesis.load('lightcase.init') %}
+    {% if genesis.platform.name == "grav" %}
         <script>
             {% set min_chars = config.plugins.simplesearch.min_query_length|default('3') %}
             function validateSearch(event) {

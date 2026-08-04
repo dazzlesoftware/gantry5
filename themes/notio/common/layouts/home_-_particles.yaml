@@ -166,7 +166,7 @@ content:
       subcontents:
         -
           headline: 'A New News Template from Dazzle Software'
-          description: 'Notio is a beautifully-designed magazine and news template built on the powerful Gantry 5 framework. Feature packed and ready to deploy!'
+          description: 'Notio is a beautifully-designed magazine and news template built on the powerful Genesis framework. Feature packed and ready to deploy!'
           img: 'gantry-media://home/sidebar-top/img-01.jpg'
           signature: 'gantry-media://home/sidebar-top/signature-01.png'
           fullname: 'Jane Doe'
@@ -186,7 +186,7 @@ content:
           link: ''
           categoryname: Blog
           categorylink: ''
-          title: 'Display Your Best Content with Gantry 5'
+          title: 'Display Your Best Content with Genesis'
         -
           image: 'gantry-media://home/slideshow/img-02.jpg'
           author: 'Katie Rogers'
@@ -909,7 +909,7 @@ content:
               image: 'gantry-media://home/header/img-01.jpg'
               author: 'Tim Arango'
               date: '2017-08-08'
-              content: 'Find the perfect font using Gantry 5''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
+              content: 'Find the perfect font using Genesis''s easy-to-use Font Picker. Choose from over 800 Google-indexed font families.'
               link: ''
               title: 'Search From Hundreds of Fonts with Real-time Preview'
             -
@@ -981,7 +981,7 @@ content:
               image: 'gantry-media://home/header/img-01.jpg'
               author: 'John Doe'
               date: '2016-12-01'
-              content: 'Gantry 5''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
+              content: 'Genesis''s Icon Picker gives you instant access to over 675 Font Awesome icons. Find the perfect icon with real-time search.'
               link: ''
               title: 'Browse Over 670 Font Awesome Icons'
             -
@@ -1055,7 +1055,7 @@ content:
               date: '2016-12-01'
               content: 'Whether you''re selecting background colors for your website or adjusting the hue of a font in a single particle, the Color Picker makes it easy.'
               link: ''
-              title: 'Customize Your Website with Gantry''s Color Picker'
+              title: 'Customize Your Website with Genesis''s Color Picker'
             -
               image: 'gantry-media://home/header/img-02.jpg'
               author: 'Johnny Example'
@@ -1127,7 +1127,7 @@ content:
         -
           image: 'gantry-media://home/showcase/img-01.jpg'
           author: 'Super User'
-          content: 'Notio from Dazzle Software brings a modern, content-focused design and advanced CMS integration to Gantry 5.'
+          content: 'Notio from Dazzle Software brings a modern, content-focused design and advanced CMS integration to Genesis.'
           link: ''
           linklabel: ''
           title: 'Notio is Perfect for News and Magazine-style Websites'

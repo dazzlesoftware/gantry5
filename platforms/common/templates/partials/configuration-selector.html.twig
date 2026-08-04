@@ -6,13 +6,13 @@
         {% include 'partials/outlines-list.html.twig' %}
     </select>
 
-    {% for name, title in gantry.outlines.user %}
+    {% for name, title in genesis.outlines.user %}
         {% if name == configuration %}
             {% set selected_title = title %}
             {% set selected_value = name %}
         {% endif %}
     {% endfor %}
-    {% for name, title in gantry.outlines.system %}
+    {% for name, title in genesis.outlines.system %}
         {% if name == configuration %}
             {% set selected_title = title %}
             {% set selected_value = name %}
@@ -20,9 +20,9 @@
         {% endif %}
     {% endfor %}
 
-    {% if selected_editable and gantry.authorize('outline.rename') and configuration != 'default' %}
+    {% if selected_editable and genesis.authorize('outline.rename') and configuration != 'default' %}
     <span data-title-editable="{{ selected_title }}"
-          data-g-config-href="{{ gantry.route('configurations', selected_value, 'rename') }}"
+          data-g-config-href="{{ genesis.route('configurations', selected_value, 'rename') }}"
           class="title g-conf-title-edit"
     >
         {{ selected_title }}

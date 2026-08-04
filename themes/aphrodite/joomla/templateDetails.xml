@@ -74,6 +74,6 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="Gantry 5 Aphrodite">https://updates.gantry.org/5.0/joomla/tpl_g5_aphrodite.xml</server>
+        <server type="extension" priority="1" name="Genesis Aphrodite">https://updates.gantry.org/5.0/joomla/tpl_g5_aphrodite.xml</server>
     </updateservers>
 </extension>

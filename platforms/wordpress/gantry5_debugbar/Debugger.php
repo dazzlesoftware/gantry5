@@ -95,7 +95,7 @@ class Debugger
     }
 
     /**
-     * Add the debugger assets to the Gantry Assets.
+     * Add the debugger assets to the Genesis Assets.
      *
      * @return static
      */

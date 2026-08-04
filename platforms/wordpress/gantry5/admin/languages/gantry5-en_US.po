@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Gantry\n"
+"Project-Id-Version: Genesis\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
@@ -12,22 +12,22 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 msgid "COM_GANTRY5"
-msgstr "Gantry 5 Themes"
+msgstr "Genesis Themes"
 
 msgid "COM_GANTRY5_DESCRIPTION"
-msgstr "Gantry 5 component."
+msgstr "Genesis component."
 
 msgid "COM_GANTRY5_COMPONENT"
-msgstr "Gantry 5 Component"
+msgstr "Genesis Component"
 
 msgid "COM_GANTRY5_CONFIGURATION"
-msgstr "Gantry 5 Configuration"
+msgstr "Genesis Configuration"
 
 msgid "COM_GANTRY5_PLUGIN_MISSING"
-msgstr "%s: Please enable 'System - Gantry 5 Framework' plugin!"
+msgstr "%s: Please enable the 'System - Genesis' plugin!"
 
 msgid "COM_GANTRY5_PARTICLE_NOT_INITIALIZED"
-msgstr "%s: Cannot display content; not in Gantry 5 template!"
+msgstr "%s: Cannot display content; not in a Genesis-compatible template!"
 
 msgid "GANTRY5_PARTICLE_MENU_INFO"
 msgstr "Menu particle is designed to be used in certain sections only and may need extra styling in order to look correct in another location."
@@ -36,7 +36,7 @@ msgid "GANTRY5_FIELD_PARTICLE_LABEL"
 msgstr "Particle"
 
 msgid "GANTRY5_FIELD_PARTICLE_DESC"
-msgstr "Select and configure Gantry 5 particle."
+msgstr "Select and configure a Genesis particle."
 
 msgid "GANTRY5_PLATFORM_OOPS"
 msgstr "Oops"
@@ -336,7 +336,7 @@ msgid "GANTRY5_PLATFORM_PLATFORM_SETTINGS"
 msgstr "Platform Settings"
 
 msgid "GANTRY5_PLATFORM_FOOTER"
-msgstr "<a href=http://gantry.org>Gantry Administration</a> by <a href=https://dazzlesoftware.org>Dazzle Software</a>"
+msgstr "<a href=http://gantry.org>Genesis Administration</a> by <a href=https://dazzlesoftware.org>Dazzle Software</a>"
 
 msgid "GANTRY5_PLATFORM_BASE_OUTLINE"
 msgstr "Base Outline"
@@ -345,7 +345,7 @@ msgid "GANTRY5_PLATFORM_GLOBAL_DEFAULTS"
 msgstr "Global Defaults"
 
 msgid "GANTRY5_PLATFORM_GANTRY_DETAILS"
-msgstr "<p>Gantry 5 is the most customizable and powerful version of the framework yet. Packed full of features such as drag-and-drop layout creation and the powerful particle system, Gantry 5 has been designed from the ground up to be lightning fast and hassle free.</p><ul class=overview-list><li><i class=fa fa-asterisk></i>Fast, flexible, easy to use framework</li><li><i class=fa fa-asterisk></i>Drag-n-drop layout controls</li><li><i class=fa fa-asterisk></i>Powerful dynamic particles system</li></ul>"
+msgstr "<p>Genesis is a fast, flexible framework for building highly customizable themes. It combines drag-and-drop layout creation with a powerful particle system while preserving compatibility with the Genesis ecosystem.</p><ul class=overview-list><li><i class=fa fa-asterisk></i>Fast, flexible, easy to use framework</li><li><i class=fa fa-asterisk></i>Drag-n-drop layout controls</li><li><i class=fa fa-asterisk></i>Powerful dynamic particles system</li></ul>"
 
 msgid "GANTRY5_PLATFORM_THEME"
 msgstr "Theme"
@@ -555,7 +555,7 @@ msgid "GANTRY5_PLATFORM_ATOMS_DISABLED_DESC"
 msgstr "This atom has been disabled and it won't be rendered on front-end. You can still configure, move and delete."
 
 msgid "GANTRY5_PLATFORM_ATOMS_DEPRECATED_MESSAGE"
-msgstr "The above Atoms have been imported from the current Outline Layout. Since Gantry 5.2.0 Atoms are no longer located in the Layout Manager. While we are automatically migrating the Atoms for you, please ensure all the settings are correct and resave the Page Settings, as well as the Layout, if needed."
+msgstr "The above Atoms have been imported from the current Outline Layout. Since Genesis 5.2.0 Atoms are no longer located in the Layout Manager. While we are automatically migrating the Atoms for you, please ensure all the settings are correct and resave the Page Settings, as well as the Layout, if needed."
 
 msgid "GANTRY5_PLATFORM_LM_LOAD_PRESET"
 msgstr "Load Preset"
@@ -594,7 +594,7 @@ msgid "GANTRY5_PLATFORM_PARTICLE_DEFAULTS_FROM_BASE"
 msgstr "You can define default options for Particles from <a %s href=\"%s\">%s</a>."
 
 msgid "GANTRY5_PLATFORM_PARTICLE_DEFAULTS_WARNING"
-msgstr "As of Gantry v5.3.0, the <strong>%s</strong> (previously known as <strong>Settings</strong>) tab in the Gantry admin has been hidden. This was done to cut down on any confusion as it presents an extra level of inheritance that is only needed for advanced usage cases."
+msgstr "As of Genesis v5.3.0, the <strong>%s</strong> (previously known as <strong>Settings</strong>) tab in the Genesis admin has been hidden. This was done to cut down on any confusion as it presents an extra level of inheritance that is only needed for advanced usage cases."
 
 msgid "GANTRY5_PLATFORM_PARTICLE_DEFAULTS_ENTER"
 msgstr "If required, you can still enter to this administrative panel by <a %s href=\"%s\">clicking here</a>."
@@ -735,7 +735,7 @@ msgid "GANTRY5_PLATFORM_JS_CSS_COMPILED"
 msgstr "The CSS was successfully compiled!"
 
 msgid "GANTRY5_PLATFORM_PHP54_WARNING"
-msgstr "You are currently running PHP <strong>%s</strong> which will soon no longer be supported by Gantry. Please upgrade as soon as possible. <a target=\"_blank\" href=\"http://gantry.org/blog/php54-end-of-support\">More Details.</a>"
+msgstr "You are currently running PHP <strong>%s</strong> which will soon no longer be supported by Genesis. Please upgrade as soon as possible. <a target=\"_blank\" href=\"http://gantry.org/blog/php54-end-of-support\">More Details.</a>"
 
 msgid "GANTRY5_PLATFORM_SAMPLE_DATA_INSTALLED"
 msgstr "Sample Data Installed"

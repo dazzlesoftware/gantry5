@@ -9,7 +9,7 @@
         height: {{ particle.elementHeight|e }};
     }
 
-    @media only all and (max-width: {{ gantry.config.get('styles.breakpoints.tablet-container') }}) {
+    @media only all and (max-width: {{ genesis.config.get('styles.breakpoints.tablet-container') }}) {
         #{{ id }} .swiper-container {
             height: {{ particle.elementHeightMobile|e }};
         }

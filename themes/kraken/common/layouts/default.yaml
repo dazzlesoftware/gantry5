@@ -1,5 +1,5 @@
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1443731381
 children:
@@ -1126,9 +1126,9 @@ children:
                   enabled: 1
                   items:
                     -
-                      text: Gantry
+                      text: Genesis
                       link: 'http://www.gantry.org/'
-                      name: Gantry
+                      name: Genesis
                     -
                       text: Features
                       link: 'http://docs.gantry.org/gantry5/basics/key-features'
@@ -1189,7 +1189,7 @@ children:
                 title: Branding
                 attributes:
                   enabled: 1
-                  content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+                  content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
                 children: {  }
           -
             id: a240af8c-d434-47b4-a97c-33e748780231

@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: default
   timestamp: 1547685902
 layout:
@@ -239,7 +239,7 @@ content:
       items:
         -
           image: ''
-          desc: 'The Gantry Framework is the powerful platform that supports Vermilion.'
+          desc: 'The Genesis Framework is the powerful platform that supports Vermilion.'
           link: ''
           name: 'Item 1'
         -
@@ -287,11 +287,11 @@ content:
           imagealt: ''
           animation: '3'
           overlaytitle: 'Powerful and free core framework<span class="visible-large"> for Joomla</span>'
-          overlaydesc: 'Gantry Framework'
+          overlaydesc: 'Genesis Framework'
           link: '#'
           icon: 'fa fa-book'
           title: 'Extensive Array of Standard Features'
-          desc: 'Gantry is the powerful core framework that sits at the core of Vermilion, providing a rich feature set.'
+          desc: 'Genesis is the powerful core framework that sits at the core of Vermilion, providing a rich feature set.'
           name: 'Item 3'
         -
           image: 'gantry-media://home/fp-feature/img-01.jpg'
@@ -322,7 +322,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<div class=\"gantry-row\">\n\t<div class=\"gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<div class=\"rt-icon-badge rt-text-accent2\"><span class=\"fa fa-desktop\"></span></div>\n\t\t\t<h5 class=\"medpaddingtop rt-text-accent2\">Responsive Layout</h5>\n\t\t\t<p>A responsive layout automatically adapts to the viewing device, allowing for an optimized appearance on multiple devices, such as tablets.</p>\n\t\t\t<a href=\"#\" class=\"readon4\">Read More</a>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<div class=\"rt-icon-badge rt-text-accent3\"><span class=\"fa fa-th\"></span></div>\n\t\t\t<h5 class=\"medpaddingtop rt-text-accent3\">Editable Structure</h5>\n\t\t\t<p>The template manager offers configuration options to individually control each module position row, per page, allowing for custom widths.</p>\n\t\t\t<a href=\"#\" class=\"readon3\">Read More</a>\n\t\t</div>\n\t</div>\n\n\t<div class=\"gantry-width-33\">\n\t\t<div class=\"gantry-width-spacer\">\n\t\t\t<div class=\"rt-icon-badge rt-text-accent2\"><span class=\"fa fa-mobile-phone\"></span></div>\n\t\t\t<h5 class=\"medpaddingtop rt-text-accent2\">Mobile Support</h5>\n\t\t\t<p>Vermilion has responsive styling for smartphones, but also benefits from a mobile specific menu to better match the touch based user interface.</p>\n\t\t\t<a href=\"#\" class=\"readon4\">Read More</a>\n\t\t</div>\n\t</div>\t\n</div>\n\n<div class=\"clear\"></div>"
+      html: "<div class=\"Genesis-row\">\n\t<div class=\"Genesis-width-33\">\n\t\t<div class=\"Genesis-width-spacer\">\n\t\t\t<div class=\"rt-icon-badge rt-text-accent2\"><span class=\"fa fa-desktop\"></span></div>\n\t\t\t<h5 class=\"medpaddingtop rt-text-accent2\">Responsive Layout</h5>\n\t\t\t<p>A responsive layout automatically adapts to the viewing device, allowing for an optimized appearance on multiple devices, such as tablets.</p>\n\t\t\t<a href=\"#\" class=\"readon4\">Read More</a>\n\t\t</div>\n\t</div>\n\n\t<div class=\"Genesis-width-33\">\n\t\t<div class=\"Genesis-width-spacer\">\n\t\t\t<div class=\"rt-icon-badge rt-text-accent3\"><span class=\"fa fa-th\"></span></div>\n\t\t\t<h5 class=\"medpaddingtop rt-text-accent3\">Editable Structure</h5>\n\t\t\t<p>The template manager offers configuration options to individually control each module position row, per page, allowing for custom widths.</p>\n\t\t\t<a href=\"#\" class=\"readon3\">Read More</a>\n\t\t</div>\n\t</div>\n\n\t<div class=\"Genesis-width-33\">\n\t\t<div class=\"Genesis-width-spacer\">\n\t\t\t<div class=\"rt-icon-badge rt-text-accent2\"><span class=\"fa fa-mobile-phone\"></span></div>\n\t\t\t<h5 class=\"medpaddingtop rt-text-accent2\">Mobile Support</h5>\n\t\t\t<p>Vermilion has responsive styling for smartphones, but also benefits from a mobile specific menu to better match the touch based user interface.</p>\n\t\t\t<a href=\"#\" class=\"readon4\">Read More</a>\n\t\t</div>\n\t</div>\t\n</div>\n\n<div class=\"clear\"></div>"
       twig: '0'
       filter: '0'
     block:
@@ -394,7 +394,7 @@ content:
         -
           image: 'gantry-media://home/fp-expandedbottom/img-01.jpg'
           title: Docs
-          desc: 'Gantry benefits from an extensive catalog of online and free documentation covering several topics.'
+          desc: 'Genesis benefits from an extensive catalog of online and free documentation covering several topics.'
           link: '#'
           name: 'Item 9'
     block:
@@ -417,7 +417,7 @@ content:
         -
           image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
           title: '<span class="fa fa-trophy"></span>'
-          desc: '<span>Take advantage of the uniquely powerful Gantry 5 Color Picker<span class="hidden-phone hidden-tablet"> and change your theme’s color scheme in seconds. Adjust color, saturation, hue, and transparency quickly and easily</span>.</span>'
+          desc: '<span>Take advantage of the uniquely powerful Genesis Color Picker<span class="hidden-phone hidden-tablet"> and change your theme’s color scheme in seconds. Adjust color, saturation, hue, and transparency quickly and easily</span>.</span>'
           link: '#'
           linktext: ''
           buttontarget: _self
@@ -426,7 +426,7 @@ content:
         -
           image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
           title: '<span class="fa fa-tasks"></span>'
-          desc: '<span>Font Awesome icons are awesome<span class="hidden-phone hidden-tablet">, and they’re supported natively in Topaz. Use Gantry 5’s powerful Icon Picker to easily add icons to menus, particles, and more</span>.</span>'
+          desc: '<span>Font Awesome icons are awesome<span class="hidden-phone hidden-tablet">, and they’re supported natively in Topaz. Use Genesis’s powerful Icon Picker to easily add icons to menus, particles, and more</span>.</span>'
           link: '#'
           linktext: ''
           buttontarget: _self
@@ -435,7 +435,7 @@ content:
         -
           image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
           title: '<span class="fa fa-arrows-alt"></span>'
-          desc: '<span>Want to pick the perfect font for your content? <span class="hidden-phone hidden-tablet">Select from hundreds of fonts in the Google Font Library with Gantry’s Font Picker. Powered by Gantry 5.</span></span>'
+          desc: '<span>Want to pick the perfect font for your content? <span class="hidden-phone hidden-tablet">Select from hundreds of fonts in the Google Font Library with Genesis’s Font Picker. Powered by Genesis.</span></span>'
           link: '#'
           linktext: ''
           buttontarget: _self
@@ -493,7 +493,7 @@ content:
           name: 'Custom Interface'
         -
           title: 'Built-in Features'
-          desc: 'Features are self contained elements of functionality. They can easily hook into a Gantry template.'
+          desc: 'Features are self contained elements of functionality. They can easily hook into a Genesis template.'
           link: ''
           name: 'Built-in Features'
         -

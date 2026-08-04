@@ -16,7 +16,7 @@ body.com_gantry5 {
         padding: 0px;
     }
 
-    #g5-container {
+    [data-genesis-container] {
         @media (max-width: 767px) {
             margin-left: -20px;
             margin-right: -5px;
@@ -55,7 +55,7 @@ body.com_gantry5 {
         }
     }
 
-    #g5-container {
+    [data-genesis-container] {
         .inner-container {
             margin: 0;
         }
@@ -87,7 +87,7 @@ body.com_gantry5 {
 }
 
 body.com_modules, body.com_advancedmodules, body.com_menus {
-    #g5-container {
+    [data-genesis-container] {
         font-size: inherit; // inherit from the platform
 
         .inner-container {

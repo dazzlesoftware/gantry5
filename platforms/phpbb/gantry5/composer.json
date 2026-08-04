@@ -1,7 +1,7 @@
 {
-    "name": "dazzlesoftware/gantry5",
+    "name": "dazzlesoftware/genesis-phpbb",
     "type": "phpbb-extension",
-    "description": "Gantry Framework for phpBB",
+    "description": "Genesis Framework for phpBB",
     "version": "5.6.1",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -38,7 +38,7 @@
         }
     },
     "extra": {
-        "display-name": "Gantry 5",
+        "display-name": "Genesis",
         "soft-require": {
             "phpbb/phpbb": ">=3.3.0"
         }

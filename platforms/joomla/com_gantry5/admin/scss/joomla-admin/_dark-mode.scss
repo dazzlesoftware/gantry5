@@ -1,7 +1,7 @@
-// Dark mode styles for Joomla Gantry admin
-// These styles apply when the g5-dark-mode class is present on the #g5-container element
+// Dark mode styles for Joomla Genesis admin
+// These styles apply when the genesis-dark-mode class is present on the [data-genesis-container] element
 
-#g5-container.g5-dark-mode {
+[data-genesis-container].genesis-dark-mode {
     // Base colors to match Joomla dark theme
     color: $white;
     background-color: #1a2537 !important;
@@ -49,7 +49,7 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     }
 
-    .g5-popover-generic {
+    .genesis-popover-generic {
         a {
             color: $white !important;
 
@@ -157,7 +157,7 @@
     }
 
     // G-tabs styling
-    .g5-tabs-container {
+    .genesis-tabs-container {
         border-bottom-color: #374f6b !important;
 
         .g-tabs {
@@ -300,13 +300,13 @@
     }
 
     // Modal windows
-    .g5-dialog {
-        .g5-content {
+    .genesis-dialog {
+        .genesis-content {
             background-color: #2a394f !important;
             color: $white !important;
         }
 
-        .g5-close {
+        .genesis-close {
             &:before {
                 color: #cbd9e8 !important;
                 background-color: transparent !important;
@@ -330,7 +330,7 @@
     }
 
     // Dialog loading spinner
-    .g5-dialog-loading-spinner.g5-dialog-theme-default {
+    .genesis-dialog-loading-spinner.genesis-dialog-theme-default {
         box-shadow: 0 0 0 0.5em #2a394f, 0 0 1px 0.5em rgba(0, 0, 0, 0.5) !important;
         background: #2a394f !important;
         border-top-color: #6a85a0 !important;
@@ -693,8 +693,8 @@
 
 
 
-    .g5-popover-extras [data-g-devprod],
-    .g5-popover-extras a {
+    .genesis-popover-extras [data-g-devprod],
+    .genesis-popover-extras a {
         color: $white !important;
 
         &:hover {
@@ -704,13 +704,13 @@
     }
 
     // Dialog and popover tabs styling
-    .g5-dialog,
-    .g5-popover-content {
+    .genesis-dialog,
+    .genesis-popover-content {
         background-color: #2a394f;
 
         >.g-tabs,
         form>.g-tabs,
-        .g5-content>.g-tabs {
+        .genesis-content>.g-tabs {
             background-color: #1a2537 !important;
 
             ul {
@@ -762,7 +762,7 @@
             }
         }
     }
-    .g5-dialog{
+    .genesis-dialog{
         background-color: transparent;
         #g-changelog{
             background-color: #1a2537;
@@ -945,7 +945,7 @@
         }
     }
 
-    // Gantry specific border fixes
+    // Genesis specific border fixes
     .g-collapse {
         border-color: #374f6b !important;
         color: #cbd9e8 !important;
@@ -1081,7 +1081,7 @@
     }
 
     // Platform specific borders and footer styling
-    #g5-container #footer,
+    [data-genesis-container] #footer,
     .com_gantry5 #footer,
     .gantry5 #footer,
     .admin-block #footer {
@@ -1210,7 +1210,7 @@
     }
 
     // Layout manager particles picker
-    .g5-lm-particles-picker {
+    .genesis-lm-particles-picker {
         li {
             &[data-lm-blocktype="spacer"] {
                 color: #cbd9e8 !important;
@@ -1313,7 +1313,7 @@
 // Platform specific borders and footer styling
 [data-color-scheme="dark"] {
 
-    #g5-container #footer,
+    [data-genesis-container] #footer,
     .com_gantry5 #footer,
     .gantry5 #footer,
     .admin-block #footer {

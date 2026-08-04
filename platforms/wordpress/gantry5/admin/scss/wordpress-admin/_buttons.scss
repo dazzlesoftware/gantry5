@@ -11,7 +11,7 @@
 body.gantry5 {
     @each $preset, $core-accent in $wp-admin-presets {
         &.admin-color-#{$preset} {
-            #g5-container {
+            [data-genesis-container] {
                 .button-primary {
                     @include button-color($core-accent);
                 }
@@ -20,7 +20,7 @@ body.gantry5 {
     }
 }
 
-#g5-container {
+[data-genesis-container] {
     .button {
         height: auto;
         box-shadow: none;

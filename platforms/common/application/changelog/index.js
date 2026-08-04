@@ -27,7 +27,7 @@ ready(() => {
         modal.open({
             content: 'Loading',
             method: 'post',
-            className: 'g5-dialog-theme-default g5-modal-changelog',
+            className: 'genesis-dialog-theme-default genesis-modal-changelog',
             data: { version: link.dataset.changelog },
             remote: parseAjaxURI(`${getAjaxURL('changelog')}${getAjaxSuffix()}`),
             remoteLoaded(response, content) {
@@ -37,7 +37,7 @@ ready(() => {
                 wrapper.querySelectorAll('#g-changelog > ol > li > a').forEach((section) => {
                     if (!section.textContent.trim()) return;
 
-                    const current = new RegExp(`#(common|${window.GANTRY_PLATFORM})$`, 'i').test(section.href);
+                    const current = new RegExp(`#(common|${window.GENESIS_PLATFORM})$`, 'i').test(section.href);
                     const icon = document.createElement('i');
                     icon.className = `fa g-changelog-toggle fa-fw fa-chevron-${current ? 'up' : 'down'}`;
                     icon.setAttribute('aria-hidden', 'true');

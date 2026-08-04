@@ -1,6 +1,6 @@
 version: 2
 preset:
-  image: 'gantry-admin://images/layouts/default.png'
+  image: 'Genesis-admin://images/layouts/default.png'
   name: gala_-_leftsidebar
   timestamp: 1456245260
 layout:
@@ -163,7 +163,7 @@ content:
   custom-9563:
     title: 'Flexible Layouts'
     attributes:
-      html: " <h3 class=\"g-title\">Flexible Layouts</h3>\n\n<p>Gantry 5 benefits from a flexible and intuitive, drag &amp; drop layout manager. You can add as many rows and blocks to each section as you desire, and configure their distance to intervals of 1%.</p>\n\n<p>Each block has individual controls, such as an autocomplete select box for box variations, as well as individual CSS fields.</p>"
+      html: " <h3 class=\"g-title\">Flexible Layouts</h3>\n\n<p>Genesis benefits from a flexible and intuitive, drag &amp; drop layout manager. You can add as many rows and blocks to each section as you desire, and configure their distance to intervals of 1%.</p>\n\n<p>Each block has individual controls, such as an autocomplete select box for box variations, as well as individual CSS fields.</p>"
     block:
       variations: box2
   custom-2116:
@@ -215,7 +215,7 @@ content:
           link: 'http://docs.gantry.org/'
           icon: ''
           readmoreclass: ''
-          title: Gantry
+          title: Genesis
         -
           image: ''
           imageloc: left
@@ -343,7 +343,7 @@ content:
   custom-3225:
     title: About
     attributes:
-      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Gantry 5 Framework.</span></p>\t"
+      html: "<h2 class=\"g-title\">About</h2>\n<p>All demo content is for sample purposes only, to represent a live site.</p>\n<p><span class=\"hidden-tablet\">Note: Galatea is built on the latest version of the Genesis Framework.</span></p>\t"
   position-position-5600:
     title: Footer
     attributes:

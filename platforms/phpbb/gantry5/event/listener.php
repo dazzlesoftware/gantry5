@@ -14,16 +14,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Boots the Gantry Framework for the current phpBB request and lets Gantry render the entire
- * page, the same way Gantry owns the page in Joomla/WordPress/Grav.
+ * Boots the Genesis Framework for the current phpBB request and lets Genesis render the entire
+ * page, the same way Genesis owns the page in Joomla/WordPress/Grav.
  *
  * phpBB always compiles head+body+footer as a single Twig template per request (the "body"
  * handle, e.g. index_body.html, which itself `<!-- INCLUDE -->`s overall_header.html /
  * overall_footer.html). This listener suppresses phpBB's own final render/echo of that handle
  * (via the `display_template` override on `core.page_footer_after`), captures the fully
- * rendered HTML as a string instead, splits it at the `<!-- GANTRY:HEAD_END -->` marker (see
+ * rendered HTML as a string instead, splits it at the `<!-- Genesis:HEAD_END -->` marker (see
  * themes/helium/phpbb/template/overall_header.html) into a <head> fragment and a body fragment,
- * and hands both to Gantry's own page.html.twig so Gantry can build the real <html>/<head>/
+ * and hands both to Genesis's own page.html.twig so Genesis can build the real <html>/<head>/
  * <body> around them with its own positions.
  */
 class listener implements EventSubscriberInterface
@@ -60,7 +60,7 @@ class listener implements EventSubscriberInterface
 
     /**
      * Fires early in the request, well before phpBB compiles any Twig template. Registering
-     * Gantry's Twig extension here (via getTheme()->renderer()) is required -- Twig locks its
+     * Genesis's Twig extension here (via getTheme()->renderer()) is required -- Twig locks its
      * extension set the first time it renders anything, and phpBB's own header/body/footer
      * render happens before core.page_footer_after, so registering there is too late.
      *
@@ -86,7 +86,7 @@ class listener implements EventSubscriberInterface
         $template = $this->container->get('template');
         $rendered = $template->assign_display('body', '', true);
 
-        $marker = '<!-- GANTRY:HEAD_END -->';
+        $marker = '<!-- Genesis:HEAD_END -->';
         $pos = strpos($rendered, $marker);
         if ($pos === false) {
             $head = '';
@@ -139,7 +139,7 @@ class listener implements EventSubscriberInterface
         $gantry = \Gantry\Framework\Gantry::instance();
 
         if (!isset($gantry['theme'])) {
-            $gantry['theme.path'] = GANTRY5_PHPBB_EXT_PATH . 'themes/g5_helium';
+            $gantry['theme.path'] = GENESIS_PHPBB_EXT_PATH . 'themes/g5_helium';
             $gantry['theme.name'] = 'g5_helium';
             $gantry['theme'] = static function ($c) {
                 return new \Gantry\Framework\Theme($c['theme.path'], $c['theme.name']);
@@ -154,7 +154,7 @@ class listener implements EventSubscriberInterface
     }
 
     /**
-     * Bootstraps the Gantry Framework container for this request, on first use only.
+     * Bootstraps the Genesis Framework container for this request, on first use only.
      *
      * @return void
      */
@@ -169,11 +169,17 @@ class listener implements EventSubscriberInterface
         $rootPath = rtrim((string) realpath($this->pathHelper->get_phpbb_root_path()), '/\\') . '/';
         $extPath = rtrim((string) realpath(__DIR__ . '/..'), '/\\') . '/';
 
+        if (!\defined('GENESIS_PHPBB_ROOT_PATH')) {
+            \define('GENESIS_PHPBB_ROOT_PATH', $rootPath);
+        }
         if (!\defined('GANTRY5_PHPBB_ROOT_PATH')) {
-            \define('GANTRY5_PHPBB_ROOT_PATH', $rootPath);
+            \define('GANTRY5_PHPBB_ROOT_PATH', GENESIS_PHPBB_ROOT_PATH);
+        }
+        if (!\defined('GENESIS_PHPBB_EXT_PATH')) {
+            \define('GENESIS_PHPBB_EXT_PATH', $extPath);
         }
         if (!\defined('GANTRY5_PHPBB_EXT_PATH')) {
-            \define('GANTRY5_PHPBB_EXT_PATH', $extPath);
+            \define('GANTRY5_PHPBB_EXT_PATH', GENESIS_PHPBB_EXT_PATH);
         }
 
         require_once $extPath . 'vendor/autoload.php';

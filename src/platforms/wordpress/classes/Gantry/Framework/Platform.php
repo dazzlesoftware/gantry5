@@ -54,7 +54,7 @@ class Platform extends BasePlatform
         $this->content_dir = Folder::getRelativePath(WP_CONTENT_DIR);
         $this->includes_dir = Folder::getRelativePath(ABSPATH . WPINC);
         $this->upload_dir = Folder::getRelativePath(\wp_upload_dir()['basedir']);
-        $this->gantry_dir = Folder::getRelativePath(GANTRY5_PATH);
+        $this->gantry_dir = Folder::getRelativePath(GENESIS_PATH);
         $this->multisite = \get_current_blog_id() !== 1 ? '/blog-' . \get_current_blog_id() : '';
 
         parent::__construct($container);
@@ -170,7 +170,7 @@ class Platform extends BasePlatform
      */
     public function getEnginesPaths()
     {
-        if (is_link(GANTRY5_PATH . '/engines')) {
+        if (is_link(GENESIS_PATH . '/engines')) {
             // Development environment.
             return ['' => [$this->gantry_dir . "/engines/{$this->name}", $this->gantry_dir . '/engines/common']];
         }
@@ -183,7 +183,7 @@ class Platform extends BasePlatform
      */
     public function getAssetsPaths()
     {
-        if (is_link(GANTRY5_PATH . '/assets')) {
+        if (is_link(GENESIS_PATH . '/assets')) {
             // Development environment.
             return ['' => ['gantry-theme://', $this->gantry_dir . "/assets/{$this->name}", $this->gantry_dir . '/assets/common']];
         }
@@ -242,11 +242,11 @@ class Platform extends BasePlatform
      */
     public function errorHandlerPaths()
     {
-        // Catch errors in Gantry cache, plugin and theme only.
+        // Catch errors in Genesis cache, plugin and theme only.
         $paths = ['#[\\\/]wp-content[\\\/](cache|plugins)[\\\/]gantry5[\\\/]#', '#[\\\/]wp-content[\\\/]themes[\\\/]#'];
 
         // But if we have symlinked git repository, we need to catch errors from there, too.
-        if (is_link(GANTRY5_PATH)) {
+        if (is_link(GENESIS_PATH)) {
            $paths = array_merge($paths, ['#[\\\/](assets|engines|platforms)[\\\/](common|wordpress)[\\\/]#', '#[\\\/]src[\\\/](classes|vendor)[\\\/]#', '#[\\\/]themes[\\\/]#']);
         }
 
@@ -276,11 +276,11 @@ class Platform extends BasePlatform
     {
         $plugin = \get_site_transient('update_plugins');
         $list = [];
-        if (!isset($plugin->response[$this->file]) || version_compare(GANTRY5_VERSION, 0) < 0 || !\current_user_can('update_plugins')) { return $list; }
+        if (!isset($plugin->response[$this->file]) || version_compare(GENESIS_VERSION, 0) < 0 || !\current_user_can('update_plugins')) { return $list; }
 
         $response = $plugin->response[$this->file];
 
-        $list[] = 'Gantry ' . $response->new_version;
+        $list[] = 'Genesis ' . $response->new_version;
 
         return $list;
     }
@@ -303,7 +303,7 @@ class Platform extends BasePlatform
             'pad_counts'               => 1
         ];
 
-        $args = \wp_parse_args(\apply_filters('gantry5_form_field_selectize_categories_args', $args), $default);
+        $args = \wp_parse_args(\genesis_apply_filters('genesis_form_field_selectize_categories_args', 'gantry5_form_field_selectize_categories_args', $args), $default);
 
         $categories = \get_categories($args);
         $new_categories = [];
@@ -312,7 +312,7 @@ class Platform extends BasePlatform
             $new_categories[$cat->cat_ID] = $cat->name;
         }
 
-        return \apply_filters('gantry5_form_field_selectize_categories', $new_categories);
+        return \genesis_apply_filters('genesis_form_field_selectize_categories', 'gantry5_form_field_selectize_categories', $new_categories);
     }
 
     /**

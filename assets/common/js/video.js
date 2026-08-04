@@ -295,10 +295,11 @@
         }
     });
 
-    window.G5Video = {
+    window.GenesisVideo = {
         VideoController,
         activateWithin,
         initialize,
         pauseWithin
     };
+    window.G5Video = window.GenesisVideo;
 })();

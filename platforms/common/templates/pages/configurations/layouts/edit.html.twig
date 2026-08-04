@@ -1,7 +1,7 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
 {% block gantry %}
-{% if configuration == 'default' and gantry.platform.no_base_layout %}
+{% if configuration == 'default' and genesis.platform.no_base_layout %}
 
 <h2 class="page-title">{{ 'GANTRY5_PLATFORM_LAYOUT'|trans }}</h2>
 <p>{{ 'GANTRY5_PLATFORM_BASE_LAYOUT_DESC'|trans }}</p>
@@ -13,7 +13,7 @@
         <h2 class="page-title">
             <span class="title">{{ 'GANTRY5_PLATFORM_PARTICLES'|trans }}</span>
         </h2>
-        <div class="g5-lm-particles-picker">
+        <div class="genesis-lm-particles-picker">
             <div class="search settings-block">
                 <input type="text" placeholder="{{ 'GANTRY5_PLATFORM_FILTER_ELI'|trans }}" aria-label="{{ 'GANTRY5_PLATFORM_FILTER_ELI'|trans }}" role="search"/>
                 <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -24,8 +24,8 @@
                     <ul>
                     {% for type, particle in list %}
                         {% for item_key, item in particle %}
-                            {% set isDisabled = not gantry.config.get('particles.' ~ item_key ~ '.enabled', true) %}
-                            <li class="g5-lm-particle-{{ type }} particle-category-{{ item._gantry_category_slug|default('general') }}"
+                            {% set isDisabled = not genesis.config.get('particles.' ~ item_key ~ '.enabled', true) %}
+                            <li class="genesis-lm-particle-{{ type }} particle-category-{{ item._gantry_category_slug|default('general') }}"
                                 data-lm-blocktype="{{ type }}"
                                 data-lm-subtype="{{ item_key }}"
                                 data-lm-icon="{{ item.icon|default('fa-cube') }}"
@@ -56,7 +56,7 @@
             <button href="#"
                     class="button"
                     role="button"
-                    data-lm-switcher="{{ gantry.route(switcher_url) }}"
+                    data-lm-switcher="{{ genesis.route(switcher_url) }}"
                     aria-label="{{ 'GANTRY5_PLATFORM_LM_LOAD_PRESET'|trans }}">
                 <i class="fa fa-fw fa-code-branch" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_LOAD'|trans }}</span>
             </button>
@@ -95,7 +95,7 @@
         </h2>
 
         <div class="lm-newblocks clearfix" data-lm-blocktypes="">
-            {#<a class="button" href="{{ gantry.route('picker/particles')|e }}" data-lm-addparticle=""><i class="fa fa-plus" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_NEW_PARTICLE'|trans }}</span></a>#}
+            {#<a class="button" href="{{ genesis.route('picker/particles')|e }}" data-lm-addparticle=""><i class="fa fa-plus" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_NEW_PARTICLE'|trans }}</span></a>#}
             <span class="float-right">
                 <button data-lm-back="" href="#" class="button disabled"><i class="fa fa-fw fa-arrow-left" aria-hidden="true"></i> {{ 'GANTRY5_PLATFORM_UNDO'|trans }}</button>
                 {#<a href="#" class="button"><i class="fa fa-fw fa-history" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_HISTORY'|trans }}</span></a>#}
@@ -122,7 +122,7 @@
 
             <div class="g-footer-actions">
             <span class="float-right">
-                <a href="#" class="button" data-lm-switcher="{{ gantry.route(switcher_url) }}">
+                <a href="#" class="button" data-lm-switcher="{{ genesis.route(switcher_url) }}">
                     <i class="fa fa-fw fa-code-branch" aria-hidden="true"></i> <span>{{ 'GANTRY5_PLATFORM_LOAD'|trans }}</span>
                 </a>
                 <div data-g-popover class="button" aria-haspopup="true" aria-expanded="false" role="presentation">

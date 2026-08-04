@@ -11,7 +11,7 @@ $spacer: #eee;
 $system: #20A085;
 $atom: #9055AF;
 
-#g5-container {
+[data-genesis-container] {
     // wrapper
 
     .layout-title {
@@ -766,9 +766,9 @@ $atom: #9055AF;
         }
     }
 
-    .g5-dialog > .g-tabs, .g5-popover-content > .g-tabs,
-    .g5-dialog form > .g-tabs, .g5-popover-content form > .g-tabs,
-    .g5-dialog .g5-content > .g-tabs, .g5-popover-content .g5-content > .g-tabs {
+    .genesis-dialog > .g-tabs, .genesis-popover-content > .g-tabs,
+    .genesis-dialog form > .g-tabs, .genesis-popover-content form > .g-tabs,
+    .genesis-dialog .genesis-content > .g-tabs, .genesis-popover-content .genesis-content > .g-tabs {
         @extend #navbar;
 
         &, i {
@@ -786,7 +786,7 @@ $atom: #9055AF;
         }
     }
 
-    .g5-popover-content .g-tabs {
+    .genesis-popover-content .g-tabs {
         ul {
             margin: -0.55rem -0.9rem 1rem !important;
             background-color: $light-gray;
@@ -801,7 +801,7 @@ $atom: #9055AF;
         }
     }
 
-    .g5-dialog .g-pane, .g5-popover-content .g-pane {
+    .genesis-dialog .g-pane, .genesis-popover-content .g-pane {
         display: none;
 
         &.active {
@@ -830,7 +830,7 @@ $atom: #9055AF;
         }
     }
 
-    .g5-popover-content .g-pane {
+    .genesis-popover-content .g-pane {
         .g-switch-title {
             padding-bottom: 7px;
             font-weight: bold;
@@ -899,7 +899,7 @@ $atom: #9055AF;
         }
     }
 
-    .g5-lm-particles-picker, .g5-mm-particles-picker, .g5-mm-modules-picker, .g5-mm-widgets-picker, #positions {
+    .genesis-lm-particles-picker, .genesis-mm-particles-picker, .genesis-mm-modules-picker, .genesis-mm-widgets-picker, #positions {
 
         ul, li {
             @extend %list-reset;
@@ -958,7 +958,7 @@ $atom: #9055AF;
                 }
             }
 
-            &.g5-lm-particle-spacer[data-lm-disabled], &.g5-mm-particle-spacer[data-mm-disabled] {
+            &.genesis-lm-particle-spacer[data-lm-disabled], &.genesis-mm-particle-spacer[data-mm-disabled] {
                 color: #fff;
             }
 
@@ -1101,7 +1101,7 @@ $atom: #9055AF;
 
     @include breakpoint(no-mobile) {
         // fixed sidebar in LM
-        .g5-lm-particles-picker.particles-fixed, .g5-lm-particles-picker.particles-absolute {
+        .genesis-lm-particles-picker.particles-fixed, .genesis-lm-particles-picker.particles-absolute {
             z-index: 5;
 
             .search input {
@@ -1110,11 +1110,11 @@ $atom: #9055AF;
             }
         }
 
-        .g5-lm-particles-picker.particles-fixed {
+        .genesis-lm-particles-picker.particles-fixed {
             position: fixed;
         }
 
-        .g5-lm-particles-picker.particles-absolute {
+        .genesis-lm-particles-picker.particles-absolute {
             position: absolute;
         }
     }

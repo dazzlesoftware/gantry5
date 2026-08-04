@@ -15,7 +15,7 @@ use Gantry\Component\Response\Response;
 use Gantry\Component\Router\Router as BaseRouter;
 
 /**
- * Gantry administration router for WordPress.
+ * Genesis administration router for WordPress.
  */
 class Router extends BaseRouter
 {
@@ -136,7 +136,7 @@ class Router extends BaseRouter
             header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0', false);
             header('Pragma: no-cache');
 
-            // Output Gantry JSON response.
+            // Output Genesis JSON response.
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JsonResponse is already encoded output.
             echo $response;
 

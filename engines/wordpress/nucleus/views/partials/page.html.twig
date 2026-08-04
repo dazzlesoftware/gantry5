@@ -9,6 +9,6 @@
 {%- endblock %}
 
 {% block page_footer %}
-    {% do gantry.platform.finalize() %}
+    {% do genesis.platform.finalize() %}
     {{ wordpress.call('wp_footer') }}
 {% endblock %}

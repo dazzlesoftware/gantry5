@@ -5,7 +5,7 @@
 {% set attr_extra = segment.attributes.extra|attribute_array %}
 {% set boxed = segment.attributes.boxed %}
 {% if boxed is not null %}
-    {% set boxed = boxed|trim == '' ? gantry.config.page.body.layout.sections : boxed %}
+    {% set boxed = boxed|trim == '' ? genesis.config.page.body.layout.sections : boxed %}
 {% endif %}
 
 {%- set html %}

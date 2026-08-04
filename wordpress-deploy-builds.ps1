@@ -39,11 +39,11 @@ $themeArchives = @(
 )
 
 if ($pluginArchives.Count -ne 1) {
-    throw "Expected exactly one Gantry plugin archive for '$BuildSuffix'; found $($pluginArchives.Count)."
+    throw "Expected exactly one Genesis plugin archive for '$BuildSuffix'; found $($pluginArchives.Count)."
 }
 
 if ($themeArchives.Count -eq 0) {
-    throw "No Gantry theme archives were found for '$BuildSuffix'."
+    throw "No Genesis theme archives were found for '$BuildSuffix'."
 }
 
 $resolvedWpContent = (Resolve-Path -LiteralPath $wpContent).Path.TrimEnd('\', '/')
@@ -57,7 +57,7 @@ if (
     throw 'Resolved plugin or theme directory is outside the requested wp-content directory.'
 }
 
-Write-Host "Removing old Gantry plugin: $gantryPlugin"
+Write-Host "Removing old Genesis plugin: $gantryPlugin"
 if (Test-Path -LiteralPath $gantryPlugin) {
     Remove-Item -LiteralPath $gantryPlugin -Recurse -Force
 }
@@ -66,7 +66,7 @@ $oldThemes = @(
     Get-ChildItem -LiteralPath $themes -Directory -Filter 'g5_*'
 )
 
-Write-Host "Removing $($oldThemes.Count) old Gantry themes..."
+Write-Host "Removing $($oldThemes.Count) old Genesis themes..."
 foreach ($theme in $oldThemes) {
     if (-not $theme.FullName.StartsWith("$resolvedThemes\", [StringComparison]::OrdinalIgnoreCase)) {
         throw "Refusing to remove a theme outside the theme directory: $($theme.FullName)"
@@ -89,11 +89,11 @@ $installedThemes = @(
 )
 
 if (-not (Test-Path -LiteralPath (Join-Path $gantryPlugin 'gantry5.php') -PathType Leaf)) {
-    throw 'The deployed Gantry plugin is missing gantry5.php.'
+    throw 'The deployed Genesis plugin is missing gantry5.php.'
 }
 
 if ($installedThemes.Count -ne $themeArchives.Count) {
-    throw "Expected $($themeArchives.Count) installed Gantry themes; found $($installedThemes.Count)."
+    throw "Expected $($themeArchives.Count) installed Genesis themes; found $($installedThemes.Count)."
 }
 
 Write-Host ''

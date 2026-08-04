@@ -1,12 +1,12 @@
-# Gantry 5 Content Security Policy (CSP) Requirements
+# Genesis Content Security Policy (CSP) Requirements
 
 ## Overview
 
-[Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) is a security mechanism that helps prevent Cross-Site Scripting (XSS) and data injection attacks. While using strict CSP settings is generally recommended for websites, Gantry 5 requires certain CSP directives to function properly in the administrator area.
+[Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) is a security mechanism that helps prevent Cross-Site Scripting (XSS) and data injection attacks. While using strict CSP settings is generally recommended for websites, Genesis requires certain CSP directives to function properly in the administrator area.
 
 ## Required CSP Directives
 
-Gantry 5 administration requires the following CSP directives:
+Genesis administration requires the following CSP directives:
 
 ```
 script-src 'self' 'unsafe-eval';
@@ -36,6 +36,6 @@ Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; st
 
 ## Technical Explanation
 
-Gantry 5 uses JavaScript bundling tools like Browserify which rely on `eval()` or `new Function()` constructs for certain operations. Additionally, the dynamic nature of the admin interface requires runtime code evaluation in some cases.
+Genesis uses JavaScript bundling tools like Browserify which rely on `eval()` or `new Function()` constructs for certain operations. Additionally, the dynamic nature of the admin interface requires runtime code evaluation in some cases.
 
-These requirements may change in future versions as we continue to improve Gantry's CSP compatibility.
+These requirements may change in future versions as we continue to improve Genesis CSP compatibility.

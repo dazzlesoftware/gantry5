@@ -1,5 +1,5 @@
 {% set subtype = segment.subtype|default(segment.type) %}
-{% set enabled = gantry.config.get('particles.' ~ subtype ~ '.enabled', 1) %}
+{% set enabled = genesis.config.get('particles.' ~ subtype ~ '.enabled', 1) %}
 
 {% set html %}
     {% if enabled and (segment.attributes.enabled is null or segment.attributes.enabled) %}
@@ -8,7 +8,7 @@
             {{ content|raw }}
         {% elseif subtype == 'messages' %}
             {% set class = 'g-system-messages' %}
-            {{ gantry.platform.displaySystemMessages()|raw }}
+            {{ genesis.platform.displaySystemMessages()|raw }}
         {% endif %}
     {% endif %}
 {% endset %}

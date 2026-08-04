@@ -51,7 +51,7 @@ class Request extends BaseRequest
     {
         // raw_variable(), not variable() -- variable() runs every string through
         // htmlspecialchars() (XSS protection for values phpBB itself might echo back into HTML).
-        // Gantry's admin controllers send/expect raw JSON payloads in POST fields (e.g. the
+        // Genesis's admin controllers send/expect raw JSON payloads in POST fields (e.g. the
         // layout editor's "layout"/"preset" fields) and decode them themselves; htmlspecialchars
         // mangles every quote into `&quot;` first, so json_decode() on the result always fails
         // ("Structure missing" et al). No other platform's raw $_POST access applies this kind of

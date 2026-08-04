@@ -355,7 +355,7 @@ content:
       class: g-title-bordered
   branding-7580:
     attributes:
-      content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry Framework</a>'
+      content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis Framework</a>'
   totop-1562:
     title: 'To Top'
     attributes:

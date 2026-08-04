@@ -2,7 +2,7 @@
 
 {% block particle %}
     <div class="{{ particle.class|e }} bb-main-wrapper" {% if particle.height %} style="height: {{ particle.height|e }}px;" {% endif %}>
-        <div id="{{ id }}" data-bookblock-id="{{ id }}" data-bookblock-direction="{{ gantry.page.direction }}" data-bookblock-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" class="bb-bookblock">
+        <div id="{{ id }}" data-bookblock-id="{{ id }}" data-bookblock-direction="{{ genesis.page.direction }}" data-bookblock-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" class="bb-bookblock">
             {% if not particle.source or particle.source == 'particle' %}
                 {% for item in particle.items %}
                     <div class="bb-item">
@@ -53,12 +53,12 @@
                     </div>
                 {% endfor %}
             {% else %}
-                {% include '@particles/bookblock-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+                {% include '@particles/bookblock-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
             {% endif %}
         </div>
     </div>
 {% endblock %}
 
 {% block javascript_footer %}
-{% do gantry.document.addScript(url('gantry-assets://js/bookblock.js'), 11, 'footer') %}
+{% do genesis.document.addScript(url('gantry-assets://js/bookblock.js'), 11, 'footer') %}
 {% endblock %}

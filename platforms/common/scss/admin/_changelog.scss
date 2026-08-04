@@ -1,4 +1,4 @@
-#g5-container {// wrapper
+[data-genesis-container] {// wrapper
 
     #g-changelog {
         max-height: 650px;
@@ -89,7 +89,7 @@
         }
     }
 
-    .g5-dialog.g5-dialog-theme-default.g5-modal-changelog .g5-content {
+    .genesis-dialog.genesis-dialog-theme-default.genesis-modal-changelog .genesis-content {
         width: 700px;
     }
 }

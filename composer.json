@@ -1,6 +1,6 @@
 {
-    "name": "gantry/gantry5-builder",
-    "description": "Gantry 5 Framework builder",
+    "name": "dazzlesoftware/genesis-builder",
+    "description": "Genesis Framework builder (formerly Gantry 5)",
     "type": "metapackage",
     "license": "MIT",
     "minimum-stability": "dev",

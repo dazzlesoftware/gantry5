@@ -1,7 +1,7 @@
 {% try %}
-{% set preset = gantry.outlines.layoutPreset(name) %}
+{% set preset = genesis.outlines.layoutPreset(name) %}
 {% catch %}
-{% set preset = gantry.outlines.layoutPreset('default') %}
+{% set preset = genesis.outlines.layoutPreset('default') %}
 {% endtry %}
 
 <div id="outline-{{ name }}" class="page">
@@ -9,8 +9,8 @@
         {% if name == 'default' %}
             <span>{{ 'GANTRY5_PLATFORM_BASE_OUTLINE'|trans }}</span>
         {% else %}
-            {% if gantry.authorize('outline.rename') %}
-            <span data-g-config-href="{{ gantry.route('configurations', name, 'rename') }}" data-g-config-method="post"
+            {% if genesis.authorize('outline.rename') %}
+            <span data-g-config-href="{{ genesis.route('configurations', name, 'rename') }}" data-g-config-method="post"
                   data-title-editable="{{ title }}" class="title" data-tip="{{ title }}" data-tip-place="top-right">
                 {{ title }}
             </span>
@@ -31,31 +31,31 @@
                role="button"
                aria-label="{{ 'GANTRY5_PLATFORM_EDIT_X'|trans(title) }}"
                title="{{ 'GANTRY5_PLATFORM_EDIT_X'|trans(title) }}"
-               data-g5-ajaxify=""
-               data-g5-ajaxify-target="[data-g5-content-wrapper]"
-               data-g5-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
-               href="{{ gantry.route('configurations', name, 'layout') }}"
+               data-genesis-ajaxify=""
+               data-genesis-ajaxify-target="[data-genesis-content-wrapper]"
+               data-genesis-ajaxify-params="{{ {"navbar": true}|json_encode|e('html_attr') }}"
+               href="{{ genesis.route('configurations', name, 'layout') }}"
                class="button button-primary"
             >
                 <i class="fa fa-fw fa-pencil fa-pencil-alt" aria-hidden="true"></i>
             </a>
-            {% if gantry.authorize('outline.create') and gantry.outlines.canDuplicate(name) %}
-            <a href="{{ gantry.route('configurations', name, 'duplicate') }}"
+            {% if genesis.authorize('outline.create') and genesis.outlines.canDuplicate(name) %}
+            <a href="{{ genesis.route('configurations', name, 'duplicate') }}"
                data-tip="{{ 'GANTRY5_PLATFORM_DUPLICATE'|trans }}"
                title="{{ 'GANTRY5_PLATFORM_DUPLICATE_X'|trans(title) }}"
                aria-label="{{ 'GANTRY5_PLATFORM_DUPLICATE_X'|trans(title) }}"
-               data-g5-outline-duplicate class="button button-secondary">
+               data-genesis-outline-duplicate class="button button-secondary">
                 <i class="fa fa-fw fa-copy" aria-hidden="true"></i>
             </a>
             {% endif %}
-            {% if name != 'default' and gantry.authorize('outline.delete') and gantry.outlines.canDelete(name) %}
+            {% if name != 'default' and genesis.authorize('outline.delete') and genesis.outlines.canDelete(name) %}
             <button data-title="{{ 'GANTRY5_PLATFORM_DELETE'|trans }}"
                     data-tip="{{ 'GANTRY5_PLATFORM_DELETE'|trans }}"
                     title="{{ 'GANTRY5_PLATFORM_DELETE_X'|trans(title) }}"
                     aria-label="{{ 'GANTRY5_PLATFORM_DELETE_X'|trans(title) }}"
                     data-g-config="delete"
-                    data-g-config-href="{{ gantry.route('configurations', name, 'delete') }}"
-                    data-g-config-href-confirm="{{ gantry.route('configurations', name, 'delete/confirm') }}"
+                    data-g-config-href="{{ genesis.route('configurations', name, 'delete') }}"
+                    data-g-config-href-confirm="{{ genesis.route('configurations', name, 'delete/confirm') }}"
                     data-g-config-method="POST" class="button red"
             >
                 <i class="far fa-fw fa-trash-alt" aria-hidden="true"></i>

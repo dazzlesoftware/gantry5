@@ -178,7 +178,7 @@ dom.ready(function() {
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
-            className: 'g5-dialog-theme-default g5-modal-collection g5-modal-collection-' + (isEditAll ? 'editall' : 'single'),
+            className: 'genesis-dialog-theme-default genesis-modal-collection genesis-modal-collection-' + (isEditAll ? 'editall' : 'single'),
             data: dataPost,
             overlayClickToClose: false,
             remote: parseAjaxURI(element.getAttribute('href') + getAjaxSuffix()),

@@ -50,7 +50,7 @@ class Content
             $this->content = [];
             foreach ($files as $key => $file) {
                 $filename = key($file);
-                $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+                $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
                 $this->content[$key] = $file->content();
                 $file->free();
             }
@@ -94,7 +94,7 @@ class Content
         }
 
         $filename = key($files[$id]);
-        $file = CompiledYamlFile::instance(GANTRY5_ROOT . '/' . $filename);
+        $file = CompiledYamlFile::instance(GENESIS_ROOT . '/' . $filename);
         $item = (array)$file->content();
         $file->free();
 
@@ -165,8 +165,8 @@ class Content
             $locator = $this->container['locator'];
             $paths = $locator->findResources('gantry-blueprints://content');
             if (!$paths) {
-                // Deprecated in Gantry 5.1.1
-                $paths = $locator->findResources('gantry-admin://blueprints/content');
+                // Deprecated in Genesis 5.1.1
+                $paths = $locator->findResources('Genesis-admin://blueprints/content');
             }
 
             $this->files = (new ConfigFileFinder)->listFiles($paths);

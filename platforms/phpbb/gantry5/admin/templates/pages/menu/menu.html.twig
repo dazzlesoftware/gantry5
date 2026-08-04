@@ -1,10 +1,10 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
-{% set visible = not error and gantry.authorize('menu.manage', id) %}
-{% set authorized = visible and gantry.authorize('menu.edit', id) %}
+{% set visible = not error and genesis.authorize('menu.manage', id) %}
+{% set authorized = visible and genesis.authorize('menu.edit', id) %}
 
 {% block gantry %}
-<form method="post" action="{{ gantry.route('menu', id) }}" data-mm-container="">
+<form method="post" action="{{ genesis.route('menu', id) }}" data-mm-container="">
     <div class="menu-header">
         <span class="float-right">
             <button class="button button-back-to-conf">
@@ -21,13 +21,13 @@
         <select placeholder="{{ 'GANTRY5_PLATFORM_SELECT_ELI'|trans }}"
                 data-selectize-ajaxify=""
                 data-selectize=""
-                data-g5-ajaxify-target="[data-g5-content]"
+                data-genesis-ajaxify-target="[data-genesis-content]"
                 class="menu-select-wrap"
         >
             {% for menu_name,menu_title in menus %}
             <option value="{{ menu_name }}"
                     {% if id == menu_name %}selected="selected"{% endif %}
-                    data-data="{{ {url: gantry.route('menu', menu_name)}|json_encode|e('html_attr') }}">
+                    data-data="{{ {url: genesis.route('menu', menu_name)}|json_encode|e('html_attr') }}">
                 {{ menu_title }}{{ default_menu == menu_name ? ' ★' : '' }}
             </option>
             {% endfor %}
@@ -42,25 +42,25 @@
     {% endif %}
 
     {% if authorized %}
-    <div class="g5-mm-particles-picker">
+    <div class="genesis-mm-particles-picker">
         <ul class="g-menu-addblock">
-            {% if gantry.platform.has('modules') %}
+            {% if genesis.platform.has('modules') %}
             <li data-mm-blocktype="module" data-mm-id="__module">
                 <span class="menu-item">
                     <i class="far fa-fw fa-hand-paper" aria-hidden="true"></i>
                     <span class="title">{{ 'GANTRY5_PLATFORM_MODULE'|trans }}</span>
                 </span>
-                <a class="config-cog" href="{{ gantry.route('menu/select/module') }}">
+                <a class="config-cog" href="{{ genesis.route('menu/select/module') }}">
                     <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_MODULE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
                 </a>
             </li>
-            {% elseif gantry.platform.has('widgets') %}
+            {% elseif genesis.platform.has('widgets') %}
             <li data-mm-blocktype="widget" data-mm-id="__widget">
                 <span class="menu-item">
                     <i class="far fa-fw fa-hand-paper" aria-hidden="true"></i>
                     <span class="title">{{ 'GANTRY5_PLATFORM_WIDGET'|trans }}</span>
                 </span>
-                <a class="config-cog" href="{{ gantry.route('menu/select/widget') }}">
+                <a class="config-cog" href="{{ genesis.route('menu/select/widget') }}">
                     <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_WIDGET_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
                 </a>
             </li>
@@ -70,7 +70,7 @@
                     <i class="far fa-fw fa-hand-paper" aria-hidden="true"></i>
                     <span class="title">{{ 'GANTRY5_PLATFORM_PARTICLE'|trans }}</span>
                 </span>
-                <a class="config-cog" href="{{ gantry.route('menu/select/particle') }}">
+                <a class="config-cog" href="{{ genesis.route('menu/select/particle') }}">
                     <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_PARTICLE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
                 </a>
             </li>

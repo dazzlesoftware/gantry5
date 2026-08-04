@@ -223,7 +223,7 @@ ready(() => {
         modal.open({
             content: 'Loading',
             method: 'post',
-            className: 'g5-dialog-theme-default g5-modal-changelog',
+            className: 'genesis-dialog-theme-default genesis-modal-changelog',
             data: { version: link.dataset.changelog },
             remote: parseAjaxURI(`${getAjaxURL('changelog')}${getAjaxSuffix()}`),
             remoteLoaded(response, content) {
@@ -233,7 +233,7 @@ ready(() => {
                 wrapper.querySelectorAll('#g-changelog > ol > li > a').forEach((section) => {
                     if (!section.textContent.trim()) return;
 
-                    const current = new RegExp(`#(common|${window.GANTRY_PLATFORM})$`, 'i').test(section.href);
+                    const current = new RegExp(`#(common|${window.GENESIS_PLATFORM})$`, 'i').test(section.href);
                     const icon = document.createElement('i');
                     icon.className = `fa g-changelog-toggle fa-fw fa-chevron-${current ? 'up' : 'down'}`;
                     icon.setAttribute('aria-hidden', 'true');
@@ -253,7 +253,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../ui":53,"../utils/dom":67,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76}],3:[function(require,module,exports){
+},{"../ui":53,"../utils/dom":67,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77}],3:[function(require,module,exports){
 "use strict";
 
 var dom = require('../utils/dom'),
@@ -271,7 +271,7 @@ var guid = function() {
 };
 
 var refreshWordpressLinks = function(title, value) {
-    if (window.GANTRY_PLATFORM !== 'wordpress') { return; }
+    if (window.GENESIS_PLATFORM !== 'wordpress') { return; }
 
     var replacement = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
         currentURI = History.getPageUrl(),
@@ -369,7 +369,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../ui":53,"../utils/dom":67,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/history":80,"../utils/request":84}],4:[function(require,module,exports){
+},{"../ui":53,"../utils/dom":67,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/history":81,"../utils/request":85}],4:[function(require,module,exports){
 "use strict";
 
 var dom = require('../utils/dom'),
@@ -453,7 +453,7 @@ dom.ready(function() {
         });
     };
 
-    dom.delegate(body, 'click', '[data-g5-outline-create], [data-g5-outline-duplicate]', function(event, trigger) {
+    dom.delegate(body, 'click', '[data-genesis-outline-create], [data-genesis-outline-duplicate]', function(event, trigger) {
         event.preventDefault();
         modal.open({
             content: 'Loading',
@@ -602,7 +602,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../ui":53,"../utils/dom":67,"../utils/flags-state":74,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/indicator":81,"../utils/request":84,"./dropdown-edit":3}],5:[function(require,module,exports){
+},{"../ui":53,"../utils/dom":67,"../utils/flags-state":74,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/indicator":82,"../utils/request":85,"./dropdown-edit":3}],5:[function(require,module,exports){
 'use strict';
 
 var dom = require('../utils/dom'),
@@ -849,7 +849,7 @@ module.exports = {
     submit: submit
 };
 
-},{"../utils/dom":67,"../utils/flags-state":74,"../utils/history":80,"./multicheckbox":6,"./submit":7}],6:[function(require,module,exports){
+},{"../utils/dom":67,"../utils/flags-state":74,"../utils/history":81,"./multicheckbox":6,"./submit":7}],6:[function(require,module,exports){
 'use strict';
 
 const { ready, delegate } = require('../utils/dom');
@@ -1023,7 +1023,7 @@ Atom.prototype.options = {
 
 module.exports = Atom;
 
-},{"../../utils/get-ajax-url":76,"./base":10}],9:[function(require,module,exports){
+},{"../../utils/get-ajax-url":77,"./base":10}],9:[function(require,module,exports){
 "use strict";
 
 var Section = require('./section');
@@ -1066,7 +1066,7 @@ class Atoms extends Section {
     }
 
     _attachRedirect() {
-        var item = document.querySelector('[data-g5-nav="page"]');
+        var item = document.querySelector('[data-genesis-nav="page"]');
         if (!item) { return; }
         var link = document.querySelector('.atoms-notice a');
         if (!link) { return; }
@@ -1295,7 +1295,7 @@ Object.assign(Base.prototype, {
 
 module.exports = Base;
 
-},{"../../utils/create-element":64,"../../utils/elements-native":69,"../../utils/event-emitter":72,"../../utils/get-outline":77,"../../utils/translate":87,"../id":25}],11:[function(require,module,exports){
+},{"../../utils/create-element":64,"../../utils/elements-native":69,"../../utils/event-emitter":72,"../../utils/get-outline":78,"../../utils/translate":88,"../id":25}],11:[function(require,module,exports){
 "use strict";
 
 var Base = require('./base');
@@ -1494,7 +1494,7 @@ Container.prototype.options = {
 
 module.exports = Container;
 
-},{"../../utils/get-ajax-url":76,"../../utils/translate":87,"./base":10}],13:[function(require,module,exports){
+},{"../../utils/get-ajax-url":77,"../../utils/translate":88,"./base":10}],13:[function(require,module,exports){
 "use strict";
 
 var Base = require('./base');
@@ -1589,7 +1589,7 @@ Offcanvas.prototype.options = {
 
 module.exports = Offcanvas;
 
-},{"../../utils/get-ajax-url":76,"../../utils/get-outline":77,"../../utils/translate":87,"./section":18}],16:[function(require,module,exports){
+},{"../../utils/get-ajax-url":77,"../../utils/get-outline":78,"../../utils/translate":88,"./section":18}],16:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -1637,7 +1637,7 @@ class Particle extends Atom {
         var iconGlyph = block.querySelector('.icon .fa');
         if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
         forOwn(this.getInheritanceTip(), function(value, key) { icon.setAttribute('data-' + key, value); });
-        global.G5.tips.reload();
+        global.Genesis.tips.reload();
     }
 
     disableInheritance() {
@@ -1648,7 +1648,7 @@ class Particle extends Atom {
         block.classList.remove('g-inheriting');
         if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
         forOwn(this.getInheritanceTip(), function(value, key) { icon.removeAttribute('data-' + key); });
-        global.G5.tips.reload();
+        global.Genesis.tips.reload();
     }
 
     refreshInheritance() {
@@ -1752,7 +1752,7 @@ module.exports = Particle;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../utils/get-ajax-url":76,"../../utils/get-outline":77,"../../utils/translate":87,"./atom":8}],17:[function(require,module,exports){
+},{"../../utils/get-ajax-url":77,"../../utils/get-outline":78,"../../utils/translate":88,"./atom":8}],17:[function(require,module,exports){
 "use strict";
 
 var Particle = require('./particle');
@@ -1970,7 +1970,7 @@ Section.prototype.options = {};
 
 module.exports = Section;
 
-},{"../../utils/get-ajax-url":76,"../../utils/get-outline":77,"../../utils/translate":87,"./base":10,"./grid":13}],19:[function(require,module,exports){
+},{"../../utils/get-ajax-url":77,"../../utils/get-outline":78,"../../utils/translate":88,"./base":10,"./grid":13}],19:[function(require,module,exports){
 "use strict";
 
 var Particle = require('./particle');
@@ -2320,7 +2320,7 @@ class Resizer {
         siblings = asElements(siblings);
         if (!element) { return; }
 
-        window.G5.tips.hide(element);
+        window.Genesis.tips.hide(element);
         if (event.which && event.which !== 1) { return true; }
 
         // Stops text selection
@@ -2824,7 +2824,7 @@ ready(function() {
 
     // Layout Manager
     layoutmanager = new LayoutManager('[data-lm-container]', {
-        delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .g5-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
+        delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
         droppables: '[data-lm-dropzone]',
         exclude: '.section-header .button, .section-header .fa, .lm-newblocks .float-right .button, [data-lm-nodrag], [data-lm-disabled]',
         resize_handles: '[data-lm-root] .g-grid > .g-block:not(:last-child)',
@@ -2887,7 +2887,7 @@ ready(function() {
     });
 
     // Picker
-    body.delegate('statechangeBefore', '[data-g5-lm-picker]', function() {
+    body.delegate('statechangeBefore', '[data-genesis-lm-picker]', function() {
         modal.close();
     });
 
@@ -2928,7 +2928,7 @@ ready(function() {
     // Grid same widths button (evenize, equalize)
     ['click', 'touchend'].forEach(function(evt){
         body.delegate(evt, '[data-lm-samewidth]:not(:empty)', function(event, element) {
-            window.G5.tips.hide(element[0]);
+            window.Genesis.tips.hide(element[0]);
             var clientRect = element[0].getBoundingClientRect();
             if ((event.clientX || event.pageX || event.changedTouches[0].pageX || 0) < clientRect.width + clientRect.left) { return; }
 
@@ -2958,7 +2958,7 @@ ready(function() {
 
         element.data('tip', msg).data('tip-offset', -30);
 
-        window.G5.tips
+        window.Genesis.tips
             .get(element[0])
             .content(msg)
             .place(tooltips.equalize ? 'top-left' : 'top-right')
@@ -2966,7 +2966,7 @@ ready(function() {
     });
 
     body.delegate('mouseout', '[data-lm-samewidth]:not(:empty)', function(event, element) {
-        window.G5.tips.hide(element[0]);
+        window.Genesis.tips.hide(element[0]);
     });
 
     // Clear Layout
@@ -3029,7 +3029,7 @@ ready(function() {
         if (event && event.preventDefault) { event.preventDefault(); }
 
         // it's already loading something.
-        if (element.parent('.g5-popover-content').find('[data-switch] i')) {
+        if (element.parent('.genesis-popover-content').find('[data-switch] i')) {
             return false;
         }
 
@@ -3357,7 +3357,7 @@ module.exports = {
     savestate: savestate
 };
 
-},{"../fields/submit":7,"../ui":53,"../ui/popover":55,"../utils/dom":67,"../utils/elements-native":69,"../utils/field-validation":73,"../utils/flags-state":74,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/history":80,"../utils/indicator":81,"../utils/request":84,"../utils/save-state":85,"../utils/translate":87,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":30}],27:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":53,"../ui/popover":55,"../utils/dom":67,"../utils/elements-native":69,"../utils/field-validation":73,"../utils/flags-state":74,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/history":81,"../utils/indicator":82,"../utils/request":85,"../utils/save-state":86,"../utils/translate":88,"./builder":22,"./history":24,"./inheritance":27,"./layoutmanager":28,"./particles-sidebar":30}],27:[function(require,module,exports){
 "use strict";
 
 var dom                = require('../../utils/dom'),
@@ -3677,7 +3677,7 @@ ready(function() {
     });
 });
 
-},{"../../ui":53,"../../ui/selectize":57,"../../utils/dom":67,"../../utils/get-ajax-suffix":75,"../../utils/get-ajax-url":76,"../../utils/get-outline":77,"../../utils/indicator":81,"../../utils/request":84}],28:[function(require,module,exports){
+},{"../../ui":53,"../../ui/selectize":57,"../../utils/dom":67,"../../utils/get-ajax-suffix":76,"../../utils/get-ajax-url":77,"../../utils/get-outline":78,"../../utils/indicator":82,"../../utils/request":85}],28:[function(require,module,exports){
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
     $          = require('../utils/elements.utils'),
@@ -4383,7 +4383,7 @@ const initSizes = () => {
     container = document.querySelector('.sidebar-block');
     if (!container) return;
 
-    sidebar = container.querySelector('.g5-lm-particles-picker');
+    sidebar = container.querySelector('.genesis-lm-particles-picker');
     if (!sidebar) return;
 
     search = sidebar.querySelector(':scope > .search');
@@ -4411,7 +4411,7 @@ const initSizes = () => {
 ready(() => {
     initSizes();
 
-    const scrollElement = window.GANTRY_PLATFORM === 'grav'
+    const scrollElement = window.GENESIS_PLATFORM === 'grav'
         ? document.querySelector('#admin-main .content-padding') || window
         : window;
 
@@ -4433,7 +4433,7 @@ ready(() => {
             sidebar.style.top = `${heightTop + 10}px`;
             sidebar.style.bottom = 'inherit';
         } else if (shouldBeFixed && reachedTheLimit &&
-            (sidebarTallerThanContainer || (window.GANTRY_PLATFORM === 'grav' && containerBounds.bottom < sidebarCoords.bottom))) {
+            (sidebarTallerThanContainer || (window.GENESIS_PLATFORM === 'grav' && containerBounds.bottom < sidebarCoords.bottom))) {
             sidebar.classList.remove('particles-fixed');
             sidebar.classList.add('particles-absolute');
             sidebar.style.top = 'inherit';
@@ -4457,8 +4457,9 @@ ready(() => {
 
 module.exports = initSizes;
 
-},{"../utils/decouple":65,"../utils/dom":67,"../utils/get-scrollbar-width":78}],31:[function(require,module,exports){
+},{"../utils/decouple":65,"../utils/dom":67,"../utils/get-scrollbar-width":79}],31:[function(require,module,exports){
 "use strict";
+require('./utils/genesis-compat');
 var $              = require('./utils/elements-native'),
     zen            = require('./utils/create-element'),
     ready          = require('./utils/dom').ready,
@@ -4643,7 +4644,7 @@ ready(function() {
             invalid = [],
             type    = element.data('save'),
             extras  = '',
-            page    = $('[data-lm-root]') ? 'layout' : ($('[data-mm-id]') ? 'menu' : ($('[data-g5-position]') ? 'positions' : 'other')),
+            page    = $('[data-lm-root]') ? 'layout' : ($('[data-mm-id]') ? 'menu' : ($('[data-genesis-position]') ? 'positions' : 'other')),
             saveURL = parseAjaxURI(trim(window.location.href, '#') + getAjaxSuffix());
 
         switch (page) {
@@ -4895,10 +4896,13 @@ var modules = {
     tips: require('./ui/tooltips')
 };
 
-window.G5 = modules;
+// Genesis is the canonical administrator API. G5 remains an identity alias
+// during the compatibility period.
+window.Genesis = modules;
+window.G5 = window.Genesis;
 module.exports = modules;
 
-},{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":34,"./pagesettings":36,"./particles":42,"./positions":47,"./positions/cards":46,"./styles":48,"./ui":53,"./ui/popover":55,"./ui/tooltips":60,"./utils/ajaxify-links":61,"./utils/create-element":64,"./utils/dom":67,"./utils/elements-native":69,"./utils/field-validation":73,"./utils/flags-state":74,"./utils/get-ajax-suffix":75,"./utils/get-ajax-url":76,"./utils/rAF-polyfill":82,"./utils/request":84,"./utils/translate":87}],32:[function(require,module,exports){
+},{"./assignments":1,"./changelog":2,"./configurations":4,"./fields":5,"./lm":26,"./menu":34,"./pagesettings":36,"./particles":42,"./positions":47,"./positions/cards":46,"./styles":48,"./ui":53,"./ui/popover":55,"./ui/tooltips":60,"./utils/ajaxify-links":61,"./utils/create-element":64,"./utils/dom":67,"./utils/elements-native":69,"./utils/field-validation":73,"./utils/flags-state":74,"./utils/genesis-compat":75,"./utils/get-ajax-suffix":76,"./utils/get-ajax-url":77,"./utils/rAF-polyfill":83,"./utils/request":85,"./utils/translate":88}],32:[function(require,module,exports){
 "use strict";
 var DragEvents = require('../ui/drag.events');
 
@@ -5419,7 +5423,7 @@ var StepTwo = function(data, content, button) {
                             menumanager.emit('dragEnd', menumanager.map);
                             toastr.success(translate('GANTRY5_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GANTRY5_PLATFORM_JS_SETTINGS_APPLIED'));
                         } else {
-                            var position = document.querySelector('[data-g5-position-name="' + CSS.escape(submitResult.position) + '"]'),
+                            var position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'),
                                 list = position && position.querySelector(':scope > ul');
                             if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
@@ -5511,13 +5515,13 @@ dom.ready(function() {
         StepTwo({
             item: JSON.stringify(data),
             instancepicker: instancepicker || null
-        }, element.closest('.g5-content'), element);
+        }, element.closest('.genesis-content'), element);
     });
 });
 
 module.exports = StepOne;
 
-},{"../fields/submit":7,"../positions/cards":46,"../ui":53,"../ui/selectize":57,"../utils/deep-equals":66,"../utils/dom":67,"../utils/flags-state":74,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/indicator":81,"../utils/request":84,"../utils/translate":87,"../utils/wp-widgets-customizer":88}],34:[function(require,module,exports){
+},{"../fields/submit":7,"../positions/cards":46,"../ui":53,"../ui/selectize":57,"../utils/deep-equals":66,"../utils/dom":67,"../utils/flags-state":74,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/indicator":82,"../utils/request":85,"../utils/translate":88,"../utils/wp-widgets-customizer":89}],34:[function(require,module,exports){
 "use strict";
 var dom           = require('../utils/dom'),
     MenuManager   = require('./menumanager'),
@@ -5545,7 +5549,7 @@ dom.ready(function() {
     var body = document.body;
 
     menumanager = new MenuManager('[data-mm-container]', {
-        delegate: '.g5-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
+        delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
         droppables: '#menu-editor [data-mm-id]',
         exclude: '[data-lm-nodrag], .menu-item-back, .fa-cog, .config-cog',
         resize_handles: '.submenu-column:not(:last-child)',
@@ -5650,7 +5654,7 @@ dom.ready(function() {
     // Add new columns
     dom.delegate(body, 'click', '.add-column', function(event, element) {
         event.preventDefault();
-        var columns = element.closest('[data-g5-menu-columns]'),
+        var columns = element.closest('[data-genesis-menu-columns]'),
             container = columns && columns.querySelector('.submenu-selector'),
             children = container ? Array.from(container.children) : [],
             last = children[children.length - 1],
@@ -5682,7 +5686,7 @@ dom.ready(function() {
 
     // Attach events to pseudo (x) for deleting a column
     ['click', 'touchend'].forEach(function(evt) {
-        dom.delegate(body, evt, '[data-g5-menu-columns] .submenu-items:empty', function(event, element) {
+        dom.delegate(body, evt, '[data-genesis-menu-columns] .submenu-items:empty', function(event, element) {
             var point = event.changedTouches && event.changedTouches[0],
                 bounding = element.getBoundingClientRect(),
                 x = event.pageX || (point && point.pageX) || 0,
@@ -5883,7 +5887,7 @@ module.exports = {
     menumanager: menumanager
 };
 
-},{"../fields/submit":7,"../ui":53,"../utils/dom":67,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/indicator":81,"../utils/request":84,"../utils/translate":87,"./extra-items":33,"./menumanager":35}],35:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":53,"../utils/dom":67,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/indicator":82,"../utils/request":85,"../utils/translate":88,"./extra-items":33,"./menumanager":35}],35:[function(require,module,exports){
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
     $         = require('../utils/elements.utils'),
@@ -5976,7 +5980,7 @@ var MenuManagerDefinition = {
                 items: deepClone(this.items)
             };
 
-            var submenus = $('[data-g5-menu-columns] .submenu-selector'), columns;
+            var submenus = $('[data-genesis-menu-columns] .submenu-selector'), columns;
             if (this.resizer && submenus && (columns = submenus.search('> [data-mm-id]'))) { this.resizer.updateMaxValues(columns); }
         }
     },
@@ -5992,7 +5996,7 @@ var MenuManagerDefinition = {
             return true;
         }
 
-        if (element.find('[data-g5-ajaxify]')) {
+        if (element.find('[data-genesis-ajaxify]')) {
             var siblings = element.siblings();
             element.addClass('active');
             if (siblings) { siblings.removeClass('active'); }
@@ -6009,7 +6013,7 @@ var MenuManagerDefinition = {
     },
 
     start: function(event, element) {
-        var root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.g5-mm-particles-picker'),
+        var root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.genesis-mm-particles-picker'),
             size = $(element).position(),
             coords = $(element)[0].getBoundingClientRect();
 
@@ -6019,7 +6023,7 @@ var MenuManagerDefinition = {
         this.type =  element.parent('.g-toplevel') || element.matches('.g-toplevel') ? 'main' : (element.matches('.g-block') ? 'column' : 'columns_items');
         this.isParticle = element.matches('[data-mm-blocktype]') || element.matches('[data-mm-original-type]');
         this.wasActive = element.hasClass('active');
-        this.isNewParticle = element.parent('.g5-mm-particles-picker');
+        this.isNewParticle = element.parent('.genesis-mm-particles-picker');
         this.ParticleIndex = -1;
         this.root = root;
         this.Element = element;
@@ -6616,7 +6620,7 @@ var attachSettings = function() {
                                         item.setAttribute('data-tip', translate('GANTRY5_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
                                     }
                                     dataField.dispatchEvent(new Event('change', { bubbles: true }));
-                                    global.G5.tips.reload();
+                                    global.Genesis.tips.reload();
                                 }
 
                                 if (target.hasAttribute('data-apply-and-save')) {
@@ -6650,7 +6654,7 @@ module.exports = Atoms;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../fields/submit":7,"../ui":53,"../ui/eraser":52,"../utils/dom":67,"../utils/draggable-group":68,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/get-outline":77,"../utils/indicator":81,"../utils/request":84,"../utils/translate":87}],37:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":53,"../ui/eraser":52,"../utils/dom":67,"../utils/draggable-group":68,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/get-outline":78,"../utils/indicator":82,"../utils/request":85,"../utils/translate":88}],37:[function(require,module,exports){
 "use strict";
 
 var dom = require('../../utils/dom'),
@@ -6831,7 +6835,7 @@ dom.ready(function() {
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
-            className: 'g5-dialog-theme-default g5-modal-collection g5-modal-collection-' + (isEditAll ? 'editall' : 'single'),
+            className: 'genesis-dialog-theme-default genesis-modal-collection genesis-modal-collection-' + (isEditAll ? 'editall' : 'single'),
             data: dataPost,
             overlayClickToClose: false,
             remote: parseAjaxURI(element.getAttribute('href') + getAjaxSuffix()),
@@ -6901,7 +6905,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../../fields/submit":7,"../../ui":53,"../../utils/dom":67,"../../utils/get-ajax-suffix":75,"../../utils/get-ajax-url":76,"../../utils/indicator":81,"../../utils/reorderable-list":83,"../../utils/request":84,"../../utils/translate":87}],38:[function(require,module,exports){
+},{"../../fields/submit":7,"../../ui":53,"../../utils/dom":67,"../../utils/get-ajax-suffix":76,"../../utils/get-ajax-url":77,"../../utils/indicator":82,"../../utils/reorderable-list":84,"../../utils/request":85,"../../utils/translate":88}],38:[function(require,module,exports){
 "use strict";
 
 var $          = require('../../utils/elements-native'),
@@ -6955,13 +6959,13 @@ class ColorPicker {
         var body = $('body');
 
         MOUSEDOWN.forEach(function(mousedown) {
-            body.delegate(mousedown, '#g5-container .g-colorpicker i', this.bound('iconClick'));
+            body.delegate(mousedown, '[data-genesis-container] .g-colorpicker i', this.bound('iconClick'));
         }, this);
 
-        body.delegate(FOCUSIN, '#g5-container .g-colorpicker input', this.bound('show'), true);
+        body.delegate(FOCUSIN, '[data-genesis-container] .g-colorpicker input', this.bound('show'), true);
 
 
-        body.delegate('keydown', '#g5-container .g-colorpicker input', function(event, element) {
+        body.delegate('keydown', '[data-genesis-container] .g-colorpicker input', function(event, element) {
             switch (event.keyCode) {
                 case 9: // tab
                     this.hide();
@@ -6976,13 +6980,13 @@ class ColorPicker {
         }.bind(this));
 
         // Update on keyup
-        body.delegate('keyup', '#g5-container .g-colorpicker input', function(event, element) {
+        body.delegate('keyup', '[data-genesis-container] .g-colorpicker input', function(event, element) {
             this.updateFromInput(true, element);
             return true;
         }.bind(this));
 
         // Update on paste
-        body.delegate('paste', '#g5-container .g-colorpicker input', function(event, element) {
+        body.delegate('paste', '[data-genesis-container] .g-colorpicker input', function(event, element) {
             setTimeout(function() {
                 this.updateFromInput(true, element);
             }.bind(this), 1);
@@ -7176,7 +7180,7 @@ class ColorPicker {
             }.bind(this));
         }, this);
 
-        this.wrapper.bottom('#g5-container');
+        this.wrapper.bottom('[data-genesis-container]');
 
         this.built = true;
         this.mode = 'hue';
@@ -7475,7 +7479,7 @@ class ColorPicker {
 
     reposition() {
         var offset = this.element[0].getBoundingClientRect(),
-            ct = $('#g5-container')[0].getBoundingClientRect();
+            ct = $('[data-genesis-container]')[0].getBoundingClientRect();
         this.wrapper.style({
             top: offset.top + offset.height - ct.top,
             left: offset.left - ct.left
@@ -8021,7 +8025,7 @@ class NativeUploader {
 
 class FilePicker {
     constructor(element) {
-        var data = element.getAttribute('data-g5-filepicker');
+        var data = element.getAttribute('data-genesis-filepicker');
         this.data = data ? JSON.parse(data) : false;
 
         if (this.data && !this.data.value) {
@@ -8053,7 +8057,7 @@ class FilePicker {
             method: 'post',
             data: this.data,
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
-            className: 'g5-dialog-theme-default g5-modal-filepicker',
+            className: 'genesis-dialog-theme-default genesis-modal-filepicker',
             remote: parseAjaxURI(getAjaxURL('filepicker') + getAjaxSuffix()),
             remoteLoaded: this.loaded.bind(this),
             afterClose: function() {
@@ -8164,7 +8168,7 @@ class FilePicker {
                 background = thumb && thumb.style.backgroundImage;
             if (background) {
                 modal.open({
-                    className: 'g5-dialog-theme-default g5-modal-filepreview center',
+                    className: 'genesis-dialog-theme-default genesis-modal-filepreview center',
                     content: '<img src="' + background.slice(4, -1).replace(/"/g, '') + '" />'
                 });
             }
@@ -8219,7 +8223,9 @@ class FilePicker {
 
             content.querySelectorAll('[data-files-mode]').forEach(function(mode) { mode.classList.remove('active'); });
             element.classList.add('active');
-            Cookie.write('g5_files_mode', element.getAttribute('data-files-mode'));
+            const mode = element.getAttribute('data-files-mode');
+            Cookie.write('genesis_files_mode', mode);
+            Cookie.write('g5_files_mode', mode);
 
             animateOpacity(files, 0, 200, function() {
                 var mode = element.getAttribute('data-files-mode'),
@@ -8290,7 +8296,7 @@ class FilePicker {
 }
 
 dom.ready(function() {
-    dom.delegate(document.body, 'click', '[data-g5-filepicker]', function(event, element) {
+    dom.delegate(document.body, 'click', '[data-genesis-filepicker]', function(event, element) {
         event.preventDefault();
         if (!element.GantryFilePicker) {
             element.GantryFilePicker = new FilePicker(element);
@@ -8303,7 +8309,7 @@ module.exports = FilePicker;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../ui":53,"../../ui/popover":55,"../../ui/progresser":56,"../../utils/cookie":63,"../../utils/dom":67,"../../utils/get-ajax-suffix":75,"../../utils/get-ajax-url":76,"../../utils/indicator":81,"../../utils/request":84,"../../utils/translate":87}],40:[function(require,module,exports){
+},{"../../ui":53,"../../ui/popover":55,"../../ui/progresser":56,"../../utils/cookie":63,"../../utils/dom":67,"../../utils/get-ajax-suffix":76,"../../utils/get-ajax-url":77,"../../utils/indicator":82,"../../utils/request":85,"../../utils/translate":88}],40:[function(require,module,exports){
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
 var $             = require('../../utils/elements.utils'),
@@ -8454,7 +8460,7 @@ class Fonts {
     }
 
     open(event, element) {
-        var data = element.data('g5-fontpicker');
+        var data = element.data('genesis-fontpicker');
         if (!data) {
             throw new Error('No fontpicker data found');
         }
@@ -8464,7 +8470,7 @@ class Fonts {
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
-            className: 'g5-dialog-theme-default g5-modal-fonts',
+            className: 'genesis-dialog-theme-default genesis-modal-fonts',
             remote: parseAjaxURI(getAjaxURL('fontpicker') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 var container = content.elements.content;
@@ -8776,7 +8782,7 @@ class Fonts {
 
                 element.on('beforeshow.popover', function(popover) {
                     var subsets = element.parent('[data-subsets]').data('subsets').split(','),
-                        content = popover.$target.find('.g5-popover-content'),
+                        content = popover.$target.find('.genesis-popover-content'),
                         checked;
 
                     content[0].replaceChildren();
@@ -8815,7 +8821,7 @@ class Fonts {
                 });
 
                 element.on('beforeshow.popover', function(popover) {
-                    var content  = popover.$target.find('.g5-popover-content'),
+                    var content  = popover.$target.find('.genesis-popover-content'),
                         variants = element.parent('[data-variants]').data('variants').split(',');
 
                     content[0].replaceChildren();
@@ -8880,7 +8886,7 @@ class Fonts {
             style: 'font-categories, above-modal'
         }).on('beforeshow.popover', function(popover) {
             var cats    = categories.data('font-categories').split(','),
-                content = popover.$target.find('.g5-popover-content'),
+                content = popover.$target.find('.genesis-popover-content'),
                 checked;
 
             content[0].replaceChildren();
@@ -8910,7 +8916,7 @@ class Fonts {
             style: 'font-subsets, above-modal'
         }).on('beforeshow.popover', function(popover) {
             var subs    = subsets.data('font-subsets').split(','),
-                content = popover.$target.find('.g5-popover-content');
+                content = popover.$target.find('.genesis-popover-content');
 
             content[0].replaceChildren();
 
@@ -9082,7 +9088,7 @@ class Fonts {
 
 ready(function() {
     var body = $('body');
-    body.delegate('click', '[data-g5-fontpicker]', function(event, element) {
+    body.delegate('click', '[data-genesis-fontpicker]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
         var node = element[0],
             FontPicker = storage.get(node);
@@ -9097,7 +9103,7 @@ ready(function() {
 
 module.exports = Fonts;
 
-},{"../../ui":53,"../../utils/async-foreach":62,"../../utils/create-element":64,"../../utils/decouple":65,"../../utils/dom":67,"../../utils/elements.utils":70,"../../utils/elements.viewport":71,"../../utils/get-ajax-suffix":75,"../../utils/get-ajax-url":76,"../../utils/translate":87}],41:[function(require,module,exports){
+},{"../../ui":53,"../../utils/async-foreach":62,"../../utils/create-element":64,"../../utils/decouple":65,"../../utils/dom":67,"../../utils/elements.utils":70,"../../utils/elements.viewport":71,"../../utils/get-ajax-suffix":76,"../../utils/get-ajax-url":77,"../../utils/translate":88}],41:[function(require,module,exports){
 "use strict";
 
 var dom = require('../../utils/dom'),
@@ -9122,7 +9128,7 @@ var escapeHTML = function(value) {
 
 var findPreview = function(input) {
     var parent = input.parentElement;
-    return parent ? parent.querySelector('[data-g5-iconpicker]') : null;
+    return parent ? parent.querySelector('[data-genesis-iconpicker]') : null;
 };
 
 dom.ready(function() {
@@ -9137,10 +9143,10 @@ dom.ready(function() {
         if (!preview.offsetWidth) { icon.className = 'far fa-hand-point-up picker'; }
     });
 
-    dom.delegate(body, 'click', '[data-g5-iconpicker]', function(event, realPreview) {
+    dom.delegate(body, 'click', '[data-genesis-iconpicker]', function(event, realPreview) {
         event.preventDefault();
 
-        var fieldSelector = realPreview.getAttribute('data-g5-iconpicker'),
+        var fieldSelector = realPreview.getAttribute('data-genesis-iconpicker'),
             field = fieldSelector ? document.querySelector(fieldSelector) : null,
             value = String(field ? field.value : '').trim().replace(/\s{2,}/g, ' ').split(' ').filter(Boolean);
 
@@ -9148,10 +9154,10 @@ dom.ready(function() {
 
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
-            className: 'g5-dialog-theme-default g5-modal-icons',
+            className: 'genesis-dialog-theme-default genesis-modal-icons',
             remote: parseAjaxURI(getAjaxURL('icons') + getAjaxSuffix()),
             afterClose: function() {
-                document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
+                document.querySelectorAll('.genesis-popover').forEach(function(popover) { popover.remove(); });
             },
             remoteLoaded: function(response, content) {
                 var container = modal.element(content.elements.content),
@@ -9266,7 +9272,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../../ui":53,"../../ui/popover":55,"../../utils/dom":67,"../../utils/get-ajax-suffix":75,"../../utils/get-ajax-url":76,"../../utils/translate":87}],42:[function(require,module,exports){
+},{"../../ui":53,"../../ui/popover":55,"../../utils/dom":67,"../../utils/get-ajax-suffix":76,"../../utils/get-ajax-url":77,"../../utils/translate":88}],42:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -9343,8 +9349,8 @@ ready(() => {
         let value;
         let uri;
 
-        if (data.type === moduleType[window.GANTRY_PLATFORM]) {
-            uri = (data.type !== 'widget' ? 'particle/' : '') + moduleType[window.GANTRY_PLATFORM];
+        if (data.type === moduleType[window.GENESIS_PLATFORM]) {
+            uri = (data.type !== 'widget' ? 'particle/' : '') + moduleType[window.GENESIS_PLATFORM];
         } else {
             uri = 'particle';
         }
@@ -9395,7 +9401,7 @@ ready(() => {
                 }
 
                 const elementData = JSON.parse(picker.dataset.gInstancepicker || '{}');
-                if (elementData.type === moduleType[window.GANTRY_PLATFORM]) elementData.modal_close = true;
+                if (elementData.type === moduleType[window.GENESIS_PLATFORM]) elementData.modal_close = true;
 
                 if (select) {
                     select.dataset.gInstancepicker = JSON.stringify(elementData);
@@ -9445,7 +9451,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../../fields/submit":7,"../../ui":53,"../../utils/dom":67,"../../utils/get-ajax-suffix":75,"../../utils/get-ajax-url":76,"../../utils/request":84,"../../utils/translate":87,"../../utils/wp-widgets-customizer":88}],44:[function(require,module,exports){
+},{"../../fields/submit":7,"../../ui":53,"../../utils/dom":67,"../../utils/get-ajax-suffix":76,"../../utils/get-ajax-url":77,"../../utils/request":85,"../../utils/translate":88,"../../utils/wp-widgets-customizer":89}],44:[function(require,module,exports){
 "use strict";
 
 const { ready, delegate } = require('../../utils/dom');
@@ -9574,10 +9580,10 @@ ready(() => {
             wrapper.setAttribute('data-tip-offset', '8');
 
             if (excluded || duplicate) {
-                const tooltip = window.G5.tips.get(wrapper);
+                const tooltip = window.Genesis.tips.get(wrapper);
                 if (tooltip) tooltip.show();
             } else {
-                window.G5.tips.remove(wrapper);
+                window.Genesis.tips.remove(wrapper);
             }
         }
 
@@ -9618,16 +9624,16 @@ ready(() => {
 
 module.exports = {};
 
-},{"../../utils/dom":67,"../../utils/reorderable-list":83,"../../utils/translate":87}],45:[function(require,module,exports){
+},{"../../utils/dom":67,"../../utils/reorderable-list":84,"../../utils/translate":88}],45:[function(require,module,exports){
 'use strict';
 
 const { ready, delegate } = require('../../utils/dom');
 
 ready(() => {
-    delegate(document.body, 'click', '[data-g5-content] .g-main-nav .g-toplevel [data-g5-ajaxify]', (event, link) => {
+    delegate(document.body, 'click', '[data-genesis-content] .g-main-nav .g-toplevel [data-genesis-ajaxify]', (event, link) => {
         event.preventDefault();
 
-        document.querySelectorAll('[data-g5-content] .g-main-nav .g-toplevel li.active')
+        document.querySelectorAll('[data-genesis-content] .g-main-nav .g-toplevel li.active')
             .forEach((item) => item.classList.remove('active'));
 
         const item = link.closest('li');
@@ -9686,11 +9692,11 @@ const Positions = {
 
     serialize(position) {
         const output = [];
-        const positions = position ? elementsFrom(position) : Array.from(document.querySelectorAll('[data-g5-position]'));
+        const positions = position ? elementsFrom(position) : Array.from(document.querySelectorAll('[data-genesis-position]'));
         if (!positions.length) return '[]';
 
         positions.forEach(positionElement => {
-            const data = JSON.parse(positionElement.getAttribute('data-g5-position'));
+            const data = JSON.parse(positionElement.getAttribute('data-genesis-position'));
             data.modules = [];
 
             positionElement.querySelectorAll('[data-pm-data]').forEach(item => {
@@ -9698,14 +9704,14 @@ const Positions = {
             });
 
             output.push(data);
-            positionElement.setAttribute('data-g5-position', JSON.stringify(data));
+            positionElement.setAttribute('data-genesis-position', JSON.stringify(data));
         });
 
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
     attachEraser() {
-        const element = document.querySelector('[data-g5-positions-erase]');
+        const element = document.querySelector('[data-genesis-positions-erase]');
         if (Positions.eraser) {
             Positions.eraser.setElement(element);
             Positions.eraser.hide(true);
@@ -9720,9 +9726,9 @@ const Positions = {
         if (!root || root.SimpleSort) return;
 
         const group = new DraggableGroup(root, {
-            lists: '[data-g5-position] ul',
+            lists: '[data-genesis-position] ul',
             items: '[data-pm-data]',
-            filter: '[data-g5-position-ignore]',
+            filter: '[data-genesis-position-ignore]',
             trash: '#trash',
             draggingClass: 'position-dragging',
             scrollContainer: '.position-container',
@@ -9832,10 +9838,10 @@ dom.ready(function() {
                     parent = editable.closest('[id]'),
                     editButton = parent && parent.querySelector('[data-title-edit]'),
                     data = type === 'title' ? { title: trim(detail.title) } : { key: trim(detail.title) },
-                    position = parent && parent.querySelector('[data-g5-position]');
+                    position = parent && parent.querySelector('[data-genesis-position]');
 
                 if (!parent || !position) { return; }
-                data.data = position.getAttribute('data-g5-position');
+                data.data = position.getAttribute('data-genesis-position');
                 indicator.show(parent);
                 if (editButton) { editButton.classList.add('disabled'); }
 
@@ -9959,10 +9965,10 @@ dom.ready(function() {
     dom.delegate(body, 'click', '#positions .item-settings', function(event, element) {
         event.preventDefault();
         var item = element.closest('[data-pm-data]'),
-            positionElement = element.closest('[data-g5-position]');
+            positionElement = element.closest('[data-genesis-position]');
         if (!item || !positionElement) { return; }
 
-        var position = JSON.parse(positionElement.getAttribute('data-g5-position'));
+        var position = JSON.parse(positionElement.getAttribute('data-genesis-position'));
         modal.open({
             content: translate('GANTRY5_PLATFORM_JS_LOADING'),
             method: 'post',
@@ -10023,7 +10029,7 @@ dom.ready(function() {
         });
     });
 
-    dom.delegate(body, 'change', '[data-g5-positions-assignments] input[type="hidden"]', function(event, element) {
+    dom.delegate(body, 'change', '[data-genesis-positions-assignments] input[type="hidden"]', function(event, element) {
         var card = element.closest('.card'),
             wrapper = card && card.querySelector('.settings-param-wrapper');
         if (!wrapper) { return; }
@@ -10042,7 +10048,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../fields/submit":7,"../ui":53,"../utils/dom":67,"../utils/flags-state":74,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/indicator":81,"../utils/request":84,"../utils/translate":87,"./cards":46}],48:[function(require,module,exports){
+},{"../fields/submit":7,"../ui":53,"../utils/dom":67,"../utils/flags-state":74,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/indicator":82,"../utils/request":85,"../utils/translate":88,"./cards":46}],48:[function(require,module,exports){
 'use strict';
 
 const modal = require('../ui').modal;
@@ -10112,6 +10118,11 @@ module.exports = {};
 
 const Cookie = require('../utils/cookie');
 const { ready, delegate } = require('../utils/dom');
+const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('g5-collapsed') || {};
+const writeStorage = (storage) => {
+    Cookie.write('genesis-collapsed', storage);
+    Cookie.write('g5-collapsed', storage);
+};
 
 const config = (element) => JSON.parse(element.getAttribute('data-g-collapse') || '{}');
 const panelFor = (element, data) => data.target ? element.querySelector(data.target) : element;
@@ -10137,7 +10148,7 @@ const applyState = (element, data, collapsed) => {
 };
 
 const loadFromStorage = () => {
-    const storage = Cookie.read('g5-collapsed') || {};
+    const storage = readStorage();
     Object.entries(storage).forEach(([id, collapsed]) => {
         const element = document.querySelector(`[data-g-collapse-id="${CSS.escape(id)}"]`);
         if (element) applyState(element, config(element), Boolean(collapsed));
@@ -10151,13 +10162,13 @@ ready(() => {
         if (handle && !event.target.closest(data.handle || '.g-collapse')) return;
         event.preventDefault();
 
-        const storage = data.store === false ? {} : (Cookie.read('g5-collapsed') || {});
+        const storage = data.store === false ? {} : readStorage();
         const collapsed = storage[data.id] === undefined ? Boolean(data.collapsed) : Boolean(storage[data.id]);
         const next = !collapsed;
         applyState(element, data, next);
         if (data.store !== false) {
             storage[data.id] = next;
-            Cookie.write('g5-collapsed', storage);
+            writeStorage(storage);
         }
     });
 
@@ -10167,14 +10178,14 @@ ready(() => {
         const actions = toggle.closest('.g-filter-actions');
         const container = actions && actions.nextElementSibling;
         if (!container) return;
-        const storage = Cookie.read('g5-collapsed') || {};
+        const storage = readStorage();
 
         container.querySelectorAll('[data-g-collapse]').forEach((element) => {
             const data = config(element);
             applyState(element, data, collapsed);
             if (data.store !== false) storage[data.id] = collapsed;
         });
-        Cookie.write('g5-collapsed', storage);
+        writeStorage(storage);
     });
 
     delegate(document.body, 'input', '[data-g-collapse-filter]', (event, input) => {
@@ -10496,7 +10507,7 @@ class DragDrop extends EventEmitter {
         if (!overing) { return; }
 
         if (!$(overing).matches('#trash') && !$(overing).parent('#trash')) {
-            var st, sl, trash = $('#g5-container #trash');
+            var st, sl, trash = $('[data-genesis-container] #trash');
             if (clientY + 50 >= Height && Scroll + Height < scrollHeight) {
                 this.scrollInterval = setInterval(function() {
                     sl = (window.pageXOffset || document.documentElement.scrollLeft) - (document.documentElement.clientLeft || 0);
@@ -10700,9 +10711,9 @@ class Eraser {
     setTop() {
         if (this.top !== undefined || !this.element) return;
         this.top = Number.parseInt(getComputedStyle(this.element).top, 10) || 0;
-        const container = document.querySelector('#g5-container');
+        const container = document.querySelector('[data-genesis-container]');
         this.left = container ? container.getBoundingClientRect().left : 0;
-        if (window.GANTRY_PLATFORM === 'grav') this.left = 0;
+        if (window.GENESIS_PLATFORM === 'grav') this.left = 0;
     }
 
     show(fast) {
@@ -10776,12 +10787,12 @@ var stored = new WeakMap(),
     }()),
     defaults = {
         baseClassNames: {
-            container: 'g5-dialog',
-            content: 'g5-content',
-            overlay: 'g5-overlay',
-            close: 'g5-close',
-            closing: 'g5-closing',
-            open: 'g5-dialog-open'
+            container: 'genesis-dialog',
+            content: 'genesis-content',
+            overlay: 'genesis-overlay',
+            close: 'genesis-close',
+            closing: 'genesis-closing',
+            open: 'genesis-dialog-open'
         },
 
         content: '',
@@ -10789,14 +10800,14 @@ var stored = new WeakMap(),
         showCloseButton: true,
         escapeToClose: true,
         overlayClickToClose: true,
-        appendNode: '#g5-container',
-        className: 'g5-dialog-theme-default',
+        appendNode: '[data-genesis-container]',
+        className: 'genesis-dialog-theme-default',
         css: {},
         overlayClassName: '',
         overlayCSS: '',
         contentClassName: '',
         contentCSS: '',
-        closeClassName: 'g5-dialog-close',
+        closeClassName: 'genesis-dialog-close',
         closeCSS: '',
 
         afterOpen: null,
@@ -10966,8 +10977,8 @@ class Modal {
             elements.content.appendChild(elements.closeButton);
         }
 
-        // delegate container to pick g5-close clicks
-        elements.container.delegate('click', '.g5-dialog-close', function(event){
+        // delegate container to pick genesis-close clicks
+        elements.container.delegate('click', '.genesis-dialog-close', function(event){
             event.preventDefault();
             this._closeButtonClick(elements.container);
         }.bind(this));
@@ -10976,7 +10987,7 @@ class Modal {
         var container = $(options.appendNode);
 
         // wordpress workaround for out-of-scope cases
-        if (GANTRY_PLATFORM == 'wordpress') {
+        if (GENESIS_PLATFORM == 'wordpress') {
             container = $('#widgets-editor') || $('#customize-preview') || $('#widgets-right') || $(options.appendNode);
             if ('#' + container.id() != options.appendNode) {
                 var wpwrap = $('#wpwrap') || $('.wp-customizer'), sibling, workaround;
@@ -11148,11 +11159,11 @@ class Modal {
 
     showLoading() {
         this.hideLoading();
-        return $('#g5-container').appendChild(zen('div.g5-dialog-loading-spinner.' + this.options.className));
+        return $('[data-genesis-container]').appendChild(zen('div.genesis-dialog-loading-spinner.' + this.options.className));
     }
 
     hideLoading() {
-        var spinner = $('.g5-dialog-loading-spinner');
+        var spinner = $('.genesis-dialog-loading-spinner');
         return spinner ? spinner.remove() : false;
     }
 
@@ -11174,7 +11185,7 @@ var modal = new Modal();
 
 module.exports = modal;
 
-},{"../utils/create-element":64,"../utils/dom":67,"../utils/elements.utils":70,"../utils/request":84}],55:[function(require,module,exports){
+},{"../utils/create-element":64,"../utils/dom":67,"../utils/elements.utils":70,"../utils/request":85}],55:[function(require,module,exports){
 "use strict";
 
 var $        = require('../utils/elements.utils'),
@@ -11184,7 +11195,7 @@ var $        = require('../utils/elements.utils'),
     request  = require('../utils/request');
 
 var defaults = {
-        mainClass: 'g5-popover',
+        mainClass: 'genesis-popover',
         placement: 'auto',
         width: 'auto',
         height: 'auto',
@@ -11202,13 +11213,13 @@ var defaults = {
         allowElementsClick: false,
         url: '',
         type: 'html',
-        where: '#g5-container',
-        template: '<div class="g5-popover">' +
+        where: '[data-genesis-container]',
+        template: '<div class="genesis-popover">' +
         '<div class="g-arrow"></div>' +
-        '<div class="g5-popover-inner">' +
+        '<div class="genesis-popover-inner">' +
         '<a href="#" class="close">x</a>' +
-        '<h3 class="g5-popover-title"></h3>' +
-        '<div class="g5-popover-content"><i class="icon-refresh"></i> <p>&nbsp;</p></div>' +
+        '<h3 class="genesis-popover-title"></h3>' +
+        '<div class="genesis-popover-content"><i class="icon-refresh"></i> <p>&nbsp;</p></div>' +
         '</div>' +
         '</div>'
     };
@@ -11384,7 +11395,7 @@ class Popover {
         var container = $(this.options.where);
 
         // wordpress workaround for out-of-scope cases
-        if (GANTRY_PLATFORM == 'wordpress') {
+        if (GENESIS_PLATFORM == 'wordpress') {
             container = $('#widgets-editor') || $('#customize-preview') || $('#widgets-right') || $(this.options.where);
             if ('#' + container.id() != this.options.where) {
                 var wpwrap = $('#wpwrap') || $('.wp-customizer'), sibling, workaround;
@@ -11417,7 +11428,7 @@ class Popover {
 
         if (!this.options.padding) {
             targetContent.css('height', targetContent.position().height);
-            this.$target.addClass('g5-popover-no-padding');
+            this.$target.addClass('genesis-popover-no-padding');
         }
 
         targetWidth = target[0].offsetWidth;
@@ -11470,7 +11481,7 @@ class Popover {
     }
 
     getTitle() {
-        return this.options.title || this.element.data('g5-popover-title') || this.element.attribute('title');
+        return this.options.title || this.element.data('genesis-popover-title') || this.element.attribute('title');
     }
 
     setTitle(title) {
@@ -11499,7 +11510,7 @@ class Popover {
             } else {
                 content = this.options.content;
             }
-            this.content = this.element.data('g5-popover-content') || content;
+            this.content = this.element.data('genesis-popover-content') || content;
         }
         return this.content;
     }
@@ -11613,7 +11624,7 @@ class Popover {
         if (typeof(this.options.placement) === 'function') {
             placement = this.options.placement.call(this, this.getTarget()[0], this.element[0]);
         } else {
-            placement = this.element.data('g5-popover-placement') || this.options.placement;
+            placement = this.element.data('genesis-popover-placement') || this.options.placement;
         }
 
         if (placement === 'auto') {
@@ -11780,7 +11791,7 @@ $.implement({
 
     position: function() {
         var node = this[0],
-            ct = $('#g5-container')[0].getBoundingClientRect(),
+            ct = $('[data-genesis-container]')[0].getBoundingClientRect(),
             box = {
                 left: 0,
                 right: 0,
@@ -11816,7 +11827,7 @@ module.exports.create = function(element, options) {
     return popover;
 };
 
-},{"../utils/create-element":64,"../utils/elements.utils":70,"../utils/request":84}],56:[function(require,module,exports){
+},{"../utils/create-element":64,"../utils/elements.utils":70,"../utils/request":85}],56:[function(require,module,exports){
 "use strict";
 
 var defaults = {
@@ -14444,7 +14455,7 @@ ready(function() {
 
 module.exports = Selectize;
 
-},{"../utils/create-element":64,"../utils/dom":67,"../utils/elements.utils":70,"../utils/event-emitter":72,"../utils/search-index":86}],58:[function(require,module,exports){
+},{"../utils/create-element":64,"../utils/dom":67,"../utils/elements.utils":70,"../utils/event-emitter":72,"../utils/search-index":87}],58:[function(require,module,exports){
 "use strict";
 
 var merge = function(target) {
@@ -14486,7 +14497,7 @@ var defaults = {
     titleClass: 'g-notifications-title',
     messageClass: 'g-notifications-message',
     closeButton: true,
-    target: '#g5-container',
+    target: '[data-genesis-container]',
     targetLocation: 'bottom',
     newestOnTop: true,
     preventDuplicates: false,
@@ -14834,7 +14845,7 @@ ready(() => {
 
 module.exports = {};
 
-},{"../utils/dom":67,"../utils/get-ajax-suffix":75,"../utils/get-ajax-url":76,"../utils/request":84,"./modal":54,"./toastr":58}],60:[function(require,module,exports){
+},{"../utils/dom":67,"../utils/get-ajax-suffix":76,"../utils/get-ajax-url":77,"../utils/request":85,"./modal":54,"./toastr":58}],60:[function(require,module,exports){
 'use strict';
 
 const defaults = {
@@ -15238,16 +15249,16 @@ var selectorChangeEvent = function() {
                 modal.close();
 
                 var input = asElement(selectize.input);
-                input.setAttribute('data-g5-ajaxify', '');
-                input.setAttribute('data-g5-ajaxify-target', selector.getAttribute('data-g5-ajaxify-target') || '[data-g5-content-wrapper]');
-                var targetParent = selector.getAttribute('data-g5-ajaxify-target-parent');
-                if (targetParent) { input.setAttribute('data-g5-ajaxify-target-parent', targetParent); }
-                else { input.removeAttribute('data-g5-ajaxify-target-parent'); }
-                input.setAttribute('data-g5-ajaxify-href', options[value].url);
+                input.setAttribute('data-genesis-ajaxify', '');
+                input.setAttribute('data-genesis-ajaxify-target', selector.getAttribute('data-genesis-ajaxify-target') || '[data-genesis-content-wrapper]');
+                var targetParent = selector.getAttribute('data-genesis-ajaxify-target-parent');
+                if (targetParent) { input.setAttribute('data-genesis-ajaxify-target-parent', targetParent); }
+                else { input.removeAttribute('data-genesis-ajaxify-target-parent'); }
+                input.setAttribute('data-genesis-ajaxify-href', options[value].url);
                 if (options[value].params) {
-                    input.setAttribute('data-g5-ajaxify-params', JSON.stringify(options[value].params));
+                    input.setAttribute('data-genesis-ajaxify-params', JSON.stringify(options[value].params));
                 } else {
-                    input.removeAttribute('data-g5-ajaxify-params');
+                    input.removeAttribute('data-genesis-ajaxify-params');
                 }
 
                 var active = document.querySelector('#navbar li.active, #main-header li.active, #navbar li:nth-child(2)');
@@ -15360,10 +15371,10 @@ History.Adapter.bind(window, 'statechange', function() {
 
         var target = Data.parent && Data.element ? Data.element.closest(Data.parent) :
                 (Data.target ? document.querySelector(Data.target) : null),
-            destination = target || document.querySelector('[data-g5-content]') || body;
+            destination = target || document.querySelector('[data-genesis-content]') || body;
 
         destination.innerHTML = result.html || result;
-        var fader = destination.matches('[data-g5-content]') ? destination : destination.querySelector('[data-g5-content]');
+        var fader = destination.matches('[data-genesis-content]') ? destination : destination.querySelector('[data-genesis-content]');
         if (fader) {
             fader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'ease' });
             if (isTopNavOrMenu && sidebar) {
@@ -15373,7 +15384,7 @@ History.Adapter.bind(window, 'statechange', function() {
             showNavbar(sidebar, !isTopNavOrMenu);
         }
 
-        document.querySelectorAll('.g5-popover').forEach(function(popover) { popover.remove(); });
+        document.querySelectorAll('.genesis-popover').forEach(function(popover) { popover.remove(); });
         if (Data.element) { dispatchState('statechangeAfter', Data.element, Data); }
 
         var spinner = (Data.event && Data.event.activeSpinner) || Data.element;
@@ -15389,19 +15400,19 @@ History.Adapter.bind(window, 'statechange', function() {
 dom.ready(function() {
     var body = document.body;
 
-    if (window.GANTRY_AJAX_NONCE) {
+    if (window.GENESIS_AJAX_NONCE) {
         var currentURI = History.getPageUrl(),
             currentNonce;
-        if (window.GANTRY_PLATFORM === 'wordpress') {
+        if (window.GENESIS_PLATFORM === 'wordpress') {
             currentNonce = getParam(currentURI, '_wpnonce');
-            if (currentNonce !== window.GANTRY_AJAX_NONCE) {
-                currentURI = setParam(currentURI, '_wpnonce', window.GANTRY_AJAX_NONCE);
+            if (currentNonce !== window.GENESIS_AJAX_NONCE) {
+                currentURI = setParam(currentURI, '_wpnonce', window.GENESIS_AJAX_NONCE);
                 History.replaceState({ uuid: guid(), doNothing: true }, document.title, currentURI);
             }
-        } else if (window.GANTRY_PLATFORM === 'grav') {
+        } else if (window.GENESIS_PLATFORM === 'grav') {
             currentNonce = getParam(currentURI, 'nonce');
-            if (currentNonce !== window.GANTRY_AJAX_NONCE) {
-                currentURI = setParam(currentURI, 'nonce', window.GANTRY_AJAX_NONCE);
+            if (currentNonce !== window.GENESIS_AJAX_NONCE) {
+                currentURI = setParam(currentURI, 'nonce', window.GENESIS_AJAX_NONCE);
                 History.replaceState({ uuid: guid(), doNothing: true }, document.title, currentURI);
             }
         }
@@ -15416,7 +15427,7 @@ dom.ready(function() {
         if (!confSelector || !navbar) { return; }
 
         ConfNavIndex = ConfNavIndex === -1 ? 1 : ConfNavIndex;
-        var item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-g5-ajaxify]');
+        var item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-genesis-ajaxify]');
         if (!item) { return; }
 
         var continueBack = function() {
@@ -15470,12 +15481,12 @@ dom.ready(function() {
         showNavbar(navbar, true);
     });
 
-    dom.delegate(body, 'click', '#navbar a[data-g5-ajaxify]', function(event, element) {
-        var links = document.querySelectorAll('#navbar li a[data-g5-ajaxify]');
+    dom.delegate(body, 'click', '#navbar a[data-genesis-ajaxify]', function(event, element) {
+        var links = document.querySelectorAll('#navbar li a[data-genesis-ajaxify]');
         ConfNavIndex = Array.from(links).indexOf(element) + 1;
     });
 
-    dom.delegate(body, 'click', '[data-g5-ajaxify]', function(event, element) {
+    dom.delegate(body, 'click', '[data-genesis-ajaxify]', function(event, element) {
         if (event.which === 2 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) { return; }
         event.preventDefault();
 
@@ -15513,11 +15524,11 @@ dom.ready(function() {
         }
 
         indicator.show(element);
-        var rawData = element.getAttribute('data-g5-ajaxify'),
-            target = element.getAttribute('data-g5-ajaxify-target'),
-            parent = element.getAttribute('data-g5-ajaxify-target-parent'),
-            url = element.getAttribute('href') || element.getAttribute('data-g5-ajaxify-href'),
-            params = element.getAttribute('data-g5-ajaxify-params') || false,
+        var rawData = element.getAttribute('data-genesis-ajaxify'),
+            target = element.getAttribute('data-genesis-ajaxify-target'),
+            parent = element.getAttribute('data-genesis-ajaxify-target-parent'),
+            url = element.getAttribute('href') || element.getAttribute('data-genesis-ajaxify-href'),
+            params = element.getAttribute('data-genesis-ajaxify-params') || false,
             title = element.getAttribute('title') || document.title,
             data = rawData ? JSON.parse(rawData) : { parsed: false };
 
@@ -15564,7 +15575,7 @@ dom.ready(function() {
 
 module.exports = {};
 
-},{"../assignments":1,"../lm":26,"../menu":34,"../ui":53,"../ui/selectize":57,"./dom":67,"./flags-state":74,"./get-ajax-suffix":75,"./get-ajax-url":76,"./history":80,"./indicator":81,"./request":84}],62:[function(require,module,exports){
+},{"../assignments":1,"../lm":26,"../menu":34,"../ui":53,"../ui/selectize":57,"./dom":67,"./flags-state":74,"./get-ajax-suffix":76,"./get-ajax-url":77,"./history":81,"./indicator":82,"./request":85}],62:[function(require,module,exports){
 "use strict";
 
 // credits: https://github.com/cowboy/javascript-sync-async-foreach
@@ -16845,7 +16856,7 @@ $.implement({
 
 module.exports = $;
 
-},{"../ui/progresser":56,"./elements-native":69,"./indicator":81}],71:[function(require,module,exports){
+},{"../ui/progresser":56,"./elements-native":69,"./indicator":82}],71:[function(require,module,exports){
 'use strict';
 
 module.exports = (container, selector, threshold = 0) => {
@@ -17019,12 +17030,81 @@ class FlagsState {
 
 module.exports = new FlagsState();
 
-},{"../ui":53,"./get-ajax-suffix":75,"./get-ajax-url":76}],75:[function(require,module,exports){
+},{"../ui":53,"./get-ajax-suffix":76,"./get-ajax-url":77}],75:[function(require,module,exports){
 'use strict';
 
-module.exports = () => window.GANTRY_AJAX_SUFFIX || '';
+const GENESIS_PREFIX = 'data-genesis-';
+const LEGACY_PREFIX = 'data-genesis-';
+const GENESIS_CLASS_PREFIX = 'genesis-';
+const LEGACY_CLASS_PREFIX = 'genesis-';
+
+function mirrorAttributes(element) {
+    if (!element || element.nodeType !== Node.ELEMENT_NODE) return;
+
+    Array.from(element.attributes).forEach((attribute) => {
+        let counterpart;
+
+        if (attribute.name.startsWith(GENESIS_PREFIX)) {
+            counterpart = LEGACY_PREFIX + attribute.name.slice(GENESIS_PREFIX.length);
+        } else if (attribute.name.startsWith(LEGACY_PREFIX)) {
+            counterpart = GENESIS_PREFIX + attribute.name.slice(LEGACY_PREFIX.length);
+        }
+
+        if (counterpart && !element.hasAttribute(counterpart)) {
+            element.setAttribute(counterpart, attribute.value);
+        }
+    });
+
+    Array.from(element.classList).forEach((className) => {
+        let counterpart;
+        if (className.startsWith(GENESIS_CLASS_PREFIX)) {
+            counterpart = LEGACY_CLASS_PREFIX + className.slice(GENESIS_CLASS_PREFIX.length);
+        } else if (className.startsWith(LEGACY_CLASS_PREFIX)) {
+            counterpart = GENESIS_CLASS_PREFIX + className.slice(LEGACY_CLASS_PREFIX.length);
+        }
+        if (counterpart && !element.classList.contains(counterpart)) {
+            element.classList.add(counterpart);
+        }
+    });
+}
+
+function mirrorTree(root) {
+    mirrorAttributes(root);
+    if (root && root.querySelectorAll) {
+        root.querySelectorAll('*').forEach(mirrorAttributes);
+    }
+}
+
+function initialize() {
+    mirrorTree(document.documentElement);
+
+    const observer = new MutationObserver((records) => {
+        records.forEach((record) => {
+            if (record.type === 'attributes') {
+                mirrorAttributes(record.target);
+                return;
+            }
+            record.addedNodes.forEach(mirrorTree);
+        });
+    });
+
+    observer.observe(document.documentElement, { attributes: true, childList: true, subtree: true });
+}
+
+if (document.documentElement) {
+    initialize();
+} else {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+}
+
+module.exports = { mirrorAttributes, mirrorTree };
 
 },{}],76:[function(require,module,exports){
+'use strict';
+
+module.exports = () => window.GENESIS_AJAX_SUFFIX || '';
+
+},{}],77:[function(require,module,exports){
 'use strict';
 
 const getAjaxSuffix = require('./get-ajax-suffix');
@@ -17038,17 +17118,17 @@ const decodeHtml = (value) => {
 const replaceView = (template, view, search = '%ajax%') =>
     decodeHtml(String(template || '').split(search).join(view));
 
-const getAjaxURL = (view, search) => replaceView(window.GANTRY_AJAX_URL, view, search);
-const getConfAjaxURL = (view, search) => replaceView(window.GANTRY_AJAX_CONF_URL, view, search);
+const getAjaxURL = (view, search) => replaceView(window.GENESIS_AJAX_URL, view, search);
+const getConfAjaxURL = (view, search) => replaceView(window.GENESIS_AJAX_CONF_URL, view, search);
 
 const parseAjaxURI = (uri) => {
     let result = String(uri || '');
 
-    if (window.GANTRY_PLATFORM === 'wordpress') {
+    if (window.GENESIS_PLATFORM === 'wordpress') {
         return result.replace(/themes\.php/ig, 'admin-ajax.php');
     }
 
-    if (window.GANTRY_PLATFORM === 'grav') {
+    if (window.GENESIS_PLATFORM === 'grav') {
         const suffix = getAjaxSuffix();
         const queryIndex = result.indexOf('?');
         if (suffix && queryIndex !== -1 && result.endsWith(suffix)) {
@@ -17065,7 +17145,7 @@ const parseAjaxURI = (uri) => {
 
 module.exports = { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };
 
-},{"./get-ajax-suffix":75}],77:[function(require,module,exports){
+},{"./get-ajax-suffix":76}],78:[function(require,module,exports){
 'use strict';
 
 const selectize = () => {
@@ -17091,7 +17171,7 @@ const getCurrentOutline = () => {
 
     // AJAX outline duplication can briefly leave Selectize without a value.
     // Both the page URL and WordPress admin AJAX URL retain the active style.
-    const urls = [window.location.href, window.GANTRY_AJAX_CONF_URL];
+    const urls = [window.location.href, window.GENESIS_AJAX_CONF_URL];
     for (const value of urls) {
         if (!value) continue;
         try {
@@ -17108,7 +17188,7 @@ const getCurrentOutline = () => {
 
 module.exports = { getOutlineNameById, getCurrentOutline };
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 let cached = null;
@@ -17116,7 +17196,7 @@ let cached = null;
 module.exports = () => {
     if (cached !== null) return cached;
 
-    const container = document.querySelector('#g5-container') || document.body;
+    const container = document.querySelector('[data-genesis-container]') || document.body;
     const dummy = document.createElement('div');
     Object.assign(dummy.style, {
         width: '100px',
@@ -17131,7 +17211,7 @@ module.exports = () => {
     return cached;
 };
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 const resolveElement = (element) => typeof element === 'string'
@@ -17174,7 +17254,7 @@ const History = {
 
 module.exports = History;
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 "use strict";
 
 // ========================================================================
@@ -19215,7 +19295,7 @@ if (typeof History.init === 'undefined') {
 }
 
 module.exports = History;
-},{"./history-adapter":79}],81:[function(require,module,exports){
+},{"./history-adapter":80}],82:[function(require,module,exports){
 'use strict';
 
 var asElement = function(element) {
@@ -19263,7 +19343,7 @@ var hide = function(element) {
 
 module.exports = { show: show, hide: hide };
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 (function() {
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
@@ -19290,7 +19370,7 @@ module.exports = { show: show, hide: hide };
 }());
 
 module.exports = {};
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 "use strict";
 
 const directItems = (list, selector, excluded) => Array.from(list.children)
@@ -19471,7 +19551,7 @@ class ReorderableList {
 
 module.exports = ReorderableList;
 
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 const methods = /^(get|post|put|delete|head|patch|options)$/i;
@@ -19664,7 +19744,7 @@ request.Response = Response;
 
 module.exports = request;
 
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 'use strict';
 
 const clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
@@ -19690,7 +19770,7 @@ class SaveState {
 
 module.exports = SaveState;
 
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 'use strict';
 
 const normalizeText = (value, diacritics) => {
@@ -19814,15 +19894,15 @@ class SearchIndex {
 
 module.exports = SearchIndex;
 
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 'use strict';
 
 module.exports = (key, replacement = '') => {
-    const translate = window.G5T || ((value) => value);
+    const translate = window.GenesisTranslate || window.G5T || ((value) => value);
     return String(translate(key)).split('%s').join(replacement);
 };
 
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 'use strict';
 
 module.exports = (field) => {

@@ -20,11 +20,11 @@
             {{ 'GANTRY5_PLATFORM_POSITIONS'|trans }}
             <button data-g-config="create"
                     data-g-create="position"
-                    data-g-config-href="{{ gantry.route('positions/create') }}"
+                    data-g-config-href="{{ genesis.route('positions/create') }}"
                     title="{{ 'GANTRY5_PLATFORM_ADD_NEW_POSITION'|trans }}"
                     aria-label="{{ 'GANTRY5_PLATFORM_ADD_NEW_POSITION'|trans }}"
                     data-g-config-method="POST"
-                    data-g5-lm-add tabindex="0"
+                    data-genesis-lm-add tabindex="0"
                     class="button button-primary"
             >
                 <i class="fa fa-fw fa-plus" aria-hidden="true"></i>
@@ -42,17 +42,17 @@
             <li class="card g-block size-1-4 add-new">
                 <div class="page">
                     <a data-g-config="create"
-                       data-g-config-href="{{ gantry.route('positions/create') }}"
+                       data-g-config-href="{{ genesis.route('positions/create') }}"
                        title="{{ 'GANTRY5_PLATFORM_ADD_NEW_POSITION'|trans }}"
                        aria-label="{{ 'GANTRY5_PLATFORM_ADD_NEW_POSITION'|trans }}"
                        data-g-config-method="POST"
-                       data-g5-lm-add tabindex="0"
+                       data-genesis-lm-add tabindex="0"
                     >
                         <i class="fa fa-fw fa-plus" aria-hidden="true"></i>
                     </a>
                 </div>
             </li>
         </ul>
-        <div id="trash" data-g5-positions-erase=""><div class="trash-zone">&times;</div><span>{{ 'GANTRY5_PLATFORM_DROP_DELETE'|trans }}</span></div>
+        <div id="trash" data-genesis-positions-erase=""><div class="trash-zone">&times;</div><span>{{ 'GANTRY5_PLATFORM_DROP_DELETE'|trans }}</span></div>
     </div>
 {% endblock %}

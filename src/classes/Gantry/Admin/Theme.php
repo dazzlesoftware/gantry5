@@ -55,7 +55,7 @@ class Theme extends AbstractTheme
 
             $files = (new ConfigFileFinder)->locateFiles($paths);
 
-            $config = new CompiledConfig($cache, $files, GANTRY5_ROOT);
+            $config = new CompiledConfig($cache, $files, GENESIS_ROOT);
             $config->setBlueprints(function() use ($c) {
                 return $c['blueprints'];
             });
@@ -86,12 +86,12 @@ class Theme extends AbstractTheme
 
         // Add admin paths.
         foreach ($patform->get('streams.gantry-admin.prefixes') as $prefix => $paths) {
-            $locator->addPath('gantry-admin', $prefix, $paths);
+            $locator->addPath('Genesis-admin', $prefix, $paths);
         }
 
         // Fire admin init event.
         $event = new InitThemeEvent();
-        $event->gantry = $gantry;
+        $event->Genesis = $gantry;
         $event->theme = $this;
 
         $gantry->fireEvent('admin.init.theme', $event);
@@ -130,8 +130,8 @@ class Theme extends AbstractTheme
         /** @var UniformResourceLocator $locator */
         $locator = $gantry['locator'];
 
-        $loader->setPaths($locator->findResources('gantry-admin://templates'));
-        $loader->setPaths($locator->findResources('gantry-admin://templates'), 'gantry-admin');
+        $loader->setPaths($locator->findResources('Genesis-admin://templates'));
+        $loader->setPaths($locator->findResources('Genesis-admin://templates'), 'Genesis-admin');
 
         return $loader;
     }

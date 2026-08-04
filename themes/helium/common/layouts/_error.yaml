@@ -101,7 +101,7 @@ content:
   custom-8642:
     title: 'Custom HTML'
     attributes:
-      html: "<h2 class=\"g-title\">We are sorry!</h2>\n<p>Gantry 5 provides a custom error page for you to configure with either positions, particles or a combination of both, as well as styling.</p>"
+      html: "<h2 class=\"g-title\">We are sorry!</h2>\n<p>Genesis provides a custom error page for you to configure with either positions, particles or a combination of both, as well as styling.</p>"
   logo-9571:
     title: 'Logo / Image'
     attributes:
@@ -111,9 +111,9 @@ content:
     attributes:
       items:
         -
-          text: Gantry
+          text: Genesis
           link: 'http://gantry.org'
-          name: Gantry
+          name: Genesis
         -
           text: Documentation
           link: 'http://docs.gantry.org'

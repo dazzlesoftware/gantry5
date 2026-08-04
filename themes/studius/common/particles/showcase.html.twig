@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block particle %}
-<div id="{{ id }}" class="g-showcase swiper-container {{ particle.class|e }}" data-showcase-id="{{ id }}" data-showcase-effect="{{ particle.effect }}" data-showcase-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-showcase-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-showcase-timeout="{{ particle.autoplayTimeout }}" data-showcase-speed="{{ particle.speed }}" data-showcase-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-showcase-mobile-breakpoint="{{ gantry.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" {% if gantry.page.direction == 'rtl' %} dir="rtl" {% endif %}>
+<div id="{{ id }}" class="g-showcase swiper-container {{ particle.class|e }}" data-showcase-id="{{ id }}" data-showcase-effect="{{ particle.effect }}" data-showcase-autoplay="{% if particle.autoplay == "enabled" %}true{% else %}false{% endif %}" data-showcase-loop="{% if particle.loop == "enabled" %}true{% else %}false{% endif %}" data-showcase-timeout="{{ particle.autoplayTimeout }}" data-showcase-speed="{{ particle.speed }}" data-showcase-touchmove="{% if particle.touchmove == "enabled" %}true{% else %}false{% endif %}" data-showcase-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.tablet-container')|default('51rem') }}" {% if genesis.page.direction == 'rtl' %} dir="rtl" {% endif %}>
 	<div class="g-showcase-slider swiper-wrapper">
 		{% if not particle.source or particle.source == 'particle' %}
 			{% for item in particle.items %}
@@ -37,13 +37,13 @@
 				</div>
 			{% endfor %}
 		{% else %}
-			{% include '@particles/showcase-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+			{% include '@particles/showcase-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
 		{% endif %}
 	</div>
 
 	{#  navigation #}
 	{% if particle.nav == 'enabled' %}
-		{% if gantry.page.direction == 'rtl' %}
+		{% if genesis.page.direction == 'rtl' %}
 			<div class="navigation rtl">
 				<div class="swiper-button-next">
 					<i class="fa fa-angle-left"></i>
@@ -72,7 +72,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
-	{% do gantry.document.addScript(url('gantry-theme://js/showcase.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-theme://js/length.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/swiper.min.js'), 10, 'footer') %}
+	{% do genesis.document.addScript(url('gantry-theme://js/showcase.init.js'), 10, 'footer') %}
 {% endblock %}

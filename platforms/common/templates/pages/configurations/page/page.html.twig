@@ -1,7 +1,7 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
 {% block gantry %}
-    {% set stored_data = get_cookie('g5-collapsed')|default('{}')|json_decode %}
+    {% set stored_data = get_cookie('genesis-collapsed')|default(get_cookie('g5-collapsed'))|default('{}')|json_decode %}
     <div id="page-settings">
         <form method="post">
             <div data-set-page="{{ page_id }}" data-set-root="">
@@ -29,7 +29,7 @@
                         <div class="cards-wrapper g-grid">
                             {% for id, particle in list %}
                                 {% if not particle.hidden %}
-                                    {% set particle = gantry.page.getBlueprintForm(id) %}
+                                    {% set particle = genesis.page.getBlueprintForm(id) %}
                                     {% set prefix = 'page.' ~ id ~ '.' %}
                                     {% set collapsed = particle.form.collapsed or attribute(stored_data, prefix) %}
                                     {% set labels = {collapse: 'GANTRY5_PLATFORM_COLLAPSE'|trans, expand: 'GANTRY5_PLATFORM_EXPAND'|trans} %}

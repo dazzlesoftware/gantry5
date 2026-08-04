@@ -253,7 +253,7 @@ content:
   quote-5861:
     attributes:
       class: ''
-      quote: 'Phoenix showcases your brand''s energy and spirit with the power of <span>Gantry.</span>'
+      quote: 'Phoenix showcases your brand''s energy and spirit with the power of <span>Genesis.</span>'
       author: 'John Doe'
     block:
       variations: center
@@ -450,7 +450,7 @@ content:
           created_date: ''
           content_title: ''
           author: ''
-          leading_content: '<p>Phoenix is powered by Gantry 5, a responsive framework that makes adding new content to your website easier than ever.</p><p>Gantry 5''s Layout Manager provides a simple, intuitive interface for creating responsive layouts for your content. Drag and drop content Particles into place and customize them using simple forms.</p><p>The Menu Editor enables you to customize your site''s menus, add items and content, and build out your customer experience.</p><p>Want to apply a new color scheme? Styles and colors can be edited in seconds to meet your needs.</p>'
+          leading_content: '<p>Phoenix is powered by Genesis, a responsive framework that makes adding new content to your website easier than ever.</p><p>Genesis''s Layout Manager provides a simple, intuitive interface for creating responsive layouts for your content. Drag and drop content Particles into place and customize them using simple forms.</p><p>The Menu Editor enables you to customize your site''s menus, add items and content, and build out your customer experience.</p><p>Want to apply a new color scheme? Styles and colors can be edited in seconds to meet your needs.</p>'
           main_content: ''
           readmore_label: ''
           readmore_link: ''

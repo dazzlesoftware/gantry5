@@ -322,10 +322,10 @@ content:
               name: 'Item 4'
           name: 'Item 2'
         -
-          title: 'Gantry Framework'
+          title: 'Genesis Framework'
           linklabel: ''
           link: ''
-          content: '<p>Gantry is a powerful core framework that sits at the heart of the Chimera template, providing the base for all features and functions, as well as a rich, user friendly UI.</p>'
+          content: '<p>Genesis is a powerful core framework that sits at the heart of the Chimera template, providing the base for all features and functions, as well as a rich, user friendly UI.</p>'
           icons:
             -
               icon: 'fa fa-exchange'
@@ -471,7 +471,7 @@ content:
           image: 'gantry-media://home/fp-mainbottom/img-01.jpg'
           icon: 'fa fa-th-list'
           desc: ' <a href="#">A standardized product core<span class="hidden-tablet"> with many features</span></a>'
-          caption: 'Gantry Framework'
+          caption: 'Genesis Framework'
           aos: ''
           link: ''
           linktext: ''

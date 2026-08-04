@@ -50,7 +50,7 @@ class Menu extends AbstractMenu
                 'orderby' => 'name'
             ];
 
-            $menus = \wp_get_nav_menus(\apply_filters('g5_menu_get_menus_args', \wp_parse_args($args, $defaults)));
+            $menus = \wp_get_nav_menus(\genesis_apply_filters('genesis_menu_get_menus_args', 'g5_menu_get_menus_args', \wp_parse_args($args, $defaults)));
 
             $this->menus = [];
             foreach($menus as $menu) {
@@ -73,7 +73,7 @@ class Menu extends AbstractMenu
             'orderby' => 'name'
         ];
 
-        $menus = \wp_get_nav_menus(\apply_filters('g5_menu_get_menus_args', \wp_parse_args($args, $defaults)));
+        $menus = \wp_get_nav_menus(\genesis_apply_filters('genesis_menu_get_menus_args', 'g5_menu_get_menus_args', \wp_parse_args($args, $defaults)));
 
         $list = [];
         foreach($menus as $menu) {
@@ -271,7 +271,7 @@ class Menu extends AbstractMenu
      */
     protected function bindMenuItems($menuItems, &$items)
     {
-        // Create quick lookup maps to help on matching the WP menu items to Gantry menu items.
+        // Create quick lookup maps to help on matching the WP menu items to Genesis menu items.
         $aliases = $this->buildAliases($menuItems);
         $object_map = [];
         $name_map = [];
@@ -303,7 +303,7 @@ class Menu extends AbstractMenu
                 // TODO: guess which menu item should be used, but for now we just pick the first one.
                 $id = reset($matches);
             } else {
-                // Try to match Gantry menu path to the menu item.
+                // Try to match Genesis menu path to the menu item.
                 $route = trim(dirname("/{$path}"), '/\\');
                 $slug = Gantry::basename($path);
 
@@ -313,7 +313,7 @@ class Menu extends AbstractMenu
                     $item['parent_id'] = $parent['id'];
                 }
 
-                // Find all WP menu items matching the slug of the Gantry menu item.
+                // Find all WP menu items matching the slug of the Genesis menu item.
                 if (isset($name_map[$slug])) {
                     $matches = $name_map[$slug];
                     foreach ($matches as $test_id) {
@@ -335,7 +335,7 @@ class Menu extends AbstractMenu
                 }
             }
 
-            // Add missing data to the Gantry menu item.
+            // Add missing data to the Genesis menu item.
             $tree = null;
             if ($id) {
                 // Existing WP menu item.
@@ -459,9 +459,9 @@ class Menu extends AbstractMenu
         }
 
         // Add properties from post meta `_menu_item_gantry5`.
-        if (static::READ_META && isset($post->gantry)) {
+        if (static::READ_META && isset($post->Genesis)) {
             $this->dbMeta = true;
-            $properties += $post->gantry;
+            $properties += $post->Genesis;
 
             // Detect particle which is saved into the menu.
             if (isset($properties['particle'])) {
@@ -481,13 +481,13 @@ class Menu extends AbstractMenu
                     'block' => ['extra' => []]
                 ];
             } elseif ($properties['link'] === '' || $properties['link'] === '#') {
-                // Gantry menu separator.
+                // Genesis menu separator.
                 $properties['type'] = 'separator';
                 $properties['link'] = null;
             }
         }
 
-        // Add properties which may be overridden by Gantry, but are always found in WP menu item.
+        // Add properties which may be overridden by Genesis, but are always found in WP menu item.
         $properties += [
             'title' => html_entity_decode($post->title, ENT_COMPAT | ENT_HTML5, 'UTF-8'),
             'target' => $post->target ?: '_self',

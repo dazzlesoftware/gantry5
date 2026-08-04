@@ -15,11 +15,11 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
 /**
- * @param Gantry|null $gantry
+ * @param Genesis|null $gantry
  * @return mixed|string
  */
 $gantry_theme_name = static function (Gantry $gantry = null) {
-    // First attempt to look up the theme name from Gantry.
+    // First attempt to look up the theme name from Genesis.
     if ($gantry && isset($gantry['theme.name'])) {
         return $gantry['theme.name'];
     }
@@ -47,10 +47,10 @@ try
         throw new RuntimeException(Text::_('GANTRY5_THEME_INSTALL_GANTRY'));
     }
 
-    // Setup Gantry 5 Framework or throw exception.
+    // Setup Genesis Framework or throw exception.
     Loader::setup();
 
-    // Get Gantry instance and return it.
+    // Get Genesis instance and return it.
     $gantry = Gantry::instance();
 
     // Initialize the template if not done already.

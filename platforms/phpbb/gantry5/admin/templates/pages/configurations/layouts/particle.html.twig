@@ -2,7 +2,7 @@
 
 {% block gantry %}
 <form method="post"
-      action="{{ gantry.route(action) }}"
+      action="{{ genesis.route(action) }}"
       data-g-inheritance-settings="{{ {'id': item.id, 'type': item.type, 'subtype': item.subtype}|json_encode|e('html_attr') }}"
 >
     <div class="g-tabs" role="tablist">
@@ -85,7 +85,7 @@
     <div class="g-modal-actions">
         <button class="button button-primary" type="submit">{{ 'GANTRY5_PLATFORM_APPLY'|trans }}</button>
         <button class="button button-primary" data-apply-and-save>{{ 'GANTRY5_PLATFORM_APPLY_SAVE'|trans }}</button>
-        <button class="button g5-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
+        <button class="button genesis-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
     </div>
 </form>
 {% endblock %}

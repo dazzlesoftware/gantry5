@@ -125,9 +125,9 @@ content:
           link: 'http://docs.gantry.org/gantry5/basics/key-features'
           name: Features
         -
-          text: 'Gantry 5'
+          text: 'Genesis'
           link: 'http://www.gantry.org/'
-          name: 'Gantry 5'
+          name: 'Genesis'
         -
           text: Particles
           link: 'http://docs.gantry.org/gantry5/particles'

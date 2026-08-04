@@ -14,14 +14,14 @@
 {% endblock %}
 
 {% block content %}
-<div id="g5-container">
+<div id="g5-container" data-genesis-container="">
     <div class="inner-container">
         {% block gantry_content_wrapper %}
-            <div data-g5-content-wrapper="">
+            <div data-genesis-content-wrapper="">
                 <div class="g-grid">
                     <div class="g-block main-block">
                         <section id="g-main">
-                            <div class="g-content" data-g5-content="">
+                            <div class="g-content" data-genesis-content="">
                                 {% block gantry %}
                                     {{ content|raw }}
                                 {% endblock %}

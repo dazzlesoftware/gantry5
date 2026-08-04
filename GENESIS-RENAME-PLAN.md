@@ -1,5 +1,7 @@
 # Gantry to Genesis Rename Plan
 
+> Status: implementation complete. See [GENESIS-COMPATIBILITY.md](GENESIS-COMPATIBILITY.md) for the retained compatibility contract and validation boundary.
+
 ## Objective
 
 Rename Gantry 5 to Genesis without breaking existing installations, themes, saved configuration, integrations, or update paths across Joomla, WordPress, Grav, and phpBB.

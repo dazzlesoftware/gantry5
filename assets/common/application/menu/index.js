@@ -150,7 +150,7 @@ class Menu {
         if (target && target.hasAttribute("data-g-menuparent")) return true;
 
         this.closeDropdown(event);
-        if (window.G5 && window.G5.offcanvas) window.G5.offcanvas.close();
+        if (window.Genesis && window.Genesis.offcanvas) window.Genesis.offcanvas.close();
         return true;
     }
 

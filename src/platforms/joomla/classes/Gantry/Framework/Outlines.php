@@ -69,7 +69,7 @@ class Outlines extends OutlineCollection
 
             if (!$shown) {
                 $shown = true;
-                $application->enqueueMessage('[DEBUG] JApplicationSite::getTemplate() was overridden with no specified Gantry 5 outline.', 'notice');
+                $application->enqueueMessage('[DEBUG] JApplicationSite::getTemplate() was overridden with no specified Genesis outline.', 'notice');
             }
         }
 

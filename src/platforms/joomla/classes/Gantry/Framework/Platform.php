@@ -180,7 +180,7 @@ class Platform extends BasePlatform
      */
     public function getEnginesPaths()
     {
-        if (is_link(GANTRY5_ROOT . '/media/gantry5/engines')) {
+        if (is_link(GENESIS_ROOT . '/media/gantry5/engines')) {
             // Development environment.
             return ['' => ["media/gantry5/engines/{$this->name}", 'media/gantry5/engines/common']];
         }
@@ -192,7 +192,7 @@ class Platform extends BasePlatform
      */
     public function getAssetsPaths()
     {
-        if (is_link(GANTRY5_ROOT . '/media/gantry5/assets')) {
+        if (is_link(GENESIS_ROOT . '/media/gantry5/assets')) {
             // Development environment.
             return ['' => ['gantry-theme://', "media/gantry5/assets/{$this->name}", 'media/gantry5/assets/common']];
         }
@@ -514,10 +514,10 @@ class Platform extends BasePlatform
         $list = [];
         foreach ($updates as $update) {
             if ($update->element === 'pkg_gantry5') {
-                // Rename Gantry 5 package.
-                $update->name = 'Gantry';
-                // Ignore git and CI installs and if the Gantry version is the same or higher than in the updates.
-                if (version_compare(GANTRY5_VERSION, 0) < 0 || version_compare($update->version, GANTRY5_VERSION) <= 0) {
+                // Rename Genesis package.
+                $update->name = 'Genesis';
+                // Ignore git and CI installs and if the Genesis version is the same or higher than in the updates.
+                if (version_compare(GENESIS_VERSION, 0) < 0 || version_compare($update->version, GENESIS_VERSION) <= 0) {
                     continue;
                 }
             } else {

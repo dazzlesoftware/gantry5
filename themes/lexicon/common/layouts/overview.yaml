@@ -137,7 +137,7 @@ content:
     attributes:
       title: 'Various Pages'
       titletag: 'Flexible and adaptable sample pages'
-      html: '<p class="promo2">See a range of example page layouts possible with Lexicon template, through its responsive layout and the Gantry Framework grid system</p>'
+      html: '<p class="promo2">See a range of example page layouts possible with Lexicon template, through its responsive layout and the Genesis Framework grid system</p>'
       twig: '0'
       filter: '0'
     block:

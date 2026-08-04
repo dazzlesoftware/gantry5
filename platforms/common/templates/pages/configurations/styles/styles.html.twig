@@ -5,10 +5,10 @@
 {% set defaultStyles = defaults.flatten('styles', '][', 'styles') %}
 
 <div id="styles">
-    {% set stored_data = get_cookie('g5-collapsed')|default('{}')|json_decode %}
-    <form method="post" action="{{ gantry.route('configurations', configuration, 'styles') }}">
+    {% set stored_data = get_cookie('genesis-collapsed')|default(get_cookie('g5-collapsed'))|default('{}')|json_decode %}
+    <form method="post" action="{{ genesis.route('configurations', configuration, 'styles') }}">
         <span class="float-right">
-            <a href="{{ gantry.route('configurations', configuration, 'styles/compile') }}"
+            <a href="{{ genesis.route('configurations', configuration, 'styles/compile') }}"
                title="{{ 'GANTRY5_PLATFORM_RECOMPILE_CSS'|trans }}"
                aria-label="{{ 'GANTRY5_PLATFORM_RECOMPILE_CSS'|trans }}"
                class="button button-secondary"
@@ -21,7 +21,7 @@
             </button>
         </span>
 
-        {% set presets = gantry.theme.presets %}
+        {% set presets = genesis.theme.presets %}
         {% if presets.count() %}
         {% set collapsed = attribute(stored_data, 'swatches') %}
         <h2 class="page-title{{ collapsed ? ' g-collapsed-main' : '' }}"
@@ -36,7 +36,7 @@
 
         <div class="swatches-container{{ collapsed ? ' g-collapsed' : '' }}"{% if defaultStyles %} data-g-styles-defaults="{{ defaultStyles|json_encode|escape('html_attr') }}"{% endif %}>
             <div class="swatches-block">
-                {% set presetKey = gantry.config.get('styles.preset') %}
+                {% set presetKey = genesis.config.get('styles.preset') %}
 
                 <ul class="g-grid">
                     {% for key, preset in presets %}
@@ -87,7 +87,7 @@
         <div id="styles" class="cards-wrapper g-grid">
 
             {% for id, block in list %}
-                {% set block = gantry.styles.getBlueprintForm(id) %}
+                {% set block = genesis.styles.getBlueprintForm(id) %}
                 {% set prefix = 'styles.' ~ id ~ '.' %}
                 {% set collapsed = block.form.collapsed or attribute(stored_data, prefix) %}
                 <div class="card settings-block{{ collapsed ? ' g-collapsed' : '' }}">
@@ -108,7 +108,7 @@
 
         <div class="g-footer-actions">
             <span class="float-right">
-                <a href="{{ gantry.route('configurations', configuration, 'styles/compile') }}"
+                <a href="{{ genesis.route('configurations', configuration, 'styles/compile') }}"
                    role="button"
                    title="{{ 'GANTRY5_PLATFORM_RECOMPILE_CSS'|trans }}"
                    aria-label="{{ 'GANTRY5_PLATFORM_RECOMPILE_CSS'|trans }}"

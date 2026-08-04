@@ -1,6 +1,6 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
-{% set language = gantry.page.language %}
+{% set language = genesis.page.language %}
 
 {% block particle %}
     <div class="g-calendar-particle {{ particle.class|e }}">
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block javascript_footer %}
-    {% do gantry.document.addScript(url('gantry-assets://js/calendar.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('gantry-assets://js/calendar.js'), 11, 'footer') %}
     <script>
         GantryCalendar.create(document.getElementById('g-{{ id }}'), {
             locale: '{{ language|e("js") }}',

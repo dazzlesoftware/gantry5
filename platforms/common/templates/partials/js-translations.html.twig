@@ -1,5 +1,5 @@
 <script>
-    var G5T = function(key, fallback) {
+    var GenesisTranslate = function(key, fallback) {
         var map = {
             GANTRY5_PLATFORM_INHERITING_FROM_X: {{ 'GANTRY5_PLATFORM_INHERITING_FROM_X'|trans|json_encode|raw }},
             GANTRY5_PLATFORM_JS_LOADING: {{ 'GANTRY5_PLATFORM_JS_LOADING'|trans|json_encode|raw }},
@@ -31,4 +31,5 @@
 
         return map[key] || fallback || key;
     };
+    var G5T = GenesisTranslate;
 </script>

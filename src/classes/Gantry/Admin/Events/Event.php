@@ -25,7 +25,7 @@ class Event extends BaseEvent
      */
     public array $types = [];
 
-    /** @var Gantry */
+    /** @var Genesis */
     public $gantry;
     /** @var RestfulControllerInterface */
     public $controller;

@@ -189,7 +189,7 @@ content:
           name: 'Item 2'
         -
           image: ''
-          title: 'Gantry Framework,<br />Powerful Features &amp; Extras'
+          title: 'Genesis Framework,<br />Powerful Features &amp; Extras'
           desc: ''
           link1: features/overview
           linktext1: 'Read More'
@@ -220,7 +220,7 @@ content:
               layout: alt-bottom
               variation: dark
               image: 'gantry-media://home/utility/img1.jpg'
-              subtitle: 'Gantry is a powerful core template framework that provides extensive, standardized features.'
+              subtitle: 'Genesis is a powerful core template framework that provides extensive, standardized features.'
               url: ''
               target: _blank
               title: Framework
@@ -416,7 +416,7 @@ content:
       items:
         -
           title: 'Unlimited Positions'
-          desc: 'Gantry 5''s uniquely powerful layout system gives you maximum versatility.'
+          desc: 'Genesis''s uniquely powerful layout system gives you maximum versatility.'
           link: '#'
           name: 'Grid System'
         -
@@ -430,7 +430,7 @@ content:
         -
           image: ''
           title: 'Built-in Features'
-          desc: 'Features are self contained elements of functionality. They can easily hook into a Gantry template.'
+          desc: 'Features are self contained elements of functionality. They can easily hook into a Genesis template.'
           link: '#'
           linktext: 'Read More'
           buttontarget: _self
@@ -459,7 +459,7 @@ content:
       items:
         -
           title: ''
-          desc: 'The Gantry 5 Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
+          desc: 'The Genesis Framework is an ideal platform for users of all levels, whether beginners or web professionals. The administrative interface is both simple to use, intuitive and highly flexible, allowing for swift and extensive changes.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -467,7 +467,7 @@ content:
           name: 'Item 1'
         -
           title: ''
-          desc: 'Grav is an award-winning content management system (CMS), which enables you to build web sites and powerful online applications. This makes Gantry 5-powered themes like Anacron the perfect match for this sleek, modern content management system.'
+          desc: 'Grav is an award-winning content management system (CMS), which enables you to build web sites and powerful online applications. This makes Genesis-powered themes like Anacron the perfect match for this sleek, modern content management system.'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -475,7 +475,7 @@ content:
           name: 'Item 2'
         -
           title: ''
-          desc: 'Speed is important, not only at the browser level, but in development. The Gantry 5 administrative interface makes creating a new website and configuring it to meet your individual needs a breeze. Hit the ground running with Anacron, today!'
+          desc: 'Speed is important, not only at the browser level, but in development. The Genesis administrative interface makes creating a new website and configuring it to meet your individual needs a breeze. Hit the ground running with Anacron, today!'
           link: ''
           linktext: ''
           buttontarget: _self
@@ -494,7 +494,7 @@ content:
   custom-5902:
     title: 'Custom HTML'
     attributes:
-      html: "<h2 class=\"title\">Versatile, Flexible Features Powered by the Gantry Framework.</h2>\n\n<p>Gantry is a free framework for both Joomla, WordPress, and Grav.</p>\n<a href=\"https://dazzlesoftware.org/joomla/templates/anacron\" class=\"readon2 rt-big-button\">Join Anacron Now</a>"
+      html: "<h2 class=\"title\">Versatile, Flexible Features Powered by the Genesis Framework.</h2>\n\n<p>Genesis is a free framework for both Joomla, WordPress, and Grav.</p>\n<a href=\"https://dazzlesoftware.org/joomla/templates/anacron\" class=\"readon2 rt-big-button\">Join Anacron Now</a>"
     block:
       class: fp-bottom
       variations: center

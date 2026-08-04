@@ -12,7 +12,7 @@ namespace dazzlesoftware\gantry5;
 /**
  * phpBB extension entry point.
  *
- * The Gantry Framework itself is bootstrapped lazily by event\listener, not here -- ext.php is
+ * The Genesis Framework itself is bootstrapped lazily by event\listener, not here -- ext.php is
  * only used by phpBB's extension manager for enable/disable/purge lifecycle checks.
  */
 class ext extends \phpbb\extension\base

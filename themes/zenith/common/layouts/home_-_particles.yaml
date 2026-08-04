@@ -420,10 +420,10 @@ content:
         -
           layout: text
           image: ''
-          description: 'Gantry 5’s powerful Layout Manager empowers you to create beautiful layouts with drag-and-drop simplicity.'
+          description: 'Genesis’s powerful Layout Manager empowers you to create beautiful layouts with drag-and-drop simplicity.'
           date: '2019-03-06'
           target: _self
-          title: 'Save time with Gantry 5’s Layout Manager.'
+          title: 'Save time with Genesis’s Layout Manager.'
         -
           layout: photo
           image: 'gantry-media://home/feature/img-01.jpg'
@@ -448,7 +448,7 @@ content:
         -
           layout: text
           image: ''
-          description: 'Gantry 5 has an integrated inheritance solution that makes it easier than ever to add and customize common page elements.'
+          description: 'Genesis has an integrated inheritance solution that makes it easier than ever to add and customize common page elements.'
           date: '2019-03-04'
           target: _self
           title: 'Inheritance makes fleshing out your site simple.'
@@ -535,7 +535,7 @@ content:
           category: ''
           subject: 'Featured Article'
           intro: ''
-          content: "Zenith combines the powerful Gantry 5 framework with a breathtaking modern design that serves as a perfect personal portfolio, product showcase, or online magazine. Never worry about missing another conversion with Zenith’s attention-grabbing style.\n"
+          content: "Zenith combines the powerful Genesis framework with a breathtaking modern design that serves as a perfect personal portfolio, product showcase, or online magazine. Never worry about missing another conversion with Zenith’s attention-grabbing style.\n"
           readmore: 'Learn More'
           readmorelink: '#'
           readmoretarget: _self
@@ -563,7 +563,7 @@ content:
           readmoretarget: _self
           readmoreclass: ''
           image: 'gantry-media://home/showcase/img-01.jpg'
-          title: 'Do More with Gantry 5 Particles'
+          title: 'Do More with Genesis Particles'
       jcategories: ''
       jarticles: '1'
       jintroimage: enabled

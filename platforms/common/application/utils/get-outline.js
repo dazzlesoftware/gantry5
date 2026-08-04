@@ -23,7 +23,7 @@ const getCurrentOutline = () => {
 
     // AJAX outline duplication can briefly leave Selectize without a value.
     // Both the page URL and WordPress admin AJAX URL retain the active style.
-    const urls = [window.location.href, window.GANTRY_AJAX_CONF_URL];
+    const urls = [window.location.href, window.GENESIS_AJAX_CONF_URL];
     for (const value of urls) {
         if (!value) continue;
         try {

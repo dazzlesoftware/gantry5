@@ -154,7 +154,7 @@ class Layout extends HtmlController
 
         // Fire save event.
         $event = new LayoutEvent();
-        $event->gantry = $this->container;
+        $event->Genesis = $this->container;
         $event->theme = $this->container['theme'];
         $event->controller = $this;
         $event->layout = $layout;
@@ -203,7 +203,7 @@ class Layout extends HtmlController
             $prefix = "particles.{$type}";
             $defaults = [];
             $attributes += (array) $item->attributes;
-            $blueprints = BlueprintForm::instance("layout/{$type}.yaml", 'gantry-admin://blueprints');
+            $blueprints = BlueprintForm::instance("layout/{$type}.yaml", 'Genesis-admin://blueprints');
 
         } else {
             $name = $item->subtype;
@@ -216,12 +216,12 @@ class Layout extends HtmlController
         }
 
         if ($hasBlock) {
-            $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'gantry-admin://blueprints');
+            $blockBlueprints = BlueprintForm::instance('layout/block.yaml', 'Genesis-admin://blueprints');
         } else {
             $blockBlueprints = null;
         }
 
-        $file = "gantry-admin://blueprints/layout/inheritance/{$type}.yaml";
+        $file = "Genesis-admin://blueprints/layout/inheritance/{$type}.yaml";
         if (file_exists($file)) {
             $inheritType = $particle ? 'particle' : 'section';
 
@@ -241,7 +241,7 @@ class Layout extends HtmlController
 
             if (!empty($inherit['outline']) || (!($inheriting = $outlines->getInheritingOutlines($outline, [$id, $parent])) && $list)) {
                 $inheritable = true;
-                $inheritance = BlueprintForm::instance($file, 'gantry-admin://blueprints');
+                $inheritance = BlueprintForm::instance($file, 'Genesis-admin://blueprints');
 
                 $inheritance->set('form/fields/outline/filter', array_keys($list));
                 if (!$hasBlock) {
@@ -254,7 +254,7 @@ class Layout extends HtmlController
 
             } elseif (!empty($inheriting)) {
                 // Already inherited by other outlines.
-                $inheritance = BlueprintForm::instance('layout/inheritance/messages/inherited.yaml', 'gantry-admin://blueprints');
+                $inheritance = BlueprintForm::instance('layout/inheritance/messages/inherited.yaml', 'Genesis-admin://blueprints');
                 $inheritance->set(
                     'form/fields/_note/content',
                     sprintf($inheritance->get('form/fields/_note/content'), $inheritType, ' <ul><li>' . implode('</li> <li>', $inheriting) . '</li></ul>')
@@ -262,11 +262,11 @@ class Layout extends HtmlController
 
             } elseif ($outline === 'default') {
                 // Base outline.
-                $inheritance = BlueprintForm::instance('layout/inheritance/messages/default.yaml', 'gantry-admin://blueprints');
+                $inheritance = BlueprintForm::instance('layout/inheritance/messages/default.yaml', 'Genesis-admin://blueprints');
 
             } else {
                 // Nothing to inherit from.
-                $inheritance = BlueprintForm::instance('layout/inheritance/messages/empty.yaml', 'gantry-admin://blueprints');
+                $inheritance = BlueprintForm::instance('layout/inheritance/messages/empty.yaml', 'Genesis-admin://blueprints');
             }
         }
 
@@ -403,7 +403,7 @@ class Layout extends HtmlController
         if (in_array($particle, ['wrapper', 'section', 'container', 'grid', 'offcanvas'], true)) {
             $type = $particle;
             $particle = null;
-            $file = CompiledYamlFile::instance("gantry-admin://blueprints/layout/{$type}.yaml");
+            $file = CompiledYamlFile::instance("Genesis-admin://blueprints/layout/{$type}.yaml");
             $validator->embed('options', (array)$file->content());
             $file->free();
         } else {

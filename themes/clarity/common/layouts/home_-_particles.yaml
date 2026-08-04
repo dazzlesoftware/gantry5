@@ -207,7 +207,7 @@ content:
           bg_horizontal_mobile: 80%
           bg_vertical_mobile: ''
           main_title: 'The Slideshow particle is designed to naturally deliver your brand’s message on any device.'
-          top_title: 'Easily configure the slideshow’s height, content source, direction, navigation, speed, and more in seconds from Gantry’s Layout Manager.'
+          top_title: 'Easily configure the slideshow’s height, content source, direction, navigation, speed, and more in seconds from Genesis’s Layout Manager.'
           link: '#'
           linktarget: _self
           author_image: ''
@@ -288,12 +288,12 @@ content:
     title: 'Simple Content'
     attributes:
       class: center
-      title: 'Gantry 5 Framework'
+      title: 'Genesis Framework'
       items:
         -
           layout: standard
           created_date: ''
-          content_title: 'Gantry 5 is a powerful, infinitely flexible framework for Joomla, WordPress, and Grav that makes customizing your website easier than ever.'
+          content_title: 'Genesis is a powerful, infinitely flexible framework for Joomla, WordPress, and Grav that makes customizing your website easier than ever.'
           author: ''
           leading_content: ''
           main_content: ''
@@ -523,7 +523,7 @@ content:
           alttext: Testimonial
           name: Second
         -
-          content: 'Gantry 5 is a cutting-edge theming framework made for Joomla, Wordpress, and Grav.'
+          content: 'Genesis is a cutting-edge theming framework made for Joomla, Wordpress, and Grav.'
           author: 'Dorothy Ferguson'
           position: 'CEO of Company Inc.'
           photo: 'gantry-media://home/utility/img-01.jpg'

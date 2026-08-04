@@ -189,7 +189,7 @@
             const url = new URL(window.location.href);
             url.searchParams.set('option', 'com_ajax');
             url.searchParams.set('plugin', 'particle');
-            url.searchParams.set('Itemid', {{ gantry.page.itemid|int }});
+            url.searchParams.set('Itemid', {{ genesis.page.itemid|int }});
             url.searchParams.set('id', id);
             url.searchParams.set('start', button.dataset.start);
             url.searchParams.set('format', 'json');

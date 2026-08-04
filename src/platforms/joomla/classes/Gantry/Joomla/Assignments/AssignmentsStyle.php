@@ -53,7 +53,7 @@ class AssignmentsStyle implements AssignmentsInterface
                 }
 
                 if (!$outline) {
-                    $application->enqueueMessage('JApplicationSite::getTemplate() was overridden with no specified Gantry 5 outline.', 'debug');
+                    $application->enqueueMessage('JApplicationSite::getTemplate() was overridden with no specified Genesis outline.', 'debug');
                 }
             }
 

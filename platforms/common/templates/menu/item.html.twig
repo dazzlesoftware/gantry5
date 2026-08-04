@@ -1,9 +1,9 @@
-{% set ajaxTarget = (item.level > 1) ? 'data-g5-ajaxify-target-parent=".submenu-column"' : 'data-g5-ajaxify-target="[data-g5-menu-columns]"' %}
+{% set ajaxTarget = (item.level > 1) ? 'data-genesis-ajaxify-target-parent=".submenu-column"' : 'data-genesis-ajaxify-target="[data-genesis-menu-columns]"' %}
 
-{% set attributes = 'data-g5-ajaxify="" data-g5-ajaxify-params="' ~ ('{"inline":1}'|escape('html_attr')) ~ '" ' ~ ajaxTarget %}
+{% set attributes = 'data-genesis-ajaxify="" data-genesis-ajaxify-params="' ~ ('{"inline":1}'|escape('html_attr')) ~ '" ' ~ ajaxTarget %}
 
 {% if item.path %}
-<a {{ attributes|raw }} href="{{ gantry.route('menu', id, item.path) }}" class="menu-item">
+<a {{ attributes|raw }} href="{{ genesis.route('menu', id, item.path) }}" class="menu-item">
 {% else %}
 <span class="menu-item">
 {% endif %}
@@ -34,6 +34,6 @@
 {% else %}
 </a>
 {% endif %}
-<a class="config-cog" href="{{ item.type == 'particle' ? gantry.route('menu/particle') : gantry.route('menu/edit', id, item.path) }}">
+<a class="config-cog" href="{{ item.type == 'particle' ? genesis.route('menu/particle') : genesis.route('menu/edit', id, item.path) }}">
     <i aria-label="{{ 'GANTRY5_PLATFORM_MENU_ITEM_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
 </a>

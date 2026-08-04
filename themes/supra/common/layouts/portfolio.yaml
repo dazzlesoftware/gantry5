@@ -149,7 +149,7 @@ content:
           created_date: ''
           content_title: '<strong>Template</strong> Portfolio'
           author: ''
-          leading_content: 'The Menu Editor in Gantry 5 grants you drag and drop controls, for creating columns, adding particles and blocks inline, and reordering.'
+          leading_content: 'The Menu Editor in Genesis grants you drag and drop controls, for creating columns, adding particles and blocks inline, and reordering.'
           main_content: ''
           readmore_label: ''
           readmore_link: ''
@@ -171,7 +171,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Change the color scheme of your website in seconds with Gantry 5''s original new Color Picker.'
+          desc: 'Change the color scheme of your website in seconds with Genesis''s original new Color Picker.'
           tag: ''
           subtag: ''
           label: ''
@@ -203,7 +203,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Find the perfect font with Gantry 5''s powerful Font Picker. Powered by the Google Font Index.'
+          desc: 'Find the perfect font with Genesis''s powerful Font Picker. Powered by the Google Font Index.'
           tag: ''
           subtag: ''
           label: ''
@@ -219,7 +219,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Customize menus with ease using Gantry 5''s Menu Editor. It is simple and powerful.'
+          desc: 'Customize menus with ease using Genesis''s Menu Editor. It is simple and powerful.'
           tag: ''
           subtag: ''
           label: ''
@@ -235,7 +235,7 @@ content:
           imageloc: left
           textstyle: compact
           imagestyle: compact
-          desc: 'Customize your site''s layout with Gantry 5''s powerful drag-and-drop enabled Layout Manager.'
+          desc: 'Customize your site''s layout with Genesis''s powerful drag-and-drop enabled Layout Manager.'
           tag: ''
           subtag: ''
           label: ''

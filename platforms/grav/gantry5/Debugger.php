@@ -57,7 +57,7 @@ class Debugger
      */
     public static function startTimer($name, $description = null)
     {
-        static::$debugger->startTimer("g5_{$name}", "Gantry: {$description}");
+        static::$debugger->startTimer("g5_{$name}", "Genesis: {$description}");
 
         return static::instance();
     }
@@ -194,7 +194,7 @@ class Debugger
     public static function setConfig(Config $config)
     {
         if (null !== static::$debugger) {
-            static::$debugger->addCollector(new ConfigCollector($config->toArray(), 'Gantry'));
+            static::$debugger->addCollector(new ConfigCollector($config->toArray(), 'Genesis'));
         }
 
         return static::instance();
@@ -229,4 +229,3 @@ class Debugger
         return static::instance();
     }
 }
-

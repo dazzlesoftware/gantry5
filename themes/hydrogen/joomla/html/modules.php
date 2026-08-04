@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Gantry Specific Module Chrome
+ * Genesis Specific Module Chrome
  *
  * @param object $module
  * @param object $params

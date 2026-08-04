@@ -32,8 +32,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            {% include '@particles/topiclist-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+            {% include '@particles/topiclist-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
     </div>
 {% endblock %}
-

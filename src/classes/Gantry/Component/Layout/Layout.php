@@ -175,7 +175,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
         $this->preset += [
             'name' => '',
             'timestamp' => 0,
-            'image' => 'gantry-admin://images/layouts/default.png'
+            'image' => 'Genesis-admin://images/layouts/default.png'
         ];
     }
 
@@ -1149,7 +1149,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
             'timestamp' => $timestamp,
             'preset' => [
                 'name' => '',
-                'image' => 'gantry-admin://images/layouts/default.png'
+                'image' => 'Genesis-admin://images/layouts/default.png'
             ],
             'positions' => [],
             'sections' => [],

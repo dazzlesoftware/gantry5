@@ -43,7 +43,7 @@
             {% endfor %}
         </div>
         {% else %}
-        {% include '@particles/latestblogs-' ~ gantry.platform.name ~ '.html.twig' ignore missing %}
+        {% include '@particles/latestblogs-' ~ genesis.platform.name ~ '.html.twig' ignore missing %}
         {% endif %}
     </div>
 {% endblock %}

@@ -2,6 +2,11 @@
 
 const Cookie = require('../utils/cookie');
 const { ready, delegate } = require('../utils/dom');
+const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('g5-collapsed') || {};
+const writeStorage = (storage) => {
+    Cookie.write('genesis-collapsed', storage);
+    Cookie.write('g5-collapsed', storage);
+};
 
 const config = (element) => JSON.parse(element.getAttribute('data-g-collapse') || '{}');
 const panelFor = (element, data) => data.target ? element.querySelector(data.target) : element;
@@ -27,7 +32,7 @@ const applyState = (element, data, collapsed) => {
 };
 
 const loadFromStorage = () => {
-    const storage = Cookie.read('g5-collapsed') || {};
+    const storage = readStorage();
     Object.entries(storage).forEach(([id, collapsed]) => {
         const element = document.querySelector(`[data-g-collapse-id="${CSS.escape(id)}"]`);
         if (element) applyState(element, config(element), Boolean(collapsed));
@@ -41,13 +46,13 @@ ready(() => {
         if (handle && !event.target.closest(data.handle || '.g-collapse')) return;
         event.preventDefault();
 
-        const storage = data.store === false ? {} : (Cookie.read('g5-collapsed') || {});
+        const storage = data.store === false ? {} : readStorage();
         const collapsed = storage[data.id] === undefined ? Boolean(data.collapsed) : Boolean(storage[data.id]);
         const next = !collapsed;
         applyState(element, data, next);
         if (data.store !== false) {
             storage[data.id] = next;
-            Cookie.write('g5-collapsed', storage);
+            writeStorage(storage);
         }
     });
 
@@ -57,14 +62,14 @@ ready(() => {
         const actions = toggle.closest('.g-filter-actions');
         const container = actions && actions.nextElementSibling;
         if (!container) return;
-        const storage = Cookie.read('g5-collapsed') || {};
+        const storage = readStorage();
 
         container.querySelectorAll('[data-g-collapse]').forEach((element) => {
             const data = config(element);
             applyState(element, data, collapsed);
             if (data.store !== false) storage[data.id] = collapsed;
         });
-        Cookie.write('g5-collapsed', storage);
+        writeStorage(storage);
     });
 
     delegate(document.body, 'input', '[data-g-collapse-filter]', (event, input) => {

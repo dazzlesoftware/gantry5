@@ -27,8 +27,8 @@ class Exporter
 
         return [
             'export' => [
-                'gantry' => [
-                    'version' => GANTRY5_VERSION !== '@version@' ? GANTRY5_VERSION : 'GIT',
+                'Genesis' => [
+                    'version' => GENESIS_VERSION !== '@version@' ? GENESIS_VERSION : 'GIT',
                     'format' => 1
                 ],
                 'platform' => [

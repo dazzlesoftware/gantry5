@@ -98,11 +98,11 @@ GANTRY5_PLATFORM_SAVE_MENU: "Guardar Menú"
 GANTRY5_PLATFORM_MENU_EDITOR: "Editor de menú"
 GANTRY5_PLATFORM_MODULE: "Módulo"
 GANTRY5_PLATFORM_AVAILABLE_THEMES: "Temas Disponibles"
-GANTRY5_PLATFORM_PLATFORM_SETTINGS: "Ajustes Gantry"
-GANTRY5_PLATFORM_FOOTER: '<a href="http://gantry.org">Administración de Gantry</a> por <a href="https://dazzlesoftware.org">Dazzle Software</a>'
+GANTRY5_PLATFORM_PLATFORM_SETTINGS: "Ajustes Genesis"
+GANTRY5_PLATFORM_FOOTER: '<a href="http://gantry.org">Administración de Genesis</a> por <a href="https://dazzlesoftware.org">Dazzle Software</a>'
 GANTRY5_PLATFORM_BASE_OUTLINE: "Plantilla Base"
 GANTRY5_PLATFORM_GLOBAL_DEFAULTS: "Valores Globales por defecto"
-GANTRY5_PLATFORM_GANTRY_DETAILS: '<p>Gantry 5 es la versión más personalizable y poderosa del marco hasta el momento. Repleto de funciones, como la creación de diseños de arrastrar y soltar y el potente sistema de partículas, Gantry 5 ha sido diseñado desde cero para ser ultrarrápido y sin complicaciones.</p><ul class="overview-list"><li><i class="fa fa-asterisk" aria-hidden="true"></i>Framework rápido, flexible y fácil de usar</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Controles de diseño de arrastrar y soltar</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Potente dinámica sistema de partículas</li></ul>'
+GANTRY5_PLATFORM_GANTRY_DETAILS: '<p>Genesis es la versión más personalizable y poderosa del marco hasta el momento. Repleto de funciones, como la creación de diseños de arrastrar y soltar y el potente sistema de partículas, Genesis ha sido diseñado desde cero para ser ultrarrápido y sin complicaciones.</p><ul class="overview-list"><li><i class="fa fa-asterisk" aria-hidden="true"></i>Framework rápido, flexible y fácil de usar</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Controles de diseño de arrastrar y soltar</li><li><i class="fa fa-asterisk" aria-hidden="true"></i>Potente dinámica sistema de partículas</li></ul>'
 GANTRY5_PLATFORM_THEME: "Tema"
 GANTRY5_PLATFORM_DEV: "Dev"
 GANTRY5_PLATFORM_PROD: "Prod"
@@ -153,7 +153,7 @@ GANTRY5_PLATFORM_ID_UPPER: "ID"
 GANTRY5_PLATFORM_ID_X: "id %s"
 GANTRY5_PLATFORM_LM_SWITCHER_USER: "Usuario"
 GANTRY5_PLATFORM_LM_SWITCHER_SYSTEM: "Sistema"
-GANTRY5_PLATFORM_LM_SWITCHER_PLATFORM: "Gantry"
+GANTRY5_PLATFORM_LM_SWITCHER_PLATFORM: "Genesis"
 GANTRY5_PLATFORM_X_PRESET: "Preajuste %s"
 GANTRY5_PLATFORM_X_OUTLINE: "Plantilla %s"
 GANTRY5_PLATFORM_MENU_GLOBAL_SETTINGS: "Configuración de menú global"
@@ -172,7 +172,7 @@ GANTRY5_PLATFORM_NO_THEMES_INSTALLED: "No hay temas instalados"
 GANTRY5_PLATFORM_ATOMS: "Átomos"
 GANTRY5_PLATFORM_ATOMS_CONFIGURE_SETTINGS: "Configurar los ajustes de Átomos"
 GANTRY5_PLATFORM_ATOMS_DISABLED_DESC: "Este átomo se ha deshabilitado y no se procesará en el front-end. Todavía puede configurar, mover y eliminar."
-GANTRY5_PLATFORM_ATOMS_DEPRECATED_MESSAGE: "Los átomos anteriores se han importado del diseño actual. Dado que Gantry 5.2.0, los átomos ya no se encuentran en el Administrador de diseño. Si bien estamos migrando automáticamente los átomos por usted, asegúrese de que todas las configuraciones sean correctas y vuelva a guardar las configuraciones de página, así como el diseño, si es necesario."
+GANTRY5_PLATFORM_ATOMS_DEPRECATED_MESSAGE: "Los átomos anteriores se han importado del diseño actual. Dado que Genesis 5.2.0, los átomos ya no se encuentran en el Administrador de diseño. Si bien estamos migrando automáticamente los átomos por usted, asegúrese de que todas las configuraciones sean correctas y vuelva a guardar las configuraciones de página, así como el diseño, si es necesario."
 GANTRY5_PLATFORM_LM_LOAD_PRESET: "Cargar Preajuste"
 GANTRY5_PLATFORM_LM_CLEAR_LAYOUT: "Limpiar"
 GANTRY5_PLATFORM_LM_PRESET_UNKNOWN: "Desconocido"
@@ -186,7 +186,7 @@ GANTRY5_PLATFORM_SAVE_CONTENT_SETTINGS: "Guardar Configuración de contenido"
 GANTRY5_PLATFORM_CREATE_OUTLINE: "Crear Nueva Plantilla"
 
 GANTRY5_PLATFORM_PARTICLE_DEFAULTS_FROM_BASE: 'Puede definir opciones predeterminadas para Partículas desde <a %s href="%s">%s</a>.'
-GANTRY5_PLATFORM_PARTICLE_DEFAULTS_WARNING: 'A partir de Gantry v5.3.0, el <strong>%s</strong> (anteriormente conocido como <strong>Ajustes</strong>) la pestaña del administrador de Gantry se ha ocultado. Esto se hizo para reducir cualquier confusión, ya que presenta un nivel adicional de herencia que solo es necesario para casos de uso avanzado.'
+GANTRY5_PLATFORM_PARTICLE_DEFAULTS_WARNING: 'A partir de Genesis v5.3.0, el <strong>%s</strong> (anteriormente conocido como <strong>Ajustes</strong>) la pestaña del administrador de Genesis se ha ocultado. Esto se hizo para reducir cualquier confusión, ya que presenta un nivel adicional de herencia que solo es necesario para casos de uso avanzado.'
 GANTRY5_PLATFORM_PARTICLE_DEFAULTS_ENTER: 'Si es necesario, aún puede ingresar a este panel administrativo haciendo clik <a %s href="%s">aquí</a>.'
 GANTRY5_PLATFORM_PARTICLE_PREVIEW: "¡Atención! Esta es una vista de solo lectura de la partícula que seleccionó. Cualquier cambio realizado aquí no se puede guardar."
 GANTRY5_PLATFORM_ATOM_PREVIEW: "¡Atención! Esta es una vista de solo lectura del Átomo que seleccionó. Cualquier cambio realizado aquí no se puede guardar."
@@ -235,7 +235,7 @@ GANTRY5_PLATFORM_JS_SAVE_SUCCESS: "¡El {{type}} {{verb}} se ha guardado con éx
 GANTRY5_PLATFORM_SAVED: "Guardado"
 GANTRY5_PLATFORM_LAST_SAVED: "Último guardado"
 GANTRY5_PLATFORM_JS_CSS_COMPILED: "¡La hoja de estilos CSS se ha compilado con éxito!"
-GANTRY5_PLATFORM_PHP54_WARNING: 'Actualmente está ejecutando PHP <strong>% s </strong>, que pronto dejará de ser compatible con Gantry. Por favor, actualice lo antes posible. <a target: "_blank" href: "http://gantry.org/blog/php54-end-of-support">Más detalles.</a>'
+GANTRY5_PLATFORM_PHP54_WARNING: 'Actualmente está ejecutando PHP <strong>% s </strong>, que pronto dejará de ser compatible con Genesis. Por favor, actualice lo antes posible. <a target: "_blank" href: "http://gantry.org/blog/php54-end-of-support">Más detalles.</a>'
 GANTRY5_PLATFORM_SAMPLE_DATA_INSTALLED: "Datos de ejemplo instalados"
 GANTRY5_PLATFORM_CHROME: "Chrome"
 GANTRY5_PLATFORM_MENU_EDIT_UNAUTHORIZED: "No tiene permiso para editar este menú.."

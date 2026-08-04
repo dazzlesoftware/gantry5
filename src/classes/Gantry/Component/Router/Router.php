@@ -29,7 +29,7 @@ use Whoops\Exception\ErrorException;
  */
 abstract class Router implements RouterInterface
 {
-    /** @var Gantry */
+    /** @var Genesis */
     protected $container;
     /** @var string */
     protected $format;
@@ -44,9 +44,9 @@ abstract class Router implements RouterInterface
 
     /**
      * Router constructor.
-     * @param Gantry $container
+     * @param Genesis $container
      */
-    public function __construct(Gantry $container)
+    public function __construct(Genesis $container)
     {
         $this->container = $container;
     }
@@ -163,7 +163,7 @@ abstract class Router implements RouterInterface
         }
 
         $this->container['admin.theme'] = static function () {
-            return new Theme(GANTRYADMIN_PATH);
+            return new Theme(GENESIS_ADMIN_PATH);
         };
 
         // Add event listener.

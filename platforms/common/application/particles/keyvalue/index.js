@@ -126,10 +126,10 @@ ready(() => {
             wrapper.setAttribute('data-tip-offset', '8');
 
             if (excluded || duplicate) {
-                const tooltip = window.G5.tips.get(wrapper);
+                const tooltip = window.Genesis.tips.get(wrapper);
                 if (tooltip) tooltip.show();
             } else {
-                window.G5.tips.remove(wrapper);
+                window.Genesis.tips.remove(wrapper);
             }
         }
 

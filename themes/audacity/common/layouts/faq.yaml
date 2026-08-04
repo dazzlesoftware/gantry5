@@ -239,7 +239,7 @@ content:
     attributes:
       title: ''
       titletag: ''
-      html: "<h3>Common Queries and Questions</h3>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n<ul>\n\t<li>Versatile, Flexible Features Powered by the Gantry Framework.</li>\n\t<li>Gantry is a free framework for both Joomla and WordPress.</li>\n\t<li>A selection of configurable preset style variations are available.</li>\n</ul>\n\n<p><a href=\"#\" class=\"readon\">Help &amp; Knowledge</a></p>"
+      html: "<h3>Common Queries and Questions</h3>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n<ul>\n\t<li>Versatile, Flexible Features Powered by the Genesis Framework.</li>\n\t<li>Genesis is a free framework for both Joomla and WordPress.</li>\n\t<li>A selection of configurable preset style variations are available.</li>\n</ul>\n\n<p><a href=\"#\" class=\"readon\">Help &amp; Knowledge</a></p>"
       twig: '0'
       filter: '0'
   custom-9433:

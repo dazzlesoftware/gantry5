@@ -1,4 +1,4 @@
-=== Gantry 5 Debugbar ===
+=== Genesis Debugbar ===
 Contributors: gantry
 Author URI: http://gantry.org
 Tags: gantry, gantry5, framework, debugbar

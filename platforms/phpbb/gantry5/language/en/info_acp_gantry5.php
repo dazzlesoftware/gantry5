@@ -16,5 +16,5 @@ if (empty($lang) || !is_array($lang)) {
 }
 
 $lang = array_merge($lang, [
-    'ACP_GANTRY5_TITLE' => 'Gantry 5',
+    'ACP_GANTRY5_TITLE' => 'Genesis',
 ]);

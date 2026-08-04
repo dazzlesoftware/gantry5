@@ -20,7 +20,7 @@ body.g-prime {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#g5-container { // wrapper
+[data-genesis-container] { // wrapper
     font-size: $core-font-size;
     line-height: $core-line-height;
     -webkit-font-smoothing: antialiased;

@@ -363,7 +363,7 @@ class Menu extends AbstractMenu
             $id = $menuItem->id;
             $path = $menuItem->route;
 
-            // Try to locate Gantry menu item.
+            // Try to locate Genesis menu item.
             if (isset($idLookup[$id])) {
                 // Id found, use it.
                 $data = $idLookup[$id];
@@ -425,7 +425,7 @@ class Menu extends AbstractMenu
     {
         $modified = false;
 
-        // Convert Gantry params to Registry format.
+        // Convert Genesis params to Registry format.
         $all = Menu::encodeJParams($item);
 
         // Registry thinks that empty strings do not exist, so work around that.
@@ -460,16 +460,16 @@ class Menu extends AbstractMenu
 
         $version = Version::MAJOR_VERSION;
 
-        // Flag menu item to contain gantry data.
+        // Flag menu item to contain Genesis data.
         $params = [
-            'gantry' => 1
+            'Genesis' => 1
         ];
 
         $defaults = Item::$defaults;
         $item = static::normalizeMenuItem($item + $defaults, $ignoreList, true);
         foreach ($item as $var => $value) {
             if (is_array($value)) {
-                // Joomla has different format for lists than Gantry, convert to Joomla supported version.
+                // Joomla has different format for lists than Genesis, convert to Joomla supported version.
                 if (in_array($var, ['attributes', 'link_attributes'], true)) {
                     $i = $version < 4 ? 0 : 10;
                     $list = [];
@@ -493,8 +493,8 @@ class Menu extends AbstractMenu
                 }
             }
 
-            // Prefix gantry parameters and save them.
-            $var = 'gantry-' . $var;
+            // Prefix Genesis parameters and save them.
+            $var = 'Genesis-' . $var;
 
             if ($defaultsAsNull && $value == (isset($defaults[$var]) ? $defaults[$var] : null)) {
                 $params[$var] = null;
@@ -514,10 +514,10 @@ class Menu extends AbstractMenu
     {
         $properties = [];
 
-        // Add Gantry menu item properties from the menu item.
+        // Add Genesis menu item properties from the menu item.
         $paramsEmbedded = !empty($params['gantry']);
         foreach ($params as $param => $value) {
-            if (strpos($param, 'gantry-') === 0) {
+            if (strpos($param, 'Genesis-') === 0) {
                 $param = substr($param, 7);
 
                 // Convert input from Joomla list format.
@@ -569,9 +569,9 @@ class Menu extends AbstractMenu
                 case 'heading':
                 case 'separator':
                     // Check if menu item contains a particle.
-                    if ($params && !empty($params->get('gantry-particle'))) {
+                    if ($params && !empty($params->get('Genesis-particle'))) {
                         $type = 'particle';
-                        $options = $params->get('gantry-options');
+                        $options = $params->get('Genesis-options');
                         $enabled = isset($options['particle']['enabled']) ? $options['particle']['enabled'] : true;
                     }
 

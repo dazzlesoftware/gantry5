@@ -1,5 +1,5 @@
 preset:
-  image: 'gantry-admin://images/layouts/offline.png'
+  image: 'Genesis-admin://images/layouts/offline.png'
   name: coming_soon
   timestamp: 1440169928
 children:
@@ -392,7 +392,7 @@ children:
                 title: Branding
                 attributes:
                   enabled: 1
-                  content: 'Powered by <a href="http://www.gantry.org/" title="Gantry Framework" class="g-powered-by">Gantry<span class="hidden-tablet"> Framework</span></a>'
+                  content: 'Powered by <a href="http://www.gantry.org/" title="Genesis Framework" class="g-powered-by">Genesis<span class="hidden-tablet"> Framework</span></a>'
                 children: {  }
           -
             id: a240af8c-d434-47b4-a97c-33e748780231

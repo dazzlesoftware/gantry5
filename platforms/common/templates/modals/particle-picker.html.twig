@@ -1,10 +1,10 @@
-<div data-mm-particle-stepone="{{ gantry.route(route|default('menu/particle')) }}" class="menu-editor-extras">
+<div data-mm-particle-stepone="{{ genesis.route(route|default('menu/particle')) }}" class="menu-editor-extras">
     <div class="card settings-block">
         <h4>
             {{ 'GANTRY5_PLATFORM_PICK_PARTICLE'|trans }}
         </h4>
         <div class="inner-params">
-            <div class="g5-lm-particles-picker menu-editor-particles">
+            <div class="genesis-lm-particles-picker menu-editor-particles">
                 <div class="search settings-block">
                     <input type="text" placeholder="{{ 'GANTRY5_PLATFORM_SEARCH_ELI'|trans }}" />
                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -15,7 +15,7 @@
                         <ul>
                             {% for type, particle in list %}
                                 {% for item_key, item in particle %}
-                                    <li class="g5-lm-particle-{{ type }} particle-category-{{ item._gantry_category_slug|default('general') }}"
+                                    <li class="genesis-lm-particle-{{ type }} particle-category-{{ item._gantry_category_slug|default('general') }}"
                                         data-lm-nodrag
                                         data-mm-type="particle"
                                         data-lm-blocktype="{{ type }}"
@@ -39,7 +39,7 @@
         <button class="button button-primary" type="submit" data-mm-select="" disabled="disabled">
             {{ 'GANTRY5_PLATFORM_SELECT'|trans }} <i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
         </button>
-        <button class="button g5-dialog-close">
+        <button class="button genesis-dialog-close">
             {{ 'GANTRY5_PLATFORM_CANCEL'|trans }}
         </button>
     </div>

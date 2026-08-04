@@ -1,7 +1,7 @@
 {% extends ajax-suffix ? "@gantry-admin/partials/ajax.html.twig" : "@gantry-admin/partials/base.html.twig" %}
 
 {% block gantry %}
-<form method="post" action="{{ gantry.route(action) }}">
+<form method="post" action="{{ genesis.route(action) }}">
     <input type="hidden" name="id" value="{{ item.id }}">
     <div class="g-tabs" role="tablist">
         <ul>
@@ -49,11 +49,11 @@
     </div>
 
     <div class="g-modal-actions">
-        {% if gantry.authorize('menu.edit', id) %}
+        {% if genesis.authorize('menu.edit', id) %}
         <button class="button button-primary" type="submit">{{ 'GANTRY5_PLATFORM_APPLY'|trans }}</button>
         <button class="button button-primary" data-apply-and-save="">{{ 'GANTRY5_PLATFORM_APPLY_SAVE'|trans }}</button>
         {% endif %}
-        <button class="button g5-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
+        <button class="button genesis-dialog-close">{{ 'GANTRY5_PLATFORM_CANCEL'|trans }}</button>
     </div>
 </form>
 {% endblock %}

@@ -25,7 +25,7 @@ use Twig\Loader\LoaderInterface;
  * @package Gantry\Framework
  *
  * phpBB 3.1+ ships a native Twig environment (phpbb\template\twig\environment extends
- * \Twig\Environment, registered as the `template.twig.environment` service). Gantry reuses that
+ * \Twig\Environment, registered as the `template.twig.environment` service). Genesis reuses that
  * environment instead of instantiating a second Twig instance, the same way Grav's Theme reuses
  * $grav['twig']->twig().
  */
@@ -72,14 +72,14 @@ class Theme extends AbstractTheme
             // Twig\Environment lazily creates and permanently caches ONE Lexer instance
             // (getLexer()), reused for every tokenize() call for the rest of the environment's
             // lifetime -- and that Lexer is NOT safely reusable indefinitely across this many
-            // renders in one request: by the time Gantry's own first render happens, its
+            // renders in one request: by the time Genesis's own first render happens, its
             // accumulated internal state causes a genuine mis-tokenization of otherwise-valid
             // template source (confirmed live: engines/common/nucleus/particles/menu.html.twig
             // -- byte-for-byte identical, confirmed via md5 -- threw "A hash key must be followed
             // by a colon" from phpBB's shared environment, but parsed cleanly through the exact
             // same environment object with nothing else changed except installing a fresh Lexer
-            // first). Install a clean Lexer before Gantry starts using the environment so none of
-            // phpBB's own prior usage carries over into Gantry's render.
+            // first). Install a clean Lexer before Genesis starts using the environment so none of
+            // phpBB's own prior usage carries over into Genesis's render.
             //
             // MUST be phpBB's own \phpbb\template\twig\lexer subclass, not bare \Twig\Lexer --
             // that subclass's tokenize() regex-translates phpBB's own legacy template syntax
@@ -148,7 +148,7 @@ class Theme extends AbstractTheme
         }
 
         $context = $attribs + [
-            'gantry' => $this,
+            'Genesis' => $this,
             'inContent' => false
         ];
 

@@ -1,4 +1,4 @@
-{% extends ['@nucleus/module-chrome/' ~ style ~ '.html.twig', '@nucleus/module-chrome/gantry.html.twig'] %}
+{% extends ['@nucleus/module-chrome/' ~ style ~ '.html.twig', '@nucleus/module-chrome/genesis.html.twig'] %}
 
 {% set id = segment.id ?: segment.type ~ '-' ~ rand(1000, 9999) %}
 {% set chrome = segment.chrome %}
@@ -11,7 +11,7 @@
     {% if segment.type in ['particle', 'spacer'] %}
         {% set item = {id: position.key ? position.key ~ '-module-' ~ id : id, type: segment.type, subtype: segment.options.type, attributes: segment.options.attributes} %}
         {% set attribs = {inContent: inContent}|merge(ajax ? {ajax: ajax} : {}) %}
-        {{ gantry.theme.renderContent(item, attribs)|raw }}
+        {{ genesis.theme.renderContent(item, attribs)|raw }}
     {% else %}
         {% include [
         '@nucleus/content/' ~ segment.type ~ '/' ~ segment.options.type|default('default') ~ '.html.twig',

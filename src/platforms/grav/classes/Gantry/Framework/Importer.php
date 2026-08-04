@@ -69,7 +69,7 @@ class Importer
 
     public function positions()
     {
-        $folder = $this->locator->findResource('gantry-positions://', true, true);
+        $folder = $this->locator->findResource('Genesis-positions://', true, true);
 
         if (is_dir($folder)) {
             Folder::delete($folder);
@@ -349,7 +349,7 @@ class Importer
                     if ($vars['view'] === 'error') {
                         $page = [
                             'header' => [
-                                'gantry' => [
+                                'Genesis' => [
                                     'outline' => '_error'
                                 ],
                                 'http_response_code' => 404
