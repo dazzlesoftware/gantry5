@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Phase 1 complete; Phase 2 not started
+**Status:** Phases 0 and 1 complete; Phase 2 not started
 
 ## Objective
 
@@ -80,6 +80,8 @@ These figures are planning indicators, not acceptance-test totals. Some matches 
 
 ## Phase 0 — Inventory and safety baseline
 
+**Status:** Complete — August 4, 2026
+
 ### Work
 
 - Produce a complete inventory classifying every maintained JavaScript file as first-party source, generated output, retained third-party source, obsolete third-party source, platform-owned integration, or dead/unreferenced asset.
@@ -94,6 +96,16 @@ These figures are planning indicators, not acceptance-test totals. Some matches 
 - Every maintained JavaScript file has an owner and classification.
 - No actively loaded file is deleted based only on filename or static syntax.
 - Critical public contracts and smoke-test paths are documented.
+
+### Completion record
+
+- Added a deterministic audit tool at `bin/audit-javascript.mjs` and a machine-readable inventory at `JAVASCRIPT-INVENTORY.json`.
+- Classified all 525 in-scope JavaScript files by area, ownership, and source/generated/vendor/platform role.
+- Recorded build entry points, generated bundle relationships, static consumers, content hashes, duplicate families, syntax/API risk signals, globals, literal events, data attributes, and storage keys.
+- Added `JAVASCRIPT-SAFETY-BASELINE.md` with the published browser floor, public contracts, deletion safety rules, review candidates, and cross-platform smoke-test matrix.
+- Identified 33 identical-content groups, seven first-party zero-reference review candidates, and 55 vendored zero-reference review candidates without deleting them.
+- Added PHP regression coverage for inventory completeness, ownership, file existence, bundle/source relationships, and safety-baseline presence, plus a Node 20.19 inventory-freshness gate in CI.
+- Inventory freshness, JavaScript/PHP syntax, focused and full PHP suites, production/development asset builds, loader/reference checks, and `git diff --check` passed.
 
 ## Phase 1 — Core native Audio Player particle
 
