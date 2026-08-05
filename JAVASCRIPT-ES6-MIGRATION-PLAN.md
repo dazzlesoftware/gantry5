@@ -30,6 +30,7 @@ Native ES6+ does **not** require rewriting a current, intentionally retained spe
 - `assets/common/application/**/*.js` — frontend core source
 - `platforms/common/application/**/*.js` — administration application source
 - maintained first-party JavaScript under `assets/common/js` and `themes/*/common/js`
+- core particle definitions under `engines/common/nucleus/particles`
 - JavaScript build definitions in the root, `assets/common`, and `platforms/common`
 - Twig and YAML consumers that register or load migrated JavaScript
 - package manifests and lockfiles affected by removed build/runtime dependencies
@@ -56,6 +57,8 @@ The initial repository scan found:
 | Files containing prototype-style code | 94 |
 | Identical `audioplayer.js` copies | 38 |
 | Identical audio-player initializer copies | 38 |
+| Theme-level Audio Player Twig particles | 38 files across 4 variants |
+| Theme-level Audio Player YAML blueprints | 38 files across 4 variants |
 | Identical scroll-animation controllers | 46 |
 | Identical Swiper initializers | 44 |
 | Identical native-grid controllers | 23 |
@@ -92,25 +95,37 @@ These figures are planning indicators, not acceptance-test totals. Some matches 
 - No actively loaded file is deleted based only on filename or static syntax.
 - Critical public contracts and smoke-test paths are documented.
 
-## Phase 1 — Shared native audio controller
+## Phase 1 — Core native Audio Player particle
 
 ### Why first
 
-The legacy audio runtime is actively loaded by 38 theme particles and contains Flash, ActiveX, `attachEvent`, `arguments.callee`, user-agent detection, and manual class manipulation. It is the clearest obsolete runtime and the largest identical theme duplication family.
+The legacy audio runtime is actively loaded by 38 theme particles and contains Flash, ActiveX, `attachEvent`, `arguments.callee`, user-agent detection, and manual class manipulation. It is the clearest obsolete runtime and the largest identical theme duplication family. Audio playback is framework-level media behavior, so the replacement should be a core Nucleus particle rather than another theme-owned particle copied into each theme.
 
 ### Work
 
-- Build one accessible shared controller on `HTMLAudioElement`/`HTMLMediaElement`.
+- Add one canonical `audioplayer.yaml` blueprint and `audioplayer.html.twig` renderer under `engines/common/nucleus/particles`.
+- Build one accessible core controller on `HTMLAudioElement`/`HTMLMediaElement` and ship it through the common asset pipeline.
 - Preserve play/pause, progress, seek, duration, loading state, volume behavior, keyboard operation, and the existing theme class contract where practical.
 - Support more than one player per page without global instance collisions.
 - Handle metadata and media errors without throwing.
 - Respect reduced-motion preferences for animated progress effects.
-- Update all 38 Twig consumers to load the shared controller.
-- Remove the 38 copied runtimes and 38 copied initializers only after all consumers use the shared implementation.
+- Reconcile the four existing Twig variants and four YAML variants before selecting the canonical schema; do not discard variant fields or behavior without an explicit compatibility decision.
+- Preserve existing stored particle data keys (`title`, `nowplaying`, `scrollbar`, `overflow`, and `items`, including local/external source fields) so saved outlines continue to render without migration where possible.
+- Correct existing markup defects during consolidation, including the misspelled `exernal` source check, empty initial cover source, placeholder-link navigation, missing media types, and unsafe/unnecessary raw output.
+- Keep established `g-audioplayer*` classes as the core styling contract initially so recovered-theme SCSS remains compatible.
+- Decide whether common structural Audio Player CSS belongs in the core asset layer while theme-specific visual treatment remains in each theme.
+- Allow a normal theme-level Twig override through the existing particle lookup order, but remove identical theme copies so only deliberate overrides remain.
+- Remove all 38 copied theme runtimes and 38 copied initializers only after every particle resolves to the core assets.
+- Remove the 38 theme-level Audio Player Twig/YAML pairs once their configurations resolve to the core particle; retain only documented overrides that differ intentionally.
+- Verify how platforms discover core particle blueprints and ensure the new particle appears consistently in Joomla, WordPress, and Grav administration.
 
 ### Exit criteria
 
+- One canonical Audio Player blueprint and renderer exist in the core particle directory.
+- Existing saved Audio Player instances render with their prior playlist data and settings.
 - No maintained theme loads `audioplayer.js` from its theme directory.
+- No identical theme-level Audio Player particle definitions remain.
+- Any retained theme Audio Player override is documented and contains only intentional differences.
 - No Flash, ActiveX, `attachEvent`, or `arguments.callee` code remains in maintained audio behavior.
 - Audio particles work with keyboard, pointer, and touch input.
 
@@ -246,7 +261,7 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 | Modernizr 2.x | Remove after replacing active checks |
 | Classie | Remove; use `classList` |
 | FastClick | Remove |
-| Legacy audiojs runtime | Replace with shared native media controller |
+| Legacy audiojs runtime and theme particles | Replace with one core Nucleus particle and shared native media controller |
 | Tiny Scrollbar | Prefer native CSS/scrolling; retain only with a documented unmet requirement |
 | Chartist/legacy chart code | Evaluate native SVG/canvas replacement versus a current maintained dependency |
 | particles.js copies | Evaluate shared native canvas replacement versus one current maintained dependency |
@@ -304,6 +319,7 @@ Scans must exclude or separately classify generated bundles, minified vendor fil
 - off-canvas open, close, swipe/drag, focus, and ARIA state;
 - to-top behavior and reduced motion;
 - audio playback, seek, duration, loading, errors, keyboard operation, and multiple instances;
+- loading existing saved Audio Player configurations through the new core particle on Joomla, WordPress, and Grav;
 - sliders, grids, accordions, overlays, dynamic/AJAX content, and responsive relayout;
 - administration save, validation, notifications, modals, popovers, pickers, drag/drop, undo/redo, menu management, and layout management;
 - supported Joomla, WordPress, and Grav administration integrations.
@@ -318,6 +334,7 @@ Scans must exclude or separately classify generated bundles, minified vendor fil
 | Browserify/Watchify in active browser build paths | 0 |
 | Obsolete IE/Flash/ActiveX/MSPointer branches | 0 |
 | Copied legacy audio runtimes | 0 |
+| Identical theme-level Audio Player particle definitions | 0 |
 | Copied Modernizr/Classie/FastClick runtimes | 0 |
 | Identical first-party theme controller copies | 0, except documented packaging constraints |
 | Undocumented browser globals introduced by maintained code | 0 |
