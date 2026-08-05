@@ -19,6 +19,21 @@ let realSidebarTop = 0;
 
 const paddingBottom = element => Number.parseInt(getComputedStyle(element).paddingBottom, 10) || 0;
 
+const resizeParticles = bottom => {
+    if (!particles || !search) return;
+
+    const viewportBottom = window.innerHeight - heightBottom;
+    const availableBottom = typeof bottom === 'number' ? Math.min(viewportBottom, bottom) : viewportBottom;
+    const maxHeight = Math.max(0, availableBottom - heightTop - search.offsetHeight - 30);
+
+    particles.style.maxHeight = `${maxHeight}px`;
+    particles.style.overflow = 'auto';
+
+    const hasScrollbar = particles.scrollHeight > particles.clientHeight;
+    particles.classList.toggle('has-scrollbar', hasScrollbar);
+    particles.style.marginRight = hasScrollbar ? `${-scrollbarWidth()}px` : '';
+};
+
 const initSizes = () => {
     container = document.querySelector('.sidebar-block');
     if (!container) return;
@@ -40,12 +55,7 @@ const initSizes = () => {
     document.querySelectorAll('body.admin.com_genesis #status')
         .forEach(element => { heightBottom += element.offsetHeight; });
 
-    particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;
-    particles.style.overflow = 'auto';
-
-    const hasScrollbar = particles.scrollHeight !== particles.offsetHeight;
-    particles.classList.toggle('has-scrollbar', hasScrollbar);
-    particles.style.marginRight = hasScrollbar ? `${-scrollbarWidth()}px` : '';
+    resizeParticles();
 };
 
 ready(() => {
@@ -61,6 +71,7 @@ ready(() => {
         const scrollTop = scrollElement === window ? window.scrollY : scrollElement.scrollTop;
         const containerBounds = container.getBoundingClientRect();
         const limit = containerBounds.top + containerBounds.height;
+        resizeParticles(limit - paddingBottom(container));
         const sidebarCoords = sidebar.getBoundingClientRect();
         const shouldBeFixed = scrollTop > initialSidebarCoords.top - heightTop - 10 && scrollTop >= realSidebarTop - 10;
         const reachedTheLimit = sidebarCoords.height + 10 + heightTop + paddingBottom(container) >= limit;
@@ -89,7 +100,6 @@ ready(() => {
     frameListener(window, 'resize', () => {
         if (!particles || !search) return;
         scroll();
-        particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;
     });
 
     document.body.addEventListener('statechangeEnd', initSizes);
