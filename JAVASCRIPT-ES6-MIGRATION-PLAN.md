@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Planned; implementation not started
+**Status:** Phase 1 complete; Phase 2 not started
 
 ## Objective
 
@@ -97,6 +97,8 @@ These figures are planning indicators, not acceptance-test totals. Some matches 
 
 ## Phase 1 — Core native Audio Player particle
 
+**Status:** Complete — August 4, 2026
+
 ### Why first
 
 The legacy audio runtime is actively loaded by 38 theme particles and contains Flash, ActiveX, `attachEvent`, `arguments.callee`, user-agent detection, and manual class manipulation. It is the clearest obsolete runtime and the largest identical theme duplication family. Audio playback is framework-level media behavior, so the replacement should be a core Nucleus particle rather than another theme-owned particle copied into each theme.
@@ -128,6 +130,18 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Any retained theme Audio Player override is documented and contains only intentional differences.
 - No Flash, ActiveX, `attachEvent`, or `arguments.callee` code remains in maintained audio behavior.
 - Audio particles work with keyboard, pointer, and touch input.
+
+### Completion record
+
+- Added the canonical core blueprint and renderer under `engines/common/nucleus/particles` without changing the `audioplayer` particle subtype or its saved configuration keys.
+- Added one dependency-free native controller at `assets/common/js/audioplayer.js` using `HTMLAudioElement`, standard events, promises, classes, `dataset`, `classList`, `MutationObserver`, and accessible native controls.
+- Added structural and accessibility styling to Nucleus while retaining the established `g-audioplayer*` class contract for theme visual styling.
+- Removed 38 theme Twig particles, 38 theme YAML blueprints, 38 legacy audiojs runtimes, and 38 theme initializers.
+- Added a PHP regression test covering the core schema, shared asset loader, legacy API exclusion, and zero theme duplicates.
+- Production and development asset builds passed.
+- All 98 Joomla, 98 WordPress, and 98 Grav SCSS entry points compiled without warnings.
+- The PHP 8.3 suite and focused Audio Player regression tests passed.
+- JavaScript syntax, loader scans, obsolete API scans, and `git diff --check` passed.
 
 ## Phase 2 — Frontend core ES modules
 
