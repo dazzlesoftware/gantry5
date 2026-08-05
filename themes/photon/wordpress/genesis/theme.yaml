@@ -1,8 +1,8 @@
 details:
   name: Photon
-  version: '1.5.0'
+  version: '@version@'
   icon: paper-plane
-  date: 'November  4, 2021'
+  date: '@versiondate@'
   author:
     name: Dazzle Software, LLC
     email: support@dazzlesoftware.org

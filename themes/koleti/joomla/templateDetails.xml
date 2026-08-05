@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extension version="3.4" type="template" client="site" method="upgrade">
     <name>rt_koleti</name>
-    <version>1.5.0</version>
-    <creationDate>October 29, 2021</creationDate>
+    <version>@version@</version>
+    <creationDate>@versiondate@</creationDate>
     <author>Dazzle Software, LLC</author>
     <authorEmail>support@dazzlesoftware.org</authorEmail>
     <authorUrl>https://dazzlesoftware.org</authorUrl>

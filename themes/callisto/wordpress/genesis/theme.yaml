@@ -1,8 +1,8 @@
 details:
   name: Callisto
-  version: '1.7.0'
+  version: '@version@'
   icon: paper-plane
-  date: 'December 10, 2021'
+  date: '@versiondate@'
   author:
     name: Dazzle Software, LLC
     email: support@dazzlesoftware.org

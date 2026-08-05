@@ -1,8 +1,8 @@
 details:
   name: Calla
-  version: '1.5.0'
+  version: '@version@'
   icon: paper-plane
-  date: 'October 29, 2021'
+  date: '@versiondate@'
   author:
     name: Dazzle Software, LLC
     email: support@dazzlesoftware.org

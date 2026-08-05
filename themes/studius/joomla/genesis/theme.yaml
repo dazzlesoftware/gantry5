@@ -1,8 +1,8 @@
 details:
   name: Studius
-  version: '1.1.0'
+  version: '@version@'
   icon: paper-plane
-  date: 'May 12, 2022'
+  date: '@versiondate@'
   author:
     name: Dazzle Software, LLC
     email: 'support@rockettheme.com'

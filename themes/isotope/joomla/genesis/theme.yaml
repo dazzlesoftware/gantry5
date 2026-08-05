@@ -1,8 +1,8 @@
 details:
   name: Isotope
-  version: '1.5.0'
+  version: '@version@'
   icon: paper-plane
-  date: 'December  2, 2021'
+  date: '@versiondate@'
   author:
     name: Dazzle Software, LLC
     email: support@dazzlesoftware.org
