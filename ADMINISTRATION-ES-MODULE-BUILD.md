@@ -25,6 +25,8 @@ The shared build policy is:
 - minification and no source map in production;
 - esbuild diagnostics emitted directly to the build log.
 
+> **Do not forget:** `platforms/common/js/main.js` is the generated administration bundle. It was previously kept minified, but normal development builds now intentionally leave it unminified for readable diffs and debugging. Only production builds (`gulp --production`, or an equivalent production flag) should minify this file. Do not treat an unminified development bundle as a build regression or manually minify it.
+
 Watch tasks rebuild the corresponding ES module entry when source files change. Browserify and Watchify are no longer part of either build path.
 
 ## Dependency removal

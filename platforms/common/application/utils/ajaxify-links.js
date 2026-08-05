@@ -8,7 +8,6 @@ import __module6 from './flags-state.js';
 import __module7 from './get-ajax-url.js';
 import __module8 from './get-ajax-suffix.js';
 import __module9 from '../menu/index.js';
-import __module10 from '../assignments/index.js';
 import '../lm/index.js';
 
 "use strict";
@@ -23,8 +22,7 @@ let dom           = __module0,
     flags         = __module6,
     parseAjaxURI  = __module7.parse,
     getAjaxSuffix = __module8,
-    mm            = __module9,
-    assignments   = __module10;
+    mm            = __module9;
 
 
 let ERROR = false,
@@ -259,6 +257,7 @@ History.Adapter.bind(window, 'statechange', function() {
                 (Data.target ? document.querySelector(Data.target) : null),
             destination = target || document.querySelector('[data-genesis-content]') || body;
 
+        document.dispatchEvent(new CustomEvent('genesis:content-replacing'));
         destination.innerHTML = result.html || result;
         let fader = destination.matches('[data-genesis-content]') ? destination : destination.querySelector('[data-genesis-content]');
         if (fader) {
@@ -270,7 +269,6 @@ History.Adapter.bind(window, 'statechange', function() {
             showNavbar(sidebar, !isTopNavOrMenu);
         }
 
-        document.querySelectorAll('.genesis-popover').forEach(function(popover) { popover.remove(); });
         if (Data.element) { dispatchState('statechangeAfter', Data.element, Data); }
 
         let spinner = (Data.event && Data.event.activeSpinner) || Data.element;
@@ -278,7 +276,6 @@ History.Adapter.bind(window, 'statechange', function() {
 
         Selectize.initialize(document.querySelectorAll('[data-selectize]'));
         selectorChangeEvent();
-        assignments.chromeFix();
         body.dispatchEvent(new CustomEvent('statechangeEnd', { bubbles: true }));
     });
 });

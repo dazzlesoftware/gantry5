@@ -4135,9 +4135,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 17996,
+      "bytes": 17933,
       "lines": 459,
-      "sha256": "32acb44058e1cfaea1b3fd6e7dbfa582b5aeb9b21a0c950a1b02f51e924e0869",
+      "sha256": "051390fcfff641b78589fea8be0ea6b95d52925d167d4afb5443feb7092cb0eb",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5361,18 +5361,19 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 6,
+      "activeReferenceCount": 7,
       "consumers": [
         "platforms/common/application/lm/index.js",
         "platforms/common/application/main.js",
         "platforms/common/application/particles/filepicker/index.js",
         "platforms/common/application/particles/icons/index.js",
         "platforms/common/application/styles/index.js",
-        "platforms/common/js/main.js"
+        "platforms/common/js/main.js",
+        "tests/php83/FinalJavaScriptEs6CleanupTest.php"
       ],
-      "bytes": 21219,
-      "lines": 646,
-      "sha256": "312357265cafcbb8bdb72f86ea1ae4a63ef59a3fb1b10b42fb6abb24c2e0de28",
+      "bytes": 21416,
+      "lines": 652,
+      "sha256": "19d7daaef91a1f53fee1ad9bfbcf20988d13688ff4216ccf109cc41c7b9e2248",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5560,14 +5561,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 2,
+      "activeReferenceCount": 3,
       "consumers": [
         "platforms/common/application/main.js",
-        "platforms/common/js/main.js"
+        "platforms/common/js/main.js",
+        "tests/php83/FinalJavaScriptEs6CleanupTest.php"
       ],
-      "bytes": 19347,
-      "lines": 463,
-      "sha256": "e1b0087551cd3ea7d4fe8d047ae3ce381ec6792cfa4dc34d0e7de9bd0498ffcf",
+      "bytes": 19206,
+      "lines": 460,
+      "sha256": "33ce59e0f1480eefcbda3b57c7f670876b6c1d2a7081b53391ade40ad9f7d78d",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5579,6 +5581,7 @@
           "GENESIS_PLATFORM"
         ],
         "customEvents": [
+          "genesis:content-replacing",
           "statechangeEnd"
         ],
         "dataAttributes": [
@@ -6560,9 +6563,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 607973,
-      "lines": 15043,
-      "sha256": "49ac73e1e658b6f67e04018163ea8eef49ecb9081506a62a9432be404ce42d05",
+      "bytes": 607962,
+      "lines": 15036,
+      "sha256": "16409f2fd8b48c7d4fe36b315efac544a8ecf8a8ff68f272db6804192b0394df",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -6579,6 +6582,7 @@
         ],
         "customEvents": [
           "change",
+          "genesis:content-replacing",
           "genesis:title-edit-end",
           "genesis:title-edit-exit",
           "genesis:title-edit-start",

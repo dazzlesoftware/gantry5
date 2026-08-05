@@ -60,4 +60,19 @@ final class FinalJavaScriptEs6CleanupTest extends TestCase
         self::assertStringContainsString('**Status:** Complete', $report);
         self::assertStringContainsString('Generated and third-party exceptions', $report);
     }
+
+    public function testPopoverLifecycleIsClosedBeforeAjaxContentReplacement(): void
+    {
+        $popover = $this->sources['platforms/common/application/ui/popover.js'];
+        self::assertStringContainsString(".off('focus', this.bound('focus'), true)", $popover);
+        self::assertStringContainsString(".off('click', this.bound('bodyClickHandler'))", $popover);
+        self::assertStringContainsString("document.addEventListener('genesis:content-replacing'", $popover);
+        self::assertStringContainsString('instance.hide(null, false)', $popover);
+        self::assertStringContainsString('target[0].offsetParent || document.documentElement', $popover);
+        self::assertStringContainsString('anchorRect.left - parentRect.left + offsetParent.scrollLeft', $popover);
+
+        $ajax = $this->sources['platforms/common/application/utils/ajaxify-links.js'];
+        self::assertStringContainsString("document.dispatchEvent(new CustomEvent('genesis:content-replacing'))", $ajax);
+        self::assertStringNotContainsString('assignments.chromeFix()', $ajax);
+    }
 }

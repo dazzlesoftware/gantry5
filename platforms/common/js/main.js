@@ -6995,6 +6995,7 @@
   var dom9 = dom_effects_default;
   var zen5 = createElement;
   var storage2 = /* @__PURE__ */ new WeakMap();
+  var instances = /* @__PURE__ */ new Set();
   var request4 = request_default;
   var defaults4 = {
     mainClass: "genesis-popover",
@@ -7029,6 +7030,7 @@
         this.element.off("mouseenter", this.bound("mouseenterHandler")).off("mouseleave", this.bound("mouseleaveHandler")).on("mouseenter", this.bound("mouseenterHandler")).on("mouseleave", this.bound("mouseleaveHandler"));
       }
       this._poped = false;
+      instances.add(this);
     }
     bound(method) {
       if (!this._bound[method]) {
@@ -7037,14 +7039,15 @@
       return this._bound[method];
     }
     destroy() {
-      this.hide();
+      this.hide(null, false);
+      instances.delete(this);
       storage2.delete(this.element[0]);
       this.element.off("click", this.bound("toggle")).off("mouseenter", this.bound("mouseenterHandler")).off("mouseleave", this.bound("mouseleaveHandler"));
       if (this.$target) {
         this.$target.remove();
       }
     }
-    hide(event) {
+    hide(event, restore = true) {
       if (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -7058,8 +7061,9 @@
       if (this._focusAttached) {
         dom9("body").off("focus", this.bound("focus"), true);
         this._focusAttached = false;
-        this.restoreFocus();
+        if (restore) this.restoreFocus();
       }
+      dom9("body").off("keyup", this.bound("escapeHandler")).off("click", this.bound("bodyClickHandler"));
     }
     toggle(e) {
       if (e) {
@@ -7076,8 +7080,7 @@
       if (this.$target[0] === target[0] || target.parent(this.$target) || this.element[0] === target[0] || target.parent(this.element)) {
         return;
       }
-      this.hide();
-      if (this._focusAttached) this.restoreFocus();
+      this.hide(null, false);
     }
     restoreFocus(element) {
       element = dom9(element || this.element);
@@ -7091,23 +7094,14 @@
         }
       }, 0);
     }
-    hideAll(force) {
-      let css = "";
-      if (force) {
-        css = "div." + this.options.mainClass;
-      } else {
-        css = "div." + this.options.mainClass + ":not(." + this.options.mainClass + "-fixed)";
-      }
-      let elements = dom9(css);
-      if (!elements) {
-        return this;
-      }
-      elements.removeClass("in").style({ display: "none" }).attribute("tabindex", "-1");
-      if (!force && this._focusAttached) this.restoreFocus();
-      if (this._focusAttached) {
-        dom9("body").off("focus", this.bound("focus"), true);
-        this._focusAttached = false;
-      }
+    hideAll(force, restore = false) {
+      const restoreTarget = restore && this._focusAttached ? this.element : null;
+      instances.forEach((instance2) => {
+        const target = instance2.$target;
+        if (!target || !force && target.hasClass(instance2.options.mainClass + "-fixed")) return;
+        instance2.hide(null, false);
+      });
+      if (restoreTarget) this.restoreFocus(restoreTarget);
       return this;
     }
     show() {
@@ -7141,7 +7135,7 @@
       }
     }
     displayContent() {
-      let elementPos = this.element.position(), target = this.getTarget().attribute("class", null).addClass(this.options.mainClass), targetContent = this.getContentElement(), targetWidth, targetHeight, placement;
+      let elementPos, target = this.getTarget().attribute("class", null).addClass(this.options.mainClass), targetContent = this.getContentElement(), targetWidth, targetHeight, placement;
       this.element.emit("show.popover", this);
       if (this.options.width !== "auto") {
         target.style({ width: this.options.width });
@@ -7172,6 +7166,15 @@
         left: -1e3,
         display: "block"
       }).bottom(container2);
+      const anchorRect = this.element[0].getBoundingClientRect();
+      const offsetParent = target[0].offsetParent || document.documentElement;
+      const parentRect = offsetParent.getBoundingClientRect();
+      elementPos = {
+        left: anchorRect.left - parentRect.left + offsetParent.scrollLeft,
+        top: anchorRect.top - parentRect.top + offsetParent.scrollTop,
+        width: anchorRect.width,
+        height: anchorRect.height
+      };
       if (this.options.style) {
         if (typeof this.options.style === "string") {
           this.options.style = this.options.style.split(",").map(Function.prototype.call, String.prototype.trim);
@@ -7306,7 +7309,7 @@
     }
     escapeHandler(e) {
       if (e.keyCode === 27) {
-        this.hideAll();
+        this.hideAll(false, true);
       }
     }
     bodyClickHandler() {
@@ -7333,7 +7336,7 @@
     }
     /* utils methods */
     getPlacement(pos, targetHeight) {
-      let placement, de = document.documentElement, db = document.body, clientWidth = de.clientWidth, clientHeight = de.clientHeight, scrollTop = Math.max(db.scrollTop, de.scrollTop), scrollLeft = Math.max(db.scrollLeft, de.scrollLeft), pageX = Math.max(0, pos.left - scrollLeft), pageY = Math.max(0, pos.top - scrollTop), arrowSize = 20;
+      let placement, de = document.documentElement, clientWidth = de.clientWidth, clientHeight = de.clientHeight, anchorRect = this.element[0].getBoundingClientRect(), pageX = Math.max(0, anchorRect.left), pageY = Math.max(0, anchorRect.top), arrowSize = 20;
       if (typeof this.options.placement === "function") {
         placement = this.options.placement.call(this, this.getTarget()[0], this.element[0]);
       } else {
@@ -7512,6 +7515,9 @@
     }
     return popover;
   };
+  document.addEventListener("genesis:content-replacing", () => {
+    instances.forEach((instance2) => instance2.hide(null, false));
+  });
   var popover_default = dom9;
 
   // platforms/common/application/lm/inheritance/index.js
@@ -10917,176 +10923,6 @@
     submit: submit2
   };
 
-  // platforms/common/application/utils/async-foreach.js
-  var asyncForEach = function(arr, eachFn, doneFn) {
-    arr = arr || [];
-    let i = -1;
-    let len = arr.length >>> 0;
-    (function next(result) {
-      let async;
-      let abort = result === false;
-      do {
-        ++i;
-      } while (!(i in arr) && i !== len);
-      if (abort || i === len) {
-        if (doneFn) {
-          doneFn(!abort, arr);
-        }
-        return;
-      }
-      result = eachFn.call({
-        // If `this.async` is called inside the `eachFn` callback, set the async
-        // flag and return a function that can be used to continue iterating.
-        async: function() {
-          async = true;
-          return next;
-        }
-      }, arr[i], i, arr);
-      if (!async) {
-        next(result);
-      }
-    })();
-  };
-  var async_foreach_default = asyncForEach;
-
-  // platforms/common/application/assignments/index.js
-  var { ready: ready11, delegate: delegate8 } = dom_default;
-  var asyncForEach2 = async_foreach_default;
-  var cache = /* @__PURE__ */ new WeakMap();
-  var visible = (element) => getComputedStyle(element).display !== "none";
-  var checked = (element) => Boolean(element && element.checked);
-  var hasGlobalFilter = (element) => {
-    if (element.closest("[data-g-global-filter]")) return true;
-    return element.parentElement ? Array.from(element.parentElement.children).some((sibling) => sibling.matches("[data-g-global-filter]")) : false;
-  };
-  var emitChange2 = (input) => input.dispatchEvent(new Event("change", { bubbles: true }));
-  var Assignments = {
-    toggleSection(event, element, index, array) {
-      if (event.type.startsWith("touch")) event.preventDefault();
-      if (hasGlobalFilter(element)) return Assignments.globalToggleSection(event, element);
-      if (element.matches("label")) return Assignments.treatLabel(event, element);
-      const card = element.closest(".card");
-      const save = document.querySelector("[data-save]");
-      const mode = element.getAttribute("data-g-assignments-check") == null ? 0 : 1;
-      if (!card) return;
-      let stored2 = cache.get(card);
-      if (!stored2 || !stored2.inputs) {
-        stored2 = Object.assign({}, stored2, {
-          inputs: Array.from(card.querySelectorAll('.enabler input[type="hidden"]'))
-        });
-        cache.set(card, stored2);
-      }
-      asyncForEach2(stored2.inputs, (item) => {
-        const row = item.closest("label, h4");
-        if (!row || !visible(row)) return;
-        item.value = mode;
-        emitChange2(item);
-      }, () => {
-        if (save && typeof index !== "undefined" && array && index + 1 === array.length) {
-          save.disabled = false;
-        }
-      });
-    },
-    filterSection(event, element, value, global2) {
-      if (hasGlobalFilter(element)) return Assignments.globalFilterSection(event, element);
-      const card = element.closest(".card");
-      const onlyEnabled = document.querySelector("[data-assignments-enabledonly]");
-      if (!card) return;
-      let stored2 = cache.get(card);
-      if (!stored2 || !stored2.labels) {
-        stored2 = Object.assign({}, stored2, {
-          labels: Array.from(card.querySelectorAll("label .settings-param-title"))
-        });
-        cache.set(card, stored2);
-      }
-      const labels = stored2.labels;
-      value = value || element.value;
-      if (!value && !checked(onlyEnabled)) {
-        card.style.display = "inline-block";
-        labels.forEach((label) => {
-          const row = label.closest("label");
-          if (row) row.style.display = "block";
-        });
-        return;
-      }
-      let completed = 0;
-      let shown = 0;
-      const needle = String(value || "").trim().toLowerCase();
-      if (!labels.length) card.style.display = checked(onlyEnabled) || value ? "none" : "inline-block";
-      asyncForEach2(labels, (item) => {
-        const text = item.textContent.trim().toLowerCase();
-        const row = item.closest("label, h4");
-        let matches3 = !needle || text.startsWith(needle) || text.includes(" ".concat(needle));
-        if (checked(onlyEnabled)) {
-          const enabled = row && row.querySelector('.enabler input[type="hidden"]');
-          matches3 = matches3 && Boolean(Number(enabled ? enabled.value : 0));
-        }
-        if (matches3) {
-          const groupHolder = item.closest("[data-g-assignments-parent]");
-          const group = groupHolder && groupHolder.getAttribute("data-g-assignments-parent");
-          if (group) {
-            const parentGroup = card.querySelector('[data-g-assignments-group="'.concat(CSS.escape(group), '"]'));
-            if (parentGroup) parentGroup.style.display = "block";
-          }
-          if (row) row.style.display = "block";
-          shown++;
-        } else if (row) {
-          row.style.display = "none";
-        }
-        completed++;
-        if (completed === labels.length && global2) {
-          card.style.display = shown ? "inline-block" : "none";
-        }
-      });
-    },
-    filterEnabledOnly(event) {
-      const global2 = document.querySelector('[data-g-global-filter] input[type="text"]');
-      Assignments.globalFilterSection(event, global2);
-    },
-    treatLabel(event, element) {
-      event.stopPropagation();
-      event.preventDefault();
-      if (event.target instanceof Element && event.target.closest(".knob, .toggle")) return;
-      const input = element.querySelector('input[type="hidden"]:not([disabled])');
-      if (!input) return;
-      input.value = Number(!Boolean(Number(input.value)));
-      emitChange2(input);
-      return false;
-    },
-    globalToggleSection(event, element) {
-      const selector = element.getAttribute("data-g-assignments-check") == null ? "[data-g-assignments-uncheck]" : "[data-g-assignments-check]";
-      const save = document.querySelector("[data-save]");
-      const controls = Array.from(document.querySelectorAll("#assignments .card ".concat(selector, ", .settings-assignments .card ").concat(selector)));
-      if (!controls.length) return;
-      if (save) save.disabled = true;
-      asyncForEach2(controls, (item, index, array) => {
-        Assignments.toggleSection(event, item, index, array);
-      });
-    },
-    globalFilterSection(event, element) {
-      const value = element ? element.value : "";
-      const onlyEnabled = document.querySelector("[data-assignments-enabledonly]");
-      const searches = Array.from(document.querySelectorAll('#assignments .card .search input[type="text"], .settings-assignments .card .search input[type="text"]'));
-      if (!searches.length && !checked(onlyEnabled)) return;
-      asyncForEach2(searches, (item) => {
-        Assignments.filterSection(event, item, value, "global");
-      });
-    },
-    toggleStateDelegation(event, element) {
-      element.disabled = element.value !== "1";
-    }
-  };
-  ready11(() => {
-    const body = document.body;
-    delegate8(body, "input", '#assignments .search input[type="text"], .settings-assignments .search input[type="text"]', Assignments.filterSection);
-    const toggleSelector = "#assignments .card label, #assignments [data-g-assignments-check], #assignments [data-g-assignments-uncheck], .settings-assignments .card label, .settings-assignments [data-g-assignments-check], .settings-assignments [data-g-assignments-uncheck]";
-    delegate8(body, "click", toggleSelector, Assignments.toggleSection);
-    delegate8(body, "touchend", toggleSelector, Assignments.toggleSection);
-    delegate8(body, "change", "[data-assignments-enabledonly]", Assignments.filterEnabledOnly);
-    delegate8(body, "change", '#assignments input[type="hidden"][name], .settings-assignments input[type="hidden"][name]', Assignments.toggleStateDelegation);
-  });
-  var assignments_default = Assignments;
-
   // platforms/common/application/utils/ajaxify-links.js
   var dom19 = dom_default;
   var storage3 = /* @__PURE__ */ new Map();
@@ -11099,7 +10935,6 @@
   var parseAjaxURI12 = get_ajax_url_default.parse;
   var getAjaxSuffix12 = get_ajax_suffix_default;
   var mm = menu_default;
-  var assignments = assignments_default;
   var ERROR = false;
   var TMP_SELECTIZE_DISABLE = false;
   var ConfNavIndex = -1;
@@ -11334,6 +11169,7 @@
         return false;
       }
       let target = Data.parent && Data.element ? Data.element.closest(Data.parent) : Data.target ? document.querySelector(Data.target) : null, destination = target || document.querySelector("[data-genesis-content]") || body;
+      document.dispatchEvent(new CustomEvent("genesis:content-replacing"));
       destination.innerHTML = result.html || result;
       let fader = destination.matches("[data-genesis-content]") ? destination : destination.querySelector("[data-genesis-content]");
       if (fader) {
@@ -11344,9 +11180,6 @@
         }
         showNavbar(sidebar2, !isTopNavOrMenu);
       }
-      document.querySelectorAll(".genesis-popover").forEach(function(popover) {
-        popover.remove();
-      });
       if (Data.element) {
         dispatchState("statechangeAfter", Data.element, Data);
       }
@@ -11356,7 +11189,6 @@
       }
       Selectize5.initialize(document.querySelectorAll("[data-selectize]"));
       selectorChangeEvent();
-      assignments.chromeFix();
       body.dispatchEvent(new CustomEvent("statechangeEnd", { bubbles: true }));
     });
   });
@@ -11530,6 +11362,176 @@
     });
     selectorChangeEvent();
   });
+
+  // platforms/common/application/utils/async-foreach.js
+  var asyncForEach = function(arr, eachFn, doneFn) {
+    arr = arr || [];
+    let i = -1;
+    let len = arr.length >>> 0;
+    (function next(result) {
+      let async;
+      let abort = result === false;
+      do {
+        ++i;
+      } while (!(i in arr) && i !== len);
+      if (abort || i === len) {
+        if (doneFn) {
+          doneFn(!abort, arr);
+        }
+        return;
+      }
+      result = eachFn.call({
+        // If `this.async` is called inside the `eachFn` callback, set the async
+        // flag and return a function that can be used to continue iterating.
+        async: function() {
+          async = true;
+          return next;
+        }
+      }, arr[i], i, arr);
+      if (!async) {
+        next(result);
+      }
+    })();
+  };
+  var async_foreach_default = asyncForEach;
+
+  // platforms/common/application/assignments/index.js
+  var { ready: ready11, delegate: delegate8 } = dom_default;
+  var asyncForEach2 = async_foreach_default;
+  var cache = /* @__PURE__ */ new WeakMap();
+  var visible = (element) => getComputedStyle(element).display !== "none";
+  var checked = (element) => Boolean(element && element.checked);
+  var hasGlobalFilter = (element) => {
+    if (element.closest("[data-g-global-filter]")) return true;
+    return element.parentElement ? Array.from(element.parentElement.children).some((sibling) => sibling.matches("[data-g-global-filter]")) : false;
+  };
+  var emitChange2 = (input) => input.dispatchEvent(new Event("change", { bubbles: true }));
+  var Assignments = {
+    toggleSection(event, element, index, array) {
+      if (event.type.startsWith("touch")) event.preventDefault();
+      if (hasGlobalFilter(element)) return Assignments.globalToggleSection(event, element);
+      if (element.matches("label")) return Assignments.treatLabel(event, element);
+      const card = element.closest(".card");
+      const save = document.querySelector("[data-save]");
+      const mode = element.getAttribute("data-g-assignments-check") == null ? 0 : 1;
+      if (!card) return;
+      let stored2 = cache.get(card);
+      if (!stored2 || !stored2.inputs) {
+        stored2 = Object.assign({}, stored2, {
+          inputs: Array.from(card.querySelectorAll('.enabler input[type="hidden"]'))
+        });
+        cache.set(card, stored2);
+      }
+      asyncForEach2(stored2.inputs, (item) => {
+        const row = item.closest("label, h4");
+        if (!row || !visible(row)) return;
+        item.value = mode;
+        emitChange2(item);
+      }, () => {
+        if (save && typeof index !== "undefined" && array && index + 1 === array.length) {
+          save.disabled = false;
+        }
+      });
+    },
+    filterSection(event, element, value, global2) {
+      if (hasGlobalFilter(element)) return Assignments.globalFilterSection(event, element);
+      const card = element.closest(".card");
+      const onlyEnabled = document.querySelector("[data-assignments-enabledonly]");
+      if (!card) return;
+      let stored2 = cache.get(card);
+      if (!stored2 || !stored2.labels) {
+        stored2 = Object.assign({}, stored2, {
+          labels: Array.from(card.querySelectorAll("label .settings-param-title"))
+        });
+        cache.set(card, stored2);
+      }
+      const labels = stored2.labels;
+      value = value || element.value;
+      if (!value && !checked(onlyEnabled)) {
+        card.style.display = "inline-block";
+        labels.forEach((label) => {
+          const row = label.closest("label");
+          if (row) row.style.display = "block";
+        });
+        return;
+      }
+      let completed = 0;
+      let shown = 0;
+      const needle = String(value || "").trim().toLowerCase();
+      if (!labels.length) card.style.display = checked(onlyEnabled) || value ? "none" : "inline-block";
+      asyncForEach2(labels, (item) => {
+        const text = item.textContent.trim().toLowerCase();
+        const row = item.closest("label, h4");
+        let matches3 = !needle || text.startsWith(needle) || text.includes(" ".concat(needle));
+        if (checked(onlyEnabled)) {
+          const enabled = row && row.querySelector('.enabler input[type="hidden"]');
+          matches3 = matches3 && Boolean(Number(enabled ? enabled.value : 0));
+        }
+        if (matches3) {
+          const groupHolder = item.closest("[data-g-assignments-parent]");
+          const group = groupHolder && groupHolder.getAttribute("data-g-assignments-parent");
+          if (group) {
+            const parentGroup = card.querySelector('[data-g-assignments-group="'.concat(CSS.escape(group), '"]'));
+            if (parentGroup) parentGroup.style.display = "block";
+          }
+          if (row) row.style.display = "block";
+          shown++;
+        } else if (row) {
+          row.style.display = "none";
+        }
+        completed++;
+        if (completed === labels.length && global2) {
+          card.style.display = shown ? "inline-block" : "none";
+        }
+      });
+    },
+    filterEnabledOnly(event) {
+      const global2 = document.querySelector('[data-g-global-filter] input[type="text"]');
+      Assignments.globalFilterSection(event, global2);
+    },
+    treatLabel(event, element) {
+      event.stopPropagation();
+      event.preventDefault();
+      if (event.target instanceof Element && event.target.closest(".knob, .toggle")) return;
+      const input = element.querySelector('input[type="hidden"]:not([disabled])');
+      if (!input) return;
+      input.value = Number(!Boolean(Number(input.value)));
+      emitChange2(input);
+      return false;
+    },
+    globalToggleSection(event, element) {
+      const selector = element.getAttribute("data-g-assignments-check") == null ? "[data-g-assignments-uncheck]" : "[data-g-assignments-check]";
+      const save = document.querySelector("[data-save]");
+      const controls = Array.from(document.querySelectorAll("#assignments .card ".concat(selector, ", .settings-assignments .card ").concat(selector)));
+      if (!controls.length) return;
+      if (save) save.disabled = true;
+      asyncForEach2(controls, (item, index, array) => {
+        Assignments.toggleSection(event, item, index, array);
+      });
+    },
+    globalFilterSection(event, element) {
+      const value = element ? element.value : "";
+      const onlyEnabled = document.querySelector("[data-assignments-enabledonly]");
+      const searches = Array.from(document.querySelectorAll('#assignments .card .search input[type="text"], .settings-assignments .card .search input[type="text"]'));
+      if (!searches.length && !checked(onlyEnabled)) return;
+      asyncForEach2(searches, (item) => {
+        Assignments.filterSection(event, item, value, "global");
+      });
+    },
+    toggleStateDelegation(event, element) {
+      element.disabled = element.value !== "1";
+    }
+  };
+  ready11(() => {
+    const body = document.body;
+    delegate8(body, "input", '#assignments .search input[type="text"], .settings-assignments .search input[type="text"]', Assignments.filterSection);
+    const toggleSelector = "#assignments .card label, #assignments [data-g-assignments-check], #assignments [data-g-assignments-uncheck], .settings-assignments .card label, .settings-assignments [data-g-assignments-check], .settings-assignments [data-g-assignments-uncheck]";
+    delegate8(body, "click", toggleSelector, Assignments.toggleSection);
+    delegate8(body, "touchend", toggleSelector, Assignments.toggleSection);
+    delegate8(body, "change", "[data-assignments-enabledonly]", Assignments.filterEnabledOnly);
+    delegate8(body, "change", '#assignments input[type="hidden"][name], .settings-assignments input[type="hidden"][name]', Assignments.toggleStateDelegation);
+  });
+  var assignments_default = Assignments;
 
   // platforms/common/application/styles/index.js
   var modal13 = ui_default.modal;
@@ -14789,13 +14791,13 @@
         });
         element.on("shown.popover", function(popover2) {
           let enabler = element.find(".enabler");
-          element.attribute("aria-expanded", true).attribute("aria-hidden", false);
+          element.attribute("aria-expanded", true);
           if (enabler) {
             enabler[0].focus();
           }
         });
         element.on("hide.popover", function(popover2) {
-          element.attribute("aria-expanded", false).attribute("aria-hidden", true);
+          element.attribute("aria-expanded", false);
         });
         element.getPopover().show();
       }

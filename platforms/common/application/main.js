@@ -151,7 +151,7 @@ ready(function() {
                 });
             element.on('shown.popover', function(popover){
                 let enabler = element.find('.enabler');
-                element.attribute('aria-expanded', true).attribute('aria-hidden', false);
+                element.attribute('aria-expanded', true);
 
                 if (enabler) {
                     enabler[0].focus();
@@ -159,7 +159,7 @@ ready(function() {
             });
 
             element.on('hide.popover', function(popover){
-                element.attribute('aria-expanded', false).attribute('aria-hidden', true);
+                element.attribute('aria-expanded', false);
             });
 
             element.getPopover().show();
