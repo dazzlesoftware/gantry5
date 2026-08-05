@@ -42,6 +42,10 @@
     <condition property="update_versions" value="false">
         <not><isset property="update_versions" /></not>
     </condition>
+    <!-- Minimum framework version required by packaged themes. -->
+    <condition property="genesis.version" value="5.5">
+        <not><isset property="genesis.version" /></not>
+    </condition>
 
     <property name="path.assets" value="${project_dir}/assets" />
     <property name="path.engines" value="${project_dir}/engines" />
@@ -82,6 +86,7 @@
         <replacetokens>
             <token key="version" value="${xml.version}"/>
             <token key="versiondate" value="${version.date}" />
+            <token key="genesis_version" value="${genesis.version}" />
         </replacetokens>
     </filterchain>
 
@@ -103,6 +108,7 @@
         <echo message="Phing Version:   ${phing.version}" />
         <echo message="Project:         ${cfg.name}" />
         <echo message="XML Version:     ${xml.version}" />
+        <echo message="Theme Genesis:   ${genesis.version}" />
         <echo message="XML Author:      ${xml.author}" />
         <echo message="XML Copyright:   ${xml.copyright}" />
         <echo message="XML License:     ${xml.license}" />
@@ -207,6 +213,7 @@
                     <replacetokens>
                         <token key="version" value="${xml.version}"/>
                         <token key="versiondate" value="${version.date}" />
+                        <token key="genesis_version" value="${genesis.version}" />
                         <token key="sha512_joomla_package" value="${sha512_joomla_package}" />
                         <token key="sha512_joomla_helium" value="${sha512_joomla_helium}" />
                         <token key="sha512_joomla_hydrogen" value="${sha512_joomla_hydrogen}" />

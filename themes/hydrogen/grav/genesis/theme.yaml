@@ -78,7 +78,7 @@ configuration:
       nopaddingall: No Padding
 
   dependencies:
-    genesis: '5.5'
+    genesis: '@genesis_version@'
 
 admin:
   styles:

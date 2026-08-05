@@ -137,7 +137,7 @@ function gravThemeYaml(string $yaml, string $slug, string $sourcePlatform): stri
     $yaml = preg_replace('/^(\s{4}file:)\s*.*$/m', '$1 \'genesis-theme://includes/theme.php\'', $yaml, 1);
     $yaml = preg_replace('/^(\s{4}class:)\s*.*$/m', '$1 \'\\Genesis\\Framework\\Theme\'', $yaml, 1);
     $yaml = preg_replace('/^\s{4}textdomain:.*\R/m', '', $yaml);
-    $yaml = preg_replace('/^(\s{4}genesis:)\s*.*$/m', '$1 \'5.5\'', $yaml);
+    $yaml = preg_replace('/^(\s{4}genesis:)\s*.*$/m', '$1 \'@genesis_version@\'', $yaml);
     $yaml = str_replace($slug . '-' . $sourcePlatform, $slug . '-grav', $yaml);
     $yaml = preg_replace('/\Rchrome:\R[\s\S]*$/', "\n", $yaml);
 

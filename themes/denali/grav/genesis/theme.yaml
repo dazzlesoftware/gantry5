@@ -61,7 +61,7 @@ configuration:
       - custom
 
   dependencies:
-    genesis: '5.5'
+    genesis: '@genesis_version@'
   section-variations: 
     Padding Variations:
       section-vertical-paddings: Section Vertical Paddings
