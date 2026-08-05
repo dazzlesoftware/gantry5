@@ -1,7 +1,7 @@
 "use strict";
 
 const ready = require('../utils/dom').ready;
-const decouple = require('../utils/decouple');
+const frameListener = require('../utils/frame-listener');
 const scrollbarWidth = require('../utils/get-scrollbar-width');
 
 let container;
@@ -81,8 +81,8 @@ ready(() => {
         }
     };
 
-    decouple(scrollElement, 'scroll', scroll);
-    decouple(window, 'resize', () => {
+    frameListener(scrollElement, 'scroll', scroll);
+    frameListener(window, 'resize', () => {
         if (!particles || !search) return;
         scroll();
         particles.style.maxHeight = `${window.innerHeight - heightTop - heightBottom - search.offsetHeight - 30}px`;

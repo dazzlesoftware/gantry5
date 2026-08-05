@@ -1,7 +1,7 @@
 "use strict";
 // Based on Vex (https://github.com/hubspot/vex)
 
-var $        = require('../utils/elements.utils'),
+var dom        = require('../utils/dom-effects'),
     zen      = require('../utils/create-element'),
     domready = require('../utils/dom').ready,
 
@@ -65,7 +65,7 @@ class Modal {
 
         var self = this;
         domready(function() {
-            $(window).on('keydown', function(event) {
+            dom(window).on('keydown', function(event) {
                 if (event.keyCode === 27) {
                     return self.closeByEscape();
                 }
@@ -74,14 +74,14 @@ class Modal {
 
         this
             .on('dialogOpen', function(options) {
-                $('body').addClass(options.baseClassNames.open);
-                $('html').addClass(options.baseClassNames.open);
+                dom('body').addClass(options.baseClassNames.open);
+                dom('html').addClass(options.baseClassNames.open);
             })
             .on('dialogAfterClose', function(options) {
                 var all = this.getAll();
                 if (!all || !all.length) {
-                    $('body').removeClass(options.baseClassNames.open);
-                    $('html').removeClass(options.baseClassNames.open);
+                    dom('body').removeClass(options.baseClassNames.open);
+                    dom('html').removeClass(options.baseClassNames.open);
                 }
             }.bind(this));
     }
@@ -197,7 +197,7 @@ class Modal {
                 elements.container.attribute('aria-hidden', 'false');
                 setTimeout(function(){ elements.content[0].focus(); }, 0);
 
-                var selects = $('[data-selectize]');
+                var selects = dom('[data-selectize]');
                 if (selects) { selects.selectize(); }
             }.bind(this));
         } else {
@@ -224,13 +224,13 @@ class Modal {
         }.bind(this));
 
         // inject the dialog in the DOM
-        var container = $(options.appendNode);
+        var container = dom(options.appendNode);
 
         // wordpress workaround for out-of-scope cases
         if (GENESIS_PLATFORM == 'wordpress') {
-            container = $('#widgets-editor') || $('#customize-preview') || $('#widgets-right') || $(options.appendNode);
+            container = dom('#widgets-editor') || dom('#customize-preview') || dom('#widgets-right') || dom(options.appendNode);
             if ('#' + container.id() != options.appendNode) {
-                var wpwrap = $('#wpwrap') || $('.wp-customizer'), sibling, workaround;
+                var wpwrap = dom('#wpwrap') || dom('.wp-customizer'), sibling, workaround;
                 if (wpwrap.id() == 'wpwrap') {
                     sibling = wpwrap.nextSibling(options.appendNode);
                     workaround =  sibling ? sibling : zen('div.g5wp-out-of-scope' + options.appendNode).after(wpwrap);
@@ -259,15 +259,15 @@ class Modal {
 
     getAll() {
         var options = this.options;
-        return $("." + options.baseClassNames.container + ":not(." + options.baseClassNames.closing + ") ." + options.baseClassNames.content);
+        return dom("." + options.baseClassNames.container + ":not(." + options.baseClassNames.closing + ") ." + options.baseClassNames.content);
     }
 
     getByID(id) {
         var all = this.getAll();
         if (!all) { return []; }
 
-        return $(all.filter(function(element) {
-            element = $(element);
+        return dom(all.filter(function(element) {
+            element = dom(element);
             return storage.get(element).dialog.id === id;
         }));
     }
@@ -276,7 +276,7 @@ class Modal {
         var ids, id;
 
         ids = Array.prototype.map.call(this.getAll() || [], function(element) {
-            element = $(element);
+            element = dom(element);
 
             return storage.get(element).dialog.id;
         });
@@ -295,7 +295,7 @@ class Modal {
             if (!all || !all.length) {
                 return false;
             }
-            element = $(all[all.length - 1]);
+            element = dom(all[all.length - 1]);
 
             id = storage.get(element).dialog.id;
         }
@@ -307,7 +307,7 @@ class Modal {
         var ids;
 
         ids = Array.prototype.map.call(this.getAll() || [], function(element) {
-            element = $(element);
+            element = dom(element);
 
             return storage.get(element).dialog.id;
         });
@@ -399,11 +399,11 @@ class Modal {
 
     showLoading() {
         this.hideLoading();
-        return $('[data-genesis-container]').appendChild(zen('div.genesis-dialog-loading-spinner.' + this.options.className));
+        return dom('[data-genesis-container]').appendChild(zen('div.genesis-dialog-loading-spinner.' + this.options.className));
     }
 
     hideLoading() {
-        var spinner = $('.genesis-dialog-loading-spinner');
+        var spinner = dom('.genesis-dialog-loading-spinner');
         return spinner ? spinner.remove() : false;
     }
 
@@ -413,11 +413,11 @@ class Modal {
             return;
         }
 
-        return this.close(storage.get($(element)).dialog.id);
+        return this.close(storage.get(dom(element)).dialog.id);
     }
 
     _closeButtonClick(element) {
-        return this.close(storage.get($(element)).dialog.id);
+        return this.close(storage.get(dom(element)).dialog.id);
     }
 }
 

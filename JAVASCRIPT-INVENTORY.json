@@ -22,28 +22,28 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 190,
+    "totalFiles": 188,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 168,
+      "first_party_source": 166,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
     },
     "areas": {
-      "administration": 89,
+      "administration": 87,
       "build": 5,
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 34,
       "shared_browser_asset": 55
     },
-    "activeReferencedFiles": 188,
+    "activeReferencedFiles": 186,
     "unreferencedFiles": 2,
-    "commonjsFiles": 99,
+    "commonjsFiles": 97,
     "esModuleFiles": 5,
-    "varFiles": 98,
-    "legacyBrowserApiFiles": 6,
+    "varFiles": 96,
+    "legacyBrowserApiFiles": 5,
     "inlineCodeGenerationFiles": 0,
     "duplicateGroups": 0
   },
@@ -66,7 +66,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": true,
-      "activeReferenceCount": 13,
+      "activeReferenceCount": 14,
       "consumers": [
         "assets/common/gulpfile.js",
         "assets/common/js/main.js",
@@ -80,6 +80,7 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 1545,
@@ -1259,7 +1260,7 @@
       "owner": "Genesis",
       "generatedFrom": "assets/common/application/main.js",
       "entryPoint": false,
-      "activeReferenceCount": 13,
+      "activeReferenceCount": 14,
       "consumers": [
         "assets/common/gulpfile.js",
         "bin/audit-javascript.mjs",
@@ -1273,6 +1274,7 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 31895,
@@ -2863,9 +2865,9 @@
         "platforms/common/package-lock.json",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 8137,
+      "bytes": 8153,
       "lines": 194,
-      "sha256": "c2ec5640930cbfd5a29cee7d46c532706e1300ac7813c2b0a314f274a4f2c9c3",
+      "sha256": "70f452906aa694ae6ff03eaee89d042f2ef83578cb2615bd4e67b92c0325ce69",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -3199,9 +3201,9 @@
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/application/lm/blocks/section.js"
       ],
-      "bytes": 5729,
+      "bytes": 5732,
       "lines": 210,
-      "sha256": "7f4c9da159de166ed55b6d42a505e47494b0dda412db6ab81bb2cc110f14caa1",
+      "sha256": "5b4fc93ad8beaee9e2a35234d33212075556fa4d44b03d7d8652386986f69004",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -3707,9 +3709,9 @@
         "platforms/common/package-lock.json",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 28081,
+      "bytes": 28142,
       "lines": 658,
-      "sha256": "4dbc1946be0f47480fda6849e592ffa560cc7e26fc2fd723c87b7eced6806ca9",
+      "sha256": "594a684dfa14af1bb7d29f2673b3e8d02fc6d76cfbdb8b45a32d6f60d6db12f3",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -3796,9 +3798,9 @@
       "consumers": [
         "platforms/common/application/lm/index.js"
       ],
-      "bytes": 25914,
+      "bytes": 25969,
       "lines": 640,
-      "sha256": "db6152f34f4388ae38b6c1853908552936a82ece53f0bed9c6ead51a7da1bdc9",
+      "sha256": "6dca8dd7e7b224c8ebb8ec8eafeb3068e2fd6d7f60f77b32b58256b670f55355",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -3861,9 +3863,9 @@
       "consumers": [
         "platforms/common/application/lm/index.js"
       ],
-      "bytes": 3853,
+      "bytes": 3874,
       "lines": 95,
-      "sha256": "8b00be0487a99471109031c40945a46b45498a221c35d1599acc1248df4e1206",
+      "sha256": "a677d37fc8eac2270a5453ea0305d9c160133c1b17836d17411c4a031fd8f594",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -3886,7 +3888,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": true,
-      "activeReferenceCount": 13,
+      "activeReferenceCount": 14,
       "consumers": [
         "assets/common/gulpfile.js",
         "assets/common/js/main.js",
@@ -3900,11 +3902,12 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 17575,
-      "lines": 443,
-      "sha256": "3afbf652898bb086fc75d43d07227c235f95b0f15c3c9dec2ea136ba0d6553b2",
+      "bytes": 17546,
+      "lines": 441,
+      "sha256": "73aa19ce8cdcc49a84f9fc6377a903da962e93b9f0630ba600e1f0959e83e5ab",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4080,9 +4083,9 @@
         "platforms/phpbb/genesis/admin/templates/pages/menu/menu.html.twig",
         "src/platforms/phpbb/classes/Genesis/Framework/Menu.php"
       ],
-      "bytes": 21110,
+      "bytes": 21147,
       "lines": 552,
-      "sha256": "4752e22caef5dcbb3bce5c0f3b759bfeaf59987d8d698ef9a30ed365b73f839b",
+      "sha256": "205cbad33d574266640994770b1298b257a9b1c212067f249d9e82b13939c05f",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4211,9 +4214,9 @@
         "platforms/common/package-lock.json",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 25767,
+      "bytes": 25784,
       "lines": 764,
-      "sha256": "a9407b7e2f42b5253525c26a08a90ed05fe567cb4320d4f434c7189770b8d447",
+      "sha256": "789864007accdc8f804182c31000cece99fa4a2d6fb7b817c3ce861594881384",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4296,9 +4299,9 @@
         "platforms/common/package-lock.json",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 30484,
+      "bytes": 30542,
       "lines": 793,
-      "sha256": "64858f4b6abe0e375594eac13e4ad14ac1c821f9095aa533d852caa2768a9929",
+      "sha256": "c2cd89b096478dc3f1a717bed20a77b96020a79842af894b33eb8ac41f956c16",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4693,9 +4696,9 @@
         "platforms/common/application/lm/layoutmanager.js",
         "platforms/common/application/menu/menumanager.js"
       ],
-      "bytes": 15594,
+      "bytes": 15623,
       "lines": 393,
-      "sha256": "f28fbb13aca74c78d3a8b3a90d5e8458c72e09986e79f67f226688cc9d522c26",
+      "sha256": "8842e8ffd4f783f5ddc3c850302046229fc88a90b91b0b053e417b081e6811fe",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4840,9 +4843,9 @@
         "platforms/common/application/ui/index.js",
         "platforms/common/application/ui/togglers.js"
       ],
-      "bytes": 13293,
+      "bytes": 13338,
       "lines": 427,
-      "sha256": "5c3a1b98a39e2be8efad0f051a1b6dd556606ebe03a2aa53af8e4ac3c937a159",
+      "sha256": "10dff68c287fa450a1b844f6648d30ede04e14c2e489161bc902d0a8cecaff8d",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4874,9 +4877,9 @@
         "platforms/common/application/particles/icons/index.js",
         "platforms/common/application/styles/index.js"
       ],
-      "bytes": 21106,
+      "bytes": 21149,
       "lines": 641,
-      "sha256": "c8bfa8da50eb0945cc263d61f7e0df0d204a58cf21cf2777bd9e68ea6ebacdce",
+      "sha256": "2fe6a3b142060a34a7fe2a7dea06893d86dacd8585c92b4de608a991e0c50ba2",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -4904,7 +4907,7 @@
       "activeReferenceCount": 2,
       "consumers": [
         "platforms/common/application/particles/filepicker/index.js",
-        "platforms/common/application/utils/elements.utils.js"
+        "platforms/common/application/utils/dom-effects.js"
       ],
       "bytes": 6767,
       "lines": 219,
@@ -4936,9 +4939,9 @@
         "platforms/common/application/ui/index.js",
         "platforms/common/application/utils/ajaxify-links.js"
       ],
-      "bytes": 84131,
+      "bytes": 84258,
       "lines": 2407,
-      "sha256": "88d9016279585f8a8ed18a5d01d0ca998a9a18a57845883766311c8d4b8273d8",
+      "sha256": "5fde6828d22faedfaaf288ec53fc6083315677f277086f8e5a378bf8e2c8ff67",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -5171,45 +5174,15 @@
         "platforms/common/application/ui/popover.js",
         "platforms/common/application/ui/selectize.js"
       ],
-      "bytes": 1121,
+      "bytes": 1124,
       "lines": 34,
-      "sha256": "4146182e97091a92f776f622ea3476e78b50d8ff44ad4637fc34b502c08c0409",
+      "sha256": "7e35a0e381ecc66d15e3dfc410967591372e05c159dfc36ef92fe80db58e43e4",
       "signals": {
         "commonjs": true,
         "esModule": false,
         "var": false,
         "prototype": false,
         "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [],
-        "customEvents": [],
-        "dataAttributes": [],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "platforms/common/application/utils/decouple.js",
-      "area": "administration",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 4,
-      "consumers": [
-        "platforms/common/application/assignments/index.js",
-        "platforms/common/application/lm/particles-sidebar.js",
-        "platforms/common/application/particles/fonts/index.js",
-        "tests/php83/FrontendCoreModulesTest.php"
-      ],
-      "bytes": 766,
-      "lines": 37,
-      "sha256": "3407b7b03295c8e3e351afe9d7a6808e7b010cf4d3de9b82fc5e6019c7b248a4",
-      "signals": {
-        "commonjs": true,
-        "esModule": false,
-        "var": true,
-        "prototype": false,
-        "legacyBrowserApi": true,
         "inlineCodeGeneration": false,
         "globals": [],
         "customEvents": [],
@@ -5232,6 +5205,72 @@
       "bytes": 892,
       "lines": 27,
       "sha256": "79abc2c23ea109bd4dd715b29e22a433b98e6224d10ea5a8d16c0269207601cc",
+      "signals": {
+        "commonjs": true,
+        "esModule": false,
+        "var": true,
+        "prototype": true,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "platforms/common/application/utils/dom-collection.js",
+      "area": "administration",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 7,
+      "consumers": [
+        "platforms/common/application/lm/blocks/base.js",
+        "platforms/common/application/lm/index.js",
+        "platforms/common/application/main.js",
+        "platforms/common/application/particles/colorpicker/index.js",
+        "platforms/common/application/utils/create-element.js",
+        "platforms/common/application/utils/dom-effects.js",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php"
+      ],
+      "bytes": 17282,
+      "lines": 493,
+      "sha256": "e887e6fdff234d603faf58e5aa59ede6863bb6fedb4964622e1947ea68d4b31a",
+      "signals": {
+        "commonjs": true,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "platforms/common/application/utils/dom-effects.js",
+      "area": "administration",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 7,
+      "consumers": [
+        "platforms/common/application/lm/layoutmanager.js",
+        "platforms/common/application/menu/menumanager.js",
+        "platforms/common/application/particles/fonts/index.js",
+        "platforms/common/application/ui/drag.drop.js",
+        "platforms/common/application/ui/modal.js",
+        "platforms/common/application/ui/popover.js",
+        "platforms/common/application/ui/selectize.js"
+      ],
+      "bytes": 7427,
+      "lines": 235,
+      "sha256": "6cfab43947db313d6aadfab714617bc9cb6d8db6552a70d022fd7546fd43bb99",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -5321,72 +5360,6 @@
         "esModule": false,
         "var": false,
         "prototype": false,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [],
-        "customEvents": [],
-        "dataAttributes": [],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "platforms/common/application/utils/elements-native.js",
-      "area": "administration",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 7,
-      "consumers": [
-        "platforms/common/application/lm/blocks/base.js",
-        "platforms/common/application/lm/index.js",
-        "platforms/common/application/main.js",
-        "platforms/common/application/particles/colorpicker/index.js",
-        "platforms/common/application/utils/create-element.js",
-        "platforms/common/application/utils/elements.utils.js",
-        "src/platforms/phpbb/classes/Genesis/Admin/Router.php"
-      ],
-      "bytes": 17472,
-      "lines": 500,
-      "sha256": "a6690f72b9a6acd2b16f06a849b5d9488f1f2a89b4c047046900c1fefec83697",
-      "signals": {
-        "commonjs": true,
-        "esModule": false,
-        "var": false,
-        "prototype": true,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [],
-        "customEvents": [],
-        "dataAttributes": [],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "platforms/common/application/utils/elements.utils.js",
-      "area": "administration",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 7,
-      "consumers": [
-        "platforms/common/application/lm/layoutmanager.js",
-        "platforms/common/application/menu/menumanager.js",
-        "platforms/common/application/particles/fonts/index.js",
-        "platforms/common/application/ui/drag.drop.js",
-        "platforms/common/application/ui/modal.js",
-        "platforms/common/application/ui/popover.js",
-        "platforms/common/application/ui/selectize.js"
-      ],
-      "bytes": 7418,
-      "lines": 235,
-      "sha256": "fa630b8190f4297b78cf453a002cd3d7d81ec808db5abe17d7ea4ff4b4fdaf40",
-      "signals": {
-        "commonjs": true,
-        "esModule": false,
-        "var": true,
-        "prototype": true,
         "legacyBrowserApi": false,
         "inlineCodeGeneration": false,
         "globals": [],
@@ -5519,19 +5492,22 @@
       }
     },
     {
-      "path": "platforms/common/application/utils/genesis-compat.js",
+      "path": "platforms/common/application/utils/frame-listener.js",
       "area": "administration",
       "classification": "first_party_source",
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 1,
+      "activeReferenceCount": 4,
       "consumers": [
-        "platforms/common/application/main.js"
+        "platforms/common/application/assignments/index.js",
+        "platforms/common/application/lm/particles-sidebar.js",
+        "platforms/common/application/particles/fonts/index.js",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php"
       ],
-      "bytes": 2199,
-      "lines": 68,
-      "sha256": "54a59cc206fd5cec30298261033ec07f3888c618c3812baba52ca69ea94d562d",
+      "bytes": 772,
+      "lines": 29,
+      "sha256": "7a3a44d9f9d3275e0d80e45d4533f5e50cc214a1a0fc78a8db3f5472532b79dc",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -5541,9 +5517,7 @@
         "inlineCodeGeneration": false,
         "globals": [],
         "customEvents": [],
-        "dataAttributes": [
-          "genesis-"
-        ],
+        "dataAttributes": [],
         "storageKeys": []
       }
     },
@@ -5786,7 +5760,7 @@
         "platforms/common/application/particles/filepicker/index.js",
         "platforms/common/application/positions/index.js",
         "platforms/common/application/utils/ajaxify-links.js",
-        "platforms/common/application/utils/elements.utils.js"
+        "platforms/common/application/utils/dom-effects.js"
       ],
       "bytes": 1403,
       "lines": 47,
@@ -5799,36 +5773,6 @@
         "legacyBrowserApi": false,
         "inlineCodeGeneration": false,
         "globals": [],
-        "customEvents": [],
-        "dataAttributes": [],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "platforms/common/application/utils/rAF-polyfill.js",
-      "area": "administration",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 1,
-      "consumers": [
-        "platforms/common/application/main.js"
-      ],
-      "bytes": 978,
-      "lines": 26,
-      "sha256": "e27c3e6c5358b81d673ebe06bf61e4a56968884a926948077e7a02dc1c1e8827",
-      "signals": {
-        "commonjs": true,
-        "esModule": false,
-        "var": true,
-        "prototype": false,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [
-          "cancelAnimationFrame",
-          "requestAnimationFrame"
-        ],
         "customEvents": [],
         "dataAttributes": [],
         "storageKeys": []
@@ -5869,7 +5813,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 19,
+      "activeReferenceCount": 20,
       "consumers": [
         "engines/grav/nucleus/particles/contentarray.html.twig",
         "engines/joomla/nucleus/particles/contentarray.html.twig",
@@ -5889,11 +5833,12 @@
         "platforms/common/application/ui/modal.js",
         "platforms/common/application/ui/popover.js",
         "platforms/common/application/ui/togglers.js",
-        "platforms/common/application/utils/ajaxify-links.js"
+        "platforms/common/application/utils/ajaxify-links.js",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php"
       ],
-      "bytes": 6580,
+      "bytes": 6585,
       "lines": 192,
-      "sha256": "7df6ef2055705b686549d07193b05fbf3efaa80000c3e5c181678312c7772ec2",
+      "sha256": "35239809f6fe47b812d68112cd9ec7423c819b81e4073e435788639c5478d103",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -6070,7 +6015,7 @@
       "owner": "Genesis",
       "generatedFrom": "platforms/common/application/main.js",
       "entryPoint": false,
-      "activeReferenceCount": 12,
+      "activeReferenceCount": 13,
       "consumers": [
         "assets/common/gulpfile.js",
         "assets/common/js/main.js",
@@ -6083,11 +6028,12 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 745813,
-      "lines": 19932,
-      "sha256": "f758ecb9f27b334473ba8ebb24abd6c2888ea637730952aa783a0c1e720e90fc",
+      "bytes": 742782,
+      "lines": 19819,
+      "sha256": "715800edde19b563f7527bc9f23ef7a8d30e3a1d87485959a938b196572d2e1a",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -6100,9 +6046,7 @@
           "Genesis",
           "History",
           "PointerEvent",
-          "cancelAnimationFrame",
-          "onbeforeunload",
-          "requestAnimationFrame"
+          "onbeforeunload"
         ],
         "customEvents": [
           "change",
@@ -6186,7 +6130,6 @@
           "gInstancepickerText",
           "gOriginalClass",
           "gStyles",
-          "genesis-",
           "genesis-ajaxify",
           "genesis-ajaxify-href",
           "genesis-ajaxify-params",

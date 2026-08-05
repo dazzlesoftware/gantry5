@@ -5,7 +5,7 @@ var EventEmitter = require('../utils/event-emitter'),
     ready      = require('../utils/dom').ready,
     zen        = require('../utils/create-element'),
     NativeSearchIndex = require('../utils/search-index'),
-    $          = require('../utils/elements.utils');
+    dom          = require('../utils/dom-effects');
 
 var bind = function(fn, context) {
         var args = Array.prototype.slice.call(arguments, 2);
@@ -301,7 +301,7 @@ var highlight = function($element, pattern) {
 };
 
 var autoGrow = function(input) {
-    input = $(input);
+    input = dom(input);
     var currentWidth = null;
 
     var update = function(options, e) {
@@ -441,7 +441,7 @@ var SelectizeDefinition = {
     },
 
     initialize: function(input, options) {
-        input = $(input);
+        input = dom(input);
         this.setOptions(options);
 
         // detect rtl environment
@@ -530,7 +530,7 @@ var SelectizeDefinition = {
         $wrapper = zen('div').addClass(this.options.wrapperClass).addClass(classes).addClass('g-' + inputMode).after(this.input);
         $control = zen('div').addClass(this.options.inputClass).addClass('g-items').bottom($wrapper);
         $control_input = zen('input[type="text"][autocomplete="off"][role="textbox"]').bottom($control).attribute('tabindex', $input.disabled() ? '-1' : this.tabIndex);
-        $dropdown_parent = $(this.options.dropdownParent || $wrapper);
+        $dropdown_parent = dom(this.options.dropdownParent || $wrapper);
         $dropdown = zen('div').addClass(this.options.dropdownClass).addClass('g-' + inputMode).hide().bottom($dropdown_parent);
         $dropdown_content = zen('div[id="' + this.rand + '"]').addClass(this.options.dropdownContentClass).bottom($dropdown);
 
@@ -597,19 +597,19 @@ var SelectizeDefinition = {
         }, this));
         $control_input.on('paste', bind(function() { return this.onPaste.apply(this, arguments); }, this));
 
-        $(document).on('keydown', bind(function(e) {
+        dom(document).on('keydown', bind(function(e) {
             this.isCmdDown = e[IS_MAC ? 'metaKey' : 'ctrlKey'];
             this.isCtrlDown = e[IS_MAC ? 'altKey' : 'ctrlKey'];
             this.isShiftDown = e.shiftKey;
         }, this));
 
-        $(document).on('keyup', bind(function(e) {
+        dom(document).on('keyup', bind(function(e) {
             if (e.keyCode === KEY_CTRL) this.isCtrlDown = false;
             if (e.keyCode === KEY_SHIFT) this.isShiftDown = false;
             if (e.keyCode === KEY_CMD) this.isCmdDown = false;
         }, this));
 
-        $(document).on('mousedown', bind(function(e) {
+        dom(document).on('mousedown', bind(function(e) {
             if (this.isFocused) {
                 // prevent events on the dropdown scrollbar from causing the control to blur
                 if (e.target === this.$dropdown[0] || e.target.parentNode === this.$dropdown[0]) {
@@ -617,23 +617,23 @@ var SelectizeDefinition = {
                     return false;
                 }
                 // blur on click outside
-                if (!this.$control.find($(e.target)) && e.target !== this.$control[0]) {
+                if (!this.$control.find(dom(e.target)) && e.target !== this.$control[0]) {
                     this.blur(e.target);
                 }
             }
         }, this));
 
-        $(window).on('scroll', bind(function() {
+        dom(window).on('scroll', bind(function() {
             if (this.isOpen) {
                 this.positionDropdown.apply(this, arguments);
             }
         }, this));
-        $(window).on('resize', bind(function() {
+        dom(window).on('resize', bind(function() {
             if (this.isOpen) {
                 this.positionDropdown.apply(this, arguments);
             }
         }, this));
-        $(window).on('mousemove', bind(function() {
+        dom(window).on('mousemove', bind(function() {
             this.ignoreHover = false;
         }, this));
 
@@ -782,7 +782,7 @@ var SelectizeDefinition = {
 
     onMouseDown: function(e) {
         var defaultPrevented = e.defaultPrevented || (typeof e.defaultPrevented === 'undefined');
-        var $target = $(e.target);
+        var $target = dom(e.target);
 
         if (this.isFocused) {
             // retain focus by preventing native handling. if the
@@ -812,7 +812,7 @@ var SelectizeDefinition = {
 
     onChange: function() {
         this.input.emit('change', this.input.value(), this);
-        $('body').emit('change', { target: this.input });
+        dom('body').emit('change', { target: this.input });
     },
 
     onPaste: function(e) {
@@ -1011,7 +1011,7 @@ var SelectizeDefinition = {
     },
 
     onOptionHover: function(e, element) {
-        element = $(element);
+        element = dom(element);
         if (this.ignoreHover) return;
         this.setActiveOption(element || e.currentTarget, false);
     },
@@ -1024,7 +1024,7 @@ var SelectizeDefinition = {
             e.stopPropagation();
         }
 
-        $target = $(element || e.currentTarget);
+        $target = dom(element || e.currentTarget);
         if ($target.hasClass('g-create')) {
             this.createItem(null, bind(function() {
                 if (this.options.closeAfterSelect) {
@@ -1114,11 +1114,11 @@ var SelectizeDefinition = {
         var eventName, idx, begin, end, $item, swap, $last;
 
         if (this.options.mode === 'single') { return; }
-        item = $(item);
+        item = dom(item);
 
         // clear the active selection
         if (!item) {
-            if (this.$activeItems.length) { $(this.$activeItems).removeClass('g-active'); }
+            if (this.$activeItems.length) { dom(this.$activeItems).removeClass('g-active'); }
             this.$activeItems = [];
             if (this.isFocused) {
                 this.showInput();
@@ -1130,7 +1130,7 @@ var SelectizeDefinition = {
         eventName = e && e.type.toLowerCase();
 
         if (eventName === 'mousedown' && this.isShiftDown && this.$activeItems.length) {
-            $last = $(last(this.$control.children('.g-active')));
+            $last = dom(last(this.$control.children('.g-active')));
             begin = Array.prototype.indexOf.apply(this.$control[0].childNodes, [$last[0]]);
             end = Array.prototype.indexOf.apply(this.$control[0].childNodes, [item[0]]);
             if (begin > end) {
@@ -1141,8 +1141,8 @@ var SelectizeDefinition = {
             for (var i = begin; i <= end; i++) {
                 $item = this.$control[0].childNodes[i];
                 if (this.$activeItems.indexOf($item) === -1) {
-                    $($item).addClass('g-active');
-                    this.$wrapper.attribute('aria-activedescendant', slugify(this.rand + '-' + $($item).attribute('data-value')));
+                    dom($item).addClass('g-active');
+                    this.$wrapper.attribute('aria-activedescendant', slugify(this.rand + '-' + dom($item).attribute('data-value')));
                     this.$activeItems.push($item);
                 }
             }
@@ -1157,7 +1157,7 @@ var SelectizeDefinition = {
                 this.$wrapper.attribute('aria-activedescendant', slugify(this.rand + '-' + item.attribute('data-value')));
             }
         } else {
-            if ($(this.$activeItems)) $(this.$activeItems).removeClass('g-active');
+            if (dom(this.$activeItems)) dom(this.$activeItems).removeClass('g-active');
             this.$activeItems = [item.addClass('g-active')[0]];
             this.$wrapper.attribute('aria-activedescendant', slugify(this.rand + '-' + item.attribute('data-value')));
         }
@@ -1176,7 +1176,7 @@ var SelectizeDefinition = {
         if (this.$activeOption) this.$activeOption.removeClass('g-active');
         this.$activeOption = null;
 
-        $option = $($option);
+        $option = dom($option);
         if (!$option) return;
 
         this.$activeOption = $option.addClass('g-active');
@@ -1405,8 +1405,8 @@ var SelectizeDefinition = {
         has_create_option = this.canCreate(query);
         if (has_create_option) {
             //$dropdown_content.prepend(this.render('option_create', { input: query }));
-            $(this.render('option_create', { input: query })).top($dropdown_content);
-            $create = $($dropdown_content[0].childNodes[0]);
+            dom(this.render('option_create', { input: query })).top($dropdown_content);
+            $create = dom($dropdown_content[0].childNodes[0]);
         }
 
         // activate
@@ -1546,7 +1546,7 @@ var SelectizeDefinition = {
         // update the item if it's selected
         if (this.items.indexOf(value_new) !== -1) {
             $item = this.getItem(value);
-            $item_new = $(this.render('item', data));
+            $item_new = dom(this.render('item', data));
             if ($item.hasClass('g-active')) {
                 $item_new.addClass('g-active');
                 this.$wrapper.attribute('aria-activedescendant', slugify(this.rand + '-' + $item_new.attribute('data-value')));
@@ -1598,7 +1598,7 @@ var SelectizeDefinition = {
         var $options = this.$dropdown.search('[data-selectable]');
         var index = indexOf($options, ($option ? $option[0] : null)) + direction;
 
-        return index >= 0 && index < ($options ? $options.length : 0) ? $($options[index]) : $();
+        return index >= 0 && index < ($options ? $options.length : 0) ? dom($options[index]) : dom();
     },
 
     getElementWithValue: function(value, $els) {
@@ -1607,12 +1607,12 @@ var SelectizeDefinition = {
         if (typeof value !== 'undefined' && value !== null) {
             for (var i = 0, n = ($els ? $els.length : 0); i < n; i++) {
                 if ($els[i].getAttribute('data-value') === value) {
-                    return $($els[i]);
+                    return dom($els[i]);
                 }
             }
         }
 
-        return $();
+        return dom();
     },
 
     getItem: function(value) {
@@ -1646,7 +1646,7 @@ var SelectizeDefinition = {
             if (inputMode === 'single') this.clear(silent);
             if (inputMode === 'multi' && this.isFull()) return;
 
-            $item = $(this.render('item', this.Options[value]));
+            $item = dom(this.render('item', this.Options[value]));
             // if (inputMode !== 'multi') $item.find('.g-remove-single-item').remove();
 
             // ARIA
@@ -1691,7 +1691,7 @@ var SelectizeDefinition = {
     removeItem: function(value, silent) {
         var $item, i, idx;
 
-        $item = (value instanceof $) ? value : this.getItem(value);
+        $item = value && value[0] && typeof value.attribute === 'function' ? value : this.getItem(value);
         value = hash_key($item.attribute('data-value'));
         i = this.items.indexOf(value);
 
@@ -1933,7 +1933,7 @@ var SelectizeDefinition = {
         if (caret === 0) {
             $el.top(this.$control);//.prepend($el);
         } else {
-            //$(this.$control[0].childNodes[caret]).before($el);
+            //dom(this.$control[0].childNodes[caret]).before($el);
             $el.after(this.$control.find(':nth-child(' + caret + ')'));
             //this.$control.find(':nth-child(' + caret + ')').before($el);
         }
@@ -1957,12 +1957,12 @@ var SelectizeDefinition = {
         if (this.$activeItems.length) {
             var children = this.$control.children(':not(input)');
             $tail = this.$control.children('.g-active');
-            if ($tail) { $tail = $(direction > 0 ? last($tail) : $tail[0]); }
+            if ($tail) { $tail = dom(direction > 0 ? last($tail) : $tail[0]); }
             caret = (!children ? -1 : indexOf(children, $tail[0]));
             if (direction > 0) { caret++; }
 
             for (i = 0, n = this.$activeItems.length; i < n; i++) {
-                values.push($(this.$activeItems[i]).attribute('data-value'));
+                values.push(dom(this.$activeItems[i]).attribute('data-value'));
             }
             if (e) {
                 e.preventDefault();
@@ -2065,7 +2065,7 @@ var SelectizeDefinition = {
             var j, n, fn, $children, $child;
             $children = this.$control.children(':not(input)');
             for (j = 0, n = ($children ? $children.length : 0); j < n; j++) {
-                $child = $($children[j]);//.detach();
+                $child = dom($children[j]);//.detach();
                 if (j < i) {
                     $child.before(this.$control_input);
                 } else {
@@ -2118,9 +2118,9 @@ var SelectizeDefinition = {
             .attribute({ tabindex: revertSettings.tabindex })
             .show();
 
-        /*$(window).off(eventNS);
-         $(document).off(eventNS);
-         $(document.body).off(eventNS);*/
+        /*dom(window).off(eventNS);
+         dom(document).off(eventNS);
+         dom(document.body).off(eventNS);*/
 
         delete this.$control_input.selectizeGrow;
         delete this.input.selectizeInstance;
@@ -2217,7 +2217,7 @@ Object.keys(SelectizeDefinition).forEach(function(method) {
 });
 Selectize.prototype.options = SelectizeDefinition.options;
 
-$.implement({
+dom.implement({
     selectize: function(settings_user) {
         settings_user = settings_user || {};
         var defaults             = Selectize.prototype.options,
@@ -2230,7 +2230,7 @@ $.implement({
             field_optgroup_value = settings.optgroupValueField;
 
         var init_textbox = function(input, settings_element) {
-            input = $(input);
+            input = dom(input);
             var i, n, values, option;
 
             var data_raw = input.attribute(attr_data);
@@ -2273,7 +2273,7 @@ $.implement({
             var addOption = function(option, group) {
                 var value, opt;
 
-                option = $(option);
+                option = dom(option);
 
                 value = hash_key(option.value());
                 if (!value.length && !settings.allowEmptyOption) return;
@@ -2312,7 +2312,7 @@ $.implement({
             var addGroup = function(optgroup) {
                 var i, n, id, optgrp, options;
 
-                optgroup = $(optgroup);
+                optgroup = dom(optgroup);
                 id = optgroup.attribute('label');
 
                 if (id) {
@@ -2343,7 +2343,7 @@ $.implement({
 
         return this.forEach(function($input, i) {
             settings = merge({}, defaults, settings_user),
-            $input = $($input);
+            $input = dom($input);
             if ($input.selectizeInstance) return;
 
             var instance,
@@ -2381,7 +2381,7 @@ $.implement({
 });
 
 Selectize.initialize = function(elements, settings) {
-    var collection = $(elements);
+    var collection = dom(elements);
     if (collection) { collection.selectize(settings); }
     return collection;
 };
@@ -2391,12 +2391,12 @@ Selectize.getInstance = function(element) {
     if (element && (element.selectizeInstance || element.selectize)) {
         return element.selectizeInstance || element.selectize;
     }
-    var collection = $(element);
+    var collection = dom(element);
     return collection ? collection.selectizeInstance : null;
 };
 
 ready(function() {
-    var selects = $('[data-selectize]');
+    var selects = dom('[data-selectize]');
     if (!selects) { return; }
 
     Selectize.initialize(selects);

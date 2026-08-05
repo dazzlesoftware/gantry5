@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Phases 0 through 4 complete; Phase 5 not started
+**Status:** Phases 0 through 5 complete; Phase 6 not started
 
 ## Objective
 
@@ -241,6 +241,8 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 
 ## Phase 5 — Administration DOM facade removal
 
+**Status:** Complete — August 5, 2026
+
 ### Why this is a dedicated phase
 
 `platforms/common/application/utils/elements-native.js` is a large jQuery/MooTools-shaped compatibility layer. Removing it is a behavior migration across layout management, menu management, fields, particles, modals, popovers, drag/drop, selection, AJAX, and application state—not a mechanical syntax replacement.
@@ -273,6 +275,16 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - No jQuery/MooTools-shaped `$` wrapper is exposed internally.
 - No maintained code mutates a shared wrapper prototype to install DOM methods.
 - Administration workflows pass their smoke and regression tests.
+
+### Completion record
+
+- Added `ADMINISTRATION-DOM-MIGRATION.md`, mapping the complete legacy method families to their native implementations and administration consumers.
+- Removed the `elements-native.js` and `elements.utils.js` module paths, the internal `$` factory/export, wrapper caching, and shared wrapper-prototype installation.
+- Added the explicitly named `dom-collection.js` and `dom-effects.js` administration boundary while preserving native element, event, dataset, selector, class, and Web Animations API behavior.
+- Removed `rAF-polyfill.js` and `decouple.js`; scroll and resize scheduling now use native animation frames through a detachable `frame-listener.js` helper.
+- Removed the ineffective `genesis-compat.js` observer because its current and legacy prefixes were identical.
+- Preserved `window.Genesis` integration with an explicit `Genesis.dom` entry and regenerated the administration bundle.
+- Added regression coverage preventing removed imports, obsolete browser scheduling fallbacks, wrapper caches, prototype installers, and the ambiguous `Genesis.$` export from returning.
 
 ## Phase 6 — Administration ES modules and build migration
 

@@ -1,11 +1,11 @@
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
-var $             = require('../../utils/elements.utils'),
+var dom             = require('../../utils/dom-effects'),
     zen           = require('../../utils/create-element'),
     storage       = new WeakMap(),
     ready         = require('../../utils/dom').ready,
 
-    decouple      = require('../../utils/decouple'),
+    frameListener = require('../../utils/frame-listener'),
 
     getAjaxSuffix = require('../../utils/get-ajax-suffix'),
     parseAjaxURI  = require('../../utils/get-ajax-url').parse,
@@ -154,7 +154,7 @@ class Fonts {
         }
 
         data = JSON.parse(data);
-        this.field = $(data.field);
+        this.field = dom(data.field);
 
         modal.open({
             content: translate('GENESIS_PLATFORM_JS_LOADING'),
@@ -194,8 +194,8 @@ class Fonts {
 
             if (!elements) { return; }
 
-            $(elements).forEach(function(element) {
-                element = $(element);
+            dom(elements).forEach(function(element) {
+                element = dom(element);
                 var dataFont = element.data('font'),
                     variant  = element.data('variant');
 
@@ -240,8 +240,8 @@ class Fonts {
         var value = this.field.value(), name, variants, subset, isLocal = false;
 
         if (!value.match('family=')) {
-            var locals = $('[data-category="local-fonts"][data-font]') || [], intersect;
-            locals = locals.map(function(l) { return $(l).data('font'); });
+            var locals = dom('[data-category="local-fonts"][data-font]') || [], intersect;
+            locals = locals.map(function(l) { return dom(l).data('font'); });
             value = value.replace(/(\s{1,})?,(\s{1,})?/gi, ',').split(',');
             intersect = locals.filter(function(font, index) {
                 return value.includes(font) && locals.indexOf(font) === index;
@@ -261,7 +261,7 @@ class Fonts {
         }
 
         var noConflict = isLocal ? '[data-category="local-fonts"]' : ':not([data-category="local-fonts"])',
-            element = $('ul.g-fonts-list > [data-font="' + name + '"]' + noConflict);
+            element = dom('ul.g-fonts-list > [data-font="' + name + '"]' + noConflict);
         variants = variants || element.data('variants').split(',') || ['regular'];
 
         if (variants.includes('400')) {
@@ -299,11 +299,11 @@ class Fonts {
             charsetSelected.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">' + subset.length + ' of ' + subsetsLength + '</span> selected)');
         }
 
-        if (!isLocal) { $('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }
+        if (!isLocal) { dom('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }
 
         this.toggleExpansion();
         setTimeout(function() { this.toggleExpansion(); }.bind(this), 50);
-        if (!isLocal) { setTimeout(function() { $('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }.bind(this), 250); }
+        if (!isLocal) { setTimeout(function() { dom('ul.g-fonts-list')[0].scrollTop = element[0].offsetTop; }.bind(this), 250); }
     }
 
     select(element, variant/*, target*/) {
@@ -338,7 +338,7 @@ class Fonts {
 
 
         if (variant || isLocal) {
-            var selected = ($('ul.g-fonts-list > [data-font]:not([data-font="' + this.selected.font + '"]) input[type="checkbox"]:checked'));
+            var selected = (dom('ul.g-fonts-list > [data-font]:not([data-font="' + this.selected.font + '"]) input[type="checkbox"]:checked'));
             if (selected) {
                 selected.checked(false);
                 selected.parent('[data-variants]').removeClass('font-selected');
@@ -399,8 +399,8 @@ class Fonts {
     }
 
     toggle(event, element) {
-        element = $(element);
-        var target = $(event.target);
+        element = dom(element);
+        var target = dom(event.target);
 
         if (target.attribute('type') == 'checkbox') {
             target.checked(!target.checked());
@@ -412,7 +412,7 @@ class Fonts {
     }
 
     updateSelection() {
-        var preview = $('.g-particles-footer .font-selected'), selected, variants;
+        var preview = dom('.g-particles-footer .font-selected'), selected, variants;
         if (!preview) { return; }
 
         if (!this.selected.selected.length) {
@@ -428,8 +428,8 @@ class Fonts {
     }
 
     updateTotal() {
-        var totals = $('.g-particles-header .particle-search-total'),
-            count  = $('.g-fonts-list > [data-font]:not(.g-font-hide)');
+        var totals = dom('.g-particles-header .particle-search-total'),
+            count  = dom('.g-fonts-list > [data-font]:not(.g-font-hide)');
 
         totals.text(count ? count.length : 0);
     }
@@ -447,7 +447,7 @@ class Fonts {
             search  = header.find('input.font-search'),
             preview = header.find('input.font-preview');
 
-        decouple(list, 'scroll', this.scroll.bind(this, list));
+        frameListener(list, 'scroll', this.scroll.bind(this, list));
         container.delegate('click', '.g-fonts-list li[data-font]', this.toggle.bind(this));
 
         if (search) { search.on('keyup', this.search.bind(this, search)); }
@@ -533,7 +533,7 @@ class Fonts {
             current;
 
         select.on('click', function() {
-            if (!$('ul.g-fonts-list > [data-font] input[type="checkbox"]:checked')) {
+            if (!dom('ul.g-fonts-list > [data-font] input[type="checkbox"]:checked')) {
                 this.field.value('');
                 modal.close();
                 return;
@@ -562,7 +562,7 @@ class Fonts {
             }
 
             this.field.emit('input');
-            $('body').emit('input', { target: this.field });
+            dom('body').emit('input', { target: this.field });
 
             modal.close();
         }.bind(this));
@@ -617,7 +617,7 @@ class Fonts {
             content[0].querySelectorAll('input[type="radio"]').forEach(function(input) {
                 input.addEventListener('change', function() {
                     this.filters.script = input.value;
-                    $('.g-particles-header input.font-preview').value(this.previewSentence[this.filters.script]);
+                    dom('.g-particles-header input.font-preview').value(this.previewSentence[this.filters.script]);
                     subsets.find('small').text(labelize(input.value.replace('ext', 'extended')));
                     this.search();
                     this.updatePreview();
@@ -631,13 +631,13 @@ class Fonts {
     }
 
     search(input) {
-        input = input || $('.g-particles-header input.font-search');
-        var list  = $('.g-fonts-list'),
+        input = input || dom('.g-particles-header input.font-search');
+        var list  = dom('.g-fonts-list'),
             value = input.value(),
             name, subsets, category, data;
 
         list.search('> [data-font]').forEach(function(font) {
-            font = $(font);
+            font = dom(font);
             name = font.data('font');
             subsets = font.data('subsets').split(',');
             category = font.data('category');
@@ -671,19 +671,19 @@ class Fonts {
         clearTimeout(input.refreshTimer);
 
         input.refreshTimer = setTimeout(function() {
-            this.scroll($('ul.g-fonts-list'));
+            this.scroll(dom('ul.g-fonts-list'));
         }.bind(this), 400);
 
         input.previousValue = value;
     }
 
     updatePreview(input) {
-        input = input || $('.g-particles-header input.font-preview');
+        input = input || dom('.g-particles-header input.font-preview');
 
         clearTimeout(input.refreshTimer);
 
         var value = input.value(),
-            list  = $('.g-fonts-list');
+            list  = dom('.g-fonts-list');
 
         value = String(value || '').trim() || this.previewSentence[this.filters.script];
 
@@ -775,7 +775,7 @@ class Fonts {
 }
 
 ready(function() {
-    var body = $('body');
+    var body = dom('body');
     body.delegate('click', '[data-genesis-fontpicker]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
         var node = element[0],

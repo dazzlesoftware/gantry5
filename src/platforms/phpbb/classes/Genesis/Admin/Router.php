@@ -68,7 +68,7 @@ class Router extends BaseRouter
         // BaseController rendered the full admin page shell (layout.html.twig/base.html.twig,
         // complete with <head> assets) for every particle/container/section edit modal instead of
         // the JSON {success,html} envelope the JS expects -- that raw full-page HTML then got
-        // dumped into the modal by elements-native.js, whose relative asset links (font-awesome,
+        // dumped into the administration modal, whose relative asset links (font-awesome,
         // stylesheet.css) resolved wrong against the current /adm/index.php location.
         $this->container['ajax_suffix'] = '&genesis_format=json';
 

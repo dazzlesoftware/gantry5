@@ -1,6 +1,6 @@
 "use strict";
 
-var $          = require('../../utils/elements-native'),
+var dom          = require('../../utils/dom-collection'),
     ready      = require('../../utils/dom').ready,
     zen        = require('../../utils/create-element');
 
@@ -48,7 +48,7 @@ class ColorPicker {
     }
 
     attach() {
-        var body = $('body');
+        var body = dom('body');
 
         MOUSEDOWN.forEach(function(mousedown) {
             body.delegate(mousedown, '[data-genesis-container] .g-colorpicker i', this.bound('iconClick'));
@@ -86,7 +86,7 @@ class ColorPicker {
     }
 
     show(event, element) {
-        var body = $('body');
+        var body = dom('body');
 
         if (!this.built) {
             this.build();
@@ -112,7 +112,7 @@ class ColorPicker {
     }
 
     hide() {
-        var body = $('body');
+        var body = dom('body');
 
         if (!this.built) { return; }
         this.wrapper.removeClass('cp-visible');
@@ -135,7 +135,7 @@ class ColorPicker {
     iconClick(event, element) {
         event.preventDefault();
 
-        var input = $(element).sibling('input');
+        var input = dom(element).sibling('input');
         input[0].focus();
 
         this.show(event, input);
@@ -279,7 +279,7 @@ class ColorPicker {
     }
 
     updateFromInput(dontFireEvent, element) {
-        element = $(element) || this.element;
+        element = dom(element) || this.element;
         var value = element.value(),
             opacity = value.replace(/\s/g, '').match(/^rgba?\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},(.+)\)/),
             hex, hsb;
@@ -571,7 +571,7 @@ class ColorPicker {
 
     reposition() {
         var offset = this.element[0].getBoundingClientRect(),
-            ct = $('[data-genesis-container]')[0].getBoundingClientRect();
+            ct = dom('[data-genesis-container]')[0].getBoundingClientRect();
         this.wrapper.style({
             top: offset.top + offset.height - ct.top,
             left: offset.left - ct.left
@@ -733,7 +733,7 @@ var hex2rgb = function(hex) {
 
 
 ready(function() {
-    var x = new ColorPicker(), body = $('body');
+    var x = new ColorPicker(), body = dom('body');
     x.on('change', function(element, hex, opacity) {
         clearTimeout(this.timer);
         var rgb = hex2rgb(hex),
@@ -749,7 +749,7 @@ ready(function() {
 
         var colorpicker = element[0] && element[0].closest('.g-colorpicker');
         if (colorpicker) {
-            $(colorpicker)[!check ? 'addClass' : 'removeClass']('light-text');
+            dom(colorpicker)[!check ? 'addClass' : 'removeClass']('light-text');
         }
 
         this.timer = setTimeout(function() {

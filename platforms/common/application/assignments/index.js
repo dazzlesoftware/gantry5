@@ -1,7 +1,7 @@
 "use strict";
 
 const { ready, delegate } = require('../utils/dom');
-const decouple = require('../utils/decouple');
+const frameListener = require('../utils/frame-listener');
 const asyncForEach = require('../utils/async-foreach');
 
 const cache = new WeakMap();
@@ -166,7 +166,7 @@ const Assignments = {
 
                 if (height >= maxHeight) {
                     let alternateWidth = 100;
-                    decouple(panel, 'scroll', () => {
+                    frameListener(panel, 'scroll', () => {
                         alternateWidth = alternateWidth === 100 ? 100.01 : 100;
                         const card = panel.closest('.card');
                         if (card) card.style.width = `${alternateWidth}%`;

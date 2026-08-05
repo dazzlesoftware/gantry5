@@ -1,6 +1,6 @@
 "use strict";
 var EventEmitter = require('../utils/event-emitter'),
-    $         = require('../utils/elements.utils'),
+    dom         = require('../utils/dom-effects'),
     zen       = require('../utils/create-element'),
     DragDrop  = require('../ui/drag.drop'),
     Eraser    = require('../ui/eraser'),
@@ -47,7 +47,7 @@ var MenuManagerDefinition = {
         this.refElement = element;
         this.map = {};
 
-        if (!element || !$(element)) { return; }
+        if (!element || !dom(element)) { return; }
 
         this.init(element);
     },
@@ -72,12 +72,12 @@ var MenuManagerDefinition = {
     },
 
     refresh: function() {
-        if (!this.refElement || !$(this.refElement)) { return; }
+        if (!this.refElement || !dom(this.refElement)) { return; }
         this.init();
     },
 
     setRoot: function() {
-        this.root = $('#menu-editor');
+        this.root = dom('#menu-editor');
 
         if (this.root) {
             this.settings = JSON.parse(this.root.data('menu-settings'));
@@ -90,13 +90,13 @@ var MenuManagerDefinition = {
                 items: deepClone(this.items)
             };
 
-            var submenus = $('[data-genesis-menu-columns] .submenu-selector'), columns;
+            var submenus = dom('[data-genesis-menu-columns] .submenu-selector'), columns;
             if (this.resizer && submenus && (columns = submenus.search('> [data-mm-id]'))) { this.resizer.updateMaxValues(columns); }
         }
     },
 
     click: function(event, element) {
-        var target = $(event.target);
+        var target = dom(event.target);
         if (target.matches('.g-menu-addblock') || target.parent('.g-menu-addblock')) {
             return false;
         }
@@ -124,8 +124,8 @@ var MenuManagerDefinition = {
 
     start: function(event, element) {
         var root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.genesis-mm-particles-picker'),
-            size = $(element).position(),
-            coords = $(element)[0].getBoundingClientRect();
+            size = dom(element).position(),
+            coords = dom(element)[0].getBoundingClientRect();
 
         this.block = null;
         this.targetLevel = undefined;
@@ -150,12 +150,12 @@ var MenuManagerDefinition = {
 
         root.addClass('moving');
 
-        var type = $(element).data('mm-id'),
+        var type = dom(element).data('mm-id'),
             clone = element[0].cloneNode(true);
 
         if (!this.placeholder) { this.placeholder = zen((this.type == 'column' ? 'div' : 'li') + '.block.placeholder[data-mm-placeholder]'); }
         this.placeholder.style({ display: 'none' });
-        this.original = $(clone).after(element).style({
+        this.original = dom(clone).after(element).style({
             display: 'inline-block',
             opacity: 1
         }).addClass('original-placeholder').data('lm-dropzone', null);
@@ -195,7 +195,7 @@ var MenuManagerDefinition = {
     },
 
     moveOnce: function(element) {
-        element = $(element);
+        element = dom(element);
         if (this.original) { this.original.style({ opacity: 0.5 }); }
 
         // it's a module or a particle and we allow for them to be deleted
@@ -205,7 +205,7 @@ var MenuManagerDefinition = {
     },
 
     location: function(event, location, target/*, element*/) {
-        target = $(target);
+        target = dom(target);
         (!this.isNewParticle ? this.original : this.block).style({transform: 'translate(0, 0)'});
         if (!this.placeholder) { this.placeholder = zen((this.type == 'column' ? 'div' : 'li') + '.block.placeholder[data-mm-placeholder]').style({ display: 'none' }); }
 
@@ -280,8 +280,8 @@ var MenuManagerDefinition = {
                 after: this.original.nextSiblings(exclude)
             };
 
-        if (adjacents.before) { adjacents.before = $(adjacents.before[0]); }
-        if (adjacents.after) { adjacents.after = $(adjacents.after[0]); }
+        if (adjacents.before) { adjacents.before = dom(adjacents.before[0]); }
+        if (adjacents.after) { adjacents.after = dom(adjacents.after[0]); }
 
 
         if (targetType === 'main' && ((adjacents.before === target && location.x === 'after') || (adjacents.after === target && location.x === 'before'))) {
@@ -321,7 +321,7 @@ var MenuManagerDefinition = {
         var target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
 
         if (!this.isNewParticle && (this.Element.hasClass('g-menu-removable') || this.isParticle)) {
-            target = $(target);
+            target = dom(target);
             var targetNode = target[0];
             if (targetNode === this.eraser.element || this.eraser.element.contains(targetNode)) {
                 this.dragdrop.removeElement = true;
@@ -372,10 +372,10 @@ var MenuManagerDefinition = {
     },
 
     stop: function(event, target, element) {
-        target = $(target);
+        target = dom(target);
 
         // we are removing the block
-        var lastOvered = $(this.dragdrop.lastOvered);
+        var lastOvered = dom(this.dragdrop.lastOvered);
         var trashZone = this.eraser.element.querySelector('.trash-zone');
         if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
             this.eraser.hide();
@@ -453,7 +453,7 @@ var MenuManagerDefinition = {
                 }
 
                 items = items.map(function(element) {
-                    return $(element).data('mm-id');
+                    return dom(element).data('mm-id');
                 });
 
                 if (!this.ordering[path]) { this.ordering[path] = []; }
@@ -476,11 +476,11 @@ var MenuManagerDefinition = {
         // Column reordering, we just need to swap the array indexes
         if (!this.itemFrom && !this.itemTo && !this.isParticle) {
             var colsOrder = [],
-                active = $('.g-toplevel [data-mm-id].active').data('mm-id');
+                active = dom('.g-toplevel [data-mm-id].active').data('mm-id');
             items = parent.search('> [data-mm-id]');
 
             items.forEach(function(element, index) {
-                element = $(element);
+                element = dom(element);
 
                 var id = element.data('mm-id'),
                     column = Number((id.match(/\d+$/) || [0])[0]);

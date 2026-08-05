@@ -1,6 +1,6 @@
 "use strict";
 var ready          = require('../utils/dom').ready,
-    $              = require('../utils/elements-native'),
+    dom              = require('../utils/dom-collection'),
     Submit         = require('../fields/submit'),
     modal          = require('../ui').modal,
     toastr         = require('../ui').toastr,
@@ -53,25 +53,25 @@ lmhistory = new LMHistory();
 savestate = new SaveState();
 
 ready(function() {
-    var body = $('body');
+    var body = dom('body');
 
     body.delegate('click', '[data-lm-back]', function(e, element) {
         if (e) { e.preventDefault(); }
-        if ($(element).hasClass('disabled')) return false;
+        if (dom(element).hasClass('disabled')) return false;
         lmhistory.undo();
     });
 
     body.delegate('click', '[data-lm-forward]', function(e, element) {
         if (e) { e.preventDefault(); }
-        if ($(element).hasClass('disabled')) return false;
+        if (dom(element).hasClass('disabled')) return false;
         lmhistory.redo();
     });
 
     /* lmhistory events */
     lmhistory.on('push', function(session, index, reset) {
         var HM = {
-            back: $('[data-lm-back]'),
-            forward: $('[data-lm-forward]')
+            back: dom('[data-lm-back]'),
+            forward: dom('[data-lm-forward]')
         };
 
         if (index && HM.back && HM.back.hasClass('disabled')) HM.back.removeClass('disabled');
@@ -80,12 +80,12 @@ ready(function() {
     });
 
     lmhistory.on('undo', function(session, index) {
-        var notice = $('#lm-no-layout'),
-            title = $('.layout-title .title small'),
+        var notice = dom('#lm-no-layout'),
+            title = dom('.layout-title .title small'),
             preset_name = session.preset.name || 'Default',
             HM = {
-                back: $('[data-lm-back]'),
-                forward: $('[data-lm-forward]')
+                back: dom('[data-lm-back]'),
+                forward: dom('[data-lm-forward]')
             };
 
         if (notice) { notice.style({ display: !size(session.data) ? 'block' : 'none' }); }
@@ -98,12 +98,12 @@ ready(function() {
         layoutmanager.updatePendingChanges();
     });
     lmhistory.on('redo', function(session, index) {
-        var notice = $('#lm-no-layout'),
-            title = $('.layout-title .title small'),
+        var notice = dom('#lm-no-layout'),
+            title = dom('.layout-title .title small'),
             preset_name = session.preset.name || 'Default',
             HM = {
-                back: $('[data-lm-back]'),
-                forward: $('[data-lm-forward]')
+                back: dom('[data-lm-back]'),
+                forward: dom('[data-lm-forward]')
             };
 
         if (notice) { notice.style({ display: !size(session.data) ? 'block' : 'none' }); }
@@ -119,7 +119,7 @@ ready(function() {
 });
 
 ready(function() {
-    var body = $('body'), root = $('[data-lm-root]'), data;
+    var body = dom('body'), root = dom('[data-lm-root]'), data;
 
     // Layout Manager
     layoutmanager = new LayoutManager('[data-lm-container]', {
@@ -160,7 +160,7 @@ ready(function() {
         }
     });
     body.delegate('mouseup', '.g-tabs a', function(event, element) {
-        element = $(element);
+        element = dom(element);
         event.preventDefault();
 
         var index = 0,
@@ -192,7 +192,7 @@ ready(function() {
 
     // Sub-navigation links
     body.on('statechangeAfter', function(event, element) {
-        root = $('[data-lm-root]');
+        root = dom('[data-lm-root]');
         if (!root) { return true; }
         data = JSON.parse(root.data('lm-root'));
         builder.setStructure(data);
@@ -209,13 +209,13 @@ ready(function() {
 
     // Particles filtering
     body.delegate('input', '.sidebar-block .search input', function(event, element) {
-        var value = $(element).value().toLowerCase(),
-            list = $('.sidebar-block [data-lm-blocktype]'),
+        var value = dom(element).value().toLowerCase(),
+            list = dom('.sidebar-block [data-lm-blocktype]'),
             text, type;
         if (!list) { return false; }
 
         list.style({ display: 'none' }).forEach(function(blocktype) {
-            blocktype = $(blocktype);
+            blocktype = dom(blocktype);
             type = blocktype.data('lm-blocktype').toLowerCase();
             text = trim(blocktype.text()).toLowerCase();
             if (type.substr(0, value.length) == value || text.match(value)) {
@@ -235,7 +235,7 @@ ready(function() {
             if (!blocks || blocks.length == 1) { return; }
 
             blocks.forEach(function(block) {
-                id = $(block).data('lm-id');
+                id = dom(block).data('lm-id');
                 builder.get(id).setSize(100 / blocks.length, true);
             });
 
@@ -334,7 +334,7 @@ ready(function() {
 
         element.showIndicator();
 
-        var preset = $('[data-lm-preset]'),
+        var preset = dom('[data-lm-preset]'),
             preserve = element.parent('.g-pane').find('input[type="checkbox"][data-g-preserve]'),
             inherit = element.parent('.g-pane').find('input[type="checkbox"][data-g-inherit]'),
             method = !preserve ? 'get' : 'post',
@@ -386,7 +386,7 @@ ready(function() {
                             if (this.attribute('disabled')) { return false; }
 
                             flags.set('lm:switcher:' + window.btoa(uri), true);
-                            $([confirm, cancel]).attribute('disabled');
+                            dom([confirm, cancel]).attribute('disabled');
                             body.emit('mousedown', { target: element });
 
                             modal.close();
@@ -396,7 +396,7 @@ ready(function() {
                             e.preventDefault();
                             if (this.attribute('disabled')) { return false; }
 
-                            $([confirm, cancel]).attribute('disabled');
+                            dom([confirm, cancel]).attribute('disabled');
                             flags.set('lm:switcher:' + window.btoa(uri), false);
 
                             modal.close();
@@ -415,8 +415,8 @@ ready(function() {
             var preset = response.body.preset || { name: 'default' },
                 preset_name = response.body.title || 'Default',
                 structure = response.body.data,
-                notice = $('#lm-no-layout'),
-                title = $('.layout-title .title small');
+                notice = dom('#lm-no-layout'),
+                title = dom('.layout-title .title small');
 
             root.data('lm-root', JSON.stringify(structure));
             root[0].replaceChildren();
@@ -428,13 +428,13 @@ ready(function() {
 
             lmhistory.push(builder.serialize(), JSON.parse(preset));
 
-            $('[data-lm-switcher]').getPopover().hideAll().destroy();
+            dom('[data-lm-switcher]').getPopover().hideAll().destroy();
         });
     });
 
     // Particles settings
     body.delegate('click', '[data-lm-settings]', function(event, element) {
-        element = $(element);
+        element = dom(element);
 
         var blocktype = element.data('lm-blocktype'),
             settingsURL = element.data('lm-settings'),
@@ -649,7 +649,7 @@ ready(function() {
 });
 
 module.exports = {
-    $: $,
+    dom: dom,
     builder: builder,
     layoutmanager: layoutmanager,
     history: lmhistory,

@@ -1,6 +1,6 @@
 "use strict";
 
-const $ = require('./elements-native');
+const dom = require('./dom-collection');
 
 const attributePattern = /\[\s*([^\s~|^$*=\]]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*\]/g;
 const classPattern = /\.([a-zA-Z_][\w-]*)/g;
@@ -29,5 +29,5 @@ module.exports = function createElement(expression, ownerDocument) {
         element.setAttribute(match[1], value);
     }
 
-    return $(element);
+    return dom(element);
 };

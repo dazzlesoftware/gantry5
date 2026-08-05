@@ -2,7 +2,7 @@
 
 var EventEmitter = require('../../utils/event-emitter'),
     zen          = require('../../utils/create-element'),
-    $            = require('../../utils/elements-native'),
+    dom            = require('../../utils/dom-collection'),
     ID           = require('../id'),
     translate    = require('../../utils/translate'),
     getCurrentOutline = require('../../utils/get-outline').getCurrentOutline;
@@ -108,7 +108,7 @@ Object.assign(Base.prototype, {
     },
 
     getPageId: function() {
-        var root = $('[data-lm-root]');
+        var root = dom('[data-lm-root]');
         if (!root) { return 'data-root-not-found'; }
         return root.data('lm-page');
     },

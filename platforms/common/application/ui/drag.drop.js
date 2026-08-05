@@ -2,14 +2,14 @@
 
 var EventEmitter = require('../utils/event-emitter'),
     DragEvents = require('./drag.events'),
-    $          = require('../utils/elements.utils');
+    dom          = require('../utils/dom-effects');
 
 var isIE = (navigator.appName === "Microsoft Internet Explorer");
 
 class DragDrop extends EventEmitter {
     constructor(container, options) {
         super();
-        this.container = $(container);
+        this.container = dom(container);
         if (!this.container) { return; }
         this.options = Object.assign({
             delegate: null,
@@ -44,7 +44,7 @@ class DragDrop extends EventEmitter {
         this.DRAG_EVENTS.EVENTS.START.forEach(function(eventName) {
             this.container.forEach(function(node) {
                 var listener = function(event) {
-                    var target = $(event.target || event.srcElement),
+                    var target = dom(event.target || event.srcElement),
                         match = target.matches(this.options.delegate) ? target : target.parent(this.options.delegate);
 
                     if (match) { return this.start(event, match); }
@@ -75,17 +75,17 @@ class DragDrop extends EventEmitter {
         clearTimeout(this.scrollInterval);
         this.detachDragEvents();
         if (element.LMTooltip) { element.LMTooltip.remove(); }
-        $('html').attribute('style', 'height: 100% !important');
+        dom('html').attribute('style', 'height: 100% !important');
         this.scrollHeight = document.body.scrollHeight;
 
         // Prevents dragging a column from itself and limiting to its handle
-        var target = $(event.target);
+        var target = dom(event.target);
         if (!element.parent('[data-lm-root]') && element.hasClass('g-block') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
 
-        if (event.which && event.which !== 1 || $(event.target).matches(this.options.exclude)) { return true; }
+        if (event.which && event.which !== 1 || dom(event.target).matches(this.options.exclude)) { return true; }
         if (event.__genesisDragStarted) { return true; }
         event.__genesisDragStarted = true;
-        this.element = $(element);
+        this.element = dom(element);
         this.original = this.element;
         this.matched = false;
         if (this.options.catchClick) { this.moved = false; }
@@ -183,7 +183,7 @@ class DragDrop extends EventEmitter {
         //if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
         clearTimeout(this.scrollInterval);
-        $('html').attribute('style', null);
+        dom('html').attribute('style', null);
         if (!this.moved && this.options.catchClick) {
             // this is just a click
             this.element.style({ transform: this.origin.transform || 'translate(0, 0)' });
@@ -298,8 +298,8 @@ class DragDrop extends EventEmitter {
         clearTimeout(this.scrollInterval);
         if (!overing) { return; }
 
-        if (!$(overing).matches('#trash') && !$(overing).parent('#trash')) {
-            var st, sl, trash = $('[data-genesis-container] #trash');
+        if (!dom(overing).matches('#trash') && !dom(overing).parent('#trash')) {
+            var st, sl, trash = dom('[data-genesis-container] #trash');
             if (clientY + 50 >= Height && Scroll + Height < scrollHeight) {
                 this.scrollInterval = setInterval(function() {
                     sl = (window.pageXOffset || document.documentElement.scrollLeft) - (document.documentElement.clientLeft || 0);
@@ -323,8 +323,8 @@ class DragDrop extends EventEmitter {
 
         if (!overing) { return false; }
 
-        this.matched = $(overing).matches(this.options.droppables) ? overing : ($(overing).parent(this.options.droppables) || [false])[0];
-        this.isPlaceHolder = $(overing).matches('[data-lm-placeholder]') ? true : ($(overing).parent('[data-lm-placeholder]') ? true : false);
+        this.matched = dom(overing).matches(this.options.droppables) ? overing : (dom(overing).parent(this.options.droppables) || [false])[0];
+        this.isPlaceHolder = dom(overing).matches('[data-lm-placeholder]') ? true : (dom(overing).parent('[data-lm-placeholder]') ? true : false);
 
         var deltaX    = this.lastX - clientX,
             deltaY    = this.lastY - clientY,
@@ -382,7 +382,7 @@ class DragDrop extends EventEmitter {
     }
 
     _removeStyleAttribute(element) {
-        element = $(element || this.element);
+        element = dom(element || this.element);
         if (element.data('mm-id')) { return; }
 
         element.attribute('style', null);//.style({flex: flex});

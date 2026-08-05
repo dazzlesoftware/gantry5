@@ -1,8 +1,8 @@
 "use strict";
 
-const wrapperCache = new WeakMap();
 const eventListeners = new WeakMap();
 const delegatedListeners = new WeakMap();
+const elementMethods = Object.create(null);
 const elementNode = value => value && value[0] ? value[0] : value;
 const targetNode = value => typeof value === 'string' ? document.querySelector(value) : elementNode(value);
 const unique = nodes => Array.from(new Set(nodes));
@@ -12,9 +12,10 @@ function Elements(nodes) {
         this[index] = node;
     });
     this.length = nodes.length;
+    Object.assign(this, elementMethods);
 }
 
-function $(value, context) {
+function dom(value, context) {
     if (value === null || value === undefined) return null;
     if (value instanceof Elements) return value;
 
@@ -33,7 +34,7 @@ function $(value, context) {
         nodes = [value];
     } else if (typeof value.length === 'number') {
         Array.from(value).forEach(item => {
-            const wrapped = $(item, context);
+            const wrapped = dom(item, context);
             if (wrapped) nodes.push(...Array.from(wrapped));
         });
     }
@@ -41,43 +42,35 @@ function $(value, context) {
     nodes = unique(nodes.filter(Boolean));
     if (!nodes.length) return null;
     if (nodes.length === 1) {
-        const cached = wrapperCache.get(nodes[0]);
-        if (cached) return cached;
-        const wrapped = new Elements(nodes);
-        wrapperCache.set(nodes[0], wrapped);
-        return wrapped;
+        return new Elements(nodes);
     }
     return new Elements(nodes);
 }
 
-Elements.prototype = Object.create($.prototype);
-Elements.prototype.constructor = Elements;
-
-$.implement = methods => {
+dom.implement = methods => {
     Object.keys(methods).forEach(name => {
-        $.prototype[name] = methods[name];
+        elementMethods[name] = methods[name];
     });
-    return $;
+    return dom;
 };
 
-$.prototype.forEach = function(callback, context) {
+elementMethods.forEach = function(callback, context) {
     Array.from(this).forEach(callback, context);
     return this;
 };
-$.prototype.map = function(callback, context) {
+elementMethods.map = function(callback, context) {
     return Array.from(this).map(callback, context);
 };
-$.prototype.filter = function(callback, context) {
+elementMethods.filter = function(callback, context) {
     return Array.from(this).filter(callback, context);
 };
-$.prototype.every = function(callback, context) {
+elementMethods.every = function(callback, context) {
     return Array.from(this).every(callback, context);
 };
-$.prototype.some = function(callback, context) {
+elementMethods.some = function(callback, context) {
     return Array.from(this).some(callback, context);
 };
-$.prototype.unlink = function() {
-    this.forEach(node => wrapperCache.delete(node));
+elementMethods.unlink = function() {
     return this.map(node => node);
 };
 
@@ -129,9 +122,9 @@ const accessors = {};
         return this.forEach(node => { node[name] = Boolean(value); });
     };
 });
-$.implement(accessors);
+dom.implement(accessors);
 
-$.implement({
+dom.implement({
     setAttribute: function(name, value) {
         return this.forEach(node => node.setAttribute(name, value));
     },
@@ -244,7 +237,7 @@ $.implement({
             if (listeners.some(item => item.event === event && item.handle === handle
                 && item.useCapture === Boolean(useCapture))) return;
 
-            const listener = nativeEvent => handle.call($(node), nativeEvent);
+            const listener = nativeEvent => handle.call(dom(node), nativeEvent);
             const registration = {
                 event,
                 handle,
@@ -277,7 +270,7 @@ $.implement({
             const listeners = eventListeners.get(node) || [];
             listeners.filter(item => item.event === event)
                 .slice()
-                .forEach(item => item.handle.apply($(node), args));
+                .forEach(item => item.handle.apply(dom(node), args));
         });
     },
 
@@ -342,19 +335,19 @@ $.implement({
     search: function(expression) {
         const found = [];
         this.forEach(context => found.push(...descendants(context, expression)));
-        return $(documentOrder(found));
+        return dom(documentOrder(found));
     },
 
     find: function(expression) {
         for (let index = 0; index < this.length; index++) {
             const found = descendants(this[index], expression)[0];
-            if (found) return $(found);
+            if (found) return dom(found);
         }
         return null;
     },
 
     sort: function() {
-        return $(documentOrder(Array.from(this)));
+        return dom(documentOrder(Array.from(this)));
     },
 
     matches: function(expression) {
@@ -373,14 +366,14 @@ $.implement({
                 if (matches(sibling, expression)) found.push(sibling);
             }
         });
-        return $(documentOrder(found));
+        return dom(documentOrder(found));
     },
 
     nextSibling: function(expression) {
         for (let index = 0; index < this.length; index++) {
             let sibling = this[index].nextElementSibling;
             while (sibling && !matches(sibling, expression)) sibling = sibling.nextElementSibling;
-            if (sibling) return $(sibling);
+            if (sibling) return dom(sibling);
         }
         return null;
     },
@@ -392,14 +385,14 @@ $.implement({
                 if (matches(sibling, expression)) found.push(sibling);
             }
         });
-        return $(documentOrder(found));
+        return dom(documentOrder(found));
     },
 
     previousSibling: function(expression) {
         for (let index = 0; index < this.length; index++) {
             let sibling = this[index].previousElementSibling;
             while (sibling && !matches(sibling, expression)) sibling = sibling.previousElementSibling;
-            if (sibling) return $(sibling);
+            if (sibling) return dom(sibling);
         }
         return null;
     },
@@ -411,13 +404,13 @@ $.implement({
                 if (matches(child, expression)) found.push(child);
             });
         });
-        return $(documentOrder(found));
+        return dom(documentOrder(found));
     },
 
     firstChild: function(expression) {
         for (let index = 0; index < this.length; index++) {
             const found = Array.from(this[index].children || []).find(child => matches(child, expression));
-            if (found) return $(found);
+            if (found) return dom(found);
         }
         return null;
     },
@@ -426,7 +419,7 @@ $.implement({
         for (let index = 0; index < this.length; index++) {
             const children = Array.from(this[index].children || []);
             const found = children.reverse().find(child => matches(child, expression));
-            if (found) return $(found);
+            if (found) return dom(found);
         }
         return null;
     },
@@ -434,7 +427,7 @@ $.implement({
     parent: function(expression) {
         for (let index = 0; index < this.length; index++) {
             for (let parent = this[index].parentElement; parent; parent = parent.parentElement) {
-                if (matches(parent, expression)) return $(parent);
+                if (matches(parent, expression)) return dom(parent);
             }
         }
         return null;
@@ -456,7 +449,7 @@ $.implement({
                 if (first) break;
             }
         });
-        return $(first ? unique(found) : documentOrder(found));
+        return dom(first ? unique(found) : documentOrder(found));
     },
 
     delegate: function(event, selector, handle, useCapture) {
@@ -471,11 +464,11 @@ $.implement({
 
             const listener = originalEvent => {
                 const match = closestDelegated(originalEvent.target || originalEvent.srcElement, selector, node);
-                if (match) return handle.call($(node), originalEvent, $(match));
+                if (match) return handle.call(dom(node), originalEvent, dom(match));
             };
             const registration = { event, selector, handle, useCapture: Boolean(useCapture), listener };
             registrations.push(registration);
-            $(node).on(event, listener, registration.useCapture);
+            dom(node).on(event, listener, registration.useCapture);
         });
     },
 
@@ -488,7 +481,7 @@ $.implement({
                 const item = registrations[index];
                 if (item.event !== event || item.selector !== selector || item.handle !== handle
                     || item.useCapture !== Boolean(useCapture)) continue;
-                $(node).off(event, item.listener, item.useCapture);
+                dom(node).off(event, item.listener, item.useCapture);
                 registrations.splice(index, 1);
             }
             if (!registrations.length) delegatedListeners.delete(node);
@@ -496,4 +489,4 @@ $.implement({
     }
 });
 
-module.exports = $;
+module.exports = dom;

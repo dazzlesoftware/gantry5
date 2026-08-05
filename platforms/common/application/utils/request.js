@@ -11,7 +11,7 @@ const encodeForm = (value, prefix) => {
         return Object.entries(value).flatMap(([key, item]) =>
             encodeForm(item, prefix ? `${prefix}[${key}]` : key));
     }
-    return [`${prefix}=${encodeURIComponent(value)}`];
+    return [[prefix, String(value)]];
 };
 
 const parseHeaders = (headers) => {
@@ -109,7 +109,7 @@ class Request {
         if (data != null && typeof data !== 'string') {
             data = contentType === 'application/json'
                 ? JSON.stringify(data)
-                : encodeForm(data, '').join('&');
+                : new URLSearchParams(encodeForm(data, '')).toString();
         }
         if (/GET|HEAD/.test(method) && data) {
             url += `${url.includes('?') ? '&' : '?'}${data}`;

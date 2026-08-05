@@ -1,5 +1,5 @@
 "use strict";
-var $          = require('./elements-native'),
+var dom          = require('./dom-collection'),
     progresser = require('../ui/progresser'),
     indicator  = require('./indicator');
 
@@ -48,7 +48,7 @@ var adjacentSiblings = function(expression) {
         }
     });
 
-    return $(siblings);
+    return dom(siblings);
 };
 
 var matchingSiblings = function(expression) {
@@ -64,11 +64,11 @@ var matchingSiblings = function(expression) {
         });
     });
 
-    return $(siblings);
+    return dom(siblings);
 };
 
 
-$.implement({
+dom.implement({
     style: function() {
         var property = arguments[0], value = arguments[1];
         this.forEach(function(element) {
@@ -231,4 +231,4 @@ $.implement({
     siblings: matchingSiblings
 });
 
-module.exports = $;
+module.exports = dom;

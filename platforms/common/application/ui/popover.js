@@ -1,6 +1,6 @@
 "use strict";
 
-var $        = require('../utils/elements.utils'),
+var dom        = require('../utils/dom-effects'),
     zen      = require('../utils/create-element'),
     storage  = new WeakMap(),
 
@@ -40,7 +40,7 @@ class Popover {
     constructor(element, options) {
         this.options = Object.assign({}, defaults, options || {});
         this._bound = Object.create(null);
-        this.element = $(element);
+        this.element = dom(element);
 
         if (this.options.trigger === 'click') {
             this.element.off('click', this.bound('toggle')).on('click', this.bound('toggle'));
@@ -85,7 +85,7 @@ class Popover {
         this.element.emit('hidden.popover', this);
 
         if (this._focusAttached) {
-            $('body').off('focus', this.bound('focus'), true);
+            dom('body').off('focus', this.bound('focus'), true);
             this._focusAttached = false;
             this.restoreFocus();
         }
@@ -102,7 +102,7 @@ class Popover {
     focus(e) {
         if (!this.getTarget().hasClass('in')) { return; }
         var self = this,
-            target = $(e.target || e);
+            target = dom(e.target || e);
 
         if (
             this.$target[0] === target[0] || target.parent(this.$target) ||
@@ -114,7 +114,7 @@ class Popover {
     }
 
     restoreFocus(element) {
-        element = $(element || this.element);
+        element = dom(element || this.element);
         var tag = element.tag();
 
         setTimeout(function(){
@@ -132,13 +132,13 @@ class Popover {
         if (force) { css = 'div.' + this.options.mainClass; }
         else { css = 'div.' + this.options.mainClass + ':not(.' + this.options.mainClass + '-fixed)'; }
 
-        var elements = $(css);
+        var elements = dom(css);
         if (!elements) { return this; }
         elements.removeClass('in').style({ display: 'none' }).attribute('tabindex', '-1');
         if (!force && this._focusAttached) this.restoreFocus();
 
         if (this._focusAttached) {
-            $('body').off('focus', this.bound('focus'), true);
+            dom('body').off('focus', this.bound('focus'), true);
             this._focusAttached = false;
         }
         return this;
@@ -179,7 +179,7 @@ class Popover {
         }, 0);
 
         if (!this._focusAttached) {
-            $('body').on('focus', this.bound('focus'), true);
+            dom('body').on('focus', this.bound('focus'), true);
             this._focusAttached = true;
         }
     }
@@ -204,13 +204,13 @@ class Popover {
             target.find('.g-arrow').remove();
         }
 
-        var container = $(this.options.where);
+        var container = dom(this.options.where);
 
         // wordpress workaround for out-of-scope cases
         if (GENESIS_PLATFORM == 'wordpress') {
-            container = $('#widgets-editor') || $('#customize-preview') || $('#widgets-right') || $(this.options.where);
+            container = dom('#widgets-editor') || dom('#customize-preview') || dom('#widgets-right') || dom(this.options.where);
             if ('#' + container.id() != this.options.where) {
-                var wpwrap = $('#wpwrap') || $('.wp-customizer'), sibling, workaround;
+                var wpwrap = dom('#wpwrap') || dom('.wp-customizer'), sibling, workaround;
                 if (wpwrap.id() == 'wpwrap') {
                     sibling = wpwrap.nextSibling(this.options.where);
                     workaround =  sibling ? sibling : zen('div.g5wp-out-of-scope' + this.options.where).after(wpwrap);
@@ -279,7 +279,7 @@ class Popover {
     /*getter setters */
     getTarget() {
         if (!this.$target) {
-            this.$target = $(zen('div').html(this.options.template).children()[0]);
+            this.$target = dom(zen('div').html(this.options.template).children()[0]);
         }
         return this.$target;
     }
@@ -313,7 +313,7 @@ class Popover {
     getContent() {
         if (this.options.url) {
             if (this.options.type === 'iframe') {
-                this.content = $('<iframe frameborder="0"></iframe>').attribute('src', this.options.url);
+                this.content = dom('<iframe frameborder="0"></iframe>').attribute('src', this.options.url);
             }
         } else if (!this.content) {
             var content = '';
@@ -357,13 +357,13 @@ class Popover {
             this.displayContent();
             this.bindBodyEvents();
 
-            var selects = $('[data-selectize]');
+            var selects = dom('[data-selectize]');
             if (selects) { selects.selectize(); }
         }.bind(this));
     }
 
     bindBodyEvents() {
-        var body = $('body');
+        var body = dom('body');
         body.off('keyup', this.bound('escapeHandler')).on('keyup', this.bound('escapeHandler'));
         body.off('click', this.bound('bodyClickHandler')).on('click', this.bound('bodyClickHandler'));
     }
@@ -396,7 +396,7 @@ class Popover {
     }
 
     targetClickHandler(e) {
-        var target = $(e.target);
+        var target = dom(e.target);
         if (target.matches(this.options.allowElementsClick)) { e.preventDefault(); }
         if (!target.parent('[data-g-popover-follow]') && target.data('g-popover-follow') === null) { e.stopPropagation(); }
     }
@@ -573,7 +573,7 @@ class Popover {
 
 }
 
-$.implement({
+dom.implement({
     getPopover: function(options) {
         var element = this[0],
             popover = storage.get(element);
@@ -603,7 +603,7 @@ $.implement({
 
     position: function() {
         var node = this[0],
-            ct = $('[data-genesis-container]')[0].getBoundingClientRect(),
+            ct = dom('[data-genesis-container]')[0].getBoundingClientRect(),
             box = {
                 left: 0,
                 right: 0,
@@ -628,7 +628,7 @@ $.implement({
     }
 });
 
-module.exports = $;
+module.exports = dom;
 module.exports.create = function(element, options) {
     var popover = storage.get(element);
     if (!popover) {

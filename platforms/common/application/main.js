@@ -1,6 +1,5 @@
 "use strict";
-require('./utils/genesis-compat');
-var $              = require('./utils/elements-native'),
+var dom              = require('./utils/dom-collection'),
     zen            = require('./utils/create-element'),
     ready          = require('./utils/dom').ready,
     request        = require('./utils/request'),
@@ -25,7 +24,6 @@ var $              = require('./utils/elements-native'),
 require('./fields');
 require('./ui/popover');
 require('./utils/ajaxify-links');
-require('./utils/rAF-polyfill');
 
 var trim = function(value, characters) {
     var string = value == null ? '' : String(value);
@@ -101,7 +99,7 @@ window.onbeforeunload = function() {
 };
 
 ready(function() {
-    var body     = $('body'),
+    var body     = dom('body'),
         sentence = translate('GENESIS_PLATFORM_JS_SAVE_SUCCESS');
 
     // Close notification
@@ -170,7 +168,7 @@ ready(function() {
     // Save
     body.delegate('click', '.button-save', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
-        var saves = $('.button-save');
+        var saves = dom('.button-save');
 
         if (saves.disabled()) {
             return false;
@@ -184,12 +182,12 @@ ready(function() {
             invalid = [],
             type    = element.data('save'),
             extras  = '',
-            page    = $('[data-lm-root]') ? 'layout' : ($('[data-mm-id]') ? 'menu' : ($('[data-genesis-position]') ? 'positions' : 'other')),
+            page    = dom('[data-lm-root]') ? 'layout' : (dom('[data-mm-id]') ? 'menu' : (dom('[data-genesis-position]') ? 'positions' : 'other')),
             saveURL = parseAjaxURI(trim(window.location.href, '#') + getAjaxSuffix());
 
         switch (page) {
             case 'layout':
-                var preset = $('[data-lm-preset]');
+                var preset = dom('[data-lm-preset]');
                 lm.layoutmanager.singles('cleanup', lm.builder, false);
                 lm.savestate.setSession(lm.builder.serialize(null, true));
 
@@ -204,7 +202,7 @@ ready(function() {
                 break;
 
             case 'menu':
-                data.menutype = $('select.menu-select-wrap').value();
+                data.menutype = dom('select.menu-select-wrap').value();
                 data.settings = JSON.stringify(mm.menumanager.settings);
                 data.ordering = JSON.stringify(mm.menumanager.ordering);
 
@@ -227,15 +225,15 @@ ready(function() {
                 var form = element.parent('form');
 
                 if (form && element.attribute('type') == 'submit') {
-                    $(form[0].elements).forEach(function(input) {
-                        input = $(input);
+                    dom(form[0].elements).forEach(function(input) {
+                        input = dom(input);
                         var name     = input.attribute('name'),
                             type     = input.attribute('type'),
                             value    = input.value(),
                             parent   = input.parent('.settings-param, .card-overrideable'),
                             override = parent ? parent.find('> input[type="checkbox"]') : null;
 
-                        override = override || $(input.data('override-target'));
+                        override = override || dom(input.data('override-target'));
 
                         if (!name || input.disabled() || (override && !override.checked()) || (type == 'radio' && !input.checked())) { return; }
                         if (!validateField(input)) { invalid.push(input); }
@@ -252,7 +250,7 @@ ready(function() {
             return;
         }
 
-        if (page == 'other') { $('.settings-param-title, .card.settings-block > h4').hideIndicator(); }
+        if (page == 'other') { dom('.settings-param-title, .card.settings-block > h4').hideIndicator(); }
         body[0].dispatchEvent(new CustomEvent('updateOriginalFields'));
 
         request('post', saveURL, data, function(error, response) {
@@ -267,7 +265,7 @@ ready(function() {
             } else {
                 modal.close();
 
-                if ($('#styles')) {
+                if (dom('#styles')) {
                     extras = '<br />' + (response.body.warning ? '<hr />' + response.body.title + '<br />' + response.body.html : translate('GENESIS_PLATFORM_JS_CSS_COMPILED'));
                 }
 
@@ -281,7 +279,7 @@ ready(function() {
             saves.disabled(false);
             saves.hideIndicator();
             saves.forEach(function(save) {
-                $(save).lastSaved = new Date();
+                dom(save).lastSaved = new Date();
             });
 
             if (page == 'layout') { lm.layoutmanager.updatePendingChanges(); }
@@ -302,7 +300,7 @@ ready(function() {
     });
 
     body.delegate('click', '[data-title-edit]', function(event, element) {
-        element = $(element);
+        element = dom(element);
         if (element.hasClass('disabled')) { return false; }
 
         var $title = element.siblings('[data-title-editable]') || element.previousSiblings().find('[data-title-editable]') || element.nextSiblings().find('[data-title-editable]'), title;
@@ -330,7 +328,7 @@ ready(function() {
     });
 
     body.delegate('keydown', '[data-title-editable]', function(event, element) {
-        element = $(element);
+        element = dom(element);
         switch (event.keyCode) {
             case 13: // return
             case 27: // esc
@@ -360,7 +358,7 @@ ready(function() {
     });
 
     body.delegate('blur', '[data-title-editable]', function(event, element) {
-        element = $(element);
+        element = dom(element);
         element[0].scrollLeft = 0;
         element.attribute('contenteditable', null);
         element.data('title-editable', trim(element.text()));
@@ -385,11 +383,11 @@ ready(function() {
 
         var href      = element.attribute('href') || element.data('ajax-action'),
             method    = element.data('ajax-action-method') || 'post',
-            indicator = $(element.data('ajax-action-indicator')) || element;
+            indicator = dom(element.data('ajax-action-indicator')) || element;
 
         if (!href) { return false; }
 
-        var extras = $('[data-g-extras]');
+        var extras = dom('[data-g-extras]');
         if (extras && extras[0].PopoverDefined) {
             extras.getPopover().hide();
         }
@@ -428,7 +426,7 @@ var modules = {
     assingments: require('./assignments'),
     ui: require('./ui'),
     styles: require('./styles'),
-    "$": $,
+    dom: dom,
     domready: ready,
     particles: require('./particles'),
     zen: zen,
