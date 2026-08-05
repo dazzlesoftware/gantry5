@@ -5371,9 +5371,9 @@
         "platforms/common/js/main.js",
         "tests/php83/FinalJavaScriptEs6CleanupTest.php"
       ],
-      "bytes": 21416,
-      "lines": 652,
-      "sha256": "19d7daaef91a1f53fee1ad9bfbcf20988d13688ff4216ccf109cc41c7b9e2248",
+      "bytes": 21764,
+      "lines": 660,
+      "sha256": "65fd13207a0b0ebaae795ac6fea21b992910426222d10468d579f1094b26acb9",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -6563,9 +6563,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 607962,
-      "lines": 15036,
-      "sha256": "16409f2fd8b48c7d4fe36b315efac544a8ecf8a8ff68f272db6804192b0394df",
+      "bytes": 608307,
+      "lines": 15045,
+      "sha256": "fd9a9e6d0bbdfdd9a724cd6c288b65d34dd283a0a5605e75ab260be51d911419",
       "signals": {
         "commonjs": false,
         "esModule": false,

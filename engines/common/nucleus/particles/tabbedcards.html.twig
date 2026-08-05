@@ -1,0 +1,99 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    <section id="g-tabbedcards-{{ id }}" class="g-tabbedcards g-tabbedcards-tabs-{{ particle.tab_position|default('top')|e }} {{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        {% if particle.description %}<div class="g-tabbedcards-description">{{ particle.description|raw }}</div>{% endif %}
+
+        <div class="g-tabbedcards-layout">
+            <div class="g-tabbedcards-tabs" role="tablist" aria-label="{{ particle.title|default('Tabbed cards')|e('html_attr') }}">
+                {% for tab in particle.tabs|default([]) %}
+                    <button
+                        id="g-tabbedcards-tab-{{ id }}-{{ loop.index }}"
+                        class="g-tabbedcards-tab"
+                        type="button"
+                        role="tab"
+                        aria-controls="g-tabbedcards-panel-{{ id }}-{{ loop.index }}"
+                        aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                        tabindex="{{ loop.first ? '0' : '-1' }}"
+                    >{{ tab.title|e }}</button>
+                {% endfor %}
+            </div>
+
+            <div class="g-tabbedcards-panels">
+                {% for tab in particle.tabs|default([]) %}
+                    <div
+                        id="g-tabbedcards-panel-{{ id }}-{{ loop.index }}"
+                        class="g-tabbedcards-panel {{ tab.class|e }}"
+                        role="tabpanel"
+                        aria-labelledby="g-tabbedcards-tab-{{ id }}-{{ loop.index }}"
+                        {% if not loop.first %}hidden{% endif %}
+                    >
+                        <div class="g-tabbedcards-grid g-tabbedcards-columns-{{ particle.columns|default(3)|e }}">
+                            {% for card in tab.cards|default([]) %}
+                                <article class="g-tabbedcards-card {{ card.class|e }}">
+                                    {% if card.image %}
+                                        <div class="g-tabbedcards-card-image">
+                                            <img src="{{ url(card.image)|e }}" alt="{{ card.title|e }}" loading="lazy">
+                                            {% if card.link and card.linklabel %}
+                                                <a class="g-tabbedcards-card-overlay" href="{{ card.link|e }}" target="{{ card.target|default('_self')|e }}"{% if card.target == '_blank' %} rel="noopener noreferrer"{% endif %}>{{ card.linklabel|e }}</a>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if card.title %}
+                                        <h3 class="g-tabbedcards-card-title">
+                                            {% if card.link %}<a href="{{ card.link|e }}" target="{{ card.target|default('_self')|e }}"{% if card.target == '_blank' %} rel="noopener noreferrer"{% endif %}>{{ card.title|e }}</a>{% else %}{{ card.title|e }}{% endif %}
+                                        </h3>
+                                    {% endif %}
+                                    {% if card.description %}<div class="g-tabbedcards-card-description">{{ card.description|raw }}</div>{% endif %}
+                                    {% if card.tag or card.subtag %}
+                                        <div class="g-tabbedcards-card-meta">
+                                            {% if card.tag %}<span class="g-tabbedcards-card-tag">{{ card.tag|e }}</span>{% endif %}
+                                            {% if card.subtag %}<span class="g-tabbedcards-card-subtag">{{ card.subtag|e }}</span>{% endif %}
+                                        </div>
+                                    {% endif %}
+                                </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}
+<script>
+(() => {
+    const root = document.getElementById('g-tabbedcards-{{ id }}');
+    if (!root || root.dataset.tabbedCardsReady) return;
+    root.dataset.tabbedCardsReady = 'true';
+    const tabs = [...root.querySelectorAll('[role="tab"]')];
+    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
+
+    const select = (selected, focus = false) => {
+        tabs.forEach((tab, index) => {
+            const active = index === selected;
+            tab.setAttribute('aria-selected', String(active));
+            tab.tabIndex = active ? 0 : -1;
+            if (panels[index]) panels[index].hidden = !active;
+        });
+        if (focus) tabs[selected]?.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => select(index));
+        tab.addEventListener('keydown', (event) => {
+            if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const previous = ['ArrowLeft', 'ArrowUp'].includes(event.key);
+            const target = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1
+                : (index + (previous ? -1 : 1) + tabs.length) % tabs.length;
+            select(target, true);
+        });
+    });
+})();
+</script>
+{% endblock %}
+

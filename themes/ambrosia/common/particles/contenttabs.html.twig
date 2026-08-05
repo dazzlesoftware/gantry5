@@ -47,7 +47,7 @@
 {% block javascript_footer %}
 <script>
 (() => {
-    const tabs = document.getElementById('{{ id }}');
+    const tabs = document.getElementById('g-contenttabs-{{ id }}');
     if (!tabs || tabs.dataset.tabsReady) return;
     tabs.dataset.tabsReady = 'true';
     const links = [...tabs.querySelectorAll('.g-contenttabs-tab')];
@@ -60,6 +60,7 @@
             link.setAttribute('aria-selected', String(active));
             link.tabIndex = active ? 0 : -1;
             link.closest('li')?.classList.toggle('ui-tabs-active', active);
+            link.closest('li')?.classList.toggle('ui-state-active', active);
             if (panels[index]) {
                 panels[index].hidden = !active;
                 panels[index].setAttribute('role', 'tabpanel');

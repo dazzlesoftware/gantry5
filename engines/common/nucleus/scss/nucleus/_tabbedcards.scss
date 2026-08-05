@@ -1,0 +1,121 @@
+.g-tabbedcards-layout {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.g-tabbedcards-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.g-tabbedcards-tab {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    text-align: inherit;
+}
+
+.g-tabbedcards-tab[aria-selected="true"] {
+    background: var(--g-tabbedcards-active-background, #333);
+    color: var(--g-tabbedcards-active-color, #fff);
+}
+
+.g-tabbedcards-panels {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.g-tabbedcards-panel[hidden] {
+    display: none;
+}
+
+.g-tabbedcards-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@for $columns from 1 through 4 {
+    .g-tabbedcards-columns-#{$columns} {
+        grid-template-columns: repeat(#{$columns}, minmax(0, 1fr));
+    }
+}
+
+.g-tabbedcards-card-image {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.g-tabbedcards-card-image img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.g-tabbedcards-card-overlay {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.2s ease;
+}
+
+.g-tabbedcards-card-image:hover .g-tabbedcards-card-overlay,
+.g-tabbedcards-card-overlay:focus {
+    opacity: 1;
+}
+
+.g-tabbedcards-card-title {
+    margin: 0 0 0.5rem;
+}
+
+.g-tabbedcards-card-meta {
+    display: flex;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+}
+
+.g-tabbedcards-card-tag {
+    font-weight: 700;
+}
+
+.g-tabbedcards-tabs-top .g-tabbedcards-layout {
+    flex-direction: column;
+}
+
+.g-tabbedcards-tabs-left .g-tabbedcards-tabs,
+.g-tabbedcards-tabs-right .g-tabbedcards-tabs {
+    align-content: flex-start;
+    flex: 0 0 auto;
+    flex-direction: column;
+}
+
+.g-tabbedcards-tabs-right .g-tabbedcards-tabs {
+    order: 2;
+}
+
+@media only all and (max-width: 47.99rem) {
+    .g-tabbedcards-layout {
+        flex-direction: column;
+    }
+
+    .g-tabbedcards-tabs-left .g-tabbedcards-tabs,
+    .g-tabbedcards-tabs-right .g-tabbedcards-tabs {
+        flex-direction: row;
+        order: 0;
+    }
+
+    .g-tabbedcards-grid {
+        grid-template-columns: 1fr;
+    }
+}

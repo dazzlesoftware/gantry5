@@ -1,0 +1,131 @@
+name: Tabbed Cards
+description: Display structured cards in accessible tabbed panels.
+type: particle
+category: content
+icon: fa-th-large
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class names for the particle.
+
+    title:
+      type: input.text
+      label: Title
+      description: Optional title displayed above the tabs.
+
+    description:
+      type: textarea.textarea
+      label: Description
+      description: Optional description displayed above the tabs.
+
+    tab_position:
+      type: select.select
+      label: Tab Position
+      description: Position the tab navigation above or beside the cards.
+      default: top
+      options:
+        top: Top
+        left: Left
+        right: Right
+
+    columns:
+      type: select.select
+      label: Columns
+      description: Select the maximum number of cards per row.
+      default: 3
+      options:
+        1: 1 Column
+        2: 2 Columns
+        3: 3 Columns
+        4: 4 Columns
+
+    tabs:
+      type: collection.list
+      array: true
+      label: Tabs
+      description: Add, remove, edit, or reorder tabs.
+      value: title
+      ajax: true
+
+      fields:
+        .title:
+          type: input.text
+          label: Tab Title
+          description: Enter the tab label.
+
+        .class:
+          type: input.selectize
+          label: CSS Classes
+          description: CSS class names for this panel.
+
+        .cards:
+          type: collection.list
+          array: true
+          label: Cards
+          description: Add, remove, edit, or reorder cards in this tab.
+          value: title
+          ajax: true
+
+          fields:
+            .title:
+              type: input.text
+              label: Title
+              description: Enter the card title.
+
+            .image:
+              type: input.imagepicker
+              label: Image
+              description: Select the card image.
+
+            .description:
+              type: textarea.textarea
+              label: Description
+              description: Enter the card description.
+
+            .tag:
+              type: input.text
+              label: Tag
+              description: Enter the highlighted card tag.
+
+            .subtag:
+              type: input.text
+              label: Subtag
+              description: Enter the secondary card tag.
+
+            .link:
+              type: input.text
+              label: Link
+              description: Enter an optional destination URL.
+
+            .linklabel:
+              type: input.text
+              label: Link Label
+              description: Enter the image-overlay link label.
+              default: Read More
+
+            .target:
+              type: select.select
+              label: Link Target
+              default: _self
+              options:
+                _self: Current Window
+                _blank: New Window
+
+            .class:
+              type: input.selectize
+              label: CSS Classes
+              description: CSS class names for this card.
+

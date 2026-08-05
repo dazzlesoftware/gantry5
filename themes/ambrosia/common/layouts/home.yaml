@@ -19,7 +19,7 @@ layout:
   /showcase/: {  }
   /feature/:
     -
-      - contenttabs-6819
+      - tabbedcards-6819
     -
       - headlines-8875
   /container-3489/:
@@ -181,46 +181,253 @@ content:
       id: slideshow-slider
       class: flush
       variations: center
-  contenttabs-6819:
-    title: 'Content Tabs'
+  tabbedcards-6819:
+    title: 'Tabbed Cards'
     attributes:
-      animation: fade
-      items:
+      class: ''
+      title: ''
+      description: ''
+      tab_position: right
+      columns: 3
+      tabs:
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t\t<div class=\"g-grid\">\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Layout - Drag &amp; Drop\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tUnlimited layout possibilities powered by a drag &amp; drop interface\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Drag &amp; Drop</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Layout - Particles\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tCreate and control complex content constructions with Particles\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Particles</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Layout - Positions\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tInsert module positions within the layout manager and menu editor\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Layout</span></a> <span class=\"g-small\">Positions</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
           title: News
+          class: ''
+          cards:
+            -
+              title: 'Unlimited layout possibilities powered by a drag & drop interface'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Layout
+              subtag: 'Drag & Drop'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Create and control complex content constructions with Particles'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Layout
+              subtag: Particles
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Insert module positions within the layout manager and menu editor'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Layout
+              subtag: Positions
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t\t<div class=\"g-grid\">\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Style - Six Variations\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tChoose from the selection of highly configurable preset style variations\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Six Variations</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Style - Block Variations\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\t<span><span class=\"hidden-tablet\">An array of c</span><span class=\"visible-tablet\">C</span>ompoundable stylistic and structural block variations</span>\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Block Variants</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"g-block\">\n\t\t\t\t<div class=\"g-content\">\n\t\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t\t<img alt=\"Style - Typography\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t\tContemporary content typography with Font Awesome support\n\t\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>"
           title: Games
+          class: ''
+          cards:
+            -
+              title: 'Choose from the selection of highly configurable preset style variations'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Style
+              subtag: 'Six Variations'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'An array of cCompoundable stylistic and structural block variations'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Style
+              subtag: 'Block Variants'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Contemporary content typography with Font Awesome support'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Style
+              subtag: Typography
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Menu - Menu Editor\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tVisual Menu Editor to augment the core Joomla menu manager\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Menu Editor</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Menu - Columns\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tCreate multiple columns with auto or individual custom widths\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Columns</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Menu - Inline Blocks\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tInsert inline positions and particles directly into the menu\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"g-small\">Inline Blocks</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
           title: Reviews
+          class: ''
+          cards:
+            -
+              title: 'Visual Menu Editor to augment the core Joomla menu manager'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Menu
+              subtag: 'Menu Editor'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Create multiple columns with auto or individual custom widths'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Menu
+              subtag: Columns
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Insert inline positions and particles directly into the menu'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Menu
+              subtag: 'Inline Blocks'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Genesis - Particles\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tGenesis's Particles system makes it easy to configure content blocks.\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Genesis</span></a> <span class=\"g-small\">Particles</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Genesis - Layout\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tLayout manager has drag and drop functionality for easy modifications\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Genesis</span></a> <span class=\"g-small\">Layout</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Genesis - Menu\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tA built-in and versatile dropdown menu system with extensive controls\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Genesis</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
           title: Releases
+          class: ''
+          cards:
+            -
+              title: "Genesis's Particles system makes it easy to configure content blocks."
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Genesis
+              subtag: Particles
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Layout manager has drag and drop functionality for easy modifications'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Genesis
+              subtag: Layout
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'A built-in and versatile dropdown menu system with extensive controls'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Genesis
+              subtag: Menu
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Code - SCSS CSS\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\t<span>Built with the <span class=\"hidden-tablet\">advanced</span> dynamic stylesheet language SCSS (CSS)</span>\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">SCSS CSS</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Code - Twig Engine\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tUtilizing Twig a highly flexible and secure templating engine for PHP\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">Twig Engine</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Code - YAML Config\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tTemplate setup is powered by …3113 tokens truncated…t\t\t\t<a href=\"#\">Offset restrictions with unlimited positions</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Positions</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">A range of Web Fonts with Live Preview</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Fonts</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Diversify content with unique typography</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
           title: Articles
+          class: ''
+          cards:
+            -
+              title: 'Built with the advanced dynamic stylesheet language SCSS (CSS)'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Code
+              subtag: 'SCSS CSS'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Utilizing Twig a highly flexible and secure templating engine for PHP'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Code
+              subtag: 'Twig Engine'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Template setup is powered by the human readable language YAML'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Code
+              subtag: 'YAML Config'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Mobile - Responsive\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tResponsive layout with support for mobile devices and computers\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Mobile</span></a> <span class=\"g-small\">Responsives</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Mobile - Sidemenu\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tDedicated menu optimized for mobile devices to aid site navigation\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Mobile</span></a> <span class=\"g-small\">Sidemenu</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Mobile - Offcanvas\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tOffcanvas position designed for blocks specifically for mobile\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Mobile</span></a> <span class=\"g-small\">Offcanvas</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
           title: Photos
+          class: ''
+          cards:
+            -
+              title: 'Responsive layout with support for mobile devices and computers'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Mobile
+              subtag: Responsives
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Dedicated menu optimized for mobile devices to aid site navigation'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Mobile
+              subtag: Sidemenu
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Offcanvas position designed for blocks specifically for mobile'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Mobile
+              subtag: Offcanvas
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
         -
-          linklabel: ''
-          link: ''
-          content: "<div class=\"g-tabimage\">\n\t<div class=\"g-grid\">\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Core - RokBooster\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tOptimize speed with compressor and consolidator RokBooster\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Core</span></a> <span class=\"g-small\">RokBooster</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Core - Genesis Cache\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tRecoded with performance in mind with efficient caching solutions\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Core</span></a> <span class=\"g-small\">Genesis Cache</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"g-block\">\n\t\t\t<div class=\"g-content\">\n\t\t\t\t<div class=\"g-tab-image\">\n\t\t\t\t\t<img alt=\"Core - Support\" src=\"genesis-media://demo/home/feature/img-01.jpg\">\n\t\t\t\t\t<div class=\"g-tab-image-overlay\">\n\t\t\t\t\t\t<a class=\"readon\" href=\"#\">Read More</a>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"g-title-regular\">\n\t\t\t\t\tExtensive set of Genesis documentation and community help\n\t\t\t\t</div><a href=\"#\"><span class=\"g-tag\">Core</span></a> <span class=\"g-small\">Support</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
           title: Videos
+          class: ''
+          cards:
+            -
+              title: 'Optimize speed with compressor and consolidator RokBooster'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Core
+              subtag: RokBooster
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Recoded with performance in mind with efficient caching solutions'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Core
+              subtag: 'Genesis Cache'
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
+            -
+              title: 'Extensive set of Genesis documentation and community help'
+              image: 'genesis-media://demo/home/feature/img-01.jpg'
+              description: ''
+              tag: Core
+              subtag: Support
+              link: '#'
+              linklabel: 'Read More'
+              target: _self
+              class: ''
     block:
       id: feature-tabs
       class: flush

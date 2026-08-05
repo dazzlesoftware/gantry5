@@ -7,6 +7,7 @@ import __module2 from '../utils/request.js';
 let dom        = __module0,
     zen      = __module1,
     storage  = new WeakMap(),
+    instances = new Set(),
 
     request  = __module2;
 
@@ -55,6 +56,7 @@ class Popover {
         }
 
         this._poped = false;
+        instances.add(this);
         //this._inited = true;
     }
 
@@ -66,7 +68,8 @@ class Popover {
     }
 
     destroy() {
-        this.hide();
+        this.hide(null, false);
+        instances.delete(this);
         storage.delete(this.element[0]);
         this.element.off('click', this.bound('toggle')).off('mouseenter', this.bound('mouseenterHandler')).off('mouseleave', this.bound('mouseleaveHandler'));
 
@@ -75,7 +78,7 @@ class Popover {
         }
     }
 
-    hide(event) {
+    hide(event, restore = true) {
         if (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -91,8 +94,12 @@ class Popover {
         if (this._focusAttached) {
             dom('body').off('focus', this.bound('focus'), true);
             this._focusAttached = false;
-            this.restoreFocus();
+            if (restore) this.restoreFocus();
         }
+
+        dom('body')
+            .off('keyup', this.bound('escapeHandler'))
+            .off('click', this.bound('bodyClickHandler'));
     }
 
     toggle(e) {
@@ -113,8 +120,7 @@ class Popover {
             this.element[0] === target[0] || target.parent(this.element)
         ) { return; }
 
-        this.hide();
-        if (this._focusAttached) this.restoreFocus();
+        this.hide(null, false);
     }
 
     restoreFocus(element) {
@@ -131,20 +137,16 @@ class Popover {
         }, 0);
     }
 
-    hideAll(force) {
-        let css = '';
-        if (force) { css = 'div.' + this.options.mainClass; }
-        else { css = 'div.' + this.options.mainClass + ':not(.' + this.options.mainClass + '-fixed)'; }
+    hideAll(force, restore = false) {
+        const restoreTarget = restore && this._focusAttached ? this.element : null;
 
-        let elements = dom(css);
-        if (!elements) { return this; }
-        elements.removeClass('in').style({ display: 'none' }).attribute('tabindex', '-1');
-        if (!force && this._focusAttached) this.restoreFocus();
+        instances.forEach(instance => {
+            const target = instance.$target;
+            if (!target || (!force && target.hasClass(instance.options.mainClass + '-fixed'))) return;
+            instance.hide(null, false);
+        });
 
-        if (this._focusAttached) {
-            dom('body').off('focus', this.bound('focus'), true);
-            this._focusAttached = false;
-        }
+        if (restoreTarget) this.restoreFocus(restoreTarget);
         return this;
     }
 
@@ -189,7 +191,7 @@ class Popover {
     }
 
     displayContent() {
-        let elementPos = this.element.position(),
+        let elementPos,
             target = this.getTarget().attribute('class', null).addClass(this.options.mainClass),
             targetContent = this.getContentElement(),
             targetWidth, targetHeight, placement;
@@ -231,6 +233,16 @@ class Popover {
             left: -1000,
             display: 'block'
         }).bottom(container);
+
+        const anchorRect = this.element[0].getBoundingClientRect();
+        const offsetParent = target[0].offsetParent || document.documentElement;
+        const parentRect = offsetParent.getBoundingClientRect();
+        elementPos = {
+            left: anchorRect.left - parentRect.left + offsetParent.scrollLeft,
+            top: anchorRect.top - parentRect.top + offsetParent.scrollTop,
+            width: anchorRect.width,
+            height: anchorRect.height
+        };
 
         if (this.options.style) {
             if (typeof this.options.style === 'string') {
@@ -391,7 +403,7 @@ class Popover {
 
     escapeHandler(e) {
         if (e.keyCode === 27) {
-            this.hideAll();
+            this.hideAll(false, true);
         }
     }
 
@@ -427,13 +439,11 @@ class Popover {
         let
             placement,
             de = document.documentElement,
-            db = document.body,
             clientWidth = de.clientWidth,
             clientHeight = de.clientHeight,
-            scrollTop = Math.max(db.scrollTop, de.scrollTop),
-            scrollLeft = Math.max(db.scrollLeft, de.scrollLeft),
-            pageX = Math.max(0, pos.left - scrollLeft),
-            pageY = Math.max(0, pos.top - scrollTop),
+            anchorRect = this.element[0].getBoundingClientRect(),
+            pageX = Math.max(0, anchorRect.left),
+            pageY = Math.max(0, anchorRect.top),
             arrowSize = 20;
 
         // if placement equals auto，caculate the placement by element information;
@@ -641,5 +651,9 @@ dom.create = function(element, options) {
     }
     return popover;
 };
+
+document.addEventListener('genesis:content-replacing', () => {
+    instances.forEach(instance => instance.hide(null, false));
+});
 
 export default dom;
