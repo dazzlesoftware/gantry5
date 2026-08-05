@@ -5516,6 +5516,8 @@
   };
 
   // assets/common/application/swiper.js
+  Swiper.use([A11y, Autoplay, EffectFade, Keyboard, Navigation, Pagination]);
+  window.Swiper = Swiper;
   var selector = "[data-g-swiper]";
   var enabled = (value, fallback = false) => {
     if (value === void 0 || value === null || value === "") {

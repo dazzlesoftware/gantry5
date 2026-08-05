@@ -9,6 +9,12 @@ import {
     Pagination
 } from 'swiper/modules';
 
+// Legacy theme particle adapters instantiate the shared constructor directly.
+// Install the supported modules once and retain this documented browser bridge
+// until all variant particle markup has moved to data-g-swiper.
+Swiper.use([A11y, Autoplay, EffectFade, Keyboard, Navigation, Pagination]);
+window.Swiper = Swiper;
+
 const selector = '[data-g-swiper]';
 
 const enabled = (value, fallback = false) => {

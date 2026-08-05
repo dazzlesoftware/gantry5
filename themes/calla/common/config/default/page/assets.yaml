@@ -3,7 +3,7 @@ touchicon: ''
 css: {  }
 javascript:
   -
-    location: 'genesis-assets://js/block_variations.js'
+    location: 'genesis-assets://js/block-variations.js'
     inline: ''
     in_footer: '1'
     extra: {  }

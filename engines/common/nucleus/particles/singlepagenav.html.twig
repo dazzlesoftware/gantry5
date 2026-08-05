@@ -1,0 +1,62 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript %}
+<script>
+(() => {
+    'use strict';
+
+    const navigation = document.querySelector('{{ particle.section|default("#g-navigation") }}');
+    if (!navigation || navigation.dataset.singlePageNavReady) return;
+    navigation.dataset.singlePageNavReady = 'true';
+
+    const excluded = '{{ particle.class|e("js") }}';
+    const currentClass = '{{ particle.currentClass|default("current")|e("js") }}';
+    const duration = {{ particle.speed|default(400) }};
+    const offset = {% if particle.offset == "enabled" %}document.getElementById('g-navigation')?.offsetHeight || 0{% else %}0{% endif %};
+    const links = [...navigation.querySelectorAll('a[href^="#"]')]
+        .filter((link) => !excluded || !link.matches(excluded));
+    const targets = links
+        .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
+        .filter(Boolean);
+
+    const select = (target) => {
+        links.forEach((link) => link.classList.toggle(currentClass, link.hash === '#' + target.id));
+    };
+
+    navigation.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link || !links.includes(link)) return;
+        const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+        if (!target) return;
+        event.preventDefault();
+
+        const start = window.scrollY;
+        const destination = Math.max(0, target.getBoundingClientRect().top + start - offset);
+        const started = performance.now();
+        const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const scroll = (now) => {
+            const progress = reducedMotion ? 1 : Math.min(1, (now - started) / Math.max(1, duration));
+            const eased = 1 - Math.pow(1 - progress, 3);
+            window.scrollTo(0, start + (destination - start) * eased);
+            if (progress < 1) requestAnimationFrame(scroll);
+        };
+        requestAnimationFrame(scroll);
+        select(target);
+        {% if particle.updateHash == "enabled" %}
+        history.pushState(null, '', link.hash);
+        {% endif %}
+    });
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            const visible = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (visible) select(visible.target);
+        }, { rootMargin: `-${offset}px 0px -55% 0px`, threshold: [0.1, 0.5, 1] });
+        targets.forEach((target) => observer.observe(target));
+    }
+})();
+</script>
+{% endblock %}
+

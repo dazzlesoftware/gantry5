@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Phases 0, 1, and 2 complete; Phase 3 not started
+**Status:** Phases 0 through 4 complete; Phase 5 not started
 
 ## Objective
 
@@ -200,6 +200,14 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Every retained specialist library has a documented reason, version, source, and consumer.
 - Dead theme JavaScript is removed only after loader scans confirm zero consumers.
 
+### Completion record (August 4, 2026)
+
+- Removed all copied Modernizr, Classie, FastClick, Tiny Scrollbar, old Length, and theme Swiper 5 assets after migrating their loaders.
+- Replaced the active vertical-menu compatibility stack with a native, multi-instance controller using `classList`, standard events, and explicit teardown.
+- Upgraded recovered theme Swiper consumers to the shared Swiper 14 bundle through the preserved `data-swiper-*` adapter.
+- Consolidated Headroom, particles.js, and the saved-layout Chart compatibility runtime; documented every retained specialist runtime and consumer in `THEME-JAVASCRIPT-ASSET-REGISTER.md`.
+- Verified every `genesis-theme://js` and `genesis-assets://js` reference resolves to an existing file.
+
 ## Phase 4 — Consolidate repeated first-party theme controllers
 
 ### Work
@@ -216,6 +224,14 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Identical first-party controller copies are eliminated.
 - Shared controllers safely support multiple instances and dynamic content.
 - No first-party theme controller relies on implicit globals.
+
+### Completion record (August 4, 2026)
+
+- Consolidated exact scroll-animation, native-grid, accordion, mosaic, case-study, featured-video, news, team, slideshow, showcase, pricing-table, social-feed, stories, table-tab, particle-animation, and related controller copies into shared assets.
+- Made the consolidated controllers scoped and idempotent; global observers initialize dynamically inserted particle markup without duplicating instances.
+- Eliminated every exact duplicate group among maintained first-party theme controllers while leaving genuinely different markup/configuration variants local.
+- Promoted the fully uniform `button`, `progressbar`, `singlepagenav`, and `tabimage` particle schemas/renderers to core and removed all corresponding theme overrides.
+- Added automated loader-integrity, compatibility-removal, shared-controller, and core-particle regression coverage.
 
 ## Phase 5 — Administration DOM facade removal
 

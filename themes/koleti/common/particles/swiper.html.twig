@@ -194,7 +194,7 @@ data-swiper-mobile-breakpoint="{{ genesis.config.get('styles.breakpoints.large-m
         if (thumbs && slider) slider.before(thumbs);
     </script>
     {% endif %}
-    {% do genesis.document.addScript(url('genesis-theme://js/length.min.js'), 10, 'footer') %}
-    {% do genesis.document.addScript(url('genesis-theme://js/swiper.min.js'), 10, 'footer') %}
-    {% do genesis.document.addScript(url('genesis-theme://js/swiper.init.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/css-length.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/swiper.js'), 10, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/swiper-legacy-init.js'), 10, 'footer') %}
 {% endblock %}
