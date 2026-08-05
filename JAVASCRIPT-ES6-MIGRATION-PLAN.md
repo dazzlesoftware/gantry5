@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Phases 0 and 1 complete; Phase 2 not started
+**Status:** Phases 0, 1, and 2 complete; Phase 3 not started
 
 ## Objective
 
@@ -173,6 +173,15 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Frontend source has no `dom.js` or `decouple.js` compatibility module.
 - Frontend source uses Pointer Events without Microsoft-prefixed branches.
 - Development and production bundles build through esbuild and expose the expected Genesis API.
+
+### Completion record (August 4, 2026)
+
+- Converted frontend core, menu, off-canvas, and to-top source to ES modules.
+- Removed the frontend DOM and decouple compatibility modules while preserving the documented `window.Genesis` helpers.
+- Replaced Microsoft-prefixed touch handling with Pointer Events and an unprefixed touch fallback for Safari 12.
+- Removed the off-canvas CSS2 branch and made animation-frame cancellation explicit.
+- Moved frontend development and production bundles to esbuild; the administration bundle remains on Browserify until its migration phase.
+- Added automated source, API, pointer-event, dependency, and generated-bundle regression coverage.
 
 ## Phase 3 — Theme compatibility asset removal
 

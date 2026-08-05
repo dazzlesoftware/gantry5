@@ -1,21 +1,14 @@
 // Offcanvas slide with desktop, touch and all-in-one touch device support.
 // Based on Slideout.js <https://mango.github.io/slideout/>.
 
-"use strict";
-
-const decouple = require("../utils/decouple");
-
-const hasTouchEvents = "ontouchstart" in window
-    || (window.DocumentTouch && document instanceof window.DocumentTouch);
+const hasPointerEvents = "PointerEvent" in window;
+const hasTouchEvents = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 const clamp = (value, minimum, maximum) => Math.min(Math.max(value, minimum), maximum);
 const mapNumber = (value, inputMinimum, inputMaximum, outputMinimum, outputMaximum) => {
     if (inputMaximum === inputMinimum) return outputMinimum;
     const ratio = (value - inputMinimum) / (inputMaximum - inputMinimum);
     return outputMinimum + ratio * (outputMaximum - outputMinimum);
 };
-
-let isScrolling = false;
-let scrollTimeout;
 
 class Offcanvas {
     constructor(options = {}) {
@@ -25,7 +18,6 @@ class Offcanvas {
             tolerance: padding => padding / 3,
             padding: 0,
             touch: true,
-            css3: true,
             openClass: "g-offcanvas-open",
             openingClass: "g-offcanvas-opening",
             closingClass: "g-offcanvas-closing",
@@ -39,6 +31,8 @@ class Offcanvas {
         this.dragging = false;
         this.opened = false;
         this.preventOpen = false;
+        this.isScrolling = false;
+        this.activePointerId = null;
         this.listeners = [];
         this.offset = {
             x: { start: 0, current: 0 },
@@ -57,9 +51,7 @@ class Offcanvas {
         this.available = true;
 
         const swipe = this.offcanvas.getAttribute("data-g-offcanvas-swipe");
-        const css3 = this.offcanvas.getAttribute("data-g-offcanvas-css3");
         this.options.touch = Boolean(swipe !== null ? parseInt(swipe, 10) : 1);
-        this.options.css3 = Boolean(css3 !== null ? parseInt(css3, 10) : 1);
 
         if (!this.options.padding) {
             this.offcanvas.style.display = "block";
@@ -71,7 +63,7 @@ class Offcanvas {
             ? this.options.tolerance.call(this, this.options.padding)
             : this.options.tolerance;
 
-        this.htmlEl.classList.add(`g-offcanvas-${this.options.css3 ? "css3" : "css2"}`);
+        this.htmlEl.classList.add("g-offcanvas-css3");
         this.attach();
         this._checkTogglers();
     }
@@ -97,12 +89,11 @@ class Offcanvas {
         if (!this.available || this.attached) return this;
         this.attached = true;
 
-        if (this.options.touch && hasTouchEvents) this.attachTouchEvents();
+        if (this.options.touch && (hasPointerEvents || hasTouchEvents)) this.attachTouchEvents();
 
         ["toggle", "open", "close"].forEach(mode => {
             const selector = `[data-offcanvas-${mode}]`;
             this.delegate(this.bodyEl, "click", selector, this[mode]);
-            if (hasTouchEvents) this.delegate(this.bodyEl, "touchend", selector, this[mode]);
         });
 
         this.attachMutationEvent();
@@ -123,17 +114,17 @@ class Offcanvas {
     }
 
     attachTouchEvents() {
-        const msPointerSupported = window.navigator.msPointerEnabled;
         this.touchEvents = {
-            start: msPointerSupported ? "MSPointerDown" : "touchstart",
-            move: msPointerSupported ? "MSPointerMove" : "touchmove",
-            end: msPointerSupported ? "MSPointerUp" : "touchend"
+            start: hasPointerEvents ? "pointerdown" : "touchstart",
+            move: hasPointerEvents ? "pointermove" : "touchmove",
+            end: hasPointerEvents ? "pointerup" : "touchend",
+            cancel: hasPointerEvents ? "pointercancel" : "touchcancel"
         };
 
-        this._scrollBound = decouple(window, "scroll", this._bodyScroll.bind(this));
+        this.listen(window, "scroll", this._scheduleBodyScroll, { passive: true });
         this.listen(this.bodyEl, this.touchEvents.move, this._bodyMove, { passive: false });
         this.listen(this.panel, this.touchEvents.start, this._touchStart, { passive: true });
-        this.listen(this.panel, "touchcancel", this._touchCancel);
+        this.listen(this.panel, this.touchEvents.cancel, this._touchCancel);
         this.listen(this.panel, this.touchEvents.end, this._touchEnd);
         this.listen(this.panel, this.touchEvents.move, this._touchMove, { passive: true });
     }
@@ -147,10 +138,9 @@ class Offcanvas {
         });
         this.listeners = [];
 
-        if (this._scrollBound) {
-            window.removeEventListener("scroll", this._scrollBound);
-            this._scrollBound = null;
-        }
+        if (this.scrollFrame) cancelAnimationFrame(this.scrollFrame);
+        this.scrollFrame = null;
+        clearTimeout(this.scrollTimer);
 
         this.detachMutationEvent();
         if (this.overlay) {
@@ -175,7 +165,7 @@ class Offcanvas {
 
         this.htmlEl.classList.add(this.options.openClass, this.options.openingClass);
         if (this.overlay) this.overlay.style.opacity = 1;
-        if (this.options.css3) this.panel.style[this.getOffcanvasPosition()] = "inherit";
+        this.panel.style[this.getOffcanvasPosition()] = "inherit";
 
         this._setTransition();
         this._translateXTo(
@@ -236,68 +226,76 @@ class Offcanvas {
     }
 
     _setTransition() {
-        if (this.options.css3) {
-            this.panel.style.transition =
-                `transform ${this.options.duration}ms ${this.options.effect}`;
-        } else {
-            this.panel.style.transition =
-                `left ${this.options.duration}ms ${this.options.effect}, `
-                + `right ${this.options.duration}ms ${this.options.effect}`;
-        }
+        this.panel.style.transition =
+            `transform ${this.options.duration}ms ${this.options.effect}`;
     }
 
     _translateXTo(x) {
-        const placement = this.getOffcanvasPosition();
         this.offset.x.current = x;
-        if (this.options.css3) {
-            this.panel.style.transform = `translate3d(${x}px, 0, 0)`;
-        } else {
-            this.panel.style[placement] = `${Math.abs(x)}px`;
-        }
+        this.panel.style.transform = `translate3d(${x}px, 0, 0)`;
+    }
+
+    _scheduleBodyScroll() {
+        if (this.scrollFrame) return;
+        this.scrollFrame = requestAnimationFrame(() => {
+            this.scrollFrame = null;
+            this._bodyScroll();
+        });
     }
 
     _bodyScroll() {
         if (this.moved) return;
-        clearTimeout(scrollTimeout);
-        isScrolling = true;
-        scrollTimeout = setTimeout(() => {
-            isScrolling = false;
+        clearTimeout(this.scrollTimer);
+        this.isScrolling = true;
+        this.scrollTimer = setTimeout(() => {
+            this.isScrolling = false;
         }, 250);
     }
 
     _bodyMove(event) {
+        if (event.pointerType === "mouse" || !this._matchesActivePointer(event)) return true;
+        if (hasPointerEvents && this.activePointerId === null) return true;
         if (this.moved && event.cancelable) event.preventDefault();
         this.dragging = true;
         return false;
     }
 
     _touchStart(event) {
-        if (!event.touches) return;
+        if (event.pointerType === "mouse" || (event.isPrimary === false)) return;
+        const point = this._eventPoint(event);
+        if (!point) return;
+        this.activePointerId = event.pointerId ?? null;
+        if (event.pointerId !== undefined && this.panel.setPointerCapture) {
+            this.panel.setPointerCapture(event.pointerId);
+        }
         this.moved = false;
         this.opening = false;
         this.dragging = false;
-        this.offset.x.start = event.touches[0].pageX;
-        this.offset.y.start = event.touches[0].pageY;
+        this.offset.x.start = point.pageX;
+        this.offset.y.start = point.pageY;
         this.preventOpen = !this.opened && this.offcanvas.clientWidth !== 0;
     }
 
     _touchCancel() {
         this.moved = false;
         this.opening = false;
+        this.activePointerId = null;
     }
 
     _touchMove(event) {
-        if (isScrolling || this.preventOpen || !event.touches) return;
-        if (this.options.css3) this.panel.style[this.getOffcanvasPosition()] = "inherit";
+        if (event.pointerType === "mouse" || !this._matchesActivePointer(event)) return;
+        const point = this._eventPoint(event);
+        if (this.isScrolling || this.preventOpen || !point) return;
+        this.panel.style[this.getOffcanvasPosition()] = "inherit";
 
         const placement = this.getOffcanvasPosition();
         const diffX = clamp(
-            event.touches[0].clientX - this.offset.x.start,
+            point.clientX - this.offset.x.start,
             -this.options.padding,
             this.options.padding
         );
         let translateX = this.offset.x.current = diffX;
-        const diffY = Math.abs(event.touches[0].pageY - this.offset.y.start);
+        const diffY = Math.abs(point.pageY - this.offset.y.start);
         const offset = placement === "right" ? -1 : 1;
 
         if (Math.abs(translateX) > this.options.padding) return;
@@ -332,15 +330,12 @@ class Offcanvas {
             );
         }
 
-        if (this.options.css3) {
-            this.panel.style.transform = `translate3d(${translateX}px, 0, 0)`;
-        } else {
-            this.panel.style[placement] = `${Math.abs(translateX)}px`;
-        }
+        this.panel.style.transform = `translate3d(${translateX}px, 0, 0)`;
         this.moved = true;
     }
 
     _touchEnd(event) {
+        if (!this._matchesActivePointer(event)) return true;
         if (this.moved) {
             const tolerance = Math.abs(this.offset.x.current) > this.tolerance;
             const placedRight = this.bodyEl.classList.contains("g-offcanvas-right");
@@ -353,7 +348,18 @@ class Offcanvas {
             this[this.opening ? "open" : "close"](event, this.panel);
         }
         this.moved = false;
+        this.activePointerId = null;
         return true;
+    }
+
+    _matchesActivePointer(event) {
+        return event.pointerId === undefined
+            || this.activePointerId === null
+            || event.pointerId === this.activePointerId;
+    }
+
+    _eventPoint(event) {
+        return event.touches?.[0] || event.changedTouches?.[0] || event;
     }
 
     _checkTogglers() {
@@ -391,4 +397,4 @@ class Offcanvas {
     }
 }
 
-module.exports = Offcanvas;
+export default Offcanvas;

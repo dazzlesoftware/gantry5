@@ -70,13 +70,13 @@ paths = {
         { // admin
             in: './platforms/common/application/main.js',
             out: './platforms/common/js/main.js'
-        },
-        { // frontend
-            in: './assets/common/application/main.js',
-            out: './assets/common/js/main.js'
         }
     ],
     esm: [
+        { // frontend core
+            in: './assets/common/application/main.js',
+            out: './assets/common/js/main.js'
+        },
         { // shared Swiper carousel
             in: './assets/common/application/swiper.js',
             out: './assets/common/js/swiper.js'
@@ -228,7 +228,7 @@ var compileESM = function(app) {
         bundle: true,
         format: 'iife',
         platform: 'browser',
-        target: ['es2018'],
+        target: ['chrome60', 'firefox60', 'safari12', 'edge79'],
         minify: prod,
         sourcemap: !prod,
         legalComments: 'eof'

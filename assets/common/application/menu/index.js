@@ -1,7 +1,4 @@
-"use strict";
-
-const hasTouchEvents = "ontouchstart" in window
-    || (window.DocumentTouch && document instanceof window.DocumentTouch);
+const hasTouchEvents = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 const closest = (element, selector) => element instanceof Element ? element.closest(selector) : null;
 const directChildren = (element, selector) => Array.from(element ? element.children : [])
@@ -435,4 +432,4 @@ const ancestorMatches = (element, selector) => {
 
 const closestHeightParents = element => ancestorMatches(element, '[style^="height"]');
 
-module.exports = Menu;
+export default Menu;

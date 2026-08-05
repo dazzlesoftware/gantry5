@@ -22,10 +22,10 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 525,
+    "totalFiles": 523,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 326,
+      "first_party_source": 324,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 188
@@ -33,17 +33,17 @@
     "areas": {
       "administration": 89,
       "build": 5,
-      "frontend_core": 7,
+      "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 390,
       "shared_browser_asset": 32
     },
-    "activeReferencedFiles": 463,
+    "activeReferencedFiles": 461,
     "unreferencedFiles": 62,
-    "commonjsFiles": 211,
-    "esModuleFiles": 2,
-    "varFiles": 284,
-    "legacyBrowserApiFiles": 80,
+    "commonjsFiles": 204,
+    "esModuleFiles": 5,
+    "varFiles": 283,
+    "legacyBrowserApiFiles": 77,
     "inlineCodeGenerationFiles": 8,
     "duplicateGroups": 33
   },
@@ -586,7 +586,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": true,
-      "activeReferenceCount": 14,
+      "activeReferenceCount": 15,
       "consumers": [
         "assets/common/gulpfile.js",
         "assets/common/js/main.js",
@@ -600,15 +600,16 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/FrontendCoreModulesTest.php",
         "themes/calla/common/js/verticalmenu.js",
         "themes/zenith/common/js/verticalmenu.js"
       ],
-      "bytes": 761,
-      "lines": 28,
-      "sha256": "dd686ca389690f53049f214a0668f384a631e25e5426b6ec939cab5d59d350e0",
+      "bytes": 1545,
+      "lines": 47,
+      "sha256": "8436cb3b0309d883269bc2b4b707dac10017e627b29610101ee1f96e0a1b8b00",
       "signals": {
-        "commonjs": true,
-        "esModule": false,
+        "commonjs": false,
+        "esModule": true,
         "var": false,
         "prototype": false,
         "legacyBrowserApi": false,
@@ -628,23 +629,24 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 6,
       "consumers": [
         "assets/common/application/main.js",
-        "assets/common/package-lock.json",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 17354,
-      "lines": 439,
-      "sha256": "fc5bdba0bd253c6805e5484f1606714af17e518b69afff78ea17c1264d59ddd0",
+      "bytes": 17295,
+      "lines": 436,
+      "sha256": "7da74bd43cd6396b30865ef576226f3cb80fe691556569a3acb919497eaaf231",
       "signals": {
-        "commonjs": true,
-        "esModule": false,
+        "commonjs": false,
+        "esModule": true,
         "var": false,
         "prototype": false,
-        "legacyBrowserApi": true,
+        "legacyBrowserApi": false,
         "inlineCodeGeneration": false,
         "globals": [],
         "customEvents": [],
@@ -665,28 +667,28 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 6,
       "consumers": [
         "assets/common/application/main.js",
-        "assets/common/package-lock.json",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 14207,
-      "lines": 395,
-      "sha256": "b15ac2689f1e384233a73e446b39242ea589795fb2eba6707b6155cbf139aa9d",
+      "bytes": 14501,
+      "lines": 401,
+      "sha256": "7016161c71622711d17dd4a022a5cbd0a29b619b44a8d5690b7fee533e8cfd3a",
       "signals": {
-        "commonjs": true,
-        "esModule": false,
+        "commonjs": false,
+        "esModule": true,
         "var": false,
         "prototype": false,
-        "legacyBrowserApi": true,
+        "legacyBrowserApi": false,
         "inlineCodeGeneration": false,
         "globals": [],
         "customEvents": [],
         "dataAttributes": [
-          "g-offcanvas-css3",
           "g-offcanvas-swipe",
           "offcanvas-",
           "offcanvas-close",
@@ -782,74 +784,20 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 6,
       "consumers": [
         "assets/common/application/main.js",
-        "assets/common/package-lock.json",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 330,
-      "lines": 18,
-      "sha256": "c7a8eb0b19299c225909ac22e08672b34c199ae0e35c47e5f53dd2d9018ed87b",
+      "bytes": 552,
+      "lines": 19,
+      "sha256": "f370a01a8842263a7be7bd990ab1e2d4af9cfe795f93a104fbbc073e171f3c2a",
       "signals": {
-        "commonjs": true,
-        "esModule": false,
-        "var": false,
-        "prototype": false,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [],
-        "customEvents": [],
-        "dataAttributes": [],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "assets/common/application/utils/decouple.js",
-      "area": "frontend_core",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 1,
-      "consumers": [
-        "assets/common/application/offcanvas/index.js"
-      ],
-      "bytes": 548,
-      "lines": 23,
-      "sha256": "5d97d3a4a686a4672a1d7686e5cd0030908e30972e389f4109c2843e0f50b371",
-      "signals": {
-        "commonjs": true,
-        "esModule": false,
-        "var": false,
-        "prototype": false,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [],
-        "customEvents": [],
-        "dataAttributes": [],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "assets/common/application/utils/dom.js",
-      "area": "frontend_core",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 2,
-      "consumers": [
-        "assets/common/application/main.js",
-        "assets/common/application/totop/index.js"
-      ],
-      "bytes": 1033,
-      "lines": 36,
-      "sha256": "51700d91a6f8a478ec3abdee54d426948660efba883cfab1857c98f7cf16369d",
-      "signals": {
-        "commonjs": true,
+        "commonjs": false,
         "esModule": false,
         "var": false,
         "prototype": false,
@@ -868,18 +816,19 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 2,
+      "activeReferenceCount": 3,
       "consumers": [
         "bin/audit-javascript.mjs",
-        "package.json"
+        "package.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 4459,
-      "lines": 159,
-      "sha256": "6457f641f156a2f57ee8912859a12d5159c7be10fd4b10fddc01ecaf305f2e84",
+      "bytes": 2991,
+      "lines": 99,
+      "sha256": "5ccedb11c4fab4dea0734f43e4a32ea4e6badda36a100163f11da56e3de9423a",
       "signals": {
         "commonjs": true,
         "esModule": false,
-        "var": true,
+        "var": false,
         "prototype": false,
         "legacyBrowserApi": false,
         "inlineCodeGeneration": false,
@@ -1471,7 +1420,7 @@
       "owner": "Genesis",
       "generatedFrom": "assets/common/application/main.js",
       "entryPoint": false,
-      "activeReferenceCount": 14,
+      "activeReferenceCount": 15,
       "consumers": [
         "assets/common/gulpfile.js",
         "bin/audit-javascript.mjs",
@@ -1485,18 +1434,19 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/FrontendCoreModulesTest.php",
         "themes/calla/common/js/verticalmenu.js",
         "themes/zenith/common/js/verticalmenu.js"
       ],
-      "bytes": 35092,
-      "lines": 949,
-      "sha256": "923fb06d1ba058582660173fe4df3ca579f2b236d73d78ef4eb8c5d445324e0a",
+      "bytes": 31895,
+      "lines": 749,
+      "sha256": "863db0c9dde7a181ee3bc7d0500e1c9d209bf4ca4703b6a8ebb138564ab7b52e",
       "signals": {
-        "commonjs": true,
+        "commonjs": false,
         "esModule": false,
         "var": true,
         "prototype": false,
-        "legacyBrowserApi": true,
+        "legacyBrowserApi": false,
         "inlineCodeGeneration": false,
         "globals": [
           "Genesis"
@@ -1508,7 +1458,6 @@
           "g-menu-breakpoint",
           "g-menuparent",
           "g-mobile-target",
-          "g-offcanvas-css3",
           "g-offcanvas-swipe",
           "offcanvas-",
           "offcanvas-close",
@@ -2008,9 +1957,9 @@
         "themes/versla/common/particles/swiperpreview.html.twig",
         "themes/versla/common/particles/swipershowcase.html.twig"
       ],
-      "bytes": 234034,
-      "lines": 6096,
-      "sha256": "15a9b74963ba5a44afd7ccbc764ab864be4e9f392ce96e887d45c1b8d83be319",
+      "bytes": 235056,
+      "lines": 6082,
+      "sha256": "95f3a52f657c4b51699d0029b301a71cf37d104b7d6730b6a4214e0d4155babe",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -2275,9 +2224,9 @@
         "package.json",
         "tests/php83/JavaScriptInventoryTest.php"
       ],
-      "bytes": 11062,
-      "lines": 227,
-      "sha256": "8e29d22b51ae5b98bd90f19dc9f3d8b6feb7198975f73e48b2bc8b52e8cadc0f",
+      "bytes": 11112,
+      "lines": 229,
+      "sha256": "6809c2e3bc0238e72931d1ae54c1399e0a02f992481bdf8f78c6ec2944cd5c49",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -2298,10 +2247,11 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 2,
+      "activeReferenceCount": 3,
       "consumers": [
         "bin/audit-javascript.mjs",
-        "package.json"
+        "package.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 4188,
       "lines": 146,
@@ -2326,14 +2276,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 2,
+      "activeReferenceCount": 3,
       "consumers": [
         "bin/audit-javascript.mjs",
-        "package.json"
+        "package.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 13755,
+      "bytes": 13797,
       "lines": 432,
-      "sha256": "922bdb1c777178460cf1542134c67102440cd6cc1c6b3481c5a9d80f1ea15745",
+      "sha256": "cb31cc2cf12f270c08c4a51fcdd56e4aaee233a464a84e4667f1a3a5bddd58db",
       "signals": {
         "commonjs": true,
         "esModule": false,
@@ -2354,14 +2305,16 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 6,
+      "activeReferenceCount": 8,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
         "platforms/common/application/utils/ajaxify-links.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 8137,
       "lines": 194,
@@ -2396,13 +2349,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 2343,
       "lines": 59,
@@ -2460,13 +2415,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 11423,
       "lines": 232,
@@ -2505,14 +2462,16 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 6,
+      "activeReferenceCount": 8,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
         "platforms/common/application/styles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 9335,
       "lines": 246,
@@ -2816,13 +2775,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/lm/layoutmanager.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 458,
       "lines": 16,
@@ -3190,14 +3151,16 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 6,
+      "activeReferenceCount": 8,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
         "platforms/common/application/utils/ajaxify-links.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 28081,
       "lines": 658,
@@ -3246,13 +3209,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/lm/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 12583,
       "lines": 319,
@@ -3376,7 +3341,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": true,
-      "activeReferenceCount": 14,
+      "activeReferenceCount": 15,
       "consumers": [
         "assets/common/gulpfile.js",
         "assets/common/js/main.js",
@@ -3390,6 +3355,7 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/FrontendCoreModulesTest.php",
         "themes/calla/common/js/verticalmenu.js",
         "themes/zenith/common/js/verticalmenu.js"
       ],
@@ -3517,14 +3483,16 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 6,
+      "activeReferenceCount": 8,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
         "platforms/common/application/utils/ajaxify-links.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 16270,
       "lines": 365,
@@ -3601,13 +3569,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 9932,
       "lines": 210,
@@ -3640,13 +3610,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 12524,
       "lines": 250,
@@ -3686,13 +3658,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 25767,
       "lines": 764,
@@ -3721,13 +3695,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 24551,
       "lines": 635,
@@ -3767,13 +3743,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 30484,
       "lines": 793,
@@ -3807,13 +3785,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 7765,
       "lines": 168,
@@ -3844,13 +3824,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 339,
       "lines": 12,
@@ -3875,13 +3857,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 7246,
       "lines": 165,
@@ -3917,13 +3901,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 7768,
       "lines": 172,
@@ -3964,13 +3950,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/particles/index.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 531,
       "lines": 18,
@@ -4033,13 +4021,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 14308,
       "lines": 280,
@@ -4083,13 +4073,15 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 7,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/main.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 2314,
       "lines": 64,
@@ -4250,9 +4242,10 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 22,
+      "activeReferenceCount": 24,
       "consumers": [
-        "assets/common/package-lock.json",
+        "assets/common/application/main.js",
+        "assets/common/js/main.js",
         "bin/audit-javascript.mjs",
         "engines/common/nucleus/package-lock.json",
         "platforms/common/application/changelog/index.js",
@@ -4273,7 +4266,8 @@
         "platforms/common/application/styles/index.js",
         "platforms/common/application/utils/ajaxify-links.js",
         "platforms/common/application/utils/flags-state.js",
-        "platforms/common/package-lock.json"
+        "platforms/common/package-lock.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 241,
       "lines": 12,
@@ -4657,11 +4651,12 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 3,
+      "activeReferenceCount": 4,
       "consumers": [
         "platforms/common/application/assignments/index.js",
         "platforms/common/application/lm/particles-sidebar.js",
-        "platforms/common/application/particles/fonts/index.js"
+        "platforms/common/application/particles/fonts/index.js",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 766,
       "lines": 37,
@@ -4714,7 +4709,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 29,
+      "activeReferenceCount": 30,
       "consumers": [
         "platforms/common/application/assignments/index.js",
         "platforms/common/application/changelog/index.js",
@@ -4744,7 +4739,8 @@
         "platforms/common/application/ui/modal.js",
         "platforms/common/application/ui/selectize.js",
         "platforms/common/application/ui/togglers.js",
-        "platforms/common/application/utils/ajaxify-links.js"
+        "platforms/common/application/utils/ajaxify-links.js",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 659,
       "lines": 21,
@@ -5502,10 +5498,11 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 2,
+      "activeReferenceCount": 3,
       "consumers": [
         "bin/audit-javascript.mjs",
-        "package.json"
+        "package.json",
+        "tests/php83/FrontendCoreModulesTest.php"
       ],
       "bytes": 4479,
       "lines": 155,
@@ -5530,7 +5527,7 @@
       "owner": "Genesis",
       "generatedFrom": "platforms/common/application/main.js",
       "entryPoint": false,
-      "activeReferenceCount": 13,
+      "activeReferenceCount": 14,
       "consumers": [
         "assets/common/gulpfile.js",
         "assets/common/js/main.js",
@@ -5543,6 +5540,7 @@
         "platforms/phpbb/genesis/admin/templates/partials/base.html.twig",
         "platforms/phpbb/genesis/admin/templates/partials/layout.html.twig",
         "platforms/wordpress/genesis/admin/templates/partials/inline.html.twig",
+        "tests/php83/FrontendCoreModulesTest.php",
         "themes/calla/common/js/verticalmenu.js",
         "themes/zenith/common/js/verticalmenu.js"
       ],

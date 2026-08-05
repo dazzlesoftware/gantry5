@@ -84,7 +84,7 @@ Static analysis found 463 files with a discovered consumer or build entry-point 
 | `assets/common/application/swiper.js` | `assets/common/js/swiper.js` |
 | `platforms/common/application/main.js` | `platforms/common/js/main.js` |
 
-The root build currently uses Browserify for the frontend and administration entry points and esbuild for Swiper. The generated outputs are tracked, but must never be hand-edited.
+At the Phase 0 baseline, the root build used Browserify for the frontend and administration entry points and esbuild for Swiper. Phase 2 moved frontend core to esbuild; administration remains on Browserify until its later migration phase. Generated outputs are tracked, but must never be hand-edited.
 
 Standalone shared controllers under `assets/common/js` are loaded directly through `genesis-assets://js/...`; they are first-party deployment assets even when they do not pass through a bundler.
 

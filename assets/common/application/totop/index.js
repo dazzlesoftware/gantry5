@@ -1,17 +1,18 @@
-'use strict';
-
-const { ready, query } = require('../utils/dom');
-
-ready(() => {
-    const toTop = query('#g-totop');
+const initializeToTop = () => {
+    const toTop = document.querySelector('#g-totop');
     if (!toTop) {
         return;
     }
 
     toTop.addEventListener('click', (event) => {
         event.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
-});
+};
 
-module.exports = {};
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeToTop, { once: true });
+} else {
+    initializeToTop();
+}

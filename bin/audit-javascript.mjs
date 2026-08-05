@@ -22,7 +22,9 @@ const gitFiles = () => execFileSync(
         ':(glob)bin/*.mjs'
     ],
     { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
-).split(/\r?\n/).map(normalize).filter(Boolean);
+).split(/\r?\n/)
+    .map(normalize)
+    .filter(file => file && existsSync(resolve(root, file)));
 
 const allFiles = gitFiles();
 const javascriptFiles = allFiles.filter(file => sourceExtensions.has(extname(file)) && !ignoredSegments.test(file));
