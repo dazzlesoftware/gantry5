@@ -14,7 +14,6 @@ use Genesis\Component\Stylesheet\Scss\Functions;
 use Genesis\Debugger;
 use Genesis\Framework\Document;
 use Genesis\Framework\Genesis;
-use Genesis\Framework\Theme;
 use Grav\Common\Plugins;
 use ScssPhp\ScssPhp\CompilationResult;
 use ScssPhp\ScssPhp\Compiler;
@@ -45,32 +44,11 @@ class ScssCompiler extends CssCompiler
     /** @var Functions */
     protected $functions;
 
-    /** @var array|null */
-    static protected $options;
-
     /**
      * Constructor.
      */
     public function __construct()
     {
-        if (null === static::$options) {
-            /** @var Theme $theme */
-            $theme = static::genesis()['theme'];
-            $config = $theme->configuration();
-
-            $version = preg_replace('/[^\d.]+/', '', (string)(isset($config['dependencies']['genesis']) ? $config['dependencies']['genesis'] : '5.0'));
-
-            // Set compiler options.
-            $options = isset($config['css']['options']) ? (array)$config['css']['options'] : [];
-            $options += [
-                'compatibility' => $version,
-                'legacy' => [],
-                'deprecations' => version_compare($version, '5.5', '>=') // true if 5.5+
-            ];
-
-            static::$options = $options;
-        }
-
         if (!class_exists(Compiler::class, false)) {
             // Do not use SCSS compiler from Grav Admin.
             $adminPlugin = class_exists(Plugins::class) ? Plugins::getPlugin('admin') : null;

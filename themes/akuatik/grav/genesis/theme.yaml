@@ -52,9 +52,6 @@ configuration:
       900italic: 'genesis-theme://fonts/chivo/chivo-v11-latin_latin-ext-900italic'
   css:
     compiler: \Genesis\Component\Stylesheet\ScssCompiler
-    options:
-      compatibility: '5.5'
-      deprecations: true
     target: genesis-theme://css-compiled
     paths:
       - genesis-theme://scss

@@ -63,9 +63,6 @@ configuration:
       900italic: 'genesis-theme://fonts/inter/inter-v3-latin-900italic'
   css:
     compiler: \Genesis\Component\Stylesheet\ScssCompiler
-    options:
-      compatibility: '5.5'
-      deprecations: true
     target: genesis-theme://css-compiled
     paths:
       - genesis-theme://scss

@@ -68,9 +68,6 @@ configuration:
       700italic: 'genesis-theme://fonts/roboto/roboto-v20-latin-700italic'
   css:
     compiler: \Genesis\Component\Stylesheet\ScssCompiler
-    options:
-      compatibility: '5.5'
-      deprecations: true
     target: genesis-theme://css-compiled
     paths:
       - genesis-theme://scss

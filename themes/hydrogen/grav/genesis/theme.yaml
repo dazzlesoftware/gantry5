@@ -43,9 +43,6 @@ configuration:
 
   css:
     compiler: \Genesis\Component\Stylesheet\ScssCompiler
-    options:
-      compatibility: '5.5'
-      deprecations: true
     paths:
       - genesis-theme://scss
       - genesis-engine://scss

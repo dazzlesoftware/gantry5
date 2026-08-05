@@ -60,9 +60,6 @@ configuration:
       400italic: 'genesis-theme://fonts/rubik/rubik-v8-latin-italic'
   css:
     compiler: \Genesis\Component\Stylesheet\ScssCompiler
-    options:
-      compatibility: '5.5'
-      deprecations: true
     target: genesis-theme://css-compiled
     paths:
       - genesis-theme://scss

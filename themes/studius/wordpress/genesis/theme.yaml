@@ -60,9 +60,6 @@ configuration:
       900italic: 'genesis-theme://fonts/poppins/poppins-v15-latin-900italic'
   css:
     compiler: '\Genesis\Component\Stylesheet\ScssCompiler'
-    options:
-      compatibility: '5.5'
-      deprecations: true
     target: 'genesis-theme://css-compiled'
     paths:
       - 'genesis-theme://scss'
