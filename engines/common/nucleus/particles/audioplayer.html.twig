@@ -1,0 +1,109 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% set tracks = particle.items|default([]) %}
+    <div
+        id="{{ id }}"
+        class="g-audioplayer {{ particle.class|e }}"
+        data-audioplayer
+        data-audioplayer-id="{{ id|e('html_attr') }}"
+    >
+        {% if particle.title %}
+            <h2 class="g-title">{{ particle.title|raw }}</h2>
+        {% endif %}
+
+        {% if tracks %}
+            <div class="g-audioplayer-info">
+                <div class="g-audioplayer-left">
+                    <img class="g-audioplayer-cover" alt="" hidden />
+                </div>
+                <div class="g-audioplayer-right">
+                    <div class="g-audioplayer-nowplaying">{{ particle.nowplaying|default('Now Playing')|e }}</div>
+                    <div class="g-audioplayer-trackinfo" aria-live="polite"></div>
+
+                    <div class="audiojs" data-audioplayer-controls>
+                        <audio preload="metadata"></audio>
+                        <div class="time" aria-label="Playback time">
+                            <span class="played">00:00</span>
+                            <span aria-hidden="true"> / </span>
+                            <span class="duration">00:00</span>
+                        </div>
+                        <div
+                            class="scrubber"
+                            role="slider"
+                            tabindex="0"
+                            aria-label="Seek audio"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                        >
+                            <div class="loaded"></div>
+                            <div class="progress"></div>
+                        </div>
+                        <div class="error-message" role="status" aria-live="polite"></div>
+                        <div class="g-audioplayer-buttons">
+                            <button class="previous g-audioplayer-button" type="button" aria-label="Previous track">
+                                <i class="fa fa-step-backward" aria-hidden="true"></i>
+                            </button>
+                            <button class="play-pause g-audioplayer-button" type="button" aria-label="Play">
+                                <span class="play"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                <span class="pause"><i class="fa fa-pause" aria-hidden="true"></i></span>
+                                <span class="loading"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
+                                <span class="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+                            </button>
+                            <button class="next g-audioplayer-button" type="button" aria-label="Next track">
+                                <i class="fa fa-step-forward" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="g-audioplayer-playlist"
+                {% if particle.scrollbar == 'scrollbar' %}
+                    style="overflow-y: auto; max-height: {{ particle.overflow|default(350)|e('html_attr') }}px;"
+                {% endif %}
+            >
+                <ol>
+                    {% for file in tracks %}
+                        {% set source = file.source|default('local') %}
+                        {% set audio_url = source == 'external'
+                            ? file.externalurl|default('')
+                            : (file.localurl|default('') ? url(file.localurl) : '')
+                        %}
+                        {% if audio_url %}
+                            {% set track_label %}
+                                {%- if file.artist %}{{ file.artist }}{% endif -%}
+                                {%- if file.artist and file.tracktitle %} - {% endif -%}
+                                {%- if file.tracktitle %}{{ file.tracktitle }}{% endif -%}
+                                {%- if not file.artist and not file.tracktitle %}{{ file.title|default('Audio track') }}{% endif -%}
+                            {% endset %}
+                            <li data-audioplayer-track>
+                                <a
+                                    href="{{ audio_url|e }}"
+                                    data-src="{{ audio_url|e('html_attr') }}"
+                                    data-cover="{{ file.cover ? url(file.cover)|e('html_attr') : '' }}"
+                                >{{ track_label|trim|e }}</a>
+                                <i class="fa fa-volume-up" aria-hidden="true"></i>
+                                {% if file.link %}
+                                    <div class="g-audioplayer-button">
+                                        <a href="{{ file.link|e }}" class="button">{{ file.linktext|default('Learn more')|e }}</a>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </div>
+
+            {% if particle.scrollbar == 'scrollbar' %}
+                <div class="g-audioplayer-fadeout" aria-hidden="true"></div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/audioplayer.js'), 11, 'footer') %}
+{% endblock %}

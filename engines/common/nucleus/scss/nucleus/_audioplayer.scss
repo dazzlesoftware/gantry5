@@ -1,0 +1,104 @@
+.g-audioplayer {
+    .g-audioplayer-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .g-audioplayer-cover {
+        display: block;
+        max-width: 200px;
+        height: auto;
+    }
+
+    .g-audioplayer-right {
+        flex: 1 1 16rem;
+        min-width: 0;
+    }
+
+    audio {
+        display: none;
+    }
+
+    .scrubber {
+        position: relative;
+        height: 0.5rem;
+        margin: 1rem 0;
+        overflow: hidden;
+        cursor: pointer;
+        background: rgba(127, 127, 127, 0.25);
+    }
+
+    .scrubber:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+    }
+
+    .loaded,
+    .progress {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 0;
+        pointer-events: none;
+    }
+
+    .loaded {
+        background: rgba(127, 127, 127, 0.4);
+    }
+
+    .progress {
+        background: currentColor;
+    }
+
+    .g-audioplayer-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .g-audioplayer-buttons > button {
+        border: 0;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    .play-pause .pause,
+    .play-pause .loading,
+    .play-pause .error {
+        display: none;
+    }
+
+    .audiojs.playing .play,
+    .audiojs.loading .play,
+    .audiojs.error .play {
+        display: none;
+    }
+
+    .audiojs.playing .pause,
+    .audiojs.loading .loading,
+    .audiojs.error .error {
+        display: inline;
+    }
+
+    .error-message:empty {
+        display: none;
+    }
+
+    [data-audioplayer-track][aria-current="true"] > .fa {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 30rem) {
+    .g-audioplayer .g-audioplayer-info {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .g-audioplayer *,
+    .g-audioplayer *::before,
+    .g-audioplayer *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

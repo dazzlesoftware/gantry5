@@ -1,5 +1,5 @@
 name: Audio Player
-description: Play music through audio player interface.
+description: Play local or externally hosted audio in an accessible playlist.
 type: particle
 category: media
 icon: fa-music
@@ -9,11 +9,12 @@ configuration:
     type: static
 
 form:
+  overrideable: false
   fields:
     enabled:
       type: input.checkbox
       label: Enabled
-      description: Globally enable particle.
+      description: Globally enable the particle.
       default: true
 
     class:
@@ -37,69 +38,78 @@ form:
     scrollbar:
       type: select.selectize
       label: Playlist Layout
-      description: Decide if you want playlist with scrollbar and overflow or without.
-      placeholder: 'Select...'
+      description: Display the complete playlist or constrain it to a scrolling region.
+      placeholder: Select...
       default: noscrollbar
       options:
-          scrollbar: With Scrollbar
-          noscrollbar: Without Scrollbar
+        scrollbar: With Scrollbar
+        noscrollbar: Without Scrollbar
 
     overflow:
       type: input.number
       label: Overflow Height
-      description: Specify overflow size for playlist with scrollbar.
+      description: Set the playlist height in pixels when using the scrolling layout.
       placeholder: 350
       default: 350
+      min: 1
 
     items:
       type: collection.list
       array: true
       label: Files
-      description: Add audio player items.
+      description: Add audio tracks to the playlist.
       value: title
       ajax: true
       fields:
         .title:
           type: input.text
           label: Item Title
-          description: Customize item title.
-          placeholder: Enter item title.
+          description: Customize the item title.
+          placeholder: Enter item title
+
         .artist:
           type: input.text
           label: Artist
-          description: Customize artist name.
-          placeholder: Enter artist name.
+          description: Customize the artist name.
+          placeholder: Enter artist name
+
         .tracktitle:
           type: input.text
           label: Track Title
-          description: Customize track title.
-          placeholder: Enter track title.
+          description: Customize the track title.
+          placeholder: Enter track title
+
         .cover:
           type: input.imagepicker
           label: Album Cover
-          description: Select album cover.
+          description: Select the album cover.
+
         .source:
           type: select.selectize
           label: Audio Source
-          description: Audio source. Local or External Url.
-          placeholder: 'Select...'
+          description: Select a local audio file or enter an external URL.
+          placeholder: Select...
           default: local
           options:
-              local: Local File
-              external: External Url
+            local: Local File
+            external: External URL
+
         .externalurl:
           type: input.text
-          label: External Url
-          description: URL for external audio file
+          label: External URL
+          description: Enter the URL for an externally hosted audio file.
+
         .localurl:
           type: input.filepicker
           label: Local Audio
-          description: Select desired audio file.
+          description: Select the local audio file.
+
         .link:
           type: input.text
           label: Link
-          description: Input the item link.
+          description: Enter an optional related link.
+
         .linktext:
           type: input.text
           label: Link Text
-          description: Input the text for the item link.
+          description: Enter the text for the related link.

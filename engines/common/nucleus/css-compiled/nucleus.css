@@ -1457,4 +1457,91 @@ input[type=submit] {
 .g-offcanvas-left #g-offcanvas {
   right: inherit;
 }
+
+.g-audioplayer .g-audioplayer-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.g-audioplayer .g-audioplayer-cover {
+  display: block;
+  max-width: 200px;
+  height: auto;
+}
+.g-audioplayer .g-audioplayer-right {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.g-audioplayer audio {
+  display: none;
+}
+.g-audioplayer .scrubber {
+  position: relative;
+  height: 0.5rem;
+  margin: 1rem 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(127, 127, 127, 0.25);
+}
+.g-audioplayer .scrubber:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.g-audioplayer .loaded,
+.g-audioplayer .progress {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  pointer-events: none;
+}
+.g-audioplayer .loaded {
+  background: rgba(127, 127, 127, 0.4);
+}
+.g-audioplayer .progress {
+  background: currentColor;
+}
+.g-audioplayer .g-audioplayer-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.g-audioplayer .g-audioplayer-buttons > button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.g-audioplayer .play-pause .pause,
+.g-audioplayer .play-pause .loading,
+.g-audioplayer .play-pause .error {
+  display: none;
+}
+.g-audioplayer .audiojs.playing .play,
+.g-audioplayer .audiojs.loading .play,
+.g-audioplayer .audiojs.error .play {
+  display: none;
+}
+.g-audioplayer .audiojs.playing .pause,
+.g-audioplayer .audiojs.loading .loading,
+.g-audioplayer .audiojs.error .error {
+  display: inline;
+}
+.g-audioplayer .error-message:empty {
+  display: none;
+}
+.g-audioplayer [data-audioplayer-track][aria-current=true] > .fa {
+  opacity: 1;
+}
+
+@media (max-width: 30rem) {
+  .g-audioplayer .g-audioplayer-info {
+    display: block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-audioplayer *,
+  .g-audioplayer *::before,
+  .g-audioplayer *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 /*# sourceMappingURL=nucleus.css.map */
