@@ -130,8 +130,24 @@ class Theme extends AbstractTheme
         /** @var UniformResourceLocator $locator */
         $locator = $genesis['locator'];
 
-        $loader->setPaths($locator->findResources('genesis-admin://templates'));
-        $loader->setPaths($locator->findResources('genesis-admin://templates'), 'genesis-admin');
+        $paths = (array) $locator->findResources('genesis-admin://templates');
+
+        // The platform package always has its own admin templates. Register the
+        // physical path explicitly because the admin stream starts empty and may
+        // not yet expose paths when Twig is initialized during error handling.
+        $platformTemplates = $this->path . '/templates';
+        if (is_dir($platformTemplates) && !in_array($platformTemplates, $paths, true)) {
+            array_unshift($paths, $platformTemplates);
+        }
+
+        if (!$paths) {
+            throw new \RuntimeException(
+                sprintf('Genesis admin templates were not found under "%s".', $this->path)
+            );
+        }
+
+        $loader->setPaths($paths);
+        $loader->setPaths($paths, 'genesis-admin');
 
         return $loader;
     }

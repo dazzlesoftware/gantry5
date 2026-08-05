@@ -14,7 +14,8 @@ final class AdminTwigNamespaceTest extends TestCase
 
         self::assertIsString($source);
         self::assertStringContainsString("addPath('genesis-admin'", $source);
-        self::assertStringContainsString("'genesis-admin://templates'), 'genesis-admin'", $source);
+        self::assertStringContainsString("\$platformTemplates = \$this->path . '/templates'", $source);
+        self::assertStringContainsString("setPaths(\$paths, 'genesis-admin')", $source);
         self::assertStringNotContainsString('Genesis-admin', $source);
     }
 }
