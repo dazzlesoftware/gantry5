@@ -157,6 +157,8 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 
 ## Phase 2 — Frontend core ES modules
 
+**Status:** Complete — August 4, 2026
+
 ### Work
 
 - Convert `assets/common/application/main.js`, menu, off-canvas, to-top, and utilities from CommonJS to ES modules.
@@ -185,6 +187,8 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 
 ## Phase 3 — Theme compatibility asset removal
 
+**Status:** Complete — August 4, 2026
+
 ### Work
 
 - Replace active Classie usage with `classList` and remove all copied Classie files.
@@ -209,6 +213,8 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Verified every `genesis-theme://js` and `genesis-assets://js` reference resolves to an existing file.
 
 ## Phase 4 — Consolidate repeated first-party theme controllers
+
+**Status:** Complete — August 4, 2026
 
 ### Work
 
