@@ -54,7 +54,7 @@ foreach (new DirectoryIterator($themesRoot) as $themeDirectory) {
         'genesis_' . $slug . '.yaml' => "enabled: true\n",
         'theme.php' => gravThemePhp($class),
         'includes/theme.php' => genesisThemePhp($class),
-        'Genesis/theme.yaml' => $config,
+        'genesis/theme.yaml' => $config,
         'scss/' . $slug . '-grav.scss' => gravScss($slug),
         'scss/' . $slug . '-grav/_core.scss' => gravCoreScss(),
     ];
@@ -105,14 +105,14 @@ function blueprint(string $name): string
 name: {$name}
 version: "@version@"
 description: "{$name} theme for Genesis."
-icon: Genesis
+icon: genesis
 author:
   name: Dazzle Software
   email: 'support@dazzlesoftware.org'
   url: 'https://dazzlesoftware.org'
 homepage: 'https://dazzlesoftware.org'
 readme: 'https://github.com/genesis/genesis/blob/master/README.md'
-keywords: Genesis, genesis, theme
+keywords: genesis, theme
 bugs: 'https://github.com/genesis/genesis/issues'
 license: GPL-3.0-or-later
 
@@ -137,7 +137,7 @@ function gravThemeYaml(string $yaml, string $slug, string $sourcePlatform): stri
     $yaml = preg_replace('/^(\s{4}file:)\s*.*$/m', '$1 \'genesis-theme://includes/theme.php\'', $yaml, 1);
     $yaml = preg_replace('/^(\s{4}class:)\s*.*$/m', '$1 \'\\Genesis\\Framework\\Theme\'', $yaml, 1);
     $yaml = preg_replace('/^\s{4}textdomain:.*\R/m', '', $yaml);
-    $yaml = preg_replace('/^(\s{4}Genesis:)\s*.*$/m', '$1 \'5.5\'', $yaml);
+    $yaml = preg_replace('/^(\s{4}genesis:)\s*.*$/m', '$1 \'5.5\'', $yaml);
     $yaml = str_replace($slug . '-' . $sourcePlatform, $slug . '-grav', $yaml);
     $yaml = preg_replace('/\Rchrome:\R[\s\S]*$/', "\n", $yaml);
 

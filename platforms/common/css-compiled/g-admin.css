@@ -1731,7 +1731,7 @@ body.g-prime {
 
 i.fa-grav, i.fa-grav-spaceman, i.fa-grav-text, i.fa-grav-full,
 i.fa-grav-logo, i.fa-grav-symbol, i.fa-grav-logo-both, i.fa-grav-both,
-i.fa-Genesis, i.fa-Genesis-logo, i.fa-Genesis-symbol, i.fa-Genesis-logo-both, i.fa-Genesis-both {
+i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.fa-genesis-both {
   font-family: "rockettheme-apps" !important;
   speak: none;
   font-style: normal;
@@ -1756,15 +1756,15 @@ i.fa-Genesis, i.fa-Genesis-logo, i.fa-Genesis-symbol, i.fa-Genesis-logo-both, i.
   content: "f";
 }
 
-.fa-Genesis-logo:before {
+.fa-genesis-logo:before {
   content: "d";
 }
 
-.fa-Genesis:before, .fa-Genesis-symbol:before {
+.fa-genesis:before, .fa-genesis-symbol:before {
   content: "c";
 }
 
-.fa-Genesis-logo-both:before, .fa-Genesis-both:before {
+.fa-genesis-logo-both:before, .fa-genesis-both:before {
   content: "e";
 }
 

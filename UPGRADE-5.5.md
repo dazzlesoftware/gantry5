@@ -22,7 +22,7 @@ See [commit b16d10e](https://github.com/genesis/genesis/commit/b16d10eb2b29a8666
 
 To limit the errors, Genesis 5.5 uses older version of the SCSS compiler by default. To use the newer version you need to set minimum Genesis version in your theme:
 
-`Genesis/theme.yaml`
+`genesis/theme.yaml`
 ```yaml
 configuration:
   ...

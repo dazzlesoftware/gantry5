@@ -37,10 +37,10 @@ class Genesis_Ambrosia extends Theme
 
         if (!class_exists('\Genesis\Loader')) {
             if ($this->isAdmin()) {
-                $this->grav['messages']->add('Please enable Genesis plugin in order to use current theme!', 'error');
+                $this->grav['messages']->add('Please enable the Genesis plugin in order to use the current theme!', 'error');
                 return;
             }
-            throw new \LogicException('Please install and enable Genesis Framework plugin!');
+            throw new \LogicException('Please install and enable the Genesis Framework plugin!');
         }
 
         \Genesis\Loader::setup();
