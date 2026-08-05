@@ -2350,7 +2350,10 @@ dom.implement({
         return this.forEach(function($input, i) {
             settings = merge({}, defaults, settings_user),
             $input = dom($input);
-            if ($input.selectizeInstance) return;
+            // Collections are ephemeral, so initialization state must live on
+            // the native control. Both the general field initializer and AJAX
+            // navigation initialize this selector and must share one instance.
+            if ($input[0].selectizeInstance || $input[0].selectize) return;
 
             var instance,
                 dataOptions = $input.data('selectize'),

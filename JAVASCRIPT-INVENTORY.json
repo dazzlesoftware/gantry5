@@ -5425,17 +5425,18 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 6,
       "consumers": [
         "platforms/common/application/lm/inheritance/index.js",
         "platforms/common/application/menu/extra-items.js",
         "platforms/common/application/ui/index.js",
         "platforms/common/application/utils/ajaxify-links.js",
-        "platforms/common/js/main.js"
+        "platforms/common/js/main.js",
+        "tests/php83/AdministrationDomFacadeRemovalTest.php"
       ],
-      "bytes": 84392,
-      "lines": 2413,
-      "sha256": "fb1ae0b7978c2a5c3a8bf80837dea09fb4fcb8203a818c2b8f5e5c691863317a",
+      "bytes": 84656,
+      "lines": 2416,
+      "sha256": "d30b9f3c7c25b60363ac3a45f66d31bcab59c0a31905d9bfe000b3c100ef04dd",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -6557,9 +6558,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 640513,
+      "bytes": 640539,
       "lines": 15888,
-      "sha256": "889c1b5ce69a99e2c7070b78c453cb84beed0e1fac929d9216ea1fd3293b221d",
+      "sha256": "fd70a7f00c6849fbf854829f552fd02fc44d33a45af91b5239029706f28c0927",
       "signals": {
         "commonjs": false,
         "esModule": false,

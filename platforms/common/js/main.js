@@ -3122,7 +3122,7 @@
       };
       return this.forEach(function($input, i) {
         settings = merge({}, defaults6, settings_user), $input = dom4($input);
-        if ($input.selectizeInstance) return;
+        if ($input[0].selectizeInstance || $input[0].selectize) return;
         var instance2, dataOptions = $input.data("selectize"), tag_name = $input.tag().toLowerCase(), placeholder = $input.attribute("placeholder") || $input.attribute("data-placeholder");
         if (dataOptions) {
           dataOptions = JSON.parse(dataOptions);

@@ -79,6 +79,17 @@ final class AdministrationDomFacadeRemovalTest extends TestCase
         self::assertFileExists($this->root . '/ADMINISTRATION-DOM-MIGRATION.md');
     }
 
+    public function testSelectizeUsesTheNativeControlAsItsInitializationGuard(): void
+    {
+        $source = file_get_contents($this->application . '/ui/selectize.js');
+        self::assertIsString($source);
+        self::assertStringContainsString(
+            'if ($input[0].selectizeInstance || $input[0].selectize) return;',
+            $source
+        );
+        self::assertStringNotContainsString('if ($input.selectizeInstance) return;', $source);
+    }
+
     /** @return array<int, string> */
     private function javascriptFiles(string $directory): array
     {
