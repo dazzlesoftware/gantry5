@@ -1,6 +1,8 @@
+import __module0 from './section.js';
+
 "use strict";
 
-var Section = require('./section');
+var Section = __module0;
 
 class Wrapper extends Section {
     layout() {
@@ -23,4 +25,4 @@ Wrapper.prototype.options = {
     attributes: {name: 'Wrapper'}
 };
 
-module.exports = Wrapper;
+export default Wrapper;

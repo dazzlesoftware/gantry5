@@ -1,7 +1,10 @@
+import __module0 from '../utils/cookie.js';
+import __module1 from '../utils/dom.js';
+
 'use strict';
 
-const Cookie = require('../utils/cookie');
-const { ready, delegate } = require('../utils/dom');
+const Cookie = __module0;
+const { ready, delegate } = __module1;
 const readStorage = () => Cookie.read('genesis-collapsed') || Cookie.read('genesis-collapsed') || {};
 const writeStorage = (storage) => {
     Cookie.write('genesis-collapsed', storage);
@@ -87,4 +90,4 @@ ready(() => {
     });
 });
 
-module.exports = loadFromStorage;
+export default loadFromStorage;

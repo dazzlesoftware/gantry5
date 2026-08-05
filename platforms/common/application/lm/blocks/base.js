@@ -1,11 +1,18 @@
+import __module0 from '../../utils/event-emitter.js';
+import __module1 from '../../utils/create-element.js';
+import __module2 from '../../utils/dom-collection.js';
+import __module3 from '../id.js';
+import __module4 from '../../utils/translate.js';
+import __module5 from '../../utils/get-outline.js';
+
 "use strict";
 
-var EventEmitter = require('../../utils/event-emitter'),
-    zen          = require('../../utils/create-element'),
-    dom            = require('../../utils/dom-collection'),
-    ID           = require('../id'),
-    translate    = require('../../utils/translate'),
-    getCurrentOutline = require('../../utils/get-outline').getCurrentOutline;
+var EventEmitter = __module0,
+    zen          = __module1,
+    dom            = __module2,
+    ID           = __module3,
+    translate    = __module4,
+    getCurrentOutline = __module5.getCurrentOutline;
 
 var isPlainObject = function(value) {
         if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
@@ -206,4 +213,4 @@ Object.assign(Base.prototype, {
     }
 });
 
-module.exports = Base;
+export default Base;

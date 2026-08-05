@@ -1,10 +1,15 @@
+import __module0 from '../ui/index.js';
+import __module1 from '../utils/get-ajax-url.js';
+import __module2 from '../utils/get-ajax-suffix.js';
+import __module3 from '../utils/dom.js';
+
 'use strict';
 
-const modal = require('../ui').modal;
-const parseAjaxURI = require('../utils/get-ajax-url').parse;
-const getAjaxURL = require('../utils/get-ajax-url').global;
-const getAjaxSuffix = require('../utils/get-ajax-suffix');
-const { ready, delegate } = require('../utils/dom');
+const modal = __module0.modal;
+const parseAjaxURI = __module1.parse;
+const getAjaxURL = __module1.global;
+const getAjaxSuffix = __module2;
+const { ready, delegate } = __module3;
 
 const setCollapsed = (section, collapsed) => {
     const icon = section.querySelector('.g-changelog-toggle');
@@ -55,4 +60,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

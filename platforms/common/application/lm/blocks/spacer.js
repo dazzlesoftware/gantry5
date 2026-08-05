@@ -1,6 +1,8 @@
+import __module0 from './particle.js';
+
 "use strict";
 
-var Particle = require('./particle');
+var Particle = __module0;
 
 class Spacer extends Particle {}
 
@@ -10,4 +12,4 @@ Spacer.prototype.options = {
     attributes: {}
 };
 
-module.exports = Spacer;
+export default Spacer;

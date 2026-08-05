@@ -1,6 +1,8 @@
+import __module0 from './section.js';
+
 "use strict";
 
-var Section = require('./section');
+var Section = __module0;
 
 var elementFromHTML = function(html) {
     var template = document.createElement('template');
@@ -56,4 +58,4 @@ Atoms.prototype.options = {
     attributes: {name: 'Atoms Section'}
 };
 
-module.exports = Atoms;
+export default Atoms;

@@ -119,4 +119,4 @@ class SearchIndex {
     }
 }
 
-module.exports = SearchIndex;
+export default SearchIndex;

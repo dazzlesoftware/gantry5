@@ -1,11 +1,16 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../utils/history.js';
+import __module2 from '../utils/flags-state.js';
+import __module3 from './submit.js';
+import './multicheckbox.js';
+
 'use strict';
 
-var dom = require('../utils/dom'),
-    History = require('../utils/history'),
-    flags = require('../utils/flags-state'),
-    submit = require('./submit');
+var dom = __module0,
+    History = __module1,
+    flags = __module2,
+    submit = __module3;
 
-require('./multicheckbox');
 
 var mapsEqual = function(first, second, comparator) {
     if (!(first instanceof Map) || !(second instanceof Map) || first.size !== second.size) { return false; }
@@ -238,7 +243,7 @@ dom.ready(function() {
     compare.presets(true);
 });
 
-module.exports = {
+export default {
     compare: compare,
     collect: collectFieldsValues,
     submit: submit

@@ -17,4 +17,4 @@ const delegate = (element, type, selector, callback, options) => {
     return () => element.removeEventListener(type, listener, options);
 };
 
-module.exports = { ready, delegate };
+export default { ready, delegate };

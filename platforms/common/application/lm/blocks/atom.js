@@ -1,7 +1,10 @@
+import __module0 from './base.js';
+import __module1 from '../../utils/get-ajax-url.js';
+
 "use strict";
 
-var Base       = require('./base'),
-    getAjaxURL = require('../../utils/get-ajax-url').config;
+var Base       = __module0,
+    getAjaxURL = __module1.config;
 
 class Atom extends Base {
     constructor(options) {
@@ -50,4 +53,4 @@ Atom.prototype.options = {
     type: 'atom'
 };
 
-module.exports = Atom;
+export default Atom;

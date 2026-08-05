@@ -1,16 +1,27 @@
+import __module0 from '../../utils/dom.js';
+import __module1 from '../../utils/request.js';
+import __module2 from '../../ui/index.js';
+import __module3 from '../../ui/popover.js';
+import __module4 from '../../ui/progresser.js';
+import __module5 from '../../utils/indicator.js';
+import __module6 from '../../utils/get-ajax-suffix.js';
+import __module7 from '../../utils/get-ajax-url.js';
+import __module8 from '../../utils/translate.js';
+import __module9 from '../../utils/cookie.js';
+
 "use strict";
 
-var dom           = require('../../utils/dom'),
-    request       = require('../../utils/request'),
-    modal         = require('../../ui').modal,
-    popovers      = require('../../ui/popover'),
-    Progresser    = require('../../ui/progresser'),
-    indicator     = require('../../utils/indicator'),
-    getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../../utils/get-ajax-url').global,
-    translate     = require('../../utils/translate'),
-    Cookie        = require('../../utils/cookie');
+var dom           = __module0,
+    request       = __module1,
+    modal         = __module2.modal,
+    popovers      = __module3,
+    Progresser    = __module4,
+    indicator     = __module5,
+    getAjaxSuffix = __module6,
+    parseAjaxURI  = __module7.parse,
+    getAjaxURL    = __module7.global,
+    translate     = __module8,
+    Cookie        = __module9;
 
 var clone = function(value) {
     return JSON.parse(JSON.stringify(value));
@@ -631,4 +642,4 @@ dom.ready(function() {
     });
 });
 
-module.exports = FilePicker;
+export default FilePicker;

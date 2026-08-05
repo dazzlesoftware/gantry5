@@ -1,6 +1,8 @@
+import __module0 from './particle.js';
+
 "use strict";
 
-var Particle = require('./particle');
+var Particle = __module0;
 
 class System extends Particle {}
 
@@ -9,4 +11,4 @@ System.prototype.options = {
     attributes: {}
 };
 
-module.exports = System;
+export default System;

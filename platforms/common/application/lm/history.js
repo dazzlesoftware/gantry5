@@ -166,4 +166,4 @@ class History {
     export() {}
 }
 
-module.exports = History;
+export default History;

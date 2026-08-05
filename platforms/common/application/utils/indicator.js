@@ -43,4 +43,4 @@ var hide = function(element) {
     element.gIndicator = null;
 };
 
-module.exports = { show: show, hide: hide };
+export default { show: show, hide: hide };

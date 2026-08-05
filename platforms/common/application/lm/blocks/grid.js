@@ -1,6 +1,8 @@
+import __module0 from './base.js';
+
 "use strict";
 
-var Base = require('./base');
+var Base = __module0;
 
 class Grid extends Base {
     constructor(options) {
@@ -38,4 +40,4 @@ Grid.prototype.options = {
     type: 'grid'
 };
 
-module.exports = Grid;
+export default Grid;

@@ -1,9 +1,14 @@
+import __module0 from './section.js';
+import __module1 from '../../utils/get-ajax-url.js';
+import __module2 from '../../utils/get-outline.js';
+import __module3 from '../../utils/translate.js';
+
 "use strict";
 
-var Section            = require('./section'),
-    getAjaxURL         = require('../../utils/get-ajax-url').config,
-    getOutlineNameById = require('../../utils/get-outline').getOutlineNameById,
-    translate          = require('../../utils/translate');
+var Section            = __module0,
+    getAjaxURL         = __module1.config,
+    getOutlineNameById = __module2.getOutlineNameById,
+    translate          = __module3;
 
 class Offcanvas extends Section {
     layout() {
@@ -30,4 +35,4 @@ Offcanvas.prototype.options = {
     attributes: {name: 'Offcanvas Section'}
 };
 
-module.exports = Offcanvas;
+export default Offcanvas;

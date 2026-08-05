@@ -1,11 +1,16 @@
+import __module0 from '../utils/dom-effects.js';
+import __module1 from '../utils/create-element.js';
+import __module2 from '../utils/dom.js';
+import __module3 from '../utils/request.js';
+
 "use strict";
 // Based on Vex (https://github.com/hubspot/vex)
 
-var dom        = require('../utils/dom-effects'),
-    zen      = require('../utils/create-element'),
-    domready = require('../utils/dom').ready,
+var dom        = __module0,
+    zen      = __module1,
+    domready = __module2.ready,
 
-    request  = require('../utils/request');
+    request  = __module3;
 
 var stored = new WeakMap(),
     storage = {
@@ -423,4 +428,4 @@ class Modal {
 
 var modal = new Modal();
 
-module.exports = modal;
+export default modal;

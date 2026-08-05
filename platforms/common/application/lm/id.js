@@ -9,7 +9,7 @@ const randomId = () => {
     return Math.floor(Math.random() * 9000) + 1000;
 };
 
-module.exports = (options) => {
+export default (options) => {
     const existing = new Set(options.builder ? Object.keys(options.builder.map || {}) : []);
     const parts = [];
 

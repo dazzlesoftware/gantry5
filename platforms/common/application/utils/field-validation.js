@@ -15,7 +15,7 @@ const fallbackValidate = (field) => {
     return true;
 };
 
-module.exports = (input) => {
+export default (input) => {
     const field = input && input[0] ? input[0] : input;
     if (!field || !['INPUT', 'TEXTAREA', 'SELECT'].includes(field.tagName)) return true;
 

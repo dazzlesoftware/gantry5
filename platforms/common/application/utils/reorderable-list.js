@@ -176,4 +176,4 @@ class ReorderableList {
     }
 }
 
-module.exports = ReorderableList;
+export default ReorderableList;

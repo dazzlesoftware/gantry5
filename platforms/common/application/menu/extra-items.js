@@ -1,21 +1,35 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../fields/submit.js';
+import __module2 from '../ui/index.js';
+import __module3 from '../ui/selectize.js';
+import __module4 from '../utils/request.js';
+import __module5 from '../utils/indicator.js';
+import __module6 from '../utils/get-ajax-url.js';
+import __module7 from '../utils/get-ajax-suffix.js';
+import __module8 from '../utils/flags-state.js';
+import __module9 from '../utils/deep-equals.js';
+import __module10 from '../utils/translate.js';
+import __module11 from '../positions/cards.js';
+import __module12 from '../utils/wp-widgets-customizer.js';
+
 "use strict";
 
-var dom           = require('../utils/dom'),
-    Submit        = require('../fields/submit'),
-    modal         = require('../ui').modal,
-    toastr        = require('../ui').toastr,
-    Selectize     = require('../ui/selectize'),
-    request       = require('../utils/request'),
-    indicator     = require('../utils/indicator'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    flags         = require('../utils/flags-state'),
-    deepEquals    = require('../utils/deep-equals'),
-    translate     = require('../utils/translate'),
-    Cards         = require('../positions/cards');
+var dom           = __module0,
+    Submit        = __module1,
+    modal         = __module2.modal,
+    toastr        = __module2.toastr,
+    Selectize     = __module3,
+    request       = __module4,
+    indicator     = __module5,
+    parseAjaxURI  = __module6.parse,
+    getAjaxURL    = __module6.global,
+    getAjaxSuffix = __module7,
+    flags         = __module8,
+    deepEquals    = __module9,
+    translate     = __module10,
+    Cards         = __module11;
 
-var WordpressWidgetsCustomizer = require('../utils/wp-widgets-customizer');
+var WordpressWidgetsCustomizer = __module12;
 var menumanager = null;
 
 var asElement = function(element) {
@@ -293,4 +307,4 @@ dom.ready(function() {
     });
 });
 
-module.exports = StepOne;
+export default StepOne;

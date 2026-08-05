@@ -276,4 +276,4 @@ class Tooltips {
 
 const instance = new Tooltips(document);
 
-module.exports = instance;
+export default instance;

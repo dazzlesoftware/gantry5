@@ -1,8 +1,12 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../utils/frame-listener.js';
+import __module2 from '../utils/get-scrollbar-width.js';
+
 "use strict";
 
-const ready = require('../utils/dom').ready;
-const frameListener = require('../utils/frame-listener');
-const scrollbarWidth = require('../utils/get-scrollbar-width');
+const ready = __module0.ready;
+const frameListener = __module1;
+const scrollbarWidth = __module2;
 
 let container;
 let sidebar;
@@ -91,4 +95,4 @@ ready(() => {
     document.body.addEventListener('statechangeEnd', initSizes);
 });
 
-module.exports = initSizes;
+export default initSizes;

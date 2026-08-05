@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (field) => {
+export default (field) => {
     const input = field && field[0] ? field[0] : field;
     if (!(input instanceof Element)) return false;
     if (!document.body.classList.contains('wp-customizer') &&

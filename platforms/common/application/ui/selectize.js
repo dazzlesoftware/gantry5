@@ -1,11 +1,17 @@
+import __module0 from '../utils/event-emitter.js';
+import __module1 from '../utils/dom.js';
+import __module2 from '../utils/create-element.js';
+import __module3 from '../utils/search-index.js';
+import __module4 from '../utils/dom-effects.js';
+
 "use strict";
 // selectize (v0.12.1) (commit: 4dae761)
 
-var EventEmitter = require('../utils/event-emitter'),
-    ready      = require('../utils/dom').ready,
-    zen        = require('../utils/create-element'),
-    NativeSearchIndex = require('../utils/search-index'),
-    dom          = require('../utils/dom-effects');
+var EventEmitter = __module0,
+    ready      = __module1.ready,
+    zen        = __module2,
+    NativeSearchIndex = __module3,
+    dom          = __module4;
 
 var bind = function(fn, context) {
         var args = Array.prototype.slice.call(arguments, 2);
@@ -2403,4 +2409,4 @@ ready(function() {
 });
 
 
-module.exports = Selectize;
+export default Selectize;

@@ -1,5 +1,7 @@
+import __module0 from '../ui/drag.events.js';
+
 "use strict";
-var DragEvents = require('../ui/drag.events');
+var DragEvents = __module0;
 
 var asElement = function(element) {
     return element && element.nodeType ? element : element && element[0];
@@ -241,4 +243,4 @@ class Resizer {
     }
 }
 
-module.exports = Resizer;
+export default Resizer;

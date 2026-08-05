@@ -1,12 +1,19 @@
+import __module0 from './modal.js';
+import __module1 from './toastr.js';
+import __module2 from '../utils/request.js';
+import __module3 from '../utils/get-ajax-suffix.js';
+import __module4 from '../utils/get-ajax-url.js';
+import __module5 from '../utils/dom.js';
+
 'use strict';
 
-const modal = require('./modal');
-const toastr = require('./toastr');
-const request = require('../utils/request');
-const getAjaxSuffix = require('../utils/get-ajax-suffix');
-const parseAjaxURI = require('../utils/get-ajax-url').parse;
-const getAjaxURL = require('../utils/get-ajax-url').global;
-const { ready, delegate } = require('../utils/dom');
+const modal = __module0;
+const toastr = __module1;
+const request = __module2;
+const getAjaxSuffix = __module3;
+const parseAjaxURI = __module4.parse;
+const getAjaxURL = __module4.global;
+const { ready, delegate } = __module5;
 
 const setIndicator = (element, active) => {
     let icon = element.querySelector(':scope > i');
@@ -82,4 +89,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

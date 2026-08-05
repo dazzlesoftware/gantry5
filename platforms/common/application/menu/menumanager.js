@@ -1,10 +1,17 @@
+import __module0 from '../utils/event-emitter.js';
+import __module1 from '../utils/dom-effects.js';
+import __module2 from '../utils/create-element.js';
+import __module3 from '../ui/drag.drop.js';
+import __module4 from '../ui/eraser.js';
+import __module5 from './drag.resizer.js';
+
 "use strict";
-var EventEmitter = require('../utils/event-emitter'),
-    dom         = require('../utils/dom-effects'),
-    zen       = require('../utils/create-element'),
-    DragDrop  = require('../ui/drag.drop'),
-    Eraser    = require('../ui/eraser'),
-    Resizer   = require('./drag.resizer');
+var EventEmitter = __module0,
+    dom         = __module1,
+    zen       = __module2,
+    DragDrop  = __module3,
+    Eraser    = __module4,
+    Resizer   = __module5;
 
 var ltrim = function(value) {
         return String(value == null ? '' : value).replace(/^\/+/, '');
@@ -548,4 +555,4 @@ Object.keys(MenuManagerDefinition).forEach(function(method) {
 MenuManager.prototype.options = MenuManagerDefinition.options;
 
 
-module.exports = MenuManager;
+export default MenuManager;

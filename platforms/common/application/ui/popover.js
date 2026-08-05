@@ -1,10 +1,14 @@
+import __module0 from '../utils/dom-effects.js';
+import __module1 from '../utils/create-element.js';
+import __module2 from '../utils/request.js';
+
 "use strict";
 
-var dom        = require('../utils/dom-effects'),
-    zen      = require('../utils/create-element'),
+var dom        = __module0,
+    zen      = __module1,
     storage  = new WeakMap(),
 
-    request  = require('../utils/request');
+    request  = __module2;
 
 var defaults = {
         mainClass: 'genesis-popover',
@@ -628,8 +632,7 @@ dom.implement({
     }
 });
 
-module.exports = dom;
-module.exports.create = function(element, options) {
+dom.create = function(element, options) {
     var popover = storage.get(element);
     if (!popover) {
         popover = new Popover(element, options || {});
@@ -638,3 +641,5 @@ module.exports.create = function(element, options) {
     }
     return popover;
 };
+
+export default dom;

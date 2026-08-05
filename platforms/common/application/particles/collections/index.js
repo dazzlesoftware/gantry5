@@ -1,15 +1,25 @@
+import __module0 from '../../utils/dom.js';
+import __module1 from '../../fields/submit.js';
+import __module2 from '../../ui/index.js';
+import __module3 from '../../utils/indicator.js';
+import __module4 from '../../utils/request.js';
+import __module5 from '../../utils/reorderable-list.js';
+import __module6 from '../../utils/get-ajax-url.js';
+import __module7 from '../../utils/get-ajax-suffix.js';
+import __module8 from '../../utils/translate.js';
+
 "use strict";
 
-var dom = require('../../utils/dom'),
-    Submit = require('../../fields/submit'),
-    modal = require('../../ui').modal,
-    toastr = require('../../ui').toastr,
-    indicator = require('../../utils/indicator'),
-    request = require('../../utils/request'),
-    ReorderableList = require('../../utils/reorderable-list'),
-    parseAjaxURI = require('../../utils/get-ajax-url').parse,
-    getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    translate = require('../../utils/translate');
+var dom = __module0,
+    Submit = __module1,
+    modal = __module2.modal,
+    toastr = __module2.toastr,
+    indicator = __module3,
+    request = __module4,
+    ReorderableList = __module5,
+    parseAjaxURI = __module6.parse,
+    getAjaxSuffix = __module7,
+    translate = __module8;
 
 var directItems = function(list) {
     return Array.from(list.children).filter(function(item) { return item.hasAttribute('data-collection-item'); });
@@ -246,4 +256,4 @@ dom.ready(function() {
     });
 });
 
-module.exports = {};
+export default {};

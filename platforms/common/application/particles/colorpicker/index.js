@@ -1,8 +1,12 @@
+import __module0 from '../../utils/dom-collection.js';
+import __module1 from '../../utils/dom.js';
+import __module2 from '../../utils/create-element.js';
+
 "use strict";
 
-var dom          = require('../../utils/dom-collection'),
-    ready      = require('../../utils/dom').ready,
-    zen        = require('../../utils/create-element');
+var dom          = __module0,
+    ready      = __module1.ready,
+    zen        = __module2;
 
 var clamp = function(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -760,4 +764,4 @@ ready(function() {
     });
 });
 
-module.exports = ColorPicker;
+export default ColorPicker;

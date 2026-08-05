@@ -215,4 +215,4 @@ Progresser.prototype.destroy = function() {
     this.animationFrame = null;
 };
 
-module.exports = Progresser;
+export default Progresser;

@@ -6,16 +6,6 @@ const log = require('fancy-log');
 const colors = require('ansi-colors');
 
 let paths;
-const convertBytes = function(bytes) {
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    if (bytes === 0) {
-        return '0 Byte';
-    }
-
-    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-
-    return Math.round(((bytes / Math.pow(1024, i) * 100)) / 100) + ' ' + sizes[i];
-};
 
 
 // You can install or update NPM dependencies across the whole project via the supported commands:
@@ -51,28 +41,21 @@ var argv            = require('yargs').argv,
     gulpif          = require('gulp-if'),
     terser          = require('gulp-terser'),
     rename          = require('gulp-rename'),
-    buffer          = require('vinyl-buffer'),
-    source          = require('vinyl-source-stream'),
     merge           = require('merge-stream'),
     sourcemaps      = require('gulp-sourcemaps'),
-    browserify      = require('browserify'),
     esbuild         = require('esbuild'),
-    watchifyModule  = require('watchify'),
     jsonminify      = require('gulp-jsonminify'),
     sass            = require('gulp-sass')(require('sass')),
 
     prod            = !!(argv.p || argv.prod || argv.production),
-    watchType       = (argv.css && argv.js) ? 'all' : (argv.css ? 'css' : (argv.js ? 'js' : 'all')),
-    watch           = false;
+    watchType       = (argv.css && argv.js) ? 'all' : (argv.css ? 'css' : (argv.js ? 'js' : 'all'));
 
 paths = {
-    js: [
-        { // admin
+    esm: [
+        { // administration
             in: './platforms/common/application/main.js',
             out: './platforms/common/js/main.js'
-        }
-    ],
-    esm: [
+        },
         { // frontend core
             in: './assets/common/application/main.js',
             out: './assets/common/js/main.js'
@@ -175,54 +158,8 @@ var compileCSS = function(app, done) {
     return stream;
 };
 
-var compileJS = function(app, watching) {
-    var _in   = app.in,
-        _out  = app.out.split(/[\\/]/).pop(),
-        _exp  = app.expose,
-        _dest = app.out.substring(0, app.out.lastIndexOf('/')),
-        _maps = './' + app.in.substring(0, app.in.lastIndexOf('/')).split(/[\\/]/).pop();
-
-    if (!watching) {
-        log(colors.blue('*'), 'Compiling', _in);
-    }
-
-    var bundle = browserify({
-        entries: [_in],
-        debug: !prod,
-        watch: watching,
-
-        cache: {},
-        packageCache: {},
-        fullPaths: false
-    });
-
-    if (_exp) {
-        _exp.forEach(function(expose) {
-            bundle.require(expose.lib, { expose: expose.require });
-        });
-    }
-
-
-    if (watching) {
-        bundle = watchifyModule(bundle);
-        bundle.on('log', function(msg) {
-            var bytes = msg.match(/^(\d{1,})\s/)[1];
-            msg = msg.replace(/^\d{1,}\sbytes/, convertBytes(bytes));
-            log(colors.green('√'), 'Done, ', msg, '...');
-        });
-        bundle.on('update', function(files) {
-            log(colors.red('>'), 'Change detected in', files.join(', '), '...');
-            return bundleShare(bundle, _in, _out, _maps, _dest);
-        });
-    }
-
-    return bundleShare(bundle, _in, _out, _maps, _dest);
-};
-
-var compileESM = function(app) {
-    log(colors.blue('*'), 'Compiling', app.in);
-
-    return esbuild.build({
+var esbuildOptions = function(app) {
+    return {
         entryPoints: [app.in],
         outfile: app.out,
         bundle: true,
@@ -231,28 +168,17 @@ var compileESM = function(app) {
         target: ['chrome60', 'firefox60', 'safari12', 'edge79'],
         minify: prod,
         sourcemap: !prod,
-        legalComments: 'eof'
-    }).then(function() {
-        log(colors.green('√'), 'Saved ' + app.in);
-    });
+        legalComments: 'eof',
+        logLevel: 'info'
+    };
 };
 
-var bundleShare = function(bundle, _in, _out, _maps, _dest) {
-    return bundle.bundle()
-        .on('error', function(error) {
-            log('Browserify', '' + error);
-        })
-        .on('end', function() {
-            log(colors.green('√'), 'Saved ' + _in);
-        })
-        .pipe(source(_out))
-        .pipe(buffer())
-        // sourcemaps start
-        .pipe(gulpif(!prod, sourcemaps.init({ loadMaps: true })))
-        .pipe(gulpif(prod, terser()))
-        .pipe(gulpif(!prod, sourcemaps.write('.')))
-        // sourcemaps end
-        .pipe(gulp.dest(_dest));
+var compileESM = function(app) {
+    log(colors.blue('*'), 'Compiling', app.in);
+
+    return esbuild.build(esbuildOptions(app)).then(function() {
+        log(colors.green('√'), 'Saved ' + app.in);
+    });
 };
 
 var minifyJS = function() {
@@ -285,56 +211,20 @@ function minify(done) {
     return minifyJS();
 }
 
-function watchify(done) {
+async function watchScripts() {
     if (watchType != 'js' && watchType != 'all') { 
-        // Signal task completion if not processing JS
-        if (done) done();
         return; 
     }
-    
-    watch = true;
 
-    // watch js
-    const streams = [];
-    paths.js.forEach(function(app) {
-        // var _path = app.in.substring(0, app.in.lastIndexOf('/'));
-        streams.push(compileJS(app, true));
-    });
-
-    paths.esm.forEach(function(app) {
-        var _path = app.in.substring(0, app.in.lastIndexOf('/'));
-        compileESM(app);
-        gulp.watch(_path + '/**/*.js', function() {
-            return compileESM(app);
-        });
-    });
-    
-    // Signal task completion
-    if (done) done();
+    const contexts = await Promise.all(paths.esm.map(function(app) {
+        return esbuild.context(esbuildOptions(app));
+    }));
+    await Promise.all(contexts.map(function(context) { return context.watch(); }));
+    log(colors.green('√'), 'Watching ES module entry points');
 }
 
 function js() {
-    var streams = paths.js.map(function(app) {
-        return compileJS(app);
-    });
-
-    var streamPromises = streams.map(function(stream) {
-        return new Promise(function(resolve, reject) {
-            if (stream.writableFinished) {
-                resolve();
-                return;
-            }
-
-            stream.once('finish', resolve);
-            stream.once('error', reject);
-        });
-    });
-
-    var esmPromises = paths.esm.map(function(app) {
-        return compileESM(app);
-    });
-
-    return Promise.all(streamPromises.concat(esmPromises));
+    return Promise.all(paths.esm.map(compileESM));
 }
 
 function css(done) {
@@ -359,8 +249,8 @@ function css(done) {
         });
 }
 
-exports.watchify = watchify;
-exports.watch = gulp.series(watchify, function(done) {
+exports.watchScripts = watchScripts;
+exports.watch = gulp.series(watchScripts, function(done) {
     if (watchType != 'css' && watchType != 'all') { 
         // Signal task completion if not processing CSS
         done();

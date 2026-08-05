@@ -1,9 +1,14 @@
+import __module0 from '../utils/event-emitter.js';
+import __module1 from './blocks/index.js';
+import __module2 from './id.js';
+import __module3 from './normalize-grid-sizes.js';
+
 "use strict";
 
-var EventEmitter = require('../utils/event-emitter'),
-    Blocks       = require('./blocks/'),
-    ID           = require('./id'),
-    normalizeGridSizes = require('./normalize-grid-sizes');
+var EventEmitter = __module0,
+    Blocks       = __module1,
+    ID           = __module2,
+    normalizeGridSizes = __module3;
 
 var DEBUG = false;
 
@@ -221,4 +226,4 @@ class Builder extends EventEmitter {
     }
 }
 
-module.exports = Builder;
+export default Builder;

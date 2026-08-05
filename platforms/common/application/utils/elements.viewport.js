@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (container, selector, threshold = 0) => {
+export default (container, selector, threshold = 0) => {
     const root = container && container[0] ? container[0] : container;
     if (!(root instanceof Element)) return [];
 

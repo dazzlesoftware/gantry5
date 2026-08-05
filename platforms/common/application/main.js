@@ -1,29 +1,53 @@
+import __module0 from './utils/dom-collection.js';
+import __module1 from './utils/create-element.js';
+import __module2 from './utils/dom.js';
+import __module3 from './utils/request.js';
+import __module4 from './ui/index.js';
+import __module5 from './utils/get-ajax-url.js';
+import __module6 from './utils/get-ajax-suffix.js';
+import __module7 from './utils/flags-state.js';
+import __module8 from './utils/field-validation.js';
+import __module9 from './lm/index.js';
+import __module10 from './menu/index.js';
+import __module11 from './positions/cards.js';
+import __module12 from './configurations/index.js';
+import __module13 from './positions/index.js';
+import __module14 from './changelog/index.js';
+import __module15 from './utils/translate.js';
+import './fields/index.js';
+import './ui/popover.js';
+import './utils/ajaxify-links.js';
+import __module19 from './assignments/index.js';
+import __module20 from './styles/index.js';
+import __module21 from './particles/index.js';
+import __module22 from './pagesettings/index.js';
+import __module23 from './ui/tooltips.js';
+
 "use strict";
-var dom              = require('./utils/dom-collection'),
-    zen            = require('./utils/create-element'),
-    ready          = require('./utils/dom').ready,
-    request        = require('./utils/request'),
-    ui             = require('./ui'),
+var dom              = __module0,
+    zen            = __module1,
+    ready          = __module2.ready,
+    request        = __module3,
+    ui             = __module4,
     modal          = ui.modal,
     toastr         = ui.toastr,
 
-    parseAjaxURI   = require('./utils/get-ajax-url').parse,
-    getAjaxURL     = require('./utils/get-ajax-url').global,
-    getAjaxSuffix  = require('./utils/get-ajax-suffix'),
+    parseAjaxURI   = __module5.parse,
+    getAjaxURL     = __module5.global,
+    getAjaxSuffix  = __module6,
 
-    flags          = require('./utils/flags-state'),
-    validateField  = require('./utils/field-validation'),
-    lm             = require('./lm'),
-    mm             = require('./menu'),
-    pm             = require('./positions/cards'),
-    configurations = require('./configurations'),
-    positions      = require('./positions'),
-    changelog      = require('./changelog'),
-    translate      = require('./utils/translate');
+    flags          = __module7,
+    validateField  = __module8,
+    lm             = __module9,
+    mm             = __module10,
+    pm             = __module11,
+    configurations = __module12,
+    positions      = __module13,
+    changelog      = __module14,
+    translate      = __module15;
 
-require('./fields');
-require('./ui/popover');
-require('./utils/ajaxify-links');
+
+
 
 var trim = function(value, characters) {
     var string = value == null ? '' : String(value);
@@ -415,26 +439,20 @@ ready(function() {
 });
 
 var modules = {
-    /*mout    : require('mout'),
-     prime   : require('prime'),
-     "$"     : elements,
-     zen     : zen,
-     domready: domready,
-     agent   : require('./utils/request'),*/
     lm: lm,
     mm: mm,
-    assingments: require('./assignments'),
-    ui: require('./ui'),
-    styles: require('./styles'),
+    assingments: __module19,
+    ui: __module4,
+    styles: __module20,
     dom: dom,
     domready: ready,
-    particles: require('./particles'),
+    particles: __module21,
     zen: zen,
-    atoms: require('./pagesettings'),
-    tips: require('./ui/tooltips')
+    atoms: __module22,
+    tips: __module23
 };
 
 // Genesis is the canonical administrator API. Genesis remains an identity alias
 // during the compatibility period.
 window.Genesis = modules;
-module.exports = modules;
+export default modules;

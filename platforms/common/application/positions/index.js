@@ -1,17 +1,28 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../ui/index.js';
+import __module2 from '../utils/request.js';
+import __module3 from '../utils/indicator.js';
+import __module4 from '../utils/get-ajax-suffix.js';
+import __module5 from '../utils/get-ajax-url.js';
+import __module6 from '../fields/submit.js';
+import __module7 from '../utils/flags-state.js';
+import __module8 from '../utils/translate.js';
+import __module9 from './cards.js';
+
 "use strict";
 
-var dom = require('../utils/dom'),
-    modal = require('../ui').modal,
-    toastr = require('../ui').toastr,
-    request = require('../utils/request'),
-    indicator = require('../utils/indicator'),
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI = require('../utils/get-ajax-url').parse,
-    getAjaxURL = require('../utils/get-ajax-url').global,
-    Submit = require('../fields/submit'),
-    flags = require('../utils/flags-state'),
-    translate = require('../utils/translate'),
-    Cards = require('./cards');
+var dom = __module0,
+    modal = __module1.modal,
+    toastr = __module1.toastr,
+    request = __module2,
+    indicator = __module3,
+    getAjaxSuffix = __module4,
+    parseAjaxURI = __module5.parse,
+    getAjaxURL = __module5.global,
+    Submit = __module6,
+    flags = __module7,
+    translate = __module8,
+    Cards = __module9;
 
 var trim = function(value) { return value == null ? '' : String(value).trim(); };
 var asElement = function(element) { return element && element.nodeType ? element : element && element[0]; };
@@ -276,4 +287,4 @@ dom.ready(function() {
     attachEditables(document.querySelectorAll('#positions [data-title-editable]'));
 });
 
-module.exports = {};
+export default {};

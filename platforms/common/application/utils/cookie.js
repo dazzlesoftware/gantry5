@@ -21,4 +21,4 @@ var Cookie = {
     }
 };
 
-module.exports = Cookie;
+export default Cookie;

@@ -1,8 +1,12 @@
+import __module0 from '../utils/event-emitter.js';
+import __module1 from './drag.events.js';
+import __module2 from '../utils/dom-effects.js';
+
 "use strict";
 
-var EventEmitter = require('../utils/event-emitter'),
-    DragEvents = require('./drag.events'),
-    dom          = require('../utils/dom-effects');
+var EventEmitter = __module0,
+    DragEvents = __module1,
+    dom          = __module2;
 
 var isIE = (navigator.appName === "Microsoft Internet Explorer");
 
@@ -389,4 +393,4 @@ class DragDrop extends EventEmitter {
     }
 }
 
-module.exports = DragDrop;
+export default DragDrop;

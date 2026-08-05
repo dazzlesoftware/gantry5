@@ -1,6 +1,8 @@
+import __module0 from '../../utils/dom.js';
+
 'use strict';
 
-const { ready, delegate } = require('../../utils/dom');
+const { ready, delegate } = __module0;
 
 ready(() => {
     delegate(document.body, 'click', '[data-genesis-content] .g-main-nav .g-toplevel [data-genesis-ajaxify]', (event, link) => {
@@ -14,4 +16,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

@@ -1,13 +1,23 @@
+import __module0 from '../utils/event-emitter.js';
+import __module1 from '../utils/dom-effects.js';
+import __module2 from '../utils/create-element.js';
+import __module3 from './blocks/index.js';
+import __module4 from '../ui/drag.drop.js';
+import __module5 from '../ui/eraser.js';
+import __module6 from '../utils/flags-state.js';
+import __module7 from './drag.resizer.js';
+import __module8 from '../utils/deep-equals.js';
+
 "use strict";
-var EventEmitter = require('../utils/event-emitter'),
-    dom          = require('../utils/dom-effects'),
-    zen        = require('../utils/create-element'),
-    Blocks     = require('./blocks'),
-    DragDrop   = require('../ui/drag.drop'),
-    Eraser     = require('../ui/eraser'),
-    flags      = require('../utils/flags-state'),
-    Resizer    = require('./drag.resizer'),
-    deepEquals = require('../utils/deep-equals');
+var EventEmitter = __module0,
+    dom          = __module1,
+    zen        = __module2,
+    Blocks     = __module3,
+    DragDrop   = __module4,
+    Eraser     = __module5,
+    flags      = __module6,
+    Resizer    = __module7,
+    deepEquals = __module8;
 
 var get = function(object, key) {
         return object ? object[key] : undefined;
@@ -636,4 +646,4 @@ Object.keys(LayoutManagerDefinition).forEach(function(method) {
 });
 LayoutManager.prototype.options = LayoutManagerDefinition.options;
 
-module.exports = LayoutManager;
+export default LayoutManager;

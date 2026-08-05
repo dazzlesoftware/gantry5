@@ -1,10 +1,16 @@
+import __module0 from './base.js';
+import __module1 from './grid.js';
+import __module2 from '../../utils/get-ajax-url.js';
+import __module3 from '../../utils/get-outline.js';
+import __module4 from '../../utils/translate.js';
+
 "use strict";
 
-var Base               = require('./base'),
-    Grid               = require('./grid'),
-    getAjaxURL         = require('../../utils/get-ajax-url').config,
-    getOutlineNameById = require('../../utils/get-outline').getOutlineNameById,
-    translate          = require('../../utils/translate');
+var Base               = __module0,
+    Grid               = __module1,
+    getAjaxURL         = __module2.config,
+    getOutlineNameById = __module3.getOutlineNameById,
+    translate          = __module4;
 
 var forOwn = function(object, callback) {
     Object.keys(object || {}).forEach(function(key) {
@@ -176,4 +182,4 @@ class Section extends Base {
 
 Section.prototype.options = {};
 
-module.exports = Section;
+export default Section;

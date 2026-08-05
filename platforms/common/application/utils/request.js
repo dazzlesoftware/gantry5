@@ -188,4 +188,4 @@ request.Response = Response;
     request[method] = (url, data, callback) => request(method, url, data, callback);
 });
 
-module.exports = request;
+export default request;

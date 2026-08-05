@@ -1,19 +1,31 @@
+import __module0 from './dom.js';
+import __module1 from '../ui/index.js';
+import __module2 from '../ui/selectize.js';
+import __module3 from './indicator.js';
+import __module4 from './request.js';
+import __module5 from './history.js';
+import __module6 from './flags-state.js';
+import __module7 from './get-ajax-url.js';
+import __module8 from './get-ajax-suffix.js';
+import __module9 from '../menu/index.js';
+import __module10 from '../assignments/index.js';
+import '../lm/index.js';
+
 "use strict";
 
-var dom           = require('./dom'),
+var dom           = __module0,
     storage       = new Map(),
-    modal         = require('../ui').modal,
-    Selectize     = require('../ui/selectize'),
-    indicator     = require('./indicator'),
-    request       = require('./request')(),
-    History       = require('./history'),
-    flags         = require('./flags-state'),
-    parseAjaxURI  = require('./get-ajax-url').parse,
-    getAjaxSuffix = require('./get-ajax-suffix'),
-    mm            = require('../menu'),
-    assignments   = require('../assignments');
+    modal         = __module1.modal,
+    Selectize     = __module2,
+    indicator     = __module3,
+    request       = __module4(),
+    History       = __module5,
+    flags         = __module6,
+    parseAjaxURI  = __module7.parse,
+    getAjaxSuffix = __module8,
+    mm            = __module9,
+    assignments   = __module10;
 
-require('../lm');
 
 var ERROR = false,
     TMP_SELECTIZE_DISABLE = false,
@@ -444,4 +456,4 @@ dom.ready(function() {
     selectorChangeEvent();
 });
 
-module.exports = {};
+export default {};

@@ -335,4 +335,4 @@ class DraggableGroup {
     }
 }
 
-module.exports = DraggableGroup;
+export default DraggableGroup;

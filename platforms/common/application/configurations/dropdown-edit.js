@@ -1,11 +1,18 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../utils/request.js';
+import __module2 from '../ui/index.js';
+import __module3 from '../utils/get-ajax-suffix.js';
+import __module4 from '../utils/get-ajax-url.js';
+import __module5 from '../utils/history.js';
+
 "use strict";
 
-var dom = require('../utils/dom'),
-    request = require('../utils/request'),
-    modal = require('../ui').modal,
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI = require('../utils/get-ajax-url').parse,
-    History = require('../utils/history');
+var dom = __module0,
+    request = __module1,
+    modal = __module2.modal,
+    getAjaxSuffix = __module3,
+    parseAjaxURI = __module4.parse,
+    History = __module5;
 
 var guid = function() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
@@ -111,4 +118,4 @@ dom.ready(function() {
     });
 });
 
-module.exports = {};
+export default {};

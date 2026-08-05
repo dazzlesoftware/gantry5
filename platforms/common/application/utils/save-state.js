@@ -21,4 +21,4 @@ class SaveState {
     }
 }
 
-module.exports = SaveState;
+export default SaveState;

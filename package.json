@@ -8,7 +8,6 @@
   "main": "gulpfile.js",
   "devDependencies": {
     "ansi-colors": "^4.1.3",
-    "browserify": "^17.0.1",
     "esbuild": "^0.25.12",
     "fancy-log": "^2.0.0",
     "gulp": "^5.0.1",
@@ -20,9 +19,6 @@
     "gulp-terser": "^2.1.0",
     "merge-stream": "^2.0.0",
     "sass": "1.101.0",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "watchify": "^4.0.0",
     "yargs": "^17.7.2"
   },
   "scripts": {

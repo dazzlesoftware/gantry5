@@ -1,20 +1,31 @@
+import __module0 from '../../utils/dom-effects.js';
+import __module1 from '../../utils/create-element.js';
+import __module2 from '../../utils/dom.js';
+import __module3 from '../../utils/frame-listener.js';
+import __module4 from '../../utils/get-ajax-suffix.js';
+import __module5 from '../../utils/get-ajax-url.js';
+import __module6 from '../../ui/index.js';
+import __module7 from '../../utils/async-foreach.js';
+import __module8 from '../../utils/translate.js';
+import __module9 from '../../utils/elements.viewport.js';
+
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
-var dom             = require('../../utils/dom-effects'),
-    zen           = require('../../utils/create-element'),
+var dom             = __module0,
+    zen           = __module1,
     storage       = new WeakMap(),
-    ready         = require('../../utils/dom').ready,
+    ready         = __module2.ready,
 
-    frameListener = require('../../utils/frame-listener'),
+    frameListener = __module3,
 
-    getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../../utils/get-ajax-url').global,
+    getAjaxSuffix = __module4,
+    parseAjaxURI  = __module5.parse,
+    getAjaxURL    = __module5.global,
 
-    modal         = require('../../ui').modal,
-    asyncForEach  = require('../../utils/async-foreach'),
-    translate     = require('../../utils/translate'),
-    inViewport    = require('../../utils/elements.viewport');
+    modal         = __module6.modal,
+    asyncForEach  = __module7,
+    translate     = __module8,
+    inViewport    = __module9;
 
 const fontVariantLoads = new Map();
 
@@ -789,4 +800,4 @@ ready(function() {
     });
 });
 
-module.exports = Fonts;
+export default Fonts;

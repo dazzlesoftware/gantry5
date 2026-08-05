@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = () => window.GENESIS_AJAX_SUFFIX || '';
+export default () => window.GENESIS_AJAX_SUFFIX || '';

@@ -1,8 +1,12 @@
+import __module0 from '../../utils/dom.js';
+import __module1 from '../../utils/reorderable-list.js';
+import __module2 from '../../utils/translate.js';
+
 "use strict";
 
-const { ready, delegate } = require('../../utils/dom');
-const ReorderableList = require('../../utils/reorderable-list');
-const translate = require('../../utils/translate');
+const { ready, delegate } = __module0;
+const ReorderableList = __module1;
+const translate = __module2;
 
 const collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
 
@@ -168,4 +172,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

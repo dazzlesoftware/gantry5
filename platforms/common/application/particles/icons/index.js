@@ -1,12 +1,19 @@
+import __module0 from '../../utils/dom.js';
+import __module1 from '../../ui/index.js';
+import __module2 from '../../ui/popover.js';
+import __module3 from '../../utils/get-ajax-suffix.js';
+import __module4 from '../../utils/get-ajax-url.js';
+import __module5 from '../../utils/translate.js';
+
 "use strict";
 
-var dom = require('../../utils/dom'),
-    modal = require('../../ui').modal,
-    popovers = require('../../ui/popover'),
-    getAjaxSuffix = require('../../utils/get-ajax-suffix'),
-    parseAjaxURI = require('../../utils/get-ajax-url').parse,
-    getAjaxURL = require('../../utils/get-ajax-url').global,
-    translate = require('../../utils/translate');
+var dom = __module0,
+    modal = __module1.modal,
+    popovers = __module2,
+    getAjaxSuffix = __module3,
+    parseAjaxURI = __module4.parse,
+    getAjaxURL = __module4.global,
+    translate = __module5;
 
 var escapeHTML = function(value) {
     return String(value).replace(/[&<>"']/g, function(character) {
@@ -164,4 +171,4 @@ dom.ready(function() {
     });
 });
 
-module.exports = {};
+export default {};

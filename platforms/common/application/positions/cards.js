@@ -1,9 +1,14 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../ui/eraser.js';
+import __module2 from '../utils/draggable-group.js';
+import __module3 from '../utils/flags-state.js';
+
 "use strict";
 
-const { ready, delegate } = require('../utils/dom');
-const Eraser = require('../ui/eraser');
-const DraggableGroup = require('../utils/draggable-group');
-const flags = require('../utils/flags-state');
+const { ready, delegate } = __module0;
+const Eraser = __module1;
+const DraggableGroup = __module2;
+const flags = __module3;
 
 const elementsFrom = value => {
     if (!value) return [];
@@ -119,4 +124,4 @@ ready(() => {
     attachSortablePositions(positions);
 });
 
-module.exports = Positions;
+export default Positions;

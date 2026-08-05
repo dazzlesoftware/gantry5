@@ -1,17 +1,29 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../fields/submit.js';
+import __module2 from '../ui/index.js';
+import __module3 from '../ui/eraser.js';
+import __module4 from '../utils/indicator.js';
+import __module5 from '../utils/request.js';
+import __module6 from '../utils/draggable-group.js';
+import __module7 from '../utils/get-ajax-url.js';
+import __module8 from '../utils/get-ajax-suffix.js';
+import __module9 from '../utils/get-outline.js';
+import __module10 from '../utils/translate.js';
+
 'use strict';
 
-var dom = require('../utils/dom'),
-    Submit = require('../fields/submit'),
-    modal = require('../ui').modal,
-    toastr = require('../ui').toastr,
-    Eraser = require('../ui/eraser'),
-    indicator = require('../utils/indicator'),
-    request = require('../utils/request'),
-    DraggableGroup = require('../utils/draggable-group'),
-    parseAjaxURI = require('../utils/get-ajax-url').parse,
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    getOutlineNameById = require('../utils/get-outline').getOutlineNameById,
-    translate = require('../utils/translate');
+var dom = __module0,
+    Submit = __module1,
+    modal = __module2.modal,
+    toastr = __module2.toastr,
+    Eraser = __module3,
+    indicator = __module4,
+    request = __module5,
+    DraggableGroup = __module6,
+    parseAjaxURI = __module7.parse,
+    getAjaxSuffix = __module8,
+    getOutlineNameById = __module9.getOutlineNameById,
+    translate = __module10;
 
 var AtomsField = '[name="page[head][atoms][_json]"]';
 
@@ -206,4 +218,4 @@ dom.ready(function() {
     attachSettings();
 });
 
-module.exports = Atoms;
+export default Atoms;

@@ -1,3 +1,5 @@
+import __module0 from './history-adapter.js';
+
 "use strict";
 
 // ========================================================================
@@ -15,7 +17,7 @@ var
     clearInterval  = window.clearInterval,
     JSON           = window.JSON,
     alert          = window.alert,
-    History        = window.History = require('./history-adapter') || {}, // Public History Object
+    History        = window.History = __module0 || {}, // Public History Object
     history        = window.history; // Old History Object
 
 try {
@@ -2037,4 +2039,4 @@ if (typeof History.init === 'undefined') {
     }
 }
 
-module.exports = History;
+export default History;

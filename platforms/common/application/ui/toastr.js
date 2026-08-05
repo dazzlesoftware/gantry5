@@ -298,4 +298,4 @@ class Toaster {
     }
 }
 
-module.exports = new Toaster();
+export default new Toaster();

@@ -1,14 +1,23 @@
+import __module0 from '../../fields/submit.js';
+import __module1 from '../../ui/index.js';
+import __module2 from '../../utils/request.js';
+import __module3 from '../../utils/dom.js';
+import __module4 from '../../utils/get-ajax-url.js';
+import __module5 from '../../utils/get-ajax-suffix.js';
+import __module6 from '../../utils/translate.js';
+import __module7 from '../../utils/wp-widgets-customizer.js';
+
 'use strict';
 
-const Submit = require('../../fields/submit');
-const modal = require('../../ui').modal;
-const request = require('../../utils/request');
-const {ready, delegate} = require('../../utils/dom');
-const parseAjaxURI = require('../../utils/get-ajax-url').parse;
-const getAjaxURL = require('../../utils/get-ajax-url').global;
-const getAjaxSuffix = require('../../utils/get-ajax-suffix');
-const translate = require('../../utils/translate');
-const WordpressWidgetsCustomizer = require('../../utils/wp-widgets-customizer');
+const Submit = __module0;
+const modal = __module1.modal;
+const request = __module2;
+const {ready, delegate} = __module3;
+const parseAjaxURI = __module4.parse;
+const getAjaxURL = __module4.global;
+const getAjaxSuffix = __module5;
+const translate = __module6;
+const WordpressWidgetsCustomizer = __module7;
 
 const showIndicator = (element) => {
     let icon = element.querySelector('i');
@@ -161,4 +170,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

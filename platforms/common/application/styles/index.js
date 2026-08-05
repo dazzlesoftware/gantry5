@@ -1,10 +1,14 @@
+import __module0 from '../ui/index.js';
+import __module1 from '../fields/index.js';
+import __module2 from '../utils/dom.js';
+import '../ui/popover.js';
+
 'use strict';
 
-const modal = require('../ui').modal;
-const fields = require('../fields');
-const { ready, delegate } = require('../utils/dom');
+const modal = __module0.modal;
+const fields = __module1;
+const { ready, delegate } = __module2;
 
-require('../ui/popover');
 
 const escapeSelector = (value) => window.CSS && CSS.escape
     ? CSS.escape(value)
@@ -60,4 +64,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

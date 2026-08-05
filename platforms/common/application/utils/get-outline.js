@@ -38,4 +38,4 @@ const getCurrentOutline = () => {
     return '';
 };
 
-module.exports = { getOutlineNameById, getCurrentOutline };
+export default { getOutlineNameById, getCurrentOutline };

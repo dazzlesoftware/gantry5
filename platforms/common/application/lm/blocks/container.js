@@ -1,8 +1,12 @@
+import __module0 from './base.js';
+import __module1 from '../../utils/get-ajax-url.js';
+import __module2 from '../../utils/translate.js';
+
 "use strict";
 
-var Base       = require('./base'),
-    getAjaxURL = require('../../utils/get-ajax-url').config,
-    translate  = require('../../utils/translate');
+var Base       = __module0,
+    getAjaxURL = __module1.config,
+    translate  = __module2;
 
 class Container extends Base {
     constructor(options) {
@@ -51,4 +55,4 @@ Container.prototype.options = {
     type: 'container'
 };
 
-module.exports = Container;
+export default Container;

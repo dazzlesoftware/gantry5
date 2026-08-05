@@ -1,6 +1,8 @@
+import __module0 from './get-ajax-suffix.js';
+
 'use strict';
 
-const getAjaxSuffix = require('./get-ajax-suffix');
+const getAjaxSuffix = __module0;
 
 const decodeHtml = (value) => {
     const textarea = document.createElement('textarea');
@@ -36,4 +38,4 @@ const parseAjaxURI = (uri) => {
     return result;
 };
 
-module.exports = { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };
+export default { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };

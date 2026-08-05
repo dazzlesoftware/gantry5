@@ -489,4 +489,4 @@ dom.implement({
     }
 });
 
-module.exports = dom;
+export default dom;

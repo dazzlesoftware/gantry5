@@ -1,6 +1,8 @@
+import __module0 from './base.js';
+
 "use strict";
 
-var Base = require('./base');
+var Base = __module0;
 
 var precision = function(value, decimals) {
     var multiplier = Math.pow(10, decimals);
@@ -138,4 +140,4 @@ Block.prototype.options = {
     }
 };
 
-module.exports = Block;
+export default Block;

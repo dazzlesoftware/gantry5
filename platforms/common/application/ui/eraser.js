@@ -84,4 +84,4 @@ class Eraser {
     }
 }
 
-module.exports = Eraser;
+export default Eraser;

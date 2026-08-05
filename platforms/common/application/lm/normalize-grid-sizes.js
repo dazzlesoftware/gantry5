@@ -38,4 +38,4 @@ const normalizeGridSizes = (root, getBlock) => {
     });
 };
 
-module.exports = normalizeGridSizes;
+export default normalizeGridSizes;

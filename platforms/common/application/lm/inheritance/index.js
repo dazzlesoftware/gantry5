@@ -1,17 +1,26 @@
+import __module0 from '../../utils/dom.js';
+import __module1 from '../../utils/indicator.js';
+import __module2 from '../../utils/request.js';
+import __module3 from '../../ui/index.js';
+import __module4 from '../../ui/selectize.js';
+import __module5 from '../../utils/get-ajax-suffix.js';
+import __module6 from '../../utils/get-ajax-url.js';
+import __module7 from '../../utils/get-outline.js';
+
 "use strict";
 
-var dom                = require('../../utils/dom'),
+var dom                = __module0,
     ready              = dom.ready,
     delegate           = dom.delegate,
-    indicator          = require('../../utils/indicator'),
-    request            = require('../../utils/request'),
-    modal              = require('../../ui').modal,
-    Selectize          = require('../../ui/selectize'),
+    indicator          = __module1,
+    request            = __module2,
+    modal              = __module3.modal,
+    Selectize          = __module4,
 
-    getAjaxSuffix      = require('../../utils/get-ajax-suffix'),
-    parseAjaxURI       = require('../../utils/get-ajax-url').parse,
-    getAjaxURL         = require('../../utils/get-ajax-url').global,
-    getCurrentOutline  = require('../../utils/get-outline').getCurrentOutline;
+    getAjaxSuffix      = __module5,
+    parseAjaxURI       = __module6.parse,
+    getAjaxURL         = __module6.global,
+    getCurrentOutline  = __module7.getCurrentOutline;
 
 
 var IDsMap = {

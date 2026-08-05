@@ -1,6 +1,8 @@
+import __module0 from '../utils/dom.js';
+
 'use strict';
 
-const { ready, delegate } = require('../utils/dom');
+const { ready, delegate } = __module0;
 
 const parseValues = (value) => new Set(String(value || '').split(',').filter(Boolean));
 const serializeValues = (values) => [...values].join(',');
@@ -35,4 +37,4 @@ ready(() => {
     });
 });
 
-module.exports = {};
+export default {};

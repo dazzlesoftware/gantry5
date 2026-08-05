@@ -48,7 +48,7 @@ var EVENT = {
     };
 
 
-module.exports = {
+export default {
     EVENT: EVENT,
     EVENTS: EVENTS
 };

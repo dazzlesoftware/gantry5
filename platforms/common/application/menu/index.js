@@ -1,15 +1,26 @@
+import __module0 from '../utils/dom.js';
+import __module1 from './menumanager.js';
+import __module2 from '../fields/submit.js';
+import __module3 from '../ui/index.js';
+import __module4 from './extra-items.js';
+import __module5 from '../utils/request.js';
+import __module6 from '../utils/indicator.js';
+import __module7 from '../utils/get-ajax-url.js';
+import __module8 from '../utils/get-ajax-suffix.js';
+import __module9 from '../utils/translate.js';
+
 "use strict";
-var dom           = require('../utils/dom'),
-    MenuManager   = require('./menumanager'),
-    Submit        = require('../fields/submit'),
-    modal         = require('../ui').modal,
-    toastr        = require('../ui').toastr,
-    extraItems    = require('./extra-items'),
-    request       = require('../utils/request'),
-    indicator     = require('../utils/indicator'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    translate     = require('../utils/translate');
+var dom           = __module0,
+    MenuManager   = __module1,
+    Submit        = __module2,
+    modal         = __module3.modal,
+    toastr        = __module3.toastr,
+    extraItems    = __module4,
+    request       = __module5,
+    indicator     = __module6,
+    parseAjaxURI  = __module7.parse,
+    getAjaxSuffix = __module8,
+    translate     = __module9;
 
 var menumanager;
 
@@ -36,7 +47,7 @@ dom.ready(function() {
     // Handles Modules / Particles items in the Menu
     menumanager.on('dragEnd', extraItems);
 
-    module.exports.menumanager = menumanager;
+    // The live binding is exported below for circular menu consumers.
 
     // Menu Manager
     menumanager.setRoot();
@@ -359,6 +370,8 @@ dom.ready(function() {
     });
 });
 
-module.exports = {
+export default {
     menumanager: menumanager
 };
+
+export { menumanager };

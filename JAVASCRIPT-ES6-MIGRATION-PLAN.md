@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Phases 0 through 5 complete; Phase 6 not started
+**Status:** Phases 0 through 6 complete; Phase 7 not started
 
 ## Objective
 
@@ -288,6 +288,8 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 
 ## Phase 6 — Administration ES modules and build migration
 
+**Status:** Complete — August 5, 2026
+
 ### Work
 
 - Convert the administration dependency graph from CommonJS to ES modules as each feature slice is migrated.
@@ -303,6 +305,15 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Browserify and Watchify are absent from active JavaScript build paths.
 - Removed packages have zero imports and zero generated-bundle presence.
 - Development watch and production builds both succeed.
+
+### Completion record
+
+- Converted all 87 administration source files from CommonJS to static ES module imports and exports while preserving the `window.Genesis` browser integration contract.
+- Moved the root and package-local administration build paths to esbuild with browser targets, development source maps, production minification, and direct diagnostics.
+- Removed Browserify/Watchify tasks and their stream adapters from active build files.
+- Removed unused `elements`, `mout`, `prime`, `prime-util`, and `objectdiff` runtime packages after confirming zero source imports and bundle presence.
+- Removed Browserify-only packages, declared esbuild directly in the administration package, and refreshed npm and Yarn lockfiles.
+- Added `ADMINISTRATION-ES-MODULE-BUILD.md` and automated source-format, build-path, bundle, dependency, and public-contract regression coverage.
 
 ## Phase 7 — Final first-party ES6+ cleanup
 

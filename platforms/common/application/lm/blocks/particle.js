@@ -1,9 +1,14 @@
+import __module0 from './atom.js';
+import __module1 from '../../utils/get-ajax-url.js';
+import __module2 from '../../utils/get-outline.js';
+import __module3 from '../../utils/translate.js';
+
 "use strict";
 
-var Atom               = require('./atom'),
-    getAjaxURL         = require('../../utils/get-ajax-url').config,
-    getOutlineNameById = require('../../utils/get-outline').getOutlineNameById,
-    translate          = require('../../utils/translate');
+var Atom               = __module0,
+    getAjaxURL         = __module1.config,
+    getOutlineNameById = __module2.getOutlineNameById,
+    translate          = __module3;
 
 var precision = function(value, decimals) {
         var multiplier = Math.pow(10, decimals);
@@ -155,4 +160,4 @@ Particle.prototype.options = {
     type: 'particle'
 };
 
-module.exports = Particle;
+export default Particle;

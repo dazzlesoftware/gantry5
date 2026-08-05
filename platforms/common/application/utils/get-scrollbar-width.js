@@ -2,7 +2,7 @@
 
 let cached = null;
 
-module.exports = () => {
+export default () => {
     if (cached !== null) return cached;
 
     const container = document.querySelector('[data-genesis-container]') || document.body;

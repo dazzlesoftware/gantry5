@@ -1,28 +1,47 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../utils/dom-collection.js';
+import __module2 from '../fields/submit.js';
+import __module3 from '../ui/index.js';
+import __module4 from './particles-sidebar.js';
+import __module5 from '../utils/request.js';
+import __module6 from '../utils/indicator.js';
+import __module7 from '../utils/get-ajax-suffix.js';
+import __module8 from '../utils/get-ajax-url.js';
+import __module9 from '../utils/flags-state.js';
+import __module10 from './builder.js';
+import __module11 from '../utils/history.js';
+import __module12 from '../utils/field-validation.js';
+import __module13 from './history.js';
+import __module14 from './layoutmanager.js';
+import __module15 from '../utils/save-state.js';
+import __module16 from '../utils/translate.js';
+import '../ui/popover.js';
+import './inheritance/index.js';
+
 "use strict";
-var ready          = require('../utils/dom').ready,
-    dom              = require('../utils/dom-collection'),
-    Submit         = require('../fields/submit'),
-    modal          = require('../ui').modal,
-    toastr         = require('../ui').toastr,
-    sidebar        = require('./particles-sidebar'),
-    request        = require('../utils/request'),
-    indicator      = require('../utils/indicator'),
+var ready          = __module0.ready,
+    dom              = __module1,
+    Submit         = __module2,
+    modal          = __module3.modal,
+    toastr         = __module3.toastr,
+    sidebar        = __module4,
+    request        = __module5,
+    indicator      = __module6,
 
-    getAjaxSuffix = require('../utils/get-ajax-suffix'),
-    parseAjaxURI  = require('../utils/get-ajax-url').parse,
-    getAjaxURL    = require('../utils/get-ajax-url').global,
+    getAjaxSuffix = __module7,
+    parseAjaxURI  = __module8.parse,
+    getAjaxURL    = __module8.global,
 
-    flags         = require('../utils/flags-state'),
-    Builder        = require('./builder'),
-    History        = require('../utils/history'),
-    validateField  = require('../utils/field-validation'),
-    LMHistory      = require('./history'),
-    LayoutManager  = require('./layoutmanager'),
-    SaveState      = require('../utils/save-state'),
-    translate      = require('../utils/translate');
+    flags         = __module9,
+    Builder        = __module10,
+    History        = __module11,
+    validateField  = __module12,
+    LMHistory      = __module13,
+    LayoutManager  = __module14,
+    SaveState      = __module15,
+    translate      = __module16;
 
-require('../ui/popover');
-require('./inheritance');
+
 
 var builder, layoutmanager, lmhistory, savestate, Tips;
 
@@ -132,7 +151,7 @@ ready(function() {
         savestate: savestate
     });
 
-    module.exports.layoutmanager = layoutmanager;
+    // The live binding is exported below for circular layout consumers.
 
     // load builder data
     if (root) {
@@ -648,10 +667,12 @@ ready(function() {
 
 });
 
-module.exports = {
+export default {
     dom: dom,
     builder: builder,
     layoutmanager: layoutmanager,
     history: lmhistory,
     savestate: savestate
 };
+
+export { layoutmanager };

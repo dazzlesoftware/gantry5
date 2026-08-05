@@ -50,4 +50,4 @@ var asyncForEach = function(arr, eachFn, doneFn) {
     }());
 };
 
-module.exports = asyncForEach;
+export default asyncForEach;

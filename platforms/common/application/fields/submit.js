@@ -1,6 +1,8 @@
+import __module0 from '../utils/field-validation.js';
+
 'use strict';
 
-const validateField = require('../utils/field-validation');
+const validateField = __module0;
 
 const elementFrom = value => {
     if (value instanceof Element || value instanceof Document || value instanceof DocumentFragment) return value;
@@ -17,7 +19,7 @@ const elementsFrom = value => {
 const fieldsNamed = (container, name) => Array.from(container.querySelectorAll('[name]'))
     .filter(field => field.name === name);
 
-module.exports = function submit(elements, container, options = {}) {
+export default function submit(elements, container, options = {}) {
     const valid = [];
     const invalid = [];
     const root = elementFrom(container);

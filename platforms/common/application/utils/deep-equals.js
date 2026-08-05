@@ -23,4 +23,4 @@ var deepEquals = function(first, second) {
     });
 };
 
-module.exports = deepEquals;
+export default deepEquals;

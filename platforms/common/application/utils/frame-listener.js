@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function frameListener(element, eventName, callback, options = {}) {
+export default function frameListener(element, eventName, callback, options = {}) {
     const target = element && element[0] ? element[0] : element;
     let frame = 0;
     let latestEvent;

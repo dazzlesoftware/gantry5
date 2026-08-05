@@ -1,13 +1,15 @@
+import __module0 from './dom-collection.js';
+
 "use strict";
 
-const dom = require('./dom-collection');
+const dom = __module0;
 
 const attributePattern = /\[\s*([^\s~|^$*=\]]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*\]/g;
 const classPattern = /\.([a-zA-Z_][\w-]*)/g;
 const idPattern = /#([a-zA-Z_][\w-]*)/;
 const tagPattern = /^\s*([a-zA-Z][\w-]*)/;
 
-module.exports = function createElement(expression, ownerDocument) {
+export default function createElement(expression, ownerDocument) {
     const definition = String(expression || 'div');
     const tag = (definition.match(tagPattern) || [null, 'div'])[1];
     const element = (ownerDocument || document).createElement(tag);

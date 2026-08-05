@@ -1,9 +1,13 @@
+import __module0 from '../ui/index.js';
+import __module1 from './get-ajax-url.js';
+import __module2 from './get-ajax-suffix.js';
+
 'use strict';
 
-const modal = require('../ui').modal;
-const getAjaxURL = require('./get-ajax-url').global;
-const parseAjaxURI = require('./get-ajax-url').parse;
-const getAjaxSuffix = require('./get-ajax-suffix');
+const modal = __module0.modal;
+const getAjaxURL = __module1.global;
+const parseAjaxURI = __module1.parse;
+const getAjaxSuffix = __module2;
 
 class FlagsState {
     constructor() {
@@ -70,4 +74,4 @@ class FlagsState {
     }
 }
 
-module.exports = new FlagsState();
+export default new FlagsState();

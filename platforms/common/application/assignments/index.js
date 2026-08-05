@@ -1,8 +1,12 @@
+import __module0 from '../utils/dom.js';
+import __module1 from '../utils/frame-listener.js';
+import __module2 from '../utils/async-foreach.js';
+
 "use strict";
 
-const { ready, delegate } = require('../utils/dom');
-const frameListener = require('../utils/frame-listener');
-const asyncForEach = require('../utils/async-foreach');
+const { ready, delegate } = __module0;
+const frameListener = __module1;
+const asyncForEach = __module2;
 
 const cache = new WeakMap();
 const visible = element => getComputedStyle(element).display !== 'none';
@@ -190,4 +194,4 @@ ready(() => {
     delegate(body, 'change', '#assignments input[type="hidden"][name], .settings-assignments input[type="hidden"][name]', Assignments.toggleStateDelegation);
 });
 
-module.exports = Assignments;
+export default Assignments;

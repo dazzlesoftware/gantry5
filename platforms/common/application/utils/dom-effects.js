@@ -1,7 +1,11 @@
+import __module0 from './dom-collection.js';
+import __module1 from '../ui/progresser.js';
+import __module2 from './indicator.js';
+
 "use strict";
-var dom          = require('./dom-collection'),
-    progresser = require('../ui/progresser'),
-    indicator  = require('./indicator');
+var dom          = __module0,
+    progresser = __module1,
+    indicator  = __module2;
 
 var unitless = ['opacity', 'zIndex', 'fontWeight', 'lineHeight', 'zoom', 'order', 'flexGrow', 'flexShrink'];
 
@@ -231,4 +235,4 @@ dom.implement({
     siblings: matchingSiblings
 });
 
-module.exports = dom;
+export default dom;
