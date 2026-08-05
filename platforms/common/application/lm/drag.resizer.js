@@ -1,26 +1,26 @@
 import __module0 from '../ui/drag.events.js';
 
 "use strict";
-var DragEvents = __module0;
+let DragEvents = __module0;
 
-var asElement = function(element) {
+let asElement = function(element) {
     return element && element.nodeType ? element : element && element[0];
 };
 
-var asElements = function(elements) {
+let asElements = function(elements) {
     if (!elements) { return []; }
     if (elements.nodeType) { return [elements]; }
     return Array.from(elements).map(asElement).filter(Boolean);
 };
 
-var clamp = function(value, min, max) {
+let clamp = function(value, min, max) {
         return Math.min(max, Math.max(min, value));
     },
     mapRange = function(value, min1, max1, min2, max2) {
         return min2 + ((value - min1) / (max1 - min1)) * (max2 - min2);
     },
     precision = function(value, decimals) {
-        var multiplier = Math.pow(10, decimals);
+        let multiplier = Math.pow(10, decimals);
         return Math.round(value * multiplier) / multiplier;
     };
 
@@ -46,12 +46,12 @@ class Resizer {
 
     getBlock(element) {
         element = typeof element === 'string' ? element : asElement(element);
-        var id = typeof element === 'string' ? element : (element && element.getAttribute('data-lm-id')) || '';
+        let id = typeof element === 'string' ? element : (element && element.getAttribute('data-lm-id')) || '';
         return this.builder.map ? this.builder.map[id] : undefined;
     }
 
     getAttribute(element, prop) {
-        var block = this.getBlock(element);
+        let block = this.getBlock(element);
         return block ? block.getAttribute(prop) : undefined;
     }
 
@@ -81,7 +81,7 @@ class Resizer {
             sizeBefore: 0
         };
 
-        var previous = this.element.previousElementSibling;
+        let previous = this.element.previousElementSibling;
         while (previous) {
             this.siblings.prevs.unshift(previous);
             previous = previous.previousElementSibling;
@@ -105,7 +105,7 @@ class Resizer {
             y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
 
-        var parent = this.element.parentElement,
+        let parent = this.element.parentElement,
             clientRect = this.element.getBoundingClientRect(),
             parentRect = parent.getBoundingClientRect();
 
@@ -117,7 +117,7 @@ class Resizer {
             down: offset || 0
         };
 
-        var blocks = Array.from(parent.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
+        let blocks = Array.from(parent.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
         if (blocks.length) {
             this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
             this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
@@ -135,12 +135,12 @@ class Resizer {
     move(event) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        var point = event.touches && event.touches.length ? event.touches[0] : event,
+        let point = event.touches && event.touches.length ? event.touches[0] : event,
             clientX = point.clientX || 0,
             clientY = point.clientY || 0,
             parentRect = this.origin.offset.parentRect;
 
-        var deltaX = (this.lastX || clientX) - clientX,
+        let deltaX = (this.lastX || clientX) - clientX,
             deltaY = (this.lastY || clientY) - clientY;
 
         this.direction =
@@ -148,7 +148,7 @@ class Resizer {
             Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && 'right' ||
             Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && 'up' ||
                                                                  'down';
-        var size,
+        let size,
             diff = 100 - this.siblings.occupied,
             value = clientX + (!this.siblings.prevs.length ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
             normalized = clamp(value, parentRect.left, parentRect.right);
@@ -166,12 +166,12 @@ class Resizer {
         this.getBlock(this.siblings.next).setSize(diff, true);
 
         // Hack to handle cases where size is not an integer
-        var siblings = Array.from(this.element.parentElement.children).filter(function(sibling) {
+        let siblings = Array.from(this.element.parentElement.children).filter(function(sibling) {
                 return sibling !== this.element && sibling.hasAttribute('data-lm-id');
             }, this),
             amount = siblings.length + 1;
         if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
-            var total = 0, blocks;
+            let total = 0, blocks;
 
             blocks = siblings.concat(this.element);
             blocks.forEach(function(block, index){
@@ -216,7 +216,7 @@ class Resizer {
     }
 
     evenResize(elements, animated) {
-        var total = elements.length,
+        let total = elements.length,
             size = precision(100 / total, 4),
             block;
 
@@ -228,9 +228,9 @@ class Resizer {
                 block[animated ? 'setAnimatedSize' : 'setSize'](size, size !== block.getSize());
             } else {
                 if (!element) { return; }
-                var flex = '0 1 ' + size + '%';
+                let flex = '0 1 ' + size + '%';
                 if (animated && typeof element.animate === 'function') {
-                    var animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex: flex }], {
+                    let animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex: flex }], {
                         duration: 250,
                         easing: 'ease'
                     });

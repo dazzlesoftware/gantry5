@@ -2,7 +2,7 @@ import __module0 from './section.js';
 
 "use strict";
 
-var Section = __module0;
+let Section = __module0;
 
 class Wrapper extends Section {
     layout() {

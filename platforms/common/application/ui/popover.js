@@ -4,13 +4,13 @@ import __module2 from '../utils/request.js';
 
 "use strict";
 
-var dom        = __module0,
+let dom        = __module0,
     zen      = __module1,
     storage  = new WeakMap(),
 
     request  = __module2;
 
-var defaults = {
+let defaults = {
         mainClass: 'genesis-popover',
         placement: 'auto',
         width: 'auto',
@@ -80,7 +80,7 @@ class Popover {
             event.preventDefault();
             event.stopPropagation();
         }
-        //var e = $.Event('hide.' + pluginType);
+        //let e = $.Event('hide.' + pluginType);
         this.element.emit('hide.popover', this);
         if (this.$target) {
             this.$target.removeClass('in').style({ display: 'none' });
@@ -105,7 +105,7 @@ class Popover {
 
     focus(e) {
         if (!this.getTarget().hasClass('in')) { return; }
-        var self = this,
+        let self = this,
             target = dom(e.target || e);
 
         if (
@@ -119,11 +119,11 @@ class Popover {
 
     restoreFocus(element) {
         element = dom(element || this.element);
-        var tag = element.tag();
+        let tag = element.tag();
 
         setTimeout(function(){
             if (tag != 'a' && tag != 'input' && tag != 'button') {
-                var items = element.find('a, button, input');
+                let items = element.find('a, button, input');
                 if (items) items[0].focus();
             } else {
                 element[0].focus();
@@ -132,11 +132,11 @@ class Popover {
     }
 
     hideAll(force) {
-        var css = '';
+        let css = '';
         if (force) { css = 'div.' + this.options.mainClass; }
         else { css = 'div.' + this.options.mainClass + ':not(.' + this.options.mainClass + '-fixed)'; }
 
-        var elements = dom(css);
+        let elements = dom(css);
         if (!elements) { return this; }
         elements.removeClass('in').style({ display: 'none' }).attribute('tabindex', '-1');
         if (!force && this._focusAttached) this.restoreFocus();
@@ -149,7 +149,7 @@ class Popover {
     }
 
     show() {
-        var target = this.getTarget().attribute('class', null).addClass(this.options.mainClass).attribute('tabindex', '0');
+        let target = this.getTarget().attribute('class', null).addClass(this.options.mainClass).attribute('tabindex', '0');
 
         if (!this.options.multi) {
             this.hideAll();
@@ -189,7 +189,7 @@ class Popover {
     }
 
     displayContent() {
-        var elementPos = this.element.position(),
+        let elementPos = this.element.position(),
             target = this.getTarget().attribute('class', null).addClass(this.options.mainClass),
             targetContent = this.getContentElement(),
             targetWidth, targetHeight, placement;
@@ -208,13 +208,13 @@ class Popover {
             target.find('.g-arrow').remove();
         }
 
-        var container = dom(this.options.where);
+        let container = dom(this.options.where);
 
         // wordpress workaround for out-of-scope cases
         if (GENESIS_PLATFORM == 'wordpress') {
             container = dom('#widgets-editor') || dom('#customize-preview') || dom('#widgets-right') || dom(this.options.where);
             if ('#' + container.id() != this.options.where) {
-                var wpwrap = dom('#wpwrap') || dom('.wp-customizer'), sibling, workaround;
+                let wpwrap = dom('#wpwrap') || dom('.wp-customizer'), sibling, workaround;
                 if (wpwrap.id() == 'wpwrap') {
                     sibling = wpwrap.nextSibling(this.options.where);
                     workaround =  sibling ? sibling : zen('div.g5wp-out-of-scope' + this.options.where).after(wpwrap);
@@ -251,11 +251,11 @@ class Popover {
         targetHeight = target[0].offsetHeight;
         placement = this.getPlacement(elementPos, targetHeight);
         if (this.options.targetEvents) { this.initTargetEvents(); }
-        var positionInfo = this.getTargetPosition(elementPos, placement, targetWidth, targetHeight);
+        let positionInfo = this.getTargetPosition(elementPos, placement, targetWidth, targetHeight);
         this.$target.style(positionInfo.position).addClass(placement).addClass('in');
 
         if (this.options.type === 'iframe') {
-            var iframe = target.find('iframe');
+            let iframe = target.find('iframe');
             iframe.style({
                 width: target.position().width,
                 height: iframe.parent().position.height
@@ -266,7 +266,7 @@ class Popover {
             this.$target.style({ 'margin': 0 });
         }
         if (this.options.arrow) {
-            var arrow = this.$target.find('.g-arrow');
+            let arrow = this.$target.find('.g-arrow');
             arrow.attribute('style', null);
             if (positionInfo.arrowOffset) {
                 arrow.style(positionInfo.arrowOffset);
@@ -301,7 +301,7 @@ class Popover {
     }
 
     setTitle(title) {
-        var element = this.getTitleElement();
+        let element = this.getTitleElement();
         if (title) {
             element.html(title);
         }
@@ -320,7 +320,7 @@ class Popover {
                 this.content = dom('<iframe frameborder="0"></iframe>').attribute('src', this.options.url);
             }
         } else if (!this.content) {
-            var content = '';
+            let content = '';
             if (typeof this.options.content === 'function') {
                 content = this.options.content.apply(this.element[0], arguments);
             } else {
@@ -332,7 +332,7 @@ class Popover {
     }
 
     setContent(content) {
-        var target = this.getTarget();
+        let target = this.getTarget();
         this.getContentElement().html(content);
         this.$target = target;
     }
@@ -351,7 +351,7 @@ class Popover {
 
             this.setContent(this.content);
 
-            var target = this.getContentElement();
+            let target = this.getContentElement();
             target.attribute('style', null);
 
             setTimeout(function(){
@@ -361,13 +361,13 @@ class Popover {
             this.displayContent();
             this.bindBodyEvents();
 
-            var selects = dom('[data-selectize]');
+            let selects = dom('[data-selectize]');
             if (selects) { selects.selectize(); }
         }.bind(this));
     }
 
     bindBodyEvents() {
-        var body = dom('body');
+        let body = dom('body');
         body.off('keyup', this.bound('escapeHandler')).on('keyup', this.bound('escapeHandler'));
         body.off('click', this.bound('bodyClickHandler')).on('click', this.bound('bodyClickHandler'));
     }
@@ -400,7 +400,7 @@ class Popover {
     }
 
     targetClickHandler(e) {
-        var target = dom(e.target);
+        let target = dom(e.target);
         if (target.matches(this.options.allowElementsClick)) { e.preventDefault(); }
         if (!target.parent('[data-g-popover-follow]') && target.data('g-popover-follow') === null) { e.stopPropagation(); }
     }
@@ -414,7 +414,7 @@ class Popover {
                 .on('mouseleave', this.bound('mouseleaveHandler'));
         }
 
-        var close = this.$target.find('.close');
+        let close = this.$target.find('.close');
         if (close) {
             close.off('click', this.bound('hide')).on('click', this.bound('hide'));
         }
@@ -424,7 +424,7 @@ class Popover {
 
     /* utils methods */
     getPlacement(pos, targetHeight) {
-        var
+        let
             placement,
             de = document.documentElement,
             db = document.body,
@@ -476,7 +476,7 @@ class Popover {
     }
 
     getTargetPosition(elementPos, placement, targetWidth, targetHeight) {
-        var pos = elementPos,
+        let pos = elementPos,
             elementW = this.element[0].offsetWidth,
             elementH = this.element[0].offsetHeight,
             position = {},
@@ -579,7 +579,7 @@ class Popover {
 
 dom.implement({
     getPopover: function(options) {
-        var element = this[0],
+        let element = this[0],
             popover = storage.get(element);
 
         if (!popover && options !== 'destroy') {
@@ -595,7 +595,7 @@ dom.implement({
 
     popover: function(options) {
         return this.forEach(function(element) {
-            var popover = storage.get(element);
+            let popover = storage.get(element);
 
             if (!popover && options !== 'destroy') {
                 options = options || {};
@@ -606,7 +606,7 @@ dom.implement({
     },
 
     position: function() {
-        var node = this[0],
+        let node = this[0],
             ct = dom('[data-genesis-container]')[0].getBoundingClientRect(),
             box = {
                 left: 0,
@@ -633,7 +633,7 @@ dom.implement({
 });
 
 dom.create = function(element, options) {
-    var popover = storage.get(element);
+    let popover = storage.get(element);
     if (!popover) {
         popover = new Popover(element, options || {});
         storage.set(element, popover);

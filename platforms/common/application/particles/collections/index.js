@@ -10,7 +10,7 @@ import __module8 from '../../utils/translate.js';
 
 "use strict";
 
-var dom = __module0,
+let dom = __module0,
     Submit = __module1,
     modal = __module2.modal,
     toastr = __module2.toastr,
@@ -21,32 +21,32 @@ var dom = __module0,
     getAjaxSuffix = __module7,
     translate = __module8;
 
-var directItems = function(list) {
+let directItems = function(list) {
     return Array.from(list.children).filter(function(item) { return item.hasAttribute('data-collection-item'); });
 };
 
-var fieldFor = function(element) {
-    var param = element.closest('.settings-param');
+let fieldFor = function(element) {
+    let param = element.closest('.settings-param');
     return param && param.querySelector('[data-collection-data]');
 };
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
-    var addNewByExit = function(event) {
+    let addNewByExit = function(event) {
         if (!this.CollectionNew) { return; }
         this.CollectionNew = false;
         if (event.detail.key === 'enter') {
-            var add = this.closest('.settings-param').querySelector('[data-collection-addnew]');
+            let add = this.closest('.settings-param').querySelector('[data-collection-addnew]');
             if (add) { add.click(); }
         } else if (event.detail.key === 'esc') {
-            var remove = this.closest('[data-collection-item]').querySelector('[data-collection-remove]');
+            let remove = this.closest('[data-collection-item]').querySelector('[data-collection-remove]');
             if (remove) { remove.click(); }
         }
     };
 
-    var createSortables = function(value) {
-        var lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll('.collection-list ul'));
+    let createSortables = function(value) {
+        let lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll('.collection-list ul'));
         lists.filter(Boolean).forEach(function(list) {
             if (list.SimpleSort) { return; }
             list.SimpleSort = new ReorderableList(list, {
@@ -56,7 +56,7 @@ dom.ready(function() {
                 onEnd: function(event) {
                     if (event.oldIndex === event.newIndex) { return; }
 
-                    var dataField = fieldFor(list),
+                    let dataField = fieldFor(list),
                         data = JSON.parse(dataField.value || '[]');
                     data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
                     dataField.value = JSON.stringify(data);
@@ -72,13 +72,13 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '[data-collection-addnew]', function(event, element) {
         event.preventDefault();
-        var param = element.closest('.settings-param'),
+        let param = element.closest('.settings-param'),
             list = param && param.querySelector('ul'),
             template = param && param.querySelector('[data-collection-template]'),
             dataField = param && param.querySelector('[data-collection-data]');
         if (!list || !template || !dataField) { return; }
 
-        var items = directItems(list),
+        let items = directItems(list),
             clone = template.cloneNode(true),
             title = clone.querySelector('a'),
             editable = title && title.querySelector('[data-title-editable]'),
@@ -97,21 +97,21 @@ dom.ready(function() {
         if (editable) {
             editable.CollectionNew = true;
             editable.addEventListener('genesis:title-edit-exit', addNewByExit);
-            var editButton = title.parentElement.querySelector('[data-title-edit]');
+            let editButton = title.parentElement.querySelector('[data-title-edit]');
             if (editButton) { editButton.click(); }
         }
         dataField.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
     dom.delegate(body, 'blur', '[data-collection-item] [data-title-editable]', function(event, editable) {
-        var item = editable.closest('[data-collection-item]'),
+        let item = editable.closest('[data-collection-item]'),
             list = item && item.parentElement,
             dataField = fieldFor(editable);
         if (!item || !list || !dataField) { return; }
 
-        var index = directItems(list).indexOf(item);
+        let index = directItems(list).indexOf(item);
         if (index === -1) { return; }
-        var data = JSON.parse(dataField.value || '[]'),
+        let data = JSON.parse(dataField.value || '[]'),
             key = item.getAttribute('data-collection-item');
         if (!data[index]) { data.splice(index, 0, {}); }
         data[index][key] = editable.textContent.trim();
@@ -121,12 +121,12 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '[data-collection-remove]', function(event, element) {
         event.preventDefault();
-        var item = element.closest('[data-collection-item]'),
+        let item = element.closest('[data-collection-item]'),
             list = item && item.parentElement,
             dataField = fieldFor(element);
         if (!item || !list || !dataField) { return; }
 
-        var items = directItems(list),
+        let items = directItems(list),
             index = items.indexOf(item),
             data = JSON.parse(dataField.value || '[]'),
             editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
@@ -139,20 +139,20 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '[data-collection-duplicate]', function(event, element) {
         event.preventDefault();
-        var item = element.closest('[data-collection-item]'),
+        let item = element.closest('[data-collection-item]'),
             list = item && item.parentElement,
             param = element.closest('.settings-param'),
             dataField = fieldFor(element);
         if (!item || !list || !param || !dataField) { return; }
 
-        var items = directItems(list),
+        let items = directItems(list),
             index = items.indexOf(item),
             templateLink = param.querySelector('[data-collection-template] a'),
             clone = item.cloneNode(true),
             data = JSON.parse(dataField.value || '[]'),
             editAll = list.closest('[data-field-name]') && list.closest('[data-field-name]').querySelector('[data-collection-editall]');
         item.after(clone);
-        var cloneLink = clone.querySelector('a');
+        let cloneLink = clone.querySelector('a');
         if (cloneLink && templateLink) { cloneLink.href = templateLink.href.replace(/%id%/g, items.length + 1); }
 
         data.splice(index, 0, JSON.parse(JSON.stringify(data[index])));
@@ -170,17 +170,17 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '[data-collection-item] .config-cog, [data-collection-editall]', function(event, element) {
         event.preventDefault();
-        var editable = element.querySelector('[data-title-editable]');
+        let editable = element.querySelector('[data-title-editable]');
         if (editable && editable.hasAttribute('contenteditable')) { event.stopPropagation(); return; }
 
-        var isEditAll = element.hasAttribute('data-collection-editall'),
+        let isEditAll = element.hasAttribute('data-collection-editall'),
             parent = element.closest('.settings-param'),
             dataField = parent && parent.querySelector('[data-collection-data]'),
             item = element.closest('[data-collection-item]'),
             list = parent && parent.querySelector('ul');
         if (!parent || !dataField || !list) { return; }
 
-        var items = directItems(list),
+        let items = directItems(list),
             data = dataField.value || '[]',
             itemIndex = item ? items.indexOf(item) : -1,
             dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
@@ -195,7 +195,7 @@ dom.ready(function() {
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var container = modal.element(content.elements.content),
+                let container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'),
                     dataValue = JSON.parse(data);
@@ -212,7 +212,7 @@ dom.ready(function() {
                         indicator.hide(target);
                         indicator.show(target);
                         form = container.querySelector('form');
-                        var post = Submit(form.elements, container);
+                        let post = Submit(form.elements, container);
 
                         if (post.invalid.length) {
                             indicator.hide(target);
@@ -222,7 +222,7 @@ dom.ready(function() {
                         }
 
                         request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, resultResponse) {
-                            var result = resultResponse && resultResponse.body;
+                            let result = resultResponse && resultResponse.body;
                             if (!result || !result.success) {
                                 modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
                             } else {
@@ -232,7 +232,7 @@ dom.ready(function() {
                                 dataField.value = JSON.stringify(dataValue);
                                 dataField.dispatchEvent(new Event('change', { bubbles: true }));
                                 directItems(list).forEach(function(collectionItem, index) {
-                                    var label = collectionItem.querySelector('[data-title-editable]'),
+                                    let label = collectionItem.querySelector('[data-title-editable]'),
                                         text = dataValue[index][collectionItem.getAttribute('data-collection-item')];
                                     if (label) {
                                         label.setAttribute('data-title-editable', text);
@@ -241,7 +241,7 @@ dom.ready(function() {
                                 });
 
                                 if (target.hasAttribute('data-apply-and-save')) {
-                                    var save = document.querySelector('.button-save');
+                                    let save = document.querySelector('.button-save');
                                     if (save) { save.click(); }
                                 }
                                 modal.close();

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     document.querySelectorAll('.g-newsticker-container').forEach(function (root) {
-        var items = Array.from(root.querySelectorAll('.g-newsticker-content'));
-        var index = 0;
-        var timer;
+        let items = Array.from(root.querySelectorAll('.g-newsticker-content'));
+        let index = 0;
+        let timer;
         if (!items.length) return;
         function show(next) {
             index = (next + items.length) % items.length;

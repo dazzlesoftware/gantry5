@@ -1,11 +1,11 @@
 (function () {
     'use strict';
     document.querySelectorAll('.g-springboard-container').forEach(function (container) {
-        var dragging = false;
-        var startX = 0;
-        var startY = 0;
-        var scrollLeft = 0;
-        var scrollTop = 0;
+        let dragging = false;
+        let startX = 0;
+        let startY = 0;
+        let scrollLeft = 0;
+        let scrollTop = 0;
         container.style.cursor = 'grab';
         container.addEventListener('pointerdown', function (event) {
             dragging = true; startX = event.clientX; startY = event.clientY;

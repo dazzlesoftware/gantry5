@@ -24,7 +24,7 @@ import __module22 from './pagesettings/index.js';
 import __module23 from './ui/tooltips.js';
 
 "use strict";
-var dom              = __module0,
+let dom              = __module0,
     zen            = __module1,
     ready          = __module2.ready,
     request        = __module3,
@@ -49,17 +49,17 @@ var dom              = __module0,
 
 
 
-var trim = function(value, characters) {
-    var string = value == null ? '' : String(value);
+let trim = function(value, characters) {
+    let string = value == null ? '' : String(value);
     if (!characters) { return string.trim(); }
 
-    var escaped = String(characters).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    let escaped = String(characters).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return string.replace(new RegExp('^[' + escaped + ']+|[' + escaped + ']+$', 'g'), '');
 };
 
-var interpolate = function(template, replacements) {
+let interpolate = function(template, replacements) {
     return String(template == null ? '' : template).replace(/\{\{([^}]+)}}/g, function(match, path) {
-        var value = path.split('.').reduce(function(current, key) {
+        let value = path.split('.').reduce(function(current, key) {
             return current == null ? undefined : current[key];
         }, replacements);
 
@@ -67,8 +67,8 @@ var interpolate = function(template, replacements) {
     });
 };
 
-var setParam = function(uri, name, value) {
-    var url = new URL(uri, window.location.href),
+let setParam = function(uri, name, value) {
+    let url = new URL(uri, window.location.href),
         isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
 
     url.searchParams.set(name, value);
@@ -76,15 +76,15 @@ var setParam = function(uri, name, value) {
     return isAbsolute ? url.href : url.pathname + url.search + url.hash;
 };
 
-var createHandler = function(divisor, noun, restOfString) {
+let createHandler = function(divisor, noun, restOfString) {
     return function(diff) {
-        var n = Math.floor(diff / divisor);
-        var pluralizedNoun = noun + ( n > 1 ? 's' : '' );
+        let n = Math.floor(diff / divisor);
+        let pluralizedNoun = noun + ( n > 1 ? 's' : '' );
         return "" + n + " " + pluralizedNoun + " " + restOfString;
     }
 };
 
-var formatters = [
+let formatters = [
     { threshold: -31535999, handler: createHandler(-31536000,	"year",     "from now" ) },
     { threshold: -2591999, 	handler: createHandler(-2592000,  	"month",    "from now" ) },
     { threshold: -604799,  	handler: createHandler(-604800,   	"week",     "from now" ) },
@@ -104,10 +104,10 @@ var formatters = [
     { threshold: Infinity, 	handler: createHandler(31536000, 	"year",     "ago" ) }
 ];
 
-var prettyDate = {
+let prettyDate = {
     format: function(date) {
-        var diff = (((new Date()).getTime() - date.getTime()) / 1000);
-        for (var i = 0; i < formatters.length; i++) {
+        let diff = (((new Date()).getTime() - date.getTime()) / 1000);
+        for (let i = 0; i < formatters.length; i++) {
             if (diff < formatters[i].threshold) {
                 return formatters[i].handler(diff);
             }
@@ -123,13 +123,13 @@ window.onbeforeunload = function() {
 };
 
 ready(function() {
-    var body     = dom('body'),
+    let body     = dom('body'),
         sentence = translate('GENESIS_PLATFORM_JS_SAVE_SUCCESS');
 
     // Close notification
     body.delegate('click', '[data-g-close]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
-        var parent = element.data('g-close');
+        let parent = element.data('g-close');
         parent = parent ? element.parent(parent) : element;
 
         parent.slideUp(function() {
@@ -142,7 +142,7 @@ ready(function() {
         if (event && event.preventDefault) { event.preventDefault(); }
 
         if (!element.PopoverDefined) {
-            var content = element.find('[data-popover-content]') || element.siblings('[data-popover-content]'),
+            let content = element.find('[data-popover-content]') || element.siblings('[data-popover-content]'),
                 popover = element.getPopover({
                     style: element.data('g-popover-style') || 'generic',
                     width: element.data('g-popover-width') || 220,
@@ -150,7 +150,7 @@ ready(function() {
                     allowElementsClick: element.data('g-popover-elementsclick') || '.toggle'
                 });
             element.on('shown.popover', function(popover){
-                var enabler = element.find('.enabler');
+                let enabler = element.find('.enabler');
                 element.attribute('aria-expanded', true).attribute('aria-hidden', false);
 
                 if (enabler) {
@@ -168,10 +168,10 @@ ready(function() {
 
     // Platform Settings redirect
     body.delegate('mousedown', '[data-settings-key]', function(event, element) {
-        var key = element.data('settings-key');
+        let key = element.data('settings-key');
         if (!key) { return true; }
 
-        var redirect = window.location.search,
+        let redirect = window.location.search,
             settings = element.attribute('href'),
             uri      = window.location.href.split('?');
         if (uri.length > 1 && uri[0].match(/index.php$/)) { redirect = 'index.php' + redirect; }
@@ -183,7 +183,7 @@ ready(function() {
     // Save Tooltip
     body.delegate('mouseover', '.button-save', function(event, element) {
         if (!element.lastSaved) { return true; }
-        var feedback = translate('GENESIS_PLATFORM_LAST_SAVED') + ': ' + prettyDate.format(element.lastSaved);
+        let feedback = translate('GENESIS_PLATFORM_LAST_SAVED') + ': ' + prettyDate.format(element.lastSaved);
         element
             .data('tip', feedback)
             .data('title', feedback);
@@ -192,7 +192,7 @@ ready(function() {
     // Save
     body.delegate('click', '.button-save', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
-        var saves = dom('.button-save');
+        let saves = dom('.button-save');
 
         if (saves.disabled()) {
             return false;
@@ -202,7 +202,7 @@ ready(function() {
         saves.hideIndicator();
         saves.showIndicator();
 
-        var data    = {},
+        let data    = {},
             invalid = [],
             type    = element.data('save'),
             extras  = '',
@@ -211,13 +211,13 @@ ready(function() {
 
         switch (page) {
             case 'layout':
-                var preset = dom('[data-lm-preset]');
+                let preset = dom('[data-lm-preset]');
                 lm.layoutmanager.singles('cleanup', lm.builder, false);
                 lm.savestate.setSession(lm.builder.serialize(null, true));
 
                 data.preset = preset && preset.data('lm-preset') ? preset.data('lm-preset') : 'default';
 
-                var layout = JSON.stringify(lm.builder.serialize());
+                let layout = JSON.stringify(lm.builder.serialize());
 
                 // base64 encoding doesn't quite work with mod_security
                 // data.layout = btoa ? btoa(encodeURIComponent(layout)) : layout;
@@ -230,7 +230,7 @@ ready(function() {
                 data.settings = JSON.stringify(mm.menumanager.settings);
                 data.ordering = JSON.stringify(mm.menumanager.ordering);
 
-                var items = JSON.stringify(mm.menumanager.items);
+                let items = JSON.stringify(mm.menumanager.items);
 
                 // base64 encoding doesn't quite work with mod_security
                 // data.items = btoa ? btoa(encodeURIComponent(items)) : items;
@@ -246,12 +246,12 @@ ready(function() {
 
             case 'other':
             default:
-                var form = element.parent('form');
+                let form = element.parent('form');
 
                 if (form && element.attribute('type') == 'submit') {
                     dom(form[0].elements).forEach(function(input) {
                         input = dom(input);
-                        var name     = input.attribute('name'),
+                        let name     = input.attribute('name'),
                             type     = input.attribute('type'),
                             value    = input.value(),
                             parent   = input.parent('.settings-param, .card-overrideable'),
@@ -316,7 +316,7 @@ ready(function() {
 
     // Editable titles
     body.delegate('keydown', '[data-title-edit]', function(event, element) {
-        var key = (event.which ? event.which : event.keyCode);
+        let key = (event.which ? event.which : event.keyCode);
         if (key == 32 || key == 13) { // ARIA support: Space / Enter toggle
             event.preventDefault();
             body.emit('click', event);
@@ -327,7 +327,7 @@ ready(function() {
         element = dom(element);
         if (element.hasClass('disabled')) { return false; }
 
-        var $title = element.siblings('[data-title-editable]') || element.previousSiblings().find('[data-title-editable]') || element.nextSiblings().find('[data-title-editable]'), title;
+        let $title = element.siblings('[data-title-editable]') || element.previousSiblings().find('[data-title-editable]') || element.nextSiblings().find('[data-title-editable]'), title;
         if (!$title) { return true; }
 
         title = $title[0];
@@ -336,7 +336,7 @@ ready(function() {
         $title.attribute('contenteditable', true);
         title.focus();
 
-        var range = document.createRange(), selection;
+        let range = document.createRange(), selection;
         range.selectNodeContents(title);
         selection = window.getSelection();
         selection.removeAllRanges();
@@ -368,7 +368,7 @@ ready(function() {
                 element.attribute('contenteditable', null);
                 element[0].blur();
 
-                var exitTitle = element.data('title-editable'),
+                let exitTitle = element.data('title-editable'),
                     exitKey = event.keyCode == 13 ? 'enter' : 'esc';
                 element.emit('title-edit-exit', exitTitle, exitKey);
                 element[0].dispatchEvent(new CustomEvent('genesis:title-edit-exit', {
@@ -387,7 +387,7 @@ ready(function() {
         element.attribute('contenteditable', null);
         element.data('title-editable', trim(element.text()));
         window.getSelection().removeAllRanges();
-        var title = element.data('title-editable'),
+        let title = element.data('title-editable'),
             original = element.storedTitle,
             canceled = element.titleEditCanceled;
         element.emit('title-edit-end', title, original, canceled);
@@ -405,13 +405,13 @@ ready(function() {
     body.delegate('click', '[data-ajax-action]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
 
-        var href      = element.attribute('href') || element.data('ajax-action'),
+        let href      = element.attribute('href') || element.data('ajax-action'),
             method    = element.data('ajax-action-method') || 'post',
             indicator = dom(element.data('ajax-action-indicator')) || element;
 
         if (!href) { return false; }
 
-        var extras = dom('[data-g-extras]');
+        let extras = dom('[data-g-extras]');
         if (extras && extras[0].PopoverDefined) {
             extras.getPopover().hide();
         }
@@ -438,7 +438,7 @@ ready(function() {
     }, true);
 });
 
-var modules = {
+let modules = {
     lm: lm,
     mm: mm,
     assingments: __module19,

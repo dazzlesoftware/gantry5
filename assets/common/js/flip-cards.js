@@ -4,19 +4,19 @@
     function enabled(value) { return value === 'true' || value === '1'; }
 
     document.querySelectorAll('[data-flipster-id]').forEach(function (root) {
-        var cards = Array.from(root.querySelectorAll('.g-flipster-card'));
+        let cards = Array.from(root.querySelectorAll('.g-flipster-card'));
         if (!cards.length) return;
-        var start = root.dataset.flipsterStart;
-        var index = start === 'center' ? Math.floor(cards.length / 2) : Number.parseInt(start || '0', 10);
-        var loop = enabled(root.dataset.flipsterLoop);
-        var timer;
+        let start = root.dataset.flipsterStart;
+        let index = start === 'center' ? Math.floor(cards.length / 2) : Number.parseInt(start || '0', 10);
+        let loop = enabled(root.dataset.flipsterLoop);
+        let timer;
 
         root.classList.add('flipster--' + (root.dataset.flipsterStyle || 'coverflow'));
         function show(next) {
             if (loop) next = (next + cards.length) % cards.length;
             index = Math.max(0, Math.min(next, cards.length - 1));
             cards.forEach(function (card, cardIndex) {
-                var offset = cardIndex - index;
+                let offset = cardIndex - index;
                 card.classList.toggle('flipster__item--current', offset === 0);
                 card.style.transform = 'translateX(' + (offset * 55) + '%) scale(' + (offset === 0 ? 1 : 0.8) + ')';
                 card.style.opacity = Math.abs(offset) > 2 ? '0' : (offset === 0 ? '1' : '0.55');
@@ -30,7 +30,7 @@
             if (event.key === 'ArrowLeft') show(index - 1);
             if (event.key === 'ArrowRight') show(index + 1);
         });
-        var autoplay = Number(root.dataset.flipsterAutoplay);
+        let autoplay = Number(root.dataset.flipsterAutoplay);
         if (autoplay > 0) {
             function startTimer() { timer = window.setInterval(function () { show(index + 1); }, autoplay); }
             startTimer();

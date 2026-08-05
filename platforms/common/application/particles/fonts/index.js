@@ -11,7 +11,7 @@ import __module9 from '../../utils/elements.viewport.js';
 
 "use strict";
 // fonts list: https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB2yJM8DBwt66u2MVRgb6M4t9CqkW7_IRY
-var dom             = __module0,
+let dom             = __module0,
     zen           = __module1,
     storage       = new WeakMap(),
     ready         = __module2.ready,
@@ -102,32 +102,27 @@ const loadGoogleFonts = (families, fontactive) => {
 
         loaded
             .then(() => fontactive(variant.family, variant.fvd))
-            .catch(() => {});
+            .catch((error) => console.warn(`Unable to load font variant ${variant.family}.`, error));
     });
 };
 
-var removeValue = function(array, value) {
-    var index;
+let removeValue = function(array, value) {
+    let index;
     while ((index = array.indexOf(value)) !== -1) {
         array.splice(index, 1);
     }
     return array;
 };
 
-var insertUnique = function(array, value) {
+let insertUnique = function(array, value) {
     if (!array.includes(value)) { array.push(value); }
     return array;
 };
 
-var labelize = function(value) {
+let labelize = function(value) {
     return String(value).replace(/-/g, ' ').replace(/\b[a-z]/g, function(letter) {
         return letter.toUpperCase();
     });
-};
-
-var isIE = function() {
-    var ua = window.navigator.userAgent;
-    return ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0 || ua.indexOf('Edge/') > 0 || false;
 };
 
 class Fonts {
@@ -159,7 +154,7 @@ class Fonts {
     }
 
     open(event, element) {
-        var data = element.data('genesis-fontpicker');
+        let data = element.data('genesis-fontpicker');
         if (!data) {
             throw new Error('No fontpicker data found');
         }
@@ -172,7 +167,7 @@ class Fonts {
             className: 'genesis-dialog-theme-default genesis-modal-fonts',
             remote: parseAjaxURI(getAjaxURL('fontpicker') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                var container = content.elements.content;
+                let container = content.elements.content;
 
                 this.attachEvents(container);
                 this.updateCategories(container);
@@ -199,15 +194,15 @@ class Fonts {
             }
 
             // 550 = container height, 5 = pages
-            var viewport = container.find('ul.g-fonts-list') || container,
-                elements = inViewport(viewport, '> li:not(.g-font-hide)', (550 * (isIE() ? 2 : 7))),
+            let viewport = container.find('ul.g-fonts-list') || container,
+                elements = inViewport(viewport, '> li:not(.g-font-hide)', 550 * 7),
                 list     = [];
 
             if (!elements) { return; }
 
             dom(elements).forEach(function(element) {
                 element = dom(element);
-                var dataFont = element.data('font'),
+                let dataFont = element.data('font'),
                     variant  = element.data('variant');
 
                 if (!this.loadedFonts.includes(dataFont) && variant) {
@@ -238,7 +233,7 @@ class Fonts {
         selected = selected || this.selected;
         if (!selected) { return false; }
 
-        var baseVariant = selected.element.data('variant');
+        let baseVariant = selected.element.data('variant');
         selected.element.removeClass('selected');
         selected.element.search('input[type=checkbox]').checked(false);
         selected.element.search('[data-font]').addClass('g-variant-hide');
@@ -248,10 +243,10 @@ class Fonts {
     }
 
     selectFromValue() {
-        var value = this.field.value(), name, variants, subset, isLocal = false;
+        let value = this.field.value(), name, variants, subset, isLocal = false;
 
         if (!value.match('family=')) {
-            var locals = dom('[data-category="local-fonts"][data-font]') || [], intersect;
+            let locals = dom('[data-category="local-fonts"][data-font]') || [], intersect;
             locals = locals.map(function(l) { return dom(l).data('font'); });
             value = value.replace(/(\s{1,})?,(\s{1,})?/gi, ',').split(',');
             intersect = locals.filter(function(font, index) {
@@ -262,7 +257,7 @@ class Fonts {
             isLocal = true;
             name = intersect.shift();
         } else {
-            var split  = value.split('&'),
+            let split  = value.split('&'),
                 family = split[0],
                 split2 = family.split(':');
 
@@ -271,7 +266,7 @@ class Fonts {
             subset = split[1] ? split[1].replace('subset=', '').split(',') : ['latin'];
         }
 
-        var noConflict = isLocal ? '[data-category="local-fonts"]' : ':not([data-category="local-fonts"])',
+        let noConflict = isLocal ? '[data-category="local-fonts"]' : ':not([data-category="local-fonts"])',
             element = dom('ul.g-fonts-list > [data-font="' + name + '"]' + noConflict);
         variants = variants || element.data('variants').split(',') || ['regular'];
 
@@ -304,9 +299,9 @@ class Fonts {
             if (variant) { variant.removeClass('g-variant-hide'); }
         }, this);
 
-        var charsetSelected = element.find('.font-charsets-selected');
+        let charsetSelected = element.find('.font-charsets-selected');
         if (charsetSelected) {
-            var subsetsLength = element.data('subsets').split(',').length;
+            let subsetsLength = element.data('subsets').split(',').length;
             charsetSelected.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">' + subset.length + ' of ' + subsetsLength + '</span> selected)');
         }
 
@@ -318,14 +313,14 @@ class Fonts {
     }
 
     select(element, variant/*, target*/) {
-        var baseVariant = element.data('variant'),
+        let baseVariant = element.data('variant'),
             isLocal     = !baseVariant;
 
         if (!this.selected || this.selected.element != element) {
             if (variant && this.selected) {
-                var charsetSelected = this.selected.element.find('.font-charsets-selected');
+                let charsetSelected = this.selected.element.find('.font-charsets-selected');
                 if (charsetSelected) {
-                    var subsetsLength = element.data('subsets').split(',').length;
+                    let subsetsLength = element.data('subsets').split(',').length;
                     charsetSelected.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">1 of ' + subsetsLength + '</span> selected)');
                 }
             }
@@ -349,12 +344,12 @@ class Fonts {
 
 
         if (variant || isLocal) {
-            var selected = (dom('ul.g-fonts-list > [data-font]:not([data-font="' + this.selected.font + '"]) input[type="checkbox"]:checked'));
+            let selected = (dom('ul.g-fonts-list > [data-font]:not([data-font="' + this.selected.font + '"]) input[type="checkbox"]:checked'));
             if (selected) {
                 selected.checked(false);
                 selected.parent('[data-variants]').removeClass('font-selected');
             }
-            var checkbox = this.selected.element.find('input[type="checkbox"][value="' + (isLocal ? this.selected.font : variant) + '"]'),
+            let checkbox = this.selected.element.find('input[type="checkbox"][value="' + (isLocal ? this.selected.font : variant) + '"]'),
                 checked  = checkbox.checked();
             if (checkbox) {
                 checkbox.checked(!checked);
@@ -380,13 +375,13 @@ class Fonts {
         }
 
         if (!this.selected.expanded) {
-            var variants = this.selected.element.data('variants'), variant;
+            let variants = this.selected.element.data('variants'), variant;
             if (variants.split(',').length > 1) {
                 this.selected.element.search('[data-font]').removeClass('g-variant-hide');
 
                 if (!this.selected.loaded) {
                     loadGoogleFonts([this.selected.font.replace(/\s/g, '+') + ':' + variants], function(family, fvd) {
-                        var style  = this.fvdToStyle(family, fvd),
+                        let style  = this.fvdToStyle(family, fvd),
                             search = style.fontWeight;
 
                         if (search == '400') {
@@ -401,7 +396,7 @@ class Fonts {
                 }
             }
         } else {
-            var exclude = ':not([data-variant="' + this.selected.variants.join('"]):not([data-variant="') + '"])';
+            let exclude = ':not([data-variant="' + this.selected.variants.join('"]):not([data-variant="') + '"])';
             exclude = this.selected.element.search('[data-font]' + exclude);
             if (exclude) { exclude.addClass('g-variant-hide'); }
         }
@@ -411,7 +406,7 @@ class Fonts {
 
     toggle(event, element) {
         element = dom(element);
-        var target = dom(event.target);
+        let target = dom(event.target);
 
         if (target.attribute('type') == 'checkbox') {
             target.checked(!target.checked());
@@ -423,7 +418,7 @@ class Fonts {
     }
 
     updateSelection() {
-        var preview = dom('.g-particles-footer .font-selected'), selected, variants;
+        let preview = dom('.g-particles-footer .font-selected'), selected, variants;
         if (!preview) { return; }
 
         if (!this.selected.selected.length) {
@@ -439,21 +434,21 @@ class Fonts {
     }
 
     updateTotal() {
-        var totals = dom('.g-particles-header .particle-search-total'),
+        let totals = dom('.g-particles-header .particle-search-total'),
             count  = dom('.g-fonts-list > [data-font]:not(.g-font-hide)');
 
         totals.text(count ? count.length : 0);
     }
 
     updateCategories(container) {
-        var categories = container.find('[data-font-categories]');
+        let categories = container.find('[data-font-categories]');
         if (!categories) { return; }
 
         this.filters.categories = categories.data('font-categories').split(',');
     }
 
     attachEvents(container) {
-        var header  = container.find('.g-particles-header'),
+        let header  = container.find('.g-particles-header'),
             list    = container.find('.g-fonts-list'),
             search  = header.find('input.font-search'),
             preview = header.find('input.font-preview');
@@ -472,7 +467,7 @@ class Fonts {
     attachCharsets(container) {
         container.delegate('mouseover', '.font-charsets-selected', function(event, element) {
             if (!element.PopoverDefined) {
-                var popover = element.getPopover({
+                let popover = element.getPopover({
                     placement: 'auto',
                     width: '200',
                     trigger: 'mouse',
@@ -480,13 +475,13 @@ class Fonts {
                 });
 
                 element.on('beforeshow.popover', function(popover) {
-                    var subsets = element.parent('[data-subsets]').data('subsets').split(','),
+                    let subsets = element.parent('[data-subsets]').data('subsets').split(','),
                         content = popover.$target.find('.genesis-popover-content'),
                         checked;
 
                     content[0].replaceChildren();
 
-                    var div, current;
+                    let div, current;
                     subsets.forEach(function(cs) {
                         current = this.selected.charsets.includes(cs) ? (cs == 'latin' ? 'checked disabled' : 'checked') : '';
                         zen('div').html('<label><input type="checkbox" ' + current + ' value="' + cs + '"/> ' + labelize(cs.replace('ext', 'extended')) + '</label>').bottom(content);
@@ -512,7 +507,7 @@ class Fonts {
     attachLocalVariants(container) {
         container.delegate('mouseover', '.g-font-variants-list', function(event, element) {
             if (!element.PopoverDefined) {
-                var popover = element.getPopover({
+                let popover = element.getPopover({
                     placement: 'auto',
                     width: '200',
                     trigger: 'mouse',
@@ -520,7 +515,7 @@ class Fonts {
                 });
 
                 element.on('beforeshow.popover', function(popover) {
-                    var content  = popover.$target.find('.genesis-popover-content'),
+                    let content  = popover.$target.find('.genesis-popover-content'),
                         variants = element.parent('[data-variants]').data('variants').split(',');
 
                     content[0].replaceChildren();
@@ -537,7 +532,7 @@ class Fonts {
     }
 
     attachFooter(container) {
-        var footer     = container.find('.g-particles-footer'),
+        let footer     = container.find('.g-particles-footer'),
             select     = footer.find('button.button-primary'),
             categories = footer.find('.font-category'),
             subsets    = footer.find('.font-subsets'),
@@ -550,7 +545,7 @@ class Fonts {
                 return;
             }
 
-            var name      = this.selected.font.replace(/\s/g, '+'),
+            let name      = this.selected.font.replace(/\s/g, '+'),
                 variation = this.selected.selected,
                 charset   = this.selected.charsets;
 
@@ -584,7 +579,7 @@ class Fonts {
             trigger: 'mouse',
             style: 'font-categories, above-modal'
         }).on('beforeshow.popover', function(popover) {
-            var cats    = categories.data('font-categories').split(','),
+            let cats    = categories.data('font-categories').split(','),
                 content = popover.$target.find('.genesis-popover-content'),
                 checked;
 
@@ -614,12 +609,12 @@ class Fonts {
             trigger: 'mouse',
             style: 'font-subsets, above-modal'
         }).on('beforeshow.popover', function(popover) {
-            var subs    = subsets.data('font-subsets').split(','),
+            let subs    = subsets.data('font-subsets').split(','),
                 content = popover.$target.find('.genesis-popover-content');
 
             content[0].replaceChildren();
 
-            var div;
+            let div;
             subs.forEach(function(sub) {
                 current = sub == this.filters.script ? 'checked' : '';
                 zen('div').html('<label><input name="font-subset[]" type="radio" ' + current + ' value="' + sub + '"/> ' + labelize(sub.replace('ext', 'extended')) + '</label>').bottom(content);
@@ -643,7 +638,7 @@ class Fonts {
 
     search(input) {
         input = input || dom('.g-particles-header input.font-search');
-        var list  = dom('.g-fonts-list'),
+        let list  = dom('.g-fonts-list'),
             value = input.value(),
             name, subsets, category, data;
 
@@ -693,7 +688,7 @@ class Fonts {
 
         clearTimeout(input.refreshTimer);
 
-        var value = input.value(),
+        let value = input.value(),
             list  = dom('.g-fonts-list');
 
         value = String(value || '').trim() || this.previewSentence[this.filters.script];
@@ -706,10 +701,10 @@ class Fonts {
     }
 
     fvdToStyle(family, fvd) {
-        var match = fvd.match(/([a-z])([0-9])/);
+        let match = fvd.match(/([a-z])([0-9])/);
         if (!match) return '';
 
-        var styleMap = {
+        let styleMap = {
             n: 'normal',
             i: 'italic',
             o: 'oblique'
@@ -786,10 +781,10 @@ class Fonts {
 }
 
 ready(function() {
-    var body = dom('body');
+    let body = dom('body');
     body.delegate('click', '[data-genesis-fontpicker]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
-        var node = element[0],
+        let node = element[0],
             FontPicker = storage.get(node);
         if (!FontPicker) {
             FontPicker = new Fonts();

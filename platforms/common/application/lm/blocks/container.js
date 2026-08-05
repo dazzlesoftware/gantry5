@@ -4,7 +4,7 @@ import __module2 from '../../utils/translate.js';
 
 "use strict";
 
-var Base       = __module0,
+let Base       = __module0,
     getAjaxURL = __module1.config,
     translate  = __module2;
 
@@ -23,7 +23,7 @@ class Container extends Base {
     }
 
     hasChanged(state, child) {
-        var block = this.block[0],
+        let block = this.block[0],
             title = block.querySelector('span.title'),
             icon = title && title.querySelector(':scope > i:first-child');
 
@@ -40,7 +40,7 @@ class Container extends Base {
     }
 
     addSettings(container) {
-        var settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
+        let settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
             block = container.block[0],
             wrapper = document.createElement('div');
 

@@ -3,27 +3,28 @@ import __module1 from '../ui/progresser.js';
 import __module2 from './indicator.js';
 
 "use strict";
-var dom          = __module0,
+let dom          = __module0,
     progresser = __module1,
     indicator  = __module2;
 
-var unitless = ['opacity', 'zIndex', 'fontWeight', 'lineHeight', 'zoom', 'order', 'flexGrow', 'flexShrink'];
+let unitless = ['opacity', 'zIndex', 'fontWeight', 'lineHeight', 'zoom', 'order', 'flexGrow', 'flexShrink'];
 
-var durationMs = function(value) {
+let durationMs = function(value) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return 0; }
     if (typeof value === 'number') { return value; }
     value = String(value || '250ms').trim();
     return value.endsWith('ms') ? parseFloat(value) : parseFloat(value) * 1000;
 };
 
-var styleValue = function(property, value) {
+let styleValue = function(property, value) {
     return typeof value === 'number' && unitless.indexOf(property) === -1 ? value + 'px' : String(value);
 };
 
-var sequence = function() {
-    var callbacks = Array.prototype.slice.call(arguments);
+let sequence = function() {
+    let callbacks = Array.prototype.slice.call(arguments);
 
     return function() {
-        var args = arguments,
+        let args = arguments,
             context = this;
 
         callbacks.forEach(function(callback) {
@@ -32,16 +33,16 @@ var sequence = function() {
     };
 };
 
-var matches = function(element, expression) {
+let matches = function(element, expression) {
     return element && element.nodeType === Node.ELEMENT_NODE
         && element.matches(expression || '*');
 };
 
-var adjacentSiblings = function(expression) {
-    var siblings = [];
+let adjacentSiblings = function(expression) {
+    let siblings = [];
 
     this.forEach(function(element) {
-        var previous = element.previousElementSibling,
+        let previous = element.previousElementSibling,
             next = element.nextElementSibling;
 
         if (matches(previous, expression) && siblings.indexOf(previous) === -1) {
@@ -55,8 +56,8 @@ var adjacentSiblings = function(expression) {
     return dom(siblings);
 };
 
-var matchingSiblings = function(expression) {
-    var siblings = [];
+let matchingSiblings = function(expression) {
+    let siblings = [];
 
     this.forEach(function(element) {
         if (!element.parentElement) { return; }
@@ -74,7 +75,7 @@ var matchingSiblings = function(expression) {
 
 dom.implement({
     style: function() {
-        var property = arguments[0], value = arguments[1];
+        let property = arguments[0], value = arguments[1];
         this.forEach(function(element) {
             if (typeof property === 'string') {
                 element.style[property] = styleValue(property, value);
@@ -89,14 +90,14 @@ dom.implement({
 
     animate: function(properties, options) {
         options = typeof options === 'string' ? { duration: options } : (options || {});
-        var duration = durationMs(options.duration),
+        let duration = durationMs(options.duration),
             easing = options.equation || options.easing || 'ease',
             callback = options.callback || function() {},
             remaining = this.length;
 
         if (!remaining) { callback.call(this); return this; }
         this.forEach(function(element) {
-            var from = {}, to = {};
+            let from = {}, to = {};
             Object.keys(properties).forEach(function(property) {
                 from[property] = getComputedStyle(element)[property];
                 to[property] = styleValue(property, properties[property]);
@@ -108,7 +109,7 @@ dom.implement({
                 return;
             }
 
-            var animation = element.animate([from, to], { duration: duration, easing: easing, fill: 'forwards' });
+            let animation = element.animate([from, to], { duration: duration, easing: easing, fill: 'forwards' });
             animation.addEventListener('finish', function() {
                 Object.assign(element.style, to);
                 animation.cancel();
@@ -127,7 +128,7 @@ dom.implement({
     },
 
     progresser: function(options) {
-        var instance;
+        let instance;
 
         this.forEach(function(node) {
             instance = node.ProgresserInstance;
@@ -142,7 +143,7 @@ dom.implement({
 
     compute: function() {
         if (!this[0]) { return null; }
-        var computed = getComputedStyle(this[0]), property = arguments[0];
+        let computed = getComputedStyle(this[0]), property = arguments[0];
         return property ? computed[property] || computed.getPropertyValue(property) : computed;
     },
 
@@ -159,7 +160,7 @@ dom.implement({
     },
 
     slideDown: function(animation, callback) {
-        var element       = this,
+        let element       = this,
             size          = this.getRealSize(),
             callbackStart = function() {
                 element.gSlideCollapsed = false;
@@ -186,7 +187,7 @@ dom.implement({
             this.gSlideStyle = this.attribute('style');
         }
 
-        var element       = this,
+        let element       = this,
             callbackStart = function() {
                 element.gSlideCollapsed = true;
             },
@@ -206,12 +207,12 @@ dom.implement({
     },
 
     slideToggle: function(animation, callback) {
-        var size = this.getRealSize();
+        let size = this.getRealSize();
         return this[size.height && !this.gSlideCollapsed ? 'slideUp' : 'slideDown'](animation, callback);
     },
 
     getRealSize: function() {
-        var style = this.attribute('style'), size;
+        let style = this.attribute('style'), size;
         this.style({
             position: 'relative',
             overflow: 'inherit',

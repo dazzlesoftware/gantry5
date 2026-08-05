@@ -1,11 +1,11 @@
 (function () {
     'use strict';
     document.querySelectorAll('.g-newsslider').forEach(function (root) {
-        var contents = Array.from(root.querySelectorAll('.news-content'));
-        var headlines = Array.from(root.querySelectorAll('.news-headlines li'));
-        var pagination = Array.from(root.querySelectorAll('.g-newsslider-pagination li'));
-        var index = 0;
-        var timer;
+        let contents = Array.from(root.querySelectorAll('.news-content'));
+        let headlines = Array.from(root.querySelectorAll('.news-headlines li'));
+        let pagination = Array.from(root.querySelectorAll('.g-newsslider-pagination li'));
+        let index = 0;
+        let timer;
         if (!contents.length) return;
         function show(next) {
             index = (next + contents.length) % contents.length;

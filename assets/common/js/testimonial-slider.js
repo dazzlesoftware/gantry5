@@ -2,11 +2,11 @@
     'use strict';
 
     document.querySelectorAll('[data-testimonialslider-id]').forEach(function (container) {
-        var carousel = container.querySelector('[data-testimonialslider-carousel-id]');
+        let carousel = container.querySelector('[data-testimonialslider-carousel-id]');
         if (!carousel) return;
 
-        var items = Array.from(carousel.querySelectorAll('.g-testimonialslider-carousel-item-container'));
-        var index = 0;
+        let items = Array.from(carousel.querySelectorAll('.g-testimonialslider-carousel-item-container'));
+        let index = 0;
 
         function show(next) {
             index = (next + items.length) % items.length;
@@ -17,7 +17,7 @@
         }
 
         function control(label, direction, delta) {
-            var button = document.createElement('button');
+            let button = document.createElement('button');
             button.type = 'button';
             button.className = 'g-testimonialslider-' + direction;
             button.setAttribute('aria-label', label);
@@ -32,7 +32,7 @@
         }
 
         if (container.dataset.testimonialsliderMatchheight === 'enabled') {
-            var block = container.closest('.g-block');
+            let block = container.closest('.g-block');
             if (block) carousel.style.minHeight = block.getBoundingClientRect().height + 'px';
         }
         show(0);

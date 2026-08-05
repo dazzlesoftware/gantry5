@@ -2,10 +2,10 @@ import __module0 from './section.js';
 
 "use strict";
 
-var Section = __module0;
+let Section = __module0;
 
-var elementFromHTML = function(html) {
-    var template = document.createElement('template');
+let elementFromHTML = function(html) {
+    let template = document.createElement('template');
     template.innerHTML = html.trim();
     return template.content.firstElementChild;
 };
@@ -21,10 +21,10 @@ class Atoms extends Section {
     }
 
     onDone() {
-        var block = this.block[0];
+        let block = this.block[0];
 
         if (!block.querySelector('[data-lm-blocktype="atom"]')) {
-            var ids = [this.getId()],
+            let ids = [this.getId()],
                 segments = block.querySelectorAll('[data-lm-id]');
             segments.forEach(function(element) { ids.push(element.getAttribute('data-lm-id')); });
             ids.reverse().forEach(function(id) { this.options.builder.remove(id); }, this);
@@ -42,9 +42,9 @@ class Atoms extends Section {
     }
 
     _attachRedirect() {
-        var item = document.querySelector('[data-genesis-nav="page"]');
+        let item = document.querySelector('[data-genesis-nav="page"]');
         if (!item) { return; }
-        var link = document.querySelector('.atoms-notice a');
+        let link = document.querySelector('.atoms-notice a');
         if (!link) { return; }
         link.addEventListener('click', function(event) {
             event.preventDefault();

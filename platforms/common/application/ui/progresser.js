@@ -1,6 +1,6 @@
 "use strict";
 
-var defaults = {
+let defaults = {
     value: 0.0,
     size: 50.0,
     startAngle: -Math.PI / 2,
@@ -20,13 +20,13 @@ var defaults = {
     insertLocation: 'before'
 };
 
-var asElement = function(element) {
+let asElement = function(element) {
     if (element && element.nodeType) { return element; }
     if (element && element[0] && element[0].nodeType) { return element[0]; }
     return null;
 };
 
-var insertCanvas = function(canvas, target, location) {
+let insertCanvas = function(canvas, target, location) {
     if (!target) { throw new Error('The progress indicator needs a target element.'); }
 
     switch (location) {
@@ -46,7 +46,7 @@ var insertCanvas = function(canvas, target, location) {
     }
 };
 
-var Progresser = function(element, options) {
+let Progresser = function(element, options) {
     this.element = asElement(element);
     this.options = Object.assign({}, defaults, options || {});
     this.canvas = document.createElement('canvas');
@@ -55,7 +55,7 @@ var Progresser = function(element, options) {
     this.lastFrameValue = 0.0;
     this.animationFrame = null;
 
-    var target = asElement(this.options.insertElement) || this.element;
+    let target = asElement(this.options.insertElement) || this.element;
     insertCanvas(this.canvas, target, this.options.insertLocation || 'before');
     this.update(options);
 };
@@ -77,7 +77,7 @@ Progresser.prototype.update = function(options) {
 };
 
 Progresser.prototype.initFill = function() {
-    var fill = this.options.fill,
+    let fill = this.options.fill,
         size = this.options.size,
         ctx = this.ctx;
 
@@ -86,11 +86,11 @@ Progresser.prototype.initFill = function() {
     this.arcFill = fill.color || null;
 
     if (fill.gradient) {
-        var colors = fill.gradient;
+        let colors = fill.gradient;
         if (colors.length === 1) {
             this.arcFill = colors[0];
         } else {
-            var angle = fill.gradientAngle || 0,
+            let angle = fill.gradientAngle || 0,
                 direction = fill.gradientDirection || [
                     size / 2 * (1 - Math.cos(angle)),
                     size / 2 * (1 + Math.sin(angle)),
@@ -100,7 +100,7 @@ Progresser.prototype.initFill = function() {
                 gradient = ctx.createLinearGradient.apply(ctx, direction);
 
             colors.forEach(function(entry, index) {
-                var color = entry,
+                let color = entry,
                     position = index / (colors.length - 1);
 
                 if (Array.isArray(entry)) {
@@ -134,7 +134,7 @@ Progresser.prototype.drawFrame = function(value) {
 };
 
 Progresser.prototype.drawArc = function(value) {
-    var ctx = this.ctx,
+    let ctx = this.ctx,
         radius = this.radius,
         thickness = this.getThickness(),
         angle = this.options.startAngle;
@@ -154,7 +154,7 @@ Progresser.prototype.drawArc = function(value) {
 };
 
 Progresser.prototype.drawEmptyArc = function(value) {
-    var ctx = this.ctx,
+    let ctx = this.ctx,
         radius = this.radius,
         thickness = this.getThickness(),
         angle = this.options.startAngle;
@@ -179,11 +179,11 @@ Progresser.prototype.drawEmptyArc = function(value) {
 Progresser.prototype.drawAnimated = function(value) {
     this.emit('progress-animation-start', { value: value });
 
-    var start = performance.now(),
+    let start = performance.now(),
         duration = parseFloat(this.options.animation.duration) || 1200,
         initial = this.lastFrameValue,
         frame = function(timestamp) {
-            var progress = Math.min(1, (timestamp - start) / duration),
+            let progress = Math.min(1, (timestamp - start) / duration),
                 stepValue = initial * (1 - progress) + value * progress;
 
             this.drawFrame(stepValue);

@@ -2,7 +2,7 @@
 
 **Created:** August 4, 2026  
 **Project:** Genesis 5  
-**Status:** Phases 0 through 6 complete; Phase 7 not started
+**Status:** Complete — all phases finished August 5, 2026
 
 ## Objective
 
@@ -317,6 +317,8 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 
 ## Phase 7 — Final first-party ES6+ cleanup
 
+**Status:** Complete — August 5, 2026
+
 ### Work
 
 - Replace remaining first-party `var` declarations according to mutability and scope.
@@ -333,18 +335,26 @@ The legacy audio runtime is actively loaded by 38 theme particles and contains F
 - Remaining `var`, prototype, global, or compatibility matches are documented third-party/generated exceptions.
 - No migration-introduced console errors occur in supported frontend or administration flows.
 
+### Completion record
+
+- Replaced all remaining `var` declarations in inventory-classified first-party source and added a regression scan that excludes generated and vendored code by classification.
+- Replaced the obsolete History.js compatibility runtime with the native History API while preserving the administration-facing `window.History` contract.
+- Removed remaining user-agent, IE, and MSPointer branches and made previously silent asynchronous failures observable.
+- Audited lifecycle ownership, HTML insertion, network cancellation/error behavior, keyboard/focus/ARIA contracts, and reduced motion.
+- Recorded final exceptions and validation evidence in `JAVASCRIPT-ES6-MIGRATION-FINAL-REPORT.md`.
+
 ## Third-party library policy
 
-| Library/category | Planned decision |
+| Library/category | Final decision |
 |---|---|
 | Swiper 14 | Retain; current ES-module source and substantial carousel behavior |
-| Modernizr 2.x | Remove after replacing active checks |
-| Classie | Remove; use `classList` |
-| FastClick | Remove |
-| Legacy audiojs runtime and theme particles | Replace with one core Nucleus particle and shared native media controller |
-| Tiny Scrollbar | Prefer native CSS/scrolling; retain only with a documented unmet requirement |
-| Chartist/legacy chart code | Evaluate native SVG/canvas replacement versus a current maintained dependency |
-| particles.js copies | Evaluate shared native canvas replacement versus one current maintained dependency |
+| Modernizr 2.x | Removed after replacing active checks |
+| Classie | Removed; native `classList` is used |
+| FastClick | Removed |
+| Legacy audiojs runtime and theme particles | Replaced with one core Nucleus particle and shared native media controller |
+| Tiny Scrollbar | Removed in favor of native CSS/scrolling |
+| Chartist/legacy chart code | Retained only as Xenon-owned vendored specialist chart code |
+| particles.js copies | Replaced by one shared native canvas controller and thin theme initializer |
 | Generated/minified libraries | Never hand-rewrite; update source dependency or remove consumer |
 
 ## Compatibility and behavior rules

@@ -1,9 +1,9 @@
 import __module0 from '../ui/drag.events.js';
 
 "use strict";
-var DragEvents = __module0;
+let DragEvents = __module0;
 
-var asElement = function(element) {
+let asElement = function(element) {
         return element && element.nodeType ? element : element && element[0];
     },
     asElements = function(elements) {
@@ -17,7 +17,7 @@ var asElement = function(element) {
             : [];
     },
     previousSiblings = function(element) {
-        var siblings = [], previous = element ? element.previousElementSibling : null;
+        let siblings = [], previous = element ? element.previousElementSibling : null;
         while (previous) {
             siblings.unshift(previous);
             previous = previous.previousElementSibling;
@@ -25,14 +25,14 @@ var asElement = function(element) {
         return siblings;
     };
 
-var clamp = function(value, min, max) {
+let clamp = function(value, min, max) {
         return Math.min(max, Math.max(min, value));
     },
     mapRange = function(value, min1, max1, min2, max2) {
         return min2 + ((value - min1) / (max1 - min1)) * (max2 - min2);
     },
     precision = function(value, decimals) {
-        var multiplier = Math.pow(10, decimals);
+        let multiplier = Math.pow(10, decimals);
         return Math.round(value * multiplier) / multiplier;
     };
 
@@ -60,7 +60,7 @@ class Resizer {
 
     getBlock(element) {
         element = typeof element === 'string' ? element : asElement(element);
-        var id = typeof element === 'string' ? element : (element && element.dataset.lmId) || '';
+        let id = typeof element === 'string' ? element : (element && element.dataset.lmId) || '';
         return this.map ? this.map[id] : undefined;
     }
 
@@ -70,7 +70,7 @@ class Resizer {
 
     getSize(element) {
         element = asElement(element);
-        var parent = element && (element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]')),
+        let parent = element && (element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]')),
             size = parent && parent.querySelector('.percentage input');
 
         return size ? Number(size.value) : 0;
@@ -81,13 +81,13 @@ class Resizer {
         if (!element) { return; }
         animated = typeof animated === 'undefined' ? false : animated;
 
-        var parent = element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]'),
+        let parent = element.matches('[data-mm-id]') ? element : element.closest('[data-mm-id]'),
             pc = parent && parent.querySelector('.percentage input'),
             flex = '0 1 ' + size + '%';
 
         if (!parent) { return; }
         if (animated && typeof parent.animate === 'function') {
-            var animation = parent.animate([
+            let animation = parent.animate([
                 {flex: getComputedStyle(parent).flex},
                 {flex: flex}
             ], {duration: 250, easing: 'ease'});
@@ -110,10 +110,10 @@ class Resizer {
         this.element = asElement(element);
         if (!this.element) { return false; }
 
-        var parent = this.element.closest('.submenu-selector');
+        let parent = this.element.closest('.submenu-selector');
         if (!parent) { return false; }
 
-        var current = this.element.closest('[data-mm-id]'),
+        let current = this.element.closest('[data-mm-id]'),
             next = current && current.nextElementSibling,
             nextColumn = next && next.querySelector(':scope > .submenu-column');
         if (!current || !nextColumn) { return false; }
@@ -148,7 +148,7 @@ class Resizer {
             y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
 
-        var clientRect = this.element.getBoundingClientRect(),
+        let clientRect = this.element.getBoundingClientRect(),
             parentRect = this.element.parentElement.getBoundingClientRect();
 
         this.origin.offset = {
@@ -159,7 +159,7 @@ class Resizer {
             down: offset || 0
         };
 
-        var blocks = directChildren(parent, '[data-mm-id]');
+        let blocks = directChildren(parent, '[data-mm-id]');
         if (blocks.length) {
             this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
             this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
@@ -178,12 +178,12 @@ class Resizer {
     move(event) {
         if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
-        var point = event.touches && event.touches.length ? event.touches[0] : event,
+        let point = event.touches && event.touches.length ? event.touches[0] : event,
             clientX = point.clientX || 0,
             clientY = point.clientY || 0,
             parentRect = this.origin.offset.parentRect;
 
-        var deltaX = (this.lastX || clientX) - clientX,
+        let deltaX = (this.lastX || clientX) - clientX,
             deltaY = (this.lastY || clientY) - clientY;
 
         this.direction =
@@ -191,7 +191,7 @@ class Resizer {
             Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && 'right' ||
             Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && 'up' ||
                                                                  'down';
-        var size,
+        let size,
             diff = 100 - this.siblings.occupied,
             value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length),
             normalized = clamp(value, parentRect.left, parentRect.right);
@@ -206,10 +206,10 @@ class Resizer {
         this.setSize(this.siblings.next, diff);
 
         // Hack to handle cases where size is not an integer
-        var siblings = this.siblings.elements,
+        let siblings = this.siblings.elements,
             amount = siblings ? siblings.length + 1 : 1;
         if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
-            var total = 0, blocks;
+            let total = 0, blocks;
 
             blocks = asElements(siblings).concat(this.element.closest('[data-mm-id]'));
             blocks.forEach(function(block, index){
@@ -238,7 +238,7 @@ class Resizer {
 
         this.detachDocumentEvents();
 
-        var parent = this.element && this.element.closest('.submenu-selector');
+        let parent = this.element && this.element.closest('.submenu-selector');
         if (parent) { parent.classList.remove('moving'); }
 
         this.menumanager.emit('dragEnd', this.menumanager.map, 'resize');
@@ -255,10 +255,10 @@ class Resizer {
     }
 
     updateItemSizes(elements) {
-        var parent = this.element ? this.element.closest('.submenu-selector') : null;
+        let parent = this.element ? this.element.closest('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
-        var blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'),
+        let blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'),
             sizes = [],
             active = document.querySelector('.menu-selector .active'),
             path = active ? active.dataset.mmId : null;
@@ -278,13 +278,13 @@ class Resizer {
     }
 
     updateMaxValues(elements) {
-        var parent = this.element ? this.element.closest('.submenu-selector') : null;
+        let parent = this.element ? this.element.closest('.submenu-selector') : null;
         if (!parent && !elements) { return false; }
 
-        var blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'), sizes, inputs;
+        let blocks = elements ? asElements(elements) : directChildren(parent, '[data-mm-id]'), sizes, inputs;
 
         blocks.forEach(function(block){
-            var sibling = block.nextElementSibling || block.previousElementSibling;
+            let sibling = block.nextElementSibling || block.previousElementSibling;
             if (!sibling) { return; }
 
             inputs = {
@@ -306,7 +306,7 @@ class Resizer {
 
     evenResize(elements, animated) {
         elements = asElements(elements);
-        var total = elements.length,
+        let total = elements.length,
             size = precision(100 / total, 4);
 
         elements.forEach(function(element) {

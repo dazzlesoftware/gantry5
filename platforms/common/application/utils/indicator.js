@@ -1,10 +1,10 @@
 'use strict';
 
-var asElement = function(element) {
+let asElement = function(element) {
     return element && element.nodeType ? element : element && element[0];
 };
 
-var show = function(element, className, keepIcon) {
+let show = function(element, className, keepIcon) {
     element = asElement(element);
     if (!element) { return; }
 
@@ -13,12 +13,12 @@ var show = function(element, className, keepIcon) {
         className = null;
     }
 
-    var icon = keepIcon ? null : element.querySelector('i');
+    let icon = keepIcon ? null : element.querySelector('i');
     element.gHadIcon = Boolean(icon);
 
     if (!icon) {
         if (!element.querySelector('span') && element.children.length === 0) {
-            var label = document.createElement('span');
+            let label = document.createElement('span');
             label.textContent = element.textContent;
             element.textContent = '';
             element.appendChild(label);
@@ -31,11 +31,11 @@ var show = function(element, className, keepIcon) {
     icon.setAttribute('class', className || 'fa fa-fw fa-spin-fast fa-spinner');
 };
 
-var hide = function(element) {
+let hide = function(element) {
     element = asElement(element);
     if (!element || !element.gIndicator) { return; }
 
-    var icon = element.querySelector('i');
+    let icon = element.querySelector('i');
     if (!icon) { return; }
 
     if (!element.gHadIcon) { icon.remove(); }

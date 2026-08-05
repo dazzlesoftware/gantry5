@@ -3,28 +3,28 @@
 
     function directMatches(root, selector) {
         if (!selector) return Array.from(root.children);
-        var split = selector.split('>');
-        var parent = split.length > 1 ? root.querySelector(split[0].trim()) : root;
-        var childSelector = split.length > 1 ? split.slice(1).join('>').trim() : selector;
+        let split = selector.split('>');
+        let parent = split.length > 1 ? root.querySelector(split[0].trim()) : root;
+        let childSelector = split.length > 1 ? split.slice(1).join('>').trim() : selector;
         return parent ? Array.from(parent.children).filter(function (child) { return child.matches(childSelector); }) : [];
     }
 
     function create(root, options) {
         if (!root || root.dataset.nativeCarouselReady === 'true') return null;
         options = options || {};
-        var slides = directMatches(root, options.selector);
+        let slides = directMatches(root, options.selector);
         if (!slides.length) return null;
 
         root.dataset.nativeCarouselReady = 'true';
         root.classList.add('native-carousel');
-        var index = 0;
-        var timer = null;
-        var rtl = options.rtl === true || document.documentElement.dir === 'rtl';
+        let index = 0;
+        let timer = null;
+        let rtl = options.rtl === true || document.documentElement.dir === 'rtl';
 
         function show(next, notify) {
             index = (next + slides.length) % slides.length;
             slides.forEach(function (slide, slideIndex) {
-                var active = slideIndex === index;
+                let active = slideIndex === index;
                 slide.hidden = !active;
                 slide.classList.toggle('flex-active-slide', active);
                 slide.setAttribute('aria-hidden', active ? 'false' : 'true');
@@ -33,7 +33,7 @@
         }
 
         function control(label, className, delta, html) {
-            var button = document.createElement('button');
+            let button = document.createElement('button');
             button.type = 'button';
             button.className = className;
             button.setAttribute('aria-label', label);
@@ -43,7 +43,7 @@
         }
 
         if (options.directionNav !== false && slides.length > 1) {
-            var nav = document.createElement('div');
+            let nav = document.createElement('div');
             nav.className = 'flex-direction-nav';
             nav.append(
                 control('Previous slide', 'flex-prev', -1, options.prevText),
@@ -53,10 +53,10 @@
         }
 
         if (options.controlNav !== false && slides.length > 1) {
-            var dots = document.createElement('ol');
+            let dots = document.createElement('ol');
             dots.className = 'flex-control-nav';
             slides.forEach(function (_, slideIndex) {
-                var dot = control('Go to slide ' + (slideIndex + 1), slideIndex === 0 ? 'flex-active' : '', 0, String(slideIndex + 1));
+                let dot = control('Go to slide ' + (slideIndex + 1), slideIndex === 0 ? 'flex-active' : '', 0, String(slideIndex + 1));
                 dot.addEventListener('click', function () { show(slideIndex); });
                 dots.appendChild(dot);
             });
@@ -70,7 +70,7 @@
             slides.forEach(function (slide, slideIndex) {
                 slide.hidden = false;
                 slide.addEventListener('click', function () {
-                    var target = document.querySelector(options.asNavFor);
+                    let target = document.querySelector(options.asNavFor);
                     if (target) target.dispatchEvent(new CustomEvent('genesis:carousel-select', { detail: { index: slideIndex } }));
                 });
             });
@@ -79,13 +79,13 @@
 
         if (options.sync) {
             root.addEventListener('genesis:carousel-change', function (event) {
-                var target = document.querySelector(options.sync);
+                let target = document.querySelector(options.sync);
                 if (target && event.detail.source) target.dispatchEvent(new CustomEvent('genesis:carousel-select', { detail: event.detail }));
             });
         }
 
         if (options.slideshow !== false && slides.length > 1) {
-            var delay = Number(options.slideshowSpeed) || 5000;
+            let delay = Number(options.slideshowSpeed) || 5000;
             function start() { timer = window.setInterval(function () { show(index + 1); }, delay); }
             function stop() { if (timer) window.clearInterval(timer); timer = null; }
             start();

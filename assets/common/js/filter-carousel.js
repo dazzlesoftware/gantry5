@@ -2,7 +2,7 @@
     'use strict';
 
     document.querySelectorAll('[data-toprated-id]').forEach(function (container) {
-        var slider = container.querySelector('.g-toprated-slider');
+        let slider = container.querySelector('.g-toprated-slider');
         if (!slider) return;
 
         slider.style.display = 'flex';
@@ -14,10 +14,10 @@
             item.style.scrollSnapAlign = 'start';
         });
 
-        var nav = container.querySelector('.g-toprated-nav');
+        let nav = container.querySelector('.g-toprated-nav');
         if (nav && container.dataset.topratedNav === 'true') {
             ['Previous', 'Next'].forEach(function (label, index) {
-                var button = document.createElement('button');
+                let button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'g-toprated-' + label.toLowerCase();
                 button.setAttribute('aria-label', label);
@@ -31,7 +31,7 @@
 
         container.querySelectorAll('.g-toprated-filtering [data-toprated-group]').forEach(function (filter) {
             filter.addEventListener('click', function () {
-                var group = filter.dataset.topratedGroup;
+                let group = filter.dataset.topratedGroup;
                 container.querySelectorAll('.g-toprated-filtering [data-toprated-group]').forEach(function (item) {
                     item.classList.toggle('active', item === filter);
                 });

@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var container = document.querySelector('.slidingmenu');
-    var content = document.querySelector('#g-page-surround');
-    var openButton = document.getElementById('open-button');
-    var closeButton = document.getElementById('close-button');
+    let container = document.querySelector('.slidingmenu');
+    let content = document.querySelector('#g-page-surround');
+    let openButton = document.getElementById('open-button');
+    let closeButton = document.getElementById('close-button');
     if (!container || !content || !openButton) return;
 
     document.body.prepend(container);
-    var overlay = container.querySelector('.slidingmenu-overlay');
+    let overlay = container.querySelector('.slidingmenu-overlay');
     if (overlay) content.prepend(overlay);
 
     function toggleMenu(event) {

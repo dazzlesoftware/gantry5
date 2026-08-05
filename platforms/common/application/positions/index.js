@@ -11,7 +11,7 @@ import __module9 from './cards.js';
 
 "use strict";
 
-var dom = __module0,
+let dom = __module0,
     modal = __module1.modal,
     toastr = __module1.toastr,
     request = __module2,
@@ -24,16 +24,16 @@ var dom = __module0,
     translate = __module8,
     Cards = __module9;
 
-var trim = function(value) { return value == null ? '' : String(value).trim(); };
-var asElement = function(element) { return element && element.nodeType ? element : element && element[0]; };
-var elementFromHTML = function(html) {
-    var template = document.createElement('template');
+let trim = function(value) { return value == null ? '' : String(value).trim(); };
+let asElement = function(element) { return element && element.nodeType ? element : element && element[0]; };
+let elementFromHTML = function(html) {
+    let template = document.createElement('template');
     template.innerHTML = String(html || '').trim();
     return template.content.firstElementChild;
 };
 
-var showError = function(error, response) {
-    var result = response && response.body;
+let showError = function(error, response) {
+    let result = response && response.body;
     modal.open({
         content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
         afterOpen: function(container) {
@@ -44,17 +44,17 @@ var showError = function(error, response) {
 };
 
 dom.ready(function() {
-    var body = document.body,
+    let body = document.body,
         warningURL = parseAjaxURI(getAjaxURL('confirmdeletion') + getAjaxSuffix());
 
     Cards.init();
 
-    var attachEditableValidation = function(container) {
-        var editable = container.querySelector('[data-title-editable]');
+    let attachEditableValidation = function(container) {
+        let editable = container.querySelector('[data-title-editable]');
         if (!editable || editable.gPositionModalTitleAttached) { return; }
         editable.gPositionModalTitleAttached = true;
         editable.addEventListener('genesis:title-edit-end', function(event) {
-            var title = trim(event.detail && event.detail.title);
+            let title = trim(event.detail && event.detail.title);
             if (!title) {
                 title = trim(event.detail && event.detail.original) || 'Title';
                 editable.textContent = title;
@@ -63,17 +63,17 @@ dom.ready(function() {
         });
     };
 
-    var attachEditables = function(editables) {
+    let attachEditables = function(editables) {
         editables.forEach(function(editable) {
             if (editable.confWasAttached) { return; }
             editable.confWasAttached = true;
             editable.addEventListener('genesis:title-edit-start', function() { editable.style.textOverflow = 'inherit'; });
             editable.addEventListener('genesis:title-edit-end', function(event) {
-                var detail = event.detail || {};
+                let detail = event.detail || {};
                 editable.style.textOverflow = 'ellipsis';
                 if (detail.canceled || detail.title === detail.original) { return; }
 
-                var href = editable.getAttribute('data-g-config-href'),
+                let href = editable.getAttribute('data-g-config-href'),
                     type = editable.getAttribute('data-title-editable-type'),
                     method = (editable.getAttribute('data-g-config-method') || 'post').toLowerCase(),
                     parent = editable.closest('[id]'),
@@ -87,13 +87,13 @@ dom.ready(function() {
                 if (editButton) { editButton.classList.add('disabled'); }
 
                 request(method, parseAjaxURI(href + getAjaxSuffix()), data, function(error, response) {
-                    var result = response && response.body;
+                    let result = response && response.body;
                     if (!result || !result.success) {
                         showError(error, response);
                         editable.setAttribute('data-title-editable', detail.original);
                         editable.textContent = detail.original;
                     } else {
-                        var replacement = elementFromHTML(result.position),
+                        let replacement = elementFromHTML(result.position),
                             replacementPosition = replacement && (replacement.matches('[id]') ? replacement : replacement.querySelector('[id]'));
                         if (replacementPosition) {
                             parent.innerHTML = replacementPosition.innerHTML;
@@ -109,7 +109,7 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '#positions [data-g-config], [data-g-create="position"]', function(event, element) {
         event.preventDefault();
-        var mode = element.getAttribute('data-g-config'),
+        let mode = element.getAttribute('data-g-config'),
             href = element.getAttribute('data-g-config-href'),
             encoded = window.btoa(href),
             method = (element.getAttribute('data-g-config-method') || 'post').toLowerCase();
@@ -119,7 +119,7 @@ dom.ready(function() {
                 url: warningURL,
                 data: { page_type: 'POSITION' },
                 callback: function(response, content) {
-                    var container = asElement(content),
+                    let container = asElement(content),
                         confirm = container && container.querySelector('[data-g-delete-confirm]'),
                         cancel = container && container.querySelector('[data-g-delete-cancel]');
                     if (!confirm) { return; }
@@ -151,11 +151,11 @@ dom.ready(function() {
         indicator.hide(element);
         indicator.show(element);
         request(method, parseAjaxURI(href + getAjaxSuffix()), {}, function(error, response) {
-            var result = response && response.body;
+            let result = response && response.body;
             if (!result || !result.success) {
                 showError(error, response);
             } else {
-                var reload = Array.from(document.querySelectorAll('[href]')).find(function(link) {
+                let reload = Array.from(document.querySelectorAll('[href]')).find(function(link) {
                     return link.getAttribute('href') === getAjaxURL('positions');
                 });
                 if (reload) { reload.click(); }
@@ -176,7 +176,7 @@ dom.ready(function() {
             remote: parseAjaxURI(element.href + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
-                var container = modal.element(content.elements.content),
+                let container = modal.element(content.elements.content),
                     search = container.querySelector('.search input'),
                     blocks = container.querySelectorAll('[data-mm-type]'),
                     filters = container.querySelectorAll('[data-mm-filter]'),
@@ -187,11 +187,11 @@ dom.ready(function() {
 
                 if (search && filters.length && blocks.length) {
                     search.addEventListener('input', function() {
-                        var value = search.value.toLowerCase();
+                        let value = search.value.toLowerCase();
                         blocks.forEach(function(block) { block.classList.toggle('hidden', Boolean(value)); });
                         if (!value) { return; }
                         filters.forEach(function(filter) {
-                            var text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
+                            let text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
                                 match = text.startsWith(value) || text.includes(' ' + value),
                                 block = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
                             if (match && block) { block.classList.remove('hidden'); }
@@ -205,11 +205,11 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '#positions .item-settings', function(event, element) {
         event.preventDefault();
-        var item = element.closest('[data-pm-data]'),
+        let item = element.closest('[data-pm-data]'),
             positionElement = element.closest('[data-genesis-position]');
         if (!item || !positionElement) { return; }
 
-        var position = JSON.parse(positionElement.getAttribute('data-genesis-position'));
+        let position = JSON.parse(positionElement.getAttribute('data-genesis-position'));
         modal.open({
             content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
@@ -218,7 +218,7 @@ dom.ready(function() {
             remote: parseAjaxURI(getAjaxURL('positions/edit/' + item.getAttribute('data-pm-blocktype')) + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
-                var container = modal.element(content.elements.content),
+                let container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
                 attachEditableValidation(container);
@@ -232,7 +232,7 @@ dom.ready(function() {
                         indicator.show(target);
 
                         form = container.querySelector('form');
-                        var post = Submit(form.elements, container);
+                        let post = Submit(form.elements, container);
                         if (post.invalid.length) {
                             target.disabled = false;
                             indicator.hide(target);
@@ -242,18 +242,18 @@ dom.ready(function() {
                         }
 
                         request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&'), function(error, resultResponse) {
-                            var result = resultResponse && resultResponse.body;
+                            let result = resultResponse && resultResponse.body;
                             if (!result || !result.success) {
                                 showError(error, resultResponse);
                             } else {
                                 item.setAttribute('data-pm-data', JSON.stringify(result.item));
-                                var enabled = result.item.enabled || result.item.options.attributes.enabled,
+                                let enabled = result.item.enabled || result.item.options.attributes.enabled,
                                     replacement = elementFromHTML(result.html);
                                 if (replacement) { item.innerHTML = replacement.innerHTML; }
                                 item.classList.toggle('g-menu-item-disabled', String(enabled) === '0');
 
                                 if (target.hasAttribute('data-apply-and-save')) {
-                                    var save = document.querySelector('.button-save');
+                                    let save = document.querySelector('.button-save');
                                     if (save) { save.click(); }
                                 }
                                 Cards.serialize(positionElement);
@@ -271,7 +271,7 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'change', '[data-genesis-positions-assignments] input[type="hidden"]', function(event, element) {
-        var card = element.closest('.card'),
+        let card = element.closest('.card'),
             wrapper = card && card.querySelector('.settings-param-wrapper');
         if (!wrapper) { return; }
         wrapper.classList.toggle('hide', element.value !== '1');

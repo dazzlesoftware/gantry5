@@ -1,6 +1,6 @@
 'use strict';
 
-var deepEquals = function(first, second) {
+let deepEquals = function(first, second) {
     if (Object.is(first, second)) { return true; }
     if (typeof first !== typeof second || first === null || second === null) { return false; }
     if (typeof first !== 'object') { return false; }
@@ -13,7 +13,7 @@ var deepEquals = function(first, second) {
         });
     }
 
-    var firstKeys = Object.keys(first),
+    let firstKeys = Object.keys(first),
         secondKeys = Object.keys(second);
 
     if (firstKeys.length !== secondKeys.length) { return false; }

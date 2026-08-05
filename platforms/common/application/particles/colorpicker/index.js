@@ -4,21 +4,19 @@ import __module2 from '../../utils/create-element.js';
 
 "use strict";
 
-var dom          = __module0,
+let dom          = __module0,
     ready      = __module1.ready,
     zen        = __module2;
 
-var clamp = function(value, min, max) {
+let clamp = function(value, min, max) {
     return Math.min(Math.max(value, min), max);
 };
 
-var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-
-var supportsPointerEvents = typeof window.PointerEvent === 'function',
+let supportsPointerEvents = typeof window.PointerEvent === 'function',
     MOUSEDOWN = supportsPointerEvents ? ['pointerdown'] : ['mousedown', 'touchstart'],
     MOUSEMOVE = supportsPointerEvents ? ['pointermove'] : ['mousemove', 'touchmove'],
     MOUSEUP   = supportsPointerEvents ? ['pointerup', 'pointercancel'] : ['mouseup', 'touchend', 'touchcancel'],
-    FOCUSIN   = isFirefox ? 'focus' : 'focusin';
+    FOCUSIN   = 'focusin';
 
 class ColorPicker {
     constructor(options) {
@@ -37,14 +35,14 @@ class ColorPicker {
     }
 
     on(name, callback) {
-        var listeners = this._events.get(name) || [];
+        let listeners = this._events.get(name) || [];
         listeners.push(callback);
         this._events.set(name, listeners);
         return this;
     }
 
     emit(name) {
-        var args = Array.prototype.slice.call(arguments, 1);
+        let args = Array.prototype.slice.call(arguments, 1);
         (this._events.get(name) || []).slice().forEach(function(callback) {
             callback.apply(this, args);
         }, this);
@@ -52,7 +50,7 @@ class ColorPicker {
     }
 
     attach() {
-        var body = dom('body');
+        let body = dom('body');
 
         MOUSEDOWN.forEach(function(mousedown) {
             body.delegate(mousedown, '[data-genesis-container] .g-colorpicker i', this.bound('iconClick'));
@@ -90,7 +88,7 @@ class ColorPicker {
     }
 
     show(event, element) {
-        var body = dom('body');
+        let body = dom('body');
 
         if (!this.built) {
             this.build();
@@ -116,7 +114,7 @@ class ColorPicker {
     }
 
     hide() {
-        var body = dom('body');
+        let body = dom('body');
 
         if (!this.built) { return; }
         this.wrapper.removeClass('cp-visible');
@@ -139,7 +137,7 @@ class ColorPicker {
     iconClick(event, element) {
         event.preventDefault();
 
-        var input = dom(element).sibling('input');
+        let input = dom(element).sibling('input');
         input[0].focus();
 
         this.show(event, input);
@@ -153,7 +151,7 @@ class ColorPicker {
     }
 
     bodyClick(event) {
-        var target = event.target instanceof Element ? event.target : null;
+        let target = event.target instanceof Element ? event.target : null;
 
         if (!target || (!target.closest('.cp-wrapper') && !target.closest('.g-colorpicker'))) {
             this.hide();
@@ -172,7 +170,7 @@ class ColorPicker {
     }
 
     move(target, event) {
-        var input = this.element,
+        let input = this.element,
             picker = target.hasClass('cp-grid') ? this.gridPicker
                 : (target.hasClass('cp-opacity-slider') ? this.opacityPicker : this.sliderPicker),
             clientRect = target[0].getBoundingClientRect(),
@@ -243,7 +241,7 @@ class ColorPicker {
 
         zen('div').bottom(this.gridPicker);
 
-        var tabs = zen('div.cp-tabs').bottom(this.wrapper);
+        let tabs = zen('div.cp-tabs').bottom(this.wrapper);
 
         this.tabs = {
             hue: zen('div.cp-tab-hue.active').text('HUE').bottom(tabs),
@@ -257,13 +255,13 @@ class ColorPicker {
             tabs.delegate(mousedown, '> div', function(event, element) {
                 if (element == this.tabs.transparent) {
                     this.opacity = 0;
-                    var sliderHeight = this.opacitySlider.position().height;
+                    let sliderHeight = this.opacitySlider.position().height;
                     this.opacityPicker.style({ 'top': clamp(sliderHeight - (sliderHeight * this.opacity), 0, sliderHeight) });
                     this.move(this.opacitySlider, { manualOpacity: true });
                     return;
                 }
 
-                var active = tabs.find('.active'),
+                let active = tabs.find('.active'),
                     mode = active.attribute('class').replace(/\s|active|cp-tab-/g, ''),
                     newMode = element.attribute('class').replace(/\s|active|cp-tab-/g, '');
 
@@ -284,7 +282,7 @@ class ColorPicker {
 
     updateFromInput(dontFireEvent, element) {
         element = dom(element) || this.element;
-        var value = element.value(),
+        let value = element.value(),
             opacity = value.replace(/\s/g, '').match(/^rgba?\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},(.+)\)/),
             hex, hsb;
 
@@ -297,11 +295,11 @@ class ColorPicker {
         if (this.built) {
             // opacity
             this.opacity = Math.max(opacity, 0);
-            var sliderHeight = this.opacitySlider.position().height;
+            let sliderHeight = this.opacitySlider.position().height;
             this.opacityPicker.style({ 'top': clamp(sliderHeight - (sliderHeight * this.opacity), 0, sliderHeight) });
 
             // bg color
-            var gridHeight = this.grid.position().height,
+            let gridHeight = this.grid.position().height,
                 gridWidth = this.grid.position().width,
                 r, phi, x, y;
 
@@ -415,9 +413,9 @@ class ColorPicker {
     }
 
     updateFromPicker(input, target) {
-        var getCoords = function(picker, container) {
+        let getCoords = function(picker, container) {
 
-            var left, top;
+            let left, top;
             if (!picker.length || !container) return null;
             left = picker[0].getBoundingClientRect().left;
             top = picker[0].getBoundingClientRect().top;
@@ -429,7 +427,7 @@ class ColorPicker {
 
         };
 
-        var hex, hue, saturation, brightness, x, y, r, phi,
+        let hex, hue, saturation, brightness, x, y, r, phi,
 
             // Panel objects
             grid = this.wrapper.find('.cp-grid'),
@@ -452,7 +450,7 @@ class ColorPicker {
             sliderHeight = slider[0].getBoundingClientRect().height,
             opacitySliderHeight = opacitySlider[0].getBoundingClientRect().height;
 
-        var value = this.element.value();
+        let value = this.element.value();
         value = rgbstr2hex(value) || value;
         if (!(hex = parseHex(value))) { hex = '#ffffff'; }
 
@@ -574,7 +572,7 @@ class ColorPicker {
     }
 
     reposition() {
-        var offset = this.element[0].getBoundingClientRect(),
+        let offset = this.element[0].getBoundingClientRect(),
             ct = dom('[data-genesis-container]')[0].getBoundingClientRect();
         this.wrapper.style({
             top: offset.top + offset.height - ct.top,
@@ -584,13 +582,13 @@ class ColorPicker {
 
     getValue(hex) {
         if (this.opacity == 1) { return hex; }
-        var rgb = hex2rgb(hex);
+        let rgb = hex2rgb(hex);
         return 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + this.opacity + ')';
     }
 }
 
 // Parses a string and returns a valid hex string when possible
-var parseHex = function(string) {
+let parseHex = function(string) {
     string = string.replace(/[^A-F0-9]/ig, '');
     if (string.length !== 3 && string.length !== 6) return '';
     if (string.length === 3) {
@@ -601,17 +599,17 @@ var parseHex = function(string) {
 };
 
 // Converts an HSB object to an RGB object
-var hsb2rgb = function(hsb) {
-    var rgb = {};
-    var h = Math.round(hsb.h);
-    var s = Math.round(hsb.s * 255 / 100);
-    var v = Math.round(hsb.b * 255 / 100);
+let hsb2rgb = function(hsb) {
+    let rgb = {};
+    let h = Math.round(hsb.h);
+    let s = Math.round(hsb.s * 255 / 100);
+    let v = Math.round(hsb.b * 255 / 100);
     if (s === 0) {
         rgb.r = rgb.g = rgb.b = v;
     } else {
-        var t1 = v;
-        var t2 = (255 - s) * v / 255;
-        var t3 = (t1 - t2) * (h % 60) / 60;
+        let t1 = v;
+        let t2 = (255 - s) * v / 255;
+        let t3 = (t1 - t2) * (h % 60) / 60;
         if (h === 360) h = 0;
         if (h < 60) {
             rgb.r = t1;
@@ -657,8 +655,8 @@ var hsb2rgb = function(hsb) {
 };
 
 // Converts an RGB object to a hex string
-var rgb2hex = function(rgb) {
-    var hex = [
+let rgb2hex = function(rgb) {
+    let hex = [
         rgb.r.toString(16),
         rgb.g.toString(16),
         rgb.b.toString(16)
@@ -671,7 +669,7 @@ var rgb2hex = function(rgb) {
     return '#' + hex.join('');
 };
 
-var rgbstr2hex = function(rgb) {
+let rgbstr2hex = function(rgb) {
     rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
     return (rgb && rgb.length === 4) ? "#" +
     ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
@@ -680,27 +678,27 @@ var rgbstr2hex = function(rgb) {
 };
 
 // Converts an HSB object to a hex string
-var hsb2hex = function(hsb) {
+let hsb2hex = function(hsb) {
     return rgb2hex(hsb2rgb(hsb));
 };
 
 // Converts a hex string to an HSB object
-var hex2hsb = function(hex) {
-    var hsb = rgb2hsb(hex2rgb(hex));
+let hex2hsb = function(hex) {
+    let hsb = rgb2hsb(hex2rgb(hex));
     if (hsb.s === 0) hsb.h = 360;
     return hsb;
 };
 
 // Converts an RGB object to an HSB object
-var rgb2hsb = function(rgb) {
-    var hsb = {
+let rgb2hsb = function(rgb) {
+    let hsb = {
         h: 0,
         s: 0,
         b: 0
     };
-    var min = Math.min(rgb.r, rgb.g, rgb.b);
-    var max = Math.max(rgb.r, rgb.g, rgb.b);
-    var delta = max - min;
+    let min = Math.min(rgb.r, rgb.g, rgb.b);
+    let max = Math.max(rgb.r, rgb.g, rgb.b);
+    let delta = max - min;
     hsb.b = max;
     hsb.s = max !== 0 ? 255 * delta / max : 0;
     if (hsb.s !== 0) {
@@ -724,7 +722,7 @@ var rgb2hsb = function(rgb) {
 };
 
 // Converts a hex string to an RGB object
-var hex2rgb = function(hex) {
+let hex2rgb = function(hex) {
     hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
     return {
         /* jshint ignore:start */
@@ -737,21 +735,21 @@ var hex2rgb = function(hex) {
 
 
 ready(function() {
-    var x = new ColorPicker(), body = dom('body');
+    let x = new ColorPicker(), body = dom('body');
     x.on('change', function(element, hex, opacity) {
         clearTimeout(this.timer);
-        var rgb = hex2rgb(hex),
+        let rgb = hex2rgb(hex),
             yiq = (((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000) >= 128 ? 'dark' : 'light',
             check = yiq == 'dark' || (!opacity || opacity < 0.35);
 
         if (opacity < 1) {
-            var str = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + opacity + ')';
+            let str = 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', ' + opacity + ')';
             element.style({ backgroundColor: str });
         } else {
             element.style({ backgroundColor: hex });
         }
 
-        var colorpicker = element[0] && element[0].closest('.g-colorpicker');
+        let colorpicker = element[0] && element[0].closest('.g-colorpicker');
         if (colorpicker) {
             dom(colorpicker)[!check ? 'addClass' : 'removeClass']('light-text');
         }

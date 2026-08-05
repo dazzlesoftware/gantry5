@@ -6,20 +6,20 @@ import __module4 from '../../utils/translate.js';
 
 "use strict";
 
-var Base               = __module0,
+let Base               = __module0,
     Grid               = __module1,
     getAjaxURL         = __module2.config,
     getOutlineNameById = __module3.getOutlineNameById,
     translate          = __module4;
 
-var forOwn = function(object, callback) {
+let forOwn = function(object, callback) {
     Object.keys(object || {}).forEach(function(key) {
         callback(object[key], key);
     });
 };
 
-var elementFromHTML = function(html) {
-    var template = document.createElement('template');
+let elementFromHTML = function(html) {
+    let template = document.createElement('template');
     template.innerHTML = html.trim();
     return template.content.firstElementChild;
 };
@@ -33,7 +33,7 @@ class Section extends Base {
     }
 
     layout() {
-        var settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
+        let settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
             inheritanceLabel = '',
             klass = '';
 
@@ -49,20 +49,20 @@ class Section extends Base {
     }
 
     adopt(child) {
-        var node = child && child.nodeType ? child : child && child[0],
+        let node = child && child.nodeType ? child : child && child[0],
             grid = this.block[0].querySelector('.g-grid');
         if (node && grid) { grid.appendChild(node); }
     }
 
     renderInheritanceLabel(outline) {
-        var content = translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>');
+        let content = translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>');
         if (this.block && this.getParent()) { content = ''; }
         return '<div class="g-inherit g-section-inherit"><div class="g-inherit-content" ' + this.addInheritanceTip(true) + '><i class="fa fa-lock" aria-hidden="true"></i> ' + content + '</div></div>';
     }
 
     enableInheritance() {
         if (!this.hasInheritance()) { return; }
-        var block = this.block[0];
+        let block = this.block[0];
         block.className = this.cleanKlass(block.className);
         block.classList.add('g-inheriting');
         if (this.inherit.include.length) {
@@ -70,14 +70,14 @@ class Section extends Base {
         }
 
         if (!block.querySelector(':scope > .g-inherit')) {
-            var header = block.querySelector(':scope > .section-header'),
+            let header = block.querySelector(':scope > .section-header'),
                 inherit = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById(this.inherit.outline)));
             if (header && inherit) { header.after(inherit); }
         }
     }
 
     disableInheritance() {
-        var block = this.block[0],
+        let block = this.block[0],
             inherit = block.querySelector(':scope > .g-inherit.g-section-inherit');
         if (inherit) { inherit.remove(); }
         block.className = this.cleanKlass(block.className);
@@ -85,20 +85,20 @@ class Section extends Base {
     }
 
     refreshInheritance() {
-        var block = this.block[0];
+        let block = this.block[0];
         block.className = this.cleanKlass(block.className);
         if (!this.hasInheritance()) { return; }
 
         this.enableInheritance();
-        var overlay = block.querySelector(':scope > .g-inherit'),
+        let overlay = block.querySelector(':scope > .g-inherit'),
             content = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById(this.inherit.outline)));
         if (overlay && content) { overlay.innerHTML = content.innerHTML; }
     }
 
     addInheritanceTip(html) {
-        var tooltip = this.getInheritanceTip();
+        let tooltip = this.getInheritanceTip();
         if (html) {
-            var tooltipHTML = '';
+            let tooltipHTML = '';
             forOwn(tooltip, function(value, key) { tooltipHTML += 'data-' + key + '="' + value + '" '; });
             tooltip = tooltipHTML;
         }
@@ -106,7 +106,7 @@ class Section extends Base {
     }
 
     getInheritanceTip() {
-        var outline = this.inherit ? this.inherit.outline : null,
+        let outline = this.inherit ? this.inherit.outline : null,
             name = getOutlineNameById(outline),
             include = (this.inherit.include || []).join(', ');
         return {
@@ -123,7 +123,7 @@ class Section extends Base {
     }
 
     hasChanged(state, child) {
-        var block = this.block[0],
+        let block = this.block[0],
             heading = block.querySelector('h4'),
             icon = heading && heading.querySelector(':scope > i:first-child');
         if (icon && child && !child.changeState) { return; }
@@ -137,13 +137,13 @@ class Section extends Base {
     }
 
     onDone() {
-        var block = this.block[0];
+        let block = this.block[0];
         if (!block.querySelector('[data-lm-id]')) {
             this.grid.insert(this.block, 'bottom');
             this.options.builder.add(this.grid);
         }
 
-        var plus = block.querySelector('.fa-plus');
+        let plus = block.querySelector('.fa-plus');
         if (plus && !plus.gSectionAddAttached) {
             plus.gSectionAddAttached = true;
             plus.addEventListener('click', function(event) {
@@ -151,7 +151,7 @@ class Section extends Base {
                 if (block.querySelector('.g-grid:last-child:empty')) { return false; }
 
                 this.grid = new Grid();
-                var container = block.querySelector('[data-lm-blocktype="container"]');
+                let container = block.querySelector('[data-lm-blocktype="container"]');
                 this.grid.insert(container || this.block, 'bottom');
                 this.options.builder.add(this.grid);
             }.bind(this));
@@ -160,19 +160,19 @@ class Section extends Base {
     }
 
     getParent() {
-        var parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
+        let parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
         return parent ? this.options.builder.get(parent.getAttribute('data-lm-id')) : null;
     }
 
     getLimits(parent) {
         if (!parent) { return false; }
-        var parentBlock = parent.block[0],
+        let parentBlock = parent.block[0],
             sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
         if (!sibling) { return [100, 100]; }
 
-        var siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id'));
+        let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id'));
         if (siblingBlock.getType() !== 'block') { return false; }
-        var sizes = {
+        let sizes = {
             current: this.getParent().getSize(),
             sibling: siblingBlock.getSize()
         };

@@ -2,7 +2,7 @@ import __module0 from './particle.js';
 
 "use strict";
 
-var Particle = __module0;
+let Particle = __module0;
 
 class System extends Particle {}
 

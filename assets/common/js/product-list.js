@@ -1,15 +1,15 @@
 (function () {
     'use strict';
     document.querySelectorAll('[data-productlist-id]').forEach(function (root) {
-        var container = root.querySelector('.g-productlist-container');
-        var products = container ? Array.from(container.children) : [];
-        var categories = Array.from(root.querySelectorAll('.g-productlist-categories li[data-filter]'));
-        var layouts = Array.from(root.querySelectorAll('.g-productlist-layouts li[data-layout]'));
+        let container = root.querySelector('.g-productlist-container');
+        let products = container ? Array.from(container.children) : [];
+        let categories = Array.from(root.querySelectorAll('.g-productlist-categories li[data-filter]'));
+        let layouts = Array.from(root.querySelectorAll('.g-productlist-layouts li[data-layout]'));
         if (!container) return;
 
         function filter(value) {
             products.forEach(function (product) {
-                var category = product.dataset.category || product.dataset.filter;
+                let category = product.dataset.category || product.dataset.filter;
                 product.hidden = value !== 'all' && String(category) !== String(value);
             });
         }
@@ -27,7 +27,7 @@
             });
         });
         root.querySelectorAll('[data-modal-id]').forEach(function (link) {
-            var modal = document.getElementById(link.dataset.modalId);
+            let modal = document.getElementById(link.dataset.modalId);
             if (!modal) return;
             link.addEventListener('click', function (event) { event.preventDefault(); modal.classList.add('g-product-modal-open'); modal.style.display = 'block'; });
             modal.querySelectorAll('[class*="close-modal"], .g-product-modal-close').forEach(function (close) {

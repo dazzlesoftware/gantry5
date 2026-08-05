@@ -7,24 +7,24 @@ import __module5 from '../utils/history.js';
 
 "use strict";
 
-var dom = __module0,
+let dom = __module0,
     request = __module1,
     modal = __module2.modal,
     getAjaxSuffix = __module3,
     parseAjaxURI = __module4.parse,
     History = __module5;
 
-var guid = function() {
+let guid = function() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
         return window.crypto.randomUUID();
     }
     return Date.now().toString(36) + Math.random().toString(36).slice(2);
 };
 
-var refreshWordpressLinks = function(title, value) {
+let refreshWordpressLinks = function(title, value) {
     if (window.GENESIS_PLATFORM !== 'wordpress') { return; }
 
-    var replacement = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
+    let replacement = title.replace(/[^a-z\d_-\s]/i, '_').toLowerCase(),
         currentURI = History.getPageUrl(),
         parsedURI = new URL(currentURI, window.location.href),
         currentView = parsedURI.searchParams.get('view') || '';
@@ -39,7 +39,7 @@ var refreshWordpressLinks = function(title, value) {
 };
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
     dom.delegate(body, 'keydown', '.config-select-wrap [data-title-edit]', function(event, editButton) {
         if (event.keyCode !== 32 && event.keyCode !== 13) { return; }
@@ -48,7 +48,7 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'mousedown', '.config-select-wrap [data-title-edit]', function(event, editButton) {
-        var wrapper = editButton.parentElement,
+        let wrapper = editButton.parentElement,
             selectized = wrapper && wrapper.querySelector('.g-selectize-control'),
             select = wrapper && wrapper.querySelector('select'),
             editable = wrapper && wrapper.querySelector('[data-title-editable]');
@@ -58,12 +58,12 @@ dom.ready(function() {
         if (!editable.gConfEditAttached) {
             editable.gConfEditAttached = true;
             editable.addEventListener('genesis:title-edit-end', function(titleEvent) {
-                var detail = titleEvent.detail || {},
+                let detail = titleEvent.detail || {},
                     title = String(detail.title || '').trim(),
                     original = detail.original,
                     canceled = detail.canceled;
 
-                var finish = function() {
+                let finish = function() {
                     selectized.style.display = 'inline-block';
                     editable.style.display = 'none';
                     editable.removeAttribute('contenteditable');
@@ -77,11 +77,11 @@ dom.ready(function() {
                 editButton.classList.add('disabled', 'fa-spin-fast', 'fa-spinner');
                 editButton.classList.remove('fa-pencil');
 
-                var href = editable.getAttribute('data-g-config-href'),
+                let href = editable.getAttribute('data-g-config-href'),
                     value = select.value;
 
                 request('post', parseAjaxURI(href + getAjaxSuffix()), { title: title }, function(error, response) {
-                    var bodyResponse = response && response.body;
+                    let bodyResponse = response && response.body;
                     if (!bodyResponse || !bodyResponse.success) {
                         modal.open({
                             content: bodyResponse ? (bodyResponse.html || bodyResponse.message || bodyResponse) : (error ? error.message : 'Unable to rename outline.'),
@@ -95,7 +95,7 @@ dom.ready(function() {
                         editable.setAttribute('data-title-editable', original);
                         editable.textContent = original;
                     } else {
-                        var selectize = select.selectizeInstance,
+                        let selectize = select.selectizeInstance,
                             data = selectize && selectize.Options[value];
 
                         if (selectize && data) {

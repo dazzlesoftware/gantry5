@@ -7,14 +7,14 @@ import __module4 from '../utils/dom-effects.js';
 "use strict";
 // selectize (v0.12.1) (commit: 4dae761)
 
-var EventEmitter = __module0,
+let EventEmitter = __module0,
     ready      = __module1.ready,
     zen        = __module2,
     NativeSearchIndex = __module3,
     dom          = __module4;
 
-var bind = function(fn, context) {
-        var args = Array.prototype.slice.call(arguments, 2);
+let bind = function(fn, context) {
+        let args = Array.prototype.slice.call(arguments, 2);
         return fn.bind.apply(fn, [context].concat(args));
     },
     forEach = function(collection, callback, context) {
@@ -29,9 +29,9 @@ var bind = function(fn, context) {
         return collection && collection.length ? collection[collection.length - 1] : undefined;
     },
     debounce = function(callback, delay) {
-        var timer;
+        let timer;
         return function() {
-            var context = this,
+            let context = this,
                 args = arguments;
             clearTimeout(timer);
             timer = setTimeout(function() {
@@ -45,7 +45,7 @@ var bind = function(fn, context) {
     },
     isPlainObject = function(value) {
         if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
-        var prototype = Object.getPrototypeOf(value);
+        let prototype = Object.getPrototypeOf(value);
         return prototype === null || prototype === Object.prototype;
     },
     cloneValue = function(value, seen) {
@@ -55,7 +55,7 @@ var bind = function(fn, context) {
         if (!Array.isArray(value) && !isPlainObject(value)) { return value; }
         if (seen.has(value)) { return seen.get(value); }
 
-        var clone = Array.isArray(value) ? [] : {};
+        let clone = Array.isArray(value) ? [] : {};
         seen.set(value, clone);
         Object.keys(value).forEach(function(key) {
             clone[key] = cloneValue(value[key], seen);
@@ -68,7 +68,7 @@ var bind = function(fn, context) {
         seen.set(source, target);
 
         Object.keys(source).forEach(function(key) {
-            var value = source[key];
+            let value = source[key];
             if (isPlainObject(value)) {
                 if (seen.has(value)) {
                     target[key] = seen.get(value);
@@ -82,7 +82,7 @@ var bind = function(fn, context) {
         return target;
     },
     merge = function() {
-        var sources = Array.prototype.slice.call(arguments),
+        let sources = Array.prototype.slice.call(arguments),
             target = {},
             seen = new WeakMap();
 
@@ -115,9 +115,7 @@ var bind = function(fn, context) {
             .toLowerCase();
     };
 
-var IS_MAC                = /Mac/.test(navigator.userAgent),
-    IS_IE                 = /MSIE 9/i.test(navigator.userAgent) || /MSIE 10/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent),
-    COUNT                 = 0,
+let COUNT                 = 0,
 
     KEY_A                 = 65,
     KEY_COMMA             = 188,
@@ -132,32 +130,31 @@ var IS_MAC                = /Mac/.test(navigator.userAgent),
     KEY_BACKSPACE         = 8,
     KEY_DELETE            = 46,
     KEY_SHIFT             = 16,
-    KEY_CMD               = IS_MAC ? 91 : 17,
-    KEY_CTRL              = IS_MAC ? 18 : 17,
+    KEY_CMD               = 91,
+    KEY_CTRL              = 17,
     KEY_TAB               = 9,
 
     TAG_SELECT            = 1,
     TAG_INPUT             = 2,
 
-    // for now, android support in general is too spotty to support validity
-    SUPPORTS_VALIDITY_API = !/android/i.test(window.navigator.userAgent) && !!document.createElement('form').validity;
+    SUPPORTS_VALIDITY_API = 'validity' in document.createElement('input');
 
-var hash_key = function(value) {
+let hash_key = function(value) {
     if (typeof value === 'undefined' || value === null) return null;
     if (typeof value === 'boolean') return value ? '1' : '0';
     return value + '';
 };
 
-var isset = function(object) {
+let isset = function(object) {
     return typeof object !== 'undefined';
 };
 
-var escape_replace = function(str) {
+let escape_replace = function(str) {
     return (str + '').replace(/\$/g, '$$$$');
 };
 
-var once = function(fn) {
-    var called = false;
+let once = function(fn) {
+    let called = false;
     return function() {
         if (called) return;
         called = true;
@@ -165,14 +162,14 @@ var once = function(fn) {
     };
 };
 
-var debounce_events = function(self, types, fn) {
-    var type;
-    var trigger = self.emit;
-    var event_args = {};
+let debounce_events = function(self, types, fn) {
+    let type;
+    let trigger = self.emit;
+    let event_args = {};
 
     // override trigger method
     self.emit = function() {
-        var type = arguments[0];
+        let type = arguments[0];
         if (types.indexOf(type) !== -1) {
             event_args[type] = arguments;
         } else {
@@ -192,9 +189,9 @@ var debounce_events = function(self, types, fn) {
     }
 };
 
-var build_hash_table = function(key, objects) {
+let build_hash_table = function(key, objects) {
     if (!isArray(objects)) return objects;
-    var i, n, table = {};
+    let i, n, table = {};
     for (i = 0, n = objects.length; i < n; i++) {
         if (objects[i].hasOwnProperty(key)) {
             table[objects[i][key]] = objects[i];
@@ -203,21 +200,21 @@ var build_hash_table = function(key, objects) {
     return table;
 };
 
-var domToString = function(d) {
-    var tmp = document.createElement('div');
+let domToString = function(d) {
+    let tmp = document.createElement('div');
     tmp.appendChild(d.cloneNode(true));
     return tmp.innerHTML;
 };
 
-var getSelection = function(input) {
-    var result = {};
+let getSelection = function(input) {
+    let result = {};
     if ('selectionStart' in input) {
         result.start = input.selectionStart;
         result.length = input.selectionEnd - result.start;
     } else if (document.selection) {
         input.focus();
-        var sel = document.selection.createRange();
-        var selLen = document.selection.createRange().text.length;
+        let sel = document.selection.createRange();
+        let selLen = document.selection.createRange().text.length;
         sel.moveStart('character', -input.value.length);
         result.start = sel.text.length - selLen;
         result.length = selLen;
@@ -225,8 +222,8 @@ var getSelection = function(input) {
     return result;
 };
 
-var transferStyles = function($from, $to, properties) {
-    var i, n, styles = {};
+let transferStyles = function($from, $to, properties) {
+    let i, n, styles = {};
     if (properties) {
         for (i = 0, n = properties.length; i < n; i++) {
             styles[properties[i]] = $from.compute(properties[i]);
@@ -237,13 +234,13 @@ var transferStyles = function($from, $to, properties) {
     $to.style(styles);
 };
 
-var measured = null;
-var measureString = function(str, $parent) {
+let measured = null;
+let measureString = function(str, $parent) {
     if (!str) {
         return 0;
     }
 
-    var $test;
+    let $test;
     if (!measured) {
         $test = zen('test').style({
             position: 'absolute',
@@ -268,33 +265,33 @@ var measureString = function(str, $parent) {
         $test.text(str);
     }
 
-    //var width = $test[0].offsetWidth;
+    //let width = $test[0].offsetWidth;
     //$test.remove();
 
     return $test[0].offsetWidth;
 };
 
-var highlight = function($element, pattern) {
+let highlight = function($element, pattern) {
     if (typeof pattern === 'string' && !pattern.length) return;
-    var regex = (typeof pattern === 'string') ? new RegExp(pattern, 'i') : pattern;
+    let regex = (typeof pattern === 'string') ? new RegExp(pattern, 'i') : pattern;
 
-    var highlight = function(node) {
-        var skip = 0;
+    let highlight = function(node) {
+        let skip = 0;
         if (node.nodeType === 3) {
-            var pos = node.data.search(regex);
+            let pos = node.data.search(regex);
             if (pos >= 0 && node.data.length > 0) {
-                var match = node.data.match(regex);
-                var spannode = document.createElement('span');
+                let match = node.data.match(regex);
+                let spannode = document.createElement('span');
                 spannode.className = 'g-highlight';
-                var middlebit = node.splitText(pos);
-                var endbit = middlebit.splitText(match[0].length);
-                var middleclone = middlebit.cloneNode(true);
+                let middlebit = node.splitText(pos);
+                let endbit = middlebit.splitText(match[0].length);
+                let middleclone = middlebit.cloneNode(true);
                 spannode.appendChild(middleclone);
                 middlebit.parentNode.replaceChild(spannode, middlebit);
                 skip = 1;
             }
         } else if (node.nodeType === 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
-            for (var i = 0; i < node.childNodes.length; ++i) {
+            for (let i = 0; i < node.childNodes.length; ++i) {
                 i += highlight(node.childNodes[i]);
             }
         }
@@ -306,13 +303,13 @@ var highlight = function($element, pattern) {
     });
 };
 
-var autoGrow = function(input) {
+let autoGrow = function(input) {
     input = dom(input);
-    var currentWidth = null;
+    let currentWidth = null;
 
-    var update = function(options, e) {
-        var value, keyCode, printable, placeholder, width;
-        var shift, character, selection;
+    let update = function(options, e) {
+        let value, keyCode, printable, placeholder, width;
+        let shift, character, selection;
         e = e || window.event || {};
         options = options || {};
 
@@ -368,7 +365,7 @@ var autoGrow = function(input) {
     update();
 };
 
-var SelectizeDefinition = {
+let SelectizeDefinition = {
     options: {
         delimiter: ' ',
         splitOn: null, // regexp or string for splitting up values from a paste command
@@ -451,8 +448,8 @@ var SelectizeDefinition = {
         this.setOptions(options);
 
         // detect rtl environment
-        var computedStyle = window.getComputedStyle && window.getComputedStyle(input[0], null);
-        var dir = computedStyle ? computedStyle.getPropertyValue('direction') : input[0].currentStyle && input[0].currentStyle.direction;
+        let computedStyle = window.getComputedStyle && window.getComputedStyle(input[0], null);
+        let dir = computedStyle ? computedStyle.getPropertyValue('direction') : input[0].currentStyle && input[0].currentStyle.direction;
         dir = dir || input.parents('[dir]:first').attr('dir') || '';
 
         this.rand = 'selectize-id-' + (Math.random() + 1).toString(36).substring(5);
@@ -489,7 +486,7 @@ var SelectizeDefinition = {
         // search system
         this.searchIndex = new NativeSearchIndex(this.Options, { diacritics: this.options.diacritics });
 
-        var i, n;
+        let i, n;
 
         // build options table
         if (this.options.Options) {
@@ -518,7 +515,7 @@ var SelectizeDefinition = {
     },
 
     setup: function() {
-        var $input = this.input,
+        let $input = this.input,
             $wrapper,
             $control,
             $control_input,
@@ -558,7 +555,7 @@ var SelectizeDefinition = {
 
         // if splitOn was not passed in, construct it from the delimiter to allow pasting universally
         if (!this.options.splitOn && this.options.delimiter) {
-            var delimiterEscaped = this.options.delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            let delimiterEscaped = this.options.delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             this.options.splitOn = new RegExp('\\s*' + delimiterEscaped + '+\\s*');
         }
 
@@ -604,8 +601,8 @@ var SelectizeDefinition = {
         $control_input.on('paste', bind(function() { return this.onPaste.apply(this, arguments); }, this));
 
         dom(document).on('keydown', bind(function(e) {
-            this.isCmdDown = e[IS_MAC ? 'metaKey' : 'ctrlKey'];
-            this.isCtrlDown = e[IS_MAC ? 'altKey' : 'ctrlKey'];
+            this.isCmdDown = e.metaKey || e.ctrlKey;
+            this.isCtrlDown = e.ctrlKey || e.altKey;
             this.isShiftDown = e.shiftKey;
         }, this));
 
@@ -705,12 +702,12 @@ var SelectizeDefinition = {
     },
 
     setupTemplates: function() {
-        var field_label    = this.options.labelField,
+        let field_label    = this.options.labelField,
             field_value    = this.options.valueField,
             field_optgroup = this.options.optgroupLabelField,
             mode           = this.options.mode;
 
-        var templates = {
+        let templates = {
             'optgroup': function(data) {
                 return '<div class="g-optgroup">' + data.html + '</div>';
             },
@@ -718,14 +715,14 @@ var SelectizeDefinition = {
                 return '<div class="g-optgroup-header">' + escape(data[field_optgroup]) + '</div>';
             },
             'option': function(data, escape) {
-                var label = '<div class="g-option">' + escape(data[field_label]) + '</div>';
+                let label = '<div class="g-option">' + escape(data[field_label]) + '</div>';
                 if (this.options.Subtitles) {
                     label = '<div class="g-option"><span>' + escape(data[field_label]) + '</span> <div class="g-option-subtitle"><small>' + escape(data[field_value]) + '</small></div></div>';
                 }
                 return label;
             },
             'item': function(data, escape) {
-                var removeButton = '',
+                let removeButton = '',
                     title = escape(data[field_value]);
 
                 if (mode !== 'single') {
@@ -747,7 +744,7 @@ var SelectizeDefinition = {
     },
 
     setupCallbacks: function() {
-        var key, fn, callbacks = {
+        let key, fn, callbacks = {
             'initialize': 'onInitialize',
             'change': 'onChange',
             'item_add': 'onItemAdd',
@@ -787,8 +784,8 @@ var SelectizeDefinition = {
     },
 
     onMouseDown: function(e) {
-        var defaultPrevented = e.defaultPrevented || (typeof e.defaultPrevented === 'undefined');
-        var $target = dom(e.target);
+        let defaultPrevented = e.defaultPrevented || (typeof e.defaultPrevented === 'undefined');
+        let $target = dom(e.target);
 
         if (this.isFocused) {
             // retain focus by preventing native handling. if the
@@ -829,8 +826,8 @@ var SelectizeDefinition = {
             // input and create Items for each separate value
             if (this.options.splitOn) {
                 setTimeout(bind(function() {
-                    var splitInput = trim(this.$control_input.value() || '').split(this.options.splitOn);
-                    for (var i = 0, n = splitInput.length; i < n; i++) {
+                    let splitInput = trim(this.$control_input.value() || '').split(this.options.splitOn);
+                    for (let i = 0, n = splitInput.length; i < n; i++) {
                         this.createItem(splitInput[i]);
                     }
                 }, this), 0);
@@ -840,7 +837,7 @@ var SelectizeDefinition = {
 
     onKeyPress: function(e) {
         if (this.isLocked) return e && e.preventDefault();
-        var character = String.fromCharCode(e.keyCode || e.which);
+        let character = String.fromCharCode(e.keyCode || e.which);
         if (this.options.create && this.options.mode === 'multi' && character === this.options.delimiter) {
             this.createItem();
             e.preventDefault();
@@ -849,7 +846,7 @@ var SelectizeDefinition = {
     },
 
     onKeyDown: function(e) {
-        var isInput = e.target === this.$control_input[0];
+        let isInput = e.target === this.$control_input[0];
 
         if (this.isLocked) {
             if (e.keyCode !== KEY_TAB) {
@@ -880,7 +877,7 @@ var SelectizeDefinition = {
                     this.open();
                 } else if (this.$activeOption) {
                     this.ignoreHover = true;
-                    var $next = this.getAdjacentOption(this.$activeOption, 1);
+                    let $next = this.getAdjacentOption(this.$activeOption, 1);
                     if ($next) { this.setActiveOption($next, true, true); }
                 }
                 e.preventDefault();
@@ -890,7 +887,7 @@ var SelectizeDefinition = {
             case KEY_UP:
                 if (this.$activeOption) {
                     this.ignoreHover = true;
-                    var $prev = this.getAdjacentOption(this.$activeOption, -1);
+                    let $prev = this.getAdjacentOption(this.$activeOption, -1);
                     if ($prev) { this.setActiveOption($prev, true, true); }
                 }
                 e.preventDefault();
@@ -927,7 +924,7 @@ var SelectizeDefinition = {
                 return;
         }
 
-        if ((this.isFull() || this.isInputHidden) && !(IS_MAC ? e.metaKey : e.ctrlKey)) {
+        if ((this.isFull() || this.isInputHidden) && !(e.metaKey || e.ctrlKey)) {
             e.preventDefault();
             return;
         }
@@ -936,7 +933,7 @@ var SelectizeDefinition = {
     onKeyUp: function(e) {
 
         if (this.isLocked) return e && e.preventDefault();
-        var value = this.$control_input.value() || '';
+        let value = this.$control_input.value() || '';
         if (this.lastValue !== value) {
             this.lastValue = value;
             this.onSearchChange(value);
@@ -946,7 +943,7 @@ var SelectizeDefinition = {
     },
 
     onSearchChange: function(value) {
-        var fn = this.options.load;
+        let fn = this.options.load;
         if (!fn) return;
         if (this.loadedSearches.hasOwnProperty(value)) return;
         this.loadedSearches[value] = true;
@@ -956,7 +953,7 @@ var SelectizeDefinition = {
     },
 
     onFocus: function(e) {
-        var wasFocused = this.isFocused;
+        let wasFocused = this.isFocused;
 
         if (this.isDisabled) {
             this.blur();
@@ -993,7 +990,7 @@ var SelectizeDefinition = {
             return;
         }
 
-        var deactivate = bind(function() {
+        let deactivate = bind(function() {
             this.close();
             this.setTextboxValue('');
             this.setActiveItem(null);
@@ -1023,7 +1020,7 @@ var SelectizeDefinition = {
     },
 
     onOptionSelect: function(e, element) {
-        var value, $target, $option, self = this;
+        let value, $target, $option, self = this;
 
         if (e.preventDefault) {
             e.preventDefault();
@@ -1064,7 +1061,7 @@ var SelectizeDefinition = {
         e.preventDefault();
         if (this.isLocked || this.options.mode == 'single') return;
 
-        var $item = element.parent();
+        let $item = element.parent();
         this.setActiveItem($item);
         if (this.deleteSelection()) {
             this.setCaret(this.items.length);
@@ -1072,7 +1069,7 @@ var SelectizeDefinition = {
     },
 
     load: function(fn) {
-        var $wrapper = this.$wrapper.addClass(this.options.loadingClass);
+        let $wrapper = this.$wrapper.addClass(this.options.loadingClass);
 
         this.loading++;
         fn.apply(this, [bind(function(results) {
@@ -1089,8 +1086,8 @@ var SelectizeDefinition = {
     },
 
     setTextboxValue: function(value) {
-        var $input = this.$control_input;
-        var changed = $input.value() !== value;
+        let $input = this.$control_input;
+        let changed = $input.value() !== value;
         if (changed) {
             $input.value(value).emit('update');
             this.lastValue = value;
@@ -1107,7 +1104,7 @@ var SelectizeDefinition = {
     },
 
     setValue: function(value, silent) {
-        var events = silent ? [] : ['change'];
+        let events = silent ? [] : ['change'];
 
         debounce_events(this, events, function() {
             this.clear(silent);
@@ -1117,7 +1114,7 @@ var SelectizeDefinition = {
     },
 
     setActiveItem: function(item, e) {
-        var eventName, idx, begin, end, $item, swap, $last;
+        let eventName, idx, begin, end, $item, swap, $last;
 
         if (this.options.mode === 'single') { return; }
         item = dom(item);
@@ -1144,7 +1141,7 @@ var SelectizeDefinition = {
                 begin = end;
                 end = swap;
             }
-            for (var i = begin; i <= end; i++) {
+            for (let i = begin; i <= end; i++) {
                 $item = this.$control[0].childNodes[i];
                 if (this.$activeItems.indexOf($item) === -1) {
                     dom($item).addClass('g-active');
@@ -1176,8 +1173,8 @@ var SelectizeDefinition = {
     },
 
     setActiveOption: function($option, scroll, animate) {
-        var height_menu, height_item, y;
-        var scroll_top, scroll_bottom;
+        let height_menu, height_item, y;
+        let scroll_top, scroll_bottom;
 
         if (this.$activeOption) this.$activeOption.removeClass('g-active');
         this.$activeOption = null;
@@ -1209,7 +1206,7 @@ var SelectizeDefinition = {
     selectAll: function() {
         if (this.options.mode === 'single') return;
 
-        var items = this.$control.children(':not(input)');
+        let items = this.$control.children(':not(input)');
         if (items) {
             items.addClass('g-active');
             this.$wrapper.attribute('aria-activedescendant', slugify(this.rand + '-' + items.attribute('data-value')));
@@ -1266,7 +1263,7 @@ var SelectizeDefinition = {
     },
 
     getSearchOptions: function() {
-        var sort = this.options.sortField;
+        let sort = this.options.sortField;
         if (typeof sort === 'string') {
             sort = [{ field: sort }];
         }
@@ -1279,8 +1276,8 @@ var SelectizeDefinition = {
     },
 
     search: function(query) {
-        var i, value, score, result, calculateScore;
-        var options = this.getSearchOptions();
+        let i, value, score, result, calculateScore;
+        let options = this.getSearchOptions();
 
         // validate user-provided result scoring function
         if (this.options.score) {
@@ -1312,17 +1309,17 @@ var SelectizeDefinition = {
     },
 
     refreshOptions: function(triggerDropdown) {
-        var i, j, k, n, groups, groups_order, option, option_html, optgroup, optgroups, html, html_children, has_create_option;
-        var $active, $active_before, $create;
+        let i, j, k, n, groups, groups_order, option, option_html, optgroup, optgroups, html, html_children, has_create_option;
+        let $active, $active_before, $create;
 
         if (typeof triggerDropdown === 'undefined') {
             triggerDropdown = true;
         }
 
-        var query = trim(this.$control_input.value());
-        var results = this.search(query);
-        var $dropdown_content = this.$dropdown_content;
-        var active_before = this.$activeOption && hash_key(this.$activeOption.attribute('data-value'));
+        let query = trim(this.$control_input.value());
+        let results = this.search(query);
+        let $dropdown_content = this.$dropdown_content;
+        let active_before = this.$activeOption && hash_key(this.$activeOption.attribute('data-value'));
 
         // build markup
         n = results.items.length;
@@ -1366,8 +1363,8 @@ var SelectizeDefinition = {
         // sort optgroups
         if (this.options.lockOptgroupOrder) {
             groups_order.sort(function(a, b) {
-                var a_order = this.Optgroups[a].$order || 0;
-                var b_order = this.Optgroups[b].$order || 0;
+                let a_order = this.Optgroups[a].$order || 0;
+                let b_order = this.Optgroups[b].$order || 0;
                 return a_order - b_order;
             });
         }
@@ -1444,10 +1441,10 @@ var SelectizeDefinition = {
     },
 
     addOption: function(data) {
-        var value;
+        let value;
 
         if (isArray(data)) {
-            for (var i = 0, n = data.length; i < n; i++) {
+            for (let i = 0, n = data.length; i < n; i++) {
                 this.addOption(data[i]);
             }
             return;
@@ -1470,7 +1467,7 @@ var SelectizeDefinition = {
     },
 
     registerOption: function(data) {
-        var key = hash_key(data[this.options.valueField]);
+        let key = hash_key(data[this.options.valueField]);
         if ((!key && !this.options.allowEmptyOption) || this.options.hasOwnProperty(key)) return false;
         data.$order = data.$order || ++this.order;
         this.Options[key] = data;
@@ -1479,7 +1476,7 @@ var SelectizeDefinition = {
     },
 
     registerOptionGroup: function(data) {
-        var key = hash_key(data[this.options.optgroupValueField]);
+        let key = hash_key(data[this.options.optgroupValueField]);
         if (!key) return false;
 
         data.$order = data.$order || ++this.order;
@@ -1511,9 +1508,9 @@ var SelectizeDefinition = {
     },
 
     updateOption: function(value, data) {
-        var self = this;
-        var $item, $item_new, dummy;
-        var value_new, index_item, cache_items, cache_options, order_old;
+        let self = this;
+        let $item, $item_new, dummy;
+        let value_new, index_item, cache_items, cache_options, order_old;
 
         value = hash_key(value);
         value_new = hash_key(data[this.options.valueField]);
@@ -1574,8 +1571,8 @@ var SelectizeDefinition = {
     removeOption: function(value, silent) {
         value = hash_key(value);
 
-        var cache_items = this.renderCache['item'];
-        var cache_options = this.renderCache['option'];
+        let cache_items = this.renderCache['item'];
+        let cache_options = this.renderCache['option'];
         if (cache_items) delete cache_items[value];
         if (cache_options) delete cache_options[value];
 
@@ -1601,8 +1598,8 @@ var SelectizeDefinition = {
     },
 
     getAdjacentOption: function($option, direction) {
-        var $options = this.$dropdown.search('[data-selectable]');
-        var index = indexOf($options, ($option ? $option[0] : null)) + direction;
+        let $options = this.$dropdown.search('[data-selectable]');
+        let index = indexOf($options, ($option ? $option[0] : null)) + direction;
 
         return index >= 0 && index < ($options ? $options.length : 0) ? dom($options[index]) : dom();
     },
@@ -1611,7 +1608,7 @@ var SelectizeDefinition = {
         value = hash_key(value);
 
         if (typeof value !== 'undefined' && value !== null) {
-            for (var i = 0, n = ($els ? $els.length : 0); i < n; i++) {
+            for (let i = 0, n = ($els ? $els.length : 0); i < n; i++) {
                 if ($els[i].getAttribute('data-value') === value) {
                     return dom($els[i]);
                 }
@@ -1626,20 +1623,20 @@ var SelectizeDefinition = {
     },
 
     addItems: function(values, silent) {
-        var items = isArray(values) ? values : [values];
-        for (var i = 0, n = items.length; i < n; i++) {
+        let items = isArray(values) ? values : [values];
+        for (let i = 0, n = items.length; i < n; i++) {
             this.isPending = (i < n - 1);
             this.addItem(items[i], silent);
         }
     },
 
     addItem: function(value, silent) {
-        var events = silent ? [] : ['change'];
+        let events = silent ? [] : ['change'];
 
         debounce_events(this, events, function() {
-            var $item, $option, $options;
-            var inputMode = this.options.mode;
-            var i, active, value_next, wasFull;
+            let $item, $option, $options;
+            let inputMode = this.options.mode;
+            let i, active, value_next, wasFull;
             value = hash_key(value);
 
             if (this.items.indexOf(value) !== -1) {
@@ -1672,7 +1669,7 @@ var SelectizeDefinition = {
                 // update menu / remove the option (if this is not one item being added as part of series)
                 if (!this.isPending) {
                     $option = this.getOption(value);
-                    var adj = this.getAdjacentOption($option, 1);
+                    let adj = this.getAdjacentOption($option, 1);
                     value_next = (adj) ? adj.attribute('data-value') : null;
                     this.refreshOptions(this.isFocused && inputMode !== 'single');
                     if (value_next) {
@@ -1695,7 +1692,7 @@ var SelectizeDefinition = {
     },
 
     removeItem: function(value, silent) {
-        var $item, i, idx;
+        let $item, i, idx;
 
         $item = value && value[0] && typeof value.attribute === 'function' ? value : this.getItem(value);
         value = hash_key($item.attribute('data-value'));
@@ -1727,10 +1724,10 @@ var SelectizeDefinition = {
     },
 
     createItem: function(input, triggerDropdown) {
-        var caret = this.caretPos;
+        let caret = this.caretPos;
         input = input || trim(this.$control_input.value() || '');
 
-        var callback = arguments[arguments.length - 1];
+        let callback = arguments[arguments.length - 1];
         if (typeof callback !== 'function') callback = function() {};
 
         if (!isBoolean(triggerDropdown)) {
@@ -1744,18 +1741,18 @@ var SelectizeDefinition = {
 
         this.lock();
 
-        var setup = (typeof this.options.create === 'function') ? this.options.create : bind(function(input) {
-            var data = {};
+        let setup = (typeof this.options.create === 'function') ? this.options.create : bind(function(input) {
+            let data = {};
             data[this.options.labelField] = input;
             data[this.options.valueField] = input;
             return data;
         }, this);
 
-        var create = once(bind(function(data) {
+        let create = once(bind(function(data) {
             this.unlock();
 
             if (!data || typeof data !== 'object') return callback();
-            var value = hash_key(data[this.options.valueField]);
+            let value = hash_key(data[this.options.valueField]);
             if (typeof value !== 'string') return callback();
 
             this.setTextboxValue('');
@@ -1766,7 +1763,7 @@ var SelectizeDefinition = {
             callback(data);
         }, this));
 
-        var output = setup.apply(this, [input, create]);
+        let output = setup.apply(this, [input, create]);
         if (typeof output !== 'undefined') {
             create(output);
         }
@@ -1786,7 +1783,7 @@ var SelectizeDefinition = {
     },
 
     refreshState: function() {
-        var invalid;
+        let invalid;
         if (this.isRequired) {
             if (this.items.length) this.isInvalid = false;
             this.$control_input.attribute('required', this.isInvalid || null);
@@ -1795,7 +1792,7 @@ var SelectizeDefinition = {
     },
 
     refreshClasses: function() {
-        var isFull   = this.isFull(),
+        let isFull   = this.isFull(),
             isLocked = this.isLocked;
 
         this.$wrapper.toggleClass('g-rtl', this.rtl);
@@ -1841,12 +1838,12 @@ var SelectizeDefinition = {
     },
 
     updateOriginalInput: function(opts) {
-        var options, label;
+        let options, label;
         opts = opts || {};
 
         if (this.tagType === TAG_SELECT) {
             options = [];
-            for (var i = 0, n = this.items.length; i < n; i++) {
+            for (let i = 0, n = this.items.length; i < n; i++) {
                 label = this.Options[this.items[i]][this.options.labelField] || '';
                 options.push('<option value="' + escapeHTML(this.items[i]) + '" selected="selected">' + escapeHTML(label) + '</option>');
             }
@@ -1866,7 +1863,7 @@ var SelectizeDefinition = {
 
     updatePlaceholder: function() {
         if (!this.options.placeholder) return;
-        var control_input = this.$control_input;
+        let control_input = this.$control_input;
 
         if (this.items.length) {
             control_input.attribute('placeholder', null);
@@ -1891,7 +1888,7 @@ var SelectizeDefinition = {
     },
 
     close: function() {
-        var trigger = this.isOpen;
+        let trigger = this.isOpen;
 
         if (this.options.mode === 'single' && this.items.length) {
             this.hideInput();
@@ -1906,7 +1903,7 @@ var SelectizeDefinition = {
     },
 
     positionDropdown: function() {
-        var control = this.$control,
+        let control = this.$control,
             offset  = control.position();//this.options.dropdownParent === 'body' ? control.offset() : control.position();
         offset.top += control[0].offsetHeight;
 
@@ -1920,7 +1917,7 @@ var SelectizeDefinition = {
     clear: function(silent) {
         if (!this.items.length) return;
 
-        var non_input = this.$control.children(':not(input)');
+        let non_input = this.$control.children(':not(input)');
         if (non_input) non_input.remove();
 
         this.items = [];
@@ -1935,7 +1932,7 @@ var SelectizeDefinition = {
     },
 
     insertAtCaret: function($el) {
-        var caret = Math.min(this.caretPos, this.items.length);
+        let caret = Math.min(this.caretPos, this.items.length);
         if (caret === 0) {
             $el.top(this.$control);//.prepend($el);
         } else {
@@ -1947,7 +1944,7 @@ var SelectizeDefinition = {
     },
 
     deleteSelection: function(e) {
-        var i, n, direction, selection, values, caret, option_select, $option_select, $tail;
+        let i, n, direction, selection, values, caret, option_select, $option_select, $tail;
 
         direction = (e && e.keyCode === KEY_BACKSPACE) ? -1 : 1;
         selection = getSelection(this.$control_input[0]);
@@ -1961,7 +1958,7 @@ var SelectizeDefinition = {
         values = [];
 
         if (this.$activeItems.length) {
-            var children = this.$control.children(':not(input)');
+            let children = this.$control.children(':not(input)');
             $tail = this.$control.children('.g-active');
             if ($tail) { $tail = dom(direction > 0 ? last($tail) : $tail[0]); }
             caret = (!children ? -1 : indexOf(children, $tail[0]));
@@ -2011,7 +2008,7 @@ var SelectizeDefinition = {
     },
 
     advanceSelection: function(direction, e) {
-        var tail, selection, idx, valueLength, cursorAtEdge, $tail;
+        let tail, selection, idx, valueLength, cursorAtEdge, $tail;
 
         if (direction === 0) return;
         if (this.rtl) direction *= -1;
@@ -2039,7 +2036,7 @@ var SelectizeDefinition = {
     },
 
     advanceCaret: function(direction, e) {
-        var fn, $adj;
+        let fn, $adj;
 
         if (direction === 0) return;
 
@@ -2068,7 +2065,7 @@ var SelectizeDefinition = {
             // the input must be moved by leaving it in place and moving the
             // siblings, due to the fact that focus cannot be restored once lost
             // on mobile webkit devices
-            var j, n, fn, $children, $child;
+            let j, n, fn, $children, $child;
             $children = this.$control.children(':not(input)');
             for (j = 0, n = ($children ? $children.length : 0); j < n; j++) {
                 $child = dom($children[j]);//.detach();
@@ -2109,7 +2106,7 @@ var SelectizeDefinition = {
     },
 
     destroy: function() {
-        var revertSettings = this.revertSettings;
+        let revertSettings = this.revertSettings;
 
         this.emit('destroy');
         this.off();
@@ -2135,10 +2132,10 @@ var SelectizeDefinition = {
     },
 
     render: function(templateName, data) {
-        var value, id, label;
-        var name = '';
-        var cache = false;
-        var regex_tag = /^[\t \r\n]*<([a-z][a-z0-9\-_]*(?:\:[a-z][a-z0-9\-_]*)?)/i;
+        let value, id, label;
+        let name = '';
+        let cache = false;
+        let regex_tag = /^[\t \r\n]*<([a-z][a-z0-9\-_]*(?:\:[a-z][a-z0-9\-_]*)?)/i;
 
         if (templateName === 'option' || templateName === 'item') {
             value = hash_key(data[this.options.valueField]);
@@ -2156,7 +2153,7 @@ var SelectizeDefinition = {
         }
 
         // render markup
-        var html = zen('div').html(this.options.render[templateName].apply(this, [data, escapeHTML]));
+        let html = zen('div').html(this.options.render[templateName].apply(this, [data, escapeHTML]));
         html = html.firstChild();
 
         // add mandatory attributes
@@ -2191,7 +2188,7 @@ var SelectizeDefinition = {
 
     canCreate: function(input) {
         if (!this.options.create) return false;
-        var filter = this.options.createFilter;
+        let filter = this.options.createFilter;
         return input.length
             && (typeof filter !== 'function' || filter.apply(self, [input]))
             && (typeof filter !== 'string' || new RegExp(filter).test(input))
@@ -2226,7 +2223,7 @@ Selectize.prototype.options = SelectizeDefinition.options;
 dom.implement({
     selectize: function(settings_user) {
         settings_user = settings_user || {};
-        var defaults             = Selectize.prototype.options,
+        let defaults             = Selectize.prototype.options,
             settings             = merge({}, defaults, settings_user),
             attr_data            = settings.dataAttr,
             field_label          = settings.labelField,
@@ -2235,14 +2232,14 @@ dom.implement({
             field_optgroup_label = settings.optgroupLabelField,
             field_optgroup_value = settings.optgroupValueField;
 
-        var init_textbox = function(input, settings_element) {
+        let init_textbox = function(input, settings_element) {
             input = dom(input);
-            var i, n, values, option;
+            let i, n, values, option;
 
-            var data_raw = input.attribute(attr_data);
+            let data_raw = input.attribute(attr_data);
 
             if (!data_raw) {
-                var value = trim(input.value() || '');
+                let value = trim(input.value() || '');
                 if (!settings.allowEmptyOption && !value.length) return;
 
                 values = value.split(settings.delimiter);
@@ -2263,21 +2260,21 @@ dom.implement({
             }
         };
 
-        var init_select = function(input, settings_element) {
-            var i, n, tagName, children, order = 0;
-            var options = settings_element.Options;
-            var optionsMap = {};
+        let init_select = function(input, settings_element) {
+            let i, n, tagName, children, order = 0;
+            let options = settings_element.Options;
+            let optionsMap = {};
 
-            var readData = function(el) {
-                var data = attr_data && el.attribute(attr_data);
+            let readData = function(el) {
+                let data = attr_data && el.attribute(attr_data);
                 if (typeof data === 'string' && data.length) {
                     return JSON.parse(data);
                 }
                 return null;
             };
 
-            var addOption = function(option, group) {
-                var value, opt;
+            let addOption = function(option, group) {
+                let value, opt;
 
                 option = dom(option);
 
@@ -2290,7 +2287,7 @@ dom.implement({
                 // existing option so that it's rendered in both places.
                 if (optionsMap.hasOwnProperty(value)) {
                     if (group) {
-                        var arr = optionsMap[value][field_optgroup];
+                        let arr = optionsMap[value][field_optgroup];
                         if (!arr) {
                             optionsMap[value][field_optgroup] = group;
                         } else if (!isArray(arr)) {
@@ -2315,8 +2312,8 @@ dom.implement({
                 }
             };
 
-            var addGroup = function(optgroup) {
-                var i, n, id, optgrp, options;
+            let addGroup = function(optgroup) {
+                let i, n, id, optgrp, options;
 
                 optgroup = dom(optgroup);
                 id = optgroup.attribute('label');
@@ -2355,7 +2352,7 @@ dom.implement({
             // navigation initialize this selector and must share one instance.
             if ($input[0].selectizeInstance || $input[0].selectize) return;
 
-            var instance,
+            let instance,
                 dataOptions = $input.data('selectize'),
                 tag_name    = $input.tag().toLowerCase(),
                 placeholder = $input.attribute('placeholder') || $input.attribute('data-placeholder');
@@ -2366,11 +2363,11 @@ dom.implement({
             // end genesis custom
 
             if (!placeholder && !settings.allowEmptyOption) {
-                var chlds = $input.children('option[value=""]');
+                let chlds = $input.children('option[value=""]');
                 placeholder = chlds ? $input.children('option[value=""]').text() : '';
             }
 
-            var settings_element = {
+            let settings_element = {
                 'placeholder': placeholder,
                 'Options': [],
                 'Optgroups': [],
@@ -2390,7 +2387,7 @@ dom.implement({
 });
 
 Selectize.initialize = function(elements, settings) {
-    var collection = dom(elements);
+    let collection = dom(elements);
     if (collection) { collection.selectize(settings); }
     return collection;
 };
@@ -2400,12 +2397,12 @@ Selectize.getInstance = function(element) {
     if (element && (element.selectizeInstance || element.selectize)) {
         return element.selectizeInstance || element.selectize;
     }
-    var collection = dom(element);
+    let collection = dom(element);
     return collection ? collection.selectizeInstance : null;
 };
 
 ready(function() {
-    var selects = dom('[data-selectize]');
+    let selects = dom('[data-selectize]');
     if (!selects) { return; }
 
     Selectize.initialize(selects);

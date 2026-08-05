@@ -5,19 +5,19 @@ import __module3 from '../../utils/translate.js';
 
 "use strict";
 
-var Section            = __module0,
+let Section            = __module0,
     getAjaxURL         = __module1.config,
     getOutlineNameById = __module2.getOutlineNameById,
     translate          = __module3;
 
 class Offcanvas extends Section {
     layout() {
-        var settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
+        let settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
             inheritance = '',
             klass = '';
 
         if (this.hasInheritance()) {
-            var outline = getOutlineNameById(this.inherit.outline);
+            let outline = getOutlineNameById(this.inherit.outline);
             inheritance = '<div class="g-inherit g-section-inherit"><div class="g-inherit-content">' + translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '</div></div>';
             klass = ' g-inheriting g-inheriting-' + this.inherit.include.join(' g-inheriting-');
         }

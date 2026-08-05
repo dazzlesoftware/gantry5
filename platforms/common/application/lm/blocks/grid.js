@@ -2,7 +2,7 @@ import __module0 from './base.js';
 
 "use strict";
 
-var Base = __module0;
+let Base = __module0;
 
 class Grid extends Base {
     constructor(options) {
@@ -15,7 +15,7 @@ class Grid extends Base {
     }
 
     onRendered() {
-        var parent = this.block.parent();
+        let parent = this.block.parent();
         if (parent && parent.data('lm-blocktype') == 'atoms') {
             this.block.removeClass('nowrap');
         }
@@ -27,7 +27,7 @@ class Grid extends Base {
 
     hasChanged(state) {
         // Grids forward their indicator to the parent section.
-        var parent = this.block.parent('[data-lm-blocktype="section"]'),
+        let parent = this.block.parent('[data-lm-blocktype="section"]'),
             id = parent ? parent.data('lm-id') : false;
 
         this.changeState = state;

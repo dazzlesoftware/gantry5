@@ -2,9 +2,9 @@ import __module0 from './particle.js';
 
 "use strict";
 
-var Particle = __module0;
+let Particle = __module0;
 
-var UID = 0;
+let UID = 0;
 
 class Position extends Particle {
     constructor(options) {

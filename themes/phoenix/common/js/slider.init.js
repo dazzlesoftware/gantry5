@@ -2,27 +2,27 @@ function asBool(value) { return value === true || value === 'true' || value === 
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-slider-id]').forEach(function (root, index) {
-      var autoplay = asBool(container.dataset.sliderAutoplay) ? { delay: container.dataset.sliderTimeout, disableOnInteraction: false } : false;
-      var touchMove = asBool(container.dataset.sliderTouchmove);
-      var centered = container.dataset.sliderCentered;
-      var mobileBreakpoint = Length.toPx(document.body, container.dataset.swiperMobileBreakpoint);
-      var tabletBreakpoint = Length.toPx(document.body, container.dataset.swiperTabletBreakpoint);
-      var desktopBreakpoint = Length.toPx(document.body, container.dataset.swiperDesktopBreakpoint);
-      var largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.swiperLargedesktopBreakpoint);
-      var mobileSlides = container.dataset.swiperMobileslides;
-      var mobileGroup = container.dataset.swiperMobilegroup;
-      var mobileSpace = container.dataset.swiperMobilespace;
-      var tabletSlides = container.dataset.swiperTabletslides;
-      var tabletGroup = container.dataset.swiperTabletgroup;
-      var tabletSpace = container.dataset.swiperTabletspace;
-      var desktopSlides = container.dataset.swiperDesktopslides;
-      var desktopGroup = container.dataset.swiperDesktopgroup;
-      var desktopSpace = container.dataset.swiperDesktopspace;
-      var largeDesktopSlides = container.dataset.swiperLargedesktopslides;
-      var largeDesktopGroup = container.dataset.swiperLargedesktopgroup;
-      var largeDesktopSpace = container.dataset.swiperLargedesktopspace;
+      let autoplay = asBool(container.dataset.sliderAutoplay) ? { delay: container.dataset.sliderTimeout, disableOnInteraction: false } : false;
+      let touchMove = asBool(container.dataset.sliderTouchmove);
+      let centered = container.dataset.sliderCentered;
+      let mobileBreakpoint = Length.toPx(document.body, container.dataset.swiperMobileBreakpoint);
+      let tabletBreakpoint = Length.toPx(document.body, container.dataset.swiperTabletBreakpoint);
+      let desktopBreakpoint = Length.toPx(document.body, container.dataset.swiperDesktopBreakpoint);
+      let largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.swiperLargedesktopBreakpoint);
+      let mobileSlides = container.dataset.swiperMobileslides;
+      let mobileGroup = container.dataset.swiperMobilegroup;
+      let mobileSpace = container.dataset.swiperMobilespace;
+      let tabletSlides = container.dataset.swiperTabletslides;
+      let tabletGroup = container.dataset.swiperTabletgroup;
+      let tabletSpace = container.dataset.swiperTabletspace;
+      let desktopSlides = container.dataset.swiperDesktopslides;
+      let desktopGroup = container.dataset.swiperDesktopgroup;
+      let desktopSpace = container.dataset.swiperDesktopspace;
+      let largeDesktopSlides = container.dataset.swiperLargedesktopslides;
+      let largeDesktopGroup = container.dataset.swiperLargedesktopgroup;
+      let largeDesktopSpace = container.dataset.swiperLargedesktopspace;
 
-      var slideSwiper = new Swiper(container, {
+      let slideSwiper = new Swiper(container, {
         speed: container.dataset.sliderSpeed,
         loop: asBool(container.dataset.sliderLoop),
         centeredSlides: centered,

@@ -13,7 +13,7 @@ import '../lm/index.js';
 
 "use strict";
 
-var dom           = __module0,
+let dom           = __module0,
     storage       = new Map(),
     modal         = __module1.modal,
     Selectize     = __module2,
@@ -27,47 +27,47 @@ var dom           = __module0,
     assignments   = __module10;
 
 
-var ERROR = false,
+let ERROR = false,
     TMP_SELECTIZE_DISABLE = false,
     ConfNavIndex = -1;
 
-var asElement = function(element) {
+let asElement = function(element) {
     return element && element.nodeType ? element : element && element[0];
 };
 
-var guid = function() {
+let guid = function() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
         return window.crypto.randomUUID();
     }
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(character) {
-        var random = Math.floor(Math.random() * 16),
+        let random = Math.floor(Math.random() * 16),
             value = character === 'x' ? random : (random & 0x3) | 0x8;
         return value.toString(16);
     });
 };
 
-var getParam = function(uri, name) {
+let getParam = function(uri, name) {
     return new URL(uri, window.location.href).searchParams.get(name);
 };
 
-var setParam = function(uri, name, value) {
-    var url = new URL(uri, window.location.href),
+let setParam = function(uri, name, value) {
+    let url = new URL(uri, window.location.href),
         isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
     url.searchParams.set(name, value);
     return isAbsolute ? url.href : url.pathname + url.search + url.hash;
 };
 
-var toQueryString = function(parameters) {
-    var query = new URLSearchParams();
+let toQueryString = function(parameters) {
+    let query = new URLSearchParams();
     Object.keys(parameters || {}).forEach(function(key) {
-        var values = Array.isArray(parameters[key]) ? parameters[key] : [parameters[key]];
+        let values = Array.isArray(parameters[key]) ? parameters[key] : [parameters[key]];
         values.forEach(function(value) { query.append(key, value); });
     });
     return query.toString() ? '?' + query.toString() : '';
 };
 
-var dispatchState = function(type, element, data) {
-    var source = asElement(element),
+let dispatchState = function(type, element, data) {
+    let source = asElement(element),
         target = type === 'statechangeAfter' ? document.body : (source || document.body);
     target.dispatchEvent(new CustomEvent(type, {
         bubbles: true,
@@ -75,27 +75,30 @@ var dispatchState = function(type, element, data) {
     }));
 };
 
-var showNavbar = function(navbar, visible) {
+let showNavbar = function(navbar, visible) {
     if (!navbar) { return; }
     navbar.hidden = false;
     navbar.style.display = '';
-    var from = getComputedStyle(navbar).opacity;
-    var animation = navbar.animate(
+    let from = getComputedStyle(navbar).opacity;
+    let reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let animation = navbar.animate(
         [{ opacity: from }, { opacity: visible ? 1 : 0 }],
-        { duration: 180, easing: 'ease', fill: 'forwards' }
+        { duration: reducedMotion ? 0 : 180, easing: 'ease', fill: 'forwards' }
     );
-    animation.finished.catch(function() {}).then(function() {
+    animation.finished.catch(function(error) {
+        if (error.name !== 'AbortError') console.warn('Navbar animation failed.', error);
+    }).then(function() {
         animation.cancel();
         navbar.style.opacity = '';
         navbar.hidden = !visible;
     });
 };
 
-var setButtonsDisabled = function(buttons, disabled) {
+let setButtonsDisabled = function(buttons, disabled) {
     buttons.filter(Boolean).forEach(function(button) { button.disabled = disabled; });
 };
 
-var warningButtons = function(content) {
+let warningButtons = function(content) {
     content = modal.element(content);
     return {
         save: content && content.querySelector('[data-g-unsaved-save]'),
@@ -103,18 +106,18 @@ var warningButtons = function(content) {
     };
 };
 
-var clickWithSpinner = function(element, spinner) {
+let clickWithSpinner = function(element, spinner) {
     element = asElement(element);
     if (!element) { return; }
-    var event = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+    let event = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
     event.activeSpinner = asElement(spinner);
     element.dispatchEvent(event);
 };
 
-var selectorChangeEvent = function() {
+let selectorChangeEvent = function() {
     document.querySelectorAll('[data-selectize-ajaxify]').forEach(function(selector) {
         Selectize.initialize([selector]);
-        var selectize = Selectize.getInstance(selector);
+        let selectize = Selectize.getInstance(selector);
         if (!selectize || selectize.HasChangeEvent) { return; }
 
         selectize.on('change', function() {
@@ -123,18 +126,18 @@ var selectorChangeEvent = function() {
                 return;
             }
 
-            var value = selectize.getValue(),
+            let value = selectize.getValue(),
                 options = selectize.Options;
             if (!options[value]) { return; }
 
-            var flagCallback = function() {
+            let flagCallback = function() {
                 flags.off('update:pending', flagCallback);
                 modal.close();
 
-                var input = asElement(selectize.input);
+                let input = asElement(selectize.input);
                 input.setAttribute('data-genesis-ajaxify', '');
                 input.setAttribute('data-genesis-ajaxify-target', selector.getAttribute('data-genesis-ajaxify-target') || '[data-genesis-content-wrapper]');
-                var targetParent = selector.getAttribute('data-genesis-ajaxify-target-parent');
+                let targetParent = selector.getAttribute('data-genesis-ajaxify-target-parent');
                 if (targetParent) { input.setAttribute('data-genesis-ajaxify-target-parent', targetParent); }
                 else { input.removeAttribute('data-genesis-ajaxify-target-parent'); }
                 input.setAttribute('data-genesis-ajaxify-href', options[value].url);
@@ -144,7 +147,7 @@ var selectorChangeEvent = function() {
                     input.removeAttribute('data-genesis-ajaxify-params');
                 }
 
-                var active = document.querySelector('#navbar li.active, #main-header li.active, #navbar li:nth-child(2)');
+                let active = document.querySelector('#navbar li.active, #main-header li.active, #navbar li:nth-child(2)');
                 if (active) { indicator.show(active); }
                 clickWithSpinner(input, active);
             };
@@ -152,7 +155,7 @@ var selectorChangeEvent = function() {
             if (flags.get('pending')) {
                 flags.warning({
                     callback: function(response, content) {
-                        var buttons = warningButtons(content);
+                        let buttons = warningButtons(content);
                         if (!buttons.save) { return; }
 
                         buttons.save.addEventListener('click', function(event) {
@@ -160,7 +163,7 @@ var selectorChangeEvent = function() {
                             if (buttons.save.disabled) { return; }
                             setButtonsDisabled([buttons.save, buttons.discard], true);
                             flags.on('update:pending', flagCallback);
-                            var save = document.querySelector('.button-save');
+                            let save = document.querySelector('.button-save');
                             if (save) { save.click(); }
                         });
                         if (buttons.discard) {
@@ -189,7 +192,7 @@ var selectorChangeEvent = function() {
 History.Adapter.bind(window, 'statechange', function() {
     if (request.running()) { return false; }
 
-    var body = document.body,
+    let body = document.body,
         State = History.getState(),
         URI = State.url,
         Data = State.data || {},
@@ -203,12 +206,12 @@ History.Adapter.bind(window, 'statechange', function() {
     }
 
     Data.element = asElement(Data.element);
-    var isTopNavOrMenu = false;
+    let isTopNavOrMenu = false;
     if (Data.element) {
         isTopNavOrMenu = Boolean(Data.element.closest('#main-header') || Data.element.matches('.menu-select-wrap'));
         dispatchState('statechangeBefore', Data.element, Data);
     } else {
-        var url = URI.replace(window.location.origin, '');
+        let url = URI.replace(window.location.origin, '');
         Data.element = Array.from(document.querySelectorAll('[href]')).find(function(link) {
             return link.getAttribute('href') === url;
         }) || null;
@@ -219,7 +222,7 @@ History.Adapter.bind(window, 'statechange', function() {
     if (sidebar && Data.element) {
         sidebar.querySelectorAll('li.active').forEach(function(item) { item.classList.remove('active'); });
         if (Data.element.closest('#navbar')) {
-            var sideItem = Data.element.closest('li');
+            let sideItem = Data.element.closest('li');
             if (sideItem) { sideItem.classList.add('active'); }
         }
     }
@@ -227,7 +230,7 @@ History.Adapter.bind(window, 'statechange', function() {
     if (mainheader && Data.element && !Data.element.matches('a.menu-item, select.menu-select-wrap')) {
         mainheader.querySelectorAll('.float-right li').forEach(function(item) { item.classList.remove('active'); });
         if (Data.element.closest('#main-header')) {
-            var headerItem = Data.element.closest('li');
+            let headerItem = Data.element.closest('li');
             if (headerItem) { headerItem.classList.add('active'); }
         }
     }
@@ -239,7 +242,7 @@ History.Adapter.bind(window, 'statechange', function() {
 
     if (!ERROR) { modal.closeAll(); }
     request.url(URI + params).data(Data.extras || {}).method(Data.extras ? 'post' : 'get').send(function(error, response) {
-        var result = response && response.body;
+        let result = response && response.body;
         if (!result || !result.success) {
             if (!ERROR) {
                 ERROR = true;
@@ -252,12 +255,12 @@ History.Adapter.bind(window, 'statechange', function() {
             return false;
         }
 
-        var target = Data.parent && Data.element ? Data.element.closest(Data.parent) :
+        let target = Data.parent && Data.element ? Data.element.closest(Data.parent) :
                 (Data.target ? document.querySelector(Data.target) : null),
             destination = target || document.querySelector('[data-genesis-content]') || body;
 
         destination.innerHTML = result.html || result;
-        var fader = destination.matches('[data-genesis-content]') ? destination : destination.querySelector('[data-genesis-content]');
+        let fader = destination.matches('[data-genesis-content]') ? destination : destination.querySelector('[data-genesis-content]');
         if (fader) {
             fader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'ease' });
             if (isTopNavOrMenu && sidebar) {
@@ -270,7 +273,7 @@ History.Adapter.bind(window, 'statechange', function() {
         document.querySelectorAll('.genesis-popover').forEach(function(popover) { popover.remove(); });
         if (Data.element) { dispatchState('statechangeAfter', Data.element, Data); }
 
-        var spinner = (Data.event && Data.event.activeSpinner) || Data.element;
+        let spinner = (Data.event && Data.event.activeSpinner) || Data.element;
         if (spinner) { indicator.hide(spinner); }
 
         Selectize.initialize(document.querySelectorAll('[data-selectize]'));
@@ -281,10 +284,10 @@ History.Adapter.bind(window, 'statechange', function() {
 });
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
     if (window.GENESIS_AJAX_NONCE) {
-        var currentURI = History.getPageUrl(),
+        let currentURI = History.getPageUrl(),
             currentNonce;
         if (window.GENESIS_PLATFORM === 'wordpress') {
             currentNonce = getParam(currentURI, '_wpnonce');
@@ -303,17 +306,17 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '.button-back-to-conf', function(event, element) {
         event.preventDefault();
-        var confSelector = document.querySelector('#configuration-selector'),
+        let confSelector = document.querySelector('#configuration-selector'),
             outlineDeleted = body.outlineDeleted,
             currentOutline = confSelector && confSelector.value,
             navbar = document.querySelector('#navbar');
         if (!confSelector || !navbar) { return; }
 
         ConfNavIndex = ConfNavIndex === -1 ? 1 : ConfNavIndex;
-        var item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-genesis-ajaxify]');
+        let item = navbar.querySelector('li:nth-child(' + (ConfNavIndex + 1) + ') [data-genesis-ajaxify]');
         if (!item) { return; }
 
-        var continueBack = function() {
+        let continueBack = function() {
             flags.off('update:pending', continueBack);
             modal.close();
             item.click();
@@ -325,14 +328,14 @@ dom.ready(function() {
         if (flags.get('pending')) {
             flags.warning({
                 callback: function(response, content) {
-                    var buttons = warningButtons(content);
+                    let buttons = warningButtons(content);
                     if (!buttons.save) { return; }
                     buttons.save.addEventListener('click', function(saveEvent) {
                         saveEvent.preventDefault();
                         if (buttons.save.disabled) { return; }
                         setButtonsDisabled([buttons.save, buttons.discard], true);
                         flags.on('update:pending', continueBack);
-                        var save = document.querySelector('.button-save');
+                        let save = document.querySelector('.button-save');
                         if (save) { save.click(); }
                     });
                     if (buttons.discard) {
@@ -351,7 +354,7 @@ dom.ready(function() {
 
         indicator.show(element);
         if (outlineDeleted == currentOutline) {
-            var selectize = Selectize.getInstance(confSelector),
+            let selectize = Selectize.getInstance(confSelector),
                 ids = selectize ? Object.keys(selectize.Options) : [],
                 id = ids.shift();
             body.outlineDeleted = null;
@@ -365,7 +368,7 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'click', '#navbar a[data-genesis-ajaxify]', function(event, element) {
-        var links = document.querySelectorAll('#navbar li a[data-genesis-ajaxify]');
+        let links = document.querySelectorAll('#navbar li a[data-genesis-ajaxify]');
         ConfNavIndex = Array.from(links).indexOf(element) + 1;
     });
 
@@ -373,7 +376,7 @@ dom.ready(function() {
         if (event.which === 2 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) { return; }
         event.preventDefault();
 
-        var replay = function() {
+        let replay = function() {
             flags.off('update:pending', replay);
             modal.close();
             element.click();
@@ -382,14 +385,14 @@ dom.ready(function() {
         if (flags.get('pending') && !element.matches('a.menu-item') && !element.closest('[data-menu-items]')) {
             flags.warning({
                 callback: function(response, content) {
-                    var buttons = warningButtons(content);
+                    let buttons = warningButtons(content);
                     if (!buttons.save) { return; }
                     buttons.save.addEventListener('click', function(saveEvent) {
                         saveEvent.preventDefault();
                         if (buttons.save.disabled) { return; }
                         setButtonsDisabled([buttons.save, buttons.discard], true);
                         flags.on('update:pending', replay);
-                        var save = document.querySelector('.button-save');
+                        let save = document.querySelector('.button-save');
                         if (save) { save.click(); }
                     });
                     if (buttons.discard) {
@@ -407,7 +410,7 @@ dom.ready(function() {
         }
 
         indicator.show(element);
-        var rawData = element.getAttribute('data-genesis-ajaxify'),
+        let rawData = element.getAttribute('data-genesis-ajaxify'),
             target = element.getAttribute('data-genesis-ajaxify-target'),
             parent = element.getAttribute('data-genesis-ajaxify-target-parent'),
             url = element.getAttribute('href') || element.getAttribute('data-genesis-ajaxify-href'),
@@ -416,10 +419,10 @@ dom.ready(function() {
             data = rawData ? JSON.parse(rawData) : { parsed: false };
 
         if (data) {
-            var uuid = guid(),
+            let uuid = guid(),
                 extras;
             if (element.hasAttribute('data-mm-id') || element.closest('[data-mm-id]')) {
-                var menuSelect = document.querySelector('select.menu-select-wrap'),
+                let menuSelect = document.querySelector('select.menu-select-wrap'),
                     manager = mm.menumanager;
                 if (manager) {
                     extras = {
@@ -443,12 +446,12 @@ dom.ready(function() {
         }
 
         History.pushState(data, title, url);
-        var navbar = element.closest('#navbar, #main-header');
+        let navbar = element.closest('#navbar, #main-header');
         if (navbar) {
             document.querySelectorAll('#navbar .active, #main-header .active').forEach(function(active) {
                 active.classList.remove('active');
             });
-            var item = element.closest('li');
+            let item = element.closest('li');
             if (item) { item.classList.add('active'); }
         }
     });

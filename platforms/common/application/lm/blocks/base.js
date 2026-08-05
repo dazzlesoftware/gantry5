@@ -7,16 +7,16 @@ import __module5 from '../../utils/get-outline.js';
 
 "use strict";
 
-var EventEmitter = __module0,
+let EventEmitter = __module0,
     zen          = __module1,
     dom            = __module2,
     ID           = __module3,
     translate    = __module4,
     getCurrentOutline = __module5.getCurrentOutline;
 
-var isPlainObject = function(value) {
+let isPlainObject = function(value) {
         if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
-        var prototype = Object.getPrototypeOf(value);
+        let prototype = Object.getPrototypeOf(value);
         return prototype === null || prototype === Object.prototype;
     },
     mergeOptions = function(target) {
@@ -37,7 +37,7 @@ var isPlainObject = function(value) {
         }, object);
     },
     setPath = function(object, path, value) {
-        var parts = String(path || '').split('.'),
+        let parts = String(path || '').split('.'),
             last = parts.pop(),
             target = object;
 
@@ -115,7 +115,7 @@ Object.assign(Base.prototype, {
     },
 
     getPageId: function() {
-        var root = dom('[data-lm-root]');
+        let root = dom('[data-lm-root]');
         if (!root) { return 'data-root-not-found'; }
         return root.data('lm-page');
     },

@@ -1,19 +1,19 @@
 "use strict";
 
 // credits: https://github.com/cowboy/javascript-sync-async-foreach
-var asyncForEach = function(arr, eachFn, doneFn) {
+let asyncForEach = function(arr, eachFn, doneFn) {
     arr = arr || [];
-    var i = -1;
+    let i = -1;
     // Resolve array length to a valid (ToUint32) number.
-    var len = arr.length >>> 0;
+    let len = arr.length >>> 0;
 
     (function next(result) {
         // This flag will be set to true if `this.async` is called inside the
         // eachFn` callback.
-        var async;
+        let async;
         // Was false returned from the `eachFn` callback or passed to the
         // `this.async` done function?
-        var abort = result === false;
+        let abort = result === false;
 
         // Increment counter variable and skip any indices that don't exist. This
         // allows sparse arrays to be iterated.

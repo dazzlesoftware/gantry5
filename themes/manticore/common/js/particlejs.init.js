@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-particlejs-id]').forEach(function (container) {
-        var shape = container.dataset.particlejsShape;
-        var count = Number(container.dataset.particlejsCount);
-        var size = Number(container.dataset.particlejsSize);
-        var color = container.dataset.particlejsColor;
-        var background = container.parentElement && container.parentElement.parentElement && container.parentElement.parentElement.parentElement;
+        let shape = container.dataset.particlejsShape;
+        let count = Number(container.dataset.particlejsCount);
+        let size = Number(container.dataset.particlejsSize);
+        let color = container.dataset.particlejsColor;
+        let background = container.parentElement && container.parentElement.parentElement && container.parentElement.parentElement.parentElement;
         if (background) Object.assign(background.style, { position: 'absolute', zIndex: '0', left: '0', top: '0', width: '100%', height: '100%' });
 
         for (x = 0; x < count; x++) {
-            var randomnumber = Math.floor(Math.random() * (size - 0 + 1)) + 0;
+            let randomnumber = Math.floor(Math.random() * (size - 0 + 1)) + 0;
 
             if(shape == 'triangle') {
                 container.insertAdjacentHTML('beforeend', '<div class="g-particlesjs-item g-particlesjs-item-triangle" style="width:0;height:0;border-left:' + randomnumber + 'px solid transparent;border-right:' + randomnumber + 'px solid transparent;border-bottom:' + (randomnumber * 2) + 'px solid ' + color + '"></div>');

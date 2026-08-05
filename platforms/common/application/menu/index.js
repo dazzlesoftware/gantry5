@@ -10,7 +10,7 @@ import __module8 from '../utils/get-ajax-suffix.js';
 import __module9 from '../utils/translate.js';
 
 "use strict";
-var dom           = __module0,
+let dom           = __module0,
     MenuManager   = __module1,
     Submit        = __module2,
     modal         = __module3.modal,
@@ -22,18 +22,18 @@ var dom           = __module0,
     getAjaxSuffix = __module8,
     translate     = __module9;
 
-var menumanager;
+let menumanager;
 
-var trim = function(value) {
+let trim = function(value) {
     return value == null ? '' : String(value).trim();
 };
 
-var clamp = function(value, minimum, maximum) {
+let clamp = function(value, minimum, maximum) {
     return Math.min(maximum, Math.max(minimum, value));
 };
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
     menumanager = new MenuManager('[data-mm-container]', {
         delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
@@ -87,7 +87,7 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'keydown', '.percentage input', function(event, element) {
-        var value  = Number(element.value),
+        let value  = Number(element.value),
             min    = Number(element.min),
             max    = Number(element.max),
             upDown = event.keyCode == 38 || event.keyCode == 40;
@@ -102,17 +102,17 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'keyup', '.percentage input', function(event, element) {
-        var value = Number(element.value),
+        let value = Number(element.value),
             min   = Number(element.min),
             max   = Number(element.max);
 
-        var resizer = menumanager.resizer,
+        let resizer = menumanager.resizer,
             parent  = element.closest('[data-mm-id]'),
             sibling = parent && (parent.nextElementSibling || parent.previousElementSibling);
 
         if (!parent || !sibling || !value || value < min || value > max) { return; }
 
-        var sizes = {
+        let sizes = {
             current: Number(element.currentSize),
             sibling: Number(resizer.getSize(sibling))
         };
@@ -132,7 +132,7 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'focusout', '.percentage input', function(event, element) {
-        var value = Number(element.value);
+        let value = Number(element.value);
         if (value < Number(element.min) || value > Number(element.max)) {
             element.value = element.currentSize;
         }
@@ -141,7 +141,7 @@ dom.ready(function() {
     // Add new columns
     dom.delegate(body, 'click', '.add-column', function(event, element) {
         event.preventDefault();
-        var columns = element.closest('[data-genesis-menu-columns]'),
+        let columns = element.closest('[data-genesis-menu-columns]'),
             container = columns && columns.querySelector('.submenu-selector'),
             children = container ? Array.from(container.children) : [],
             last = children[children.length - 1],
@@ -153,7 +153,7 @@ dom.ready(function() {
         // do not allow to create a new column if there's already one and it's empty
         if (count === 1 && !container.querySelector('.submenu-items > [data-mm-id]')) { return; }
 
-        var block = last.cloneNode(true),
+        let block = last.cloneNode(true),
             items = block.querySelector('.submenu-items'),
             baseLevel = block.querySelector('[data-mm-base-level]'),
             level = block.querySelector('.submenu-level');
@@ -174,7 +174,7 @@ dom.ready(function() {
     // Attach events to pseudo (x) for deleting a column
     ['click', 'touchend'].forEach(function(evt) {
         dom.delegate(body, evt, '[data-genesis-menu-columns] .submenu-items:empty', function(event, element) {
-            var point = event.changedTouches && event.changedTouches[0],
+            let point = event.changedTouches && event.changedTouches[0],
                 bounding = element.getBoundingClientRect(),
                 x = event.pageX || (point && point.pageX) || 0,
                 y = event.pageY || (point && point.pageY) || 0,
@@ -191,7 +191,7 @@ dom.ready(function() {
 
             if (x >= bounding.left + bounding.width - deleter.width && x <= bounding.left + bounding.width &&
                 Math.abs(window.scrollY - y) - bounding.top < deleter.height) {
-                var parent = element.closest('[data-mm-id]'),
+                let parent = element.closest('[data-mm-id]'),
                     container = parent && parent.parentElement,
                     columns = container ? Array.from(container.children).filter(function(child) { return child.matches('[data-mm-id]'); }) : [],
                     index = columns.indexOf(parent),
@@ -211,14 +211,14 @@ dom.ready(function() {
     dom.delegate(body, 'click', '#menu-editor .config-cog, #menu-editor .global-menu-settings', function(event, element) {
         event.preventDefault();
 
-        var data = {},
+        let data = {},
             isRoot = element.classList.contains('global-menu-settings'),
             itemElement = element.closest('[data-mm-id]');
 
         if (isRoot) {
             data.settings = JSON.stringify(menumanager.settings);
         } else {
-            var itemId = itemElement && itemElement.getAttribute('data-mm-id');
+            let itemId = itemElement && itemElement.getAttribute('data-mm-id');
             if (!menumanager.items || typeof menumanager.items[itemId] === 'undefined') {
                 menumanager.setRoot();
             }
@@ -241,23 +241,23 @@ dom.ready(function() {
                     return;
                 }
 
-                var container  = modal.element(content.elements.content),
+                let container  = modal.element(content.elements.content),
                     form       = container && container.querySelector('form'),
                     submit     = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
                     actionForm = form,
                     path;
 
-                var search      = container.querySelector('.search input'),
+                let search      = container.querySelector('.search input'),
                     blocks      = container.querySelectorAll('[data-mm-type]'),
                     filters     = container.querySelectorAll('[data-mm-filter]'),
                     urlTemplate = container.querySelector('.g-urltemplate');
 
                 if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-                var editable = container.querySelector('[data-title-editable]');
+                let editable = container.querySelector('[data-title-editable]');
                 if (editable) {
                     editable.addEventListener('genesis:title-edit-end', function(titleEvent) {
-                        var detail = titleEvent.detail || {},
+                        let detail = titleEvent.detail || {},
                             title = trim(detail.title),
                             original = detail.original;
                         if (!title) {
@@ -276,10 +276,10 @@ dom.ready(function() {
                         }
 
                         blocks.forEach(function(block) { block.classList.add('hidden'); });
-                        var value = search.value.toLowerCase();
+                        let value = search.value.toLowerCase();
 
                         filters.forEach(function(filter) {
-                            var text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
+                            let text = trim(filter.getAttribute('data-mm-filter')).toLowerCase(),
                                 found = text.startsWith(value) || text.includes(' ' + value),
                                 block = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
                             if (found && block) {
@@ -305,7 +305,7 @@ dom.ready(function() {
                         indicator.hide(target);
                         indicator.show(target);
 
-                        var post = Submit(actionForm.elements, container, {isRoot: isRoot});
+                        let post = Submit(actionForm.elements, container, {isRoot: isRoot});
 
                         if (post.invalid.length) {
                             target.disabled = false;
@@ -339,9 +339,9 @@ dom.ready(function() {
                             }
 
                             if (response.body.html) {
-                                var parent = itemElement;
+                                let parent = itemElement;
                                 if (parent) {
-                                    var status = response.body.item.enabled || response.body.item.options.particle.enabled;
+                                    let status = response.body.item.enabled || response.body.item.options.particle.enabled;
                                     parent.innerHTML = response.body.html;
                                     parent.classList.toggle('g-menu-item-disabled', status == '0');
                                 }
@@ -351,7 +351,7 @@ dom.ready(function() {
 
                             // if it's apply and save we also save the panel
                             if (target.hasAttribute('data-apply-and-save')) {
-                                var save = document.querySelector('.button-save');
+                                let save = document.querySelector('.button-save');
                                 if (save) { save.click(); }
                             }
 

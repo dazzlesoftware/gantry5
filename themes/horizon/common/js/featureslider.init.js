@@ -2,12 +2,12 @@ function asBool(value) { return value === true || value === 'true' || value === 
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-featureslider-id]').forEach(function (root, index) {
-      var container = root.querySelector('.area');
-      var autoplay = asBool(container.dataset.featuresliderAutoplay) ? { delay: container.dataset.featuresliderTimeout, disableOnInteraction: false } : false;
-      var touchMove = asBool(container.dataset.featuresliderTouchmove);
-      var touchMoveTabs = asBool(container.dataset.featuresliderTouchmovetabs);
+      let container = root.querySelector('.area');
+      let autoplay = asBool(container.dataset.featuresliderAutoplay) ? { delay: container.dataset.featuresliderTimeout, disableOnInteraction: false } : false;
+      let touchMove = asBool(container.dataset.featuresliderTouchmove);
+      let touchMoveTabs = asBool(container.dataset.featuresliderTouchmovetabs);
 
-      var thumbs = new Swiper('.g-featureslider-thumbs', {
+      let thumbs = new Swiper('.g-featureslider-thumbs', {
         slidesPerView: 4,
         direction: 'vertical',
         freeMode: false,
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         allowTouchMove: touchMoveTabs,
       });
 
-      var slideSwiper = new Swiper(container, {
+      let slideSwiper = new Swiper(container, {
         speed: container.dataset.featuresliderSpeed,
         loop: asBool(container.dataset.featuresliderLoop),
         direction: 'horizontal',

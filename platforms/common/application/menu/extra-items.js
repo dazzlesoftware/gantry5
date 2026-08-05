@@ -14,7 +14,7 @@ import __module12 from '../utils/wp-widgets-customizer.js';
 
 "use strict";
 
-var dom           = __module0,
+let dom           = __module0,
     Submit        = __module1,
     modal         = __module2.modal,
     toastr        = __module2.toastr,
@@ -29,47 +29,47 @@ var dom           = __module0,
     translate     = __module10,
     Cards         = __module11;
 
-var WordpressWidgetsCustomizer = __module12;
-var menumanager = null;
+let WordpressWidgetsCustomizer = __module12;
+let menumanager = null;
 
-var asElement = function(element) {
+let asElement = function(element) {
     return element && element.nodeType ? element : element && element[0];
 };
 
-var fragmentFromHTML = function(html) {
-    var template = document.createElement('template');
+let fragmentFromHTML = function(html) {
+    let template = document.createElement('template');
     template.innerHTML = String(html || '').trim();
     return template.content;
 };
 
-var fieldByName = function(name) {
+let fieldByName = function(name) {
     return Array.from(document.querySelectorAll('[name]')).find(function(field) {
         return field.name === name;
     }) || null;
 };
 
-var directChildren = function(parent, selector) {
+let directChildren = function(parent, selector) {
     return Array.from(parent ? parent.children : []).filter(function(child) {
         return child.matches(selector);
     });
 };
 
-var randomID = function randomString(len, an) {
+let randomID = function randomString(len, an) {
     an = an && an.toLowerCase();
-    var str = '', i = 0, min = an === 'a' ? 10 : 0, max = an === 'n' ? 10 : 62;
+    let str = '', i = 0, min = an === 'a' ? 10 : 0, max = an === 'n' ? 10 : 62;
     for (; i++ < len;) {
-        var r = Math.random() * (max - min) + min << 0;
+        let r = Math.random() * (max - min) + min << 0;
         str += String.fromCharCode(r += r > 9 ? r < 36 ? 55 : 61 : 48);
     }
     return str;
 };
 
-var StepOne = function(map, mode) {
+let StepOne = function(map, mode) {
     if (this.isNewParticle && mode !== 'reorder') { return; }
     this.resizer.updateItemSizes();
     menumanager = this;
 
-    var save = document.querySelector('[data-save]'),
+    let save = document.querySelector('[data-save]'),
         current = {
             settings: this.settings,
             ordering: this.ordering,
@@ -87,7 +87,7 @@ var StepOne = function(map, mode) {
     }
 
     if (this.isParticle && this.isNewParticle) {
-        var block = asElement(this.block),
+        let block = asElement(this.block),
             blocktype = block && block.getAttribute('data-mm-blocktype'),
             title = block && block.querySelector('.menu-item .title');
         if (!block) { return; }
@@ -96,30 +96,30 @@ var StepOne = function(map, mode) {
         block.classList.add('g-menu-item-' + blocktype);
         block.setAttribute('data-mm-original-type', blocktype);
 
-        var badge = document.createElement('span');
+        let badge = document.createElement('span');
         badge.className = 'menu-item-type badge';
         badge.textContent = blocktype;
         if (title) { title.after(badge); }
 
-        var config = block.querySelector('.config-cog');
+        let config = block.querySelector('.config-cog');
         modal.open({
             content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             remote: parseAjaxURI((config ? config.getAttribute('href') : '') + getAjaxSuffix()),
             remoteLoaded: function(response, modalInstance) {
-                var content = modal.element(modalInstance.elements.content),
+                let content = modal.element(modalInstance.elements.content),
                     search = content && content.querySelector('.search input'),
                     blocks = content ? content.querySelectorAll('[data-mm-type]') : [],
                     filters = content ? content.querySelectorAll('[data-mm-filter]') : [];
 
                 if (!search || !filters.length || !blocks.length) { return; }
                 search.addEventListener('input', function() {
-                    var value = search.value.toLowerCase();
+                    let value = search.value.toLowerCase();
                     blocks.forEach(function(item) { item.classList.toggle('hidden', Boolean(value)); });
                     if (!value) { return; }
 
                     filters.forEach(function(filter) {
-                        var text = String(filter.getAttribute('data-mm-filter') || '').trim().toLowerCase(),
+                        let text = String(filter.getAttribute('data-mm-filter') || '').trim().toLowerCase(),
                             match = text.startsWith(value) || text.includes(' ' + value),
                             item = filter.matches('[data-mm-type]') ? filter : filter.closest('[data-mm-type]');
                         if (match && item) { item.classList.remove('hidden'); }
@@ -133,12 +133,12 @@ var StepOne = function(map, mode) {
     this.type = undefined;
 };
 
-var StepTwo = function(data, content, button) {
+let StepTwo = function(data, content, button) {
     content = asElement(content);
     button = asElement(button);
     if (!content || !button) { return; }
 
-    var route = content.querySelector('[data-mm-particle-stepone]'),
+    let route = content.querySelector('[data-mm-particle-stepone]'),
         uri = route && route.getAttribute('data-mm-particle-stepone'),
         picker = data.instancepicker,
         item;
@@ -151,7 +151,7 @@ var StepTwo = function(data, content, button) {
     }
 
     request('post', parseAjaxURI(uri + getAjaxSuffix()), data, function(error, stepResponse) {
-        var result = stepResponse && stepResponse.body;
+        let result = stepResponse && stepResponse.body;
         if (!result || !result.success) {
             modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
             indicator.hide(button);
@@ -161,10 +161,10 @@ var StepTwo = function(data, content, button) {
         content.innerHTML = result.html;
         Selectize.initialize(content.querySelectorAll('[data-selectize]'));
 
-        var urlTemplate = content.querySelector('.g-urltemplate');
+        let urlTemplate = content.querySelector('.g-urltemplate');
         if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-        var form = content.querySelector('form'),
+        let form = content.querySelector('form'),
             submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
         if (!form || !submits.length) { return true; }
 
@@ -176,12 +176,12 @@ var StepTwo = function(data, content, button) {
                 event.preventDefault();
                 indicator.show(submit);
 
-                var post = Submit(form.elements, content, { submitUnchecked: true }),
+                let post = Submit(form.elements, content, { submitUnchecked: true }),
                     method = form.getAttribute('method') || 'post',
                     action = form.getAttribute('action') || '';
 
                 request(method, parseAjaxURI(action + getAjaxSuffix()), post.valid.join('&') || {}, function(submitError, submitResponse) {
-                    var submitResult = submitResponse && submitResponse.body,
+                    let submitResult = submitResponse && submitResponse.body,
                         field = null;
 
                     if (!submitResult || !submitResult.success) {
@@ -190,7 +190,7 @@ var StepTwo = function(data, content, button) {
                         });
                     } else if (!picker) {
                         if (menumanager) {
-                            var element = asElement(menumanager.element),
+                            let element = asElement(menumanager.element),
                                 path = element.getAttribute('data-mm-id') + '-',
                                 id = randomID(5),
                                 baseParent = element.closest('[data-mm-base]'),
@@ -211,7 +211,7 @@ var StepTwo = function(data, content, button) {
                             menumanager.emit('dragEnd', menumanager.map);
                             toastr.success(translate('GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         } else {
-                            var position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'),
+                            let position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'),
                                 list = position && position.querySelector(':scope > ul');
                             if (list) { list.appendChild(fragmentFromHTML(submitResult.html)); }
                             Cards.serialize(position);
@@ -220,7 +220,7 @@ var StepTwo = function(data, content, button) {
                         }
                     } else {
                         field = fieldByName(picker.field);
-                        var parent = field && field.parentElement,
+                        let parent = field && field.parentElement,
                             btnPicker = parent && parent.querySelector('[data-g-instancepicker]'),
                             label = parent && parent.querySelector('.g-instancepicker-title');
 
@@ -244,10 +244,10 @@ var StepTwo = function(data, content, button) {
 };
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
     dom.delegate(body, 'click', '.menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]', function(event, element) {
-        var container = element.closest('.menu-editor-extras'),
+        let container = element.closest('.menu-editor-extras'),
             selectButton = container && container.querySelector('[data-mm-select]');
         if (!container || !selectButton) { return; }
 
@@ -263,11 +263,11 @@ dom.ready(function() {
         event.preventDefault();
         if (element.classList.contains('disabled') || element.disabled) { return; }
 
-        var container = element.closest('.menu-editor-extras'),
+        let container = element.closest('.menu-editor-extras'),
             selected = container && container.querySelector('[data-lm-blocktype].selected, [data-mm-module].selected');
         if (!container || !selected) { return; }
 
-        var type = selected.getAttribute('data-mm-type'),
+        let type = selected.getAttribute('data-mm-type'),
             data = { type: type },
             instancepicker = element.getAttribute('data-g-instancepicker');
 
@@ -280,7 +280,7 @@ dom.ready(function() {
                 break;
             case 'module':
                 data.particle = type;
-                var moduleTitle = selected.querySelector('[data-mm-title]');
+                let moduleTitle = selected.querySelector('[data-mm-title]');
                 data.title = moduleTitle && moduleTitle.getAttribute('data-mm-title');
                 data.options = { particle: { module_id: selected.getAttribute('data-mm-module') } };
                 break;
@@ -288,7 +288,7 @@ dom.ready(function() {
 
         indicator.show(element);
         if (instancepicker && type === 'module') {
-            var pickerData = JSON.parse(instancepicker),
+            let pickerData = JSON.parse(instancepicker),
                 field = fieldByName(pickerData.field);
             if (field) {
                 field.value = selected.getAttribute('data-mm-module');

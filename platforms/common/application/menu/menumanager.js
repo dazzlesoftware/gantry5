@@ -6,14 +6,14 @@ import __module4 from '../ui/eraser.js';
 import __module5 from './drag.resizer.js';
 
 "use strict";
-var EventEmitter = __module0,
+let EventEmitter = __module0,
     dom         = __module1,
     zen       = __module2,
     DragDrop  = __module3,
     Eraser    = __module4,
     Resizer   = __module5;
 
-var ltrim = function(value) {
+let ltrim = function(value) {
         return String(value == null ? '' : value).replace(/^\/+/, '');
     },
     last = function(collection) {
@@ -24,7 +24,7 @@ var ltrim = function(value) {
     },
     isPlainObject = function(value) {
         if (!value || Object.prototype.toString.call(value) !== '[object Object]') { return false; }
-        var prototype = Object.getPrototypeOf(value);
+        let prototype = Object.getPrototypeOf(value);
         return prototype === null || prototype === Object.prototype;
     },
     cloneValue = function(value, seen) {
@@ -34,7 +34,7 @@ var ltrim = function(value) {
         if (!Array.isArray(value) && !isPlainObject(value)) { return value; }
         if (seen.has(value)) { return seen.get(value); }
 
-        var clone = Array.isArray(value) ? [] : {};
+        let clone = Array.isArray(value) ? [] : {};
         seen.set(value, clone);
         Object.keys(value).forEach(function(key) {
             clone[key] = cloneValue(value[key], seen);
@@ -46,7 +46,7 @@ var ltrim = function(value) {
     };
 
 
-var MenuManagerDefinition = {
+let MenuManagerDefinition = {
     options: {},
 
     initialize: function(element, options) {
@@ -97,13 +97,13 @@ var MenuManagerDefinition = {
                 items: deepClone(this.items)
             };
 
-            var submenus = dom('[data-genesis-menu-columns] .submenu-selector'), columns;
+            let submenus = dom('[data-genesis-menu-columns] .submenu-selector'), columns;
             if (this.resizer && submenus && (columns = submenus.search('> [data-mm-id]'))) { this.resizer.updateMaxValues(columns); }
         }
     },
 
     click: function(event, element) {
-        var target = dom(event.target);
+        let target = dom(event.target);
         if (target.matches('.g-menu-addblock') || target.parent('.g-menu-addblock')) {
             return false;
         }
@@ -114,14 +114,14 @@ var MenuManagerDefinition = {
         }
 
         if (element.find('[data-genesis-ajaxify]')) {
-            var siblings = element.siblings();
+            let siblings = element.siblings();
             element.addClass('active');
             if (siblings) { siblings.removeClass('active'); }
         }
 
         element.emit('click');
 
-        var link = element.find('a');
+        let link = element.find('a');
         if (link) { link[0].click(); }
     },
 
@@ -130,7 +130,7 @@ var MenuManagerDefinition = {
     },
 
     start: function(event, element) {
-        var root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.genesis-mm-particles-picker'),
+        let root = element.parent('.menu-selector') || element.parent('.submenu-column') || element.parent('.submenu-selector') || element.parent('.genesis-mm-particles-picker'),
             size = dom(element).position(),
             coords = dom(element)[0].getBoundingClientRect();
 
@@ -151,13 +151,13 @@ var MenuManagerDefinition = {
         this.itemTo = null;
 
         if (this.isParticle && !this.isNewParticle) {
-            var children = element.parent().children('[data-mm-id]');
+            let children = element.parent().children('[data-mm-id]');
             this.ParticleIndex = indexOf(children, element[0]);
         }
 
         root.addClass('moving');
 
-        var type = dom(element).data('mm-id'),
+        let type = dom(element).data('mm-id'),
             clone = element[0].cloneNode(true);
 
         if (!this.placeholder) { this.placeholder = zen((this.type == 'column' ? 'div' : 'li') + '.block.placeholder[data-mm-placeholder]'); }
@@ -181,7 +181,7 @@ var MenuManagerDefinition = {
 
             this.placeholder.before(element);
         } else {
-            var position = element.position();
+            let position = element.position();
             this.original.style({
                 position: 'fixed',
                 opacity: 0.5
@@ -216,7 +216,7 @@ var MenuManagerDefinition = {
         (!this.isNewParticle ? this.original : this.block).style({transform: 'translate(0, 0)'});
         if (!this.placeholder) { this.placeholder = zen((this.type == 'column' ? 'div' : 'li') + '.block.placeholder[data-mm-placeholder]').style({ display: 'none' }); }
 
-        var targetType = target.parent('.g-toplevel') || target.matches('.g-toplevel') ? 'main' : (target.matches('.g-block') ? 'column' : 'columns_items'),
+        let targetType = target.parent('.g-toplevel') || target.matches('.g-toplevel') ? 'main' : (target.matches('.g-block') ? 'column' : 'columns_items'),
             dataLevel = target.data('mm-level'),
             originalLevel = this.block.data('mm-level');
 
@@ -227,7 +227,7 @@ var MenuManagerDefinition = {
 
         // Support for nested new particles/modules/widgets
         if (dataLevel === null && this.type === 'columns_items' && this.isParticle && this.isNewParticle) {
-            var submenu_items = target.find('.submenu-items');
+            let submenu_items = target.find('.submenu-items');
             if (!submenu_items) {
                 this.dragdrop.matched = false;
                 return;
@@ -242,7 +242,7 @@ var MenuManagerDefinition = {
 
         // Workaround for layout and style of columns
         if (dataLevel === null && (this.type === 'columns_items' || this.isParticle)) {
-            var submenu_items = target.find('.submenu-items'),
+            let submenu_items = target.find('.submenu-items'),
                 submenu_items_level = submenu_items.data('mm-base-level');
 
             // extend drop areas and ensure items cannot be dragged between different levels
@@ -281,7 +281,7 @@ var MenuManagerDefinition = {
         }
 
         // Check for adjacents and avoid inserting any placeholder since it would be the same position
-        var exclude = ':not(.placeholder):not([data-mm-id="' + this.original.data('mm-id') + '"])',
+        let exclude = ':not(.placeholder):not([data-mm-id="' + this.original.data('mm-id') + '"])',
             adjacents = {
                 before: this.original.previousSiblings(exclude),
                 after: this.original.nextSiblings(exclude)
@@ -325,11 +325,11 @@ var MenuManagerDefinition = {
         if (this.placeholder) { this.placeholder.remove(); }
         this.targetLevel = undefined;
 
-        var target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
+        let target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
 
         if (!this.isNewParticle && (this.Element.hasClass('g-menu-removable') || this.isParticle)) {
             target = dom(target);
-            var targetNode = target[0];
+            let targetNode = target[0];
             if (targetNode === this.eraser.element || this.eraser.element.contains(targetNode)) {
                 this.dragdrop.removeElement = true;
                 this.eraser.over();
@@ -343,7 +343,7 @@ var MenuManagerDefinition = {
     removeElement: function(event, element) {
         this.dragdrop.removeElement = false;
 
-        var transition = {
+        let transition = {
             opacity: 0
         };
 
@@ -359,7 +359,7 @@ var MenuManagerDefinition = {
 
         this.dragdrop.detachDragEvents();
 
-        var particle = this.block,
+        let particle = this.block,
             base = particle.parent('[data-mm-base]').data('mm-base'),
             col = (particle.parent('[data-mm-id]').data('mm-id').match(/\d+$/) || [0])[0],
             index = indexOf(particle.parent().children('[data-mm-id]:not(.original-placeholder)'), particle[0]);
@@ -382,8 +382,8 @@ var MenuManagerDefinition = {
         target = dom(target);
 
         // we are removing the block
-        var lastOvered = dom(this.dragdrop.lastOvered);
-        var trashZone = this.eraser.element.querySelector('.trash-zone');
+        let lastOvered = dom(this.dragdrop.lastOvered);
+        let trashZone = this.eraser.element.querySelector('.trash-zone');
         if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
             this.eraser.hide();
             return;
@@ -404,7 +404,7 @@ var MenuManagerDefinition = {
             return;
         }
 
-        var placeholderParent = this.placeholder.parent();
+        let placeholderParent = this.placeholder.parent();
         if (!placeholderParent) {
             this.type = undefined;
             this.targetLevel = false;
@@ -414,7 +414,7 @@ var MenuManagerDefinition = {
 
         if (this.addNewItem) { this.block.attribute('style', null).removeClass('active'); }
 
-        var parent = this.block.parent();
+        let parent = this.block.parent();
         this.eraser.hide();
 
         if (this.original) {
@@ -430,7 +430,7 @@ var MenuManagerDefinition = {
         if (this.wasActive) { element.addClass('active'); }
 
         if (this.isParticle) {
-            var id = last(this.itemID.split('/')),
+            let id = last(this.itemID.split('/')),
                 targetItem = (target || this.itemTo),
                 base = targetItem[target && !target.hasClass('g-block') ? 'parent' : 'find']('[data-mm-base]').data('mm-base');
 
@@ -439,7 +439,7 @@ var MenuManagerDefinition = {
             this.block.data('mm-id', this.itemID).data('mm-level', this.targetLevel);
         }
 
-        var path = this.itemID.split('/'),
+        let path = this.itemID.split('/'),
             items, column;
 
         path.splice(this.itemLevel - 1);
@@ -447,7 +447,7 @@ var MenuManagerDefinition = {
 
         // Items reorder for root or sublevels with logic to reorder FROM and TO sublevel column if needed
         if (this.itemFrom || this.itemTo) {
-            var sources = this.itemFrom == this.itemTo ? [this.itemFrom] : [this.itemFrom, this.itemTo];
+            let sources = this.itemFrom == this.itemTo ? [this.itemFrom] : [this.itemFrom, this.itemTo];
             sources.forEach(function(source) {
                 if (!source) { return; }
 
@@ -470,7 +470,7 @@ var MenuManagerDefinition = {
             // Refresh the origin if it's a particle
             base = this.itemFrom ? (this.itemFrom.attribute('data-mm-base') !== null ? this.itemFrom : this.itemFrom.find('[data-mm-base]')) : null;
             if (this.isParticle && base && this.targetLevel != this.currentLevel) {
-                var list = (this.itemFrom.data('mm-id').match(/\d+$/) || [0])[0],
+                let list = (this.itemFrom.data('mm-id').match(/\d+$/) || [0])[0],
                     location = base.data('mm-base') || '',
                     currentLocation = ltrim([location, id].join('/'), ['/']);
 
@@ -482,14 +482,14 @@ var MenuManagerDefinition = {
 
         // Column reordering, we just need to swap the array indexes
         if (!this.itemFrom && !this.itemTo && !this.isParticle) {
-            var colsOrder = [],
+            let colsOrder = [],
                 active = dom('.g-toplevel [data-mm-id].active').data('mm-id');
             items = parent.search('> [data-mm-id]');
 
             items.forEach(function(element, index) {
                 element = dom(element);
 
-                var id = element.data('mm-id'),
+                let id = element.data('mm-id'),
                     column = Number((id.match(/\d+$/) || [0])[0]);
 
                 element.data('mm-id', id.replace(/\d+$/, '' + index));
@@ -506,14 +506,14 @@ var MenuManagerDefinition = {
          console.groupEnd();
          }*/
 
-        var selector = this.block.parent('.submenu-selector');
+        let selector = this.block.parent('.submenu-selector');
         if (selector) { this.resizer.updateItemSizes(selector.search('> [data-mm-id]')); }
 
         this.emit('dragEnd', this.map, 'reorder');
     },
 
     stopAnimation: function(/*element*/) {
-        var flex = null;
+        let flex = null;
         if (this.type == 'column') { flex = this.resizer.getSize(this.block); }
         if (this.root) { this.root.removeClass('moving'); }
         if (this.block) {

@@ -9,7 +9,7 @@ import './dropdown-edit.js';
 
 "use strict";
 
-var dom = __module0,
+let dom = __module0,
     modal = __module1.modal,
     toastr = __module1.toastr,
     request = __module2,
@@ -20,20 +20,20 @@ var dom = __module0,
     flags = __module6;
 
 
-var asElement = function(element) {
+let asElement = function(element) {
     return element && element.nodeType ? element : element && element[0];
 };
 
-var elementFromHTML = function(html) {
-    var template = document.createElement('template');
+let elementFromHTML = function(html) {
+    let template = document.createElement('template');
     template.innerHTML = String(html || '').trim();
     return template.content.firstElementChild;
 };
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
-    var attachEditables = function(editables) {
+    let attachEditables = function(editables) {
         editables.forEach(function(editable) {
             if (editable.confWasAttached) { return; }
             editable.confWasAttached = true;
@@ -41,14 +41,14 @@ dom.ready(function() {
                 editable.style.textOverflow = 'inherit';
             });
             editable.addEventListener('genesis:title-edit-end', function(event) {
-                var detail = event.detail || {},
+                let detail = event.detail || {},
                     title = detail.title,
                     original = detail.original;
 
                 editable.style.textOverflow = 'ellipsis';
                 if (detail.canceled || title === original) { return; }
 
-                var href = editable.getAttribute('data-g-config-href'),
+                let href = editable.getAttribute('data-g-config-href'),
                     method = (editable.getAttribute('data-g-config-method') || 'post').toLowerCase(),
                     parent = editable.parentElement,
                     editButton = parent && parent.querySelector('[data-title-edit]');
@@ -57,7 +57,7 @@ dom.ready(function() {
                 if (editButton) { editButton.classList.add('disabled'); }
 
                 request(method, parseAjaxURI(href + getAjaxSuffix()), { title: String(title).trim() }, function(error, response) {
-                    var result = response && response.body;
+                    let result = response && response.body;
                     if (!result || !result.success) {
                         modal.open({
                             content: result ? (result.html || result.message || result) : (error ? error.message : 'Unable to rename outline.'),
@@ -72,7 +72,7 @@ dom.ready(function() {
                         editable.setAttribute('data-title', title);
                         editable.setAttribute('data-tip', title);
 
-                        var dummy = elementFromHTML(result.outline),
+                        let dummy = elementFromHTML(result.outline),
                             card = editable.closest('.card'),
                             id = dummy && dummy.querySelector('h4 span:last-child'),
                             actions = dummy && dummy.querySelector('.outline-actions'),
@@ -99,7 +99,7 @@ dom.ready(function() {
             remoteLoaded: function(response, content) {
                 if (!response.body.success) { modal.enableCloseByOverlay(); return; }
 
-                var container = modal.element(content.elements.content),
+                let container = modal.element(content.elements.content),
                     title = container.querySelector('[name="title"]'),
                     confirm = container.querySelector('[data-g-outline-create-confirm]');
                 if (!title || !confirm) { return; }
@@ -113,7 +113,7 @@ dom.ready(function() {
                     indicator.hide(confirm);
                     indicator.show(confirm);
 
-                    var checkedFrom = container.querySelector('[name="from"]:checked'),
+                    let checkedFrom = container.querySelector('[name="from"]:checked'),
                         preset = container.querySelector('[name="preset"]'),
                         outline = container.querySelector('[name="outline"]'),
                         inherit = container.querySelector('[name="inherit"]'),
@@ -126,17 +126,17 @@ dom.ready(function() {
                         };
 
                     Object.keys(data).forEach(function(key) { if (!data[key]) { delete data[key]; } });
-                    var uri = parseAjaxURI(confirm.getAttribute('data-g-outline-create-confirm') + getAjaxSuffix());
+                    let uri = parseAjaxURI(confirm.getAttribute('data-g-outline-create-confirm') + getAjaxSuffix());
 
                     request('post', uri, data, function(error, resultResponse) {
                         indicator.hide(confirm);
-                        var result = resultResponse && resultResponse.body;
+                        let result = resultResponse && resultResponse.body;
                         if (!result || !result.success) {
                             modal.open({ content: result ? (result.html || result.message || result) : error.message });
                             return;
                         }
 
-                        var base = document.querySelector('#configurations ul li'),
+                        let base = document.querySelector('#configurations ul li'),
                             created = document.createElement('li');
                         if (base) {
                             created.className = base.className;
@@ -154,7 +154,7 @@ dom.ready(function() {
     });
 
     dom.delegate(body, 'change', 'input[type="radio"]#from-preset, input[type="radio"]#from-outline', function(event, element) {
-        var card = element.closest('.card');
+        let card = element.closest('.card');
         if (!card) { return; }
         card.querySelectorAll('.g-create-from').forEach(function(block) {
             block.style.display = block.classList.contains('g-create-from-' + element.value) ? 'block' : 'none';
@@ -163,7 +163,7 @@ dom.ready(function() {
 
     dom.delegate(body, 'click', '#configurations [data-g-config]', function(event, element) {
         event.preventDefault();
-        var mode = element.getAttribute('data-g-config'),
+        let mode = element.getAttribute('data-g-config'),
             href = element.getAttribute('data-g-config-href'),
             hrefConfirm = element.getAttribute('data-g-config-href-confirm'),
             encoded = window.btoa(href),
@@ -173,7 +173,7 @@ dom.ready(function() {
             flags.warning({
                 url: parseAjaxURI(href + getAjaxSuffix()),
                 callback: function(response, content) {
-                    var container = asElement(content),
+                    let container = asElement(content),
                         confirm = container && container.querySelector('[data-g-delete-confirm]'),
                         cancel = container && container.querySelector('[data-g-delete-cancel]');
                     if (!confirm) { return; }
@@ -205,11 +205,11 @@ dom.ready(function() {
         indicator.hide(element);
         indicator.show(element);
         request(method, parseAjaxURI((hrefConfirm || href) + getAjaxSuffix()), {}, function(error, response) {
-            var result = response && response.body;
+            let result = response && response.body;
             if (!result || !result.success) {
                 modal.open({ content: result ? (result.html || result.message || result) : error.message });
             } else {
-                var selector = document.querySelector('#configuration-selector'),
+                let selector = document.querySelector('#configuration-selector'),
                     currentOutline = selector ? selector.value : null,
                     outlineDeleted = result.outline,
                     reload = Array.from(document.querySelectorAll('[href]')).find(function(link) {
@@ -217,7 +217,7 @@ dom.ready(function() {
                     });
 
                 if (outlineDeleted && currentOutline === outlineDeleted && selector && selector.selectizeInstance && reload) {
-                    var ids = Object.keys(selector.selectizeInstance.Options);
+                    let ids = Object.keys(selector.selectizeInstance.Options);
                     if (ids.length) { reload.href = reload.href.replace('style=' + outlineDeleted, 'style=' + ids.shift()); }
                 }
                 if (reload) { reload.click(); }

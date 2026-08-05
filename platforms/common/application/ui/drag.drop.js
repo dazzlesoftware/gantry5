@@ -4,11 +4,11 @@ import __module2 from '../utils/dom-effects.js';
 
 "use strict";
 
-var EventEmitter = __module0,
+let EventEmitter = __module0,
     DragEvents = __module1,
     dom          = __module2;
 
-var isIE = (navigator.appName === "Microsoft Internet Explorer");
+let isIE = (navigator.appName === "Microsoft Internet Explorer");
 
 class DragDrop extends EventEmitter {
     constructor(container, options) {
@@ -47,8 +47,8 @@ class DragDrop extends EventEmitter {
         this.startListeners = [];
         this.DRAG_EVENTS.EVENTS.START.forEach(function(eventName) {
             this.container.forEach(function(node) {
-                var listener = function(event) {
-                    var target = dom(event.target || event.srcElement),
+                let listener = function(event) {
+                    let target = dom(event.target || event.srcElement),
                         match = target.matches(this.options.delegate) ? target : target.parent(this.options.delegate);
 
                     if (match) { return this.start(event, match); }
@@ -83,7 +83,7 @@ class DragDrop extends EventEmitter {
         this.scrollHeight = document.body.scrollHeight;
 
         // Prevents dragging a column from itself and limiting to its handle
-        var target = dom(event.target);
+        let target = dom(event.target);
         if (!element.parent('[data-lm-root]') && element.hasClass('g-block') && (!target.matches('.submenu-reorder') && !target.parent('.submenu-reorder'))) { return true; }
 
         if (event.which && event.which !== 1 || dom(event.target).matches(this.options.exclude)) { return true; }
@@ -118,7 +118,7 @@ class DragDrop extends EventEmitter {
             transform: this.element.compute('transform')
         };
 
-        var clientRect = this.element[0].getBoundingClientRect();
+        let clientRect = this.element[0].getBoundingClientRect();
         this.origin.offset = {
             clientRect: clientRect,
             scroll: {
@@ -134,7 +134,7 @@ class DragDrop extends EventEmitter {
             return false;
         }
 
-        var offset  = Math.abs(this.origin.offset.x),
+        let offset  = Math.abs(this.origin.offset.x),
             columns = (this.element.parent().data('lm-blocktype') === 'grid' && this.element.parent().parent().data('lm-root')) ||
                 (this.element.parent().parent().data('lm-blocktype') == 'container' && (this.element.parent().parent().parent().data('lm-root') || this.element.parent().parent().parent().data('lm-blocktype') == 'wrapper'));
 
@@ -203,7 +203,7 @@ class DragDrop extends EventEmitter {
             return;
         }
 
-        var settings = { duration: '250ms' };
+        let settings = { duration: '250ms' };
 
         if (this.removeElement) {
             this.detachDragEvents();
@@ -271,7 +271,7 @@ class DragDrop extends EventEmitter {
         //if (event && event.type.match(/^touch/i)) { event.preventDefault(); }
 
         if (this.options.catchClick) {
-            var didItMove = {
+            let didItMove = {
                 x: event.changedTouches ? event.changedTouches[0].pageX : event.pageX,
                 y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
             };
@@ -288,14 +288,14 @@ class DragDrop extends EventEmitter {
             this.moved = true;
         }
 
-        var clientX = event.clientX || (event.touches && event.touches[0].clientX) || 0,
+        let clientX = event.clientX || (event.touches && event.touches[0].clientX) || 0,
             clientY = event.clientY || (event.touches && event.touches[0].clientY) || 0,
             overing = document.elementFromPoint(clientX, clientY),
             isGrid  = this.element.data('lm-blocktype') === 'grid';
 
 
         // Logic to auto-scroll on drag
-        var scrollHeight = this.scrollHeight,
+        let scrollHeight = this.scrollHeight,
             Height       = document.body.clientHeight,
             Scroll       = window.pageYOffset;
 
@@ -303,7 +303,7 @@ class DragDrop extends EventEmitter {
         if (!overing) { return; }
 
         if (!dom(overing).matches('#trash') && !dom(overing).parent('#trash')) {
-            var st, sl, trash = dom('[data-genesis-container] #trash');
+            let st, sl, trash = dom('[data-genesis-container] #trash');
             if (clientY + 50 >= Height && Scroll + Height < scrollHeight) {
                 this.scrollInterval = setInterval(function() {
                     sl = (window.pageXOffset || document.documentElement.scrollLeft) - (document.documentElement.clientLeft || 0);
@@ -330,7 +330,7 @@ class DragDrop extends EventEmitter {
         this.matched = dom(overing).matches(this.options.droppables) ? overing : (dom(overing).parent(this.options.droppables) || [false])[0];
         this.isPlaceHolder = dom(overing).matches('[data-lm-placeholder]') ? true : (dom(overing).parent('[data-lm-placeholder]') ? true : false);
 
-        var deltaX    = this.lastX - clientX,
+        let deltaX    = this.lastX - clientX,
             deltaY    = this.lastY - clientY,
             direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && 'left' ||
                 Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && 'right' ||
@@ -341,7 +341,7 @@ class DragDrop extends EventEmitter {
         deltaX = (event.changedTouches ? event.changedTouches[0].pageX : event.pageX) - this.origin.x;
         deltaY = (event.changedTouches ? event.changedTouches[0].pageY : event.pageY) - this.origin.y;
 
-        var isNew = this.element.parent('.particles-container');
+        let isNew = this.element.parent('.particles-container');
         if (isNew) {
             deltaY += this.origin.offset.scroll.y - window.scrollY;
         }
@@ -361,9 +361,9 @@ class DragDrop extends EventEmitter {
             }
 
             if (this.matched && this.lastMatched) {
-                var rect = this.matched.getBoundingClientRect();
+                let rect = this.matched.getBoundingClientRect();
                 // Note: you can divide x axis by 3 rather than 2 for 4 directions
-                var location = {
+                let location = {
                     x: Math.abs((clientX - rect.left)) < (rect.width / 2) && 'before' ||
                     Math.abs((clientX - rect.left)) >= (rect.width - (rect.width / 2)) && 'after' ||
                     'other',

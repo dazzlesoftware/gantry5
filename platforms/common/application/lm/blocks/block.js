@@ -2,10 +2,10 @@ import __module0 from './base.js';
 
 "use strict";
 
-var Base = __module0;
+let Base = __module0;
 
-var precision = function(value, decimals) {
-    var multiplier = Math.pow(10, decimals);
+let precision = function(value, decimals) {
+    let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
 };
 
@@ -27,7 +27,7 @@ class Block extends Base {
         size = precision(size, 1);
         if (store) { this.setAttribute('size', size); }
 
-        var style = this.block[0].style;
+        let style = this.block[0].style;
         style.flex = '0 1 ' + size + '%';
         style.webkitFlex = '0 1 ' + size + '%';
         style.msFlex = '0 1 ' + size + '%';
@@ -40,7 +40,7 @@ class Block extends Base {
         size = precision(size, 1);
         if (store) { this.setAttribute('size', size); }
 
-        var block = this.block[0],
+        let block = this.block[0],
             target = '0 1 ' + size + '%';
 
         if (this.sizeAnimation) { this.sizeAnimation.cancel(); }
@@ -54,7 +54,7 @@ class Block extends Base {
                 fill: 'forwards'
             });
             this.sizeAnimation.addEventListener('finish', function() {
-                var animation = this.sizeAnimation;
+                let animation = this.sizeAnimation;
                 this.sizeAnimation = null;
                 block.removeAttribute('style');
                 this.setSize(size);
@@ -69,7 +69,7 @@ class Block extends Base {
     }
 
     setLabelSize(size) {
-        var label = this.block[0].querySelector(':scope > .particle-size');
+        let label = this.block[0].querySelector(':scope > .particle-size');
         if (!label) { return false; }
         label.textContent = precision(size, 1) + '%';
     }
@@ -79,18 +79,18 @@ class Block extends Base {
     }
 
     onRendered(element, parent) {
-        var elementBlock = element.block[0];
+        let elementBlock = element.block[0];
         if (elementBlock.querySelector(':scope > [data-lm-blocktype="section"]')) { this.removeDropzone(); }
         if (!parent) { return; }
 
-        var grandpa = parent.block[0].parentElement,
+        let grandpa = parent.block[0].parentElement,
             greatGrandpa = grandpa && grandpa.parentElement,
             isRoot = grandpa && grandpa.hasAttribute('data-lm-root'),
             isRootContainer = grandpa && grandpa.getAttribute('data-lm-blocktype') === 'container' && greatGrandpa &&
                 (greatGrandpa.hasAttribute('data-lm-root') || greatGrandpa.getAttribute('data-lm-blocktype') === 'wrapper');
 
         if (isRoot || isRootContainer) {
-            var label = document.createElement('span');
+            let label = document.createElement('span');
             label.className = 'particle-size';
             label.textContent = this.getSize() + '%';
             elementBlock.insertBefore(label, elementBlock.firstChild);
@@ -103,7 +103,7 @@ class Block extends Base {
     }
 
     hasChanged(state) {
-        var icon,
+        let icon,
             block = this.block[0],
             child = block.querySelector(':scope > [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
 
@@ -112,7 +112,7 @@ class Block extends Base {
         if (!child) {
             child = block.querySelector(':scope > .particle-size');
             if (!child) {
-                var parentBlock = block.parentElement && block.parentElement.closest('[data-lm-blocktype="block"]');
+                let parentBlock = block.parentElement && block.parentElement.closest('[data-lm-blocktype="block"]');
                 child = parentBlock && parentBlock.querySelector(':scope > .particle-size');
             }
             if (!child) { return; }
@@ -128,7 +128,7 @@ class Block extends Base {
             return;
         }
 
-        var mapped = this.options.builder.get(child.getAttribute('data-lm-id'));
+        let mapped = this.options.builder.get(child.getAttribute('data-lm-id'));
         if (mapped) { mapped.emit('changed', state, this); }
     }
 }

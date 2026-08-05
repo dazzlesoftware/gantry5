@@ -5,19 +5,19 @@ import __module3 from './normalize-grid-sizes.js';
 
 "use strict";
 
-var EventEmitter = __module0,
+let EventEmitter = __module0,
     Blocks       = __module1,
     ID           = __module2,
     normalizeGridSizes = __module3;
 
-var DEBUG = false;
+let DEBUG = false;
 
-var collectionSize = function(value) {
+let collectionSize = function(value) {
     if (!value) { return 0; }
     return Array.isArray(value) ? value.length : Object.keys(value).length;
 };
 
-var forEachCollection = function(collection, callback, context) {
+let forEachCollection = function(collection, callback, context) {
     if (!collection) { return; }
     if (Array.isArray(collection) || typeof collection.length === 'number') {
         Array.prototype.forEach.call(collection, callback, context);
@@ -28,9 +28,9 @@ var forEachCollection = function(collection, callback, context) {
     });
 };
 
-var fillMissing = function(target, source) {
+let fillMissing = function(target, source) {
     Object.keys(source || {}).forEach(function(key) {
-        var sourceValue = source[key],
+        let sourceValue = source[key],
             targetValue = target[key];
 
         if (typeof targetValue === 'undefined') {
@@ -42,8 +42,8 @@ var fillMissing = function(target, source) {
     return target;
 };
 
-var withoutChildren = function(value) {
-    var output = {};
+let withoutChildren = function(value) {
+    let output = {};
     Object.keys(value || {}).forEach(function(key) {
         if (key !== 'children') { output[key] = value[key]; }
     });
@@ -66,18 +66,18 @@ class Builder extends EventEmitter {
     }
 
     add(block) {
-        var id = typeof block === 'string' ? block : block.id;
+        let id = typeof block === 'string' ? block : block.id;
         this.map[id] = block;
         if (block && typeof block.isNew === 'function') { block.isNew(false); }
     }
 
     remove(block) {
-        var id = typeof block === 'string' ? block : block.id;
+        let id = typeof block === 'string' ? block : block.id;
         delete this.map[id];
     }
 
     get(block) {
-        var id = typeof block === 'string' ? block : block.id;
+        let id = typeof block === 'string' ? block : block.id;
         return Object.prototype.hasOwnProperty.call(this.map, id) ? this.map[id] : block;
     }
 
@@ -95,15 +95,15 @@ class Builder extends EventEmitter {
     }
 
     serialize(root, flat) {
-        var serializedChildren = [];
+        let serializedChildren = [];
         root = root ? (root.nodeType ? root : root[0]) : document.querySelector('[data-lm-root]');
         if (!root) { return; }
 
-        var blocks = flat
+        let blocks = flat
             ? root.querySelectorAll('[data-lm-id]')
             : Array.from(root.children).filter(function(child) { return child.hasAttribute('data-lm-id'); });
         forEachCollection(blocks, function(node) {
-            var id = node.getAttribute('data-lm-id'),
+            let id = node.getAttribute('data-lm-id'),
                 type = node.getAttribute('data-lm-blocktype'),
                 subtype = node.getAttribute('data-lm-blocksubtype') || false,
                 hasChildren = Array.from(node.children).filter(function(child) { return child.hasAttribute('data-lm-id'); }),
@@ -116,7 +116,7 @@ class Builder extends EventEmitter {
                 children = hasChildren.length ? this.serialize(node) : [];
             }
 
-            var serial = {
+            let serial = {
                 id: id,
                 type: type,
                 subtype: subtype,
@@ -127,7 +127,7 @@ class Builder extends EventEmitter {
             };
 
             if (flat) {
-                var keyed = {};
+                let keyed = {};
                 keyed[id] = serial;
                 serial = keyed;
             }
@@ -138,11 +138,11 @@ class Builder extends EventEmitter {
     }
 
     insert(key, value, parent) {
-        var root = document.querySelector('[data-lm-root]');
+        let root = document.querySelector('[data-lm-root]');
         if (!root) { return; }
         if (!Blocks[value.type]) { console.error(value.type + ' does not exist'); }
 
-        var settings = fillMissing({
+        let settings = fillMissing({
                 id: key,
                 attributes: {},
                 inherit: {},
@@ -151,7 +151,7 @@ class Builder extends EventEmitter {
             }, withoutChildren(value)),
             Element = new (Blocks[value.type] || Blocks.section)(settings);
 
-        var block = Element.block[0],
+        let block = Element.block[0],
             target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
         if (target) { target.appendChild(block); }
 
@@ -164,31 +164,31 @@ class Builder extends EventEmitter {
     reset(data) {
         this.map = {};
         this.setStructure(data || {});
-        var root = document.querySelector('[data-lm-root]');
+        let root = document.querySelector('[data-lm-root]');
         if (root) { root.replaceChildren(); }
         this.load();
     }
 
     cleanupLonely() {
-        var ghosts = [],
+        let ghosts = [],
             parent,
             children = document.querySelectorAll('[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block');
 
         if (!children.length) { return; }
         children.forEach(function(child) {
             parent = null;
-            var childParent = child.parentElement,
+            let childParent = child.parentElement,
                 isGrid = childParent && childParent.classList.contains('g-grid');
             if (isGrid && childParent.children.length > 1) { return; }
             if (isGrid) {
-                var gridId = childParent.getAttribute('data-lm-id');
+                let gridId = childParent.getAttribute('data-lm-id');
                 if (gridId) { ghosts.push(gridId); }
                 parent = childParent;
             }
-            var childId = child.getAttribute('data-lm-id');
+            let childId = child.getAttribute('data-lm-id');
             if (childId) { ghosts.push(childId); }
 
-            var removalTarget = parent || child;
+            let removalTarget = parent || child;
             Array.from(child.children).forEach(function(grandchild) {
                 removalTarget.parentNode.insertBefore(grandchild, removalTarget);
             });

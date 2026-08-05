@@ -5,13 +5,13 @@ import __module3 from '../../utils/translate.js';
 
 "use strict";
 
-var Atom               = __module0,
+let Atom               = __module0,
     getAjaxURL         = __module1.config,
     getOutlineNameById = __module2.getOutlineNameById,
     translate          = __module3;
 
-var precision = function(value, decimals) {
-        var multiplier = Math.pow(10, decimals);
+let precision = function(value, decimals) {
+        let multiplier = Math.pow(10, decimals);
         return Math.round(Number(value) * multiplier) / multiplier;
     },
     forOwn = function(object, callback) {
@@ -22,7 +22,7 @@ var precision = function(value, decimals) {
 
 class Particle extends Atom {
     layout() {
-        var settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
+        let settingsUri = getAjaxURL(this.getPageId() + '/layout/' + this.getType() + '/' + this.getId()),
             subtype = this.getSubType() ? 'data-lm-blocksubtype="' + this.getSubType() + '"' : '',
             klass = this.getCategoryClass();
 
@@ -37,23 +37,23 @@ class Particle extends Atom {
     }
 
     enableInheritance() {
-        var block = this.block[0];
+        let block = this.block[0];
         block.className = this.cleanKlass(block.className);
         if (!this.hasInheritance()) { return; }
 
-        var icon = block.querySelector('.icon');
+        let icon = block.querySelector('.icon');
         block.classList.add('g-inheriting');
         if (this.inherit.include.length) {
             this.inherit.include.forEach(function(name) { block.classList.add('g-inheriting-' + name); });
         }
-        var iconGlyph = block.querySelector('.icon .fa');
+        let iconGlyph = block.querySelector('.icon .fa');
         if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
         forOwn(this.getInheritanceTip(), function(value, key) { icon.setAttribute('data-' + key, value); });
         global.Genesis.tips.reload();
     }
 
     disableInheritance() {
-        var block = this.block[0],
+        let block = this.block[0],
             icon = block.querySelector('.icon'),
             iconGlyph = block.querySelector('.icon .fa');
         block.className = this.cleanKlass(block.className);
@@ -64,7 +64,7 @@ class Particle extends Atom {
     }
 
     refreshInheritance() {
-        var block = this.block[0];
+        let block = this.block[0];
         block.classList.toggle('g-inheritance', !this.hasInheritance());
         if (this.hasInheritance()) {
             block.className = this.cleanKlass(block.className);
@@ -72,9 +72,9 @@ class Particle extends Atom {
     }
 
     addInheritanceTip(html) {
-        var tooltip = this.getInheritanceTip();
+        let tooltip = this.getInheritanceTip();
         if (html) {
-            var tooltipHTML = '';
+            let tooltipHTML = '';
             forOwn(tooltip, function(value, key) { tooltipHTML += 'data-' + key + '="' + value + '" '; });
             tooltip = tooltipHTML;
         }
@@ -82,7 +82,7 @@ class Particle extends Atom {
     }
 
     getInheritanceTip() {
-        var outline = getOutlineNameById(this.inherit ? this.inherit.outline : null),
+        let outline = getOutlineNameById(this.inherit ? this.inherit.outline : null),
             particle = this.inherit.particle || '',
             include = (this.inherit.include || []).join(', ');
 
@@ -100,13 +100,13 @@ class Particle extends Atom {
     }
 
     setLabelSize(size) {
-        var label = this.block[0].querySelector('.particle-size');
+        let label = this.block[0].querySelector('.particle-size');
         if (!label) { return false; }
         label.textContent = precision(size, 1) + '%';
     }
 
     onRendered(element, parent) {
-        var size = parent.getSize() || 100,
+        let size = parent.getSize() || 100,
             globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
 
         if (globallyDisabled || this.getAttribute('enabled') === 0) { this.disable(); }
@@ -115,7 +115,7 @@ class Particle extends Atom {
     }
 
     getParent() {
-        var parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
+        let parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
         return parent ? this.options.builder.get(parent.getAttribute('data-lm-id')) : null;
     }
 
@@ -126,7 +126,7 @@ class Particle extends Atom {
     getIcon() {
         if (this.hasInheritance()) { return 'fa-lock'; }
 
-        var type = this.getType(),
+        let type = this.getType(),
             subtype = this.getSubType(),
             template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || '') + '"]');
 
@@ -134,7 +134,7 @@ class Particle extends Atom {
     }
 
     getCategoryClass() {
-        var type = this.getType(),
+        let type = this.getType(),
             subtype = this.getSubType(),
             template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || '') + '"]');
 
@@ -143,11 +143,11 @@ class Particle extends Atom {
 
     getLimits(parent) {
         if (!parent) { return false; }
-        var parentBlock = parent.block[0],
+        let parentBlock = parent.block[0],
             sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
         if (!sibling) { return [100, 100]; }
 
-        var siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id')),
+        let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id')),
             sizes = {
                 current: this.getParent().getSize(),
                 sibling: siblingBlock.getSize()

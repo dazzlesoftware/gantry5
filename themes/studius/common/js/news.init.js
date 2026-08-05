@@ -1,26 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-news-id]').forEach(function (root, index) {
-      var container = root.querySelector('.area');
-      var autoplay = (container.dataset.newsAutoplay === 'true') ? { delay: container.dataset.newsTimeout, disableOnInteraction: false } : false;
-      var touchMove = (container.dataset.newsTouchmove === 'true');
-      var mobileBreakpoint = Length.toPx(document.body, container.dataset.newsMobileBreakpoint);
-      var tabletBreakpoint = Length.toPx(document.body, container.dataset.newsTabletBreakpoint);
-      var desktopBreakpoint = Length.toPx(document.body, container.dataset.newsDesktopBreakpoint);
-      var largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.newsLargedesktopBreakpoint);
-      var mobileSlides = container.dataset.newsMobileslides;
-      var mobileGroup = container.dataset.newsMobilegroup;
-      var mobileSpace = container.dataset.newsMobilespace;
-      var tabletSlides = container.dataset.newsTabletslides;
-      var tabletGroup = container.dataset.newsTabletgroup;
-      var tabletSpace = container.dataset.newsTabletspace;
-      var desktopSlides = container.dataset.newsDesktopslides;
-      var desktopGroup = container.dataset.newsDesktopgroup;
-      var desktopSpace = container.dataset.newsDesktopspace;
-      var largeDesktopSlides = container.dataset.newsLargedesktopslides;
-      var largeDesktopGroup = container.dataset.newsLargedesktopgroup;
-      var largeDesktopSpace = container.dataset.newsLargedesktopspace;
+      let container = root.querySelector('.area');
+      let autoplay = (container.dataset.newsAutoplay === 'true') ? { delay: container.dataset.newsTimeout, disableOnInteraction: false } : false;
+      let touchMove = (container.dataset.newsTouchmove === 'true');
+      let mobileBreakpoint = Length.toPx(document.body, container.dataset.newsMobileBreakpoint);
+      let tabletBreakpoint = Length.toPx(document.body, container.dataset.newsTabletBreakpoint);
+      let desktopBreakpoint = Length.toPx(document.body, container.dataset.newsDesktopBreakpoint);
+      let largeDesktopBreakpoint = Length.toPx(document.body, container.dataset.newsLargedesktopBreakpoint);
+      let mobileSlides = container.dataset.newsMobileslides;
+      let mobileGroup = container.dataset.newsMobilegroup;
+      let mobileSpace = container.dataset.newsMobilespace;
+      let tabletSlides = container.dataset.newsTabletslides;
+      let tabletGroup = container.dataset.newsTabletgroup;
+      let tabletSpace = container.dataset.newsTabletspace;
+      let desktopSlides = container.dataset.newsDesktopslides;
+      let desktopGroup = container.dataset.newsDesktopgroup;
+      let desktopSpace = container.dataset.newsDesktopspace;
+      let largeDesktopSlides = container.dataset.newsLargedesktopslides;
+      let largeDesktopGroup = container.dataset.newsLargedesktopgroup;
+      let largeDesktopSpace = container.dataset.newsLargedesktopspace;
 
-      var slidenews = new Swiper(container, {
+      let slidenews = new Swiper(container, {
         speed: container.dataset.newsSpeed,
         loop: (container.dataset.newsLoop === 'true'),
         direction: 'horizontal',

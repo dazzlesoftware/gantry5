@@ -2,16 +2,16 @@ function asBool(value) { return value === true || value === 'true' || value === 
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-slideshow-id]').forEach(function (container, index) {
-        var thumbs = container.dataset.slideshowThumbnails;
-        var autoplay = asBool(container.dataset.slideshowAutoplay) ? { delay: container.dataset.slideshowTimeout, disableOnInteraction: false } : false;
-        var touchMove = asBool(container.dataset.slideshowTouchmove);
+        let thumbs = container.dataset.slideshowThumbnails;
+        let autoplay = asBool(container.dataset.slideshowAutoplay) ? { delay: container.dataset.slideshowTimeout, disableOnInteraction: false } : false;
+        let touchMove = asBool(container.dataset.slideshowTouchmove);
 
         if(container.parents('.fp-slideshow').length > 0) {
             container.closest('.g-grid').addClass('has-slideshow');
         }
 
         if(thumbs) {
-            var sliderThumbs = new Swiper(container.querySelector('.g-slideshow-thumbs'), {
+            let sliderThumbs = new Swiper(container.querySelector('.g-slideshow-thumbs'), {
                 spaceBetween: 10,
                 slidesPerView: 1,
                 loop: asBool(container.dataset.slideshowLoop),
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        var slideSwipe = new Swiper(container, {
+        let slideSwipe = new Swiper(container, {
             speed: container.dataset.slideshowSpeed,
             loop: asBool(container.dataset.slideshowLoop),
             direction: 'vertical',

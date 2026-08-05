@@ -6,7 +6,7 @@ import __module4 from './toastr.js';
 
 "use strict";
 
-var Selectize = __module0;
+let Selectize = __module0;
 
 export default {
     modal: __module1,

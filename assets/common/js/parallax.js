@@ -1,20 +1,20 @@
 (function () {
     'use strict';
 
-    var elements = [];
-    var scheduled = false;
+    let elements = [];
+    let scheduled = false;
 
     function number(value, fallback) {
-        var parsed = Number.parseFloat(value);
+        let parsed = Number.parseFloat(value);
         return Number.isFinite(parsed) ? parsed : fallback;
     }
 
     function render() {
-        var scrollY = window.scrollY || window.pageYOffset;
+        let scrollY = window.scrollY || window.pageYOffset;
         elements.forEach(function (element) {
-            var ratio = number(element.dataset.enllaxRatio, 0);
-            var offset = number(element.dataset.enllaxOffset, 0);
-            var position = Math.round(scrollY * ratio + offset);
+            let ratio = number(element.dataset.enllaxRatio, 0);
+            let offset = number(element.dataset.enllaxOffset, 0);
+            let position = Math.round(scrollY * ratio + offset);
 
             if (element.dataset.enllaxType === 'background') {
                 element.style.backgroundPositionY = position + 'px';

@@ -1,11 +1,11 @@
 "use strict";
-var getSupportedEvent = function(events) {
+const getSupportedEvent = function(events) {
     events = events.split(' ');
 
-    var element = document.createElement('div'), event;
-    var isSupported = false;
+    let element = document.createElement('div'), event;
+    let isSupported = false;
 
-    for (var i = events.length - 1; i >= 0; i--) {
+    for (let i = events.length - 1; i >= 0; i--) {
         event = 'on' + events[i];
         isSupported = (event in element);
 
@@ -24,11 +24,11 @@ var getSupportedEvent = function(events) {
     return isSupported;
 };
 
-var getSupportedEvents = function(events) {
+const getSupportedEvents = function(events) {
     events = events.split(' ');
 
-    var isSupported = false, supported = [];
-    for (var i = events.length - 1; i >= 0; i--) {
+    let isSupported = false, supported = [];
+    for (let i = events.length - 1; i >= 0; i--) {
         isSupported = getSupportedEvent(events[i]);
         if (isSupported) { supported.push(isSupported); }
     }
@@ -36,15 +36,15 @@ var getSupportedEvents = function(events) {
     return supported;
 };
 
-var EVENT = {
-        START: getSupportedEvent('mousedown touchstart MSPointerDown pointerdown'),
-        MOVE: getSupportedEvent('mousemove touchmove MSPointerMove pointermove'),
-        STOP: getSupportedEvent('mouseup touchend MSPointerUp pointerup')
+const EVENT = {
+        START: getSupportedEvent('mousedown touchstart pointerdown'),
+        MOVE: getSupportedEvent('mousemove touchmove pointermove'),
+        STOP: getSupportedEvent('mouseup touchend pointerup')
     },
     EVENTS = {
-        START: getSupportedEvents('mousedown touchstart MSPointerDown pointerdown'),
-        MOVE: getSupportedEvents('mousemove touchmove MSPointerMove pointermove'),
-        STOP: getSupportedEvents('mouseup touchend MSPointerUp pointerup')
+        START: getSupportedEvents('mousedown touchstart pointerdown'),
+        MOVE: getSupportedEvents('mousemove touchmove pointermove'),
+        STOP: getSupportedEvents('mouseup touchend pointerup')
     };
 
 

@@ -9,7 +9,7 @@ import __module7 from './drag.resizer.js';
 import __module8 from '../utils/deep-equals.js';
 
 "use strict";
-var EventEmitter = __module0,
+let EventEmitter = __module0,
     dom          = __module1,
     zen        = __module2,
     Blocks     = __module3,
@@ -19,14 +19,14 @@ var EventEmitter = __module0,
     Resizer    = __module7,
     deepEquals = __module8;
 
-var get = function(object, key) {
+let get = function(object, key) {
         return object ? object[key] : undefined;
     },
     keys = function(object) {
         return Object.keys(object || {});
     },
     precision = function(value, decimals) {
-        var multiplier = Math.pow(10, decimals);
+        let multiplier = Math.pow(10, decimals);
         return Math.round(Number(value) * multiplier) / multiplier;
     },
     find = function(collection, callback) {
@@ -45,17 +45,17 @@ var get = function(object, key) {
         }
     };
 
-var singles = {
+let singles = {
     disable: function() {
-        var grids = dom('[data-lm-root] [data-lm-blocktype="grid"]');
+        let grids = dom('[data-lm-root] [data-lm-blocktype="grid"]');
         if (grids) { grids.removeClass('no-hover'); }
     },
     enable: function() {
-        var grids = dom('[data-lm-root] [data-lm-blocktype="grid"]');
+        let grids = dom('[data-lm-root] [data-lm-blocktype="grid"]');
         if (grids) { grids.addClass('no-hover'); }
     },
     cleanup: function(builder, dropLast, start) {
-        var emptyGrids = start ? start.search('> .g-grid:empty') : dom('[data-lm-blocktype="section"] > .g-grid:empty, [data-lm-blocktype="container"] > .g-grid:empty, [data-lm-blocktype="offcanvas"] > .g-grid:empty');
+        let emptyGrids = start ? start.search('> .g-grid:empty') : dom('[data-lm-blocktype="section"] > .g-grid:empty, [data-lm-blocktype="container"] > .g-grid:empty, [data-lm-blocktype="offcanvas"] > .g-grid:empty');
 
         if (emptyGrids) {
             emptyGrids.forEach(function(grid) {
@@ -71,7 +71,7 @@ var singles = {
 
 };
 
-var LayoutManagerDefinition = {
+let LayoutManagerDefinition = {
     options: {},
 
     initialize: function(element, options) {
@@ -114,7 +114,7 @@ var LayoutManagerDefinition = {
     },
 
     clear: function(parent, options) {
-        var type, child,
+        let type, child,
             filter = !parent ? [] : (parent.search('[data-lm-id]') || []).map(function(element) { return dom(element).data('lm-id'); });
 
         options = options || { save: true, dropLastGrid: false, emptyInherits: false };
@@ -142,7 +142,7 @@ var LayoutManagerDefinition = {
     },
 
     updatePendingChanges: function() {
-        var saveData   = this.savestate.getData(),
+        let saveData   = this.savestate.getData(),
             serialData = this.builder.serialize(null, true),
             different  = false,
 
@@ -158,7 +158,7 @@ var LayoutManagerDefinition = {
         // Emits the changed event for all particles
         // Used for UI to show particles where there have been differences applied
         // After a saved state
-        var saved, current, id;
+        let saved, current, id;
         serialData.forEach(function(block) {
             id = keys(block)[0];
             saved = find(saveData, function(data) { return data[id]; });
@@ -171,11 +171,11 @@ var LayoutManagerDefinition = {
     },
 
     start: function(event, element) {
-        var root = dom('[data-lm-root]'),
+        let root = dom('[data-lm-root]'),
             size = dom(element).position(),
             coords = dom(element)[0].getBoundingClientRect();
 
-        var stalePlaceholders = root.search('.original-placeholder');
+        let stalePlaceholders = root.search('.original-placeholder');
         if (stalePlaceholders) { stalePlaceholders.remove(); }
 
         this.block = null;
@@ -183,7 +183,7 @@ var LayoutManagerDefinition = {
 
         root.addClass('moving');
 
-        var type  = dom(element).data('lm-blocktype'),
+        let type  = dom(element).data('lm-blocktype'),
             clone = element[0].cloneNode(true);
 
         if (!this.placeholder) { this.placeholder = zen('div.block.placeholder[data-lm-placeholder]'); }
@@ -215,7 +215,7 @@ var LayoutManagerDefinition = {
                 background: 'repeating-linear-gradient(135deg, #f4f4f4, #f4f4f4 10px, #e9e9e9 10px, #e9e9e9 20px)',
                 boxShadow: 'inset 0 0 0 2px #c8c8c8'
             });
-            var placeholderContents = this.original.search('*');
+            let placeholderContents = this.original.search('*');
             if (placeholderContents) { placeholderContents.style({ visibility: 'hidden' }); }
             element.style({
                 position: 'fixed',
@@ -231,7 +231,7 @@ var LayoutManagerDefinition = {
             }).find('[data-lm-blocktype]');
 
             if (this.block.getType() === 'grid') {
-                var siblings = this.block.block.siblings(':not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)');
+                let siblings = this.block.block.siblings(':not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)');
                 if (siblings) {
                     siblings.search('[data-lm-id]').style({ 'pointer-events': 'none' });
                 }
@@ -240,7 +240,7 @@ var LayoutManagerDefinition = {
             this.placeholder.before(element);
             this.eraser.show();
         } else {
-            var position = element.position();
+            let position = element.position();
             this.original.style({
                 position: 'fixed',
                 opacity: 0.75,
@@ -256,7 +256,7 @@ var LayoutManagerDefinition = {
             this.dragdrop.element = this.original;
         }
 
-        var blocks;
+        let blocks;
         if (type === 'grid' && (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])'))) {
             blocks.style({ 'pointer-events': 'none' });
         }
@@ -269,7 +269,7 @@ var LayoutManagerDefinition = {
         (!this.block.isNew() ? this.original : this.element).style({ transform: 'translate(0, 0)' });
         if (!this.placeholder) { this.placeholder = zen('div.block.placeholder[data-lm-placeholder]').style({ display: 'none' }); }
 
-        var position,
+        let position,
             dataType     = target.data('lm-blocktype'),
             originalType = this.block.getType();
 
@@ -278,7 +278,7 @@ var LayoutManagerDefinition = {
         if (dataType === 'grid' && (target.parent().data('lm-root') || (target.parent().data('lm-blocktype') === 'container' && target.parent().parent().data('lm-root')))) { return; }
 
         // Check for adjacents and avoid inserting any placeholder since it would be the same position
-        var exclude   = ':not(.placeholder):not([data-lm-id="' + this.original.data('lm-id') + '"])',
+        let exclude   = ':not(.placeholder):not([data-lm-id="' + this.original.data('lm-id') + '"])',
             adjacents = {
                 before: this.original.previousSiblings(exclude),
                 after: this.original.nextSiblings(exclude)
@@ -294,7 +294,7 @@ var LayoutManagerDefinition = {
             return;
         }
 
-        var nonVisible = target.parent('[data-lm-blocktype="atoms"]'),
+        let nonVisible = target.parent('[data-lm-blocktype="atoms"]'),
             child      = this.block.block.find('[data-lm-id]');
 
         if ((child ? child.data('lm-blocktype') : originalType) == 'atom') {
@@ -304,14 +304,14 @@ var LayoutManagerDefinition = {
         }
 
         // handles the types cases and normalizes the locations (x and y)
-        var grid, block, method;
+        let grid, block, method;
 
         switch (dataType) {
             case 'root':
             case 'section':
                 break;
             case 'grid':
-                var empty = !target.children(':not(.placeholder)');
+                let empty = !target.children(':not(.placeholder)');
                 // new particles cannot be dropped in existing grids, only empty ones
                 if (originalType !== 'grid' && !empty) { return; }
 
@@ -343,7 +343,7 @@ var LayoutManagerDefinition = {
         this.placeholder.style({ display: 'block' })[dataType !== 'block' ? 'removeClass' : 'addClass']('in-between');
 
         if (originalType === 'grid' && dataType === 'grid') {
-            var next     = this.placeholder.nextSibling(),
+            let next     = this.placeholder.nextSibling(),
                 previous = this.placeholder.previousSibling();
 
             this.placeholder.addClass('in-between-grids');
@@ -357,11 +357,11 @@ var LayoutManagerDefinition = {
         if (this.placeholder) { this.placeholder.remove(); }
         if (!this.block) { return; }
 
-        var target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
+        let target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
 
         if (!this.block.isNew()) {
             target = dom(target);
-            var targetNode = target[0];
+            let targetNode = target[0];
             if (targetNode === this.eraser.element || this.eraser.element.contains(targetNode)) {
                 this.dragdrop.removeElement = true;
                 this.eraser.over();
@@ -379,7 +379,7 @@ var LayoutManagerDefinition = {
     removeElement: function(event, element) {
         this.dragdrop.removeElement = false;
 
-        var transition = {
+        let transition = {
             opacity: 0
         };
 
@@ -387,15 +387,15 @@ var LayoutManagerDefinition = {
             duration: '150ms'
         });
 
-        var root = dom('[data-lm-root]'), blocks;
+        let root = dom('[data-lm-root]'), blocks;
         if (this.block.getType() === 'grid' && (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])'))) {
             blocks.style({ 'pointer-events': 'inherit' });
         }
 
-        var siblings = this.block.block.siblings(':not(.original-placeholder)');
+        let siblings = this.block.block.siblings(':not(.original-placeholder)');
 
         if (siblings && this.block.getType() == 'block') {
-            var size                  = this.block.getSize(),
+            let size                  = this.block.getSize(),
                 diff                  = size / siblings.length,
                 newSize, block, total = 0, last;
             siblings.forEach(function(sibling, index) {
@@ -421,7 +421,7 @@ var LayoutManagerDefinition = {
 
         this.builder.remove(this.block.getId());
 
-        var children = this.block.block.search('[data-lm-id]');
+        let children = this.block.block.search('[data-lm-id]');
         if (children && children.length) {
             children.forEach(function(child) {
                 this.builder.remove(dom(child).data('lm-id'));
@@ -444,15 +444,15 @@ var LayoutManagerDefinition = {
 
     stop: function(event, target/*, element*/) {
         // we are removing the block
-        var lastOvered = dom(this.dragdrop.lastOvered);
-        var trashZone = this.eraser.element.querySelector('.trash-zone');
+        let lastOvered = dom(this.dragdrop.lastOvered);
+        let trashZone = this.eraser.element.querySelector('.trash-zone');
         if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
             this.eraser.hide();
             return;
         }
 
         if (this.block.getType() === 'grid') {
-            var siblings = this.block.block.siblings(':not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)');
+            let siblings = this.block.block.siblings(':not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)');
             if (siblings) {
                 siblings.search('[data-lm-id]').style({ 'pointer-events': 'inherit' });
             }
@@ -467,7 +467,7 @@ var LayoutManagerDefinition = {
 
         target = dom(target);
 
-        var wrapper, insider,
+        let wrapper, insider,
             multiLocationResize = false,
             blockWasNew         = this.block.isNew(),
             type                = this.block.getType(),
@@ -477,7 +477,7 @@ var LayoutManagerDefinition = {
 
         if (!placeholderParent) { return; }
 
-        var parentId   = placeholderParent.data('lm-id'),
+        let parentId   = placeholderParent.data('lm-id'),
             parentType = get(this.builder.map, parentId || '') ? get(this.builder.map, parentId).getType() : false,
             resizeCase = false;
 
@@ -512,7 +512,7 @@ var LayoutManagerDefinition = {
         // case 2: moving a block around, need to fix sizes if it's a multi location resize
         if (this.originalType === 'block' && this.block.getType() === 'block') {
             resizeCase = { case: 3 };
-            var previous            = this.block.block.parent('[data-lm-blocktype="grid"]'),
+            let previous            = this.block.block.parent('[data-lm-blocktype="grid"]'),
                 placeholderPrevious = this.placeholder.parent('[data-lm-blocktype="grid"]');
             //if (previous.find('!> [data-lm-blocktype="container"]')) { previous = previous.parent(); }
             //if (placeholderPrevious.find('!> [data-lm-blocktype="container"]')) { placeholderPrevious = placeholderPrevious.parent(); }
@@ -532,7 +532,7 @@ var LayoutManagerDefinition = {
         }
 
         if (type === 'grid' && !siblings) {
-            var plus = this.block.block.parent('[data-lm-blocktype="section"]').find('.fa-plus');
+            let plus = this.block.block.parent('[data-lm-blocktype="section"]').find('.fa-plus');
             if (plus) { plus.emit('click'); }
         }
 
@@ -550,7 +550,7 @@ var LayoutManagerDefinition = {
 
         if (multiLocationResize.from || (multiLocationResize.to && multiLocationResize.to != this.block.block)) {
             // if !from / !to means it's empty grid, should we remove it?
-            var size = this.block.getSize(), diff, block;
+            let size = this.block.getSize(), diff, block;
 
             // we are moving the particle to an empty grid, resetting the size to 100%
             if (!multiLocationResize.to) { this.block.setSize(100, true); }
@@ -558,7 +558,7 @@ var LayoutManagerDefinition = {
             // we need to compensate the remaining blocks on the FROM with the leaving particle size
             if (multiLocationResize.from) {
                 diff = size / multiLocationResize.from.length;
-                var total = 0, curSize;
+                let total = 0, curSize;
                 multiLocationResize.from.forEach(function(sibling) {
                     sibling = dom(sibling);
                     block = get(this.builder.map, sibling.data('lm-id'));
@@ -598,7 +598,7 @@ var LayoutManagerDefinition = {
     },
 
     stopAnimation: function(element) {
-        var root = dom('[data-lm-root]');
+        let root = dom('[data-lm-root]');
         root.removeClass('moving');
 
         if (this.original) { this.original.remove(); }
@@ -609,7 +609,7 @@ var LayoutManagerDefinition = {
         if (this.block && this.block.isNew() && this.element) { this.element.attribute('style', null); }
 
         if (this.originalType === 'grid') {
-            var blocks, block;
+            let blocks, block;
             if (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])')) {
                 blocks.forEach(function(element) {
                     element = dom(element);

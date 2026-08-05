@@ -11,7 +11,7 @@ import __module9 from '../../utils/cookie.js';
 
 "use strict";
 
-var dom           = __module0,
+let dom           = __module0,
     request       = __module1,
     modal         = __module2.modal,
     popovers      = __module3,
@@ -23,37 +23,39 @@ var dom           = __module0,
     translate     = __module8,
     Cookie        = __module9;
 
-var clone = function(value) {
+let clone = function(value) {
     return JSON.parse(JSON.stringify(value));
 };
 
-var parseElement = function(html) {
-    var template = document.createElement('template');
+let parseElement = function(html) {
+    let template = document.createElement('template');
     template.innerHTML = String(html || '').trim();
     return template.content;
 };
 
-var animateOpacity = function(element, opacity, duration, callback) {
+let animateOpacity = function(element, opacity, duration, callback) {
     if (!element) {
         if (callback) { callback(); }
         return;
     }
 
-    var from = getComputedStyle(element).opacity,
+    let from = getComputedStyle(element).opacity,
         animation = element.animate([{ opacity: from }, { opacity: opacity }], {
             duration: duration,
             easing: 'ease',
             fill: 'forwards'
         });
 
-    animation.finished.catch(function() {}).then(function() {
+    animation.finished.catch(function(error) {
+        if (error.name !== 'AbortError') console.warn('File picker animation failed.', error);
+    }).then(function() {
         element.style.opacity = opacity;
         animation.cancel();
         if (callback) { callback(); }
     });
 };
 
-var updateProgress = function(element, options) {
+let updateProgress = function(element, options) {
     if (!element) { return null; }
     if (!element.genesisProgresser) {
         element.genesisProgresser = new Progresser(element, options);
@@ -63,13 +65,13 @@ var updateProgress = function(element, options) {
     return element.genesisProgresser;
 };
 
-var fileExtension = function(file) {
-    var parts = file.name.split('.');
+let fileExtension = function(file) {
+    let parts = file.name.split('.');
     return (!parts.length || parts.length === 1) ? '-' : parts.pop().toLowerCase();
 };
 
-var formatBytes = function(bytes) {
-    var units = ['B', 'KB', 'MB', 'GB', 'TB'],
+let formatBytes = function(bytes) {
+    let units = ['B', 'KB', 'MB', 'GB', 'TB'],
         value = Number(bytes) || 0,
         unit = 0;
 
@@ -157,10 +159,10 @@ class NativeUploader {
     createPreview(file) {
         if (!this.previewsContainer) return null;
 
-        var empty = this.previewsContainer.querySelector('.no-files-found');
+        let empty = this.previewsContainer.querySelector('.no-files-found');
         if (empty) empty.remove();
 
-        var fragment = parseElement(this.filePicker.getPreviewTemplate()),
+        let fragment = parseElement(this.filePicker.getPreviewTemplate()),
             element = fragment.firstElementChild,
             extension = fileExtension(file),
             thumb = element.querySelector('.g-thumb'),
@@ -174,9 +176,9 @@ class NativeUploader {
         element.classList.add('g-image-' + extension);
         if (file.type && file.type.indexOf('image/') === 0) {
             if (thumb) thumb.classList.add('g-image', 'g-image-' + extension);
-            var reader = new FileReader();
+            let reader = new FileReader();
             reader.addEventListener('load', function() {
-                var thumbnail = element.querySelector('[data-upload-thumbnail] > div');
+                let thumbnail = element.querySelector('[data-upload-thumbnail] > div');
                 if (thumbnail) thumbnail.style.backgroundImage = 'url("' + reader.result + '")';
             }, { once: true });
             reader.readAsDataURL(file);
@@ -189,7 +191,7 @@ class NativeUploader {
     }
 
     prepareProgress(element) {
-        var uploader = element.querySelector('[data-file-uploadprogress]'),
+        let uploader = element.querySelector('[data-file-uploadprogress]'),
             isList = this.files.classList.contains('g-filemode-list'),
             config = {
                 value: 0,
@@ -213,7 +215,7 @@ class NativeUploader {
     }
 
     showError(element, error) {
-        var uploader = element.querySelector('[data-file-uploadprogress]'),
+        let uploader = element.querySelector('[data-file-uploadprogress]'),
             text = element.querySelector('.g-file-progress-text'),
             isList = this.files.classList.contains('g-filemode-list'),
             message = error && error.html
@@ -245,7 +247,7 @@ class NativeUploader {
     }
 
     showSuccess(element, uploadResponse) {
-        var uploader = element.querySelector('[data-file-uploadprogress]'),
+        let uploader = element.querySelector('[data-file-uploadprogress]'),
             mtime = element.querySelector('.g-file-mtime'),
             text = element.querySelector('.g-file-progress-text'),
             thumb = element.querySelector('.g-thumb'),
@@ -272,7 +274,7 @@ class NativeUploader {
 
     parseResponse(xhr) {
         if (xhr.response && typeof xhr.response === 'object') return xhr.response;
-        var text = '';
+        let text = '';
         try {
             text = xhr.responseText || '';
         } catch (error) {
@@ -286,7 +288,7 @@ class NativeUploader {
     }
 
     upload(file) {
-        var element = this.createPreview(file);
+        let element = this.createPreview(file);
         if (!element) return;
 
         this.prepareProgress(element);
@@ -299,13 +301,13 @@ class NativeUploader {
             return;
         }
 
-        var path = this.filePicker.getPath();
+        let path = this.filePicker.getPath();
         if (!path) {
             this.showError(element, 'Select an upload folder first.');
             return;
         }
 
-        var url = parseAjaxURI(
+        let url = parseAjaxURI(
                 getAjaxURL('filepicker/upload/' + window.btoa(encodeURIComponent(path + file.name)))
                 + getAjaxSuffix()
             ),
@@ -320,14 +322,14 @@ class NativeUploader {
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.upload.addEventListener('progress', function(event) {
             if (!event.lengthComputable) return;
-            var progress = (event.loaded / event.total) * 100,
+            let progress = (event.loaded / event.total) * 100,
                 uploader = element.querySelector('[data-file-uploadprogress]');
             updateProgress(uploader, { value: progress / 100 });
             this.filePicker.setProgressText(element, Math.round(progress) + '%');
         }.bind(this));
         xhr.addEventListener('load', function() {
             this.requests.delete(xhr);
-            var response = this.parseResponse(xhr);
+            let response = this.parseResponse(xhr);
             if (xhr.status >= 200 && xhr.status < 300 && response && response.finfo) {
                 this.showSuccess(element, response);
                 window.clearTimeout(this.refreshTimer);
@@ -362,11 +364,11 @@ class NativeUploader {
 
 class FilePicker {
     constructor(element) {
-        var data = element.getAttribute('data-genesis-filepicker');
+        let data = element.getAttribute('data-genesis-filepicker');
         this.data = data ? JSON.parse(data) : false;
 
         if (this.data && !this.data.value) {
-            var field = this.getField();
+            let field = this.getField();
             this.data.value = field ? field.value : '';
         }
 
@@ -386,7 +388,7 @@ class FilePicker {
 
     open() {
         if (this.data) {
-            var field = this.getField();
+            let field = this.getField();
             this.data.value = field ? field.value : '';
         }
 
@@ -407,10 +409,10 @@ class FilePicker {
     }
 
     getPath() {
-        var actives = this.content.querySelectorAll('.g-folders .active');
+        let actives = this.content.querySelectorAll('.g-folders .active');
         if (!actives.length) { return null; }
 
-        var data = JSON.parse(actives[actives.length - 1].getAttribute('data-folder')),
+        let data = JSON.parse(actives[actives.length - 1].getAttribute('data-folder')),
             path = data.pathname;
         return path.replace(/\/$/, '') + '/';
     }
@@ -426,7 +428,7 @@ class FilePicker {
     }
 
     loaded(response, modalInstance) {
-        var content   = modal.element(modalInstance.elements.content),
+        let content   = modal.element(modalInstance.elements.content),
             files     = content && content.querySelector('.g-files'),
             fieldData = clone(this.data),
             colors    = this.colors,
@@ -436,13 +438,13 @@ class FilePicker {
         this.content = content;
 
         if (files) {
-            var previews = files.querySelector('ul:not(.g-list-labels)');
+            let previews = files.querySelector('ul:not(.g-list-labels)');
             this.uploader = new NativeUploader(this, files, previews);
         }
 
         dom.delegate(content, 'click', '.g-bookmark-title', function(event, element) {
             event.preventDefault();
-            var sibling = element.nextElementSibling,
+            let sibling = element.nextElementSibling,
                 parent = element.closest('.g-bookmark');
             if (!sibling || !sibling.matches('.g-folders')) { return; }
             sibling.hidden = !sibling.hidden;
@@ -451,7 +453,7 @@ class FilePicker {
 
         dom.delegate(content, 'click', '[data-folder]', function(event, element) {
             event.preventDefault();
-            var data = JSON.parse(element.getAttribute('data-folder')),
+            let data = JSON.parse(element.getAttribute('data-folder')),
                 selected = files && files.querySelector('[data-file].selected');
 
             fieldData.root = data.pathname;
@@ -463,7 +465,7 @@ class FilePicker {
                 indicator.hide(element);
                 this.addActiveState(element);
 
-                var result = folderResponse && folderResponse.body;
+                let result = folderResponse && folderResponse.body;
                 if (!result || !result.success) {
                     modal.open({
                         content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.')
@@ -472,9 +474,9 @@ class FilePicker {
                 }
 
                 if (result.subfolder) {
-                    var next = element.nextElementSibling;
+                    let next = element.nextElementSibling;
                     if (next && !next.hasAttribute('data-folder')) { next.remove(); }
-                    var fragment = parseElement(result.subfolder),
+                    let fragment = parseElement(result.subfolder),
                         anchor = element;
                     Array.from(fragment.children).forEach(function(child) {
                         anchor.after(child);
@@ -486,7 +488,7 @@ class FilePicker {
                     if (result.files) {
                         files.replaceChildren(parseElement(result.files));
                     } else {
-                        var list = files.querySelector('ul:not(.g-list-labels)');
+                        let list = files.querySelector('ul:not(.g-list-labels)');
                         if (list) { list.replaceChildren(); }
                     }
                     this.uploader.setPreviewsContainer(files.querySelector('ul:not(.g-list-labels)'));
@@ -497,11 +499,11 @@ class FilePicker {
         dom.delegate(content, 'click', '[data-g-file-preview]', function(event, element) {
             event.preventDefault();
             event.stopPropagation();
-            var parent = element.closest('[data-file]'),
+            let parent = element.closest('[data-file]'),
                 data = parent && JSON.parse(parent.getAttribute('data-file'));
             if (!parent || !data || !data.isImage) { return; }
 
-            var thumb = parent.querySelector('.g-thumb > div'),
+            let thumb = parent.querySelector('.g-thumb > div'),
                 background = thumb && thumb.style.backgroundImage;
             if (background) {
                 modal.open({
@@ -513,13 +515,13 @@ class FilePicker {
 
         dom.delegate(content, 'click', '[data-g-file-delete]', function(event, element) {
             event.preventDefault();
-            var parent = element.closest('[data-file]'),
+            let parent = element.closest('[data-file]'),
                 data = parent && JSON.parse(parent.getAttribute('data-file'));
             if (!parent || !data || !data.isInCustom) { return; }
 
-            var deleteURI = parseAjaxURI(getAjaxURL('filepicker/' + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix()));
+            let deleteURI = parseAjaxURI(getAjaxURL('filepicker/' + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix()));
             request('delete', deleteURI, function(error, deleteResponse) {
-                var result = deleteResponse && deleteResponse.body;
+                let result = deleteResponse && deleteResponse.body;
                 if (!result || !result.success) {
                     modal.open({ content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.') });
                     return;
@@ -535,7 +537,7 @@ class FilePicker {
 
         dom.delegate(content, 'click', '[data-file]', function(event, element) {
             event.preventDefault();
-            var remove = event.target.closest('[data-g-file-delete]'),
+            let remove = event.target.closest('[data-g-file-delete]'),
                 preview = event.target.closest('[data-g-file-preview]');
             if (element.classList.contains('g-file-error') || element.classList.contains('g-file-uploading') || remove || preview) { return; }
             files.querySelectorAll('[data-file]').forEach(function(file) { file.classList.remove('selected'); });
@@ -544,7 +546,7 @@ class FilePicker {
 
         dom.delegate(content, 'click', '[data-select]', function(event) {
             event.preventDefault();
-            var selected = files && files.querySelector('[data-file].selected'),
+            let selected = files && files.querySelector('[data-file].selected'),
                 field = this.getField();
             if (field) {
                 field.value = selected ? selected.getAttribute('data-file-url') : '';
@@ -565,7 +567,7 @@ class FilePicker {
             Cookie.write('genesis_files_mode', mode);
 
             animateOpacity(files, 0, 200, function() {
-                var mode = element.getAttribute('data-files-mode'),
+                let mode = element.getAttribute('data-files-mode'),
                     progressConf = mode === 'list' ? {
                         size: 20,
                         thickness: 10,
@@ -578,7 +580,7 @@ class FilePicker {
 
                 files.className = 'g-files g-block g-filemode-' + mode;
                 files.querySelectorAll('[data-file-uploadprogress]').forEach(function(progressElement) {
-                    var config = clone(progressConf);
+                    let config = clone(progressConf);
                     if (progressElement.closest('.g-file-error')) {
                         config.fill = { color: colors.error };
                         config.value = 1;
@@ -592,7 +594,7 @@ class FilePicker {
     }
 
     setProgressText(preview, value) {
-        var uploader = preview.querySelector('[data-file-uploadprogress]'),
+        let uploader = preview.querySelector('[data-file-uploadprogress]'),
             text = preview.querySelector('.g-file-progress-text');
         if (uploader) { uploader.title = value; }
         if (text) {
@@ -607,7 +609,7 @@ class FilePicker {
         });
         element.classList.add('active');
 
-        var parent = element.parentElement;
+        let parent = element.parentElement;
         while (parent && parent.tagName === 'UL' && !parent.classList.contains('g-folders')) {
             if (parent.previousElementSibling) { parent.previousElementSibling.classList.add('active'); }
             parent = parent.parentElement;
@@ -626,7 +628,7 @@ class FilePicker {
     }
 
     refreshFiles() {
-        var active = this.content.querySelectorAll('[data-folder].active'),
+        let active = this.content.querySelectorAll('[data-folder].active'),
             folder = active[active.length - 1];
         if (folder) { folder.click(); }
     }

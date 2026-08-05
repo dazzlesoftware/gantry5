@@ -6,13 +6,13 @@ import __module3 from '../utils/request.js';
 "use strict";
 // Based on Vex (https://github.com/hubspot/vex)
 
-var dom        = __module0,
+let dom        = __module0,
     zen      = __module1,
     domready = __module2.ready,
 
     request  = __module3;
 
-var stored = new WeakMap(),
+let stored = new WeakMap(),
     storage = {
         get: function(key) { return stored.get(key && key[0] ? key[0] : key); },
         set: function(key, value) { stored.set(key && key[0] ? key[0] : key, value); return this; },
@@ -20,10 +20,10 @@ var stored = new WeakMap(),
     },
     animationEndEvents = ['animationend', 'webkitAnimationEnd', 'mozAnimationEnd', 'MSAnimationEnd', 'oanimationend'],
     animationEndSupport = (function() {
-        var style = document.documentElement.style,
+        let style = document.documentElement.style,
             names = ['animation', 'WebkitAnimation', 'MozAnimation', 'MsAnimation', 'OAnimation'];
 
-        for (var index = 0; index < names.length; index++) {
+        for (let index = 0; index < names.length; index++) {
             if (style[names[index]] !== undefined) {
                 return animationEndEvents[index];
             }
@@ -68,7 +68,7 @@ class Modal {
         this._bound = Object.create(null);
         this._events = new Map();
 
-        var self = this;
+        let self = this;
         domready(function() {
             dom(window).on('keydown', function(event) {
                 if (event.keyCode === 27) {
@@ -83,7 +83,7 @@ class Modal {
                 dom('html').addClass(options.baseClassNames.open);
             })
             .on('dialogAfterClose', function(options) {
-                var all = this.getAll();
+                let all = this.getAll();
                 if (!all || !all.length) {
                     dom('body').removeClass(options.baseClassNames.open);
                     dom('html').removeClass(options.baseClassNames.open);
@@ -99,7 +99,7 @@ class Modal {
     }
 
     on(name, callback) {
-        var listeners = this._events.get(name) || [];
+        let listeners = this._events.get(name) || [];
         listeners.push(callback);
         this._events.set(name, listeners);
         return this;
@@ -124,7 +124,7 @@ class Modal {
         options = Object.assign({}, this.options, options || {});
         options.id = this.globalID++;
 
-        var elements = {};
+        let elements = {};
 
         // container
         elements.container = zen('div')
@@ -177,7 +177,7 @@ class Modal {
             this.showLoading();
 
             options.method = options.method || 'get';
-            var agent = request();
+            let agent = request();
             agent.method(options.method);
             agent.url(options.remote);
             if (options.data) { agent.data(options.data); }
@@ -202,7 +202,7 @@ class Modal {
                 elements.container.attribute('aria-hidden', 'false');
                 setTimeout(function(){ elements.content[0].focus(); }, 0);
 
-                var selects = dom('[data-selectize]');
+                let selects = dom('[data-selectize]');
                 if (selects) { selects.selectize(); }
             }.bind(this));
         } else {
@@ -229,13 +229,13 @@ class Modal {
         }.bind(this));
 
         // inject the dialog in the DOM
-        var container = dom(options.appendNode);
+        let container = dom(options.appendNode);
 
         // wordpress workaround for out-of-scope cases
         if (GENESIS_PLATFORM == 'wordpress') {
             container = dom('#widgets-editor') || dom('#customize-preview') || dom('#widgets-right') || dom(options.appendNode);
             if ('#' + container.id() != options.appendNode) {
-                var wpwrap = dom('#wpwrap') || dom('.wp-customizer'), sibling, workaround;
+                let wpwrap = dom('#wpwrap') || dom('.wp-customizer'), sibling, workaround;
                 if (wpwrap.id() == 'wpwrap') {
                     sibling = wpwrap.nextSibling(options.appendNode);
                     workaround =  sibling ? sibling : zen('div.g5wp-out-of-scope' + options.appendNode).after(wpwrap);
@@ -263,12 +263,12 @@ class Modal {
     }
 
     getAll() {
-        var options = this.options;
+        let options = this.options;
         return dom("." + options.baseClassNames.container + ":not(." + options.baseClassNames.closing + ") ." + options.baseClassNames.content);
     }
 
     getByID(id) {
-        var all = this.getAll();
+        let all = this.getAll();
         if (!all) { return []; }
 
         return dom(all.filter(function(element) {
@@ -278,7 +278,7 @@ class Modal {
     }
 
     getLast() {
-        var ids, id;
+        let ids, id;
 
         ids = Array.prototype.map.call(this.getAll() || [], function(element) {
             element = dom(element);
@@ -295,7 +295,7 @@ class Modal {
 
     close(id) {
         if (!id) {
-            var all = this.getAll(),
+            let all = this.getAll(),
                 element;
             if (!all || !all.length) {
                 return false;
@@ -309,7 +309,7 @@ class Modal {
     }
 
     closeAll() {
-        var ids;
+        let ids;
 
         ids = Array.prototype.map.call(this.getAll() || [], function(element) {
             element = dom(element);
@@ -329,17 +329,17 @@ class Modal {
     }
 
     closeByID(id) {
-        var content = this.getByID(id);
+        let content = this.getByID(id);
         if (!content || !content.length) {
             return false;
         }
 
-        var container, options;
+        let container, options;
 
         container = storage.get(content).dialog.elements.container;
         options = Object.assign({}, storage.get(content).dialog);
 
-        var beforeClose = function() {
+        let beforeClose = function() {
                 if (options.beforeClose) {
                     return options.beforeClose(content, options);
                 }
@@ -369,13 +369,13 @@ class Modal {
     }
 
     closeByEscape() {
-        var id = this.getLast();
+        let id = this.getLast();
 
         if (id === false) {
             return false;
         }
 
-        var element = this.getByID(id);
+        let element = this.getByID(id);
 
         if (!storage.get(element).dialog.escapeToClose) {
             return false;
@@ -386,13 +386,13 @@ class Modal {
     }
 
     enableCloseByOverlay() {
-        var id = this.getLast();
+        let id = this.getLast();
 
         if (id === false) {
             return false;
         }
 
-        var elements = storage.get(this.getByID(id)).dialog.elements;
+        let elements = storage.get(this.getByID(id)).dialog.elements;
 
         elements.container.on('click', this._overlayClick.bind(this, elements.container[0]));
         elements.overlay.on('click', this._overlayClick.bind(this, elements.overlay[0]));
@@ -408,7 +408,7 @@ class Modal {
     }
 
     hideLoading() {
-        var spinner = dom('.genesis-dialog-loading-spinner');
+        let spinner = dom('.genesis-dialog-loading-spinner');
         return spinner ? spinner.remove() : false;
     }
 
@@ -426,6 +426,6 @@ class Modal {
     }
 }
 
-var modal = new Modal();
+let modal = new Modal();
 
 export default modal;

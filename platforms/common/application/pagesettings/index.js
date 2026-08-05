@@ -12,7 +12,7 @@ import __module10 from '../utils/translate.js';
 
 'use strict';
 
-var dom = __module0,
+let dom = __module0,
     Submit = __module1,
     modal = __module2.modal,
     toastr = __module2.toastr,
@@ -25,14 +25,14 @@ var dom = __module0,
     getOutlineNameById = __module9.getOutlineNameById,
     translate = __module10;
 
-var AtomsField = '[name="page[head][atoms][_json]"]';
+let AtomsField = '[name="page[head][atoms][_json]"]';
 
-var Atoms = {
+let Atoms = {
     eraser: null,
     lists: { picker: null, items: null, trash: null },
 
     serialize: function() {
-        var list = document.querySelector('.atoms-list'),
+        let list = document.querySelector('.atoms-list'),
             output = [];
         if (!list) { return '[]'; }
 
@@ -43,17 +43,17 @@ var Atoms = {
     },
 
     attachEraser: function() {
-        var element = document.querySelector('[data-atoms-erase]');
+        let element = document.querySelector('[data-atoms-erase]');
         if (Atoms.eraser) { Atoms.eraser.setElement(element); return; }
         Atoms.eraser = new Eraser(element);
     },
 
     createSortables: function(element) {
         Atoms.attachEraser();
-        var root = element || document.querySelector('#atoms');
+        let root = element || document.querySelector('#atoms');
         if (!root || root.SimpleSort) { return; }
 
-        var controller = new DraggableGroup(root, {
+        let controller = new DraggableGroup(root, {
             lists: '.atoms-picker, .atoms-list',
             items: '[data-atom-picked]',
             filter: '[data-atom-ignore]',
@@ -72,7 +72,7 @@ var Atoms = {
             },
 
             onPreview: function(preview, source) {
-                var color = getComputedStyle(source).borderTopColor;
+                let color = getComputedStyle(source).borderTopColor;
                 preview.style.backgroundColor = color;
                 preview.style.borderColor = color;
                 preview.style.color = '#fff';
@@ -95,7 +95,7 @@ var Atoms = {
                 if (!event.cloned) { Atoms.eraser.hide(); }
                 if (!event.changed) { return; }
 
-                var field = document.querySelector(AtomsField);
+                let field = document.querySelector(AtomsField);
                 if (!field) { throw new Error('Field "' + AtomsField + '" not found in the DOM.'); }
                 field.value = Atoms.serialize();
                 field.dispatchEvent(new Event('change', { bubbles: true }));
@@ -109,15 +109,15 @@ var Atoms = {
     }
 };
 
-var attachSettings = function() {
+let attachSettings = function() {
     dom.delegate(document.body, 'click', '.atoms-list [data-atom-picked] .config-cog', function(event, trigger) {
         event.preventDefault();
-        var item = trigger.closest('[data-atom-picked]'),
+        let item = trigger.closest('[data-atom-picked]'),
             list = item && item.parentElement,
             dataField = document.querySelector(AtomsField);
         if (!item || !list || !dataField) { return; }
 
-        var itemData = item.getAttribute('data-atom-picked'),
+        let itemData = item.getAttribute('data-atom-picked'),
             dataValue = JSON.parse(dataField.value || '[]');
 
         modal.open({
@@ -127,7 +127,7 @@ var attachSettings = function() {
             overlayClickToClose: false,
             remote: parseAjaxURI(trigger.getAttribute('href') + getAjaxSuffix()),
             remoteLoaded: function(response, content) {
-                var container = modal.element(content.elements.content),
+                let container = modal.element(content.elements.content),
                     form = container.querySelector('form'),
                     submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
 
@@ -144,7 +144,7 @@ var attachSettings = function() {
                         indicator.show(target);
 
                         form = container.querySelector('form');
-                        var post = Submit(form.elements, container);
+                        let post = Submit(form.elements, container);
                         if (post.invalid.length) {
                             indicator.hide(target);
                             indicator.show(target, 'fa fa-fw fa-exclamation-triangle');
@@ -153,7 +153,7 @@ var attachSettings = function() {
                         }
 
                         request(form.method, parseAjaxURI(form.action + getAjaxSuffix()), post.valid.join('&') || {}, function(error, resultResponse) {
-                            var result = resultResponse && resultResponse.body;
+                            let result = resultResponse && resultResponse.body;
                             if (!result || !result.success) {
                                 modal.open({
                                     content: result ? (result.html || result.message || result) : (error ? error.message : 'Request failed.'),
@@ -163,17 +163,17 @@ var attachSettings = function() {
                                     }
                                 });
                             } else {
-                                var items = Array.from(list.querySelectorAll(':scope > [data-atom-picked]')),
+                                let items = Array.from(list.querySelectorAll(':scope > [data-atom-picked]')),
                                     itemIndex = items.indexOf(item);
                                 if (itemIndex !== -1) {
                                     dataValue[itemIndex] = result.item;
                                     dataField.value = JSON.stringify(dataValue).replace(/\//g, '\\/');
                                     item.setAttribute('data-atom-picked', JSON.stringify(result.item).replace(/\//g, '\\/'));
 
-                                    var title = item.querySelector('.atom-title');
+                                    let title = item.querySelector('.atom-title');
                                     if (title) { title.textContent = result.item.title; }
 
-                                    var enabled = Number(result.item.attributes.enabled),
+                                    let enabled = Number(result.item.attributes.enabled),
                                         inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
                                     item.classList.toggle('atom-disabled', !enabled);
                                     item.classList.toggle('g-inheriting', Boolean(inheriting));
@@ -181,7 +181,7 @@ var attachSettings = function() {
                                     item.removeAttribute('data-tip');
 
                                     if (inheriting) {
-                                        var inherit = result.item.inherit,
+                                        let inherit = result.item.inherit,
                                             outline = getOutlineNameById(inherit.outline),
                                             atom = inherit.atom || '',
                                             include = (inherit.include || []).join(', ');
@@ -192,7 +192,7 @@ var attachSettings = function() {
                                 }
 
                                 if (target.hasAttribute('data-apply-and-save')) {
-                                    var save = document.querySelector('.button-save');
+                                    let save = document.querySelector('.button-save');
                                     if (save) { save.click(); }
                                 }
                                 modal.close();
@@ -207,12 +207,12 @@ var attachSettings = function() {
     });
 };
 
-var attachSortableAtoms = function(atoms) {
+let attachSortableAtoms = function(atoms) {
     if (atoms && !atoms.SimpleSort) { Atoms.createSortables(atoms); }
 };
 
 dom.ready(function() {
-    var atoms = document.querySelector('#atoms');
+    let atoms = document.querySelector('#atoms');
     dom.delegate(document.body, 'mouseover', '#atoms', function(event, element) { attachSortableAtoms(element); });
     attachSortableAtoms(atoms);
     attachSettings();

@@ -12,7 +12,7 @@ class EventEmitter {
     }
 
     once(event, callback) {
-        var listener = function() {
+        let listener = function() {
             this.off(event, listener);
             callback.apply(this, arguments);
         }.bind(this);
@@ -32,7 +32,7 @@ class EventEmitter {
     }
 
     emit(event) {
-        var args = Array.prototype.slice.call(arguments, 1),
+        let args = Array.prototype.slice.call(arguments, 1),
             callbacks = this.listeners.get(event);
 
         if (callbacks) {

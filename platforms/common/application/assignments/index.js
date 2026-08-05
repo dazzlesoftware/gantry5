@@ -1,11 +1,9 @@
 import __module0 from '../utils/dom.js';
-import __module1 from '../utils/frame-listener.js';
 import __module2 from '../utils/async-foreach.js';
 
 "use strict";
 
 const { ready, delegate } = __module0;
-const frameListener = __module1;
 const asyncForEach = __module2;
 
 const cache = new WeakMap();
@@ -158,29 +156,6 @@ const Assignments = {
 
     toggleStateDelegation(event, element) {
         element.disabled = element.value !== '1';
-    },
-
-    chromeFix() {
-        if (!Assignments.isChrome()) return;
-        document.querySelectorAll('#assignments .settings-param-wrapper, .settings-assignments .settings-param-wrapper')
-            .forEach(panel => {
-                const maxHeight = Number.parseInt(getComputedStyle(panel).maxHeight, 10);
-                const height = panel.getBoundingClientRect().height;
-                panel.style.overflow = height >= maxHeight ? 'auto' : 'visible';
-
-                if (height >= maxHeight) {
-                    let alternateWidth = 100;
-                    frameListener(panel, 'scroll', () => {
-                        alternateWidth = alternateWidth === 100 ? 100.01 : 100;
-                        const card = panel.closest('.card');
-                        if (card) card.style.width = `${alternateWidth}%`;
-                    });
-                }
-            });
-    },
-
-    isChrome() {
-        return navigator.userAgent.toLowerCase().includes('chrome');
     }
 };
 

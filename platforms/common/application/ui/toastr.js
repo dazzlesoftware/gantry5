@@ -1,10 +1,10 @@
 "use strict";
 
-var merge = function(target) {
+let merge = function(target) {
     target = target || {};
     Array.prototype.slice.call(arguments, 1).forEach(function(source) {
         Object.keys(source || {}).forEach(function(key) {
-            var value = source[key];
+            let value = source[key];
             if (value && typeof value === 'object' && !Array.isArray(value)) {
                 target[key] = merge(
                     target[key] && typeof target[key] === 'object' ? target[key] : {},
@@ -18,7 +18,7 @@ var merge = function(target) {
     return target;
 };
 
-var defaults = {
+let defaults = {
     tapToDismiss: true,
     noticeClass: 'g-notifications',
     containerID: 'g-notifications-container',
@@ -46,8 +46,8 @@ var defaults = {
     progressBar: true
 };
 
-var createElement = function(tag, className, attributes) {
-        var node = document.createElement(tag);
+let createElement = function(tag, className, attributes) {
+        let node = document.createElement(tag);
         if (className) { node.className = className; }
         Object.keys(attributes || {}).forEach(function(name) {
             node.setAttribute(name, attributes[name]);
@@ -67,14 +67,14 @@ var createElement = function(tag, className, attributes) {
             element.gNotificationAnimation = null;
         }
 
-        var finish = function() {
+        let finish = function() {
             element.style.opacity = opacity;
             element.gNotificationAnimation = null;
             if (typeof callback === 'function') { callback(); }
         };
 
         if (typeof element.animate === 'function') {
-            var animation = element.animate(
+            let animation = element.animate(
                 [{opacity: getComputedStyle(element).opacity}, {opacity: opacity}],
                 {duration: Number(duration) || 0, easing: easing || 'ease'}
             );
@@ -133,7 +133,7 @@ class Toaster {
         this.id++;
         this.previousNotice = options.message;
 
-        var container = this.getContainer(options, true),
+        let container = this.getContainer(options, true),
             element = createElement('div'),
             title = createElement('div'),
             message = createElement('div'),
@@ -175,7 +175,7 @@ class Toaster {
         animateOpacity(element, 1, options.showDuration, options.showEquation, options.onShow);
 
         if (options.timeOut > 0) {
-            var map = this.map.get(element);
+            let map = this.map.get(element);
             map.interval = setTimeout(function() { this.hide(element); }.bind(this), options.timeOut);
             map.progressBar.maxHideTime = parseFloat(options.timeOut);
             map.progressBar.hideETA = Date.now() + map.progressBar.maxHideTime;
@@ -187,7 +187,7 @@ class Toaster {
             }
         }
 
-        var stick = function() { this.stickAround(element); }.bind(this),
+        let stick = function() { this.stickAround(element); }.bind(this),
             delay = function() { this.delayedHide(element); }.bind(this);
         element.addEventListener('mouseover', stick);
         element.addEventListener('mouseout', delay);
@@ -216,7 +216,7 @@ class Toaster {
     }
 
     stickAround(element) {
-        var map = this.map.get(element);
+        let map = this.map.get(element);
         if (!map) { return; }
         clearTimeout(map.interval);
         map.progressBar.hideETA = 0;
@@ -227,7 +227,7 @@ class Toaster {
         if (!element || !this.map.has(element)) { return false; }
         if (element.querySelector(':focus') && !override) { return false; }
 
-        var map = this.map.get(element);
+        let map = this.map.get(element);
         clearTimeout(map.interval);
         clearInterval(map.progressBar.interval);
         return animateOpacity(
@@ -245,7 +245,7 @@ class Toaster {
     }
 
     delayedHide(element) {
-        var map = this.map.get(element);
+        let map = this.map.get(element);
         if (!map) { return; }
         if (map.options.timeOut > 0 || map.options.extendedTimeout > 0) {
             map.interval = setTimeout(function() { this.hide(element); }.bind(this), map.options.extendedTimeout);
@@ -255,22 +255,22 @@ class Toaster {
     }
 
     updateProgress(element, progress) {
-        var map = this.map.get(element);
+        let map = this.map.get(element);
         if (!map || !map.progressBar.maxHideTime) { return; }
-        var percentage = ((map.progressBar.hideETA - Date.now()) / map.progressBar.maxHideTime) * 100;
+        let percentage = ((map.progressBar.hideETA - Date.now()) / map.progressBar.maxHideTime) * 100;
         progress.style.width = Math.max(0, percentage) + '%';
     }
 
     getContainer(options, create) {
         options = this.mergeOptions(options);
-        var container = document.getElementById(options.containerID);
+        let container = document.getElementById(options.containerID);
         if (container) { return container; }
         return create ? this.createContainer(options) : null;
     }
 
     createContainer(options) {
         options = this.mergeOptions(options);
-        var container = createElement('div', options.location, {
+        let container = createElement('div', options.location, {
                 id: options.containerID,
                 'aria-live': 'polite',
                 role: 'alert'
@@ -285,7 +285,7 @@ class Toaster {
 
     remove(element) {
         if (!element) { return; }
-        var map = this.map.get(element);
+        let map = this.map.get(element);
         if (!map) { return; }
         if (!map.container) { map.container = this.getContainer(map.options); }
 

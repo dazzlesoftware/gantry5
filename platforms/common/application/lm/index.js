@@ -19,7 +19,7 @@ import '../ui/popover.js';
 import './inheritance/index.js';
 
 "use strict";
-var ready          = __module0.ready,
+let ready          = __module0.ready,
     dom              = __module1,
     Submit         = __module2,
     modal          = __module3.modal,
@@ -43,25 +43,25 @@ var ready          = __module0.ready,
 
 
 
-var builder, layoutmanager, lmhistory, savestate, Tips;
+let builder, layoutmanager, lmhistory, savestate, Tips;
 
-var size = function(value) {
+let size = function(value) {
     if (!value) { return 0; }
     return Array.isArray(value) ? value.length : Object.keys(value).length;
 };
 
-var trim = function(value) {
+let trim = function(value) {
     return value == null ? '' : String(value).trim();
 };
 
-var formatPresetName = function(value) {
+let formatPresetName = function(value) {
     return trim(value).replace(/_/g, ' ').replace(/\//g, ' / ').toLowerCase().replace(/^\w|\s\w/g, function(character) {
         return character.toUpperCase();
     });
 };
 
-var precision = function(value, decimalPlaces) {
-    var number = Number(value),
+let precision = function(value, decimalPlaces) {
+    let number = Number(value),
         multiplier = Math.pow(10, decimalPlaces);
 
     return Number((Math.round(number * multiplier) / multiplier).toFixed(decimalPlaces));
@@ -72,7 +72,7 @@ lmhistory = new LMHistory();
 savestate = new SaveState();
 
 ready(function() {
-    var body = dom('body');
+    let body = dom('body');
 
     body.delegate('click', '[data-lm-back]', function(e, element) {
         if (e) { e.preventDefault(); }
@@ -88,7 +88,7 @@ ready(function() {
 
     /* lmhistory events */
     lmhistory.on('push', function(session, index, reset) {
-        var HM = {
+        let HM = {
             back: dom('[data-lm-back]'),
             forward: dom('[data-lm-forward]')
         };
@@ -99,7 +99,7 @@ ready(function() {
     });
 
     lmhistory.on('undo', function(session, index) {
-        var notice = dom('#lm-no-layout'),
+        let notice = dom('#lm-no-layout'),
             title = dom('.layout-title .title small'),
             preset_name = session.preset.name || 'Default',
             HM = {
@@ -117,7 +117,7 @@ ready(function() {
         layoutmanager.updatePendingChanges();
     });
     lmhistory.on('redo', function(session, index) {
-        var notice = dom('#lm-no-layout'),
+        let notice = dom('#lm-no-layout'),
             title = dom('.layout-title .title small'),
             preset_name = session.preset.name || 'Default',
             HM = {
@@ -138,7 +138,7 @@ ready(function() {
 });
 
 ready(function() {
-    var body = dom('body'), root = dom('[data-lm-root]'), data;
+    let body = dom('body'), root = dom('[data-lm-root]'), data;
 
     // Layout Manager
     layoutmanager = new LayoutManager('[data-lm-container]', {
@@ -171,7 +171,7 @@ ready(function() {
         return false;
     });
     body.delegate('keydown', '.g-tabs a', function(event, element) {
-        var key = (event.which ? event.which : event.keyCode);
+        let key = (event.which ? event.which : event.keyCode);
         if (key == 32 || key == 13) { // ARIA support: Space / Enter toggle
             event.preventDefault();
             body.emit('mouseup', event);
@@ -182,7 +182,7 @@ ready(function() {
         element = dom(element);
         event.preventDefault();
 
-        var index = 0,
+        let index = 0,
             parent = element.parent('.g-tabs'),
             panes = parent.siblings('.g-panes'),
             links = parent.search('a');
@@ -228,7 +228,7 @@ ready(function() {
 
     // Particles filtering
     body.delegate('input', '.sidebar-block .search input', function(event, element) {
-        var value = dom(element).value().toLowerCase(),
+        let value = dom(element).value().toLowerCase(),
             list = dom('.sidebar-block [data-lm-blocktype]'),
             text, type;
         if (!list) { return false; }
@@ -247,10 +247,10 @@ ready(function() {
     ['click', 'touchend'].forEach(function(evt){
         body.delegate(evt, '[data-lm-samewidth]:not(:empty)', function(event, element) {
             window.Genesis.tips.hide(element[0]);
-            var clientRect = element[0].getBoundingClientRect();
+            let clientRect = element[0].getBoundingClientRect();
             if ((event.clientX || event.pageX || event.changedTouches[0].pageX || 0) < clientRect.width + clientRect.left) { return; }
 
-            var blocks = element.search('> [data-lm-blocktype="block"]'), id;
+            let blocks = element.search('> [data-lm-blocktype="block"]'), id;
             if (!blocks || blocks.length == 1) { return; }
 
             blocks.forEach(function(block) {
@@ -263,7 +263,7 @@ ready(function() {
     });
 
     body.delegate('mouseover', '[data-lm-samewidth]:not(:empty)', function(event, element) {
-        var clientRect = element[0].getBoundingClientRect(),
+        let clientRect = element[0].getBoundingClientRect(),
             clientX = event.clientX || (event.touches && event.touches[0].clientX) || 0,
             tooltips = {
                 equalize: clientX + 5 > clientRect.width + clientRect.left,
@@ -272,7 +272,7 @@ ready(function() {
 
         if (!tooltips.equalize && !tooltips.move) { return; }
 
-        var msg = tooltips.equalize ? translate('GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE');
+        let msg = tooltips.equalize ? translate('GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE');
 
         element.data('tip', msg).data('tip-offset', -30);
 
@@ -291,7 +291,7 @@ ready(function() {
     body.delegate('click', '[data-lm-clear]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
 
-        var mode = element.data('lm-clear'),
+        let mode = element.data('lm-clear'),
             options = {};
 
         switch (mode) {
@@ -307,7 +307,7 @@ ready(function() {
     });
 
     // Switcher
-    var SWITCHER_HIT = false;
+    let SWITCHER_HIT = false;
     body.delegate('mouseover', '[data-lm-switcher]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
 
@@ -324,7 +324,7 @@ ready(function() {
 
     // Switch Layout
     body.delegate('keydown', '[data-switch]', function(event, element){
-        var key = (event.which ? event.which : event.keyCode);
+        let key = (event.which ? event.which : event.keyCode);
         if (key == 32 || key == 13) { // ARIA support: Space toggle
             event.preventDefault();
             body.emit('mousedown', event);
@@ -333,13 +333,13 @@ ready(function() {
 
     // Disable keeping particles if inherit option is selected
     body.delegate('change', '[data-g-inherit="outline"]', function(event, element) {
-        var keeper = element.parent('.g-pane').find('input[type="checkbox"][data-g-preserve="outline"]');
+        let keeper = element.parent('.g-pane').find('input[type="checkbox"][data-g-preserve="outline"]');
         if (keeper) { keeper.checked(false); }
     });
 
     // Disable inheriting section/particles if keep option is selected
     body.delegate('change', '[data-g-preserve="outline"]', function(event, element) {
-        var inherit = element.parent('.g-pane').find('input[type="checkbox"][data-g-inherit="outline"]');
+        let inherit = element.parent('.g-pane').find('input[type="checkbox"][data-g-inherit="outline"]');
         if (inherit) { inherit.checked(false); }
     });
 
@@ -353,7 +353,7 @@ ready(function() {
 
         element.showIndicator();
 
-        var preset = dom('[data-lm-preset]'),
+        let preset = dom('[data-lm-preset]'),
             preserve = element.parent('.g-pane').find('input[type="checkbox"][data-g-preserve]'),
             inherit = element.parent('.g-pane').find('input[type="checkbox"][data-g-inherit]'),
             method = !preserve ? 'get' : 'post',
@@ -363,7 +363,7 @@ ready(function() {
         inherit = inherit && inherit.checked();
 
         if (preserve) {
-            var lm = layoutmanager;
+            let lm = layoutmanager;
             lm.singles('cleanup', lm.builder, true);
             lm.savestate.setSession(lm.builder.serialize(null, true));
 
@@ -375,7 +375,7 @@ ready(function() {
             data.inherit = 1;
         }
 
-        var uri = parseAjaxURI(element.data('switch') + getAjaxSuffix());
+        let uri = parseAjaxURI(element.data('switch') + getAjaxSuffix());
         request(method, uri, data, function(error, response) {
             element.hideIndicator();
 
@@ -395,7 +395,7 @@ ready(function() {
                 flags.warning({
                     message: response.body.message,
                     callback: function(response, content) {
-                        var confirm = content.find('[data-g-delete-confirm]'),
+                        let confirm = content.find('[data-g-delete-confirm]'),
                             cancel  = content.find('[data-g-delete-cancel]');
 
                         if (!confirm) { return; }
@@ -431,7 +431,7 @@ ready(function() {
                 return false;
             }
 
-            var preset = response.body.preset || { name: 'default' },
+            let preset = response.body.preset || { name: 'default' },
                 preset_name = response.body.title || 'Default',
                 structure = response.body.data,
                 notice = dom('#lm-no-layout'),
@@ -455,14 +455,14 @@ ready(function() {
     body.delegate('click', '[data-lm-settings]', function(event, element) {
         element = dom(element);
 
-        var blocktype = element.data('lm-blocktype'),
+        let blocktype = element.data('lm-blocktype'),
             settingsURL = element.data('lm-settings'),
             data = null, parent, section;
 
         // grid is a special case, since relies on pseudo elements for sorting and same width (evenize)
         // we need to check where the user clicked.
         if (blocktype === 'grid') {
-            var clientX = event.clientX || (event.touches && event.touches[0].clientX) || 0,
+            let clientX = event.clientX || (event.touches && event.touches[0].clientX) || 0,
                 boundings = element[0].getBoundingClientRect();
 
             if (clientX + 4 - boundings.left < boundings.width) {
@@ -475,7 +475,7 @@ ready(function() {
         section = element.parent('[data-lm-blocktype="section"]');
         blocktype = element.data('lm-blocktype');
 
-        var ID = element.data('lm-id'),
+        let ID = element.data('lm-id'),
             parentID = parent ? parent.data('lm-id') : false,
             parentType = parent ? parent.data('lm-blocktype') : false;
 
@@ -510,21 +510,21 @@ ready(function() {
                     return;
                 }
 
-                var container = modal.element(content.elements.content),
+                let container = modal.element(content.elements.content),
                     form = container && container.querySelector('form'),
                     submit = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [],
                     actionForm = form;
 
                 if (!container || !form || !actionForm || !submit.length) { return true; }
 
-                var urlTemplate = container.querySelector('.g-urltemplate');
+                let urlTemplate = container.querySelector('.g-urltemplate');
                 if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-                var blockSize = container.querySelector('[name="block[size]"]');
+                let blockSize = container.querySelector('[name="block[size]"]');
 
                 // logic for limits
                 if (blockSize && data.size_limits) {
-                    var note = container.querySelector('.blocksize-note'),
+                    let note = container.querySelector('.blocksize-note'),
                         min = precision(data.size_limits[0], 1),
                         max = precision(data.size_limits[1], 1);
 
@@ -532,16 +532,16 @@ ready(function() {
                     blockSize.setAttribute('max', max);
 
                     if (note) {
-                        var noteHTML = note.innerHTML;
+                        let noteHTML = note.innerHTML;
                         noteHTML = noteHTML.replace(/#min#/g, min);
                         noteHTML = noteHTML.replace(/#max#/g, max);
 
                         note.innerHTML = noteHTML;
-                        var noteVariant = note.querySelector('.blocksize-' + (min == max ? 'range' : 'fixed'));
+                        let noteVariant = note.querySelector('.blocksize-' + (min == max ? 'range' : 'fixed'));
                         if (noteVariant) { noteVariant.classList.add('hidden'); }
                     }
 
-                    var isValid = function() {
+                    let isValid = function() {
                         return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
                     };
 
@@ -559,7 +559,7 @@ ready(function() {
                         indicator.show(target);
 
                         // Refresh the form to collect fresh and dynamic fields.
-                        var currentForm = container.querySelector('form'),
+                        let currentForm = container.querySelector('form'),
                             formElements = currentForm ? currentForm.elements : [],
                             post = Submit(formElements, container);
 
@@ -585,7 +585,7 @@ ready(function() {
                                 }
                             });
                         } else {
-                            var particle = builder.get(ID),
+                            let particle = builder.get(ID),
                                 block = null;
 
                             // particle attributes
@@ -606,7 +606,7 @@ ready(function() {
                             if (response.body.data.block && size(response.body.data.block)) {
                                 block = builder.get(parentID);
 
-                                var sibling = block.block.nextSibling() || block.block.previousSibling(),
+                                let sibling = block.block.nextSibling() || block.block.previousSibling(),
                                     currentSize = block.getSize(),
                                     diffSize;
 
@@ -645,7 +645,7 @@ ready(function() {
 
                             // if it's apply and save we also save the panel
                             if (target.hasAttribute('data-apply-and-save')) {
-                                var save = document.querySelector('.button-save');
+                                let save = document.querySelector('.button-save');
                                 if (save) { save.click(); }
                             }
 

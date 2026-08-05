@@ -2,11 +2,11 @@
     'use strict';
 
     document.querySelectorAll('.g-popupgrid').forEach(function (grid) {
-        var preview = grid.nextElementSibling;
+        let preview = grid.nextElementSibling;
         if (!preview || !preview.classList.contains('g-popupgrid-preview')) return;
 
-        var description = preview.querySelector('.g-popupgrid-description-preview');
-        var image = document.createElement('img');
+        let description = preview.querySelector('.g-popupgrid-description-preview');
+        let image = document.createElement('img');
         image.className = 'g-popupgrid-original';
         image.alt = '';
         preview.appendChild(image);
@@ -21,9 +21,9 @@
         grid.querySelectorAll('.g-popupgrid-item').forEach(function (item) {
             item.addEventListener('click', function (event) {
                 if (event.target.closest('a')) return;
-                var wrap = item.querySelector('.g-popupgrid-item-img-wrap');
-                var source = wrap && (wrap.dataset.src || wrap.querySelector('img')?.src);
-                var content = item.querySelector('.g-popupgrid-description');
+                let wrap = item.querySelector('.g-popupgrid-item-img-wrap');
+                let source = wrap && (wrap.dataset.src || wrap.querySelector('img')?.src);
+                let content = item.querySelector('.g-popupgrid-description');
                 if (!source) return;
                 item.classList.add('g-popupgrid-item-current');
                 image.src = source;

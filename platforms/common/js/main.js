@@ -440,13 +440,13 @@
     const definition = String(expression || "div");
     const tag = (definition.match(tagPattern) || [null, "div"])[1];
     const element = (ownerDocument || document).createElement(tag);
-    const id = definition.match(idPattern);
+    const id2 = definition.match(idPattern);
     const classes = [];
     let match;
     while (match = classPattern.exec(definition)) {
       classes.push(match[1]);
     }
-    if (id) element.id = id[1];
+    if (id2) element.id = id2[1];
     if (classes.length) element.className = classes.join(" ");
     while (match = attributePattern.exec(definition)) {
       const value = match[2] !== void 0 ? match[2] : match[3] !== void 0 ? match[3] : match[4] !== void 0 ? match[4] : "";
@@ -675,7 +675,7 @@
       return this;
     }
     once(event, callback) {
-      var listener = (function() {
+      let listener = (function() {
         this.off(event, listener);
         callback.apply(this, arguments);
       }).bind(this);
@@ -692,7 +692,7 @@
       return this;
     }
     emit(event) {
-      var args = Array.prototype.slice.call(arguments, 1), callbacks = this.listeners.get(event);
+      let args = Array.prototype.slice.call(arguments, 1), callbacks = this.listeners.get(event);
       if (callbacks) {
         Array.from(callbacks).forEach(function(callback) {
           callback.apply(this, args);
@@ -778,10 +778,10 @@
       const normalizedQuery = normalizeText(query, this.settings.diacritics).trim();
       const score = options.score || this.getScoreFunction(normalizedQuery, options);
       const results = [];
-      Object.keys(this.items).forEach((id) => {
-        const itemScore = normalizedQuery ? score(this.items[id]) : 1;
+      Object.keys(this.items).forEach((id2) => {
+        const itemScore = normalizedQuery ? score(this.items[id2]) : 1;
         if (!normalizedQuery || options.filter === false || itemScore > 0) {
-          results.push({ score: itemScore, id });
+          results.push({ score: itemScore, id: id2 });
         }
       });
       const sort = this.getSortFunction(normalizedQuery, options);
@@ -854,7 +854,7 @@
     this.arcFill = null;
     this.lastFrameValue = 0;
     this.animationFrame = null;
-    var target = asElement(this.options.insertElement) || this.element;
+    let target = asElement(this.options.insertElement) || this.element;
     insertCanvas(this.canvas, target, this.options.insertLocation || "before");
     this.update(options);
   };
@@ -872,24 +872,24 @@
     return this;
   };
   Progresser.prototype.initFill = function() {
-    var fill = this.options.fill, size3 = this.options.size, ctx = this.ctx;
+    let fill = this.options.fill, size3 = this.options.size, ctx = this.ctx;
     if (!fill) {
       throw new Error("The fill is not specified.");
     }
     this.arcFill = fill.color || null;
     if (fill.gradient) {
-      var colors = fill.gradient;
+      let colors = fill.gradient;
       if (colors.length === 1) {
         this.arcFill = colors[0];
       } else {
-        var angle = fill.gradientAngle || 0, direction = fill.gradientDirection || [
+        let angle = fill.gradientAngle || 0, direction = fill.gradientDirection || [
           size3 / 2 * (1 - Math.cos(angle)),
           size3 / 2 * (1 + Math.sin(angle)),
           size3 / 2 * (1 + Math.cos(angle)),
           size3 / 2 * (1 - Math.sin(angle))
         ], gradient = ctx.createLinearGradient.apply(ctx, direction);
         colors.forEach(function(entry, index) {
-          var color = entry, position = index / (colors.length - 1);
+          let color = entry, position = index / (colors.length - 1);
           if (Array.isArray(entry)) {
             color = entry[0];
             position = entry[1];
@@ -920,7 +920,7 @@
     this.drawArc(value);
   };
   Progresser.prototype.drawArc = function(value) {
-    var ctx = this.ctx, radius = this.radius, thickness = this.getThickness(), angle = this.options.startAngle;
+    let ctx = this.ctx, radius = this.radius, thickness = this.getThickness(), angle = this.options.startAngle;
     ctx.save();
     ctx.beginPath();
     if (!this.options.reverse) {
@@ -935,7 +935,7 @@
     ctx.restore();
   };
   Progresser.prototype.drawEmptyArc = function(value) {
-    var ctx = this.ctx, radius = this.radius, thickness = this.getThickness(), angle = this.options.startAngle;
+    let ctx = this.ctx, radius = this.radius, thickness = this.getThickness(), angle = this.options.startAngle;
     if (value >= 1) {
       return;
     }
@@ -955,8 +955,8 @@
   };
   Progresser.prototype.drawAnimated = function(value) {
     this.emit("progress-animation-start", { value });
-    var start = performance.now(), duration = parseFloat(this.options.animation.duration) || 1200, initial = this.lastFrameValue, frame = (function(timestamp) {
-      var progress = Math.min(1, (timestamp - start) / duration), stepValue = initial * (1 - progress) + value * progress;
+    let start = performance.now(), duration = parseFloat(this.options.animation.duration) || 1200, initial = this.lastFrameValue, frame = (function(timestamp) {
+      let progress = Math.min(1, (timestamp - start) / duration), stepValue = initial * (1 - progress) + value * progress;
       this.drawFrame(stepValue);
       this.emit("progress-animation-change", {
         progress,
@@ -1001,11 +1001,11 @@
       keepIcon = className;
       className = null;
     }
-    var icon = keepIcon ? null : element.querySelector("i");
+    let icon = keepIcon ? null : element.querySelector("i");
     element.gHadIcon = Boolean(icon);
     if (!icon) {
       if (!element.querySelector("span") && element.children.length === 0) {
-        var label = document.createElement("span");
+        let label = document.createElement("span");
         label.textContent = element.textContent;
         element.textContent = "";
         element.appendChild(label);
@@ -1023,7 +1023,7 @@
     if (!element || !element.gIndicator) {
       return;
     }
-    var icon = element.querySelector("i");
+    let icon = element.querySelector("i");
     if (!icon) {
       return;
     }
@@ -1042,6 +1042,9 @@
   var indicator = indicator_default;
   var unitless = ["opacity", "zIndex", "fontWeight", "lineHeight", "zoom", "order", "flexGrow", "flexShrink"];
   var durationMs = function(value) {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return 0;
+    }
     if (typeof value === "number") {
       return value;
     }
@@ -1052,9 +1055,9 @@
     return typeof value === "number" && unitless.indexOf(property) === -1 ? value + "px" : String(value);
   };
   var sequence = function() {
-    var callbacks = Array.prototype.slice.call(arguments);
+    let callbacks = Array.prototype.slice.call(arguments);
     return function() {
-      var args = arguments, context = this;
+      let args = arguments, context = this;
       callbacks.forEach(function(callback) {
         callback.apply(context, args);
       });
@@ -1064,35 +1067,35 @@
     return element && element.nodeType === Node.ELEMENT_NODE && element.matches(expression || "*");
   };
   var adjacentSiblings = function(expression) {
-    var siblings = [];
+    let siblings2 = [];
     this.forEach(function(element) {
-      var previous = element.previousElementSibling, next = element.nextElementSibling;
-      if (matches2(previous, expression) && siblings.indexOf(previous) === -1) {
-        siblings.push(previous);
+      let previous = element.previousElementSibling, next = element.nextElementSibling;
+      if (matches2(previous, expression) && siblings2.indexOf(previous) === -1) {
+        siblings2.push(previous);
       }
-      if (matches2(next, expression) && siblings.indexOf(next) === -1) {
-        siblings.push(next);
+      if (matches2(next, expression) && siblings2.indexOf(next) === -1) {
+        siblings2.push(next);
       }
     });
-    return dom3(siblings);
+    return dom3(siblings2);
   };
   var matchingSiblings = function(expression) {
-    var siblings = [];
+    let siblings2 = [];
     this.forEach(function(element) {
       if (!element.parentElement) {
         return;
       }
       Array.prototype.forEach.call(element.parentElement.children, function(sibling) {
-        if (sibling !== element && matches2(sibling, expression) && siblings.indexOf(sibling) === -1) {
-          siblings.push(sibling);
+        if (sibling !== element && matches2(sibling, expression) && siblings2.indexOf(sibling) === -1) {
+          siblings2.push(sibling);
         }
       });
     });
-    return dom3(siblings);
+    return dom3(siblings2);
   };
   dom3.implement({
     style: function() {
-      var property = arguments[0], value = arguments[1];
+      let property = arguments[0], value = arguments[1];
       this.forEach(function(element) {
         if (typeof property === "string") {
           element.style[property] = styleValue(property, value);
@@ -1106,14 +1109,14 @@
     },
     animate: function(properties, options) {
       options = typeof options === "string" ? { duration: options } : options || {};
-      var duration = durationMs(options.duration), easing = options.equation || options.easing || "ease", callback = options.callback || function() {
+      let duration = durationMs(options.duration), easing = options.equation || options.easing || "ease", callback = options.callback || function() {
       }, remaining = this.length;
       if (!remaining) {
         callback.call(this);
         return this;
       }
       this.forEach(function(element) {
-        var from = {}, to = {};
+        let from = {}, to = {};
         Object.keys(properties).forEach(function(property) {
           from[property] = getComputedStyle(element)[property];
           to[property] = styleValue(property, properties[property]);
@@ -1125,7 +1128,7 @@
           }
           return;
         }
-        var animation = element.animate([from, to], { duration, easing, fill: "forwards" });
+        let animation = element.animate([from, to], { duration, easing, fill: "forwards" });
         animation.addEventListener("finish", (function() {
           Object.assign(element.style, to);
           animation.cancel();
@@ -1143,7 +1146,7 @@
       return this.style("display", mode || "inherit");
     },
     progresser: function(options) {
-      var instance2;
+      let instance2;
       this.forEach(function(node) {
         instance2 = node.ProgresserInstance;
         if (!instance2) {
@@ -1159,7 +1162,7 @@
       if (!this[0]) {
         return null;
       }
-      var computed = getComputedStyle(this[0]), property = arguments[0];
+      let computed = getComputedStyle(this[0]), property = arguments[0];
       return property ? computed[property] || computed.getPropertyValue(property) : computed;
     },
     showIndicator: function(klass, keepIcon) {
@@ -1173,7 +1176,7 @@
       });
     },
     slideDown: function(animation, callback) {
-      var element = this, size3 = this.getRealSize(), callbackStart = function() {
+      let element = this, size3 = this.getRealSize(), callbackStart = function() {
         element.gSlideCollapsed = false;
       }, callbackEnd = function() {
         element.attribute("style", element.gSlideStyle);
@@ -1195,7 +1198,7 @@
       if (typeof this.gSlideCollapsed === "undefined") {
         this.gSlideStyle = this.attribute("style");
       }
-      var element = this, callbackStart = function() {
+      let element = this, callbackStart = function() {
         element.gSlideCollapsed = true;
       }, callbackEnd = function() {
         element.style("visibility", "hidden").attribute("aria-hidden", true);
@@ -1213,11 +1216,11 @@
       this.style({ overflow: "hidden" }).animate({ height: 0 }, animation);
     },
     slideToggle: function(animation, callback) {
-      var size3 = this.getRealSize();
+      let size3 = this.getRealSize();
       return this[size3.height && !this.gSlideCollapsed ? "slideUp" : "slideDown"](animation, callback);
     },
     getRealSize: function() {
-      var style = this.attribute("style"), size3;
+      let style = this.attribute("style"), size3;
       this.style({
         position: "relative",
         overflow: "inherit",
@@ -1244,7 +1247,7 @@
   var NativeSearchIndex = search_index_default;
   var dom4 = dom_effects_default;
   var bind = function(fn, context) {
-    var args = Array.prototype.slice.call(arguments, 2);
+    let args = Array.prototype.slice.call(arguments, 2);
     return fn.bind.apply(fn, [context].concat(args));
   };
   var forEach = function(collection, callback, context) {
@@ -1261,9 +1264,9 @@
     return collection && collection.length ? collection[collection.length - 1] : void 0;
   };
   var debounce = function(callback, delay) {
-    var timer;
+    let timer;
     return function() {
-      var context = this, args = arguments;
+      let context = this, args = arguments;
       clearTimeout(timer);
       timer = setTimeout(function() {
         callback.apply(context, args);
@@ -1278,7 +1281,7 @@
     if (!value || Object.prototype.toString.call(value) !== "[object Object]") {
       return false;
     }
-    var prototype = Object.getPrototypeOf(value);
+    let prototype = Object.getPrototypeOf(value);
     return prototype === null || prototype === Object.prototype;
   };
   var cloneValue = function(value, seen) {
@@ -1297,7 +1300,7 @@
     if (seen.has(value)) {
       return seen.get(value);
     }
-    var clone3 = Array.isArray(value) ? [] : {};
+    let clone3 = Array.isArray(value) ? [] : {};
     seen.set(value, clone3);
     Object.keys(value).forEach(function(key) {
       clone3[key] = cloneValue(value[key], seen);
@@ -1313,7 +1316,7 @@
     }
     seen.set(source, target);
     Object.keys(source).forEach(function(key) {
-      var value = source[key];
+      let value = source[key];
       if (isPlainObject(value)) {
         if (seen.has(value)) {
           target[key] = seen.get(value);
@@ -1327,7 +1330,7 @@
     return target;
   };
   var merge = function() {
-    var sources = Array.prototype.slice.call(arguments), target = {}, seen = /* @__PURE__ */ new WeakMap();
+    let sources = Array.prototype.slice.call(arguments), target = {}, seen = /* @__PURE__ */ new WeakMap();
     sources.forEach(function(source) {
       if (isPlainObject(source)) {
         mergeInto(target, source, seen);
@@ -1347,8 +1350,6 @@
   var slugify = function(value) {
     return String(value == null ? "" : value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s-]/g, " ").trim().replace(/\s+/g, "-").toLowerCase();
   };
-  var IS_MAC = /Mac/.test(navigator.userAgent);
-  var IS_IE = /MSIE 9/i.test(navigator.userAgent) || /MSIE 10/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent);
   var KEY_A = 65;
   var KEY_RETURN = 13;
   var KEY_ESC = 27;
@@ -1361,12 +1362,12 @@
   var KEY_BACKSPACE = 8;
   var KEY_DELETE = 46;
   var KEY_SHIFT = 16;
-  var KEY_CMD = IS_MAC ? 91 : 17;
-  var KEY_CTRL = IS_MAC ? 18 : 17;
+  var KEY_CMD = 91;
+  var KEY_CTRL = 17;
   var KEY_TAB = 9;
   var TAG_SELECT = 1;
   var TAG_INPUT = 2;
-  var SUPPORTS_VALIDITY_API = !/android/i.test(window.navigator.userAgent) && !!document.createElement("form").validity;
+  var SUPPORTS_VALIDITY_API = "validity" in document.createElement("input");
   var hash_key = function(value) {
     if (typeof value === "undefined" || value === null) return null;
     if (typeof value === "boolean") return value ? "1" : "0";
@@ -1379,7 +1380,7 @@
     return (str + "").replace(/\$/g, "$$$$");
   };
   var once = function(fn) {
-    var called = false;
+    let called = false;
     return function() {
       if (called) return;
       called = true;
@@ -1387,11 +1388,11 @@
     };
   };
   var debounce_events = function(self2, types, fn) {
-    var type;
-    var trigger = self2.emit;
-    var event_args = {};
+    let type;
+    let trigger = self2.emit;
+    let event_args = {};
     self2.emit = function() {
-      var type2 = arguments[0];
+      let type2 = arguments[0];
       if (types.indexOf(type2) !== -1) {
         event_args[type2] = arguments;
       } else {
@@ -1407,19 +1408,19 @@
     }
   };
   var domToString = function(d) {
-    var tmp = document.createElement("div");
+    let tmp = document.createElement("div");
     tmp.appendChild(d.cloneNode(true));
     return tmp.innerHTML;
   };
   var getSelection = function(input) {
-    var result = {};
+    let result = {};
     if ("selectionStart" in input) {
       result.start = input.selectionStart;
       result.length = input.selectionEnd - result.start;
     } else if (document.selection) {
       input.focus();
-      var sel = document.selection.createRange();
-      var selLen = document.selection.createRange().text.length;
+      let sel = document.selection.createRange();
+      let selLen = document.selection.createRange().text.length;
       sel.moveStart("character", -input.value.length);
       result.start = sel.text.length - selLen;
       result.length = selLen;
@@ -1427,7 +1428,7 @@
     return result;
   };
   var transferStyles = function($from, $to, properties) {
-    var i, n, styles = {};
+    let i, n, styles = {};
     if (properties) {
       for (i = 0, n = properties.length; i < n; i++) {
         styles[properties[i]] = $from.compute(properties[i]);
@@ -1442,7 +1443,7 @@
     if (!str) {
       return 0;
     }
-    var $test;
+    let $test;
     if (!measured) {
       $test = zen("test").style({
         position: "absolute",
@@ -1468,24 +1469,24 @@
   };
   var highlight = function($element, pattern) {
     if (typeof pattern === "string" && !pattern.length) return;
-    var regex = typeof pattern === "string" ? new RegExp(pattern, "i") : pattern;
-    var highlight2 = function(node) {
-      var skip = 0;
+    let regex = typeof pattern === "string" ? new RegExp(pattern, "i") : pattern;
+    let highlight2 = function(node) {
+      let skip = 0;
       if (node.nodeType === 3) {
-        var pos = node.data.search(regex);
+        let pos = node.data.search(regex);
         if (pos >= 0 && node.data.length > 0) {
-          var match = node.data.match(regex);
-          var spannode = document.createElement("span");
+          let match = node.data.match(regex);
+          let spannode = document.createElement("span");
           spannode.className = "g-highlight";
-          var middlebit = node.splitText(pos);
-          var endbit = middlebit.splitText(match[0].length);
-          var middleclone = middlebit.cloneNode(true);
+          let middlebit = node.splitText(pos);
+          let endbit = middlebit.splitText(match[0].length);
+          let middleclone = middlebit.cloneNode(true);
           spannode.appendChild(middleclone);
           middlebit.parentNode.replaceChild(spannode, middlebit);
           skip = 1;
         }
       } else if (node.nodeType === 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
-        for (var i = 0; i < node.childNodes.length; ++i) {
+        for (let i = 0; i < node.childNodes.length; ++i) {
           i += highlight2(node.childNodes[i]);
         }
       }
@@ -1497,10 +1498,10 @@
   };
   var autoGrow = function(input) {
     input = dom4(input);
-    var currentWidth = null;
-    var update = function(options, e) {
-      var value, keyCode, printable, placeholder, width;
-      var shift, character, selection;
+    let currentWidth = null;
+    let update = function(options, e) {
+      let value, keyCode, printable, placeholder, width;
+      let shift, character, selection;
       e = e || window.event || {};
       options = options || {};
       if (e.metaKey || e.altKey) return;
@@ -1619,8 +1620,8 @@
     initialize: function(input, options) {
       input = dom4(input);
       this.setOptions(options);
-      var computedStyle = window.getComputedStyle && window.getComputedStyle(input[0], null);
-      var dir = computedStyle ? computedStyle.getPropertyValue("direction") : input[0].currentStyle && input[0].currentStyle.direction;
+      let computedStyle = window.getComputedStyle && window.getComputedStyle(input[0], null);
+      let dir = computedStyle ? computedStyle.getPropertyValue("direction") : input[0].currentStyle && input[0].currentStyle.direction;
       dir = dir || input.parents("[dir]:first").attr("dir") || "";
       this.rand = "selectize-id-" + (Math.random() + 1).toString(36).substring(5);
       this.input = input;
@@ -1650,7 +1651,7 @@
       this.renderCache = {};
       this.onSearchChange = this.options.loadThrottle === null ? this.onSearchChange : debounce(this.onSearchChange, this.options.loadThrottle);
       this.searchIndex = new NativeSearchIndex(this.Options, { diacritics: this.options.diacritics });
-      var i, n;
+      let i, n;
       if (this.options.Options) {
         for (i = 0, n = this.options.Options.length; i < n; i++) {
           this.registerOption(this.options.Options[i]);
@@ -1672,7 +1673,7 @@
       this.setup();
     },
     setup: function() {
-      var $input = this.input, $wrapper, $control, $control_input, $dropdown, $dropdown_content, $dropdown_parent, inputMode, timeout_blur, timeout_focus, classes;
+      let $input = this.input, $wrapper, $control, $control_input, $dropdown, $dropdown_content, $dropdown_parent, inputMode, timeout_blur, timeout_focus, classes;
       inputMode = this.options.mode;
       classes = $input.attribute("class") || "";
       $wrapper = zen("div").addClass(this.options.wrapperClass).addClass(classes).addClass("g-" + inputMode).after(this.input);
@@ -1694,7 +1695,7 @@
         $control_input.attribute("placeholder", this.options.placeholder);
       }
       if (!this.options.splitOn && this.options.delimiter) {
-        var delimiterEscaped = this.options.delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+        let delimiterEscaped = this.options.delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
         this.options.splitOn = new RegExp("\\s*" + delimiterEscaped + "+\\s*");
       }
       if ($input.attribute("autocorrect")) {
@@ -1759,8 +1760,8 @@
         return this.onPaste.apply(this, arguments);
       }, this));
       dom4(document).on("keydown", bind(function(e) {
-        this.isCmdDown = e[IS_MAC ? "metaKey" : "ctrlKey"];
-        this.isCtrlDown = e[IS_MAC ? "altKey" : "ctrlKey"];
+        this.isCmdDown = e.metaKey || e.ctrlKey;
+        this.isCtrlDown = e.ctrlKey || e.altKey;
         this.isShiftDown = e.shiftKey;
       }, this));
       dom4(document).on("keyup", bind(function(e) {
@@ -1830,8 +1831,8 @@
       $dropdown_content.attribute("role", "tree").attribute("aria-expanded", false).attribute("aria-hidden", true);
     },
     setupTemplates: function() {
-      var field_label = this.options.labelField, field_value = this.options.valueField, field_optgroup = this.options.optgroupLabelField, mode = this.options.mode;
-      var templates = {
+      let field_label = this.options.labelField, field_value = this.options.valueField, field_optgroup = this.options.optgroupLabelField, mode = this.options.mode;
+      let templates = {
         "optgroup": function(data) {
           return '<div class="g-optgroup">' + data.html + "</div>";
         },
@@ -1839,14 +1840,14 @@
           return '<div class="g-optgroup-header">' + escape(data[field_optgroup]) + "</div>";
         },
         "option": function(data, escape) {
-          var label = '<div class="g-option">' + escape(data[field_label]) + "</div>";
+          let label = '<div class="g-option">' + escape(data[field_label]) + "</div>";
           if (this.options.Subtitles) {
             label = '<div class="g-option"><span>' + escape(data[field_label]) + '</span> <div class="g-option-subtitle"><small>' + escape(data[field_value]) + "</small></div></div>";
           }
           return label;
         },
         "item": function(data, escape) {
-          var removeButton = "", title = escape(data[field_value]);
+          let removeButton = "", title = escape(data[field_value]);
           if (mode !== "single") {
             removeButton = '<span  class="g-remove-single-item" tabindex="-1" title="Remove">&times;</span></div>';
           }
@@ -1862,7 +1863,7 @@
       this.options.render = merge({}, templates, this.options.render);
     },
     setupCallbacks: function() {
-      var key, fn, callbacks = {
+      let key, fn, callbacks = {
         "initialize": "onInitialize",
         "change": "onChange",
         "item_add": "onItemAdd",
@@ -1897,8 +1898,8 @@
       }
     },
     onMouseDown: function(e) {
-      var defaultPrevented = e.defaultPrevented || typeof e.defaultPrevented === "undefined";
-      var $target = dom4(e.target);
+      let defaultPrevented = e.defaultPrevented || typeof e.defaultPrevented === "undefined";
+      let $target = dom4(e.target);
       if (this.isFocused) {
         if (e.target !== this.$control_input[0]) {
           if (this.options.mode === "single") {
@@ -1926,8 +1927,8 @@
       } else {
         if (this.options.splitOn) {
           setTimeout(bind(function() {
-            var splitInput = trim(this.$control_input.value() || "").split(this.options.splitOn);
-            for (var i = 0, n = splitInput.length; i < n; i++) {
+            let splitInput = trim(this.$control_input.value() || "").split(this.options.splitOn);
+            for (let i = 0, n = splitInput.length; i < n; i++) {
               this.createItem(splitInput[i]);
             }
           }, this), 0);
@@ -1936,7 +1937,7 @@
     },
     onKeyPress: function(e) {
       if (this.isLocked) return e && e.preventDefault();
-      var character = String.fromCharCode(e.keyCode || e.which);
+      let character = String.fromCharCode(e.keyCode || e.which);
       if (this.options.create && this.options.mode === "multi" && character === this.options.delimiter) {
         this.createItem();
         e.preventDefault();
@@ -1944,7 +1945,7 @@
       }
     },
     onKeyDown: function(e) {
-      var isInput = e.target === this.$control_input[0];
+      let isInput = e.target === this.$control_input[0];
       if (this.isLocked) {
         if (e.keyCode !== KEY_TAB) {
           e.preventDefault();
@@ -1972,7 +1973,7 @@
             this.open();
           } else if (this.$activeOption) {
             this.ignoreHover = true;
-            var $next = this.getAdjacentOption(this.$activeOption, 1);
+            let $next = this.getAdjacentOption(this.$activeOption, 1);
             if ($next) {
               this.setActiveOption($next, true, true);
             }
@@ -1984,7 +1985,7 @@
         case KEY_UP:
           if (this.$activeOption) {
             this.ignoreHover = true;
-            var $prev = this.getAdjacentOption(this.$activeOption, -1);
+            let $prev = this.getAdjacentOption(this.$activeOption, -1);
             if ($prev) {
               this.setActiveOption($prev, true, true);
             }
@@ -2019,14 +2020,14 @@
           this.deleteSelection(e);
           return;
       }
-      if ((this.isFull() || this.isInputHidden) && !(IS_MAC ? e.metaKey : e.ctrlKey)) {
+      if ((this.isFull() || this.isInputHidden) && !(e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         return;
       }
     },
     onKeyUp: function(e) {
       if (this.isLocked) return e && e.preventDefault();
-      var value = this.$control_input.value() || "";
+      let value = this.$control_input.value() || "";
       if (this.lastValue !== value) {
         this.lastValue = value;
         this.onSearchChange(value);
@@ -2035,7 +2036,7 @@
       }
     },
     onSearchChange: function(value) {
-      var fn = this.options.load;
+      let fn = this.options.load;
       if (!fn) return;
       if (this.loadedSearches.hasOwnProperty(value)) return;
       this.loadedSearches[value] = true;
@@ -2044,7 +2045,7 @@
       }, this));
     },
     onFocus: function(e) {
-      var wasFocused = this.isFocused;
+      let wasFocused = this.isFocused;
       if (this.isDisabled) {
         this.blur();
         e && e.preventDefault();
@@ -2071,7 +2072,7 @@
         this.onFocus(e);
         return;
       }
-      var deactivate = bind(function() {
+      let deactivate = bind(function() {
         this.close();
         this.setTextboxValue("");
         this.setActiveItem(null);
@@ -2095,7 +2096,7 @@
       this.setActiveOption(element || e.currentTarget, false);
     },
     onOptionSelect: function(e, element) {
-      var value, $target, $option, self2 = this;
+      let value, $target, $option, self2 = this;
       if (e.preventDefault) {
         e.preventDefault();
         e.stopPropagation();
@@ -2131,14 +2132,14 @@
     onItemRemoveViaX: function(e, element) {
       e.preventDefault();
       if (this.isLocked || this.options.mode == "single") return;
-      var $item = element.parent();
+      let $item = element.parent();
       this.setActiveItem($item);
       if (this.deleteSelection()) {
         this.setCaret(this.items.length);
       }
     },
     load: function(fn) {
-      var $wrapper = this.$wrapper.addClass(this.options.loadingClass);
+      let $wrapper = this.$wrapper.addClass(this.options.loadingClass);
       this.loading++;
       fn.apply(this, [bind(function(results) {
         this.loading = Math.max(this.loading - 1, 0);
@@ -2153,8 +2154,8 @@
       }, this)]);
     },
     setTextboxValue: function(value) {
-      var $input = this.$control_input;
-      var changed = $input.value() !== value;
+      let $input = this.$control_input;
+      let changed = $input.value() !== value;
       if (changed) {
         $input.value(value).emit("update");
         this.lastValue = value;
@@ -2168,7 +2169,7 @@
       }
     },
     setValue: function(value, silent) {
-      var events = silent ? [] : ["change"];
+      let events = silent ? [] : ["change"];
       debounce_events(this, events, function() {
         this.clear(silent);
         this.previousValue = this.getValue() || value;
@@ -2176,7 +2177,7 @@
       });
     },
     setActiveItem: function(item, e) {
-      var eventName, idx, begin, end, $item, swap, $last;
+      let eventName, idx, begin, end, $item, swap, $last;
       if (this.options.mode === "single") {
         return;
       }
@@ -2201,7 +2202,7 @@
           begin = end;
           end = swap;
         }
-        for (var i = begin; i <= end; i++) {
+        for (let i = begin; i <= end; i++) {
           $item = this.$control[0].childNodes[i];
           if (this.$activeItems.indexOf($item) === -1) {
             dom4($item).addClass("g-active");
@@ -2230,8 +2231,8 @@
       }
     },
     setActiveOption: function($option, scroll, animate) {
-      var height_menu, height_item, y;
-      var scroll_top, scroll_bottom;
+      let height_menu, height_item, y;
+      let scroll_top, scroll_bottom;
       if (this.$activeOption) this.$activeOption.removeClass("g-active");
       this.$activeOption = null;
       $option = dom4($option);
@@ -2254,7 +2255,7 @@
     },
     selectAll: function() {
       if (this.options.mode === "single") return;
-      var items = this.$control.children(":not(input)");
+      let items = this.$control.children(":not(input)");
       if (items) {
         items.addClass("g-active");
         this.$wrapper.attribute("aria-activedescendant", slugify(this.rand + "-" + items.attribute("data-value")));
@@ -2302,7 +2303,7 @@
       return this.searchIndex.getScoreFunction(query, this.getSearchOptions());
     },
     getSearchOptions: function() {
-      var sort = this.options.sortField;
+      let sort = this.options.sortField;
       if (typeof sort === "string") {
         sort = [{ field: sort }];
       }
@@ -2313,8 +2314,8 @@
       };
     },
     search: function(query) {
-      var i, value, score, result, calculateScore;
-      var options = this.getSearchOptions();
+      let i, value, score, result, calculateScore;
+      let options = this.getSearchOptions();
       if (this.options.score) {
         calculateScore = this.options.score.apply(this, [query]);
         if (typeof calculateScore !== "function") {
@@ -2338,15 +2339,15 @@
       return result;
     },
     refreshOptions: function(triggerDropdown) {
-      var i, j, k, n, groups, groups_order, option, option_html, optgroup, optgroups, html, html_children, has_create_option;
-      var $active, $active_before, $create;
+      let i, j, k, n, groups, groups_order, option, option_html, optgroup, optgroups, html, html_children, has_create_option;
+      let $active, $active_before, $create;
       if (typeof triggerDropdown === "undefined") {
         triggerDropdown = true;
       }
-      var query = trim(this.$control_input.value());
-      var results = this.search(query);
-      var $dropdown_content = this.$dropdown_content;
-      var active_before = this.$activeOption && hash_key(this.$activeOption.attribute("data-value"));
+      let query = trim(this.$control_input.value());
+      let results = this.search(query);
+      let $dropdown_content = this.$dropdown_content;
+      let active_before = this.$activeOption && hash_key(this.$activeOption.attribute("data-value"));
       n = results.items.length;
       if (typeof this.options.maxOptions === "number") {
         n = Math.min(n, this.options.maxOptions);
@@ -2372,8 +2373,8 @@
       }
       if (this.options.lockOptgroupOrder) {
         groups_order.sort(function(a, b) {
-          var a_order = this.Optgroups[a].$order || 0;
-          var b_order = this.Optgroups[b].$order || 0;
+          let a_order = this.Optgroups[a].$order || 0;
+          let b_order = this.Optgroups[b].$order || 0;
           return a_order - b_order;
         });
       }
@@ -2439,9 +2440,9 @@
       }
     },
     addOption: function(data) {
-      var value;
+      let value;
       if (isArray(data)) {
-        for (var i = 0, n = data.length; i < n; i++) {
+        for (let i = 0, n = data.length; i < n; i++) {
           this.addOption(data[i]);
         }
         return;
@@ -2453,30 +2454,30 @@
       }
     },
     registerOption: function(data) {
-      var key = hash_key(data[this.options.valueField]);
+      let key = hash_key(data[this.options.valueField]);
       if (!key && !this.options.allowEmptyOption || this.options.hasOwnProperty(key)) return false;
       data.$order = data.$order || ++this.order;
       this.Options[key] = data;
       return key;
     },
     registerOptionGroup: function(data) {
-      var key = hash_key(data[this.options.optgroupValueField]);
+      let key = hash_key(data[this.options.optgroupValueField]);
       if (!key) return false;
       data.$order = data.$order || ++this.order;
       this.Optgroups[key] = data;
       return key;
     },
-    addOptionGroup: function(id, data) {
-      data[this.options.optgroupValueField] = id;
-      if (id = this.registerOptionGroup(data)) {
-        this.emit("optgroup_add", id, data);
+    addOptionGroup: function(id2, data) {
+      data[this.options.optgroupValueField] = id2;
+      if (id2 = this.registerOptionGroup(data)) {
+        this.emit("optgroup_add", id2, data);
       }
     },
-    removeOptionGroup: function(id) {
-      if (this.Optgroups.hasOwnProperty(id)) {
-        delete this.Optgroups[id];
+    removeOptionGroup: function(id2) {
+      if (this.Optgroups.hasOwnProperty(id2)) {
+        delete this.Optgroups[id2];
         this.renderCache = {};
-        this.emit("optgroup_remove", id);
+        this.emit("optgroup_remove", id2);
       }
     },
     clearOptionGroups: function() {
@@ -2485,9 +2486,9 @@
       this.emit("optgroup_clear");
     },
     updateOption: function(value, data) {
-      var self2 = this;
-      var $item, $item_new, dummy;
-      var value_new, index_item, cache_items, cache_options, order_old;
+      let self2 = this;
+      let $item, $item_new, dummy;
+      let value_new, index_item, cache_items, cache_options, order_old;
       value = hash_key(value);
       value_new = hash_key(data[this.options.valueField]);
       if (value === null) return;
@@ -2530,8 +2531,8 @@
     },
     removeOption: function(value, silent) {
       value = hash_key(value);
-      var cache_items = this.renderCache["item"];
-      var cache_options = this.renderCache["option"];
+      let cache_items = this.renderCache["item"];
+      let cache_options = this.renderCache["option"];
       if (cache_items) delete cache_items[value];
       if (cache_options) delete cache_options[value];
       delete this.UserOptions[value];
@@ -2553,14 +2554,14 @@
       return this.getElementWithValue(value, this.$dropdown_content.search("[data-selectable]"));
     },
     getAdjacentOption: function($option, direction) {
-      var $options = this.$dropdown.search("[data-selectable]");
-      var index = indexOf($options, $option ? $option[0] : null) + direction;
+      let $options = this.$dropdown.search("[data-selectable]");
+      let index = indexOf($options, $option ? $option[0] : null) + direction;
       return index >= 0 && index < ($options ? $options.length : 0) ? dom4($options[index]) : dom4();
     },
     getElementWithValue: function(value, $els) {
       value = hash_key(value);
       if (typeof value !== "undefined" && value !== null) {
-        for (var i = 0, n = $els ? $els.length : 0; i < n; i++) {
+        for (let i = 0, n = $els ? $els.length : 0; i < n; i++) {
           if ($els[i].getAttribute("data-value") === value) {
             return dom4($els[i]);
           }
@@ -2572,18 +2573,18 @@
       return this.getElementWithValue(value, this.$control.children());
     },
     addItems: function(values, silent) {
-      var items = isArray(values) ? values : [values];
-      for (var i = 0, n = items.length; i < n; i++) {
+      let items = isArray(values) ? values : [values];
+      for (let i = 0, n = items.length; i < n; i++) {
         this.isPending = i < n - 1;
         this.addItem(items[i], silent);
       }
     },
     addItem: function(value, silent) {
-      var events = silent ? [] : ["change"];
+      let events = silent ? [] : ["change"];
       debounce_events(this, events, function() {
-        var $item, $option, $options;
-        var inputMode = this.options.mode;
-        var i, active, value_next, wasFull;
+        let $item, $option, $options;
+        let inputMode = this.options.mode;
+        let i, active, value_next, wasFull;
         value = hash_key(value);
         if (this.items.indexOf(value) !== -1) {
           if (inputMode === "single") this.close();
@@ -2605,7 +2606,7 @@
           $options = this.$dropdown_content.search("[data-selectable]");
           if (!this.isPending) {
             $option = this.getOption(value);
-            var adj = this.getAdjacentOption($option, 1);
+            let adj = this.getAdjacentOption($option, 1);
             value_next = adj ? adj.attribute("data-value") : null;
             this.refreshOptions(this.isFocused && inputMode !== "single");
             if (value_next) {
@@ -2624,7 +2625,7 @@
       });
     },
     removeItem: function(value, silent) {
-      var $item, i, idx;
+      let $item, i, idx;
       $item = value && value[0] && typeof value.attribute === "function" ? value : this.getItem(value);
       value = hash_key($item.attribute("data-value"));
       i = this.items.indexOf(value);
@@ -2650,9 +2651,9 @@
       }
     },
     createItem: function(input, triggerDropdown) {
-      var caret = this.caretPos;
+      let caret = this.caretPos;
       input = input || trim(this.$control_input.value() || "");
-      var callback = arguments[arguments.length - 1];
+      let callback = arguments[arguments.length - 1];
       if (typeof callback !== "function") callback = function() {
       };
       if (!isBoolean(triggerDropdown)) {
@@ -2663,16 +2664,16 @@
         return false;
       }
       this.lock();
-      var setup = typeof this.options.create === "function" ? this.options.create : bind(function(input2) {
-        var data = {};
+      let setup = typeof this.options.create === "function" ? this.options.create : bind(function(input2) {
+        let data = {};
         data[this.options.labelField] = input2;
         data[this.options.valueField] = input2;
         return data;
       }, this);
-      var create = once(bind(function(data) {
+      let create = once(bind(function(data) {
         this.unlock();
         if (!data || typeof data !== "object") return callback();
-        var value = hash_key(data[this.options.valueField]);
+        let value = hash_key(data[this.options.valueField]);
         if (typeof value !== "string") return callback();
         this.setTextboxValue("");
         this.addOption(data);
@@ -2681,7 +2682,7 @@
         this.refreshOptions(triggerDropdown && this.options.mode !== "single");
         callback(data);
       }, this));
-      var output = setup.apply(this, [input, create]);
+      let output = setup.apply(this, [input, create]);
       if (typeof output !== "undefined") {
         create(output);
       }
@@ -2696,7 +2697,7 @@
       this.updateOriginalInput();
     },
     refreshState: function() {
-      var invalid;
+      let invalid;
       if (this.isRequired) {
         if (this.items.length) this.isInvalid = false;
         this.$control_input.attribute("required", this.isInvalid || null);
@@ -2704,7 +2705,7 @@
       this.refreshClasses();
     },
     refreshClasses: function() {
-      var isFull = this.isFull(), isLocked = this.isLocked;
+      let isFull = this.isFull(), isLocked = this.isLocked;
       this.$wrapper.toggleClass("g-rtl", this.rtl);
       this.$control.toggleClass("g-focus", this.isFocused);
       this.$control.toggleClass("g-disabled", this.isDisabled);
@@ -2730,11 +2731,11 @@
       return this.options.maxItems !== null && this.items.length >= this.options.maxItems;
     },
     updateOriginalInput: function(opts) {
-      var options, label;
+      let options, label;
       opts = opts || {};
       if (this.tagType === TAG_SELECT) {
         options = [];
-        for (var i = 0, n = this.items.length; i < n; i++) {
+        for (let i = 0, n = this.items.length; i < n; i++) {
           label = this.Options[this.items[i]][this.options.labelField] || "";
           options.push('<option value="' + escapeHTML(this.items[i]) + '" selected="selected">' + escapeHTML(label) + "</option>");
         }
@@ -2752,7 +2753,7 @@
     },
     updatePlaceholder: function() {
       if (!this.options.placeholder) return;
-      var control_input = this.$control_input;
+      let control_input = this.$control_input;
       if (this.items.length) {
         control_input.attribute("placeholder", null);
       } else {
@@ -2774,7 +2775,7 @@
       this.emit("dropdown_open", this.$dropdown);
     },
     close: function() {
-      var trigger = this.isOpen;
+      let trigger = this.isOpen;
       if (this.options.mode === "single" && this.items.length) {
         this.hideInput();
       }
@@ -2785,7 +2786,7 @@
       if (trigger) this.emit("dropdown_close", this.$dropdown);
     },
     positionDropdown: function() {
-      var control = this.$control, offset = control.position();
+      let control = this.$control, offset = control.position();
       offset.top += control[0].offsetHeight;
       this.$dropdown.style({
         width: control[0].offsetWidth,
@@ -2795,7 +2796,7 @@
     },
     clear: function(silent) {
       if (!this.items.length) return;
-      var non_input = this.$control.children(":not(input)");
+      let non_input = this.$control.children(":not(input)");
       if (non_input) non_input.remove();
       this.items = [];
       this.lastQuery = null;
@@ -2808,7 +2809,7 @@
       this.emit("clear");
     },
     insertAtCaret: function($el) {
-      var caret = Math.min(this.caretPos, this.items.length);
+      let caret = Math.min(this.caretPos, this.items.length);
       if (caret === 0) {
         $el.top(this.$control);
       } else {
@@ -2817,7 +2818,7 @@
       this.setCaret(caret + 1);
     },
     deleteSelection: function(e) {
-      var i, n, direction, selection, values, caret, option_select, $option_select, $tail;
+      let i, n, direction, selection, values, caret, option_select, $option_select, $tail;
       direction = e && e.keyCode === KEY_BACKSPACE ? -1 : 1;
       selection = getSelection(this.$control_input[0]);
       if (this.$activeOption && !this.options.hideSelected) {
@@ -2828,7 +2829,7 @@
       }
       values = [];
       if (this.$activeItems.length) {
-        var children = this.$control.children(":not(input)");
+        let children = this.$control.children(":not(input)");
         $tail = this.$control.children(".g-active");
         if ($tail) {
           $tail = dom4(direction > 0 ? last($tail) : $tail[0]);
@@ -2872,7 +2873,7 @@
       return true;
     },
     advanceSelection: function(direction, e) {
-      var tail, selection, idx, valueLength, cursorAtEdge, $tail;
+      let tail, selection, idx, valueLength, cursorAtEdge, $tail;
       if (direction === 0) return;
       if (this.rtl) direction *= -1;
       tail = direction > 0 ? "last-child" : "first-child";
@@ -2893,7 +2894,7 @@
       }
     },
     advanceCaret: function(direction, e) {
-      var fn, $adj;
+      let fn, $adj;
       if (direction === 0) return;
       fn = direction > 0 ? "nextSibling" : "previousSibling";
       if (this.isShiftDown) {
@@ -2914,7 +2915,7 @@
         i = Math.max(0, Math.min(this.items.length, i));
       }
       if (!this.isPending) {
-        var j, n, fn, $children, $child;
+        let j, n, fn, $children, $child;
         $children = this.$control.children(":not(input)");
         for (j = 0, n = $children ? $children.length : 0; j < n; j++) {
           $child = dom4($children[j]);
@@ -2949,7 +2950,7 @@
       this.unlock();
     },
     destroy: function() {
-      var revertSettings = this.revertSettings;
+      let revertSettings = this.revertSettings;
       this.emit("destroy");
       this.off();
       this.$wrapper.remove();
@@ -2961,10 +2962,10 @@
       delete this.input[0].selectize;
     },
     render: function(templateName, data) {
-      var value, id, label;
-      var name = "";
-      var cache2 = false;
-      var regex_tag = /^[\t \r\n]*<([a-z][a-z0-9\-_]*(?:\:[a-z][a-z0-9\-_]*)?)/i;
+      let value, id2, label;
+      let name = "";
+      let cache2 = false;
+      let regex_tag = /^[\t \r\n]*<([a-z][a-z0-9\-_]*(?:\:[a-z][a-z0-9\-_]*)?)/i;
       if (templateName === "option" || templateName === "item") {
         value = hash_key(data[this.options.valueField]);
         cache2 = !!value;
@@ -2977,14 +2978,14 @@
           return this.renderCache[templateName][value];
         }
       }
-      var html = zen("div").html(this.options.render[templateName].apply(this, [data, escapeHTML]));
+      let html = zen("div").html(this.options.render[templateName].apply(this, [data, escapeHTML]));
       html = html.firstChild();
       if (templateName === "option" || templateName === "option_create") {
         html = html.data("selectable", "");
       }
       if (templateName === "optgroup") {
-        id = data[this.options.optgroupValueField] || "";
-        name = escape_replace(escapeHTML(id));
+        id2 = data[this.options.optgroupValueField] || "";
+        name = escape_replace(escapeHTML(id2));
         html = html.data("group", name).attribute("role", "group").attribute("aria-label", name);
       }
       if (templateName === "option" || templateName === "item") {
@@ -3005,7 +3006,7 @@
     },
     canCreate: function(input) {
       if (!this.options.create) return false;
-      var filter = this.options.createFilter;
+      let filter = this.options.createFilter;
       return input.length && (typeof filter !== "function" || filter.apply(self, [input])) && (typeof filter !== "string" || new RegExp(filter).test(input)) && (!(filter instanceof RegExp) || filter.test(input));
     },
     getPreviousValue: function() {
@@ -3032,13 +3033,13 @@
   dom4.implement({
     selectize: function(settings_user) {
       settings_user = settings_user || {};
-      var defaults6 = Selectize.prototype.options, settings = merge({}, defaults6, settings_user), attr_data = settings.dataAttr, field_label = settings.labelField, field_value = settings.valueField, field_optgroup = settings.optgroupField, field_optgroup_label = settings.optgroupLabelField, field_optgroup_value = settings.optgroupValueField;
-      var init_textbox = function(input, settings_element) {
+      let defaults6 = Selectize.prototype.options, settings = merge({}, defaults6, settings_user), attr_data = settings.dataAttr, field_label = settings.labelField, field_value = settings.valueField, field_optgroup = settings.optgroupField, field_optgroup_label = settings.optgroupLabelField, field_optgroup_value = settings.optgroupValueField;
+      let init_textbox = function(input, settings_element) {
         input = dom4(input);
-        var i, n, values, option;
-        var data_raw = input.attribute(attr_data);
+        let i, n, values, option;
+        let data_raw = input.attribute(attr_data);
         if (!data_raw) {
-          var value = trim(input.value() || "");
+          let value = trim(input.value() || "");
           if (!settings.allowEmptyOption && !value.length) return;
           values = value.split(settings.delimiter);
           for (i = 0, n = values.length; i < n; i++) {
@@ -3055,25 +3056,25 @@
           }
         }
       };
-      var init_select = function(input, settings_element) {
-        var i, n, tagName, children, order = 0;
-        var options = settings_element.Options;
-        var optionsMap = {};
-        var readData2 = function(el) {
-          var data = attr_data && el.attribute(attr_data);
+      let init_select = function(input, settings_element) {
+        let i, n, tagName, children, order = 0;
+        let options = settings_element.Options;
+        let optionsMap = {};
+        let readData2 = function(el) {
+          let data = attr_data && el.attribute(attr_data);
           if (typeof data === "string" && data.length) {
             return JSON.parse(data);
           }
           return null;
         };
-        var addOption = function(option, group) {
-          var value, opt;
+        let addOption = function(option, group) {
+          let value, opt;
           option = dom4(option);
           value = hash_key(option.value());
           if (!value.length && !settings.allowEmptyOption) return;
           if (optionsMap.hasOwnProperty(value)) {
             if (group) {
-              var arr = optionsMap[value][field_optgroup];
+              let arr = optionsMap[value][field_optgroup];
               if (!arr) {
                 optionsMap[value][field_optgroup] = group;
               } else if (!isArray(arr)) {
@@ -3094,19 +3095,19 @@
             settings_element.items.push(value);
           }
         };
-        var addGroup = function(optgroup) {
-          var i2, n2, id, optgrp, options2;
+        let addGroup = function(optgroup) {
+          let i2, n2, id2, optgrp, options2;
           optgroup = dom4(optgroup);
-          id = optgroup.attribute("label");
-          if (id) {
+          id2 = optgroup.attribute("label");
+          if (id2) {
             optgrp = readData2(optgroup) || {};
-            optgrp[field_optgroup_label] = id;
-            optgrp[field_optgroup_value] = id;
+            optgrp[field_optgroup_label] = id2;
+            optgrp[field_optgroup_value] = id2;
             settings_element.Optgroups.push(optgrp);
           }
           options2 = optgroup.search("option") || [];
           for (i2 = 0, n2 = options2.length; i2 < n2; i2++) {
-            addOption(options2[i2], id);
+            addOption(options2[i2], id2);
           }
         };
         settings_element.maxItems = input.attribute("multiple") ? null : 1;
@@ -3123,16 +3124,16 @@
       return this.forEach(function($input, i) {
         settings = merge({}, defaults6, settings_user), $input = dom4($input);
         if ($input[0].selectizeInstance || $input[0].selectize) return;
-        var instance2, dataOptions = $input.data("selectize"), tag_name = $input.tag().toLowerCase(), placeholder = $input.attribute("placeholder") || $input.attribute("data-placeholder");
+        let instance2, dataOptions = $input.data("selectize"), tag_name = $input.tag().toLowerCase(), placeholder = $input.attribute("placeholder") || $input.attribute("data-placeholder");
         if (dataOptions) {
           dataOptions = JSON.parse(dataOptions);
         }
         settings = merge({}, settings, dataOptions);
         if (!placeholder && !settings.allowEmptyOption) {
-          var chlds = $input.children('option[value=""]');
+          let chlds = $input.children('option[value=""]');
           placeholder = chlds ? $input.children('option[value=""]').text() : "";
         }
-        var settings_element = {
+        let settings_element = {
           "placeholder": placeholder,
           "Options": [],
           "Optgroups": [],
@@ -3149,7 +3150,7 @@
     }
   });
   Selectize.initialize = function(elements, settings) {
-    var collection = dom4(elements);
+    let collection = dom4(elements);
     if (collection) {
       collection.selectize(settings);
     }
@@ -3160,11 +3161,11 @@
     if (element && (element.selectizeInstance || element.selectize)) {
       return element.selectizeInstance || element.selectize;
     }
-    var collection = dom4(element);
+    let collection = dom4(element);
     return collection ? collection.selectizeInstance : null;
   };
   ready2(function() {
-    var selects = dom4("[data-selectize]");
+    let selects = dom4("[data-selectize]");
     if (!selects) {
       return;
     }
@@ -3192,8 +3193,8 @@
   };
   var animationEndEvents = ["animationend", "webkitAnimationEnd", "mozAnimationEnd", "MSAnimationEnd", "oanimationend"];
   var animationEndSupport = (function() {
-    var style = document.documentElement.style, names = ["animation", "WebkitAnimation", "MozAnimation", "MsAnimation", "OAnimation"];
-    for (var index = 0; index < names.length; index++) {
+    let style = document.documentElement.style, names = ["animation", "WebkitAnimation", "MozAnimation", "MsAnimation", "OAnimation"];
+    for (let index = 0; index < names.length; index++) {
       if (style[names[index]] !== void 0) {
         return animationEndEvents[index];
       }
@@ -3234,7 +3235,7 @@
       this.animationEndEvent = animationEndSupport;
       this._bound = /* @__PURE__ */ Object.create(null);
       this._events = /* @__PURE__ */ new Map();
-      var self2 = this;
+      let self2 = this;
       domready(function() {
         dom5(window).on("keydown", function(event) {
           if (event.keyCode === 27) {
@@ -3246,7 +3247,7 @@
         dom5("body").addClass(options2.baseClassNames.open);
         dom5("html").addClass(options2.baseClassNames.open);
       }).on("dialogAfterClose", (function(options2) {
-        var all = this.getAll();
+        let all = this.getAll();
         if (!all || !all.length) {
           dom5("body").removeClass(options2.baseClassNames.open);
           dom5("html").removeClass(options2.baseClassNames.open);
@@ -3260,7 +3261,7 @@
       return this._bound[method];
     }
     on(name, callback) {
-      var listeners = this._events.get(name) || [];
+      let listeners = this._events.get(name) || [];
       listeners.push(callback);
       this._events.set(name, listeners);
       return this;
@@ -3280,7 +3281,7 @@
     open(options) {
       options = Object.assign({}, this.options, options || {});
       options.id = this.globalID++;
-      var elements = {};
+      let elements = {};
       elements.container = zen2("div").addClass(options.baseClassNames.container).addClass(options.className).style(options.css).attribute("tabindex", "0").attribute("role", "dialog").attribute("aria-hidden", "true").attribute("aria-labelledby", "g-modal-labelledby").attribute("aria-describedby", "g-modal-describedby");
       storage.set(elements.container, { dialog: options });
       elements.overlay = zen2("div").addClass(options.baseClassNames.overlay).addClass(options.overlayClassName).style(options.overlayCSS);
@@ -3301,7 +3302,7 @@
       if (options.remote && options.remote.length > 1) {
         this.showLoading();
         options.method = options.method || "get";
-        var agent = request2();
+        let agent = request2();
         agent.method(options.method);
         agent.url(options.remote);
         if (options.data) {
@@ -3326,7 +3327,7 @@
           setTimeout(function() {
             elements.content[0].focus();
           }, 0);
-          var selects = dom5("[data-selectize]");
+          let selects = dom5("[data-selectize]");
           if (selects) {
             selects.selectize();
           }
@@ -3346,11 +3347,11 @@
         event.preventDefault();
         this._closeButtonClick(elements.container);
       }).bind(this));
-      var container2 = dom5(options.appendNode);
+      let container2 = dom5(options.appendNode);
       if (GENESIS_PLATFORM == "wordpress") {
         container2 = dom5("#widgets-editor") || dom5("#customize-preview") || dom5("#widgets-right") || dom5(options.appendNode);
         if ("#" + container2.id() != options.appendNode) {
-          var wpwrap = dom5("#wpwrap") || dom5(".wp-customizer"), sibling, workaround;
+          let wpwrap = dom5("#wpwrap") || dom5(".wp-customizer"), sibling, workaround;
           if (wpwrap.id() == "wpwrap") {
             sibling = wpwrap.nextSibling(options.appendNode);
             workaround = sibling ? sibling : zen2("div.g5wp-out-of-scope" + options.appendNode).after(wpwrap);
@@ -3372,21 +3373,21 @@
       return elements.content;
     }
     getAll() {
-      var options = this.options;
+      let options = this.options;
       return dom5("." + options.baseClassNames.container + ":not(." + options.baseClassNames.closing + ") ." + options.baseClassNames.content);
     }
-    getByID(id) {
-      var all = this.getAll();
+    getByID(id2) {
+      let all = this.getAll();
       if (!all) {
         return [];
       }
       return dom5(all.filter(function(element) {
         element = dom5(element);
-        return storage.get(element).dialog.id === id;
+        return storage.get(element).dialog.id === id2;
       }));
     }
     getLast() {
-      var ids, id;
+      let ids, id2;
       ids = Array.prototype.map.call(this.getAll() || [], function(element) {
         element = dom5(element);
         return storage.get(element).dialog.id;
@@ -3396,19 +3397,19 @@
       }
       return Math.max.apply(Math, ids);
     }
-    close(id) {
-      if (!id) {
-        var all = this.getAll(), element;
+    close(id2) {
+      if (!id2) {
+        let all = this.getAll(), element;
         if (!all || !all.length) {
           return false;
         }
         element = dom5(all[all.length - 1]);
-        id = storage.get(element).dialog.id;
+        id2 = storage.get(element).dialog.id;
       }
-      return this.closeByID(id);
+      return this.closeByID(id2);
     }
     closeAll() {
-      var ids;
+      let ids;
       ids = Array.prototype.map.call(this.getAll() || [], function(element) {
         element = dom5(element);
         return storage.get(element).dialog.id;
@@ -3416,20 +3417,20 @@
       if (!ids.length) {
         return false;
       }
-      ids.reverse().forEach(function(id) {
-        return this.closeByID(id);
+      ids.reverse().forEach(function(id2) {
+        return this.closeByID(id2);
       }, this);
       return true;
     }
-    closeByID(id) {
-      var content = this.getByID(id);
+    closeByID(id2) {
+      let content = this.getByID(id2);
       if (!content || !content.length) {
         return false;
       }
-      var container2, options;
+      let container2, options;
       container2 = storage.get(content).dialog.elements.container;
       options = Object.assign({}, storage.get(content).dialog);
-      var beforeClose = function() {
+      let beforeClose = function() {
         if (options.beforeClose) {
           return options.beforeClose(content, options);
         }
@@ -3457,22 +3458,22 @@
       return true;
     }
     closeByEscape() {
-      var id = this.getLast();
-      if (id === false) {
+      let id2 = this.getLast();
+      if (id2 === false) {
         return false;
       }
-      var element = this.getByID(id);
+      let element = this.getByID(id2);
       if (!storage.get(element).dialog.escapeToClose) {
         return false;
       }
-      return this.closeByID(id);
+      return this.closeByID(id2);
     }
     enableCloseByOverlay() {
-      var id = this.getLast();
-      if (id === false) {
+      let id2 = this.getLast();
+      if (id2 === false) {
         return false;
       }
-      var elements = storage.get(this.getByID(id)).dialog.elements;
+      let elements = storage.get(this.getByID(id2)).dialog.elements;
       elements.container.on("click", this._overlayClick.bind(this, elements.container[0]));
       elements.overlay.on("click", this._overlayClick.bind(this, elements.overlay[0]));
       elements.content.on("click", function() {
@@ -3484,7 +3485,7 @@
       return dom5("[data-genesis-container]").appendChild(zen2("div.genesis-dialog-loading-spinner." + this.options.className));
     }
     hideLoading() {
-      var spinner = dom5(".genesis-dialog-loading-spinner");
+      let spinner = dom5(".genesis-dialog-loading-spinner");
       return spinner ? spinner.remove() : false;
     }
     // private
@@ -3506,7 +3507,7 @@
     target = target || {};
     Array.prototype.slice.call(arguments, 1).forEach(function(source) {
       Object.keys(source || {}).forEach(function(key) {
-        var value = source[key];
+        let value = source[key];
         if (value && typeof value === "object" && !Array.isArray(value)) {
           target[key] = merge2(
             target[key] && typeof target[key] === "object" ? target[key] : {},
@@ -3547,7 +3548,7 @@
     progressBar: true
   };
   var createElement2 = function(tag, className, attributes) {
-    var node = document.createElement(tag);
+    let node = document.createElement(tag);
     if (className) {
       node.className = className;
     }
@@ -3568,7 +3569,7 @@
       element.gNotificationAnimation.cancel();
       element.gNotificationAnimation = null;
     }
-    var finish = function() {
+    let finish = function() {
       element.style.opacity = opacity;
       element.gNotificationAnimation = null;
       if (typeof callback === "function") {
@@ -3576,7 +3577,7 @@
       }
     };
     if (typeof element.animate === "function") {
-      var animation = element.animate(
+      let animation = element.animate(
         [{ opacity: getComputedStyle(element).opacity }, { opacity }],
         { duration: Number(duration) || 0, easing: easing || "ease" }
       );
@@ -3626,7 +3627,7 @@
       }
       this.id++;
       this.previousNotice = options.message;
-      var container2 = this.getContainer(options, true), element = createElement2("div"), title = createElement2("div"), message = createElement2("div"), icon = createElement2("i", "fa"), progress = createElement2("div", "g-notifications-progress"), close = createElement2("a", "fa fa-close", { href: "#" });
+      let container2 = this.getContainer(options, true), element = createElement2("div"), title = createElement2("div"), message = createElement2("div"), icon = createElement2("i", "fa"), progress = createElement2("div", "g-notifications-progress"), close = createElement2("a", "fa fa-close", { href: "#" });
       if (!container2) {
         return null;
       }
@@ -3664,7 +3665,7 @@
       }
       animateOpacity(element, 1, options.showDuration, options.showEquation, options.onShow);
       if (options.timeOut > 0) {
-        var map = this.map.get(element);
+        let map = this.map.get(element);
         map.interval = setTimeout((function() {
           this.hide(element);
         }).bind(this), options.timeOut);
@@ -3676,7 +3677,7 @@
           }).bind(this), 10);
         }
       }
-      var stick = (function() {
+      let stick = (function() {
         this.stickAround(element);
       }).bind(this), delay = (function() {
         this.delayedHide(element);
@@ -3704,7 +3705,7 @@
       return element;
     }
     stickAround(element) {
-      var map = this.map.get(element);
+      let map = this.map.get(element);
       if (!map) {
         return;
       }
@@ -3719,7 +3720,7 @@
       if (element.querySelector(":focus") && !override) {
         return false;
       }
-      var map = this.map.get(element);
+      let map = this.map.get(element);
       clearTimeout(map.interval);
       clearInterval(map.progressBar.interval);
       return animateOpacity(
@@ -3738,7 +3739,7 @@
       );
     }
     delayedHide(element) {
-      var map = this.map.get(element);
+      let map = this.map.get(element);
       if (!map) {
         return;
       }
@@ -3751,16 +3752,16 @@
       }
     }
     updateProgress(element, progress) {
-      var map = this.map.get(element);
+      let map = this.map.get(element);
       if (!map || !map.progressBar.maxHideTime) {
         return;
       }
-      var percentage = (map.progressBar.hideETA - Date.now()) / map.progressBar.maxHideTime * 100;
+      let percentage = (map.progressBar.hideETA - Date.now()) / map.progressBar.maxHideTime * 100;
       progress.style.width = Math.max(0, percentage) + "%";
     }
     getContainer(options, create) {
       options = this.mergeOptions(options);
-      var container2 = document.getElementById(options.containerID);
+      let container2 = document.getElementById(options.containerID);
       if (container2) {
         return container2;
       }
@@ -3768,7 +3769,7 @@
     }
     createContainer(options) {
       options = this.mergeOptions(options);
-      var container2 = createElement2("div", options.location, {
+      let container2 = createElement2("div", options.location, {
         id: options.containerID,
         "aria-live": "polite",
         role: "alert"
@@ -3787,7 +3788,7 @@
       if (!element) {
         return;
       }
-      var map = this.map.get(element);
+      let map = this.map.get(element);
       if (!map) {
         return;
       }
@@ -3913,18 +3914,18 @@
   // platforms/common/application/utils/cookie.js
   var Cookie = {
     write: function(name, value) {
-      var date = /* @__PURE__ */ new Date();
+      let date = /* @__PURE__ */ new Date();
       date.setTime(date.getTime() + 3600 * 1e3 * 24 * 365 * 1);
-      var host = window.location.host.toString(), domain = host.substring(host.lastIndexOf(".", host.lastIndexOf(".") - 1) + 1);
+      let host = window.location.host.toString(), domain = host.substring(host.lastIndexOf(".", host.lastIndexOf(".") - 1) + 1);
       if (host.match(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/)) {
         domain = host;
       }
-      var cookie = [name, "=", JSON.stringify(value), "; expires=", date.toGMTString(), "; domain=.", domain, "; path=/;"];
+      let cookie = [name, "=", JSON.stringify(value), "; expires=", date.toGMTString(), "; domain=.", domain, "; path=/;"];
       document.cookie = cookie.join("");
     },
     read: function(name) {
       name = name.replace(/([-.*+?^${}()|[\]\/\\])/g, "\\$1");
-      var value = document.cookie.match("(?:^|;)\\s*" + name + "=([^;]*)");
+      let value = document.cookie.match("(?:^|;)\\s*" + name + "=([^;]*)");
       return value ? JSON.parse(decodeURIComponent(value[1])) : null;
     }
   };
@@ -3960,8 +3961,8 @@
   };
   var loadFromStorage = () => {
     const storage5 = readStorage();
-    Object.entries(storage5).forEach(([id, collapsed]) => {
-      const element = document.querySelector('[data-g-collapse-id="'.concat(CSS.escape(id), '"]'));
+    Object.entries(storage5).forEach(([id2, collapsed]) => {
+      const element = document.querySelector('[data-g-collapse-id="'.concat(CSS.escape(id2), '"]'));
       if (element) applyState(element, config(element), Boolean(collapsed));
     });
   };
@@ -4302,11 +4303,11 @@
     if (options.type !== "particle") parts.push(options.type);
     if (options.subtype) parts.push(options.subtype);
     const key = parts.join("-");
-    let id;
+    let id2;
     do {
-      id = randomId();
-    } while (existing.has("".concat(key, "-").concat(id)));
-    return "".concat(key, "-").concat(id);
+      id2 = randomId();
+    } while (existing.has("".concat(key, "-").concat(id2)));
+    return "".concat(key, "-").concat(id2);
   };
 
   // platforms/common/application/utils/translate.js
@@ -4358,7 +4359,7 @@
     if (!value || Object.prototype.toString.call(value) !== "[object Object]") {
       return false;
     }
-    var prototype = Object.getPrototypeOf(value);
+    let prototype = Object.getPrototypeOf(value);
     return prototype === null || prototype === Object.prototype;
   };
   var mergeOptions = function(target) {
@@ -4379,7 +4380,7 @@
     }, object);
   };
   var setPath = function(object, path, value) {
-    var parts = String(path || "").split("."), last3 = parts.pop(), target = object;
+    let parts = String(path || "").split("."), last3 = parts.pop(), target = object;
     parts.forEach(function(key) {
       if (!isPlainObject2(target[key])) {
         target[key] = {};
@@ -4439,7 +4440,7 @@
       return "";
     },
     getPageId: function() {
-      var root = dom6("[data-lm-root]");
+      let root = dom6("[data-lm-root]");
       if (!root) {
         return "data-root-not-found";
       }
@@ -4535,7 +4536,7 @@
       this.on("changed", this.hasChanged);
     }
     updateTitle(title) {
-      var titleElement = this.block[0].querySelector(".title");
+      let titleElement = this.block[0].querySelector(".title");
       if (titleElement) {
         titleElement.textContent = title;
       }
@@ -4543,11 +4544,11 @@
       return this;
     }
     layout() {
-      var settingsUri = getAjaxURL4(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), subtype = this.getSubType() ? 'data-lm-blocksubtype="' + this.getSubType() + '"' : "";
+      let settingsUri = getAjaxURL4(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), subtype = this.getSubType() ? 'data-lm-blocksubtype="' + this.getSubType() + '"' : "";
       return '<div class="' + this.getType() + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getSubType() || this.getKey() || this.getType()) + '</span></span><div class="float-right"><i aria-label="Configure Atom Settings" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
     }
     hasChanged(state, parent) {
-      var block = this.block[0], icon = block.querySelector("span > i.changes-indicator:first-child");
+      let block = this.block[0], icon = block.querySelector("span > i.changes-indicator:first-child");
       if (icon && parent && !parent.changeState) {
         return;
       }
@@ -4558,14 +4559,14 @@
       if (state && !icon) {
         icon = document.createElement("i");
         icon.className = "far fa-circle changes-indicator";
-        var reference = block.querySelector(".icon"), container2 = reference ? reference.parentNode : block.querySelector("span");
+        let reference = block.querySelector(".icon"), container2 = reference ? reference.parentNode : block.querySelector("span");
         if (container2) {
           container2.insertBefore(icon, reference || container2.firstChild);
         }
       }
     }
     onRendered() {
-      var globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
+      let globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
       if (globallyDisabled || this.getAttribute("enabled") === 0) {
         this.disable();
       }
@@ -4587,7 +4588,7 @@
       return '<div class="g-grid nowrap" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-samewidth data-lm-blocktype="grid"></div>';
     }
     onRendered() {
-      var parent = this.block.parent();
+      let parent = this.block.parent();
       if (parent && parent.data("lm-blocktype") == "atoms") {
         this.block.removeClass("nowrap");
       }
@@ -4596,13 +4597,13 @@
       }
     }
     hasChanged(state) {
-      var parent = this.block.parent('[data-lm-blocktype="section"]'), id = parent ? parent.data("lm-id") : false;
+      let parent = this.block.parent('[data-lm-blocktype="section"]'), id2 = parent ? parent.data("lm-id") : false;
       this.changeState = state;
-      if (!parent || !id) {
+      if (!parent || !id2) {
         return;
       }
       if (this.options.builder) {
-        this.options.builder.get(id).emit("changed", state, this);
+        this.options.builder.get(id2).emit("changed", state, this);
       }
     }
   };
@@ -4623,7 +4624,7 @@
     });
   };
   var elementFromHTML = function(html) {
-    var template = document.createElement("template");
+    let template = document.createElement("template");
     template.innerHTML = html.trim();
     return template.content.firstElementChild;
   };
@@ -4635,7 +4636,7 @@
       this.on("changed", this.hasChanged);
     }
     layout() {
-      var settingsUri = getAjaxURL5(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), inheritanceLabel = "", klass = "";
+      let settingsUri = getAjaxURL5(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), inheritanceLabel = "", klass = "";
       if (this.hasInheritance()) {
         inheritanceLabel = this.renderInheritanceLabel(getOutlineNameById2(this.inherit.outline));
         klass = " g-inheriting";
@@ -4646,13 +4647,13 @@
       return '<div class="section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getTitle() + '">' + this.getTitle() + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate2("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate2("GENESIS_PLATFORM_JS_LM_SETTINGS", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Section") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritanceLabel + "</div>";
     }
     adopt(child) {
-      var node = child && child.nodeType ? child : child && child[0], grid = this.block[0].querySelector(".g-grid");
+      let node = child && child.nodeType ? child : child && child[0], grid = this.block[0].querySelector(".g-grid");
       if (node && grid) {
         grid.appendChild(node);
       }
     }
     renderInheritanceLabel(outline) {
-      var content = translate2("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>");
+      let content = translate2("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>");
       if (this.block && this.getParent()) {
         content = "";
       }
@@ -4662,7 +4663,7 @@
       if (!this.hasInheritance()) {
         return;
       }
-      var block = this.block[0];
+      let block = this.block[0];
       block.className = this.cleanKlass(block.className);
       block.classList.add("g-inheriting");
       if (this.inherit.include.length) {
@@ -4671,14 +4672,14 @@
         });
       }
       if (!block.querySelector(":scope > .g-inherit")) {
-        var header = block.querySelector(":scope > .section-header"), inherit = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById2(this.inherit.outline)));
+        let header = block.querySelector(":scope > .section-header"), inherit = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById2(this.inherit.outline)));
         if (header && inherit) {
           header.after(inherit);
         }
       }
     }
     disableInheritance() {
-      var block = this.block[0], inherit = block.querySelector(":scope > .g-inherit.g-section-inherit");
+      let block = this.block[0], inherit = block.querySelector(":scope > .g-inherit.g-section-inherit");
       if (inherit) {
         inherit.remove();
       }
@@ -4686,21 +4687,21 @@
       block.classList.remove("g-inheriting");
     }
     refreshInheritance() {
-      var block = this.block[0];
+      let block = this.block[0];
       block.className = this.cleanKlass(block.className);
       if (!this.hasInheritance()) {
         return;
       }
       this.enableInheritance();
-      var overlay = block.querySelector(":scope > .g-inherit"), content = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById2(this.inherit.outline)));
+      let overlay = block.querySelector(":scope > .g-inherit"), content = elementFromHTML(this.renderInheritanceLabel(getOutlineNameById2(this.inherit.outline)));
       if (overlay && content) {
         overlay.innerHTML = content.innerHTML;
       }
     }
     addInheritanceTip(html) {
-      var tooltip = this.getInheritanceTip();
+      let tooltip = this.getInheritanceTip();
       if (html) {
-        var tooltipHTML = "";
+        let tooltipHTML = "";
         forOwn(tooltip, function(value, key) {
           tooltipHTML += "data-" + key + '="' + value + '" ';
         });
@@ -4709,7 +4710,7 @@
       return this.hasInheritance() ? tooltip : "";
     }
     getInheritanceTip() {
-      var outline = this.inherit ? this.inherit.outline : null, name = getOutlineNameById2(outline), include = (this.inherit.include || []).join(", ");
+      let outline = this.inherit ? this.inherit.outline : null, name = getOutlineNameById2(outline), include = (this.inherit.include || []).join(", ");
       return {
         tip: translate2("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + name + "</strong>") + "<br />Outline ID: " + outline + "<br />Replace: " + include,
         "tip-offset": -2,
@@ -4722,7 +4723,7 @@
       }).join(" ");
     }
     hasChanged(state, child) {
-      var block = this.block[0], heading = block.querySelector("h4"), icon = heading && heading.querySelector(":scope > i:first-child");
+      let block = this.block[0], heading = block.querySelector("h4"), icon = heading && heading.querySelector(":scope > i:first-child");
       if (icon && child && !child.changeState) {
         return;
       }
@@ -4737,12 +4738,12 @@
       }
     }
     onDone() {
-      var block = this.block[0];
+      let block = this.block[0];
       if (!block.querySelector("[data-lm-id]")) {
         this.grid.insert(this.block, "bottom");
         this.options.builder.add(this.grid);
       }
-      var plus = block.querySelector(".fa-plus");
+      let plus = block.querySelector(".fa-plus");
       if (plus && !plus.gSectionAddAttached) {
         plus.gSectionAddAttached = true;
         plus.addEventListener("click", (function(event) {
@@ -4753,7 +4754,7 @@
             return false;
           }
           this.grid = new Grid2();
-          var container2 = block.querySelector('[data-lm-blocktype="container"]');
+          let container2 = block.querySelector('[data-lm-blocktype="container"]');
           this.grid.insert(container2 || this.block, "bottom");
           this.options.builder.add(this.grid);
         }).bind(this));
@@ -4761,22 +4762,22 @@
       this.refreshInheritance();
     }
     getParent() {
-      var parent = this.block[0].parentElement && this.block[0].parentElement.closest("[data-lm-id]");
+      let parent = this.block[0].parentElement && this.block[0].parentElement.closest("[data-lm-id]");
       return parent ? this.options.builder.get(parent.getAttribute("data-lm-id")) : null;
     }
     getLimits(parent) {
       if (!parent) {
         return false;
       }
-      var parentBlock = parent.block[0], sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
+      let parentBlock = parent.block[0], sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
       if (!sibling) {
         return [100, 100];
       }
-      var siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id"));
+      let siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id"));
       if (siblingBlock.getType() !== "block") {
         return false;
       }
-      var sizes = {
+      let sizes = {
         current: this.getParent().getSize(),
         sibling: siblingBlock.getSize()
       };
@@ -4793,9 +4794,9 @@
   var translate3 = translate_default;
   var Offcanvas = class extends Section2 {
     layout() {
-      var settingsUri = getAjaxURL6(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), inheritance = "", klass = "";
+      let settingsUri = getAjaxURL6(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), inheritance = "", klass = "";
       if (this.hasInheritance()) {
-        var outline = getOutlineNameById3(this.inherit.outline);
+        let outline = getOutlineNameById3(this.inherit.outline);
         inheritance = '<div class="g-inherit g-section-inherit"><div class="g-inherit-content">' + translate3("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "</div></div>";
         klass = " g-inheriting g-inheriting-" + this.inherit.include.join(" g-inheriting-");
       }
@@ -4835,7 +4836,7 @@
   // platforms/common/application/lm/blocks/atoms.js
   var Section4 = section_default;
   var elementFromHTML2 = function(html) {
-    var template = document.createElement("template");
+    let template = document.createElement("template");
     template.innerHTML = html.trim();
     return template.content.firstElementChild;
   };
@@ -4848,14 +4849,14 @@
       return this.id || (this.id = this.options.type);
     }
     onDone() {
-      var block = this.block[0];
+      let block = this.block[0];
       if (!block.querySelector('[data-lm-blocktype="atom"]')) {
-        var ids = [this.getId()], segments = block.querySelectorAll("[data-lm-id]");
+        let ids = [this.getId()], segments = block.querySelectorAll("[data-lm-id]");
         segments.forEach(function(element) {
           ids.push(element.getAttribute("data-lm-id"));
         });
-        ids.reverse().forEach(function(id) {
-          this.options.builder.remove(id);
+        ids.reverse().forEach(function(id2) {
+          this.options.builder.remove(id2);
         }, this);
         block.replaceWith(elementFromHTML2(this.deprecated));
         this._attachRedirect();
@@ -4869,11 +4870,11 @@
       this._attachRedirect();
     }
     _attachRedirect() {
-      var item = document.querySelector('[data-genesis-nav="page"]');
+      let item = document.querySelector('[data-genesis-nav="page"]');
       if (!item) {
         return;
       }
-      var link = document.querySelector(".atoms-notice a");
+      let link = document.querySelector(".atoms-notice a");
       if (!link) {
         return;
       }
@@ -4907,7 +4908,7 @@
       }
     }
     hasChanged(state, child) {
-      var block = this.block[0], title = block.querySelector("span.title"), icon = title && title.querySelector(":scope > i:first-child");
+      let block = this.block[0], title = block.querySelector("span.title"), icon = title && title.querySelector(":scope > i:first-child");
       if (icon && child && !child.changeState) {
         return;
       }
@@ -4922,7 +4923,7 @@
       }
     }
     addSettings(container2) {
-      var settingsUri = getAjaxURL7(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), block = container2.block[0], wrapper = document.createElement("div");
+      let settingsUri = getAjaxURL7(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), block = container2.block[0], wrapper = document.createElement("div");
       wrapper.className = "container-wrapper clearfix";
       wrapper.innerHTML = '<div class="container-title"><span class="title">' + this.getType() + '</span></div><div class="container-actions"><span data-tip="' + translate4("GENESIS_PLATFORM_JS_LM_SETTINGS", "Container") + '" data-tip-place="top-left"><i aria-label="' + translate4("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Container") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
       block.insertBefore(wrapper, block.firstChild);
@@ -4936,7 +4937,7 @@
   // platforms/common/application/lm/blocks/block.js
   var Base6 = base_default;
   var precision = function(value, decimals) {
-    var multiplier = Math.pow(10, decimals);
+    let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
   };
   var Block = class extends Base6 {
@@ -4956,7 +4957,7 @@
       if (store) {
         this.setAttribute("size", size3);
       }
-      var style = this.block[0].style;
+      let style = this.block[0].style;
       style.flex = "0 1 " + size3 + "%";
       style.webkitFlex = "0 1 " + size3 + "%";
       style.msFlex = "0 1 " + size3 + "%";
@@ -4968,7 +4969,7 @@
       if (store) {
         this.setAttribute("size", size3);
       }
-      var block = this.block[0], target = "0 1 " + size3 + "%";
+      let block = this.block[0], target = "0 1 " + size3 + "%";
       if (this.sizeAnimation) {
         this.sizeAnimation.cancel();
       }
@@ -4982,7 +4983,7 @@
           fill: "forwards"
         });
         this.sizeAnimation.addEventListener("finish", (function() {
-          var animation = this.sizeAnimation;
+          let animation = this.sizeAnimation;
           this.sizeAnimation = null;
           block.removeAttribute("style");
           this.setSize(size3);
@@ -4995,7 +4996,7 @@
       this.emit("resized", size3, this);
     }
     setLabelSize(size3) {
-      var label = this.block[0].querySelector(":scope > .particle-size");
+      let label = this.block[0].querySelector(":scope > .particle-size");
       if (!label) {
         return false;
       }
@@ -5005,16 +5006,16 @@
       return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"></div>';
     }
     onRendered(element, parent) {
-      var elementBlock = element.block[0];
+      let elementBlock = element.block[0];
       if (elementBlock.querySelector(':scope > [data-lm-blocktype="section"]')) {
         this.removeDropzone();
       }
       if (!parent) {
         return;
       }
-      var grandpa = parent.block[0].parentElement, greatGrandpa = grandpa && grandpa.parentElement, isRoot = grandpa && grandpa.hasAttribute("data-lm-root"), isRootContainer = grandpa && grandpa.getAttribute("data-lm-blocktype") === "container" && greatGrandpa && (greatGrandpa.hasAttribute("data-lm-root") || greatGrandpa.getAttribute("data-lm-blocktype") === "wrapper");
+      let grandpa = parent.block[0].parentElement, greatGrandpa = grandpa && grandpa.parentElement, isRoot = grandpa && grandpa.hasAttribute("data-lm-root"), isRootContainer = grandpa && grandpa.getAttribute("data-lm-blocktype") === "container" && greatGrandpa && (greatGrandpa.hasAttribute("data-lm-root") || greatGrandpa.getAttribute("data-lm-blocktype") === "wrapper");
       if (isRoot || isRootContainer) {
-        var label = document.createElement("span");
+        let label = document.createElement("span");
         label.className = "particle-size";
         label.textContent = this.getSize() + "%";
         elementBlock.insertBefore(label, elementBlock.firstChild);
@@ -5025,12 +5026,12 @@
       this.setLabelSize(resize);
     }
     hasChanged(state) {
-      var icon, block = this.block[0], child = block.querySelector(':scope > [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
+      let icon, block = this.block[0], child = block.querySelector(':scope > [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
       this.changeState = state;
       if (!child) {
         child = block.querySelector(":scope > .particle-size");
         if (!child) {
-          var parentBlock = block.parentElement && block.parentElement.closest('[data-lm-blocktype="block"]');
+          let parentBlock = block.parentElement && block.parentElement.closest('[data-lm-blocktype="block"]');
           child = parentBlock && parentBlock.querySelector(":scope > .particle-size");
         }
         if (!child) {
@@ -5047,7 +5048,7 @@
         }
         return;
       }
-      var mapped = this.options.builder.get(child.getAttribute("data-lm-id"));
+      let mapped = this.options.builder.get(child.getAttribute("data-lm-id"));
       if (mapped) {
         mapped.emit("changed", state, this);
       }
@@ -5067,7 +5068,7 @@
   var getOutlineNameById4 = get_outline_default.getOutlineNameById;
   var translate5 = translate_default;
   var precision2 = function(value, decimals) {
-    var multiplier = Math.pow(10, decimals);
+    let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
   };
   var forOwn2 = function(object, callback) {
@@ -5077,7 +5078,7 @@
   };
   var Particle = class extends Atom2 {
     layout() {
-      var settingsUri = getAjaxURL8(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), subtype = this.getSubType() ? 'data-lm-blocksubtype="' + this.getSubType() + '"' : "", klass = this.getCategoryClass();
+      let settingsUri = getAjaxURL8(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), subtype = this.getSubType() ? 'data-lm-blocksubtype="' + this.getSubType() + '"' : "", klass = this.getCategoryClass();
       if (this.hasInheritance()) {
         klass = " g-inheriting";
         if (this.inherit.include.length) {
@@ -5087,19 +5088,19 @@
       return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span> <i aria-label="' + translate5("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
     }
     enableInheritance() {
-      var block = this.block[0];
+      let block = this.block[0];
       block.className = this.cleanKlass(block.className);
       if (!this.hasInheritance()) {
         return;
       }
-      var icon = block.querySelector(".icon");
+      let icon = block.querySelector(".icon");
       block.classList.add("g-inheriting");
       if (this.inherit.include.length) {
         this.inherit.include.forEach(function(name) {
           block.classList.add("g-inheriting-" + name);
         });
       }
-      var iconGlyph = block.querySelector(".icon .fa");
+      let iconGlyph = block.querySelector(".icon .fa");
       if (iconGlyph) {
         iconGlyph.className = "fa " + this.getIcon();
       }
@@ -5109,7 +5110,7 @@
       global.Genesis.tips.reload();
     }
     disableInheritance() {
-      var block = this.block[0], icon = block.querySelector(".icon"), iconGlyph = block.querySelector(".icon .fa");
+      let block = this.block[0], icon = block.querySelector(".icon"), iconGlyph = block.querySelector(".icon .fa");
       block.className = this.cleanKlass(block.className);
       block.classList.remove("g-inheriting");
       if (iconGlyph) {
@@ -5121,16 +5122,16 @@
       global.Genesis.tips.reload();
     }
     refreshInheritance() {
-      var block = this.block[0];
+      let block = this.block[0];
       block.classList.toggle("g-inheritance", !this.hasInheritance());
       if (this.hasInheritance()) {
         block.className = this.cleanKlass(block.className);
       }
     }
     addInheritanceTip(html) {
-      var tooltip = this.getInheritanceTip();
+      let tooltip = this.getInheritanceTip();
       if (html) {
-        var tooltipHTML = "";
+        let tooltipHTML = "";
         forOwn2(tooltip, function(value, key) {
           tooltipHTML += "data-" + key + '="' + value + '" ';
         });
@@ -5139,7 +5140,7 @@
       return this.hasInheritance() ? tooltip : "";
     }
     getInheritanceTip() {
-      var outline = getOutlineNameById4(this.inherit ? this.inherit.outline : null), particle = this.inherit.particle || "", include = (this.inherit.include || []).join(", ");
+      let outline = getOutlineNameById4(this.inherit ? this.inherit.outline : null), particle = this.inherit.particle || "", include = (this.inherit.include || []).join(", ");
       return {
         tip: translate5("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + particle + "<br />Replace: " + include,
         "tip-offset": -10,
@@ -5152,14 +5153,14 @@
       }).join(" ");
     }
     setLabelSize(size3) {
-      var label = this.block[0].querySelector(".particle-size");
+      let label = this.block[0].querySelector(".particle-size");
       if (!label) {
         return false;
       }
       label.textContent = precision2(size3, 1) + "%";
     }
     onRendered(element, parent) {
-      var size3 = parent.getSize() || 100, globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
+      let size3 = parent.getSize() || 100, globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
       if (globallyDisabled || this.getAttribute("enabled") === 0) {
         this.disable();
       }
@@ -5167,7 +5168,7 @@
       parent.on("resized", this.bound("onParentResize"));
     }
     getParent() {
-      var parent = this.block[0].parentElement && this.block[0].parentElement.closest("[data-lm-id]");
+      let parent = this.block[0].parentElement && this.block[0].parentElement.closest("[data-lm-id]");
       return parent ? this.options.builder.get(parent.getAttribute("data-lm-id")) : null;
     }
     onParentResize(resize) {
@@ -5177,22 +5178,22 @@
       if (this.hasInheritance()) {
         return "fa-lock";
       }
-      var type = this.getType(), subtype = this.getSubType(), template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || "") + '"]');
+      let type = this.getType(), subtype = this.getSubType(), template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || "") + '"]');
       return template ? template.getAttribute("data-lm-icon") : "fa-cube";
     }
     getCategoryClass() {
-      var type = this.getType(), subtype = this.getSubType(), template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || "") + '"]');
+      let type = this.getType(), subtype = this.getSubType(), template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || "") + '"]');
       return template ? " particle-category-" + (template.getAttribute("data-lm-category") || "general") : "";
     }
     getLimits(parent) {
       if (!parent) {
         return false;
       }
-      var parentBlock = parent.block[0], sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
+      let parentBlock = parent.block[0], sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
       if (!sibling) {
         return [100, 100];
       }
-      var siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id")), sizes = {
+      let siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id")), sizes = {
         current: this.getParent().getSize(),
         sibling: siblingBlock.getSize()
       };
@@ -5328,7 +5329,7 @@
   };
   var fillMissing = function(target, source) {
     Object.keys(source || {}).forEach(function(key) {
-      var sourceValue = source[key], targetValue = target[key];
+      let sourceValue = source[key], targetValue = target[key];
       if (typeof targetValue === "undefined") {
         target[key] = sourceValue;
       } else if (targetValue && sourceValue && typeof targetValue === "object" && typeof sourceValue === "object" && !Array.isArray(targetValue) && !Array.isArray(sourceValue)) {
@@ -5338,7 +5339,7 @@
     return target;
   };
   var withoutChildren = function(value) {
-    var output = {};
+    let output = {};
     Object.keys(value || {}).forEach(function(key) {
       if (key !== "children") {
         output[key] = value[key];
@@ -5362,19 +5363,19 @@
       }
     }
     add(block) {
-      var id = typeof block === "string" ? block : block.id;
-      this.map[id] = block;
+      let id2 = typeof block === "string" ? block : block.id;
+      this.map[id2] = block;
       if (block && typeof block.isNew === "function") {
         block.isNew(false);
       }
     }
     remove(block) {
-      var id = typeof block === "string" ? block : block.id;
-      delete this.map[id];
+      let id2 = typeof block === "string" ? block : block.id;
+      delete this.map[id2];
     }
     get(block) {
-      var id = typeof block === "string" ? block : block.id;
-      return Object.prototype.hasOwnProperty.call(this.map, id) ? this.map[id] : block;
+      let id2 = typeof block === "string" ? block : block.id;
+      return Object.prototype.hasOwnProperty.call(this.map, id2) ? this.map[id2] : block;
     }
     load(data) {
       this.recursiveLoad(data);
@@ -5388,18 +5389,18 @@
       return this;
     }
     serialize(root, flat) {
-      var serializedChildren = [];
+      let serializedChildren = [];
       root = root ? root.nodeType ? root : root[0] : document.querySelector("[data-lm-root]");
       if (!root) {
         return;
       }
-      var blocks = flat ? root.querySelectorAll("[data-lm-id]") : Array.from(root.children).filter(function(child) {
+      let blocks = flat ? root.querySelectorAll("[data-lm-id]") : Array.from(root.children).filter(function(child) {
         return child.hasAttribute("data-lm-id");
       });
       forEachCollection(blocks, function(node) {
-        var id = node.getAttribute("data-lm-id"), type = node.getAttribute("data-lm-blocktype"), subtype = node.getAttribute("data-lm-blocksubtype") || false, hasChildren = Array.from(node.children).filter(function(child) {
+        let id2 = node.getAttribute("data-lm-id"), type = node.getAttribute("data-lm-blocktype"), subtype = node.getAttribute("data-lm-blocksubtype") || false, hasChildren = Array.from(node.children).filter(function(child) {
           return child.hasAttribute("data-lm-id");
-        }), mapped = this.map[id], children;
+        }), mapped = this.map[id2], children;
         if (flat) {
           children = hasChildren.length ? hasChildren.map(function(child) {
             return child.getAttribute("data-lm-id");
@@ -5407,8 +5408,8 @@
         } else {
           children = hasChildren.length ? this.serialize(node) : [];
         }
-        var serial = {
-          id,
+        let serial = {
+          id: id2,
           type,
           subtype,
           title: mapped ? mapped.getTitle() : "Untitled",
@@ -5417,8 +5418,8 @@
           children
         };
         if (flat) {
-          var keyed = {};
-          keyed[id] = serial;
+          let keyed = {};
+          keyed[id2] = serial;
           serial = keyed;
         }
         serializedChildren.push(serial);
@@ -5426,21 +5427,21 @@
       return serializedChildren;
     }
     insert(key, value, parent) {
-      var root = document.querySelector("[data-lm-root]");
+      let root = document.querySelector("[data-lm-root]");
       if (!root) {
         return;
       }
       if (!Blocks[value.type]) {
         console.error(value.type + " does not exist");
       }
-      var settings = fillMissing({
+      let settings = fillMissing({
         id: key,
         attributes: {},
         inherit: {},
         subtype: value.subtype || false,
         builder: this
       }, withoutChildren(value)), Element2 = new (Blocks[value.type] || Blocks.section)(settings);
-      var block = Element2.block[0], target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
+      let block = Element2.block[0], target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
       if (target) {
         target.appendChild(block);
       }
@@ -5454,35 +5455,35 @@
     reset(data) {
       this.map = {};
       this.setStructure(data || {});
-      var root = document.querySelector("[data-lm-root]");
+      let root = document.querySelector("[data-lm-root]");
       if (root) {
         root.replaceChildren();
       }
       this.load();
     }
     cleanupLonely() {
-      var ghosts = [], parent, children = document.querySelectorAll("[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block");
+      let ghosts = [], parent, children = document.querySelectorAll("[data-lm-root] > .g-section > .g-grid > .g-block .g-grid > .g-block, [data-lm-root] > .g-section > .g-grid > .g-block > .g-block");
       if (!children.length) {
         return;
       }
       children.forEach(function(child) {
         parent = null;
-        var childParent = child.parentElement, isGrid = childParent && childParent.classList.contains("g-grid");
+        let childParent = child.parentElement, isGrid = childParent && childParent.classList.contains("g-grid");
         if (isGrid && childParent.children.length > 1) {
           return;
         }
         if (isGrid) {
-          var gridId = childParent.getAttribute("data-lm-id");
+          let gridId = childParent.getAttribute("data-lm-id");
           if (gridId) {
             ghosts.push(gridId);
           }
           parent = childParent;
         }
-        var childId = child.getAttribute("data-lm-id");
+        let childId = child.getAttribute("data-lm-id");
         if (childId) {
           ghosts.push(childId);
         }
-        var removalTarget = parent || child;
+        let removalTarget = parent || child;
         Array.from(child.children).forEach(function(grandchild) {
           removalTarget.parentNode.insertBefore(grandchild, removalTarget);
         });
@@ -5551,855 +5552,47 @@
   var history_adapter_default = History;
 
   // platforms/common/application/utils/history.js
-  var console2 = window.console || void 0;
-  var document2 = window.document;
-  var navigator2 = window.navigator;
-  var sessionStorage = false;
-  var setTimeout2 = window.setTimeout;
-  var clearTimeout2 = window.clearTimeout;
-  var setInterval2 = window.setInterval;
-  var clearInterval2 = window.clearInterval;
-  var JSON2 = window.JSON;
-  var alert = window.alert;
-  var History2 = window.History = history_adapter_default || {};
-  var history = window.history;
-  try {
-    sessionStorage = window.sessionStorage;
-    sessionStorage.setItem("TEST", "1");
-    sessionStorage.removeItem("TEST");
-  } catch (e) {
-    sessionStorage = false;
-  }
-  JSON2.stringify = JSON2.stringify || JSON2.encode;
-  JSON2.parse = JSON2.parse || JSON2.decode;
-  if (typeof History2.init === "undefined") {
-    History2.init = function(options) {
-      if (typeof History2.Adapter === "undefined") {
-        return false;
-      }
-      if (typeof History2.initCore !== "undefined") {
-        History2.initCore();
-      }
-      if (typeof History2.initHtml4 !== "undefined") {
-        History2.initHtml4();
-      }
-      return true;
-    };
-    History2.initCore = function(options) {
-      if (typeof History2.initCore.initialized !== "undefined") {
-        return false;
-      } else {
-        History2.initCore.initialized = true;
-      }
-      History2.options = History2.options || {};
-      History2.options.hashChangeInterval = History2.options.hashChangeInterval || 100;
-      History2.options.safariPollInterval = History2.options.safariPollInterval || 500;
-      History2.options.doubleCheckInterval = History2.options.doubleCheckInterval || 500;
-      History2.options.disableSuid = History2.options.disableSuid || false;
-      History2.options.storeInterval = History2.options.storeInterval || 1e3;
-      History2.options.busyDelay = History2.options.busyDelay || 250;
-      History2.options.debug = History2.options.debug || false;
-      History2.options.initialTitle = History2.options.initialTitle || document2.title;
-      History2.options.html4Mode = History2.options.html4Mode || false;
-      History2.options.delayInit = History2.options.delayInit || false;
-      History2.intervalList = [];
-      History2.clearAllIntervals = function() {
-        var i, il = History2.intervalList;
-        if (typeof il !== "undefined" && il !== null) {
-          for (i = 0; i < il.length; i++) {
-            clearInterval2(il[i]);
-          }
-          History2.intervalList = null;
-        }
-      };
-      History2.debug = function() {
-        if (History2.options.debug || false) {
-          History2.log.apply(History2, arguments);
-        }
-      };
-      History2.log = function() {
-        var consoleExists = !(typeof console2 === "undefined" || typeof console2.log === "undefined" || typeof console2.log.apply === "undefined"), textarea = document2.getElementById("log"), message, i, n, args, arg;
-        if (consoleExists) {
-          args = Array.prototype.slice.call(arguments);
-          message = args.shift();
-          if (typeof console2.debug !== "undefined") {
-            console2.debug.apply(console2, [message, args]);
-          } else {
-            console2.log.apply(console2, [message, args]);
-          }
-        } else {
-          message = "\n" + arguments[0] + "\n";
-        }
-        for (i = 1, n = arguments.length; i < n; ++i) {
-          arg = arguments[i];
-          if (typeof arg === "object" && typeof JSON2 !== "undefined") {
-            try {
-              arg = JSON2.stringify(arg);
-            } catch (Exception) {
-            }
-          }
-          message += "\n" + arg + "\n";
-        }
-        if (textarea) {
-          textarea.value += message + "\n-----\n";
-          textarea.scrollTop = textarea.scrollHeight - textarea.clientHeight;
-        } else if (!consoleExists) {
-          alert(message);
-        }
-        return true;
-      };
-      History2.getInternetExplorerMajorVersion = function() {
-        var result = History2.getInternetExplorerMajorVersion.cached = typeof History2.getInternetExplorerMajorVersion.cached !== "undefined" ? History2.getInternetExplorerMajorVersion.cached : (function() {
-          var v = 3, div = document2.createElement("div"), all = div.getElementsByTagName("i");
-          while ((div.innerHTML = "<!--[if gt IE " + ++v + "]><i></i><![endif]-->") && all[0]) {
-          }
-          return v > 4 ? v : false;
-        })();
-        return result;
-      };
-      History2.isInternetExplorer = function() {
-        var result = History2.isInternetExplorer.cached = typeof History2.isInternetExplorer.cached !== "undefined" ? History2.isInternetExplorer.cached : Boolean(History2.getInternetExplorerMajorVersion());
-        return result;
-      };
-      if (History2.options.html4Mode) {
-        History2.emulated = {
-          pushState: true,
-          hashChange: true
-        };
-      } else {
-        History2.emulated = {
-          pushState: !Boolean(
-            window.history && window.history.pushState && window.history.replaceState && !(/ Mobile\/([1-7][a-z]|(8([abcde]|f(1[0-8]))))/i.test(navigator2.userAgent) || /AppleWebKit\/5([0-2]|3[0-2])/i.test(navigator2.userAgent))
-          ),
-          hashChange: Boolean(
-            !("onhashchange" in window || "onhashchange" in document2) || History2.isInternetExplorer() && History2.getInternetExplorerMajorVersion() < 8
-          )
-        };
-      }
-      History2.enabled = !History2.emulated.pushState;
-      History2.bugs = {
-        /**
-         * Safari 5 and Safari iOS 4 fail to return to the correct state once a hash is replaced by a `replaceState` call
-         * https://bugs.webkit.org/show_bug.cgi?id=56249
-         */
-        setHash: Boolean(!History2.emulated.pushState && navigator2.vendor === "Apple Computer, Inc." && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator2.userAgent)),
-        /**
-         * Safari 5 and Safari iOS 4 sometimes fail to apply the state change under busy conditions
-         * https://bugs.webkit.org/show_bug.cgi?id=42940
-         */
-        safariPoll: Boolean(!History2.emulated.pushState && navigator2.vendor === "Apple Computer, Inc." && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator2.userAgent)),
-        /**
-         * MSIE 6 and 7 sometimes do not apply a hash even it was told to (requiring a second call to the apply function)
-         */
-        ieDoubleCheck: Boolean(History2.isInternetExplorer() && History2.getInternetExplorerMajorVersion() < 8),
-        /**
-         * MSIE 6 requires the entire hash to be encoded for the hashes to trigger the onHashChange event
-         */
-        hashEscape: Boolean(History2.isInternetExplorer() && History2.getInternetExplorerMajorVersion() < 7)
-      };
-      History2.isEmptyObject = function(obj) {
-        for (var name in obj) {
-          if (obj.hasOwnProperty(name)) {
-            return false;
-          }
-        }
-        return true;
-      };
-      History2.cloneObject = function(obj) {
-        var hash, newObj;
-        if (obj) {
-          hash = JSON2.stringify(obj);
-          newObj = JSON2.parse(hash);
-        } else {
-          newObj = {};
-        }
-        return newObj;
-      };
-      History2.getRootUrl = function() {
-        var rootUrl = document2.location.protocol + "//" + (document2.location.hostname || document2.location.host);
-        if (document2.location.port || false) {
-          rootUrl += ":" + document2.location.port;
-        }
-        rootUrl += "/";
-        return rootUrl;
-      };
-      History2.getBaseHref = function() {
-        var baseElements = document2.getElementsByTagName("base"), baseElement = null, baseHref = "";
-        if (baseElements.length === 1) {
-          baseElement = baseElements[0];
-          baseHref = baseElement.href.replace(/[^\/]+$/, "");
-        }
-        baseHref = baseHref.replace(/\/+$/, "");
-        if (baseHref) baseHref += "/";
-        return baseHref;
-      };
-      History2.getBaseUrl = function() {
-        var baseUrl = History2.getBaseHref() || History2.getBasePageUrl() || History2.getRootUrl();
-        return baseUrl;
-      };
-      History2.getPageUrl = function() {
-        var State = History2.getState(false, false), stateUrl = (State || {}).url || History2.getLocationHref(), pageUrl;
-        pageUrl = stateUrl.replace(/\/+$/, "").replace(/[^\/]+$/, function(part, index, string) {
-          return /\./.test(part) ? part : part + "/";
-        });
-        return pageUrl;
-      };
-      History2.getBasePageUrl = function() {
-        var basePageUrl = History2.getLocationHref().replace(/[#\?].*/, "").replace(/[^\/]+$/, function(part, index, string) {
-          return /[^\/]$/.test(part) ? "" : part;
-        }).replace(/\/+$/, "") + "/";
-        return basePageUrl;
-      };
-      History2.getFullUrl = function(url, allowBaseHref) {
-        var fullUrl = url, firstChar = url.substring(0, 1);
-        allowBaseHref = typeof allowBaseHref === "undefined" ? true : allowBaseHref;
-        if (/[a-z]+\:\/\//.test(url)) {
-        } else if (firstChar === "/") {
-          fullUrl = History2.getRootUrl() + url.replace(/^\/+/, "");
-        } else if (firstChar === "#") {
-          fullUrl = History2.getPageUrl().replace(/#.*/, "") + url;
-        } else if (firstChar === "?") {
-          fullUrl = History2.getPageUrl().replace(/[\?#].*/, "") + url;
-        } else {
-          if (allowBaseHref) {
-            fullUrl = History2.getBaseUrl() + url.replace(/^(\.\/)+/, "");
-          } else {
-            fullUrl = History2.getBasePageUrl() + url.replace(/^(\.\/)+/, "");
-          }
-        }
-        return fullUrl.replace(/\#$/, "");
-      };
-      History2.getShortUrl = function(url) {
-        var shortUrl = url, baseUrl = History2.getBaseUrl(), rootUrl = History2.getRootUrl();
-        if (History2.emulated.pushState) {
-          shortUrl = shortUrl.replace(baseUrl, "");
-        }
-        shortUrl = shortUrl.replace(rootUrl, "/");
-        if (History2.isTraditionalAnchor(shortUrl)) {
-          shortUrl = "./" + shortUrl;
-        }
-        shortUrl = shortUrl.replace(/^(\.\/)+/g, "./").replace(/\#$/, "");
-        return shortUrl;
-      };
-      History2.getLocationHref = function(doc) {
-        doc = doc || document2;
-        if (doc.URL === doc.location.href)
-          return doc.location.href;
-        if (doc.location.href === decodeURIComponent(doc.URL))
-          return doc.URL;
-        if (doc.location.hash && decodeURIComponent(doc.location.href.replace(/^[^#]+/, "")) === doc.location.hash)
-          return doc.location.href;
-        if (doc.URL.indexOf("#") == -1 && doc.location.href.indexOf("#") != -1)
-          return doc.location.href;
-        return doc.URL || doc.location.href;
-      };
-      History2.store = {};
-      History2.idToState = History2.idToState || {};
-      History2.stateToId = History2.stateToId || {};
-      History2.urlToId = History2.urlToId || {};
-      History2.storedStates = History2.storedStates || [];
-      History2.savedStates = History2.savedStates || [];
-      History2.normalizeStore = function() {
-        History2.store.idToState = History2.store.idToState || {};
-        History2.store.urlToId = History2.store.urlToId || {};
-        History2.store.stateToId = History2.store.stateToId || {};
-      };
-      History2.getState = function(friendly, create) {
-        if (typeof friendly === "undefined") {
-          friendly = true;
-        }
-        if (typeof create === "undefined") {
-          create = true;
-        }
-        var State = History2.getLastSavedState();
-        if (!State && create) {
-          State = History2.createStateObject();
-        }
-        if (friendly) {
-          State = History2.cloneObject(State);
-          State.url = State.cleanUrl || State.url;
-        }
-        return State;
-      };
-      History2.getIdByState = function(newState) {
-        var id = History2.extractId(newState.url), str;
-        if (!id) {
-          str = History2.getStateString(newState);
-          if (typeof History2.stateToId[str] !== "undefined") {
-            id = History2.stateToId[str];
-          } else if (typeof History2.store.stateToId[str] !== "undefined") {
-            id = History2.store.stateToId[str];
-          } else {
-            while (true) {
-              id = (/* @__PURE__ */ new Date()).getTime() + String(Math.random()).replace(/\D/g, "");
-              if (typeof History2.idToState[id] === "undefined" && typeof History2.store.idToState[id] === "undefined") {
-                break;
-              }
-            }
-            History2.stateToId[str] = id;
-            History2.idToState[id] = newState;
-          }
-        }
-        return id;
-      };
-      History2.normalizeState = function(oldState) {
-        var newState, dataNotEmpty;
-        if (!oldState || typeof oldState !== "object") {
-          oldState = {};
-        }
-        if (typeof oldState.normalized !== "undefined") {
-          return oldState;
-        }
-        if (!oldState.data || typeof oldState.data !== "object") {
-          oldState.data = {};
-        }
-        newState = {};
-        newState.normalized = true;
-        newState.title = oldState.title || "";
-        newState.url = History2.getFullUrl(oldState.url ? oldState.url : History2.getLocationHref());
-        newState.hash = History2.getShortUrl(newState.url);
-        newState.data = History2.cloneObject(oldState.data);
-        newState.id = History2.getIdByState(newState);
-        newState.cleanUrl = newState.url.replace(/\??\&_suid.*/, "");
-        newState.url = newState.cleanUrl;
-        dataNotEmpty = !History2.isEmptyObject(newState.data);
-        if ((newState.title || dataNotEmpty) && History2.options.disableSuid !== true) {
-          newState.hash = History2.getShortUrl(newState.url).replace(/\??\&_suid.*/, "");
-          if (!/\?/.test(newState.hash)) {
-            newState.hash += "?";
-          }
-          newState.hash += "&_suid=" + newState.id;
-        }
-        newState.hashedUrl = History2.getFullUrl(newState.hash);
-        if ((History2.emulated.pushState || History2.bugs.safariPoll) && History2.hasUrlDuplicate(newState)) {
-          newState.url = newState.hashedUrl;
-        }
-        return newState;
-      };
-      History2.createStateObject = function(data, title, url) {
-        var State = {
-          "data": data,
-          "title": title,
-          "url": url
-        };
-        State = History2.normalizeState(State);
-        return State;
-      };
-      History2.getStateById = function(id) {
-        id = String(id);
-        var State = History2.idToState[id] || History2.store.idToState[id] || void 0;
-        return State;
-      };
-      History2.getStateString = function(passedState) {
-        var State, cleanedState, str;
-        State = History2.normalizeState(passedState);
-        cleanedState = {
-          data: State.data,
-          title: passedState.title,
-          url: passedState.url
-        };
-        str = JSON2.stringify(cleanedState);
-        return str;
-      };
-      History2.getStateId = function(passedState) {
-        var State, id;
-        State = History2.normalizeState(passedState);
-        id = State.id;
-        return id;
-      };
-      History2.getHashByState = function(passedState) {
-        var State, hash;
-        State = History2.normalizeState(passedState);
-        hash = State.hash;
-        return hash;
-      };
-      History2.extractId = function(url_or_hash) {
-        var id, parts, url, tmp;
-        if (url_or_hash.indexOf("#") != -1) {
-          tmp = url_or_hash.split("#")[0];
-        } else {
-          tmp = url_or_hash;
-        }
-        parts = /(.*)\&_suid=([0-9]+)$/.exec(tmp);
-        url = parts ? parts[1] || url_or_hash : url_or_hash;
-        id = parts ? String(parts[2] || "") : "";
-        return id || false;
-      };
-      History2.isTraditionalAnchor = function(url_or_hash) {
-        var isTraditional = !/[\/\?\.]/.test(url_or_hash);
-        return isTraditional;
-      };
-      History2.extractState = function(url_or_hash, create) {
-        var State = null, id, url;
-        create = create || false;
-        id = History2.extractId(url_or_hash);
-        if (id) {
-          State = History2.getStateById(id);
-        }
-        if (!State) {
-          url = History2.getFullUrl(url_or_hash);
-          id = History2.getIdByUrl(url) || false;
-          if (id) {
-            State = History2.getStateById(id);
-          }
-          if (!State && create && !History2.isTraditionalAnchor(url_or_hash)) {
-            State = History2.createStateObject(null, null, url);
-          }
-        }
-        return State;
-      };
-      History2.getIdByUrl = function(url) {
-        var id = History2.urlToId[url] || History2.store.urlToId[url] || void 0;
-        return id;
-      };
-      History2.getLastSavedState = function() {
-        return History2.savedStates[History2.savedStates.length - 1] || void 0;
-      };
-      History2.getLastStoredState = function() {
-        return History2.storedStates[History2.storedStates.length - 1] || void 0;
-      };
-      History2.hasUrlDuplicate = function(newState) {
-        var hasDuplicate = false, oldState;
-        oldState = History2.extractState(newState.url);
-        hasDuplicate = oldState && oldState.id !== newState.id;
-        return hasDuplicate;
-      };
-      History2.storeState = function(newState) {
-        History2.urlToId[newState.url] = newState.id;
-        History2.storedStates.push(History2.cloneObject(newState));
-        return newState;
-      };
-      History2.isLastSavedState = function(newState) {
-        var isLast = false, newId, oldState, oldId;
-        if (History2.savedStates.length) {
-          newId = newState.id;
-          oldState = History2.getLastSavedState();
-          oldId = oldState.id;
-          isLast = newId === oldId;
-        }
-        return isLast;
-      };
-      History2.saveState = function(newState) {
-        if (History2.isLastSavedState(newState)) {
-          return false;
-        }
-        History2.savedStates.push(History2.cloneObject(newState));
-        return true;
-      };
-      History2.getStateByIndex = function(index) {
-        var State = null;
-        if (typeof index === "undefined") {
-          State = History2.savedStates[History2.savedStates.length - 1];
-        } else if (index < 0) {
-          State = History2.savedStates[History2.savedStates.length + index];
-        } else {
-          State = History2.savedStates[index];
-        }
-        return State;
-      };
-      History2.getCurrentIndex = function() {
-        var index = null;
-        if (History2.savedStates.length < 1) {
-          index = 0;
-        } else {
-          index = History2.savedStates.length - 1;
-        }
-        return index;
-      };
-      History2.getHash = function(doc) {
-        var url = History2.getLocationHref(doc), hash;
-        hash = History2.getHashByUrl(url);
-        return hash;
-      };
-      History2.unescapeHash = function(hash) {
-        var result = History2.normalizeHash(hash);
-        result = decodeURIComponent(result);
-        return result;
-      };
-      History2.normalizeHash = function(hash) {
-        var result = hash.replace(/[^#]*#/, "").replace(/#.*/, "");
-        return result;
-      };
-      History2.setHash = function(hash, queue) {
-        var State, pageUrl;
-        if (queue !== false && History2.busy()) {
-          History2.pushQueue({
-            scope: History2,
-            callback: History2.setHash,
-            args: arguments,
-            queue
-          });
-          return false;
-        }
-        History2.busy(true);
-        State = History2.extractState(hash, true);
-        if (State && !History2.emulated.pushState) {
-          History2.pushState(State.data, State.title, State.url, false);
-        } else if (History2.getHash() !== hash) {
-          if (History2.bugs.setHash) {
-            pageUrl = History2.getPageUrl();
-            History2.pushState(null, null, pageUrl + "#" + hash, false);
-          } else {
-            document2.location.hash = hash;
-          }
-        }
-        return History2;
-      };
-      History2.escapeHash = function(hash) {
-        var result = History2.normalizeHash(hash);
-        result = window.encodeURIComponent(result);
-        if (!History2.bugs.hashEscape) {
-          result = result.replace(/\%21/g, "!").replace(/\%26/g, "&").replace(/\%3D/g, "=").replace(/\%3F/g, "?");
-        }
-        return result;
-      };
-      History2.getHashByUrl = function(url) {
-        var hash = String(url).replace(/([^#]*)#?([^#]*)#?(.*)/, "$2");
-        hash = History2.unescapeHash(hash);
-        return hash;
-      };
-      History2.setTitle = function(newState) {
-        var title = newState.title, firstState;
-        if (!title) {
-          firstState = History2.getStateByIndex(0);
-          if (firstState && firstState.url === newState.url) {
-            title = firstState.title || History2.options.initialTitle;
-          }
-        }
-        try {
-          document2.getElementsByTagName("title")[0].innerHTML = title.replace("<", "&lt;").replace(">", "&gt;").replace(" & ", " &amp; ");
-        } catch (Exception) {
-        }
-        document2.title = title;
-        return History2;
-      };
-      History2.queues = [];
-      History2.busy = function(value) {
-        if (typeof value !== "undefined") {
-          History2.busy.flag = value;
-        } else if (typeof History2.busy.flag === "undefined") {
-          History2.busy.flag = false;
-        }
-        if (!History2.busy.flag) {
-          clearTimeout2(History2.busy.timeout);
-          var fireNext = function() {
-            var i, queue, item;
-            if (History2.busy.flag) return;
-            for (i = History2.queues.length - 1; i >= 0; --i) {
-              queue = History2.queues[i];
-              if (queue.length === 0) continue;
-              item = queue.shift();
-              History2.fireQueueItem(item);
-              History2.busy.timeout = setTimeout2(fireNext, History2.options.busyDelay);
-            }
-          };
-          History2.busy.timeout = setTimeout2(fireNext, History2.options.busyDelay);
-        }
-        return History2.busy.flag;
-      };
-      History2.busy.flag = false;
-      History2.fireQueueItem = function(item) {
-        return item.callback.apply(item.scope || History2, item.args || []);
-      };
-      History2.pushQueue = function(item) {
-        History2.queues[item.queue || 0] = History2.queues[item.queue || 0] || [];
-        History2.queues[item.queue || 0].push(item);
-        return History2;
-      };
-      History2.queue = function(item, queue) {
-        if (typeof item === "function") {
-          item = {
-            callback: item
-          };
-        }
-        if (typeof queue !== "undefined") {
-          item.queue = queue;
-        }
-        if (History2.busy()) {
-          History2.pushQueue(item);
-        } else {
-          History2.fireQueueItem(item);
-        }
-        return History2;
-      };
-      History2.clearQueue = function() {
-        History2.busy.flag = false;
-        History2.queues = [];
-        return History2;
-      };
-      History2.stateChanged = false;
-      History2.doubleChecker = false;
-      History2.doubleCheckComplete = function() {
-        History2.stateChanged = true;
-        History2.doubleCheckClear();
-        return History2;
-      };
-      History2.doubleCheckClear = function() {
-        if (History2.doubleChecker) {
-          clearTimeout2(History2.doubleChecker);
-          History2.doubleChecker = false;
-        }
-        return History2;
-      };
-      History2.doubleCheck = function(tryAgain) {
-        History2.stateChanged = false;
-        History2.doubleCheckClear();
-        if (History2.bugs.ieDoubleCheck) {
-          History2.doubleChecker = setTimeout2(
-            function() {
-              History2.doubleCheckClear();
-              if (!History2.stateChanged) {
-                tryAgain();
-              }
-              return true;
-            },
-            History2.options.doubleCheckInterval
-          );
-        }
-        return History2;
-      };
-      History2.safariStatePoll = function() {
-        var urlState = History2.extractState(History2.getLocationHref()), newState;
-        if (!History2.isLastSavedState(urlState)) {
-          newState = urlState;
-        } else {
-          return;
-        }
-        if (!newState) {
-          newState = History2.createStateObject();
-        }
-        History2.Adapter.trigger(window, "popstate");
-        return History2;
-      };
-      History2.back = function(queue) {
-        if (queue !== false && History2.busy()) {
-          History2.pushQueue({
-            scope: History2,
-            callback: History2.back,
-            args: arguments,
-            queue
-          });
-          return false;
-        }
-        History2.busy(true);
-        History2.doubleCheck(function() {
-          History2.back(false);
-        });
-        history.go(-1);
-        return true;
-      };
-      History2.forward = function(queue) {
-        if (queue !== false && History2.busy()) {
-          History2.pushQueue({
-            scope: History2,
-            callback: History2.forward,
-            args: arguments,
-            queue
-          });
-          return false;
-        }
-        History2.busy(true);
-        History2.doubleCheck(function() {
-          History2.forward(false);
-        });
-        history.go(1);
-        return true;
-      };
-      History2.go = function(index, queue) {
-        var i;
-        if (index > 0) {
-          for (i = 1; i <= index; ++i) {
-            History2.forward(queue);
-          }
-        } else if (index < 0) {
-          for (i = -1; i >= index; --i) {
-            History2.back(queue);
-          }
-        } else {
-          throw new Error("History.go: History.go requires a positive or negative integer passed.");
-        }
-        return History2;
-      };
-      if (History2.emulated.pushState) {
-        var emptyFunction = function() {
-        };
-        History2.pushState = History2.pushState || emptyFunction;
-        History2.replaceState = History2.replaceState || emptyFunction;
-      } else {
-        History2.onPopState = function(event, extra) {
-          var stateId = false, newState = false, currentHash, currentState;
-          History2.doubleCheckComplete();
-          currentHash = History2.getHash();
-          if (currentHash) {
-            currentState = History2.extractState(currentHash || History2.getLocationHref(), true);
-            if (currentState) {
-              History2.replaceState(currentState.data, currentState.title, currentState.url, false);
-            } else {
-              History2.Adapter.trigger(window, "anchorchange");
-              History2.busy(false);
-            }
-            History2.expectedStateId = false;
-            return false;
-          }
-          stateId = History2.Adapter.extractEventData("state", event, extra) || false;
-          if (stateId) {
-            newState = History2.getStateById(stateId);
-          } else if (History2.expectedStateId) {
-            newState = History2.getStateById(History2.expectedStateId);
-          } else {
-            newState = History2.extractState(History2.getLocationHref());
-          }
-          if (!newState) {
-            newState = History2.createStateObject(null, null, History2.getLocationHref());
-          }
-          History2.expectedStateId = false;
-          if (History2.isLastSavedState(newState)) {
-            History2.busy(false);
-            return false;
-          }
-          History2.storeState(newState);
-          History2.saveState(newState);
-          History2.setTitle(newState);
-          History2.Adapter.trigger(window, "statechange");
-          History2.busy(false);
-          return true;
-        };
-        History2.Adapter.bind(window, "popstate", History2.onPopState);
-        History2.pushState = function(data, title, url, queue) {
-          if (History2.getHashByUrl(url) && History2.emulated.pushState) {
-            throw new Error("History.js does not support states with fragement-identifiers (hashes/anchors).");
-          }
-          if (queue !== false && History2.busy()) {
-            History2.pushQueue({
-              scope: History2,
-              callback: History2.pushState,
-              args: arguments,
-              queue
-            });
-            return false;
-          }
-          History2.busy(true);
-          var newState = History2.createStateObject(data, title, url);
-          if (History2.isLastSavedState(newState)) {
-            History2.busy(false);
-          } else {
-            History2.storeState(newState);
-            History2.expectedStateId = newState.id;
-            history.pushState(newState.id, newState.title, newState.url);
-            History2.Adapter.trigger(window, "popstate");
-          }
-          return true;
-        };
-        History2.replaceState = function(data, title, url, queue) {
-          if (History2.getHashByUrl(url) && History2.emulated.pushState) {
-            throw new Error("History.js does not support states with fragement-identifiers (hashes/anchors).");
-          }
-          if (queue !== false && History2.busy()) {
-            History2.pushQueue({
-              scope: History2,
-              callback: History2.replaceState,
-              args: arguments,
-              queue
-            });
-            return false;
-          }
-          History2.busy(true);
-          var newState = History2.createStateObject(data, title, url);
-          if (History2.isLastSavedState(newState)) {
-            History2.busy(false);
-          } else {
-            History2.storeState(newState);
-            History2.expectedStateId = newState.id;
-            history.replaceState(newState.id, newState.title, newState.url);
-            History2.Adapter.trigger(window, "popstate");
-          }
-          return true;
-        };
-      }
-      if (sessionStorage) {
-        try {
-          History2.store = JSON2.parse(sessionStorage.getItem("History.store")) || {};
-        } catch (err) {
-          History2.store = {};
-        }
-        History2.normalizeStore();
-      } else {
-        History2.store = {};
-        History2.normalizeStore();
-      }
-      History2.Adapter.bind(window, "unload", History2.clearAllIntervals);
-      History2.saveState(History2.storeState(History2.extractState(History2.getLocationHref(), true)));
-      if (sessionStorage) {
-        History2.onUnload = function() {
-          var currentStore, item, currentStoreString;
-          try {
-            currentStore = JSON2.parse(sessionStorage.getItem("History.store")) || {};
-          } catch (err) {
-            currentStore = {};
-          }
-          currentStore.idToState = currentStore.idToState || {};
-          currentStore.urlToId = currentStore.urlToId || {};
-          currentStore.stateToId = currentStore.stateToId || {};
-          for (item in History2.idToState) {
-            if (!History2.idToState.hasOwnProperty(item)) {
-              continue;
-            }
-            currentStore.idToState[item] = History2.idToState[item];
-          }
-          for (item in History2.urlToId) {
-            if (!History2.urlToId.hasOwnProperty(item)) {
-              continue;
-            }
-            currentStore.urlToId[item] = History2.urlToId[item];
-          }
-          for (item in History2.stateToId) {
-            if (!History2.stateToId.hasOwnProperty(item)) {
-              continue;
-            }
-            currentStore.stateToId[item] = History2.stateToId[item];
-          }
-          History2.store = currentStore;
-          History2.normalizeStore();
-          currentStoreString = JSON2.stringify(currentStore);
-          try {
-            sessionStorage.setItem("History.store", currentStoreString);
-          } catch (e) {
-            if (e.code === DOMException.QUOTA_EXCEEDED_ERR) {
-              if (sessionStorage.length) {
-                sessionStorage.removeItem("History.store");
-                sessionStorage.setItem("History.store", currentStoreString);
-              } else {
-              }
-            } else {
-              throw e;
-            }
-          }
-        };
-        History2.isInternetExplorer() && History2.intervalList.push(setInterval2(History2.onUnload, History2.options.storeInterval));
-        History2.Adapter.bind(window, "beforeunload", History2.onUnload);
-        History2.Adapter.bind(window, "unload", History2.onUnload);
-      }
-      if (!History2.emulated.pushState) {
-        if (History2.bugs.safariPoll) {
-          History2.intervalList.push(setInterval2(History2.safariStatePoll, History2.options.safariPollInterval));
-        }
-        if (navigator2.vendor === "Apple Computer, Inc." || (navigator2.appCodeName || "") === "Mozilla") {
-          History2.Adapter.bind(window, "hashchange", function() {
-            History2.Adapter.trigger(window, "popstate");
-          });
-          if (History2.getHash()) {
-            History2.Adapter.onDomLoad(function() {
-              History2.Adapter.trigger(window, "hashchange");
-            });
-          }
-        }
-      }
-    };
-    if (!History2.options || !History2.options.delayInit) {
-      History2.init();
-    }
-  }
-  var history_default = History2;
+  var absoluteURL = (value) => new URL(value || window.location.href, window.location.href).href;
+  var stateFrom = (data, title, url) => ({
+    data: data && typeof data === "object" ? data : {},
+    title: title || document.title,
+    url: absoluteURL(url)
+  });
+  var currentState = stateFrom(window.history.state, document.title, window.location.href);
+  var dispatchStateChange = () => {
+    window.dispatchEvent(new CustomEvent("statechange", {
+      detail: { state: currentState }
+    }));
+  };
+  history_adapter_default.getState = () => ({
+    data: currentState.data,
+    title: currentState.title,
+    url: currentState.url
+  });
+  history_adapter_default.getPageUrl = () => absoluteURL(window.location.href).replace(/#.*$/, "");
+  history_adapter_default.pushState = (data, title, url) => {
+    currentState = stateFrom(data, title, url);
+    window.history.pushState(currentState.data, currentState.title, currentState.url);
+    if (currentState.title) document.title = currentState.title;
+    dispatchStateChange();
+    return true;
+  };
+  history_adapter_default.replaceState = (data, title, url) => {
+    currentState = stateFrom(data, title, url);
+    window.history.replaceState(currentState.data, currentState.title, currentState.url);
+    if (currentState.title) document.title = currentState.title;
+    dispatchStateChange();
+    return true;
+  };
+  history_adapter_default.back = () => window.history.back();
+  history_adapter_default.forward = () => window.history.forward();
+  history_adapter_default.go = (distance) => window.history.go(distance);
+  window.addEventListener("popstate", (event) => {
+    currentState = stateFrom(event.state, document.title, window.location.href);
+    dispatchStateChange();
+  });
+  window.History = history_adapter_default;
+  var history_default = history_adapter_default;
 
   // platforms/common/application/lm/history.js
   var cloneSnapshot = (value) => {
@@ -6452,7 +5645,7 @@
     const differences = collectDifferences(left, right);
     return differences.length ? differences : void 0;
   };
-  var History3 = class {
+  var History2 = class {
     constructor(session, preset) {
       this.index = 0;
       this.listeners = /* @__PURE__ */ new Map();
@@ -6536,14 +5729,14 @@
     export() {
     }
   };
-  var history_default2 = History3;
+  var history_default2 = History2;
 
   // platforms/common/application/ui/drag.events.js
   var getSupportedEvent = function(events) {
     events = events.split(" ");
-    var element = document.createElement("div"), event;
-    var isSupported = false;
-    for (var i = events.length - 1; i >= 0; i--) {
+    let element = document.createElement("div"), event;
+    let isSupported = false;
+    for (let i = events.length - 1; i >= 0; i--) {
       event = "on" + events[i];
       isSupported = event in element;
       if (!isSupported) {
@@ -6560,8 +5753,8 @@
   };
   var getSupportedEvents = function(events) {
     events = events.split(" ");
-    var isSupported = false, supported = [];
-    for (var i = events.length - 1; i >= 0; i--) {
+    let isSupported = false, supported = [];
+    for (let i = events.length - 1; i >= 0; i--) {
       isSupported = getSupportedEvent(events[i]);
       if (isSupported) {
         supported.push(isSupported);
@@ -6570,14 +5763,14 @@
     return supported;
   };
   var EVENT = {
-    START: getSupportedEvent("mousedown touchstart MSPointerDown pointerdown"),
-    MOVE: getSupportedEvent("mousemove touchmove MSPointerMove pointermove"),
-    STOP: getSupportedEvent("mouseup touchend MSPointerUp pointerup")
+    START: getSupportedEvent("mousedown touchstart pointerdown"),
+    MOVE: getSupportedEvent("mousemove touchmove pointermove"),
+    STOP: getSupportedEvent("mouseup touchend pointerup")
   };
   var EVENTS = {
-    START: getSupportedEvents("mousedown touchstart MSPointerDown pointerdown"),
-    MOVE: getSupportedEvents("mousemove touchmove MSPointerMove pointermove"),
-    STOP: getSupportedEvents("mouseup touchend MSPointerUp pointerup")
+    START: getSupportedEvents("mousedown touchstart pointerdown"),
+    MOVE: getSupportedEvents("mousemove touchmove pointermove"),
+    STOP: getSupportedEvents("mouseup touchend pointerup")
   };
   var drag_events_default = {
     EVENT,
@@ -6626,8 +5819,8 @@
       this.startListeners = [];
       this.DRAG_EVENTS.EVENTS.START.forEach(function(eventName) {
         this.container.forEach(function(node) {
-          var listener = (function(event) {
-            var target = dom7(event.target || event.srcElement), match = target.matches(this.options.delegate) ? target : target.parent(this.options.delegate);
+          let listener = (function(event) {
+            let target = dom7(event.target || event.srcElement), match = target.matches(this.options.delegate) ? target : target.parent(this.options.delegate);
             if (match) {
               return this.start(event, match);
             }
@@ -6659,7 +5852,7 @@
       }
       dom7("html").attribute("style", "height: 100% !important");
       this.scrollHeight = document.body.scrollHeight;
-      var target = dom7(event.target);
+      let target = dom7(event.target);
       if (!element.parent("[data-lm-root]") && element.hasClass("g-block") && (!target.matches(".submenu-reorder") && !target.parent(".submenu-reorder"))) {
         return true;
       }
@@ -6692,7 +5885,7 @@
         y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY,
         transform: this.element.compute("transform")
       };
-      var clientRect = this.element[0].getBoundingClientRect();
+      let clientRect = this.element[0].getBoundingClientRect();
       this.origin.offset = {
         clientRect,
         scroll: {
@@ -6705,7 +5898,7 @@
       if (this.element.data("lm-blocktype") === "grid" && Math.abs(this.origin.offset.x) < clientRect.width) {
         return false;
       }
-      var offset = Math.abs(this.origin.offset.x), columns = this.element.parent().data("lm-blocktype") === "grid" && this.element.parent().parent().data("lm-root") || this.element.parent().parent().data("lm-blocktype") == "container" && (this.element.parent().parent().parent().data("lm-root") || this.element.parent().parent().parent().data("lm-blocktype") == "wrapper");
+      let offset = Math.abs(this.origin.offset.x), columns = this.element.parent().data("lm-blocktype") === "grid" && this.element.parent().parent().data("lm-root") || this.element.parent().parent().data("lm-blocktype") == "container" && (this.element.parent().parent().parent().data("lm-root") || this.element.parent().parent().parent().data("lm-blocktype") == "wrapper");
       if (this.element.data("lm-blocktype") == "grid" && (this.element.parent().data("lm-blocktype") === "container" && this.element.parent().parent().parent().data("lm-root")) || this.element.parent().data("lm-blocktype") === "section" && this.element.parent().parent().parent().data("lm-root")) {
         columns = false;
       }
@@ -6753,7 +5946,7 @@
         this.element = null;
         return;
       }
-      var settings = { duration: "250ms" };
+      let settings = { duration: "250ms" };
       if (this.removeElement) {
         this.detachDragEvents();
         return this.emit("dragdrop:stop:erase", event, this.element);
@@ -6808,7 +6001,7 @@
     }
     move(event) {
       if (this.options.catchClick) {
-        var didItMove = {
+        let didItMove = {
           x: event.changedTouches ? event.changedTouches[0].pageX : event.pageX,
           y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
         };
@@ -6821,14 +6014,14 @@
         }
         this.moved = true;
       }
-      var clientX = event.clientX || event.touches && event.touches[0].clientX || 0, clientY = event.clientY || event.touches && event.touches[0].clientY || 0, overing = document.elementFromPoint(clientX, clientY), isGrid = this.element.data("lm-blocktype") === "grid";
-      var scrollHeight = this.scrollHeight, Height = document.body.clientHeight, Scroll = window.pageYOffset;
+      let clientX = event.clientX || event.touches && event.touches[0].clientX || 0, clientY = event.clientY || event.touches && event.touches[0].clientY || 0, overing = document.elementFromPoint(clientX, clientY), isGrid = this.element.data("lm-blocktype") === "grid";
+      let scrollHeight = this.scrollHeight, Height = document.body.clientHeight, Scroll = window.pageYOffset;
       clearTimeout(this.scrollInterval);
       if (!overing) {
         return;
       }
       if (!dom7(overing).matches("#trash") && !dom7(overing).parent("#trash")) {
-        var st, sl, trash = dom7("[data-genesis-container] #trash");
+        let st, sl, trash = dom7("[data-genesis-container] #trash");
         if (clientY + 50 >= Height && Scroll + Height < scrollHeight) {
           this.scrollInterval = setInterval(function() {
             sl = (window.pageXOffset || document.documentElement.scrollLeft) - (document.documentElement.clientLeft || 0);
@@ -6851,10 +6044,10 @@
       }
       this.matched = dom7(overing).matches(this.options.droppables) ? overing : (dom7(overing).parent(this.options.droppables) || [false])[0];
       this.isPlaceHolder = dom7(overing).matches("[data-lm-placeholder]") ? true : dom7(overing).parent("[data-lm-placeholder]") ? true : false;
-      var deltaX = this.lastX - clientX, deltaY = this.lastY - clientY, direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && "left" || Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && "right" || Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && "up" || "down";
+      let deltaX = this.lastX - clientX, deltaY = this.lastY - clientY, direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && "left" || Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && "right" || Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && "up" || "down";
       deltaX = (event.changedTouches ? event.changedTouches[0].pageX : event.pageX) - this.origin.x;
       deltaY = (event.changedTouches ? event.changedTouches[0].pageY : event.pageY) - this.origin.y;
-      var isNew = this.element.parent(".particles-container");
+      let isNew = this.element.parent(".particles-container");
       if (isNew) {
         deltaY += this.origin.offset.scroll.y - window.scrollY;
       }
@@ -6870,8 +6063,8 @@
           this.lastMatched = this.matched;
         }
         if (this.matched && this.lastMatched) {
-          var rect = this.matched.getBoundingClientRect();
-          var location = {
+          let rect = this.matched.getBoundingClientRect();
+          let location = {
             x: Math.abs(clientX - rect.left) < rect.width / 2 && "before" || Math.abs(clientX - rect.left) >= rect.width - rect.width / 2 && "after" || "other",
             y: Math.abs(clientY - rect.top) < rect.height / 2 && "above" || Math.abs(clientY - rect.top) >= rect.height / 2 && "below" || "other"
           };
@@ -6988,7 +6181,7 @@
     return min2 + (value - min1) / (max1 - min1) * (max2 - min2);
   };
   var precision3 = function(value, decimals) {
-    var multiplier = Math.pow(10, decimals);
+    let multiplier = Math.pow(10, decimals);
     return Math.round(value * multiplier) / multiplier;
   };
   var Resizer = class {
@@ -7012,22 +6205,22 @@
     }
     getBlock(element) {
       element = typeof element === "string" ? element : asElement3(element);
-      var id = typeof element === "string" ? element : element && element.getAttribute("data-lm-id") || "";
-      return this.builder.map ? this.builder.map[id] : void 0;
+      let id2 = typeof element === "string" ? element : element && element.getAttribute("data-lm-id") || "";
+      return this.builder.map ? this.builder.map[id2] : void 0;
     }
     getAttribute(element, prop) {
-      var block = this.getBlock(element);
+      let block = this.getBlock(element);
       return block ? block.getAttribute(prop) : void 0;
     }
     getSize(element) {
       return this.getAttribute(element, "size");
     }
-    start(event, element, siblings, offset) {
+    start(event, element, siblings2, offset) {
       if (event && event.type.match(/^touch/i)) {
         event.preventDefault();
       }
       element = asElement3(element);
-      siblings = asElements(siblings);
+      siblings2 = asElements(siblings2);
       if (!element) {
         return;
       }
@@ -7039,12 +6232,12 @@
       this.element = element;
       this.siblings = {
         occupied: 0,
-        elements: siblings,
+        elements: siblings2,
         next: this.element.nextElementSibling,
         prevs: [],
         sizeBefore: 0
       };
-      var previous = this.element.previousElementSibling;
+      let previous = this.element.previousElementSibling;
       while (previous) {
         this.siblings.prevs.unshift(previous);
         previous = previous.previousElementSibling;
@@ -7064,7 +6257,7 @@
         x: event.changedTouches ? event.changedTouches[0].pageX : event.pageX + 6,
         y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
       };
-      var parent = this.element.parentElement, clientRect = this.element.getBoundingClientRect(), parentRect = parent.getBoundingClientRect();
+      let parent = this.element.parentElement, clientRect = this.element.getBoundingClientRect(), parentRect = parent.getBoundingClientRect();
       this.origin.offset = {
         clientRect,
         parentRect: { left: parentRect.left, right: parentRect.right },
@@ -7072,7 +6265,7 @@
         y: clientRect.top - this.origin.y,
         down: offset || 0
       };
-      var blocks = Array.from(parent.children).filter(function(child) {
+      let blocks = Array.from(parent.children).filter(function(child) {
         return child.hasAttribute("data-lm-id");
       });
       if (blocks.length) {
@@ -7091,22 +6284,22 @@
       if (event && event.type.match(/^touch/i)) {
         event.preventDefault();
       }
-      var point = event.touches && event.touches.length ? event.touches[0] : event, clientX = point.clientX || 0, clientY = point.clientY || 0, parentRect = this.origin.offset.parentRect;
-      var deltaX = (this.lastX || clientX) - clientX, deltaY = (this.lastY || clientY) - clientY;
+      let point = event.touches && event.touches.length ? event.touches[0] : event, clientX = point.clientX || 0, clientY = point.clientY || 0, parentRect = this.origin.offset.parentRect;
+      let deltaX = (this.lastX || clientX) - clientX, deltaY = (this.lastY || clientY) - clientY;
       this.direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && "left" || Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && "right" || Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && "up" || "down";
-      var size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs.length ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp(value, parentRect.left, parentRect.right);
+      let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs.length ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp(value, parentRect.left, parentRect.right);
       size3 = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
       size3 = size3 - this.siblings.sizeBefore;
       size3 = precision3(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
       diff = precision3(diff - size3, 0);
       this.getBlock(this.element).setSize(size3, true);
       this.getBlock(this.siblings.next).setSize(diff, true);
-      var siblings = Array.from(this.element.parentElement.children).filter(function(sibling) {
+      let siblings2 = Array.from(this.element.parentElement.children).filter(function(sibling) {
         return sibling !== this.element && sibling.hasAttribute("data-lm-id");
-      }, this), amount = siblings.length + 1;
+      }, this), amount = siblings2.length + 1;
       if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
-        var total = 0, blocks;
-        blocks = siblings.concat(this.element);
+        let total = 0, blocks;
+        blocks = siblings2.concat(this.element);
         blocks.forEach(function(block, index) {
           block = this.getBlock(block);
           if (!block) {
@@ -7148,7 +6341,7 @@
       }, this);
     }
     evenResize(elements, animated) {
-      var total = elements.length, size3 = precision3(100 / total, 4), block;
+      let total = elements.length, size3 = precision3(100 / total, 4), block;
       if (typeof animated === "undefined") {
         animated = true;
       }
@@ -7160,9 +6353,9 @@
           if (!element) {
             return;
           }
-          var flex = "0 1 " + size3 + "%";
+          let flex = "0 1 " + size3 + "%";
           if (animated && typeof element.animate === "function") {
-            var animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex }], {
+            let animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex }], {
               duration: 250,
               easing: "ease"
             });
@@ -7197,7 +6390,7 @@
         return deepEquals(value, second[index]);
       });
     }
-    var firstKeys = Object.keys(first), secondKeys = Object.keys(second);
+    let firstKeys = Object.keys(first), secondKeys = Object.keys(second);
     if (firstKeys.length !== secondKeys.length) {
       return false;
     }
@@ -7224,7 +6417,7 @@
     return Object.keys(object || {});
   };
   var precision4 = function(value, decimals) {
-    var multiplier = Math.pow(10, decimals);
+    let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
   };
   var find = function(collection, callback) {
@@ -7244,19 +6437,19 @@
   };
   var singles = {
     disable: function() {
-      var grids = dom8('[data-lm-root] [data-lm-blocktype="grid"]');
+      let grids = dom8('[data-lm-root] [data-lm-blocktype="grid"]');
       if (grids) {
         grids.removeClass("no-hover");
       }
     },
     enable: function() {
-      var grids = dom8('[data-lm-root] [data-lm-blocktype="grid"]');
+      let grids = dom8('[data-lm-root] [data-lm-blocktype="grid"]');
       if (grids) {
         grids.addClass("no-hover");
       }
     },
     cleanup: function(builder2, dropLast, start) {
-      var emptyGrids = start ? start.search("> .g-grid:empty") : dom8('[data-lm-blocktype="section"] > .g-grid:empty, [data-lm-blocktype="container"] > .g-grid:empty, [data-lm-blocktype="offcanvas"] > .g-grid:empty');
+      let emptyGrids = start ? start.search("> .g-grid:empty") : dom8('[data-lm-blocktype="section"] > .g-grid:empty, [data-lm-blocktype="container"] > .g-grid:empty, [data-lm-blocktype="offcanvas"] > .g-grid:empty');
       if (emptyGrids) {
         emptyGrids.forEach(function(grid) {
           grid = dom8(grid);
@@ -7301,12 +6494,12 @@
       singles[mode](builder2, dropLast, start);
     },
     clear: function(parent, options) {
-      var type, child, filter = !parent ? [] : (parent.search("[data-lm-id]") || []).map(function(element) {
+      let type, child, filter = !parent ? [] : (parent.search("[data-lm-id]") || []).map(function(element) {
         return dom8(element).data("lm-id");
       });
       options = options || { save: true, dropLastGrid: false, emptyInherits: false };
-      forEach2(this.builder.map, function(obj, id) {
-        if (filter.length && !contains(filter, id)) {
+      forEach2(this.builder.map, function(obj, id2) {
+        if (filter.length && !contains(filter, id2)) {
           return;
         }
         if (!options.emptyInherits && obj.block.parent(".g-inheriting")) {
@@ -7318,7 +6511,7 @@
           child = child.data("lm-blocktype");
         }
         if (contains(["particle", "spacer", "position", "widget", "system", "block"], type) && (type == "block" && (child && (child !== "section" && child !== "container")))) {
-          this.builder.remove(id);
+          this.builder.remove(id2);
           obj.block.remove();
         } else if (options.emptyInherits && (type == "section" || type == "offcanvas" || type == "container")) {
           if (obj.hasInheritance) {
@@ -7333,7 +6526,7 @@
       }
     },
     updatePendingChanges: function() {
-      var saveData = this.savestate.getData(), serialData = this.builder.serialize(null, true), different = false, equals = deepEquals2(saveData, serialData), save = dom8('[data-save="Layout"]'), icon = save.find("i"), indicator12 = save.find(".changes-indicator");
+      let saveData = this.savestate.getData(), serialData = this.builder.serialize(null, true), different = false, equals = deepEquals2(saveData, serialData), save = dom8('[data-save="Layout"]'), icon = save.find("i"), indicator12 = save.find(".changes-indicator");
       if (equals && indicator12) {
         save.hideIndicator();
       }
@@ -7341,32 +6534,32 @@
         save.showIndicator("changes-indicator far fa-fw fa-circle");
       }
       flags.set("pending", !equals);
-      var saved, current, id;
+      let saved, current, id2;
       serialData.forEach(function(block) {
-        id = keys(block)[0];
+        id2 = keys(block)[0];
         saved = find(saveData, function(data) {
-          return data[id];
+          return data[id2];
         });
         current = find(serialData, function(data) {
-          return data[id];
+          return data[id2];
         });
         different = !deepEquals2(saved, current);
-        id = this.builder.get(id);
-        if (id) {
-          id.emit("changed", different);
+        id2 = this.builder.get(id2);
+        if (id2) {
+          id2.emit("changed", different);
         }
       }, this);
     },
     start: function(event, element) {
-      var root = dom8("[data-lm-root]"), size3 = dom8(element).position(), coords = dom8(element)[0].getBoundingClientRect();
-      var stalePlaceholders = root.search(".original-placeholder");
+      let root = dom8("[data-lm-root]"), size3 = dom8(element).position(), coords = dom8(element)[0].getBoundingClientRect();
+      let stalePlaceholders = root.search(".original-placeholder");
       if (stalePlaceholders) {
         stalePlaceholders.remove();
       }
       this.block = null;
       this.mode = root.data("lm-root") || "page";
       root.addClass("moving");
-      var type = dom8(element).data("lm-blocktype"), clone3 = element[0].cloneNode(true);
+      let type = dom8(element).data("lm-blocktype"), clone3 = element[0].cloneNode(true);
       if (!this.placeholder) {
         this.placeholder = zen4("div.block.placeholder[data-lm-placeholder]");
       }
@@ -7393,7 +6586,7 @@
           background: "repeating-linear-gradient(135deg, #f4f4f4, #f4f4f4 10px, #e9e9e9 10px, #e9e9e9 20px)",
           boxShadow: "inset 0 0 0 2px #c8c8c8"
         });
-        var placeholderContents = this.original.search("*");
+        let placeholderContents = this.original.search("*");
         if (placeholderContents) {
           placeholderContents.style({ visibility: "hidden" });
         }
@@ -7410,15 +6603,15 @@
           backfaceVisibility: "hidden"
         }).find("[data-lm-blocktype]");
         if (this.block.getType() === "grid") {
-          var siblings = this.block.block.siblings(":not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)");
-          if (siblings) {
-            siblings.search("[data-lm-id]").style({ "pointer-events": "none" });
+          let siblings2 = this.block.block.siblings(":not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)");
+          if (siblings2) {
+            siblings2.search("[data-lm-id]").style({ "pointer-events": "none" });
           }
         }
         this.placeholder.before(element);
         this.eraser.show();
       } else {
-        var position = element.position();
+        let position = element.position();
         this.original.style({
           position: "fixed",
           opacity: 0.75,
@@ -7433,7 +6626,7 @@
         this.element = this.dragdrop.element;
         this.dragdrop.element = this.original;
       }
-      var blocks;
+      let blocks;
       if (type === "grid" && (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])'))) {
         blocks.style({ "pointer-events": "none" });
       }
@@ -7445,7 +6638,7 @@
       if (!this.placeholder) {
         this.placeholder = zen4("div.block.placeholder[data-lm-placeholder]").style({ display: "none" });
       }
-      var position, dataType = target.data("lm-blocktype"), originalType = this.block.getType();
+      let position, dataType = target.data("lm-blocktype"), originalType = this.block.getType();
       if (!dataType && target.data("lm-root")) {
         dataType = "root";
       }
@@ -7455,7 +6648,7 @@
       if (dataType === "grid" && (target.parent().data("lm-root") || target.parent().data("lm-blocktype") === "container" && target.parent().parent().data("lm-root"))) {
         return;
       }
-      var exclude = ':not(.placeholder):not([data-lm-id="' + this.original.data("lm-id") + '"])', adjacents = {
+      let exclude = ':not(.placeholder):not([data-lm-id="' + this.original.data("lm-id") + '"])', adjacents = {
         before: this.original.previousSiblings(exclude),
         after: this.original.nextSiblings(exclude)
       };
@@ -7471,7 +6664,7 @@
       if (dataType === "grid" && (adjacents.before === target && location.y === "below" || adjacents.after === target && location.y === "above")) {
         return;
       }
-      var nonVisible = target.parent('[data-lm-blocktype="atoms"]'), child = this.block.block.find("[data-lm-id]");
+      let nonVisible = target.parent('[data-lm-blocktype="atoms"]'), child = this.block.block.find("[data-lm-id]");
       if ((child ? child.data("lm-blocktype") : originalType) == "atom") {
         if (!nonVisible) {
           return;
@@ -7481,13 +6674,13 @@
           return;
         }
       }
-      var grid, block, method;
+      let grid, block, method;
       switch (dataType) {
         case "root":
         case "section":
           break;
         case "grid":
-          var empty = !target.children(":not(.placeholder)");
+          let empty = !target.children(":not(.placeholder)");
           if (originalType !== "grid" && !empty) {
             return;
           }
@@ -7511,7 +6704,7 @@
       this.placeholder.removeClass("in-between").removeClass("in-between-grids").removeClass("in-between-grids-first").removeClass("in-between-grids-last");
       this.placeholder.style({ display: "block" })[dataType !== "block" ? "removeClass" : "addClass"]("in-between");
       if (originalType === "grid" && dataType === "grid") {
-        var next = this.placeholder.nextSibling(), previous = this.placeholder.previousSibling();
+        let next = this.placeholder.nextSibling(), previous = this.placeholder.previousSibling();
         this.placeholder.addClass("in-between-grids");
         if (previous && !previous.data("lm-blocktype")) {
           this.placeholder.addClass("in-between-grids-first");
@@ -7529,10 +6722,10 @@
       if (!this.block) {
         return;
       }
-      var target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
+      let target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
       if (!this.block.isNew()) {
         target = dom8(target);
-        var targetNode2 = target[0];
+        let targetNode2 = target[0];
         if (targetNode2 === this.eraser.element || this.eraser.element.contains(targetNode2)) {
           this.dragdrop.removeElement = true;
           this.eraser.over();
@@ -7542,28 +6735,28 @@
         }
       }
     },
-    resize: function(event, element, siblings, offset) {
-      this.resizer.start(event, element, siblings, offset);
+    resize: function(event, element, siblings2, offset) {
+      this.resizer.start(event, element, siblings2, offset);
     },
     removeElement: function(event, element) {
       this.dragdrop.removeElement = false;
-      var transition = {
+      let transition = {
         opacity: 0
       };
       element.animate(transition, {
         duration: "150ms"
       });
-      var root = dom8("[data-lm-root]"), blocks;
+      let root = dom8("[data-lm-root]"), blocks;
       if (this.block.getType() === "grid" && (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])'))) {
         blocks.style({ "pointer-events": "inherit" });
       }
-      var siblings = this.block.block.siblings(":not(.original-placeholder)");
-      if (siblings && this.block.getType() == "block") {
-        var size3 = this.block.getSize(), diff = size3 / siblings.length, newSize, block, total = 0, last3;
-        siblings.forEach(function(sibling, index) {
+      let siblings2 = this.block.block.siblings(":not(.original-placeholder)");
+      if (siblings2 && this.block.getType() == "block") {
+        let size3 = this.block.getSize(), diff = size3 / siblings2.length, newSize, block, total = 0, last3;
+        siblings2.forEach(function(sibling, index) {
           sibling = dom8(sibling);
           block = get(this.builder.map, sibling.data("lm-id"));
-          if (index + 1 == siblings.length) {
+          if (index + 1 == siblings2.length) {
             last3 = block;
           }
           newSize = precision4(block.getSize() + diff, 0);
@@ -7579,7 +6772,7 @@
       this.eraser.hide();
       this.dragdrop.detachDragEvents();
       this.builder.remove(this.block.getId());
-      var children = this.block.block.search("[data-lm-id]");
+      let children = this.block.block.search("[data-lm-id]");
       if (children && children.length) {
         children.forEach(function(child) {
           this.builder.remove(dom8(child).data("lm-id"));
@@ -7599,16 +6792,16 @@
       root.removeClass("moving");
     },
     stop: function(event, target) {
-      var lastOvered = dom8(this.dragdrop.lastOvered);
-      var trashZone = this.eraser.element.querySelector(".trash-zone");
+      let lastOvered = dom8(this.dragdrop.lastOvered);
+      let trashZone = this.eraser.element.querySelector(".trash-zone");
       if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
         this.eraser.hide();
         return;
       }
       if (this.block.getType() === "grid") {
-        var siblings = this.block.block.siblings(":not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)");
-        if (siblings) {
-          siblings.search("[data-lm-id]").style({ "pointer-events": "inherit" });
+        let siblings2 = this.block.block.siblings(":not(.original-placeholder):not(.section-header):not(.g-inherit):not(:empty)");
+        if (siblings2) {
+          siblings2.search("[data-lm-id]").style({ "pointer-events": "inherit" });
         }
       }
       if (!this.block.isNew()) {
@@ -7621,11 +6814,11 @@
         return;
       }
       target = dom8(target);
-      var wrapper, insider, multiLocationResize = false, blockWasNew = this.block.isNew(), type = this.block.getType(), targetId = target.data("lm-id"), targetType = !targetId ? false : get(this.builder.map, targetId) ? get(this.builder.map, targetId).getType() : target.data("lm-blocktype"), placeholderParent = this.placeholder.parent();
+      let wrapper, insider, multiLocationResize = false, blockWasNew = this.block.isNew(), type = this.block.getType(), targetId = target.data("lm-id"), targetType = !targetId ? false : get(this.builder.map, targetId) ? get(this.builder.map, targetId).getType() : target.data("lm-blocktype"), placeholderParent = this.placeholder.parent();
       if (!placeholderParent) {
         return;
       }
-      var parentId = placeholderParent.data("lm-id"), parentType = get(this.builder.map, parentId || "") ? get(this.builder.map, parentId).getType() : false, resizeCase = false;
+      let parentId = placeholderParent.data("lm-id"), parentType = get(this.builder.map, parentId || "") ? get(this.builder.map, parentId).getType() : false, resizeCase = false;
       this.original.remove();
       if (type !== "block" && type !== "grid" && (targetType === "section" || targetType === "grid" || targetType === "block" && parentType !== "block")) {
         wrapper = new Blocks2.block({
@@ -7648,7 +6841,7 @@
       }
       if (this.originalType === "block" && this.block.getType() === "block") {
         resizeCase = { case: 3 };
-        var previous = this.block.block.parent('[data-lm-blocktype="grid"]'), placeholderPrevious = this.placeholder.parent('[data-lm-blocktype="grid"]');
+        let previous = this.block.block.parent('[data-lm-blocktype="grid"]'), placeholderPrevious = this.placeholder.parent('[data-lm-blocktype="grid"]');
         if (placeholderPrevious !== previous) {
           multiLocationResize = {
             from: this.block.block.siblings(":not(.placeholder)"),
@@ -7666,7 +6859,7 @@
         this.block.setSize();
       }
       if (type === "grid" && !siblings) {
-        var plus = this.block.block.parent('[data-lm-blocktype="section"]').find(".fa-plus");
+        let plus = this.block.block.parent('[data-lm-blocktype="section"]').find(".fa-plus");
         if (plus) {
           plus.emit("click");
         }
@@ -7683,13 +6876,13 @@
         this.element.attribute("style", null);
       }
       if (multiLocationResize.from || multiLocationResize.to && multiLocationResize.to != this.block.block) {
-        var size3 = this.block.getSize(), diff, block;
+        let size3 = this.block.getSize(), diff, block;
         if (!multiLocationResize.to) {
           this.block.setSize(100, true);
         }
         if (multiLocationResize.from) {
           diff = size3 / multiLocationResize.from.length;
-          var total = 0, curSize;
+          let total = 0, curSize;
           multiLocationResize.from.forEach(function(sibling) {
             sibling = dom8(sibling);
             block = get(this.builder.map, sibling.data("lm-id"));
@@ -7723,7 +6916,7 @@
       this.history.push(this.builder.serialize(), this.history.get().preset);
     },
     stopAnimation: function(element) {
-      var root = dom8("[data-lm-root]");
+      let root = dom8("[data-lm-root]");
       root.removeClass("moving");
       if (this.original) {
         this.original.remove();
@@ -7739,7 +6932,7 @@
         this.element.attribute("style", null);
       }
       if (this.originalType === "grid") {
-        var blocks, block;
+        let blocks, block;
         if (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])')) {
           blocks.forEach(function(element2) {
             element2 = dom8(element2);
@@ -7879,7 +7072,7 @@
       if (!this.getTarget().hasClass("in")) {
         return;
       }
-      var self2 = this, target = dom9(e.target || e);
+      let self2 = this, target = dom9(e.target || e);
       if (this.$target[0] === target[0] || target.parent(this.$target) || this.element[0] === target[0] || target.parent(this.element)) {
         return;
       }
@@ -7888,10 +7081,10 @@
     }
     restoreFocus(element) {
       element = dom9(element || this.element);
-      var tag = element.tag();
+      let tag = element.tag();
       setTimeout(function() {
         if (tag != "a" && tag != "input" && tag != "button") {
-          var items = element.find("a, button, input");
+          let items = element.find("a, button, input");
           if (items) items[0].focus();
         } else {
           element[0].focus();
@@ -7899,13 +7092,13 @@
       }, 0);
     }
     hideAll(force) {
-      var css = "";
+      let css = "";
       if (force) {
         css = "div." + this.options.mainClass;
       } else {
         css = "div." + this.options.mainClass + ":not(." + this.options.mainClass + "-fixed)";
       }
-      var elements = dom9(css);
+      let elements = dom9(css);
       if (!elements) {
         return this;
       }
@@ -7918,7 +7111,7 @@
       return this;
     }
     show() {
-      var target = this.getTarget().attribute("class", null).addClass(this.options.mainClass).attribute("tabindex", "0");
+      let target = this.getTarget().attribute("class", null).addClass(this.options.mainClass).attribute("tabindex", "0");
       if (!this.options.multi) {
         this.hideAll();
       }
@@ -7948,7 +7141,7 @@
       }
     }
     displayContent() {
-      var elementPos = this.element.position(), target = this.getTarget().attribute("class", null).addClass(this.options.mainClass), targetContent = this.getContentElement(), targetWidth, targetHeight, placement;
+      let elementPos = this.element.position(), target = this.getTarget().attribute("class", null).addClass(this.options.mainClass), targetContent = this.getContentElement(), targetWidth, targetHeight, placement;
       this.element.emit("show.popover", this);
       if (this.options.width !== "auto") {
         target.style({ width: this.options.width });
@@ -7959,11 +7152,11 @@
       if (!this.options.arrow && target.find(".g-arrow")) {
         target.find(".g-arrow").remove();
       }
-      var container2 = dom9(this.options.where);
+      let container2 = dom9(this.options.where);
       if (GENESIS_PLATFORM == "wordpress") {
         container2 = dom9("#widgets-editor") || dom9("#customize-preview") || dom9("#widgets-right") || dom9(this.options.where);
         if ("#" + container2.id() != this.options.where) {
-          var wpwrap = dom9("#wpwrap") || dom9(".wp-customizer"), sibling, workaround;
+          let wpwrap = dom9("#wpwrap") || dom9(".wp-customizer"), sibling, workaround;
           if (wpwrap.id() == "wpwrap") {
             sibling = wpwrap.nextSibling(this.options.where);
             workaround = sibling ? sibling : zen5("div.g5wp-out-of-scope" + this.options.where).after(wpwrap);
@@ -7997,10 +7190,10 @@
       if (this.options.targetEvents) {
         this.initTargetEvents();
       }
-      var positionInfo = this.getTargetPosition(elementPos, placement, targetWidth, targetHeight);
+      let positionInfo = this.getTargetPosition(elementPos, placement, targetWidth, targetHeight);
       this.$target.style(positionInfo.position).addClass(placement).addClass("in");
       if (this.options.type === "iframe") {
-        var iframe = target.find("iframe");
+        let iframe = target.find("iframe");
         iframe.style({
           width: target.position().width,
           height: iframe.parent().position.height
@@ -8010,7 +7203,7 @@
         this.$target.style({ "margin": 0 });
       }
       if (this.options.arrow) {
-        var arrow = this.$target.find(".g-arrow");
+        let arrow = this.$target.find(".g-arrow");
         arrow.attribute("style", null);
         if (positionInfo.arrowOffset) {
           arrow.style(positionInfo.arrowOffset);
@@ -8037,7 +7230,7 @@
       return this.options.title || this.element.data("genesis-popover-title") || this.element.attribute("title");
     }
     setTitle(title) {
-      var element = this.getTitleElement();
+      let element = this.getTitleElement();
       if (title) {
         element.html(title);
       } else {
@@ -8053,7 +7246,7 @@
           this.content = dom9('<iframe frameborder="0"></iframe>').attribute("src", this.options.url);
         }
       } else if (!this.content) {
-        var content = "";
+        let content = "";
         if (typeof this.options.content === "function") {
           content = this.options.content.apply(this.element[0], arguments);
         } else {
@@ -8064,7 +7257,7 @@
       return this.content;
     }
     setContent(content) {
-      var target = this.getTarget();
+      let target = this.getTarget();
       this.getContentElement().html(content);
       this.$target = target;
     }
@@ -8079,21 +7272,21 @@
           this.content = response.body.html;
         }
         this.setContent(this.content);
-        var target = this.getContentElement();
+        let target = this.getContentElement();
         target.attribute("style", null);
         setTimeout((function() {
           target.parent("." + this.options.mainClass)[0].focus();
         }).bind(this), 0);
         this.displayContent();
         this.bindBodyEvents();
-        var selects = dom9("[data-selectize]");
+        let selects = dom9("[data-selectize]");
         if (selects) {
           selects.selectize();
         }
       }).bind(this));
     }
     bindBodyEvents() {
-      var body = dom9("body");
+      let body = dom9("body");
       body.off("keyup", this.bound("escapeHandler")).on("keyup", this.bound("escapeHandler"));
       body.off("click", this.bound("bodyClickHandler")).on("click", this.bound("bodyClickHandler"));
     }
@@ -8120,7 +7313,7 @@
       this.hideAll();
     }
     targetClickHandler(e) {
-      var target = dom9(e.target);
+      let target = dom9(e.target);
       if (target.matches(this.options.allowElementsClick)) {
         e.preventDefault();
       }
@@ -8132,7 +7325,7 @@
       if (this.options.trigger !== "click") {
         this.$target.off("mouseenter", this.bound("mouseenterHandler")).off("mouseleave", this.bound("mouseleaveHandler")).on("mouseenter", this.bound("mouseenterHandler")).on("mouseleave", this.bound("mouseleaveHandler"));
       }
-      var close = this.$target.find(".close");
+      let close = this.$target.find(".close");
       if (close) {
         close.off("click", this.bound("hide")).on("click", this.bound("hide"));
       }
@@ -8140,7 +7333,7 @@
     }
     /* utils methods */
     getPlacement(pos, targetHeight) {
-      var placement, de = document.documentElement, db = document.body, clientWidth = de.clientWidth, clientHeight = de.clientHeight, scrollTop = Math.max(db.scrollTop, de.scrollTop), scrollLeft = Math.max(db.scrollLeft, de.scrollLeft), pageX = Math.max(0, pos.left - scrollLeft), pageY = Math.max(0, pos.top - scrollTop), arrowSize = 20;
+      let placement, de = document.documentElement, db = document.body, clientWidth = de.clientWidth, clientHeight = de.clientHeight, scrollTop = Math.max(db.scrollTop, de.scrollTop), scrollLeft = Math.max(db.scrollLeft, de.scrollLeft), pageX = Math.max(0, pos.left - scrollLeft), pageY = Math.max(0, pos.top - scrollTop), arrowSize = 20;
       if (typeof this.options.placement === "function") {
         placement = this.options.placement.call(this, this.getTarget()[0], this.element[0]);
       } else {
@@ -8177,7 +7370,7 @@
       return placement;
     }
     getTargetPosition(elementPos, placement, targetWidth, targetHeight) {
-      var pos = elementPos, elementW = this.element[0].offsetWidth, elementH = this.element[0].offsetHeight, position = {}, arrowOffset = null, arrowSize = this.options.arrow ? 28 : 0, fixedW = elementW < arrowSize + 10 ? arrowSize : 0, fixedH = elementH < arrowSize + 10 ? arrowSize : 0;
+      let pos = elementPos, elementW = this.element[0].offsetWidth, elementH = this.element[0].offsetHeight, position = {}, arrowOffset = null, arrowSize = this.options.arrow ? 28 : 0, fixedW = elementW < arrowSize + 10 ? arrowSize : 0, fixedH = elementH < arrowSize + 10 ? arrowSize : 0;
       switch (placement) {
         case "bottom":
           position = {
@@ -8268,7 +7461,7 @@
   };
   dom9.implement({
     getPopover: function(options) {
-      var element = this[0], popover = storage2.get(element);
+      let element = this[0], popover = storage2.get(element);
       if (!popover && options !== "destroy") {
         options = options || {};
         popover = new Popover(element, options);
@@ -8280,7 +7473,7 @@
     },
     popover: function(options) {
       return this.forEach(function(element) {
-        var popover = storage2.get(element);
+        let popover = storage2.get(element);
         if (!popover && options !== "destroy") {
           options = options || {};
           popover = new Popover(element, options);
@@ -8289,7 +7482,7 @@
       });
     },
     position: function() {
-      var node = this[0], ct = dom9("[data-genesis-container]")[0].getBoundingClientRect(), box = {
+      let node = this[0], ct = dom9("[data-genesis-container]")[0].getBoundingClientRect(), box = {
         left: 0,
         right: 0,
         top: 0,
@@ -8311,7 +7504,7 @@
     }
   });
   dom9.create = function(element, options) {
-    var popover = storage2.get(element);
+    let popover = storage2.get(element);
     if (!popover) {
       popover = new Popover(element, options || {});
       storage2.set(element, popover);
@@ -8353,7 +7546,7 @@
     if (!element) {
       return;
     }
-    var event = new Event("change", { bubbles: true });
+    let event = new Event("change", { bubbles: true });
     Object.assign(event, options || {});
     element.dispatchEvent(event);
   };
@@ -8369,9 +7562,9 @@
     );
   };
   ready6(function() {
-    var body = document.body, currentSelection = {}, currentMode = {};
+    let body = document.body, currentSelection = {}, currentMode = {};
     delegate4(body, "change", '[name="inherit[outline]"]', function(event, element) {
-      var settingsParam = element.closest(".settings-param"), label = settingsParam && settingsParam.querySelector(".settings-param-title"), text = settingsParam && settingsParam.querySelector(".g-item"), value = element.value, section = document.querySelector('[name="inherit[section]"]'), name = section ? section.value : "", form = element.closest("[data-g-inheritance-settings]"), includesFields = Array.from(document.querySelectorAll(
+      let settingsParam = element.closest(".settings-param"), label = settingsParam && settingsParam.querySelector(".settings-param-title"), text = settingsParam && settingsParam.querySelector(".g-item"), value = element.value, section = document.querySelector('[name="inherit[section]"]'), name = section ? section.value : "", form = element.closest("[data-g-inheritance-settings]"), includesFields = Array.from(document.querySelectorAll(
         '[data-multicheckbox-field="inherit[include]"]:checked'
       )), mode = getMode(form), checked2 = getSelectedItem(form), particle = {
         list: document.querySelector("#g-inherit-particle, #g-inherit-atom"),
@@ -8384,14 +7577,14 @@
       if (!text || !form || !mode) {
         return true;
       }
-      var hasChanged = currentSelection[name] !== value || currentMode[name] !== mode.value;
+      let hasChanged = currentSelection[name] !== value || currentMode[name] !== mode.value;
       if (hasChanged && !value) {
         includesFields.forEach(function(include) {
           include.checked = false;
           emitChange(include);
         });
       }
-      var formData = JSON.parse(form.dataset.gInheritanceSettings || "{}"), data = {
+      let formData = JSON.parse(form.dataset.gInheritanceSettings || "{}"), data = {
         outline: value || getCurrentOutline3(),
         type: formData.type || "",
         subtype: formData.subtype || "",
@@ -8400,7 +7593,7 @@
       };
       data.id = formData.id;
       indicator2.show(label);
-      var selectize2 = Selectize3.getInstance(element);
+      let selectize2 = Selectize3.getInstance(element);
       if (selectize2) {
         selectize2.blur();
       }
@@ -8409,7 +7602,7 @@
         data.id = checked2.value;
         particle.list = false;
       }
-      var URI_mode = data.type === "atom" ? "atoms" : "layouts", URI = particle.list ? URI_mode + "/list" : URI_mode;
+      let URI_mode = data.type === "atom" ? "atoms" : "layouts", URI = particle.list ? URI_mode + "/list" : URI_mode;
       request5("POST", parseAjaxURI4(getAjaxURL9(URI) + getAjaxSuffix4()), data, function(error, response) {
         indicator2.hide(label);
         if (!response.body.success) {
@@ -8424,7 +7617,7 @@
           });
           return;
         }
-        var responseData = response.body, includeField = form.querySelector('[name="inherit[include]"]'), includes = includeField && includeField.value ? includeField.value.split(",") : [], available = Array.from(form.querySelectorAll(
+        let responseData = response.body, includeField = form.querySelector('[name="inherit[include]"]'), includes = includeField && includeField.value ? includeField.value.split(",") : [], available = Array.from(form.querySelectorAll(
           '[data-multicheckbox-field="inherit[include]"]'
         )).map(function(item) {
           return item.value;
@@ -8433,11 +7626,11 @@
           return;
         }
         Object.keys(IDsMap).forEach(function(option) {
-          var id = IDsMap[option];
-          id = id.panel || id;
-          id = !Array.isArray(id) ? [id] : id;
-          id.forEach(function(currentID) {
-            var shouldRefresh = includes.includes(option), isAvailable = available.includes(option);
+          let id2 = IDsMap[option];
+          id2 = id2.panel || id2;
+          id2 = !Array.isArray(id2) ? [id2] : id2;
+          id2.forEach(function(currentID) {
+            let shouldRefresh = includes.includes(option), isAvailable = available.includes(option);
             if ((shouldRefresh || !isAvailable) && responseData.html && responseData.html[currentID] && (refreshed = container2.querySelector("#" + currentID))) {
               refreshed.innerHTML = responseData.html[currentID];
               Selectize3.initialize(refreshed.querySelectorAll("[data-selectize]"));
@@ -8454,15 +7647,15 @@
       });
     });
     delegate4(body, "change", "#g-settings-inheritance [data-multicheckbox-field]", function(event, element) {
-      var root = element.closest("[data-g-inheritance-settings]") || document, outlineElement = root.querySelector('[name="inherit[outline]"]');
+      let root = element.closest("[data-g-inheritance-settings]") || document, outlineElement = root.querySelector('[name="inherit[outline]"]');
       if (!outlineElement) {
         return true;
       }
-      var outline = outlineElement.value, value = element.value, isChecked = element.checked, noRefresh = event.noRefresh, mode = getMode(root);
+      let outline = outlineElement.value, value = element.value, isChecked = element.checked, noRefresh = event.noRefresh, mode = getMode(root);
       if (!mode) {
         return true;
       }
-      var IDs = {
+      let IDs = {
         panel: IDsMap[value] && IDsMap[value].panel || IDsMap[value],
         tab: IDsMap[value] && IDsMap[value].tab || IDsMap[value]
       };
@@ -8471,19 +7664,19 @@
         IDs.tab = [IDs.tab];
       }
       IDs.panel.forEach(function(currentPanel, index) {
-        var panel = document.getElementById(currentPanel), tab = document.getElementById(IDs.tab[index] + "-tab");
+        let panel = document.getElementById(currentPanel), tab = document.getElementById(IDs.tab[index] + "-tab");
         if (!panel || !tab) {
           return;
         }
-        var inherit = panel.querySelector(".g-inherit"), isClone = mode.value === "clone", refresh = function(skipRefresh) {
+        let inherit = panel.querySelector(".g-inherit"), isClone = mode.value === "clone", refresh = function(skipRefresh) {
           if (skipRefresh) {
             return;
           }
-          var settingsBlock = element.closest(".settings-block"), selector = settingsBlock && settingsBlock.querySelector('[name="inherit[outline]"]');
+          let settingsBlock = element.closest(".settings-block"), selector = settingsBlock && settingsBlock.querySelector('[name="inherit[outline]"]');
           emitChange(selector);
         };
         if (!isChecked || !outline || isClone) {
-          var lock = tab.querySelector(".fa-lock");
+          let lock = tab.querySelector(".fa-lock");
           if (lock) {
             lock.classList.remove("fa-lock");
             lock.classList.add("fa-unlock");
@@ -8495,7 +7688,7 @@
             refresh(noRefresh);
           }
         } else {
-          var unlock = tab.querySelector(".fa-unlock");
+          let unlock = tab.querySelector(".fa-unlock");
           if (unlock) {
             unlock.classList.remove("fa-unlock");
             unlock.classList.add("fa-lock");
@@ -8512,11 +7705,11 @@
       "change",
       '[name="inherit[mode]"], [name="inherit[particle]"], [name="inherit[atom]"]',
       function(event, element) {
-        var container2 = getModalContainer();
+        let container2 = getModalContainer();
         if (!container2) {
           return;
         }
-        var outline = container2.querySelector('[name="inherit[outline]"]'), checkboxes = container2.querySelectorAll("[data-multicheckbox-field]"), noRefresh = element.name === "inherit[mode]";
+        let outline = container2.querySelector('[name="inherit[outline]"]'), checkboxes = container2.querySelectorAll("[data-multicheckbox-field]"), noRefresh = element.name === "inherit[mode]";
         emitChange(outline, { noRefresh });
         checkboxes.forEach(function(checkbox) {
           emitChange(checkbox, { noRefresh });
@@ -8529,17 +7722,17 @@
       "#g-inherit-particle .fa-info-circle, #g-inherit-atom .fa-info-circle",
       function(event, element) {
         event.preventDefault();
-        var container2 = getModalContainer(), outline = container2 && container2.querySelector('[name="inherit[outline]"]'), parent = element.parentElement, id = parent && parent.querySelector(
+        let container2 = getModalContainer(), outline = container2 && container2.querySelector('[name="inherit[outline]"]'), parent = element.parentElement, id2 = parent && parent.querySelector(
           'input[name="inherit[particle]"], input[name="inherit[atom]"]'
         );
-        if (!id || !outline) {
+        if (!id2 || !outline) {
           return false;
         }
-        var URI = id.name === "inherit[atom]" ? "atoms/instance" : "layouts/particle";
+        let URI = id2.name === "inherit[atom]" ? "atoms/instance" : "layouts/particle";
         modal4.open({
           content: "Loading",
           method: "post",
-          data: { id: id.value, outline: outline.value || getCurrentOutline3() },
+          data: { id: id2.value, outline: outline.value || getCurrentOutline3() },
           remote: parseAjaxURI4(getAjaxURL9(URI) + getAjaxSuffix4()),
           remoteLoaded: function(response) {
             if (!response.body.success) {
@@ -8551,13 +7744,13 @@
       }
     );
     delegate4(body, "mouseup", ".g-tabs .fa-lock, .g-tabs .fa-unlock", function(event, element) {
-      var listItem = element.closest("li");
+      let listItem = element.closest("li");
       if (!listItem || !listItem.classList.contains("active")) {
         return false;
       }
-      var container2 = getModalContainer(), anchor = element.closest("a"), isLocked = element.classList.contains("fa-lock"), id = anchor ? anchor.id.replace(/\-tab$/, "") : "", prop = Object.keys(IDsMap).find(function(key) {
-        var value = IDsMap[key];
-        return value === id || value.tab === id || collectionContains(value, id);
+      let container2 = getModalContainer(), anchor = element.closest("a"), isLocked = element.classList.contains("fa-lock"), id2 = anchor ? anchor.id.replace(/\-tab$/, "") : "", prop = Object.keys(IDsMap).find(function(key) {
+        let value = IDsMap[key];
+        return value === id2 || value.tab === id2 || collectionContains(value, id2);
       }), input = container2 && container2.querySelector(
         '[data-multicheckbox-field][value="' + prop + '"]'
       ), mode = container2 && getMode(container2), radios = container2 && container2.querySelector(
@@ -8609,14 +7802,14 @@
     });
   };
   var precision5 = function(value, decimalPlaces) {
-    var number2 = Number(value), multiplier = Math.pow(10, decimalPlaces);
+    let number2 = Number(value), multiplier = Math.pow(10, decimalPlaces);
     return Number((Math.round(number2 * multiplier) / multiplier).toFixed(decimalPlaces));
   };
   builder = new Builder2();
   lmhistory = new LMHistory();
   savestate = new SaveState2();
   ready7(function() {
-    var body = dom11("body");
+    let body = dom11("body");
     body.delegate("click", "[data-lm-back]", function(e, element) {
       if (e) {
         e.preventDefault();
@@ -8632,7 +7825,7 @@
       lmhistory.redo();
     });
     lmhistory.on("push", function(session, index, reset) {
-      var HM = {
+      let HM = {
         back: dom11("[data-lm-back]"),
         forward: dom11("[data-lm-forward]")
       };
@@ -8641,7 +7834,7 @@
       layoutmanager.updatePendingChanges();
     });
     lmhistory.on("undo", function(session, index) {
-      var notice = dom11("#lm-no-layout"), title = dom11(".layout-title .title small"), preset_name = session.preset.name || "Default", HM = {
+      let notice = dom11("#lm-no-layout"), title = dom11(".layout-title .title small"), preset_name = session.preset.name || "Default", HM = {
         back: dom11("[data-lm-back]"),
         forward: dom11("[data-lm-forward]")
       };
@@ -8658,7 +7851,7 @@
       layoutmanager.updatePendingChanges();
     });
     lmhistory.on("redo", function(session, index) {
-      var notice = dom11("#lm-no-layout"), title = dom11(".layout-title .title small"), preset_name = session.preset.name || "Default", HM = {
+      let notice = dom11("#lm-no-layout"), title = dom11(".layout-title .title small"), preset_name = session.preset.name || "Default", HM = {
         back: dom11("[data-lm-back]"),
         forward: dom11("[data-lm-forward]")
       };
@@ -8676,7 +7869,7 @@
     });
   });
   ready7(function() {
-    var body = dom11("body"), root = dom11("[data-lm-root]"), data;
+    let body = dom11("body"), root = dom11("[data-lm-root]"), data;
     layoutmanager = new LayoutManager2("[data-lm-container]", {
       delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
       droppables: "[data-lm-dropzone]",
@@ -8701,7 +7894,7 @@
       return false;
     });
     body.delegate("keydown", ".g-tabs a", function(event, element) {
-      var key = event.which ? event.which : event.keyCode;
+      let key = event.which ? event.which : event.keyCode;
       if (key == 32 || key == 13) {
         event.preventDefault();
         body.emit("mouseup", event);
@@ -8711,7 +7904,7 @@
     body.delegate("mouseup", ".g-tabs a", function(event, element) {
       element = dom11(element);
       event.preventDefault();
-      var index = 0, parent = element.parent(".g-tabs"), panes = parent.siblings(".g-panes"), links = parent.search("a");
+      let index = 0, parent = element.parent(".g-tabs"), panes = parent.siblings(".g-panes"), links = parent.search("a");
       links.forEach(function(link, i) {
         if (link == element[0]) {
           index = i + 1;
@@ -8750,7 +7943,7 @@
       layoutmanager.eraser.hide(true);
     });
     body.delegate("input", ".sidebar-block .search input", function(event, element) {
-      var value = dom11(element).value().toLowerCase(), list = dom11(".sidebar-block [data-lm-blocktype]"), text, type;
+      let value = dom11(element).value().toLowerCase(), list = dom11(".sidebar-block [data-lm-blocktype]"), text, type;
       if (!list) {
         return false;
       }
@@ -8766,30 +7959,30 @@
     ["click", "touchend"].forEach(function(evt) {
       body.delegate(evt, "[data-lm-samewidth]:not(:empty)", function(event, element) {
         window.Genesis.tips.hide(element[0]);
-        var clientRect = element[0].getBoundingClientRect();
+        let clientRect = element[0].getBoundingClientRect();
         if ((event.clientX || event.pageX || event.changedTouches[0].pageX || 0) < clientRect.width + clientRect.left) {
           return;
         }
-        var blocks = element.search('> [data-lm-blocktype="block"]'), id;
+        let blocks = element.search('> [data-lm-blocktype="block"]'), id2;
         if (!blocks || blocks.length == 1) {
           return;
         }
         blocks.forEach(function(block) {
-          id = dom11(block).data("lm-id");
-          builder.get(id).setSize(100 / blocks.length, true);
+          id2 = dom11(block).data("lm-id");
+          builder.get(id2).setSize(100 / blocks.length, true);
         });
         lmhistory.push(builder.serialize(), lmhistory.get().preset);
       });
     });
     body.delegate("mouseover", "[data-lm-samewidth]:not(:empty)", function(event, element) {
-      var clientRect = element[0].getBoundingClientRect(), clientX = event.clientX || event.touches && event.touches[0].clientX || 0, tooltips = {
+      let clientRect = element[0].getBoundingClientRect(), clientX = event.clientX || event.touches && event.touches[0].clientX || 0, tooltips = {
         equalize: clientX + 5 > clientRect.width + clientRect.left,
         move: clientX - 5 < clientRect.left
       };
       if (!tooltips.equalize && !tooltips.move) {
         return;
       }
-      var msg = tooltips.equalize ? translate6("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate6("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
+      let msg = tooltips.equalize ? translate6("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate6("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
       element.data("tip", msg).data("tip-offset", -30);
       window.Genesis.tips.get(element[0]).content(msg).place(tooltips.equalize ? "top-left" : "top-right").show();
     });
@@ -8800,7 +7993,7 @@
       if (event && event.preventDefault) {
         event.preventDefault();
       }
-      var mode = element.data("lm-clear"), options = {};
+      let mode = element.data("lm-clear"), options = {};
       switch (mode) {
         case "keep-inheritance":
           options = { save: true, dropLastGrid: false, emptyInherits: false };
@@ -8811,7 +8004,7 @@
       }
       layoutmanager.clear(null, options);
     });
-    var SWITCHER_HIT = false;
+    let SWITCHER_HIT = false;
     body.delegate("mouseover", "[data-lm-switcher]", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
@@ -8827,20 +8020,20 @@
       }
     });
     body.delegate("keydown", "[data-switch]", function(event, element) {
-      var key = event.which ? event.which : event.keyCode;
+      let key = event.which ? event.which : event.keyCode;
       if (key == 32 || key == 13) {
         event.preventDefault();
         body.emit("mousedown", event);
       }
     });
     body.delegate("change", '[data-g-inherit="outline"]', function(event, element) {
-      var keeper = element.parent(".g-pane").find('input[type="checkbox"][data-g-preserve="outline"]');
+      let keeper = element.parent(".g-pane").find('input[type="checkbox"][data-g-preserve="outline"]');
       if (keeper) {
         keeper.checked(false);
       }
     });
     body.delegate("change", '[data-g-preserve="outline"]', function(event, element) {
-      var inherit = element.parent(".g-pane").find('input[type="checkbox"][data-g-inherit="outline"]');
+      let inherit = element.parent(".g-pane").find('input[type="checkbox"][data-g-inherit="outline"]');
       if (inherit) {
         inherit.checked(false);
       }
@@ -8853,11 +8046,11 @@
         return false;
       }
       element.showIndicator();
-      var preset = dom11("[data-lm-preset]"), preserve = element.parent(".g-pane").find('input[type="checkbox"][data-g-preserve]'), inherit = element.parent(".g-pane").find('input[type="checkbox"][data-g-inherit]'), method = !preserve ? "get" : "post", data2 = {};
+      let preset = dom11("[data-lm-preset]"), preserve = element.parent(".g-pane").find('input[type="checkbox"][data-g-preserve]'), inherit = element.parent(".g-pane").find('input[type="checkbox"][data-g-inherit]'), method = !preserve ? "get" : "post", data2 = {};
       preserve = preserve && preserve.checked();
       inherit = inherit && inherit.checked();
       if (preserve) {
-        var lm2 = layoutmanager;
+        let lm2 = layoutmanager;
         lm2.singles("cleanup", lm2.builder, true);
         lm2.savestate.setSession(lm2.builder.serialize(null, true));
         data2.preset = preset && preset.data("lm-preset") ? preset.data("lm-preset") : "default";
@@ -8866,7 +8059,7 @@
       if (inherit) {
         data2.inherit = 1;
       }
-      var uri = parseAjaxURI5(element.data("switch") + getAjaxSuffix5());
+      let uri = parseAjaxURI5(element.data("switch") + getAjaxSuffix5());
       request6(method, uri, data2, function(error, response) {
         element.hideIndicator();
         if (!response.body.success) {
@@ -8885,7 +8078,7 @@
           flags2.warning({
             message: response.body.message,
             callback: function(response2, content) {
-              var confirm = content.find("[data-g-delete-confirm]"), cancel = content.find("[data-g-delete-cancel]");
+              let confirm = content.find("[data-g-delete-confirm]"), cancel = content.find("[data-g-delete-cancel]");
               if (!confirm) {
                 return;
               }
@@ -8917,7 +8110,7 @@
           });
           return false;
         }
-        var preset2 = response.body.preset || { name: "default" }, preset_name = response.body.title || "Default", structure = response.body.data, notice = dom11("#lm-no-layout"), title = dom11(".layout-title .title small");
+        let preset2 = response.body.preset || { name: "default" }, preset_name = response.body.title || "Default", structure = response.body.data, notice = dom11("#lm-no-layout"), title = dom11(".layout-title .title small");
         root.data("lm-root", JSON.stringify(structure));
         root[0].replaceChildren();
         root.data("lm-preset", preset2);
@@ -8935,9 +8128,9 @@
     });
     body.delegate("click", "[data-lm-settings]", function(event, element) {
       element = dom11(element);
-      var blocktype = element.data("lm-blocktype"), settingsURL = element.data("lm-settings"), data2 = null, parent, section;
+      let blocktype = element.data("lm-blocktype"), settingsURL = element.data("lm-settings"), data2 = null, parent, section;
       if (blocktype === "grid") {
-        var clientX = event.clientX || event.touches && event.touches[0].clientX || 0, boundings = element[0].getBoundingClientRect();
+        let clientX = event.clientX || event.touches && event.touches[0].clientX || 0, boundings = element[0].getBoundingClientRect();
         if (clientX + 4 - boundings.left < boundings.width) {
           return false;
         }
@@ -8946,7 +8139,7 @@
       parent = element.parent("[data-lm-blocktype]");
       section = element.parent('[data-lm-blocktype="section"]');
       blocktype = element.data("lm-blocktype");
-      var ID3 = element.data("lm-id"), parentID = parent ? parent.data("lm-id") : false, parentType = parent ? parent.data("lm-blocktype") : false;
+      let ID3 = element.data("lm-id"), parentID = parent ? parent.data("lm-id") : false, parentType = parent ? parent.data("lm-blocktype") : false;
       if (!["block", "grid"].includes(blocktype)) {
         data2 = {};
         data2.id = builder.get(element.data("lm-id")).getId() || null;
@@ -8985,30 +8178,30 @@
             modal5.enableCloseByOverlay();
             return;
           }
-          var container2 = modal5.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form;
+          let container2 = modal5.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form;
           if (!container2 || !form || !actionForm || !submit3.length) {
             return true;
           }
-          var urlTemplate = container2.querySelector(".g-urltemplate");
+          let urlTemplate = container2.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
-          var blockSize = container2.querySelector('[name="block[size]"]');
+          let blockSize = container2.querySelector('[name="block[size]"]');
           if (blockSize && data2.size_limits) {
-            var note = container2.querySelector(".blocksize-note"), min = precision5(data2.size_limits[0], 1), max = precision5(data2.size_limits[1], 1);
+            let note = container2.querySelector(".blocksize-note"), min = precision5(data2.size_limits[0], 1), max = precision5(data2.size_limits[1], 1);
             blockSize.setAttribute("min", min);
             blockSize.setAttribute("max", max);
             if (note) {
-              var noteHTML = note.innerHTML;
+              let noteHTML = note.innerHTML;
               noteHTML = noteHTML.replace(/#min#/g, min);
               noteHTML = noteHTML.replace(/#max#/g, max);
               note.innerHTML = noteHTML;
-              var noteVariant = note.querySelector(".blocksize-" + (min == max ? "range" : "fixed"));
+              let noteVariant = note.querySelector(".blocksize-" + (min == max ? "range" : "fixed"));
               if (noteVariant) {
                 noteVariant.classList.add("hidden");
               }
             }
-            var isValid = function() {
+            let isValid = function() {
               return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? "" : translate6("GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE");
             };
             blockSize.addEventListener("input", function() {
@@ -9021,7 +8214,7 @@
               target.disabled = true;
               indicator3.hide(target);
               indicator3.show(target);
-              var currentForm = container2.querySelector("form"), formElements = currentForm ? currentForm.elements : [], post = Submit(formElements, container2);
+              let currentForm = container2.querySelector("form"), formElements = currentForm ? currentForm.elements : [], post = Submit(formElements, container2);
               if (post.invalid.length) {
                 target.disabled = false;
                 indicator3.hide(target);
@@ -9045,7 +8238,7 @@
                       }
                     });
                   } else {
-                    var particle = builder.get(ID3), block = null;
+                    let particle = builder.get(ID3), block = null;
                     particle.setAttributes(response2.body.data.options);
                     if (particle.hasAttribute("enabled")) {
                       particle[particle.getAttribute("enabled") ? "enable" : "disable"]();
@@ -9059,7 +8252,7 @@
                     }
                     if (response2.body.data.block && size2(response2.body.data.block)) {
                       block = builder.get(parentID);
-                      var sibling = block.block.nextSibling() || block.block.previousSibling(), currentSize = block.getSize(), diffSize;
+                      let sibling = block.block.nextSibling() || block.block.previousSibling(), currentSize = block.getSize(), diffSize;
                       block.setAttributes(response2.body.data.block);
                       diffSize = currentSize - block.getSize();
                       block.setAnimatedSize(block.getSize());
@@ -9084,7 +8277,7 @@
                     }
                     lmhistory.push(builder.serialize(), lmhistory.get().preset);
                     if (target.hasAttribute("data-apply-and-save")) {
-                      var save = document.querySelector(".button-save");
+                      let save = document.querySelector(".button-save");
                       if (save) {
                         save.click();
                       }
@@ -9130,12 +8323,12 @@
     }) : [];
   };
   var previousSiblings = function(element) {
-    var siblings = [], previous = element ? element.previousElementSibling : null;
+    let siblings2 = [], previous = element ? element.previousElementSibling : null;
     while (previous) {
-      siblings.unshift(previous);
+      siblings2.unshift(previous);
       previous = previous.previousElementSibling;
     }
-    return siblings;
+    return siblings2;
   };
   var clamp2 = function(value, min, max) {
     return Math.min(max, Math.max(min, value));
@@ -9144,7 +8337,7 @@
     return min2 + (value - min1) / (max1 - min1) * (max2 - min2);
   };
   var precision6 = function(value, decimals) {
-    var multiplier = Math.pow(10, decimals);
+    let multiplier = Math.pow(10, decimals);
     return Math.round(value * multiplier) / multiplier;
   };
   var Resizer3 = class {
@@ -9170,15 +8363,15 @@
     }
     getBlock(element) {
       element = typeof element === "string" ? element : asElement5(element);
-      var id = typeof element === "string" ? element : element && element.dataset.lmId || "";
-      return this.map ? this.map[id] : void 0;
+      let id2 = typeof element === "string" ? element : element && element.dataset.lmId || "";
+      return this.map ? this.map[id2] : void 0;
     }
     getAttribute(element, prop) {
       return this.getBlock(element).getAttribute(prop);
     }
     getSize(element) {
       element = asElement5(element);
-      var parent = element && (element.matches("[data-mm-id]") ? element : element.closest("[data-mm-id]")), size3 = parent && parent.querySelector(".percentage input");
+      let parent = element && (element.matches("[data-mm-id]") ? element : element.closest("[data-mm-id]")), size3 = parent && parent.querySelector(".percentage input");
       return size3 ? Number(size3.value) : 0;
     }
     setSize(element, size3, animated) {
@@ -9187,12 +8380,12 @@
         return;
       }
       animated = typeof animated === "undefined" ? false : animated;
-      var parent = element.matches("[data-mm-id]") ? element : element.closest("[data-mm-id]"), pc = parent && parent.querySelector(".percentage input"), flex = "0 1 " + size3 + "%";
+      let parent = element.matches("[data-mm-id]") ? element : element.closest("[data-mm-id]"), pc = parent && parent.querySelector(".percentage input"), flex = "0 1 " + size3 + "%";
       if (!parent) {
         return;
       }
       if (animated && typeof parent.animate === "function") {
-        var animation = parent.animate([
+        let animation = parent.animate([
           { flex: getComputedStyle(parent).flex },
           { flex }
         ], { duration: 250, easing: "ease" });
@@ -9206,7 +8399,7 @@
         pc.value = precision6(size3, 1);
       }
     }
-    start(event, element, siblings, offset) {
+    start(event, element, siblings2, offset) {
       if (event && event.type.match(/^touch/i)) {
         event.preventDefault();
       }
@@ -9218,18 +8411,18 @@
       if (!this.element) {
         return false;
       }
-      var parent = this.element.closest(".submenu-selector");
+      let parent = this.element.closest(".submenu-selector");
       if (!parent) {
         return false;
       }
-      var current = this.element.closest("[data-mm-id]"), next = current && current.nextElementSibling, nextColumn = next && next.querySelector(":scope > .submenu-column");
+      let current = this.element.closest("[data-mm-id]"), next = current && current.nextElementSibling, nextColumn = next && next.querySelector(":scope > .submenu-column");
       if (!current || !nextColumn) {
         return false;
       }
       parent.classList.add("moving");
       this.siblings = {
         occupied: 0,
-        elements: asElements2(siblings),
+        elements: asElements2(siblings2),
         next: nextColumn,
         prevs: previousSiblings(current),
         sizeBefore: 0
@@ -9251,7 +8444,7 @@
         x: event.changedTouches ? event.changedTouches[0].pageX : event.pageX + 6,
         y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
       };
-      var clientRect = this.element.getBoundingClientRect(), parentRect = this.element.parentElement.getBoundingClientRect();
+      let clientRect = this.element.getBoundingClientRect(), parentRect = this.element.parentElement.getBoundingClientRect();
       this.origin.offset = {
         clientRect,
         parentRect: { left: parentRect.left, right: parentRect.right },
@@ -9259,7 +8452,7 @@
         y: clientRect.top - this.origin.y,
         down: offset || 0
       };
-      var blocks = directChildren(parent, "[data-mm-id]");
+      let blocks = directChildren(parent, "[data-mm-id]");
       if (blocks.length) {
         this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
         this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
@@ -9276,20 +8469,20 @@
       if (event && event.type.match(/^touch/i)) {
         event.preventDefault();
       }
-      var point = event.touches && event.touches.length ? event.touches[0] : event, clientX = point.clientX || 0, clientY = point.clientY || 0, parentRect = this.origin.offset.parentRect;
-      var deltaX = (this.lastX || clientX) - clientX, deltaY = (this.lastY || clientY) - clientY;
+      let point = event.touches && event.touches.length ? event.touches[0] : event, clientX = point.clientX || 0, clientY = point.clientY || 0, parentRect = this.origin.offset.parentRect;
+      let deltaX = (this.lastX || clientX) - clientX, deltaY = (this.lastY || clientY) - clientY;
       this.direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && "left" || Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && "right" || Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && "up" || "down";
-      var size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp2(value, parentRect.left, parentRect.right);
+      let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp2(value, parentRect.left, parentRect.right);
       size3 = mapRange2(normalized, parentRect.left, parentRect.right, 0, 100);
       size3 = size3 - this.siblings.sizeBefore;
       size3 = precision6(clamp2(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
       diff = precision6(diff - size3, 0);
       this.setSize(this.element, size3);
       this.setSize(this.siblings.next, diff);
-      var siblings = this.siblings.elements, amount = siblings ? siblings.length + 1 : 1;
+      let siblings2 = this.siblings.elements, amount = siblings2 ? siblings2.length + 1 : 1;
       if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
-        var total = 0, blocks;
-        blocks = asElements2(siblings).concat(this.element.closest("[data-mm-id]"));
+        let total = 0, blocks;
+        blocks = asElements2(siblings2).concat(this.element.closest("[data-mm-id]"));
         blocks.forEach(function(block, index) {
           size3 = this.getSize(block);
           if (size3 % 1) {
@@ -9311,7 +8504,7 @@
         event.preventDefault();
       }
       this.detachDocumentEvents();
-      var parent = this.element && this.element.closest(".submenu-selector");
+      let parent = this.element && this.element.closest(".submenu-selector");
       if (parent) {
         parent.classList.remove("moving");
       }
@@ -9326,11 +8519,11 @@
       }, this);
     }
     updateItemSizes(elements) {
-      var parent = this.element ? this.element.closest(".submenu-selector") : null;
+      let parent = this.element ? this.element.closest(".submenu-selector") : null;
       if (!parent && !elements) {
         return false;
       }
-      var blocks = elements ? asElements2(elements) : directChildren(parent, "[data-mm-id]"), sizes = [], active = document.querySelector(".menu-selector .active"), path = active ? active.dataset.mmId : null;
+      let blocks = elements ? asElements2(elements) : directChildren(parent, "[data-mm-id]"), sizes = [], active = document.querySelector(".menu-selector .active"), path = active ? active.dataset.mmId : null;
       blocks.forEach(function(block) {
         sizes.push(this.getSize(block));
       }, this);
@@ -9341,13 +8534,13 @@
       return sizes;
     }
     updateMaxValues(elements) {
-      var parent = this.element ? this.element.closest(".submenu-selector") : null;
+      let parent = this.element ? this.element.closest(".submenu-selector") : null;
       if (!parent && !elements) {
         return false;
       }
-      var blocks = elements ? asElements2(elements) : directChildren(parent, "[data-mm-id]"), sizes, inputs;
+      let blocks = elements ? asElements2(elements) : directChildren(parent, "[data-mm-id]"), sizes, inputs;
       blocks.forEach(function(block) {
-        var sibling = block.nextElementSibling || block.previousElementSibling;
+        let sibling = block.nextElementSibling || block.previousElementSibling;
         if (!sibling) {
           return;
         }
@@ -9369,7 +8562,7 @@
     }
     evenResize(elements, animated) {
       elements = asElements2(elements);
-      var total = elements.length, size3 = precision6(100 / total, 4);
+      let total = elements.length, size3 = precision6(100 / total, 4);
       elements.forEach(function(element) {
         this.setSize(element, size3, typeof animated == "undefined" ? false : animated);
       }, this);
@@ -9399,7 +8592,7 @@
     if (!value || Object.prototype.toString.call(value) !== "[object Object]") {
       return false;
     }
-    var prototype = Object.getPrototypeOf(value);
+    let prototype = Object.getPrototypeOf(value);
     return prototype === null || prototype === Object.prototype;
   };
   var cloneValue2 = function(value, seen) {
@@ -9418,7 +8611,7 @@
     if (seen.has(value)) {
       return seen.get(value);
     }
-    var clone3 = Array.isArray(value) ? [] : {};
+    let clone3 = Array.isArray(value) ? [] : {};
     seen.set(value, clone3);
     Object.keys(value).forEach(function(key) {
       clone3[key] = cloneValue2(value[key], seen);
@@ -9466,14 +8659,14 @@
           ordering: deepClone(this.ordering),
           items: deepClone(this.items)
         };
-        var submenus = dom12("[data-genesis-menu-columns] .submenu-selector"), columns;
+        let submenus = dom12("[data-genesis-menu-columns] .submenu-selector"), columns;
         if (this.resizer && submenus && (columns = submenus.search("> [data-mm-id]"))) {
           this.resizer.updateMaxValues(columns);
         }
       }
     },
     click: function(event, element) {
-      var target = dom12(event.target);
+      let target = dom12(event.target);
       if (target.matches(".g-menu-addblock") || target.parent(".g-menu-addblock")) {
         return false;
       }
@@ -9482,23 +8675,23 @@
         return true;
       }
       if (element.find("[data-genesis-ajaxify]")) {
-        var siblings = element.siblings();
+        let siblings2 = element.siblings();
         element.addClass("active");
-        if (siblings) {
-          siblings.removeClass("active");
+        if (siblings2) {
+          siblings2.removeClass("active");
         }
       }
       element.emit("click");
-      var link = element.find("a");
+      let link = element.find("a");
       if (link) {
         link[0].click();
       }
     },
-    resize: function(event, element, siblings, offset) {
-      this.resizer.start(event, element, siblings, offset);
+    resize: function(event, element, siblings2, offset) {
+      this.resizer.start(event, element, siblings2, offset);
     },
     start: function(event, element) {
-      var root = element.parent(".menu-selector") || element.parent(".submenu-column") || element.parent(".submenu-selector") || element.parent(".genesis-mm-particles-picker"), size3 = dom12(element).position(), coords = dom12(element)[0].getBoundingClientRect();
+      let root = element.parent(".menu-selector") || element.parent(".submenu-column") || element.parent(".submenu-selector") || element.parent(".genesis-mm-particles-picker"), size3 = dom12(element).position(), coords = dom12(element)[0].getBoundingClientRect();
       this.block = null;
       this.targetLevel = void 0;
       this.addNewItem = false;
@@ -9514,11 +8707,11 @@
       this.itemFrom = element.parent("[data-mm-id]");
       this.itemTo = null;
       if (this.isParticle && !this.isNewParticle) {
-        var children = element.parent().children("[data-mm-id]");
+        let children = element.parent().children("[data-mm-id]");
         this.ParticleIndex = indexOf2(children, element[0]);
       }
       root.addClass("moving");
-      var type = dom12(element).data("mm-id"), clone3 = element[0].cloneNode(true);
+      let type = dom12(element).data("mm-id"), clone3 = element[0].cloneNode(true);
       if (!this.placeholder) {
         this.placeholder = zen6((this.type == "column" ? "div" : "li") + ".block.placeholder[data-mm-placeholder]");
       }
@@ -9540,7 +8733,7 @@
         }).addClass("active");
         this.placeholder.before(element);
       } else {
-        var position = element.position();
+        let position = element.position();
         this.original.style({
           position: "fixed",
           opacity: 0.5
@@ -9573,13 +8766,13 @@
       if (!this.placeholder) {
         this.placeholder = zen6((this.type == "column" ? "div" : "li") + ".block.placeholder[data-mm-placeholder]").style({ display: "none" });
       }
-      var targetType = target.parent(".g-toplevel") || target.matches(".g-toplevel") ? "main" : target.matches(".g-block") ? "column" : "columns_items", dataLevel = target.data("mm-level"), originalLevel = this.block.data("mm-level");
+      let targetType = target.parent(".g-toplevel") || target.matches(".g-toplevel") ? "main" : target.matches(".g-block") ? "column" : "columns_items", dataLevel = target.data("mm-level"), originalLevel = this.block.data("mm-level");
       if (this.isParticle && (targetType === "main" && !dataLevel)) {
         this.dragdrop.matched = false;
         return;
       }
       if (dataLevel === null && this.type === "columns_items" && this.isParticle && this.isNewParticle) {
-        var submenu_items = target.find(".submenu-items");
+        let submenu_items = target.find(".submenu-items");
         if (!submenu_items) {
           this.dragdrop.matched = false;
           return;
@@ -9591,7 +8784,7 @@
         return;
       }
       if (dataLevel === null && (this.type === "columns_items" || this.isParticle)) {
-        var submenu_items = target.find(".submenu-items"), submenu_items_level = submenu_items.data("mm-base-level");
+        let submenu_items = target.find(".submenu-items"), submenu_items_level = submenu_items.data("mm-base-level");
         if (!target.hasClass("g-block") || target.find(this.block) || !this.isParticle && originalLevel != submenu_items_level && (!submenu_items || submenu_items.children() || originalLevel > 2)) {
           this.dragdrop.matched = false;
           return;
@@ -9616,7 +8809,7 @@
           return;
         }
       }
-      var exclude = ':not(.placeholder):not([data-mm-id="' + this.original.data("mm-id") + '"])', adjacents = {
+      let exclude = ':not(.placeholder):not([data-mm-id="' + this.original.data("mm-id") + '"])', adjacents = {
         before: this.original.previousSiblings(exclude),
         after: this.original.nextSiblings(exclude)
       };
@@ -9653,10 +8846,10 @@
         this.placeholder.remove();
       }
       this.targetLevel = void 0;
-      var target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
+      let target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
       if (!this.isNewParticle && (this.Element.hasClass("g-menu-removable") || this.isParticle)) {
         target = dom12(target);
-        var targetNode2 = target[0];
+        let targetNode2 = target[0];
         if (targetNode2 === this.eraser.element || this.eraser.element.contains(targetNode2)) {
           this.dragdrop.removeElement = true;
           this.eraser.over();
@@ -9668,7 +8861,7 @@
     },
     removeElement: function(event, element) {
       this.dragdrop.removeElement = false;
-      var transition = {
+      let transition = {
         opacity: 0
       };
       element.animate(transition, {
@@ -9679,9 +8872,9 @@
       }
       this.eraser.hide();
       this.dragdrop.detachDragEvents();
-      var particle = this.block, base = particle.parent("[data-mm-base]").data("mm-base"), col = (particle.parent("[data-mm-id]").data("mm-id").match(/\d+$/) || [0])[0], index = indexOf2(particle.parent().children("[data-mm-id]:not(.original-placeholder)"), particle[0]);
+      let particle = this.block, base2 = particle.parent("[data-mm-base]").data("mm-base"), col = (particle.parent("[data-mm-id]").data("mm-id").match(/\d+$/) || [0])[0], index = indexOf2(particle.parent().children("[data-mm-id]:not(.original-placeholder)"), particle[0]);
       delete this.items[this.itemID];
-      this.ordering[base][col].splice(index, 1);
+      this.ordering[base2][col].splice(index, 1);
       this.block.remove();
       this.original.remove();
       this.root.removeClass("moving");
@@ -9694,8 +8887,8 @@
     },
     stop: function(event, target, element) {
       target = dom12(target);
-      var lastOvered = dom12(this.dragdrop.lastOvered);
-      var trashZone = this.eraser.element.querySelector(".trash-zone");
+      let lastOvered = dom12(this.dragdrop.lastOvered);
+      let trashZone = this.eraser.element.querySelector(".trash-zone");
       if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
         this.eraser.hide();
         return;
@@ -9716,7 +8909,7 @@
         this.eraser.hide();
         return;
       }
-      var placeholderParent = this.placeholder.parent();
+      let placeholderParent = this.placeholder.parent();
       if (!placeholderParent) {
         this.type = void 0;
         this.targetLevel = false;
@@ -9726,7 +8919,7 @@
       if (this.addNewItem) {
         this.block.attribute("style", null).removeClass("active");
       }
-      var parent = this.block.parent();
+      let parent = this.block.parent();
       this.eraser.hide();
       if (this.original) {
         if (!this.isNewParticle) {
@@ -9743,16 +8936,16 @@
         element.addClass("active");
       }
       if (this.isParticle) {
-        var id = last2(this.itemID.split("/")), targetItem = target || this.itemTo, base = targetItem[target && !target.hasClass("g-block") ? "parent" : "find"]("[data-mm-base]").data("mm-base");
-        this.itemID = base ? base + "/" + id : id;
+        let id2 = last2(this.itemID.split("/")), targetItem = target || this.itemTo, base2 = targetItem[target && !target.hasClass("g-block") ? "parent" : "find"]("[data-mm-base]").data("mm-base");
+        this.itemID = base2 ? base2 + "/" + id2 : id2;
         this.itemLevel = this.targetLevel;
         this.block.data("mm-id", this.itemID).data("mm-level", this.targetLevel);
       }
-      var path = this.itemID.split("/"), items, column;
+      let path = this.itemID.split("/"), items, column;
       path.splice(this.itemLevel - 1);
       path = path.join("/");
       if (this.itemFrom || this.itemTo) {
-        var sources = this.itemFrom == this.itemTo ? [this.itemFrom] : [this.itemFrom, this.itemTo];
+        let sources = this.itemFrom == this.itemTo ? [this.itemFrom] : [this.itemFrom, this.itemTo];
         sources.forEach(function(source) {
           if (!source) {
             return;
@@ -9773,31 +8966,31 @@
         }, this);
         base = this.itemFrom ? this.itemFrom.attribute("data-mm-base") !== null ? this.itemFrom : this.itemFrom.find("[data-mm-base]") : null;
         if (this.isParticle && base && this.targetLevel != this.currentLevel) {
-          var list = (this.itemFrom.data("mm-id").match(/\d+$/) || [0])[0], location = base.data("mm-base") || "", currentLocation = ltrim([location, id].join("/"), ["/"]);
+          let list = (this.itemFrom.data("mm-id").match(/\d+$/) || [0])[0], location = base.data("mm-base") || "", currentLocation = ltrim([location, id].join("/"), ["/"]);
           this.ordering[location][list].splice(this.ParticleIndex, 1);
           this.items[this.itemID] = this.items[currentLocation];
           delete this.items[currentLocation];
         }
       }
       if (!this.itemFrom && !this.itemTo && !this.isParticle) {
-        var colsOrder = [], active = dom12(".g-toplevel [data-mm-id].active").data("mm-id");
+        let colsOrder = [], active = dom12(".g-toplevel [data-mm-id].active").data("mm-id");
         items = parent.search("> [data-mm-id]");
         items.forEach(function(element2, index) {
           element2 = dom12(element2);
-          var id2 = element2.data("mm-id"), column2 = Number((id2.match(/\d+$/) || [0])[0]);
+          let id2 = element2.data("mm-id"), column2 = Number((id2.match(/\d+$/) || [0])[0]);
           element2.data("mm-id", id2.replace(/\d+$/, "" + index));
           colsOrder.push(this.ordering[active][column2]);
         }, this);
         this.ordering[active] = colsOrder;
       }
-      var selector = this.block.parent(".submenu-selector");
+      let selector = this.block.parent(".submenu-selector");
       if (selector) {
         this.resizer.updateItemSizes(selector.search("> [data-mm-id]"));
       }
       this.emit("dragEnd", this.map, "reorder");
     },
     stopAnimation: function() {
-      var flex = null;
+      let flex = null;
       if (this.type == "column") {
         flex = this.resizer.getSize(this.block);
       }
@@ -10268,7 +9461,7 @@
     return element && element.nodeType ? element : element && element[0];
   };
   var fragmentFromHTML = function(html) {
-    var template = document.createElement("template");
+    let template = document.createElement("template");
     template.innerHTML = String(html || "").trim();
     return template.content;
   };
@@ -10284,9 +9477,9 @@
   };
   var randomID = function randomString(len, an) {
     an = an && an.toLowerCase();
-    var str = "", i = 0, min = an === "a" ? 10 : 0, max = an === "n" ? 10 : 62;
+    let str = "", i = 0, min = an === "a" ? 10 : 0, max = an === "n" ? 10 : 62;
     for (; i++ < len; ) {
-      var r = Math.random() * (max - min) + min << 0;
+      let r = Math.random() * (max - min) + min << 0;
       str += String.fromCharCode(r += r > 9 ? r < 36 ? 55 : 61 : 48);
     }
     return str;
@@ -10297,7 +9490,7 @@
     }
     this.resizer.updateItemSizes();
     menumanager = this;
-    var save = document.querySelector("[data-save]"), current = {
+    let save = document.querySelector("[data-save]"), current = {
       settings: this.settings,
       ordering: this.ordering,
       items: this.items
@@ -10312,31 +9505,31 @@
       }
     }
     if (this.isParticle && this.isNewParticle) {
-      var block = asElement6(this.block), blocktype = block && block.getAttribute("data-mm-blocktype"), title = block && block.querySelector(".menu-item .title");
+      let block = asElement6(this.block), blocktype = block && block.getAttribute("data-mm-blocktype"), title = block && block.querySelector(".menu-item .title");
       if (!block) {
         return;
       }
       block.removeAttribute("data-mm-blocktype");
       block.classList.add("g-menu-item-" + blocktype);
       block.setAttribute("data-mm-original-type", blocktype);
-      var badge = document.createElement("span");
+      let badge = document.createElement("span");
       badge.className = "menu-item-type badge";
       badge.textContent = blocktype;
       if (title) {
         title.after(badge);
       }
-      var config2 = block.querySelector(".config-cog");
+      let config2 = block.querySelector(".config-cog");
       modal6.open({
         content: translate7("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         remote: parseAjaxURI6((config2 ? config2.getAttribute("href") : "") + getAjaxSuffix6()),
         remoteLoaded: function(response, modalInstance) {
-          var content = modal6.element(modalInstance.elements.content), search2 = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
+          let content = modal6.element(modalInstance.elements.content), search2 = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
           if (!search2 || !filters.length || !blocks.length) {
             return;
           }
           search2.addEventListener("input", function() {
-            var value = search2.value.toLowerCase();
+            let value = search2.value.toLowerCase();
             blocks.forEach(function(item) {
               item.classList.toggle("hidden", Boolean(value));
             });
@@ -10344,7 +9537,7 @@
               return;
             }
             filters.forEach(function(filter) {
-              var text = String(filter.getAttribute("data-mm-filter") || "").trim().toLowerCase(), match = text.startsWith(value) || text.includes(" " + value), item = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
+              let text = String(filter.getAttribute("data-mm-filter") || "").trim().toLowerCase(), match = text.startsWith(value) || text.includes(" " + value), item = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
               if (match && item) {
                 item.classList.remove("hidden");
               }
@@ -10364,7 +9557,7 @@
     if (!content || !button) {
       return;
     }
-    var route = content.querySelector("[data-mm-particle-stepone]"), uri = route && route.getAttribute("data-mm-particle-stepone"), picker = data.instancepicker, item;
+    let route = content.querySelector("[data-mm-particle-stepone]"), uri = route && route.getAttribute("data-mm-particle-stepone"), picker = data.instancepicker, item;
     if (picker) {
       item = JSON.parse(data.item);
       picker = JSON.parse(picker);
@@ -10372,7 +9565,7 @@
       uri = getAjaxURL11(item.type + "/" + item[item.type]);
     }
     request7("post", parseAjaxURI6(uri + getAjaxSuffix6()), data, function(error, stepResponse) {
-      var result = stepResponse && stepResponse.body;
+      let result = stepResponse && stepResponse.body;
       if (!result || !result.success) {
         modal6.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
         indicator4.hide(button);
@@ -10380,11 +9573,11 @@
       }
       content.innerHTML = result.html;
       Selectize4.initialize(content.querySelectorAll("[data-selectize]"));
-      var urlTemplate = content.querySelector(".g-urltemplate");
+      let urlTemplate = content.querySelector(".g-urltemplate");
       if (urlTemplate) {
         urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
       }
-      var form = content.querySelector("form"), submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
+      let form = content.querySelector("form"), submits = content.querySelectorAll('input[type="submit"], button[type="submit"]');
       if (!form || !submits.length) {
         return true;
       }
@@ -10396,28 +9589,28 @@
         submit3.addEventListener("click", function(event) {
           event.preventDefault();
           indicator4.show(submit3);
-          var post = Submit2(form.elements, content, { submitUnchecked: true }), method = form.getAttribute("method") || "post", action = form.getAttribute("action") || "";
+          let post = Submit2(form.elements, content, { submitUnchecked: true }), method = form.getAttribute("method") || "post", action = form.getAttribute("action") || "";
           request7(method, parseAjaxURI6(action + getAjaxSuffix6()), post.valid.join("&") || {}, function(submitError, submitResponse) {
-            var submitResult = submitResponse && submitResponse.body, field = null;
+            let submitResult = submitResponse && submitResponse.body, field = null;
             if (!submitResult || !submitResult.success) {
               modal6.open({
                 content: submitResult ? submitResult.html || submitResult.message || submitResult : submitError ? submitError.message : "Request failed."
               });
             } else if (!picker) {
               if (menumanager) {
-                var element = asElement6(menumanager.element), path = element.getAttribute("data-mm-id") + "-", id = randomID(5), baseParent = element.closest("[data-mm-base]"), columnParent = element.closest("[data-mm-id]"), base = baseParent && baseParent.getAttribute("data-mm-base"), col = ((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0], index = directChildren2(element.parentElement, "[data-mm-id]").indexOf(element);
-                while (menumanager.items[path + id]) {
-                  id = randomID(5);
+                let element = asElement6(menumanager.element), path = element.getAttribute("data-mm-id") + "-", id2 = randomID(5), baseParent = element.closest("[data-mm-base]"), columnParent = element.closest("[data-mm-id]"), base2 = baseParent && baseParent.getAttribute("data-mm-base"), col = ((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0], index = directChildren2(element.parentElement, "[data-mm-id]").indexOf(element);
+                while (menumanager.items[path + id2]) {
+                  id2 = randomID(5);
                 }
-                menumanager.items[path + id] = submitResult.item;
-                if (!menumanager.ordering[base]) {
-                  menumanager.ordering[base] = [];
+                menumanager.items[path + id2] = submitResult.item;
+                if (!menumanager.ordering[base2]) {
+                  menumanager.ordering[base2] = [];
                 }
-                if (!menumanager.ordering[base][col]) {
-                  menumanager.ordering[base][col] = [];
+                if (!menumanager.ordering[base2][col]) {
+                  menumanager.ordering[base2][col] = [];
                 }
-                menumanager.ordering[base][col].splice(index, 1, path + id);
-                element.setAttribute("data-mm-id", path + id);
+                menumanager.ordering[base2][col].splice(index, 1, path + id2);
+                element.setAttribute("data-mm-id", path + id2);
                 if (submitResult.html) {
                   element.innerHTML = submitResult.html;
                 }
@@ -10425,7 +9618,7 @@
                 menumanager.emit("dragEnd", menumanager.map);
                 toastr3.success(translate7("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate7("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
               } else {
-                var position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'), list = position && position.querySelector(":scope > ul");
+                let position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'), list = position && position.querySelector(":scope > ul");
                 if (list) {
                   list.appendChild(fragmentFromHTML(submitResult.html));
                 }
@@ -10435,7 +9628,7 @@
               }
             } else {
               field = fieldByName(picker.field);
-              var parent = field && field.parentElement, btnPicker = parent && parent.querySelector("[data-g-instancepicker]"), label = parent && parent.querySelector(".g-instancepicker-title");
+              let parent = field && field.parentElement, btnPicker = parent && parent.querySelector("[data-g-instancepicker]"), label = parent && parent.querySelector(".g-instancepicker-title");
               if (field) {
                 field.value = JSON.stringify(submitResult.item);
                 field.dispatchEvent(new Event("change", { bubbles: true }));
@@ -10456,9 +9649,9 @@
     });
   };
   dom13.ready(function() {
-    var body = document.body;
+    let body = document.body;
     dom13.delegate(body, "click", ".menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]", function(event, element) {
-      var container2 = element.closest(".menu-editor-extras"), selectButton = container2 && container2.querySelector("[data-mm-select]");
+      let container2 = element.closest(".menu-editor-extras"), selectButton = container2 && container2.querySelector("[data-mm-select]");
       if (!container2 || !selectButton) {
         return;
       }
@@ -10474,11 +9667,11 @@
       if (element.classList.contains("disabled") || element.disabled) {
         return;
       }
-      var container2 = element.closest(".menu-editor-extras"), selected = container2 && container2.querySelector("[data-lm-blocktype].selected, [data-mm-module].selected");
+      let container2 = element.closest(".menu-editor-extras"), selected = container2 && container2.querySelector("[data-lm-blocktype].selected, [data-mm-module].selected");
       if (!container2 || !selected) {
         return;
       }
-      var type = selected.getAttribute("data-mm-type"), data = { type }, instancepicker = element.getAttribute("data-g-instancepicker");
+      let type = selected.getAttribute("data-mm-type"), data = { type }, instancepicker = element.getAttribute("data-g-instancepicker");
       switch (type) {
         case "particle":
           data.particle = selected.getAttribute("data-lm-subtype");
@@ -10488,14 +9681,14 @@
           break;
         case "module":
           data.particle = type;
-          var moduleTitle = selected.querySelector("[data-mm-title]");
+          let moduleTitle = selected.querySelector("[data-mm-title]");
           data.title = moduleTitle && moduleTitle.getAttribute("data-mm-title");
           data.options = { particle: { module_id: selected.getAttribute("data-mm-module") } };
           break;
       }
       indicator4.show(element);
       if (instancepicker && type === "module") {
-        var pickerData = JSON.parse(instancepicker), field = fieldByName(pickerData.field);
+        let pickerData = JSON.parse(instancepicker), field = fieldByName(pickerData.field);
         if (field) {
           field.value = selected.getAttribute("data-mm-module");
           field.dispatchEvent(new Event("input", { bubbles: true }));
@@ -10533,7 +9726,7 @@
     return Math.min(maximum, Math.max(minimum, value));
   };
   dom14.ready(function() {
-    var body = document.body;
+    let body = document.body;
     menumanager2 = new MenuManager2("[data-mm-container]", {
       delegate: ".genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block",
       droppables: "#menu-editor [data-mm-id]",
@@ -10569,7 +9762,7 @@
       }
     });
     dom14.delegate(body, "keydown", ".percentage input", function(event, element) {
-      var value = Number(element.value), min = Number(element.min), max = Number(element.max), upDown = event.keyCode == 38 || event.keyCode == 40;
+      let value = Number(element.value), min = Number(element.min), max = Number(element.max), upDown = event.keyCode == 38 || event.keyCode == 40;
       if (upDown) {
         event.preventDefault();
         value += event.keyCode == 38 ? 1 : -1;
@@ -10579,12 +9772,12 @@
       }
     });
     dom14.delegate(body, "keyup", ".percentage input", function(event, element) {
-      var value = Number(element.value), min = Number(element.min), max = Number(element.max);
-      var resizer = menumanager2.resizer, parent = element.closest("[data-mm-id]"), sibling = parent && (parent.nextElementSibling || parent.previousElementSibling);
+      let value = Number(element.value), min = Number(element.min), max = Number(element.max);
+      let resizer = menumanager2.resizer, parent = element.closest("[data-mm-id]"), sibling = parent && (parent.nextElementSibling || parent.previousElementSibling);
       if (!parent || !sibling || !value || value < min || value > max) {
         return;
       }
-      var sizes = {
+      let sizes = {
         current: Number(element.currentSize),
         sibling: Number(resizer.getSize(sibling))
       };
@@ -10599,21 +9792,21 @@
       menumanager2.emit("dragEnd", menumanager2.map, "inputChange");
     });
     dom14.delegate(body, "focusout", ".percentage input", function(event, element) {
-      var value = Number(element.value);
+      let value = Number(element.value);
       if (value < Number(element.min) || value > Number(element.max)) {
         element.value = element.currentSize;
       }
     });
     dom14.delegate(body, "click", ".add-column", function(event, element) {
       event.preventDefault();
-      var columns = element.closest("[data-genesis-menu-columns]"), container2 = columns && columns.querySelector(".submenu-selector"), children = container2 ? Array.from(container2.children) : [], last3 = children[children.length - 1], count = children.length, active = document.querySelector(".menu-selector .active"), path = active ? active.getAttribute("data-mm-id") : null;
+      let columns = element.closest("[data-genesis-menu-columns]"), container2 = columns && columns.querySelector(".submenu-selector"), children = container2 ? Array.from(container2.children) : [], last3 = children[children.length - 1], count = children.length, active = document.querySelector(".menu-selector .active"), path = active ? active.getAttribute("data-mm-id") : null;
       if (!container2 || !last3) {
         return;
       }
       if (count === 1 && !container2.querySelector(".submenu-items > [data-mm-id]")) {
         return;
       }
-      var block = last3.cloneNode(true), items = block.querySelector(".submenu-items"), baseLevel = block.querySelector("[data-mm-base-level]"), level = block.querySelector(".submenu-level");
+      let block = last3.cloneNode(true), items = block.querySelector(".submenu-items"), baseLevel = block.querySelector("[data-mm-base-level]"), level = block.querySelector(".submenu-level");
       block.setAttribute("data-mm-id", "list-" + count);
       if (items) {
         items.replaceChildren();
@@ -10633,34 +9826,34 @@
     });
     ["click", "touchend"].forEach(function(evt) {
       dom14.delegate(body, evt, "[data-genesis-menu-columns] .submenu-items:empty", function(event, element) {
-        var point = event.changedTouches && event.changedTouches[0], bounding = element.getBoundingClientRect(), x = event.pageX || point && point.pageX || 0, y = event.pageY || point && point.pageY || 0, selector = element.closest(".submenu-selector"), siblings = selector ? selector.querySelectorAll(":scope > [data-mm-id]") : [], deleter = {
+        let point = event.changedTouches && event.changedTouches[0], bounding = element.getBoundingClientRect(), x = event.pageX || point && point.pageX || 0, y = event.pageY || point && point.pageY || 0, selector = element.closest(".submenu-selector"), siblings2 = selector ? selector.querySelectorAll(":scope > [data-mm-id]") : [], deleter = {
           width: 36,
           height: 36
         };
-        if (siblings.length <= 1) {
+        if (siblings2.length <= 1) {
           return false;
         }
         if (x >= bounding.left + bounding.width - deleter.width && x <= bounding.left + bounding.width && Math.abs(window.scrollY - y) - bounding.top < deleter.height) {
-          var parent = element.closest("[data-mm-id]"), container2 = parent && parent.parentElement, columns = container2 ? Array.from(container2.children).filter(function(child) {
+          let parent = element.closest("[data-mm-id]"), container2 = parent && parent.parentElement, columns = container2 ? Array.from(container2.children).filter(function(child) {
             return child.matches("[data-mm-id]");
           }) : [], index = columns.indexOf(parent), active = document.querySelector(".menu-selector .active"), path = active ? active.getAttribute("data-mm-id") : null;
           if (!parent || !path || index < 0) {
             return;
           }
           parent.remove();
-          siblings = container2.querySelectorAll(":scope > [data-mm-id]");
+          siblings2 = container2.querySelectorAll(":scope > [data-mm-id]");
           menumanager2.ordering[path].splice(index, 1);
-          menumanager2.resizer.evenResize(siblings);
+          menumanager2.resizer.evenResize(siblings2);
         }
       });
     });
     dom14.delegate(body, "click", "#menu-editor .config-cog, #menu-editor .global-menu-settings", function(event, element) {
       event.preventDefault();
-      var data = {}, isRoot = element.classList.contains("global-menu-settings"), itemElement = element.closest("[data-mm-id]");
+      let data = {}, isRoot = element.classList.contains("global-menu-settings"), itemElement = element.closest("[data-mm-id]");
       if (isRoot) {
         data.settings = JSON.stringify(menumanager2.settings);
       } else {
-        var itemId = itemElement && itemElement.getAttribute("data-mm-id");
+        let itemId = itemElement && itemElement.getAttribute("data-mm-id");
         if (!menumanager2.items || typeof menumanager2.items[itemId] === "undefined") {
           menumanager2.setRoot();
         }
@@ -10681,15 +9874,15 @@
             modal7.enableCloseByOverlay();
             return;
           }
-          var container2 = modal7.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form, path;
-          var search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
+          let container2 = modal7.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form, path;
+          let search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
-          var editable = container2.querySelector("[data-title-editable]");
+          let editable = container2.querySelector("[data-title-editable]");
           if (editable) {
             editable.addEventListener("genesis:title-edit-end", function(titleEvent) {
-              var detail = titleEvent.detail || {}, title = trim3(detail.title), original = detail.original;
+              let detail = titleEvent.detail || {}, title = trim3(detail.title), original = detail.original;
               if (!title) {
                 title = trim3(original) || "Title";
                 editable.textContent = title;
@@ -10708,9 +9901,9 @@
               blocks.forEach(function(block) {
                 block.classList.add("hidden");
               });
-              var value = search2.value.toLowerCase();
+              let value = search2.value.toLowerCase();
               filters.forEach(function(filter) {
-                var text = trim3(filter.getAttribute("data-mm-filter")).toLowerCase(), found = text.startsWith(value) || text.includes(" " + value), block = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
+                let text = trim3(filter.getAttribute("data-mm-filter")).toLowerCase(), found = text.startsWith(value) || text.includes(" " + value), block = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
                 if (found && block) {
                   block.classList.remove("hidden");
                 }
@@ -10731,7 +9924,7 @@
               target.disabled = true;
               indicator5.hide(target);
               indicator5.show(target);
-              var post = Submit3(actionForm.elements, container2, { isRoot });
+              let post = Submit3(actionForm.elements, container2, { isRoot });
               if (post.invalid.length) {
                 target.disabled = false;
                 indicator5.hide(target);
@@ -10763,16 +9956,16 @@
                       menumanager2.settings = response2.body.settings;
                     }
                     if (response2.body.html) {
-                      var parent = itemElement;
+                      let parent = itemElement;
                       if (parent) {
-                        var status = response2.body.item.enabled || response2.body.item.options.particle.enabled;
+                        let status = response2.body.item.enabled || response2.body.item.options.particle.enabled;
                         parent.innerHTML = response2.body.html;
                         parent.classList.toggle("g-menu-item-disabled", status == "0");
                       }
                     }
                     menumanager2.emit("dragEnd", menumanager2.map);
                     if (target.hasAttribute("data-apply-and-save")) {
-                      var save = document.querySelector(".button-save");
+                      let save = document.querySelector(".button-save");
                       if (save) {
                         save.click();
                       }
@@ -10800,7 +9993,7 @@
   var modal8 = ui_default.modal;
   var getAjaxSuffix8 = get_ajax_suffix_default;
   var parseAjaxURI8 = get_ajax_url_default.parse;
-  var History4 = history_default;
+  var History3 = history_default;
   var guid = function() {
     if (window.crypto && typeof window.crypto.randomUUID === "function") {
       return window.crypto.randomUUID();
@@ -10811,16 +10004,16 @@
     if (window.GENESIS_PLATFORM !== "wordpress") {
       return;
     }
-    var replacement = title.replace(/[^a-z\d_-\s]/i, "_").toLowerCase(), currentURI = History4.getPageUrl(), parsedURI = new URL(currentURI, window.location.href), currentView = parsedURI.searchParams.get("view") || "";
+    let replacement = title.replace(/[^a-z\d_-\s]/i, "_").toLowerCase(), currentURI = History3.getPageUrl(), parsedURI = new URL(currentURI, window.location.href), currentView = parsedURI.searchParams.get("view") || "";
     document.querySelectorAll('[href*="/' + CSS.escape(value) + '/"]').forEach(function(link) {
       link.href = link.href.replace("/" + value + "/", "/" + replacement + "/");
     });
     currentView = currentView.replace("/" + value + "/", "/" + replacement + "/");
     parsedURI.searchParams.set("view", currentView);
-    History4.replaceState({ uuid: guid(), doNothing: true }, document.title, parsedURI.toString());
+    History3.replaceState({ uuid: guid(), doNothing: true }, document.title, parsedURI.toString());
   };
   dom15.ready(function() {
-    var body = document.body;
+    let body = document.body;
     dom15.delegate(body, "keydown", ".config-select-wrap [data-title-edit]", function(event, editButton) {
       if (event.keyCode !== 32 && event.keyCode !== 13) {
         return;
@@ -10829,15 +10022,15 @@
       editButton.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
     });
     dom15.delegate(body, "mousedown", ".config-select-wrap [data-title-edit]", function(event, editButton) {
-      var wrapper = editButton.parentElement, selectized = wrapper && wrapper.querySelector(".g-selectize-control"), select = wrapper && wrapper.querySelector("select"), editable = wrapper && wrapper.querySelector("[data-title-editable]");
+      let wrapper = editButton.parentElement, selectized = wrapper && wrapper.querySelector(".g-selectize-control"), select = wrapper && wrapper.querySelector("select"), editable = wrapper && wrapper.querySelector("[data-title-editable]");
       if (!selectized || !select || !editable) {
         return;
       }
       if (!editable.gConfEditAttached) {
         editable.gConfEditAttached = true;
         editable.addEventListener("genesis:title-edit-end", function(titleEvent) {
-          var detail = titleEvent.detail || {}, title = String(detail.title || "").trim(), original = detail.original, canceled = detail.canceled;
-          var finish = function() {
+          let detail = titleEvent.detail || {}, title = String(detail.title || "").trim(), original = detail.original, canceled = detail.canceled;
+          let finish = function() {
             selectized.style.display = "inline-block";
             editable.style.display = "none";
             editable.removeAttribute("contenteditable");
@@ -10848,9 +10041,9 @@
           }
           editButton.classList.add("disabled", "fa-spin-fast", "fa-spinner");
           editButton.classList.remove("fa-pencil");
-          var href = editable.getAttribute("data-g-config-href"), value = select.value;
+          let href = editable.getAttribute("data-g-config-href"), value = select.value;
           request9("post", parseAjaxURI8(href + getAjaxSuffix8()), { title }, function(error, response) {
-            var bodyResponse = response && response.body;
+            let bodyResponse = response && response.body;
             if (!bodyResponse || !bodyResponse.success) {
               modal8.open({
                 content: bodyResponse ? bodyResponse.html || bodyResponse.message || bodyResponse : error ? error.message : "Unable to rename outline.",
@@ -10864,7 +10057,7 @@
               editable.setAttribute("data-title-editable", original);
               editable.textContent = original;
             } else {
-              var selectize2 = select.selectizeInstance, data = selectize2 && selectize2.Options[value];
+              let selectize2 = select.selectizeInstance, data = selectize2 && selectize2.Options[value];
               if (selectize2 && data) {
                 data[selectize2.options.labelField] = title;
                 selectize2.updateOption(value, data);
@@ -10897,13 +10090,13 @@
     return element && element.nodeType ? element : element && element[0];
   };
   var elementFromHTML3 = function(html) {
-    var template = document.createElement("template");
+    let template = document.createElement("template");
     template.innerHTML = String(html || "").trim();
     return template.content.firstElementChild;
   };
   dom16.ready(function() {
-    var body = document.body;
-    var attachEditables = function(editables) {
+    let body = document.body;
+    let attachEditables = function(editables) {
       editables.forEach(function(editable) {
         if (editable.confWasAttached) {
           return;
@@ -10913,18 +10106,18 @@
           editable.style.textOverflow = "inherit";
         });
         editable.addEventListener("genesis:title-edit-end", function(event) {
-          var detail = event.detail || {}, title = detail.title, original = detail.original;
+          let detail = event.detail || {}, title = detail.title, original = detail.original;
           editable.style.textOverflow = "ellipsis";
           if (detail.canceled || title === original) {
             return;
           }
-          var href = editable.getAttribute("data-g-config-href"), method = (editable.getAttribute("data-g-config-method") || "post").toLowerCase(), parent = editable.parentElement, editButton = parent && parent.querySelector("[data-title-edit]");
+          let href = editable.getAttribute("data-g-config-href"), method = (editable.getAttribute("data-g-config-method") || "post").toLowerCase(), parent = editable.parentElement, editButton = parent && parent.querySelector("[data-title-edit]");
           indicator6.show(parent);
           if (editButton) {
             editButton.classList.add("disabled");
           }
           request10(method, parseAjaxURI9(href + getAjaxSuffix9()), { title: String(title).trim() }, function(error, response) {
-            var result = response && response.body;
+            let result = response && response.body;
             if (!result || !result.success) {
               modal9.open({
                 content: result ? result.html || result.message || result : error ? error.message : "Unable to rename outline.",
@@ -10940,9 +10133,9 @@
             } else {
               editable.setAttribute("data-title", title);
               editable.setAttribute("data-tip", title);
-              var dummy = elementFromHTML3(result.outline), card = editable.closest(".card"), id = dummy && dummy.querySelector("h4 span:last-child"), actions = dummy && dummy.querySelector(".outline-actions"), cardId = card && card.querySelector("h4 span:last-child"), cardActions = card && card.querySelector(".outline-actions");
-              if (id && cardId) {
-                cardId.innerHTML = id.innerHTML;
+              let dummy = elementFromHTML3(result.outline), card = editable.closest(".card"), id2 = dummy && dummy.querySelector("h4 span:last-child"), actions = dummy && dummy.querySelector(".outline-actions"), cardId = card && card.querySelector("h4 span:last-child"), cardActions = card && card.querySelector(".outline-actions");
+              if (id2 && cardId) {
+                cardId.innerHTML = id2.innerHTML;
               }
               if (actions && cardActions) {
                 cardActions.innerHTML = actions.innerHTML;
@@ -10968,7 +10161,7 @@
             modal9.enableCloseByOverlay();
             return;
           }
-          var container2 = modal9.element(content.elements.content), title = container2.querySelector('[name="title"]'), confirm = container2.querySelector("[data-g-outline-create-confirm]");
+          let container2 = modal9.element(content.elements.content), title = container2.querySelector('[name="title"]'), confirm = container2.querySelector("[data-g-outline-create-confirm]");
           if (!title || !confirm) {
             return;
           }
@@ -10981,7 +10174,7 @@
             confirmEvent.preventDefault();
             indicator6.hide(confirm);
             indicator6.show(confirm);
-            var checkedFrom = container2.querySelector('[name="from"]:checked'), preset = container2.querySelector('[name="preset"]'), outline = container2.querySelector('[name="outline"]'), inherit = container2.querySelector('[name="inherit"]'), data = {
+            let checkedFrom = container2.querySelector('[name="from"]:checked'), preset = container2.querySelector('[name="preset"]'), outline = container2.querySelector('[name="outline"]'), inherit = container2.querySelector('[name="inherit"]'), data = {
               title: title.value,
               from: checkedFrom ? checkedFrom.value : null,
               preset: preset ? preset.value : null,
@@ -10993,19 +10186,19 @@
                 delete data[key];
               }
             });
-            var uri = parseAjaxURI9(confirm.getAttribute("data-g-outline-create-confirm") + getAjaxSuffix9());
+            let uri = parseAjaxURI9(confirm.getAttribute("data-g-outline-create-confirm") + getAjaxSuffix9());
             request10("post", uri, data, function(error, resultResponse) {
               indicator6.hide(confirm);
-              var result = resultResponse && resultResponse.body;
+              let result = resultResponse && resultResponse.body;
               if (!result || !result.success) {
                 modal9.open({ content: result ? result.html || result.message || result : error.message });
                 return;
               }
-              var base = document.querySelector("#configurations ul li"), created = document.createElement("li");
-              if (base) {
-                created.className = base.className;
+              let base2 = document.querySelector("#configurations ul li"), created = document.createElement("li");
+              if (base2) {
+                created.className = base2.className;
                 created.innerHTML = result.outline;
-                base.after(created);
+                base2.after(created);
                 attachEditables(created.querySelectorAll("[data-title-editable]"));
               }
               toastr5.success(result.html || "Action successfully completed.", result.title || "");
@@ -11019,7 +10212,7 @@
       });
     });
     dom16.delegate(body, "change", 'input[type="radio"]#from-preset, input[type="radio"]#from-outline', function(event, element) {
-      var card = element.closest(".card");
+      let card = element.closest(".card");
       if (!card) {
         return;
       }
@@ -11029,12 +10222,12 @@
     });
     dom16.delegate(body, "click", "#configurations [data-g-config]", function(event, element) {
       event.preventDefault();
-      var mode = element.getAttribute("data-g-config"), href = element.getAttribute("data-g-config-href"), hrefConfirm = element.getAttribute("data-g-config-href-confirm"), encoded = window.btoa(href), method = (element.getAttribute("data-g-config-method") || "post").toLowerCase();
+      let mode = element.getAttribute("data-g-config"), href = element.getAttribute("data-g-config-href"), hrefConfirm = element.getAttribute("data-g-config-href-confirm"), encoded = window.btoa(href), method = (element.getAttribute("data-g-config-method") || "post").toLowerCase();
       if (mode === "delete" && !flags5.get("free:to:delete:" + encoded, false)) {
         flags5.warning({
           url: parseAjaxURI9(href + getAjaxSuffix9()),
           callback: function(response, content) {
-            var container2 = asElement7(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
+            let container2 = asElement7(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
             if (!confirm) {
               return;
             }
@@ -11070,15 +10263,15 @@
       indicator6.hide(element);
       indicator6.show(element);
       request10(method, parseAjaxURI9((hrefConfirm || href) + getAjaxSuffix9()), {}, function(error, response) {
-        var result = response && response.body;
+        let result = response && response.body;
         if (!result || !result.success) {
           modal9.open({ content: result ? result.html || result.message || result : error.message });
         } else {
-          var selector = document.querySelector("#configuration-selector"), currentOutline = selector ? selector.value : null, outlineDeleted = result.outline, reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
+          let selector = document.querySelector("#configuration-selector"), currentOutline = selector ? selector.value : null, outlineDeleted = result.outline, reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
             return link.getAttribute("href") === getAjaxURL12("configurations");
           });
           if (outlineDeleted && currentOutline === outlineDeleted && selector && selector.selectizeInstance && reload) {
-            var ids = Object.keys(selector.selectizeInstance.Options);
+            let ids = Object.keys(selector.selectizeInstance.Options);
             if (ids.length) {
               reload.href = reload.href.replace("style=" + outlineDeleted, "style=" + ids.shift());
             }
@@ -11122,12 +10315,12 @@
     return element && element.nodeType ? element : element && element[0];
   };
   var elementFromHTML4 = function(html) {
-    var template = document.createElement("template");
+    let template = document.createElement("template");
     template.innerHTML = String(html || "").trim();
     return template.content.firstElementChild;
   };
   var showError = function(error, response) {
-    var result = response && response.body;
+    let result = response && response.body;
     modal10.open({
       content: result ? result.html || result.message || result : error ? error.message : "Request failed.",
       afterOpen: function(container2) {
@@ -11139,16 +10332,16 @@
     });
   };
   dom17.ready(function() {
-    var body = document.body, warningURL = parseAjaxURI10(getAjaxURL13("confirmdeletion") + getAjaxSuffix10());
+    let body = document.body, warningURL = parseAjaxURI10(getAjaxURL13("confirmdeletion") + getAjaxSuffix10());
     Cards2.init();
-    var attachEditableValidation = function(container2) {
-      var editable = container2.querySelector("[data-title-editable]");
+    let attachEditableValidation = function(container2) {
+      let editable = container2.querySelector("[data-title-editable]");
       if (!editable || editable.gPositionModalTitleAttached) {
         return;
       }
       editable.gPositionModalTitleAttached = true;
       editable.addEventListener("genesis:title-edit-end", function(event) {
-        var title = trim4(event.detail && event.detail.title);
+        let title = trim4(event.detail && event.detail.title);
         if (!title) {
           title = trim4(event.detail && event.detail.original) || "Title";
           editable.textContent = title;
@@ -11156,7 +10349,7 @@
         }
       });
     };
-    var attachEditables = function(editables) {
+    let attachEditables = function(editables) {
       editables.forEach(function(editable) {
         if (editable.confWasAttached) {
           return;
@@ -11166,12 +10359,12 @@
           editable.style.textOverflow = "inherit";
         });
         editable.addEventListener("genesis:title-edit-end", function(event) {
-          var detail = event.detail || {};
+          let detail = event.detail || {};
           editable.style.textOverflow = "ellipsis";
           if (detail.canceled || detail.title === detail.original) {
             return;
           }
-          var href = editable.getAttribute("data-g-config-href"), type = editable.getAttribute("data-title-editable-type"), method = (editable.getAttribute("data-g-config-method") || "post").toLowerCase(), parent = editable.closest("[id]"), editButton = parent && parent.querySelector("[data-title-edit]"), data = type === "title" ? { title: trim4(detail.title) } : { key: trim4(detail.title) }, position = parent && parent.querySelector("[data-genesis-position]");
+          let href = editable.getAttribute("data-g-config-href"), type = editable.getAttribute("data-title-editable-type"), method = (editable.getAttribute("data-g-config-method") || "post").toLowerCase(), parent = editable.closest("[id]"), editButton = parent && parent.querySelector("[data-title-edit]"), data = type === "title" ? { title: trim4(detail.title) } : { key: trim4(detail.title) }, position = parent && parent.querySelector("[data-genesis-position]");
           if (!parent || !position) {
             return;
           }
@@ -11181,13 +10374,13 @@
             editButton.classList.add("disabled");
           }
           request11(method, parseAjaxURI10(href + getAjaxSuffix10()), data, function(error, response) {
-            var result = response && response.body;
+            let result = response && response.body;
             if (!result || !result.success) {
               showError(error, response);
               editable.setAttribute("data-title-editable", detail.original);
               editable.textContent = detail.original;
             } else {
-              var replacement = elementFromHTML4(result.position), replacementPosition = replacement && (replacement.matches("[id]") ? replacement : replacement.querySelector("[id]"));
+              let replacement = elementFromHTML4(result.position), replacementPosition = replacement && (replacement.matches("[id]") ? replacement : replacement.querySelector("[id]"));
               if (replacementPosition) {
                 parent.innerHTML = replacementPosition.innerHTML;
                 attachEditables(parent.querySelectorAll("[data-title-editable]"));
@@ -11203,13 +10396,13 @@
     };
     dom17.delegate(body, "click", '#positions [data-g-config], [data-g-create="position"]', function(event, element) {
       event.preventDefault();
-      var mode = element.getAttribute("data-g-config"), href = element.getAttribute("data-g-config-href"), encoded = window.btoa(href), method = (element.getAttribute("data-g-config-method") || "post").toLowerCase();
+      let mode = element.getAttribute("data-g-config"), href = element.getAttribute("data-g-config-href"), encoded = window.btoa(href), method = (element.getAttribute("data-g-config-method") || "post").toLowerCase();
       if (mode === "delete" && !flags6.get("free:to:delete:" + encoded, false)) {
         flags6.warning({
           url: warningURL,
           data: { page_type: "POSITION" },
           callback: function(response, content) {
-            var container2 = asElement8(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
+            let container2 = asElement8(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
             if (!confirm) {
               return;
             }
@@ -11245,11 +10438,11 @@
       indicator7.hide(element);
       indicator7.show(element);
       request11(method, parseAjaxURI10(href + getAjaxSuffix10()), {}, function(error, response) {
-        var result = response && response.body;
+        let result = response && response.body;
         if (!result || !result.success) {
           showError(error, response);
         } else {
-          var reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
+          let reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
             return link.getAttribute("href") === getAjaxURL13("positions");
           });
           if (reload) {
@@ -11277,14 +10470,14 @@
             modal10.enableCloseByOverlay();
             return;
           }
-          var container2 = modal10.element(content.elements.content), search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
+          let container2 = modal10.element(content.elements.content), search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
           attachEditableValidation(container2);
           if (search2 && filters.length && blocks.length) {
             search2.addEventListener("input", function() {
-              var value = search2.value.toLowerCase();
+              let value = search2.value.toLowerCase();
               blocks.forEach(function(block) {
                 block.classList.toggle("hidden", Boolean(value));
               });
@@ -11292,7 +10485,7 @@
                 return;
               }
               filters.forEach(function(filter) {
-                var text = trim4(filter.getAttribute("data-mm-filter")).toLowerCase(), match = text.startsWith(value) || text.includes(" " + value), block = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
+                let text = trim4(filter.getAttribute("data-mm-filter")).toLowerCase(), match = text.startsWith(value) || text.includes(" " + value), block = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
                 if (match && block) {
                   block.classList.remove("hidden");
                 }
@@ -11309,11 +10502,11 @@
     });
     dom17.delegate(body, "click", "#positions .item-settings", function(event, element) {
       event.preventDefault();
-      var item = element.closest("[data-pm-data]"), positionElement = element.closest("[data-genesis-position]");
+      let item = element.closest("[data-pm-data]"), positionElement = element.closest("[data-genesis-position]");
       if (!item || !positionElement) {
         return;
       }
-      var position = JSON.parse(positionElement.getAttribute("data-genesis-position"));
+      let position = JSON.parse(positionElement.getAttribute("data-genesis-position"));
       modal10.open({
         content: translate9("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
@@ -11325,7 +10518,7 @@
             modal10.enableCloseByOverlay();
             return;
           }
-          var container2 = modal10.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+          let container2 = modal10.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
           attachEditableValidation(container2);
           if (!form || !submits.length) {
             return true;
@@ -11337,7 +10530,7 @@
               indicator7.hide(target);
               indicator7.show(target);
               form = container2.querySelector("form");
-              var post = Submit4(form.elements, container2);
+              let post = Submit4(form.elements, container2);
               if (post.invalid.length) {
                 target.disabled = false;
                 indicator7.hide(target);
@@ -11346,18 +10539,18 @@
                 return;
               }
               request11(form.method, parseAjaxURI10(form.action + getAjaxSuffix10()), post.valid.join("&"), function(error, resultResponse) {
-                var result = resultResponse && resultResponse.body;
+                let result = resultResponse && resultResponse.body;
                 if (!result || !result.success) {
                   showError(error, resultResponse);
                 } else {
                   item.setAttribute("data-pm-data", JSON.stringify(result.item));
-                  var enabled = result.item.enabled || result.item.options.attributes.enabled, replacement = elementFromHTML4(result.html);
+                  let enabled = result.item.enabled || result.item.options.attributes.enabled, replacement = elementFromHTML4(result.html);
                   if (replacement) {
                     item.innerHTML = replacement.innerHTML;
                   }
                   item.classList.toggle("g-menu-item-disabled", String(enabled) === "0");
                   if (target.hasAttribute("data-apply-and-save")) {
-                    var save = document.querySelector(".button-save");
+                    let save = document.querySelector(".button-save");
                     if (save) {
                       save.click();
                     }
@@ -11376,7 +10569,7 @@
       });
     });
     dom17.delegate(body, "change", '[data-genesis-positions-assignments] input[type="hidden"]', function(event, element) {
-      var card = element.closest(".card"), wrapper = card && card.querySelector(".settings-param-wrapper");
+      let card = element.closest(".card"), wrapper = card && card.querySelector(".settings-param-wrapper");
       if (!wrapper) {
         return;
       }
@@ -11477,7 +10670,7 @@
     if (!(first instanceof Map) || !(second instanceof Map) || first.size !== second.size) {
       return false;
     }
-    for (var entry of first) {
+    for (let entry of first) {
       if (!second.has(entry[0]) || !comparator(entry[1], second.get(entry[0]))) {
         return false;
       }
@@ -11506,11 +10699,11 @@
     if (!element) {
       return;
     }
-    var icon = findIndicator(element);
+    let icon = findIndicator(element);
     element.gHadIcon = Boolean(icon);
     if (!icon) {
       if (!element.querySelector("span") && element.children.length === 0) {
-        var label = document.createElement("span");
+        let label = document.createElement("span");
         label.textContent = element.textContent;
         element.textContent = "";
         element.appendChild(label);
@@ -11527,7 +10720,7 @@
     if (!element || !element.gIndicator) {
       return;
     }
-    var icon = findIndicator(element);
+    let icon = findIndicator(element);
     if (!icon) {
       return;
     }
@@ -11541,9 +10734,9 @@
   var originals;
   var presetsCache;
   var collectFieldsValues = function(keys2) {
-    var map = /* @__PURE__ */ new Map(), defaultsElement = document.querySelector("[data-g-styles-defaults]"), defaults6 = defaultsElement ? JSON.parse(readData(defaultsElement, "g-styles-defaults")) : {}, overrides = document.querySelectorAll('input[type="checkbox"].settings-param-toggle');
+    let map = /* @__PURE__ */ new Map(), defaultsElement = document.querySelector("[data-g-styles-defaults]"), defaults6 = defaultsElement ? JSON.parse(readData(defaultsElement, "g-styles-defaults")) : {}, overrides = document.querySelectorAll('input[type="checkbox"].settings-param-toggle');
     if (overrides.length) {
-      var states = {};
+      let states = {};
       overrides.forEach(function(override) {
         states[override.id] = override.checked;
       });
@@ -11551,19 +10744,19 @@
     }
     if (keys2) {
       keys2.forEach(function(key) {
-        var field = document.querySelector('[name="' + CSS.escape(key) + '"]');
+        let field = document.querySelector('[name="' + CSS.escape(key) + '"]');
         if (field) {
           map.set(key, fieldValue(field));
         }
       });
       return map;
     }
-    var fields2 = document.querySelectorAll(".settings-block [name]");
+    let fields2 = document.querySelectorAll(".settings-block [name]");
     if (!fields2.length) {
       return false;
     }
     fields2.forEach(function(field) {
-      var key = field.getAttribute("name"), isInput = !Object.prototype.hasOwnProperty.call(defaults6, key);
+      let key = field.getAttribute("name"), isInput = !Object.prototype.hasOwnProperty.call(defaults6, key);
       if (field.type === "checkbox" && !fieldValue(field).length) {
         fieldValue(field, "0");
       }
@@ -11587,10 +10780,10 @@
     }
   };
   dom18.ready(function() {
-    var body = document.body;
+    let body = document.body;
     originals = collectFieldsValues();
     compare.single = function(event, element) {
-      var parent = element.closest(".settings-param, h4, .input-group"), target = parent ? parent.matches("h4") ? parent : parent.querySelector(".settings-param-title, .g-instancepicker-title") : null, override = parent ? parent.querySelector(".settings-param-toggle") : null, isNewWidget = false, isOverrideToggle = element.classList.contains("settings-param-toggle");
+      let parent = element.closest(".settings-param, h4, .input-group"), target = parent ? parent.matches("h4") ? parent : parent.querySelector(".settings-param-title, .g-instancepicker-title") : null, override = parent ? parent.querySelector(".settings-param-toggle") : null, isNewWidget = false, isOverrideToggle = element.classList.contains("settings-param-toggle");
       if (!parent) {
         return;
       }
@@ -11601,7 +10794,7 @@
       if (element.type === "checkbox") {
         fieldValue(element, Number(element.checked).toString());
       }
-      var name = element.getAttribute("name");
+      let name = element.getAttribute("name");
       if (originals && originals.get(name) == null) {
         originals.set(name, fieldValue(element));
         isNewWidget = true;
@@ -11628,7 +10821,7 @@
       if (!originals) {
         return;
       }
-      var current = collectFieldsValues(force ? Array.from(originals.keys()) : null), equals = mapsEqual(originals, current, function(a, b) {
+      let current = collectFieldsValues(force ? Array.from(originals.keys()) : null), equals = mapsEqual(originals, current, function(a, b) {
         if (typeof a === "string" && typeof b === "string" && a[0] === "#" && b[0] === "#") {
           return a.toLowerCase() === b.toLowerCase();
         }
@@ -11647,14 +10840,14 @@
       if (!element) {
         return;
       }
-      var field = element.querySelector("[name]"), reset = element.querySelector(".g-reset-field");
+      let field = element.querySelector("[name]"), reset = element.querySelector(".g-reset-field");
       if (!field || !reset) {
         return true;
       }
       reset.style.display = !fieldValue(field) || field.disabled ? "none" : "";
     };
     compare.presets = function(preserveServerSelection) {
-      var presets = document.querySelectorAll("[data-g-styles]");
+      let presets = document.querySelectorAll("[data-g-styles]");
       if (!presets.length) {
         return;
       }
@@ -11668,7 +10861,7 @@
         return;
       }
       presetsCache.forEach(function(presetMap, preset) {
-        var fields2 = collectFieldsValues(Array.from(presetMap.keys()));
+        let fields2 = collectFieldsValues(Array.from(presetMap.keys()));
         fields2.delete("__js__overrides");
         preset.parentElement.classList.toggle("g-preset-match", mapsEqual(fields2, presetMap, function(a, b) {
           return a == b;
@@ -11678,11 +10871,11 @@
     dom18.delegate(body, "input", '.settings-block input[name][type="text"], .settings-block textarea[name]', compare.single);
     dom18.delegate(body, "change", '.settings-block input[name][type="hidden"], .settings-block input[name][type="checkbox"], .settings-block select[name], .settings-block .selectized[name], .settings-block input[id][type="checkbox"].settings-param-toggle', compare.single);
     dom18.delegate(body, "input", ".g-urltemplate", function(event, element) {
-      var parent = element.closest(".settings-param");
+      let parent = element.closest(".settings-param");
       if (!parent || !parent.parentElement) {
         return;
       }
-      var link = Array.from(parent.parentElement.children).filter(function(sibling) {
+      let link = Array.from(parent.parentElement.children).filter(function(sibling) {
         return sibling !== parent;
       }).map(function(sibling) {
         return sibling.querySelector("[data-g-urltemplate]");
@@ -11693,7 +10886,7 @@
     });
     dom18.delegate(body, "mouseover", ".settings-param-field", compare.blanks);
     dom18.delegate(body, "click", ".g-reset-field", function(event, element) {
-      var parent = element.closest(".settings-param-field"), field = parent ? parent.querySelector("[name]") : null;
+      let parent = element.closest(".settings-param-field"), field = parent ? parent.querySelector("[name]") : null;
       if (!field || field.disabled) {
         return;
       }
@@ -11727,11 +10920,11 @@
   // platforms/common/application/utils/async-foreach.js
   var asyncForEach = function(arr, eachFn, doneFn) {
     arr = arr || [];
-    var i = -1;
-    var len = arr.length >>> 0;
+    let i = -1;
+    let len = arr.length >>> 0;
     (function next(result) {
-      var async;
-      var abort = result === false;
+      let async;
+      let abort = result === false;
       do {
         ++i;
       } while (!(i in arr) && i !== len);
@@ -11758,7 +10951,6 @@
 
   // platforms/common/application/assignments/index.js
   var { ready: ready11, delegate: delegate8 } = dom_default;
-  var frameListener3 = frameListener;
   var asyncForEach2 = async_foreach_default;
   var cache = /* @__PURE__ */ new WeakMap();
   var visible = (element) => getComputedStyle(element).display !== "none";
@@ -11882,25 +11074,6 @@
     },
     toggleStateDelegation(event, element) {
       element.disabled = element.value !== "1";
-    },
-    chromeFix() {
-      if (!Assignments.isChrome()) return;
-      document.querySelectorAll("#assignments .settings-param-wrapper, .settings-assignments .settings-param-wrapper").forEach((panel) => {
-        const maxHeight = Number.parseInt(getComputedStyle(panel).maxHeight, 10);
-        const height = panel.getBoundingClientRect().height;
-        panel.style.overflow = height >= maxHeight ? "auto" : "visible";
-        if (height >= maxHeight) {
-          let alternateWidth = 100;
-          frameListener3(panel, "scroll", () => {
-            alternateWidth = alternateWidth === 100 ? 100.01 : 100;
-            const card = panel.closest(".card");
-            if (card) card.style.width = "".concat(alternateWidth, "%");
-          });
-        }
-      });
-    },
-    isChrome() {
-      return navigator.userAgent.toLowerCase().includes("chrome");
     }
   };
   ready11(() => {
@@ -11921,7 +11094,7 @@
   var Selectize5 = selectize_default;
   var indicator8 = indicator_default;
   var request12 = request_default();
-  var History5 = history_default;
+  var History4 = history_default;
   var flags8 = flags_state_default;
   var parseAjaxURI12 = get_ajax_url_default.parse;
   var getAjaxSuffix12 = get_ajax_suffix_default;
@@ -11938,7 +11111,7 @@
       return window.crypto.randomUUID();
     }
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(character) {
-      var random = Math.floor(Math.random() * 16), value = character === "x" ? random : random & 3 | 8;
+      let random = Math.floor(Math.random() * 16), value = character === "x" ? random : random & 3 | 8;
       return value.toString(16);
     });
   };
@@ -11946,14 +11119,14 @@
     return new URL(uri, window.location.href).searchParams.get(name);
   };
   var setParam = function(uri, name, value) {
-    var url = new URL(uri, window.location.href), isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
+    let url = new URL(uri, window.location.href), isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
     url.searchParams.set(name, value);
     return isAbsolute ? url.href : url.pathname + url.search + url.hash;
   };
   var toQueryString = function(parameters) {
-    var query = new URLSearchParams();
+    let query = new URLSearchParams();
     Object.keys(parameters || {}).forEach(function(key) {
-      var values = Array.isArray(parameters[key]) ? parameters[key] : [parameters[key]];
+      let values = Array.isArray(parameters[key]) ? parameters[key] : [parameters[key]];
       values.forEach(function(value) {
         query.append(key, value);
       });
@@ -11961,7 +11134,7 @@
     return query.toString() ? "?" + query.toString() : "";
   };
   var dispatchState = function(type, element, data) {
-    var source = asElement9(element), target = type === "statechangeAfter" ? document.body : source || document.body;
+    let source = asElement9(element), target = type === "statechangeAfter" ? document.body : source || document.body;
     target.dispatchEvent(new CustomEvent(type, {
       bubbles: true,
       detail: { target: source || target, Data: data }
@@ -11973,12 +11146,14 @@
     }
     navbar.hidden = false;
     navbar.style.display = "";
-    var from = getComputedStyle(navbar).opacity;
-    var animation = navbar.animate(
+    let from = getComputedStyle(navbar).opacity;
+    let reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let animation = navbar.animate(
       [{ opacity: from }, { opacity: visible2 ? 1 : 0 }],
-      { duration: 180, easing: "ease", fill: "forwards" }
+      { duration: reducedMotion ? 0 : 180, easing: "ease", fill: "forwards" }
     );
-    animation.finished.catch(function() {
+    animation.finished.catch(function(error) {
+      if (error.name !== "AbortError") console.warn("Navbar animation failed.", error);
     }).then(function() {
       animation.cancel();
       navbar.style.opacity = "";
@@ -12002,14 +11177,14 @@
     if (!element) {
       return;
     }
-    var event = new MouseEvent("click", { bubbles: true, cancelable: true, view: window });
+    let event = new MouseEvent("click", { bubbles: true, cancelable: true, view: window });
     event.activeSpinner = asElement9(spinner);
     element.dispatchEvent(event);
   };
   var selectorChangeEvent = function() {
     document.querySelectorAll("[data-selectize-ajaxify]").forEach(function(selector) {
       Selectize5.initialize([selector]);
-      var selectize2 = Selectize5.getInstance(selector);
+      let selectize2 = Selectize5.getInstance(selector);
       if (!selectize2 || selectize2.HasChangeEvent) {
         return;
       }
@@ -12018,17 +11193,17 @@
           TMP_SELECTIZE_DISABLE = false;
           return;
         }
-        var value = selectize2.getValue(), options = selectize2.Options;
+        let value = selectize2.getValue(), options = selectize2.Options;
         if (!options[value]) {
           return;
         }
-        var flagCallback = function() {
+        let flagCallback = function() {
           flags8.off("update:pending", flagCallback);
           modal12.close();
-          var input = asElement9(selectize2.input);
+          let input = asElement9(selectize2.input);
           input.setAttribute("data-genesis-ajaxify", "");
           input.setAttribute("data-genesis-ajaxify-target", selector.getAttribute("data-genesis-ajaxify-target") || "[data-genesis-content-wrapper]");
-          var targetParent = selector.getAttribute("data-genesis-ajaxify-target-parent");
+          let targetParent = selector.getAttribute("data-genesis-ajaxify-target-parent");
           if (targetParent) {
             input.setAttribute("data-genesis-ajaxify-target-parent", targetParent);
           } else {
@@ -12040,7 +11215,7 @@
           } else {
             input.removeAttribute("data-genesis-ajaxify-params");
           }
-          var active = document.querySelector("#navbar li.active, #main-header li.active, #navbar li:nth-child(2)");
+          let active = document.querySelector("#navbar li.active, #main-header li.active, #navbar li:nth-child(2)");
           if (active) {
             indicator8.show(active);
           }
@@ -12049,7 +11224,7 @@
         if (flags8.get("pending")) {
           flags8.warning({
             callback: function(response, content) {
-              var buttons = warningButtons(content);
+              let buttons = warningButtons(content);
               if (!buttons.save) {
                 return;
               }
@@ -12060,7 +11235,7 @@
                 }
                 setButtonsDisabled([buttons.save, buttons.discard], true);
                 flags8.on("update:pending", flagCallback);
-                var save = document.querySelector(".button-save");
+                let save = document.querySelector(".button-save");
                 if (save) {
                   save.click();
                 }
@@ -12089,11 +11264,11 @@
       selectize2.HasChangeEvent = true;
     });
   };
-  History5.Adapter.bind(window, "statechange", function() {
+  History4.Adapter.bind(window, "statechange", function() {
     if (request12.running()) {
       return false;
     }
-    var body = document.body, State = History5.getState(), URI = State.url, Data = State.data || {}, sidebar2 = document.querySelector("#navbar"), mainheader = document.querySelector("#main-header"), params = "";
+    let body = document.body, State = History4.getState(), URI = State.url, Data = State.data || {}, sidebar2 = document.querySelector("#navbar"), mainheader = document.querySelector("#main-header"), params = "";
     if (Data.doNothing) {
       return true;
     }
@@ -12101,12 +11276,12 @@
       Data = storage3.get(Data.uuid);
     }
     Data.element = asElement9(Data.element);
-    var isTopNavOrMenu = false;
+    let isTopNavOrMenu = false;
     if (Data.element) {
       isTopNavOrMenu = Boolean(Data.element.closest("#main-header") || Data.element.matches(".menu-select-wrap"));
       dispatchState("statechangeBefore", Data.element, Data);
     } else {
-      var url = URI.replace(window.location.origin, "");
+      let url = URI.replace(window.location.origin, "");
       Data.element = Array.from(document.querySelectorAll("[href]")).find(function(link) {
         return link.getAttribute("href") === url;
       }) || null;
@@ -12117,7 +11292,7 @@
         item.classList.remove("active");
       });
       if (Data.element.closest("#navbar")) {
-        var sideItem = Data.element.closest("li");
+        let sideItem = Data.element.closest("li");
         if (sideItem) {
           sideItem.classList.add("active");
         }
@@ -12128,7 +11303,7 @@
         item.classList.remove("active");
       });
       if (Data.element.closest("#main-header")) {
-        var headerItem = Data.element.closest("li");
+        let headerItem = Data.element.closest("li");
         if (headerItem) {
           headerItem.classList.add("active");
         }
@@ -12144,12 +11319,12 @@
       modal12.closeAll();
     }
     request12.url(URI + params).data(Data.extras || {}).method(Data.extras ? "post" : "get").send(function(error, response) {
-      var result = response && response.body;
+      let result = response && response.body;
       if (!result || !result.success) {
         if (!ERROR) {
           ERROR = true;
           modal12.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
-          History5.back();
+          History4.back();
         } else {
           ERROR = false;
         }
@@ -12158,9 +11333,9 @@
         }
         return false;
       }
-      var target = Data.parent && Data.element ? Data.element.closest(Data.parent) : Data.target ? document.querySelector(Data.target) : null, destination = target || document.querySelector("[data-genesis-content]") || body;
+      let target = Data.parent && Data.element ? Data.element.closest(Data.parent) : Data.target ? document.querySelector(Data.target) : null, destination = target || document.querySelector("[data-genesis-content]") || body;
       destination.innerHTML = result.html || result;
-      var fader = destination.matches("[data-genesis-content]") ? destination : destination.querySelector("[data-genesis-content]");
+      let fader = destination.matches("[data-genesis-content]") ? destination : destination.querySelector("[data-genesis-content]");
       if (fader) {
         fader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: "ease" });
         if (isTopNavOrMenu && sidebar2) {
@@ -12175,7 +11350,7 @@
       if (Data.element) {
         dispatchState("statechangeAfter", Data.element, Data);
       }
-      var spinner = Data.event && Data.event.activeSpinner || Data.element;
+      let spinner = Data.event && Data.event.activeSpinner || Data.element;
       if (spinner) {
         indicator8.hide(spinner);
       }
@@ -12186,35 +11361,35 @@
     });
   });
   dom19.ready(function() {
-    var body = document.body;
+    let body = document.body;
     if (window.GENESIS_AJAX_NONCE) {
-      var currentURI = History5.getPageUrl(), currentNonce;
+      let currentURI = History4.getPageUrl(), currentNonce;
       if (window.GENESIS_PLATFORM === "wordpress") {
         currentNonce = getParam(currentURI, "_wpnonce");
         if (currentNonce !== window.GENESIS_AJAX_NONCE) {
           currentURI = setParam(currentURI, "_wpnonce", window.GENESIS_AJAX_NONCE);
-          History5.replaceState({ uuid: guid2(), doNothing: true }, document.title, currentURI);
+          History4.replaceState({ uuid: guid2(), doNothing: true }, document.title, currentURI);
         }
       } else if (window.GENESIS_PLATFORM === "grav") {
         currentNonce = getParam(currentURI, "nonce");
         if (currentNonce !== window.GENESIS_AJAX_NONCE) {
           currentURI = setParam(currentURI, "nonce", window.GENESIS_AJAX_NONCE);
-          History5.replaceState({ uuid: guid2(), doNothing: true }, document.title, currentURI);
+          History4.replaceState({ uuid: guid2(), doNothing: true }, document.title, currentURI);
         }
       }
     }
     dom19.delegate(body, "click", ".button-back-to-conf", function(event, element) {
       event.preventDefault();
-      var confSelector = document.querySelector("#configuration-selector"), outlineDeleted = body.outlineDeleted, currentOutline = confSelector && confSelector.value, navbar = document.querySelector("#navbar");
+      let confSelector = document.querySelector("#configuration-selector"), outlineDeleted = body.outlineDeleted, currentOutline = confSelector && confSelector.value, navbar = document.querySelector("#navbar");
       if (!confSelector || !navbar) {
         return;
       }
       ConfNavIndex = ConfNavIndex === -1 ? 1 : ConfNavIndex;
-      var item = navbar.querySelector("li:nth-child(" + (ConfNavIndex + 1) + ") [data-genesis-ajaxify]");
+      let item = navbar.querySelector("li:nth-child(" + (ConfNavIndex + 1) + ") [data-genesis-ajaxify]");
       if (!item) {
         return;
       }
-      var continueBack = function() {
+      let continueBack = function() {
         flags8.off("update:pending", continueBack);
         modal12.close();
         item.click();
@@ -12225,7 +11400,7 @@
       if (flags8.get("pending")) {
         flags8.warning({
           callback: function(response, content) {
-            var buttons = warningButtons(content);
+            let buttons = warningButtons(content);
             if (!buttons.save) {
               return;
             }
@@ -12236,7 +11411,7 @@
               }
               setButtonsDisabled([buttons.save, buttons.discard], true);
               flags8.on("update:pending", continueBack);
-              var save = document.querySelector(".button-save");
+              let save = document.querySelector(".button-save");
               if (save) {
                 save.click();
               }
@@ -12258,10 +11433,10 @@
       }
       indicator8.show(element);
       if (outlineDeleted == currentOutline) {
-        var selectize2 = Selectize5.getInstance(confSelector), ids = selectize2 ? Object.keys(selectize2.Options) : [], id = ids.shift();
+        let selectize2 = Selectize5.getInstance(confSelector), ids = selectize2 ? Object.keys(selectize2.Options) : [], id2 = ids.shift();
         body.outlineDeleted = null;
-        if (id) {
-          item.href = item.href.replace("/" + outlineDeleted + "/", "/" + id + "/").replace("style=" + outlineDeleted, "style=" + id);
+        if (id2) {
+          item.href = item.href.replace("/" + outlineDeleted + "/", "/" + id2 + "/").replace("style=" + outlineDeleted, "style=" + id2);
         }
       }
       item.click();
@@ -12269,7 +11444,7 @@
       showNavbar(navbar, true);
     });
     dom19.delegate(body, "click", "#navbar a[data-genesis-ajaxify]", function(event, element) {
-      var links = document.querySelectorAll("#navbar li a[data-genesis-ajaxify]");
+      let links = document.querySelectorAll("#navbar li a[data-genesis-ajaxify]");
       ConfNavIndex = Array.from(links).indexOf(element) + 1;
     });
     dom19.delegate(body, "click", "[data-genesis-ajaxify]", function(event, element) {
@@ -12277,7 +11452,7 @@
         return;
       }
       event.preventDefault();
-      var replay = function() {
+      let replay = function() {
         flags8.off("update:pending", replay);
         modal12.close();
         element.click();
@@ -12285,7 +11460,7 @@
       if (flags8.get("pending") && !element.matches("a.menu-item") && !element.closest("[data-menu-items]")) {
         flags8.warning({
           callback: function(response, content) {
-            var buttons = warningButtons(content);
+            let buttons = warningButtons(content);
             if (!buttons.save) {
               return;
             }
@@ -12296,7 +11471,7 @@
               }
               setButtonsDisabled([buttons.save, buttons.discard], true);
               flags8.on("update:pending", replay);
-              var save = document.querySelector(".button-save");
+              let save = document.querySelector(".button-save");
               if (save) {
                 save.click();
               }
@@ -12317,11 +11492,11 @@
         return;
       }
       indicator8.show(element);
-      var rawData = element.getAttribute("data-genesis-ajaxify"), target = element.getAttribute("data-genesis-ajaxify-target"), parent = element.getAttribute("data-genesis-ajaxify-target-parent"), url = element.getAttribute("href") || element.getAttribute("data-genesis-ajaxify-href"), params = element.getAttribute("data-genesis-ajaxify-params") || false, title = element.getAttribute("title") || document.title, data = rawData ? JSON.parse(rawData) : { parsed: false };
+      let rawData = element.getAttribute("data-genesis-ajaxify"), target = element.getAttribute("data-genesis-ajaxify-target"), parent = element.getAttribute("data-genesis-ajaxify-target-parent"), url = element.getAttribute("href") || element.getAttribute("data-genesis-ajaxify-href"), params = element.getAttribute("data-genesis-ajaxify-params") || false, title = element.getAttribute("title") || document.title, data = rawData ? JSON.parse(rawData) : { parsed: false };
       if (data) {
-        var uuid = guid2(), extras;
+        let uuid = guid2(), extras;
         if (element.hasAttribute("data-mm-id") || element.closest("[data-mm-id]")) {
-          var menuSelect = document.querySelector("select.menu-select-wrap"), manager = mm.menumanager;
+          let menuSelect = document.querySelector("select.menu-select-wrap"), manager = mm.menumanager;
           if (manager) {
             extras = {
               menutype: menuSelect ? menuSelect.value : "",
@@ -12341,13 +11516,13 @@
         }));
         data = { uuid };
       }
-      History5.pushState(data, title, url);
-      var navbar = element.closest("#navbar, #main-header");
+      History4.pushState(data, title, url);
+      let navbar = element.closest("#navbar, #main-header");
       if (navbar) {
         document.querySelectorAll("#navbar .active, #main-header .active").forEach(function(active) {
           active.classList.remove("active");
         });
-        var item = element.closest("li");
+        let item = element.closest("li");
         if (item) {
           item.classList.add("active");
         }
@@ -12408,12 +11583,11 @@
   var clamp4 = function(value, min, max) {
     return Math.min(Math.max(value, min), max);
   };
-  var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
   var supportsPointerEvents = typeof window.PointerEvent === "function";
   var MOUSEDOWN = supportsPointerEvents ? ["pointerdown"] : ["mousedown", "touchstart"];
   var MOUSEMOVE = supportsPointerEvents ? ["pointermove"] : ["mousemove", "touchmove"];
   var MOUSEUP = supportsPointerEvents ? ["pointerup", "pointercancel"] : ["mouseup", "touchend", "touchcancel"];
-  var FOCUSIN = isFirefox ? "focus" : "focusin";
+  var FOCUSIN = "focusin";
   var ColorPicker = class {
     constructor(options) {
       this.options = Object.assign({}, options || {});
@@ -12429,20 +11603,20 @@
       return this._bound[method];
     }
     on(name, callback) {
-      var listeners = this._events.get(name) || [];
+      let listeners = this._events.get(name) || [];
       listeners.push(callback);
       this._events.set(name, listeners);
       return this;
     }
     emit(name) {
-      var args = Array.prototype.slice.call(arguments, 1);
+      let args = Array.prototype.slice.call(arguments, 1);
       (this._events.get(name) || []).slice().forEach(function(callback) {
         callback.apply(this, args);
       }, this);
       return this;
     }
     attach() {
-      var body = dom20("body");
+      let body = dom20("body");
       MOUSEDOWN.forEach(function(mousedown) {
         body.delegate(mousedown, "[data-genesis-container] .g-colorpicker i", this.bound("iconClick"));
       }, this);
@@ -12472,7 +11646,7 @@
       }).bind(this));
     }
     show(event, element) {
-      var body = dom20("body");
+      let body = dom20("body");
       if (!this.built) {
         this.build();
       }
@@ -12492,7 +11666,7 @@
       }, this);
     }
     hide() {
-      var body = dom20("body");
+      let body = dom20("body");
       if (!this.built) {
         return;
       }
@@ -12511,7 +11685,7 @@
     }
     iconClick(event, element) {
       event.preventDefault();
-      var input = dom20(element).sibling("input");
+      let input = dom20(element).sibling("input");
       input[0].focus();
       this.show(event, input);
     }
@@ -12523,7 +11697,7 @@
       this.move(this.target, event);
     }
     bodyClick(event) {
-      var target = event.target instanceof Element ? event.target : null;
+      let target = event.target instanceof Element ? event.target : null;
       if (!target || !target.closest(".cp-wrapper") && !target.closest(".g-colorpicker")) {
         this.hide();
       }
@@ -12537,7 +11711,7 @@
       this.target = null;
     }
     move(target, event) {
-      var input = this.element, picker = target.hasClass("cp-grid") ? this.gridPicker : target.hasClass("cp-opacity-slider") ? this.opacityPicker : this.sliderPicker, clientRect = target[0].getBoundingClientRect(), offsetX = clientRect.left + window.scrollX, offsetY = clientRect.top + window.scrollY, x = Math.round((event ? event.pageX : 0) - offsetX), y = Math.round((event ? event.pageY : 0) - offsetY), wx, wy, r, phi;
+      let input = this.element, picker = target.hasClass("cp-grid") ? this.gridPicker : target.hasClass("cp-opacity-slider") ? this.opacityPicker : this.sliderPicker, clientRect = target[0].getBoundingClientRect(), offsetX = clientRect.left + window.scrollX, offsetY = clientRect.top + window.scrollY, x = Math.round((event ? event.pageX : 0) - offsetX), y = Math.round((event ? event.pageY : 0) - offsetY), wx, wy, r, phi;
       if (event && event.changedTouches) {
         x = (event.changedTouches ? event.changedTouches[0].pageX : 0) - offsetX;
         y = (event.changedTouches ? event.changedTouches[0].pageY : 0) - offsetY;
@@ -12585,7 +11759,7 @@
       this.gridInner = zen7("div.cp-grid-inner").bottom(this.grid);
       this.gridPicker = zen7("div.cp-picker").bottom(this.grid);
       zen7("div").bottom(this.gridPicker);
-      var tabs = zen7("div.cp-tabs").bottom(this.wrapper);
+      let tabs = zen7("div.cp-tabs").bottom(this.wrapper);
       this.tabs = {
         hue: zen7("div.cp-tab-hue.active").text("HUE").bottom(tabs),
         brightness: zen7("div.cp-tab-brightness").text("BRI").bottom(tabs),
@@ -12597,12 +11771,12 @@
         tabs.delegate(mousedown, "> div", (function(event, element) {
           if (element == this.tabs.transparent) {
             this.opacity = 0;
-            var sliderHeight = this.opacitySlider.position().height;
+            let sliderHeight = this.opacitySlider.position().height;
             this.opacityPicker.style({ "top": clamp4(sliderHeight - sliderHeight * this.opacity, 0, sliderHeight) });
             this.move(this.opacitySlider, { manualOpacity: true });
             return;
           }
-          var active = tabs.find(".active"), mode = active.attribute("class").replace(/\s|active|cp-tab-/g, ""), newMode = element.attribute("class").replace(/\s|active|cp-tab-/g, "");
+          let active = tabs.find(".active"), mode = active.attribute("class").replace(/\s|active|cp-tab-/g, ""), newMode = element.attribute("class").replace(/\s|active|cp-tab-/g, "");
           this.wrapper.removeClass("cp-mode-" + mode).addClass("cp-mode-" + newMode);
           active.removeClass("active");
           element.addClass("active");
@@ -12616,7 +11790,7 @@
     }
     updateFromInput(dontFireEvent, element) {
       element = dom20(element) || this.element;
-      var value = element.value(), opacity = value.replace(/\s/g, "").match(/^rgba?\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},(.+)\)/), hex, hsb;
+      let value = element.value(), opacity = value.replace(/\s/g, "").match(/^rgba?\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},(.+)\)/), hex, hsb;
       value = rgbstr2hex(value) || value;
       opacity = opacity ? clamp4(opacity[1], 0, 1) : 1;
       if (!(hex = parseHex(value))) {
@@ -12625,9 +11799,9 @@
       hsb = hex2hsb(hex);
       if (this.built) {
         this.opacity = Math.max(opacity, 0);
-        var sliderHeight = this.opacitySlider.position().height;
+        let sliderHeight = this.opacitySlider.position().height;
         this.opacityPicker.style({ "top": clamp4(sliderHeight - sliderHeight * this.opacity, 0, sliderHeight) });
-        var gridHeight = this.grid.position().height, gridWidth = this.grid.position().width, r, phi, x, y;
+        let gridHeight = this.grid.position().height, gridWidth = this.grid.position().width, r, phi, x, y;
         sliderHeight = this.slider.position().height;
         switch (this.mode) {
           case "wheel":
@@ -12713,8 +11887,8 @@
       this.emit("change", element, hex, opacity);
     }
     updateFromPicker(input, target) {
-      var getCoords = function(picker, container2) {
-        var left, top;
+      let getCoords = function(picker, container2) {
+        let left, top;
         if (!picker.length || !container2) return null;
         left = picker[0].getBoundingClientRect().left;
         top = picker[0].getBoundingClientRect().top;
@@ -12723,8 +11897,8 @@
           y: top - container2[0].getBoundingClientRect().top + picker[0].offsetHeight / 2
         };
       };
-      var hex, hue, saturation, brightness, x, y, r, phi, grid = this.wrapper.find(".cp-grid"), slider = this.wrapper.find(".cp-slider"), opacitySlider = this.wrapper.find(".cp-opacity-slider"), gridPicker = this.gridPicker, sliderPicker = this.sliderPicker, opacityPicker = this.opacityPicker, gridPos = getCoords(gridPicker, grid), sliderPos = getCoords(sliderPicker, slider), opacityPos = getCoords(opacityPicker, opacitySlider), gridWidth = grid[0].getBoundingClientRect().width, gridHeight = grid[0].getBoundingClientRect().height, sliderHeight = slider[0].getBoundingClientRect().height, opacitySliderHeight = opacitySlider[0].getBoundingClientRect().height;
-      var value = this.element.value();
+      let hex, hue, saturation, brightness, x, y, r, phi, grid = this.wrapper.find(".cp-grid"), slider = this.wrapper.find(".cp-slider"), opacitySlider = this.wrapper.find(".cp-opacity-slider"), gridPicker = this.gridPicker, sliderPicker = this.sliderPicker, opacityPicker = this.opacityPicker, gridPos = getCoords(gridPicker, grid), sliderPos = getCoords(sliderPicker, slider), opacityPos = getCoords(opacityPicker, opacitySlider), gridWidth = grid[0].getBoundingClientRect().width, gridHeight = grid[0].getBoundingClientRect().height, sliderHeight = slider[0].getBoundingClientRect().height, opacitySliderHeight = opacitySlider[0].getBoundingClientRect().height;
+      let value = this.element.value();
       value = rgbstr2hex(value) || value;
       if (!(hex = parseHex(value))) {
         hex = "#ffffff";
@@ -12820,7 +11994,7 @@
       this.emit("change", this.element, hex, this.opacity);
     }
     reposition() {
-      var offset = this.element[0].getBoundingClientRect(), ct = dom20("[data-genesis-container]")[0].getBoundingClientRect();
+      let offset = this.element[0].getBoundingClientRect(), ct = dom20("[data-genesis-container]")[0].getBoundingClientRect();
       this.wrapper.style({
         top: offset.top + offset.height - ct.top,
         left: offset.left - ct.left
@@ -12830,7 +12004,7 @@
       if (this.opacity == 1) {
         return hex;
       }
-      var rgb = hex2rgb(hex);
+      let rgb = hex2rgb(hex);
       return "rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", " + this.opacity + ")";
     }
   };
@@ -12843,16 +12017,16 @@
     return "#" + string.toLowerCase();
   };
   var hsb2rgb = function(hsb) {
-    var rgb = {};
-    var h = Math.round(hsb.h);
-    var s = Math.round(hsb.s * 255 / 100);
-    var v = Math.round(hsb.b * 255 / 100);
+    let rgb = {};
+    let h = Math.round(hsb.h);
+    let s = Math.round(hsb.s * 255 / 100);
+    let v = Math.round(hsb.b * 255 / 100);
     if (s === 0) {
       rgb.r = rgb.g = rgb.b = v;
     } else {
-      var t1 = v;
-      var t2 = (255 - s) * v / 255;
-      var t3 = (t1 - t2) * (h % 60) / 60;
+      let t1 = v;
+      let t2 = (255 - s) * v / 255;
+      let t3 = (t1 - t2) * (h % 60) / 60;
       if (h === 360) h = 0;
       if (h < 60) {
         rgb.r = t1;
@@ -12891,7 +12065,7 @@
     };
   };
   var rgb2hex = function(rgb) {
-    var hex = [
+    let hex = [
       rgb.r.toString(16),
       rgb.g.toString(16),
       rgb.b.toString(16)
@@ -12909,19 +12083,19 @@
     return rgb2hex(hsb2rgb(hsb));
   };
   var hex2hsb = function(hex) {
-    var hsb = rgb2hsb(hex2rgb(hex));
+    let hsb = rgb2hsb(hex2rgb(hex));
     if (hsb.s === 0) hsb.h = 360;
     return hsb;
   };
   var rgb2hsb = function(rgb) {
-    var hsb = {
+    let hsb = {
       h: 0,
       s: 0,
       b: 0
     };
-    var min = Math.min(rgb.r, rgb.g, rgb.b);
-    var max = Math.max(rgb.r, rgb.g, rgb.b);
-    var delta = max - min;
+    let min = Math.min(rgb.r, rgb.g, rgb.b);
+    let max = Math.max(rgb.r, rgb.g, rgb.b);
+    let delta = max - min;
     hsb.b = max;
     hsb.s = max !== 0 ? 255 * delta / max : 0;
     if (hsb.s !== 0) {
@@ -12954,17 +12128,17 @@
     };
   };
   ready13(function() {
-    var x = new ColorPicker(), body = dom20("body");
+    let x = new ColorPicker(), body = dom20("body");
     x.on("change", function(element, hex, opacity) {
       clearTimeout(this.timer);
-      var rgb = hex2rgb(hex), yiq = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3 >= 128 ? "dark" : "light", check = yiq == "dark" || (!opacity || opacity < 0.35);
+      let rgb = hex2rgb(hex), yiq = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3 >= 128 ? "dark" : "light", check = yiq == "dark" || (!opacity || opacity < 0.35);
       if (opacity < 1) {
-        var str = "rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", " + opacity + ")";
+        let str = "rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", " + opacity + ")";
         element.style({ backgroundColor: str });
       } else {
         element.style({ backgroundColor: hex });
       }
-      var colorpicker = element[0] && element[0].closest(".g-colorpicker");
+      let colorpicker = element[0] && element[0].closest(".g-colorpicker");
       if (colorpicker) {
         dom20(colorpicker)[!check ? "addClass" : "removeClass"]("light-text");
       }
@@ -12993,7 +12167,7 @@
   var zen8 = createElement;
   var storage4 = /* @__PURE__ */ new WeakMap();
   var ready14 = dom_default.ready;
-  var frameListener4 = frameListener;
+  var frameListener3 = frameListener;
   var getAjaxSuffix13 = get_ajax_suffix_default;
   var parseAjaxURI13 = get_ajax_url_default.parse;
   var getAjaxURL15 = get_ajax_url_default.global;
@@ -13059,12 +12233,11 @@
     variants.forEach((variant) => {
       const loaded = fontVariantLoads.get(variant.key);
       if (!loaded) return;
-      loaded.then(() => fontactive(variant.family, variant.fvd)).catch(() => {
-      });
+      loaded.then(() => fontactive(variant.family, variant.fvd)).catch((error) => console.warn("Unable to load font variant ".concat(variant.family, "."), error));
     });
   };
   var removeValue = function(array, value) {
-    var index;
+    let index;
     while ((index = array.indexOf(value)) !== -1) {
       array.splice(index, 1);
     }
@@ -13080,10 +12253,6 @@
     return String(value).replace(/-/g, " ").replace(/\b[a-z]/g, function(letter) {
       return letter.toUpperCase();
     });
-  };
-  var isIE2 = function() {
-    var ua = window.navigator.userAgent;
-    return ua.indexOf("MSIE ") > 0 || ua.indexOf("Trident/") > 0 || ua.indexOf("Edge/") > 0 || false;
   };
   var Fonts = class {
     constructor() {
@@ -13113,7 +12282,7 @@
       };
     }
     open(event, element) {
-      var data = element.data("genesis-fontpicker");
+      let data = element.data("genesis-fontpicker");
       if (!data) {
         throw new Error("No fontpicker data found");
       }
@@ -13124,7 +12293,7 @@
         className: "genesis-dialog-theme-default genesis-modal-fonts",
         remote: parseAjaxURI13(getAjaxURL15("fontpicker") + getAjaxSuffix13()),
         remoteLoaded: (function(response, content) {
-          var container2 = content.elements.content;
+          let container2 = content.elements.content;
           this.attachEvents(container2);
           this.updateCategories(container2);
           this.search();
@@ -13144,13 +12313,13 @@
           clearTimeout(this.throttle);
           return;
         }
-        var viewport = container2.find("ul.g-fonts-list") || container2, elements = inViewport(viewport, "> li:not(.g-font-hide)", 550 * (isIE2() ? 2 : 7)), list = [];
+        let viewport = container2.find("ul.g-fonts-list") || container2, elements = inViewport(viewport, "> li:not(.g-font-hide)", 550 * 7), list = [];
         if (!elements) {
           return;
         }
         dom21(elements).forEach(function(element) {
           element = dom21(element);
-          var dataFont = element.data("font"), variant = element.data("variant");
+          let dataFont = element.data("font"), variant = element.data("variant");
           if (!this.loadedFonts.includes(dataFont) && variant) {
             list.push(dataFont + (variant != "regular" ? ":" + variant : ""));
           } else {
@@ -13178,7 +12347,7 @@
       if (!selected) {
         return false;
       }
-      var baseVariant = selected.element.data("variant");
+      let baseVariant = selected.element.data("variant");
       selected.element.removeClass("selected");
       selected.element.search("input[type=checkbox]").checked(false);
       selected.element.search("[data-font]").addClass("g-variant-hide");
@@ -13187,9 +12356,9 @@
       selected.selected = [];
     }
     selectFromValue() {
-      var value = this.field.value(), name, variants, subset, isLocal = false;
+      let value = this.field.value(), name, variants, subset, isLocal = false;
       if (!value.match("family=")) {
-        var locals = dom21('[data-category="local-fonts"][data-font]') || [], intersect;
+        let locals = dom21('[data-category="local-fonts"][data-font]') || [], intersect;
         locals = locals.map(function(l) {
           return dom21(l).data("font");
         });
@@ -13203,12 +12372,12 @@
         isLocal = true;
         name = intersect.shift();
       } else {
-        var split = value.split("&"), family = split[0], split2 = family.split(":");
+        let split = value.split("&"), family = split[0], split2 = family.split(":");
         name = split2[0].replace("family=", "").replace(/\+/g, " ");
         variants = split2[1] ? split2[1].split(",") : ["regular"];
         subset = split[1] ? split[1].replace("subset=", "").split(",") : ["latin"];
       }
-      var noConflict = isLocal ? '[data-category="local-fonts"]' : ':not([data-category="local-fonts"])', element = dom21('ul.g-fonts-list > [data-font="' + name + '"]' + noConflict);
+      let noConflict = isLocal ? '[data-category="local-fonts"]' : ':not([data-category="local-fonts"])', element = dom21('ul.g-fonts-list > [data-font="' + name + '"]' + noConflict);
       variants = variants || element.data("variants").split(",") || ["regular"];
       if (variants.includes("400")) {
         removeValue(variants, "400");
@@ -13237,9 +12406,9 @@
           variant.removeClass("g-variant-hide");
         }
       }, this);
-      var charsetSelected = element.find(".font-charsets-selected");
+      let charsetSelected = element.find(".font-charsets-selected");
       if (charsetSelected) {
-        var subsetsLength = element.data("subsets").split(",").length;
+        let subsetsLength = element.data("subsets").split(",").length;
         charsetSelected.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">' + subset.length + " of " + subsetsLength + "</span> selected)");
       }
       if (!isLocal) {
@@ -13256,12 +12425,12 @@
       }
     }
     select(element, variant) {
-      var baseVariant = element.data("variant"), isLocal = !baseVariant;
+      let baseVariant = element.data("variant"), isLocal = !baseVariant;
       if (!this.selected || this.selected.element != element) {
         if (variant && this.selected) {
-          var charsetSelected = this.selected.element.find(".font-charsets-selected");
+          let charsetSelected = this.selected.element.find(".font-charsets-selected");
           if (charsetSelected) {
-            var subsetsLength = element.data("subsets").split(",").length;
+            let subsetsLength = element.data("subsets").split(",").length;
             charsetSelected.html('(<i class="fa fa-fw fa-check-square-o" aria-hidden="true"></i>  <span class="font-charsets-details">1 of ' + subsetsLength + "</span> selected)");
           }
         }
@@ -13282,12 +12451,12 @@
         this.toggleExpansion();
       }
       if (variant || isLocal) {
-        var selected = dom21('ul.g-fonts-list > [data-font]:not([data-font="' + this.selected.font + '"]) input[type="checkbox"]:checked');
+        let selected = dom21('ul.g-fonts-list > [data-font]:not([data-font="' + this.selected.font + '"]) input[type="checkbox"]:checked');
         if (selected) {
           selected.checked(false);
           selected.parent("[data-variants]").removeClass("font-selected");
         }
-        var checkbox = this.selected.element.find('input[type="checkbox"][value="' + (isLocal ? this.selected.font : variant) + '"]'), checked2 = checkbox.checked();
+        let checkbox = this.selected.element.find('input[type="checkbox"][value="' + (isLocal ? this.selected.font : variant) + '"]'), checked2 = checkbox.checked();
         if (checkbox) {
           checkbox.checked(!checked2);
         }
@@ -13312,12 +12481,12 @@
         return;
       }
       if (!this.selected.expanded) {
-        var variants = this.selected.element.data("variants"), variant;
+        let variants = this.selected.element.data("variants"), variant;
         if (variants.split(",").length > 1) {
           this.selected.element.search("[data-font]").removeClass("g-variant-hide");
           if (!this.selected.loaded) {
             loadGoogleFonts([this.selected.font.replace(/\s/g, "+") + ":" + variants], (function(family, fvd) {
-              var style = this.fvdToStyle(family, fvd), search2 = style.fontWeight;
+              let style = this.fvdToStyle(family, fvd), search2 = style.fontWeight;
               if (search2 == "400") {
                 search2 = style.fontStyle == "normal" ? "regular" : "italic";
               } else if (style.fontStyle == "italic") {
@@ -13329,7 +12498,7 @@
           }
         }
       } else {
-        var exclude = ':not([data-variant="' + this.selected.variants.join('"]):not([data-variant="') + '"])';
+        let exclude = ':not([data-variant="' + this.selected.variants.join('"]):not([data-variant="') + '"])';
         exclude = this.selected.element.search("[data-font]" + exclude);
         if (exclude) {
           exclude.addClass("g-variant-hide");
@@ -13339,7 +12508,7 @@
     }
     toggle(event, element) {
       element = dom21(element);
-      var target = dom21(event.target);
+      let target = dom21(event.target);
       if (target.attribute("type") == "checkbox") {
         target.checked(!target.checked());
       }
@@ -13347,7 +12516,7 @@
       return false;
     }
     updateSelection() {
-      var preview = dom21(".g-particles-footer .font-selected"), selected, variants;
+      let preview = dom21(".g-particles-footer .font-selected"), selected, variants;
       if (!preview) {
         return;
       }
@@ -13362,19 +12531,19 @@
       preview.html("<strong>" + this.selected.font + "</strong> " + variants);
     }
     updateTotal() {
-      var totals = dom21(".g-particles-header .particle-search-total"), count = dom21(".g-fonts-list > [data-font]:not(.g-font-hide)");
+      let totals = dom21(".g-particles-header .particle-search-total"), count = dom21(".g-fonts-list > [data-font]:not(.g-font-hide)");
       totals.text(count ? count.length : 0);
     }
     updateCategories(container2) {
-      var categories = container2.find("[data-font-categories]");
+      let categories = container2.find("[data-font-categories]");
       if (!categories) {
         return;
       }
       this.filters.categories = categories.data("font-categories").split(",");
     }
     attachEvents(container2) {
-      var header = container2.find(".g-particles-header"), list = container2.find(".g-fonts-list"), search2 = header.find("input.font-search"), preview = header.find("input.font-preview");
-      frameListener4(list, "scroll", this.scroll.bind(this, list));
+      let header = container2.find(".g-particles-header"), list = container2.find(".g-fonts-list"), search2 = header.find("input.font-search"), preview = header.find("input.font-preview");
+      frameListener3(list, "scroll", this.scroll.bind(this, list));
       container2.delegate("click", ".g-fonts-list li[data-font]", this.toggle.bind(this));
       if (search2) {
         search2.on("keyup", this.search.bind(this, search2));
@@ -13389,16 +12558,16 @@
     attachCharsets(container2) {
       container2.delegate("mouseover", ".font-charsets-selected", (function(event, element) {
         if (!element.PopoverDefined) {
-          var popover = element.getPopover({
+          let popover = element.getPopover({
             placement: "auto",
             width: "200",
             trigger: "mouse",
             style: "font-categories, above-modal"
           });
           element.on("beforeshow.popover", (function(popover2) {
-            var subsets = element.parent("[data-subsets]").data("subsets").split(","), content = popover2.$target.find(".genesis-popover-content"), checked2;
+            let subsets = element.parent("[data-subsets]").data("subsets").split(","), content = popover2.$target.find(".genesis-popover-content"), checked2;
             content[0].replaceChildren();
-            var div, current;
+            let div, current;
             subsets.forEach(function(cs) {
               current = this.selected.charsets.includes(cs) ? cs == "latin" ? "checked disabled" : "checked" : "";
               zen8("div").html('<label><input type="checkbox" ' + current + ' value="' + cs + '"/> ' + labelize(cs.replace("ext", "extended")) + "</label>").bottom(content);
@@ -13421,14 +12590,14 @@
     attachLocalVariants(container2) {
       container2.delegate("mouseover", ".g-font-variants-list", (function(event, element) {
         if (!element.PopoverDefined) {
-          var popover = element.getPopover({
+          let popover = element.getPopover({
             placement: "auto",
             width: "200",
             trigger: "mouse",
             style: "font-categories, above-modal"
           });
           element.on("beforeshow.popover", (function(popover2) {
-            var content = popover2.$target.find(".genesis-popover-content"), variants = element.parent("[data-variants]").data("variants").split(",");
+            let content = popover2.$target.find(".genesis-popover-content"), variants = element.parent("[data-variants]").data("variants").split(",");
             content[0].replaceChildren();
             asyncForEach3(variants, (function(variant) {
               variant = variant == "400" ? "regular" : variant == "400italic" ? "italic" : variant + "";
@@ -13440,14 +12609,14 @@
       }).bind(this));
     }
     attachFooter(container2) {
-      var footer = container2.find(".g-particles-footer"), select = footer.find("button.button-primary"), categories = footer.find(".font-category"), subsets = footer.find(".font-subsets"), current;
+      let footer = container2.find(".g-particles-footer"), select = footer.find("button.button-primary"), categories = footer.find(".font-category"), subsets = footer.find(".font-subsets"), current;
       select.on("click", (function() {
         if (!dom21('ul.g-fonts-list > [data-font] input[type="checkbox"]:checked')) {
           this.field.value("");
           modal14.close();
           return;
         }
-        var name = this.selected.font.replace(/\s/g, "+"), variation = this.selected.selected, charset = this.selected.charsets;
+        let name = this.selected.font.replace(/\s/g, "+"), variation = this.selected.selected, charset = this.selected.charsets;
         if (variation && variation.length == 1 && variation[0] == "regular") {
           variation = [];
         }
@@ -13477,7 +12646,7 @@
         trigger: "mouse",
         style: "font-categories, above-modal"
       }).on("beforeshow.popover", (function(popover) {
-        var cats = categories.data("font-categories").split(","), content = popover.$target.find(".genesis-popover-content"), checked2;
+        let cats = categories.data("font-categories").split(","), content = popover.$target.find(".genesis-popover-content"), checked2;
         content[0].replaceChildren();
         cats.forEach(function(category) {
           if (category == "local-fonts") {
@@ -13504,9 +12673,9 @@
         trigger: "mouse",
         style: "font-subsets, above-modal"
       }).on("beforeshow.popover", (function(popover) {
-        var subs = subsets.data("font-subsets").split(","), content = popover.$target.find(".genesis-popover-content");
+        let subs = subsets.data("font-subsets").split(","), content = popover.$target.find(".genesis-popover-content");
         content[0].replaceChildren();
-        var div;
+        let div;
         subs.forEach(function(sub) {
           current = sub == this.filters.script ? "checked" : "";
           zen8("div").html('<label><input name="font-subset[]" type="radio" ' + current + ' value="' + sub + '"/> ' + labelize(sub.replace("ext", "extended")) + "</label>").bottom(content);
@@ -13526,7 +12695,7 @@
     }
     search(input) {
       input = input || dom21(".g-particles-header input.font-search");
-      var list = dom21(".g-fonts-list"), value = input.value(), name, subsets, category, data;
+      let list = dom21(".g-fonts-list"), value = input.value(), name, subsets, category, data;
       list.search("> [data-font]").forEach(function(font) {
         font = dom21(font);
         name = font.data("font");
@@ -13560,7 +12729,7 @@
     updatePreview(input) {
       input = input || dom21(".g-particles-header input.font-preview");
       clearTimeout(input.refreshTimer);
-      var value = input.value(), list = dom21(".g-fonts-list");
+      let value = input.value(), list = dom21(".g-fonts-list");
       value = String(value || "").trim() || this.previewSentence[this.filters.script];
       if (input.previousValue == value) {
         return true;
@@ -13569,9 +12738,9 @@
       input.previousValue = value;
     }
     fvdToStyle(family, fvd) {
-      var match = fvd.match(/([a-z])([0-9])/);
+      let match = fvd.match(/([a-z])([0-9])/);
       if (!match) return "";
-      var styleMap = {
+      let styleMap = {
         n: "normal",
         i: "italic",
         o: "oblique"
@@ -13646,12 +12815,12 @@
     }
   };
   ready14(function() {
-    var body = dom21("body");
+    let body = dom21("body");
     body.delegate("click", "[data-genesis-fontpicker]", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
       }
-      var node = element[0], FontPicker = storage4.get(node);
+      let node = element[0], FontPicker = storage4.get(node);
       if (!FontPicker) {
         FontPicker = new Fonts();
         storage4.set(node, FontPicker);
@@ -13693,13 +12862,13 @@
     });
   };
   var findPreview = function(input) {
-    var parent = input.parentElement;
+    let parent = input.parentElement;
     return parent ? parent.querySelector("[data-genesis-iconpicker]") : null;
   };
   dom22.ready(function() {
-    var body = document.body;
+    let body = document.body;
     dom22.delegate(body, "keyup", '.g-icons input[type="text"]', function(event, input) {
-      var preview = findPreview(input), icon = preview && preview.querySelector("i");
+      let preview = findPreview(input), icon = preview && preview.querySelector("i");
       if (!icon) {
         return;
       }
@@ -13710,7 +12879,7 @@
     });
     dom22.delegate(body, "click", "[data-genesis-iconpicker]", function(event, realPreview) {
       event.preventDefault();
-      var fieldSelector = realPreview.getAttribute("data-genesis-iconpicker"), field = fieldSelector ? document.querySelector(fieldSelector) : null, value = String(field ? field.value : "").trim().replace(/\s{2,}/g, " ").split(" ").filter(Boolean);
+      let fieldSelector = realPreview.getAttribute("data-genesis-iconpicker"), field = fieldSelector ? document.querySelector(fieldSelector) : null, value = String(field ? field.value : "").trim().replace(/\s{2,}/g, " ").split(" ").filter(Boolean);
       if (!field) {
         return;
       }
@@ -13724,13 +12893,13 @@
           });
         },
         remoteLoaded: function(response, content) {
-          var container2 = modal15.element(content.elements.content), icons = container2.querySelectorAll("[data-g-icon]");
+          let container2 = modal15.element(content.elements.content), icons = container2.querySelectorAll("[data-g-icon]");
           if (!icons.length || !response.body.success) {
             container2.innerHTML = response.body.html || response.body;
             return false;
           }
-          var selectButton = container2.querySelector("[data-g-select]"), updatePreview = function() {
-            var data = [], active = container2.querySelector("[data-g-icon].active"), options = container2.querySelectorAll(".g-particles-header .float-right input:checked, .g-particles-header .float-right select");
+          let selectButton = container2.querySelector("[data-g-select]"), updatePreview = function() {
+            let data = [], active = container2.querySelector("[data-g-icon].active"), options = container2.querySelectorAll(".g-particles-header .float-right input:checked, .g-particles-header .float-right select");
             if (active) {
               data.push(active.getAttribute("data-g-icon"));
             }
@@ -13739,7 +12908,7 @@
                 data.push(option.value);
               }
             });
-            var preview = container2.querySelector(".g-icon-preview");
+            let preview = container2.querySelector(".g-icon-preview");
             if (preview) {
               preview.innerHTML = '<i class="' + escapeHTML2(data.join(" ")) + '" aria-hidden="true"></i> <span>' + escapeHTML2(data[0] || "") + "</span>";
             }
@@ -13747,7 +12916,7 @@
               selectButton.disabled = !active;
             }
           }, updateTotal = function() {
-            var total = container2.querySelectorAll("[data-g-icon]:not(.hide-icon)").length, label = container2.querySelector(".particle-search-total");
+            let total = container2.querySelectorAll("[data-g-icon]:not(.hide-icon)").length, label = container2.querySelector(".particle-search-total");
             if (label) {
               label.textContent = total;
             }
@@ -13757,7 +12926,7 @@
           }
           dom22.delegate(container2, "click", "[data-g-icon]", function(iconEvent, icon) {
             iconEvent.preventDefault();
-            var active = container2.querySelector("[data-g-icon].active");
+            let active = container2.querySelector("[data-g-icon].active");
             if (active) {
               active.classList.remove("active");
             }
@@ -13769,9 +12938,9 @@
             if (!container2.querySelector("[data-g-icon].active")) {
               return;
             }
-            var output = container2.querySelector(".g-icon-preview i"), outputClass = output ? output.getAttribute("class") : "";
+            let output = container2.querySelector(".g-icon-preview i"), outputClass = output ? output.getAttribute("class") : "";
             field.value = outputClass;
-            var previewIcon = realPreview.querySelector("i");
+            let previewIcon = realPreview.querySelector("i");
             if (previewIcon) {
               previewIcon.className = outputClass;
             }
@@ -13780,19 +12949,19 @@
           });
           dom22.delegate(container2, "change", '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
           dom22.delegate(container2, "keyup", '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
-            var search2 = input.value.toLowerCase();
+            let search2 = input.value.toLowerCase();
             icons.forEach(function(icon) {
               icon.classList.toggle("hide-icon", Boolean(search2) && !icon.getAttribute("data-g-icon").toLowerCase().includes(search2));
             });
             updateTotal();
           });
           icons.forEach(function(icon) {
-            var iconName = icon.getAttribute("data-g-icon"), html = "";
-            for (var size3 = 5; size3 > 0; size3--) {
+            let iconName = icon.getAttribute("data-g-icon"), html = "";
+            for (let size3 = 5; size3 > 0; size3--) {
               html += '<i class="' + escapeHTML2(iconName) + " fa-" + size3 + 'x" aria-hidden="true"></i> ';
             }
             html += "<h3>" + escapeHTML2(iconName) + "</h3>";
-            var popover = popovers.create(icon, {
+            let popover = popovers.create(icon, {
               content: html,
               placement: "auto",
               trigger: "mouse",
@@ -13811,23 +12980,23 @@
             }
             icon.classList.add("active");
             value.forEach(function(name) {
-              var optionField = container2.querySelector('[name="' + CSS.escape(name) + '"]');
+              let optionField = container2.querySelector('[name="' + CSS.escape(name) + '"]');
               if (optionField) {
                 optionField.checked = true;
                 return;
               }
-              var option = container2.querySelector('option[value="' + CSS.escape(name) + '"]');
+              let option = container2.querySelector('option[value="' + CSS.escape(name) + '"]');
               if (option) {
                 option.parentElement.value = name;
               }
             });
-            var wrap = icon.closest(".icons-wrapper");
+            let wrap = icon.closest(".icons-wrapper");
             if (wrap) {
               wrap.scrollTop = icon.offsetTop - wrap.offsetHeight / 2;
             }
             updatePreview();
           });
-          var searchInput = container2.querySelector(".particle-search-wrapper input");
+          let searchInput = container2.querySelector(".particle-search-wrapper input");
           if (searchInput) {
             setTimeout(function() {
               searchInput.focus();
@@ -13855,7 +13024,7 @@
     return JSON.parse(JSON.stringify(value));
   };
   var parseElement = function(html) {
-    var template = document.createElement("template");
+    let template = document.createElement("template");
     template.innerHTML = String(html || "").trim();
     return template.content;
   };
@@ -13866,12 +13035,13 @@
       }
       return;
     }
-    var from = getComputedStyle(element).opacity, animation = element.animate([{ opacity: from }, { opacity }], {
+    let from = getComputedStyle(element).opacity, animation = element.animate([{ opacity: from }, { opacity }], {
       duration,
       easing: "ease",
       fill: "forwards"
     });
-    animation.finished.catch(function() {
+    animation.finished.catch(function(error) {
+      if (error.name !== "AbortError") console.warn("File picker animation failed.", error);
     }).then(function() {
       element.style.opacity = opacity;
       animation.cancel();
@@ -13892,11 +13062,11 @@
     return element.genesisProgresser;
   };
   var fileExtension = function(file) {
-    var parts = file.name.split(".");
+    let parts = file.name.split(".");
     return !parts.length || parts.length === 1 ? "-" : parts.pop().toLowerCase();
   };
   var formatBytes = function(bytes) {
-    var units = ["B", "KB", "MB", "GB", "TB"], value = Number(bytes) || 0, unit = 0;
+    let units = ["B", "KB", "MB", "GB", "TB"], value = Number(bytes) || 0, unit = 0;
     while (value >= 1024 && unit < units.length - 1) {
       value /= 1024;
       unit++;
@@ -13967,18 +13137,18 @@
     }
     createPreview(file) {
       if (!this.previewsContainer) return null;
-      var empty = this.previewsContainer.querySelector(".no-files-found");
+      let empty = this.previewsContainer.querySelector(".no-files-found");
       if (empty) empty.remove();
-      var fragment = parseElement(this.filePicker.getPreviewTemplate()), element = fragment.firstElementChild, extension = fileExtension(file), thumb = element.querySelector(".g-thumb"), name = element.querySelector(".g-file-name"), size3 = element.querySelector(".g-file-size");
+      let fragment = parseElement(this.filePicker.getPreviewTemplate()), element = fragment.firstElementChild, extension = fileExtension(file), thumb = element.querySelector(".g-thumb"), name = element.querySelector(".g-file-name"), size3 = element.querySelector(".g-file-size");
       if (name) name.textContent = file.name;
       if (size3) size3.textContent = formatBytes(file.size);
       element.classList.add("g-file-uploading");
       element.classList.add("g-image-" + extension);
       if (file.type && file.type.indexOf("image/") === 0) {
         if (thumb) thumb.classList.add("g-image", "g-image-" + extension);
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.addEventListener("load", function() {
-          var thumbnail = element.querySelector("[data-upload-thumbnail] > div");
+          let thumbnail = element.querySelector("[data-upload-thumbnail] > div");
           if (thumbnail) thumbnail.style.backgroundImage = 'url("' + reader.result + '")';
         }, { once: true });
         reader.readAsDataURL(file);
@@ -13989,7 +13159,7 @@
       return element;
     }
     prepareProgress(element) {
-      var uploader = element.querySelector("[data-file-uploadprogress]"), isList = this.files.classList.contains("g-filemode-list"), config2 = {
+      let uploader = element.querySelector("[data-file-uploadprogress]"), isList = this.files.classList.contains("g-filemode-list"), config2 = {
         value: 0,
         animation: false,
         insertLocation: "bottom"
@@ -14008,7 +13178,7 @@
       this.filePicker.setProgressText(element, "0%");
     }
     showError(element, error) {
-      var uploader = element.querySelector("[data-file-uploadprogress]"), text = element.querySelector(".g-file-progress-text"), isList = this.files.classList.contains("g-filemode-list"), message = error && error.html ? error.html : error && error.error && error.error.message ? error.error.message : error && error.message ? error.message : error;
+      let uploader = element.querySelector("[data-file-uploadprogress]"), text = element.querySelector(".g-file-progress-text"), isList = this.files.classList.contains("g-filemode-list"), message = error && error.html ? error.html : error && error.error && error.error.message ? error.error.message : error && error.message ? error.message : error;
       element.classList.add("g-file-error");
       uploader.title = "Error";
       updateProgress(uploader, {
@@ -14030,7 +13200,7 @@
       }
     }
     showSuccess(element, uploadResponse) {
-      var uploader = element.querySelector("[data-file-uploadprogress]"), mtime = element.querySelector(".g-file-mtime"), text = element.querySelector(".g-file-progress-text"), thumb = element.querySelector(".g-thumb"), isList = this.files.classList.contains("g-filemode-list");
+      let uploader = element.querySelector("[data-file-uploadprogress]"), mtime = element.querySelector(".g-file-mtime"), text = element.querySelector(".g-file-progress-text"), thumb = element.querySelector(".g-thumb"), isList = this.files.classList.contains("g-filemode-list");
       updateProgress(uploader, {
         fill: { color: this.filePicker.colors.success, gradient: false },
         value: 1,
@@ -14050,7 +13220,7 @@
     }
     parseResponse(xhr) {
       if (xhr.response && typeof xhr.response === "object") return xhr.response;
-      var text = "";
+      let text = "";
       try {
         text = xhr.responseText || "";
       } catch (error) {
@@ -14063,7 +13233,7 @@
       }
     }
     upload(file) {
-      var element = this.createPreview(file);
+      let element = this.createPreview(file);
       if (!element) return;
       this.prepareProgress(element);
       if (!this.accepts(file)) {
@@ -14073,12 +13243,12 @@
         );
         return;
       }
-      var path = this.filePicker.getPath();
+      let path = this.filePicker.getPath();
       if (!path) {
         this.showError(element, "Select an upload folder first.");
         return;
       }
-      var url = parseAjaxURI15(
+      let url = parseAjaxURI15(
         getAjaxURL17("filepicker/upload/" + window.btoa(encodeURIComponent(path + file.name))) + getAjaxSuffix15()
       ), form = new FormData(), xhr = new XMLHttpRequest();
       form.append("file", file, file.name);
@@ -14088,13 +13258,13 @@
       xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
       xhr.upload.addEventListener("progress", (function(event) {
         if (!event.lengthComputable) return;
-        var progress = event.loaded / event.total * 100, uploader = element.querySelector("[data-file-uploadprogress]");
+        let progress = event.loaded / event.total * 100, uploader = element.querySelector("[data-file-uploadprogress]");
         updateProgress(uploader, { value: progress / 100 });
         this.filePicker.setProgressText(element, Math.round(progress) + "%");
       }).bind(this));
       xhr.addEventListener("load", (function() {
         this.requests.delete(xhr);
-        var response = this.parseResponse(xhr);
+        let response = this.parseResponse(xhr);
         if (xhr.status >= 200 && xhr.status < 300 && response && response.finfo) {
           this.showSuccess(element, response);
           window.clearTimeout(this.refreshTimer);
@@ -14127,10 +13297,10 @@
   };
   var FilePicker = class {
     constructor(element) {
-      var data = element.getAttribute("data-genesis-filepicker");
+      let data = element.getAttribute("data-genesis-filepicker");
       this.data = data ? JSON.parse(data) : false;
       if (this.data && !this.data.value) {
-        var field = this.getField();
+        let field = this.getField();
         this.data.value = field ? field.value : "";
       }
       this.colors = {
@@ -14151,7 +13321,7 @@
     }
     open() {
       if (this.data) {
-        var field = this.getField();
+        let field = this.getField();
         this.data.value = field ? field.value : "";
       }
       modal16.open({
@@ -14170,29 +13340,29 @@
       });
     }
     getPath() {
-      var actives = this.content.querySelectorAll(".g-folders .active");
+      let actives = this.content.querySelectorAll(".g-folders .active");
       if (!actives.length) {
         return null;
       }
-      var data = JSON.parse(actives[actives.length - 1].getAttribute("data-folder")), path = data.pathname;
+      let data = JSON.parse(actives[actives.length - 1].getAttribute("data-folder")), path = data.pathname;
       return path.replace(/\/$/, "") + "/";
     }
     getPreviewTemplate() {
       return '<li data-file><div class="g-thumb" data-upload-thumbnail><div></div></div><span class="g-file-name"></span><span class="g-file-size"></span><span class="g-file-mtime"></span><span class="g-file-progress" data-file-uploadprogress><span class="g-file-progress-text"></span></span></li>';
     }
     loaded(response, modalInstance) {
-      var content = modal16.element(modalInstance.elements.content), files = content && content.querySelector(".g-files"), fieldData = clone2(this.data), colors = this.colors, self2 = this;
+      let content = modal16.element(modalInstance.elements.content), files = content && content.querySelector(".g-files"), fieldData = clone2(this.data), colors = this.colors, self2 = this;
       if (!content) {
         return false;
       }
       this.content = content;
       if (files) {
-        var previews = files.querySelector("ul:not(.g-list-labels)");
+        let previews = files.querySelector("ul:not(.g-list-labels)");
         this.uploader = new NativeUploader(this, files, previews);
       }
       dom23.delegate(content, "click", ".g-bookmark-title", function(event, element) {
         event.preventDefault();
-        var sibling = element.nextElementSibling, parent = element.closest(".g-bookmark");
+        let sibling = element.nextElementSibling, parent = element.closest(".g-bookmark");
         if (!sibling || !sibling.matches(".g-folders")) {
           return;
         }
@@ -14203,7 +13373,7 @@
       });
       dom23.delegate(content, "click", "[data-folder]", (function(event, element) {
         event.preventDefault();
-        var data = JSON.parse(element.getAttribute("data-folder")), selected = files && files.querySelector("[data-file].selected");
+        let data = JSON.parse(element.getAttribute("data-folder")), selected = files && files.querySelector("[data-file].selected");
         fieldData.root = data.pathname;
         fieldData.value = selected ? selected.getAttribute("data-file-url") : false;
         fieldData.subfolder = true;
@@ -14211,7 +13381,7 @@
         request13(parseAjaxURI15(getAjaxURL17("filepicker") + getAjaxSuffix15()), fieldData).send((function(error, folderResponse) {
           indicator9.hide(element);
           this.addActiveState(element);
-          var result = folderResponse && folderResponse.body;
+          let result = folderResponse && folderResponse.body;
           if (!result || !result.success) {
             modal16.open({
               content: result ? result.html || result.message || result : error ? error.message : "Request failed."
@@ -14219,11 +13389,11 @@
             return;
           }
           if (result.subfolder) {
-            var next = element.nextElementSibling;
+            let next = element.nextElementSibling;
             if (next && !next.hasAttribute("data-folder")) {
               next.remove();
             }
-            var fragment = parseElement(result.subfolder), anchor = element;
+            let fragment = parseElement(result.subfolder), anchor = element;
             Array.from(fragment.children).forEach(function(child) {
               anchor.after(child);
               anchor = child;
@@ -14233,7 +13403,7 @@
             if (result.files) {
               files.replaceChildren(parseElement(result.files));
             } else {
-              var list = files.querySelector("ul:not(.g-list-labels)");
+              let list = files.querySelector("ul:not(.g-list-labels)");
               if (list) {
                 list.replaceChildren();
               }
@@ -14245,11 +13415,11 @@
       dom23.delegate(content, "click", "[data-g-file-preview]", function(event, element) {
         event.preventDefault();
         event.stopPropagation();
-        var parent = element.closest("[data-file]"), data = parent && JSON.parse(parent.getAttribute("data-file"));
+        let parent = element.closest("[data-file]"), data = parent && JSON.parse(parent.getAttribute("data-file"));
         if (!parent || !data || !data.isImage) {
           return;
         }
-        var thumb = parent.querySelector(".g-thumb > div"), background = thumb && thumb.style.backgroundImage;
+        let thumb = parent.querySelector(".g-thumb > div"), background = thumb && thumb.style.backgroundImage;
         if (background) {
           modal16.open({
             className: "genesis-dialog-theme-default genesis-modal-filepreview center",
@@ -14259,13 +13429,13 @@
       });
       dom23.delegate(content, "click", "[data-g-file-delete]", function(event, element) {
         event.preventDefault();
-        var parent = element.closest("[data-file]"), data = parent && JSON.parse(parent.getAttribute("data-file"));
+        let parent = element.closest("[data-file]"), data = parent && JSON.parse(parent.getAttribute("data-file"));
         if (!parent || !data || !data.isInCustom) {
           return;
         }
-        var deleteURI = parseAjaxURI15(getAjaxURL17("filepicker/" + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix15()));
+        let deleteURI = parseAjaxURI15(getAjaxURL17("filepicker/" + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix15()));
         request13("delete", deleteURI, function(error, deleteResponse) {
-          var result = deleteResponse && deleteResponse.body;
+          let result = deleteResponse && deleteResponse.body;
           if (!result || !result.success) {
             modal16.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
             return;
@@ -14279,7 +13449,7 @@
       });
       dom23.delegate(content, "click", "[data-file]", function(event, element) {
         event.preventDefault();
-        var remove = event.target.closest("[data-g-file-delete]"), preview = event.target.closest("[data-g-file-preview]");
+        let remove = event.target.closest("[data-g-file-delete]"), preview = event.target.closest("[data-g-file-preview]");
         if (element.classList.contains("g-file-error") || element.classList.contains("g-file-uploading") || remove || preview) {
           return;
         }
@@ -14290,7 +13460,7 @@
       });
       dom23.delegate(content, "click", "[data-select]", (function(event) {
         event.preventDefault();
-        var selected = files && files.querySelector("[data-file].selected"), field = this.getField();
+        let selected = files && files.querySelector("[data-file].selected"), field = this.getField();
         if (field) {
           field.value = selected ? selected.getAttribute("data-file-url") : "";
           field.dispatchEvent(new Event("input", { bubbles: true }));
@@ -14311,7 +13481,7 @@
         Cookie3.write("genesis_files_mode", mode);
         Cookie3.write("genesis_files_mode", mode);
         animateOpacity2(files, 0, 200, function() {
-          var mode2 = element.getAttribute("data-files-mode"), progressConf = mode2 === "list" ? {
+          let mode2 = element.getAttribute("data-files-mode"), progressConf = mode2 === "list" ? {
             size: 20,
             thickness: 10,
             fill: { color: colors.small, gradient: false }
@@ -14322,7 +13492,7 @@
           };
           files.className = "g-files g-block g-filemode-" + mode2;
           files.querySelectorAll("[data-file-uploadprogress]").forEach(function(progressElement) {
-            var config2 = clone2(progressConf);
+            let config2 = clone2(progressConf);
             if (progressElement.closest(".g-file-error")) {
               config2.fill = { color: colors.error };
               config2.value = 1;
@@ -14335,7 +13505,7 @@
       });
     }
     setProgressText(preview, value) {
-      var uploader = preview.querySelector("[data-file-uploadprogress]"), text = preview.querySelector(".g-file-progress-text");
+      let uploader = preview.querySelector("[data-file-uploadprogress]"), text = preview.querySelector(".g-file-progress-text");
       if (uploader) {
         uploader.title = value;
       }
@@ -14349,7 +13519,7 @@
         opened.classList.remove("active");
       });
       element.classList.add("active");
-      var parent = element.parentElement;
+      let parent = element.parentElement;
       while (parent && parent.tagName === "UL" && !parent.classList.contains("g-folders")) {
         if (parent.previousElementSibling) {
           parent.previousElementSibling.classList.add("active");
@@ -14368,7 +13538,7 @@
       }
     }
     refreshFiles() {
-      var active = this.content.querySelectorAll("[data-folder].active"), folder = active[active.length - 1];
+      let active = this.content.querySelectorAll("[data-folder].active"), folder = active[active.length - 1];
       if (folder) {
         folder.click();
       }
@@ -14547,30 +13717,30 @@
     });
   };
   var fieldFor = function(element) {
-    var param = element.closest(".settings-param");
+    let param = element.closest(".settings-param");
     return param && param.querySelector("[data-collection-data]");
   };
   dom24.ready(function() {
-    var body = document.body;
-    var addNewByExit = function(event) {
+    let body = document.body;
+    let addNewByExit = function(event) {
       if (!this.CollectionNew) {
         return;
       }
       this.CollectionNew = false;
       if (event.detail.key === "enter") {
-        var add = this.closest(".settings-param").querySelector("[data-collection-addnew]");
+        let add = this.closest(".settings-param").querySelector("[data-collection-addnew]");
         if (add) {
           add.click();
         }
       } else if (event.detail.key === "esc") {
-        var remove = this.closest("[data-collection-item]").querySelector("[data-collection-remove]");
+        let remove = this.closest("[data-collection-item]").querySelector("[data-collection-remove]");
         if (remove) {
           remove.click();
         }
       }
     };
-    var createSortables = function(value) {
-      var lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll(".collection-list ul"));
+    let createSortables = function(value) {
+      let lists = value ? [value.nodeType ? value : value[0]] : Array.from(document.querySelectorAll(".collection-list ul"));
       lists.filter(Boolean).forEach(function(list) {
         if (list.SimpleSort) {
           return;
@@ -14583,7 +13753,7 @@
             if (event.oldIndex === event.newIndex) {
               return;
             }
-            var dataField = fieldFor(list), data = JSON.parse(dataField.value || "[]");
+            let dataField = fieldFor(list), data = JSON.parse(dataField.value || "[]");
             data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0]);
             dataField.value = JSON.stringify(data);
             dataField.dispatchEvent(new Event("change", { bubbles: true }));
@@ -14598,11 +13768,11 @@
     });
     dom24.delegate(body, "click", "[data-collection-addnew]", function(event, element) {
       event.preventDefault();
-      var param = element.closest(".settings-param"), list = param && param.querySelector("ul"), template = param && param.querySelector("[data-collection-template]"), dataField = param && param.querySelector("[data-collection-data]");
+      let param = element.closest(".settings-param"), list = param && param.querySelector("ul"), template = param && param.querySelector("[data-collection-template]"), dataField = param && param.querySelector("[data-collection-data]");
       if (!list || !template || !dataField) {
         return;
       }
-      var items = directItems3(list), clone3 = template.cloneNode(true), title = clone3.querySelector("a"), editable = title && title.querySelector("[data-title-editable]"), editAll = list.closest("[data-field-name]") && list.closest("[data-field-name]").querySelector("[data-collection-editall]");
+      let items = directItems3(list), clone3 = template.cloneNode(true), title = clone3.querySelector("a"), editable = title && title.querySelector("[data-title-editable]"), editAll = list.closest("[data-field-name]") && list.closest("[data-field-name]").querySelector("[data-collection-editall]");
       if (items.length) {
         items[items.length - 1].after(clone3);
       } else {
@@ -14619,7 +13789,7 @@
       if (editable) {
         editable.CollectionNew = true;
         editable.addEventListener("genesis:title-edit-exit", addNewByExit);
-        var editButton = title.parentElement.querySelector("[data-title-edit]");
+        let editButton = title.parentElement.querySelector("[data-title-edit]");
         if (editButton) {
           editButton.click();
         }
@@ -14627,15 +13797,15 @@
       dataField.dispatchEvent(new Event("change", { bubbles: true }));
     });
     dom24.delegate(body, "blur", "[data-collection-item] [data-title-editable]", function(event, editable) {
-      var item = editable.closest("[data-collection-item]"), list = item && item.parentElement, dataField = fieldFor(editable);
+      let item = editable.closest("[data-collection-item]"), list = item && item.parentElement, dataField = fieldFor(editable);
       if (!item || !list || !dataField) {
         return;
       }
-      var index = directItems3(list).indexOf(item);
+      let index = directItems3(list).indexOf(item);
       if (index === -1) {
         return;
       }
-      var data = JSON.parse(dataField.value || "[]"), key = item.getAttribute("data-collection-item");
+      let data = JSON.parse(dataField.value || "[]"), key = item.getAttribute("data-collection-item");
       if (!data[index]) {
         data.splice(index, 0, {});
       }
@@ -14645,11 +13815,11 @@
     }, true);
     dom24.delegate(body, "click", "[data-collection-remove]", function(event, element) {
       event.preventDefault();
-      var item = element.closest("[data-collection-item]"), list = item && item.parentElement, dataField = fieldFor(element);
+      let item = element.closest("[data-collection-item]"), list = item && item.parentElement, dataField = fieldFor(element);
       if (!item || !list || !dataField) {
         return;
       }
-      var items = directItems3(list), index = items.indexOf(item), data = JSON.parse(dataField.value || "[]"), editAll = list.closest("[data-field-name]") && list.closest("[data-field-name]").querySelector("[data-collection-editall]");
+      let items = directItems3(list), index = items.indexOf(item), data = JSON.parse(dataField.value || "[]"), editAll = list.closest("[data-field-name]") && list.closest("[data-field-name]").querySelector("[data-collection-editall]");
       data.splice(index, 1);
       dataField.value = JSON.stringify(data);
       item.remove();
@@ -14660,13 +13830,13 @@
     });
     dom24.delegate(body, "click", "[data-collection-duplicate]", function(event, element) {
       event.preventDefault();
-      var item = element.closest("[data-collection-item]"), list = item && item.parentElement, param = element.closest(".settings-param"), dataField = fieldFor(element);
+      let item = element.closest("[data-collection-item]"), list = item && item.parentElement, param = element.closest(".settings-param"), dataField = fieldFor(element);
       if (!item || !list || !param || !dataField) {
         return;
       }
-      var items = directItems3(list), index = items.indexOf(item), templateLink = param.querySelector("[data-collection-template] a"), clone3 = item.cloneNode(true), data = JSON.parse(dataField.value || "[]"), editAll = list.closest("[data-field-name]") && list.closest("[data-field-name]").querySelector("[data-collection-editall]");
+      let items = directItems3(list), index = items.indexOf(item), templateLink = param.querySelector("[data-collection-template] a"), clone3 = item.cloneNode(true), data = JSON.parse(dataField.value || "[]"), editAll = list.closest("[data-field-name]") && list.closest("[data-field-name]").querySelector("[data-collection-editall]");
       item.after(clone3);
-      var cloneLink = clone3.querySelector("a");
+      let cloneLink = clone3.querySelector("a");
       if (cloneLink && templateLink) {
         cloneLink.href = templateLink.href.replace(/%id%/g, items.length + 1);
       }
@@ -14685,16 +13855,16 @@
     });
     dom24.delegate(body, "click", "[data-collection-item] .config-cog, [data-collection-editall]", function(event, element) {
       event.preventDefault();
-      var editable = element.querySelector("[data-title-editable]");
+      let editable = element.querySelector("[data-title-editable]");
       if (editable && editable.hasAttribute("contenteditable")) {
         event.stopPropagation();
         return;
       }
-      var isEditAll = element.hasAttribute("data-collection-editall"), parent = element.closest(".settings-param"), dataField = parent && parent.querySelector("[data-collection-data]"), item = element.closest("[data-collection-item]"), list = parent && parent.querySelector("ul");
+      let isEditAll = element.hasAttribute("data-collection-editall"), parent = element.closest(".settings-param"), dataField = parent && parent.querySelector("[data-collection-data]"), item = element.closest("[data-collection-item]"), list = parent && parent.querySelector("ul");
       if (!parent || !dataField || !list) {
         return;
       }
-      var items = directItems3(list), data = dataField.value || "[]", itemIndex = item ? items.indexOf(item) : -1, dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
+      let items = directItems3(list), data = dataField.value || "[]", itemIndex = item ? items.indexOf(item) : -1, dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
       modal17.open({
         content: translate13("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
@@ -14707,7 +13877,7 @@
             modal17.enableCloseByOverlay();
             return;
           }
-          var container2 = modal17.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'), dataValue = JSON.parse(data);
+          let container2 = modal17.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'), dataValue = JSON.parse(data);
           if (modal17.getAll().length > 1) {
             container2.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
               button.remove();
@@ -14723,7 +13893,7 @@
               indicator10.hide(target);
               indicator10.show(target);
               form = container2.querySelector("form");
-              var post = Submit5(form.elements, container2);
+              let post = Submit5(form.elements, container2);
               if (post.invalid.length) {
                 indicator10.hide(target);
                 indicator10.show(target, "fa fa-fw fa-exclamation-triangle");
@@ -14731,7 +13901,7 @@
                 return;
               }
               request14(form.method, parseAjaxURI16(form.action + getAjaxSuffix16()), post.valid.join("&") || {}, function(error, resultResponse) {
-                var result = resultResponse && resultResponse.body;
+                let result = resultResponse && resultResponse.body;
                 if (!result || !result.success) {
                   modal17.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
                 } else {
@@ -14743,14 +13913,14 @@
                   dataField.value = JSON.stringify(dataValue);
                   dataField.dispatchEvent(new Event("change", { bubbles: true }));
                   directItems3(list).forEach(function(collectionItem, index) {
-                    var label = collectionItem.querySelector("[data-title-editable]"), text = dataValue[index][collectionItem.getAttribute("data-collection-item")];
+                    let label = collectionItem.querySelector("[data-title-editable]"), text = dataValue[index][collectionItem.getAttribute("data-collection-item")];
                     if (label) {
                       label.setAttribute("data-title-editable", text);
                       label.textContent = text;
                     }
                   });
                   if (target.hasAttribute("data-apply-and-save")) {
-                    var save = document.querySelector(".button-save");
+                    let save = document.querySelector(".button-save");
                     if (save) {
                       save.click();
                     }
@@ -15081,7 +14251,7 @@
     eraser: null,
     lists: { picker: null, items: null, trash: null },
     serialize: function() {
-      var list = document.querySelector(".atoms-list"), output = [];
+      let list = document.querySelector(".atoms-list"), output = [];
       if (!list) {
         return "[]";
       }
@@ -15091,7 +14261,7 @@
       return JSON.stringify(output).replace(/\//g, "\\/");
     },
     attachEraser: function() {
-      var element = document.querySelector("[data-atoms-erase]");
+      let element = document.querySelector("[data-atoms-erase]");
       if (Atoms2.eraser) {
         Atoms2.eraser.setElement(element);
         return;
@@ -15100,11 +14270,11 @@
     },
     createSortables: function(element) {
       Atoms2.attachEraser();
-      var root = element || document.querySelector("#atoms");
+      let root = element || document.querySelector("#atoms");
       if (!root || root.SimpleSort) {
         return;
       }
-      var controller = new DraggableGroup3(root, {
+      let controller = new DraggableGroup3(root, {
         lists: ".atoms-picker, .atoms-list",
         items: "[data-atom-picked]",
         filter: "[data-atom-ignore]",
@@ -15120,7 +14290,7 @@
           return state.from.classList.contains("atoms-list");
         },
         onPreview: function(preview, source) {
-          var color = getComputedStyle(source).borderTopColor;
+          let color = getComputedStyle(source).borderTopColor;
           preview.style.backgroundColor = color;
           preview.style.borderColor = color;
           preview.style.color = "#fff";
@@ -15148,7 +14318,7 @@
           if (!event.changed) {
             return;
           }
-          var field = document.querySelector(AtomsField);
+          let field = document.querySelector(AtomsField);
           if (!field) {
             throw new Error('Field "' + AtomsField + '" not found in the DOM.');
           }
@@ -15165,11 +14335,11 @@
   var attachSettings = function() {
     dom25.delegate(document.body, "click", ".atoms-list [data-atom-picked] .config-cog", function(event, trigger) {
       event.preventDefault();
-      var item = trigger.closest("[data-atom-picked]"), list = item && item.parentElement, dataField = document.querySelector(AtomsField);
+      let item = trigger.closest("[data-atom-picked]"), list = item && item.parentElement, dataField = document.querySelector(AtomsField);
       if (!item || !list || !dataField) {
         return;
       }
-      var itemData = item.getAttribute("data-atom-picked"), dataValue = JSON.parse(dataField.value || "[]");
+      let itemData = item.getAttribute("data-atom-picked"), dataValue = JSON.parse(dataField.value || "[]");
       modal19.open({
         content: translate16("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
@@ -15177,7 +14347,7 @@
         overlayClickToClose: false,
         remote: parseAjaxURI18(trigger.getAttribute("href") + getAjaxSuffix18()),
         remoteLoaded: function(response, content) {
-          var container2 = modal19.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+          let container2 = modal19.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
           if (modal19.getAll().length > 1) {
             container2.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
               button.remove();
@@ -15193,7 +14363,7 @@
               indicator11.hide(target);
               indicator11.show(target);
               form = container2.querySelector("form");
-              var post = Submit7(form.elements, container2);
+              let post = Submit7(form.elements, container2);
               if (post.invalid.length) {
                 indicator11.hide(target);
                 indicator11.show(target, "fa fa-fw fa-exclamation-triangle");
@@ -15201,7 +14371,7 @@
                 return;
               }
               request16(form.method, parseAjaxURI18(form.action + getAjaxSuffix18()), post.valid.join("&") || {}, function(error, resultResponse) {
-                var result = resultResponse && resultResponse.body;
+                let result = resultResponse && resultResponse.body;
                 if (!result || !result.success) {
                   modal19.open({
                     content: result ? result.html || result.message || result : error ? error.message : "Request failed.",
@@ -15213,29 +14383,29 @@
                     }
                   });
                 } else {
-                  var items = Array.from(list.querySelectorAll(":scope > [data-atom-picked]")), itemIndex = items.indexOf(item);
+                  let items = Array.from(list.querySelectorAll(":scope > [data-atom-picked]")), itemIndex = items.indexOf(item);
                   if (itemIndex !== -1) {
                     dataValue[itemIndex] = result.item;
                     dataField.value = JSON.stringify(dataValue).replace(/\//g, "\\/");
                     item.setAttribute("data-atom-picked", JSON.stringify(result.item).replace(/\//g, "\\/"));
-                    var title = item.querySelector(".atom-title");
+                    let title = item.querySelector(".atom-title");
                     if (title) {
                       title.textContent = result.item.title;
                     }
-                    var enabled = Number(result.item.attributes.enabled), inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
+                    let enabled = Number(result.item.attributes.enabled), inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
                     item.classList.toggle("atom-disabled", !enabled);
                     item.classList.toggle("g-inheriting", Boolean(inheriting));
                     item.title = enabled ? "" : translate16("GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE", "atom");
                     item.removeAttribute("data-tip");
                     if (inheriting) {
-                      var inherit = result.item.inherit, outline = getOutlineNameById5(inherit.outline), atom = inherit.atom || "", include = (inherit.include || []).join(", ");
+                      let inherit = result.item.inherit, outline = getOutlineNameById5(inherit.outline), atom = inherit.atom || "", include = (inherit.include || []).join(", ");
                       item.setAttribute("data-tip", translate16("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + atom + "<br />Replace: " + include);
                     }
                     dataField.dispatchEvent(new Event("change", { bubbles: true }));
                     global.Genesis.tips.reload();
                   }
                   if (target.hasAttribute("data-apply-and-save")) {
-                    var save = document.querySelector(".button-save");
+                    let save = document.querySelector(".button-save");
                     if (save) {
                       save.click();
                     }
@@ -15257,7 +14427,7 @@
     }
   };
   dom25.ready(function() {
-    var atoms = document.querySelector("#atoms");
+    let atoms = document.querySelector("#atoms");
     dom25.delegate(document.body, "mouseover", "#atoms", function(event, element) {
       attachSortableAtoms(element);
     });
@@ -15526,30 +14696,30 @@
   var pm = cards_default;
   var translate17 = translate_default;
   var trim5 = function(value, characters) {
-    var string = value == null ? "" : String(value);
+    let string = value == null ? "" : String(value);
     if (!characters) {
       return string.trim();
     }
-    var escaped = String(characters).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    let escaped = String(characters).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     return string.replace(new RegExp("^[" + escaped + "]+|[" + escaped + "]+$", "g"), "");
   };
   var interpolate = function(template, replacements) {
     return String(template == null ? "" : template).replace(/\{\{([^}]+)}}/g, function(match, path) {
-      var value = path.split(".").reduce(function(current, key) {
+      let value = path.split(".").reduce(function(current, key) {
         return current == null ? void 0 : current[key];
       }, replacements);
       return value == null ? "" : String(value);
     });
   };
   var setParam2 = function(uri, name, value) {
-    var url = new URL(uri, window.location.href), isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
+    let url = new URL(uri, window.location.href), isAbsolute = /^[a-z][a-z\d+.-]*:/i.test(uri);
     url.searchParams.set(name, value);
     return isAbsolute ? url.href : url.pathname + url.search + url.hash;
   };
   var createHandler = function(divisor, noun, restOfString) {
     return function(diff) {
-      var n = Math.floor(diff / divisor);
-      var pluralizedNoun = noun + (n > 1 ? "s" : "");
+      let n = Math.floor(diff / divisor);
+      let pluralizedNoun = noun + (n > 1 ? "s" : "");
       return "" + n + " " + pluralizedNoun + " " + restOfString;
     };
   };
@@ -15580,8 +14750,8 @@
   ];
   var prettyDate = {
     format: function(date) {
-      var diff = ((/* @__PURE__ */ new Date()).getTime() - date.getTime()) / 1e3;
-      for (var i = 0; i < formatters.length; i++) {
+      let diff = ((/* @__PURE__ */ new Date()).getTime() - date.getTime()) / 1e3;
+      for (let i = 0; i < formatters.length; i++) {
         if (diff < formatters[i].threshold) {
           return formatters[i].handler(diff);
         }
@@ -15595,12 +14765,12 @@
     }
   };
   ready18(function() {
-    var body = dom26("body"), sentence = translate17("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
+    let body = dom26("body"), sentence = translate17("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
     body.delegate("click", "[data-g-close]", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
       }
-      var parent = element.data("g-close");
+      let parent = element.data("g-close");
       parent = parent ? element.parent(parent) : element;
       parent.slideUp(function() {
         parent.remove();
@@ -15611,14 +14781,14 @@
         event.preventDefault();
       }
       if (!element.PopoverDefined) {
-        var content = element.find("[data-popover-content]") || element.siblings("[data-popover-content]"), popover = element.getPopover({
+        let content = element.find("[data-popover-content]") || element.siblings("[data-popover-content]"), popover = element.getPopover({
           style: element.data("g-popover-style") || "generic",
           width: element.data("g-popover-width") || 220,
           content: zen9("ul").html(content.html())[0].outerHTML,
           allowElementsClick: element.data("g-popover-elementsclick") || ".toggle"
         });
         element.on("shown.popover", function(popover2) {
-          var enabler = element.find(".enabler");
+          let enabler = element.find(".enabler");
           element.attribute("aria-expanded", true).attribute("aria-hidden", false);
           if (enabler) {
             enabler[0].focus();
@@ -15631,11 +14801,11 @@
       }
     });
     body.delegate("mousedown", "[data-settings-key]", function(event, element) {
-      var key = element.data("settings-key");
+      let key = element.data("settings-key");
       if (!key) {
         return true;
       }
-      var redirect = window.location.search, settings = element.attribute("href"), uri = window.location.href.split("?");
+      let redirect = window.location.search, settings = element.attribute("href"), uri = window.location.href.split("?");
       if (uri.length > 1 && uri[0].match(/index.php$/)) {
         redirect = "index.php" + redirect;
       }
@@ -15646,35 +14816,35 @@
       if (!element.lastSaved) {
         return true;
       }
-      var feedback = translate17("GENESIS_PLATFORM_LAST_SAVED") + ": " + prettyDate.format(element.lastSaved);
+      let feedback = translate17("GENESIS_PLATFORM_LAST_SAVED") + ": " + prettyDate.format(element.lastSaved);
       element.data("tip", feedback).data("title", feedback);
     });
     body.delegate("click", ".button-save", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
       }
-      var saves = dom26(".button-save");
+      let saves = dom26(".button-save");
       if (saves.disabled()) {
         return false;
       }
       saves.disabled(true);
       saves.hideIndicator();
       saves.showIndicator();
-      var data = {}, invalid = [], type = element.data("save"), extras = "", page = dom26("[data-lm-root]") ? "layout" : dom26("[data-mm-id]") ? "menu" : dom26("[data-genesis-position]") ? "positions" : "other", saveURL = parseAjaxURI19(trim5(window.location.href, "#") + getAjaxSuffix19());
+      let data = {}, invalid = [], type = element.data("save"), extras = "", page = dom26("[data-lm-root]") ? "layout" : dom26("[data-mm-id]") ? "menu" : dom26("[data-genesis-position]") ? "positions" : "other", saveURL = parseAjaxURI19(trim5(window.location.href, "#") + getAjaxSuffix19());
       switch (page) {
         case "layout":
-          var preset = dom26("[data-lm-preset]");
+          let preset = dom26("[data-lm-preset]");
           lm.layoutmanager.singles("cleanup", lm.builder, false);
           lm.savestate.setSession(lm.builder.serialize(null, true));
           data.preset = preset && preset.data("lm-preset") ? preset.data("lm-preset") : "default";
-          var layout = JSON.stringify(lm.builder.serialize());
+          let layout = JSON.stringify(lm.builder.serialize());
           data.layout = layout;
           break;
         case "menu":
           data.menutype = dom26("select.menu-select-wrap").value();
           data.settings = JSON.stringify(mm2.menumanager.settings);
           data.ordering = JSON.stringify(mm2.menumanager.ordering);
-          var items = JSON.stringify(mm2.menumanager.items);
+          let items = JSON.stringify(mm2.menumanager.items);
           data.items = items;
           saveURL = parseAjaxURI19(element.parent("form").attribute("action") + getAjaxSuffix19());
           break;
@@ -15683,11 +14853,11 @@
           break;
         case "other":
         default:
-          var form = element.parent("form");
+          let form = element.parent("form");
           if (form && element.attribute("type") == "submit") {
             dom26(form[0].elements).forEach(function(input) {
               input = dom26(input);
-              var name = input.attribute("name"), type2 = input.attribute("type"), value = input.value(), parent = input.parent(".settings-param, .card-overrideable"), override = parent ? parent.find('> input[type="checkbox"]') : null;
+              let name = input.attribute("name"), type2 = input.attribute("type"), value = input.value(), parent = input.parent(".settings-param, .card-overrideable"), override = parent ? parent.find('> input[type="checkbox"]') : null;
               override = override || dom26(input.data("override-target"));
               if (!name || input.disabled() || override && !override.checked() || type2 == "radio" && !input.checked()) {
                 return;
@@ -15745,7 +14915,7 @@
       });
     });
     body.delegate("keydown", "[data-title-edit]", function(event, element) {
-      var key = event.which ? event.which : event.keyCode;
+      let key = event.which ? event.which : event.keyCode;
       if (key == 32 || key == 13) {
         event.preventDefault();
         body.emit("click", event);
@@ -15756,7 +14926,7 @@
       if (element.hasClass("disabled")) {
         return false;
       }
-      var $title = element.siblings("[data-title-editable]") || element.previousSiblings().find("[data-title-editable]") || element.nextSiblings().find("[data-title-editable]"), title;
+      let $title = element.siblings("[data-title-editable]") || element.previousSiblings().find("[data-title-editable]") || element.nextSiblings().find("[data-title-editable]"), title;
       if (!$title) {
         return true;
       }
@@ -15764,7 +14934,7 @@
       $title.text(trim5($title.text()));
       $title.attribute("contenteditable", true);
       title.focus();
-      var range = document.createRange(), selection;
+      let range = document.createRange(), selection;
       range.selectNodeContents(title);
       selection = window.getSelection();
       selection.removeAllRanges();
@@ -15792,7 +14962,7 @@
           }
           element.attribute("contenteditable", null);
           element[0].blur();
-          var exitTitle = element.data("title-editable"), exitKey = event.keyCode == 13 ? "enter" : "esc";
+          let exitTitle = element.data("title-editable"), exitKey = event.keyCode == 13 ? "enter" : "esc";
           element.emit("title-edit-exit", exitTitle, exitKey);
           element[0].dispatchEvent(new CustomEvent("genesis:title-edit-exit", {
             bubbles: true,
@@ -15809,7 +14979,7 @@
       element.attribute("contenteditable", null);
       element.data("title-editable", trim5(element.text()));
       window.getSelection().removeAllRanges();
-      var title = element.data("title-editable"), original = element.storedTitle, canceled = element.titleEditCanceled;
+      let title = element.data("title-editable"), original = element.storedTitle, canceled = element.titleEditCanceled;
       element.emit("title-edit-end", title, original, canceled);
       element[0].dispatchEvent(new CustomEvent("genesis:title-edit-end", {
         bubbles: true,
@@ -15824,11 +14994,11 @@
       if (event && event.preventDefault) {
         event.preventDefault();
       }
-      var href = element.attribute("href") || element.data("ajax-action"), method = element.data("ajax-action-method") || "post", indicator12 = dom26(element.data("ajax-action-indicator")) || element;
+      let href = element.attribute("href") || element.data("ajax-action"), method = element.data("ajax-action-method") || "post", indicator12 = dom26(element.data("ajax-action-indicator")) || element;
       if (!href) {
         return false;
       }
-      var extras = dom26("[data-g-extras]");
+      let extras = dom26("[data-g-extras]");
       if (extras && extras[0].PopoverDefined) {
         extras.getPopover().hide();
       }
@@ -15869,19 +15039,4 @@
   window.Genesis = modules;
   var main_default = modules;
 })();
-/**
- * History.getInternetExplorerMajorVersion()
- * Get's the major version of Internet Explorer
- * @return {integer}
- * @license Public Domain
- * @author Benjamin Arthur Lupton <contact@balupton.com>
- * @author James Padolsey <https://gist.github.com/527683>
- */
-/**
- * History.isInternetExplorer()
- * Are we using Internet Explorer?
- * @return {boolean}
- * @license Public Domain
- * @author Benjamin Arthur Lupton <contact@balupton.com>
- */
 //# sourceMappingURL=main.js.map

@@ -9,7 +9,7 @@ import __module7 from '../../utils/get-outline.js';
 
 "use strict";
 
-var dom                = __module0,
+let dom                = __module0,
     ready              = dom.ready,
     delegate           = dom.delegate,
     indicator          = __module1,
@@ -23,14 +23,14 @@ var dom                = __module0,
     getCurrentOutline  = __module7.getCurrentOutline;
 
 
-var IDsMap = {
+let IDsMap = {
     attributes: ['g-settings-particle', 'g-settings-atom'],
     block: { panel: 'g-settings-block-attributes', tab: 'g-settings-block' },
     particles: 'g-inherit-particle',
     atoms: 'g-inherit-atom'
 };
 
-var asElement = function(element) {
+let asElement = function(element) {
         return element && element.nodeType ? element : element && element[0];
     },
     collectionContains = function(collection, value) {
@@ -44,7 +44,7 @@ var asElement = function(element) {
         element = asElement(element);
         if (!element) { return; }
 
-        var event = new Event('change', {bubbles: true});
+        let event = new Event('change', {bubbles: true});
         Object.assign(event, options || {});
         element.dispatchEvent(event);
     },
@@ -61,12 +61,12 @@ var asElement = function(element) {
     };
 
 ready(function() {
-    var body             = document.body,
+    let body             = document.body,
         currentSelection = {},
         currentMode      = {};
 
     delegate(body, 'change', '[name="inherit[outline]"]', function(event, element) {
-        var settingsParam = element.closest('.settings-param'),
+        let settingsParam = element.closest('.settings-param'),
             label         = settingsParam && settingsParam.querySelector('.settings-param-title'),
             text          = settingsParam && settingsParam.querySelector('.g-item'),
             value         = element.value,
@@ -89,7 +89,7 @@ ready(function() {
 
         if (!text || !form || !mode) { return true; }
 
-        var hasChanged = currentSelection[name] !== value || currentMode[name] !== mode.value;
+        let hasChanged = currentSelection[name] !== value || currentMode[name] !== mode.value;
 
         if (hasChanged && !value) {
             includesFields.forEach(function(include) {
@@ -98,7 +98,7 @@ ready(function() {
             });
         }
 
-        var formData = JSON.parse(form.dataset.gInheritanceSettings || '{}'),
+        let formData = JSON.parse(form.dataset.gInheritanceSettings || '{}'),
             data     = {
                 outline: value || getCurrentOutline(),
                 type: formData.type || '',
@@ -110,7 +110,7 @@ ready(function() {
         data.id = formData.id;
 
         indicator.show(label);
-        var selectize = Selectize.getInstance(element);
+        let selectize = Selectize.getInstance(element);
         if (selectize) { selectize.blur(); }
 
         if (particle.radios && checked && !hasChanged) {
@@ -119,7 +119,7 @@ ready(function() {
             particle.list = false;
         }
 
-        var URI_mode = data.type === 'atom' ? 'atoms' : 'layouts',
+        let URI_mode = data.type === 'atom' ? 'atoms' : 'layouts',
             URI      = particle.list ? URI_mode + '/list' : URI_mode;
 
         request('POST', parseAjaxURI(getAjaxURL(URI) + getAjaxSuffix()), data, function(error, response) {
@@ -139,7 +139,7 @@ ready(function() {
                 return;
             }
 
-            var responseData = response.body,
+            let responseData = response.body,
                 includeField = form.querySelector('[name="inherit[include]"]'),
                 includes     = includeField && includeField.value ? includeField.value.split(',') : [],
                 available    = Array.from(form.querySelectorAll(
@@ -152,12 +152,12 @@ ready(function() {
 
             // Refresh field values based on settings and AJAX response.
             Object.keys(IDsMap).forEach(function(option) {
-                var id = IDsMap[option];
+                let id = IDsMap[option];
                 id = id.panel || id;
                 id = !Array.isArray(id) ? [id] : id;
 
                 id.forEach(function(currentID) {
-                    var shouldRefresh = includes.includes(option),
+                    let shouldRefresh = includes.includes(option),
                         isAvailable   = available.includes(option);
 
                     if ((shouldRefresh || !isAvailable) && responseData.html &&
@@ -179,11 +179,11 @@ ready(function() {
     });
 
     delegate(body, 'change', '#g-settings-inheritance [data-multicheckbox-field]', function(event, element) {
-        var root = element.closest('[data-g-inheritance-settings]') || document,
+        let root = element.closest('[data-g-inheritance-settings]') || document,
             outlineElement = root.querySelector('[name="inherit[outline]"]');
         if (!outlineElement) { return true; }
 
-        var outline   = outlineElement.value,
+        let outline   = outlineElement.value,
             value     = element.value,
             isChecked = element.checked,
             noRefresh = event.noRefresh,
@@ -191,7 +191,7 @@ ready(function() {
 
         if (!mode) { return true; }
 
-        var IDs = {
+        let IDs = {
             panel: (IDsMap[value] && IDsMap[value].panel || IDsMap[value]),
             tab: (IDsMap[value] && IDsMap[value].tab || IDsMap[value])
         };
@@ -202,22 +202,22 @@ ready(function() {
         }
 
         IDs.panel.forEach(function(currentPanel, index) {
-            var panel = document.getElementById(currentPanel),
+            let panel = document.getElementById(currentPanel),
                 tab   = document.getElementById(IDs.tab[index] + '-tab');
 
             if (!panel || !tab) { return; }
 
-            var inherit = panel.querySelector('.g-inherit'),
+            let inherit = panel.querySelector('.g-inherit'),
                 isClone = mode.value === 'clone',
                 refresh = function(skipRefresh) {
                     if (skipRefresh) { return; }
-                    var settingsBlock = element.closest('.settings-block'),
+                    let settingsBlock = element.closest('.settings-block'),
                         selector = settingsBlock && settingsBlock.querySelector('[name="inherit[outline]"]');
                     emitChange(selector);
                 };
 
             if (!isChecked || !outline || isClone) {
-                var lock = tab.querySelector('.fa-lock');
+                let lock = tab.querySelector('.fa-lock');
 
                 if (lock) {
                     lock.classList.remove('fa-lock');
@@ -226,7 +226,7 @@ ready(function() {
                 if (inherit) { inherit.style.display = 'none'; }
                 if (isClone) { refresh(noRefresh); }
             } else {
-                var unlock = tab.querySelector('.fa-unlock');
+                let unlock = tab.querySelector('.fa-unlock');
 
                 if (unlock) {
                     unlock.classList.remove('fa-unlock');
@@ -245,10 +245,10 @@ ready(function() {
         'change',
         '[name="inherit[mode]"], [name="inherit[particle]"], [name="inherit[atom]"]',
         function(event, element) {
-            var container = getModalContainer();
+            let container = getModalContainer();
             if (!container) { return; }
 
-            var outline    = container.querySelector('[name="inherit[outline]"]'),
+            let outline    = container.querySelector('[name="inherit[outline]"]'),
                 checkboxes = container.querySelectorAll('[data-multicheckbox-field]'),
                 noRefresh  = element.name === 'inherit[mode]';
 
@@ -266,7 +266,7 @@ ready(function() {
         function(event, element) {
             event.preventDefault();
 
-            var container = getModalContainer(),
+            let container = getModalContainer(),
                 outline   = container && container.querySelector('[name="inherit[outline]"]'),
                 parent    = element.parentElement,
                 id        = parent && parent.querySelector(
@@ -275,7 +275,7 @@ ready(function() {
 
             if (!id || !outline) { return false; }
 
-            var URI = id.name === 'inherit[atom]' ? 'atoms/instance' : 'layouts/particle';
+            let URI = id.name === 'inherit[atom]' ? 'atoms/instance' : 'layouts/particle';
             modal.open({
                 content: 'Loading',
                 method: 'post',
@@ -293,15 +293,15 @@ ready(function() {
     );
 
     delegate(body, 'mouseup', '.g-tabs .fa-lock, .g-tabs .fa-unlock', function(event, element) {
-        var listItem = element.closest('li');
+        let listItem = element.closest('li');
         if (!listItem || !listItem.classList.contains('active')) { return false; }
 
-        var container = getModalContainer(),
+        let container = getModalContainer(),
             anchor    = element.closest('a'),
             isLocked  = element.classList.contains('fa-lock'),
             id        = anchor ? anchor.id.replace(/\-tab$/, '') : '',
             prop      = Object.keys(IDsMap).find(function(key) {
-                var value = IDsMap[key];
+                let value = IDsMap[key];
                 return value === id || value.tab === id || collectionContains(value, id);
             }),
             input     = container && container.querySelector(

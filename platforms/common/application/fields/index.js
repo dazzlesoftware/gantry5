@@ -6,26 +6,26 @@ import './multicheckbox.js';
 
 'use strict';
 
-var dom = __module0,
+let dom = __module0,
     History = __module1,
     flags = __module2,
     submit = __module3;
 
 
-var mapsEqual = function(first, second, comparator) {
+let mapsEqual = function(first, second, comparator) {
     if (!(first instanceof Map) || !(second instanceof Map) || first.size !== second.size) { return false; }
 
-    for (var entry of first) {
+    for (let entry of first) {
         if (!second.has(entry[0]) || !comparator(entry[1], second.get(entry[0]))) { return false; }
     }
     return true;
 };
 
-var readData = function(element, name) {
+let readData = function(element, name) {
     return element.getAttribute('data-' + name);
 };
 
-var fieldValue = function(field, value) {
+let fieldValue = function(field, value) {
     if (arguments.length > 1) {
         field.value = value;
         return value;
@@ -37,19 +37,19 @@ var fieldValue = function(field, value) {
     return field.value == null ? '' : field.value;
 };
 
-var findIndicator = function(element) {
+let findIndicator = function(element) {
     return element ? element.querySelector('i') : null;
 };
 
-var showIndicator = function(element, className) {
+let showIndicator = function(element, className) {
     if (!element) { return; }
 
-    var icon = findIndicator(element);
+    let icon = findIndicator(element);
     element.gHadIcon = Boolean(icon);
 
     if (!icon) {
         if (!element.querySelector('span') && element.children.length === 0) {
-            var label = document.createElement('span');
+            let label = document.createElement('span');
             label.textContent = element.textContent;
             element.textContent = '';
             element.appendChild(label);
@@ -62,10 +62,10 @@ var showIndicator = function(element, className) {
     icon.setAttribute('class', className || 'fa fa-fw fa-spin-fast fa-spinner');
 };
 
-var hideIndicator = function(element) {
+let hideIndicator = function(element) {
     if (!element || !element.gIndicator) { return; }
 
-    var icon = findIndicator(element);
+    let icon = findIndicator(element);
     if (!icon) { return; }
 
     if (!element.gHadIcon) { icon.remove(); }
@@ -73,33 +73,33 @@ var hideIndicator = function(element) {
     element.gIndicator = null;
 };
 
-var originals,
+let originals,
     presetsCache,
     collectFieldsValues = function(keys) {
-        var map = new Map(),
+        let map = new Map(),
             defaultsElement = document.querySelector('[data-g-styles-defaults]'),
             defaults = defaultsElement ? JSON.parse(readData(defaultsElement, 'g-styles-defaults')) : {},
             overrides = document.querySelectorAll('input[type="checkbox"].settings-param-toggle');
 
         if (overrides.length) {
-            var states = {};
+            let states = {};
             overrides.forEach(function(override) { states[override.id] = override.checked; });
             map.set('__js__overrides', JSON.stringify(states));
         }
 
         if (keys) {
             keys.forEach(function(key) {
-                var field = document.querySelector('[name="' + CSS.escape(key) + '"]');
+                let field = document.querySelector('[name="' + CSS.escape(key) + '"]');
                 if (field) { map.set(key, fieldValue(field)); }
             });
             return map;
         }
 
-        var fields = document.querySelectorAll('.settings-block [name]');
+        let fields = document.querySelectorAll('.settings-block [name]');
         if (!fields.length) { return false; }
 
         fields.forEach(function(field) {
-            var key = field.getAttribute('name'),
+            let key = field.getAttribute('name'),
                 isInput = !Object.prototype.hasOwnProperty.call(defaults, key);
 
             if (field.type === 'checkbox' && !fieldValue(field).length) { fieldValue(field, '0'); }
@@ -111,7 +111,7 @@ var originals,
         return new Map(Object.keys(data).map(function(key) { return [key, data[key]]; }));
     };
 
-var compare = {
+let compare = {
     single: function() {},
     whole: function() {},
     blanks: function() {},
@@ -119,12 +119,12 @@ var compare = {
 };
 
 dom.ready(function() {
-    var body = document.body;
+    let body = document.body;
 
     originals = collectFieldsValues();
 
     compare.single = function(event, element) {
-        var parent = element.closest('.settings-param, h4, .input-group'),
+        let parent = element.closest('.settings-param, h4, .input-group'),
             target = parent ? (parent.matches('h4') ? parent : parent.querySelector('.settings-param-title, .g-instancepicker-title')) : null,
             override = parent ? parent.querySelector('.settings-param-toggle') : null,
             isNewWidget = false,
@@ -135,7 +135,7 @@ dom.ready(function() {
 
         if (element.type === 'checkbox') { fieldValue(element, Number(element.checked).toString()); }
 
-        var name = element.getAttribute('name');
+        let name = element.getAttribute('name');
         if (originals && originals.get(name) == null) {
             originals.set(name, fieldValue(element));
             isNewWidget = true;
@@ -158,7 +158,7 @@ dom.ready(function() {
     compare.whole = function(force) {
         if (!originals) { return; }
 
-        var current = collectFieldsValues(force ? Array.from(originals.keys()) : null),
+        let current = collectFieldsValues(force ? Array.from(originals.keys()) : null),
             equals = mapsEqual(originals, current, function(a, b) {
                 if (typeof a === 'string' && typeof b === 'string' && a[0] === '#' && b[0] === '#') {
                     return a.toLowerCase() === b.toLowerCase();
@@ -176,14 +176,14 @@ dom.ready(function() {
 
     compare.blanks = function(event, element) {
         if (!element) { return; }
-        var field = element.querySelector('[name]'),
+        let field = element.querySelector('[name]'),
             reset = element.querySelector('.g-reset-field');
         if (!field || !reset) { return true; }
         reset.style.display = !fieldValue(field) || field.disabled ? 'none' : '';
     };
 
     compare.presets = function(preserveServerSelection) {
-        var presets = document.querySelectorAll('[data-g-styles]');
+        let presets = document.querySelectorAll('[data-g-styles]');
         if (!presets.length) { return; }
 
         if (!presetsCache) {
@@ -196,7 +196,7 @@ dom.ready(function() {
         if (preserveServerSelection) { return; }
 
         presetsCache.forEach(function(presetMap, preset) {
-            var fields = collectFieldsValues(Array.from(presetMap.keys()));
+            let fields = collectFieldsValues(Array.from(presetMap.keys()));
             fields.delete('__js__overrides');
             preset.parentElement.classList.toggle('g-preset-match', mapsEqual(fields, presetMap, function(a, b) { return a == b; }));
         });
@@ -206,9 +206,9 @@ dom.ready(function() {
     dom.delegate(body, 'change', '.settings-block input[name][type="hidden"], .settings-block input[name][type="checkbox"], .settings-block select[name], .settings-block .selectized[name], .settings-block input[id][type="checkbox"].settings-param-toggle', compare.single);
 
     dom.delegate(body, 'input', '.g-urltemplate', function(event, element) {
-        var parent = element.closest('.settings-param');
+        let parent = element.closest('.settings-param');
         if (!parent || !parent.parentElement) { return; }
-        var link = Array.from(parent.parentElement.children).filter(function(sibling) { return sibling !== parent; })
+        let link = Array.from(parent.parentElement.children).filter(function(sibling) { return sibling !== parent; })
             .map(function(sibling) { return sibling.querySelector('[data-g-urltemplate]'); })
             .find(Boolean);
         if (link) { link.href = readData(link, 'g-urltemplate').replace(/#ID#/g, fieldValue(element)); }
@@ -216,7 +216,7 @@ dom.ready(function() {
 
     dom.delegate(body, 'mouseover', '.settings-param-field', compare.blanks);
     dom.delegate(body, 'click', '.g-reset-field', function(event, element) {
-        var parent = element.closest('.settings-param-field'),
+        let parent = element.closest('.settings-param-field'),
             field = parent ? parent.querySelector('[name]') : null;
         if (!field || field.disabled) { return; }
 

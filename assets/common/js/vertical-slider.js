@@ -6,15 +6,15 @@
     }
 
     document.querySelectorAll('[data-verticalslider-id]').forEach(function (container) {
-        var list = container.querySelector('ul');
+        let list = container.querySelector('ul');
         if (!list) return;
 
-        var slides = Array.from(list.children);
+        let slides = Array.from(list.children);
         if (!slides.length) return;
 
-        var index = Math.max(0, Number.parseInt(container.dataset.verticalsliderPresets || '1', 10) - 1);
-        var loop = bool(container.dataset.verticalsliderLoop);
-        var interval;
+        let index = Math.max(0, Number.parseInt(container.dataset.verticalsliderPresets || '1', 10) - 1);
+        let loop = bool(container.dataset.verticalsliderLoop);
+        let interval;
 
         function show(next) {
             if (loop) next = (next + slides.length) % slides.length;
@@ -26,7 +26,7 @@
         }
 
         function button(label, className, direction) {
-            var control = document.createElement('button');
+            let control = document.createElement('button');
             control.type = 'button';
             control.className = className;
             control.setAttribute('aria-label', label);
@@ -35,8 +35,8 @@
         }
 
         if (bool(container.dataset.verticalsliderControls)) {
-            var previous = button('Previous slide', 'g-verticalslider-prev', 'up');
-            var next = button('Next slide', 'g-verticalslider-next', 'down');
+            let previous = button('Previous slide', 'g-verticalslider-prev', 'up');
+            let next = button('Next slide', 'g-verticalslider-next', 'down');
             previous.addEventListener('click', function () { show(index - 1); });
             next.addEventListener('click', function () { show(index + 1); });
             container.append(previous, next);

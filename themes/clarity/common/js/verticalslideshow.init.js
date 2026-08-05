@@ -2,10 +2,10 @@ function asBool(value) { return value === true || value === 'true' || value === 
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[data-verticalslideshow-id]').forEach(function (container, index) {
-        var autoplay = asBool(container.dataset.verticalslideshowAutoplay) ? { delay: container.dataset.verticalslideshowTimeout, disableOnInteraction: false } : false;
-        var touchMove = asBool(container.dataset.verticalslideshowTouchmove);
+        let autoplay = asBool(container.dataset.verticalslideshowAutoplay) ? { delay: container.dataset.verticalslideshowTimeout, disableOnInteraction: false } : false;
+        let touchMove = asBool(container.dataset.verticalslideshowTouchmove);
 
-        var slideSwipe = new Swiper(container, {
+        let slideSwipe = new Swiper(container, {
             speed: container.dataset.verticalslideshowSpeed,
             loop: asBool(container.dataset.verticalslideshowLoop),
             allowTouchMove: touchMove,
