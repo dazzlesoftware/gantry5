@@ -73,6 +73,29 @@ class Genesis_HydrogenInstallerScript
             return true;
         }
 
+        $app = Factory::getApplication();
+        $manifest = $parent->getManifest();
+        $template = $parent->getName();
+
+        // Remove older duplicate template records left behind by renamed packages.
+        $db = Factory::getDbo();
+        $query = $db->getQuery(true)
+            ->select('*')
+            ->from('#__extensions')
+            ->where($db->quoteName('name') . ' = ' . $db->quote((string) $manifest->name))
+            ->where($db->quoteName('type') . ' = ' . $db->quote('template'))
+            ->where($db->quoteName('client_id') . ' = 0')
+            ->where($db->quoteName('element') . ' != ' . $db->quote($template));
+        $oldTemplates = $db->setQuery($query)->loadObjectList();
+
+        foreach ($oldTemplates as $old) {
+            if (version_compare((string) $old->version, (string) $manifest->version, '<')) {
+                $installer = new \Joomla\CMS\Installer\Installer($this);
+                $installer->uninstall('template', $old->extension_id);
+                $app->enqueueMessage("Removed old duplicate: {$old->name} v{$old->version}", 'info');
+            }
+        }
+
         $installer = new ThemeInstaller($parent);
         $installer->initialize();
 

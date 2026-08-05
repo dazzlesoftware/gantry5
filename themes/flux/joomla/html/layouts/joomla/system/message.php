@@ -11,6 +11,14 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
 
+// Joomla 5: use core system message layout
+include JPATH_ROOT . '/layouts/joomla/system/message.php';
+return;
+
+/**
+ * Joomla 3 version of the system messages.
+ */
+
 $msgList = $displayData['msgList'];
 
 ?>

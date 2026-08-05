@@ -4092,9 +4092,9 @@
         "platforms/common/application/lm/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 3954,
-      "lines": 99,
-      "sha256": "9cddb7442a3e498f476f06564328abcc30a3822190f9349cd0403673603661ed",
+      "bytes": 4196,
+      "lines": 109,
+      "sha256": "5730487f3fe086971b6b302a1ef5fee97e0ce07572173ff0016a37663ec2b9da",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -6563,9 +6563,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 608307,
-      "lines": 15045,
-      "sha256": "fd9a9e6d0bbdfdd9a724cd6c288b65d34dd283a0a5605e75ab260be51d911419",
+      "bytes": 608540,
+      "lines": 15052,
+      "sha256": "1a095fb2e4503b5e592c7df2f82944ee0598d4e95d3fe2816db234e2ad2db467",
       "signals": {
         "commonjs": false,
         "esModule": false,
