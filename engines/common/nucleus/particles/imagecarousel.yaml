@@ -1,0 +1,152 @@
+name: Image Carousel
+description: Display linked images and captions in a Bootstrap 5 carousel.
+type: particle
+category: slider
+icon: fa-images
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+
+    title:
+      type: input.text
+      label: Title
+
+    layout:
+      type: select.select
+      label: Layout
+      default: overlay
+      options:
+        overlay: Overlay Caption
+        below: Caption Below
+        image: Image Only
+        split: Split Image / Content
+
+    height:
+      type: input.number
+      label: Image Height
+      description: Image height in pixels. Use 0 for the image's natural height.
+      min: 0
+      default: 500
+
+    fit:
+      type: select.select
+      label: Image Fit
+      default: cover
+      options:
+        cover: Cover
+        contain: Contain
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    interval:
+      type: input.number
+      label: Autoplay Interval
+      description: Delay between slides in milliseconds.
+      min: 1000
+      default: 4500
+
+    pause:
+      type: select.select
+      label: Pause on Hover
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    wrap:
+      type: select.select
+      label: Loop
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    fade:
+      type: select.select
+      label: Fade Transition
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    controls:
+      type: select.select
+      label: Previous / Next
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    indicators:
+      type: select.select
+      label: Indicators
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    overlay:
+      type: select.select
+      label: Image Overlay
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    items:
+      type: collection.list
+      array: true
+      label: Carousel Items
+      value: title
+      ajax: true
+      fields:
+        .title:
+          type: input.text
+          label: Title
+        .subtitle:
+          type: input.text
+          label: Subtitle
+        .description:
+          type: textarea.textarea
+          label: Description
+        .image:
+          type: input.imagepicker
+          label: Image
+        .alt:
+          type: input.text
+          label: Alternative Text
+        .link:
+          type: input.text
+          label: Link
+        .target:
+          type: select.select
+          label: Target
+          default: _self
+          options:
+            _self: Current Window
+            _blank: New Window
+        .class:
+          type: input.selectize
+          label: CSS Classes
+        .disable:
+          type: input.checkbox
+          label: Disable
+          default: false

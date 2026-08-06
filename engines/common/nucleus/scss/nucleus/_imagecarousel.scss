@@ -1,0 +1,16 @@
+.g-imagecarousel {
+    .g-imagecarousel-slide { position: relative; }
+    .g-imagecarousel-image { height: var(--g-imagecarousel-height, auto); object-fit: var(--g-imagecarousel-fit, cover); }
+    .g-imagecarousel-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 25%, rgba(0, 0, 0, .72)); pointer-events: none; }
+    .g-imagecarousel-caption { z-index: 1; }
+    .g-imagecarousel-caption h3, .g-imagecarousel-caption h4 { color: inherit; }
+    &.g-imagecarousel-below .g-imagecarousel-caption { position: static; padding: 1rem; color: inherit; text-align: left; }
+    &.g-imagecarousel-below .carousel-indicators { bottom: auto; top: calc(var(--g-imagecarousel-height, 0px) - 2rem); }
+    &.g-imagecarousel-split .g-imagecarousel-slide { display: grid; grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr); }
+    &.g-imagecarousel-split .g-imagecarousel-caption { position: static; display: flex; flex-direction: column; justify-content: center; padding: 2rem; color: inherit; text-align: left; }
+    &.g-imagecarousel-split .g-imagecarousel-overlay { display: none; }
+}
+
+@media (max-width: 47.99rem) {
+    .g-imagecarousel.g-imagecarousel-split .g-imagecarousel-slide { display: block; }
+}

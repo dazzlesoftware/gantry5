@@ -1,0 +1,51 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% set carouselId = 'g-imagecarousel-' ~ id %}
+    {% set layout = particle.layout|default('overlay') %}
+    {% set autoplay = particle.autoplay|default('enable') == 'enable' %}
+    {% set height = particle.height|default(500) %}
+    {% set enabledItems = [] %}
+    {% for item in particle.items|default([]) %}
+        {% if not item.disable %}{% set enabledItems = enabledItems|merge([item]) %}{% endif %}
+    {% endfor %}
+    <section class="g-imagecarousel g-imagecarousel-{{ layout|e }} {{ particle.class|e }}"{% if height %} style="--g-imagecarousel-height: {{ height|e }}px; --g-imagecarousel-fit: {{ particle.fit|default('cover')|e }};"{% endif %}>
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        <div id="{{ carouselId }}" class="carousel slide{% if particle.fade|default('disable') == 'enable' %} carousel-fade{% endif %}"
+             data-bs-ride="{{ autoplay ? 'carousel' : 'false' }}"
+             data-bs-interval="{{ autoplay ? particle.interval|default(4500) : 'false' }}"
+             data-bs-pause="{{ particle.pause|default('enable') == 'enable' ? 'hover' : 'false' }}"
+             data-bs-wrap="{{ particle.wrap|default('enable') == 'enable' ? 'true' : 'false' }}">
+            {% if particle.indicators|default('enable') == 'enable' %}
+                <div class="carousel-indicators">
+                    {% for item in enabledItems %}
+                        <button type="button" data-bs-target="#{{ carouselId }}" data-bs-slide-to="{{ loop.index0 }}"{% if loop.first %} class="active" aria-current="true"{% endif %} aria-label="Slide {{ loop.index }}"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="carousel-inner">
+                {% for item in enabledItems %}
+                    <article class="carousel-item{% if loop.first %} active{% endif %} {{ item.class|e }}">
+                        <div class="g-imagecarousel-slide">
+                            {% if item.link %}<a class="g-imagecarousel-link" href="{{ item.link|e }}" target="{{ item.target|default('_self')|e }}"{% if item.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %}>{% endif %}
+                            {% if item.image %}<img class="g-imagecarousel-image d-block w-100" src="{{ url(item.image)|e }}" alt="{{ item.alt|default(item.title)|striptags|e }}"{% if not loop.first %} loading="lazy"{% endif %}>{% endif %}
+                            {% if particle.overlay|default('enable') == 'enable' and layout in ['overlay', 'split'] %}<span class="g-imagecarousel-overlay" aria-hidden="true"></span>{% endif %}
+                            {% if item.link %}</a>{% endif %}
+                            {% if layout != 'image' and (item.title or item.subtitle or item.description) %}
+                                <div class="g-imagecarousel-caption carousel-caption">
+                                    {% if item.title %}<h3>{{ item.title|raw }}</h3>{% endif %}
+                                    {% if item.subtitle %}<h4>{{ item.subtitle|raw }}</h4>{% endif %}
+                                    {% if item.description %}<div class="g-imagecarousel-description">{{ item.description|raw }}</div>{% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+            {% if particle.controls|default('enable') == 'enable' %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#{{ carouselId }}" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#{{ carouselId }}" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
