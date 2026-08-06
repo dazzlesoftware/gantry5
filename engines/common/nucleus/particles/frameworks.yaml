@@ -14,7 +14,7 @@ form:
     _info:
       type: separator.note
       class: alert alert-info
-      content: '<strong>TIP</strong>: Enable Bootstrap 5 only when it is required by your own particles or content.'
+      content: 'Bootstrap 5 is enabled by default for core particles and the planned full-Bootstrap theme migration.'
 
     bootstrap5:
       type: container.set
@@ -23,4 +23,4 @@ form:
         .enabled:
           type: enable.enable
           label: Framework
-          default: 0
+          default: 1
