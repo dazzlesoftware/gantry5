@@ -30,6 +30,17 @@ class Filepicker extends JsonController
     protected $value;
     /** @var bool */
     protected $filter = false;
+    /** @var array Extensions allowed through upload(); anything server-executable is deliberately excluded. */
+    protected static $allowedUploadExtensions = [
+        // images
+        'jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'bmp', 'webp',
+        // fonts
+        'woff', 'woff2', 'ttf', 'eot', 'otf',
+        // documents / media
+        'pdf', 'zip', 'mp4', 'webm', 'ogg', 'mp3', 'doc', 'docx',
+        // web assets
+        'css', 'js', 'json', 'txt', 'md', 'less', 'scss',
+    ];
     /** @var array */
     protected $httpVerbs = [
         'GET'    => [
@@ -59,6 +70,10 @@ class Filepicker extends JsonController
      */
     public function index()
     {
+        if (!$this->authorize('filemanager.manage')) {
+            throw new \RuntimeException('Not authorized.', 403);
+        }
+
         /** @var UniformResourceLocator $locator */
         $locator   = $this->container['locator'];
         $bookmarks = [];
@@ -307,9 +322,15 @@ class Filepicker extends JsonController
      */
     protected function doDownload($path, $download)
     {
+        if (!$this->authorize('filemanager.manage')) {
+            throw new \RuntimeException('Not authorized.', 403);
+        }
+
         if (!$path) {
             throw new \RuntimeException('No file specified', 400);
         }
+
+        $path = $this->sanitizePath($path);
 
         // TODO: handle streams
         $targetPath = GENESIS_ROOT . '/' . $path;
@@ -317,6 +338,8 @@ class Filepicker extends JsonController
         if (!file_exists($targetPath)) {
             throw new \RuntimeException('File not found.', 404);
         }
+
+        $this->assertWithinRoot($targetPath);
 
         $hash = md5_file($targetPath);
 
@@ -385,6 +408,10 @@ class Filepicker extends JsonController
      */
     public function upload()
     {
+        if (!$this->authorize('filemanager.manage')) {
+            throw new \RuntimeException('Not authorized.', 403);
+        }
+
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];
         $path    = implode('/', func_get_args());
@@ -396,6 +423,8 @@ class Filepicker extends JsonController
         if (base64_decode($path, true) !== false) {
             $path = urldecode(base64_decode($path));
         }
+
+        $path = $this->sanitizePath($path);
 
         if (!isset($_FILES['file']) || !is_array($_FILES['file'])) {
             throw new \RuntimeException('No file sent', 400);
@@ -436,11 +465,17 @@ class Filepicker extends JsonController
         }
 
         $fileParts = Genesis::pathinfo($uploadedName);
-        $fileExt   = strtolower($fileParts['extension']);
+        $fileExt   = isset($fileParts['extension']) ? strtolower($fileParts['extension']) : '';
 
-        // TODO: check if download is of supported type.
+        if ($fileExt === '' || !in_array($fileExt, static::$allowedUploadExtensions, true)) {
+            throw new \RuntimeException('File type not allowed.', 400);
+        }
 
         $targetPath = $this->getUploadTargetPath($path, $locator);
+
+        if (!$locator->schemeExists(explode('://', $path, 2)[0])) {
+            $this->assertWithinRoot($targetPath);
+        }
 
         // Upload it
         $destination = sprintf('%s/%s', $targetPath, $uploadedName);
@@ -593,6 +628,10 @@ class Filepicker extends JsonController
      */
     public function delete()
     {
+        if (!$this->authorize('filemanager.manage')) {
+            throw new \RuntimeException('Not authorized.', 403);
+        }
+
         /** @var UniformResourceLocator $locator */
         $locator = $this->container['locator'];
         $path    = implode('/', func_get_args());
@@ -601,18 +640,21 @@ class Filepicker extends JsonController
             $path = urldecode(base64_decode($path));
         }
 
-        $stream = explode('://', $path);
-        $scheme = $stream[0];
-
         if (!$path) {
             throw new \RuntimeException('No file specified for delete', 400);
         }
+
+        $path = $this->sanitizePath($path);
+
+        $stream = explode('://', $path);
+        $scheme = $stream[0];
 
         $isStream = $locator->schemeExists($scheme);
         if ($isStream) {
             $targetPath = $locator->findResource($path, true, true);
         } else {
             $targetPath = GENESIS_ROOT . '/' . $path;
+            $this->assertWithinRoot($targetPath);
         }
 
         $file = File::instance($targetPath);
@@ -629,6 +671,49 @@ class Filepicker extends JsonController
         $file->free();
 
         return new JsonResponse(['success', 'File deleted: ' . $targetPath]);
+    }
+
+    /**
+     * Reject directory traversal / null-byte injection in a client-supplied filepicker path.
+     *
+     * This does not by itself guarantee containment (symlinks can still point outside the
+     * root), which is why non-stream callers additionally run the result through
+     * {@see assertWithinRoot()} once the final filesystem path has been built.
+     *
+     * @param string $path
+     * @return string
+     */
+    protected function sanitizePath($path)
+    {
+        $path = str_replace('\\', '/', (string)$path);
+
+        if (strpos($path, "\0") !== false || preg_match('#(^|/)\.\.(/|$)#', $path)) {
+            throw new \RuntimeException('Invalid path.', 400);
+        }
+
+        return $path;
+    }
+
+    /**
+     * Verify that a resolved filesystem path is actually contained within GENESIS_ROOT.
+     *
+     * @param string $targetPath
+     * @return string
+     */
+    protected function assertWithinRoot($targetPath)
+    {
+        $root = realpath(GENESIS_ROOT);
+        $real = realpath($targetPath);
+
+        // Not everything we check exists yet (e.g. an upload directory about to be created),
+        // so fall back to the un-resolved path; sanitizePath() has already ruled out '..'.
+        $check = $real !== false ? $real : $targetPath;
+
+        if ($root === false || strpos($check, $root) !== 0) {
+            throw new \RuntimeException('Invalid path.', 400);
+        }
+
+        return $targetPath;
     }
 
     /**
