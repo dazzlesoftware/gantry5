@@ -56,6 +56,65 @@ final class ThemeSynchronizationTest extends TestCase
         }
     }
 
+    public function testFullThemesContainSharedNavigationScssConfiguration(): void
+    {
+        foreach ($this->fullThemeDirectories() as $theme) {
+            $navPath = $theme . '/common/scss/configuration/_nav.scss';
+            $basePath = $theme . '/common/scss/configuration/_base.scss';
+            $themeName = basename($theme);
+            $entryPath = $theme . '/common/scss/' . $themeName . '.scss';
+            $blueprintPath = $theme . '/common/blueprints/styles/menu.yaml';
+            self::assertFileExists($navPath);
+            self::assertFileExists($basePath);
+            self::assertFileExists($entryPath);
+            self::assertFileExists($blueprintPath);
+
+            $nav = file_get_contents($navPath);
+            $base = file_get_contents($basePath);
+            $entry = file_get_contents($entryPath);
+            $blueprint = file_get_contents($blueprintPath);
+            self::assertIsString($nav);
+            self::assertIsString($base);
+            self::assertIsString($entry);
+            self::assertIsString($blueprint);
+            self::assertStringContainsString('$menu-col-width:', $nav, $navPath);
+            self::assertStringContainsString('$menu-hide-on-mobile:', $nav, $navPath);
+            self::assertStringContainsString('@import "nav";', $base, $basePath);
+            self::assertStringContainsString('col-width:', $blueprint, $blueprintPath);
+            self::assertStringContainsString('hide-on-mobile:', $blueprint, $blueprintPath);
+
+            $widthConsumers = glob($theme . '/common/scss/*/*.scss') ?: [];
+            $widthConsumers = array_merge(
+                $widthConsumers,
+                glob($theme . '/common/scss/*/*/*.scss') ?: []
+            );
+            $usesWidth = false;
+            foreach ($widthConsumers as $path) {
+                if (str_ends_with(str_replace('\\', '/', $path), '/configuration/_nav.scss')) {
+                    continue;
+                }
+                $source = file_get_contents($path);
+                if (is_string($source) && str_contains($source, '$menu-col-width')) {
+                    $usesWidth = true;
+                    break;
+                }
+            }
+            self::assertTrue($usesWidth, $themeName . ' does not consume $menu-col-width');
+
+            $usesVisibility = str_contains($entry, '@import "nucleus/theme/menu-visibility";');
+            if (!$usesVisibility) {
+                foreach ($widthConsumers as $path) {
+                    $source = file_get_contents($path);
+                    if (is_string($source) && str_contains($source, '$menu-hide-on-mobile')) {
+                        $usesVisibility = true;
+                        break;
+                    }
+                }
+            }
+            self::assertTrue($usesVisibility, $themeName . ' does not consume $menu-hide-on-mobile');
+        }
+    }
+
     /** @return array<int, string> */
     private function fullThemeDirectories(): array
     {

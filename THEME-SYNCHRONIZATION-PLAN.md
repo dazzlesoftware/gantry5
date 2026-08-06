@@ -56,6 +56,14 @@ minimal reference theme and is not expected to contain all Helium demo content.
   dependencies.
 - Resolve failures caused by repository source or generated files.
 
+### 4a. SCSS structural parity
+
+- Compare Helium's shared configuration layer separately from its intentional
+  theme-specific sections, styles, layouts, and particles.
+- Ensure every full/reference theme contains and imports the shared navigation
+  configuration partial.
+- Re-run every platform SCSS compiler after structural changes.
+
 ### 5. Final parity audit
 
 - Re-run the structural comparison across all full themes.
@@ -113,7 +121,7 @@ Completed on 2026-08-05:
   restored the missing Studius override.
 - Validated PHP syntax across every PHP file under `themes/`.
 - Added regression tests for Twig and Joomla synchronization requirements.
-- Passed PHPUnit: 47 tests, 31,065 assertions, 2 pre-existing skips.
+- Passed PHPUnit: 48 tests, 31,800 assertions, 2 pre-existing skips.
 - Passed JavaScript inventory validation: 188 files.
 - Passed Twig 3 parsing for all 46 Infolist templates.
 - Passed WordPress SCSS validation: 98 entry points.
@@ -121,6 +129,23 @@ Completed on 2026-08-05:
 - Passed Grav SCSS validation: 98 entry points.
 - Passed the final structural audit: 49 full/reference themes contain all 70
   required baseline paths, with documented Helium/Hydrogen content exceptions.
+- Audited Helium's SCSS partial structure separately from compilation success.
+- Added and imported `configuration/_nav.scss` in the 46 themes that lacked the
+  shared navigation defaults; all 49 full/reference themes now provide it.
+- Replaced each commercial theme's hard-coded simple-dropdown minimum width with
+  `$menu-col-width` while retaining its existing selectors and menu structure.
+- Added the `col-width` and `hide-on-mobile` controls to all 49 menu style
+  blueprints.
+- Centralized `$menu-hide-on-mobile` behavior for the 46 migrated themes in the
+  shared Nucleus `theme/_menu-visibility.scss` partial. Helium remains unchanged;
+  Aphrodite and Hydrogen retain their already-equivalent local implementations.
+- Audited the complete SCSS import graph and restored Anacron's active but
+  unreachable sidebar partial.
+- Reviewed the remaining unreachable partials. They are empty placeholders,
+  styles for particles no longer shipped by those themes, or intentionally
+  dormant section remnants without corresponding style blueprints. Xenon's
+  unused slideshow remnant was compile-tested and correctly left dormant because
+  the theme defines none of its required configuration variables or blueprint.
 
 Manual installation, frontend comparison, responsive behavior, interactive
 particle testing, and administration testing remain tracked in

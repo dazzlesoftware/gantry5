@@ -14,7 +14,7 @@
 // Main Nav
 
 .g-main-nav .g-standard .g-dropdown
-{ min-width: 190px; }
+{ min-width: $menu-col-width; }
 
 .g-main-nav {
     z-index: 20;

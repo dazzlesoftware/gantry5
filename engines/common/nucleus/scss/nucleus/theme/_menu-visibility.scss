@@ -1,0 +1,10 @@
+// Optionally hide the desktop dropdown menu at the configured mobile breakpoint.
+@if $menu-hide-on-mobile == 1 {
+    @media only all and (max-width: $breakpoints-mobile-menu-breakpoint) {
+        [data-g-mobile-target] {
+            display: none;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+}
