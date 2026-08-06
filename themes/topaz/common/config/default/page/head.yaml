@@ -13,8 +13,8 @@ atoms:
     title: 'JavaScript Frameworks'
     attributes:
       enabled: '1'
-      bootstrap:
-        enabled: '0'
+      bootstrap5:
+        enabled: '1'
       mootools:
         enabled: '0'
         more: '0'

@@ -8,3 +8,11 @@ atoms:
       enabled: '1'
       css: {  }
       javascript: {  }
+  -
+    type: frameworks
+    title: 'JavaScript Frameworks'
+    attributes:
+      enabled: '1'
+      bootstrap5:
+        enabled: '1'
+    id: frameworks-bootstrap5

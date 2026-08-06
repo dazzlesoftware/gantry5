@@ -8,6 +8,4 @@ atoms:
       enabled: '1'
       bootstrap5:
         enabled: '1'
-      mootools:
-        enabled: '0'
-        more: '0'
+    id: frameworks-bootstrap5
