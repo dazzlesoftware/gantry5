@@ -333,6 +333,9 @@ class Platform extends BasePlatform
         // TODO: hook everything into ACL
         static $actions = [
             'platform.settings.manage' => 'admin.plugins',
+            // File manager can read/write/delete arbitrary files under GENESIS_ROOT, so require
+            // the same permission as platform settings.
+            'filemanager.manage' => 'admin.plugins',
             'updates.manage' => null,
             'menu.manage' => null,
             'menu.edit' => null,

@@ -658,6 +658,10 @@ class Platform extends BasePlatform
         switch ($action) {
             case 'platform.settings.manage':
                 return $user->authorise('core.admin', 'com_templates') || $user->authorise('core.admin', 'com_genesis');
+            case 'filemanager.manage':
+                // File manager can read/write/delete arbitrary files under GENESIS_ROOT, so require
+                // the same admin-level permission as platform settings.
+                return $user->authorise('core.admin', 'com_templates') || $user->authorise('core.admin', 'com_genesis');
             case 'menu.manage':
                 /** @var Menu $menus */
                 $menus = $this->container['menu'];

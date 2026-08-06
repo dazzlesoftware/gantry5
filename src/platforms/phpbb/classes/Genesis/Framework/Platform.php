@@ -249,6 +249,7 @@ class Platform extends BasePlatform
     {
         static $actions = [
             'platform.settings.manage' => 'a_board',
+            'filemanager.manage' => 'a_board',
             'updates.manage' => 'a_board',
             'menu.manage' => 'a_board',
             'menu.edit' => 'a_board',

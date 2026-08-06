@@ -382,4 +382,21 @@ class Platform extends BasePlatform
 
         return Utilities::truncate($text, $length, '...', true, $html);
     }
+
+    /**
+     * @param string $action
+     * @param int|string|null $id
+     * @return bool
+     */
+    public function authorize($action, $id = null)
+    {
+        if ($action === 'filemanager.manage') {
+            // File manager can read/write/delete arbitrary files under GENESIS_ROOT, so require
+            // the site-administrator capability rather than falling through to the base class's
+            // unconditional true.
+            return (bool) \current_user_can('manage_options');
+        }
+
+        return parent::authorize($action, $id);
+    }
 }
