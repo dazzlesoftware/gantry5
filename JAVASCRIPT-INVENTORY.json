@@ -22,10 +22,10 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 195,
+    "totalFiles": 197,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 173,
+      "first_party_source": 175,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
@@ -36,9 +36,9 @@
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 34,
-      "shared_browser_asset": 62
+      "shared_browser_asset": 64
     },
-    "activeReferencedFiles": 193,
+    "activeReferencedFiles": 195,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
     "esModuleFiles": 92,
@@ -1330,6 +1330,36 @@
       }
     },
     {
+      "path": "assets/common/js/heading.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/heading.html.twig"
+      ],
+      "bytes": 1075,
+      "lines": 2,
+      "sha256": "ba05ceba85edd142f1a8a59a33a06dce72f1b096a20da58ddcfe51681a1ba9e5",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "font",
+          "heading"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/headroom.min.js",
       "area": "shared_browser_asset",
       "classification": "third_party_vendored",
@@ -1569,6 +1599,43 @@
           "offcanvas-close",
           "offcanvas-open",
           "offcanvas-toggle"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/modal.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 4,
+      "consumers": [
+        "engines/common/nucleus/particles/modal.html.twig",
+        "platforms/common/application/ui/index.js",
+        "platforms/common/application/ui/togglers.js",
+        "platforms/common/js/main.js"
+      ],
+      "bytes": 2957,
+      "lines": 9,
+      "sha256": "87b219f85af951f36be90e521dc2fe95058efcd14c66d070c87e1710a7dc8cde",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "buttonFont",
+          "modal-close",
+          "modal-open",
+          "modal-root",
+          "modal-video",
+          "src"
         ],
         "storageKeys": []
       }

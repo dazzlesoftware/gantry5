@@ -1,0 +1,30 @@
+name: Divider
+description: Add a responsive horizontal or vertical border or image divider.
+type: particle
+category: general
+icon: fa-minus
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    type: {type: select.select, label: Divider Type, default: border, options: {border: Border, image: Image}}
+    orientation: {type: select.select, label: Orientation, default: horizontal, options: {horizontal: Horizontal, vertical: Vertical}}
+    borderwidth: {type: input.number, label: Border Width, min: 1, default: 1}
+    borderstyle: {type: select.select, label: Border Style, default: solid, options: {solid: Solid, dashed: Dashed, dotted: Dotted, double: Double}}
+    bordercolor: {type: input.colorpicker, label: Border Color, default: '#cccccc'}
+    borderradius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    image: {type: input.imagepicker, label: Divider Image}
+    repeat: {type: select.select, label: Image Repeat, default: no-repeat, options: {no-repeat: No Repeat, repeat: Repeat, repeat-x: Repeat Horizontally, repeat-y: Repeat Vertically}}
+    imagesize: {type: select.select, label: Image Size, default: auto, options: {auto: Auto, cover: Cover, contain: Contain}}
+    width: {type: input.number, label: Desktop Width, min: 1, default: 100}
+    tabletwidth: {type: input.number, label: Tablet Width, min: 1, default: 100}
+    mobilewidth: {type: input.number, label: Mobile Width, min: 1, default: 100}
+    widthunit: {type: select.select, label: Width Unit, default: percent, options: {percent: Percent, pixel: Pixels}}
+    height: {type: input.number, label: Desktop Height, min: 1, default: 10}
+    tabletheight: {type: input.number, label: Tablet Height, min: 1, default: 10}
+    mobileheight: {type: input.number, label: Mobile Height, min: 1, default: 10}
+    verticalheight: {type: input.number, label: Vertical Divider Height, min: 1, default: 100}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    margintop: {type: input.number, label: Margin Top, default: 30}
+    marginbottom: {type: input.number, label: Margin Bottom, default: 30}
