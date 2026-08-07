@@ -1,0 +1,34 @@
+name: Flip Box Pro
+description: Advanced flip card with icons, titles, content, backgrounds, and buttons.
+type: particle
+category: content
+icon: fa-clone
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    behavior: {type: select.select, label: Flip Behavior, default: hover, options: {hover: Hover or Focus, click: Click}}
+    direction: {type: select.select, label: Flip Direction, default: horizontal, options: {horizontal: Horizontal, vertical: Vertical}}
+    height: {type: input.number, label: Height, min: 100, default: 360}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    fronttitle: {type: input.text, label: Front Title, default: 'Front Title'}
+    frontcontent: {type: textarea.textarea, label: Front Content, default: 'Front description'}
+    fronticon: {type: input.icon, label: Front Icon, default: 'fa fa-star'}
+    frontimage: {type: input.imagepicker, label: Front Background Image}
+    frontbackground: {type: input.colorpicker, label: Front Background, default: '#3366ff'}
+    frontcolor: {type: input.colorpicker, label: Front Color, default: '#ffffff'}
+    frontbutton: {type: input.text, label: Front Button Text}
+    frontlink: {type: input.text, label: Front Button Link, default: '#'}
+    backtitle: {type: input.text, label: Back Title, default: 'Back Title'}
+    backcontent: {type: textarea.textarea, label: Back Content, default: 'Back description'}
+    backicon: {type: input.icon, label: Back Icon}
+    backimage: {type: input.imagepicker, label: Back Background Image}
+    backbackground: {type: input.colorpicker, label: Back Background, default: '#222222'}
+    backcolor: {type: input.colorpicker, label: Back Color, default: '#ffffff'}
+    backbutton: {type: input.text, label: Back Button Text, default: 'Learn More'}
+    backlink: {type: input.text, label: Back Button Link, default: '#'}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 48}
+    titlesize: {type: input.number, label: Title Size, min: 1, default: 28}
+    padding: {type: input.number, label: Padding, min: 0, default: 30}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 6}

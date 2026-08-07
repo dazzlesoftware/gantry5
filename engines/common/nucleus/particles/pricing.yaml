@@ -1,0 +1,33 @@
+name: Pricing Table
+description: Display a configurable pricing plan with features and action button.
+type: particle
+category: content
+icon: fa-money
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Plan Title, default: 'Standard'}
+    price: {type: input.text, label: Price, default: '49'}
+    symbol: {type: input.text, label: Currency Symbol, default: '$'}
+    duration: {type: input.text, label: Duration, default: '/ month'}
+    content: {type: textarea.textarea, label: Features, default: '<ul><li>Feature one</li><li>Feature two</li><li>Feature three</li></ul>'}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    featured: {type: select.select, label: Featured Plan, default: disable, options: {enable: Enable, disable: Disable}}
+    badge: {type: input.text, label: Featured Badge, default: 'Popular'}
+    buttontext: {type: input.text, label: Button Text, default: 'Choose Plan'}
+    buttonlink: {type: input.text, label: Button Link, default: '#'}
+    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, dark: Dark, custom: Custom}}
+    background: {type: input.colorpicker, label: Background, default: '#ffffff'}
+    color: {type: input.colorpicker, label: Text Color, default: '#555555'}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#222222'}
+    pricecolor: {type: input.colorpicker, label: Price Color, default: '#3366ff'}
+    bordercolor: {type: input.colorpicker, label: Border Color, default: '#dddddd'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 6}
+    padding: {type: input.number, label: Padding, min: 0, default: 30}
+    hoverscale: {type: input.number, label: Hover Scale, min: 1, max: 1.5, step: 0.01, default: 1.03}
+    hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#ffffff'}
+    hoverbordercolor: {type: input.colorpicker, label: Hover Border Color, default: '#3366ff'}
+    custombuttoncolor: {type: input.colorpicker, label: Custom Button Color, default: '#ffffff'}
+    custombuttonbackground: {type: input.colorpicker, label: Custom Button Background, default: '#3366ff'}

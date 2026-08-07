@@ -1,0 +1,24 @@
+name: Flip Box
+description: Two-sided content card that flips on hover or click.
+type: particle
+category: content
+icon: fa-refresh
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    behavior: {type: select.select, label: Flip Behavior, default: hover, options: {hover: Hover or Focus, click: Click}}
+    direction: {type: select.select, label: Flip Direction, default: horizontal, options: {horizontal: Horizontal, vertical: Vertical}}
+    height: {type: input.number, label: Height, min: 100, default: 320}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    fronttext: {type: textarea.textarea, label: Front Content, default: '<h3>Front side</h3><p>Add content here.</p>'}
+    frontbackground: {type: input.colorpicker, label: Front Background, default: '#3366ff'}
+    frontcolor: {type: input.colorpicker, label: Front Text Color, default: '#ffffff'}
+    frontimage: {type: input.imagepicker, label: Front Background Image}
+    backtext: {type: textarea.textarea, label: Back Content, default: '<h3>Back side</h3><p>Add content here.</p>'}
+    backbackground: {type: input.colorpicker, label: Back Background, default: '#222222'}
+    backcolor: {type: input.colorpicker, label: Back Text Color, default: '#ffffff'}
+    backimage: {type: input.imagepicker, label: Back Background Image}
+    padding: {type: input.number, label: Padding, min: 0, default: 30}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}

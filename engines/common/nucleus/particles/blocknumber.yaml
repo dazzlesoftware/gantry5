@@ -1,0 +1,34 @@
+name: Block Number
+description: Display a numbered content block with configurable layout and typography.
+type: particle
+category: content
+icon: fa-list-ol
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    titleelement: {type: select.select, label: Particle Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    number: {type: input.text, label: Number, default: '01'}
+    heading: {type: input.text, label: Heading, default: 'Block heading'}
+    text: {type: textarea.textarea, label: Content, default: 'Add your block content here.'}
+    layout: {type: select.select, label: Layout, default: left, options: {left: Number Left, center: Number Above, right: Number Right}}
+    alignment: {type: select.select, label: Content Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    numberfont: {type: input.fonts, label: Number Font}
+    numbersize: {type: input.number, label: Number Font Size, min: 1, default: 24}
+    numberboxsize: {type: input.number, label: Number Box Size, min: 1, default: 70}
+    numbercolor: {type: input.colorpicker, label: Number Color, default: '#ffffff'}
+    numberbackground: {type: input.colorpicker, label: Number Background, default: '#3366ff'}
+    numberborderwidth: {type: input.number, label: Number Border Width, min: 0, default: 0}
+    numberborderstyle: {type: select.select, label: Number Border Style, default: solid, options: {solid: Solid, dashed: Dashed, dotted: Dotted, double: Double}}
+    numberbordercolor: {type: input.colorpicker, label: Number Border Color, default: '#3366ff'}
+    numberradius: {type: input.number, label: Number Border Radius, min: 0, default: 50}
+    gap: {type: input.number, label: Number and Content Gap, min: 0, default: 20}
+    headingfont: {type: input.fonts, label: Heading Font}
+    headingsize: {type: input.number, label: Heading Font Size, min: 1, default: 24}
+    headingcolor: {type: input.colorpicker, label: Heading Color, default: '#222222'}
+    headingmargin: {type: input.text, label: Heading Margin, default: '0 0 10px'}
+    textfont: {type: input.fonts, label: Content Font}
+    textsize: {type: input.number, label: Content Font Size, min: 1, default: 16}
+    textcolor: {type: input.colorpicker, label: Content Color, default: '#555555'}

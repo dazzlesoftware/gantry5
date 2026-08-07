@@ -22,10 +22,10 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 197,
+    "totalFiles": 206,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 175,
+      "first_party_source": 184,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
@@ -36,9 +36,9 @@
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 34,
-      "shared_browser_asset": 64
+      "shared_browser_asset": 73
     },
-    "activeReferencedFiles": 195,
+    "activeReferencedFiles": 204,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
     "esModuleFiles": 92,
@@ -384,32 +384,19 @@
       }
     },
     {
-      "path": "assets/common/js/accordion.js",
+      "path": "assets/common/js/alert.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 14,
+      "activeReferenceCount": 1,
       "consumers": [
-        "tests/php83/ThemeJavaScriptConsolidationTest.php",
-        "themes/acronym/common/particles/accordion.html.twig",
-        "themes/citadel/common/particles/accordion.html.twig",
-        "themes/flux/common/particles/accordion.html.twig",
-        "themes/gemini/common/particles/accordion.html.twig",
-        "themes/interstellar/common/particles/accordion.html.twig",
-        "themes/notio/common/particles/accordion.html.twig",
-        "themes/photon/common/particles/accordion.html.twig",
-        "themes/protean/common/particles/accordion.html.twig",
-        "themes/remnant/common/particles/accordion.html.twig",
-        "themes/sienna/common/particles/accordion.html.twig",
-        "themes/supra/common/particles/accordion.html.twig",
-        "themes/topaz/common/particles/accordion.html.twig",
-        "themes/versla/common/particles/accordion.html.twig"
+        "engines/common/nucleus/particles/alert.html.twig"
       ],
-      "bytes": 1658,
-      "lines": 39,
-      "sha256": "e725e3cd7f8d9f2c856abfc8c9f1b03e8d058d70403f5b031e3a360e0a1075e0",
+      "bytes": 601,
+      "lines": 2,
+      "sha256": "ba3b099c2e6624ba89756b1b3e78b2c444e1aab922afb9e1e8951b0b6bbf6abb",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -420,9 +407,9 @@
         "globals": [],
         "customEvents": [],
         "dataAttributes": [
-          "accordion-id",
-          "accordionId",
-          "accordionReady"
+          "alert",
+          "alert-close",
+          "bound"
         ],
         "storageKeys": []
       }
@@ -458,6 +445,44 @@
           "duration",
           "headingFont",
           "mode"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/animatednumber.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/animatednumber.html.twig"
+      ],
+      "bytes": 1987,
+      "lines": 2,
+      "sha256": "2bb6f919c2f4e2feb24509c3b33c7c78afa94b5743421a7289cf0894e3754d76",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "animated-number",
+          "duration",
+          "format",
+          "fraction",
+          "fractionSeparator",
+          "number",
+          "number-value",
+          "numberFont",
+          "separator",
+          "titleFont"
         ],
         "storageKeys": []
       }
@@ -567,6 +592,38 @@
       }
     },
     {
+      "path": "assets/common/js/blocknumber.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/blocknumber.html.twig"
+      ],
+      "bytes": 1159,
+      "lines": 2,
+      "sha256": "e0777c1255902b2356c901456f029888aa83b4e04cdc59f0ec905dde1809081f",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "blocknumber",
+          "headingFont",
+          "numberFont",
+          "textFont"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/bookblock.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
@@ -594,6 +651,37 @@
         "dataAttributes": [
           "bookblock-id",
           "bookblockReady"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/button.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 2,
+      "consumers": [
+        "engines/common/nucleus/particles/button.html.twig",
+        "engines/common/nucleus/particles/buttongroup.html.twig"
+      ],
+      "bytes": 1048,
+      "lines": 2,
+      "sha256": "75c69f1e6884e6d42f8f014481567428c24b9cda575ad9e59da1b717e0f59bf5",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "button-font",
+          "buttonFont"
         ],
         "storageKeys": []
       }
@@ -1223,6 +1311,212 @@
         "globals": [],
         "customEvents": [],
         "dataAttributes": [],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-accordion.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/accordion.html.twig"
+      ],
+      "bytes": 1663,
+      "lines": 2,
+      "sha256": "da6e76a65e7af258af98ffc4c037379a0e8b6bee2b001b2082d1e7fac87f5830",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "accordion",
+          "accordion-toggle",
+          "multi",
+          "titleFont"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-contentcarousel.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 2,
+      "consumers": [
+        "engines/common/nucleus/particles/contentcarousel.html.twig",
+        "engines/common/nucleus/particles/contentcarouselpro.html.twig"
+      ],
+      "bytes": 3222,
+      "lines": 2,
+      "sha256": "a7f02231ad18d652bfaeec05196f61989622809b0121aab5a77429071219ea97",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "autoplay",
+          "carousel-dots",
+          "carousel-next",
+          "carousel-prev",
+          "carousel-video",
+          "carouselVideo",
+          "genesis-carousel",
+          "interval",
+          "loop",
+          "pauseHover",
+          "randomize",
+          "speed"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-flipbox.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 2,
+      "consumers": [
+        "engines/common/nucleus/particles/flipbox.html.twig",
+        "engines/common/nucleus/particles/flipboxpro.html.twig"
+      ],
+      "bytes": 727,
+      "lines": 2,
+      "sha256": "e3a8522e377aeb0ad13c75633e270033bb7b4cadd99c99e78eb80ed00ab15d28",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "behavior",
+          "bound",
+          "flipbox"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-openstreetmap.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/openstreetmap.html.twig"
+      ],
+      "bytes": 2991,
+      "lines": 2,
+      "sha256": "17567328ad35d1631189392543b90f53221c0ee507e41a3aa89eb135f4425fb2",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "dragging",
+          "lat",
+          "lng",
+          "osm",
+          "osm-zoom",
+          "osmZoom",
+          "scroll",
+          "style",
+          "zoom"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-pieprogress.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/pieprogress.html.twig"
+      ],
+      "bytes": 1190,
+      "lines": 2,
+      "sha256": "12eaf8330146e574f61e7c7b76bc833ee21faabad6c8ff8f75bdc20b37306947",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "duration",
+          "pie-progress",
+          "pie-value",
+          "value"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-socialshare.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/socialshare.html.twig"
+      ],
+      "bytes": 1628,
+      "lines": 2,
+      "sha256": "33498b966aee48cac134f1f6c176a63a39e57ff2408ca56b79ca5d54db8d445d",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "networks",
+          "ready",
+          "showNames",
+          "social-share"
+        ],
         "storageKeys": []
       }
     },

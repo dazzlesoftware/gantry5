@@ -1,0 +1,41 @@
+name: Content Carousel Pro
+description: Conflict-safe media carousel with split content layouts.
+type: particle
+category: content
+icon: fa-sliders
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    height: {type: input.number, label: Carousel Height, min: 150, default: 520}
+    contentwidth: {type: input.number, label: Content Width Percent, min: 20, max: 100, default: 50}
+    fullwidth: {type: select.select, label: Full Width Content, default: disable, options: {enable: Enable, disable: Disable}}
+    autoplay: {type: select.select, label: Autoplay, default: enable, options: {enable: Enable, disable: Disable}}
+    pausehover: {type: select.select, label: Pause on Hover, default: enable, options: {enable: Enable, disable: Disable}}
+    loop: {type: select.select, label: Loop, default: enable, options: {enable: Enable, disable: Disable}}
+    randomize: {type: select.select, label: Randomize, default: disable, options: {enable: Enable, disable: Disable}}
+    interval: {type: input.number, label: Interval, min: 1000, default: 5000}
+    speed: {type: input.number, label: Transition Speed, min: 0, default: 600}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    bullets: {type: select.select, label: Bullets, default: enable, options: {enable: Show, disable: Hide}}
+    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#ffffff'}
+    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: 'rgba(0,0,0,0.45)'}
+    slides:
+      type: collection.list
+      array: true
+      label: Pro Slides
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Title}
+        .content: {type: textarea.textarea, label: Content}
+        .image: {type: input.imagepicker, label: Image}
+        .video: {type: input.text, label: Video URL}
+        .background: {type: input.imagepicker, label: Background Image}
+        .layout: {type: select.select, label: Layout, default: overlay, options: {overlay: Overlay, media-left: Media Left, media-right: Media Right}}
+        .contentbackground: {type: input.colorpicker, label: Content Background, default: 'rgba(0,0,0,0.55)'}
+        .contentcolor: {type: input.colorpicker, label: Content Color, default: '#ffffff'}
+        .buttontext: {type: input.text, label: Button Text}
+        .buttonlink: {type: input.text, label: Button Link}
+        .disable: {type: input.checkbox, label: Disable, default: false}

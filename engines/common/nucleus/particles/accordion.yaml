@@ -1,0 +1,45 @@
+name: Accordion
+description: Responsive accessible accordion with text, icons, or images.
+type: particle
+category: content
+icon: fa-list
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    openfirst: {type: select.select, label: First Item, default: open, options: {open: Open, closed: Closed}}
+    multiopen: {type: select.select, label: Keep Multiple Items Open, default: disable, options: {enable: Enable, disable: Disable}}
+    iconposition: {type: select.select, label: Toggle Icon Position, default: right, options: {left: Left, right: Right}}
+    togglicon: {type: input.icon, label: Toggle Icon, default: 'fa fa-chevron-right'}
+    iconrotate: {type: input.number, label: Active Icon Rotation, default: 90}
+    titlefont: {type: input.fonts, label: Item Title Font}
+    titlefontsize: {type: input.number, label: Item Title Size, min: 1, default: 18}
+    titlecolor: {type: input.colorpicker, label: Header Text Color, default: '#222222'}
+    titlebackground: {type: input.colorpicker, label: Header Background, default: '#f5f5f5'}
+    activetitlecolor: {type: input.colorpicker, label: Active Header Text Color, default: '#ffffff'}
+    activebackground: {type: input.colorpicker, label: Active Header Background, default: '#3366ff'}
+    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
+    contentcolor: {type: input.colorpicker, label: Content Color, default: '#555555'}
+    headerpadding: {type: input.text, label: Header Padding, default: '16px 20px'}
+    contentpadding: {type: input.text, label: Content Padding, default: '20px'}
+    itemgap: {type: input.number, label: Item Gap, min: 0, default: 10}
+    borderwidth: {type: input.number, label: Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Border Color, default: '#dddddd'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    items:
+      type: collection.list
+      array: true
+      label: Accordion Items
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Title}
+        .content: {type: textarea.textarea, label: Content}
+        .visual: {type: select.select, label: Header Visual, default: none, options: {none: None, icon: Icon, image: Image}}
+        .icon: {type: input.icon, label: Header Icon}
+        .image: {type: input.imagepicker, label: Header Image}
+        .imagealt: {type: input.text, label: Image Alternative Text}
+        .disable: {type: input.checkbox, label: Disable, default: false}

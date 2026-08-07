@@ -1,0 +1,42 @@
+name: Button Group
+description: Display a responsive group of Bootstrap or custom buttons.
+type: particle
+category: content
+icon: fa-ellipsis-h
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    alignment: {type: select.select, label: Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    gap: {type: input.number, label: Button Gap, min: 0, default: 10}
+    wrap: {type: select.select, label: Wrap Buttons, default: enable, options: {enable: Enable, disable: Disable}}
+    buttons:
+      type: collection.list
+      array: true
+      label: Buttons
+      value: text
+      ajax: true
+      fields:
+        .text: {type: input.text, label: Button Text}
+        .link: {type: input.text, label: Link, default: '#'}
+        .target: {type: select.select, label: Link Target, default: _self, options: {_self: Current Window, _blank: New Window}}
+        .nofollow: {type: input.checkbox, label: No Follow, default: false}
+        .style: {type: select.select, label: Bootstrap Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
+        .appearance: {type: select.select, label: Appearance, default: flat, options: {flat: Flat, outline: Outline}}
+        .size: {type: select.select, label: Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
+        .shape: {type: select.select, label: Shape, default: rounded, options: {rounded: Rounded, square: Square, pill: Pill}}
+        .fullwidth: {type: input.checkbox, label: Full Width, default: false}
+        .font: {type: input.fonts, label: Font}
+        .fontsize: {type: input.number, label: Font Size, min: 1, default: 16}
+        .weight: {type: input.number, label: Font Weight, min: 100, max: 900, default: 400}
+        .padding: {type: input.text, label: Custom Padding, default: '8px 22px'}
+        .icon: {type: input.icon, label: Icon}
+        .iconposition: {type: select.select, label: Icon Position, default: left, options: {left: Left, right: Right}}
+        .color: {type: input.colorpicker, label: Custom Text Color, default: '#ffffff'}
+        .background: {type: input.colorpicker, label: Custom Background, default: '#3366ff'}
+        .bordercolor: {type: input.colorpicker, label: Custom Border Color, default: '#3366ff'}
+        .hovercolor: {type: input.colorpicker, label: Hover Text Color, default: '#ffffff'}
+        .hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#0037dd'}
+        .hoverbordercolor: {type: input.colorpicker, label: Hover Border Color, default: '#0037dd'}
+        .disable: {type: input.checkbox, label: Disable, default: false}

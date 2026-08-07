@@ -1,0 +1,39 @@
+name: Content Carousel
+description: Conflict-safe content and background slide carousel.
+type: particle
+category: content
+icon: fa-picture-o
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    height: {type: input.number, label: Height, min: 100, default: 480}
+    alignment: {type: select.select, label: Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    autoplay: {type: select.select, label: Autoplay, default: enable, options: {enable: Enable, disable: Disable}}
+    pausehover: {type: select.select, label: Pause on Hover, default: enable, options: {enable: Enable, disable: Disable}}
+    loop: {type: select.select, label: Loop, default: enable, options: {enable: Enable, disable: Disable}}
+    randomize: {type: select.select, label: Randomize, default: disable, options: {enable: Enable, disable: Disable}}
+    interval: {type: input.number, label: Interval, min: 1000, default: 5000}
+    speed: {type: input.number, label: Transition Speed, min: 0, default: 500}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    bullets: {type: select.select, label: Bullets, default: enable, options: {enable: Show, disable: Hide}}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#ffffff'}
+    titlesize: {type: input.number, label: Title Size, min: 1, default: 42}
+    contentcolor: {type: input.colorpicker, label: Content Color, default: '#ffffff'}
+    contentsize: {type: input.number, label: Content Size, min: 1, default: 18}
+    overlay: {type: input.colorpicker, label: Overlay, default: 'rgba(0,0,0,0.45)'}
+    slides:
+      type: collection.list
+      array: true
+      label: Slides
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Title}
+        .content: {type: textarea.textarea, label: Content}
+        .background: {type: input.imagepicker, label: Background Image}
+        .buttontext: {type: input.text, label: Button Text}
+        .buttonlink: {type: input.text, label: Button Link}
+        .buttonstyle: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark}}
+        .disable: {type: input.checkbox, label: Disable, default: false}

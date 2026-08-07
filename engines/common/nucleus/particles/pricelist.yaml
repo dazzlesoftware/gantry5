@@ -1,0 +1,27 @@
+name: Price List
+description: Display a menu or service item with image, title, description, and pricing.
+type: particle
+category: content
+icon: fa-list-alt
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    image: {type: input.imagepicker, label: Image}
+    imageposition: {type: select.select, label: Image or Number Position, default: left, options: {left: Left, right: Right}}
+    imagewidth: {type: input.number, label: Image Width, min: 20, default: 100}
+    imageradius: {type: input.number, label: Image Border Radius, min: 0, default: 4}
+    number: {type: input.text, label: Number}
+    tag: {type: input.text, label: Image Tag}
+    tagbackground: {type: input.colorpicker, label: Tag Background, default: '#e91e63'}
+    title: {type: input.text, label: Title, default: 'Price list item'}
+    price: {type: input.text, label: Price, default: '$19.00'}
+    discountprice: {type: input.text, label: Discount Price}
+    description: {type: textarea.textarea, label: Description, default: 'Add a description for this item.'}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#222222'}
+    pricecolor: {type: input.colorpicker, label: Price Color, default: '#3366ff'}
+    textcolor: {type: input.colorpicker, label: Description Color, default: '#666666'}
+    line: {type: select.select, label: Connector Line, default: enable, options: {enable: Show, disable: Hide}}
+    linecolor: {type: input.colorpicker, label: Line Color, default: '#cccccc'}
+    linestyle: {type: select.select, label: Line Style, default: dotted, options: {solid: Solid, dashed: Dashed, dotted: Dotted}}

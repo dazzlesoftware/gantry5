@@ -1,0 +1,28 @@
+name: Animated Number
+description: Animate a formatted number when it enters the viewport.
+type: particle
+category: content
+icon: fa-sort-numeric-asc
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    number: {type: input.number, label: Number, default: 1000}
+    fraction: {type: input.text, label: Fraction}
+    duration: {type: input.number, label: Duration in Milliseconds, min: 0, default: 2000}
+    prefix: {type: input.text, label: Prefix}
+    suffix: {type: input.text, label: Suffix}
+    format: {type: select.select, label: Number Formatting, default: enable, options: {enable: Enable, disable: Disable}}
+    separator: {type: input.text, label: Thousands Separator, default: ','}
+    fractionseparator: {type: input.text, label: Fraction Separator, default: '.'}
+    title: {type: input.text, label: Counter Title}
+    layout: {type: select.select, label: Layout, default: stacked, options: {stacked: Number Above Title, inline: Number Beside Title}}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    numberfont: {type: input.fonts, label: Number Font}
+    numbersize: {type: input.number, label: Number Size, min: 1, default: 48}
+    numbercolor: {type: input.colorpicker, label: Number Color, default: '#3366ff'}
+    titlefont: {type: input.fonts, label: Title Font}
+    titlesize: {type: input.number, label: Title Size, min: 1, default: 18}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#555555'}
+    gap: {type: input.number, label: Number and Title Gap, min: 0, default: 10}

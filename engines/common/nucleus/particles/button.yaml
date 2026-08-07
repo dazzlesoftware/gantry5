@@ -1,34 +1,36 @@
 name: Button
-description: Display simple button
+description: Display a Bootstrap or fully custom styled button.
 type: particle
-category: general
-icon: fa-battery-4
-
+category: content
+icon: fa-hand-pointer-o
+configuration: {caching: {type: static}}
 form:
-  overrideable: false
   fields:
-    enabled:
-      type: input.checkbox
-      label: Enabled
-      description: Globally enable particles.
-      default: true
-    label:
-      type: input.text
-      label: Label
-      default: Button label
-    link:
-      type: input.text
-      label: Link
-    target:
-      type: select.selectize
-      label: Target
-      description: Target browser window when item is clicked.
-      placeholder: 'Select...'
-      options:
-          _self: Self
-          _blank: New Window
-          lightcase: Lightcase
-    class:
-      type: input.selectize
-      label: CSS Classes
-      description: CSS class name for the particle.
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    text: {type: input.text, label: Button Text, default: 'Button'}
+    link: {type: input.text, label: Link, default: '#'}
+    target: {type: select.select, label: Link Target, default: _self, options: {_self: Current Window, _blank: New Window}}
+    nofollow: {type: input.checkbox, label: No Follow, default: false}
+    download: {type: select.select, label: Download Link, default: disable, options: {enable: Enable, disable: Disable}}
+    filename: {type: input.text, label: Download Filename}
+    arialabel: {type: input.text, label: Aria Label}
+    style: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
+    appearance: {type: select.select, label: Appearance, default: flat, options: {flat: Flat, outline: Outline}}
+    size: {type: select.select, label: Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
+    shape: {type: select.select, label: Shape, default: rounded, options: {rounded: Rounded, square: Square, pill: Pill}}
+    fullwidth: {type: select.select, label: Full Width, default: disable, options: {enable: Enable, disable: Disable}}
+    alignment: {type: select.select, label: Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    font: {type: input.fonts, label: Font}
+    fontsize: {type: input.number, label: Font Size, min: 1, default: 16}
+    weight: {type: select.select, label: Font Weight, default: '400', options: {'300': Light, '400': Normal, '500': Medium, '600': Semi Bold, '700': Bold, '800': Extra Bold}}
+    padding: {type: input.text, label: Custom Padding, default: '8px 22px'}
+    icon: {type: input.icon, label: Icon}
+    iconposition: {type: select.select, label: Icon Position, default: left, options: {left: Left, right: Right}}
+    icongap: {type: input.number, label: Icon Gap, min: 0, default: 8}
+    color: {type: input.colorpicker, label: Custom Text Color, default: '#ffffff'}
+    background: {type: input.colorpicker, label: Custom Background, default: '#3366ff'}
+    bordercolor: {type: input.colorpicker, label: Custom Border Color, default: '#3366ff'}
+    hovercolor: {type: input.colorpicker, label: Hover Text Color, default: '#ffffff'}
+    hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#0037dd'}
+    hoverbordercolor: {type: input.colorpicker, label: Hover Border Color, default: '#0037dd'}
