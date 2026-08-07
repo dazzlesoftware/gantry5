@@ -2,6 +2,26 @@
 
 Generated mapping of Particle YAML, Twig, and SCSS files across the engine and all themes.
 
+## Core vs. Theme Name Conflicts
+
+13 particle names exist in both core (`engines/common/nucleus/particles`) and at least one theme's `common/particles` folder. This is normal Gantry 5 behavior — a theme overrides a core particle by placing a same-named file in its own `common/particles` folder, which takes precedence at render time.
+
+| Particle | # Themes | Overriding Themes |
+|---|---|---|
+| **contenttabs** | 20 | acronym, ambrosia, anacron, antares, aphrodite, audacity, callisto, chimera, epsilon, flux, gemini, hadron, helium, interstellar, lexicon, notio, photon, protean, supra, vermilion, versla |
+| **logo** | 21 | akuatik, ambrosia, calla, chimera, clarity, denali, elixir, horizon, koleti, kraken, manticore, myriad, orion, phoenix, reiko, requiem, salient, studius, vermilion, xenon, zenith |
+| **social** | 19 | akuatik, ambrosia, anacron, audacity, chimera, clarity, elixir, epsilon, hadron, horizon, kraken, manticore, myriad, orion, phoenix, requiem, salient, studius, vermilion |
+| **heading** | 12 | akuatik, calla, clarity, elixir, horizon, koleti, manticore, orion, phoenix, reiko, studius, zenith |
+| **accordion** | 13 | acronym, citadel, flux, gemini, interstellar, notio, photon, protean, remnant, sienna, supra, topaz, versla |
+| **totop** | 9 | anacron, antares, audacity, chimera, epsilon, hadron, lexicon, myriad, vermilion |
+| **swipercarousel** | 8 | citadel, galatea, interstellar, photon, protean, remnant, sienna, topaz |
+| **copyright** | 7 | antares, aphrodite, helium, isotope, kraken, requiem, xenon |
+| **custom** | 7 | anacron, audacity, chimera, epsilon, hadron, lexicon, vermilion |
+| **image** | 5 | elixir, horizon, orion, phoenix, studius |
+| **menu** | 1 | vermilion |
+| **timeline** | 1 | zenith |
+| **imageoverlay** | 1 | ethereal |
+
 ## Engine (engines/common/nucleus)
 
 ### accordion
