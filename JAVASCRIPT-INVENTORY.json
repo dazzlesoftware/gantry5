@@ -1457,7 +1457,7 @@
       }
     },
     {
-      "path": "assets/common/js/genesis-contenttabs.js",
+      "path": "assets/common/js/genesis-dynamictabs.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
       "owner": "Genesis",
@@ -1465,11 +1465,11 @@
       "entryPoint": false,
       "activeReferenceCount": 1,
       "consumers": [
-        "engines/common/nucleus/particles/contenttabs.html.twig"
+        "engines/common/nucleus/particles/dynamictabs.html.twig"
       ],
       "bytes": 1928,
       "lines": 52,
-      "sha256": "175578121b6e731a0c563b8012bbbed15f82a456b72cf98caaf054ce49096e8b",
+      "sha256": "9736032ac3c0fa7352ff24dfe74386a0b35db1f23087dcff22071f1bf3a020f5",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1480,7 +1480,7 @@
         "globals": [],
         "customEvents": [],
         "dataAttributes": [
-          "content-tabs",
+          "dynamic-tabs",
           "tab-index"
         ],
         "storageKeys": []

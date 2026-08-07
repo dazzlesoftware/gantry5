@@ -8,7 +8,7 @@
     initialized.add(root);
 
     const tabs = [...root.querySelectorAll("[data-tab-index]")];
-    const panels = [...root.querySelectorAll(".g-content-tab-panel")];
+    const panels = [...root.querySelectorAll(".g-dynamic-tab-panel")];
 
     const activate = (index, focus = false) => {
       tabs.forEach((tab, tabIndex) => {
@@ -42,7 +42,7 @@
   };
 
   const scan = (scope = document) => {
-    const roots = scope.matches?.("[data-content-tabs]") ? [scope] : scope.querySelectorAll?.("[data-content-tabs]") || [];
+    const roots = scope.matches?.("[data-dynamic-tabs]") ? [scope] : scope.querySelectorAll?.("[data-dynamic-tabs]") || [];
     roots.forEach(init);
   };
 

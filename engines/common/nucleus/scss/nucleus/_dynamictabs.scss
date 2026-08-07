@@ -1,39 +1,39 @@
-.g-content-tabs {
+.g-dynamic-tabs {
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
 }
 
-.g-content-tabs-layout {
+.g-dynamic-tabs-layout {
   display: flex;
   gap: var(--g-tabs-gap);
 }
 
-.g-content-tabs-nav {
+.g-dynamic-tabs-nav {
   display: flex;
   gap: var(--g-tabs-gap);
   border: 0;
 }
 
-.g-content-tabs-nav .nav-link {
+.g-dynamic-tabs-nav .nav-link {
   display: inline-flex;
   gap: 0.6rem;
   align-items: center;
   color: var(--g-tabs-color);
 }
 
-.g-content-tabs-nav .nav-link.active {
+.g-dynamic-tabs-nav .nav-link.active {
   background: var(--g-tabs-active-bg);
   color: var(--g-tabs-active-color);
 }
 
-.g-content-tabs-nav .nav-link img {
+.g-dynamic-tabs-nav .nav-link img {
   width: 2.5rem;
   height: 2.5rem;
   object-fit: cover;
 }
 
-.g-content-tabs-nav .nav-link small {
+.g-dynamic-tabs-nav .nav-link small {
   display: block;
 }
 
@@ -50,34 +50,34 @@
   justify-content: center;
 }
 
-.g-content-tabs-panels {
+.g-dynamic-tabs-panels {
   flex: 1;
   min-width: 0;
   padding: var(--g-tabs-content-padding);
   background: var(--g-tabs-content-bg);
 }
 
-.g-tabs-left .g-content-tabs-nav,
-.g-tabs-right .g-content-tabs-nav {
+.g-tabs-left .g-dynamic-tabs-nav,
+.g-tabs-right .g-dynamic-tabs-nav {
   width: var(--g-tabs-nav-width);
   flex-direction: column;
 }
 
-.g-tabs-right .g-content-tabs-nav,
-.g-tabs-bottom .g-content-tabs-nav {
+.g-tabs-right .g-dynamic-tabs-nav,
+.g-tabs-bottom .g-dynamic-tabs-nav {
   order: 2;
 }
 
-.g-tabs-top .g-content-tabs-layout,
-.g-tabs-bottom .g-content-tabs-layout {
+.g-tabs-top .g-dynamic-tabs-layout,
+.g-tabs-bottom .g-dynamic-tabs-layout {
   flex-direction: column;
 }
 
-.g-tabs-transition-fade .g-content-tab-panel.active {
+.g-tabs-transition-fade .g-dynamic-tab-panel.active {
   animation: g-tabs-fade 0.3s ease;
 }
 
-.g-tabs-transition-slide .g-content-tab-panel.active {
+.g-tabs-transition-slide .g-dynamic-tab-panel.active {
   animation: g-tabs-slide 0.3s ease;
 }
 
@@ -92,12 +92,12 @@
 }
 
 @media (max-width: 47.99rem) {
-  .g-content-tabs-layout {
+  .g-dynamic-tabs-layout {
     flex-direction: column;
   }
 
-  .g-tabs-left .g-content-tabs-nav,
-  .g-tabs-right .g-content-tabs-nav {
+  .g-tabs-left .g-dynamic-tabs-nav,
+  .g-tabs-right .g-dynamic-tabs-nav {
     width: 100%;
     order: 0;
   }
