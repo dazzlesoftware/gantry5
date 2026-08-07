@@ -1,0 +1,35 @@
+name: Content Tabs
+description: Display responsive tabbed content with icons or images.
+type: particle
+category: content
+icon: fa-folder
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    navposition: {type: select.select, label: Navigation Position, default: top, options: {top: Top, bottom: Bottom, left: Left, right: Right}}
+    alignment: {type: select.select, label: Navigation Alignment, default: left, options: {left: Left, center: Center, right: Right, justified: Justified}}
+    style: {type: select.select, label: Bootstrap Tab Style, default: tabs, options: {tabs: Tabs, pills: Pills, underline: Underline}}
+    navwidth: {type: input.number, label: Side Navigation Width, description: 'Percentage when navigation is left or right.', min: 10, max: 60, default: 25}
+    gap: {type: input.number, label: Navigation Gap, min: 0, default: 8}
+    navcolor: {type: input.colorpicker, label: Navigation Text Color, default: '#333333'}
+    activecolor: {type: input.colorpicker, label: Active Text Color, default: '#ffffff'}
+    activebackground: {type: input.colorpicker, label: Active Background, default: '#3366ff'}
+    contentbackground: {type: input.colorpicker, label: Content Background, default: 'rgba(0,0,0,0)'}
+    contentpadding: {type: input.text, label: Content Padding, default: '1.5rem'}
+    transition: {type: select.select, label: Content Transition, default: fade, options: {none: None, fade: Fade, slide: Slide}}
+    items:
+      type: collection.list
+      array: true
+      label: Tabs
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Tab Title, default: New tab}
+        .enabled: {type: input.checkbox, label: Enabled, default: true}
+        .subtitle: {type: input.text, label: Subtitle}
+        .icon: {type: input.icon, label: Icon}
+        .image: {type: input.imagepicker, label: Navigation Image}
+        .content: {type: textarea.textarea, label: Content, default: Add tab content here.}

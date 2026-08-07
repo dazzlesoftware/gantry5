@@ -1,0 +1,28 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <article class="g-person g-person-{{ particle.preset|default('card')|e }} text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" style="--gperson-height:{{ particle.imageheight|default(360)|e('html_attr') }}px;--gperson-bg:{{ particle.background|default('#ffffff')|e('html_attr') }};--gperson-color:{{ particle.color|default('#444444')|e('html_attr') }};--gperson-accent:{{ particle.accent|default('#3366ff')|e('html_attr') }};--gperson-overlay:{{ particle.overlay|default('rgba(0,0,0,.7)')|e('html_attr') }};--gperson-radius:{{ particle.radius|default(0)|e('html_attr') }}px;">
+        {% if particle.image %}<div class="g-person-media"><img src="{{ url(particle.image)|e }}" alt="{{ particle.alt|default(particle.name)|e }}" loading="lazy"></div>{% endif %}
+        <div class="g-person-content">
+            {% if particle.profilelink %}<a class="g-person-profile-link" href="{{ particle.profilelink|e }}" aria-label="View {{ particle.name|e }} profile"></a>{% endif %}
+            <h3>{{ particle.name|raw }}</h3>
+            {% if particle.designation %}<div class="g-person-designation">{{ particle.designation|e }}</div>{% endif %}
+            {% if particle.socialposition|default('bottom') == 'top' %}
+                <div class="g-person-socials">
+                    {% for social in particle.socials|default([]) %}
+                        {% if social.enabled|default(true) and social.url %}<a href="{{ social.url|e }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.label|e }}"{% if social.color %} style="color:{{ social.color|e('html_attr') }}"{% endif %}><i class="{{ social.icon|default('fa fa-link')|e }}" aria-hidden="true"></i></a>{% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if particle.intro %}<div class="g-person-intro">{{ particle.intro|raw }}</div>{% endif %}
+            {% if particle.socialposition|default('bottom') == 'bottom' %}
+                <div class="g-person-socials">
+                    {% for social in particle.socials|default([]) %}
+                        {% if social.enabled|default(true) and social.url %}<a href="{{ social.url|e }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.label|e }}"{% if social.color %} style="color:{{ social.color|e('html_attr') }}"{% endif %}><i class="{{ social.icon|default('fa fa-link')|e }}" aria-hidden="true"></i></a>{% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </article>
+{% endblock %}

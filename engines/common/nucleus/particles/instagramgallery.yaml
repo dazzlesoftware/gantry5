@@ -1,9 +1,9 @@
 name: Instagram Gallery
-description: Display a portable Instagram-style gallery from manually configured media.
+description: Display media from a professional Instagram account, with an optional manual fallback.
 type: particle
 category: social
 icon: fa-instagram
-configuration: {caching: {type: static}}
+configuration: {caching: {type: dynamic}}
 form:
   fields:
     enabled: {type: input.checkbox, label: Enabled, default: true}
@@ -11,8 +11,17 @@ form:
     title: {type: input.text, label: Title, default: Instagram Gallery}
     heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
     titlealignment: {type: select.select, label: Title Alignment, default: center, options: {left: Left, center: Center, right: Right}}
-    profile: {type: input.text, label: Instagram Username or Hashtag}
-    profilelink: {type: input.text, label: Profile or Hashtag Link}
+    source: {type: select.select, label: Media Source, default: instagram, options: {instagram: Instagram Feed, manual: Manual Gallery}}
+    feedhelp: {type: separator.note, class: alert alert-info, content: 'Instagram requires a Meta access token and an authenticated professional Instagram account. The target username must be a Business or Creator account.'}
+    profile: {type: input.text, label: Target Instagram Username, description: 'Enter the username without @.'}
+    accountid: {type: input.text, label: Authenticated Instagram Account ID, description: 'The numeric Instagram professional account ID used for Meta Business Discovery.'}
+    accesstoken: {type: input.text, label: Meta Access Token, description: 'Used by PHP on the server only; it is never rendered into the page.'}
+    apiversion: {type: input.text, label: Meta Graph API Version, default: v23.0}
+    feedlimit: {type: input.number, label: Feed Item Limit, min: 1, max: 100, default: 12}
+    cachelifetime: {type: input.number, label: Feed Cache Lifetime (seconds), min: 60, max: 86400, default: 3600}
+    manualfallback: {type: select.select, label: Use Manual Items if Feed Fails, default: disable, options: {enable: Enable, disable: Disable}}
+    showfeederror: {type: select.select, label: Show Feed Error, default: enable, options: {enable: Show, disable: Hide}}
+    profilelink: {type: input.text, label: Custom Profile Link, description: 'Optional. The Instagram profile URL is generated automatically when empty.'}
     layout: {type: select.select, label: Layout, default: grid, options: {grid: Grid, masonry: Masonry}}
     columns: {type: input.number, label: Desktop Columns, min: 1, max: 8, default: 4}
     tabletcolumns: {type: input.number, label: Tablet Columns, min: 1, max: 6, default: 3}

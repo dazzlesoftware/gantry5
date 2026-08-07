@@ -1,0 +1,41 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    {% set tabs_id = 'g-content-tabs-' ~ id %}
+    <section
+        id="{{ tabs_id|e }}"
+        class="g-content-tabs g-tabs-{{ particle.navposition|default('top')|e }} g-tabs-transition-{{ particle.transition|default('fade')|e }} {{ particle.class|e }}"
+        data-content-tabs
+        style="--g-tabs-nav-width:{{ particle.navwidth|default(25)|e('html_attr') }}%;--g-tabs-gap:{{ particle.gap|default(8)|e('html_attr') }}px;--g-tabs-color:{{ particle.navcolor|default('#333333')|e('html_attr') }};--g-tabs-active-color:{{ particle.activecolor|default('#ffffff')|e('html_attr') }};--g-tabs-active-bg:{{ particle.activebackground|default('#3366ff')|e('html_attr') }};--g-tabs-content-bg:{{ particle.contentbackground|default('transparent')|e('html_attr') }};--g-tabs-content-padding:{{ particle.contentpadding|default('1.5rem')|e('html_attr') }};"
+    >
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        <div class="g-content-tabs-layout">
+            <div class="g-content-tabs-nav nav nav-{{ particle.style|default('tabs')|e }} g-tabs-align-{{ particle.alignment|default('left')|e }}" role="tablist">
+                {% set visible_index = 0 %}
+                {% for item in particle.items|default([]) %}
+                    {% if item.enabled|default(true) %}
+                        <button class="nav-link{% if visible_index == 0 %} active{% endif %}" type="button" role="tab" aria-selected="{{ visible_index == 0 ? 'true' : 'false' }}" data-tab-index="{{ visible_index }}">
+                            {% if item.image %}<img src="{{ url(item.image)|e }}" alt="" loading="lazy">{% elseif item.icon %}<i class="{{ item.icon|e }}" aria-hidden="true"></i>{% endif %}
+                            <span>{{ item.title|e }}{% if item.subtitle %}<small>{{ item.subtitle|e }}</small>{% endif %}</span>
+                        </button>
+                        {% set visible_index = visible_index + 1 %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="g-content-tabs-panels">
+                {% set visible_index = 0 %}
+                {% for item in particle.items|default([]) %}
+                    {% if item.enabled|default(true) %}
+                        <div class="g-content-tab-panel{% if visible_index == 0 %} active{% endif %}" role="tabpanel"{% if visible_index != 0 %} hidden{% endif %}>{{ item.content|raw }}</div>
+                        {% set visible_index = visible_index + 1 %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/genesis-contenttabs.js'), 11, 'footer') %}
+{% endblock %}

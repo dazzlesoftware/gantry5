@@ -1,0 +1,20 @@
+name: SoundCloud
+description: Embed a SoundCloud track, playlist, or profile player.
+type: particle
+category: media
+icon: fa-soundcloud
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Title}
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    url: {type: input.text, label: SoundCloud URL, description: 'Enter a SoundCloud track, playlist, or profile URL.'}
+    height: {type: input.number, label: Player Height, min: 80, default: 166}
+    color: {type: input.colorpicker, label: Player Color, default: '#ff5500'}
+    autoplay: {type: select.select, label: Autoplay, default: disable, options: {enable: Enable, disable: Disable}}
+    hidecomments: {type: select.select, label: Hide Comments, default: disable, options: {enable: Hide, disable: Show}}
+    showuser: {type: select.select, label: Show User, default: enable, options: {enable: Show, disable: Hide}}
+    showreposts: {type: select.select, label: Show Reposts, default: disable, options: {enable: Show, disable: Hide}}
+    visual: {type: select.select, label: Visual Player, default: disable, options: {enable: Enable, disable: Disable}}

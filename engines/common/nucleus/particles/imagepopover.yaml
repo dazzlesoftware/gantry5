@@ -1,0 +1,40 @@
+name: Image Popover
+description: Place interactive popover markers over a responsive image.
+type: particle
+category: media
+icon: fa-map-marker
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    image: {type: input.imagepicker, label: Background Image}
+    alt: {type: input.text, label: Image Alternative Text}
+    height: {type: input.number, label: Minimum Height, min: 100, default: 520}
+    mode: {type: select.select, label: Marker Interaction, default: click, options: {click: Click, hover: Hover}}
+    ripple: {type: select.select, label: Marker Ripple Effect, default: enable, options: {enable: Enable, disable: Disable}}
+    markercolor: {type: input.colorpicker, label: Marker Color, default: '#3366ff'}
+    markertextcolor: {type: input.colorpicker, label: Marker Icon Color, default: '#ffffff'}
+    popoverbackground: {type: input.colorpicker, label: Popover Background, default: '#ffffff'}
+    popovercolor: {type: input.colorpicker, label: Popover Text Color, default: '#333333'}
+    popoverwidth: {type: input.number, label: Popover Width, min: 160, default: 280}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    items:
+      type: collection.list
+      array: true
+      label: Popover Markers
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Title, default: Popover item}
+        .enabled: {type: input.checkbox, label: Enabled, default: true}
+        .icon: {type: input.icon, label: Marker Icon, default: 'fa fa-plus'}
+        .left: {type: input.number, label: Horizontal Position (%), min: 0, max: 100, default: 50}
+        .top: {type: input.number, label: Vertical Position (%), min: 0, max: 100, default: 50}
+        .position: {type: select.select, label: Popover Position, default: top, options: {top: Top, right: Right, bottom: Bottom, left: Left}}
+        .image: {type: input.imagepicker, label: Popover Image}
+        .meta: {type: input.text, label: Meta Text}
+        .content: {type: textarea.textarea, label: Content}
+        .linktext: {type: input.text, label: Link Text}
+        .link: {type: input.text, label: Link URL}

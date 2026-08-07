@@ -1,0 +1,23 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <section class="g-timeline g-timeline-{{ particle.alignment|default('alternate')|e }} {{ particle.class|e }}" style="--gtl-line:{{ particle.linecolor|default('#dddddd')|e('html_attr') }};--gtl-marker:{{ particle.markercolor|default('#3366ff')|e('html_attr') }};--gtl-date:{{ particle.datecolor|default('#3366ff')|e('html_attr') }};--gtl-card-bg:{{ particle.cardbackground|default('#ffffff')|e('html_attr') }};--gtl-card-color:{{ particle.cardcolor|default('#444444')|e('html_attr') }};--gtl-gap:{{ particle.gap|default(32)|e('html_attr') }}px;">
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        <div class="g-timeline-list">
+            {% for item in particle.items|default([]) %}
+                {% if item.enabled|default(true) %}
+                    <article class="g-timeline-item">
+                        <div class="g-timeline-marker">{% if item.icon %}<i class="{{ item.icon|e }}" aria-hidden="true"></i>{% endif %}</div>
+                        <div class="g-timeline-card">
+                            {% if item.image %}<img class="g-timeline-image g-image-{{ item.imageshape|default('rounded')|e }}" src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" loading="lazy">{% endif %}
+                            {% if item.date or item.enddate %}<div class="g-timeline-date">{{ item.date|e }}{% if item.enddate %} – {{ item.enddate|e }}{% endif %}</div>{% endif %}
+                            <h4>{{ item.title|raw }}</h4>
+                            <div>{{ item.content|raw }}</div>
+                        </div>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

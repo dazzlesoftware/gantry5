@@ -22,10 +22,10 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 207,
+    "totalFiles": 212,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 185,
+      "first_party_source": 190,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
@@ -36,9 +36,9 @@
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 34,
-      "shared_browser_asset": 74
+      "shared_browser_asset": 79
     },
-    "activeReferencedFiles": 205,
+    "activeReferencedFiles": 210,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
     "esModuleFiles": 92,
@@ -1347,6 +1347,75 @@
       }
     },
     {
+      "path": "assets/common/js/genesis-advancedprogressbar.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/advancedprogressbar.html.twig"
+      ],
+      "bytes": 1427,
+      "lines": 38,
+      "sha256": "443610a083b8520b1d239cfd8df534771df553362c9e3b16f57dbfaf9ebd41a3",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "advanced-progress",
+          "animate",
+          "duration",
+          "progress"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-advancedtable.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/advancedtable.html.twig"
+      ],
+      "bytes": 3378,
+      "lines": 72,
+      "sha256": "d783e53c4994bab5ae96df26d4bedfb3164eb12db853869ce9abceefec8f7a39",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "advanced-table",
+          "pagination",
+          "perPage",
+          "sort-column",
+          "sortColumn",
+          "sortable",
+          "table-pagination",
+          "table-search",
+          "table-total"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/genesis-contentcarousel.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
@@ -1388,6 +1457,36 @@
       }
     },
     {
+      "path": "assets/common/js/genesis-contenttabs.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/contenttabs.html.twig"
+      ],
+      "bytes": 1928,
+      "lines": 52,
+      "sha256": "175578121b6e731a0c563b8012bbbed15f82a456b72cf98caaf054ce49096e8b",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "content-tabs",
+          "tab-index"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/genesis-flipbox.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
@@ -1415,6 +1514,36 @@
           "behavior",
           "bound",
           "flipbox"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-imagepopover.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/imagepopover.html.twig"
+      ],
+      "bytes": 1967,
+      "lines": 45,
+      "sha256": "9c9a1bd5040da084e183a8d65f34a780c1751273ef8902c19a53d496bb2f31f5",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "image-popover",
+          "mode"
         ],
         "storageKeys": []
       }
@@ -1551,6 +1680,43 @@
           "ready",
           "showNames",
           "social-share"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-testimonialcarousel.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/testimonialcarousel.html.twig"
+      ],
+      "bytes": 3175,
+      "lines": 61,
+      "sha256": "c5140358269eee6d4df1fd7e21fcba14a77ac00642f43b7f831b35509c001d17",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "autoplay",
+          "interval",
+          "loop",
+          "pauseHover",
+          "speed",
+          "testimonial-carousel",
+          "testimonial-dots",
+          "testimonial-next",
+          "testimonial-prev"
         ],
         "storageKeys": []
       }

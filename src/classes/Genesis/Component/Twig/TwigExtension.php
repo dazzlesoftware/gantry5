@@ -12,6 +12,7 @@ namespace Genesis\Component\Twig;
 
 use Genesis\Component\Content\Document\HtmlDocument;
 use Genesis\Component\Genesis\GenesisTrait;
+use Genesis\Component\Remote\Response;
 use Genesis\Component\Translator\TranslatorInterface;
 use Genesis\Component\Twig\TokenParser\TokenParserPageblock;
 use Genesis\Component\Twig\TokenParser\TokenParserAssets;
@@ -111,6 +112,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('imagesize', [$this, 'imageSize'], ['is_safe' => ['html']]),
             new TwigFunction('is_selected', [$this, 'is_selectedFunc']),
             new TwigFunction('url', [$this, 'urlFunc']),
+            new TwigFunction('instagram_feed', [$this, 'instagramFeed']),
         ];
 
         if (GENESIS_PLATFORM === 'grav') {
@@ -127,6 +129,124 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
 //        }
 
         return $functions;
+    }
+
+    /**
+     * Load a professional Instagram account feed through Meta Business Discovery.
+     *
+     * The access token is used only by PHP and is never returned to Twig.
+     *
+     * @param array $settings
+     * @return array
+     */
+    public function instagramFeed(array $settings = []): array
+    {
+        $username = ltrim(trim((string) ($settings['username'] ?? '')), '@');
+        $accountId = trim((string) ($settings['account_id'] ?? ''));
+        $accessToken = trim((string) ($settings['access_token'] ?? ''));
+        $apiVersion = trim((string) ($settings['api_version'] ?? 'v23.0'));
+        $limit = max(1, min(100, (int) ($settings['limit'] ?? 12)));
+        $cacheLifetime = max(60, min(86400, (int) ($settings['cache_lifetime'] ?? 3600)));
+
+        $empty = [
+            'success' => false,
+            'username' => $username,
+            'profile_picture_url' => '',
+            'media' => [],
+            'error' => '',
+        ];
+
+        if (!preg_match('/^[A-Za-z0-9._]+$/', $username)) {
+            $empty['error'] = 'Enter a valid Instagram username.';
+            return $empty;
+        }
+
+        if (!preg_match('/^\d+$/', $accountId) || $accessToken === '') {
+            $empty['error'] = 'Instagram feed credentials have not been configured.';
+            return $empty;
+        }
+
+        if (!preg_match('/^v\d+\.\d+$/', $apiVersion)) {
+            $apiVersion = 'v23.0';
+        }
+
+        $cacheKey = hash('sha256', implode('|', [$username, $accountId, $accessToken, $apiVersion, $limit]));
+        $cacheDirectory = rtrim(sys_get_temp_dir(), '/\\') . DIRECTORY_SEPARATOR . 'genesis-instagram';
+        $cacheFile = $cacheDirectory . DIRECTORY_SEPARATOR . $cacheKey . '.json';
+
+        if (is_file($cacheFile) && (time() - (int) filemtime($cacheFile)) < $cacheLifetime) {
+            $cached = json_decode((string) file_get_contents($cacheFile), true);
+            if (is_array($cached)) {
+                return $cached;
+            }
+        }
+
+        $mediaFields = 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp,like_count,comments_count';
+        $discoveryFields = sprintf(
+            'business_discovery.username(%s){username,profile_picture_url,media.limit(%d){%s}}',
+            $username,
+            $limit,
+            $mediaFields
+        );
+        $endpoint = sprintf(
+            'https://graph.facebook.com/%s/%s?%s',
+            rawurlencode($apiVersion),
+            rawurlencode($accountId),
+            http_build_query(['fields' => $discoveryFields, 'access_token' => $accessToken], '', '&', PHP_QUERY_RFC3986)
+        );
+
+        try {
+            $payload = json_decode(Response::get($endpoint), true);
+        } catch (\Throwable $exception) {
+            $empty['error'] = 'Instagram could not be reached. The cached feed will be used when available.';
+            return $empty;
+        }
+
+        if (!is_array($payload) || isset($payload['error'])) {
+            $message = is_array($payload) ? (string) ($payload['error']['message'] ?? '') : '';
+            $empty['error'] = $message !== ''
+                ? 'Instagram rejected the feed request: ' . strip_tags($message)
+                : 'Instagram returned an invalid feed response.';
+            return $empty;
+        }
+
+        $discovery = $payload['business_discovery'] ?? [];
+        $result = $empty;
+        $result['success'] = true;
+        $result['username'] = (string) ($discovery['username'] ?? $username);
+        $result['profile_picture_url'] = (string) ($discovery['profile_picture_url'] ?? '');
+
+        foreach (($discovery['media']['data'] ?? []) as $media) {
+            $type = strtoupper((string) ($media['media_type'] ?? 'IMAGE'));
+            $image = $type === 'VIDEO'
+                ? (string) ($media['thumbnail_url'] ?? '')
+                : (string) ($media['media_url'] ?? '');
+
+            if ($image === '') {
+                continue;
+            }
+
+            $result['media'][] = [
+                'id' => (string) ($media['id'] ?? ''),
+                'caption' => (string) ($media['caption'] ?? ''),
+                'media_type' => $type,
+                'image_url' => $image,
+                'media_url' => (string) ($media['media_url'] ?? $image),
+                'permalink' => (string) ($media['permalink'] ?? ''),
+                'timestamp' => (string) ($media['timestamp'] ?? ''),
+                'likes' => max(0, (int) ($media['like_count'] ?? 0)),
+                'comments' => max(0, (int) ($media['comments_count'] ?? 0)),
+            ];
+        }
+
+        if (!is_dir($cacheDirectory)) {
+            @mkdir($cacheDirectory, 0700, true);
+        }
+        if (is_dir($cacheDirectory) && is_writable($cacheDirectory)) {
+            @file_put_contents($cacheFile, json_encode($result), LOCK_EX);
+        }
+
+        return $result;
     }
 
     /**

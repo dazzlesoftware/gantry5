@@ -1,0 +1,33 @@
+name: Timeline
+description: Display dated content in a responsive vertical timeline.
+type: particle
+category: content
+icon: fa-history
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    alignment: {type: select.select, label: Timeline Layout, default: alternate, options: {alternate: Alternating, left: Content Right, right: Content Left}}
+    linecolor: {type: input.colorpicker, label: Line Color, default: '#dddddd'}
+    markercolor: {type: input.colorpicker, label: Marker Color, default: '#3366ff'}
+    datecolor: {type: input.colorpicker, label: Date Color, default: '#3366ff'}
+    cardbackground: {type: input.colorpicker, label: Card Background, default: '#ffffff'}
+    cardcolor: {type: input.colorpicker, label: Card Text Color, default: '#444444'}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 32}
+    items:
+      type: collection.list
+      array: true
+      label: Timeline Items
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Title, default: Timeline item}
+        .enabled: {type: input.checkbox, label: Enabled, default: true}
+        .date: {type: input.text, label: Start Date}
+        .enddate: {type: input.text, label: End Date}
+        .icon: {type: input.icon, label: Marker Icon}
+        .image: {type: input.imagepicker, label: Image}
+        .imageshape: {type: select.select, label: Image Shape, default: rounded, options: {square: Square, rounded: Rounded, circle: Circle}}
+        .content: {type: textarea.textarea, label: Content}

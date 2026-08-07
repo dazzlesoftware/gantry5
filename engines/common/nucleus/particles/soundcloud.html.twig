@@ -1,0 +1,22 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <section class="g-soundcloud {{ particle.class|e }}">
+        {% if particle.title %}
+            <{{ particle.heading|default('h3')|e }} class="g-title">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>
+        {% endif %}
+
+        {% if particle.url %}
+            {% set player_url = 'https://w.soundcloud.com/player/?url=' ~ particle.url|url_encode ~ '&color=' ~ particle.color|default('#ff5500')|replace({'#': '%23'}) ~ '&auto_play=' ~ (particle.autoplay|default('disable') == 'enable' ? 'true' : 'false') ~ '&hide_related=false&show_comments=' ~ (particle.hidecomments|default('disable') == 'enable' ? 'false' : 'true') ~ '&show_user=' ~ (particle.showuser|default('enable') == 'enable' ? 'true' : 'false') ~ '&show_reposts=' ~ (particle.showreposts|default('disable') == 'enable' ? 'true' : 'false') ~ '&visual=' ~ (particle.visual|default('disable') == 'enable' ? 'true' : 'false') %}
+            <iframe
+                class="g-soundcloud-player"
+                src="{{ player_url|e('html_attr') }}"
+                height="{{ particle.height|default(166)|e }}"
+                title="{{ particle.title|default('SoundCloud player')|e }}"
+                loading="lazy"
+                allow="autoplay"
+            ></iframe>
+        {% endif %}
+    </section>
+{% endblock %}

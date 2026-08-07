@@ -1,0 +1,45 @@
+name: Testimonial Carousel
+description: Display client testimonials in a responsive native carousel.
+type: particle
+category: content
+icon: fa-quote-left
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    layout: {type: select.select, label: Layout, default: card, options: {card: Card, centered: Centered, split: Split}}
+    alignment: {type: select.select, label: Content Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    itemsdesktop: {type: input.number, label: Desktop Items, min: 1, max: 4, default: 1}
+    itemstablet: {type: input.number, label: Tablet Items, min: 1, max: 3, default: 1}
+    itemsmobile: {type: input.number, label: Mobile Items, min: 1, max: 2, default: 1}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 24}
+    autoplay: {type: select.select, label: Autoplay, default: enable, options: {enable: Enable, disable: Disable}}
+    interval: {type: input.number, label: Autoplay Interval, min: 1000, default: 5000}
+    speed: {type: input.number, label: Transition Speed, min: 0, default: 500}
+    pausehover: {type: select.select, label: Pause on Hover, default: enable, options: {enable: Enable, disable: Disable}}
+    loop: {type: select.select, label: Loop, default: enable, options: {enable: Enable, disable: Disable}}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    bullets: {type: select.select, label: Bullets, default: enable, options: {enable: Show, disable: Hide}}
+    showquote: {type: select.select, label: Quote Icon, default: enable, options: {enable: Show, disable: Hide}}
+    showrating: {type: select.select, label: Rating, default: enable, options: {enable: Show, disable: Hide}}
+    background: {type: input.colorpicker, label: Item Background, default: '#ffffff'}
+    color: {type: input.colorpicker, label: Text Color, default: '#555555'}
+    accent: {type: input.colorpicker, label: Accent Color, default: '#3366ff'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 4}
+    padding: {type: input.text, label: Item Padding, default: '2rem'}
+    items:
+      type: collection.list
+      array: true
+      label: Testimonials
+      value: name
+      ajax: true
+      fields:
+        .name: {type: input.text, label: Client Name, default: Client Name}
+        .enabled: {type: input.checkbox, label: Enabled, default: true}
+        .designation: {type: input.text, label: Designation}
+        .avatar: {type: input.imagepicker, label: Avatar}
+        .message: {type: textarea.textarea, label: Testimonial, default: Add the client testimonial here.}
+        .rating: {type: input.number, label: Rating, min: 0, max: 5, default: 5}
+        .link: {type: input.text, label: Client Link}

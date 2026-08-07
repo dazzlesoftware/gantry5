@@ -1,0 +1,39 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    {% set headings = particle.headings|default('Name|Value')|split('|') %}
+    <section
+        class="g-advanced-table text-{{ particle.alignment|default('left')|e }} {{ particle.class|e }}"
+        data-advanced-table
+        data-sortable="{{ particle.sortable|default('enable')|e }}"
+        data-pagination="{{ particle.pagination|default('enable')|e }}"
+        data-per-page="{{ particle.perpage|default(10)|e }}"
+        style="--g-table-head-bg:{{ particle.headerbackground|default('#222222')|e('html_attr') }};--g-table-head-color:{{ particle.headercolor|default('#ffffff')|e('html_attr') }};"
+    >
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        {% if particle.searchable|default('enable') == 'enable' %}
+            <label class="g-table-search"><span class="visually-hidden">Search table</span><input class="form-control" type="search" placeholder="Search…" data-table-search></label>
+        {% endif %}
+        <div class="{% if particle.responsive|default('enable') == 'enable' %}table-responsive{% endif %}">
+            <table class="table{% if particle.striped|default('enable') == 'enable' %} table-striped{% endif %}{% if particle.hover|default('enable') == 'enable' %} table-hover{% endif %}{% if particle.bordered|default('enable') == 'enable' %} table-bordered{% endif %}">
+                <thead><tr>{% for heading in headings %}<th scope="col"><button type="button" data-sort-column="{{ loop.index0 }}">{{ heading|trim|e }} <span aria-hidden="true">↕</span></button></th>{% endfor %}</tr></thead>
+                <tbody>
+                    {% for row in particle.rows|default([]) %}
+                        {% if row.enabled|default(true) %}
+                            <tr>{% for cell in row.cells|default('')|split('|') %}<td>{{ cell|trim|raw }}</td>{% endfor %}</tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="g-table-footer">
+            {% if particle.showtotal|default('enable') == 'enable' %}<span data-table-total></span>{% endif %}
+            {% if particle.pagination|default('enable') == 'enable' %}<nav class="g-table-pagination" aria-label="Table pages" data-table-pagination></nav>{% endif %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/genesis-advancedtable.js'), 11, 'footer') %}
+{% endblock %}

@@ -1,0 +1,34 @@
+name: Advanced Table
+description: Display a searchable, sortable, paginated responsive data table.
+type: particle
+category: content
+icon: fa-table
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Title}
+    headings: {type: input.text, label: Column Headings, description: 'Pipe-separated headings, for example Name|Role|Location.', default: 'Name|Value'}
+    searchable: {type: select.select, label: Search, default: enable, options: {enable: Enable, disable: Disable}}
+    sortable: {type: select.select, label: Sorting, default: enable, options: {enable: Enable, disable: Disable}}
+    pagination: {type: select.select, label: Pagination, default: enable, options: {enable: Enable, disable: Disable}}
+    perpage: {type: input.number, label: Rows per Page, min: 1, default: 10}
+    showtotal: {type: select.select, label: Show Entry Total, default: enable, options: {enable: Show, disable: Hide}}
+    responsive: {type: select.select, label: Responsive Scrolling, default: enable, options: {enable: Enable, disable: Disable}}
+    striped: {type: select.select, label: Bootstrap Striped Rows, default: enable, options: {enable: Enable, disable: Disable}}
+    hover: {type: select.select, label: Bootstrap Hover Rows, default: enable, options: {enable: Enable, disable: Disable}}
+    bordered: {type: select.select, label: Bootstrap Borders, default: enable, options: {enable: Enable, disable: Disable}}
+    alignment: {type: select.select, label: Text Alignment, default: left, options: {left: Left, center: Center, right: Right}}
+    headerbackground: {type: input.colorpicker, label: Header Background, default: '#222222'}
+    headercolor: {type: input.colorpicker, label: Header Color, default: '#ffffff'}
+    rows:
+      type: collection.list
+      array: true
+      label: Table Rows
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Row Name, default: New row}
+        .enabled: {type: input.checkbox, label: Enabled, default: true}
+        .cells: {type: textarea.textarea, label: Cells, description: 'Pipe-separated cell values.', default: 'Item|Value'}

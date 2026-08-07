@@ -1,0 +1,37 @@
+.g-advanced-table {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.g-table-search {
+  display: block;
+  width: min(100%, 24rem);
+  margin: 0 0 1rem auto;
+}
+
+.g-advanced-table thead {
+  background: var(--g-table-head-bg);
+  color: var(--g-table-head-color);
+}
+
+.g-advanced-table th button {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: inherit;
+}
+
+.g-table-footer,
+.g-table-pagination {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.g-table-footer {
+  margin-top: 1rem;
+  justify-content: space-between;
+}

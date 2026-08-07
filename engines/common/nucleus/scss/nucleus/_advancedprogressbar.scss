@@ -1,0 +1,29 @@
+.g-advanced-progress {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.g-advanced-progress-heading {
+  display: flex;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+}
+
+.g-advanced-progress .progress {
+  height: var(--gap-height);
+  background: var(--gap-track);
+}
+
+.g-progress-shape-square { border-radius: 0; }
+.g-progress-shape-rounded { border-radius: 0.375rem; }
+.g-progress-shape-pill { border-radius: 999px; }
+
+.g-advanced-progress .progress-bar {
+  width: 0;
+  color: var(--gap-color);
+  transition-property: width;
+  transition-timing-function: ease;
+}
+
+.g-advanced-progress .g-progress-custom { background: var(--gap-custom); }

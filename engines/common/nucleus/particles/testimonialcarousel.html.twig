@@ -1,0 +1,38 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <section
+        class="g-testimonial-carousel g-testimonial-layout-{{ particle.layout|default('card')|e }} text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}"
+        data-testimonial-carousel
+        data-autoplay="{{ particle.autoplay|default('enable')|e }}"
+        data-interval="{{ particle.interval|default(5000)|e }}"
+        data-speed="{{ particle.speed|default(500)|e }}"
+        data-pause-hover="{{ particle.pausehover|default('enable')|e }}"
+        data-loop="{{ particle.loop|default('enable')|e }}"
+        style="--gtc-desktop:{{ particle.itemsdesktop|default(1)|e('html_attr') }};--gtc-tablet:{{ particle.itemstablet|default(1)|e('html_attr') }};--gtc-mobile:{{ particle.itemsmobile|default(1)|e('html_attr') }};--gtc-gap:{{ particle.gap|default(24)|e('html_attr') }}px;--gtc-bg:{{ particle.background|default('#ffffff')|e('html_attr') }};--gtc-color:{{ particle.color|default('#555555')|e('html_attr') }};--gtc-accent:{{ particle.accent|default('#3366ff')|e('html_attr') }};--gtc-radius:{{ particle.radius|default(4)|e('html_attr') }}px;--gtc-padding:{{ particle.padding|default('2rem')|e('html_attr') }};"
+    >
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        <div class="g-testimonial-carousel-viewport">
+            <div class="g-testimonial-carousel-track">
+                {% for item in particle.items|default([]) %}
+                    {% if item.enabled|default(true) %}
+                        <article class="g-testimonial-carousel-item">
+                            {% if particle.showquote|default('enable') == 'enable' %}<i class="fa fa-quote-left g-testimonial-carousel-quote" aria-hidden="true"></i>{% endif %}
+                            {% if item.avatar %}<img class="g-testimonial-carousel-avatar" src="{{ url(item.avatar)|e }}" alt="{{ item.name|e }}" loading="lazy">{% endif %}
+                            <div class="g-testimonial-carousel-message">{{ item.message|raw }}</div>
+                            {% if particle.showrating|default('enable') == 'enable' %}<div class="g-testimonial-carousel-rating" aria-label="{{ item.rating|default(5)|e }} out of 5 stars">{% for star in 1..5 %}<i class="fa fa-star{% if star > item.rating|default(5) %}-o{% endif %}" aria-hidden="true"></i>{% endfor %}</div>{% endif %}
+                            <div class="g-testimonial-carousel-client">{% if item.link %}<a href="{{ item.link|e }}">{% endif %}<strong>{{ item.name|e }}</strong>{% if item.link %}</a>{% endif %}{% if item.designation %}<small>{{ item.designation|e }}</small>{% endif %}</div>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% if particle.arrows|default('enable') == 'enable' %}<button class="g-testimonial-prev" type="button" aria-label="Previous testimonial" data-testimonial-prev>‹</button><button class="g-testimonial-next" type="button" aria-label="Next testimonial" data-testimonial-next>›</button>{% endif %}
+        {% if particle.bullets|default('enable') == 'enable' %}<div class="g-testimonial-dots" data-testimonial-dots></div>{% endif %}
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/genesis-testimonialcarousel.js'), 11, 'footer') %}
+{% endblock %}

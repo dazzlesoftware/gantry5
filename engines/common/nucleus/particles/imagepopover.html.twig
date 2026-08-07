@@ -1,0 +1,30 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <section class="g-image-popover {{ particle.class|e }}" data-image-popover data-mode="{{ particle.mode|default('click')|e }}" style="--gpop-height:{{ particle.height|default(520)|e('html_attr') }}px;--gpop-marker:{{ particle.markercolor|default('#3366ff')|e('html_attr') }};--gpop-marker-color:{{ particle.markertextcolor|default('#ffffff')|e('html_attr') }};--gpop-bg:{{ particle.popoverbackground|default('#ffffff')|e('html_attr') }};--gpop-color:{{ particle.popovercolor|default('#333333')|e('html_attr') }};--gpop-width:{{ particle.popoverwidth|default(280)|e('html_attr') }}px;--gpop-radius:{{ particle.radius|default(4)|e('html_attr') }}px;">
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
+        <div class="g-image-popover-stage{% if particle.ripple|default('enable') == 'enable' %} g-popover-ripple{% endif %}">
+            {% if particle.image %}<img src="{{ url(particle.image)|e }}" alt="{{ particle.alt|default(particle.title)|e }}" loading="lazy">{% endif %}
+            {% for item in particle.items|default([]) %}
+                {% if item.enabled|default(true) %}
+                    <div class="g-popover-marker-wrap g-popover-{{ item.position|default('top')|e }}" style="left:{{ item.left|default(50)|e('html_attr') }}%;top:{{ item.top|default(50)|e('html_attr') }}%;">
+                        <button class="g-popover-marker" type="button" aria-expanded="false" aria-label="Open {{ item.title|e }} popover"><i class="{{ item.icon|default('fa fa-plus')|e }}" aria-hidden="true"></i></button>
+                        <article class="g-popover-card" hidden>
+                            <button class="g-popover-close" type="button" aria-label="Close">×</button>
+                            {% if item.image %}<img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}" loading="lazy">{% endif %}
+                            {% if item.meta %}<div class="g-popover-meta">{{ item.meta|e }}</div>{% endif %}
+                            <h4>{{ item.title|raw }}</h4>
+                            <div>{{ item.content|raw }}</div>
+                            {% if item.linktext %}<a href="{{ item.link|default('#')|e }}">{{ item.linktext|e }}</a>{% endif %}
+                        </article>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/genesis-imagepopover.js'), 11, 'footer') %}
+{% endblock %}

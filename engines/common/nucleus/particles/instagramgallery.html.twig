@@ -1,27 +1,75 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 {% block particle %}
   {% do genesis.load('bootstrap.5') %}
+  {% set source = particle.source|default('instagram') %}
+  {% set feed = source == 'instagram' ? instagram_feed({
+    username: particle.profile|default(''),
+    account_id: particle.accountid|default(''),
+    access_token: particle.accesstoken|default(''),
+    api_version: particle.apiversion|default('v23.0'),
+    limit: particle.feedlimit|default(12),
+    cache_lifetime: particle.cachelifetime|default(3600)
+  }) : {success: false, media: [], error: ''} %}
+  {% set use_manual = source == 'manual' or (not feed.success and particle.manualfallback|default('disable') == 'enable') %}
+  {% set profile_name = feed.username|default(particle.profile)|default('') %}
+  {% set profile_link = particle.profilelink ?: (profile_name ? 'https://www.instagram.com/' ~ profile_name ~ '/' : '') %}
   <section class="g-instagram-gallery g-instagram-{{ particle.layout|default('grid')|e }} g-instagram-ratio-{{ particle.ratio|default('square')|e }} {{ particle.class|e }}" style="--gigallery-cols:{{ particle.columns|default(4)|e('html_attr') }};--gigallery-tablet:{{ particle.tabletcolumns|default(3)|e('html_attr') }};--gigallery-mobile:{{ particle.mobilecolumns|default(2)|e('html_attr') }};--gigallery-gap:{{ particle.gap|default(10)|e('html_attr') }}px;--gigallery-overlay:{{ particle.overlay|default('rgba(0,0,0,.55)')|e('html_attr') }};">
     {% if particle.title %}
       <{{ particle.heading|default('h3')|e }} class="g-title text-{{ particle.titlealignment|default('center')|e }}">
         {{ particle.title|raw }}
       </{{ particle.heading|default('h3')|e }}>
     {% endif %}
-    {% if particle.profile %}
+    {% if profile_name %}
       <div class="g-instagram-profile text-{{ particle.titlealignment|default('center')|e }}">
-        {% if particle.profilelink %}
-          <a href="{{ particle.profilelink|e }}" target="_blank" rel="noopener noreferrer">
+        {% if profile_link %}
+          <a href="{{ profile_link|e }}" target="_blank" rel="noopener noreferrer">
           {% endif %}
           <i class="fa fa-instagram" aria-hidden="true">
           </i>
-          {{ particle.profile|e }}
-          {% if particle.profilelink %}
+          @{{ profile_name|e }}
+          {% if profile_link %}
           </a>
         {% endif %}
       </div>
     {% endif %}
+    {% if source == 'instagram' and not feed.success and particle.showfeederror|default('enable') == 'enable' %}
+      <div class="g-instagram-error alert alert-warning" role="status">
+        {{ feed.error|default('Instagram feed is unavailable.')|e }}
+      </div>
+    {% endif %}
     <div class="g-instagram-items">
-      {% for item in particle.items|default([]) %}
+      {% if feed.success %}
+        {% for item in feed.media %}
+          {% set media_type = item.media_type == 'VIDEO' ? 'video' : 'image' %}
+          {% set media = media_type == 'video' ? item.media_url : item.image_url %}
+          <figure class="g-instagram-item">
+            {% if particle.lightbox|default('enable') == 'enable' %}
+              <a href="{{ media|e }}" data-genesis-lightbox="{{ media_type|e }}" data-lightbox-title="{{ item.caption|striptags|e('html_attr') }}">
+            {% elseif item.permalink %}
+              <a href="{{ item.permalink|e }}" target="_blank" rel="noopener noreferrer">
+            {% endif %}
+              <img src="{{ item.image_url|e }}" alt="{{ item.caption|default('Instagram post')|striptags|e }}" loading="lazy">
+              <span class="g-instagram-overlay">
+                {% if media_type == 'video' %}
+                  <i class="fa fa-play" aria-hidden="true"></i>
+                {% endif %}
+                {% if particle.showstats|default('enable') == 'enable' %}
+                  <span class="g-instagram-stats">
+                    <span><i class="fa fa-heart" aria-hidden="true"></i> {{ item.likes|default(0)|e }}</span>
+                    <span><i class="fa fa-comment" aria-hidden="true"></i> {{ item.comments|default(0)|e }}</span>
+                  </span>
+                {% endif %}
+              </span>
+            {% if particle.lightbox|default('enable') == 'enable' or item.permalink %}
+              </a>
+            {% endif %}
+            {% if item.caption %}
+              <figcaption class="visually-hidden">{{ item.caption|striptags|e }}</figcaption>
+            {% endif %}
+          </figure>
+        {% endfor %}
+      {% elseif use_manual %}
+        {% for item in particle.items|default([]) %}
         {% if item.enabled|default(true) and item.image %}
           {% set media = item.mediaurl ?: url(item.image) %}
           {% set lbtype = item.mediatype|default('image') == 'video' ? 'video' : 'image' %}
@@ -63,6 +111,7 @@
             </figure>
           {% endif %}
         {% endfor %}
+      {% endif %}
       </div>
     </section>
   {% endblock %}

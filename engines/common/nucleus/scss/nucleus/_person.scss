@@ -1,0 +1,65 @@
+.g-person {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gperson-radius);
+  background: var(--gperson-bg);
+  color: var(--gperson-color);
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.g-person-media img {
+  display: block;
+  width: 100%;
+  height: var(--gperson-height);
+  object-fit: cover;
+}
+
+.g-person-content {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.g-person-profile-link {
+  position: absolute;
+  inset: 0;
+}
+
+.g-person-content > *:not(.g-person-profile-link) {
+  position: relative;
+  z-index: 1;
+}
+
+.g-person-designation { color: var(--gperson-accent); }
+.g-person-socials { display: flex; margin: 1rem 0; gap: 0.75rem; justify-content: inherit; }
+.g-person-socials a { color: var(--gperson-accent); }
+
+.g-person-overlay .g-person-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--gperson-overlay);
+  color: #fff;
+  transform: translateY(calc(100% - 6rem));
+  transition: transform 0.35s;
+}
+
+.g-person-overlay:hover .g-person-content,
+.g-person-overlay:focus-within .g-person-content {
+  transform: none;
+}
+
+.g-person-inline {
+  display: grid;
+  grid-template-columns: minmax(12rem, 40%) 1fr;
+  align-items: stretch;
+}
+
+.g-person-inline .g-person-media img { height: 100%; }
+.g-person-minimal { background: transparent; }
+
+@media (max-width: 47.99rem) {
+  .g-person-inline { display: block; }
+}
