@@ -1,0 +1,90 @@
+.g-content-carousel {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-content-carousel {
+    position: relative;
+    height: var(--gcc-height);
+    overflow: hidden;
+}
+.g-genesis-carousel-track {
+    display: flex;
+    height: 100%;
+    transition-property: transform;
+    transition-timing-function: ease;
+}
+.g-genesis-carousel-slide {
+    position: relative;
+    display: flex;
+    flex: 0 0 100%;
+    height: 100%;
+    padding: 3rem;
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+.g-genesis-carousel-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--gcc-overlay);
+}
+.g-genesis-carousel-content {
+    position: relative;
+    z-index: 1;
+    max-width: 60rem;
+    color: var(--gcc-content-color);
+    font-size: var(--gcc-content-size);
+}
+.g-genesis-carousel-content h2 {
+    color: var(--gcc-title-color);
+    font-size: var(--gcc-title-size);
+}
+.g-genesis-carousel-content .btn,
+.g-pro-content .btn {
+    margin-top: 1rem;
+}
+.g-carousel-prev,
+.g-carousel-next {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    place-items: center;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+.g-carousel-prev {
+    left: 0;
+}
+.g-carousel-next {
+    right: 0;
+}
+.g-carousel-dots {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 1rem;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.g-carousel-dots button {
+    width: 0.65rem;
+    height: 0.65rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #ccc;
+}
+.g-carousel-dots button.active {
+    background: #3366ff;
+}

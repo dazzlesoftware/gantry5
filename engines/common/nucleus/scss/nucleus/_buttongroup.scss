@@ -1,0 +1,33 @@
+.g-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gbtn-group-gap);
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.g-button-group-left {
+    justify-content: flex-start;
+}
+
+.g-button-group-center {
+    justify-content: center;
+}
+
+.g-button-group-right {
+    justify-content: flex-end;
+}
+
+.g-button-group .g-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: var(--gbtn-size);
+    font-weight: var(--gbtn-weight);
+}
+
+.g-button-group .g-button.is-custom-size {
+    padding: var(--gbtn-padding);
+}

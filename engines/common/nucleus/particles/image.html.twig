@@ -1,1 +1,38 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-image-particle text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" style="--gimage-width:{{ particle.width ? particle.width ~ 'px' : 'auto' }};--gimage-height:{{ particle.height ? particle.height ~ 'px' : 'auto' }};--gimage-fit:{{ particle.fit|default('cover')|e('html_attr') }};--gimage-position:{{ particle.position|default('center')|e('html_attr') }};--gimage-radius:{{ particle.radius|default(0)|e('html_attr') }}px;--gimage-overlay:{{ particle.overlay|default('rgba(0,0,0,.25)')|e('html_attr') }};--gimage-zoom:{{ particle.zoomscale|default(1.1)|e('html_attr') }};--gimage-title-color:{{ particle.titlecolor|default('inherit')|e('html_attr') }};">{% if particle.title and particle.titleposition|default('before') == 'before' %}<{{ particle.heading|default('h3')|e }} class="g-title">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>{% endif %}{% if particle.image %}{% if particle.lightbox|default('disable') == 'enable' %}<a class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}" href="{{ url(particle.image)|e }}" data-genesis-lightbox="image" data-lightbox-title="{{ particle.imagetitle|default(particle.title)|e('html_attr') }}">{% elseif particle.link %}<a class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}" href="{{ particle.link|e }}" target="{{ particle.target|default('_self')|e }}"{% if particle.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %}>{% else %}<span class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}">{% endif %}<img src="{{ url(particle.image)|e }}"{% if particle.image2x %} srcset="{{ url(particle.image)|e }} 1x, {{ url(particle.image2x)|e }} 2x"{% endif %} alt="{{ particle.alt|default(particle.title)|e }}" title="{{ particle.imagetitle|e }}" loading="lazy" fetchpriority="{{ particle.fetchpriority|default('auto')|e }}"><span class="g-image-overlay" aria-hidden="true"><i class="fa {{ particle.lightbox|default('disable') == 'enable' ? 'fa-search-plus' : 'fa-link' }}"></i></span>{% if particle.lightbox|default('disable') == 'enable' or particle.link %}</a>{% else %}</span>{% endif %}{% endif %}{% if particle.title and particle.titleposition|default('before') == 'after' %}<{{ particle.heading|default('h3')|e }} class="g-title">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>{% endif %}</div>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/genesis-media-lightbox.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-image-particle text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" style="--gimage-width:{{ particle.width ? particle.width ~ 'px' : 'auto' }};--gimage-height:{{ particle.height ? particle.height ~ 'px' : 'auto' }};--gimage-fit:{{ particle.fit|default('cover')|e('html_attr') }};--gimage-position:{{ particle.position|default('center')|e('html_attr') }};--gimage-radius:{{ particle.radius|default(0)|e('html_attr') }}px;--gimage-overlay:{{ particle.overlay|default('rgba(0,0,0,.25)')|e('html_attr') }};--gimage-zoom:{{ particle.zoomscale|default(1.1)|e('html_attr') }};--gimage-title-color:{{ particle.titlecolor|default('inherit')|e('html_attr') }};">
+    {% if particle.title and particle.titleposition|default('before') == 'before' %}
+      <{{ particle.heading|default('h3')|e }} class="g-title">
+        {{ particle.title|raw }}
+      </{{ particle.heading|default('h3')|e }}>
+    {% endif %}
+    {% if particle.image %}
+      {% if particle.lightbox|default('disable') == 'enable' %}
+        <a class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}" href="{{ url(particle.image)|e }}" data-genesis-lightbox="image" data-lightbox-title="{{ particle.imagetitle|default(particle.title)|e('html_attr') }}">
+        {% elseif particle.link %}
+          <a class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}" href="{{ particle.link|e }}" target="{{ particle.target|default('_self')|e }}"{% if particle.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %}>
+          {% else %}
+            <span class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}">
+            {% endif %}
+            <img src="{{ url(particle.image)|e }}"{% if particle.image2x %} srcset="{{ url(particle.image)|e }} 1x, {{ url(particle.image2x)|e }} 2x"{% endif %} alt="{{ particle.alt|default(particle.title)|e }}" title="{{ particle.imagetitle|e }}" loading="lazy" fetchpriority="{{ particle.fetchpriority|default('auto')|e }}">
+            <span class="g-image-overlay" aria-hidden="true">
+              <i class="fa {{ particle.lightbox|default('disable') == 'enable' ? 'fa-search-plus' : 'fa-link' }}">
+              </i>
+            </span>
+            {% if particle.lightbox|default('disable') == 'enable' or particle.link %}
+            </a>
+          {% else %}
+          </span>
+        {% endif %}
+      {% endif %}
+      {% if particle.title and particle.titleposition|default('before') == 'after' %}
+        <{{ particle.heading|default('h3')|e }} class="g-title">
+          {{ particle.title|raw }}
+        </{{ particle.heading|default('h3')|e }}>
+      {% endif %}
+    </div>
+  {% endblock %}
+  {% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/genesis-media-lightbox.js'),11,'footer') %}
+  {% endblock %}

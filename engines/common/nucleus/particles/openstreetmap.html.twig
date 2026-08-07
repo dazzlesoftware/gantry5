@@ -1,1 +1,50 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-osm {{ particle.class|e }}" data-osm data-lat="{{ particle.latitude|default('51.505')|e('html_attr') }}" data-lng="{{ particle.longitude|default('-0.09')|e('html_attr') }}" data-zoom="{{ particle.zoom|default(13)|e }}" data-style="{{ particle.style|default('standard')|e }}" data-scroll="{{ particle.mousescroll|default('disable')|e }}" data-dragging="{{ particle.dragging|default('enable')|e }}" style="--gosm-height:{{ particle.height|default(400)|e('html_attr') }}px;--gosm-tablet-height:{{ particle.tabletheight|default(350)|e('html_attr') }}px;--gosm-mobile-height:{{ particle.mobileheight|default(300)|e('html_attr') }}px;--gosm-marker:{{ particle.markercolor|default('#e91e63')|e('html_attr') }};"><div class="g-osm-tiles"></div><div class="g-osm-markers">{% for location in particle.locations|default([]) %}{% if not location.disable and location.latitude and location.longitude %}<button class="g-osm-marker" type="button" data-lat="{{ location.latitude|e('html_attr') }}" data-lng="{{ location.longitude|e('html_attr') }}" aria-label="{{ location.title|default('Map location')|e }}">{% if location.icon %}<img src="{{ url(location.icon)|e }}" alt="">{% else %}<i class="fa fa-map-marker"></i>{% endif %}<template>{{ location.content|default(location.title)|raw }}</template></button>{% endif %}{% endfor %}</div>{% if particle.zoomcontrols|default('enable')=='enable' %}<div class="g-osm-controls"><button type="button" data-osm-zoom="1" aria-label="Zoom in">+</button><button type="button" data-osm-zoom="-1" aria-label="Zoom out">−</button></div>{% endif %}<div class="g-osm-popup" hidden><button type="button" aria-label="Close">×</button><div></div></div>{% if particle.attribution|default('enable')=='enable' %}<a class="g-osm-attribution" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>{% endif %}</div>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/genesis-openstreetmap.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-osm {{ particle.class|e }}" data-osm data-lat="{{ particle.latitude|default('51.505')|e('html_attr') }}" data-lng="{{ particle.longitude|default('-0.09')|e('html_attr') }}" data-zoom="{{ particle.zoom|default(13)|e }}" data-style="{{ particle.style|default('standard')|e }}" data-scroll="{{ particle.mousescroll|default('disable')|e }}" data-dragging="{{ particle.dragging|default('enable')|e }}" style="--gosm-height:{{ particle.height|default(400)|e('html_attr') }}px;--gosm-tablet-height:{{ particle.tabletheight|default(350)|e('html_attr') }}px;--gosm-mobile-height:{{ particle.mobileheight|default(300)|e('html_attr') }}px;--gosm-marker:{{ particle.markercolor|default('#e91e63')|e('html_attr') }};">
+    <div class="g-osm-tiles">
+    </div>
+    <div class="g-osm-markers">
+      {% for location in particle.locations|default([]) %}
+        {% if not location.disable and location.latitude and location.longitude %}
+          <button class="g-osm-marker" type="button" data-lat="{{ location.latitude|e('html_attr') }}" data-lng="{{ location.longitude|e('html_attr') }}" aria-label="{{ location.title|default('Map location')|e }}">
+            {% if location.icon %}
+              <img src="{{ url(location.icon)|e }}" alt="">
+            {% else %}
+              <i class="fa fa-map-marker">
+              </i>
+            {% endif %}
+            <template>
+              {{ location.content|default(location.title)|raw }}
+            </template>
+          </button>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if particle.zoomcontrols|default('enable')=='enable' %}
+      <div class="g-osm-controls">
+        <button type="button" data-osm-zoom="1" aria-label="Zoom in">
+          +
+        </button>
+        <button type="button" data-osm-zoom="-1" aria-label="Zoom out">
+          −
+        </button>
+      </div>
+    {% endif %}
+    <div class="g-osm-popup" hidden>
+      <button type="button" aria-label="Close">
+        ×
+      </button>
+      <div>
+      </div>
+    </div>
+    {% if particle.attribution|default('enable')=='enable' %}
+      <a class="g-osm-attribution" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">
+        © OpenStreetMap contributors
+      </a>
+    {% endif %}
+  </div>
+{% endblock %}
+{% block javascript_footer %}
+  {% do genesis.document.addScript(url('genesis-assets://js/genesis-openstreetmap.js'),11,'footer') %}
+{% endblock %}

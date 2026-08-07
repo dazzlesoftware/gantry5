@@ -51,7 +51,7 @@ $output-bourbon-deprecation-warnings: false;
 @import "nucleus/textblock";
 
 // Testimonial
-@import "nucleus/testimonial";
+@import "nucleus/testimonialcard";
 
 // Articles Scroller
 @import "nucleus/articlesscroller";
@@ -68,4 +68,21 @@ $output-bourbon-deprecation-warnings: false;
 @import "nucleus/animatednumber";
 @import "nucleus/blocknumber";
 @import "nucleus/button";
-@import "nucleus/conversionpack";
+@import "nucleus/buttongroup";
+@import "nucleus/contentcarousel";
+@import "nucleus/contentcarouselpro";
+@import "nucleus/socialshare";
+@import "nucleus/flipbox";
+@import "nucleus/flipboxpro";
+@import "nucleus/pieprogress";
+@import "nucleus/openstreetmap";
+@import "nucleus/pricelist";
+@import "nucleus/pricing";
+@import "nucleus/icon";
+@import "nucleus/iconsgroup";
+@import "nucleus/image";
+@import "nucleus/imagecontent";
+@import "nucleus/imagelayouts";
+@import "nucleus/imageoverlay";
+@import "nucleus/instagramgallery";
+@import "nucleus/medialightbox";

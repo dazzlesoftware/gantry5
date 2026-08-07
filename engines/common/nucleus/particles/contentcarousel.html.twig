@@ -1,1 +1,48 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-content-carousel {{ particle.class|e }}" data-genesis-carousel data-autoplay="{{ particle.autoplay|default('enable')|e }}" data-pause-hover="{{ particle.pausehover|default('enable')|e }}" data-loop="{{ particle.loop|default('enable')|e }}" data-randomize="{{ particle.randomize|default('disable')|e }}" data-interval="{{ particle.interval|default(5000)|e }}" data-speed="{{ particle.speed|default(500)|e }}" style="--gcc-height:{{ particle.height|default(480)|e('html_attr') }}px;--gcc-title-color:{{ particle.titlecolor|default('#ffffff')|e('html_attr') }};--gcc-title-size:{{ particle.titlesize|default(42)|e('html_attr') }}px;--gcc-content-color:{{ particle.contentcolor|default('#ffffff')|e('html_attr') }};--gcc-content-size:{{ particle.contentsize|default(18)|e('html_attr') }}px;--gcc-overlay:{{ particle.overlay|default('rgba(0,0,0,0.45)')|e('html_attr') }};"><div class="g-genesis-carousel-track">{% for slide in particle.slides|default([]) %}{% if not slide.disable %}<div class="g-genesis-carousel-slide text-{{ particle.alignment|default('center')|e }}"{% if slide.background %} style="background-image:url('{{ url(slide.background)|e('html_attr') }}')"{% endif %}><div class="g-genesis-carousel-overlay"></div><div class="g-genesis-carousel-content">{% if slide.title %}<h2>{{ slide.title|raw }}</h2>{% endif %}{% if slide.content %}<div>{{ slide.content|raw }}</div>{% endif %}{% if slide.buttontext %}<a class="btn btn-{{ slide.buttonstyle|default('primary')|e }}" href="{{ slide.buttonlink|default('#')|e }}">{{ slide.buttontext|e }}</a>{% endif %}</div></div>{% endif %}{% endfor %}</div>{% if particle.arrows|default('enable')=='enable' %}<button class="g-carousel-prev" type="button" data-carousel-prev aria-label="Previous slide">&lsaquo;</button><button class="g-carousel-next" type="button" data-carousel-next aria-label="Next slide">&rsaquo;</button>{% endif %}{% if particle.bullets|default('enable')=='enable' %}<div class="g-carousel-dots" data-carousel-dots></div>{% endif %}</div>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/genesis-contentcarousel.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-content-carousel {{ particle.class|e }}" data-genesis-carousel data-autoplay="{{ particle.autoplay|default('enable')|e }}" data-pause-hover="{{ particle.pausehover|default('enable')|e }}" data-loop="{{ particle.loop|default('enable')|e }}" data-randomize="{{ particle.randomize|default('disable')|e }}" data-interval="{{ particle.interval|default(5000)|e }}" data-speed="{{ particle.speed|default(500)|e }}" style="--gcc-height:{{ particle.height|default(480)|e('html_attr') }}px;--gcc-title-color:{{ particle.titlecolor|default('#ffffff')|e('html_attr') }};--gcc-title-size:{{ particle.titlesize|default(42)|e('html_attr') }}px;--gcc-content-color:{{ particle.contentcolor|default('#ffffff')|e('html_attr') }};--gcc-content-size:{{ particle.contentsize|default(18)|e('html_attr') }}px;--gcc-overlay:{{ particle.overlay|default('rgba(0,0,0,0.45)')|e('html_attr') }};">
+    <div class="g-genesis-carousel-track">
+      {% for slide in particle.slides|default([]) %}
+        {% if not slide.disable %}
+          <div class="g-genesis-carousel-slide text-{{ particle.alignment|default('center')|e }}"{% if slide.background %} style="background-image:url('{{ url(slide.background)|e('html_attr') }}')"{% endif %}>
+            <div class="g-genesis-carousel-overlay">
+            </div>
+            <div class="g-genesis-carousel-content">
+              {% if slide.title %}
+                <h2>
+                  {{ slide.title|raw }}
+                </h2>
+              {% endif %}
+              {% if slide.content %}
+                <div>
+                  {{ slide.content|raw }}
+                </div>
+              {% endif %}
+              {% if slide.buttontext %}
+                <a class="btn btn-{{ slide.buttonstyle|default('primary')|e }}" href="{{ slide.buttonlink|default('#')|e }}">
+                  {{ slide.buttontext|e }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if particle.arrows|default('enable')=='enable' %}
+      <button class="g-carousel-prev" type="button" data-carousel-prev aria-label="Previous slide">
+        &lsaquo;
+      </button>
+      <button class="g-carousel-next" type="button" data-carousel-next aria-label="Next slide">
+        &rsaquo;
+      </button>
+    {% endif %}
+    {% if particle.bullets|default('enable')=='enable' %}
+      <div class="g-carousel-dots" data-carousel-dots>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+{% block javascript_footer %}
+  {% do genesis.document.addScript(url('genesis-assets://js/genesis-contentcarousel.js'),11,'footer') %}
+{% endblock %}

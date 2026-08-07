@@ -1,0 +1,81 @@
+.g-price-list {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-price-list {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+.g-price-list-right {
+    flex-direction: row-reverse;
+}
+.g-price-list-media {
+    position: relative;
+    flex: 0 0 var(--gpl-image-width);
+}
+.g-price-list-media img {
+    width: 100%;
+    border-radius: var(--gpl-radius);
+}
+.g-price-list-number {
+    display: grid;
+    width: var(--gpl-image-width);
+    height: var(--gpl-image-width);
+    border-radius: var(--gpl-radius);
+    background: var(--gpl-price);
+    color: #fff;
+    place-items: center;
+    font-size: 1.5rem;
+}
+.g-price-list-tag {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 0.2rem;
+    background: var(--gpl-tag-bg);
+    color: #fff;
+    font-size: 0.75rem;
+}
+.g-price-list-body {
+    flex: 1;
+}
+.g-price-list-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+.g-price-list-heading h3 {
+    margin: 0;
+    color: var(--gpl-title);
+}
+.g-price-list-heading > span {
+    flex: 1;
+    border-bottom: 1px var(--gpl-line-style) var(--gpl-line);
+}
+.g-price-list-prices {
+    white-space: nowrap;
+    color: var(--gpl-price);
+}
+.g-price-list-prices del {
+    margin-right: 0.4rem;
+    opacity: 0.6;
+}
+.g-price-list-description {
+    margin-top: 0.5rem;
+    color: var(--gpl-text);
+}
+@media (max-width: 47.99rem) {
+    .g-price-list {
+        flex-direction: column;
+    }
+    .g-price-list-heading {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .g-price-list-heading > span {
+        display: none;
+    }
+}

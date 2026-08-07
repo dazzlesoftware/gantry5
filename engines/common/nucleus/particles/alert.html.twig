@@ -1,1 +1,27 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-alert {{ particle.class|e }}" style="--galert-size:{{ particle.fontsize|default(16)|e('html_attr') }}px;--galert-padding:{{ particle.padding|default('16px')|e('html_attr') }};--galert-radius:{{ particle.radius|default(4)|e('html_attr') }}px;">{% if particle.title %}<{{ particle.heading|default('h3')|e }} class="g-title">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>{% endif %}<div class="alert alert-{{ particle.type|default('info')|e }}{% if particle.dismissible|default('enable') == 'enable' %} alert-dismissible{% endif %}" role="alert" data-alert>{% if particle.icon %}<i class="{{ particle.icon|e }} g-alert-icon" aria-hidden="true"></i>{% endif %}<div class="g-alert-content">{{ particle.text|raw }}</div>{% if particle.dismissible|default('enable') == 'enable' %}<button type="button" class="btn-close" aria-label="Close" data-alert-close></button>{% endif %}</div></div>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/alert.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-alert {{ particle.class|e }}" style="--galert-size:{{ particle.fontsize|default(16)|e('html_attr') }}px;--galert-padding:{{ particle.padding|default('16px')|e('html_attr') }};--galert-radius:{{ particle.radius|default(4)|e('html_attr') }}px;">
+    {% if particle.title %}
+      <{{ particle.heading|default('h3')|e }} class="g-title">
+        {{ particle.title|raw }}
+      </{{ particle.heading|default('h3')|e }}>
+    {% endif %}
+    <div class="alert alert-{{ particle.type|default('info')|e }}{% if particle.dismissible|default('enable') == 'enable' %} alert-dismissible{% endif %}" role="alert" data-alert>
+      {% if particle.icon %}
+        <i class="{{ particle.icon|e }} g-alert-icon" aria-hidden="true">
+        </i>
+      {% endif %}
+      <div class="g-alert-content">
+        {{ particle.text|raw }}
+      </div>
+      {% if particle.dismissible|default('enable') == 'enable' %}
+        <button type="button" class="btn-close" aria-label="Close" data-alert-close>
+        </button>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+{% block javascript_footer %}
+  {% do genesis.document.addScript(url('genesis-assets://js/alert.js'),11,'footer') %}
+{% endblock %}

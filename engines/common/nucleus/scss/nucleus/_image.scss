@@ -1,0 +1,106 @@
+.g-image-particle {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-image-particle .g-title {
+    color: var(--gimage-title-color);
+}
+.g-image-frame {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    border-radius: var(--gimage-radius);
+    overflow: hidden;
+    vertical-align: middle;
+}
+.g-image-frame img {
+    display: block;
+    width: var(--gimage-width);
+    max-width: 100%;
+    height: var(--gimage-height);
+    object-fit: var(--gimage-fit);
+    object-position: var(--gimage-position);
+    transition:
+        filter 0.3s,
+        transform 0.35s;
+}
+.g-image-frame.g-shape-circle {
+    border-radius: 50%;
+}
+.g-image-frame.g-shape-circle img {
+    aspect-ratio: 1;
+}
+.g-image-frame.g-shape-rounded {
+    border-radius: max(var(--gimage-radius), 1rem);
+}
+.g-image-frame.g-shape-bevel {
+    clip-path: polygon(
+        10% 0,
+        90% 0,
+        100% 10%,
+        100% 90%,
+        90% 100%,
+        10% 100%,
+        0 90%,
+        0 10%
+    );
+}
+.g-image-frame.g-shape-star {
+    clip-path: polygon(
+        50% 0,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 94%,
+        50% 72%,
+        21% 94%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+}
+.g-image-frame.g-shape-pentagon {
+    clip-path: polygon(50% 0, 100% 38%, 82% 100%, 18% 100%, 0 38%);
+}
+.g-image-frame.g-shape-triangle {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.g-image-frame.g-shape-rightarrow {
+    clip-path: polygon(
+        0 20%,
+        60% 20%,
+        60% 0,
+        100% 50%,
+        60% 100%,
+        60% 80%,
+        0 80%
+    );
+}
+.g-image-frame.g-effect-grayscale img {
+    filter: grayscale(1);
+}
+.g-image-frame.g-effect-sepia img {
+    filter: sepia(1);
+}
+.g-image-frame.g-effect-blur img {
+    filter: blur(2px);
+}
+.g-image-frame.g-zoom-enable:hover img {
+    transform: scale(var(--gimage-zoom));
+}
+.g-image-frame .g-image-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    background: var(--gimage-overlay);
+    color: #fff;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+}
+.g-image-frame:hover .g-image-overlay,
+.g-image-frame:focus-visible .g-image-overlay {
+    opacity: 1;
+}

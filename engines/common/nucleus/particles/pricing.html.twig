@@ -1,1 +1,33 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-pricing text-{{ particle.alignment|default('center')|e }}{% if particle.featured|default('disable')=='enable' %} is-featured{% endif %} {{ particle.class|e }}" style="--gpricing-bg:{{ particle.background|default('#ffffff')|e('html_attr') }};--gpricing-color:{{ particle.color|default('#555555')|e('html_attr') }};--gpricing-title:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--gpricing-price:{{ particle.pricecolor|default('#3366ff')|e('html_attr') }};--gpricing-border:{{ particle.bordercolor|default('#dddddd')|e('html_attr') }};--gpricing-radius:{{ particle.radius|default(6)|e('html_attr') }}px;--gpricing-padding:{{ particle.padding|default(30)|e('html_attr') }}px;--gpricing-scale:{{ particle.hoverscale|default(1.03)|e('html_attr') }};--gpricing-hover-bg:{{ particle.hoverbackground|default('#ffffff')|e('html_attr') }};--gpricing-hover-border:{{ particle.hoverbordercolor|default('#3366ff')|e('html_attr') }};--gpricing-btn-color:{{ particle.custombuttoncolor|default('#ffffff')|e('html_attr') }};--gpricing-btn-bg:{{ particle.custombuttonbackground|default('#3366ff')|e('html_attr') }};">{% if particle.featured|default('disable')=='enable' and particle.badge %}<span class="g-pricing-badge">{{ particle.badge|e }}</span>{% endif %}<h3>{{ particle.title|raw }}</h3><div class="g-pricing-price"><sup>{{ particle.symbol|e }}</sup><strong>{{ particle.price|e }}</strong><span>{{ particle.duration|e }}</span></div><div class="g-pricing-content">{{ particle.content|raw }}</div>{% if particle.buttontext %}<a href="{{ particle.buttonlink|default('#')|e }}" class="btn {% if particle.buttonstyle=='custom' %}g-pricing-custom-button{% else %}btn-{{ particle.buttonstyle|default('primary')|e }}{% endif %}">{{ particle.buttontext|e }}</a>{% endif %}</div>{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-pricing text-{{ particle.alignment|default('center')|e }}{% if particle.featured|default('disable')=='enable' %} is-featured{% endif %} {{ particle.class|e }}" style="--gpricing-bg:{{ particle.background|default('#ffffff')|e('html_attr') }};--gpricing-color:{{ particle.color|default('#555555')|e('html_attr') }};--gpricing-title:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--gpricing-price:{{ particle.pricecolor|default('#3366ff')|e('html_attr') }};--gpricing-border:{{ particle.bordercolor|default('#dddddd')|e('html_attr') }};--gpricing-radius:{{ particle.radius|default(6)|e('html_attr') }}px;--gpricing-padding:{{ particle.padding|default(30)|e('html_attr') }}px;--gpricing-scale:{{ particle.hoverscale|default(1.03)|e('html_attr') }};--gpricing-hover-bg:{{ particle.hoverbackground|default('#ffffff')|e('html_attr') }};--gpricing-hover-border:{{ particle.hoverbordercolor|default('#3366ff')|e('html_attr') }};--gpricing-btn-color:{{ particle.custombuttoncolor|default('#ffffff')|e('html_attr') }};--gpricing-btn-bg:{{ particle.custombuttonbackground|default('#3366ff')|e('html_attr') }};">
+    {% if particle.featured|default('disable')=='enable' and particle.badge %}
+      <span class="g-pricing-badge">
+        {{ particle.badge|e }}
+      </span>
+    {% endif %}
+    <h3>
+      {{ particle.title|raw }}
+    </h3>
+    <div class="g-pricing-price">
+      <sup>
+        {{ particle.symbol|e }}
+      </sup>
+      <strong>
+        {{ particle.price|e }}
+      </strong>
+      <span>
+        {{ particle.duration|e }}
+      </span>
+    </div>
+    <div class="g-pricing-content">
+      {{ particle.content|raw }}
+    </div>
+    {% if particle.buttontext %}
+      <a href="{{ particle.buttonlink|default('#')|e }}" class="btn {% if particle.buttonstyle=='custom' %}g-pricing-custom-button{% else %}btn-{{ particle.buttonstyle|default('primary')|e }}{% endif %}">
+        {{ particle.buttontext|e }}
+      </a>
+    {% endif %}
+  </div>
+{% endblock %}

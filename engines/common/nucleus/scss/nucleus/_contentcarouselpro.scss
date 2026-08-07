@@ -1,0 +1,55 @@
+.g-content-carousel-pro .g-carousel-prev,
+.g-content-carousel-pro .g-carousel-next {
+    background: var(--gcc-arrow-bg);
+    color: var(--gcc-arrow-color);
+}
+.g-content-carousel-pro .g-genesis-carousel-slide {
+    padding: 0;
+}
+.g-pro-media,
+.g-pro-content {
+    height: 100%;
+}
+.g-pro-media {
+    width: 50%;
+}
+.g-pro-media img,
+.g-pro-media iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+}
+.g-pro-content {
+    display: flex;
+    width: var(--gcc-pro-width);
+    padding: 3rem;
+    background: var(--gcc-pro-content-bg);
+    color: var(--gcc-pro-content-color);
+    flex-direction: column;
+    justify-content: center;
+}
+.g-pro-overlay .g-pro-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+}
+.g-pro-overlay .g-pro-content {
+    position: relative;
+    margin: auto;
+}
+.g-pro-media-right {
+    flex-direction: row-reverse;
+}
+@media (max-width: 47.99rem) {
+    .g-pro-media-left,
+    .g-pro-media-right {
+        flex-direction: column;
+    }
+    .g-pro-media,
+    .g-pro-content {
+        width: 100%;
+        height: 50%;
+    }
+}

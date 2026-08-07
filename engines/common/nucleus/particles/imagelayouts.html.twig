@@ -1,1 +1,58 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}{% set media_target = particle.popupvideo ?: (particle.lightbox|default('disable') == 'enable' ? url(particle.image) : '') %}{% set media_type = particle.popupvideo ? 'video' : 'image' %}<article class="g-image-layouts g-layout-{{ particle.preset|default('card')|e }} g-image-{{ particle.imageposition|default('left')|e }} g-shadow-{{ particle.shadow|default('disable')|e }} {{ particle.class|e }}" style="--gil-image-cols:{{ particle.imagecolumns|default(6)|e('html_attr') }};--gil-image-height:{{ particle.imageheight|default(420)|e('html_attr') }}px;--gil-image-fit:{{ particle.imagefit|default('cover')|e('html_attr') }};--gil-image-radius:{{ particle.imageradius|default(0)|e('html_attr') }}px;--gil-padding:{{ particle.contentpadding|default('2rem')|e('html_attr') }};--gil-color:{{ particle.contentcolor|default('#222')|e('html_attr') }};--gil-bg:{{ particle.contentbackground|default('#fff')|e('html_attr') }};--gil-border-width:{{ particle.wrapperborder|default(0)|e('html_attr') }}px;--gil-border-color:{{ particle.wrapperbordercolor|default('#ddd')|e('html_attr') }};--gil-radius:{{ particle.wrapperradius|default(0)|e('html_attr') }}px;"><div class="g-image-layouts-inner">{% if particle.caption and particle.captionposition|default('bottom') == 'top' %}<div class="g-image-layouts-caption g-caption-top">{{ particle.caption|e }}</div>{% endif %}<div class="g-image-layouts-media">{% if media_target %}<a href="{{ media_target|e }}" data-genesis-lightbox="{{ media_type }}" data-lightbox-title="{{ particle.title|e('html_attr') }}">{% endif %}{% if particle.image %}<img src="{{ url(particle.image)|e }}" alt="{{ particle.alt|default(particle.title)|e }}" loading="lazy">{% endif %}{% if media_target %}<span class="g-image-layouts-play"><i class="fa {{ media_type == 'video' ? 'fa-play' : 'fa-search-plus' }}" aria-hidden="true"></i></span></a>{% endif %}{% if particle.caption and particle.captionposition|default('bottom') == 'overlay' %}<div class="g-image-layouts-caption g-caption-overlay">{{ particle.caption|e }}</div>{% endif %}</div><div class="g-image-layouts-content text-{{ particle.alignment|default('left')|e }}">{% if particle.title %}<{{ particle.heading|default('h2')|e }}>{{ particle.title|raw }}</{{ particle.heading|default('h2')|e }}>{% endif %}<div>{{ particle.content|raw }}</div>{% if particle.buttontext %}<a class="btn btn-{{ particle.buttonstyle|default('primary')|e }}" href="{{ particle.buttonlink|default('#')|e }}">{{ particle.buttontext|e }}</a>{% endif %}</div>{% if particle.caption and particle.captionposition|default('bottom') == 'bottom' %}<div class="g-image-layouts-caption g-caption-bottom">{{ particle.caption|e }}</div>{% endif %}</div></article>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/genesis-media-lightbox.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  {% set media_target = particle.popupvideo ?: (particle.lightbox|default('disable') == 'enable' ? url(particle.image) : '') %}
+  {% set media_type = particle.popupvideo ? 'video' : 'image' %}
+  <article class="g-image-layouts g-layout-{{ particle.preset|default('card')|e }} g-image-{{ particle.imageposition|default('left')|e }} g-shadow-{{ particle.shadow|default('disable')|e }} {{ particle.class|e }}" style="--gil-image-cols:{{ particle.imagecolumns|default(6)|e('html_attr') }};--gil-image-height:{{ particle.imageheight|default(420)|e('html_attr') }}px;--gil-image-fit:{{ particle.imagefit|default('cover')|e('html_attr') }};--gil-image-radius:{{ particle.imageradius|default(0)|e('html_attr') }}px;--gil-padding:{{ particle.contentpadding|default('2rem')|e('html_attr') }};--gil-color:{{ particle.contentcolor|default('#222')|e('html_attr') }};--gil-bg:{{ particle.contentbackground|default('#fff')|e('html_attr') }};--gil-border-width:{{ particle.wrapperborder|default(0)|e('html_attr') }}px;--gil-border-color:{{ particle.wrapperbordercolor|default('#ddd')|e('html_attr') }};--gil-radius:{{ particle.wrapperradius|default(0)|e('html_attr') }}px;">
+    <div class="g-image-layouts-inner">
+      {% if particle.caption and particle.captionposition|default('bottom') == 'top' %}
+        <div class="g-image-layouts-caption g-caption-top">
+          {{ particle.caption|e }}
+        </div>
+      {% endif %}
+      <div class="g-image-layouts-media">
+        {% if media_target %}
+          <a href="{{ media_target|e }}" data-genesis-lightbox="{{ media_type }}" data-lightbox-title="{{ particle.title|e('html_attr') }}">
+          {% endif %}
+          {% if particle.image %}
+            <img src="{{ url(particle.image)|e }}" alt="{{ particle.alt|default(particle.title)|e }}" loading="lazy">
+          {% endif %}
+          {% if media_target %}
+            <span class="g-image-layouts-play">
+              <i class="fa {{ media_type == 'video' ? 'fa-play' : 'fa-search-plus' }}" aria-hidden="true">
+              </i>
+            </span>
+          </a>
+        {% endif %}
+        {% if particle.caption and particle.captionposition|default('bottom') == 'overlay' %}
+          <div class="g-image-layouts-caption g-caption-overlay">
+            {{ particle.caption|e }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="g-image-layouts-content text-{{ particle.alignment|default('left')|e }}">
+        {% if particle.title %}
+          <{{ particle.heading|default('h2')|e }}>
+            {{ particle.title|raw }}
+          </{{ particle.heading|default('h2')|e }}>
+        {% endif %}
+        <div>
+          {{ particle.content|raw }}
+        </div>
+        {% if particle.buttontext %}
+          <a class="btn btn-{{ particle.buttonstyle|default('primary')|e }}" href="{{ particle.buttonlink|default('#')|e }}">
+            {{ particle.buttontext|e }}
+          </a>
+        {% endif %}
+      </div>
+      {% if particle.caption and particle.captionposition|default('bottom') == 'bottom' %}
+        <div class="g-image-layouts-caption g-caption-bottom">
+          {{ particle.caption|e }}
+        </div>
+      {% endif %}
+    </div>
+  </article>
+{% endblock %}
+{% block javascript_footer %}
+  {% do genesis.document.addScript(url('genesis-assets://js/genesis-media-lightbox.js'),11,'footer') %}
+{% endblock %}

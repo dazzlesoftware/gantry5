@@ -394,9 +394,9 @@
       "consumers": [
         "engines/common/nucleus/particles/alert.html.twig"
       ],
-      "bytes": 601,
-      "lines": 2,
-      "sha256": "ba3b099c2e6624ba89756b1b3e78b2c444e1aab922afb9e1e8951b0b6bbf6abb",
+      "bytes": 939,
+      "lines": 28,
+      "sha256": "988eb3b70973f7487979b6980de75177c2e1d06e1ea2a42c2e2c6322cc1f829f",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -425,9 +425,9 @@
       "consumers": [
         "engines/common/nucleus/particles/animatedheading.html.twig"
       ],
-      "bytes": 3799,
-      "lines": 67,
-      "sha256": "27e530be36f2e75c1832baf3e3eafd1cc58a517757c93abacc6901af3852e190",
+      "bytes": 4505,
+      "lines": 115,
+      "sha256": "a058a1fa494016ee7156a1679d1712309718a0986fded07511e56988558657d0",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -460,9 +460,9 @@
       "consumers": [
         "engines/common/nucleus/particles/animatednumber.html.twig"
       ],
-      "bytes": 1987,
-      "lines": 2,
-      "sha256": "2bb6f919c2f4e2feb24509c3b33c7c78afa94b5743421a7289cf0894e3754d76",
+      "bytes": 3309,
+      "lines": 86,
+      "sha256": "09ccbf0186d7474640fa560391e6582e0321414994af1b833279885986406a80",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -498,9 +498,9 @@
       "consumers": [
         "engines/common/nucleus/particles/articlesscroller.html.twig"
       ],
-      "bytes": 5383,
-      "lines": 89,
-      "sha256": "e40b27d168e795610c3434bfc0323b1319cb7b99dd72d04f222e31a542d2d830",
+      "bytes": 6783,
+      "lines": 173,
+      "sha256": "f305f5ef2e3b4636d1afc2bd1a167b2c2145e57c042c95c6f6be160e730c423b",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -602,9 +602,9 @@
       "consumers": [
         "engines/common/nucleus/particles/blocknumber.html.twig"
       ],
-      "bytes": 1159,
-      "lines": 2,
-      "sha256": "e0777c1255902b2356c901456f029888aa83b4e04cdc59f0ec905dde1809081f",
+      "bytes": 1688,
+      "lines": 46,
+      "sha256": "f91989b93168063fcb8477b641adb36907187387c6f532cd81faeb5c7ca7e27c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -667,9 +667,9 @@
         "engines/common/nucleus/particles/button.html.twig",
         "engines/common/nucleus/particles/buttongroup.html.twig"
       ],
-      "bytes": 1048,
-      "lines": 2,
-      "sha256": "75c69f1e6884e6d42f8f014481567428c24b9cda575ad9e59da1b717e0f59bf5",
+      "bytes": 1588,
+      "lines": 46,
+      "sha256": "7d0d146a9daa8d43bac65fc037d68e6b08cdc2cb5c50a95676b06f15129cd04c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -873,9 +873,9 @@
       "consumers": [
         "engines/common/nucleus/particles/clients.html.twig"
       ],
-      "bytes": 4653,
-      "lines": 20,
-      "sha256": "75d56fd587a8ccb92fc3db536b0bd4d2b06eaca245bc82fcebc1f7a957104c55",
+      "bytes": 7037,
+      "lines": 185,
+      "sha256": "577bf0d8a2d51c950c5cce6a2b07de2119be00600d396c17d4fcd4066a5df315",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1003,9 +1003,9 @@
       "consumers": [
         "engines/common/nucleus/particles/feature.html.twig"
       ],
-      "bytes": 2323,
-      "lines": 35,
-      "sha256": "b03fcaa47f2309e4c34c0abaceb51cc829f22212f308812725d3d596d8bd7b41",
+      "bytes": 2897,
+      "lines": 78,
+      "sha256": "e7b7f00987a946fb90ef7fb929367a90a8d4b5ed12f00e50cb8a54af81af170c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1325,9 +1325,9 @@
       "consumers": [
         "engines/common/nucleus/particles/accordion.html.twig"
       ],
-      "bytes": 1663,
-      "lines": 2,
-      "sha256": "da6e76a65e7af258af98ffc4c037379a0e8b6bee2b001b2082d1e7fac87f5830",
+      "bytes": 2772,
+      "lines": 69,
+      "sha256": "cdd0772b79d7b1742f2023c0e8c0880cded76e989cbd5f180435073b77b4182c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1358,9 +1358,9 @@
         "engines/common/nucleus/particles/contentcarousel.html.twig",
         "engines/common/nucleus/particles/contentcarouselpro.html.twig"
       ],
-      "bytes": 3222,
-      "lines": 2,
-      "sha256": "a7f02231ad18d652bfaeec05196f61989622809b0121aab5a77429071219ea97",
+      "bytes": 5397,
+      "lines": 142,
+      "sha256": "f23e19337e050ef20f016a0c1a748a119a543b44a39602c1f340c2e390037c8c",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1399,9 +1399,9 @@
         "engines/common/nucleus/particles/flipbox.html.twig",
         "engines/common/nucleus/particles/flipboxpro.html.twig"
       ],
-      "bytes": 727,
-      "lines": 2,
-      "sha256": "e3a8522e377aeb0ad13c75633e270033bb7b4cadd99c99e78eb80ed00ab15d28",
+      "bytes": 1236,
+      "lines": 36,
+      "sha256": "ad205c1561c0fac3e1bda23d1457d93845424aee2f599ad172f693c8a1dca8d5",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1433,9 +1433,9 @@
         "engines/common/nucleus/particles/imageoverlay.html.twig",
         "engines/common/nucleus/particles/instagramgallery.html.twig"
       ],
-      "bytes": 2834,
-      "lines": 2,
-      "sha256": "7ca5a1a25e1381a2bea6d3aed3ba935c084bd19db29363f36219c43615b41c5a",
+      "bytes": 4282,
+      "lines": 109,
+      "sha256": "00df725ce1862505434868623b21dae611269fc3a159eefbf710b200172cabcd",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1465,9 +1465,9 @@
       "consumers": [
         "engines/common/nucleus/particles/openstreetmap.html.twig"
       ],
-      "bytes": 2991,
-      "lines": 2,
-      "sha256": "17567328ad35d1631189392543b90f53221c0ee507e41a3aa89eb135f4425fb2",
+      "bytes": 5502,
+      "lines": 143,
+      "sha256": "e5decdcb56d9e9ae75b0c7d88ee19b204ebae0fb04452085c5e3e334cc0e549d",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1502,9 +1502,9 @@
       "consumers": [
         "engines/common/nucleus/particles/pieprogress.html.twig"
       ],
-      "bytes": 1190,
-      "lines": 2,
-      "sha256": "12eaf8330146e574f61e7c7b76bc833ee21faabad6c8ff8f75bdc20b37306947",
+      "bytes": 1954,
+      "lines": 54,
+      "sha256": "761019660c89ff3b425591e6ad54e8a8d0ef8267594ea528c0a5c97971c86f7f",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1534,9 +1534,9 @@
       "consumers": [
         "engines/common/nucleus/particles/socialshare.html.twig"
       ],
-      "bytes": 1628,
-      "lines": 2,
-      "sha256": "33498b966aee48cac134f1f6c176a63a39e57ff2408ca56b79ca5d54db8d445d",
+      "bytes": 2503,
+      "lines": 70,
+      "sha256": "6209603bc9170126752b60df618b7e0e056c5f9925a15ef0739e4b689f158494",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1566,9 +1566,9 @@
       "consumers": [
         "engines/common/nucleus/particles/gmap.html.twig"
       ],
-      "bytes": 4462,
-      "lines": 36,
-      "sha256": "d8dbc342f794666f05d02c6782c5772f5bc3d1b18305cdec7961c5784f724824",
+      "bytes": 6324,
+      "lines": 160,
+      "sha256": "1aec52e76d700aa0ba9550c8f6baa88c38cf984cbd608da1fa0113a2bd86d585",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1669,9 +1669,9 @@
       "consumers": [
         "engines/common/nucleus/particles/heading.html.twig"
       ],
-      "bytes": 1075,
-      "lines": 2,
-      "sha256": "ba05ceba85edd142f1a8a59a33a06dce72f1b096a20da58ddcfe51681a1ba9e5",
+      "bytes": 1741,
+      "lines": 47,
+      "sha256": "90cea66eb3b0637cfd37d28f44abd225e807fe340eaf84f6b42745e6190aa1a6",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -1946,9 +1946,9 @@
         "platforms/common/application/ui/togglers.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 2957,
-      "lines": 9,
-      "sha256": "87b219f85af951f36be90e521dc2fe95058efcd14c66d070c87e1710a7dc8cde",
+      "bytes": 4365,
+      "lines": 112,
+      "sha256": "1542e28451a66906084f647e293a2a4f98e6a37a7b2aac349ad249ef7bc952a8",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -3251,9 +3251,9 @@
       "consumers": [
         "engines/common/nucleus/particles/teamcarousel.html.twig"
       ],
-      "bytes": 4684,
-      "lines": 32,
-      "sha256": "f4e2dbc5148057a5b218cb441a42d3d60b6f551bef8ed9474d96b888459265b1",
+      "bytes": 6849,
+      "lines": 179,
+      "sha256": "446b63d85e3514b9a5c98fedbb1ff233eba08bfeae1017e22572233a35397bef",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -3365,9 +3365,9 @@
       "consumers": [
         "engines/common/nucleus/particles/textblock.html.twig"
       ],
-      "bytes": 1752,
-      "lines": 43,
-      "sha256": "362b55be1b9b605c379ad40ee0709c0b9c29271eaeb55960a628c935a86396cb",
+      "bytes": 2073,
+      "lines": 63,
+      "sha256": "43c353cbbf3f43d90985ed4f99ef4ec0f1d9132d6cd627cdd36ed763a4fd6468",
       "signals": {
         "commonjs": false,
         "esModule": false,

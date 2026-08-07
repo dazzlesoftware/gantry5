@@ -1,0 +1,110 @@
+.g-image-layouts {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-image-layouts {
+    border: var(--gil-border-width) solid var(--gil-border-color) !important;
+    border-radius: var(--gil-radius);
+    overflow: hidden;
+}
+.g-image-layouts.g-shadow-enable {
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.12) !important;
+}
+.g-image-layouts-inner {
+    position: relative;
+}
+.g-image-layouts-media {
+    position: relative;
+    overflow: hidden;
+}
+.g-image-layouts-media img {
+    display: block;
+    width: 100%;
+    height: var(--gil-image-height);
+    object-fit: var(--gil-image-fit);
+    border-radius: var(--gil-image-radius);
+}
+.g-image-layouts-media > a {
+    display: block;
+}
+.g-image-layouts-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.25);
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.g-image-layouts-media:hover .g-image-layouts-play {
+    opacity: 1;
+}
+.g-image-layouts-content {
+    padding: var(--gil-padding);
+    background: var(--gil-bg);
+    color: var(--gil-color);
+}
+.g-image-layouts-content .btn {
+    margin-top: 1rem;
+}
+.g-image-layouts-caption {
+    padding: 0.6rem 1rem;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+.g-caption-overlay {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.g-layout-inline .g-image-layouts-inner,
+.g-layout-overlap .g-image-layouts-inner {
+    display: grid;
+    grid-template-columns: calc(var(--gil-image-cols) / 12 * 100%) 1fr;
+    align-items: center;
+}
+.g-layout-inline.g-image-right .g-image-layouts-media,
+.g-layout-overlap.g-image-right .g-image-layouts-media {
+    order: 2;
+}
+.g-layout-poster .g-image-layouts-content {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+    background: var(--gil-bg);
+}
+.g-layout-overlap .g-image-layouts-content {
+    position: relative;
+    z-index: 1;
+    margin-left: -3rem;
+}
+.g-layout-overlap.g-image-right .g-image-layouts-content {
+    margin-right: -3rem;
+    margin-left: 0;
+}
+.g-layout-card {
+    max-width: 48rem;
+    margin-inline: auto;
+}
+@media (max-width: 47.99rem) {
+    .g-layout-inline .g-image-layouts-inner,
+    .g-layout-overlap .g-image-layouts-inner {
+        display: block;
+    }
+    .g-layout-overlap .g-image-layouts-content,
+    .g-layout-overlap.g-image-right .g-image-layouts-content {
+        margin: 0;
+    }
+    .g-layout-poster .g-image-layouts-content {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        left: auto;
+    }
+}

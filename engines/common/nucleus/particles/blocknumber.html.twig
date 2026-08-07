@@ -1,1 +1,29 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-blocknumber {{ particle.class|e }}" data-blocknumber data-number-font="{{ particle.numberfont|default('')|e('html_attr') }}" data-heading-font="{{ particle.headingfont|default('')|e('html_attr') }}" data-text-font="{{ particle.textfont|default('')|e('html_attr') }}" style="--gbn-number-size:{{ particle.numbersize|default(24)|e('html_attr') }}px;--gbn-box-size:{{ particle.numberboxsize|default(70)|e('html_attr') }}px;--gbn-number-color:{{ particle.numbercolor|default('#ffffff')|e('html_attr') }};--gbn-number-bg:{{ particle.numberbackground|default('#3366ff')|e('html_attr') }};--gbn-border-width:{{ particle.numberborderwidth|default(0)|e('html_attr') }}px;--gbn-border-style:{{ particle.numberborderstyle|default('solid')|e('html_attr') }};--gbn-border-color:{{ particle.numberbordercolor|default('#3366ff')|e('html_attr') }};--gbn-radius:{{ particle.numberradius|default(50)|e('html_attr') }}%;--gbn-gap:{{ particle.gap|default(20)|e('html_attr') }}px;--gbn-heading-size:{{ particle.headingsize|default(24)|e('html_attr') }}px;--gbn-heading-color:{{ particle.headingcolor|default('#222222')|e('html_attr') }};--gbn-heading-margin:{{ particle.headingmargin|default('0 0 10px')|e('html_attr') }};--gbn-text-size:{{ particle.textsize|default(16)|e('html_attr') }}px;--gbn-text-color:{{ particle.textcolor|default('#555555')|e('html_attr') }};">{% if particle.title %}<{{ particle.titleelement|default('h3')|e }} class="g-title">{{ particle.title|raw }}</{{ particle.titleelement|default('h3')|e }}>{% endif %}<div class="g-blocknumber-inner g-blocknumber-{{ particle.layout|default('left')|e }} text-{{ particle.alignment|default('left')|e }}"><span class="g-blocknumber-number">{{ particle.number|default('01')|e }}</span><div class="g-blocknumber-body">{% if particle.heading %}<h3 class="g-blocknumber-heading">{{ particle.heading|raw }}</h3>{% endif %}<div class="g-blocknumber-text">{{ particle.text|raw }}</div></div></div></div>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/blocknumber.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-blocknumber {{ particle.class|e }}" data-blocknumber data-number-font="{{ particle.numberfont|default('')|e('html_attr') }}" data-heading-font="{{ particle.headingfont|default('')|e('html_attr') }}" data-text-font="{{ particle.textfont|default('')|e('html_attr') }}" style="--gbn-number-size:{{ particle.numbersize|default(24)|e('html_attr') }}px;--gbn-box-size:{{ particle.numberboxsize|default(70)|e('html_attr') }}px;--gbn-number-color:{{ particle.numbercolor|default('#ffffff')|e('html_attr') }};--gbn-number-bg:{{ particle.numberbackground|default('#3366ff')|e('html_attr') }};--gbn-border-width:{{ particle.numberborderwidth|default(0)|e('html_attr') }}px;--gbn-border-style:{{ particle.numberborderstyle|default('solid')|e('html_attr') }};--gbn-border-color:{{ particle.numberbordercolor|default('#3366ff')|e('html_attr') }};--gbn-radius:{{ particle.numberradius|default(50)|e('html_attr') }}%;--gbn-gap:{{ particle.gap|default(20)|e('html_attr') }}px;--gbn-heading-size:{{ particle.headingsize|default(24)|e('html_attr') }}px;--gbn-heading-color:{{ particle.headingcolor|default('#222222')|e('html_attr') }};--gbn-heading-margin:{{ particle.headingmargin|default('0 0 10px')|e('html_attr') }};--gbn-text-size:{{ particle.textsize|default(16)|e('html_attr') }}px;--gbn-text-color:{{ particle.textcolor|default('#555555')|e('html_attr') }};">
+    {% if particle.title %}
+      <{{ particle.titleelement|default('h3')|e }} class="g-title">
+        {{ particle.title|raw }}
+      </{{ particle.titleelement|default('h3')|e }}>
+    {% endif %}
+    <div class="g-blocknumber-inner g-blocknumber-{{ particle.layout|default('left')|e }} text-{{ particle.alignment|default('left')|e }}">
+      <span class="g-blocknumber-number">
+        {{ particle.number|default('01')|e }}
+      </span>
+      <div class="g-blocknumber-body">
+        {% if particle.heading %}
+          <h3 class="g-blocknumber-heading">
+            {{ particle.heading|raw }}
+          </h3>
+        {% endif %}
+        <div class="g-blocknumber-text">
+          {{ particle.text|raw }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block javascript_footer %}
+  {% do genesis.document.addScript(url('genesis-assets://js/blocknumber.js'),11,'footer') %}
+{% endblock %}

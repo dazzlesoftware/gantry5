@@ -4,25 +4,44 @@
     line-height: var(--g-textblock-line-height, inherit);
     text-align: var(--g-textblock-align, left);
 
-    .g-textblock-title { color: var(--g-textblock-title-color, inherit); margin-bottom: var(--g-textblock-title-margin, 10px); }
-    .g-textblock-content { column-count: var(--g-textblock-columns, 1); column-gap: var(--g-textblock-column-gap, 30px); }
-    .g-textblock-more { color: var(--g-textblock-action-color, #3366ff); margin-top: .75rem; text-decoration: none; cursor: pointer; }
-    .g-textblock-more:hover, .g-textblock-more:focus { color: var(--g-textblock-action-color, #3366ff); text-decoration: underline; }
+    .g-textblock-title {
+        color: var(--g-textblock-title-color, inherit);
+        margin-bottom: var(--g-textblock-title-margin, 10px);
+    }
+    .g-textblock-content {
+        column-count: var(--g-textblock-columns, 1);
+        column-gap: var(--g-textblock-column-gap, 30px);
+    }
+    .g-textblock-more {
+        color: var(--g-textblock-action-color, #3366ff);
+        margin-top: 0.75rem;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .g-textblock-more:hover,
+    .g-textblock-more:focus {
+        color: var(--g-textblock-action-color, #3366ff);
+        text-decoration: underline;
+    }
 
     &.g-textblock-dropcap .g-textblock-content::first-letter,
     &.g-textblock-dropcap .g-textblock-content > p:first-child::first-letter {
         float: left;
         color: var(--g-textblock-dropcap-color, inherit);
         font-size: var(--g-textblock-dropcap-size, 56px);
-        line-height: .85;
-        margin: .08em .12em 0 0;
+        line-height: 0.85;
+        margin: 0.08em 0.12em 0 0;
     }
 }
 
 @media (max-width: 74.99rem) {
-    .g-textblock .g-textblock-content { column-count: var(--g-textblock-columns-tablet, 1); }
+    .g-textblock .g-textblock-content {
+        column-count: var(--g-textblock-columns-tablet, 1);
+    }
 }
 
 @media (max-width: 47.99rem) {
-    .g-textblock .g-textblock-content { column-count: var(--g-textblock-columns-mobile, 1); }
+    .g-textblock .g-textblock-content {
+        column-count: var(--g-textblock-columns-mobile, 1);
+    }
 }

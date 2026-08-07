@@ -1,0 +1,58 @@
+.g-pricing {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-pricing {
+    position: relative;
+    padding: var(--gpricing-padding);
+    border: 1px solid var(--gpricing-border);
+    border-radius: var(--gpricing-radius);
+    background: var(--gpricing-bg);
+    color: var(--gpricing-color);
+    transition: 0.3s;
+}
+.g-pricing:hover {
+    border-color: var(--gpricing-hover-border);
+    background: var(--gpricing-hover-bg);
+    transform: scale(var(--gpricing-scale));
+}
+.g-pricing.is-featured {
+    border-width: 2px;
+    border-color: var(--gpricing-hover-border);
+}
+.g-pricing-badge {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--gpricing-price);
+    color: #fff;
+    transform: translateY(-50%);
+}
+.g-pricing h3 {
+    color: var(--gpricing-title);
+}
+.g-pricing-price {
+    display: flex;
+    margin: 1.25rem 0;
+    color: var(--gpricing-price);
+    align-items: baseline;
+    justify-content: center;
+}
+.g-pricing-price strong {
+    font-size: 3rem;
+}
+.g-pricing-content ul {
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+}
+.g-pricing-content li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.g-pricing-custom-button {
+    background: var(--gpricing-btn-bg);
+    color: var(--gpricing-btn-color);
+}

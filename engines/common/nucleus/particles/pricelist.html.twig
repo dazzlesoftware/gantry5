@@ -1,1 +1,48 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-price-list g-price-list-{{ particle.imageposition|default('left')|e }} {{ particle.class|e }}" style="--gpl-image-width:{{ particle.imagewidth|default(100)|e('html_attr') }}px;--gpl-radius:{{ particle.imageradius|default(4)|e('html_attr') }}px;--gpl-tag-bg:{{ particle.tagbackground|default('#e91e63')|e('html_attr') }};--gpl-title:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--gpl-price:{{ particle.pricecolor|default('#3366ff')|e('html_attr') }};--gpl-text:{{ particle.textcolor|default('#666666')|e('html_attr') }};--gpl-line:{{ particle.linecolor|default('#cccccc')|e('html_attr') }};--gpl-line-style:{{ particle.linestyle|default('dotted')|e('html_attr') }};"><div class="g-price-list-media">{% if particle.image %}<img src="{{ url(particle.image)|e }}" alt="{{ particle.title|e }}" loading="lazy">{% elseif particle.number %}<span class="g-price-list-number">{{ particle.number|e }}</span>{% endif %}{% if particle.tag %}<span class="g-price-list-tag">{{ particle.tag|e }}</span>{% endif %}</div><div class="g-price-list-body"><div class="g-price-list-heading"><h3>{{ particle.title|raw }}</h3>{% if particle.line|default('enable')=='enable' %}<span></span>{% endif %}<div class="g-price-list-prices">{% if particle.discountprice %}<del>{{ particle.price|e }}</del><strong>{{ particle.discountprice|e }}</strong>{% else %}<strong>{{ particle.price|e }}</strong>{% endif %}</div></div><div class="g-price-list-description">{{ particle.description|raw }}</div></div></div>{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-price-list g-price-list-{{ particle.imageposition|default('left')|e }} {{ particle.class|e }}" style="--gpl-image-width:{{ particle.imagewidth|default(100)|e('html_attr') }}px;--gpl-radius:{{ particle.imageradius|default(4)|e('html_attr') }}px;--gpl-tag-bg:{{ particle.tagbackground|default('#e91e63')|e('html_attr') }};--gpl-title:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--gpl-price:{{ particle.pricecolor|default('#3366ff')|e('html_attr') }};--gpl-text:{{ particle.textcolor|default('#666666')|e('html_attr') }};--gpl-line:{{ particle.linecolor|default('#cccccc')|e('html_attr') }};--gpl-line-style:{{ particle.linestyle|default('dotted')|e('html_attr') }};">
+    <div class="g-price-list-media">
+      {% if particle.image %}
+        <img src="{{ url(particle.image)|e }}" alt="{{ particle.title|e }}" loading="lazy">
+      {% elseif particle.number %}
+        <span class="g-price-list-number">
+          {{ particle.number|e }}
+        </span>
+      {% endif %}
+      {% if particle.tag %}
+        <span class="g-price-list-tag">
+          {{ particle.tag|e }}
+        </span>
+      {% endif %}
+    </div>
+    <div class="g-price-list-body">
+      <div class="g-price-list-heading">
+        <h3>
+          {{ particle.title|raw }}
+        </h3>
+        {% if particle.line|default('enable')=='enable' %}
+          <span>
+          </span>
+        {% endif %}
+        <div class="g-price-list-prices">
+          {% if particle.discountprice %}
+            <del>
+              {{ particle.price|e }}
+            </del>
+            <strong>
+              {{ particle.discountprice|e }}
+            </strong>
+          {% else %}
+            <strong>
+              {{ particle.price|e }}
+            </strong>
+          {% endif %}
+        </div>
+      </div>
+      <div class="g-price-list-description">
+        {{ particle.description|raw }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

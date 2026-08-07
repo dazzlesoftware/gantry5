@@ -1,1 +1,18 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-icon-particle text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" style="--gicon-size:{{ particle.size|default(48)|e('html_attr') }}px;--gicon-width:{{ particle.width|default(80)|e('html_attr') }}px;--gicon-height:{{ particle.height|default(80)|e('html_attr') }}px;--gicon-color:{{ particle.color|default('#3366ff')|e('html_attr') }};--gicon-bg:{{ particle.background|default('transparent')|e('html_attr') }};--gicon-border-width:{{ particle.borderwidth|default(0)|e('html_attr') }}px;--gicon-border-color:{{ particle.bordercolor|default('#3366ff')|e('html_attr') }};--gicon-radius:{{ particle.radius|default(0)|e('html_attr') }}px;--gicon-rotate:{{ particle.rotate|default(0)|e('html_attr') }}deg;--gicon-hover-color:{{ particle.hovercolor|default('#ffffff')|e('html_attr') }};--gicon-hover-bg:{{ particle.hoverbackground|default('#3366ff')|e('html_attr') }};--gicon-hover-border:{{ particle.hoverbordercolor|default('#3366ff')|e('html_attr') }};--gicon-hover-scale:{{ particle.hoverscale|default(1)|e('html_attr') }};--gicon-margin:{{ particle.margin|default('0')|e('html_attr') }};">{% if particle.link %}<a class="g-icon-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_self')|e }}"{% if particle.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %} aria-label="{{ particle.arialabel|default('Icon link')|e }}">{% else %}<span class="g-icon-link" role="img" aria-label="{{ particle.arialabel|default('Icon')|e }}">{% endif %}<i class="{{ particle.icon|default('fa fa-star')|e }}" aria-hidden="true"></i>{% if particle.link %}</a>{% else %}</span>{% endif %}</div>{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-icon-particle text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" style="--gicon-size:{{ particle.size|default(48)|e('html_attr') }}px;--gicon-width:{{ particle.width|default(80)|e('html_attr') }}px;--gicon-height:{{ particle.height|default(80)|e('html_attr') }}px;--gicon-color:{{ particle.color|default('#3366ff')|e('html_attr') }};--gicon-bg:{{ particle.background|default('transparent')|e('html_attr') }};--gicon-border-width:{{ particle.borderwidth|default(0)|e('html_attr') }}px;--gicon-border-color:{{ particle.bordercolor|default('#3366ff')|e('html_attr') }};--gicon-radius:{{ particle.radius|default(0)|e('html_attr') }}px;--gicon-rotate:{{ particle.rotate|default(0)|e('html_attr') }}deg;--gicon-hover-color:{{ particle.hovercolor|default('#ffffff')|e('html_attr') }};--gicon-hover-bg:{{ particle.hoverbackground|default('#3366ff')|e('html_attr') }};--gicon-hover-border:{{ particle.hoverbordercolor|default('#3366ff')|e('html_attr') }};--gicon-hover-scale:{{ particle.hoverscale|default(1)|e('html_attr') }};--gicon-margin:{{ particle.margin|default('0')|e('html_attr') }};">
+    {% if particle.link %}
+      <a class="g-icon-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_self')|e }}"{% if particle.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %} aria-label="{{ particle.arialabel|default('Icon link')|e }}">
+      {% else %}
+        <span class="g-icon-link" role="img" aria-label="{{ particle.arialabel|default('Icon')|e }}">
+        {% endif %}
+        <i class="{{ particle.icon|default('fa fa-star')|e }}" aria-hidden="true">
+        </i>
+        {% if particle.link %}
+        </a>
+      {% else %}
+      </span>
+    {% endif %}
+  </div>
+{% endblock %}

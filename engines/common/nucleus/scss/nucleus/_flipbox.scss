@@ -1,0 +1,57 @@
+.g-flipbox {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-flipbox {
+    height: var(--gflip-height);
+    perspective: 1000px;
+}
+.g-flipbox-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+.g-flipbox[data-behavior="hover"]:hover .g-flipbox-inner,
+.g-flipbox[data-behavior="hover"]:focus .g-flipbox-inner,
+.g-flipbox.is-flipped .g-flipbox-inner {
+    transform: rotateY(180deg);
+}
+.g-flipbox-vertical[data-behavior="hover"]:hover .g-flipbox-inner,
+.g-flipbox-vertical[data-behavior="hover"]:focus .g-flipbox-inner,
+.g-flipbox-vertical.is-flipped .g-flipbox-inner {
+    transform: rotateX(180deg);
+}
+.g-flipbox-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    padding: var(--gflip-padding);
+    border-radius: var(--gflip-radius);
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backface-visibility: hidden;
+}
+.g-flipbox-front {
+    background-color: var(--gflip-front-bg);
+    color: var(--gflip-front-color);
+}
+.g-flipbox-back {
+    background-color: var(--gflip-back-bg);
+    color: var(--gflip-back-color);
+    transform: rotateY(180deg);
+}
+.g-flipbox-vertical .g-flipbox-back {
+    transform: rotateX(180deg);
+}
+.g-flipbox-pro .g-flipbox-face > i {
+    font-size: var(--gflip-icon-size);
+}
+.g-flipbox-pro h3 {
+    font-size: var(--gflip-title-size);
+}

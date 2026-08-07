@@ -1,1 +1,45 @@
-{% extends '@nucleus/partials/particle.html.twig' %}{% block particle %}{% do genesis.load('bootstrap.5') %}<div class="g-flipbox g-flipbox-pro g-flipbox-{{ particle.direction|default('horizontal')|e }} text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" tabindex="0" data-flipbox data-behavior="{{ particle.behavior|default('hover')|e }}" style="--gflip-height:{{ particle.height|default(360)|e('html_attr') }}px;--gflip-padding:{{ particle.padding|default(30)|e('html_attr') }}px;--gflip-radius:{{ particle.radius|default(6)|e('html_attr') }}px;--gflip-front-bg:{{ particle.frontbackground|default('#3366ff')|e('html_attr') }};--gflip-front-color:{{ particle.frontcolor|default('#ffffff')|e('html_attr') }};--gflip-back-bg:{{ particle.backbackground|default('#222222')|e('html_attr') }};--gflip-back-color:{{ particle.backcolor|default('#ffffff')|e('html_attr') }};--gflip-icon-size:{{ particle.iconsize|default(48)|e('html_attr') }}px;--gflip-title-size:{{ particle.titlesize|default(28)|e('html_attr') }}px;"><div class="g-flipbox-inner"><div class="g-flipbox-face g-flipbox-front"{% if particle.frontimage %} style="background-image:url('{{ url(particle.frontimage)|e('html_attr') }}')"{% endif %}>{% if particle.fronticon %}<i class="{{ particle.fronticon|e }}"></i>{% endif %}<h3>{{ particle.fronttitle|raw }}</h3><div>{{ particle.frontcontent|raw }}</div>{% if particle.frontbutton %}<a class="btn btn-light" href="{{ particle.frontlink|default('#')|e }}">{{ particle.frontbutton|e }}</a>{% endif %}</div><div class="g-flipbox-face g-flipbox-back"{% if particle.backimage %} style="background-image:url('{{ url(particle.backimage)|e('html_attr') }}')"{% endif %}>{% if particle.backicon %}<i class="{{ particle.backicon|e }}"></i>{% endif %}<h3>{{ particle.backtitle|raw }}</h3><div>{{ particle.backcontent|raw }}</div>{% if particle.backbutton %}<a class="btn btn-primary" href="{{ particle.backlink|default('#')|e }}">{{ particle.backbutton|e }}</a>{% endif %}</div></div></div>{% endblock %}{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/genesis-flipbox.js'),11,'footer') %}{% endblock %}
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% block particle %}
+  {% do genesis.load('bootstrap.5') %}
+  <div class="g-flipbox g-flipbox-pro g-flipbox-{{ particle.direction|default('horizontal')|e }} text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" tabindex="0" data-flipbox data-behavior="{{ particle.behavior|default('hover')|e }}" style="--gflip-height:{{ particle.height|default(360)|e('html_attr') }}px;--gflip-padding:{{ particle.padding|default(30)|e('html_attr') }}px;--gflip-radius:{{ particle.radius|default(6)|e('html_attr') }}px;--gflip-front-bg:{{ particle.frontbackground|default('#3366ff')|e('html_attr') }};--gflip-front-color:{{ particle.frontcolor|default('#ffffff')|e('html_attr') }};--gflip-back-bg:{{ particle.backbackground|default('#222222')|e('html_attr') }};--gflip-back-color:{{ particle.backcolor|default('#ffffff')|e('html_attr') }};--gflip-icon-size:{{ particle.iconsize|default(48)|e('html_attr') }}px;--gflip-title-size:{{ particle.titlesize|default(28)|e('html_attr') }}px;">
+    <div class="g-flipbox-inner">
+      <div class="g-flipbox-face g-flipbox-front"{% if particle.frontimage %} style="background-image:url('{{ url(particle.frontimage)|e('html_attr') }}')"{% endif %}>
+        {% if particle.fronticon %}
+          <i class="{{ particle.fronticon|e }}">
+          </i>
+        {% endif %}
+        <h3>
+          {{ particle.fronttitle|raw }}
+        </h3>
+        <div>
+          {{ particle.frontcontent|raw }}
+        </div>
+        {% if particle.frontbutton %}
+          <a class="btn btn-light" href="{{ particle.frontlink|default('#')|e }}">
+            {{ particle.frontbutton|e }}
+          </a>
+        {% endif %}
+      </div>
+      <div class="g-flipbox-face g-flipbox-back"{% if particle.backimage %} style="background-image:url('{{ url(particle.backimage)|e('html_attr') }}')"{% endif %}>
+        {% if particle.backicon %}
+          <i class="{{ particle.backicon|e }}">
+          </i>
+        {% endif %}
+        <h3>
+          {{ particle.backtitle|raw }}
+        </h3>
+        <div>
+          {{ particle.backcontent|raw }}
+        </div>
+        {% if particle.backbutton %}
+          <a class="btn btn-primary" href="{{ particle.backlink|default('#')|e }}">
+            {{ particle.backbutton|e }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block javascript_footer %}
+  {% do genesis.document.addScript(url('genesis-assets://js/genesis-flipbox.js'),11,'footer') %}
+{% endblock %}

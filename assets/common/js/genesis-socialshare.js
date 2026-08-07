@@ -1,1 +1,69 @@
-(()=>{'use strict';const data={facebook:['Facebook','fa fa-facebook','https://www.facebook.com/sharer/sharer.php?u='],x:['X','fa fa-twitter','https://twitter.com/intent/tweet?url='],twitter:['Twitter','fa fa-twitter','https://twitter.com/intent/tweet?url='],linkedin:['LinkedIn','fa fa-linkedin','https://www.linkedin.com/sharing/share-offsite/?url='],pinterest:['Pinterest','fa fa-pinterest','https://pinterest.com/pin/create/button/?url='],reddit:['Reddit','fa fa-reddit','https://www.reddit.com/submit?url='],email:['Email','fa fa-envelope','mailto:?body='],whatsapp:['WhatsApp','fa fa-whatsapp','https://wa.me/?text=']};const init=r=>{if(r.dataset.ready)return;r.dataset.ready='1';const list=r.querySelector('.g-social-share-list'),url=encodeURIComponent(location.href);String(r.dataset.networks||'').split(',').map(n=>n.trim().toLowerCase()).filter(n=>data[n]).forEach(n=>{const [label,icon,base]=data[n],a=document.createElement('a');a.className=`g-share-${n}`;a.href=base+url;a.target=n==='email'?'_self':'_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label',`Share on ${label}`);a.innerHTML=`<i class="${icon}" aria-hidden="true"></i>${r.dataset.showNames==='enable'?`<span>${label}</span>`:''}`;list.append(a)})};const scan=(s=document)=>(s.matches?.('[data-social-share]')?[s]:s.querySelectorAll?.('[data-social-share]')||[]).forEach(init);document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>scan(),{once:true}):scan();new MutationObserver(rs=>rs.forEach(r=>r.addedNodes.forEach(n=>n.nodeType===1&&scan(n)))).observe(document.documentElement,{childList:true,subtree:true})})();
+(() => {
+    "use strict";
+    const data = {
+        facebook: [
+            "Facebook",
+            "fa fa-facebook",
+            "https://www.facebook.com/sharer/sharer.php?u=",
+        ],
+        x: ["X", "fa fa-twitter", "https://twitter.com/intent/tweet?url="],
+        twitter: [
+            "Twitter",
+            "fa fa-twitter",
+            "https://twitter.com/intent/tweet?url=",
+        ],
+        linkedin: [
+            "LinkedIn",
+            "fa fa-linkedin",
+            "https://www.linkedin.com/sharing/share-offsite/?url=",
+        ],
+        pinterest: [
+            "Pinterest",
+            "fa fa-pinterest",
+            "https://pinterest.com/pin/create/button/?url=",
+        ],
+        reddit: [
+            "Reddit",
+            "fa fa-reddit",
+            "https://www.reddit.com/submit?url=",
+        ],
+        email: ["Email", "fa fa-envelope", "mailto:?body="],
+        whatsapp: ["WhatsApp", "fa fa-whatsapp", "https://wa.me/?text="],
+    };
+    const init = (r) => {
+        if (r.dataset.ready) return;
+        r.dataset.ready = "1";
+        const list = r.querySelector(".g-social-share-list"),
+            url = encodeURIComponent(location.href);
+        String(r.dataset.networks || "")
+            .split(",")
+            .map((n) => n.trim().toLowerCase())
+            .filter((n) => data[n])
+            .forEach((n) => {
+                const [label, icon, base] = data[n],
+                    a = document.createElement("a");
+                a.className = `g-share-${n}`;
+                a.href = base + url;
+                a.target = n === "email" ? "_self" : "_blank";
+                a.rel = "noopener noreferrer";
+                a.setAttribute("aria-label", `Share on ${label}`);
+                a.innerHTML = `<i class="${icon}" aria-hidden="true"></i>${r.dataset.showNames === "enable" ? `<span>${label}</span>` : ""}`;
+                list.append(a);
+            });
+    };
+    const scan = (s = document) =>
+        (s.matches?.("[data-social-share]")
+            ? [s]
+            : s.querySelectorAll?.("[data-social-share]") || []
+        ).forEach(init);
+    document.readyState === "loading"
+        ? document.addEventListener("DOMContentLoaded", () => scan(), {
+              once: true,
+          })
+        : scan();
+    new MutationObserver((rs) =>
+        rs.forEach((r) =>
+            r.addedNodes.forEach((n) => n.nodeType === 1 && scan(n)),
+        ),
+    ).observe(document.documentElement, { childList: true, subtree: true });
+})();

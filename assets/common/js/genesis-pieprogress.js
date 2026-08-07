@@ -1,1 +1,53 @@
-(()=>{'use strict';const done=new WeakSet();const init=r=>{if(done.has(r))return;done.add(r);const value=Math.max(0,Math.min(100,+r.dataset.value||0)),duration=Math.max(0,+r.dataset.duration||1800),circle=r.querySelector('.g-pie-active'),out=r.querySelector('[data-pie-value]'),length=2*Math.PI*52;circle.style.strokeDasharray=length;circle.style.strokeDashoffset=length;const run=()=>{const start=performance.now();const tick=now=>{const p=duration?Math.min(1,(now-start)/duration):1,e=1-Math.pow(1-p,3);circle.style.strokeDashoffset=length*(1-value*e/100);out.textContent=`${Math.round(value*e)}%`;if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)};const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.disconnect();run()}}),{threshold:.2});io.observe(r)};const scan=(s=document)=>(s.matches?.('[data-pie-progress]')?[s]:s.querySelectorAll?.('[data-pie-progress]')||[]).forEach(init);document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>scan(),{once:true}):scan();new MutationObserver(rs=>rs.forEach(r=>r.addedNodes.forEach(n=>n.nodeType===1&&scan(n)))).observe(document.documentElement,{childList:true,subtree:true})})();
+(() => {
+    "use strict";
+    const done = new WeakSet();
+    const init = (r) => {
+        if (done.has(r)) return;
+        done.add(r);
+        const value = Math.max(0, Math.min(100, +r.dataset.value || 0)),
+            duration = Math.max(0, +r.dataset.duration || 1800),
+            circle = r.querySelector(".g-pie-active"),
+            out = r.querySelector("[data-pie-value]"),
+            length = 2 * Math.PI * 52;
+        circle.style.strokeDasharray = length;
+        circle.style.strokeDashoffset = length;
+        const run = () => {
+            const start = performance.now();
+            const tick = (now) => {
+                const p = duration ? Math.min(1, (now - start) / duration) : 1,
+                    e = 1 - Math.pow(1 - p, 3);
+                circle.style.strokeDashoffset =
+                    length * (1 - (value * e) / 100);
+                out.textContent = `${Math.round(value * e)}%`;
+                if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        };
+        const io = new IntersectionObserver(
+            (es) =>
+                es.forEach((e) => {
+                    if (e.isIntersecting) {
+                        io.disconnect();
+                        run();
+                    }
+                }),
+            { threshold: 0.2 },
+        );
+        io.observe(r);
+    };
+    const scan = (s = document) =>
+        (s.matches?.("[data-pie-progress]")
+            ? [s]
+            : s.querySelectorAll?.("[data-pie-progress]") || []
+        ).forEach(init);
+    document.readyState === "loading"
+        ? document.addEventListener("DOMContentLoaded", () => scan(), {
+              once: true,
+          })
+        : scan();
+    new MutationObserver((rs) =>
+        rs.forEach((r) =>
+            r.addedNodes.forEach((n) => n.nodeType === 1 && scan(n)),
+        ),
+    ).observe(document.documentElement, { childList: true, subtree: true });
+})();

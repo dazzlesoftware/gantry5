@@ -1,0 +1,34 @@
+.g-icon-particle {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+.g-icon-link {
+    display: inline-flex;
+    width: var(--gicon-width);
+    height: var(--gicon-height);
+    margin: var(--gicon-margin);
+    border: var(--gicon-border-width) solid var(--gicon-border-color);
+    border-radius: var(--gicon-radius);
+    background: var(--gicon-bg);
+    color: var(--gicon-color);
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition:
+        color 0.25s,
+        background 0.25s,
+        border-color 0.25s,
+        transform 0.25s;
+}
+.g-icon-link i {
+    font-size: var(--gicon-size);
+    transform: rotate(var(--gicon-rotate));
+}
+.g-icon-link:hover,
+.g-icon-link:focus-visible {
+    background: var(--gicon-hover-bg);
+    color: var(--gicon-hover-color);
+    border-color: var(--gicon-hover-border);
+    transform: scale(var(--gicon-hover-scale));
+}
