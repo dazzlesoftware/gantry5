@@ -1,0 +1,32 @@
+name: Image Overlay
+description: Display an image with animated overlay content, links, and lightbox support.
+type: particle
+category: media
+icon: fa-clone
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    image: {type: input.imagepicker, label: Image}
+    alt: {type: input.text, label: Image Alternative Text}
+    height: {type: input.number, label: Image Height, min: 1, default: 420}
+    animation: {type: select.select, label: Background Animation, default: zoom, options: {none: None, zoom: Zoom, panleft: Pan Left, panright: Pan Right}}
+    contentposition: {type: select.select, label: Content Position, default: center, options: {topleft: Top Left, topcenter: Top Center, topright: Top Right, centerleft: Center Left, center: Center, centerright: Center Right, bottomleft: Bottom Left, bottomcenter: Bottom Center, bottomright: Bottom Right}}
+    showonhover: {type: select.select, label: Show Content on Hover Only, default: disable, options: {enable: Enable, disable: Disable}}
+    padding: {type: input.text, label: Content Padding, default: '2rem'}
+    title: {type: input.text, label: Title, default: Image Overlay}
+    titleicon: {type: input.icon, label: Title Icon}
+    heading: {type: select.select, label: Title Element, default: h2, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#ffffff'}
+    subtitle: {type: input.text, label: Subtitle}
+    subtitleicon: {type: input.icon, label: Subtitle Icon}
+    subtitlecolor: {type: input.colorpicker, label: Subtitle Color, default: '#ffffff'}
+    overlay: {type: input.colorpicker, label: Overlay Color, default: 'rgba(0,0,0,0.35)'}
+    hoveroverlay: {type: input.colorpicker, label: Hover Overlay Color, default: 'rgba(0,0,0,0.6)'}
+    link: {type: input.text, label: Container Link}
+    lightbox: {type: select.select, label: Open Image in Lightbox, default: disable, options: {enable: Enable, disable: Disable}}
+    buttontext: {type: input.text, label: Button Text}
+    buttonlink: {type: input.text, label: Button Link}
+    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: light, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark}}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 0}

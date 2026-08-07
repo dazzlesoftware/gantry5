@@ -1,0 +1,29 @@
+name: Icon
+description: Display a configurable linked icon.
+type: particle
+category: media
+icon: fa-star
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    icon: {type: input.icon, label: Icon, default: 'fa fa-star'}
+    link: {type: input.text, label: Link}
+    target: {type: select.select, label: Link Target, default: _self, options: {_self: Same Window, _blank: New Window}}
+    arialabel: {type: input.text, label: Aria Label, default: Icon link}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    size: {type: input.number, label: Icon Size, min: 1, default: 48}
+    width: {type: input.number, label: Container Width, min: 1, default: 80}
+    height: {type: input.number, label: Container Height, min: 1, default: 80}
+    color: {type: input.colorpicker, label: Icon Color, default: '#3366ff'}
+    background: {type: input.colorpicker, label: Background Color, default: 'rgba(0,0,0,0)'}
+    borderwidth: {type: input.number, label: Border Width, min: 0, default: 0}
+    bordercolor: {type: input.colorpicker, label: Border Color, default: '#3366ff'}
+    radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    rotate: {type: input.number, label: Rotation, description: Rotation in degrees., default: 0}
+    hovercolor: {type: input.colorpicker, label: Hover Icon Color, default: '#ffffff'}
+    hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#3366ff'}
+    hoverbordercolor: {type: input.colorpicker, label: Hover Border Color, default: '#3366ff'}
+    hoverscale: {type: input.number, label: Hover Scale, min: 0.1, step: 0.1, default: 1}
+    margin: {type: input.text, label: Margin, description: CSS margin value., default: '0'}

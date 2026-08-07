@@ -22,10 +22,10 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 206,
+    "totalFiles": 207,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 184,
+      "first_party_source": 185,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
@@ -36,9 +36,9 @@
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 34,
-      "shared_browser_asset": 73
+      "shared_browser_asset": 74
     },
-    "activeReferencedFiles": 204,
+    "activeReferencedFiles": 205,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
     "esModuleFiles": 92,
@@ -1415,6 +1415,41 @@
           "behavior",
           "bound",
           "flipbox"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/genesis-media-lightbox.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 4,
+      "consumers": [
+        "engines/common/nucleus/particles/image.html.twig",
+        "engines/common/nucleus/particles/imagelayouts.html.twig",
+        "engines/common/nucleus/particles/imageoverlay.html.twig",
+        "engines/common/nucleus/particles/instagramgallery.html.twig"
+      ],
+      "bytes": 2834,
+      "lines": 2,
+      "sha256": "7ca5a1a25e1381a2bea6d3aed3ba935c084bd19db29363f36219c43615b41c5a",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "genesis-lightbox",
+          "genesisLightbox",
+          "lightbox-close",
+          "lightboxTitle"
         ],
         "storageKeys": []
       }

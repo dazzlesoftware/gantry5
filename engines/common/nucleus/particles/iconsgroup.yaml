@@ -1,0 +1,40 @@
+name: Icons Group
+description: Display a configurable group of linked icons and labels.
+type: particle
+category: media
+icon: fa-icons
+configuration: {caching: {type: static}}
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Title}
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlealignment: {type: select.select, label: Title Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    alignment: {type: select.select, label: Group Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    display: {type: select.select, label: Item Display, default: inline, options: {inline: Inline, block: Stacked}}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 12}
+    items:
+      type: collection.list
+      array: true
+      label: Icons
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Item Name, default: New icon}
+        .enabled: {type: input.checkbox, label: Enabled, default: true}
+        .icon: {type: input.icon, label: Icon, default: 'fa fa-star'}
+        .link: {type: input.text, label: Link}
+        .target: {type: select.select, label: Link Target, default: _self, options: {_self: Same Window, _blank: New Window}}
+        .label: {type: input.text, label: Label}
+        .labelposition: {type: select.select, label: Label Position, default: bottom, options: {top: Top, bottom: Bottom, left: Left, right: Right}}
+        .size: {type: input.number, label: Icon Size, min: 1, default: 28}
+        .width: {type: input.number, label: Width, min: 1, default: 56}
+        .height: {type: input.number, label: Height, min: 1, default: 56}
+        .color: {type: input.colorpicker, label: Icon Color, default: '#3366ff'}
+        .background: {type: input.colorpicker, label: Background, default: 'rgba(0,0,0,0)'}
+        .hovercolor: {type: input.colorpicker, label: Hover Icon Color, default: '#ffffff'}
+        .hoverbackground: {type: input.colorpicker, label: Hover Background, default: '#3366ff'}
+        .borderwidth: {type: input.number, label: Border Width, min: 0, default: 0}
+        .bordercolor: {type: input.colorpicker, label: Border Color, default: '#3366ff'}
+        .radius: {type: input.number, label: Border Radius, min: 0, default: 0}
