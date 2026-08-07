@@ -1,0 +1,26 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    {% set heading = particle.heading|default('h3') %}
+    {% set content = particle.filter ? genesis.platform.filter(particle.text) : particle.text %}
+    <section
+        id="g-textblock-{{ id }}"
+        class="g-textblock {{ particle.dropcap|default('disable') == 'enable' ? 'g-textblock-dropcap' : '' }} {{ particle.class|e }}"
+        data-textblock
+        data-truncate="{{ particle.truncate|default('disable')|e }}"
+        data-max-words="{{ particle.maxwords|default(30)|e }}"
+        style="--g-textblock-align: {{ particle.alignment|default('left')|e }}; --g-textblock-columns: {{ particle.columns|default(1)|e }}; --g-textblock-columns-tablet: {{ particle.columns_tablet|default(1)|e }}; --g-textblock-columns-mobile: {{ particle.columns_mobile|default(1)|e }}; --g-textblock-column-gap: {{ particle.columngap|default(30)|e }}px;{% if particle.textcolor %} --g-textblock-color: {{ particle.textcolor|e }};{% endif %}{% if particle.fontsize %} --g-textblock-font-size: {{ particle.fontsize|e }}px;{% endif %}{% if particle.lineheight %} --g-textblock-line-height: {{ particle.lineheight|e }};{% endif %}{% if particle.dropcapcolor %} --g-textblock-dropcap-color: {{ particle.dropcapcolor|e }};{% endif %} --g-textblock-dropcap-size: {{ particle.dropcapsize|default(56)|e }}px;{% if particle.titlecolor %} --g-textblock-title-color: {{ particle.titlecolor|e }};{% endif %} --g-textblock-title-margin: {{ particle.titlemargin|default(10)|e }}px; --g-textblock-action-color: {{ particle.actioncolor|default('#3366ff')|e }};"
+    >
+        {% if particle.title %}<{{ heading }} class="g-textblock-title">{{ particle.title|raw }}</{{ heading }}>{% endif %}
+        <div class="g-textblock-content" data-textblock-content>{{ content|html|raw }}</div>
+        {% if particle.truncate|default('disable') == 'enable' %}
+            <template data-textblock-full>{{ content|html|raw }}</template>
+            <button class="g-textblock-more btn btn-link p-0" type="button" data-textblock-more hidden>{{ particle.actiontext|default('Show More')|e }}</button>
+        {% endif %}
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/textblock.js'), 11, 'footer') %}
+{% endblock %}

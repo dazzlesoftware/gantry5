@@ -1,0 +1,24 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <div class="g-clients {{ particle.class|e }} text-{{ particle.alignment|default('center')|e }}" style="--gclients-gap:{{ particle.gap|default(20)|e('html_attr') }}px;--gclients-padding:{{ particle.itempadding|default(15)|e('html_attr') }}px;--gclients-logo-height:{{ particle.logoheight|default(100)|e('html_attr') }}px;--gclients-logo-width:{{ particle.logowidth|default(220)|e('html_attr') }}px;--gclients-grayscale:{{ particle.grayscale|default(0)|e('html_attr') }}%;--gclients-opacity:{{ particle.opacity|default(100)|e('html_attr') }}%;--gclients-scale:{{ particle.scale|default(1.05)|e('html_attr') }};--gclients-transition:{{ particle.transition|default(300)|e('html_attr') }}ms;--gclients-item-bg:{{ particle.itembackground|default('transparent')|e('html_attr') }};--gclients-item-border-width:{{ particle.itemborderwidth|default(1)|e('html_attr') }}px;--gclients-item-border-color:{{ particle.itembordercolor|default('#dddddd')|e('html_attr') }};--gclients-item-radius:{{ particle.itemradius|default(0)|e('html_attr') }}px;--gclients-title-size:{{ particle.titlesize|default(28)|e('html_attr') }}px;--gclients-title-color:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--gclients-title-margin:{{ particle.titlemarginbottom|default(24)|e('html_attr') }}px;--gclients-arrow-color:{{ particle.arrowcolor|default('#333333')|e('html_attr') }};--gclients-arrow-bg:{{ particle.arrowbackground|default('#ffffff')|e('html_attr') }};--gclients-arrow-size:{{ particle.arrowsize|default(22)|e('html_attr') }}px;--gclients-arrow-box:{{ particle.arrowboxsize|default(44)|e('html_attr') }}px;--gclients-arrow-radius:{{ particle.arrowradius|default(0)|e('html_attr') }}px;--gclients-bullet:{{ particle.bulletcolor|default('#cccccc')|e('html_attr') }};--gclients-bullet-active:{{ particle.bulletactivecolor|default('#3366ff')|e('html_attr') }};--gclients-bullet-size:{{ particle.bulletsize|default(10)|e('html_attr') }}px;">
+        {% if particle.title %}<{{ particle.heading|default('h3')|e }} class="g-clients-title">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>{% endif %}
+        <div id="g-clients-{{ id }}" class="g-clients-shell g-clients-{{ particle.mode|default('grid')|e }}{% if particle.itemborder|default('hide') == 'show' %} has-item-border{% endif %}{% if particle.removefilter|default('disable') == 'enable' %} remove-filter-hover{% endif %}{% if particle.scalehover|default('disable') == 'enable' %} scale-hover{% endif %}"
+             data-clients data-mode="{{ particle.mode|default('grid')|e }}" data-desktop-items="{{ particle.desktopitems|default(4)|e }}" data-tablet-items="{{ particle.tabletitems|default(3)|e }}" data-mobile-items="{{ particle.mobileitems|default(2)|e }}" data-autoplay="{{ particle.autoplay|default('disable')|e }}" data-pause-hover="{{ particle.pausehover|default('enable')|e }}" data-loop="{{ particle.loop|default('enable')|e }}" data-randomize="{{ particle.randomize|default('disable')|e }}" data-interval="{{ particle.interval|default(3500)|e }}" data-speed="{{ particle.speed|default(500)|e }}" data-touch="{{ particle.touch|default('enable')|e }}" data-title-font="{{ particle.titlefont|default('')|e('html_attr') }}">
+            <div class="g-clients-viewport"><div class="g-clients-track">
+                {% for client in particle.clients|default([]) %}{% if not client.disable and client.image %}
+                    <div class="g-clients-item"><div class="g-clients-card">
+                        {% if client.link %}<a href="{{ client.link|e }}" target="{{ client.target|default('_self')|e }}"{% if client.target == '_blank' %} rel="noopener noreferrer{% if client.nofollow %} nofollow{% endif %}"{% elseif client.nofollow %} rel="nofollow"{% endif %}>{% endif %}
+                        <img src="{{ url(client.image)|e }}" alt="{{ client.imagealt|default(client.title)|e }}" loading="lazy">
+                        {% if client.link %}</a>{% endif %}
+                    </div></div>
+                {% endif %}{% endfor %}
+            </div></div>
+            {% if particle.mode|default('grid') == 'carousel' and particle.arrows|default('enable') == 'enable' %}<div class="g-clients-controls"><button type="button" data-clients-prev aria-label="Previous clients">&lsaquo;</button><button type="button" data-clients-next aria-label="Next clients">&rsaquo;</button></div>{% endif %}
+            {% if particle.mode|default('grid') == 'carousel' and particle.bullets|default('enable') == 'enable' %}<div class="g-clients-bullets" data-clients-bullets></div>{% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/clients.js'), 11, 'footer') %}{% endblock %}

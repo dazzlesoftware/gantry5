@@ -1,0 +1,333 @@
+name: Articles Scroller
+description: Display Joomla articles, WordPress posts, or manual articles as a ticker, scroller, or carousel.
+type: particle
+category: content
+icon: fa-newspaper
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+
+    title:
+      type: input.text
+      label: Title
+
+    source:
+      type: select.select
+      label: Article Source
+      description: Platform uses Joomla articles or WordPress posts automatically.
+      default: platform
+      options:
+        platform: Current Platform
+        manual: Manual Articles
+
+    layout:
+      type: select.select
+      label: Layout
+      default: ticker
+      options:
+        ticker: News Ticker
+        scroller: Date Scroller
+        carousel: Article Carousel
+
+    categories:
+      type: input.text
+      label: Category IDs
+      description: Comma-separated Joomla or WordPress category IDs. Leave empty for all categories.
+
+    articles:
+      type: input.text
+      label: Article/Post IDs
+      description: Comma-separated IDs. When supplied, category filtering is ignored.
+
+    tags:
+      type: input.text
+      label: Joomla Tag IDs
+      description: Optional comma-separated Joomla tag IDs.
+
+    limit:
+      type: input.number
+      label: Article Limit
+      min: 1
+      max: 50
+      default: 12
+
+    orderby:
+      type: select.select
+      label: Order By
+      default: date
+      options:
+        date: Published Date
+        modified: Modified Date
+        title: Title
+        random: Random
+
+    ordering:
+      type: select.select
+      label: Direction
+      default: DESC
+      options:
+        DESC: Descending
+        ASC: Ascending
+
+    showimage:
+      type: select.select
+      label: Images
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    imagebackground:
+      type: select.select
+      label: Scroller Image Background
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    showintro:
+      type: select.select
+      label: Intro Text
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    introlimit:
+      type: input.number
+      label: Intro Character Limit
+      min: 0
+      default: 140
+
+    showcategory:
+      type: select.select
+      label: Category
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    showdate:
+      type: select.select
+      label: Date
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    showtime:
+      type: select.select
+      label: Time in Ticker
+      default: disable
+      options:
+        enable: Show
+        disable: Hide
+
+    tickerheading:
+      type: input.text
+      label: Ticker Heading
+      default: Breaking News
+
+    tickershape:
+      type: select.select
+      label: Ticker Heading Shape
+      default: arrow
+      options:
+        arrow: Arrow
+        slanted-left: Slanted Left
+        slanted-right: Slanted Right
+        none: None
+
+    scrollerlead:
+      type: select.select
+      label: Scroller Left Rail
+      description: Show the article date or a custom icon in the colored left rail.
+      default: icon
+      options:
+        icon: Custom Icon
+        date: Article Date
+
+    scrollericon:
+      type: input.icon
+      label: Scroller Icon
+      default: fa fa-gamepad
+
+    scrollericonsize:
+      type: input.number
+      label: Scroller Icon Size
+      description: Custom icon size in pixels.
+      min: 1
+      default: 32
+
+    accentcolor:
+      type: input.colorpicker
+      label: Accent Color
+      default: '#e91e63'
+
+    panelcolor:
+      type: input.colorpicker
+      label: Panel Color
+      default: '#202025'
+
+    paneltextcolor:
+      type: input.colorpicker
+      label: Panel Text Color
+      default: '#ffffff'
+
+    mutedcolor:
+      type: input.colorpicker
+      label: Muted Text Color
+      default: '#aaaaaa'
+
+    imageheight:
+      type: input.number
+      label: Carousel Image Height
+      min: 100
+      default: 320
+
+    gap:
+      type: input.number
+      label: Carousel Gap
+      min: 0
+      default: 24
+
+    scrollergap:
+      type: input.number
+      label: Scroller Article Spacing
+      description: Width of the separator between vertically scrolling articles, in pixels.
+      min: 0
+      default: 1
+
+    separatorcolor:
+      type: input.colorpicker
+      label: Scroller Separator Color
+      default: 'rgba(255,255,255,0.7)'
+
+    desktopitems:
+      type: input.number
+      label: Desktop Items
+      min: 1
+      max: 8
+      default: 3
+
+    tabletitems:
+      type: input.number
+      label: Tablet Items
+      min: 1
+      max: 6
+      default: 2
+
+    mobileitems:
+      type: input.number
+      label: Mobile Items
+      min: 1
+      max: 3
+      default: 1
+
+    move:
+      type: input.number
+      label: Items Per Move
+      min: 1
+      max: 8
+      default: 1
+
+    speed:
+      type: input.number
+      label: Transition Speed
+      description: Transition duration in milliseconds.
+      min: 0
+      default: 500
+
+    interval:
+      type: input.number
+      label: Autoplay Interval
+      min: 1000
+      default: 5000
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      default: disable
+      options:
+        enable: Enable
+        disable: Disable
+
+    touch:
+      type: select.select
+      label: Touch and Drag
+      default: enable
+      options:
+        enable: Enable
+        disable: Disable
+
+    arrows:
+      type: select.select
+      label: Previous / Next
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    indicators:
+      type: select.select
+      label: Indicators
+      default: enable
+      options:
+        enable: Show
+        disable: Hide
+
+    alignment:
+      type: select.select
+      label: Content Alignment
+      default: left
+      options:
+        left: Left
+        center: Center
+        right: Right
+
+    items:
+      type: collection.list
+      array: true
+      label: Manual Articles
+      value: title
+      ajax: true
+      fields:
+        .title:
+          type: input.text
+          label: Title
+        .link:
+          type: input.text
+          label: Link
+        .image:
+          type: input.imagepicker
+          label: Image
+        .imagealt:
+          type: input.text
+          label: Image Alternative Text
+        .intro:
+          type: textarea.textarea
+          label: Intro Text
+        .date:
+          type: input.date
+          label: Published Date
+        .category:
+          type: input.text
+          label: Category
+        .categorylink:
+          type: input.text
+          label: Category Link
+        .icon:
+          type: input.icon
+          label: Scroller Icon Override
+        .disable:
+          type: input.checkbox
+          label: Disable
+          default: false

@@ -1,0 +1,106 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set normalized = [] %}
+
+{% if particle.source|default('platform') == 'manual' %}
+    {% for item in particle.items|default([]) %}
+        {% if not item.disable %}
+            {% set normalized = normalized|merge([{
+                title: item.title, link: item.link, image: item.image, imagealt: item.imagealt,
+                intro: item.intro, date: item.date, category: item.category, categorylink: item.categorylink, icon: item.icon
+            }]) %}
+        {% endif %}
+    {% endfor %}
+{% elseif wordpress is defined %}
+    {% set query = {
+        posts_per_page: particle.limit|default(12),
+        orderby: particle.orderby|default('date') == 'random' ? 'rand' : particle.orderby|default('date'),
+        order: particle.ordering|default('DESC'),
+        ignore_sticky_posts: true
+    } %}
+    {% if particle.articles %}{% set query = query|merge({post__in: particle.articles|replace({' ': ''})|split(',')}) %}
+    {% elseif particle.categories %}{% set query = query|merge({cat: particle.categories|replace({' ': ''})}) %}{% endif %}
+    {% for post in wordpress.query_posts(query) %}
+        {% set category = post.categories|first %}
+        {% set normalized = normalized|merge([{
+            title: post.title, link: post.link, image: post.thumbnail.src, imagealt: post.title,
+            intro: post.post_excerpt ? post.post_excerpt : post.content,
+            date: post.post_date, category: category ? category.title : '', categorylink: category ? category.link : ''
+        }]) %}
+    {% endfor %}
+{% elseif joomla is defined %}
+    {% if particle.articles %}
+        {% set finder = joomla.finder('content', {id: [particle.articles|replace({' ': ''})|split(',')]}).published(1).language() %}
+    {% else %}
+        {% if particle.categories %}
+            {% set categoryFinder = joomla.finder('category', {id: [particle.categories|replace({' ': ''})|split(','), 0]}).published(1).language().limit(0).find() %}
+            {% set finder = joomla.finder('content').category(categoryFinder).published(1).language() %}
+        {% else %}
+            {% set finder = joomla.finder('content').published(1).language() %}
+        {% endif %}
+        {% if particle.tags %}{% do finder.tags({id: [particle.tags|replace({' ': ''})]}) %}{% endif %}
+    {% endif %}
+    {% set joomlaOrder = particle.orderby|default('date') == 'date' ? 'publish_up' : (particle.orderby|default('date') == 'random' ? 'random' : particle.orderby|default('date')) %}
+    {% do finder.order(joomlaOrder, particle.ordering|default('DESC')).limit(particle.limit|default(12)) %}
+    {% for article in finder.find() %}
+        {% set category = article.categories|last %}
+        {% set image = article.images.image_intro ? article.images.image_intro : article.images.image_fulltext %}
+        {% set normalized = normalized|merge([{
+            title: article.title, link: article.route, image: image, imagealt: article.images.image_intro_alt|default(article.title),
+            intro: article.introtext, date: article.publish_up,
+            category: category ? category.title : '', categorylink: category ? category.route : ''
+        }]) %}
+    {% endfor %}
+{% endif %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <section class="g-articlesscroller g-articlesscroller-{{ particle.layout|default('ticker')|e }} {{ particle.class|e }}">
+        {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
+        {% if normalized %}
+            <div id="g-articlesscroller-{{ id }}" class="g-articlesscroller-shell"
+                style="--g-articles-accent:{{ particle.accentcolor|default('#e91e63')|e('html_attr') }};--g-articles-panel:{{ particle.panelcolor|default('#202025')|e('html_attr') }};--g-articles-text:{{ particle.paneltextcolor|default('#ffffff')|e('html_attr') }};--g-articles-muted:{{ particle.mutedcolor|default('#aaaaaa')|e('html_attr') }};--g-articles-image-height:{{ particle.imageheight|default(320)|e('html_attr') }}px;--g-articles-gap:{{ particle.gap|default(24)|e('html_attr') }}px;--g-articles-scroller-gap:{{ particle.scrollergap|default(1)|e('html_attr') }}px;--g-articles-separator:{{ particle.separatorcolor|default('rgba(255,255,255,0.7)')|e('html_attr') }};--g-articles-icon-size:{{ particle.scrollericonsize|default(32)|e('html_attr') }}px"
+                data-articles-scroller data-layout="{{ particle.layout|default('ticker')|e }}"
+                data-desktop-items="{{ particle.desktopitems|default(3)|e }}" data-tablet-items="{{ particle.tabletitems|default(2)|e }}" data-mobile-items="{{ particle.mobileitems|default(1)|e }}"
+                data-move="{{ particle.move|default(1)|e }}" data-speed="{{ particle.speed|default(500)|e }}" data-interval="{{ particle.interval|default(5000)|e }}"
+                data-autoplay="{{ particle.autoplay|default('disable')|e }}" data-touch="{{ particle.touch|default('enable')|e }}">
+                {% if particle.layout|default('ticker') == 'ticker' %}<div class="g-articlesscroller-heading g-articlesscroller-shape-{{ particle.tickershape|default('arrow')|e }}">{{ particle.tickerheading|default('Breaking News')|e }}</div>{% endif %}
+                <div class="g-articlesscroller-viewport">
+                    <div class="g-articlesscroller-track">
+                        {% for article in normalized %}
+                            <article class="g-articlesscroller-item card border-0 text-{{ particle.alignment|default('left')|e }}">
+                                {% if particle.layout|default('ticker') == 'ticker' %}
+                                    <a class="g-articlesscroller-ticker-link" href="{{ article.link|e }}">{{ article.title|raw }}</a>
+                                    {% if particle.showdate|default('enable') == 'enable' and article.date %}<time datetime="{{ article.date|date('c') }}">{{ article.date|date('d M') }}{% if particle.showtime|default('disable') == 'enable' %} · {{ article.date|date('g:i A') }}{% endif %}</time>{% endif %}
+                                {% elseif particle.layout == 'scroller' %}
+                                    <a class="g-articlesscroller-scroller-link" href="{{ article.link|e }}">
+                                        <div class="g-articlesscroller-date-card{% if particle.imagebackground|default('disable') == 'enable' and article.image %} has-background{% endif %}"{% if particle.imagebackground|default('disable') == 'enable' and article.image %} style="background-image:url('{{ url(article.image)|e('html_attr') }}')"{% endif %}>
+                                            <span class="g-articlesscroller-lead">
+                                                {% if particle.scrollerlead|default('icon') == 'date' and article.date %}<time><strong>{{ article.date|date('d') }}</strong><span>{{ article.date|date('M') }}</span></time>{% else %}<i class="{{ article.icon|default(particle.scrollericon|default('fa fa-gamepad'))|e }}" aria-hidden="true"></i>{% endif %}
+                                            </span>
+                                            <div class="g-articlesscroller-scroller-content"><h3>{{ article.title|raw }}</h3>{% if particle.showintro|default('enable') == 'enable' %}<p>{{ article.intro|striptags|truncate_text(particle.introlimit|default(140)) }}</p>{% endif %}</div>
+                                        </div>
+                                    </a>
+                                {% else %}
+                                    {% if particle.showimage|default('enable') == 'enable' and article.image %}<a href="{{ article.link|e }}"><img class="card-img-top" src="{{ url(article.image)|e }}" alt="{{ article.imagealt|default(article.title)|e }}" loading="lazy"></a>{% endif %}
+                                    <div class="card-body">
+                                        {% if particle.showdate|default('enable') == 'enable' and article.date %}<time datetime="{{ article.date|date('c') }}">{{ article.date|date('M d, Y') }}</time>{% endif %}
+                                        <h3 class="card-title"><a href="{{ article.link|e }}">{{ article.title|raw }}</a></h3>
+                                        {% if particle.showintro|default('enable') == 'enable' %}<p class="card-text">{{ article.intro|striptags|truncate_text(particle.introlimit|default(140)) }}</p>{% endif %}
+                                        {% if particle.showcategory|default('enable') == 'enable' and article.category %}<a class="g-articlesscroller-category" href="{{ article.categorylink|e }}">{{ article.category|e }}</a>{% endif %}
+                                    </div>
+                                {% endif %}
+                            </article>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if particle.arrows|default('enable') == 'enable' %}<div class="g-articlesscroller-controls"><button type="button" data-scroller-prev aria-label="Previous articles">{% if particle.layout == 'scroller' %}&#8593;{% else %}‹{% endif %}</button><button type="button" data-scroller-next aria-label="Next articles">{% if particle.layout == 'scroller' %}&#8595;{% else %}›{% endif %}</button></div>{% endif %}
+                {% if particle.indicators|default('enable') == 'enable' %}<div class="g-articlesscroller-indicators" data-scroller-indicators></div>{% endif %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="status">No articles found.</div>
+        {% endif %}
+    </section>
+{% endblock %}
+
+{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/articlesscroller.js'), 11, 'footer') %}{% endblock %}

@@ -84,6 +84,37 @@ let createHandler = function(divisor, noun, restOfString) {
     }
 };
 
+let reportInvalidFields = function(invalid) {
+    let fields = invalid.map(function(input) {
+        let element = input && input[0] ? input[0] : input,
+            container = element ? element.closest('.settings-param, .card-overrideable') : null,
+            label = container ? container.querySelector('.settings-param-title, label') : null;
+
+        if (element) {
+            element.classList.add('field-invalid');
+            element.setAttribute('aria-invalid', 'true');
+        }
+
+        return label && label.textContent.trim()
+            ? label.textContent.trim()
+            : (element && (element.getAttribute('aria-label') || element.name || element.id)) || 'Unknown field';
+    }).filter(function(value, index, values) { return values.indexOf(value) === index; });
+
+    let first = invalid[0] && (invalid[0][0] || invalid[0]);
+    if (first) {
+        first.addEventListener('input', function clearInvalid() {
+            first.classList.remove('field-invalid');
+            first.removeAttribute('aria-invalid');
+        }, { once: true });
+        first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        first.focus({ preventScroll: true });
+    }
+
+    let message = translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS');
+    if (fields.length) { message += '<br><strong>' + fields.join(', ') + '</strong>'; }
+    toastr.error(message, translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
+};
+
 let formatters = [
     { threshold: -31535999, handler: createHandler(-31536000,	"year",     "from now" ) },
     { threshold: -2591999, 	handler: createHandler(-2592000,  	"month",    "from now" ) },
@@ -270,7 +301,7 @@ ready(function() {
             saves.disabled(false);
             saves.hideIndicator();
             saves.showIndicator('fa fa-fw fa-exclamation-triangle');
-            toastr.error(translate('GENESIS_PLATFORM_JS_REVIEW_FIELDS'), translate('GENESIS_PLATFORM_JS_INVALID_FIELDS'));
+            reportInvalidFields(invalid);
             return;
         }
 

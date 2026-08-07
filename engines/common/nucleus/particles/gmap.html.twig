@@ -1,0 +1,19 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <div class="g-gmap {{ particle.class|e }}" style="--ggmap-height:{{ particle.height|default(300)|e('html_attr') }}px;--ggmap-tablet-height:{{ particle.tabletheight|default(300)|e('html_attr') }}px;--ggmap-mobile-height:{{ particle.mobileheight|default(300)|e('html_attr') }}px;--ggmap-title-size:{{ particle.titlesize|default(28)|e('html_attr') }}px;--ggmap-title-color:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--ggmap-title-margin:{{ particle.titlemarginbottom|default(20)|e('html_attr') }}px;--ggmap-border-width:{{ particle.borderwidth|default(1)|e('html_attr') }}px;--ggmap-border-color:{{ particle.bordercolor|default('#dddddd')|e('html_attr') }};--ggmap-radius:{{ particle.radius|default(0)|e('html_attr') }}px;">
+        {% if particle.title %}<{{ particle.heading|default('h3')|e }} class="g-gmap-title text-{{ particle.titlealignment|default('left')|e }}">{{ particle.title|raw }}</{{ particle.heading|default('h3')|e }}>{% endif %}
+        <div id="g-gmap-{{ id }}" class="g-gmap-shell{% if particle.border|default('hide') == 'show' %} has-map-border{% endif %}" data-gmap data-api-key="{{ particle.apikey|default('')|e('html_attr') }}" data-lat="{{ particle.latitude|default('23.755349')|e('html_attr') }}" data-lng="{{ particle.longitude|default('90.375961')|e('html_attr') }}" data-map-type="{{ particle.maptype|default('ROADMAP')|e('html_attr') }}" data-zoom="{{ particle.zoom|default(14)|e('html_attr') }}" data-scroll="{{ particle.mousescroll|default('enable')|e('html_attr') }}" data-controls="{{ particle.controls|default('enable')|e('html_attr') }}" data-draggable="{{ particle.draggable|default('enable')|e('html_attr') }}" data-keyboard="{{ particle.keyboard|default('enable')|e('html_attr') }}" data-fit-bounds="{{ particle.fitbounds|default('disable')|e('html_attr') }}" data-title-font="{{ particle.titlefont|default('')|e('html_attr') }}" data-loading-text="{{ particle.loadingtext|default('Loading map…')|e('html_attr') }}" data-error-text="{{ particle.errortext|default('The map could not be loaded. Check the Google Maps API key and browser console.')|e('html_attr') }}">
+            <div class="g-gmap-canvas" role="region" aria-label="{{ particle.title|default('Google Map')|striptags|e }}"></div>
+            <div class="g-gmap-status" aria-live="polite">{{ particle.loadingtext|default('Loading map…')|e }}</div>
+            <div class="g-gmap-data" hidden>
+                <div class="g-gmap-marker" data-lat="{{ particle.latitude|default('23.755349')|e('html_attr') }}" data-lng="{{ particle.longitude|default('90.375961')|e('html_attr') }}"{% if particle.markericon %} data-icon="{{ url(particle.markericon)|e('html_attr') }}"{% endif %}><template>{{ particle.infowindow|default('')|raw }}</template></div>
+                {% for location in particle.locations|default([]) %}{% if not location.disable and location.latitude and location.longitude %}<div class="g-gmap-marker" data-lat="{{ location.latitude|e('html_attr') }}" data-lng="{{ location.longitude|e('html_attr') }}"{% if location.icon %} data-icon="{{ url(location.icon)|e('html_attr') }}"{% endif %}><template>{{ location.content|default(location.title)|raw }}</template></div>{% endif %}{% endfor %}
+                {% if particle.styles %}<script type="application/json" class="g-gmap-styles">{{ particle.styles|raw }}</script>{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/gmap.js'), 11, 'footer') %}{% endblock %}

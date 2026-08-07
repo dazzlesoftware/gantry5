@@ -1,0 +1,205 @@
+name: Animated Heading
+description: Display rotating animated words or highlighted text with hand-drawn shapes.
+type: particle
+category: content
+icon: fa-heading
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+    class:
+      type: input.selectize
+      label: CSS Classes
+    mode:
+      type: select.select
+      label: Heading Style
+      default: animation
+      options:
+        animation: Text Animation
+        highlighted: Highlighted Text
+    heading:
+      type: select.select
+      label: Heading Element
+      default: h2
+      options: {h1: H1, h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}
+    before:
+      type: input.text
+      label: Text Before
+      default: We create
+    after:
+      type: input.text
+      label: Text After
+    words:
+      type: textarea.textarea
+      label: Animated Words
+      description: Enter one word or phrase per line.
+      default: "websites\nexperiences\nresults"
+    animation:
+      type: select.select
+      label: Text Animation
+      default: clip
+      options:
+        blinds: Blinds
+        clip: Clip
+        typing: Typing
+        flip: Flip
+        fade: Fade In
+        loading: Loading Bar
+        scale: Scale
+        slide: Swirl
+        push: Push
+        wave: Twist
+        marquee: Marquee
+    highlighted:
+      type: input.text
+      label: Highlighted Text
+      default: remarkable
+    shape:
+      type: select.select
+      label: Highlight Shape
+      default: circle
+      options:
+        bg-fill: Background Fill
+        circle: Circle
+        cross: Cross
+        diagonal: Diagonal
+        strikethrough: Strikethrough
+        square: Rectangle
+        top-bottom: Top and Bottom Line
+        underline: Underline
+        double-underline: Double Underline
+        zigzag-underline: Scribble Underline
+        sharp-zigzag: Sharp Zigzag Underline
+        wave: Wave
+    headingcolor:
+      type: input.colorpicker
+      label: Heading Color
+    accentcolor:
+      type: input.colorpicker
+      label: Animated / Highlighted Text Color
+      default: '#3366ff'
+    shapecolor:
+      type: input.colorpicker
+      label: Shape Color
+      default: '#3366ff'
+    fontsize:
+      type: input.number
+      label: Font Size
+      description: Pixels; leave empty to inherit the theme.
+      min: 1
+    lineheight:
+      type: input.number
+      label: Line Height
+      min: 0
+      step: 0.1
+    fontweight:
+      type: select.select
+      label: Font Weight
+      default: inherit
+      options: {inherit: Inherit, 300: Light, 400: Normal, 500: Medium, 600: Semi Bold, 700: Bold, 800: Extra Bold, 900: Black}
+    headingfont:
+      type: input.fonts
+      label: Heading Font
+      description: Select the font for the complete heading. Leave blank to inherit the theme.
+    animatedfont:
+      type: input.fonts
+      label: Animated / Highlighted Font
+      description: Optionally use a different font for the animated or highlighted words.
+    wordspacebefore:
+      type: input.number
+      label: Space Before Animated Word
+      min: 0
+      default: 12
+    wordspaceafter:
+      type: input.number
+      label: Space After Animated Word
+      min: 0
+      default: 8
+    marker:
+      type: select.select
+      label: Clip Marker
+      default: line
+      options: {line: Line, icon: Custom Icon, none: None}
+    markericon:
+      type: input.icon
+      label: Clip Marker Icon
+      default: fa fa-pencil
+    markercolor:
+      type: input.colorpicker
+      label: Clip Marker Color
+      default: '#3366ff'
+    markersize:
+      type: input.number
+      label: Clip Marker Size
+      min: 1
+      default: 60
+    markerwidth:
+      type: input.number
+      label: Clip Line Width
+      min: 1
+      default: 3
+    markergap:
+      type: input.number
+      label: Space Before Clip Marker
+      min: 0
+      default: 4
+    markeraftergap:
+      type: input.number
+      label: Space After Clip Marker
+      min: 0
+      default: 12
+    alignment:
+      type: select.select
+      label: Alignment
+      default: left
+      options: {left: Left, center: Center, right: Right}
+    duration:
+      type: input.number
+      label: Animation Duration
+      description: Duration in milliseconds.
+      min: 50
+      default: 600
+    delay:
+      type: input.number
+      label: Word Display Delay
+      description: Delay between words in milliseconds.
+      min: 100
+      default: 2500
+    shapewidth:
+      type: input.number
+      label: Shape Stroke Width
+      min: 1
+      default: 8
+    shaperounded:
+      type: select.select
+      label: Rounded Shape Lines
+      default: enable
+      options: {enable: Enable, disable: Disable}
+    marqueedirection:
+      type: select.select
+      label: Marquee Direction
+      default: left
+      options: {left: Left, right: Right}
+    marqueespeed:
+      type: input.number
+      label: Marquee Speed
+      description: Seconds per loop.
+      min: 1
+      default: 15
+    marqueegap:
+      type: input.number
+      label: Marquee Gap
+      min: 0
+      default: 40
+    pausehover:
+      type: select.select
+      label: Pause Marquee on Hover
+      default: enable
+      options: {enable: Enable, disable: Disable}

@@ -22,10 +22,10 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 188,
+    "totalFiles": 195,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 166,
+      "first_party_source": 173,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
@@ -36,9 +36,9 @@
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 34,
-      "shared_browser_asset": 55
+      "shared_browser_asset": 62
     },
-    "activeReferencedFiles": 186,
+    "activeReferencedFiles": 193,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
     "esModuleFiles": 92,
@@ -428,6 +428,82 @@
       }
     },
     {
+      "path": "assets/common/js/animatedheading.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/animatedheading.html.twig"
+      ],
+      "bytes": 3799,
+      "lines": 67,
+      "sha256": "27e530be36f2e75c1832baf3e3eafd1cc58a517757c93abacc6901af3852e190",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "animated-heading",
+          "animatedFont",
+          "animation",
+          "delay",
+          "duration",
+          "headingFont",
+          "mode"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/articlesscroller.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/articlesscroller.html.twig"
+      ],
+      "bytes": 5383,
+      "lines": 89,
+      "sha256": "e40b27d168e795610c3434bfc0323b1319cb7b99dd72d04f222e31a542d2d830",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "articles-scroller",
+          "autoplay",
+          "desktopItems",
+          "interval",
+          "layout",
+          "mobileItems",
+          "move",
+          "scroller-indicators",
+          "scroller-next",
+          "scroller-prev",
+          "speed",
+          "tabletItems",
+          "touch"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/audioplayer.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
@@ -699,6 +775,50 @@
       }
     },
     {
+      "path": "assets/common/js/clients.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/clients.html.twig"
+      ],
+      "bytes": 4653,
+      "lines": 20,
+      "sha256": "75d56fd587a8ccb92fc3db536b0bd4d2b06eaca245bc82fcebc1f7a957104c55",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "autoplay",
+          "clients",
+          "clients-bullets",
+          "clients-next",
+          "clients-prev",
+          "desktopItems",
+          "interval",
+          "loop",
+          "mobileItems",
+          "mode",
+          "pauseHover",
+          "randomize",
+          "speed",
+          "tabletItems",
+          "titleFont",
+          "touch"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/css-length.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
@@ -781,6 +901,45 @@
         ],
         "customEvents": [],
         "dataAttributes": [],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/feature.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/feature.html.twig"
+      ],
+      "bytes": 2323,
+      "lines": 35,
+      "sha256": "b03fcaa47f2309e4c34c0abaceb51cc829f22212f308812725d3d596d8bd7b41",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "button1Font",
+          "button1Present",
+          "button1Size",
+          "button1Weight",
+          "button2Font",
+          "button2Present",
+          "button2Size",
+          "button2Weight",
+          "feature",
+          "textFont",
+          "titleFont"
+        ],
         "storageKeys": []
       }
     },
@@ -1064,6 +1223,48 @@
         "globals": [],
         "customEvents": [],
         "dataAttributes": [],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/gmap.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/gmap.html.twig"
+      ],
+      "bytes": 4462,
+      "lines": 36,
+      "sha256": "d8dbc342f794666f05d02c6782c5772f5bc3d1b18305cdec7961c5784f724824",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "apiKey",
+          "controls",
+          "draggable",
+          "errorText",
+          "fitBounds",
+          "gmap",
+          "icon",
+          "keyboard",
+          "lat",
+          "lng",
+          "mapType",
+          "scroll",
+          "titleFont",
+          "zoom"
+        ],
         "storageKeys": []
       }
     },
@@ -2644,6 +2845,50 @@
       }
     },
     {
+      "path": "assets/common/js/teamcarousel.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/teamcarousel.html.twig"
+      ],
+      "bytes": 4684,
+      "lines": 32,
+      "sha256": "f4e2dbc5148057a5b218cb441a42d3d60b6f551bef8ed9474d96b888459265b1",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "autoplay",
+          "designationFont",
+          "desktopItems",
+          "interval",
+          "loop",
+          "mobileItems",
+          "nameFont",
+          "pauseHover",
+          "randomize",
+          "speed",
+          "tabletItems",
+          "team-bullets",
+          "team-carousel",
+          "team-next",
+          "team-prev",
+          "touch"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "assets/common/js/testimonial-slider.js",
       "area": "shared_browser_asset",
       "classification": "first_party_source",
@@ -2709,6 +2954,41 @@
           "testimonialsLoop",
           "testimonialsSpeed",
           "testimonialsTimeout"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
+      "path": "assets/common/js/textblock.js",
+      "area": "shared_browser_asset",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 1,
+      "consumers": [
+        "engines/common/nucleus/particles/textblock.html.twig"
+      ],
+      "bytes": 1752,
+      "lines": 43,
+      "sha256": "362b55be1b9b605c379ad40ee0709c0b9c29271eaeb55960a628c935a86396cb",
+      "signals": {
+        "commonjs": false,
+        "esModule": false,
+        "var": false,
+        "prototype": false,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "maxWords",
+          "textblock",
+          "textblock-content",
+          "textblock-full",
+          "textblock-more",
+          "textblockReady",
+          "truncate"
         ],
         "storageKeys": []
       }
@@ -3575,7 +3855,7 @@
       ],
       "bytes": 6718,
       "lines": 164,
-      "sha256": "4c7897a497d8a141d8515ca700cbf71bee21c036dbe0780d8e9fc34a1fb24757",
+      "sha256": "00e17279fda26dbfbb0f02b117d4d0a4f754276c69d481585d09ff1a645d3076",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -3916,9 +4196,9 @@
         "platforms/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 28649,
-      "lines": 679,
-      "sha256": "f40c23a19eaafe8dbff4ddc6d2081e04abdaaf50c54a57744545b2dd5a2b9453",
+      "bytes": 30043,
+      "lines": 709,
+      "sha256": "6b98941534343570c0b720f05932b928e128fa3c3ba2d0598573748eb50566e7",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4135,9 +4415,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 17933,
-      "lines": 459,
-      "sha256": "051390fcfff641b78589fea8be0ea6b95d52925d167d4afb5443feb7092cb0eb",
+      "bytes": 19271,
+      "lines": 490,
+      "sha256": "5564f4a01cc4b882c8da015cf2f24fcff30c7fdfa79446b9065f66f6c717332c",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4398,7 +4678,7 @@
       ],
       "bytes": 10229,
       "lines": 222,
-      "sha256": "ec63f5617d7640146f33b2070d74c5df5bfbeb5ef0c206cd8ea3b2dfb2995667",
+      "sha256": "d8046cba5a8fb5b869b807e6497fc86d3769b4914bcb68d018144db94be89cca",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4582,7 +4862,7 @@
       ],
       "bytes": 24905,
       "lines": 648,
-      "sha256": "3e440bef167a7721551434ba1d6d2c90b60668c5467a230c3385d9c9ab58101c",
+      "sha256": "591c6c7f123a98ca6938b4b492ec474f3fc56fb3108662bfd3a1162502fbc1b6",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -6563,9 +6843,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 608540,
-      "lines": 15052,
-      "sha256": "1a095fb2e4503b5e592c7df2f82944ee0598d4e95d3fe2816db234e2ad2db467",
+      "bytes": 609681,
+      "lines": 15104,
+      "sha256": "871abe5b644efa79a7b9438f2b38d3475f58adc375ca1f4afab9c9d388c301ad",
       "signals": {
         "commonjs": false,
         "esModule": false,

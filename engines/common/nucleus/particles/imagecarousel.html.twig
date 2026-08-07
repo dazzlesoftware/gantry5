@@ -1,6 +1,8 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {# Existing outlines may predate the globally enabled Frameworks atom. #}
+    {% do genesis.load('bootstrap.5') %}
     {% set carouselId = 'g-imagecarousel-' ~ id %}
     {% set layout = particle.layout|default('overlay') %}
     {% set autoplay = particle.autoplay|default('enable') == 'enable' %}

@@ -1,0 +1,140 @@
+name: Team Carousel
+description: Display team profiles in a responsive carousel with social links.
+type: particle
+category: content
+icon: fa-users
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    layout:
+      type: select.select
+      label: Team Layout
+      default: layout1
+      options: {layout1: Image with Content Below, layout2: Image Overlay, layout3: Split Image and Content}
+    contentbackground: {type: input.colorpicker, label: Content Background, default: '#ffffff'}
+    overlaycolor: {type: input.colorpicker, label: Overlay Color, default: 'rgba(0,0,0,0.65)'}
+    imageheight: {type: input.number, label: Image Height, min: 100, default: 360}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 20}
+    contentpadding: {type: input.number, label: Content Padding, min: 0, default: 24}
+    carouselborder:
+      type: select.select
+      label: Carousel Border
+      default: hide
+      options:
+        hide: Hide
+        show: Show
+    borderwidth: {type: input.number, label: Carousel Border Width, min: 0, default: 1}
+    bordercolor: {type: input.colorpicker, label: Carousel Border Color, default: '#dddddd'}
+    borderradius: {type: input.number, label: Carousel Border Radius, min: 0, default: 0}
+    alignment:
+      type: select.select
+      label: Content Alignment
+      default: center
+      options: {left: Left, center: Center, right: Right}
+    namecolor: {type: input.colorpicker, label: Name Color, default: '#222222'}
+    designationcolor: {type: input.colorpicker, label: Designation Color, default: '#777777'}
+    namefont: {type: input.fonts, label: Name Font}
+    designationfont: {type: input.fonts, label: Designation Font}
+    namesize: {type: input.number, label: Name Font Size, min: 1, default: 22}
+    designationsize: {type: input.number, label: Designation Font Size, min: 1, default: 15}
+    socialsize: {type: input.number, label: Social Icon Size, min: 1, default: 16}
+    socialcolor: {type: input.colorpicker, label: Social Icon Color, default: '#555555'}
+    socialhovercolor: {type: input.colorpicker, label: Social Icon Hover Color, default: '#3366ff'}
+    socialwidth: {type: input.number, label: Social Icon Width, min: 1, default: 34}
+    socialheight: {type: input.number, label: Social Icon Height, min: 1, default: 34}
+    socialborderwidth: {type: input.number, label: Social Border Width, min: 0, default: 0}
+    socialbordercolor: {type: input.colorpicker, label: Social Border Color, default: '#dddddd'}
+    socialradius: {type: input.number, label: Social Border Radius, min: 0, default: 50}
+    desktopitems: {type: input.number, label: Desktop Items, min: 1, max: 8, default: 3}
+    tabletitems: {type: input.number, label: Tablet Items, min: 1, max: 6, default: 2}
+    mobileitems: {type: input.number, label: Mobile Items, min: 1, max: 3, default: 1}
+    autoplay:
+      type: select.select
+      label: Autoplay
+      default: disable
+      options: {enable: Enable, disable: Disable}
+    pausehover:
+      type: select.select
+      label: Pause on Hover
+      default: enable
+      options: {enable: Enable, disable: Disable}
+    loop:
+      type: select.select
+      label: Loop
+      default: enable
+      options: {enable: Enable, disable: Disable}
+    randomize:
+      type: select.select
+      label: Randomize Members
+      default: disable
+      options: {enable: Enable, disable: Disable}
+    interval: {type: input.number, label: Autoplay Interval, min: 1000, default: 4500}
+    speed: {type: input.number, label: Transition Speed, min: 0, default: 500}
+    touch:
+      type: select.select
+      label: Touch and Drag
+      default: enable
+      options: {enable: Enable, disable: Disable}
+    arrows:
+      type: select.select
+      label: Arrows
+      default: enable
+      options: {enable: Show, disable: Hide}
+    arrowstyle:
+      type: select.select
+      label: Arrow Style
+      default: angle
+      options: {angle: Angle, long: Long Arrow}
+    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#333333'}
+    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: '#ffffff'}
+    arrowsize: {type: input.number, label: Arrow Icon Size, min: 1, default: 22}
+    arrowboxsize: {type: input.number, label: Arrow Box Size, min: 20, default: 44}
+    arrowradius: {type: input.number, label: Arrow Border Radius, min: 0, default: 0}
+    bullets:
+      type: select.select
+      label: Bullets
+      default: enable
+      options: {enable: Show, disable: Hide}
+    bulletcolor: {type: input.colorpicker, label: Bullet Color, default: '#cccccc'}
+    bulletactivecolor: {type: input.colorpicker, label: Active Bullet Color, default: '#3366ff'}
+    bulletsize: {type: input.number, label: Bullet Size, min: 2, default: 10}
+    members:
+      type: collection.list
+      array: true
+      label: Team Members
+      value: name
+      ajax: true
+      fields:
+        .name: {type: input.text, label: Name}
+        .designation: {type: input.text, label: Designation}
+        .image: {type: input.imagepicker, label: Portrait}
+        .imagealt: {type: input.text, label: Image Alternative Text}
+        .link: {type: input.text, label: Profile Link}
+        .target:
+          type: select.select
+          label: Profile Link Target
+          default: _self
+          options: {_self: Current Window, _blank: New Window}
+        .socials:
+          type: collection.list
+          array: true
+          label: Social Links
+          value: title
+          ajax: true
+          fields:
+            .title: {type: input.text, label: Accessible Label}
+            .icon: {type: input.icon, label: Icon}
+            .link: {type: input.text, label: Link}
+            .target:
+              type: select.select
+              label: Link Target
+              default: _blank
+              options: {_self: Current Window, _blank: New Window}
+        .disable: {type: input.checkbox, label: Disable, default: false}

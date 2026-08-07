@@ -1,0 +1,31 @@
+.g-content[id^="teamcarousel-"][id$="-particle"] { border: 0 !important; outline: 0 !important; box-shadow: none !important; }
+.g-teamcarousel { border: 0 !important; outline: 0 !important; box-shadow: none !important; }
+.g-teamcarousel-shell { position: relative; padding-bottom: 2.5rem; border: 0 !important; border-radius: var(--gtc-border-radius); outline: 0 !important; box-shadow: none !important; }
+.g-teamcarousel-shell.has-carousel-border { border: var(--gtc-border-width) solid var(--gtc-border-color) !important; }
+.g-teamcarousel-viewport { overflow: hidden; }
+.g-teamcarousel-track { display: flex; margin: 0 calc(var(--gtc-gap) / -2); transition: transform .5s ease; }
+.g-teamcarousel-item { flex: 0 0 calc(100% / var(--gtc-visible, 1)); min-width: 0; padding: 0 calc(var(--gtc-gap) / 2); border: 0; background: transparent; }
+.g-teamcarousel-card { position: relative; height: 100%; overflow: hidden; }
+.g-teamcarousel-image img { display: block; width: 100%; height: var(--gtc-image-height); object-fit: cover; }
+.g-teamcarousel-content { position: relative; padding: var(--gtc-content-padding); background: var(--gtc-content-bg); }
+.g-teamcarousel-content-inner { position: relative; z-index: 2; }
+.g-teamcarousel-name { margin: 0 0 .35rem; color: var(--gtc-name); font-size: var(--gtc-name-size); }
+.g-teamcarousel-name a { color: inherit; text-decoration: none; }
+.g-teamcarousel-designation { color: var(--gtc-designation); font-size: var(--gtc-designation-size); }
+.g-teamcarousel-socials { display: flex; margin: 1rem 0 0; padding: 0; list-style: none; gap: .45rem; }
+.g-teamcarousel.text-center .g-teamcarousel-socials { justify-content: center; }
+.g-teamcarousel.text-right .g-teamcarousel-socials { justify-content: flex-end; }
+.g-teamcarousel-socials a { display: inline-flex; width: var(--gtc-social-width); height: var(--gtc-social-height); border: var(--gtc-social-border-width) solid var(--gtc-social-border); border-radius: var(--gtc-social-radius); color: var(--gtc-social-color); align-items: center; justify-content: center; font-size: var(--gtc-social-size); text-decoration: none; }
+.g-teamcarousel-socials a:hover { color: var(--gtc-social-hover); }
+.g-teamcarousel-layout2 .g-teamcarousel-content { position: absolute; z-index: 2; inset: 0; display: flex; background: transparent; color: #fff; align-items: flex-end; opacity: 0; transition: opacity .35s ease; }
+.g-teamcarousel-layout2 .g-teamcarousel-card:hover .g-teamcarousel-content, .g-teamcarousel-layout2 .g-teamcarousel-card:focus-within .g-teamcarousel-content { opacity: 1; }
+.g-teamcarousel-layout2 .g-teamcarousel-overlay { position: absolute; z-index: 1; inset: 0; background: var(--gtc-overlay); }
+.g-teamcarousel-layout2 .g-teamcarousel-name, .g-teamcarousel-layout2 .g-teamcarousel-designation, .g-teamcarousel-layout2 .g-teamcarousel-socials a { color: #fff; }
+.g-teamcarousel-layout3 .g-teamcarousel-card { display: grid; grid-template-columns: 55% 45%; background: var(--gtc-content-bg); }
+.g-teamcarousel-layout3 .g-teamcarousel-content { display: flex; flex-direction: column; justify-content: center; }
+.g-teamcarousel-controls { position: absolute; z-index: 3; top: 50%; right: 0; left: 0; display: flex; justify-content: space-between; transform: translateY(-50%); pointer-events: none; }
+.g-teamcarousel-controls button { display: grid; width: var(--gtc-arrow-box); height: var(--gtc-arrow-box); padding: 0; border: 0; border-radius: var(--gtc-arrow-radius); background: var(--gtc-arrow-bg); color: var(--gtc-arrow-color); place-items: center; font-size: var(--gtc-arrow-size); line-height: 1; pointer-events: auto; }
+.g-teamcarousel-bullets { position: absolute; right: 0; bottom: .5rem; left: 0; display: flex; justify-content: center; gap: .5rem; }
+.g-teamcarousel-bullets button { width: var(--gtc-bullet-size); height: var(--gtc-bullet-size); padding: 0; border: 0; border-radius: 50%; background: var(--gtc-bullet); }
+.g-teamcarousel-bullets button.active { background: var(--gtc-bullet-active); }
+@media (max-width: 47.99rem) { .g-teamcarousel-layout3 .g-teamcarousel-card { grid-template-columns: 1fr; } }

@@ -1,0 +1,38 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% macro author(particle) %}
+    {% set author %}
+        <div class="g-testimonial-author g-testimonial-author-{{ particle.authorlayout|default('inline')|e }}">
+            {% if particle.avatar %}<img class="g-testimonial-avatar g-testimonial-avatar-{{ particle.avatarshape|default('circle')|e }}" src="{{ url(particle.avatar)|e }}" alt="{{ particle.avataralt|default(particle.name)|e }}" loading="lazy">{% endif %}
+            <span class="g-testimonial-author-text">
+                {% if particle.name %}<strong class="g-testimonial-name">{{ particle.name|e }}</strong>{% endif %}
+                {% if particle.designation %}<span class="g-testimonial-designation">{{ particle.designation|e }}</span>{% endif %}
+            </span>
+        </div>
+    {% endset %}
+    {% if particle.link %}<a class="g-testimonial-author-link" href="{{ particle.link|e }}" target="{{ particle.target|default('_self')|e }}"{% if particle.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %}>{{ author }}</a>{% else %}{{ author }}{% endif %}
+{% endmacro %}
+
+{% import _self as testimonial %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    {% set heading = particle.heading|default('h3') %}
+    {% set rating = particle.rating|default(5) %}
+    <section id="g-testimonial-{{ id }}" class="g-testimonial card border-0 {{ particle.class|e }}" style="--g-testimonial-align: {{ particle.alignment|default('left')|e }}; --g-testimonial-avatar-size: {{ particle.avatarsize|default(64)|e }}px; --g-testimonial-quote-size: {{ particle.quotesize|default(48)|e }}px; --g-testimonial-quote-color: {{ particle.quotecolor|default('#edeef2')|e }}; --g-testimonial-rating-color: {{ particle.ratingcolor|default('#f5a623')|e }}; --g-testimonial-unrated-color: {{ particle.unratedcolor|default('#d5d5d5')|e }};{% if particle.reviewcolor %} --g-testimonial-review-color: {{ particle.reviewcolor|e }};{% endif %}{% if particle.namecolor %} --g-testimonial-name-color: {{ particle.namecolor|e }};{% endif %}{% if particle.designationcolor %} --g-testimonial-designation-color: {{ particle.designationcolor|e }};{% endif %}">
+        <div class="card-body">
+            {% if particle.title %}<{{ heading }} class="g-testimonial-title card-title">{{ particle.title|raw }}</{{ heading }}>{% endif %}
+            {% if particle.authorposition|default('bottom') == 'top' %}{{ testimonial.author(particle) }}{% endif %}
+            <blockquote class="g-testimonial-quote mb-0">
+                {% if particle.showquote|default('enable') == 'enable' %}<span class="g-testimonial-quote-icon" aria-hidden="true">“</span>{% endif %}
+                <div class="g-testimonial-review">{{ particle.review|html|raw }}</div>
+            </blockquote>
+            {% if particle.ratingenabled|default('disable') == 'enable' %}
+                <div class="g-testimonial-rating" role="img" aria-label="{{ rating|e }} out of 5 stars">
+                    {% for star in 1..5 %}<span class="{{ star <= rating ? 'is-rated' : 'is-unrated' }}" aria-hidden="true">★</span>{% endfor %}
+                </div>
+            {% endif %}
+            {% if particle.authorposition|default('bottom') != 'top' %}{{ testimonial.author(particle) }}{% endif %}
+        </div>
+    </section>
+{% endblock %}

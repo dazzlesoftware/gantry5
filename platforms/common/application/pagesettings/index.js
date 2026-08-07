@@ -188,7 +188,7 @@ let attachSettings = function() {
                                         item.setAttribute('data-tip', translate('GENESIS_PLATFORM_INHERITING_FROM_X', '<strong>' + outline + '</strong>') + '<br />ID: ' + atom + '<br />Replace: ' + include);
                                     }
                                     dataField.dispatchEvent(new Event('change', { bubbles: true }));
-                                    global.Genesis.tips.reload();
+                                    window.Genesis.tips.reload();
                                 }
 
                                 if (target.hasAttribute('data-apply-and-save')) {

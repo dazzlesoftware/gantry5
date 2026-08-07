@@ -1,0 +1,66 @@
+.g-articlesscroller-shell { position: relative; }
+.g-articlesscroller-viewport { overflow: hidden; }
+.g-articlesscroller-track { display: flex; transition: transform .5s ease; }
+.g-articlesscroller-item { flex: 0 0 calc(100% / var(--g-articles-visible, 1)); min-width: 0; background: transparent; }
+.g-articlesscroller-item img { display: block; width: 100%; height: var(--g-articles-image-height, 320px); object-fit: cover; }
+.g-articlesscroller-controls { display: flex; gap: .35rem; }
+.g-articlesscroller-controls button { display: grid; width: 2.25rem; height: 2.25rem; padding: 0; border: 1px solid #aaa; background: transparent; color: inherit; place-items: center; font-size: 1.5rem; line-height: 1; }
+.g-articlesscroller-indicators { display: flex; gap: .55rem; }
+.g-articlesscroller-indicators button { width: 2rem; height: 2px; padding: 0; border: 0; background: currentColor; opacity: .45; }
+.g-articlesscroller-indicators button.active { opacity: 1; }
+.g-articlesscroller-scroller-link, .g-articlesscroller-ticker-link { color: inherit; text-decoration: none; }
+
+// Ticker: shaped accent label and one-line dark news rail.
+.g-articlesscroller-ticker .g-articlesscroller-shell { display: flex; min-height: 3.15rem; overflow: hidden; border-radius: 0; background: var(--g-articles-panel); color: var(--g-articles-text); align-items: stretch; }
+.g-articlesscroller-ticker .g-articlesscroller-heading { position: relative; z-index: 2; display: flex; flex: 0 0 26%; min-width: 12rem; padding: .75rem 2rem; background: var(--g-articles-accent); align-items: center; justify-content: center; font-weight: 700; white-space: nowrap; }
+.g-articlesscroller-ticker .g-articlesscroller-shape-arrow { clip-path: polygon(0 0, calc(100% - 1.6rem) 0, 100% 50%, calc(100% - 1.6rem) 100%, 0 100%); }
+.g-articlesscroller-ticker .g-articlesscroller-shape-slanted-left { clip-path: polygon(1.6rem 0, 100% 0, calc(100% - 1.6rem) 100%, 0 100%); }
+.g-articlesscroller-ticker .g-articlesscroller-shape-slanted-right { clip-path: polygon(0 0, calc(100% - 1.6rem) 0, 100% 100%, 1.6rem 100%); }
+.g-articlesscroller-ticker .g-articlesscroller-viewport { flex: 1; min-width: 0; }
+.g-articlesscroller-ticker .g-articlesscroller-item { display: flex; padding: .75rem 5.25rem .75rem 1.25rem; align-items: center; justify-content: space-between; gap: 1rem; }
+.g-articlesscroller-ticker time { color: var(--g-articles-muted); white-space: nowrap; }
+.g-articlesscroller-ticker .g-articlesscroller-controls { position: absolute; z-index: 3; top: 50%; right: .8rem; transform: translateY(-50%); }
+.g-articlesscroller-ticker .g-articlesscroller-controls button { width: 1.45rem; height: 2rem; border: 0; color: var(--g-articles-text); font-size: 2rem; }
+.g-articlesscroller-ticker .g-articlesscroller-indicators { display: none; }
+
+// Date/icon scroller: a fixed-height vertical viewport moves through stacked rows.
+.g-articlesscroller-scroller .g-articlesscroller-track { display: block; background: var(--g-articles-panel); }
+.g-articlesscroller-scroller .g-articlesscroller-item { width: 100%; height: 9rem; }
+.g-articlesscroller-scroller .g-articlesscroller-item + .g-articlesscroller-item { border-top: var(--g-articles-scroller-gap, 1px) solid var(--g-articles-separator, rgba(255,255,255,.7)); }
+.g-articlesscroller-scroller .g-articlesscroller-scroller-link { display: block; width: 100%; height: 100%; }
+.g-articlesscroller-date-card { display: grid; width: 100%; height: 100%; color: var(--g-articles-text); grid-template-columns: 15% 1fr; }
+.g-articlesscroller-lead { display: flex; min-width: 5.5rem; background: var(--g-articles-accent); color: #fff; align-items: center; justify-content: center; font-size: 1.25rem; }
+.g-articlesscroller-lead > i { font-size: var(--g-articles-icon-size, 32px); }
+.g-articlesscroller-lead time { display: flex; flex-direction: column; text-align: center; text-transform: uppercase; }
+.g-articlesscroller-lead time strong { font-size: 2rem; line-height: 1; }
+.g-articlesscroller-lead time span { margin-top: .35rem; font-size: .75rem; }
+.g-articlesscroller-scroller-content { display: flex; padding: 1.4rem 1.75rem; flex-direction: column; justify-content: center; }
+.g-articlesscroller-scroller-content h3 { margin: 0 0 .55rem; color: inherit; font-size: 1.45rem; }
+.g-articlesscroller-scroller-content p { margin: 0; color: var(--g-articles-muted); }
+.g-articlesscroller-date-card.has-background { position: relative; background-position: center; background-size: cover; }
+.g-articlesscroller-date-card.has-background::before { position: absolute; inset: 0; content: ''; background: rgba(0,0,0,.62); }
+.g-articlesscroller-date-card.has-background > * { position: relative; }
+.g-articlesscroller-scroller .g-articlesscroller-controls { position: absolute; right: 0; bottom: -3rem; }
+.g-articlesscroller-scroller .g-articlesscroller-indicators { position: absolute; bottom: -1.8rem; left: 50%; transform: translateX(-50%); }
+
+// Carousel: original large image cards with spaced columns and raised white content panels.
+.g-articlesscroller-carousel .g-articlesscroller-shell { padding-top: 3rem; }
+.g-articlesscroller-carousel .g-articlesscroller-track { margin: 0 calc(var(--g-articles-gap) / -2); }
+.g-articlesscroller-carousel .g-articlesscroller-item { padding: 0 calc(var(--g-articles-gap) / 2); }
+.g-articlesscroller-carousel .g-articlesscroller-item > a { display: block; }
+.g-articlesscroller-carousel .card-body { min-height: 11.5rem; padding: 1.35rem 1.4rem; background: #fff; box-shadow: 0 .35rem 1rem rgba(0,0,0,.09); }
+.g-articlesscroller-carousel .card-body time { display: block; margin-bottom: .65rem; color: #888; }
+.g-articlesscroller-carousel .card-title { margin: 0 0 .65rem; font-size: 1.45rem; }
+.g-articlesscroller-carousel .card-title a { color: #222; text-decoration: none; }
+.g-articlesscroller-carousel .card-text { color: #777; }
+.g-articlesscroller-carousel .g-articlesscroller-category { display: inline-block; margin-top: .5rem; color: var(--g-articles-accent); text-decoration: none; }
+.g-articlesscroller-carousel .g-articlesscroller-controls { position: absolute; top: 0; right: 0; }
+.g-articlesscroller-carousel .g-articlesscroller-indicators { position: absolute; top: 1.05rem; right: 6rem; }
+
+@media (max-width: 47.99rem) {
+    .g-articlesscroller-ticker .g-articlesscroller-heading { flex-basis: auto; min-width: 8.5rem; padding-right: 1.8rem; padding-left: 1rem; }
+    .g-articlesscroller-ticker .g-articlesscroller-item { padding-right: 4.5rem; }
+    .g-articlesscroller-ticker time { display: none; }
+    .g-articlesscroller-date-card { grid-template-columns: 5.5rem 1fr; }
+    .g-articlesscroller-scroller-content { padding: 1rem 1.15rem; }
+}

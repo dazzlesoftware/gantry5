@@ -1,0 +1,71 @@
+name: Clients
+description: Display client or partner logos in a responsive grid or carousel.
+type: particle
+category: content
+icon: fa-handshake-o
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+    title: {type: input.text, label: Particle Title}
+    heading: {type: select.select, label: Title Element, default: h3, options: {h2: H2, h3: H3, h4: H4, h5: H5, h6: H6}}
+    titlefont: {type: input.fonts, label: Title Font}
+    titlesize: {type: input.number, label: Title Font Size, min: 1, default: 28}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#222222'}
+    titlemarginbottom: {type: input.number, label: Title Bottom Margin, min: 0, default: 24}
+    alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
+    mode: {type: select.select, label: Display Mode, default: grid, options: {grid: Logo Grid, carousel: Logo Carousel}}
+    desktopitems: {type: input.number, label: Desktop Items, min: 1, max: 8, default: 4}
+    tabletitems: {type: input.number, label: Tablet Items, min: 1, max: 6, default: 3}
+    mobileitems: {type: input.number, label: Mobile Items, min: 1, max: 3, default: 2}
+    gap: {type: input.number, label: Item Gap, min: 0, default: 20}
+    itempadding: {type: input.number, label: Item Padding, min: 0, default: 15}
+    logoheight: {type: input.number, label: Logo Maximum Height, min: 1, default: 100}
+    logowidth: {type: input.number, label: Logo Maximum Width, min: 1, default: 220}
+    grayscale: {type: input.number, label: Grayscale, min: 0, max: 100, default: 0}
+    opacity: {type: input.number, label: Opacity, min: 0, max: 100, default: 100}
+    removefilter: {type: select.select, label: Remove Filter on Hover, default: disable, options: {enable: Enable, disable: Disable}}
+    scalehover: {type: select.select, label: Scale Logo on Hover, default: disable, options: {enable: Enable, disable: Disable}}
+    scale: {type: input.number, label: Hover Scale, min: 0.1, max: 5, step: 0.1, default: 1.05}
+    transition: {type: input.number, label: Hover Transition Speed, min: 0, default: 300}
+    itembackground: {type: input.colorpicker, label: Item Background, default: 'transparent'}
+    itemborder: {type: select.select, label: Item Border, default: hide, options: {hide: Hide, show: Show}}
+    itemborderwidth: {type: input.number, label: Item Border Width, min: 0, default: 1}
+    itembordercolor: {type: input.colorpicker, label: Item Border Color, default: '#dddddd'}
+    itemradius: {type: input.number, label: Item Border Radius, min: 0, default: 0}
+    autoplay: {type: select.select, label: Autoplay, default: disable, options: {enable: Enable, disable: Disable}}
+    pausehover: {type: select.select, label: Pause on Hover, default: enable, options: {enable: Enable, disable: Disable}}
+    loop: {type: select.select, label: Loop, default: enable, options: {enable: Enable, disable: Disable}}
+    randomize: {type: select.select, label: Randomize Clients, default: disable, options: {enable: Enable, disable: Disable}}
+    interval: {type: input.number, label: Autoplay Interval, min: 1000, default: 3500}
+    speed: {type: input.number, label: Carousel Speed, min: 0, default: 500}
+    touch: {type: select.select, label: Touch and Drag, default: enable, options: {enable: Enable, disable: Disable}}
+    arrows: {type: select.select, label: Arrows, default: enable, options: {enable: Show, disable: Hide}}
+    arrowcolor: {type: input.colorpicker, label: Arrow Color, default: '#333333'}
+    arrowbackground: {type: input.colorpicker, label: Arrow Background, default: '#ffffff'}
+    arrowsize: {type: input.number, label: Arrow Icon Size, min: 1, default: 22}
+    arrowboxsize: {type: input.number, label: Arrow Box Size, min: 20, default: 44}
+    arrowradius: {type: input.number, label: Arrow Border Radius, min: 0, default: 0}
+    bullets: {type: select.select, label: Bullets, default: enable, options: {enable: Show, disable: Hide}}
+    bulletcolor: {type: input.colorpicker, label: Bullet Color, default: '#cccccc'}
+    bulletactivecolor: {type: input.colorpicker, label: Active Bullet Color, default: '#3366ff'}
+    bulletsize: {type: input.number, label: Bullet Size, min: 2, default: 10}
+    clients:
+      type: collection.list
+      array: true
+      label: Clients
+      value: title
+      ajax: true
+      fields:
+        .title: {type: input.text, label: Client Name}
+        .image: {type: input.imagepicker, label: Logo}
+        .imagealt: {type: input.text, label: Image Alternative Text}
+        .link: {type: input.text, label: Link}
+        .target: {type: select.select, label: Link Target, default: _self, options: {_self: Current Window, _blank: New Window}}
+        .nofollow: {type: input.checkbox, label: No Follow, default: false}
+        .disable: {type: input.checkbox, label: Disable, default: false}

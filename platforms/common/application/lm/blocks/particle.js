@@ -49,7 +49,7 @@ class Particle extends Atom {
         let iconGlyph = block.querySelector('.icon .fa');
         if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
         forOwn(this.getInheritanceTip(), function(value, key) { icon.setAttribute('data-' + key, value); });
-        global.Genesis.tips.reload();
+        window.Genesis.tips.reload();
     }
 
     disableInheritance() {
@@ -60,7 +60,7 @@ class Particle extends Atom {
         block.classList.remove('g-inheriting');
         if (iconGlyph) { iconGlyph.className = 'fa ' + this.getIcon(); }
         forOwn(this.getInheritanceTip(), function(value, key) { icon.removeAttribute('data-' + key); });
-        global.Genesis.tips.reload();
+        window.Genesis.tips.reload();
     }
 
     refreshInheritance() {

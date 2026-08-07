@@ -1,0 +1,41 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set words = particle.words|default('websites\nexperiences\nresults')|split('\n') %}
+{% set paths = {
+    'circle': ['M325 18C228.7-8.3 118.5 8.3 78 21C22.4 38.4 4.6 54.6 5.6 77.6c1.4 32.4 52.2 54 142.6 63.7 66.2 7.1 212.2 7.5 273.5-8.3 64.4-16.6 104.3-57.6 33.8-98.2C386.7-4.9 179.4-1.4 126.3 20.7'],
+    'cross': ['M497.4 23.9C301.6 40 155.9 80.6 4 144.4','M14.1 27.6c204.5 20.3 393.8 74 467.3 111.7'],
+    'diagonal': ['M13.5 15.5c131 13.7 289.3 55.5 475 125.5'],
+    'strikethrough': ['M3 75h493.5'],
+    'square': ['M44.22 0c2.46 51.77-2.05 99.72-13.51 143.84 50.37-7.64 316.96-30.55 469.29-5.09-16.41-40.58-21.99-71.11-23.34-127.29C378.38 22.92 97.06 34.37 0 22.92'],
+    'top-bottom': ['M8.4 143.1c80-12 350-8 488.1-2','M8 19.4c150-10 330-10 483 0'],
+    'underline': ['M7.7 145.6C109 125 299.9 116.2 401 121.3c42.1 2.2 87.6 11.8 87.3 25.7'],
+    'double-underline': ['M5 125.4c130-12 380-8 490 0','M26.9 143.8c130-10 330-5 431.1.3'],
+    'zigzag-underline': ['M9.3 127.3c90-8 170-8 260 0s150 12 222 0c-110 3-310 3-421 12 110-4 250 1 336 1'],
+    'sharp-zigzag': ['M.23 139.83l28.27-19.78 25.43 19.79 28.27-19.77 22.6 19.79 29.68-19.78 25.44 19.79 25.44-19.78 28.27 19.79 26.85-19.77 26.84 19.8 24.04-19.79 24.01 19.8 22.62-19.78 22.61 19.8 22.61-19.78 24.02 19.79 24.03-19.78 24.02 19.8 22.62-19.79 21.19 19.79'],
+    'wave': ['M3 146c45-42 55 20 95-10s55 22 95-8 55 25 95-5 55 25 95-3 55 20 114-8']
+} %}
+
+{% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    <div id="g-animatedheading-{{ id }}" class="g-animatedheading text-{{ particle.alignment|default('left')|e }} {{ particle.class|e }}"
+        style="--gah-accent:{{ particle.accentcolor|default('#3366ff')|e('html_attr') }};--gah-shape:{{ particle.shapecolor|default('#3366ff')|e('html_attr') }};--gah-duration:{{ particle.duration|default(600)|e('html_attr') }}ms;--gah-stroke:{{ particle.shapewidth|default(8)|e('html_attr') }};--gah-marquee-speed:{{ particle.marqueespeed|default(15)|e('html_attr') }}s;--gah-marquee-gap:{{ particle.marqueegap|default(40)|e('html_attr') }}px;--gah-word-before:{{ particle.wordspacebefore|default(12)|e('html_attr') }}px;--gah-word-after:{{ particle.wordspaceafter|default(8)|e('html_attr') }}px;--gah-marker-gap:{{ particle.markergap|default(4)|e('html_attr') }}px;--gah-marker-after-gap:{{ particle.markeraftergap|default(12)|e('html_attr') }}px;--gah-marker-size:{{ particle.markersize|default(60)|e('html_attr') }}px;--gah-marker-width:{{ particle.markerwidth|default(3)|e('html_attr') }}px;--gah-marker-color:{{ particle.markercolor|default('#3366ff')|e('html_attr') }};{% if particle.headingcolor %}--gah-heading:{{ particle.headingcolor|e('html_attr') }};{% endif %}{% if particle.fontsize %}--gah-size:{{ particle.fontsize|e('html_attr') }}px;{% endif %}{% if particle.lineheight %}--gah-line-height:{{ particle.lineheight|e('html_attr') }};{% endif %}--gah-weight:{{ particle.fontweight|default('inherit')|e('html_attr') }}"
+        data-animated-heading data-mode="{{ particle.mode|default('animation')|e }}" data-animation="{{ particle.animation|default('clip')|e }}" data-duration="{{ particle.duration|default(600)|e }}" data-delay="{{ particle.delay|default(2500)|e }}" data-heading-font="{{ particle.headingfont|default('')|e('html_attr') }}" data-animated-font="{{ particle.animatedfont|default('')|e('html_attr') }}">
+        <{{ particle.heading|default('h2') }} class="g-animatedheading-title">
+            {% if particle.before %}<span class="g-animatedheading-before">{{ particle.before|raw }}</span> {% endif %}
+            {% if particle.mode|default('animation') == 'highlighted' %}
+                <span class="g-animatedheading-highlight g-animatedheading-shape-{{ particle.shape|default('circle')|e }}{% if particle.shaperounded|default('enable') == 'enable' %} is-rounded{% endif %}">
+                    <span>{{ particle.highlighted|default('remarkable')|raw }}</span>
+                    {% if particle.shape|default('circle') == 'bg-fill' %}<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true"><path class="g-animatedheading-fill" d="M0 75h500"/></svg>
+                    {% else %}<svg viewBox="0 0 500 150" preserveAspectRatio="none" aria-hidden="true">{% for path in paths[particle.shape|default('circle')]|default(paths.circle) %}<path d="{{ path|e('html_attr') }}"/>{% endfor %}</svg>{% endif %}
+                </span>
+            {% elseif particle.animation|default('clip') == 'marquee' %}
+                <span class="g-animatedheading-marquee{% if particle.pausehover|default('enable') == 'enable' %} pause-hover{% endif %}" data-direction="{{ particle.marqueedirection|default('left')|e }}"><span>{% for word in words %}<b>{{ word|trim|raw }}</b>{% endfor %}</span><span aria-hidden="true">{% for word in words %}<b>{{ word|trim|raw }}</b>{% endfor %}</span></span>
+            {% else %}
+                <span class="g-animatedheading-words g-animatedheading-animation-{{ particle.animation|default('clip')|e }}">{% for word in words %}<span class="g-animatedheading-word{% if loop.first %} is-visible{% endif %}">{{ word|trim|raw }}</span>{% endfor %}</span>{% if particle.animation|default('clip') == 'clip' and particle.marker|default('line') != 'none' %}<span class="g-animatedheading-marker g-animatedheading-marker-{{ particle.marker|default('line')|e }}" aria-hidden="true">{% if particle.marker == 'icon' %}<i class="{{ particle.markericon|default('fa fa-pencil')|e }}"></i>{% endif %}</span>{% endif %}
+            {% endif %}
+            {% if particle.after %} <span class="g-animatedheading-after">{{ particle.after|raw }}</span>{% endif %}
+        </{{ particle.heading|default('h2') }}>
+    </div>
+{% endblock %}
+
+{% block javascript_footer %}{% do genesis.document.addScript(url('genesis-assets://js/animatedheading.js'), 11, 'footer') %}{% endblock %}

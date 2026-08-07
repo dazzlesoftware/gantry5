@@ -519,7 +519,7 @@ class FilePicker {
                 data = parent && JSON.parse(parent.getAttribute('data-file'));
             if (!parent || !data || !data.isInCustom) { return; }
 
-            let deleteURI = parseAjaxURI(getAjaxURL('filepicker/' + global.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix()));
+            let deleteURI = parseAjaxURI(getAjaxURL('filepicker/' + window.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix()));
             request('delete', deleteURI, function(error, deleteResponse) {
                 let result = deleteResponse && deleteResponse.body;
                 if (!result || !result.success) {
