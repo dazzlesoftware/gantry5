@@ -556,23 +556,25 @@ class OutlineCollection extends Collection
             throw new \RuntimeException(sprintf('Outline cannot use reserved name "%s".', $folder), 400);
         }
 
-        $newPath = $locator->findResource("{$this->path}/{$folder}", true, true);
-        if (is_dir($newPath)) {
-            throw new \RuntimeException(sprintf('Outline "%s" already exists.', $id), 400);
-        }
-
-        try {
-            foreach ($this->getInheritingOutlines($id) as $outline => $otitle) {
-                $this->layout($outline)->updateInheritance($id, $folder)->save()->saveIndex();
-            }
-            foreach ($this->getInheritingOutlinesWithAtom($id) as $outline => $otitle) {
-                Atoms::instance($outline)->updateInheritance($id, $folder)->save();
+        if ($folder !== $id) {
+            $newPath = $locator->findResource("{$this->path}/{$folder}", true, true);
+            if (is_dir($newPath)) {
+                throw new \RuntimeException(sprintf('Outline "%s" already exists.', $id), 400);
             }
 
-            Folder::move($path, $newPath);
+            try {
+                foreach ($this->getInheritingOutlines($id) as $outline => $otitle) {
+                    $this->layout($outline)->updateInheritance($id, $folder)->save()->saveIndex();
+                }
+                foreach ($this->getInheritingOutlinesWithAtom($id) as $outline => $otitle) {
+                    Atoms::instance($outline)->updateInheritance($id, $folder)->save();
+                }
 
-        } catch (\Exception $e) {
-            throw new \RuntimeException('Renaming outline failed.', 500, $e);
+                Folder::move($path, $newPath);
+
+            } catch (\Exception $e) {
+                throw new \RuntimeException('Renaming outline failed.', 500, $e);
+            }
         }
 
         $this->items[$id] = $title;
