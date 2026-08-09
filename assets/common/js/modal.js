@@ -45,50 +45,27 @@
         if (button && family)
             button.style.fontFamily = `'${family.replace(/'/g, "\\'")}'`;
     };
+    // The dialog is a real Bootstrap 5 .modal now — Bootstrap's own JS (loaded
+    // via genesis.load('bootstrap.5')) drives open/close/backdrop/focus-trap/
+    // Escape entirely via the data-bs-toggle/data-bs-dismiss attributes in the
+    // twig. All that's left here is font loading and lazily setting the video
+    // iframe's src only while the modal is actually open, hooked into
+    // Bootstrap's own show.bs.modal/hidden.bs.modal events.
     const initRoot = (root) => {
         if (instances.has(root)) return;
         instances.add(root);
         applyFont(root);
-        const dialog = root.querySelector(".g-modal-dialog"),
-            open = root.querySelector("[data-modal-open]"),
-            close = root.querySelector("[data-modal-close]"),
+        const modal = root.querySelector(".modal"),
             frame = root.querySelector("[data-modal-video]");
-        if (!dialog || !open) return;
-        let returnFocus = null;
-        const shut = () => {
-            if (dialog.open) dialog.close();
-            if (frame) frame.removeAttribute("src");
-            document.body.classList.remove("g-modal-open");
-            returnFocus?.focus?.();
-        };
-        open.addEventListener("click", () => {
-            returnFocus = document.activeElement;
-            if (frame) frame.src = videoUrl(frame.dataset.src || "");
-            dialog.showModal();
-            document.body.classList.add("g-modal-open");
-            close?.focus();
-        });
-        close?.addEventListener("click", shut);
-        dialog.addEventListener("cancel", (event) => {
-            event.preventDefault();
-            shut();
-        });
-        dialog.addEventListener("click", (event) => {
-            if (event.target === dialog) {
-                const rect = dialog.getBoundingClientRect();
-                if (
-                    event.clientX < rect.left ||
-                    event.clientX > rect.right ||
-                    event.clientY < rect.top ||
-                    event.clientY > rect.bottom
-                )
-                    shut();
-            }
-        });
-        dialog.addEventListener("close", () => {
-            if (frame) frame.removeAttribute("src");
-            document.body.classList.remove("g-modal-open");
-        });
+        if (!modal) return;
+        if (frame) {
+            modal.addEventListener("show.bs.modal", () => {
+                frame.src = videoUrl(frame.dataset.src || "");
+            });
+            modal.addEventListener("hidden.bs.modal", () => {
+                frame.removeAttribute("src");
+            });
+        }
     };
     const init = (scope = document) => {
         const roots = scope.matches?.("[data-modal-root]")

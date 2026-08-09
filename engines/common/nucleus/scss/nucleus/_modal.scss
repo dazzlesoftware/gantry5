@@ -88,58 +88,46 @@
         opacity: 0;
     }
 }
-.g-modal-dialog {
-    width: min(calc(100% - 2rem), var(--gmodal-width));
-    max-width: none;
-    height: var(--gmodal-height);
-    max-height: calc(100vh - 2rem);
+// The dialog itself is a real Bootstrap 5 .modal/.modal-dialog/.modal-content
+// (size, scrollable, centered, and fullscreen come from Bootstrap's own
+// modifier classes applied in the twig) — Bootstrap's own CSS handles its
+// layout, backdrop, and animation. These rules only add the particle's
+// optional custom color/radius overrides and popup-content-type tweaks.
+
+// Particle fields "Custom Content Background"/"Custom Content Text Color"/
+// "Custom Border Radius" are left blank by default (Bootstrap's own modal
+// styling applies); the twig only adds these classes — and therefore only
+// declares these custom properties — when a value is actually set, so there's
+// no unset-var fallback to worry about. Compounded with .modal-content so
+// they reliably win over Bootstrap's own same-element rule.
+.modal-content.g-modal-bg-custom {
+    background-color: var(--gmodal-content-bg);
+}
+.modal-content.g-modal-color-custom {
+    color: var(--gmodal-content-color);
+}
+.modal-content.g-modal-radius-custom {
+    border-radius: var(--gmodal-content-radius);
+}
+
+.g-modal-content-image {
     padding: 0;
-    border: 0;
-    border-radius: var(--gmodal-radius);
-    background: transparent;
-    color: var(--gmodal-color);
-    overflow: visible;
+    overflow: hidden;
 }
-.g-modal-dialog::backdrop {
-    background: var(--gmodal-overlay);
-}
-.g-modal-panel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: var(--gmodal-padding);
-    border-radius: var(--gmodal-radius);
-    background: var(--gmodal-bg);
-    overflow-y: var(--gmodal-overflow);
-    text-align: left;
-}
-.g-modal-close {
-    position: absolute;
-    z-index: 4;
-    top: 0.25rem;
-    right: 0.5rem;
+.g-modal-content-image .modal-body {
     padding: 0;
-    border: 0;
-    background: transparent;
-    color: var(--gmodal-close-color);
-    font-size: var(--gmodal-close-size);
-    line-height: 1;
 }
 .g-modal-popup-image {
     display: block;
     width: 100%;
     height: auto;
 }
-.g-modal-content-image {
-    padding: 0;
-    overflow: hidden;
-}
 .g-modal-video {
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
 }
-.g-modal-panel.is-vertical-video .g-modal-video {
+.modal-body.is-vertical-video .g-modal-video {
     max-height: 80vh;
     aspect-ratio: 9/16;
     margin: auto;
@@ -156,7 +144,4 @@
 }
 .g-modal-text > :last-child {
     margin-bottom: 0;
-}
-body.g-modal-open {
-    overflow: hidden;
 }

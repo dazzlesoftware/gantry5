@@ -45,20 +45,27 @@ form:
     triggertextcolor: {type: input.colorpicker, label: Image/Icon Label Color, default: '#222222'}
     triggertextgap: {type: input.number, label: Image/Icon Label Gap, min: 0, default: 10}
     ripple: {type: select.select, label: Ripple Effect, default: disable, options: {enable: Enable, disable: Disable}}
+
+    modaltitle: {type: input.text, label: Modal Title, description: Shown in the modal header, and used for aria-labelledby., default: 'Modal title'}
+    showheader: {type: select.select, label: Show Header, default: enable, options: {enable: Enable, disable: Disable}}
+    modaldescription: {type: input.text, label: Modal Description, description: Optional. Sets aria-describedby for screen readers — not shown visually.}
+
+    size: {type: select.select, label: Size, default: default, options: {default: Default, sm: Small, lg: Large, xl: Extra Large}}
+    scrollable: {type: select.select, label: Scrollable Body, description: Long content scrolls independently of the page instead of growing the modal., default: disable, options: {enable: Enable, disable: Disable}}
+    centered: {type: select.select, label: Vertically Centered, default: disable, options: {enable: Enable, disable: Disable}}
+    fullscreen: {type: select.select, label: Fullscreen, description: Cover the entire viewport, optionally only below a given breakpoint., default: disable, options: {disable: Disable, always: Always, sm-down: 'Below Small (≥576px)', md-down: 'Below Medium (≥768px)', lg-down: 'Below Large (≥992px)', xl-down: 'Below X-Large (≥1200px)', xxl-down: 'Below XX-Large (≥1400px)'}}
+
     contenttype: {type: select.select, label: Popup Content Type, default: text, options: {text: Text or HTML, image: Image, video: Video}}
-    content: {type: textarea.textarea, label: Text or HTML Content, default: '<h3>Modal title</h3><p>Add your modal content here.</p>'}
+    content: {type: textarea.textarea, label: Text or HTML Content, default: '<p>Add your modal content here.</p>'}
     image: {type: input.imagepicker, label: Popup Image}
     imagealt: {type: input.text, label: Popup Image Alternative Text}
     videourl: {type: input.text, label: Video URL}
     videotitle: {type: input.text, label: Video Title, default: 'Video'}
     verticalvideo: {type: select.select, label: Vertical Video, default: disable, options: {enable: Enable, disable: Disable}}
-    width: {type: input.number, label: Popup Maximum Width, min: 200, default: 900}
-    height: {type: input.number, label: Popup Height, min: 0, default: 0}
-    overflow: {type: select.select, label: Popup Overflow, default: auto, options: {auto: Auto, visible: Visible, hidden: Hidden, scroll: Scroll}}
-    padding: {type: input.number, label: Popup Padding, min: 0, default: 30}
-    background: {type: input.colorpicker, label: Popup Background, default: '#ffffff'}
-    color: {type: input.colorpicker, label: Popup Text Color, default: '#222222'}
-    radius: {type: input.number, label: Popup Border Radius, min: 0, default: 4}
-    overlay: {type: input.colorpicker, label: Overlay Color, default: 'rgba(0,0,0,0.8)'}
-    closecolor: {type: input.colorpicker, label: Close Icon Color, default: '#333333'}
-    closesize: {type: input.number, label: Close Icon Size, min: 1, default: 30}
+
+    showfooter: {type: select.select, label: Show Footer, default: disable, options: {enable: Enable, disable: Disable}}
+    footercontent: {type: textarea.textarea, label: Footer Content, default: '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>'}
+
+    background: {type: input.colorpicker, label: Custom Content Background, description: Leave empty to use Bootstrap's default modal styling.}
+    color: {type: input.colorpicker, label: Custom Content Text Color, description: Leave empty to use Bootstrap's default modal styling.}
+    radius: {type: input.number, label: Custom Border Radius, description: Pixels. Leave empty to use Bootstrap's default., min: 0}

@@ -1,10 +1,33 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% do genesis.load('bootstrap.5') %}
     {% set month = particle.month|default(0) + 1 %}
-    <div class="g-simplecounter {{ particle.class|e }}">
+    {% set blockcolor = particle.blockcolor|default('primary') %}
+    {% set gradient = particle.gradient|default('disable') == 'enable' %}
+    {% set startcolor = blockcolor == 'custom' ? particle.customcolor|default('#3366ff') : 'var(--bs-' ~ blockcolor ~ ')' %}
+
+    {% set counterVars %}
+        {%- if particle.titlefontsize %}--g-simplecounter-title-size:{{ particle.titlefontsize|e('html_attr') }}px;{% endif -%}
+        {%- if particle.titlecolor %}--g-simplecounter-title-color:{{ particle.titlecolor|e('html_attr') }};{% endif -%}
+        {%- if particle.descriptionfontsize %}--g-simplecounter-description-size:{{ particle.descriptionfontsize|e('html_attr') }}px;{% endif -%}
+        {%- if particle.descriptioncolor %}--g-simplecounter-description-color:{{ particle.descriptioncolor|e('html_attr') }};{% endif -%}
+        --g-simplecounter-number-size:{{ particle.numberfontsize|default(32)|e('html_attr') }}px;
+        --g-simplecounter-number-color:{{ particle.numbertextcolor|default('#ffffff')|e('html_attr') }};
+        {%- if particle.labelfontsize %}--g-simplecounter-label-size:{{ particle.labelfontsize|e('html_attr') }}px;{% endif -%}
+        {%- if particle.labelcolor %}--g-simplecounter-label-color:{{ particle.labelcolor|e('html_attr') }};{% endif -%}
+        --g-simplecounter-block-height:{{ particle.blockheight|default(80)|e('html_attr') }}px;
+        --g-simplecounter-block-start:{{ startcolor|e('html_attr') }};
+        --g-simplecounter-block-end:{{ particle.gradientcolor|default('#0037dd')|e('html_attr') }};
+        --g-simplecounter-block-angle:{{ particle.gradientangle|default(135)|e('html_attr') }}deg;
+    {% endset %}
+
+    <div
+        class="g-simplecounter g-simplecounter-shape-{{ particle.blockshape|default('rounded')|e }}{% if gradient %} g-simplecounter-gradient{% endif %} {{ particle.class|e }}"
+        style="{{ counterVars|trim }}"
+    >
         {% if particle.title %}
-            <h2 class="g-title title">{{ particle.title|raw }}</h2>
+            <h2 class="g-title title g-simplecounter-title">{{ particle.title|raw }}</h2>
         {% endif %}
 
         <div class="g-simplecounter-content">
@@ -13,7 +36,7 @@
 
         <div class="g-simplecounter-block">
             <div
-                class="g-simplecounter-calendar"
+                class="g-simplecounter-calendar row"
                 id="g-{{ id }}"
                 data-simplecounter
                 data-countdown="{{ particle.year|default(2030) }}-{{ '%02d'|format(month) }}-{{ '%02d'|format(particle.date|default(1)) }}"

@@ -103,7 +103,7 @@
         const number = document.createElement('span');
         const labelElement = document.createElement('span');
 
-        wrapper.className = 'counter-block';
+        wrapper.className = 'counter-block col-3';
         wrapper.dataset.simplecounterUnit = unit;
         number.className = 'number';
         labelElement.className = 'word';
