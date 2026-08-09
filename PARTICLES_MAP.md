@@ -2,6 +2,24 @@
 
 Generated mapping of Particle YAML, Twig, and SCSS files across the engine and all themes.
 
+## Known TODOs
+
+- **mobile-menu / Offcanvas section — revisit once the template is 100% Bootstrap.**
+  `mobile-menu.html.twig` is currently a plain container div, not a real Bootstrap
+  `.offcanvas` component, because it lives inside the layout's Offcanvas *section*
+  (`#g-offcanvas`), which every theme still opens via the legacy custom drag/slide JS
+  (`assets/common/application/offcanvas/index.js`) and the header's
+  `data-offcanvas-toggle` button — not Bootstrap's Offcanvas JS. Wrapping just this
+  one particle in a real `.offcanvas` component while the surrounding panel stays
+  legacy caused a double-offcanvas conflict (Bootstrap's `.offcanvas` has
+  `visibility: hidden` until its own JS adds `.show`, which never happened, so the
+  outer legacy panel slid into view but the menu items inside stayed invisible).
+  Once the rest of the template/engine is fully converted to real Bootstrap 5
+  components, revisit this together with the Offcanvas section as a whole: migrate
+  `#g-offcanvas` + its toggle button to `data-bs-toggle="offcanvas"` /
+  `data-bs-target`, drop `assets/common/application/offcanvas/index.js`, and only
+  then make `mobile-menu.html.twig` a real `.offcanvas` again.
+
 ## Core vs. Theme Name Conflicts
 
 13 particle names exist in both core (`engines/common/nucleus/particles`) and at least one theme's `common/particles` folder. This is normal Gantry 5 behavior — a theme overrides a core particle by placing a same-named file in its own `common/particles` folder, which takes precedence at render time.

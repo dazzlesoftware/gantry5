@@ -10,6 +10,15 @@
        this in a real Bootstrap .offcanvas (as a prior pass did) leaves it
        visibility:hidden forever, since nothing ever adds Bootstrap's own .show class
        to it: the legacy outer panel slides into view but the menu items inside stay
-       invisible. Keep this a plain container. #}
+       invisible. Keep this a plain container.
+
+       TODO(bootstrap-conversion): revisit once the Offcanvas layout section itself
+       (#g-offcanvas + assets/common/application/offcanvas/index.js's custom
+       drag/slide JS) is migrated to real Bootstrap 5 Offcanvas markup. At that point
+       this particle should render an actual `.offcanvas` component again, with the
+       header's toggle button switched to data-bs-toggle="offcanvas" /
+       data-bs-target, and the legacy offcanvas JS removed. Doing it now, before the
+       rest of the template is fully Bootstrap, is what caused the double-offcanvas
+       bug (empty-looking mobile menu) this comment replaced. #}
     <div id="g-mobilemenu-container" class="g-mobilemenu" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"></div>
 {% endblock %}
