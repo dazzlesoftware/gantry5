@@ -22,6 +22,10 @@ form:
       description: Customize the title text.
       default: Login
 
+    titlefont: {type: input.fonts, label: Title Font}
+    titlefontsize: {type: input.number, label: Title Font Size, min: 1, default: 24}
+    titlecolor: {type: input.colorpicker, label: Title Color, default: '#222222'}
+
     greeting:
       type: input.text
       label: Greeting
@@ -37,3 +41,35 @@ form:
       type: input.text
       label: Post Text
       description: Customize the text to be displayed after the login form.
+
+    usernamelabel: {type: input.text, label: User Name Label, default: 'User Name'}
+    passwordlabel: {type: input.text, label: Password Label, default: 'Password'}
+    rememberlabel: {type: input.text, label: Remember Me Label, default: 'Remember me'}
+    labelfont: {type: input.fonts, label: Label Font}
+    labelfontsize: {type: input.number, label: Label Font Size, min: 1, default: 14}
+    labelcolor: {type: input.colorpicker, label: Label Color, default: '#222222'}
+
+    forgotpasswordtext: {type: input.text, label: Forgot Password Text, default: 'Forgot your password ?'}
+    registertext: {type: input.text, label: Register Text, default: 'Register'}
+    linkfont: {type: input.fonts, label: Link Font}
+    linkfontsize: {type: input.number, label: Link Font Size, min: 1, default: 14}
+    linkcolor: {type: input.colorpicker, label: Link Color, default: '#3366ff'}
+    linkhovercolor: {type: input.colorpicker, label: Link Hover Color, default: '#0037dd'}
+
+    loginbuttontext: {type: input.text, label: Log In Button Text, default: 'Log In'}
+    logoutbuttontext: {type: input.text, label: Log Out Button Text, default: 'Log Out'}
+    buttonstyle: {type: select.select, label: Bootstrap Button Style, default: primary, options: {primary: Primary, secondary: Secondary, success: Success, info: Info, warning: Warning, danger: Danger, dark: Dark, light: Light, link: Link, custom: Custom}}
+    buttonappearance: {type: select.select, label: Button Appearance, default: flat, options: {flat: Flat, outline: Outline}}
+    buttonsize: {type: select.select, label: Button Size, default: default, options: {default: Default, sm: Small, lg: Large, custom: Custom}}
+    buttonshape: {type: select.select, label: Button Shape, default: rounded, options: {rounded: Rounded, square: Square, pill: Pill}}
+    buttonfullwidth: {type: select.select, label: Button Full Width, default: disable, options: {enable: Enable, disable: Disable}}
+    buttonfont: {type: input.fonts, label: Button Font}
+    buttonfontsize: {type: input.number, label: Button Font Size, min: 1, default: 16}
+    buttonweight: {type: select.select, label: Button Font Weight, default: '400', options: {'300': Light, '400': Normal, '500': Medium, '600': Semi Bold, '700': Bold, '800': Extra Bold}}
+    buttonpadding: {type: input.text, label: Button Custom Padding, default: '8px 22px'}
+    buttoncolor: {type: input.colorpicker, label: Button Custom Text Color, default: '#ffffff'}
+    buttonbackground: {type: input.colorpicker, label: Button Custom Background, default: '#3366ff'}
+    buttonbordercolor: {type: input.colorpicker, label: Button Custom Border Color, default: '#3366ff'}
+    buttonhovercolor: {type: input.colorpicker, label: Button Hover Text Color, default: '#ffffff'}
+    buttonhoverbackground: {type: input.colorpicker, label: Button Hover Background, default: '#0037dd'}
+    buttonhoverbordercolor: {type: input.colorpicker, label: Button Hover Border Color, default: '#0037dd'}

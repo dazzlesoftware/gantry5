@@ -40,11 +40,28 @@ ol.unstyled {
   margin: 0 0 0.65rem 1rem;
 }
 
+.g-loginform-title {
+  color: var(--glogin-title-color);
+  font-size: var(--glogin-title-size);
+}
+
 .g-loginform fieldset.login-data {
   padding: 0;
 }
 .g-loginform .login-pretext p, .g-loginform .login-posttext p {
   margin: 0.5rem 0;
+}
+.g-loginform .g-loginform-label {
+  color: var(--glogin-label-color);
+  font-size: var(--glogin-label-size);
+}
+.g-loginform .g-loginform-link {
+  color: var(--glogin-link-color);
+  font-size: var(--glogin-link-size);
+  transition: color 0.25s;
+}
+.g-loginform .g-loginform-link:hover, .g-loginform .g-loginform-link:focus {
+  color: var(--glogin-link-hover-color);
 }
 
 .alignnone {
@@ -306,4 +323,5 @@ a img.aligncenter {
 .widget.widget_nav_menu ul.menu ul.sub-menu {
   list-style: none;
 }
+
 /*# sourceMappingURL=wordpress.css.map */

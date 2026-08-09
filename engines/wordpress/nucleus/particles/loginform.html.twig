@@ -1,12 +1,32 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+
+    {# Same Bootstrap variant/class logic as the standalone Button particle (button.html.twig),
+       reused here so the login/logout submit buttons render identically — including the
+       shared --gbtn-* CSS custom properties consumed by _button.scss. #}
+    {% set buttonstyle = particle.buttonstyle|default('primary') %}
+    {% set variant = buttonstyle == 'custom' ? 'g-button-custom' : (buttonstyle == 'link' ? 'btn-link' : (particle.buttonappearance|default('flat') == 'outline' ? 'btn-outline-' ~ buttonstyle : 'btn-' ~ buttonstyle)) %}
+    {% set buttonclass %}
+        g-button btn {{ variant }}{% if particle.buttonsize in ['sm','lg'] %} btn-{{ particle.buttonsize }}{% endif %}{% if particle.buttonsize == 'custom' %} is-custom-size{% endif %}{% if particle.buttonshape == 'square' %} rounded-0{% elseif particle.buttonshape == 'pill' %} rounded-pill{% endif %}{% if particle.buttonfullwidth|default('disable') == 'enable' %} w-100{% endif %}
+    {% endset %}
 
     {% if particle.title %}
-        <div class="g-loginform-title">{{ particle.title|raw }}</div>
+        <div
+            class="g-loginform-title"
+            data-loginform-title-font="{{ particle.titlefont|default('')|e('html_attr') }}"
+            style="--glogin-title-color:{{ particle.titlecolor|default('#222222')|e('html_attr') }};--glogin-title-size:{{ particle.titlefontsize|default(24)|e('html_attr') }}px;"
+        >{{ particle.title|raw }}</div>
     {% endif %}
 
-    <div class="g-loginform {{ particle.class|e }}">
+    <div
+        class="g-loginform {{ particle.class|e }}"
+        data-loginform-label-font="{{ particle.labelfont|default('')|e('html_attr') }}"
+        data-loginform-link-font="{{ particle.linkfont|default('')|e('html_attr') }}"
+        data-button-font="{{ particle.buttonfont|default('')|e('html_attr') }}"
+        style="--glogin-label-color:{{ particle.labelcolor|default('#222222')|e('html_attr') }};--glogin-label-size:{{ particle.labelfontsize|default(14)|e('html_attr') }}px;--glogin-link-color:{{ particle.linkcolor|default('#3366ff')|e('html_attr') }};--glogin-link-hover-color:{{ particle.linkhovercolor|default('#0037dd')|e('html_attr') }};--glogin-link-size:{{ particle.linkfontsize|default(14)|e('html_attr') }}px;--gbtn-size:{{ particle.buttonfontsize|default(16)|e('html_attr') }}px;--gbtn-weight:{{ particle.buttonweight|default('400')|e('html_attr') }};--gbtn-padding:{{ particle.buttonpadding|default('8px 22px')|e('html_attr') }};--gbtn-gap:8px;--gbtn-color:{{ particle.buttoncolor|default('#ffffff')|e('html_attr') }};--gbtn-bg:{{ particle.buttonbackground|default('#3366ff')|e('html_attr') }};--gbtn-border:{{ particle.buttonbordercolor|default('#3366ff')|e('html_attr') }};--gbtn-hover-color:{{ particle.buttonhovercolor|default('#ffffff')|e('html_attr') }};--gbtn-hover-bg:{{ particle.buttonhoverbackground|default('#0037dd')|e('html_attr') }};--gbtn-hover-border:{{ particle.buttonhoverbordercolor|default('#0037dd')|e('html_attr') }};"
+    >
 
         {% if not is_user_logged_in %}
 
@@ -21,26 +41,26 @@
 
                 <fieldset class="login-data">
                     <p id="login-username">
-                        <label for="username">{{ __('User Name', 'genesis') }}</label>
+                        <label for="username" class="g-loginform-label">{{ particle.usernamelabel|default(__('User Name', 'genesis'))|e }}</label>
                         <input id="username" type="text" name="log" class="inputbox" alt="username" size="18" value="" />
                     </p>
                     <p id="login-password">
-                        <label for="passwd">{{ __('Password', 'genesis') }}</label>
+                        <label for="passwd" class="g-loginform-label">{{ particle.passwordlabel|default(__('Password', 'genesis'))|e }}</label>
                         <input id="passwd" type="password" name="pwd" class="inputbox" size="18" alt="password" value="" />
                     </p>
                     <p id="login-remember">
                         <input id="remember" type="checkbox" name="rememberme" class="inputbox" />
-                        <label for="remember">{{ __('Remember me', 'genesis') }}</label>
+                        <label for="remember" class="g-loginform-label">{{ particle.rememberlabel|default(__('Remember me', 'genesis'))|e }}</label>
                     </p>
-                    <input type="submit" value="{{ __('Log In', 'genesis') }}" class="button" name="submit" />
+                    <input type="submit" value="{{ particle.loginbuttontext|default(__('Log In', 'genesis'))|e }}" class="{{ buttonclass|trim|e }}" name="submit" />
                 </fieldset>
                 <ul class="login-extra">
                     <li>
-                        <a href="{{ function('wp_lostpassword_url') }}">{{ __('Forgot your password ?', 'genesis') }}</a>
+                        <a href="{{ function('wp_lostpassword_url') }}" class="g-loginform-link">{{ particle.forgotpasswordtext|default(__('Forgot your password ?', 'genesis'))|e }}</a>
                     </li>
                     {% if function('get_option', 'users_can_register') %}
                         <li>
-                            <a href="{{ function('wp_registration_url') }}">{{ __('Register', 'genesis') }}</a>
+                            <a href="{{ function('wp_registration_url') }}" class="g-loginform-link">{{ particle.registertext|default(__('Register', 'genesis'))|e }}</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -61,7 +81,7 @@
                     <p>{{ particle.greeting|format(current_user.display_name) }}</p>
                 </div>
                 <div class="logout-button">
-                    <input type="submit" name="submit" class="button" value="{{ __('Log Out', 'genesis') }}" />
+                    <input type="submit" name="submit" class="{{ buttonclass|trim|e }}" value="{{ particle.logoutbuttontext|default(__('Log Out', 'genesis'))|e }}" />
                 </div>
             </form>
 
@@ -69,4 +89,9 @@
 
     </div>
 
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/button.js'), 11, 'footer') %}
+    {% do genesis.document.addScript(url('genesis-assets://js/loginform.js'), 11, 'footer') %}
 {% endblock %}

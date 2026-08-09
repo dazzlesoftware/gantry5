@@ -1,3 +1,8 @@
+.g-loginform-title {
+    color: var(--glogin-title-color);
+    font-size: var(--glogin-title-size);
+}
+
 .g-loginform {
     fieldset.login-data {
         padding: 0;
@@ -6,6 +11,21 @@
     .login-pretext, .login-posttext {
         p {
             margin: 0.5rem 0;
+        }
+    }
+
+    .g-loginform-label {
+        color: var(--glogin-label-color);
+        font-size: var(--glogin-label-size);
+    }
+
+    .g-loginform-link {
+        color: var(--glogin-link-color);
+        font-size: var(--glogin-link-size);
+        transition: color 0.25s;
+
+        &:hover, &:focus {
+            color: var(--glogin-link-hover-color);
         }
     }
 }
