@@ -1,15 +1,72 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
+{% macro bar(item, showpercentage) %}
+    {% set color = item.color|default('primary') %}
+    {% set customcolor = item.customcolor|default('#3366ff') %}
+    {% set textcolor = item.textcolor|default('#ffffff') %}
+    {% set striped = item.striped|default('disable') == 'enable' %}
+    {% set stripedcustom = item.stripedcustom|default('disable') == 'enable' %}
+    {% set stripedcolor = item.stripedcolor|default('rgba(255,255,255,0.35)') %}
+    {% set progress = item.progress|default(0) %}
+    <div
+        class="progress-bar g-progressbar-bar{% if color != 'custom' %} bg-{{ color|e }}{% else %} g-progressbar-custom{% endif %}{% if striped %} progress-bar-striped{% endif %}{% if striped and stripedcustom %} g-progressbar-stripe-custom{% endif %}{% if item.animatedstripes|default('disable') == 'enable' %} progress-bar-animated{% endif %}"
+        role="progressbar"
+        aria-valuenow="{{ progress|e }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-label="{{ item.title|default('')|e('html_attr') }}"
+        data-progressbar-target="{{ progress|e('html_attr') }}"
+        style="width:0;--gpb-bar-color:{{ customcolor|e('html_attr') }};--gpb-bar-text:{{ textcolor|e('html_attr') }};{% if stripedcustom %}--gpb-stripe-color:{{ stripedcolor|e('html_attr') }};{% endif %}"
+    >{% if showpercentage == 'enable' %}{{ progress|e }}%{% endif %}</div>
+{% endmacro %}
+
 {% block particle %}
+    {% do genesis.load('bootstrap.5') %}
+    {% import _self as self %}
+    {% set layout = particle.layout|default('stacked') %}
+    {% set showpercentage = particle.showpercentage|default('enable') %}
+    {% set shape = particle.shape|default('rounded') %}
 
-{% for item in particle.progressbar %}
-<div>{{ item.title}}</div>
-<div class="progress">
-  <div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="{{ item.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ item.progress }}%">
-    <span class="s-only">{{ item.progress }}%</span>
-  </div>
-</div>
-{% endfor %}
+    <div
+        class="g-progressbar-particle {{ particle.class|e }}"
+        data-progressbar
+        data-animate="{{ particle.animate|default('enable')|e('html_attr') }}"
+        data-duration="{{ particle.duration|default(1000)|e('html_attr') }}"
+        data-progressbar-label-font="{{ particle.labelfont|default('')|e('html_attr') }}"
+        style="--gpb-height:{{ particle.height|default(24)|e('html_attr') }}px;--gpb-track:{{ particle.trackcolor|default('#e9ecef')|e('html_attr') }};--gpb-label-color:{{ particle.labelcolor|default('#222222')|e('html_attr') }};--gpb-label-size:{{ particle.labelfontsize|default(14)|e('html_attr') }}px;"
+    >
+        {% if particle.title %}<h3 class="g-title">{{ particle.title|raw }}</h3>{% endif %}
 
+        {% if layout == 'segmented' %}
+
+            <div class="progress g-progressbar-shape-{{ shape|e }}" role="progressbar" aria-label="{{ particle.title|default('Progress')|e('html_attr') }}">
+                {% for item in particle.progressbar|default([]) %}
+                    {{ self.bar(item, showpercentage) }}
+                {% endfor %}
+            </div>
+            {% if showpercentage == 'enable' %}
+                <ul class="g-progressbar-legend">
+                    {% for item in particle.progressbar|default([]) %}
+                        <li class="g-progressbar-label">{{ item.title|default('')|raw }} — {{ item.progress|default(0)|e }}%</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+        {% else %}
+
+            {% for item in particle.progressbar|default([]) %}
+                <div class="g-progressbar-row">
+                    <div class="g-progressbar-label">{{ item.title|default('')|raw }}</div>
+                    <div class="progress g-progressbar-shape-{{ shape|e }}">
+                        {{ self.bar(item, showpercentage) }}
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% endif %}
+    </div>
 {% endblock %}
 
+{% block javascript_footer %}
+    {% do genesis.document.addScript(url('genesis-assets://js/progressbar.js'), 11, 'footer') %}
+{% endblock %}

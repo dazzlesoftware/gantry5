@@ -1,39 +1,94 @@
 name: Progress Bar
-description: Display progressbar.
+description: Display one or more Bootstrap-style progress bars.
 type: particle
 category: general
-icon: fa-expand
-
-configuration:
-  caching:
-    type: static
+icon: fa-tasks
+configuration: {caching: {type: static}}
 
 form:
-  overrideable: false
   fields:
-    enabled:
-      type: input.checkbox
-      label: Enabled
-      description: Globally enable the particle.
-      default: true
+    enabled: {type: input.checkbox, label: Enabled, default: true}
+    class: {type: input.selectize, label: CSS Classes}
+
+    layout:
+      type: select.select
+      label: Layout
+      description: Stacked shows each bar on its own labeled row. Segmented packs every bar into one shared track (Bootstrap's "multiple bars" pattern).
+      default: stacked
+      options: {stacked: Stacked, segmented: Segmented}
+
+    height: {type: input.number, label: Bar Height, description: Pixels., min: 4, default: 24}
+    shape: {type: select.select, label: Shape, default: rounded, options: {square: Square, rounded: Rounded, pill: Pill}}
+    trackcolor: {type: input.colorpicker, label: Track Background Color, default: '#e9ecef'}
+    showpercentage: {type: select.select, label: Show Percentage, default: enable, options: {enable: Show, disable: Hide}}
+    animate: {type: select.select, label: Animate When Visible, description: Fill each bar from 0 to its target when it scrolls into view., default: enable, options: {enable: Enable, disable: Disable}}
+    duration: {type: input.number, label: Animation Duration, description: Milliseconds., min: 0, default: 1000}
+
+    labelfont: {type: input.fonts, label: Label Font}
+    labelfontsize: {type: input.number, label: Label Font Size, description: Pixels., min: 1, default: 14}
+    labelcolor: {type: input.colorpicker, label: Label Color, default: '#222222'}
 
     progressbar:
       type: collection.list
       array: true
       label: Progress Bars
-      description: Create each item to appear in the content row.
-      value: name
+      description: Create each bar to appear in the component.
+      value: title
       ajax: true
 
-      fields:        
+      fields:
         .title:
           type: input.text
-          label: Item Title
-          description: Customize the item title text.
-          placeholder: Enter item title       
+          label: Label
+          description: Customize the bar's label text.
+          placeholder: Enter label
+
         .progress:
           type: input.number
           label: Progress Amount
           description: Specify the progress amount.
+          min: 0
           max: 100
           default: 0
+
+        .color:
+          type: select.select
+          label: Bootstrap Color
+          default: primary
+          options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark, custom: Custom}
+
+        .customcolor:
+          type: input.colorpicker
+          label: Custom Bar Color
+          default: '#3366ff'
+
+        .textcolor:
+          type: input.colorpicker
+          label: Bar Text Color
+          description: Color of the percentage text inside the bar.
+          default: '#ffffff'
+
+        .striped:
+          type: select.select
+          label: Striped
+          description: Overlay a diagonal stripe gradient on the bar.
+          default: disable
+          options: {enable: Enable, disable: Disable}
+
+        .stripedcustom:
+          type: select.select
+          label: Custom Stripe Color
+          default: disable
+          options: {enable: Enable, disable: Disable}
+
+        .stripedcolor:
+          type: input.colorpicker
+          label: Stripe Color
+          default: 'rgba(255,255,255,0.35)'
+
+        .animatedstripes:
+          type: select.select
+          label: Animated Stripes
+          description: Animate the stripe gradient right to left.
+          default: disable
+          options: {enable: Enable, disable: Disable}

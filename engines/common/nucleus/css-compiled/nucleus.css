@@ -6054,4 +6054,56 @@ body.g-modal-open {
   background: var(--gap-custom);
 }
 
+.g-progressbar-particle {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.g-progressbar-particle .progress {
+  height: var(--gpb-height);
+  background-color: var(--gpb-track);
+}
+.g-progressbar-particle .g-progressbar-shape-square {
+  border-radius: 0;
+}
+.g-progressbar-particle .g-progressbar-shape-rounded {
+  border-radius: 0.375rem;
+}
+.g-progressbar-particle .g-progressbar-shape-pill {
+  border-radius: 999px;
+}
+.g-progressbar-particle .g-progressbar-bar {
+  width: 0;
+  color: var(--gpb-bar-text);
+  transition-property: width;
+  transition-timing-function: ease;
+}
+.g-progressbar-particle .g-progressbar-custom {
+  background-color: var(--gpb-bar-color);
+}
+.g-progressbar-particle .g-progressbar-bar.g-progressbar-stripe-custom {
+  background-image: linear-gradient(45deg, var(--gpb-stripe-color) 25%, transparent 25%, transparent 50%, var(--gpb-stripe-color) 50%, var(--gpb-stripe-color) 75%, transparent 75%, transparent);
+}
+.g-progressbar-particle .g-progressbar-row {
+  margin-bottom: 0.75rem;
+}
+.g-progressbar-particle .g-progressbar-row:last-child {
+  margin-bottom: 0;
+}
+.g-progressbar-particle .g-progressbar-label {
+  color: var(--gpb-label-color);
+  font-size: var(--gpb-label-size);
+}
+.g-progressbar-particle .g-progressbar-row .g-progressbar-label {
+  margin-bottom: 0.35rem;
+}
+.g-progressbar-particle .g-progressbar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
 /*# sourceMappingURL=nucleus.css.map */
