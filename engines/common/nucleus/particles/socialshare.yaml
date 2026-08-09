@@ -55,7 +55,7 @@ form:
     emailhoverbackground: {type: input.colorpicker, label: Email Hover Background, default: '#44474b'}
     whatsappbackground: {type: input.colorpicker, label: WhatsApp Background, default: '#25d366'}
     whatsapphoverbackground: {type: input.colorpicker, label: WhatsApp Hover Background, default: '#1da851'}
-    size: {type: input.number, label: Icon Size, min: 1, default: 18}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 18}
     boxsize: {type: input.number, label: Button Size, min: 20, default: 42}
     radius: {type: input.number, label: Border Radius, min: 0, default: 4}
     gap: {type: input.number, label: Gap, min: 0, default: 8}

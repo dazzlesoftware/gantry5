@@ -1,0 +1,301 @@
+// Structural/behavioral baseline for the calendar particle, shared by every theme.
+// Colors, fonts and other branding are layered on top by each theme's own
+// _calendar.scss (see themes/*/common/scss/*/_calendar.scss), which is compiled
+// and loaded after this file. Keep this file free of theme variables — it
+// compiles standalone into nucleus.css, without any theme's config in scope.
+.g-calendar-particle {
+    %clearfix {
+        &:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+            height: 0;
+        }
+    }
+
+    %noselect {
+        -webkit-user-select: none; /* Chrome/Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+ */
+    }
+
+    .g-calendar {
+        $clndr-width: 100%;
+        $clndr-col-width: (100% / 7);
+
+        // Lets the 7-day grid shrink its own type/spacing based on the calendar's
+        // actual rendered width (sidebar, narrow spacer column, etc.) rather than
+        // the viewport — a viewport-based breakpoint wouldn't catch a narrow column
+        // on an otherwise-wide screen.
+        container-type: inline-size;
+        container-name: g-calendar;
+
+        .clndr {
+            overflow: hidden;
+            border: 1px solid rgba(127, 127, 127, 0.25);
+            border-radius: $core-border-radius;
+            // Fluid base size for the whole calendar (day numbers inherit this
+            // directly) — scales with the calendar's own rendered width, not the
+            // viewport, so a narrow sidebar/spacer column shrinks coherently
+            // instead of just the day-header abbreviations.
+            font-size: clamp(0.65rem, 4.5cqi, #{$core-font-size});
+
+            .controls {
+                // Title bar text is naturally a bit larger than the grid — its own
+                // clamp mirrors the .clndr one above so both shrink in step.
+                font-size: clamp(0.7rem, 5cqi, #{$core-font-size + 0.15});
+                display: flex;
+                align-items: stretch;
+                line-height: 3.5;
+
+                .clndr-previous-button, .clndr-next-button {
+                    width: 10%;
+                    margin: 0;
+                    padding: 5px 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 0;
+                    outline: none;
+                    appearance: none;
+                    font: inherit;
+                    color: inherit;
+                    background: transparent;
+                    text-align: center;
+                    cursor: pointer;
+                    @extend %noselect;
+                    transition: background-color 0.5s;
+
+                    // Particle fields "Arrow Icon Size"/"Arrow Icon Color" set these inline;
+                    // unset falls back to inherit. Scoped to the icon itself (not the button)
+                    // so it wins over a theme's own button-level color without fighting cascade order.
+                    i {
+                        font-size: var(--g-calendar-icon-size, inherit);
+                        color: var(--g-calendar-icon-color, inherit);
+                    }
+                }
+
+                .clndr-previous-button {
+                    .dir-rtl & {
+                        .fa-arrow-circle-left {
+                            &:before {
+                                content: "\f0a9";
+                            }
+                        }
+                    }
+                }
+
+                .clndr-next-button {
+                    .dir-rtl & {
+                        .fa-arrow-circle-right {
+                            &:before {
+                                content: "\f0a8";
+                            }
+                        }
+                    }
+                }
+
+                .month-year {
+                    width: 80%;
+                    padding: 5px 0;
+                    display: inline-block;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    text-align: center;
+                    text-transform: uppercase;
+                    // Particle field "Title Font Size" sets --g-calendar-title-size inline;
+                    // unset falls back to inherit, i.e. .controls' own fluid clamp above.
+                    font-size: var(--g-calendar-title-size, inherit);
+                    // Fluid, based on the calendar's own rendered width (not the viewport) —
+                    // clamp(min, preferred-scales-with-container, max).
+                    letter-spacing: clamp(0em, 1cqi, 1px);
+                }
+            }
+
+            .days-container {
+                position: relative;
+                width: $clndr-width;
+                // height is set inline by calendar.js — .days/.events are absolutely
+                // positioned for the slide transition, so it can't be sized by content alone.
+                @extend %clearfix;
+
+                .days {
+                    position: absolute;
+                    left: 0;
+                    width: $clndr-width;
+                    border-left: 1px solid rgba(127, 127, 127, 0.25);
+                    transition: left 0.5s;
+
+                    .day, .empty {
+                        box-sizing: border-box;
+                        width: $clndr-col-width;
+                        display: inline-block;
+                        padding: clamp(2px, 3cqi, 8px) 0;
+                        line-height: 2.5;
+                        text-align: center;
+                        color: inherit;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        // Particle field "Day Numbers Font Size" sets --g-calendar-number-size
+                        // inline; unset falls back to inherit, i.e. .clndr's own fluid clamp.
+                        font-size: var(--g-calendar-number-size, inherit);
+                        border-right: 1px solid rgba(127, 127, 127, 0.25);
+                        border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+
+                        &.today {
+                            font-weight: 600;
+                        }
+
+                        &.event {
+                            transition: background-color 0.5s;
+                            cursor: pointer;
+                        }
+
+                        &.adjacent-month {
+                            color: rgba(127, 127, 127, 0.5);
+                        }
+                    }
+
+                    .empty {
+                        height: 31px;
+                        vertical-align: bottom;
+                    }
+
+                    .headers {
+                        border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+                        background-color: rgba(127, 127, 127, 0.05);
+
+                        .day-header {
+                            box-sizing: border-box;
+                            width: $clndr-col-width;
+                            display: inline-block;
+                            padding: clamp(0.3rem, 3cqi, 1rem) 0;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            border-right: 1px solid rgba(127, 127, 127, 0.25);
+                            text-align: center;
+                            text-transform: uppercase;
+                            // "SUN"/"MON" are unbreakable 3-letter words — size them off the
+                            // calendar's own rendered width so a narrow sidebar/spacer column
+                            // shrinks them to fit instead of overflowing into the next cell.
+                            // Ceiling is an absolute rem (not em/%) so it doesn't compound with
+                            // .clndr's own fluid base font-size above.
+                            font-size: clamp(0.5rem, 5cqi, #{$core-font-size});
+                            letter-spacing: clamp(0em, 1cqi, 1px);
+                        }
+                    }
+                }
+
+                // Events
+                .events {
+                    position: absolute;
+                    left: $clndr-width;
+                    width: $clndr-width;
+                    border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+                    height: 100%;
+                    background-color: rgba(127, 127, 127, 0.05);
+                    transition: left 0.5s;
+
+                    .headers {
+                        position: relative;
+                    }
+
+                    .event-header {
+                        width: $clndr-width;
+                        padding: 5px 0;
+                        text-align: center;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+
+                    .x-button {
+                        position: absolute;
+                        top: 7px;
+                        left: 20px;
+                        box-sizing: border-box;
+                        margin: 0;
+                        // Fixed px (not em) so the icon's own font-size below can be
+                        // overridden independently without also resizing this padding.
+                        padding: 4px 8px;
+                        border: 0;
+                        outline: none;
+                        appearance: none;
+                        border-radius: $core-border-radius;
+                        font: inherit;
+                        font-size: 80%;
+                        cursor: pointer;
+                        color: inherit;
+                        transition: color 0.25s, background-color 0.25s;
+
+                        // Particle fields "Close Button Color"/"Close Button Hover Color" set
+                        // these inline; unset falls back to transparent (today's look).
+                        background-color: var(--g-calendar-close-button-color, transparent);
+
+                        &:hover {
+                            background-color: var(--g-calendar-close-button-hover-color, transparent);
+                        }
+
+                        // Particle fields "Close Icon Size"/"Close Icon Color" set these inline;
+                        // unset falls back to inherit (the button's own 80% above). Scoped to the
+                        // icon itself (not the button) so color wins over a theme's own
+                        // button-level color without fighting cascade order.
+                        i {
+                            font-size: var(--g-calendar-close-icon-size, inherit);
+                            color: var(--g-calendar-close-icon-color, inherit);
+                        }
+
+                        .dir-rtl & {
+                            right: 20px;
+                            left: auto;
+                        }
+                    }
+
+                    .events-list {
+                        overflow-y: auto;
+                        height: 90%;
+
+                        .event {
+                            padding: 8px 20px;
+                            border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+                            transition: background-color 0.25s;
+
+                            a {
+                                position: relative;
+                                letter-spacing: 1px;
+                                background-color: transparent;
+                                text-decoration: none;
+                                transition: color 0.25s;
+                                // Particle field "Event Title Font Size" sets this inline;
+                                // unset falls back to inherit (today's look).
+                                font-size: var(--g-calendar-event-title-size, inherit);
+                            }
+
+                            .event-desc {
+                                display: block;
+                                padding: 5px 0;
+                                // Particle field "Event Description Font Size" sets this inline;
+                                // unset falls back to the previous fixed default.
+                                font-size: var(--g-calendar-event-desc-size, #{$core-font-size - 0.3});
+                            }
+                        }
+                    }
+                }
+
+                &.show-events {
+                    .days {
+                        left: -$clndr-width;
+                    }
+
+                    .events {
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

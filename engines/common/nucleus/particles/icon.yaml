@@ -13,7 +13,7 @@ form:
     target: {type: select.select, label: Link Target, default: _self, options: {_self: Same Window, _blank: New Window}}
     arialabel: {type: input.text, label: Aria Label, default: Icon link}
     alignment: {type: select.select, label: Alignment, default: center, options: {left: Left, center: Center, right: Right}}
-    size: {type: input.number, label: Icon Size, min: 1, default: 48}
+    iconsize: {type: input.number, label: Icon Size, min: 1, default: 48}
     width: {type: input.number, label: Container Width, min: 1, default: 80}
     height: {type: input.number, label: Container Height, min: 1, default: 80}
     color: {type: input.colorpicker, label: Icon Color, default: '#3366ff'}

@@ -11,6 +11,9 @@
     const create = (container, options = {}) => {
         if (!container || container.dataset.calendarReady) return;
         container.dataset.calendarReady = 'true';
+        const clndr = document.createElement('div');
+        clndr.className = 'clndr';
+        container.append(clndr);
         const locale = options.locale || document.documentElement.lang || undefined;
         const events = (options.events || []).map((event) => ({
             ...event,
@@ -25,7 +28,7 @@
             const month = visibleMonth.getMonth();
             const firstWeekday = new Date(year, month, 1).getDay();
             const gridStart = new Date(year, month, 1 - firstWeekday);
-            container.replaceChildren();
+            clndr.replaceChildren();
 
             const controls = document.createElement('div');
             controls.className = 'controls';
@@ -33,7 +36,10 @@
             previous.type = 'button';
             previous.className = 'clndr-previous-button';
             previous.setAttribute('aria-label', 'Previous month');
-            previous.innerHTML = '<i class="fa fa-fw fa-arrow-circle-left" aria-hidden="true"></i>';
+            const previousIcon = document.createElement('i');
+            previousIcon.className = `fa-fw ${options.previousIcon || 'fa fa-arrow-circle-left'}`;
+            previousIcon.setAttribute('aria-hidden', 'true');
+            previous.append(previousIcon);
             const heading = document.createElement('div');
             heading.className = 'month-year';
             heading.textContent = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(visibleMonth);
@@ -41,7 +47,10 @@
             next.type = 'button';
             next.className = 'clndr-next-button';
             next.setAttribute('aria-label', 'Next month');
-            next.innerHTML = '<i class="fa fa-fw fa-arrow-circle-right" aria-hidden="true"></i>';
+            const nextIcon = document.createElement('i');
+            nextIcon.className = `fa-fw ${options.nextIcon || 'fa fa-arrow-circle-right'}`;
+            nextIcon.setAttribute('aria-hidden', 'true');
+            next.append(nextIcon);
             controls.append(previous, heading, next);
 
             const daysContainer = document.createElement('div');
@@ -67,7 +76,10 @@
             close.type = 'button';
             close.className = 'x-button';
             close.setAttribute('aria-label', 'Close events');
-            close.innerHTML = '<i class="fa fa-fw fa-close" aria-hidden="true"></i>';
+            const closeIcon = document.createElement('i');
+            closeIcon.className = `fa-fw ${options.closeIcon || 'fa fa-close'}`;
+            closeIcon.setAttribute('aria-hidden', 'true');
+            close.append(closeIcon);
             const eventTitle = document.createElement('div');
             eventTitle.className = 'event-header';
             eventTitle.textContent = options.eventsHeader || 'Events';
@@ -136,7 +148,11 @@
                 render();
             });
             daysContainer.append(days, eventPanel);
-            container.append(controls, daysContainer);
+            clndr.append(controls, daysContainer);
+
+            // .days/.events are absolutely positioned (for the slide transition), so
+            // .days-container can't size itself from their content — measure and set it explicitly.
+            daysContainer.style.height = `${days.offsetHeight}px`;
         };
         render();
     };

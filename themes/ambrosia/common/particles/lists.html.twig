@@ -6,7 +6,7 @@
     {% endstyles %}
     {% block layout %}
 
-        <div class="{{ particle.class|e }} g-swipercarousel-lists g-swipercarousel-lists-{{ particle.displayitems }}-items">
+        <div class="{{ particle.class|e }} g-swipercarousel-lists g-swipercarousel-lists-{{ particle.displayitems }}-items" data-g-accordion="{{ particle.accordion == 'enabled' ? 'true' : 'false' }}">
             {% if particle.title or particle.description %}
                 <div class="g-grid">
                     <div class="g-block">
@@ -36,14 +36,14 @@
                         {% for item in row  %}
                             <div class="g-swipercarousel-item">
                                 {% if item.title %}
-                                    <h4 class="g-swipercarousel-item-title{% if particle.accordion %} padding{% endif %}">
+                                    <h4 class="g-swipercarousel-item-title{% if particle.accordion == 'enabled' %} padding{% endif %}">
                                         {% if item.link %}<a href="{{ item.link|e }}">{% endif %}
 
                                         {{ item.title|html|raw }}
 
                                         {% if item.link %}</a>{% endif %}
 
-                                        {% if particle.accordion %}<span class="indicator"><span>+</span></span>{% endif %}
+                                        {% if particle.accordion == 'enabled' %}<span class="indicator"><span>+</span></span>{% endif %}
                                     </h4>
                                 {% endif %}
 

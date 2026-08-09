@@ -1,7 +1,7 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 {% block particle %}
   {% do genesis.load('bootstrap.5') %}
-  <div class="g-pie-progress text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" data-pie-progress data-value="{{ particle.percentage|default(75)|e }}" data-duration="{{ particle.duration|default(1800)|e }}" style="--gpie-size:{{ particle.size|default(180)|e('html_attr') }}px;--gpie-stroke:{{ particle.borderwidth|default(10)|e('html_attr') }};--gpie-track:{{ particle.trackcolor|default('#e5e5e5')|e('html_attr') }};--gpie-active:{{ particle.activecolor|default('#3366ff')|e('html_attr') }};--gpie-value-color:{{ particle.percentagecolor|default('#222222')|e('html_attr') }};--gpie-value-size:{{ particle.percentagesize|default(32)|e('html_attr') }}px;--gpie-icon-size:{{ particle.iconsize|default(28)|e('html_attr') }}px;">
+  <div class="g-pie-progress text-{{ particle.alignment|default('center')|e }} {{ particle.class|e }}" data-pie-progress data-value="{{ particle.percentage|default(75)|e }}" data-duration="{{ particle.duration|default(1800)|e }}" style="--gpie-size:{{ particle.circlesize|default(180)|e('html_attr') }}px;--gpie-stroke:{{ particle.borderwidth|default(10)|e('html_attr') }};--gpie-track:{{ particle.trackcolor|default('#e5e5e5')|e('html_attr') }};--gpie-active:{{ particle.activecolor|default('#3366ff')|e('html_attr') }};--gpie-value-color:{{ particle.percentagecolor|default('#222222')|e('html_attr') }};--gpie-value-size:{{ particle.percentagesize|default(32)|e('html_attr') }}px;--gpie-icon-size:{{ particle.iconsize|default(28)|e('html_attr') }}px;">
     {% if particle.title %}
       <h3 class="g-title">
         {{ particle.title|raw }}

@@ -14,7 +14,7 @@ form:
     target: {type: select.select, label: Link Target, default: _self, options: {_self: Current Window, _blank: New Window}}
     nofollow: {type: input.checkbox, label: No Follow, default: false}
     font: {type: input.fonts, label: Font}
-    size: {type: input.number, label: Desktop Font Size, min: 1, default: 32}
+    fontsize: {type: input.number, label: Desktop Font Size, min: 1, default: 32}
     tabletsize: {type: input.number, label: Tablet Font Size, min: 1, default: 30}
     mobilesize: {type: input.number, label: Mobile Font Size, min: 1, default: 26}
     lineheight: {type: input.number, label: Line Height, min: 0.1, step: 0.1, default: 1.2}

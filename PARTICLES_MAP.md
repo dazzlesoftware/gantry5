@@ -22,6 +22,16 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 | **timeline** | 1 | zenith |
 | **imageoverlay** | 1 | ethereal |
 
+## Core Structure + Theme Branding Layer (calendar)
+
+`calendar` was fully duplicated per theme (own YAML, Twig, and SCSS in every theme, ~38 near-identical copies) until it was centralized as the reference pattern for this kind of consolidation. Now:
+
+- **Core** (`engines/common/nucleus/particles/calendar.{yaml,html.twig}`, `engines/common/nucleus/scss/nucleus/_calendar.scss`) owns the markup, JS wiring, and all structural/behavioral CSS (layout, flex, sizing, transitions, neutral dividers) — compiled standalone into `nucleus.css`, with zero theme-variable dependencies.
+- **Every theme** now relies on the core YAML/Twig via the standard resource-locator fallback (no theme has its own `particles/calendar.{yaml,html.twig}` anymore) and keeps only a slim `_calendar.scss` that layers its own branding on top — `$accent-color-1`/`$accent-color-2`, text/font-weight tokens, and border-radius — reusing the exact same selectors so the theme's CSS (loaded after `nucleus.css`) overrides the neutral core defaults.
+- Shared JS: `assets/common/js/calendar.js` (was already common to all themes).
+
+Use this as the template for consolidating other still-duplicated particles.
+
 ## Engine (engines/common/nucleus)
 
 ### accordion
@@ -93,6 +103,13 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - YAML: `engines/common/nucleus/particles/buttongroup.yaml`
 - Twig: `engines/common/nucleus/particles/buttongroup.html.twig`
 - SCSS: `engines/common/nucleus/scss/nucleus/_buttongroup.scss`
+
+### calendar
+- YAML: `engines/common/nucleus/particles/calendar.yaml`
+- Twig: `engines/common/nucleus/particles/calendar.html.twig`
+- SCSS: `engines/common/nucleus/scss/nucleus/_calendar.scss` (structural/behavioral baseline; theme-agnostic)
+- JS: `assets/common/js/calendar.js` (shared by every theme)
+- Every theme now inherits this YAML/Twig/JS via the core fallback and layers only its own color/branding SCSS on top — see the `calendar` entries under each `## Theme:` section below, and the note in "Core vs. Theme Name Conflicts".
 
 ### clients
 - YAML: `engines/common/nucleus/particles/clients.yaml`
@@ -387,9 +404,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/acronym/common/scss/acronym/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/acronym/common/particles/calendar.yaml`
-- Twig: `themes/acronym/common/particles/calendar.html.twig`
-- SCSS: `themes/acronym/common/scss/acronym/particles/_calendar.scss`
+- SCSS: `themes/acronym/common/scss/acronym/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/acronym/common/particles/contenttabs.yaml`
@@ -632,9 +648,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/ambrosia/common/scss/ambrosia/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/ambrosia/common/particles/calendar.yaml`
-- Twig: `themes/ambrosia/common/particles/calendar.html.twig`
-- SCSS: `themes/ambrosia/common/scss/ambrosia/_calendar.scss`
+- SCSS: `themes/ambrosia/common/scss/ambrosia/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/ambrosia/common/particles/contact.yaml`
@@ -729,9 +744,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/anacron/common/scss/anacron/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/anacron/common/particles/calendar.yaml`
-- Twig: `themes/anacron/common/particles/calendar.html.twig`
-- SCSS: `themes/anacron/common/scss/anacron/particles/_calendar.scss`
+- SCSS: `themes/anacron/common/scss/anacron/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/anacron/common/particles/contact.yaml`
@@ -847,9 +861,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/antares/common/scss/antares/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/antares/common/particles/calendar.yaml`
-- Twig: `themes/antares/common/particles/calendar.html.twig`
-- SCSS: `themes/antares/common/scss/antares/_calendar.scss`
+- SCSS: `themes/antares/common/scss/antares/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/antares/common/particles/contact.yaml`
@@ -991,9 +1004,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/audacity/common/scss/audacity/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/audacity/common/particles/calendar.yaml`
-- Twig: `themes/audacity/common/particles/calendar.html.twig`
-- SCSS: `themes/audacity/common/scss/audacity/particles/_calendar.scss`
+- SCSS: `themes/audacity/common/scss/audacity/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/audacity/common/particles/contact.yaml`
@@ -1134,9 +1146,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/aurora/common/scss/aurora/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/aurora/common/particles/calendar.yaml`
-- Twig: `themes/aurora/common/particles/calendar.html.twig`
-- SCSS: `themes/aurora/common/scss/aurora/particles/_calendar.scss`
+- SCSS: `themes/aurora/common/scss/aurora/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### carousel
 - YAML: `themes/aurora/common/particles/carousel.yaml`
@@ -1236,9 +1247,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/calla/common/scss/calla/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/calla/common/particles/calendar.yaml`
-- Twig: `themes/calla/common/particles/calendar.html.twig`
-- SCSS: `themes/calla/common/scss/calla/particles/_calendar.scss`
+- SCSS: `themes/calla/common/scss/calla/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### carousel
 - YAML: `themes/calla/common/particles/carousel.yaml`
@@ -1349,9 +1359,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/callisto/common/scss/callisto/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/callisto/common/particles/calendar.yaml`
-- Twig: `themes/callisto/common/particles/calendar.html.twig`
-- SCSS: `themes/callisto/common/scss/callisto/_calendar.scss`
+- SCSS: `themes/callisto/common/scss/callisto/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/callisto/common/particles/contact.yaml`
@@ -1446,9 +1455,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/chimera/common/scss/chimera/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/chimera/common/particles/calendar.yaml`
-- Twig: `themes/chimera/common/particles/calendar.html.twig`
-- SCSS: `themes/chimera/common/scss/chimera/particles/_calendar.scss`
+- SCSS: `themes/chimera/common/scss/chimera/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/chimera/common/particles/contact.yaml`
@@ -1584,9 +1592,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/citadel/common/scss/citadel/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/citadel/common/particles/calendar.yaml`
-- Twig: `themes/citadel/common/particles/calendar.html.twig`
-- SCSS: `themes/citadel/common/scss/citadel/particles/_calendar.scss`
+- SCSS: `themes/citadel/common/scss/citadel/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### gridcontent
 - YAML: `themes/citadel/common/particles/gridcontent.yaml`
@@ -1779,9 +1786,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/denali/common/scss/denali/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/denali/common/particles/calendar.yaml`
-- Twig: `themes/denali/common/particles/calendar.html.twig`
-- SCSS: `themes/denali/common/scss/denali/particles/_calendar.scss`
+- SCSS: `themes/denali/common/scss/denali/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### carousel
 - YAML: `themes/denali/common/particles/carousel.yaml`
@@ -2020,9 +2026,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/epsilon/common/scss/epsilon/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/epsilon/common/particles/calendar.yaml`
-- Twig: `themes/epsilon/common/particles/calendar.html.twig`
-- SCSS: `themes/epsilon/common/scss/epsilon/particles/_calendar.scss`
+- SCSS: `themes/epsilon/common/scss/epsilon/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/epsilon/common/particles/contact.yaml`
@@ -2157,9 +2162,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/ethereal/common/scss/ethereal/_blogcontent.scss`
 
 ### calendar
-- YAML: `themes/ethereal/common/particles/calendar.yaml`
-- Twig: `themes/ethereal/common/particles/calendar.html.twig`
-- SCSS: `themes/ethereal/common/scss/ethereal/_calendar.scss`
+- SCSS: `themes/ethereal/common/scss/ethereal/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/ethereal/common/particles/contact.yaml`
@@ -2254,9 +2258,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/fluent/common/scss/fluent/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/fluent/common/particles/calendar.yaml`
-- Twig: `themes/fluent/common/particles/calendar.html.twig`
-- SCSS: `themes/fluent/common/scss/fluent/particles/_calendar.scss`
+- SCSS: `themes/fluent/common/scss/fluent/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### casestudies
 - YAML: `themes/fluent/common/particles/casestudies.yaml`
@@ -2356,9 +2359,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/flux/common/scss/flux/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/flux/common/particles/calendar.yaml`
-- Twig: `themes/flux/common/particles/calendar.html.twig`
-- SCSS: `themes/flux/common/scss/flux/particles/_calendar.scss`
+- SCSS: `themes/flux/common/scss/flux/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### cards
 - YAML: `themes/flux/common/particles/cards.yaml`
@@ -2468,9 +2470,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/galatea/common/scss/galatea/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/galatea/common/particles/calendar.yaml`
-- Twig: `themes/galatea/common/particles/calendar.html.twig`
-- SCSS: `themes/galatea/common/scss/galatea/particles/_calendar.scss`
+- SCSS: `themes/galatea/common/scss/galatea/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### fixedheader
 - YAML: `themes/galatea/common/particles/fixedheader.yaml`
@@ -2565,9 +2566,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/gemini/common/scss/gemini/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/gemini/common/particles/calendar.yaml`
-- Twig: `themes/gemini/common/particles/calendar.html.twig`
-- SCSS: `themes/gemini/common/scss/gemini/particles/_calendar.scss`
+- SCSS: `themes/gemini/common/scss/gemini/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/gemini/common/particles/contenttabs.yaml`
@@ -2652,9 +2652,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/hadron/common/scss/hadron/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/hadron/common/particles/calendar.yaml`
-- Twig: `themes/hadron/common/particles/calendar.html.twig`
-- SCSS: `themes/hadron/common/scss/hadron/particles/_calendar.scss`
+- SCSS: `themes/hadron/common/scss/hadron/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/hadron/common/particles/contact.yaml`
@@ -2967,9 +2966,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/interstellar/common/scss/interstellar/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/interstellar/common/particles/calendar.yaml`
-- Twig: `themes/interstellar/common/particles/calendar.html.twig`
-- SCSS: `themes/interstellar/common/scss/interstellar/particles/_calendar.scss`
+- SCSS: `themes/interstellar/common/scss/interstellar/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/interstellar/common/particles/contenttabs.yaml`
@@ -3059,9 +3057,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/isotope/common/scss/isotope/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/isotope/common/particles/calendar.yaml`
-- Twig: `themes/isotope/common/particles/calendar.html.twig`
-- SCSS: `themes/isotope/common/scss/isotope/_calendar.scss`
+- SCSS: `themes/isotope/common/scss/isotope/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/isotope/common/particles/contact.yaml`
@@ -3166,9 +3163,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/koleti/common/scss/koleti/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/koleti/common/particles/calendar.yaml`
-- Twig: `themes/koleti/common/particles/calendar.html.twig`
-- SCSS: `themes/koleti/common/scss/koleti/particles/_calendar.scss`
+- SCSS: `themes/koleti/common/scss/koleti/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### fixedheader
 - YAML: `themes/koleti/common/particles/fixedheader.yaml`
@@ -3294,9 +3290,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/kraken/common/scss/kraken/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/kraken/common/particles/calendar.yaml`
-- Twig: `themes/kraken/common/particles/calendar.html.twig`
-- SCSS: `themes/kraken/common/scss/kraken/_calendar.scss`
+- SCSS: `themes/kraken/common/scss/kraken/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/kraken/common/particles/contact.yaml`
@@ -3386,9 +3381,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/lexicon/common/scss/lexicon/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/lexicon/common/particles/calendar.yaml`
-- Twig: `themes/lexicon/common/particles/calendar.html.twig`
-- SCSS: `themes/lexicon/common/scss/lexicon/particles/_calendar.scss`
+- SCSS: `themes/lexicon/common/scss/lexicon/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/lexicon/common/particles/contact.yaml`
@@ -3656,9 +3650,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/myriad/common/scss/myriad/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/myriad/common/particles/calendar.yaml`
-- Twig: `themes/myriad/common/particles/calendar.html.twig`
-- SCSS: `themes/myriad/common/scss/myriad/_calendar.scss`
+- SCSS: `themes/myriad/common/scss/myriad/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### casestudies
 - YAML: `themes/myriad/common/particles/casestudies.yaml`
@@ -3778,9 +3771,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/notio/common/scss/notio/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/notio/common/particles/calendar.yaml`
-- Twig: `themes/notio/common/particles/calendar.html.twig`
-- SCSS: `themes/notio/common/scss/notio/particles/_calendar.scss`
+- SCSS: `themes/notio/common/scss/notio/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### cards
 - YAML: `themes/notio/common/particles/cards.yaml`
@@ -4161,9 +4153,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/photon/common/scss/photon/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/photon/common/particles/calendar.yaml`
-- Twig: `themes/photon/common/particles/calendar.html.twig`
-- SCSS: `themes/photon/common/scss/photon/particles/_calendar.scss`
+- SCSS: `themes/photon/common/scss/photon/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/photon/common/particles/contenttabs.yaml`
@@ -4258,9 +4249,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/protean/common/scss/protean/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/protean/common/particles/calendar.yaml`
-- Twig: `themes/protean/common/particles/calendar.html.twig`
-- SCSS: `themes/protean/common/scss/protean/particles/_calendar.scss`
+- SCSS: `themes/protean/common/scss/protean/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/protean/common/particles/contenttabs.yaml`
@@ -4360,9 +4350,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/reiko/common/scss/reiko/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/reiko/common/particles/calendar.yaml`
-- Twig: `themes/reiko/common/particles/calendar.html.twig`
-- SCSS: `themes/reiko/common/scss/reiko/particles/_calendar.scss`
+- SCSS: `themes/reiko/common/scss/reiko/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### featuredvideos
 - YAML: `themes/reiko/common/particles/featuredvideos.yaml`
@@ -4498,9 +4487,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/remnant/common/scss/remnant/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/remnant/common/particles/calendar.yaml`
-- Twig: `themes/remnant/common/particles/calendar.html.twig`
-- SCSS: `themes/remnant/common/scss/remnant/particles/_calendar.scss`
+- SCSS: `themes/remnant/common/scss/remnant/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### eventlist
 - YAML: `themes/remnant/common/particles/eventlist.yaml`
@@ -4605,9 +4593,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/requiem/common/scss/requiem/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/requiem/common/particles/calendar.yaml`
-- Twig: `themes/requiem/common/particles/calendar.html.twig`
-- SCSS: `themes/requiem/common/scss/requiem/_calendar.scss`
+- SCSS: `themes/requiem/common/scss/requiem/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/requiem/common/particles/contact.yaml`
@@ -4717,9 +4704,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/salient/common/scss/salient/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/salient/common/particles/calendar.yaml`
-- Twig: `themes/salient/common/particles/calendar.html.twig`
-- SCSS: `themes/salient/common/scss/salient/_calendar.scss`
+- SCSS: `themes/salient/common/scss/salient/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/salient/common/particles/contact.yaml`
@@ -4819,9 +4805,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/sienna/common/scss/sienna/particles/_bookingform.scss`
 
 ### calendar
-- YAML: `themes/sienna/common/particles/calendar.yaml`
-- Twig: `themes/sienna/common/particles/calendar.html.twig`
-- SCSS: `themes/sienna/common/scss/sienna/particles/_calendar.scss`
+- SCSS: `themes/sienna/common/scss/sienna/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### gridcontent
 - YAML: `themes/sienna/common/particles/gridcontent.yaml`
@@ -5069,9 +5054,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/supra/common/scss/supra/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/supra/common/particles/calendar.yaml`
-- Twig: `themes/supra/common/particles/calendar.html.twig`
-- SCSS: `themes/supra/common/scss/supra/particles/_calendar.scss`
+- SCSS: `themes/supra/common/scss/supra/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/supra/common/particles/contenttabs.yaml`
@@ -5186,9 +5170,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/topaz/common/scss/topaz/particles/_bookblock.scss`
 
 ### calendar
-- YAML: `themes/topaz/common/particles/calendar.yaml`
-- Twig: `themes/topaz/common/particles/calendar.html.twig`
-- SCSS: `themes/topaz/common/scss/topaz/particles/_calendar.scss`
+- SCSS: `themes/topaz/common/scss/topaz/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### gridcontent
 - YAML: `themes/topaz/common/particles/gridcontent.yaml`
@@ -5263,9 +5246,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/vermilion/common/scss/vermilion/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/vermilion/common/particles/calendar.yaml`
-- Twig: `themes/vermilion/common/particles/calendar.html.twig`
-- SCSS: `themes/vermilion/common/scss/vermilion/particles/_calendar.scss`
+- SCSS: `themes/vermilion/common/scss/vermilion/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contact
 - YAML: `themes/vermilion/common/particles/contact.yaml`
@@ -5410,9 +5392,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/versla/common/scss/versla/particles/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/versla/common/particles/calendar.yaml`
-- Twig: `themes/versla/common/particles/calendar.html.twig`
-- SCSS: `themes/versla/common/scss/versla/particles/_calendar.scss`
+- SCSS: `themes/versla/common/scss/versla/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### contenttabs
 - YAML: `themes/versla/common/particles/contenttabs.yaml`
@@ -5522,9 +5503,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/xenon/common/scss/xenon/_blockcontent.scss`
 
 ### calendar
-- YAML: `themes/xenon/common/particles/calendar.yaml`
-- Twig: `themes/xenon/common/particles/calendar.html.twig`
-- SCSS: `themes/xenon/common/scss/xenon/_calendar.scss`
+- SCSS: `themes/xenon/common/scss/xenon/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### chartist
 - YAML: `themes/xenon/common/particles/chartist.yaml`
@@ -5649,9 +5629,8 @@ Generated mapping of Particle YAML, Twig, and SCSS files across the engine and a
 - SCSS: `themes/zenith/common/scss/zenith/particles/_bookblock.scss`
 
 ### calendar
-- YAML: `themes/zenith/common/particles/calendar.yaml`
-- Twig: `themes/zenith/common/particles/calendar.html.twig`
-- SCSS: `themes/zenith/common/scss/zenith/particles/_calendar.scss`
+- SCSS: `themes/zenith/common/scss/zenith/particles/_calendar.scss` (theme color/branding layer only)
+- YAML/Twig: inherited from core — `engines/common/nucleus/particles/calendar.{yaml,html.twig}`
 
 ### fixedheader
 - YAML: `themes/zenith/common/particles/fixedheader.yaml`

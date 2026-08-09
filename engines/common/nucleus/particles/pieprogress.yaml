@@ -11,7 +11,7 @@ form:
     title: {type: input.text, label: Particle Title}
     percentage: {type: input.number, label: Percentage, min: 0, max: 100, default: 75}
     duration: {type: input.number, label: Animation Duration, min: 0, default: 1800}
-    size: {type: input.number, label: Circle Size, min: 40, default: 180}
+    circlesize: {type: input.number, label: Circle Size, min: 40, default: 180}
     borderwidth: {type: input.number, label: Stroke Width, min: 1, default: 10}
     trackcolor: {type: input.colorpicker, label: Track Color, default: '#e5e5e5'}
     activecolor: {type: input.colorpicker, label: Active Color, default: '#3366ff'}
