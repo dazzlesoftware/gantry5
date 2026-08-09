@@ -37,6 +37,13 @@
     flex: 0 0 auto;
     color: var(--gheading-icon-color);
     -webkit-text-fill-color: var(--gheading-icon-color);
+}
+// Font Awesome's own base rule (.fa { font-size: inherit; }) has the same
+// specificity as a bare .g-heading-icon and loads after nucleus.css on most
+// themes, so it silently wins and the icon just inherits the heading's own
+// text size. Scoping to the parent raises specificity so ours always wins,
+// regardless of stylesheet load order.
+.g-heading .g-heading-icon {
     font-size: var(--gheading-icon-size);
 }
 .g-heading-icon:first-child {

@@ -3583,6 +3583,9 @@ input[type=submit] {
   flex: 0 0 auto;
   color: var(--gheading-icon-color);
   -webkit-text-fill-color: var(--gheading-icon-color);
+}
+
+.g-heading .g-heading-icon {
   font-size: var(--gheading-icon-size);
 }
 
