@@ -1,0 +1,32 @@
+// ---------------------------------------------------------------------------
+// Mobile Menu particle
+//
+// Plain container target that lives inside the layout's Offcanvas section
+// (the site's existing custom sliding panel, #g-offcanvas — see
+// assets/common/application/offcanvas/index.js), NOT a Bootstrap .offcanvas
+// component. The Menu particle flagged as `mobileTarget` is moved into this
+// container below the configured mobile-menu breakpoint by
+// assets/common/application/menu/index.js; compound-scope defensively so
+// theme-level CSS (loaded after nucleus.css) can still reliably override
+// these defaults.
+// ---------------------------------------------------------------------------
+
+#g-mobilemenu-container.g-mobilemenu {
+    .navbar-nav.g-toplevel {
+        flex-direction: column;
+    }
+
+    .dropdown-menu.g-dropdown {
+        position: static;
+        float: none;
+        width: 100%;
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+    }
+}
+
+#g-mobilemenu-container.g-mobilemenu.g-mobilemenu-custom {
+    background: var(--gmobilemenu-bg, inherit);
+    color: var(--gmobilemenu-color, inherit);
+}

@@ -454,3 +454,55 @@
     opacity: 1;
     height: 100vh;
 }
+
+// ---------------------------------------------------------------------------
+// Bootstrap 5 Navbar / Dropdown integration
+//
+// The Menu particle now renders real Bootstrap 5 markup (.navbar, .navbar-nav,
+// .nav-item, .nav-link, .dropdown / .dropend + .dropdown-menu / .dropdown-item
+// with data-bs-toggle="dropdown"). Bootstrap's own Dropdown JS toggles the
+// `.show` class on click; the rules below layer the legacy `.g-*` visual
+// language on top of the real components and add a pure-CSS hover-to-open
+// enhancement for non-touch pointers (no hand-rolled JS involved).
+// ---------------------------------------------------------------------------
+.g-main-nav.navbar {
+    flex-wrap: wrap;
+    padding: 0;
+
+    .navbar-nav.g-toplevel {
+        flex-direction: row;
+    }
+}
+
+// Nested (level > start level) dropdowns flow to the side via Bootstrap's
+// own `.dropend` helper instead of a hand-rolled positioning scheme.
+.g-main-nav {
+    .dropdown-menu.g-dropdown {
+        // `.g-main-nav .g-dropdown` already carries the legacy dropdown look
+        // (see the megamenu/standard rules above); Bootstrap only needs to
+        // own showing/hiding it via `.show`.
+        &:not(.show) {
+            display: none;
+        }
+        &.show {
+            display: block;
+        }
+    }
+
+    .g-menu-item.dropend > .dropdown-menu.g-dropdown.show {
+        top: 0;
+        left: 100%;
+    }
+}
+
+// Hover-to-open enhancement (desktop / non-touch only). Enabled per-instance
+// via the `hoverExpand` particle field, rendered as the `.g-hover-expand`
+// class on the `<nav>` element.
+@media (hover: hover) and (pointer: fine) {
+    .g-main-nav.g-hover-expand:not(.g-menu-hastouch) {
+        .g-menu-item.dropdown:hover > .dropdown-menu.g-dropdown,
+        .g-menu-item.dropend:hover > .dropdown-menu.g-dropdown {
+            display: block;
+        }
+    }
+}

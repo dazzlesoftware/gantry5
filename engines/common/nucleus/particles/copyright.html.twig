@@ -4,8 +4,15 @@
 {% set end_date = particle.date.end|trim in ['now', ''] ? 'now'|date('Y') : particle.date.end|e %}
 
 {% block particle %}
-    &copy;
+<div class="g-copyright {{ particle.css.class|e }}">
+    Copyright &copy;
     {% if (start_date != end_date) %}{{ start_date|e }} - {% endif %}
     {{ end_date|e }}
-    {{ particle.owner|raw }}
+    {% if particle.owner %}
+        {% if particle.link %}<a target="{{ particle.target|default('_blank')|e }}" href="{{ particle.link|e }}" title="{{ particle.owner|e }}">{% endif %}
+        {{ particle.owner|raw }}
+        {% if particle.link %}</a>{% endif %}
+    {% endif %}
+    {% if particle.additional.text is not empty %}<br />{{ particle.additional.text|raw }}{% endif %}
+</div>
 {% endblock %}

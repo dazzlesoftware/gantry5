@@ -31,3 +31,6 @@ form:
         .image: {type: input.imagepicker, label: Image}
         .imageshape: {type: select.select, label: Image Shape, default: rounded, options: {square: Square, rounded: Rounded, circle: Circle}}
         .content: {type: textarea.textarea, label: Content}
+        .link: {type: input.text, label: Link, description: Optional. Wraps the item title in a link when set.}
+        .target: {type: select.select, label: Link Target, default: _self, options: {_self: Current Window, _blank: New Window}}
+        .subtitle: {type: input.text, label: Subtitle, description: Optional secondary line shown after the title.}

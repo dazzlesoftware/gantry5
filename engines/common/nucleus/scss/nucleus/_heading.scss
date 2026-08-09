@@ -52,6 +52,9 @@
 .g-heading-icon:last-child {
     margin-left: var(--gheading-icon-gap);
 }
+.g-heading-subtitle {
+    margin: 0.5rem 0 0;
+}
 @media (max-width: 74.99rem) {
     .g-heading {
         font-size: var(--gheading-tablet-size);

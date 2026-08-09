@@ -80,3 +80,20 @@ form:
         .link:
           type: input.text
           label: Link
+
+        .class:
+          type: input.selectize
+          label: CSS Classes
+          description: CSS class name for the item.
+
+        .target:
+          type: select.select
+          label: Target
+          description: Override the particle-level target for this item only.
+          placeholder: 'Select...'
+          options:
+              '': None
+              _self: Self
+              _parent: Parent
+              _top: Top
+              _blank: New Window

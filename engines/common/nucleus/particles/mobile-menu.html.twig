@@ -1,5 +1,15 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-    <div id="g-mobilemenu-container" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"></div>
+    {# This particle is only ever the container target that "menu breakpoint" JS
+       (assets/common/application/menu/index.js) moves the real Menu particle's
+       .g-toplevel markup into on mobile. It already lives inside the layout's
+       Offcanvas section, which is its own sliding panel (#g-offcanvas, driven by
+       assets/common/application/offcanvas/index.js and the header's
+       data-offcanvas-toggle button) — NOT a Bootstrap .offcanvas component. Wrapping
+       this in a real Bootstrap .offcanvas (as a prior pass did) leaves it
+       visibility:hidden forever, since nothing ever adds Bootstrap's own .show class
+       to it: the legacy outer panel slides into view but the menu items inside stay
+       invisible. Keep this a plain container. #}
+    <div id="g-mobilemenu-container" class="g-mobilemenu" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"></div>
 {% endblock %}

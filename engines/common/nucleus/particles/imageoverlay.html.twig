@@ -2,7 +2,10 @@
 {% block particle %}
   {% do genesis.load('bootstrap.5') %}
   {% set lightbox_enabled = particle.lightbox|default('disable') == 'enable' and particle.image %}
-  <article class="g-image-overlay g-overlay-position-{{ particle.contentposition|default('center')|e }} g-overlay-hover-{{ particle.showonhover|default('disable')|e }} g-overlay-animation-{{ particle.animation|default('zoom')|e }} {{ particle.class|e }}" style="--gio-image:url('{{ particle.image ? url(particle.image)|e('html_attr') : '' }}');--gio-height:{{ particle.height|default(420)|e('html_attr') }}px;--gio-padding:{{ particle.padding|default('2rem')|e('html_attr') }};--gio-overlay:{{ particle.overlay|default('rgba(0,0,0,.35)')|e('html_attr') }};--gio-hover-overlay:{{ particle.hoveroverlay|default('rgba(0,0,0,.6)')|e('html_attr') }};--gio-title-color:{{ particle.titlecolor|default('#fff')|e('html_attr') }};--gio-subtitle-color:{{ particle.subtitlecolor|default('#fff')|e('html_attr') }};--gio-radius:{{ particle.radius|default(0)|e('html_attr') }}px;">
+  <article class="g-image-overlay g-overlay-position-{{ particle.contentposition|default('center')|e }} g-overlay-hover-{{ particle.showonhover|default('disable')|e }} g-overlay-animation-{{ particle.animation|default('zoom')|e }} {{ particle.class|e }}" style="--gio-image:url('{{ particle.image ? url(particle.image)|e('html_attr') : '' }}');--gio-height:{{ particle.height|default(420)|e('html_attr') }}px;--gio-padding:{{ particle.padding|default('2rem')|e('html_attr') }};--gio-overlay:{{ particle.overlay|default('rgba(0,0,0,.35)')|e('html_attr') }};--gio-hover-overlay:{{ particle.hoveroverlay|default('rgba(0,0,0,.6)')|e('html_attr') }};--gio-title-color:{{ particle.titlecolor|default('#fff')|e('html_attr') }};--gio-subtitle-color:{{ particle.subtitlecolor|default('#fff')|e('html_attr') }};--gio-radius:{{ particle.radius|default(0)|e('html_attr') }}px;--gio-tag-color:{{ particle.tagcolor|default('#ffffff')|e('html_attr') }};--gio-tag-bg:{{ particle.tagbackground|default('#3366ff')|e('html_attr') }};">
+    {% if particle.tag %}
+      <span class="g-image-overlay-tag">{{ particle.tag|e }}</span>
+    {% endif %}
     {% if lightbox_enabled %}
       <a class="g-image-overlay-link" href="{{ url(particle.image)|e }}" data-genesis-lightbox="image" data-lightbox-title="{{ particle.title|e('html_attr') }}" aria-label="Open {{ particle.title|default('image')|e }} in lightbox">
       </a>
@@ -38,6 +41,9 @@
       {% endif %}
     </div>
   </article>
+  {% if particle.desc %}
+    <div class="g-image-overlay-desc">{{ particle.desc|raw }}</div>
+  {% endif %}
 {% endblock %}
 {% block javascript_footer %}
   {% do genesis.document.addScript(url('genesis-assets://js/genesis-media-lightbox.js'),11,'footer') %}

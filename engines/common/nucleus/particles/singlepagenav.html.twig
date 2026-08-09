@@ -6,23 +6,22 @@
     'use strict';
 
     const navigation = document.querySelector('{{ particle.section|default("#g-navigation") }}');
-    if (!navigation || navigation.dataset.singlePageNavReady) return;
+    if (!navigation || navigation.dataset.singlePageNavReady || typeof bootstrap === 'undefined' || !bootstrap.ScrollSpy) return;
     navigation.dataset.singlePageNavReady = 'true';
+
+    if (!navigation.id) navigation.id = 'g-singlepagenav-' + Math.random().toString(36).slice(2, 8);
 
     const excluded = '{{ particle.class|e("js") }}';
     const currentClass = '{{ particle.currentClass|default("current")|e("js") }}';
     const duration = {{ particle.speed|default(400) }};
+    const updateHash = {{ particle.updateHash == "enabled" ? 'true' : 'false' }};
     const offset = {% if particle.offset == "enabled" %}document.getElementById('g-navigation')?.offsetHeight || 0{% else %}0{% endif %};
+
     const links = [...navigation.querySelectorAll('a[href^="#"]')]
         .filter((link) => !excluded || !link.matches(excluded));
-    const targets = links
-        .map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))))
-        .filter(Boolean);
 
-    const select = (target) => {
-        links.forEach((link) => link.classList.toggle(currentClass, link.hash === '#' + target.id));
-    };
-
+    // Smooth-scroll on click with configurable speed/easing: Bootstrap's Scrollspy only
+    // tracks and highlights the active link, it does not animate the scroll itself.
     navigation.addEventListener('click', (event) => {
         const link = event.target.closest('a[href^="#"]');
         if (!link || !links.includes(link)) return;
@@ -41,22 +40,28 @@
             if (progress < 1) requestAnimationFrame(scroll);
         };
         requestAnimationFrame(scroll);
-        select(target);
-        {% if particle.updateHash == "enabled" %}
-        history.pushState(null, '', link.hash);
-        {% endif %}
+        if (updateHash) history.pushState(null, '', link.hash);
     });
 
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            const visible = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-            if (visible) select(visible.target);
-        }, { rootMargin: `-${offset}px 0px -55% 0px`, threshold: [0.1, 0.5, 1] });
-        targets.forEach((target) => observer.observe(target));
+    // Bootstrap's own Scrollspy drives the active-section tracking (data-bs-spy/data-bs-target,
+    // .active class management) — no hand-rolled IntersectionObserver needed any more.
+    document.body.setAttribute('data-bs-spy', 'scroll');
+    document.body.setAttribute('data-bs-target', '#' + navigation.id);
+    document.body.setAttribute('data-bs-offset', offset);
+    new bootstrap.ScrollSpy(document.body, {
+        target: '#' + navigation.id,
+        offset,
+    });
+
+    // Bootstrap always toggles its own hardcoded "active" class; mirror that onto the
+    // particle's configurable currentClass for themes/links that key off it instead.
+    if (currentClass && currentClass !== 'active') {
+        document.body.addEventListener('activate.bs.scrollspy', (event) => {
+            links.forEach((link) => {
+                link.classList.toggle(currentClass, link.hash === event.relatedTarget);
+            });
+        });
     }
 })();
 </script>
 {% endblock %}
-

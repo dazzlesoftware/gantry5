@@ -1,38 +1,20 @@
+// Structural/behavioral baseline for the tabbedcards particle. The tab nav
+// and panels are real Bootstrap 5 .nav/.nav-tabs/.tab-content/.tab-pane
+// markup driven by Bootstrap's own Tab JS — these rules only add layout
+// (top/left/right nav position, card grid) on top of Bootstrap's own styling.
 .g-tabbedcards-layout {
     display: flex;
     gap: 1.5rem;
 }
 
 .g-tabbedcards-tabs {
-    display: flex;
     flex-wrap: wrap;
     gap: 0.25rem;
-}
-
-.g-tabbedcards-tab {
-    appearance: none;
-    background: transparent;
-    border: 0;
-    color: inherit;
-    cursor: pointer;
-    font: inherit;
-    font-weight: 700;
-    padding: 0.35rem 0.65rem;
-    text-align: inherit;
-}
-
-.g-tabbedcards-tab[aria-selected="true"] {
-    background: var(--g-tabbedcards-active-background, #333);
-    color: var(--g-tabbedcards-active-color, #fff);
 }
 
 .g-tabbedcards-panels {
     flex: 1 1 auto;
     min-width: 0;
-}
-
-.g-tabbedcards-panel[hidden] {
-    display: none;
 }
 
 .g-tabbedcards-grid {

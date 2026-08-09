@@ -6,9 +6,19 @@
 <div class="{{ particle.css.class|e }} g-particle">
     <div class="g-totop">
         <a href="#" id="g-totop" rel="nofollow"{% if linkTitle %} title="{{ linkTitle }}" aria-label="{{ linkTitle }}"{% endif %}>
+            {% if particle.iconposition == 'after' %}
+            <span class="g-totop-text">
+                {% if particle.content %}{{ particle.content|raw }}{% endif %}
+                {% if not particle.icon and not particle.content %}To Top{% endif %}
+            </span>
             {% if particle.icon %}<i class="{{ particle.icon }}"></i>{% endif %}
-            {% if particle.content %}{{ particle.content|raw }}{% endif %}
-            {% if not particle.icon and not particle.content %}To Top{% endif %}
+            {% else %}
+            {% if particle.icon %}<i class="{{ particle.icon }}"></i>{% endif %}
+            <span class="g-totop-text">
+                {% if particle.content %}{{ particle.content|raw }}{% endif %}
+                {% if not particle.icon and not particle.content %}To Top{% endif %}
+            </span>
+            {% endif %}
         </a>
     </div>
 </div>

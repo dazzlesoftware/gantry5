@@ -1,33 +1,37 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
+    {% do genesis.load('bootstrap.5') %}
     <section id="g-tabbedcards-{{ id }}" class="g-tabbedcards g-tabbedcards-tabs-{{ particle.tab_position|default('top')|e }} {{ particle.class|e }}">
         {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
         {% if particle.description %}<div class="g-tabbedcards-description">{{ particle.description|raw }}</div>{% endif %}
 
         <div class="g-tabbedcards-layout">
-            <div class="g-tabbedcards-tabs" role="tablist" aria-label="{{ particle.title|default('Tabbed cards')|e('html_attr') }}">
+            <ul class="nav nav-tabs g-tabbedcards-tabs" id="g-tabbedcards-nav-{{ id }}" role="tablist" aria-label="{{ particle.title|default('Tabbed cards')|e('html_attr') }}">
                 {% for tab in particle.tabs|default([]) %}
-                    <button
-                        id="g-tabbedcards-tab-{{ id }}-{{ loop.index }}"
-                        class="g-tabbedcards-tab"
-                        type="button"
-                        role="tab"
-                        aria-controls="g-tabbedcards-panel-{{ id }}-{{ loop.index }}"
-                        aria-selected="{{ loop.first ? 'true' : 'false' }}"
-                        tabindex="{{ loop.first ? '0' : '-1' }}"
-                    >{{ tab.title|e }}</button>
+                    <li class="nav-item" role="presentation">
+                        <button
+                            id="g-tabbedcards-tab-{{ id }}-{{ loop.index }}"
+                            class="nav-link{% if loop.first %} active{% endif %}"
+                            type="button"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#g-tabbedcards-panel-{{ id }}-{{ loop.index }}"
+                            aria-controls="g-tabbedcards-panel-{{ id }}-{{ loop.index }}"
+                            aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                        >{{ tab.title|e }}</button>
+                    </li>
                 {% endfor %}
-            </div>
+            </ul>
 
-            <div class="g-tabbedcards-panels">
+            <div class="tab-content g-tabbedcards-panels">
                 {% for tab in particle.tabs|default([]) %}
                     <div
                         id="g-tabbedcards-panel-{{ id }}-{{ loop.index }}"
-                        class="g-tabbedcards-panel {{ tab.class|e }}"
+                        class="tab-pane fade{% if loop.first %} show active{% endif %} g-tabbedcards-panel {{ tab.class|e }}"
                         role="tabpanel"
                         aria-labelledby="g-tabbedcards-tab-{{ id }}-{{ loop.index }}"
-                        {% if not loop.first %}hidden{% endif %}
+                        tabindex="0"
                     >
                         <div class="g-tabbedcards-grid g-tabbedcards-columns-{{ particle.columns|default(3)|e }}">
                             {% for card in tab.cards|default([]) %}
@@ -62,38 +66,3 @@
         </div>
     </section>
 {% endblock %}
-
-{% block javascript_footer %}
-<script>
-(() => {
-    const root = document.getElementById('g-tabbedcards-{{ id }}');
-    if (!root || root.dataset.tabbedCardsReady) return;
-    root.dataset.tabbedCardsReady = 'true';
-    const tabs = [...root.querySelectorAll('[role="tab"]')];
-    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
-
-    const select = (selected, focus = false) => {
-        tabs.forEach((tab, index) => {
-            const active = index === selected;
-            tab.setAttribute('aria-selected', String(active));
-            tab.tabIndex = active ? 0 : -1;
-            if (panels[index]) panels[index].hidden = !active;
-        });
-        if (focus) tabs[selected]?.focus();
-    };
-
-    tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => select(index));
-        tab.addEventListener('keydown', (event) => {
-            if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
-            event.preventDefault();
-            const previous = ['ArrowLeft', 'ArrowUp'].includes(event.key);
-            const target = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1
-                : (index + (previous ? -1 : 1) + tabs.length) % tabs.length;
-            select(target, true);
-        });
-    });
-})();
-</script>
-{% endblock %}
-

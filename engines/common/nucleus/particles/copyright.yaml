@@ -32,3 +32,28 @@ form:
       type: input.text
       label: Copyright owner
       description: Add copyright owner name.
+
+    link:
+      type: input.text
+      label: Owner Link
+      description: Add a link for the owner. Leave blank to omit.
+
+    target:
+      type: select.select
+      label: Owner Link Target
+      description: Target browser window when the owner link is clicked.
+      placeholder: 'Select...'
+      default: _blank
+      options:
+          _parent: Self
+          _blank: New Window
+
+    additional.text:
+      type: input.text
+      label: Additional Text
+      description: Additional text to display below the copyright line. Leave blank to omit.
+
+    css.class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.

@@ -10,12 +10,22 @@
     {% set navigationEnabled = navigationValue in ['enable', 'enabled', 'true', '1'] %}
     {% set paginationEnabled = paginationValue in ['enable', 'enabled', 'true', '1'] %}
 
+    {% if particle.footerShadow == 'enable' %}
+        {% styles with { priority: -10 } %}
+            <style>
+                #g-swipercarousel-{{ id }} .g-swipercarousel-item-img::after {
+                    background: linear-gradient(rgba(0, 0, 0, 0), {{ particle.footerShadowColor|default('#ffffff') }});
+                }
+            </style>
+        {% endstyles %}
+    {% endif %}
+
     <div class="{{ particle.class|e }}">
         {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
 
         <div
             id="g-swipercarousel-{{ id }}"
-            class="g-swipercarousel swiper {% if particle.imageOverlay == 'enable' %}has-color-overlay{% endif %}"
+            class="g-swipercarousel swiper {{ particle.width|default('g-swipercarousel-fullwidth')|e }} {% if particle.imageOverlay == 'enable' %}has-color-overlay{% endif %}"
             data-g-swiper
             data-slides-per-view="{{ particle.displayitems|default(1)|e }}"
             data-navigation="{{ particle.nav|default('disable')|e }}"

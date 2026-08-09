@@ -19,6 +19,18 @@ form:
       description: Globally enable the particle.
       default: true
 
+    title:
+      type: input.text
+      label: Title
+      description: Customize the title text. Leave blank to omit.
+      placeholder: Enter title
+
+    titletag:
+      type: input.text
+      label: Title Tagline
+      description: Customize the title tagline text, shown after the title. Leave blank to omit.
+      placeholder: Enter title tagline
+
     html:
       type: textarea.textarea
       label: Custom HTML

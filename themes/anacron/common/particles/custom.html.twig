@@ -1,9 +1,0 @@
-{% extends '@nucleus/partials/particle.html.twig' %}
-
-{% block particle %}
-
-{% if particle.title %}<h2 class="title">{{ particle.title|html|raw }}</h2>{% endif %}
-
-    {% set html = particle.twig ? genesis.theme.compile(particle.html) : particle.html %}
-    {{ (particle.filter ? genesis.platform.filter(html) : html)|html|raw }}
-{% endblock %}

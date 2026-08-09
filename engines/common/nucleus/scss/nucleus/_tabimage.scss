@@ -1,0 +1,17 @@
+// Structural baseline for the tabimage particle. The tab nav and panels are
+// real Bootstrap 5 .nav/.nav-tabs/.tab-content/.tab-pane markup driven by
+// Bootstrap's own Tab JS. Per-item image/overlay/tag styling (.g-tab-image,
+// .g-tab-image-overlay, .g-tag, .g-small, etc.) is theme-specific and lives in
+// each theme's own _tabimage.scss (see themes/*/common/scss/*/_tabimage.scss),
+// which is compiled and loaded after this file. Keep this file free of theme
+// variables — it compiles standalone into nucleus.css, without any theme's
+// config in scope.
+.g-tabimage-nav {
+    margin-bottom: 1.5rem;
+}
+
+.g-tabimage-panels {
+    .g-tab-image {
+        margin-bottom: 1rem;
+    }
+}

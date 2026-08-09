@@ -5,7 +5,7 @@
         {# Load Content From Joomla #}
         {% set category_options = particle.jcategories ? {id: [particle.jcategories|split(','), 0]} : {} %}
         {% set categories_finder = joomla.finder('category', category_options).published(1).language().find() %}
-        {% set article_finder = joomla.finder('content').category(categories_finder).published(1).language() %}
+        {% set article_finder = joomla.finder('content').category(categories_finder).published(1).featured(false).language() %}
         {% set items = article_finder.order('publish_up', 'ASC').limit(particle.jarticles|default('1')).start(0).find() %}
     {% else %}
         {# Load Content From Particle #}

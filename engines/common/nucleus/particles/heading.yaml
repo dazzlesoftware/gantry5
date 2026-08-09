@@ -9,6 +9,7 @@ form:
     enabled: {type: input.checkbox, label: Enabled, default: true}
     class: {type: input.selectize, label: CSS Classes}
     text: {type: textarea.textarea, label: Heading Text, default: 'This is a heading'}
+    subtitle: {type: textarea.textarea, label: Subtitle, description: Optional secondary line shown below the heading. Leave empty to omit.}
     element: {type: select.select, label: HTML Element, default: h3, options: {h1: H1, h2: H2, h3: H3, h4: H4, h5: H5, h6: H6, div: DIV}}
     link: {type: input.text, label: Link}
     target: {type: select.select, label: Link Target, default: _self, options: {_self: Current Window, _blank: New Window}}

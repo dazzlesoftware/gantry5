@@ -67,6 +67,7 @@
 }
 
 .g-timeline-date { color: var(--gtl-date); }
+.g-timeline-subtitle { opacity: 0.75; margin-top: -0.25rem; margin-bottom: 0.5rem; }
 .g-timeline-image { width: 100%; margin-bottom: 1rem; }
 .g-timeline-image.g-image-rounded { border-radius: 0.5rem; }
 .g-timeline-image.g-image-circle { border-radius: 50%; aspect-ratio: 1; object-fit: cover; }

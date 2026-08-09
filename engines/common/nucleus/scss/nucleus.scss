@@ -27,6 +27,7 @@ $output-bourbon-deprecation-warnings: false;
 
 // Navigation
 @import "nucleus/nav";
+@import "nucleus/mobilemenu";
 
 // Typography
 @import "nucleus/typography";
@@ -46,6 +47,9 @@ $output-bourbon-deprecation-warnings: false;
 
 // Tabbed Cards
 @import "nucleus/tabbedcards";
+
+// Tab Image
+@import "nucleus/tabimage";
 @import "nucleus/imagecarousel";
 
 // Text Block

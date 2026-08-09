@@ -60,6 +60,33 @@ form:
       label: Text
       description: Input logo description text.
 
+    tagline:
+      type: input.text
+      label: Tagline
+      description: Optional secondary line shown under/after the text, e.g. a site slogan. Leave empty to omit.
+
+    readmore_label:
+      type: input.text
+      label: Read More Label
+      description: Optional call-to-action link shown after the logo. Leave empty to omit.
+
+    readmore_link:
+      type: input.text
+      label: Read More Link
+
+    readmore_target:
+      type: select.select
+      label: Read More Target
+      default: _self
+      options:
+          _self: Same Frame (default)
+          _parent: Parent Frame
+          _blank: New Window or Tab
+
+    readmore_class:
+      type: input.selectize
+      label: Read More CSS Classes
+
     class:
       type: input.selectize
       label: CSS Classes

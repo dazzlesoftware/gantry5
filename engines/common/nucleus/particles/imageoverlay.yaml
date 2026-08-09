@@ -24,9 +24,13 @@ form:
     subtitlecolor: {type: input.colorpicker, label: Subtitle Color, default: '#ffffff'}
     overlay: {type: input.colorpicker, label: Overlay Color, default: 'rgba(0,0,0,0.35)'}
     hoveroverlay: {type: input.colorpicker, label: Hover Overlay Color, default: 'rgba(0,0,0,0.6)'}
+    tag: {type: input.text, label: Tag, description: 'Optional small badge shown over the top corner of the image (e.g. "New", "Featured"). Leave empty to omit.'}
+    tagcolor: {type: input.colorpicker, label: Tag Text Color, default: '#ffffff'}
+    tagbackground: {type: input.colorpicker, label: Tag Background Color, default: '#3366ff'}
     link: {type: input.text, label: Container Link}
     lightbox: {type: select.select, label: Open Image in Lightbox, default: disable, options: {enable: Enable, disable: Disable}}
     buttontext: {type: input.text, label: Button Text}
     buttonlink: {type: input.text, label: Button Link}
     buttonstyle: {type: select.select, label: Bootstrap Button Style, default: light, options: {primary: Primary, secondary: Secondary, success: Success, danger: Danger, warning: Warning, info: Info, light: Light, dark: Dark}}
     radius: {type: input.number, label: Border Radius, min: 0, default: 0}
+    desc: {type: textarea.textarea, label: Description, description: 'Optional text shown below the image, outside the overlay. Leave empty to omit.'}

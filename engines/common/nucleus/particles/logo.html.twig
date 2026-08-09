@@ -17,5 +17,13 @@
         {% else %}
             {{ particle.text|default('Logo') }}
         {% endif %}
+        {% if particle.tagline %}<span class="g-logo-tagline">{{ particle.tagline|e }}</span>{% endif %}
     {% if particle.link == true %}</a>{% else %}</div>{% endif %}
+    {% if particle.readmore_label %}
+        <div class="g-logo-readmore-container">
+            <a target="{{ particle.readmore_target|default('_self')|e }}" href="{{ particle.readmore_link|e }}" class="g-logo-readmore {{ particle.readmore_class|e }}">
+                {{ particle.readmore_label|raw }}
+            </a>
+        </div>
+    {% endif %}
 {% endblock %}

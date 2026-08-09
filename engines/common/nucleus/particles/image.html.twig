@@ -8,6 +8,7 @@
       </{{ particle.heading|default('h3')|e }}>
     {% endif %}
     {% if particle.image %}
+      {% if particle.wrapper %}<div class="img-wrapper">{% endif %}
       {% if particle.lightbox|default('disable') == 'enable' %}
         <a class="g-image-frame g-shape-{{ particle.shape|default('none')|e }} g-effect-{{ particle.effect|default('none')|e }} g-zoom-{{ particle.zoom|default('disable')|e }}" href="{{ url(particle.image)|e }}" data-genesis-lightbox="image" data-lightbox-title="{{ particle.imagetitle|default(particle.title)|e('html_attr') }}">
         {% elseif particle.link %}
@@ -26,6 +27,7 @@
           </span>
         {% endif %}
       {% endif %}
+      {% if particle.wrapper %}</div>{% endif %}
       {% if particle.title and particle.titleposition|default('before') == 'after' %}
         <{{ particle.heading|default('h3')|e }} class="g-title">
           {{ particle.title|raw }}

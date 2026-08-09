@@ -17,13 +17,13 @@ form:
     section:
       type: input.text
       label: Section
-      description: Define the ID or class of the section where you want to target the single page nav.
+      description: Define the ID or class of the nav container to target (must be a Bootstrap `.nav`/`.list-group` component whose links use the `.nav-link`, `.list-group-item` or `.dropdown-item` class) so Bootstrap's Scrollspy can track it.
       default: '#g-navigation'
 
     offset:
       type: select.select
       label: Offset
-      description: Enable or disable offset (best used for fixed header nav).
+      description: Enable or disable offset (best used for fixed header nav). Passed to Bootstrap Scrollspy as `data-bs-offset`.
       default: enabled
       options:
         enabled: Enable
@@ -32,7 +32,7 @@ form:
     currentClass:
       type: input.text
       label: Current Class
-      description: The class to apply to the link in the nav bar corresponding to the active section on the page.
+      description: An additional class to apply (alongside Bootstrap's own `active` class) to the link in the nav bar corresponding to the active section on the page.
       default: 'current'
 
     updateHash:

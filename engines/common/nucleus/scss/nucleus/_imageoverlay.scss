@@ -37,6 +37,19 @@
     z-index: 1;
     inset: 0;
 }
+.g-image-overlay-tag {
+    position: absolute;
+    z-index: 2;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: var(--gio-tag-bg);
+    color: var(--gio-tag-color);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
 .g-image-overlay-content {
     position: relative;
     z-index: 2;
