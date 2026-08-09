@@ -21,7 +21,7 @@
     {% set rating = particle.rating|default(5) %}
     <section id="g-testimonial-{{ id }}" class="g-testimonial card border-0 {{ particle.class|e }}" style="--g-testimonial-align: {{ particle.alignment|default('left')|e }}; --g-testimonial-avatar-size: {{ particle.avatarsize|default(64)|e }}px; --g-testimonial-quote-size: {{ particle.quotesize|default(48)|e }}px; --g-testimonial-quote-color: {{ particle.quotecolor|default('#edeef2')|e }}; --g-testimonial-rating-color: {{ particle.ratingcolor|default('#f5a623')|e }}; --g-testimonial-unrated-color: {{ particle.unratedcolor|default('#d5d5d5')|e }};{% if particle.reviewcolor %} --g-testimonial-review-color: {{ particle.reviewcolor|e }};{% endif %}{% if particle.namecolor %} --g-testimonial-name-color: {{ particle.namecolor|e }};{% endif %}{% if particle.designationcolor %} --g-testimonial-designation-color: {{ particle.designationcolor|e }};{% endif %}">
         <div class="card-body">
-            {% if particle.title %}<{{ heading }} class="g-testimonial-title card-title">{{ particle.title|raw }}</{{ heading }}>{% endif %}
+            {% if particle.title %}<{{ heading }} class="card-title">{{ particle.title|raw }}</{{ heading }}>{% endif %}
             {% if particle.authorposition|default('bottom') == 'top' %}{{ testimonial.author(particle) }}{% endif %}
             <blockquote class="g-testimonial-quote mb-0">
                 {% if particle.showquote|default('enable') == 'enable' %}<span class="g-testimonial-quote-icon" aria-hidden="true">“</span>{% endif %}

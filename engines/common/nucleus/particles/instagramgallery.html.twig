@@ -33,7 +33,7 @@
       </div>
     {% endif %}
     {% if source == 'instagram' and not feed.success and particle.showfeederror|default('enable') == 'enable' %}
-      <div class="g-instagram-error alert alert-warning" role="status">
+      <div class="alert alert-warning" role="status">
         {{ feed.error|default('Instagram feed is unavailable.')|e }}
       </div>
     {% endif %}

@@ -29,7 +29,7 @@
                 {% for item in enabledItems %}
                     <article class="carousel-item{% if loop.first %} active{% endif %} {{ item.class|e }}">
                         <div class="g-imagecarousel-slide">
-                            {% if item.link %}<a class="g-imagecarousel-link" href="{{ item.link|e }}" target="{{ item.target|default('_self')|e }}"{% if item.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %}>{% endif %}
+                            {% if item.link %}<a href="{{ item.link|e }}" target="{{ item.target|default('_self')|e }}"{% if item.target|default('_self') == '_blank' %} rel="noopener noreferrer"{% endif %}>{% endif %}
                             {% if item.image %}<img class="g-imagecarousel-image d-block w-100" src="{{ url(item.image)|e }}" alt="{{ item.alt|default(item.title)|striptags|e }}"{% if not loop.first %} loading="lazy"{% endif %}>{% endif %}
                             {% if particle.overlay|default('enable') == 'enable' and layout in ['overlay', 'split'] %}<span class="g-imagecarousel-overlay" aria-hidden="true"></span>{% endif %}
                             {% if item.link %}</a>{% endif %}
@@ -37,7 +37,7 @@
                                 <div class="g-imagecarousel-caption carousel-caption">
                                     {% if item.title %}<h3>{{ item.title|raw }}</h3>{% endif %}
                                     {% if item.subtitle %}<h4>{{ item.subtitle|raw }}</h4>{% endif %}
-                                    {% if item.description %}<div class="g-imagecarousel-description">{{ item.description|raw }}</div>{% endif %}
+                                    {% if item.description %}<div>{{ item.description|raw }}</div>{% endif %}
                                 </div>
                             {% endif %}
                         </div>

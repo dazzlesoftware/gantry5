@@ -4,7 +4,7 @@
     {% do genesis.load('bootstrap.5') %}
     <section id="g-tabbedcards-{{ id }}" class="g-tabbedcards g-tabbedcards-tabs-{{ particle.tab_position|default('top')|e }} {{ particle.class|e }}">
         {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
-        {% if particle.description %}<div class="g-tabbedcards-description">{{ particle.description|raw }}</div>{% endif %}
+        {% if particle.description %}<div>{{ particle.description|raw }}</div>{% endif %}
 
         <div class="g-tabbedcards-layout">
             <ul class="nav nav-tabs g-tabbedcards-tabs" id="g-tabbedcards-nav-{{ id }}" role="tablist" aria-label="{{ particle.title|default('Tabbed cards')|e('html_attr') }}">

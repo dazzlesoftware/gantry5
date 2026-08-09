@@ -33,7 +33,7 @@
             {% else %}
                 <span class="g-animatedheading-words g-animatedheading-animation-{{ particle.animation|default('clip')|e }}">{% for word in words %}<span class="g-animatedheading-word{% if loop.first %} is-visible{% endif %}">{{ word|trim|raw }}</span>{% endfor %}</span>{% if particle.animation|default('clip') == 'clip' and particle.marker|default('line') != 'none' %}<span class="g-animatedheading-marker g-animatedheading-marker-{{ particle.marker|default('line')|e }}" aria-hidden="true">{% if particle.marker == 'icon' %}<i class="{{ particle.markericon|default('fa fa-pencil')|e }}"></i>{% endif %}</span>{% endif %}
             {% endif %}
-            {% if particle.after %} <span class="g-animatedheading-after">{{ particle.after|raw }}</span>{% endif %}
+            {% if particle.after %} <span>{{ particle.after|raw }}</span>{% endif %}
         </{{ particle.heading|default('h2') }}>
     </div>
 {% endblock %}

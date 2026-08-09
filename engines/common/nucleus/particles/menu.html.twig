@@ -126,7 +126,7 @@
                     {% if item.type == 'particle' %}
                         {{ self.displayParticle(item, context) }}
                     {% elseif item.type == 'heading' %}
-                        <span class="g-nav-header g-menu-item-content{{ isTopLevel ? '' : ' dropdown-header' }}"{{ title|raw }}>{{ self.displayTitle(item) }}</span>
+                        <span class="g-menu-item-content{{ isTopLevel ? '' : ' dropdown-header' }}"{{ title|raw }}>{{ self.displayTitle(item) }}</span>
                     {% else %}
                         <span class="g-separator g-menu-item-content"{{ title|raw }}>{{ self.displayTitle(item) }}</span>
                     {% endif %}
