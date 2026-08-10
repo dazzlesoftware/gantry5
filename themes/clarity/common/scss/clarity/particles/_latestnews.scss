@@ -11,21 +11,6 @@
         opacity: 1;
     }
 
-    // Header
-    .g-latestnews-header {
-        position: relative;
-        align-items: center;
-        margin-bottom: $content-padding;
-
-        @include breakpoint(mobile-only) {
-            margin: 0;
-        }
-
-        @include breakpoint(mobile-only) {
-            display: block;
-        }
-    }
-
     // Title
     .g-latestnews-title {
         display: block;
@@ -191,65 +176,6 @@
                     }
                 }
 
-                &.g-latestnews-layout-photo,
-                &.g-latestnews-layout-photo-large {
-                    .g-latestnews-grid-item-content {
-                        position: static;
-                        width: 100%;
-                        margin-left: 0;
-                        margin-right: 0;
-
-                        .g-latestnews-grid-item-title {
-                            font-size: $core-font-size + .4;
-                            line-height: $core-line-height - .06;
-
-                            @include breakpoint (desktop-range) {
-                                font-size: $core-font-size + .2;
-                            }
-
-                            @include breakpoint (tablet-range) {
-                                font-size: $core-font-size + .2;
-                            }
-
-                            @include breakpoint (small-mobile-range) {
-                                line-height: $core-line-height - .02;
-                            }
-
-                            span {
-                                color: $white;
-                            }
-                        }
-
-                        .g-latestnews-grid-item-case {
-                            position: absolute;
-                            top: 1rem;
-                            color: white;
-                            left: 1rem;
-                        }
-                    }
-
-                    .g-latestnews-grid-item-image {
-                        margin-bottom: $content-padding;
-
-                        img {
-                            border-radius: 5px;
-                        }
-
-                        .g-latestnews-grid-item-icons {
-                            font-weight: $font-weight-regular;
-                            font-size: $core-font-size - 0.1;
-                            position: absolute;
-                            bottom: 0;
-                            padding-left: 1rem;
-                            padding-bottom: 1rem;
-
-                            .g-latestnews-grid-item-icon {
-                                margin-right: $content-margin;
-                            }
-                        }
-                    }
-                }
-
                 &.g-latestnews-layout-text {
                     .g-latestnews-grid-item-content {
                         margin-top: 0;
@@ -293,18 +219,6 @@
                     text-align: right;
                 }
 
-                .g-latestnews-grid-item-title {
-                    font-weight: $font-weight-medium;
-                    @include responsive-font($responsive-font-size + 0.2, $core-font-size, false, false);
-                    & { margin-top: $content-margin - 0.3; }
-                    & { line-height: $core-line-height - 0.4; }
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-
-
                 // Date
                 .g-latestnews-grid-item-date {
                     margin-top: $content-margin * 1.5;
@@ -314,26 +228,6 @@
                     font-family: get-font-family($font-family-title);
                 }
 
-                .g-latestnews-grid-item-subtitle {
-                    color: $black;
-                    opacity: 0.3;
-                    font-weight: $font-weight-regular;
-                    margin-top: $content-margin;
-                    @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
-                }
-
-                .g-latestnews-grid-item-case {
-                    color: $black;
-                    @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
-                    & { font-weight: $font-weight-regular; }
-                    & { background: transparent; }
-                    & { display: inline-block; }
-                    & { letter-spacing: 3px; }
-                    & { clear: both; }
-                    & { margin-bottom: $content-margin - 0.3; }
-                    & { text-transform: uppercase; }
-                }
-
                 .g-latestnews-grid-item-description {
                     opacity: 0.8;
                     font-family: get-font-family($font-family-title);
@@ -341,25 +235,6 @@
                     @include responsive-font($responsive-font-size + .1, $core-font-size, false, false);
                 }
 
-                .g-latestnews-grid-item-button {
-                    display: block;
-                    margin-top: 5px;
-                    color: darken($base-text-color, 40%);
-                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-                }
-            }
-
-            &:hover {
-                .g-latestnews-grid-item-wrapper {
-                    .g-latestnews-grid-item-title {
-                        text-decoration: underline;
-                        text-decoration-color: inherit;
-                    }
-
-                    .g-latestnews-grid-item-button {
-                        text-decoration: underline;
-                    }
-                }
             }
         }
 

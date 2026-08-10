@@ -123,23 +123,6 @@
                 }
             }
         }
-
-        // 5 Columns
-        &.cols-5 {
-
-            .g-testimonials-grid-item,
-            .g-testimonials-grid-sizer {
-                width: 20%;
-
-                @include breakpoint(tablet-range) {
-                    width: 50%;
-                }
-
-                @include breakpoint(mobile-only) {
-                    width: 100%;
-                }
-            }
-        }
     }
 
     .g-testimonials-content {
