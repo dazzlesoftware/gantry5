@@ -1,0 +1,2038 @@
+version: 2
+preset:
+  image: genesis-admin://images/layouts/home.png
+  name: Particles 5
+  timestamp: 1786258805
+layout:
+  /header/:
+  - - system-messages-6948
+  - - logo-8575 25
+    - horizontalmenu-6051 75
+  /navigation/:
+  - - menu-1228
+  /slideshow/:
+  - - featuresslider-5358
+  /showcase/:
+  - - animatedheading-5300
+    - blocknumber-5301
+    - clients-5302
+  /feature/:
+  - - contenttabs-5400
+    - dynamictabs-5401
+    - genesisfeatures-5402
+    - icon-5403
+  /container-particles-5/:
+  - - mainbar 67:
+      - - animatedheading-5100
+      - - blocknumber-5101
+      - - clients-5102
+      - - contenttabs-5103
+      - - dynamictabs-5104
+      - - genesisfeatures-5105
+      - - icon-5106
+      - - imagegrid-5107
+      - - instagramgallery-5108
+      - - modal-5109
+      - - pricelist-5110
+      - - social-5111
+      - - swipercarousel-5112
+      - - testimonialcarousel-5113
+    - sidebar 33:
+      - - animatedheading-5200
+      - - blocknumber-5201
+      - - clients-5202
+      - - contenttabs-5203
+      - - dynamictabs-5204
+      - - genesisfeatures-5205
+      - - icon-5206
+      - - imagegrid-5207
+      - - instagramgallery-5208
+      - - modal-5209
+      - - pricelist-5210
+      - - social-5211
+      - - swipercarousel-5212
+      - - testimonialcarousel-5213
+  offcanvas:
+  - - mobile-menu-8876
+structure:
+  header:
+    attributes:
+      boxed: ''
+      class: g-home
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: g-home
+  slideshow:
+    type: section
+    attributes:
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      boxed: ''
+      class: particle-tests
+  feature:
+    type: section
+    attributes:
+      boxed: ''
+      class: particle-tests
+  mainbar:
+    type: section
+    attributes:
+      class: particle-tests
+  sidebar:
+    type: section
+    attributes:
+      class: particle-tests
+  container-particles-5:
+    attributes:
+      boxed: ''
+content:
+  logo-8575:
+    block:
+      class: g-logo-block
+  horizontalmenu-6051:
+    title: Top Menu
+    attributes:
+      target: _blank
+      text:
+      - text: Features
+        link: http://docs.genesis.org/genesis/basics/key-features
+        name: Features
+      - text: Genesis
+        link: http://www.genesis.org/
+        name: Genesis
+      - text: Particles
+        link: http://docs.genesis.org/genesis/particles
+        name: Particles
+      - text: Download
+        link: https://dazzlesoftware.org/joomla/templates/ambrosia
+        name: Download
+      - text: Support
+        link: https://dazzlesoftware.org/forum/joomla-template-ambrosia
+        name: Support
+  system-messages-6948:
+    block:
+      variations: nomarginall nopaddingall
+  featuresslider-5358:
+    title: Features Slider
+    attributes:
+      class: ''
+      title: ''
+      description: ''
+      animateIn: fadeIn
+      animateOut: fadeOut
+      nav: enabled
+      prevText: ''
+      nextText: ''
+      dots: disabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: disabled
+      items:
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: A fully flexible template experience via Genesis
+        desc: A powerful and versatile modern template framework
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: Built-in dropdown menu system with mobile support
+        desc: Options include multiple columns and inline particles/positions
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+      - image: genesis-media://demo/home/slideshow/img-01.jpg
+        title: Layout manager simplifies complex content setup
+        desc: Easy to use interface with many prebuilt layouts
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: button-3
+        name: New item
+    block:
+      id: slideshow-slider
+      class: flush
+      variations: center
+  menu-1228:
+    block:
+      class: g-ambrosia-menu
+  mobile-menu-8876:
+    title: Mobile Menu
+  animatedheading-5100:
+    title: Animatedheading — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      mode: animation
+      heading: h2
+      before: We create
+      after: Responsive particle test content for item 1.
+      words: 'websites
+
+        experiences
+
+        results'
+      animation: clip
+      highlighted: remarkable
+      shape: circle
+      headingcolor: '#7c4dff'
+      accentcolor: '#3366ff'
+      shapecolor: '#3366ff'
+      fontsize: 1
+      lineheight: 0
+      fontweight: inherit
+      headingfont: Responsive particle test content for item 1.
+      animatedfont: Responsive particle test content for item 1.
+      wordspacebefore: 12
+      wordspaceafter: 8
+      marker: line
+      markericon: fa fa-pencil
+      markercolor: '#3366ff'
+      markersize: 60
+      markerwidth: 3
+      markergap: 4
+      markeraftergap: 12
+      alignment: left
+      duration: 600
+      delay: 2500
+      shapewidth: 8
+      shaperounded: enable
+      marqueedirection: left
+      marqueespeed: 15
+      marqueegap: 40
+      pausehover: enable
+    block:
+      class: particle-test particle-test-animatedheading
+  animatedheading-5200:
+    title: Animatedheading — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      mode: animation
+      heading: h2
+      before: We create
+      after: Responsive particle test content for item 1.
+      words: 'websites
+
+        experiences
+
+        results'
+      animation: clip
+      highlighted: remarkable
+      shape: circle
+      headingcolor: '#7c4dff'
+      accentcolor: '#3366ff'
+      shapecolor: '#3366ff'
+      fontsize: 1
+      lineheight: 0
+      fontweight: inherit
+      headingfont: Responsive particle test content for item 1.
+      animatedfont: Responsive particle test content for item 1.
+      wordspacebefore: 12
+      wordspaceafter: 8
+      marker: line
+      markericon: fa fa-pencil
+      markercolor: '#3366ff'
+      markersize: 60
+      markerwidth: 3
+      markergap: 4
+      markeraftergap: 12
+      alignment: left
+      duration: 600
+      delay: 2500
+      shapewidth: 8
+      shaperounded: enable
+      marqueedirection: left
+      marqueespeed: 15
+      marqueegap: 40
+      pausehover: enable
+    block:
+      class: particle-test particle-test-animatedheading
+  blocknumber-5101:
+    title: Blocknumber — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      titleelement: h3
+      number: '01'
+      heading: Block heading
+      text: Add your block content here.
+      layout: left
+      alignment: left
+      numberfont: Responsive particle test content for item 1.
+      numbersize: 24
+      numberboxsize: 70
+      numbercolor: '#ffffff'
+      numberbackground: '#3366ff'
+      numberborderwidth: 0
+      numberborderstyle: solid
+      numberbordercolor: '#3366ff'
+      numberradius: 50
+      gap: 20
+      headingfont: Responsive particle test content for item 1.
+      headingsize: 24
+      headingcolor: '#222222'
+      headingmargin: 0 0 10px
+      textfont: Responsive particle test content for item 1.
+      textsize: 16
+      textcolor: '#555555'
+    block:
+      class: particle-test particle-test-blocknumber
+  blocknumber-5201:
+    title: Blocknumber — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      titleelement: h3
+      number: '01'
+      heading: Block heading
+      text: Add your block content here.
+      layout: left
+      alignment: left
+      numberfont: Responsive particle test content for item 1.
+      numbersize: 24
+      numberboxsize: 70
+      numbercolor: '#ffffff'
+      numberbackground: '#3366ff'
+      numberborderwidth: 0
+      numberborderstyle: solid
+      numberbordercolor: '#3366ff'
+      numberradius: 50
+      gap: 20
+      headingfont: Responsive particle test content for item 1.
+      headingsize: 24
+      headingcolor: '#222222'
+      headingmargin: 0 0 10px
+      textfont: Responsive particle test content for item 1.
+      textsize: 16
+      textcolor: '#555555'
+    block:
+      class: particle-test particle-test-blocknumber
+  clients-5102:
+    title: Clients — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      heading: h3
+      titlefont: Responsive particle test content for item 1.
+      titlesize: 28
+      titlecolor: '#222222'
+      titlemarginbottom: 24
+      alignment: center
+      mode: grid
+      desktopitems: 4
+      tabletitems: 3
+      mobileitems: 2
+      gap: 20
+      itempadding: 15
+      logoheight: 100
+      logowidth: 220
+      grayscale: 0
+      opacity: 100
+      removefilter: disable
+      scalehover: disable
+      scale: 1.05
+      transition: 300
+      itembackground: transparent
+      itemborder: hide
+      itemborderwidth: 1
+      itembordercolor: '#dddddd'
+      itemradius: 0
+      autoplay: disable
+      pausehover: enable
+      loop: enable
+      randomize: disable
+      interval: 3500
+      speed: 500
+      touch: enable
+      arrows: enable
+      arrowcolor: '#333333'
+      arrowbackground: '#ffffff'
+      arrowsize: 22
+      arrowboxsize: 44
+      arrowradius: 0
+      bullets: enable
+      bulletcolor: '#cccccc'
+      bulletactivecolor: '#3366ff'
+      bulletsize: 10
+      clients:
+      - title: Ambrosia Test Item 1
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 1.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 1
+      - title: Ambrosia Test Item 2
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 2.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 2
+      - title: Ambrosia Test Item 3
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 3.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-clients
+  clients-5202:
+    title: Clients — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      heading: h3
+      titlefont: Responsive particle test content for item 1.
+      titlesize: 28
+      titlecolor: '#222222'
+      titlemarginbottom: 24
+      alignment: center
+      mode: grid
+      desktopitems: 4
+      tabletitems: 3
+      mobileitems: 2
+      gap: 20
+      itempadding: 15
+      logoheight: 100
+      logowidth: 220
+      grayscale: 0
+      opacity: 100
+      removefilter: disable
+      scalehover: disable
+      scale: 1.05
+      transition: 300
+      itembackground: transparent
+      itemborder: hide
+      itemborderwidth: 1
+      itembordercolor: '#dddddd'
+      itemradius: 0
+      autoplay: disable
+      pausehover: enable
+      loop: enable
+      randomize: disable
+      interval: 3500
+      speed: 500
+      touch: enable
+      arrows: enable
+      arrowcolor: '#333333'
+      arrowbackground: '#ffffff'
+      arrowsize: 22
+      arrowboxsize: 44
+      arrowradius: 0
+      bullets: enable
+      bulletcolor: '#cccccc'
+      bulletactivecolor: '#3366ff'
+      bulletsize: 10
+      clients:
+      - title: Ambrosia Test Item 1
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 1.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 1
+      - title: Ambrosia Test Item 2
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 2.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 2
+      - title: Ambrosia Test Item 3
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        imagealt: Responsive particle test content for item 3.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-clients
+  contenttabs-5103:
+    title: Contenttabs — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Todays Highlights
+      animation: right
+      items:
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          ><img alt=\"Unique content with block variations\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\
+          \t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
+          \ href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\
+          \t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\
+          \t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\
+          \t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Color Picker with Hue &amp; Saturation options</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Chooser</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"\
+          g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Offset restrictions with unlimited positions</a>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"\
+          g-small\">Positions</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"\
+          g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">A range of Web Fonts\
+          \ with Live Preview</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Style</span></a> <span class=\"g-small\">Fonts</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"\
+          g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\
+          \t<a href=\"#\">Diversify content with unique typography</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Typography</span>\n\t\t\
+          \t</div>\n\t\t</div>\n\t</div>\n</div>"
+        title: News
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
+          \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t\
+          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block\
+          \ left\"><img alt=\"Insert inline blocks within the menu\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Utilize icons easily with Font Awesome</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t\
+          </div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t\
+          <div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Visual Menu Editor to improve control</a>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"\
+          g-small\">Editor</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"\
+          g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Multiple menu columns\
+          \ &amp; custom widths</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Menu</span></a> <span class=\"g-small\">Options</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"\
+          g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\
+          \t<a href=\"#\">Intuitive interface for Genesis framework</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Genesis</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n</div>"
+        title: Games
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
+          \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          ><img alt=\"Multiple content providers\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"\
+          g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
+          \ content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\"\
+          >\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\"\
+          >\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\"\
+          >Programmable stylesheets with SCSS</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"\
+          #\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">SCSS CSS</span>\n\t\t\t</div>\n\t\t</div>\n\t\
+          </div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Built with the PHP templating engine Twig</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">Twig</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"\
+          g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Human readable configuration files</a>\n\t\t\t</div>\n\t\t\t<div\
+          \ class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\"\
+          >YAML Config</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\"\
+          >\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Responsive layout with mobile support</a>\n\
+          \t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Layout</span></a>\
+          \ <span class=\"g-small\">Responsive</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+        title: Articles
+    block:
+      id: mainbar-tabs
+      class: nopaddingall
+  contenttabs-5203:
+    title: Contenttabs — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Todays Highlights
+      animation: right
+      items:
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          ><img alt=\"Unique content with block variations\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\
+          \t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
+          \ href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\
+          \t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\
+          \t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\
+          \t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Color Picker with Hue &amp; Saturation options</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Chooser</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"\
+          g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Offset restrictions with unlimited positions</a>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"\
+          g-small\">Positions</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"\
+          g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">A range of Web Fonts\
+          \ with Live Preview</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Style</span></a> <span class=\"g-small\">Fonts</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"\
+          g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\
+          \t<a href=\"#\">Diversify content with unique typography</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Typography</span>\n\t\t\
+          \t</div>\n\t\t</div>\n\t</div>\n</div>"
+        title: News
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
+          \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t\
+          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block\
+          \ left\"><img alt=\"Insert inline blocks within the menu\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Utilize icons easily with Font Awesome</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t\
+          </div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t\
+          <div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Visual Menu Editor to improve control</a>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"\
+          g-small\">Editor</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"\
+          g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Multiple menu columns\
+          \ &amp; custom widths</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Menu</span></a> <span class=\"g-small\">Options</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"\
+          g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\
+          \t<a href=\"#\">Intuitive interface for Genesis framework</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Genesis</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n</div>"
+        title: Games
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
+          \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          ><img alt=\"Multiple content providers\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"\
+          g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
+          \ content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\"\
+          >\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\"\
+          >\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\"\
+          >Programmable stylesheets with SCSS</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"\
+          #\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">SCSS CSS</span>\n\t\t\t</div>\n\t\t</div>\n\t\
+          </div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Built with the PHP templating engine Twig</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">Twig</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"\
+          g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Human readable configuration files</a>\n\t\t\t</div>\n\t\t\t<div\
+          \ class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\"\
+          >YAML Config</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\"\
+          >\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Responsive layout with mobile support</a>\n\
+          \t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Layout</span></a>\
+          \ <span class=\"g-small\">Responsive</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+        title: Articles
+    block:
+      id: mainbar-tabs
+      class: nopaddingall
+  dynamictabs-5104:
+    title: Dynamictabs — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      navposition: top
+      alignment: left
+      style: tabs
+      navwidth: 25
+      gap: 8
+      navcolor: '#333333'
+      activecolor: '#ffffff'
+      activebackground: '#3366ff'
+      contentbackground: rgba(0,0,0,0)
+      contentpadding: 1.5rem
+      transition: fade
+      items:
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 1.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 1
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 2.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 2
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 3.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-dynamictabs
+  dynamictabs-5204:
+    title: Dynamictabs — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      navposition: top
+      alignment: left
+      style: tabs
+      navwidth: 25
+      gap: 8
+      navcolor: '#333333'
+      activecolor: '#ffffff'
+      activebackground: '#3366ff'
+      contentbackground: rgba(0,0,0,0)
+      contentpadding: 1.5rem
+      transition: fade
+      items:
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 1.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 1
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 2.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 2
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 3.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-dynamictabs
+  genesisfeatures-5105:
+    title: Genesisfeatures — Mainbar
+    attributes:
+      enabled: true
+      class: fp-features
+      title: Ambrosia Test Item 1
+      columns: 33-3
+      items:
+      - title: Drupal
+        description: Build flexible, content-rich experiences with Genesis's visual layout system and Drupal's powerful content
+          management tools.
+        icon: fa fa-drupal fab fa-drupal
+      - title: Grav
+        description: Create fast, flexible websites with Genesis's visual layout tools and Grav's modern flat-file CMS.
+        icon: fa fa-grav fab fa-grav
+      - title: Joomla
+        description: Bring your website to life with one of the most powerful and popular theming frameworks for Joomla.
+        icon: fa fa-joomla fab fa-joomla
+      - title: TYPO3
+        description: Combine Genesis's adaptable layouts with TYPO3's enterprise content management capabilities for scalable,
+          multilingual websites.
+        icon: fa fa-cogs
+      - title: WordPress
+        description: Genesis extends WordPress' native functionality, empowering users to shape virtually every aspect of
+          their visitors' experience.
+        icon: fa fa-wordpress fab fa-wordpress
+      - title: XOOPS
+        description: Use Genesis's flexible theming tools with XOOPS to build modular, community-focused websites that are
+          easy to extend.
+        icon: fa fa-cubes
+    block:
+      variations: center
+      class: particle-test particle-test-genesisfeatures
+  genesisfeatures-5205:
+    title: Genesisfeatures — Sidebar
+    attributes:
+      enabled: true
+      class: fp-features
+      title: Ambrosia Test Item 1
+      columns: 33-3
+      items:
+      - title: Drupal
+        description: Build flexible, content-rich experiences with Genesis's visual layout system and Drupal's powerful content
+          management tools.
+        icon: fa fa-drupal fab fa-drupal
+      - title: Grav
+        description: Create fast, flexible websites with Genesis's visual layout tools and Grav's modern flat-file CMS.
+        icon: fa fa-grav fab fa-grav
+      - title: Joomla
+        description: Bring your website to life with one of the most powerful and popular theming frameworks for Joomla.
+        icon: fa fa-joomla fab fa-joomla
+      - title: TYPO3
+        description: Combine Genesis's adaptable layouts with TYPO3's enterprise content management capabilities for scalable,
+          multilingual websites.
+        icon: fa fa-cogs
+      - title: WordPress
+        description: Genesis extends WordPress' native functionality, empowering users to shape virtually every aspect of
+          their visitors' experience.
+        icon: fa fa-wordpress fab fa-wordpress
+      - title: XOOPS
+        description: Use Genesis's flexible theming tools with XOOPS to build modular, community-focused websites that are
+          easy to extend.
+        icon: fa fa-cubes
+    block:
+      variations: center
+      class: particle-test particle-test-genesisfeatures
+  icon-5106:
+    title: Icon — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      icon: fa fa-star
+      link: '#'
+      target: _self
+      arialabel: Icon link
+      alignment: center
+      iconsize: 48
+      width: 80
+      height: 80
+      color: '#3366ff'
+      background: rgba(0,0,0,0)
+      borderwidth: 0
+      bordercolor: '#3366ff'
+      radius: 0
+      rotate: 0
+      hovercolor: '#ffffff'
+      hoverbackground: '#3366ff'
+      hoverbordercolor: '#3366ff'
+      hoverscale: 1
+      margin: '0'
+    block:
+      class: particle-test particle-test-icon
+  icon-5206:
+    title: Icon — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      icon: fa fa-star
+      link: '#'
+      target: _self
+      arialabel: Icon link
+      alignment: center
+      iconsize: 48
+      width: 80
+      height: 80
+      color: '#3366ff'
+      background: rgba(0,0,0,0)
+      borderwidth: 0
+      bordercolor: '#3366ff'
+      radius: 0
+      rotate: 0
+      hovercolor: '#ffffff'
+      hoverbackground: '#3366ff'
+      hoverbordercolor: '#3366ff'
+      hoverscale: 1
+      margin: '0'
+    block:
+      class: particle-test particle-test-icon
+  imagegrid-5107:
+    title: Imagegrid — Mainbar
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      desc: ''
+      cols: g-imagegrid-4cols
+      album: clients
+      imagegriditems:
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 1
+        linkto: image
+        link: ''
+        title: Image 1
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 2
+        linkto: image
+        link: ''
+        title: Image 2
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 3
+        linkto: image
+        link: ''
+        title: Image 3
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 4
+        linkto: image
+        link: ''
+        title: Image 4
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 5
+        linkto: image
+        link: ''
+        title: Image 5
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 6
+        linkto: image
+        link: ''
+        title: Image 6
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 7
+        linkto: image
+        link: ''
+        title: Image 7
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 8
+        linkto: image
+        link: ''
+        title: Image 8
+      layout: g-imagegrid-standard
+    block:
+      class: particle-test particle-test-imagegrid
+  imagegrid-5207:
+    title: Imagegrid — Sidebar
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      desc: ''
+      cols: g-imagegrid-4cols
+      album: clients
+      imagegriditems:
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 1
+        linkto: image
+        link: ''
+        title: Image 1
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 2
+        linkto: image
+        link: ''
+        title: Image 2
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 3
+        linkto: image
+        link: ''
+        title: Image 3
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 4
+        linkto: image
+        link: ''
+        title: Image 4
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 5
+        linkto: image
+        link: ''
+        title: Image 5
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 6
+        linkto: image
+        link: ''
+        title: Image 6
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 7
+        linkto: image
+        link: ''
+        title: Image 7
+      - image: genesis-media://demo/home/mainbar/img-02.jpg
+        caption: Image 8
+        linkto: image
+        link: ''
+        title: Image 8
+      layout: g-imagegrid-standard
+    block:
+      class: particle-test particle-test-imagegrid
+  instagramgallery-5108:
+    title: Instagramgallery — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Instagram Gallery
+      heading: h3
+      titlealignment: center
+      source: instagram
+      profile: Responsive particle test content for item 1.
+      accountid: Responsive particle test content for item 1.
+      accesstoken: Responsive particle test content for item 1.
+      apiversion: v23.0
+      feedlimit: 12
+      cachelifetime: 3600
+      manualfallback: disable
+      showfeederror: enable
+      profilelink: '#'
+      layout: grid
+      columns: 4
+      tabletcolumns: 3
+      mobilecolumns: 2
+      gap: 10
+      ratio: square
+      showstats: enable
+      lightbox: enable
+      overlay: rgba(0,0,0,0.55)
+      items:
+      - title: New item
+        enabled: true
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        alt: Responsive particle test content for item 1.
+        mediatype: image
+        mediaurl: Responsive particle test content for item 1.
+        postlink: '#'
+        caption: Responsive particle test content for item 1.
+        likes: 0
+        comments: 0
+        name: Test Item 1
+      - title: New item
+        enabled: true
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        alt: Responsive particle test content for item 2.
+        mediatype: image
+        mediaurl: Responsive particle test content for item 2.
+        postlink: '#'
+        caption: Responsive particle test content for item 2.
+        likes: 0
+        comments: 0
+        name: Test Item 2
+      - title: New item
+        enabled: true
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        alt: Responsive particle test content for item 3.
+        mediatype: image
+        mediaurl: Responsive particle test content for item 3.
+        postlink: '#'
+        caption: Responsive particle test content for item 3.
+        likes: 0
+        comments: 0
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-instagramgallery
+  instagramgallery-5208:
+    title: Instagramgallery — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Instagram Gallery
+      heading: h3
+      titlealignment: center
+      source: instagram
+      profile: Responsive particle test content for item 1.
+      accountid: Responsive particle test content for item 1.
+      accesstoken: Responsive particle test content for item 1.
+      apiversion: v23.0
+      feedlimit: 12
+      cachelifetime: 3600
+      manualfallback: disable
+      showfeederror: enable
+      profilelink: '#'
+      layout: grid
+      columns: 4
+      tabletcolumns: 3
+      mobilecolumns: 2
+      gap: 10
+      ratio: square
+      showstats: enable
+      lightbox: enable
+      overlay: rgba(0,0,0,0.55)
+      items:
+      - title: New item
+        enabled: true
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        alt: Responsive particle test content for item 1.
+        mediatype: image
+        mediaurl: Responsive particle test content for item 1.
+        postlink: '#'
+        caption: Responsive particle test content for item 1.
+        likes: 0
+        comments: 0
+        name: Test Item 1
+      - title: New item
+        enabled: true
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        alt: Responsive particle test content for item 2.
+        mediatype: image
+        mediaurl: Responsive particle test content for item 2.
+        postlink: '#'
+        caption: Responsive particle test content for item 2.
+        likes: 0
+        comments: 0
+        name: Test Item 2
+      - title: New item
+        enabled: true
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        alt: Responsive particle test content for item 3.
+        mediatype: image
+        mediaurl: Responsive particle test content for item 3.
+        postlink: '#'
+        caption: Responsive particle test content for item 3.
+        likes: 0
+        comments: 0
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-instagramgallery
+  modal-5109:
+    title: Modal — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      trigger: button
+      label: Launch Modal
+      alignment: left
+      buttonstyle: custom
+      buttonappearance: flat
+      buttonsize: default
+      buttonfullwidth: disable
+      buttonfont: Learn More
+      buttonfontsize: 16
+      buttonweight: '400'
+      buttonpadding: 8px 22px
+      buttonradius: 4
+      buttoncolor: '#ffffff'
+      buttonbackground: '#3366ff'
+      buttonbordercolor: '#3366ff'
+      buttonhovercolor: '#ffffff'
+      buttonhoverbackground: '#0037dd'
+      buttonhoverbordercolor: '#0037dd'
+      buttonicon: fa fa-star
+      buttoniconposition: left
+      buttonicongap: 8
+      triggerimage: genesis-media://demo/home/mainbar/img-02.jpg
+      triggerimagealt: Responsive particle test content for item 1.
+      triggerimagewidth: 320
+      triggerimageheight: 180
+      triggericon: fa fa-play
+      triggericonsize: 32
+      triggericoncolor: '#ffffff'
+      triggericonbackground: '#3366ff'
+      triggericonpadding: 20
+      triggericonradius: 50
+      triggericonborderwidth: 0
+      triggericonbordercolor: '#3366ff'
+      triggertextsize: 16
+      triggertextcolor: '#222222'
+      triggertextgap: 10
+      ripple: disable
+      modaltitle: Modal title
+      showheader: enable
+      modaldescription: Responsive particle test content for item 1.
+      size: default
+      scrollable: disable
+      centered: disable
+      fullscreen: disable
+      contenttype: text
+      content: <p>Add your modal content here.</p>
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagealt: Responsive particle test content for item 1.
+      videourl: Responsive particle test content for item 1.
+      videotitle: Video
+      verticalvideo: disable
+      showfooter: disable
+      footercontent: <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      background: '#7c4dff'
+      color: '#7c4dff'
+      radius: 0
+    block:
+      class: particle-test particle-test-modal
+  modal-5209:
+    title: Modal — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      trigger: button
+      label: Launch Modal
+      alignment: left
+      buttonstyle: custom
+      buttonappearance: flat
+      buttonsize: default
+      buttonfullwidth: disable
+      buttonfont: Learn More
+      buttonfontsize: 16
+      buttonweight: '400'
+      buttonpadding: 8px 22px
+      buttonradius: 4
+      buttoncolor: '#ffffff'
+      buttonbackground: '#3366ff'
+      buttonbordercolor: '#3366ff'
+      buttonhovercolor: '#ffffff'
+      buttonhoverbackground: '#0037dd'
+      buttonhoverbordercolor: '#0037dd'
+      buttonicon: fa fa-star
+      buttoniconposition: left
+      buttonicongap: 8
+      triggerimage: genesis-media://demo/home/mainbar/img-02.jpg
+      triggerimagealt: Responsive particle test content for item 1.
+      triggerimagewidth: 320
+      triggerimageheight: 180
+      triggericon: fa fa-play
+      triggericonsize: 32
+      triggericoncolor: '#ffffff'
+      triggericonbackground: '#3366ff'
+      triggericonpadding: 20
+      triggericonradius: 50
+      triggericonborderwidth: 0
+      triggericonbordercolor: '#3366ff'
+      triggertextsize: 16
+      triggertextcolor: '#222222'
+      triggertextgap: 10
+      ripple: disable
+      modaltitle: Modal title
+      showheader: enable
+      modaldescription: Responsive particle test content for item 1.
+      size: default
+      scrollable: disable
+      centered: disable
+      fullscreen: disable
+      contenttype: text
+      content: <p>Add your modal content here.</p>
+      image: genesis-media://demo/home/mainbar/img-02.jpg
+      imagealt: Responsive particle test content for item 1.
+      videourl: Responsive particle test content for item 1.
+      videotitle: Video
+      verticalvideo: disable
+      showfooter: disable
+      footercontent: <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      background: '#7c4dff'
+      color: '#7c4dff'
+      radius: 0
+    block:
+      class: particle-test particle-test-modal
+  pricelist-5110:
+    title: Pricelist — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      imageposition: left
+      imagewidth: 100
+      imageradius: 4
+      number: Responsive particle test content for item 1.
+      tag: Responsive particle test content for item 1.
+      tagbackground: '#e91e63'
+      title: Price list item
+      price: $19.00
+      discountprice: Responsive particle test content for item 1.
+      description: Add a description for this item.
+      titlecolor: '#222222'
+      pricecolor: '#3366ff'
+      textcolor: '#666666'
+      line: enable
+      linecolor: '#cccccc'
+      linestyle: dotted
+    block:
+      class: particle-test particle-test-pricelist
+  pricelist-5210:
+    title: Pricelist — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      image: genesis-media://demo/home/mainbar/img-01.jpg
+      imageposition: left
+      imagewidth: 100
+      imageradius: 4
+      number: Responsive particle test content for item 1.
+      tag: Responsive particle test content for item 1.
+      tagbackground: '#e91e63'
+      title: Price list item
+      price: $19.00
+      discountprice: Responsive particle test content for item 1.
+      description: Add a description for this item.
+      titlecolor: '#222222'
+      pricecolor: '#3366ff'
+      textcolor: '#666666'
+      line: enable
+      linecolor: '#cccccc'
+      linestyle: dotted
+    block:
+      class: particle-test particle-test-pricelist
+  social-5111:
+    attributes:
+      enabled: true
+      css.class: social
+      title: Connect<span class="hidden-tablet"> With Us</span>
+      target: ''
+      display: both
+      items:
+      - icon: fa fa-twitter fa-fw
+        text: ''
+        link: http://twitter.com/rockettheme
+        name: Twitter
+      - icon: fa fa-facebook fa-fw
+        text: ''
+        link: http://facebook.com/rockettheme
+        name: Facebook
+      - icon: fa fa-google fa-fw
+        text: ''
+        link: http://plus.google.com/+rockettheme
+        name: Google
+      - icon: fa fa-rss fa-fw
+        text: ''
+        link: https://dazzlesoftware.org/product-updates?rss
+        name: RSS
+      - icon: fa fa-youtube
+        text: ''
+        link: '#'
+        name: Youtube
+      - icon: fa fa-instagram
+        text: ''
+        link: '#'
+        name: Instagram
+      - icon: fa fa-pinterest-p
+        text: ''
+        link: '#'
+        name: Pinterest
+      - icon: fa fa-vimeo-square
+        text: ''
+        link: '#'
+        name: Vimeo
+      - icon: fa fa-flickr
+        text: ''
+        link: '#'
+        name: Flickr
+      - icon: fa fa-github-alt
+        text: ''
+        link: '#'
+        name: Git
+      - icon: fa fa-rebel
+        text: ''
+        link: '#'
+        name: Rebel
+      - icon: fa fa-medium
+        text: ''
+        link: '#'
+        name: Medium
+      - icon: fa fa-yelp
+        text: ''
+        link: '#'
+        name: Yelp
+      - icon: fa fa-whatsapp
+        text: ''
+        link: '#'
+        name: Whatsapp
+      - icon: fa fa-dropbox
+        text: ''
+        link: '#'
+        name: Dropbox
+    title: Social — Mainbar
+    block:
+      class: particle-test particle-test-social
+  social-5211:
+    attributes:
+      enabled: true
+      css.class: social
+      title: Connect<span class="hidden-tablet"> With Us</span>
+      target: ''
+      display: both
+      items:
+      - icon: fa fa-twitter fa-fw
+        text: ''
+        link: http://twitter.com/rockettheme
+        name: Twitter
+      - icon: fa fa-facebook fa-fw
+        text: ''
+        link: http://facebook.com/rockettheme
+        name: Facebook
+      - icon: fa fa-google fa-fw
+        text: ''
+        link: http://plus.google.com/+rockettheme
+        name: Google
+      - icon: fa fa-rss fa-fw
+        text: ''
+        link: https://dazzlesoftware.org/product-updates?rss
+        name: RSS
+      - icon: fa fa-youtube
+        text: ''
+        link: '#'
+        name: Youtube
+      - icon: fa fa-instagram
+        text: ''
+        link: '#'
+        name: Instagram
+      - icon: fa fa-pinterest-p
+        text: ''
+        link: '#'
+        name: Pinterest
+      - icon: fa fa-vimeo-square
+        text: ''
+        link: '#'
+        name: Vimeo
+      - icon: fa fa-flickr
+        text: ''
+        link: '#'
+        name: Flickr
+      - icon: fa fa-github-alt
+        text: ''
+        link: '#'
+        name: Git
+      - icon: fa fa-rebel
+        text: ''
+        link: '#'
+        name: Rebel
+      - icon: fa fa-medium
+        text: ''
+        link: '#'
+        name: Medium
+      - icon: fa fa-yelp
+        text: ''
+        link: '#'
+        name: Yelp
+      - icon: fa fa-whatsapp
+        text: ''
+        link: '#'
+        name: Whatsapp
+      - icon: fa fa-dropbox
+        text: ''
+        link: '#'
+        name: Dropbox
+    title: Social — Sidebar
+    block:
+      class: particle-test particle-test-social
+  swipercarousel-5112:
+    title: Swipercarousel — Mainbar
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      displayitems: '1'
+      nav: disabled
+      prevText: ''
+      nextText: ''
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      transitionSpeed: 500
+      effect: slide
+      imageOverlay: enable
+      width: g-swipercarousel-fullwidth
+      footerShadow: disable
+      footerShadowColor: '#ffffff'
+      items:
+      - image: ''
+        icon: ''
+        title: ''
+        subtitle: ''
+        author: Ivan Chavez
+        authorimage: ''
+        desc: Citadel delivers with Video Support and the new Inheritance System from Genesis.
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: ''
+        videosource: external
+        video: ''
+        videolocal: ''
+        videothumb: ''
+        name: Ivan Chavez
+      - image: ''
+        icon: ''
+        title: ''
+        subtitle: ''
+        author: Andre Gilseth
+        authorimage: ''
+        desc: The Layout manager is amazing! Move, resize, and configure content in seconds.
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: ''
+        videosource: external
+        video: ''
+        videolocal: ''
+        videothumb: ''
+        name: Andre Gilseth
+      - image: ''
+        icon: ''
+        title: ''
+        subtitle: ''
+        author: Lauren Block
+        authorimage: ''
+        desc: The Menu Editor enhances the core menu with a rich, drag and drop interface.
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: ''
+        videosource: external
+        video: ''
+        videolocal: ''
+        videothumb: ''
+        name: Lauren Block
+      source: particle
+      presets: disabled
+      description: ''
+      layout: testimonial
+      animateIn: fadeIn
+      animateOut: fadeOut
+      videoloop: enabled
+      videoautoplay: disabled
+      jcategories: ''
+      jarticles: '1'
+      jintroimage: enabled
+      jcategoriesnames: enabled
+      jtitle: enabled
+      jintrotext: enabled
+      jauthor: enabled
+      jlink: enabled
+      jlinktext: Read More
+    block:
+      class: particle-test particle-test-swipercarousel
+  swipercarousel-5212:
+    title: Swipercarousel — Sidebar
+    attributes:
+      enabled: true
+      class: ''
+      title: ''
+      displayitems: '1'
+      nav: disabled
+      prevText: ''
+      nextText: ''
+      dots: enabled
+      loop: enabled
+      autoplay: disabled
+      autoplaySpeed: ''
+      pauseOnHover: enabled
+      transitionSpeed: 500
+      effect: slide
+      imageOverlay: enable
+      width: g-swipercarousel-fullwidth
+      footerShadow: disable
+      footerShadowColor: '#ffffff'
+      items:
+      - image: ''
+        icon: ''
+        title: ''
+        subtitle: ''
+        author: Ivan Chavez
+        authorimage: ''
+        desc: Citadel delivers with Video Support and the new Inheritance System from Genesis.
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: ''
+        videosource: external
+        video: ''
+        videolocal: ''
+        videothumb: ''
+        name: Ivan Chavez
+      - image: ''
+        icon: ''
+        title: ''
+        subtitle: ''
+        author: Andre Gilseth
+        authorimage: ''
+        desc: The Layout manager is amazing! Move, resize, and configure content in seconds.
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: ''
+        videosource: external
+        video: ''
+        videolocal: ''
+        videothumb: ''
+        name: Andre Gilseth
+      - image: ''
+        icon: ''
+        title: ''
+        subtitle: ''
+        author: Lauren Block
+        authorimage: ''
+        desc: The Menu Editor enhances the core menu with a rich, drag and drop interface.
+        link: ''
+        linktext: ''
+        buttontarget: _self
+        buttonclass: ''
+        videosource: external
+        video: ''
+        videolocal: ''
+        videothumb: ''
+        name: Lauren Block
+      source: particle
+      presets: disabled
+      description: ''
+      layout: testimonial
+      animateIn: fadeIn
+      animateOut: fadeOut
+      videoloop: enabled
+      videoautoplay: disabled
+      jcategories: ''
+      jarticles: '1'
+      jintroimage: enabled
+      jcategoriesnames: enabled
+      jtitle: enabled
+      jintrotext: enabled
+      jauthor: enabled
+      jlink: enabled
+      jlinktext: Read More
+    block:
+      class: particle-test particle-test-swipercarousel
+  testimonialcarousel-5113:
+    title: Testimonialcarousel — Mainbar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      layout: card
+      alignment: center
+      itemsdesktop: 1
+      itemstablet: 1
+      itemsmobile: 1
+      gap: 24
+      autoplay: enable
+      interval: 5000
+      speed: 500
+      pausehover: enable
+      loop: enable
+      arrows: enable
+      bullets: enable
+      showquote: enable
+      showrating: enable
+      background: '#ffffff'
+      color: '#555555'
+      accent: '#3366ff'
+      radius: 4
+      padding: 2rem
+      items:
+      - name: Client Name
+        enabled: true
+        designation: Responsive particle test content for item 1.
+        avatar: genesis-media://demo/home/mainbar/img-02.jpg
+        message: Add the client testimonial here.
+        rating: 5
+        link: '#'
+      - name: Client Name
+        enabled: true
+        designation: Responsive particle test content for item 2.
+        avatar: genesis-media://demo/home/mainbar/img-01.jpg
+        message: Add the client testimonial here.
+        rating: 5
+        link: '#'
+      - name: Client Name
+        enabled: true
+        designation: Responsive particle test content for item 3.
+        avatar: genesis-media://demo/home/mainbar/img-02.jpg
+        message: Add the client testimonial here.
+        rating: 5
+        link: '#'
+    block:
+      class: particle-test particle-test-testimonialcarousel
+  testimonialcarousel-5213:
+    title: Testimonialcarousel — Sidebar
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      layout: card
+      alignment: center
+      itemsdesktop: 1
+      itemstablet: 1
+      itemsmobile: 1
+      gap: 24
+      autoplay: enable
+      interval: 5000
+      speed: 500
+      pausehover: enable
+      loop: enable
+      arrows: enable
+      bullets: enable
+      showquote: enable
+      showrating: enable
+      background: '#ffffff'
+      color: '#555555'
+      accent: '#3366ff'
+      radius: 4
+      padding: 2rem
+      items:
+      - name: Client Name
+        enabled: true
+        designation: Responsive particle test content for item 1.
+        avatar: genesis-media://demo/home/mainbar/img-02.jpg
+        message: Add the client testimonial here.
+        rating: 5
+        link: '#'
+      - name: Client Name
+        enabled: true
+        designation: Responsive particle test content for item 2.
+        avatar: genesis-media://demo/home/mainbar/img-01.jpg
+        message: Add the client testimonial here.
+        rating: 5
+        link: '#'
+      - name: Client Name
+        enabled: true
+        designation: Responsive particle test content for item 3.
+        avatar: genesis-media://demo/home/mainbar/img-02.jpg
+        message: Add the client testimonial here.
+        rating: 5
+        link: '#'
+    block:
+      class: particle-test particle-test-testimonialcarousel
+  animatedheading-5300:
+    title: Animatedheading — Showcase
+    attributes:
+      enabled: true
+      class: particle-test-option
+      mode: animation
+      heading: h2
+      before: We create
+      after: Responsive particle test content for item 1.
+      words: 'websites
+
+        experiences
+
+        results'
+      animation: clip
+      highlighted: remarkable
+      shape: circle
+      headingcolor: '#7c4dff'
+      accentcolor: '#3366ff'
+      shapecolor: '#3366ff'
+      fontsize: 1
+      lineheight: 0
+      fontweight: inherit
+      headingfont: Responsive particle test content for item 1.
+      animatedfont: Responsive particle test content for item 1.
+      wordspacebefore: 12
+      wordspaceafter: 8
+      marker: line
+      markericon: fa fa-pencil
+      markercolor: '#3366ff'
+      markersize: 60
+      markerwidth: 3
+      markergap: 4
+      markeraftergap: 12
+      alignment: left
+      duration: 600
+      delay: 2500
+      shapewidth: 8
+      shaperounded: enable
+      marqueedirection: left
+      marqueespeed: 15
+      marqueegap: 40
+      pausehover: enable
+    block:
+      class: particle-test particle-test-animatedheading
+  blocknumber-5301:
+    title: Blocknumber — Showcase
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      titleelement: h3
+      number: '01'
+      heading: Block heading
+      text: Add your block content here.
+      layout: left
+      alignment: left
+      numberfont: Responsive particle test content for item 1.
+      numbersize: 24
+      numberboxsize: 70
+      numbercolor: '#ffffff'
+      numberbackground: '#3366ff'
+      numberborderwidth: 0
+      numberborderstyle: solid
+      numberbordercolor: '#3366ff'
+      numberradius: 50
+      gap: 20
+      headingfont: Responsive particle test content for item 1.
+      headingsize: 24
+      headingcolor: '#222222'
+      headingmargin: 0 0 10px
+      textfont: Responsive particle test content for item 1.
+      textsize: 16
+      textcolor: '#555555'
+    block:
+      class: particle-test particle-test-blocknumber
+  clients-5302:
+    title: Clients — Showcase
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      heading: h3
+      titlefont: Responsive particle test content for item 1.
+      titlesize: 28
+      titlecolor: '#222222'
+      titlemarginbottom: 24
+      alignment: center
+      mode: grid
+      desktopitems: 4
+      tabletitems: 3
+      mobileitems: 2
+      gap: 20
+      itempadding: 15
+      logoheight: 100
+      logowidth: 220
+      grayscale: 0
+      opacity: 100
+      removefilter: disable
+      scalehover: disable
+      scale: 1.05
+      transition: 300
+      itembackground: transparent
+      itemborder: hide
+      itemborderwidth: 1
+      itembordercolor: '#dddddd'
+      itemradius: 0
+      autoplay: disable
+      pausehover: enable
+      loop: enable
+      randomize: disable
+      interval: 3500
+      speed: 500
+      touch: enable
+      arrows: enable
+      arrowcolor: '#333333'
+      arrowbackground: '#ffffff'
+      arrowsize: 22
+      arrowboxsize: 44
+      arrowradius: 0
+      bullets: enable
+      bulletcolor: '#cccccc'
+      bulletactivecolor: '#3366ff'
+      bulletsize: 10
+      clients:
+      - title: Ambrosia Test Item 1
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 1.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 1
+      - title: Ambrosia Test Item 2
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 2.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 2
+      - title: Ambrosia Test Item 3
+        image: genesis-media://demo/home/mainbar/img-02.jpg
+        imagealt: Responsive particle test content for item 3.
+        link: '#'
+        target: _self
+        nofollow: false
+        disable: false
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-clients
+  contenttabs-5400:
+    title: Contenttabs — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Todays Highlights
+      animation: right
+      items:
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Six presets with individual settings\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Six presets with individual settings</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Presets</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tPre-built styling easily configured\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          ><img alt=\"Unique content with block variations\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\
+          \t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a\
+          \ href=\"#\">Unique content with block variations</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\
+          \t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Style</span>\n\t\t\t</div>\n\t\
+          \t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\t10 block variations available\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\
+          \t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Color Picker with Hue &amp; Saturation options</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Chooser</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"\
+          g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Offset restrictions with unlimited positions</a>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"\
+          g-small\">Positions</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"\
+          g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">A range of Web Fonts\
+          \ with Live Preview</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Style</span></a> <span class=\"g-small\">Fonts</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"\
+          g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\
+          \t<a href=\"#\">Diversify content with unique typography</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Content</span></a> <span class=\"g-small\">Typography</span>\n\t\t\
+          \t</div>\n\t\t</div>\n\t</div>\n</div>"
+        title: News
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Create and control content blocks\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Create and control content blocks</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
+          \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Particle</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tConstruct complex content with Particles\n\t\t\t</div>\n\t\t\
+          </div>\n\t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block\
+          \ left\"><img alt=\"Insert inline blocks within the menu\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Insert inline blocks within the menu</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Block</span></a> <span class=\"g-small\">Menu</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tInline particle and positions support\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Utilize icons easily with Font Awesome</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Style</span></a> <span class=\"g-small\">Typography</span>\n\t\t\t\
+          </div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t\
+          <div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Visual Menu Editor to improve control</a>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Menu</span></a> <span class=\"\
+          g-small\">Editor</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"\
+          g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Multiple menu columns\
+          \ &amp; custom widths</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Menu</span></a> <span class=\"g-small\">Options</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"\
+          g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\
+          \t<a href=\"#\">Intuitive interface for Genesis framework</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Genesis</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n</div>"
+        title: Games
+      - linklabel: ''
+        link: ''
+        content: "<div class=\"g-infolist g-2cols\">\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"\
+          g-infolist-item-img g-block left\"><img alt=\"Advanced multiple content filters\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"\
+          ></div>\n\t\t<div class=\"g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\
+          \t\t\t<a href=\"#\">Advanced multiple content filters</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\
+          \t\t\t\t<a href=\"#\"><span class=\"g-tag\">Addon</span></a> <span class=\"g-small\">Filters</span>\n\t\t\t</div>\n\
+          \t\t\t<div class=\"g-infolist-item-desc\">\n\t\t\t\tExtensive content filtering options\n\t\t\t</div>\n\t\t</div>\n\
+          \t</div>\n\t<div class=\"g-infolist-item g-infolist-with-img\">\n\t\t<div class=\"g-infolist-item-img g-block left\"\
+          ><img alt=\"Multiple content providers\" src=\"genesis-media://demo/home/mainbar/img-01.jpg\"></div>\n\t\t<div class=\"\
+          g-infolist-item-text g-block\">\n\t\t\t<div class=\"g-infolist-item-title g-bold\">\n\t\t\t\t<a href=\"#\">Multiple\
+          \ content providers</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"\
+          g-tag\">Addon</span></a> <span class=\"g-small\">Provider</span>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-item-desc\"\
+          >\n\t\t\t\tChoose from multiple sources for content\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\"\
+          >\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\"\
+          >Programmable stylesheets with SCSS</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"\
+          #\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">SCSS CSS</span>\n\t\t\t</div>\n\t\t</div>\n\t\
+          </div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"g-infolist-item-title\"\
+          >\n\t\t\t\t<a href=\"#\">Built with the PHP templating engine Twig</a>\n\t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\"\
+          >\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\">Twig</span>\n\t\t\t</div>\n\
+          \t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\">\n\t\t\t<div class=\"\
+          g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Human readable configuration files</a>\n\t\t\t</div>\n\t\t\t<div\
+          \ class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Code</span></a> <span class=\"g-small\"\
+          >YAML Config</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"g-infolist-item\">\n\t\t<div class=\"g-infolist-item-text\"\
+          >\n\t\t\t<div class=\"g-infolist-item-title\">\n\t\t\t\t<a href=\"#\">Responsive layout with mobile support</a>\n\
+          \t\t\t</div>\n\t\t\t<div class=\"g-infolist-tags\">\n\t\t\t\t<a href=\"#\"><span class=\"g-tag\">Layout</span></a>\
+          \ <span class=\"g-small\">Responsive</span>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+        title: Articles
+    block:
+      id: mainbar-tabs
+      class: nopaddingall
+  dynamictabs-5401:
+    title: Dynamictabs — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      title: Ambrosia Test Item 1
+      navposition: top
+      alignment: left
+      style: tabs
+      navwidth: 25
+      gap: 8
+      navcolor: '#333333'
+      activecolor: '#ffffff'
+      activebackground: '#3366ff'
+      contentbackground: rgba(0,0,0,0)
+      contentpadding: 1.5rem
+      transition: fade
+      items:
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 1.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 1
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 2.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 2
+      - title: New tab
+        enabled: true
+        subtitle: Responsive particle test content for item 3.
+        icon: fa fa-star
+        image: genesis-media://demo/home/mainbar/img-01.jpg
+        content: Add tab content here.
+        name: Test Item 3
+    block:
+      class: particle-test particle-test-dynamictabs
+  genesisfeatures-5402:
+    title: Genesisfeatures — Feature
+    attributes:
+      enabled: true
+      class: fp-features
+      title: Ambrosia Test Item 1
+      columns: 33-3
+      items:
+      - title: Drupal
+        description: Build flexible, content-rich experiences with Genesis's visual layout system and Drupal's powerful content
+          management tools.
+        icon: fa fa-drupal fab fa-drupal
+      - title: Grav
+        description: Create fast, flexible websites with Genesis's visual layout tools and Grav's modern flat-file CMS.
+        icon: fa fa-grav fab fa-grav
+      - title: Joomla
+        description: Bring your website to life with one of the most powerful and popular theming frameworks for Joomla.
+        icon: fa fa-joomla fab fa-joomla
+      - title: TYPO3
+        description: Combine Genesis's adaptable layouts with TYPO3's enterprise content management capabilities for scalable,
+          multilingual websites.
+        icon: fa fa-cogs
+      - title: WordPress
+        description: Genesis extends WordPress' native functionality, empowering users to shape virtually every aspect of
+          their visitors' experience.
+        icon: fa fa-wordpress fab fa-wordpress
+      - title: XOOPS
+        description: Use Genesis's flexible theming tools with XOOPS to build modular, community-focused websites that are
+          easy to extend.
+        icon: fa fa-cubes
+    block:
+      variations: center
+      class: particle-test particle-test-genesisfeatures
+  icon-5403:
+    title: Icon — Feature
+    attributes:
+      enabled: true
+      class: particle-test-option
+      icon: fa fa-star
+      link: '#'
+      target: _self
+      arialabel: Icon link
+      alignment: center
+      iconsize: 48
+      width: 80
+      height: 80
+      color: '#3366ff'
+      background: rgba(0,0,0,0)
+      borderwidth: 0
+      bordercolor: '#3366ff'
+      radius: 0
+      rotate: 0
+      hovercolor: '#ffffff'
+      hoverbackground: '#3366ff'
+      hoverbordercolor: '#3366ff'
+      hoverscale: 1
+      margin: '0'
+    block:
+      class: particle-test particle-test-icon
