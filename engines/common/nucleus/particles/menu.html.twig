@@ -59,7 +59,6 @@
         {% set isTopLevel = item.level == start_level %}
         {% set bsWrapClass = parent ? (isTopLevel ? ' dropdown' : ' dropend') %}
         {% set bsLinkClass = isTopLevel ? ' nav-link' : ' dropdown-item' %}
-        {% set toggleOnIndicator = parent and item.url %}
         {% set toggleOnContainer = parent and not item.url %}
         {% set bsToggleClass = toggleOnContainer ? ' dropdown-toggle' %}
         {% set bsToggleAttr = toggleOnContainer ? ' data-bs-toggle="dropdown" aria-expanded="false" role="button"' %}
@@ -120,7 +119,10 @@
                         {{ self.displayTitle(item) }}
                     </span>
                     {% if parent and not item.dropdown_hide -%}
-                        <span class="g-menu-parent-indicator{{ toggleOnIndicator ? ' dropdown-toggle' }}"{% if toggleOnIndicator %} data-bs-toggle="dropdown" aria-expanded="false" role="button" tabindex="0"{% else %} data-g-menuparent=""{% endif %}></span>
+                        {# The indicator is nested inside the link, so it cannot be a Bootstrap
+                           dropdown toggle: Bootstrap expects its .dropdown-menu to be adjacent
+                           to the toggle. The Genesis menu controller handles this split link / toggle. #}
+                        <span class="g-menu-parent-indicator" data-g-menuparent="" role="button" tabindex="0" aria-label="{{ ('Open ' ~ item.title ~ ' submenu')|e }}"></span>
                     {%- endif %}
                 {% else %}
                     {% if item.type == 'particle' %}

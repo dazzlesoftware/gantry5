@@ -126,7 +126,8 @@ class Menu {
         if (linkedParent) {
             const inMainMenu = Boolean(linkedParent.closest(this.selectors.mainContainer));
             const inFullwidthSublevel = Boolean(linkedParent.closest(".g-fullwidth .g-sublevel"));
-            if (!inMainMenu || inFullwidthSublevel) {
+            const isIndicator = linkedParent.matches(this.selectors.touchIndicator);
+            if (isIndicator || !inMainMenu || inFullwidthSublevel) {
                 this.click(event);
                 return;
             }
