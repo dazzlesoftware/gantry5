@@ -203,19 +203,6 @@
   }
 }
 
-.g-home-particles, .g-home-positions {
-  .g-pricingtable {
-    border-right: 0 none !important;
-    border-bottom: 0 none;
-  }
-  &.dir-rtl  {
-    .g-pricingtable {
-      border-right: 1px solid $border-color-light !important;
-      border-left: 0 none !important;
-    }
-  }
-}
-
 .nomarginall, .nopaddingall {
   .g-pricingtable-container {
     margin: 0;
