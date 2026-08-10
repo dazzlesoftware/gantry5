@@ -168,23 +168,3 @@
         }
     }
 }
-
-.g-home-positions,
-.g-home-particles {
-    .g-gridcontent-item-wrapper {
-        border-right: 0 none !important;
-        border-bottom: 0 none;
-    }
-    .g-gridcontent-item {
-        padding: 0;
-    }
-    .g-gridcontent-wrapper {
-        margin: 0;
-    }
-    &.dir-rtl {
-        .g-gridcontent-item-wrapper {
-            border-right: 1px solid $border-color-light !important;
-            border-left: 0 none !important;
-        }
-    }
-}
