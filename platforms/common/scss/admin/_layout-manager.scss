@@ -137,7 +137,12 @@ $atom: #9055AF;
                     font-weight: $font-weight-regular;
                     font-family: $font-family-default;
                     font-size: 24px;
-                    @include ellipsis();
+                    display: inline-block;
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
                 }
 
                 i {
@@ -283,7 +288,12 @@ $atom: #9055AF;
                     vertical-align: middle;
                     line-height: 47px;
                     color: #bababa;
-                    @include ellipsis();
+                    display: inline-block;
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
                 }
             }
         }
@@ -365,7 +375,12 @@ $atom: #9055AF;
         .offcanvas-section, .wrapper-section {
             .g-grid:empty:after {
                 content: "Drop particles here...";
-                @include ellipsis();
+                display: inline-block;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow-wrap: normal;
             }
         }
 
@@ -753,7 +768,8 @@ $atom: #9055AF;
             background-color: $red;
             font-size: $core-font-size * 2;
             border-radius: 100px;
-            @include size(50px 50px);
+            width: 50px;
+            height: 50px;
             line-height: 50px;
             margin: 0 auto;
             font-weight: 400;

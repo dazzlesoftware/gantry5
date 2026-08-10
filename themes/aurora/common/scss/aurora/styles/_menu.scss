@@ -3,7 +3,8 @@
     font-weight: $font-weight-semibold;
     letter-spacing: 1px;
     white-space: normal;
-    @include word-wrap(break-word);
+    overflow-wrap: break-word;
+    word-break: break-all;
     & { transition: 0.35s ease; }
     & { text-transform: lowercase; }
     @include responsive-font($responsive-font-size + 0.1, $core-font-size, false, false);

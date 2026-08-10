@@ -29,7 +29,7 @@
     }
     .gallery-top .swiper-slide {
         &:before {
-            background: fade-out(shade($feature-background, 35%), 0.15);
+            background: fade-out(mix(black, $feature-background, 35%), 0.15);
             .g-style-preset7 &, .g-style-preset8 &, .g-style-preset9 &, .g-style-preset10 & {
                 background: rgba(0, 0, 0, 0.85);
             }

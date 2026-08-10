@@ -123,7 +123,7 @@
 			}
 		}
 		&:before {
-			background: linear-gradient(to top right, $accent-color-2, fade-out(shade($accent-color-2, 15%), 0.3));
+			background: linear-gradient(to top right, $accent-color-2, fade-out(mix(black, $accent-color-2, 15%), 0.3));
 			position: absolute;
 			content: "";
 			left: 50%;
@@ -132,7 +132,7 @@
 			bottom: 0;
 			z-index: -2;
 			.dir-rtl & {
-				background: linear-gradient(to top left, $accent-color-2, fade-out(shade($accent-color-2, 15%), 0.3));
+				background: linear-gradient(to top left, $accent-color-2, fade-out(mix(black, $accent-color-2, 15%), 0.3));
 				left: 0;
 				right: 50%;
 			}

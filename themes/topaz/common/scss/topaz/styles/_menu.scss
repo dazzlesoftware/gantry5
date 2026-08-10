@@ -4,7 +4,8 @@
     padding: $content-margin 0;
     margin-left: $content-margin;
     white-space: normal;
-    @include word-wrap(break-word);
+    overflow-wrap: break-word;
+    word-break: break-all;
     & { transition: 0.35s ease; }
 }
 

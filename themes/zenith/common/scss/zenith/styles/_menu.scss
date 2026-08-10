@@ -6,7 +6,8 @@
     & { letter-spacing: 1px; }
     & { line-height: 1; }
     & { white-space: normal; }
-    @include word-wrap(break-word);
+    overflow-wrap: break-word;
+    word-break: break-all;
     & { transition: 0.35s ease; }
 }
 

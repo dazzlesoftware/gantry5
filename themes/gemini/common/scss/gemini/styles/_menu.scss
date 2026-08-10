@@ -4,7 +4,8 @@
     @include responsive-font(1vw, $core-font-size - 0.2, $core-font-size, $core-font-size);
     & { font-weight: $font-weight-regular; }
     & { white-space: normal; }
-    @include word-wrap(break-word);
+    overflow-wrap: break-word;
+    word-break: break-all;
     & { transition: 0.35s ease; }
 
     @include breakpoint(tablet-range) {

@@ -5,7 +5,8 @@
     & { line-height: 1; }
     & { letter-spacing: 0.1em; }
     & { white-space: normal; }
-    @include word-wrap(break-word);
+    overflow-wrap: break-word;
+    word-break: break-all;
     & { transition: 0.35s ease; }
 }
 

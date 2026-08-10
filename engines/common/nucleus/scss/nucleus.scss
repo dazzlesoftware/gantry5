@@ -1,9 +1,6 @@
 // REQUIRED DEPENDENCIES - DO NOT CHANGE
 
 // Load Third Party Libraries
-//FIXME Remove deprecated bourbon mixins
-$output-bourbon-deprecation-warnings: false;
-@import "vendor/bourbon/bourbon";
 
 // Load Nucleus Configuration
 @import "configuration/nucleus/base";
@@ -42,62 +39,62 @@ $output-bourbon-deprecation-warnings: false;
 @import "nucleus/offcanvas";
 
 // Audio Player
-@import "nucleus/audioplayer";
-@import "nucleus/calendar";
+@import "nucleus/particles/audioplayer";
+@import "nucleus/particles/calendar";
 
 // Tabbed Cards
-@import "nucleus/tabbedcards";
+@import "nucleus/particles/tabbedcards";
 
 // Tab Image
-@import "nucleus/tabimage";
-@import "nucleus/imagecarousel";
+@import "nucleus/particles/tabimage";
+@import "nucleus/particles/imagecarousel";
 
 // Text Block
-@import "nucleus/textblock";
+@import "nucleus/particles/textblock";
 
 // Testimonial
-@import "nucleus/testimonialcard";
+@import "nucleus/particles/testimonialcard";
 
 // Articles Scroller
-@import "nucleus/articlesscroller";
-@import "nucleus/animatedheading";
-@import "nucleus/feature";
-@import "nucleus/teamcarousel";
-@import "nucleus/clients";
-@import "nucleus/gmap";
-@import "nucleus/divider";
-@import "nucleus/heading";
-@import "nucleus/modal";
-@import "nucleus/accordion";
-@import "nucleus/alert";
-@import "nucleus/animatednumber";
-@import "nucleus/blocknumber";
-@import "nucleus/button";
-@import "nucleus/buttongroup";
-@import "nucleus/contentcarousel";
-@import "nucleus/contentcarouselpro";
-@import "nucleus/socialshare";
-@import "nucleus/flipbox";
-@import "nucleus/flipboxpro";
-@import "nucleus/pieprogress";
-@import "nucleus/openstreetmap";
-@import "nucleus/pricelist";
-@import "nucleus/pricing";
-@import "nucleus/icon";
-@import "nucleus/iconsgroup";
-@import "nucleus/image";
-@import "nucleus/imagecontent";
-@import "nucleus/imagelayouts";
-@import "nucleus/imageoverlay";
-@import "nucleus/instagramgallery";
-@import "nucleus/medialightbox";
-@import "nucleus/soundcloud";
-@import "nucleus/dynamictabs";
-@import "nucleus/advancedtable";
-@import "nucleus/testimonialcarousel";
-@import "nucleus/timeline";
-@import "nucleus/person";
-@import "nucleus/imagepopover";
-@import "nucleus/advancedprogressbar";
-@import "nucleus/progressbar";
-@import "nucleus/simplecounter";
+@import "nucleus/particles/articlesscroller";
+@import "nucleus/particles/animatedheading";
+@import "nucleus/particles/feature";
+@import "nucleus/particles/teamcarousel";
+@import "nucleus/particles/clients";
+@import "nucleus/particles/gmap";
+@import "nucleus/particles/divider";
+@import "nucleus/particles/heading";
+@import "nucleus/particles/modal";
+@import "nucleus/particles/accordion";
+@import "nucleus/particles/alert";
+@import "nucleus/particles/animatednumber";
+@import "nucleus/particles/blocknumber";
+@import "nucleus/particles/button";
+@import "nucleus/particles/buttongroup";
+@import "nucleus/particles/contentcarousel";
+@import "nucleus/particles/contentcarouselpro";
+@import "nucleus/particles/socialshare";
+@import "nucleus/particles/flipbox";
+@import "nucleus/particles/flipboxpro";
+@import "nucleus/particles/pieprogress";
+@import "nucleus/particles/openstreetmap";
+@import "nucleus/particles/pricelist";
+@import "nucleus/particles/pricing";
+@import "nucleus/particles/icon";
+@import "nucleus/particles/iconsgroup";
+@import "nucleus/particles/image";
+@import "nucleus/particles/imagecontent";
+@import "nucleus/particles/imagelayouts";
+@import "nucleus/particles/imageoverlay";
+@import "nucleus/particles/instagramgallery";
+@import "nucleus/particles/medialightbox";
+@import "nucleus/particles/soundcloud";
+@import "nucleus/particles/dynamictabs";
+@import "nucleus/particles/advancedtable";
+@import "nucleus/particles/testimonialcarousel";
+@import "nucleus/particles/timeline";
+@import "nucleus/particles/person";
+@import "nucleus/particles/imagepopover";
+@import "nucleus/particles/advancedprogressbar";
+@import "nucleus/particles/progressbar";
+@import "nucleus/particles/simplecounter";

@@ -45,14 +45,14 @@
 
 		.g-etherealblock-item {
 			&:before {
-			    background: fade-out(shade($main-background, 35%), 0.25);
+			    background: fade-out(mix(black, $main-background, 35%), 0.25);
 	            .g-style-preset7 &, .g-style-preset8 &, .g-style-preset9 &, .g-style-preset10 & {
 	                background: rgba(0, 0, 0, 0.75);
 	            }			    
 			}
 			&:hover {
 				&:before {
-					background: fade-out(shade($main-background, 35%), 0.50);
+					background: fade-out(mix(black, $main-background, 35%), 0.50);
 		            .g-style-preset7 &, .g-style-preset8 &, .g-style-preset9 &, .g-style-preset10 & {
 		                background: rgba(0, 0, 0, 0.5);
 		            }					

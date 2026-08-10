@@ -64,7 +64,12 @@
                     padding: 4px 16px 4px 4px;
                     white-space: pre;
                     position: relative;
-                    @include ellipsis();
+                    display: inline-block;
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
 
                     .g-bookmark-collapse {
                         position: absolute;
@@ -100,7 +105,12 @@
                         }
 
                         .path {
-                            @include ellipsis();
+                            display: inline-block;
+                            max-width: 100%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow-wrap: normal;
                         }
                     }
                 }

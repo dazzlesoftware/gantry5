@@ -9,9 +9,6 @@
         .g-tabs {
             ul {
                 @extend %list-reset;
-                /*@include border-width(null 1px 1px 1px);
-                @include border-style(null solid solid solid);
-                @include border-color(null #e6e6e6 #e6e6e6 #e6e6e6);*/
                 border-bottom: 1px solid #e6e6e6;
                 padding: 0.5rem 0;
             }
@@ -43,9 +40,8 @@
         }
 
         .g-panes {
-            @include border-width(null 1px null 1px);
-            @include border-style(null solid null solid);
-            @include border-color(null #e6e6e6 null #e6e6e6);
+            border-right: 1px solid #e6e6e6;
+            border-left: 1px solid #e6e6e6;
 
             .settings-param {
                 background-color: #fafafa;

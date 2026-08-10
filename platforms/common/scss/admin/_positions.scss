@@ -44,7 +44,12 @@
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    @include ellipsis();
+                    display: inline-block;
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
                 }
             }
 

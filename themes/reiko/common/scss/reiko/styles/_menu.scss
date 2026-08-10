@@ -4,7 +4,8 @@
     & { font-weight: $font-weight-medium; }
     & { letter-spacing: 1px; }
     & { white-space: normal; }
-    @include word-wrap(break-word);
+    overflow-wrap: break-word;
+    word-break: break-all;
     & { transition: 0.35s ease; }
 }
 

@@ -30,7 +30,7 @@
 		border: 2px solid transparent;
 		transition: background 0.3s;
 		&:hover {
-			background: fade-out(shade($accent-color-3, 20%), 0.20);
+			background: fade-out(mix(black, $accent-color-3, 20%), 0.20);
 		}
 		@include breakpoint(desktop-range) {
 			padding: 1.5rem 1rem;
@@ -197,7 +197,7 @@
 		}
 		&:hover {
 			.g-gridpromogallery-item-text {
-				background: fade-out(shade($accent-color-3, 20%), 0.20);
+				background: fade-out(mix(black, $accent-color-3, 20%), 0.20);
 				border: 2px solid transparent !important;
 			}		
 			.g-gridpromogallery-item-tag,

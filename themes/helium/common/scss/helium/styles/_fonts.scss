@@ -1,4 +1,9 @@
-@include font-face('rockettheme-apps', 'genesis-theme://fonts/rockettheme-apps/rockettheme-apps');
+@font-face {
+    font-family: 'rockettheme-apps';
+    font-style: normal;
+    font-weight: normal;
+    src: url('genesis-theme://fonts/rockettheme-apps/rockettheme-apps.woff2') format('woff2'), url('genesis-theme://fonts/rockettheme-apps/rockettheme-apps.woff') format('woff'), url('genesis-theme://fonts/rockettheme-apps/rockettheme-apps.ttf') format('truetype');
+}
 
 // Dazzle Software Apps Support
 i.fa-grav-spaceman, i.fa-grav-text, i.fa-grav-full,

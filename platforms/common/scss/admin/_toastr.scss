@@ -37,7 +37,8 @@
         }
 
         .g-notifications-message {
-            //@include word-wrap(break-word);
+            //overflow-wrap: break-word;
+    word-break: break-all;
         }
 
         .g-notifications-progress {

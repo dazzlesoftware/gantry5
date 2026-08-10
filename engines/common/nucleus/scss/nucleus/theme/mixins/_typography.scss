@@ -10,7 +10,12 @@
 		@each $weight in get-local-font-weights($font) {
 			$url: get-local-font-url($font, $weight);
 			@if $url {
-				@include font-face($font, $url, $weight);
+				@font-face {
+					font-family: $font;
+					font-style: normal;
+					font-weight: $weight;
+					src: url("#{$url}.woff2") format("woff2"), url("#{$url}.woff") format("woff"), url("#{$url}.ttf") format("truetype");
+				}
 			}
 		}
 	}

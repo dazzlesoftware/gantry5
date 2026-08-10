@@ -55,13 +55,15 @@
         {% set target = (item.target != '_self' or context.particle.forceTarget) ? ' target="' ~ item.target|e ~ '"' %}
         {% set rel = item.rel %}
 
-        {# Bootstrap 5 dropdown wiring: top level items open a .dropdown, nested items open a .dropend flyout #}
+        {# Desktop uses Bootstrap Dropdown; the responsive mount switches these
+           toggles to Bootstrap Collapse inside the mobile Offcanvas. #}
         {% set isTopLevel = item.level == start_level %}
-        {% set bsWrapClass = parent ? (isTopLevel ? ' dropdown' : ' dropend') %}
+        {% set bsWrapClass = '' %}
         {% set bsLinkClass = isTopLevel ? ' nav-link' : ' dropdown-item' %}
         {% set toggleOnContainer = parent and not item.url %}
-        {% set bsToggleClass = toggleOnContainer ? ' dropdown-toggle' %}
-        {% set bsToggleAttr = toggleOnContainer ? ' data-bs-toggle="dropdown" aria-expanded="false" role="button"' %}
+        {% set bsToggleClass = toggleOnContainer ? ' dropdown-toggle collapsed' %}
+        {% set submenuId = 'g-menu-item-' ~ item.id ~ '-submenu' %}
+        {% set bsToggleAttr = toggleOnContainer ? ' data-bs-toggle="dropdown" aria-controls="' ~ submenuId ~ '" aria-expanded="false" type="button"' %}
 
         {% if item.target == '_blank' %}
             {% if 'noopener' not in rel %}
@@ -108,7 +110,8 @@
             {% if item.url %}
                 <a class="g-menu-item-container{{ bsLinkClass }}{{ bsToggleClass }}{{ item.anchor_class ? ' ' ~ item.anchor_class }}" href="{{ item.url }}{{ item.hash }}"{{ (title ~ label ~ target ~ rel ~ linkAttributes ~ bsToggleAttr)|raw }}>
             {% else %}
-                <div class="g-menu-item-container{{ bsLinkClass }}{{ bsToggleClass }}" data-g-menuparent=""{{ label|raw }}{{ bsToggleAttr|raw }}>{% endif %}
+                {% if toggleOnContainer %}<button class="g-menu-item-container{{ bsLinkClass }}{{ bsToggleClass }}"{{ label|raw }}{{ bsToggleAttr|raw }}>
+                {% else %}<div class="g-menu-item-container{{ bsLinkClass }}"{{ label|raw }}>{% endif %}{% endif %}
                 {% if item.image %}
                     <img src="{{ url(item.image) }}" alt="{{ item.title }}" />
                 {% elseif item.icon %}
@@ -118,12 +121,6 @@
                     <span class="g-menu-item-content">
                         {{ self.displayTitle(item) }}
                     </span>
-                    {% if parent and not item.dropdown_hide -%}
-                        {# The indicator is nested inside the link, so it cannot be a Bootstrap
-                           dropdown toggle: Bootstrap expects its .dropdown-menu to be adjacent
-                           to the toggle. The Genesis menu controller handles this split link / toggle. #}
-                        <span class="g-menu-parent-indicator" data-g-menuparent="" role="button" tabindex="0" aria-label="{{ ('Open ' ~ item.title ~ ' submenu')|e }}"></span>
-                    {%- endif %}
                 {% else %}
                     {% if item.type == 'particle' %}
                         {{ self.displayParticle(item, context) }}
@@ -137,7 +134,11 @@
                     {%- endif %}
                 {% endif %}
             {% if item.url %}</a>
+            {% elseif toggleOnContainer %}</button>
             {% else %}</div>{% endif %}
+            {% if item.url and parent and not item.dropdown_hide -%}
+                <button class="g-menu-parent-indicator dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-controls="{{ submenuId }}" aria-expanded="false" aria-label="{{ ('Open ' ~ item.title ~ ' submenu')|e }}"></button>
+            {%- endif %}
             {% if parent -%}
                 {{ self.displaySubmenu(item, menu, context, dropdown_type, start_level) }}
             {%- endif %}
@@ -152,9 +153,6 @@
         {% for column, items in groups %}
         <div class="g-block {{ item.columnWidth(column)|toGrid }}">
             <ul class="g-sublevel">
-                <li class="g-level-{{ item.level - start_level + 1 }} g-go-back">
-                    <a class="g-menu-item-container" href="#" data-g-menuparent=""><span>Back</span></a>
-                </li>
                 {{ self.displayItems(items, menu, context, dropdown_type, start_level) }}
             </ul>
         </div>
@@ -178,8 +176,7 @@
         {% if ((item.groups|length == 1 and not dropdown_type == 'fullwidth') or dropdown_type == 'standard') or (item.width|default('auto') != 'auto' and dropdown_type == 'fullwidth')%}
             {% set dropdown_dir = 'g-dropdown-' ~ item.dropdown_dir|default('right') %}
         {% endif %}
-        {# Bootstrap 5 dropdown menu: `.show` is toggled by Bootstrap's own Dropdown JS via the sibling [data-bs-toggle="dropdown"] trigger #}
-        <ul class="dropdown-menu g-dropdown {{ animation }} {{ dropdown_dir }}"{{ self.getCustomWidth(item, menu, 'submenu', dropdown_type, start_level) }}>
+        <ul id="g-menu-item-{{ item.id }}-submenu" class="dropdown-menu g-dropdown {{ animation }} {{ dropdown_dir }}"{{ self.getCustomWidth(item, menu, 'submenu', dropdown_type, start_level) }}>
             <li class="g-dropdown-column">
                 {{ self.displayContainers(item, menu, context, dropdown_type, start_level) }}
             </li>
@@ -190,8 +187,7 @@
 {% import _self as macro %}
 
 {% if menu.root.count() %}
-    {% set hoverExpand = particle.hoverExpand|default('true') ? 'true' : 'false' %}
-    <nav class="navbar navbar-expand g-main-nav{{ hoverExpand == 'true' ? ' g-hover-expand' : '' }}"{{ particle.mobileTarget ? ' data-g-mobile-target' : '' }} data-g-hover-expand="{{ hoverExpand }}">
+    <nav class="navbar navbar-expand g-main-nav"{{ particle.mobileTarget ? ' data-g-mobile-target' : '' }}>
         <ul class="navbar-nav g-toplevel">
             {{ macro.displayItems(menu.root, menu, _context) }}
         </ul>

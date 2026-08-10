@@ -5,7 +5,7 @@
         font-size: 0;
         display: inline-block;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        @include prefixer(border-radius, 4px, webkit moz spec);
+        border-radius: 4px;
 
         @include breakpoint(mobile-only) {
             box-shadow: none;
@@ -36,8 +36,8 @@
             &:first-child {
                 > a, > span {
                     border-left-width: 1px;
-                    @include prefixer(border-top-left-radius, 4px, webkit moz spec);
-                    @include prefixer(border-bottom-left-radius, 4px, webkit moz spec);
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
 
                     @include breakpoint(mobile-only) {
                         border-radius: 0;
@@ -48,8 +48,8 @@
             &:last-child {
                 > a, > span {
                     border-right-width: 1px;
-                    @include prefixer(border-top-right-radius, 4px, webkit moz spec);
-                    @include prefixer(border-bottom-right-radius, 4px, webkit moz spec);
+                    border-top-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
 
                     @include breakpoint(mobile-only) {
                         border-radius: 0;

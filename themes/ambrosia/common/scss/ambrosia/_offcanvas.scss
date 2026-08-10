@@ -40,7 +40,8 @@
 	& { padding: 0.15rem; }
 	& { top: 0.25rem; }
 	& { left: 0.25rem; }
-	& { z-index: 100001; }
+	// Stay below Bootstrap's backdrop (1040) and Offcanvas (1045).
+	& { z-index: 1030; }
 
 	.toggle-fixed & {
 		position: fixed;

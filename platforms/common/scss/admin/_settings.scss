@@ -330,7 +330,7 @@
         top: 2px;
         right: 2px;
         bottom: 2px;
-        width: $core-line-height + em(1px);
+        width: $core-line-height + 0.0625em;
         border-radius: 3px;
     }
 }

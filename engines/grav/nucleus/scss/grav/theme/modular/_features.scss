@@ -3,7 +3,11 @@
     .features {
         padding: 6rem 0;
         text-align: center;
-        @include clearfix;
+        &::after {
+            clear: both;
+            content: "";
+            display: table;
+        }
 
         h2 {
             margin: 0;
