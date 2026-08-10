@@ -63,10 +63,6 @@
                 filter: grayscale(100%);
             }
 
-            .g-zoomout.g-rotate & {
-                transform: rotate(5deg) scale(1.15);
-            }
-
             .g-blur.g-grayscale & {
                 filter: blur(3px) grayscale(100%);
             }
@@ -170,13 +166,6 @@
     }
 }
 
-.g-popupgrid-clone {
-    position: fixed;
-    z-index: 110;
-    -webkit-backface-visibility: hidden;
-    transition: transform 0.5s
-}
-
 .g-popupgrid-original {
     position: relative;
     z-index: 120;
@@ -184,18 +173,6 @@
     object-fit: contain;
     -webkit-backface-visibility: hidden;
     transition: opacity 0.2s
-}
-
-.g-popupgrid-preview-open .g-popupgrid-animate {
-    /* open */
-    -webkit-transition: -webkit-transform 0.6s, opacity 0.2s;
-    transition: transform 0.6s, opacity 0.2s;
-}
-
-.g-popupgrid-animate {
-    /* close */
-    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-    transition: transform 0.3s, opacity 0.2s;
 }
 
 .g-popupgrid-description {
@@ -385,59 +362,7 @@
     }
 }
 
-.g-popupgrid-loading {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.g-popupgrid-hidden {
-    position: fixed !important;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    opacity: 0;
-}
-
 .g-popupgrid-sizer {
     margin-bottom: 0 !important;
 }
 
-.g-popupgrid-deco {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-
-    path {
-        fill: none;
-        stroke: $accent-color-1;
-        stroke-width: 2px;
-    }
-}
-
-.g-popupgrid-reveal {
-    position: absolute;
-    z-index: 50;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0;
-    background: linear-gradient(-45deg, fade-out(adjust-hue($accent-color-1, 40deg), 0.50), fade-out($accent-color-2, 0.50) 50%);
-}
-
-// Fix for scrollbars
-body.g-popupgrid-preview-area-open {
-    .fp-scrollable {
-        .fp-scroller {
-            transform: none !important;
-        }
-
-        .iScrollLoneScrollbar {
-            display: none !important;
-        }
-    }
-}

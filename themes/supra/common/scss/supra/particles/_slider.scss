@@ -40,19 +40,6 @@
                 padding-bottom: 1rem;
                 transform: translateY(0);
                 transition: all 0.35s ease-in-out;
-
-                // Hover
-                .g-slider-carousel-image-hover {
-                    opacity: 0;
-                    position: absolute;
-                    font-size: $core-font-size + 0.3;
-                    top: -1rem;
-                    width: 100%;
-                    height: 100%;
-                    padding: $content-padding;
-                    font-weight: $font-weight-bold;
-                    z-index: 5;
-                }
             }
 
             // Hover State
@@ -64,15 +51,6 @@
                         padding-bottom: 10px;
                         background: $accent-color-1;
                         transition: all 0.2s;
-                    }
-
-                    .g-slider-carousel-image-hover {
-                        opacity: 1;
-                        top: 0;
-
-                        &:before {
-                            transform: scale(1);
-                        }
                     }
                 }
             }
