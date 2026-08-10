@@ -202,52 +202,9 @@
                     }
                 }
 
-                // Accent Colors
-                &.g-latestnews-accent-color-1 {
-                    .g-latestnews-grid-item-case {
-                        background-color: $accent-color-1;
-                    }
-                }
-
-                &.g-latestnews-accent-color-2 {
-                    .g-latestnews-grid-item-case {
-                        background-color: $accent-color-2;
-                    }
-                }
-
                 // Layouts
                 &.g-latestnews-layout-default-bottom,
                 &.g-latestnews-layout-default-top {
-                    &.g-latestnews-accent-color-1 {
-                        .g-latestnews-grid-item-content {
-                            background: $accent-color-1;
-
-                            &:before {
-                                border-color: darken($accent-color-1, 10%);
-                                left: auto;
-                                right: -1rem;
-                            }
-                        }
-
-                        .g-latestnews-grid-item-case {
-                            background-color: darken($accent-color-1, 10%);
-                        }
-                    }
-
-                    &.g-latestnews-accent-color-2 {
-                        .g-latestnews-grid-item-content {
-                            background: $accent-color-2;
-
-                            &:before {
-                                border-color: darken($accent-color-2, 10%);
-                            }
-                        }
-
-                        .g-latestnews-grid-item-case {
-                            background-color: $accent-color-1;
-                        }
-                    }
-
                     .g-latestnews-grid-item-content {
                         padding: $content-padding * 2;
                         bottom: 0;
@@ -350,14 +307,6 @@
                     }
                 }
 
-                .g-latestnews-grid-item-subtitle {
-                    color: $black;
-                    opacity: 0.3;
-                    font-weight: $font-weight-regular;
-                    margin-top: $content-margin;
-                    @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
-                }
-
                 .g-latestnews-grid-item-case {
                     color: $black;
                     @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
@@ -376,12 +325,6 @@
                     @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
                 }
 
-                .g-latestnews-grid-item-button {
-                    display: block;
-                    margin-top: 5px;
-                    color: darken($base-text-color, 40%);
-                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-                }
             }
 
             &:hover {
@@ -389,10 +332,6 @@
                     .g-latestnews-grid-item-title {
                         text-decoration: underline;
                         text-decoration-color: inherit;
-                    }
-
-                    .g-latestnews-grid-item-button {
-                        text-decoration: underline;
                     }
                 }
             }

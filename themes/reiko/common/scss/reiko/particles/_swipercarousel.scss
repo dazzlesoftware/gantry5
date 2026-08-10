@@ -353,26 +353,6 @@
         .g-swipercarousel-fullwidth & {
             width: 100%;
         }
-
-        .g-swipercarousel-compact & {
-            width: 50%;
-
-            .center-block & {
-                margin: auto;
-            }
-
-            @include breakpoint(desktop-range) {
-                width: 65%;
-            }
-
-            @include breakpoint(tablet-range) {
-                width: 75%;
-            }
-
-            @include breakpoint(mobile-only) {
-                width: 100%;
-            }
-        }
     }
 
     .g-swipercarousel-item-title {
