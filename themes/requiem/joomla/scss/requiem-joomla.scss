@@ -18,16 +18,16 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "requiem-joomla/core";
-@import "requiem-joomla/typography";
-@import "requiem-joomla/forms";
-@import "requiem-joomla/tabs";
-@import "requiem-joomla/utilities";
+@import "requiem-joomla/styles/core";
+@import "requiem-joomla/styles/typography";
+@import "requiem-joomla/styles/forms";
+@import "requiem-joomla/styles/tabs";
+@import "requiem-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "requiem-joomla/rokajaxsearch";
+@import "requiem-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

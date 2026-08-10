@@ -19,22 +19,22 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "studius-joomla/core";
-@import "studius-joomla/typography";
-@import "studius-joomla/forms";
-@import "studius-joomla/tabs";
-@import "studius-joomla/utilities";
-@import "studius-joomla/popupmodule";
+@import "studius-joomla/styles/core";
+@import "studius-joomla/styles/typography";
+@import "studius-joomla/styles/forms";
+@import "studius-joomla/styles/tabs";
+@import "studius-joomla/styles/utilities";
+@import "studius-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Main
-@import "studius-joomla/sections/main";
+@import "studius-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "studius-joomla/rokajaxsearch";
+@import "studius-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

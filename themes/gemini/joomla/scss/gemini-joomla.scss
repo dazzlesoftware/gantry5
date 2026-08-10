@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "gemini-joomla/core";
-@import "gemini-joomla/typography";
-@import "gemini-joomla/forms";
-@import "gemini-joomla/tabs";
-@import "gemini-joomla/utilities";
-@import "gemini-joomla/popupmodule";
+@import "gemini-joomla/styles/core";
+@import "gemini-joomla/styles/typography";
+@import "gemini-joomla/styles/forms";
+@import "gemini-joomla/styles/tabs";
+@import "gemini-joomla/styles/utilities";
+@import "gemini-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "gemini-joomla/sections/showcase";
+@import "gemini-joomla/styles/showcase";
 // Main
-@import "gemini-joomla/sections/main";
+@import "gemini-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "gemini-joomla/rokajaxsearch";
+@import "gemini-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

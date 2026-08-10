@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "fluent-joomla/core";
-@import "fluent-joomla/typography";
-@import "fluent-joomla/forms";
-@import "fluent-joomla/tabs";
-@import "fluent-joomla/utilities";
-@import "fluent-joomla/popupmodule";
+@import "fluent-joomla/styles/core";
+@import "fluent-joomla/styles/typography";
+@import "fluent-joomla/styles/forms";
+@import "fluent-joomla/styles/tabs";
+@import "fluent-joomla/styles/utilities";
+@import "fluent-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "fluent-joomla/sections/showcase";
+@import "fluent-joomla/styles/showcase";
 // Main
-@import "fluent-joomla/sections/main";
+@import "fluent-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "fluent-joomla/rokajaxsearch";
+@import "fluent-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

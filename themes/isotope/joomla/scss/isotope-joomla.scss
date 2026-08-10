@@ -18,16 +18,16 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "isotope-joomla/core";
-@import "isotope-joomla/typography";
-@import "isotope-joomla/forms";
-@import "isotope-joomla/tabs";
-@import "isotope-joomla/utilities";
+@import "isotope-joomla/styles/core";
+@import "isotope-joomla/styles/typography";
+@import "isotope-joomla/styles/forms";
+@import "isotope-joomla/styles/tabs";
+@import "isotope-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "isotope-joomla/rokajaxsearch";
+@import "isotope-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "denali-joomla/core";
-@import "denali-joomla/typography";
-@import "denali-joomla/forms";
-@import "denali-joomla/tabs";
-@import "denali-joomla/utilities";
-@import "denali-joomla/popupmodule";
+@import "denali-joomla/styles/core";
+@import "denali-joomla/styles/typography";
+@import "denali-joomla/styles/forms";
+@import "denali-joomla/styles/tabs";
+@import "denali-joomla/styles/utilities";
+@import "denali-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "denali-joomla/sections/showcase";
+@import "denali-joomla/styles/showcase";
 // Main
-@import "denali-joomla/sections/main";
+@import "denali-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "denali-joomla/rokajaxsearch";
+@import "denali-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

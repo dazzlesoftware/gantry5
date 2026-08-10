@@ -18,16 +18,16 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "antares-joomla/core";
-@import "antares-joomla/typography";
-@import "antares-joomla/forms";
-@import "antares-joomla/tabs";
-@import "antares-joomla/utilities";
+@import "antares-joomla/styles/core";
+@import "antares-joomla/styles/typography";
+@import "antares-joomla/styles/forms";
+@import "antares-joomla/styles/tabs";
+@import "antares-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "antares-joomla/rokajaxsearch";
+@import "antares-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

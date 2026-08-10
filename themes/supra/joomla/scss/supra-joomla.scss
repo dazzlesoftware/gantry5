@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "supra-joomla/core";
-@import "supra-joomla/typography";
-@import "supra-joomla/forms";
-@import "supra-joomla/tabs";
-@import "supra-joomla/utilities";
-@import "supra-joomla/popupmodule";
+@import "supra-joomla/styles/core";
+@import "supra-joomla/styles/typography";
+@import "supra-joomla/styles/forms";
+@import "supra-joomla/styles/tabs";
+@import "supra-joomla/styles/utilities";
+@import "supra-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "supra-joomla/sections/showcase";
+@import "supra-joomla/styles/showcase";
 // Main
-@import "supra-joomla/sections/main";
+@import "supra-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "supra-joomla/rokajaxsearch";
+@import "supra-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

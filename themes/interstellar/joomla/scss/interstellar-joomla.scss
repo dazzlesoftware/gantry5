@@ -18,17 +18,17 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "interstellar-joomla/core";
-@import "interstellar-joomla/typography";
-@import "interstellar-joomla/forms";
-@import "interstellar-joomla/tabs";
-@import "interstellar-joomla/utilities";
-@import "interstellar-joomla/popupmodule";
+@import "interstellar-joomla/styles/core";
+@import "interstellar-joomla/styles/typography";
+@import "interstellar-joomla/styles/forms";
+@import "interstellar-joomla/styles/tabs";
+@import "interstellar-joomla/styles/utilities";
+@import "interstellar-joomla/particles/popupmodule";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "interstellar-joomla/rokajaxsearch";
+@import "interstellar-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

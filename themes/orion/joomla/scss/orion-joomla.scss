@@ -19,22 +19,22 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "orion-joomla/core";
-@import "orion-joomla/typography";
-@import "orion-joomla/forms";
-@import "orion-joomla/tabs";
-@import "orion-joomla/utilities";
-@import "orion-joomla/popupmodule";
+@import "orion-joomla/styles/core";
+@import "orion-joomla/styles/typography";
+@import "orion-joomla/styles/forms";
+@import "orion-joomla/styles/tabs";
+@import "orion-joomla/styles/utilities";
+@import "orion-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Main
-@import "orion-joomla/sections/main";
+@import "orion-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "orion-joomla/rokajaxsearch";
+@import "orion-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

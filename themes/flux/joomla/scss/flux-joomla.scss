@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "flux-joomla/core";
-@import "flux-joomla/typography";
-@import "flux-joomla/forms";
-@import "flux-joomla/tabs";
-@import "flux-joomla/utilities";
-@import "flux-joomla/popupmodule";
+@import "flux-joomla/styles/core";
+@import "flux-joomla/styles/typography";
+@import "flux-joomla/styles/forms";
+@import "flux-joomla/styles/tabs";
+@import "flux-joomla/styles/utilities";
+@import "flux-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "flux-joomla/sections/showcase";
+@import "flux-joomla/styles/showcase";
 // Main
-@import "flux-joomla/sections/main";
+@import "flux-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "flux-joomla/rokajaxsearch";
+@import "flux-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

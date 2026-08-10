@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "sienna-joomla/core";
-@import "sienna-joomla/typography";
-@import "sienna-joomla/forms";
-@import "sienna-joomla/tabs";
-@import "sienna-joomla/utilities";
-@import "sienna-joomla/popupmodule";
+@import "sienna-joomla/styles/core";
+@import "sienna-joomla/styles/typography";
+@import "sienna-joomla/styles/forms";
+@import "sienna-joomla/styles/tabs";
+@import "sienna-joomla/styles/utilities";
+@import "sienna-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "sienna-joomla/sections/showcase";
+@import "sienna-joomla/styles/showcase";
 // Main
-@import "sienna-joomla/sections/main";
+@import "sienna-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "sienna-joomla/rokajaxsearch";
+@import "sienna-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

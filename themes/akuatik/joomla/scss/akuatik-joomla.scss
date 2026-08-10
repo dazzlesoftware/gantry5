@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "akuatik-joomla/core";
-@import "akuatik-joomla/typography";
-@import "akuatik-joomla/forms";
-@import "akuatik-joomla/tabs";
-@import "akuatik-joomla/utilities";
-@import "akuatik-joomla/popupmodule";
+@import "akuatik-joomla/styles/core";
+@import "akuatik-joomla/styles/typography";
+@import "akuatik-joomla/styles/forms";
+@import "akuatik-joomla/styles/tabs";
+@import "akuatik-joomla/styles/utilities";
+@import "akuatik-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "akuatik-joomla/sections/showcase";
+@import "akuatik-joomla/styles/showcase";
 // Main
-@import "akuatik-joomla/sections/main";
+@import "akuatik-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "akuatik-joomla/rokajaxsearch";
+@import "akuatik-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

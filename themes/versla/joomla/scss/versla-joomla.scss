@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "versla-joomla/core";
-@import "versla-joomla/typography";
-@import "versla-joomla/forms";
-@import "versla-joomla/tabs";
-@import "versla-joomla/utilities";
-@import "versla-joomla/popupmodule";
+@import "versla-joomla/styles/core";
+@import "versla-joomla/styles/typography";
+@import "versla-joomla/styles/forms";
+@import "versla-joomla/styles/tabs";
+@import "versla-joomla/styles/utilities";
+@import "versla-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "versla-joomla/sections/showcase";
+@import "versla-joomla/styles/showcase";
 // Main
-@import "versla-joomla/sections/main";
+@import "versla-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "versla-joomla/rokajaxsearch";
+@import "versla-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

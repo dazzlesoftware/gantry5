@@ -6,70 +6,70 @@
 @import "nucleus/theme/base";
 
 // Core
-@import "hydrogen/core";
+@import "hydrogen/styles/core";
 
 // Typography
-@import "hydrogen/typography";
+@import "hydrogen/styles/typography";
 
 // Navigation
-@import "hydrogen/nav";
+@import "hydrogen/sections/nav";
 
 // Sidepanel Off Canvas
-@import "hydrogen/offcanvas";
+@import "hydrogen/sections/offcanvas";
 
 // Header
-@import "hydrogen/header";
+@import "hydrogen/sections/header";
 
 // Showcase
-@import "hydrogen/showcase";
+@import "hydrogen/sections/showcase";
 
 // Feature
-@import "hydrogen/feature";
+@import "hydrogen/sections/feature";
 
 // Subfeature
-@import "hydrogen/subfeature";
+@import "hydrogen/sections/subfeature";
 
 // Main
-@import "hydrogen/main";
+@import "hydrogen/sections/main";
 
 // Sidebar
-@import "hydrogen/sidebar";
+@import "hydrogen/sections/sidebar";
 
 // Footer
-@import "hydrogen/footer";
+@import "hydrogen/sections/footer";
 
 // Variations
-@import "hydrogen/variations";
+@import "hydrogen/styles/variations";
 
 // Tables
-@import "hydrogen/tables";
+@import "hydrogen/styles/tables";
 
 // Forms
-@import "hydrogen/forms";
+@import "hydrogen/styles/forms";
 
 // Social
-@import "hydrogen/social";
+@import "hydrogen/particles/social";
 
 // Sample Content
-@import "hydrogen/sample";
+@import "hydrogen/styles/sample";
 
 // Content Array
-@import "hydrogen/contentarray";
+@import "hydrogen/particles/contentarray";
 
 // Dropdown Animations
-@import "hydrogen/dropdownanimations";
+@import "hydrogen/styles/dropdownanimations";
 
 // Offline
-@import "hydrogen/offline";
+@import "hydrogen/layouts/offline";
 
 // Simple Counter
-@import "hydrogen/simplecounter";
+@import "hydrogen/particles/simplecounter";
 
 // Video
-@import "hydrogen/video";
+@import "hydrogen/particles/video";
 
 // Swiper Carousel
-@import "hydrogen/swipercarousel";
+@import "hydrogen/particles/swipercarousel";
 
 //-------------------------------------------
 

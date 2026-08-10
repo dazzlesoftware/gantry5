@@ -3,7 +3,7 @@
 @import "dependencies";
 
 // Swiper Carousel
-@import "ethereal/swipercarousel";
+@import "ethereal/particles/swipercarousel";
 
 //-------------------------------------------
 
@@ -14,79 +14,79 @@
 @import "nucleus/theme/base";
 
 // Core
-@import "ethereal/core";
+@import "ethereal/styles/core";
 
 // PageSurround
-@import "ethereal/pagesurround";
+@import "ethereal/sections/pagesurround";
 
 // Typography
-@import "ethereal/typography";
+@import "ethereal/styles/typography";
 
 // Utilities
-@import "ethereal/utilities";
+@import "ethereal/styles/utilities";
 
 // Top
-@import "ethereal/top";
+@import "ethereal/sections/top";
 
 // Header
-@import "ethereal/header";
+@import "ethereal/sections/header";
 
 // Main Nav
-@import "ethereal/mainnav";
+@import "ethereal/sections/mainnav";
 
 // Slideshow
-@import "ethereal/slideshow";
+@import "ethereal/sections/slideshow";
 
 // Showcase
-@import "ethereal/showcase";
+@import "ethereal/sections/showcase";
 
 // Feature
-@import "ethereal/feature";
+@import "ethereal/sections/feature";
 
 // Main
-@import "ethereal/main";
+@import "ethereal/sections/main";
 
 // Extension
-@import "ethereal/extension";
+@import "ethereal/sections/extension";
 
 // Bottom
-@import "ethereal/bottom";
+@import "ethereal/sections/bottom";
 
 // Footer
-@import "ethereal/footer";
+@import "ethereal/sections/footer";
 
 // Copyright
-@import "ethereal/copyright";
+@import "ethereal/sections/copyright";
 
 // Variations
-@import "ethereal/variations";
+@import "ethereal/styles/variations";
 
 // Buttons
-@import "ethereal/buttons";
+@import "ethereal/styles/buttons";
 
 // Tables
-@import "ethereal/tables";
+@import "ethereal/styles/tables";
 
 // Forms
-@import "ethereal/forms";
+@import "ethereal/styles/forms";
 
 // Social
-@import "ethereal/social";
+@import "ethereal/particles/social";
 
 // Content Array
-@import "ethereal/contentarray";
+@import "ethereal/particles/contentarray";
 
 // Off Canvas
-@import "ethereal/offcanvas";
+@import "ethereal/sections/offcanvas";
 
 // Error
-@import "ethereal/error";
+@import "ethereal/layouts/error";
 
 // Dropdown Animations
-@import "ethereal/dropdownanimations";
+@import "ethereal/styles/dropdownanimations";
 
 // Offline
-@import "ethereal/offline";
+@import "ethereal/layouts/offline";
 
 //-------------------------------------------
 
@@ -94,10 +94,10 @@
 // ROCKETTHEME EXTENSIONS
 
 // RokAjaxSearch
-@import "ethereal/rokajaxsearch";
+@import "ethereal/particles/rokajaxsearch";
 
 // RokSprocket
-@import "ethereal/roksprocket";
+@import "ethereal/particles/roksprocket";
 
 //-------------------------------------------
 
@@ -105,76 +105,76 @@
 // ADDITIONAL PARTICLES
 
 // Blog Content
-@import "ethereal/blogcontent";
+@import "ethereal/particles/blogcontent";
 
 // Block Content
-@import "ethereal/blockcontent";
+@import "ethereal/particles/blockcontent";
 
 // Calendar
-@import "ethereal/calendar";
+@import "ethereal/particles/calendar";
 
 // Audio Player
-@import "ethereal/audioplayer";
+@import "ethereal/particles/audioplayer";
 
 // Fixed Header
-@import "ethereal/fixedheader";
+@import "ethereal/particles/fixedheader";
 
 // Video
-@import "ethereal/video";
+@import "ethereal/particles/video";
 
 // Ethereal Content
-@import "ethereal/contentlist";
+@import "ethereal/particles/contentlist";
 
 // Info List
-@import "ethereal/infolist";
+@import "ethereal/particles/infolist";
 
 // Contact
-@import "ethereal/contact";
+@import "ethereal/particles/contact";
 
 // Image Grid
-@import "ethereal/imagegrid";
+@import "ethereal/particles/imagegrid";
 
 // Image Overlay
-@import "ethereal/imageoverlay";
+@import "ethereal/particles/imageoverlay";
 
 // Image Block
-@import "ethereal/imageblock";
+@import "ethereal/particles/imageblock";
 
 // Layer Content
-@import "ethereal/layercontent";
+@import "ethereal/particles/layercontent";
 
 // List Grid
-@import "ethereal/listgrid";
+@import "ethereal/particles/listgrid";
 
 // Newsletter
-@import "ethereal/newsletter";
+@import "ethereal/particles/newsletter";
 
 // Pricing Table
-@import "ethereal/pricingtable";
+@import "ethereal/particles/pricingtable";
 
 // Promo Image
-@import "ethereal/promoimage";
+@import "ethereal/particles/promoimage";
 
 // Simple Counter
-@import "ethereal/simplecounter";
+@import "ethereal/particles/simplecounter";
 
 // Swiper
-@import "ethereal/swiper";
+@import "ethereal/particles/swiper";
 
 // Swiper
-@import "ethereal/mailchimp";
+@import "ethereal/particles/mailchimp";
 
 // Horizontal Menu
-@import "ethereal/horizontalmenu";
+@import "ethereal/particles/horizontalmenu";
 
 // Icon Headline
-@import "ethereal/iconheadline";
+@import "ethereal/particles/iconheadline";
 
 // Number Headline
-@import "ethereal/numberheadline";
+@import "ethereal/particles/numberheadline";
 
 // Ethereal Block
-@import "ethereal/etherealblock";
+@import "ethereal/particles/etherealblock";
 
 //-------------------------------------------
 

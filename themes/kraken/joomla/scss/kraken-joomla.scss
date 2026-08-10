@@ -18,17 +18,17 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "kraken-joomla/core";
-@import "kraken-joomla/typography";
-@import "kraken-joomla/forms";
-@import "kraken-joomla/tabs";
-@import "kraken-joomla/utilities";
+@import "kraken-joomla/styles/core";
+@import "kraken-joomla/styles/typography";
+@import "kraken-joomla/styles/forms";
+@import "kraken-joomla/styles/tabs";
+@import "kraken-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "kraken-joomla/rokajaxsearch";
-@import "kraken-joomla/roksprocket";
+@import "kraken-joomla/components/rokajaxsearch";
+@import "kraken-joomla/components/roksprocket";
 
 //-------------------------------------------
 

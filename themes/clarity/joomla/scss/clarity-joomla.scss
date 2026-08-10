@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "clarity-joomla/core";
-@import "clarity-joomla/typography";
-@import "clarity-joomla/forms";
-@import "clarity-joomla/tabs";
-@import "clarity-joomla/utilities";
-@import "clarity-joomla/popupmodule";
+@import "clarity-joomla/styles/core";
+@import "clarity-joomla/styles/typography";
+@import "clarity-joomla/styles/forms";
+@import "clarity-joomla/styles/tabs";
+@import "clarity-joomla/styles/utilities";
+@import "clarity-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "clarity-joomla/sections/showcase";
+@import "clarity-joomla/styles/showcase";
 // Main
-@import "clarity-joomla/sections/main";
+@import "clarity-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "clarity-joomla/rokajaxsearch";
+@import "clarity-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

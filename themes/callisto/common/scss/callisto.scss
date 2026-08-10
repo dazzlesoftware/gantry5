@@ -11,73 +11,73 @@
 @import "nucleus/theme/base";
 
 // Core
-@import "callisto/core";
+@import "callisto/styles/core";
 
 // PageSurround
-@import "callisto/pagesurround";
+@import "callisto/sections/pagesurround";
 
 // Typography
-@import "callisto/typography";
+@import "callisto/styles/typography";
 
 // Utilities
-@import "callisto/utilities";
+@import "callisto/styles/utilities";
 
 // Header
-@import "callisto/header";
+@import "callisto/sections/header";
 
 // Navigation
-@import "callisto/navigation";
+@import "callisto/sections/navigation";
 
 // Main Nav
-@import "callisto/mainnav";
+@import "callisto/sections/mainnav";
 
 // Showcase
-@import "callisto/showcase";
+@import "callisto/sections/showcase";
 
 // Feature
-@import "callisto/feature";
+@import "callisto/sections/feature";
 
 // Main
-@import "callisto/main";
+@import "callisto/sections/main";
 
 // Extension
-@import "callisto/extension";
+@import "callisto/sections/extension";
 
 // Footer
-@import "callisto/footer";
+@import "callisto/sections/footer";
 
 // Copyright
-@import "callisto/copyright";
+@import "callisto/sections/copyright";
 
 // Variations
-@import "callisto/variations";
+@import "callisto/styles/variations";
 
 // Buttons
-@import "callisto/buttons";
+@import "callisto/styles/buttons";
 
 // Tables
-@import "callisto/tables";
+@import "callisto/styles/tables";
 
 // Forms
-@import "callisto/forms";
+@import "callisto/styles/forms";
 
 // Social
-@import "callisto/social";
+@import "callisto/particles/social";
 
 // Content Array
-@import "callisto/contentarray";
+@import "callisto/particles/contentarray";
 
 // Off Canvas
-@import "callisto/offcanvas";
+@import "callisto/sections/offcanvas";
 
 // Error
-@import "callisto/error";
+@import "callisto/layouts/error";
 
 // Dropdown Animations
-@import "callisto/dropdownanimations";
+@import "callisto/styles/dropdownanimations";
 
 // Offline
-@import "callisto/offline";
+@import "callisto/layouts/offline";
 
 //-------------------------------------------
 
@@ -85,10 +85,10 @@
 // ROCKETTHEME EXTENSIONS
 
 // RokAjaxSearch
-@import "callisto/rokajaxsearch";
+@import "callisto/particles/rokajaxsearch";
 
 // RokSprocket
-@import "callisto/roksprocket";
+@import "callisto/particles/roksprocket";
 
 //-------------------------------------------
 
@@ -96,61 +96,61 @@
 // ADDITIONAL PARTICLES
 
 // Callisto Content
-@import "callisto/contentlist";
+@import "callisto/particles/contentlist";
 
 // Icon Menu
-@import "callisto/iconmenu";
+@import "callisto/particles/iconmenu";
 
 // Calendar
-@import "callisto/calendar";
+@import "callisto/particles/calendar";
 
 // Swiper
-@import "callisto/swiper";
+@import "callisto/particles/swiper";
 
 // Audio Player
-@import "callisto/audioplayer";
+@import "callisto/particles/audioplayer";
 
 // Fixed Header
-@import "callisto/fixedheader";
+@import "callisto/particles/fixedheader";
 
 // Block Content
-@import "callisto/blockcontent";
+@import "callisto/particles/blockcontent";
 
 // Video
-@import "callisto/video";
+@import "callisto/particles/video";
 
 // Info List
-@import "callisto/infolist";
+@import "callisto/particles/infolist";
 
 // Contact
-@import "callisto/contact";
+@import "callisto/particles/contact";
 
 // Image Grid
-@import "callisto/imagegrid";
+@import "callisto/particles/imagegrid";
 
 // Promo Image
-@import "callisto/promoimage";
+@import "callisto/particles/promoimage";
 
 // Layer Content
-@import "callisto/layercontent";
+@import "callisto/particles/layercontent";
 
 // Newsletter
-@import "callisto/newsletter";
+@import "callisto/particles/newsletter";
 
 // Pricing Table
-@import "callisto/pricingtable";
+@import "callisto/particles/pricingtable";
 
 // Simple Counter
-@import "callisto/simplecounter";
+@import "callisto/particles/simplecounter";
 
 // Tabs Particle
-@import "callisto/contenttabs";
+@import "callisto/particles/contenttabs";
 
 // SwiperCarousel Based Particles
-@import "callisto/swipercarousel";
+@import "callisto/particles/swipercarousel";
 
 // SwiperCarousel Based Particles
-@import "callisto/search";
+@import "callisto/particles/search";
 //-------------------------------------------
 
 // BREAKPOINTS

@@ -9,100 +9,100 @@
 @import "nucleus/theme/base";
 
 // Core
-@import "salient/core";
+@import "salient/styles/core";
 
 // PageSurround
-@import "salient/pagesurround";
+@import "salient/sections/pagesurround";
 
 // Typography
-@import "salient/typography";
+@import "salient/styles/typography";
 
 // Utilities
-@import "salient/utilities";
+@import "salient/styles/utilities";
 
 // Top
-@import "salient/top";
+@import "salient/sections/top";
 
 // Header
-@import "salient/header";
+@import "salient/sections/header";
 
 // Navigation
-@import "salient/navigation";
+@import "salient/sections/navigation";
 
 // Main Nav
-@import "salient/mainnav";
+@import "salient/sections/mainnav";
 
 // Slideshow
-@import "salient/slideshow";
+@import "salient/sections/slideshow";
 
 // Showcase
-@import "salient/showcase";
+@import "salient/sections/showcase";
 
 // Utility
-@import "salient/utility";
+@import "salient/sections/utility";
 
 // Feature
-@import "salient/feature";
+@import "salient/sections/feature";
 
 // Above
-@import "salient/above";
+@import "salient/sections/above";
 
 // Main
-@import "salient/main";
+@import "salient/sections/main";
 
 // Sidebar
-@import "salient/sidebar";
+@import "salient/sections/sidebar";
 
 // Expanded
-@import "salient/expanded";
+@import "salient/sections/expanded";
 
 // Extension
-@import "salient/extension";
+@import "salient/sections/extension";
 
 // Bottom
-@import "salient/bottom";
+@import "salient/sections/bottom";
 
 // Footer
-@import "salient/footer";
+@import "salient/sections/footer";
 
 // Copyright
-@import "salient/copyright";
+@import "salient/sections/copyright";
 
 // Variations
-@import "salient/variations";
+@import "salient/styles/variations";
 
 // Buttons
-@import "salient/buttons";
+@import "salient/styles/buttons";
 
 // Tables
-@import "salient/tables";
+@import "salient/styles/tables";
 
 // Forms
-@import "salient/forms";
+@import "salient/styles/forms";
 
 // Social
-@import "salient/social";
+@import "salient/particles/social";
 
 // Content Array
-@import "salient/contentarray";
+@import "salient/particles/contentarray";
 
 // Off Canvas
-@import "salient/offcanvas";
+@import "salient/sections/offcanvas";
 
 // Error
-@import "salient/error";
+@import "salient/layouts/error";
 
 // Coming Soon
-@import "salient/comingsoon";
+@import "salient/layouts/comingsoon";
 
 // Offline
-@import "salient/offline";
+@import "salient/layouts/offline";
 
 // Dropdown Animations
-@import "salient/dropdownanimations";
+@import "salient/styles/dropdownanimations";
 
 // Swiper Carousel
-@import "salient/swipercarousel";
+@import "salient/particles/swipercarousel";
 
 //-------------------------------------------
 
@@ -110,75 +110,75 @@
 // ROCKETTHEME EXTENSIONS
 
 // RokAjaxSearch
-@import "salient/rokajaxsearch";
+@import "salient/particles/rokajaxsearch";
 
 // RokSprocket
-@import "salient/roksprocket";
+@import "salient/particles/roksprocket";
 
 //-------------------------------------------
 
 // SAMPLE PAGES PARTICLES
 
 // Contact
-@import "salient/contact";
+@import "salient/particles/contact";
 
 // Content List
-@import "salient/contentlist";
+@import "salient/particles/contentlist";
 
 // Horizontal Menu
-@import "salient/horizontalmenu";
+@import "salient/particles/horizontalmenu";
 
 // Image Grid
-@import "salient/imagegrid";
+@import "salient/particles/imagegrid";
 
 // Info List
-@import "salient/infolist";
+@import "salient/particles/infolist";
 
 // Layer Content
-@import "salient/layercontent";
+@import "salient/particles/layercontent";
 
 // Newsletter
-@import "salient/newsletter";
+@import "salient/particles/newsletter";
 
 // Pricing Table
-@import "salient/pricingtable";
+@import "salient/particles/pricingtable";
 
 // Promo Image
-@import "salient/promoimage";
+@import "salient/particles/promoimage";
 
 // Simple Counter
-@import "salient/simplecounter";
+@import "salient/particles/simplecounter";
 
 //-------------------------------------------
 
 // ADDITIONAL PARTICLES
 
 // Animated Block
-@import "salient/animatedblock";
+@import "salient/particles/animatedblock";
 
 // Audio Player
-@import "salient/audioplayer";
+@import "salient/particles/audioplayer";
 
 // MailChimp
-@import "salient/mailchimp";
+@import "salient/particles/mailchimp";
 
 // Calendar
-@import "salient/calendar";
+@import "salient/particles/calendar";
 
 // Swiper
-@import "salient/swiper";
+@import "salient/particles/swiper";
 
 // Fixed Header
-@import "salient/fixedheader";
+@import "salient/particles/fixedheader";
 
 // Video
-@import "salient/video";
+@import "salient/particles/video";
 
 // Block Content
-@import "salient/blockcontent";
+@import "salient/particles/blockcontent";
 
 // Testimonials
-@import "salient/testimonials";
+@import "salient/sections/testimonials";
 
 //-------------------------------------------
 

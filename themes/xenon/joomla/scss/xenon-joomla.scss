@@ -18,16 +18,16 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "xenon-joomla/core";
-@import "xenon-joomla/typography";
-@import "xenon-joomla/forms";
-@import "xenon-joomla/tabs";
-@import "xenon-joomla/utilities";
+@import "xenon-joomla/styles/core";
+@import "xenon-joomla/styles/typography";
+@import "xenon-joomla/styles/forms";
+@import "xenon-joomla/styles/tabs";
+@import "xenon-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "xenon-joomla/rokajaxsearch";
+@import "xenon-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

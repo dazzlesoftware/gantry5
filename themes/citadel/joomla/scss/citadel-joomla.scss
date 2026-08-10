@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "citadel-joomla/core";
-@import "citadel-joomla/typography";
-@import "citadel-joomla/forms";
-@import "citadel-joomla/tabs";
-@import "citadel-joomla/utilities";
-@import "citadel-joomla/popupmodule";
+@import "citadel-joomla/styles/core";
+@import "citadel-joomla/styles/typography";
+@import "citadel-joomla/styles/forms";
+@import "citadel-joomla/styles/tabs";
+@import "citadel-joomla/styles/utilities";
+@import "citadel-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "citadel-joomla/sections/showcase";
+@import "citadel-joomla/styles/showcase";
 // Main
-@import "citadel-joomla/sections/main";
+@import "citadel-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "citadel-joomla/rokajaxsearch";
+@import "citadel-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

@@ -19,22 +19,22 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "phoenix-joomla/core";
-@import "phoenix-joomla/typography";
-@import "phoenix-joomla/forms";
-@import "phoenix-joomla/tabs";
-@import "phoenix-joomla/utilities";
-@import "phoenix-joomla/popupmodule";
+@import "phoenix-joomla/styles/core";
+@import "phoenix-joomla/styles/typography";
+@import "phoenix-joomla/styles/forms";
+@import "phoenix-joomla/styles/tabs";
+@import "phoenix-joomla/styles/utilities";
+@import "phoenix-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Main
-@import "phoenix-joomla/sections/main";
+@import "phoenix-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "phoenix-joomla/rokajaxsearch";
+@import "phoenix-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

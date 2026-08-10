@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "topaz-joomla/core";
-@import "topaz-joomla/typography";
-@import "topaz-joomla/forms";
-@import "topaz-joomla/tabs";
-@import "topaz-joomla/utilities";
-@import "topaz-joomla/popupmodule";
+@import "topaz-joomla/styles/core";
+@import "topaz-joomla/styles/typography";
+@import "topaz-joomla/styles/forms";
+@import "topaz-joomla/styles/tabs";
+@import "topaz-joomla/styles/utilities";
+@import "topaz-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "topaz-joomla/sections/showcase";
+@import "topaz-joomla/styles/showcase";
 // Main
-@import "topaz-joomla/sections/main";
+@import "topaz-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "topaz-joomla/rokajaxsearch";
+@import "topaz-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

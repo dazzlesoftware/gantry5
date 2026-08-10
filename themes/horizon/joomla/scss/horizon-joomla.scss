@@ -19,22 +19,22 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "horizon-joomla/core";
-@import "horizon-joomla/typography";
-@import "horizon-joomla/forms";
-@import "horizon-joomla/tabs";
-@import "horizon-joomla/utilities";
-@import "horizon-joomla/popupmodule";
+@import "horizon-joomla/styles/core";
+@import "horizon-joomla/styles/typography";
+@import "horizon-joomla/styles/forms";
+@import "horizon-joomla/styles/tabs";
+@import "horizon-joomla/styles/utilities";
+@import "horizon-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Main
-@import "horizon-joomla/sections/main";
+@import "horizon-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "horizon-joomla/rokajaxsearch";
+@import "horizon-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "koleti-joomla/core";
-@import "koleti-joomla/typography";
-@import "koleti-joomla/forms";
-@import "koleti-joomla/tabs";
-@import "koleti-joomla/utilities";
-@import "koleti-joomla/popupmodule";
+@import "koleti-joomla/styles/core";
+@import "koleti-joomla/styles/typography";
+@import "koleti-joomla/styles/forms";
+@import "koleti-joomla/styles/tabs";
+@import "koleti-joomla/styles/utilities";
+@import "koleti-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "koleti-joomla/sections/showcase";
+@import "koleti-joomla/styles/showcase";
 // Main
-@import "koleti-joomla/sections/main";
+@import "koleti-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "koleti-joomla/rokajaxsearch";
+@import "koleti-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

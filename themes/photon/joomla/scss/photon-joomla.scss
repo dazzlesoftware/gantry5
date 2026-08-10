@@ -18,16 +18,16 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "photon-joomla/core";
-@import "photon-joomla/typography";
-@import "photon-joomla/forms";
-@import "photon-joomla/tabs";
-@import "photon-joomla/utilities";
+@import "photon-joomla/styles/core";
+@import "photon-joomla/styles/typography";
+@import "photon-joomla/styles/forms";
+@import "photon-joomla/styles/tabs";
+@import "photon-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "photon-joomla/rokajaxsearch";
+@import "photon-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

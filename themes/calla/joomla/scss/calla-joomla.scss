@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "calla-joomla/core";
-@import "calla-joomla/typography";
-@import "calla-joomla/forms";
-@import "calla-joomla/tabs";
-@import "calla-joomla/utilities";
-@import "calla-joomla/popupmodule";
+@import "calla-joomla/styles/core";
+@import "calla-joomla/styles/typography";
+@import "calla-joomla/styles/forms";
+@import "calla-joomla/styles/tabs";
+@import "calla-joomla/styles/utilities";
+@import "calla-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "calla-joomla/sections/showcase";
+@import "calla-joomla/styles/showcase";
 // Main
-@import "calla-joomla/sections/main";
+@import "calla-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "calla-joomla/rokajaxsearch";
+@import "calla-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

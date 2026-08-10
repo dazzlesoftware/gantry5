@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "remnant-joomla/core";
-@import "remnant-joomla/typography";
-@import "remnant-joomla/forms";
-@import "remnant-joomla/tabs";
-@import "remnant-joomla/utilities";
-@import "remnant-joomla/popupmodule";
+@import "remnant-joomla/styles/core";
+@import "remnant-joomla/styles/typography";
+@import "remnant-joomla/styles/forms";
+@import "remnant-joomla/styles/tabs";
+@import "remnant-joomla/styles/utilities";
+@import "remnant-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "remnant-joomla/sections/showcase";
+@import "remnant-joomla/styles/showcase";
 // Main
-@import "remnant-joomla/sections/main";
+@import "remnant-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "remnant-joomla/rokajaxsearch";
+@import "remnant-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

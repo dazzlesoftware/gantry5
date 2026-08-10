@@ -18,24 +18,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "protean-joomla/core";
-@import "protean-joomla/typography";
-@import "protean-joomla/forms";
-@import "protean-joomla/tabs";
-@import "protean-joomla/utilities";
-@import "protean-joomla/popupmodule";
+@import "protean-joomla/styles/core";
+@import "protean-joomla/styles/typography";
+@import "protean-joomla/styles/forms";
+@import "protean-joomla/styles/tabs";
+@import "protean-joomla/styles/utilities";
+@import "protean-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "protean-joomla/sections/showcase";
+@import "protean-joomla/styles/showcase";
 // Main
-@import "protean-joomla/sections/main";
+@import "protean-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "protean-joomla/rokajaxsearch";
+@import "protean-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

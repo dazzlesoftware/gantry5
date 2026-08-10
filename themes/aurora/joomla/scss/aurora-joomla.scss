@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "aurora-joomla/core";
-@import "aurora-joomla/typography";
-@import "aurora-joomla/forms";
-@import "aurora-joomla/tabs";
-@import "aurora-joomla/utilities";
-@import "aurora-joomla/popupmodule";
+@import "aurora-joomla/styles/core";
+@import "aurora-joomla/styles/typography";
+@import "aurora-joomla/styles/forms";
+@import "aurora-joomla/styles/tabs";
+@import "aurora-joomla/styles/utilities";
+@import "aurora-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "aurora-joomla/sections/showcase";
+@import "aurora-joomla/styles/showcase";
 // Main
-@import "aurora-joomla/sections/main";
+@import "aurora-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "aurora-joomla/rokajaxsearch";
+@import "aurora-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

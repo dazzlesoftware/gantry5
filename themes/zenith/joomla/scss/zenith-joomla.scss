@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "zenith-joomla/core";
-@import "zenith-joomla/typography";
-@import "zenith-joomla/forms";
-@import "zenith-joomla/tabs";
-@import "zenith-joomla/utilities";
-@import "zenith-joomla/popupmodule";
+@import "zenith-joomla/styles/core";
+@import "zenith-joomla/styles/typography";
+@import "zenith-joomla/styles/forms";
+@import "zenith-joomla/styles/tabs";
+@import "zenith-joomla/styles/utilities";
+@import "zenith-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "zenith-joomla/sections/showcase";
+@import "zenith-joomla/styles/showcase";
 // Main
-@import "zenith-joomla/sections/main";
+@import "zenith-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "zenith-joomla/rokajaxsearch";
+@import "zenith-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

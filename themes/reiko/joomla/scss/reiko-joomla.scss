@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "reiko-joomla/core";
-@import "reiko-joomla/typography";
-@import "reiko-joomla/forms";
-@import "reiko-joomla/tabs";
-@import "reiko-joomla/utilities";
-@import "reiko-joomla/popupmodule";
+@import "reiko-joomla/styles/core";
+@import "reiko-joomla/styles/typography";
+@import "reiko-joomla/styles/forms";
+@import "reiko-joomla/styles/tabs";
+@import "reiko-joomla/styles/utilities";
+@import "reiko-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "reiko-joomla/sections/showcase";
+@import "reiko-joomla/styles/showcase";
 // Main
-@import "reiko-joomla/sections/main";
+@import "reiko-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "reiko-joomla/rokajaxsearch";
+@import "reiko-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

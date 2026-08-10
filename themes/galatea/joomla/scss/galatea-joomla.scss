@@ -18,16 +18,16 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "galatea-joomla/core";
-@import "galatea-joomla/typography";
-@import "galatea-joomla/forms";
-@import "galatea-joomla/tabs";
-@import "galatea-joomla/utilities";
+@import "galatea-joomla/styles/core";
+@import "galatea-joomla/styles/typography";
+@import "galatea-joomla/styles/forms";
+@import "galatea-joomla/styles/tabs";
+@import "galatea-joomla/styles/utilities";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "galatea-joomla/rokajaxsearch";
+@import "galatea-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

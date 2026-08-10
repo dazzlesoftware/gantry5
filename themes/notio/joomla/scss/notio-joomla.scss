@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "notio-joomla/core";
-@import "notio-joomla/typography";
-@import "notio-joomla/forms";
-@import "notio-joomla/tabs";
-@import "notio-joomla/utilities";
-@import "notio-joomla/popupmodule";
+@import "notio-joomla/styles/core";
+@import "notio-joomla/styles/typography";
+@import "notio-joomla/styles/forms";
+@import "notio-joomla/styles/tabs";
+@import "notio-joomla/styles/utilities";
+@import "notio-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "notio-joomla/sections/showcase";
+@import "notio-joomla/styles/showcase";
 // Main
-@import "notio-joomla/sections/main";
+@import "notio-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "notio-joomla/rokajaxsearch";
+@import "notio-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

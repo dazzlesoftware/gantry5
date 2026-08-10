@@ -19,24 +19,24 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "manticore-joomla/core";
-@import "manticore-joomla/typography";
-@import "manticore-joomla/forms";
-@import "manticore-joomla/tabs";
-@import "manticore-joomla/utilities";
-@import "manticore-joomla/popupmodule";
+@import "manticore-joomla/styles/core";
+@import "manticore-joomla/styles/typography";
+@import "manticore-joomla/styles/forms";
+@import "manticore-joomla/styles/tabs";
+@import "manticore-joomla/styles/utilities";
+@import "manticore-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Showcase
-@import "manticore-joomla/sections/showcase";
+@import "manticore-joomla/styles/showcase";
 // Main
-@import "manticore-joomla/sections/main";
+@import "manticore-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "manticore-joomla/rokajaxsearch";
+@import "manticore-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

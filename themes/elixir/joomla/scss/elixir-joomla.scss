@@ -19,22 +19,22 @@
 //-------------------------------------------
 
 // JOOMLA TEMPLATE SPECIFIC
-@import "elixir-joomla/core";
-@import "elixir-joomla/typography";
-@import "elixir-joomla/forms";
-@import "elixir-joomla/tabs";
-@import "elixir-joomla/utilities";
-@import "elixir-joomla/popupmodule";
+@import "elixir-joomla/styles/core";
+@import "elixir-joomla/styles/typography";
+@import "elixir-joomla/styles/forms";
+@import "elixir-joomla/styles/tabs";
+@import "elixir-joomla/styles/utilities";
+@import "elixir-joomla/particles/popupmodule";
 
 // JOOMLA TEMPLATE SPECIFIC SECTIONS STYLING
 
 // Main
-@import "elixir-joomla/sections/main";
+@import "elixir-joomla/styles/main";
 
 //-------------------------------------------
 
 // ROCKETTHEME EXTENSIONS
-@import "elixir-joomla/rokajaxsearch";
+@import "elixir-joomla/components/rokajaxsearch";
 
 //-------------------------------------------
 

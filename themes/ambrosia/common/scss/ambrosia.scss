@@ -9,85 +9,85 @@
 @import "nucleus/theme/base";
 
 // Core
-@import "ambrosia/core";
+@import "ambrosia/styles/core";
 
 // PageSurround
-@import "ambrosia/pagesurround";
+@import "ambrosia/sections/pagesurround";
 
 // Typography
-@import "ambrosia/typography";
+@import "ambrosia/styles/typography";
 
 // Utilities
-@import "ambrosia/utilities";
+@import "ambrosia/styles/utilities";
 
 // Header
-@import "ambrosia/header";
+@import "ambrosia/sections/header";
 
 // Navigation
-@import "ambrosia/navigation";
+@import "ambrosia/sections/navigation";
 
 // Main Nav
-@import "ambrosia/mainnav";
+@import "ambrosia/sections/mainnav";
 
 // Slideshow
-@import "ambrosia/slideshow";
+@import "ambrosia/sections/slideshow";
 
 // Showcase
-@import "ambrosia/showcase";
+@import "ambrosia/sections/showcase";
 
 // Feature
-@import "ambrosia/feature";
+@import "ambrosia/sections/feature";
 
 // Main
-@import "ambrosia/main";
+@import "ambrosia/sections/main";
 
 // Sidebar
-@import "ambrosia/sidebar";
+@import "ambrosia/sections/sidebar";
 
 // Extension
-@import "ambrosia/extension";
+@import "ambrosia/sections/extension";
 
 // Bottom
-@import "ambrosia/bottom";
+@import "ambrosia/sections/bottom";
 
 // Footer
-@import "ambrosia/footer";
+@import "ambrosia/sections/footer";
 
 // Copyright
-@import "ambrosia/copyright";
+@import "ambrosia/sections/copyright";
 
 // Variations
-@import "ambrosia/variations";
+@import "ambrosia/styles/variations";
 
 // Buttons
-@import "ambrosia/buttons";
+@import "ambrosia/styles/buttons";
 
 // Tables
-@import "ambrosia/tables";
+@import "ambrosia/styles/tables";
 
 // Forms
-@import "ambrosia/forms";
+@import "ambrosia/styles/forms";
 
 // Social
-@import "ambrosia/social";
+@import "ambrosia/particles/social";
 
 // Content Array
-@import "ambrosia/contentarray";
+@import "ambrosia/particles/contentarray";
 
 // Off Canvas
-@import "ambrosia/offcanvas";
+@import "ambrosia/sections/offcanvas";
 
 // Error
-@import "ambrosia/error";
+@import "ambrosia/layouts/error";
 
 // Coming Soon
-@import "ambrosia/comingsoon";
+@import "ambrosia/layouts/comingsoon";
 
 // Offline
-@import "ambrosia/offline";
+@import "ambrosia/layouts/offline";
 
 // Dropdown Animations
-@import "ambrosia/dropdownanimations";
+@import "ambrosia/styles/dropdownanimations";
 
 
 
@@ -97,75 +97,75 @@
 // ROCKETTHEME EXTENSIONS
 
 // RokAjaxSearch
-@import "ambrosia/rokajaxsearch";
+@import "ambrosia/particles/rokajaxsearch";
 
 // RokSprocket
-@import "ambrosia/roksprocket";
+@import "ambrosia/particles/roksprocket";
 
 //-------------------------------------------
 
 // SAMPLE PAGES PARTICLES
 
 // Audio Player
-@import "ambrosia/audioplayer";
+@import "ambrosia/particles/audioplayer";
 
 // Block Content
-@import "ambrosia/blockcontent";
+@import "ambrosia/particles/blockcontent";
 
 // Contact
-@import "ambrosia/contact";
+@import "ambrosia/particles/contact";
 
 // Content List
-@import "ambrosia/contentlist";
+@import "ambrosia/particles/contentlist";
 
 // Calendar
-@import "ambrosia/calendar";
+@import "ambrosia/particles/calendar";
 
 // Swiper
-@import "ambrosia/swiper";
+@import "ambrosia/particles/swiper";
 
 // Fixed Header
-@import "ambrosia/fixedheader";
+@import "ambrosia/particles/fixedheader";
 
 // Horizontal Menu
-@import "ambrosia/horizontalmenu";
+@import "ambrosia/particles/horizontalmenu";
 
 // Image Grid
-@import "ambrosia/imagegrid";
+@import "ambrosia/particles/imagegrid";
 
 // Info List
-@import "ambrosia/infolist";
+@import "ambrosia/particles/infolist";
 
 // Layer Content
-@import "ambrosia/layercontent";
+@import "ambrosia/particles/layercontent";
 
 // Newsletter
-@import "ambrosia/newsletter";
+@import "ambrosia/particles/newsletter";
 
 // Pricing Table
-@import "ambrosia/pricingtable";
+@import "ambrosia/particles/pricingtable";
 
 // Promo Image
-@import "ambrosia/promoimage";
+@import "ambrosia/particles/promoimage";
 
 // Simple Counter
-@import "ambrosia/simplecounter";
+@import "ambrosia/particles/simplecounter";
 
 // Swiper Carousel
-@import "ambrosia/swipercarousel";
+@import "ambrosia/particles/swipercarousel";
 
 // Content Tabs
-@import "ambrosia/contenttabs";
+@import "ambrosia/particles/contenttabs";
 
 // Video
-@import "ambrosia/video";
+@import "ambrosia/particles/video";
 
 //-------------------------------------------
 
 // ADDITIONAL PARTICLES
 
 // Tab Image
-@import "ambrosia/tabimage";
+@import "ambrosia/particles/tabimage";
 
 //-------------------------------------------
 
