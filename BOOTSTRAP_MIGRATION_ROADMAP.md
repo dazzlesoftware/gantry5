@@ -34,7 +34,7 @@ section (mobile-menu / Offcanvas section note lives there).
   siblings of the styled `-overlay` variant) or turned out to have a real
   rule on closer inspection (`soundcloud`).
 
-## Stage 2 — Theme-level SCSS sweep (`themes/*/common/scss`) — partially done
+## Stage 2 — Theme-level SCSS sweep (`themes/*/common/scss`) — done
 
 Audited 4 themes end-to-end (acronym, akuatik, anacron, audacity): the
 systemic patterns first (repo-wide dead `ui-tabs*`/`ui-accordion-*` jQuery-UI
@@ -90,10 +90,62 @@ its own twig or yaml. Not dead code and not a missing feature to add
 unprompted — just a theme with a little more SCSS than its own particle
 currently uses. Left as-is.
 
-**Still open:**
-- The other ~33 themes were never audited at all (out of scope so far —
-  each would need the same per-theme ground-truth verification, which
-  repeatedly proved necessary even within the 4 themes done).
+**Remainder sweep — done.** The other 33 themes (aurora, calla, chimera,
+citadel, clarity, denali, elixir, epsilon, fluent, flux, galatea, gemini,
+hadron, helium, horizon, interstellar, koleti, lexicon, manticore, notio,
+orion, phoenix, photon, protean, reiko, remnant, sienna, studius, supra,
+topaz, vermilion, versla, zenith) were audited end-to-end with the same
+per-theme ground-truth method as the original 4, using a Node.js
+pre-filter script (candidate extraction from particle SCSS class names)
+to narrow the search space, then manually verifying every surviving
+candidate against that theme's own twig/yaml/JS before touching anything.
+
+Blind spots the pre-filter itself doesn't cover — each caught by reading
+the real twig rather than trusting the literal-string match — recur
+across themes and are worth calling out for future sweeps:
+- `default('...')` filter args and ternary expressions inside `{{ }}`
+  (e.g. `g-swipercarousel-fullwidth`, `g-latestnews-clip-path`,
+  `g-swipercarousel-layout-testimonial`) — real, never appear as literal
+  `class="..."` text.
+- `@extend`-only classes (`g-lead`, `g-compact`) — defined once elsewhere,
+  borrowed via `@extend`, don't need to appear in the particle's own twig.
+- Layout/particle-config YAML default `class:` values (`helium`'s
+  `g-logo`/`g-logo-helium`) and layout `class:`/`buttonclass:` saved
+  values — real without ever appearing in twig at all.
+- Runtime JS-added state classes (`g-simplecontent-item-required-
+  highlighted` in sienna's `simplebooking.js`, Menu's shared `g-active`/
+  `g-selected`/`g-standard`/`g-fullwidth` architecture reused by koleti's
+  `slidingmenu`) — added/removed by JS, never literal in twig.
+- Core's generic wrapper classes applied outside the particle's own twig
+  (zenith's `.g-content.g-particle`, from the shared
+  `content/particle.html.twig` template used by every particle) — a
+  per-particle-twig-only check misses these.
+- **False negatives** (script stayed silent on genuinely dead code):
+  `g-swipercarousel-compact` for galatea/photon, `g-testimonials-
+  container` for studius, `g-swipercarousel-panel-subtitle/-desc/
+  -indicator` for remnant/sienna/topaz — caught only by independently
+  re-checking every file by hand rather than trusting silence as proof
+  of life.
+- "Kept distinct" swipercarousel themes (citadel, galatea, interstellar,
+  photon, protean, remnant, sienna, topaz) have their own layout
+  sub-templates under `common/particles/swipercarousel/*.html.twig` that
+  the pre-filter never checks — every swipercarousel candidate for these
+  themes needs a direct grep against the sub-templates, and `fullwidth`/
+  `compact` are NOT automatically live the way they are for core-fallback
+  themes (both were independently confirmed dead in some, live in
+  others — checked per theme every time).
+- A few genuine twig/SCSS bugs were found and fixed in passing rather
+  than just deleted: `elixir`'s `_latestblogs.scss` had a
+  `g-latestnews-*` typo instead of `g-latestblogs-*`; `reiko`'s
+  `scoreblock.html.twig` was missing the `g-scoreblock-` prefix on one
+  of two sibling divs.
+- `g-pricingtable-subtitle` is a schema gap in ~12 themes (core has no
+  "pricingtable" particle at all) — confirmed and left untouched
+  everywhere, consistent with the original acronym finding above.
+
+Two small false-positive deletions from the pre-remainder-sweep work were
+also caught and reverted at the very start of this pass (see the
+"Correction" note above) — same root cause, reinforcing the same lesson.
 
 ## Stage 3 — Layout Manager grid/section/offcanvas engine — offcanvas piece done
 
