@@ -248,7 +248,7 @@ content:
       items:
       - artist: ''
         tracktitle: The Fragmentation
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -257,7 +257,7 @@ content:
         title: Item 1
       - artist: ''
         tracktitle: Who Am I To Judge
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -266,7 +266,7 @@ content:
         title: Item 2
       - artist: ''
         tracktitle: The Chase
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -275,7 +275,7 @@ content:
         title: Item 3
       - artist: ''
         tracktitle: March of the Giants
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -284,7 +284,7 @@ content:
         title: Item 4
       - artist: ''
         tracktitle: Through the Fog
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -307,7 +307,7 @@ content:
       items:
       - artist: ''
         tracktitle: The Fragmentation
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -316,7 +316,7 @@ content:
         title: Item 1
       - artist: ''
         tracktitle: Who Am I To Judge
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -325,7 +325,7 @@ content:
         title: Item 2
       - artist: ''
         tracktitle: The Chase
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -334,7 +334,7 @@ content:
         title: Item 3
       - artist: ''
         tracktitle: March of the Giants
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -343,7 +343,7 @@ content:
         title: Item 4
       - artist: ''
         tracktitle: Through the Fog
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -1460,7 +1460,7 @@ content:
       items:
       - artist: ''
         tracktitle: The Fragmentation
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -1469,7 +1469,7 @@ content:
         title: Item 1
       - artist: ''
         tracktitle: Who Am I To Judge
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -1478,7 +1478,7 @@ content:
         title: Item 2
       - artist: ''
         tracktitle: The Chase
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -1487,7 +1487,7 @@ content:
         title: Item 3
       - artist: ''
         tracktitle: March of the Giants
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
@@ -1496,7 +1496,7 @@ content:
         title: Item 4
       - artist: ''
         tracktitle: Through the Fog
-        cover: genesis-media://demo/home/audio/img-01.jpg
+        cover: genesis-media://demo/home/mainbar/img-01.jpg
         source: local
         externalurl: ''
         localurl: genesis-media://demo/home/audio/sample.mp3
