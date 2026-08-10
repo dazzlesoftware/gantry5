@@ -61,31 +61,6 @@
             align-items: flex-end;
         }
 
-        .g-featureslider-carousel-content {
-            background: $accent-color-3;
-            padding: $content-padding * 2 + $content-margin;
-            position: absolute;
-            bottom: 0;
-            left: 3%;
-            width: 30%;
-
-            .dir-rtl & {
-                left: auto;
-                right: 3%;
-            }
-
-            a {
-                color: darken($accent-color-1, 20%);
-                font-weight: $font-weight-bold;
-            }
-
-            h1 {
-                @include responsive-font($responsive-font-size + 2, $core-font-size + 1.2, false, false);
-                & { font-weight: $font-weight-semibold; }
-                & { line-height: normal; }
-            }
-        }
-
         .navigation {
 
             .featureslider-button-next,

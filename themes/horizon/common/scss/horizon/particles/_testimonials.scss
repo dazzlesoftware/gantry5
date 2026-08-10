@@ -100,16 +100,4 @@
 
     }
 
-    .g-testimonials-author {
-        flex-direction: column;
-        display: flex;
-        font-size: $core-font-size * 1.2;
-        font-weight: $font-weight-extrabold;
-
-        span {
-            color: $light-grey;
-            font-size: $core-font-size * .9;
-        }
-
-    }
 }
