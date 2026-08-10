@@ -1085,17 +1085,3 @@
     }
 }
 
-.g-swipercarousel-panel-indicator {
-    width: 96px;
-    height: 50px;
-    position: absolute;
-    left: 0;
-    z-index: 2;
-
-    .dir-rtl & {
-        left: 200px;
-    }
-
-    transition: all 0.2s ease-out;
-    top: (-1 * ($content-margin + $content-padding + 0.95rem));
-}
