@@ -1438,19 +1438,6 @@ input[type=submit] {
   flex-basis: 100%;
 }
 
-#g-offcanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: left;
-  display: none;
-  -webkit-overflow-scrolling: touch;
-}
-
 .g-offcanvas-toggle {
   display: block;
   position: absolute;
@@ -1459,45 +1446,14 @@ input[type=submit] {
   z-index: 10;
   line-height: 1;
   cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
 }
 
-.g-offcanvas-active {
-  overflow-x: hidden;
-}
-
-.g-offcanvas-open {
-  overflow: hidden;
-}
-.g-offcanvas-open body, .g-offcanvas-open #g-page-surround {
-  overflow: hidden;
-}
-.g-offcanvas-open .g-nav-overlay {
-  z-index: 15;
-  position: absolute;
-  opacity: 1;
-  height: 100%;
-}
-.g-offcanvas-open #g-offcanvas {
-  display: block;
-}
-
-.g-offcanvas-left #g-page-surround {
-  left: 0;
-}
-
-.g-offcanvas-right #g-offcanvas {
-  left: inherit;
-}
 .g-offcanvas-right .g-offcanvas-toggle {
   left: inherit;
   right: 0.7rem;
-}
-.g-offcanvas-right #g-page-surround {
-  right: 0;
-}
-
-.g-offcanvas-left #g-offcanvas {
-  right: inherit;
 }
 
 .g-audioplayer .g-audioplayer-info {

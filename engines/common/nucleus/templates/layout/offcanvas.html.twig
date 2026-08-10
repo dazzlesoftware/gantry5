@@ -1,5 +1,7 @@
-{% set attr_class = segment.attributes.class ? ' class="' ~ segment.attributes.class|e ~ '"' %}
+{% do genesis.load('bootstrap.5') %}
 {% set attr_extra = segment.attributes.extra|attribute_array %}
+{% set position = segment.attributes.position|default('g-offcanvas-left') %}
+{% set bs_side = position == 'g-offcanvas-right' ? 'offcanvas-end' : 'offcanvas-start' %}
 
 {% set offcanvas %}
     {% for child in segment.children %}
@@ -7,8 +9,18 @@
     {% endfor %}
 {% endset %}
 
+{#- Real Bootstrap 5 Offcanvas: Bootstrap's own JS (loaded above) drives
+   show/hide/backdrop/focus-trap/Escape via the header toggle button's
+   data-bs-toggle="offcanvas" / data-bs-target="#g-offcanvas" (see
+   page.html.twig). No custom drag/slide JS. Note this is a narrower
+   drawer-over-content panel (Bootstrap's default), not the previous
+   full-viewport push-the-page panel — see BOOTSTRAP_MIGRATION_ROADMAP.md
+   Stage 3 for context. Touch-swipe-to-open/close is not reimplemented;
+   Bootstrap has no built-in equivalent. #}
 {%- if segment.attributes.sticky or offcanvas|trim -%}
-<div id="g-offcanvas" {{ attr_class|raw }} {{- attr_extra|raw }} data-g-offcanvas-swipe="{{ segment.attributes.swipe|default('1') }}" data-g-offcanvas-css3="{{ segment.attributes.css3animation|default('1') }}">
-    {{ offcanvas|raw -}}
+<div id="g-offcanvas" class="offcanvas {{ bs_side }}{{ segment.attributes.class ? ' ' ~ segment.attributes.class|e }}" tabindex="-1" aria-label="Offcanvas"{{- attr_extra|raw }}>
+    <div class="offcanvas-body">
+        {{ offcanvas|raw -}}
+    </div>
 </div>
 {% endif %}
