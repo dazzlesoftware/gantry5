@@ -156,19 +156,3 @@
     }
 }
 
-.g-profile-wrapper {
-    @include breakpoint (desktop-range) {
-        width: 100%;
-        flex: 0 100%;
-    }
-
-    @include breakpoint (tablet-range) {
-        width: 100%;
-        flex: 0 100%;
-    }
-
-    @include breakpoint (mobile-only) {
-        width: 100%;
-        flex: 0 100%;
-    }
-}

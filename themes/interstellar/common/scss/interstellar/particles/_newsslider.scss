@@ -157,21 +157,6 @@
     }
 }
 
-.g-newsslider-preview-headerdesc {
-    font-size: $core-font-size + 0.35;
-    font-weight: $font-weight-regular;
-    line-height: $core-line-height;
-    @include breakpoint(tablet-range) {
-        font-size: $core-font-size + 0.15;
-    }
-    @include breakpoint(mobile-only) {
-        font-size: $core-font-size + 0.1;
-    }
-    @include breakpoint(small-mobile-range) {
-        display: none;
-    }
-}
-
 .g-newsslider-preview-desc {
     @include breakpoint(mobile-only) {
         display: none;
