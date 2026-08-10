@@ -59,17 +59,11 @@
     &.highlighted {
         .g-pricingtable-plan, .g-pricingtable-price {
             background: $accent-color-1;
-            .g-style-preset5 & {
-                background: $accent-color-2;
-            }
         }
 
         .g-pricingtable-price {
             &:after {
                color: $accent-color-1;
-                .g-style-preset5 & {
-                    color: $accent-color-2;
-                }
             }
         }
     }
