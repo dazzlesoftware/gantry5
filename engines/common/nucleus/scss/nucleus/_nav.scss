@@ -201,8 +201,10 @@
 				flex-grow: 0;
 				flex-basis: 100%;
 		    }
-		    // Dropdown is Active When Its Parent is Clicked
-			&.g-active {
+		    // Dropdown is Active When Its Parent is Clicked (legacy hover/touch
+		    // JS path) OR when Bootstrap's own Dropdown JS toggles .show (click
+		    // path) -- both need to flip opacity/visibility, not just one.
+			&.g-active, &.show {
 				@extend %active-dropdown;
 			}
 		}
@@ -240,8 +242,10 @@
 				position: relative;
 				overflow: hidden;
 			}
-			// Dropdown is Active When Its Parent is Clicked
-			&.g-active {
+			// Dropdown is Active When Its Parent is Clicked (legacy hover/touch
+			// JS path) OR when Bootstrap's own Dropdown JS toggles .show (click
+			// path) -- both need to flip opacity/visibility, not just one.
+			&.g-active, &.show {
 				@extend %active-dropdown;
 			}
 

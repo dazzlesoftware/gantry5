@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.g-main-nav .g-fullwidth .g-dropdown.g-active, .g-main-nav .g-standard .g-dropdown.g-active {
+.g-main-nav .g-fullwidth .g-dropdown.g-active, .g-main-nav .g-fullwidth .g-dropdown.show, .g-main-nav .g-standard .g-dropdown.g-active, .g-main-nav .g-standard .g-dropdown.show {
   opacity: 1;
   visibility: visible;
   overflow: visible;
