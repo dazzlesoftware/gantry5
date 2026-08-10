@@ -20,8 +20,8 @@ form:
     titlemarginbottom: {type: input.number, label: Title Bottom Margin, min: 0, default: 20}
     titlealignment: {type: select.select, label: Title Alignment, default: left, options: {left: Left, center: Center, right: Right}}
     apikey: {type: input.text, label: Google Maps API Key}
-    latitude: {type: input.text, label: Latitude, default: '53.251469'}
-    longitude: {type: input.text, label: Longitude, default: '-113.558581'}
+    latitude: {type: input.text, label: Latitude, default: '51.497310'}
+    longitude: {type: input.text, label: Longitude, default: '-0.135610'}
     infowindow: {type: textarea.textarea, label: Primary Marker Information}
     markericon: {type: input.imagepicker, label: Primary Marker Icon}
     maptype: {type: select.select, label: Map Type, default: ROADMAP, options: {ROADMAP: Roadmap, SATELLITE: Satellite, HYBRID: Hybrid, TERRAIN: Terrain}}
