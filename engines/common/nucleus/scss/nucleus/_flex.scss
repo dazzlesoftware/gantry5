@@ -9,11 +9,17 @@
 }
 
 // Grid Row and Column Setup
+//
+// Built on Bootstrap's make-row()/make-col-ready() mixins (see
+// nucleus/_bootstrap-grid.scss) so .g-grid/.g-block carry the same
+// --bs-gutter-x/-y plumbing later milestones' .col-N classes rely on.
+// $grid-gutter-width is 0, so this is visually identical to the plain
+// flex row/item rules it replaces.
 .g-grid {
-	display: flex;
+	@include make-row();
 	flex-flow: row wrap;
 	list-style: none;
-	margin: 0;
+	margin-bottom: 0;
 	padding: 0;
 	text-rendering: optimizespeed;
 	&.nowrap {
@@ -22,6 +28,7 @@
 }
 
 .g-block {
+	@include make-col-ready();
 	flex: 1;
 	min-width: 0;
 	min-height: 0;

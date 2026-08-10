@@ -1,6 +1,8 @@
-// TODO: Make sure you have Joomla Bootstrap symlinked
-//  from JOOMLA4_INSTALL/media/vendor/bootstrap/scss
-//  to GENESIS/engines/joomla/nucleus/scss/vendor/bootstrap5
+// Bootstrap 5 vendor SCSS now lives at
+// engines/common/nucleus/scss/vendor/bootstrap5 (shared across all engines
+// as of the nucleus grid migration - see NUCLEUS_BOOTSTRAP_MIGRATION.md).
+// Resolved via the same genesis-engine://scss search path every theme
+// already uses to reach engines/common/nucleus/scss.
 
 // Bootstrap functions
 @import "vendor/bootstrap5/functions";

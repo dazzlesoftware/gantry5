@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** In progress — M1
+**Status:** M1 done, M2 not started
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -61,6 +61,23 @@ this migration.
 once considered: `//grids? //console.log((size / 12) * (100 / 12));` —
 never implemented.
 
+### How `nucleus.scss` actually reaches the page (undocumented until now)
+
+Confirmed by tracing the compiler, since no README/doc anywhere in the repo
+describes this: `.g-grid` / `.g-block` / `.size-N` are **not** compiled into
+each theme's own output CSS. A theme's `_dependencies.scss` only pulls in
+nucleus *variables/mixins* (`nucleus/functions/base`, `nucleus/mixins/base`,
+`nucleus/theme/base`) — never `nucleus/flex`, `nucleus/sizes`, or
+`nucleus/core`. Those three are imported **only** by
+`engines/common/nucleus/scss/nucleus.scss` itself, which compiles to its own
+standalone stylesheet at `engines/common/nucleus/css-compiled/nucleus.css`
+(found empirically — `find . -iname nucleus.css` in the repo) and is loaded
+on every page across all engines/themes, independently of each theme's own
+compiled CSS. This is why grid-engine changes in
+`engines/common/nucleus/scss` reach every theme immediately without
+touching per-theme SCSS at all, and why M1 is a single edit in one shared
+file rather than 53 theme-by-theme changes.
+
 ### Existing Bootstrap footprint
 
 `engines/joomla/nucleus/scss/vendor/bootstrap5/` is a full vendored
@@ -73,23 +90,63 @@ this migration.
 
 ## Milestones
 
-### M1 — Grid-only SCSS foundation (no visual change)
+### M1 — Grid-only SCSS foundation (no visual change) — done
 
-- Promote the vendored Bootstrap 5 SCSS from
+- Promoted the vendored Bootstrap 5 SCSS from
   `engines/joomla/nucleus/scss/vendor/bootstrap5` to
-  `engines/common/nucleus/scss/vendor/bootstrap5` so all engines share
-  one copy.
-- Import **only** `functions`, `variables`, `mixins/grid`, and `grid`.
-  Do **not** import reboot/reset or component styles — that would
-  overwrite existing theme typography/base styles and break "same look
-  and feel."
-- Configure `$grid-gutter-width` to match nucleus's current spacing
-  model (verify first — see Open Questions) and map `$grid-breakpoints`
-  to nucleus's existing 5 breakpoints so responsive behavior doesn't
-  shift.
-- Alias `.g-grid` / `.g-block` onto Bootstrap's `.row` / `.col` output
-  initially, so nothing downstream breaks yet. Verify with a visual diff
-  against 2–3 themes before proceeding.
+  `engines/common/nucleus/scss/vendor/bootstrap5` (`git mv`, 82 files) so
+  all engines share one copy. Joomla's `bootstrap5.scss` (Cassiopeia admin
+  build) needed no path changes — its relative `@import "vendor/
+  bootstrap5/..."` already resolves through the same `genesis-engine://
+  scss` search path every theme uses to reach `engines/common/nucleus/
+  scss` (confirmed via `ThemeTrait::compiler()` → `CssCompiler::setPaths()`
+  → `configuration.css.paths: [genesis-theme://scss, genesis-engine://
+  scss]`). Compile-checked with dart-sass; no errors, ~9600 lines of
+  output, unchanged from before the move.
+- New `engines/common/nucleus/scss/nucleus/_bootstrap-grid.scss` imports
+  **only** `functions`, `mixins/breakpoints` (needed by `mixins/grid`'s
+  `breakpoint-infix()`/`media-breakpoint-up()` — not listed in the
+  original plan, discovered via a compile error), `variables`,
+  `mixins/grid`, and `grid`. No reboot/reset or component styles
+  imported.
+- **Gutter model resolved:** nucleus has no grid-level gutter at all
+  today — `.g-grid`/`.g-block` had zero margin/padding beyond `margin:0;
+  padding:0;`. All visible spacing between blocks comes entirely from
+  particle-level `$content-padding`/`$content-margin` (used pervasively
+  in every particle's own SCSS, confirmed throughout the Stage 2 sweep).
+  So `$grid-gutter-width: 0` exactly matches current behavior — no
+  guessing required.
+- **Breakpoint mapping resolved:** nucleus's 5 named breakpoints map onto
+  Bootstrap's `$grid-breakpoints` keys 1:1 with no approximation needed —
+  `xs:0, sm:30rem (large-mobile-container), md:48rem
+  (tablet-container), lg:60rem (desktop-container), xl:75rem
+  (large-desktop-container)`. Confirmed by compiling and checking the
+  generated `@media (min-width: 30rem)` etc. rules land exactly where
+  nucleus's own `breakpoint()` mixin ranges already do.
+- `.g-grid` now built on `make-row()`, `.g-block` on `make-col-ready()`
+  (both in `_flex.scss`, right after `_bootstrap-grid.scss` in
+  `nucleus.scss`'s import order — legacy `@import` makes the mixins
+  globally visible there with no separate import needed). `.size-N`
+  (`_sizes.scss`) is untouched and still wins the cascade for
+  width/flex/max-width, same source-order relationship as before.
+  Verified with a full before/after diff of the compiled `nucleus.css`:
+  the **only** lines that changed anywhere in the ~7100-line file are
+  inside `.g-grid`/`.g-block` themselves, and every changed property
+  resolves to the same computed value as before (the new `--bs-gutter-x/
+  -y`-driven margin/padding calc()s all evaluate to 0). One edge case
+  checked by hand: `.g-block` with no paired `.size-N` (when
+  `ThemeTrait::toGrid()` returns `''` for a falsy size) now also carries
+  `width:100%`/`max-width:100%` from `make-col-ready()`, but since
+  `.g-block`'s own `flex:1` sets `flex-basis:0%` (not `auto`), flexbox's
+  sizing algorithm still uses flex-basis over width for the main axis —
+  no visual difference in this case either.
+- Not yet done from the original M1 wording: `make-grid-columns()`
+  (pulled in by the `grid` partial) also generates real `.col`/`.col-N`/
+  `.offset-N`/`.row-cols-*` classes and Bootstrap's own `.g-0`–`.g-5`/
+  `.gx-*`/`.gy-*` gutter utilities — all unused by any current twig/theme
+  (confirmed via repo-wide grep, no collision with Gantry's own `.g-*`
+  namespace). Left in place rather than suppressed since M2 will start
+  consuming `.col-N` directly; harmless dead weight in the meantime.
 
 ### M2 — PHP rendering: percentage → per-breakpoint column span
 
@@ -155,15 +212,16 @@ paths. Write up the new grid model — there is currently no documentation
 of the grid architecture anywhere in the repo (checked `README.md`,
 `themes/README.md`, `PARTICLES_MAP.md`; none describe it).
 
-## Open questions / risks still to resolve before M1 finishes
+## Open questions / risks still to resolve before M2 starts
 
-1. **Gutter model** — confirm how spacing between blocks is currently
-   achieved (particle padding vs. grid-level gutter) before locking
-   `$grid-gutter-width`. Getting this wrong is the most likely way to
-   visibly change "look and feel" even with correct column math.
-3. **Live-site data migration** — the % → column snap on existing
+1. **Live-site data migration** — the % → column snap on existing
    outlines is a one-way change. Needs a version flag on outlines and a
    rollback plan before shipping to any production site.
+
+Resolved in M1: gutter model (no grid-level gutter exists today, so
+`$grid-gutter-width: 0`) and breakpoint mapping (nucleus's 5 breakpoints
+map onto Bootstrap's `$grid-breakpoints` keys 1:1, no approximation) — see
+the M1 section above for details.
 
 ## Decisions already made
 
@@ -178,9 +236,10 @@ of the grid architecture anywhere in the repo (checked `README.md`,
   than parity-only: `toGrid()`, `Layout::calcWidths()`/`prepareWidths()`,
   the outline schema, and the admin column-count picker (M3) all need to
   carry a per-breakpoint map rather than one integer. Nucleus's 5 named
-  breakpoints (see `_breakpoints.scss`) map onto Bootstrap's breakpoint
-  set (§ to confirm exact mapping in M1) — existing flat `.size-N` values
-  seed the *default/mobile-first* breakpoint's column count on migration;
+  breakpoints (see `_breakpoints.scss`) map onto Bootstrap's `$grid-
+  breakpoints` keys 1:1 (confirmed and implemented in M1) — existing flat
+  `.size-N` values seed the *default/mobile-first* breakpoint's column
+  count on migration;
   narrower/wider breakpoint overrides start unset (inherit) until an
   admin explicitly sets them, so no data is fabricated for breakpoints
   nothing was ever authored for.
