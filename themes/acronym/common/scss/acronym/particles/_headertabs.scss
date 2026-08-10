@@ -82,20 +82,6 @@
         }
     }
 
-    .g-headertabs-content-text {
-        flex: 0 1 80%;
-        width: 80%;
-
-        @include breakpoint(tablet-range) {
-            flex: 0 1 100%;
-            width: 100%;
-        }
-
-        @include breakpoint(mobile-only) {
-            flex: 0 1 100%;
-            width: 100%;
-        }
-    }
 }
 
 .ui-tabs-active {

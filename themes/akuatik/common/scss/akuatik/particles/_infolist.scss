@@ -286,46 +286,4 @@
         }
     }
 
-    .g-infolist-textstyle-header {
-        .g-infolist-tags .g-tag {
-            font-size: $h3-font-size;
-            text-transform: uppercase;
-            line-height: 2.5rem;
-        }
-
-        .g-infolist-item-title {
-            font-size: $h2-font-size;
-            text-transform: uppercase;
-            line-height: 3rem;
-        }
-
-        .g-infolist-item-desc {
-            font-size: $h5-font-size;
-            line-height: 2rem;
-            opacity: 0.8;
-            padding: 0;
-        }
-
-        .g-infolist-item-desc,
-        .g-infolist-item-title,
-        .g-infolist-tags,
-        .g-infolist-tags .g-tag {
-            text-rendering: optimizeLegibility;
-            font-family: get-font-family($font-family-default);
-            font-weight: bold;
-            margin: 0;
-
-            a {
-                color: inherit;
-
-                &:hover {
-                    opacity: 0.75;
-                }
-            }
-        }
-
-        .g-infolist-link {
-            margin-top: 0;
-        }
-    }
 }

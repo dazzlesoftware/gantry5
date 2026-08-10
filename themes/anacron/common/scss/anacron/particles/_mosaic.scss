@@ -1,29 +1,6 @@
 .g-mosaic {
     position: relative;
 
-    //Pattern
-    .g-mosaic-pattern {
-        width: 115%;
-        height: 100%;
-        position: absolute;
-        left: -3rem;
-        top: 10vw;
-        pointer-events: none;
-
-        @include breakpoint(mobile-only) {
-            width: 130%;
-        }
-
-        path.g-mosaic-pattern-1 {
-            fill: transparentize($accent-color-1, 0.80);
-            fill-rule: "evenodd";
-        }
-        path.g-mosaic-pattern-2 {
-            fill: transparentize($accent-color-2, 0.80);
-            fill-rule: "evenodd";
-        }
-    }
-
     // Header
     .g-mosaic-header {
         display: flex;

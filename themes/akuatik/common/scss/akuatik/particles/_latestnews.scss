@@ -347,12 +347,6 @@
                     @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
                 }
 
-                .g-latestnews-grid-item-button {
-                    display: block;
-                    margin-top: 5px;
-                    color: darken($base-text-color, 40%);
-                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-                }
             }
 
             &:hover {
@@ -362,9 +356,6 @@
                         text-decoration-color: inherit;
                     }
 
-                    .g-latestnews-grid-item-button {
-                        text-decoration: underline;
-                    }
                 }
             }
         }
