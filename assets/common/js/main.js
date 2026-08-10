@@ -1,5 +1,5 @@
 (() => {
-  // application/menu/index.js
+  // assets/common/application/menu/index.js
   var closest = (element, selector) => element instanceof Element ? element.closest(selector) : null;
   var Menu = class {
     constructor(options = {}) {
@@ -117,7 +117,7 @@
   };
   var menu_default = Menu;
 
-  // application/offcanvas/index.js
+  // assets/common/application/offcanvas/index.js
   var Offcanvas = class {
     constructor() {
       this.offcanvas = document.querySelector("#g-offcanvas");
@@ -158,7 +158,7 @@
   };
   var offcanvas_default = Offcanvas;
 
-  // application/totop/index.js
+  // assets/common/application/totop/index.js
   var initializeToTop = () => {
     const toTop = document.querySelector("#g-totop");
     if (!toTop) {
@@ -176,7 +176,7 @@
     initializeToTop();
   }
 
-  // application/main.js
+  // assets/common/application/main.js
   var ready = (callback) => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback, { once: true });
