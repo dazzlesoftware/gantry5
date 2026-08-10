@@ -861,10 +861,6 @@
                         }
 
                         &.ui-accordion-header-active {
-                            .ui-accordion-header-icon {
-                                display: none;
-                            }
-
                             .indicator {
                                 color: $accent-color-2;
                                 border-color: $accent-color-2;

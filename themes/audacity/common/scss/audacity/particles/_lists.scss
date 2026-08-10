@@ -129,9 +129,6 @@
 		}
 					}
 
-                        .ui-accordion-header-icon {
-                            display: none;
-                        }
 
 						.indicator {
 							opacity: 1;
@@ -140,12 +137,6 @@
 								padding: 0;
 							}
 						}
-					}
-				}
-				.ui-accordion-content {
-					.g-swipercarousel-item-desc {
-						font-family: get-font-family($font-family-alt);
-						padding-left: 5px;
 					}
 				}
 			}
