@@ -52,15 +52,48 @@ YAML class values; mosaic's layout/variation variants are real dynamic-value
 classes). Every action taken was independently re-verified against twig +
 JS + YAML + all 4 platform-specific engines before touching anything.
 
+**Correction (caught while chasing the `g-pricingtable-subtitle` follow-up
+below):** 3 of the deletions in the long-tail commit were themselves false
+positives, reverted in a follow-up commit —
+- `g-pricingtable-accent1`/`-accent2`/`-item-0` (acronym): all live.
+  `accent` is a real select field (options: accent1/accent2) in acronym's
+  own `pricingtable.yaml`, rendered as `g-pricingtable-{{ table.accent }}`;
+  `table.items` is a plain array so the for-loop's `key` starts at 0,
+  making `-item-0` the real first item. Missed because a literal-string
+  grep can never match a template expression — the same blind spot
+  avoided elsewhere (`blocknumber`, `dynamictabs`, mosaic's layout/
+  variation classes) but missed here since acronym's own twig was never
+  actually opened before deleting.
+- `g-simplecontent-layout-header` (acronym AND akuatik): also live. The
+  twig explicitly checks `item.layout == 'header'` and renders
+  `g-simplecontent-layout-{{ item.layout }}`; `simplecontent.yaml`'s
+  layout field has options `standard`/`header`. This was the single
+  biggest deletion in that commit (a whole variant, 5-6 nested selectors
+  per file) — fully reverted.
+
+Lesson generalized: **a literal-string grep across twig/JS/YAML is not
+sufficient ground-truth verification on its own — it must be paired with
+actually reading the theme's own twig for dynamic `{{ }}` interpolation
+before deleting anything**, every time, not just for the classes that
+"look" dynamic.
+
+Re-verified every other deletion from that commit the same way
+(gridstatistic, headertabs, infolist, contact, latestnews) — all confirmed
+genuinely dead against the real twig + yaml options, no further reverts
+needed.
+
+**`g-pricingtable-subtitle` (acronym) — resolved, not a bug.** Turned out
+core doesn't have a "pricingtable" particle at all (core has an unrelated
+"pricing" particle) — acronym's own `pricingtable.html.twig` is a fully
+independent, self-contained particle with no `subtitle` field anywhere in
+its own twig or yaml. Not dead code and not a missing feature to add
+unprompted — just a theme with a little more SCSS than its own particle
+currently uses. Left as-is.
+
 **Still open:**
 - The other ~33 themes were never audited at all (out of scope so far —
   each would need the same per-theme ground-truth verification, which
   repeatedly proved necessary even within the 4 themes done).
-- `g-pricingtable-subtitle` (acronym) — real in xenon's/antares's own
-  `pricingtable.html.twig`, so acronym's identically-named SCSS rule likely
-  predates a schema difference (same shape as `heading`/`timeline` in
-  Stage 1) rather than being dead. Needs a twig-level fallback check
-  against core's pricingtable particle, not deletion. Not yet done.
 
 ## Stage 3 — Layout Manager grid/section/offcanvas engine — offcanvas piece done
 
@@ -106,8 +139,14 @@ affects every page on every theme across all 4 platforms.
   making it `display:block` yet still `opacity:0`/`visibility:hidden` —
   present in layout but fully invisible. Fixed by extending the opacity/
   visibility rule from both triggers. See `_nav.scss`.
-- `totop/index.js`, `utils/ajaxify-links.js` — not yet audited, lower
-  priority (smaller files, less likely to have the same class of issue).
+- `totop/index.js` — audited: 18 lines, trivial scroll-to-top click
+  handler, no legacy cruft, nothing Bootstrap-related to reconcile.
+- `utils/ajaxify-links.js` — turned out to be mis-tracked here. It lives
+  under `platforms/common/application/utils/`, not `assets/`, and is part
+  of the Layout Manager's **admin-side** AJAX page-transition system
+  (`#navbar`, `#main-header`, the configuration-selector) — not a
+  front-end theme asset at all. Belongs in "Out of scope" below, same as
+  the drag-and-drop grid editor.
 
 ## Stage 5 — Per-platform particles (outside `engines/common/nucleus`) — not started
 
@@ -127,3 +166,7 @@ the same redundant-class pattern than a structural conversion.
 
 - `engines/common/nucleus/admin` — the Layout Manager's drag-and-drop grid
   editor UI. Separate concern from front-end rendering.
+- `platforms/common/application/utils/ajaxify-links.js` (and likely its
+  neighbors under `platforms/common/application/`) — admin-side AJAX
+  page-transition system for the Layout Manager backend, not a front-end
+  asset.
