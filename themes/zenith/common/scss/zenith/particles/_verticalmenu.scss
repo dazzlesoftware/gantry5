@@ -111,17 +111,6 @@ span.icon-vertical-menu {
         }
     }
 }
-.g-preset-thumbnails a {
-    position: relative;
-    display: block;
-    -webkit-transition: color 0.1s;
-    transition: color 0.1s;
-
-    &:hover {
-        color: $white;
-    }
-}
-
 .menu__link  {
     position: relative;
     text-transform: uppercase;
