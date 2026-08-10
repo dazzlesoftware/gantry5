@@ -123,23 +123,6 @@
                 }
             }
         }
-
-        // 5 Columns
-        &.cols-5 {
-
-            .g-testimonials-grid-item,
-            .g-testimonials-grid-sizer {
-                width: 20%;
-
-                @include breakpoint(tablet-range) {
-                    width: 50%;
-                }
-
-                @include breakpoint(mobile-only) {
-                    width: 100%;
-                }
-            }
-        }
     }
 
     .g-testimonials-content {
@@ -180,29 +163,4 @@
 
     }
 
-    .g-testimonials-author {
-        flex-direction: column;
-        display: flex;
-        font-size: $core-font-size * 1.2;
-        font-weight: $font-weight-extrabold;
-
-        span {
-            color: $light-grey;
-            font-size: $core-font-size * .9;
-        }
-
-        .dir-rtl & {
-            padding-left: 0;
-            padding-right: $content-padding * .7;
-        }
-
-        @include breakpoint(mobile-only) {
-            right: 10%;
-
-            .dir-rtl & {
-                left: 10%;
-                right: auto;
-            }
-        }
-    }
 }

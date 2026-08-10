@@ -74,11 +74,6 @@
                 flex: none;
             }
 
-            .g-imagegrid-item-desc-title {
-                padding: 0 $content-padding;
-                @include responsive-font($responsive-font-size + 0.4, $core-font-size + 0.2, false, false);
-            }
-
             .g-imagegrid-item-desc-subtitle {
                 padding: 0 $content-padding ($content-padding / 3);
                 font-size: $core-font-size - 0.2;
