@@ -57,14 +57,6 @@
                     & { line-height: normal; }
                 }
 
-                .g-newsslider-carousel-item-meta {
-                    color: transparentize($white, 0.50);
-                    @include responsive-font($responsive-font-size - 0.3, $core-font-size - 0.2, false, false);
-
-                    div {
-                        display: inline-block;
-                    }
-                }
             }
 
             &:hover, &.current {
