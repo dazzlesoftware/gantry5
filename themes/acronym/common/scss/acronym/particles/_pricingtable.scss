@@ -147,6 +147,11 @@
         font-weight: $font-weight-regular;
         padding-bottom: $content-margin;
 
+        &.g-pricingtable-item-0 {
+            position: relative;
+            padding-top: $content-padding;
+        }
+
         .fa {
             color: $accent-color-1;
             padding-right: $content-margin;
@@ -159,3 +164,48 @@
     }
 }
 
+.g-pricingtable-accent1 {
+    .g-pricingtable {
+        .g-pricingtable-plan a, .g-pricingtable-price, .g-pricingtable-item .fa, .g-pricingtable-item, .g-pricingtable-period {
+            color: $accent-color-1;
+        }
+
+        .button {
+            background: $accent-color-1;
+            color: $white;
+            border: 1px solid transparent;
+
+            &:hover, &:active, &:focus {
+                background: darken($accent-color-1 ,20%);
+                color: $white;
+            }
+        }
+
+        .g-pricingtable-ribbon {
+            background-color: $accent-color-1;
+        }
+    }
+}
+
+.g-pricingtable-accent2 {
+    .g-pricingtable {
+        .g-pricingtable-plan a, .g-pricingtable-price, .g-pricingtable-item .fa, .g-pricingtable-item, .g-pricingtable-period {
+            color: $accent-color-2;
+        }
+
+        .button {
+            background: $accent-color-2;
+            color: $white;
+            border: 1px solid transparent;
+
+            &:hover, &:active, &:focus {
+                background: darken($accent-color-2 ,20%);
+                color: $white;
+            }
+        }
+
+        .g-pricingtable-ribbon {
+            background-color: $accent-color-2;
+        }
+    }
+}
