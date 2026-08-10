@@ -158,14 +158,6 @@
             cursor: pointer;
             will-change: auto !important;
 
-            a.g-recentreviews-link-overlay {
-                position: absolute;
-                z-index: 10;
-                width: 100%;
-                height: 100%;
-                top: 0;
-            }
-
             .g-recentreviews-grid-item-wrapper {
                 position: relative;
                 display: flex;
@@ -262,38 +254,12 @@
                     }
                 }
         
-                .g-recentreviews-grid-item-subtitle {
-                    color: $black;
-                    opacity: 0.3;
-                    font-weight: $font-weight-regular;
-                    margin-top: $content-margin;
-                    @include responsive-font($responsive-font-size - 0.3, $core-font-size, false, false);
-                }
-
-                .g-recentreviews-grid-item-case {
-                    color: $black;
-                    @include responsive-font($responsive-font-size - 0.4, $core-font-size - 0.2, false, false);
-                    & { font-weight: $font-weight-regular; }
-                    & { background: transparent; }
-                    & { display: inline-block; }
-                    & { letter-spacing: 3px; }
-                    & { clear: both; }
-                    & { margin-bottom: $content-margin - 0.3; }
-                    & { text-transform: uppercase; }
-                }
-
                 .g-recentreviews-grid-item-description {
                     opacity: 0.8;
                     margin-top: ($content-margin + 0.5);
                     @include responsive-font($responsive-font-size - 0.1, $core-font-size, false, false);
                 }
 
-                .g-recentreviews-grid-item-button {
-                    display: block;
-                    margin-top: 5px;
-                    color: darken($base-text-color, 40%);
-                    @include responsive-font($responsive-font-size - 0.2, $core-font-size, false, false);
-                }
             }
 
             &:hover {
@@ -301,10 +267,6 @@
                     .g-recentreviews-grid-item-title {
                         text-decoration: underline;
                         text-decoration-color: inherit;
-                    }
-
-                    .g-recentreviews-grid-item-button {
-                        text-decoration: underline;
                     }
                 }
             }

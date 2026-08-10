@@ -97,15 +97,6 @@
             font-size: $core-font-size + 0.9;
         }
 
-        .g-simplecontent-link {
-            display: block;
-            color: $white;
-            &:hover {
-                text-decoration: underline;
-                opacity: .7;
-            }
-
-        }
     }
 
     .g-simplecontent-item-main-content {
