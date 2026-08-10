@@ -18,6 +18,28 @@
 
 .g-main-nav {
     z-index: 20;
+
+	// Bootstrap's dropdown caret shares the same pseudo-element as the
+	// Gantry parent indicator. Reset the Bootstrap triangle so Ambrosia only
+	// renders its Font Awesome chevron, and keep that chevron when open.
+	.g-menu-item-container.dropdown-toggle:after {
+		display: none;
+	}
+
+	.g-menu-parent-indicator.dropdown-toggle:after {
+		border: 0;
+		margin-left: 0;
+		vertical-align: baseline;
+	}
+
+	.g-toplevel > li.g-parent.g-selected > .g-menu-item-container > .g-menu-parent-indicator:after {
+		content: $fa-chevron-down;
+	}
+
+	.g-sublevel > li.g-parent.g-selected > .g-menu-item-container > .g-menu-parent-indicator:after {
+		content: $fa-chevron-right;
+	}
+
 	.g-standard {
 		.g-dropdown {
 	    	@extend %dropdown-column;
