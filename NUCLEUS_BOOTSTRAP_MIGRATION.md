@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** Planning
+**Status:** In progress — M1
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -91,33 +91,43 @@ this migration.
   initially, so nothing downstream breaks yet. Verify with a visual diff
   against 2–3 themes before proceeding.
 
-### M2 — PHP rendering: percentage → column span
+### M2 — PHP rendering: percentage → per-breakpoint column span
 
-- Change `ThemeTrait::toGrid()` to consume/emit a column index
-  (`col-6`) instead of a float-percentage class name.
+- Change `ThemeTrait::toGrid()` to consume/emit a **map of breakpoint →
+  column index** (rendering e.g. `col-6 col-md-4 col-lg-3`) instead of a
+  single float-percentage class name. A block with no override at a
+  given breakpoint emits no class for that breakpoint (inherits from the
+  next narrower one, same as Bootstrap's own cascade).
 - Rewrite `Layout::calcWidths()` / `prepareWidths()` to do integer
-  column-sum math (out of 12) instead of float percentage rebalancing.
+  column-sum math (out of 12) **per breakpoint independently** instead of
+  float percentage rebalancing — siblings only need to sum to 12 at a
+  breakpoint where any of them has an explicit override.
 - **Migration for existing installs:** existing outlines store `size` as
-  a float percentage. On layout load, lazily snap each block's `size` to
-  the nearest `/12` column count (nearest 8.33% increment), write the
-  new integer back, and keep a schema-version flag until the outline is
-  confirmed re-saved. Layouts using sevenths/ninths/elevenths will not
-  map cleanly onto 12 columns — accept the minor reflow and surface it
-  during theme QA (M5) rather than treating the conversion as lossless.
+  a single float percentage. On layout load, lazily snap that value to
+  the nearest `/12` column count (nearest 8.33% increment) and store it
+  as the *default* breakpoint's column count; all other breakpoints
+  start with no override (inherit). Keep a schema-version flag until the
+  outline is confirmed re-saved. Layouts using sevenths/ninths/elevenths
+  will not map cleanly onto 12 columns — accept the minor reflow and
+  surface it during theme QA (M5) rather than treating the conversion as
+  lossless.
 
-### M3 — Admin UI: column-count selection instead of free drag
+### M3 — Admin UI: per-breakpoint column-count selection instead of free drag
 
-- `block.js`: switch `setSize()`/`setAnimatedSize()` from writing
-  inline `flex: 0 1 N%` to toggling a `col-N` class (integer 1–12).
+- `block.js`: switch `setSize()`/`setAnimatedSize()` from writing a
+  single inline `flex: 0 1 N%` to toggling a set of `col-N`/`col-{bp}-N`
+  classes, one per breakpoint the admin has explicitly set.
 - `drag.resizer.js`: replace the free-drag percentage interaction with a
-  stepper/select control per block for choosing column count 1–12, per
-  the agreed direction (admin picks column count rather than drags to
-  resize).
+  per-breakpoint stepper/select control (a small breakpoint switcher —
+  e.g. tabs for the 5 nucleus breakpoints — each holding its own
+  1–12-or-inherit column picker), per the agreed direction (admin picks
+  column count rather than drags to resize).
 - `normalize-grid-sizes.js`: rewrite the rebalance algorithm to
   distribute integer columns summing to 12 (e.g. largest-remainder
-  method) instead of dividing floats.
+  method), run independently per breakpoint that has any explicit
+  override among the row's blocks.
 - Update `Layouts.php` / `LayoutEvent.php` / `LayoutReader.php` to store
-  the integer column count as the canonical value.
+  the per-breakpoint column-count map as the canonical value.
 
 ### M4 — Roll through engines
 
@@ -145,22 +155,15 @@ paths. Write up the new grid model — there is currently no documentation
 of the grid architecture anywhere in the repo (checked `README.md`,
 `themes/README.md`, `PARTICLES_MAP.md`; none describe it).
 
-## Open questions / risks to resolve before M1 starts
+## Open questions / risks still to resolve before M1 finishes
 
 1. **Gutter model** — confirm how spacing between blocks is currently
    achieved (particle padding vs. grid-level gutter) before locking
    `$grid-gutter-width`. Getting this wrong is the most likely way to
    visibly change "look and feel" even with correct column math.
-2. **Non-12-divisible legacy widths** — decide whether to accept minor
-   reflow for 7ths/9ths/11ths, or keep a small set of legacy fraction
-   classes alive as an escape hatch alongside the Bootstrap grid.
 3. **Live-site data migration** — the % → column snap on existing
    outlines is a one-way change. Needs a version flag on outlines and a
    rollback plan before shipping to any production site.
-4. **Responsive column spans** — nucleus's current `.size-N` classes are
-   flat (not per-breakpoint). Decide whether M1–M4 ship a flat (single)
-   column count per block (parity with today) and defer true responsive
-   spans (`col-md-6 col-lg-4`) to a later phase, or take on both at once.
 
 ## Decisions already made
 
@@ -169,3 +172,19 @@ of the grid architecture anywhere in the repo (checked `README.md`,
 - Fully replace nucleus's grid framework rather than layering Bootstrap
   Sass alongside it.
 - Admin UX changes from drag-to-resize to selecting a column count.
+- **Responsive column spans, not flat.** Each block will carry a
+  per-breakpoint column count (e.g. `col-6 col-md-4 col-lg-3`), not a
+  single flat value repeated at every breakpoint. This is a bigger scope
+  than parity-only: `toGrid()`, `Layout::calcWidths()`/`prepareWidths()`,
+  the outline schema, and the admin column-count picker (M3) all need to
+  carry a per-breakpoint map rather than one integer. Nucleus's 5 named
+  breakpoints (see `_breakpoints.scss`) map onto Bootstrap's breakpoint
+  set (§ to confirm exact mapping in M1) — existing flat `.size-N` values
+  seed the *default/mobile-first* breakpoint's column count on migration;
+  narrower/wider breakpoint overrides start unset (inherit) until an
+  admin explicitly sets them, so no data is fabricated for breakpoints
+  nothing was ever authored for.
+- **Non-12-divisible legacy widths (7ths/9ths/11ths/etc.) snap to the
+  nearest `/12` column count** on migration, accepting minor reflow.
+  Surfaced during the M5 theme QA pass rather than kept alive as a
+  parallel legacy fraction-class system — no permanent escape hatch.
