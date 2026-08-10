@@ -632,30 +632,6 @@
 .g-swipercarousel-item-content {
     margin: $content-margin;
     padding: $content-padding;
-
-    .g-swipercarousel-fullwidth & {
-        width: 100%;
-    }
-
-    .g-swipercarousel-compact & {
-        width: 50%;
-
-        .center-block & {
-            margin: auto;
-        }
-
-        @include breakpoint(desktop-range) {
-            width: 65%;
-        }
-
-        @include breakpoint(tablet-range) {
-            width: 75%;
-        }
-
-        @include breakpoint(mobile-only) {
-            width: 100%;
-        }
-    }
 }
 
 .g-swipercarousel-item-title {
@@ -1129,17 +1105,3 @@
     }
 }
 
-.g-swipercarousel-panel-indicator {
-    width: 96px;
-    height: 50px;
-    position: absolute;
-    left: 0;
-    z-index: 2;
-
-    .dir-rtl & {
-        left: 200px;
-    }
-
-    transition: all 0.2s ease-out;
-    top: (-1 * ($content-margin + $content-padding + 0.95rem));
-}
