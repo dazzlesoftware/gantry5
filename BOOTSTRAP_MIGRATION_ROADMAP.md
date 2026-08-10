@@ -200,7 +200,7 @@ affects every page on every theme across all 4 platforms.
   front-end theme asset at all. Belongs in "Out of scope" below, same as
   the drag-and-drop grid editor.
 
-## Stage 5 — Per-platform particles (outside `engines/common/nucleus`) — not started
+## Stage 5 — Per-platform particles (outside `engines/common/nucleus`) — done
 
 Platform-specific particles that aren't part of the Stage 1/2 audits since
 they live outside `common/nucleus`:
@@ -213,6 +213,57 @@ they live outside `common/nucleus`:
 Mostly platform-glue (WP widgets, Joomla modules, Grav feeds) rather than
 particles with rich UI, so "pure Bootstrap" here is more about checking for
 the same redundant-class pattern than a structural conversion.
+
+**Real gap found and closed:** `contentarray` (wordpress/joomla/grav) and
+`login` (grav) have no theme-level twig override and no common/core twig at
+all — ground truth only exists in each platform engine's own twig. The
+Stage 2 pre-filter script's fallback chain (theme override → core → engine)
+never actually reached the engine-twig step for particles with *no* core
+twig, so it silently skipped every theme's `_contentarray.scss` (48 themes)
+and `_login.scss` (8 themes) during the whole Stage 2 remainder sweep,
+despite those files living in the exact same `common/scss/<theme>/
+particles/` directories that sweep covered.
+
+- **`_login.scss` (anacron, audacity, chimera, epsilon, hadron, lexicon,
+  myriad, vermilion) — deleted outright, all 8.** Confirmed via repo-wide
+  grep that every selector in these near-identical files
+  (`#modlgn-username`, `#modlgn-passwd`, `#login-form`,
+  `#form-login-remember`, `.add-on`, `.input-prepend`,
+  `.rt-authorized-*`, `.rt-secretkey-input`) is legacy Joomla mod_login /
+  RocketTheme-branded markup that doesn't exist anywhere in the current
+  `engines/`/`platforms/` trees — a pre-Gantry5 leftover, not styling
+  anything the current Grav `login.html.twig` or WordPress
+  `loginform.html.twig` renders (the only ID overlap, `#login-username`/
+  `#login-password`, is a bare wrapper `<p>` with none of this file's
+  internal selectors present). None of the 8 themes have their own login
+  twig either. Whole file dead in every case, not a partial trim.
+- **`_contentarray.scss` (48 themes) — audited, all clean, nothing to
+  remove.** Built the real class vocabulary directly from the three
+  engine twigs (`g-content-array`, `g-array-item`/`-image`/`-title`/
+  `-details`/`-date`/`-author`/`-category`/`-text`/`-read-more`, the
+  joomla-only `-edit`/`-hits` and wordpress-only `-comments` variants,
+  `g-content-array-pagination`, plus the generic `button`/
+  `pagination-button`/`contentarray-button`/`clearfix`/`g-grid`/`g-block`/
+  `g-content` classes) and checked every theme's file against it — all 48
+  are a near-identical, consistently-sized (~65-112 line) template with
+  zero classes outside that vocabulary. Spot-checked several by hand
+  (supra, horizon — the largest at 112 lines, isotope, xenon, requiem) to
+  confirm the automated pass wasn't missing anything.
+- `breadcrumbs`/`feed`/`langswitcher` (grav) have zero theme-level SCSS
+  overrides at all — nothing to audit.
+- `position`/`widget` (wordpress), `module`/`position` (joomla),
+  `frameworks` (joomla) render no classes of their own in their twigs
+  (pure delegation to `genesis.platform.display*()` or a config-gated
+  loader) — nothing to check.
+- `search` (grav) — already fully covered. Every theme provides its own
+  `search.html.twig` override (with joomla/wordpress/grav conditionals
+  inside), so the Stage 2 remainder sweep's fallback chain found real
+  ground truth there and audited it correctly at the time.
+- `loginform` (wordpress) — core twig already uses real Bootstrap 5
+  button classes (`btn`, `btn-outline-*`, `rounded-pill`, `w-100`, shared
+  with the standalone Button particle's variant logic); its one SCSS file
+  (`engines/wordpress/nucleus/scss/wordpress/_particles.scss`) checked
+  clean against it.
 
 ## Out of scope (for now)
 
