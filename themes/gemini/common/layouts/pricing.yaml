@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -7,9 +7,9 @@ layout:
   /container-overlay/:
     -
       -
-        'sideoverlay 40': {  }
+        'sideoverlay 5': {  }
       -
-        'mainoverlay 60': {  }
+        'mainoverlay 7': {  }
   top: {  }
   navigation: {  }
   /slideshow/:
@@ -23,13 +23,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - pricingtable-8560
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/: {  }

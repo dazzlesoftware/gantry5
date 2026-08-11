@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: demo
@@ -8,8 +8,8 @@ layout:
     -
       - system-messages-6948
     -
-      - 'logo-8575 25'
-      - 'horizontalmenu-6051 75'
+      - 'logo-8575 3'
+      - 'horizontalmenu-6051 9'
   /navigation/:
     -
       - menu-1228
@@ -25,14 +25,14 @@ layout:
   /container-3489/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
             - contenttabs-4945
           -
-            - 'headlines-6037 40'
-            - 'contenttabs-3161 60'
+            - 'headlines-6037 5'
+            - 'contenttabs-3161 7'
       -
-        'sidebar 33':
+        'sidebar 4':
           -
             - promoimage-7909
           -
@@ -45,9 +45,9 @@ layout:
       - stripsslider-3087
   /footer/:
     -
-      - 'infolist-7644 40'
-      - 'custom-3631 40'
-      - 'social-5385 20'
+      - 'infolist-7644 5'
+      - 'custom-3631 5'
+      - 'social-5385 2'
   /copyright/:
     -
       - copyright-6130

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -13,15 +13,15 @@ layout:
       - slideshow-2052
   /header/:
     -
-      - 'simplecontent-4643 30'
-      - 'infolist-7933 70'
+      - 'simplecontent-4643 4'
+      - 'infolist-7933 8'
   /above/:
     -
       - testimonials-8981
   /feature/:
     -
-      - 'categorylist-3880 30'
-      - 'topiclist-3937 70'
+      - 'categorylist-3880 4'
+      - 'topiclist-3937 8'
   /showcase/:
     -
       - pricingtable-2666
@@ -29,13 +29,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-1120
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - team-3195

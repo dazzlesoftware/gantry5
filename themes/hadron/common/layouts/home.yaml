@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home
@@ -18,28 +18,28 @@ layout:
       - stripsslider-3165
   /maintop/:
     -
-      - 'contenttabs-2781 65'
-      - 'lists-4300 35'
+      - 'contenttabs-2781 8'
+      - 'lists-4300 4'
   /container-main/:
     -
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
       -
-        'main 34': {  }
+        'main 4': {  }
       -
-        'aside 33': {  }
+        'aside 4': {  }
   mainbottom: {  }
   extension: {  }
   /bottom/:
     -
-      - 'spacer-3366 20'
-      - 'custom-1725 60'
-      - 'totop-1910 20'
+      - 'spacer-3366 2'
+      - 'custom-1725 7'
+      - 'totop-1910 2'
   /footer/:
     -
-      - 'spacer-3314 20'
-      - 'mailchimp-4805 60'
-      - 'spacer-5240 20'
+      - 'spacer-3314 2'
+      - 'mailchimp-4805 7'
+      - 'spacer-5240 2'
   /copyright/:
     -
       - branding-4327

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -40,19 +40,19 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - video-8023
     -
       - simplecontent-6925
     -
-      - 'button-9920 50'
-      - 'button-5829 50'
+      - 'button-9920 6'
+      - 'button-5829 6'
   /extension/:
     -
       - stories-4803

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: pages_-_clients
@@ -10,32 +10,32 @@ layout:
         /header/:
           -
             - system-messages-1686
-          -  
-            - 'logo-8376 56'
-            - 'iconmenu-5902 44'
+          -
+            - 'logo-8376 7'
+            - 'iconmenu-5902 5'
         /navigation/:
-          - 
-            - 'menu-7206 80'
-            - 'social-4959 20'
+          -
+            - 'menu-7206 10'
+            - 'social-4959 2'
   /showcase/:
     -
       - custom-7527
   /container-1252/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
             - imagegrid-1276
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-9444
   /footer/:
     -
-      - 'custom-5618 33.3'
-      - 'newsletter-7667 33.3'
-      - 'custom-9585 33.3'
+      - 'custom-5618 4'
+      - 'newsletter-7667 4'
+      - 'custom-9585 4'
   /copyright/:
     -
       - copyright-6820

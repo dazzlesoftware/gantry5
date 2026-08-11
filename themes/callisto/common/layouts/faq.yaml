@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: pages_-_faq
@@ -10,52 +10,52 @@ layout:
         /header/:
           -
             - system-messages-5747
-          -  
-            - 'logo-4508 56'
-            - 'iconmenu-2695 44'
+          -
+            - 'logo-4508 7'
+            - 'iconmenu-2695 5'
         /navigation/:
-          - 
-            - 'menu-5388 80'
-            - 'social-2185 20'
+          -
+            - 'menu-5388 10'
+            - 'social-2185 2'
   /showcase/:
     -
       - custom-8119
   /container-7123/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
-            - 'infolist-1664 50'
-            - 'infolist-6903 50'
+            - 'infolist-1664 6'
+            - 'infolist-6903 6'
           -
-            - 'custom-6518 33.3'
-            - 'custom-3541 33.3'
-            - 'custom-8794 33.3'
+            - 'custom-6518 4'
+            - 'custom-3541 4'
+            - 'custom-8794 4'
           -
-            - 'custom-4541 25'
-            - 'custom-6135 25'
-            - 'custom-1682 25'
-            - 'custom-9618 25'
+            - 'custom-4541 3'
+            - 'custom-6135 3'
+            - 'custom-1682 3'
+            - 'custom-9618 3'
           -
-            - 'custom-5007 25'
-            - 'custom-9043 25'
-            - 'custom-5565 25'
-            - 'custom-5052 25'
+            - 'custom-5007 3'
+            - 'custom-9043 3'
+            - 'custom-5565 3'
+            - 'custom-5052 3'
           -
-            - 'custom-5266 25'
-            - 'custom-3595 25'
-            - 'custom-1212 25'
-            - 'custom-7689 25'
+            - 'custom-5266 3'
+            - 'custom-3595 3'
+            - 'custom-1212 3'
+            - 'custom-7689 3'
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-7809
   /footer/:
     -
-      - 'custom-9996 33.3'
-      - 'newsletter-5478 33.3'
-      - 'custom-7948 33.3'
+      - 'custom-9996 4'
+      - 'newsletter-5478 4'
+      - 'custom-7948 4'
   /copyright/:
     -
       - copyright-6419

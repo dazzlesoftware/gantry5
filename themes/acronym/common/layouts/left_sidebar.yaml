@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: leftsidebar
@@ -17,13 +17,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 30':
+        'sidebar 4':
           -
             - custom-7406
           -
             - custom-9224
       -
-        'mainbar 70':
+        'mainbar 8':
           -
             - custom-8235
   expanded: {  }

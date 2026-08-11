@@ -25,6 +25,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               variations: 'nomarginall nopaddingall'
               extra: {  }
@@ -104,6 +106,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               variations: center
               extra: {  }
@@ -154,6 +158,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 2
               size: 20
             children:
               -
@@ -169,6 +175,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 7
               size: 60
             children:
               -
@@ -191,6 +199,8 @@ children:
                         subtype: false
                         title: Untitled
                         attributes:
+                          columns:
+                            xs: 12
                           size: 100
                           variations: center
                           extra: {  }
@@ -222,6 +232,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 2
               size: 20
             children:
               -
@@ -262,6 +274,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               variations: 'center nomarginall nopaddingall'
               extra: {  }
@@ -321,6 +335,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 6
               size: 50
               variations: g-title-bordered
               extra: {  }
@@ -341,6 +357,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 6
               size: 50
               variations: g-title-bordered
               extra: {  }
@@ -382,6 +400,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 3
               size: 25
               extra: {  }
             children:
@@ -400,6 +420,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 6
               size: 50
             children:
               -
@@ -415,6 +437,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 3
               size: 25
               extra: {  }
             children:
@@ -449,6 +473,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               extra: {  }
               fixed: '0'
@@ -475,6 +501,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               extra: {  }
               fixed: '0'
@@ -509,6 +537,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               class: 'nomarginall nopaddingall'
               extra: {  }
@@ -536,6 +566,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               class: 'nomarginall nopaddingall center'
               extra: {  }

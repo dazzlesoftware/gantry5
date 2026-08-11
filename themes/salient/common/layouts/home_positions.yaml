@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home_positions
@@ -9,27 +9,27 @@ layout:
       - system-messages-4936
   /navigation/:
     -
-      - 'logo-6593 20'
-      - 'menu-9816 55'
-      - 'custom-9502 5'
-      - 'social-1210 20'
+      - 'logo-6593 2'
+      - 'menu-9816 7'
+      - 'custom-9502 1'
+      - 'social-1210 2'
   /header/:
     -
       - position-6935
   /slideshow/:
     -
       -
-        'slideleft 25':
+        'slideleft 3':
           -
             - position-3257
           -
             - position-2954
       -
-        'slidecenter 50':
+        'slidecenter 6':
           -
             - position-7679
       -
-        'slideright 25':
+        'slideright 3':
           -
             - position-4354
           -
@@ -43,33 +43,33 @@ layout:
       - position-8823
   /above/:
     -
-      - 'position-2807 33.3'
-      - 'position-5444 33.3'
-      - 'position-3455 33.3'
+      - 'position-2807 4'
+      - 'position-5444 4'
+      - 'position-3455 4'
   /utility/:
     -
-      - 'spacer-4766 50'
-      - 'position-5033 50'
+      - 'spacer-4766 6'
+      - 'position-5033 6'
   /feature/:
     -
-      - 'spacer-4220 50'
-      - 'position-7876 50'
+      - 'spacer-4220 6'
+      - 'position-7876 6'
   /container-2331/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-7350
       -
-        'mainbar 60':
+        'mainbar 7':
           -
-            - 'position-9297 33.3'
-            - 'position-3128 33.3'
-            - 'position-5362 33.3'
+            - 'position-9297 4'
+            - 'position-3128 4'
+            - 'position-5362 4'
           -
             - system-content-4186
       -
-        'aside 20':
+        'aside 2':
           -
             - position-1886
   /expanded/:
@@ -77,29 +77,29 @@ layout:
       - position-8109
   /extension/:
     -
-      - 'position-4226 50'
-      - 'position-9585 50'
+      - 'position-4226 6'
+      - 'position-9585 6'
   /bottom/:
     -
       - position-4009
   /container-8240/:
     -
       -
-        'footer 50':
+        'footer 6':
           -
             - position-2573
       -
-        'footside 50':
+        'footside 6':
           -
             - position-8031
           -
-            - 'position-3393 50'
-            - 'position-6802 50'
+            - 'position-3393 6'
+            - 'position-6802 6'
   /copyright/:
     -
-      - 'logo-7806 33.3'
-      - 'totop-2583 33.3'
-      - 'social-7881 33.3'
+      - 'logo-7806 4'
+      - 'totop-2583 4'
+      - 'social-7881 4'
   offcanvas:
     -
       - mobile-menu-4246

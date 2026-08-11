@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: genesis-admin://images/layouts/home.png
   name: Particles 5
@@ -22,7 +22,7 @@ layout:
     - genesisfeatures-5402
     - icon-5403
   /container-particles-5/:
-  - - mainbar 67:
+  - - mainbar 8:
       - - animatedheading-5100
       - - blocknumber-5101
       - - clients-5102
@@ -37,7 +37,7 @@ layout:
       - - social-5111
       - - swipercarousel-5112
       - - testimonialcarousel-5113
-    - sidebar 33:
+    - sidebar 4:
       - - animatedheading-5200
       - - blocknumber-5201
       - - clients-5202

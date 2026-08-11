@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: our_team
@@ -10,47 +10,47 @@ layout:
         /header/:
           -
             - system-messages-5040
-          -  
-            - 'logo-3013 56'
-            - 'iconmenu-3908 44'
+          -
+            - 'logo-3013 7'
+            - 'iconmenu-3908 5'
         /navigation/:
-          - 
-            - 'menu-9708 80'
-            - 'social-9025 20'
+          -
+            - 'menu-9708 10'
+            - 'social-9025 2'
   /showcase/:
     -
       - custom-4104
   /container-9829/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
-            - 'custom-5348 50'
-            - 'custom-9337 50'
+            - 'custom-5348 6'
+            - 'custom-9337 6'
           -
             - custom-6509
           -
-            - 'custom-7321 33.3'
-            - 'custom-7205 33.3'
-            - 'custom-5964 33.3'
+            - 'custom-7321 4'
+            - 'custom-7205 4'
+            - 'custom-5964 4'
           -
-            - 'custom-7978 33.3'
-            - 'custom-7135 33.3'
-            - 'custom-3199 33.3'
+            - 'custom-7978 4'
+            - 'custom-7135 4'
+            - 'custom-3199 4'
           -
-            - 'custom-3576 33.3'
-            - 'custom-2893 33.3'
-            - 'custom-2604 33.3'
+            - 'custom-3576 4'
+            - 'custom-2893 4'
+            - 'custom-2604 4'
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-8015
   /footer/:
     -
-      - 'custom-4347 33.3'
-      - 'newsletter-1846 33.3'
-      - 'custom-1927 33.3'
+      - 'custom-4347 4'
+      - 'newsletter-1846 4'
+      - 'custom-1927 4'
   /copyright/:
     -
       - copyright-4764

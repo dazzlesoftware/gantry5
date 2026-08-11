@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: team
@@ -18,11 +18,11 @@ layout:
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - custom-5215
       -
-        'sidebar 40': {  }
+        'sidebar 5': {  }
   expandedbottom: {  }
   mainbottom: {  }
   extension: {  }
@@ -34,8 +34,8 @@ layout:
             - custom-4488
         /footer/:
           -
-            - 'custom-5551 50'
-            - 'custom-2913 50'
+            - 'custom-5551 6'
+            - 'custom-2913 6'
   copyright: {  }
   offcanvas: {  }
 structure:

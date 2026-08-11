@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _offline
@@ -23,9 +23,9 @@ layout:
     -
       - logo-9204
     -
-      - 'spacer-8199 10'
-      - 'custom-4288 80'
-      - 'spacer-2663 10'
+      - 'spacer-8199 1'
+      - 'custom-4288 10'
+      - 'spacer-2663 1'
   /fullstrip/:
     -
       - position-position-6568
@@ -51,9 +51,9 @@ layout:
   /main/:
     -
       -
-        'mainbody 60': {  }
+        'mainbody 7': {  }
       -
-        'sidebar 40':
+        'sidebar 5':
           -
             - position-position-7684
   /expandedbottom/:

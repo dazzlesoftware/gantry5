@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: clients
@@ -9,8 +9,8 @@ layout:
       - system-messages-4395
   /header/:
     -
-      - 'logo-9612 50'
-      - 'menu-6615 50'
+      - 'logo-9612 6'
+      - 'menu-6615 6'
   /slideshow/: {  }
   /showcase/:
     -
@@ -20,15 +20,15 @@ layout:
   /container-9598/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-3863
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-6037
       -
-        'aside 20':
+        'aside 2':
           -
             - position-9450
   /extension/:
@@ -39,17 +39,17 @@ layout:
       - custom-4210
   /footer/:
     -
-      - 'position-7605 33.3'
-      - 'position-7977 33.3'
-      - 'position-6221 33.3'
+      - 'position-7605 4'
+      - 'position-7977 4'
+      - 'position-6221 4'
   /copyright/:
     -
-      - 'logo-3884 33'
-      - 'custom-7656 67'
+      - 'logo-3884 4'
+      - 'custom-7656 8'
     -
-      - 'copyright-3188 33'
-      - 'custom-3028 57'
-      - 'totop-8883 10'
+      - 'copyright-3188 4'
+      - 'custom-3028 7'
+      - 'totop-8883 1'
   offcanvas:
     -
       - mobile-menu-8333

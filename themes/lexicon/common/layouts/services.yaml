@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: services
@@ -25,11 +25,11 @@ layout:
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - custom-6686
       -
-        'sidebar 40':
+        'sidebar 5':
           -
             - position-position-7684
   /expandedbottom/:
@@ -44,8 +44,8 @@ layout:
   /bottom/: {  }
   footer:
     -
-      - 'custom-7934 50'
-      - 'custom-1158 50'    
+      - 'custom-7934 6'
+      - 'custom-1158 6'
   copyright: {  }
   offcanvas: {  }
 structure:
@@ -141,7 +141,7 @@ content:
   position-position-3611:
     title: Breadcrumb
     attributes:
-      key: breadcrumb      
+      key: breadcrumb
   position-position-5798:
     title: 'Utility A'
     attributes:
@@ -172,10 +172,10 @@ content:
       key: expandedtop
   custom-6686:
     title: 'Custom HTML'
-    attributes:  
+    attributes:
       title: ''
       titletag: ''
-      html: "<h3>Why Should You Choose Us?</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n\n<p><a href=\"#\" class=\"readon\">Learn More</a></p>"      
+      html: "<h3>Why Should You Choose Us?</h3>\n\n<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>\n\n<p><a href=\"#\" class=\"readon\">Learn More</a></p>"
       twig: '0'
       filter: '0'
     block:
@@ -217,5 +217,5 @@ content:
     attributes:
       html: "<h2 class=\"title\"><span>Sample Contact Info</span></h2>\n\n<p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</p>\n\n<div class=\"genesis-width-container\">\n\t<div class=\"genesis-width-40\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<img src=\"genesis-media://pages/overview/logo.png\" alt=\"image\" />\n\t\t</div>\t\n\t</div>\n\n\t<div class=\"genesis-width-60\">\n\t\t<div class=\"genesis-width-spacer\">\n\t\t\t<span class=\"rt-intro-text\">+1(123)456-5555-555</span><br />\n\t\t\t<span>Lexicon Theme, LLC</span><br />\n\t\t\t<span>123 CMS Boulevard</span><br />\n\t\t\t<span>Seattle, WA 00000, USA</span><br />\n\t\t\t<span><a href=\"#\">noreply@domain.com</a></span>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"clear\"></div>"
     block:
-      class: rt-phone-center      
+      class: rt-phone-center
       variations: 'nomarginbottom nopaddingbottom'

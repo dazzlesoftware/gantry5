@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: faq
@@ -21,13 +21,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 25': {  }
+        'sidebar 3': {  }
       -
-        'main 50':
+        'main 6':
           -
             - custom-1696
       -
-        'aside 25': {  }
+        'aside 3': {  }
   /mainbottom/: {  }
   /extension/:
     -
@@ -35,8 +35,8 @@ layout:
   /bottom/: {  }
   /footer/:
     -
-      - 'custom-5072 50'
-      - 'custom-3219 50'
+      - 'custom-5072 6'
+      - 'custom-3219 6'
   copyright: {  }
   offcanvas: {  }
 structure:

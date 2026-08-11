@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** M1 done, M2a + M2b done; M3 row picker implemented, nested builder slice planned
+**Status:** M1 done, M2a + M2b done; M3 row picker, nested builder, and responsive breakpoint authoring implemented
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -288,9 +288,15 @@ compile successfully; browser interaction/visual QA remains before M3 can be
 called complete.
 
 The older stepper-oriented checklist below is retained as design history and
-is superseded by the preset-picker implementation above. Responsive
-`sm`/`md`/`lg`/`xl` authoring remains future work; M3 currently writes the
-mobile-first `xs` span.
+is superseded by the preset-picker implementation above. The picker now
+authors mobile-first `xs` spans plus optional `sm`, `md`, `lg`, and `xl`
+overrides. Breakpoint overrides preserve the physical column count and can be
+reset to inherit from the preceding breakpoint.
+
+> **Revisit note (2026-08-11):** Responsive breakpoint authoring is
+> implemented but remains provisional. Its persistence, inheritance, generated
+> Bootstrap classes, and editor preview behavior still need end-to-end browser
+> validation before this part of M3 should be considered complete.
 
 #### M3 target builder model (Gantry/Genesis concept)
 
@@ -369,9 +375,14 @@ requires.
 
 ### M4 — Roll through engines
 
-Sequence: WordPress → Joomla → Grav → phpBB. Each engine's `nucleus/scss`
-entry point needs its Sass include path updated to the shared grid
-partial; each engine's admin bundle needs the updated `lm` JS.
+The front-end grid and Layout Manager bundle are already shared by all four
+engines: `engines/common/nucleus/scss/nucleus.scss` is the common grid entry
+point and `platforms/common/js/main.js` is the common admin application.
+Platform-specific admin templates layer their own CSS around those shared
+assets; they do not maintain separate Layout Manager implementations. M4 is
+therefore a platform smoke-test sequence (WordPress → Joomla → Grav → phpBB),
+not four source-code ports. WordPress is the current development/test target;
+the other three platform smoke tests remain outstanding.
 
 ### M5 — Theme QA pass (53 themes)
 
@@ -384,6 +395,28 @@ identity (color, type, components) shouldn't be affected — but:
   the negative-margin gutter model.
 - Confirm the % → column reflow from M2 is acceptable on pages that used
   non-12-divisible widths.
+
+Initial static audit on 2026-08-11 found legacy sizing dependencies that must
+be handled before M6 removes `.size-*`:
+
+- All 797 compact theme layouts have been migrated from percentage-based
+  format 2 to Bootstrap-column format 3. Compact width tokens now represent
+  spans from 1 to 12, and the new reader/writer mirrors legacy percentages at
+  runtime during the transition. Another 207 block nodes in six expanded
+  legacy layouts now carry explicit `columns.xs` metadata. Validation parses
+  all 838 layout YAML files and loads every format 3 layout successfully.
+
+- Multiple theme SCSS files still test `.size-100`; some are layout selectors
+  and some are particle/menu-specific selectors, so they need classification
+  rather than a blind replacement.
+- Topaz directly targets `#g-navigationmain .size-30` for tablet behavior.
+- WordPress blog/archive post grids were migrated across all 96 affected
+  blueprints/templates: new settings store Bootstrap `col-*` values and the
+  templates pass saved values through `toColumns`, which translates existing
+  legacy `size-*` settings without requiring a data rewrite.
+- Ethereal demo layout HTML embeds `.g-block.size-33-3` directly.
+- Admin `_configurations.scss` contains an unrelated `.size-1-4` utility and
+  must not be mechanically converted with front-end grid selectors.
 
 ### M6 — Cleanup
 

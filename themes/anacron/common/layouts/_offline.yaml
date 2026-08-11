@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _offline
@@ -18,9 +18,9 @@ layout:
   /main/:
     -
       -
-        'mainbody 60': {  }
+        'mainbody 7': {  }
       -
-        'sidebar 40': {  }
+        'sidebar 5': {  }
   expandedbottom: {  }
   mainbottom: {  }
   extension: {  }

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: left_sidebar
@@ -7,9 +7,9 @@ layout:
   /top/: {  }
   navigation:
     -
-      - 'logo-9841 20'
-      - 'menu-7574 60'
-      - 'social-2794 20'
+      - 'logo-9841 2'
+      - 'menu-7574 7'
+      - 'social-2794 2'
     -
       - simplecontent-7052
   slideshow: {  }
@@ -21,19 +21,19 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - custom-8809
           -
             - custom-2258
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - custom-5370
           -
             - system-content-7301
       -
-        'aside 20': {  }
+        'aside 2': {  }
   expanded: {  }
   extension: {  }
   bottom: {  }

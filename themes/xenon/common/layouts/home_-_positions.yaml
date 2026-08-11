@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_positions
@@ -8,20 +8,20 @@ layout:
     -
       - position-position-5498
     -
-      - 'position-position-6703 33.3'
-      - 'position-position-3420 33.3'
-      - 'position-position-8467 33.3'
+      - 'position-position-6703 4'
+      - 'position-position-3420 4'
+      - 'position-position-8467 4'
   /top/:
     -
       - system-messages-1931
     -
-      - 'logo-9976 50'
-      - 'position-position-5591 30'
-      - 'position-position-5975 20'
+      - 'logo-9976 6'
+      - 'position-position-5591 4'
+      - 'position-position-5975 2'
   /navigation/:
     -
-      - 'menu-8681 80'
-      - 'position-position-6966 20'
+      - 'menu-8681 10'
+      - 'position-position-6966 2'
   /header/:
     -
       - position-position-3337
@@ -40,19 +40,19 @@ layout:
   /container-4448/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - position-position-9524
   /extension/:
     -
-      - 'position-position-9445 33.3'
-      - 'position-position-8545 33.3'
-      - 'position-position-5275 33.3'
+      - 'position-position-9445 4'
+      - 'position-position-8545 4'
+      - 'position-position-5275 4'
   /bottom/:
     -
       - position-position-9286
@@ -60,15 +60,15 @@ layout:
       - position-position-1208
   /footer/:
     -
-      - 'position-position-3275 25'
-      - 'position-position-8775 25'
-      - 'position-position-5898 25'
-      - 'position-position-2928 25'
+      - 'position-position-3275 3'
+      - 'position-position-8775 3'
+      - 'position-position-5898 3'
+      - 'position-position-2928 3'
   /copyright/:
     -
-      - 'branding-6288 33.3'
-      - 'copyright-4648 33.3'
-      - 'totop-3618 33.3'
+      - 'branding-6288 4'
+      - 'copyright-4648 4'
+      - 'totop-3618 4'
   offcanvas:
     -
       - mobile-menu-7582

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -7,8 +7,8 @@ layout:
   top: {  }
   /navigation/:
     -
-      - 'logo-5992 20'
-      - 'menu-4196 80'
+      - 'logo-5992 2'
+      - 'menu-4196 10'
   /slideshow/:
     -
       - swipercarousel-4880

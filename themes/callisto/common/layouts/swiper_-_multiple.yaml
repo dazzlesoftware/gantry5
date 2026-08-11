@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: swiper
@@ -10,13 +10,13 @@ layout:
         /header/:
           -
             - system-messages-9396
-          -  
-            - 'logo-8989 56'
-            - 'iconmenu-6892 44'
+          -
+            - 'logo-8989 7'
+            - 'iconmenu-6892 5'
         /navigation/:
-          - 
-            - 'menu-1125 80'
-            - 'social-6590 20'
+          -
+            - 'menu-1125 10'
+            - 'social-6590 2'
   /slideshow/:
       -
         - custom-1958
@@ -42,9 +42,6 @@ layout:
   copyright: {  }
   offcanvas: {  }
 structure:
-  header:
-    attributes:
-      boxed: ''
   navigation:
     type: section
     attributes:

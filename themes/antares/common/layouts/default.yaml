@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -17,73 +17,73 @@ layout:
       - system-messages-8159
   /navigation/:
     -
-      - 'logo-8361 25'
-      - 'menu-3995 75'
+      - 'logo-8361 3'
+      - 'menu-3995 9'
   /slideshow/:
     -
       - position-position-5636
   /header/:
     -
-      - 'position-header-a 50'
-      - 'position-header-b 50'
+      - 'position-header-a 6'
+      - 'position-header-b 6'
   /above/:
     -
-      - 'position-above-a 50'
-      - 'position-above-b 50'
+      - 'position-above-a 6'
+      - 'position-above-b 6'
   /showcase/:
     -
-      - 'position-showcase-a 50'
-      - 'position-showcase-b 50'
+      - 'position-showcase-a 6'
+      - 'position-showcase-b 6'
   /utility/:
     -
-      - 'position-utility-a 50'
-      - 'position-utility-b 50'
+      - 'position-utility-a 6'
+      - 'position-utility-b 6'
   /feature/:
     -
-      - 'position-feature-a 33.3'
-      - 'position-feature-b 33.3'
-      - 'position-feature-c 33.3'
+      - 'position-feature-a 4'
+      - 'position-feature-b 4'
+      - 'position-feature-c 4'
   /container-main/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-sidebar
       -
-        'mainbar 60':
+        'mainbar 7':
           -
-            - 'position-mainbar-a 33.3'
-            - 'position-mainbar-b 33.3'
-            - 'position-mainbar-c 33.3'
+            - 'position-mainbar-a 4'
+            - 'position-mainbar-b 4'
+            - 'position-mainbar-c 4'
           -
             - system-content-5020
       -
-        'aside 20':
+        'aside 2':
           -
             - position-aside
   /expanded/:
     -
-      - 'position-expanded-a 33.3'
-      - 'position-expanded-b 33.3'
-      - 'position-expanded-c 33.3'
+      - 'position-expanded-a 4'
+      - 'position-expanded-b 4'
+      - 'position-expanded-c 4'
   /extension/:
     -
-      - 'position-extension-a 50'
-      - 'position-extension-b 50'
+      - 'position-extension-a 6'
+      - 'position-extension-b 6'
   /bottom/:
     -
-      - 'position-bottom-a 33.3'
-      - 'position-bottom-b 33.3'
-      - 'position-bottom-c 33.3'
+      - 'position-bottom-a 4'
+      - 'position-bottom-b 4'
+      - 'position-bottom-c 4'
   /footer/:
     -
-      - 'logo-1332 30'
-      - 'horizontalmenu-6826 40'
-      - 'social-5302 30'
+      - 'logo-1332 4'
+      - 'horizontalmenu-6826 5'
+      - 'social-5302 4'
   /copyright/:
     -
-      - 'copyright-5323 50'
-      - 'horizontalmenu-1896 50'
+      - 'copyright-5323 6'
+      - 'horizontalmenu-1896 6'
     -
       - totop-8334
   /offcanvas/:

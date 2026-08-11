@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -13,8 +13,8 @@ layout:
       - slider-2062
   /header/:
     -
-      - 'simplecontent-2034 50'
-      - 'simplecontent-2493 50'
+      - 'simplecontent-2034 6'
+      - 'simplecontent-2493 6'
     -
       - video-8571
     -
@@ -26,12 +26,12 @@ layout:
       - charts-2228
   /feature/:
     -
-      - 'simplecontent-7114 45'
-      - 'cards-2993 55'
+      - 'simplecontent-7114 5'
+      - 'cards-2993 7'
   /showcase/:
     -
-      - 'logo-7825 45'
-      - 'infolist-1645 55'
+      - 'logo-7825 5'
+      - 'infolist-1645 7'
     -
       - newsletter-7287
   expanded:
@@ -40,8 +40,8 @@ layout:
   /extension/: {  }
   /utility/:
     -
-      - 'simplecontent-2735 50'
-      - 'calendar-1758 50'
+      - 'simplecontent-2735 6'
+      - 'calendar-1758 6'
   /bottom/:
     -
       - carousel-8273
@@ -208,7 +208,7 @@ content:
           autoplay: disabled
           controls: disabled
           info: disabled
-          related: disabled          
+          related: disabled
           muted: enabled
           title: Video
   custom-1999:

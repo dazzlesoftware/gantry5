@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: comingsoon
@@ -8,14 +8,14 @@ layout:
     -
       - logo-9204
     -
-      - 'spacer-8199 15'
-      - 'simplecounter-2192 70'
-      - 'spacer-2663 15'
+      - 'spacer-8199 2'
+      - 'simplecounter-2192 8'
+      - 'spacer-2663 2'
   /subscription-form/:
     -
-      - 'spacer-2764 20'
-      - 'mailchimp-2304 60'
-      - 'spacer-5894 20'
+      - 'spacer-2764 2'
+      - 'mailchimp-2304 7'
+      - 'spacer-5894 2'
   /authorized-form/:
     -
       - custom-4776

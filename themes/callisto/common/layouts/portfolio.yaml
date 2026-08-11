@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/2-col-right.png'
   name: portfolio
@@ -10,45 +10,45 @@ layout:
         /header/:
           -
             - system-messages-2393
-          -  
-            - 'logo-1247 56'
-            - 'iconmenu-6255 44'
+          -
+            - 'logo-1247 7'
+            - 'iconmenu-6255 5'
         /navigation/:
-          - 
-            - 'menu-4628 80'
-            - 'social-9918 20'
+          -
+            - 'menu-4628 10'
+            - 'social-9918 2'
   /showcase/:
     -
       - custom-5595
   /container-5400/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
-            - 'contentlist-8674 67'
-            - 'custom-1803 33'
+            - 'contentlist-8674 8'
+            - 'custom-1803 4'
           -
-            - 'promoimage-4042 33.3'
-            - 'promoimage-3684 33.3'
-            - 'promoimage-3195 33.3'
+            - 'promoimage-4042 4'
+            - 'promoimage-3684 4'
+            - 'promoimage-3195 4'
           -
-            - 'promoimage-4589 33.3'
-            - 'promoimage-6050 33.3'
-            - 'promoimage-2588 33.3'
+            - 'promoimage-4589 4'
+            - 'promoimage-6050 4'
+            - 'promoimage-2588 4'
           -
-            - 'infolist-4363 33.3'
-            - 'infolist-3250 33.3'
-            - 'infolist-4570 33.3'
+            - 'infolist-4363 4'
+            - 'infolist-3250 4'
+            - 'infolist-4570 4'
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-2253
   /footer/:
     -
-      - 'custom-6292 33.3'
-      - 'newsletter-6099 33.3'
-      - 'custom-4901 33.3'
+      - 'custom-6292 4'
+      - 'newsletter-6099 4'
+      - 'custom-4901 4'
   /copyright/:
     -
       - copyright-4231

@@ -510,7 +510,7 @@ trait ThemeTrait
      */
     public function toGrid($text)
     {
-        if (!$text) {
+        if (!$text && empty($columns['xs'])) {
             return '';
         }
 
@@ -557,6 +557,20 @@ trait ThemeTrait
     {
         if (!$text) {
             return '';
+        }
+
+        // Content templates outside the Layout Manager historically stored
+        // the rendered size class itself (for example `size-33-3`). Accept
+        // both that legacy form and native Bootstrap column classes so saved
+        // WordPress blog/archive settings can migrate without a data rewrite.
+        if (is_string($text)) {
+            if (preg_match('/^col(?:-(?:sm|md|lg|xl))?-([1-9]|1[0-2])$/', $text)) {
+                return $text;
+            }
+
+            if (preg_match('/^size-(\d+)(?:-(\d+))?$/', $text, $matches)) {
+                $text = $matches[1] . (isset($matches[2]) ? '.' . $matches[2] : '');
+            }
         }
 
         $number = !empty($columns['xs'])

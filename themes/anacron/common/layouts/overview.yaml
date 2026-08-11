@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: overview
@@ -12,8 +12,8 @@ layout:
   utility: {  }
   /feature/:
     -
-      - 'custom-9512 50'
-      - 'custom-8090 50'
+      - 'custom-9512 6'
+      - 'custom-8090 6'
   /maintop/:
     -
       - custom-2510
@@ -21,11 +21,11 @@ layout:
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - custom-1878
       -
-        'sidebar 40': {  }
+        'sidebar 5': {  }
   expandedbottom: {  }
   mainbottom: {  }
   extension: {  }

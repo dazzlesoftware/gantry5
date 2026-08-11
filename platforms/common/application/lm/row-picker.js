@@ -22,6 +22,7 @@ const PRESETS = [
     [2, 10],
     [2, 3, 7]
 ];
+const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 let presetLabel = (columns) => columns.join('+');
 
@@ -43,10 +44,13 @@ let presetButton = (columns, index) => {
         '</button>';
 };
 
-let buildContent = () => {
+let buildContent = (responsive) => {
     return '' +
         '<div class="lm-row-picker">' +
             '<h3 class="lm-row-picker-title">' + translate('GENESIS_PLATFORM_JS_LM_ROW_PICKER_TITLE') + '</h3>' +
+            (responsive ? '<div class="lm-row-breakpoints" role="tablist">' + BREAKPOINTS.map((breakpoint, index) =>
+                '<button type="button" role="tab" data-lm-row-breakpoint="' + breakpoint + '" aria-selected="' + (index === 0 ? 'true' : 'false') + '">' + breakpoint.toUpperCase() + '</button>'
+            ).join('') + '</div><p class="lm-row-breakpoint-help" data-lm-row-breakpoint-help></p>' : '') +
             '<div class="lm-row-picker-presets">' +
                 PRESETS.map(presetButton).join('') +
             '</div>' +
@@ -57,6 +61,7 @@ let buildContent = () => {
                 '<button type="button" class="button lm-row-picker-generate" data-lm-nodrag data-lm-row-generate>' +
                     translate('GENESIS_PLATFORM_JS_LM_ROW_PICKER_GENERATE') +
                 '</button>' +
+                (responsive ? '<button type="button" class="button lm-row-picker-inherit" data-lm-nodrag data-lm-row-inherit hidden>' + translate('GENESIS_PLATFORM_JS_LM_ROW_INHERIT') + '</button>' : '') +
             '</div>' +
             '<p class="lm-row-picker-error" hidden></p>' +
         '</div>';
@@ -98,18 +103,34 @@ let openRowPicker = (options) => {
     options = options || {};
 
     let content = modal.open({
-        content: buildContent(),
+        content: buildContent(!!options.responsive),
         className: 'genesis-dialog-theme-default lm-row-picker-dialog',
         afterOpen: (contentElement) => {
             let element = contentElement && contentElement[0] ? contentElement[0] : contentElement;
             if (!element) { return; }
 
             let errorNode = element.querySelector('.lm-row-picker-error'),
-                input = element.querySelector('.lm-row-picker-custom-input');
+                input = element.querySelector('.lm-row-picker-custom-input'),
+                activeBreakpoint = 'xs',
+                current = options.currentByBreakpoint || { xs: options.current || [] },
+                expectedColumns = options.columnCount || (current.xs || []).length;
 
-            if (input && options.current && options.current.length) {
-                input.value = options.current.join('+');
-            }
+            let refreshBreakpoint = () => {
+                let split = current[activeBreakpoint];
+                if (input) { input.value = split && split.length ? split.join('+') : ''; }
+                let inherit = element.querySelector('[data-lm-row-inherit]');
+                if (inherit) { inherit.hidden = activeBreakpoint === 'xs'; }
+                let help = element.querySelector('[data-lm-row-breakpoint-help]');
+                if (help) {
+                    help.textContent = activeBreakpoint === 'xs' ? translate('GENESIS_PLATFORM_JS_LM_ROW_XS_HELP') :
+                        translate('GENESIS_PLATFORM_JS_LM_ROW_BREAKPOINT_HELP', activeBreakpoint.toUpperCase());
+                }
+                element.querySelectorAll('[data-lm-row-preset]').forEach((button) => {
+                    let preset = PRESETS[parseInt(button.getAttribute('data-lm-row-preset'), 10)];
+                    button.hidden = activeBreakpoint !== 'xs' && expectedColumns && preset.length !== expectedColumns;
+                });
+            };
+            refreshBreakpoint();
 
             let showError = (message) => {
                 if (!errorNode) { return; }
@@ -119,8 +140,16 @@ let openRowPicker = (options) => {
 
             let finish = (columns) => {
                 modal.close();
-                if (typeof options.onSelect === 'function') { options.onSelect(columns); }
+                if (typeof options.onSelect === 'function') { options.onSelect(columns, activeBreakpoint); }
             };
+
+            element.querySelectorAll('[data-lm-row-breakpoint]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    activeBreakpoint = button.getAttribute('data-lm-row-breakpoint');
+                    element.querySelectorAll('[data-lm-row-breakpoint]').forEach((tab) => tab.setAttribute('aria-selected', tab === button ? 'true' : 'false'));
+                    refreshBreakpoint();
+                });
+            });
 
             element.querySelectorAll('[data-lm-row-preset]').forEach((button) => {
                 button.addEventListener('click', (event) => {
@@ -135,13 +164,16 @@ let openRowPicker = (options) => {
                 generate.addEventListener('click', (event) => {
                     event.preventDefault();
                     let columns = parseCustomSplit(input ? input.value : '');
-                    if (!columns) {
+                    if (!columns || (activeBreakpoint !== 'xs' && expectedColumns && columns.length !== expectedColumns)) {
                         showError(translate('GENESIS_PLATFORM_JS_LM_ROW_PICKER_INVALID'));
                         return;
                     }
                     finish(columns);
                 });
             }
+
+            let inherit = element.querySelector('[data-lm-row-inherit]');
+            if (inherit) { inherit.addEventListener('click', () => finish(null)); }
 
             if (input) {
                 input.addEventListener('keydown', (event) => {

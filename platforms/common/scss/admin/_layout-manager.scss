@@ -1380,6 +1380,34 @@ $atom: #9055AF;
         margin: $content-margin 0 0;
         color: #c0392b;
     }
+
+    .lm-row-breakpoints {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 8px;
+
+        button {
+            min-width: 48px;
+            padding: 7px 10px;
+            border: 1px solid #d8dfe5;
+            border-radius: 4px;
+            background: $white;
+            color: $core-text;
+            cursor: pointer;
+
+            &[aria-selected="true"] {
+                border-color: $particle;
+                background: $particle;
+                color: $white;
+            }
+        }
+    }
+
+    .lm-row-breakpoint-help {
+        margin: 0 0 $content-margin;
+        color: lighten($core-text, 25%);
+        font-size: 0.85rem;
+    }
 }
 
 .lm-column-chooser {

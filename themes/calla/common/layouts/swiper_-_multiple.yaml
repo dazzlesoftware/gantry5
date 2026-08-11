@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: swiper
@@ -7,8 +7,8 @@ layout:
   top: {  }
   /slideshow/:
     -
-      - 'verticalmenu-1694 20'
-      - 'simplecontent-2455 80'
+      - 'verticalmenu-1694 2'
+      - 'simplecontent-2455 10'
   /header/: {  }
   /above/: {  }
   /feature/: {  }
@@ -17,9 +17,9 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - custom-1958
           -
@@ -39,7 +39,7 @@ layout:
           -
             - swiper-6921
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/: {  }

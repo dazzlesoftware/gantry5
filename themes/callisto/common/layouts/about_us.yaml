@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/2-col-right.png'
   name: pages_-_about_us
@@ -10,46 +10,46 @@ layout:
         /header/:
           -
             - system-messages-7321
-          -  
-            - 'logo-4988 56'
-            - 'iconmenu-5299 44'
+          -
+            - 'logo-4988 7'
+            - 'iconmenu-5299 5'
         /navigation/:
-          - 
-            - 'menu-6118 80'
-            - 'social-2489 20'
+          -
+            - 'menu-6118 10'
+            - 'social-2489 2'
   /showcase/:
     -
       - custom-1374
   /container-2126/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
-            - 'custom-3912 33.3'
-            - 'custom-1844 33.3'
-            - 'custom-5985 33.3'
+            - 'custom-3912 4'
+            - 'custom-1844 4'
+            - 'custom-5985 4'
           -
             - custom-2212
           -
             - custom-9045
           -
-            - 'custom-8068 33.3'
-            - 'custom-2507 33.3'
-            - 'custom-9611 33.3'
+            - 'custom-8068 4'
+            - 'custom-2507 4'
+            - 'custom-9611 4'
           -
-            - 'infolist-6811 33.3'
-            - 'infolist-9925 33.3'
-            - 'infolist-5312 33.3'
+            - 'infolist-6811 4'
+            - 'infolist-9925 4'
+            - 'infolist-5312 4'
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-3911
   /footer/:
     -
-      - 'custom-7013 33.3'
-      - 'newsletter-7239 33.3'
-      - 'custom-6774 33.3'
+      - 'custom-7013 4'
+      - 'newsletter-7239 4'
+      - 'custom-6774 4'
   /copyright/:
     -
       - copyright-4956

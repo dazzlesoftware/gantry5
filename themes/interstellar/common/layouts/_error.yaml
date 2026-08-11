@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _error
@@ -9,9 +9,9 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 17'
-      - 'social-7220 13'
-      - 'menu-4196 70'
+      - 'logo-5992 2'
+      - 'social-7220 2'
+      - 'menu-4196 8'
   /header/: {  }
   /slideshow/:
     -
@@ -25,11 +25,11 @@ layout:
   /container-4448/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/:
     -
@@ -37,8 +37,8 @@ layout:
   /bottom/: {  }
   /footer/:
     -
-      - 'custom-3240 60'
-      - 'newsletter-1075 40'
+      - 'custom-3240 7'
+      - 'newsletter-1075 5'
   /copyright/:
     -
       - copyright-5748

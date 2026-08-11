@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: rows_and_columns
@@ -8,8 +8,8 @@ layout:
   navigation: {  }
   /slideshow/:
     -
-      - 'simplecontent-7052 80'
-      - 'social-8668 20'
+      - 'simplecontent-7052 10'
+      - 'social-8668 2'
   header: {  }
   above: {  }
   feature: {  }
@@ -20,35 +20,35 @@ layout:
     -
       - custom-4860
     -
-      - 'custom-9868 50'
-      - 'custom-4807 50'
+      - 'custom-9868 6'
+      - 'custom-4807 6'
     -
-      - 'custom-3780 33.3'
-      - 'custom-7528 33.3'
-      - 'custom-3751 33.3'
+      - 'custom-3780 4'
+      - 'custom-7528 4'
+      - 'custom-3751 4'
     -
-      - 'custom-6453 25'
-      - 'custom-6496 25'
-      - 'custom-3872 25'
-      - 'custom-9371 25'
+      - 'custom-6453 3'
+      - 'custom-6496 3'
+      - 'custom-3872 3'
+      - 'custom-9371 3'
     -
       - custom-9988
     -
-      - 'custom-4289 25'
-      - 'custom-1256 50'
-      - 'custom-2720 25'
+      - 'custom-4289 3'
+      - 'custom-1256 6'
+      - 'custom-2720 3'
     -
-      - 'custom-5527 26'
-      - 'custom-1752 31'
-      - 'custom-4132 43'
+      - 'custom-5527 3'
+      - 'custom-1752 4'
+      - 'custom-4132 5'
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   expanded: {  }
   extension: {  }
   bottom: {  }

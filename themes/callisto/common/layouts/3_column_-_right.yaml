@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/3-col-right.png'
   name: 3_column_-_right
@@ -10,28 +10,28 @@ layout:
         /header/:
           -
             - system-messages-2765
-          -  
-            - 'logo-2346 56'
-            - 'iconmenu-4693 44'
+          -
+            - 'logo-2346 7'
+            - 'iconmenu-4693 5'
         /navigation/:
-          - 
-            - 'menu-4175 80'
-            - 'social-1331 20'
+          -
+            - 'menu-4175 10'
+            - 'social-1331 2'
   /showcase/:
     -
       - position-3265
   /container-9662/:
     -
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-8442
       -
-        'aside 20':
+        'aside 2':
           -
             - position-6513
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-2084
   /extension/:

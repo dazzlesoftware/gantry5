@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: pricing
@@ -7,9 +7,9 @@ layout:
   top: {  }
   /navigation/:
     -
-      - 'logo-5992 10'
-      - 'menu-2350 60'
-      - 'search-8428 30'
+      - 'logo-5992 1'
+      - 'menu-2350 7'
+      - 'search-8428 4'
   /slideshow/:
     -
       - simplecontent-5123
@@ -21,24 +21,24 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - pricingtable-2239
       -
-        'aside 20': {  }
+        'aside 2': {  }
   expanded: {  }
   extension: {  }
   bottom: {  }
   /container-footer/:
     -
       -
-        'sidebar-footer 30': {  }
+        'sidebar-footer 4': {  }
       -
-        'mainbar-footer 40': {  }
+        'mainbar-footer 5': {  }
       -
-        'aside-footer 30': {  }
+        'aside-footer 4': {  }
   copyright: {  }
   offcanvas: {  }
 structure:

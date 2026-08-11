@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -14,8 +14,8 @@ layout:
       - testimonials-8325
   /above/:
     -
-      - 'teamhighlight-3310 50'
-      - 'simplecontent-3175 50'
+      - 'teamhighlight-3310 6'
+      - 'simplecontent-3175 6'
   /feature/:
     -
       - featureslider-6401
@@ -28,24 +28,24 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-1120
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - team-4014
   /extension/:
     -
-      - 'promo-9419 50'
-      - 'contentarray-2765 50'
+      - 'promo-9419 6'
+      - 'contentarray-2765 6'
     -
-      - 'spacer-9471 20'
-      - 'logos-2310 60'
-      - 'spacer-4573 20'
+      - 'spacer-9471 2'
+      - 'logos-2310 7'
+      - 'spacer-4573 2'
   /bottom/:
     -
       - video-2872

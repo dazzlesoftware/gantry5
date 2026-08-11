@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: genesis-admin://images/layouts/home.png
   name: Particles 3
@@ -22,7 +22,7 @@ layout:
     - flipbox-3402
     - headlines-3403
   /container-particles-3/:
-  - - mainbar 67:
+  - - mainbar 8:
       - - advancedtable-3100
       - - audioplayer-3101
       - - buttongroup-3102
@@ -38,7 +38,7 @@ layout:
       - - stripsslider-3112
       - - teamcarousel-3113
       - - totop-3114
-    - sidebar 33:
+    - sidebar 4:
       - - advancedtable-3200
       - - audioplayer-3201
       - - buttongroup-3202

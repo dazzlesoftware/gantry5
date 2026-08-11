@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -9,27 +9,27 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 20'
-      - 'menu-4196 60'
-      - 'social-7220 20'
+      - 'logo-5992 2'
+      - 'menu-4196 7'
+      - 'social-7220 2'
   /slideshow/:
     -
       - newsslider-4592
   /header/:
     -
-      - 'imagegrid-3167 68'
-      - 'pricingtable-9025 32'
+      - 'imagegrid-3167 8'
+      - 'pricingtable-9025 4'
   /aboveBanner/: {  }
   /above/: {  }
   /showcaseBanner/: {  }
   /container-showcase/:
     -
       -
-        'showcaseleft 68':
+        'showcaseleft 8':
           -
             - accordion-6710
       -
-        'showcaseright 32':
+        'showcaseright 4':
           -
             - custom-7554
           -
@@ -37,11 +37,11 @@ layout:
   /container-expanded/:
     -
       -
-        'expandedleft 68':
+        'expandedleft 8':
           -
             - contenttabs-3142
       -
-        'expandedright 32':
+        'expandedright 4':
           -
             - swipercarousel-6713
           -
@@ -54,11 +54,11 @@ layout:
   /container-4448/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expandedBanner/: {  }
   /expanded/: {  }
   /extensionBanner/: {  }
@@ -74,11 +74,11 @@ layout:
   /footer/: {  }
   /copyright/:
     -
-      - 'logo-3639 60'
-      - 'newsletter-9635 40'
+      - 'logo-3639 7'
+      - 'newsletter-9635 5'
     -
-      - 'copyright-5748 48'
-      - 'custom-5195 52'
+      - 'copyright-5748 6'
+      - 'custom-5195 6'
   offcanvas:
     -
       - mobile-menu-7951

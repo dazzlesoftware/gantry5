@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: genesis-admin://images/layouts/home.png
   name: Particles 2
@@ -22,7 +22,7 @@ layout:
     - featuresslider-2402
     - heading-2403
   /container-particles-2/:
-  - - mainbar 67:
+  - - mainbar 8:
       - - advancedprogressbar-2100
       - - articlesscroller-2101
       - - button-2102
@@ -38,7 +38,7 @@ layout:
       - - soundcloud-2112
       - - tabimage-2113
       - - timeline-2114
-    - sidebar 33:
+    - sidebar 4:
       - - advancedprogressbar-2200
       - - articlesscroller-2201
       - - button-2202

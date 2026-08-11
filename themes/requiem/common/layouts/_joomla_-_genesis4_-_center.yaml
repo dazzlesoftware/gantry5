@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/3-col.png'
   name: _joomla_-_genesis4_-_center
@@ -9,89 +9,89 @@ layout:
       - position-4026
   /top/:
     -
-      - 'position-4907 33.3'
-      - 'position-8942 33.3'
-      - 'position-9898 33.3'
+      - 'position-4907 4'
+      - 'position-8942 4'
+      - 'position-9898 4'
   /navigation/:
     -
-      - 'position-4921 30'
-      - 'menu-4855 70'
+      - 'position-4921 4'
+      - 'menu-4855 8'
   /showcase/:
     -
-      - 'position-4982 33.3'
-      - 'position-6039 33.3'
-      - 'position-2697 33.3'
+      - 'position-4982 4'
+      - 'position-6039 4'
+      - 'position-2697 4'
   /feature/:
     -
-      - 'position-5495 33.3'
-      - 'position-8801 33.3'
-      - 'position-3370 33.3'
+      - 'position-5495 4'
+      - 'position-8801 4'
+      - 'position-3370 4'
   /utility/:
     -
-      - 'position-4746 33.3'
-      - 'position-8428 33.3'
-      - 'position-7248 33.3'
+      - 'position-4746 4'
+      - 'position-8428 4'
+      - 'position-7248 4'
   /breadcrumb/:
     -
       - position-9043
   /maintop/:
     -
-      - 'position-9150 33.3'
-      - 'position-3420 33.3'
-      - 'position-9618 33.3'
+      - 'position-9150 4'
+      - 'position-3420 4'
+      - 'position-9618 4'
   /container-9106/:
     -
       -
-        'sidebar-a 20':
+        'sidebar-a 2':
           -
             - position-3319
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - position-5120
           -
-            - 'position-4794 33.3'
-            - 'position-3901 33.3'
-            - 'position-2945 33.3'
+            - 'position-4794 4'
+            - 'position-3901 4'
+            - 'position-2945 4'
           -
             - system-content-2537
           -
-            - 'position-5881 33.3'
-            - 'position-5499 33.3'
-            - 'position-3160 33.3'
+            - 'position-5881 4'
+            - 'position-5499 4'
+            - 'position-3160 4'
       -
-        'sidebar-b 20':
+        'sidebar-b 2':
           -
             - position-5824
   /mainbottom/:
     -
-      - 'position-9073 33.3'
-      - 'position-5370 33.3'
-      - 'position-7938 33.3'
+      - 'position-9073 4'
+      - 'position-5370 4'
+      - 'position-7938 4'
   /extension/:
     -
-      - 'position-7619 33.3'
-      - 'position-8084 33.3'
-      - 'position-7576 33.3'
+      - 'position-7619 4'
+      - 'position-8084 4'
+      - 'position-7576 4'
   /bottom/:
     -
-      - 'position-1014 33.3'
-      - 'position-7205 33.3'
-      - 'position-2212 33.3'
+      - 'position-1014 4'
+      - 'position-7205 4'
+      - 'position-2212 4'
   /footer/:
     -
-      - 'position-4273 33.3'
-      - 'position-6140 33.3'
-      - 'position-3519 33.3'
+      - 'position-4273 4'
+      - 'position-6140 4'
+      - 'position-3519 4'
   /copyright/:
     -
-      - 'position-7480 33.3'
-      - 'position-7533 33.3'
-      - 'position-9745 33.3'
+      - 'position-7480 4'
+      - 'position-7533 4'
+      - 'position-9745 4'
     -
-      - 'copyright-8917 40'
-      - 'spacer-5877 30'
-      - 'branding-1943 30'
+      - 'copyright-8917 5'
+      - 'spacer-5877 4'
+      - 'branding-1943 4'
   offcanvas:
     -
       - mobile-menu-4120

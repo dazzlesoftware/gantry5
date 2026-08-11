@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -8,12 +8,12 @@ layout:
   /container-top/:
     -
       -
-        '/navigation/ 90': {  }
+        '/navigation/ 11': {  }
         /slideshow/:
           -
             - newsslider-6687
       -
-        'sidebar-top 10': {  }
+        'sidebar-top 1': {  }
   /header/:
     -
       - casestudies-5768
@@ -22,8 +22,8 @@ layout:
   /showcase/: {  }
   /expanded/:
     -
-      - 'infolist-7302 50'
-      - 'testimonialslider-7172 50'
+      - 'infolist-7302 6'
+      - 'testimonialslider-7172 6'
   /extension/:
     -
       - verticalslider-4944

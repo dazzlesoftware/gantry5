@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: coming_soon
@@ -7,123 +7,123 @@ layout:
   /container-top/:
     -
       -
-        'topleft 10': {  }
+        'topleft 1': {  }
       -
-        'topmain 80': {  }
+        'topmain 10': {  }
       -
-        'topright 10': {  }
+        'topright 1': {  }
   /container-navigation/:
     -
       -
-        'navigationleft 10': {  }
+        'navigationleft 1': {  }
       -
-        'navigationmain 80':
+        'navigationmain 10':
           -
-            - 'logo-9148 15'
-            - 'spacer-spacer-1539 65'
-            - 'social-7811 20'
+            - 'logo-9148 2'
+            - 'spacer-spacer-1539 8'
+            - 'social-7811 2'
       -
-        'navigationright 10': {  }
+        'navigationright 1': {  }
   /container-header/:
     -
       -
-        'headerleft 10': {  }
+        'headerleft 1': {  }
       -
-        'headermain 80': {  }
+        'headermain 10': {  }
       -
-        'headerright 10': {  }
+        'headerright 1': {  }
   /container-showcase/:
     -
       -
-        'showcaseleft 10': {  }
+        'showcaseleft 1': {  }
       -
-        'showcasemain 80': {  }
+        'showcasemain 10': {  }
       -
-        'showcaseright 10': {  }
+        'showcaseright 1': {  }
   /container-slideshow/:
     -
       -
-        'slideshowleft 10': {  }
+        'slideshowleft 1': {  }
       -
-        'slideshowmain 80':
+        'slideshowmain 10':
           -
             - simplecontent-6932
           -
             - simplecounter-1369
       -
-        'slideshowright 10': {  }
+        'slideshowright 1': {  }
   /container-above/:
     -
       -
-        'aboveleft 10': {  }
+        'aboveleft 1': {  }
       -
-        'abovemain 80': {  }
+        'abovemain 10': {  }
       -
-        'aboveright 10': {  }
+        'aboveright 1': {  }
   /container-utility/:
     -
       -
-        'utilityleft 10': {  }
+        'utilityleft 1': {  }
       -
-        'utilitymain 80': {  }
+        'utilitymain 10': {  }
       -
-        'utilityright 10': {  }
+        'utilityright 1': {  }
   /container-feature/:
     -
       -
-        'featureleft 10': {  }
+        'featureleft 1': {  }
       -
-        'featuremain 80': {  }
+        'featuremain 10': {  }
       -
-        'featureright 10': {  }
+        'featureright 1': {  }
   /container-main/:
     -
       -
-        'sidebar 10': {  }
+        'sidebar 1': {  }
       -
-        'mainbar 80': {  }
+        'mainbar 10': {  }
       -
-        'aside 10': {  }
+        'aside 1': {  }
   /container-expanded/:
     -
       -
-        'expandedleft 10': {  }
+        'expandedleft 1': {  }
       -
-        'expandedmain 80':
+        'expandedmain 10':
       -
-        'expandedright 10': {  }
+        'expandedright 1': {  }
   /container-extension/:
     -
       -
-        'extensionleft 10': {  }
+        'extensionleft 1': {  }
       -
-        'extensionmain 80': {  }
+        'extensionmain 10': {  }
       -
-        'extensionright 10': {  }
+        'extensionright 1': {  }
   /container-bottom/:
     -
       -
-        'bottomleft 10': {  }
+        'bottomleft 1': {  }
       -
-        'bottommain 80': {  }
+        'bottommain 10': {  }
       -
-        'bottomright 10': {  }
+        'bottomright 1': {  }
   /container-footer/:
     -
       -
-        'footerleft 10': {  }
+        'footerleft 1': {  }
       -
-        'footermain 80': {  }
+        'footermain 10': {  }
       -
-        'footerright 10': {  }
+        'footerright 1': {  }
   /container-copyright/:
     -
       -
-        'copyrightleft 10': {  }
+        'copyrightleft 1': {  }
       -
-        'copyrightmain 80': {  }
+        'copyrightmain 10': {  }
       -
-        'copyrightright 10': {  }
+        'copyrightright 1': {  }
   offcanvas: {  }
 structure:
   topleft:

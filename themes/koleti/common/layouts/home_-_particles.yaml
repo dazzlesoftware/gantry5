@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -16,8 +16,8 @@ layout:
       - latestnews-9988
   /above/:
     -
-      - 'simplecontent-5158 50'
-      - 'logo-3537 50'
+      - 'simplecontent-5158 6'
+      - 'logo-3537 6'
   /feature/:
     -
       - slider-7743
@@ -32,11 +32,11 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - team-1864

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home
@@ -6,8 +6,8 @@ preset:
 layout:
   /navigation/:
     -
-      - 'logo-5679 25'
-      - 'menu-2875 75'
+      - 'logo-5679 3'
+      - 'menu-2875 9'
   top: {  }
   utility: {  }
   /showcase/:
@@ -20,13 +20,13 @@ layout:
   /main/:
     -
       -
-        'sidebar 25':
+        'sidebar 3':
           -
             - verticalmenu-1180
           -
             - custom-6269
       -
-        'mainbody 50':
+        'mainbody 6':
           -
             - iconlist-7265
           -
@@ -38,7 +38,7 @@ layout:
           -
             - custom-8991
       -
-        'aside 25': {  }
+        'aside 3': {  }
   /expandedbottom/:
     -
       - verticalmenu-1181
@@ -50,12 +50,12 @@ layout:
   /footer/:
     -
       -
-        'footer-a 68':
+        'footer-a 8':
           -
-            - 'custom-7983 49'
-            - 'custom-7304 51'
+            - 'custom-7983 6'
+            - 'custom-7304 6'
       -
-        'footer-b 32':
+        'footer-b 4':
           -
             - custom-6738
           -

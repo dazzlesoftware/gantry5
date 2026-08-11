@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: portfolio
@@ -28,11 +28,11 @@ layout:
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - custom-7122
       -
-        'sidebar 40':
+        'sidebar 5':
           -
             - position-position-7684
   /expandedbottom/:
@@ -43,10 +43,10 @@ layout:
     -
       - custom-2633
   /bottom/: {  }
-  footer: 
+  footer:
     -
-      - 'custom-7934 50'
-      - 'custom-1158 50'    
+      - 'custom-7934 6'
+      - 'custom-1158 6'
   copyright: {  }
   offcanvas: {  }
 structure:
@@ -145,7 +145,7 @@ content:
   position-position-3611:
     title: Breadcrumb
     attributes:
-      key: breadcrumb      
+      key: breadcrumb
   position-position-5798:
     title: 'Utility A'
     attributes:

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/offline.png'
   name: coming_soon
@@ -8,74 +8,74 @@ layout:
     -
       - system-messages-8602
     -
-      - 'position-6283 33'
-      - 'position-1936 34'
-      - 'position-6947 33'
+      - 'position-6283 4'
+      - 'position-1936 4'
+      - 'position-6947 4'
   /header/:
     -
-      - 'logo-6669 30'
-      - 'menu-3039 70'
+      - 'logo-6669 4'
+      - 'menu-3039 8'
     -
-      - 'position-1519 33'
-      - 'position-4805 34'
-      - 'position-1737 33'
+      - 'position-1519 4'
+      - 'position-4805 4'
+      - 'position-1737 4'
   /slideshow/:
     -
       - position-6936
   /showcase/:
     -
-      - 'position-7529 33'
-      - 'position-8897 34'
-      - 'position-9587 33'
+      - 'position-7529 4'
+      - 'position-8897 4'
+      - 'position-9587 4'
   /feature/:
     -
-      - 'position-2114 33'
-      - 'position-6228 34'
-      - 'position-6956 33'
+      - 'position-2114 4'
+      - 'position-6228 4'
+      - 'position-6956 4'
   /main/:
     -
-      - 'position-7155 33'
-      - 'position-6044 34'
-      - 'position-6821 33'
+      - 'position-7155 4'
+      - 'position-6044 4'
+      - 'position-6821 4'
   /container-1354/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-5790
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - simplecounter-7980
           -
             - system-content-5510
       -
-        'aside 20':
+        'aside 2':
           -
             - position-4339
   /extension/:
     -
-      - 'position-8848 33'
-      - 'position-7310 34'
-      - 'position-2116 33'
+      - 'position-8848 4'
+      - 'position-7310 4'
+      - 'position-2116 4'
   /bottom/:
     -
-      - 'position-8257 33'
-      - 'position-2573 34'
-      - 'position-8927 33'
+      - 'position-8257 4'
+      - 'position-2573 4'
+      - 'position-8927 4'
   /footer/:
     -
-      - 'position-1686 33'
-      - 'position-6718 34'
-      - 'position-6078 33'
+      - 'position-1686 4'
+      - 'position-6718 4'
+      - 'position-6078 4'
   /copyright/:
     -
-      - 'logo-2871 33'
-      - 'custom-4959 67'
+      - 'logo-2871 4'
+      - 'custom-4959 8'
     -
-      - 'copyright-5603 33'
-      - 'custom-7122 57'
-      - 'totop-2594 10'
+      - 'copyright-5603 4'
+      - 'custom-7122 7'
+      - 'totop-2594 1'
   offcanvas:
     -
       - mobile-menu-1205

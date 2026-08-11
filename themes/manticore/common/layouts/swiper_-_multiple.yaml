@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: swiper_-_multiple
@@ -7,9 +7,9 @@ layout:
   top: {  }
   navigation:
     -
-      - 'logo-5453 20'
-      - 'menu-7020 60'
-      - 'social-8173 20'
+      - 'logo-5453 2'
+      - 'menu-7020 7'
+      - 'social-8173 2'
     -
       - simplecontent-9521
   /slideshow/:

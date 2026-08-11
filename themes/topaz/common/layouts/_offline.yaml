@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _offline
@@ -8,130 +8,130 @@ layout:
   /container-top/:
     -
       -
-        'topleft 15': {  }
+        'topleft 2': {  }
       -
-        'topmain 70':
+        'topmain 8':
           -
             - system-messages-5196
       -
-        'topright 15': {  }
+        'topright 2': {  }
   /container-header/:
     -
       -
-        'navigationleft 15':
+        'navigationleft 2':
           -
             - social-6532
       -
-        'navigationmain 70':
+        'navigationmain 8':
           -
             - logo-3501
       -
-        'navigationright 15':
+        'navigationright 2':
           -
             - spacer-4287
     -
       -
-        'headerleft 15': {  }
+        'headerleft 2': {  }
       -
-        'headermain 70':
+        'headermain 8':
           -
-            - 'spacer-1961 10'
-            - 'simplecontent-3880 65'
-            - 'spacer-6507 25'
+            - 'spacer-1961 1'
+            - 'simplecontent-3880 8'
+            - 'spacer-6507 3'
           -
-            - 'spacer-8558 20'
-            - 'system-content-1047 45'
-            - 'spacer-1657 35'
+            - 'spacer-8558 2'
+            - 'system-content-1047 5'
+            - 'spacer-1657 4'
       -
-        'headerright 15': {  }
+        'headerright 2': {  }
   /container-showcase/:
     -
       -
-        'showcaseleft 15': {  }
+        'showcaseleft 2': {  }
       -
-        'showcasemain 70': {  }
+        'showcasemain 8': {  }
       -
-        'showcaseright 15': {  }
+        'showcaseright 2': {  }
   /container-slideshow/:
     -
       -
-        'slideshowleft 15': {  }
+        'slideshowleft 2': {  }
       -
-        'slideshowmain 70': {  }
+        'slideshowmain 8': {  }
       -
-        'slideshowright 15': {  }
+        'slideshowright 2': {  }
   /container-above/:
     -
       -
-        'aboveleft 15': {  }
+        'aboveleft 2': {  }
       -
-        'abovemain 70': {  }
+        'abovemain 8': {  }
       -
-        'aboveright 15': {  }
+        'aboveright 2': {  }
   /container-utility/:
     -
       -
-        'utilityleft 15': {  }
+        'utilityleft 2': {  }
       -
-        'utilitymain 70': {  }
+        'utilitymain 8': {  }
       -
-        'utilityright 15': {  }
+        'utilityright 2': {  }
   /container-feature/:
     -
       -
-        'featureleft 15': {  }
+        'featureleft 2': {  }
       -
-        'featuremain 70': {  }
+        'featuremain 8': {  }
       -
-        'featureright 15': {  }
+        'featureright 2': {  }
   /container-main/:
     -
       -
-        'sidebar 15': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 70': {  }
+        'mainbar 8': {  }
       -
-        'aside 15': {  }
+        'aside 2': {  }
   /container-expanded/:
     -
       -
-        'expandedleft 15': {  }
+        'expandedleft 2': {  }
       -
-        'expandedmain 70': {  }
+        'expandedmain 8': {  }
       -
-        'expandedright 15': {  }
+        'expandedright 2': {  }
   /container-extension/:
     -
       -
-        'extensionleft 15': {  }
+        'extensionleft 2': {  }
       -
-        'extensionmain 70': {  }
+        'extensionmain 8': {  }
       -
-        'extensionright 15': {  }
+        'extensionright 2': {  }
   /container-bottom/:
     -
       -
-        'bottomleft 15': {  }
+        'bottomleft 2': {  }
       -
-        'bottommain 70': {  }
+        'bottommain 8': {  }
       -
-        'bottomright 15': {  }
+        'bottomright 2': {  }
   /container-footer/:
     -
       -
-        'footerleft 15': {  }
+        'footerleft 2': {  }
       -
-        'footermain 70': {  }
+        'footermain 8': {  }
       -
-        'footerright 15': {  }
+        'footerright 2': {  }
   /container-copyright/:
     -
       -
-        'copyrightleft 15': {  }
+        'copyrightleft 2': {  }
       -
-        'copyrightmain 70': {  }
+        'copyrightmain 8': {  }
       -
-        'copyrightright 15': {  }
+        'copyrightright 2': {  }
   offcanvas: {  }
 structure:
   topleft:

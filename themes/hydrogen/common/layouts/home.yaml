@@ -1,5 +1,4 @@
-version: 2
-
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: services
@@ -23,13 +23,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 15': {  }
+        'sidebar 2': {  }
       -
-        'main 70':
+        'main 8':
           -
             - custom-1874
       -
-        'aside 15': {  }
+        'aside 2': {  }
   /mainbottom/: {  }
   /extension/:
     -
@@ -37,8 +37,8 @@ layout:
   /bottom/: {  }
   /footer/:
     -
-      - 'custom-5072 50'
-      - 'custom-3219 50'
+      - 'custom-5072 6'
+      - 'custom-3219 6'
   copyright: {  }
   offcanvas: {  }
 structure:

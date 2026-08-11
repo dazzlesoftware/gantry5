@@ -812,11 +812,36 @@ ready(function() {
                 if (!mapped) { return 1; }
                 return Math.max(1, Math.min(12, parseInt(mapped.getAttribute('columns.xs'), 10) ||
                     Math.round((mapped.getSize() || 0) / 100 * 12)));
+            }),
+            currentByBreakpoint = { xs: current };
+
+        ['sm', 'md', 'lg', 'xl'].forEach(function(breakpoint) {
+            let values = blocks.map(function(child) {
+                let mapped = builder.get(child.getAttribute('data-lm-id')),
+                    value = mapped && parseInt(mapped.getAttribute('columns.' + breakpoint), 10);
+                return value || null;
             });
+            currentByBreakpoint[breakpoint] = values.every(Boolean) ? values : null;
+        });
 
         openRowPicker({
             current: current,
-            onSelect: function(columns) {
+            currentByBreakpoint: currentByBreakpoint,
+            columnCount: blocks.length,
+            responsive: true,
+            onSelect: function(columns, breakpoint) {
+                breakpoint = breakpoint || 'xs';
+                if (breakpoint !== 'xs') {
+                    blocks.forEach(function(child, index) {
+                        let mapped = builder.get(child.getAttribute('data-lm-id'));
+                        if (!mapped) { return; }
+                        if (columns) { mapped.setAttribute('columns.' + breakpoint, columns[index]); }
+                        else if (mapped.getAttribute('columns')) { delete mapped.getAttribute('columns')[breakpoint]; }
+                        mapped.applyColumnClasses();
+                    });
+                    lmhistory.push(builder.serialize(), lmhistory.get().preset);
+                    return;
+                }
                 if (mappedGrid) {
                     mappedGrid.setAttribute('layoutPreset', 'bootstrap');
                     mappedGrid.block.attribute('data-lm-preset-grid', 'bootstrap').attribute('data-lm-samewidth', null);

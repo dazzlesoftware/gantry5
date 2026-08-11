@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -7,9 +7,9 @@ layout:
   top: {  }
   /navigation/:
     -
-      - 'logo-9841 20'
-      - 'menu-7574 60'
-      - 'social-2794 20'
+      - 'logo-9841 2'
+      - 'menu-7574 7'
+      - 'social-2794 2'
     -
       - slideshow-4215
   slideshow: {  }
@@ -22,8 +22,8 @@ layout:
     -
       - particlesjs-2260
     -
-      - 'recentreviews-5030 70'
-      - 'upcgames-6633 30'
+      - 'recentreviews-5030 8'
+      - 'upcgames-6633 4'
   /feature/:
     -
       - particlesjs-7976
@@ -36,11 +36,11 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   expanded: {  }
   extension: {  }
   bottom: {  }

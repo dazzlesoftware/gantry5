@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home
@@ -24,11 +24,11 @@ layout:
   /feature/:
     -
       -
-        'feature-a 50':
+        'feature-a 6':
           -
             - custom-5819
       -
-        'feature-b 50':
+        'feature-b 6':
           -
             - custom-9946
   /utility/:
@@ -44,11 +44,11 @@ layout:
   /main/:
     -
       -
-        'mainbody 65':
+        'mainbody 8':
           -
             - custom-6918
       -
-        'sidebar 35':
+        'sidebar 4':
           -
             - lists-8642
   expandedbottom: {  }
@@ -59,9 +59,9 @@ layout:
       - custom-2298
   /bottom/:
     -
-      - 'custom-8323 33.3'
-      - 'custom-3631 33.3'
-      - 'custom-4910 33.3'
+      - 'custom-8323 4'
+      - 'custom-3631 4'
+      - 'custom-4910 4'
   footer: {  }
   copyright: {  }
   offcanvas: {  }
@@ -452,7 +452,7 @@ content:
       class: 'flush'
       extra:
         -
-          data-aos: slide-right 
+          data-aos: slide-right
   custom-9473:
     title: 'Custom HTML'
     attributes:
@@ -557,7 +557,7 @@ content:
       class: 'fp-bottom'
       extra:
         -
-          data-aos: fade-down      
+          data-aos: fade-down
   custom-3631:
     title: 'About Dazzle Software'
     attributes:
@@ -566,7 +566,7 @@ content:
       class: 'fp-demo-info hidden-phone fp-bottom'
       extra:
         -
-          data-aos: fade-down       
+          data-aos: fade-down
   custom-4910:
     title: 'Custom HTML'
     attributes:

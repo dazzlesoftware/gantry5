@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -8,8 +8,8 @@ layout:
   top: {  }
   /utility/:
     -
-      - 'custom-2314 55'
-      - 'social-7117 45'
+      - 'custom-2314 7'
+      - 'social-7117 5'
   /showcase/:
     -
       - showcase-4247
@@ -28,9 +28,9 @@ layout:
   /main/:
     -
       -
-        'mainbody 60': {  }
+        'mainbody 7': {  }
       -
-        'sidebar 40': {  }
+        'sidebar 5': {  }
   /expandedbottom/:
     -
       - stripsslider-5044
@@ -39,15 +39,15 @@ layout:
       - slider-6732
   /extension/:
     -
-      - 'contenttabs-9016 50'
-      - 'lists-5875 50'
+      - 'contenttabs-9016 6'
+      - 'lists-5875 6'
   /bottom/:
     -
       - custom-6774
   /footer/:
     -
-      - 'custom-5916 50'
-      - 'mailchimp-6273 50'
+      - 'custom-5916 6'
+      - 'mailchimp-6273 6'
   copyright: {  }
   offcanvas: {  }
 structure:

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: about_us
@@ -9,8 +9,8 @@ layout:
       - system-messages-7196
   /header/:
     -
-      - 'logo-8141 50'
-      - 'menu-7067 50'
+      - 'logo-8141 6'
+      - 'menu-7067 6'
   /slideshow/: {  }
   /showcase/:
     -
@@ -22,15 +22,15 @@ layout:
   /container-9314/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-4567
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-8636
       -
-        'aside 20':
+        'aside 2':
           -
             - position-7019
   /extension/:
@@ -41,17 +41,17 @@ layout:
       - custom-2050
   /footer/:
     -
-      - 'position-9192 33.3'
-      - 'position-2963 33.3'
-      - 'position-4200 33.3'
+      - 'position-9192 4'
+      - 'position-2963 4'
+      - 'position-4200 4'
   /copyright/:
     -
-      - 'logo-8090 33'
-      - 'custom-6857 67'
+      - 'logo-8090 4'
+      - 'custom-6857 8'
     -
-      - 'copyright-3287 33'
-      - 'custom-8057 57'
-      - 'totop-1553 10'
+      - 'copyright-3287 4'
+      - 'custom-8057 7'
+      - 'totop-1553 1'
   offcanvas:
     -
       - mobile-menu-7572

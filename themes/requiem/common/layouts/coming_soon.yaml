@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/offline.png'
   name: coming_soon
@@ -18,13 +18,13 @@ layout:
   /container-3482/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - simplecounter-7384
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/:
     -
@@ -32,13 +32,13 @@ layout:
   /bottom/: {  }
   /footer/:
     -
-      - 'custom-7823 50'
-      - 'newsletter-5445 50'
+      - 'custom-7823 6'
+      - 'newsletter-5445 6'
   /copyright/:
     -
-      - 'branding-3217 33'
-      - 'copyright-3608 34'
-      - 'totop-8356 33'
+      - 'branding-3217 4'
+      - 'copyright-3608 4'
+      - 'totop-8356 4'
   /fixedside/:
     -
       - logo-2619

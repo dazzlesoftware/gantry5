@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -9,15 +9,15 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 40'
-      - 'menu-4196 60'
+      - 'logo-5992 5'
+      - 'menu-4196 7'
   /slideshow/:
     -
       - position-position-6661
   /header/:
     -
-      - 'position-position-7051 50'
-      - 'position-position-2504 50'
+      - 'position-position-7051 6'
+      - 'position-position-2504 6'
   /above/:
     -
       - position-position-3264
@@ -33,23 +33,23 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-position-8538
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - position-position-8547
           -
             - system-content-1120
       -
-        'aside 20':
+        'aside 2':
           -
             - position-position-8807
   /expanded/:
     -
-      - 'position-position-8124 50'
-      - 'position-position-8346 50'
+      - 'position-position-8124 6'
+      - 'position-position-8346 6'
   /extension/:
     -
       - position-position-4800
@@ -61,9 +61,9 @@ layout:
       - position-position-6548
   /copyright/:
     -
-      - 'simplemenu-6826 50'
-      - 'branding-9192 35'
-      - 'social-4772 15'
+      - 'simplemenu-6826 6'
+      - 'branding-9192 4'
+      - 'social-4772 2'
   offcanvas:
     -
       - mobile-menu-7951

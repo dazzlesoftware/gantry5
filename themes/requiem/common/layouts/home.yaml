@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home
@@ -9,9 +9,9 @@ layout:
       - system-messages-9183
   /navigation/:
     -
-      - 'iconmenu-4703 10'
-      - 'menu-2134 80'
-      - 'iconmenu-6943 10'
+      - 'iconmenu-4703 1'
+      - 'menu-2134 10'
+      - 'iconmenu-6943 1'
   /header/:
     -
       - promocontent-8571
@@ -30,17 +30,17 @@ layout:
   /container-9177/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-1776
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
-      - 'infolist-5532 40'
-      - 'gridpromogallery-3340 60'
+      - 'infolist-5532 5'
+      - 'gridpromogallery-3340 7'
   /extension/:
     -
       - promocontent-9284
@@ -49,15 +49,15 @@ layout:
       - gridcontent-7855
   /footer/:
     -
-      - 'infolist-2251 25'
-      - 'infolist-9103 25'
-      - 'custom-5842 25'
-      - 'contact-7305 25'
+      - 'infolist-2251 3'
+      - 'infolist-9103 3'
+      - 'custom-5842 3'
+      - 'contact-7305 3'
   /copyright/:
     -
-      - 'branding-5085 33'
-      - 'copyright-1381 34'
-      - 'totop-7373 33'
+      - 'branding-5085 4'
+      - 'copyright-1381 4'
+      - 'totop-7373 4'
   /fixedside/:
     -
       - logo-5625

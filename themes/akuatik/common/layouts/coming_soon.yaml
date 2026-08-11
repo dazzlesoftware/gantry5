@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: coming_soon
@@ -8,8 +8,8 @@ layout:
   /navigation/: {  }
   /slideshow/:
     -
-      - 'simplecontent-8300 80'
-      - 'social-8668 20'
+      - 'simplecontent-8300 10'
+      - 'social-8668 2'
   /header/: {  }
   /above/: {  }
   /showcase/: {  }
@@ -18,13 +18,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - simplecounter-4200
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/:

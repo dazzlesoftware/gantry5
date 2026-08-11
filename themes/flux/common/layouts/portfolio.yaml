@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -19,11 +19,11 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - infolist-8967
@@ -182,7 +182,7 @@ content:
           readmore_link: ''
           readmore_class: ''
           readmore_target: _self
-          title: Portfolio    
+          title: Portfolio
   infolist-1436:
     title: 'Portfolio Info List'
     attributes:
@@ -287,7 +287,7 @@ content:
           buttonicon: ''
           readmoreclass: ''
           readmoretarget: _self
-          title: 'Music Composition'    
+          title: 'Music Composition'
   infolist-8967:
     title: 'Portfolio Info List 2'
     attributes:
@@ -360,7 +360,7 @@ content:
             buttonicon: ''
             readmoreclass: ''
             readmoretarget: _self
-            title: 'Project 4'    
+            title: 'Project 4'
   imagegrid-3677:
     title: 'Portfolio Image Grid'
     attributes:

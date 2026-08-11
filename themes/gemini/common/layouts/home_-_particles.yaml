@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -7,21 +7,21 @@ layout:
   /container-overlay/:
     -
       -
-        'sideoverlay 40': {  }
+        'sideoverlay 5': {  }
       -
-        'mainoverlay 60': {  }
+        'mainoverlay 7': {  }
   top: {  }
   /navigation/: {  }
   /slideshow/:
     -
-      - 'custom-9594 60'
-      - 'blockcontent-6851 40'
+      - 'custom-9594 7'
+      - 'blockcontent-6851 5'
   /header/:
     -
       - simplecontent-1261
     -
-      - 'headertabs-5341 50'
-      - 'accordionslider-2330 50'
+      - 'headertabs-5341 6'
+      - 'accordionslider-2330 6'
   /utility/:
     -
       - simplecontent-6615
@@ -36,21 +36,21 @@ layout:
     -
       - simplecontent-8234
     -
-      - 'accordion-5298 50'
-      - 'accordion-4924 50'
+      - 'accordion-5298 6'
+      - 'accordion-4924 6'
     -
       - custom-8122
   /extension/: {  }
   /bottom/: {  }
   /footer/:
     -
-      - 'logo-6801 33.3'
-      - 'custom-5910 33.3'
-      - 'custom-8794 33.3'
+      - 'logo-6801 4'
+      - 'custom-5910 4'
+      - 'custom-8794 4'
     -
-      - 'custom-3546 33.3'
-      - 'custom-5083 33.3'
-      - 'custom-3183 33.3'
+      - 'custom-3546 4'
+      - 'custom-5083 4'
+      - 'custom-3183 4'
   copyright: {  }
   offcanvas: {  }
 structure:

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -7,9 +7,9 @@ layout:
   navigation: {  }
   /showcase/:
     -
-      - 'custom-5910 33'
-      - 'custom-2606 33'
-      - 'custom-6369 34'
+      - 'custom-5910 4'
+      - 'custom-2606 4'
+      - 'custom-6369 4'
   top: {  }
   utility: {  }
   feature: {  }
@@ -18,13 +18,13 @@ layout:
   /main/:
     -
       -
-        'mainbody 67':
+        'mainbody 8':
           -
             - custom-7493
           -
             - lists-8294
       -
-        'sidebar 33':
+        'sidebar 4':
           -
             - custom-7343
   expandedbottom: {  }
@@ -33,14 +33,14 @@ layout:
       - custom-3683
   /extension/:
     -
-      - 'custom-4831 50'
-      - 'custom-6040 50'
+      - 'custom-4831 6'
+      - 'custom-6040 6'
     -
-      - 'custom-7289 50'
-      - 'custom-9196 50'
+      - 'custom-7289 6'
+      - 'custom-9196 6'
     -
-      - 'custom-7203 50'
-      - 'custom-4207 50'
+      - 'custom-7203 6'
+      - 'custom-4207 6'
   /footer-surround/:
     -
       -
@@ -49,8 +49,8 @@ layout:
             - custom-4488
         /footer/:
           -
-            - 'custom-5551 50'
-            - 'custom-2913 50'
+            - 'custom-5551 6'
+            - 'custom-2913 6'
   copyright: {  }
   offcanvas: {  }
 structure:

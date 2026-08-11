@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -19,8 +19,8 @@ layout:
       - team-2443
   /feature/:
     -
-      - 'profile-8401 65'
-      - 'table-tabs-3436 35'
+      - 'profile-8401 8'
+      - 'table-tabs-3436 4'
   /showcase/:
     -
       - latestnews-5236
@@ -30,11 +30,11 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - mediaquotes-2728
@@ -66,7 +66,7 @@ structure:
     type: section
     attributes:
       boxed: ''
-      class: fp-slideshow 
+      class: fp-slideshow
       variations: section-vertical-paddings
   header:
     attributes:
@@ -76,7 +76,7 @@ structure:
     type: section
     attributes:
       boxed: ''
-      class: fp-above 
+      class: fp-above
       variations: section-horizontal-paddings
   feature:
     type: section
@@ -119,7 +119,7 @@ structure:
     attributes:
       boxed: ''
       class: fp-expanded
-      variations: section-horizontal-paddings 
+      variations: section-horizontal-paddings
   extension:
     type: section
     attributes:

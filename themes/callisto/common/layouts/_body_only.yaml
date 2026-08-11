@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -8,27 +8,27 @@ layout:
     -
       - system-messages-7809
     -
-      - 'logo-2862 56'
-      - 'iconmenu-2725 44'
+      - 'logo-2862 7'
+      - 'iconmenu-2725 5'
   /navigation/:
-    - 
-      - 'menu-5124 80'
-      - 'social-9614 20'
+    -
+      - 'menu-5124 10'
+      - 'social-9614 2'
   /showcase/: {  }
   /container-1153/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
             - system-content-4214
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/: {  }
   /footer/:
     -
-      - 'custom-4773 33.3'
-      - 'newsletter-7240 33.3'
-      - 'custom-1535 33.3'
+      - 'custom-4773 4'
+      - 'newsletter-7240 4'
+      - 'custom-1535 4'
   /copyright/:
     -
       - copyright-4100

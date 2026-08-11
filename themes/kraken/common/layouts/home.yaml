@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home
@@ -9,8 +9,8 @@ layout:
       - system-messages-2937
   /navigation/:
     -
-      - 'logo-4055 25'
-      - 'menu-6756 75'
+      - 'logo-4055 3'
+      - 'menu-6756 9'
   /header/:
     -
       - swiper-1638
@@ -29,13 +29,13 @@ layout:
   /container-4985/:
     -
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - gridcontent-4611
           -
             - system-content-4920
       -
-        'aside 40':
+        'aside 5':
           -
             - iconmenu-6620
           -
@@ -51,14 +51,14 @@ layout:
   /bottom/: {  }
   /footer/:
     -
-      - 'logo-6722 25'
-      - 'horizontalmenu-4713 50'
-      - 'social-6783 25'
+      - 'logo-6722 3'
+      - 'horizontalmenu-4713 6'
+      - 'social-6783 3'
   /copyright/:
     -
-      - 'branding-1872 25'
-      - 'copyright-9725 50'
-      - 'totop-8071 25'
+      - 'branding-1872 3'
+      - 'copyright-9725 6'
+      - 'totop-8071 3'
   /fixedside/:
     -
       - logo-8816

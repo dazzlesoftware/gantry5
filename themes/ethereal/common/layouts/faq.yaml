@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: faq
@@ -9,8 +9,8 @@ layout:
       - system-messages-6424
   /header/:
     -
-      - 'logo-6228 50'
-      - 'menu-6564 50'
+      - 'logo-6228 6'
+      - 'menu-6564 6'
   /slideshow/: {  }
   /showcase/:
     -
@@ -22,15 +22,15 @@ layout:
   /container-4287/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-3976
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-2315
       -
-        'aside 20':
+        'aside 2':
           -
             - position-7555
   /extension/:
@@ -41,17 +41,17 @@ layout:
       - custom-5333
   /footer/:
     -
-      - 'position-1562 33.3'
-      - 'position-4625 33.3'
-      - 'position-9516 33.3'
+      - 'position-1562 4'
+      - 'position-4625 4'
+      - 'position-9516 4'
   /copyright/:
     -
-      - 'logo-3328 33'
-      - 'custom-5654 67'
+      - 'logo-3328 4'
+      - 'custom-5654 8'
     -
-      - 'copyright-1967 33'
-      - 'custom-9255 57'
-      - 'totop-6527 10'
+      - 'copyright-1967 4'
+      - 'custom-9255 7'
+      - 'totop-6527 1'
   offcanvas:
     -
       - mobile-menu-4082

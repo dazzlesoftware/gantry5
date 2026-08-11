@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -7,9 +7,9 @@ layout:
   /container-body/:
     -
       -
-        'bodysidebar 20': {  }
+        'bodysidebar 2': {  }
       -
-        '/top/ 80': {  }
+        '/top/ 10': {  }
         /navigation/: {  }
         /slideshow/:
           -
@@ -35,11 +35,11 @@ layout:
         /container-main/:
           -
             -
-              'sidebar 20': {  }
+              'sidebar 2': {  }
             -
-              'mainbar 60': {  }
+              'mainbar 7': {  }
             -
-              'aside 20': {  }
+              'aside 2': {  }
         /expanded/:
           -
             - photocollage-6382
@@ -48,8 +48,8 @@ layout:
             - logos-5614
         /bottom/:
           -
-            - 'system-content-8825 50'
-            - 'promo-8286 50'
+            - 'system-content-8825 6'
+            - 'promo-8286 6'
         /footer/: {  }
         /copyright/: {  }
   offcanvas: {  }

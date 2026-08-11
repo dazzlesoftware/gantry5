@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: services
@@ -10,44 +10,44 @@ layout:
         /header/:
           -
             - system-messages-2942
-          -  
-            - 'logo-5968 56'
-            - 'iconmenu-8417 44'
+          -
+            - 'logo-5968 7'
+            - 'iconmenu-8417 5'
         /navigation/:
-          - 
-            - 'menu-4569 80'
-            - 'social-3742 20'
+          -
+            - 'menu-4569 10'
+            - 'social-3742 2'
   /showcase/:
     -
       - custom-1044
   /container-6898/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
-            - 'custom-1767 33.3'
-            - 'custom-9712 33.3'
-            - 'custom-3412 33.3'
+            - 'custom-1767 4'
+            - 'custom-9712 4'
+            - 'custom-3412 4'
           -
-            - 'custom-2341 33.3'
-            - 'custom-4096 33.3'
-            - 'custom-6053 33.3'
+            - 'custom-2341 4'
+            - 'custom-4096 4'
+            - 'custom-6053 4'
           -
             - contentlist-9027
           -
-            - 'infolist-7445 33.3'
-            - 'infolist-6329 33.3'
-            - 'infolist-2793 33.3'
+            - 'infolist-7445 4'
+            - 'infolist-6329 4'
+            - 'infolist-2793 4'
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-9381
   /footer/:
     -
-      - 'custom-4303 33.3'
-      - 'newsletter-4558 33.3'
-      - 'custom-2036 33.3'
+      - 'custom-4303 4'
+      - 'newsletter-4558 4'
+      - 'custom-2036 4'
   /copyright/:
     -
       - copyright-8224

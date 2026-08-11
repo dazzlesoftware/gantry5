@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -9,9 +9,9 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 17'
-      - 'social-7220 13'
-      - 'menu-4196 70'
+      - 'logo-5992 2'
+      - 'social-7220 2'
+      - 'menu-4196 8'
   /header/: {  }
   /slideshow/:
     -
@@ -23,27 +23,27 @@ layout:
     -
       - custom-4860
     -
-      - 'custom-9868 50'
-      - 'custom-4807 50'
+      - 'custom-9868 6'
+      - 'custom-4807 6'
     -
-      - 'custom-3780 33.3'
-      - 'custom-7528 33.3'
-      - 'custom-3751 33.3'
+      - 'custom-3780 4'
+      - 'custom-7528 4'
+      - 'custom-3751 4'
     -
-      - 'custom-6453 25'
-      - 'custom-6496 25'
-      - 'custom-3872 25'
-      - 'custom-9371 25'
+      - 'custom-6453 3'
+      - 'custom-6496 3'
+      - 'custom-3872 3'
+      - 'custom-9371 3'
     -
       - custom-9988
     -
-      - 'custom-4289 25'
-      - 'custom-1256 50'
-      - 'custom-2720 25'
+      - 'custom-4289 3'
+      - 'custom-1256 6'
+      - 'custom-2720 3'
     -
-      - 'custom-5527 26'
-      - 'custom-1752 31'
-      - 'custom-4132 43'
+      - 'custom-5527 3'
+      - 'custom-1752 4'
+      - 'custom-4132 5'
     -
       - custom-5410
   /utility/: {  }
@@ -51,24 +51,24 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 30':
+        'sidebar 4':
           -
-            - 'custom-6468 50'
-            - 'custom-4397 50'
+            - 'custom-6468 6'
+            - 'custom-4397 6'
           -
             - custom-8735
           -
-            - 'custom-5316 50'
-            - 'custom-9449 50'
+            - 'custom-5316 6'
+            - 'custom-9449 6'
       -
-        'mainbar 40':
+        'mainbar 5':
           -
             - custom-6027
           -
-            - 'custom-2369 50'
-            - 'custom-2507 50'
+            - 'custom-2369 6'
+            - 'custom-2507 6'
       -
-        'aside 30':
+        'aside 4':
           -
             - custom-2846
   /expanded/: {  }
@@ -78,8 +78,8 @@ layout:
       - custom-8670
   /footer/:
     -
-      - 'position-position-8430 60'
-      - 'position-position-1119 40'
+      - 'position-position-8430 7'
+      - 'position-position-1119 5'
   /copyright/:
     -
       - copyright-5748

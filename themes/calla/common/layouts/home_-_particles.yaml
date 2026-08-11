@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -9,8 +9,8 @@ layout:
       - system-messages-1675
   /slideshow/:
     -
-      - 'verticalmenu-8085 20'
-      - 'carousel-2510 80'
+      - 'verticalmenu-8085 2'
+      - 'carousel-2510 10'
   /header/:
     -
       - heading-2069
@@ -18,9 +18,9 @@ layout:
       - slider-5924
   /above/:
     -
-      - 'promo-5881 25'
-      - 'logo-1795 15'
-      - 'contentarray-2083 60'
+      - 'promo-5881 3'
+      - 'logo-1795 2'
+      - 'contentarray-2083 7'
   /feature/:
     -
       - slideshow-2132
@@ -31,16 +31,16 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/:
     -
-      - 'springboard-6855 70'
-      - 'logo-1131 30'
+      - 'springboard-6855 8'
+      - 'logo-1131 4'
   /bottom/: {  }
   /footer/: {  }
   /copyright/: {  }
@@ -482,7 +482,7 @@ content:
               subtitle: '3 days ago'
               description: ''
               url: ''
-              title: 'Perfect for Stylish Brands, Designers, and More!'              
+              title: 'Perfect for Stylish Brands, Designers, and More!'
           title: news
         -
           items:

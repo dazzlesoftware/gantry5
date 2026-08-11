@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -13,22 +13,22 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 25'
-      - 'menu-1283 75'
+      - 'logo-5992 3'
+      - 'menu-1283 9'
   /slideshow/:
     -
       - flexslider-9434
   /header/:
     -
-      - 'promocontent-4166 50'
-      - 'promocontent-1533 50'
+      - 'promocontent-4166 6'
+      - 'promocontent-1533 6'
   /above/:
     -
-      - 'gridpromogallery-5021 50'
-      - 'gridpromogallery-3026 50'
+      - 'gridpromogallery-5021 6'
+      - 'gridpromogallery-3026 6'
     -
-      - 'gridpromogallery-9495 50'
-      - 'gridpromogallery-9942 50'
+      - 'gridpromogallery-9495 6'
+      - 'gridpromogallery-9942 6'
   /showcase/:
     -
       - promocontent-3899
@@ -49,30 +49,30 @@ layout:
   /container-4448/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - blockcontent-2993
   /extension/:
     -
-      - 'blockcontent-8003 50'
-      - 'promocontent-7355 50'
+      - 'blockcontent-8003 6'
+      - 'promocontent-7355 6'
   /bottom/:
     -
       - newsletter-8671
   /footer/:
     -
-      - 'logo-7113 30'
-      - 'horizontalmenu-5815 40'
-      - 'social-2396 30'
+      - 'logo-7113 4'
+      - 'horizontalmenu-5815 5'
+      - 'social-2396 4'
   /copyright/:
     -
-      - 'copyright-5748 50'
-      - 'horizontalmenu-4834 50'
+      - 'copyright-5748 6'
+      - 'horizontalmenu-4834 6'
     -
       - totop-6544
   offcanvas:

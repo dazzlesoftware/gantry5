@@ -1,5 +1,4 @@
-version: 2
-
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/2-col-right.png'
 
@@ -12,11 +11,11 @@ layout:
 
   /container-main/:
     -
-      - main 80:
+      - main 10:
           - position-breadcrumbs
           - system-messages
           - system-content
-      - sidebar 20:
+      - sidebar 2:
          - position-sidebar
 
   /footer/:

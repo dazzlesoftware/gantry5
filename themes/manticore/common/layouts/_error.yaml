@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _error
@@ -9,9 +9,9 @@ layout:
       - system-messages-9828
   navigation:
     -
-      - 'logo-9841 20'
-      - 'menu-7574 60'
-      - 'social-2794 20'
+      - 'logo-9841 2'
+      - 'menu-7574 7'
+      - 'social-2794 2'
     -
       - simplecontent-7992
   /slideshow/: {  }
@@ -23,13 +23,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-1560
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/: {  }

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: overview
@@ -13,21 +13,21 @@ layout:
       - position-position-5798
   /feature/:
     -
-      - 'custom-1837 50'
-      - 'custom-7386 50'
+      - 'custom-1837 6'
+      - 'custom-7386 6'
   /maintop/:
     -
       - custom-9667
   /container-main/:
     -
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
       -
-        'main 34':
+        'main 4':
           -
             - custom-3352
       -
-        'aside 33': {  }
+        'aside 4': {  }
   /mainbottom/:
     -
       - position-position-2329
@@ -39,8 +39,8 @@ layout:
       - custom-7003
   /footer/:
     -
-      - 'custom-3219 50'
-      - 'custom-5072 50'
+      - 'custom-3219 6'
+      - 'custom-5072 6'
   copyright: {  }
   offcanvas: {  }
 structure:

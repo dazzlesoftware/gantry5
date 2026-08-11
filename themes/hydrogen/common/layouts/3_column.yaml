@@ -1,5 +1,4 @@
-version: 2
-
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/3-col.png'
 
@@ -12,13 +11,13 @@ layout:
 
   /container-main/:
     -
-      - sidebar 20:
+      - sidebar 2:
          - position-sidebar
-      - main 60:
+      - main 7:
           - position-breadcrumbs
           - system-messages
           - system-content
-      - aside 20:
+      - aside 2:
          - position-aside
 
   /footer/:

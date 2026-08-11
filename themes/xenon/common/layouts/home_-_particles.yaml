@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -8,16 +8,16 @@ layout:
     -
       - promocontent-2765
     -
-      - 'pricingtable-9113 33.3'
-      - 'pricingtable-4601 33.3'
-      - 'pricingtable-9543 33.3'
+      - 'pricingtable-9113 4'
+      - 'pricingtable-4601 4'
+      - 'pricingtable-9543 4'
   /top/:
     -
       - system-messages-1931
     -
-      - 'logo-9976 50'
-      - 'overlaytoggle-8248 30'
-      - 'social-4445 20'
+      - 'logo-9976 6'
+      - 'overlaytoggle-8248 4'
+      - 'social-4445 2'
   /navigation/:
     -
       - menu-8681
@@ -39,19 +39,19 @@ layout:
   /container-4448/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - newsslider-1884
   /extension/:
     -
-      - 'chartist-9265 33.3'
-      - 'chartist-3967 33.3'
-      - 'chartist-4222 33.3'
+      - 'chartist-9265 4'
+      - 'chartist-3967 4'
+      - 'chartist-4222 4'
   /bottom/:
     -
       - testimonial-3968
@@ -59,15 +59,15 @@ layout:
       - promocontent-7299
   /footer/:
     -
-      - 'infolist-8208 25'
-      - 'infolist-3306 25'
-      - 'custom-2356 25'
-      - 'newsletter-3707 25'
+      - 'infolist-8208 3'
+      - 'infolist-3306 3'
+      - 'custom-2356 3'
+      - 'newsletter-3707 3'
   /copyright/:
     -
-      - 'branding-6288 33.3'
-      - 'copyright-4648 33.3'
-      - 'totop-3618 33.3'
+      - 'branding-6288 4'
+      - 'copyright-4648 4'
+      - 'totop-3618 4'
   offcanvas:
     -
       - mobile-menu-7582

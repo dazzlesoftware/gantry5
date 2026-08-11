@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: two_sidebars_left
@@ -8,8 +8,8 @@ layout:
   navigation: {  }
   /slideshow/:
     -
-      - 'simplecontent-7052 80'
-      - 'social-8668 20'
+      - 'simplecontent-7052 10'
+      - 'social-8668 2'
   header: {  }
   above: {  }
   feature: {  }
@@ -18,17 +18,17 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - custom-2733
           -
             - custom-2258
       -
-        'aside 20':
+        'aside 2':
           -
             - custom-8809
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - custom-5370
           -

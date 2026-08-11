@@ -117,6 +117,9 @@
 
     .lm-row-preset-card { border-color: #435461; background: #27333e; }
     .lm-row-preset-bar { background: #657887; }
+    .lm-row-breakpoints button { color: #dce5eb; background: #27333e; border-color: #435461; }
+    .lm-row-breakpoints button[aria-selected="true"] { color: $white; background: #287cab; border-color: #4fa8d2; }
+    .lm-row-breakpoint-help { color: #9eafbb; }
 
     .button:not(.button-save), button:not(.particle-remove):not(.lm-column-add) {
         border-color: #485966;

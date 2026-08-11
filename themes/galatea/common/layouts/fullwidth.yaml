@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: gala_-_fullwidth
@@ -14,9 +14,9 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'offsidebartoggle-4229 20'
-      - 'logo-5992 60'
-      - 'social-7220 20'
+      - 'offsidebartoggle-4229 2'
+      - 'logo-5992 7'
+      - 'social-7220 2'
   /slideshow/: {  }
   /header/: {  }
   /above/: {  }
@@ -26,28 +26,28 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - custom-2116
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/:
     -
-      - 'infolist-6113 33.3'
-      - 'infolist-4978 33.3'
-      - 'custom-3225 33.3'
+      - 'infolist-6113 4'
+      - 'infolist-4978 4'
+      - 'custom-3225 4'
   /footer/:
     -
       - position-position-5600
   /copyright/:
     -
-      - 'branding-5976 25'
-      - 'copyright-5748 50'
-      - 'totop-6544 25'
+      - 'branding-5976 3'
+      - 'copyright-5748 6'
+      - 'totop-6544 3'
   offcanvas:
     -
       - mobile-menu-7951

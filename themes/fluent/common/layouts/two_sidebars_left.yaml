@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: two_sidebars_left
@@ -7,9 +7,9 @@ layout:
   top: {  }
   /navigation/:
     -
-      - 'logo-5992 10'
-      - 'menu-2350 60'
-      - 'search-8428 30'
+      - 'logo-5992 1'
+      - 'menu-2350 7'
+      - 'search-8428 4'
   header: {  }
   /slideshow/:
     -
@@ -21,17 +21,17 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 27':
+        'sidebar 3':
           -
             - custom-7406
           -
             - custom-6562
       -
-        'aside 27':
+        'aside 3':
           -
             - custom-9224
       -
-        'mainbar 46':
+        'mainbar 6':
           -
             - custom-8235
           -
@@ -42,11 +42,11 @@ layout:
   /container-footer/:
     -
       -
-        'sidebar-footer 30': {  }
+        'sidebar-footer 4': {  }
       -
-        'mainbar-footer 40': {  }
+        'mainbar-footer 5': {  }
       -
-        'aside-footer 30': {  }
+        'aside-footer 4': {  }
   copyright: {  }
   offcanvas: {  }
 structure:

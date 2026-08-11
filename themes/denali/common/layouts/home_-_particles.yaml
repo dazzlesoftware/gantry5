@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -15,16 +15,16 @@ layout:
     -
       - simplecontent-1913
     -
-      - 'simplecontent-8186 33.3'
-      - 'simplecontent-3665 33.3'
-      - 'simplecontent-1800 33.3'
+      - 'simplecontent-8186 4'
+      - 'simplecontent-3665 4'
+      - 'simplecontent-1800 4'
   /above/:
     -
       - showcase-8833
   /feature/:
     -
-      - 'simplecontent-3527 40'
-      - 'simplecontent-9699 60'
+      - 'simplecontent-3527 5'
+      - 'simplecontent-9699 7'
   /showcase/:
     -
       - eventlist-3132

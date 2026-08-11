@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _error
@@ -47,9 +47,9 @@ layout:
   /container-8478/:
     -
       -
-        'mainbody 60': {  }
+        'mainbody 7': {  }
       -
-        'sidebar 40':
+        'sidebar 5':
           -
             - position-position-7684
   /expandedbottom/:
@@ -70,9 +70,9 @@ layout:
   /footer/: {  }
   /copyright/:
     -
-      - 'branding-7005 33.3'
-      - 'copyright-9042 33.3'
-      - 'totop-9181 33.3'
+      - 'branding-7005 4'
+      - 'copyright-9042 4'
+      - 'totop-9181 4'
   offcanvas: {  }
 structure:
   navigation:

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -22,14 +22,14 @@ layout:
       - swiperpreview-1055
   /expanded/:
     -
-      - 'simplecontent-6429 50'
-      - 'custom-5911 50'
+      - 'simplecontent-6429 6'
+      - 'custom-5911 6'
   /extension/: {  }
   /bottom/: {  }
   /footer/:
     -
-      - 'simplecontent-9567 65'
-      - 'newsletter-3789 35'
+      - 'simplecontent-9567 8'
+      - 'newsletter-3789 4'
   copyright: {  }
   offcanvas: {  }
 structure:

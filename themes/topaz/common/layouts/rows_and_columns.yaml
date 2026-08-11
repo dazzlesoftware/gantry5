@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -8,177 +8,177 @@ layout:
   /container-top/:
     -
       -
-        'topleft 15': {  }
+        'topleft 2': {  }
       -
-        'topmain 70':
+        'topmain 8':
           -
             - system-messages-9828
       -
-        'topright 15': {  }
+        'topright 2': {  }
   /container-header/:
     -
       -
-        'navigationleft 15':
+        'navigationleft 2':
           -
             - social-7220
       -
-        'navigationmain 70':
+        'navigationmain 8':
           -
-            - 'logo-5992 30'
-            - 'menu-7876 70'
+            - 'logo-5992 4'
+            - 'menu-7876 8'
       -
-        'navigationright 15':
+        'navigationright 2':
           -
             - position-position-9578
     -
       -
-        'headerleft 15': {  }
+        'headerleft 2': {  }
       -
-        'headermain 70': {  }
+        'headermain 8': {  }
       -
-        'headerright 15': {  }
+        'headerright 2': {  }
   /container-above/:
     -
       -
-        'aboveleft 5': {  }
+        'aboveleft 1': {  }
       -
-        'abovemain 90':
+        'abovemain 11':
           -
             - simplecontent-5468
       -
-        'aboveright 5': {  }
+        'aboveright 1': {  }
   /container-main/:
     -
       -
-        'sidebar 5': {  }
+        'sidebar 1': {  }
       -
-        'mainbar 90':
+        'mainbar 11':
           -
             - custom-9195
           -
             - custom-8798
           -
-            - 'custom-2639 50'
-            - 'custom-8824 50'
+            - 'custom-2639 6'
+            - 'custom-8824 6'
           -
-            - 'custom-4630 33.3'
-            - 'custom-5115 33.3'
-            - 'custom-9526 33.3'
+            - 'custom-4630 4'
+            - 'custom-5115 4'
+            - 'custom-9526 4'
           -
-            - 'custom-9241 25'
-            - 'custom-5635 25'
-            - 'custom-1021 25'
-            - 'custom-7428 25'
+            - 'custom-9241 3'
+            - 'custom-5635 3'
+            - 'custom-1021 3'
+            - 'custom-7428 3'
           -
             - custom-8562
           -
-            - 'custom-6665 25'
-            - 'custom-8632 50'
-            - 'custom-3862 25'
+            - 'custom-6665 3'
+            - 'custom-8632 6'
+            - 'custom-3862 3'
           -
-            - 'custom-5860 26'
-            - 'custom-1613 31'
-            - 'custom-6574 43'
+            - 'custom-5860 3'
+            - 'custom-1613 4'
+            - 'custom-6574 5'
       -
-        'aside 5': {  }
+        'aside 1': {  }
   /container-showcase/:
     -
       -
-        'showcaseleft 5': {  }
+        'showcaseleft 1': {  }
       -
-        'showcasemain 90':
+        'showcasemain 11':
           -
             - custom-6133
       -
-        'showcaseright 5': {  }
+        'showcaseright 1': {  }
   /container-slideshow/:
     -
       -
-        'slideshowleft 30': {  }
+        'slideshowleft 4': {  }
       -
-        'slideshowmain 40': {  }
+        'slideshowmain 5': {  }
       -
-        'slideshowright 30': {  }
+        'slideshowright 4': {  }
   /container-utility/:
     -
       -
-        'utilityleft 30':
+        'utilityleft 4':
           -
-            - 'custom-4110 50'
-            - 'custom-7949 50'
+            - 'custom-4110 6'
+            - 'custom-7949 6'
           -
             - custom-8741
           -
-            - 'custom-4334 50'
-            - 'custom-3488 50'
+            - 'custom-4334 6'
+            - 'custom-3488 6'
       -
-        'utilitymain 40':
+        'utilitymain 5':
           -
             - custom-9921
           -
-            - 'custom-1155 50'
-            - 'custom-3263 50'
+            - 'custom-1155 6'
+            - 'custom-3263 6'
       -
-        'utilityright 30':
+        'utilityright 4':
           -
             - custom-1855
   /container-feature/:
     -
       -
-        'featureleft 15': {  }
+        'featureleft 2': {  }
       -
-        'featuremain 70': {  }
+        'featuremain 8': {  }
       -
-        'featureright 15': {  }
+        'featureright 2': {  }
   /container-expanded/:
     -
       -
-        'expandedleft 15': {  }
+        'expandedleft 2': {  }
       -
-        'expandedmain 70': {  }
+        'expandedmain 8': {  }
       -
-        'expandedright 15': {  }
+        'expandedright 2': {  }
   /container-extension/:
     -
       -
-        'extensionleft 15': {  }
+        'extensionleft 2': {  }
       -
-        'extensionmain 70': {  }
+        'extensionmain 8': {  }
       -
-        'extensionright 15': {  }
+        'extensionright 2': {  }
   /container-bottom/:
     -
       -
-        'bottomleft 15': {  }
+        'bottomleft 2': {  }
       -
-        'bottommain 70': {  }
+        'bottommain 8': {  }
       -
-        'bottomright 15': {  }
+        'bottomright 2': {  }
   /container-footer/:
     -
       -
-        'footerleft 15': {  }
+        'footerleft 2': {  }
       -
-        'footermain 70':
+        'footermain 8':
           -
-            - 'position-position-5108 60'
-            - 'social-2831 40'
+            - 'position-position-5108 7'
+            - 'social-2831 5'
       -
-        'footerright 15': {  }
+        'footerright 2': {  }
   /container-copyright/:
     -
       -
-        'copyrightleft 15': {  }
+        'copyrightleft 2': {  }
       -
-        'copyrightmain 70':
+        'copyrightmain 8':
           -
-            - 'logo-4776 15'
-            - 'position-position-6721 85'
+            - 'logo-4776 2'
+            - 'position-position-6721 10'
           -
-            - 'spacer-9415 15'
-            - 'copyright-5748 85'
+            - 'spacer-9415 2'
+            - 'copyright-5748 10'
       -
-        'copyrightright 15': {  }
+        'copyrightright 2': {  }
   offcanvas:
     -
       - mobile-menu-7951

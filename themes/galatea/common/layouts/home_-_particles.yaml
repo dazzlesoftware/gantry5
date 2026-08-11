@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -12,9 +12,9 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'offsidebartoggle-2745 20'
-      - 'logo-5992 60'
-      - 'social-1573 20'
+      - 'offsidebartoggle-2745 2'
+      - 'logo-5992 7'
+      - 'social-1573 2'
   /slideshow/:
     -
       - swipercarousel-1698
@@ -24,8 +24,8 @@ layout:
   /above/: {  }
   /showcase/:
     -
-      - 'custom-6584 50'
-      - 'logo-4844 50'
+      - 'custom-6584 6'
+      - 'logo-4844 6'
   /utility/:
     -
       - blockcontent-2887
@@ -35,26 +35,26 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/:
     -
-      - 'infolist-6113 33.3'
-      - 'infolist-4978 33.3'
-      - 'custom-3225 33.3'
+      - 'infolist-6113 4'
+      - 'infolist-4978 4'
+      - 'custom-3225 4'
   /footer/:
     -
       - newsletter-7556
   /copyright/:
     -
-      - 'branding-5976 25'
-      - 'copyright-5748 50'
-      - 'totop-6544 25'
+      - 'branding-5976 3'
+      - 'copyright-5748 6'
+      - 'totop-6544 3'
   offcanvas:
     -
       - mobile-menu-7951

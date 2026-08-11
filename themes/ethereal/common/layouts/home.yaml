@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home
@@ -9,8 +9,8 @@ layout:
       - system-messages-9688
   /header/:
     -
-      - 'logo-9334 30'
-      - 'menu-6822 70'
+      - 'logo-9334 4'
+      - 'menu-6822 8'
   /slideshow/:
     -
       - slideshow-9487
@@ -19,8 +19,8 @@ layout:
     -
       - custom-4208
     -
-      - 'swiper-4114 67'
-      - 'blogcontent-2116 33'
+      - 'swiper-4114 8'
+      - 'blogcontent-2116 4'
   /main/:
     -
       - imageblock-1924
@@ -39,17 +39,17 @@ layout:
     -
       - custom-1634
     -
-      - 'imageoverlay-7161 33'
-      - 'blogcontent-3771 67'
+      - 'imageoverlay-7161 4'
+      - 'blogcontent-3771 8'
   /footer/: {  }
   /copyright/:
     -
-      - 'logo-7344 33'
-      - 'custom-1650 67'
+      - 'logo-7344 4'
+      - 'custom-1650 8'
     -
-      - 'copyright-3038 33'
-      - 'horizontalmenu-7190 57'
-      - 'totop-9103 10'
+      - 'copyright-3038 4'
+      - 'horizontalmenu-7190 7'
+      - 'totop-9103 1'
   offcanvas:
     -
       - mobile-menu-3466

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -8,72 +8,72 @@ layout:
     -
       - system-messages-5116
     -
-      - 'position-7461 33'
-      - 'position-5604 34'
-      - 'position-2762 33'
+      - 'position-7461 4'
+      - 'position-5604 4'
+      - 'position-2762 4'
   /header/:
     -
-      - 'logo-9829 30'
-      - 'menu-5768 70'
+      - 'logo-9829 4'
+      - 'menu-5768 8'
     -
-      - 'position-6810 33'
-      - 'position-6073 34'
-      - 'position-7316 33'
+      - 'position-6810 4'
+      - 'position-6073 4'
+      - 'position-7316 4'
   /slideshow/:
     -
       - position-9041
   /showcase/:
     -
-      - 'position-5866 33'
-      - 'position-4847 34'
-      - 'position-3533 33'
+      - 'position-5866 4'
+      - 'position-4847 4'
+      - 'position-3533 4'
   /feature/:
     -
-      - 'position-1767 33'
-      - 'position-7187 34'
-      - 'position-8774 33'
+      - 'position-1767 4'
+      - 'position-7187 4'
+      - 'position-8774 4'
   /main/:
     -
-      - 'position-5459 33'
-      - 'position-6217 34'
-      - 'position-2732 33'
+      - 'position-5459 4'
+      - 'position-6217 4'
+      - 'position-2732 4'
   /container-2762/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-6022
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-9470
       -
-        'aside 20':
+        'aside 2':
           -
             - position-8451
   /extension/:
     -
-      - 'position-6410 33'
-      - 'position-2764 34'
-      - 'position-9649 33'
+      - 'position-6410 4'
+      - 'position-2764 4'
+      - 'position-9649 4'
   /bottom/:
     -
-      - 'position-1420 33'
-      - 'position-3110 34'
-      - 'position-9016 33'
+      - 'position-1420 4'
+      - 'position-3110 4'
+      - 'position-9016 4'
   /footer/:
     -
-      - 'position-3892 33'
-      - 'position-1407 34'
-      - 'position-8015 33'
+      - 'position-3892 4'
+      - 'position-1407 4'
+      - 'position-8015 4'
   /copyright/:
     -
-      - 'logo-5214 33'
-      - 'custom-4582 67'
+      - 'logo-5214 4'
+      - 'custom-4582 8'
     -
-      - 'copyright-5453 33'
-      - 'custom-3006 57'
-      - 'totop-4060 10'
+      - 'copyright-5453 4'
+      - 'custom-3006 7'
+      - 'totop-4060 1'
   offcanvas:
     -
       - mobile-menu-7892

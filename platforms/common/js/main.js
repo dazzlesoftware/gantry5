@@ -7112,6 +7112,7 @@
     [2, 10],
     [2, 3, 7]
   ];
+  var BREAKPOINTS = ["xs", "sm", "md", "lg", "xl"];
   var presetLabel = (columns) => columns.join("+");
   var presetPreview = (columns) => {
     return '<span class="lm-row-preset-bars">' + columns.map((count) => {
@@ -7122,8 +7123,10 @@
   var presetButton = (columns, index) => {
     return '<button type="button" class="lm-row-preset" data-lm-row-preset="' + index + '" aria-label="' + translate8("GENESIS_PLATFORM_JS_LM_ROW_LAYOUT_X", presetLabel(columns)) + '">' + presetPreview(columns) + '<span class="lm-row-preset-label">' + presetLabel(columns) + "</span></button>";
   };
-  var buildContent = () => {
-    return '<div class="lm-row-picker"><h3 class="lm-row-picker-title">' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_TITLE") + '</h3><div class="lm-row-picker-presets">' + PRESETS.map(presetButton).join("") + '</div><div class="lm-row-picker-custom"><span class="lm-row-picker-custom-label">' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM") + '</span><input type="text" class="lm-row-picker-custom-input" data-lm-nodrag placeholder="' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM_PLACEHOLDER") + '" /><button type="button" class="button lm-row-picker-generate" data-lm-nodrag data-lm-row-generate>' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_GENERATE") + '</button></div><p class="lm-row-picker-error" hidden></p></div>';
+  var buildContent = (responsive) => {
+    return '<div class="lm-row-picker"><h3 class="lm-row-picker-title">' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_TITLE") + "</h3>" + (responsive ? '<div class="lm-row-breakpoints" role="tablist">' + BREAKPOINTS.map(
+      (breakpoint, index) => '<button type="button" role="tab" data-lm-row-breakpoint="' + breakpoint + '" aria-selected="' + (index === 0 ? "true" : "false") + '">' + breakpoint.toUpperCase() + "</button>"
+    ).join("") + '</div><p class="lm-row-breakpoint-help" data-lm-row-breakpoint-help></p>' : "") + '<div class="lm-row-picker-presets">' + PRESETS.map(presetButton).join("") + '</div><div class="lm-row-picker-custom"><span class="lm-row-picker-custom-label">' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM") + '</span><input type="text" class="lm-row-picker-custom-input" data-lm-nodrag placeholder="' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM_PLACEHOLDER") + '" /><button type="button" class="button lm-row-picker-generate" data-lm-nodrag data-lm-row-generate>' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_GENERATE") + "</button>" + (responsive ? '<button type="button" class="button lm-row-picker-inherit" data-lm-nodrag data-lm-row-inherit hidden>' + translate8("GENESIS_PLATFORM_JS_LM_ROW_INHERIT") + "</button>" : "") + '</div><p class="lm-row-picker-error" hidden></p></div>';
   };
   var parseCustomSplit = (text) => {
     let parts = String(text || "").split(/[+,\s]+/).map((part) => part.trim()).filter(Boolean).map(Number);
@@ -7139,17 +7142,33 @@
   var openRowPicker = (options) => {
     options = options || {};
     let content = modal4.open({
-      content: buildContent(),
+      content: buildContent(!!options.responsive),
       className: "genesis-dialog-theme-default lm-row-picker-dialog",
       afterOpen: (contentElement) => {
         let element = contentElement && contentElement[0] ? contentElement[0] : contentElement;
         if (!element) {
           return;
         }
-        let errorNode = element.querySelector(".lm-row-picker-error"), input = element.querySelector(".lm-row-picker-custom-input");
-        if (input && options.current && options.current.length) {
-          input.value = options.current.join("+");
-        }
+        let errorNode = element.querySelector(".lm-row-picker-error"), input = element.querySelector(".lm-row-picker-custom-input"), activeBreakpoint = "xs", current = options.currentByBreakpoint || { xs: options.current || [] }, expectedColumns = options.columnCount || (current.xs || []).length;
+        let refreshBreakpoint = () => {
+          let split = current[activeBreakpoint];
+          if (input) {
+            input.value = split && split.length ? split.join("+") : "";
+          }
+          let inherit2 = element.querySelector("[data-lm-row-inherit]");
+          if (inherit2) {
+            inherit2.hidden = activeBreakpoint === "xs";
+          }
+          let help = element.querySelector("[data-lm-row-breakpoint-help]");
+          if (help) {
+            help.textContent = activeBreakpoint === "xs" ? translate8("GENESIS_PLATFORM_JS_LM_ROW_XS_HELP") : translate8("GENESIS_PLATFORM_JS_LM_ROW_BREAKPOINT_HELP", activeBreakpoint.toUpperCase());
+          }
+          element.querySelectorAll("[data-lm-row-preset]").forEach((button) => {
+            let preset = PRESETS[parseInt(button.getAttribute("data-lm-row-preset"), 10)];
+            button.hidden = activeBreakpoint !== "xs" && expectedColumns && preset.length !== expectedColumns;
+          });
+        };
+        refreshBreakpoint();
         let showError2 = (message) => {
           if (!errorNode) {
             return;
@@ -7160,9 +7179,16 @@
         let finish = (columns) => {
           modal4.close();
           if (typeof options.onSelect === "function") {
-            options.onSelect(columns);
+            options.onSelect(columns, activeBreakpoint);
           }
         };
+        element.querySelectorAll("[data-lm-row-breakpoint]").forEach((button) => {
+          button.addEventListener("click", () => {
+            activeBreakpoint = button.getAttribute("data-lm-row-breakpoint");
+            element.querySelectorAll("[data-lm-row-breakpoint]").forEach((tab) => tab.setAttribute("aria-selected", tab === button ? "true" : "false"));
+            refreshBreakpoint();
+          });
+        });
         element.querySelectorAll("[data-lm-row-preset]").forEach((button) => {
           button.addEventListener("click", (event) => {
             event.preventDefault();
@@ -7175,12 +7201,16 @@
           generate.addEventListener("click", (event) => {
             event.preventDefault();
             let columns = parseCustomSplit(input ? input.value : "");
-            if (!columns) {
+            if (!columns || activeBreakpoint !== "xs" && expectedColumns && columns.length !== expectedColumns) {
               showError2(translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_INVALID"));
               return;
             }
             finish(columns);
           });
+        }
+        let inherit = element.querySelector("[data-lm-row-inherit]");
+        if (inherit) {
+          inherit.addEventListener("click", () => finish(null));
         }
         if (input) {
           input.addEventListener("keydown", (event) => {
@@ -8635,10 +8665,37 @@
           return 1;
         }
         return Math.max(1, Math.min(12, parseInt(mapped.getAttribute("columns.xs"), 10) || Math.round((mapped.getSize() || 0) / 100 * 12)));
+      }), currentByBreakpoint = { xs: current };
+      ["sm", "md", "lg", "xl"].forEach(function(breakpoint) {
+        let values = blocks.map(function(child) {
+          let mapped = builder.get(child.getAttribute("data-lm-id")), value = mapped && parseInt(mapped.getAttribute("columns." + breakpoint), 10);
+          return value || null;
+        });
+        currentByBreakpoint[breakpoint] = values.every(Boolean) ? values : null;
       });
       openRowPicker2({
         current,
-        onSelect: function(columns) {
+        currentByBreakpoint,
+        columnCount: blocks.length,
+        responsive: true,
+        onSelect: function(columns, breakpoint) {
+          breakpoint = breakpoint || "xs";
+          if (breakpoint !== "xs") {
+            blocks.forEach(function(child, index) {
+              let mapped = builder.get(child.getAttribute("data-lm-id"));
+              if (!mapped) {
+                return;
+              }
+              if (columns) {
+                mapped.setAttribute("columns." + breakpoint, columns[index]);
+              } else if (mapped.getAttribute("columns")) {
+                delete mapped.getAttribute("columns")[breakpoint];
+              }
+              mapped.applyColumnClasses();
+            });
+            lmhistory.push(builder.serialize(), lmhistory.get().preset);
+            return;
+          }
           if (mappedGrid) {
             mappedGrid.setAttribute("layoutPreset", "bootstrap");
             mappedGrid.block.attribute("data-lm-preset-grid", "bootstrap").attribute("data-lm-samewidth", null);

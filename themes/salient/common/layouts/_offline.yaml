@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/offline.png'
   name: _offline
@@ -17,20 +17,20 @@ layout:
   /utility/: {  }
   /feature/:
     -
-      - 'spacer-2663 50'
-      - 'custom-8425 50'
+      - 'spacer-2663 6'
+      - 'custom-8425 6'
   /container-9391/:
     -
       -
-        'sidebar 10':
+        'sidebar 1':
           -
             - spacer-5202
       -
-        'mainbar 80':
+        'mainbar 10':
           -
             - system-content-5522
       -
-        'aside 10':
+        'aside 1':
           -
             - spacer-9978
   /expanded/: {  }
@@ -41,17 +41,17 @@ layout:
   /container-6297/:
     -
       -
-        'footer 75':
+        'footer 9':
           -
-            - 'custom-6720 50'
-            - 'newsletter-1276 50'
+            - 'custom-6720 6'
+            - 'newsletter-1276 6'
       -
-        'footside 25': {  }
+        'footside 3': {  }
   /copyright/:
     -
-      - 'logo-2334 33.3'
-      - 'totop-4722 33.3'
-      - 'social-3868 33.3'
+      - 'logo-2334 4'
+      - 'totop-4722 4'
+      - 'social-3868 4'
   offcanvas: {  }
 structure:
   top:

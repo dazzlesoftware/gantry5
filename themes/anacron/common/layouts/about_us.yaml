@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: about_us
@@ -17,19 +17,19 @@ layout:
       - custom-5666
   /maintop/:
     -
-      - 'custom-3311 50'
-      - 'lists-3006 50'
+      - 'custom-3311 6'
+      - 'lists-3006 6'
   expandedtop: {  }
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - custom-1268
           -
             - custom-8869
       -
-        'sidebar 40': {  }
+        'sidebar 5': {  }
   expandedbottom: {  }
   mainbottom: {  }
   extension: {  }
@@ -41,8 +41,8 @@ layout:
             - custom-4488
         /footer/:
           -
-            - 'custom-5551 50'
-            - 'custom-2913 50'
+            - 'custom-5551 6'
+            - 'custom-2913 6'
   copyright: {  }
   offcanvas: {  }
 structure:

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _error
@@ -10,32 +10,32 @@ layout:
         /header/:
           -
             - system-messages-8428
-          -  
-            - 'logo-2217 56'
-            - 'iconmenu-9406 44'
+          -
+            - 'logo-2217 7'
+            - 'iconmenu-9406 5'
         /navigation/:
-          - 
-            - 'menu-6651 80'
-            - 'social-8347 20'
+          -
+            - 'menu-6651 10'
+            - 'social-8347 2'
   /showcase/:
     -
       - custom-2009
   /container-6307/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
             - custom-8268
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-6831
   /footer/:
     -
-      - 'custom-9287 33'
-      - 'newsletter-8020 34'
-      - 'custom-9818 33'
+      - 'custom-9287 4'
+      - 'newsletter-8020 4'
+      - 'custom-9818 4'
   /copyright/:
     -
       - copyright-3502

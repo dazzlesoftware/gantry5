@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/offline.png'
   name: _offline
@@ -18,13 +18,13 @@ layout:
   /container-4643/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-3682
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/:
     -
@@ -32,13 +32,13 @@ layout:
   /bottom/: {  }
   /footer/:
     -
-      - 'custom-8587 50'
-      - 'newsletter-1113 50'
+      - 'custom-8587 6'
+      - 'newsletter-1113 6'
   /copyright/:
     -
-      - 'branding-1026 33'
-      - 'copyright-6204 34'
-      - 'totop-1546 33'
+      - 'branding-1026 4'
+      - 'copyright-6204 4'
+      - 'totop-1546 4'
   /fixedside/:
     -
       - logo-6914

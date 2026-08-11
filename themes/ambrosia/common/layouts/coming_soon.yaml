@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/offline.png'
   name: coming_soon
@@ -16,18 +16,18 @@ layout:
   /container-2683/:
     -
       -
-        'mainbar 67':
+        'mainbar 8':
           -
             - simplecounter-7630
       -
-        'sidebar 33': {  }
+        'sidebar 4': {  }
   /extension/:
     -
       - custom-5545
   /footer/:
     -
-      - 'custom-5147 50'
-      - 'newsletter-1178 50'
+      - 'custom-5147 6'
+      - 'newsletter-1178 6'
   /copyright/:
     -
       - copyright-3074

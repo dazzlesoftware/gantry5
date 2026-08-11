@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: comingsoon
@@ -23,9 +23,9 @@ layout:
     -
       - logo-9204
     -
-      - 'spacer-8199 10'
-      - 'simplecounter-2192 80'
-      - 'spacer-2663 10'
+      - 'spacer-8199 1'
+      - 'simplecounter-2192 10'
+      - 'spacer-2663 1'
   /breadcrumb/:
     -
       - position-position-5168
@@ -42,11 +42,11 @@ layout:
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - system-content-6489
       -
-        'sidebar 40':
+        'sidebar 5':
           -
             - position-position-7684
   /expandedbottom/:

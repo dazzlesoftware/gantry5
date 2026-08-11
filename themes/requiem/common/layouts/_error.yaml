@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/error.png'
   name: _error
@@ -8,90 +8,90 @@ layout:
     -
       - system-messages-9426
     -
-      - 'position-1519 33'
-      - 'position-3984 34'
-      - 'position-9356 33'
+      - 'position-1519 4'
+      - 'position-3984 4'
+      - 'position-9356 4'
   /navigation/:
     -
-      - 'position-7978 10'
-      - 'menu-6000 80'
-      - 'position-7224 10'
+      - 'position-7978 1'
+      - 'menu-6000 10'
+      - 'position-7224 1'
     -
-      - 'position-7660 33'
-      - 'position-1377 34'
-      - 'position-6885 33'
+      - 'position-7660 4'
+      - 'position-1377 4'
+      - 'position-6885 4'
   /header/:
     -
-      - 'position-7339 33'
-      - 'position-5353 34'
-      - 'position-9489 33'
+      - 'position-7339 4'
+      - 'position-5353 4'
+      - 'position-9489 4'
   /showcase/:
     -
-      - 'position-8916 33'
-      - 'position-1674 34'
-      - 'position-2302 33'
+      - 'position-8916 4'
+      - 'position-1674 4'
+      - 'position-2302 4'
   /above/:
     -
-      - 'position-1658 33'
-      - 'position-2868 34'
-      - 'position-1516 33'
+      - 'position-1658 4'
+      - 'position-2868 4'
+      - 'position-1516 4'
   /utility/:
     -
-      - 'position-7740 33'
-      - 'position-2678 34'
-      - 'position-3106 33'
+      - 'position-7740 4'
+      - 'position-2678 4'
+      - 'position-3106 4'
   /feature/:
     -
-      - 'position-8992 33'
-      - 'position-5698 34'
-      - 'position-1687 33'
+      - 'position-8992 4'
+      - 'position-5698 4'
+      - 'position-1687 4'
     -
       - infolist-1177
   /container-3294/:
     -
       -
-        'sidebar 20':
+        'sidebar 2':
           -
             - position-9093
       -
-        'mainbar 60':
+        'mainbar 7':
           -
-            - 'position-9509 33'
-            - 'position-1661 34'
-            - 'position-6413 33'
+            - 'position-9509 4'
+            - 'position-1661 4'
+            - 'position-6413 4'
           -
             - system-content-6929
       -
-        'aside 20':
+        'aside 2':
           -
             - position-4810
   /expanded/:
     -
-      - 'position-1387 33'
-      - 'position-8625 34'
-      - 'position-3251 33'
+      - 'position-1387 4'
+      - 'position-8625 4'
+      - 'position-3251 4'
   /extension/:
     -
-      - 'position-1004 33'
-      - 'position-1345 34'
-      - 'position-9134 33'
+      - 'position-1004 4'
+      - 'position-1345 4'
+      - 'position-9134 4'
     -
       - infolist-7429
   /bottom/:
     -
-      - 'position-3842 33'
-      - 'position-6696 34'
-      - 'position-3463 33'
+      - 'position-3842 4'
+      - 'position-6696 4'
+      - 'position-3463 4'
   /footer/:
     -
-      - 'position-4659 33'
-      - 'position-3515 34'
-      - 'position-9505 33'
+      - 'position-4659 4'
+      - 'position-3515 4'
+      - 'position-9505 4'
   /copyright/:
     -
-      - 'branding-9892 33'
-      - 'copyright-8882 34'
-      - 'totop-5466 33'
+      - 'branding-9892 4'
+      - 'copyright-8882 4'
+      - 'totop-5466 4'
   /fixedside/:
     -
       - logo-5471

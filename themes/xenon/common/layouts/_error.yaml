@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/error.png'
   name: _error
@@ -22,13 +22,13 @@ layout:
   /container-5921/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-6444
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/: {  }
   /extension/: {  }
   /bottom/:
@@ -37,9 +37,9 @@ layout:
   /footer/: {  }
   /copyright/:
     -
-      - 'branding-8113 33.3'
-      - 'copyright-3234 33.3'
-      - 'totop-8262 33.3'
+      - 'branding-8113 4'
+      - 'copyright-3234 4'
+      - 'totop-8262 4'
   offcanvas:
     -
       - mobile-menu-6235

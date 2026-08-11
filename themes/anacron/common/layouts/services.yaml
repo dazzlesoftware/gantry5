@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: services
@@ -13,22 +13,22 @@ layout:
   feature: {  }
   /maintop/:
     -
-      - 'custom-7934 33.3'
-      - 'custom-9095 33.3'
-      - 'custom-1474 33.3'
+      - 'custom-7934 4'
+      - 'custom-9095 4'
+      - 'custom-1474 4'
     -
-      - 'custom-6648 33.3'
-      - 'custom-4304 33.3'
-      - 'custom-1810 33.3'
+      - 'custom-6648 4'
+      - 'custom-4304 4'
+      - 'custom-1810 4'
   expandedtop: {  }
   /main/:
     -
       -
-        'mainbody 67':
+        'mainbody 8':
           -
             - custom-9767
       -
-        'sidebar 33':
+        'sidebar 4':
           -
             - custom-6672
           -
@@ -48,8 +48,8 @@ layout:
             - custom-4488
         /footer/:
           -
-            - 'custom-5551 50'
-            - 'custom-2913 50'
+            - 'custom-5551 6'
+            - 'custom-2913 6'
   copyright: {  }
   offcanvas: {  }
 structure:

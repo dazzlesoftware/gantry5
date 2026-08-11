@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: swiper
@@ -8,14 +8,14 @@ layout:
   /container-navigation/:
     -
       -
-        'navigationleft 10': {  }
+        'navigationleft 1': {  }
       -
-        'navigationmain 80':
+        'navigationmain 10':
           -
-            - 'logo-5992 15'
-            - 'menu-7876 85'
+            - 'logo-5992 2'
+            - 'menu-7876 10'
       -
-        'navigationright 10': {  }
+        'navigationright 1': {  }
   /slideshow/:
       -
         - custom-1958
@@ -40,35 +40,35 @@ layout:
   /container-footer/:
     -
       -
-        'footerleft 10': {  }
+        'footerleft 1': {  }
       -
-        'footermain 80': {  }
+        'footermain 10': {  }
       -
-        'footerright 10': {  }
+        'footerright 1': {  }
   /container-copyright/:
     -
       -
-        'copyrightleft 10': {  }
+        'copyrightleft 1': {  }
       -
-        'copyrightmain 80':
+        'copyrightmain 10':
           -
-            - 'position-position-2316 33.3'
-            - 'position-position-5872 33.3'
-            - 'position-position-5432 33.3'
+            - 'position-position-2316 4'
+            - 'position-position-5872 4'
+            - 'position-position-5432 4'
           -
             - spacer-3620
           -
-            - 'position-position-6325 17'
-            - 'position-position-9467 17'
-            - 'position-position-3508 17'
-            - 'position-position-9427 17'
-            - 'position-position-9799 32'
+            - 'position-position-6325 2'
+            - 'position-position-9467 2'
+            - 'position-position-3508 2'
+            - 'position-position-9427 2'
+            - 'position-position-9799 4'
           -
             - spacer-4015
           -
             - copyright-5748
       -
-        'copyrightright 10': {  }
+        'copyrightright 1': {  }
   offcanvas: {  }
 structure:
   top:

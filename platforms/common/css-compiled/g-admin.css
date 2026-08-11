@@ -9543,6 +9543,30 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   margin: 0.625rem 0 0;
   color: #c0392b;
 }
+.lm-row-picker .lm-row-breakpoints {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.lm-row-picker .lm-row-breakpoints button {
+  min-width: 48px;
+  padding: 7px 10px;
+  border: 1px solid #d8dfe5;
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+}
+.lm-row-picker .lm-row-breakpoints button[aria-selected=true] {
+  border-color: #2A82B7;
+  background: #2A82B7;
+  color: #fff;
+}
+.lm-row-picker .lm-row-breakpoint-help {
+  margin: 0 0 0.625rem;
+  color: rgb(80.75, 80.75, 80.75);
+  font-size: 0.85rem;
+}
 
 .lm-column-chooser {
   padding: 0.938rem;
@@ -12110,6 +12134,19 @@ html.genesis-dialog-open {
 }
 [data-genesis-container].genesis-dark-mode .lm-row-preset-bar {
   background: #657887;
+}
+[data-genesis-container].genesis-dark-mode .lm-row-breakpoints button {
+  color: #dce5eb;
+  background: #27333e;
+  border-color: #435461;
+}
+[data-genesis-container].genesis-dark-mode .lm-row-breakpoints button[aria-selected=true] {
+  color: #fff;
+  background: #287cab;
+  border-color: #4fa8d2;
+}
+[data-genesis-container].genesis-dark-mode .lm-row-breakpoint-help {
+  color: #9eafbb;
 }
 [data-genesis-container].genesis-dark-mode .button:not(.button-save), [data-genesis-container].genesis-dark-mode button:not(.particle-remove):not(.lm-column-add) {
   border-color: #485966;

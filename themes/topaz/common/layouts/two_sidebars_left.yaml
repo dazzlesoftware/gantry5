@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -8,140 +8,140 @@ layout:
   /container-top/:
     -
       -
-        'topleft 15': {  }
+        'topleft 2': {  }
       -
-        'topmain 70':
+        'topmain 8':
           -
             - system-messages-9828
       -
-        'topright 15': {  }
+        'topright 2': {  }
   /container-header/:
     -
       -
-        'navigationleft 15':
+        'navigationleft 2':
           -
             - social-7220
       -
-        'navigationmain 70':
+        'navigationmain 8':
           -
-            - 'logo-5992 30'
-            - 'menu-7876 70'
+            - 'logo-5992 4'
+            - 'menu-7876 8'
       -
-        'navigationright 15':
+        'navigationright 2':
           -
             - position-position-9578
     -
       -
-        'headerleft 15': {  }
+        'headerleft 2': {  }
       -
-        'headermain 70': {  }
+        'headermain 8': {  }
       -
-        'headerright 15': {  }
+        'headerright 2': {  }
   /container-above/:
     -
       -
-        'aboveleft 15': {  }
+        'aboveleft 2': {  }
       -
-        'abovemain 70':
+        'abovemain 8':
           -
             - simplecontent-6828
       -
-        'aboveright 15': {  }
+        'aboveright 2': {  }
   /container-main/:
     -
       -
-        'sidebar 18':
+        'sidebar 2':
           -
             - custom-5500
       -
-        'mainbar 18':
+        'mainbar 2':
           -
             - custom-1396
       -
-        'aside 64':
+        'aside 8':
           -
             - custom-9125
   /container-showcase/:
     -
       -
-        'showcaseleft 15': {  }
+        'showcaseleft 2': {  }
       -
-        'showcasemain 70': {  }
+        'showcasemain 8': {  }
       -
-        'showcaseright 15': {  }
+        'showcaseright 2': {  }
   /container-slideshow/:
     -
       -
-        'slideshowleft 15': {  }
+        'slideshowleft 2': {  }
       -
-        'slideshowmain 70': {  }
+        'slideshowmain 8': {  }
       -
-        'slideshowright 15': {  }
+        'slideshowright 2': {  }
   /container-utility/:
     -
       -
-        'utilityleft 15': {  }
+        'utilityleft 2': {  }
       -
-        'utilitymain 70': {  }
+        'utilitymain 8': {  }
       -
-        'utilityright 15': {  }
+        'utilityright 2': {  }
   /container-feature/:
     -
       -
-        'featureleft 15': {  }
+        'featureleft 2': {  }
       -
-        'featuremain 70': {  }
+        'featuremain 8': {  }
       -
-        'featureright 15': {  }
+        'featureright 2': {  }
   /container-expanded/:
     -
       -
-        'expandedleft 15': {  }
+        'expandedleft 2': {  }
       -
-        'expandedmain 70': {  }
+        'expandedmain 8': {  }
       -
-        'expandedright 15': {  }
+        'expandedright 2': {  }
   /container-extension/:
     -
       -
-        'extensionleft 15': {  }
+        'extensionleft 2': {  }
       -
-        'extensionmain 70': {  }
+        'extensionmain 8': {  }
       -
-        'extensionright 15': {  }
+        'extensionright 2': {  }
   /container-bottom/:
     -
       -
-        'bottomleft 15': {  }
+        'bottomleft 2': {  }
       -
-        'bottommain 70': {  }
+        'bottommain 8': {  }
       -
-        'bottomright 15': {  }
+        'bottomright 2': {  }
   /container-footer/:
     -
       -
-        'footerleft 15': {  }
+        'footerleft 2': {  }
       -
-        'footermain 70':
+        'footermain 8':
           -
-            - 'position-position-5108 60'
-            - 'social-2831 40'
+            - 'position-position-5108 7'
+            - 'social-2831 5'
       -
-        'footerright 15': {  }
+        'footerright 2': {  }
   /container-copyright/:
     -
       -
-        'copyrightleft 15': {  }
+        'copyrightleft 2': {  }
       -
-        'copyrightmain 70':
+        'copyrightmain 8':
           -
-            - 'logo-4776 15'
-            - 'position-position-6721 85'
+            - 'logo-4776 2'
+            - 'position-position-6721 10'
           -
-            - 'spacer-9415 15'
-            - 'copyright-5748 85'
+            - 'spacer-9415 2'
+            - 'copyright-5748 10'
       -
-        'copyrightright 15': {  }
+        'copyrightright 2': {  }
   offcanvas:
     -
       - mobile-menu-7951

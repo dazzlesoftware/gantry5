@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -11,11 +11,11 @@ layout:
       - custom-2695
   /header/:
     -
-      - 'simplecontent-1833 50'
-      - 'simplecontent-5160 50'
+      - 'simplecontent-1833 6'
+      - 'simplecontent-5160 6'
     -
-      - 'audioplayer-3135 50'
-      - 'eventlist-1374 50'
+      - 'audioplayer-3135 6'
+      - 'eventlist-1374 6'
   /above/:
     -
       - simplecontent-7069
@@ -25,16 +25,16 @@ layout:
     -
       - simplecontent-6725
     -
-      - 'imagegrid-5856 50'
-      - 'imagegrid-4343 50'
+      - 'imagegrid-5856 6'
+      - 'imagegrid-4343 6'
   /utility/: {  }
   /feature/: {  }
   /expanded/:
     -
       - system-content-3647
     -
-      - 'custom-4105 60'
-      - 'custom-6018 40'
+      - 'custom-4105 7'
+      - 'custom-6018 5'
   /extension/: {  }
   /bottom/:
     -

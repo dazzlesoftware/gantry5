@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -16,21 +16,21 @@ layout:
       - swipercards-2603
   /above/:
     -
-      - 'custom-3442 60'
-      - 'simplecontent-1498 40'
+      - 'custom-3442 7'
+      - 'simplecontent-1498 5'
   /feature/:
     -
-      - 'logo-9937 25'
-      - 'logo-2461 25'
-      - 'logo-8996 25'
-      - 'logo-3862 25'
+      - 'logo-9937 3'
+      - 'logo-2461 3'
+      - 'logo-8996 3'
+      - 'logo-3862 3'
   showcase:
     -
       - swipershowcase-7305
   extension:
     -
-      - 'flippingcards-4199 50'
-      - 'contentarray-4120 50'
+      - 'flippingcards-4199 6'
+      - 'contentarray-4120 6'
   /bottom/:
     -
       - simplecontent-7783

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: about_us
@@ -17,13 +17,13 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - blockcontent-2890
       -
-        'aside 20': {  }
+        'aside 2': {  }
   expanded: {  }
   extension: {  }
   /bottom/:
@@ -182,7 +182,7 @@ content:
           readmore_link: ''
           readmore_class: ''
           readmore_target: _self
-          title: 'About Us'    
+          title: 'About Us'
   blockcontent-2890:
     title: 'Block Content'
     attributes:
@@ -239,7 +239,7 @@ content:
             buttonlink: ''
             buttonclass: ''
             buttontarget: _self
-            name: 'Daryl Dixon'    
+            name: 'Daryl Dixon'
   blockcontent-7115:
     title: 'Block Content'
     attributes:

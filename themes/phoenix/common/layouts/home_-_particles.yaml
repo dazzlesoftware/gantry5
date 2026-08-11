@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -22,22 +22,22 @@ layout:
     -
       - heading-8624
     -
-      - 'simplecontent-1859 50'
-      - 'image-7722 50'
+      - 'simplecontent-1859 6'
+      - 'image-7722 6'
     -
-      - 'simplecontent-2495 50'
-      - 'spacer-6156 50'
+      - 'simplecontent-2495 6'
+      - 'spacer-6156 6'
   /utility/:
     -
       - slider-4711
   /container-main/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - heading-6148

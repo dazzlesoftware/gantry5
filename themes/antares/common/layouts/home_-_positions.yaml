@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_positions
@@ -13,22 +13,22 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 25'
-      - 'menu-1283 75'
+      - 'logo-5992 3'
+      - 'menu-1283 9'
   /slideshow/:
     -
       - position-position-6661
   /header/:
     -
-      - 'position-position-7051 50'
-      - 'position-position-9641 50'
+      - 'position-position-7051 6'
+      - 'position-position-9641 6'
   /above/:
     -
-      - 'position-position-4422 50'
-      - 'position-position-5693 50'
+      - 'position-position-4422 6'
+      - 'position-position-5693 6'
     -
-      - 'position-position-9262 50'
-      - 'position-position-6700 50'
+      - 'position-position-9262 6'
+      - 'position-position-6700 6'
   /showcase/:
     -
       - position-position-9435
@@ -49,30 +49,30 @@ layout:
   /container-4448/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60': {  }
+        'mainbar 7': {  }
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - position-position-6429
   /extension/:
     -
-      - 'position-position-4583 50'
-      - 'position-position-5009 50'
+      - 'position-position-4583 6'
+      - 'position-position-5009 6'
   /bottom/:
     -
       - position-position-5600
   /footer/:
     -
-      - 'logo-7113 30'
-      - 'horizontalmenu-5815 40'
-      - 'social-2396 30'
+      - 'logo-7113 4'
+      - 'horizontalmenu-5815 5'
+      - 'social-2396 4'
   /copyright/:
     -
-      - 'copyright-5748 50'
-      - 'horizontalmenu-4834 50'
+      - 'copyright-5748 6'
+      - 'horizontalmenu-4834 6'
     -
       - totop-6544
   offcanvas:

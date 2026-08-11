@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: genesis-admin://images/layouts/home.png
   name: Particles 1
@@ -22,7 +22,7 @@ layout:
     - feature-1402
     - gmap-1403
   /container-particles-1/:
-  - - mainbar 67:
+  - - mainbar 8:
       - - accordion-1100
       - - animatednumber-1101
       - - branding-1102
@@ -38,7 +38,7 @@ layout:
       - - socialshare-1112
       - - tabbedcards-1113
       - - textblock-1114
-    - sidebar 33:
+    - sidebar 4:
       - - accordion-1200
       - - animatednumber-1201
       - - branding-1202

@@ -25,6 +25,8 @@ children:
             attributes:
               variations: 'nomarginall nopaddingall'
               extra: {  }
+              columns:
+                xs: 12
               size: 100
             children:
               -
@@ -48,6 +50,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
             children:
               -

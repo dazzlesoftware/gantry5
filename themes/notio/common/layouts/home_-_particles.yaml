@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_particles
@@ -11,17 +11,17 @@ layout:
   /container-header/:
     -
       -
-        'sidebar-top 30':
+        'sidebar-top 4':
           -
             - cards-8168
       -
-        '/slideshow/ 70':
+        '/slideshow/ 8':
           -
             - newsslider-7768
   /container-main/:
     -
       -
-        'sidebar 30':
+        'sidebar 4':
           -
             - newsletter-4299
           -
@@ -29,7 +29,7 @@ layout:
           -
             - newstabs-8499
       -
-        '/header/ 50':
+        '/header/ 6':
           -
             - articletabs-6480
         /above/: {  }
@@ -44,7 +44,7 @@ layout:
           -
             - imagegrid-2121
       -
-        'aside 20':
+        'aside 2':
           -
             - authorslist-1084
           -

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: genesis-admin://images/layouts/home.png
   name: Particles 4
@@ -22,7 +22,7 @@ layout:
     - flipboxpro-4402
     - horizontalmenu-4403
   /container-particles-4/:
-  - - mainbar 67:
+  - - mainbar 8:
       - - alert-4100
       - - blockcontent-4101
       - - calendar-4102
@@ -38,7 +38,7 @@ layout:
       - - swiper-4112
       - - testimonialcard-4113
       - - video-4114
-    - sidebar 33:
+    - sidebar 4:
       - - alert-4200
       - - blockcontent-4201
       - - calendar-4202

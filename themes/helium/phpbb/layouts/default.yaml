@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -6,18 +6,18 @@ preset:
 layout:
   /navigation/:
     -
-      - 'logo-1001 25'
-      - 'custom-1004 75'
+      - 'logo-1001 3'
+      - 'custom-1004 9'
   /container-main/:
     -
       -
-        'mainbar 100':
+        'mainbar 12':
           -
             - system-content-1002
   /footer/:
     -
-      - 'copyright-1003 60'
-      - 'custom-1005 40'
+      - 'copyright-1003 7'
+      - 'custom-1005 5'
 structure:
   navigation:
     type: section

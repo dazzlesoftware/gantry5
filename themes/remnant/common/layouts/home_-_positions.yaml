@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_positions
@@ -11,11 +11,11 @@ layout:
       - position-position-1211
   /header/:
     -
-      - 'position-position-9391 50'
-      - 'position-position-4687 50'
+      - 'position-position-9391 6'
+      - 'position-position-4687 6'
     -
-      - 'position-position-8119 50'
-      - 'position-position-2837 50'
+      - 'position-position-8119 6'
+      - 'position-position-2837 6'
   /above/:
     -
       - position-position-4576
@@ -25,14 +25,14 @@ layout:
     -
       - position-position-8360
     -
-      - 'position-position-9493 50'
-      - 'position-position-8325 50'
+      - 'position-position-9493 6'
+      - 'position-position-8325 6'
   /utility/: {  }
   /feature/: {  }
   /expanded/:
     -
-      - 'system-content-6651 60'
-      - 'position-position-8030 40'
+      - 'system-content-6651 7'
+      - 'position-position-8030 5'
   /extension/: {  }
   /bottom/:
     -

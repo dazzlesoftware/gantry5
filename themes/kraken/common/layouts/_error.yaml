@@ -24,6 +24,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               variations: 'nomarginall nopaddingall'
               extra: {  }
@@ -49,6 +51,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -68,6 +72,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -87,6 +93,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -125,6 +133,8 @@ children:
               class: hidden-phone
               extra: {  }
               fixed: '0'
+              columns:
+                xs: 3
               size: 25
             children:
               -
@@ -145,6 +155,8 @@ children:
             attributes:
               extra: {  }
               fixed: '0'
+              columns:
+                xs: 9
               size: 75
             children:
               -
@@ -168,6 +180,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -187,6 +201,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -206,6 +222,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -240,6 +258,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -259,6 +279,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -278,6 +300,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -313,6 +337,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -332,6 +358,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -351,6 +379,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -385,6 +415,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -404,6 +436,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -423,6 +457,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -457,6 +493,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -476,6 +514,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -495,6 +535,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -529,6 +571,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -548,6 +592,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -567,6 +613,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -595,6 +643,8 @@ children:
             attributes:
               variations: center
               extra: {  }
+              columns:
+                xs: 12
               size: 100
             children:
               -
@@ -641,6 +691,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 2
               size: 20
             children:
               -
@@ -663,6 +715,8 @@ children:
                         subtype: false
                         title: Untitled
                         attributes:
+                          columns:
+                            xs: 12
                           size: 100
                         children:
                           -
@@ -681,6 +735,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 7
               size: 60
             children:
               -
@@ -703,6 +759,8 @@ children:
                         subtype: false
                         title: Untitled
                         attributes:
+                          columns:
+                            xs: 4
                           size: 33.3
                           extra: {  }
                         children:
@@ -722,6 +780,8 @@ children:
                         subtype: false
                         title: Untitled
                         attributes:
+                          columns:
+                            xs: 4
                           size: 33.3
                           extra: {  }
                         children:
@@ -741,6 +801,8 @@ children:
                         subtype: false
                         title: Untitled
                         attributes:
+                          columns:
+                            xs: 4
                           size: 33.3
                           extra: {  }
                         children:
@@ -770,6 +832,8 @@ children:
                           class: g-error
                           variations: center
                           extra: {  }
+                          columns:
+                            xs: 12
                           size: 100
                         children:
                           -
@@ -786,6 +850,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 2
               size: 20
             children:
               -
@@ -808,6 +874,8 @@ children:
                         subtype: false
                         title: Untitled
                         attributes:
+                          columns:
+                            xs: 12
                           size: 100
                         children:
                           -
@@ -841,6 +909,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -860,6 +930,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -879,6 +951,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -913,6 +987,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -932,6 +1008,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -951,6 +1029,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -979,6 +1059,8 @@ children:
             attributes:
               variations: 'center nomarginall nopaddingall'
               extra: {  }
+              columns:
+                xs: 12
               size: 100
             children:
               -
@@ -1025,6 +1107,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -1044,6 +1128,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -1063,6 +1149,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               extra: {  }
             children:
@@ -1097,6 +1185,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               class: g-title-bordered
               extra: {  }
@@ -1117,6 +1207,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               class: g-title-bordered
               extra: {  }
@@ -1137,6 +1229,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 4
               size: 33.3
               class: g-title-bordered
               extra: {  }
@@ -1164,6 +1258,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 3
               size: 25
               extra: {  }
               fixed: '0'
@@ -1184,6 +1280,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 6
               size: 50
               class: g-horizontalmenu-block
               variations: center
@@ -1221,6 +1319,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 3
               size: 25
             children:
               -
@@ -1252,6 +1352,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 3
               size: 25
               extra: {  }
             children:
@@ -1270,6 +1372,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 6
               size: 50
             children:
               -
@@ -1285,6 +1389,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 3
               size: 25
               extra: {  }
             children:
@@ -1319,6 +1425,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               extra: {  }
               fixed: '0'
@@ -1345,6 +1453,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               extra: {  }
               fixed: '0'
@@ -1370,6 +1480,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
               extra: {  }
               fixed: '0'
@@ -1409,6 +1521,8 @@ children:
               class: 'nomarginall nopaddingall'
               extra: {  }
               fixed: '0'
+              columns:
+                xs: 12
               size: 100
             children:
               -
@@ -1436,6 +1550,8 @@ children:
               class: 'nomarginall nopaddingall center'
               extra: {  }
               fixed: '0'
+              columns:
+                xs: 12
               size: 100
             children:
               -
@@ -1459,6 +1575,8 @@ children:
             subtype: false
             title: Untitled
             attributes:
+              columns:
+                xs: 12
               size: 100
             children:
               -

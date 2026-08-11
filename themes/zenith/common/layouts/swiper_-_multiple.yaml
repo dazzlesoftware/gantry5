@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: swiper
@@ -7,9 +7,9 @@ layout:
   /container-body/:
     -
       -
-        'bodysidebar 20': {  }
+        'bodysidebar 2': {  }
       -
-        '/top/ 80': {  }
+        '/top/ 10': {  }
         /slideshow/: {  }
         /header/:
             -

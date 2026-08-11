@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: twosidebars
@@ -17,17 +17,17 @@ layout:
   /container-main/:
     -
       -
-        'sidebar 27':
+        'sidebar 3':
           -
             - custom-7406
           -
             - custom-6562
       -
-        'mainbar 46':
+        'mainbar 6':
           -
             - custom-8235
       -
-        'aside 27':
+        'aside 3':
           -
             - custom-9224
   expanded: {  }

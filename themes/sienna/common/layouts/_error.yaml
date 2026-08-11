@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: _error
@@ -7,139 +7,139 @@ layout:
   /container-top/:
     -
       -
-        'topleft 10': {  }
+        'topleft 1': {  }
       -
-        'topmain 80':
+        'topmain 10':
           -
             - system-messages-9828
       -
-        'topright 10': {  }
+        'topright 1': {  }
   /container-navigation/:
     -
       -
-        'navigationleft 10': {  }
+        'navigationleft 1': {  }
       -
-        'navigationmain 80':
+        'navigationmain 10':
           -
-            - 'logo-5992 15'
-            - 'menu-7876 85'
+            - 'logo-5992 2'
+            - 'menu-7876 10'
       -
-        'navigationright 10': {  }
+        'navigationright 1': {  }
   /container-header/:
     -
       -
-        'headerleft 10': {  }
+        'headerleft 1': {  }
       -
-        'headermain 80': {  }
+        'headermain 10': {  }
       -
-        'headerright 10': {  }
+        'headerright 1': {  }
   /container-showcase/:
     -
       -
-        'showcaseleft 10': {  }
+        'showcaseleft 1': {  }
       -
-        'showcasemain 80': {  }
+        'showcasemain 10': {  }
       -
-        'showcaseright 10': {  }
+        'showcaseright 1': {  }
   /container-slideshow/:
     -
       -
-        'slideshowleft 10': {  }
+        'slideshowleft 1': {  }
       -
-        'slideshowmain 80': {  }
+        'slideshowmain 10': {  }
       -
-        'slideshowright 10': {  }
+        'slideshowright 1': {  }
   /container-above/:
     -
       -
-        'aboveleft 10': {  }
+        'aboveleft 1': {  }
       -
-        'abovemain 80':
+        'abovemain 10':
           -
             - simplecontent-9996
           -
             - system-content-1120
       -
-        'aboveright 10': {  }
+        'aboveright 1': {  }
   /container-utility/:
     -
       -
-        'utilityleft 10': {  }
+        'utilityleft 1': {  }
       -
-        'utilitymain 80': {  }
+        'utilitymain 10': {  }
       -
-        'utilityright 10': {  }
+        'utilityright 1': {  }
   /container-feature/:
     -
       -
-        'featureleft 10': {  }
+        'featureleft 1': {  }
       -
-        'featuremain 80': {  }
+        'featuremain 10': {  }
       -
-        'featureright 10': {  }
+        'featureright 1': {  }
   /container-main/:
     -
       -
-        'sidebar 10': {  }
+        'sidebar 1': {  }
       -
-        'mainbar 80': {  }
+        'mainbar 10': {  }
       -
-        'aside 10': {  }
+        'aside 1': {  }
   /container-expanded/:
     -
       -
-        'expandedleft 10': {  }
+        'expandedleft 1': {  }
       -
-        'expandedmain 80': {  }
+        'expandedmain 10': {  }
       -
-        'expandedright 10': {  }
+        'expandedright 1': {  }
   /container-extension/:
     -
       -
-        'extensionleft 10': {  }
+        'extensionleft 1': {  }
       -
-        'extensionmain 80': {  }
+        'extensionmain 10': {  }
       -
-        'extensionright 10': {  }
+        'extensionright 1': {  }
   /container-bottom/:
     -
       -
-        'bottomleft 10': {  }
+        'bottomleft 1': {  }
       -
-        'bottommain 80': {  }
+        'bottommain 10': {  }
       -
-        'bottomright 10': {  }
+        'bottomright 1': {  }
   /container-footer/:
     -
       -
-        'footerleft 10': {  }
+        'footerleft 1': {  }
       -
-        'footermain 80': {  }
+        'footermain 10': {  }
       -
-        'footerright 10': {  }
+        'footerright 1': {  }
   /container-copyright/:
     grid-1984:
       -
-        'copyrightleft 10': {  }
+        'copyrightleft 1': {  }
       -
-        'copyrightmain 80':
+        'copyrightmain 10':
           grid-1721:
-            - 'newsletter-6777 40'
-            - 'social-2831 40'
+            - 'newsletter-6777 5'
+            - 'social-2831 5'
           grid-9392:
             - spacer-3620
-          0:
-            - 'simplemenu-7117 17'
-            - 'simplemenu-2237 17'
-            - 'simplemenu-3870 17'
-            - 'simplemenu-8458 17'
-            - 'simplecontent-3806 32'
+          1:
+            - 'simplemenu-7117 2'
+            - 'simplemenu-2237 2'
+            - 'simplemenu-3870 2'
+            - 'simplemenu-8458 2'
+            - 'simplecontent-3806 4'
           grid-2239:
             - spacer-4015
           grid-5446:
             - copyright-5748
       -
-        'copyrightright 10': {  }
+        'copyrightright 1': {  }
   offcanvas:
     -
       - mobile-menu-7951

@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: _error
@@ -7,8 +7,8 @@ layout:
   /top/: {  }
   /header/:
     -
-      - 'logo-6032 30'
-      - 'menu-2214 70'
+      - 'logo-6032 4'
+      - 'menu-2214 8'
   /slideshow/: {  }
   /showcase/:
     -
@@ -18,30 +18,30 @@ layout:
   /container-9244/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        'mainbar 60':
+        'mainbar 7':
           -
             - system-content-5279
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /extension/:
     -
       - custom-9160
   /bottom/: {  }
   /footer/:
     -
-      - 'custom-1598 33'
-      - 'newsletter-5350 34'
-      - 'custom-2938 33'
+      - 'custom-1598 4'
+      - 'newsletter-5350 4'
+      - 'custom-2938 4'
   /copyright/:
     -
-      - 'logo-4894 33'
-      - 'custom-8479 67'
+      - 'logo-4894 4'
+      - 'custom-8479 8'
     -
-      - 'copyright-3939 33'
-      - 'custom-2135 57'
-      - 'totop-4255 10'
+      - 'copyright-3939 4'
+      - 'custom-2135 7'
+      - 'totop-4255 1'
   offcanvas:
     -
       - mobile-menu-2790

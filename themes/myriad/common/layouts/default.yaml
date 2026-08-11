@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: default
@@ -9,10 +9,10 @@ layout:
       - menu-1228
   /header/:
     -
-      - 'position-position-6831 25'
-      - 'position-position-2020 25'
-      - 'position-position-3327 25'
-      - 'position-position-4369 25'
+      - 'position-position-6831 3'
+      - 'position-position-2020 3'
+      - 'position-position-3327 3'
+      - 'position-position-4369 3'
   /slideshow/:
     -
       - position-position-6234
@@ -21,16 +21,16 @@ layout:
       - position-position-5551
   /top/:
     -
-      - 'position-position-9101 25'
-      - 'position-position-4013 25'
-      - 'position-position-2365 25'
-      - 'position-position-1439 25'
+      - 'position-position-9101 3'
+      - 'position-position-4013 3'
+      - 'position-position-2365 3'
+      - 'position-position-1439 3'
   /showcase/:
     -
-      - 'position-position-2755 25'
-      - 'position-position-1270 25'
-      - 'position-position-6347 25'
-      - 'position-position-9222 25'
+      - 'position-position-2755 3'
+      - 'position-position-1270 3'
+      - 'position-position-6347 3'
+      - 'position-position-9222 3'
   /fullstrip/:
     -
       - position-position-6568
@@ -42,76 +42,76 @@ layout:
       - position-position-3611
   /feature/:
     -
-      - 'position-position-8324 25'
-      - 'position-position-3216 25'
-      - 'position-position-5758 25'
-      - 'position-position-3972 25'
+      - 'position-position-8324 3'
+      - 'position-position-3216 3'
+      - 'position-position-5758 3'
+      - 'position-position-3972 3'
   /utility/:
     -
-      - 'position-position-5798 25'
-      - 'position-position-6205 25'
-      - 'position-position-1927 25'
-      - 'position-position-7876 25'
+      - 'position-position-5798 3'
+      - 'position-position-6205 3'
+      - 'position-position-1927 3'
+      - 'position-position-7876 3'
   /secondfullwidth/:
     -
       - position-position-4392
   /maintop/:
     -
-      - 'position-position-3278 25'
-      - 'position-position-9129 25'
-      - 'position-position-6918 25'
-      - 'position-position-8372 25'
+      - 'position-position-3278 3'
+      - 'position-position-9129 3'
+      - 'position-position-6918 3'
+      - 'position-position-8372 3'
   /expandedtop/:
     -
-      - 'position-position-8368 25'
-      - 'position-position-1610 25'
-      - 'position-position-8591 25'
-      - 'position-position-1723 25'
+      - 'position-position-8368 3'
+      - 'position-position-1610 3'
+      - 'position-position-8591 3'
+      - 'position-position-1723 3'
   /container-8478/:
     -
       -
-        'mainbody 63':
+        'mainbody 8':
           -
             - system-content-6489
       -
-        'sidebar 37':
+        'sidebar 4':
           -
             - position-position-7684
   /expandedbottom/:
     -
-      - 'position-position-1604 25'
-      - 'position-position-2563 25'
-      - 'position-position-3663 25'
-      - 'position-position-2659 25'
+      - 'position-position-1604 3'
+      - 'position-position-2563 3'
+      - 'position-position-3663 3'
+      - 'position-position-2659 3'
   /mainbottom/:
     -
-      - 'position-position-2329 25'
-      - 'position-position-1292 25'
-      - 'position-position-8316 25'
-      - 'position-position-7421 25'
+      - 'position-position-2329 3'
+      - 'position-position-1292 3'
+      - 'position-position-8316 3'
+      - 'position-position-7421 3'
   /thirdfullwidth/:
     -
       - position-position-7936
   /extension/:
     -
-      - 'position-position-6823 25'
-      - 'position-position-8317 25'
-      - 'position-position-7280 25'
-      - 'position-position-4063 25'
+      - 'position-position-6823 3'
+      - 'position-position-8317 3'
+      - 'position-position-7280 3'
+      - 'position-position-4063 3'
   /bottom/:
     -
-      - 'position-position-4905 25'
-      - 'position-position-8586 25'
-      - 'position-position-3998 25'
-      - 'position-position-5349 25'
+      - 'position-position-4905 3'
+      - 'position-position-8586 3'
+      - 'position-position-3998 3'
+      - 'position-position-5349 3'
   /footer/:
     -
       - horizontalmenu-6069
   /copyright/:
     -
-      - 'branding-7005 33.3'
-      - 'copyright-9042 33.3'
-      - 'totop-9181 33.3'
+      - 'branding-7005 4'
+      - 'copyright-9042 4'
+      - 'totop-9181 4'
   offcanvas:
     -
       - mobile-menu-3469
@@ -207,7 +207,7 @@ structure:
       boxed: ''
   offcanvas:
     attributes:
-      swipe: '0'      
+      swipe: '0'
 content:
   menu-1228:
     block:
@@ -442,14 +442,14 @@ content:
           name: 'Forum Support and Community'
     block:
       class: 'rt-horizmenu nomargintop nopaddingtop nopaddingbottom nomarginbottom hidden-phone'
-      variations: center 
+      variations: center
       extra:
         -
           data-aos: fade-up
         -
           data-aos-anchor: '#g-footer'
         -
-          data-aos-anchor-placement: bottom-bottom          
+          data-aos-anchor-placement: bottom-bottom
   branding-7005:
     attributes:
       content: '<a href="https://dazzlesoftware.org/" title="Dazzle Software" class="rt-powered-by"></a>'
@@ -461,20 +461,20 @@ content:
         -
           data-aos-anchor: '#g-copyright'
         -
-          data-aos-anchor-placement: bottom-bottom      
+          data-aos-anchor-placement: bottom-bottom
   copyright-9042:
     attributes:
       date:
         start: '2007'
     block:
-      class: 'g-copyright center nomargintop nopaddingtop'    
+      class: 'g-copyright center nomargintop nopaddingtop'
   totop-9181:
     title: 'To Top'
     attributes:
       css:
         class: 'genesis-totop'
     block:
-      class: 'hidden-phone'      
+      class: 'hidden-phone'
       extra:
         -
           data-aos: slide-up
@@ -483,8 +483,8 @@ content:
         -
           data-aos-anchor-placement: bottom-bottom
         -
-          data-aos-delay: '500' 
+          data-aos-delay: '500'
         -
-          data-aos-easing: ease-in-out-back                 
+          data-aos-easing: ease-in-out-back
   mobile-menu-3469:
     title: 'Mobile Menu'

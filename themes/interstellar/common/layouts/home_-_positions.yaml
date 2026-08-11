@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: home_-_positions
@@ -9,21 +9,21 @@ layout:
       - system-messages-9828
   /navigation/:
     -
-      - 'logo-5992 17'
-      - 'social-7220 13'
-      - 'menu-4196 70'
+      - 'logo-5992 2'
+      - 'social-7220 2'
+      - 'menu-4196 8'
   /header/:
     -
-      - 'position-position-5757 70'
-      - 'position-position-2741 30'
+      - 'position-position-5757 8'
+      - 'position-position-2741 4'
   /slideshow/:
     -
       - position-position-7513
   /above/:
     -
-      - 'spacer-5632 40'
-      - 'position-position-1219 30'
-      - 'position-position-8299 30'
+      - 'spacer-5632 5'
+      - 'position-position-1219 4'
+      - 'position-position-8299 4'
   /showcase/: {  }
   /utility/: {  }
   /feature/:
@@ -31,8 +31,8 @@ layout:
       - position-position-9511
   /expanded/:
     -
-      - 'position-position-4925 30'
-      - 'position-position-3146 70'
+      - 'position-position-4925 4'
+      - 'position-position-3146 8'
   /extension/:
     -
       - position-position-4367
@@ -43,8 +43,8 @@ layout:
       - position-position-2483
   /footer/:
     -
-      - 'position-position-6548 60'
-      - 'position-position-2750 40'
+      - 'position-position-6548 7'
+      - 'position-position-2750 5'
   /copyright/:
     -
       - copyright-5748

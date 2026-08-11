@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/home.png'
   name: home
@@ -9,27 +9,27 @@ layout:
       - system-messages-8881
   /navigation/:
     -
-      - 'logo-4443 20'
-      - 'menu-4742 55'
-      - 'custom-8580 5'
-      - 'social-1061 20'
+      - 'logo-4443 2'
+      - 'menu-4742 7'
+      - 'custom-8580 1'
+      - 'social-1061 2'
   /header/:
     -
       - promocontent-5353
   /slideshow/:
     -
       -
-        'slideleft 25':
+        'slideleft 3':
           -
             - animatedblock-4656
           -
             - animatedblock-5260
       -
-        'slidecenter 50':
+        'slidecenter 6':
           -
             - animatedblock-5590
       -
-        'slideright 25':
+        'slideright 3':
           -
             - custom-2215
           -
@@ -44,52 +44,52 @@ layout:
   /above/: {  }
   /utility/:
     -
-      - 'spacer-7436 50'
-      - 'promocontent-4075 50'
+      - 'spacer-7436 6'
+      - 'promocontent-4075 6'
   /feature/:
     -
-      - 'spacer-8336 50'
-      - 'promocontent-2232 50'
+      - 'spacer-8336 6'
+      - 'promocontent-2232 6'
   /container-7146/:
     -
       -
-        'sidebar 20': {  }
+        'sidebar 2': {  }
       -
-        '/mainbar/ 60':
+        '/mainbar/ 7':
           -
             - blockcontent-8769
           -
             - system-content-1269
       -
-        'aside 20': {  }
+        'aside 2': {  }
   /expanded/:
     -
       - promocontent-1639
   /extension/:
     -
-      - 'promocontent-5644 50'
-      - 'promocontent-2945 50'
+      - 'promocontent-5644 6'
+      - 'promocontent-2945 6'
   /bottom/:
     -
       - testimonial-9871
   /container-4598/:
     -
       -
-        'footer 50':
+        'footer 6':
           -
             - contact-7431
       -
-        'footside 50':
+        'footside 6':
           -
             - promocontent-1543
           -
-            - 'contact-1073 50'
-            - 'contact-5467 50'
+            - 'contact-1073 6'
+            - 'contact-5467 6'
   /copyright/:
     -
-      - 'logo-3485 33.3'
-      - 'totop-5363 33.3'
-      - 'social-5659 33.3'
+      - 'logo-3485 4'
+      - 'totop-5363 4'
+      - 'social-5659 4'
   offcanvas:
     -
       - mobile-menu-4294

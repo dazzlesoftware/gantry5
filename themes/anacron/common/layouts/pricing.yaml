@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: pricing
@@ -18,19 +18,19 @@ layout:
   /main/:
     -
       -
-        'mainbody 60':
+        'mainbody 7':
           -
             - pricingtable-7524
       -
-        'sidebar 40': {  }
+        'sidebar 5': {  }
   expandedbottom: {  }
   /mainbottom/:
     -
       - custom-9572
   /extension/:
     -
-      - 'custom-2978 50'
-      - 'custom-5247 50'
+      - 'custom-2978 6'
+      - 'custom-5247 6'
   /footer-surround/:
     -
       -
@@ -39,8 +39,8 @@ layout:
             - custom-4488
         /footer/:
           -
-            - 'custom-5551 50'
-            - 'custom-2913 50'
+            - 'custom-5551 6'
+            - 'custom-2913 6'
   copyright: {  }
   offcanvas: {  }
 structure:

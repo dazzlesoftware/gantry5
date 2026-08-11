@@ -31,10 +31,10 @@ form:
       type: select.select
       label: Post Columns
       description: In how many columns should the posts appear
-      default: size-100
+      default: col-12
       options:
-        size-100: 1 Column
-        size-50: 2 Columns
-        size-33-3: 3 Columns
-        size-25: 4 Columns
-        size-20: 5 Columns
+        col-12: 1 Column
+        col-6: 2 Columns
+        col-4: 3 Columns
+        col-3: 4 Columns
+        col-2: 5 Columns

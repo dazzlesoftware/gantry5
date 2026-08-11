@@ -1,4 +1,4 @@
-version: 2
+version: 3
 preset:
   image: 'genesis-admin://images/layouts/default.png'
   name: rightsidebar
@@ -7,9 +7,9 @@ layout:
   /container-overlay/:
     -
       -
-        'sideoverlay 40': {  }
+        'sideoverlay 5': {  }
       -
-        'mainoverlay 60': {  }    
+        'mainoverlay 7': {  }
   top: {  }
   navigation: {  }
   header: {  }
@@ -23,11 +23,11 @@ layout:
   /container-main/:
     -
       -
-        'mainbar 70':
+        'mainbar 8':
           -
             - custom-8235
       -
-        'sidebar 30':
+        'sidebar 4':
           -
             - custom-7406
           -
@@ -63,7 +63,7 @@ structure:
     attributes:
       boxed: '3'
       class: ''
-      extra: {  }  
+      extra: {  }
   top:
     type: section
     inherit:
