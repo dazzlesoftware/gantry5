@@ -290,6 +290,18 @@ exercised by any real data yet.
 - Update `Layouts.php` / `LayoutEvent.php` / `LayoutReader.php` to store
   the per-breakpoint column-count map as the canonical value.
 
+**Note for when M3 ships:** once the admin UI writes `columns` directly
+(covering every breakpoint including the current mobile-first default),
+the legacy float `size` attribute becomes redundant — `xs` no longer
+needs to be derived from it at render/data-prep time. At that point, drop
+`size` outright: stop reading it in `ThemeTrait::toColumns()` and
+`Layout::calcWidths()`, stop writing it from the admin JS, and let
+`columns` (now covering `xs` too) become the sole source of truth. Fold
+that cleanup into M6 alongside deleting `_flex.scss`/`_sizes.scss`, or do
+it right after M3 lands — either way, don't leave both `size` and a
+fully-populated `columns` alive together longer than the M3 transition
+requires.
+
 ### M4 — Roll through engines
 
 Sequence: WordPress → Joomla → Grav → phpBB. Each engine's `nucleus/scss`
