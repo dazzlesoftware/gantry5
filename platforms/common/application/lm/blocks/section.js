@@ -143,19 +143,11 @@ class Section extends Base {
             this.options.builder.add(this.grid);
         }
 
-        let plus = block.querySelector('.fa-plus');
-        if (plus && !plus.gSectionAddAttached) {
-            plus.gSectionAddAttached = true;
-            plus.addEventListener('click', function(event) {
-                if (event) { event.preventDefault(); }
-                if (block.querySelector('.g-grid:last-child:empty')) { return false; }
-
-                this.grid = new Grid();
-                let container = block.querySelector('[data-lm-blocktype="container"]');
-                this.grid.insert(container || this.block, 'bottom');
-                this.options.builder.add(this.grid);
-            }.bind(this));
-        }
+        // The ".section-addrow" plus icon (rendered in layout() above) opens
+        // the row/column picker instead - wired via a single delegated click
+        // handler in index.js, since building the picker's rows needs
+        // access to the shared history instance that block classes don't
+        // otherwise have. See NUCLEUS_BOOTSTRAP_MIGRATION.md M3.
         this.refreshInheritance();
     }
 

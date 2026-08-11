@@ -4319,8 +4319,8 @@
 
   // platforms/common/application/utils/translate.js
   var translate_default = (key, replacement = "") => {
-    const translate18 = window.GenesisTranslate || window.GenesisT || ((value) => value);
-    return String(translate18(key)).split("%s").join(replacement);
+    const translate20 = window.GenesisTranslate || window.GenesisT || ((value) => value);
+    return String(translate20(key)).split("%s").join(replacement);
   };
 
   // platforms/common/application/utils/get-outline.js
@@ -4586,13 +4586,14 @@
 
   // platforms/common/application/lm/blocks/grid.js
   var Base3 = base_default;
+  var translate2 = translate_default;
   var Grid = class extends Base3 {
     constructor(options) {
       super(options);
       this.on("changed", this.hasChanged);
     }
     layout() {
-      return '<div class="g-grid nowrap" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-samewidth data-lm-blocktype="grid"></div>';
+      return '<div class="g-grid nowrap" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-samewidth data-lm-blocktype="grid"><button type="button" class="grid-layout-picker" data-lm-nodrag data-lm-row-layout data-tip="' + translate2("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT") + '" data-tip-place="top-right"><i class="fa fa-columns" aria-hidden="true"></i><span class="sr-only">' + translate2("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT") + "</span></button></div>";
     }
     onRendered() {
       let parent = this.block.parent();
@@ -4624,7 +4625,7 @@
   var Grid2 = grid_default;
   var getAjaxURL5 = get_ajax_url_default.config;
   var getOutlineNameById2 = get_outline_default.getOutlineNameById;
-  var translate2 = translate_default;
+  var translate3 = translate_default;
   var forOwn = function(object, callback) {
     Object.keys(object || {}).forEach(function(key) {
       callback(object[key], key);
@@ -4651,7 +4652,7 @@
           klass += " g-inheriting-" + this.inherit.include.join(" g-inheriting-");
         }
       }
-      return '<div class="section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getTitle() + '">' + this.getTitle() + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate2("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate2("GENESIS_PLATFORM_JS_LM_SETTINGS", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Section") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritanceLabel + "</div>";
+      return '<div class="section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getTitle() + '">' + this.getTitle() + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate3("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate3("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Section") + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate3("GENESIS_PLATFORM_JS_LM_SETTINGS", "Section") + '" data-tip-place="top-right"><i aria-label="' + translate3("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Section") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritanceLabel + "</div>";
     }
     adopt(child) {
       let node = child && child.nodeType ? child : child && child[0], grid = this.block[0].querySelector(".g-grid");
@@ -4660,7 +4661,7 @@
       }
     }
     renderInheritanceLabel(outline) {
-      let content = translate2("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>");
+      let content = translate3("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>");
       if (this.block && this.getParent()) {
         content = "";
       }
@@ -4719,7 +4720,7 @@
     getInheritanceTip() {
       let outline = this.inherit ? this.inherit.outline : null, name = getOutlineNameById2(outline), include = (this.inherit.include || []).join(", ");
       return {
-        tip: translate2("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + name + "</strong>") + "<br />Outline ID: " + outline + "<br />Replace: " + include,
+        tip: translate3("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + name + "</strong>") + "<br />Outline ID: " + outline + "<br />Replace: " + include,
         "tip-offset": -2,
         "tip-place": "top-right"
       };
@@ -4749,22 +4750,6 @@
       if (!block.querySelector("[data-lm-id]")) {
         this.grid.insert(this.block, "bottom");
         this.options.builder.add(this.grid);
-      }
-      let plus = block.querySelector(".fa-plus");
-      if (plus && !plus.gSectionAddAttached) {
-        plus.gSectionAddAttached = true;
-        plus.addEventListener("click", (function(event) {
-          if (event) {
-            event.preventDefault();
-          }
-          if (block.querySelector(".g-grid:last-child:empty")) {
-            return false;
-          }
-          this.grid = new Grid2();
-          let container2 = block.querySelector('[data-lm-blocktype="container"]');
-          this.grid.insert(container2 || this.block, "bottom");
-          this.options.builder.add(this.grid);
-        }).bind(this));
       }
       this.refreshInheritance();
     }
@@ -4798,16 +4783,16 @@
   var Section2 = section_default;
   var getAjaxURL6 = get_ajax_url_default.config;
   var getOutlineNameById3 = get_outline_default.getOutlineNameById;
-  var translate3 = translate_default;
+  var translate4 = translate_default;
   var Offcanvas = class extends Section2 {
     layout() {
       let settingsUri = getAjaxURL6(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), inheritance = "", klass = "";
       if (this.hasInheritance()) {
         let outline = getOutlineNameById3(this.inherit.outline);
-        inheritance = '<div class="g-inherit g-section-inherit"><div class="g-inherit-content">' + translate3("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "</div></div>";
+        inheritance = '<div class="g-inherit g-section-inherit"><div class="g-inherit-content">' + translate4("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "</div></div>";
         klass = " g-inheriting g-inheriting-" + this.inherit.include.join(" g-inheriting-");
       }
-      return '<div class="offcanvas-section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getAttribute("name") + '">' + this.getAttribute("name") + '</h4><div class="section-actions float-right"><span data-tip="' + translate3("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Offcanvas") + '" data-tip-place="top-right"><i aria-label="' + translate3("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Offcanvas") + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate3("GENESIS_PLATFORM_JS_LM_SETTINGS", "Offcanvas") + '" data-tip-place="top-right"><i aria-label="' + translate3("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Offcanvas") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritance + "</div>";
+      return '<div class="offcanvas-section' + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '"><div class="section-header clearfix"><h4 class="float-left" title="' + this.getAttribute("name") + '">' + this.getAttribute("name") + '</h4><div class="section-actions float-right"><span class="section-addrow" data-tip="' + translate4("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Offcanvas") + '" data-tip-place="top-right"><i aria-label="' + translate4("GENESIS_PLATFORM_JS_LM_ADD_ROW", "Offcanvas") + '" class="fa fa-plus" aria-hidden="true"></i></span> <span class="section-settings" data-tip="' + translate4("GENESIS_PLATFORM_JS_LM_SETTINGS", "Offcanvas") + '" data-tip-place="top-right"><i aria-label="' + translate4("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Offcanvas") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div></div>' + inheritance + "</div>";
     }
     getId() {
       return this.id || (this.id = this.options.type);
@@ -4900,7 +4885,7 @@
   // platforms/common/application/lm/blocks/container.js
   var Base5 = base_default;
   var getAjaxURL7 = get_ajax_url_default.config;
-  var translate4 = translate_default;
+  var translate5 = translate_default;
   var Container = class extends Base5 {
     constructor(options) {
       super(options);
@@ -4932,7 +4917,7 @@
     addSettings(container2) {
       let settingsUri = getAjaxURL7(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), block = container2.block[0], wrapper = document.createElement("div");
       wrapper.className = "container-wrapper clearfix";
-      wrapper.innerHTML = '<div class="container-title"><span class="title">' + this.getType() + '</span></div><div class="container-actions"><span data-tip="' + translate4("GENESIS_PLATFORM_JS_LM_SETTINGS", "Container") + '" data-tip-place="top-left"><i aria-label="' + translate4("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Container") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
+      wrapper.innerHTML = '<div class="container-title"><span class="title">' + this.getType() + '</span></div><div class="container-actions"><span data-tip="' + translate5("GENESIS_PLATFORM_JS_LM_SETTINGS", "Container") + '" data-tip-place="top-left"><i aria-label="' + translate5("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Container") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
       block.insertBefore(wrapper, block.firstChild);
     }
   };
@@ -5073,7 +5058,7 @@
   var Atom2 = atom_default;
   var getAjaxURL8 = get_ajax_url_default.config;
   var getOutlineNameById4 = get_outline_default.getOutlineNameById;
-  var translate5 = translate_default;
+  var translate6 = translate_default;
   var precision2 = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
@@ -5092,7 +5077,7 @@
           klass += " g-inheriting-" + this.inherit.include.join(" g-inheriting-");
         }
       }
-      return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span> <i aria-label="' + translate5("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
+      return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span> <i aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
     }
     enableInheritance() {
       let block = this.block[0];
@@ -5149,7 +5134,7 @@
     getInheritanceTip() {
       let outline = getOutlineNameById4(this.inherit ? this.inherit.outline : null), particle = this.inherit.particle || "", include = (this.inherit.include || []).join(", ");
       return {
-        tip: translate5("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + particle + "<br />Replace: " + include,
+        tip: translate6("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + particle + "<br />Replace: " + include,
         "tip-offset": -10,
         "tip-place": "top-right"
       };
@@ -6742,8 +6727,16 @@
         }
       }
     },
-    resize: function(event, element, siblings2, offset) {
-      this.resizer.start(event, element, siblings2, offset);
+    // Drag-to-resize is retired in favor of the row/column picker (see
+    // row-picker.js, grid.js's per-row layout icon, and
+    // NUCLEUS_BOOTSTRAP_MIGRATION.md M3). `this.resizer` itself stays
+    // constructed - `evenResize()` is still used elsewhere to auto-balance
+    // sizes when blocks are added/removed/moved - only the interactive
+    // drag-resize gesture (dragdrop:resize -> resizer.start()) is disabled.
+    // This is scoped to the Layout Manager only: the mega-menu editor
+    // (menumanager.js) has its own, entirely separate DragDrop/Resizer
+    // instance pair and is unaffected.
+    resize: function() {
     },
     removeElement: function(event, element) {
       this.dragdrop.removeElement = false;
@@ -6997,6 +6990,107 @@
     }
   };
   var save_state_default = SaveState;
+
+  // platforms/common/application/lm/row-picker.js
+  var modal4 = ui_default.modal;
+  var translate7 = translate_default;
+  var PRESETS = [
+    [12],
+    [6, 6],
+    [4, 4, 4],
+    [3, 3, 3, 3],
+    [4, 8],
+    [3, 9],
+    [3, 6, 3],
+    [2, 6, 4],
+    [2, 10],
+    [2, 3, 7]
+  ];
+  var presetLabel = (columns) => columns.join("+");
+  var presetPreview = (columns) => {
+    return '<span class="lm-row-preset-bars">' + columns.map((count) => {
+      let width = (count / 12 * 100).toFixed(4);
+      return '<span class="lm-row-preset-bar" style="width:' + width + '%"></span>';
+    }).join("") + "</span>";
+  };
+  var presetButton = (columns, index) => {
+    return '<button type="button" class="lm-row-preset" data-lm-row-preset="' + index + '" aria-label="' + translate7("GENESIS_PLATFORM_JS_LM_ROW_LAYOUT_X", presetLabel(columns)) + '">' + presetPreview(columns) + '<span class="lm-row-preset-label">' + presetLabel(columns) + "</span></button>";
+  };
+  var buildContent = () => {
+    return '<div class="lm-row-picker"><h3 class="lm-row-picker-title">' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_TITLE") + '</h3><div class="lm-row-picker-presets">' + PRESETS.map(presetButton).join("") + '</div><div class="lm-row-picker-custom"><span class="lm-row-picker-custom-label">' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM") + '</span><input type="text" class="lm-row-picker-custom-input" data-lm-nodrag placeholder="' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM_PLACEHOLDER") + '" /><button type="button" class="button lm-row-picker-generate" data-lm-nodrag data-lm-row-generate>' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_GENERATE") + '</button></div><p class="lm-row-picker-error" hidden></p></div>';
+  };
+  var parseCustomSplit = (text) => {
+    let parts = String(text || "").split(/[+,\s]+/).map((part) => part.trim()).filter(Boolean).map(Number);
+    if (!parts.length || parts.some((value) => !Number.isInteger(value) || value < 1 || value > 12)) {
+      return null;
+    }
+    let total = parts.reduce((sum, value) => sum + value, 0);
+    if (total > 12) {
+      return null;
+    }
+    return parts;
+  };
+  var openRowPicker = (options) => {
+    options = options || {};
+    let content = modal4.open({
+      content: buildContent(),
+      className: "genesis-dialog-theme-default lm-row-picker-dialog",
+      afterOpen: (contentElement) => {
+        let element = contentElement && contentElement[0] ? contentElement[0] : contentElement;
+        if (!element) {
+          return;
+        }
+        let errorNode = element.querySelector(".lm-row-picker-error"), input = element.querySelector(".lm-row-picker-custom-input");
+        if (input && options.current && options.current.length) {
+          input.value = options.current.join("+");
+        }
+        let showError2 = (message) => {
+          if (!errorNode) {
+            return;
+          }
+          errorNode.textContent = message;
+          errorNode.hidden = false;
+        };
+        let finish = (columns) => {
+          modal4.close();
+          if (typeof options.onSelect === "function") {
+            options.onSelect(columns);
+          }
+        };
+        element.querySelectorAll("[data-lm-row-preset]").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            event.preventDefault();
+            let index = parseInt(button.getAttribute("data-lm-row-preset"), 10);
+            finish(PRESETS[index].slice());
+          });
+        });
+        let generate = element.querySelector("[data-lm-row-generate]");
+        if (generate) {
+          generate.addEventListener("click", (event) => {
+            event.preventDefault();
+            let columns = parseCustomSplit(input ? input.value : "");
+            if (!columns) {
+              showError2(translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_INVALID"));
+              return;
+            }
+            finish(columns);
+          });
+        }
+        if (input) {
+          input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              if (generate) {
+                generate.click();
+              }
+            }
+          });
+        }
+      }
+    });
+    return content;
+  };
+  var row_picker_default = openRowPicker;
 
   // platforms/common/application/ui/popover.js
   var dom9 = dom_effects_default;
@@ -7533,7 +7627,7 @@
   var delegate4 = dom10.delegate;
   var indicator2 = indicator_default;
   var request5 = request_default;
-  var modal4 = ui_default.modal;
+  var modal5 = ui_default.modal;
   var Selectize3 = selectize_default;
   var getAjaxSuffix4 = get_ajax_suffix_default;
   var parseAjaxURI4 = get_ajax_url_default.parse;
@@ -7564,7 +7658,7 @@
     element.dispatchEvent(event);
   };
   var getModalContainer = function() {
-    return asElement4(modal4.getByID(modal4.getLast()));
+    return asElement4(modal5.getByID(modal5.getLast()));
   };
   var getMode = function(root) {
     return (root || document).querySelector('[name="inherit[mode]"]:checked');
@@ -7619,7 +7713,7 @@
       request5("POST", parseAjaxURI4(getAjaxURL9(URI) + getAjaxSuffix4()), data, function(error, response) {
         indicator2.hide(label);
         if (!response.body.success) {
-          modal4.open({
+          modal5.open({
             content: response.body.html || response.body.message || response.body,
             afterOpen: function(container3) {
               container3 = asElement4(container3);
@@ -7742,14 +7836,14 @@
           return false;
         }
         let URI = id2.name === "inherit[atom]" ? "atoms/instance" : "layouts/particle";
-        modal4.open({
+        modal5.open({
           content: "Loading",
           method: "post",
           data: { id: id2.value, outline: outline.value || getCurrentOutline3() },
           remote: parseAjaxURI4(getAjaxURL9(URI) + getAjaxSuffix4()),
           remoteLoaded: function(response) {
             if (!response.body.success) {
-              modal4.enableCloseByOverlay();
+              modal5.enableCloseByOverlay();
             }
           }
         });
@@ -7783,7 +7877,7 @@
   var ready7 = dom_default.ready;
   var dom11 = dom_collection_default;
   var Submit = submit;
-  var modal5 = ui_default.modal;
+  var modal6 = ui_default.modal;
   var toastr2 = ui_default.toastr;
   var request6 = request_default;
   var indicator3 = indicator_default;
@@ -7795,7 +7889,8 @@
   var LMHistory = history_default2;
   var LayoutManager2 = layoutmanager_default;
   var SaveState2 = save_state_default;
-  var translate6 = translate_default;
+  var translate8 = translate_default;
+  var openRowPicker2 = row_picker_default;
   var reportInvalidFields = function(invalid) {
     let fields2 = invalid.map(function(input) {
       let element = input && input[0] ? input[0] : input, container2 = element ? element.closest(".settings-param, .card-overrideable") : null, label = container2 ? container2.querySelector(".settings-param-title, label") : null;
@@ -7812,11 +7907,11 @@
       first.scrollIntoView({ behavior: "smooth", block: "center" });
       first.focus({ preventScroll: true });
     }
-    let message = translate6("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
+    let message = translate8("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
     if (fields2.length) {
       message += "<br><strong>" + fields2.join(", ") + "</strong>";
     }
-    toastr2.error(message, translate6("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+    toastr2.error(message, translate8("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
   };
   var builder;
   var layoutmanager;
@@ -7961,7 +8056,7 @@
       }
     });
     body.delegate("statechangeBefore", "[data-genesis-lm-picker]", function() {
-      modal5.close();
+      modal6.close();
     });
     body.on("statechangeAfter", function(event, element) {
       root = dom11("[data-lm-root]");
@@ -8017,7 +8112,7 @@
       if (!tooltips.equalize && !tooltips.move) {
         return;
       }
-      let msg = tooltips.equalize ? translate6("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate6("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
+      let msg = tooltips.equalize ? translate8("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate8("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
       element.data("tip", msg).data("tip-offset", -30);
       window.Genesis.tips.get(element[0]).content(msg).place(tooltips.equalize ? "top-left" : "top-right").show();
     });
@@ -8098,10 +8193,10 @@
       request6(method, uri, data2, function(error, response) {
         element.hideIndicator();
         if (!response.body.success) {
-          modal5.open({
+          modal6.open({
             content: response.body.html || response.body.message || response.body,
             afterOpen: function(container2) {
-              container2 = modal5.element(container2);
+              container2 = modal6.element(container2);
               if (container2 && !response.body.html && !response.body.message) {
                 container2.style.width = "90%";
               }
@@ -8125,7 +8220,7 @@
                 flags2.set("lm:switcher:" + window.btoa(uri), true);
                 dom11([confirm, cancel]).attribute("disabled");
                 body.emit("mousedown", { target: element });
-                modal5.close();
+                modal6.close();
               });
               cancel.on("click", function(e) {
                 e.preventDefault();
@@ -8134,7 +8229,7 @@
                 }
                 dom11([confirm, cancel]).attribute("disabled");
                 flags2.set("lm:switcher:" + window.btoa(uri), false);
-                modal5.close();
+                modal6.close();
                 if (SWITCHER_HIT) {
                   setTimeout(function() {
                     SWITCHER_HIT.getPopover().show();
@@ -8202,7 +8297,7 @@
           delete data2.block;
         }
       }
-      modal5.open({
+      modal6.open({
         content: "Loading",
         method: "post",
         data: data2,
@@ -8210,10 +8305,10 @@
         remote: parseAjaxURI5(settingsURL + getAjaxSuffix5()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
-            modal5.enableCloseByOverlay();
+            modal6.enableCloseByOverlay();
             return;
           }
-          let container2 = modal5.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form;
+          let container2 = modal6.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form;
           if (!container2 || !form || !actionForm || !submit3.length) {
             return true;
           }
@@ -8237,7 +8332,7 @@
               }
             }
             let isValid = function() {
-              return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? "" : translate6("GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE");
+              return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? "" : translate8("GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE");
             };
             blockSize.addEventListener("input", function() {
               blockSize.setCustomValidity(isValid());
@@ -8263,10 +8358,10 @@
                 post.valid.join("&") || {},
                 function(error, response2) {
                   if (!response2.body.success) {
-                    modal5.open({
+                    modal6.open({
                       content: response2.body.html || response2.body.message || response2.body,
                       afterOpen: function(container3) {
-                        container3 = modal5.element(container3);
+                        container3 = modal6.element(container3);
                         if (container3 && !response2.body.html && !response2.body.message) {
                           container3.style.width = "90%";
                         }
@@ -8317,8 +8412,8 @@
                         save.click();
                       }
                     }
-                    modal5.close();
-                    toastr2.success(translate6("GENESIS_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED", particle.getTitle()), translate6("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                    modal6.close();
+                    toastr2.success(translate8("GENESIS_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED", particle.getTitle()), translate8("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                   }
                   indicator3.hide(target);
                   target.disabled = false;
@@ -8326,6 +8421,87 @@
               );
             });
           });
+        }
+      });
+    });
+    body.delegate("click", ".section-addrow", function(event, element) {
+      event.preventDefault();
+      let section = element.parent("[data-lm-blocktype]");
+      if (!section) {
+        return false;
+      }
+      let sectionBlock = section[0];
+      let lastGrid = sectionBlock.querySelector(':scope > .g-grid:last-child, :scope > [data-lm-blocktype="container"] > .g-grid:last-child');
+      if (lastGrid && !lastGrid.querySelector(':scope > [data-lm-blocktype="block"]')) {
+        return false;
+      }
+      let container2 = dom11(sectionBlock.querySelector(':scope > [data-lm-blocktype="container"]')), parentId = (container2 || section).data("lm-id");
+      openRowPicker2({
+        onSelect: function(columns) {
+          let grid = builder.insert(void 0, { type: "grid", subtype: "grid" }, parentId);
+          columns.forEach(function(count) {
+            builder.insert(void 0, {
+              type: "block",
+              subtype: "block",
+              attributes: { size: count / 12 * 100, columns: { xs: count } }
+            }, grid.getId());
+          });
+          lmhistory.push(builder.serialize(), lmhistory.get().preset);
+        }
+      });
+    });
+    body.delegate("click", "[data-lm-row-layout]", function(event, element) {
+      event.preventDefault();
+      let grid = element.parent('[data-lm-blocktype="grid"]');
+      if (!grid) {
+        return false;
+      }
+      let gridId = grid.data("lm-id"), blocks = Array.from(grid[0].children).filter(function(child) {
+        return child.getAttribute("data-lm-blocktype") === "block";
+      }), current = blocks.map(function(child) {
+        let mapped = builder.get(child.getAttribute("data-lm-id"));
+        if (!mapped) {
+          return 1;
+        }
+        return Math.max(1, Math.min(12, parseInt(mapped.getAttribute("columns.xs"), 10) || Math.round((mapped.getSize() || 0) / 100 * 12)));
+      });
+      openRowPicker2({
+        current,
+        onSelect: function(columns) {
+          let hasContent = blocks.some(function(child) {
+            return child.querySelector("[data-lm-id]");
+          });
+          if (columns.length !== blocks.length && hasContent && !window.confirm(translate8("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT_CONFIRM"))) {
+            return;
+          }
+          blocks.slice(0, columns.length).forEach(function(child, index) {
+            let mapped = builder.get(child.getAttribute("data-lm-id"));
+            if (mapped) {
+              mapped.setAttribute("columns.xs", columns[index]);
+              mapped.setSize(columns[index] / 12 * 100, true);
+            }
+          });
+          if (columns.length > blocks.length) {
+            columns.slice(blocks.length).forEach(function(count) {
+              builder.insert(void 0, {
+                type: "block",
+                subtype: "block",
+                attributes: { size: count / 12 * 100, columns: { xs: count } }
+              }, gridId);
+            });
+          } else if (columns.length < blocks.length) {
+            blocks.slice(columns.length).forEach(function(child) {
+              child.querySelectorAll("[data-lm-id]").forEach(function(descendant) {
+                builder.remove(descendant.getAttribute("data-lm-id"));
+              });
+              let mapped = builder.get(child.getAttribute("data-lm-id"));
+              if (mapped) {
+                builder.remove(mapped);
+              }
+              child.remove();
+            });
+          }
+          lmhistory.push(builder.serialize(), lmhistory.get().preset);
         }
       });
     });
@@ -9483,7 +9659,7 @@
   // platforms/common/application/menu/extra-items.js
   var dom13 = dom_default;
   var Submit2 = submit;
-  var modal6 = ui_default.modal;
+  var modal7 = ui_default.modal;
   var toastr3 = ui_default.toastr;
   var Selectize4 = selectize_default;
   var request7 = request_default;
@@ -9493,7 +9669,7 @@
   var getAjaxSuffix6 = get_ajax_suffix_default;
   var flags4 = flags_state_default;
   var deepEquals3 = deep_equals_default;
-  var translate7 = translate_default;
+  var translate9 = translate_default;
   var Cards = cards_default;
   var WordpressWidgetsCustomizer = wp_widgets_customizer_default;
   var menumanager = null;
@@ -9559,12 +9735,12 @@
         title.after(badge);
       }
       let config2 = block.querySelector(".config-cog");
-      modal6.open({
-        content: translate7("GENESIS_PLATFORM_JS_LOADING"),
+      modal7.open({
+        content: translate9("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         remote: parseAjaxURI6((config2 ? config2.getAttribute("href") : "") + getAjaxSuffix6()),
         remoteLoaded: function(response, modalInstance) {
-          let content = modal6.element(modalInstance.elements.content), search2 = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
+          let content = modal7.element(modalInstance.elements.content), search2 = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
           if (!search2 || !filters.length || !blocks.length) {
             return;
           }
@@ -9607,7 +9783,7 @@
     request7("post", parseAjaxURI6(uri + getAjaxSuffix6()), data, function(error, stepResponse) {
       let result = stepResponse && stepResponse.body;
       if (!result || !result.success) {
-        modal6.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
+        modal7.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
         indicator4.hide(button);
         return;
       }
@@ -9633,7 +9809,7 @@
           request7(method, parseAjaxURI6(action + getAjaxSuffix6()), post.valid.join("&") || {}, function(submitError, submitResponse) {
             let submitResult = submitResponse && submitResponse.body, field = null;
             if (!submitResult || !submitResult.success) {
-              modal6.open({
+              modal7.open({
                 content: submitResult ? submitResult.html || submitResult.message || submitResult : submitError ? submitError.message : "Request failed."
               });
             } else if (!picker) {
@@ -9656,7 +9832,7 @@
                 }
                 menumanager.isNewParticle = false;
                 menumanager.emit("dragEnd", menumanager.map);
-                toastr3.success(translate7("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate7("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                toastr3.success(translate9("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate9("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
               } else {
                 let position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'), list = position && position.querySelector(":scope > ul");
                 if (list) {
@@ -9664,7 +9840,7 @@
                 }
                 Cards.serialize(position);
                 Cards.updatePendingChanges();
-                toastr3.success(translate7("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate7("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                toastr3.success(translate9("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate9("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
               }
             } else {
               field = fieldByName(picker.field);
@@ -9680,7 +9856,7 @@
                 btnPicker.textContent = btnPicker.getAttribute("data-g-instancepicker-alttext") || "";
               }
             }
-            modal6.close();
+            modal7.close();
             indicator4.hide(submit3);
             WordpressWidgetsCustomizer(field);
           });
@@ -9734,7 +9910,7 @@
           field.dispatchEvent(new Event("input", { bubbles: true }));
         }
         indicator4.hide(element);
-        modal6.close();
+        modal7.close();
         return;
       }
       element.removeAttribute("data-g-instancepicker");
@@ -9750,14 +9926,14 @@
   var dom14 = dom_default;
   var MenuManager2 = menumanager_default;
   var Submit3 = submit;
-  var modal7 = ui_default.modal;
+  var modal8 = ui_default.modal;
   var toastr4 = ui_default.toastr;
   var extraItems = extra_items_default;
   var request8 = request_default;
   var indicator5 = indicator_default;
   var parseAjaxURI7 = get_ajax_url_default.parse;
   var getAjaxSuffix7 = get_ajax_suffix_default;
-  var translate8 = translate_default;
+  var translate10 = translate_default;
   var menumanager2;
   var trim3 = function(value) {
     return value == null ? "" : String(value).trim();
@@ -9903,18 +10079,18 @@
         }
         data.item = JSON.stringify(menumanager2.items[itemId]);
       }
-      modal7.open({
-        content: translate8("GENESIS_PLATFORM_JS_LOADING"),
+      modal8.open({
+        content: translate10("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         data,
         overlayClickToClose: false,
         remote: parseAjaxURI7(element.getAttribute("href") + getAjaxSuffix7()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
-            modal7.enableCloseByOverlay();
+            modal8.enableCloseByOverlay();
             return;
           }
-          let container2 = modal7.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form, path;
+          let container2 = modal8.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form, path;
           let search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
@@ -9969,7 +10145,7 @@
                 target.disabled = false;
                 indicator5.hide(target);
                 indicator5.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr4.error(translate8("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate8("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr4.error(translate10("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate10("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request8(
@@ -9978,10 +10154,10 @@
                 post.valid.join("&"),
                 function(error, response2) {
                   if (!response2.body.success) {
-                    modal7.open({
+                    modal8.open({
                       content: response2.body.html || response2.body.message || response2.body,
                       afterOpen: function(container3) {
-                        container3 = modal7.element(container3);
+                        container3 = modal8.element(container3);
                         if (container3 && !response2.body.html && !response2.body.message) {
                           container3.style.width = "90%";
                         }
@@ -10010,8 +10186,8 @@
                         save.click();
                       }
                     }
-                    modal7.close();
-                    toastr4.success(translate8("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate8("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                    modal8.close();
+                    toastr4.success(translate10("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate10("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                   }
                   indicator5.hide(target);
                   target.disabled = false;
@@ -10030,7 +10206,7 @@
   // platforms/common/application/configurations/dropdown-edit.js
   var dom15 = dom_default;
   var request9 = request_default;
-  var modal8 = ui_default.modal;
+  var modal9 = ui_default.modal;
   var getAjaxSuffix8 = get_ajax_suffix_default;
   var parseAjaxURI8 = get_ajax_url_default.parse;
   var History3 = history_default;
@@ -10085,10 +10261,10 @@
           request9("post", parseAjaxURI8(href + getAjaxSuffix8()), { title }, function(error, response) {
             let bodyResponse = response && response.body;
             if (!bodyResponse || !bodyResponse.success) {
-              modal8.open({
+              modal9.open({
                 content: bodyResponse ? bodyResponse.html || bodyResponse.message || bodyResponse : error ? error.message : "Unable to rename outline.",
                 afterOpen: function(container2) {
-                  container2 = modal8.element(container2);
+                  container2 = modal9.element(container2);
                   if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container2) {
                     container2.style.width = "90%";
                   }
@@ -10118,7 +10294,7 @@
 
   // platforms/common/application/configurations/index.js
   var dom16 = dom_default;
-  var modal9 = ui_default.modal;
+  var modal10 = ui_default.modal;
   var toastr5 = ui_default.toastr;
   var request10 = request_default;
   var indicator6 = indicator_default;
@@ -10159,10 +10335,10 @@
           request10(method, parseAjaxURI9(href + getAjaxSuffix9()), { title: String(title).trim() }, function(error, response) {
             let result = response && response.body;
             if (!result || !result.success) {
-              modal9.open({
+              modal10.open({
                 content: result ? result.html || result.message || result : error ? error.message : "Unable to rename outline.",
                 afterOpen: function(container2) {
-                  container2 = modal9.element(container2);
+                  container2 = modal10.element(container2);
                   if (result && !result.html && !result.message && container2) {
                     container2.style.width = "90%";
                   }
@@ -10191,17 +10367,17 @@
     };
     dom16.delegate(body, "click", "[data-genesis-outline-create], [data-genesis-outline-duplicate]", function(event, trigger) {
       event.preventDefault();
-      modal9.open({
+      modal10.open({
         content: "Loading",
         method: "post",
         overlayClickToClose: false,
         remote: parseAjaxURI9(trigger.href + getAjaxSuffix9()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
-            modal9.enableCloseByOverlay();
+            modal10.enableCloseByOverlay();
             return;
           }
-          let container2 = modal9.element(content.elements.content), title = container2.querySelector('[name="title"]'), confirm = container2.querySelector("[data-g-outline-create-confirm]");
+          let container2 = modal10.element(content.elements.content), title = container2.querySelector('[name="title"]'), confirm = container2.querySelector("[data-g-outline-create-confirm]");
           if (!title || !confirm) {
             return;
           }
@@ -10231,7 +10407,7 @@
               indicator6.hide(confirm);
               let result = resultResponse && resultResponse.body;
               if (!result || !result.success) {
-                modal9.open({ content: result ? result.html || result.message || result : error.message });
+                modal10.open({ content: result ? result.html || result.message || result : error.message });
                 return;
               }
               let base2 = document.querySelector("#configurations ul li"), created = document.createElement("li");
@@ -10242,7 +10418,7 @@
                 attachEditables(created.querySelectorAll("[data-title-editable]"));
               }
               toastr5.success(result.html || "Action successfully completed.", result.title || "");
-              modal9.close();
+              modal10.close();
             });
           });
           setTimeout(function() {
@@ -10282,7 +10458,7 @@
                 cancel.disabled = true;
               }
               element.click();
-              modal9.close();
+              modal10.close();
             });
             if (cancel) {
               cancel.addEventListener("click", function(cancelEvent) {
@@ -10293,7 +10469,7 @@
                 confirm.disabled = true;
                 cancel.disabled = true;
                 flags5.set("free:to:delete:" + encoded, false);
-                modal9.close();
+                modal10.close();
               });
             }
           }
@@ -10305,7 +10481,7 @@
       request10(method, parseAjaxURI9((hrefConfirm || href) + getAjaxSuffix9()), {}, function(error, response) {
         let result = response && response.body;
         if (!result || !result.success) {
-          modal9.open({ content: result ? result.html || result.message || result : error.message });
+          modal10.open({ content: result ? result.html || result.message || result : error.message });
         } else {
           let selector = document.querySelector("#configuration-selector"), currentOutline = selector ? selector.value : null, outlineDeleted = result.outline, reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
             return link.getAttribute("href") === getAjaxURL12("configurations");
@@ -10337,7 +10513,7 @@
 
   // platforms/common/application/positions/index.js
   var dom17 = dom_default;
-  var modal10 = ui_default.modal;
+  var modal11 = ui_default.modal;
   var toastr6 = ui_default.toastr;
   var request11 = request_default;
   var indicator7 = indicator_default;
@@ -10346,7 +10522,7 @@
   var getAjaxURL13 = get_ajax_url_default.global;
   var Submit4 = submit;
   var flags6 = flags_state_default;
-  var translate9 = translate_default;
+  var translate11 = translate_default;
   var Cards2 = cards_default;
   var trim4 = function(value) {
     return value == null ? "" : String(value).trim();
@@ -10361,10 +10537,10 @@
   };
   var showError = function(error, response) {
     let result = response && response.body;
-    modal10.open({
+    modal11.open({
       content: result ? result.html || result.message || result : error ? error.message : "Request failed.",
       afterOpen: function(container2) {
-        container2 = modal10.element(container2);
+        container2 = modal11.element(container2);
         if (result && !result.html && !result.message && container2) {
           container2.style.width = "90%";
         }
@@ -10457,7 +10633,7 @@
                 cancel.disabled = true;
               }
               element.click();
-              modal10.close();
+              modal11.close();
             });
             if (cancel) {
               cancel.addEventListener("click", function(cancelEvent) {
@@ -10468,7 +10644,7 @@
                 confirm.disabled = true;
                 cancel.disabled = true;
                 flags6.set("free:to:delete:" + encoded, false);
-                modal10.close();
+                modal11.close();
               });
             }
           }
@@ -10500,17 +10676,17 @@
     });
     dom17.delegate(body, "click", "#positions .position-add", function(event, element) {
       event.preventDefault();
-      modal10.open({
-        content: translate9("GENESIS_PLATFORM_JS_LOADING"),
+      modal11.open({
+        content: translate11("GENESIS_PLATFORM_JS_LOADING"),
         method: "get",
         overlayClickToClose: false,
         remote: parseAjaxURI10(element.href + getAjaxSuffix10()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
-            modal10.enableCloseByOverlay();
+            modal11.enableCloseByOverlay();
             return;
           }
-          let container2 = modal10.element(content.elements.content), search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
+          let container2 = modal11.element(content.elements.content), search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
@@ -10547,18 +10723,18 @@
         return;
       }
       let position = JSON.parse(positionElement.getAttribute("data-genesis-position"));
-      modal10.open({
-        content: translate9("GENESIS_PLATFORM_JS_LOADING"),
+      modal11.open({
+        content: translate11("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         data: { position: position.name, item: item.getAttribute("data-pm-data") },
         overlayClickToClose: false,
         remote: parseAjaxURI10(getAjaxURL13("positions/edit/" + item.getAttribute("data-pm-blocktype")) + getAjaxSuffix10()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
-            modal10.enableCloseByOverlay();
+            modal11.enableCloseByOverlay();
             return;
           }
-          let container2 = modal10.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+          let container2 = modal11.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
           attachEditableValidation(container2);
           if (!form || !submits.length) {
             return true;
@@ -10575,7 +10751,7 @@
                 target.disabled = false;
                 indicator7.hide(target);
                 indicator7.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr6.error(translate9("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate9("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr6.error(translate11("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate11("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request11(form.method, parseAjaxURI10(form.action + getAjaxSuffix10()), post.valid.join("&"), function(error, resultResponse) {
@@ -10597,8 +10773,8 @@
                   }
                   Cards2.serialize(positionElement);
                   Cards2.updatePendingChanges();
-                  modal10.close();
-                  toastr6.success(translate9("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate9("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                  modal11.close();
+                  toastr6.success(translate11("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate11("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                 }
                 target.disabled = false;
                 indicator7.hide(target);
@@ -10626,7 +10802,7 @@
   });
 
   // platforms/common/application/changelog/index.js
-  var modal11 = ui_default.modal;
+  var modal12 = ui_default.modal;
   var parseAjaxURI11 = get_ajax_url_default.parse;
   var getAjaxURL14 = get_ajax_url_default.global;
   var getAjaxSuffix11 = get_ajax_suffix_default;
@@ -10647,7 +10823,7 @@
   ready9(() => {
     delegate6(document.body, "click", "[data-changelog]", (event, link) => {
       event.preventDefault();
-      modal11.open({
+      modal12.open({
         content: "Loading",
         method: "post",
         className: "genesis-dialog-theme-default genesis-modal-changelog",
@@ -10960,7 +11136,7 @@
   // platforms/common/application/utils/ajaxify-links.js
   var dom19 = dom_default;
   var storage3 = /* @__PURE__ */ new Map();
-  var modal12 = ui_default.modal;
+  var modal13 = ui_default.modal;
   var Selectize5 = selectize_default;
   var indicator8 = indicator_default;
   var request12 = request_default();
@@ -11035,7 +11211,7 @@
     });
   };
   var warningButtons = function(content) {
-    content = modal12.element(content);
+    content = modal13.element(content);
     return {
       save: content && content.querySelector("[data-g-unsaved-save]"),
       discard: content && content.querySelector("[data-g-unsaved-discard]")
@@ -11068,7 +11244,7 @@
         }
         let flagCallback = function() {
           flags8.off("update:pending", flagCallback);
-          modal12.close();
+          modal13.close();
           let input = asElement9(selectize2.input);
           input.setAttribute("data-genesis-ajaxify", "");
           input.setAttribute("data-genesis-ajaxify-target", selector.getAttribute("data-genesis-ajaxify-target") || "[data-genesis-content-wrapper]");
@@ -11185,14 +11361,14 @@
       }
     }
     if (!ERROR) {
-      modal12.closeAll();
+      modal13.closeAll();
     }
     request12.url(URI + params).data(Data.extras || {}).method(Data.extras ? "post" : "get").send(function(error, response) {
       let result = response && response.body;
       if (!result || !result.success) {
         if (!ERROR) {
           ERROR = true;
-          modal12.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
+          modal13.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
           History4.back();
         } else {
           ERROR = false;
@@ -11257,7 +11433,7 @@
       }
       let continueBack = function() {
         flags8.off("update:pending", continueBack);
-        modal12.close();
+        modal13.close();
         item.click();
         navbar.removeAttribute("tabindex");
         navbar.setAttribute("aria-hidden", "false");
@@ -11320,7 +11496,7 @@
       event.preventDefault();
       let replay = function() {
         flags8.off("update:pending", replay);
-        modal12.close();
+        modal13.close();
         element.click();
       };
       if (flags8.get("pending") && !element.matches("a.menu-item") && !element.closest("[data-menu-items]")) {
@@ -11568,7 +11744,7 @@
   var assignments_default = Assignments;
 
   // platforms/common/application/styles/index.js
-  var modal13 = ui_default.modal;
+  var modal14 = ui_default.modal;
   var fields = fields_default;
   var { ready: ready12, delegate: delegate9 } = dom_default;
   var escapeSelector2 = (value) => window.CSS && CSS.escape ? CSS.escape(value) : String(value).replace(/["\\]/g, "\\$&");
@@ -11598,7 +11774,7 @@
       const preset = swatch.closest("[data-g-styles]");
       const image = preset ? preset.querySelector("img") : null;
       if (!image) return;
-      modal13.open({
+      modal14.open({
         content: image.outerHTML,
         afterOpen(container2) {
           const element = container2 && container2[0] ? container2[0] : container2;
@@ -12207,9 +12383,9 @@
   var getAjaxSuffix13 = get_ajax_suffix_default;
   var parseAjaxURI13 = get_ajax_url_default.parse;
   var getAjaxURL15 = get_ajax_url_default.global;
-  var modal14 = ui_default.modal;
+  var modal15 = ui_default.modal;
   var asyncForEach3 = async_foreach_default;
-  var translate10 = translate_default;
+  var translate12 = translate_default;
   var inViewport = elements_viewport_default;
   var fontVariantLoads = /* @__PURE__ */ new Map();
   var parseFontRequest = (request18) => {
@@ -12324,8 +12500,8 @@
       }
       data = JSON.parse(data);
       this.field = dom21(data.field);
-      modal14.open({
-        content: translate10("GENESIS_PLATFORM_JS_LOADING"),
+      modal15.open({
+        content: translate12("GENESIS_PLATFORM_JS_LOADING"),
         className: "genesis-dialog-theme-default genesis-modal-fonts",
         remote: parseAjaxURI13(getAjaxURL15("fontpicker") + getAjaxSuffix13()),
         remoteLoaded: (function(response, content) {
@@ -12649,7 +12825,7 @@
       select.on("click", (function() {
         if (!dom21('ul.g-fonts-list > [data-font] input[type="checkbox"]:checked')) {
           this.field.value("");
-          modal14.close();
+          modal15.close();
           return;
         }
         let name = this.selected.font.replace(/\s/g, "+"), variation = this.selected.selected, charset = this.selected.charsets;
@@ -12674,7 +12850,7 @@
         }
         this.field.emit("input");
         dom21("body").emit("input", { target: this.field });
-        modal14.close();
+        modal15.close();
       }).bind(this));
       categories.popover({
         placement: "top",
@@ -12880,12 +13056,12 @@
 
   // platforms/common/application/particles/icons/index.js
   var dom22 = dom_default;
-  var modal15 = ui_default.modal;
+  var modal16 = ui_default.modal;
   var popovers = popover_default;
   var getAjaxSuffix14 = get_ajax_suffix_default;
   var parseAjaxURI14 = get_ajax_url_default.parse;
   var getAjaxURL16 = get_ajax_url_default.global;
-  var translate11 = translate_default;
+  var translate13 = translate_default;
   var escapeHTML2 = function(value) {
     return String(value).replace(/[&<>"']/g, function(character) {
       return {
@@ -12919,8 +13095,8 @@
       if (!field) {
         return;
       }
-      modal15.open({
-        content: translate11("GENESIS_PLATFORM_JS_LOADING"),
+      modal16.open({
+        content: translate13("GENESIS_PLATFORM_JS_LOADING"),
         className: "genesis-dialog-theme-default genesis-modal-icons",
         remote: parseAjaxURI14(getAjaxURL16("icons") + getAjaxSuffix14()),
         afterClose: function() {
@@ -12929,7 +13105,7 @@
           });
         },
         remoteLoaded: function(response, content) {
-          let container2 = modal15.element(content.elements.content), icons = container2.querySelectorAll("[data-g-icon]");
+          let container2 = modal16.element(content.elements.content), icons = container2.querySelectorAll("[data-g-icon]");
           if (!icons.length || !response.body.success) {
             container2.innerHTML = response.body.html || response.body;
             return false;
@@ -12981,7 +13157,7 @@
               previewIcon.className = outputClass;
             }
             field.dispatchEvent(new Event("input", { bubbles: true }));
-            modal15.close();
+            modal16.close();
           });
           dom22.delegate(container2, "change", '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
           dom22.delegate(container2, "keyup", '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
@@ -13047,14 +13223,14 @@
   // platforms/common/application/particles/filepicker/index.js
   var dom23 = dom_default;
   var request13 = request_default;
-  var modal16 = ui_default.modal;
+  var modal17 = ui_default.modal;
   var popovers2 = popover_default;
   var Progresser2 = progresser_default;
   var indicator9 = indicator_default;
   var getAjaxSuffix15 = get_ajax_suffix_default;
   var parseAjaxURI15 = get_ajax_url_default.parse;
   var getAjaxURL17 = get_ajax_url_default.global;
-  var translate12 = translate_default;
+  var translate14 = translate_default;
   var Cookie3 = cookie_default;
   var clone2 = function(value) {
     return JSON.parse(JSON.stringify(value));
@@ -13210,7 +13386,7 @@
         fill: { gradient: this.filePicker.colors.gradient, color: false }
       });
       updateProgress(uploader, config2);
-      uploader.title = translate12("GENESIS_PLATFORM_JS_PROCESSING");
+      uploader.title = translate14("GENESIS_PLATFORM_JS_PROCESSING");
       this.filePicker.setProgressText(element, "0%");
     }
     showError(element, error) {
@@ -13250,7 +13426,7 @@
           element.setAttribute("data-file-url", uploadResponse.url);
           element.classList.remove("g-file-uploading");
           if (uploader) uploader.remove();
-          if (mtime) mtime.textContent = translate12("GENESIS_PLATFORM_JUST_NOW");
+          if (mtime) mtime.textContent = translate14("GENESIS_PLATFORM_JUST_NOW");
         });
       }, 500);
     }
@@ -13275,7 +13451,7 @@
       if (!this.accepts(file)) {
         this.showError(
           element,
-          file.name + " " + translate12("GENESIS_PLATFORM_JS_FILTER_MISMATCH") + ": " + this.filePicker.data.filter
+          file.name + " " + translate14("GENESIS_PLATFORM_JS_FILTER_MISMATCH") + ": " + this.filePicker.data.filter
         );
         return;
       }
@@ -13360,10 +13536,10 @@
         let field = this.getField();
         this.data.value = field ? field.value : "";
       }
-      modal16.open({
+      modal17.open({
         method: "post",
         data: this.data,
-        content: translate12("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate14("GENESIS_PLATFORM_JS_LOADING"),
         className: "genesis-dialog-theme-default genesis-modal-filepicker",
         remote: parseAjaxURI15(getAjaxURL17("filepicker") + getAjaxSuffix15()),
         remoteLoaded: this.loaded.bind(this),
@@ -13387,7 +13563,7 @@
       return '<li data-file><div class="g-thumb" data-upload-thumbnail><div></div></div><span class="g-file-name"></span><span class="g-file-size"></span><span class="g-file-mtime"></span><span class="g-file-progress" data-file-uploadprogress><span class="g-file-progress-text"></span></span></li>';
     }
     loaded(response, modalInstance) {
-      let content = modal16.element(modalInstance.elements.content), files = content && content.querySelector(".g-files"), fieldData = clone2(this.data), colors = this.colors, self2 = this;
+      let content = modal17.element(modalInstance.elements.content), files = content && content.querySelector(".g-files"), fieldData = clone2(this.data), colors = this.colors, self2 = this;
       if (!content) {
         return false;
       }
@@ -13419,7 +13595,7 @@
           this.addActiveState(element);
           let result = folderResponse && folderResponse.body;
           if (!result || !result.success) {
-            modal16.open({
+            modal17.open({
               content: result ? result.html || result.message || result : error ? error.message : "Request failed."
             });
             return;
@@ -13457,7 +13633,7 @@
         }
         let thumb = parent.querySelector(".g-thumb > div"), background = thumb && thumb.style.backgroundImage;
         if (background) {
-          modal16.open({
+          modal17.open({
             className: "genesis-dialog-theme-default genesis-modal-filepreview center",
             content: '<img src="' + background.slice(4, -1).replace(/"/g, "") + '" />'
           });
@@ -13473,7 +13649,7 @@
         request13("delete", deleteURI, function(error, deleteResponse) {
           let result = deleteResponse && deleteResponse.body;
           if (!result || !result.success) {
-            modal16.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
+            modal17.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
             return;
           }
           parent.classList.add("g-file-deleted");
@@ -13502,7 +13678,7 @@
           field.dispatchEvent(new Event("input", { bubbles: true }));
           field.dispatchEvent(new Event("change", { bubbles: true }));
         }
-        modal16.close();
+        modal17.close();
       }).bind(this));
       dom23.delegate(content, "click", "[data-files-mode]", function(event, element) {
         event.preventDefault();
@@ -13739,14 +13915,14 @@
   // platforms/common/application/particles/collections/index.js
   var dom24 = dom_default;
   var Submit5 = submit;
-  var modal17 = ui_default.modal;
+  var modal18 = ui_default.modal;
   var toastr7 = ui_default.toastr;
   var indicator10 = indicator_default;
   var request14 = request_default;
   var ReorderableList2 = reorderable_list_default;
   var parseAjaxURI16 = get_ajax_url_default.parse;
   var getAjaxSuffix16 = get_ajax_suffix_default;
-  var translate13 = translate_default;
+  var translate15 = translate_default;
   var directItems3 = function(list) {
     return Array.from(list.children).filter(function(item) {
       return item.hasAttribute("data-collection-item");
@@ -13901,8 +14077,8 @@
         return;
       }
       let items = directItems3(list), data = dataField.value || "[]", itemIndex = item ? items.indexOf(item) : -1, dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
-      modal17.open({
-        content: translate13("GENESIS_PLATFORM_JS_LOADING"),
+      modal18.open({
+        content: translate15("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         className: "genesis-dialog-theme-default genesis-modal-collection genesis-modal-collection-" + (isEditAll ? "editall" : "single"),
         data: dataPost,
@@ -13910,11 +14086,11 @@
         remote: parseAjaxURI16(element.getAttribute("href") + getAjaxSuffix16()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
-            modal17.enableCloseByOverlay();
+            modal18.enableCloseByOverlay();
             return;
           }
-          let container2 = modal17.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'), dataValue = JSON.parse(data);
-          if (modal17.getAll().length > 1) {
+          let container2 = modal18.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'), dataValue = JSON.parse(data);
+          if (modal18.getAll().length > 1) {
             container2.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
               button.remove();
             });
@@ -13933,13 +14109,13 @@
               if (post.invalid.length) {
                 indicator10.hide(target);
                 indicator10.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr7.error(translate13("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate13("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr7.error(translate15("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate15("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request14(form.method, parseAjaxURI16(form.action + getAjaxSuffix16()), post.valid.join("&") || {}, function(error, resultResponse) {
                 let result = resultResponse && resultResponse.body;
                 if (!result || !result.success) {
-                  modal17.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
+                  modal18.open({ content: result ? result.html || result.message || result : error ? error.message : "Request failed." });
                 } else {
                   if (itemIndex !== -1) {
                     dataValue[itemIndex] = result.data;
@@ -13961,8 +14137,8 @@
                       save.click();
                     }
                   }
-                  modal17.close();
-                  toastr7.success(translate13("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Collection"), translate13("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                  modal18.close();
+                  toastr7.success(translate15("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Collection"), translate15("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                 }
                 indicator10.hide(target);
               });
@@ -13977,7 +14153,7 @@
   // platforms/common/application/particles/keyvalue/index.js
   var { ready: ready16, delegate: delegate11 } = dom_default;
   var ReorderableList3 = reorderable_list_default;
-  var translate14 = translate_default;
+  var translate16 = translate_default;
   var collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
   var escapeUnicode = (value) => String(value).replace(/[\s\S]/g, (character) => {
     if (/[\x20-\x7e]/.test(character)) return character;
@@ -14071,7 +14247,7 @@
         }
         parent.classList.toggle("g-keyvalue-warning", duplicate);
         parent.classList.toggle("g-keyvalue-excluded", excluded);
-        const message = duplicate ? translate14("GENESIS_PLATFORM_JS_KEYVALUE_DUPLICATE", keyValue) : excluded ? translate14("GENESIS_PLATFORM_JS_KEYVALUE_EXCLUDED", keyValue) : null;
+        const message = duplicate ? translate16("GENESIS_PLATFORM_JS_KEYVALUE_DUPLICATE", keyValue) : excluded ? translate16("GENESIS_PLATFORM_JS_KEYVALUE_EXCLUDED", keyValue) : null;
         if (message) wrapper.setAttribute("data-tip", message);
         else wrapper.removeAttribute("data-tip");
         wrapper.setAttribute("data-tip-place", "top-right");
@@ -14118,13 +14294,13 @@
 
   // platforms/common/application/particles/instancepicker/index.js
   var Submit6 = submit;
-  var modal18 = ui_default.modal;
+  var modal19 = ui_default.modal;
   var request15 = request_default;
   var { ready: ready17, delegate: delegate12 } = dom_default;
   var parseAjaxURI17 = get_ajax_url_default.parse;
   var getAjaxURL18 = get_ajax_url_default.global;
   var getAjaxSuffix17 = get_ajax_suffix_default;
-  var translate15 = translate_default;
+  var translate17 = translate_default;
   var WordpressWidgetsCustomizer2 = wp_widgets_customizer_default;
   var showIndicator2 = (element) => {
     let icon = element.querySelector("i");
@@ -14181,15 +14357,15 @@
         uri = "".concat(value.type, "/").concat(value[data.type]);
       }
       if (data.modal_close) return;
-      modal18.open({
-        content: translate15("GENESIS_PLATFORM_JS_LOADING"),
+      modal19.open({
+        content: translate17("GENESIS_PLATFORM_JS_LOADING"),
         method: !value || data.type === "module" ? "get" : "post",
         data: !value || data.type === "module" ? {} : value,
         overlayClickToClose: false,
         remote: parseAjaxURI17(getAjaxURL18(uri) + getAjaxSuffix17()),
         remoteLoaded: (response, modalInstance) => {
           if (!response.body.success) {
-            modal18.enableCloseByOverlay();
+            modal19.enableCloseByOverlay();
             return;
           }
           const content = modalInstance.elements.content[0];
@@ -14233,7 +14409,7 @@
               post.valid.join("&") || {},
               (error, saveResponse) => {
                 if (!saveResponse.body.success) {
-                  modal18.open({
+                  modal19.open({
                     content: saveResponse.body.html || saveResponse.body.message || saveResponse.body,
                     afterOpen: (container2) => {
                       if (!saveResponse.body.html && !saveResponse.body.message) container2.style({ width: "90%" });
@@ -14245,7 +14421,7 @@
                   field.dispatchEvent(new Event("change", { bubbles: true }));
                   if (title) title.textContent = saveResponse.body.item.title;
                 }
-                modal18.close();
+                modal19.close();
                 hideIndicator2(submit3);
                 WordpressWidgetsCustomizer2(field);
               }
@@ -14272,7 +14448,7 @@
   // platforms/common/application/pagesettings/index.js
   var dom25 = dom_default;
   var Submit7 = submit;
-  var modal19 = ui_default.modal;
+  var modal20 = ui_default.modal;
   var toastr8 = ui_default.toastr;
   var Eraser5 = eraser_default;
   var indicator11 = indicator_default;
@@ -14281,7 +14457,7 @@
   var parseAjaxURI18 = get_ajax_url_default.parse;
   var getAjaxSuffix18 = get_ajax_suffix_default;
   var getOutlineNameById5 = get_outline_default.getOutlineNameById;
-  var translate16 = translate_default;
+  var translate18 = translate_default;
   var AtomsField = '[name="page[head][atoms][_json]"]';
   var Atoms2 = {
     eraser: null,
@@ -14376,15 +14552,15 @@
         return;
       }
       let itemData = item.getAttribute("data-atom-picked"), dataValue = JSON.parse(dataField.value || "[]");
-      modal19.open({
-        content: translate16("GENESIS_PLATFORM_JS_LOADING"),
+      modal20.open({
+        content: translate18("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         data: { data: itemData },
         overlayClickToClose: false,
         remote: parseAjaxURI18(trigger.getAttribute("href") + getAjaxSuffix18()),
         remoteLoaded: function(response, content) {
-          let container2 = modal19.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
-          if (modal19.getAll().length > 1) {
+          let container2 = modal20.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+          if (modal20.getAll().length > 1) {
             container2.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
               button.remove();
             });
@@ -14403,16 +14579,16 @@
               if (post.invalid.length) {
                 indicator11.hide(target);
                 indicator11.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr8.error(translate16("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate16("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr8.error(translate18("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate18("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request16(form.method, parseAjaxURI18(form.action + getAjaxSuffix18()), post.valid.join("&") || {}, function(error, resultResponse) {
                 let result = resultResponse && resultResponse.body;
                 if (!result || !result.success) {
-                  modal19.open({
+                  modal20.open({
                     content: result ? result.html || result.message || result : error ? error.message : "Request failed.",
                     afterOpen: function(modalContainer) {
-                      modalContainer = modal19.element(modalContainer);
+                      modalContainer = modal20.element(modalContainer);
                       if (result && !result.html && !result.message && modalContainer) {
                         modalContainer.style.width = "90%";
                       }
@@ -14431,11 +14607,11 @@
                     let enabled = Number(result.item.attributes.enabled), inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
                     item.classList.toggle("atom-disabled", !enabled);
                     item.classList.toggle("g-inheriting", Boolean(inheriting));
-                    item.title = enabled ? "" : translate16("GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE", "atom");
+                    item.title = enabled ? "" : translate18("GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE", "atom");
                     item.removeAttribute("data-tip");
                     if (inheriting) {
                       let inherit = result.item.inherit, outline = getOutlineNameById5(inherit.outline), atom = inherit.atom || "", include = (inherit.include || []).join(", ");
-                      item.setAttribute("data-tip", translate16("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + atom + "<br />Replace: " + include);
+                      item.setAttribute("data-tip", translate18("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + atom + "<br />Replace: " + include);
                     }
                     dataField.dispatchEvent(new Event("change", { bubbles: true }));
                     window.Genesis.tips.reload();
@@ -14446,8 +14622,8 @@
                       save.click();
                     }
                   }
-                  modal19.close();
-                  toastr8.success(translate16("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Atom"), translate16("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                  modal20.close();
+                  toastr8.success(translate18("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Atom"), translate18("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                 }
                 indicator11.hide(target);
               });
@@ -14720,7 +14896,7 @@
   var ready18 = dom_default.ready;
   var request17 = request_default;
   var ui = ui_default;
-  var modal20 = ui.modal;
+  var modal21 = ui.modal;
   var toastr9 = ui.toastr;
   var parseAjaxURI19 = get_ajax_url_default.parse;
   var getAjaxURL19 = get_ajax_url_default.global;
@@ -14730,7 +14906,7 @@
   var lm = lm_default;
   var mm2 = menu_default;
   var pm = cards_default;
-  var translate17 = translate_default;
+  var translate19 = translate_default;
   var trim5 = function(value, characters) {
     let string = value == null ? "" : String(value);
     if (!characters) {
@@ -14779,11 +14955,11 @@
       first.scrollIntoView({ behavior: "smooth", block: "center" });
       first.focus({ preventScroll: true });
     }
-    let message = translate17("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
+    let message = translate19("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
     if (fields2.length) {
       message += "<br><strong>" + fields2.join(", ") + "</strong>";
     }
-    toastr9.error(message, translate17("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+    toastr9.error(message, translate19("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
   };
   var formatters = [
     { threshold: -31535999, handler: createHandler(-31536e3, "year", "from now") },
@@ -14823,11 +14999,11 @@
   };
   window.onbeforeunload = function() {
     if (flags9.get("pending")) {
-      return translate17("GENESIS_PLATFORM_JS_NO_SAVE_DETECTED");
+      return translate19("GENESIS_PLATFORM_JS_NO_SAVE_DETECTED");
     }
   };
   ready18(function() {
-    let body = dom26("body"), sentence = translate17("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
+    let body = dom26("body"), sentence = translate19("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
     body.delegate("click", "[data-g-close]", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
@@ -14878,7 +15054,7 @@
       if (!element.lastSaved) {
         return true;
       }
-      let feedback = translate17("GENESIS_PLATFORM_LAST_SAVED") + ": " + prettyDate.format(element.lastSaved);
+      let feedback = translate19("GENESIS_PLATFORM_LAST_SAVED") + ": " + prettyDate.format(element.lastSaved);
       element.data("tip", feedback).data("title", feedback);
     });
     body.delegate("click", ".button-save", function(event, element) {
@@ -14944,25 +15120,25 @@
       body[0].dispatchEvent(new CustomEvent("updateOriginalFields"));
       request17("post", saveURL, data, function(error, response) {
         if (!response.body.success) {
-          modal20.open({
+          modal21.open({
             content: response.body.html || response.body.message || response.body,
             afterOpen: function(container2) {
-              container2 = modal20.element(container2);
+              container2 = modal21.element(container2);
               if (container2 && !response.body.html && !response.body.message) {
                 container2.style.width = "90%";
               }
             }
           });
         } else {
-          modal20.close();
+          modal21.close();
           if (dom26("#styles")) {
-            extras = "<br />" + (response.body.warning ? "<hr />" + response.body.title + "<br />" + response.body.html : translate17("GENESIS_PLATFORM_JS_CSS_COMPILED"));
+            extras = "<br />" + (response.body.warning ? "<hr />" + response.body.title + "<br />" + response.body.html : translate19("GENESIS_PLATFORM_JS_CSS_COMPILED"));
           }
           toastr9[response.body.warning ? "warning" : "success"](interpolate(sentence, {
             verb: type.slice(-1) == "s" ? "have" : "has",
             type,
             extras
-          }), type + " " + translate17("GENESIS_PLATFORM_SAVED"));
+          }), type + " " + translate19("GENESIS_PLATFORM_SAVED"));
         }
         saves.disabled(false);
         saves.hideIndicator();
@@ -15067,10 +15243,10 @@
       indicator12.showIndicator();
       request17(method, parseAjaxURI19(href + getAjaxSuffix19()), function(error, response) {
         if (!response.body.success) {
-          modal20.open({
+          modal21.open({
             content: response.body.html || response.body.message || response.body,
             afterOpen: function(container2) {
-              container2 = modal20.element(container2);
+              container2 = modal21.element(container2);
               if (container2 && !response.body.html && !response.body.message) {
                 container2.style.width = "90%";
               }

@@ -15,6 +15,7 @@ import __module13 from './history.js';
 import __module14 from './layoutmanager.js';
 import __module15 from '../utils/save-state.js';
 import __module16 from '../utils/translate.js';
+import __module17 from './row-picker.js';
 import '../ui/popover.js';
 import './inheritance/index.js';
 
@@ -39,7 +40,8 @@ let ready          = __module0.ready,
     LMHistory      = __module13,
     LayoutManager  = __module14,
     SaveState      = __module15,
-    translate      = __module16;
+    translate      = __module16,
+    openRowPicker  = __module17;
 
 let reportInvalidFields = function(invalid) {
     let fields = invalid.map(function(input) {
@@ -690,6 +692,100 @@ ready(function() {
             }
         });
 
+    });
+
+    // Row/column layout picker - "+" on a section/offcanvas adds a new row;
+    // the per-grid icon (see grid.js) reopens the picker to change an
+    // existing row's split. See NUCLEUS_BOOTSTRAP_MIGRATION.md M3.
+    body.delegate('click', '.section-addrow', function(event, element) {
+        event.preventDefault();
+
+        let section = element.parent('[data-lm-blocktype]');
+        if (!section) { return false; }
+
+        let sectionBlock = section[0];
+        let lastGrid = sectionBlock.querySelector(':scope > .g-grid:last-child, :scope > [data-lm-blocktype="container"] > .g-grid:last-child');
+        if (lastGrid && !lastGrid.querySelector(':scope > [data-lm-blocktype="block"]')) {
+            return false;
+        }
+
+        let container = dom(sectionBlock.querySelector(':scope > [data-lm-blocktype="container"]')),
+            parentId = (container || section).data('lm-id');
+
+        openRowPicker({
+            onSelect: function(columns) {
+                let grid = builder.insert(undefined, { type: 'grid', subtype: 'grid' }, parentId);
+                columns.forEach(function(count) {
+                    builder.insert(undefined, {
+                        type: 'block',
+                        subtype: 'block',
+                        attributes: { size: (count / 12) * 100, columns: { xs: count } }
+                    }, grid.getId());
+                });
+                lmhistory.push(builder.serialize(), lmhistory.get().preset);
+            }
+        });
+    });
+
+    // Change an existing row's column split.
+    body.delegate('click', '[data-lm-row-layout]', function(event, element) {
+        event.preventDefault();
+
+        let grid = element.parent('[data-lm-blocktype="grid"]');
+        if (!grid) { return false; }
+
+        let gridId = grid.data('lm-id'),
+            blocks = Array.from(grid[0].children).filter(function(child) { return child.getAttribute('data-lm-blocktype') === 'block'; }),
+            current = blocks.map(function(child) {
+                let mapped = builder.get(child.getAttribute('data-lm-id'));
+                if (!mapped) { return 1; }
+                return Math.max(1, Math.min(12, parseInt(mapped.getAttribute('columns.xs'), 10) ||
+                    Math.round((mapped.getSize() || 0) / 100 * 12)));
+            });
+
+        openRowPicker({
+            current: current,
+            onSelect: function(columns) {
+                let hasContent = blocks.some(function(child) { return child.querySelector('[data-lm-id]'); });
+
+                if (columns.length !== blocks.length && hasContent &&
+                    !window.confirm(translate('GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT_CONFIRM'))) {
+                    return;
+                }
+
+                // Update the columns that survive so their content and IDs
+                // remain intact. `size` stays during the M3 transition while
+                // `columns.xs` becomes the canonical Bootstrap span.
+                blocks.slice(0, columns.length).forEach(function(child, index) {
+                    let mapped = builder.get(child.getAttribute('data-lm-id'));
+                    if (mapped) {
+                        mapped.setAttribute('columns.xs', columns[index]);
+                        mapped.setSize((columns[index] / 12) * 100, true);
+                    }
+                });
+
+                if (columns.length > blocks.length) {
+                    columns.slice(blocks.length).forEach(function(count) {
+                        builder.insert(undefined, {
+                            type: 'block',
+                            subtype: 'block',
+                            attributes: { size: (count / 12) * 100, columns: { xs: count } }
+                        }, gridId);
+                    });
+                } else if (columns.length < blocks.length) {
+                    blocks.slice(columns.length).forEach(function(child) {
+                        child.querySelectorAll('[data-lm-id]').forEach(function(descendant) {
+                            builder.remove(descendant.getAttribute('data-lm-id'));
+                        });
+                        let mapped = builder.get(child.getAttribute('data-lm-id'));
+                        if (mapped) { builder.remove(mapped); }
+                        child.remove();
+                    });
+                }
+
+                lmhistory.push(builder.serialize(), lmhistory.get().preset);
+            }
+        });
     });
 
 });

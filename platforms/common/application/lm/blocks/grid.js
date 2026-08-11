@@ -1,8 +1,10 @@
 import __module0 from './base.js';
+import __module1 from '../../utils/translate.js';
 
 "use strict";
 
-let Base = __module0;
+let Base      = __module0,
+    translate = __module1;
 
 class Grid extends Base {
     constructor(options) {
@@ -11,7 +13,13 @@ class Grid extends Base {
     }
 
     layout() {
-        return '<div class="g-grid nowrap" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-samewidth data-lm-blocktype="grid"></div>';
+        return '<div class="g-grid nowrap" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-samewidth data-lm-blocktype="grid">' +
+            '<button type="button" class="grid-layout-picker" data-lm-nodrag data-lm-row-layout data-tip="' +
+                translate('GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT') + '" data-tip-place="top-right">' +
+                '<i class="fa fa-columns" aria-hidden="true"></i>' +
+                '<span class="sr-only">' + translate('GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT') + '</span>' +
+            '</button>' +
+        '</div>';
     }
 
     onRendered() {

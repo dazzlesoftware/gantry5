@@ -541,7 +541,8 @@ trait ThemeTrait
      * responsive overrides renders identically either way.
      *
      * `$columns`, when given, is the block's `attributes->columns` array -
-     * an optional map of breakpoint (sm/md/lg/xl) => column count (1-12).
+     * an optional map of breakpoint (xs/sm/md/lg/xl) => column count (1-12).
+     * M3's row picker writes `xs`; legacy layouts fall back to `size`.
      * Only breakpoints with an explicit, non-empty entry emit a
      * `col-{breakpoint}-N` class; anything unset is left for Bootstrap's own
      * mobile-first cascade to inherit from the next narrower breakpoint.
@@ -558,7 +559,9 @@ trait ThemeTrait
             return '';
         }
 
-        $number = (int) round(((float) $text) / 100 * 12);
+        $number = !empty($columns['xs'])
+            ? (int) $columns['xs']
+            : (int) round(((float) $text) / 100 * 12);
         $number = max(1, min(12, $number));
 
         $classes = ['col-' . $number];

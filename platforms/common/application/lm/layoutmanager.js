@@ -372,9 +372,16 @@ let LayoutManagerDefinition = {
         }
     },
 
-    resize: function(event, element, siblings, offset) {
-        this.resizer.start(event, element, siblings, offset);
-    },
+    // Drag-to-resize is retired in favor of the row/column picker (see
+    // row-picker.js, grid.js's per-row layout icon, and
+    // NUCLEUS_BOOTSTRAP_MIGRATION.md M3). `this.resizer` itself stays
+    // constructed - `evenResize()` is still used elsewhere to auto-balance
+    // sizes when blocks are added/removed/moved - only the interactive
+    // drag-resize gesture (dragdrop:resize -> resizer.start()) is disabled.
+    // This is scoped to the Layout Manager only: the mega-menu editor
+    // (menumanager.js) has its own, entirely separate DragDrop/Resizer
+    // instance pair and is unaffected.
+    resize: function() {},
 
     removeElement: function(event, element) {
         this.dragdrop.removeElement = false;

@@ -1064,7 +1064,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      */
     protected function calcColumns(array &$children)
     {
-        foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
+        foreach (['xs', 'sm', 'md', 'lg', 'xl'] as $breakpoint) {
             $dynamic = [];
             $fixedColumns = 0;
             $dynamicColumns = 0;

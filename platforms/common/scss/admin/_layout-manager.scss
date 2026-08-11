@@ -1134,4 +1134,106 @@ $atom: #9055AF;
             position: absolute;
         }
     }
+
+    // Row/column layout picker - see NUCLEUS_BOOTSTRAP_MIGRATION.md M3.
+    // First-pass styling, not yet verified in a browser.
+    .grid-layout-picker {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        z-index: 6;
+        opacity: 0.5;
+        cursor: pointer;
+        padding: 2px 4px;
+        border: 0;
+        background: transparent;
+        transition: opacity 0.2s ease-out;
+
+        i {
+            color: $core-text;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.lm-row-picker {
+    padding: $content-padding;
+    max-width: 640px;
+
+    .lm-row-picker-title {
+        margin: 0 0 $content-margin;
+        font-size: 1.1rem;
+    }
+
+    .lm-row-picker-presets {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $content-margin;
+        margin-bottom: $content-padding;
+    }
+
+    .lm-row-preset {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+        min-width: 84px;
+        border: 1px solid #dfdfdf;
+        border-radius: 4px;
+        background: #fff;
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+
+        &:hover, &:focus {
+            border-color: $particle;
+            background: lighten($particle, 45%);
+            outline: none;
+        }
+    }
+
+    .lm-row-preset-bars {
+        display: flex;
+        gap: 3px;
+        width: 100%;
+        height: 24px;
+    }
+
+    .lm-row-preset-bar {
+        display: block;
+        height: 100%;
+        background: #dfdfdf;
+        border-radius: 2px;
+    }
+
+    .lm-row-preset-label {
+        font-size: 0.8rem;
+        color: $core-text;
+    }
+
+    .lm-row-picker-custom {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-top: $content-margin;
+        border-top: 1px solid #eee;
+    }
+
+    .lm-row-picker-custom-label {
+        flex: 0 0 auto;
+        color: lighten($core-text, 20%);
+    }
+
+    .lm-row-picker-custom-input {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .lm-row-picker-error {
+        margin: $content-margin 0 0;
+        color: #c0392b;
+    }
 }

@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** M1 done, M2a + M2b done, M3 (admin UI) not started
+**Status:** M1 done, M2a + M2b done, M3 row-layout picker implemented; browser QA pending
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -273,7 +273,24 @@ currently writes to `attributes->columns` at all. `Layout::calcColumns()`
 is forward-looking correctness for when that UI ships, not something
 exercised by any real data yet.
 
-### M3 — Admin UI: per-breakpoint column-count selection instead of free drag
+### M3 — Admin UI: Bootstrap row-layout selection instead of free drag
+
+Implementation now follows the visual row-preset direction chosen after the
+original stepper proposal. The section/offcanvas add-row action opens a picker
+with common 12-column splits plus a validated custom split (for example
+`8+4`). Every selected span is persisted as `attributes->columns->xs`; the
+legacy percentage `size` is still mirrored during the transition so existing
+admin sizing and older consumers remain compatible. Existing rows expose the
+same picker and retain surviving block IDs/content when their split changes.
+Interactive Layout Manager edge-drag resizing is disabled, while the separate
+mega-menu DragDrop/Resizer instance remains untouched. Source and generated JS
+compile successfully; browser interaction/visual QA remains before M3 can be
+called complete.
+
+The older stepper-oriented checklist below is retained as design history and
+is superseded by the preset-picker implementation above. Responsive
+`sm`/`md`/`lg`/`xl` authoring remains future work; M3 currently writes the
+mobile-first `xs` span.
 
 - `block.js`: switch `setSize()`/`setAnimatedSize()` from writing a
   single inline `flex: 0 1 N%` to toggling a set of `col-N`/`col-{bp}-N`
