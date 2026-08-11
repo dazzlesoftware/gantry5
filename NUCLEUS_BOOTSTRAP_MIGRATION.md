@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** M1 done, M2a + M2b done, M3 row-layout picker implemented; browser QA pending
+**Status:** M1 done, M2a + M2b done; M3 row picker implemented, nested builder slice planned
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -291,6 +291,54 @@ The older stepper-oriented checklist below is retained as design history and
 is superseded by the preset-picker implementation above. Responsive
 `sm`/`md`/`lg`/`xl` authoring remains future work; M3 currently writes the
 mobile-first `xs` span.
+
+#### M3 target builder model (Gantry/Genesis concept)
+
+The admin is not just a column-width editor. It should become a composable
+layout tree inspired by the supplied row/column references while retaining
+Gantry's particle workflow and visual identity:
+
+```text
+Section
+└── Row (`.row`)
+    ├── Column (`.col-*`)
+    │   ├── Particle / Position / System item
+    │   ├── Row (nested Bootstrap row)
+    │   └── Div (neutral grouping node)
+    │       ├── Particle(s)
+    │       └── Row(s)
+    └── Column (`.col-*`)
+```
+
+- **Section** owns one or more ordered rows and keeps the current section
+  settings/inheritance behavior.
+- **Row** owns the Bootstrap split and exposes the preset/custom layout
+  picker (`12`, `6+6`, `4+4+4`, `3+9`, `8+4`, and so on).
+- **Column** is the responsive Bootstrap unit. Its empty-state `+` opens an
+  add menu for a particle, position, nested row, or Div. Dragging a particle
+  from the existing particle panel into the column remains supported.
+- **Div** is a new neutral semantic grouping node with configurable tag,
+  classes, ID, and attributes. It must not reuse the existing Genesis
+  `container` block: that node represents boxed/fluid page-width behavior,
+  not an arbitrary nested group.
+- **Particles** remain first-class Gantry/Genesis objects with their existing
+  settings, inheritance, enable/disable, and drag/drop behavior. A column may
+  contain multiple ordered particles/groups rather than exactly one item.
+- Adding a nested row repeats the same row-layout picker inside the current
+  column. Nesting needs a practical depth guard and must reject invalid cycles.
+- Changing a row split should preserve existing columns and their contents in
+  order. Removing populated columns requires an explicit choice to move their
+  contents or delete them; confirmation alone is not the final UX.
+- The canvas should use a compact Gantry-style presentation (particle panel,
+  section labels, settings controls, save/history) while borrowing the clear
+  outlined Section/Row/Column/Div hierarchy and centered empty-state `+` from
+  the references.
+
+This requires a second M3 implementation slice after the current row picker:
+introduce the Div/group block type and front-end template, allow recursive
+row-in-column serialization/rendering, replace the single-child assumptions in
+`block.js`/drag-drop cleanup, and add the column `+` chooser that connects the
+existing particle picker with Row and Div creation.
 
 - `block.js`: switch `setSize()`/`setAnimatedSize()` from writing a
   single inline `flex: 0 1 N%` to toggling a set of `col-N`/`col-{bp}-N`
