@@ -837,7 +837,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
                             if (isset($block->attributes)) {
                                 $inheritBlock = $outline ? $this->cloneData($outline->block($inheritId)) : null;
                                 $blockAttributes = $inheritBlock ?
-                                    array_diff_key((array)$inheritBlock->attributes, ['fixed' => 1, 'size' => 1]) : [];
+                                    array_diff_key((array)$inheritBlock->attributes, ['fixed' => 1, 'size' => 1, 'columns' => 1]) : [];
                                 $block->attributes = (object)($blockAttributes + (array)$block->attributes);
                             }
                             break;
@@ -1034,6 +1034,71 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
                     $fraction = $size - $newSize;
                     $child->attributes->size = $newSize;
                 }
+            }
+
+            $this->calcColumns($item->children);
+        }
+    }
+
+    /**
+     * Rebalance responsive column overrides (`attributes->columns[breakpoint]`)
+     * so that, within each breakpoint independently, all sibling blocks that
+     * carry an explicit override at that breakpoint sum to 12 columns.
+     *
+     * `columns`, like every other nested attribute value (e.g. `extra`), is
+     * a plain PHP array once loaded — attributes themselves are cast to
+     * stdClass but their nested values are not (see Format1::load() /
+     * Format2::parse(), which only cast the top-level attributes object) —
+     * so it's read/written with array syntax, not `->`.
+     *
+     * This is additive to (and does not touch) the float `size` rebalancing
+     * above, which continues to drive the "default" breakpoint via
+     * ThemeTrait::toColumns()'s own size->column snap at render time. Only
+     * breakpoints where 2+ siblings already have an explicit override are
+     * touched — a block with no `columns` override at all is left alone, so
+     * no data is fabricated for a breakpoint nothing was ever authored for.
+     * See NUCLEUS_BOOTSTRAP_MIGRATION.md M2b.
+     *
+     * @param array $children
+     * @internal
+     */
+    protected function calcColumns(array &$children)
+    {
+        foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
+            $dynamic = [];
+            $fixedColumns = 0;
+            $dynamicColumns = 0;
+
+            foreach ($children as $child) {
+                if ($child->type !== 'block' || empty($child->attributes->columns[$breakpoint])) {
+                    continue;
+                }
+
+                $value = (int) $child->attributes->columns[$breakpoint];
+                if (empty($child->attributes->fixed)) {
+                    $dynamic[] = $child;
+                    $dynamicColumns += $value;
+                } else {
+                    $fixedColumns += $value;
+                }
+            }
+
+            // Need at least two overridden, non-fixed siblings to rebalance;
+            // a lone override has nothing to sum against.
+            if (count($dynamic) < 2 || $fixedColumns + $dynamicColumns === 12) {
+                continue;
+            }
+
+            $available = max(0, 12 - $fixedColumns);
+            $multiplier = $available / ($dynamicColumns ?: 1);
+            $fraction = 0;
+            foreach ($dynamic as $child) {
+                // Same carried-fraction rounding approach as the float size
+                // rebalancing above, adapted to an integer 1-12 column count.
+                $value = ($child->attributes->columns[$breakpoint] * $multiplier) + $fraction;
+                $newValue = (int) max(1, min(12, round($value)));
+                $fraction = $value - $newValue;
+                $child->attributes->columns[$breakpoint] = $newValue;
             }
         }
     }

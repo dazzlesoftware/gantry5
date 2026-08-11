@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** M1 done, M2a (render-side) done, M2b (persistence) not started
+**Status:** M1 done, M2a + M2b done, M3 (admin UI) not started
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -200,28 +200,78 @@ user to split M2 into:
   prep) untouched — still operates on the same float `size`, unaffected
   by the render-side filter swap.
 
-#### M2b — Persistence + full per-breakpoint storage — not started
+#### M2b — Persistence + per-breakpoint rebalancing — done (render + admin data prep; admin picker UI still M3)
 
-- Design `Format3`: a per-block column-count *map* (one entry per
-  nucleus breakpoint) alongside/replacing the legacy float `size`,
-  without breaking `Format2` reads (existing outlines keep loading via
-  the version-dispatch in `LayoutReader::getClass()`).
-- Change `ThemeTrait::toColumns()` (or a further-renamed successor) to
-  consume that map and render `col-N col-md-N col-lg-N` etc., emitting no
-  class for breakpoints with no explicit override (inherits from the
-  next narrower one, same as Bootstrap's own mobile-first cascade).
-- Rewrite `Layout::calcWidths()` / `prepareWidths()` to do integer
-  column-sum math (out of 12) **per breakpoint independently** — siblings
-  only need to sum to 12 at a breakpoint where any of them has an
-  explicit override.
-- **Migration for existing installs:** on layout load, lazily snap the
-  legacy float `size` to the nearest `/12` column count and store it as
-  the *default* breakpoint's column count; all other breakpoints start
-  with no override (inherit). Keep a schema-version flag until the
-  outline is confirmed re-saved. Layouts using sevenths/ninths/elevenths
-  will not map cleanly onto 12 columns — accept the minor reflow and
-  surface it during theme QA (M5) rather than treating the conversion as
-  lossless.
+**No `Format3` needed after all.** Reading `Format2.php` closely showed it
+already generically preserves arbitrary block attributes through its
+compact-string round-trip — only `size` itself is special-cased into the
+position string (`"section-id 33.3"`); everything else in `attributes`
+(e.g. `fixed`) rides through untouched via the existing `structure`/
+`content` side-tables. That meant a new attribute could be added
+*additively* to the existing Format2 schema instead of designing a new
+on-disk format:
+
+- New optional `attributes->columns` — a plain PHP array (not stdClass;
+  matches how every other nested attribute value like `extra` is stored
+  and accessed) mapping breakpoint key (`sm`/`md`/`lg`/`xl` — deliberately
+  never `xs`, see below) to an integer column count 1–12. Absent entirely
+  for the vast majority of blocks (nothing writes it yet — M3 is the
+  actual admin picker UI); Format2 needs zero changes to read or write
+  it, since it was never touching named attribute keys other than `size`
+  in the first place.
+- Two hard-coded `['fixed' => 1, 'size' => 1]` whitelists that gate which
+  attributes survive the "inherit block config from another outline"
+  feature — `Format2.php`'s save-time cleanup and `Layout::
+  initInheritance()`'s load-time merge — both extended to
+  `['fixed' => 1, 'size' => 1, 'columns' => 1]` so responsive overrides
+  are treated the same as size/fixed status (kept local to the outline,
+  not inherited), rather than silently dropped or unexpectedly inherited.
+- **No batch data migration, no version flag, no rollback plan needed** —
+  the single biggest open risk in the original plan is now moot. Nothing
+  on disk is force-converted. `xs` (the mobile-first base span) is
+  *never* stored in `columns` — it's always derived live from the
+  existing `size` float, in both the admin data-prep path
+  (`Layout::calcWidths()`, unchanged) and the render path
+  (`ThemeTrait::toColumns()`, see below). An outline with no `columns`
+  data at all (100% of outlines today) renders and edits identically to
+  before M2b. Outlines only ever gain `columns` data organically, when
+  M3's admin picker UI actually sets a breakpoint override and saves.
+- `ThemeTrait::toColumns($text, ?array $columns = null)` (interface +
+  registration unchanged from M2a) now takes an optional second argument:
+  the block's `attributes->columns` array. Builds `col-N` from `$text`
+  exactly as M2a did (unchanged), then appends `col-{bp}-{value}` for
+  every breakpoint present in `$columns` (clamped 1–12, empty/absent
+  entries skipped so Bootstrap's own mobile-first cascade inherits from
+  the next narrower breakpoint — nothing fabricated). `block.html.twig`
+  now calls `segment.attributes.size|toColumns(segment.attributes.columns)`.
+  Verified by hand: no override data → identical output to M2a; with
+  overrides → `col-6 col-md-4 col-lg-3`-shaped output; a `0`/absent
+  breakpoint entry is correctly skipped; an out-of-range value (e.g. 15)
+  is correctly clamped to 12.
+- New `Layout::calcColumns()`, called from the existing `calcWidths()`
+  loop right after the (untouched) float-size rebalancing, for each of
+  `sm`/`md`/`lg`/`xl` independently: collects sibling blocks that already
+  have an explicit, non-fixed override at that breakpoint; if 2+ exist
+  and they don't already sum to 12, rebalances them to sum to 12 using
+  the same carried-fraction rounding approach as the existing float
+  rebalancer, adapted to integers (clamped 1–12 per block). A lone
+  override, or no overrides at all, is left completely alone — this
+  method never creates `columns` data or touches a breakpoint nothing
+  already opted into. Verified with a standalone test harness (5 cases:
+  even 3-way rebalance summing correctly to 12, a lone override staying
+  untouched, no-overrides no-op, a fixed sibling correctly excluded from
+  the rebalance pool, an already-balanced set left untouched).
+
+Lint-checked all 4 changed PHP files (`php -l`). `Layout::calcColumns()`
+and `ThemeTrait::toColumns()` both verified with standalone PHP test
+scripts exercising the exact logic (Genesis's full app bootstrap isn't
+available in this environment).
+
+**Still not started (M3):** the actual admin UI control that lets someone
+set a per-breakpoint column override in the first place — nothing
+currently writes to `attributes->columns` at all. `Layout::calcColumns()`
+is forward-looking correctness for when that UI ships, not something
+exercised by any real data yet.
 
 ### M3 — Admin UI: per-breakpoint column-count selection instead of free drag
 
@@ -266,16 +316,16 @@ paths. Write up the new grid model — there is currently no documentation
 of the grid architecture anywhere in the repo (checked `README.md`,
 `themes/README.md`, `PARTICLES_MAP.md`; none describe it).
 
-## Open questions / risks still to resolve before M2 starts
+## Open questions / risks
 
-1. **Live-site data migration** — the % → column snap on existing
-   outlines is a one-way change. Needs a version flag on outlines and a
-   rollback plan before shipping to any production site.
-
-Resolved in M1: gutter model (no grid-level gutter exists today, so
-`$grid-gutter-width: 0`) and breakpoint mapping (nucleus's 5 breakpoints
-map onto Bootstrap's `$grid-breakpoints` keys 1:1, no approximation) — see
-the M1 section above for details.
+None remaining that block M3. Resolved in M1: gutter model (no
+grid-level gutter exists today, so `$grid-gutter-width: 0`) and
+breakpoint mapping (nucleus's 5 breakpoints map onto Bootstrap's
+`$grid-breakpoints` keys 1:1, no approximation). Resolved in M2b: the
+live-site data migration risk is moot — `columns` is purely additive,
+nothing on disk is force-converted, `xs` is always derived live from the
+existing `size` float rather than stored, so there's no one-way
+conversion, no version flag, and no rollback plan needed.
 
 ## Decisions already made
 

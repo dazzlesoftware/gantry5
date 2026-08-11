@@ -180,11 +180,12 @@ interface ThemeInterface
     public function toGrid($text);
 
     /**
-     * Convert a block's float percentage width into a Bootstrap 5 grid
-     * column class (col-1 .. col-12).
+     * Convert a block's width into Bootstrap 5 grid column classes,
+     * optionally including responsive per-breakpoint overrides.
      *
      * @param string $text
+     * @param array|null $columns
      * @return string
      */
-    public function toColumns($text);
+    public function toColumns($text, ?array $columns = null);
 }

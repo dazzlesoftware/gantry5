@@ -273,9 +273,9 @@ class Format2
                             break;
                         case 'block':
                             if ($ctype === 'block') {
-                                // Keep block size and fixed status.
+                                // Keep block size, responsive column overrides, and fixed status.
                                 $attributes = !empty($content['attributes']) ? $content['attributes'] : [];
-                                $content['attributes'] = array_intersect_key($attributes, ['fixed' => 1, 'size' => 1]);
+                                $content['attributes'] = array_intersect_key($attributes, ['fixed' => 1, 'size' => 1, 'columns' => 1]);
                             }
                             break;
                         case 'children':

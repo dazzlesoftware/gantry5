@@ -532,29 +532,47 @@ trait ThemeTrait
     }
 
     /**
-     * Convert a block's float percentage width into a Bootstrap 5 grid
-     * column class (col-1 .. col-12), snapping to the nearest /12 column
-     * count (nearest 8.33% increment).
+     * Convert a block's width into Bootstrap 5 grid column classes.
      *
-     * Render-side only for now - the stored `size` attribute is still a
-     * plain float percentage, unchanged from toGrid()'s input; there is no
-     * per-breakpoint column storage yet. See NUCLEUS_BOOTSTRAP_MIGRATION.md
-     * M2. Layout::calcWidths()/prepareWidths() (admin drag-resize UI) still
-     * operate on the same float and are unaffected by this method.
+     * The "default" (mobile-first, unprefixed `col-N`) span always comes
+     * from the block's legacy float percentage `size` attribute, snapped to
+     * the nearest `/12` column count (nearest 8.33% increment) - this is the
+     * exact same conversion as before $columns existed, so a block with no
+     * responsive overrides renders identically either way.
+     *
+     * `$columns`, when given, is the block's `attributes->columns` array -
+     * an optional map of breakpoint (sm/md/lg/xl) => column count (1-12).
+     * Only breakpoints with an explicit, non-empty entry emit a
+     * `col-{breakpoint}-N` class; anything unset is left for Bootstrap's own
+     * mobile-first cascade to inherit from the next narrower breakpoint.
+     * Nothing is fabricated for a breakpoint that was never authored - see
+     * NUCLEUS_BOOTSTRAP_MIGRATION.md M2b.
      *
      * @param string|float|int $text
+     * @param array|null $columns
      * @return string
      */
-    public function toColumns($text)
+    public function toColumns($text, ?array $columns = null)
     {
         if (!$text) {
             return '';
         }
 
-        $columns = (int) round(((float) $text) / 100 * 12);
-        $columns = max(1, min(12, $columns));
+        $number = (int) round(((float) $text) / 100 * 12);
+        $number = max(1, min(12, $number));
 
-        return 'col-' . $columns;
+        $classes = ['col-' . $number];
+
+        foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
+            if (empty($columns[$breakpoint])) {
+                continue;
+            }
+
+            $value = max(1, min(12, (int) $columns[$breakpoint]));
+            $classes[] = "col-{$breakpoint}-{$value}";
+        }
+
+        return implode(' ', $classes);
     }
 
     /**
