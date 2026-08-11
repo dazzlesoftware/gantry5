@@ -532,6 +532,32 @@ trait ThemeTrait
     }
 
     /**
+     * Convert a block's float percentage width into a Bootstrap 5 grid
+     * column class (col-1 .. col-12), snapping to the nearest /12 column
+     * count (nearest 8.33% increment).
+     *
+     * Render-side only for now - the stored `size` attribute is still a
+     * plain float percentage, unchanged from toGrid()'s input; there is no
+     * per-breakpoint column storage yet. See NUCLEUS_BOOTSTRAP_MIGRATION.md
+     * M2. Layout::calcWidths()/prepareWidths() (admin drag-resize UI) still
+     * operate on the same float and are unaffected by this method.
+     *
+     * @param string|float|int $text
+     * @return string
+     */
+    public function toColumns($text)
+    {
+        if (!$text) {
+            return '';
+        }
+
+        $columns = (int) round(((float) $text) / 100 * 12);
+        $columns = max(1, min(12, $columns));
+
+        return 'col-' . $columns;
+    }
+
+    /**
      * Magic setter method
      *
      * @param mixed $offset Asset name value

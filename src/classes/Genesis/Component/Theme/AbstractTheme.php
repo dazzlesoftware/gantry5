@@ -103,6 +103,11 @@ abstract class AbstractTheme
             $twig->addFilter($filter);
         }
 
+        if (method_exists($this, 'toColumns')) {
+            $filter = new TwigFilter('toColumns', [$this, 'toColumns']);
+            $twig->addFilter($filter);
+        }
+
         return $twig;
     }
 

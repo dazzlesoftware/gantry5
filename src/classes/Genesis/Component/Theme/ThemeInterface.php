@@ -178,4 +178,13 @@ interface ThemeInterface
      * @return string
      */
     public function toGrid($text);
+
+    /**
+     * Convert a block's float percentage width into a Bootstrap 5 grid
+     * column class (col-1 .. col-12).
+     *
+     * @param string $text
+     * @return string
+     */
+    public function toColumns($text);
 }

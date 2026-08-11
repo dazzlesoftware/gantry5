@@ -1,6 +1,6 @@
 # Nucleus → Bootstrap Grid Migration Plan
 
-**Status:** M1 done, M2 not started
+**Status:** M1 done, M2a (render-side) done, M2b (persistence) not started
 **Author:** Dazzle Software, LLC (drafted with Claude)
 **Date:** 2026-08-08
 **Scope:** All engines (WordPress, Joomla, Grav, phpBB) that share `engines/common/nucleus`.
@@ -150,20 +150,74 @@ this migration.
 
 ### M2 — PHP rendering: percentage → per-breakpoint column span
 
-- Change `ThemeTrait::toGrid()` to consume/emit a **map of breakpoint →
-  column index** (rendering e.g. `col-6 col-md-4 col-lg-3`) instead of a
-  single float-percentage class name. A block with no override at a
-  given breakpoint emits no class for that breakpoint (inherits from the
-  next narrower one, same as Bootstrap's own cascade).
+**Split into two passes** after discovering that on-disk layout
+persistence (`Format2.php`) encodes a block's `size` as a bare float baked
+directly into a compact position string (e.g. `"section-id 33.3"`,
+parsed with `(float) array_shift($list)`), not a clean nested object.
+Storing a genuine per-breakpoint column map means designing and shipping
+a new `Format3` on-disk schema, not just adding a field — a bigger,
+separate piece of work from the render-side conversion. Agreed with the
+user to split M2 into:
+
+#### M2a — Render-side only (flat column, no schema change) — done
+
+- `toGrid()` is **not** reused/repurposed — it's called from 4 other
+  places unrelated to the Layout Manager grid (mega-menu column widths:
+  `engines/common/nucleus/particles/menu.html.twig`, `themes/koleti/
+  common/particles/slidingmenu.html.twig`, `themes/kraken/common/
+  particles/sidemenu.html.twig`, `themes/vermilion/common/particles/
+  menu.html.twig`, all passing `item.columnWidth(column)` — a plain
+  float, nothing to do with block layout). Changing `toGrid()`'s
+  signature/behavior would have broken all 4. Left entirely untouched.
+- New `ThemeTrait::toColumns($text)` (declared on `ThemeInterface`,
+  registered as the `toColumns` Twig filter in
+  `AbstractTheme::extendTwig()` — inherited by all 4 platform `Theme`
+  classes automatically, since each already calls
+  `parent::extendTwig()`) converts a block's existing float percentage
+  `size` into a single flat `col-N` class, snapping to the nearest `/12`
+  column count (same rounding approach agreed for the eventual full
+  migration). Verified the rounding table by hand for every current
+  `.size-*`/fraction value (100→12, 50→6, 33.3→4, 25→3, 16.7→2, 14.3→2,
+  12.5→2, 11.1→1, 9.1→1, 8.3→1, and the 5%-minimum edge case→1, plus
+  0/null→`''` matching `toGrid()`'s own empty-input behavior).
+- `engines/common/nucleus/templates/layout/block.html.twig` (the only
+  copy — no theme overrides it) now uses `segment.attributes.size|
+  toColumns` instead of `|toGrid`. `.col-N` (1–12, no breakpoint infix)
+  already exists from M1's `make-grid-columns()` import and applies at
+  every viewport, same flat/non-responsive behavior as `.size-N` had —
+  correct parity for this pass, since true responsive spans need the
+  per-breakpoint storage from M2b.
+- Checked for regressions from dropping the `size-`-substring naming:
+  `theme/breakpoints/_flex.scss`'s `body [class*="size-"] { @include
+  breakpoint(mobile-only) { flex-grow:0; flex-basis:100%; max-width:100%;
+  } }` no longer matches `col-N` blocks on mobile, but this turned out to
+  be pure belt-and-suspenders redundancy — `.g-block` itself already has
+  its own identical `flex-grow:0; flex-basis:100%;` mobile-only rule
+  (same file, a few lines above), and `max-width:100%` is now
+  unconditional at every breakpoint via M1's `make-col-ready()`. No
+  actual behavior lost.
+- `Layout::calcWidths()`/`prepareWidths()` (admin drag-resize UI data
+  prep) untouched — still operates on the same float `size`, unaffected
+  by the render-side filter swap.
+
+#### M2b — Persistence + full per-breakpoint storage — not started
+
+- Design `Format3`: a per-block column-count *map* (one entry per
+  nucleus breakpoint) alongside/replacing the legacy float `size`,
+  without breaking `Format2` reads (existing outlines keep loading via
+  the version-dispatch in `LayoutReader::getClass()`).
+- Change `ThemeTrait::toColumns()` (or a further-renamed successor) to
+  consume that map and render `col-N col-md-N col-lg-N` etc., emitting no
+  class for breakpoints with no explicit override (inherits from the
+  next narrower one, same as Bootstrap's own mobile-first cascade).
 - Rewrite `Layout::calcWidths()` / `prepareWidths()` to do integer
-  column-sum math (out of 12) **per breakpoint independently** instead of
-  float percentage rebalancing — siblings only need to sum to 12 at a
-  breakpoint where any of them has an explicit override.
-- **Migration for existing installs:** existing outlines store `size` as
-  a single float percentage. On layout load, lazily snap that value to
-  the nearest `/12` column count (nearest 8.33% increment) and store it
-  as the *default* breakpoint's column count; all other breakpoints
-  start with no override (inherit). Keep a schema-version flag until the
+  column-sum math (out of 12) **per breakpoint independently** — siblings
+  only need to sum to 12 at a breakpoint where any of them has an
+  explicit override.
+- **Migration for existing installs:** on layout load, lazily snap the
+  legacy float `size` to the nearest `/12` column count and store it as
+  the *default* breakpoint's column count; all other breakpoints start
+  with no override (inherit). Keep a schema-version flag until the
   outline is confirmed re-saved. Layouts using sevenths/ninths/elevenths
   will not map cleanly onto 12 columns — accept the minor reflow and
   surface it during theme QA (M5) rather than treating the conversion as
