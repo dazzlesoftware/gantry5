@@ -15,7 +15,31 @@ class Block extends Base {
         if (options && options.attributes && options.attributes.size) {
             this.setAttribute('size', precision(options.attributes.size, 1));
         }
+        this.applyColumnClasses();
         this.on('changed', this.hasChanged);
+    }
+
+    getColumnSpan(breakpoint) {
+        let stored = parseInt(this.getAttribute('columns.' + breakpoint), 10);
+        if (stored) { return Math.max(1, Math.min(12, stored)); }
+        if (breakpoint !== 'xs') { return null; }
+        return Math.max(1, Math.min(12, Math.round((this.getSize() || 100) / 100 * 12)));
+    }
+
+    applyColumnClasses() {
+        if (!this.block || !this.block[0]) { return this; }
+        let element = this.block[0];
+        Array.from(element.classList).forEach(function(klass) {
+            if (/^col-(?:(?:sm|md|lg|xl)-)?\d+$/.test(klass)) { element.classList.remove(klass); }
+        });
+
+        let xs = this.getColumnSpan('xs');
+        element.classList.add('col-' + xs);
+        ['sm', 'md', 'lg', 'xl'].forEach(function(breakpoint) {
+            let span = this.getColumnSpan(breakpoint);
+            if (span) { element.classList.add('col-' + breakpoint + '-' + span); }
+        }, this);
+        return this;
     }
 
     getSize() {
@@ -31,6 +55,8 @@ class Block extends Base {
         style.flex = '0 1 ' + size + '%';
         style.webkitFlex = '0 1 ' + size + '%';
         style.msFlex = '0 1 ' + size + '%';
+
+        this.applyColumnClasses();
 
         this.emit('resized', size, this);
     }
@@ -75,7 +101,11 @@ class Block extends Base {
     }
 
     layout() {
-        return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"></div>';
+        return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block">' +
+            '<button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content">' +
+                '<span aria-hidden="true">+</span>' +
+            '</button>' +
+        '</div>';
     }
 
     onRendered(element, parent) {

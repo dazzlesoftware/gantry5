@@ -11,6 +11,7 @@ import __module9 from './particle.js';
 import __module10 from './position.js';
 import __module11 from './system.js';
 import __module12 from './spacer.js';
+import __module13 from './div.js';
 
 export default {
     base: __module0,
@@ -25,5 +26,6 @@ export default {
     particle: __module9,
     position: __module10,
     system: __module11,
-    spacer: __module12
+    spacer: __module12,
+    div: __module13
 };

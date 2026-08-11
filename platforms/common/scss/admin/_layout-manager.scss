@@ -553,6 +553,30 @@ $atom: #9055AF;
                     position: relative;
                     z-index: 2;
                 }
+
+                .particle-actions {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 9px;
+                    height: 30px;
+                    margin-left: 7px;
+                    padding: 0 9px;
+                    border-radius: 0 0 0 5px;
+                    background: rgba($black, 0.16);
+                    vertical-align: top;
+
+                    i {
+                        line-height: 30px;
+                    }
+
+                    .particle-remove {
+                        opacity: 0.75;
+
+                        &:hover, &:focus {
+                            opacity: 1;
+                        }
+                    }
+                }
             }
 
             &.g-inheriting.particle-disabled {
@@ -1137,25 +1161,149 @@ $atom: #9055AF;
 
     // Row/column layout picker - see NUCLEUS_BOOTSTRAP_MIGRATION.md M3.
     // First-pass styling, not yet verified in a browser.
-    .grid-layout-picker {
+    .grid-structure-menu {
         position: absolute;
-        top: 2px;
-        right: 2px;
-        z-index: 6;
-        opacity: 0.5;
+        top: 5px;
+        right: 6px;
+        z-index: 8;
+        display: flex;
+        width: auto;
+        height: 26px;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 0;
+        padding-inline: 9px;
+        border: 1px solid #d9dfe8;
+        border-radius: 4px;
+        background: $white;
+        color: #777;
+        opacity: 0.9;
         cursor: pointer;
-        padding: 2px 4px;
-        border: 0;
-        background: transparent;
-        transition: opacity 0.2s ease-out;
 
-        i {
-            color: $core-text;
-        }
-
-        &:hover {
+        &:hover, &:focus {
+            border-color: #ccc;
+            background: #eee;
+            color: #555;
             opacity: 1;
         }
+    }
+
+    .grid-drag-handle {
+        position: absolute;
+        top: 5px;
+        left: 7px;
+        z-index: 8;
+        display: inline-flex;
+        height: 26px;
+        align-items: center;
+        gap: 7px;
+        color: lighten($core-text, 22%);
+        cursor: move;
+        user-select: none;
+    }
+
+    [data-lm-blocktype="grid"]:has(> .grid-structure-menu) {
+        padding-top: 36px !important;
+    }
+
+    // Bootstrap rows have fixed column spans selected through the row menu.
+    // Retire Gantry's old drag-resize rails without affecting legacy grids.
+    [data-lm-preset-grid="bootstrap"] > .g-block {
+        &:after,
+        > [data-lm-blocktype]:after {
+            display: none !important;
+            content: none !important;
+        }
+    }
+
+    // Interactive block resizing has been removed from the Layout Manager.
+    // Hide every remaining legacy resize rail, including layouts saved before
+    // the Bootstrap preset marker was introduced.
+    .lm-blocks .g-grid > .g-block:after,
+    .lm-blocks .g-grid > .g-block > [data-lm-blocktype]:after {
+        display: none !important;
+        content: none !important;
+    }
+
+    // Remove the old external grid movement rail. Rows and Divs now expose
+    // their own unambiguous header handles.
+    .lm-blocks .g-grid:before {
+        display: none !important;
+        content: none !important;
+    }
+
+    // A selected preset immediately renders its Bootstrap columns as usable
+    // drop targets, matching the row-builder reference instead of showing an
+    // apparently empty grid.
+    .g-grid > .g-block:not(:has(> [data-lm-id])) {
+        min-height: 110px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        border: 1px dashed lighten($core-text, 55%);
+        background: rgba($white, 0.55);
+
+        > .lm-column-add {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 1rem 2rem;
+            border: 0;
+            background: transparent;
+            color: lighten($core-text, 25%);
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+    }
+
+    .lm-column-add {
+        display: none;
+    }
+
+    .g-lm-div {
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        border: 1px dashed lighten($core-text, 50%);
+        background: rgba($white, 0.45);
+
+        .g-lm-div-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: lighten($core-text, 15%);
+        }
+
+        .g-lm-div-title[data-lm-div-drag] {
+            cursor: move;
+            user-select: none;
+        }
+
+        .g-lm-div-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            button {
+                padding: 0;
+                border: 0;
+                background: transparent;
+                color: inherit;
+                cursor: pointer;
+            }
+
+            .fa-cog { cursor: pointer; }
+        }
+    }
+
+    .lm-particle-pick-active {
+        outline: 3px solid rgba($particle, 0.45);
+        outline-offset: 3px;
     }
 }
 
@@ -1235,5 +1383,116 @@ $atom: #9055AF;
     .lm-row-picker-error {
         margin: $content-margin 0 0;
         color: #c0392b;
+    }
+}
+
+.lm-column-chooser {
+    padding: $content-padding;
+    min-width: 420px;
+
+    h3 { margin-top: 0; }
+
+    .lm-column-chooser-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $content-margin;
+    }
+
+    .lm-column-choice {
+        display: flex;
+        min-height: 110px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid #dfdfdf;
+        border-radius: 4px;
+        background: $white;
+        color: $core-text;
+        cursor: pointer;
+
+        i { font-size: 1.5rem; }
+
+        &:hover, &:focus {
+            border-color: $particle;
+            background: lighten($particle, 45%);
+        }
+    }
+}
+
+.lm-particle-picker-dialog {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: $content-padding;
+
+    h3 { margin-top: 0; }
+
+    .lm-particle-picker-search {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: $content-margin;
+        padding: 0 12px;
+        border: 1px solid #d8d8d8;
+        border-radius: 4px;
+
+        input {
+            width: 100%;
+            padding: 12px 0;
+            border: 0;
+            box-shadow: none;
+        }
+    }
+
+    .lm-particle-picker-results {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 8px;
+        max-height: 55vh;
+        overflow: auto;
+        padding-right: 4px;
+    }
+
+    .lm-particle-picker-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        border: 1px solid #dfdfdf;
+        border-radius: 4px;
+        background: $white;
+        color: $core-text;
+        text-align: left;
+        cursor: pointer;
+
+        &:hover, &:focus {
+            border-color: $particle;
+            background: lighten($particle, 45%);
+        }
+    }
+}
+
+.lm-structure-actions {
+    min-width: 280px;
+    padding: $content-padding;
+
+    h3 { margin-top: 0; }
+
+    button {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 8px;
+        border: 0;
+        border-bottom: 1px solid #eee;
+        background: $white;
+        color: $core-text;
+        text-align: left;
+        cursor: pointer;
+
+        &:hover, &:focus { background: #f5f7fa; }
+        &.danger { color: #c0392b; }
     }
 }

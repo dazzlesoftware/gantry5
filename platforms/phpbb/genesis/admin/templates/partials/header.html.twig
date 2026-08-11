@@ -50,6 +50,15 @@
                                 </span>
                             </div>
                         </li>
+                        <li data-g-admin-theme role="button" tabindex="0" aria-label="{{ 'GENESIS_PLATFORM_ADMIN_DARK_MODE'|trans }}">
+                            <i class="fa fa-fw fa-moon" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_ADMIN_DARK_MODE'|trans }}</span>
+                            <div class="float-right">
+                                <span class="enabler" role="checkbox" aria-checked="false" tabindex="0">
+                                    <input type="hidden" name="admin_color_mode" value="0">
+                                    <span class="toggle"><span class="knob"></span></span>
+                                </span>
+                            </div>
+                        </li>
                         <li data-g-popover-follow>
                             <a tabindex="0"
                                href="{{ genesis.route('cache') }}"

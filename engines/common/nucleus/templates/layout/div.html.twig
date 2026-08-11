@@ -1,0 +1,22 @@
+{% set allowed_tags = ['div', 'aside', 'article', 'nav', 'header', 'footer', 'main'] %}
+{% set tag = segment.attributes.tag in allowed_tags ? segment.attributes.tag : 'div' %}
+{% set attr_extra = segment.attributes.extra|attribute_array %}
+{% set class = segment.attributes.class ? segment.attributes.class|join(' ') : '' %}
+
+{% set html %}
+    {% if segment.children %}
+        {% for segment in segments %}
+            {% if segment.content %}
+                {{ segment.content|raw }}
+            {% else %}
+                {% include ['@nucleus/content/' ~ segment.type ~ '.html.twig', '@nucleus/layout/' ~ segment.type ~ '.html.twig'] with { 'segments': segment.children } %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endset %}
+
+{% if html|trim %}
+<{{ tag }}{% if segment.attributes.id %} id="{{ segment.attributes.id|e }}"{% endif %}{% if class %} class="{{ class|e }}"{% endif %} {{- attr_extra|raw }}>
+    {{- html|raw -}}
+</{{ tag }}>
+{% endif %}

@@ -1,0 +1,34 @@
+name: Div
+description: Neutral structural container for particles and nested rows.
+type: div
+
+form:
+  fields:
+    tag:
+      type: select.selectize
+      label: HTML Tag
+      default: div
+      options:
+        div: Div
+        aside: Aside
+        article: Article
+        nav: Nav
+        header: Header
+        footer: Footer
+        main: Main
+
+    id:
+      type: input.text
+      label: CSS ID
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      default:
+
+    extra:
+      type: collection.keyvalue
+      label: Tag Attributes
+      key_placeholder: 'Key (data-*, style, ...)'
+      value_placeholder: Value
+      exclude: ['id', 'class']

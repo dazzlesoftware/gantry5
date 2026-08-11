@@ -327,7 +327,7 @@ $close-color:               #000;
             @extend %list-reset;
         }
 
-        a, [data-g-devprod] {
+        a, [data-g-devprod], [data-g-admin-theme] {
             display: block;
             padding: 0.4rem;
             color: $core-text !important;
@@ -340,6 +340,18 @@ $close-color:               #000;
 
             &:focus {
                 outline: auto;
+            }
+        }
+
+        [data-g-admin-theme] {
+            display: flex;
+            min-height: 34px;
+            align-items: center;
+            clear: both;
+
+            > .float-right {
+                float: none;
+                margin-left: auto;
             }
         }
     }

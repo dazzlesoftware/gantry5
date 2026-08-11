@@ -171,7 +171,7 @@ ready(function() {
 
     // Layout Manager
     layoutmanager = new LayoutManager('[data-lm-container]', {
-        delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
+        delegate: '[data-lm-root] .g-grid:not([data-lm-preset-grid="bootstrap"]) > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .g-block > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] .g-block > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="div"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
         droppables: '[data-lm-dropzone]',
         exclude: '.section-header .button, .section-header .fa, .lm-newblocks .float-right .button, [data-lm-nodrag], [data-lm-disabled]',
         resize_handles: '[data-lm-root] .g-grid > .g-block:not(:last-child)',
@@ -694,6 +694,247 @@ ready(function() {
 
     });
 
+    let insertPresetRow = function(parentId, columns) {
+        let grid = builder.insert(undefined, {
+            type: 'grid',
+            subtype: 'grid',
+            attributes: { layoutPreset: 'bootstrap' }
+        }, parentId);
+        columns.forEach(function(count) {
+            builder.insert(undefined, {
+                type: 'block',
+                subtype: 'block',
+                attributes: { size: (count / 12) * 100, columns: { xs: count } }
+            }, grid.getId());
+        });
+        return grid;
+    };
+
+    let openNestedRowPicker = function(parentId) {
+        openRowPicker({
+            onSelect: function(columns) {
+                insertPresetRow(parentId, columns);
+                lmhistory.push(builder.serialize(), lmhistory.get().preset);
+            }
+        });
+    };
+
+    let escapeHTML = function(value) {
+        let node = document.createElement('div');
+        node.textContent = value == null ? '' : value;
+        return node.innerHTML;
+    };
+
+    let openParticlePicker = function(columnId) {
+        let templates = Array.from(document.querySelectorAll('.genesis-lm-particles-picker .particles-container [data-lm-blocktype]'))
+            .filter(function(item) { return !item.hasAttribute('data-lm-disabled'); });
+        let items = templates.map(function(item, index) {
+            let title = (item.querySelector('.particle-title') || item).textContent.trim();
+            let icon = item.getAttribute('data-lm-icon') || 'fa-cube';
+            return '<button type="button" class="lm-particle-picker-item" data-lm-particle-index="' + index +
+                '" data-search="' + escapeHTML((title + ' ' + (item.getAttribute('data-lm-subtype') || '')).toLowerCase()) + '">' +
+                '<i class="fa fa-fw ' + escapeHTML(icon) + '" aria-hidden="true"></i><span>' + escapeHTML(title) + '</span></button>';
+        }).join('');
+
+        modal.open({
+            content: '<div class="lm-particle-picker-dialog"><h3>' + translate('GENESIS_PLATFORM_JS_LM_PARTICLE_PICKER_TITLE') + '</h3>' +
+                '<label class="lm-particle-picker-search"><i class="fa fa-search" aria-hidden="true"></i>' +
+                '<input type="search" data-lm-particle-search placeholder="' + translate('GENESIS_PLATFORM_JS_LM_PARTICLE_SEARCH') + '"></label>' +
+                '<div class="lm-particle-picker-results">' + items + '</div>' +
+                '<p class="lm-particle-picker-empty" hidden>' + translate('GENESIS_PLATFORM_JS_LM_PARTICLE_EMPTY') + '</p></div>',
+            className: 'genesis-dialog-theme-default lm-particle-picker-modal',
+            afterOpen: function(content) {
+                let root = content[0], search = root.querySelector('[data-lm-particle-search]'),
+                    buttons = Array.from(root.querySelectorAll('[data-lm-particle-index]')),
+                    empty = root.querySelector('.lm-particle-picker-empty');
+                search.addEventListener('input', function() {
+                    let query = search.value.trim().toLowerCase(), visible = 0;
+                    buttons.forEach(function(button) {
+                        let show = !query || button.getAttribute('data-search').indexOf(query) !== -1;
+                        button.hidden = !show;
+                        if (show) { visible++; }
+                    });
+                    empty.hidden = visible !== 0;
+                });
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        let template = templates[parseInt(button.getAttribute('data-lm-particle-index'), 10)],
+                            title = (template.querySelector('.particle-title') || template).textContent.trim();
+                        builder.insert(undefined, {
+                            type: template.getAttribute('data-lm-blocktype'),
+                            subtype: template.getAttribute('data-lm-subtype') || false,
+                            title: title,
+                            attributes: {}
+                        }, columnId);
+                        lmhistory.push(builder.serialize(), lmhistory.get().preset);
+                        modal.close();
+                    });
+                });
+                search.focus();
+            }
+        });
+    };
+
+    let serializedElement = function(element) {
+        return builder.serialize(element.parentElement).filter(function(item) {
+            return item.id === element.getAttribute('data-lm-id');
+        })[0];
+    };
+
+    let clearIds = function(item) {
+        delete item.id;
+        (item.children || []).forEach(clearIds);
+        return item;
+    };
+
+    let removeStructure = function(element) {
+        Array.from(element.querySelectorAll('[data-lm-id]')).reverse().forEach(function(child) {
+            builder.remove(child.getAttribute('data-lm-id'));
+        });
+        builder.remove(element.getAttribute('data-lm-id'));
+        element.remove();
+        lmhistory.push(builder.serialize(), lmhistory.get().preset);
+    };
+
+    body.delegate('click', '[data-lm-particle-remove]', function(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+        let particle = element.parent('[data-lm-id]');
+        if (particle) { removeStructure(particle[0]); }
+    });
+
+    let changeRowLayout = function(grid) {
+        let gridId = grid.data('lm-id'),
+            mappedGrid = builder.get(gridId),
+            blocks = Array.from(grid[0].children).filter(function(child) { return child.getAttribute('data-lm-blocktype') === 'block'; }),
+            current = blocks.map(function(child) {
+                let mapped = builder.get(child.getAttribute('data-lm-id'));
+                if (!mapped) { return 1; }
+                return Math.max(1, Math.min(12, parseInt(mapped.getAttribute('columns.xs'), 10) ||
+                    Math.round((mapped.getSize() || 0) / 100 * 12)));
+            });
+
+        openRowPicker({
+            current: current,
+            onSelect: function(columns) {
+                if (mappedGrid) {
+                    mappedGrid.setAttribute('layoutPreset', 'bootstrap');
+                    mappedGrid.block.attribute('data-lm-preset-grid', 'bootstrap').attribute('data-lm-samewidth', null);
+                }
+                let hasContent = blocks.some(function(child) { return child.querySelector('[data-lm-id]'); });
+                if (columns.length !== blocks.length && hasContent &&
+                    !window.confirm(translate('GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT_CONFIRM'))) { return; }
+
+                blocks.slice(0, columns.length).forEach(function(child, index) {
+                    let mapped = builder.get(child.getAttribute('data-lm-id'));
+                    if (mapped) {
+                        mapped.setAttribute('columns.xs', columns[index]);
+                        mapped.setSize((columns[index] / 12) * 100, true);
+                    }
+                });
+                if (columns.length > blocks.length) {
+                    columns.slice(blocks.length).forEach(function(count) {
+                        builder.insert(undefined, {
+                            type: 'block', subtype: 'block',
+                            attributes: { size: (count / 12) * 100, columns: { xs: count } }
+                        }, gridId);
+                    });
+                } else if (columns.length < blocks.length) {
+                    blocks.slice(columns.length).forEach(function(child) {
+                        child.querySelectorAll('[data-lm-id]').forEach(function(descendant) {
+                            builder.remove(descendant.getAttribute('data-lm-id'));
+                        });
+                        let mapped = builder.get(child.getAttribute('data-lm-id'));
+                        if (mapped) { builder.remove(mapped); }
+                        child.remove();
+                    });
+                }
+                lmhistory.push(builder.serialize(), lmhistory.get().preset);
+            }
+        });
+    };
+
+    // The + inside an empty Bootstrap column creates content without changing
+    // the row's fixed split. Particles continue to use the searchable sidebar;
+    // Row and Div are native structural layout types.
+    body.delegate('click', '[data-lm-column-add]', function(event, element) {
+        event.preventDefault();
+        let column = element.parent('[data-lm-blocktype="block"]');
+        if (!column || column[0].querySelector(':scope > [data-lm-id]')) { return false; }
+
+        let columnId = column.data('lm-id');
+        modal.open({
+            content: '<div class="lm-column-chooser">' +
+                '<h3>' + translate('GENESIS_PLATFORM_JS_LM_COLUMN_ADD_TITLE') + '</h3>' +
+                '<div class="lm-column-chooser-actions">' +
+                    '<button type="button" class="lm-column-choice" data-lm-column-choice="particle"><i class="fa fa-cube" aria-hidden="true"></i><span>' + translate('GENESIS_PLATFORM_JS_LM_COLUMN_ADD_PARTICLE') + '</span></button>' +
+                    '<button type="button" class="lm-column-choice" data-lm-column-choice="row"><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate('GENESIS_PLATFORM_JS_LM_COLUMN_ADD_ROW') + '</span></button>' +
+                    '<button type="button" class="lm-column-choice" data-lm-column-choice="div"><i class="fa fa-vector-square" aria-hidden="true"></i><span>' + translate('GENESIS_PLATFORM_JS_LM_COLUMN_ADD_DIV') + '</span></button>' +
+                '</div>' +
+            '</div>',
+            className: 'genesis-dialog-theme-default lm-column-chooser-dialog',
+            afterOpen: function(content) {
+                let root = content[0];
+                root.querySelector('[data-lm-column-choice="particle"]').addEventListener('click', function() {
+                    modal.close();
+                    setTimeout(function() { openParticlePicker(columnId); }, 0);
+                });
+                root.querySelector('[data-lm-column-choice="row"]').addEventListener('click', function() {
+                    modal.close();
+                    setTimeout(function() { openNestedRowPicker(columnId); }, 0);
+                });
+                root.querySelector('[data-lm-column-choice="div"]').addEventListener('click', function() {
+                    modal.close();
+                    let div = builder.insert(undefined, {
+                        type: 'div', subtype: 'div', title: 'Div', attributes: { tag: 'div' }
+                    }, columnId);
+                    insertPresetRow(div.getId(), [12]);
+                    lmhistory.push(builder.serialize(), lmhistory.get().preset);
+                });
+            }
+        });
+    });
+
+    body.delegate('click', '[data-lm-div-addrow]', function(event, element) {
+        event.preventDefault();
+        let div = element.parent('[data-lm-blocktype="div"]');
+        if (div) { openNestedRowPicker(div.data('lm-id')); }
+    });
+
+    body.delegate('click', '[data-lm-structure-menu]', function(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+        let structure = element.parent('[data-lm-blocktype="grid"], [data-lm-blocktype="div"]');
+        if (!structure) { return false; }
+        let node = structure[0], type = structure.data('lm-blocktype'), settings = node.querySelector(':scope > .g-lm-div-header [data-lm-settings]');
+        modal.open({
+            content: '<div class="lm-structure-actions"><h3>' + translate(type === 'div' ? 'GENESIS_PLATFORM_JS_LM_DIV' : 'GENESIS_PLATFORM_JS_LM_ROW') + '</h3>' +
+                (settings ? '<button type="button" data-lm-structure-action="settings"><i class="fa fa-cog"></i>' + translate('GENESIS_PLATFORM_JS_LM_SETTINGS', type === 'div' ? 'Div' : 'Row') + '</button>' : '') +
+                (type === 'grid' ? '<button type="button" data-lm-structure-action="layout"><i class="fa fa-columns"></i>' + translate('GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT') + '</button>' : '') +
+                '<button type="button" data-lm-structure-action="duplicate"><i class="fa fa-copy"></i>' + translate('GENESIS_PLATFORM_JS_LM_DUPLICATE') + '</button>' +
+                '<button type="button" class="danger" data-lm-structure-action="remove"><i class="fa fa-trash"></i>' + translate('GENESIS_PLATFORM_JS_LM_REMOVE') + '</button></div>',
+            className: 'genesis-dialog-theme-default lm-structure-actions-modal',
+            afterOpen: function(content) {
+                let root = content[0], settingsButton = root.querySelector('[data-lm-structure-action="settings"]');
+                if (settingsButton) { settingsButton.addEventListener('click', function() { modal.close(); settings.click(); }); }
+                let layoutButton = root.querySelector('[data-lm-structure-action="layout"]');
+                if (layoutButton) { layoutButton.addEventListener('click', function() { modal.close(); setTimeout(function() { changeRowLayout(structure); }, 0); }); }
+                root.querySelector('[data-lm-structure-action="duplicate"]').addEventListener('click', function() {
+                    let data = clearIds(JSON.parse(JSON.stringify(serializedElement(node)))), parent = node.parentElement.closest('[data-lm-id]');
+                    modal.close();
+                    builder.recursiveLoad([data], builder.insert, 0, parent ? parent.getAttribute('data-lm-id') : false);
+                    let duplicate = parent ? parent.lastElementChild : document.querySelector('[data-lm-root]').lastElementChild;
+                    if (duplicate && duplicate !== node) { node.after(duplicate); }
+                    lmhistory.push(builder.serialize(), lmhistory.get().preset);
+                });
+                root.querySelector('[data-lm-structure-action="remove"]').addEventListener('click', function() {
+                    modal.close();
+                    removeStructure(node);
+                });
+            }
+        });
+    });
+
     // Row/column layout picker - "+" on a section/offcanvas adds a new row;
     // the per-grid icon (see grid.js) reopens the picker to change an
     // existing row's split. See NUCLEUS_BOOTSTRAP_MIGRATION.md M3.
@@ -714,14 +955,7 @@ ready(function() {
 
         openRowPicker({
             onSelect: function(columns) {
-                let grid = builder.insert(undefined, { type: 'grid', subtype: 'grid' }, parentId);
-                columns.forEach(function(count) {
-                    builder.insert(undefined, {
-                        type: 'block',
-                        subtype: 'block',
-                        attributes: { size: (count / 12) * 100, columns: { xs: count } }
-                    }, grid.getId());
-                });
+                insertPresetRow(parentId, columns);
                 lmhistory.push(builder.serialize(), lmhistory.get().preset);
             }
         });
@@ -730,62 +964,9 @@ ready(function() {
     // Change an existing row's column split.
     body.delegate('click', '[data-lm-row-layout]', function(event, element) {
         event.preventDefault();
-
         let grid = element.parent('[data-lm-blocktype="grid"]');
         if (!grid) { return false; }
-
-        let gridId = grid.data('lm-id'),
-            blocks = Array.from(grid[0].children).filter(function(child) { return child.getAttribute('data-lm-blocktype') === 'block'; }),
-            current = blocks.map(function(child) {
-                let mapped = builder.get(child.getAttribute('data-lm-id'));
-                if (!mapped) { return 1; }
-                return Math.max(1, Math.min(12, parseInt(mapped.getAttribute('columns.xs'), 10) ||
-                    Math.round((mapped.getSize() || 0) / 100 * 12)));
-            });
-
-        openRowPicker({
-            current: current,
-            onSelect: function(columns) {
-                let hasContent = blocks.some(function(child) { return child.querySelector('[data-lm-id]'); });
-
-                if (columns.length !== blocks.length && hasContent &&
-                    !window.confirm(translate('GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT_CONFIRM'))) {
-                    return;
-                }
-
-                // Update the columns that survive so their content and IDs
-                // remain intact. `size` stays during the M3 transition while
-                // `columns.xs` becomes the canonical Bootstrap span.
-                blocks.slice(0, columns.length).forEach(function(child, index) {
-                    let mapped = builder.get(child.getAttribute('data-lm-id'));
-                    if (mapped) {
-                        mapped.setAttribute('columns.xs', columns[index]);
-                        mapped.setSize((columns[index] / 12) * 100, true);
-                    }
-                });
-
-                if (columns.length > blocks.length) {
-                    columns.slice(blocks.length).forEach(function(count) {
-                        builder.insert(undefined, {
-                            type: 'block',
-                            subtype: 'block',
-                            attributes: { size: (count / 12) * 100, columns: { xs: count } }
-                        }, gridId);
-                    });
-                } else if (columns.length < blocks.length) {
-                    blocks.slice(columns.length).forEach(function(child) {
-                        child.querySelectorAll('[data-lm-id]').forEach(function(descendant) {
-                            builder.remove(descendant.getAttribute('data-lm-id'));
-                        });
-                        let mapped = builder.get(child.getAttribute('data-lm-id'));
-                        if (mapped) { builder.remove(mapped); }
-                        child.remove();
-                    });
-                }
-
-                lmhistory.push(builder.serialize(), lmhistory.get().preset);
-            }
-        });
+        changeRowLayout(grid);
     });
 
 });

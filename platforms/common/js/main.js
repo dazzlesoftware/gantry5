@@ -4319,8 +4319,8 @@
 
   // platforms/common/application/utils/translate.js
   var translate_default = (key, replacement = "") => {
-    const translate20 = window.GenesisTranslate || window.GenesisT || ((value) => value);
-    return String(translate20(key)).split("%s").join(replacement);
+    const translate21 = window.GenesisTranslate || window.GenesisT || ((value) => value);
+    return String(translate21(key)).split("%s").join(replacement);
   };
 
   // platforms/common/application/utils/get-outline.js
@@ -4593,7 +4593,8 @@
       this.on("changed", this.hasChanged);
     }
     layout() {
-      return '<div class="g-grid nowrap" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-samewidth data-lm-blocktype="grid"><button type="button" class="grid-layout-picker" data-lm-nodrag data-lm-row-layout data-tip="' + translate2("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT") + '" data-tip-place="top-right"><i class="fa fa-columns" aria-hidden="true"></i><span class="sr-only">' + translate2("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT") + "</span></button></div>";
+      let isPreset = this.getAttribute("layoutPreset") === "bootstrap", preset = isPreset ? ' data-lm-preset-grid="bootstrap"' : "";
+      return '<div class="g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
     }
     onRendered() {
       let parent = this.block.parent();
@@ -4938,7 +4939,38 @@
       if (options && options.attributes && options.attributes.size) {
         this.setAttribute("size", precision(options.attributes.size, 1));
       }
+      this.applyColumnClasses();
       this.on("changed", this.hasChanged);
+    }
+    getColumnSpan(breakpoint) {
+      let stored2 = parseInt(this.getAttribute("columns." + breakpoint), 10);
+      if (stored2) {
+        return Math.max(1, Math.min(12, stored2));
+      }
+      if (breakpoint !== "xs") {
+        return null;
+      }
+      return Math.max(1, Math.min(12, Math.round((this.getSize() || 100) / 100 * 12)));
+    }
+    applyColumnClasses() {
+      if (!this.block || !this.block[0]) {
+        return this;
+      }
+      let element = this.block[0];
+      Array.from(element.classList).forEach(function(klass) {
+        if (/^col-(?:(?:sm|md|lg|xl)-)?\d+$/.test(klass)) {
+          element.classList.remove(klass);
+        }
+      });
+      let xs = this.getColumnSpan("xs");
+      element.classList.add("col-" + xs);
+      ["sm", "md", "lg", "xl"].forEach(function(breakpoint) {
+        let span = this.getColumnSpan(breakpoint);
+        if (span) {
+          element.classList.add("col-" + breakpoint + "-" + span);
+        }
+      }, this);
+      return this;
     }
     getSize() {
       return precision(this.getAttribute("size"), 1);
@@ -4953,6 +4985,7 @@
       style.flex = "0 1 " + size3 + "%";
       style.webkitFlex = "0 1 " + size3 + "%";
       style.msFlex = "0 1 " + size3 + "%";
+      this.applyColumnClasses();
       this.emit("resized", size3, this);
     }
     setAnimatedSize(size3, store) {
@@ -4995,7 +5028,7 @@
       label.textContent = precision(size3, 1) + "%";
     }
     layout() {
-      return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"></div>';
+      return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"><button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content"><span aria-hidden="true">+</span></button></div>';
     }
     onRendered(element, parent) {
       let elementBlock = element.block[0];
@@ -5077,7 +5110,7 @@
           klass += " g-inheriting-" + this.inherit.include.join(" g-inheriting-");
         }
       }
-      return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span> <i aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></div></div>';
+      return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span><span class="particle-actions"><i class="fa fa-times particle-remove" aria-hidden="true" data-lm-nodrag data-lm-particle-remove aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_REMOVE") + '"></i><i aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></span></div></div>';
     }
     enableInheritance() {
       let block = this.block[0];
@@ -5248,6 +5281,23 @@
   };
   var spacer_default = Spacer;
 
+  // platforms/common/application/lm/blocks/div.js
+  var Base7 = base_default;
+  var getAjaxURL9 = get_ajax_url_default.config;
+  var translate7 = translate_default;
+  var Div = class extends Base7 {
+    layout() {
+      let settingsUri = getAjaxURL9(this.getPageId() + "/layout/div/" + this.getId());
+      return '<div class="g-lm-div" data-lm-id="' + this.getId() + '" data-lm-blocktype="div" data-lm-nodrag><div class="g-lm-div-header"><span class="g-lm-div-title"><i class="fa fa-vector-square" aria-hidden="true"></i> ' + translate7("GENESIS_PLATFORM_JS_LM_DIV") + '</span><span class="g-lm-div-actions"><button type="button" data-lm-nodrag data-lm-div-addrow aria-label="' + translate7("GENESIS_PLATFORM_JS_LM_ADD_NESTED_ROW") + '"><i class="fa fa-plus" aria-hidden="true"></i></button><i class="fa fa-cog" data-lm-nodrag data-lm-settings="' + settingsUri + '" aria-label="' + translate7("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Div") + '"></i><button type="button" data-lm-nodrag data-lm-structure-menu aria-label="' + translate7("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button></span></div></div>';
+    }
+  };
+  Div.prototype.options = {
+    type: "div",
+    subtype: "div",
+    attributes: { tag: "div" }
+  };
+  var div_default = Div;
+
   // platforms/common/application/lm/blocks/index.js
   var blocks_default = {
     base: base_default,
@@ -5262,7 +5312,8 @@
     particle: particle_default,
     position: position_default,
     system: system_default,
-    spacer: spacer_default
+    spacer: spacer_default,
+    div: div_default
   };
 
   // platforms/common/application/lm/normalize-grid-sizes.js
@@ -6470,7 +6521,7 @@
       this.dragdrop = new DragDrop2(this.refElement, this.options);
       this.resizer = new Resizer2(this.refElement, this.options);
       this.eraser = new Eraser2("[data-lm-eraseblock]", this.options);
-      this.dragdrop.on("dragdrop:start", this.bound("start")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:resize", this.bound("resize")).on("dragdrop:stop:erase", this.bound("removeElement")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
+      this.dragdrop.on("dragdrop:start", this.bound("start")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:resize", this.bound("resize")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
       this.builder = this.options.builder;
       this.history = this.options.history;
       this.savestate = this.options.savestate || null;
@@ -6601,7 +6652,6 @@
           }
         }
         this.placeholder.before(element);
-        this.eraser.show();
       } else {
         let position = element.position();
         this.original.style({
@@ -6672,8 +6722,22 @@
         case "section":
           break;
         case "grid":
-          let empty = !target.children(":not(.placeholder)");
+          let gridBlocks = Array.from(target[0].children).filter(function(child2) {
+            return child2.getAttribute("data-lm-blocktype") === "block";
+          });
+          let presetGrid = target.data("lm-preset-grid") === "bootstrap" || gridBlocks.some(function(child2) {
+            let mapped = get(this.builder.map, child2.getAttribute("data-lm-id") || "");
+            return mapped && mapped.getAttribute("columns.xs");
+          }, this);
+          let empty = !gridBlocks.length;
+          if (originalType !== "grid" && presetGrid) {
+            this.placeholder.remove();
+            this.dragdrop.matched = false;
+            return;
+          }
           if (originalType !== "grid" && !empty) {
+            this.placeholder.remove();
+            this.dragdrop.matched = false;
             return;
           }
           if (empty) {
@@ -6688,9 +6752,23 @@
           }
           break;
         case "block":
-          method = location.y === "above" ? "top" : "bottom";
-          position = location.x === "other" ? method : location.x;
-          this.placeholder[position](target);
+          let hasDirectContent = target[0].querySelector(":scope > [data-lm-id]:not([data-lm-placeholder]):not(.original-placeholder)");
+          let targetBlock = get(this.builder.map, target.data("lm-id") || "");
+          let isPresetColumn = targetBlock && targetBlock.getAttribute("columns.xs");
+          let isNewContent = this.block.isNew() && originalType !== "block" && originalType !== "grid";
+          let isMovableContent = originalType !== "block" && originalType !== "grid";
+          let fillsPresetColumn = isMovableContent && isPresetColumn && !hasDirectContent;
+          if (fillsPresetColumn) {
+            this.placeholder.bottom(target);
+          } else if (isMovableContent && isPresetColumn && hasDirectContent) {
+            this.placeholder.remove();
+            this.dragdrop.matched = false;
+            return;
+          } else {
+            method = location.y === "above" ? "top" : "bottom";
+            position = location.x === "other" ? method : location.x;
+            this.placeholder[position](target);
+          }
           break;
       }
       this.placeholder.removeClass("in-between").removeClass("in-between-grids").removeClass("in-between-grids-first").removeClass("in-between-grids-last");
@@ -6750,7 +6828,7 @@
       if (this.block.getType() === "grid" && (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])'))) {
         blocks.style({ "pointer-events": "inherit" });
       }
-      let siblings2 = this.block.block.siblings(":not(.original-placeholder)");
+      let siblings2 = this.block.block.siblings('[data-lm-blocktype="block"]:not(.original-placeholder)');
       if (siblings2 && this.block.getType() == "block") {
         let size3 = this.block.getSize(), diff = size3 / siblings2.length, newSize, block, total = 0, last3;
         siblings2.forEach(function(sibling, index) {
@@ -6820,6 +6898,18 @@
       }
       let parentId = placeholderParent.data("lm-id"), parentType = get(this.builder.map, parentId || "") ? get(this.builder.map, parentId).getType() : false, resizeCase = false;
       this.original.remove();
+      if (blockWasNew && type !== "block" && type !== "grid" && targetType === "block" && parentType === "block") {
+        insider = new Blocks2[type]({
+          id: this.block.block.data("lm-id"),
+          type,
+          subtype: this.element.data("lm-blocksubtype"),
+          title: this.element.text(),
+          builder: this.builder
+        }).setLayout(this.block.block);
+        this.block = insider;
+        this.builder.add(insider);
+        insider.emit("rendered", insider, get(this.builder.map, parentId));
+      }
       if (type !== "block" && type !== "grid" && (targetType === "section" || targetType === "grid" || targetType === "block" && parentType !== "block")) {
         wrapper = new Blocks2.block({
           builder: this.builder
@@ -6844,8 +6934,8 @@
         let previous = this.block.block.parent('[data-lm-blocktype="grid"]'), placeholderPrevious = this.placeholder.parent('[data-lm-blocktype="grid"]');
         if (placeholderPrevious !== previous) {
           multiLocationResize = {
-            from: this.block.block.siblings(":not(.placeholder)"),
-            to: this.placeholder.siblings(":not(.placeholder)")
+            from: this.block.block.siblings('[data-lm-blocktype="block"]:not(.placeholder)'),
+            to: this.placeholder.siblings('[data-lm-blocktype="block"]:not(.placeholder)')
           };
         }
         if (previous.parent('[data-lm-blocktype="container"]')) {
@@ -6871,7 +6961,10 @@
       this.placeholder.remove();
       if (blockWasNew) {
         if (resizeCase) {
-          this.resizer.evenResize(dom8([this.block.block, this.block.block.siblings()]));
+          this.resizer.evenResize(dom8([
+            this.block.block,
+            this.block.block.siblings('[data-lm-blocktype="block"]')
+          ]));
         }
         this.element.attribute("style", null);
       }
@@ -6886,6 +6979,9 @@
           multiLocationResize.from.forEach(function(sibling) {
             sibling = dom8(sibling);
             block = get(this.builder.map, sibling.data("lm-id"));
+            if (!block || typeof block.getSize !== "function") {
+              return;
+            }
             curSize = block.getSize() + diff;
             block.setSize(curSize, true);
             total += curSize;
@@ -6895,6 +6991,9 @@
             multiLocationResize.from.forEach(function(sibling) {
               sibling = dom8(sibling);
               block = get(this.builder.map, sibling.data("lm-id"));
+              if (!block || typeof block.getSize !== "function") {
+                return;
+              }
               curSize = block.getSize() + diff;
               block.setSize(curSize, true);
             }, this);
@@ -6905,7 +7004,9 @@
           multiLocationResize.to.forEach(function(sibling) {
             sibling = dom8(sibling);
             block = get(this.builder.map, sibling.data("lm-id"));
-            block.setSize(size3, true);
+            if (block && typeof block.setSize === "function") {
+              block.setSize(size3, true);
+            }
           }, this);
           this.block.setSize(size3, true);
         }
@@ -6993,7 +7094,7 @@
 
   // platforms/common/application/lm/row-picker.js
   var modal4 = ui_default.modal;
-  var translate7 = translate_default;
+  var translate8 = translate_default;
   var PRESETS = [
     [12],
     [6, 6],
@@ -7014,10 +7115,10 @@
     }).join("") + "</span>";
   };
   var presetButton = (columns, index) => {
-    return '<button type="button" class="lm-row-preset" data-lm-row-preset="' + index + '" aria-label="' + translate7("GENESIS_PLATFORM_JS_LM_ROW_LAYOUT_X", presetLabel(columns)) + '">' + presetPreview(columns) + '<span class="lm-row-preset-label">' + presetLabel(columns) + "</span></button>";
+    return '<button type="button" class="lm-row-preset" data-lm-row-preset="' + index + '" aria-label="' + translate8("GENESIS_PLATFORM_JS_LM_ROW_LAYOUT_X", presetLabel(columns)) + '">' + presetPreview(columns) + '<span class="lm-row-preset-label">' + presetLabel(columns) + "</span></button>";
   };
   var buildContent = () => {
-    return '<div class="lm-row-picker"><h3 class="lm-row-picker-title">' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_TITLE") + '</h3><div class="lm-row-picker-presets">' + PRESETS.map(presetButton).join("") + '</div><div class="lm-row-picker-custom"><span class="lm-row-picker-custom-label">' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM") + '</span><input type="text" class="lm-row-picker-custom-input" data-lm-nodrag placeholder="' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM_PLACEHOLDER") + '" /><button type="button" class="button lm-row-picker-generate" data-lm-nodrag data-lm-row-generate>' + translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_GENERATE") + '</button></div><p class="lm-row-picker-error" hidden></p></div>';
+    return '<div class="lm-row-picker"><h3 class="lm-row-picker-title">' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_TITLE") + '</h3><div class="lm-row-picker-presets">' + PRESETS.map(presetButton).join("") + '</div><div class="lm-row-picker-custom"><span class="lm-row-picker-custom-label">' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM") + '</span><input type="text" class="lm-row-picker-custom-input" data-lm-nodrag placeholder="' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_CUSTOM_PLACEHOLDER") + '" /><button type="button" class="button lm-row-picker-generate" data-lm-nodrag data-lm-row-generate>' + translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_GENERATE") + '</button></div><p class="lm-row-picker-error" hidden></p></div>';
   };
   var parseCustomSplit = (text) => {
     let parts = String(text || "").split(/[+,\s]+/).map((part) => part.trim()).filter(Boolean).map(Number);
@@ -7070,7 +7171,7 @@
             event.preventDefault();
             let columns = parseCustomSplit(input ? input.value : "");
             if (!columns) {
-              showError2(translate7("GENESIS_PLATFORM_JS_LM_ROW_PICKER_INVALID"));
+              showError2(translate8("GENESIS_PLATFORM_JS_LM_ROW_PICKER_INVALID"));
               return;
             }
             finish(columns);
@@ -7631,7 +7732,7 @@
   var Selectize3 = selectize_default;
   var getAjaxSuffix4 = get_ajax_suffix_default;
   var parseAjaxURI4 = get_ajax_url_default.parse;
-  var getAjaxURL9 = get_ajax_url_default.global;
+  var getAjaxURL10 = get_ajax_url_default.global;
   var getCurrentOutline3 = get_outline_default.getCurrentOutline;
   var IDsMap = {
     attributes: ["g-settings-particle", "g-settings-atom"],
@@ -7710,7 +7811,7 @@
         particle.list = false;
       }
       let URI_mode = data.type === "atom" ? "atoms" : "layouts", URI = particle.list ? URI_mode + "/list" : URI_mode;
-      request5("POST", parseAjaxURI4(getAjaxURL9(URI) + getAjaxSuffix4()), data, function(error, response) {
+      request5("POST", parseAjaxURI4(getAjaxURL10(URI) + getAjaxSuffix4()), data, function(error, response) {
         indicator2.hide(label);
         if (!response.body.success) {
           modal5.open({
@@ -7840,7 +7941,7 @@
           content: "Loading",
           method: "post",
           data: { id: id2.value, outline: outline.value || getCurrentOutline3() },
-          remote: parseAjaxURI4(getAjaxURL9(URI) + getAjaxSuffix4()),
+          remote: parseAjaxURI4(getAjaxURL10(URI) + getAjaxSuffix4()),
           remoteLoaded: function(response) {
             if (!response.body.success) {
               modal5.enableCloseByOverlay();
@@ -7883,13 +7984,13 @@
   var indicator3 = indicator_default;
   var getAjaxSuffix5 = get_ajax_suffix_default;
   var parseAjaxURI5 = get_ajax_url_default.parse;
-  var getAjaxURL10 = get_ajax_url_default.global;
+  var getAjaxURL11 = get_ajax_url_default.global;
   var flags2 = flags_state_default;
   var Builder2 = builder_default;
   var LMHistory = history_default2;
   var LayoutManager2 = layoutmanager_default;
   var SaveState2 = save_state_default;
-  var translate8 = translate_default;
+  var translate9 = translate_default;
   var openRowPicker2 = row_picker_default;
   var reportInvalidFields = function(invalid) {
     let fields2 = invalid.map(function(input) {
@@ -7907,11 +8008,11 @@
       first.scrollIntoView({ behavior: "smooth", block: "center" });
       first.focus({ preventScroll: true });
     }
-    let message = translate8("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
+    let message = translate9("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
     if (fields2.length) {
       message += "<br><strong>" + fields2.join(", ") + "</strong>";
     }
-    toastr2.error(message, translate8("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+    toastr2.error(message, translate9("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
   };
   var builder;
   var layoutmanager;
@@ -8001,7 +8102,7 @@
   ready7(function() {
     let body = dom11("body"), root = dom11("[data-lm-root]"), data;
     layoutmanager = new LayoutManager2("[data-lm-container]", {
-      delegate: '[data-lm-root] .g-grid > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
+      delegate: '[data-lm-root] .g-grid:not([data-lm-preset-grid="bootstrap"]) > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .g-block > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
       droppables: "[data-lm-dropzone]",
       exclude: ".section-header .button, .section-header .fa, .lm-newblocks .float-right .button, [data-lm-nodrag], [data-lm-disabled]",
       resize_handles: "[data-lm-root] .g-grid > .g-block:not(:last-child)",
@@ -8112,7 +8213,7 @@
       if (!tooltips.equalize && !tooltips.move) {
         return;
       }
-      let msg = tooltips.equalize ? translate8("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate8("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
+      let msg = tooltips.equalize ? translate9("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate9("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
       element.data("tip", msg).data("tip-offset", -30);
       window.Genesis.tips.get(element[0]).content(msg).place(tooltips.equalize ? "top-left" : "top-right").show();
     });
@@ -8332,7 +8433,7 @@
               }
             }
             let isValid = function() {
-              return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? "" : translate8("GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE");
+              return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? "" : translate9("GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE");
             };
             blockSize.addEventListener("input", function() {
               blockSize.setCustomValidity(isValid());
@@ -8413,7 +8514,7 @@
                       }
                     }
                     modal6.close();
-                    toastr2.success(translate8("GENESIS_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED", particle.getTitle()), translate8("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                    toastr2.success(translate9("GENESIS_PLATFORM_JS_PARTICLE_SETTINGS_APPLIED", particle.getTitle()), translate9("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                   }
                   indicator3.hide(target);
                   target.disabled = false;
@@ -8424,39 +8525,104 @@
         }
       });
     });
-    body.delegate("click", ".section-addrow", function(event, element) {
-      event.preventDefault();
-      let section = element.parent("[data-lm-blocktype]");
-      if (!section) {
-        return false;
-      }
-      let sectionBlock = section[0];
-      let lastGrid = sectionBlock.querySelector(':scope > .g-grid:last-child, :scope > [data-lm-blocktype="container"] > .g-grid:last-child');
-      if (lastGrid && !lastGrid.querySelector(':scope > [data-lm-blocktype="block"]')) {
-        return false;
-      }
-      let container2 = dom11(sectionBlock.querySelector(':scope > [data-lm-blocktype="container"]')), parentId = (container2 || section).data("lm-id");
+    let insertPresetRow = function(parentId, columns) {
+      let grid = builder.insert(void 0, {
+        type: "grid",
+        subtype: "grid",
+        attributes: { layoutPreset: "bootstrap" }
+      }, parentId);
+      columns.forEach(function(count) {
+        builder.insert(void 0, {
+          type: "block",
+          subtype: "block",
+          attributes: { size: count / 12 * 100, columns: { xs: count } }
+        }, grid.getId());
+      });
+      return grid;
+    };
+    let openNestedRowPicker = function(parentId) {
       openRowPicker2({
         onSelect: function(columns) {
-          let grid = builder.insert(void 0, { type: "grid", subtype: "grid" }, parentId);
-          columns.forEach(function(count) {
-            builder.insert(void 0, {
-              type: "block",
-              subtype: "block",
-              attributes: { size: count / 12 * 100, columns: { xs: count } }
-            }, grid.getId());
-          });
+          insertPresetRow(parentId, columns);
           lmhistory.push(builder.serialize(), lmhistory.get().preset);
         }
       });
-    });
-    body.delegate("click", "[data-lm-row-layout]", function(event, element) {
+    };
+    let escapeHTML3 = function(value) {
+      let node = document.createElement("div");
+      node.textContent = value == null ? "" : value;
+      return node.innerHTML;
+    };
+    let openParticlePicker = function(columnId) {
+      let templates = Array.from(document.querySelectorAll(".genesis-lm-particles-picker .particles-container [data-lm-blocktype]")).filter(function(item) {
+        return !item.hasAttribute("data-lm-disabled");
+      });
+      let items = templates.map(function(item, index) {
+        let title = (item.querySelector(".particle-title") || item).textContent.trim();
+        let icon = item.getAttribute("data-lm-icon") || "fa-cube";
+        return '<button type="button" class="lm-particle-picker-item" data-lm-particle-index="' + index + '" data-search="' + escapeHTML3((title + " " + (item.getAttribute("data-lm-subtype") || "")).toLowerCase()) + '"><i class="fa fa-fw ' + escapeHTML3(icon) + '" aria-hidden="true"></i><span>' + escapeHTML3(title) + "</span></button>";
+      }).join("");
+      modal6.open({
+        content: '<div class="lm-particle-picker-dialog"><h3>' + translate9("GENESIS_PLATFORM_JS_LM_PARTICLE_PICKER_TITLE") + '</h3><label class="lm-particle-picker-search"><i class="fa fa-search" aria-hidden="true"></i><input type="search" data-lm-particle-search placeholder="' + translate9("GENESIS_PLATFORM_JS_LM_PARTICLE_SEARCH") + '"></label><div class="lm-particle-picker-results">' + items + '</div><p class="lm-particle-picker-empty" hidden>' + translate9("GENESIS_PLATFORM_JS_LM_PARTICLE_EMPTY") + "</p></div>",
+        className: "genesis-dialog-theme-default lm-particle-picker-modal",
+        afterOpen: function(content) {
+          let root2 = content[0], search2 = root2.querySelector("[data-lm-particle-search]"), buttons = Array.from(root2.querySelectorAll("[data-lm-particle-index]")), empty = root2.querySelector(".lm-particle-picker-empty");
+          search2.addEventListener("input", function() {
+            let query = search2.value.trim().toLowerCase(), visible2 = 0;
+            buttons.forEach(function(button) {
+              let show2 = !query || button.getAttribute("data-search").indexOf(query) !== -1;
+              button.hidden = !show2;
+              if (show2) {
+                visible2++;
+              }
+            });
+            empty.hidden = visible2 !== 0;
+          });
+          buttons.forEach(function(button) {
+            button.addEventListener("click", function() {
+              let template = templates[parseInt(button.getAttribute("data-lm-particle-index"), 10)], title = (template.querySelector(".particle-title") || template).textContent.trim();
+              builder.insert(void 0, {
+                type: template.getAttribute("data-lm-blocktype"),
+                subtype: template.getAttribute("data-lm-subtype") || false,
+                title,
+                attributes: {}
+              }, columnId);
+              lmhistory.push(builder.serialize(), lmhistory.get().preset);
+              modal6.close();
+            });
+          });
+          search2.focus();
+        }
+      });
+    };
+    let serializedElement = function(element) {
+      return builder.serialize(element.parentElement).filter(function(item) {
+        return item.id === element.getAttribute("data-lm-id");
+      })[0];
+    };
+    let clearIds = function(item) {
+      delete item.id;
+      (item.children || []).forEach(clearIds);
+      return item;
+    };
+    let removeStructure = function(element) {
+      Array.from(element.querySelectorAll("[data-lm-id]")).reverse().forEach(function(child) {
+        builder.remove(child.getAttribute("data-lm-id"));
+      });
+      builder.remove(element.getAttribute("data-lm-id"));
+      element.remove();
+      lmhistory.push(builder.serialize(), lmhistory.get().preset);
+    };
+    body.delegate("click", "[data-lm-particle-remove]", function(event, element) {
       event.preventDefault();
-      let grid = element.parent('[data-lm-blocktype="grid"]');
-      if (!grid) {
-        return false;
+      event.stopPropagation();
+      let particle = element.parent("[data-lm-id]");
+      if (particle) {
+        removeStructure(particle[0]);
       }
-      let gridId = grid.data("lm-id"), blocks = Array.from(grid[0].children).filter(function(child) {
+    });
+    let changeRowLayout = function(grid) {
+      let gridId = grid.data("lm-id"), mappedGrid = builder.get(gridId), blocks = Array.from(grid[0].children).filter(function(child) {
         return child.getAttribute("data-lm-blocktype") === "block";
       }), current = blocks.map(function(child) {
         let mapped = builder.get(child.getAttribute("data-lm-id"));
@@ -8468,10 +8634,14 @@
       openRowPicker2({
         current,
         onSelect: function(columns) {
+          if (mappedGrid) {
+            mappedGrid.setAttribute("layoutPreset", "bootstrap");
+            mappedGrid.block.attribute("data-lm-preset-grid", "bootstrap").attribute("data-lm-samewidth", null);
+          }
           let hasContent = blocks.some(function(child) {
             return child.querySelector("[data-lm-id]");
           });
-          if (columns.length !== blocks.length && hasContent && !window.confirm(translate8("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT_CONFIRM"))) {
+          if (columns.length !== blocks.length && hasContent && !window.confirm(translate9("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT_CONFIRM"))) {
             return;
           }
           blocks.slice(0, columns.length).forEach(function(child, index) {
@@ -8504,6 +8674,123 @@
           lmhistory.push(builder.serialize(), lmhistory.get().preset);
         }
       });
+    };
+    body.delegate("click", "[data-lm-column-add]", function(event, element) {
+      event.preventDefault();
+      let column = element.parent('[data-lm-blocktype="block"]');
+      if (!column || column[0].querySelector(":scope > [data-lm-id]")) {
+        return false;
+      }
+      let columnId = column.data("lm-id");
+      modal6.open({
+        content: '<div class="lm-column-chooser"><h3>' + translate9("GENESIS_PLATFORM_JS_LM_COLUMN_ADD_TITLE") + '</h3><div class="lm-column-chooser-actions"><button type="button" class="lm-column-choice" data-lm-column-choice="particle"><i class="fa fa-cube" aria-hidden="true"></i><span>' + translate9("GENESIS_PLATFORM_JS_LM_COLUMN_ADD_PARTICLE") + '</span></button><button type="button" class="lm-column-choice" data-lm-column-choice="row"><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate9("GENESIS_PLATFORM_JS_LM_COLUMN_ADD_ROW") + '</span></button><button type="button" class="lm-column-choice" data-lm-column-choice="div"><i class="fa fa-vector-square" aria-hidden="true"></i><span>' + translate9("GENESIS_PLATFORM_JS_LM_COLUMN_ADD_DIV") + "</span></button></div></div>",
+        className: "genesis-dialog-theme-default lm-column-chooser-dialog",
+        afterOpen: function(content) {
+          let root2 = content[0];
+          root2.querySelector('[data-lm-column-choice="particle"]').addEventListener("click", function() {
+            modal6.close();
+            setTimeout(function() {
+              openParticlePicker(columnId);
+            }, 0);
+          });
+          root2.querySelector('[data-lm-column-choice="row"]').addEventListener("click", function() {
+            modal6.close();
+            setTimeout(function() {
+              openNestedRowPicker(columnId);
+            }, 0);
+          });
+          root2.querySelector('[data-lm-column-choice="div"]').addEventListener("click", function() {
+            modal6.close();
+            let div = builder.insert(void 0, {
+              type: "div",
+              subtype: "div",
+              title: "Div",
+              attributes: { tag: "div" }
+            }, columnId);
+            insertPresetRow(div.getId(), [12]);
+            lmhistory.push(builder.serialize(), lmhistory.get().preset);
+          });
+        }
+      });
+    });
+    body.delegate("click", "[data-lm-div-addrow]", function(event, element) {
+      event.preventDefault();
+      let div = element.parent('[data-lm-blocktype="div"]');
+      if (div) {
+        openNestedRowPicker(div.data("lm-id"));
+      }
+    });
+    body.delegate("click", "[data-lm-structure-menu]", function(event, element) {
+      event.preventDefault();
+      event.stopPropagation();
+      let structure = element.parent('[data-lm-blocktype="grid"], [data-lm-blocktype="div"]');
+      if (!structure) {
+        return false;
+      }
+      let node = structure[0], type = structure.data("lm-blocktype"), settings = node.querySelector(":scope > .g-lm-div-header [data-lm-settings]");
+      modal6.open({
+        content: '<div class="lm-structure-actions"><h3>' + translate9(type === "div" ? "GENESIS_PLATFORM_JS_LM_DIV" : "GENESIS_PLATFORM_JS_LM_ROW") + "</h3>" + (settings ? '<button type="button" data-lm-structure-action="settings"><i class="fa fa-cog"></i>' + translate9("GENESIS_PLATFORM_JS_LM_SETTINGS", type === "div" ? "Div" : "Row") + "</button>" : "") + (type === "grid" ? '<button type="button" data-lm-structure-action="layout"><i class="fa fa-columns"></i>' + translate9("GENESIS_PLATFORM_JS_LM_ROW_CHANGE_LAYOUT") + "</button>" : "") + '<button type="button" data-lm-structure-action="duplicate"><i class="fa fa-copy"></i>' + translate9("GENESIS_PLATFORM_JS_LM_DUPLICATE") + '</button><button type="button" class="danger" data-lm-structure-action="remove"><i class="fa fa-trash"></i>' + translate9("GENESIS_PLATFORM_JS_LM_REMOVE") + "</button></div>",
+        className: "genesis-dialog-theme-default lm-structure-actions-modal",
+        afterOpen: function(content) {
+          let root2 = content[0], settingsButton = root2.querySelector('[data-lm-structure-action="settings"]');
+          if (settingsButton) {
+            settingsButton.addEventListener("click", function() {
+              modal6.close();
+              settings.click();
+            });
+          }
+          let layoutButton = root2.querySelector('[data-lm-structure-action="layout"]');
+          if (layoutButton) {
+            layoutButton.addEventListener("click", function() {
+              modal6.close();
+              setTimeout(function() {
+                changeRowLayout(structure);
+              }, 0);
+            });
+          }
+          root2.querySelector('[data-lm-structure-action="duplicate"]').addEventListener("click", function() {
+            let data2 = clearIds(JSON.parse(JSON.stringify(serializedElement(node)))), parent = node.parentElement.closest("[data-lm-id]");
+            modal6.close();
+            builder.recursiveLoad([data2], builder.insert, 0, parent ? parent.getAttribute("data-lm-id") : false);
+            let duplicate = parent ? parent.lastElementChild : document.querySelector("[data-lm-root]").lastElementChild;
+            if (duplicate && duplicate !== node) {
+              node.after(duplicate);
+            }
+            lmhistory.push(builder.serialize(), lmhistory.get().preset);
+          });
+          root2.querySelector('[data-lm-structure-action="remove"]').addEventListener("click", function() {
+            modal6.close();
+            removeStructure(node);
+          });
+        }
+      });
+    });
+    body.delegate("click", ".section-addrow", function(event, element) {
+      event.preventDefault();
+      let section = element.parent("[data-lm-blocktype]");
+      if (!section) {
+        return false;
+      }
+      let sectionBlock = section[0];
+      let lastGrid = sectionBlock.querySelector(':scope > .g-grid:last-child, :scope > [data-lm-blocktype="container"] > .g-grid:last-child');
+      if (lastGrid && !lastGrid.querySelector(':scope > [data-lm-blocktype="block"]')) {
+        return false;
+      }
+      let container2 = dom11(sectionBlock.querySelector(':scope > [data-lm-blocktype="container"]')), parentId = (container2 || section).data("lm-id");
+      openRowPicker2({
+        onSelect: function(columns) {
+          insertPresetRow(parentId, columns);
+          lmhistory.push(builder.serialize(), lmhistory.get().preset);
+        }
+      });
+    });
+    body.delegate("click", "[data-lm-row-layout]", function(event, element) {
+      event.preventDefault();
+      let grid = element.parent('[data-lm-blocktype="grid"]');
+      if (!grid) {
+        return false;
+      }
+      changeRowLayout(grid);
     });
   });
   var lm_default = {
@@ -9665,11 +9952,11 @@
   var request7 = request_default;
   var indicator4 = indicator_default;
   var parseAjaxURI6 = get_ajax_url_default.parse;
-  var getAjaxURL11 = get_ajax_url_default.global;
+  var getAjaxURL12 = get_ajax_url_default.global;
   var getAjaxSuffix6 = get_ajax_suffix_default;
   var flags4 = flags_state_default;
   var deepEquals3 = deep_equals_default;
-  var translate9 = translate_default;
+  var translate10 = translate_default;
   var Cards = cards_default;
   var WordpressWidgetsCustomizer = wp_widgets_customizer_default;
   var menumanager = null;
@@ -9736,7 +10023,7 @@
       }
       let config2 = block.querySelector(".config-cog");
       modal7.open({
-        content: translate9("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate10("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         remote: parseAjaxURI6((config2 ? config2.getAttribute("href") : "") + getAjaxSuffix6()),
         remoteLoaded: function(response, modalInstance) {
@@ -9778,7 +10065,7 @@
       item = JSON.parse(data.item);
       picker = JSON.parse(picker);
       delete data.instancepicker;
-      uri = getAjaxURL11(item.type + "/" + item[item.type]);
+      uri = getAjaxURL12(item.type + "/" + item[item.type]);
     }
     request7("post", parseAjaxURI6(uri + getAjaxSuffix6()), data, function(error, stepResponse) {
       let result = stepResponse && stepResponse.body;
@@ -9832,7 +10119,7 @@
                 }
                 menumanager.isNewParticle = false;
                 menumanager.emit("dragEnd", menumanager.map);
-                toastr3.success(translate9("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate9("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                toastr3.success(translate10("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate10("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
               } else {
                 let position = document.querySelector('[data-genesis-position-name="' + CSS.escape(submitResult.position) + '"]'), list = position && position.querySelector(":scope > ul");
                 if (list) {
@@ -9840,7 +10127,7 @@
                 }
                 Cards.serialize(position);
                 Cards.updatePendingChanges();
-                toastr3.success(translate9("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate9("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                toastr3.success(translate10("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate10("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
               }
             } else {
               field = fieldByName(picker.field);
@@ -9933,7 +10220,7 @@
   var indicator5 = indicator_default;
   var parseAjaxURI7 = get_ajax_url_default.parse;
   var getAjaxSuffix7 = get_ajax_suffix_default;
-  var translate10 = translate_default;
+  var translate11 = translate_default;
   var menumanager2;
   var trim3 = function(value) {
     return value == null ? "" : String(value).trim();
@@ -10080,7 +10367,7 @@
         data.item = JSON.stringify(menumanager2.items[itemId]);
       }
       modal8.open({
-        content: translate10("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate11("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         data,
         overlayClickToClose: false,
@@ -10145,7 +10432,7 @@
                 target.disabled = false;
                 indicator5.hide(target);
                 indicator5.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr4.error(translate10("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate10("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr4.error(translate11("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate11("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request8(
@@ -10187,7 +10474,7 @@
                       }
                     }
                     modal8.close();
-                    toastr4.success(translate10("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate10("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                    toastr4.success(translate11("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate11("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                   }
                   indicator5.hide(target);
                   target.disabled = false;
@@ -10300,7 +10587,7 @@
   var indicator6 = indicator_default;
   var getAjaxSuffix9 = get_ajax_suffix_default;
   var parseAjaxURI9 = get_ajax_url_default.parse;
-  var getAjaxURL12 = get_ajax_url_default.global;
+  var getAjaxURL13 = get_ajax_url_default.global;
   var flags5 = flags_state_default;
   var asElement7 = function(element) {
     return element && element.nodeType ? element : element && element[0];
@@ -10484,7 +10771,7 @@
           modal10.open({ content: result ? result.html || result.message || result : error.message });
         } else {
           let selector = document.querySelector("#configuration-selector"), currentOutline = selector ? selector.value : null, outlineDeleted = result.outline, reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
-            return link.getAttribute("href") === getAjaxURL12("configurations");
+            return link.getAttribute("href") === getAjaxURL13("configurations");
           });
           if (outlineDeleted && currentOutline === outlineDeleted && selector && selector.selectizeInstance && reload) {
             let ids = Object.keys(selector.selectizeInstance.Options);
@@ -10519,10 +10806,10 @@
   var indicator7 = indicator_default;
   var getAjaxSuffix10 = get_ajax_suffix_default;
   var parseAjaxURI10 = get_ajax_url_default.parse;
-  var getAjaxURL13 = get_ajax_url_default.global;
+  var getAjaxURL14 = get_ajax_url_default.global;
   var Submit4 = submit;
   var flags6 = flags_state_default;
-  var translate11 = translate_default;
+  var translate12 = translate_default;
   var Cards2 = cards_default;
   var trim4 = function(value) {
     return value == null ? "" : String(value).trim();
@@ -10548,7 +10835,7 @@
     });
   };
   dom17.ready(function() {
-    let body = document.body, warningURL = parseAjaxURI10(getAjaxURL13("confirmdeletion") + getAjaxSuffix10());
+    let body = document.body, warningURL = parseAjaxURI10(getAjaxURL14("confirmdeletion") + getAjaxSuffix10());
     Cards2.init();
     let attachEditableValidation = function(container2) {
       let editable = container2.querySelector("[data-title-editable]");
@@ -10659,7 +10946,7 @@
           showError(error, response);
         } else {
           let reload = Array.from(document.querySelectorAll("[href]")).find(function(link) {
-            return link.getAttribute("href") === getAjaxURL13("positions");
+            return link.getAttribute("href") === getAjaxURL14("positions");
           });
           if (reload) {
             reload.click();
@@ -10677,7 +10964,7 @@
     dom17.delegate(body, "click", "#positions .position-add", function(event, element) {
       event.preventDefault();
       modal11.open({
-        content: translate11("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate12("GENESIS_PLATFORM_JS_LOADING"),
         method: "get",
         overlayClickToClose: false,
         remote: parseAjaxURI10(element.href + getAjaxSuffix10()),
@@ -10724,11 +11011,11 @@
       }
       let position = JSON.parse(positionElement.getAttribute("data-genesis-position"));
       modal11.open({
-        content: translate11("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate12("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         data: { position: position.name, item: item.getAttribute("data-pm-data") },
         overlayClickToClose: false,
-        remote: parseAjaxURI10(getAjaxURL13("positions/edit/" + item.getAttribute("data-pm-blocktype")) + getAjaxSuffix10()),
+        remote: parseAjaxURI10(getAjaxURL14("positions/edit/" + item.getAttribute("data-pm-blocktype")) + getAjaxSuffix10()),
         remoteLoaded: function(response, content) {
           if (!response.body.success) {
             modal11.enableCloseByOverlay();
@@ -10751,7 +11038,7 @@
                 target.disabled = false;
                 indicator7.hide(target);
                 indicator7.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr6.error(translate11("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate11("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr6.error(translate12("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate12("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request11(form.method, parseAjaxURI10(form.action + getAjaxSuffix10()), post.valid.join("&"), function(error, resultResponse) {
@@ -10774,7 +11061,7 @@
                   Cards2.serialize(positionElement);
                   Cards2.updatePendingChanges();
                   modal11.close();
-                  toastr6.success(translate11("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate11("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                  toastr6.success(translate12("GENESIS_PLATFORM_JS_POSITIONS_SETTINGS_APPLIED"), translate12("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                 }
                 target.disabled = false;
                 indicator7.hide(target);
@@ -10804,7 +11091,7 @@
   // platforms/common/application/changelog/index.js
   var modal12 = ui_default.modal;
   var parseAjaxURI11 = get_ajax_url_default.parse;
-  var getAjaxURL14 = get_ajax_url_default.global;
+  var getAjaxURL15 = get_ajax_url_default.global;
   var getAjaxSuffix11 = get_ajax_suffix_default;
   var { ready: ready9, delegate: delegate6 } = dom_default;
   var setCollapsed = (section, collapsed) => {
@@ -10828,7 +11115,7 @@
         method: "post",
         className: "genesis-dialog-theme-default genesis-modal-changelog",
         data: { version: link.dataset.changelog },
-        remote: parseAjaxURI11("".concat(getAjaxURL14("changelog")).concat(getAjaxSuffix11())),
+        remote: parseAjaxURI11("".concat(getAjaxURL15("changelog")).concat(getAjaxSuffix11())),
         remoteLoaded(response, content) {
           if (!response.body.success) return;
           const wrapper = content.elements.content[0] || content.elements.content;
@@ -12382,10 +12669,10 @@
   var frameListener3 = frameListener;
   var getAjaxSuffix13 = get_ajax_suffix_default;
   var parseAjaxURI13 = get_ajax_url_default.parse;
-  var getAjaxURL15 = get_ajax_url_default.global;
+  var getAjaxURL16 = get_ajax_url_default.global;
   var modal15 = ui_default.modal;
   var asyncForEach3 = async_foreach_default;
-  var translate12 = translate_default;
+  var translate13 = translate_default;
   var inViewport = elements_viewport_default;
   var fontVariantLoads = /* @__PURE__ */ new Map();
   var parseFontRequest = (request18) => {
@@ -12501,9 +12788,9 @@
       data = JSON.parse(data);
       this.field = dom21(data.field);
       modal15.open({
-        content: translate12("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate13("GENESIS_PLATFORM_JS_LOADING"),
         className: "genesis-dialog-theme-default genesis-modal-fonts",
-        remote: parseAjaxURI13(getAjaxURL15("fontpicker") + getAjaxSuffix13()),
+        remote: parseAjaxURI13(getAjaxURL16("fontpicker") + getAjaxSuffix13()),
         remoteLoaded: (function(response, content) {
           let container2 = content.elements.content;
           this.attachEvents(container2);
@@ -13060,8 +13347,8 @@
   var popovers = popover_default;
   var getAjaxSuffix14 = get_ajax_suffix_default;
   var parseAjaxURI14 = get_ajax_url_default.parse;
-  var getAjaxURL16 = get_ajax_url_default.global;
-  var translate13 = translate_default;
+  var getAjaxURL17 = get_ajax_url_default.global;
+  var translate14 = translate_default;
   var escapeHTML2 = function(value) {
     return String(value).replace(/[&<>"']/g, function(character) {
       return {
@@ -13096,9 +13383,9 @@
         return;
       }
       modal16.open({
-        content: translate13("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate14("GENESIS_PLATFORM_JS_LOADING"),
         className: "genesis-dialog-theme-default genesis-modal-icons",
-        remote: parseAjaxURI14(getAjaxURL16("icons") + getAjaxSuffix14()),
+        remote: parseAjaxURI14(getAjaxURL17("icons") + getAjaxSuffix14()),
         afterClose: function() {
           document.querySelectorAll(".genesis-popover").forEach(function(popover) {
             popover.remove();
@@ -13229,8 +13516,8 @@
   var indicator9 = indicator_default;
   var getAjaxSuffix15 = get_ajax_suffix_default;
   var parseAjaxURI15 = get_ajax_url_default.parse;
-  var getAjaxURL17 = get_ajax_url_default.global;
-  var translate14 = translate_default;
+  var getAjaxURL18 = get_ajax_url_default.global;
+  var translate15 = translate_default;
   var Cookie3 = cookie_default;
   var clone2 = function(value) {
     return JSON.parse(JSON.stringify(value));
@@ -13386,7 +13673,7 @@
         fill: { gradient: this.filePicker.colors.gradient, color: false }
       });
       updateProgress(uploader, config2);
-      uploader.title = translate14("GENESIS_PLATFORM_JS_PROCESSING");
+      uploader.title = translate15("GENESIS_PLATFORM_JS_PROCESSING");
       this.filePicker.setProgressText(element, "0%");
     }
     showError(element, error) {
@@ -13426,7 +13713,7 @@
           element.setAttribute("data-file-url", uploadResponse.url);
           element.classList.remove("g-file-uploading");
           if (uploader) uploader.remove();
-          if (mtime) mtime.textContent = translate14("GENESIS_PLATFORM_JUST_NOW");
+          if (mtime) mtime.textContent = translate15("GENESIS_PLATFORM_JUST_NOW");
         });
       }, 500);
     }
@@ -13451,7 +13738,7 @@
       if (!this.accepts(file)) {
         this.showError(
           element,
-          file.name + " " + translate14("GENESIS_PLATFORM_JS_FILTER_MISMATCH") + ": " + this.filePicker.data.filter
+          file.name + " " + translate15("GENESIS_PLATFORM_JS_FILTER_MISMATCH") + ": " + this.filePicker.data.filter
         );
         return;
       }
@@ -13461,7 +13748,7 @@
         return;
       }
       let url = parseAjaxURI15(
-        getAjaxURL17("filepicker/upload/" + window.btoa(encodeURIComponent(path + file.name))) + getAjaxSuffix15()
+        getAjaxURL18("filepicker/upload/" + window.btoa(encodeURIComponent(path + file.name))) + getAjaxSuffix15()
       ), form = new FormData(), xhr = new XMLHttpRequest();
       form.append("file", file, file.name);
       this.requests.add(xhr);
@@ -13539,9 +13826,9 @@
       modal17.open({
         method: "post",
         data: this.data,
-        content: translate14("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate15("GENESIS_PLATFORM_JS_LOADING"),
         className: "genesis-dialog-theme-default genesis-modal-filepicker",
-        remote: parseAjaxURI15(getAjaxURL17("filepicker") + getAjaxSuffix15()),
+        remote: parseAjaxURI15(getAjaxURL18("filepicker") + getAjaxSuffix15()),
         remoteLoaded: this.loaded.bind(this),
         afterClose: (function() {
           if (this.uploader) {
@@ -13590,7 +13877,7 @@
         fieldData.value = selected ? selected.getAttribute("data-file-url") : false;
         fieldData.subfolder = true;
         indicator9.show(element, "fa fa-li fa-fw fa-spin-fast fa-spinner");
-        request13(parseAjaxURI15(getAjaxURL17("filepicker") + getAjaxSuffix15()), fieldData).send((function(error, folderResponse) {
+        request13(parseAjaxURI15(getAjaxURL18("filepicker") + getAjaxSuffix15()), fieldData).send((function(error, folderResponse) {
           indicator9.hide(element);
           this.addActiveState(element);
           let result = folderResponse && folderResponse.body;
@@ -13645,7 +13932,7 @@
         if (!parent || !data || !data.isInCustom) {
           return;
         }
-        let deleteURI = parseAjaxURI15(getAjaxURL17("filepicker/" + window.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix15()));
+        let deleteURI = parseAjaxURI15(getAjaxURL18("filepicker/" + window.btoa(encodeURIComponent(data.pathname)) + getAjaxSuffix15()));
         request13("delete", deleteURI, function(error, deleteResponse) {
           let result = deleteResponse && deleteResponse.body;
           if (!result || !result.success) {
@@ -13922,7 +14209,7 @@
   var ReorderableList2 = reorderable_list_default;
   var parseAjaxURI16 = get_ajax_url_default.parse;
   var getAjaxSuffix16 = get_ajax_suffix_default;
-  var translate15 = translate_default;
+  var translate16 = translate_default;
   var directItems3 = function(list) {
     return Array.from(list.children).filter(function(item) {
       return item.hasAttribute("data-collection-item");
@@ -14078,7 +14365,7 @@
       }
       let items = directItems3(list), data = dataField.value || "[]", itemIndex = item ? items.indexOf(item) : -1, dataPost = { data: isEditAll ? data : JSON.stringify(JSON.parse(data)[itemIndex]) };
       modal18.open({
-        content: translate15("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate16("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         className: "genesis-dialog-theme-default genesis-modal-collection genesis-modal-collection-" + (isEditAll ? "editall" : "single"),
         data: dataPost,
@@ -14109,7 +14396,7 @@
               if (post.invalid.length) {
                 indicator10.hide(target);
                 indicator10.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr7.error(translate15("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate15("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr7.error(translate16("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate16("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request14(form.method, parseAjaxURI16(form.action + getAjaxSuffix16()), post.valid.join("&") || {}, function(error, resultResponse) {
@@ -14138,7 +14425,7 @@
                     }
                   }
                   modal18.close();
-                  toastr7.success(translate15("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Collection"), translate15("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                  toastr7.success(translate16("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Collection"), translate16("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                 }
                 indicator10.hide(target);
               });
@@ -14153,7 +14440,7 @@
   // platforms/common/application/particles/keyvalue/index.js
   var { ready: ready16, delegate: delegate11 } = dom_default;
   var ReorderableList3 = reorderable_list_default;
-  var translate16 = translate_default;
+  var translate17 = translate_default;
   var collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
   var escapeUnicode = (value) => String(value).replace(/[\s\S]/g, (character) => {
     if (/[\x20-\x7e]/.test(character)) return character;
@@ -14247,7 +14534,7 @@
         }
         parent.classList.toggle("g-keyvalue-warning", duplicate);
         parent.classList.toggle("g-keyvalue-excluded", excluded);
-        const message = duplicate ? translate16("GENESIS_PLATFORM_JS_KEYVALUE_DUPLICATE", keyValue) : excluded ? translate16("GENESIS_PLATFORM_JS_KEYVALUE_EXCLUDED", keyValue) : null;
+        const message = duplicate ? translate17("GENESIS_PLATFORM_JS_KEYVALUE_DUPLICATE", keyValue) : excluded ? translate17("GENESIS_PLATFORM_JS_KEYVALUE_EXCLUDED", keyValue) : null;
         if (message) wrapper.setAttribute("data-tip", message);
         else wrapper.removeAttribute("data-tip");
         wrapper.setAttribute("data-tip-place", "top-right");
@@ -14298,9 +14585,9 @@
   var request15 = request_default;
   var { ready: ready17, delegate: delegate12 } = dom_default;
   var parseAjaxURI17 = get_ajax_url_default.parse;
-  var getAjaxURL18 = get_ajax_url_default.global;
+  var getAjaxURL19 = get_ajax_url_default.global;
   var getAjaxSuffix17 = get_ajax_suffix_default;
-  var translate17 = translate_default;
+  var translate18 = translate_default;
   var WordpressWidgetsCustomizer2 = wp_widgets_customizer_default;
   var showIndicator2 = (element) => {
     let icon = element.querySelector("i");
@@ -14358,11 +14645,11 @@
       }
       if (data.modal_close) return;
       modal19.open({
-        content: translate17("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate18("GENESIS_PLATFORM_JS_LOADING"),
         method: !value || data.type === "module" ? "get" : "post",
         data: !value || data.type === "module" ? {} : value,
         overlayClickToClose: false,
-        remote: parseAjaxURI17(getAjaxURL18(uri) + getAjaxSuffix17()),
+        remote: parseAjaxURI17(getAjaxURL19(uri) + getAjaxSuffix17()),
         remoteLoaded: (response, modalInstance) => {
           if (!response.body.success) {
             modal19.enableCloseByOverlay();
@@ -14457,7 +14744,7 @@
   var parseAjaxURI18 = get_ajax_url_default.parse;
   var getAjaxSuffix18 = get_ajax_suffix_default;
   var getOutlineNameById5 = get_outline_default.getOutlineNameById;
-  var translate18 = translate_default;
+  var translate19 = translate_default;
   var AtomsField = '[name="page[head][atoms][_json]"]';
   var Atoms2 = {
     eraser: null,
@@ -14553,7 +14840,7 @@
       }
       let itemData = item.getAttribute("data-atom-picked"), dataValue = JSON.parse(dataField.value || "[]");
       modal20.open({
-        content: translate18("GENESIS_PLATFORM_JS_LOADING"),
+        content: translate19("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         data: { data: itemData },
         overlayClickToClose: false,
@@ -14579,7 +14866,7 @@
               if (post.invalid.length) {
                 indicator11.hide(target);
                 indicator11.show(target, "fa fa-fw fa-exclamation-triangle");
-                toastr8.error(translate18("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate18("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+                toastr8.error(translate19("GENESIS_PLATFORM_JS_REVIEW_FIELDS"), translate19("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
                 return;
               }
               request16(form.method, parseAjaxURI18(form.action + getAjaxSuffix18()), post.valid.join("&") || {}, function(error, resultResponse) {
@@ -14607,11 +14894,11 @@
                     let enabled = Number(result.item.attributes.enabled), inheriting = result.item.inherit && Object.keys(result.item.inherit).length;
                     item.classList.toggle("atom-disabled", !enabled);
                     item.classList.toggle("g-inheriting", Boolean(inheriting));
-                    item.title = enabled ? "" : translate18("GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE", "atom");
+                    item.title = enabled ? "" : translate19("GENESIS_PLATFORM_JS_LM_DISABLED_PARTICLE", "atom");
                     item.removeAttribute("data-tip");
                     if (inheriting) {
                       let inherit = result.item.inherit, outline = getOutlineNameById5(inherit.outline), atom = inherit.atom || "", include = (inherit.include || []).join(", ");
-                      item.setAttribute("data-tip", translate18("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + atom + "<br />Replace: " + include);
+                      item.setAttribute("data-tip", translate19("GENESIS_PLATFORM_INHERITING_FROM_X", "<strong>" + outline + "</strong>") + "<br />ID: " + atom + "<br />Replace: " + include);
                     }
                     dataField.dispatchEvent(new Event("change", { bubbles: true }));
                     window.Genesis.tips.reload();
@@ -14623,7 +14910,7 @@
                     }
                   }
                   modal20.close();
-                  toastr8.success(translate18("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Atom"), translate18("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
+                  toastr8.success(translate19("GENESIS_PLATFORM_JS_GENERIC_SETTINGS_APPLIED", "Atom"), translate19("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
                 }
                 indicator11.hide(target);
               });
@@ -14899,14 +15186,14 @@
   var modal21 = ui.modal;
   var toastr9 = ui.toastr;
   var parseAjaxURI19 = get_ajax_url_default.parse;
-  var getAjaxURL19 = get_ajax_url_default.global;
+  var getAjaxURL20 = get_ajax_url_default.global;
   var getAjaxSuffix19 = get_ajax_suffix_default;
   var flags9 = flags_state_default;
   var validateField2 = field_validation_default;
   var lm = lm_default;
   var mm2 = menu_default;
   var pm = cards_default;
-  var translate19 = translate_default;
+  var translate20 = translate_default;
   var trim5 = function(value, characters) {
     let string = value == null ? "" : String(value);
     if (!characters) {
@@ -14955,11 +15242,11 @@
       first.scrollIntoView({ behavior: "smooth", block: "center" });
       first.focus({ preventScroll: true });
     }
-    let message = translate19("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
+    let message = translate20("GENESIS_PLATFORM_JS_REVIEW_FIELDS");
     if (fields2.length) {
       message += "<br><strong>" + fields2.join(", ") + "</strong>";
     }
-    toastr9.error(message, translate19("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
+    toastr9.error(message, translate20("GENESIS_PLATFORM_JS_INVALID_FIELDS"));
   };
   var formatters = [
     { threshold: -31535999, handler: createHandler(-31536e3, "year", "from now") },
@@ -14999,11 +15286,52 @@
   };
   window.onbeforeunload = function() {
     if (flags9.get("pending")) {
-      return translate19("GENESIS_PLATFORM_JS_NO_SAVE_DETECTED");
+      return translate20("GENESIS_PLATFORM_JS_NO_SAVE_DETECTED");
     }
   };
   ready18(function() {
-    let body = dom26("body"), sentence = translate19("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
+    let body = dom26("body"), sentence = translate20("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
+    let applyAdminTheme = function(mode) {
+      let dark = mode === "dark", container2 = document.querySelector("[data-genesis-container]");
+      if (container2) {
+        container2.classList.toggle("genesis-dark-mode", dark);
+      }
+      document.body.classList.toggle("genesis-dark-mode", dark);
+      document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      document.querySelectorAll("[data-g-admin-theme]").forEach(function(toggle2) {
+        let checkbox = toggle2.querySelector(".enabler"), input = toggle2.querySelector('[name="admin_color_mode"]'), icon = toggle2.querySelector(".fa");
+        if (checkbox) {
+          checkbox.setAttribute("aria-checked", dark ? "true" : "false");
+        }
+        if (input) {
+          input.value = dark ? "1" : "0";
+        }
+        if (icon) {
+          icon.classList.toggle("fa-moon", !dark);
+          icon.classList.toggle("fa-sun", dark);
+        }
+      });
+    };
+    let adminTheme = "light";
+    try {
+      adminTheme = window.localStorage.getItem("genesis-admin-color-mode") || "light";
+    } catch (error) {
+    }
+    applyAdminTheme(adminTheme);
+    body.delegate("change", '[data-g-admin-theme] [name="admin_color_mode"]', function(event, element) {
+      let input = element[0] || element, mode = input.value === "1" ? "dark" : "light";
+      try {
+        window.localStorage.setItem("genesis-admin-color-mode", mode);
+      } catch (error) {
+      }
+      applyAdminTheme(mode);
+    });
+    body.delegate("click", "[data-g-extras]", function() {
+      setTimeout(function() {
+        let container2 = document.querySelector("[data-genesis-container]");
+        applyAdminTheme(container2 && container2.classList.contains("genesis-dark-mode") ? "dark" : "light");
+      }, 0);
+    });
     body.delegate("click", "[data-g-close]", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
@@ -15054,7 +15382,7 @@
       if (!element.lastSaved) {
         return true;
       }
-      let feedback = translate19("GENESIS_PLATFORM_LAST_SAVED") + ": " + prettyDate.format(element.lastSaved);
+      let feedback = translate20("GENESIS_PLATFORM_LAST_SAVED") + ": " + prettyDate.format(element.lastSaved);
       element.data("tip", feedback).data("title", feedback);
     });
     body.delegate("click", ".button-save", function(event, element) {
@@ -15132,13 +15460,13 @@
         } else {
           modal21.close();
           if (dom26("#styles")) {
-            extras = "<br />" + (response.body.warning ? "<hr />" + response.body.title + "<br />" + response.body.html : translate19("GENESIS_PLATFORM_JS_CSS_COMPILED"));
+            extras = "<br />" + (response.body.warning ? "<hr />" + response.body.title + "<br />" + response.body.html : translate20("GENESIS_PLATFORM_JS_CSS_COMPILED"));
           }
           toastr9[response.body.warning ? "warning" : "success"](interpolate(sentence, {
             verb: type.slice(-1) == "s" ? "have" : "has",
             type,
             extras
-          }), type + " " + translate19("GENESIS_PLATFORM_SAVED"));
+          }), type + " " + translate20("GENESIS_PLATFORM_SAVED"));
         }
         saves.disabled(false);
         saves.hideIndicator();

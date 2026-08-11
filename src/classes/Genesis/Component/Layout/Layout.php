@@ -47,7 +47,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     public $equalized = [3 => 33.3, 6 => 16.7, 7 => 14.3, 8 => 12.5, 9 => 11.1, 11 => 9.1, 12 => 8.3];
 
     /** @var array */
-    protected $layout = ['wrapper', 'container', 'section', 'grid', 'block', 'offcanvas'];
+    protected $layout = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
     /** @var bool */
     protected $exists;
     /** @var array */

@@ -22,26 +22,26 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 214,
+    "totalFiles": 215,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 192,
+      "first_party_source": 193,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
     },
     "areas": {
-      "administration": 88,
+      "administration": 89,
       "build": 5,
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 33,
       "shared_browser_asset": 81
     },
-    "activeReferencedFiles": 212,
+    "activeReferencedFiles": 213,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
-    "esModuleFiles": 93,
+    "esModuleFiles": 94,
     "varFiles": 15,
     "legacyBrowserApiFiles": 4,
     "inlineCodeGenerationFiles": 0,
@@ -4226,11 +4226,12 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 7,
+      "activeReferenceCount": 8,
       "consumers": [
         "platforms/common/application/lm/blocks/atom.js",
         "platforms/common/application/lm/blocks/block.js",
         "platforms/common/application/lm/blocks/container.js",
+        "platforms/common/application/lm/blocks/div.js",
         "platforms/common/application/lm/blocks/grid.js",
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/application/lm/blocks/section.js",
@@ -4268,9 +4269,9 @@
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 4903,
-      "lines": 144,
-      "sha256": "97f6ca59675697064d232b6f60b8ce88da6c41d06c66d2e3acddae703f8acb29",
+      "bytes": 6146,
+      "lines": 174,
+      "sha256": "2a2e801259cd8cdf172eab727e8fb05adc1b28ce480bd249af676259d99e8a00",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4282,7 +4283,9 @@
         "customEvents": [],
         "dataAttributes": [
           "lm-blocktype",
+          "lm-column-add",
           "lm-id",
+          "lm-nodrag",
           "lm-root"
         ],
         "storageKeys": []
@@ -4323,6 +4326,40 @@
       }
     },
     {
+      "path": "platforms/common/application/lm/blocks/div.js",
+      "area": "administration",
+      "classification": "first_party_source",
+      "owner": "Genesis",
+      "generatedFrom": null,
+      "entryPoint": false,
+      "activeReferenceCount": 2,
+      "consumers": [
+        "platforms/common/application/lm/blocks/index.js",
+        "platforms/common/js/main.js"
+      ],
+      "bytes": 1389,
+      "lines": 36,
+      "sha256": "5219ba126d7b9d2c232cc17dcc0e7b3b2dcf8355972747ef845edf028e1959f2",
+      "signals": {
+        "commonjs": false,
+        "esModule": true,
+        "var": false,
+        "prototype": true,
+        "legacyBrowserApi": false,
+        "inlineCodeGeneration": false,
+        "globals": [],
+        "customEvents": [],
+        "dataAttributes": [
+          "lm-blocktype",
+          "lm-div-addrow",
+          "lm-id",
+          "lm-nodrag",
+          "lm-settings"
+        ],
+        "storageKeys": []
+      }
+    },
+    {
       "path": "platforms/common/application/lm/blocks/grid.js",
       "area": "administration",
       "classification": "first_party_source",
@@ -4337,9 +4374,9 @@
         "platforms/common/application/lm/layoutmanager.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 1729,
-      "lines": 52,
-      "sha256": "2bf30f4e7baf000c9ff8c13f5c88b684e079e9a5de44c466d6f2ea20f26bd492",
+      "bytes": 1857,
+      "lines": 53,
+      "sha256": "fcf4bbadc2e0188486ad6480b9510352c714fa63e556301f6a7cbcf4a5055eef",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4353,6 +4390,7 @@
           "lm-blocktype",
           "lm-id",
           "lm-nodrag",
+          "lm-preset-grid",
           "lm-row-layout",
           "lm-samewidth",
           "tip",
@@ -4402,9 +4440,9 @@
         "platforms/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 814,
-      "lines": 30,
-      "sha256": "5cadf19598c8e9c63dddc74272faae7e4762a5ba8477e3842ce45041a03f2013",
+      "bytes": 870,
+      "lines": 32,
+      "sha256": "28df84ff491e3f9e5736e4acde1b8b4e6e39537738101bb32fd312a32a2958ff",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4815,9 +4853,9 @@
         "platforms/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 34562,
-      "lines": 805,
-      "sha256": "6939dc24ddeba859e9b04882e8532c4508e608cf215e8518b0a38d0029903a87",
+      "bytes": 38517,
+      "lines": 880,
+      "sha256": "8bf52bd389aa868d1ddcf8c6d4405e8a0d01c0030fcc26d64bcd50ec97ac9b03",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4839,14 +4877,18 @@
           "lm-back",
           "lm-blocktype",
           "lm-clear",
+          "lm-column-add",
+          "lm-column-choice",
           "lm-container",
           "lm-disabled",
+          "lm-div-addrow",
           "lm-dropzone",
           "lm-eraseblock",
           "lm-forward",
           "lm-id",
           "lm-nodrag",
           "lm-preset",
+          "lm-preset-grid",
           "lm-root",
           "lm-row-layout",
           "lm-samewidth",
@@ -4930,9 +4972,9 @@
         "platforms/common/application/lm/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 26726,
-      "lines": 657,
-      "sha256": "811133b5f5be4514af89c42a172c487a945bb2676a17698dce059215563bbd71",
+      "bytes": 30449,
+      "lines": 723,
+      "sha256": "5dcf044f581ddc5546537b5dd1dc150f16f05711379d04be6e5b338aae00e512",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -7086,13 +7128,14 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 24,
+      "activeReferenceCount": 25,
       "consumers": [
         "platforms/common/application/changelog/index.js",
         "platforms/common/application/configurations/dropdown-edit.js",
         "platforms/common/application/configurations/index.js",
         "platforms/common/application/lm/blocks/atom.js",
         "platforms/common/application/lm/blocks/container.js",
+        "platforms/common/application/lm/blocks/div.js",
         "platforms/common/application/lm/blocks/offcanvas.js",
         "platforms/common/application/lm/blocks/particle.js",
         "platforms/common/application/lm/blocks/section.js",
@@ -7436,10 +7479,11 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 20,
+      "activeReferenceCount": 21,
       "consumers": [
         "platforms/common/application/lm/blocks/base.js",
         "platforms/common/application/lm/blocks/container.js",
+        "platforms/common/application/lm/blocks/div.js",
         "platforms/common/application/lm/blocks/grid.js",
         "platforms/common/application/lm/blocks/offcanvas.js",
         "platforms/common/application/lm/blocks/particle.js",
@@ -7560,9 +7604,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 617860,
-      "lines": 15280,
-      "sha256": "1c450ed1484e2e0b5433d8ae33694e615e8a1f53e3b12a964f4c4d774b8af5f0",
+      "bytes": 626187,
+      "lines": 15451,
+      "sha256": "bed2733cdf847976acba802ebffcd78171034288bc84dc887956321b8ac8e9ab",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -7697,8 +7741,11 @@
           "lm-blocktype",
           "lm-category",
           "lm-clear",
+          "lm-column-add",
+          "lm-column-choice",
           "lm-container",
           "lm-disabled",
+          "lm-div-addrow",
           "lm-dropzone",
           "lm-eraseblock",
           "lm-forward",
@@ -7707,6 +7754,7 @@
           "lm-nodrag",
           "lm-placeholder",
           "lm-preset",
+          "lm-preset-grid",
           "lm-root",
           "lm-row-generate",
           "lm-row-layout",

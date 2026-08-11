@@ -1,3 +1,14 @@
+// Dart Sass 1.65+ reserves rem() as a two-argument math function. Genesis has
+// historically used the Compass-style one-argument helper in admin SCSS, so
+// define it explicitly before configuration is loaded.
+@function rem($value, $base: 16px) {
+    @if unitless($value) {
+        $value: $value * 1px;
+    }
+
+    @return ($value / $base) * 1rem;
+}
+
 @function textcolor-tint($color, $amount: 65%) {
  	@if (lightness($color) > 50) {
  		@return darken($color, $amount);

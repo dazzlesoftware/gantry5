@@ -1,0 +1,199 @@
+// Shared Genesis administrator dark palette, inspired by the Genesis/Gantry
+// layout-builder concept. The class is controlled by the Extras theme switch.
+[data-genesis-container].genesis-dark-mode {
+    color: #d7e0e8;
+    background: #151c23 !important;
+
+    .inner-container,
+    [data-genesis-content-wrapper],
+    #g-main,
+    .g-content,
+    .main-block,
+    .sidebar-block {
+        color: #d7e0e8;
+        background-color: #1b242d !important;
+    }
+
+    #main-header,
+    #main-header .g-content,
+    #navbar,
+    .page-title {
+        color: #e7edf2;
+        background-color: #202a34 !important;
+        border-color: #35424e !important;
+    }
+
+    a, h1, h2, h3, h4, h5, label { color: #dfe7ed; }
+
+    input, select, textarea,
+    .settings-param-input,
+    .search input {
+        color: #e4ebf0 !important;
+        background: #111820 !important;
+        border-color: #40505e !important;
+
+        &::placeholder { color: #83919d; }
+    }
+
+    .section,
+    .atoms-section,
+    .offcanvas-section,
+    .wrapper-section {
+        color: #dfe7ed;
+        background: #182129 !important;
+        border-color: #34414c !important;
+    }
+
+    .section-header,
+    .g-lm-div-header { color: #dfe7ed !important; }
+
+    .lm-blocks .g-grid,
+    [data-lm-blocktype="grid"] {
+        background: #111820 !important;
+        border-color: #3b4a57 !important;
+        box-shadow: none !important;
+    }
+
+    .lm-blocks .g-grid > .g-block,
+    .g-lm-div {
+        background-color: #18222b !important;
+        border-color: #435360 !important;
+    }
+
+    .lm-blocks .particle,
+    .lm-blocks .position,
+    .lm-blocks .system {
+        color: #eef6fa;
+        background-color: #287cab;
+        border-color: #4fa8d2;
+    }
+
+    .lm-blocks .spacer { color: #dfe7ed; background-color: #394651; }
+
+    .grid-structure-menu,
+    .g-lm-div-actions button {
+        color: #b9c7d1;
+        background: #25313b;
+        border-color: #465663;
+    }
+
+    .grid-drag-handle { color: #aebdc8; }
+
+    .g-grid > .g-block:not(:has(> [data-lm-id])) {
+        background: rgba(#17212a, 0.85) !important;
+        border-color: #536675 !important;
+
+        > .lm-column-add { color: #8fa2b0; }
+    }
+
+    .genesis-lm-particles-picker,
+    .particles-container,
+    .genesis-popover,
+    .genesis-popover-content,
+    .genesis-dialog .genesis-content,
+    .lm-column-chooser,
+    .lm-particle-picker-dialog,
+    .lm-structure-actions {
+        color: #dce5eb !important;
+        background: #202a34 !important;
+        border-color: #40505d !important;
+    }
+
+    .genesis-popover-extras a,
+    .genesis-popover-extras [data-g-devprod],
+    .genesis-popover-extras [data-g-admin-theme],
+    .lm-column-choice,
+    .lm-particle-picker-item,
+    .lm-structure-actions button {
+        color: #dce5eb !important;
+        background: #27333e !important;
+        border-color: #435461 !important;
+
+        &:hover, &:focus { background: #32424f !important; }
+    }
+
+    .lm-row-picker-dialog,
+    .lm-row-picker-content { color: #dce5eb; background: #202a34; }
+
+    .lm-row-preset-card { border-color: #435461; background: #27333e; }
+    .lm-row-preset-bar { background: #657887; }
+
+    .button:not(.button-save), button:not(.particle-remove):not(.lm-column-add) {
+        border-color: #485966;
+    }
+
+    .genesis-dialog {
+        background: transparent !important;
+
+        .genesis-overlay { background: rgba(#05090d, 0.62) !important; }
+    }
+}
+
+// Popovers and dialogs are appended to the document body rather than the
+// Genesis container, so they need the persisted body-level mode class.
+body.genesis-dark-mode {
+    background: #151c23 !important;
+
+    .genesis-popover,
+    .genesis-popover-content,
+    .genesis-popover-extras,
+    .genesis-dialog .genesis-content {
+        color: #dce5eb !important;
+        background: #202a34 !important;
+        border-color: #40505d !important;
+    }
+
+    .genesis-dialog {
+        background: transparent !important;
+
+        .genesis-overlay { background: rgba(#05090d, 0.62) !important; }
+    }
+
+    .genesis-popover:before,
+    .genesis-popover:after {
+        border-bottom-color: #202a34 !important;
+    }
+
+    .genesis-popover-extras a,
+    .genesis-popover-extras [data-g-devprod],
+    .genesis-popover-extras [data-g-admin-theme] {
+        color: #dce5eb !important;
+
+        &:hover, &:focus { background: #32424f !important; }
+    }
+
+    [data-genesis-container] {
+        #navbar,
+        #navbar .g-tabs,
+        #navbar ul,
+        #navbar li,
+        #navbar a,
+        .outline-select,
+        select {
+            color: #dce5eb !important;
+            background-color: #202a34 !important;
+            border-color: #40505d !important;
+        }
+
+        #navbar li.active,
+        #navbar li.active a,
+        #navbar a:hover,
+        #navbar a:focus {
+            background-color: #2b3945 !important;
+        }
+
+        .button:not(.button-save),
+        button:not(.particle-remove):not(.lm-column-add) {
+            color: #dce5eb;
+            background-color: #34424d;
+            border-color: #53636f;
+        }
+
+        * {
+            scrollbar-color: #657784 #182129;
+        }
+
+        *::-webkit-scrollbar-track { background: #182129; }
+        *::-webkit-scrollbar-thumb { background: #657784; border-radius: 6px; }
+    }
+}

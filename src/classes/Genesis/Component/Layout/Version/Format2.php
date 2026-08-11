@@ -18,7 +18,7 @@ class Format2
     /** @var array */
     protected $scopes = [0 => 'grid', 1 => 'block'];
     /** @var array */
-    protected $sections = ['wrapper', 'container', 'section', 'grid', 'block', 'offcanvas'];
+    protected $sections = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
     /** @var array */
     protected $structures = ['div', 'section', 'aside', 'nav', 'article', 'header', 'footer', 'main'];
     /** @var array */

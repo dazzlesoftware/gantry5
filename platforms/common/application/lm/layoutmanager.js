@@ -93,7 +93,6 @@ let LayoutManagerDefinition = {
             .on('dragdrop:location', this.bound('location'))
             .on('dragdrop:nolocation', this.bound('nolocation'))
             .on('dragdrop:resize', this.bound('resize'))
-            .on('dragdrop:stop:erase', this.bound('removeElement'))
             .on('dragdrop:stop', this.bound('stop'))
             .on('dragdrop:stop:animation', this.bound('stopAnimation'));
 
@@ -238,7 +237,6 @@ let LayoutManagerDefinition = {
             }
 
             this.placeholder.before(element);
-            this.eraser.show();
         } else {
             let position = element.position();
             this.original.style({
@@ -311,9 +309,29 @@ let LayoutManagerDefinition = {
             case 'section':
                 break;
             case 'grid':
-                let empty = !target.children(':not(.placeholder)');
+                let gridBlocks = Array.from(target[0].children).filter(function(child) {
+                    return child.getAttribute('data-lm-blocktype') === 'block';
+                });
+                let presetGrid = target.data('lm-preset-grid') === 'bootstrap' || gridBlocks.some(function(child) {
+                    let mapped = get(this.builder.map, child.getAttribute('data-lm-id') || '');
+                    return mapped && mapped.getAttribute('columns.xs');
+                }, this);
+                let empty = !gridBlocks.length;
+
+                // Particles enter a generated Bootstrap row only through an
+                // empty column. The row background must never manufacture a
+                // sibling column or reuse a placeholder from another row.
+                if (originalType !== 'grid' && presetGrid) {
+                    this.placeholder.remove();
+                    this.dragdrop.matched = false;
+                    return;
+                }
                 // new particles cannot be dropped in existing grids, only empty ones
-                if (originalType !== 'grid' && !empty) { return; }
+                if (originalType !== 'grid' && !empty) {
+                    this.placeholder.remove();
+                    this.dragdrop.matched = false;
+                    return;
+                }
 
 
                 if (empty) {
@@ -331,9 +349,32 @@ let LayoutManagerDefinition = {
 
                 break;
             case 'block':
-                method = (location.y === 'above' ? 'top' : 'bottom');
-                position = (location.x === 'other') ? method : location.x;
-                this.placeholder[position](target);
+                // Bootstrap preset columns are created ahead of their
+                // content. Dropping a new particle over one of those empty
+                // blocks must fill that block, not use the legacy left/right
+                // zones that create another sibling column beside it.
+                let hasDirectContent = target[0].querySelector(':scope > [data-lm-id]:not([data-lm-placeholder]):not(.original-placeholder)');
+                let targetBlock = get(this.builder.map, target.data('lm-id') || '');
+                let isPresetColumn = targetBlock && targetBlock.getAttribute('columns.xs');
+                let isNewContent = this.block.isNew() && originalType !== 'block' && originalType !== 'grid';
+                let isMovableContent = originalType !== 'block' && originalType !== 'grid';
+                let fillsPresetColumn = isMovableContent && isPresetColumn && !hasDirectContent;
+
+                if (fillsPresetColumn) {
+                    this.placeholder.bottom(target);
+                } else if (isMovableContent && isPresetColumn && hasDirectContent) {
+                    // A generated Bootstrap split has a fixed number of
+                    // slots. Occupied slots reject additional particles so
+                    // the legacy sibling-insertion path cannot silently add
+                    // a seventh column to a six-column preset.
+                    this.placeholder.remove();
+                    this.dragdrop.matched = false;
+                    return;
+                } else {
+                    method = (location.y === 'above' ? 'top' : 'bottom');
+                    position = (location.x === 'other') ? method : location.x;
+                    this.placeholder[position](target);
+                }
 
                 break;
         }
@@ -399,7 +440,7 @@ let LayoutManagerDefinition = {
             blocks.style({ 'pointer-events': 'inherit' });
         }
 
-        let siblings = this.block.block.siblings(':not(.original-placeholder)');
+        let siblings = this.block.block.siblings('[data-lm-blocktype="block"]:not(.original-placeholder)');
 
         if (siblings && this.block.getType() == 'block') {
             let size                  = this.block.getSize(),
@@ -490,6 +531,23 @@ let LayoutManagerDefinition = {
 
         this.original.remove();
 
+        // A preset already owns its Bootstrap block. Register the dragged
+        // particle as that block's child instead of manufacturing another
+        // wrapper block (which would appear as a new column beside it).
+        if (blockWasNew && type !== 'block' && type !== 'grid' && targetType === 'block' && parentType === 'block') {
+            insider = new Blocks[type]({
+                id: this.block.block.data('lm-id'),
+                type: type,
+                subtype: this.element.data('lm-blocksubtype'),
+                title: this.element.text(),
+                builder: this.builder
+            }).setLayout(this.block.block);
+
+            this.block = insider;
+            this.builder.add(insider);
+            insider.emit('rendered', insider, get(this.builder.map, parentId));
+        }
+
         // case 1: it's a new particle dropped in the LM, we need to wrap it inside a block
         if (type !== 'block' && type !== 'grid' && ((targetType === 'section' || targetType === 'grid') || (targetType === 'block' && parentType !== 'block'))) {
             wrapper = new Blocks.block({
@@ -525,8 +583,8 @@ let LayoutManagerDefinition = {
             //if (placeholderPrevious.find('!> [data-lm-blocktype="container"]')) { placeholderPrevious = placeholderPrevious.parent(); }
             if (placeholderPrevious !== previous) {
                 multiLocationResize = {
-                    from: this.block.block.siblings(':not(.placeholder)'),
-                    to: this.placeholder.siblings(':not(.placeholder)')
+                    from: this.block.block.siblings('[data-lm-blocktype="block"]:not(.placeholder)'),
+                    to: this.placeholder.siblings('[data-lm-blocktype="block"]:not(.placeholder)')
                 };
             }
 
@@ -549,7 +607,12 @@ let LayoutManagerDefinition = {
         this.placeholder.remove();
 
         if (blockWasNew) {
-            if (resizeCase) { this.resizer.evenResize(dom([this.block.block, this.block.block.siblings()])); }
+            if (resizeCase) {
+                this.resizer.evenResize(dom([
+                    this.block.block,
+                    this.block.block.siblings('[data-lm-blocktype="block"]')
+                ]));
+            }
 
             this.element.attribute('style', null);
         }
@@ -569,6 +632,7 @@ let LayoutManagerDefinition = {
                 multiLocationResize.from.forEach(function(sibling) {
                     sibling = dom(sibling);
                     block = get(this.builder.map, sibling.data('lm-id'));
+                    if (!block || typeof block.getSize !== 'function') { return; }
                     curSize = block.getSize() + diff;
                     block.setSize(curSize, true);
                     total += curSize;
@@ -579,6 +643,7 @@ let LayoutManagerDefinition = {
                     multiLocationResize.from.forEach(function(sibling) {
                         sibling = dom(sibling);
                         block = get(this.builder.map, sibling.data('lm-id'));
+                        if (!block || typeof block.getSize !== 'function') { return; }
                         curSize = block.getSize() + diff;
                         block.setSize(curSize, true);
                     }, this);
@@ -591,7 +656,7 @@ let LayoutManagerDefinition = {
                 multiLocationResize.to.forEach(function(sibling) {
                     sibling = dom(sibling);
                     block = get(this.builder.map, sibling.data('lm-id'));
-                    block.setSize(size, true);
+                    if (block && typeof block.setSize === 'function') { block.setSize(size, true); }
                 }, this);
                 this.block.setSize(size, true);
             }

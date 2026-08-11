@@ -157,6 +157,38 @@ ready(function() {
     let body     = dom('body'),
         sentence = translate('GENESIS_PLATFORM_JS_SAVE_SUCCESS');
 
+    let applyAdminTheme = function(mode) {
+        let dark = mode === 'dark', container = document.querySelector('[data-genesis-container]');
+        if (container) { container.classList.toggle('genesis-dark-mode', dark); }
+        document.body.classList.toggle('genesis-dark-mode', dark);
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        document.querySelectorAll('[data-g-admin-theme]').forEach(function(toggle) {
+            let checkbox = toggle.querySelector('.enabler'), input = toggle.querySelector('[name="admin_color_mode"]'), icon = toggle.querySelector('.fa');
+            if (checkbox) { checkbox.setAttribute('aria-checked', dark ? 'true' : 'false'); }
+            if (input) { input.value = dark ? '1' : '0'; }
+            if (icon) {
+                icon.classList.toggle('fa-moon', !dark);
+                icon.classList.toggle('fa-sun', dark);
+            }
+        });
+    };
+    let adminTheme = 'light';
+    try { adminTheme = window.localStorage.getItem('genesis-admin-color-mode') || 'light'; } catch (error) {}
+    applyAdminTheme(adminTheme);
+
+    body.delegate('change', '[data-g-admin-theme] [name="admin_color_mode"]', function(event, element) {
+        let input = element[0] || element, mode = input.value === '1' ? 'dark' : 'light';
+        try { window.localStorage.setItem('genesis-admin-color-mode', mode); } catch (error) {}
+        applyAdminTheme(mode);
+    });
+
+    body.delegate('click', '[data-g-extras]', function() {
+        setTimeout(function() {
+            let container = document.querySelector('[data-genesis-container]');
+            applyAdminTheme(container && container.classList.contains('genesis-dark-mode') ? 'dark' : 'light');
+        }, 0);
+    });
+
     // Close notification
     body.delegate('click', '[data-g-close]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
