@@ -11,9 +11,9 @@ let Base       = __module0,
 class Div extends Base {
     layout() {
         let settingsUri = getAjaxURL(this.getPageId() + '/layout/div/' + this.getId());
-        return '<div class="g-lm-div" data-lm-id="' + this.getId() + '" data-lm-blocktype="div">' +
+        return '<div class="g-lm-div" data-lm-id="' + this.getId() + '" data-lm-blocktype="div" data-lm-nodrag>' +
             '<div class="g-lm-div-header">' +
-                '<span class="g-lm-div-title" data-lm-div-drag><i class="fa fa-grip-vertical" aria-hidden="true"></i><i class="fa fa-vector-square" aria-hidden="true"></i> ' +
+                '<span class="g-lm-div-title"><i class="fa fa-vector-square" aria-hidden="true"></i> ' +
                     translate('GENESIS_PLATFORM_JS_LM_DIV') + '</span>' +
                 '<span class="g-lm-div-actions">' +
                     '<button type="button" data-lm-nodrag data-lm-div-addrow aria-label="' +

@@ -9387,6 +9387,19 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   color: #555;
   opacity: 1;
 }
+[data-genesis-container] .grid-row-title {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  z-index: 8;
+  display: inline-flex;
+  height: 26px;
+  align-items: center;
+  gap: 7px;
+  color: rgb(73.1, 73.1, 73.1);
+  cursor: default;
+  user-select: none;
+}
 [data-genesis-container] [data-lm-blocktype=grid]:has(> .grid-structure-menu) {
   padding-top: 36px !important;
 }
@@ -9397,6 +9410,10 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
 }
 [data-genesis-container] .lm-blocks .g-grid > .g-block:after,
 [data-genesis-container] .lm-blocks .g-grid > .g-block > [data-lm-blocktype]:after {
+  display: none !important;
+  content: none !important;
+}
+[data-genesis-container] .lm-blocks .g-grid:before {
   display: none !important;
   content: none !important;
 }
@@ -12036,6 +12053,9 @@ html.genesis-dialog-open {
   color: #b9c7d1;
   background: #25313b;
   border-color: #465663;
+}
+[data-genesis-container].genesis-dark-mode .grid-row-title {
+  color: #aebdc8;
 }
 [data-genesis-container].genesis-dark-mode .g-grid > .g-block:not(:has(> [data-lm-id])) {
   background: rgba(23, 33, 42, 0.85) !important;

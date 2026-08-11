@@ -1189,7 +1189,7 @@ $atom: #9055AF;
         }
     }
 
-    .grid-drag-handle {
+    .grid-row-title {
         position: absolute;
         top: 5px;
         left: 7px;
@@ -1199,7 +1199,7 @@ $atom: #9055AF;
         align-items: center;
         gap: 7px;
         color: lighten($core-text, 22%);
-        cursor: move;
+        cursor: default;
         user-select: none;
     }
 
@@ -1279,10 +1279,6 @@ $atom: #9055AF;
             color: lighten($core-text, 15%);
         }
 
-        .g-lm-div-title[data-lm-div-drag] {
-            cursor: move;
-            user-select: none;
-        }
 
         .g-lm-div-actions {
             display: flex;

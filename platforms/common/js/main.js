@@ -4594,7 +4594,7 @@
     }
     layout() {
       let isPreset = this.getAttribute("layoutPreset") === "bootstrap", preset = isPreset ? ' data-lm-preset-grid="bootstrap"' : "";
-      return '<div class="g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
+      return '<div class="g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><span class="grid-row-title" data-lm-nodrag><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span></span><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
     }
     onRendered() {
       let parent = this.block.parent();
@@ -5214,13 +5214,15 @@
       if (!parent) {
         return false;
       }
-      let parentBlock = parent.block[0], sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
+      let parentBlock = parent.block[0], sibling = Array.from(parentBlock.parentElement ? parentBlock.parentElement.children : []).filter(function(candidate) {
+        return candidate !== parentBlock && candidate.getAttribute("data-lm-blocktype") === "block";
+      })[0] || false;
       if (!sibling) {
         return [100, 100];
       }
       let siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id")), sizes = {
         current: this.getParent().getSize(),
-        sibling: siblingBlock.getSize()
+        sibling: siblingBlock && typeof siblingBlock.getSize === "function" ? siblingBlock.getSize() : 0
       };
       return [5, sizes.current + sizes.sibling - 5];
     }
@@ -5938,7 +5940,10 @@
         x: this.origin.x - clientRect.right,
         y: clientRect.top - this.origin.y
       };
-      if (this.element.data("lm-blocktype") === "grid" && Math.abs(this.origin.offset.x) < clientRect.width) {
+      if (this.element.data("lm-blocktype") === "grid" && !target.matches("[data-lm-row-drag]") && !target.parent("[data-lm-row-drag]")) {
+        return false;
+      }
+      if (this.element.data("lm-blocktype") === "div" && !target.matches("[data-lm-div-drag]") && !target.parent("[data-lm-div-drag]")) {
         return false;
       }
       let offset = Math.abs(this.origin.offset.x), columns = this.element.parent().data("lm-blocktype") === "grid" && this.element.parent().parent().data("lm-root") || this.element.parent().parent().data("lm-blocktype") == "container" && (this.element.parent().parent().parent().data("lm-root") || this.element.parent().parent().parent().data("lm-blocktype") == "wrapper");
@@ -8102,7 +8107,7 @@
   ready7(function() {
     let body = dom11("body"), root = dom11("[data-lm-root]"), data;
     layoutmanager = new LayoutManager2("[data-lm-container]", {
-      delegate: '[data-lm-root] .g-grid:not([data-lm-preset-grid="bootstrap"]) > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .g-block > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
+      delegate: '[data-lm-root] .g-grid:not([data-lm-preset-grid="bootstrap"]) > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .g-block > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] .g-block > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="div"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
       droppables: "[data-lm-dropzone]",
       exclude: ".section-header .button, .section-header .fa, .lm-newblocks .float-right .button, [data-lm-nodrag], [data-lm-disabled]",
       resize_handles: "[data-lm-root] .g-grid > .g-block:not(:last-child)",

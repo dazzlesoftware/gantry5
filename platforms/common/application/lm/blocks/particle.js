@@ -144,13 +144,15 @@ class Particle extends Atom {
     getLimits(parent) {
         if (!parent) { return false; }
         let parentBlock = parent.block[0],
-            sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
+            sibling = Array.from(parentBlock.parentElement ? parentBlock.parentElement.children : []).filter(function(candidate) {
+                return candidate !== parentBlock && candidate.getAttribute('data-lm-blocktype') === 'block';
+            })[0] || false;
         if (!sibling) { return [100, 100]; }
 
         let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id')),
             sizes = {
                 current: this.getParent().getSize(),
-                sibling: siblingBlock.getSize()
+                sibling: siblingBlock && typeof siblingBlock.getSize === 'function' ? siblingBlock.getSize() : 0
             };
         return [5, (sizes.current + sizes.sibling) - 5];
     }

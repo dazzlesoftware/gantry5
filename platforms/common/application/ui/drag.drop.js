@@ -129,10 +129,12 @@ class DragDrop extends EventEmitter {
             y: clientRect.top - this.origin.y
         };
 
-        // Only allow to sort grids when targeting the left handle
-        if (this.element.data('lm-blocktype') === 'grid' && Math.abs(this.origin.offset.x) < clientRect.width) {
-            return false;
-        }
+        // Layout rows and Divs use explicit header handles. This replaces the
+        // legacy off-canvas left rail, which overlapped for nested structures.
+        if (this.element.data('lm-blocktype') === 'grid' &&
+            !target.matches('[data-lm-row-drag]') && !target.parent('[data-lm-row-drag]')) { return false; }
+        if (this.element.data('lm-blocktype') === 'div' &&
+            !target.matches('[data-lm-div-drag]') && !target.parent('[data-lm-div-drag]')) { return false; }
 
         let offset  = Math.abs(this.origin.offset.x),
             columns = (this.element.parent().data('lm-blocktype') === 'grid' && this.element.parent().parent().data('lm-root')) ||

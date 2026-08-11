@@ -16,7 +16,7 @@ class Grid extends Base {
         let isPreset = this.getAttribute('layoutPreset') === 'bootstrap',
             preset = isPreset ? ' data-lm-preset-grid="bootstrap"' : '';
         return '<div class="g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '>' +
-            '<span class="grid-drag-handle" data-lm-row-drag aria-label="' + translate('GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE') + '"><i class="fa fa-grip-vertical" aria-hidden="true"></i><span>' + translate('GENESIS_PLATFORM_JS_LM_ROW') + '</span></span>' +
+            '<span class="grid-row-title" data-lm-nodrag><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate('GENESIS_PLATFORM_JS_LM_ROW') + '</span></span>' +
             '<button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' +
                 translate('GENESIS_PLATFORM_JS_LM_MORE_ACTIONS') + '"><span>' + translate('GENESIS_PLATFORM_JS_LM_ROW') +
                 '</span><i class="fa fa-cog" aria-hidden="true"></i></button>' +
