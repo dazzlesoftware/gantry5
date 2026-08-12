@@ -52,19 +52,23 @@
     .swatches-block {
 		margin: 0 -1px;
 		padding-bottom: $content-padding;
+
+		.style-preset-grid {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			align-items: flex-start;
+		}
+
 		.g-block {
 			text-align: center;
-			margin: 0 1px;
-		}
-		@include breakpoint(mobile-only) {
-			.g-block {
-				flex: 0 25%;
-			}
+			margin: 0;
+			padding: 0 4px $content-padding;
 		}
 		.swatch {
 			display: block;
 			padding: 4px;
-			max-width: 350px;
+			width: 100%;
 			background: $white;
 			margin: 0 auto;
 			border-radius: $core-border-radius;

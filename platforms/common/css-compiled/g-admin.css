@@ -7076,19 +7076,21 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   margin: 0 -1px;
   padding-bottom: 0.938rem;
 }
+[data-genesis-container] .swatches-block .style-preset-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: flex-start;
+}
 [data-genesis-container] .swatches-block .g-block {
   text-align: center;
-  margin: 0 1px;
-}
-@media only all and (max-width: 47.99rem) {
-  [data-genesis-container] .swatches-block .g-block {
-    flex: 0 25%;
-  }
+  margin: 0;
+  padding: 0 4px 0.938rem;
 }
 [data-genesis-container] .swatches-block .swatch {
   display: block;
   padding: 4px;
-  max-width: 350px;
+  width: 100%;
   background: #fff;
   margin: 0 auto;
   border-radius: 0.1875rem;
