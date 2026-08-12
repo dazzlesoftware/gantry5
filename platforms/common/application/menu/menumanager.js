@@ -143,7 +143,9 @@ let MenuManagerDefinition = {
             '<div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%">' +
                 '<div class="submenu-column">' +
                     '<div class="submenu-level">Level 1</div>' +
-                    '<ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '" data-mm-base-level="1"></ul>' +
+                    '<ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '" data-mm-base-level="1">' +
+                        '<li class="submenu-add-slot" data-lm-nodrag><button type="button" data-mm-submenu-add data-lm-nodrag aria-label="Add item"><span aria-hidden="true" data-lm-nodrag>+</span></button></li>' +
+                    '</ul>' +
                 '</div>' +
             '</div>' +
         '</section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
@@ -415,12 +417,45 @@ let MenuManagerDefinition = {
         this.emit('dragEnd', this.map, 'reorder');
     },
 
+    beginSubmenuAdd: function(type, list) {
+        let source = document.querySelector('.genesis-mm-particles-picker [data-mm-blocktype="' + CSS.escape(type) + '"]'),
+            slot = list && list.querySelector(':scope > .submenu-add-slot'),
+            base = list && list.getAttribute('data-mm-base');
+        if (!source || !list || !slot || base == null || this.isNewParticle) { return; }
+
+        let block = source.cloneNode(true),
+            temporaryID = ltrim(base + '/__' + type, '/'),
+            columnParent = list.closest('[data-mm-id]'),
+            column = Number(((columnParent && columnParent.getAttribute('data-mm-id') || '').match(/\d+$/) || [0])[0]);
+        block.setAttribute('data-mm-id', temporaryID);
+        block.setAttribute('data-mm-level', String((Number(list.getAttribute('data-mm-base-level')) || 1) + 1));
+        list.insertBefore(block, slot);
+
+        if (!this.ordering[base]) { this.ordering[base] = []; }
+        if (!this.ordering[base][column]) { this.ordering[base][column] = []; }
+        this.ordering[base][column].push(temporaryID);
+
+        this.block = dom(block);
+        this.element = block;
+        this.itemID = temporaryID;
+        this.itemLevel = Number(block.getAttribute('data-mm-level'));
+        this.targetLevel = this.itemLevel;
+        this.isParticle = true;
+        this.isNewParticle = true;
+        this.pendingMenuItem = block;
+        this.emit('dragEnd', this.map, 'reorder');
+    },
+
     cancelPendingItem: function() {
         if (!this.isNewParticle || !this.pendingMenuItem) { return; }
         let id = this.pendingMenuItem.getAttribute('data-mm-id');
-        if (this.ordering[''] && this.ordering[''][0]) {
-            this.ordering[''][0] = this.ordering[''][0].filter(function(itemID) { return itemID !== id; });
-        }
+        Object.keys(this.ordering).forEach(function(base) {
+            (this.ordering[base] || []).forEach(function(column, index) {
+                if (Array.isArray(column)) {
+                    this.ordering[base][index] = column.filter(function(itemID) { return itemID !== id; });
+                }
+            }, this);
+        }, this);
         this.pendingMenuItem.remove();
         this.pendingMenuItem = null;
         this.isNewParticle = false;

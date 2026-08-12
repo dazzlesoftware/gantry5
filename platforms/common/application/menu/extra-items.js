@@ -194,7 +194,6 @@ let StepTwo = function(data, content, button) {
                     } else if (!picker) {
                         if (menumanager) {
                             let element = asElement(menumanager.element),
-                                path = element.getAttribute('data-mm-id') + '-',
                                 id = randomID(5),
                                 baseParent = element.closest('[data-mm-base]'),
                                 columnParent = element.closest('[data-mm-id]'),
@@ -202,12 +201,16 @@ let StepTwo = function(data, content, button) {
                                 col = ((columnParent && columnParent.getAttribute('data-mm-id') || '').match(/\d+$/) || [0])[0],
                                 index = directChildren(element.parentElement, '[data-mm-id]').indexOf(element);
 
-                            while (menumanager.items[path + id]) { id = randomID(5); }
-                            menumanager.items[path + id] = submitResult.item;
+                            let path = base ? base + '/' + id : id;
+                            while (menumanager.items[path]) {
+                                id = randomID(5);
+                                path = base ? base + '/' + id : id;
+                            }
+                            menumanager.items[path] = submitResult.item;
                             if (!menumanager.ordering[base]) { menumanager.ordering[base] = []; }
                             if (!menumanager.ordering[base][col]) { menumanager.ordering[base][col] = []; }
-                            menumanager.ordering[base][col].splice(index, 1, path + id);
-                            element.setAttribute('data-mm-id', path + id);
+                            menumanager.ordering[base][col].splice(index, 1, path);
+                            element.setAttribute('data-mm-id', path);
                             if (submitResult.html) { element.innerHTML = submitResult.html; }
 
                             menumanager.isNewParticle = false;

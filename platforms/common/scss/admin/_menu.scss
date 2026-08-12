@@ -433,6 +433,33 @@ $submenu-ratio:                 60px;
         margin: 0;
         padding: $content-padding 0 ($content-padding + 0.6rem);
         position: relative;
+
+        .submenu-add-slot {
+            background: transparent;
+            cursor: default;
+            padding: 0.3rem $content-padding;
+
+            button {
+                align-items: center;
+                background: transparent;
+                border: 1px dashed #aaa;
+                color: #777;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                min-height: 2rem;
+                width: 100%;
+            }
+
+            &:hover {
+                background: transparent;
+
+                button {
+                    border-color: $tertiary-accent;
+                    color: $tertiary-accent;
+                }
+            }
+        }
         &:after {
             margin-right: 6px;
         }
@@ -526,6 +553,10 @@ $submenu-ratio:                 60px;
             &:hover:after {
                 opacity: 1;
             }
+        }
+
+        &:has(> .submenu-add-slot:only-child) {
+            min-height: 3.2rem;
         }
     }
 

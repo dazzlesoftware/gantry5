@@ -23,6 +23,7 @@ let dom           = __module0,
     translate     = __module9;
 
 let menumanager;
+let addTarget = null;
 
 let trim = function(value) {
     return value == null ? '' : String(value).trim();
@@ -35,10 +36,26 @@ let clamp = function(value, minimum, maximum) {
 dom.ready(function() {
     let body = document.body;
 
+    let openAddMenu = function(target) {
+        addTarget = target || null;
+        let choices = Array.from(document.querySelectorAll('.genesis-mm-particles-picker [data-mm-blocktype]')).map(function(item) {
+            let type = item.getAttribute('data-mm-blocktype'),
+                title = item.querySelector('.title');
+            return '<button type="button" class="menu-add-choice" data-mm-add-type="' + type + '">' +
+                '<i class="fa ' + (type === 'particle' ? 'fa-cube' : 'fa-puzzle-piece') + '" aria-hidden="true"></i>' +
+                '<span>' + (title ? title.textContent : type) + '</span></button>';
+        }).join('');
+
+        modal.open({
+            content: '<div class="menu-add-dialog"><h2>Add to Menu</h2><div class="menu-add-choices">' + choices + '</div></div>',
+            afterClose: function() { addTarget = null; }
+        });
+    };
+
     menumanager = new MenuManager('[data-mm-container]', {
         delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
         droppables: '#menu-editor [data-mm-id], #menu-editor [data-mm-root-dropzone]',
-        exclude: '[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *',
+        exclude: '[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, [data-mm-submenu-add], [data-mm-submenu-add] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *',
         resize_handles: '.submenu-column:not(:last-child)',
         catchClick: true
     });
@@ -62,31 +79,31 @@ dom.ready(function() {
     dom.delegate(body, 'click', '#menu-editor [data-mm-root-dropzone]', function(event) {
         event.preventDefault();
         event.stopPropagation();
+        openAddMenu(null);
+    });
 
-        let choices = Array.from(document.querySelectorAll('.genesis-mm-particles-picker [data-mm-blocktype]')).map(function(item) {
-            let type = item.getAttribute('data-mm-blocktype'),
-                title = item.querySelector('.title');
-            return '<button type="button" class="menu-add-choice" data-mm-add-type="' + type + '">' +
-                '<i class="fa ' + (type === 'particle' ? 'fa-cube' : 'fa-puzzle-piece') + '" aria-hidden="true"></i>' +
-                '<span>' + (title ? title.textContent : type) + '</span></button>';
-        }).join('');
-
-        modal.open({
-            content: '<div class="menu-add-dialog"><h2>Add to Menu</h2><div class="menu-add-choices">' + choices + '</div></div>'
-        });
+    dom.delegate(body, 'click', '#menu-editor [data-mm-submenu-add]', function(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+        openAddMenu(element.closest('.submenu-items'));
     });
 
     ['pointerdown', 'mousedown', 'touchstart'].forEach(function(eventName) {
         body.addEventListener(eventName, function(event) {
-            if (event.target.closest && event.target.closest('[data-mm-root-dropzone]')) { event.stopPropagation(); }
+            if (event.target.closest && event.target.closest('[data-mm-root-dropzone], [data-mm-submenu-add]')) { event.stopPropagation(); }
         }, true);
     });
 
     dom.delegate(body, 'click', '.menu-add-choice[data-mm-add-type]', function(event, element) {
         event.preventDefault();
         let type = element.getAttribute('data-mm-add-type');
+        let target = addTarget;
+        addTarget = null;
         modal.close();
-        window.setTimeout(function() { menumanager.beginTopLevelAdd(type); }, 0);
+        window.setTimeout(function() {
+            if (target && target.isConnected) { menumanager.beginSubmenuAdd(type, target); }
+            else { menumanager.beginTopLevelAdd(type); }
+        }, 0);
     });
 
     // The live binding is exported below for circular menu consumers.
@@ -407,8 +424,13 @@ dom.ready(function() {
     });
 });
 
+// Consumers such as the global save and ajax-navigation handlers are loaded
+// before dom.ready() creates the manager. Expose the current value instead of
+// capturing the initial undefined value in a plain object property.
 export default {
-    menumanager: menumanager
+    get menumanager() {
+        return menumanager;
+    }
 };
 
 export { menumanager };

@@ -289,6 +289,12 @@ ready(function() {
                 break;
 
             case 'menu':
+                if (!mm.menumanager) {
+                    saves.disabled(false);
+                    saves.hideIndicator();
+                    toastr.error('The Menu Editor is not ready. Please reload the page and try again.', 'Unable to save menu');
+                    return;
+                }
                 data.menutype = dom('select.menu-select-wrap').value();
                 data.settings = JSON.stringify(mm.menumanager.settings);
                 data.ordering = JSON.stringify(mm.menumanager.ordering);

@@ -15831,6 +15831,29 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   padding: 0.938rem 0 1.538rem;
   position: relative;
 }
+[data-genesis-container] .submenu-selector .submenu-items .submenu-add-slot {
+  background: transparent;
+  cursor: default;
+  padding: 0.3rem 0.938rem;
+}
+[data-genesis-container] .submenu-selector .submenu-items .submenu-add-slot button {
+  align-items: center;
+  background: transparent;
+  border: 1px dashed #aaa;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-height: 2rem;
+  width: 100%;
+}
+[data-genesis-container] .submenu-selector .submenu-items .submenu-add-slot:hover {
+  background: transparent;
+}
+[data-genesis-container] .submenu-selector .submenu-items .submenu-add-slot:hover button {
+  border-color: #48B0D7;
+  color: #48B0D7;
+}
 [data-genesis-container] .submenu-selector .submenu-items:after {
   margin-right: 6px;
 }
@@ -15915,6 +15938,9 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
 }
 [data-genesis-container] .submenu-selector .submenu-items:empty:hover:after {
   opacity: 1;
+}
+[data-genesis-container] .submenu-selector .submenu-items:has(> .submenu-add-slot:only-child) {
+  min-height: 3.2rem;
 }
 [data-genesis-container] .submenu-selector.moving .submenu-column:after {
   background-color: #fff;

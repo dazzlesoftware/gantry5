@@ -8632,7 +8632,7 @@
       if (!this.ordering[itemID].length) {
         this.ordering[itemID].push([]);
       }
-      columns.innerHTML = '<section class="row g-grid submenu-selector"><div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%"><div class="submenu-column"><div class="submenu-level">Level 1</div><ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, "&amp;").replace(/"/g, "&quot;") + '" data-mm-base-level="1"></ul></div></div></section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
+      columns.innerHTML = '<section class="row g-grid submenu-selector"><div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%"><div class="submenu-column"><div class="submenu-level">Level 1</div><ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, "&amp;").replace(/"/g, "&quot;") + '" data-mm-base-level="1"><li class="submenu-add-slot" data-lm-nodrag><button type="button" data-mm-submenu-add data-lm-nodrag aria-label="Add item"><span aria-hidden="true" data-lm-nodrag>+</span></button></li></ul></div></div></section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
       let submenu = dom12("[data-genesis-menu-columns] .submenu-selector"), submenuBlocks = submenu && submenu.search("> [data-mm-id]");
       if (submenuBlocks) {
         this.resizer.updateMaxValues(submenuBlocks);
@@ -8851,16 +8851,46 @@
       this.pendingMenuItem = block;
       this.emit("dragEnd", this.map, "reorder");
     },
+    beginSubmenuAdd: function(type, list) {
+      let source = document.querySelector('.genesis-mm-particles-picker [data-mm-blocktype="' + CSS.escape(type) + '"]'), slot = list && list.querySelector(":scope > .submenu-add-slot"), base2 = list && list.getAttribute("data-mm-base");
+      if (!source || !list || !slot || base2 == null || this.isNewParticle) {
+        return;
+      }
+      let block = source.cloneNode(true), temporaryID = ltrim(base2 + "/__" + type, "/"), columnParent = list.closest("[data-mm-id]"), column = Number(((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0]);
+      block.setAttribute("data-mm-id", temporaryID);
+      block.setAttribute("data-mm-level", String((Number(list.getAttribute("data-mm-base-level")) || 1) + 1));
+      list.insertBefore(block, slot);
+      if (!this.ordering[base2]) {
+        this.ordering[base2] = [];
+      }
+      if (!this.ordering[base2][column]) {
+        this.ordering[base2][column] = [];
+      }
+      this.ordering[base2][column].push(temporaryID);
+      this.block = dom12(block);
+      this.element = block;
+      this.itemID = temporaryID;
+      this.itemLevel = Number(block.getAttribute("data-mm-level"));
+      this.targetLevel = this.itemLevel;
+      this.isParticle = true;
+      this.isNewParticle = true;
+      this.pendingMenuItem = block;
+      this.emit("dragEnd", this.map, "reorder");
+    },
     cancelPendingItem: function() {
       if (!this.isNewParticle || !this.pendingMenuItem) {
         return;
       }
       let id2 = this.pendingMenuItem.getAttribute("data-mm-id");
-      if (this.ordering[""] && this.ordering[""][0]) {
-        this.ordering[""][0] = this.ordering[""][0].filter(function(itemID) {
-          return itemID !== id2;
-        });
-      }
+      Object.keys(this.ordering).forEach(function(base2) {
+        (this.ordering[base2] || []).forEach(function(column, index) {
+          if (Array.isArray(column)) {
+            this.ordering[base2][index] = column.filter(function(itemID) {
+              return itemID !== id2;
+            });
+          }
+        }, this);
+      }, this);
       this.pendingMenuItem.remove();
       this.pendingMenuItem = null;
       this.isNewParticle = false;
@@ -9578,19 +9608,21 @@
               });
             } else if (!picker) {
               if (menumanager) {
-                let element = asElement5(menumanager.element), path = element.getAttribute("data-mm-id") + "-", id2 = randomID(5), baseParent = element.closest("[data-mm-base]"), columnParent = element.closest("[data-mm-id]"), base2 = baseParent && baseParent.getAttribute("data-mm-base"), col = ((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0], index = directChildren2(element.parentElement, "[data-mm-id]").indexOf(element);
-                while (menumanager.items[path + id2]) {
+                let element = asElement5(menumanager.element), id2 = randomID(5), baseParent = element.closest("[data-mm-base]"), columnParent = element.closest("[data-mm-id]"), base2 = baseParent && baseParent.getAttribute("data-mm-base"), col = ((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0], index = directChildren2(element.parentElement, "[data-mm-id]").indexOf(element);
+                let path = base2 ? base2 + "/" + id2 : id2;
+                while (menumanager.items[path]) {
                   id2 = randomID(5);
+                  path = base2 ? base2 + "/" + id2 : id2;
                 }
-                menumanager.items[path + id2] = submitResult.item;
+                menumanager.items[path] = submitResult.item;
                 if (!menumanager.ordering[base2]) {
                   menumanager.ordering[base2] = [];
                 }
                 if (!menumanager.ordering[base2][col]) {
                   menumanager.ordering[base2][col] = [];
                 }
-                menumanager.ordering[base2][col].splice(index, 1, path + id2);
-                element.setAttribute("data-mm-id", path + id2);
+                menumanager.ordering[base2][col].splice(index, 1, path);
+                element.setAttribute("data-mm-id", path);
                 if (submitResult.html) {
                   element.innerHTML = submitResult.html;
                 }
@@ -9700,6 +9732,7 @@
   var getAjaxSuffix7 = get_ajax_suffix_default;
   var translate11 = translate_default;
   var menumanager2;
+  var addTarget = null;
   var trim3 = function(value) {
     return value == null ? "" : String(value).trim();
   };
@@ -9708,10 +9741,23 @@
   };
   dom14.ready(function() {
     let body = document.body;
+    let openAddMenu = function(target) {
+      addTarget = target || null;
+      let choices = Array.from(document.querySelectorAll(".genesis-mm-particles-picker [data-mm-blocktype]")).map(function(item) {
+        let type = item.getAttribute("data-mm-blocktype"), title = item.querySelector(".title");
+        return '<button type="button" class="menu-add-choice" data-mm-add-type="' + type + '"><i class="fa ' + (type === "particle" ? "fa-cube" : "fa-puzzle-piece") + '" aria-hidden="true"></i><span>' + (title ? title.textContent : type) + "</span></button>";
+      }).join("");
+      modal8.open({
+        content: '<div class="menu-add-dialog"><h2>Add to Menu</h2><div class="menu-add-choices">' + choices + "</div></div>",
+        afterClose: function() {
+          addTarget = null;
+        }
+      });
+    };
     menumanager2 = new MenuManager2("[data-mm-container]", {
       delegate: ".genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block",
       droppables: "#menu-editor [data-mm-id], #menu-editor [data-mm-root-dropzone]",
-      exclude: "[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *",
+      exclude: "[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, [data-mm-submenu-add], [data-mm-submenu-add] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *",
       resize_handles: ".submenu-column:not(:last-child)",
       catchClick: true
     });
@@ -9731,17 +9777,16 @@
     dom14.delegate(body, "click", "#menu-editor [data-mm-root-dropzone]", function(event) {
       event.preventDefault();
       event.stopPropagation();
-      let choices = Array.from(document.querySelectorAll(".genesis-mm-particles-picker [data-mm-blocktype]")).map(function(item) {
-        let type = item.getAttribute("data-mm-blocktype"), title = item.querySelector(".title");
-        return '<button type="button" class="menu-add-choice" data-mm-add-type="' + type + '"><i class="fa ' + (type === "particle" ? "fa-cube" : "fa-puzzle-piece") + '" aria-hidden="true"></i><span>' + (title ? title.textContent : type) + "</span></button>";
-      }).join("");
-      modal8.open({
-        content: '<div class="menu-add-dialog"><h2>Add to Menu</h2><div class="menu-add-choices">' + choices + "</div></div>"
-      });
+      openAddMenu(null);
+    });
+    dom14.delegate(body, "click", "#menu-editor [data-mm-submenu-add]", function(event, element) {
+      event.preventDefault();
+      event.stopPropagation();
+      openAddMenu(element.closest(".submenu-items"));
     });
     ["pointerdown", "mousedown", "touchstart"].forEach(function(eventName) {
       body.addEventListener(eventName, function(event) {
-        if (event.target.closest && event.target.closest("[data-mm-root-dropzone]")) {
+        if (event.target.closest && event.target.closest("[data-mm-root-dropzone], [data-mm-submenu-add]")) {
           event.stopPropagation();
         }
       }, true);
@@ -9749,9 +9794,15 @@
     dom14.delegate(body, "click", ".menu-add-choice[data-mm-add-type]", function(event, element) {
       event.preventDefault();
       let type = element.getAttribute("data-mm-add-type");
+      let target = addTarget;
+      addTarget = null;
       modal8.close();
       window.setTimeout(function() {
-        menumanager2.beginTopLevelAdd(type);
+        if (target && target.isConnected) {
+          menumanager2.beginSubmenuAdd(type, target);
+        } else {
+          menumanager2.beginTopLevelAdd(type);
+        }
       }, 0);
     });
     menumanager2.setRoot();
@@ -9999,7 +10050,9 @@
     });
   });
   var menu_default = {
-    menumanager: menumanager2
+    get menumanager() {
+      return menumanager2;
+    }
   };
 
   // application/configurations/dropdown-edit.js
@@ -14925,6 +14978,12 @@
           data.layout = layout;
           break;
         case "menu":
+          if (!mm2.menumanager) {
+            saves.disabled(false);
+            saves.hideIndicator();
+            toastr9.error("The Menu Editor is not ready. Please reload the page and try again.", "Unable to save menu");
+            return;
+          }
           data.menutype = dom26("select.menu-select-wrap").value();
           data.settings = JSON.stringify(mm2.menumanager.settings);
           data.ordering = JSON.stringify(mm2.menumanager.ordering);
