@@ -8,27 +8,19 @@
 
 {% else %}
 
-<div class="g-grid" data-lm-container="">
-    <div class="g-block sidebar-block particles-sidebar-block">
-        <h2 class="page-title">
-            <span class="title">{{ 'GENESIS_PLATFORM_PARTICLES'|trans }}</span>
-        </h2>
-        <div class="genesis-lm-particles-picker">
-            <div class="search settings-block">
-                <input type="text" placeholder="{{ 'GENESIS_PLATFORM_FILTER_ELI'|trans }}" aria-label="{{ 'GENESIS_PLATFORM_FILTER_ELI'|trans }}" role="search"/>
-                <i class="fa fa-fw fa-search" aria-hidden="true"></i>
-            </div>
-            <div class="particles-container">
+<div class="lm-layout-workspace" data-lm-container="">
+    {# The column picker clones these definitions. They are data, not a second UI. #}
+    <div class="genesis-lm-particles-picker lm-particle-template-registry" hidden aria-hidden="true">
+        <div class="particles-container">
                 {% for key, list in particles %}
-                    {{ key|capitalize }}
-                    <ul>
                     {% for type, particle in list %}
                         {% for item_key, item in particle %}
                             {% set isDisabled = not genesis.config.get('particles.' ~ item_key ~ '.enabled', true) %}
-                            <li class="genesis-lm-particle-{{ type }} particle-category-{{ item._genesis_category_slug|default('general') }}"
+                            <div class="genesis-lm-particle-{{ type }} particle-category-{{ item._genesis_category_slug|default('general') }}"
                                 data-lm-blocktype="{{ type }}"
                                 data-lm-subtype="{{ item_key }}"
                                 data-lm-icon="{{ item.icon|default('fa-cube') }}"
+                                data-lm-category-label="{{ key|capitalize }}"
                                 {% if item._genesis_source|default(null) == 'theme' %}data-lm-source="theme"{% endif %}
                                 data-lm-category="{{ item._genesis_category_slug|default('general') }}"
                                 {% if isDisabled %}
@@ -41,15 +33,13 @@
                                     <i class="fa fa-fw {{ item.icon|default('fa-cube') }}" aria-hidden="true" {{ isDisabled ? 'data-lm-disabled data-lm-nodrag' : '' }}></i>
                                 </span>
                                 <span class="particle-title" {{ isDisabled ? 'data-lm-disabled data-lm-nodrag' : '' }}>{{ item.name }}</span>
-                            </li>
+                            </div>
                         {%  endfor %}
                     {% endfor %}
-                    </ul>
                 {% endfor %}
-            </div>
         </div>
     </div>
-    <div class="g-block main-block">
+    <div class="main-block">
         <span class="float-right">
             {#<a href="#" class="button"><i class="fa fa-fw fa-sign-in" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_IMPORT'|trans }}</span></a>
             <a href="#" class="button"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> <span>{{ 'GENESIS_PLATFORM_EXPORT'|trans }}</span></a>#}

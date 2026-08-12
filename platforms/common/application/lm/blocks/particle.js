@@ -10,11 +10,7 @@ let Atom               = __module0,
     getOutlineNameById = __module2.getOutlineNameById,
     translate          = __module3;
 
-let precision = function(value, decimals) {
-        let multiplier = Math.pow(10, decimals);
-        return Math.round(Number(value) * multiplier) / multiplier;
-    },
-    forOwn = function(object, callback) {
+let forOwn = function(object, callback) {
         Object.keys(object || {}).forEach(function(key) {
             callback(object[key], key);
         });
@@ -33,7 +29,7 @@ class Particle extends Atom {
             }
         }
 
-        return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span><span class="particle-actions"><i class="fa fa-times particle-remove" aria-hidden="true" data-lm-nodrag data-lm-particle-remove aria-label="' + translate('GENESIS_PLATFORM_JS_LM_REMOVE') + '"></i><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Particle') + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></span></div></div>';
+        return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-actions"><i class="fa fa-times particle-remove" aria-hidden="true" data-lm-nodrag data-lm-particle-remove aria-label="' + translate('GENESIS_PLATFORM_JS_LM_REMOVE') + '"></i><i aria-label="' + translate('GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS', 'Particle') + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></span></div></div>';
     }
 
     enableInheritance() {
@@ -99,28 +95,15 @@ class Particle extends Atom {
         }).join(' ');
     }
 
-    setLabelSize(size) {
-        let label = this.block[0].querySelector('.particle-size');
-        if (!label) { return false; }
-        label.textContent = precision(size, 1) + '%';
-    }
-
     onRendered(element, parent) {
-        let size = parent.getWidthPercent() || 100,
-            globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
+        let globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
 
         if (globallyDisabled || this.getAttribute('enabled') === 0) { this.disable(); }
-        this.setLabelSize(size);
-        parent.on('resized', this.bound('onParentResize'));
     }
 
     getParent() {
         let parent = this.block[0].parentElement && this.block[0].parentElement.closest('[data-lm-id]');
         return parent ? this.options.builder.get(parent.getAttribute('data-lm-id')) : null;
-    }
-
-    onParentResize(resize) {
-        this.setLabelSize(resize);
     }
 
     getIcon() {

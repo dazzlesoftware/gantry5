@@ -121,6 +121,16 @@
     .lm-row-breakpoints button[aria-selected="true"] { color: $white; background: #287cab; border-color: #4fa8d2; }
     .lm-row-breakpoint-help { color: #9eafbb; }
 
+    .lm-particle-picker-group h4 { color: #aebdc8; }
+
+    @each $category, $color in $particle-categories {
+        .lm-particle-picker-item.particle-category-#{$category}[data-lm-blocktype="particle"] {
+            border-color: $color !important;
+            color: lighten($color, 18%) !important;
+            .particle-icon { background: $color !important; color: $white !important; }
+        }
+    }
+
     .button:not(.button-save), button:not(.particle-remove):not(.lm-column-add) {
         border-color: #485966;
     }

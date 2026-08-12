@@ -16,7 +16,7 @@ form:
       type: input.text
       label: Block Key
       description: Widget key id.
-      pattern: '[a-z0-9-]+'
+      pattern: '[a-z0-9\x2D]+'
       overridable: false
 
     chrome:

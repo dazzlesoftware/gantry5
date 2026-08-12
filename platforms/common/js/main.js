@@ -1,5 +1,5 @@
 (() => {
-  // platforms/common/application/utils/dom-collection.js
+  // application/utils/dom-collection.js
   var eventListeners = /* @__PURE__ */ new WeakMap();
   var delegatedListeners = /* @__PURE__ */ new WeakMap();
   var elementMethods = /* @__PURE__ */ Object.create(null);
@@ -430,7 +430,7 @@
   });
   var dom_collection_default = dom;
 
-  // platforms/common/application/utils/create-element.js
+  // application/utils/create-element.js
   var dom2 = dom_collection_default;
   var attributePattern = /\[\s*([^\s~|^$*=\]]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*\]/g;
   var classPattern = /\.([a-zA-Z_][\w-]*)/g;
@@ -455,7 +455,7 @@
     return dom2(element);
   }
 
-  // platforms/common/application/utils/dom.js
+  // application/utils/dom.js
   var ready = (callback) => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback, { once: true });
@@ -473,7 +473,7 @@
   };
   var dom_default = { ready, delegate };
 
-  // platforms/common/application/utils/request.js
+  // application/utils/request.js
   var methods = /^(get|post|put|delete|head|patch|options)$/i;
   var encodeForm = (value, prefix) => {
     if (value == null) return [];
@@ -662,7 +662,7 @@
   });
   var request_default = request;
 
-  // platforms/common/application/utils/event-emitter.js
+  // application/utils/event-emitter.js
   var EventEmitter = class {
     constructor() {
       this.listeners = /* @__PURE__ */ new Map();
@@ -703,7 +703,7 @@
   };
   var event_emitter_default = EventEmitter;
 
-  // platforms/common/application/utils/search-index.js
+  // application/utils/search-index.js
   var normalizeText = (value, diacritics) => {
     const normalized = String(value == null ? "" : value).toLowerCase();
     return diacritics ? normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : normalized;
@@ -797,7 +797,7 @@
   };
   var search_index_default = SearchIndex;
 
-  // platforms/common/application/ui/progresser.js
+  // application/ui/progresser.js
   var defaults = {
     value: 0,
     size: 50,
@@ -988,7 +988,7 @@
   };
   var progresser_default = Progresser;
 
-  // platforms/common/application/utils/indicator.js
+  // application/utils/indicator.js
   var asElement2 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
@@ -1036,7 +1036,7 @@
   };
   var indicator_default = { show, hide };
 
-  // platforms/common/application/utils/dom-effects.js
+  // application/utils/dom-effects.js
   var dom3 = dom_collection_default;
   var progresser = progresser_default;
   var indicator = indicator_default;
@@ -1240,7 +1240,7 @@
   });
   var dom_effects_default = dom3;
 
-  // platforms/common/application/ui/selectize.js
+  // application/ui/selectize.js
   var EventEmitter2 = event_emitter_default;
   var ready2 = dom_default.ready;
   var zen = createElement;
@@ -3173,7 +3173,7 @@
   });
   var selectize_default = Selectize;
 
-  // platforms/common/application/ui/modal.js
+  // application/ui/modal.js
   var dom5 = dom_effects_default;
   var zen2 = createElement;
   var domready = dom_default.ready;
@@ -3347,10 +3347,10 @@
         event.preventDefault();
         this._closeButtonClick(elements.container);
       }).bind(this));
-      let container2 = dom5(options.appendNode);
+      let container = dom5(options.appendNode);
       if (GENESIS_PLATFORM == "wordpress") {
-        container2 = dom5("#widgets-editor") || dom5("#customize-preview") || dom5("#widgets-right") || dom5(options.appendNode);
-        if ("#" + container2.id() != options.appendNode) {
+        container = dom5("#widgets-editor") || dom5("#customize-preview") || dom5("#widgets-right") || dom5(options.appendNode);
+        if ("#" + container.id() != options.appendNode) {
           let wpwrap = dom5("#wpwrap") || dom5(".wp-customizer"), sibling, workaround;
           if (wpwrap.id() == "wpwrap") {
             sibling = wpwrap.nextSibling(options.appendNode);
@@ -3359,10 +3359,10 @@
             sibling = wpwrap.find("> " + options.appendNode);
             workaround = sibling ? sibling : zen2("div.g5wp-out-of-scope" + options.appendNode).top(wpwrap);
           }
-          container2 = workaround;
+          container = workaround;
         }
       }
-      container2.appendChild(elements.container);
+      container.appendChild(elements.container);
       options.elements = elements;
       if (options.afterOpen) {
         options.afterOpen(elements.content, options);
@@ -3427,8 +3427,8 @@
       if (!content || !content.length) {
         return false;
       }
-      let container2, options;
-      container2 = storage.get(content).dialog.elements.container;
+      let container, options;
+      container = storage.get(content).dialog.elements.container;
       options = Object.assign({}, storage.get(content).dialog);
       let beforeClose = function() {
         if (options.beforeClose) {
@@ -3440,7 +3440,7 @@
           };
         }
         content.emit("dialogClose", options);
-        container2.remove();
+        container.remove();
         this.emit("dialogAfterClose", options);
         if (options.afterClose) {
           return options.afterClose(content, options);
@@ -3448,7 +3448,7 @@
       }).bind(this);
       if (animationEndSupport) {
         beforeClose();
-        container2.off(this.animationEndEvent).on(this.animationEndEvent, function() {
+        container.off(this.animationEndEvent).on(this.animationEndEvent, function() {
           return close();
         }).addClass(options.baseClassNames.closing);
       } else {
@@ -3502,7 +3502,7 @@
   var modal = new Modal();
   var modal_default = modal;
 
-  // platforms/common/application/ui/toastr.js
+  // application/ui/toastr.js
   var merge2 = function(target) {
     target = target || {};
     Array.prototype.slice.call(arguments, 1).forEach(function(source) {
@@ -3627,12 +3627,12 @@
       }
       this.id++;
       this.previousNotice = options.message;
-      let container2 = this.getContainer(options, true), element = createElement2("div"), title = createElement2("div"), message = createElement2("div"), icon = createElement2("i", "fa"), progress = createElement2("div", "g-notifications-progress"), close = createElement2("a", "fa fa-close", { href: "#" });
-      if (!container2) {
+      let container = this.getContainer(options, true), element = createElement2("div"), title = createElement2("div"), message = createElement2("div"), icon = createElement2("i", "fa"), progress = createElement2("div", "g-notifications-progress"), close = createElement2("a", "fa fa-close", { href: "#" });
+      if (!container) {
         return null;
       }
       this.map.set(element, {
-        container: container2,
+        container,
         interval: null,
         progressBar: { interval: null, hideETA: null, maxHideTime: null },
         response: { id: this.id, state: "visible", start: /* @__PURE__ */ new Date(), options },
@@ -3659,9 +3659,9 @@
       }
       element.style.opacity = 0;
       if (options.newestOnTop) {
-        prepend(element, container2);
+        prepend(element, container);
       } else {
-        container2.appendChild(element);
+        container.appendChild(element);
       }
       animateOpacity(element, 1, options.showDuration, options.showEquation, options.onShow);
       if (options.timeOut > 0) {
@@ -3761,15 +3761,15 @@
     }
     getContainer(options, create) {
       options = this.mergeOptions(options);
-      let container2 = document.getElementById(options.containerID);
-      if (container2) {
-        return container2;
+      let container = document.getElementById(options.containerID);
+      if (container) {
+        return container;
       }
       return create ? this.createContainer(options) : null;
     }
     createContainer(options) {
       options = this.mergeOptions(options);
-      let container2 = createElement2("div", options.location, {
+      let container = createElement2("div", options.location, {
         id: options.containerID,
         "aria-live": "polite",
         role: "alert"
@@ -3778,11 +3778,11 @@
         return null;
       }
       if (options.targetLocation === "top") {
-        prepend(container2, target);
+        prepend(container, target);
       } else {
-        target.appendChild(container2);
+        target.appendChild(container);
       }
-      return container2;
+      return container;
     }
     remove(element) {
       if (!element) {
@@ -3805,19 +3805,19 @@
   };
   var toastr_default = new Toaster();
 
-  // platforms/common/application/utils/get-ajax-suffix.js
+  // application/utils/get-ajax-suffix.js
   var get_ajax_suffix_default = () => window.GENESIS_AJAX_SUFFIX || "";
 
-  // platforms/common/application/utils/get-ajax-url.js
+  // application/utils/get-ajax-url.js
   var getAjaxSuffix = get_ajax_suffix_default;
   var decodeHtml = (value) => {
     const textarea = document.createElement("textarea");
     textarea.innerHTML = value;
     return textarea.value;
   };
-  var replaceView = (template, view, search2 = "%ajax%") => decodeHtml(String(template || "").split(search2).join(view));
-  var getAjaxURL = (view, search2) => replaceView(window.GENESIS_AJAX_URL, view, search2);
-  var getConfAjaxURL = (view, search2) => replaceView(window.GENESIS_AJAX_CONF_URL, view, search2);
+  var replaceView = (template, view, search = "%ajax%") => decodeHtml(String(template || "").split(search).join(view));
+  var getAjaxURL = (view, search) => replaceView(window.GENESIS_AJAX_URL, view, search);
+  var getConfAjaxURL = (view, search) => replaceView(window.GENESIS_AJAX_CONF_URL, view, search);
   var parseAjaxURI = (uri) => {
     let result = String(uri || "");
     if (window.GENESIS_PLATFORM === "wordpress") {
@@ -3838,7 +3838,7 @@
   };
   var get_ajax_url_default = { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };
 
-  // platforms/common/application/ui/togglers.js
+  // application/ui/togglers.js
   var modal2 = modal_default;
   var toastr = toastr_default;
   var request3 = request_default;
@@ -3895,8 +3895,8 @@
           const body = response ? response.body : { message: error ? error.message : "Request failed" };
           modal2.open({
             content: body.html || body.message || body,
-            afterOpen(container2) {
-              if (!body.html && !body.message) container2.style({ width: "90%" });
+            afterOpen(container) {
+              if (!body.html && !body.message) container.style({ width: "90%" });
             }
           });
           input.value = input.value === "1" ? "0" : "1";
@@ -3911,7 +3911,7 @@
   });
   var togglers_default = {};
 
-  // platforms/common/application/utils/cookie.js
+  // application/utils/cookie.js
   var Cookie = {
     write: function(name, value) {
       let date = /* @__PURE__ */ new Date();
@@ -3931,7 +3931,7 @@
   };
   var cookie_default = Cookie;
 
-  // platforms/common/application/ui/collapse.js
+  // application/ui/collapse.js
   var Cookie2 = cookie_default;
   var { ready: ready4, delegate: delegate3 } = dom_default;
   var readStorage = () => Cookie2.read("genesis-collapsed") || Cookie2.read("genesis-collapsed") || {};
@@ -3985,10 +3985,10 @@
       event.preventDefault();
       const collapsed = toggle2.dataset.gCollapseAll === "true";
       const actions = toggle2.closest(".g-filter-actions");
-      const container2 = actions && actions.nextElementSibling;
-      if (!container2) return;
+      const container = actions && actions.nextElementSibling;
+      if (!container) return;
       const storage5 = readStorage();
-      container2.querySelectorAll("[data-g-collapse]").forEach((element) => {
+      container.querySelectorAll("[data-g-collapse]").forEach((element) => {
         const data = config(element);
         applyState(element, data, collapsed);
         if (data.store !== false) storage5[data.id] = collapsed;
@@ -3998,10 +3998,10 @@
     delegate3(document.body, "input", "[data-g-collapse-filter]", (event, input) => {
       const filter = JSON.parse(input.dataset.gCollapseFilter || "{}");
       const actions = input.closest(".g-filter-actions");
-      const container2 = actions && actions.nextElementSibling;
-      if (!container2) return;
+      const container = actions && actions.nextElementSibling;
+      if (!container) return;
       const value = input.value.trim().toLowerCase();
-      container2.querySelectorAll(filter.element || ".card").forEach((card) => {
+      container.querySelectorAll(filter.element || ".card").forEach((card) => {
         const title = card.querySelector(filter.title || "h4 .g-title");
         const text = title ? title.textContent.trim().toLowerCase() : "";
         card.style.display = !value || text.startsWith(value) || text.includes(" ".concat(value)) ? "" : "none";
@@ -4010,7 +4010,7 @@
   });
   var collapse_default = loadFromStorage;
 
-  // platforms/common/application/ui/index.js
+  // application/ui/index.js
   var Selectize2 = selectize_default;
   var ui_default = {
     modal: modal_default,
@@ -4020,7 +4020,7 @@
     toastr: toastr_default
   };
 
-  // platforms/common/application/utils/flags-state.js
+  // application/utils/flags-state.js
   var modal3 = ui_default.modal;
   var getAjaxURL3 = get_ajax_url_default.global;
   var parseAjaxURI3 = get_ajax_url_default.parse;
@@ -4088,7 +4088,7 @@
   };
   var flags_state_default = new FlagsState();
 
-  // platforms/common/application/utils/field-validation.js
+  // application/utils/field-validation.js
   var fallbackValidate = (field) => {
     if (field.disabled) return true;
     const value = field.value || "";
@@ -4114,7 +4114,7 @@
     return fallbackValidate(field);
   };
 
-  // platforms/common/application/fields/submit.js
+  // application/fields/submit.js
   var validateField = field_validation_default;
   var elementFrom = (value) => {
     if (value instanceof Element || value instanceof Document || value instanceof DocumentFragment) return value;
@@ -4126,11 +4126,11 @@
     if (typeof value === "string") return Array.from(document.querySelectorAll(value));
     return Array.from(value).map(elementFrom).filter(Boolean);
   };
-  var fieldsNamed = (container2, name) => Array.from(container2.querySelectorAll("[name]")).filter((field) => field.name === name);
-  function submit(elements, container2, options = {}) {
+  var fieldsNamed = (container, name) => Array.from(container.querySelectorAll("[name]")).filter((field) => field.name === name);
+  function submit(elements, container, options = {}) {
     const valid = [];
     const invalid = [];
-    const root = elementFrom(container2);
+    const root = elementFrom(container);
     if (!root) return { valid, invalid };
     elementsFrom(elements).forEach((original) => {
       const name = original.name;
@@ -4170,132 +4170,7 @@
     return { valid, invalid };
   }
 
-  // platforms/common/application/utils/frame-listener.js
-  function frameListener(element, eventName, callback, options = {}) {
-    const target = element && element[0] ? element[0] : element;
-    let frame = 0;
-    let latestEvent;
-    const listener = (event) => {
-      latestEvent = event;
-      if (frame) return;
-      frame = window.requestAnimationFrame(() => {
-        frame = 0;
-        callback.call(target, latestEvent);
-      });
-    };
-    target.addEventListener(eventName, listener, {
-      capture: Boolean(options.capture),
-      passive: options.passive !== false
-    });
-    return () => {
-      target.removeEventListener(eventName, listener, Boolean(options.capture));
-      if (frame) window.cancelAnimationFrame(frame);
-      frame = 0;
-    };
-  }
-
-  // platforms/common/application/utils/get-scrollbar-width.js
-  var cached = null;
-  var get_scrollbar_width_default = () => {
-    if (cached !== null) return cached;
-    const container2 = document.querySelector("[data-genesis-container]") || document.body;
-    const dummy = document.createElement("div");
-    Object.assign(dummy.style, {
-      width: "100px",
-      height: "100px",
-      overflow: "scroll",
-      position: "absolute",
-      zIndex: "-9999"
-    });
-    container2.appendChild(dummy);
-    cached = dummy.offsetWidth - dummy.clientWidth;
-    dummy.remove();
-    return cached;
-  };
-
-  // platforms/common/application/lm/particles-sidebar.js
-  var ready5 = dom_default.ready;
-  var frameListener2 = frameListener;
-  var scrollbarWidth = get_scrollbar_width_default;
-  var container;
-  var sidebar;
-  var search;
-  var particles;
-  var heightTop = 0;
-  var heightBottom = 0;
-  var initialSidebarCoords;
-  var realSidebarTop = 0;
-  var paddingBottom = (element) => Number.parseInt(getComputedStyle(element).paddingBottom, 10) || 0;
-  var resizeParticles = (bottom) => {
-    if (!particles || !search) return;
-    const viewportBottom = window.innerHeight - heightBottom;
-    const availableBottom = typeof bottom === "number" ? Math.min(viewportBottom, bottom) : viewportBottom;
-    const maxHeight = Math.max(0, availableBottom - heightTop - search.offsetHeight - 30);
-    particles.style.maxHeight = "".concat(maxHeight, "px");
-    particles.style.overflow = "auto";
-    const hasScrollbar = particles.scrollHeight > particles.clientHeight;
-    particles.classList.toggle("has-scrollbar", hasScrollbar);
-    particles.style.marginRight = hasScrollbar ? "".concat(-scrollbarWidth(), "px") : "";
-  };
-  var initSizes = () => {
-    container = document.querySelector(".sidebar-block");
-    if (!container) return;
-    sidebar = container.querySelector(".genesis-lm-particles-picker");
-    if (!sidebar) return;
-    search = sidebar.querySelector(":scope > .search");
-    particles = sidebar.querySelector(":scope > .particles-container");
-    if (!search || !particles) return;
-    heightTop = 0;
-    heightBottom = 0;
-    initialSidebarCoords = sidebar.getBoundingClientRect();
-    realSidebarTop = sidebar.offsetTop;
-    document.querySelectorAll("body.admin.com_genesis nav.navbar-fixed-top, #wpadminbar, #admin-main #titlebar, #admin-main .grav-update.grav").forEach((element) => {
-      heightTop += element.offsetHeight;
-    });
-    document.querySelectorAll("body.admin.com_genesis #status").forEach((element) => {
-      heightBottom += element.offsetHeight;
-    });
-    resizeParticles();
-  };
-  ready5(() => {
-    initSizes();
-    const scrollElement = window.GENESIS_PLATFORM === "grav" ? document.querySelector("#admin-main .content-padding") || window : window;
-    const scroll = function() {
-      if (!container || !sidebar) return;
-      const scrollTop = scrollElement === window ? window.scrollY : scrollElement.scrollTop;
-      const containerBounds = container.getBoundingClientRect();
-      const limit = containerBounds.top + containerBounds.height;
-      resizeParticles(limit - paddingBottom(container));
-      const sidebarCoords = sidebar.getBoundingClientRect();
-      const shouldBeFixed = scrollTop > initialSidebarCoords.top - heightTop - 10 && scrollTop >= realSidebarTop - 10;
-      const reachedTheLimit = sidebarCoords.height + 10 + heightTop + paddingBottom(container) >= limit;
-      const sidebarTallerThanContainer = containerBounds.height <= sidebarCoords.height;
-      sidebar.style.width = "".concat(sidebarCoords.width, "px");
-      if (shouldBeFixed && !reachedTheLimit) {
-        sidebar.classList.remove("particles-absolute");
-        sidebar.classList.add("particles-fixed");
-        sidebar.style.top = "".concat(heightTop + 10, "px");
-        sidebar.style.bottom = "inherit";
-      } else if (shouldBeFixed && reachedTheLimit && (sidebarTallerThanContainer || window.GENESIS_PLATFORM === "grav" && containerBounds.bottom < sidebarCoords.bottom)) {
-        sidebar.classList.remove("particles-fixed");
-        sidebar.classList.add("particles-absolute");
-        sidebar.style.top = "inherit";
-        sidebar.style.bottom = "".concat(paddingBottom(container), "px");
-      } else {
-        sidebar.classList.remove("particles-fixed", "particles-absolute");
-        sidebar.style.top = "inherit";
-        sidebar.style.bottom = "inherit";
-      }
-    };
-    frameListener2(scrollElement, "scroll", scroll);
-    frameListener2(window, "resize", () => {
-      if (!particles || !search) return;
-      scroll();
-    });
-    document.body.addEventListener("statechangeEnd", initSizes);
-  });
-
-  // platforms/common/application/lm/id.js
+  // application/lm/id.js
   var randomId = () => {
     if (window.crypto && typeof window.crypto.getRandomValues === "function") {
       const value = new Uint32Array(1);
@@ -4317,13 +4192,13 @@
     return "".concat(key, "-").concat(id2);
   };
 
-  // platforms/common/application/utils/translate.js
+  // application/utils/translate.js
   var translate_default = (key, replacement = "") => {
     const translate21 = window.GenesisTranslate || window.GenesisT || ((value) => value);
     return String(translate21(key)).split("%s").join(replacement);
   };
 
-  // platforms/common/application/utils/get-outline.js
+  // application/utils/get-outline.js
   var selectize = () => {
     const selector = document.querySelector("#configuration-selector");
     return selector ? selector.selectizeInstance : null;
@@ -4355,7 +4230,7 @@
   };
   var get_outline_default = { getOutlineNameById, getCurrentOutline };
 
-  // platforms/common/application/lm/blocks/base.js
+  // application/lm/blocks/base.js
   var EventEmitter3 = event_emitter_default;
   var zen3 = createElement;
   var dom6 = dom_collection_default;
@@ -4534,7 +4409,7 @@
   });
   var base_default = Base;
 
-  // platforms/common/application/lm/blocks/atom.js
+  // application/lm/blocks/atom.js
   var Base2 = base_default;
   var getAjaxURL4 = get_ajax_url_default.config;
   var Atom = class extends Base2 {
@@ -4566,9 +4441,9 @@
       if (state && !icon) {
         icon = document.createElement("i");
         icon.className = "far fa-circle changes-indicator";
-        let reference = block.querySelector(".icon"), container2 = reference ? reference.parentNode : block.querySelector("span");
-        if (container2) {
-          container2.insertBefore(icon, reference || container2.firstChild);
+        let reference = block.querySelector(".icon"), container = reference ? reference.parentNode : block.querySelector("span");
+        if (container) {
+          container.insertBefore(icon, reference || container.firstChild);
         }
       }
     }
@@ -4584,7 +4459,7 @@
   };
   var atom_default = Atom;
 
-  // platforms/common/application/lm/blocks/grid.js
+  // application/lm/blocks/grid.js
   var Base3 = base_default;
   var translate2 = translate_default;
   var Grid = class extends Base3 {
@@ -4594,7 +4469,7 @@
     }
     layout() {
       let isPreset = this.getAttribute("layoutPreset") === "bootstrap", preset = isPreset ? ' data-lm-preset-grid="bootstrap"' : "";
-      return '<div class="g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><span class="grid-row-title" data-lm-nodrag><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span></span><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
+      return '<div class="row g-grid nowrap no-gear" data-lm-id="' + this.getId() + '" ' + this.dropzone() + ' data-lm-blocktype="grid"' + preset + '><span class="grid-row-title" data-lm-nodrag><i class="fa fa-columns" aria-hidden="true"></i><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span></span><button type="button" class="grid-structure-menu" data-lm-nodrag data-lm-structure-menu aria-label="' + translate2("GENESIS_PLATFORM_JS_LM_MORE_ACTIONS") + '"><span>' + translate2("GENESIS_PLATFORM_JS_LM_ROW") + '</span><i class="fa fa-cog" aria-hidden="true"></i></button></div>';
     }
     onRendered() {
       let parent = this.block.parent();
@@ -4621,7 +4496,7 @@
   };
   var grid_default = Grid;
 
-  // platforms/common/application/lm/blocks/section.js
+  // application/lm/blocks/section.js
   var Base4 = base_default;
   var Grid2 = grid_default;
   var getAjaxURL5 = get_ajax_url_default.config;
@@ -4780,7 +4655,7 @@
   Section.prototype.options = {};
   var section_default = Section;
 
-  // platforms/common/application/lm/blocks/offcanvas.js
+  // application/lm/blocks/offcanvas.js
   var Section2 = section_default;
   var getAjaxURL6 = get_ajax_url_default.config;
   var getOutlineNameById3 = get_outline_default.getOutlineNameById;
@@ -4805,7 +4680,7 @@
   };
   var offcanvas_default = Offcanvas;
 
-  // platforms/common/application/lm/blocks/wrapper.js
+  // application/lm/blocks/wrapper.js
   var Section3 = section_default;
   var Wrapper = class extends Section3 {
     layout() {
@@ -4826,7 +4701,7 @@
   };
   var wrapper_default = Wrapper;
 
-  // platforms/common/application/lm/blocks/atoms.js
+  // application/lm/blocks/atoms.js
   var Section4 = section_default;
   var elementFromHTML2 = function(html) {
     let template = document.createElement("template");
@@ -4883,7 +4758,7 @@
   };
   var atoms_default = Atoms;
 
-  // platforms/common/application/lm/blocks/container.js
+  // application/lm/blocks/container.js
   var Base5 = base_default;
   var getAjaxURL7 = get_ajax_url_default.config;
   var translate5 = translate_default;
@@ -4915,8 +4790,8 @@
         title.insertBefore(icon, title.firstChild);
       }
     }
-    addSettings(container2) {
-      let settingsUri = getAjaxURL7(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), block = container2.block[0], wrapper = document.createElement("div");
+    addSettings(container) {
+      let settingsUri = getAjaxURL7(this.getPageId() + "/layout/" + this.getType() + "/" + this.getId()), block = container.block[0], wrapper = document.createElement("div");
       wrapper.className = "container-wrapper clearfix";
       wrapper.innerHTML = '<div class="container-title"><span class="title">' + this.getType() + '</span></div><div class="container-actions"><span data-tip="' + translate5("GENESIS_PLATFORM_JS_LM_SETTINGS", "Container") + '" data-tip-place="top-left"><i aria-label="' + translate5("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Container") + '" class="fa fa-cog" aria-hidden="true" data-lm-settings="' + settingsUri + '"></i></span></div>';
       block.insertBefore(wrapper, block.firstChild);
@@ -4927,7 +4802,7 @@
   };
   var container_default = Container;
 
-  // platforms/common/application/lm/blocks/block.js
+  // application/lm/blocks/block.js
   var Base6 = base_default;
   var precision = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
@@ -5017,14 +4892,6 @@
       }
       this.emit("resized", size3, this);
     }
-    setLabelSize(size3) {
-      let label = this.block[0].querySelector(":scope > .particle-size");
-      if (!label) {
-        return false;
-      }
-      let span = Math.max(1, Math.min(12, Math.round(Number(size3) / 100 * 12)));
-      label.textContent = "col-" + span;
-    }
     layout() {
       return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"><button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content"><span aria-hidden="true">+</span></button></div>';
     }
@@ -5036,39 +4903,11 @@
       if (!parent) {
         return;
       }
-      let grandpa = parent.block[0].parentElement, greatGrandpa = grandpa && grandpa.parentElement, isRoot = grandpa && grandpa.hasAttribute("data-lm-root"), isRootContainer = grandpa && grandpa.getAttribute("data-lm-blocktype") === "container" && greatGrandpa && (greatGrandpa.hasAttribute("data-lm-root") || greatGrandpa.getAttribute("data-lm-blocktype") === "wrapper");
-      if (isRoot || isRootContainer) {
-        let label = document.createElement("span");
-        label.className = "particle-size";
-        label.textContent = "col-" + this.getColumnSpan("xs");
-        elementBlock.insertBefore(label, elementBlock.firstChild);
-        element.on("resized", this.bound("onResize"));
-      }
-    }
-    onResize(resize) {
-      this.setLabelSize(resize);
     }
     hasChanged(state) {
-      let icon, block = this.block[0], child = block.querySelector(':scope > [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
+      let block = this.block[0], child = block.querySelector(':scope > [data-lm-id]:not([data-lm-blocktype="section"]):not([data-lm-blocktype="container"])');
       this.changeState = state;
       if (!child) {
-        child = block.querySelector(":scope > .particle-size");
-        if (!child) {
-          let parentBlock = block.parentElement && block.parentElement.closest('[data-lm-blocktype="block"]');
-          child = parentBlock && parentBlock.querySelector(":scope > .particle-size");
-        }
-        if (!child) {
-          return;
-        }
-        icon = child.querySelector("i:first-child");
-        if (!state && icon) {
-          icon.remove();
-        }
-        if (state && !icon) {
-          icon = document.createElement("i");
-          icon.className = "far fa-circle changes-indicator";
-          child.insertBefore(icon, child.firstChild);
-        }
         return;
       }
       let mapped = this.options.builder.get(child.getAttribute("data-lm-id"));
@@ -5085,15 +4924,11 @@
   };
   var block_default = Block;
 
-  // platforms/common/application/lm/blocks/particle.js
+  // application/lm/blocks/particle.js
   var Atom2 = atom_default;
   var getAjaxURL8 = get_ajax_url_default.config;
   var getOutlineNameById4 = get_outline_default.getOutlineNameById;
   var translate6 = translate_default;
-  var precision2 = function(value, decimals) {
-    let multiplier = Math.pow(10, decimals);
-    return Math.round(Number(value) * multiplier) / multiplier;
-  };
   var forOwn2 = function(object, callback) {
     Object.keys(object || {}).forEach(function(key) {
       callback(object[key], key);
@@ -5108,7 +4943,7 @@
           klass += " g-inheriting-" + this.inherit.include.join(" g-inheriting-");
         }
       }
-      return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-size"></span><span class="particle-actions"><i class="fa fa-times particle-remove" aria-hidden="true" data-lm-nodrag data-lm-particle-remove aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_REMOVE") + '"></i><i aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></span></div></div>';
+      return '<div class="' + this.getType() + klass + '" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" ' + subtype + '><span><span class="icon" ' + this.addInheritanceTip(true) + '><i class="fa ' + this.getIcon() + '" aria-hidden="true"></i></span><span class="title">' + this.getTitle() + '</span><span class="font-small">' + (this.getKey() || this.getSubType() || this.getType()) + '</span></span><div class="float-right"><span class="particle-actions"><i class="fa fa-times particle-remove" aria-hidden="true" data-lm-nodrag data-lm-particle-remove aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_REMOVE") + '"></i><i aria-label="' + translate6("GENESIS_PLATFORM_JS_LM_CONFIGURE_SETTINGS", "Particle") + '" class="fa fa-cog" aria-hidden="true" data-lm-nodrag data-lm-settings="' + settingsUri + '"></i></span></div></div>';
     }
     enableInheritance() {
       let block = this.block[0];
@@ -5175,27 +5010,15 @@
         return !item.match(/^g-inheriting-/);
       }).join(" ");
     }
-    setLabelSize(size3) {
-      let label = this.block[0].querySelector(".particle-size");
-      if (!label) {
-        return false;
-      }
-      label.textContent = precision2(size3, 1) + "%";
-    }
     onRendered(element, parent) {
-      let size3 = parent.getWidthPercent() || 100, globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
+      let globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
       if (globallyDisabled || this.getAttribute("enabled") === 0) {
         this.disable();
       }
-      this.setLabelSize(size3);
-      parent.on("resized", this.bound("onParentResize"));
     }
     getParent() {
       let parent = this.block[0].parentElement && this.block[0].parentElement.closest("[data-lm-id]");
       return parent ? this.options.builder.get(parent.getAttribute("data-lm-id")) : null;
-    }
-    onParentResize(resize) {
-      this.setLabelSize(resize);
     }
     getIcon() {
       if (this.hasInheritance()) {
@@ -5230,7 +5053,7 @@
   };
   var particle_default = Particle;
 
-  // platforms/common/application/lm/blocks/position.js
+  // application/lm/blocks/position.js
   var Particle2 = particle_default;
   var UID = 0;
   var Position = class extends Particle2 {
@@ -5260,7 +5083,7 @@
   };
   var position_default = Position;
 
-  // platforms/common/application/lm/blocks/system.js
+  // application/lm/blocks/system.js
   var Particle3 = particle_default;
   var System = class extends Particle3 {
   };
@@ -5270,7 +5093,7 @@
   };
   var system_default = System;
 
-  // platforms/common/application/lm/blocks/spacer.js
+  // application/lm/blocks/spacer.js
   var Particle4 = particle_default;
   var Spacer = class extends Particle4 {
   };
@@ -5281,7 +5104,7 @@
   };
   var spacer_default = Spacer;
 
-  // platforms/common/application/lm/blocks/div.js
+  // application/lm/blocks/div.js
   var Base7 = base_default;
   var getAjaxURL9 = get_ajax_url_default.config;
   var translate7 = translate_default;
@@ -5298,7 +5121,7 @@
   };
   var div_default = Div;
 
-  // platforms/common/application/lm/blocks/index.js
+  // application/lm/blocks/index.js
   var blocks_default = {
     base: base_default,
     atom: atom_default,
@@ -5316,7 +5139,7 @@
     div: div_default
   };
 
-  // platforms/common/application/lm/normalize-grid-columns.js
+  // application/lm/normalize-grid-columns.js
   var normalizeGridColumns = (root, getBlock) => {
     if (!root || typeof getBlock !== "function") return;
     root.querySelectorAll('[data-lm-blocktype="grid"]').forEach((grid) => {
@@ -5349,7 +5172,7 @@
   };
   var normalize_grid_columns_default = normalizeGridColumns;
 
-  // platforms/common/application/lm/builder.js
+  // application/lm/builder.js
   var EventEmitter4 = event_emitter_default;
   var Blocks = blocks_default;
   var ID2 = id_default;
@@ -5563,7 +5386,7 @@
   };
   var builder_default = Builder;
 
-  // platforms/common/application/utils/history-adapter.js
+  // application/utils/history-adapter.js
   var resolveElement = (element) => typeof element === "string" ? document.querySelector(element) : element;
   var History = {
     Adapter: {
@@ -5597,7 +5420,7 @@
   };
   var history_adapter_default = History;
 
-  // platforms/common/application/utils/history.js
+  // application/utils/history.js
   var absoluteURL = (value) => new URL(value || window.location.href, window.location.href).href;
   var stateFrom = (data, title, url) => ({
     data: data && typeof data === "object" ? data : {},
@@ -5640,7 +5463,7 @@
   window.History = history_adapter_default;
   var history_default = history_adapter_default;
 
-  // platforms/common/application/lm/history.js
+  // application/lm/history.js
   var cloneSnapshot = (value) => {
     if (value == null) return value;
     if (typeof structuredClone === "function") return structuredClone(value);
@@ -5777,7 +5600,7 @@
   };
   var history_default2 = History2;
 
-  // platforms/common/application/ui/drag.events.js
+  // application/ui/drag.events.js
   var getSupportedEvent = function(events) {
     events = events.split(" ");
     let element = document.createElement("div"), event;
@@ -5823,15 +5646,15 @@
     EVENTS
   };
 
-  // platforms/common/application/ui/drag.drop.js
+  // application/ui/drag.drop.js
   var EventEmitter5 = event_emitter_default;
   var DragEvents = drag_events_default;
   var dom7 = dom_effects_default;
   var isIE = navigator.appName === "Microsoft Internet Explorer";
   var DragDrop = class extends EventEmitter5 {
-    constructor(container2, options) {
+    constructor(container, options) {
       super();
-      this.container = dom7(container2);
+      this.container = dom7(container);
       if (!this.container) {
         return;
       }
@@ -6137,7 +5960,7 @@
   };
   var drag_drop_default = DragDrop;
 
-  // platforms/common/application/ui/eraser.js
+  // application/ui/eraser.js
   var toPixels = (value) => typeof value === "number" ? "".concat(value, "px") : value;
   var applyStyles = (element, styles) => {
     Object.keys(styles).forEach((property) => {
@@ -6181,8 +6004,8 @@
     setTop() {
       if (this.top !== void 0 || !this.element) return;
       this.top = Number.parseInt(getComputedStyle(this.element).top, 10) || 0;
-      const container2 = document.querySelector("[data-genesis-container]");
-      this.left = container2 ? container2.getBoundingClientRect().left : 0;
+      const container = document.querySelector("[data-genesis-container]");
+      this.left = container ? container.getBoundingClientRect().left : 0;
       if (window.GENESIS_PLATFORM === "grav") this.left = 0;
     }
     show(fast) {
@@ -6209,7 +6032,7 @@
   };
   var eraser_default = Eraser;
 
-  // platforms/common/application/utils/deep-equals.js
+  // application/utils/deep-equals.js
   var deepEquals = function(first, second) {
     if (Object.is(first, second)) {
       return true;
@@ -6238,7 +6061,7 @@
   };
   var deep_equals_default = deepEquals;
 
-  // platforms/common/application/lm/layoutmanager.js
+  // application/lm/layoutmanager.js
   var EventEmitter6 = event_emitter_default;
   var dom8 = dom_effects_default;
   var zen4 = createElement;
@@ -6253,7 +6076,7 @@
   var keys = function(object) {
     return Object.keys(object || {});
   };
-  var precision3 = function(value, decimals) {
+  var precision2 = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
   };
@@ -6619,7 +6442,7 @@
           if (index + 1 == siblings2.length) {
             last3 = block;
           }
-          newSize = precision3(block.getWidthPercent() + diff, 0);
+          newSize = precision2(block.getWidthPercent() + diff, 0);
           total += newSize;
           block.setWidthPercent(newSize, true);
         }, this);
@@ -6840,7 +6663,7 @@
   LayoutManager.prototype.options = LayoutManagerDefinition.options;
   var layoutmanager_default = LayoutManager;
 
-  // platforms/common/application/utils/save-state.js
+  // application/utils/save-state.js
   var clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
   var SaveState = class {
     constructor(session) {
@@ -6865,7 +6688,7 @@
   };
   var save_state_default = SaveState;
 
-  // platforms/common/application/lm/row-picker.js
+  // application/lm/row-picker.js
   var modal4 = ui_default.modal;
   var translate8 = translate_default;
   var PRESETS = [
@@ -6996,7 +6819,7 @@
   };
   var row_picker_default = openRowPicker;
 
-  // platforms/common/application/ui/popover.js
+  // application/ui/popover.js
   var dom9 = dom_effects_default;
   var zen5 = createElement;
   var storage2 = /* @__PURE__ */ new WeakMap();
@@ -7151,10 +6974,10 @@
       if (!this.options.arrow && target.find(".g-arrow")) {
         target.find(".g-arrow").remove();
       }
-      let container2 = dom9(this.options.where);
+      let container = dom9(this.options.where);
       if (GENESIS_PLATFORM == "wordpress") {
-        container2 = dom9("#widgets-editor") || dom9("#customize-preview") || dom9("#widgets-right") || dom9(this.options.where);
-        if ("#" + container2.id() != this.options.where) {
+        container = dom9("#widgets-editor") || dom9("#customize-preview") || dom9("#widgets-right") || dom9(this.options.where);
+        if ("#" + container.id() != this.options.where) {
           let wpwrap = dom9("#wpwrap") || dom9(".wp-customizer"), sibling, workaround;
           if (wpwrap.id() == "wpwrap") {
             sibling = wpwrap.nextSibling(this.options.where);
@@ -7163,14 +6986,14 @@
             sibling = wpwrap.find("> " + this.options.where);
             workaround = sibling ? sibling : zen5("div.g5wp-out-of-scope" + this.options.where).top(wpwrap);
           }
-          container2 = workaround;
+          container = workaround;
         }
       }
       target.remove().style({
         top: -1e3,
         left: -1e3,
         display: "block"
-      }).bottom(container2);
+      }).bottom(container);
       const anchorRect = this.element[0].getBoundingClientRect();
       const offsetParent = target[0].offsetParent || document.documentElement;
       const parentRect = offsetParent.getBoundingClientRect();
@@ -7525,9 +7348,9 @@
   });
   var popover_default = dom9;
 
-  // platforms/common/application/lm/inheritance/index.js
+  // application/lm/inheritance/index.js
   var dom10 = dom_default;
-  var ready6 = dom10.ready;
+  var ready5 = dom10.ready;
   var delegate4 = dom10.delegate;
   var indicator2 = indicator_default;
   var request5 = request_default;
@@ -7572,7 +7395,7 @@
       '[name="inherit[particle]"]:checked, [name="inherit[atom]"]:checked'
     );
   };
-  ready6(function() {
+  ready5(function() {
     let body = document.body, currentSelection = {}, currentMode = {};
     delegate4(body, "change", '[name="inherit[outline]"]', function(event, element) {
       let settingsParam = element.closest(".settings-param"), label = settingsParam && settingsParam.querySelector(".settings-param-title"), text = settingsParam && settingsParam.querySelector(".g-item"), value = element.value, section = document.querySelector('[name="inherit[section]"]'), name = section ? section.value : "", form = element.closest("[data-g-inheritance-settings]"), includesFields = Array.from(document.querySelectorAll(
@@ -7619,10 +7442,10 @@
         if (!response.body.success) {
           modal5.open({
             content: response.body.html || response.body.message || response.body,
-            afterOpen: function(container3) {
-              container3 = asElement3(container3);
-              if (container3 && !response.body.html && !response.body.message) {
-                container3.style.width = "90%";
+            afterOpen: function(container2) {
+              container2 = asElement3(container2);
+              if (container2 && !response.body.html && !response.body.message) {
+                container2.style.width = "90%";
               }
             }
           });
@@ -7632,8 +7455,8 @@
           '[data-multicheckbox-field="inherit[include]"]'
         )).map(function(item) {
           return item.value;
-        }), container2 = getModalContainer(), refreshed;
-        if (!container2) {
+        }), container = getModalContainer(), refreshed;
+        if (!container) {
           return;
         }
         Object.keys(IDsMap).forEach(function(option) {
@@ -7642,7 +7465,7 @@
           id2 = !Array.isArray(id2) ? [id2] : id2;
           id2.forEach(function(currentID) {
             let shouldRefresh = includes.includes(option), isAvailable = available.includes(option);
-            if ((shouldRefresh || !isAvailable) && responseData.html && responseData.html[currentID] && (refreshed = container2.querySelector("#" + currentID))) {
+            if ((shouldRefresh || !isAvailable) && responseData.html && responseData.html[currentID] && (refreshed = container.querySelector("#" + currentID))) {
               refreshed.innerHTML = responseData.html[currentID];
               Selectize3.initialize(refreshed.querySelectorAll("[data-selectize]"));
             }
@@ -7716,11 +7539,11 @@
       "change",
       '[name="inherit[mode]"], [name="inherit[particle]"], [name="inherit[atom]"]',
       function(event, element) {
-        let container2 = getModalContainer();
-        if (!container2) {
+        let container = getModalContainer();
+        if (!container) {
           return;
         }
-        let outline = container2.querySelector('[name="inherit[outline]"]'), checkboxes = container2.querySelectorAll("[data-multicheckbox-field]"), noRefresh = element.name === "inherit[mode]";
+        let outline = container.querySelector('[name="inherit[outline]"]'), checkboxes = container.querySelectorAll("[data-multicheckbox-field]"), noRefresh = element.name === "inherit[mode]";
         emitChange(outline, { noRefresh });
         checkboxes.forEach(function(checkbox) {
           emitChange(checkbox, { noRefresh });
@@ -7733,7 +7556,7 @@
       "#g-inherit-particle .fa-info-circle, #g-inherit-atom .fa-info-circle",
       function(event, element) {
         event.preventDefault();
-        let container2 = getModalContainer(), outline = container2 && container2.querySelector('[name="inherit[outline]"]'), parent = element.parentElement, id2 = parent && parent.querySelector(
+        let container = getModalContainer(), outline = container && container.querySelector('[name="inherit[outline]"]'), parent = element.parentElement, id2 = parent && parent.querySelector(
           'input[name="inherit[particle]"], input[name="inherit[atom]"]'
         );
         if (!id2 || !outline) {
@@ -7759,14 +7582,14 @@
       if (!listItem || !listItem.classList.contains("active")) {
         return false;
       }
-      let container2 = getModalContainer(), anchor = element.closest("a"), isLocked = element.classList.contains("fa-lock"), id2 = anchor ? anchor.id.replace(/\-tab$/, "") : "", prop = Object.keys(IDsMap).find(function(key) {
+      let container = getModalContainer(), anchor = element.closest("a"), isLocked = element.classList.contains("fa-lock"), id2 = anchor ? anchor.id.replace(/\-tab$/, "") : "", prop = Object.keys(IDsMap).find(function(key) {
         let value = IDsMap[key];
         return value === id2 || value.tab === id2 || collectionContains(value, id2);
-      }), input = container2 && container2.querySelector(
+      }), input = container && container.querySelector(
         '[data-multicheckbox-field][value="' + prop + '"]'
-      ), mode = container2 && getMode(container2), radios = container2 && container2.querySelector(
+      ), mode = container && getMode(container), radios = container && container.querySelector(
         '[name="inherit[particle]"], [name="inherit[atom]"]'
-      ), checked2 = container2 && getSelectedItem(container2);
+      ), checked2 = container && getSelectedItem(container);
       if (input) {
         if (mode && mode.value === "clone" || radios && !checked2) {
           return false;
@@ -7777,8 +7600,8 @@
     });
   });
 
-  // platforms/common/application/lm/index.js
-  var ready7 = dom_default.ready;
+  // application/lm/index.js
+  var ready6 = dom_default.ready;
   var dom11 = dom_collection_default;
   var Submit = submit;
   var modal6 = ui_default.modal;
@@ -7797,7 +7620,7 @@
   var openRowPicker2 = row_picker_default;
   var reportInvalidFields = function(invalid) {
     let fields2 = invalid.map(function(input) {
-      let element = input && input[0] ? input[0] : input, container2 = element ? element.closest(".settings-param, .card-overrideable") : null, label = container2 ? container2.querySelector(".settings-param-title, label") : null;
+      let element = input && input[0] ? input[0] : input, container = element ? element.closest(".settings-param, .card-overrideable") : null, label = container ? container.querySelector(".settings-param-title, label") : null;
       if (element) {
         element.classList.add("field-invalid");
         element.setAttribute("aria-invalid", "true");
@@ -7838,7 +7661,7 @@
   builder = new Builder2();
   lmhistory = new LMHistory();
   savestate = new SaveState2();
-  ready7(function() {
+  ready6(function() {
     let body = dom11("body");
     body.delegate("click", "[data-lm-back]", function(e, element) {
       if (e) {
@@ -7898,7 +7721,7 @@
       layoutmanager.updatePendingChanges();
     });
   });
-  ready7(function() {
+  ready6(function() {
     let body = dom11("body"), root = dom11("[data-lm-root]"), data;
     layoutmanager = new LayoutManager2("[data-lm-container]", {
       delegate: '[data-lm-root] .g-grid:not([data-lm-preset-grid="bootstrap"]) > .g-block:has(> [data-lm-blocktype]:not([data-lm-nodrag])), [data-lm-root] [data-lm-preset-grid="bootstrap"] > .g-block > [data-lm-blocktype]:not([data-lm-nodrag]), .genesis-lm-particles-picker [data-lm-blocktype], [data-lm-root] .g-block > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="div"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="section"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag]), [data-lm-root] [data-lm-blocktype="offcanvas"] > [data-lm-blocktype="container"] > [data-lm-blocktype="grid"]:not(:empty):not(.no-move):not([data-lm-nodrag])',
@@ -7971,20 +7794,6 @@
       layoutmanager.savestate.setSession(builder.serialize(null, true));
       layoutmanager.eraser.setElement(document.querySelector("[data-lm-eraseblock]"));
       layoutmanager.eraser.hide(true);
-    });
-    body.delegate("input", ".sidebar-block .search input", function(event, element) {
-      let value = dom11(element).value().toLowerCase(), list = dom11(".sidebar-block [data-lm-blocktype]"), text, type;
-      if (!list) {
-        return false;
-      }
-      list.style({ display: "none" }).forEach(function(blocktype) {
-        blocktype = dom11(blocktype);
-        type = blocktype.data("lm-blocktype").toLowerCase();
-        text = trim2(blocktype.text()).toLowerCase();
-        if (type.substr(0, value.length) == value || text.match(value)) {
-          blocktype.style({ display: "block" });
-        }
-      }, this);
     });
     ["click", "touchend"].forEach(function(evt) {
       body.delegate(evt, "[data-lm-samewidth]:not(:empty)", function(event, element) {
@@ -8095,10 +7904,10 @@
         if (!response.body.success) {
           modal6.open({
             content: response.body.html || response.body.message || response.body,
-            afterOpen: function(container2) {
-              container2 = modal6.element(container2);
-              if (container2 && !response.body.html && !response.body.message) {
-                container2.style.width = "90%";
+            afterOpen: function(container) {
+              container = modal6.element(container);
+              if (container && !response.body.html && !response.body.message) {
+                container.style.width = "90%";
               }
             }
           });
@@ -8208,11 +8017,11 @@
             modal6.enableCloseByOverlay();
             return;
           }
-          let container2 = modal6.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form;
-          if (!container2 || !form || !actionForm || !submit3.length) {
+          let container = modal6.element(content.elements.content), form = container && container.querySelector("form"), submit3 = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form;
+          if (!container || !form || !actionForm || !submit3.length) {
             return true;
           }
-          let urlTemplate = container2.querySelector(".g-urltemplate");
+          let urlTemplate = container.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
@@ -8222,7 +8031,7 @@
               target.disabled = true;
               indicator3.hide(target);
               indicator3.show(target);
-              let currentForm = container2.querySelector("form"), formElements = currentForm ? currentForm.elements : [], post = Submit(formElements, container2);
+              let currentForm = container.querySelector("form"), formElements = currentForm ? currentForm.elements : [], post = Submit(formElements, container);
               if (post.invalid.length) {
                 target.disabled = false;
                 indicator3.hide(target);
@@ -8238,10 +8047,10 @@
                   if (!response2.body.success) {
                     modal6.open({
                       content: response2.body.html || response2.body.message || response2.body,
-                      afterOpen: function(container3) {
-                        container3 = modal6.element(container3);
-                        if (container3 && !response2.body.html && !response2.body.message) {
-                          container3.style.width = "90%";
+                      afterOpen: function(container2) {
+                        container2 = modal6.element(container2);
+                        if (container2 && !response2.body.html && !response2.body.message) {
+                          container2.style.width = "90%";
                         }
                       }
                     });
@@ -8334,24 +8143,33 @@
       let templates = Array.from(document.querySelectorAll(".genesis-lm-particles-picker .particles-container [data-lm-blocktype]")).filter(function(item) {
         return !item.hasAttribute("data-lm-disabled");
       });
-      let items = templates.map(function(item, index) {
-        let title = (item.querySelector(".particle-title") || item).textContent.trim();
-        let icon = item.getAttribute("data-lm-icon") || "fa-cube";
-        return '<button type="button" class="lm-particle-picker-item" data-lm-particle-index="' + index + '" data-search="' + escapeHTML3((title + " " + (item.getAttribute("data-lm-subtype") || "")).toLowerCase()) + '"><i class="fa fa-fw ' + escapeHTML3(icon) + '" aria-hidden="true"></i><span>' + escapeHTML3(title) + "</span></button>";
+      let categories = /* @__PURE__ */ new Map();
+      templates.forEach(function(item, index) {
+        let title = (item.querySelector(".particle-title") || item).textContent.trim(), icon = item.getAttribute("data-lm-icon") || "fa-cube", category = item.getAttribute("data-lm-category") || "general", categoryLabel = item.getAttribute("data-lm-category-label") || category, type = item.getAttribute("data-lm-blocktype") || "particle", button = '<button type="button" class="lm-particle-picker-item genesis-lm-particle-' + escapeHTML3(type) + " particle-category-" + escapeHTML3(category) + '" data-lm-blocktype="' + escapeHTML3(type) + '" data-lm-category="' + escapeHTML3(category) + '" data-lm-particle-index="' + index + '" data-search="' + escapeHTML3((title + " " + (item.getAttribute("data-lm-subtype") || "") + " " + categoryLabel).toLowerCase()) + '"><span class="particle-icon"><i class="fa fa-fw ' + escapeHTML3(icon) + '" aria-hidden="true"></i></span><span class="particle-title">' + escapeHTML3(title) + "</span></button>";
+        if (!categories.has(categoryLabel)) {
+          categories.set(categoryLabel, []);
+        }
+        categories.get(categoryLabel).push(button);
+      });
+      let items = Array.from(categories, function(entry) {
+        return '<section class="lm-particle-picker-group" data-lm-particle-group><h4>' + escapeHTML3(entry[0]) + '</h4><div class="lm-particle-picker-group-items">' + entry[1].join("") + "</div></section>";
       }).join("");
       modal6.open({
         content: '<div class="lm-particle-picker-dialog"><h3>' + translate9("GENESIS_PLATFORM_JS_LM_PARTICLE_PICKER_TITLE") + '</h3><label class="lm-particle-picker-search"><i class="fa fa-search" aria-hidden="true"></i><input type="search" data-lm-particle-search placeholder="' + translate9("GENESIS_PLATFORM_JS_LM_PARTICLE_SEARCH") + '"></label><div class="lm-particle-picker-results">' + items + '</div><p class="lm-particle-picker-empty" hidden>' + translate9("GENESIS_PLATFORM_JS_LM_PARTICLE_EMPTY") + "</p></div>",
         className: "genesis-dialog-theme-default lm-particle-picker-modal",
         afterOpen: function(content) {
-          let root2 = content[0], search2 = root2.querySelector("[data-lm-particle-search]"), buttons = Array.from(root2.querySelectorAll("[data-lm-particle-index]")), empty = root2.querySelector(".lm-particle-picker-empty");
-          search2.addEventListener("input", function() {
-            let query = search2.value.trim().toLowerCase(), visible2 = 0;
+          let root2 = content[0], search = root2.querySelector("[data-lm-particle-search]"), buttons = Array.from(root2.querySelectorAll("[data-lm-particle-index]")), groups = Array.from(root2.querySelectorAll("[data-lm-particle-group]")), empty = root2.querySelector(".lm-particle-picker-empty");
+          search.addEventListener("input", function() {
+            let query = search.value.trim().toLowerCase(), visible2 = 0;
             buttons.forEach(function(button) {
               let show2 = !query || button.getAttribute("data-search").indexOf(query) !== -1;
               button.hidden = !show2;
               if (show2) {
                 visible2++;
               }
+            });
+            groups.forEach(function(group) {
+              group.hidden = !group.querySelector("[data-lm-particle-index]:not([hidden])");
             });
             empty.hidden = visible2 !== 0;
           });
@@ -8368,7 +8186,7 @@
               modal6.close();
             });
           });
-          search2.focus();
+          search.focus();
         }
       });
     };
@@ -8580,7 +8398,7 @@
       if (lastGrid && !lastGrid.querySelector(':scope > [data-lm-blocktype="block"]')) {
         return false;
       }
-      let container2 = dom11(sectionBlock.querySelector(':scope > [data-lm-blocktype="container"]')), parentId = (container2 || section).data("lm-id");
+      let container = dom11(sectionBlock.querySelector(':scope > [data-lm-blocktype="container"]')), parentId = (container || section).data("lm-id");
       openRowPicker2({
         onSelect: function(columns) {
           insertPresetRow(parentId, columns);
@@ -8610,7 +8428,7 @@
     savestate
   };
 
-  // platforms/common/application/menu/drag.resizer.js
+  // application/menu/drag.resizer.js
   var DragEvents2 = drag_events_default;
   var asElement4 = function(element) {
     return element && element.nodeType ? element : element && element[0];
@@ -8643,12 +8461,12 @@
   var mapRange = function(value, min1, max1, min2, max2) {
     return min2 + (value - min1) / (max1 - min1) * (max2 - min2);
   };
-  var precision4 = function(value, decimals) {
+  var precision3 = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.round(value * multiplier) / multiplier;
   };
   var Resizer = class {
-    constructor(container2, options, menumanager3) {
+    constructor(container, options, menumanager3) {
       this.DRAG_EVENTS = DragEvents2;
       this.options = Object.assign({ minSize: 5 }, options || {});
       this.history = this.options.history || {};
@@ -8703,7 +8521,7 @@
         parent.style.flex = flex;
       }
       if (pc) {
-        pc.value = precision4(size3, 1);
+        pc.value = precision3(size3, 1);
       }
     }
     start(event, element, siblings2, offset) {
@@ -8782,8 +8600,8 @@
       let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp(value, parentRect.left, parentRect.right);
       size3 = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
       size3 = size3 - this.siblings.sizeBefore;
-      size3 = precision4(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
-      diff = precision4(diff - size3, 0);
+      size3 = precision3(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
+      diff = precision3(diff - size3, 0);
       this.setSize(this.element, size3);
       this.setSize(this.siblings.next, diff);
       let siblings2 = this.siblings.elements, amount = siblings2 ? siblings2.length + 1 : 1;
@@ -8793,7 +8611,7 @@
         blocks.forEach(function(block, index) {
           size3 = this.getSize(block);
           if (size3 % 1) {
-            size3 = precision4(100 / amount, 0);
+            size3 = precision3(100 / amount, 0);
             this.setSize(block, size3);
           }
           total += size3;
@@ -8869,7 +8687,7 @@
     }
     evenResize(elements, animated) {
       elements = asElements(elements);
-      let total = elements.length, size3 = precision4(100 / total, 4);
+      let total = elements.length, size3 = precision3(100 / total, 4);
       elements.forEach(function(element) {
         this.setSize(element, size3, typeof animated == "undefined" ? false : animated);
       }, this);
@@ -8879,7 +8697,7 @@
   };
   var drag_resizer_default = Resizer;
 
-  // platforms/common/application/menu/menumanager.js
+  // application/menu/menumanager.js
   var EventEmitter7 = event_emitter_default;
   var dom12 = dom_effects_default;
   var zen6 = createElement;
@@ -9344,7 +9162,7 @@
   MenuManager.prototype.options = MenuManagerDefinition.options;
   var menumanager_default = MenuManager;
 
-  // platforms/common/application/utils/draggable-group.js
+  // application/utils/draggable-group.js
   var directItems = (list, selector, excluded) => Array.from(list.children).filter((item) => item !== excluded && item.matches(selector));
   var previewStyleProperties = [
     "display",
@@ -9526,11 +9344,11 @@
       else list.appendChild(this.drag.item);
     }
     scrollAt(clientY, list) {
-      const container2 = this.options.scrollContainer ? list.closest(this.options.scrollContainer) : null;
-      if (container2) {
-        const bounds = container2.getBoundingClientRect();
-        if (clientY < bounds.top + 36) container2.scrollTop -= 12;
-        else if (clientY > bounds.bottom - 36) container2.scrollTop += 12;
+      const container = this.options.scrollContainer ? list.closest(this.options.scrollContainer) : null;
+      if (container) {
+        const bounds = container.getBoundingClientRect();
+        if (clientY < bounds.top + 36) container.scrollTop -= 12;
+        else if (clientY > bounds.bottom - 36) container.scrollTop += 12;
       }
       if (clientY < 50) window.scrollBy(0, -12);
       else if (clientY > window.innerHeight - 50) window.scrollBy(0, 12);
@@ -9630,8 +9448,8 @@
   };
   var draggable_group_default = DraggableGroup;
 
-  // platforms/common/application/positions/cards.js
-  var { ready: ready8, delegate: delegate5 } = dom_default;
+  // application/positions/cards.js
+  var { ready: ready7, delegate: delegate5 } = dom_default;
   var Eraser4 = eraser_default;
   var DraggableGroup2 = draggable_group_default;
   var flags3 = flags_state_default;
@@ -9723,14 +9541,14 @@
   var attachSortablePositions = (positions) => {
     if (positions && !positions.SimpleSort) Positions.createSortables(positions);
   };
-  ready8(() => {
+  ready7(() => {
     const positions = document.querySelector("#positions");
     delegate5(document.body, "mouseover", "#positions", (event, element) => attachSortablePositions(element));
     attachSortablePositions(positions);
   });
   var cards_default = Positions;
 
-  // platforms/common/application/utils/wp-widgets-customizer.js
+  // application/utils/wp-widgets-customizer.js
   var wp_widgets_customizer_default = (field) => {
     const input = field && field[0] ? field[0] : field;
     if (!(input instanceof Element)) return false;
@@ -9747,7 +9565,7 @@
     return true;
   };
 
-  // platforms/common/application/menu/extra-items.js
+  // application/menu/extra-items.js
   var dom13 = dom_default;
   var Submit2 = submit;
   var modal7 = ui_default.modal;
@@ -9831,12 +9649,12 @@
         method: "post",
         remote: parseAjaxURI6((config2 ? config2.getAttribute("href") : "") + getAjaxSuffix6()),
         remoteLoaded: function(response, modalInstance) {
-          let content = modal7.element(modalInstance.elements.content), search2 = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
-          if (!search2 || !filters.length || !blocks.length) {
+          let content = modal7.element(modalInstance.elements.content), search = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
+          if (!search || !filters.length || !blocks.length) {
             return;
           }
-          search2.addEventListener("input", function() {
-            let value = search2.value.toLowerCase();
+          search.addEventListener("input", function() {
+            let value = search.value.toLowerCase();
             blocks.forEach(function(item) {
               item.classList.toggle("hidden", Boolean(value));
             });
@@ -9851,7 +9669,7 @@
             });
           });
           setTimeout(function() {
-            search2.focus();
+            search.focus();
           }, 5);
         }
       });
@@ -9958,11 +9776,11 @@
   dom13.ready(function() {
     let body = document.body;
     dom13.delegate(body, "click", ".menu-editor-extras [data-lm-blocktype], .menu-editor-extras [data-mm-module]", function(event, element) {
-      let container2 = element.closest(".menu-editor-extras"), selectButton = container2 && container2.querySelector("[data-mm-select]");
-      if (!container2 || !selectButton) {
+      let container = element.closest(".menu-editor-extras"), selectButton = container && container.querySelector("[data-mm-select]");
+      if (!container || !selectButton) {
         return;
       }
-      container2.querySelectorAll("[data-lm-blocktype], [data-mm-module]").forEach(function(item) {
+      container.querySelectorAll("[data-lm-blocktype], [data-mm-module]").forEach(function(item) {
         item.classList.remove("selected");
       });
       element.classList.add("selected");
@@ -9974,8 +9792,8 @@
       if (element.classList.contains("disabled") || element.disabled) {
         return;
       }
-      let container2 = element.closest(".menu-editor-extras"), selected = container2 && container2.querySelector("[data-lm-blocktype].selected, [data-mm-module].selected");
-      if (!container2 || !selected) {
+      let container = element.closest(".menu-editor-extras"), selected = container && container.querySelector("[data-lm-blocktype].selected, [data-mm-module].selected");
+      if (!container || !selected) {
         return;
       }
       let type = selected.getAttribute("data-mm-type"), data = { type }, instancepicker = element.getAttribute("data-g-instancepicker");
@@ -10013,7 +9831,7 @@
   });
   var extra_items_default = StepOne;
 
-  // platforms/common/application/menu/index.js
+  // application/menu/index.js
   var dom14 = dom_default;
   var MenuManager2 = menumanager_default;
   var Submit3 = submit;
@@ -10106,11 +9924,11 @@
     });
     dom14.delegate(body, "click", ".add-column", function(event, element) {
       event.preventDefault();
-      let columns = element.closest("[data-genesis-menu-columns]"), container2 = columns && columns.querySelector(".submenu-selector"), children = container2 ? Array.from(container2.children) : [], last3 = children[children.length - 1], count = children.length, active = document.querySelector(".menu-selector .active"), path = active ? active.getAttribute("data-mm-id") : null;
-      if (!container2 || !last3) {
+      let columns = element.closest("[data-genesis-menu-columns]"), container = columns && columns.querySelector(".submenu-selector"), children = container ? Array.from(container.children) : [], last3 = children[children.length - 1], count = children.length, active = document.querySelector(".menu-selector .active"), path = active ? active.getAttribute("data-mm-id") : null;
+      if (!container || !last3) {
         return;
       }
-      if (count === 1 && !container2.querySelector(".submenu-items > [data-mm-id]")) {
+      if (count === 1 && !container.querySelector(".submenu-items > [data-mm-id]")) {
         return;
       }
       let block = last3.cloneNode(true), items = block.querySelector(".submenu-items"), baseLevel = block.querySelector("[data-mm-base-level]"), level = block.querySelector(".submenu-level");
@@ -10129,7 +9947,7 @@
         menumanager2.ordering[path] = [[]];
       }
       menumanager2.ordering[path].push([]);
-      menumanager2.resizer.evenResize(container2.querySelectorAll(":scope > [data-mm-id]"));
+      menumanager2.resizer.evenResize(container.querySelectorAll(":scope > [data-mm-id]"));
     });
     ["click", "touchend"].forEach(function(evt) {
       dom14.delegate(body, evt, "[data-genesis-menu-columns] .submenu-items:empty", function(event, element) {
@@ -10141,14 +9959,14 @@
           return false;
         }
         if (x >= bounding.left + bounding.width - deleter.width && x <= bounding.left + bounding.width && Math.abs(window.scrollY - y) - bounding.top < deleter.height) {
-          let parent = element.closest("[data-mm-id]"), container2 = parent && parent.parentElement, columns = container2 ? Array.from(container2.children).filter(function(child) {
+          let parent = element.closest("[data-mm-id]"), container = parent && parent.parentElement, columns = container ? Array.from(container.children).filter(function(child) {
             return child.matches("[data-mm-id]");
           }) : [], index = columns.indexOf(parent), active = document.querySelector(".menu-selector .active"), path = active ? active.getAttribute("data-mm-id") : null;
           if (!parent || !path || index < 0) {
             return;
           }
           parent.remove();
-          siblings2 = container2.querySelectorAll(":scope > [data-mm-id]");
+          siblings2 = container.querySelectorAll(":scope > [data-mm-id]");
           menumanager2.ordering[path].splice(index, 1);
           menumanager2.resizer.evenResize(siblings2);
         }
@@ -10181,12 +9999,12 @@
             modal8.enableCloseByOverlay();
             return;
           }
-          let container2 = modal8.element(content.elements.content), form = container2 && container2.querySelector("form"), submit3 = container2 ? container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form, path;
-          let search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
+          let container = modal8.element(content.elements.content), form = container && container.querySelector("form"), submit3 = container ? container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]') : [], actionForm = form, path;
+          let search = container.querySelector(".search input"), blocks = container.querySelectorAll("[data-mm-type]"), filters = container.querySelectorAll("[data-mm-filter]"), urlTemplate = container.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
-          let editable = container2.querySelector("[data-title-editable]");
+          let editable = container.querySelector("[data-title-editable]");
           if (editable) {
             editable.addEventListener("genesis:title-edit-end", function(titleEvent) {
               let detail = titleEvent.detail || {}, title = trim3(detail.title), original = detail.original;
@@ -10197,9 +10015,9 @@
               }
             });
           }
-          if (search2 && filters.length && blocks.length) {
-            search2.addEventListener("input", function() {
-              if (!search2.value) {
+          if (search && filters.length && blocks.length) {
+            search.addEventListener("input", function() {
+              if (!search.value) {
                 blocks.forEach(function(block) {
                   block.classList.remove("hidden");
                 });
@@ -10208,7 +10026,7 @@
               blocks.forEach(function(block) {
                 block.classList.add("hidden");
               });
-              let value = search2.value.toLowerCase();
+              let value = search.value.toLowerCase();
               filters.forEach(function(filter) {
                 let text = trim3(filter.getAttribute("data-mm-filter")).toLowerCase(), found = text.startsWith(value) || text.includes(" " + value), block = filter.matches("[data-mm-type]") ? filter : filter.closest("[data-mm-type]");
                 if (found && block) {
@@ -10217,12 +10035,12 @@
               });
             });
           }
-          if (search2) {
+          if (search) {
             setTimeout(function() {
-              search2.focus();
+              search.focus();
             }, 5);
           }
-          if (!container2 || !form || !actionForm || !submit3.length) {
+          if (!container || !form || !actionForm || !submit3.length) {
             return true;
           }
           submit3.forEach(function(target) {
@@ -10231,7 +10049,7 @@
               target.disabled = true;
               indicator5.hide(target);
               indicator5.show(target);
-              let post = Submit3(actionForm.elements, container2, { isRoot });
+              let post = Submit3(actionForm.elements, container, { isRoot });
               if (post.invalid.length) {
                 target.disabled = false;
                 indicator5.hide(target);
@@ -10247,10 +10065,10 @@
                   if (!response2.body.success) {
                     modal8.open({
                       content: response2.body.html || response2.body.message || response2.body,
-                      afterOpen: function(container3) {
-                        container3 = modal8.element(container3);
-                        if (container3 && !response2.body.html && !response2.body.message) {
-                          container3.style.width = "90%";
+                      afterOpen: function(container2) {
+                        container2 = modal8.element(container2);
+                        if (container2 && !response2.body.html && !response2.body.message) {
+                          container2.style.width = "90%";
                         }
                       }
                     });
@@ -10294,7 +10112,7 @@
     menumanager: menumanager2
   };
 
-  // platforms/common/application/configurations/dropdown-edit.js
+  // application/configurations/dropdown-edit.js
   var dom15 = dom_default;
   var request9 = request_default;
   var modal9 = ui_default.modal;
@@ -10354,10 +10172,10 @@
             if (!bodyResponse || !bodyResponse.success) {
               modal9.open({
                 content: bodyResponse ? bodyResponse.html || bodyResponse.message || bodyResponse : error ? error.message : "Unable to rename outline.",
-                afterOpen: function(container2) {
-                  container2 = modal9.element(container2);
-                  if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container2) {
-                    container2.style.width = "90%";
+                afterOpen: function(container) {
+                  container = modal9.element(container);
+                  if (bodyResponse && !bodyResponse.html && !bodyResponse.message && container) {
+                    container.style.width = "90%";
                   }
                 }
               });
@@ -10383,7 +10201,7 @@
     });
   });
 
-  // platforms/common/application/configurations/index.js
+  // application/configurations/index.js
   var dom16 = dom_default;
   var modal10 = ui_default.modal;
   var toastr5 = ui_default.toastr;
@@ -10428,10 +10246,10 @@
             if (!result || !result.success) {
               modal10.open({
                 content: result ? result.html || result.message || result : error ? error.message : "Unable to rename outline.",
-                afterOpen: function(container2) {
-                  container2 = modal10.element(container2);
-                  if (result && !result.html && !result.message && container2) {
-                    container2.style.width = "90%";
+                afterOpen: function(container) {
+                  container = modal10.element(container);
+                  if (result && !result.html && !result.message && container) {
+                    container.style.width = "90%";
                   }
                 }
               });
@@ -10468,7 +10286,7 @@
             modal10.enableCloseByOverlay();
             return;
           }
-          let container2 = modal10.element(content.elements.content), title = container2.querySelector('[name="title"]'), confirm = container2.querySelector("[data-g-outline-create-confirm]");
+          let container = modal10.element(content.elements.content), title = container.querySelector('[name="title"]'), confirm = container.querySelector("[data-g-outline-create-confirm]");
           if (!title || !confirm) {
             return;
           }
@@ -10481,7 +10299,7 @@
             confirmEvent.preventDefault();
             indicator6.hide(confirm);
             indicator6.show(confirm);
-            let checkedFrom = container2.querySelector('[name="from"]:checked'), preset = container2.querySelector('[name="preset"]'), outline = container2.querySelector('[name="outline"]'), inherit = container2.querySelector('[name="inherit"]'), data = {
+            let checkedFrom = container.querySelector('[name="from"]:checked'), preset = container.querySelector('[name="preset"]'), outline = container.querySelector('[name="outline"]'), inherit = container.querySelector('[name="inherit"]'), data = {
               title: title.value,
               from: checkedFrom ? checkedFrom.value : null,
               preset: preset ? preset.value : null,
@@ -10534,7 +10352,7 @@
         flags5.warning({
           url: parseAjaxURI9(href + getAjaxSuffix9()),
           callback: function(response, content) {
-            let container2 = asElement6(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
+            let container = asElement6(content), confirm = container && container.querySelector("[data-g-delete-confirm]"), cancel = container && container.querySelector("[data-g-delete-cancel]");
             if (!confirm) {
               return;
             }
@@ -10602,7 +10420,7 @@
     attachEditables(document.querySelectorAll("#configurations [data-title-editable]"));
   });
 
-  // platforms/common/application/positions/index.js
+  // application/positions/index.js
   var dom17 = dom_default;
   var modal11 = ui_default.modal;
   var toastr6 = ui_default.toastr;
@@ -10630,10 +10448,10 @@
     let result = response && response.body;
     modal11.open({
       content: result ? result.html || result.message || result : error ? error.message : "Request failed.",
-      afterOpen: function(container2) {
-        container2 = modal11.element(container2);
-        if (result && !result.html && !result.message && container2) {
-          container2.style.width = "90%";
+      afterOpen: function(container) {
+        container = modal11.element(container);
+        if (result && !result.html && !result.message && container) {
+          container.style.width = "90%";
         }
       }
     });
@@ -10641,8 +10459,8 @@
   dom17.ready(function() {
     let body = document.body, warningURL = parseAjaxURI10(getAjaxURL14("confirmdeletion") + getAjaxSuffix10());
     Cards2.init();
-    let attachEditableValidation = function(container2) {
-      let editable = container2.querySelector("[data-title-editable]");
+    let attachEditableValidation = function(container) {
+      let editable = container.querySelector("[data-title-editable]");
       if (!editable || editable.gPositionModalTitleAttached) {
         return;
       }
@@ -10709,7 +10527,7 @@
           url: warningURL,
           data: { page_type: "POSITION" },
           callback: function(response, content) {
-            let container2 = asElement7(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
+            let container = asElement7(content), confirm = container && container.querySelector("[data-g-delete-confirm]"), cancel = container && container.querySelector("[data-g-delete-cancel]");
             if (!confirm) {
               return;
             }
@@ -10777,14 +10595,14 @@
             modal11.enableCloseByOverlay();
             return;
           }
-          let container2 = modal11.element(content.elements.content), search2 = container2.querySelector(".search input"), blocks = container2.querySelectorAll("[data-mm-type]"), filters = container2.querySelectorAll("[data-mm-filter]"), urlTemplate = container2.querySelector(".g-urltemplate");
+          let container = modal11.element(content.elements.content), search = container.querySelector(".search input"), blocks = container.querySelectorAll("[data-mm-type]"), filters = container.querySelectorAll("[data-mm-filter]"), urlTemplate = container.querySelector(".g-urltemplate");
           if (urlTemplate) {
             urlTemplate.dispatchEvent(new Event("input", { bubbles: true }));
           }
-          attachEditableValidation(container2);
-          if (search2 && filters.length && blocks.length) {
-            search2.addEventListener("input", function() {
-              let value = search2.value.toLowerCase();
+          attachEditableValidation(container);
+          if (search && filters.length && blocks.length) {
+            search.addEventListener("input", function() {
+              let value = search.value.toLowerCase();
               blocks.forEach(function(block) {
                 block.classList.toggle("hidden", Boolean(value));
               });
@@ -10799,9 +10617,9 @@
               });
             });
           }
-          if (search2) {
+          if (search) {
             setTimeout(function() {
-              search2.focus();
+              search.focus();
             }, 5);
           }
         }
@@ -10825,8 +10643,8 @@
             modal11.enableCloseByOverlay();
             return;
           }
-          let container2 = modal11.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
-          attachEditableValidation(container2);
+          let container = modal11.element(content.elements.content), form = container.querySelector("form"), submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+          attachEditableValidation(container);
           if (!form || !submits.length) {
             return true;
           }
@@ -10836,8 +10654,8 @@
               target.disabled = true;
               indicator7.hide(target);
               indicator7.show(target);
-              form = container2.querySelector("form");
-              let post = Submit4(form.elements, container2);
+              form = container.querySelector("form");
+              let post = Submit4(form.elements, container);
               if (post.invalid.length) {
                 target.disabled = false;
                 indicator7.hide(target);
@@ -10892,12 +10710,12 @@
     attachEditables(document.querySelectorAll("#positions [data-title-editable]"));
   });
 
-  // platforms/common/application/changelog/index.js
+  // application/changelog/index.js
   var modal12 = ui_default.modal;
   var parseAjaxURI11 = get_ajax_url_default.parse;
   var getAjaxURL15 = get_ajax_url_default.global;
   var getAjaxSuffix11 = get_ajax_suffix_default;
-  var { ready: ready9, delegate: delegate6 } = dom_default;
+  var { ready: ready8, delegate: delegate6 } = dom_default;
   var setCollapsed = (section, collapsed) => {
     const icon = section.querySelector(".g-changelog-toggle");
     const details = section.nextElementSibling;
@@ -10911,7 +10729,7 @@
       details.style.height = collapsed ? "0" : "";
     }
   };
-  ready9(() => {
+  ready8(() => {
     delegate6(document.body, "click", "[data-changelog]", (event, link) => {
       event.preventDefault();
       modal12.open({
@@ -10942,12 +10760,12 @@
     });
   });
 
-  // platforms/common/application/fields/multicheckbox.js
-  var { ready: ready10, delegate: delegate7 } = dom_default;
+  // application/fields/multicheckbox.js
+  var { ready: ready9, delegate: delegate7 } = dom_default;
   var parseValues = (value) => new Set(String(value || "").split(",").filter(Boolean));
   var serializeValues = (values) => [...values].join(",");
   var escapeSelector = (value) => window.CSS && CSS.escape ? CSS.escape(value) : String(value).replace(/["\\]/g, "\\$&");
-  ready10(() => {
+  ready9(() => {
     delegate7(document.body, "change", '.input-multicheckbox .input-group input[name][type="hidden"]', (event, input) => {
       const values = parseValues(input.value);
       const name = escapeSelector(input.name);
@@ -10969,7 +10787,7 @@
     });
   });
 
-  // platforms/common/application/fields/index.js
+  // application/fields/index.js
   var dom18 = dom_default;
   var flags7 = flags_state_default;
   var submit2 = submit;
@@ -11224,7 +11042,7 @@
     submit: submit2
   };
 
-  // platforms/common/application/utils/ajaxify-links.js
+  // application/utils/ajaxify-links.js
   var dom19 = dom_default;
   var storage3 = /* @__PURE__ */ new Map();
   var modal13 = ui_default.modal;
@@ -11404,7 +11222,7 @@
     if (request12.running()) {
       return false;
     }
-    let body = document.body, State = History4.getState(), URI = State.url, Data = State.data || {}, sidebar2 = document.querySelector("#navbar"), mainheader = document.querySelector("#main-header"), params = "";
+    let body = document.body, State = History4.getState(), URI = State.url, Data = State.data || {}, sidebar = document.querySelector("#navbar"), mainheader = document.querySelector("#main-header"), params = "";
     if (Data.doNothing) {
       return true;
     }
@@ -11423,8 +11241,8 @@
       }) || null;
     }
     URI = parseAjaxURI12(URI + getAjaxSuffix12());
-    if (sidebar2 && Data.element) {
-      sidebar2.querySelectorAll("li.active").forEach(function(item) {
+    if (sidebar && Data.element) {
+      sidebar.querySelectorAll("li.active").forEach(function(item) {
         item.classList.remove("active");
       });
       if (Data.element.closest("#navbar")) {
@@ -11475,11 +11293,11 @@
       let fader = destination.matches("[data-genesis-content]") ? destination : destination.querySelector("[data-genesis-content]");
       if (fader) {
         fader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: "ease" });
-        if (isTopNavOrMenu && sidebar2) {
-          sidebar2.setAttribute("tabindex", "-1");
-          sidebar2.setAttribute("aria-hidden", "true");
+        if (isTopNavOrMenu && sidebar) {
+          sidebar.setAttribute("tabindex", "-1");
+          sidebar.setAttribute("aria-hidden", "true");
         }
-        showNavbar(sidebar2, !isTopNavOrMenu);
+        showNavbar(sidebar, !isTopNavOrMenu);
       }
       if (Data.element) {
         dispatchState("statechangeAfter", Data.element, Data);
@@ -11664,7 +11482,7 @@
     selectorChangeEvent();
   });
 
-  // platforms/common/application/utils/async-foreach.js
+  // application/utils/async-foreach.js
   var asyncForEach = function(arr, eachFn, doneFn) {
     arr = arr || [];
     let i = -1;
@@ -11696,8 +11514,8 @@
   };
   var async_foreach_default = asyncForEach;
 
-  // platforms/common/application/assignments/index.js
-  var { ready: ready11, delegate: delegate8 } = dom_default;
+  // application/assignments/index.js
+  var { ready: ready10, delegate: delegate8 } = dom_default;
   var asyncForEach2 = async_foreach_default;
   var cache = /* @__PURE__ */ new WeakMap();
   var visible = (element) => getComputedStyle(element).display !== "none";
@@ -11823,7 +11641,7 @@
       element.disabled = element.value !== "1";
     }
   };
-  ready11(() => {
+  ready10(() => {
     const body = document.body;
     delegate8(body, "input", '#assignments .search input[type="text"], .settings-assignments .search input[type="text"]', Assignments.filterSection);
     const toggleSelector = "#assignments .card label, #assignments [data-g-assignments-check], #assignments [data-g-assignments-uncheck], .settings-assignments .card label, .settings-assignments [data-g-assignments-check], .settings-assignments [data-g-assignments-uncheck]";
@@ -11834,17 +11652,17 @@
   });
   var assignments_default = Assignments;
 
-  // platforms/common/application/styles/index.js
+  // application/styles/index.js
   var modal14 = ui_default.modal;
   var fields = fields_default;
-  var { ready: ready12, delegate: delegate9 } = dom_default;
+  var { ready: ready11, delegate: delegate9 } = dom_default;
   var escapeSelector2 = (value) => window.CSS && CSS.escape ? CSS.escape(value) : String(value).replace(/["\\]/g, "\\$&");
   var emitFieldEvent = (input, type) => {
     const event = new Event(type, { bubbles: true });
     event.forceOverride = true;
     input.dispatchEvent(event);
   };
-  ready12(() => {
+  ready11(() => {
     delegate9(document.body, "click", "[data-g-styles]", (event, presetElement) => {
       event.preventDefault();
       if (event.target.closest(".swatch-preview")) return;
@@ -11867,8 +11685,8 @@
       if (!image) return;
       modal14.open({
         content: image.outerHTML,
-        afterOpen(container2) {
-          const element = container2 && container2[0] ? container2[0] : container2;
+        afterOpen(container) {
+          const element = container && container[0] ? container[0] : container;
           const styles = getComputedStyle(element);
           const padding = Number.parseFloat(styles.paddingLeft) + Number.parseFloat(styles.paddingRight);
           element.style.maxWidth = "80%";
@@ -11879,9 +11697,9 @@
   });
   var styles_default = {};
 
-  // platforms/common/application/particles/colorpicker/index.js
+  // application/particles/colorpicker/index.js
   var dom20 = dom_collection_default;
-  var ready13 = dom_default.ready;
+  var ready12 = dom_default.ready;
   var zen7 = createElement;
   var clamp3 = function(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -12190,14 +12008,14 @@
       this.emit("change", element, hex, opacity);
     }
     updateFromPicker(input, target) {
-      let getCoords = function(picker, container2) {
+      let getCoords = function(picker, container) {
         let left, top;
-        if (!picker.length || !container2) return null;
+        if (!picker.length || !container) return null;
         left = picker[0].getBoundingClientRect().left;
         top = picker[0].getBoundingClientRect().top;
         return {
-          x: left - container2[0].getBoundingClientRect().left + picker[0].offsetWidth / 2,
-          y: top - container2[0].getBoundingClientRect().top + picker[0].offsetHeight / 2
+          x: left - container[0].getBoundingClientRect().left + picker[0].offsetWidth / 2,
+          y: top - container[0].getBoundingClientRect().top + picker[0].offsetHeight / 2
         };
       };
       let hex, hue, saturation, brightness, x, y, r, phi, grid = this.wrapper.find(".cp-grid"), slider = this.wrapper.find(".cp-slider"), opacitySlider = this.wrapper.find(".cp-opacity-slider"), gridPicker = this.gridPicker, sliderPicker = this.sliderPicker, opacityPicker = this.opacityPicker, gridPos = getCoords(gridPicker, grid), sliderPos = getCoords(sliderPicker, slider), opacityPos = getCoords(opacityPicker, opacitySlider), gridWidth = grid[0].getBoundingClientRect().width, gridHeight = grid[0].getBoundingClientRect().height, sliderHeight = slider[0].getBoundingClientRect().height, opacitySliderHeight = opacitySlider[0].getBoundingClientRect().height;
@@ -12430,7 +12248,7 @@
       /* jshint ignore:end */
     };
   };
-  ready13(function() {
+  ready12(function() {
     let x = new ColorPicker(), body = dom20("body");
     x.on("change", function(element, hex, opacity) {
       clearTimeout(this.timer);
@@ -12453,9 +12271,33 @@
   });
   var colorpicker_default = ColorPicker;
 
-  // platforms/common/application/utils/elements.viewport.js
-  var elements_viewport_default = (container2, selector, threshold = 0) => {
-    const root = container2 && container2[0] ? container2[0] : container2;
+  // application/utils/frame-listener.js
+  function frameListener(element, eventName, callback, options = {}) {
+    const target = element && element[0] ? element[0] : element;
+    let frame = 0;
+    let latestEvent;
+    const listener = (event) => {
+      latestEvent = event;
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        callback.call(target, latestEvent);
+      });
+    };
+    target.addEventListener(eventName, listener, {
+      capture: Boolean(options.capture),
+      passive: options.passive !== false
+    });
+    return () => {
+      target.removeEventListener(eventName, listener, Boolean(options.capture));
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+    };
+  }
+
+  // application/utils/elements.viewport.js
+  var elements_viewport_default = (container, selector, threshold = 0) => {
+    const root = container && container[0] ? container[0] : container;
     if (!(root instanceof Element)) return [];
     const scopedSelector = selector.trim().startsWith(">") ? ":scope ".concat(selector.trim()) : selector;
     const top = root.scrollTop;
@@ -12465,12 +12307,12 @@
     );
   };
 
-  // platforms/common/application/particles/fonts/index.js
+  // application/particles/fonts/index.js
   var dom21 = dom_effects_default;
   var zen8 = createElement;
   var storage4 = /* @__PURE__ */ new WeakMap();
-  var ready14 = dom_default.ready;
-  var frameListener3 = frameListener;
+  var ready13 = dom_default.ready;
+  var frameListener2 = frameListener;
   var getAjaxSuffix13 = get_ajax_suffix_default;
   var parseAjaxURI13 = get_ajax_url_default.parse;
   var getAjaxURL16 = get_ajax_url_default.global;
@@ -12596,27 +12438,27 @@
         className: "genesis-dialog-theme-default genesis-modal-fonts",
         remote: parseAjaxURI13(getAjaxURL16("fontpicker") + getAjaxSuffix13()),
         remoteLoaded: (function(response, content) {
-          let container2 = content.elements.content;
-          this.attachEvents(container2);
-          this.updateCategories(container2);
+          let container = content.elements.content;
+          this.attachEvents(container);
+          this.updateCategories(container);
           this.search();
-          this.scroll(container2.find("ul.g-fonts-list"));
+          this.scroll(container.find("ul.g-fonts-list"));
           this.updateTotal();
           this.selectFromValue();
           setTimeout(function() {
-            container2.find(".particle-search-wrapper input")[0].focus();
+            container.find(".particle-search-wrapper input")[0].focus();
           }, 5);
         }).bind(this)
       });
     }
-    scroll(container2) {
+    scroll(container) {
       clearTimeout(this.throttle);
       this.throttle = setTimeout((function() {
-        if (!container2) {
+        if (!container) {
           clearTimeout(this.throttle);
           return;
         }
-        let viewport = container2.find("ul.g-fonts-list") || container2, elements = inViewport(viewport, "> li:not(.g-font-hide)", 550 * 7), list = [];
+        let viewport = container.find("ul.g-fonts-list") || container, elements = inViewport(viewport, "> li:not(.g-font-hide)", 550 * 7), list = [];
         if (!elements) {
           return;
         }
@@ -12638,7 +12480,7 @@
           return;
         }
         loadGoogleFonts(list, (function(family, fvd) {
-          container2.find('li[data-font="' + family + '"]:not(.g-variant-hide) > .preview').style(
+          container.find('li[data-font="' + family + '"]:not(.g-variant-hide) > .preview').style(
             this.fvdToStyle(family, fvd)
           );
           insertUnique(this.loadedFonts, family);
@@ -12789,13 +12631,13 @@
           this.selected.element.search("[data-font]").removeClass("g-variant-hide");
           if (!this.selected.loaded) {
             loadGoogleFonts([this.selected.font.replace(/\s/g, "+") + ":" + variants], (function(family, fvd) {
-              let style = this.fvdToStyle(family, fvd), search2 = style.fontWeight;
-              if (search2 == "400") {
-                search2 = style.fontStyle == "normal" ? "regular" : "italic";
+              let style = this.fvdToStyle(family, fvd), search = style.fontWeight;
+              if (search == "400") {
+                search = style.fontStyle == "normal" ? "regular" : "italic";
               } else if (style.fontStyle == "italic") {
-                search2 += "italic";
+                search += "italic";
               }
-              this.selected.element.find('li[data-variant="' + search2 + '"] .preview').style(style);
+              this.selected.element.find('li[data-variant="' + search + '"] .preview').style(style);
               this.selected.loaded = true;
             }).bind(this));
           }
@@ -12837,29 +12679,29 @@
       let totals = dom21(".g-particles-header .particle-search-total"), count = dom21(".g-fonts-list > [data-font]:not(.g-font-hide)");
       totals.text(count ? count.length : 0);
     }
-    updateCategories(container2) {
-      let categories = container2.find("[data-font-categories]");
+    updateCategories(container) {
+      let categories = container.find("[data-font-categories]");
       if (!categories) {
         return;
       }
       this.filters.categories = categories.data("font-categories").split(",");
     }
-    attachEvents(container2) {
-      let header = container2.find(".g-particles-header"), list = container2.find(".g-fonts-list"), search2 = header.find("input.font-search"), preview = header.find("input.font-preview");
-      frameListener3(list, "scroll", this.scroll.bind(this, list));
-      container2.delegate("click", ".g-fonts-list li[data-font]", this.toggle.bind(this));
-      if (search2) {
-        search2.on("keyup", this.search.bind(this, search2));
+    attachEvents(container) {
+      let header = container.find(".g-particles-header"), list = container.find(".g-fonts-list"), search = header.find("input.font-search"), preview = header.find("input.font-preview");
+      frameListener2(list, "scroll", this.scroll.bind(this, list));
+      container.delegate("click", ".g-fonts-list li[data-font]", this.toggle.bind(this));
+      if (search) {
+        search.on("keyup", this.search.bind(this, search));
       }
       if (preview) {
         preview.on("keyup", this.updatePreview.bind(this, preview));
       }
-      this.attachCharsets(container2);
-      this.attachLocalVariants(container2);
-      this.attachFooter(container2);
+      this.attachCharsets(container);
+      this.attachLocalVariants(container);
+      this.attachFooter(container);
     }
-    attachCharsets(container2) {
-      container2.delegate("mouseover", ".font-charsets-selected", (function(event, element) {
+    attachCharsets(container) {
+      container.delegate("mouseover", ".font-charsets-selected", (function(event, element) {
         if (!element.PopoverDefined) {
           let popover = element.getPopover({
             placement: "auto",
@@ -12890,8 +12732,8 @@
         }
       }).bind(this));
     }
-    attachLocalVariants(container2) {
-      container2.delegate("mouseover", ".g-font-variants-list", (function(event, element) {
+    attachLocalVariants(container) {
+      container.delegate("mouseover", ".g-font-variants-list", (function(event, element) {
         if (!element.PopoverDefined) {
           let popover = element.getPopover({
             placement: "auto",
@@ -12911,8 +12753,8 @@
         }
       }).bind(this));
     }
-    attachFooter(container2) {
-      let footer = container2.find(".g-particles-footer"), select = footer.find("button.button-primary"), categories = footer.find(".font-category"), subsets = footer.find(".font-subsets"), current;
+    attachFooter(container) {
+      let footer = container.find(".g-particles-footer"), select = footer.find("button.button-primary"), categories = footer.find(".font-category"), subsets = footer.find(".font-subsets"), current;
       select.on("click", (function() {
         if (!dom21('ul.g-fonts-list > [data-font] input[type="checkbox"]:checked')) {
           this.field.value("");
@@ -12994,7 +12836,7 @@
         }, this);
         popover.displayContent();
       }).bind(this));
-      return container2;
+      return container;
     }
     search(input) {
       input = input || dom21(".g-particles-header input.font-search");
@@ -13117,7 +12959,7 @@
       }
     }
   };
-  ready14(function() {
+  ready13(function() {
     let body = dom21("body");
     body.delegate("click", "[data-genesis-fontpicker]", function(event, element) {
       if (event && event.preventDefault) {
@@ -13133,9 +12975,9 @@
   });
   var fonts_default = Fonts;
 
-  // platforms/common/application/particles/menu/index.js
-  var { ready: ready15, delegate: delegate10 } = dom_default;
-  ready15(() => {
+  // application/particles/menu/index.js
+  var { ready: ready14, delegate: delegate10 } = dom_default;
+  ready14(() => {
     delegate10(document.body, "click", "[data-genesis-content] .g-main-nav .g-toplevel [data-genesis-ajaxify]", (event, link) => {
       event.preventDefault();
       document.querySelectorAll("[data-genesis-content] .g-main-nav .g-toplevel li.active").forEach((item2) => item2.classList.remove("active"));
@@ -13145,7 +12987,7 @@
   });
   var menu_default2 = {};
 
-  // platforms/common/application/particles/icons/index.js
+  // application/particles/icons/index.js
   var dom22 = dom_default;
   var modal16 = ui_default.modal;
   var popovers = popover_default;
@@ -13196,13 +13038,13 @@
           });
         },
         remoteLoaded: function(response, content) {
-          let container2 = modal16.element(content.elements.content), icons = container2.querySelectorAll("[data-g-icon]");
+          let container = modal16.element(content.elements.content), icons = container.querySelectorAll("[data-g-icon]");
           if (!icons.length || !response.body.success) {
-            container2.innerHTML = response.body.html || response.body;
+            container.innerHTML = response.body.html || response.body;
             return false;
           }
-          let selectButton = container2.querySelector("[data-g-select]"), updatePreview = function() {
-            let data = [], active = container2.querySelector("[data-g-icon].active"), options = container2.querySelectorAll(".g-particles-header .float-right input:checked, .g-particles-header .float-right select");
+          let selectButton = container.querySelector("[data-g-select]"), updatePreview = function() {
+            let data = [], active = container.querySelector("[data-g-icon].active"), options = container.querySelectorAll(".g-particles-header .float-right input:checked, .g-particles-header .float-right select");
             if (active) {
               data.push(active.getAttribute("data-g-icon"));
             }
@@ -13211,7 +13053,7 @@
                 data.push(option.value);
               }
             });
-            let preview = container2.querySelector(".g-icon-preview");
+            let preview = container.querySelector(".g-icon-preview");
             if (preview) {
               preview.innerHTML = '<i class="' + escapeHTML2(data.join(" ")) + '" aria-hidden="true"></i> <span>' + escapeHTML2(data[0] || "") + "</span>";
             }
@@ -13219,29 +13061,29 @@
               selectButton.disabled = !active;
             }
           }, updateTotal = function() {
-            let total = container2.querySelectorAll("[data-g-icon]:not(.hide-icon)").length, label = container2.querySelector(".particle-search-total");
+            let total = container.querySelectorAll("[data-g-icon]:not(.hide-icon)").length, label = container.querySelector(".particle-search-total");
             if (label) {
               label.textContent = total;
             }
           };
           if (selectButton) {
-            selectButton.disabled = !container2.querySelector("[data-g-icon].active");
+            selectButton.disabled = !container.querySelector("[data-g-icon].active");
           }
-          dom22.delegate(container2, "click", "[data-g-icon]", function(iconEvent, icon) {
+          dom22.delegate(container, "click", "[data-g-icon]", function(iconEvent, icon) {
             iconEvent.preventDefault();
-            let active = container2.querySelector("[data-g-icon].active");
+            let active = container.querySelector("[data-g-icon].active");
             if (active) {
               active.classList.remove("active");
             }
             icon.classList.add("active");
             updatePreview();
           });
-          dom22.delegate(container2, "click", "[data-g-select]", function(selectEvent) {
+          dom22.delegate(container, "click", "[data-g-select]", function(selectEvent) {
             selectEvent.preventDefault();
-            if (!container2.querySelector("[data-g-icon].active")) {
+            if (!container.querySelector("[data-g-icon].active")) {
               return;
             }
-            let output = container2.querySelector(".g-icon-preview i"), outputClass = output ? output.getAttribute("class") : "";
+            let output = container.querySelector(".g-icon-preview i"), outputClass = output ? output.getAttribute("class") : "";
             field.value = outputClass;
             let previewIcon = realPreview.querySelector("i");
             if (previewIcon) {
@@ -13250,11 +13092,11 @@
             field.dispatchEvent(new Event("input", { bubbles: true }));
             modal16.close();
           });
-          dom22.delegate(container2, "change", '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
-          dom22.delegate(container2, "keyup", '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
-            let search2 = input.value.toLowerCase();
+          dom22.delegate(container, "change", '.g-particles-header .float-right input[type="checkbox"], .g-particles-header .float-right select', updatePreview);
+          dom22.delegate(container, "keyup", '.particle-search-wrapper input[type="text"]', function(searchEvent, input) {
+            let search = input.value.toLowerCase();
             icons.forEach(function(icon) {
-              icon.classList.toggle("hide-icon", Boolean(search2) && !icon.getAttribute("data-g-icon").toLowerCase().includes(search2));
+              icon.classList.toggle("hide-icon", Boolean(search) && !icon.getAttribute("data-g-icon").toLowerCase().includes(search));
             });
             updateTotal();
           });
@@ -13283,12 +13125,12 @@
             }
             icon.classList.add("active");
             value.forEach(function(name) {
-              let optionField = container2.querySelector('[name="' + CSS.escape(name) + '"]');
+              let optionField = container.querySelector('[name="' + CSS.escape(name) + '"]');
               if (optionField) {
                 optionField.checked = true;
                 return;
               }
-              let option = container2.querySelector('option[value="' + CSS.escape(name) + '"]');
+              let option = container.querySelector('option[value="' + CSS.escape(name) + '"]');
               if (option) {
                 option.parentElement.value = name;
               }
@@ -13299,7 +13141,7 @@
             }
             updatePreview();
           });
-          let searchInput = container2.querySelector(".particle-search-wrapper input");
+          let searchInput = container.querySelector(".particle-search-wrapper input");
           if (searchInput) {
             setTimeout(function() {
               searchInput.focus();
@@ -13311,7 +13153,7 @@
   });
   var icons_default = {};
 
-  // platforms/common/application/particles/filepicker/index.js
+  // application/particles/filepicker/index.js
   var dom23 = dom_default;
   var request13 = request_default;
   var modal17 = ui_default.modal;
@@ -13400,8 +13242,8 @@
       filePicker.content.addEventListener("drop", this.handleDrop);
       this.input.addEventListener("change", this.handleChange);
     }
-    setPreviewsContainer(container2) {
-      this.previewsContainer = container2;
+    setPreviewsContainer(container) {
+      this.previewsContainer = container;
     }
     handleClick(event) {
       if (!event.target.closest("[data-upload]")) return;
@@ -13858,7 +13700,7 @@
   });
   var filepicker_default = FilePicker;
 
-  // platforms/common/application/utils/reorderable-list.js
+  // application/utils/reorderable-list.js
   var directItems2 = (list, selector, excluded) => Array.from(list.children).filter((item) => item !== excluded && item.matches(selector));
   var ReorderableList = class {
     constructor(list, options = {}) {
@@ -14003,7 +13845,7 @@
   };
   var reorderable_list_default = ReorderableList;
 
-  // platforms/common/application/particles/collections/index.js
+  // application/particles/collections/index.js
   var dom24 = dom_default;
   var Submit5 = submit;
   var modal18 = ui_default.modal;
@@ -14180,12 +14022,12 @@
             modal18.enableCloseByOverlay();
             return;
           }
-          let container2 = modal18.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'), dataValue = JSON.parse(data);
+          let container = modal18.element(content.elements.content), form = container.querySelector("form"), submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]'), dataValue = JSON.parse(data);
           if (modal18.getAll().length > 1) {
-            container2.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
+            container.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
               button.remove();
             });
-            submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+            submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
           }
           if (!form || !submits.length) {
             return true;
@@ -14195,8 +14037,8 @@
               submitEvent.preventDefault();
               indicator10.hide(target);
               indicator10.show(target);
-              form = container2.querySelector("form");
-              let post = Submit5(form.elements, container2);
+              form = container.querySelector("form");
+              let post = Submit5(form.elements, container);
               if (post.invalid.length) {
                 indicator10.hide(target);
                 indicator10.show(target, "fa fa-fw fa-exclamation-triangle");
@@ -14241,8 +14083,8 @@
   });
   var collections_default = {};
 
-  // platforms/common/application/particles/keyvalue/index.js
-  var { ready: ready16, delegate: delegate11 } = dom_default;
+  // application/particles/keyvalue/index.js
+  var { ready: ready15, delegate: delegate11 } = dom_default;
   var ReorderableList3 = reorderable_list_default;
   var translate17 = translate_default;
   var collectionIndex = (collection, item) => Array.prototype.indexOf.call(collection, item);
@@ -14251,7 +14093,7 @@
     return "\\u".concat("000".concat(character.charCodeAt(0).toString(16)).slice(-4));
   });
   var emitChange3 = (element) => element.dispatchEvent(new Event("change", { bubbles: true }));
-  ready16(() => {
+  ready15(() => {
     const body = document.body;
     const createSortables = (list) => {
       const lists = list instanceof Element ? [list] : Array.from(document.querySelectorAll(".g-keyvalue-field ul"));
@@ -14383,11 +14225,11 @@
   });
   var keyvalue_default = {};
 
-  // platforms/common/application/particles/instancepicker/index.js
+  // application/particles/instancepicker/index.js
   var Submit6 = submit;
   var modal19 = ui_default.modal;
   var request15 = request_default;
-  var { ready: ready17, delegate: delegate12 } = dom_default;
+  var { ready: ready16, delegate: delegate12 } = dom_default;
   var parseAjaxURI17 = get_ajax_url_default.parse;
   var getAjaxURL19 = get_ajax_url_default.global;
   var getAjaxSuffix17 = get_ajax_suffix_default;
@@ -14417,7 +14259,7 @@
     template.innerHTML = html || "";
     return template.content.querySelector("form");
   };
-  ready17(() => {
+  ready16(() => {
     const body = document.body;
     const moduleType = { wordpress: "widget", joomla: "module" };
     delegate12(body, "input", '[data-g-instancepicker] ~ input[type="hidden"]', (event, field) => {
@@ -14461,12 +14303,12 @@
           }
           const content = modalInstance.elements.content[0];
           const select = content.querySelector("[data-mm-select]");
-          const search2 = content.querySelector(".search input");
+          const search = content.querySelector(".search input");
           const blocks = [...content.querySelectorAll("[data-mm-type]")];
           const filters = [...content.querySelectorAll("[data-mm-filter]")];
-          if (search2 && filters.length && blocks.length) {
-            search2.addEventListener("input", () => {
-              const value2 = search2.value.trim().toLowerCase();
+          if (search && filters.length && blocks.length) {
+            search.addEventListener("input", () => {
+              const value2 = search.value.trim().toLowerCase();
               blocks.forEach((block) => block.classList.toggle("hidden", Boolean(value2)));
               if (!value2) return;
               filters.forEach((filter) => {
@@ -14477,7 +14319,7 @@
                 }
               });
             });
-            setTimeout(() => search2.focus(), 5);
+            setTimeout(() => search.focus(), 5);
           }
           const elementData = JSON.parse(picker.dataset.gInstancepicker || "{}");
           if (elementData.type === moduleType[window.GENESIS_PLATFORM]) elementData.modal_close = true;
@@ -14502,8 +14344,8 @@
                 if (!saveResponse.body.success) {
                   modal19.open({
                     content: saveResponse.body.html || saveResponse.body.message || saveResponse.body,
-                    afterOpen: (container2) => {
-                      if (!saveResponse.body.html && !saveResponse.body.message) container2.style({ width: "90%" });
+                    afterOpen: (container) => {
+                      if (!saveResponse.body.html && !saveResponse.body.message) container.style({ width: "90%" });
                     }
                   });
                 } else {
@@ -14524,7 +14366,7 @@
   });
   var instancepicker_default = {};
 
-  // platforms/common/application/particles/index.js
+  // application/particles/index.js
   var particles_default = {
     colorpicker: colorpicker_default,
     fonts: fonts_default,
@@ -14536,7 +14378,7 @@
     instancepicker: instancepicker_default
   };
 
-  // platforms/common/application/pagesettings/index.js
+  // application/pagesettings/index.js
   var dom25 = dom_default;
   var Submit7 = submit;
   var modal20 = ui_default.modal;
@@ -14650,12 +14492,12 @@
         overlayClickToClose: false,
         remote: parseAjaxURI18(trigger.getAttribute("href") + getAjaxSuffix18()),
         remoteLoaded: function(response, content) {
-          let container2 = modal20.element(content.elements.content), form = container2.querySelector("form"), submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+          let container = modal20.element(content.elements.content), form = container.querySelector("form"), submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
           if (modal20.getAll().length > 1) {
-            container2.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
+            container.querySelectorAll("[data-apply-and-save]").forEach(function(button) {
               button.remove();
             });
-            submits = container2.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
+            submits = container.querySelectorAll('input[type="submit"], button[type="submit"], [data-apply-and-save]');
           }
           if (!form || !submits.length) {
             return true;
@@ -14665,8 +14507,8 @@
               submitEvent.preventDefault();
               indicator11.hide(target);
               indicator11.show(target);
-              form = container2.querySelector("form");
-              let post = Submit7(form.elements, container2);
+              form = container.querySelector("form");
+              let post = Submit7(form.elements, container);
               if (post.invalid.length) {
                 indicator11.hide(target);
                 indicator11.show(target, "fa fa-fw fa-exclamation-triangle");
@@ -14739,7 +14581,7 @@
   });
   var pagesettings_default = Atoms2;
 
-  // platforms/common/application/ui/tooltips.js
+  // application/ui/tooltips.js
   var defaults5 = {
     baseClass: "g-tips",
     typeClass: null,
@@ -14886,17 +14728,17 @@
     }
   };
   var Tooltips = class {
-    constructor(container2 = document) {
-      this.container = container2;
+    constructor(container = document) {
+      this.container = container;
       this.instances = /* @__PURE__ */ new WeakMap();
       this.onMouseOver = this.onMouseOver.bind(this);
       this.onMouseOut = this.onMouseOut.bind(this);
       this.onFocusIn = this.onFocusIn.bind(this);
       this.onFocusOut = this.onFocusOut.bind(this);
-      container2.addEventListener("mouseover", this.onMouseOver);
-      container2.addEventListener("mouseout", this.onMouseOut);
-      container2.addEventListener("focusin", this.onFocusIn);
-      container2.addEventListener("focusout", this.onFocusOut);
+      container.addEventListener("mouseover", this.onMouseOver);
+      container.addEventListener("mouseout", this.onMouseOut);
+      container.addEventListener("focusin", this.onFocusIn);
+      container.addEventListener("focusout", this.onFocusOut);
     }
     targetFromEvent(event) {
       return event.target instanceof Element ? event.target.closest("[data-tip]") : null;
@@ -14981,10 +14823,10 @@
   var instance = new Tooltips(document);
   var tooltips_default = instance;
 
-  // platforms/common/application/main.js
+  // application/main.js
   var dom26 = dom_collection_default;
   var zen9 = createElement;
-  var ready18 = dom_default.ready;
+  var ready17 = dom_default.ready;
   var request17 = request_default;
   var ui = ui_default;
   var modal21 = ui.modal;
@@ -15028,7 +14870,7 @@
   };
   var reportInvalidFields2 = function(invalid) {
     let fields2 = invalid.map(function(input) {
-      let element = input && input[0] ? input[0] : input, container2 = element ? element.closest(".settings-param, .card-overrideable") : null, label = container2 ? container2.querySelector(".settings-param-title, label") : null;
+      let element = input && input[0] ? input[0] : input, container = element ? element.closest(".settings-param, .card-overrideable") : null, label = container ? container.querySelector(".settings-param-title, label") : null;
       if (element) {
         element.classList.add("field-invalid");
         element.setAttribute("aria-invalid", "true");
@@ -15093,12 +14935,12 @@
       return translate20("GENESIS_PLATFORM_JS_NO_SAVE_DETECTED");
     }
   };
-  ready18(function() {
+  ready17(function() {
     let body = dom26("body"), sentence = translate20("GENESIS_PLATFORM_JS_SAVE_SUCCESS");
     let applyAdminTheme = function(mode) {
-      let dark = mode === "dark", container2 = document.querySelector("[data-genesis-container]");
-      if (container2) {
-        container2.classList.toggle("genesis-dark-mode", dark);
+      let dark = mode === "dark", container = document.querySelector("[data-genesis-container]");
+      if (container) {
+        container.classList.toggle("genesis-dark-mode", dark);
       }
       document.body.classList.toggle("genesis-dark-mode", dark);
       document.documentElement.style.colorScheme = dark ? "dark" : "light";
@@ -15132,8 +14974,8 @@
     });
     body.delegate("click", "[data-g-extras]", function() {
       setTimeout(function() {
-        let container2 = document.querySelector("[data-genesis-container]");
-        applyAdminTheme(container2 && container2.classList.contains("genesis-dark-mode") ? "dark" : "light");
+        let container = document.querySelector("[data-genesis-container]");
+        applyAdminTheme(container && container.classList.contains("genesis-dark-mode") ? "dark" : "light");
       }, 0);
     });
     body.delegate("click", "[data-g-close]", function(event, element) {
@@ -15254,10 +15096,10 @@
         if (!response.body.success) {
           modal21.open({
             content: response.body.html || response.body.message || response.body,
-            afterOpen: function(container2) {
-              container2 = modal21.element(container2);
-              if (container2 && !response.body.html && !response.body.message) {
-                container2.style.width = "90%";
+            afterOpen: function(container) {
+              container = modal21.element(container);
+              if (container && !response.body.html && !response.body.message) {
+                container.style.width = "90%";
               }
             }
           });
@@ -15377,10 +15219,10 @@
         if (!response.body.success) {
           modal21.open({
             content: response.body.html || response.body.message || response.body,
-            afterOpen: function(container2) {
-              container2 = modal21.element(container2);
-              if (container2 && !response.body.html && !response.body.message) {
-                container2.style.width = "90%";
+            afterOpen: function(container) {
+              container = modal21.element(container);
+              if (container && !response.body.html && !response.body.message) {
+                container.style.width = "90%";
               }
             }
           });
@@ -15400,7 +15242,7 @@
     ui: ui_default,
     styles: styles_default,
     dom: dom26,
-    domready: ready18,
+    domready: ready17,
     particles: particles_default,
     zen: zen9,
     atoms: pagesettings_default,
@@ -15409,4 +15251,3 @@
   window.Genesis = modules;
   var main_default = modules;
 })();
-//# sourceMappingURL=main.js.map

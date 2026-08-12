@@ -1,28 +1,14 @@
-// Bootstrap 5 grid engine — M1: SCSS foundation only.
+// Bootstrap 5 grid engine.
 //
-// Imports ONLY the grid subsystem (functions, variables, mixins/grid, grid)
-// from the shared vendored Bootstrap 5 tree — no reboot/reset, no component
-// styles — so existing theme typography and base styles are untouched.
-// See NUCLEUS_BOOTSTRAP_MIGRATION.md for the full migration plan.
-//
-// `.g-grid` / `.g-block` (defined in _flex.scss, imported right after this
-// file) are built on top of Bootstrap's make-row()/make-col-ready() mixins
-// so they carry the same --bs-gutter-x/-y custom-property plumbing that
-// later milestones' `.col-N` classes (from make-grid-columns() below) will
-// rely on. `.size-N` (_sizes.scss) is untouched in M1 — it still wins the
-// cascade over `.g-block`'s base rule, same as before this migration.
+// Import only the grid subsystem so existing theme typography and base styles
+// remain untouched. Layout markup uses Bootstrap `.row` and `.col-*` classes
+// directly. `.g-grid` and `.g-block` remain semantic hooks only; they do not
+// implement a parallel sizing system.
 
-// Bootstrap functions must load first; several grid mixins call them.
 @import "../vendor/bootstrap5/functions";
 
-// Map nucleus's 5 named breakpoints onto Bootstrap's $grid-breakpoints map
-// 1:1 (see configuration/nucleus/_breakpoints.scss for the source values),
-// so responsive behavior doesn't shift:
-//   xs  <  large-mobile-container (30rem)   — nucleus "small-mobile-range"
-//   sm  >= large-mobile-container (30rem)   — nucleus "large-mobile-range"
-//   md  >= tablet-container (48rem)         — nucleus "tablet-range"
-//   lg  >= desktop-container (60rem)        — nucleus "desktop-range"
-//   xl  >= large-desktop-container (75rem)  — nucleus "large-desktop-range"
+// Preserve the framework's established breakpoint values while using
+// Bootstrap's responsive column implementation.
 $grid-breakpoints: (
     xs: 0,
     sm: $breakpoints-large-mobile-container,
@@ -31,10 +17,7 @@ $grid-breakpoints: (
     xl: $breakpoints-large-desktop-container
 ) !default;
 
-// Nucleus has no grid-level gutter today — every gap between blocks/particles
-// comes from particle-level padding/margin ($content-padding/$content-margin
-// used throughout each particle's own SCSS), not the grid itself. Keeping
-// the Bootstrap gutter at 0 means M1 introduces zero visual change.
+// Particle spacing remains responsible for visual gaps between columns.
 $grid-gutter-width: 0 !default;
 
 @import "../vendor/bootstrap5/variables";

@@ -26,6 +26,22 @@ body {
     overflow: hidden;
 }
 
+// Theme containers are sized by the active breakpoint preset. Keep their
+// alignment here, independently from the grid implementation, so Bootstrap
+// rows and columns remain centred without relying on the retired flex grid.
+.g-container {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+// A container nested inside a Bootstrap column belongs to that column and
+// must not retain the page-level fixed width.
+.g-block > .g-container {
+	width: auto;
+}
+
 article,
 aside,
 details,

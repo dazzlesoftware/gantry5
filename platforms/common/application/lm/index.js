@@ -2,7 +2,6 @@ import __module0 from '../utils/dom.js';
 import __module1 from '../utils/dom-collection.js';
 import __module2 from '../fields/submit.js';
 import __module3 from '../ui/index.js';
-import __module4 from './particles-sidebar.js';
 import __module5 from '../utils/request.js';
 import __module6 from '../utils/indicator.js';
 import __module7 from '../utils/get-ajax-suffix.js';
@@ -25,7 +24,6 @@ let ready          = __module0.ready,
     Submit         = __module2,
     modal          = __module3.modal,
     toastr         = __module3.toastr,
-    sidebar        = __module4,
     request        = __module5,
     indicator      = __module6,
 
@@ -253,23 +251,6 @@ ready(function() {
         // refresh LM eraser
         layoutmanager.eraser.setElement(document.querySelector('[data-lm-eraseblock]'));
         layoutmanager.eraser.hide(true);
-    });
-
-    // Particles filtering
-    body.delegate('input', '.sidebar-block .search input', function(event, element) {
-        let value = dom(element).value().toLowerCase(),
-            list = dom('.sidebar-block [data-lm-blocktype]'),
-            text, type;
-        if (!list) { return false; }
-
-        list.style({ display: 'none' }).forEach(function(blocktype) {
-            blocktype = dom(blocktype);
-            type = blocktype.data('lm-blocktype').toLowerCase();
-            text = trim(blocktype.text()).toLowerCase();
-            if (type.substr(0, value.length) == value || text.match(value)) {
-                blocktype.style({ display: 'block' });
-            }
-        }, this);
     });
 
     // Grid same widths button (evenize, equalize)
@@ -698,12 +679,25 @@ ready(function() {
     let openParticlePicker = function(columnId) {
         let templates = Array.from(document.querySelectorAll('.genesis-lm-particles-picker .particles-container [data-lm-blocktype]'))
             .filter(function(item) { return !item.hasAttribute('data-lm-disabled'); });
-        let items = templates.map(function(item, index) {
-            let title = (item.querySelector('.particle-title') || item).textContent.trim();
-            let icon = item.getAttribute('data-lm-icon') || 'fa-cube';
-            return '<button type="button" class="lm-particle-picker-item" data-lm-particle-index="' + index +
-                '" data-search="' + escapeHTML((title + ' ' + (item.getAttribute('data-lm-subtype') || '')).toLowerCase()) + '">' +
-                '<i class="fa fa-fw ' + escapeHTML(icon) + '" aria-hidden="true"></i><span>' + escapeHTML(title) + '</span></button>';
+        let categories = new Map();
+        templates.forEach(function(item, index) {
+            let title = (item.querySelector('.particle-title') || item).textContent.trim(),
+                icon = item.getAttribute('data-lm-icon') || 'fa-cube',
+                category = item.getAttribute('data-lm-category') || 'general',
+                categoryLabel = item.getAttribute('data-lm-category-label') || category,
+                type = item.getAttribute('data-lm-blocktype') || 'particle',
+                button = '<button type="button" class="lm-particle-picker-item genesis-lm-particle-' + escapeHTML(type) +
+                    ' particle-category-' + escapeHTML(category) + '" data-lm-blocktype="' + escapeHTML(type) +
+                    '" data-lm-category="' + escapeHTML(category) + '" data-lm-particle-index="' + index +
+                    '" data-search="' + escapeHTML((title + ' ' + (item.getAttribute('data-lm-subtype') || '') + ' ' + categoryLabel).toLowerCase()) + '">' +
+                    '<span class="particle-icon"><i class="fa fa-fw ' + escapeHTML(icon) + '" aria-hidden="true"></i></span>' +
+                    '<span class="particle-title">' + escapeHTML(title) + '</span></button>';
+            if (!categories.has(categoryLabel)) { categories.set(categoryLabel, []); }
+            categories.get(categoryLabel).push(button);
+        });
+        let items = Array.from(categories, function(entry) {
+            return '<section class="lm-particle-picker-group" data-lm-particle-group><h4>' + escapeHTML(entry[0]) +
+                '</h4><div class="lm-particle-picker-group-items">' + entry[1].join('') + '</div></section>';
         }).join('');
 
         modal.open({
@@ -716,6 +710,7 @@ ready(function() {
             afterOpen: function(content) {
                 let root = content[0], search = root.querySelector('[data-lm-particle-search]'),
                     buttons = Array.from(root.querySelectorAll('[data-lm-particle-index]')),
+                    groups = Array.from(root.querySelectorAll('[data-lm-particle-group]')),
                     empty = root.querySelector('.lm-particle-picker-empty');
                 search.addEventListener('input', function() {
                     let query = search.value.trim().toLowerCase(), visible = 0;
@@ -723,6 +718,9 @@ ready(function() {
                         let show = !query || button.getAttribute('data-search').indexOf(query) !== -1;
                         button.hidden = !show;
                         if (show) { visible++; }
+                    });
+                    groups.forEach(function(group) {
+                        group.hidden = !group.querySelector('[data-lm-particle-index]:not([hidden])');
                     });
                     empty.hidden = visible !== 0;
                 });
@@ -850,8 +848,8 @@ ready(function() {
     };
 
     // The + inside an empty Bootstrap column creates content without changing
-    // the row's fixed split. Particles continue to use the searchable sidebar;
-    // Row and Div are native structural layout types.
+    // the row's fixed split. Particle selection is handled by the grouped,
+    // searchable modal; Row and Div are native structural layout types.
     body.delegate('click', '[data-lm-column-add]', function(event, element) {
         event.preventDefault();
         let column = element.parent('[data-lm-blocktype="block"]');

@@ -21,7 +21,7 @@ form:
       label: Widget
       class: g-urltemplate input-small
       picker_label: Pick a Widget
-      pattern: '[a-z0-9_-]+'
+      pattern: '[a-z0-9_\x2D]+'
       overridable: false
 
     chrome:

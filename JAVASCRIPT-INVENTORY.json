@@ -22,26 +22,26 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 214,
+    "totalFiles": 213,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 192,
+      "first_party_source": 191,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
     },
     "areas": {
-      "administration": 88,
+      "administration": 87,
       "build": 5,
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 33,
       "shared_browser_asset": 81
     },
-    "activeReferencedFiles": 212,
-    "unreferencedFiles": 2,
+    "activeReferencedFiles": 210,
+    "unreferencedFiles": 3,
     "commonjsFiles": 9,
-    "esModuleFiles": 93,
+    "esModuleFiles": 92,
     "varFiles": 15,
     "legacyBrowserApiFiles": 4,
     "inlineCodeGenerationFiles": 0,
@@ -4269,9 +4269,9 @@
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 6228,
-      "lines": 176,
-      "sha256": "095f7ea69a3d09a7eba0be6dc3084165a187e2f0626cd141e8a1b16aac69e665",
+      "bytes": 4381,
+      "lines": 133,
+      "sha256": "d1ed35d20302a3b4884623de7f08e1e3f089d78e583fd85ad8a5ccee6a71f86f",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4285,8 +4285,7 @@
           "lm-blocktype",
           "lm-column-add",
           "lm-id",
-          "lm-nodrag",
-          "lm-root"
+          "lm-nodrag"
         ],
         "storageKeys": []
       }
@@ -4374,9 +4373,9 @@
         "platforms/common/application/lm/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 1954,
+      "bytes": 1958,
       "lines": 53,
-      "sha256": "f97be6883ac91d6a95af99945b69bcada7b2e477f11c5f83405b0c1a66a42aa8",
+      "sha256": "e57a79e6b6c050a24ef38dc06620859213bc8ff0260972b799d70a481771027d",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4503,9 +4502,9 @@
         "platforms/common/application/lm/blocks/system.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 7184,
-      "lines": 166,
-      "sha256": "50344e1407fd1fbcb8feaaaf0cb38cda7e587fc8100831bff9941dfbd4147e8b",
+      "bytes": 6574,
+      "lines": 149,
+      "sha256": "8203da0c3c00cb175e36ff6367958e48cf1b6846ef3374c4c48bdeeda110336f",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4818,9 +4817,9 @@
         "platforms/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 45846,
-      "lines": 981,
-      "sha256": "64c95ee8fff1d5d24074fae1367a6193a7ea965cbee42ae1957e343de764f591",
+      "bytes": 46412,
+      "lines": 979,
+      "sha256": "69bd3ffd0ed96d516d3f9e7c032e048d12d6ff89d6177814faac47b6812e18b0",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4841,6 +4840,8 @@
           "genesis-lm-picker",
           "lm-back",
           "lm-blocktype",
+          "lm-category",
+          "lm-category-label",
           "lm-clear",
           "lm-column-add",
           "lm-column-choice",
@@ -4853,6 +4854,7 @@
           "lm-icon",
           "lm-id",
           "lm-nodrag",
+          "lm-particle-group",
           "lm-particle-index",
           "lm-particle-remove",
           "lm-particle-search",
@@ -4997,36 +4999,6 @@
           "lm-blocktype",
           "lm-id"
         ],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "platforms/common/application/lm/particles-sidebar.js",
-      "area": "administration",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 2,
-      "consumers": [
-        "platforms/common/application/lm/index.js",
-        "platforms/common/js/main.js"
-      ],
-      "bytes": 4196,
-      "lines": 109,
-      "sha256": "5730487f3fe086971b6b302a1ef5fee97e0ce07572173ff0016a37663ec2b9da",
-      "signals": {
-        "commonjs": false,
-        "esModule": true,
-        "var": false,
-        "prototype": false,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [
-          "GENESIS_PLATFORM"
-        ],
-        "customEvents": [],
-        "dataAttributes": [],
         "storageKeys": []
       }
     },
@@ -6816,7 +6788,7 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 31,
+      "activeReferenceCount": 30,
       "consumers": [
         "platforms/common/application/assignments/index.js",
         "platforms/common/application/changelog/index.js",
@@ -6826,7 +6798,6 @@
         "platforms/common/application/fields/multicheckbox.js",
         "platforms/common/application/lm/index.js",
         "platforms/common/application/lm/inheritance/index.js",
-        "platforms/common/application/lm/particles-sidebar.js",
         "platforms/common/application/main.js",
         "platforms/common/application/menu/extra-items.js",
         "platforms/common/application/menu/index.js",
@@ -7029,9 +7000,8 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 4,
+      "activeReferenceCount": 3,
       "consumers": [
-        "platforms/common/application/lm/particles-sidebar.js",
         "platforms/common/application/particles/fonts/index.js",
         "platforms/common/js/main.js",
         "tests/php83/AdministrationDomFacadeRemovalTest.php"
@@ -7192,11 +7162,8 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 2,
-      "consumers": [
-        "platforms/common/application/lm/particles-sidebar.js",
-        "platforms/common/js/main.js"
-      ],
+      "activeReferenceCount": 0,
+      "consumers": [],
       "bytes": 539,
       "lines": 22,
       "sha256": "07771db4f62c92adfe41150a1b7af91a4896309050eb8ce584e2b49860a7b23e",
@@ -7582,9 +7549,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 629403,
-      "lines": 15412,
-      "sha256": "dd2ef69166cb5611fc6e2b7a7e0ff1034aeabbab97c7a625621bc52fba628aeb",
+      "bytes": 622656,
+      "lines": 15254,
+      "sha256": "6e000de3b1711e27eae579a5e61d3579790887af262a750e762a616f286aafd4",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -7719,6 +7686,7 @@
           "lm-blocksubtype",
           "lm-blocktype",
           "lm-category",
+          "lm-category-label",
           "lm-clear",
           "lm-column-add",
           "lm-column-choice",
@@ -7732,6 +7700,7 @@
           "lm-icon",
           "lm-id",
           "lm-nodrag",
+          "lm-particle-group",
           "lm-particle-index",
           "lm-particle-remove",
           "lm-particle-search",

@@ -11,6 +11,15 @@ $spacer: #eee;
 $system: #20A085;
 $atom: #9055AF;
 
+.lm-particle-template-registry {
+    display: none !important;
+}
+
+.lm-layout-workspace,
+.lm-layout-workspace > .main-block {
+    width: 100%;
+}
+
 [data-genesis-container] {
     // wrapper
 
@@ -406,16 +415,6 @@ $atom: #9055AF;
                     }
                 }
 
-                > .particle-size {
-                    margin-right: 0;
-                    position: absolute;
-                    bottom: 12px;
-                    right: 12px;
-
-                    i {
-                        margin-right: 5px;
-                    }
-                }
             }
         }
 
@@ -491,10 +490,6 @@ $atom: #9055AF;
 
             &[data-lm-nodrag] {
                 cursor: default;
-            }
-
-            .particle-size {
-                color: rgba($white, 0.7);
             }
 
             strong {
@@ -588,20 +583,6 @@ $atom: #9055AF;
             margin: 0 6px 6px 0px;
         }
 
-        .particle-size {
-            font-weight: 400;
-            font-size: $core-font-size + 0.2;
-            vertical-align: middle;
-            color: $core-text;
-            display: inline-block;
-            margin-top: -5px;
-            margin-right: 5px;
-            text-shadow: none;
-            @include breakpoint(tablet-range) {
-                font-size: $core-font-size;
-            }
-        }
-
         .particle {
             background-color: $particle;
 
@@ -626,10 +607,6 @@ $atom: #9055AF;
 
             &.g-inheriting {
                 @include stripes-background($spacer);
-            }
-
-            .particle-size {
-                color: rgba($dark-gray, 0.8);
             }
 
             > span {
@@ -913,32 +890,6 @@ $atom: #9055AF;
         position: relative;
     }
 
-    .particles-sidebar-block {
-        flex: 0 200px;
-        width: 200px;
-
-        @include breakpoint(mobile-only) {
-            flex: 0 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: inherit;
-            border: 0;
-
-            .particles-container {
-                max-height: 300px;
-                overflow: auto;
-                margin-bottom: 1rem;
-            }
-        }
-    }
-
-    @include breakpoint(no-mobile) {
-        .particles-container.has-scrollbar {
-            padding-right: $content-padding / 2;
-        }
-    }
-
     .genesis-lm-particles-picker, .genesis-mm-particles-picker, .genesis-mm-modules-picker, .genesis-mm-widgets-picker, #positions {
 
         ul, li {
@@ -1137,26 +1088,6 @@ $atom: #9055AF;
 
     .g-inheriting:not(.g-inheriting-children) .g-grid {
         z-index: inherit;
-    }
-
-    @include breakpoint(no-mobile) {
-        // fixed sidebar in LM
-        .genesis-lm-particles-picker.particles-fixed, .genesis-lm-particles-picker.particles-absolute {
-            z-index: 5;
-
-            .search input {
-                width: inherit;
-                margin-right: -($content-padding + ($content-padding / 2) + $content-margin + rem(1px));
-            }
-        }
-
-        .genesis-lm-particles-picker.particles-fixed {
-            position: fixed;
-        }
-
-        .genesis-lm-particles-picker.particles-absolute {
-            position: absolute;
-        }
     }
 
     // Row/column layout picker - see NUCLEUS_BOOTSTRAP_MIGRATION.md M3.
@@ -1470,12 +1401,27 @@ $atom: #9055AF;
     }
 
     .lm-particle-picker-results {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-        gap: 8px;
         max-height: 55vh;
         overflow: auto;
         padding-right: 4px;
+    }
+
+    .lm-particle-picker-group {
+        margin-bottom: $content-margin;
+
+        h4 {
+            margin: 0 0 8px;
+            color: lighten($core-text, 18%);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+
+    .lm-particle-picker-group-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 8px;
     }
 
     .lm-particle-picker-item {
@@ -1483,16 +1429,57 @@ $atom: #9055AF;
         align-items: center;
         gap: 10px;
         padding: 12px;
-        border: 1px solid #dfdfdf;
+        border: 2px solid $particle;
         border-radius: 4px;
         background: $white;
-        color: $core-text;
+        color: $particle;
         text-align: left;
         cursor: pointer;
 
+        .particle-icon {
+            display: inline-flex;
+            width: 2rem;
+            height: 2rem;
+            flex: 0 0 2rem;
+            align-items: center;
+            justify-content: center;
+            margin: -12px 2px -12px -12px;
+            align-self: stretch;
+            background: $particle;
+            color: $white;
+        }
+
+        &[data-lm-blocktype="position"],
+        &[data-lm-blocktype="module"],
+        &[data-lm-blocktype="widget"] {
+            border-color: $position;
+            color: $position;
+            .particle-icon { background: $position; }
+        }
+
+        &[data-lm-blocktype="spacer"] {
+            border-color: darken($medium-gray, 5%);
+            color: $dark-gray;
+            .particle-icon { background: darken($medium-gray, 5%); color: $dark-gray; }
+        }
+
+        &[data-lm-blocktype="system"] {
+            border-color: $system;
+            color: $system;
+            .particle-icon { background: $system; }
+        }
+
+        @each $category, $color in $particle-categories {
+            &.particle-category-#{$category}[data-lm-blocktype="particle"] {
+                border-color: $color;
+                color: $color;
+                .particle-icon { background: $color; }
+            }
+        }
+
         &:hover, &:focus {
-            border-color: $particle;
-            background: lighten($particle, 45%);
+            background: #f5f7fa;
+            box-shadow: 0 0 0 1px currentColor;
         }
     }
 }
