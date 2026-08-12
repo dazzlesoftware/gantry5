@@ -35,11 +35,11 @@
     <div id="positions">
         <ul class="g-grid">
             {% for name, position in positions %}
-                <li class="card g-block size-1-4">
+                <li class="card g-block admin-card-quarter">
                     {% include '@genesis-admin/layouts/position.html.twig' %}
                 </li>
             {% endfor %}
-            <li class="card g-block size-1-4 add-new">
+            <li class="card g-block admin-card-quarter add-new">
                 <div class="page">
                     <a data-g-config="create"
                        data-g-config-href="{{ genesis.route('positions/create') }}"

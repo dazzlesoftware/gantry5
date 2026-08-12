@@ -401,22 +401,34 @@ be handled before M6 removes `.size-*`:
 
 - All 797 compact theme layouts have been migrated from percentage-based
   format 2 to Bootstrap-column format 3. Compact width tokens now represent
-  spans from 1 to 12, and the new reader/writer mirrors legacy percentages at
-  runtime during the transition. Another 207 block nodes in six expanded
+  spans from 1 to 12, and the new reader/writer exposes `columns.xs` at
+  runtime. Another 207 block nodes in six expanded
   legacy layouts now carry explicit `columns.xs` metadata. Validation parses
   all 838 layout YAML files and loads every format 3 layout successfully.
 
-- Multiple theme SCSS files still test `.size-100`; some are layout selectors
-  and some are particle/menu-specific selectors, so they need classification
-  rather than a blind replacement.
-- Topaz directly targets `#g-navigationmain .size-30` for tablet behavior.
+- All structural theme SCSS selectors formerly using `.size-*` have been
+  migrated to Bootstrap column classes.
+- Topaz's structural `#g-navigationmain .size-30` tablet selector has been
+  migrated to the snapped Bootstrap equivalent `.col-4`.
 - WordPress blog/archive post grids were migrated across all 96 affected
-  blueprints/templates: new settings store Bootstrap `col-*` values and the
-  templates pass saved values through `toColumns`, which translates existing
-  legacy `size-*` settings without requiring a data rewrite.
-- Ethereal demo layout HTML embeds `.g-block.size-33-3` directly.
-- Admin `_configurations.scss` contains an unrelated `.size-1-4` utility and
-  must not be mechanically converted with front-end grid selectors.
+  blueprints/templates; new settings and templates use Bootstrap `col-*`
+  values directly.
+- Ethereal demo layout HTML formerly embedding `.g-block.size-33-3` now uses
+  `.g-block.col-4` across all six affected layouts.
+- All 64 front-end particle Twig templates with hardcoded structural sizing
+  now use Bootstrap spans (`size-22/33/67/50` → `col-3/4/8/6`). Theme admin
+  card utilities remain separate from the front-end grid migration.
+- Embedded grid HTML in nine additional demo layouts now uses Bootstrap
+  columns, including the former 22/26/33/37/50/67/68/100% classes. Redundant
+  `size-100` classes were removed from `.g-grid` row containers. The unrelated
+  Galatea `size-80` title utility was intentionally left unchanged.
+- Mega-menu columns now render through `toColumns` in the shared menu plus the
+  Vermilion, Kraken, and Koleti variants. Orion, Akuatik, Studius, and Clarity
+  menu selectors now target Bootstrap column classes. Full-width
+  swipercarousel variation selectors were migrated to `.col-12` in all 18
+  affected themes.
+- The admin quarter-card utility was renamed to semantic
+  `.admin-card-quarter`; rebuilt admin CSS has no legacy grid classes.
 
 ### M6 — Cleanup
 
@@ -426,16 +438,34 @@ paths. Write up the new grid model — there is currently no documentation
 of the grid architecture anywhere in the repo (checked `README.md`,
 `themes/README.md`, `PARTICLES_MAP.md`; none describe it).
 
+Cleanup progress: the unused `toGrid` PHP/Twig API has been removed, Galatea's
+last non-grid `size-80` use now has a semantic `.width-80` utility, and the
+legacy front-end `_sizes.scss` source/import has been deleted. Rebuilt
+`nucleus.css` contains no `.size-*` rules. Admin `size-*` card utilities are a
+separate admin stylesheet concern. `_flex.scss` remains because it now defines
+the Bootstrap-backed `.g-grid`/`.g-block` compatibility aliases still used by
+particle markup; deleting those aliases requires a distinct markup migration.
+Layout Manager width badges now display canonical Bootstrap spans such as
+`col-6` instead of transitional percentages such as `50%`. Block relocation
+and row normalization persist only integer Bootstrap columns. The Layout
+Manager percentage resizer module and its event path have been deleted;
+transient percentages are used only for drag animation geometry and are never
+serialized.
+Row normalization now operates on integer `columns.xs` spans rather than
+percentage totals. Valid 12-column rows are preserved exactly; invalid totals
+use a deterministic largest-remainder allocation with at least one column per
+block. Legacy rows containing more than 12 blocks retain every block at
+`col-1` and wrap instead of losing content.
+
 ## Open questions / risks
 
 None remaining that block M3. Resolved in M1: gutter model (no
 grid-level gutter exists today, so `$grid-gutter-width: 0`) and
 breakpoint mapping (nucleus's 5 breakpoints map onto Bootstrap's
-`$grid-breakpoints` keys 1:1, no approximation). Resolved in M2b: the
-live-site data migration risk is moot — `columns` is purely additive,
-nothing on disk is force-converted, `xs` is always derived live from the
-existing `size` float rather than stored, so there's no one-way
-conversion, no version flag, and no rollback plan needed.
+`$grid-breakpoints` keys 1:1, no approximation). Resolved in M2b/M5: format 3
+is the canonical persisted model and stores Bootstrap spans. Format 1/2
+readers remain import-only compatibility for old third-party or user-created
+layout files; saving converts them to format 3.
 
 ## Decisions already made
 

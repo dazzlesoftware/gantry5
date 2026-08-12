@@ -22,26 +22,26 @@
     "browserBaselineSource": "README.md lines 60-68"
   },
   "summary": {
-    "totalFiles": 215,
+    "totalFiles": 214,
     "classifications": {
       "build_tool": 5,
-      "first_party_source": 193,
+      "first_party_source": 192,
       "generated_bundle": 3,
       "platform_owned_integration": 3,
       "third_party_vendored": 11
     },
     "areas": {
-      "administration": 89,
+      "administration": 88,
       "build": 5,
       "frontend_core": 5,
       "platform_integration": 2,
       "recovered_theme": 33,
       "shared_browser_asset": 81
     },
-    "activeReferencedFiles": 213,
+    "activeReferencedFiles": 212,
     "unreferencedFiles": 2,
     "commonjsFiles": 9,
-    "esModuleFiles": 94,
+    "esModuleFiles": 93,
     "varFiles": 15,
     "legacyBrowserApiFiles": 4,
     "inlineCodeGenerationFiles": 0,
@@ -4269,9 +4269,9 @@
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 6146,
-      "lines": 174,
-      "sha256": "2a2e801259cd8cdf172eab727e8fb05adc1b28ce480bd249af676259d99e8a00",
+      "bytes": 6650,
+      "lines": 182,
+      "sha256": "5e92b91eec7d4863198f186ff352073604f7a1e72537a9cf4e611490b93c12e1",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4337,9 +4337,9 @@
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 1389,
-      "lines": 36,
-      "sha256": "5219ba126d7b9d2c232cc17dcc0e7b3b2dcf8355972747ef845edf028e1959f2",
+      "bytes": 1643,
+      "lines": 38,
+      "sha256": "1771ce8cc695d361385d0e32bbb844aa76b235bab688103e809147cba45c5249",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4354,7 +4354,8 @@
           "lm-div-addrow",
           "lm-id",
           "lm-nodrag",
-          "lm-settings"
+          "lm-settings",
+          "lm-structure-menu"
         ],
         "storageKeys": []
       }
@@ -4366,17 +4367,16 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 4,
       "consumers": [
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/application/lm/blocks/section.js",
         "platforms/common/application/lm/index.js",
-        "platforms/common/application/lm/layoutmanager.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 1857,
+      "bytes": 1954,
       "lines": 53,
-      "sha256": "fcf4bbadc2e0188486ad6480b9510352c714fa63e556301f6a7cbcf4a5055eef",
+      "sha256": "f97be6883ac91d6a95af99945b69bcada7b2e477f11c5f83405b0c1a66a42aa8",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4391,10 +4391,7 @@
           "lm-id",
           "lm-nodrag",
           "lm-preset-grid",
-          "lm-row-layout",
-          "lm-samewidth",
-          "tip",
-          "tip-place"
+          "lm-structure-menu"
         ],
         "storageKeys": []
       }
@@ -4506,9 +4503,9 @@
         "platforms/common/application/lm/blocks/system.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 6718,
-      "lines": 164,
-      "sha256": "00e17279fda26dbfbb0f02b117d4d0a4f754276c69d481585d09ff1a645d3076",
+      "bytes": 7184,
+      "lines": 166,
+      "sha256": "50344e1407fd1fbcb8feaaaf0cb38cda7e587fc8100831bff9941dfbd4147e8b",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4526,6 +4523,7 @@
           "lm-icon",
           "lm-id",
           "lm-nodrag",
+          "lm-particle-remove",
           "lm-settings",
           "lm-subtype"
         ],
@@ -4575,9 +4573,9 @@
         "platforms/common/application/lm/blocks/wrapper.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 7638,
+      "bytes": 7654,
       "lines": 178,
-      "sha256": "85d7cbd51f3bba1ae3ff1be93987b9c60789615ea8977e45294a48df2a99699a",
+      "sha256": "8f5c0ded718b0c9fc532f713dee7c18836aa1f57b78eab224137f47d1cce1801",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4666,9 +4664,9 @@
         "platforms/common/application/lm/blocks/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 573,
+      "bytes": 581,
       "lines": 29,
-      "sha256": "0467040b29eb3e50cd3c7fd10e8cbdf2f996bf505116b1a3bae0ad968e41da95",
+      "sha256": "4af7da11ff669dadccc1c3e8d4fef4f09f22064d38a99aa9751e41284f14a464",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4698,9 +4696,9 @@
         "platforms/common/application/lm/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 7957,
+      "bytes": 7978,
       "lines": 230,
-      "sha256": "ad55bf892440c14efdcf0bd6283621b4373c3b635dc2e2d1a35353593336439c",
+      "sha256": "3c552153f1e99050cae6ceb21879bd51a55eb9eca85c0dee1222a02d62af14f2",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4715,39 +4713,6 @@
           "lm-blocktype",
           "lm-id",
           "lm-root"
-        ],
-        "storageKeys": []
-      }
-    },
-    {
-      "path": "platforms/common/application/lm/drag.resizer.js",
-      "area": "administration",
-      "classification": "first_party_source",
-      "owner": "Genesis",
-      "generatedFrom": null,
-      "entryPoint": false,
-      "activeReferenceCount": 3,
-      "consumers": [
-        "platforms/common/application/lm/layoutmanager.js",
-        "platforms/common/application/menu/menumanager.js",
-        "platforms/common/js/main.js"
-      ],
-      "bytes": 9325,
-      "lines": 247,
-      "sha256": "3db02030d8c19ace114bc5e776d9ca02592dd4495b5a625063d353482160cbc7",
-      "signals": {
-        "commonjs": false,
-        "esModule": true,
-        "var": false,
-        "prototype": false,
-        "legacyBrowserApi": false,
-        "inlineCodeGeneration": false,
-        "globals": [],
-        "customEvents": [],
-        "dataAttributes": [
-          "lm-back",
-          "lm-forward",
-          "lm-id"
         ],
         "storageKeys": []
       }
@@ -4853,9 +4818,9 @@
         "platforms/common/js/main.js",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 38517,
-      "lines": 880,
-      "sha256": "8bf52bd389aa868d1ddcf8c6d4405e8a0d01c0030fcc26d64bcd50ec97ac9b03",
+      "bytes": 47240,
+      "lines": 1011,
+      "sha256": "3d463680b63cea0f8ab13267c5167d0daaab9b5942d85bfdf9bbd0bf991ba04e",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4885,15 +4850,23 @@
           "lm-dropzone",
           "lm-eraseblock",
           "lm-forward",
+          "lm-icon",
           "lm-id",
           "lm-nodrag",
+          "lm-particle-index",
+          "lm-particle-remove",
+          "lm-particle-search",
           "lm-preset",
           "lm-preset-grid",
           "lm-root",
           "lm-row-layout",
           "lm-samewidth",
           "lm-settings",
+          "lm-structure-action",
+          "lm-structure-menu",
+          "lm-subtype",
           "lm-switcher",
+          "search",
           "switch"
         ],
         "storageKeys": []
@@ -4972,9 +4945,9 @@
         "platforms/common/application/lm/index.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 30449,
-      "lines": 723,
-      "sha256": "5dcf044f581ddc5546537b5dd1dc150f16f05711379d04be6e5b338aae00e512",
+      "bytes": 29506,
+      "lines": 698,
+      "sha256": "f373524730fdaff0e45b0a04986b593e8cf31235afe2abbeeed1ab664e2cf1ed",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -4997,7 +4970,7 @@
       }
     },
     {
-      "path": "platforms/common/application/lm/normalize-grid-sizes.js",
+      "path": "platforms/common/application/lm/normalize-grid-columns.js",
       "area": "administration",
       "classification": "first_party_source",
       "owner": "Genesis",
@@ -5008,9 +4981,9 @@
         "platforms/common/application/lm/builder.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 1415,
-      "lines": 42,
-      "sha256": "1ab1cfc1b434b57106295578a7f9bee79a6978d42505a80a9574241315b8d77e",
+      "bytes": 2002,
+      "lines": 50,
+      "sha256": "8a05875e6ca54e873a993d2d26be028c4f88b57da99acbb24f1c0e4af8fe174c",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5064,15 +5037,14 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 3,
+      "activeReferenceCount": 2,
       "consumers": [
         "platforms/common/application/lm/index.js",
-        "platforms/common/application/lm/layoutmanager.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 5969,
-      "lines": 161,
-      "sha256": "4a5895f589ae8cc31f58c01ab7b14116a6023c246e597449fa89fc2e0019415c",
+      "bytes": 8559,
+      "lines": 193,
+      "sha256": "9650adbec2db3c5e84db7d1e130eb2f39aeaf0ecb6441df302be590cf0b9c58b",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5084,7 +5056,10 @@
         "customEvents": [],
         "dataAttributes": [
           "lm-nodrag",
+          "lm-row-breakpoint",
+          "lm-row-breakpoint-help",
           "lm-row-generate",
+          "lm-row-inherit",
           "lm-row-preset"
         ],
         "storageKeys": []
@@ -5115,9 +5090,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 19271,
-      "lines": 490,
-      "sha256": "5564f4a01cc4b882c8da015cf2f24fcff30c7fdfa79446b9065f66f6c717332c",
+      "bytes": 21016,
+      "lines": 522,
+      "sha256": "140b15ee36f5c4bec5c6ef4744ad0a89e8511323fe5733f6f0d00e84d7b846d2",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -5137,9 +5112,11 @@
         ],
         "dataAttributes": [
           "ajax-action",
+          "g-admin-theme",
           "g-close",
           "g-extras",
           "g-popover",
+          "genesis-container",
           "genesis-position",
           "lm-preset",
           "lm-root",
@@ -5149,7 +5126,9 @@
           "title-edit",
           "title-editable"
         ],
-        "storageKeys": []
+        "storageKeys": [
+          "genesis-admin-color-mode"
+        ]
       }
     },
     {
@@ -5159,9 +5138,8 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 3,
+      "activeReferenceCount": 2,
       "consumers": [
-        "platforms/common/application/lm/layoutmanager.js",
         "platforms/common/application/menu/menumanager.js",
         "platforms/common/js/main.js"
       ],
@@ -5312,9 +5290,8 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 5,
+      "activeReferenceCount": 4,
       "consumers": [
-        "platforms/common/application/lm/layoutmanager.js",
         "platforms/common/application/menu/index.js",
         "platforms/common/js/main.js",
         "platforms/phpbb/genesis/admin/templates/pages/menu/menu.html.twig",
@@ -6215,9 +6192,9 @@
         "platforms/common/application/menu/menumanager.js",
         "platforms/common/js/main.js"
       ],
-      "bytes": 15703,
-      "lines": 397,
-      "sha256": "c874e72368eb65fb805cea5ebed0289829ffddb0d980f1c327ccc1411ac01aa2",
+      "bytes": 15983,
+      "lines": 399,
+      "sha256": "88616c0bcb0c9d19370031aabe227cece50bd20a0a4cb36dbd86c71e2862dbae",
       "signals": {
         "commonjs": false,
         "esModule": true,
@@ -6230,8 +6207,10 @@
         "dataAttributes": [
           "genesis-container",
           "lm-blocktype",
+          "lm-div-drag",
           "lm-placeholder",
           "lm-root",
+          "lm-row-drag",
           "mm-id"
         ],
         "storageKeys": []
@@ -6244,9 +6223,8 @@
       "owner": "Genesis",
       "generatedFrom": null,
       "entryPoint": false,
-      "activeReferenceCount": 4,
+      "activeReferenceCount": 3,
       "consumers": [
-        "platforms/common/application/lm/drag.resizer.js",
         "platforms/common/application/menu/drag.resizer.js",
         "platforms/common/application/ui/drag.drop.js",
         "platforms/common/js/main.js"
@@ -7604,9 +7582,9 @@
         "tests/php83/AdministrationEsModulesBuildTest.php",
         "tests/php83/FrontendCoreModulesTest.php"
       ],
-      "bytes": 626187,
-      "lines": 15451,
-      "sha256": "bed2733cdf847976acba802ebffcd78171034288bc84dc887956321b8ac8e9ab",
+      "bytes": 631206,
+      "lines": 15444,
+      "sha256": "e5ed0790a0f154ab12131bc9b576d252e6ee8277da0088d4ffbece56e550edb7",
       "signals": {
         "commonjs": false,
         "esModule": false,
@@ -7660,6 +7638,7 @@
           "folder",
           "font",
           "font-categories",
+          "g-admin-theme",
           "g-assignments-check",
           "g-assignments-group",
           "g-assignments-parent",
@@ -7746,21 +7725,31 @@
           "lm-container",
           "lm-disabled",
           "lm-div-addrow",
+          "lm-div-drag",
           "lm-dropzone",
           "lm-eraseblock",
           "lm-forward",
           "lm-icon",
           "lm-id",
           "lm-nodrag",
+          "lm-particle-index",
+          "lm-particle-remove",
+          "lm-particle-search",
           "lm-placeholder",
           "lm-preset",
           "lm-preset-grid",
           "lm-root",
+          "lm-row-breakpoint",
+          "lm-row-breakpoint-help",
+          "lm-row-drag",
           "lm-row-generate",
+          "lm-row-inherit",
           "lm-row-layout",
           "lm-row-preset",
           "lm-samewidth",
           "lm-settings",
+          "lm-structure-action",
+          "lm-structure-menu",
           "lm-subtype",
           "lm-switcher",
           "lmId",
@@ -7790,6 +7779,7 @@
           "popover-content",
           "root-not-found",
           "save",
+          "search",
           "select",
           "selectable",
           "selectize",
@@ -7811,7 +7801,9 @@
           "variant",
           "variants"
         ],
-        "storageKeys": []
+        "storageKeys": [
+          "genesis-admin-color-mode"
+        ]
       }
     },
     {

@@ -73,7 +73,7 @@ class Layout extends HtmlController
         $layout = $this->getLayout("presets/{$id}");
 
         $this->params['page_id'] = $id;
-        $this->params['layout'] = $layout->prepareWidths()->toArray();
+        $this->params['layout'] = $layout->prepareColumns()->toArray();
 
         return $this->render('@genesis-admin/pages/configurations/layouts/create.html.twig', $this->params);
     }
@@ -114,7 +114,7 @@ class Layout extends HtmlController
         }
 
         $this->params['page_id'] = $outline;
-        $this->params['layout'] = $layout->prepareWidths()->toArray();
+        $this->params['layout'] = $layout->prepareColumns()->toArray();
         $this->params['preset'] = $layout->preset;
         $this->params['preset_title'] = ucwords(trim(str_replace('_', ' ', $layout->preset['name'])));
         $this->params['id'] = ucwords(str_replace('_', ' ', ltrim($outline, '_')));
@@ -346,7 +346,7 @@ class Layout extends HtmlController
         return new JsonResponse([
             'title' => ucwords(trim(str_replace('_', ' ', $layout->preset['name']))),
             'preset' => json_encode($layout->preset),
-            'data' => $layout->prepareWidths()->toJson(),
+            'data' => $layout->prepareColumns()->toJson(),
             'deleted' => $deleted,
             'message' => $message
         ]);
@@ -379,7 +379,7 @@ class Layout extends HtmlController
         return new JsonResponse([
             'title' => ucwords(trim(str_replace('_', ' ', $id))),
             'preset' => json_encode($layout->preset),
-            'data' => $layout->prepareWidths()->toJson(),
+            'data' => $layout->prepareColumns()->toJson(),
             'deleted' => $deleted,
             'message' => $message
         ]);
@@ -442,15 +442,6 @@ class Layout extends HtmlController
                 if ($param === '') {
                     unset($block[$key]);
                     continue;
-                }
-                if ($key === 'size') {
-                    $param = round($param, 4);
-                    if ($param < 5) {
-                        $param = 5;
-                    } elseif ($param > 100) {
-                        $param = 100;
-                    }
-                    $block[$key] = $param;
                 }
             }
 

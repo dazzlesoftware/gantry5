@@ -6,7 +6,7 @@
 #g-container-top {
     > .g-grid, .g-container > .g-grid {
         > .g-block {
-            &:first-child:not(.size-100) {
+            &:first-child:not(.col-12) {
                 > section:first-child {
                     border-radius: 0.3rem 0 0 0;
                     @include breakpoint(mobile-only) {
@@ -20,7 +20,7 @@
             }
 
 
-            &:last-child:not(.size-100) {
+            &:last-child:not(.col-12) {
                 > section:first-child {
                     border-radius: 0 0.3rem 0 0;
                     .dir-rtl & {
@@ -29,7 +29,7 @@
                 }
             }
 
-            &.size-100 {
+            &.col-12 {
                 > section {
                     border-radius: 0.3rem 0.3rem 0 0;
                 }

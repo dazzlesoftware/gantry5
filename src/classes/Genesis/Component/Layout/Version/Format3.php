@@ -14,8 +14,7 @@ namespace Genesis\Component\Layout\Version;
  *
  * Format 3 keeps Format 2's compact YAML structure, but the number appended
  * to a block is a Bootstrap span from 1 to 12 instead of a percentage. The
- * runtime percentage is mirrored while the remaining legacy layout code is
- * phased out.
+ * runtime uses the responsive `columns` map directly.
  */
 class Format3 extends Format2
 {
@@ -54,7 +53,7 @@ class Format3 extends Format2
     }
 
     /**
-     * Convert compact v3 spans into runtime column maps and legacy sizes.
+     * Convert compact v3 spans into runtime column maps.
      *
      * @param object $item
      * @return void
@@ -75,8 +74,8 @@ class Format3 extends Format2
             $span = max(1, min(12, $span));
 
             $existing['xs'] = $span;
-            $item->attributes->columns = (object) $existing;
-            $item->attributes->size = $span / 12 * 100;
+            $item->attributes->columns = $existing;
+            unset($item->attributes->size);
         }
 
         foreach ($item->children ?? [] as $child) {
@@ -96,16 +95,29 @@ class Format3 extends Format2
         if (($item['type'] ?? null) === 'block') {
             $span = !empty($item['attributes']['columns']['xs'])
                 ? (int) $item['attributes']['columns']['xs']
-                : (int) round(((float) ($item['attributes']['size'] ?? 100)) / 100 * 12);
+                : 12;
             $span = max(1, min(12, $span));
 
             $item['attributes']['columns']['xs'] = $span;
-            $item['attributes']['size'] = $span;
+            unset($item['attributes']['size']);
         }
 
         foreach ($item['children'] ?? [] as &$child) {
             $this->storeColumns($child);
         }
         unset($child);
+    }
+
+    /**
+     * Format 3 embeds the Bootstrap xs span, not a percentage.
+     *
+     * @param array $attributes
+     * @return int|null
+     */
+    protected function getCompactWidth(array $attributes)
+    {
+        $span = (int) ($attributes['columns']['xs'] ?? 12);
+
+        return $span === 12 ? null : max(1, min(12, $span));
     }
 }

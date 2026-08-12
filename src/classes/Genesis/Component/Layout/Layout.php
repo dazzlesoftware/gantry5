@@ -44,8 +44,6 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
     /** @var array */
     public $preset = [];
     /** @var array */
-    public $equalized = [3 => 33.3, 6 => 16.7, 7 => 14.3, 8 => 12.5, 9 => 11.1, 11 => 9.1, 12 => 8.3];
-
     /** @var array */
     protected $layout = ['wrapper', 'container', 'section', 'grid', 'block', 'div', 'offcanvas'];
     /** @var bool */
@@ -837,7 +835,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
                             if (isset($block->attributes)) {
                                 $inheritBlock = $outline ? $this->cloneData($outline->block($inheritId)) : null;
                                 $blockAttributes = $inheritBlock ?
-                                    array_diff_key((array)$inheritBlock->attributes, ['fixed' => 1, 'size' => 1, 'columns' => 1]) : [];
+                                    array_diff_key((array)$inheritBlock->attributes, ['fixed' => 1, 'columns' => 1]) : [];
                                 $block->attributes = (object)($blockAttributes + (array)$block->attributes);
                             }
                             break;
@@ -965,77 +963,29 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      *
      * @return $this
      */
-    public function prepareWidths()
+    public function prepareColumns()
     {
         $this->init();
 
-        $this->calcWidths($this->items);
+        $this->calcColumnsRecursive($this->items);
 
         return $this;
     }
 
     /**
-     * Recalculate block widths.
+     * Recalculate nested block columns.
      *
      * @param array $items
      * @internal
      */
-    protected function calcWidths(array &$items)
+    protected function calcColumnsRecursive(array &$items)
     {
-        foreach ($items as $i => $item) {
+        foreach ($items as $item) {
             if (empty($item->children)) {
                 continue;
             }
 
-            $this->calcWidths($item->children);
-
-            $dynamicSize = 0;
-            $fixedSize = 0;
-            $childrenCount = 0;
-            foreach ($item->children as $child) {
-                if ($child->type !== 'block') {
-                    continue;
-                }
-                $childrenCount++;
-                if (!isset($child->attributes->size)) {
-                    $child->attributes->size = 100 / count($item->children);
-                }
-                if (empty($child->attributes->fixed)) {
-                    $dynamicSize += $child->attributes->size;
-                } else {
-                    $fixedSize += $child->attributes->size;
-                }
-            }
-
-            if (!$childrenCount) {
-                continue;
-            }
-
-            $roundSize = round($dynamicSize, 1);
-            $equalized = isset($this->equalized[$childrenCount]) ? $this->equalized[$childrenCount] : 0;
-
-            // force-casting string for testing comparison due to weird PHP behavior that returns wrong result
-            if ($roundSize !== 100 && (string) $roundSize !== (string) ($equalized * $childrenCount)) {
-                $fraction = 0;
-                $multiplier = (100 - $fixedSize) / ($dynamicSize ?: 1);
-                foreach ($item->children as $child) {
-                    if ($child->type !== 'block') {
-                        continue;
-                    }
-                    if (!empty($child->attributes->fixed)) {
-                        continue;
-                    }
-
-                    // Calculate size for the next item by taking account the rounding error from the last item.
-                    // This will allow us to approximate cumulating error and fix it when rounding error grows
-                    // over the rounding treshold.
-                    $size = ($child->attributes->size * $multiplier) + $fraction;
-                    $newSize = round($size);
-                    $fraction = $size - $newSize;
-                    $child->attributes->size = $newSize;
-                }
-            }
-
+            $this->calcColumnsRecursive($item->children);
             $this->calcColumns($item->children);
         }
     }
@@ -1051,9 +1001,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * Format2::parse(), which only cast the top-level attributes object) —
      * so it's read/written with array syntax, not `->`.
      *
-     * This is additive to (and does not touch) the float `size` rebalancing
-     * above, which continues to drive the "default" breakpoint via
-     * ThemeTrait::toColumns()'s own size->column snap at render time. Only
+     * Breakpoints are normalized independently on Bootstrap's 12-column grid. Only
      * breakpoints where 2+ siblings already have an explicit override are
      * touched — a block with no `columns` override at all is left alone, so
      * no data is fabricated for a breakpoint nothing was ever authored for.
@@ -1093,8 +1041,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
             $multiplier = $available / ($dynamicColumns ?: 1);
             $fraction = 0;
             foreach ($dynamic as $child) {
-                // Same carried-fraction rounding approach as the float size
-                // rebalancing above, adapted to an integer 1-12 column count.
+                // Carry fractions forward so integer rounding remains stable.
                 $value = ($child->attributes->columns[$breakpoint] * $multiplier) + $fraction;
                 $newValue = (int) max(1, min(12, round($value)));
                 $fraction = $value - $newValue;

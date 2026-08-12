@@ -172,20 +172,11 @@ interface ThemeInterface
     public function configuration();
 
     /**
-     * Function to convert block sizes into CSS classes.
-     *
-     * @param string $text
-     * @return string
-     */
-    public function toGrid($text);
-
-    /**
      * Convert a block's width into Bootstrap 5 grid column classes,
      * optionally including responsive per-breakpoint overrides.
      *
-     * @param string $text
      * @param array|null $columns
      * @return string
      */
-    public function toColumns($text, ?array $columns = null);
+    public function toColumns(?array $columns = null);
 }

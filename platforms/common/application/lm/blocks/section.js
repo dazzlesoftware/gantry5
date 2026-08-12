@@ -165,8 +165,8 @@ class Section extends Base {
         let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id'));
         if (siblingBlock.getType() !== 'block') { return false; }
         let sizes = {
-            current: this.getParent().getSize(),
-            sibling: siblingBlock.getSize()
+            current: this.getParent().getWidthPercent(),
+            sibling: siblingBlock.getWidthPercent()
         };
         return [5, (sizes.current + sizes.sibling) - 5];
     }

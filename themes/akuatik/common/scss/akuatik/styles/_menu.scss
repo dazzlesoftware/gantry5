@@ -143,14 +143,14 @@
         .g-dropdown-column {
             > .g-grid {
                 > .g-block {
-                    &.size-100 {
+                    &.col-12 {
                         border-radius: 10px;
                     }
                 }
             }
         }
 
-        .size-100 {
+        .col-12 {
             > .g-sublevel {
                 > li {
                     &.g-go-back {
@@ -172,7 +172,7 @@
             }
         }
 
-        div[class*="size"]:not(.size-100) {
+        .g-block:not(.col-12) {
             &:first-child {
                 > .g-sublevel {
                     > li {

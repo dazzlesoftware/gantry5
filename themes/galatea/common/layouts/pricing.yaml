@@ -149,7 +149,7 @@ content:
     attributes:
       html: "<h2 class=\"g-title\">Genesis is a cross-platform framework with a vast library of standardized features and functions, to make powerful, flexible themes.</h2>\n<p><a href=\"http://www.genesis.org\" class=\"readon\">Read more about Genesis</a></p>"
     block:
-      class: 'g-title-large g-title-300 size-80 center-block'
+      class: 'g-title-large g-title-300 width-80 center-block'
   pricingtable-5589:
     title: 'Pricing - 1 - Feature'
     attributes:

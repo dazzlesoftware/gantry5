@@ -51,7 +51,6 @@ trait ThemeTrait
     /** @var CssCompilerInterface */
     protected $compiler;
     /** @var array */
-    protected $equalized = [3 => 33.3, 6 => 16.7, 7 => 14.3, 8 => 12.5, 9 => 11.1, 11 => 9.1, 12 => 8.3];
     /** @var ThemeDetails */
     protected $details;
 
@@ -503,79 +502,25 @@ trait ThemeTrait
     }
 
     /**
-     * Function to convert block sizes into CSS classes.
-     *
-     * @param $text
-     * @return string
-     */
-    public function toGrid($text)
-    {
-        if (!$text && empty($columns['xs'])) {
-            return '';
-        }
-
-        $number = round($text, 1);
-        $number = max(5, $number);
-        $number = (string) ($number === 100.0 ? 100 : min(95, $number));
-
-        static $sizes = [
-            '33.3' => 'size-33-3',
-            '16.7' => 'size-16-7',
-            '14.3' => 'size-14-3',
-            '12.5' => 'size-12-5',
-            '11.1' => 'size-11-1',
-            '9.1'  => 'size-9-1',
-            '8.3'  => 'size-8-3'
-        ];
-
-        return isset($sizes[$number]) ? ' ' . $sizes[$number] : 'size-' . (int) $number;
-    }
-
-    /**
      * Convert a block's width into Bootstrap 5 grid column classes.
      *
-     * The "default" (mobile-first, unprefixed `col-N`) span always comes
-     * from the block's legacy float percentage `size` attribute, snapped to
-     * the nearest `/12` column count (nearest 8.33% increment) - this is the
-     * exact same conversion as before $columns existed, so a block with no
-     * responsive overrides renders identically either way.
-     *
-     * `$columns`, when given, is the block's `attributes->columns` array -
-     * an optional map of breakpoint (xs/sm/md/lg/xl) => column count (1-12).
-     * M3's row picker writes `xs`; legacy layouts fall back to `size`.
+     * `$columns` is the block's `attributes->columns` map of breakpoint
+     * (xs/sm/md/lg/xl) to a Bootstrap span (1-12).
      * Only breakpoints with an explicit, non-empty entry emit a
      * `col-{breakpoint}-N` class; anything unset is left for Bootstrap's own
      * mobile-first cascade to inherit from the next narrower breakpoint.
      * Nothing is fabricated for a breakpoint that was never authored - see
      * NUCLEUS_BOOTSTRAP_MIGRATION.md M2b.
      *
-     * @param string|float|int $text
      * @param array|null $columns
      * @return string
      */
-    public function toColumns($text, ?array $columns = null)
+    public function toColumns(?array $columns = null)
     {
-        if (!$text) {
+        if (empty($columns['xs'])) {
             return '';
         }
-
-        // Content templates outside the Layout Manager historically stored
-        // the rendered size class itself (for example `size-33-3`). Accept
-        // both that legacy form and native Bootstrap column classes so saved
-        // WordPress blog/archive settings can migrate without a data rewrite.
-        if (is_string($text)) {
-            if (preg_match('/^col(?:-(?:sm|md|lg|xl))?-([1-9]|1[0-2])$/', $text)) {
-                return $text;
-            }
-
-            if (preg_match('/^size-(\d+)(?:-(\d+))?$/', $text, $matches)) {
-                $text = $matches[1] . (isset($matches[2]) ? '.' . $matches[2] : '');
-            }
-        }
-
-        $number = !empty($columns['xs'])
-            ? (int) $columns['xs']
-            : (int) round(((float) $text) / 100 * 12);
+        $number = (int) $columns['xs'];
         $number = max(1, min(12, $number));
 
         $classes = ['col-' . $number];
@@ -720,42 +665,54 @@ trait ThemeTrait
                         break;
                     }
 
-                    $dynamicSize = 0;
-                    $fixedSize = 0;
-                    $childrenCount = count($item->children);
-                    foreach ($item->children as $child) {
-                        if (!isset($child->attributes->size)) {
-                            $child->attributes->size = 100 / count($item->children);
-                        }
-                        if (empty($child->attributes->fixed)) {
-                            $dynamicSize += $child->attributes->size;
-                        } else {
-                            $fixedSize += $child->attributes->size;
-                        }
-                    }
-
-                    $roundSize = round($dynamicSize, 1);
-                    $equalized = isset($this->equalized[$childrenCount]) ? $this->equalized[$childrenCount] : 0;
-
-                    // force-casting string for testing comparison due to weird PHP behavior that returns wrong result
-                    if ($roundSize !== 100.0 && (string) $roundSize !== (string) ($equalized * $childrenCount)) {
-                        $fraction = 0;
-                        $multiplier = (100 - $fixedSize) / ($dynamicSize ?: 1);
-                        foreach ($item->children as $child) {
-                            if (!empty($child->attributes->fixed)) {
-                                continue;
-                            }
-
-                            // Calculate size for the next item by taking account the rounding error from the last item.
-                            // This will allow us to approximate cumulating error and fix it when rounding error grows
-                            // over the rounding treshold.
-                            $size = ($child->attributes->size * $multiplier) + $fraction;
-                            $newSize = round($size);
-                            $fraction = $size - $newSize;
-                            $child->attributes->size = $newSize;
-                        }
-                    }
+                    $this->normalizeLayoutColumns($item->children);
             }
+        }
+    }
+
+    /**
+     * Rebalance visible sibling blocks on Bootstrap's 12-column grid.
+     *
+     * @param array $children
+     */
+    protected function normalizeLayoutColumns(array &$children)
+    {
+        $blocks = [];
+        $fixedColumns = 0;
+        $dynamicColumns = 0;
+
+        foreach ($children as $child) {
+            if ($child->type !== 'block') {
+                continue;
+            }
+
+            $columns = isset($child->attributes->columns['xs'])
+                ? (int) $child->attributes->columns['xs']
+                : 12;
+            $columns = max(1, min(12, $columns));
+            if (!empty($child->attributes->fixed)) {
+                $fixedColumns += $columns;
+            } else {
+                $blocks[] = $child;
+                $dynamicColumns += $columns;
+            }
+        }
+
+        if (!$blocks || $fixedColumns + $dynamicColumns === 12) {
+            return;
+        }
+
+        $available = max(count($blocks), 12 - $fixedColumns);
+        $multiplier = $available / ($dynamicColumns ?: count($blocks));
+        $fraction = 0;
+        foreach ($blocks as $child) {
+            $columns = isset($child->attributes->columns['xs'])
+                ? (int) $child->attributes->columns['xs']
+                : 12;
+            $value = ($columns * $multiplier) + $fraction;
+            $newValue = (int) max(1, min(12, round($value)));
+            $fraction = $value - $newValue;
+            $child->attributes->columns['xs'] = $newValue;
         }
     }
 

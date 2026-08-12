@@ -324,9 +324,7 @@ class Format2
 
             if ($ctype === 'block') {
                 // Embed size into array key/value.
-                if (isset($content['attributes']['size']) && $content['attributes']['size'] != 100) {
-                    $size = $content['attributes']['size'];
-                }
+                $size = $this->getCompactWidth($content['attributes']);
                 unset ($content['attributes']['size']);
                 // Embed parent block.
                 if (!empty($content['attributes'])) {
@@ -335,10 +333,8 @@ class Format2
                 }
             }
 
-            if (isset($child['attributes']['size'])) {
-                if ($child['attributes']['size'] != 100 && is_string($value)) {
-                    $size = $child['attributes']['size'];
-                }
+            if (isset($child['attributes']['size']) || isset($child['attributes']['columns']['xs'])) {
+                if (is_string($value)) { $size = $this->getCompactWidth($child['attributes']); }
                 unset ($child['attributes']['size']);
             }
 
@@ -394,6 +390,19 @@ class Format2
         }
 
         return $result;
+    }
+
+    /**
+     * Return the compact width token used by legacy format 2.
+     *
+     * @param array $attributes
+     * @return int|float|null
+     */
+    protected function getCompactWidth(array $attributes)
+    {
+        return isset($attributes['size']) && $attributes['size'] != 100
+            ? $attributes['size']
+            : null;
     }
 
     /**

@@ -30,7 +30,10 @@ $failures = [];
 
 foreach ($iterator as $file) {
     $path = str_replace('\\', '/', $file->getPathname());
-    if ($file->getExtension() !== 'yaml' || strpos($path, '/layouts/') === false) {
+    $isPackagedLayout = strpos($path, '/layouts/') !== false;
+    $isSavedOutline = basename($path) === 'layout.yaml'
+        && strpos($path, '/custom/config/') !== false;
+    if ($file->getExtension() !== 'yaml' || (!$isPackagedLayout && !$isSavedOutline)) {
         continue;
     }
 
@@ -43,7 +46,8 @@ foreach ($iterator as $file) {
     $yamlFiles++;
 
     if (($data['version'] ?? null) === 3) {
-        LayoutReader::data($data);
+        $loaded = LayoutReader::data($data);
+        assertBootstrapBlocks($loaded, $path);
         $format3Files++;
     }
 }
@@ -52,4 +56,36 @@ echo "Validated {$yamlFiles} layout YAML files; loaded {$format3Files} format 3 
 if ($failures) {
     fwrite(STDERR, implode(PHP_EOL, $failures) . PHP_EOL);
     exit(2);
+}
+
+/**
+ * Assert that a loaded format-3 tree contains only canonical Bootstrap spans.
+ *
+ * @param mixed $value
+ * @param string $path
+ */
+function assertBootstrapBlocks($value, string $path): void
+{
+    if (is_object($value)) {
+        if (($value->type ?? null) === 'block') {
+            if (isset($value->attributes->size)) {
+                throw new RuntimeException("{$path}: loaded block {$value->id} still contains a legacy size attribute");
+            }
+            $columns = isset($value->attributes->columns)
+                ? (array) $value->attributes->columns
+                : [];
+            $span = (int) ($columns['xs'] ?? 0);
+            if ($span < 1 || $span > 12) {
+                throw new RuntimeException("{$path}: loaded block {$value->id} has no valid columns.xs span");
+            }
+        }
+        $value = get_object_vars($value);
+    }
+
+    if (!is_array($value)) {
+        return;
+    }
+    foreach ($value as $child) {
+        assertBootstrapBlocks($child, $path);
+    }
 }

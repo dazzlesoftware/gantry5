@@ -151,7 +151,7 @@
     <div class="g-grid">
         {% set groups = item.getDropdown() == 'standard' ? [item] : item.groups %}
         {% for column, items in groups %}
-        <div class="g-block {{ item.columnWidth(column)|toGrid }}">
+        <div class="g-block {{ item.columnWidth(column)|toColumns }}">
             <ul class="g-sublevel">
                 {{ self.displayItems(items, menu, context, dropdown_type, start_level) }}
             </ul>

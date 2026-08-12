@@ -5,8 +5,7 @@ import __module3 from './blocks/index.js';
 import __module4 from '../ui/drag.drop.js';
 import __module5 from '../ui/eraser.js';
 import __module6 from '../utils/flags-state.js';
-import __module7 from './drag.resizer.js';
-import __module8 from '../utils/deep-equals.js';
+import __module7 from '../utils/deep-equals.js';
 
 "use strict";
 let EventEmitter = __module0,
@@ -16,8 +15,7 @@ let EventEmitter = __module0,
     DragDrop   = __module4,
     Eraser     = __module5,
     flags      = __module6,
-    Resizer    = __module7,
-    deepEquals = __module8;
+    deepEquals = __module7;
 
 let get = function(object, key) {
         return object ? object[key] : undefined;
@@ -86,13 +84,11 @@ let LayoutManagerDefinition = {
     init: function() {
         if (this.dragdrop) { this.dragdrop.detach(); }
         this.dragdrop = new DragDrop(this.refElement, this.options);
-        this.resizer = new Resizer(this.refElement, this.options);
         this.eraser = new Eraser('[data-lm-eraseblock]', this.options);
         this.dragdrop
             .on('dragdrop:start', this.bound('start'))
             .on('dragdrop:location', this.bound('location'))
             .on('dragdrop:nolocation', this.bound('nolocation'))
-            .on('dragdrop:resize', this.bound('resize'))
             .on('dragdrop:stop', this.bound('stop'))
             .on('dragdrop:stop:animation', this.bound('stopAnimation'));
 
@@ -413,17 +409,6 @@ let LayoutManagerDefinition = {
         }
     },
 
-    // Drag-to-resize is retired in favor of the row/column picker (see
-    // row-picker.js, grid.js's per-row layout icon, and
-    // NUCLEUS_BOOTSTRAP_MIGRATION.md M3). `this.resizer` itself stays
-    // constructed - `evenResize()` is still used elsewhere to auto-balance
-    // sizes when blocks are added/removed/moved - only the interactive
-    // drag-resize gesture (dragdrop:resize -> resizer.start()) is disabled.
-    // This is scoped to the Layout Manager only: the mega-menu editor
-    // (menumanager.js) has its own, entirely separate DragDrop/Resizer
-    // instance pair and is unaffected.
-    resize: function() {},
-
     removeElement: function(event, element) {
         this.dragdrop.removeElement = false;
 
@@ -443,23 +428,23 @@ let LayoutManagerDefinition = {
         let siblings = this.block.block.siblings('[data-lm-blocktype="block"]:not(.original-placeholder)');
 
         if (siblings && this.block.getType() == 'block') {
-            let size                  = this.block.getSize(),
+            let size                  = this.block.getWidthPercent(),
                 diff                  = size / siblings.length,
                 newSize, block, total = 0, last;
             siblings.forEach(function(sibling, index) {
                 sibling = dom(sibling);
                 block = get(this.builder.map, sibling.data('lm-id'));
                 if (index + 1 == siblings.length) { last = block; }
-                newSize = precision(block.getSize() + diff, 0);
+                newSize = precision(block.getWidthPercent() + diff, 0);
                 total += newSize;
-                block.setSize(newSize, true);
+                block.setWidthPercent(newSize, true);
             }, this);
 
             // ensuring it's always 100%
             if (total != 100 && last) {
-                size = last.getSize();
+                size = last.getWidthPercent();
                 diff = 100 - total;
-                last.setSize(size + diff, true);
+                last.setWidthPercent(size + diff, true);
             }
         }
 
@@ -562,7 +547,7 @@ let LayoutManagerDefinition = {
                 builder: this.builder
             }).setLayout(this.block.block);
 
-            wrapper.setSize();
+            wrapper.setWidthPercent();
 
             this.block = wrapper;
             this.builder.add(wrapper);
@@ -590,10 +575,8 @@ let LayoutManagerDefinition = {
 
             if (previous.parent('[data-lm-blocktype="container"]')) { previous = previous.parent(); }
             previous = previous.siblings(':not(.original-placeholder)');
-            if (!this.block.isNew() && previous.length) { this.resizer.evenResize(previous); }
-
             this.block.block.attribute('style', null);
-            this.block.setSize();
+            this.block.setWidthPercent();
         }
 
         if (type === 'grid' && !siblings) {
@@ -601,29 +584,22 @@ let LayoutManagerDefinition = {
             if (plus) { plus.emit('click'); }
         }
 
-        if (this.block.hasAttribute('size') && typeof this.block.getSize === 'function') { this.block.setSize(this.placeholder.compute('flex')); }
+        if (this.block.hasAttribute('columns.xs') && typeof this.block.getWidthPercent === 'function') { this.block.setWidthPercent(this.placeholder.compute('flex')); }
 
         this.block.insert(this.placeholder);
         this.placeholder.remove();
 
         if (blockWasNew) {
-            if (resizeCase) {
-                this.resizer.evenResize(dom([
-                    this.block.block,
-                    this.block.block.siblings('[data-lm-blocktype="block"]')
-                ]));
-            }
-
             this.element.attribute('style', null);
         }
 
 
         if (multiLocationResize.from || (multiLocationResize.to && multiLocationResize.to != this.block.block)) {
             // if !from / !to means it's empty grid, should we remove it?
-            let size = this.block.getSize(), diff, block;
+            let size = this.block.getWidthPercent(), diff, block;
 
             // we are moving the particle to an empty grid, resetting the size to 100%
-            if (!multiLocationResize.to) { this.block.setSize(100, true); }
+            if (!multiLocationResize.to) { this.block.setWidthPercent(100, true); }
 
             // we need to compensate the remaining blocks on the FROM with the leaving particle size
             if (multiLocationResize.from) {
@@ -632,9 +608,9 @@ let LayoutManagerDefinition = {
                 multiLocationResize.from.forEach(function(sibling) {
                     sibling = dom(sibling);
                     block = get(this.builder.map, sibling.data('lm-id'));
-                    if (!block || typeof block.getSize !== 'function') { return; }
-                    curSize = block.getSize() + diff;
-                    block.setSize(curSize, true);
+                    if (!block || typeof block.getWidthPercent !== 'function') { return; }
+                    curSize = block.getWidthPercent() + diff;
+                    block.setWidthPercent(curSize, true);
                     total += curSize;
                 }, this);
 
@@ -643,9 +619,9 @@ let LayoutManagerDefinition = {
                     multiLocationResize.from.forEach(function(sibling) {
                         sibling = dom(sibling);
                         block = get(this.builder.map, sibling.data('lm-id'));
-                        if (!block || typeof block.getSize !== 'function') { return; }
-                        curSize = block.getSize() + diff;
-                        block.setSize(curSize, true);
+                        if (!block || typeof block.getWidthPercent !== 'function') { return; }
+                        curSize = block.getWidthPercent() + diff;
+                        block.setWidthPercent(curSize, true);
                     }, this);
                 }
             }
@@ -656,15 +632,15 @@ let LayoutManagerDefinition = {
                 multiLocationResize.to.forEach(function(sibling) {
                     sibling = dom(sibling);
                     block = get(this.builder.map, sibling.data('lm-id'));
-                    if (block && typeof block.setSize === 'function') { block.setSize(size, true); }
+                    if (block && typeof block.setWidthPercent === 'function') { block.setWidthPercent(size, true); }
                 }, this);
-                this.block.setSize(size, true);
+                this.block.setWidthPercent(size, true);
             }
         }
 
         singles.disable();
         singles.cleanup(this.builder);
-        this.builder.normalizeGridSizes();
+        this.builder.normalizeGridColumns();
 
         this.history.push(this.builder.serialize(), this.history.get().preset);
     },
@@ -677,7 +653,7 @@ let LayoutManagerDefinition = {
         singles.disable();
 
         if (!this.block) { this.block = get(this.builder.map, element.data('lm-id')); }
-        if (this.block && this.block.getType() === 'block') { this.block.setSize(); }
+        if (this.block && this.block.getType() === 'block') { this.block.setWidthPercent(); }
         if (this.block && this.block.isNew() && this.element) { this.element.attribute('style', null); }
 
         if (this.originalType === 'grid') {
@@ -687,7 +663,7 @@ let LayoutManagerDefinition = {
                     element = dom(element);
                     block = get(this.builder.map, element.data('lm-id'));
                     element.attribute('style', null);
-                    block.setSize();
+                    block.setWidthPercent();
                 }, this);
             }
         }

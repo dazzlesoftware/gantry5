@@ -87,7 +87,7 @@
     <div class="g-grid">
         {% set groups = item.getDropdown() == 'standard' ? [item] : item.groups %}
         {% for column, items in groups %}
-        <div class="g-block {{ item.columnWidth(column)|toGrid }}">
+        <div class="g-block {{ item.columnWidth(column)|toColumns }}">
             <ul class="g-sublevel">
                 <li class="g-level-{{ item.level }} g-go-back">
                     <a class="g-menu-item-container" href="#" data-g-menuparent=""><span>Back</span></a>

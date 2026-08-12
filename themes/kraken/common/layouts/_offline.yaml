@@ -26,7 +26,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               variations: 'nomarginall nopaddingall'
               extra: {  }
             children:
@@ -105,7 +104,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               variations: center
               extra: {  }
             children:
@@ -155,7 +153,6 @@ children:
             attributes:
               columns:
                 xs: 2
-              size: 20
             children:
               -
                 id: 55a00907-bc7e-9771-41b2-1e84efc8aa7c
@@ -172,7 +169,6 @@ children:
             attributes:
               columns:
                 xs: 7
-              size: 60
             children:
               -
                 id: a2dc867f-a056-275b-adc4-0ca00930718a
@@ -196,7 +192,6 @@ children:
                         attributes:
                           columns:
                             xs: 12
-                          size: 100
                         children:
                           -
                             id: 505b3ac6-b875-4d72-ba57-9622e398ebde
@@ -213,7 +208,6 @@ children:
             attributes:
               columns:
                 xs: 2
-              size: 20
             children:
               -
                 id: 9a4cdf17-1214-5818-2d87-71d1eaccfde5
@@ -253,7 +247,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               variations: 'center nomarginall nopaddingall'
               extra: {  }
             children:
@@ -313,7 +306,6 @@ children:
             attributes:
               columns:
                 xs: 6
-              size: 50
               variations: g-title-bordered
               extra: {  }
               fixed: '0'
@@ -335,7 +327,6 @@ children:
             attributes:
               columns:
                 xs: 6
-              size: 50
               variations: g-title-bordered
               extra: {  }
               fixed: '0'
@@ -378,7 +369,6 @@ children:
             attributes:
               columns:
                 xs: 3
-              size: 25
               extra: {  }
             children:
               -
@@ -398,7 +388,6 @@ children:
             attributes:
               columns:
                 xs: 6
-              size: 50
             children:
               -
                 id: 84ad4891-42ea-4638-887e-a17a829fbab5
@@ -415,7 +404,6 @@ children:
             attributes:
               columns:
                 xs: 3
-              size: 25
               extra: {  }
             children:
               -
@@ -451,7 +439,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               extra: {  }
               fixed: '0'
             children:
@@ -479,7 +466,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               extra: {  }
               fixed: '0'
             children:
@@ -515,7 +501,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               class: 'nomarginall nopaddingall'
               extra: {  }
               fixed: '0'
@@ -544,7 +529,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               class: 'nomarginall nopaddingall center'
               extra: {  }
               fixed: '0'

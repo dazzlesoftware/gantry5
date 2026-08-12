@@ -131,7 +131,7 @@
 
 // Logo Centering
 @include breakpoint(tablet-range) {
-    #g-navigationmain .size-30 {
+    #g-navigationmain .col-4 {
         flex: 0 100%;
         width: 100%;
     }

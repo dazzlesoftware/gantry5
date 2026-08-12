@@ -26,7 +26,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               variations: 'nomarginall nopaddingall'
               extra: {  }
             children:
@@ -53,7 +52,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -74,7 +72,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -95,7 +92,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -135,7 +131,6 @@ children:
               fixed: '0'
               columns:
                 xs: 3
-              size: 25
             children:
               -
                 id: 6c164ce2-9c90-45ef-b9fe-e544356cc9cf
@@ -157,7 +152,6 @@ children:
               fixed: '0'
               columns:
                 xs: 9
-              size: 75
             children:
               -
                 id: d3641e6c-588d-45c1-82a5-fe528e7e8307
@@ -182,7 +176,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -203,7 +196,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -224,7 +216,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -260,7 +251,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -281,7 +271,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -302,7 +291,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -339,7 +327,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -360,7 +347,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -381,7 +367,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -417,7 +402,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -438,7 +422,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -459,7 +442,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -495,7 +477,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -516,7 +497,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -537,7 +517,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -573,7 +552,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -594,7 +572,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -615,7 +592,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -645,7 +621,6 @@ children:
               extra: {  }
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: 67fe4f58-aaf7-4960-9c57-922d6f0e5103
@@ -693,7 +668,6 @@ children:
             attributes:
               columns:
                 xs: 2
-              size: 20
             children:
               -
                 id: 55a00907-bc7e-9771-41b2-1e84efc8aa7c
@@ -717,7 +691,6 @@ children:
                         attributes:
                           columns:
                             xs: 12
-                          size: 100
                         children:
                           -
                             id: ebf60e49-2504-505d-c86e-699ad73c1256
@@ -737,7 +710,6 @@ children:
             attributes:
               columns:
                 xs: 7
-              size: 60
             children:
               -
                 id: a2dc867f-a056-275b-adc4-0ca00930718a
@@ -761,7 +733,6 @@ children:
                         attributes:
                           columns:
                             xs: 4
-                          size: 33.3
                           extra: {  }
                         children:
                           -
@@ -782,7 +753,6 @@ children:
                         attributes:
                           columns:
                             xs: 4
-                          size: 33.3
                           extra: {  }
                         children:
                           -
@@ -803,7 +773,6 @@ children:
                         attributes:
                           columns:
                             xs: 4
-                          size: 33.3
                           extra: {  }
                         children:
                           -
@@ -834,7 +803,6 @@ children:
                           extra: {  }
                           columns:
                             xs: 12
-                          size: 100
                         children:
                           -
                             id: e9b6d5b9-93ed-bbcb-7af9-846115e1efe7
@@ -852,7 +820,6 @@ children:
             attributes:
               columns:
                 xs: 2
-              size: 20
             children:
               -
                 id: 9a4cdf17-1214-5818-2d87-71d1eaccfde5
@@ -876,7 +843,6 @@ children:
                         attributes:
                           columns:
                             xs: 12
-                          size: 100
                         children:
                           -
                             id: e056aa28-6f65-0681-0bbe-f3dc825376bc
@@ -911,7 +877,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -932,7 +897,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -953,7 +917,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -989,7 +952,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -1010,7 +972,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -1031,7 +992,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -1061,7 +1021,6 @@ children:
               extra: {  }
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: e047a106-9d11-4c41-be09-9c767be0500c
@@ -1109,7 +1068,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -1130,7 +1088,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -1151,7 +1108,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               extra: {  }
             children:
               -
@@ -1187,7 +1143,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               class: g-title-bordered
               extra: {  }
             children:
@@ -1209,7 +1164,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               class: g-title-bordered
               extra: {  }
             children:
@@ -1231,7 +1185,6 @@ children:
             attributes:
               columns:
                 xs: 4
-              size: 33.3
               class: g-title-bordered
               extra: {  }
             children:
@@ -1260,7 +1213,6 @@ children:
             attributes:
               columns:
                 xs: 3
-              size: 25
               extra: {  }
               fixed: '0'
             children:
@@ -1282,7 +1234,6 @@ children:
             attributes:
               columns:
                 xs: 6
-              size: 50
               class: g-horizontalmenu-block
               variations: center
               extra: {  }
@@ -1321,7 +1272,6 @@ children:
             attributes:
               columns:
                 xs: 3
-              size: 25
             children:
               -
                 id: 10358c0a-8f20-4a27-8a8f-0e1c0e113af8
@@ -1354,7 +1304,6 @@ children:
             attributes:
               columns:
                 xs: 3
-              size: 25
               extra: {  }
             children:
               -
@@ -1374,7 +1323,6 @@ children:
             attributes:
               columns:
                 xs: 6
-              size: 50
             children:
               -
                 id: 84ad4891-42ea-4638-887e-a17a829fbab5
@@ -1391,7 +1339,6 @@ children:
             attributes:
               columns:
                 xs: 3
-              size: 25
               extra: {  }
             children:
               -
@@ -1427,7 +1374,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               extra: {  }
               fixed: '0'
             children:
@@ -1455,7 +1401,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               extra: {  }
               fixed: '0'
             children:
@@ -1482,7 +1427,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
               extra: {  }
               fixed: '0'
             children:
@@ -1523,7 +1467,6 @@ children:
               fixed: '0'
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: 9d1a512e-9fa1-44df-9f9e-2a09f0999f9d
@@ -1552,7 +1495,6 @@ children:
               fixed: '0'
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: d4ffdbfc-cf04-4b27-9419-4007ae6104a4
@@ -1577,7 +1519,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: bf329703-4503-4875-91e1-830a5a9fbc9e

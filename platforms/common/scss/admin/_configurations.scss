@@ -50,7 +50,7 @@
     ul {
         @extend %list-reset;
         margin: -10px -1%;
-        .size-1-4 {
+        .admin-card-quarter {
             flex: 0 23%;
 
             @include breakpoint(small-mobile-range) {

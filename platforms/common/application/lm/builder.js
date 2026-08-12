@@ -1,14 +1,14 @@
-import __module0 from '../utils/event-emitter.js';
+﻿import __module0 from '../utils/event-emitter.js';
 import __module1 from './blocks/index.js';
 import __module2 from './id.js';
-import __module3 from './normalize-grid-sizes.js';
+import __module3 from './normalize-grid-columns.js';
 
 "use strict";
 
 let EventEmitter = __module0,
     Blocks       = __module1,
     ID           = __module2,
-    normalizeGridSizes = __module3;
+    normalizeGridColumns = __module3;
 
 let DEBUG = false;
 
@@ -83,14 +83,14 @@ class Builder extends EventEmitter {
 
     load(data) {
         this.recursiveLoad(data);
-        this.normalizeGridSizes();
+        this.normalizeGridColumns();
         this.emit('loaded', data);
         return this;
     }
 
-    normalizeGridSizes(root) {
+    normalizeGridColumns(root) {
         root = root || document.querySelector('[data-lm-root]');
-        normalizeGridSizes(root, this.get.bind(this));
+        normalizeGridColumns(root, this.get.bind(this));
         return this;
     }
 
@@ -155,7 +155,7 @@ class Builder extends EventEmitter {
             target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
         if (target) { target.appendChild(block); }
 
-        if (Element.getType() === 'block') { Element.setSize(); }
+        if (Element.getType() === 'block') { Element.setWidthPercent(); }
         this.add(Element);
         Element.emit('rendered', Element, parent ? this.map[parent] : null);
         return Element;

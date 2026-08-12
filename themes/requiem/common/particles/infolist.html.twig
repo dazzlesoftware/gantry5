@@ -14,7 +14,7 @@
       <div class="g-infolist-item {% if infolist.image %} g-infolist-with-img{% endif %}">
         
         {% set imagedata %}
-        <div class="g-infolist-item-img g-block{% if infolist.imagestyle == 'compact' %} size-22 hidden-phone{% endif %}{% if infolist.imagestyle == 'browser' %} browser{% endif %} {{ infolist.imageloc|e }}">
+        <div class="g-infolist-item-img g-block{% if infolist.imagestyle == 'compact' %} col-3 hidden-phone{% endif %}{% if infolist.imagestyle == 'browser' %} browser{% endif %} {{ infolist.imageloc|e }}">
           {% if infolist.imagestyle == 'browser' %}
           <div class="browser-wrapper">
             <div class="browser-bar">

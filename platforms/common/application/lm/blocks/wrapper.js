@@ -11,7 +11,7 @@ class Wrapper extends Section {
 
     hasChanged() {}
 
-    getSize() {
+    getWidthPercent() {
         return false;
     }
 

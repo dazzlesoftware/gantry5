@@ -1,6 +1,6 @@
 {% set attr_extra = segment.attributes.extra|attribute_array %}
 
-{% set class = 'g-block ' ~ segment.attributes.size|toColumns(segment.attributes.columns)
+{% set class = 'g-block ' ~ segment.attributes.columns|toColumns
     ~ (segment.attributes.variations ? ' ' ~ segment.attributes.variations|join(' '))
     ~ (segment.attributes.class ? ' ' ~ segment.attributes.class|join(' ')) %}
 

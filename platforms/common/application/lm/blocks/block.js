@@ -12,9 +12,12 @@ let precision = function(value, decimals) {
 class Block extends Base {
     constructor(options) {
         super(options);
-        if (options && options.attributes && options.attributes.size) {
-            this.setAttribute('size', precision(options.attributes.size, 1));
+        let legacyWidth = options && options.attributes && Number(options.attributes.size);
+        let hasAuthoredColumn = options && options.attributes && options.attributes.columns && options.attributes.columns.xs;
+        if (!hasAuthoredColumn && legacyWidth) {
+            this.setAttribute('columns.xs', Math.max(1, Math.min(12, Math.round(legacyWidth / 100 * 12))));
         }
+        delete this.attributes.size;
         this.applyColumnClasses();
         this.on('changed', this.hasChanged);
     }
@@ -23,7 +26,7 @@ class Block extends Base {
         let stored = parseInt(this.getAttribute('columns.' + breakpoint), 10);
         if (stored) { return Math.max(1, Math.min(12, stored)); }
         if (breakpoint !== 'xs') { return null; }
-        return Math.max(1, Math.min(12, Math.round((this.getSize() || 100) / 100 * 12)));
+        return 12;
     }
 
     applyColumnClasses() {
@@ -42,14 +45,16 @@ class Block extends Base {
         return this;
     }
 
-    getSize() {
-        return precision(this.getAttribute('size'), 1);
+    getWidthPercent() {
+        return precision(this.getColumnSpan('xs') / 12 * 100, 1);
     }
 
-    setSize(size, store) {
-        size = typeof size === 'undefined' ? this.getSize() : Math.max(0, Math.min(100, parseFloat(size)));
+    setWidthPercent(size, store) {
+        size = typeof size === 'undefined' ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size)));
         size = precision(size, 1);
-        if (store) { this.setAttribute('size', size); }
+        if (store) {
+            this.setAttribute('columns.xs', Math.max(1, Math.min(12, Math.round(size / 100 * 12))));
+        }
 
         let style = this.block[0].style;
         style.flex = '0 1 ' + size + '%';
@@ -61,10 +66,12 @@ class Block extends Base {
         this.emit('resized', size, this);
     }
 
-    setAnimatedSize(size, store) {
-        size = typeof size === 'undefined' ? this.getSize() : Math.max(0, Math.min(100, parseFloat(size)));
+    setAnimatedWidthPercent(size, store) {
+        size = typeof size === 'undefined' ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size)));
         size = precision(size, 1);
-        if (store) { this.setAttribute('size', size); }
+        if (store) {
+            this.setAttribute('columns.xs', Math.max(1, Math.min(12, Math.round(size / 100 * 12))));
+        }
 
         let block = this.block[0],
             target = '0 1 ' + size + '%';
@@ -83,12 +90,12 @@ class Block extends Base {
                 let animation = this.sizeAnimation;
                 this.sizeAnimation = null;
                 block.removeAttribute('style');
-                this.setSize(size);
+                this.setWidthPercent(size);
                 animation.cancel();
             }.bind(this), { once: true });
         } else {
             block.removeAttribute('style');
-            this.setSize(size);
+            this.setWidthPercent(size);
         }
 
         this.emit('resized', size, this);
@@ -97,7 +104,8 @@ class Block extends Base {
     setLabelSize(size) {
         let label = this.block[0].querySelector(':scope > .particle-size');
         if (!label) { return false; }
-        label.textContent = precision(size, 1) + '%';
+        let span = Math.max(1, Math.min(12, Math.round(Number(size) / 100 * 12)));
+        label.textContent = 'col-' + span;
     }
 
     layout() {
@@ -122,7 +130,7 @@ class Block extends Base {
         if (isRoot || isRootContainer) {
             let label = document.createElement('span');
             label.className = 'particle-size';
-            label.textContent = this.getSize() + '%';
+            label.textContent = 'col-' + this.getColumnSpan('xs');
             elementBlock.insertBefore(label, elementBlock.firstChild);
             element.on('resized', this.bound('onResize'));
         }
@@ -166,7 +174,7 @@ class Block extends Base {
 Block.prototype.options = {
     type: 'block',
     attributes: {
-        size: 100
+        columns: { xs: 12 }
     }
 };
 

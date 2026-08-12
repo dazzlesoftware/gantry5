@@ -15,10 +15,10 @@
 
 <li data-pm-blocktype="{{ module.type }}" data-pm-data="{{ module.toJson()|e('html_attr') }}">
     {% set status = statuses[module.assigned] %}
-    {#<i class="fa fa-reorder font-small item-reorder size-10" aria-hidden="true"></i>#}
-    <div class="title size-90">
+    {#<i class="fa fa-reorder font-small item-reorder col-1" aria-hidden="true"></i>#}
+    <div class="title col-11">
         <span class="title-status" title="{{ status.label }}" data-tip="{{ status.label }}" aria-label="{{ status.label }}">{{ status.icon|raw }}</span>
         <span class="title-name" title="Type: {{ module.options.type }} (id: {{ module.name }})">{{ module.title|default(module.name) }}</span>
     </div>
-    <i class="fa item-settings fa-cog size-10" aria-hidden="true"></i>
+    <i class="fa item-settings fa-cog col-1" aria-hidden="true"></i>
 </li>

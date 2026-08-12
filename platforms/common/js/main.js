@@ -1,5 +1,5 @@
 (() => {
-  // platforms/common/application/utils/dom-collection.js
+  // application/utils/dom-collection.js
   var eventListeners = /* @__PURE__ */ new WeakMap();
   var delegatedListeners = /* @__PURE__ */ new WeakMap();
   var elementMethods = /* @__PURE__ */ Object.create(null);
@@ -430,7 +430,7 @@
   });
   var dom_collection_default = dom;
 
-  // platforms/common/application/utils/create-element.js
+  // application/utils/create-element.js
   var dom2 = dom_collection_default;
   var attributePattern = /\[\s*([^\s~|^$*=\]]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*\]/g;
   var classPattern = /\.([a-zA-Z_][\w-]*)/g;
@@ -455,7 +455,7 @@
     return dom2(element);
   }
 
-  // platforms/common/application/utils/dom.js
+  // application/utils/dom.js
   var ready = (callback) => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback, { once: true });
@@ -473,7 +473,7 @@
   };
   var dom_default = { ready, delegate };
 
-  // platforms/common/application/utils/request.js
+  // application/utils/request.js
   var methods = /^(get|post|put|delete|head|patch|options)$/i;
   var encodeForm = (value, prefix) => {
     if (value == null) return [];
@@ -662,7 +662,7 @@
   });
   var request_default = request;
 
-  // platforms/common/application/utils/event-emitter.js
+  // application/utils/event-emitter.js
   var EventEmitter = class {
     constructor() {
       this.listeners = /* @__PURE__ */ new Map();
@@ -703,7 +703,7 @@
   };
   var event_emitter_default = EventEmitter;
 
-  // platforms/common/application/utils/search-index.js
+  // application/utils/search-index.js
   var normalizeText = (value, diacritics) => {
     const normalized = String(value == null ? "" : value).toLowerCase();
     return diacritics ? normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : normalized;
@@ -797,7 +797,7 @@
   };
   var search_index_default = SearchIndex;
 
-  // platforms/common/application/ui/progresser.js
+  // application/ui/progresser.js
   var defaults = {
     value: 0,
     size: 50,
@@ -988,7 +988,7 @@
   };
   var progresser_default = Progresser;
 
-  // platforms/common/application/utils/indicator.js
+  // application/utils/indicator.js
   var asElement2 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
@@ -1036,7 +1036,7 @@
   };
   var indicator_default = { show, hide };
 
-  // platforms/common/application/utils/dom-effects.js
+  // application/utils/dom-effects.js
   var dom3 = dom_collection_default;
   var progresser = progresser_default;
   var indicator = indicator_default;
@@ -1240,7 +1240,7 @@
   });
   var dom_effects_default = dom3;
 
-  // platforms/common/application/ui/selectize.js
+  // application/ui/selectize.js
   var EventEmitter2 = event_emitter_default;
   var ready2 = dom_default.ready;
   var zen = createElement;
@@ -3173,7 +3173,7 @@
   });
   var selectize_default = Selectize;
 
-  // platforms/common/application/ui/modal.js
+  // application/ui/modal.js
   var dom5 = dom_effects_default;
   var zen2 = createElement;
   var domready = dom_default.ready;
@@ -3502,7 +3502,7 @@
   var modal = new Modal();
   var modal_default = modal;
 
-  // platforms/common/application/ui/toastr.js
+  // application/ui/toastr.js
   var merge2 = function(target) {
     target = target || {};
     Array.prototype.slice.call(arguments, 1).forEach(function(source) {
@@ -3805,10 +3805,10 @@
   };
   var toastr_default = new Toaster();
 
-  // platforms/common/application/utils/get-ajax-suffix.js
+  // application/utils/get-ajax-suffix.js
   var get_ajax_suffix_default = () => window.GENESIS_AJAX_SUFFIX || "";
 
-  // platforms/common/application/utils/get-ajax-url.js
+  // application/utils/get-ajax-url.js
   var getAjaxSuffix = get_ajax_suffix_default;
   var decodeHtml = (value) => {
     const textarea = document.createElement("textarea");
@@ -3838,7 +3838,7 @@
   };
   var get_ajax_url_default = { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };
 
-  // platforms/common/application/ui/togglers.js
+  // application/ui/togglers.js
   var modal2 = modal_default;
   var toastr = toastr_default;
   var request3 = request_default;
@@ -3911,7 +3911,7 @@
   });
   var togglers_default = {};
 
-  // platforms/common/application/utils/cookie.js
+  // application/utils/cookie.js
   var Cookie = {
     write: function(name, value) {
       let date = /* @__PURE__ */ new Date();
@@ -3931,7 +3931,7 @@
   };
   var cookie_default = Cookie;
 
-  // platforms/common/application/ui/collapse.js
+  // application/ui/collapse.js
   var Cookie2 = cookie_default;
   var { ready: ready4, delegate: delegate3 } = dom_default;
   var readStorage = () => Cookie2.read("genesis-collapsed") || Cookie2.read("genesis-collapsed") || {};
@@ -4010,7 +4010,7 @@
   });
   var collapse_default = loadFromStorage;
 
-  // platforms/common/application/ui/index.js
+  // application/ui/index.js
   var Selectize2 = selectize_default;
   var ui_default = {
     modal: modal_default,
@@ -4020,7 +4020,7 @@
     toastr: toastr_default
   };
 
-  // platforms/common/application/utils/flags-state.js
+  // application/utils/flags-state.js
   var modal3 = ui_default.modal;
   var getAjaxURL3 = get_ajax_url_default.global;
   var parseAjaxURI3 = get_ajax_url_default.parse;
@@ -4088,7 +4088,7 @@
   };
   var flags_state_default = new FlagsState();
 
-  // platforms/common/application/utils/field-validation.js
+  // application/utils/field-validation.js
   var fallbackValidate = (field) => {
     if (field.disabled) return true;
     const value = field.value || "";
@@ -4114,7 +4114,7 @@
     return fallbackValidate(field);
   };
 
-  // platforms/common/application/fields/submit.js
+  // application/fields/submit.js
   var validateField = field_validation_default;
   var elementFrom = (value) => {
     if (value instanceof Element || value instanceof Document || value instanceof DocumentFragment) return value;
@@ -4170,7 +4170,7 @@
     return { valid, invalid };
   }
 
-  // platforms/common/application/utils/frame-listener.js
+  // application/utils/frame-listener.js
   function frameListener(element, eventName, callback, options = {}) {
     const target = element && element[0] ? element[0] : element;
     let frame = 0;
@@ -4194,7 +4194,7 @@
     };
   }
 
-  // platforms/common/application/utils/get-scrollbar-width.js
+  // application/utils/get-scrollbar-width.js
   var cached = null;
   var get_scrollbar_width_default = () => {
     if (cached !== null) return cached;
@@ -4213,7 +4213,7 @@
     return cached;
   };
 
-  // platforms/common/application/lm/particles-sidebar.js
+  // application/lm/particles-sidebar.js
   var ready5 = dom_default.ready;
   var frameListener2 = frameListener;
   var scrollbarWidth = get_scrollbar_width_default;
@@ -4295,7 +4295,7 @@
     document.body.addEventListener("statechangeEnd", initSizes);
   });
 
-  // platforms/common/application/lm/id.js
+  // application/lm/id.js
   var randomId = () => {
     if (window.crypto && typeof window.crypto.getRandomValues === "function") {
       const value = new Uint32Array(1);
@@ -4317,13 +4317,13 @@
     return "".concat(key, "-").concat(id2);
   };
 
-  // platforms/common/application/utils/translate.js
+  // application/utils/translate.js
   var translate_default = (key, replacement = "") => {
     const translate21 = window.GenesisTranslate || window.GenesisT || ((value) => value);
     return String(translate21(key)).split("%s").join(replacement);
   };
 
-  // platforms/common/application/utils/get-outline.js
+  // application/utils/get-outline.js
   var selectize = () => {
     const selector = document.querySelector("#configuration-selector");
     return selector ? selector.selectizeInstance : null;
@@ -4355,7 +4355,7 @@
   };
   var get_outline_default = { getOutlineNameById, getCurrentOutline };
 
-  // platforms/common/application/lm/blocks/base.js
+  // application/lm/blocks/base.js
   var EventEmitter3 = event_emitter_default;
   var zen3 = createElement;
   var dom6 = dom_collection_default;
@@ -4534,7 +4534,7 @@
   });
   var base_default = Base;
 
-  // platforms/common/application/lm/blocks/atom.js
+  // application/lm/blocks/atom.js
   var Base2 = base_default;
   var getAjaxURL4 = get_ajax_url_default.config;
   var Atom = class extends Base2 {
@@ -4584,7 +4584,7 @@
   };
   var atom_default = Atom;
 
-  // platforms/common/application/lm/blocks/grid.js
+  // application/lm/blocks/grid.js
   var Base3 = base_default;
   var translate2 = translate_default;
   var Grid = class extends Base3 {
@@ -4621,7 +4621,7 @@
   };
   var grid_default = Grid;
 
-  // platforms/common/application/lm/blocks/section.js
+  // application/lm/blocks/section.js
   var Base4 = base_default;
   var Grid2 = grid_default;
   var getAjaxURL5 = get_ajax_url_default.config;
@@ -4771,8 +4771,8 @@
         return false;
       }
       let sizes = {
-        current: this.getParent().getSize(),
-        sibling: siblingBlock.getSize()
+        current: this.getParent().getWidthPercent(),
+        sibling: siblingBlock.getWidthPercent()
       };
       return [5, sizes.current + sizes.sibling - 5];
     }
@@ -4780,7 +4780,7 @@
   Section.prototype.options = {};
   var section_default = Section;
 
-  // platforms/common/application/lm/blocks/offcanvas.js
+  // application/lm/blocks/offcanvas.js
   var Section2 = section_default;
   var getAjaxURL6 = get_ajax_url_default.config;
   var getOutlineNameById3 = get_outline_default.getOutlineNameById;
@@ -4805,7 +4805,7 @@
   };
   var offcanvas_default = Offcanvas;
 
-  // platforms/common/application/lm/blocks/wrapper.js
+  // application/lm/blocks/wrapper.js
   var Section3 = section_default;
   var Wrapper = class extends Section3 {
     layout() {
@@ -4813,7 +4813,7 @@
     }
     hasChanged() {
     }
-    getSize() {
+    getWidthPercent() {
       return false;
     }
     getId() {
@@ -4826,7 +4826,7 @@
   };
   var wrapper_default = Wrapper;
 
-  // platforms/common/application/lm/blocks/atoms.js
+  // application/lm/blocks/atoms.js
   var Section4 = section_default;
   var elementFromHTML2 = function(html) {
     let template = document.createElement("template");
@@ -4883,7 +4883,7 @@
   };
   var atoms_default = Atoms;
 
-  // platforms/common/application/lm/blocks/container.js
+  // application/lm/blocks/container.js
   var Base5 = base_default;
   var getAjaxURL7 = get_ajax_url_default.config;
   var translate5 = translate_default;
@@ -4927,7 +4927,7 @@
   };
   var container_default = Container;
 
-  // platforms/common/application/lm/blocks/block.js
+  // application/lm/blocks/block.js
   var Base6 = base_default;
   var precision = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
@@ -4936,9 +4936,12 @@
   var Block = class extends Base6 {
     constructor(options) {
       super(options);
-      if (options && options.attributes && options.attributes.size) {
-        this.setAttribute("size", precision(options.attributes.size, 1));
+      let legacyWidth = options && options.attributes && Number(options.attributes.size);
+      let hasAuthoredColumn = options && options.attributes && options.attributes.columns && options.attributes.columns.xs;
+      if (!hasAuthoredColumn && legacyWidth) {
+        this.setAttribute("columns.xs", Math.max(1, Math.min(12, Math.round(legacyWidth / 100 * 12))));
       }
+      delete this.attributes.size;
       this.applyColumnClasses();
       this.on("changed", this.hasChanged);
     }
@@ -4950,7 +4953,7 @@
       if (breakpoint !== "xs") {
         return null;
       }
-      return Math.max(1, Math.min(12, Math.round((this.getSize() || 100) / 100 * 12)));
+      return 12;
     }
     applyColumnClasses() {
       if (!this.block || !this.block[0]) {
@@ -4972,14 +4975,14 @@
       }, this);
       return this;
     }
-    getSize() {
-      return precision(this.getAttribute("size"), 1);
+    getWidthPercent() {
+      return precision(this.getColumnSpan("xs") / 12 * 100, 1);
     }
-    setSize(size3, store) {
-      size3 = typeof size3 === "undefined" ? this.getSize() : Math.max(0, Math.min(100, parseFloat(size3)));
+    setWidthPercent(size3, store) {
+      size3 = typeof size3 === "undefined" ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size3)));
       size3 = precision(size3, 1);
       if (store) {
-        this.setAttribute("size", size3);
+        this.setAttribute("columns.xs", Math.max(1, Math.min(12, Math.round(size3 / 100 * 12))));
       }
       let style = this.block[0].style;
       style.flex = "0 1 " + size3 + "%";
@@ -4988,11 +4991,11 @@
       this.applyColumnClasses();
       this.emit("resized", size3, this);
     }
-    setAnimatedSize(size3, store) {
-      size3 = typeof size3 === "undefined" ? this.getSize() : Math.max(0, Math.min(100, parseFloat(size3)));
+    setAnimatedWidthPercent(size3, store) {
+      size3 = typeof size3 === "undefined" ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size3)));
       size3 = precision(size3, 1);
       if (store) {
-        this.setAttribute("size", size3);
+        this.setAttribute("columns.xs", Math.max(1, Math.min(12, Math.round(size3 / 100 * 12))));
       }
       let block = this.block[0], target = "0 1 " + size3 + "%";
       if (this.sizeAnimation) {
@@ -5011,12 +5014,12 @@
           let animation = this.sizeAnimation;
           this.sizeAnimation = null;
           block.removeAttribute("style");
-          this.setSize(size3);
+          this.setWidthPercent(size3);
           animation.cancel();
         }).bind(this), { once: true });
       } else {
         block.removeAttribute("style");
-        this.setSize(size3);
+        this.setWidthPercent(size3);
       }
       this.emit("resized", size3, this);
     }
@@ -5025,7 +5028,8 @@
       if (!label) {
         return false;
       }
-      label.textContent = precision(size3, 1) + "%";
+      let span = Math.max(1, Math.min(12, Math.round(Number(size3) / 100 * 12)));
+      label.textContent = "col-" + span;
     }
     layout() {
       return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"><button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content"><span aria-hidden="true">+</span></button></div>';
@@ -5042,7 +5046,7 @@
       if (isRoot || isRootContainer) {
         let label = document.createElement("span");
         label.className = "particle-size";
-        label.textContent = this.getSize() + "%";
+        label.textContent = "col-" + this.getColumnSpan("xs");
         elementBlock.insertBefore(label, elementBlock.firstChild);
         element.on("resized", this.bound("onResize"));
       }
@@ -5082,12 +5086,12 @@
   Block.prototype.options = {
     type: "block",
     attributes: {
-      size: 100
+      columns: { xs: 12 }
     }
   };
   var block_default = Block;
 
-  // platforms/common/application/lm/blocks/particle.js
+  // application/lm/blocks/particle.js
   var Atom2 = atom_default;
   var getAjaxURL8 = get_ajax_url_default.config;
   var getOutlineNameById4 = get_outline_default.getOutlineNameById;
@@ -5185,7 +5189,7 @@
       label.textContent = precision2(size3, 1) + "%";
     }
     onRendered(element, parent) {
-      let size3 = parent.getSize() || 100, globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
+      let size3 = parent.getWidthPercent() || 100, globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || "") + '"]');
       if (globallyDisabled || this.getAttribute("enabled") === 0) {
         this.disable();
       }
@@ -5221,8 +5225,8 @@
         return [100, 100];
       }
       let siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id")), sizes = {
-        current: this.getParent().getSize(),
-        sibling: siblingBlock && typeof siblingBlock.getSize === "function" ? siblingBlock.getSize() : 0
+        current: this.getParent().getWidthPercent(),
+        sibling: siblingBlock && typeof siblingBlock.getWidthPercent === "function" ? siblingBlock.getWidthPercent() : 0
       };
       return [5, sizes.current + sizes.sibling - 5];
     }
@@ -5232,7 +5236,7 @@
   };
   var particle_default = Particle;
 
-  // platforms/common/application/lm/blocks/position.js
+  // application/lm/blocks/position.js
   var Particle2 = particle_default;
   var UID = 0;
   var Position = class extends Particle2 {
@@ -5262,7 +5266,7 @@
   };
   var position_default = Position;
 
-  // platforms/common/application/lm/blocks/system.js
+  // application/lm/blocks/system.js
   var Particle3 = particle_default;
   var System = class extends Particle3 {
   };
@@ -5272,7 +5276,7 @@
   };
   var system_default = System;
 
-  // platforms/common/application/lm/blocks/spacer.js
+  // application/lm/blocks/spacer.js
   var Particle4 = particle_default;
   var Spacer = class extends Particle4 {
   };
@@ -5283,7 +5287,7 @@
   };
   var spacer_default = Spacer;
 
-  // platforms/common/application/lm/blocks/div.js
+  // application/lm/blocks/div.js
   var Base7 = base_default;
   var getAjaxURL9 = get_ajax_url_default.config;
   var translate7 = translate_default;
@@ -5300,7 +5304,7 @@
   };
   var div_default = Div;
 
-  // platforms/common/application/lm/blocks/index.js
+  // application/lm/blocks/index.js
   var blocks_default = {
     base: base_default,
     atom: atom_default,
@@ -5318,41 +5322,44 @@
     div: div_default
   };
 
-  // platforms/common/application/lm/normalize-grid-sizes.js
-  var normalizeGridSizes = (root, getBlock) => {
+  // application/lm/normalize-grid-columns.js
+  var normalizeGridColumns = (root, getBlock) => {
     if (!root || typeof getBlock !== "function") return;
     root.querySelectorAll('[data-lm-blocktype="grid"]').forEach((grid) => {
-      const blocks = Array.from(grid.children).filter((child) => child.getAttribute("data-lm-blocktype") === "block").map((element) => getBlock(element.getAttribute("data-lm-id"))).filter((block) => block && typeof block.getSize === "function" && typeof block.setSize === "function");
+      const blocks = Array.from(grid.children).filter((child) => child.getAttribute("data-lm-blocktype") === "block").map((element) => getBlock(element.getAttribute("data-lm-id"))).filter((block) => block && typeof block.getColumnSpan === "function");
       if (!blocks.length) return;
-      const total = blocks.reduce((sum, block) => {
-        const size3 = Number(block.getSize());
-        return sum + (Number.isFinite(size3) ? size3 : 0);
-      }, 0);
-      let sizes;
-      if (blocks.length === 1) {
-        sizes = [100];
-      } else if (total <= 0) {
-        sizes = blocks.map(() => 100 / blocks.length);
-      } else if (Math.abs(total - 100) > 0.05) {
-        sizes = blocks.map((block) => block.getSize() / total * 100);
-      } else {
+      if (blocks.length > 12) {
+        blocks.forEach((block) => {
+          block.setAttribute("columns.xs", 1);
+          block.applyColumnClasses();
+        });
         return;
       }
-      let applied = 0;
+      const weights = blocks.map((block) => block.getColumnSpan("xs") || 1);
+      const totalWeight = weights.reduce((sum, value) => sum + value, 0) || blocks.length;
+      let spans = weights.slice();
+      if (totalWeight !== 12) {
+        const distributable = 12 - blocks.length;
+        const quotas = weights.map((weight) => weight / totalWeight * distributable);
+        spans = quotas.map((quota) => 1 + Math.floor(quota));
+        let remaining = 12 - spans.reduce((sum, value) => sum + value, 0);
+        quotas.map((quota, index) => ({ index, remainder: quota - Math.floor(quota) })).sort((left, right) => right.remainder - left.remainder || left.index - right.index).slice(0, remaining).forEach((item) => {
+          spans[item.index]++;
+        });
+      }
       blocks.forEach((block, index) => {
-        const size3 = index === blocks.length - 1 ? 100 - applied : Math.round(sizes[index] * 10) / 10;
-        applied += size3;
-        block.setSize(size3, true);
+        block.setAttribute("columns.xs", spans[index]);
+        block.applyColumnClasses();
       });
     });
   };
-  var normalize_grid_sizes_default = normalizeGridSizes;
+  var normalize_grid_columns_default = normalizeGridColumns;
 
-  // platforms/common/application/lm/builder.js
+  // application/lm/builder.js
   var EventEmitter4 = event_emitter_default;
   var Blocks = blocks_default;
   var ID2 = id_default;
-  var normalizeGridSizes2 = normalize_grid_sizes_default;
+  var normalizeGridColumns2 = normalize_grid_columns_default;
   var DEBUG = false;
   var collectionSize = function(value) {
     if (!value) {
@@ -5424,13 +5431,13 @@
     }
     load(data) {
       this.recursiveLoad(data);
-      this.normalizeGridSizes();
+      this.normalizeGridColumns();
       this.emit("loaded", data);
       return this;
     }
-    normalizeGridSizes(root) {
+    normalizeGridColumns(root) {
       root = root || document.querySelector("[data-lm-root]");
-      normalizeGridSizes2(root, this.get.bind(this));
+      normalizeGridColumns2(root, this.get.bind(this));
       return this;
     }
     serialize(root, flat) {
@@ -5491,7 +5498,7 @@
         target.appendChild(block);
       }
       if (Element2.getType() === "block") {
-        Element2.setSize();
+        Element2.setWidthPercent();
       }
       this.add(Element2);
       Element2.emit("rendered", Element2, parent ? this.map[parent] : null);
@@ -5562,7 +5569,7 @@
   };
   var builder_default = Builder;
 
-  // platforms/common/application/utils/history-adapter.js
+  // application/utils/history-adapter.js
   var resolveElement = (element) => typeof element === "string" ? document.querySelector(element) : element;
   var History = {
     Adapter: {
@@ -5596,7 +5603,7 @@
   };
   var history_adapter_default = History;
 
-  // platforms/common/application/utils/history.js
+  // application/utils/history.js
   var absoluteURL = (value) => new URL(value || window.location.href, window.location.href).href;
   var stateFrom = (data, title, url) => ({
     data: data && typeof data === "object" ? data : {},
@@ -5639,7 +5646,7 @@
   window.History = history_adapter_default;
   var history_default = history_adapter_default;
 
-  // platforms/common/application/lm/history.js
+  // application/lm/history.js
   var cloneSnapshot = (value) => {
     if (value == null) return value;
     if (typeof structuredClone === "function") return structuredClone(value);
@@ -5776,7 +5783,7 @@
   };
   var history_default2 = History2;
 
-  // platforms/common/application/ui/drag.events.js
+  // application/ui/drag.events.js
   var getSupportedEvent = function(events) {
     events = events.split(" ");
     let element = document.createElement("div"), event;
@@ -5822,7 +5829,7 @@
     EVENTS
   };
 
-  // platforms/common/application/ui/drag.drop.js
+  // application/ui/drag.drop.js
   var EventEmitter5 = event_emitter_default;
   var DragEvents = drag_events_default;
   var dom7 = dom_effects_default;
@@ -6136,7 +6143,7 @@
   };
   var drag_drop_default = DragDrop;
 
-  // platforms/common/application/ui/eraser.js
+  // application/ui/eraser.js
   var toPixels = (value) => typeof value === "number" ? "".concat(value, "px") : value;
   var applyStyles = (element, styles) => {
     Object.keys(styles).forEach((property) => {
@@ -6208,218 +6215,7 @@
   };
   var eraser_default = Eraser;
 
-  // platforms/common/application/lm/drag.resizer.js
-  var DragEvents2 = drag_events_default;
-  var asElement3 = function(element) {
-    return element && element.nodeType ? element : element && element[0];
-  };
-  var asElements = function(elements) {
-    if (!elements) {
-      return [];
-    }
-    if (elements.nodeType) {
-      return [elements];
-    }
-    return Array.from(elements).map(asElement3).filter(Boolean);
-  };
-  var clamp = function(value, min, max) {
-    return Math.min(max, Math.max(min, value));
-  };
-  var mapRange = function(value, min1, max1, min2, max2) {
-    return min2 + (value - min1) / (max1 - min1) * (max2 - min2);
-  };
-  var precision3 = function(value, decimals) {
-    let multiplier = Math.pow(10, decimals);
-    return Math.round(value * multiplier) / multiplier;
-  };
-  var Resizer = class {
-    constructor(container2, options) {
-      this.DRAG_EVENTS = DragEvents2;
-      this.options = Object.assign({ minSize: 5 }, options || {});
-      this.history = this.options.history || {};
-      this.builder = this.options.builder || {};
-      this.moveHandler = this.move.bind(this);
-      this.stopHandler = this.stop.bind(this);
-      this.listenerOptions = { passive: false };
-      this.origin = {
-        x: 0,
-        y: 0,
-        transform: null,
-        offset: {
-          x: 0,
-          y: 0
-        }
-      };
-    }
-    getBlock(element) {
-      element = typeof element === "string" ? element : asElement3(element);
-      let id2 = typeof element === "string" ? element : element && element.getAttribute("data-lm-id") || "";
-      return this.builder.map ? this.builder.map[id2] : void 0;
-    }
-    getAttribute(element, prop) {
-      let block = this.getBlock(element);
-      return block ? block.getAttribute(prop) : void 0;
-    }
-    getSize(element) {
-      return this.getAttribute(element, "size");
-    }
-    start(event, element, siblings2, offset) {
-      if (event && event.type.match(/^touch/i)) {
-        event.preventDefault();
-      }
-      element = asElement3(element);
-      siblings2 = asElements(siblings2);
-      if (!element) {
-        return;
-      }
-      window.Genesis.tips.hide(element);
-      if (event.which && event.which !== 1) {
-        return true;
-      }
-      event.preventDefault();
-      this.element = element;
-      this.siblings = {
-        occupied: 0,
-        elements: siblings2,
-        next: this.element.nextElementSibling,
-        prevs: [],
-        sizeBefore: 0
-      };
-      let previous = this.element.previousElementSibling;
-      while (previous) {
-        this.siblings.prevs.unshift(previous);
-        previous = previous.previousElementSibling;
-      }
-      if (this.siblings.elements.length > 1) {
-        this.siblings.occupied -= this.getSize(this.siblings.next);
-        this.siblings.elements.forEach(function(sibling) {
-          this.siblings.occupied += this.getSize(sibling);
-        }, this);
-      }
-      this.siblings.prevs.forEach(function(sibling) {
-        this.siblings.sizeBefore += this.getSize(sibling);
-      }, this);
-      this.origin = {
-        size: this.getSize(this.element),
-        maxSize: this.getSize(this.element) + this.getSize(this.siblings.next),
-        x: event.changedTouches ? event.changedTouches[0].pageX : event.pageX + 6,
-        y: event.changedTouches ? event.changedTouches[0].pageY : event.pageY
-      };
-      let parent = this.element.parentElement, clientRect = this.element.getBoundingClientRect(), parentRect = parent.getBoundingClientRect();
-      this.origin.offset = {
-        clientRect,
-        parentRect: { left: parentRect.left, right: parentRect.right },
-        x: this.origin.x - clientRect.right,
-        y: clientRect.top - this.origin.y,
-        down: offset || 0
-      };
-      let blocks = Array.from(parent.children).filter(function(child) {
-        return child.hasAttribute("data-lm-id");
-      });
-      if (blocks.length) {
-        this.origin.offset.parentRect.left = blocks[0].getBoundingClientRect().left;
-        this.origin.offset.parentRect.right = blocks[blocks.length - 1].getBoundingClientRect().right;
-      }
-      this.detachDocumentEvents();
-      this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-        document.addEventListener(eventName, this.moveHandler, this.listenerOptions);
-      }, this);
-      this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-        document.addEventListener(eventName, this.stopHandler, this.listenerOptions);
-      }, this);
-    }
-    move(event) {
-      if (event && event.type.match(/^touch/i)) {
-        event.preventDefault();
-      }
-      let point = event.touches && event.touches.length ? event.touches[0] : event, clientX = point.clientX || 0, clientY = point.clientY || 0, parentRect = this.origin.offset.parentRect;
-      let deltaX = (this.lastX || clientX) - clientX, deltaY = (this.lastY || clientY) - clientY;
-      this.direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && "left" || Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && "right" || Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && "up" || "down";
-      let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs.length ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp(value, parentRect.left, parentRect.right);
-      size3 = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
-      size3 = size3 - this.siblings.sizeBefore;
-      size3 = precision3(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
-      diff = precision3(diff - size3, 0);
-      this.getBlock(this.element).setSize(size3, true);
-      this.getBlock(this.siblings.next).setSize(diff, true);
-      let siblings2 = Array.from(this.element.parentElement.children).filter(function(sibling) {
-        return sibling !== this.element && sibling.hasAttribute("data-lm-id");
-      }, this), amount = siblings2.length + 1;
-      if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
-        let total = 0, blocks;
-        blocks = siblings2.concat(this.element);
-        blocks.forEach(function(block, index) {
-          block = this.getBlock(block);
-          if (!block) {
-            return;
-          }
-          size3 = block.getSize();
-          if (size3 % 1) {
-            size3 = precision3(100 / amount, 0);
-            block.setSize(size3, true);
-          }
-          total += size3;
-          if (blocks.length == index + 1 && total != 100) {
-            diff = 100 - total;
-            block.setSize(size3 + diff, true);
-          }
-        }, this);
-      }
-      this.lastX = clientX;
-      this.lastY = clientY;
-    }
-    stop(event) {
-      if (event && event.type.match(/^touch/i)) {
-        event.preventDefault();
-      }
-      this.detachDocumentEvents();
-      if (event.target instanceof Element && event.target.matches("[data-lm-back], [data-lm-forward]")) {
-        return;
-      }
-      if (this.origin.size !== this.getSize(this.element)) {
-        this.history.push(this.builder.serialize(), this.history.get().preset);
-      }
-    }
-    detachDocumentEvents() {
-      this.DRAG_EVENTS.EVENTS.MOVE.forEach(function(eventName) {
-        document.removeEventListener(eventName, this.moveHandler, this.listenerOptions);
-      }, this);
-      this.DRAG_EVENTS.EVENTS.STOP.forEach(function(eventName) {
-        document.removeEventListener(eventName, this.stopHandler, this.listenerOptions);
-      }, this);
-    }
-    evenResize(elements, animated) {
-      let total = elements.length, size3 = precision3(100 / total, 4), block;
-      if (typeof animated === "undefined") {
-        animated = true;
-      }
-      asElements(elements).forEach(function(element) {
-        block = this.getBlock(element);
-        if (block && block.hasAttribute("size") && typeof block.getSize === "function") {
-          block[animated ? "setAnimatedSize" : "setSize"](size3, size3 !== block.getSize());
-        } else {
-          if (!element) {
-            return;
-          }
-          let flex = "0 1 " + size3 + "%";
-          if (animated && typeof element.animate === "function") {
-            let animation = element.animate([{ flex: getComputedStyle(element).flex }, { flex }], {
-              duration: 250,
-              easing: "ease"
-            });
-            animation.addEventListener("finish", function() {
-              element.style.flex = flex;
-            }, { once: true });
-          } else {
-            element.style.flex = flex;
-          }
-        }
-      }, this);
-    }
-  };
-  var drag_resizer_default = Resizer;
-
-  // platforms/common/application/utils/deep-equals.js
+  // application/utils/deep-equals.js
   var deepEquals = function(first, second) {
     if (Object.is(first, second)) {
       return true;
@@ -6448,7 +6244,7 @@
   };
   var deep_equals_default = deepEquals;
 
-  // platforms/common/application/lm/layoutmanager.js
+  // application/lm/layoutmanager.js
   var EventEmitter6 = event_emitter_default;
   var dom8 = dom_effects_default;
   var zen4 = createElement;
@@ -6456,7 +6252,6 @@
   var DragDrop2 = drag_drop_default;
   var Eraser2 = eraser_default;
   var flags = flags_state_default;
-  var Resizer2 = drag_resizer_default;
   var deepEquals2 = deep_equals_default;
   var get = function(object, key) {
     return object ? object[key] : void 0;
@@ -6464,7 +6259,7 @@
   var keys = function(object) {
     return Object.keys(object || {});
   };
-  var precision4 = function(value, decimals) {
+  var precision3 = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.round(Number(value) * multiplier) / multiplier;
   };
@@ -6524,9 +6319,8 @@
         this.dragdrop.detach();
       }
       this.dragdrop = new DragDrop2(this.refElement, this.options);
-      this.resizer = new Resizer2(this.refElement, this.options);
       this.eraser = new Eraser2("[data-lm-eraseblock]", this.options);
-      this.dragdrop.on("dragdrop:start", this.bound("start")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:resize", this.bound("resize")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
+      this.dragdrop.on("dragdrop:start", this.bound("start")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
       this.builder = this.options.builder;
       this.history = this.options.history;
       this.savestate = this.options.savestate || null;
@@ -6810,17 +6604,6 @@
         }
       }
     },
-    // Drag-to-resize is retired in favor of the row/column picker (see
-    // row-picker.js, grid.js's per-row layout icon, and
-    // NUCLEUS_BOOTSTRAP_MIGRATION.md M3). `this.resizer` itself stays
-    // constructed - `evenResize()` is still used elsewhere to auto-balance
-    // sizes when blocks are added/removed/moved - only the interactive
-    // drag-resize gesture (dragdrop:resize -> resizer.start()) is disabled.
-    // This is scoped to the Layout Manager only: the mega-menu editor
-    // (menumanager.js) has its own, entirely separate DragDrop/Resizer
-    // instance pair and is unaffected.
-    resize: function() {
-    },
     removeElement: function(event, element) {
       this.dragdrop.removeElement = false;
       let transition = {
@@ -6835,21 +6618,21 @@
       }
       let siblings2 = this.block.block.siblings('[data-lm-blocktype="block"]:not(.original-placeholder)');
       if (siblings2 && this.block.getType() == "block") {
-        let size3 = this.block.getSize(), diff = size3 / siblings2.length, newSize, block, total = 0, last3;
+        let size3 = this.block.getWidthPercent(), diff = size3 / siblings2.length, newSize, block, total = 0, last3;
         siblings2.forEach(function(sibling, index) {
           sibling = dom8(sibling);
           block = get(this.builder.map, sibling.data("lm-id"));
           if (index + 1 == siblings2.length) {
             last3 = block;
           }
-          newSize = precision4(block.getSize() + diff, 0);
+          newSize = precision3(block.getWidthPercent() + diff, 0);
           total += newSize;
-          block.setSize(newSize, true);
+          block.setWidthPercent(newSize, true);
         }, this);
         if (total != 100 && last3) {
-          size3 = last3.getSize();
+          size3 = last3.getWidthPercent();
           diff = 100 - total;
-          last3.setSize(size3 + diff, true);
+          last3.setWidthPercent(size3 + diff, true);
         }
       }
       this.eraser.hide();
@@ -6926,7 +6709,7 @@
           title: this.element.text(),
           builder: this.builder
         }).setLayout(this.block.block);
-        wrapper.setSize();
+        wrapper.setWidthPercent();
         this.block = wrapper;
         this.builder.add(wrapper);
         this.builder.add(insider);
@@ -6947,11 +6730,8 @@
           previous = previous.parent();
         }
         previous = previous.siblings(":not(.original-placeholder)");
-        if (!this.block.isNew() && previous.length) {
-          this.resizer.evenResize(previous);
-        }
         this.block.block.attribute("style", null);
-        this.block.setSize();
+        this.block.setWidthPercent();
       }
       if (type === "grid" && !siblings) {
         let plus = this.block.block.parent('[data-lm-blocktype="section"]').find(".fa-plus");
@@ -6959,24 +6739,18 @@
           plus.emit("click");
         }
       }
-      if (this.block.hasAttribute("size") && typeof this.block.getSize === "function") {
-        this.block.setSize(this.placeholder.compute("flex"));
+      if (this.block.hasAttribute("columns.xs") && typeof this.block.getWidthPercent === "function") {
+        this.block.setWidthPercent(this.placeholder.compute("flex"));
       }
       this.block.insert(this.placeholder);
       this.placeholder.remove();
       if (blockWasNew) {
-        if (resizeCase) {
-          this.resizer.evenResize(dom8([
-            this.block.block,
-            this.block.block.siblings('[data-lm-blocktype="block"]')
-          ]));
-        }
         this.element.attribute("style", null);
       }
       if (multiLocationResize.from || multiLocationResize.to && multiLocationResize.to != this.block.block) {
-        let size3 = this.block.getSize(), diff, block;
+        let size3 = this.block.getWidthPercent(), diff, block;
         if (!multiLocationResize.to) {
-          this.block.setSize(100, true);
+          this.block.setWidthPercent(100, true);
         }
         if (multiLocationResize.from) {
           diff = size3 / multiLocationResize.from.length;
@@ -6984,11 +6758,11 @@
           multiLocationResize.from.forEach(function(sibling) {
             sibling = dom8(sibling);
             block = get(this.builder.map, sibling.data("lm-id"));
-            if (!block || typeof block.getSize !== "function") {
+            if (!block || typeof block.getWidthPercent !== "function") {
               return;
             }
-            curSize = block.getSize() + diff;
-            block.setSize(curSize, true);
+            curSize = block.getWidthPercent() + diff;
+            block.setWidthPercent(curSize, true);
             total += curSize;
           }, this);
           if (total !== 100) {
@@ -6996,11 +6770,11 @@
             multiLocationResize.from.forEach(function(sibling) {
               sibling = dom8(sibling);
               block = get(this.builder.map, sibling.data("lm-id"));
-              if (!block || typeof block.getSize !== "function") {
+              if (!block || typeof block.getWidthPercent !== "function") {
                 return;
               }
-              curSize = block.getSize() + diff;
-              block.setSize(curSize, true);
+              curSize = block.getWidthPercent() + diff;
+              block.setWidthPercent(curSize, true);
             }, this);
           }
         }
@@ -7009,16 +6783,16 @@
           multiLocationResize.to.forEach(function(sibling) {
             sibling = dom8(sibling);
             block = get(this.builder.map, sibling.data("lm-id"));
-            if (block && typeof block.setSize === "function") {
-              block.setSize(size3, true);
+            if (block && typeof block.setWidthPercent === "function") {
+              block.setWidthPercent(size3, true);
             }
           }, this);
-          this.block.setSize(size3, true);
+          this.block.setWidthPercent(size3, true);
         }
       }
       singles.disable();
       singles.cleanup(this.builder);
-      this.builder.normalizeGridSizes();
+      this.builder.normalizeGridColumns();
       this.history.push(this.builder.serialize(), this.history.get().preset);
     },
     stopAnimation: function(element) {
@@ -7032,7 +6806,7 @@
         this.block = get(this.builder.map, element.data("lm-id"));
       }
       if (this.block && this.block.getType() === "block") {
-        this.block.setSize();
+        this.block.setWidthPercent();
       }
       if (this.block && this.block.isNew() && this.element) {
         this.element.attribute("style", null);
@@ -7044,7 +6818,7 @@
             element2 = dom8(element2);
             block = get(this.builder.map, element2.data("lm-id"));
             element2.attribute("style", null);
-            block.setSize();
+            block.setWidthPercent();
           }, this);
         }
       }
@@ -7072,7 +6846,7 @@
   LayoutManager.prototype.options = LayoutManagerDefinition.options;
   var layoutmanager_default = LayoutManager;
 
-  // platforms/common/application/utils/save-state.js
+  // application/utils/save-state.js
   var clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
   var SaveState = class {
     constructor(session) {
@@ -7097,7 +6871,7 @@
   };
   var save_state_default = SaveState;
 
-  // platforms/common/application/lm/row-picker.js
+  // application/lm/row-picker.js
   var modal4 = ui_default.modal;
   var translate8 = translate_default;
   var PRESETS = [
@@ -7228,7 +7002,7 @@
   };
   var row_picker_default = openRowPicker;
 
-  // platforms/common/application/ui/popover.js
+  // application/ui/popover.js
   var dom9 = dom_effects_default;
   var zen5 = createElement;
   var storage2 = /* @__PURE__ */ new WeakMap();
@@ -7757,7 +7531,7 @@
   });
   var popover_default = dom9;
 
-  // platforms/common/application/lm/inheritance/index.js
+  // application/lm/inheritance/index.js
   var dom10 = dom_default;
   var ready6 = dom10.ready;
   var delegate4 = dom10.delegate;
@@ -7775,7 +7549,7 @@
     particles: "g-inherit-particle",
     atoms: "g-inherit-atom"
   };
-  var asElement4 = function(element) {
+  var asElement3 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
   var collectionContains = function(collection, value) {
@@ -7785,7 +7559,7 @@
     return collection && typeof collection === "object" ? Object.values(collection).includes(value) : false;
   };
   var emitChange = function(element, options) {
-    element = asElement4(element);
+    element = asElement3(element);
     if (!element) {
       return;
     }
@@ -7794,7 +7568,7 @@
     element.dispatchEvent(event);
   };
   var getModalContainer = function() {
-    return asElement4(modal5.getByID(modal5.getLast()));
+    return asElement3(modal5.getByID(modal5.getLast()));
   };
   var getMode = function(root) {
     return (root || document).querySelector('[name="inherit[mode]"]:checked');
@@ -7852,7 +7626,7 @@
           modal5.open({
             content: response.body.html || response.body.message || response.body,
             afterOpen: function(container3) {
-              container3 = asElement4(container3);
+              container3 = asElement3(container3);
               if (container3 && !response.body.html && !response.body.message) {
                 container3.style.width = "90%";
               }
@@ -8009,7 +7783,7 @@
     });
   });
 
-  // platforms/common/application/lm/index.js
+  // application/lm/index.js
   var ready7 = dom_default.ready;
   var dom11 = dom_collection_default;
   var Submit = submit;
@@ -8067,7 +7841,7 @@
       return character.toUpperCase();
     });
   };
-  var precision5 = function(value, decimalPlaces) {
+  var precision4 = function(value, decimalPlaces) {
     let number2 = Number(value), multiplier = Math.pow(10, decimalPlaces);
     return Number((Math.round(number2 * multiplier) / multiplier).toFixed(decimalPlaces));
   };
@@ -8235,7 +8009,7 @@
         }
         blocks.forEach(function(block) {
           id2 = dom11(block).data("lm-id");
-          builder.get(id2).setSize(100 / blocks.length, true);
+          builder.get(id2).setWidthPercent(100 / blocks.length, true);
         });
         lmhistory.push(builder.serialize(), lmhistory.get().preset);
       });
@@ -8454,7 +8228,7 @@
           }
           let blockSize = container2.querySelector('[name="block[size]"]');
           if (blockSize && data2.size_limits) {
-            let note = container2.querySelector(".blocksize-note"), min = precision5(data2.size_limits[0], 1), max = precision5(data2.size_limits[1], 1);
+            let note = container2.querySelector(".blocksize-note"), min = precision4(data2.size_limits[0], 1), max = precision4(data2.size_limits[1], 1);
             blockSize.setAttribute("min", min);
             blockSize.setAttribute("max", max);
             if (note) {
@@ -8518,13 +8292,13 @@
                     }
                     if (response2.body.data.block && size2(response2.body.data.block)) {
                       block = builder.get(parentID);
-                      let sibling = block.block.nextSibling() || block.block.previousSibling(), currentSize = block.getSize(), diffSize;
+                      let sibling = block.block.nextSibling() || block.block.previousSibling(), currentSize = block.getWidthPercent(), diffSize;
                       block.setAttributes(response2.body.data.block);
-                      diffSize = currentSize - block.getSize();
-                      block.setAnimatedSize(block.getSize());
+                      diffSize = currentSize - block.getWidthPercent();
+                      block.setAnimatedWidthPercent(block.getWidthPercent());
                       if (sibling) {
                         sibling = builder.get(sibling.data("lm-id"));
-                        sibling.setAnimatedSize(parseFloat(sibling.getSize()) + diffSize, true);
+                        sibling.setAnimatedWidthPercent(parseFloat(sibling.getWidthPercent()) + diffSize, true);
                       }
                     }
                     if (response2.body.data.inherit) {
@@ -8570,7 +8344,7 @@
         builder.insert(void 0, {
           type: "block",
           subtype: "block",
-          attributes: { size: count / 12 * 100, columns: { xs: count } }
+          attributes: { columns: { xs: count } }
         }, grid.getId());
       });
       return grid;
@@ -8664,7 +8438,7 @@
         if (!mapped) {
           return 1;
         }
-        return Math.max(1, Math.min(12, parseInt(mapped.getAttribute("columns.xs"), 10) || Math.round((mapped.getSize() || 0) / 100 * 12)));
+        return Math.max(1, Math.min(12, parseInt(mapped.getAttribute("columns.xs"), 10) || Math.round((mapped.getWidthPercent() || 0) / 100 * 12)));
       }), currentByBreakpoint = { xs: current };
       ["sm", "md", "lg", "xl"].forEach(function(breakpoint) {
         let values = blocks.map(function(child) {
@@ -8710,7 +8484,7 @@
             let mapped = builder.get(child.getAttribute("data-lm-id"));
             if (mapped) {
               mapped.setAttribute("columns.xs", columns[index]);
-              mapped.setSize(columns[index] / 12 * 100, true);
+              mapped.setWidthPercent(columns[index] / 12 * 100, true);
             }
           });
           if (columns.length > blocks.length) {
@@ -8718,7 +8492,7 @@
               builder.insert(void 0, {
                 type: "block",
                 subtype: "block",
-                attributes: { size: count / 12 * 100, columns: { xs: count } }
+                attributes: { columns: { xs: count } }
               }, gridId);
             });
           } else if (columns.length < blocks.length) {
@@ -8868,19 +8642,19 @@
     savestate
   };
 
-  // platforms/common/application/menu/drag.resizer.js
-  var DragEvents3 = drag_events_default;
-  var asElement5 = function(element) {
+  // application/menu/drag.resizer.js
+  var DragEvents2 = drag_events_default;
+  var asElement4 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
-  var asElements2 = function(elements) {
+  var asElements = function(elements) {
     if (!elements) {
       return [];
     }
     if (elements.nodeType) {
       return [elements];
     }
-    return Array.from(elements).map(asElement5).filter(Boolean);
+    return Array.from(elements).map(asElement4).filter(Boolean);
   };
   var directChildren = function(element, selector) {
     return element ? Array.from(element.children).filter(function(child) {
@@ -8895,19 +8669,19 @@
     }
     return siblings2;
   };
-  var clamp2 = function(value, min, max) {
+  var clamp = function(value, min, max) {
     return Math.min(max, Math.max(min, value));
   };
-  var mapRange2 = function(value, min1, max1, min2, max2) {
+  var mapRange = function(value, min1, max1, min2, max2) {
     return min2 + (value - min1) / (max1 - min1) * (max2 - min2);
   };
-  var precision6 = function(value, decimals) {
+  var precision5 = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.round(value * multiplier) / multiplier;
   };
-  var Resizer3 = class {
+  var Resizer = class {
     constructor(container2, options, menumanager3) {
-      this.DRAG_EVENTS = DragEvents3;
+      this.DRAG_EVENTS = DragEvents2;
       this.options = Object.assign({ minSize: 5 }, options || {});
       this.history = this.options.history || {};
       this.builder = this.options.builder || {};
@@ -8927,7 +8701,7 @@
       };
     }
     getBlock(element) {
-      element = typeof element === "string" ? element : asElement5(element);
+      element = typeof element === "string" ? element : asElement4(element);
       let id2 = typeof element === "string" ? element : element && element.dataset.lmId || "";
       return this.map ? this.map[id2] : void 0;
     }
@@ -8935,12 +8709,12 @@
       return this.getBlock(element).getAttribute(prop);
     }
     getSize(element) {
-      element = asElement5(element);
+      element = asElement4(element);
       let parent = element && (element.matches("[data-mm-id]") ? element : element.closest("[data-mm-id]")), size3 = parent && parent.querySelector(".percentage input");
       return size3 ? Number(size3.value) : 0;
     }
     setSize(element, size3, animated) {
-      element = asElement5(element);
+      element = asElement4(element);
       if (!element) {
         return;
       }
@@ -8961,7 +8735,7 @@
         parent.style.flex = flex;
       }
       if (pc) {
-        pc.value = precision6(size3, 1);
+        pc.value = precision5(size3, 1);
       }
     }
     start(event, element, siblings2, offset) {
@@ -8972,7 +8746,7 @@
         return true;
       }
       event.preventDefault();
-      this.element = asElement5(element);
+      this.element = asElement4(element);
       if (!this.element) {
         return false;
       }
@@ -8987,7 +8761,7 @@
       parent.classList.add("moving");
       this.siblings = {
         occupied: 0,
-        elements: asElements2(siblings2),
+        elements: asElements(siblings2),
         next: nextColumn,
         prevs: previousSiblings(current),
         sizeBefore: 0
@@ -9037,21 +8811,21 @@
       let point = event.touches && event.touches.length ? event.touches[0] : event, clientX = point.clientX || 0, clientY = point.clientY || 0, parentRect = this.origin.offset.parentRect;
       let deltaX = (this.lastX || clientX) - clientX, deltaY = (this.lastY || clientY) - clientY;
       this.direction = Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0 && "left" || Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0 && "right" || Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0 && "up" || "down";
-      let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp2(value, parentRect.left, parentRect.right);
-      size3 = mapRange2(normalized, parentRect.left, parentRect.right, 0, 100);
+      let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp(value, parentRect.left, parentRect.right);
+      size3 = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
       size3 = size3 - this.siblings.sizeBefore;
-      size3 = precision6(clamp2(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
-      diff = precision6(diff - size3, 0);
+      size3 = precision5(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
+      diff = precision5(diff - size3, 0);
       this.setSize(this.element, size3);
       this.setSize(this.siblings.next, diff);
       let siblings2 = this.siblings.elements, amount = siblings2 ? siblings2.length + 1 : 1;
       if (amount == 3 || amount == 6 || amount == 7 || amount == 8 || amount == 9 || amount == 11 || amount == 12) {
         let total = 0, blocks;
-        blocks = asElements2(siblings2).concat(this.element.closest("[data-mm-id]"));
+        blocks = asElements(siblings2).concat(this.element.closest("[data-mm-id]"));
         blocks.forEach(function(block, index) {
           size3 = this.getSize(block);
           if (size3 % 1) {
-            size3 = precision6(100 / amount, 0);
+            size3 = precision5(100 / amount, 0);
             this.setSize(block, size3);
           }
           total += size3;
@@ -9088,7 +8862,7 @@
       if (!parent && !elements) {
         return false;
       }
-      let blocks = elements ? asElements2(elements) : directChildren(parent, "[data-mm-id]"), sizes = [], active = document.querySelector(".menu-selector .active"), path = active ? active.dataset.mmId : null;
+      let blocks = elements ? asElements(elements) : directChildren(parent, "[data-mm-id]"), sizes = [], active = document.querySelector(".menu-selector .active"), path = active ? active.dataset.mmId : null;
       blocks.forEach(function(block) {
         sizes.push(this.getSize(block));
       }, this);
@@ -9103,7 +8877,7 @@
       if (!parent && !elements) {
         return false;
       }
-      let blocks = elements ? asElements2(elements) : directChildren(parent, "[data-mm-id]"), sizes, inputs;
+      let blocks = elements ? asElements(elements) : directChildren(parent, "[data-mm-id]"), sizes, inputs;
       blocks.forEach(function(block) {
         let sibling = block.nextElementSibling || block.previousElementSibling;
         if (!sibling) {
@@ -9126,8 +8900,8 @@
       }, this);
     }
     evenResize(elements, animated) {
-      elements = asElements2(elements);
-      let total = elements.length, size3 = precision6(100 / total, 4);
+      elements = asElements(elements);
+      let total = elements.length, size3 = precision5(100 / total, 4);
       elements.forEach(function(element) {
         this.setSize(element, size3, typeof animated == "undefined" ? false : animated);
       }, this);
@@ -9135,15 +8909,15 @@
       this.menumanager.emit("dragEnd", this.menumanager.map, "evenResize");
     }
   };
-  var drag_resizer_default2 = Resizer3;
+  var drag_resizer_default = Resizer;
 
-  // platforms/common/application/menu/menumanager.js
+  // application/menu/menumanager.js
   var EventEmitter7 = event_emitter_default;
   var dom12 = dom_effects_default;
   var zen6 = createElement;
   var DragDrop3 = drag_drop_default;
   var Eraser3 = eraser_default;
-  var Resizer4 = drag_resizer_default2;
+  var Resizer2 = drag_resizer_default;
   var ltrim = function(value) {
     return String(value == null ? "" : value).replace(/^\/+/, "");
   };
@@ -9203,7 +8977,7 @@
       }
       this.setRoot();
       this.dragdrop = new DragDrop3(this.refElement, this.options, this);
-      this.resizer = new Resizer4(this.refElement, this.options, this);
+      this.resizer = new Resizer2(this.refElement, this.options, this);
       this.eraser = new Eraser3("[data-mm-eraseparticle]", this.options);
       this.dragdrop.on("dragdrop:click", this.bound("click")).on("dragdrop:start", this.bound("start")).on("dragdrop:move:once", this.bound("moveOnce")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:resize", this.bound("resize")).on("dragdrop:stop:erase", this.bound("removeElement")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
     },
@@ -9602,7 +9376,7 @@
   MenuManager.prototype.options = MenuManagerDefinition.options;
   var menumanager_default = MenuManager;
 
-  // platforms/common/application/utils/draggable-group.js
+  // application/utils/draggable-group.js
   var directItems = (list, selector, excluded) => Array.from(list.children).filter((item) => item !== excluded && item.matches(selector));
   var previewStyleProperties = [
     "display",
@@ -9888,7 +9662,7 @@
   };
   var draggable_group_default = DraggableGroup;
 
-  // platforms/common/application/positions/cards.js
+  // application/positions/cards.js
   var { ready: ready8, delegate: delegate5 } = dom_default;
   var Eraser4 = eraser_default;
   var DraggableGroup2 = draggable_group_default;
@@ -9988,7 +9762,7 @@
   });
   var cards_default = Positions;
 
-  // platforms/common/application/utils/wp-widgets-customizer.js
+  // application/utils/wp-widgets-customizer.js
   var wp_widgets_customizer_default = (field) => {
     const input = field && field[0] ? field[0] : field;
     if (!(input instanceof Element)) return false;
@@ -10005,7 +9779,7 @@
     return true;
   };
 
-  // platforms/common/application/menu/extra-items.js
+  // application/menu/extra-items.js
   var dom13 = dom_default;
   var Submit2 = submit;
   var modal7 = ui_default.modal;
@@ -10022,7 +9796,7 @@
   var Cards = cards_default;
   var WordpressWidgetsCustomizer = wp_widgets_customizer_default;
   var menumanager = null;
-  var asElement6 = function(element) {
+  var asElement5 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
   var fragmentFromHTML = function(html) {
@@ -10070,7 +9844,7 @@
       }
     }
     if (this.isParticle && this.isNewParticle) {
-      let block = asElement6(this.block), blocktype = block && block.getAttribute("data-mm-blocktype"), title = block && block.querySelector(".menu-item .title");
+      let block = asElement5(this.block), blocktype = block && block.getAttribute("data-mm-blocktype"), title = block && block.querySelector(".menu-item .title");
       if (!block) {
         return;
       }
@@ -10117,8 +9891,8 @@
     this.type = void 0;
   };
   var StepTwo = function(data, content, button) {
-    content = asElement6(content);
-    button = asElement6(button);
+    content = asElement5(content);
+    button = asElement5(button);
     if (!content || !button) {
       return;
     }
@@ -10163,7 +9937,7 @@
               });
             } else if (!picker) {
               if (menumanager) {
-                let element = asElement6(menumanager.element), path = element.getAttribute("data-mm-id") + "-", id2 = randomID(5), baseParent = element.closest("[data-mm-base]"), columnParent = element.closest("[data-mm-id]"), base2 = baseParent && baseParent.getAttribute("data-mm-base"), col = ((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0], index = directChildren2(element.parentElement, "[data-mm-id]").indexOf(element);
+                let element = asElement5(menumanager.element), path = element.getAttribute("data-mm-id") + "-", id2 = randomID(5), baseParent = element.closest("[data-mm-base]"), columnParent = element.closest("[data-mm-id]"), base2 = baseParent && baseParent.getAttribute("data-mm-base"), col = ((columnParent && columnParent.getAttribute("data-mm-id") || "").match(/\d+$/) || [0])[0], index = directChildren2(element.parentElement, "[data-mm-id]").indexOf(element);
                 while (menumanager.items[path + id2]) {
                   id2 = randomID(5);
                 }
@@ -10271,7 +10045,7 @@
   });
   var extra_items_default = StepOne;
 
-  // platforms/common/application/menu/index.js
+  // application/menu/index.js
   var dom14 = dom_default;
   var MenuManager2 = menumanager_default;
   var Submit3 = submit;
@@ -10287,7 +10061,7 @@
   var trim3 = function(value) {
     return value == null ? "" : String(value).trim();
   };
-  var clamp3 = function(value, minimum, maximum) {
+  var clamp2 = function(value, minimum, maximum) {
     return Math.min(maximum, Math.max(minimum, value));
   };
   dom14.ready(function() {
@@ -10331,7 +10105,7 @@
       if (upDown) {
         event.preventDefault();
         value += event.keyCode == 38 ? 1 : -1;
-        value = clamp3(value, min, max);
+        value = clamp2(value, min, max);
         element.value = value;
         element.dispatchEvent(new Event("keyup", { bubbles: true }));
       }
@@ -10552,7 +10326,7 @@
     menumanager: menumanager2
   };
 
-  // platforms/common/application/configurations/dropdown-edit.js
+  // application/configurations/dropdown-edit.js
   var dom15 = dom_default;
   var request9 = request_default;
   var modal9 = ui_default.modal;
@@ -10641,7 +10415,7 @@
     });
   });
 
-  // platforms/common/application/configurations/index.js
+  // application/configurations/index.js
   var dom16 = dom_default;
   var modal10 = ui_default.modal;
   var toastr5 = ui_default.toastr;
@@ -10651,7 +10425,7 @@
   var parseAjaxURI9 = get_ajax_url_default.parse;
   var getAjaxURL13 = get_ajax_url_default.global;
   var flags5 = flags_state_default;
-  var asElement7 = function(element) {
+  var asElement6 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
   var elementFromHTML3 = function(html) {
@@ -10792,7 +10566,7 @@
         flags5.warning({
           url: parseAjaxURI9(href + getAjaxSuffix9()),
           callback: function(response, content) {
-            let container2 = asElement7(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
+            let container2 = asElement6(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
             if (!confirm) {
               return;
             }
@@ -10860,7 +10634,7 @@
     attachEditables(document.querySelectorAll("#configurations [data-title-editable]"));
   });
 
-  // platforms/common/application/positions/index.js
+  // application/positions/index.js
   var dom17 = dom_default;
   var modal11 = ui_default.modal;
   var toastr6 = ui_default.toastr;
@@ -10876,7 +10650,7 @@
   var trim4 = function(value) {
     return value == null ? "" : String(value).trim();
   };
-  var asElement8 = function(element) {
+  var asElement7 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
   var elementFromHTML4 = function(html) {
@@ -10967,7 +10741,7 @@
           url: warningURL,
           data: { page_type: "POSITION" },
           callback: function(response, content) {
-            let container2 = asElement8(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
+            let container2 = asElement7(content), confirm = container2 && container2.querySelector("[data-g-delete-confirm]"), cancel = container2 && container2.querySelector("[data-g-delete-cancel]");
             if (!confirm) {
               return;
             }
@@ -11150,7 +10924,7 @@
     attachEditables(document.querySelectorAll("#positions [data-title-editable]"));
   });
 
-  // platforms/common/application/changelog/index.js
+  // application/changelog/index.js
   var modal12 = ui_default.modal;
   var parseAjaxURI11 = get_ajax_url_default.parse;
   var getAjaxURL15 = get_ajax_url_default.global;
@@ -11200,7 +10974,7 @@
     });
   });
 
-  // platforms/common/application/fields/multicheckbox.js
+  // application/fields/multicheckbox.js
   var { ready: ready10, delegate: delegate7 } = dom_default;
   var parseValues = (value) => new Set(String(value || "").split(",").filter(Boolean));
   var serializeValues = (values) => [...values].join(",");
@@ -11227,7 +11001,7 @@
     });
   });
 
-  // platforms/common/application/fields/index.js
+  // application/fields/index.js
   var dom18 = dom_default;
   var flags7 = flags_state_default;
   var submit2 = submit;
@@ -11482,7 +11256,7 @@
     submit: submit2
   };
 
-  // platforms/common/application/utils/ajaxify-links.js
+  // application/utils/ajaxify-links.js
   var dom19 = dom_default;
   var storage3 = /* @__PURE__ */ new Map();
   var modal13 = ui_default.modal;
@@ -11497,7 +11271,7 @@
   var ERROR = false;
   var TMP_SELECTIZE_DISABLE = false;
   var ConfNavIndex = -1;
-  var asElement9 = function(element) {
+  var asElement8 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
   var guid2 = function() {
@@ -11528,7 +11302,7 @@
     return query.toString() ? "?" + query.toString() : "";
   };
   var dispatchState = function(type, element, data) {
-    let source = asElement9(element), target = type === "statechangeAfter" ? document.body : source || document.body;
+    let source = asElement8(element), target = type === "statechangeAfter" ? document.body : source || document.body;
     target.dispatchEvent(new CustomEvent(type, {
       bubbles: true,
       detail: { target: source || target, Data: data }
@@ -11567,12 +11341,12 @@
     };
   };
   var clickWithSpinner = function(element, spinner) {
-    element = asElement9(element);
+    element = asElement8(element);
     if (!element) {
       return;
     }
     let event = new MouseEvent("click", { bubbles: true, cancelable: true, view: window });
-    event.activeSpinner = asElement9(spinner);
+    event.activeSpinner = asElement8(spinner);
     element.dispatchEvent(event);
   };
   var selectorChangeEvent = function() {
@@ -11594,7 +11368,7 @@
         let flagCallback = function() {
           flags8.off("update:pending", flagCallback);
           modal13.close();
-          let input = asElement9(selectize2.input);
+          let input = asElement8(selectize2.input);
           input.setAttribute("data-genesis-ajaxify", "");
           input.setAttribute("data-genesis-ajaxify-target", selector.getAttribute("data-genesis-ajaxify-target") || "[data-genesis-content-wrapper]");
           let targetParent = selector.getAttribute("data-genesis-ajaxify-target-parent");
@@ -11669,7 +11443,7 @@
     if (Object.keys(Data).length && Data.parsed !== false && storage3.has(Data.uuid)) {
       Data = storage3.get(Data.uuid);
     }
-    Data.element = asElement9(Data.element);
+    Data.element = asElement8(Data.element);
     let isTopNavOrMenu = false;
     if (Data.element) {
       isTopNavOrMenu = Boolean(Data.element.closest("#main-header") || Data.element.matches(".menu-select-wrap"));
@@ -11922,7 +11696,7 @@
     selectorChangeEvent();
   });
 
-  // platforms/common/application/utils/async-foreach.js
+  // application/utils/async-foreach.js
   var asyncForEach = function(arr, eachFn, doneFn) {
     arr = arr || [];
     let i = -1;
@@ -11954,7 +11728,7 @@
   };
   var async_foreach_default = asyncForEach;
 
-  // platforms/common/application/assignments/index.js
+  // application/assignments/index.js
   var { ready: ready11, delegate: delegate8 } = dom_default;
   var asyncForEach2 = async_foreach_default;
   var cache = /* @__PURE__ */ new WeakMap();
@@ -12092,7 +11866,7 @@
   });
   var assignments_default = Assignments;
 
-  // platforms/common/application/styles/index.js
+  // application/styles/index.js
   var modal14 = ui_default.modal;
   var fields = fields_default;
   var { ready: ready12, delegate: delegate9 } = dom_default;
@@ -12137,11 +11911,11 @@
   });
   var styles_default = {};
 
-  // platforms/common/application/particles/colorpicker/index.js
+  // application/particles/colorpicker/index.js
   var dom20 = dom_collection_default;
   var ready13 = dom_default.ready;
   var zen7 = createElement;
-  var clamp4 = function(value, min, max) {
+  var clamp3 = function(value, min, max) {
     return Math.min(Math.max(value, min), max);
   };
   var supportsPointerEvents = typeof window.PointerEvent === "function";
@@ -12333,7 +12107,7 @@
           if (element == this.tabs.transparent) {
             this.opacity = 0;
             let sliderHeight = this.opacitySlider.position().height;
-            this.opacityPicker.style({ "top": clamp4(sliderHeight - sliderHeight * this.opacity, 0, sliderHeight) });
+            this.opacityPicker.style({ "top": clamp3(sliderHeight - sliderHeight * this.opacity, 0, sliderHeight) });
             this.move(this.opacitySlider, { manualOpacity: true });
             return;
           }
@@ -12353,7 +12127,7 @@
       element = dom20(element) || this.element;
       let value = element.value(), opacity = value.replace(/\s/g, "").match(/^rgba?\([0-9]{1,3},[0-9]{1,3},[0-9]{1,3},(.+)\)/), hex, hsb;
       value = rgbstr2hex(value) || value;
-      opacity = opacity ? clamp4(opacity[1], 0, 1) : 1;
+      opacity = opacity ? clamp3(opacity[1], 0, 1) : 1;
       if (!(hex = parseHex(value))) {
         hex = "#ffffff";
       }
@@ -12361,15 +12135,15 @@
       if (this.built) {
         this.opacity = Math.max(opacity, 0);
         let sliderHeight = this.opacitySlider.position().height;
-        this.opacityPicker.style({ "top": clamp4(sliderHeight - sliderHeight * this.opacity, 0, sliderHeight) });
+        this.opacityPicker.style({ "top": clamp3(sliderHeight - sliderHeight * this.opacity, 0, sliderHeight) });
         let gridHeight = this.grid.position().height, gridWidth = this.grid.position().width, r, phi, x, y;
         sliderHeight = this.slider.position().height;
         switch (this.mode) {
           case "wheel":
-            r = clamp4(Math.ceil(hsb.s * 0.75), 0, gridHeight / 2);
+            r = clamp3(Math.ceil(hsb.s * 0.75), 0, gridHeight / 2);
             phi = hsb.h * Math.PI / 180;
-            x = clamp4(75 - Math.cos(phi) * r, 0, gridWidth);
-            y = clamp4(75 - Math.sin(phi) * r, 0, gridHeight);
+            x = clamp3(75 - Math.cos(phi) * r, 0, gridWidth);
+            y = clamp3(75 - Math.sin(phi) * r, 0, gridHeight);
             this.grid.style({ backgroundColor: "transparent" });
             this.gridPicker.style({
               top: y,
@@ -12387,13 +12161,13 @@
             });
             break;
           case "saturation":
-            x = clamp4(5 * hsb.h / 12, 0, 150);
-            y = clamp4(gridHeight - Math.ceil(hsb.b / (100 / gridHeight)), 0, gridHeight);
+            x = clamp3(5 * hsb.h / 12, 0, 150);
+            y = clamp3(gridHeight - Math.ceil(hsb.b / (100 / gridHeight)), 0, gridHeight);
             this.gridPicker.style({
               top: y,
               left: x
             });
-            y = clamp4(sliderHeight - hsb.s * (sliderHeight / 100), 0, sliderHeight);
+            y = clamp3(sliderHeight - hsb.s * (sliderHeight / 100), 0, sliderHeight);
             this.sliderPicker.style({ top: y });
             this.slider.style({
               backgroundColor: hsb2hex({
@@ -12405,13 +12179,13 @@
             this.gridInner.style({ opacity: hsb.s / 100 });
             break;
           case "brightness":
-            x = clamp4(5 * hsb.h / 12, 0, 150);
-            y = clamp4(gridHeight - Math.ceil(hsb.s / (100 / gridHeight)), 0, gridHeight);
+            x = clamp3(5 * hsb.h / 12, 0, 150);
+            y = clamp3(gridHeight - Math.ceil(hsb.s / (100 / gridHeight)), 0, gridHeight);
             this.gridPicker.style({
               top: y,
               left: x
             });
-            y = clamp4(sliderHeight - hsb.b * (sliderHeight / 100), 0, sliderHeight);
+            y = clamp3(sliderHeight - hsb.b * (sliderHeight / 100), 0, sliderHeight);
             this.sliderPicker.style({ top: y });
             this.slider.style({
               backgroundColor: hsb2hex({
@@ -12424,13 +12198,13 @@
             break;
           case "hue":
           default:
-            x = clamp4(Math.ceil(hsb.s / (100 / gridWidth)), 0, gridWidth);
-            y = clamp4(gridHeight - Math.ceil(hsb.b / (100 / gridHeight)), 0, gridHeight);
+            x = clamp3(Math.ceil(hsb.s / (100 / gridWidth)), 0, gridWidth);
+            y = clamp3(gridHeight - Math.ceil(hsb.b / (100 / gridHeight)), 0, gridHeight);
             this.gridPicker.style({
               top: y,
               left: x
             });
-            y = clamp4(sliderHeight - hsb.h / (360 / sliderHeight), 0, sliderHeight);
+            y = clamp3(sliderHeight - hsb.h / (360 / sliderHeight), 0, sliderHeight);
             this.sliderPicker.style({ top: y });
             this.grid.style({
               backgroundColor: hsb2hex({
@@ -12477,9 +12251,9 @@
               gridPos.x = 69 - 75 * Math.cos(phi);
               gridPos.y = 69 - 75 * Math.sin(phi);
             }
-            saturation = clamp4(r / 0.75, 0, 100);
-            hue = clamp4(phi * 180 / Math.PI, 0, 360);
-            brightness = clamp4(100 - Math.floor(sliderPos.y * (100 / sliderHeight)), 0, 100);
+            saturation = clamp3(r / 0.75, 0, 100);
+            hue = clamp3(phi * 180 / Math.PI, 0, 360);
+            brightness = clamp3(100 - Math.floor(sliderPos.y * (100 / sliderHeight)), 0, 100);
             hex = hsb2hex({
               h: hue,
               s: saturation,
@@ -12494,9 +12268,9 @@
             });
             break;
           case "saturation":
-            hue = clamp4(parseInt(gridPos.x * (360 / gridWidth), 10), 0, 360);
-            saturation = clamp4(100 - Math.floor(sliderPos.y * (100 / sliderHeight)), 0, 100);
-            brightness = clamp4(100 - Math.floor(gridPos.y * (100 / gridHeight)), 0, 100);
+            hue = clamp3(parseInt(gridPos.x * (360 / gridWidth), 10), 0, 360);
+            saturation = clamp3(100 - Math.floor(sliderPos.y * (100 / sliderHeight)), 0, 100);
+            brightness = clamp3(100 - Math.floor(gridPos.y * (100 / gridHeight)), 0, 100);
             hex = hsb2hex({
               h: hue,
               s: saturation,
@@ -12512,9 +12286,9 @@
             this.gridInner.style({ opacity: saturation / 100 });
             break;
           case "brightness":
-            hue = clamp4(parseInt(gridPos.x * (360 / gridWidth), 10), 0, 360);
-            saturation = clamp4(100 - Math.floor(gridPos.y * (100 / gridHeight)), 0, 100);
-            brightness = clamp4(100 - Math.floor(sliderPos.y * (100 / sliderHeight)), 0, 100);
+            hue = clamp3(parseInt(gridPos.x * (360 / gridWidth), 10), 0, 360);
+            saturation = clamp3(100 - Math.floor(gridPos.y * (100 / gridHeight)), 0, 100);
+            brightness = clamp3(100 - Math.floor(sliderPos.y * (100 / sliderHeight)), 0, 100);
             hex = hsb2hex({
               h: hue,
               s: saturation,
@@ -12530,9 +12304,9 @@
             this.gridInner.style({ opacity: 1 - brightness / 100 });
             break;
           default:
-            hue = clamp4(360 - parseInt(sliderPos.y * (360 / sliderHeight), 10), 0, 360);
-            saturation = clamp4(Math.floor(gridPos.x * (100 / gridWidth)), 0, 100);
-            brightness = clamp4(100 - Math.floor(gridPos.y * (100 / gridHeight)), 0, 100);
+            hue = clamp3(360 - parseInt(sliderPos.y * (360 / sliderHeight), 10), 0, 360);
+            saturation = clamp3(Math.floor(gridPos.x * (100 / gridWidth)), 0, 100);
+            brightness = clamp3(100 - Math.floor(gridPos.y * (100 / gridHeight)), 0, 100);
             hex = hsb2hex({
               h: hue,
               s: saturation,
@@ -12711,7 +12485,7 @@
   });
   var colorpicker_default = ColorPicker;
 
-  // platforms/common/application/utils/elements.viewport.js
+  // application/utils/elements.viewport.js
   var elements_viewport_default = (container2, selector, threshold = 0) => {
     const root = container2 && container2[0] ? container2[0] : container2;
     if (!(root instanceof Element)) return [];
@@ -12723,7 +12497,7 @@
     );
   };
 
-  // platforms/common/application/particles/fonts/index.js
+  // application/particles/fonts/index.js
   var dom21 = dom_effects_default;
   var zen8 = createElement;
   var storage4 = /* @__PURE__ */ new WeakMap();
@@ -13391,7 +13165,7 @@
   });
   var fonts_default = Fonts;
 
-  // platforms/common/application/particles/menu/index.js
+  // application/particles/menu/index.js
   var { ready: ready15, delegate: delegate10 } = dom_default;
   ready15(() => {
     delegate10(document.body, "click", "[data-genesis-content] .g-main-nav .g-toplevel [data-genesis-ajaxify]", (event, link) => {
@@ -13403,7 +13177,7 @@
   });
   var menu_default2 = {};
 
-  // platforms/common/application/particles/icons/index.js
+  // application/particles/icons/index.js
   var dom22 = dom_default;
   var modal16 = ui_default.modal;
   var popovers = popover_default;
@@ -13569,7 +13343,7 @@
   });
   var icons_default = {};
 
-  // platforms/common/application/particles/filepicker/index.js
+  // application/particles/filepicker/index.js
   var dom23 = dom_default;
   var request13 = request_default;
   var modal17 = ui_default.modal;
@@ -14116,7 +13890,7 @@
   });
   var filepicker_default = FilePicker;
 
-  // platforms/common/application/utils/reorderable-list.js
+  // application/utils/reorderable-list.js
   var directItems2 = (list, selector, excluded) => Array.from(list.children).filter((item) => item !== excluded && item.matches(selector));
   var ReorderableList = class {
     constructor(list, options = {}) {
@@ -14261,7 +14035,7 @@
   };
   var reorderable_list_default = ReorderableList;
 
-  // platforms/common/application/particles/collections/index.js
+  // application/particles/collections/index.js
   var dom24 = dom_default;
   var Submit5 = submit;
   var modal18 = ui_default.modal;
@@ -14499,7 +14273,7 @@
   });
   var collections_default = {};
 
-  // platforms/common/application/particles/keyvalue/index.js
+  // application/particles/keyvalue/index.js
   var { ready: ready16, delegate: delegate11 } = dom_default;
   var ReorderableList3 = reorderable_list_default;
   var translate17 = translate_default;
@@ -14641,7 +14415,7 @@
   });
   var keyvalue_default = {};
 
-  // platforms/common/application/particles/instancepicker/index.js
+  // application/particles/instancepicker/index.js
   var Submit6 = submit;
   var modal19 = ui_default.modal;
   var request15 = request_default;
@@ -14782,7 +14556,7 @@
   });
   var instancepicker_default = {};
 
-  // platforms/common/application/particles/index.js
+  // application/particles/index.js
   var particles_default = {
     colorpicker: colorpicker_default,
     fonts: fonts_default,
@@ -14794,7 +14568,7 @@
     instancepicker: instancepicker_default
   };
 
-  // platforms/common/application/pagesettings/index.js
+  // application/pagesettings/index.js
   var dom25 = dom_default;
   var Submit7 = submit;
   var modal20 = ui_default.modal;
@@ -14997,7 +14771,7 @@
   });
   var pagesettings_default = Atoms2;
 
-  // platforms/common/application/ui/tooltips.js
+  // application/ui/tooltips.js
   var defaults5 = {
     baseClass: "g-tips",
     typeClass: null,
@@ -15239,7 +15013,7 @@
   var instance = new Tooltips(document);
   var tooltips_default = instance;
 
-  // platforms/common/application/main.js
+  // application/main.js
   var dom26 = dom_collection_default;
   var zen9 = createElement;
   var ready18 = dom_default.ready;
@@ -15667,4 +15441,3 @@
   window.Genesis = modules;
   var main_default = modules;
 })();
-//# sourceMappingURL=main.js.map

@@ -284,7 +284,7 @@ ready(function() {
 
             blocks.forEach(function(block) {
                 id = dom(block).data('lm-id');
-                builder.get(id).setSize(100 / blocks.length, true);
+                builder.get(id).setWidthPercent(100 / blocks.length, true);
             });
 
             lmhistory.push(builder.serialize(), lmhistory.get().preset);
@@ -636,18 +636,18 @@ ready(function() {
                                 block = builder.get(parentID);
 
                                 let sibling = block.block.nextSibling() || block.block.previousSibling(),
-                                    currentSize = block.getSize(),
+                                    currentSize = block.getWidthPercent(),
                                     diffSize;
 
                                 block.setAttributes(response.body.data.block);
 
-                                diffSize = currentSize - block.getSize();
+                                diffSize = currentSize - block.getWidthPercent();
 
-                                block.setAnimatedSize(block.getSize());
+                                block.setAnimatedWidthPercent(block.getWidthPercent());
 
                                 if (sibling) {
                                     sibling = builder.get(sibling.data('lm-id'));
-                                    sibling.setAnimatedSize(parseFloat(sibling.getSize()) + diffSize, true);
+                                    sibling.setAnimatedWidthPercent(parseFloat(sibling.getWidthPercent()) + diffSize, true);
                                 }
                             }
 
@@ -704,7 +704,7 @@ ready(function() {
             builder.insert(undefined, {
                 type: 'block',
                 subtype: 'block',
-                attributes: { size: (count / 12) * 100, columns: { xs: count } }
+                attributes: { columns: { xs: count } }
             }, grid.getId());
         });
         return grid;
@@ -811,7 +811,7 @@ ready(function() {
                 let mapped = builder.get(child.getAttribute('data-lm-id'));
                 if (!mapped) { return 1; }
                 return Math.max(1, Math.min(12, parseInt(mapped.getAttribute('columns.xs'), 10) ||
-                    Math.round((mapped.getSize() || 0) / 100 * 12)));
+                    Math.round((mapped.getWidthPercent() || 0) / 100 * 12)));
             }),
             currentByBreakpoint = { xs: current };
 
@@ -854,14 +854,14 @@ ready(function() {
                     let mapped = builder.get(child.getAttribute('data-lm-id'));
                     if (mapped) {
                         mapped.setAttribute('columns.xs', columns[index]);
-                        mapped.setSize((columns[index] / 12) * 100, true);
+                        mapped.setWidthPercent((columns[index] / 12) * 100, true);
                     }
                 });
                 if (columns.length > blocks.length) {
                     columns.slice(blocks.length).forEach(function(count) {
                         builder.insert(undefined, {
                             type: 'block', subtype: 'block',
-                            attributes: { size: (count / 12) * 100, columns: { xs: count } }
+                            attributes: { columns: { xs: count } }
                         }, gridId);
                     });
                 } else if (columns.length < blocks.length) {

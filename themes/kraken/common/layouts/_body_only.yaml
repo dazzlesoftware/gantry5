@@ -27,7 +27,6 @@ children:
               extra: {  }
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: c390c61a-9b59-426b-90bd-9f155949a3ff
@@ -52,7 +51,6 @@ children:
             attributes:
               columns:
                 xs: 12
-              size: 100
             children:
               -
                 id: 0fa4279f-dbbd-8340-12fa-d9e10322e434

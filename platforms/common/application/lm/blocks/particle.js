@@ -106,7 +106,7 @@ class Particle extends Atom {
     }
 
     onRendered(element, parent) {
-        let size = parent.getSize() || 100,
+        let size = parent.getWidthPercent() || 100,
             globallyDisabled = document.querySelector('[data-lm-disabled][data-lm-subtype="' + CSS.escape(this.getSubType() || '') + '"]');
 
         if (globallyDisabled || this.getAttribute('enabled') === 0) { this.disable(); }
@@ -151,8 +151,8 @@ class Particle extends Atom {
 
         let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id')),
             sizes = {
-                current: this.getParent().getSize(),
-                sibling: siblingBlock && typeof siblingBlock.getSize === 'function' ? siblingBlock.getSize() : 0
+                current: this.getParent().getWidthPercent(),
+                sibling: siblingBlock && typeof siblingBlock.getWidthPercent === 'function' ? siblingBlock.getWidthPercent() : 0
             };
         return [5, (sizes.current + sizes.sibling) - 5];
     }
