@@ -1,14 +1,10 @@
 // ---------------------------------------------------------------------------
 // Mobile Menu particle
 //
-// Container target inside the Bootstrap Offcanvas body.
-// (the site's existing custom sliding panel, #g-offcanvas — see
-// assets/common/application/offcanvas/index.js). The Bootstrap Offcanvas
-// component. The Menu particle flagged as `mobileTarget` is moved into this
-// container below the configured mobile-menu breakpoint by
-// assets/common/application/menu/index.js; compound-scope defensively so
-// theme-level CSS (loaded after nucleus.css) can still reliably override
-// these defaults.
+// Container target inside the Bootstrap Offcanvas body. The Menu particle
+// flagged as `mobileTarget` is moved into this container below the configured
+// breakpoint by assets/common/application/menu/index.js. Compound scope lets
+// theme CSS loaded after nucleus.css reliably override these defaults.
 // ---------------------------------------------------------------------------
 
 #g-mobilemenu-container.g-mobilemenu {

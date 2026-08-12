@@ -145,21 +145,6 @@
 				margin-top: 0;
 			}
 
-			.g-go-back {
-				.g-menu-item-container {
-					&:before {
-						content: "\f053";
-						padding-right: 0;
-					}
-				}
-				+ li {
-					.g-dropdown {
-						margin-top: -3px;
-					}
-				}
-			}
-
-
 			> li {
 				margin: 5px 0;
 				padding: 0 5px;

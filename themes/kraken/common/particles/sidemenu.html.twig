@@ -88,7 +88,7 @@
         {% for column, items in groups %}
         <div class="col g-block col-{{ item.columnSpan(column)|e }}">
             <ul class="g-sublevel">
-                <li class="g-level-{{ item.level|e }} g-go-back">
+                <li class="g-level-{{ item.level|e }} g-menu-back">
                     <a class="g-menu-item-container" href="#" data-g-menuparent=""><span>Back</span></a>
                 </li>
                 {{ SELF.displayItems(items, menu, context, dropdown_type) }}
@@ -109,7 +109,7 @@
 {% macro displaySubmenu(item, menu, context, dropdown_type) %}
     {% import _self as SELF %}
     {% if not item.dropdown_hide %}
-        <ul class="g-dropdown g-inactive {{ context.genesis.config.get('styles.menu.animation')|default('g-fade') }}"{{ SELF.getCustomWidth(item, menu, 'submenu', dropdown_type) }}>
+        <ul class="g-dropdown {{ context.genesis.config.get('styles.menu.animation')|default('g-fade') }}"{{ SELF.getCustomWidth(item, menu, 'submenu', dropdown_type) }}>
             <li class="g-dropdown-column">
                 {{ SELF.displayContainers(item, menu, context, dropdown_type) }}
             </li>

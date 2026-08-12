@@ -148,20 +148,6 @@
 				margin-top: 0;
 			}
 
-			.g-go-back {
-				.g-menu-item-container {
-					font-size: 14px;
-					padding: 0;
-					margin: 0;
-				}
-				+ li {
-					.g-dropdown {
-						margin-top: -3px;
-					}
-				}
-			}
-
-
 			> li {
 				border-bottom: 1px solid lighten($grey, 15%);
 

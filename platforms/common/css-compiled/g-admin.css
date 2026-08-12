@@ -14373,7 +14373,6 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   border-bottom: 0;
 }
 [data-genesis-container] .lm-blocks > .g-grid > .g-block > .g-block, [data-genesis-container] .lm-blocks .g-lm-container > .g-grid > .g-block {
-  margin-right: 14px;
   background: #fff;
   padding-bottom: 50px;
 }

@@ -1,30 +1,30 @@
-version: 2
+version: 3
 
 preset:
   image: genesis-admin://images/layouts/3-col.png
 
 layout:
   /header/:
-    - [logo 50, position-0 50]
+    - [logo 6, position-0 6]
 
   /navigation/:
     - menu
 
   /container-main/:
     -
-      - sidebar 20:
+      - sidebar 2:
         - position-8
-      - main 60:
+      - main 8:
         - position-3
         - system-messages
         - system-content
         - position-2
-      - aside 20:
+      - aside 2:
         - position-7
 
   /footer/:
     - position-footer
-    - [copyright 40, spacer 30, branding 30]
+    - [copyright 5, spacer 4, branding 3]
 
   offcanvas:
     - mobile-menu

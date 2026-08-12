@@ -39,8 +39,6 @@ class HtmlDocument
     protected static $styles = [];
     /** @var array */
     protected static $availableFrameworks = [
-        'bootstrap.3' => 'registerBootstrap3',
-        'bootstrap.4' => 'registerBootstrap4',
         'bootstrap.5' => 'registerBootstrap5',
         'mootools' => 'registerMootools',
         'mootools.framework' => 'registerMootools',
@@ -744,29 +742,6 @@ class HtmlDocument
             }
         }
     }
-
-    protected static function registerBootstrap3()
-    {
-        static::addScript(
-            [
-                'src' => 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js',
-                'integrity' => 'sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd',
-                'crossorigin' => 'anonymous'
-            ],
-            11);
-    }
-
-    protected static function registerBootstrap4()
-    {
-        static::addScript(
-            [
-                'src' => 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js',
-                'integrity' => 'sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns',
-                'crossorigin' => 'anonymous'
-            ],
-            11);
-    }
-
 
     protected static function registerBootstrap5()
     {

@@ -29,8 +29,6 @@ class Document extends HtmlDocument
     protected static $script_info = [];
     /** @var array */
     protected static $availableFrameworks = [
-        'bootstrap.3' => 'registerBootstrap3',
-        'bootstrap.4' => 'registerBootstrap4',
         'bootstrap.5' => 'registerBootstrap5',
         'mootools' => 'registerMootools',
         'mootools.framework' => 'registerMootools',
@@ -209,16 +207,6 @@ class Document extends HtmlDocument
         $append = implode(' ', $append);
 
         return str_replace(' src=', " {$append} src=", $tag);
-    }
-
-    protected static function registerBootstrap3()
-    {
-        \wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js', [], '3.4.1', true);
-    }
-
-    protected static function registerBootstrap4()
-    {
-        \wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js', [], '4.6.0', true);
     }
 
     protected static function registerBootstrap5()

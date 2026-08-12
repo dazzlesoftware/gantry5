@@ -25,8 +25,6 @@ class Document extends HtmlDocument
 {
     protected static $availableFrameworks = [
         'bootstrap' => 'registerBootstrap',
-        'bootstrap.3' => 'registerBootstrap3',
-        'bootstrap.4' => 'registerBootstrap4',
         'bootstrap.5' => 'registerBootstrap5',
         'mootools' => 'registerMootools',
         'mootools.framework' => 'registerMootools',
@@ -165,12 +163,6 @@ class Document extends HtmlDocument
     protected static function registerBootstrap()
     {
         // For Joomla 5 use Bootstrap 5 implementation
-        static::registerBootstrap5();
-    }
-
-    protected static function registerBootstrap2()
-    {
-        // Deprecated in modern Joomla; route to Bootstrap5 implementation
         static::registerBootstrap5();
     }
 

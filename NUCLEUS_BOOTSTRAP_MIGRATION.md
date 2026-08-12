@@ -513,6 +513,20 @@ legacy grid sizing. Many implement internal carousels, cards, media rows, or
 navigation layouts and should only be replaced during that component's own
 Bootstrap migration.
 
+### Final compatibility cleanup (2026-08-12)
+
+- The three bundled Joomla fallback layouts (Protostar, Genesis4, and Beez3)
+  now use format 3 and integer Bootstrap column spans.
+- Bootstrap 2, 3, and 4 document registrars and CDN loaders have been removed.
+  `bootstrap` is retained only as an alias for the local Bootstrap 5 bundle.
+- Obsolete `g-inactive`, `g-slide-out`, and `g-go-back` menu-state styling and
+  particle markup have been removed. Custom back links now use the semantic
+  `g-menu-back` class without restoring the retired navigation state engine.
+- Mobile-menu source documentation now describes its Bootstrap Offcanvas
+  mount-point role accurately.
+- The affected packaged theme entry points compile successfully against the
+  Bootstrap 5 Nucleus foundation.
+
 ## Open questions / risks
 
 None remaining that block M3. Resolved in M1: gutter model (no

@@ -1190,7 +1190,13 @@ let SelectizeDefinition = {
             height_menu = this.$dropdown_content[0].offsetHeight;
             height_item = this.$activeOption[0].offsetHeight;
             scroll = this.$dropdown_content[0].scrollTop || 0;
-            y = this.$activeOption.position().top - this.$dropdown_content.position().top + scroll;
+            // The administration DOM wrapper is intentionally not jQuery and
+            // does not expose jQuery's position() helper. Both nodes can have
+            // nested option groups, so calculate the active option's scroll
+            // position from viewport rectangles and the current scroll offset.
+            y = this.$activeOption[0].getBoundingClientRect().top
+                - this.$dropdown_content[0].getBoundingClientRect().top
+                + scroll;
             scroll_top = y;
             scroll_bottom = y - height_menu + height_item;
 
@@ -1903,9 +1909,7 @@ let SelectizeDefinition = {
     },
 
     positionDropdown: function() {
-        let control = this.$control,
-            offset  = control.position();//this.options.dropdownParent === 'body' ? control.offset() : control.position();
-        offset.top += control[0].offsetHeight;
+        let control = this.$control;
 
         this.$dropdown.style({
             width: control[0].offsetWidth,

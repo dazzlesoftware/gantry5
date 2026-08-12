@@ -185,15 +185,6 @@
         .col-12 {
             > .g-sublevel {
                 > li {
-                    &.g-go-back {
-                        & + li {
-                            > .g-menu-item-container {
-                                border-top-left-radius: 0;
-                                border-top-right-radius: 0;
-                            }
-                        }
-                    }
-
                     &:last-child {
                         > .g-menu-item-container {
                             border-bottom-left-radius: 0;
@@ -208,14 +199,6 @@
             &:first-child {
                 > .g-sublevel {
                     > li {
-                        &.g-go-back {
-                            & + li {
-                                > .g-menu-item-container {
-                                    border-top-left-radius: 0;
-                                }
-                            }
-                        }
-
                         &:last-child {
                             > .g-menu-item-container {
                                 border-bottom-left-radius: 0;
@@ -228,14 +211,6 @@
             &:last-child {
                 > .g-sublevel {
                     > li {
-                        &.g-go-back {
-                            & + li {
-                                > .g-menu-item-container {
-                                    border-top-right-radius: 0;
-                                }
-                            }
-                        }
-
                         &:last-child {
                             > .g-menu-item-container {
                                 border-bottom-right-radius: 0;

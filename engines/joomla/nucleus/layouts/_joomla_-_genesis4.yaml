@@ -1,60 +1,60 @@
-version: 2
+version: 3
 
 preset:
   image: genesis-admin://images/layouts/3-col.png
 
 layout:
   /drawer/:
-    - [position-drawer 100]
+    - [position-drawer 12]
 
   /top/:
-    - [position-top-a 33.3,position-top-b 33.3,position-top-c 33.3]
+    - [position-top-a 4,position-top-b 4,position-top-c 4]
 
   /navigation/:
-    - [position-header-a 30, menu 70]
+    - [position-header-a 4, menu 8]
 
   /showcase/:
-    - [position-showcase-a 33.3,position-showcase-b 33.3,position-showcase-c 33.3]
+    - [position-showcase-a 4,position-showcase-b 4,position-showcase-c 4]
 
   /feature/:
-    - [position-feature-a 33.3,position-feature-b 33.3,position-feature-c 33.3]
+    - [position-feature-a 4,position-feature-b 4,position-feature-c 4]
 
   /utility/:
-    - [position-utility-a 33.3,position-utility-b 33.3,position-utility-c 33.3]
+    - [position-utility-a 4,position-utility-b 4,position-utility-c 4]
 
   /breadcrumb/:
-    - [position-breadcrumb 100]
+    - [position-breadcrumb 12]
 
   /maintop/:
-    - [position-maintop-a 33.3,position-maintop-b 33.3,position-maintop-c 33.3]
+    - [position-maintop-a 4,position-maintop-b 4,position-maintop-c 4]
 
   /container-main/:
     -
-      - main-mainbody 80:
+      - main-mainbody 10:
         - system-messages
-        - [position-content-top-a 33.3,position-content-top-b 33.3,position-content-top-c 33.3]
+        - [position-content-top-a 4,position-content-top-b 4,position-content-top-c 4]
         - system-content
-        - [position-content-bottom-a 33.3,position-content-bottom-b 33.3,position-content-bottom-c 33.3]
-      - sidebar 20:
+        - [position-content-bottom-a 4,position-content-bottom-b 4,position-content-bottom-c 4]
+      - sidebar 2:
         - position-sidebar-a
         - position-sidebar-b
         - position-sidebar-c
 
   /mainbottom/:
-    - [position-mainbottom-a 33.3,position-mainbottom-b 33.3,position-mainbottom-c 33.3]
+    - [position-mainbottom-a 4,position-mainbottom-b 4,position-mainbottom-c 4]
 
   /extension/:
-    - [position-extension-a 33.3,position-extension-b 33.3,position-extension-c 33.3]
+    - [position-extension-a 4,position-extension-b 4,position-extension-c 4]
 
   /bottom/:
-    - [position-bottom-a 33.3,position-bottom-b 33.3,position-bottom-c 33.3]
+    - [position-bottom-a 4,position-bottom-b 4,position-bottom-c 4]
 
   /footer/:
-    - [position-footer-a 33.3,position-footer-b 33.3,position-footer-c 33.3]
+    - [position-footer-a 4,position-footer-b 4,position-footer-c 4]
 
   /copyright/:
-    - [position-copyright-a 33.3,position-copyright-b 33.3,position-copyright-c 33.3]
-    - [copyright 40, spacer 30, branding 30]
+    - [position-copyright-a 4,position-copyright-b 4,position-copyright-c 4]
+    - [copyright 5, spacer 4, branding 3]
 
   offcanvas:
     - mobile-menu

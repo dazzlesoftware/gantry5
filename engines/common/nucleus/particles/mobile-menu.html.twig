@@ -1,24 +1,10 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
 
 {% block particle %}
-    {# This particle is only ever the container target that "menu breakpoint" JS
-       (assets/common/application/menu/index.js) moves the real Menu particle's
-       .g-toplevel markup into on mobile. It already lives inside the layout's
-       Offcanvas section, which is its own sliding panel (#g-offcanvas, driven by
-       assets/common/application/offcanvas/index.js and the header's
-       data-offcanvas-toggle button) — NOT a Bootstrap .offcanvas component. Wrapping
-       this in a real Bootstrap .offcanvas (as a prior pass did) leaves it
-       visibility:hidden forever, since nothing ever adds Bootstrap's own .show class
-       to it: the legacy outer panel slides into view but the menu items inside stay
-       invisible. Keep this a plain container.
-
-       TODO(bootstrap-conversion): revisit once the Offcanvas layout section itself
-       (#g-offcanvas + assets/common/application/offcanvas/index.js's custom
-       drag/slide JS) is migrated to real Bootstrap 5 Offcanvas markup. At that point
-       this particle should render an actual `.offcanvas` component again, with the
-       header's toggle button switched to data-bs-toggle="offcanvas" /
-       data-bs-target, and the legacy offcanvas JS removed. Doing it now, before the
-       rest of the template is fully Bootstrap, is what caused the double-offcanvas
-       bug (empty-looking mobile menu) this comment replaced. #}
+    {# Mount point inside the layout's Bootstrap Offcanvas. The responsive menu
+       controller moves the Menu particle's .g-toplevel element here below the
+       configured breakpoint and switches nested dropdowns to Bootstrap Collapse.
+       This remains a plain container because the surrounding layout segment owns
+       the single .offcanvas component, backdrop, focus trap, and close behavior. #}
     <div id="g-mobilemenu-container" class="g-mobilemenu" data-g-menu-breakpoint="{{ genesis.config.get('styles.breakpoints.mobile-menu-breakpoint')|default('48rem') }}"></div>
 {% endblock %}
