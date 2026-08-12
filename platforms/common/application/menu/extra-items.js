@@ -93,7 +93,7 @@ let StepOne = function(map, mode) {
         if (!block) { return; }
 
         block.removeAttribute('data-mm-blocktype');
-        block.classList.add('g-menu-item-' + blocktype);
+        block.classList.add('col-auto', 'g-menu-removable', 'g-menu-item-' + blocktype);
         block.setAttribute('data-mm-original-type', blocktype);
 
         let badge = document.createElement('span');
@@ -106,6 +106,9 @@ let StepOne = function(map, mode) {
             content: translate('GENESIS_PLATFORM_JS_LOADING'),
             method: 'post',
             remote: parseAjaxURI((config ? config.getAttribute('href') : '') + getAjaxSuffix()),
+            afterClose: function() {
+                if (menumanager && menumanager.isNewParticle) { menumanager.cancelPendingItem(); }
+            },
             remoteLoaded: function(response, modalInstance) {
                 let content = modal.element(modalInstance.elements.content),
                     search = content && content.querySelector('.search input'),
@@ -208,6 +211,7 @@ let StepTwo = function(data, content, button) {
                             if (submitResult.html) { element.innerHTML = submitResult.html; }
 
                             menumanager.isNewParticle = false;
+                            menumanager.pendingMenuItem = null;
                             menumanager.emit('dragEnd', menumanager.map);
                             toastr.success(translate('GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED'), translate('GENESIS_PLATFORM_JS_SETTINGS_APPLIED'));
                         } else {

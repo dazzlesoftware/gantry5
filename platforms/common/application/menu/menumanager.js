@@ -2,7 +2,6 @@ import __module0 from '../utils/event-emitter.js';
 import __module1 from '../utils/dom-effects.js';
 import __module2 from '../utils/create-element.js';
 import __module3 from '../ui/drag.drop.js';
-import __module4 from '../ui/eraser.js';
 import __module5 from './drag.resizer.js';
 
 "use strict";
@@ -10,7 +9,6 @@ let EventEmitter = __module0,
     dom         = __module1,
     zen       = __module2,
     DragDrop  = __module3,
-    Eraser    = __module4,
     Resizer   = __module5;
 
 let ltrim = function(value) {
@@ -65,7 +63,6 @@ let MenuManagerDefinition = {
 
         this.dragdrop = new DragDrop(this.refElement, this.options, this);
         this.resizer = new Resizer(this.refElement, this.options, this);
-        this.eraser = new Eraser('[data-mm-eraseparticle]', this.options);
         this.dragdrop
             .on('dragdrop:click', this.bound('click'))
             .on('dragdrop:start', this.bound('start'))
@@ -73,7 +70,6 @@ let MenuManagerDefinition = {
             .on('dragdrop:location', this.bound('location'))
             .on('dragdrop:nolocation', this.bound('nolocation'))
             .on('dragdrop:resize', this.bound('resize'))
-            .on('dragdrop:stop:erase', this.bound('removeElement'))
             .on('dragdrop:stop', this.bound('stop'))
             .on('dragdrop:stop:animation', this.bound('stopAnimation'));
     },
@@ -113,6 +109,11 @@ let MenuManagerDefinition = {
             return true;
         }
 
+        if (element.data('mm-original-type') && element.parent('.g-toplevel')) {
+            this.activateExtraItem(element);
+            return true;
+        }
+
         if (element.find('[data-genesis-ajaxify]')) {
             let siblings = element.siblings();
             element.addClass('active');
@@ -121,8 +122,35 @@ let MenuManagerDefinition = {
 
         element.emit('click');
 
-        let link = element.find('a');
+        let link = element.find(':scope > .menu-item[data-genesis-ajaxify]');
         if (link) { link[0].click(); }
+    },
+
+    activateExtraItem: function(element) {
+        element = dom(element);
+        let itemID = element.data('mm-id'),
+            columns = document.querySelector('[data-genesis-menu-columns]');
+        if (!itemID || !columns) { return; }
+
+        let siblings = element.siblings();
+        element.addClass('active');
+        if (siblings) { siblings.removeClass('active'); }
+
+        if (!this.ordering[itemID]) { this.ordering[itemID] = [[]]; }
+        if (!this.ordering[itemID].length) { this.ordering[itemID].push([]); }
+
+        columns.innerHTML = '<section class="row g-grid submenu-selector">' +
+            '<div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%">' +
+                '<div class="submenu-column">' +
+                    '<div class="submenu-level">Level 1</div>' +
+                    '<ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '" data-mm-base-level="1"></ul>' +
+                '</div>' +
+            '</div>' +
+        '</section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
+
+        let submenu = dom('[data-genesis-menu-columns] .submenu-selector'),
+            submenuBlocks = submenu && submenu.search('> [data-mm-id]');
+        if (submenuBlocks) { this.resizer.updateMaxValues(submenuBlocks); }
     },
 
     resize: function(event, element, siblings, offset) {
@@ -205,10 +233,6 @@ let MenuManagerDefinition = {
         element = dom(element);
         if (this.original) { this.original.style({ opacity: 0.5 }); }
 
-        // it's a module or a particle and we allow for them to be deleted
-        if (!this.isNewParticle && (element.hasClass('g-menu-removable') || this.isParticle)) {
-            this.eraser.show();
-        }
     },
 
     location: function(event, location, target/*, element*/) {
@@ -220,7 +244,21 @@ let MenuManagerDefinition = {
             dataLevel = target.data('mm-level'),
             originalLevel = this.block.data('mm-level');
 
-        if (this.isParticle && (targetType === 'main' && !dataLevel)) {
+        // The empty area of the top-level Bootstrap row is the root <ul>, so
+        // it has no item level of its own. Treat it as a valid level-one
+        // particle target and append the placeholder inside the row.
+        if (this.isParticle && targetType === 'main' && !dataLevel) {
+            let rootTarget = target.matches('.g-toplevel') ? target : target.parent('.g-toplevel');
+            if (!rootTarget || (!target.matches('.g-toplevel') && !target.matches('[data-mm-root-dropzone]'))) {
+                this.dragdrop.matched = false;
+                return;
+            }
+
+            this.placeholder.style({ display: 'block' });
+            if (target.matches('[data-mm-root-dropzone]')) { this.placeholder.before(target); }
+            else { this.placeholder.bottom(rootTarget); }
+            this.addNewItem = rootTarget;
+            this.targetLevel = 1;
             this.dragdrop.matched = false;
             return;
         }
@@ -325,69 +363,74 @@ let MenuManagerDefinition = {
         if (this.placeholder) { this.placeholder.remove(); }
         this.targetLevel = undefined;
 
-        let target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
-
-        if (!this.isNewParticle && (this.Element.hasClass('g-menu-removable') || this.isParticle)) {
-            target = dom(target);
-            let targetNode = target[0];
-            if (targetNode === this.eraser.element || this.eraser.element.contains(targetNode)) {
-                this.dragdrop.removeElement = true;
-                this.eraser.over();
-            } else {
-                this.dragdrop.removeElement = false;
-                this.eraser.out();
-            }
-        }
     },
 
-    removeElement: function(event, element) {
-        this.dragdrop.removeElement = false;
+    removeItem: function(element) {
+        element = dom(element);
+        if (!element || !element.data('mm-original-type')) { return; }
 
-        let transition = {
-            opacity: 0
-        };
+        let itemID = element.data('mm-id'),
+            level = Number(element.data('mm-level')) || 1,
+            columnParent = element.parent('[data-mm-id]'),
+            baseParent = element.parent('[data-mm-base]'),
+            base = baseParent ? baseParent.data('mm-base') : '',
+            column = level > 2 ? 0 : Number(((columnParent ? columnParent.data('mm-id') : '').match(/\d+$/) || [0])[0]),
+            orderingKey = base == null ? '' : base;
 
-        element.animate(transition, {
-            duration: '150ms'
-        });
-
-        if (this.type == 'column') {
-            this.root.search('.g-block > *').style({ 'pointer-events': 'none' });
+        if (this.ordering[orderingKey] && this.ordering[orderingKey][column]) {
+            this.ordering[orderingKey][column] = this.ordering[orderingKey][column].filter(function(id) { return id !== itemID; });
         }
 
-        this.eraser.hide();
-
-        this.dragdrop.detachDragEvents();
-
-        let particle = this.block,
-            base = particle.parent('[data-mm-base]').data('mm-base'),
-            col = (particle.parent('[data-mm-id]').data('mm-id').match(/\d+$/) || [0])[0],
-            index = indexOf(particle.parent().children('[data-mm-id]:not(.original-placeholder)'), particle[0]);
-
-        delete this.items[this.itemID];
-        this.ordering[base][col].splice(index, 1);
-
-        this.block.remove();
-        this.original.remove();
-        this.root.removeClass('moving');
-
-        if (this.root.find('.submenu-items')) {
-            if (!this.root.find('.submenu-items').children()) { this.root.find('.submenu-items').text(''); }
-        }
-
+        delete this.items[itemID];
+        element.remove();
+        this.isNewParticle = false;
         this.emit('dragEnd', this.map, 'reorder');
+    },
+
+    beginTopLevelAdd: function(type) {
+        let source = document.querySelector('.genesis-mm-particles-picker [data-mm-blocktype="' + CSS.escape(type) + '"]'),
+            root = document.querySelector('#menu-editor .g-toplevel'),
+            slot = root && root.querySelector(':scope > .menu-root-dropzone');
+        if (!source || !root || !slot || this.isNewParticle) { return; }
+
+        let block = source.cloneNode(true),
+            temporaryID = '__' + type;
+        block.classList.add('col-auto');
+        block.setAttribute('data-mm-id', temporaryID);
+        block.setAttribute('data-mm-level', '1');
+        root.insertBefore(block, slot);
+
+        if (!this.ordering['']) { this.ordering[''] = [[]]; }
+        if (!this.ordering[''][0]) { this.ordering[''][0] = []; }
+        this.ordering[''][0].push(temporaryID);
+
+        this.block = dom(block);
+        this.element = block;
+        this.itemID = temporaryID;
+        this.itemLevel = 1;
+        this.targetLevel = 1;
+        this.isParticle = true;
+        this.isNewParticle = true;
+        this.pendingMenuItem = block;
+        this.emit('dragEnd', this.map, 'reorder');
+    },
+
+    cancelPendingItem: function() {
+        if (!this.isNewParticle || !this.pendingMenuItem) { return; }
+        let id = this.pendingMenuItem.getAttribute('data-mm-id');
+        if (this.ordering[''] && this.ordering[''][0]) {
+            this.ordering[''][0] = this.ordering[''][0].filter(function(itemID) { return itemID !== id; });
+        }
+        this.pendingMenuItem.remove();
+        this.pendingMenuItem = null;
+        this.isNewParticle = false;
+        this.isParticle = false;
+        this.block = null;
+        this.element = null;
     },
 
     stop: function(event, target, element) {
         target = dom(target);
-
-        // we are removing the block
-        let lastOvered = dom(this.dragdrop.lastOvered);
-        let trashZone = this.eraser.element.querySelector('.trash-zone');
-        if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
-            this.eraser.hide();
-            return;
-        }
 
         if (target) { element.removeClass('active'); }
         if (this.type == 'column') {
@@ -400,7 +443,6 @@ let MenuManagerDefinition = {
             this.type = undefined;
             this.targetLevel = false;
             this.isParticle = undefined;
-            this.eraser.hide();
             return;
         }
 
@@ -415,8 +457,6 @@ let MenuManagerDefinition = {
         if (this.addNewItem) { this.block.attribute('style', null).removeClass('active'); }
 
         let parent = this.block.parent();
-        this.eraser.hide();
-
         if (this.original) {
             if (!this.isNewParticle) { this.original.remove(); }
             else { this.original.attribute('style', null).removeClass('original-placeholder'); }

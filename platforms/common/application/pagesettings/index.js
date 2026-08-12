@@ -1,7 +1,6 @@
 import __module0 from '../utils/dom.js';
 import __module1 from '../fields/submit.js';
 import __module2 from '../ui/index.js';
-import __module3 from '../ui/eraser.js';
 import __module4 from '../utils/indicator.js';
 import __module5 from '../utils/request.js';
 import __module6 from '../utils/draggable-group.js';
@@ -16,7 +15,6 @@ let dom = __module0,
     Submit = __module1,
     modal = __module2.modal,
     toastr = __module2.toastr,
-    Eraser = __module3,
     indicator = __module4,
     request = __module5,
     DraggableGroup = __module6,
@@ -28,8 +26,7 @@ let dom = __module0,
 let AtomsField = '[name="page[head][atoms][_json]"]';
 
 let Atoms = {
-    eraser: null,
-    lists: { picker: null, items: null, trash: null },
+    lists: { picker: null, items: null },
 
     serialize: function() {
         let list = document.querySelector('.atoms-list'),
@@ -42,14 +39,7 @@ let Atoms = {
         return JSON.stringify(output).replace(/\//g, '\\/');
     },
 
-    attachEraser: function() {
-        let element = document.querySelector('[data-atoms-erase]');
-        if (Atoms.eraser) { Atoms.eraser.setElement(element); return; }
-        Atoms.eraser = new Eraser(element);
-    },
-
     createSortables: function(element) {
-        Atoms.attachEraser();
         let root = element || document.querySelector('#atoms');
         if (!root || root.SimpleSort) { return; }
 
@@ -58,17 +48,12 @@ let Atoms = {
             items: '[data-atom-picked]',
             filter: '[data-atom-ignore]',
             cloneFrom: '.atoms-picker',
-            trash: '#trash',
             draggingClass: 'atom-dragging',
             direction: 'grid',
             preview: true,
 
             canReceive: function(list) {
                 return list.classList.contains('atoms-list');
-            },
-
-            canDelete: function(state) {
-                return state.from.classList.contains('atoms-list');
             },
 
             onPreview: function(preview, source) {
@@ -81,18 +66,7 @@ let Atoms = {
                 });
             },
 
-            onStart: function(event) {
-                Atoms.attachEraser();
-                if (!event.cloned) { Atoms.eraser.show(); }
-            },
-
-            onTrashOver: function(over) {
-                if (over) { Atoms.eraser.over(); }
-                else { Atoms.eraser.out(); }
-            },
-
             onEnd: function(event) {
-                if (!event.cloned) { Atoms.eraser.hide(); }
                 if (!event.changed) { return; }
 
                 let field = document.querySelector(AtomsField);
@@ -104,9 +78,23 @@ let Atoms = {
 
         Atoms.lists.picker = controller;
         Atoms.lists.items = controller;
-        Atoms.lists.trash = controller;
         root.SimpleSort = controller;
     }
+};
+
+let attachRemove = function() {
+    dom.delegate(document.body, 'click', '.atoms-list [data-atom-remove]', function(event, trigger) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        let item = trigger.closest('[data-atom-picked]'),
+            field = document.querySelector(AtomsField);
+        if (!item || !field) { return; }
+
+        item.remove();
+        field.value = Atoms.serialize();
+        field.dispatchEvent(new Event('change', { bubbles: true }));
+    });
 };
 
 let attachSettings = function() {
@@ -216,6 +204,7 @@ dom.ready(function() {
     dom.delegate(document.body, 'mouseover', '#atoms', function(event, element) { attachSortableAtoms(element); });
     attachSortableAtoms(atoms);
     attachSettings();
+    attachRemove();
 });
 
 export default Atoms;

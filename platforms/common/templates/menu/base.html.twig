@@ -16,6 +16,12 @@
                 {% include 'menu/item.html.twig' with {'item': child, 'target': 'columns' } %}
             </li>
         {% endfor %}
+        <li class="col-auto menu-root-dropzone" data-lm-nodrag>
+            <button type="button" data-mm-root-dropzone data-lm-nodrag
+                aria-label="{{ 'GENESIS_PLATFORM_MENU_PARTICLE_SETTINGS'|trans }}">
+                <span aria-hidden="true" data-lm-nodrag>+</span>
+            </button>
+        </li>
     </ul>
     <a class="global-menu-settings" href="{{ genesis.route('menu/edit', id) }}">
         <i aria-label="{{ 'GENESIS_PLATFORM_MENU_GLOBAL_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>

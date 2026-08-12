@@ -10,6 +10,9 @@
         >
             <i class="far fa-fw fa-hand-paper drag-indicator" aria-hidden="true"></i>
             <span class="atom-title">{{ label }}</span>
+            <button type="button" class="atom-remove" data-atom-ignore data-atom-remove aria-label="{{ 'GENESIS_PLATFORM_JS_LM_REMOVE'|trans }}">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
             <a href="{{ genesis.route('configurations', page_id, 'page', 'atoms', atom)|e }}" class="atom-settings config-cog">
                 <i aria-label="{{ 'GENESIS_PLATFORM_ATOMS_CONFIGURE_SETTINGS'|trans }}" class="fa fa-cog" aria-hidden="true"></i>
             </a>
@@ -29,6 +32,9 @@
                     <li data-atom-picked="{{ atom|json_encode|e('html_attr') }}"{{ (classes ? ' class="' ~ classes|trim ~ '"')|raw }}{{ inheriting|raw }}{{ title|raw }} data-atom-type="{{ atom.type }}">
                         <i class="far fa-fw fa-hand-paper drag-indicator" aria-hidden="true"></i>
                         <span class="atom-title">{{- atom.title -}}</span>
+                        <button type="button" class="atom-remove" data-atom-ignore data-atom-remove aria-label="{{ 'GENESIS_PLATFORM_JS_LM_REMOVE'|trans }}">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
                         <a href="{{ genesis.route('configurations', page_id, 'page', 'atoms', atom.type) }}" class="atom-settings config-cog">
                             <i aria-label="Configure Atom Settings" class="fa fa-cog" aria-hidden="true"></i>
                         </a>
@@ -50,6 +56,5 @@
         <p class="alert alert-notice">{{ 'GENESIS_PLATFORM_ATOMS_DEPRECATED_MESSAGE'|trans }}</p>
     {% endif %}
 
-    <div id="trash" data-atoms-erase=""><div class="trash-zone">&times;</div><span>{{ 'GENESIS_PLATFORM_DROP_DELETE'|trans }}</span></div>
     {#{{ dump(atoms_deprecated|json_encode) }}#}
 </div>

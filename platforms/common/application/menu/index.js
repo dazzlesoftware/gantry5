@@ -37,8 +37,8 @@ dom.ready(function() {
 
     menumanager = new MenuManager('[data-mm-container]', {
         delegate: '.genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block',
-        droppables: '#menu-editor [data-mm-id]',
-        exclude: '[data-lm-nodrag], .menu-item-back, .fa-cog, .config-cog',
+        droppables: '#menu-editor [data-mm-id], #menu-editor [data-mm-root-dropzone]',
+        exclude: '[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *',
         resize_handles: '.submenu-column:not(:last-child)',
         catchClick: true
     });
@@ -46,6 +46,48 @@ dom.ready(function() {
 
     // Handles Modules / Particles items in the Menu
     menumanager.on('dragEnd', extraItems);
+
+    dom.delegate(body, 'click', '#menu-editor [data-mm-item-remove]', function(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+        menumanager.removeItem(element.closest('[data-mm-id]'));
+    });
+
+    ['pointerdown', 'mousedown', 'touchstart'].forEach(function(eventName) {
+        body.addEventListener(eventName, function(event) {
+            if (event.target.closest && event.target.closest('[data-mm-item-remove]')) { event.stopPropagation(); }
+        }, true);
+    });
+
+    dom.delegate(body, 'click', '#menu-editor [data-mm-root-dropzone]', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        let choices = Array.from(document.querySelectorAll('.genesis-mm-particles-picker [data-mm-blocktype]')).map(function(item) {
+            let type = item.getAttribute('data-mm-blocktype'),
+                title = item.querySelector('.title');
+            return '<button type="button" class="menu-add-choice" data-mm-add-type="' + type + '">' +
+                '<i class="fa ' + (type === 'particle' ? 'fa-cube' : 'fa-puzzle-piece') + '" aria-hidden="true"></i>' +
+                '<span>' + (title ? title.textContent : type) + '</span></button>';
+        }).join('');
+
+        modal.open({
+            content: '<div class="menu-add-dialog"><h2>Add to Menu</h2><div class="menu-add-choices">' + choices + '</div></div>'
+        });
+    });
+
+    ['pointerdown', 'mousedown', 'touchstart'].forEach(function(eventName) {
+        body.addEventListener(eventName, function(event) {
+            if (event.target.closest && event.target.closest('[data-mm-root-dropzone]')) { event.stopPropagation(); }
+        }, true);
+    });
+
+    dom.delegate(body, 'click', '.menu-add-choice[data-mm-add-type]', function(event, element) {
+        event.preventDefault();
+        let type = element.getAttribute('data-mm-add-type');
+        modal.close();
+        window.setTimeout(function() { menumanager.beginTopLevelAdd(type); }, 0);
+    });
 
     // The live binding is exported below for circular menu consumers.
 
@@ -58,11 +100,6 @@ dom.ready(function() {
         menumanager.setRoot();
         menumanager.refresh();
 
-        // refresh MM eraser
-        if (menumanager.eraser) {
-            menumanager.eraser.setElement(document.querySelector('[data-mm-eraseparticle]'));
-            menumanager.eraser.hide();
-        }
     });
 
     dom.delegate(body, 'focusin', '.percentage input', function(event, element) {

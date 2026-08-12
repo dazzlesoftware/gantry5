@@ -8503,7 +8503,6 @@
   var dom12 = dom_effects_default;
   var zen6 = createElement;
   var DragDrop3 = drag_drop_default;
-  var Eraser3 = eraser_default;
   var Resizer2 = drag_resizer_default;
   var ltrim = function(value) {
     return String(value == null ? "" : value).replace(/^\/+/, "");
@@ -8565,8 +8564,7 @@
       this.setRoot();
       this.dragdrop = new DragDrop3(this.refElement, this.options, this);
       this.resizer = new Resizer2(this.refElement, this.options, this);
-      this.eraser = new Eraser3("[data-mm-eraseparticle]", this.options);
-      this.dragdrop.on("dragdrop:click", this.bound("click")).on("dragdrop:start", this.bound("start")).on("dragdrop:move:once", this.bound("moveOnce")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:resize", this.bound("resize")).on("dragdrop:stop:erase", this.bound("removeElement")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
+      this.dragdrop.on("dragdrop:click", this.bound("click")).on("dragdrop:start", this.bound("start")).on("dragdrop:move:once", this.bound("moveOnce")).on("dragdrop:location", this.bound("location")).on("dragdrop:nolocation", this.bound("nolocation")).on("dragdrop:resize", this.bound("resize")).on("dragdrop:stop", this.bound("stop")).on("dragdrop:stop:animation", this.bound("stopAnimation"));
     },
     refresh: function() {
       if (!this.refElement || !dom12(this.refElement)) {
@@ -8600,6 +8598,10 @@
         this.stopAnimation();
         return true;
       }
+      if (element.data("mm-original-type") && element.parent(".g-toplevel")) {
+        this.activateExtraItem(element);
+        return true;
+      }
       if (element.find("[data-genesis-ajaxify]")) {
         let siblings2 = element.siblings();
         element.addClass("active");
@@ -8608,9 +8610,32 @@
         }
       }
       element.emit("click");
-      let link = element.find("a");
+      let link = element.find(":scope > .menu-item[data-genesis-ajaxify]");
       if (link) {
         link[0].click();
+      }
+    },
+    activateExtraItem: function(element) {
+      element = dom12(element);
+      let itemID = element.data("mm-id"), columns = document.querySelector("[data-genesis-menu-columns]");
+      if (!itemID || !columns) {
+        return;
+      }
+      let siblings2 = element.siblings();
+      element.addClass("active");
+      if (siblings2) {
+        siblings2.removeClass("active");
+      }
+      if (!this.ordering[itemID]) {
+        this.ordering[itemID] = [[]];
+      }
+      if (!this.ordering[itemID].length) {
+        this.ordering[itemID].push([]);
+      }
+      columns.innerHTML = '<section class="row g-grid submenu-selector"><div class="g-block" data-mm-id="list-0" style="flex: 0 0 100%; width: 100%"><div class="submenu-column"><div class="submenu-level">Level 1</div><ul class="submenu-items" data-mm-base="' + itemID.replace(/&/g, "&amp;").replace(/"/g, "&quot;") + '" data-mm-base-level="1"></ul></div></div></section><span class="fa fa-plus add-column" aria-hidden="true"></span>';
+      let submenu = dom12("[data-genesis-menu-columns] .submenu-selector"), submenuBlocks = submenu && submenu.search("> [data-mm-id]");
+      if (submenuBlocks) {
+        this.resizer.updateMaxValues(submenuBlocks);
       }
     },
     resize: function(event, element, siblings2, offset) {
@@ -8682,9 +8707,6 @@
       if (this.original) {
         this.original.style({ opacity: 0.5 });
       }
-      if (!this.isNewParticle && (element.hasClass("g-menu-removable") || this.isParticle)) {
-        this.eraser.show();
-      }
     },
     location: function(event, location, target) {
       target = dom12(target);
@@ -8693,7 +8715,20 @@
         this.placeholder = zen6((this.type == "column" ? "div" : "li") + ".block.placeholder[data-mm-placeholder]").style({ display: "none" });
       }
       let targetType = target.parent(".g-toplevel") || target.matches(".g-toplevel") ? "main" : target.matches(".g-block") ? "column" : "columns_items", dataLevel = target.data("mm-level"), originalLevel = this.block.data("mm-level");
-      if (this.isParticle && (targetType === "main" && !dataLevel)) {
+      if (this.isParticle && targetType === "main" && !dataLevel) {
+        let rootTarget = target.matches(".g-toplevel") ? target : target.parent(".g-toplevel");
+        if (!rootTarget || !target.matches(".g-toplevel") && !target.matches("[data-mm-root-dropzone]")) {
+          this.dragdrop.matched = false;
+          return;
+        }
+        this.placeholder.style({ display: "block" });
+        if (target.matches("[data-mm-root-dropzone]")) {
+          this.placeholder.before(target);
+        } else {
+          this.placeholder.bottom(rootTarget);
+        }
+        this.addNewItem = rootTarget;
+        this.targetLevel = 1;
         this.dragdrop.matched = false;
         return;
       }
@@ -8772,53 +8807,69 @@
         this.placeholder.remove();
       }
       this.targetLevel = void 0;
-      let target = event.type.match(/^touch/i) ? document.elementFromPoint(event.touches.item(0).clientX, event.touches.item(0).clientY) : event.target;
-      if (!this.isNewParticle && (this.Element.hasClass("g-menu-removable") || this.isParticle)) {
-        target = dom12(target);
-        let targetNode2 = target[0];
-        if (targetNode2 === this.eraser.element || this.eraser.element.contains(targetNode2)) {
-          this.dragdrop.removeElement = true;
-          this.eraser.over();
-        } else {
-          this.dragdrop.removeElement = false;
-          this.eraser.out();
-        }
-      }
     },
-    removeElement: function(event, element) {
-      this.dragdrop.removeElement = false;
-      let transition = {
-        opacity: 0
-      };
-      element.animate(transition, {
-        duration: "150ms"
-      });
-      if (this.type == "column") {
-        this.root.search(".g-block > *").style({ "pointer-events": "none" });
+    removeItem: function(element) {
+      element = dom12(element);
+      if (!element || !element.data("mm-original-type")) {
+        return;
       }
-      this.eraser.hide();
-      this.dragdrop.detachDragEvents();
-      let particle = this.block, base2 = particle.parent("[data-mm-base]").data("mm-base"), col = (particle.parent("[data-mm-id]").data("mm-id").match(/\d+$/) || [0])[0], index = indexOf2(particle.parent().children("[data-mm-id]:not(.original-placeholder)"), particle[0]);
-      delete this.items[this.itemID];
-      this.ordering[base2][col].splice(index, 1);
-      this.block.remove();
-      this.original.remove();
-      this.root.removeClass("moving");
-      if (this.root.find(".submenu-items")) {
-        if (!this.root.find(".submenu-items").children()) {
-          this.root.find(".submenu-items").text("");
-        }
+      let itemID = element.data("mm-id"), level = Number(element.data("mm-level")) || 1, columnParent = element.parent("[data-mm-id]"), baseParent = element.parent("[data-mm-base]"), base2 = baseParent ? baseParent.data("mm-base") : "", column = level > 2 ? 0 : Number(((columnParent ? columnParent.data("mm-id") : "").match(/\d+$/) || [0])[0]), orderingKey = base2 == null ? "" : base2;
+      if (this.ordering[orderingKey] && this.ordering[orderingKey][column]) {
+        this.ordering[orderingKey][column] = this.ordering[orderingKey][column].filter(function(id2) {
+          return id2 !== itemID;
+        });
       }
+      delete this.items[itemID];
+      element.remove();
+      this.isNewParticle = false;
       this.emit("dragEnd", this.map, "reorder");
+    },
+    beginTopLevelAdd: function(type) {
+      let source = document.querySelector('.genesis-mm-particles-picker [data-mm-blocktype="' + CSS.escape(type) + '"]'), root = document.querySelector("#menu-editor .g-toplevel"), slot = root && root.querySelector(":scope > .menu-root-dropzone");
+      if (!source || !root || !slot || this.isNewParticle) {
+        return;
+      }
+      let block = source.cloneNode(true), temporaryID = "__" + type;
+      block.classList.add("col-auto");
+      block.setAttribute("data-mm-id", temporaryID);
+      block.setAttribute("data-mm-level", "1");
+      root.insertBefore(block, slot);
+      if (!this.ordering[""]) {
+        this.ordering[""] = [[]];
+      }
+      if (!this.ordering[""][0]) {
+        this.ordering[""][0] = [];
+      }
+      this.ordering[""][0].push(temporaryID);
+      this.block = dom12(block);
+      this.element = block;
+      this.itemID = temporaryID;
+      this.itemLevel = 1;
+      this.targetLevel = 1;
+      this.isParticle = true;
+      this.isNewParticle = true;
+      this.pendingMenuItem = block;
+      this.emit("dragEnd", this.map, "reorder");
+    },
+    cancelPendingItem: function() {
+      if (!this.isNewParticle || !this.pendingMenuItem) {
+        return;
+      }
+      let id2 = this.pendingMenuItem.getAttribute("data-mm-id");
+      if (this.ordering[""] && this.ordering[""][0]) {
+        this.ordering[""][0] = this.ordering[""][0].filter(function(itemID) {
+          return itemID !== id2;
+        });
+      }
+      this.pendingMenuItem.remove();
+      this.pendingMenuItem = null;
+      this.isNewParticle = false;
+      this.isParticle = false;
+      this.block = null;
+      this.element = null;
     },
     stop: function(event, target, element) {
       target = dom12(target);
-      let lastOvered = dom12(this.dragdrop.lastOvered);
-      let trashZone = this.eraser.element.querySelector(".trash-zone");
-      if (lastOvered && trashZone && trashZone.contains(lastOvered[0])) {
-        this.eraser.hide();
-        return;
-      }
       if (target) {
         element.removeClass("active");
       }
@@ -8832,7 +8883,6 @@
         this.type = void 0;
         this.targetLevel = false;
         this.isParticle = void 0;
-        this.eraser.hide();
         return;
       }
       let placeholderParent = this.placeholder.parent();
@@ -8846,7 +8896,6 @@
         this.block.attribute("style", null).removeClass("active");
       }
       let parent = this.block.parent();
-      this.eraser.hide();
       if (this.original) {
         if (!this.isNewParticle) {
           this.original.remove();
@@ -9251,7 +9300,7 @@
 
   // application/positions/cards.js
   var { ready: ready7, delegate: delegate5 } = dom_default;
-  var Eraser4 = eraser_default;
+  var Eraser3 = eraser_default;
   var DraggableGroup2 = draggable_group_default;
   var flags3 = flags_state_default;
   var elementsFrom2 = (value) => {
@@ -9308,7 +9357,7 @@
         Positions.eraser.hide(true);
         return;
       }
-      Positions.eraser = new Eraser4(element);
+      Positions.eraser = new Eraser3(element);
     },
     createSortables(element) {
       Positions.attachEraser();
@@ -9436,7 +9485,7 @@
         return;
       }
       block.removeAttribute("data-mm-blocktype");
-      block.classList.add("g-menu-item-" + blocktype);
+      block.classList.add("col-auto", "g-menu-removable", "g-menu-item-" + blocktype);
       block.setAttribute("data-mm-original-type", blocktype);
       let badge = document.createElement("span");
       badge.className = "menu-item-type badge";
@@ -9449,6 +9498,11 @@
         content: translate10("GENESIS_PLATFORM_JS_LOADING"),
         method: "post",
         remote: parseAjaxURI6((config2 ? config2.getAttribute("href") : "") + getAjaxSuffix6()),
+        afterClose: function() {
+          if (menumanager && menumanager.isNewParticle) {
+            menumanager.cancelPendingItem();
+          }
+        },
         remoteLoaded: function(response, modalInstance) {
           let content = modal7.element(modalInstance.elements.content), search = content && content.querySelector(".search input"), blocks = content ? content.querySelectorAll("[data-mm-type]") : [], filters = content ? content.querySelectorAll("[data-mm-filter]") : [];
           if (!search || !filters.length || !blocks.length) {
@@ -9541,6 +9595,7 @@
                   element.innerHTML = submitResult.html;
                 }
                 menumanager.isNewParticle = false;
+                menumanager.pendingMenuItem = null;
                 menumanager.emit("dragEnd", menumanager.map);
                 toastr3.success(translate10("GENESIS_PLATFORM_JS_MENU_SETTINGS_APPLIED"), translate10("GENESIS_PLATFORM_JS_SETTINGS_APPLIED"));
               } else {
@@ -9655,12 +9710,50 @@
     let body = document.body;
     menumanager2 = new MenuManager2("[data-mm-container]", {
       delegate: ".genesis-mm-particles-picker ul li, #menu-editor > section ul li, .submenu-column, .submenu-column li[data-mm-id], .column-container .g-block",
-      droppables: "#menu-editor [data-mm-id]",
-      exclude: "[data-lm-nodrag], .menu-item-back, .fa-cog, .config-cog",
+      droppables: "#menu-editor [data-mm-id], #menu-editor [data-mm-root-dropzone]",
+      exclude: "[data-lm-nodrag], [data-mm-root-dropzone], [data-mm-root-dropzone] *, .menu-item-back, .fa-cog, .config-cog, .menu-item-remove, .menu-item-remove *",
       resize_handles: ".submenu-column:not(:last-child)",
       catchClick: true
     });
     menumanager2.on("dragEnd", extraItems);
+    dom14.delegate(body, "click", "#menu-editor [data-mm-item-remove]", function(event, element) {
+      event.preventDefault();
+      event.stopPropagation();
+      menumanager2.removeItem(element.closest("[data-mm-id]"));
+    });
+    ["pointerdown", "mousedown", "touchstart"].forEach(function(eventName) {
+      body.addEventListener(eventName, function(event) {
+        if (event.target.closest && event.target.closest("[data-mm-item-remove]")) {
+          event.stopPropagation();
+        }
+      }, true);
+    });
+    dom14.delegate(body, "click", "#menu-editor [data-mm-root-dropzone]", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      let choices = Array.from(document.querySelectorAll(".genesis-mm-particles-picker [data-mm-blocktype]")).map(function(item) {
+        let type = item.getAttribute("data-mm-blocktype"), title = item.querySelector(".title");
+        return '<button type="button" class="menu-add-choice" data-mm-add-type="' + type + '"><i class="fa ' + (type === "particle" ? "fa-cube" : "fa-puzzle-piece") + '" aria-hidden="true"></i><span>' + (title ? title.textContent : type) + "</span></button>";
+      }).join("");
+      modal8.open({
+        content: '<div class="menu-add-dialog"><h2>Add to Menu</h2><div class="menu-add-choices">' + choices + "</div></div>"
+      });
+    });
+    ["pointerdown", "mousedown", "touchstart"].forEach(function(eventName) {
+      body.addEventListener(eventName, function(event) {
+        if (event.target.closest && event.target.closest("[data-mm-root-dropzone]")) {
+          event.stopPropagation();
+        }
+      }, true);
+    });
+    dom14.delegate(body, "click", ".menu-add-choice[data-mm-add-type]", function(event, element) {
+      event.preventDefault();
+      let type = element.getAttribute("data-mm-add-type");
+      modal8.close();
+      window.setTimeout(function() {
+        menumanager2.beginTopLevelAdd(type);
+      }, 0);
+    });
     menumanager2.setRoot();
     body.addEventListener("statechangeAfter", function() {
       if (!document.querySelector("#menu-editor")) {
@@ -9668,10 +9761,6 @@
       }
       menumanager2.setRoot();
       menumanager2.refresh();
-      if (menumanager2.eraser) {
-        menumanager2.eraser.setElement(document.querySelector("[data-mm-eraseparticle]"));
-        menumanager2.eraser.hide();
-      }
     });
     dom14.delegate(body, "focusin", ".percentage input", function(event, element) {
       element.currentSize = Number(element.value);
@@ -14184,7 +14273,6 @@
   var Submit7 = submit;
   var modal20 = ui_default.modal;
   var toastr8 = ui_default.toastr;
-  var Eraser5 = eraser_default;
   var indicator11 = indicator_default;
   var request16 = request_default;
   var DraggableGroup3 = draggable_group_default;
@@ -14194,8 +14282,7 @@
   var translate19 = translate_default;
   var AtomsField = '[name="page[head][atoms][_json]"]';
   var Atoms2 = {
-    eraser: null,
-    lists: { picker: null, items: null, trash: null },
+    lists: { picker: null, items: null },
     serialize: function() {
       let list = document.querySelector(".atoms-list"), output = [];
       if (!list) {
@@ -14206,16 +14293,7 @@
       });
       return JSON.stringify(output).replace(/\//g, "\\/");
     },
-    attachEraser: function() {
-      let element = document.querySelector("[data-atoms-erase]");
-      if (Atoms2.eraser) {
-        Atoms2.eraser.setElement(element);
-        return;
-      }
-      Atoms2.eraser = new Eraser5(element);
-    },
     createSortables: function(element) {
-      Atoms2.attachEraser();
       let root = element || document.querySelector("#atoms");
       if (!root || root.SimpleSort) {
         return;
@@ -14225,15 +14303,11 @@
         items: "[data-atom-picked]",
         filter: "[data-atom-ignore]",
         cloneFrom: ".atoms-picker",
-        trash: "#trash",
         draggingClass: "atom-dragging",
         direction: "grid",
         preview: true,
         canReceive: function(list) {
           return list.classList.contains("atoms-list");
-        },
-        canDelete: function(state) {
-          return state.from.classList.contains("atoms-list");
         },
         onPreview: function(preview, source) {
           let color = getComputedStyle(source).borderTopColor;
@@ -14244,23 +14318,7 @@
             element2.style.color = "#fff";
           });
         },
-        onStart: function(event) {
-          Atoms2.attachEraser();
-          if (!event.cloned) {
-            Atoms2.eraser.show();
-          }
-        },
-        onTrashOver: function(over) {
-          if (over) {
-            Atoms2.eraser.over();
-          } else {
-            Atoms2.eraser.out();
-          }
-        },
         onEnd: function(event) {
-          if (!event.cloned) {
-            Atoms2.eraser.hide();
-          }
           if (!event.changed) {
             return;
           }
@@ -14274,9 +14332,21 @@
       });
       Atoms2.lists.picker = controller;
       Atoms2.lists.items = controller;
-      Atoms2.lists.trash = controller;
       root.SimpleSort = controller;
     }
+  };
+  var attachRemove = function() {
+    dom25.delegate(document.body, "click", ".atoms-list [data-atom-remove]", function(event, trigger) {
+      event.preventDefault();
+      event.stopPropagation();
+      let item = trigger.closest("[data-atom-picked]"), field = document.querySelector(AtomsField);
+      if (!item || !field) {
+        return;
+      }
+      item.remove();
+      field.value = Atoms2.serialize();
+      field.dispatchEvent(new Event("change", { bubbles: true }));
+    });
   };
   var attachSettings = function() {
     dom25.delegate(document.body, "click", ".atoms-list [data-atom-picked] .config-cog", function(event, trigger) {
@@ -14379,6 +14449,7 @@
     });
     attachSortableAtoms(atoms);
     attachSettings();
+    attachRemove();
   });
   var pagesettings_default = Atoms2;
 
