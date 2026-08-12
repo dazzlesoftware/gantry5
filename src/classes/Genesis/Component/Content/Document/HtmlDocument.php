@@ -770,13 +770,8 @@ class HtmlDocument
 
     protected static function registerBootstrap5()
     {
-        static::addScript(
-            [
-                'src' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
-                'integrity' => 'sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM',
-                'crossorigin' => 'anonymous'
-            ],
-            11);
+        // Bootstrap CSS is compiled into Nucleus and its JavaScript is bundled
+        // into the shared Genesis frontend asset.
     }
 
     protected static function registerMootools()

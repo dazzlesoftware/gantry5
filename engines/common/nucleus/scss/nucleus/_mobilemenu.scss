@@ -1,9 +1,9 @@
 // ---------------------------------------------------------------------------
 // Mobile Menu particle
 //
-// Plain container target that lives inside the layout's Offcanvas section
+// Container target inside the Bootstrap Offcanvas body.
 // (the site's existing custom sliding panel, #g-offcanvas — see
-// assets/common/application/offcanvas/index.js), NOT a Bootstrap .offcanvas
+// assets/common/application/offcanvas/index.js). The Bootstrap Offcanvas
 // component. The Menu particle flagged as `mobileTarget` is moved into this
 // container below the configured mobile-menu breakpoint by
 // assets/common/application/menu/index.js; compound-scope defensively so

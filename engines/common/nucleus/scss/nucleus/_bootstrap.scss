@@ -1,0 +1,42 @@
+// Bootstrap 5 is the shared Nucleus foundation.
+//
+// Genesis keeps its established breakpoint values and zero-gutter layout
+// contract, while Bootstrap owns reset, grid, forms, navigation, dropdown,
+// offcanvas, helpers, and utility generation.
+
+@import "../vendor/bootstrap5/functions";
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: $breakpoints-large-mobile-container,
+    md: $breakpoints-tablet-container,
+    lg: $breakpoints-desktop-container,
+    xl: $breakpoints-large-desktop-container
+) !default;
+
+$grid-gutter-width: 0 !default;
+$enable-negative-margins: true !default;
+
+@import "../vendor/bootstrap5/variables";
+@import "../vendor/bootstrap5/mixins";
+@import "../vendor/bootstrap5/utilities";
+
+@import "../vendor/bootstrap5/root";
+@import "../vendor/bootstrap5/reboot";
+@import "../vendor/bootstrap5/type";
+@import "../vendor/bootstrap5/images";
+@import "../vendor/bootstrap5/containers";
+@import "../vendor/bootstrap5/grid";
+@import "../vendor/bootstrap5/tables";
+@import "../vendor/bootstrap5/forms";
+@import "../vendor/bootstrap5/buttons";
+@import "../vendor/bootstrap5/transitions";
+@import "../vendor/bootstrap5/dropdown";
+@import "../vendor/bootstrap5/button-group";
+@import "../vendor/bootstrap5/nav";
+@import "../vendor/bootstrap5/navbar";
+@import "../vendor/bootstrap5/close";
+@import "../vendor/bootstrap5/offcanvas";
+
+@import "../vendor/bootstrap5/helpers";
+@import "../vendor/bootstrap5/utilities/api";

@@ -17,11 +17,7 @@
     {{ parent() }}
     {% if genesis.theme.joomla %}
         {% if genesis.platform.checkVersion(4) %} {# Joomla 4.x #}
-            {% if genesis.page.direction != 'rtl' %}
-            <link rel="stylesheet" href="{{ url('genesis-engine://css-compiled/bootstrap5.css') }}" type="text/css" />
-            {% else %}
-            <link rel="stylesheet" href="{{ url('genesis-engine://css-compiled/bootstrap5-rtl.css') }}" type="text/css" />
-            {% endif %}
+            {# Bootstrap CSS is compiled into the shared Nucleus stylesheet. #}
             <link rel="stylesheet" href="{{ url('media/system/css/joomla-fontawesome.min.css') }}" type="text/css" />
         {% elseif genesis.platform.checkVersion(3) %} {# Joomla 3.x #}
             <link rel="stylesheet" href="{{ url('genesis-assets://css/bootstrap-genesis.css') }}" type="text/css" />

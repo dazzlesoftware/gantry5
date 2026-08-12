@@ -1,3 +1,4 @@
+import * as bootstrap from 'bootstrap';
 import Menu from './menu/index.js';
 import Offcanvas from './offcanvas/index.js';
 import './totop/index.js';
@@ -27,6 +28,9 @@ const instances = { ready, query, queryAll, delegate };
 // Genesis is the canonical browser API. Keep Genesis as the same object for
 // compatibility with existing themes and third-party integrations.
 window.Genesis = instances;
+// One local Bootstrap runtime is shared by every engine and particle. Keep
+// the conventional global for Bootstrap's programmatic component API.
+window.bootstrap = bootstrap;
 
 ready(() => {
     try {

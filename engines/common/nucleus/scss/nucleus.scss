@@ -13,11 +13,12 @@
 
 // LOAD NUCLEUS COMPONENTS
 
-// Core
-@import "nucleus/core";
+// Bootstrap 5 foundation (reset, grid, forms, navigation, offcanvas and
+// utilities; see NUCLEUS_BOOTSTRAP_MIGRATION.md).
+@import "nucleus/bootstrap";
 
-// Bootstrap 5 grid engine (grid-only; see NUCLEUS_BOOTSTRAP_MIGRATION.md)
-@import "nucleus/bootstrap-grid";
+// Genesis-specific page shell and platform integration.
+@import "nucleus/core";
 
 // Navigation
 @import "nucleus/nav";

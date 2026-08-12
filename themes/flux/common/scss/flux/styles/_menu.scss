@@ -193,7 +193,7 @@
 .g-preset-thumbnails {
     margin-top: $content-margin;
 
-    .g-active & {
+    .show & {
         a {
             color: $menustyle-sublevel-text-color;
 
@@ -284,27 +284,27 @@
             transition: opacity .3s ease-out, transform .3s ease-out;
         }
 
-        .g-zoom.g-active {
+        .g-zoom.show {
             animation-duration: .3s;
             animation-name: g-dropdown-zoom;
         }
 
-        .g-fade-in-up.g-active {
+        .g-fade-in-up.show {
             animation-duration: .3s;
             animation-name: g-dropdown-fade-in-up;
         }
 
-        .g-dropdown-bounce-in-left.g-active {
+        .g-dropdown-bounce-in-left.show {
             animation-duration: .5s;
             animation-name: g-dropdown-bounce-in-left;
         }
 
-        .g-dropdown-bounce-in-right.g-active {
+        .g-dropdown-bounce-in-right.show {
             animation-duration: .5s;
             animation-name: g-dropdown-bounce-in-right;
         }
 
-        .g-dropdown-bounce-in-down.g-active {
+        .g-dropdown-bounce-in-down.show {
             animation-duration: .5s;
             animation-name: g-dropdown-bounce-in-down;
         }
@@ -319,27 +319,27 @@
             transition: opacity .3s ease-out, transform .3s ease-out;
         }
 
-        .g-zoom.g-active {
+        .g-zoom.show {
             animation-duration: .3s;
             animation-name: g-dropdown-zoom;
         }
 
-        .g-fade-in-up.g-active {
+        .g-fade-in-up.show {
             animation-duration: .3s;
             animation-name: g-dropdown-fade-in-up;
         }
 
-        .g-dropdown-bounce-in-left.g-active {
+        .g-dropdown-bounce-in-left.show {
             animation-duration: .5s;
             animation-name: g-dropdown-bounce-in-left;
         }
 
-        .g-dropdown-bounce-in-right.g-active {
+        .g-dropdown-bounce-in-right.show {
             animation-duration: .5s;
             animation-name: g-dropdown-bounce-in-right;
         }
 
-        .g-dropdown-bounce-in-down.g-active {
+        .g-dropdown-bounce-in-down.show {
             animation-duration: .5s;
             animation-name: g-dropdown-bounce-in-down;
         }

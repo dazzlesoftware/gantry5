@@ -1,5 +1,5 @@
 (() => {
-  // application/utils/dom-collection.js
+  // platforms/common/application/utils/dom-collection.js
   var eventListeners = /* @__PURE__ */ new WeakMap();
   var delegatedListeners = /* @__PURE__ */ new WeakMap();
   var elementMethods = /* @__PURE__ */ Object.create(null);
@@ -430,7 +430,7 @@
   });
   var dom_collection_default = dom;
 
-  // application/utils/create-element.js
+  // platforms/common/application/utils/create-element.js
   var dom2 = dom_collection_default;
   var attributePattern = /\[\s*([^\s~|^$*=\]]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\]\s]+)))?\s*\]/g;
   var classPattern = /\.([a-zA-Z_][\w-]*)/g;
@@ -455,7 +455,7 @@
     return dom2(element);
   }
 
-  // application/utils/dom.js
+  // platforms/common/application/utils/dom.js
   var ready = (callback) => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback, { once: true });
@@ -473,7 +473,7 @@
   };
   var dom_default = { ready, delegate };
 
-  // application/utils/request.js
+  // platforms/common/application/utils/request.js
   var methods = /^(get|post|put|delete|head|patch|options)$/i;
   var encodeForm = (value, prefix) => {
     if (value == null) return [];
@@ -662,7 +662,7 @@
   });
   var request_default = request;
 
-  // application/utils/event-emitter.js
+  // platforms/common/application/utils/event-emitter.js
   var EventEmitter = class {
     constructor() {
       this.listeners = /* @__PURE__ */ new Map();
@@ -703,7 +703,7 @@
   };
   var event_emitter_default = EventEmitter;
 
-  // application/utils/search-index.js
+  // platforms/common/application/utils/search-index.js
   var normalizeText = (value, diacritics) => {
     const normalized = String(value == null ? "" : value).toLowerCase();
     return diacritics ? normalized.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : normalized;
@@ -797,7 +797,7 @@
   };
   var search_index_default = SearchIndex;
 
-  // application/ui/progresser.js
+  // platforms/common/application/ui/progresser.js
   var defaults = {
     value: 0,
     size: 50,
@@ -988,7 +988,7 @@
   };
   var progresser_default = Progresser;
 
-  // application/utils/indicator.js
+  // platforms/common/application/utils/indicator.js
   var asElement2 = function(element) {
     return element && element.nodeType ? element : element && element[0];
   };
@@ -1036,7 +1036,7 @@
   };
   var indicator_default = { show, hide };
 
-  // application/utils/dom-effects.js
+  // platforms/common/application/utils/dom-effects.js
   var dom3 = dom_collection_default;
   var progresser = progresser_default;
   var indicator = indicator_default;
@@ -1240,7 +1240,7 @@
   });
   var dom_effects_default = dom3;
 
-  // application/ui/selectize.js
+  // platforms/common/application/ui/selectize.js
   var EventEmitter2 = event_emitter_default;
   var ready2 = dom_default.ready;
   var zen = createElement;
@@ -3173,7 +3173,7 @@
   });
   var selectize_default = Selectize;
 
-  // application/ui/modal.js
+  // platforms/common/application/ui/modal.js
   var dom5 = dom_effects_default;
   var zen2 = createElement;
   var domready = dom_default.ready;
@@ -3502,7 +3502,7 @@
   var modal = new Modal();
   var modal_default = modal;
 
-  // application/ui/toastr.js
+  // platforms/common/application/ui/toastr.js
   var merge2 = function(target) {
     target = target || {};
     Array.prototype.slice.call(arguments, 1).forEach(function(source) {
@@ -3805,10 +3805,10 @@
   };
   var toastr_default = new Toaster();
 
-  // application/utils/get-ajax-suffix.js
+  // platforms/common/application/utils/get-ajax-suffix.js
   var get_ajax_suffix_default = () => window.GENESIS_AJAX_SUFFIX || "";
 
-  // application/utils/get-ajax-url.js
+  // platforms/common/application/utils/get-ajax-url.js
   var getAjaxSuffix = get_ajax_suffix_default;
   var decodeHtml = (value) => {
     const textarea = document.createElement("textarea");
@@ -3838,7 +3838,7 @@
   };
   var get_ajax_url_default = { global: getAjaxURL, config: getConfAjaxURL, parse: parseAjaxURI };
 
-  // application/ui/togglers.js
+  // platforms/common/application/ui/togglers.js
   var modal2 = modal_default;
   var toastr = toastr_default;
   var request3 = request_default;
@@ -3911,7 +3911,7 @@
   });
   var togglers_default = {};
 
-  // application/utils/cookie.js
+  // platforms/common/application/utils/cookie.js
   var Cookie = {
     write: function(name, value) {
       let date = /* @__PURE__ */ new Date();
@@ -3931,7 +3931,7 @@
   };
   var cookie_default = Cookie;
 
-  // application/ui/collapse.js
+  // platforms/common/application/ui/collapse.js
   var Cookie2 = cookie_default;
   var { ready: ready4, delegate: delegate3 } = dom_default;
   var readStorage = () => Cookie2.read("genesis-collapsed") || Cookie2.read("genesis-collapsed") || {};
@@ -4010,7 +4010,7 @@
   });
   var collapse_default = loadFromStorage;
 
-  // application/ui/index.js
+  // platforms/common/application/ui/index.js
   var Selectize2 = selectize_default;
   var ui_default = {
     modal: modal_default,
@@ -4020,7 +4020,7 @@
     toastr: toastr_default
   };
 
-  // application/utils/flags-state.js
+  // platforms/common/application/utils/flags-state.js
   var modal3 = ui_default.modal;
   var getAjaxURL3 = get_ajax_url_default.global;
   var parseAjaxURI3 = get_ajax_url_default.parse;
@@ -4088,7 +4088,7 @@
   };
   var flags_state_default = new FlagsState();
 
-  // application/utils/field-validation.js
+  // platforms/common/application/utils/field-validation.js
   var fallbackValidate = (field) => {
     if (field.disabled) return true;
     const value = field.value || "";
@@ -4114,7 +4114,7 @@
     return fallbackValidate(field);
   };
 
-  // application/fields/submit.js
+  // platforms/common/application/fields/submit.js
   var validateField = field_validation_default;
   var elementFrom = (value) => {
     if (value instanceof Element || value instanceof Document || value instanceof DocumentFragment) return value;
@@ -4170,7 +4170,7 @@
     return { valid, invalid };
   }
 
-  // application/lm/id.js
+  // platforms/common/application/lm/id.js
   var randomId = () => {
     if (window.crypto && typeof window.crypto.getRandomValues === "function") {
       const value = new Uint32Array(1);
@@ -4192,13 +4192,13 @@
     return "".concat(key, "-").concat(id2);
   };
 
-  // application/utils/translate.js
+  // platforms/common/application/utils/translate.js
   var translate_default = (key, replacement = "") => {
     const translate21 = window.GenesisTranslate || window.GenesisT || ((value) => value);
     return String(translate21(key)).split("%s").join(replacement);
   };
 
-  // application/utils/get-outline.js
+  // platforms/common/application/utils/get-outline.js
   var selectize = () => {
     const selector = document.querySelector("#configuration-selector");
     return selector ? selector.selectizeInstance : null;
@@ -4230,7 +4230,7 @@
   };
   var get_outline_default = { getOutlineNameById, getCurrentOutline };
 
-  // application/lm/blocks/base.js
+  // platforms/common/application/lm/blocks/base.js
   var EventEmitter3 = event_emitter_default;
   var zen3 = createElement;
   var dom6 = dom_collection_default;
@@ -4409,7 +4409,7 @@
   });
   var base_default = Base;
 
-  // application/lm/blocks/atom.js
+  // platforms/common/application/lm/blocks/atom.js
   var Base2 = base_default;
   var getAjaxURL4 = get_ajax_url_default.config;
   var Atom = class extends Base2 {
@@ -4459,7 +4459,7 @@
   };
   var atom_default = Atom;
 
-  // application/lm/blocks/grid.js
+  // platforms/common/application/lm/blocks/grid.js
   var Base3 = base_default;
   var translate2 = translate_default;
   var Grid = class extends Base3 {
@@ -4496,7 +4496,7 @@
   };
   var grid_default = Grid;
 
-  // application/lm/blocks/section.js
+  // platforms/common/application/lm/blocks/section.js
   var Base4 = base_default;
   var Grid2 = grid_default;
   var getAjaxURL5 = get_ajax_url_default.config;
@@ -4637,7 +4637,7 @@
   Section.prototype.options = {};
   var section_default = Section;
 
-  // application/lm/blocks/offcanvas.js
+  // platforms/common/application/lm/blocks/offcanvas.js
   var Section2 = section_default;
   var getAjaxURL6 = get_ajax_url_default.config;
   var getOutlineNameById3 = get_outline_default.getOutlineNameById;
@@ -4662,7 +4662,7 @@
   };
   var offcanvas_default = Offcanvas;
 
-  // application/lm/blocks/wrapper.js
+  // platforms/common/application/lm/blocks/wrapper.js
   var Section3 = section_default;
   var Wrapper = class extends Section3 {
     layout() {
@@ -4680,7 +4680,7 @@
   };
   var wrapper_default = Wrapper;
 
-  // application/lm/blocks/atoms.js
+  // platforms/common/application/lm/blocks/atoms.js
   var Section4 = section_default;
   var elementFromHTML2 = function(html) {
     let template = document.createElement("template");
@@ -4737,7 +4737,7 @@
   };
   var atoms_default = Atoms;
 
-  // application/lm/blocks/container.js
+  // platforms/common/application/lm/blocks/container.js
   var Base5 = base_default;
   var getAjaxURL7 = get_ajax_url_default.config;
   var translate5 = translate_default;
@@ -4781,7 +4781,7 @@
   };
   var container_default = Container;
 
-  // application/lm/blocks/block.js
+  // platforms/common/application/lm/blocks/block.js
   var Base6 = base_default;
   var Block = class extends Base6 {
     constructor(options) {
@@ -4864,7 +4864,7 @@
   };
   var block_default = Block;
 
-  // application/lm/blocks/particle.js
+  // platforms/common/application/lm/blocks/particle.js
   var Atom2 = atom_default;
   var getAjaxURL8 = get_ajax_url_default.config;
   var getOutlineNameById4 = get_outline_default.getOutlineNameById;
@@ -4977,7 +4977,7 @@
   };
   var particle_default = Particle;
 
-  // application/lm/blocks/position.js
+  // platforms/common/application/lm/blocks/position.js
   var Particle2 = particle_default;
   var UID = 0;
   var Position = class extends Particle2 {
@@ -5007,7 +5007,7 @@
   };
   var position_default = Position;
 
-  // application/lm/blocks/system.js
+  // platforms/common/application/lm/blocks/system.js
   var Particle3 = particle_default;
   var System = class extends Particle3 {
   };
@@ -5017,7 +5017,7 @@
   };
   var system_default = System;
 
-  // application/lm/blocks/spacer.js
+  // platforms/common/application/lm/blocks/spacer.js
   var Particle4 = particle_default;
   var Spacer = class extends Particle4 {
   };
@@ -5028,7 +5028,7 @@
   };
   var spacer_default = Spacer;
 
-  // application/lm/blocks/div.js
+  // platforms/common/application/lm/blocks/div.js
   var Base7 = base_default;
   var getAjaxURL9 = get_ajax_url_default.config;
   var translate7 = translate_default;
@@ -5045,7 +5045,7 @@
   };
   var div_default = Div;
 
-  // application/lm/blocks/index.js
+  // platforms/common/application/lm/blocks/index.js
   var blocks_default = {
     base: base_default,
     atom: atom_default,
@@ -5063,7 +5063,7 @@
     div: div_default
   };
 
-  // application/lm/normalize-grid-columns.js
+  // platforms/common/application/lm/normalize-grid-columns.js
   var normalizeGridColumns = (root, getBlock) => {
     if (!root || typeof getBlock !== "function") return;
     root.querySelectorAll('[data-lm-blocktype="grid"]').forEach((grid) => {
@@ -5096,7 +5096,7 @@
   };
   var normalize_grid_columns_default = normalizeGridColumns;
 
-  // application/lm/builder.js
+  // platforms/common/application/lm/builder.js
   var EventEmitter4 = event_emitter_default;
   var Blocks = blocks_default;
   var ID2 = id_default;
@@ -5310,7 +5310,7 @@
   };
   var builder_default = Builder;
 
-  // application/utils/history-adapter.js
+  // platforms/common/application/utils/history-adapter.js
   var resolveElement = (element) => typeof element === "string" ? document.querySelector(element) : element;
   var History = {
     Adapter: {
@@ -5344,7 +5344,7 @@
   };
   var history_adapter_default = History;
 
-  // application/utils/history.js
+  // platforms/common/application/utils/history.js
   var absoluteURL = (value) => new URL(value || window.location.href, window.location.href).href;
   var stateFrom = (data, title, url) => ({
     data: data && typeof data === "object" ? data : {},
@@ -5387,7 +5387,7 @@
   window.History = history_adapter_default;
   var history_default = history_adapter_default;
 
-  // application/lm/history.js
+  // platforms/common/application/lm/history.js
   var cloneSnapshot = (value) => {
     if (value == null) return value;
     if (typeof structuredClone === "function") return structuredClone(value);
@@ -5524,7 +5524,7 @@
   };
   var history_default2 = History2;
 
-  // application/ui/drag.events.js
+  // platforms/common/application/ui/drag.events.js
   var getSupportedEvent = function(events) {
     events = events.split(" ");
     let element = document.createElement("div"), event;
@@ -5570,7 +5570,7 @@
     EVENTS
   };
 
-  // application/ui/drag.drop.js
+  // platforms/common/application/ui/drag.drop.js
   var EventEmitter5 = event_emitter_default;
   var DragEvents = drag_events_default;
   var dom7 = dom_effects_default;
@@ -5884,7 +5884,7 @@
   };
   var drag_drop_default = DragDrop;
 
-  // application/ui/eraser.js
+  // platforms/common/application/ui/eraser.js
   var toPixels = (value) => typeof value === "number" ? "".concat(value, "px") : value;
   var applyStyles = (element, styles) => {
     Object.keys(styles).forEach((property) => {
@@ -5956,7 +5956,7 @@
   };
   var eraser_default = Eraser;
 
-  // application/utils/deep-equals.js
+  // platforms/common/application/utils/deep-equals.js
   var deepEquals = function(first, second) {
     if (Object.is(first, second)) {
       return true;
@@ -5985,7 +5985,7 @@
   };
   var deep_equals_default = deepEquals;
 
-  // application/lm/layoutmanager.js
+  // platforms/common/application/lm/layoutmanager.js
   var EventEmitter6 = event_emitter_default;
   var dom8 = dom_effects_default;
   var zen4 = createElement;
@@ -6505,7 +6505,7 @@
   LayoutManager.prototype.options = LayoutManagerDefinition.options;
   var layoutmanager_default = LayoutManager;
 
-  // application/utils/save-state.js
+  // platforms/common/application/utils/save-state.js
   var clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
   var SaveState = class {
     constructor(session) {
@@ -6530,7 +6530,7 @@
   };
   var save_state_default = SaveState;
 
-  // application/lm/row-picker.js
+  // platforms/common/application/lm/row-picker.js
   var modal4 = ui_default.modal;
   var translate8 = translate_default;
   var PRESETS = [
@@ -6661,7 +6661,7 @@
   };
   var row_picker_default = openRowPicker;
 
-  // application/ui/popover.js
+  // platforms/common/application/ui/popover.js
   var dom9 = dom_effects_default;
   var zen5 = createElement;
   var storage2 = /* @__PURE__ */ new WeakMap();
@@ -7190,7 +7190,7 @@
   });
   var popover_default = dom9;
 
-  // application/lm/inheritance/index.js
+  // platforms/common/application/lm/inheritance/index.js
   var dom10 = dom_default;
   var ready5 = dom10.ready;
   var delegate4 = dom10.delegate;
@@ -7442,7 +7442,7 @@
     });
   });
 
-  // application/lm/index.js
+  // platforms/common/application/lm/index.js
   var ready6 = dom_default.ready;
   var dom11 = dom_collection_default;
   var Submit = submit;
@@ -8230,7 +8230,7 @@
     savestate
   };
 
-  // application/menu/drag.resizer.js
+  // platforms/common/application/menu/drag.resizer.js
   var DragEvents2 = drag_events_default;
   var asElement4 = function(element) {
     return element && element.nodeType ? element : element && element[0];
@@ -8499,7 +8499,7 @@
   };
   var drag_resizer_default = Resizer;
 
-  // application/menu/menumanager.js
+  // platforms/common/application/menu/menumanager.js
   var EventEmitter7 = event_emitter_default;
   var dom12 = dom_effects_default;
   var zen6 = createElement;
@@ -8964,7 +8964,7 @@
   MenuManager.prototype.options = MenuManagerDefinition.options;
   var menumanager_default = MenuManager;
 
-  // application/utils/draggable-group.js
+  // platforms/common/application/utils/draggable-group.js
   var directItems = (list, selector, excluded) => Array.from(list.children).filter((item) => item !== excluded && item.matches(selector));
   var previewStyleProperties = [
     "display",
@@ -9250,7 +9250,7 @@
   };
   var draggable_group_default = DraggableGroup;
 
-  // application/positions/cards.js
+  // platforms/common/application/positions/cards.js
   var { ready: ready7, delegate: delegate5 } = dom_default;
   var Eraser4 = eraser_default;
   var DraggableGroup2 = draggable_group_default;
@@ -9350,7 +9350,7 @@
   });
   var cards_default = Positions;
 
-  // application/utils/wp-widgets-customizer.js
+  // platforms/common/application/utils/wp-widgets-customizer.js
   var wp_widgets_customizer_default = (field) => {
     const input = field && field[0] ? field[0] : field;
     if (!(input instanceof Element)) return false;
@@ -9367,7 +9367,7 @@
     return true;
   };
 
-  // application/menu/extra-items.js
+  // platforms/common/application/menu/extra-items.js
   var dom13 = dom_default;
   var Submit2 = submit;
   var modal7 = ui_default.modal;
@@ -9633,7 +9633,7 @@
   });
   var extra_items_default = StepOne;
 
-  // application/menu/index.js
+  // platforms/common/application/menu/index.js
   var dom14 = dom_default;
   var MenuManager2 = menumanager_default;
   var Submit3 = submit;
@@ -9914,7 +9914,7 @@
     menumanager: menumanager2
   };
 
-  // application/configurations/dropdown-edit.js
+  // platforms/common/application/configurations/dropdown-edit.js
   var dom15 = dom_default;
   var request9 = request_default;
   var modal9 = ui_default.modal;
@@ -10003,7 +10003,7 @@
     });
   });
 
-  // application/configurations/index.js
+  // platforms/common/application/configurations/index.js
   var dom16 = dom_default;
   var modal10 = ui_default.modal;
   var toastr5 = ui_default.toastr;
@@ -10222,7 +10222,7 @@
     attachEditables(document.querySelectorAll("#configurations [data-title-editable]"));
   });
 
-  // application/positions/index.js
+  // platforms/common/application/positions/index.js
   var dom17 = dom_default;
   var modal11 = ui_default.modal;
   var toastr6 = ui_default.toastr;
@@ -10512,7 +10512,7 @@
     attachEditables(document.querySelectorAll("#positions [data-title-editable]"));
   });
 
-  // application/changelog/index.js
+  // platforms/common/application/changelog/index.js
   var modal12 = ui_default.modal;
   var parseAjaxURI11 = get_ajax_url_default.parse;
   var getAjaxURL15 = get_ajax_url_default.global;
@@ -10562,7 +10562,7 @@
     });
   });
 
-  // application/fields/multicheckbox.js
+  // platforms/common/application/fields/multicheckbox.js
   var { ready: ready9, delegate: delegate7 } = dom_default;
   var parseValues = (value) => new Set(String(value || "").split(",").filter(Boolean));
   var serializeValues = (values) => [...values].join(",");
@@ -10589,7 +10589,7 @@
     });
   });
 
-  // application/fields/index.js
+  // platforms/common/application/fields/index.js
   var dom18 = dom_default;
   var flags7 = flags_state_default;
   var submit2 = submit;
@@ -10844,7 +10844,7 @@
     submit: submit2
   };
 
-  // application/utils/ajaxify-links.js
+  // platforms/common/application/utils/ajaxify-links.js
   var dom19 = dom_default;
   var storage3 = /* @__PURE__ */ new Map();
   var modal13 = ui_default.modal;
@@ -11284,7 +11284,7 @@
     selectorChangeEvent();
   });
 
-  // application/utils/async-foreach.js
+  // platforms/common/application/utils/async-foreach.js
   var asyncForEach = function(arr, eachFn, doneFn) {
     arr = arr || [];
     let i = -1;
@@ -11316,7 +11316,7 @@
   };
   var async_foreach_default = asyncForEach;
 
-  // application/assignments/index.js
+  // platforms/common/application/assignments/index.js
   var { ready: ready10, delegate: delegate8 } = dom_default;
   var asyncForEach2 = async_foreach_default;
   var cache = /* @__PURE__ */ new WeakMap();
@@ -11454,7 +11454,7 @@
   });
   var assignments_default = Assignments;
 
-  // application/styles/index.js
+  // platforms/common/application/styles/index.js
   var modal14 = ui_default.modal;
   var fields = fields_default;
   var { ready: ready11, delegate: delegate9 } = dom_default;
@@ -11499,7 +11499,7 @@
   });
   var styles_default = {};
 
-  // application/particles/colorpicker/index.js
+  // platforms/common/application/particles/colorpicker/index.js
   var dom20 = dom_collection_default;
   var ready12 = dom_default.ready;
   var zen7 = createElement;
@@ -12073,7 +12073,7 @@
   });
   var colorpicker_default = ColorPicker;
 
-  // application/utils/frame-listener.js
+  // platforms/common/application/utils/frame-listener.js
   function frameListener(element, eventName, callback, options = {}) {
     const target = element && element[0] ? element[0] : element;
     let frame = 0;
@@ -12097,7 +12097,7 @@
     };
   }
 
-  // application/utils/elements.viewport.js
+  // platforms/common/application/utils/elements.viewport.js
   var elements_viewport_default = (container, selector, threshold = 0) => {
     const root = container && container[0] ? container[0] : container;
     if (!(root instanceof Element)) return [];
@@ -12109,7 +12109,7 @@
     );
   };
 
-  // application/particles/fonts/index.js
+  // platforms/common/application/particles/fonts/index.js
   var dom21 = dom_effects_default;
   var zen8 = createElement;
   var storage4 = /* @__PURE__ */ new WeakMap();
@@ -12777,7 +12777,7 @@
   });
   var fonts_default = Fonts;
 
-  // application/particles/menu/index.js
+  // platforms/common/application/particles/menu/index.js
   var { ready: ready14, delegate: delegate10 } = dom_default;
   ready14(() => {
     delegate10(document.body, "click", "[data-genesis-content] .g-main-nav .g-toplevel [data-genesis-ajaxify]", (event, link) => {
@@ -12789,7 +12789,7 @@
   });
   var menu_default2 = {};
 
-  // application/particles/icons/index.js
+  // platforms/common/application/particles/icons/index.js
   var dom22 = dom_default;
   var modal16 = ui_default.modal;
   var popovers = popover_default;
@@ -12955,7 +12955,7 @@
   });
   var icons_default = {};
 
-  // application/particles/filepicker/index.js
+  // platforms/common/application/particles/filepicker/index.js
   var dom23 = dom_default;
   var request13 = request_default;
   var modal17 = ui_default.modal;
@@ -13502,7 +13502,7 @@
   });
   var filepicker_default = FilePicker;
 
-  // application/utils/reorderable-list.js
+  // platforms/common/application/utils/reorderable-list.js
   var directItems2 = (list, selector, excluded) => Array.from(list.children).filter((item) => item !== excluded && item.matches(selector));
   var ReorderableList = class {
     constructor(list, options = {}) {
@@ -13647,7 +13647,7 @@
   };
   var reorderable_list_default = ReorderableList;
 
-  // application/particles/collections/index.js
+  // platforms/common/application/particles/collections/index.js
   var dom24 = dom_default;
   var Submit5 = submit;
   var modal18 = ui_default.modal;
@@ -13885,7 +13885,7 @@
   });
   var collections_default = {};
 
-  // application/particles/keyvalue/index.js
+  // platforms/common/application/particles/keyvalue/index.js
   var { ready: ready15, delegate: delegate11 } = dom_default;
   var ReorderableList3 = reorderable_list_default;
   var translate17 = translate_default;
@@ -14027,7 +14027,7 @@
   });
   var keyvalue_default = {};
 
-  // application/particles/instancepicker/index.js
+  // platforms/common/application/particles/instancepicker/index.js
   var Submit6 = submit;
   var modal19 = ui_default.modal;
   var request15 = request_default;
@@ -14168,7 +14168,7 @@
   });
   var instancepicker_default = {};
 
-  // application/particles/index.js
+  // platforms/common/application/particles/index.js
   var particles_default = {
     colorpicker: colorpicker_default,
     fonts: fonts_default,
@@ -14180,7 +14180,7 @@
     instancepicker: instancepicker_default
   };
 
-  // application/pagesettings/index.js
+  // platforms/common/application/pagesettings/index.js
   var dom25 = dom_default;
   var Submit7 = submit;
   var modal20 = ui_default.modal;
@@ -14383,7 +14383,7 @@
   });
   var pagesettings_default = Atoms2;
 
-  // application/ui/tooltips.js
+  // platforms/common/application/ui/tooltips.js
   var defaults5 = {
     baseClass: "g-tips",
     typeClass: null,
@@ -14625,7 +14625,7 @@
   var instance = new Tooltips(document);
   var tooltips_default = instance;
 
-  // application/main.js
+  // platforms/common/application/main.js
   var dom26 = dom_collection_default;
   var zen9 = createElement;
   var ready17 = dom_default.ready;
@@ -15053,3 +15053,4 @@
   window.Genesis = modules;
   var main_default = modules;
 })();
+//# sourceMappingURL=main.js.map

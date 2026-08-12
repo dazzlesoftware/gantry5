@@ -1,57 +1,66 @@
+// Bootstrap form compatibility for existing platform and particle markup.
+// New markup should use Bootstrap's form classes directly.
+
 fieldset {
-	border: 0;
-	padding: $content-padding;
-	margin: 0 0 $leading-margin 0;
+    border: 0;
+    padding: $content-padding;
+    margin: 0 0 $leading-margin;
 }
 
 label {
-	margin-bottom: $leading-margin / 4;
-	abbr {
-		display: none;
-	}
+    @extend .form-label;
+
+    abbr {
+        display: none;
+    }
 }
 
-textarea, select[multiple=multiple] {
-	transition: border-color;
-	padding: ($leading-margin / 4) ($leading-margin / 4);
-
-	&:focus {
-		outline: none;
-	}
-}
-
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea {
-	transition: border-color;
-	padding: ($leading-margin / 4) ($leading-margin / 4);
-}
-
-input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, input:not([type]):focus, textarea:focus {
-	outline: none;
-}
-
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input:not([type]),
 textarea {
-	resize: vertical;
+    @extend .form-control;
 }
 
-input[type="checkbox"], input[type="radio"] {
-	display: inline;
-	margin-right: $leading-margin / 4;
-}
-
-input[type="file"] {
-	width: 100%;
+input[type="color"] {
+    @extend .form-control;
+    @extend .form-control-color;
 }
 
 select {
-	//width: auto;
-	max-width: 100%;
+    @extend .form-select;
+    max-width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    @extend .form-check-input;
+    display: inline-block;
+    margin-right: $spacer * .25;
+}
+
+input[type="file"] {
+    @extend .form-control;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
 }
 
 button,
+input[type="button"],
+input[type="reset"],
 input[type="submit"] {
-	cursor: pointer;
-	user-select: none;
-	vertical-align: middle;
-	white-space: nowrap;
-	border: inherit;
+    @extend .btn;
 }

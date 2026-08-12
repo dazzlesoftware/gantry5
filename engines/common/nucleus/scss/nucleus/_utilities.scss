@@ -1,161 +1,89 @@
-// Float Classes
-.float-left {
-	float: left !important;
-}
+// Backwards-compatible Genesis names mapped onto Bootstrap 5 utilities.
+// New templates should use the Bootstrap utility class directly.
 
-.float-right {
-	float: right !important;
-}
+.float-left { @extend .float-start; }
+.float-right { @extend .float-end; }
+.hide { @extend .d-none; }
+.center { @extend .text-center; }
+.align-right { @extend .text-end; }
+.align-left { @extend .text-start; }
+.full-height { @extend .min-vh-100; }
 
-.hide {
-	display: none;
-}
-
-// Clearfix
-.clearfix {
-	&::after {
-		clear: both;
-		content: "";
-		display: table;
-	}
-}
-
-// Alignment
-.center {
-	text-align: center !important;
-}
-
-.align-right {
-	text-align: right !important;
-}
-
-.align-left {
-	text-align: left !important;
-}
-
-// Full Height Section
-.full-height {
-	min-height: 100vh;
-}
-
-// Padding and Margin Adjustments
 .nomarginall {
-	margin: 0 !important;
-	.g-content {
-		margin: 0 !important;
-	}
+    @extend .m-0;
+    .g-content { @extend .m-0; }
 }
-
 .nomargintop {
-	margin-top: 0 !important;
-	.g-content {
-		margin-top: 0 !important;
-	}
+    @extend .mt-0;
+    .g-content { @extend .mt-0; }
 }
-
 .nomarginbottom {
-	margin-bottom: 0 !important;
-	.g-content {
-		margin-bottom: 0 !important;
-	}
+    @extend .mb-0;
+    .g-content { @extend .mb-0; }
 }
-
 .nomarginleft {
-    margin-left: 0 !important;
-    .g-content {
-        margin-left: 0 !important;
-    }
+    @extend .ms-0;
+    .g-content { @extend .ms-0; }
 }
-
 .nomarginright {
-    margin-right: 0 !important;
-    .g-content {
-        margin-right: 0 !important;
-    }
+    @extend .me-0;
+    .g-content { @extend .me-0; }
 }
 
 .nopaddingall {
-	padding: 0 !important;
-	.g-content {
-		padding: 0 !important;
-	}
+    @extend .p-0;
+    .g-content { @extend .p-0; }
 }
-
 .nopaddingtop {
-	padding-top: 0 !important;
-	.g-content {
-		padding-top: 0 !important;
-	}
+    @extend .pt-0;
+    .g-content { @extend .pt-0; }
 }
-
 .nopaddingbottom {
-	padding-bottom: 0 !important;
-	.g-content {
-		padding-bottom: 0 !important;
-	}
+    @extend .pb-0;
+    .g-content { @extend .pb-0; }
 }
-
 .nopaddingleft {
-    padding-left: 0 !important;
-    .g-content {
-        padding-left: 0 !important;
-    }
+    @extend .ps-0;
+    .g-content { @extend .ps-0; }
 }
-
 .nopaddingright {
-    padding-right: 0 !important;
-    .g-content {
-        padding-right: 0 !important;
-    }
+    @extend .pe-0;
+    .g-content { @extend .pe-0; }
 }
 
 .g-flushed {
-	padding: 0 !important;
+    @extend .p-0;
 
-	.g-content {
-		padding: 0;
-		margin: 0;
-	}
-
-	.g-container {
-		width: 100%;
-	}
-}
-
-
-// Size Adjustment
-.full-width {
-	flex-grow: 0;
-	flex-basis: 100%;
-	.g-block {
-		flex-grow: 0;
-		flex-basis: 100%;
-	}
-}
-
-// Hidden Classes
-.hidden {
-	display: none;
-	visibility: hidden;
-}
-
-@media print {
-	.visible-print {
-	   display: inherit !important;
-	}
-    .g-block.visible-print {
-        display: block !important;
+    .g-content {
+        @extend .p-0;
+        @extend .m-0;
     }
-	.hidden-print {
-	   display: none !important;
-	}
+
+    .g-container {
+        @extend .w-100;
+    }
 }
 
-// Same Height for Box Variations
-.equal-height {
-    display: flex;
+.full-width {
+    @extend .col-12;
 
-	.g-content {
-		flex-basis: 100%;
-	}
+    .g-block {
+        @extend .col-12;
+    }
+}
+
+.hidden {
+    @extend .d-none;
+    @extend .invisible;
+}
+
+.visible-print { @extend .d-print-block; }
+.hidden-print { @extend .d-print-none; }
+
+.equal-height {
+    @extend .d-flex;
+
+    .g-content {
+        @extend .flex-fill;
+    }
 }

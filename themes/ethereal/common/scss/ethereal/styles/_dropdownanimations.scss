@@ -8,12 +8,12 @@
             transition: opacity .3s ease-out, transform .3s ease-out;
         }
 
-        .g-zoom.g-active {
+        .g-zoom.show {
             animation-duration: .3s;
             animation-name: g-dropdown-zoom;
         }
 
-        .g-fade-in-up.g-active {
+        .g-fade-in-up.show {
             animation-duration: .3s;
             animation-name: g-dropdown-fade-in-up;
         }
@@ -28,12 +28,12 @@
             transition: opacity .3s ease-out, transform .3s ease-out;
         }
 
-        .g-zoom.g-active {
+        .g-zoom.show {
             animation-duration: .3s;
             animation-name: g-dropdown-zoom;
         }
 
-        .g-fade-in-up.g-active {
+        .g-fade-in-up.show {
             animation-duration: .3s;
             animation-name: g-dropdown-fade-in-up;
         }

@@ -480,14 +480,33 @@ The administration Layout Manager is now Bootstrap-native as well:
 - The obsolete equal-width edge handler, percentage animation path, and
   `size_limits` request data have been removed.
 
-### Remaining Nucleus-to-Bootstrap work
+### Nucleus foundation completion (2026-08-11)
 
-1. Audit Nucleus utilities against Bootstrap utilities and replace duplicate
-   spacing, display, visibility, float, and flex helpers where this does not
-   break theme selectors.
-2. Migrate forms as an isolated compatibility pass.
-3. Migrate offcanvas, navigation, and mobile-menu behavior separately; these
-   are interactive components and require per-engine and per-theme QA.
+The remaining shared Nucleus foundation has now moved to Bootstrap 5:
+
+- Bootstrap Reboot owns the browser reset; `_core.scss` contains only the
+  Genesis page shell and platform-specific compatibility rules.
+- Bootstrap owns containers, the 12-column grid, typography primitives,
+  images, tables, forms, buttons, transitions, dropdowns, button groups,
+  navigation, navbar, close controls, offcanvas, helpers, and utilities.
+- Legacy Genesis utility names are compatibility aliases implemented with
+  Bootstrap utilities. They no longer form an independent utility framework.
+- Legacy unclassed form markup is mapped to Bootstrap's `.form-control`,
+  `.form-select`, `.form-check-input`, and `.btn` implementations.
+- Desktop menus use Bootstrap Dropdown, mobile submenus use Bootstrap
+  Collapse, and the mobile panel uses Bootstrap Offcanvas. The former Nucleus
+  menu state engine (`g-active`, `g-inactive`, `g-slide-out`, and `g-go-back`)
+  has been removed from the front-end navigation implementation.
+- Bootstrap JavaScript is bundled once into the local shared front-end asset;
+  Bootstrap 5 no longer depends on a CDN or a platform-specific duplicate.
+- Packaged theme menu selectors were migrated from the old `g-active` state
+  to Bootstrap's `.show` state and compile successfully against the new
+  foundation.
+
+There is no remaining parallel Nucleus layout, reset, form, navigation,
+offcanvas, or utility framework. Genesis-specific theme and particle styles
+remain by design: Bootstrap supplies the framework behavior while those files
+provide the product's visual identity and component-specific layouts.
 
 Particle-local `flex-grow` and `flex-basis` declarations are not automatically
 legacy grid sizing. Many implement internal carousels, cards, media rows, or
