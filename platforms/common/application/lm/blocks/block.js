@@ -4,11 +4,6 @@ import __module0 from './base.js';
 
 let Base = __module0;
 
-let precision = function(value, decimals) {
-    let multiplier = Math.pow(10, decimals);
-    return Math.round(Number(value) * multiplier) / multiplier;
-};
-
 class Block extends Base {
     constructor(options) {
         super(options);
@@ -16,7 +11,7 @@ class Block extends Base {
         this.on('changed', this.hasChanged);
     }
 
-    getColumnSpan(breakpoint) {
+    getColumnSpan(breakpoint = 'xs') {
         let stored = parseInt(this.getAttribute('columns.' + breakpoint), 10);
         if (stored) { return Math.max(1, Math.min(12, stored)); }
         if (breakpoint !== 'xs') { return null; }
@@ -39,60 +34,14 @@ class Block extends Base {
         return this;
     }
 
-    getWidthPercent() {
-        return precision(this.getColumnSpan('xs') / 12 * 100, 1);
-    }
-
-    setWidthPercent(size, store) {
-        size = typeof size === 'undefined' ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size)));
-        size = precision(size, 1);
-        if (store) {
-            this.setAttribute('columns.xs', Math.max(1, Math.min(12, Math.round(size / 100 * 12))));
-        }
-
-        let style = this.block[0].style;
-        style.flex = '0 1 ' + size + '%';
-        style.webkitFlex = '0 1 ' + size + '%';
-        style.msFlex = '0 1 ' + size + '%';
-
+    setColumnSpan(span, store = true, breakpoint = 'xs') {
+        span = typeof span === 'undefined' ? this.getColumnSpan(breakpoint) : parseInt(span, 10);
+        span = Math.max(1, Math.min(12, span || 12));
+        if (store) { this.setAttribute('columns.' + breakpoint, span); }
+        if (this.block && this.block[0]) { this.block[0].removeAttribute('style'); }
         this.applyColumnClasses();
-
-        this.emit('resized', size, this);
-    }
-
-    setAnimatedWidthPercent(size, store) {
-        size = typeof size === 'undefined' ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size)));
-        size = precision(size, 1);
-        if (store) {
-            this.setAttribute('columns.xs', Math.max(1, Math.min(12, Math.round(size / 100 * 12))));
-        }
-
-        let block = this.block[0],
-            target = '0 1 ' + size + '%';
-
-        if (this.sizeAnimation) { this.sizeAnimation.cancel(); }
-        if (typeof block.animate === 'function') {
-            this.sizeAnimation = block.animate([
-                { flex: getComputedStyle(block).flex },
-                { flex: target }
-            ], {
-                duration: 250,
-                easing: 'ease',
-                fill: 'forwards'
-            });
-            this.sizeAnimation.addEventListener('finish', function() {
-                let animation = this.sizeAnimation;
-                this.sizeAnimation = null;
-                block.removeAttribute('style');
-                this.setWidthPercent(size);
-                animation.cancel();
-            }.bind(this), { once: true });
-        } else {
-            block.removeAttribute('style');
-            this.setWidthPercent(size);
-        }
-
-        this.emit('resized', size, this);
+        this.emit('resized', span, this);
+        return this;
     }
 
     layout() {

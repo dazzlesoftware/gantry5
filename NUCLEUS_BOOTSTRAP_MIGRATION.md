@@ -466,39 +466,27 @@ The persisted and front-end legacy size system is removed:
 - Persisted format 0/1/2 layouts in the packaged themes: **0**.
 - Front-end rows and columns render with Bootstrap `.row` and `.col-*`.
 
-One internal cleanup slice remains before the administration implementation
-can be called fully Bootstrap-native. The Layout Manager still contains **40
-references across 7 source files** to the percentage-era APIs
-`getWidthPercent()`, `setWidthPercent()`, and `setAnimatedWidthPercent()`:
+The administration Layout Manager is now Bootstrap-native as well:
 
-| Source | References |
-| --- | ---: |
-| `platforms/common/application/lm/layoutmanager.js` | 20 |
-| `platforms/common/application/lm/index.js` | 7 |
-| `platforms/common/application/lm/blocks/block.js` | 7 |
-| `platforms/common/application/lm/blocks/particle.js` | 2 |
-| `platforms/common/application/lm/blocks/section.js` | 2 |
-| `platforms/common/application/lm/builder.js` | 1 |
-| `platforms/common/application/lm/blocks/wrapper.js` | 1 |
-
-These calls no longer create `.size-*` classes or persist float widths, but
-they still calculate transient percentages for old relocation, normalization,
-and animation paths. They must be replaced rather than described as already
-deleted.
+- Percentage-era APIs `getWidthPercent()`, `setWidthPercent()`, and
+  `setAnimatedWidthPercent()`: **0 references** in source and built output.
+- Columns are read and written as integer Bootstrap spans through
+  `getColumnSpan()` and `setColumnSpan()`.
+- Column elements receive `.col-*`, `.col-sm-*`, `.col-md-*`, `.col-lg-*`,
+  and `.col-xl-*` classes; the Layout Manager no longer writes percentage
+  `flex` styles.
+- Removal, insertion, settings updates, row-layout changes, and cross-row
+  moves normalize the affected Bootstrap rows to 12 integer columns.
+- The obsolete equal-width edge handler, percentage animation path, and
+  `size_limits` request data have been removed.
 
 ### Remaining Nucleus-to-Bootstrap work
 
-1. Replace the Layout Manager percentage APIs with `getColumnSpan()` and
-   `setColumnSpan()` operating directly on integer spans from 1 through 12.
-2. Delete the percentage resize and animated-width calculations from
-   `layoutmanager.js`, then remove obsolete resize/move event paths.
-3. Make every row mutation operate directly on breakpoint span maps whose
-   active row total is 12.
-4. Audit Nucleus utilities against Bootstrap utilities and replace duplicate
+1. Audit Nucleus utilities against Bootstrap utilities and replace duplicate
    spacing, display, visibility, float, and flex helpers where this does not
    break theme selectors.
-5. Migrate forms as an isolated compatibility pass.
-6. Migrate offcanvas, navigation, and mobile-menu behavior separately; these
+2. Migrate forms as an isolated compatibility pass.
+3. Migrate offcanvas, navigation, and mobile-menu behavior separately; these
    are interactive components and require per-engine and per-theme QA.
 
 Particle-local `flex-grow` and `flex-basis` declarations are not automatically

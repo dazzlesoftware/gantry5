@@ -1,4 +1,4 @@
-﻿import __module0 from '../utils/event-emitter.js';
+import __module0 from '../utils/event-emitter.js';
 import __module1 from './blocks/index.js';
 import __module2 from './id.js';
 import __module3 from './normalize-grid-columns.js';
@@ -155,7 +155,7 @@ class Builder extends EventEmitter {
             target = parent ? document.querySelector('[data-lm-id="' + CSS.escape(parent) + '"]') : root;
         if (target) { target.appendChild(block); }
 
-        if (Element.getType() === 'block') { Element.setWidthPercent(); }
+        if (Element.getType() === 'block') { Element.setColumnSpan(); }
         this.add(Element);
         Element.emit('rendered', Element, parent ? this.map[parent] : null);
         return Element;

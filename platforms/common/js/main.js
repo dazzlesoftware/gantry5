@@ -4633,24 +4633,6 @@
       let parent = this.block[0].parentElement && this.block[0].parentElement.closest("[data-lm-id]");
       return parent ? this.options.builder.get(parent.getAttribute("data-lm-id")) : null;
     }
-    getLimits(parent) {
-      if (!parent) {
-        return false;
-      }
-      let parentBlock = parent.block[0], sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
-      if (!sibling) {
-        return [100, 100];
-      }
-      let siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id"));
-      if (siblingBlock.getType() !== "block") {
-        return false;
-      }
-      let sizes = {
-        current: this.getParent().getWidthPercent(),
-        sibling: siblingBlock.getWidthPercent()
-      };
-      return [5, sizes.current + sizes.sibling - 5];
-    }
   };
   Section.prototype.options = {};
   var section_default = Section;
@@ -4687,9 +4669,6 @@
       return '<div class="wrapper-section" data-lm-id="' + this.getId() + '" data-lm-blocktype="' + this.getType() + '" data-lm-blocksubtype="' + this.getSubType() + '"></div>';
     }
     hasChanged() {
-    }
-    getWidthPercent() {
-      return false;
     }
     getId() {
       return this.id || (this.id = this.options.type);
@@ -4804,17 +4783,13 @@
 
   // application/lm/blocks/block.js
   var Base6 = base_default;
-  var precision = function(value, decimals) {
-    let multiplier = Math.pow(10, decimals);
-    return Math.round(Number(value) * multiplier) / multiplier;
-  };
   var Block = class extends Base6 {
     constructor(options) {
       super(options);
       this.applyColumnClasses();
       this.on("changed", this.hasChanged);
     }
-    getColumnSpan(breakpoint) {
+    getColumnSpan(breakpoint = "xs") {
       let stored2 = parseInt(this.getAttribute("columns." + breakpoint), 10);
       if (stored2) {
         return Math.max(1, Math.min(12, stored2));
@@ -4844,53 +4819,18 @@
       }, this);
       return this;
     }
-    getWidthPercent() {
-      return precision(this.getColumnSpan("xs") / 12 * 100, 1);
-    }
-    setWidthPercent(size3, store) {
-      size3 = typeof size3 === "undefined" ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size3)));
-      size3 = precision(size3, 1);
+    setColumnSpan(span, store = true, breakpoint = "xs") {
+      span = typeof span === "undefined" ? this.getColumnSpan(breakpoint) : parseInt(span, 10);
+      span = Math.max(1, Math.min(12, span || 12));
       if (store) {
-        this.setAttribute("columns.xs", Math.max(1, Math.min(12, Math.round(size3 / 100 * 12))));
+        this.setAttribute("columns." + breakpoint, span);
       }
-      let style = this.block[0].style;
-      style.flex = "0 1 " + size3 + "%";
-      style.webkitFlex = "0 1 " + size3 + "%";
-      style.msFlex = "0 1 " + size3 + "%";
+      if (this.block && this.block[0]) {
+        this.block[0].removeAttribute("style");
+      }
       this.applyColumnClasses();
-      this.emit("resized", size3, this);
-    }
-    setAnimatedWidthPercent(size3, store) {
-      size3 = typeof size3 === "undefined" ? this.getWidthPercent() : Math.max(0, Math.min(100, parseFloat(size3)));
-      size3 = precision(size3, 1);
-      if (store) {
-        this.setAttribute("columns.xs", Math.max(1, Math.min(12, Math.round(size3 / 100 * 12))));
-      }
-      let block = this.block[0], target = "0 1 " + size3 + "%";
-      if (this.sizeAnimation) {
-        this.sizeAnimation.cancel();
-      }
-      if (typeof block.animate === "function") {
-        this.sizeAnimation = block.animate([
-          { flex: getComputedStyle(block).flex },
-          { flex: target }
-        ], {
-          duration: 250,
-          easing: "ease",
-          fill: "forwards"
-        });
-        this.sizeAnimation.addEventListener("finish", (function() {
-          let animation = this.sizeAnimation;
-          this.sizeAnimation = null;
-          block.removeAttribute("style");
-          this.setWidthPercent(size3);
-          animation.cancel();
-        }).bind(this), { once: true });
-      } else {
-        block.removeAttribute("style");
-        this.setWidthPercent(size3);
-      }
-      this.emit("resized", size3, this);
+      this.emit("resized", span, this);
+      return this;
     }
     layout() {
       return '<div class="g-block" data-lm-id="' + this.getId() + '"' + this.dropzone() + ' data-lm-blocktype="block"><button type="button" class="lm-column-add" data-lm-nodrag data-lm-column-add aria-label="Add content"><span aria-hidden="true">+</span></button></div>';
@@ -5030,22 +4970,6 @@
     getCategoryClass() {
       let type = this.getType(), subtype = this.getSubType(), template = document.querySelector('.particles-container [data-lm-blocktype="' + CSS.escape(type) + '"][data-lm-subtype="' + CSS.escape(subtype || "") + '"]');
       return template ? " particle-category-" + (template.getAttribute("data-lm-category") || "general") : "";
-    }
-    getLimits(parent) {
-      if (!parent) {
-        return false;
-      }
-      let parentBlock = parent.block[0], sibling = Array.from(parentBlock.parentElement ? parentBlock.parentElement.children : []).filter(function(candidate) {
-        return candidate !== parentBlock && candidate.getAttribute("data-lm-blocktype") === "block";
-      })[0] || false;
-      if (!sibling) {
-        return [100, 100];
-      }
-      let siblingBlock = this.options.builder.get(sibling.getAttribute("data-lm-id")), sizes = {
-        current: this.getParent().getWidthPercent(),
-        sibling: siblingBlock && typeof siblingBlock.getWidthPercent === "function" ? siblingBlock.getWidthPercent() : 0
-      };
-      return [5, sizes.current + sizes.sibling - 5];
     }
   };
   Particle.prototype.options = {
@@ -5315,7 +5239,7 @@
         target.appendChild(block);
       }
       if (Element2.getType() === "block") {
-        Element2.setWidthPercent();
+        Element2.setColumnSpan();
       }
       this.add(Element2);
       Element2.emit("rendered", Element2, parent ? this.map[parent] : null);
@@ -6076,10 +6000,6 @@
   var keys = function(object) {
     return Object.keys(object || {});
   };
-  var precision2 = function(value, decimals) {
-    let multiplier = Math.pow(10, decimals);
-    return Math.round(Number(value) * multiplier) / multiplier;
-  };
   var find = function(collection, callback) {
     return Array.prototype.find.call(collection || [], callback);
   };
@@ -6433,25 +6353,6 @@
       if (this.block.getType() === "grid" && (blocks = root.search('[data-lm-dropzone]:not([data-lm-blocktype="grid"])'))) {
         blocks.style({ "pointer-events": "inherit" });
       }
-      let siblings2 = this.block.block.siblings('[data-lm-blocktype="block"]:not(.original-placeholder)');
-      if (siblings2 && this.block.getType() == "block") {
-        let size3 = this.block.getWidthPercent(), diff = size3 / siblings2.length, newSize, block, total = 0, last3;
-        siblings2.forEach(function(sibling, index) {
-          sibling = dom8(sibling);
-          block = get(this.builder.map, sibling.data("lm-id"));
-          if (index + 1 == siblings2.length) {
-            last3 = block;
-          }
-          newSize = precision2(block.getWidthPercent() + diff, 0);
-          total += newSize;
-          block.setWidthPercent(newSize, true);
-        }, this);
-        if (total != 100 && last3) {
-          size3 = last3.getWidthPercent();
-          diff = 100 - total;
-          last3.setWidthPercent(size3 + diff, true);
-        }
-      }
       this.eraser.hide();
       this.dragdrop.detachDragEvents();
       this.builder.remove(this.block.getId());
@@ -6462,6 +6363,7 @@
         }, this);
       }
       this.block.block.remove();
+      this.builder.normalizeGridColumns(root[0]);
       if (this.placeholder) {
         this.placeholder.remove();
       }
@@ -6497,11 +6399,11 @@
         return;
       }
       target = dom8(target);
-      let wrapper, insider, multiLocationResize = false, blockWasNew = this.block.isNew(), type = this.block.getType(), targetId = target.data("lm-id"), targetType = !targetId ? false : get(this.builder.map, targetId) ? get(this.builder.map, targetId).getType() : target.data("lm-blocktype"), placeholderParent = this.placeholder.parent();
+      let wrapper, insider, blockWasNew = this.block.isNew(), type = this.block.getType(), targetId = target.data("lm-id"), targetType = !targetId ? false : get(this.builder.map, targetId) ? get(this.builder.map, targetId).getType() : target.data("lm-blocktype"), placeholderParent = this.placeholder.parent();
       if (!placeholderParent) {
         return;
       }
-      let parentId = placeholderParent.data("lm-id"), parentType = get(this.builder.map, parentId || "") ? get(this.builder.map, parentId).getType() : false, resizeCase = false;
+      let parentId = placeholderParent.data("lm-id"), parentType = get(this.builder.map, parentId || "") ? get(this.builder.map, parentId).getType() : false;
       this.original.remove();
       if (blockWasNew && type !== "block" && type !== "grid" && targetType === "block" && parentType === "block") {
         insider = new Blocks2[type]({
@@ -6526,29 +6428,15 @@
           title: this.element.text(),
           builder: this.builder
         }).setLayout(this.block.block);
-        wrapper.setWidthPercent();
+        wrapper.setColumnSpan(12);
         this.block = wrapper;
         this.builder.add(wrapper);
         this.builder.add(insider);
         insider.emit("rendered", insider, wrapper);
         wrapper.emit("rendered", wrapper, null);
-        resizeCase = { case: 1 };
       }
       if (this.originalType === "block" && this.block.getType() === "block") {
-        resizeCase = { case: 3 };
-        let previous = this.block.block.parent('[data-lm-blocktype="grid"]'), placeholderPrevious = this.placeholder.parent('[data-lm-blocktype="grid"]');
-        if (placeholderPrevious !== previous) {
-          multiLocationResize = {
-            from: this.block.block.siblings('[data-lm-blocktype="block"]:not(.placeholder)'),
-            to: this.placeholder.siblings('[data-lm-blocktype="block"]:not(.placeholder)')
-          };
-        }
-        if (previous.parent('[data-lm-blocktype="container"]')) {
-          previous = previous.parent();
-        }
-        previous = previous.siblings(":not(.original-placeholder)");
         this.block.block.attribute("style", null);
-        this.block.setWidthPercent();
       }
       if (type === "grid" && !siblings) {
         let plus = this.block.block.parent('[data-lm-blocktype="section"]').find(".fa-plus");
@@ -6556,56 +6444,10 @@
           plus.emit("click");
         }
       }
-      if (this.block.hasAttribute("columns.xs") && typeof this.block.getWidthPercent === "function") {
-        this.block.setWidthPercent(this.placeholder.compute("flex"));
-      }
       this.block.insert(this.placeholder);
       this.placeholder.remove();
       if (blockWasNew) {
         this.element.attribute("style", null);
-      }
-      if (multiLocationResize.from || multiLocationResize.to && multiLocationResize.to != this.block.block) {
-        let size3 = this.block.getWidthPercent(), diff, block;
-        if (!multiLocationResize.to) {
-          this.block.setWidthPercent(100, true);
-        }
-        if (multiLocationResize.from) {
-          diff = size3 / multiLocationResize.from.length;
-          let total = 0, curSize;
-          multiLocationResize.from.forEach(function(sibling) {
-            sibling = dom8(sibling);
-            block = get(this.builder.map, sibling.data("lm-id"));
-            if (!block || typeof block.getWidthPercent !== "function") {
-              return;
-            }
-            curSize = block.getWidthPercent() + diff;
-            block.setWidthPercent(curSize, true);
-            total += curSize;
-          }, this);
-          if (total !== 100) {
-            diff = (100 - total) / multiLocationResize.from.length;
-            multiLocationResize.from.forEach(function(sibling) {
-              sibling = dom8(sibling);
-              block = get(this.builder.map, sibling.data("lm-id"));
-              if (!block || typeof block.getWidthPercent !== "function") {
-                return;
-              }
-              curSize = block.getWidthPercent() + diff;
-              block.setWidthPercent(curSize, true);
-            }, this);
-          }
-        }
-        if (multiLocationResize.to) {
-          size3 = 100 / (multiLocationResize.to.length + 1);
-          multiLocationResize.to.forEach(function(sibling) {
-            sibling = dom8(sibling);
-            block = get(this.builder.map, sibling.data("lm-id"));
-            if (block && typeof block.setWidthPercent === "function") {
-              block.setWidthPercent(size3, true);
-            }
-          }, this);
-          this.block.setWidthPercent(size3, true);
-        }
       }
       singles.disable();
       singles.cleanup(this.builder);
@@ -6623,7 +6465,7 @@
         this.block = get(this.builder.map, element.data("lm-id"));
       }
       if (this.block && this.block.getType() === "block") {
-        this.block.setWidthPercent();
+        this.block.applyColumnClasses();
       }
       if (this.block && this.block.isNew() && this.element) {
         this.element.attribute("style", null);
@@ -6635,7 +6477,7 @@
             element2 = dom8(element2);
             block = get(this.builder.map, element2.data("lm-id"));
             element2.attribute("style", null);
-            block.setWidthPercent();
+            block.applyColumnClasses();
           }, this);
         }
       }
@@ -7795,39 +7637,6 @@
       layoutmanager.eraser.setElement(document.querySelector("[data-lm-eraseblock]"));
       layoutmanager.eraser.hide(true);
     });
-    ["click", "touchend"].forEach(function(evt) {
-      body.delegate(evt, "[data-lm-samewidth]:not(:empty)", function(event, element) {
-        window.Genesis.tips.hide(element[0]);
-        let clientRect = element[0].getBoundingClientRect();
-        if ((event.clientX || event.pageX || event.changedTouches[0].pageX || 0) < clientRect.width + clientRect.left) {
-          return;
-        }
-        let blocks = element.search('> [data-lm-blocktype="block"]'), id2;
-        if (!blocks || blocks.length == 1) {
-          return;
-        }
-        blocks.forEach(function(block) {
-          id2 = dom11(block).data("lm-id");
-          builder.get(id2).setWidthPercent(100 / blocks.length, true);
-        });
-        lmhistory.push(builder.serialize(), lmhistory.get().preset);
-      });
-    });
-    body.delegate("mouseover", "[data-lm-samewidth]:not(:empty)", function(event, element) {
-      let clientRect = element[0].getBoundingClientRect(), clientX = event.clientX || event.touches && event.touches[0].clientX || 0, tooltips = {
-        equalize: clientX + 5 > clientRect.width + clientRect.left,
-        move: clientX - 5 < clientRect.left
-      };
-      if (!tooltips.equalize && !tooltips.move) {
-        return;
-      }
-      let msg = tooltips.equalize ? translate9("GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE") : translate9("GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE");
-      element.data("tip", msg).data("tip-offset", -30);
-      window.Genesis.tips.get(element[0]).content(msg).place(tooltips.equalize ? "top-left" : "top-right").show();
-    });
-    body.delegate("mouseout", "[data-lm-samewidth]:not(:empty)", function(event, element) {
-      window.Genesis.tips.hide(element[0]);
-    });
     body.delegate("click", "[data-lm-clear]", function(event, element) {
       if (event && event.preventDefault) {
         event.preventDefault();
@@ -7988,7 +7797,6 @@
         data2.options = builder.get(element.data("lm-id")).getAttributes() || {};
         data2.inherit = builder.get(element.data("lm-id")).getInheritance() || {};
         data2.block = parent && parentType !== "wrapper" ? builder.get(parent.data("lm-id")).getAttributes() || {} : {};
-        data2.size_limits = builder.get(element.data("lm-id")).getLimits(!parent ? false : builder.get(parent.data("lm-id")));
         data2.parent = section ? section.data("lm-id") : null;
         if (!data2.type) {
           delete data2.type;
@@ -8069,14 +7877,9 @@
                     }
                     if (response2.body.data.block && size2(response2.body.data.block)) {
                       block = builder.get(parentID);
-                      let sibling = block.block.nextSibling() || block.block.previousSibling(), currentSize = block.getWidthPercent(), diffSize;
                       block.setAttributes(response2.body.data.block);
-                      diffSize = currentSize - block.getWidthPercent();
-                      block.setAnimatedWidthPercent(block.getWidthPercent());
-                      if (sibling) {
-                        sibling = builder.get(sibling.data("lm-id"));
-                        sibling.setAnimatedWidthPercent(parseFloat(sibling.getWidthPercent()) + diffSize, true);
-                      }
+                      block.applyColumnClasses();
+                      builder.normalizeGridColumns();
                     }
                     if (response2.body.data.inherit) {
                       delete response2.body.data.inherit.section;
@@ -8224,7 +8027,7 @@
         if (!mapped) {
           return 1;
         }
-        return Math.max(1, Math.min(12, parseInt(mapped.getAttribute("columns.xs"), 10) || Math.round((mapped.getWidthPercent() || 0) / 100 * 12)));
+        return mapped ? mapped.getColumnSpan("xs") : 1;
       }), currentByBreakpoint = { xs: current };
       ["sm", "md", "lg", "xl"].forEach(function(breakpoint) {
         let values = blocks.map(function(child) {
@@ -8269,8 +8072,7 @@
           blocks.slice(0, columns.length).forEach(function(child, index) {
             let mapped = builder.get(child.getAttribute("data-lm-id"));
             if (mapped) {
-              mapped.setAttribute("columns.xs", columns[index]);
-              mapped.setWidthPercent(columns[index] / 12 * 100, true);
+              mapped.setColumnSpan(columns[index], true, "xs");
             }
           });
           if (columns.length > blocks.length) {
@@ -8461,7 +8263,7 @@
   var mapRange = function(value, min1, max1, min2, max2) {
     return min2 + (value - min1) / (max1 - min1) * (max2 - min2);
   };
-  var precision3 = function(value, decimals) {
+  var precision = function(value, decimals) {
     let multiplier = Math.pow(10, decimals);
     return Math.round(value * multiplier) / multiplier;
   };
@@ -8521,7 +8323,7 @@
         parent.style.flex = flex;
       }
       if (pc) {
-        pc.value = precision3(size3, 1);
+        pc.value = precision(size3, 1);
       }
     }
     start(event, element, siblings2, offset) {
@@ -8600,8 +8402,8 @@
       let size3, diff = 100 - this.siblings.occupied, value = clientX + (!this.siblings.prevs ? this.origin.offset.x - this.origin.offset.down : this.siblings.prevs.length), normalized = clamp(value, parentRect.left, parentRect.right);
       size3 = mapRange(normalized, parentRect.left, parentRect.right, 0, 100);
       size3 = size3 - this.siblings.sizeBefore;
-      size3 = precision3(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
-      diff = precision3(diff - size3, 0);
+      size3 = precision(clamp(size3, this.options.minSize, this.origin.maxSize - this.options.minSize), 0);
+      diff = precision(diff - size3, 0);
       this.setSize(this.element, size3);
       this.setSize(this.siblings.next, diff);
       let siblings2 = this.siblings.elements, amount = siblings2 ? siblings2.length + 1 : 1;
@@ -8611,7 +8413,7 @@
         blocks.forEach(function(block, index) {
           size3 = this.getSize(block);
           if (size3 % 1) {
-            size3 = precision3(100 / amount, 0);
+            size3 = precision(100 / amount, 0);
             this.setSize(block, size3);
           }
           total += size3;
@@ -8687,7 +8489,7 @@
     }
     evenResize(elements, animated) {
       elements = asElements(elements);
-      let total = elements.length, size3 = precision3(100 / total, 4);
+      let total = elements.length, size3 = precision(100 / total, 4);
       elements.forEach(function(element) {
         this.setSize(element, size3, typeof animated == "undefined" ? false : animated);
       }, this);

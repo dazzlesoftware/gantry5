@@ -23,10 +23,6 @@ let get = function(object, key) {
     keys = function(object) {
         return Object.keys(object || {});
     },
-    precision = function(value, decimals) {
-        let multiplier = Math.pow(10, decimals);
-        return Math.round(Number(value) * multiplier) / multiplier;
-    },
     find = function(collection, callback) {
         return Array.prototype.find.call(collection || [], callback);
     },
@@ -425,29 +421,6 @@ let LayoutManagerDefinition = {
             blocks.style({ 'pointer-events': 'inherit' });
         }
 
-        let siblings = this.block.block.siblings('[data-lm-blocktype="block"]:not(.original-placeholder)');
-
-        if (siblings && this.block.getType() == 'block') {
-            let size                  = this.block.getWidthPercent(),
-                diff                  = size / siblings.length,
-                newSize, block, total = 0, last;
-            siblings.forEach(function(sibling, index) {
-                sibling = dom(sibling);
-                block = get(this.builder.map, sibling.data('lm-id'));
-                if (index + 1 == siblings.length) { last = block; }
-                newSize = precision(block.getWidthPercent() + diff, 0);
-                total += newSize;
-                block.setWidthPercent(newSize, true);
-            }, this);
-
-            // ensuring it's always 100%
-            if (total != 100 && last) {
-                size = last.getWidthPercent();
-                diff = 100 - total;
-                last.setWidthPercent(size + diff, true);
-            }
-        }
-
         this.eraser.hide();
 
         this.dragdrop.detachDragEvents();
@@ -462,6 +435,10 @@ let LayoutManagerDefinition = {
         }
 
         this.block.block.remove();
+
+        // Rebalance the surviving Bootstrap spans after the removed column is
+        // gone. No percentage widths or inline flex styles are involved.
+        this.builder.normalizeGridColumns(root[0]);
 
         if (this.placeholder) { this.placeholder.remove(); }
         if (this.original) { this.original.remove(); }
@@ -501,7 +478,6 @@ let LayoutManagerDefinition = {
         target = dom(target);
 
         let wrapper, insider,
-            multiLocationResize = false,
             blockWasNew         = this.block.isNew(),
             type                = this.block.getType(),
             targetId            = target.data('lm-id'),
@@ -511,8 +487,7 @@ let LayoutManagerDefinition = {
         if (!placeholderParent) { return; }
 
         let parentId   = placeholderParent.data('lm-id'),
-            parentType = get(this.builder.map, parentId || '') ? get(this.builder.map, parentId).getType() : false,
-            resizeCase = false;
+            parentType = get(this.builder.map, parentId || '') ? get(this.builder.map, parentId).getType() : false;
 
         this.original.remove();
 
@@ -547,7 +522,7 @@ let LayoutManagerDefinition = {
                 builder: this.builder
             }).setLayout(this.block.block);
 
-            wrapper.setWidthPercent();
+            wrapper.setColumnSpan(12);
 
             this.block = wrapper;
             this.builder.add(wrapper);
@@ -556,35 +531,18 @@ let LayoutManagerDefinition = {
             insider.emit('rendered', insider, wrapper);
             wrapper.emit('rendered', wrapper, null);
 
-            resizeCase = { case: 1 };
         }
 
-        // case 2: moving a block around, need to fix sizes if it's a multi location resize
+        // Moving an existing Bootstrap column only changes its DOM location.
+        // The shared normalizer assigns integer spans after insertion.
         if (this.originalType === 'block' && this.block.getType() === 'block') {
-            resizeCase = { case: 3 };
-            let previous            = this.block.block.parent('[data-lm-blocktype="grid"]'),
-                placeholderPrevious = this.placeholder.parent('[data-lm-blocktype="grid"]');
-            //if (previous.find('!> [data-lm-blocktype="container"]')) { previous = previous.parent(); }
-            //if (placeholderPrevious.find('!> [data-lm-blocktype="container"]')) { placeholderPrevious = placeholderPrevious.parent(); }
-            if (placeholderPrevious !== previous) {
-                multiLocationResize = {
-                    from: this.block.block.siblings('[data-lm-blocktype="block"]:not(.placeholder)'),
-                    to: this.placeholder.siblings('[data-lm-blocktype="block"]:not(.placeholder)')
-                };
-            }
-
-            if (previous.parent('[data-lm-blocktype="container"]')) { previous = previous.parent(); }
-            previous = previous.siblings(':not(.original-placeholder)');
             this.block.block.attribute('style', null);
-            this.block.setWidthPercent();
         }
 
         if (type === 'grid' && !siblings) {
             let plus = this.block.block.parent('[data-lm-blocktype="section"]').find('.fa-plus');
             if (plus) { plus.emit('click'); }
         }
-
-        if (this.block.hasAttribute('columns.xs') && typeof this.block.getWidthPercent === 'function') { this.block.setWidthPercent(this.placeholder.compute('flex')); }
 
         this.block.insert(this.placeholder);
         this.placeholder.remove();
@@ -593,50 +551,6 @@ let LayoutManagerDefinition = {
             this.element.attribute('style', null);
         }
 
-
-        if (multiLocationResize.from || (multiLocationResize.to && multiLocationResize.to != this.block.block)) {
-            // if !from / !to means it's empty grid, should we remove it?
-            let size = this.block.getWidthPercent(), diff, block;
-
-            // we are moving the particle to an empty grid, resetting the size to 100%
-            if (!multiLocationResize.to) { this.block.setWidthPercent(100, true); }
-
-            // we need to compensate the remaining blocks on the FROM with the leaving particle size
-            if (multiLocationResize.from) {
-                diff = size / multiLocationResize.from.length;
-                let total = 0, curSize;
-                multiLocationResize.from.forEach(function(sibling) {
-                    sibling = dom(sibling);
-                    block = get(this.builder.map, sibling.data('lm-id'));
-                    if (!block || typeof block.getWidthPercent !== 'function') { return; }
-                    curSize = block.getWidthPercent() + diff;
-                    block.setWidthPercent(curSize, true);
-                    total += curSize;
-                }, this);
-
-                if (total !== 100) {
-                    diff = (100 - total) / multiLocationResize.from.length;
-                    multiLocationResize.from.forEach(function(sibling) {
-                        sibling = dom(sibling);
-                        block = get(this.builder.map, sibling.data('lm-id'));
-                        if (!block || typeof block.getWidthPercent !== 'function') { return; }
-                        curSize = block.getWidthPercent() + diff;
-                        block.setWidthPercent(curSize, true);
-                    }, this);
-                }
-            }
-
-            // the TO is receiving a new block so we are going to evenize
-            if (multiLocationResize.to) {
-                size = 100 / (multiLocationResize.to.length + 1);
-                multiLocationResize.to.forEach(function(sibling) {
-                    sibling = dom(sibling);
-                    block = get(this.builder.map, sibling.data('lm-id'));
-                    if (block && typeof block.setWidthPercent === 'function') { block.setWidthPercent(size, true); }
-                }, this);
-                this.block.setWidthPercent(size, true);
-            }
-        }
 
         singles.disable();
         singles.cleanup(this.builder);
@@ -653,7 +567,7 @@ let LayoutManagerDefinition = {
         singles.disable();
 
         if (!this.block) { this.block = get(this.builder.map, element.data('lm-id')); }
-        if (this.block && this.block.getType() === 'block') { this.block.setWidthPercent(); }
+        if (this.block && this.block.getType() === 'block') { this.block.applyColumnClasses(); }
         if (this.block && this.block.isNew() && this.element) { this.element.attribute('style', null); }
 
         if (this.originalType === 'grid') {
@@ -663,7 +577,7 @@ let LayoutManagerDefinition = {
                     element = dom(element);
                     block = get(this.builder.map, element.data('lm-id'));
                     element.attribute('style', null);
-                    block.setWidthPercent();
+                    block.applyColumnClasses();
                 }, this);
             }
         }

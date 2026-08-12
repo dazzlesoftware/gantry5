@@ -156,20 +156,6 @@ class Section extends Base {
         return parent ? this.options.builder.get(parent.getAttribute('data-lm-id')) : null;
     }
 
-    getLimits(parent) {
-        if (!parent) { return false; }
-        let parentBlock = parent.block[0],
-            sibling = parentBlock.nextElementSibling || parentBlock.previousElementSibling || false;
-        if (!sibling) { return [100, 100]; }
-
-        let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id'));
-        if (siblingBlock.getType() !== 'block') { return false; }
-        let sizes = {
-            current: this.getParent().getWidthPercent(),
-            sibling: siblingBlock.getWidthPercent()
-        };
-        return [5, (sizes.current + sizes.sibling) - 5];
-    }
 }
 
 Section.prototype.options = {};

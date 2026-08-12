@@ -11,10 +11,6 @@ class Wrapper extends Section {
 
     hasChanged() {}
 
-    getWidthPercent() {
-        return false;
-    }
-
     getId() {
         return this.id || (this.id = this.options.type);
     }

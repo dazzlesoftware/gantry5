@@ -253,50 +253,6 @@ ready(function() {
         layoutmanager.eraser.hide(true);
     });
 
-    // Grid same widths button (evenize, equalize)
-    ['click', 'touchend'].forEach(function(evt){
-        body.delegate(evt, '[data-lm-samewidth]:not(:empty)', function(event, element) {
-            window.Genesis.tips.hide(element[0]);
-            let clientRect = element[0].getBoundingClientRect();
-            if ((event.clientX || event.pageX || event.changedTouches[0].pageX || 0) < clientRect.width + clientRect.left) { return; }
-
-            let blocks = element.search('> [data-lm-blocktype="block"]'), id;
-            if (!blocks || blocks.length == 1) { return; }
-
-            blocks.forEach(function(block) {
-                id = dom(block).data('lm-id');
-                builder.get(id).setWidthPercent(100 / blocks.length, true);
-            });
-
-            lmhistory.push(builder.serialize(), lmhistory.get().preset);
-        });
-    });
-
-    body.delegate('mouseover', '[data-lm-samewidth]:not(:empty)', function(event, element) {
-        let clientRect = element[0].getBoundingClientRect(),
-            clientX = event.clientX || (event.touches && event.touches[0].clientX) || 0,
-            tooltips = {
-                equalize: clientX + 5 > clientRect.width + clientRect.left,
-                move: clientX - 5 < clientRect.left
-            };
-
-        if (!tooltips.equalize && !tooltips.move) { return; }
-
-        let msg = tooltips.equalize ? translate('GENESIS_PLATFORM_JS_LM_GRID_EQUALIZE') : translate('GENESIS_PLATFORM_JS_LM_GRID_SORT_MOVE');
-
-        element.data('tip', msg).data('tip-offset', -30);
-
-        window.Genesis.tips
-            .get(element[0])
-            .content(msg)
-            .place(tooltips.equalize ? 'top-left' : 'top-right')
-            .show();
-    });
-
-    body.delegate('mouseout', '[data-lm-samewidth]:not(:empty)', function(event, element) {
-        window.Genesis.tips.hide(element[0]);
-    });
-
     // Clear Layout
     body.delegate('click', '[data-lm-clear]', function(event, element) {
         if (event && event.preventDefault) { event.preventDefault(); }
@@ -498,7 +454,6 @@ ready(function() {
             data.options = builder.get(element.data('lm-id')).getAttributes() || {};
             data.inherit = builder.get(element.data('lm-id')).getInheritance() || {};
             data.block = parent && parentType !== 'wrapper' ? builder.get(parent.data('lm-id')).getAttributes() || {} : {};
-            data.size_limits = builder.get(element.data('lm-id')).getLimits(!parent ? false : builder.get(parent.data('lm-id')));
             data.parent = section ? section.data('lm-id') : null;
 
             if (!data.type) { delete data.type; }
@@ -586,20 +541,9 @@ ready(function() {
                             if (response.body.data.block && size(response.body.data.block)) {
                                 block = builder.get(parentID);
 
-                                let sibling = block.block.nextSibling() || block.block.previousSibling(),
-                                    currentSize = block.getWidthPercent(),
-                                    diffSize;
-
                                 block.setAttributes(response.body.data.block);
-
-                                diffSize = currentSize - block.getWidthPercent();
-
-                                block.setAnimatedWidthPercent(block.getWidthPercent());
-
-                                if (sibling) {
-                                    sibling = builder.get(sibling.data('lm-id'));
-                                    sibling.setAnimatedWidthPercent(parseFloat(sibling.getWidthPercent()) + diffSize, true);
-                                }
+                                block.applyColumnClasses();
+                                builder.normalizeGridColumns();
                             }
 
                             // particle inheritance
@@ -778,8 +722,7 @@ ready(function() {
             current = blocks.map(function(child) {
                 let mapped = builder.get(child.getAttribute('data-lm-id'));
                 if (!mapped) { return 1; }
-                return Math.max(1, Math.min(12, parseInt(mapped.getAttribute('columns.xs'), 10) ||
-                    Math.round((mapped.getWidthPercent() || 0) / 100 * 12)));
+                return mapped ? mapped.getColumnSpan('xs') : 1;
             }),
             currentByBreakpoint = { xs: current };
 
@@ -821,8 +764,7 @@ ready(function() {
                 blocks.slice(0, columns.length).forEach(function(child, index) {
                     let mapped = builder.get(child.getAttribute('data-lm-id'));
                     if (mapped) {
-                        mapped.setAttribute('columns.xs', columns[index]);
-                        mapped.setWidthPercent((columns[index] / 12) * 100, true);
+                        mapped.setColumnSpan(columns[index], true, 'xs');
                     }
                 });
                 if (columns.length > blocks.length) {

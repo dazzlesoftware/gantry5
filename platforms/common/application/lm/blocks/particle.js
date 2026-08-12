@@ -124,21 +124,6 @@ class Particle extends Atom {
         return template ? ' particle-category-' + (template.getAttribute('data-lm-category') || 'general') : '';
     }
 
-    getLimits(parent) {
-        if (!parent) { return false; }
-        let parentBlock = parent.block[0],
-            sibling = Array.from(parentBlock.parentElement ? parentBlock.parentElement.children : []).filter(function(candidate) {
-                return candidate !== parentBlock && candidate.getAttribute('data-lm-blocktype') === 'block';
-            })[0] || false;
-        if (!sibling) { return [100, 100]; }
-
-        let siblingBlock = this.options.builder.get(sibling.getAttribute('data-lm-id')),
-            sizes = {
-                current: this.getParent().getWidthPercent(),
-                sibling: siblingBlock && typeof siblingBlock.getWidthPercent === 'function' ? siblingBlock.getWidthPercent() : 0
-            };
-        return [5, (sizes.current + sizes.sibling) - 5];
-    }
 }
 
 Particle.prototype.options = {
