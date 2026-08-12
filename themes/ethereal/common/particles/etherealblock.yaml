@@ -28,22 +28,20 @@ form:
       placeholder: Enter title
 
     left:
-      type: input.text
-      label: Left Size
-      description: Left block size in percentages (5-100).
-      placeholder: Enter percentages (5-100)
-      append:
-        type: "text"
-        text: "%"
+      type: input.number
+      label: Left Columns
+      description: Bootstrap columns out of 12.
+      min: 1
+      max: 11
+      default: 4
 
     right:
-      type: input.text
-      label: Right Size
-      description: Right block size in percentages (5-100).
-      placeholder: Enter percentages (5-100)
-      append:
-        type: "text"
-        text: "%"
+      type: input.number
+      label: Right Columns
+      description: Bootstrap columns out of 12.
+      min: 1
+      max: 11
+      default: 8
 
 
     image1:

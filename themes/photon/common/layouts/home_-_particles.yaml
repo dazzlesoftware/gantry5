@@ -661,6 +661,6 @@ content:
   custom-5195:
     title: 'Custom HTML'
     attributes:
-      html: "<div class=\"g-grid g-sample-sitemap\">\n<div class=\"g-block\">\n<ul class=\"nomarginall g-bottom-menu align-right\">\n<li><a href=\"index.php\">Home</a> </li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> About</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Terms</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Legal</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Disclaimer</a></li>\n</ul>\n</div>\n</div>"
+      html: "<div class=\"row g-grid g-sample-sitemap\">\n<div class=\"col g-block\">\n<ul class=\"nomarginall g-bottom-menu align-right\">\n<li><a href=\"index.php\">Home</a> </li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> About</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Terms</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Legal</a></li>\n<li><a href=\"#\"><i class=\"fa fa-circle\"></i> Disclaimer</a></li>\n</ul>\n</div>\n</div>"
   mobile-menu-7951:
     title: 'Mobile Menu'

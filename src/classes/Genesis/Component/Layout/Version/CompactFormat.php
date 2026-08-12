@@ -13,7 +13,7 @@ namespace Genesis\Component\Layout\Version;
 /**
  * Read layout from simplified yaml file.
  */
-class Format2
+abstract class CompactFormat
 {
     /** @var array */
     protected $scopes = [0 => 'grid', 1 => 'block'];
@@ -52,7 +52,7 @@ class Format2
                 $params = [];
             }
             $child = $this->parse($field, $params);
-            unset($child->size);
+            unset($child->widthToken);
 
             $result[] = $child;
         }
@@ -105,7 +105,7 @@ class Format2
             $scope = ($scope + 1) % 2;
 
         } else {
-            list ($type, $subtype, $id, $size, $section_id, $boxed) = $this->parseSectionString($field);
+            list ($type, $subtype, $id, $widthToken, $section_id, $boxed) = $this->parseSectionString($field);
 
             if ($type === 'grid') {
                 $scope = 1;
@@ -138,8 +138,8 @@ class Format2
                 $result->inherit = (object) $result->inherit;
             }
 
-            if ($size) {
-                $result->size = $size;
+            if ($widthToken) {
+                $result->widthToken = $widthToken;
             }
             if (($type === 'grid' || $type === 'block') && !isset($result->attributes->id)) {
                 $result->attributes->id = $section_id;
@@ -157,10 +157,10 @@ class Format2
                 } else {
                     $child = $this->resolve($params, $scope, $result);
                 }
-                if (!empty($child->size)) {
-                    $result->attributes->size = $child->size;
+                if (!empty($child->widthToken)) {
+                    $this->applyWidthToken($result, $child->widthToken);
                 }
-                unset($child->size);
+                unset($child->widthToken);
                 $result->children[] = $child;
             }
         }
@@ -176,7 +176,7 @@ class Format2
      */
     protected function resolve($field, $scope, $parent)
     {
-        list ($type, $subtype, $id, $size, $content_id) = $this->parseContentString($field);
+        list ($type, $subtype, $id, $widthToken, $content_id) = $this->parseContentString($field);
 
         $title = $this->getTitle($type, $subtype, $id);
 
@@ -202,8 +202,8 @@ class Format2
             if ($parent->type === 'block' && !empty($block)) {
                 $parent->attributes = (object) ($block + (array) $parent->attributes);
             }
-            if ($size) {
-                $result->attributes->size = $size;
+            if ($widthToken) {
+                $this->applyWidthToken($result, $widthToken);
             }
         }
         if ($scope <= 1) {
@@ -211,8 +211,8 @@ class Format2
             if (!empty($block)) {
                 $result->attributes = (object) $block;
             }
-            if ($size) {
-                $result->attributes->size = $size;
+            if ($widthToken) {
+                $this->applyWidthToken($result, $widthToken);
             }
         }
         if ($scope === 0) {
@@ -257,7 +257,7 @@ class Format2
 
         // Clean up all items for saving.
         foreach ($content['children'] as &$child) {
-            $size = null;
+            $widthToken = null;
             $id = $child['id'];
             $type = $child['type'];
             $subtype = $child['subtype'];
@@ -273,9 +273,9 @@ class Format2
                             break;
                         case 'block':
                             if ($ctype === 'block') {
-                                // Keep block size, responsive column overrides, and fixed status.
+                                // Keep responsive column overrides and fixed status.
                                 $attributes = !empty($content['attributes']) ? $content['attributes'] : [];
-                                $content['attributes'] = array_intersect_key($attributes, ['fixed' => 1, 'size' => 1, 'columns' => 1]);
+                                $content['attributes'] = array_intersect_key($attributes, ['fixed' => 1, 'columns' => 1]);
                             }
                             break;
                         case 'children':
@@ -323,9 +323,8 @@ class Format2
             }
 
             if ($ctype === 'block') {
-                // Embed size into array key/value.
-                $size = $this->getCompactWidth($content['attributes']);
-                unset ($content['attributes']['size']);
+                // Embed the Bootstrap span into the compact array key/value.
+                $widthToken = $this->getCompactWidth($content['attributes']);
                 // Embed parent block.
                 if (!empty($content['attributes'])) {
                     $child['block'] = $content['attributes'];
@@ -333,9 +332,8 @@ class Format2
                 }
             }
 
-            if (isset($child['attributes']['size']) || isset($child['attributes']['columns']['xs'])) {
-                if (is_string($value)) { $size = $this->getCompactWidth($child['attributes']); }
-                unset ($child['attributes']['size']);
+            if (isset($child['attributes']['columns']['xs'])) {
+                if (is_string($value)) { $widthToken = $this->getCompactWidth($child['attributes']); }
             }
 
             // Remove attributes if there aren't any.
@@ -371,14 +369,14 @@ class Format2
                 if ($id) {
                     // Sections and other complex items.
                     $id = isset($child['attributes']['boxed']) ? "/{$id}/" : $id;
-                    $result[trim("{$id} {$size}")] = $value;
+                    $result[trim("{$id} {$widthToken}")] = $value;
                 } elseif (!empty($value)) {
                     // Simple grid / block item.
                     $result[] = $value;
                 }
             } else {
                 // Add content item.
-                $result[] = trim("{$value} {$size}");
+                $result[] = trim("{$value} {$widthToken}");
             }
         }
         unset($child);
@@ -400,9 +398,24 @@ class Format2
      */
     protected function getCompactWidth(array $attributes)
     {
-        return isset($attributes['size']) && $attributes['size'] != 100
-            ? $attributes['size']
-            : null;
+        $span = (int) ($attributes['columns']['xs'] ?? 12);
+
+        return $span === 12 ? null : max(1, min(12, $span));
+    }
+
+    /**
+     * Apply a compact Bootstrap span to a runtime item.
+     *
+     * @param object $item
+     * @param int|float $widthToken
+     */
+    protected function applyWidthToken($item, $widthToken)
+    {
+        $columns = isset($item->attributes->columns)
+            ? (array) $item->attributes->columns
+            : [];
+        $columns['xs'] = max(1, min(12, (int) round($widthToken)));
+        $item->attributes->columns = $columns;
     }
 
     /**
@@ -411,10 +424,10 @@ class Format2
      */
     protected function parseSectionString($string)
     {
-        // Extract: "[section-id] [size]".
+        // Extract: "[section-id] [Bootstrap span]".
         $list = explode(' ', $string, 2);
         $section_id = array_shift($list);
-        $size = ((float) array_shift($list)) ?: null;
+        $widthToken = ((float) array_shift($list)) ?: null;
 
         // Extract slashes from "/[section-id]/".
         $boxedLeft = $section_id[0] === '/';
@@ -437,7 +450,7 @@ class Format2
             $id = $section_id;
         }
 
-        return [$type, $subtype, $id, $size, $section_id, $boxed];
+        return [$type, $subtype, $id, $widthToken, $section_id, $boxed];
     }
 
     /**
@@ -446,10 +459,10 @@ class Format2
      */
     protected function parseContentString($string)
     {
-        // Extract: "[type-subtype] [size]".
+        // Extract: "[type-subtype] [Bootstrap span]".
         $list = explode(' ', $string, 2);
         $content_id = array_shift($list);
-        $size = ((float) array_shift($list)) ?: null;
+        $widthToken = ((float) array_shift($list)) ?: null;
 
         // Extract sub-type if it exists: "[type]-[subtype]-[id]".
         $list = explode('-', $content_id);
@@ -470,7 +483,7 @@ class Format2
             $subtype = 'position';
         }
 
-        return [$type, $subtype ?: $type, $id, $size, $content_id];
+        return [$type, $subtype ?: $type, $id, $widthToken, $content_id];
     }
 
     /**

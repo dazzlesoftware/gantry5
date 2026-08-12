@@ -250,6 +250,17 @@ class Item implements \ArrayAccess, \Iterator, \Serializable, \Countable, \JsonS
     }
 
     /**
+     * Return a Bootstrap column span for a menu column.
+     *
+     * @param string|int $column
+     * @return int
+     */
+    public function columnSpan($column)
+    {
+        return max(1, min(12, (int) round($this->columnWidth($column) / 100 * 12)));
+    }
+
+    /**
      * @return array
      */
     public function groups()

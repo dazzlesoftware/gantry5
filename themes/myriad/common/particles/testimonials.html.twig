@@ -8,8 +8,8 @@
 
         <div id="testimonials" class="{{ particle.class|e }} g-swipercarousel-testimonials">
             {% if particle.title or particle.description %}
-                <div class="g-grid">
-                    <div class="g-block">
+                <div class="row g-grid">
+                    <div class="col g-block">
                         <div class="g-content g-swipercarousel-header">
                             {% if particle.title %}<h2 class="title">{{ particle.title }}</h2>{% endif %}
                             {% if particle.description %}<div class="g-swipercarousel-description">{{ particle.description|html|raw }}</div>{% endif %}

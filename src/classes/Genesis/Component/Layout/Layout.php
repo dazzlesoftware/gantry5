@@ -996,10 +996,8 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
      * carry an explicit override at that breakpoint sum to 12 columns.
      *
      * `columns`, like every other nested attribute value (e.g. `extra`), is
-     * a plain PHP array once loaded — attributes themselves are cast to
-     * stdClass but their nested values are not (see Format1::load() /
-     * Format2::parse(), which only cast the top-level attributes object) —
-     * so it's read/written with array syntax, not `->`.
+     * a plain PHP array once loaded; attributes themselves are cast to
+     * stdClass, while nested values retain array syntax.
      *
      * Breakpoints are normalized independently on Bootstrap's 12-column grid. Only
      * breakpoints where 2+ siblings already have an explicit override are

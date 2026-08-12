@@ -12,12 +12,6 @@ let precision = function(value, decimals) {
 class Block extends Base {
     constructor(options) {
         super(options);
-        let legacyWidth = options && options.attributes && Number(options.attributes.size);
-        let hasAuthoredColumn = options && options.attributes && options.attributes.columns && options.attributes.columns.xs;
-        if (!hasAuthoredColumn && legacyWidth) {
-            this.setAttribute('columns.xs', Math.max(1, Math.min(12, Math.round(legacyWidth / 100 * 12))));
-        }
-        delete this.attributes.size;
         this.applyColumnClasses();
         this.on('changed', this.hasChanged);
     }

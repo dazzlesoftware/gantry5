@@ -4,8 +4,8 @@
     <div class="{{ particle.class|e }}">
         <div class="g-blockcontent">
             {% if particle.icon or particle.image or particle.headline or particle.description or particle.linktext or particle.title %}
-                <div class="g-grid">
-                    <div class="g-block">
+                <div class="row g-grid">
+                    <div class="col g-block">
                         <div class="g-content g-blockcontent-header">
                             {% if particle.title %}
                                 <h2 class="g-title">
@@ -31,11 +31,11 @@
                 </div>
             {% endif %}
 
-            <div class="g-grid g-blockcontent-subcontent">
+            <div class="row g-grid g-blockcontent-subcontent">
                 {% if not particle.source or particle.source == 'particle' %}
                     {% if particle.subcontents is not empty %}
                         {% for subcontent in particle.subcontents %}
-                            <div class="g-block g-blockcontent-subcontent-block {{ subcontent.class }} {% if subcontent.accent %}g-blockcontent-subcontent-block-{{ subcontent.accent }}{% endif %}">
+                            <div class="col g-block g-blockcontent-subcontent-block {{ subcontent.class }} {% if subcontent.accent %}g-blockcontent-subcontent-block-{{ subcontent.accent }}{% endif %}">
                                 <div class="g-content g-blockcontent-subcontent-block-content">
                                     {% if subcontent.rokboximage %}
                                         <a data-rel="lightcase" title="{{ subcontent.rokboxcaption|e }}" href="{{ url(subcontent.rokboximage) }}">

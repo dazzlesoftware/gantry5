@@ -44,10 +44,10 @@
 		            	<div class="g-slideshow-title">{{ item.title|raw }}</div>
 						<div class="g-swiper-slideshow-desc">{% if item.desc %}{{ item.desc|raw }}{% endif %}</div>
 						<div class="g-swiper-slideshow-button">{% if item.link %}<a href="{{ item.link|e }}" class="button button-2">{{ item.linktext|raw }}</a>{% endif %}</div>
-		            	<div class="g-grid g-slideshow-overlay">
-		            		<div class="g-block g-slideshow-overlay-left"></div>
-		            		<div class="g-block g-slideshow-overlay-right"></div>
-		            	</div>
+                        <div class="row g-grid g-slideshow-overlay">
+                            <div class="col g-block g-slideshow-overlay-left"></div>
+                            <div class="col g-block g-slideshow-overlay-right"></div>
+                        </div>
 		            </div>	            
 		        {% endfor %}
 		    </div>

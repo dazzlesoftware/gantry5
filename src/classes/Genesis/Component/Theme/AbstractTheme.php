@@ -25,7 +25,6 @@ use Twig\Extension\DebugExtension;
 use Twig\Loader\ChainLoader;
 use Twig\Loader\FilesystemLoader;
 use Twig\Loader\LoaderInterface;
-use Twig\TwigFilter;
 
 /**
  * Class AbstractTheme
@@ -97,11 +96,6 @@ abstract class AbstractTheme
         $this->setTwigLoaderPaths($loader);
 
         $twig->addExtension(new TwigExtension);
-
-        if (method_exists($this, 'toColumns')) {
-            $filter = new TwigFilter('toColumns', [$this, 'toColumns']);
-            $twig->addFilter($filter);
-        }
 
         return $twig;
     }

@@ -8,8 +8,8 @@
     {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
 
     {% if particle.icon or particle.image or particle.headline or particle.description or particle.linktext %}
-    <div class="g-grid">
-      <div class="g-block">
+    <div class="row g-grid">
+      <div class="col g-block">
         <div class="g-content">
           {% if particle.image %}<img src="{{ url(particle.image) }}" class="g-blockcontent-image" alt="{{ particle.headline|e }}" />{% endif %}
           {% if particle.icon %}<span class="g-blockcontent-title-icon"><i class="{{ particle.icon }}"></i></span>{% endif %}
@@ -20,9 +20,9 @@
       </div>
     </div>
     {% endif %}
-    <div class="g-grid g-blockcontent-subcontent">
+    <div class="row g-grid g-blockcontent-subcontent">
       {% for subcontent in particle.subcontents %}
-        <div class="g-block g-blockcontent-subcontent-block {{ subcontent.class }}">
+        <div class="col g-block g-blockcontent-subcontent-block {{ subcontent.class }}">
           <div class="g-content g-blockcontent-subcontent-block-content">
             {% if subcontent.rokboximage %}<a data-rel="lightcase" title="{{ subcontent.rokboxcaption|e }}" href="{{ url(subcontent.rokboximage) }}">{% endif %}
             {% if subcontent.img %}<img src="{{ url(subcontent.img) }}" class="g-blockcontent-subcontent-img" alt="{{ subcontent.subtitle|e }}" />{% endif %}

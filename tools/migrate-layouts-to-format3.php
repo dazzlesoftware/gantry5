@@ -41,6 +41,11 @@ foreach ($iterator as $file) {
         },
         $contents
     );
+    $contents = str_replace(
+        ['class="g-grid', "class='g-grid", 'class=\\"g-grid', 'class="g-block', "class='g-block", 'class=\\"g-block'],
+        ['class="row g-grid', "class='row g-grid", 'class=\\"row g-grid', 'class="col g-block', "class='col g-block", 'class=\\"col g-block'],
+        $contents
+    );
     if ($contents !== $original) {
         $classConverted++;
     }

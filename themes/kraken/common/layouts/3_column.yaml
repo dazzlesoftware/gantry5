@@ -1,78 +1,432 @@
+version: 3
 preset:
-  image: genesis-admin://images/layouts/3-col.png
+  image: 'genesis-admin://images/layouts/3-col.png'
   name: 3_column
-
 layout:
-  top:
-    container:
-      - system-messages
-      - [position-top-a 33.3,position-top-b 33.3,position-top-c 33.3]
-
-  navigation:
-    container:
-      - [position-navigation-a 25, position-navigation-b 55, position-navigation-c 20]
-
-  header:
-    container:
-      - [position-header-a 33.3,position-header-b 33.3,position-header-c 33.3]
-
-  showcase:
-    container:
-      - [position-showcase-a 33.3,position-showcase-b 33.3,position-showcase-c 33.3]
-
-  above:
-    container:
-      - [position-above-a 33.3,position-above-b 33.3,position-above-c 33.3]
-
-  utility:
-    container:
-      - [position-utility-a 33.3,position-utility-b 33.3,position-utility-c 33.3]
-
-  feature:
-    container:
-      - [position-feature-a 33.3,position-feature-b 33.3,position-feature-c 33.3]
-
-  container:
-    1:
-      - sidebar 20:
-        - position-sidebar
-      - mainbody 60:
-        - [position-mainbar-a 33.3,position-mainbar-b 33.3,position-mainbar-c 33.3]
-        - pagecontent
-      - aside 20:
-        - position-aside
-
-  expanded:
-    container:
-      - [position-expanded-a 33.3,position-expanded-b 33.3,position-expanded-c 33.3]
-
-  extension:
-    container:
-      - [position-extension-a 33.3,position-extension-b 33.3,position-extension-c 33.3]
-
-  bottom:
-    container:
-      - [position-bottom-a 33.3,position-bottom-b 33.3,position-bottom-c 33.3]
-
-  footer:
-    container:
-      - [position-footer-a 33.3,position-footer-b 33.3,position-footer-c 33.3]
-      - [particle-logo 20,particle-horizontalmenu 60,particle-social 20]
-
-  copyright:
-    container:
-      - [particle-branding 25,particle-copyright 50,particle-totop 25]
-      - [position-copyright-a 33.3,position-copyright-b 33.3,position-copyright-c 33.3]
-
+  /top/:
+    -
+      - system-messages-3810
+    -
+      - position-3980
+      - position-6085
+      - position-7807
+  /navigation/:
+    -
+      - position-6606
+      - position-2631
+      - position-4026
+  /header/:
+    -
+      - position-3039
+      - position-8192
+      - position-2747
+  /showcase/:
+    -
+      - position-2577
+      - position-9946
+      - position-9050
+  /above/:
+    -
+      - position-5680
+      - position-9795
+      - position-7975
+  /utility/:
+    -
+      - position-6338
+      - position-9131
+      - position-6431
+  /feature/:
+    -
+      - position-2251
+      - position-7154
+      - position-4366
+  /container-9022/:
+    -
+      -
+        sidebar:
+          -
+            - position-5379
+      -
+        mainbody:
+          -
+            - position-8111
+            - position-2467
+            - position-1659
+          -
+            - system-content-3726
+      -
+        aside:
+          -
+            - position-1145
+  /expanded/:
+    -
+      - position-8236
+      - position-3970
+      - position-4962
+  /extension/:
+    -
+      - position-3763
+      - position-6555
+      - position-4906
+  /bottom/:
+    -
+      - position-7548
+      - position-8953
+      - position-1493
+  /footer/:
+    -
+      - position-2357
+      - position-8567
+      - position-4630
+    -
+      - logo-1034
+      - horizontalmenu-2210
+      - social-5702
+  /copyright/:
+    -
+      - branding-6125
+      - copyright-9955
+      - totop-5596
+    -
+      - position-4065
+      - position-4277
+      - position-6347
   fixedside:
-    - particle-logo
-    - particle-social
-    - position-fixedside
-
+    -
+      - logo-6056
+    -
+      - social-5062
+    -
+      - position-4154
   offcanvas:
-    - particle-logo
-    - particle-social
-    - particle-mobile-menu
-    - position-offcanvas
-
-  atoms:
+    -
+      - logo-5643
+    -
+      - social-9277
+    -
+      - mobile-menu-8029
+    -
+      - position-7587
+structure:
+  top:
+    type: section
+    attributes:
+      id: g-top
+      boxed: ''
+  navigation:
+    type: section
+    attributes:
+      id: g-navigation
+      boxed: ''
+  header:
+    attributes:
+      id: g-header
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      id: g-showcase
+      boxed: ''
+  above:
+    type: section
+    attributes:
+      id: g-above
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      id: g-utility
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      id: g-feature
+      boxed: ''
+  sidebar:
+    type: section
+    attributes:
+      id: g-sidebar
+  mainbody:
+    type: section
+    attributes:
+      id: g-mainbody
+  aside:
+    attributes:
+      id: g-aside
+  container-9022:
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      id: g-expanded
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      id: g-extension
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      id: g-bottom
+      boxed: ''
+  footer:
+    attributes:
+      id: g-footer
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      id: g-copyright
+      boxed: ''
+  fixedside:
+    type: section
+    attributes:
+      id: g-fixedside
+  offcanvas:
+    attributes:
+      id: g-offcanvas
+content:
+  system-messages-3810:
+    title: Messages
+    layout: false
+  position-3980:
+    title: Top-a
+    attributes:
+      key: top-a
+    layout: false
+  position-6085:
+    title: Top-b
+    attributes:
+      key: top-b
+    layout: false
+  position-7807:
+    title: Top-c
+    attributes:
+      key: top-c
+    layout: false
+  position-6606:
+    title: Navigation-a
+    attributes:
+      key: navigation-a
+    layout: false
+  position-2631:
+    title: Navigation-b
+    attributes:
+      key: navigation-b
+    layout: false
+  position-4026:
+    title: Navigation-c
+    attributes:
+      key: navigation-c
+    layout: false
+  position-3039:
+    title: Header-a
+    attributes:
+      key: header-a
+    layout: false
+  position-8192:
+    title: Header-b
+    attributes:
+      key: header-b
+    layout: false
+  position-2747:
+    title: Header-c
+    attributes:
+      key: header-c
+    layout: false
+  position-2577:
+    title: Showcase-a
+    attributes:
+      key: showcase-a
+    layout: false
+  position-9946:
+    title: Showcase-b
+    attributes:
+      key: showcase-b
+    layout: false
+  position-9050:
+    title: Showcase-c
+    attributes:
+      key: showcase-c
+    layout: false
+  position-5680:
+    title: Above-a
+    attributes:
+      key: above-a
+    layout: false
+  position-9795:
+    title: Above-b
+    attributes:
+      key: above-b
+    layout: false
+  position-7975:
+    title: Above-c
+    attributes:
+      key: above-c
+    layout: false
+  position-6338:
+    title: Utility-a
+    attributes:
+      key: utility-a
+    layout: false
+  position-9131:
+    title: Utility-b
+    attributes:
+      key: utility-b
+    layout: false
+  position-6431:
+    title: Utility-c
+    attributes:
+      key: utility-c
+    layout: false
+  position-2251:
+    title: Feature-a
+    attributes:
+      key: feature-a
+    layout: false
+  position-7154:
+    title: Feature-b
+    attributes:
+      key: feature-b
+    layout: false
+  position-4366:
+    title: Feature-c
+    attributes:
+      key: feature-c
+    layout: false
+  position-5379:
+    title: Sidebar
+    attributes:
+      key: sidebar
+    layout: false
+  position-8111:
+    title: Mainbar-a
+    attributes:
+      key: mainbar-a
+    layout: false
+  position-2467:
+    title: Mainbar-b
+    attributes:
+      key: mainbar-b
+    layout: false
+  position-1659:
+    title: Mainbar-c
+    attributes:
+      key: mainbar-c
+    layout: false
+  system-content-3726:
+    layout: false
+  position-1145:
+    title: Aside
+    attributes:
+      key: aside
+    layout: false
+  position-8236:
+    title: Expanded-a
+    attributes:
+      key: expanded-a
+    layout: false
+  position-3970:
+    title: Expanded-b
+    attributes:
+      key: expanded-b
+    layout: false
+  position-4962:
+    title: Expanded-c
+    attributes:
+      key: expanded-c
+    layout: false
+  position-3763:
+    title: Extension-a
+    attributes:
+      key: extension-a
+    layout: false
+  position-6555:
+    title: Extension-b
+    attributes:
+      key: extension-b
+    layout: false
+  position-4906:
+    title: Extension-c
+    attributes:
+      key: extension-c
+    layout: false
+  position-7548:
+    title: Bottom-a
+    attributes:
+      key: bottom-a
+    layout: false
+  position-8953:
+    title: Bottom-b
+    attributes:
+      key: bottom-b
+    layout: false
+  position-1493:
+    title: Bottom-c
+    attributes:
+      key: bottom-c
+    layout: false
+  position-2357:
+    title: Footer-a
+    attributes:
+      key: footer-a
+    layout: false
+  position-8567:
+    title: Footer-b
+    attributes:
+      key: footer-b
+    layout: false
+  position-4630:
+    title: Footer-c
+    attributes:
+      key: footer-c
+    layout: false
+  logo-1034:
+    layout: false
+  horizontalmenu-2210:
+    layout: false
+  social-5702:
+    layout: false
+  branding-6125:
+    layout: false
+  copyright-9955:
+    layout: false
+  totop-5596:
+    layout: false
+  position-4065:
+    title: Copyright-a
+    attributes:
+      key: copyright-a
+    layout: false
+  position-4277:
+    title: Copyright-b
+    attributes:
+      key: copyright-b
+    layout: false
+  position-6347:
+    title: Copyright-c
+    attributes:
+      key: copyright-c
+    layout: false
+  logo-6056:
+    layout: false
+  social-5062:
+    layout: false
+  position-4154:
+    title: Fixedside
+    attributes:
+      key: fixedside
+    layout: false
+  logo-5643:
+    layout: false
+  social-9277:
+    layout: false
+  mobile-menu-8029:
+    layout: false
+  position-7587:
+    title: Offcanvas
+    attributes:
+      key: offcanvas
+    layout: false

@@ -16,7 +16,7 @@ namespace Genesis\Component\Layout\Version;
  * to a block is a Bootstrap span from 1 to 12 instead of a percentage. The
  * runtime uses the responsive `columns` map directly.
  */
-class Format3 extends Format2
+class Format3 extends CompactFormat
 {
     /**
      * @return array
@@ -68,14 +68,11 @@ class Format3 extends Format2
             $existing = isset($item->attributes->columns)
                 ? (array) $item->attributes->columns
                 : [];
-            $span = !empty($existing['xs'])
-                ? (int) $existing['xs']
-                : (int) ($item->attributes->size ?? 12);
+            $span = !empty($existing['xs']) ? (int) $existing['xs'] : 12;
             $span = max(1, min(12, $span));
 
             $existing['xs'] = $span;
             $item->attributes->columns = $existing;
-            unset($item->attributes->size);
         }
 
         foreach ($item->children ?? [] as $child) {
@@ -99,7 +96,6 @@ class Format3 extends Format2
             $span = max(1, min(12, $span));
 
             $item['attributes']['columns']['xs'] = $span;
-            unset($item['attributes']['size']);
         }
 
         foreach ($item['children'] ?? [] as &$child) {

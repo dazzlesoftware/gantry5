@@ -6,8 +6,8 @@
 
   <div class="g-etherealblock {{ particle.class|e }}">
     
-    <div class="g-grid">
-      <div class="g-block g-etherealblock-item g-etherealblock-item-1 size-{{ particle.left|default('33')|raw }}" style="background-image: url('{{ url(particle.image1)|e }}');">
+    <div class="row g-grid">
+      <div class="col g-block g-etherealblock-item g-etherealblock-item-1 col-{{ particle.left|default(4)|e }}" style="background-image: url('{{ url(particle.image1)|e }}');">
         <div class="g-content">
           <div class="g-etherealblock-content">
             <div class="g-tag"><a href="{{ particle.link1|e }}">{{ particle.title1|e }}</a></div>
@@ -28,9 +28,9 @@
         </div>
       </div>
       
-      <div class="g-block g-etherealblock-item size-{{ particle.left|default('67')|raw }}">
-        <div class="g-grid">
-          <div class="g-block g-etherealblock-item g-etherealblock-item-2" style="background-image: url('{{ url(particle.image2)|e }}');">
+      <div class="col g-block g-etherealblock-item col-{{ particle.right|default(8)|e }}">
+        <div class="row g-grid">
+          <div class="col g-block g-etherealblock-item g-etherealblock-item-2" style="background-image: url('{{ url(particle.image2)|e }}');">
             <div class="g-content">
               <div class="g-etherealblock-content">
                 <h2 class="g-larger"><a href="{{ particle.link2|e }}">{{ particle.title2|e }}</a></h2>
@@ -40,8 +40,8 @@
             </div>
           </div>
         </div>
-        <div class="g-grid">
-          <div class="g-block g-etherealblock-item g-etherealblock-item-3">
+        <div class="row g-grid">
+          <div class="col g-block g-etherealblock-item g-etherealblock-item-3">
             <div class="g-content">
               <div class="g-etherealblock-content">
                 <div class="g-headline">{{ particle.desc3|e }}</div>
@@ -60,7 +60,7 @@
               </div>    
             </div>
           </div>
-          <div class="g-block g-etherealblock-item g-etherealblock-item-4" style="background-image: url('{{ url(particle.image4)|e }}');">
+          <div class="col g-block g-etherealblock-item g-etherealblock-item-4" style="background-image: url('{{ url(particle.image4)|e }}');">
             <div class="g-content">
               <div class="g-etherealblock-content">
                 {% if particle.listgriditems4 %}

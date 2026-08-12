@@ -549,36 +549,6 @@ ready(function() {
                 let urlTemplate = container.querySelector('.g-urltemplate');
                 if (urlTemplate) { urlTemplate.dispatchEvent(new Event('input', { bubbles: true })); }
 
-                let blockSize = container.querySelector('[name="block[size]"]');
-
-                // logic for limits
-                if (blockSize && data.size_limits) {
-                    let note = container.querySelector('.blocksize-note'),
-                        min = precision(data.size_limits[0], 1),
-                        max = precision(data.size_limits[1], 1);
-
-                    blockSize.setAttribute('min', min);
-                    blockSize.setAttribute('max', max);
-
-                    if (note) {
-                        let noteHTML = note.innerHTML;
-                        noteHTML = noteHTML.replace(/#min#/g, min);
-                        noteHTML = noteHTML.replace(/#max#/g, max);
-
-                        note.innerHTML = noteHTML;
-                        let noteVariant = note.querySelector('.blocksize-' + (min == max ? 'range' : 'fixed'));
-                        if (noteVariant) { noteVariant.classList.add('hidden'); }
-                    }
-
-                    let isValid = function() {
-                        return parseFloat(blockSize.value) >= min && parseFloat(blockSize.value) <= max ? '' : translate('GENESIS_PLATFORM_JS_LM_SIZE_LIMITS_RANGE');
-                    };
-
-                    blockSize.addEventListener('input', function(){
-                        blockSize.setCustomValidity(isValid());
-                    });
-                }
-
                 // Particle Settings apply
                 submit.forEach(function(target) {
                     target.addEventListener('click', function(e) {

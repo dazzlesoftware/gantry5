@@ -6,10 +6,10 @@
     {% endif %}
 
     <div class="g-genesisfeatures {{ particle.class|default('fp-features')|e }}">
-        <div class="g-grid">
+        <div class="row g-grid">
             {% for item in particle.items %}
                 {% if not item.disabled %}
-                    <div class="g-block size-{{ particle.columns|default('33-3')|e }} {{ item.class|e }}">
+                    <div class="col g-block col-{{ particle.columns|default(4)|e }} {{ item.class|e }}">
                         <div class="card">
                             <div class="card-block">
                                 {% if item.icon %}

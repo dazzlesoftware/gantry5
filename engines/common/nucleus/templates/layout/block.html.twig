@@ -1,6 +1,12 @@
 {% set attr_extra = segment.attributes.extra|attribute_array %}
 
-{% set class = 'g-block ' ~ segment.attributes.columns|toColumns
+{% set column_classes = ['col-' ~ segment.attributes.columns.xs|default(12)] %}
+{% for breakpoint in ['sm', 'md', 'lg', 'xl'] %}
+    {% if attribute(segment.attributes.columns, breakpoint)|default(false) %}
+        {% set column_classes = column_classes|merge(['col-' ~ breakpoint ~ '-' ~ attribute(segment.attributes.columns, breakpoint)]) %}
+    {% endif %}
+{% endfor %}
+{% set class = 'g-block ' ~ column_classes|join(' ')
     ~ (segment.attributes.variations ? ' ' ~ segment.attributes.variations|join(' '))
     ~ (segment.attributes.class ? ' ' ~ segment.attributes.class|join(' ')) %}
 

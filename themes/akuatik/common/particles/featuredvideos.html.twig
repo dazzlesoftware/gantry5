@@ -14,8 +14,8 @@
             {% endif %}
         </div>
 
-        <div class="g-grid">
-            <div class="g-block col-6">
+        <div class="row g-grid">
+            <div class="col g-block col-6">
                 {% for video in particle.videos %}
                     {% if loop.first %}
                         <div class="g-featuredvideos-item first">
@@ -53,11 +53,11 @@
                 {% endfor %}
             </div>
 
-            <div class="g-block col-6">
-                <div class="g-grid">
+            <div class="col g-block col-6">
+                <div class="row g-grid">
                     {% for video in particle.videos %}
                         {% if not loop.first %}
-                            <div class="g-block col-6">
+                            <div class="col g-block col-6">
                                 <div class="g-featuredvideos-item">
                                     <div class="g-featuredvideos-item-image">
                                         <a href="{{ video.url }}" class="g-featuredvideos-item-yt" title="{{ particle.title }}" data-rel="lightcase:{{ id }}">

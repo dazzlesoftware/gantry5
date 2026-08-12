@@ -14,7 +14,7 @@ if (!$root || !is_dir($root) || !is_file($autoload)) {
 }
 
 require $autoload;
-require_once __DIR__ . '/../src/classes/Genesis/Component/Layout/Version/Format2.php';
+require_once __DIR__ . '/../src/classes/Genesis/Component/Layout/Version/CompactFormat.php';
 require_once __DIR__ . '/../src/classes/Genesis/Component/Layout/Version/Format3.php';
 require_once __DIR__ . '/../src/classes/Genesis/Component/Layout/LayoutReader.php';
 
@@ -68,9 +68,6 @@ function assertBootstrapBlocks($value, string $path): void
 {
     if (is_object($value)) {
         if (($value->type ?? null) === 'block') {
-            if (isset($value->attributes->size)) {
-                throw new RuntimeException("{$path}: loaded block {$value->id} still contains a legacy size attribute");
-            }
             $columns = isset($value->attributes->columns)
                 ? (array) $value->attributes->columns
                 : [];

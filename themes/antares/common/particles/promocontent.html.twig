@@ -73,7 +73,7 @@
 		{% endif %}
 		
 		{% if particle.link and (particle.linkstyle == 'block' or particle.linkstyle == 'aside') %}
-		<div class="g-block-action-button"><a target="{{ particle.linktarget|default('_self')|e }}" href="{{ particle.link|e }}" class="button {{ particle.readmoreclass|e }}">{{ particle.readmore|raw }}</a></div>
+		<div class="col g-block-action-button"><a target="{{ particle.linktarget|default('_self')|e }}" href="{{ particle.link|e }}" class="button {{ particle.readmoreclass|e }}">{{ particle.readmore|raw }}</a></div>
 		{% endif %}
 		
 		{% if particle.link and particle.linkstyle == 'aside' %}

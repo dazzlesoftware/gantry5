@@ -83,10 +83,10 @@
 
 {% macro displayContainers(item, menu, context, dropdown_type) %}
     {% import _self as SELF %}
-    <div class="g-grid">
+    <div class="row g-grid">
         {% set groups = item.getDropdown() == 'standard' ? [item] : item.groups %}
         {% for column, items in groups %}
-        <div class="g-block {{ item.columnWidth(column)|toColumns|e }}">
+        <div class="col g-block col-{{ item.columnSpan(column)|e }}">
             <ul class="g-sublevel">
                 <li class="g-level-{{ item.level|e }} g-go-back">
                     <a class="g-menu-item-container" href="#" data-g-menuparent=""><span>Back</span></a>

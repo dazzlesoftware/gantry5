@@ -171,12 +171,4 @@ interface ThemeInterface
      */
     public function configuration();
 
-    /**
-     * Convert a block's width into Bootstrap 5 grid column classes,
-     * optionally including responsive per-breakpoint overrides.
-     *
-     * @param array|null $columns
-     * @return string
-     */
-    public function toColumns(?array $columns = null);
 }

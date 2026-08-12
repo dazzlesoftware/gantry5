@@ -441,10 +441,10 @@ of the grid architecture anywhere in the repo (checked `README.md`,
 Cleanup progress: the unused `toGrid` PHP/Twig API has been removed, Galatea's
 last non-grid `size-80` use now has a semantic `.width-80` utility, and the
 legacy front-end `_sizes.scss` source/import has been deleted. Rebuilt
-`nucleus.css` contains no `.size-*` rules. Admin `size-*` card utilities are a
-separate admin stylesheet concern. `_flex.scss` remains because it now defines
-the Bootstrap-backed `.g-grid`/`.g-block` compatibility aliases still used by
-particle markup; deleting those aliases requires a distinct markup migration.
+`nucleus.css` contains no `.size-*` rules. Admin card utilities use semantic
+names. `_flex.scss` has been deleted; layout and particle markup now carries
+Bootstrap `.row`, `.col`, and `.col-N` classes directly. `.g-grid` and
+`.g-block` remain only as theme styling hooks and no longer provide layout.
 Layout Manager width badges now display canonical Bootstrap spans such as
 `col-6` instead of transitional percentages such as `50%`. Block relocation
 and row normalization persist only integer Bootstrap columns. The Layout
@@ -462,10 +462,10 @@ block. Legacy rows containing more than 12 blocks retain every block at
 None remaining that block M3. Resolved in M1: gutter model (no
 grid-level gutter exists today, so `$grid-gutter-width: 0`) and
 breakpoint mapping (nucleus's 5 breakpoints map onto Bootstrap's
-`$grid-breakpoints` keys 1:1, no approximation). Resolved in M2b/M5: format 3
-is the canonical persisted model and stores Bootstrap spans. Format 1/2
-readers remain import-only compatibility for old third-party or user-created
-layout files; saving converts them to format 3.
+`$grid-breakpoints` keys 1:1, no approximation). Resolved in M2b/M5/M6: format
+3 is the only supported persisted model and stores Bootstrap spans. All
+packaged and locally saved layouts were upgraded; format 0/1/2 readers were
+removed.
 
 ## Decisions already made
 

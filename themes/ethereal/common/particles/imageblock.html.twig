@@ -5,10 +5,10 @@
     {% if particle.title %}<h2 class="g-title">{{ particle.title|raw }}</h2>{% endif %}
 
 	<div class="g-imageblock {{ particle.class|e }}">
-		<div class="g-grid">
+		<div class="row g-grid">
 			<div class="g-listgrid {{ particle.cols|default('g-listgrid-4cols')|e }}">
 			{% for listgriditem in particle.listgriditems %}
-			<div class="g-block g-listgrid-item {{ listgriditem.variation }}{{ listgriditem.class }}">
+			<div class="col g-block g-listgrid-item {{ listgriditem.variation }}{{ listgriditem.class }}">
 				<div class="g-content">
 					<div class="g-imageblock">
 						<div class="g-imageblock-content">

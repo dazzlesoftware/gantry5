@@ -24,11 +24,12 @@ class LayoutReader
      */
     public static function version(array &$data)
     {
-        if (isset($data['version'])) {
-            return $data['version'];
+        $version = (int) ($data['version'] ?? 0);
+        if ($version !== 3) {
+            throw new \RuntimeException('Only Bootstrap layout format 3 is supported.');
         }
 
-        return isset($data['children']) && is_array($data['children']) ? 0 : 1;
+        return $version;
     }
 
     /**
@@ -93,13 +94,11 @@ class LayoutReader
      */
     protected static function getClass($version, array $data = [])
     {
-        $class = "Genesis\\Component\\Layout\\Version\\Format{$version}";
-
-        if (!class_exists($class)) {
-            throw new \RuntimeException('Layout file cound not be read: unsupported version {$version}.');
+        if ((int) $version !== 3) {
+            throw new \RuntimeException('Only Bootstrap layout format 3 is supported.');
         }
 
-        return new $class($data);
+        return new Version\Format3($data);
 
     }
 }

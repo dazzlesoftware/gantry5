@@ -31,11 +31,11 @@ form:
       type: select.select
       label: Columns
       description: Select the number of platform cards displayed per row.
-      default: 33-3
+      default: 4
       options:
-        50: 2 Columns
-        33-3: 3 Columns
-        25: 4 Columns
+        6: 2 Columns
+        4: 3 Columns
+        3: 4 Columns
 
     items:
       type: collection.list

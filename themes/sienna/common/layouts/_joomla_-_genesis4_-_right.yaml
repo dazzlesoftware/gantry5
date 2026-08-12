@@ -1,73 +1,404 @@
+version: 3
 preset:
-  image: genesis-admin://images/layouts/3-col.png
-
+  image: 'genesis-admin://images/layouts/3-col.png'
+  name: ''
 layout:
-  drawer:
-    container:
-      - [position-drawer 100]
-
-  top:
-    container:
-      - [position-top-a 33.3,position-top-b 33.3,position-top-c 33.3]
-
-  showcase:
-    container:
-      - [position-showcase-a 33.3,position-showcase-b 33.3,position-showcase-c 33.3]
-
-  feature:
-    container:
-      - [position-feature-a 33.3,position-feature-b 33.3,position-feature-c 33.3]
-
-  utility:
-    container:
-      - [position-utility-a 33.3,position-utility-b 33.3,position-utility-c 33.3]
-
-  breadcrumb:
-    container:
-      - [position-breadcrumb 100]
-
-  maintop:
-    container:
-      - [position-maintop-a 33.3,position-maintop-b 33.3,position-maintop-c 33.3]
-
-  container:
-    1:
-      - mainbody 40:
-        - system-messages
-        - [position-content-top-a 33.3,position-content-top-b 33.3,position-content-top-c 33.3]
-        - pagecontent
-        - [position-content-bottom-a 33.3,position-content-bottom-b 33.3,position-content-bottom-c 33.3]
-      - sidebar-a 20:
-        - position-sidebar-a
-      - sidebar-b 20:
-        - position-sidebar-b
-      - sidebar-c 20:
-        - position-sidebar-c
-
-
-  mainbottom:
-    container:
-      - [position-mainbottom-a 33.3,position-mainbottom-b 33.3,position-mainbottom-c 33.3]
-
-  extension:
-    container:
-      - [position-extension-a 33.3,position-extension-b 33.3,position-extension-c 33.3]
-
-  bottom:
-    container:
-      - [position-bottom-a 33.3,position-bottom-b 33.3,position-bottom-c 33.3]
-
-  footer:
-    container:
-      - [position-footer-a 33.3,position-footer-b 33.3,position-footer-c 33.3]
-
-  copyright:
-    container:
-      - [position-copyright-a 33.3,position-copyright-b 33.3,position-copyright-c 33.3]
-      - [particle-copyright 40, spacer 30, particle-branding 30]
-
+  /drawer/:
+    -
+      - position-2846
+  /top/:
+    -
+      - position-2427
+      - position-8139
+      - position-4074
+  /showcase/:
+    -
+      - position-2661
+      - position-2265
+      - position-6298
+  /feature/:
+    -
+      - position-3296
+      - position-8908
+      - position-1698
+  /utility/:
+    -
+      - position-8912
+      - position-8470
+      - position-2880
+  /breadcrumb/:
+    -
+      - position-4403
+  /maintop/:
+    -
+      - position-2680
+      - position-4715
+      - position-3320
+  /container-4623/:
+    -
+      -
+        mainbody:
+          -
+            - system-messages-5859
+          -
+            - position-4119
+            - position-6341
+            - position-4416
+          -
+            - system-content-5926
+          -
+            - position-2003
+            - position-1802
+            - position-1041
+      -
+        sidebar-a:
+          -
+            - position-6392
+      -
+        sidebar-b:
+          -
+            - position-8416
+      -
+        sidebar-c:
+          -
+            - position-8077
+  /mainbottom/:
+    -
+      - position-9667
+      - position-3925
+      - position-4942
+  /extension/:
+    -
+      - position-5817
+      - position-3250
+      - position-8715
+  /bottom/:
+    -
+      - position-3216
+      - position-6796
+      - position-6639
+  /footer/:
+    -
+      - position-1311
+      - position-8806
+      - position-2233
+  /copyright/:
+    -
+      - position-9811
+      - position-4259
+      - position-5536
+    -
+      - copyright-9754
+      - spacer-6921
+      - branding-7618
   offcanvas:
-    - particle-mobile-menu
-
+    -
+      - mobile-menu-1068
+  0: atoms
+structure:
+  drawer:
+    type: section
+    attributes:
+      id: g-drawer
+      boxed: ''
+  top:
+    type: section
+    attributes:
+      id: g-top
+      boxed: ''
+  showcase:
+    type: section
+    attributes:
+      id: g-showcase
+      boxed: ''
+  feature:
+    type: section
+    attributes:
+      id: g-feature
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      id: g-utility
+      boxed: ''
+  breadcrumb:
+    type: section
+    attributes:
+      id: g-breadcrumb
+      boxed: ''
+  maintop:
+    type: section
+    attributes:
+      id: g-maintop
+      boxed: ''
+  mainbody:
+    type: section
+    attributes:
+      id: g-mainbody
+  sidebar-a:
+    type: section
+    attributes:
+      id: g-sidebar-a
+  sidebar-b:
+    type: section
+    attributes:
+      id: g-sidebar-b
+  sidebar-c:
+    type: section
+    attributes:
+      id: g-sidebar-c
+  container-4623:
+    attributes:
+      boxed: ''
+  mainbottom:
+    type: section
+    attributes:
+      id: g-mainbottom
+      boxed: ''
+  extension:
+    type: section
+    attributes:
+      id: g-extension
+      boxed: ''
+  bottom:
+    type: section
+    attributes:
+      id: g-bottom
+      boxed: ''
+  footer:
+    attributes:
+      id: g-footer
+      boxed: ''
+  copyright:
+    type: section
+    attributes:
+      id: g-copyright
+      boxed: ''
+  offcanvas:
+    attributes:
+      id: g-offcanvas
+content:
+  position-2846:
+    title: Drawer
+    attributes:
+      key: drawer
+    layout: false
+  position-2427:
+    title: Top-a
+    attributes:
+      key: top-a
+    layout: false
+  position-8139:
+    title: Top-b
+    attributes:
+      key: top-b
+    layout: false
+  position-4074:
+    title: Top-c
+    attributes:
+      key: top-c
+    layout: false
+  position-2661:
+    title: Showcase-a
+    attributes:
+      key: showcase-a
+    layout: false
+  position-2265:
+    title: Showcase-b
+    attributes:
+      key: showcase-b
+    layout: false
+  position-6298:
+    title: Showcase-c
+    attributes:
+      key: showcase-c
+    layout: false
+  position-3296:
+    title: Feature-a
+    attributes:
+      key: feature-a
+    layout: false
+  position-8908:
+    title: Feature-b
+    attributes:
+      key: feature-b
+    layout: false
+  position-1698:
+    title: Feature-c
+    attributes:
+      key: feature-c
+    layout: false
+  position-8912:
+    title: Utility-a
+    attributes:
+      key: utility-a
+    layout: false
+  position-8470:
+    title: Utility-b
+    attributes:
+      key: utility-b
+    layout: false
+  position-2880:
+    title: Utility-c
+    attributes:
+      key: utility-c
+    layout: false
+  position-4403:
+    title: Breadcrumb
+    attributes:
+      key: breadcrumb
+    layout: false
+  position-2680:
+    title: Maintop-a
+    attributes:
+      key: maintop-a
+    layout: false
+  position-4715:
+    title: Maintop-b
+    attributes:
+      key: maintop-b
+    layout: false
+  position-3320:
+    title: Maintop-c
+    attributes:
+      key: maintop-c
+    layout: false
+  system-messages-5859:
+    title: Messages
+    layout: false
+  position-4119:
+    title: Content-top-a
+    attributes:
+      key: content-top-a
+    layout: false
+  position-6341:
+    title: Content-top-b
+    attributes:
+      key: content-top-b
+    layout: false
+  position-4416:
+    title: Content-top-c
+    attributes:
+      key: content-top-c
+    layout: false
+  system-content-5926:
+    layout: false
+  position-2003:
+    title: Content-bottom-a
+    attributes:
+      key: content-bottom-a
+    layout: false
+  position-1802:
+    title: Content-bottom-b
+    attributes:
+      key: content-bottom-b
+    layout: false
+  position-1041:
+    title: Content-bottom-c
+    attributes:
+      key: content-bottom-c
+    layout: false
+  position-6392:
+    title: Sidebar-a
+    attributes:
+      key: sidebar-a
+    layout: false
+  position-8416:
+    title: Sidebar-b
+    attributes:
+      key: sidebar-b
+    layout: false
+  position-8077:
+    title: Sidebar-c
+    attributes:
+      key: sidebar-c
+    layout: false
+  position-9667:
+    title: Mainbottom-a
+    attributes:
+      key: mainbottom-a
+    layout: false
+  position-3925:
+    title: Mainbottom-b
+    attributes:
+      key: mainbottom-b
+    layout: false
+  position-4942:
+    title: Mainbottom-c
+    attributes:
+      key: mainbottom-c
+    layout: false
+  position-5817:
+    title: Extension-a
+    attributes:
+      key: extension-a
+    layout: false
+  position-3250:
+    title: Extension-b
+    attributes:
+      key: extension-b
+    layout: false
+  position-8715:
+    title: Extension-c
+    attributes:
+      key: extension-c
+    layout: false
+  position-3216:
+    title: Bottom-a
+    attributes:
+      key: bottom-a
+    layout: false
+  position-6796:
+    title: Bottom-b
+    attributes:
+      key: bottom-b
+    layout: false
+  position-6639:
+    title: Bottom-c
+    attributes:
+      key: bottom-c
+    layout: false
+  position-1311:
+    title: Footer-a
+    attributes:
+      key: footer-a
+    layout: false
+  position-8806:
+    title: Footer-b
+    attributes:
+      key: footer-b
+    layout: false
+  position-2233:
+    title: Footer-c
+    attributes:
+      key: footer-c
+    layout: false
+  position-9811:
+    title: Copyright-a
+    attributes:
+      key: copyright-a
+    layout: false
+  position-4259:
+    title: Copyright-b
+    attributes:
+      key: copyright-b
+    layout: false
+  position-5536:
+    title: Copyright-c
+    attributes:
+      key: copyright-c
+    layout: false
+  copyright-9754:
+    layout: false
+  spacer-6921:
+    layout: false
+  branding-7618:
+    layout: false
+  mobile-menu-1068:
+    layout: false
   atoms:
-    - atom-google-analytics
+    subtype: section
+    layout: false
+    title: Atoms
+    attributes:
+      id: g-atoms

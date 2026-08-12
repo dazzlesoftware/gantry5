@@ -502,42 +502,6 @@ trait ThemeTrait
     }
 
     /**
-     * Convert a block's width into Bootstrap 5 grid column classes.
-     *
-     * `$columns` is the block's `attributes->columns` map of breakpoint
-     * (xs/sm/md/lg/xl) to a Bootstrap span (1-12).
-     * Only breakpoints with an explicit, non-empty entry emit a
-     * `col-{breakpoint}-N` class; anything unset is left for Bootstrap's own
-     * mobile-first cascade to inherit from the next narrower breakpoint.
-     * Nothing is fabricated for a breakpoint that was never authored - see
-     * NUCLEUS_BOOTSTRAP_MIGRATION.md M2b.
-     *
-     * @param array|null $columns
-     * @return string
-     */
-    public function toColumns(?array $columns = null)
-    {
-        if (empty($columns['xs'])) {
-            return '';
-        }
-        $number = (int) $columns['xs'];
-        $number = max(1, min(12, $number));
-
-        $classes = ['col-' . $number];
-
-        foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
-            if (empty($columns[$breakpoint])) {
-                continue;
-            }
-
-            $value = max(1, min(12, (int) $columns[$breakpoint]));
-            $classes[] = "col-{$breakpoint}-{$value}";
-        }
-
-        return implode(' ', $classes);
-    }
-
-    /**
      * Magic setter method
      *
      * @param mixed $offset Asset name value
