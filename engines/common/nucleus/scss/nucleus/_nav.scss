@@ -42,6 +42,33 @@
         }
     }
 
+    // A menu item can embed an arbitrary particle (e.g. via the Genesis menu
+    // manager's "Add Particle" item type). That particle's own markup has no
+    // idea it's being rendered inside a nav item, so without this reset it
+    // renders with full page-level typography (default h1-h6/p sizes and
+    // margins), visually blowing up the menu item and inflating the whole
+    // navbar's height.
+    .menu-item-particle {
+        display: inline-block;
+        max-width: 100%;
+        font-size: inherit;
+        line-height: inherit;
+        vertical-align: middle;
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        img, svg {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+    }
+
     .g-menu-item-content {
         display: inline-block;
         vertical-align: middle;
@@ -90,6 +117,18 @@
 
     .dropdown-menu.g-dropdown {
         @extend .dropdown-menu;
+
+        // Bootstrap 5 ships `.navbar-nav .dropdown-menu { position: static }`
+        // by default and only restores `position: absolute` via
+        // `.navbar-expand .navbar-nav .dropdown-menu`, which wins purely by
+        // having one more class in the selector than the static rule. Since
+        // the toggle lives inside `.navbar`, Bootstrap's Dropdown also
+        // detects `_inNavbar` and skips Popper entirely, so there's no
+        // fallback positioning if that fragile specificity margin is ever
+        // lost (theme/plugin CSS loaded after ours, a markup tweak that
+        // drops `navbar-expand`, etc). Pin it down explicitly so desktop
+        // dropdowns can't fall back into normal document flow.
+        position: absolute !important;
 
         &:not(.show) {
             display: none;

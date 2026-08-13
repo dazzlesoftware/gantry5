@@ -7669,6 +7669,24 @@ fieldset:disabled [data-genesis-container] input[type=submit] {
   vertical-align: middle;
   margin-right: 0.2rem;
 }
+[data-genesis-container] .g-main-nav .menu-item-particle {
+  display: inline-block;
+  max-width: 100%;
+  font-size: inherit;
+  line-height: inherit;
+  vertical-align: middle;
+}
+[data-genesis-container] .g-main-nav .menu-item-particle h1, [data-genesis-container] .g-main-nav .menu-item-particle .h1, [data-genesis-container] .g-main-nav .menu-item-particle h2, [data-genesis-container] .g-main-nav .menu-item-particle .h2, [data-genesis-container] .g-main-nav .menu-item-particle h3, [data-genesis-container] .g-main-nav .menu-item-particle .h3, [data-genesis-container] .g-main-nav .menu-item-particle h4, [data-genesis-container] .g-main-nav .menu-item-particle .h4, [data-genesis-container] .g-main-nav .menu-item-particle h5, [data-genesis-container] .g-main-nav .menu-item-particle .h5, [data-genesis-container] .g-main-nav .menu-item-particle h6, [data-genesis-container] .g-main-nav .menu-item-particle .h6, [data-genesis-container] .g-main-nav .menu-item-particle p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+[data-genesis-container] .g-main-nav .menu-item-particle img, [data-genesis-container] .g-main-nav .menu-item-particle svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
 [data-genesis-container] .g-main-nav .g-menu-item-content {
   display: inline-block;
   vertical-align: middle;
@@ -7705,6 +7723,9 @@ fieldset:disabled [data-genesis-container] input[type=submit] {
   background: transparent;
   box-shadow: none;
   color: inherit;
+}
+[data-genesis-container] .g-main-nav .dropdown-menu.g-dropdown {
+  position: absolute !important;
 }
 [data-genesis-container] .g-main-nav .dropdown-menu.g-dropdown:not(.show) {
   display: none;

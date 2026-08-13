@@ -8254,6 +8254,24 @@ td {
   vertical-align: middle;
   margin-right: 0.2rem;
 }
+.g-main-nav .menu-item-particle {
+  display: inline-block;
+  max-width: 100%;
+  font-size: inherit;
+  line-height: inherit;
+  vertical-align: middle;
+}
+.g-main-nav .menu-item-particle h1, .g-main-nav .menu-item-particle .h1, .g-main-nav .menu-item-particle h2, .g-main-nav .menu-item-particle .h2, .g-main-nav .menu-item-particle h3, .g-main-nav .menu-item-particle .h3, .g-main-nav .menu-item-particle h4, .g-main-nav .menu-item-particle .h4, .g-main-nav .menu-item-particle h5, .g-main-nav .menu-item-particle .h5, .g-main-nav .menu-item-particle h6, .g-main-nav .menu-item-particle .h6, .g-main-nav .menu-item-particle p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.g-main-nav .menu-item-particle img, .g-main-nav .menu-item-particle svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
 .g-main-nav .g-menu-item-content {
   display: inline-block;
   vertical-align: middle;
@@ -8290,6 +8308,9 @@ td {
   background: transparent;
   box-shadow: none;
   color: inherit;
+}
+.g-main-nav .dropdown-menu.g-dropdown {
+  position: absolute !important;
 }
 .g-main-nav .dropdown-menu.g-dropdown:not(.show) {
   display: none;
