@@ -83,12 +83,18 @@ $selectize-caret-margin-rtl: 0 4px 0 -2px;
     padding: $selectize-padding-y $selectize-padding-x;
     display: inline-block;
     width: 100%;
+    min-height: 38px;
     position: relative;
     z-index: 1;
     box-sizing: border-box;
     box-shadow: $selectize-shadow-input;
     border-radius: $selectize-border-radius;
 
+    // Toggling `g-has-items` (on every tag add/remove, live while typing)
+    // shrinks the vertical padding from 6px/6px down to 4px/1px. With no
+    // height floor, that padding drop visibly collapses the box to a thin
+    // sliver mid-edit; `min-height` above keeps it pinned to the normal
+    // input height in both the empty and populated states.
     .g-selectize-control.g-multi &.g-has-items {
         padding: 4px 0 1px;
     }

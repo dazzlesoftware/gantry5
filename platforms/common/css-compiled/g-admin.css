@@ -12590,6 +12590,7 @@ i.fa-genesis, i.fa-genesis-logo, i.fa-genesis-symbol, i.fa-genesis-logo-both, i.
   padding: 6px 12px;
   display: inline-block;
   width: 100%;
+  min-height: 38px;
   position: relative;
   z-index: 1;
   box-sizing: border-box;

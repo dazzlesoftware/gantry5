@@ -580,7 +580,17 @@ let SelectizeDefinition = {
         autoGrow($control_input);
 
         $control.delegate('mousedown', '*:not(input)', bind(function(event, element) {
-            if (element == $control) { return true; }
+            // `.closest()` (used internally by delegate matching) includes the
+            // starting element itself, so a click on empty space inside the
+            // control matches $control's own <div> (it isn't an <input>).
+            // `element` is a freshly-wrapped dom() object though, never the
+            // same object instance as the stored `$control` reference, so
+            // `element == $control` never caught that self-match — every
+            // empty-space click fell through to onItemSelect(), which
+            // unconditionally preventDefault()s and blocks the plain
+            // mousedown handler below from ever focusing the control.
+            // Compare the underlying DOM nodes instead of wrapper identity.
+            if (element[0] === $control[0]) { return true; }
             return this.onItemSelect.apply(this, arguments);
         }, this));
 
@@ -1132,8 +1142,15 @@ let SelectizeDefinition = {
         // modify selection
         eventName = e && e.type.toLowerCase();
 
-        if (eventName === 'mousedown' && this.isShiftDown && this.$activeItems.length) {
-            $last = dom(last(this.$control.children('.g-active')));
+        // `this.$activeItems` can go stale relative to the live DOM (e.g. the
+        // control re-renders its chip list on add/remove without clearing
+        // the tracked state), so `.g-active` may no longer match any actual
+        // child. Guard against that instead of dereferencing a null `$last`.
+        $last = (eventName === 'mousedown' && this.isShiftDown && this.$activeItems.length)
+            ? dom(last(this.$control.children('.g-active')))
+            : null;
+
+        if ($last) {
             begin = Array.prototype.indexOf.apply(this.$control[0].childNodes, [$last[0]]);
             end = Array.prototype.indexOf.apply(this.$control[0].childNodes, [item[0]]);
             if (begin > end) {
@@ -1474,7 +1491,12 @@ let SelectizeDefinition = {
 
     registerOption: function(data) {
         let key = hash_key(data[this.options.valueField]);
-        if ((!key && !this.options.allowEmptyOption) || this.options.hasOwnProperty(key)) return false;
+        // Was checking `this.options` (the widget's settings object — mode,
+        // create, persist, etc.) instead of `this.Options` (the registered
+        // option-data map). That silently dropped any option whose value
+        // happened to match a reserved setting name, and made real
+        // duplicate-value detection across optgroups a no-op.
+        if ((!key && !this.options.allowEmptyOption) || this.Options.hasOwnProperty(key)) return false;
         data.$order = data.$order || ++this.order;
         this.Options[key] = data;
 

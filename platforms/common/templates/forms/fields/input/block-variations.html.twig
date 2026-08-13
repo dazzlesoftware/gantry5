@@ -22,6 +22,8 @@
         {% set field = field|merge(field.selectize.Options|default({}))|merge(field.selectize.Optgroups|default({}))|merge({selectize: { Options: options, Optgroups: optgroups, Subtitles: true }}) %}
     {% endif %}
 
-    data-selectize="{{ (field.selectize is defined ? field.selectize|json_encode()|e('html_attr') : '') }}"
+    {# `field.selectize` is fully built above; let the parent block (selectize.html.twig)
+       emit the single `data-selectize` attribute so the `create: true` default it merges
+       in isn't lost to a duplicate attribute (browsers keep only the first one). #}
     {{ parent() }}
 {% endblock %}
